@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Root widget of your [App] widget in main.dart.
 final class MyoroMaterialApp extends StatelessWidget {
@@ -22,6 +23,8 @@ final class MyoroMaterialApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: home,
+      theme: createTheme(isDarkMode: false),
+      darkTheme: createTheme(isDarkMode: true),
     );
   }
 }

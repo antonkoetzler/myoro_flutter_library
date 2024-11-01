@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the [ThemeData] for [MyoroMaterialApp].
-ThemeData createTheme(bool isDarkMode) {
+ThemeData createTheme({required bool isDarkMode}) {
   final brightness = isDarkMode ? Brightness.dark : Brightness.light;
   final primary = isDarkMode ? DarkModeColorDesignSystem.primary : LightModeColorDesignSystem.primary;
   final secondary = isDarkMode ? DarkModeColorDesignSystem.secondary : LightModeColorDesignSystem.secondary;
@@ -43,18 +43,15 @@ ThemeData createTheme(bool isDarkMode) {
     ///
     /// Solely to provide the text styles for the base Flutter widgets & [TypographyDesignSystem].
     textTheme: TextTheme(
-      /// Extra bold.
-      displayLarge: createTextStyle(
+      /// Regular.
+      bodyLarge: createTextStyle(
         fontSize: FontSizeEnum.large,
-        fontWeight: FontWeight.w800,
       ),
-      displayMedium: createTextStyle(
-        fontSize: FontSizeEnum.medium,
-        fontWeight: FontWeight.w800,
-      ),
-      displaySmall: createTextStyle(
+      bodyMedium: createTextStyle(
         fontSize: FontSizeEnum.small,
-        fontWeight: FontWeight.w800,
+      ),
+      bodySmall: createTextStyle(
+        fontSize: FontSizeEnum.small,
       ),
 
       /// Italic.
@@ -71,6 +68,20 @@ ThemeData createTheme(bool isDarkMode) {
         fontStyle: FontStyle.italic,
       ),
 
+      /// Semi bold.
+      labelLarge: createTextStyle(
+        fontSize: FontSizeEnum.large,
+        fontWeight: FontWeight.w600,
+      ),
+      labelMedium: createTextStyle(
+        fontSize: FontSizeEnum.small,
+        fontWeight: FontWeight.w600,
+      ),
+      labelSmall: createTextStyle(
+        fontSize: FontSizeEnum.small,
+        fontWeight: FontWeight.w600,
+      ),
+
       /// Bold.
       titleLarge: createTextStyle(
         fontSize: FontSizeEnum.large,
@@ -85,29 +96,18 @@ ThemeData createTheme(bool isDarkMode) {
         fontWeight: FontWeight.bold,
       ),
 
-      /// Regular.
-      bodyLarge: createTextStyle(
+      /// Extra bold.
+      displayLarge: createTextStyle(
         fontSize: FontSizeEnum.large,
+        fontWeight: FontWeight.w800,
       ),
-      bodyMedium: createTextStyle(
+      displayMedium: createTextStyle(
+        fontSize: FontSizeEnum.medium,
+        fontWeight: FontWeight.w800,
+      ),
+      displaySmall: createTextStyle(
         fontSize: FontSizeEnum.small,
-      ),
-      bodySmall: createTextStyle(
-        fontSize: FontSizeEnum.small,
-      ),
-
-      /// Semi bold.
-      labelLarge: createTextStyle(
-        fontSize: FontSizeEnum.large,
-        fontWeight: FontWeight.w600,
-      ),
-      labelMedium: createTextStyle(
-        fontSize: FontSizeEnum.small,
-        fontWeight: FontWeight.w600,
-      ),
-      labelSmall: createTextStyle(
-        fontSize: FontSizeEnum.small,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w800,
       ),
     ),
   );
