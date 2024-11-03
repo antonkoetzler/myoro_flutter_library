@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:storyboard/app/exports.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:storyboard/app/widgets/storyboard_app_bar.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
@@ -21,6 +21,7 @@ final class _App extends StatelessWidget {
       darkTheme: createTheme(isDarkMode: true),
       home: const Scaffold(
         appBar: StoryboardAppBar(),
+        body: StoryboardBody(),
       ),
     );
   }
