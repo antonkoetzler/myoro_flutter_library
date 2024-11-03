@@ -12,6 +12,7 @@ final class ColorDesignSystem {
   static Color secondary(BuildContext context) => context.isDarkMode ? DarkModeColorDesignSystem.secondary : LightModeColorDesignSystem.secondary;
   static Color error = Colors.red;
   static Color onError = Colors.white;
+  static Color transparent = Colors.transparent;
 }
 
 final class DarkModeColorDesignSystem {

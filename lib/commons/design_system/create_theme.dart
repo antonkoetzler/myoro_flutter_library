@@ -48,7 +48,7 @@ ThemeData createTheme({required bool isDarkMode}) {
         fontSize: FontSizeEnum.large,
       ),
       bodyMedium: createTextStyle(
-        fontSize: FontSizeEnum.small,
+        fontSize: FontSizeEnum.medium,
       ),
       bodySmall: createTextStyle(
         fontSize: FontSizeEnum.small,
@@ -74,7 +74,7 @@ ThemeData createTheme({required bool isDarkMode}) {
         fontWeight: FontWeight.w600,
       ),
       labelMedium: createTextStyle(
-        fontSize: FontSizeEnum.small,
+        fontSize: FontSizeEnum.medium,
         fontWeight: FontWeight.w600,
       ),
       labelSmall: createTextStyle(
@@ -88,7 +88,7 @@ ThemeData createTheme({required bool isDarkMode}) {
         fontWeight: FontWeight.bold,
       ),
       titleMedium: createTextStyle(
-        fontSize: FontSizeEnum.small,
+        fontSize: FontSizeEnum.medium,
         fontWeight: FontWeight.bold,
       ),
       titleSmall: createTextStyle(
