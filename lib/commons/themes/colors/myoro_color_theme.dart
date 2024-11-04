@@ -7,20 +7,20 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 const _primaryDarkModeColor = Color(0xFF181818);
 const _primaryLightModeColor = Color(0xFFEDE6D6);
 
-final class ColorDesignSystem {
-  static Color primary(BuildContext context) => context.isDarkMode ? DarkModeColorDesignSystem.primary : LightModeColorDesignSystem.primary;
-  static Color secondary(BuildContext context) => context.isDarkMode ? DarkModeColorDesignSystem.secondary : LightModeColorDesignSystem.secondary;
+final class MyoroColorTheme {
+  static Color primary(BuildContext context) => context.isDarkMode ? MyoroDarkModeColorTheme.primary : MyoroLightModeColorTheme.primary;
+  static Color secondary(BuildContext context) => context.isDarkMode ? MyoroDarkModeColorTheme.secondary : MyoroLightModeColorTheme.secondary;
   static Color error = Colors.red;
   static Color onError = Colors.white;
   static Color transparent = Colors.transparent;
 }
 
-final class DarkModeColorDesignSystem {
+final class MyoroDarkModeColorTheme {
   static const primary = _primaryDarkModeColor;
   static const secondary = _primaryLightModeColor;
 }
 
-final class LightModeColorDesignSystem {
+final class MyoroLightModeColorTheme {
   static const primary = _primaryLightModeColor;
   static const secondary = _primaryDarkModeColor;
 }

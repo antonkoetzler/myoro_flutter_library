@@ -9,12 +9,18 @@ final class MyoroMaterialApp extends StatelessWidget {
   /// to for example, set the title of the window on desktop.
   final String title;
 
+  /// [ThemeExtension]s for the widgets in your application.
+  ///
+  /// Will not override the Myoro [ThemeExtension]s.
+  final List<ThemeExtension>? themeExtensions;
+
   /// Entry point for the application.
   final Widget home;
 
   const MyoroMaterialApp({
     super.key,
     required this.title,
+    this.themeExtensions,
     required this.home,
   });
 
@@ -23,8 +29,8 @@ final class MyoroMaterialApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: home,
-      theme: createTheme(isDarkMode: false),
-      darkTheme: createTheme(isDarkMode: true),
+      theme: createMyoroThemeData(themeExtensions, isDarkMode: false),
+      darkTheme: createMyoroThemeData(themeExtensions, isDarkMode: true),
     );
   }
 }

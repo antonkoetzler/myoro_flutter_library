@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Creates a [HoverButton] that accepts an icon and/or text.
-final class IconTextHoverButton extends StatelessWidget {
+final class MyoroIconTextHoverButton extends StatelessWidget {
   /// Icon of the button.
   final IconData? icon;
 
@@ -30,7 +30,7 @@ final class IconTextHoverButton extends StatelessWidget {
   /// Function executed when the button is clicked.
   final VoidCallback onPressed;
 
-  const IconTextHoverButton({
+  const MyoroIconTextHoverButton({
     super.key,
     this.icon,
     this.iconSize,
@@ -43,23 +43,25 @@ final class IconTextHoverButton extends StatelessWidget {
     required this.onPressed,
   }) : assert(
           !(icon == null && text == null),
-          '[IconTextHoverButton]: An [icon] or [text] must be provided.',
+          '[MyoroIconTextHoverButton]: An [icon] or [text] must be provided.',
         );
 
   @override
   Widget build(BuildContext context) {
-    return HoverButton(
+    final themeExtension = context.resolveThemeExtension<MyoroIconTextHoverButtonThemeExtension>();
+
+    return MyoroHoverButton(
       contentColor: contentColor,
       backgroundColor: backgroundColor,
       bordered: bordered,
       onPressed: onPressed,
       builder: (bool hovered) {
-        final actualContentColor = hovered ? (backgroundColor ?? ColorDesignSystem.primary(context)) : (contentColor ?? ColorDesignSystem.secondary(context));
+        final actualContentColor = hovered ? (backgroundColor ?? themeExtension.backgroundColor) : (contentColor ?? themeExtension.contentColor);
 
         return Padding(
-          padding: const EdgeInsets.all(5),
+          padding: themeExtension.contentPadding,
           child: Row(
-            spacing: 10,
+            spacing: themeExtension.spacing,
             children: [
               if (icon != null)
                 Icon(
@@ -70,8 +72,8 @@ final class IconTextHoverButton extends StatelessWidget {
               if (text != null)
                 Text(
                   text!,
-                  textAlign: textAlign ?? TextAlign.left,
-                  style: (textStyle ?? TypographyDesignSystem.regularMedium(context)).withColor(
+                  textAlign: textAlign ?? themeExtension.textAlign,
+                  style: (textStyle ?? themeExtension.textStyle).withColor(
                     actualContentColor,
                   ),
                 ),

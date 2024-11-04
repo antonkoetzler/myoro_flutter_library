@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Builder of the [HoverButton] to pass if the button is being hovered.
-typedef HoverButtonBuilder = Function(bool hovered);
+/// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
+typedef MyoroHoverButtonBuilder = Function(bool hovered);
 
 /// Hover button of the design system.
 ///
-/// Should be avoided by using pre-built hover buttons like [IconTextHoverButton].
-/// However, if you need to create a complex hover button, use a [HoverButton].
-final class HoverButton extends StatefulWidget {
+/// Should be avoided by using pre-built hover buttons like [IconTextMyoroHoverButton].
+/// However, if you need to create a complex hover button, use a [MyoroHoverButton].
+final class MyoroHoverButton extends StatefulWidget {
   /// Color of the border & background when hovered.
   final Color? contentColor;
 
@@ -21,10 +21,10 @@ final class HoverButton extends StatefulWidget {
   /// Function executed when the button is clicked.
   final VoidCallback onPressed;
 
-  /// Builder of the [HoverButton] to pass if the button is being hovered.
-  final HoverButtonBuilder builder;
+  /// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
+  final MyoroHoverButtonBuilder builder;
 
-  const HoverButton({
+  const MyoroHoverButton({
     super.key,
     this.contentColor,
     this.backgroundColor,
@@ -34,15 +34,15 @@ final class HoverButton extends StatefulWidget {
   });
 
   @override
-  State<HoverButton> createState() => _HoverButtonState();
+  State<MyoroHoverButton> createState() => _MyoroHoverButtonState();
 }
 
-final class _HoverButtonState extends State<HoverButton> {
+final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
   Color? get _contentColor => widget.contentColor;
   Color? get _backgroundColor => widget.backgroundColor;
   bool? get _bordered => widget.bordered;
   VoidCallback get _onPressed => widget.onPressed;
-  HoverButtonBuilder get _builder => widget.builder;
+  MyoroHoverButtonBuilder get _builder => widget.builder;
 
   final _hoverNotifier = ValueNotifier<bool>(false);
 
@@ -55,22 +55,27 @@ final class _HoverButtonState extends State<HoverButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      focusColor: ColorDesignSystem.transparent,
-      hoverColor: ColorDesignSystem.transparent,
-      splashColor: ColorDesignSystem.transparent,
+      focusColor: MyoroColorTheme.transparent,
+      hoverColor: MyoroColorTheme.transparent,
+      splashColor: MyoroColorTheme.transparent,
       onTap: _onPressed,
       onHover: (hovered) => _hoverNotifier.value = hovered,
       child: ValueListenableBuilder(
         valueListenable: _hoverNotifier,
         builder: (_, bool hovered, __) {
-          final secondary = ColorDesignSystem.secondary(context);
-          final contentColor = _contentColor ?? secondary;
-          final backgroundColor = _backgroundColor ?? Colors.transparent;
+          final themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
+          final contentColor = _contentColor ?? themeExtension.contentColor;
+          final backgroundColor = _backgroundColor ?? themeExtension.backgroundColor;
 
           return Container(
             decoration: BoxDecoration(
-              border: (_bordered ?? false) ? Border.all(width: 2, color: hovered ? backgroundColor : contentColor) : null,
-              borderRadius: kBorderRadius,
+              border: (_bordered ?? themeExtension.bordered)
+                  ? Border.all(
+                      width: 2,
+                      color: hovered ? backgroundColor : contentColor,
+                    )
+                  : null,
+              borderRadius: themeExtension.borderRadius,
               color: hovered ? contentColor : backgroundColor,
             ),
             child: _builder(hovered),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
 
 final class StoryboardBody extends StatefulWidget {
   const StoryboardBody({super.key});
@@ -37,7 +38,7 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
                 Container(
                   width: width,
                   constraints: BoxConstraints(
-                    minWidth: 80,
+                    minWidth: context.resolveThemeExtension<StoryboardBodyThemeExtension>().sideBarMinWidth,
                     maxWidth: MediaQuery.of(context).size.width - 11,
                   ),
                   child: const _WidgetListing(),
@@ -74,6 +75,6 @@ final class _WidgetViewer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const SizedBox.shrink();
   }
 }

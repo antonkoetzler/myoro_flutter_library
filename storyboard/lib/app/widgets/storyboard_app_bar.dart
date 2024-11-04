@@ -5,50 +5,42 @@ final class StoryboardAppBar extends StatelessWidget implements PreferredSizeWid
   const StoryboardAppBar({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 2);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Column(
-        spacing: 10,
-        mainAxisSize: MainAxisSize.min,
+    return MyoroAppBar(
+      bordered: true,
+      child: Row(
         children: [
-          Flexible(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 10,
-                right: 5,
-              ),
-              child: Row(
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'myoro_flutter_library storyboard',
-                        style: TypographyDesignSystem.boldMedium(context).copyWith(height: 0.7),
-                      ),
-                      Text(
-                        'Used for testing/visualizing widgets and the design system',
-                        style: TypographyDesignSystem.italicSmall(context),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  IconTextHoverButton(
-                    icon: Icons.sunny,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const MyoroBasicDivider(Axis.horizontal),
+          const _TitleAndHeader(),
+          const Spacer(),
+          MyoroIconTextHoverButton(icon: Icons.sunny, onPressed: () {}),
         ],
       ),
+    );
+  }
+}
+
+final class _TitleAndHeader extends StatelessWidget {
+  const _TitleAndHeader();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 3,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'myoro_flutter_library storyboard',
+          style: MyoroTypographyTheme.boldMedium(context).copyWith(height: 0.7),
+        ),
+        Text(
+          'Used for testing/visualizing widgets and the design system',
+          style: MyoroTypographyTheme.italicSmall(context),
+        ),
+      ],
     );
   }
 }

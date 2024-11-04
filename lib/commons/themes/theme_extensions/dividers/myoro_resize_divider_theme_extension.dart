@@ -1,0 +1,55 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+/// [ThemeExtension] for [MyoroResizeDivider].
+final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDividerThemeExtension> {
+  /// [MyoroColorTheme.secondary] by default.
+  final Color secondary;
+
+  /// Width of the resize button. 10 by default.
+  final double resizeButtonShortValue;
+
+  /// Height of the resize button. 30 by default.
+  final double resizeButtonLongValue;
+
+  /// Border radius of the resize button. [kBorderRadius] by default.
+  final BorderRadius resizeButtonBorderRadius;
+
+  const MyoroResizeDividerThemeExtension({
+    required this.secondary,
+    required this.resizeButtonShortValue,
+    required this.resizeButtonLongValue,
+    required this.resizeButtonBorderRadius,
+  });
+
+  @override
+  MyoroResizeDividerThemeExtension copyWith({
+    Color? secondary,
+    double? resizeButtonShortValue,
+    double? resizeButtonLongValue,
+    BorderRadius? resizeButtonBorderRadius,
+  }) {
+    return MyoroResizeDividerThemeExtension(
+      secondary: secondary ?? this.secondary,
+      resizeButtonShortValue: resizeButtonShortValue ?? this.resizeButtonShortValue,
+      resizeButtonLongValue: resizeButtonLongValue ?? this.resizeButtonLongValue,
+      resizeButtonBorderRadius: resizeButtonBorderRadius ?? this.resizeButtonBorderRadius,
+    );
+  }
+
+  @override
+  MyoroResizeDividerThemeExtension lerp(
+    MyoroResizeDividerThemeExtension? other,
+    double t,
+  ) {
+    if (other is! MyoroResizeDividerThemeExtension) return this;
+    return MyoroResizeDividerThemeExtension(
+      secondary: Color.lerp(secondary, other.secondary, t) ?? secondary,
+      resizeButtonShortValue: lerpDouble(resizeButtonShortValue, other.resizeButtonShortValue, t) ?? resizeButtonShortValue,
+      resizeButtonLongValue: lerpDouble(resizeButtonLongValue, other.resizeButtonLongValue, t) ?? resizeButtonLongValue,
+      resizeButtonBorderRadius: BorderRadius.lerp(resizeButtonBorderRadius, other.resizeButtonBorderRadius, t) ?? resizeButtonBorderRadius,
+    );
+  }
+}

@@ -60,7 +60,7 @@ final class _MyoroScrollableState extends State<MyoroScrollable> {
   Widget build(BuildContext context) {
     return _type.widget(
       _scrollController,
-      _direction ?? Axis.vertical,
+      _direction ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().direction,
       _children,
     );
   }

@@ -16,12 +16,34 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///   }
 /// }
 /// ```
-final class MyoroAppBar extends AppBar {
-  MyoroAppBar({
-    Key? key,
-    required Widget child,
-  }) : super(
-          key: key,
-          title: child,
-        );
+final class MyoroAppBar extends StatelessWidget {
+  /// If the app bar contains a border at the bottom.
+  final bool bordered;
+
+  /// Content of the app bar.
+  final Widget child;
+
+  const MyoroAppBar({
+    super.key,
+    this.bordered = false,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: Padding(
+            padding: themeExtension.contentPadding,
+            child: child,
+          ),
+        ),
+        if (bordered) const MyoroBasicDivider(Axis.horizontal),
+      ],
+    );
+  }
 }

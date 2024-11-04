@@ -15,11 +15,13 @@ final class _App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MyoroMaterialApp(
       title: 'myoro_flutter_library storyboard',
-      theme: createTheme(isDarkMode: false),
-      darkTheme: createTheme(isDarkMode: true),
-      home: const Scaffold(
+      themeExtensions: [
+        StoryboardAppBarThemeExtension(),
+        StoryboardBodyThemeExtension(sideBarMinWidth: 80),
+      ],
+      home: Scaffold(
         appBar: StoryboardAppBar(),
         body: StoryboardBody(),
       ),

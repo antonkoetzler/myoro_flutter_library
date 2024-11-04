@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Class used to grab [TextStyle]s creates in [createTheme]
-final class TypographyDesignSystem {
+/// Class used to grab [TextStyle]s created in [createMyoroThemeData].
+final class MyoroTypographyTheme {
   /// Regular.
   static TextStyle regularSmall(BuildContext context) => context.textTheme.bodySmall!;
   static TextStyle regularMedium(BuildContext context) => context.textTheme.bodyMedium!;

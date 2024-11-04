@@ -38,9 +38,10 @@ final class _ResizeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroResizeDividerThemeExtension>();
+    final shortValue = themeExtension.resizeButtonShortValue;
+    final longValue = themeExtension.resizeButtonLongValue;
     final isHorizontal = direction.isHorizontal;
-    const shortValue = 10.0;
-    const longValue = 30.0;
 
     return MouseRegion(
       cursor: isHorizontal ? SystemMouseCursors.resizeRow : SystemMouseCursors.resizeColumn,
@@ -51,8 +52,8 @@ final class _ResizeButton extends StatelessWidget {
           width: isHorizontal ? longValue : shortValue,
           height: isHorizontal ? shortValue : longValue,
           decoration: BoxDecoration(
-            color: ColorDesignSystem.secondary(context),
-            borderRadius: kBorderRadius,
+            color: themeExtension.secondary,
+            borderRadius: themeExtension.resizeButtonBorderRadius,
           ),
         ),
       ),
