@@ -23,7 +23,7 @@ final class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollable
   MyoroScrollableThemeExtension lerp(MyoroScrollableThemeExtension? other, double t) {
     if (other is! MyoroScrollableThemeExtension) return this;
     return MyoroScrollableThemeExtension(
-      direction: AxisExtension.lerp(direction, other.direction, t) ?? direction,
+      direction: LerpHelper.lerp(direction, other.direction, t) ?? direction,
     );
   }
 }

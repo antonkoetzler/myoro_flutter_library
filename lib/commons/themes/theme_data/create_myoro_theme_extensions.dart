@@ -7,17 +7,17 @@ List<ThemeExtension> createMyoroThemeExtensions(
   TextTheme textTheme,
 ) {
   return [
-    ..._createAppBarThemeExtensions(),
-    ..._createBodyThemeExtensions(),
-    ..._createButtonThemeExtensions(colorScheme, textTheme),
-    ..._createDividerThemeExtensions(colorScheme),
-    ..._createMaterialAppThemeExtensions(),
-    ..._createScreenThemeExtensions(),
-    ..._createScrollableThemeExtensions(),
+    ...createAppBarThemeExtensions(),
+    ...createBodyThemeExtensions(),
+    ...createButtonThemeExtensions(colorScheme, textTheme),
+    ...createDividerThemeExtensions(colorScheme),
+    ...createMaterialAppThemeExtensions(),
+    ...createScreenThemeExtensions(),
+    ...createScrollableThemeExtensions(),
   ];
 }
 
-List<ThemeExtension> _createAppBarThemeExtensions() {
+List<ThemeExtension> createAppBarThemeExtensions() {
   return [
     const MyoroAppBarThemeExtension(
       contentPadding: EdgeInsets.fromLTRB(10, 10, 5, 10),
@@ -25,13 +25,13 @@ List<ThemeExtension> _createAppBarThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> _createBodyThemeExtensions() {
+List<ThemeExtension> createBodyThemeExtensions() {
   return [
     const MyoroBodyThemeExtension(),
   ];
 }
 
-List<ThemeExtension> _createButtonThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroHoverButtonThemeExtension(
       contentColor: colorScheme.onPrimary,
@@ -45,12 +45,14 @@ List<ThemeExtension> _createButtonThemeExtensions(ColorScheme colorScheme, TextT
       contentPadding: const EdgeInsets.all(5),
       textStyle: textTheme.bodyMedium!,
       textAlign: TextAlign.left,
-      spacing: 10,
+      textMaxLines: 1,
+      textOverflow: TextOverflow.ellipsis,
+      spacing: 5,
     ),
   ];
 }
 
-List<ThemeExtension> _createDividerThemeExtensions(ColorScheme colorScheme) {
+List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
   return [
     MyoroBasicDividerThemeExtension(
       color: colorScheme.onPrimary,
@@ -66,19 +68,19 @@ List<ThemeExtension> _createDividerThemeExtensions(ColorScheme colorScheme) {
   ];
 }
 
-List<ThemeExtension> _createMaterialAppThemeExtensions() {
+List<ThemeExtension> createMaterialAppThemeExtensions() {
   return [
     const MyoroMaterialAppThemeExtension(),
   ];
 }
 
-List<ThemeExtension> _createScreenThemeExtensions() {
+List<ThemeExtension> createScreenThemeExtensions() {
   return const [
     MyoroScreenThemeExtension(),
   ];
 }
 
-List<ThemeExtension> _createScrollableThemeExtensions() {
+List<ThemeExtension> createScrollableThemeExtensions() {
   return const [
     MyoroScrollableThemeExtension(
       direction: Axis.vertical,

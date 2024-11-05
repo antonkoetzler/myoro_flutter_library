@@ -6,17 +6,32 @@ final class MyoroBasicDivider extends StatelessWidget {
   /// Direction of the divider.
   final Axis direction;
 
-  const MyoroBasicDivider(this.direction, {super.key});
+  /// Short value of the divider (i.e. width for vertical, height for horizontal).
+  final double? shortValue;
+
+  /// Padding of the divider.
+  final EdgeInsets? padding;
+
+  const MyoroBasicDivider(
+    this.direction, {
+    super.key,
+    this.shortValue,
+    this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
     final isHorizontal = direction.isHorizontal;
+    final setShortValue = shortValue ?? themeExtension.shortValue;
 
-    return Container(
-      color: themeExtension.color,
-      width: isHorizontal ? themeExtension.longValue : themeExtension.shortValue,
-      height: isHorizontal ? themeExtension.shortValue : themeExtension.longValue,
+    return Padding(
+      padding: padding ?? EdgeInsets.zero,
+      child: Container(
+        color: themeExtension.color,
+        width: isHorizontal ? themeExtension.longValue : setShortValue,
+        height: isHorizontal ? setShortValue : themeExtension.longValue,
+      ),
     );
   }
 }

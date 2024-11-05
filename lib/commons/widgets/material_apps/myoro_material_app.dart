@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+/// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
+typedef MyoroMaterialAppThemeExtensionsBuilder = List<ThemeExtension> Function(ColorScheme colorScheme, TextTheme textTheme);
+
 /// Root widget of your [App] widget in main.dart.
 final class MyoroMaterialApp extends StatelessWidget {
   /// Title of the application.
@@ -12,7 +15,12 @@ final class MyoroMaterialApp extends StatelessWidget {
   /// [ThemeExtension]s for the widgets in your application.
   ///
   /// Will not override the Myoro [ThemeExtension]s.
-  final List<ThemeExtension>? themeExtensions;
+  final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
+
+  /// If [true], this will not include the [ThemeExtension]s of the Myoro library.
+  ///
+  /// This is usually the case where you'd like to add custom styling with [ThemeExtension.copyWith] with Myoro [ThemeExtension].
+  final bool includeMyoroThemeExtensions;
 
   /// Entry point for the application.
   final Widget home;
@@ -20,7 +28,8 @@ final class MyoroMaterialApp extends StatelessWidget {
   const MyoroMaterialApp({
     super.key,
     required this.title,
-    this.themeExtensions,
+    this.themeExtensionsBuilder,
+    this.includeMyoroThemeExtensions = true,
     required this.home,
   });
 
@@ -29,8 +38,8 @@ final class MyoroMaterialApp extends StatelessWidget {
     return MaterialApp(
       title: title,
       home: home,
-      theme: createMyoroThemeData(themeExtensions, isDarkMode: false),
-      darkTheme: createMyoroThemeData(themeExtensions, isDarkMode: true),
+      theme: createMyoroThemeData(themeExtensionsBuilder, includeMyoroThemeExtensions, isDarkMode: false),
+      darkTheme: createMyoroThemeData(themeExtensionsBuilder, includeMyoroThemeExtensions, isDarkMode: true),
     );
   }
 }

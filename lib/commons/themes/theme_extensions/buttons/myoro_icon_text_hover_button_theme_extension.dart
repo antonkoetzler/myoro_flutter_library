@@ -11,16 +11,22 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   /// [MyoroColorTheme.primary] by default.
   final Color backgroundColor;
 
-  /// Default padding of the button. [EdgeInsets.all(5)] is the default.
+  /// Default padding of the button.
   final EdgeInsets contentPadding;
 
-  /// Default typography of the text. [MyoroTypographyTheme.regularMedium] is the default.
+  /// Default typography of the text.
   final TextStyle textStyle;
 
-  /// Default [TextAlign] of the text. [TextAlign.left] is the default.
+  /// Default [TextAlign] of the text.
   final TextAlign textAlign;
 
-  /// Spacing between the icon & text. Default is 10.
+  /// Max lines allowed in the text.
+  final int textMaxLines;
+
+  /// Overflow behavior of the text.
+  final TextOverflow textOverflow;
+
+  /// Spacing between the icon & text.
   final double spacing;
 
   const MyoroIconTextHoverButtonThemeExtension({
@@ -29,6 +35,8 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     required this.contentPadding,
     required this.textStyle,
     required this.textAlign,
+    required this.textMaxLines,
+    required this.textOverflow,
     required this.spacing,
   });
 
@@ -39,6 +47,8 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     EdgeInsets? contentPadding,
     TextStyle? textStyle,
     TextAlign? textAlign,
+    int? textMaxLines,
+    TextOverflow? textOverflow,
     double? spacing,
   }) {
     return MyoroIconTextHoverButtonThemeExtension(
@@ -47,6 +57,8 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       contentPadding: contentPadding ?? this.contentPadding,
       textStyle: textStyle ?? this.textStyle,
       textAlign: textAlign ?? this.textAlign,
+      textMaxLines: textMaxLines ?? this.textMaxLines,
+      textOverflow: textOverflow ?? this.textOverflow,
       spacing: spacing ?? this.spacing,
     );
   }
@@ -62,7 +74,9 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t) ?? backgroundColor,
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t) ?? contentPadding,
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t) ?? textStyle,
-      textAlign: TextAlignExtension.lerp(textAlign, other.textAlign, t) ?? textAlign,
+      textAlign: LerpHelper.lerp(textAlign, other.textAlign, t) ?? textAlign,
+      textMaxLines: lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)?.toInt() ?? textMaxLines,
+      textOverflow: LerpHelper.lerp(textOverflow, other.textOverflow, t) ?? textOverflow,
       spacing: lerpDouble(spacing, other.spacing, t) ?? spacing,
     );
   }

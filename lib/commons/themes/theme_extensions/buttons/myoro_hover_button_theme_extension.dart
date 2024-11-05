@@ -44,7 +44,7 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
       contentColor: Color.lerp(contentColor, other.contentColor, t) ?? contentColor,
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t) ?? backgroundColor,
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t) ?? borderRadius,
-      bordered: BoolExtension.lerp(bordered, other.bordered, t) ?? bordered,
+      bordered: LerpHelper.lerp(bordered, other.bordered, t) ?? bordered,
     );
   }
 }

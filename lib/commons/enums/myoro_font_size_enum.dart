@@ -2,9 +2,9 @@ import 'package:faker/faker.dart';
 
 /// Available font sizes that should be used.
 enum MyoroFontSizeEnum {
-  small(14),
-  medium(20),
-  large(26);
+  small(16),
+  medium(18),
+  large(20);
 
   final double size;
 

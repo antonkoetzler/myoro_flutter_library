@@ -18,6 +18,9 @@ final class MyoroHoverButton extends StatefulWidget {
   /// Builds a rounded border if [true]; no border if [false].
   final bool? bordered;
 
+  /// Border radius of the background.
+  final BorderRadius? borderRadius;
+
   /// Function executed when the button is clicked.
   final VoidCallback onPressed;
 
@@ -29,6 +32,7 @@ final class MyoroHoverButton extends StatefulWidget {
     this.contentColor,
     this.backgroundColor,
     this.bordered,
+    this.borderRadius,
     required this.onPressed,
     required this.builder,
   });
@@ -41,6 +45,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
   Color? get _contentColor => widget.contentColor;
   Color? get _backgroundColor => widget.backgroundColor;
   bool? get _bordered => widget.bordered;
+  BorderRadius? get _borderRadius => widget.borderRadius;
   VoidCallback get _onPressed => widget.onPressed;
   MyoroHoverButtonBuilder get _builder => widget.builder;
 
@@ -75,7 +80,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
                       color: hovered ? backgroundColor : contentColor,
                     )
                   : null,
-              borderRadius: themeExtension.borderRadius,
+              borderRadius: _borderRadius ?? themeExtension.borderRadius,
               color: hovered ? contentColor : backgroundColor,
             ),
             child: _builder(hovered),

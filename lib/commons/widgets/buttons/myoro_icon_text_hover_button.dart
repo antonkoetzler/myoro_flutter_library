@@ -24,6 +24,12 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   /// Builds a rounded border if [true]; no border if [false].
   final bool? bordered;
 
+  /// Border radius of the background.
+  final BorderRadius? borderRadius;
+
+  /// Padding of the content in the button.
+  final EdgeInsets? padding;
+
   /// Color of the icon/text when hovered & background when not hovered.
   final Color? backgroundColor;
 
@@ -39,6 +45,8 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
     this.textAlign,
     this.contentColor,
     this.bordered,
+    this.borderRadius,
+    this.padding,
     this.backgroundColor,
     required this.onPressed,
   }) : assert(
@@ -54,12 +62,13 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
       contentColor: contentColor,
       backgroundColor: backgroundColor,
       bordered: bordered,
+      borderRadius: borderRadius,
       onPressed: onPressed,
       builder: (bool hovered) {
         final actualContentColor = hovered ? (backgroundColor ?? themeExtension.backgroundColor) : (contentColor ?? themeExtension.contentColor);
 
         return Padding(
-          padding: themeExtension.contentPadding,
+          padding: padding ?? themeExtension.contentPadding,
           child: Row(
             spacing: themeExtension.spacing,
             children: [
@@ -70,11 +79,15 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
                   color: actualContentColor,
                 ),
               if (text != null)
-                Text(
-                  text!,
-                  textAlign: textAlign ?? themeExtension.textAlign,
-                  style: (textStyle ?? themeExtension.textStyle).withColor(
-                    actualContentColor,
+                Expanded(
+                  child: Text(
+                    text!,
+                    textAlign: textAlign ?? themeExtension.textAlign,
+                    maxLines: themeExtension.textMaxLines,
+                    overflow: themeExtension.textOverflow,
+                    style: (textStyle ?? themeExtension.textStyle).withColor(
+                      actualContentColor,
+                    ),
                   ),
                 ),
             ],
