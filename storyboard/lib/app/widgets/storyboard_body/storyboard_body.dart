@@ -11,7 +11,11 @@ final class StoryboardBody extends StatefulWidget {
 }
 
 final class _StoryboardBodyState extends State<StoryboardBody> {
+  /// Control the width of [_WidgetListing].
   final _widgetListingWidthNotifier = ValueNotifier<double>(200);
+
+  /// Control what widget is being shown in [_WidgetViewer].
+  final _widgetLoadedNotifier = ValueNotifier<Widget?>(null);
 
   void _updateWidgetListeningWidthNotifier(DragUpdateDetails details) {
     if (!mounted) return;
@@ -21,6 +25,7 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
   @override
   void dispose() {
     _widgetListingWidthNotifier.dispose();
+    _widgetLoadedNotifier.dispose();
     super.dispose();
   }
 
@@ -42,7 +47,7 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
                     minWidth: context.resolveThemeExtension<StoryboardBodyThemeExtension>().sideBarMinWidth,
                     maxWidth: MediaQuery.of(context).size.width - 11,
                   ),
-                  child: const _WidgetListing(),
+                  child: _WidgetListing(_widgetLoadedNotifier),
                 ),
                 MyoroResizeDivider(
                   Axis.vertical,
@@ -52,14 +57,16 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
             );
           },
         ),
-        const Expanded(child: _WidgetViewer()),
+        Expanded(child: _WidgetViewer(_widgetLoadedNotifier)),
       ],
     );
   }
 }
 
 final class _WidgetListing extends StatelessWidget {
-  const _WidgetListing();
+  final ValueNotifier<Widget?> widgetLoadedNotifier;
+
+  const _WidgetListing(this.widgetLoadedNotifier);
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +81,7 @@ final class _WidgetListing extends StatelessWidget {
               _WidgetListingCategory(
                 category: value.widgetCategory,
                 widgetNames: value.widgetNames,
-                onPressWidget: (String widgetName) {
-                  if (kDebugMode) {
-                    print(widgetName);
-                  }
-                },
+                onPressWidget: (String widgetName) => widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
               ),
               if (value != WidgetListingEnum.values.last)
                 MyoroBasicDivider(
@@ -125,6 +128,7 @@ final class _WidgetListingCategoryState extends State<_WidgetListingCategory> {
     return Padding(
       padding: themeExtension.widgetListingCategoryPadding,
       child: Column(
+        spacing: 5,
         mainAxisSize: MainAxisSize.min,
         children: [
           _WidgetListingCategoryDropdownButton(
@@ -165,7 +169,7 @@ final class _WidgetListingCategoryDropdownButton extends StatelessWidget {
     return MyoroIconTextHoverButton(
       icon: showOptions ? themeExtension.widgetListingCategoryDropdownButtonOpenedIcon : themeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
       text: category,
-      textStyle: themeExtension.widgetListingCategoryTextStyle,
+      textStyle: themeExtension.widgetListingCategoryDropdownButtonTextStyle,
       onPressed: onPressed,
     );
   }
@@ -184,23 +188,28 @@ final class _WidgetListingCategoryWidgetButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
-    return Padding(
-      padding: EdgeInsets.only(left: themeExtension.widgetListingCategoryWidgetButtonOffset),
-      child: MyoroIconTextHoverButton(
-        text: widgetName,
-        textStyle: themeExtension.widgetListingWidgetTextStyle,
-        textAlign: themeExtension.widgetListingCategoryWidgetButtonTextAlign,
-        onPressed: onPressed,
-      ),
+    return MyoroIconTextHoverButton(
+      text: widgetName,
+      textStyle: themeExtension.widgetListingCategoryWidgetButtonTextStyle,
+      mainAxisAlignment: themeExtension.widgetListingCategoryWidgetButtonContentCentered,
+      onPressed: onPressed,
     );
   }
 }
 
 final class _WidgetViewer extends StatelessWidget {
-  const _WidgetViewer();
+  final ValueNotifier<Widget?> widgetLoadedNotifier;
+
+  const _WidgetViewer(this.widgetLoadedNotifier);
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.shrink();
+    return ValueListenableBuilder(
+      valueListenable: widgetLoadedNotifier,
+      builder: (_, Widget? widgetLoaded, __) {
+        if (widgetLoaded == null) return const SizedBox.shrink();
+        return widgetLoaded;
+      },
+    );
   }
 }

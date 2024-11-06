@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:storyboard/app/exports.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,8 +18,6 @@ final class _App extends StatelessWidget {
       const StoryboardAppBarThemeExtension(),
       StoryboardBodyThemeExtension(
         sideBarMinWidth: 80,
-        widgetListingCategoryTextStyle: textTheme.bodyMedium!,
-        widgetListingWidgetTextStyle: textTheme.bodySmall!,
         widgetListingCategoryPadding: const EdgeInsets.all(5),
         widgetListingCategoryDividerPadding: const EdgeInsets.only(
           top: 1,
@@ -27,10 +25,11 @@ final class _App extends StatelessWidget {
           right: 10,
         ),
         widgetListingCategoryDividerShortValue: 1,
+        widgetListingCategoryDropdownButtonTextStyle: textTheme.titleMedium!,
         widgetListingCategoryDropdownButtonUnopenedIcon: Icons.keyboard_arrow_right,
         widgetListingCategoryDropdownButtonOpenedIcon: Icons.keyboard_arrow_down,
-        widgetListingCategoryWidgetButtonOffset: 20,
-        widgetListingCategoryWidgetButtonTextAlign: TextAlign.center,
+        widgetListingCategoryWidgetButtonContentCentered: MainAxisAlignment.center,
+        widgetListingCategoryWidgetButtonTextStyle: textTheme.bodySmall!,
       ),
     ];
   }

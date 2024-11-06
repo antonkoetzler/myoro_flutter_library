@@ -39,10 +39,10 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
     double t,
   ) {
     if (other is! MyoroBasicDividerThemeExtension) return this;
-    return MyoroBasicDividerThemeExtension(
-      color: Color.lerp(color, other.color, t) ?? color,
-      shortValue: lerpDouble(shortValue, other.shortValue, t) ?? shortValue,
-      longValue: lerpDouble(longValue, other.longValue, t) ?? longValue,
+    return copyWith(
+      color: Color.lerp(color, other.color, t),
+      shortValue: lerpDouble(shortValue, other.shortValue, t),
+      longValue: lerpDouble(longValue, other.longValue, t),
     );
   }
 }

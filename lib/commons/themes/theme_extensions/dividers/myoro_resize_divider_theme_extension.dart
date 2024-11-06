@@ -45,11 +45,11 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
     double t,
   ) {
     if (other is! MyoroResizeDividerThemeExtension) return this;
-    return MyoroResizeDividerThemeExtension(
-      secondary: Color.lerp(secondary, other.secondary, t) ?? secondary,
-      resizeButtonShortValue: lerpDouble(resizeButtonShortValue, other.resizeButtonShortValue, t) ?? resizeButtonShortValue,
-      resizeButtonLongValue: lerpDouble(resizeButtonLongValue, other.resizeButtonLongValue, t) ?? resizeButtonLongValue,
-      resizeButtonBorderRadius: BorderRadius.lerp(resizeButtonBorderRadius, other.resizeButtonBorderRadius, t) ?? resizeButtonBorderRadius,
+    return copyWith(
+      secondary: Color.lerp(secondary, other.secondary, t),
+      resizeButtonShortValue: lerpDouble(resizeButtonShortValue, other.resizeButtonShortValue, t),
+      resizeButtonLongValue: lerpDouble(resizeButtonLongValue, other.resizeButtonLongValue, t),
+      resizeButtonBorderRadius: BorderRadius.lerp(resizeButtonBorderRadius, other.resizeButtonBorderRadius, t),
     );
   }
 }

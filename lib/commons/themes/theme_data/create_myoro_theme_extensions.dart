@@ -48,6 +48,7 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
       textMaxLines: 1,
       textOverflow: TextOverflow.ellipsis,
       spacing: 5,
+      mainAxisAlignment: MainAxisAlignment.start,
     ),
   ];
 }

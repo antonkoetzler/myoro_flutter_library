@@ -36,6 +36,9 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   /// Function executed when the button is clicked.
   final VoidCallback onPressed;
 
+  /// [MainAxisAlignment] of the [Row] holding the items.
+  final MainAxisAlignment? mainAxisAlignment;
+
   const MyoroIconTextHoverButton({
     super.key,
     this.icon,
@@ -49,6 +52,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
     this.padding,
     this.backgroundColor,
     required this.onPressed,
+    this.mainAxisAlignment,
   }) : assert(
           !(icon == null && text == null),
           '[MyoroIconTextHoverButton]: An [icon] or [text] must be provided.',
@@ -71,6 +75,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
           padding: padding ?? themeExtension.contentPadding,
           child: Row(
             spacing: themeExtension.spacing,
+            mainAxisAlignment: mainAxisAlignment ?? themeExtension.mainAxisAlignment,
             children: [
               if (icon != null)
                 Icon(
@@ -79,7 +84,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
                   color: actualContentColor,
                 ),
               if (text != null)
-                Expanded(
+                Flexible(
                   child: Text(
                     text!,
                     textAlign: textAlign ?? themeExtension.textAlign,

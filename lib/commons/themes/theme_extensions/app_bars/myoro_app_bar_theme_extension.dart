@@ -22,8 +22,8 @@ final class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExt
   @override
   MyoroAppBarThemeExtension lerp(MyoroAppBarThemeExtension? other, double t) {
     if (other is! MyoroAppBarThemeExtension) return this;
-    return MyoroAppBarThemeExtension(
-      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t) ?? contentPadding,
+    return copyWith(
+      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
     );
   }
 }

@@ -29,6 +29,9 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   /// Spacing between the icon & text.
   final double spacing;
 
+  /// [MainAxisAlignment] of the [Row] holding the items.
+  final MainAxisAlignment mainAxisAlignment;
+
   const MyoroIconTextHoverButtonThemeExtension({
     required this.contentColor,
     required this.backgroundColor,
@@ -38,6 +41,7 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     required this.textMaxLines,
     required this.textOverflow,
     required this.spacing,
+    required this.mainAxisAlignment,
   });
 
   @override
@@ -50,6 +54,7 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     int? textMaxLines,
     TextOverflow? textOverflow,
     double? spacing,
+    MainAxisAlignment? mainAxisAlignment,
   }) {
     return MyoroIconTextHoverButtonThemeExtension(
       backgroundColor: backgroundColor ?? this.backgroundColor,
@@ -60,6 +65,7 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       textMaxLines: textMaxLines ?? this.textMaxLines,
       textOverflow: textOverflow ?? this.textOverflow,
       spacing: spacing ?? this.spacing,
+      mainAxisAlignment: mainAxisAlignment ?? this.mainAxisAlignment,
     );
   }
 
@@ -69,15 +75,16 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     double t,
   ) {
     if (other is! MyoroIconTextHoverButtonThemeExtension) return this;
-    return MyoroIconTextHoverButtonThemeExtension(
-      contentColor: Color.lerp(contentColor, other.contentColor, t) ?? contentColor,
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t) ?? backgroundColor,
-      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t) ?? contentPadding,
-      textStyle: TextStyle.lerp(textStyle, other.textStyle, t) ?? textStyle,
-      textAlign: LerpHelper.lerp(textAlign, other.textAlign, t) ?? textAlign,
-      textMaxLines: lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)?.toInt() ?? textMaxLines,
-      textOverflow: LerpHelper.lerp(textOverflow, other.textOverflow, t) ?? textOverflow,
-      spacing: lerpDouble(spacing, other.spacing, t) ?? spacing,
+    return copyWith(
+      contentColor: Color.lerp(contentColor, other.contentColor, t),
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
+      textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
+      textAlign: LerpHelper.lerp(textAlign, other.textAlign, t),
+      textMaxLines: lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)?.toInt(),
+      textOverflow: LerpHelper.lerp(textOverflow, other.textOverflow, t),
+      spacing: lerpDouble(spacing, other.spacing, t),
+      mainAxisAlignment: LerpHelper.lerp(mainAxisAlignment, other.mainAxisAlignment, t),
     );
   }
 }
