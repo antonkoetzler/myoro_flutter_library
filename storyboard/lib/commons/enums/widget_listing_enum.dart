@@ -20,6 +20,9 @@ enum WidgetListingEnum {
   materialApps('Material apps', [
     myoroMaterialAppTitle,
   ]),
+  resolvers('Resolvers', [
+    myoroResolverTitle,
+  ]),
   screens('Screens', [
     myoroScreenTitle,
   ]),
@@ -38,6 +41,7 @@ enum WidgetListingEnum {
   static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
   static const myoroBasicDividerTitle = 'MyoroBasicDivider';
   static const myoroResizeDividerTitle = 'MyoroResizeDivider';
+  static const myoroResolverTitle = 'MyoroResolver';
   static const myoroMaterialAppTitle = 'MyoroMaterialApp';
   static const myoroScreenTitle = 'MyoroScreen';
   static const myoroScrollableTitle = 'MyotoScrollable';
@@ -45,13 +49,14 @@ enum WidgetListingEnum {
   /// Widget that will be displayed in [_WidgetViewer].
   static Widget widgetViewerWidget(String widgetName) {
     return switch (widgetName) {
-      myoroAppBarTitle => MyoroAppBarWidgetShowcase(),
+      myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
       myoroBodyTitle => throw UnimplementedError(),
       myoroHoverButtonTitle => throw UnimplementedError(),
       myoroIconTextHoverButtonTitle => throw UnimplementedError(),
       myoroBasicDividerTitle => throw UnimplementedError(),
       myoroResizeDividerTitle => throw UnimplementedError(),
       myoroMaterialAppTitle => throw UnimplementedError(),
+      myoroResolverTitle => throw UnimplementedError(),
       myoroScreenTitle => throw UnimplementedError(),
       myoroScrollableTitle => throw UnimplementedError(),
       _ => throw Exception('[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.'),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Extension for [BuildContext].
-extension BuildContextExtension on BuildContext {
+extension MyoroBuildContextExtension on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   TextTheme get textTheme => Theme.of(this).textTheme;
   T resolveThemeExtension<T extends ThemeExtension<T>>() {

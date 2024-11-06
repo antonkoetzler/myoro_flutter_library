@@ -3,5 +3,6 @@ export 'bodies/exports.dart';
 export 'buttons/exports.dart';
 export 'dividers/exports.dart';
 export 'material_apps/exports.dart';
+export 'resolvers/exports.dart';
 export 'screens/exports.dart';
 export 'scrollables/exports.dart';
