@@ -2,6 +2,7 @@ export 'app_bars/exports.dart';
 export 'bodies/exports.dart';
 export 'buttons/exports.dart';
 export 'dividers/exports.dart';
+export 'forms/exports.dart';
 export 'material_apps/exports.dart';
 export 'resolvers/exports.dart';
 export 'screens/exports.dart';

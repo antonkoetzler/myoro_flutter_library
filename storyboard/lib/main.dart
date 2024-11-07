@@ -3,10 +3,11 @@ import 'package:window_manager/window_manager.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   windowManager.ensureInitialized();
   windowManager.setMinimumSize(const Size(600, 600));
+  MyoroLocalDatabase.instance;
   runApp(const _App());
 }
 

@@ -55,12 +55,12 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
   MyoroResolverOnError? get _onError => widget.onError;
   MyoroResolverBuilder<T> get _builder => widget.builder;
 
-  late final MyoroResolverBloc _bloc;
-
   MyoroResolverController? _localController;
   MyoroResolverController get _controller {
     return widget.controller ?? (_localController ??= MyoroResolverController());
   }
+
+  late final MyoroResolverBloc _bloc;
 
   void _blocListener(MyoroResolverState state) {
     if (state.status.isSuccess) {
