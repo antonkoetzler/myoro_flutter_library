@@ -33,6 +33,9 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   /// Color of the icon/text when hovered & background when not hovered.
   final Color? backgroundColor;
 
+  /// If the button will already be hovered (there will be no hover effect).
+  final bool? isHovered;
+
   /// Function executed when the button is clicked.
   final VoidCallback onPressed;
 
@@ -51,6 +54,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
     this.borderRadius,
     this.padding,
     this.backgroundColor,
+    this.isHovered,
     required this.onPressed,
     this.mainAxisAlignment,
   }) : assert(
@@ -65,11 +69,13 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
     return MyoroHoverButton(
       contentColor: contentColor,
       backgroundColor: backgroundColor,
+      isHovered: isHovered,
       bordered: bordered,
       borderRadius: borderRadius,
       onPressed: onPressed,
       builder: (bool hovered) {
-        final actualContentColor = hovered ? (backgroundColor ?? themeExtension.backgroundColor) : (contentColor ?? themeExtension.contentColor);
+        final actualContentColor =
+            (hovered || isHovered == true) ? (backgroundColor ?? themeExtension.backgroundColor) : (contentColor ?? themeExtension.contentColor);
 
         return Padding(
           padding: padding ?? themeExtension.contentPadding,

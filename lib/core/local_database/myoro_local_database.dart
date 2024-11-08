@@ -2,10 +2,12 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-// TODO: Insert, select, get, update, delete.
-
 /// Singleton that creates an offline SQLite database
 /// for storing things such as shared preferences.
+///
+/// A note on [where] & [whereArgs] arguments.
+/// - [where]: SQL syntax placeholders of the condition you are creating, i.e. 'foo = ?', 'foo = ? AND bar = ? OR baz = ?';
+/// - [whereArgs]: List of the values of the placeholders, i.e. ['foo'], ['foo', true, 5];
 final class MyoroLocalDatabase {
   /// Instance of the SQLite database.
   static Database? _database;
@@ -15,16 +17,11 @@ final class MyoroLocalDatabase {
   static final _instance = MyoroLocalDatabase();
 
   /// Initializes the database.
-  static Future<void> _initialize({
+  static Future<void> initialize({
     /// Name of the database, i.e. providing 'Myoro Fitness' would create 'Myoro Fitness.db'.
-    String? fileName,
+    required String fileName,
 
     /// Alternative path to the database. Default is:
-    ///
-    /// Default location of the database is:
-    /// - Windows: %USERPROFILE%\AppData\Local\[Your app's ID];
-    /// - Linux: /home/$USER/.local/share/[Your app's ID].
-    /// // TODO: Find out the other paths
     String? path,
 
     /// Table initialization. This should be raw SQL.
@@ -54,14 +51,80 @@ final class MyoroLocalDatabase {
   }
 
   /// Closes the database.
-  static void close() {
+  void close() {
     _database?.close();
     _database = null;
   }
 
   /// Getter to get [_instance] to use [MyoroLocalDatabase]'s functions.
-  static Future<MyoroLocalDatabase> get instance async {
-    if (_database == null) await _initialize();
+  static MyoroLocalDatabase get instance {
+    assert(
+      _database != null,
+      '[MyoroLocalDatabase]: Database not initialized, please call [MyoroLocalDatabase.initialize].',
+    );
     return _instance;
+  }
+
+  /// INSERT operation. Returns the ID of the newly created row or throws if unsuccessful.
+  Future<int> insert(
+    String tableName, {
+    required Map<String, dynamic> data,
+  }) async {
+    return await _database!.insert(tableName, data);
+  }
+
+  /// SELECT operation. Returns the list of a given query.
+  Future<List<Map<String, dynamic>>> select(
+    String tableName, {
+    String? where,
+    List<Object?>? whereArgs,
+  }) async {
+    return await _database!.query(
+      tableName,
+      where: where,
+      whereArgs: whereArgs,
+    );
+  }
+
+  /// Get operation. Selects the first row of a [select] operation or null if the result of the [select] call is empty.
+  Future<Map<String, dynamic>?> get(
+    String tableName, {
+    String? where,
+    List<Object?>? whereArgs,
+  }) async {
+    final rows = await select(
+      tableName,
+      where: where,
+      whereArgs: whereArgs,
+    );
+    return rows.isEmpty ? null : rows.first;
+  }
+
+  /// UPDATE operation.
+  Future<void> update(
+    String tableName, {
+    required Map<String, dynamic> data,
+    String? where,
+    List<Object?>? whereArgs,
+  }) async {
+    await _database!.update(
+      tableName,
+      data,
+      where: where,
+      whereArgs: whereArgs,
+    );
+  }
+
+  /// DELETE operation.
+  Future<void> delete(
+    String tableName, {
+    String? where,
+    List<Object?>? whereArgs,
+  }) async {
+    await _database!.delete(
+      tableName,
+      where: where,
+      whereArgs: whereArgs,
+    );
   }
 }

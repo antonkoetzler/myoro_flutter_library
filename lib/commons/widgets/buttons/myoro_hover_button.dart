@@ -15,6 +15,9 @@ final class MyoroHoverButton extends StatefulWidget {
   /// Color of the background when not hovered.
   final Color? backgroundColor;
 
+  /// If the button will already be hovered (there will be no hover effect).
+  final bool? isHovered;
+
   /// Builds a rounded border if [true]; no border if [false].
   final bool? bordered;
 
@@ -31,6 +34,7 @@ final class MyoroHoverButton extends StatefulWidget {
     super.key,
     this.contentColor,
     this.backgroundColor,
+    this.isHovered,
     this.bordered,
     this.borderRadius,
     required this.onPressed,
@@ -44,6 +48,7 @@ final class MyoroHoverButton extends StatefulWidget {
 final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
   Color? get _contentColor => widget.contentColor;
   Color? get _backgroundColor => widget.backgroundColor;
+  bool? get _isHovered => widget.isHovered;
   bool? get _bordered => widget.bordered;
   BorderRadius? get _borderRadius => widget.borderRadius;
   VoidCallback get _onPressed => widget.onPressed;
@@ -72,6 +77,14 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
           final contentColor = _contentColor ?? themeExtension.contentColor;
           final backgroundColor = _backgroundColor ?? themeExtension.backgroundColor;
 
+          // So we may add a slight tint on hover when [_isHovered] is [true].
+          late final Color correctedBackgroundColor;
+          if (_isHovered == true) {
+            correctedBackgroundColor = hovered ? contentColor.withAlpha(225) : contentColor;
+          } else {
+            correctedBackgroundColor = hovered ? contentColor : backgroundColor;
+          }
+
           return Container(
             decoration: BoxDecoration(
               border: (_bordered ?? themeExtension.bordered)
@@ -81,7 +94,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
                     )
                   : null,
               borderRadius: _borderRadius ?? themeExtension.borderRadius,
-              color: hovered ? contentColor : backgroundColor,
+              color: correctedBackgroundColor,
             ),
             child: _builder(hovered),
           );

@@ -7,7 +7,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   windowManager.ensureInitialized();
   windowManager.setMinimumSize(const Size(600, 600));
-  MyoroLocalDatabase.instance;
   runApp(const _App());
 }
 
@@ -16,6 +15,10 @@ final class _App extends StatelessWidget {
 
   List<ThemeExtension> _themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
+      const WidgetShowcaseThemeExtension(
+        toggleWidgetOptionsButtonIcon: Icons.menu,
+        toggleWidgetOptionsButtonOffset: 5,
+      ),
       const StoryboardAppBarThemeExtension(),
       StoryboardBodyThemeExtension(
         sideBarMinWidth: 80,

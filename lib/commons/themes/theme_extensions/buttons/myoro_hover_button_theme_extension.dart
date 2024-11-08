@@ -6,7 +6,7 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   /// [MyoroColorTheme.secondary] by default.
   final Color contentColor;
 
-  /// [MyoroColorTheme.transparent] by deafult.
+  /// [MyoroColorTheme.transparent] by default.
   final Color backgroundColor;
 
   /// Border radius of the background. [kBorderRadius] by default.
