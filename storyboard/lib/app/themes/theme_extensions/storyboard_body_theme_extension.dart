@@ -6,9 +6,6 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [StoryboardBody].
 final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyThemeExtension> {
-  /// Minimum width of the side bar.
-  final double sideBarMinWidth;
-
   /// Padding of the content within [_WidgetListingCategory].
   final EdgeInsets widgetListingCategoryPadding;
 
@@ -34,7 +31,6 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   final TextStyle widgetListingCategoryWidgetButtonTextStyle;
 
   const StoryboardBodyThemeExtension({
-    required this.sideBarMinWidth,
     required this.widgetListingCategoryPadding,
     required this.widgetListingCategoryDividerPadding,
     required this.widgetListingCategoryDividerShortValue,
@@ -47,7 +43,6 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
 
   @override
   StoryboardBodyThemeExtension copyWith({
-    double? sideBarMinWidth,
     EdgeInsets? widgetListingCategoryPadding,
     EdgeInsets? widgetListingCategoryDividerPadding,
     double? widgetListingCategoryDividerShortValue,
@@ -58,7 +53,6 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
     TextStyle? widgetListingCategoryWidgetButtonTextStyle,
   }) {
     return StoryboardBodyThemeExtension(
-      sideBarMinWidth: sideBarMinWidth ?? this.sideBarMinWidth,
       widgetListingCategoryPadding: widgetListingCategoryPadding ?? this.widgetListingCategoryPadding,
       widgetListingCategoryDividerPadding: widgetListingCategoryDividerPadding ?? this.widgetListingCategoryDividerPadding,
       widgetListingCategoryDividerShortValue: widgetListingCategoryDividerShortValue ?? this.widgetListingCategoryDividerShortValue,
@@ -72,21 +66,20 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   }
 
   @override
-  StoryboardBodyThemeExtension lerp(StoryboardBodyThemeExtension? other, double t) {
+  StoryboardBodyThemeExtension lerp(covariant ThemeExtension<StoryboardBodyThemeExtension>? other, double t) {
     if (other is! StoryboardBodyThemeExtension) return this;
     return copyWith(
-      sideBarMinWidth: lerpDouble(sideBarMinWidth, other.sideBarMinWidth, t),
       widgetListingCategoryPadding: EdgeInsets.lerp(widgetListingCategoryPadding, other.widgetListingCategoryPadding, t),
       widgetListingCategoryDividerPadding: EdgeInsets.lerp(widgetListingCategoryDividerPadding, other.widgetListingCategoryDividerPadding, t),
       widgetListingCategoryDividerShortValue: lerpDouble(widgetListingCategoryDividerShortValue, other.widgetListingCategoryDividerShortValue, t),
       widgetListingCategoryDropdownButtonTextStyle:
           TextStyle.lerp(widgetListingCategoryDropdownButtonTextStyle, other.widgetListingCategoryDropdownButtonTextStyle, t),
       widgetListingCategoryDropdownButtonUnopenedIcon:
-          LerpHelper.lerp(widgetListingCategoryDropdownButtonUnopenedIcon, other.widgetListingCategoryDropdownButtonUnopenedIcon, t),
+          MyoroLerpHelper.lerp(widgetListingCategoryDropdownButtonUnopenedIcon, other.widgetListingCategoryDropdownButtonUnopenedIcon, t),
       widgetListingCategoryDropdownButtonOpenedIcon:
-          LerpHelper.lerp(widgetListingCategoryDropdownButtonOpenedIcon, other.widgetListingCategoryDropdownButtonOpenedIcon, t),
+          MyoroLerpHelper.lerp(widgetListingCategoryDropdownButtonOpenedIcon, other.widgetListingCategoryDropdownButtonOpenedIcon, t),
       widgetListingCategoryWidgetButtonContentCentered:
-          LerpHelper.lerp(widgetListingCategoryWidgetButtonContentCentered, other.widgetListingCategoryWidgetButtonContentCentered, t),
+          MyoroLerpHelper.lerp(widgetListingCategoryWidgetButtonContentCentered, other.widgetListingCategoryWidgetButtonContentCentered, t),
       widgetListingCategoryWidgetButtonTextStyle:
           TextStyle.lerp(widgetListingCategoryWidgetButtonTextStyle, other.widgetListingCategoryWidgetButtonTextStyle, t),
     );

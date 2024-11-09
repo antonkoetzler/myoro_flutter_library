@@ -14,6 +14,7 @@ List<ThemeExtension> createMyoroThemeExtensions(
     ...createMaterialAppThemeExtensions(),
     ...createScreenThemeExtensions(),
     ...createScrollableThemeExtensions(),
+    ...createSliderThemeExtensions(textTheme),
   ];
 }
 
@@ -85,6 +86,16 @@ List<ThemeExtension> createScrollableThemeExtensions() {
   return const [
     MyoroScrollableThemeExtension(
       direction: Axis.vertical,
+    ),
+  ];
+}
+
+List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
+  return [
+    MyoroSliderThemeExtension(
+      labelTextStyle: textTheme.titleSmall!.copyWith(fontSize: MyoroFontSizeEnum.tiny.size),
+      sliderPadding: EdgeInsets.zero,
+      labelSliderSpacing: 5,
     ),
   ];
 }

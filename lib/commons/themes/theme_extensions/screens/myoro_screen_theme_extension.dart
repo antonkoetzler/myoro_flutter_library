@@ -9,5 +9,5 @@ final class MyoroScreenThemeExtension extends ThemeExtension<MyoroScreenThemeExt
   MyoroScreenThemeExtension copyWith() => const MyoroScreenThemeExtension();
 
   @override
-  MyoroScreenThemeExtension lerp(MyoroScreenThemeExtension? other, double t) => this;
+  MyoroScreenThemeExtension lerp(covariant ThemeExtension<MyoroScreenThemeExtension>? other, double t) => this;
 }

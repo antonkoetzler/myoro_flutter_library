@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
+const _widgetOptionsMinWidth = 200.0;
+const _widgetOptionsMaxWidth = 350.0;
+
 /// Widget that contains a widget on the left, then controls on the right to
 /// experiment with the different options of the widget. Used in [StoryboardBody].
 final class WidgetShowcase extends StatefulWidget {
@@ -26,28 +29,115 @@ class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget get _widgetOptions => widget.widgetOptions;
 
   bool _showWidgetOptions = true;
+  late final _widgetOptionsWidthNotifier = ValueNotifier<double>(200);
+
+  void _updateWidthOptionsWidthNotifier(DragUpdateDetails details) {
+    if (!mounted) return;
+    final newWidth = _widgetOptionsWidthNotifier.value - details.delta.dx;
+    if (newWidth <= _widgetOptionsMinWidth || newWidth >= _widgetOptionsMaxWidth) return;
+    _widgetOptionsWidthNotifier.value = newWidth;
+  }
+
+  @override
+  void dispose() {
+    _widgetOptionsWidthNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              _widget,
-              _ToggleWidgetOptionsButton(
-                _showWidgetOptions,
-                onPressed: () => setState(() => _showWidgetOptions = !_showWidgetOptions),
-              ),
-            ],
+          child: _WidgetWrapper(
+            _widget,
+            _showWidgetOptions,
+            onPressToggleWidgetOptionsButton: () => setState(() => _showWidgetOptions = !_showWidgetOptions),
           ),
         ),
         if (_showWidgetOptions) ...[
-          const MyoroBasicDivider(Axis.vertical),
-          _widgetOptions,
+          MyoroResizeDivider(
+            Axis.vertical,
+            dragCallback: _updateWidthOptionsWidthNotifier,
+          ),
+          _WidgetOptions(
+            _widgetOptions,
+            _widgetOptionsWidthNotifier,
+          ),
         ],
       ],
+    );
+  }
+}
+
+final class _WidgetWrapper extends StatelessWidget {
+  final Widget widget;
+  final bool showWidgetOptions;
+  final VoidCallback onPressToggleWidgetOptionsButton;
+
+  const _WidgetWrapper(
+    this.widget,
+    this.showWidgetOptions, {
+    required this.onPressToggleWidgetOptionsButton,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+
+    return Padding(
+      padding: themeExtension.widgetWrapperPadding,
+      child: Container(
+        decoration: BoxDecoration(
+          color: themeExtension.widgetWrapperBackgroundColor,
+          borderRadius: themeExtension.widgetWrapperBorderRadius,
+          border: themeExtension.widgetWrapperBorder,
+        ),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Padding(
+              padding: themeExtension.widgetWrapperContentPadding,
+              child: widget,
+            ),
+            _ToggleWidgetOptionsButton(
+              showWidgetOptions,
+              onPressed: onPressToggleWidgetOptionsButton,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+final class _WidgetOptions extends StatelessWidget {
+  final Widget widgetOptions;
+  final ValueNotifier<double> widgetOptionsWidthNotifier;
+
+  const _WidgetOptions(
+    this.widgetOptions,
+    this.widgetOptionsWidthNotifier,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+
+    return ValueListenableBuilder(
+      valueListenable: widgetOptionsWidthNotifier,
+      builder: (_, double widthOptionsWidth, __) {
+        return Container(
+          width: widthOptionsWidth,
+          padding: themeExtension.widgetOptionsContentPadding,
+          alignment: themeExtension.widgetOptionsContentAlignment,
+          constraints: const BoxConstraints(
+            minWidth: _widgetOptionsMinWidth,
+            maxWidth: _widgetOptionsMaxWidth,
+          ),
+          child: widgetOptions,
+        );
+      },
     );
   }
 }

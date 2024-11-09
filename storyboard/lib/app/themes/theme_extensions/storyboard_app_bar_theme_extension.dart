@@ -14,5 +14,5 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
   StoryboardAppBarThemeExtension copyWith() => const StoryboardAppBarThemeExtension();
 
   @override
-  StoryboardAppBarThemeExtension lerp(StoryboardAppBarThemeExtension? other, double t) => this;
+  StoryboardAppBarThemeExtension lerp(covariant ThemeExtension<StoryboardAppBarThemeExtension>? other, double t) => this;
 }

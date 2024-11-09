@@ -13,37 +13,12 @@ void main() async {
 final class _App extends StatelessWidget {
   const _App();
 
-  List<ThemeExtension> _themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
-    return [
-      const WidgetShowcaseThemeExtension(
-        toggleWidgetOptionsButtonIcon: Icons.menu,
-        toggleWidgetOptionsButtonOffset: 5,
-      ),
-      const StoryboardAppBarThemeExtension(),
-      StoryboardBodyThemeExtension(
-        sideBarMinWidth: 80,
-        widgetListingCategoryPadding: const EdgeInsets.all(5),
-        widgetListingCategoryDividerPadding: const EdgeInsets.only(
-          top: 1,
-          left: 10,
-          right: 10,
-        ),
-        widgetListingCategoryDividerShortValue: 1,
-        widgetListingCategoryDropdownButtonTextStyle: textTheme.titleMedium!,
-        widgetListingCategoryDropdownButtonUnopenedIcon: Icons.keyboard_arrow_right,
-        widgetListingCategoryDropdownButtonOpenedIcon: Icons.keyboard_arrow_down,
-        widgetListingCategoryWidgetButtonContentCentered: MainAxisAlignment.center,
-        widgetListingCategoryWidgetButtonTextStyle: textTheme.bodySmall!,
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MyoroMaterialApp(
+    return const MyoroMaterialApp(
       title: 'myoro_flutter_library storyboard',
-      themeExtensionsBuilder: _themeExtensionsBuilder,
-      home: const Scaffold(
+      themeExtensionsBuilder: createStoryboardThemeExtensions,
+      home: Scaffold(
         appBar: StoryboardAppBar(),
         body: StoryboardBody(),
       ),

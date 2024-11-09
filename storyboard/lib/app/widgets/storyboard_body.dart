@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -11,15 +10,20 @@ final class StoryboardBody extends StatefulWidget {
 }
 
 final class _StoryboardBodyState extends State<StoryboardBody> {
+  static const _sideBarMinWidth = 200.0;
+  double get _sideBarMaxWidth => MediaQuery.of(context).size.width - 300;
+
   /// Control the width of [_WidgetListing].
-  final _widgetListingWidthNotifier = ValueNotifier<double>(200);
+  final _widgetListingWidthNotifier = ValueNotifier<double>(_sideBarMinWidth);
 
   /// Control what widget is being shown in [_WidgetViewer].
   final _widgetLoadedNotifier = ValueNotifier<Widget?>(null);
 
   void _updateWidgetListeningWidthNotifier(DragUpdateDetails details) {
     if (!mounted) return;
-    _widgetListingWidthNotifier.value += details.delta.dx;
+    final newWidth = _widgetListingWidthNotifier.value + details.delta.dx;
+    if (newWidth < _sideBarMinWidth || newWidth > _sideBarMaxWidth) return;
+    _widgetListingWidthNotifier.value = newWidth;
   }
 
   @override
@@ -44,8 +48,8 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
                 Container(
                   width: width,
                   constraints: BoxConstraints(
-                    minWidth: context.resolveThemeExtension<StoryboardBodyThemeExtension>().sideBarMinWidth,
-                    maxWidth: MediaQuery.of(context).size.width - 11,
+                    minWidth: _sideBarMinWidth,
+                    maxWidth: _sideBarMaxWidth,
                   ),
                   child: _WidgetListing(_widgetLoadedNotifier),
                 ),

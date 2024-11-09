@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
+
+List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    ..._createCommonsThemeExtensions(textTheme),
+    ..._createAppThemeExtension(textTheme),
+  ];
+}
+
+List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
+  return [
+    WidgetShowcaseThemeExtension(
+      toggleWidgetOptionsButtonIcon: Icons.menu,
+      toggleWidgetOptionsButtonOffset: 5,
+      widgetWrapperPadding: const EdgeInsets.all(20),
+      widgetWrapperContentPadding: const EdgeInsets.all(10),
+      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(
+        alpha: 0.1,
+      ),
+      widgetWrapperBorderRadius: kBorderRadius,
+      widgetWrapperBorder: Border.all(
+        width: 2,
+        color: MyoroColorTheme.attention,
+      ),
+      widgetOptionsContentPadding: const EdgeInsets.all(10),
+      widgetOptionsContentAlignment: Alignment.topCenter,
+    ),
+    const MyoroAppBarWidgetShowcaseThemeExtension(),
+    MyoroSliderWidgetShowcaseThemeExtension(
+      widgetSliderValueTextStyle: textTheme.headlineSmall!,
+      widgetSliderLabelSpacing: 5,
+    ),
+  ];
+}
+
+List<ThemeExtension> _createAppThemeExtension(TextTheme textTheme) {
+  return [
+    const StoryboardAppBarThemeExtension(),
+    StoryboardBodyThemeExtension(
+      widgetListingCategoryPadding: const EdgeInsets.all(5),
+      widgetListingCategoryDividerPadding: const EdgeInsets.only(
+        top: 1,
+        left: 10,
+        right: 10,
+      ),
+      widgetListingCategoryDividerShortValue: 1,
+      widgetListingCategoryDropdownButtonTextStyle: textTheme.titleMedium!,
+      widgetListingCategoryDropdownButtonUnopenedIcon: Icons.keyboard_arrow_right,
+      widgetListingCategoryDropdownButtonOpenedIcon: Icons.keyboard_arrow_down,
+      widgetListingCategoryWidgetButtonContentCentered: MainAxisAlignment.center,
+      widgetListingCategoryWidgetButtonTextStyle: textTheme.bodySmall!,
+    ),
+  ];
+}

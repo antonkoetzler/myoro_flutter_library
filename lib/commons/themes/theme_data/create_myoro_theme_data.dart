@@ -19,6 +19,7 @@ ThemeData createMyoroThemeData(
     brightness: isDarkMode ? Brightness.dark : Brightness.light,
     colorScheme: colorScheme,
     textTheme: textTheme,
+    sliderTheme: createMyoroSliderThemeData(isDarkMode, colorScheme),
     extensions: [
       if (includeMyoroThemeExtensions) ...createMyoroThemeExtensions(colorScheme, textTheme),
       ...?themeExtensionsBuilder?.call(colorScheme, textTheme),

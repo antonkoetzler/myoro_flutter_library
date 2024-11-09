@@ -38,13 +38,13 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   }
 
   @override
-  MyoroHoverButtonThemeExtension lerp(MyoroHoverButtonThemeExtension? other, double t) {
+  MyoroHoverButtonThemeExtension lerp(covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other, double t) {
     if (other is! MyoroHoverButtonThemeExtension) return this;
     return copyWith(
       contentColor: Color.lerp(contentColor, other.contentColor, t),
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      bordered: LerpHelper.lerp(bordered, other.bordered, t),
+      bordered: MyoroLerpHelper.lerp(bordered, other.bordered, t),
     );
   }
 }

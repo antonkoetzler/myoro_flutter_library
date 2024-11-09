@@ -13,6 +13,7 @@ final class MyoroColorTheme {
   static Color error = Colors.red;
   static Color onError = Colors.white;
   static Color transparent = Colors.transparent;
+  static Color attention = Colors.cyan;
 }
 
 final class MyoroDarkModeColorTheme {
