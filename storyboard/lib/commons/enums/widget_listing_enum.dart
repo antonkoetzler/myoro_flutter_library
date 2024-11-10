@@ -20,6 +20,9 @@ enum WidgetListingEnum {
   forms('Forms', [
     myoroFormTitle,
   ]),
+  inputs('Inputs', [
+    myoroInputTitle,
+  ]),
   materialApps('Material apps', [
     myoroMaterialAppTitle,
   ]),
@@ -48,6 +51,7 @@ enum WidgetListingEnum {
   static const myoroBasicDividerTitle = 'MyoroBasicDivider';
   static const myoroResizeDividerTitle = 'MyoroResizeDivider';
   static const myoroFormTitle = 'MyoroForm';
+  static const myoroInputTitle = 'MyoroInput';
   static const myoroResolverTitle = 'MyoroResolver';
   static const myoroMaterialAppTitle = 'MyoroMaterialApp';
   static const myoroScreenTitle = 'MyoroScreen';
@@ -64,6 +68,7 @@ enum WidgetListingEnum {
       myoroBasicDividerTitle => throw UnimplementedError(),
       myoroResizeDividerTitle => throw UnimplementedError(),
       myoroFormTitle => throw UnimplementedError(),
+      myoroInputTitle => const MyoroInputWidgetShowcase(),
       myoroMaterialAppTitle => throw UnimplementedError(),
       myoroResolverTitle => throw UnimplementedError(),
       myoroScreenTitle => throw UnimplementedError(),

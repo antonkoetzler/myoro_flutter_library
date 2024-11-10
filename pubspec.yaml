@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.7.0-86.0.dev
+  sdk: ^3.5.4
 
 dependencies:
   flutter:
@@ -15,7 +15,8 @@ dependencies:
   sqlite3: ^2.4.7
   sqflite_common_ffi: ^2.3.4
   sqlite3_flutter_libs: ^0.5.26
-  path: ^1.9.1
+  # Conflicts with Flutter's stable channel
+  path: ^1.9.0
   path_provider: ^2.1.5
 
 dev_dependencies:

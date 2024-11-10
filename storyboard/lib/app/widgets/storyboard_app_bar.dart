@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
 
 final class StoryboardAppBar extends StatelessWidget implements PreferredSizeWidget {
   const StoryboardAppBar({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 3);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 5);
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +28,19 @@ final class _TitleAndHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<StoryboardAppBarThemeExtension>();
+
     return Column(
-      spacing: 3,
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'myoro_flutter_library storyboard',
-          style: MyoroTypographyTheme.boldMedium(context).copyWith(height: 0.7),
+          style: themeExtension.titleTextStyle,
         ),
         Text(
           'Used for testing/visualizing widgets and the design system',
-          style: MyoroTypographyTheme.italicSmall(context),
+          style: themeExtension.subtitleTextStyle,
         ),
       ],
     );

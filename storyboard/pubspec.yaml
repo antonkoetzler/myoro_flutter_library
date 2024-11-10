@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.7.0-86.0.dev
+  sdk: ^3.5.4
 
 dependencies:
   flutter:
@@ -20,12 +20,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  fonts:
-    - family: Nunito
-      fonts:
-        - asset: ../assets/fonts/Nunito-Regular.ttf
-        - asset: ../assets/fonts/Nunito-Italic.ttf
-        - asset: ../assets/fonts/Nunito-SemiBold.ttf
-        - asset: ../assets/fonts/Nunito-Bold.ttf
-        - asset: ../assets/fonts/Nunito-ExtraBold.ttf

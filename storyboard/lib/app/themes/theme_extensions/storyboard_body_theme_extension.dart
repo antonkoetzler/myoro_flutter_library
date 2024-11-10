@@ -9,6 +9,9 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   /// Padding of the content within [_WidgetListingCategory].
   final EdgeInsets widgetListingCategoryPadding;
 
+  /// Spacing in between the items in [_WidgetListingCategory].
+  final double widgetListingCategorySpacing;
+
   /// Padding of the divider within [_WidgetListingCategory]s.
   final EdgeInsets widgetListingCategoryDividerPadding;
 
@@ -32,6 +35,7 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
 
   const StoryboardBodyThemeExtension({
     required this.widgetListingCategoryPadding,
+    required this.widgetListingCategorySpacing,
     required this.widgetListingCategoryDividerPadding,
     required this.widgetListingCategoryDividerShortValue,
     required this.widgetListingCategoryDropdownButtonTextStyle,
@@ -44,6 +48,7 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   @override
   StoryboardBodyThemeExtension copyWith({
     EdgeInsets? widgetListingCategoryPadding,
+    double? widgetListingCategorySpacing,
     EdgeInsets? widgetListingCategoryDividerPadding,
     double? widgetListingCategoryDividerShortValue,
     TextStyle? widgetListingCategoryDropdownButtonTextStyle,
@@ -54,6 +59,7 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   }) {
     return StoryboardBodyThemeExtension(
       widgetListingCategoryPadding: widgetListingCategoryPadding ?? this.widgetListingCategoryPadding,
+      widgetListingCategorySpacing: widgetListingCategorySpacing ?? this.widgetListingCategorySpacing,
       widgetListingCategoryDividerPadding: widgetListingCategoryDividerPadding ?? this.widgetListingCategoryDividerPadding,
       widgetListingCategoryDividerShortValue: widgetListingCategoryDividerShortValue ?? this.widgetListingCategoryDividerShortValue,
       widgetListingCategoryDropdownButtonTextStyle: widgetListingCategoryDropdownButtonTextStyle ?? this.widgetListingCategoryDropdownButtonTextStyle,
@@ -66,10 +72,14 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   }
 
   @override
-  StoryboardBodyThemeExtension lerp(covariant ThemeExtension<StoryboardBodyThemeExtension>? other, double t) {
+  StoryboardBodyThemeExtension lerp(
+    covariant ThemeExtension<StoryboardBodyThemeExtension>? other,
+    double t,
+  ) {
     if (other is! StoryboardBodyThemeExtension) return this;
     return copyWith(
       widgetListingCategoryPadding: EdgeInsets.lerp(widgetListingCategoryPadding, other.widgetListingCategoryPadding, t),
+      widgetListingCategorySpacing: lerpDouble(widgetListingCategorySpacing, other.widgetListingCategorySpacing, t),
       widgetListingCategoryDividerPadding: EdgeInsets.lerp(widgetListingCategoryDividerPadding, other.widgetListingCategoryDividerPadding, t),
       widgetListingCategoryDividerShortValue: lerpDouble(widgetListingCategoryDividerShortValue, other.widgetListingCategoryDividerShortValue, t),
       widgetListingCategoryDropdownButtonTextStyle:

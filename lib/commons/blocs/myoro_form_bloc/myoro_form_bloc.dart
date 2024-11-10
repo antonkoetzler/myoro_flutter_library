@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -10,9 +11,32 @@ part 'myoro_form_event.dart';
 
 /// BloC to manage the form process in [MyoroForm].
 final class MyoroFormBloc<T> extends Bloc<MyoroFormEvent, MyoroFormState<T>> {
-  MyoroFormBloc(MyoroFormRequest<T> request) : super(MyoroFormState<T>()) {
+  MyoroFormBloc(
+    GlobalKey<FormState> key,
+    MyoroFormValidation? validation,
+    MyoroFormRequest<T> request,
+  ) : super(MyoroFormState<T>()) {
     on<FinishFormEvent>((event, emit) async {
       emit(state.copyWith(status: MyoroRequestEnum.loading));
+
+      // Validation function passed in [MyoroForm].
+      final String? validationErrorMessage = validation?.call();
+
+      if (validationErrorMessage != null) {
+        emit(
+          state.copyWith(
+            status: MyoroRequestEnum.error,
+            errorMessage: validationErrorMessage,
+          ),
+        );
+        return;
+      }
+
+      // Flutter's [Form] validation call, this will check validation functions
+      // in, for example, a [MyoroInput] with [MyoroInput.validation] provided.
+      if (key.currentState!.validate() == false) {
+        return;
+      }
 
       String? errorMessage;
       try {

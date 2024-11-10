@@ -80,7 +80,6 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
         return Padding(
           padding: padding ?? themeExtension.contentPadding,
           child: Row(
-            spacing: themeExtension.spacing,
             mainAxisAlignment: mainAxisAlignment ?? themeExtension.mainAxisAlignment,
             children: [
               if (icon != null)
@@ -89,6 +88,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
                   size: iconSize,
                   color: actualContentColor,
                 ),
+              if (icon != null && text != null) SizedBox(height: themeExtension.spacing),
               if (text != null)
                 Flexible(
                   child: Text(

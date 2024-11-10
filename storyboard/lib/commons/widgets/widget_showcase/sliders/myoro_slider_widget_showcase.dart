@@ -49,7 +49,6 @@ class _WidgetState extends State<_Widget> {
     final themeExtension = context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>();
 
     return Column(
-      spacing: themeExtension.widgetSliderLabelSpacing,
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -58,6 +57,7 @@ class _WidgetState extends State<_Widget> {
             onChanged: (double value) => _sliderValueNotifier.value = value,
           ),
         ),
+        SizedBox(height: themeExtension.widgetSliderLabelSpacing),
         ValueListenableBuilder(
           valueListenable: _sliderValueNotifier,
           builder: (_, double sliderValue, __) {

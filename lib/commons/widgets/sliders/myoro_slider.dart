@@ -61,7 +61,6 @@ class _MyoroSliderState extends State<MyoroSlider> {
     return SizedBox(
       width: _width,
       child: Column(
-        spacing: themeExtension.labelSliderSpacing,
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,14 +70,17 @@ class _MyoroSliderState extends State<MyoroSlider> {
               _label!,
               style: _labelTextStyle ?? themeExtension.labelTextStyle,
             ),
-          Slider(
-            value: _sliderValue,
-            max: _maxValue,
+          SizedBox(height: themeExtension.labelSliderSpacing),
+          Padding(
             padding: themeExtension.sliderPadding,
-            onChanged: (double value) {
-              setState(() => _sliderValue = value);
-              _onChanged.call(_sliderValue);
-            },
+            child: Slider(
+              value: _sliderValue,
+              max: _maxValue,
+              onChanged: (double value) {
+                setState(() => _sliderValue = value);
+                _onChanged.call(_sliderValue);
+              },
+            ),
           ),
         ],
       ),

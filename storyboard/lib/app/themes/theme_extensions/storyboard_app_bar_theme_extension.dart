@@ -8,11 +8,37 @@ import 'package:storyboard/app/widgets/storyboard_app_bar.dart';
 /// increasing the spacing of the title & header would cause an
 /// overflow.
 final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppBarThemeExtension> {
-  const StoryboardAppBarThemeExtension();
+  /// [TextStyle] of the title in [_TitleHeader].
+  final TextStyle titleTextStyle;
+
+  /// [TextStyle] of the subtitle in [_TitleHeader].
+  final TextStyle subtitleTextStyle;
+
+  const StoryboardAppBarThemeExtension({
+    required this.titleTextStyle,
+    required this.subtitleTextStyle,
+  });
 
   @override
-  StoryboardAppBarThemeExtension copyWith() => const StoryboardAppBarThemeExtension();
+  StoryboardAppBarThemeExtension copyWith({
+    TextStyle? titleTextStyle,
+    TextStyle? subtitleTextStyle,
+  }) {
+    return StoryboardAppBarThemeExtension(
+      titleTextStyle: titleTextStyle ?? this.titleTextStyle,
+      subtitleTextStyle: subtitleTextStyle ?? this.subtitleTextStyle,
+    );
+  }
 
   @override
-  StoryboardAppBarThemeExtension lerp(covariant ThemeExtension<StoryboardAppBarThemeExtension>? other, double t) => this;
+  StoryboardAppBarThemeExtension lerp(
+    covariant ThemeExtension<StoryboardAppBarThemeExtension>? other,
+    double t,
+  ) {
+    if (other is! StoryboardAppBarThemeExtension) return this;
+    return copyWith(
+      titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
+      subtitleTextStyle: TextStyle.lerp(subtitleTextStyle, other.subtitleTextStyle, t),
+    );
+  }
 }

@@ -7,7 +7,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// ined widths/heights & or wrap the [MyoroScrollable] with [Expanded]/[Flexible].
 final class MyoroScrollable extends StatefulWidget {
   /// Type of list.
-  final MyoroScrollableEnum type;
+  final MyoroScrollableEnum scrollableType;
 
   /// Direction of the list.
   final Axis? direction;
@@ -15,36 +15,19 @@ final class MyoroScrollable extends StatefulWidget {
   /// Children inside of the list.
   final List<Widget> children;
 
-  const MyoroScrollable._(this.type, this.direction, this.children);
-
-  factory MyoroScrollable.singleChildScrollView({
-    Axis? direction,
-    required List<Widget> children,
-  }) {
-    return MyoroScrollable._(
-      MyoroScrollableEnum.singleChildScrollView,
-      direction,
-      children,
-    );
-  }
-
-  factory MyoroScrollable.customScrollView({
-    Axis? direction,
-    required List<Widget> children,
-  }) {
-    return MyoroScrollable._(
-      MyoroScrollableEnum.customScrollView,
-      direction,
-      children,
-    );
-  }
+  const MyoroScrollable({
+    super.key,
+    required this.scrollableType,
+    this.direction,
+    required this.children,
+  });
 
   @override
   State<MyoroScrollable> createState() => _MyoroScrollableState();
 }
 
 final class _MyoroScrollableState extends State<MyoroScrollable> {
-  MyoroScrollableEnum get _type => widget.type;
+  MyoroScrollableEnum get _scrollableType => widget.scrollableType;
   Axis? get _direction => widget.direction;
   List<Widget> get _children => widget.children;
 
@@ -58,7 +41,7 @@ final class _MyoroScrollableState extends State<MyoroScrollable> {
 
   @override
   Widget build(BuildContext context) {
-    return _type.widget(
+    return _scrollableType.widget(
       _scrollController,
       _direction ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().direction,
       _children,

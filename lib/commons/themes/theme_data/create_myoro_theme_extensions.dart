@@ -11,7 +11,10 @@ List<ThemeExtension> createMyoroThemeExtensions(
     ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
     ...createDividerThemeExtensions(colorScheme),
+    ...createFormThemeExtensions(),
+    ...createInputThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
+    ...createResolverThemeExtensions(),
     ...createScreenThemeExtensions(),
     ...createScrollableThemeExtensions(),
     ...createSliderThemeExtensions(textTheme),
@@ -19,16 +22,16 @@ List<ThemeExtension> createMyoroThemeExtensions(
 }
 
 List<ThemeExtension> createAppBarThemeExtensions() {
-  return [
-    const MyoroAppBarThemeExtension(
-      contentPadding: EdgeInsets.fromLTRB(10, 10, 5, 10),
+  return const [
+    MyoroAppBarThemeExtension(
+      contentPadding: EdgeInsets.fromLTRB(10, 5, 5, 5),
     ),
   ];
 }
 
 List<ThemeExtension> createBodyThemeExtensions() {
-  return [
-    const MyoroBodyThemeExtension(),
+  return const [
+    MyoroBodyThemeExtension(),
   ];
 }
 
@@ -58,7 +61,7 @@ List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
   return [
     MyoroBasicDividerThemeExtension(
       color: colorScheme.onPrimary,
-      shortValue: 2,
+      shortValue: kBorderLength,
       longValue: double.infinity,
     ),
     MyoroResizeDividerThemeExtension(
@@ -70,9 +73,41 @@ List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
   ];
 }
 
-List<ThemeExtension> createMaterialAppThemeExtensions() {
+List<ThemeExtension> createFormThemeExtensions() {
+  return const [
+    MyoroFormThemeExtension(),
+  ];
+}
+
+List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme) {
   return [
-    const MyoroMaterialAppThemeExtension(),
+    MyoroInputThemeExtension(
+      underlinedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          width: kBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+      ),
+      outlinedBorder: OutlineInputBorder(
+        borderRadius: kBorderRadius,
+        borderSide: BorderSide(
+          width: kBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+      ),
+    ),
+  ];
+}
+
+List<ThemeExtension> createMaterialAppThemeExtensions() {
+  return const [
+    MyoroMaterialAppThemeExtension(),
+  ];
+}
+
+List<ThemeExtension> createResolverThemeExtensions() {
+  return const [
+    MyoroResolverThemeExtension(),
   ];
 }
 

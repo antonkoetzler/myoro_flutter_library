@@ -1,4 +1,4 @@
-package com.example.myoro_flutter_library
+package com.myoro.storyboard
 
 import io.flutter.embedding.android.FlutterActivity
 

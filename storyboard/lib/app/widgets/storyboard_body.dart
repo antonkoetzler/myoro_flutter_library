@@ -76,7 +76,8 @@ final class _WidgetListing extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
-    return MyoroScrollable.singleChildScrollView(
+    return MyoroScrollable(
+      scrollableType: MyoroScrollableEnum.singleChildScrollView,
       children: WidgetListingEnum.values.map(
         (WidgetListingEnum value) {
           return Column(
@@ -132,7 +133,6 @@ final class _WidgetListingCategoryState extends State<_WidgetListingCategory> {
     return Padding(
       padding: themeExtension.widgetListingCategoryPadding,
       child: Column(
-        spacing: 5,
         mainAxisSize: MainAxisSize.min,
         children: [
           _WidgetListingCategoryDropdownButton(
@@ -140,7 +140,8 @@ final class _WidgetListingCategoryState extends State<_WidgetListingCategory> {
             category: _category,
             onPressed: () => setState(() => _showOptions = !_showOptions),
           ),
-          if (_showOptions)
+          if (_showOptions) ...[
+            SizedBox(height: themeExtension.widgetListingCategorySpacing),
             ..._widgetNames.map<Widget>(
               (String widgetName) {
                 return _WidgetListingCategoryWidgetButton(
@@ -149,6 +150,7 @@ final class _WidgetListingCategoryState extends State<_WidgetListingCategory> {
                 );
               },
             ),
+          ],
         ],
       ),
     );

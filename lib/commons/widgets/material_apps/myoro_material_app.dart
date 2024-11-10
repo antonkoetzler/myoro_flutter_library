@@ -26,7 +26,7 @@ final class MyoroMaterialApp extends StatelessWidget {
   final bool includeMyoroThemeExtensions;
 
   /// Entry point for the application.
-  final Widget home;
+  final Scaffold home;
 
   const MyoroMaterialApp({
     super.key,

@@ -16,9 +16,7 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       toggleWidgetOptionsButtonOffset: 5,
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(10),
-      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(
-        alpha: 0.1,
-      ),
+      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
       widgetWrapperBorderRadius: kBorderRadius,
       widgetWrapperBorder: Border.all(
         width: 2,
@@ -37,9 +35,13 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
 
 List<ThemeExtension> _createAppThemeExtension(TextTheme textTheme) {
   return [
-    const StoryboardAppBarThemeExtension(),
+    StoryboardAppBarThemeExtension(
+      titleTextStyle: textTheme.titleMedium!,
+      subtitleTextStyle: textTheme.headlineSmall!,
+    ),
     StoryboardBodyThemeExtension(
       widgetListingCategoryPadding: const EdgeInsets.all(5),
+      widgetListingCategorySpacing: 5,
       widgetListingCategoryDividerPadding: const EdgeInsets.only(
         top: 1,
         left: 10,
