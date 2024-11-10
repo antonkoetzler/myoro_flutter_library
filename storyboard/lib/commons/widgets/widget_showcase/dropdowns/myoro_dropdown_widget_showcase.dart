@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Widget showcase for [MyoroAutocomplete].
-final class MyoroAutocompleteWidgetShowcase extends StatefulWidget {
-  const MyoroAutocompleteWidgetShowcase({super.key});
+/// Widget showcase for [MyoroDropdown].
+final class MyoroDropdownWidgetShowcase extends StatefulWidget {
+  const MyoroDropdownWidgetShowcase({super.key});
 
   @override
-  State<MyoroAutocompleteWidgetShowcase> createState() => _MyoroAutocompleteWidgetShowcaseState();
+  State<MyoroDropdownWidgetShowcase> createState() => _MyoroDropdownWidgetShowcaseState();
 }
 
-final class _MyoroAutocompleteWidgetShowcaseState extends State<MyoroAutocompleteWidgetShowcase> {
+final class _MyoroDropdownWidgetShowcaseState extends State<MyoroDropdownWidgetShowcase> {
   @override
   Widget build(BuildContext context) {
     return const WidgetShowcase(
@@ -25,7 +25,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroAutocomplete();
+    return const MyoroDropdown();
   }
 }
 

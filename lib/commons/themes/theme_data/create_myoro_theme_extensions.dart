@@ -15,6 +15,7 @@ List<ThemeExtension> createMyoroThemeExtensions(
     ...createFormThemeExtensions(),
     ...createInputThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
+    ...createMenuThemeExtensions(),
     ...createResolverThemeExtensions(),
     ...createScreenThemeExtensions(),
     ...createScrollableThemeExtensions(),
@@ -109,6 +110,12 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme) {
 List<ThemeExtension> createMaterialAppThemeExtensions() {
   return const [
     MyoroMaterialAppThemeExtension(),
+  ];
+}
+
+List<ThemeExtension> createMenuThemeExtensions() {
+  return const [
+    MyoroMenuThemeExtension(),
   ];
 }
 

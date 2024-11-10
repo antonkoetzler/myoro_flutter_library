@@ -1,6 +1,7 @@
 # TODO
 
-1. Finish input;
+1. Make the dmenu widget;
+1. Finish input (make inputs have date pickers, dropdowns for suggestions, etc);
 1. Create autocomplete;
 1. Finish all widget showcases;
 1. Implement modals;
