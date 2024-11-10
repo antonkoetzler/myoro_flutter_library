@@ -9,5 +9,5 @@ final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   MyoroAppBarWidgetShowcaseThemeExtension copyWith() => this;
 
   @override
-  MyoroAppBarWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>? other, double t) => this;
+  ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension> lerp(covariant ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>? other, double t) => this;
 }

@@ -34,7 +34,7 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
   }
 
   @override
-  MyoroBasicDividerThemeExtension lerp(
+  ThemeExtension<MyoroBasicDividerThemeExtension> lerp(
     covariant ThemeExtension<MyoroBasicDividerThemeExtension>? other,
     double t,
   ) {

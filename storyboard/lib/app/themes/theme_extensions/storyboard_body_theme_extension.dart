@@ -72,7 +72,7 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   }
 
   @override
-  StoryboardBodyThemeExtension lerp(
+  ThemeExtension<StoryboardBodyThemeExtension> lerp(
     covariant ThemeExtension<StoryboardBodyThemeExtension>? other,
     double t,
   ) {

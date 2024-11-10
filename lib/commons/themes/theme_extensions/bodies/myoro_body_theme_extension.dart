@@ -9,5 +9,10 @@ final class MyoroBodyThemeExtension extends ThemeExtension<MyoroBodyThemeExtensi
   MyoroBodyThemeExtension copyWith() => const MyoroBodyThemeExtension();
 
   @override
-  MyoroBodyThemeExtension lerp(covariant ThemeExtension<MyoroBodyThemeExtension>? other, double t) => this;
+  ThemeExtension<MyoroBodyThemeExtension> lerp(
+    covariant ThemeExtension<MyoroBodyThemeExtension>? other,
+    double t,
+  ) {
+    return this;
+  }
 }

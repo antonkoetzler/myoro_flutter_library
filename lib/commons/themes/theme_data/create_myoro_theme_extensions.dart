@@ -8,6 +8,7 @@ List<ThemeExtension> createMyoroThemeExtensions(
 ) {
   return [
     ...createAppBarThemeExtensions(),
+    ...createAutocompleteThemeExtensions(),
     ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
     ...createDividerThemeExtensions(colorScheme),
@@ -26,6 +27,12 @@ List<ThemeExtension> createAppBarThemeExtensions() {
     MyoroAppBarThemeExtension(
       contentPadding: EdgeInsets.fromLTRB(10, 5, 5, 5),
     ),
+  ];
+}
+
+List<ThemeExtension> createAutocompleteThemeExtensions() {
+  return const [
+    MyoroAutocompleteThemeExtension(),
   ];
 }
 

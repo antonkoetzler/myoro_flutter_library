@@ -20,7 +20,7 @@ final class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExt
   }
 
   @override
-  MyoroAppBarThemeExtension lerp(
+  ThemeExtension<MyoroAppBarThemeExtension> lerp(
     covariant ThemeExtension<MyoroAppBarThemeExtension>? other,
     double t,
   ) {

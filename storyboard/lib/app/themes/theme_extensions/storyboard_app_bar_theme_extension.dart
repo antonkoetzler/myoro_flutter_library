@@ -31,7 +31,7 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
   }
 
   @override
-  StoryboardAppBarThemeExtension lerp(
+  ThemeExtension<StoryboardAppBarThemeExtension> lerp(
     covariant ThemeExtension<StoryboardAppBarThemeExtension>? other,
     double t,
   ) {

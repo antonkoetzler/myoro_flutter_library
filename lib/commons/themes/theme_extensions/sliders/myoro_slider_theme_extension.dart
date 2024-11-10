@@ -32,7 +32,7 @@ final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExt
   }
 
   @override
-  MyoroSliderThemeExtension lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
+  ThemeExtension<MyoroSliderThemeExtension> lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
     if (other is! MyoroSliderThemeExtension) return this;
     return copyWith(
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),

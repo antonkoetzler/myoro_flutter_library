@@ -71,7 +71,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   }
 
   @override
-  WidgetShowcaseThemeExtension lerp(
+  ThemeExtension<WidgetShowcaseThemeExtension> lerp(
     covariant ThemeExtension<WidgetShowcaseThemeExtension>? other,
     double t,
   ) {

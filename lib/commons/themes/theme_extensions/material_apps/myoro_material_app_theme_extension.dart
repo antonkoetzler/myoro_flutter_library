@@ -9,5 +9,10 @@ final class MyoroMaterialAppThemeExtension extends ThemeExtension<MyoroMaterialA
   MyoroMaterialAppThemeExtension copyWith() => const MyoroMaterialAppThemeExtension();
 
   @override
-  MyoroMaterialAppThemeExtension lerp(covariant ThemeExtension<MyoroMaterialAppThemeExtension>? other, double t) => this;
+  ThemeExtension<MyoroMaterialAppThemeExtension> lerp(
+    covariant ThemeExtension<MyoroMaterialAppThemeExtension>? other,
+    double t,
+  ) {
+    return this;
+  }
 }

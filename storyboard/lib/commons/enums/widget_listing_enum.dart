@@ -6,6 +6,9 @@ enum WidgetListingEnum {
   appBars('App bars', [
     myoroAppBarTitle,
   ]),
+  autocompletes('Autocompletes', [
+    myoroAutocompleteTitle,
+  ]),
   bodies('Bodies', [
     myoroBodyTitle,
   ]),
@@ -45,6 +48,7 @@ enum WidgetListingEnum {
   const WidgetListingEnum(this.widgetCategory, this.widgetNames);
 
   static const myoroAppBarTitle = 'MyoroAppBar';
+  static const myoroAutocompleteTitle = 'MyoroAutocomplete';
   static const myoroBodyTitle = 'MyoroBody';
   static const myoroHoverButtonTitle = 'MyoroHoverButton';
   static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
@@ -62,6 +66,7 @@ enum WidgetListingEnum {
   static Widget widgetViewerWidget(String widgetName) {
     return switch (widgetName) {
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
+      myoroAutocompleteTitle => const MyoroAutocompleteWidgetShowcase(),
       myoroBodyTitle => throw UnimplementedError(),
       myoroHoverButtonTitle => throw UnimplementedError(),
       myoroIconTextHoverButtonTitle => throw UnimplementedError(),
@@ -79,11 +84,14 @@ enum WidgetListingEnum {
   }
 
   bool get isAppBars => this == appBars;
+  bool get isAutocompletes => this == autocompletes;
   bool get isBodies => this == bodies;
   bool get isButtons => this == buttons;
   bool get isDividers => this == dividers;
   bool get isForms => this == forms;
+  bool get isInputs => this == inputs;
   bool get isMaterialApps => this == materialApps;
+  bool get isResolvers => this == resolvers;
   bool get isScreens => this == screens;
   bool get isScrollables => this == scrollables;
   bool get isSliders => this == sliders;
