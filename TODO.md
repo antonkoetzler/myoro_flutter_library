@@ -1,5 +1,6 @@
 # TODO
 
+1. Implement shared prefernes
 1. Make the dmenu widget;
 1. Finish input (make inputs have date pickers, dropdowns for suggestions, etc);
 1. Create autocomplete;
