@@ -29,6 +29,9 @@ enum WidgetListingEnum {
   materialApps('Material apps', [
     myoroMaterialAppTitle,
   ]),
+  menus('Menus', [
+    myoroMenuTitle,
+  ]),
   resolvers('Resolvers', [
     myoroResolverTitle,
   ]),
@@ -58,6 +61,7 @@ enum WidgetListingEnum {
   static const myoroInputTitle = 'MyoroInput';
   static const myoroResolverTitle = 'MyoroResolver';
   static const myoroMaterialAppTitle = 'MyoroMaterialApp';
+  static const myoroMenuTitle = 'MyoroMenu';
   static const myoroScreenTitle = 'MyoroScreen';
   static const myoroScrollableTitle = 'MyotoScrollable';
   static const myoroSliderTitle = 'MyoroSlider';
@@ -75,6 +79,7 @@ enum WidgetListingEnum {
       myoroFormTitle => throw UnimplementedError(),
       myoroInputTitle => const MyoroInputWidgetShowcase(),
       myoroMaterialAppTitle => throw UnimplementedError(),
+      myoroMenuTitle => const MyoroMenuWidgetShowcase(),
       myoroResolverTitle => throw UnimplementedError(),
       myoroScreenTitle => throw UnimplementedError(),
       myoroScrollableTitle => throw UnimplementedError(),
@@ -91,6 +96,7 @@ enum WidgetListingEnum {
   bool get isForms => this == forms;
   bool get isInputs => this == inputs;
   bool get isMaterialApps => this == materialApps;
+  bool get isMyoroMenu => this == menus;
   bool get isResolvers => this == resolvers;
   bool get isScreens => this == screens;
   bool get isScrollables => this == scrollables;

@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the [List<ThemeExtension>] for [createMyoroThemeData]'s [ThemeData].
-List<ThemeExtension> createMyoroThemeExtensions(
-  ColorScheme colorScheme,
-  TextTheme textTheme,
-) {
+List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     ...createAppBarThemeExtensions(),
     ...createAutocompleteThemeExtensions(),
@@ -15,7 +12,7 @@ List<ThemeExtension> createMyoroThemeExtensions(
     ...createFormThemeExtensions(),
     ...createInputThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
-    ...createMenuThemeExtensions(),
+    ...createMenuThemeExtensions(colorScheme, textTheme),
     ...createResolverThemeExtensions(),
     ...createScreenThemeExtensions(),
     ...createScrollableThemeExtensions(),
@@ -48,8 +45,9 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
     MyoroHoverButtonThemeExtension(
       contentColor: colorScheme.onPrimary,
       backgroundColor: Colors.transparent,
-      borderRadius: kBorderRadius,
+      borderRadius: kMyoroBorderRadius,
       bordered: false,
+      tooltipWaitDuration: kMyoroTooltipWaitDuration,
     ),
     MyoroIconTextHoverButtonThemeExtension(
       backgroundColor: colorScheme.primary,
@@ -69,14 +67,14 @@ List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
   return [
     MyoroBasicDividerThemeExtension(
       color: colorScheme.onPrimary,
-      shortValue: kBorderLength,
+      shortValue: kMyoroBorderLength,
       longValue: double.infinity,
     ),
     MyoroResizeDividerThemeExtension(
       secondary: colorScheme.onPrimary,
       resizeButtonShortValue: 10,
       resizeButtonLongValue: 30,
-      resizeButtonBorderRadius: kBorderRadius,
+      resizeButtonBorderRadius: kMyoroBorderRadius,
     ),
   ];
 }
@@ -92,14 +90,14 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme) {
     MyoroInputThemeExtension(
       underlinedBorder: UnderlineInputBorder(
         borderSide: BorderSide(
-          width: kBorderLength,
+          width: kMyoroBorderLength,
           color: colorScheme.onPrimary,
         ),
       ),
       outlinedBorder: OutlineInputBorder(
-        borderRadius: kBorderRadius,
+        borderRadius: kMyoroBorderRadius,
         borderSide: BorderSide(
-          width: kBorderLength,
+          width: kMyoroBorderLength,
           color: colorScheme.onPrimary,
         ),
       ),
@@ -113,9 +111,26 @@ List<ThemeExtension> createMaterialAppThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> createMenuThemeExtensions() {
-  return const [
-    MyoroMenuThemeExtension(),
+List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  const radius = Radius.circular(kMyoroBorderRadiusValue);
+  final borderSide = BorderSide(width: 2, color: colorScheme.onPrimary);
+
+  return [
+    MyoroMenuThemeExtension(
+      backgroundColor: colorScheme.primary,
+      borderRadius: const BorderRadius.only(
+        bottomLeft: radius,
+        bottomRight: radius,
+      ),
+      border: Border(
+        bottom: borderSide,
+        left: borderSide,
+        right: borderSide,
+      ),
+      maxHeight: kMyoroMenuMaxSize.height,
+      maxWidth: kMyoroMenuMaxSize.width,
+      emptyMenuDialogTextStyle: textTheme.bodyMedium!,
+    ),
   ];
 }
 

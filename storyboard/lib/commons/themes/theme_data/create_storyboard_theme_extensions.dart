@@ -12,12 +12,10 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
 List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
   return [
     WidgetShowcaseThemeExtension(
-      toggleWidgetOptionsButtonIcon: Icons.menu,
-      toggleWidgetOptionsButtonOffset: 5,
       widgetWrapperPadding: const EdgeInsets.all(20),
-      widgetWrapperContentPadding: const EdgeInsets.all(10),
+      widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
-      widgetWrapperBorderRadius: kBorderRadius,
+      widgetWrapperBorderRadius: kMyoroBorderRadius,
       widgetWrapperBorder: Border.all(
         width: 2,
         color: MyoroColorTheme.attention,
@@ -38,6 +36,9 @@ List<ThemeExtension> _createAppThemeExtension(TextTheme textTheme) {
     StoryboardAppBarThemeExtension(
       titleTextStyle: textTheme.titleMedium!,
       subtitleTextStyle: textTheme.headlineSmall!,
+      showWidgetOptionsButtonIcon: Icons.remove_red_eye,
+      themeButtonIcon: Icons.sunny,
+      buttonSpacing: 5,
     ),
     StoryboardBodyThemeExtension(
       widgetListingCategoryPadding: const EdgeInsets.all(5),

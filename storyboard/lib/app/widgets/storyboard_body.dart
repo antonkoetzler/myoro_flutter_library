@@ -84,10 +84,12 @@ final class _WidgetListing extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               _WidgetListingCategory(
-                category: value.widgetCategory,
-                widgetNames: value.widgetNames,
-                onPressWidget: (String widgetName) => widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
-              ),
+                  category: value.widgetCategory,
+                  widgetNames: value.widgetNames,
+                  onPressWidget: (String widgetName) {
+                    context.resolveBloc<WidgetShowcaseBloc>().add(const EnableWidgetShowcaseDisplayEvent());
+                    widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName);
+                  }),
               if (value != WidgetListingEnum.values.last)
                 MyoroBasicDivider(
                   Axis.horizontal,

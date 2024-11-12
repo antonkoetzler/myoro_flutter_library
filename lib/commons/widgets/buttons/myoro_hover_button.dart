@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
-typedef MyoroHoverButtonBuilder = Function(bool hovered);
+typedef MyoroHoverButtonBuilder = Widget Function(bool hovered, Color contentColor, Color backgroundColor);
 
 /// Hover button of the design system.
 ///
@@ -24,8 +24,11 @@ final class MyoroHoverButton extends StatefulWidget {
   /// Border radius of the background.
   final BorderRadius? borderRadius;
 
+  /// Tooltip message of the button.
+  final String? tooltip;
+
   /// Function executed when the button is clicked.
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   /// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
   final MyoroHoverButtonBuilder builder;
@@ -37,7 +40,8 @@ final class MyoroHoverButton extends StatefulWidget {
     this.isHovered,
     this.bordered,
     this.borderRadius,
-    required this.onPressed,
+    this.tooltip,
+    this.onPressed,
     required this.builder,
   });
 
@@ -51,7 +55,8 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
   bool? get _isHovered => widget.isHovered;
   bool? get _bordered => widget.bordered;
   BorderRadius? get _borderRadius => widget.borderRadius;
-  VoidCallback get _onPressed => widget.onPressed;
+  String? get _tooltip => widget.tooltip;
+  VoidCallback? get _onPressed => widget.onPressed;
   MyoroHoverButtonBuilder get _builder => widget.builder;
 
   final _hoverNotifier = ValueNotifier<bool>(false);
@@ -64,41 +69,55 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      focusColor: MyoroColorTheme.transparent,
-      hoverColor: MyoroColorTheme.transparent,
-      splashColor: MyoroColorTheme.transparent,
-      onTap: _onPressed,
-      onHover: (hovered) => _hoverNotifier.value = hovered,
-      child: ValueListenableBuilder(
-        valueListenable: _hoverNotifier,
-        builder: (_, bool hovered, __) {
-          final themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
-          final contentColor = _contentColor ?? themeExtension.contentColor;
-          final backgroundColor = _backgroundColor ?? themeExtension.backgroundColor;
+    final themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
-          // So we may add a slight tint on hover when [_isHovered] is [true].
-          late final Color correctedBackgroundColor;
-          if (_isHovered == true) {
-            correctedBackgroundColor = hovered ? contentColor.withAlpha(225) : contentColor;
-          } else {
-            correctedBackgroundColor = hovered ? contentColor : backgroundColor;
-          }
-
-          return Container(
-            decoration: BoxDecoration(
-              border: (_bordered ?? themeExtension.bordered)
-                  ? Border.all(
-                      width: 2,
-                      color: hovered ? backgroundColor : contentColor,
-                    )
-                  : null,
-              borderRadius: _borderRadius ?? themeExtension.borderRadius,
-              color: correctedBackgroundColor,
-            ),
-            child: _builder(hovered),
-          );
+    return Tooltip(
+      message: _tooltip ?? '',
+      waitDuration: themeExtension.tooltipWaitDuration,
+      child: InkWell(
+        focusColor: MyoroColorTheme.transparent,
+        hoverColor: MyoroColorTheme.transparent,
+        splashColor: MyoroColorTheme.transparent,
+        highlightColor: MyoroColorTheme.transparent,
+        onTap: () {
+          if (_onPressed == null) return;
+          // Visual feedback that the button was clicked.
+          _hoverNotifier.value = false;
+          _onPressed?.call();
         },
+        onHover: (bool hovered) {
+          if (_onPressed == null) return;
+          _hoverNotifier.value = hovered;
+        },
+        child: ValueListenableBuilder(
+          valueListenable: _hoverNotifier,
+          builder: (_, bool hovered, __) {
+            final contentColor = _contentColor ?? themeExtension.contentColor;
+            final backgroundColor = _backgroundColor ?? themeExtension.backgroundColor;
+
+            // So we may add a slight tint on hover when [_isHovered] is [true].
+            late final Color correctedBackgroundColor;
+            if (_isHovered == true) {
+              correctedBackgroundColor = hovered ? contentColor.withAlpha(225) : contentColor;
+            } else {
+              correctedBackgroundColor = hovered ? contentColor : backgroundColor;
+            }
+
+            return Container(
+              decoration: BoxDecoration(
+                border: (_bordered ?? themeExtension.bordered)
+                    ? Border.all(
+                        width: 2,
+                        color: hovered ? backgroundColor : contentColor,
+                      )
+                    : null,
+                borderRadius: _borderRadius ?? themeExtension.borderRadius,
+                color: correctedBackgroundColor,
+              ),
+              child: _builder(hovered, contentColor, backgroundColor),
+            );
+          },
+        ),
       ),
     );
   }

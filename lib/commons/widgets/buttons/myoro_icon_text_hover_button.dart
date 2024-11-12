@@ -36,11 +36,14 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   /// If the button will already be hovered (there will be no hover effect).
   final bool? isHovered;
 
-  /// Function executed when the button is clicked.
-  final VoidCallback onPressed;
-
   /// [MainAxisAlignment] of the [Row] holding the items.
   final MainAxisAlignment? mainAxisAlignment;
+
+  /// Tooltip message of the button.
+  final String? tooltip;
+
+  /// Function executed when the button is clicked.
+  final VoidCallback? onPressed;
 
   const MyoroIconTextHoverButton({
     super.key,
@@ -55,8 +58,9 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
     this.padding,
     this.backgroundColor,
     this.isHovered,
-    required this.onPressed,
     this.mainAxisAlignment,
+    this.tooltip,
+    this.onPressed,
   }) : assert(
           !(icon == null && text == null),
           '[MyoroIconTextHoverButton]: An [icon] or [text] must be provided.',
@@ -72,8 +76,9 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
       isHovered: isHovered,
       bordered: bordered,
       borderRadius: borderRadius,
+      tooltip: tooltip,
       onPressed: onPressed,
-      builder: (bool hovered) {
+      builder: (bool hovered, _, __) {
         final actualContentColor =
             (hovered || isHovered == true) ? (backgroundColor ?? themeExtension.backgroundColor) : (contentColor ?? themeExtension.contentColor);
 

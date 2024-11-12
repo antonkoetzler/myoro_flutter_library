@@ -20,6 +20,7 @@ ThemeData createMyoroThemeData(
     colorScheme: colorScheme,
     textTheme: textTheme,
     sliderTheme: createMyoroSliderThemeData(isDarkMode, colorScheme),
+    tooltipTheme: createMyoroTooltipThemeData(colorScheme, textTheme),
     extensions: [
       if (includeMyoroThemeExtensions) ...createMyoroThemeExtensions(colorScheme, textTheme),
       ...?themeExtensionsBuilder?.call(colorScheme, textTheme),

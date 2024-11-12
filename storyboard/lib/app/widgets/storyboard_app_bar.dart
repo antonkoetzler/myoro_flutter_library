@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -10,13 +11,36 @@ final class StoryboardAppBar extends StatelessWidget implements PreferredSizeWid
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<StoryboardAppBarThemeExtension>();
+
     return MyoroAppBar(
       bordered: true,
       child: Row(
         children: [
           const _TitleAndHeader(),
           const Spacer(),
-          MyoroIconTextHoverButton(icon: Icons.sunny, onPressed: () {}),
+          Wrap(
+            spacing: themeExtension.buttonSpacing,
+            children: [
+              BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
+                builder: (_, WidgetShowcaseState state) {
+                  if (!state.displayingWidgetShowcase) return const SizedBox.shrink();
+
+                  return MyoroIconTextHoverButton(
+                    icon: themeExtension.showWidgetOptionsButtonIcon,
+                    tooltip: 'Show widget showcase options',
+                    isHovered: state.displayingWidgetOptions,
+                    onPressed: () => context.resolveBloc<WidgetShowcaseBloc>().add(const ToggleWidgetOptionsDisplayEvent()),
+                  );
+                },
+              ),
+              MyoroIconTextHoverButton(
+                icon: themeExtension.themeButtonIcon,
+                tooltip: 'Toggle theme', // TODO
+                onPressed: () {},
+              ),
+            ],
+          ),
         ],
       ),
     );

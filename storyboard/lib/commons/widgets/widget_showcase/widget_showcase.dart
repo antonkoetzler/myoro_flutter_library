@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -28,7 +29,6 @@ class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget get _widget => widget.widget;
   Widget get _widgetOptions => widget.widgetOptions;
 
-  bool _showWidgetOptions = true;
   late final _widgetOptionsWidthNotifier = ValueNotifier<double>(200);
 
   void _updateWidthOptionsWidthNotifier(DragUpdateDetails details) {
@@ -48,23 +48,26 @@ class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: _WidgetWrapper(
-            _widget,
-            _showWidgetOptions,
-            onPressToggleWidgetOptionsButton: () => setState(() => _showWidgetOptions = !_showWidgetOptions),
-          ),
+        Expanded(child: _WidgetWrapper(_widget)),
+        BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
+          builder: (_, WidgetShowcaseState state) {
+            if (!state.displayingWidgetOptions) return const SizedBox.shrink();
+
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                MyoroResizeDivider(
+                  Axis.vertical,
+                  dragCallback: _updateWidthOptionsWidthNotifier,
+                ),
+                _WidgetOptions(
+                  _widgetOptions,
+                  _widgetOptionsWidthNotifier,
+                ),
+              ],
+            );
+          },
         ),
-        if (_showWidgetOptions) ...[
-          MyoroResizeDivider(
-            Axis.vertical,
-            dragCallback: _updateWidthOptionsWidthNotifier,
-          ),
-          _WidgetOptions(
-            _widgetOptions,
-            _widgetOptionsWidthNotifier,
-          ),
-        ],
       ],
     );
   }
@@ -72,14 +75,8 @@ class _WidgetShowcaseState extends State<WidgetShowcase> {
 
 final class _WidgetWrapper extends StatelessWidget {
   final Widget widget;
-  final bool showWidgetOptions;
-  final VoidCallback onPressToggleWidgetOptionsButton;
 
-  const _WidgetWrapper(
-    this.widget,
-    this.showWidgetOptions, {
-    required this.onPressToggleWidgetOptionsButton,
-  });
+  const _WidgetWrapper(this.widget);
 
   @override
   Widget build(BuildContext context) {
@@ -88,23 +85,15 @@ final class _WidgetWrapper extends StatelessWidget {
     return Padding(
       padding: themeExtension.widgetWrapperPadding,
       child: Container(
+        height: double.infinity,
         decoration: BoxDecoration(
           color: themeExtension.widgetWrapperBackgroundColor,
           borderRadius: themeExtension.widgetWrapperBorderRadius,
           border: themeExtension.widgetWrapperBorder,
         ),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Padding(
-              padding: themeExtension.widgetWrapperContentPadding,
-              child: widget,
-            ),
-            _ToggleWidgetOptionsButton(
-              showWidgetOptions,
-              onPressed: onPressToggleWidgetOptionsButton,
-            ),
-          ],
+        child: Padding(
+          padding: themeExtension.widgetWrapperContentPadding,
+          child: widget,
         ),
       ),
     );
@@ -138,32 +127,6 @@ final class _WidgetOptions extends StatelessWidget {
           child: widgetOptions,
         );
       },
-    );
-  }
-}
-
-final class _ToggleWidgetOptionsButton extends StatelessWidget {
-  final bool showWidgetOptions;
-  final VoidCallback onPressed;
-
-  const _ToggleWidgetOptionsButton(
-    this.showWidgetOptions, {
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-    final offset = themeExtension.toggleWidgetOptionsButtonOffset;
-
-    return Positioned(
-      bottom: offset,
-      right: offset,
-      child: MyoroIconTextHoverButton(
-        icon: themeExtension.toggleWidgetOptionsButtonIcon,
-        isHovered: showWidgetOptions,
-        onPressed: onPressed,
-      ),
     );
   }
 }

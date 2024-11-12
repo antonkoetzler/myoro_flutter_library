@@ -14,7 +14,7 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
   /// Height of the resize button. 30 by default.
   final double resizeButtonLongValue;
 
-  /// Border radius of the resize button. [kBorderRadius] by default.
+  /// Border radius of the resize button. [kMyoroBorderRadius] by default.
   final BorderRadius resizeButtonBorderRadius;
 
   const MyoroResizeDividerThemeExtension({
