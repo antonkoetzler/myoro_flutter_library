@@ -35,7 +35,7 @@ final class MyoroInput extends StatefulWidget {
     required MyoroInputConfiguration configuration,
   }) {
     final controllerProvided = configuration.controller != null;
-    final text = 0.toStringAsFixed(decimalPlaces ?? 0);
+    final text = (min ?? 0).toStringAsFixed(decimalPlaces ?? 0);
 
     if (controllerProvided && configuration.controller!.text.isEmpty == true) {
       configuration.controller!.text = text;

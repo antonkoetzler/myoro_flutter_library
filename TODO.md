@@ -1,6 +1,7 @@
 # TODO
 
 1. Implement shared preferences;
+1. Implement checkbox component;
 1. Make the dmenu widget;
 1. Finish input (make inputs have date pickers, dropdowns for suggestions, etc);
 1. Create autocomplete;

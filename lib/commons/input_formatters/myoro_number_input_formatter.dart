@@ -19,12 +19,13 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
 
     // Input empty case
     if (newValue.text.isEmpty) {
-      return TextEditingValue(text: 0.toStringAsFixed(decimalPlaces ?? 0));
+      return TextEditingValue(text: (min ?? 0).toStringAsFixed(decimalPlaces ?? 0));
     }
 
     double result = 0;
     final bool cursorOnLastCharacter = newValue.selection.baseOffset == newValue.text.length;
     final bool decimalPlacesNotNull = decimalPlaces != null;
+    final double newValueAsDouble = double.parse(newValue.text);
 
     // Character added case.
     if (newValue.text.length > oldValue.text.length) {
@@ -43,15 +44,18 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
         if (cursorOnLastCharacter) {
           if (decimalPlacesNotNull) {
             // Multiplying by 10 to shift everything to the left, then adding the new number.
-            result = double.parse(newValue.text) * 10;
+            final temp = newValueAsDouble * 10;
+
+            // Checking that the number isn't greater than the max.
+            result = _isGreaterThenMax(temp) ? max! : temp;
           } else {
             // If it's only integers, we don't have to do anything.
-            result = double.parse(newValue.text);
+            result = _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble;
           }
         }
         // Case where the cursor is not at the last index.
         else {
-          result = double.parse(newValue.text);
+          result = _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble;
         }
       }
     }
@@ -63,15 +67,16 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
       if (cursorOnLastCharacter) {
         if (decimalPlacesNotNull) {
           // Dividing by 10 to shift everything to the right.
-          result = double.parse(newValue.text) / 10;
+          final double temp = newValueAsDouble / 10;
+          result = _isLessThenMin(temp) ? (min ?? 0) : temp;
         } else {
           // If it's only integers, we don't have to do anything.
-          result = double.parse(newValue.text);
+          result = _isLessThenMin(newValueAsDouble) ? (min ?? 0) : newValueAsDouble;
         }
       }
       // Case where the cursor is not at the last index.
       else {
-        result = double.parse(newValue.text);
+        result = newValueAsDouble;
       }
     }
 
@@ -79,5 +84,13 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
     return TextEditingValue(
       text: formattedResult,
     );
+  }
+
+  bool _isGreaterThenMax(double number) {
+    return max != null && number > max!;
+  }
+
+  bool _isLessThenMin(double number) {
+    return (min ?? 0) > number;
   }
 }

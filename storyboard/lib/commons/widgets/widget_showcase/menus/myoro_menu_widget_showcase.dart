@@ -1,47 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase for [MyoroMenu].
-final class MyoroMenuWidgetShowcase extends StatefulWidget {
+final class MyoroMenuWidgetShowcase extends StatelessWidget {
   const MyoroMenuWidgetShowcase({super.key});
 
   @override
-  State<MyoroMenuWidgetShowcase> createState() => _MyoroMenuWidgetShowcaseState();
-}
-
-final class _MyoroMenuWidgetShowcaseState extends State<MyoroMenuWidgetShowcase> {
-  // TODO: maxHeight, maxWidth, iconSize, textStyle, textAlign
-  final _itemCountNotifier = ValueNotifier<int>(0);
-
-  @override
-  void dispose() {
-    _itemCountNotifier.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return WidgetShowcase(
-      widget: _Widget(_itemCountNotifier),
-      widgetOptions: _WidgetOptions(_itemCountNotifier),
+    return BlocProvider(
+      create: (_) => MyoroMenuWidgetShowcaseBloc(),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: _WidgetOptions(),
+      ),
     );
   }
 }
 
 final class _Widget extends StatelessWidget {
-  final ValueNotifier<int> itemCountNotifier;
-
-  const _Widget(this.itemCountNotifier);
+  const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: itemCountNotifier,
-      builder: (_, int itemCount, __) {
+    return BlocBuilder<MyoroMenuWidgetShowcaseBloc, MyoroMenuWidgetShowcaseState>(
+      builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu(
+          maxHeight: state.maxHeight,
           items: List.generate(
-            itemCount,
+            state.itemCount,
             (_) => MyoroMenuItem.fake(),
           ),
         );
@@ -51,20 +39,30 @@ final class _Widget extends StatelessWidget {
 }
 
 final class _WidgetOptions extends StatelessWidget {
-  final ValueNotifier<int> itemCountNotifier;
-
-  const _WidgetOptions(this.itemCountNotifier);
+  const _WidgetOptions();
 
   @override
   Widget build(BuildContext context) {
-    return _ItemCountOption(itemCountNotifier);
+    return const Column(
+      children: [
+        _MaxHeightOption(),
+        _ItemCountOption(),
+      ],
+    );
+  }
+}
+
+final class _MaxHeightOption extends StatelessWidget {
+  const _MaxHeightOption();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('TODO: Need a checkbox component FML');
   }
 }
 
 final class _ItemCountOption extends StatelessWidget {
-  final ValueNotifier<int> itemCountNotifier;
-
-  const _ItemCountOption(this.itemCountNotifier);
+  const _ItemCountOption();
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +71,13 @@ final class _ItemCountOption extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         inputStyle: MyoroInputStyleEnum.outlined,
         label: '# of items',
-        onChanged: (String text) => itemCountNotifier.value = text.isEmpty ? 0 : int.parse(text),
+        onChanged: (String text) {
+          context.resolveBloc<MyoroMenuWidgetShowcaseBloc>().add(
+                SetItemCountEvent(
+                  int.parse(text),
+                ),
+              );
+        },
       ),
     );
   }
