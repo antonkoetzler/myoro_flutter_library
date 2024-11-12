@@ -2,15 +2,15 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Enum with the different types of inputs provided by [MyoroInput].
-enum MyoroInputTypeEnum {
+/// Enum with the different styles of inputs provided by [MyoroInput].
+enum MyoroInputStyleEnum {
   /// Underlined input.
   underlined,
 
   /// Outlined input.
   outlined;
 
-  factory MyoroInputTypeEnum.fake() {
+  factory MyoroInputStyleEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
 

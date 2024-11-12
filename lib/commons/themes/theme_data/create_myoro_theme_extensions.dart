@@ -10,7 +10,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createButtonThemeExtensions(colorScheme, textTheme),
     ...createDividerThemeExtensions(colorScheme),
     ...createFormThemeExtensions(),
-    ...createInputThemeExtensions(colorScheme),
+    ...createInputThemeExtensions(colorScheme, textTheme),
     ...createMaterialAppThemeExtensions(),
     ...createMenuThemeExtensions(colorScheme, textTheme),
     ...createResolverThemeExtensions(),
@@ -85,7 +85,7 @@ List<ThemeExtension> createFormThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme) {
+List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroInputThemeExtension(
       underlinedBorder: UnderlineInputBorder(
@@ -95,12 +95,18 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme) {
         ),
       ),
       outlinedBorder: OutlineInputBorder(
-        borderRadius: kMyoroBorderRadius,
+        borderRadius: kMyoroInputBorderRadius,
         borderSide: BorderSide(
           width: kMyoroBorderLength,
           color: colorScheme.onPrimary,
         ),
       ),
+      contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
+      isDense: true,
+      cursorHeight: 20,
+      inputTextStyle: textTheme.bodyMedium!,
+      labelTextStyle: textTheme.headlineSmall!,
+      labelSpacing: 5,
     ),
   ];
 }
@@ -160,6 +166,7 @@ List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
       labelTextStyle: textTheme.titleSmall!.copyWith(fontSize: MyoroFontSizeEnum.tiny.size),
       sliderPadding: EdgeInsets.zero,
       labelSliderSpacing: 5,
+      footerLabelTextStyle: textTheme.bodySmall!.copyWith(height: 0.5),
     ),
   ];
 }

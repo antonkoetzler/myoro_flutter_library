@@ -11,6 +11,7 @@ final class MyoroMenuWidgetShowcase extends StatefulWidget {
 }
 
 final class _MyoroMenuWidgetShowcaseState extends State<MyoroMenuWidgetShowcase> {
+  // TODO: maxHeight, maxWidth, iconSize, textStyle, textAlign
   final _itemCountNotifier = ValueNotifier<int>(0);
 
   @override
@@ -36,15 +37,16 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: itemCountNotifier,
-        builder: (_, int itemCount, __) {
-          return MyoroMenu(
-            items: List.generate(
-              itemCount,
-              (_) => MyoroMenuItem.fake(),
-            ),
-          );
-        });
+      valueListenable: itemCountNotifier,
+      builder: (_, int itemCount, __) {
+        return MyoroMenu(
+          items: List.generate(
+            itemCount,
+            (_) => MyoroMenuItem.fake(),
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -66,26 +68,13 @@ final class _ItemCountOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>();
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        MyoroSlider(
-          initialValue: themeExtension.itemCountOptionInitialValue.toDouble(),
-          maxValue: themeExtension.itemCountOptionMaxValue.toDouble(),
-          onChanged: (double itemCount) => itemCountNotifier.value = itemCount.toInt(),
-        ),
-        ValueListenableBuilder(
-          valueListenable: itemCountNotifier,
-          builder: (_, int itemCount, __) {
-            return Text(
-              'Items loaded: $itemCount.',
-              style: themeExtension.itemCountOptionTextStyle.copyWith(height: 0.5),
-            );
-          },
-        ),
-      ],
+    return MyoroInput.number(
+      max: 100,
+      configuration: MyoroInputConfiguration(
+        inputStyle: MyoroInputStyleEnum.outlined,
+        label: '# of items',
+        onChanged: (String text) => itemCountNotifier.value = text.isEmpty ? 0 : int.parse(text),
+      ),
     );
   }
 }

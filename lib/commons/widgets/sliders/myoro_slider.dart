@@ -4,6 +4,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Function executed when the value of the slider changes.
 typedef MyoroSliderOnChanged = Function(double value);
 
+/// Builder that displays some text under the slider.
+typedef MyoroSliderFooterLabelBuilder = String Function(double value);
+
 /// A horizontal slider.
 final class MyoroSlider extends StatefulWidget {
   /// Label of the slider.
@@ -21,6 +24,9 @@ final class MyoroSlider extends StatefulWidget {
   /// Maximum value of the slider.
   final double? maxValue;
 
+  /// Builder to display some text under the slider.
+  final MyoroSliderFooterLabelBuilder? footerLabelBuilder;
+
   /// Function executed whenever the value of the slider changes.
   final MyoroSliderOnChanged onChanged;
 
@@ -31,6 +37,7 @@ final class MyoroSlider extends StatefulWidget {
     this.width,
     this.initialValue,
     this.maxValue,
+    this.footerLabelBuilder,
     required this.onChanged,
   });
 
@@ -44,6 +51,7 @@ class _MyoroSliderState extends State<MyoroSlider> {
   double? get _width => widget.width;
   double get _initialValue => widget.initialValue ?? 0.5;
   double get _maxValue => widget.maxValue ?? 1;
+  MyoroSliderFooterLabelBuilder? get _footerLabelBuilder => widget.footerLabelBuilder;
   MyoroSliderOnChanged get _onChanged => widget.onChanged;
 
   late double _sliderValue;
@@ -82,6 +90,13 @@ class _MyoroSliderState extends State<MyoroSlider> {
               },
             ),
           ),
+          if (_footerLabelBuilder != null)
+            Center(
+              child: Text(
+                _footerLabelBuilder!.call(_sliderValue),
+                style: themeExtension.footerLabelTextStyle,
+              ),
+            ),
         ],
       ),
     );

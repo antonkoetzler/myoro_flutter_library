@@ -1,27 +1,65 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroInput].
 final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> {
-  /// Border for [MyoroInputTypeEnum.underlined].
+  /// Border for [MyoroInputStyleEnum.underlined].
   final InputBorder underlinedBorder;
 
-  /// Border for [MyoroInputTypeEnum.outlined].
+  /// Border for [MyoroInputStyleEnum.outlined].
   final InputBorder outlinedBorder;
+
+  /// Padding of the text in the input.
+  final EdgeInsets contentPadding;
+
+  /// If [TextFormField.decoration.isDense] is enabled.
+  final bool isDense;
+
+  /// Height of the selection cursor.
+  final double cursorHeight;
+
+  /// Text style of the input.
+  final TextStyle inputTextStyle;
+
+  /// Text style of [_Label].
+  final TextStyle labelTextStyle;
+
+  /// Spacing between the label & the input.
+  final double labelSpacing;
 
   const MyoroInputThemeExtension({
     required this.underlinedBorder,
     required this.outlinedBorder,
+    required this.contentPadding,
+    required this.isDense,
+    required this.cursorHeight,
+    required this.inputTextStyle,
+    required this.labelTextStyle,
+    required this.labelSpacing,
   });
 
   @override
   MyoroInputThemeExtension copyWith({
     InputBorder? underlinedBorder,
     InputBorder? outlinedBorder,
+    EdgeInsets? contentPadding,
+    bool? isDense,
+    double? cursorHeight,
+    TextStyle? inputTextStyle,
+    TextStyle? labelTextStyle,
+    double? labelSpacing,
   }) {
     return MyoroInputThemeExtension(
       underlinedBorder: underlinedBorder ?? this.underlinedBorder,
       outlinedBorder: outlinedBorder ?? this.outlinedBorder,
+      contentPadding: contentPadding ?? this.contentPadding,
+      isDense: isDense ?? this.isDense,
+      cursorHeight: cursorHeight ?? this.cursorHeight,
+      inputTextStyle: inputTextStyle ?? this.inputTextStyle,
+      labelTextStyle: labelTextStyle ?? this.labelTextStyle,
+      labelSpacing: labelSpacing ?? this.labelSpacing,
     );
   }
 
@@ -34,6 +72,12 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     return copyWith(
       underlinedBorder: MyoroLerpHelper.lerp(underlinedBorder, other.underlinedBorder, t),
       outlinedBorder: MyoroLerpHelper.lerp(outlinedBorder, other.outlinedBorder, t),
+      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
+      isDense: MyoroLerpHelper.lerp(isDense, other.isDense, t),
+      cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
+      inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
+      labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
+      labelSpacing: lerpDouble(labelSpacing, other.labelSpacing, t),
     );
   }
 }

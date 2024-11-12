@@ -11,21 +11,21 @@ final class MyoroInputWidgetShowcase extends StatefulWidget {
 }
 
 final class _MyoroInputWidgetShowcaseState extends State<MyoroInputWidgetShowcase> {
-  var _inputType = MyoroInputTypeEnum.outlined;
+  var _inputType = MyoroInputStyleEnum.outlined;
 
   @override
   Widget build(BuildContext context) {
     return WidgetShowcase(
       widget: _Widget(_inputType),
       widgetOptions: _WidgetOptions(
-        onChangeInputType: (MyoroInputTypeEnum inputType) => _inputType = inputType,
+        onChangeInputType: (MyoroInputStyleEnum inputType) => _inputType = inputType,
       ),
     );
   }
 }
 
 final class _Widget extends StatelessWidget {
-  final MyoroInputTypeEnum inputType;
+  final MyoroInputStyleEnum inputType;
 
   const _Widget(this.inputType);
 
@@ -36,7 +36,7 @@ final class _Widget extends StatelessWidget {
 }
 
 final class _WidgetOptions extends StatelessWidget {
-  final Function(MyoroInputTypeEnum inputType) onChangeInputType;
+  final Function(MyoroInputStyleEnum inputType) onChangeInputType;
 
   const _WidgetOptions({
     required this.onChangeInputType,

@@ -24,11 +24,7 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       widgetOptionsContentAlignment: Alignment.topCenter,
     ),
     const MyoroAppBarWidgetShowcaseThemeExtension(),
-    MyoroMenuWidgetShowcaseThemeExtension(
-      itemCountOptionInitialValue: 0,
-      itemCountOptionMaxValue: 100,
-      itemCountOptionTextStyle: textTheme.bodySmall!,
-    ),
+    const MyoroMenuWidgetShowcaseThemeExtension(),
     MyoroSliderWidgetShowcaseThemeExtension(
       widgetSliderValueTextStyle: textTheme.headlineSmall!,
       widgetSliderLabelSpacing: 5,

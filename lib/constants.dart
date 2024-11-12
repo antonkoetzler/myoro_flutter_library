@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const kMyoroBorderLength = 2.0;
 const kMyoroBorderRadiusValue = 15.0;
 final kMyoroBorderRadius = BorderRadius.circular(kMyoroBorderRadiusValue);
+final kMyoroInputBorderRadius = BorderRadius.circular(kMyoroBorderRadiusValue - 5);
 
 // Menus.
 const kMyoroMenuMaxSize = Size(200, 400);
