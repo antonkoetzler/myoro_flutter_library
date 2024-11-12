@@ -14,6 +14,7 @@
 1. Implement carousels;
 1. Implement dropdown buttons;
 1. Widget tests;
+1. Dart tool for auto-formatting;
 1. Documentation;
 1. Contributing documentation;
 1. Create a logo.

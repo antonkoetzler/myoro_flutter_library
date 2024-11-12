@@ -11,29 +11,81 @@ final class MyoroMenuWidgetShowcase extends StatefulWidget {
 }
 
 final class _MyoroMenuWidgetShowcaseState extends State<MyoroMenuWidgetShowcase> {
+  final _itemCountNotifier = ValueNotifier<int>(0);
+
+  @override
+  void dispose() {
+    _itemCountNotifier.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const WidgetShowcase(
-      widget: _Widget(),
-      widgetOptions: _WidgetOptions(),
+    return WidgetShowcase(
+      widget: _Widget(_itemCountNotifier),
+      widgetOptions: _WidgetOptions(_itemCountNotifier),
     );
   }
 }
 
 final class _Widget extends StatelessWidget {
-  const _Widget();
+  final ValueNotifier<int> itemCountNotifier;
+
+  const _Widget(this.itemCountNotifier);
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroMenu();
+    return ValueListenableBuilder(
+        valueListenable: itemCountNotifier,
+        builder: (_, int itemCount, __) {
+          return MyoroMenu(
+            items: List.generate(
+              itemCount,
+              (_) => MyoroMenuItem.fake(),
+            ),
+          );
+        });
   }
 }
 
 final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
+  final ValueNotifier<int> itemCountNotifier;
+
+  const _WidgetOptions(this.itemCountNotifier);
 
   @override
   Widget build(BuildContext context) {
-    return const Text('TODO');
+    return _ItemCountOption(itemCountNotifier);
+  }
+}
+
+final class _ItemCountOption extends StatelessWidget {
+  final ValueNotifier<int> itemCountNotifier;
+
+  const _ItemCountOption(this.itemCountNotifier);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>();
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        MyoroSlider(
+          initialValue: themeExtension.itemCountOptionInitialValue.toDouble(),
+          maxValue: themeExtension.itemCountOptionMaxValue.toDouble(),
+          onChanged: (double itemCount) => itemCountNotifier.value = itemCount.toInt(),
+        ),
+        ValueListenableBuilder(
+          valueListenable: itemCountNotifier,
+          builder: (_, int itemCount, __) {
+            return Text(
+              'Items loaded: $itemCount.',
+              style: themeExtension.itemCountOptionTextStyle.copyWith(height: 0.5),
+            );
+          },
+        ),
+      ],
+    );
   }
 }
