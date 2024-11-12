@@ -44,6 +44,7 @@ final class _WidgetOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         _MaxHeightOption(),
         _ItemCountOption(),
