@@ -83,9 +83,11 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
         ),
         if (_label?.isNotEmpty == true) ...[
           SizedBox(width: themeExtension.spacing),
-          Text(
-            _label!,
-            style: _labelTextStyle ?? themeExtension.labelTextStyle,
+          Flexible(
+            child: Text(
+              _label!,
+              style: _labelTextStyle ?? themeExtension.labelTextStyle,
+            ),
           ),
         ],
       ],

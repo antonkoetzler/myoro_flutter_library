@@ -73,6 +73,10 @@ List<ThemeExtension> createCheckboxThemeExtensions(TextTheme textTheme) {
       labelTextStyle: textTheme.bodySmall!,
       spacing: 3,
     ),
+    const MyoroGroupCheckboxThemeExtension(
+      spacing: 5,
+      runSpacing: 5,
+    ),
   ];
 }
 

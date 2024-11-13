@@ -1,6 +1,6 @@
 # TODO
 
-1. Implement group of checkbox component;
+1. (**IN PROGRESS**) Implement group of checkbox component;
 1. Implement radiobox component;
 1. implement group of radio box component;
 1. Make the dmenu widget;

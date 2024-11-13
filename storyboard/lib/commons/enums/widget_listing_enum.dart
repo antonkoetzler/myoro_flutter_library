@@ -15,6 +15,7 @@ enum WidgetListingEnum {
   ]),
   checkboxes('Checkboxes', [
     myoroCheckboxTitle,
+    myoroGroupCheckboxTitle,
   ]),
   dividers('Dividers', [
     myoroBasicDividerTitle,
@@ -57,6 +58,7 @@ enum WidgetListingEnum {
   static const myoroDropdownTitle = 'MyoroDropdown';
   static const myoroBodyTitle = 'MyoroBody';
   static const myoroCheckboxTitle = 'MyoroCheckbox';
+  static const myoroGroupCheckboxTitle = 'MyoroGroupCheckbox';
   static const myoroHoverButtonTitle = 'MyoroHoverButton';
   static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
   static const myoroBasicDividerTitle = 'MyoroBasicDivider';
@@ -77,6 +79,7 @@ enum WidgetListingEnum {
       myoroDropdownTitle => const MyoroDropdownWidgetShowcase(),
       myoroBodyTitle => throw UnimplementedError(),
       myoroCheckboxTitle => const MyoroCheckboxWidgetShowcase(),
+      myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
       myoroHoverButtonTitle => throw UnimplementedError(),
       myoroIconTextHoverButtonTitle => throw UnimplementedError(),
       myoroBasicDividerTitle => throw UnimplementedError(),
