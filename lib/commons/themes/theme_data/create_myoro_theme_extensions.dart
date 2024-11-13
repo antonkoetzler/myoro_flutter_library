@@ -8,6 +8,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createAutocompleteThemeExtensions(),
     ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
+    ...createCheckboxThemeExtensions(textTheme),
     ...createDividerThemeExtensions(colorScheme),
     ...createFormThemeExtensions(),
     ...createInputThemeExtensions(colorScheme, textTheme),
@@ -59,6 +60,18 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
       textOverflow: TextOverflow.ellipsis,
       spacing: 5,
       mainAxisAlignment: MainAxisAlignment.start,
+    ),
+  ];
+}
+
+List<ThemeExtension> createCheckboxThemeExtensions(TextTheme textTheme) {
+  return [
+    MyoroCheckboxThemeExtension(
+      hoverColor: MyoroColorTheme.transparent,
+      focusColor: MyoroColorTheme.transparent,
+      splashRadius: 0,
+      labelTextStyle: textTheme.bodySmall!,
+      spacing: 3,
     ),
   ];
 }

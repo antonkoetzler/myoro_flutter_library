@@ -1,6 +1,7 @@
 export 'app_bars/exports.dart';
 export 'bodies/exports.dart';
 export 'buttons/exports.dart';
+export 'checkboxes/exports.dart';
 export 'dividers/exports.dart';
 export 'dropdowns/exports.dart';
 export 'forms/exports.dart';
