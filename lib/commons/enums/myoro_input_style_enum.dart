@@ -14,6 +14,7 @@ enum MyoroInputStyleEnum {
     return values[faker.randomGenerator.integer(values.length)];
   }
 
+  /// Border of the input.
   InputBorder getBorder(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-// TODO: Finish this.
 /// Widget showcase for [MyoroGroupCheckbox].
 final class MyoroGroupCheckboxWidgetShowcase extends StatelessWidget {
   const MyoroGroupCheckboxWidgetShowcase({super.key});
@@ -25,8 +24,12 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroGroupCheckbox(
-      checkboxes: [MyoroGroupCheckboxItem(label: 'qwe')],
+    return BlocBuilder<MyoroGroupCheckboxWidgetShowcaseBloc, MyoroGroupCheckboxWidgetShowcaseState>(
+      builder: (_, MyoroGroupCheckboxWidgetShowcaseState state) {
+        return MyoroGroupCheckbox(
+          checkboxes: state.checkboxes,
+        );
+      },
     );
   }
 }
@@ -36,6 +39,20 @@ final class _WidgetOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Help me');
+    return const Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _DirectionOption(),
+      ],
+    );
+  }
+}
+
+final class _DirectionOption extends StatelessWidget {
+  const _DirectionOption();
+
+  @override
+  Widget build(BuildContext context) {
+    return MyoroCheckbox();
   }
 }

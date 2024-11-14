@@ -18,20 +18,12 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// Border of [_WidgetWrapper].
   final Border widgetWrapperBorder;
 
-  /// Padding of the content in [_WidgetOptions].
-  final EdgeInsets widgetOptionsContentPadding;
-
-  /// Alignment of the content in [_WidgetOptions].
-  final Alignment widgetOptionsContentAlignment;
-
   const WidgetShowcaseThemeExtension({
     required this.widgetWrapperPadding,
     required this.widgetWrapperContentPadding,
     required this.widgetWrapperBackgroundColor,
     required this.widgetWrapperBorderRadius,
     required this.widgetWrapperBorder,
-    required this.widgetOptionsContentPadding,
-    required this.widgetOptionsContentAlignment,
   });
 
   @override
@@ -41,8 +33,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     Color? widgetWrapperBackgroundColor,
     BorderRadius? widgetWrapperBorderRadius,
     Border? widgetWrapperBorder,
-    EdgeInsets? widgetOptionsContentPadding,
-    Alignment? widgetOptionsContentAlignment,
   }) {
     return WidgetShowcaseThemeExtension(
       widgetWrapperPadding: widgetWrapperPadding ?? this.widgetWrapperPadding,
@@ -50,8 +40,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetWrapperBackgroundColor: widgetWrapperBackgroundColor ?? this.widgetWrapperBackgroundColor,
       widgetWrapperBorderRadius: widgetWrapperBorderRadius ?? this.widgetWrapperBorderRadius,
       widgetWrapperBorder: widgetWrapperBorder ?? this.widgetWrapperBorder,
-      widgetOptionsContentPadding: widgetOptionsContentPadding ?? this.widgetOptionsContentPadding,
-      widgetOptionsContentAlignment: widgetOptionsContentAlignment ?? this.widgetOptionsContentAlignment,
     );
   }
 
@@ -67,8 +55,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetWrapperBackgroundColor: Color.lerp(widgetWrapperBackgroundColor, other.widgetWrapperBackgroundColor, t),
       widgetWrapperBorderRadius: BorderRadius.lerp(widgetWrapperBorderRadius, other.widgetWrapperBorderRadius, t),
       widgetWrapperBorder: Border.lerp(widgetWrapperBorder, other.widgetWrapperBorder, t),
-      widgetOptionsContentPadding: EdgeInsets.lerp(widgetOptionsContentPadding, other.widgetOptionsContentPadding, t),
-      widgetOptionsContentAlignment: Alignment.lerp(widgetOptionsContentAlignment, other.widgetOptionsContentAlignment, t),
     );
   }
 }

@@ -53,7 +53,10 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
     MyoroIconTextHoverButtonThemeExtension(
       backgroundColor: colorScheme.primary,
       contentColor: colorScheme.onPrimary,
-      contentPadding: const EdgeInsets.all(5),
+      contentPadding: const EdgeInsets.symmetric(
+        vertical: 5,
+        horizontal: 10,
+      ),
       textStyle: textTheme.bodyMedium!,
       textAlign: TextAlign.left,
       textMaxLines: 1,
@@ -74,6 +77,7 @@ List<ThemeExtension> createCheckboxThemeExtensions(TextTheme textTheme) {
       spacing: 3,
     ),
     const MyoroGroupCheckboxThemeExtension(
+      direction: Axis.horizontal,
       spacing: 5,
       runSpacing: 5,
     ),
@@ -121,6 +125,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
       isDense: true,
       cursorHeight: 20,
+      checkboxSpacing: 10,
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
       labelSpacing: 5,

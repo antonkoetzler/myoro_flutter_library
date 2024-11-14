@@ -13,15 +13,6 @@ typedef _Emitter = Emitter<MyoroMenuWidgetShowcaseState>;
 final class MyoroMenuWidgetShowcaseBloc extends Bloc<MyoroMenuWidgetShowcaseEvent, MyoroMenuWidgetShowcaseState> {
   MyoroMenuWidgetShowcaseBloc() : super(const MyoroMenuWidgetShowcaseState()) {
     on<SetItemCountEvent>(_setItemCountEvent);
-    on<SetMaxHeightEvent>(_setMaxHeightEvent);
-  }
-
-  void _setMaxHeightEvent(SetMaxHeightEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        maxHeight: event.maxHeight,
-      ),
-    );
   }
 
   void _setItemCountEvent(SetItemCountEvent event, _Emitter emit) {

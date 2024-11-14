@@ -69,15 +69,20 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
         ValueListenableBuilder(
           valueListenable: _controller,
           builder: (_, bool value, __) {
-            return Checkbox(
-              value: value,
-              hoverColor: themeExtension.hoverColor,
-              focusColor: themeExtension.focusColor,
-              splashRadius: themeExtension.splashRadius,
-              onChanged: (_) {
-                _controller.value = !_controller.value;
-                _onChanged?.call(!_controller.value);
-              },
+            // This [SizedBox] removes the default margin in [Checkbox].
+            return SizedBox(
+              width: 20,
+              height: 20,
+              child: Checkbox(
+                value: value,
+                hoverColor: themeExtension.hoverColor,
+                focusColor: themeExtension.focusColor,
+                splashRadius: themeExtension.splashRadius,
+                onChanged: (_) {
+                  _onChanged?.call(!_controller.value);
+                  _controller.value = !_controller.value;
+                },
+              ),
             );
           },
         ),

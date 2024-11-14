@@ -5,12 +5,6 @@ sealed class MyoroMenuWidgetShowcaseEvent {
   const MyoroMenuWidgetShowcaseEvent();
 }
 
-final class SetMaxHeightEvent extends MyoroMenuWidgetShowcaseEvent {
-  final double maxHeight;
-
-  const SetMaxHeightEvent(this.maxHeight);
-}
-
 final class SetItemCountEvent extends MyoroMenuWidgetShowcaseEvent {
   final int itemCount;
 

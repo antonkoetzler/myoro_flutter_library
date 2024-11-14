@@ -20,6 +20,9 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Height of the selection cursor.
   final double cursorHeight;
 
+  /// Spacing between the checkbox and input.
+  final double checkboxSpacing;
+
   /// Text style of the input.
   final TextStyle inputTextStyle;
 
@@ -35,6 +38,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     required this.contentPadding,
     required this.isDense,
     required this.cursorHeight,
+    required this.checkboxSpacing,
     required this.inputTextStyle,
     required this.labelTextStyle,
     required this.labelSpacing,
@@ -47,6 +51,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     EdgeInsets? contentPadding,
     bool? isDense,
     double? cursorHeight,
+    double? checkboxSpacing,
     TextStyle? inputTextStyle,
     TextStyle? labelTextStyle,
     double? labelSpacing,
@@ -57,6 +62,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       contentPadding: contentPadding ?? this.contentPadding,
       isDense: isDense ?? this.isDense,
       cursorHeight: cursorHeight ?? this.cursorHeight,
+      checkboxSpacing: checkboxSpacing ?? this.checkboxSpacing,
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       labelSpacing: labelSpacing ?? this.labelSpacing,
@@ -75,6 +81,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       isDense: MyoroLerpHelper.lerp(isDense, other.isDense, t),
       cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
+      checkboxSpacing: lerpDouble(checkboxSpacing, other.checkboxSpacing, t),
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       labelSpacing: lerpDouble(labelSpacing, other.labelSpacing, t),

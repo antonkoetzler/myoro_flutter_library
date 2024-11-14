@@ -69,6 +69,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextHoverButtonThemeExtension>();
+    final contentPadding = padding ?? themeExtension.contentPadding;
 
     return MyoroHoverButton(
       contentColor: contentColor,
@@ -83,7 +84,9 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
             (hovered || isHovered == true) ? (backgroundColor ?? themeExtension.backgroundColor) : (contentColor ?? themeExtension.contentColor);
 
         return Padding(
-          padding: padding ?? themeExtension.contentPadding,
+          padding: contentPadding.copyWith(
+            left: contentPadding.left - (icon != null ? 5 : 0),
+          ),
           child: Row(
             mainAxisAlignment: mainAxisAlignment ?? themeExtension.mainAxisAlignment,
             children: [
@@ -93,7 +96,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
                   size: iconSize,
                   color: actualContentColor,
                 ),
-              if (icon != null && text != null) SizedBox(height: themeExtension.spacing),
+              if (icon != null && text != null) SizedBox(width: themeExtension.spacing),
               if (text != null)
                 Flexible(
                   child: Text(

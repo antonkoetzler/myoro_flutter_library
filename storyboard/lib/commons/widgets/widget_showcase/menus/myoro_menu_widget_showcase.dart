@@ -27,10 +27,11 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroMenuWidgetShowcaseBloc, MyoroMenuWidgetShowcaseState>(
       builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu(
-          maxHeight: state.maxHeight,
           items: List.generate(
             state.itemCount,
-            (_) => MyoroMenuItem.fake(),
+            (_) => MyoroMenuItem.fake().copyWith(
+              onPressed: () {},
+            ),
           ),
         );
       },
@@ -46,19 +47,9 @@ final class _WidgetOptions extends StatelessWidget {
     return const Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _MaxHeightOption(),
         _ItemCountOption(),
       ],
     );
-  }
-}
-
-final class _MaxHeightOption extends StatelessWidget {
-  const _MaxHeightOption();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text('TODO: Need a checkbox component FML');
   }
 }
 

@@ -10,25 +10,11 @@ final class StoryboardBody extends StatefulWidget {
 }
 
 final class _StoryboardBodyState extends State<StoryboardBody> {
-  static const _sideBarMinWidth = 200.0;
-  double get _sideBarMaxWidth => MediaQuery.of(context).size.width - 300;
-
-  /// Control the width of [_WidgetListing].
-  final _widgetListingWidthNotifier = ValueNotifier<double>(_sideBarMinWidth);
-
   /// Control what widget is being shown in [_WidgetViewer].
   final _widgetLoadedNotifier = ValueNotifier<Widget?>(null);
 
-  void _updateWidgetListeningWidthNotifier(DragUpdateDetails details) {
-    if (!mounted) return;
-    final newWidth = _widgetListingWidthNotifier.value + details.delta.dx;
-    if (newWidth < _sideBarMinWidth || newWidth > _sideBarMaxWidth) return;
-    _widgetListingWidthNotifier.value = newWidth;
-  }
-
   @override
   void dispose() {
-    _widgetListingWidthNotifier.dispose();
     _widgetLoadedNotifier.dispose();
     super.dispose();
   }
@@ -38,28 +24,16 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ValueListenableBuilder(
-          valueListenable: _widgetListingWidthNotifier,
-          builder: (_, double width, __) {
-            return Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: width,
-                  constraints: BoxConstraints(
-                    minWidth: _sideBarMinWidth,
-                    maxWidth: _sideBarMaxWidth,
-                  ),
-                  child: _WidgetListing(_widgetLoadedNotifier),
-                ),
-                MyoroResizeDivider(
-                  Axis.vertical,
-                  dragCallback: _updateWidgetListeningWidthNotifier,
-                ),
-              ],
-            );
-          },
+        Row(
+          // mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IntrinsicWidth(
+              // width: 300,
+              child: _WidgetListing(_widgetLoadedNotifier),
+            ),
+            const MyoroBasicDivider(Axis.vertical),
+          ],
         ),
         Expanded(child: _WidgetViewer(_widgetLoadedNotifier)),
       ],

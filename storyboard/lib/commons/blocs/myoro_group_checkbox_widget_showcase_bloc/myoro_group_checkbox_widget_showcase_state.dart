@@ -1,27 +1,55 @@
 part of 'myoro_group_checkbox_widget_showcase_bloc.dart';
 
 final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
-  /// Items being built in the [MyoroGroupCheckbox].
-  final List<MyoroGroupCheckboxItem> items;
+  /// [MyoroGroupCheckbox.direction].
+  final Axis? direction;
+
+  /// [MyoroGroupCheckbox.spacing].
+  final double? spacing;
+
+  /// [MyoroGroupCheckbox.runSpacing].
+  final double? runSpacing;
+
+  /// [MyoroGroupCheckbox.checkboxes].
+  final MyoroGroupCheckboxItems checkboxes;
 
   const MyoroGroupCheckboxWidgetShowcaseState({
-    required this.items,
+    this.direction,
+    this.spacing,
+    this.runSpacing,
+    required this.checkboxes,
   });
 
   MyoroGroupCheckboxWidgetShowcaseState copyWith({
-    List<MyoroGroupCheckboxItem>? items,
+    Axis? direction,
+    double? spacing,
+    double? runSpacing,
+    MyoroGroupCheckboxItems? checkboxes,
   }) {
     return MyoroGroupCheckboxWidgetShowcaseState(
-      items: items ?? this.items,
+      direction: direction ?? this.direction,
+      spacing: spacing ?? this.spacing,
+      runSpacing: runSpacing ?? this.runSpacing,
+      checkboxes: checkboxes ?? this.checkboxes,
     );
   }
 
   @override
   String toString() => ''
       'MyoroGroupCheckboxWidgetShowcaseState(\n'
-      '  items: $items,\n'
+      '  direction: $direction,\n'
+      '  spacing: $spacing,\n'
+      '  runSpacing: $runSpacing,\n'
+      '  checkboxes: $checkboxes,\n'
       ');';
 
   @override
-  List<Object?> get props => [items];
+  List<Object?> get props {
+    return [
+      direction,
+      spacing,
+      runSpacing,
+      checkboxes,
+    ];
+  }
 }

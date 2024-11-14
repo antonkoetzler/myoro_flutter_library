@@ -3,12 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-const _widgetOptionsMinWidth = 200.0;
-const _widgetOptionsMaxWidth = 350.0;
-
 /// Widget that contains a widget on the left, then controls on the right to
 /// experiment with the different options of the widget. Used in [StoryboardBody].
-final class WidgetShowcase extends StatefulWidget {
+final class WidgetShowcase extends StatelessWidget {
   /// Widget that will be on the left.
   final Widget widget;
 
@@ -22,48 +19,20 @@ final class WidgetShowcase extends StatefulWidget {
   });
 
   @override
-  State<WidgetShowcase> createState() => _WidgetShowcaseState();
-}
-
-class _WidgetShowcaseState extends State<WidgetShowcase> {
-  Widget get _widget => widget.widget;
-  Widget get _widgetOptions => widget.widgetOptions;
-
-  late final _widgetOptionsWidthNotifier = ValueNotifier<double>(200);
-
-  void _updateWidthOptionsWidthNotifier(DragUpdateDetails details) {
-    if (!mounted) return;
-    final newWidth = _widgetOptionsWidthNotifier.value - details.delta.dx;
-    if (newWidth <= _widgetOptionsMinWidth || newWidth >= _widgetOptionsMaxWidth) return;
-    _widgetOptionsWidthNotifier.value = newWidth;
-  }
-
-  @override
-  void dispose() {
-    _widgetOptionsWidthNotifier.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: _WidgetWrapper(_widget)),
+        Expanded(child: _WidgetWrapper(widget)),
         BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
           builder: (_, WidgetShowcaseState state) {
             if (!state.displayingWidgetOptions) return const SizedBox.shrink();
 
             return Row(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyoroResizeDivider(
-                  Axis.vertical,
-                  dragCallback: _updateWidthOptionsWidthNotifier,
-                ),
-                _WidgetOptions(
-                  _widgetOptions,
-                  _widgetOptionsWidthNotifier,
-                ),
+                const MyoroBasicDivider(Axis.vertical),
+                _WidgetOptions(widgetOptions),
               ],
             );
           },
@@ -102,31 +71,21 @@ final class _WidgetWrapper extends StatelessWidget {
 
 final class _WidgetOptions extends StatelessWidget {
   final Widget widgetOptions;
-  final ValueNotifier<double> widgetOptionsWidthNotifier;
 
-  const _WidgetOptions(
-    this.widgetOptions,
-    this.widgetOptionsWidthNotifier,
-  );
+  const _WidgetOptions(this.widgetOptions);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-
-    return ValueListenableBuilder(
-      valueListenable: widgetOptionsWidthNotifier,
-      builder: (_, double widthOptionsWidth, __) {
-        return Container(
-          width: widthOptionsWidth,
-          padding: themeExtension.widgetOptionsContentPadding,
-          alignment: themeExtension.widgetOptionsContentAlignment,
-          constraints: const BoxConstraints(
-            minWidth: _widgetOptionsMinWidth,
-            maxWidth: _widgetOptionsMaxWidth,
-          ),
+    return IntrinsicWidth(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minWidth: 200,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
           child: widgetOptions,
-        );
-      },
+        ),
+      ),
     );
   }
 }

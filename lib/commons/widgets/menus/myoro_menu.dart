@@ -89,6 +89,7 @@ final class _Item extends StatelessWidget {
       text: item.text,
       textStyle: textStyle,
       textAlign: textAlign,
+      borderRadius: BorderRadius.zero,
       onPressed: item.onPressed,
     );
   }
