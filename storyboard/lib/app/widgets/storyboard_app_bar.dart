@@ -17,8 +17,7 @@ final class StoryboardAppBar extends StatelessWidget implements PreferredSizeWid
       bordered: true,
       child: Row(
         children: [
-          const _TitleAndHeader(),
-          const Spacer(),
+          const Expanded(child: _TitleAndHeader()),
           Wrap(
             spacing: themeExtension.buttonSpacing,
             children: [
@@ -60,10 +59,12 @@ final class _TitleAndHeader extends StatelessWidget {
       children: [
         Text(
           'myoro_flutter_library storyboard',
+          overflow: TextOverflow.ellipsis,
           style: themeExtension.titleTextStyle,
         ),
         Text(
           'Used for testing/visualizing widgets and the design system',
+          overflow: TextOverflow.ellipsis,
           style: themeExtension.subtitleTextStyle,
         ),
       ],
