@@ -26,8 +26,8 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Text style of the input.
   final TextStyle inputTextStyle;
 
-  /// Offset of [TextFormField.prefixIcon] so icons dont clip a [MyoroInputStyleEnum.outlined]'s border.
-  final double prefixIconOffset;
+  /// Spacing of the checkbox and input.
+  final double checkboxSpacing;
 
   /// Text style of [_Label].
   final TextStyle labelTextStyle;
@@ -40,7 +40,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     required this.cursorHeight,
     required this.disabledOpacity,
     required this.inputTextStyle,
-    required this.prefixIconOffset,
+    required this.checkboxSpacing,
     required this.labelTextStyle,
   });
 
@@ -53,7 +53,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     double? cursorHeight,
     double? disabledOpacity,
     TextStyle? inputTextStyle,
-    double? prefixIconOffset,
+    double? checkboxSpacing,
     TextStyle? labelTextStyle,
   }) {
     return MyoroInputThemeExtension(
@@ -64,7 +64,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       cursorHeight: cursorHeight ?? this.cursorHeight,
       disabledOpacity: disabledOpacity ?? this.disabledOpacity,
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
-      prefixIconOffset: prefixIconOffset ?? this.prefixIconOffset,
+      checkboxSpacing: checkboxSpacing ?? this.checkboxSpacing,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
     );
   }
@@ -83,7 +83,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
       disabledOpacity: lerpDouble(disabledOpacity, other.disabledOpacity, t),
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
-      prefixIconOffset: lerpDouble(prefixIconOffset, other.prefixIconOffset, t),
+      checkboxSpacing: lerpDouble(checkboxSpacing, other.checkboxSpacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
     );
   }

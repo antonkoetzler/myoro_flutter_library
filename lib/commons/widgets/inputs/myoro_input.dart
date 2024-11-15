@@ -73,11 +73,6 @@ final class _MyoroInputState extends State<MyoroInput> {
   /// is enabled or not if the checkbox is enabled.
   late final ValueNotifier<bool> _enabledNotifier;
 
-  Widget? get _prefixIcon {
-    if (_configuration.checkboxOnChanged == null) return null;
-    return _Checkbox(_configuration, _controller, _enabledNotifier);
-  }
-
   Widget? get _label {
     if (_configuration.label == null) return null;
     return _Label(_configuration);
@@ -105,35 +100,44 @@ final class _MyoroInputState extends State<MyoroInput> {
     return ValueListenableBuilder(
       valueListenable: _enabledNotifier,
       builder: (_, bool enabled, __) {
-        return TextFormField(
-          // So the checkbox prefix may be clicked
-          ignorePointers: false,
-          enabled: enabled,
-          style: textStyle.withColor(
-            textStyle.color!.withOpacity(
-              enabled ? 1 : themeExtension.disabledOpacity,
-            ),
-          ),
-          decoration: InputDecoration(
-            label: _label,
-            contentPadding: themeExtension.contentPadding,
-            enabledBorder: border,
-            focusedBorder: border,
-            disabledBorder: border.copyWith(
-              borderSide: border.borderSide.copyWith(
-                color: border.borderSide.color.withOpacity(
-                  themeExtension.disabledOpacity,
+        return Row(
+          children: [
+            if (_configuration.checkboxOnChanged != null) ...[
+              _Checkbox(_configuration, _controller, _enabledNotifier),
+              SizedBox(width: themeExtension.checkboxSpacing),
+            ],
+            Expanded(
+              child: TextFormField(
+                // So the checkbox prefix may be clicked
+                ignorePointers: false,
+                enabled: enabled,
+                style: textStyle.withColor(
+                  textStyle.color!.withOpacity(
+                    enabled ? 1 : themeExtension.disabledOpacity,
+                  ),
                 ),
+                decoration: InputDecoration(
+                  label: _label,
+                  contentPadding: themeExtension.contentPadding,
+                  enabledBorder: border,
+                  focusedBorder: border,
+                  disabledBorder: border.copyWith(
+                    borderSide: border.borderSide.copyWith(
+                      color: border.borderSide.color.withOpacity(
+                        themeExtension.disabledOpacity,
+                      ),
+                    ),
+                  ),
+                  isDense: themeExtension.isDense,
+                ),
+                cursorHeight: themeExtension.cursorHeight,
+                validator: (_) => _configuration.validation?.call(_controller.text),
+                inputFormatters: _formatters,
+                onChanged: _configuration.onChanged,
+                controller: _controller,
               ),
             ),
-            isDense: themeExtension.isDense,
-            prefixIcon: _prefixIcon,
-          ),
-          cursorHeight: themeExtension.cursorHeight,
-          validator: (_) => _configuration.validation?.call(_controller.text),
-          inputFormatters: _formatters,
-          onChanged: _configuration.onChanged,
-          controller: _controller,
+          ],
         );
       },
     );
@@ -153,17 +157,12 @@ final class _Checkbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: context.resolveThemeExtension<MyoroInputThemeExtension>().prefixIconOffset,
-      ),
-      child: MyoroCheckbox(
-        initialValue: enabledNotifier.value,
-        onChanged: (bool value) {
-          configuration.checkboxOnChanged!.call(value, controller.text);
-          enabledNotifier.value = value;
-        },
-      ),
+    return MyoroCheckbox(
+      initialValue: enabledNotifier.value,
+      onChanged: (bool value) {
+        configuration.checkboxOnChanged!.call(value, controller.text);
+        enabledNotifier.value = value;
+      },
     );
   }
 }

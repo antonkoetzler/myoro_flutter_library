@@ -110,7 +110,6 @@ List<ThemeExtension> createFormThemeExtensions() {
 
 List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
-    const MyoroDatePickerInputThemeExtension(),
     MyoroInputThemeExtension(
       underlinedBorder: UnderlineInputBorder(
         borderSide: BorderSide(
@@ -131,7 +130,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       disabledOpacity: 0.5,
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
-      prefixIconOffset: 10,
+      checkboxSpacing: 10,
     ),
   ];
 }
