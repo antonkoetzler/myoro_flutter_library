@@ -1,6 +1,6 @@
 # TODO
 
-1. Finish input (make inputs have date/time formatters & (**IN PROGRESSS**) search suggestions);
+1. Finish input (make inputs have **date/time formatters**, (**IN PROGRESS**) **search suggestions** & **Clear text button**);
 1. Implement dropdown/autocomplete;
 1. Implement radiobox component;
 1. Implement group of radio box component;
