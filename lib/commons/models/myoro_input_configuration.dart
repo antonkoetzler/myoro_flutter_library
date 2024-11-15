@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// On changed eh nthe checkbox next to the input is changed.
+/// Function executed when nthe checkbox next to the input is changed.
 typedef MyoroInputCheckboxOnChanged = Function(bool enabled, String text);
 
 /// Function executed when a [Form] is triggered.

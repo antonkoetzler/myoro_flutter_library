@@ -31,7 +31,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Hello, World!');
+    return const MyoroInput(
+      configuration: MyoroInputConfiguration(
+        inputStyle: MyoroInputStyleEnum.outlined,
+      ),
+    );
   }
 }
 
