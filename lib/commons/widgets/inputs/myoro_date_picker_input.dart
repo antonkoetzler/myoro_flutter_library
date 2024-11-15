@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Date picker input.
-final class MyoroDatePickerInput extends StatefulWidget {
-  const MyoroDatePickerInput({super.key});
+/// A date picker widget deriving from [MyoroInput].
+final class MyoroDatePickerInput extends StatelessWidget {
+  final MyoroInputConfiguration configuration;
 
-  @override
-  State<MyoroDatePickerInput> createState() => _MyoroDatePickerInputState();
-}
+  const MyoroDatePickerInput({
+    super.key,
+    required this.configuration,
+  });
 
-final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   @override
   Widget build(BuildContext context) {
-    return const Text('Hello');
+    return MyoroInput(
+      configuration: configuration,
+    );
   }
 }

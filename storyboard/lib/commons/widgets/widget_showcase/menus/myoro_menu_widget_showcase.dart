@@ -45,11 +45,12 @@ final class _WidgetOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _IconSizeOption(),
-        _ItemCountOption(),
+        const _IconSizeOption(),
+        SizedBox(height: context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>().widgetOptionsSpacing),
+        const _ItemCountOption(),
       ],
     );
   }

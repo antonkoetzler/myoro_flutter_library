@@ -131,7 +131,6 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       disabledOpacity: 0.5,
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
-      labelSpacing: 5,
       prefixIconOffset: 10,
     ),
   ];

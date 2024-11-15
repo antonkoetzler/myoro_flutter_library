@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Widget showcase for [MyoroDatePicker].
+/// Widget showcase for [MyoroDatePickerInput].
 final class MyoroDatePickerInputWidgetShowcase extends StatelessWidget {
   const MyoroDatePickerInputWidgetShowcase({super.key});
 
@@ -20,7 +20,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroDatePickerInput();
+    return const MyoroInput(
+      configuration: MyoroInputConfiguration(
+        inputStyle: MyoroInputStyleEnum.outlined,
+      ),
+    );
   }
 }
 

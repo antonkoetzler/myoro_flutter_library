@@ -32,9 +32,6 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Text style of [_Label].
   final TextStyle labelTextStyle;
 
-  /// Spacing between the label & the input.
-  final double labelSpacing;
-
   const MyoroInputThemeExtension({
     required this.underlinedBorder,
     required this.outlinedBorder,
@@ -45,7 +42,6 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     required this.inputTextStyle,
     required this.prefixIconOffset,
     required this.labelTextStyle,
-    required this.labelSpacing,
   });
 
   @override
@@ -59,7 +55,6 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     TextStyle? inputTextStyle,
     double? prefixIconOffset,
     TextStyle? labelTextStyle,
-    double? labelSpacing,
   }) {
     return MyoroInputThemeExtension(
       underlinedBorder: underlinedBorder ?? this.underlinedBorder,
@@ -71,7 +66,6 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
       prefixIconOffset: prefixIconOffset ?? this.prefixIconOffset,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
-      labelSpacing: labelSpacing ?? this.labelSpacing,
     );
   }
 
@@ -91,7 +85,6 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
       prefixIconOffset: lerpDouble(prefixIconOffset, other.prefixIconOffset, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
-      labelSpacing: lerpDouble(labelSpacing, other.labelSpacing, t),
     );
   }
 }

@@ -1,6 +1,9 @@
 # TODO
 
-1. Finish input (make inputs have date pickers, dropdowns for suggestions, etc);
+1. Finish input (make inputs have date pickers, dropdowns, suggestions [WRAPPER WIDGETS]);
+
+- Need to separation the checkbox from [MyoroInputConfiguration] and only in [MyoroInput].
+
 1. Implement dropdown/autocomplete;
 1. Implement radiobox component;
 1. Implement group of radio box component;

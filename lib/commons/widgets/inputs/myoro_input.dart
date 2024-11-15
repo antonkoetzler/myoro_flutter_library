@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Normal input widget.
+/// Generic input widget.
+///
+/// This widget also serves as a base:w
 final class MyoroInput extends StatefulWidget {
   /// Configuration of the input.
   final MyoroInputConfiguration configuration;
@@ -76,6 +78,11 @@ final class _MyoroInputState extends State<MyoroInput> {
     return _Checkbox(_configuration, _controller, _enabledNotifier);
   }
 
+  Widget? get _label {
+    if (_configuration.label == null) return null;
+    return _Label(_configuration);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -98,49 +105,35 @@ final class _MyoroInputState extends State<MyoroInput> {
     return ValueListenableBuilder(
       valueListenable: _enabledNotifier,
       builder: (_, bool enabled, __) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (_configuration.label != null) ...[
-              Text(
-                _configuration.label!,
-                style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
-              ),
-              SizedBox(height: themeExtension.labelSpacing),
-            ],
-            Flexible(
-              child: TextFormField(
-                // So the checkbox prefix may be clicked
-                ignorePointers: false,
-                enabled: enabled,
-                style: textStyle.withColor(
-                  textStyle.color!.withOpacity(
-                    enabled ? 1 : themeExtension.disabledOpacity,
-                  ),
+        return TextFormField(
+          // So the checkbox prefix may be clicked
+          ignorePointers: false,
+          enabled: enabled,
+          style: textStyle.withColor(
+            textStyle.color!.withOpacity(
+              enabled ? 1 : themeExtension.disabledOpacity,
+            ),
+          ),
+          decoration: InputDecoration(
+            label: _label,
+            contentPadding: themeExtension.contentPadding,
+            enabledBorder: border,
+            focusedBorder: border,
+            disabledBorder: border.copyWith(
+              borderSide: border.borderSide.copyWith(
+                color: border.borderSide.color.withOpacity(
+                  themeExtension.disabledOpacity,
                 ),
-                decoration: InputDecoration(
-                  contentPadding: themeExtension.contentPadding,
-                  enabledBorder: border,
-                  focusedBorder: border,
-                  disabledBorder: border.copyWith(
-                    borderSide: border.borderSide.copyWith(
-                      color: border.borderSide.color.withOpacity(
-                        themeExtension.disabledOpacity,
-                      ),
-                    ),
-                  ),
-                  isDense: themeExtension.isDense,
-                  prefixIcon: _prefixIcon,
-                ),
-                cursorHeight: themeExtension.cursorHeight,
-                validator: (_) => _configuration.validation?.call(_controller.text),
-                inputFormatters: _formatters,
-                onChanged: _configuration.onChanged,
-                controller: _controller,
               ),
             ),
-          ],
+            isDense: themeExtension.isDense,
+            prefixIcon: _prefixIcon,
+          ),
+          cursorHeight: themeExtension.cursorHeight,
+          validator: (_) => _configuration.validation?.call(_controller.text),
+          inputFormatters: _formatters,
+          onChanged: _configuration.onChanged,
+          controller: _controller,
         );
       },
     );
@@ -171,6 +164,20 @@ final class _Checkbox extends StatelessWidget {
           enabledNotifier.value = value;
         },
       ),
+    );
+  }
+}
+
+final class _Label extends StatelessWidget {
+  final MyoroInputConfiguration configuration;
+
+  const _Label(this.configuration);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      configuration.label!,
+      style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
     );
   }
 }

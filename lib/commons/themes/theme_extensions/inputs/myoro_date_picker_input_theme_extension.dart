@@ -7,11 +7,14 @@ final class MyoroDatePickerInputThemeExtension extends ThemeExtension<MyoroDateP
 
   @override
   MyoroDatePickerInputThemeExtension copyWith() {
-    return const MyoroDatePickerInputThemeExtension();
+    return this;
   }
 
   @override
-  ThemeExtension<MyoroDatePickerInputThemeExtension> lerp(covariant ThemeExtension<MyoroDatePickerInputThemeExtension>? other, double t) {
+  ThemeExtension<MyoroDatePickerInputThemeExtension> lerp(
+    covariant ThemeExtension<MyoroDatePickerInputThemeExtension>? other,
+    double t,
+  ) {
     return this;
   }
 }
