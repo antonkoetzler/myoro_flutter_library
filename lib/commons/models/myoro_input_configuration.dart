@@ -1,9 +1,16 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when nthe checkbox next to the input is changed.
-typedef MyoroInputCheckboxOnChanged = Function(bool enabled, String text);
+typedef MyoroInputCheckboxOnChanged = void Function(bool enabled, String text);
+
+/// Function used for making the [MyoroInput] a search box.
+///
+/// Executes everytime the input is changed.
+typedef MyoroInputSearchRequest = FutureOr<List<String>> Function(String text);
 
 /// Function executed when a [Form] is triggered.
 typedef MyoroInputValidation = String? Function(String text);
@@ -35,6 +42,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// When the checkbox is changed, the input will set it's [MyoroInputConfiguration.enabled] to false.
   final MyoroInputCheckboxOnChanged? checkboxOnChanged;
 
+  /// Function used for making the [MyoroInput] a search box.
+  final MyoroInputSearchRequest? searchRequest;
+
   /// Function executed when [GlobalKey<FormState>().currentState!.validate()] is called.
   ///
   /// Aka, called when a [MyoroFormController.finish] is executed.
@@ -53,6 +63,7 @@ final class MyoroInputConfiguration extends Equatable {
     this.labelTextStyle,
     this.enabled,
     this.checkboxOnChanged,
+    this.searchRequest,
     this.validation,
     this.onChanged,
     this.controller,
@@ -65,6 +76,7 @@ final class MyoroInputConfiguration extends Equatable {
     TextStyle? labelTextStyle,
     bool? enabled,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    MyoroInputSearchRequest? searchRequest,
     MyoroInputValidation? validation,
     MyoroInputOnChanged? onChanged,
     TextEditingController? controller,
@@ -76,6 +88,7 @@ final class MyoroInputConfiguration extends Equatable {
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       enabled: enabled ?? this.enabled,
       checkboxOnChanged: checkboxOnChanged ?? this.checkboxOnChanged,
+      searchRequest: searchRequest ?? this.searchRequest,
       validation: validation ?? this.validation,
       onChanged: onChanged ?? this.onChanged,
       controller: controller ?? this.controller,
@@ -91,6 +104,7 @@ final class MyoroInputConfiguration extends Equatable {
       '  labelTextStyle: $labelTextStyle,\n'
       '  enabled: $enabled,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
+      '  searchRequest: $searchRequest,\n'
       '  validation: $validation,\n'
       '  onChanged: $onChanged,\n'
       '  controller: $controller,\n'
@@ -105,6 +119,7 @@ final class MyoroInputConfiguration extends Equatable {
       labelTextStyle,
       enabled,
       checkboxOnChanged,
+      searchRequest,
       validation,
       onChanged,
       controller,

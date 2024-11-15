@@ -73,6 +73,9 @@ final class _MyoroInputState extends State<MyoroInput> {
   /// is enabled or not if the checkbox is enabled.
   late final ValueNotifier<bool> _enabledNotifier;
 
+  /// [OverlayEntry] for search suggestions.
+  OverlayEntry? _searchResultsOverlayEntry;
+
   Widget? get _label {
     if (_configuration.label == null) return null;
     return _Label(_configuration);
@@ -107,34 +110,57 @@ final class _MyoroInputState extends State<MyoroInput> {
               SizedBox(width: themeExtension.checkboxSpacing),
             ],
             Expanded(
-              child: TextFormField(
-                // So the checkbox prefix may be clicked
-                ignorePointers: false,
-                enabled: enabled,
-                style: textStyle.withColor(
-                  textStyle.color!.withOpacity(
-                    enabled ? 1 : themeExtension.disabledOpacity,
-                  ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: themeExtension.backgroundColor,
+                  borderRadius: themeExtension.borderRadius,
                 ),
-                decoration: InputDecoration(
-                  label: _label,
-                  contentPadding: themeExtension.contentPadding,
-                  enabledBorder: border,
-                  focusedBorder: border,
-                  disabledBorder: border.copyWith(
-                    borderSide: border.borderSide.copyWith(
-                      color: border.borderSide.color.withOpacity(
-                        themeExtension.disabledOpacity,
+                child: MyoroForm(
+                  request: () async => await _configuration.searchRequest!.call(_controller.text),
+                  builder: (_, MyoroRequestEnum status, MyoroFormController controller) {
+                    // TODO
+                    // Search was made. Display the results in [_searchResultsOverlayEntry].
+                    if (status.isSuccess) {
+                      _searchResultsOverlayEntry = OverlayEntry(builder: (_) => _SearchResults());
+                      WidgetsBinding.instance.addPostFrameCallback((_) => context.overlay.insert(_searchResultsOverlayEntry!));
+                    }
+
+                    return TextFormField(
+                      // So the checkbox prefix may be clicked
+                      ignorePointers: false,
+                      enabled: enabled,
+                      style: textStyle.withColor(
+                        textStyle.color!.withOpacity(
+                          enabled ? 1 : themeExtension.disabledOpacity,
+                        ),
                       ),
-                    ),
-                  ),
-                  isDense: themeExtension.isDense,
+                      decoration: InputDecoration(
+                        label: _label,
+                        contentPadding: themeExtension.contentPadding,
+                        enabledBorder: border,
+                        focusedBorder: border,
+                        disabledBorder: border.copyWith(
+                          borderSide: border.borderSide.copyWith(
+                            color: border.borderSide.color.withOpacity(
+                              themeExtension.disabledOpacity,
+                            ),
+                          ),
+                        ),
+                        isDense: themeExtension.isDense,
+                      ),
+                      cursorHeight: themeExtension.cursorHeight,
+                      validator: (_) => _configuration.validation?.call(_controller.text),
+                      inputFormatters: _formatters,
+                      onChanged: (String text) {
+                        _configuration.onChanged?.call(text);
+                        if (_configuration.searchRequest != null) {
+                          controller.finish();
+                        }
+                      },
+                      controller: _controller,
+                    );
+                  },
                 ),
-                cursorHeight: themeExtension.cursorHeight,
-                validator: (_) => _configuration.validation?.call(_controller.text),
-                inputFormatters: _formatters,
-                onChanged: _configuration.onChanged,
-                controller: _controller,
               ),
             ),
           ],
@@ -177,6 +203,20 @@ final class _Label extends StatelessWidget {
     return Text(
       configuration.label!,
       style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+    );
+  }
+}
+
+final class _SearchResults extends StatelessWidget {
+  const _SearchResults();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 400,
+      height: 400,
+      color: Colors.green,
+      child: const Text('im a gummy bear a yummy gummy bear'),
     );
   }
 }

@@ -19,7 +19,7 @@ typedef MyoroFormOnError = Function(String errorMessage);
 /// Builder of the content within the form.
 ///
 /// Contains controller so you don't need to create one & the status of the form execution.
-typedef MyoroFormBuilder = Function(MyoroFormController controller, MyoroRequestEnum status);
+typedef MyoroFormBuilder<T> = Function(T? result, MyoroRequestEnum status, MyoroFormController controller);
 
 /// Base form widget. Should always be used for any type of form content.
 final class MyoroForm<T> extends StatefulWidget {
@@ -32,7 +32,7 @@ final class MyoroForm<T> extends StatefulWidget {
   final MyoroFormValidation? validation;
 
   /// Request that is executed after during the form process.
-  final MyoroFormRequest<T> request;
+  final MyoroFormRequest<T>? request;
 
   /// Executed when the form is completed successfully.
   final MyoroFormOnSuccess<T>? onSuccess;
@@ -58,7 +58,7 @@ final class MyoroForm<T> extends StatefulWidget {
 }
 
 final class _MyoroFormState<T> extends State<MyoroForm<T>> {
-  MyoroFormRequest<T> get _request => widget.request;
+  MyoroFormRequest<T>? get _request => widget.request;
   MyoroFormValidation? get _validation => widget.validation;
   MyoroFormOnSuccess<T>? get _onSuccess => widget.onSuccess;
   MyoroFormOnError? get _onError => widget.onError;
@@ -103,7 +103,11 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
         builder: (_, MyoroFormState state) {
           return Form(
             key: _key,
-            child: _builder.call(_controller, state.status),
+            child: _builder.call(
+              state.result,
+              state.status,
+              _controller,
+            ),
           );
         },
       ),

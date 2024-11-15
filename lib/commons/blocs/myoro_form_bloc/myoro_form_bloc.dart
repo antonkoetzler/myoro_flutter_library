@@ -14,7 +14,7 @@ final class MyoroFormBloc<T> extends Bloc<MyoroFormEvent, MyoroFormState<T>> {
   MyoroFormBloc(
     GlobalKey<FormState> key,
     MyoroFormValidation? validation,
-    MyoroFormRequest<T> request,
+    MyoroFormRequest<T>? request,
   ) : super(MyoroFormState<T>()) {
     on<FinishFormEvent>((event, emit) async {
       emit(state.copyWith(status: MyoroRequestEnum.loading));
@@ -40,7 +40,7 @@ final class MyoroFormBloc<T> extends Bloc<MyoroFormEvent, MyoroFormState<T>> {
 
       String? errorMessage;
       try {
-        final T? result = await request.call();
+        final T? result = await request?.call();
 
         emit(
           state.copyWith(

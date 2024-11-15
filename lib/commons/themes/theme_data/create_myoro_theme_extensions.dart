@@ -124,6 +124,8 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
           color: colorScheme.onPrimary,
         ),
       ),
+      backgroundColor: colorScheme.primary,
+      borderRadius: MyoroDecorationHelper.borderRadius,
       contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
       isDense: true,
       cursorHeight: 20,

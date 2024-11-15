@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 extension MyoroBuildContextExtension on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   TextTheme get textTheme => Theme.of(this).textTheme;
+  OverlayState get overlay => Overlay.of(this);
 
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();

@@ -31,9 +31,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroInput(
+    return MyoroInput(
       configuration: MyoroInputConfiguration(
         inputStyle: MyoroInputStyleEnum.outlined,
+        searchRequest: (String text) => [],
       ),
     );
   }

@@ -11,6 +11,12 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Border for [MyoroInputStyleEnum.outlined].
   final InputBorder outlinedBorder;
 
+  /// Background color of the input.
+  final Color backgroundColor;
+
+  /// Border radius of the [Container] storing the background color.
+  final BorderRadius borderRadius;
+
   /// Padding of the text in the input.
   final EdgeInsets contentPadding;
 
@@ -35,6 +41,8 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   const MyoroInputThemeExtension({
     required this.underlinedBorder,
     required this.outlinedBorder,
+    required this.backgroundColor,
+    required this.borderRadius,
     required this.contentPadding,
     required this.isDense,
     required this.cursorHeight,
@@ -48,6 +56,8 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   MyoroInputThemeExtension copyWith({
     InputBorder? underlinedBorder,
     InputBorder? outlinedBorder,
+    Color? backgroundColor,
+    BorderRadius? borderRadius,
     EdgeInsets? contentPadding,
     bool? isDense,
     double? cursorHeight,
@@ -59,6 +69,8 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     return MyoroInputThemeExtension(
       underlinedBorder: underlinedBorder ?? this.underlinedBorder,
       outlinedBorder: outlinedBorder ?? this.outlinedBorder,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      borderRadius: borderRadius ?? this.borderRadius,
       contentPadding: contentPadding ?? this.contentPadding,
       isDense: isDense ?? this.isDense,
       cursorHeight: cursorHeight ?? this.cursorHeight,
@@ -78,6 +90,8 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     return copyWith(
       underlinedBorder: MyoroLerpHelper.lerp(underlinedBorder, other.underlinedBorder, t),
       outlinedBorder: MyoroLerpHelper.lerp(outlinedBorder, other.outlinedBorder, t),
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       isDense: MyoroLerpHelper.lerp(isDense, other.isDense, t),
       cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
