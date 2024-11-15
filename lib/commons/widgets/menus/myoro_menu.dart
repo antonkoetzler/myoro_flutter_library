@@ -105,7 +105,7 @@ final class _EmptyMenuDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Items no to display.',
+        'No items to display.',
         style: context.resolveThemeExtension<MyoroMenuThemeExtension>().emptyMenuDialogTextStyle,
       ),
     );
