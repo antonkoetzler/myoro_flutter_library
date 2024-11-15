@@ -4,7 +4,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Generic input widget.
 ///
-/// This widget also serves as a base:w
+/// [MyoroInput] also serves as a base input for creating other inputs in the commons folder.
+/// A [MyoroInputConfiguration] is passed to every other input [Widget] in the commons folder.
+/// This means that [MyoroInput] should always be completely compatible with the other inputs.
 final class MyoroInput extends StatefulWidget {
   /// Configuration of the input.
   final MyoroInputConfiguration configuration;
@@ -73,9 +75,6 @@ final class _MyoroInputState extends State<MyoroInput> {
   /// is enabled or not if the checkbox is enabled.
   late final ValueNotifier<bool> _enabledNotifier;
 
-  /// [OverlayEntry] for search suggestions.
-  OverlayEntry? _searchResultsOverlayEntry;
-
   Widget? get _label {
     if (_configuration.label == null) return null;
     return _Label(_configuration);
@@ -115,51 +114,34 @@ final class _MyoroInputState extends State<MyoroInput> {
                   color: themeExtension.backgroundColor,
                   borderRadius: themeExtension.borderRadius,
                 ),
-                child: MyoroForm(
-                  request: () async => await _configuration.searchRequest!.call(_controller.text),
-                  builder: (_, MyoroRequestEnum status, MyoroFormController controller) {
-                    // TODO
-                    // Search was made. Display the results in [_searchResultsOverlayEntry].
-                    if (status.isSuccess) {
-                      _searchResultsOverlayEntry = OverlayEntry(builder: (_) => _SearchResults());
-                      WidgetsBinding.instance.addPostFrameCallback((_) => context.overlay.insert(_searchResultsOverlayEntry!));
-                    }
-
-                    return TextFormField(
-                      // So the checkbox prefix may be clicked
-                      ignorePointers: false,
-                      enabled: enabled,
-                      style: textStyle.withColor(
-                        textStyle.color!.withOpacity(
-                          enabled ? 1 : themeExtension.disabledOpacity,
+                child: TextFormField(
+                  // So the checkbox prefix may be clicked
+                  ignorePointers: false,
+                  enabled: enabled,
+                  style: textStyle.withColor(
+                    textStyle.color!.withOpacity(
+                      enabled ? 1 : themeExtension.disabledOpacity,
+                    ),
+                  ),
+                  decoration: InputDecoration(
+                    label: _label,
+                    contentPadding: themeExtension.contentPadding,
+                    enabledBorder: border,
+                    focusedBorder: border,
+                    disabledBorder: border.copyWith(
+                      borderSide: border.borderSide.copyWith(
+                        color: border.borderSide.color.withOpacity(
+                          themeExtension.disabledOpacity,
                         ),
                       ),
-                      decoration: InputDecoration(
-                        label: _label,
-                        contentPadding: themeExtension.contentPadding,
-                        enabledBorder: border,
-                        focusedBorder: border,
-                        disabledBorder: border.copyWith(
-                          borderSide: border.borderSide.copyWith(
-                            color: border.borderSide.color.withOpacity(
-                              themeExtension.disabledOpacity,
-                            ),
-                          ),
-                        ),
-                        isDense: themeExtension.isDense,
-                      ),
-                      cursorHeight: themeExtension.cursorHeight,
-                      validator: (_) => _configuration.validation?.call(_controller.text),
-                      inputFormatters: _formatters,
-                      onChanged: (String text) {
-                        _configuration.onChanged?.call(text);
-                        if (_configuration.searchRequest != null) {
-                          controller.finish();
-                        }
-                      },
-                      controller: _controller,
-                    );
-                  },
+                    ),
+                    isDense: themeExtension.isDense,
+                  ),
+                  cursorHeight: themeExtension.cursorHeight,
+                  validator: (_) => _configuration.validation?.call(_controller.text),
+                  inputFormatters: _formatters,
+                  onChanged: _configuration.onChanged,
+                  controller: _controller,
                 ),
               ),
             ),

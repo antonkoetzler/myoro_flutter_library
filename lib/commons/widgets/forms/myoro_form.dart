@@ -47,7 +47,7 @@ final class MyoroForm<T> extends StatefulWidget {
     super.key,
     this.controller,
     this.validation,
-    required this.request,
+    this.request,
     this.onSuccess,
     this.onError,
     required this.builder,

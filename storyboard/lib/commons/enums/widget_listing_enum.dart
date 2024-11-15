@@ -29,6 +29,7 @@ enum WidgetListingEnum {
   ]),
   inputs('Inputs', [
     myoroInputTitle,
+    myoroSearchInputTitle,
   ]),
   materialApps('Material apps', [
     myoroMaterialAppTitle,
@@ -54,44 +55,102 @@ enum WidgetListingEnum {
 
   const WidgetListingEnum(this.widgetCategory, this.widgetNames);
 
+  // App bars.
   static const myoroAppBarTitle = 'MyoroAppBar';
-  static const myoroDropdownTitle = 'MyoroDropdown';
+
+  // Bodies.
   static const myoroBodyTitle = 'MyoroBody';
-  static const myoroCheckboxTitle = 'MyoroCheckbox';
-  static const myoroGroupCheckboxTitle = 'MyoroGroupCheckbox';
+
+  // Buttons.
   static const myoroHoverButtonTitle = 'MyoroHoverButton';
   static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
+
+  // Checkboxes.
+  static const myoroCheckboxTitle = 'MyoroCheckbox';
+  static const myoroGroupCheckboxTitle = 'MyoroGroupCheckbox';
+
+  // Dividers.
   static const myoroBasicDividerTitle = 'MyoroBasicDivider';
   static const myoroResizeDividerTitle = 'MyoroResizeDivider';
+
+  // Dropdowns.
+  static const myoroDropdownTitle = 'MyoroDropdown';
+
+  // Forms.
   static const myoroFormTitle = 'MyoroForm';
+
+  // Inputs.
   static const myoroInputTitle = 'MyoroInput';
-  static const myoroResolverTitle = 'MyoroResolver';
+  static const myoroSearchInputTitle = 'MyoroSearchInput';
+
+  // Material apps.
   static const myoroMaterialAppTitle = 'MyoroMaterialApp';
+
+  // Menus.
   static const myoroMenuTitle = 'MyoroMenu';
+
+  // Resolvers.
+  static const myoroResolverTitle = 'MyoroResolver';
+
+  // Screens.
   static const myoroScreenTitle = 'MyoroScreen';
+
+  // Scrollables.
   static const myoroScrollableTitle = 'MyotoScrollable';
+
+  // Sliders.
   static const myoroSliderTitle = 'MyoroSlider';
 
   /// Widget that will be displayed in [_WidgetViewer].
   static Widget widgetViewerWidget(String widgetName) {
     return switch (widgetName) {
+      // App bars.
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
-      myoroDropdownTitle => const MyoroDropdownWidgetShowcase(),
+
+      // Bodies.
       myoroBodyTitle => throw UnimplementedError(),
-      myoroCheckboxTitle => const MyoroCheckboxWidgetShowcase(),
-      myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
+
+      // Buttons.
       myoroHoverButtonTitle => throw UnimplementedError(),
       myoroIconTextHoverButtonTitle => throw UnimplementedError(),
+
+      // Checkboxes.
+      myoroCheckboxTitle => const MyoroCheckboxWidgetShowcase(),
+      myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
+
+      // Dividers.
       myoroBasicDividerTitle => throw UnimplementedError(),
       myoroResizeDividerTitle => throw UnimplementedError(),
+
+      // Dropdowns.
+      myoroDropdownTitle => const MyoroDropdownWidgetShowcase(),
+
+      // Forms.
       myoroFormTitle => throw UnimplementedError(),
+
+      // Inputs.
       myoroInputTitle => const MyoroInputWidgetShowcase(),
+      myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
+
+      // Material apps.
       myoroMaterialAppTitle => throw UnimplementedError(),
+
+      // Menus.
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
+
+      // Resolvers.
       myoroResolverTitle => throw UnimplementedError(),
+
+      // Screens.
       myoroScreenTitle => throw UnimplementedError(),
+
+      // Scrollables.
       myoroScrollableTitle => throw UnimplementedError(),
+
+      // Sliders.
       myoroSliderTitle => const MyoroSliderWidgetShowcase(),
+
+      // Should never get here.
       _ => throw Exception('[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.'),
     };
   }

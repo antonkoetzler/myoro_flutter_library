@@ -134,6 +134,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       labelTextStyle: textTheme.headlineSmall!,
       checkboxSpacing: 10,
     ),
+    const MyoroSearchInputThemeExtension(),
   ];
 }
 
