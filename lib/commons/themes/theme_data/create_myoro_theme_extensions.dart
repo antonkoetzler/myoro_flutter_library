@@ -8,7 +8,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createAutocompleteThemeExtensions(),
     ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
-    ...createCheckboxThemeExtensions(textTheme),
+    ...createCheckboxThemeExtensions(colorScheme, textTheme),
     ...createDividerThemeExtensions(colorScheme),
     ...createFormThemeExtensions(),
     ...createInputThemeExtensions(colorScheme, textTheme),
@@ -46,7 +46,7 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
     MyoroHoverButtonThemeExtension(
       contentColor: colorScheme.onPrimary,
       backgroundColor: Colors.transparent,
-      borderRadius: kMyoroBorderRadius,
+      borderRadius: MyoroDecorationHelper.borderRadius,
       bordered: false,
       tooltipWaitDuration: kMyoroTooltipWaitDuration,
     ),
@@ -67,9 +67,11 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
   ];
 }
 
-List<ThemeExtension> createCheckboxThemeExtensions(TextTheme textTheme) {
+List<ThemeExtension> createCheckboxThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroCheckboxThemeExtension(
+      activeColor: colorScheme.onPrimary,
+      checkColor: colorScheme.primary,
       hoverColor: MyoroColorTheme.transparent,
       focusColor: MyoroColorTheme.transparent,
       splashRadius: 0,
@@ -95,7 +97,7 @@ List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
       secondary: colorScheme.onPrimary,
       resizeButtonShortValue: 10,
       resizeButtonLongValue: 30,
-      resizeButtonBorderRadius: kMyoroBorderRadius,
+      resizeButtonBorderRadius: MyoroDecorationHelper.borderRadius,
     ),
   ];
 }
@@ -116,7 +118,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
         ),
       ),
       outlinedBorder: OutlineInputBorder(
-        borderRadius: kMyoroInputBorderRadius,
+        borderRadius: MyoroDecorationHelper.inputBorderRadius,
         borderSide: BorderSide(
           width: kMyoroBorderLength,
           color: colorScheme.onPrimary,
@@ -125,10 +127,11 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
       isDense: true,
       cursorHeight: 20,
-      checkboxSpacing: 10,
+      disabledOpacity: 0.5,
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
       labelSpacing: 5,
+      prefixIconOffset: 10,
     ),
   ];
 }
@@ -140,7 +143,7 @@ List<ThemeExtension> createMaterialAppThemeExtensions() {
 }
 
 List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  const radius = Radius.circular(kMyoroBorderRadiusValue);
+  const radius = Radius.circular(kMyoroBorderRadius);
   final borderSide = BorderSide(width: 2, color: colorScheme.onPrimary);
 
   return [

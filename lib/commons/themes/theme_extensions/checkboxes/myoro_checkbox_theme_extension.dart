@@ -5,6 +5,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox]
 final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension> {
+  /// Background color of the checkbox when selected.
+  final Color activeColor;
+
+  /// Color of the checkmark.
+  final Color checkColor;
+
   /// Hover color of the [Checkbox].
   final Color hoverColor;
 
@@ -21,6 +27,8 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
   final double spacing;
 
   const MyoroCheckboxThemeExtension({
+    required this.activeColor,
+    required this.checkColor,
     required this.hoverColor,
     required this.focusColor,
     required this.splashRadius,
@@ -30,6 +38,8 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
 
   @override
   MyoroCheckboxThemeExtension copyWith({
+    Color? activeColor,
+    Color? checkColor,
     Color? hoverColor,
     Color? focusColor,
     double? splashRadius,
@@ -37,6 +47,8 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
     double? spacing,
   }) {
     return MyoroCheckboxThemeExtension(
+      activeColor: activeColor ?? this.activeColor,
+      checkColor: checkColor ?? this.checkColor,
       hoverColor: hoverColor ?? this.hoverColor,
       focusColor: focusColor ?? this.focusColor,
       splashRadius: splashRadius ?? this.splashRadius,
@@ -52,6 +64,8 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
   ) {
     if (other is! MyoroCheckboxThemeExtension) return this;
     return copyWith(
+      activeColor: Color.lerp(activeColor, other.activeColor, t),
+      checkColor: Color.lerp(checkColor, other.checkColor, t),
       hoverColor: Color.lerp(hoverColor, other.hoverColor, t),
       focusColor: Color.lerp(focusColor, other.focusColor, t),
       splashRadius: lerpDouble(splashRadius, other.splashRadius, t),

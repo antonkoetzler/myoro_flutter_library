@@ -20,11 +20,14 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Height of the selection cursor.
   final double cursorHeight;
 
-  /// Spacing between the checkbox and input.
-  final double checkboxSpacing;
+  /// Opacity applied when the input is disabled.
+  final double disabledOpacity;
 
   /// Text style of the input.
   final TextStyle inputTextStyle;
+
+  /// Offset of [TextFormField.prefixIcon] so icons dont clip a [MyoroInputStyleEnum.outlined]'s border.
+  final double prefixIconOffset;
 
   /// Text style of [_Label].
   final TextStyle labelTextStyle;
@@ -38,8 +41,9 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     required this.contentPadding,
     required this.isDense,
     required this.cursorHeight,
-    required this.checkboxSpacing,
+    required this.disabledOpacity,
     required this.inputTextStyle,
+    required this.prefixIconOffset,
     required this.labelTextStyle,
     required this.labelSpacing,
   });
@@ -51,8 +55,9 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     EdgeInsets? contentPadding,
     bool? isDense,
     double? cursorHeight,
-    double? checkboxSpacing,
+    double? disabledOpacity,
     TextStyle? inputTextStyle,
+    double? prefixIconOffset,
     TextStyle? labelTextStyle,
     double? labelSpacing,
   }) {
@@ -62,8 +67,9 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       contentPadding: contentPadding ?? this.contentPadding,
       isDense: isDense ?? this.isDense,
       cursorHeight: cursorHeight ?? this.cursorHeight,
-      checkboxSpacing: checkboxSpacing ?? this.checkboxSpacing,
+      disabledOpacity: disabledOpacity ?? this.disabledOpacity,
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
+      prefixIconOffset: prefixIconOffset ?? this.prefixIconOffset,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       labelSpacing: labelSpacing ?? this.labelSpacing,
     );
@@ -81,8 +87,9 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       isDense: MyoroLerpHelper.lerp(isDense, other.isDense, t),
       cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
-      checkboxSpacing: lerpDouble(checkboxSpacing, other.checkboxSpacing, t),
+      disabledOpacity: lerpDouble(disabledOpacity, other.disabledOpacity, t),
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
+      prefixIconOffset: lerpDouble(prefixIconOffset, other.prefixIconOffset, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       labelSpacing: lerpDouble(labelSpacing, other.labelSpacing, t),
     );

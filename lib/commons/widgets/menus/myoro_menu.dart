@@ -46,23 +46,26 @@ final class MyoroMenu extends StatelessWidget {
         )
         .toList();
 
-    return Container(
-      decoration: BoxDecoration(
-        color: themeExtension.backgroundColor,
-        border: themeExtension.border,
-        borderRadius: themeExtension.borderRadius,
-      ),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: maxHeight ?? themeExtension.maxHeight,
-          maxWidth: maxWidth ?? themeExtension.maxWidth,
+    return ClipRRect(
+      borderRadius: themeExtension.borderRadius,
+      child: Container(
+        decoration: BoxDecoration(
+          color: themeExtension.backgroundColor,
+          border: themeExtension.border,
+          borderRadius: themeExtension.borderRadius,
         ),
-        child: children.isNotEmpty
-            ? MyoroScrollable(
-                scrollableType: MyoroScrollableEnum.customScrollView,
-                children: children,
-              )
-            : const _EmptyMenuDialog(),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: maxHeight ?? themeExtension.maxHeight,
+            maxWidth: maxWidth ?? themeExtension.maxWidth,
+          ),
+          child: children.isNotEmpty
+              ? MyoroScrollable(
+                  scrollableType: MyoroScrollableEnum.customScrollView,
+                  children: children,
+                )
+              : const _EmptyMenuDialog(),
+        ),
       ),
     );
   }

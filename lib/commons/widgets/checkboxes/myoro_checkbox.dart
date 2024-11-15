@@ -75,6 +75,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
               height: 20,
               child: Checkbox(
                 value: value,
+                activeColor: themeExtension.activeColor,
+                checkColor: themeExtension.checkColor,
                 hoverColor: themeExtension.hoverColor,
                 focusColor: themeExtension.focusColor,
                 splashRadius: themeExtension.splashRadius,

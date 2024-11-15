@@ -27,6 +27,7 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroMenuWidgetShowcaseBloc, MyoroMenuWidgetShowcaseState>(
       builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu(
+          iconSize: state.iconSize,
           items: List.generate(
             state.itemCount,
             (_) => MyoroMenuItem.fake().copyWith(
@@ -47,8 +48,36 @@ final class _WidgetOptions extends StatelessWidget {
     return const Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        _IconSizeOption(),
         _ItemCountOption(),
       ],
+    );
+  }
+}
+
+final class _IconSizeOption extends StatelessWidget {
+  const _IconSizeOption();
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = context.resolveBloc<MyoroMenuWidgetShowcaseBloc>();
+
+    return MyoroInput.number(
+      max: 300,
+      configuration: MyoroInputConfiguration(
+        inputStyle: MyoroInputStyleEnum.outlined,
+        label: 'Icon size',
+        checkboxOnChanged: (bool enabled, String text) => bloc.add(
+          SetIconSizeEvent(
+            enabled ? double.parse(text) : null,
+          ),
+        ),
+        onChanged: (String text) => bloc.add(
+          SetIconSizeEvent(
+            double.parse(text),
+          ),
+        ),
+      ),
     );
   }
 }

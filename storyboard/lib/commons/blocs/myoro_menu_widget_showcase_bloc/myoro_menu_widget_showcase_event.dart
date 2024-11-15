@@ -5,6 +5,12 @@ sealed class MyoroMenuWidgetShowcaseEvent {
   const MyoroMenuWidgetShowcaseEvent();
 }
 
+final class SetIconSizeEvent extends MyoroMenuWidgetShowcaseEvent {
+  final double? iconSize;
+
+  const SetIconSizeEvent(this.iconSize);
+}
+
 final class SetItemCountEvent extends MyoroMenuWidgetShowcaseEvent {
   final int itemCount;
 

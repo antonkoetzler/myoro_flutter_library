@@ -29,6 +29,7 @@ enum WidgetListingEnum {
   ]),
   inputs('Inputs', [
     myoroInputTitle,
+    myoroDatePickerInputTitle,
   ]),
   materialApps('Material apps', [
     myoroMaterialAppTitle,
@@ -65,6 +66,7 @@ enum WidgetListingEnum {
   static const myoroResizeDividerTitle = 'MyoroResizeDivider';
   static const myoroFormTitle = 'MyoroForm';
   static const myoroInputTitle = 'MyoroInput';
+  static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
   static const myoroResolverTitle = 'MyoroResolver';
   static const myoroMaterialAppTitle = 'MyoroMaterialApp';
   static const myoroMenuTitle = 'MyoroMenu';
@@ -86,6 +88,7 @@ enum WidgetListingEnum {
       myoroResizeDividerTitle => throw UnimplementedError(),
       myoroFormTitle => throw UnimplementedError(),
       myoroInputTitle => const MyoroInputWidgetShowcase(),
+      myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcase(),
       myoroMaterialAppTitle => throw UnimplementedError(),
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
       myoroResolverTitle => throw UnimplementedError(),

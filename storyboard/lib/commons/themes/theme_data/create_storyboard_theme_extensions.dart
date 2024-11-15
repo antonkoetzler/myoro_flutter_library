@@ -15,16 +15,16 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
-      widgetWrapperBorderRadius: kMyoroBorderRadius,
+      widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
       widgetWrapperBorder: Border.all(
         width: 2,
         color: MyoroColorTheme.attention,
       ),
-      widgetOptionsContentPadding: const EdgeInsets.all(10),
-      widgetOptionsContentAlignment: Alignment.topCenter,
     ),
     const MyoroAppBarWidgetShowcaseThemeExtension(),
-    const MyoroMenuWidgetShowcaseThemeExtension(),
+    const MyoroMenuWidgetShowcaseThemeExtension(
+      widgetOptionsSpacing: 20,
+    ),
     MyoroSliderWidgetShowcaseThemeExtension(
       widgetSliderValueTextStyle: textTheme.headlineSmall!,
       widgetSliderLabelSpacing: 5,

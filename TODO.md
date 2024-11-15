@@ -1,8 +1,7 @@
 # TODO
 
-1. Make the dmenu widget;
-1. Implement dropdown/autocomplete;
 1. Finish input (make inputs have date pickers, dropdowns for suggestions, etc);
+1. Implement dropdown/autocomplete;
 1. Implement radiobox component;
 1. Implement group of radio box component;
 1. Implement modals;

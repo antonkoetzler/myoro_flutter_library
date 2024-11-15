@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-// TODO: Finish this input function with the suggestions
-
-/// Input widget.
+/// Normal input widget.
 final class MyoroInput extends StatefulWidget {
   /// Configuration of the input.
   final MyoroInputConfiguration configuration;
@@ -73,6 +71,11 @@ final class _MyoroInputState extends State<MyoroInput> {
   /// is enabled or not if the checkbox is enabled.
   late final ValueNotifier<bool> _enabledNotifier;
 
+  Widget? get _prefixIcon {
+    if (_configuration.checkboxOnChanged == null) return null;
+    return _Checkbox(_configuration, _controller, _enabledNotifier);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -95,60 +98,79 @@ final class _MyoroInputState extends State<MyoroInput> {
     return ValueListenableBuilder(
       valueListenable: _enabledNotifier,
       builder: (_, bool enabled, __) {
-        return Row(
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (_configuration.checkboxOnChanged != null) ...[
-              MyoroCheckbox(
-                initialValue: enabled,
-                onChanged: (bool value) {
-                  _configuration.checkboxOnChanged!.call(value, _controller.text);
-                  _enabledNotifier.value = value;
-                },
+            if (_configuration.label != null) ...[
+              Text(
+                _configuration.label!,
+                style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
               ),
-              SizedBox(width: themeExtension.checkboxSpacing),
+              SizedBox(height: themeExtension.labelSpacing),
             ],
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (_configuration.label != null) ...[
-                    Text(
-                      _configuration.label!,
-                      style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
-                    ),
-                    SizedBox(height: themeExtension.labelSpacing),
-                  ],
-                  Flexible(
-                    child: TextFormField(
-                      enabled: enabled,
-                      style: textStyle.withColor(
-                        textStyle.color!.withOpacity(enabled ? 1 : 0.5),
+            Flexible(
+              child: TextFormField(
+                // So the checkbox prefix may be clicked
+                ignorePointers: false,
+                enabled: enabled,
+                style: textStyle.withColor(
+                  textStyle.color!.withOpacity(
+                    enabled ? 1 : themeExtension.disabledOpacity,
+                  ),
+                ),
+                decoration: InputDecoration(
+                  contentPadding: themeExtension.contentPadding,
+                  enabledBorder: border,
+                  focusedBorder: border,
+                  disabledBorder: border.copyWith(
+                    borderSide: border.borderSide.copyWith(
+                      color: border.borderSide.color.withOpacity(
+                        themeExtension.disabledOpacity,
                       ),
-                      decoration: InputDecoration(
-                        contentPadding: themeExtension.contentPadding,
-                        enabledBorder: border,
-                        focusedBorder: border,
-                        disabledBorder: border.copyWith(
-                          borderSide: border.borderSide.copyWith(
-                            color: border.borderSide.color.withOpacity(0.5),
-                          ),
-                        ),
-                        isDense: themeExtension.isDense,
-                      ),
-                      cursorHeight: themeExtension.cursorHeight,
-                      validator: (_) => _configuration.validation?.call(_controller.text),
-                      inputFormatters: _formatters,
-                      onChanged: _configuration.onChanged,
-                      controller: _controller,
                     ),
                   ),
-                ],
+                  isDense: themeExtension.isDense,
+                  prefixIcon: _prefixIcon,
+                ),
+                cursorHeight: themeExtension.cursorHeight,
+                validator: (_) => _configuration.validation?.call(_controller.text),
+                inputFormatters: _formatters,
+                onChanged: _configuration.onChanged,
+                controller: _controller,
               ),
             ),
           ],
         );
       },
+    );
+  }
+}
+
+final class _Checkbox extends StatelessWidget {
+  final MyoroInputConfiguration configuration;
+  final TextEditingController controller;
+  final ValueNotifier<bool> enabledNotifier;
+
+  const _Checkbox(
+    this.configuration,
+    this.controller,
+    this.enabledNotifier,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        left: context.resolveThemeExtension<MyoroInputThemeExtension>().prefixIconOffset,
+      ),
+      child: MyoroCheckbox(
+        initialValue: enabledNotifier.value,
+        onChanged: (bool value) {
+          configuration.checkboxOnChanged!.call(value, controller.text);
+          enabledNotifier.value = value;
+        },
+      ),
     );
   }
 }
