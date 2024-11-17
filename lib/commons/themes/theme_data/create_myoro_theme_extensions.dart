@@ -45,7 +45,7 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
   return [
     MyoroHoverButtonThemeExtension(
       contentColor: colorScheme.onPrimary,
-      backgroundColor: Colors.transparent,
+      backgroundColor: colorScheme.primary,
       borderRadius: MyoroDecorationHelper.borderRadius,
       bordered: false,
       tooltipWaitDuration: kMyoroTooltipWaitDuration,

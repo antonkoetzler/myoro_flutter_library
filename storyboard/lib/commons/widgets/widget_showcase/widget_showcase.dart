@@ -4,35 +4,53 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Widget that contains a widget on the left, then controls on the right to
-/// experiment with the different options of the widget. Used in [StoryboardBody].
-final class WidgetShowcase extends StatelessWidget {
+/// experiment with the different options of the _ Used in [StoryboardBody].
+final class WidgetShowcase extends StatefulWidget {
   /// Widget that will be on the left.
   final Widget widget;
 
   /// Options to experiment on the widget that will be on the right.
-  final Widget widgetOptions;
+  final Widget? widgetOptions;
 
   const WidgetShowcase({
     super.key,
     required this.widget,
-    required this.widgetOptions,
+    this.widgetOptions,
   });
+
+  @override
+  State<WidgetShowcase> createState() => _WidgetShowcaseState();
+}
+
+final class _WidgetShowcaseState extends State<WidgetShowcase> {
+  Widget get _widget => widget.widget;
+  Widget? get _widgetOptions => widget.widgetOptions;
+
+  @override
+  void initState() {
+    super.initState();
+    context.resolveBloc<WidgetShowcaseBloc>().add(
+          ToggleWidgetShowcaseDisplayEvent(
+            enabled: _widgetOptions != null,
+          ),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: _WidgetWrapper(widget)),
+        Expanded(child: _WidgetWrapper(_widget)),
         BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
           builder: (_, WidgetShowcaseState state) {
-            if (!state.displayingWidgetOptions) return const SizedBox.shrink();
+            if (_widgetOptions == null || !state.displayingWidgetOptions) return const SizedBox.shrink();
 
             return Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const MyoroBasicDivider(Axis.vertical),
-                _WidgetOptions(widgetOptions),
+                _WidgetOptions(_widgetOptions!),
               ],
             );
           },

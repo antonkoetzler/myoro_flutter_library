@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Validation function that is executed before [MyoroFormRequest].
-typedef MyoroFormValidation = String Function();
+typedef MyoroFormValidation = String? Function();
 
 /// Request that will be executed after the form validation process is successful.
 typedef MyoroFormRequest<T> = FutureOr<T> Function();

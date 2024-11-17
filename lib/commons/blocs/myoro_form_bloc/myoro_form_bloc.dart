@@ -22,19 +22,17 @@ final class MyoroFormBloc<T> extends Bloc<MyoroFormEvent, MyoroFormState<T>> {
       // Validation function passed in [MyoroForm].
       final String? validationErrorMessage = validation?.call();
 
-      if (validationErrorMessage != null) {
+      // Flutter's [Form] validation call, this will check validation functions
+      // in, for example, a [MyoroInput] with [MyoroInput.validation] provided.
+      final bool formKeyValidation = key.currentState!.validate();
+
+      if (validationErrorMessage != null || !formKeyValidation) {
         emit(
           state.copyWith(
             status: MyoroRequestEnum.error,
-            errorMessage: validationErrorMessage,
+            errorMessage: !formKeyValidation ? 'Form not completed.' : validationErrorMessage,
           ),
         );
-        return;
-      }
-
-      // Flutter's [Form] validation call, this will check validation functions
-      // in, for example, a [MyoroInput] with [MyoroInput.validation] provided.
-      if (key.currentState!.validate() == false) {
         return;
       }
 

@@ -5,8 +5,10 @@ sealed class WidgetShowcaseEvent {
   const WidgetShowcaseEvent();
 }
 
-final class EnableWidgetShowcaseDisplayEvent extends WidgetShowcaseEvent {
-  const EnableWidgetShowcaseDisplayEvent();
+final class ToggleWidgetShowcaseDisplayEvent extends WidgetShowcaseEvent {
+  final bool enabled;
+
+  const ToggleWidgetShowcaseDisplayEvent({required this.enabled});
 }
 
 final class ToggleWidgetOptionsDisplayEvent extends WidgetShowcaseEvent {

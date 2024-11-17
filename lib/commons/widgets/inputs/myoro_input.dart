@@ -96,8 +96,8 @@ final class _MyoroInputState extends State<MyoroInput> {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
     final border = _configuration.inputStyle.getBorder(context);
+    final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
     return ValueListenableBuilder(
       valueListenable: _enabledNotifier,
@@ -125,6 +125,12 @@ final class _MyoroInputState extends State<MyoroInput> {
                   ),
                   decoration: InputDecoration(
                     label: _label,
+                    hintText: _configuration.placeholder,
+                    hintStyle: textStyle.withColor(
+                      textStyle.color!.withOpacity(
+                        themeExtension.disabledOpacity,
+                      ),
+                    ),
                     contentPadding: themeExtension.contentPadding,
                     enabledBorder: border,
                     focusedBorder: border,

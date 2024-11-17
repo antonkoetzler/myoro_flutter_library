@@ -25,13 +25,9 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          // mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IntrinsicWidth(
-              // width: 300,
-              child: _WidgetListing(_widgetLoadedNotifier),
-            ),
+            IntrinsicWidth(child: _WidgetListing(_widgetLoadedNotifier)),
             const MyoroBasicDivider(Axis.vertical),
           ],
         ),
@@ -58,12 +54,10 @@ final class _WidgetListing extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               _WidgetListingCategory(
-                  category: value.widgetCategory,
-                  widgetNames: value.widgetNames,
-                  onPressWidget: (String widgetName) {
-                    context.resolveBloc<WidgetShowcaseBloc>().add(const EnableWidgetShowcaseDisplayEvent());
-                    widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName);
-                  }),
+                category: value.widgetCategory,
+                widgetNames: value.widgetNames,
+                onPressWidget: (String widgetName) => widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
+              ),
               if (value != WidgetListingEnum.values.last)
                 MyoroBasicDivider(
                   Axis.horizontal,

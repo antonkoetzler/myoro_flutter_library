@@ -29,6 +29,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Label displayed at the top of the input.
   final String? label;
 
+  /// Placeholder of the input (hint text).
+  final String? placeholder;
+
   /// Text style of the label.
   final TextStyle? labelTextStyle;
 
@@ -57,6 +60,7 @@ final class MyoroInputConfiguration extends Equatable {
     required this.inputStyle,
     this.inputTextStyle,
     this.label,
+    this.placeholder,
     this.labelTextStyle,
     this.enabled,
     this.checkboxOnChanged,
@@ -69,6 +73,7 @@ final class MyoroInputConfiguration extends Equatable {
     MyoroInputStyleEnum? inputStyle,
     TextStyle? inputTextStyle,
     String? label,
+    String? placeholder,
     TextStyle? labelTextStyle,
     bool? enabled,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
@@ -80,6 +85,7 @@ final class MyoroInputConfiguration extends Equatable {
       inputStyle: inputStyle ?? this.inputStyle,
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
       label: label ?? this.label,
+      placeholder: placeholder ?? this.placeholder,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       enabled: enabled ?? this.enabled,
       checkboxOnChanged: checkboxOnChanged ?? this.checkboxOnChanged,
@@ -95,6 +101,7 @@ final class MyoroInputConfiguration extends Equatable {
       '  inputStyle: $inputStyle,\n'
       '  inputTextStyle: $inputTextStyle,\n'
       '  label: $label,\n'
+      '  placeholder: $placeholder,\n'
       '  labelTextStyle: $labelTextStyle,\n'
       '  enabled: $enabled,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
@@ -109,6 +116,7 @@ final class MyoroInputConfiguration extends Equatable {
       inputStyle,
       inputTextStyle,
       label,
+      placeholder,
       labelTextStyle,
       enabled,
       checkboxOnChanged,

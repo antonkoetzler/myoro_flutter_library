@@ -17,4 +17,5 @@
 1. Dart tool for auto-formatting;
 1. Documentation;
 1. Contributing documentation;
+1. Add debounce to inputs and buttons;
 1. Create a logo.

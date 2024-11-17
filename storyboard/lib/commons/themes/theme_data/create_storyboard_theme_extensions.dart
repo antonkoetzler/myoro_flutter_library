@@ -22,6 +22,16 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       ),
     ),
     const MyoroAppBarWidgetShowcaseThemeExtension(),
+    MyoroFormWidgetShowcaseThemeExtension(
+      widgetMainAxisAlignment: MainAxisAlignment.center,
+      widgetInputStyle: MyoroInputStyleEnum.outlined,
+      widgetSpacing: 10,
+      submitButtonMainAxisAlignment: MainAxisAlignment.center,
+      submitButtonBordered: true,
+      resultTextStyle: textTheme.headlineLarge!,
+      successColor: Colors.green,
+      errorColor: Colors.red,
+    ),
     const MyoroMenuWidgetShowcaseThemeExtension(
       widgetOptionsSpacing: 20,
     ),
