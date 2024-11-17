@@ -125,6 +125,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
         ),
       ),
       backgroundColor: colorScheme.primary,
+      errorBorderColor: colorScheme.error,
       borderRadius: MyoroDecorationHelper.borderRadius,
       contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
       isDense: true,
@@ -132,9 +133,13 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       disabledOpacity: 0.5,
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
-      checkboxSpacing: 10,
+      spacing: 10,
     ),
-    const MyoroSearchInputThemeExtension(),
+    const MyoroSearchInputThemeExtension(
+      spacing: 10,
+      searchButtonIcon: Icons.search,
+      searchButtonBordered: true,
+    ),
   ];
 }
 

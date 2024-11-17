@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Text that triggers in error in the [MyoroForm].
 const _errorText = '123';
+
+/// Form & input validation.
+String? _validation(TextEditingController controller) {
+  if (controller.text == _errorText) return 'Error message ($_errorText) provided.';
+  return null;
+}
 
 /// Model that returns the text and text color of the form's result.
 typedef _FormResult = (String text, Color textColor);
@@ -28,11 +33,6 @@ class _WidgetState extends State<_Widget> {
   final _controller = TextEditingController();
   final _formResultTextNotifier = ValueNotifier<_FormResult?>(null);
 
-  String? _validation() {
-    if (_controller.text == _errorText) return 'Error message ($_errorText) provided.';
-    return null;
-  }
-
   @override
   void dispose() {
     _controller.dispose();
@@ -45,7 +45,7 @@ class _WidgetState extends State<_Widget> {
     final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
 
     return MyoroForm<_FormResult>(
-      validation: _validation,
+      validation: () => _validation(_controller),
       request: () => ('Form finish successfully!', themeExtension.successColor),
       onSuccess: (_FormResult? result) => _formResultTextNotifier.value = result,
       onError: (String errorMessage) => _formResultTextNotifier.value = (errorMessage, themeExtension.errorColor),
@@ -89,6 +89,7 @@ final class _Input extends StatelessWidget {
         controller: controller,
         inputStyle: context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().widgetInputStyle,
         placeholder: 'Type "$_errorText" in the input to display an error.',
+        validation: (_) => _validation(controller),
       ),
     );
   }

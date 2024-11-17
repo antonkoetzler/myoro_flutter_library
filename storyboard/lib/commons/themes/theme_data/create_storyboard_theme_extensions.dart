@@ -14,12 +14,12 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
     WidgetShowcaseThemeExtension(
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
-      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
       widgetWrapperBorder: Border.all(
         width: 2,
         color: MyoroColorTheme.attention,
       ),
+      wrapperWrapperAlignment: Alignment.center,
     ),
     const MyoroAppBarWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(

@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,7 +9,7 @@ final class MyoroSearchInputWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WidgetShowcase(
+    return const WidgetShowcase(
       widget: _Widget(),
       widgetOptions: _WidgetOptions(),
     );
@@ -20,11 +21,17 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroSearchInput(
+    return MyoroSearchInput<String>(
       configuration: const MyoroInputConfiguration(
         inputStyle: MyoroInputStyleEnum.outlined,
       ),
-      request: (_) => [],
+      request: (_) async {
+        await Future.delayed(const Duration(milliseconds: 300));
+        return List.generate(
+          faker.randomGenerator.integer(50),
+          (_) => faker.randomGenerator.string(150),
+        );
+      },
     );
   }
 }

@@ -14,6 +14,9 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Background color of the input.
   final Color backgroundColor;
 
+  /// Color of the border when said input's [validation] function returns an error.
+  final Color errorBorderColor;
+
   /// Border radius of the [Container] storing the background color.
   final BorderRadius borderRadius;
 
@@ -32,8 +35,8 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Text style of the input.
   final TextStyle inputTextStyle;
 
-  /// Spacing of the checkbox and input.
-  final double checkboxSpacing;
+  /// Spacing between the input and the prefix/suffix widgets.
+  final double spacing;
 
   /// Text style of [_Label].
   final TextStyle labelTextStyle;
@@ -42,13 +45,14 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     required this.underlinedBorder,
     required this.outlinedBorder,
     required this.backgroundColor,
+    required this.errorBorderColor,
     required this.borderRadius,
     required this.contentPadding,
     required this.isDense,
     required this.cursorHeight,
     required this.disabledOpacity,
     required this.inputTextStyle,
-    required this.checkboxSpacing,
+    required this.spacing,
     required this.labelTextStyle,
   });
 
@@ -57,26 +61,28 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     InputBorder? underlinedBorder,
     InputBorder? outlinedBorder,
     Color? backgroundColor,
+    Color? errorBorderColor,
     BorderRadius? borderRadius,
     EdgeInsets? contentPadding,
     bool? isDense,
     double? cursorHeight,
     double? disabledOpacity,
     TextStyle? inputTextStyle,
-    double? checkboxSpacing,
+    double? spacing,
     TextStyle? labelTextStyle,
   }) {
     return MyoroInputThemeExtension(
       underlinedBorder: underlinedBorder ?? this.underlinedBorder,
       outlinedBorder: outlinedBorder ?? this.outlinedBorder,
       backgroundColor: backgroundColor ?? this.backgroundColor,
+      errorBorderColor: errorBorderColor ?? this.errorBorderColor,
       borderRadius: borderRadius ?? this.borderRadius,
       contentPadding: contentPadding ?? this.contentPadding,
       isDense: isDense ?? this.isDense,
       cursorHeight: cursorHeight ?? this.cursorHeight,
       disabledOpacity: disabledOpacity ?? this.disabledOpacity,
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
-      checkboxSpacing: checkboxSpacing ?? this.checkboxSpacing,
+      spacing: spacing ?? this.spacing,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
     );
   }
@@ -91,13 +97,14 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       underlinedBorder: MyoroLerpHelper.lerp(underlinedBorder, other.underlinedBorder, t),
       outlinedBorder: MyoroLerpHelper.lerp(outlinedBorder, other.outlinedBorder, t),
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       isDense: MyoroLerpHelper.lerp(isDense, other.isDense, t),
       cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
       disabledOpacity: lerpDouble(disabledOpacity, other.disabledOpacity, t),
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
-      checkboxSpacing: lerpDouble(checkboxSpacing, other.checkboxSpacing, t),
+      spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
     );
   }

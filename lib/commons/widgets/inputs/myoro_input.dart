@@ -106,7 +106,7 @@ final class _MyoroInputState extends State<MyoroInput> {
           children: [
             if (_configuration.checkboxOnChanged != null) ...[
               _Checkbox(_configuration, _controller, _enabledNotifier),
-              SizedBox(width: themeExtension.checkboxSpacing),
+              SizedBox(width: themeExtension.spacing),
             ],
             Expanded(
               child: Container(
@@ -134,6 +134,11 @@ final class _MyoroInputState extends State<MyoroInput> {
                     contentPadding: themeExtension.contentPadding,
                     enabledBorder: border,
                     focusedBorder: border,
+                    errorBorder: border.copyWith(
+                      borderSide: border.borderSide.copyWith(
+                        color: themeExtension.errorBorderColor,
+                      ),
+                    ),
                     disabledBorder: border.copyWith(
                       borderSide: border.borderSide.copyWith(
                         color: border.borderSide.color.withOpacity(
@@ -146,11 +151,16 @@ final class _MyoroInputState extends State<MyoroInput> {
                   cursorHeight: themeExtension.cursorHeight,
                   validator: (_) => _configuration.validation?.call(_controller.text),
                   inputFormatters: _formatters,
+                  onFieldSubmitted: _configuration.onFieldSubmitted,
                   onChanged: _configuration.onChanged,
                   controller: _controller,
                 ),
               ),
             ),
+            if (_configuration.suffix != null) ...[
+              SizedBox(width: themeExtension.spacing),
+              _configuration.suffix!,
+            ],
           ],
         );
       },
@@ -191,20 +201,6 @@ final class _Label extends StatelessWidget {
     return Text(
       configuration.label!,
       style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
-    );
-  }
-}
-
-final class _SearchResults extends StatelessWidget {
-  const _SearchResults();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 400,
-      height: 400,
-      color: Colors.green,
-      child: const Text('im a gummy bear a yummy gummy bear'),
     );
   }
 }

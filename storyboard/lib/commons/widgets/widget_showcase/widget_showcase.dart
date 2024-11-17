@@ -73,8 +73,8 @@ final class _WidgetWrapper extends StatelessWidget {
       padding: themeExtension.widgetWrapperPadding,
       child: Container(
         height: double.infinity,
+        alignment: themeExtension.wrapperWrapperAlignment,
         decoration: BoxDecoration(
-          color: themeExtension.widgetWrapperBackgroundColor,
           borderRadius: themeExtension.widgetWrapperBorderRadius,
           border: themeExtension.widgetWrapperBorder,
         ),

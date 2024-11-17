@@ -15,6 +15,9 @@ typedef MyoroInputSearchRequest = FutureOr<List<String>> Function(String text);
 /// Function executed when a [Form] is triggered.
 typedef MyoroInputValidation = String? Function(String text);
 
+/// Function executed when the enter key is pressed.
+typedef MyoroInputOnFieldSubmitted = void Function(String text);
+
 /// Function executed when the input changed.
 typedef MyoroInputOnChanged = void Function(String text);
 
@@ -35,6 +38,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Text style of the label.
   final TextStyle? labelTextStyle;
 
+  /// Suffix [Widget] (i.e. a search button).
+  final Widget? suffix;
+
   /// Whether the input is disabled (will be tilted for visual feedback).
   final bool? enabled;
 
@@ -50,6 +56,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Aka, called when a [MyoroFormController.finish] is executed.
   final MyoroInputValidation? validation;
 
+  /// Function executed when enter is pressed.
+  final MyoroInputOnFieldSubmitted? onFieldSubmitted;
+
   /// Function executed when the input is changed.
   final MyoroInputOnChanged? onChanged;
 
@@ -62,9 +71,11 @@ final class MyoroInputConfiguration extends Equatable {
     this.label,
     this.placeholder,
     this.labelTextStyle,
+    this.suffix,
     this.enabled,
     this.checkboxOnChanged,
     this.validation,
+    this.onFieldSubmitted,
     this.onChanged,
     this.controller,
   });
@@ -75,9 +86,11 @@ final class MyoroInputConfiguration extends Equatable {
     String? label,
     String? placeholder,
     TextStyle? labelTextStyle,
+    Widget? suffix,
     bool? enabled,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
     MyoroInputValidation? validation,
+    MyoroInputOnFieldSubmitted? onFieldSubmitted,
     MyoroInputOnChanged? onChanged,
     TextEditingController? controller,
   }) {
@@ -87,9 +100,11 @@ final class MyoroInputConfiguration extends Equatable {
       label: label ?? this.label,
       placeholder: placeholder ?? this.placeholder,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
+      suffix: suffix ?? this.suffix,
       enabled: enabled ?? this.enabled,
       checkboxOnChanged: checkboxOnChanged ?? this.checkboxOnChanged,
       validation: validation ?? this.validation,
+      onFieldSubmitted: onFieldSubmitted ?? this.onFieldSubmitted,
       onChanged: onChanged ?? this.onChanged,
       controller: controller ?? this.controller,
     );
@@ -103,9 +118,11 @@ final class MyoroInputConfiguration extends Equatable {
       '  label: $label,\n'
       '  placeholder: $placeholder,\n'
       '  labelTextStyle: $labelTextStyle,\n'
+      '  suffix: $suffix,\n'
       '  enabled: $enabled,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
       '  validation: $validation,\n'
+      '  onFieldSubmitted: $onFieldSubmitted,\n'
       '  onChanged: $onChanged,\n'
       '  controller: $controller,\n'
       ');';
@@ -118,9 +135,11 @@ final class MyoroInputConfiguration extends Equatable {
       label,
       placeholder,
       labelTextStyle,
+      suffix,
       enabled,
       checkboxOnChanged,
       validation,
+      onFieldSubmitted,
       onChanged,
       controller,
     ];

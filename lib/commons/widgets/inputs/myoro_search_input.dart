@@ -51,17 +51,67 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     return MyoroForm<List<T>>(
       controller: _formController,
       request: () async => await _request.call(_textController.text),
-      builder: (result, status, controller) {
-        return MyoroInput(
-          configuration: _configuration.copyWith(
-            controller: _textController,
-            onChanged: (String text) {
-              _configuration.onChanged?.call(text);
-              _formController.finish();
-            },
-          ),
+      builder: (results, status, controller) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            MyoroInput(
+              configuration: _configuration.copyWith(
+                controller: _textController,
+                suffix: _SearchButton(_formController),
+                onFieldSubmitted: (_) => _formController.finish(),
+              ),
+            ),
+            if (results?.isNotEmpty == true) ...[
+              SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
+              _SearchSection(results, status),
+            ],
+          ],
         );
       },
+    );
+  }
+}
+
+final class _SearchButton extends StatelessWidget {
+  final MyoroFormController formController;
+
+  const _SearchButton(this.formController);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+
+    return MyoroIconTextHoverButton(
+      icon: themeExtension.searchButtonIcon,
+      bordered: themeExtension.searchButtonBordered,
+      onPressed: () => formController.finish(),
+    );
+  }
+}
+
+final class _SearchSection<T> extends StatelessWidget {
+  final List<T> results;
+  final MyoroRequestEnum status;
+
+  const _SearchSection(this.results, this.status);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: MyoroLoadingCircle.
+    if (status.isLoading) return const Text('Puppies');
+
+    return Container(
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.pink,
+        border: MyoroDecorationHelper.border(context),
+      ),
+      child: const Text(
+        'Time to build.',
+        style: TextStyle(color: Colors.black),
+      ),
     );
   }
 }
