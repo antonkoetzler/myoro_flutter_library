@@ -6,6 +6,7 @@ export 'dividers/exports.dart';
 export 'dropdowns/exports.dart';
 export 'forms/exports.dart';
 export 'inputs/exports.dart';
+export 'loaders/exports.dart';
 export 'material_apps/exports.dart';
 export 'menus/exports.dart';
 export 'resolvers/exports.dart';

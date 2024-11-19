@@ -32,6 +32,10 @@ final class _Widget extends StatelessWidget {
           (_) => faker.randomGenerator.string(150),
         );
       },
+      itemBuilder: (String item) => MyoroMenuItem(
+        text: item,
+        onPressed: () {},
+      ),
     );
   }
 }

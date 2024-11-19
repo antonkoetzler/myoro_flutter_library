@@ -31,6 +31,9 @@ enum WidgetListingEnum {
     myoroInputTitle,
     myoroSearchInputTitle,
   ]),
+  loaders('Loaders', [
+    myoroCircularLoaderTitle,
+  ]),
   materialApps('Material apps', [
     myoroMaterialAppTitle,
   ]),
@@ -83,6 +86,9 @@ enum WidgetListingEnum {
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
 
+  // Loaders.
+  static const myoroCircularLoaderTitle = 'MyoroCircularLoader';
+
   // Material apps.
   static const myoroMaterialAppTitle = 'MyoroMaterialApp';
 
@@ -131,6 +137,9 @@ enum WidgetListingEnum {
       // Inputs.
       myoroInputTitle => const MyoroInputWidgetShowcase(),
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
+
+      // Loaders.
+      myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),
 
       // Material apps.
       myoroMaterialAppTitle => throw UnimplementedError(),

@@ -18,3 +18,16 @@ const kMyoroTestIcons = [
   Icons.access_time,
   Icons.accessibility,
 ];
+
+/// Colors for testing.
+const kMyoroTestColors = [
+  Colors.red,
+  Colors.green,
+  Colors.blue,
+  Colors.pink,
+  Colors.purple,
+  Colors.cyan,
+  Colors.lime,
+  Colors.lightBlue,
+  Colors.blueGrey,
+];

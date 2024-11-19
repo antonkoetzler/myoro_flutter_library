@@ -8,6 +8,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Request to be executed when the input is triggered;
 typedef MyoroSearchInputRequest<T> = FutureOr<List<T>> Function(String text);
 
+/// [MyoroMenuItem] builder because this widget is templated.
+typedef MyoroSearchInputItemBuilder<T> = MyoroMenuItem Function(T item);
+
 /// Search input. Shows a dropdown after making a search request.
 final class MyoroSearchInput<T> extends StatefulWidget {
   /// [MyoroInput] configuration.
@@ -16,10 +19,14 @@ final class MyoroSearchInput<T> extends StatefulWidget {
   /// Search request.
   final MyoroSearchInputRequest<T> request;
 
+  /// [MyoroMenuItem] builder to display the items in [_SearchSection].
+  final MyoroSearchInputItemBuilder<T> itemBuilder;
+
   const MyoroSearchInput({
     super.key,
     required this.configuration,
     required this.request,
+    required this.itemBuilder,
   });
 
   @override
@@ -29,6 +36,7 @@ final class MyoroSearchInput<T> extends StatefulWidget {
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   MyoroInputConfiguration get _configuration => widget.configuration;
   MyoroSearchInputRequest<T> get _request => widget.request;
+  MyoroSearchInputItemBuilder<T> get _itemBuilder => widget.itemBuilder;
 
   final _formController = MyoroFormController();
 
@@ -62,9 +70,9 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                 onFieldSubmitted: (_) => _formController.finish(),
               ),
             ),
-            if (results?.isNotEmpty == true) ...[
+            if (results?.isNotEmpty == true || status.isLoading) ...[
               SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
-              _SearchSection(results, status),
+              Flexible(child: _SearchSection(results, status, _itemBuilder)),
             ],
           ],
         );
@@ -91,27 +99,18 @@ final class _SearchButton extends StatelessWidget {
 }
 
 final class _SearchSection<T> extends StatelessWidget {
-  final List<T> results;
+  final List<T>? results;
   final MyoroRequestEnum status;
+  final MyoroSearchInputItemBuilder<T> itemBuilder;
 
-  const _SearchSection(this.results, this.status);
+  const _SearchSection(this.results, this.status, this.itemBuilder);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: MyoroLoadingCircle.
-    if (status.isLoading) return const Text('Puppies');
-
-    return Container(
-      width: double.infinity,
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.pink,
-        border: MyoroDecorationHelper.border(context),
-      ),
-      child: const Text(
-        'Time to build.',
-        style: TextStyle(color: Colors.black),
-      ),
+    if (status.isLoading) return const MyoroCircularLoader();
+    return MyoroMenu(
+      maxWidth: double.infinity,
+      items: results!.map((T result) => itemBuilder.call(result)).toList(),
     );
   }
 }

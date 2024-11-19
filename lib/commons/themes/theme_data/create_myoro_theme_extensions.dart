@@ -12,6 +12,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createDividerThemeExtensions(colorScheme),
     ...createFormThemeExtensions(),
     ...createInputThemeExtensions(colorScheme, textTheme),
+    ...createLoaderThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
     ...createMenuThemeExtensions(colorScheme, textTheme),
     ...createResolverThemeExtensions(),
@@ -45,7 +46,7 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
   return [
     MyoroHoverButtonThemeExtension(
       contentColor: colorScheme.onPrimary,
-      backgroundColor: colorScheme.primary,
+      backgroundColor: MyoroColorTheme.transparent,
       borderRadius: MyoroDecorationHelper.borderRadius,
       bordered: false,
       tooltipWaitDuration: kMyoroTooltipWaitDuration,
@@ -143,6 +144,15 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
   ];
 }
 
+List<ThemeExtension> createLoaderThemeExtensions(ColorScheme colorScheme) {
+  return [
+    MyoroCircularLoaderThemeExtension(
+      color: colorScheme.onPrimary,
+      size: 25,
+    ),
+  ];
+}
+
 List<ThemeExtension> createMaterialAppThemeExtensions() {
   return const [
     MyoroMaterialAppThemeExtension(),
@@ -150,20 +160,13 @@ List<ThemeExtension> createMaterialAppThemeExtensions() {
 }
 
 List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  const radius = Radius.circular(kMyoroBorderRadius);
-  final borderSide = BorderSide(width: 2, color: colorScheme.onPrimary);
-
   return [
     MyoroMenuThemeExtension(
       backgroundColor: colorScheme.primary,
-      borderRadius: const BorderRadius.only(
-        bottomLeft: radius,
-        bottomRight: radius,
-      ),
-      border: Border(
-        bottom: borderSide,
-        left: borderSide,
-        right: borderSide,
+      borderRadius: MyoroDecorationHelper.borderRadius,
+      border: Border.all(
+        width: 2,
+        color: colorScheme.onPrimary,
       ),
       maxHeight: kMyoroMenuMaxSize.height,
       maxWidth: kMyoroMenuMaxSize.width,
