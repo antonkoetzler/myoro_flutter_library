@@ -1,5 +1,3 @@
-// TODO
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -66,13 +64,13 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
             MyoroInput(
               configuration: _configuration.copyWith(
                 controller: _textController,
-                suffix: _SearchButton(_formController),
+                suffix: _SearchButton(status, controller),
                 onFieldSubmitted: (_) => _formController.finish(),
               ),
             ),
-            if (results?.isNotEmpty == true || status.isLoading) ...[
+            if (results?.isNotEmpty == true && status.isSuccess) ...[
               SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
-              Flexible(child: _SearchSection(results, status, _itemBuilder)),
+              Flexible(child: _SearchSection(results, _itemBuilder)),
             ],
           ],
         );
@@ -82,32 +80,46 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 }
 
 final class _SearchButton extends StatelessWidget {
+  final MyoroRequestEnum status;
   final MyoroFormController formController;
 
-  const _SearchButton(this.formController);
+  const _SearchButton(this.status, this.formController);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
-    return MyoroIconTextHoverButton(
-      icon: themeExtension.searchButtonIcon,
+    return MyoroHoverButton(
       bordered: themeExtension.searchButtonBordered,
-      onPressed: () => formController.finish(),
+      onPressed: () => status.isLoading ? {} : formController.finish(),
+      builder: (bool hovered, Color contentColor, Color backgroundColor) {
+        final color = hovered ? themeExtension.searchButtonHoverColor : contentColor;
+
+        return Padding(
+          padding: EdgeInsets.all(status.isLoading ? 5 : 3),
+          child: status.isLoading
+              ? MyoroCircularLoader(
+                  color: color,
+                  size: themeExtension.searchButtonLoadingSize,
+                )
+              : Icon(
+                  themeExtension.searchButtonIcon,
+                  color: color,
+                ),
+        );
+      },
     );
   }
 }
 
 final class _SearchSection<T> extends StatelessWidget {
   final List<T>? results;
-  final MyoroRequestEnum status;
   final MyoroSearchInputItemBuilder<T> itemBuilder;
 
-  const _SearchSection(this.results, this.status, this.itemBuilder);
+  const _SearchSection(this.results, this.itemBuilder);
 
   @override
   Widget build(BuildContext context) {
-    if (status.isLoading) return const MyoroCircularLoader();
     return MyoroMenu(
       maxWidth: double.infinity,
       items: results!.map((T result) => itemBuilder.call(result)).toList(),

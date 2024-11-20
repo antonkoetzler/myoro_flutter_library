@@ -14,10 +14,18 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
   /// If [_SearchButton] is bordered or not.
   final bool searchButtonBordered;
 
+  /// Color of the content in [_SearchButton] when it is not hovered.
+  final Color searchButtonHoverColor;
+
+  /// Size of the [MyoroCircularLoader] in [_SearchButton].
+  final double searchButtonLoadingSize;
+
   const MyoroSearchInputThemeExtension({
     required this.spacing,
     required this.searchButtonIcon,
     required this.searchButtonBordered,
+    required this.searchButtonHoverColor,
+    required this.searchButtonLoadingSize,
   });
 
   @override
@@ -25,11 +33,15 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
     double? spacing,
     IconData? searchButtonIcon,
     bool? searchButtonBordered,
+    Color? searchButtonHoverColor,
+    double? searchButtonLoadingSize,
   }) {
     return MyoroSearchInputThemeExtension(
       spacing: spacing ?? this.spacing,
       searchButtonIcon: searchButtonIcon ?? this.searchButtonIcon,
       searchButtonBordered: searchButtonBordered ?? this.searchButtonBordered,
+      searchButtonHoverColor: searchButtonHoverColor ?? this.searchButtonHoverColor,
+      searchButtonLoadingSize: searchButtonLoadingSize ?? this.searchButtonLoadingSize,
     );
   }
 
@@ -43,6 +55,8 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
       spacing: lerpDouble(spacing, other.spacing, t),
       searchButtonIcon: MyoroLerpHelper.lerp(searchButtonIcon, other.searchButtonIcon, t),
       searchButtonBordered: MyoroLerpHelper.lerp(searchButtonBordered, other.searchButtonBordered, t),
+      searchButtonHoverColor: Color.lerp(searchButtonHoverColor, other.searchButtonHoverColor, t),
+      searchButtonLoadingSize: lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
     );
   }
 }

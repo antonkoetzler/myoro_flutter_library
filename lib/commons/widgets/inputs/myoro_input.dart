@@ -71,25 +71,34 @@ final class _MyoroInputState extends State<MyoroInput> {
     return _configuration.controller ?? (_localController ??= TextEditingController());
   }
 
-  /// [ValueNotifier] to keep track of whether the input
-  /// is enabled or not if the checkbox is enabled.
-  late final ValueNotifier<bool> _enabledNotifier;
+  /// [bool] to keep track of whether the input is
+  /// enabled or not if the checkbox is enabled.
+  late bool _enabled;
+
+  /// [ValueNotifier] to keep track of whether or not to show
+  /// [_ClearTextButton] in [TextFormField.decoration.suffix].
+  late final ValueNotifier<bool> _showClearTextButtonNotifier;
 
   Widget? get _label {
     if (_configuration.label == null) return null;
     return _Label(_configuration);
   }
 
+  void _listener() => _showClearTextButtonNotifier.value = _controller.text.isNotEmpty;
+
   @override
   void initState() {
     super.initState();
-    _enabledNotifier = ValueNotifier(_configuration.enabled ?? true);
+    _controller.addListener(_listener);
+    _enabled = _configuration.enabled ?? true;
+    _showClearTextButtonNotifier = ValueNotifier(_controller.text.isNotEmpty);
   }
 
   @override
   void dispose() {
+    _controller.removeListener(_listener);
     if (_configuration.controller == null) _controller.dispose();
-    _enabledNotifier.dispose();
+    _showClearTextButtonNotifier.dispose();
     super.dispose();
   }
 
@@ -99,28 +108,35 @@ final class _MyoroInputState extends State<MyoroInput> {
     final border = _configuration.inputStyle.getBorder(context);
     final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
-    return ValueListenableBuilder(
-      valueListenable: _enabledNotifier,
-      builder: (_, bool enabled, __) {
-        return Row(
-          children: [
-            if (_configuration.checkboxOnChanged != null) ...[
-              _Checkbox(_configuration, _controller, _enabledNotifier),
-              SizedBox(width: themeExtension.spacing),
-            ],
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: themeExtension.backgroundColor,
-                  borderRadius: themeExtension.borderRadius,
-                ),
-                child: TextFormField(
+    return Row(
+      children: [
+        if (_configuration.checkboxOnChanged != null) ...[
+          _Checkbox(
+            _controller,
+            _enabled,
+            onChanged: (bool value) {
+              _configuration.checkboxOnChanged!.call(value, _controller.text);
+              setState(() => _enabled = value);
+            },
+          ),
+          SizedBox(width: themeExtension.spacing),
+        ],
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              color: themeExtension.backgroundColor,
+              borderRadius: themeExtension.borderRadius,
+            ),
+            child: ValueListenableBuilder(
+              valueListenable: _showClearTextButtonNotifier,
+              builder: (_, bool showClearTextButton, __) {
+                return TextFormField(
                   // So the checkbox prefix may be clicked
                   ignorePointers: false,
-                  enabled: enabled,
+                  enabled: _enabled,
                   style: textStyle.withColor(
                     textStyle.color!.withOpacity(
-                      enabled ? 1 : themeExtension.disabledOpacity,
+                      _enabled ? 1 : themeExtension.disabledOpacity,
                     ),
                   ),
                   decoration: InputDecoration(
@@ -131,7 +147,6 @@ final class _MyoroInputState extends State<MyoroInput> {
                         themeExtension.disabledOpacity,
                       ),
                     ),
-                    contentPadding: themeExtension.contentPadding,
                     enabledBorder: border,
                     focusedBorder: border,
                     errorBorder: border.copyWith(
@@ -147,6 +162,7 @@ final class _MyoroInputState extends State<MyoroInput> {
                       ),
                     ),
                     isDense: themeExtension.isDense,
+                    suffixIcon: showClearTextButton ? _ClearTextButton(_controller) : null,
                   ),
                   cursorHeight: themeExtension.cursorHeight,
                   validator: (_) => _configuration.validation?.call(_controller.text),
@@ -154,39 +170,36 @@ final class _MyoroInputState extends State<MyoroInput> {
                   onFieldSubmitted: _configuration.onFieldSubmitted,
                   onChanged: _configuration.onChanged,
                   controller: _controller,
-                ),
-              ),
+                );
+              },
             ),
-            if (_configuration.suffix != null) ...[
-              SizedBox(width: themeExtension.spacing),
-              _configuration.suffix!,
-            ],
-          ],
-        );
-      },
+          ),
+        ),
+        if (_configuration.suffix != null) ...[
+          SizedBox(width: themeExtension.spacing),
+          _configuration.suffix!,
+        ],
+      ],
     );
   }
 }
 
 final class _Checkbox extends StatelessWidget {
-  final MyoroInputConfiguration configuration;
   final TextEditingController controller;
-  final ValueNotifier<bool> enabledNotifier;
+  final bool enabled;
+  final void Function(bool value) onChanged;
 
   const _Checkbox(
-    this.configuration,
     this.controller,
-    this.enabledNotifier,
-  );
+    this.enabled, {
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return MyoroCheckbox(
-      initialValue: enabledNotifier.value,
-      onChanged: (bool value) {
-        configuration.checkboxOnChanged!.call(value, controller.text);
-        enabledNotifier.value = value;
-      },
+      initialValue: enabled,
+      onChanged: onChanged,
     );
   }
 }
@@ -201,6 +214,27 @@ final class _Label extends StatelessWidget {
     return Text(
       configuration.label!,
       style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+    );
+  }
+}
+
+final class _ClearTextButton extends StatelessWidget {
+  final TextEditingController controller;
+
+  const _ClearTextButton(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+
+    return IntrinsicWidth(
+      child: Padding(
+        padding: themeExtension.clearTextButtonPadding,
+        child: MyoroIconTextHoverButton(
+          icon: themeExtension.clearTextButtonIcon,
+          onPressed: () => controller.text = '',
+        ),
+      ),
     );
   }
 }

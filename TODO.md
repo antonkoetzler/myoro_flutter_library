@@ -1,7 +1,7 @@
 # TODO
 
 1. (**IN PROGRESS**) MyoroCircularLoading;
-1. Finish input (make inputs have **date/time formatters**, (**IN PROGRESS**) **search suggestions** & **Clear text button**);
+1. Finish input (make inputs have (**IN PROGRESS**) **date/time formatters**);
 1. Implement dropdown;
 1. Implement radiobox component;
 1. Implement group of radio box component;

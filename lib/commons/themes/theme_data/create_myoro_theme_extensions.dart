@@ -128,18 +128,21 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       backgroundColor: colorScheme.primary,
       errorBorderColor: colorScheme.error,
       borderRadius: MyoroDecorationHelper.borderRadius,
-      contentPadding: const EdgeInsets.fromLTRB(10, 0, 10, 15),
       isDense: true,
       cursorHeight: 20,
       disabledOpacity: 0.5,
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
       spacing: 10,
+      clearTextButtonPadding: const EdgeInsets.all(5),
+      clearTextButtonIcon: Icons.close,
     ),
-    const MyoroSearchInputThemeExtension(
+    MyoroSearchInputThemeExtension(
       spacing: 10,
       searchButtonIcon: Icons.search,
       searchButtonBordered: true,
+      searchButtonHoverColor: colorScheme.primary,
+      searchButtonLoadingSize: 20,
     ),
   ];
 }
