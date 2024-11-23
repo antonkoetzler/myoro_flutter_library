@@ -31,10 +31,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroInput(
-      configuration: MyoroInputConfiguration(
+    return MyoroInput(
+      configuration: const MyoroInputConfiguration(
         inputStyle: MyoroInputStyleEnum.outlined,
       ),
+      formatters: [MyoroTimeInputFormatter()],
     );
   }
 }
