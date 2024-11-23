@@ -24,7 +24,7 @@ final class MyoroDropdown<T> extends StatefulWidget {
 }
 
 final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
-  bool? get _enableSearch => widget.enableSearch;
+  bool? get _enableSearch => widget.enableSearch ?? false;
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
 
   MyoroDropdownController<T>? _localController;

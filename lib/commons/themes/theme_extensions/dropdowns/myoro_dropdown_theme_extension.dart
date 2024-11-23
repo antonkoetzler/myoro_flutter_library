@@ -3,20 +3,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroDropdown].
 final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> {
-  /// If the dropdown will have the functionality to search for options.
-  final bool enableSearch;
-
-  const MyoroDropdownThemeExtension({
-    required this.enableSearch,
-  });
+  const MyoroDropdownThemeExtension();
 
   @override
   MyoroDropdownThemeExtension copyWith({
     bool? enableSearch,
   }) {
-    return MyoroDropdownThemeExtension(
-      enableSearch: enableSearch ?? this.enableSearch,
-    );
+    return this;
   }
 
   @override
@@ -24,9 +17,6 @@ final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThem
     covariant ThemeExtension<MyoroDropdownThemeExtension>? other,
     double t,
   ) {
-    if (other is! MyoroDropdownThemeExtension) return this;
-    return copyWith(
-      enableSearch: MyoroLerpHelper.lerp(enableSearch, other.enableSearch, t),
-    );
+    return this;
   }
 }

@@ -11,6 +11,7 @@
 1. Implement carousels;
 1. Finish all widget showcases;
 1. Implement shared preferences;
+1. Brush theme extensions to remove non-theme related things;
 1. Widget tests;
 1. Dart tool for auto-formatting;
 1. Documentation;
