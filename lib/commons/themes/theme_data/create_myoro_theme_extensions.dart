@@ -32,7 +32,9 @@ List<ThemeExtension> createAppBarThemeExtensions() {
 
 List<ThemeExtension> createAutocompleteThemeExtensions() {
   return const [
-    MyoroAutocompleteThemeExtension(),
+    MyoroDropdownThemeExtension(
+      enableSearch: false,
+    ),
   ];
 }
 

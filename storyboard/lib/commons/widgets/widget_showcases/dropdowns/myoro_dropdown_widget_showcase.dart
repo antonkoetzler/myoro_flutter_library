@@ -25,7 +25,9 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroDropdown();
+    return MyoroDropdown(
+      dataConfiguration: MyoroDataConfiguration(),
+    );
   }
 }
 
