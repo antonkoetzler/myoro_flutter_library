@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -25,8 +26,14 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown(
-      dataConfiguration: MyoroDataConfiguration(),
+    return MyoroDropdown<String>(
+      dataConfiguration: MyoroDataConfiguration(
+        staticItems: List.generate(
+          faker.randomGenerator.integer(50),
+          (_) => faker.randomGenerator.string(50),
+        ),
+      ),
+      itemBuilder: (String item) => MyoroMenuItem(text: item),
     );
   }
 }

@@ -21,7 +21,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
   final Border border;
 
   /// Text style of [_EmptyMenuDialog].
-  final TextStyle emptyMenuDialogTextStyle;
+  final TextStyle dialogTextStyle;
 
   const MyoroMenuThemeExtension({
     required this.maxHeight,
@@ -29,7 +29,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     required this.backgroundColor,
     required this.borderRadius,
     required this.border,
-    required this.emptyMenuDialogTextStyle,
+    required this.dialogTextStyle,
   });
 
   @override
@@ -42,7 +42,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     double? iconSize,
     TextStyle? textStyle,
     double? itemSpacing,
-    TextStyle? emptyMenuDialogTextStyle,
+    TextStyle? dialogTextStyle,
   }) {
     return MyoroMenuThemeExtension(
       maxHeight: maxHeight ?? this.maxHeight,
@@ -50,7 +50,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
       backgroundColor: backgroundColor ?? this.backgroundColor,
       borderRadius: borderRadius ?? this.borderRadius,
       border: border ?? this.border,
-      emptyMenuDialogTextStyle: emptyMenuDialogTextStyle ?? this.emptyMenuDialogTextStyle,
+      dialogTextStyle: dialogTextStyle ?? this.dialogTextStyle,
     );
   }
 
@@ -66,7 +66,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       border: Border.lerp(border, other.border, t),
-      emptyMenuDialogTextStyle: TextStyle.lerp(emptyMenuDialogTextStyle, other.emptyMenuDialogTextStyle, t),
+      dialogTextStyle: TextStyle.lerp(dialogTextStyle, other.dialogTextStyle, t),
     );
   }
 }

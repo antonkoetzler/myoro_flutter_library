@@ -41,4 +41,5 @@ final class MyoroDataConfiguration<T> extends Equatable {
 
   bool get staticItemsUsed => staticItems != null;
   bool get asynronousItemsUsed => asyncronousItems != null;
+  Future<List<T>> get items async => staticItemsUsed ? staticItems! : await asyncronousItems!.call();
 }

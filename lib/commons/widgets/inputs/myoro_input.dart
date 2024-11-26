@@ -134,6 +134,7 @@ final class _MyoroInputState extends State<MyoroInput> {
                   // So the checkbox prefix may be clicked
                   ignorePointers: false,
                   enabled: _enabled,
+                  readOnly: _configuration.readOnly ?? false,
                   style: textStyle.withColor(
                     textStyle.color!.withOpacity(
                       _enabled ? 1 : themeExtension.disabledOpacity,

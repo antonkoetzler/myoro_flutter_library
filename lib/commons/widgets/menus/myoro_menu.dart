@@ -20,7 +20,7 @@ final class MyoroMenu extends StatelessWidget {
   final TextAlign? textAlign;
 
   /// Items in the menu.
-  final List<MyoroMenuItem> items;
+  final MyoroDataConfiguration<MyoroMenuItem> dataConfiguration;
 
   const MyoroMenu({
     super.key,
@@ -29,22 +29,12 @@ final class MyoroMenu extends StatelessWidget {
     this.iconSize,
     this.textStyle,
     this.textAlign,
-    this.items = const [],
+    required this.dataConfiguration,
   });
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final children = items
-        .map<Widget>(
-          (MyoroMenuItem item) => _Item(
-            item,
-            iconSize,
-            textStyle,
-            textAlign,
-          ),
-        )
-        .toList();
 
     return ClipRRect(
       borderRadius: themeExtension.borderRadius,
@@ -59,15 +49,60 @@ final class MyoroMenu extends StatelessWidget {
             maxHeight: maxHeight ?? themeExtension.maxHeight,
             maxWidth: maxWidth ?? themeExtension.maxWidth,
           ),
-          child: children.isNotEmpty
-              ? MyoroScrollable(
-                  scrollableType: MyoroScrollableEnum.customScrollView,
-                  children: children,
-                )
-              : const _EmptyMenuDialog(),
+          child: MyoroResolver(
+            request: () async => await dataConfiguration.items,
+            builder: (items, status, controller) {
+              return switch (status) {
+                MyoroRequestEnum.idle => const _Loader(),
+                MyoroRequestEnum.loading => const _Loader(),
+                MyoroRequestEnum.success => _Items(items!, iconSize, textStyle, textAlign),
+                MyoroRequestEnum.error => const _DialogText('Error getting items.'),
+              };
+            },
+          ),
         ),
       ),
     );
+  }
+}
+
+final class _Loader extends StatelessWidget {
+  const _Loader();
+
+  @override
+  Widget build(BuildContext context) => const Center(child: MyoroCircularLoader());
+}
+
+final class _Items extends StatelessWidget {
+  final List<MyoroMenuItem> items;
+  final double? iconSize;
+  final TextStyle? textStyle;
+  final TextAlign? textAlign;
+
+  const _Items(
+    this.items,
+    this.iconSize,
+    this.textStyle,
+    this.textAlign,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return items.isNotEmpty
+        ? MyoroScrollable(
+            scrollableType: MyoroScrollableEnum.customScrollView,
+            children: items
+                .map<Widget>(
+                  (MyoroMenuItem item) => _Item(
+                    item,
+                    iconSize,
+                    textStyle,
+                    textAlign,
+                  ),
+                )
+                .toList(),
+          )
+        : const _DialogText('No items to display.');
   }
 }
 
@@ -98,15 +133,17 @@ final class _Item extends StatelessWidget {
   }
 }
 
-final class _EmptyMenuDialog extends StatelessWidget {
-  const _EmptyMenuDialog();
+final class _DialogText extends StatelessWidget {
+  final String text;
+
+  const _DialogText(this.text);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'No items to display.',
-        style: context.resolveThemeExtension<MyoroMenuThemeExtension>().emptyMenuDialogTextStyle,
+        text,
+        style: context.resolveThemeExtension<MyoroMenuThemeExtension>().dialogTextStyle,
       ),
     );
   }

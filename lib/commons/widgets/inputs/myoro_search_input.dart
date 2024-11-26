@@ -122,7 +122,9 @@ final class _SearchSection<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroMenu(
       maxWidth: double.infinity,
-      items: results!.map((T result) => itemBuilder.call(result)).toList(),
+      dataConfiguration: MyoroDataConfiguration(
+        staticItems: results!.map((T result) => itemBuilder.call(result)).toList(),
+      ),
     );
   }
 }

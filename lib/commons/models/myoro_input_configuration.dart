@@ -44,6 +44,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Whether the input is disabled (will be tilted for visual feedback).
   final bool? enabled;
 
+  /// Whether the input can be editted by the user.
+  final bool? readOnly;
+
   /// On changed when the checkbox next to the input is changed.
   ///
   /// The checkbox is enabled when this function is provided.
@@ -73,6 +76,7 @@ final class MyoroInputConfiguration extends Equatable {
     this.labelTextStyle,
     this.suffix,
     this.enabled,
+    this.readOnly,
     this.checkboxOnChanged,
     this.validation,
     this.onFieldSubmitted,
@@ -88,6 +92,7 @@ final class MyoroInputConfiguration extends Equatable {
     TextStyle? labelTextStyle,
     Widget? suffix,
     bool? enabled,
+    bool? readOnly,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
     MyoroInputValidation? validation,
     MyoroInputOnFieldSubmitted? onFieldSubmitted,
@@ -102,6 +107,7 @@ final class MyoroInputConfiguration extends Equatable {
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       suffix: suffix ?? this.suffix,
       enabled: enabled ?? this.enabled,
+      readOnly: readOnly ?? this.readOnly,
       checkboxOnChanged: checkboxOnChanged ?? this.checkboxOnChanged,
       validation: validation ?? this.validation,
       onFieldSubmitted: onFieldSubmitted ?? this.onFieldSubmitted,
@@ -120,6 +126,7 @@ final class MyoroInputConfiguration extends Equatable {
       '  labelTextStyle: $labelTextStyle,\n'
       '  suffix: $suffix,\n'
       '  enabled: $enabled,\n'
+      '  readOnly: $readOnly,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
       '  validation: $validation,\n'
       '  onFieldSubmitted: $onFieldSubmitted,\n'
@@ -137,6 +144,7 @@ final class MyoroInputConfiguration extends Equatable {
       labelTextStyle,
       suffix,
       enabled,
+      readOnly,
       checkboxOnChanged,
       validation,
       onFieldSubmitted,

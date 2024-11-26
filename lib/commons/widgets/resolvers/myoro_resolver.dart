@@ -74,7 +74,7 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
   @override
   void initState() {
     super.initState();
-    _bloc = MyoroResolverBloc(_request);
+    _bloc = MyoroResolverBloc(_request)..add(const ExecuteRequestEvent());
   }
 
   @override

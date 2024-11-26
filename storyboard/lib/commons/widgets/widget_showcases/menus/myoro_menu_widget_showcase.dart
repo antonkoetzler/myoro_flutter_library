@@ -28,11 +28,17 @@ final class _Widget extends StatelessWidget {
       builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu(
           iconSize: state.iconSize,
-          items: List.generate(
-            state.itemCount,
-            (_) => MyoroMenuItem.fake().copyWith(
-              onPressed: () {},
-            ),
+          dataConfiguration: MyoroDataConfiguration(
+            asyncronousItems: () async {
+              await Future.delayed(const Duration(milliseconds: 1500));
+
+              return List.generate(
+                state.itemCount,
+                (_) => MyoroMenuItem.fake().copyWith(
+                  onPressed: () {},
+                ),
+              );
+            },
           ),
         );
       },

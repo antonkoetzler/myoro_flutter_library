@@ -32,7 +32,10 @@ List<ThemeExtension> createAppBarThemeExtensions() {
 
 List<ThemeExtension> createAutocompleteThemeExtensions() {
   return const [
-    MyoroDropdownThemeExtension(),
+    MyoroDropdownThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+      spacing: 10,
+    ),
   ];
 }
 
@@ -173,7 +176,7 @@ List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextThem
       ),
       maxHeight: kMyoroMenuMaxSize.height,
       maxWidth: kMyoroMenuMaxSize.width,
-      emptyMenuDialogTextStyle: textTheme.bodyMedium!,
+      dialogTextStyle: textTheme.bodyMedium!,
     ),
   ];
 }
