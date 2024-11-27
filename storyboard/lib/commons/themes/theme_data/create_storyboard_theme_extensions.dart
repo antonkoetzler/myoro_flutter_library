@@ -49,7 +49,7 @@ List<ThemeExtension> _createAppThemeExtension(TextTheme textTheme) {
   return [
     StoryboardAppBarThemeExtension(
       titleTextStyle: textTheme.titleMedium!,
-      subtitleTextStyle: textTheme.headlineSmall!,
+      subtitleTextStyle: textTheme.bodySmall!,
       showWidgetOptionsButtonIcon: Icons.remove_red_eye,
       themeButtonIcon: Icons.sunny,
       buttonSpacing: 5,

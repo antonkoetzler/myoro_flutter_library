@@ -163,13 +163,19 @@ final class _MyoroInputState extends State<MyoroInput> {
                       ),
                     ),
                     isDense: themeExtension.isDense,
-                    suffixIcon: showClearTextButton ? _ClearTextButton(_controller) : null,
+                    suffixIcon: showClearTextButton
+                        ? _ClearTextButton(
+                            _controller,
+                            _configuration.onCleared,
+                          )
+                        : null,
                   ),
                   cursorHeight: themeExtension.cursorHeight,
                   validator: (_) => _configuration.validation?.call(_controller.text),
                   inputFormatters: _formatters,
                   onFieldSubmitted: _configuration.onFieldSubmitted,
                   onChanged: _configuration.onChanged,
+                  focusNode: _configuration.focusNode,
                   controller: _controller,
                 );
               },
@@ -221,8 +227,9 @@ final class _Label extends StatelessWidget {
 
 final class _ClearTextButton extends StatelessWidget {
   final TextEditingController controller;
+  final VoidCallback? onCleared;
 
-  const _ClearTextButton(this.controller);
+  const _ClearTextButton(this.controller, this.onCleared);
 
   @override
   Widget build(BuildContext context) {
@@ -232,9 +239,11 @@ final class _ClearTextButton extends StatelessWidget {
       child: Padding(
         padding: themeExtension.clearTextButtonPadding,
         child: MyoroIconTextHoverButton(
-          icon: themeExtension.clearTextButtonIcon,
-          onPressed: () => controller.text = '',
-        ),
+            icon: themeExtension.clearTextButtonIcon,
+            onPressed: () {
+              controller.clear();
+              onCleared?.call();
+            }),
       ),
     );
   }

@@ -65,6 +65,12 @@ final class MyoroInputConfiguration extends Equatable {
   /// Function executed when the input is changed.
   final MyoroInputOnChanged? onChanged;
 
+  /// Function executed when [_ClearTextButton] is pressed.
+  final VoidCallback? onCleared;
+
+  /// [FocusNode] of the input to programmatically focus on it.
+  final FocusNode? focusNode;
+
   /// Controller of the input.
   final TextEditingController? controller;
 
@@ -81,6 +87,8 @@ final class MyoroInputConfiguration extends Equatable {
     this.validation,
     this.onFieldSubmitted,
     this.onChanged,
+    this.onCleared,
+    this.focusNode,
     this.controller,
   });
 
@@ -97,6 +105,8 @@ final class MyoroInputConfiguration extends Equatable {
     MyoroInputValidation? validation,
     MyoroInputOnFieldSubmitted? onFieldSubmitted,
     MyoroInputOnChanged? onChanged,
+    VoidCallback? onCleared,
+    FocusNode? focusNode,
     TextEditingController? controller,
   }) {
     return MyoroInputConfiguration(
@@ -112,6 +122,8 @@ final class MyoroInputConfiguration extends Equatable {
       validation: validation ?? this.validation,
       onFieldSubmitted: onFieldSubmitted ?? this.onFieldSubmitted,
       onChanged: onChanged ?? this.onChanged,
+      onCleared: onCleared ?? this.onCleared,
+      focusNode: focusNode ?? this.focusNode,
       controller: controller ?? this.controller,
     );
   }
@@ -131,6 +143,8 @@ final class MyoroInputConfiguration extends Equatable {
       '  validation: $validation,\n'
       '  onFieldSubmitted: $onFieldSubmitted,\n'
       '  onChanged: $onChanged,\n'
+      '  onCleared: $onCleared,\n'
+      '  focusNode: $focusNode,\n'
       '  controller: $controller,\n'
       ');';
 
@@ -149,6 +163,8 @@ final class MyoroInputConfiguration extends Equatable {
       validation,
       onFieldSubmitted,
       onChanged,
+      onCleared,
+      focusNode,
       controller,
     ];
   }

@@ -6,10 +6,7 @@ typedef MyoroDropdownItemBuilder<T> = MyoroMenuItem Function(T item);
 
 /// A customizable dropdown widgets with features like multi-selection, search, etc.
 final class MyoroDropdown<T> extends StatefulWidget {
-  /// If the dropdown will have the functionality to search for options.
-  final bool? enableSearch;
-
-  /// TODO: Enables multi-selection.
+  /// Enables multi-selection.
   final bool? enableMultiSelection;
 
   /// Controller to externally manage the dropdown's state.
@@ -23,7 +20,6 @@ final class MyoroDropdown<T> extends StatefulWidget {
 
   const MyoroDropdown({
     super.key,
-    this.enableSearch,
     this.enableMultiSelection,
     this.controller,
     required this.dataConfiguration,
@@ -35,8 +31,7 @@ final class MyoroDropdown<T> extends StatefulWidget {
 }
 
 final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
-  bool? get _enableSearch => widget.enableSearch ?? false;
-  bool? get _enableMultiSelection => widget.enableMultiSelection ?? false;
+  bool get _enableMultiSelection => widget.enableMultiSelection ?? false;
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
   MyoroDropdownItemBuilder<T> get _itemBuilder => widget.itemBuilder;
 
@@ -48,6 +43,13 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   /// To disable the dropdown when elsewhere is clicked.
   final _focusNode = FocusNode();
 
+  /// Provides [_enableMultiSelection] & [_itemBuilder] to [_controller].
+  void _supplyController() {
+    _controller.enableMultiSelection = _enableMultiSelection;
+    _controller.itemBuilder = _itemBuilder;
+  }
+
+  /// To close the dropdown when clicked elsewhere.
   void _focusNodeListener() {
     if (_focusNode.hasFocus) return;
     _controller.toggleDropdown(false);
@@ -57,6 +59,13 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   void initState() {
     super.initState();
     _focusNode.addListener(_focusNodeListener);
+    _supplyController();
+  }
+
+  @override
+  void didUpdateWidget(covariant MyoroDropdown<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _supplyController();
   }
 
   @override
@@ -73,7 +82,10 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _Input(_controller, _focusNode, _enableSearch),
+          _Input(
+            _controller,
+            _focusNode,
+          ),
           ValueListenableBuilder(
             valueListenable: _controller.displayDropdownNotifier,
             builder: (_, bool displayDropdown, __) => displayDropdown
@@ -81,7 +93,12 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(height: context.resolveThemeExtension<MyoroDropdownThemeExtension>().spacing),
-                      _Dropdown(_dataConfiguration, _itemBuilder),
+                      _Dropdown(
+                        _controller,
+                        _dataConfiguration,
+                        _itemBuilder,
+                        _enableMultiSelection,
+                      ),
                     ],
                   )
                 : const SizedBox.shrink(),
@@ -92,30 +109,98 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   }
 }
 
-final class _Input extends StatelessWidget {
-  final MyoroDropdownController controller;
-  final FocusNode focusNode;
-  final bool? enableSearch;
+final class _Input<T> extends StatefulWidget {
+  final MyoroDropdownController<T> _controller;
+  final FocusNode _focusNode;
 
-  const _Input(this.controller, this.focusNode, this.enableSearch);
+  const _Input(
+    this._controller,
+    this._focusNode,
+  );
+
+  @override
+  State<_Input<T>> createState() => _InputState<T>();
+}
+
+final class _InputState<T> extends State<_Input<T>> {
+  MyoroDropdownController<T> get _controller => widget._controller;
+  FocusNode get _focusNode => widget._focusNode;
+
+  final _inputController = TextEditingController();
+
+  /// Set input's text in accordance with the changes to the selected items.
+  void _selectedItemsNotifierListener() {
+    if (_controller.selectedItems.isEmpty) _inputController.clear();
+    _inputController.text = _controller.formattedItems;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.selectedItemsNotifier.addListener(_selectedItemsNotifierListener);
+  }
+
+  @override
+  void dispose() {
+    _controller.selectedItemsNotifier.removeListener(_selectedItemsNotifierListener);
+    _inputController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      focusColor: MyoroColorTheme.transparent,
-      hoverColor: MyoroColorTheme.transparent,
-      splashColor: MyoroColorTheme.transparent,
-      highlightColor: MyoroColorTheme.transparent,
-      onTap: () {
-        focusNode.requestFocus();
-        controller.toggleDropdown();
-      },
-      child: IgnorePointer(
-        child: MyoroInput(
+    return Stack(
+      children: [
+        MyoroInput(
           configuration: MyoroInputConfiguration(
+            controller: _inputController,
             inputStyle: context.resolveThemeExtension<MyoroDropdownThemeExtension>().inputStyle,
-            readOnly: enableSearch == false,
+            readOnly: true,
+            onCleared: () => _controller.clear(),
           ),
+        ),
+        _DropdownTriggerArea(
+          _controller,
+          _focusNode,
+        ),
+      ],
+    );
+  }
+}
+
+final class _DropdownTriggerArea extends StatelessWidget {
+  final MyoroDropdownController _controller;
+  final FocusNode _focusNode;
+
+  const _DropdownTriggerArea(
+    this._controller,
+    this._focusNode,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      child: InkWell(
+        focusColor: MyoroColorTheme.transparent,
+        hoverColor: MyoroColorTheme.transparent,
+        splashColor: MyoroColorTheme.transparent,
+        highlightColor: MyoroColorTheme.transparent,
+        onTap: () {
+          _focusNode.requestFocus();
+          _controller.toggleDropdown();
+        },
+        child: LayoutBuilder(
+          builder: (_, BoxConstraints constraints) {
+            return ValueListenableBuilder(
+              valueListenable: _controller.displayDropdownNotifier,
+              builder: (_, bool displayingDropdown, __) {
+                return SizedBox(
+                  width: displayingDropdown ? 0 : constraints.maxWidth - (_controller.selectedItems.isEmpty ? 0 : 44),
+                  height: 43.1, // Size of the input.
+                );
+              },
+            );
+          },
         ),
       ),
     );
@@ -123,10 +208,17 @@ final class _Input extends StatelessWidget {
 }
 
 final class _Dropdown<T> extends StatelessWidget {
-  final MyoroDataConfiguration<T> dataConfiguration;
-  final MyoroDropdownItemBuilder<T> itemBuilder;
+  final MyoroDropdownController<T> _controller;
+  final MyoroDataConfiguration<T> _dataConfiguration;
+  final MyoroDropdownItemBuilder<T> _itemBuilder;
+  final bool _enableMultiSelection;
 
-  const _Dropdown(this.dataConfiguration, this.itemBuilder);
+  const _Dropdown(
+    this._controller,
+    this._dataConfiguration,
+    this._itemBuilder,
+    this._enableMultiSelection,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +226,21 @@ final class _Dropdown<T> extends StatelessWidget {
       maxWidth: double.infinity,
       dataConfiguration: MyoroDataConfiguration(
         asyncronousItems: () async {
-          return (await dataConfiguration.items).map<MyoroMenuItem>(itemBuilder).toList();
+          return (await _dataConfiguration.items).map<MyoroMenuItem>(
+            (T item) {
+              final MyoroMenuItem builtItem = _itemBuilder.call(item);
+              final bool isSelected = _controller.isSelected(item);
+
+              return builtItem.copyWith(
+                isHovered: isSelected,
+                onPressed: () {
+                  builtItem.onPressed?.call();
+                  isSelected ? _controller.removeItems([item]) : _controller.addItems([item]);
+                  if (!_enableMultiSelection) _controller.toggleDropdown(false);
+                },
+              );
+            },
+          ).toList();
         },
       ),
     );

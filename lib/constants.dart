@@ -5,7 +5,7 @@ const kMyoroBorderLength = 2.0;
 const kMyoroBorderRadius = 15.0;
 
 // Menus.
-const kMyoroMenuMaxSize = Size(400, 400);
+const kMyoroMenuMaxSize = Size(400, 200);
 
 // Tooltips.
 const kMyoroTooltipWaitDuration = Duration(milliseconds: 200);

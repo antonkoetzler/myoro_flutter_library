@@ -1,6 +1,5 @@
 # TODO
 
-1. (**IN PROGRESS**) Implement dropdown;
 1. Implement radiobox component;
 1. Implement group of radio box component;
 1. Implement modals;
@@ -18,3 +17,4 @@
 1. Contributing documentation;
 1. Add debounce to inputs and buttons;
 1. Create a logo.
+1. Add animation to MyoroMenu.

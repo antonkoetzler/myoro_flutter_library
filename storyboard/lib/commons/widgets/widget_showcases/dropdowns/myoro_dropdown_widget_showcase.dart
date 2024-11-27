@@ -30,7 +30,7 @@ final class _Widget extends StatelessWidget {
       dataConfiguration: MyoroDataConfiguration(
         staticItems: List.generate(
           faker.randomGenerator.integer(50),
-          (_) => faker.randomGenerator.string(50),
+          (_) => faker.person.name(),
         ),
       ),
       itemBuilder: (String item) => MyoroMenuItem(text: item),

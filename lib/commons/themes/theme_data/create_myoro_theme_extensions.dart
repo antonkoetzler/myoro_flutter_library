@@ -169,7 +169,7 @@ List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextThem
   return [
     MyoroMenuThemeExtension(
       backgroundColor: colorScheme.primary,
-      borderRadius: MyoroDecorationHelper.borderRadius,
+      borderRadius: MyoroDecorationHelper.inputBorderRadius,
       border: Border.all(
         width: 2,
         color: colorScheme.onPrimary,

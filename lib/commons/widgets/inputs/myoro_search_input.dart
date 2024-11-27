@@ -36,45 +36,78 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   MyoroSearchInputRequest<T> get _request => widget.request;
   MyoroSearchInputItemBuilder<T> get _itemBuilder => widget.itemBuilder;
 
-  final _formController = MyoroFormController();
-
   TextEditingController? _localTextController;
   TextEditingController get _textController {
     return _configuration.controller ?? (_localTextController ??= TextEditingController());
   }
 
+  final _formController = MyoroFormController();
   final _itemsNotifier = ValueNotifier<List<T>>([]);
+  final _focusNode = FocusNode();
+  final _displaySearchSectionNotifier = ValueNotifier<bool>(false);
+
+  void _focusNodeListener() {
+    _displaySearchSectionNotifier.value = _focusNode.hasFocus;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(_focusNodeListener);
+  }
 
   @override
   void dispose() {
     if (_configuration.controller == null) _textController.dispose();
     _itemsNotifier.dispose();
+    _focusNode.dispose();
+    _displaySearchSectionNotifier.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MyoroForm<List<T>>(
-      controller: _formController,
-      request: () async => await _request.call(_textController.text),
-      builder: (results, status, controller) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            MyoroInput(
-              configuration: _configuration.copyWith(
-                controller: _textController,
-                suffix: _SearchButton(status, controller),
-                onFieldSubmitted: (_) => _formController.finish(),
+    return Focus(
+      focusNode: _focusNode,
+      child: MyoroForm<List<T>>(
+        controller: _formController,
+        request: () async => await _request.call(_textController.text),
+        onSuccess: (_) => _focusNode.requestFocus(),
+        builder: (results, status, controller) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              MyoroInput(
+                configuration: _configuration.copyWith(
+                  controller: _textController,
+                  suffix: _SearchButton(status, controller),
+                  onFieldSubmitted: (_) => _formController.finish(),
+                ),
               ),
-            ),
-            if (results?.isNotEmpty == true && status.isSuccess) ...[
-              SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
-              Flexible(child: _SearchSection(results, _itemBuilder)),
+              ValueListenableBuilder(
+                valueListenable: _displaySearchSectionNotifier,
+                builder: (_, bool displaySearchSection, __) {
+                  if (!(results?.isNotEmpty == true && status.isSuccess && displaySearchSection)) {
+                    return const SizedBox.shrink();
+                  }
+
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
+                      Flexible(child: _SearchSection(results, _itemBuilder)),
+                    ],
+                  );
+                  // if (results?.isNotEmpty == true && status.isSuccess) ...[
+                  //   SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
+                  //   Flexible(child: _SearchSection(results, _itemBuilder)),
+                  // ],
+                },
+              ),
             ],
-          ],
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
@@ -96,7 +129,7 @@ final class _SearchButton extends StatelessWidget {
         final color = hovered ? themeExtension.searchButtonHoverColor : contentColor;
 
         return Padding(
-          padding: EdgeInsets.all(status.isLoading ? 5 : 3),
+          padding: EdgeInsets.all(status.isLoading ? 9.5 : 7.5),
           child: status.isLoading
               ? MyoroCircularLoader(
                   color: color,

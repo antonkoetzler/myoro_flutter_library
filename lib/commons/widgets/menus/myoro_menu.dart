@@ -37,6 +37,7 @@ final class MyoroMenu extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
     return ClipRRect(
+      clipBehavior: Clip.hardEdge,
       borderRadius: themeExtension.borderRadius,
       child: Container(
         decoration: BoxDecoration(
@@ -90,7 +91,7 @@ final class _Items extends StatelessWidget {
   Widget build(BuildContext context) {
     return items.isNotEmpty
         ? MyoroScrollable(
-            scrollableType: MyoroScrollableEnum.customScrollView,
+            scrollableType: MyoroScrollableEnum.singleChildScrollView,
             children: items
                 .map<Widget>(
                   (MyoroMenuItem item) => _Item(
@@ -128,6 +129,7 @@ final class _Item extends StatelessWidget {
       textStyle: textStyle,
       textAlign: textAlign,
       borderRadius: BorderRadius.zero,
+      isHovered: item.isHovered,
       onPressed: item.onPressed,
     );
   }

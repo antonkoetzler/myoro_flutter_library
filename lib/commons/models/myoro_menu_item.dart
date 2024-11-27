@@ -12,12 +12,16 @@ final class MyoroMenuItem extends Equatable {
   /// Text of the item.
   final String? text;
 
+  /// If the item is isHovered or not.
+  final bool? isHovered;
+
   /// What is called when the item is clicked.
   final VoidCallback? onPressed;
 
   const MyoroMenuItem({
     this.icon,
     this.text,
+    this.isHovered,
     this.onPressed,
   }) : assert(
           icon != null || text != null,
@@ -27,11 +31,13 @@ final class MyoroMenuItem extends Equatable {
   MyoroMenuItem copyWith({
     IconData? icon,
     String? text,
+    bool? isHovered,
     VoidCallback? onPressed,
   }) {
     return MyoroMenuItem(
       icon: icon ?? this.icon,
       text: text ?? this.text,
+      isHovered: isHovered ?? this.isHovered,
       onPressed: onPressed ?? this.onPressed,
     );
   }
@@ -39,6 +45,7 @@ final class MyoroMenuItem extends Equatable {
   MyoroMenuItem.fake()
       : icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
         text = faker.randomGenerator.string(50),
+        isHovered = faker.randomGenerator.boolean(),
         onPressed = null;
 
   @override
@@ -46,9 +53,17 @@ final class MyoroMenuItem extends Equatable {
       'MyoroMenuItem(\n'
       '  icon: $icon\n,'
       '  text: $text\n,'
+      '  isHovered: $isHovered,\n'
       '  onPressed: $onPressed\n,'
       ');';
 
   @override
-  List<Object?> get props => [icon, text, onPressed];
+  List<Object?> get props {
+    return [
+      icon,
+      text,
+      isHovered,
+      onPressed,
+    ];
+  }
 }
