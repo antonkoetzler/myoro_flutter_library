@@ -1,6 +1,5 @@
 # TODO
 
-1. Implement radiobox component;
 1. Implement group of radio box component;
 1. Implement modals;
 1. Implement drawers;

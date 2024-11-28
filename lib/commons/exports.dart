@@ -6,5 +6,6 @@ export 'extensions/exports.dart';
 export 'helpers/exports.dart';
 export 'input_formatters/exports.dart';
 export 'models/exports.dart';
+export 'notifiers/exports.dart';
 export 'themes/exports.dart';
 export 'widgets/exports.dart';

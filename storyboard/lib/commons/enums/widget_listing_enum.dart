@@ -40,6 +40,9 @@ enum WidgetListingEnum {
   menus('Menus', [
     myoroMenuTitle,
   ]),
+  radios('Radios', [
+    myoroRadioTitle,
+  ]),
   resolvers('Resolvers', [
     myoroResolverTitle,
   ]),
@@ -95,6 +98,9 @@ enum WidgetListingEnum {
   // Menus.
   static const myoroMenuTitle = 'MyoroMenu';
 
+  // Radios.
+  static const myoroRadioTitle = 'MyoroRadio';
+
   // Resolvers.
   static const myoroResolverTitle = 'MyoroResolver';
 
@@ -147,6 +153,9 @@ enum WidgetListingEnum {
       // Menus.
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
 
+      // Radios.
+      myoroRadioTitle => const MyoroRadioWidgetShowcase(),
+
       // Resolvers.
       myoroResolverTitle => throw UnimplementedError(),
 
@@ -173,7 +182,8 @@ enum WidgetListingEnum {
   bool get isForms => this == forms;
   bool get isInputs => this == inputs;
   bool get isMaterialApps => this == materialApps;
-  bool get isMyoroMenu => this == menus;
+  bool get isMenus => this == menus;
+  bool get isRadios => this == radios;
   bool get isResolvers => this == resolvers;
   bool get isScreens => this == screens;
   bool get isScrollables => this == scrollables;

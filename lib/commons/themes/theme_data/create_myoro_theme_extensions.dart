@@ -15,6 +15,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createLoaderThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
     ...createMenuThemeExtensions(colorScheme, textTheme),
+    ...createRadioThemeExtensions(colorScheme, textTheme),
     ...createResolverThemeExtensions(),
     ...createScreenThemeExtensions(),
     ...createScrollableThemeExtensions(),
@@ -177,6 +178,18 @@ List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextThem
       maxHeight: kMyoroMenuMaxSize.height,
       maxWidth: kMyoroMenuMaxSize.width,
       dialogTextStyle: textTheme.bodyMedium!,
+    ),
+  ];
+}
+
+List<ThemeExtension> createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    MyoroRadioThemeExtension(
+      activeColor: colorScheme.onPrimary,
+      hoverColor: colorScheme.onPrimary.withOpacity(0.3),
+      labelTextStyle: textTheme.bodySmall,
+      spacing: 5,
+      splashRadius: 15,
     ),
   ];
 }
