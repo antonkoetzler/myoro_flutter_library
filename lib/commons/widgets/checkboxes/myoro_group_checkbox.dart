@@ -39,7 +39,7 @@ final class MyoroGroupCheckbox extends StatefulWidget {
     this.onChanged,
     this.checkboxes,
   })  : assert(
-          (notifier != null) ^ (checkboxes != null),
+          !(notifier != null && checkboxes != null),
           '[MyoroGroupCheckbox]: If you are providing [notifier], you must pass '
           '[checkboxes] within its constructor and remove [checkboxes] here.',
         ),

@@ -39,7 +39,7 @@ final class MyoroGroupRadio extends StatefulWidget {
     this.onChanged,
     this.radios,
   })  : assert(
-          (notifier != null) ^ (radios != null),
+          !(notifier != null && radios != null),
           '[MyoroGroupRadio]: If you are providing [notifier], you must '
           'pass [radios] within its constructor and remove [radios] here.',
         ),
