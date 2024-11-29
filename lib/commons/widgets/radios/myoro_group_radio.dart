@@ -12,7 +12,7 @@ final class MyoroGroupRadio extends StatefulWidget {
   /// [ValueNotifier] of the [MyoroGroupRadio] for more complex scope situations.
   final MyoroGroupRadioNotifier? notifier;
 
-  /// Direction that the radios will build in.
+  /// Direction that the radios will built in.
   final Axis? direction;
 
   /// Spacing in between the radios.
