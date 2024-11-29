@@ -12,7 +12,7 @@ final class MyoroGroupCheckbox extends StatefulWidget {
   /// [ValueNotifier] of the [MyoroGroupCheckbox] for more complex scope situations.
   final MyoroGroupCheckboxNotifier? notifier;
 
-  /// Direction that the checkboxes will build in.
+  /// Direction that the checkboxes will built in.
   final Axis? direction;
 
   /// Spacing in between the checkboxes.
