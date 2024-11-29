@@ -33,7 +33,7 @@ final class MyoroRadio extends StatefulWidget {
     this.labelTextStyle,
     this.onChanged,
   }) : assert(
-          (notifier == null) ^ (initialValue == null),
+          !(notifier != null && initialValue != null),
           '[MyoroRadio]: If [notifier] is provided, set the initial '
           'value within the [MyoroRadioNotifier]\'s constructor.',
         );
@@ -43,20 +43,21 @@ final class MyoroRadio extends StatefulWidget {
 }
 
 final class _MyoroRadioState extends State<MyoroRadio> {
-  bool? get _initialValue => widget.initialValue;
+  bool get _initialValue => widget.initialValue ?? false;
   String? get _label => widget.label;
   TextStyle? get _labelTextStyle => widget.labelTextStyle;
   MyoroRadioOnChanged? get _onChanged => widget.onChanged;
 
   MyoroRadioNotifier? _localNotifier;
   MyoroRadioNotifier get _notifier {
-    return widget.notifier ?? (_localNotifier ??= MyoroRadioNotifier());
+    return widget.notifier ?? (_localNotifier ??= MyoroRadioNotifier(_initialValue));
   }
 
   @override
-  void initState() {
-    super.initState();
-    if (_initialValue != null) _localNotifier = MyoroRadioNotifier(_initialValue);
+  void didUpdateWidget(covariant MyoroRadio oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.notifier != null) return;
+    _notifier.value = _initialValue;
   }
 
   @override
@@ -70,6 +71,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
     final themeExtension = context.resolveThemeExtension<MyoroRadioThemeExtension>();
 
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         ValueListenableBuilder(
           valueListenable: _notifier,

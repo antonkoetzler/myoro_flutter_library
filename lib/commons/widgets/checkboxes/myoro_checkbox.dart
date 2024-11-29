@@ -6,6 +6,9 @@ typedef MyoroCheckboxOnChanged = Function(bool value);
 
 /// A checkbox that can have a label on the right side of it.
 final class MyoroCheckbox extends StatefulWidget {
+  /// [ValueNotifier] for more complex situations where [onChanged] does not suffice.
+  final MyoroCheckboxNotifier? notifier;
+
   /// Label at the right of the checkbox.
   final String? label;
 
@@ -18,17 +21,18 @@ final class MyoroCheckbox extends StatefulWidget {
   /// Function that is executed when the checkbox is changed.
   final MyoroCheckboxOnChanged? onChanged;
 
-  /// Controller for more complex situations where [onChanged] does not suffice.
-  final ValueNotifier<bool>? controller;
-
   const MyoroCheckbox({
     super.key,
     this.label,
     this.labelTextStyle,
     this.initialValue,
     this.onChanged,
-    this.controller,
-  });
+    this.notifier,
+  }) : assert(
+          !(notifier != null && initialValue != null),
+          '[MyoroCheckbox]: If [notifier] is provided, set the initial '
+          'value within the [MyoroRadioNotifier]\'s constructor.',
+        );
 
   @override
   State<MyoroCheckbox> createState() => _MyoroCheckboxState();
@@ -40,22 +44,21 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
   bool get _initialValue => widget.initialValue ?? false;
   MyoroCheckboxOnChanged? get _onChanged => widget.onChanged;
 
-  ValueNotifier<bool>? _localController;
-  ValueNotifier<bool> get _controller {
-    return widget.controller ?? (_localController ??= ValueNotifier<bool>(_initialValue));
+  MyoroCheckboxNotifier? _localNotifier;
+  MyoroCheckboxNotifier get _notifier {
+    return widget.notifier ?? (_localNotifier ??= MyoroCheckboxNotifier(_initialValue));
   }
 
   @override
-  void initState() {
-    super.initState();
-    // Sync the provided controllers value with [_initialValue].
-    if (widget.controller == null) return;
-    _controller.value = _initialValue;
+  void didUpdateWidget(covariant MyoroCheckbox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.notifier != null) return;
+    _notifier.value = _initialValue;
   }
 
   @override
   void dispose() {
-    if (widget.controller == null) _controller.dispose();
+    if (widget.notifier == null) _notifier.dispose();
     super.dispose();
   }
 
@@ -67,7 +70,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
       mainAxisSize: MainAxisSize.min,
       children: [
         ValueListenableBuilder(
-          valueListenable: _controller,
+          valueListenable: _notifier,
           builder: (_, bool value, __) {
             // This [SizedBox] removes the default margin in [Checkbox].
             return SizedBox(
@@ -81,8 +84,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
                 focusColor: themeExtension.focusColor,
                 splashRadius: themeExtension.splashRadius,
                 onChanged: (_) {
-                  _onChanged?.call(!_controller.value);
-                  _controller.value = !_controller.value;
+                  _onChanged?.call(!_notifier.value);
+                  _notifier.value = !_notifier.value;
                 },
               ),
             );

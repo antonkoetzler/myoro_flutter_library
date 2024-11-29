@@ -1,12 +1,12 @@
 # TODO
 
-1. Implement group of radio box component;
 1. Implement modals;
 1. Implement drawers;
 1. Implement snack bars;
 1. Implement Tables;
 1. Implement notifications;
 1. Implement carousels;
+1. Implment graphs;
 1. Finish all widget showcases;
 1. Implement shared preferences;
 1. Brush theme extensions to remove non-theme related things;

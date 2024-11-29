@@ -5,43 +5,48 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroGroupCheckboxItems = Map<String, bool>;
 
 /// Function executed when any of the checkbox's values are changed.
-typedef MyoroGroupCheckboxOnChanged = void Function(String keyChanged, MyoroGroupCheckboxItems items);
-
-/// Type definition to not have to type out the [ValueNotifier] everytime.
-typedef MyoroGroupCheckboxController = ValueNotifier<MyoroGroupCheckboxItems>;
+typedef MyoroGroupCheckboxOnChanged = void Function(String key, MyoroGroupCheckboxItems items);
 
 /// A group of [MyoroCheckbox]s.
 final class MyoroGroupCheckbox extends StatefulWidget {
-  /// Direction that the checkboxes will built.
+  /// [ValueNotifier] of the [MyoroGroupCheckbox] for more complex scope situations.
+  final MyoroGroupCheckboxNotifier? notifier;
+
+  /// Direction that the checkboxes will build in.
   final Axis? direction;
 
   /// Spacing in between the checkboxes.
   final double? spacing;
 
-  /// Spacing in between the checkboxes when the checkboxes are wrapping.
+  /// Spacing in between the checkboxes when the checkboxes are wrapping (cross axis spacing).
   final double? runSpacing;
 
   /// Function executed when any of the checkbox's values are changed.
   final MyoroGroupCheckboxOnChanged? onChanged;
 
-  /// Controller of the [MyoroGroupCheckbox] for more complex situations.
-  final MyoroGroupCheckboxController? controller;
-
   /// Checkboxes of the group.
-  /// 
+  ///
   /// The [Map]'s key is the label of the checkbox, which is never null
   /// or empty. The [Map]'s value is the initial value of the checkbox.
-  final MyoroGroupCheckboxItems checkboxes;
+  final MyoroGroupCheckboxItems? checkboxes;
 
-  const MyoroGroupCheckbox({
+  MyoroGroupCheckbox({
     super.key,
+    this.notifier,
     this.direction,
     this.spacing,
     this.runSpacing,
     this.onChanged,
-    this.controller,
-    required this.checkboxes,
-  });
+    this.checkboxes,
+  })  : assert(
+          (notifier != null) ^ (checkboxes != null),
+          '[MyoroGroupCheckbox]: If you are providing [notifier], you must pass '
+          '[checkboxes] within its constructor and remove [checkboxes] here.',
+        ),
+        assert(
+          notifier == null ? checkboxes!.isNotEmpty : true,
+          '[MyoroGroupCheckbox]: [checkboxes] must not be empty when [notifier] isn\'t provided.',
+        );
 
   @override
   State<MyoroGroupCheckbox> createState() => _MyoroGroupCheckboxState();
@@ -52,22 +57,16 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
   double? get _spacing => widget.spacing;
   double? get _runSpacing => widget.runSpacing;
   MyoroGroupCheckboxOnChanged? get _onChanged => widget.onChanged;
-  MyoroGroupCheckboxItems get _checkboxes => widget.checkboxes;
+  MyoroGroupCheckboxItems? get _checkboxes => widget.checkboxes;
 
-  MyoroGroupCheckboxController? _localController;
-  MyoroGroupCheckboxController get _controller {
-    return widget.controller ?? (_localController ??= MyoroGroupCheckboxController(_checkboxes));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.value = _checkboxes;
+  MyoroGroupCheckboxNotifier? _localNotifier;
+  MyoroGroupCheckboxNotifier get _notifier {
+    return widget.notifier ?? (_localNotifier ??= MyoroGroupCheckboxNotifier(_checkboxes!));
   }
 
   @override
   void dispose() {
-    if (widget.controller == null) _controller.dispose();
+    if (widget.notifier == null) _notifier.dispose();
     super.dispose();
   }
 
@@ -75,10 +74,8 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
-    if (_checkboxes.isEmpty) return const SizedBox.shrink();
-
     return ValueListenableBuilder(
-      valueListenable: _controller,
+      valueListenable: _notifier,
       builder: (_, MyoroGroupCheckboxItems checkboxes, __) {
         return Wrap(
           direction: _direction ?? themeExtension.direction,
@@ -90,16 +87,14 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
                 label: entry.key,
                 initialValue: entry.value,
                 onChanged: (bool value) {
-                  final Map<String, bool> newCheckboxes = Map.from(checkboxes);
-                  newCheckboxes[entry.key] = value;
-                  _onChanged?.call(entry.key, newCheckboxes);
-                  _controller.value = newCheckboxes;
+                  _notifier.toggle(entry.key, value);
+                  _onChanged?.call(entry.key, _notifier.checkboxes);
                 },
               );
             },
           ).toList(),
         );
-      }
+      },
     );
   }
 }

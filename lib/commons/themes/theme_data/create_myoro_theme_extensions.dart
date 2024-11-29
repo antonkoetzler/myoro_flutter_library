@@ -191,6 +191,11 @@ List<ThemeExtension> createRadioThemeExtensions(ColorScheme colorScheme, TextThe
       spacing: 5,
       splashRadius: 15,
     ),
+    const MyoroGroupRadioThemeExtension(
+      direction: Axis.vertical,
+      spacing: 5,
+      runSpacing: 5,
+    ),
   ];
 }
 

@@ -42,6 +42,7 @@ enum WidgetListingEnum {
   ]),
   radios('Radios', [
     myoroRadioTitle,
+    myoroGroupRadioTitle,
   ]),
   resolvers('Resolvers', [
     myoroResolverTitle,
@@ -100,6 +101,7 @@ enum WidgetListingEnum {
 
   // Radios.
   static const myoroRadioTitle = 'MyoroRadio';
+  static const myoroGroupRadioTitle = 'MyoroGroupRadio';
 
   // Resolvers.
   static const myoroResolverTitle = 'MyoroResolver';
@@ -155,6 +157,7 @@ enum WidgetListingEnum {
 
       // Radios.
       myoroRadioTitle => const MyoroRadioWidgetShowcase(),
+      myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcase(),
 
       // Resolvers.
       myoroResolverTitle => throw UnimplementedError(),
