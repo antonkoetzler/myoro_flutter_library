@@ -1,6 +1,5 @@
 # TODO
 
-1. Implement modals;
 1. Implement drawers;
 1. Implement snack bars;
 1. Implement Tables;

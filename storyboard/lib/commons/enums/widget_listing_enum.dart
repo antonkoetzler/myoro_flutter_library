@@ -40,6 +40,10 @@ enum WidgetListingEnum {
   menus('Menus', [
     myoroMenuTitle,
   ]),
+  modals('Modals', [
+    myoroModalTitle,
+    myoroDialogModalTitle,
+  ]),
   radios('Radios', [
     myoroRadioTitle,
     myoroGroupRadioTitle,
@@ -99,6 +103,10 @@ enum WidgetListingEnum {
   // Menus.
   static const myoroMenuTitle = 'MyoroMenu';
 
+  // Modals.
+  static const myoroModalTitle = 'MyoroModal';
+  static const myoroDialogModalTitle = 'MyoroDialogModal';
+
   // Radios.
   static const myoroRadioTitle = 'MyoroRadio';
   static const myoroGroupRadioTitle = 'MyoroGroupRadio';
@@ -155,6 +163,10 @@ enum WidgetListingEnum {
       // Menus.
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
 
+      // Modals.
+      myoroModalTitle => const MyoroModalWidgetShowcase(),
+      myoroDialogModalTitle => const MyoroDialogModalWidgetShowcase(),
+
       // Radios.
       myoroRadioTitle => const MyoroRadioWidgetShowcase(),
       myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcase(),
@@ -186,6 +198,7 @@ enum WidgetListingEnum {
   bool get isInputs => this == inputs;
   bool get isMaterialApps => this == materialApps;
   bool get isMenus => this == menus;
+  bool get isModals => this == modals;
   bool get isRadios => this == radios;
   bool get isResolvers => this == resolvers;
   bool get isScreens => this == screens;

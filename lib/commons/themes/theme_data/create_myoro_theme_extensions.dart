@@ -15,6 +15,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createLoaderThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
     ...createMenuThemeExtensions(colorScheme, textTheme),
+    ...createModalThemeExtensions(colorScheme, textTheme),
     ...createRadioThemeExtensions(colorScheme, textTheme),
     ...createResolverThemeExtensions(),
     ...createScreenThemeExtensions(),
@@ -58,10 +59,7 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
     MyoroIconTextHoverButtonThemeExtension(
       backgroundColor: colorScheme.primary,
       contentColor: colorScheme.onPrimary,
-      contentPadding: const EdgeInsets.symmetric(
-        vertical: 5,
-        horizontal: 10,
-      ),
+      contentPadding: const EdgeInsets.all(5),
       textStyle: textTheme.bodyMedium!,
       textAlign: TextAlign.left,
       textMaxLines: 1,
@@ -178,6 +176,36 @@ List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextThem
       maxHeight: kMyoroMenuMaxSize.height,
       maxWidth: kMyoroMenuMaxSize.width,
       dialogTextStyle: textTheme.bodyMedium!,
+    ),
+  ];
+}
+
+List<ThemeExtension> createModalThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  const width = 300.0;
+  const height = 400.0;
+
+  return [
+    MyoroModalThemeExtension(
+      backgroundColor: colorScheme.primary,
+      borderRadius: MyoroDecorationHelper.borderRadius,
+      border: Border.all(
+        width: 2,
+        color: colorScheme.onPrimary,
+      ),
+      padding: const EdgeInsets.all(5),
+      constraints: const BoxConstraints(
+        minWidth: width,
+        minHeight: height,
+        maxWidth: width,
+        maxHeight: height,
+      ),
+      spacing: 10,
+      titleTextStyle: textTheme.titleSmall!,
+      closeButtonIcon: Icons.close,
+    ),
+    MyoroDialogModalThemeExtension(
+      textStyle: textTheme.bodyMedium!,
+      footerButtonsSpacing: 10,
     ),
   ];
 }

@@ -38,6 +38,8 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
     const MyoroMenuWidgetShowcaseThemeExtension(
       widgetOptionsSpacing: 20,
     ),
+    const MyoroModalWidgetShowcaseThemeExtension(),
+    const MyoroDialogModalWidgetShowcaseThemeExtension(),
     const MyoroGroupRadioWidgetShowcaseThemeExtension(),
     const MyoroRadioWidgetShowcaseThemeExtension(),
     MyoroSliderWidgetShowcaseThemeExtension(
