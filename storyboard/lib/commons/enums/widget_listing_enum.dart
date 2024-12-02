@@ -21,6 +21,9 @@ enum WidgetListingEnum {
     myoroBasicDividerTitle,
     myoroResizeDividerTitle,
   ]),
+  drawers('Drawers', [
+    myoroDrawerTitle,
+  ]),
   dropdowns('Dropdowns', [
     myoroDropdownTitle,
   ]),
@@ -84,6 +87,9 @@ enum WidgetListingEnum {
   static const myoroBasicDividerTitle = 'MyoroBasicDivider';
   static const myoroResizeDividerTitle = 'MyoroResizeDivider';
 
+  // Drawers.
+  static const myoroDrawerTitle = 'MyoroDrawer';
+
   // Dropdowns.
   static const myoroDropdownTitle = 'MyoroDropdown';
 
@@ -144,6 +150,9 @@ enum WidgetListingEnum {
       myoroBasicDividerTitle => throw UnimplementedError(),
       myoroResizeDividerTitle => throw UnimplementedError(),
 
+      // Drawers.
+      myoroDrawerTitle => const MyoroDrawerWidgetShowcase(),
+
       // Dropdowns.
       myoroDropdownTitle => const MyoroDropdownWidgetShowcase(),
 
@@ -189,11 +198,12 @@ enum WidgetListingEnum {
   }
 
   bool get isAppBars => this == appBars;
-  bool get isDropdowns => this == dropdowns;
   bool get isBodies => this == bodies;
   bool get isCheckboxes => this == checkboxes;
   bool get isButtons => this == buttons;
   bool get isDividers => this == dividers;
+  bool get isDrawers => this == drawers;
+  bool get isDropdowns => this == dropdowns;
   bool get isForms => this == forms;
   bool get isInputs => this == inputs;
   bool get isMaterialApps => this == materialApps;

@@ -5,11 +5,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     ...createAppBarThemeExtensions(),
-    ...createAutocompleteThemeExtensions(),
     ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
     ...createCheckboxThemeExtensions(colorScheme, textTheme),
     ...createDividerThemeExtensions(colorScheme),
+    ...createDrawerThemeExtension(colorScheme, textTheme),
+    ...createDropdownThemeExtensions(),
     ...createFormThemeExtensions(),
     ...createInputThemeExtensions(colorScheme, textTheme),
     ...createLoaderThemeExtensions(colorScheme),
@@ -32,7 +33,7 @@ List<ThemeExtension> createAppBarThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> createAutocompleteThemeExtensions() {
+List<ThemeExtension> createDropdownThemeExtensions() {
   return const [
     MyoroDropdownThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
@@ -101,6 +102,31 @@ List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
       resizeButtonShortValue: 10,
       resizeButtonLongValue: 30,
       resizeButtonBorderRadius: MyoroDecorationHelper.borderRadius,
+    ),
+  ];
+}
+
+List<ThemeExtension> createDrawerThemeExtension(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    MyoroDrawerThemeExtension(
+      drawerPadding: const EdgeInsets.all(20),
+      drawerContentPadding: const EdgeInsets.all(10),
+      drawerShape: RoundedRectangleBorder(
+        side: BorderSide(
+          width: 2,
+          color: colorScheme.onPrimary,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      titleContentDividerPadding: const EdgeInsets.only(
+        top: 4,
+        bottom: 10,
+      ),
+      titleTextStyle: textTheme.titleLarge!,
+      closeButtonDrawerIcon: Icons.keyboard_arrow_left,
+      closeButtonEndDrawerIcon: Icons.keyboard_arrow_right,
+      closeButtonBackgroundColor: colorScheme.primary,
+      closeButtonBordered: true,
     ),
   ];
 }
