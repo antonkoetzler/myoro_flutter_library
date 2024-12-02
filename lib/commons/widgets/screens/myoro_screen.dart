@@ -45,6 +45,10 @@ class _MyoroScreenState extends State<MyoroScreen> {
     // when [MyoroDrawerController.openDrawer] is called. If you do
     // `drawer: _drawerController.drawer ?? const SizedBox.shrink()` the
     // content will not update. Bizarre.
+    //
+    // Perhaps it's because [_Drawer] is using a bang operator to get the
+    // drawer's content ([_drawerController.drawer!]) along with the fact that
+    // it is rebuilt when a [Scaffold] drawer is activated.
     final drawer = _Drawer(_drawerController);
 
     return InheritedProvider.value(
