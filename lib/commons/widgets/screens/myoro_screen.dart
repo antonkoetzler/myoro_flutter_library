@@ -34,6 +34,12 @@ class _MyoroScreenState extends State<MyoroScreen> {
   }
 
   @override
+  void dispose() {
+    if (widget.drawerController == null) _drawerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // This is the only way that the content of the drawer will update
     // when [MyoroDrawerController.openDrawer] is called. If you do
