@@ -1,6 +1,5 @@
 # TODO
 
-1. (**IN PROGRESS**) Implement drawers;
 1. Implement snack bars;
 1. Implement Tables;
 1. Implement notifications;
