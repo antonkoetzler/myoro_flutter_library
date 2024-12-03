@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // Borders.
 const kMyoroBorderLength = 2.0;
-const kMyoroBorderRadius = 15.0;
+const kMyoroBorderRadius = 10.0;
 
 // Menus.
 const kMyoroMenuMaxSize = Size(400, 200);

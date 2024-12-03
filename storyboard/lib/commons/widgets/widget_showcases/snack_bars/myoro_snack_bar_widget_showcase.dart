@@ -24,7 +24,11 @@ final class _Widget extends StatelessWidget {
       child: MyoroIconTextHoverButton(
         text: 'Click to launch the snack bar.',
         bordered: true,
-        onPressed: () => throw UnimplementedError(),
+        onPressed: () => context.showSnackBar(
+          snackBar: const MyoroSnackBar(
+            message: 'Now do color enum',
+          ),
+        ),
       ),
     );
   }

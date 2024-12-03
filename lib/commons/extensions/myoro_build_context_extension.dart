@@ -37,4 +37,19 @@ extension MyoroBuildContextExtension on BuildContext {
 
   /// Closes the drawer of the [BuildContext]'s [MyoroScreen].
   void closeDrawer() => read<MyoroDrawerController>().closeDrawer(this);
+
+  /// Opens a snack bar.
+  void showSnackBar({
+    Duration? duration,
+    required MyoroSnackBar snackBar,
+  }) {
+    MyoroSnackBarHelper.showSnackBar(
+      this,
+      duration: duration,
+      snackBar: snackBar,
+    );
+  }
+
+  /// Hides a snack bar.
+  void hideSnackBar() => MyoroSnackBarHelper.hideSnackBar(this);
 }

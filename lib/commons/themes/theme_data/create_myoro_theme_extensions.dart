@@ -22,7 +22,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createScreenThemeExtensions(),
     ...createScrollableThemeExtensions(),
     ...createSliderThemeExtensions(textTheme),
-    ...createSnackBarThemeExtensions(),
+    ...createSnackBarThemeExtensions(colorScheme, textTheme),
   ];
 }
 
@@ -117,7 +117,7 @@ List<ThemeExtension> createDrawerThemeExtension(ColorScheme colorScheme, TextThe
           width: 2,
           color: colorScheme.onPrimary,
         ),
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadius),
       ),
       titleContentDividerPadding: const EdgeInsets.only(
         top: 4,
@@ -285,8 +285,29 @@ List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
   ];
 }
 
-List<ThemeExtension> createSnackBarThemeExtensions() {
-  return const [
-    MyoroSnackBarThemeExtension(),
+List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    const MyoroSnackBarContainerThemeExtension(
+      backgroundColor: MyoroColorTheme.transparent,
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.zero,
+      elevation: 0,
+      dismissDirection: DismissDirection.none,
+      duration: Duration(seconds: 3),
+    ),
+    MyoroSnackBarThemeExtension(
+      backgroundColor: colorScheme.primary,
+      border: Border.all(
+        width: 2,
+        color: colorScheme.onPrimary,
+      ),
+      borderRadius: BorderRadius.circular(kMyoroBorderRadius),
+      padding: const EdgeInsets.all(10),
+      contentCloseButtonSpacing: 10,
+      messageTextStyle: textTheme.bodySmall!,
+      closeButtonIcon: Icons.close,
+      closeButtonIconSize: 15,
+    ),
   ];
 }
