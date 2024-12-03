@@ -7,7 +7,8 @@
 - Fixed width of columns ([MyoroTableColumnWidth]);
 - Resizing columns;
 - Option to show tooltips on the titles & cells;
-- On press row.
+- On press row;
+- Horizontal scroll.
 
 1. Implement notifications;
 1. Implement carousels;
