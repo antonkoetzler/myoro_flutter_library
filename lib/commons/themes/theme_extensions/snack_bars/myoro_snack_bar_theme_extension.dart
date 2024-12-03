@@ -8,8 +8,20 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
   /// Background color of the snack bar.
   final Color backgroundColor;
 
+  /// [MyoroSnackBarEnum.standard].
+  final Color standardBorderColor;
+
+  /// [MyoroSnackBarEnum.attention].
+  final Color attentionBorderColor;
+
+  /// [MyoroSnackBarEnum.success].
+  final Color successBorderColor;
+
+  /// [MyoroSnackBarEnum.error].
+  final Color errorBorderColor;
+
   /// Border of the snack bar.
-  final Border border;
+  final double borderWidth;
 
   /// Border radius of the snack bar.
   final BorderRadius borderRadius;
@@ -31,7 +43,11 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
 
   const MyoroSnackBarThemeExtension({
     required this.backgroundColor,
-    required this.border,
+    required this.standardBorderColor,
+    required this.attentionBorderColor,
+    required this.successBorderColor,
+    required this.errorBorderColor,
+    required this.borderWidth,
     required this.borderRadius,
     required this.padding,
     required this.contentCloseButtonSpacing,
@@ -43,7 +59,11 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
   @override
   MyoroSnackBarThemeExtension copyWith({
     Color? backgroundColor,
-    Border? border,
+    Color? standardBorderColor,
+    Color? attentionBorderColor,
+    Color? successBorderColor,
+    Color? errorBorderColor,
+    double? borderWidth,
     BorderRadius? borderRadius,
     EdgeInsets? padding,
     double? contentCloseButtonSpacing,
@@ -53,7 +73,11 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
   }) {
     return MyoroSnackBarThemeExtension(
       backgroundColor: backgroundColor ?? this.backgroundColor,
-      border: border ?? this.border,
+      standardBorderColor: standardBorderColor ?? this.standardBorderColor,
+      attentionBorderColor: attentionBorderColor ?? this.attentionBorderColor,
+      successBorderColor: successBorderColor ?? this.successBorderColor,
+      errorBorderColor: errorBorderColor ?? this.errorBorderColor,
+      borderWidth: borderWidth ?? this.borderWidth,
       borderRadius: borderRadius ?? this.borderRadius,
       padding: padding ?? this.padding,
       contentCloseButtonSpacing: contentCloseButtonSpacing ?? this.contentCloseButtonSpacing,
@@ -71,7 +95,11 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
     if (other is! MyoroSnackBarThemeExtension) return this;
     return copyWith(
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
-      border: Border.lerp(border, other.border, t),
+      standardBorderColor: Color.lerp(standardBorderColor, other.standardBorderColor, t),
+      attentionBorderColor: Color.lerp(attentionBorderColor, other.attentionBorderColor, t),
+      successBorderColor: Color.lerp(successBorderColor, other.successBorderColor, t),
+      errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
+      borderWidth: lerpDouble(borderWidth, other.borderWidth, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
       contentCloseButtonSpacing: lerpDouble(contentCloseButtonSpacing, other.contentCloseButtonSpacing, t),

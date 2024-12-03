@@ -52,7 +52,7 @@ final class MyoroMenu extends StatelessWidget {
           ),
           child: MyoroResolver(
             request: () async => await dataConfiguration.items,
-            builder: (items, status, controller) {
+            builder: (List<MyoroMenuItem>? items, MyoroRequestEnum status, _, __) {
               return switch (status) {
                 MyoroRequestEnum.idle => const _Loader(),
                 MyoroRequestEnum.loading => const _Loader(),

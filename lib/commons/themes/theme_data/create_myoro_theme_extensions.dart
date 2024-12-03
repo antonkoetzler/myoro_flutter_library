@@ -23,6 +23,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createScrollableThemeExtensions(),
     ...createSliderThemeExtensions(textTheme),
     ...createSnackBarThemeExtensions(colorScheme, textTheme),
+    ...createTableThemeExtensions(colorScheme, textTheme),
   ];
 }
 
@@ -114,7 +115,7 @@ List<ThemeExtension> createDrawerThemeExtension(ColorScheme colorScheme, TextThe
       drawerContentPadding: const EdgeInsets.all(10),
       drawerShape: RoundedRectangleBorder(
         side: BorderSide(
-          width: 2,
+          width: kMyoroBorderLength,
           color: colorScheme.onPrimary,
         ),
         borderRadius: BorderRadius.circular(kMyoroBorderRadius),
@@ -197,7 +198,7 @@ List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextThem
       backgroundColor: colorScheme.primary,
       borderRadius: MyoroDecorationHelper.inputBorderRadius,
       border: Border.all(
-        width: 2,
+        width: kMyoroBorderLength,
         color: colorScheme.onPrimary,
       ),
       maxHeight: kMyoroMenuMaxSize.height,
@@ -216,7 +217,7 @@ List<ThemeExtension> createModalThemeExtensions(ColorScheme colorScheme, TextThe
       backgroundColor: colorScheme.primary,
       borderRadius: MyoroDecorationHelper.borderRadius,
       border: Border.all(
-        width: 2,
+        width: kMyoroBorderLength,
         color: colorScheme.onPrimary,
       ),
       padding: const EdgeInsets.all(5),
@@ -270,6 +271,7 @@ List<ThemeExtension> createScrollableThemeExtensions() {
   return const [
     MyoroScrollableThemeExtension(
       direction: Axis.vertical,
+      padding: EdgeInsets.zero,
     ),
   ];
 }
@@ -298,16 +300,35 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
     ),
     MyoroSnackBarThemeExtension(
       backgroundColor: colorScheme.primary,
-      border: Border.all(
-        width: 2,
-        color: colorScheme.onPrimary,
-      ),
+      standardBorderColor: colorScheme.onPrimary,
+      attentionBorderColor: MyoroColorTheme.attention,
+      successBorderColor: MyoroColorTheme.success,
+      errorBorderColor: MyoroColorTheme.error,
+      borderWidth: 2,
       borderRadius: BorderRadius.circular(kMyoroBorderRadius),
       padding: const EdgeInsets.all(10),
       contentCloseButtonSpacing: 10,
       messageTextStyle: textTheme.bodySmall!,
       closeButtonIcon: Icons.close,
       closeButtonIconSize: 15,
+    ),
+  ];
+}
+
+List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    MyoroTableThemeExtension(
+      backgroundColor: colorScheme.primary,
+      border: Border.all(
+        width: kMyoroBorderLength,
+        color: colorScheme.onPrimary,
+      ),
+      borderRadius: BorderRadius.circular(kMyoroBorderRadius),
+      contentPadding: const EdgeInsets.all(10),
+      columnSpacing: 10,
+      emptyTableTextStyle: textTheme.bodyMedium!,
+      errorMessageTitleTextStyle: textTheme.titleMedium!,
+      errorMessageErrorTextStyle: textTheme.bodySmall!,
     ),
   ];
 }

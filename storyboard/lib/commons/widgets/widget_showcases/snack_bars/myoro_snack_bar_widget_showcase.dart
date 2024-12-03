@@ -26,6 +26,7 @@ final class _Widget extends StatelessWidget {
         bordered: true,
         onPressed: () => context.showSnackBar(
           snackBar: const MyoroSnackBar(
+            snackBarType: MyoroSnackBarTypeEnum.success,
             message: 'Now do color enum',
           ),
         ),

@@ -20,13 +20,14 @@ enum MyoroScrollableEnum {
 
   /// Scrollable list generated.
   Widget widget(
-    ScrollController scrollController,
+    ScrollController? scrollController,
     Axis direction,
+    EdgeInsets? padding,
     List<Widget> children,
   ) {
     return switch (this) {
-      singleChildScrollView => _SingleChildScrollView(scrollController, direction, children),
-      customScrollView => _CustomScrollView(scrollController, direction, children),
+      singleChildScrollView => _SingleChildScrollView(scrollController, direction, padding, children),
+      customScrollView => _CustomScrollView(scrollController, direction, padding, children),
     };
   }
 
@@ -35,46 +36,56 @@ enum MyoroScrollableEnum {
 }
 
 final class _SingleChildScrollView extends StatelessWidget {
-  final ScrollController scrollController;
-  final Axis direction;
-  final List<Widget> children;
+  final ScrollController? _scrollController;
+  final Axis _direction;
+  final EdgeInsets? _padding;
+  final List<Widget> _children;
 
   const _SingleChildScrollView(
-    this.scrollController,
-    this.direction,
-    this.children,
+    this._scrollController,
+    this._direction,
+    this._padding,
+    this._children,
   );
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      controller: scrollController,
-      scrollDirection: direction,
-      child: direction.isVertical ? Column(children: children) : Row(children: children),
+      controller: _scrollController,
+      scrollDirection: _direction,
+      child: Padding(
+        padding: _padding ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().padding,
+        child: _direction.isVertical ? Column(children: _children) : Row(children: _children),
+      ),
     );
   }
 }
 
 final class _CustomScrollView extends StatelessWidget {
-  final ScrollController scrollController;
-  final Axis direction;
-  final List<Widget> children;
+  final ScrollController? _scrollController;
+  final Axis _direction;
+  final EdgeInsets? _padding;
+  final List<Widget> _children;
 
   const _CustomScrollView(
-    this.scrollController,
-    this.direction,
-    this.children,
+    this._scrollController,
+    this._direction,
+    this._padding,
+    this._children,
   );
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      controller: scrollController,
-      scrollDirection: direction,
+      controller: _scrollController,
+      scrollDirection: _direction,
       slivers: [
-        SliverList.builder(
-          itemCount: children.length,
-          itemBuilder: (_, int index) => children[index],
+        SliverPadding(
+          padding: _padding ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().padding,
+          sliver: SliverList.builder(
+            itemCount: _children.length,
+            itemBuilder: (_, int index) => _children[index],
+          ),
         ),
       ],
     );

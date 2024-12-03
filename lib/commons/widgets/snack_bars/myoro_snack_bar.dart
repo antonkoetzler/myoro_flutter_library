@@ -8,6 +8,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// Two main "modes": Providing a [Widget] or a simple [String] message for the content.
 final class MyoroSnackBar extends StatelessWidget {
+  /// Type of snack bar dialog.
+  final MyoroSnackBarTypeEnum snackBarType;
+
   /// Whether or not to display [_CloseButton].
   final bool showCloseButton;
 
@@ -19,6 +22,7 @@ final class MyoroSnackBar extends StatelessWidget {
 
   const MyoroSnackBar({
     super.key,
+    this.snackBarType = MyoroSnackBarTypeEnum.standard,
     this.showCloseButton = true,
     this.message,
     this.child,
@@ -35,7 +39,10 @@ final class MyoroSnackBar extends StatelessWidget {
       padding: themeExtension.padding,
       decoration: BoxDecoration(
         color: themeExtension.backgroundColor,
-        border: themeExtension.border,
+        border: Border.all(
+          width: themeExtension.borderWidth,
+          color: snackBarType.getBorderColor(context),
+        ),
         borderRadius: themeExtension.borderRadius,
       ),
       child: Row(

@@ -47,6 +47,7 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       widgetSliderLabelSpacing: 5,
     ),
     const MyoroSnackBarWidgetShowcaseThemeExtension(),
+    const MyoroTableWidgetShowcaseThemeExtension(),
   ];
 }
 

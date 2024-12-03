@@ -14,7 +14,8 @@ dependencies:
   window_manager: ^0.4.3
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
-  faker: ^2.2.0
+  # Latest conflicts with the Flutter's material library like [Color].
+  faker: 2.1.0
 
 dev_dependencies:
   flutter_test:
