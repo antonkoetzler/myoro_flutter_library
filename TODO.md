@@ -1,6 +1,6 @@
 # TODO
 
-1. Implement snack bars;
+1. (**IN PROGRESS**) Implement snack bars;
 1. Implement Tables;
 1. Implement notifications;
 1. Implement carousels;

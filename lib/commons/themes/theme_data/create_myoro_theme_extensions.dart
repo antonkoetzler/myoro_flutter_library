@@ -22,6 +22,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createScreenThemeExtensions(),
     ...createScrollableThemeExtensions(),
     ...createSliderThemeExtensions(textTheme),
+    ...createSnackBarThemeExtensions(),
   ];
 }
 
@@ -281,5 +282,11 @@ List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
       labelSliderSpacing: 5,
       footerLabelTextStyle: textTheme.bodySmall!.copyWith(height: 0.5),
     ),
+  ];
+}
+
+List<ThemeExtension> createSnackBarThemeExtensions() {
+  return const [
+    MyoroSnackBarThemeExtension(),
   ];
 }

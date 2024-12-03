@@ -9,4 +9,5 @@ export 'menus/exports.dart';
 export 'modals/exports.dart';
 export 'radios/exports.dart';
 export 'sliders/exports.dart';
+export 'snack_bars/exports.dart';
 export 'widget_showcase.dart';

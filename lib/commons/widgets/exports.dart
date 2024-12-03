@@ -16,3 +16,4 @@ export 'resolvers/exports.dart';
 export 'screens/exports.dart';
 export 'scrollables/exports.dart';
 export 'sliders/exports.dart';
+export 'snack_bars/exports.dart';
