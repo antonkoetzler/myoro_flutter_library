@@ -12,7 +12,7 @@ final class MyoroTableColumn extends Equatable {
   final Widget child;
 
   const MyoroTableColumn({
-    required this.widthConfiguration,
+    this.widthConfiguration = const MyoroTableColumnWidth.expanding(),
     required this.child,
   });
 

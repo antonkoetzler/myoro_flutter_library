@@ -28,9 +28,13 @@ final class _Widget extends StatelessWidget {
           (_) => faker.randomGenerator.string(50),
         ),
       ),
+      constraints: const BoxConstraints(
+        maxWidth: 500,
+      ),
       columns: List.generate(
         4,
         (_) => MyoroTableColumn.fake().copyWith(
+          widthConfiguration: const MyoroTableColumnWidth.expanding(),
           child: Text(
             faker.randomGenerator.string(10),
           ),

@@ -4,7 +4,6 @@
 
 1. (**IN PROGRESS**) Implement Tables;
 
-- Fixed width of columns ([MyoroTableColumnWidth]);
 - Resizing columns;
 - Option to show tooltips on the titles & cells;
 - On press row;

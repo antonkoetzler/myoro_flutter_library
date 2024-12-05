@@ -7,38 +7,38 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// width configurations for a [MyoroTable]'s columns.
 final class MyoroTableColumnWidth extends Equatable {
   /// Width configuration.
-  final MyoroTableColumnWidthEnum _widthConfiguration;
+  final MyoroTableColumnWidthEnum typeEnum;
 
   /// Fixed width of the column.
-  final double? _fixedWidth;
+  final double? fixedWidth;
 
   MyoroTableColumnWidth._(
-    this._widthConfiguration,
-    this._fixedWidth,
+    this.typeEnum,
+    this.fixedWidth,
   ) : assert(
-          _widthConfiguration.isFixed ? _fixedWidth != null : true,
-          '[MyoroTableColumnWidth]: If [_widthConfiguration] is [MyoroTableColumnWidthEnum.fixed], [fixedWidth] needs to be provided.',
+          typeEnum.isFixed ? fixedWidth != null : true,
+          '[MyoroTableColumnWidth]: If [typeEnum] is [MyoroTableColumnWidthEnum.fixed], [fixedWidth] needs to be provided.',
         );
 
   const MyoroTableColumnWidth.expanding()
-      : _widthConfiguration = MyoroTableColumnWidthEnum.expanding,
-        _fixedWidth = null;
+      : typeEnum = MyoroTableColumnWidthEnum.expanding,
+        fixedWidth = null;
 
   const MyoroTableColumnWidth.intrinsic()
-      : _widthConfiguration = MyoroTableColumnWidthEnum.intrinsic,
-        _fixedWidth = null;
+      : typeEnum = MyoroTableColumnWidthEnum.intrinsic,
+        fixedWidth = null;
 
   const MyoroTableColumnWidth.fixed(double width)
-      : _widthConfiguration = MyoroTableColumnWidthEnum.fixed,
-        _fixedWidth = width;
+      : typeEnum = MyoroTableColumnWidthEnum.fixed,
+        fixedWidth = width;
 
   MyoroTableColumnWidth copyWith({
     MyoroTableColumnWidthEnum? widthConfiguration,
     double? fixedWidth,
   }) {
     return MyoroTableColumnWidth._(
-      widthConfiguration ?? _widthConfiguration,
-      fixedWidth ?? _fixedWidth,
+      widthConfiguration ?? typeEnum,
+      fixedWidth ?? fixedWidth,
     );
   }
 
@@ -54,10 +54,10 @@ final class MyoroTableColumnWidth extends Equatable {
   @override
   String toString() => ''
       'MyoroTableColumnWidth(\n'
-      '  _widthConfiguration: $_widthConfiguration,\n'
-      '  _fixedWidth: $_fixedWidth,\n'
+      '  typeEnum: $typeEnum,\n'
+      '  fixedWidth: $fixedWidth,\n'
       ');';
 
   @override
-  List<Object?> get props => [_widthConfiguration, _fixedWidth];
+  List<Object?> get props => [typeEnum, fixedWidth];
 }
