@@ -16,9 +16,6 @@ final class MyoroTable<T> extends StatefulWidget {
   /// Constraints of the table.
   final BoxConstraints? constraints;
 
-  /// If there will be selectable checkboxes.
-  final bool checkboxesEnabled;
-
   /// Titles/titles of the table.
   final List<MyoroTableColumn> columns;
 
@@ -30,7 +27,6 @@ final class MyoroTable<T> extends StatefulWidget {
     this.controller,
     required this.dataConfiguration,
     this.constraints,
-    this.checkboxesEnabled = false,
     required this.columns,
     required this.rowBuilder,
   }) : assert(
@@ -45,7 +41,6 @@ final class MyoroTable<T> extends StatefulWidget {
 final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
   BoxConstraints? get _constraints => widget.constraints;
-  bool get _checkboxesEnabled => widget.checkboxesEnabled;
   List<MyoroTableColumn> get _columns => widget.columns;
   MyoroTableRowBuilder<T> get _rowBuilder => widget.rowBuilder;
 
@@ -172,24 +167,23 @@ final class _TitleColumns extends StatelessWidget {
                             switch (_columns[i].widthConfiguration.typeEnum) {
                               MyoroTableColumnWidthEnum.expanding => Expanded(
                                   key: _columnWidgetKeys[i],
-                                  child: _TitleColumnsCell(_controller, _columns[i], _controller.columnOrdenated(_columns[i])),
+                                  child: _TitleColumnsCell(_controller, _columns[i]),
                                 ),
                               MyoroTableColumnWidthEnum.intrinsic => IntrinsicWidth(
                                   key: _columnWidgetKeys[i],
-                                  child: _TitleColumnsCell(_controller, _columns[i], _controller.columnOrdenated(_columns[i])),
+                                  child: _TitleColumnsCell(_controller, _columns[i]),
                                 ),
                               MyoroTableColumnWidthEnum.fixed => SizedBox(
                                   key: _columnWidgetKeys[i],
                                   width: _columns[i].widthConfiguration.fixedWidth,
-                                  child: _TitleColumnsCell(_controller, _columns[i], _controller.columnOrdenated(_columns[i])),
+                                  child: _TitleColumnsCell(_controller, _columns[i]),
                                 ),
                             },
                             if (_columns[i] != _columns.last)
                               MyoroBasicDivider(
                                 Axis.vertical,
                                 padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      (themeExtension.columnSpacing / 2) + (context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue / 2),
+                                  horizontal: (themeExtension.columnSpacing - context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue) / 2,
                                 ),
                               ),
                           ],
@@ -210,12 +204,10 @@ final class _TitleColumns extends StatelessWidget {
 final class _TitleColumnsCell extends StatelessWidget {
   final MyoroTableController _controller;
   final MyoroTableColumn _column;
-  final bool _ordenatedColumn;
 
   const _TitleColumnsCell(
     this._controller,
     this._column,
-    this._ordenatedColumn,
   );
 
   void _ordenationCallback(bool value) {
@@ -231,7 +223,7 @@ final class _TitleColumnsCell extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (_column.ordenationCallback != null) _OrdenationButton(_ordenatedColumn, _ordenationCallback),
+          if (_column.ordenationCallback != null) _OrdenationButton(_controller.columnOrdenated(_column), _ordenationCallback),
           SizedBox(width: themeExtension.titleColumnsCellSpacing),
           Flexible(child: _TitleColumnsCellText(_column.title, _column.titleTextAlign)),
         ],

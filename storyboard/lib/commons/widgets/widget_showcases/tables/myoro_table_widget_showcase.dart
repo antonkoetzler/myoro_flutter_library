@@ -51,10 +51,6 @@ final class _Widget extends StatelessWidget {
           return list;
         },
       ),
-      constraints: const BoxConstraints(
-        maxWidth: 500,
-      ),
-      checkboxesEnabled: true,
       columns: columns,
       rowBuilder: (_, __) => row,
     );
