@@ -6,7 +6,6 @@
 
 - Checkboxes;
 - Pagination;
-- Horizontal scroll.
 
 1. Implement cards;
 1. Implement notifications;
