@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createStoryboardThemeExtensions(TextTheme textTheme) {
   return [
     ..._createCommonsThemeExtensions(textTheme),
     ..._createAppThemeExtension(textTheme),
@@ -48,6 +48,11 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
     ),
     const MyoroSnackBarWidgetShowcaseThemeExtension(),
     const MyoroTableWidgetShowcaseThemeExtension(),
+    MyoroTooltipWidgetShowcaseThemeExtension(
+      tooltipMargin: const EdgeInsets.only(top: 10),
+      containerSize: const Size(200, 50),
+      containerTextStyle: textTheme.titleMedium!,
+    ),
   ];
 }
 

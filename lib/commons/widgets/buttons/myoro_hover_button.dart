@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+/// Function executed when the hover of the button changes.
+typedef MyoroHoverButtonOnHover = Function(bool hovered);
+
 /// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
 typedef MyoroHoverButtonBuilder = Widget Function(bool hovered, Color contentColor, Color backgroundColor);
 
@@ -27,6 +30,9 @@ final class MyoroHoverButton extends StatefulWidget {
   /// Tooltip message of the button.
   final String? tooltip;
 
+  /// Function executed when the hover of the button changes.
+  final MyoroHoverButtonOnHover? onHover;
+
   /// Function executed when the button is clicked.
   final VoidCallback? onPressed;
 
@@ -41,6 +47,7 @@ final class MyoroHoverButton extends StatefulWidget {
     this.bordered,
     this.borderRadius,
     this.tooltip,
+    this.onHover,
     this.onPressed,
     required this.builder,
   });
@@ -56,6 +63,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
   bool? get _bordered => widget.bordered;
   BorderRadius? get _borderRadius => widget.borderRadius;
   String? get _tooltip => widget.tooltip;
+  MyoroHoverButtonOnHover? get _onHover => widget.onHover;
   VoidCallback? get _onPressed => widget.onPressed;
   MyoroHoverButtonBuilder get _builder => widget.builder;
 
@@ -71,9 +79,8 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
-    return Tooltip(
-      message: _tooltip ?? '',
-      waitDuration: themeExtension.tooltipWaitDuration,
+    return MyoroTooltip(
+      text: _tooltip,
       child: InkWell(
         focusColor: MyoroColorTheme.transparent,
         hoverColor: MyoroColorTheme.transparent,
@@ -88,6 +95,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
         onHover: (bool hovered) {
           if (_onPressed == null) return;
           _hoverNotifier.value = hovered;
+          _onHover?.call(hovered);
         },
         child: ValueListenableBuilder(
           valueListenable: _hoverNotifier,

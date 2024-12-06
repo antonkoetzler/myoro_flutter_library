@@ -29,6 +29,21 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   /// Text style of the error message below the title in [_ErrorMessage].
   final TextStyle errorMessageErrorTextStyle;
 
+  /// Padding of [_TitleColumnsCell].
+  final EdgeInsets titleColumnsCellPadding;
+
+  /// Spacing of [_TitleColumnsCell].
+  final double titleColumnsCellSpacing;
+
+  /// Text style of [_TitleColumnsCellText].
+  final TextStyle titleColumnsCellTextStyle;
+
+  /// Text alignment of [_TitleColumnsCellText].
+  final TextAlign titleColumnsCellTextAlign;
+
+  /// Border raidus of [_Row].
+  final BorderRadius rowBorderRadius;
+
   const MyoroTableThemeExtension({
     required this.backgroundColor,
     required this.border,
@@ -38,6 +53,11 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     required this.emptyTableTextStyle,
     required this.errorMessageTitleTextStyle,
     required this.errorMessageErrorTextStyle,
+    required this.titleColumnsCellPadding,
+    required this.titleColumnsCellSpacing,
+    required this.titleColumnsCellTextStyle,
+    required this.titleColumnsCellTextAlign,
+    required this.rowBorderRadius,
   });
 
   @override
@@ -50,6 +70,11 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     TextStyle? emptyTableTextStyle,
     TextStyle? errorMessageTitleTextStyle,
     TextStyle? errorMessageErrorTextStyle,
+    EdgeInsets? titleColumnsCellPadding,
+    double? titleColumnsCellSpacing,
+    TextStyle? titleColumnsCellTextStyle,
+    TextAlign? titleColumnsCellTextAlign,
+    BorderRadius? rowBorderRadius,
   }) {
     return MyoroTableThemeExtension(
       backgroundColor: backgroundColor ?? this.backgroundColor,
@@ -60,6 +85,11 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       emptyTableTextStyle: emptyTableTextStyle ?? this.emptyTableTextStyle,
       errorMessageTitleTextStyle: errorMessageTitleTextStyle ?? this.errorMessageTitleTextStyle,
       errorMessageErrorTextStyle: errorMessageErrorTextStyle ?? this.errorMessageErrorTextStyle,
+      titleColumnsCellPadding: titleColumnsCellPadding ?? this.titleColumnsCellPadding,
+      titleColumnsCellSpacing: titleColumnsCellSpacing ?? this.titleColumnsCellSpacing,
+      titleColumnsCellTextStyle: titleColumnsCellTextStyle ?? this.titleColumnsCellTextStyle,
+      titleColumnsCellTextAlign: titleColumnsCellTextAlign ?? this.titleColumnsCellTextAlign,
+      rowBorderRadius: rowBorderRadius ?? this.rowBorderRadius,
     );
   }
 
@@ -78,6 +108,11 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       emptyTableTextStyle: TextStyle.lerp(emptyTableTextStyle, other.emptyTableTextStyle, t),
       errorMessageTitleTextStyle: TextStyle.lerp(errorMessageTitleTextStyle, other.errorMessageTitleTextStyle, t),
       errorMessageErrorTextStyle: TextStyle.lerp(errorMessageErrorTextStyle, other.errorMessageErrorTextStyle, t),
+      titleColumnsCellPadding: EdgeInsets.lerp(titleColumnsCellPadding, other.titleColumnsCellPadding, t),
+      titleColumnsCellSpacing: lerpDouble(titleColumnsCellSpacing, other.titleColumnsCellSpacing, t),
+      titleColumnsCellTextStyle: TextStyle.lerp(titleColumnsCellTextStyle, other.titleColumnsCellTextStyle, t),
+      titleColumnsCellTextAlign: MyoroLerpHelper.lerp(titleColumnsCellTextAlign, other.titleColumnsCellTextAlign, t),
+      rowBorderRadius: BorderRadius.lerp(rowBorderRadius, other.rowBorderRadius, t),
     );
   }
 }

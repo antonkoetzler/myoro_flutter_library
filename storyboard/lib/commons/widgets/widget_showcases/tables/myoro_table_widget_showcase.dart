@@ -21,33 +21,42 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final list = List.generate(
+      faker.randomGenerator.integer(50),
+      (_) => faker.randomGenerator.string(50),
+    );
+    final columns = List.generate(
+      4,
+      (_) => MyoroTableColumn.fake().copyWith(
+        widthConfiguration: const MyoroTableColumnWidth.expanding(),
+        title: faker.randomGenerator.string(10),
+        titleTextAlign: TextAlign.center,
+        ordenationCallback: (_) => print('Start'),
+        ordenationFilter: faker.randomGenerator.string(10),
+      ),
+    );
+    final row = MyoroTableRow.fake().copyWith(
+      cells: [
+        MyoroTableCell.fake(),
+        MyoroTableCell.fake(),
+        MyoroTableCell.fake(),
+        MyoroTableCell.fake(),
+      ],
+    );
+
     return MyoroTable<String>(
       dataConfiguration: MyoroDataConfiguration(
-        staticItems: List.generate(
-          faker.randomGenerator.integer(50),
-          (_) => faker.randomGenerator.string(50),
-        ),
+        asyncronousItems: () async {
+          await Future.delayed(const Duration(seconds: 1));
+          return list;
+        },
       ),
       constraints: const BoxConstraints(
         maxWidth: 500,
       ),
-      columns: List.generate(
-        4,
-        (_) => MyoroTableColumn.fake().copyWith(
-          widthConfiguration: const MyoroTableColumnWidth.expanding(),
-          child: Text(
-            faker.randomGenerator.string(10),
-          ),
-        ),
-      ),
-      rowBuilder: (_) => MyoroTableRow.fake().copyWith(
-        cells: [
-          MyoroTableCell.fake(),
-          MyoroTableCell.fake(),
-          MyoroTableCell.fake(),
-          MyoroTableCell.fake(),
-        ],
-      ),
+      checkboxesEnabled: true,
+      columns: columns,
+      rowBuilder: (_, __) => row,
     );
   }
 }

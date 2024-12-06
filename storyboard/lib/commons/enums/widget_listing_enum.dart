@@ -68,6 +68,9 @@ enum WidgetListingEnum {
   ]),
   tables('Tables', [
     myoroTableTitle,
+  ]),
+  tooltips('Tooltips', [
+    myoroTooltipTitle,
   ]);
 
   final String widgetCategory;
@@ -141,6 +144,9 @@ enum WidgetListingEnum {
   // Tables.
   static const myoroTableTitle = 'MyoroTable';
 
+  // Tooltips.
+  static const myoroTooltipTitle = 'MyoroTooltip';
+
   /// Widget that will be displayed in [_WidgetViewer].
   static Widget widgetViewerWidget(String widgetName) {
     return switch (widgetName) {
@@ -210,6 +216,9 @@ enum WidgetListingEnum {
       // Tables.
       myoroTableTitle => const MyoroTableWidgetShowcase(),
 
+      // Tooltips.
+      myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
+
       // Should never get here.
       _ => throw Exception('[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.'),
     };
@@ -234,4 +243,5 @@ enum WidgetListingEnum {
   bool get isSliders => this == sliders;
   bool get isSnackBars => this == snackBars;
   bool get isTables => this == tables;
+  bool get isTooltips => this == tooltips;
 }

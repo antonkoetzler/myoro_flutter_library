@@ -4,11 +4,11 @@
 
 1. (**IN PROGRESS**) Implement Tables;
 
-- Resizing columns;
-- Option to show tooltips on the titles & cells;
-- On press row;
+- Checkboxes;
+- Pagination;
 - Horizontal scroll.
 
+1. Implement cards;
 1. Implement notifications;
 1. Implement carousels;
 1. Implment graphs;

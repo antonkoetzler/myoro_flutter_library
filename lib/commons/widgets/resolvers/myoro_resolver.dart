@@ -76,10 +76,19 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
     }
   }
 
+  void _supplyController() => _controller.bloc = _bloc;
+
   @override
   void initState() {
     super.initState();
     _bloc = MyoroResolverBloc(_request)..add(const ExecuteRequestEvent());
+    _supplyController();
+  }
+
+  @override
+  void didUpdateWidget(covariant MyoroResolver<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _supplyController();
   }
 
   @override

@@ -8,40 +8,73 @@ final class MyoroTableColumn extends Equatable {
   /// Width setting of the column.
   final MyoroTableColumnWidth widthConfiguration;
 
-  /// Title/content of the column.
-  final Widget child;
+  /// Title of the column.
+  final String title;
+
+  /// If the title of the column is centered, does not apply to non-title columns.
+  final TextAlign? titleTextAlign;
+
+  /// Ordenation callback. If provided, the column may be clicked to activate this callback.
+  ///
+  /// Once activated, the ordenation button next to the column title will be hovered to signify that it is active.
+  final MyoroCheckboxOnChanged? ordenationCallback;
+
+  /// Ordenation filter.
+  final String? ordenationFilter;
 
   const MyoroTableColumn({
     this.widthConfiguration = const MyoroTableColumnWidth.expanding(),
-    required this.child,
-  });
+    required this.title,
+    required this.titleTextAlign,
+    this.ordenationCallback,
+    this.ordenationFilter,
+  }) : assert(
+          ordenationCallback != null ? ordenationFilter != null : ordenationFilter == null,
+          '[MyoroTableColumn]: If [ordenationCallback] is provided, [ordenationFilter] must be provided. '
+          'As well, if [ordenationCallback] is [null], [ordenationFilter] should also be [null].',
+        );
 
   MyoroTableColumn copyWith({
     MyoroTableColumnWidth? widthConfiguration,
-    Widget? child,
+    String? title,
+    TextAlign? titleTextAlign,
+    MyoroCheckboxOnChanged? ordenationCallback,
+    String? ordenationFilter,
   }) {
     return MyoroTableColumn(
       widthConfiguration: widthConfiguration ?? this.widthConfiguration,
-      child: child ?? this.child,
+      title: title ?? this.title,
+      titleTextAlign: titleTextAlign ?? this.titleTextAlign,
+      ordenationCallback: ordenationCallback ?? this.ordenationCallback,
+      ordenationFilter: ordenationFilter ?? this.ordenationFilter,
     );
   }
 
-  MyoroTableColumn.fake([BuildContext? context])
+  MyoroTableColumn.fake([BuildContext? contitle])
       : widthConfiguration = MyoroTableColumnWidth.fake(),
-        child = Text(
-          faker.randomGenerator.string(50),
-          style: TextStyle(
-            color: context?.resolveThemeExtension<MyoroTableThemeExtension>().backgroundColor ?? MyoroColorTheme.attention,
-          ),
-        );
+        title = faker.randomGenerator.string(50),
+        titleTextAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+        ordenationCallback = null,
+        ordenationFilter = null;
 
   @override
   String toString() => ''
       'MyoroTableColumn(\n'
       '  widthConfiguration: $widthConfiguration,\n'
-      '  child: $child,\n'
+      '  title: $title,\n'
+      '  titleTextAlign: $titleTextAlign,\n'
+      '  ordenationCallback: $ordenationCallback,\n'
+      '  ordenationFilter: $ordenationFilter,\n'
       ');';
 
   @override
-  List<Object?> get props => [widthConfiguration, child];
+  List<Object?> get props {
+    return [
+      widthConfiguration,
+      title,
+      titleTextAlign,
+      ordenationCallback,
+      ordenationFilter,
+    ];
+  }
 }

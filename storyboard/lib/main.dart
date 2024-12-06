@@ -23,10 +23,10 @@ final class _App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroMaterialApp(
+    return MyoroMaterialApp(
       title: 'myoro_flutter_library storyboard',
-      themeExtensionsBuilder: createStoryboardThemeExtensions,
-      home: MyoroScreen(
+      themeExtensionsBuilder: (_, TextTheme textTheme) => createStoryboardThemeExtensions(textTheme),
+      home: const MyoroScreen(
         appBar: StoryboardAppBar(),
         body: StoryboardBody(),
       ),

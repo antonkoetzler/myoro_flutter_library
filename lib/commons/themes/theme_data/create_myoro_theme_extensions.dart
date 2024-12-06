@@ -24,6 +24,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createSliderThemeExtensions(textTheme),
     ...createSnackBarThemeExtensions(colorScheme, textTheme),
     ...createTableThemeExtensions(colorScheme, textTheme),
+    ...createTooltipThemeExtensions(),
   ];
 }
 
@@ -57,7 +58,6 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
       backgroundColor: MyoroColorTheme.transparent,
       borderRadius: MyoroDecorationHelper.borderRadius,
       bordered: false,
-      tooltipWaitDuration: kMyoroTooltipWaitDuration,
     ),
     MyoroIconTextHoverButtonThemeExtension(
       backgroundColor: colorScheme.primary,
@@ -324,11 +324,24 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
         color: colorScheme.onPrimary,
       ),
       borderRadius: BorderRadius.circular(kMyoroBorderRadius),
-      contentPadding: const EdgeInsets.all(10),
-      columnSpacing: 10,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+      columnSpacing: 15,
       emptyTableTextStyle: textTheme.bodyMedium!,
       errorMessageTitleTextStyle: textTheme.titleMedium!,
       errorMessageErrorTextStyle: textTheme.bodySmall!,
+      titleColumnsCellPadding: const EdgeInsets.symmetric(vertical: 5),
+      titleColumnsCellSpacing: 5,
+      titleColumnsCellTextStyle: textTheme.bodyMedium!,
+      titleColumnsCellTextAlign: TextAlign.center,
+      rowBorderRadius: BorderRadius.zero,
+    ),
+  ];
+}
+
+List<ThemeExtension> createTooltipThemeExtensions() {
+  return const [
+    MyoroTooltipThemeExtension(
+      waitDuration: kMyoroTooltipWaitDuration,
     ),
   ];
 }
