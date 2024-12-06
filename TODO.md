@@ -4,8 +4,8 @@
 
 1. (**IN PROGRESS**) Implement Tables;
 
-- Checkboxes;
-- Pagination;
+- Move all logic to a bloc;
+- Pagination.
 
 1. Implement cards;
 1. Implement notifications;

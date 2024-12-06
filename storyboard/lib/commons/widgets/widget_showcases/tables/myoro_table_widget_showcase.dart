@@ -35,7 +35,7 @@ final class _Widget extends StatelessWidget {
         ordenationFilter: faker.randomGenerator.string(10),
       ),
     );
-    final row = MyoroTableRow.fake().copyWith(
+    final row = MyoroTableRow.fake(faker.randomGenerator.string(50)).copyWith(
       cells: [
         MyoroTableCell.fake(),
         MyoroTableCell.fake(),
@@ -45,6 +45,7 @@ final class _Widget extends StatelessWidget {
     );
 
     return MyoroTable<String>(
+      checkboxesEnabled: true,
       dataConfiguration: MyoroDataConfiguration(
         asyncronousItems: () async {
           await Future.delayed(const Duration(seconds: 1));

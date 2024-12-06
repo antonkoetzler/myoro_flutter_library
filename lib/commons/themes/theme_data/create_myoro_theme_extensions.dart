@@ -325,7 +325,7 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
       ),
       borderRadius: BorderRadius.circular(kMyoroBorderRadius),
       contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-      columnSpacing: 15,
+      columnSpacing: 21,
       emptyTableTextStyle: textTheme.bodyMedium!,
       errorMessageTitleTextStyle: textTheme.titleMedium!,
       errorMessageErrorTextStyle: textTheme.bodySmall!,
@@ -333,6 +333,7 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
       titleColumnsCellSpacing: 5,
       titleColumnsCellTextStyle: textTheme.bodyMedium!,
       titleColumnsCellTextAlign: TextAlign.center,
+      rowBackgroundHoverColor: colorScheme.onPrimary.withOpacity(0.1),
       rowBorderRadius: BorderRadius.zero,
     ),
   ];

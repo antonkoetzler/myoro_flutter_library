@@ -5,7 +5,10 @@ import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model to store the configuration options for a row in a [MyoroTable].
-final class MyoroTableRow extends Equatable {
+final class MyoroTableRow<T> extends Equatable {
+  /// Item loaded. Used to be able to utilize Equatable.
+  final T item;
+
   /// Cells of a row.
   final List<MyoroTableCell> cells;
 
@@ -13,21 +16,24 @@ final class MyoroTableRow extends Equatable {
   final VoidCallback? onPressed;
 
   const MyoroTableRow({
+    required this.item,
     required this.cells,
     this.onPressed,
   });
 
-  MyoroTableRow copyWith({
+  MyoroTableRow<T> copyWith({
+    T? item,
     List<MyoroTableCell>? cells,
     VoidCallback? onPressed,
   }) {
     return MyoroTableRow(
+      item: item ?? this.item,
       cells: cells ?? this.cells,
       onPressed: onPressed ?? this.onPressed,
     );
   }
 
-  MyoroTableRow.fake()
+  MyoroTableRow.fake(this.item)
       : cells = List.generate(
           faker.randomGenerator.integer(20),
           (_) => MyoroTableCell.fake(),
@@ -42,5 +48,5 @@ final class MyoroTableRow extends Equatable {
       ');';
 
   @override
-  List<Object?> get props => [cells, onPressed];
+  List<Object?> get props => [item];
 }

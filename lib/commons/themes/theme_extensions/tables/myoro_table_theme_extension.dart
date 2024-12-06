@@ -41,6 +41,9 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   /// Text alignment of [_TitleColumnsCellText].
   final TextAlign titleColumnsCellTextAlign;
 
+  /// Background color of [_Row] when hovered.
+  final Color rowBackgroundHoverColor;
+
   /// Border raidus of [_Row].
   final BorderRadius rowBorderRadius;
 
@@ -57,6 +60,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     required this.titleColumnsCellSpacing,
     required this.titleColumnsCellTextStyle,
     required this.titleColumnsCellTextAlign,
+    required this.rowBackgroundHoverColor,
     required this.rowBorderRadius,
   });
 
@@ -74,6 +78,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     double? titleColumnsCellSpacing,
     TextStyle? titleColumnsCellTextStyle,
     TextAlign? titleColumnsCellTextAlign,
+    Color? rowBackgroundHoverColor,
     BorderRadius? rowBorderRadius,
   }) {
     return MyoroTableThemeExtension(
@@ -89,6 +94,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       titleColumnsCellSpacing: titleColumnsCellSpacing ?? this.titleColumnsCellSpacing,
       titleColumnsCellTextStyle: titleColumnsCellTextStyle ?? this.titleColumnsCellTextStyle,
       titleColumnsCellTextAlign: titleColumnsCellTextAlign ?? this.titleColumnsCellTextAlign,
+      rowBackgroundHoverColor: rowBackgroundHoverColor ?? this.rowBackgroundHoverColor,
       rowBorderRadius: rowBorderRadius ?? this.rowBorderRadius,
     );
   }
@@ -112,6 +118,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       titleColumnsCellSpacing: lerpDouble(titleColumnsCellSpacing, other.titleColumnsCellSpacing, t),
       titleColumnsCellTextStyle: TextStyle.lerp(titleColumnsCellTextStyle, other.titleColumnsCellTextStyle, t),
       titleColumnsCellTextAlign: MyoroLerpHelper.lerp(titleColumnsCellTextAlign, other.titleColumnsCellTextAlign, t),
+      rowBackgroundHoverColor: Color.lerp(rowBackgroundHoverColor, other.rowBackgroundHoverColor, t),
       rowBorderRadius: BorderRadius.lerp(rowBorderRadius, other.rowBorderRadius, t),
     );
   }
