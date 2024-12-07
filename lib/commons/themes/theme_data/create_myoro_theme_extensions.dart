@@ -14,6 +14,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createDrawerThemeExtension(colorScheme, textTheme),
     ...createDropdownThemeExtensions(),
     ...createFormThemeExtensions(),
+    ...createGraphThemeExtensions(),
     ...createInputThemeExtensions(colorScheme, textTheme),
     ...createLoaderThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
@@ -164,6 +165,12 @@ List<ThemeExtension> createDrawerThemeExtension(ColorScheme colorScheme, TextThe
 List<ThemeExtension> createFormThemeExtensions() {
   return const [
     MyoroFormThemeExtension(),
+  ];
+}
+
+List<ThemeExtension> createGraphThemeExtensions() {
+  return const [
+    MyoroBarGraphThemeExtension(),
   ];
 }
 

@@ -34,6 +34,7 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       successColor: Colors.green,
       errorColor: Colors.red,
     ),
+    const MyoroBarGraphWidgetShowcaseThemeExtension(),
     const MyoroCircularLoaderWidgetShowcaseThemeExtension(
       widgetOptionsSpacing: 20,
     ),

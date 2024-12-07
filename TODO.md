@@ -2,7 +2,12 @@
 
 ## Current
 
-1. Implement graphs;
+1. (**IN PROGRESS**) Implement graphs;
+
+- (**IN PROGRESS**) Bar chart;
+- Pie (& donut) chart;
+- Line chart.
+
 1. Finish all widget showcases;
 1. Implement shared preferences;
 1. Brush theme extensions to remove non-theme related things;

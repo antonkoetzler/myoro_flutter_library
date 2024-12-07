@@ -36,6 +36,9 @@ enum WidgetListingEnum {
   forms('Forms', [
     myoroFormTitle,
   ]),
+  graphs('Graphs', [
+    myoroBarGraphTitle,
+  ]),
   inputs('Inputs', [
     myoroInputTitle,
     myoroSearchInputTitle,
@@ -117,6 +120,9 @@ enum WidgetListingEnum {
   // Forms.
   static const myoroFormTitle = 'MyoroForm';
 
+  // Graphs.
+  static const myoroBarGraphTitle = 'MyoroBarGraph';
+
   // Inputs.
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
@@ -195,6 +201,9 @@ enum WidgetListingEnum {
       // Forms.
       myoroFormTitle => const MyoroFormWidgetShowcase(),
 
+      // Graphs.
+      myoroBarGraphTitle => const MyoroBarGraphWidgetShowcase(),
+
       // Inputs.
       myoroInputTitle => const MyoroInputWidgetShowcase(),
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
@@ -244,15 +253,17 @@ enum WidgetListingEnum {
 
   bool get isAppBars => this == appBars;
   bool get isBodies => this == bodies;
+  bool get isButtons => this == buttons;
   bool get isCards => this == cards;
   bool get isCarousels => this == carousels;
   bool get isCheckboxes => this == checkboxes;
-  bool get isButtons => this == buttons;
   bool get isDividers => this == dividers;
   bool get isDrawers => this == drawers;
   bool get isDropdowns => this == dropdowns;
   bool get isForms => this == forms;
+  bool get isGraphs => this == graphs;
   bool get isInputs => this == inputs;
+  bool get isLoaders => this == loaders;
   bool get isMaterialApps => this == materialApps;
   bool get isMenus => this == menus;
   bool get isModals => this == modals;
