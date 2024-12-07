@@ -7,43 +7,31 @@ final class MyoroCarousel extends StatelessWidget {
   /// Direction that the carousel is sliding in.
   final Axis direction;
 
-  /// Initial slide from [slides] starting in the carousel.
-  final int initialSlide;
+  /// Initial item from [slides] starting in the carousel.
+  final int initialItem;
 
-  /// If the carousel autoslides slides.
+  /// If the carousel autoslides [items].
   final bool autoplay;
 
   /// [autoplay] interval duration.
   final Duration autoplayIntervalDuration;
 
+  /// Slides of the carousel.
+  final List<Widget> items;
+
   const MyoroCarousel({
     super.key,
     this.direction = Axis.horizontal,
-    this.initialSlide = 0,
+    this.initialItem = 0,
     this.autoplay = false,
     this.autoplayIntervalDuration = kMyoroCarouselAutoplayIntervalDuration,
+    required this.items,
   });
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
-      items: [
-        Container(
-          width: 300,
-          height: 300,
-          color: Colors.red,
-        ),
-        Container(
-          width: 300,
-          height: 300,
-          color: Colors.green,
-        ),
-        Container(
-          width: 300,
-          height: 300,
-          color: Colors.blue,
-        ),
-      ],
+      items: items,
       options: CarouselOptions(
         autoPlay: autoplay,
         autoPlayInterval: autoplayIntervalDuration,

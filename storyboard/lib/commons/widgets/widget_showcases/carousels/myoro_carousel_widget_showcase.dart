@@ -20,8 +20,25 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroCarousel(
+    return MyoroCarousel(
       autoplay: true,
+      items: [
+        Container(
+          width: 300,
+          height: 300,
+          color: Colors.red,
+        ),
+        Container(
+          width: 300,
+          height: 300,
+          color: Colors.green,
+        ),
+        Container(
+          width: 300,
+          height: 300,
+          color: Colors.blue,
+        ),
+      ],
     );
   }
 }
