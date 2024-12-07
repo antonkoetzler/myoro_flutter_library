@@ -21,7 +21,9 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroCarousel(
+      displayTraversalButtons: true,
       autoplay: true,
+      initialItem: 2,
       items: [
         Container(
           width: 300,

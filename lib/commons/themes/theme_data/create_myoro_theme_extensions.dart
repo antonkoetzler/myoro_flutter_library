@@ -57,7 +57,7 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
   return [
     MyoroHoverButtonThemeExtension(
       contentColor: colorScheme.onPrimary,
-      backgroundColor: MyoroColorTheme.transparent,
+      backgroundColor: colorScheme.primary,
       borderRadius: MyoroDecorationHelper.borderRadius,
       bordered: false,
     ),
@@ -93,7 +93,11 @@ List<ThemeExtension> createCardThemeExtensions(ColorScheme colorScheme, TextThem
 
 List<ThemeExtension> createCarouselThemeExtensions() {
   return const [
-    MyoroCarouselThemeExtension(),
+    MyoroCarouselThemeExtension(
+      traversalButtonBordered: true,
+      previousItemButtonIcon: Icons.keyboard_arrow_left,
+      nextItemButtonIcon: Icons.keyboard_arrow_right,
+    ),
   ];
 }
 
