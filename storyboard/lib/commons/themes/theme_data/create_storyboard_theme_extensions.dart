@@ -22,6 +22,8 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       wrapperWrapperAlignment: Alignment.center,
     ),
     const MyoroAppBarWidgetShowcaseThemeExtension(),
+    const MyoroCardWidgetShowcaseThemeExtension(),
+    const MyoroCarouselWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(
       widgetMainAxisAlignment: MainAxisAlignment.center,
       widgetInputStyle: MyoroInputStyleEnum.outlined,

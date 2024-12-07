@@ -13,6 +13,12 @@ enum WidgetListingEnum {
     myoroHoverButtonTitle,
     myoroIconTextHoverButtonTitle,
   ]),
+  cards('Cards', [
+    myoroCardTitle,
+  ]),
+  carousels('Carousels', [
+    myoroCarouselTitle,
+  ]),
   checkboxes('Checkboxes', [
     myoroCheckboxTitle,
     myoroGroupCheckboxTitle,
@@ -88,6 +94,12 @@ enum WidgetListingEnum {
   static const myoroHoverButtonTitle = 'MyoroHoverButton';
   static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
 
+  // Cards.
+  static const myoroCardTitle = 'MyoroCard';
+
+  // Carousels.
+  static const myoroCarouselTitle = 'MyoroCarousel';
+
   // Checkboxes.
   static const myoroCheckboxTitle = 'MyoroCheckbox';
   static const myoroGroupCheckboxTitle = 'MyoroGroupCheckbox';
@@ -160,6 +172,12 @@ enum WidgetListingEnum {
       myoroHoverButtonTitle => throw UnimplementedError(),
       myoroIconTextHoverButtonTitle => throw UnimplementedError(),
 
+      // Cards.
+      myoroCardTitle => const MyoroCardWidgetShowcase(),
+
+      // Carousels.
+      myoroCarouselTitle => const MyoroCarouselWidgetShowcase(),
+
       // Checkboxes.
       myoroCheckboxTitle => const MyoroCheckboxWidgetShowcase(),
       myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
@@ -226,6 +244,8 @@ enum WidgetListingEnum {
 
   bool get isAppBars => this == appBars;
   bool get isBodies => this == bodies;
+  bool get isCards => this == cards;
+  bool get isCarousels => this == carousels;
   bool get isCheckboxes => this == checkboxes;
   bool get isButtons => this == buttons;
   bool get isDividers => this == dividers;

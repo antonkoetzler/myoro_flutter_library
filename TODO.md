@@ -2,14 +2,7 @@
 
 ## Current
 
-1. (**IN PROGRESS**) Implement Tables;
-
-- Move all logic to a bloc;
-- Pagination.
-
-1. Implement cards;
-1. Implement notifications;
-1. Implement carousels;
+1. (**IN PROGRESS**) Implement carousels;
 1. Implment graphs;
 1. Finish all widget showcases;
 1. Implement shared preferences;
@@ -24,5 +17,8 @@
 
 ## Future
 
-1. Tri-color with the blue maybe if not too hard;
+1. Tri-color design scheme with the blue;
 1. Add animation to MyoroMenu.
+1. Remake `MyoroTable` where `MyoroTableBloc` contains all of the logic of the widget;
+1. Move create*ThemeExtensions into their own files (1 function per file);
+1. Implement notifications.

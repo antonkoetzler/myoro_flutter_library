@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 // Borders.
 const kMyoroBorderLength = 2.0;
-const kMyoroBorderRadius = 10.0;
+const kMyoroBorderRadiusLength = 10.0;
+
+// Carousels.
+const kMyoroCarouselAutoplayIntervalDuration = Duration(seconds: 3);
 
 // Menus.
 const kMyoroMenuMaxSize = Size(400, 200);
@@ -30,4 +33,5 @@ const kMyoroTestColors = [
   Colors.lime,
   Colors.lightBlue,
   Colors.blueGrey,
+  Colors.orange,
 ];

@@ -7,6 +7,8 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createAppBarThemeExtensions(),
     ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
+    ...createCardThemeExtensions(colorScheme, textTheme),
+    ...createCarouselThemeExtensions(),
     ...createCheckboxThemeExtensions(colorScheme, textTheme),
     ...createDividerThemeExtensions(colorScheme),
     ...createDrawerThemeExtension(colorScheme, textTheme),
@@ -73,6 +75,28 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
   ];
 }
 
+List<ThemeExtension> createCardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    MyoroCardThemeExtension(
+      backgroundColor: colorScheme.primary,
+      border: Border.all(
+        width: kMyoroBorderLength,
+        color: colorScheme.onPrimary,
+      ),
+      borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+      padding: const EdgeInsets.all(10),
+      titleCardSpacing: 5,
+      textStyle: textTheme.titleMedium!,
+    ),
+  ];
+}
+
+List<ThemeExtension> createCarouselThemeExtensions() {
+  return const [
+    MyoroCarouselThemeExtension(),
+  ];
+}
+
 List<ThemeExtension> createCheckboxThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroCheckboxThemeExtension(
@@ -118,7 +142,7 @@ List<ThemeExtension> createDrawerThemeExtension(ColorScheme colorScheme, TextThe
           width: kMyoroBorderLength,
           color: colorScheme.onPrimary,
         ),
-        borderRadius: BorderRadius.circular(kMyoroBorderRadius),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       ),
       titleContentDividerPadding: const EdgeInsets.only(
         top: 4,
@@ -305,7 +329,7 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
       successBorderColor: MyoroColorTheme.success,
       errorBorderColor: MyoroColorTheme.error,
       borderWidth: 2,
-      borderRadius: BorderRadius.circular(kMyoroBorderRadius),
+      borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       padding: const EdgeInsets.all(10),
       contentCloseButtonSpacing: 10,
       messageTextStyle: textTheme.bodySmall!,
@@ -323,7 +347,7 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
         width: kMyoroBorderLength,
         color: colorScheme.onPrimary,
       ),
-      borderRadius: BorderRadius.circular(kMyoroBorderRadius),
+      borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       contentPadding: const EdgeInsets.symmetric(horizontal: 10),
       columnSpacing: 21,
       emptyTableTextStyle: textTheme.bodyMedium!,

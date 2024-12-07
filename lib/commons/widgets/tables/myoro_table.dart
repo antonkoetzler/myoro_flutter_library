@@ -6,6 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroTableRowBuilder<T> = MyoroTableRow<T> Function(T item, bool hovered);
 
 /// Base table.
+///
+/// TODO: Refactor this to put all the logic into a BLoC.
 final class MyoroTable<T> extends StatefulWidget {
   /// External table controller.
   final MyoroTableController<T>? controller;
