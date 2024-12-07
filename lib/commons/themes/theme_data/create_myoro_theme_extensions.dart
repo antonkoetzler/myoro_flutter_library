@@ -14,7 +14,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createDrawerThemeExtension(colorScheme, textTheme),
     ...createDropdownThemeExtensions(),
     ...createFormThemeExtensions(),
-    ...createGraphThemeExtensions(),
+    ...createGraphThemeExtensions(colorScheme, textTheme),
     ...createInputThemeExtensions(colorScheme, textTheme),
     ...createLoaderThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
@@ -168,9 +168,20 @@ List<ThemeExtension> createFormThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> createGraphThemeExtensions() {
-  return const [
-    MyoroBarGraphThemeExtension(),
+List<ThemeExtension> createGraphThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    MyoroBarGraphThemeExtension(
+      border: Border.all(
+        width: 2,
+        color: colorScheme.onPrimary,
+      ),
+      barColor: colorScheme.onPrimary,
+      barBorderRadius: BorderRadius.zero,
+      sideTitleTextStyle: textTheme.bodySmall!,
+      sideTitleInterval: kMyoroGraphSideTitleInterval,
+      verticalSideTitleReversedSize: kMyoroGraphVerticalSideTitleReversedSize,
+      horizontalSideTitleReversedSize: kMyoroGraphHorizontalSideTitleReversedSize,
+    ),
   ];
 }
 

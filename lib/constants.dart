@@ -7,6 +7,11 @@ const kMyoroBorderRadiusLength = 10.0;
 // Carousels.
 const kMyoroCarouselAutoplayIntervalDuration = Duration(seconds: 3);
 
+// Graphs.
+const kMyoroGraphSideTitleInterval = 0.2;
+const kMyoroGraphVerticalSideTitleReversedSize = 36.0;
+const kMyoroGraphHorizontalSideTitleReversedSize = 22.0;
+
 // Menus.
 const kMyoroMenuMaxSize = Size(400, 200);
 
