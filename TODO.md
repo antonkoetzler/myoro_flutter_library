@@ -3,6 +3,10 @@
 ## Current
 
 1. (**IN PROGRESS**) Implement carousels;
+
+- Change item buttons;
+- Managing autoplay.
+
 1. Implment graphs;
 1. Finish all widget showcases;
 1. Implement shared preferences;
