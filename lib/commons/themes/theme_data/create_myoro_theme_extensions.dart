@@ -182,6 +182,7 @@ List<ThemeExtension> createGraphThemeExtensions(ColorScheme colorScheme, TextThe
       verticalSideTitleReversedSize: kMyoroGraphVerticalSideTitleReversedSize,
       horizontalSideTitleReversedSize: kMyoroGraphHorizontalSideTitleReversedSize,
     ),
+    const MyoroPieGraphThemeExtension(),
   ];
 }
 

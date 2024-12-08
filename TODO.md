@@ -4,9 +4,7 @@
 
 1. (**IN PROGRESS**) Implement graphs;
 
-- (**IN PROGRESS**) Bar chart;
-- Pie (& donut) chart;
-- Line chart.
+- (**IN PROGRESS**) Pie (& donut) chart;
 
 1. Finish all widget showcases;
 1. Implement shared preferences;
