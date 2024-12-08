@@ -2,12 +2,8 @@
 
 ## Current
 
-1. (**IN PROGRESS**) Implement graphs;
-
-- (**IN PROGRESS**) Pie (& donut) chart;
-
+1. (**IN PROGRESS**) Implement shared preferences;
 1. Finish all widget showcases;
-1. Implement shared preferences;
 1. Brush theme extensions to remove non-theme related things;
 1. Widget tests;
 1. The brightness button, make it work;
