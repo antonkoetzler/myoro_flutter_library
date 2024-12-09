@@ -4,14 +4,8 @@ import 'package:storyboard/storyboard.dart';
 
 List<ThemeExtension> createStoryboardThemeExtensions(TextTheme textTheme) {
   return [
-    ..._createCommonsThemeExtensions(textTheme),
-    ..._createAppThemeExtension(textTheme),
-  ];
-}
-
-List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
-  return [
     WidgetShowcaseThemeExtension(
+      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
@@ -21,7 +15,12 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       ),
       wrapperWrapperAlignment: Alignment.center,
     ),
-    const MyoroAppBarWidgetShowcaseThemeExtension(),
+    MyoroAppBarWidgetShowcaseThemeExtension(
+      mockAppLogoIcon: Icons.people,
+      mockAppTitleTextStyle: textTheme.titleMedium!,
+      logoTitleSpacing: 5,
+      mockMenuButtonIcon: Icons.menu,
+    ),
     const MyoroCardWidgetShowcaseThemeExtension(),
     const MyoroCarouselWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(
@@ -57,11 +56,6 @@ List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
       containerSize: const Size(200, 50),
       containerTextStyle: textTheme.titleMedium!,
     ),
-  ];
-}
-
-List<ThemeExtension> _createAppThemeExtension(TextTheme textTheme) {
-  return [
     StoryboardAppBarThemeExtension(
       titleTextStyle: textTheme.titleMedium!,
       subtitleTextStyle: textTheme.bodySmall!,

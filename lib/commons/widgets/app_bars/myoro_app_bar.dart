@@ -37,7 +37,8 @@ final class MyoroAppBar extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-          child: Padding(
+          child: Container(
+            color: themeExtension.backgroundColor,
             padding: themeExtension.contentPadding,
             child: child,
           ),

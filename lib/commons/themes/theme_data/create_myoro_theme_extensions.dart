@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Function to create the [List<ThemeExtension>] for [createMyoroThemeData]'s [ThemeData].
 List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
-    ...createAppBarThemeExtensions(),
+    ...createAppBarThemeExtensions(colorScheme),
     ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
     ...createCardThemeExtensions(colorScheme, textTheme),
@@ -31,10 +31,11 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
   ];
 }
 
-List<ThemeExtension> createAppBarThemeExtensions() {
-  return const [
+List<ThemeExtension> createAppBarThemeExtensions(ColorScheme colorScheme) {
+  return [
     MyoroAppBarThemeExtension(
-      contentPadding: EdgeInsets.fromLTRB(10, 5, 5, 5),
+      backgroundColor: colorScheme.primary,
+      contentPadding: const EdgeInsets.fromLTRB(10, 5, 5, 5),
     ),
   ];
 }

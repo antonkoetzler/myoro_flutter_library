@@ -7,28 +7,47 @@ import 'package:storyboard/storyboard.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Window constraints initialization.
   windowManager.ensureInitialized();
-  windowManager.setMinimumSize(const Size(600, 600));
+  windowManager.setMinimumSize(const Size(1000, 1000));
+
+  // Shared preferences initialization (to save theme state).
+  final instance = await MyoroSharedPreferences.initialize();
+  if (instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey) == null) {
+    instance.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true);
+  }
 
   runApp(
     BlocProvider(
       create: (_) => WidgetShowcaseBloc(),
-      child: const _App(),
+      child: _App(
+        MyoroSharedPreferences.instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!,
+      ),
     ),
   );
 }
 
 final class _App extends StatelessWidget {
-  const _App();
+  final bool _darkModeEnabled;
+
+  const _App(this._darkModeEnabled);
 
   @override
   Widget build(BuildContext context) {
-    return MyoroMaterialApp(
-      title: 'myoro_flutter_library storyboard',
-      themeExtensionsBuilder: (_, TextTheme textTheme) => createStoryboardThemeExtensions(textTheme),
-      home: const MyoroScreen(
-        appBar: StoryboardAppBar(),
-        body: StoryboardBody(),
+    return BlocProvider(
+      create: (_) => ThemeModeCubit(_darkModeEnabled),
+      child: BlocBuilder<ThemeModeCubit, ThemeMode>(
+        builder: (_, ThemeMode themeMode) {
+          return MyoroMaterialApp(
+            title: 'myoro_flutter_library storyboard',
+            themeMode: themeMode,
+            themeExtensionsBuilder: (_, TextTheme textTheme) => createStoryboardThemeExtensions(textTheme),
+            home: const MyoroScreen(
+              appBar: StoryboardAppBar(),
+              body: StoryboardBody(),
+            ),
+          );
+        },
       ),
     );
   }

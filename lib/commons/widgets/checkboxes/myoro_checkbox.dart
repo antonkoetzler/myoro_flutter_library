@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function that is executed when the checkbox is changed.
-typedef MyoroCheckboxOnChanged = Function(bool value);
+typedef MyoroCheckboxOnChanged = void Function(bool value);
 
 /// A checkbox that can have a label on the right side of it.
 final class MyoroCheckbox extends StatefulWidget {

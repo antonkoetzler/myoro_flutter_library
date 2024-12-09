@@ -3,6 +3,9 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [WidgetShowcase].
 final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseThemeExtension> {
+  /// [Color] of [_WidgetWrapper].
+  final Color widgetWrapperBackgroundColor;
+
   /// [EdgeInsets] of [_WidgetWrapper].
   final EdgeInsets widgetWrapperPadding;
 
@@ -19,6 +22,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   final Alignment wrapperWrapperAlignment;
 
   const WidgetShowcaseThemeExtension({
+    required this.widgetWrapperBackgroundColor,
     required this.widgetWrapperPadding,
     required this.widgetWrapperContentPadding,
     required this.widgetWrapperBorderRadius,
@@ -28,6 +32,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
 
   @override
   WidgetShowcaseThemeExtension copyWith({
+    Color? widgetWrapperBackgroundColor,
     EdgeInsets? widgetWrapperPadding,
     EdgeInsets? widgetWrapperContentPadding,
     BorderRadius? widgetWrapperBorderRadius,
@@ -35,6 +40,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     Alignment? wrapperWrapperAlignment,
   }) {
     return WidgetShowcaseThemeExtension(
+      widgetWrapperBackgroundColor: widgetWrapperBackgroundColor ?? this.widgetWrapperBackgroundColor,
       widgetWrapperPadding: widgetWrapperPadding ?? this.widgetWrapperPadding,
       widgetWrapperContentPadding: widgetWrapperContentPadding ?? this.widgetWrapperContentPadding,
       widgetWrapperBorderRadius: widgetWrapperBorderRadius ?? this.widgetWrapperBorderRadius,
@@ -50,6 +56,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   ) {
     if (other is! WidgetShowcaseThemeExtension) return this;
     return copyWith(
+      widgetWrapperBackgroundColor: Color.lerp(widgetWrapperBackgroundColor, other.widgetWrapperBackgroundColor, t),
       widgetWrapperPadding: EdgeInsets.lerp(widgetWrapperPadding, other.widgetWrapperPadding, t),
       widgetWrapperContentPadding: EdgeInsets.lerp(widgetWrapperContentPadding, other.widgetWrapperContentPadding, t),
       widgetWrapperBorderRadius: BorderRadius.lerp(widgetWrapperBorderRadius, other.widgetWrapperBorderRadius, t),

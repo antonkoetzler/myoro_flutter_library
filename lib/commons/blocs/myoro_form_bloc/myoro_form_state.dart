@@ -30,11 +30,11 @@ final class MyoroFormState<T> extends Equatable {
 
   @override
   String toString() => ''
-    'MyoroFormState<$T>(\n'
-    '  status: $status,\n'
-    '  errorMessage: $errorMessage,\n'
-    '  result: $result,\n'
-    ');';
+      'MyoroFormState<$T>(\n'
+      '  status: $status,\n'
+      '  errorMessage: $errorMessage,\n'
+      '  result: $result,\n'
+      ');';
 
   @override
   List<Object?> get props => [status, errorMessage, result];

@@ -11,35 +11,12 @@ final class StoryboardAppBar extends StatelessWidget implements PreferredSizeWid
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardAppBarThemeExtension>();
-
-    return MyoroAppBar(
+    return const MyoroAppBar(
       bordered: true,
       child: Row(
         children: [
-          const Expanded(child: _TitleAndHeader()),
-          Wrap(
-            spacing: themeExtension.buttonSpacing,
-            children: [
-              BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
-                builder: (_, WidgetShowcaseState state) {
-                  if (!state.displayingWidgetShowcase) return const SizedBox.shrink();
-
-                  return MyoroIconTextHoverButton(
-                    icon: themeExtension.showWidgetOptionsButtonIcon,
-                    tooltip: 'Show widget showcase options',
-                    isHovered: state.displayingWidgetOptions,
-                    onPressed: () => context.resolveBloc<WidgetShowcaseBloc>().add(const ToggleWidgetOptionsDisplayEvent()),
-                  );
-                },
-              ),
-              MyoroIconTextHoverButton(
-                icon: themeExtension.themeButtonIcon,
-                tooltip: 'Toggle theme', // TODO
-                onPressed: () {},
-              ),
-            ],
-          ),
+          Expanded(child: _TitleAndHeader()),
+          _Buttons(),
         ],
       ),
     );
@@ -68,6 +45,54 @@ final class _TitleAndHeader extends StatelessWidget {
           style: themeExtension.subtitleTextStyle,
         ),
       ],
+    );
+  }
+}
+
+final class _Buttons extends StatelessWidget {
+  const _Buttons();
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      spacing: context.resolveThemeExtension<StoryboardAppBarThemeExtension>().buttonSpacing,
+      children: const [
+        _ShowWidgetShowcaseButton(),
+        _ToggleThemeButton(),
+      ],
+    );
+  }
+}
+
+final class _ShowWidgetShowcaseButton extends StatelessWidget {
+  const _ShowWidgetShowcaseButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
+      builder: (_, WidgetShowcaseState state) {
+        if (!state.displayingWidgetShowcase) return const SizedBox.shrink();
+
+        return MyoroIconTextHoverButton(
+          icon: context.resolveThemeExtension<StoryboardAppBarThemeExtension>().showWidgetOptionsButtonIcon,
+          tooltip: 'Show widget showcase options',
+          isHovered: state.displayingWidgetOptions,
+          onPressed: () => context.resolveBloc<WidgetShowcaseBloc>().add(const ToggleWidgetOptionsDisplayEvent()),
+        );
+      },
+    );
+  }
+}
+
+final class _ToggleThemeButton extends StatelessWidget {
+  const _ToggleThemeButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return MyoroIconTextHoverButton(
+      icon: context.resolveThemeExtension<StoryboardAppBarThemeExtension>().themeButtonIcon,
+      tooltip: 'Toggle theme',
+      onPressed: () => context.resolveBloc<ThemeModeCubit>().toggle(),
     );
   }
 }

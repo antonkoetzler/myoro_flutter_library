@@ -53,6 +53,6 @@ final class _DirectionOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroCheckbox();
+    return const MyoroCheckbox();
   }
 }
