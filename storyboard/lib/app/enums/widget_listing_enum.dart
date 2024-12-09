@@ -6,9 +6,6 @@ enum WidgetListingEnum {
   appBars('App bars', [
     myoroAppBarTitle,
   ]),
-  bodies('Bodies', [
-    myoroBodyTitle,
-  ]),
   buttons('Buttons', [
     myoroHoverButtonTitle,
     myoroIconTextHoverButtonTitle,
@@ -91,9 +88,6 @@ enum WidgetListingEnum {
   // App bars.
   static const myoroAppBarTitle = 'MyoroAppBar';
 
-  // Bodies.
-  static const myoroBodyTitle = 'MyoroBody';
-
   // Buttons.
   static const myoroHoverButtonTitle = 'MyoroHoverButton';
   static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
@@ -172,9 +166,6 @@ enum WidgetListingEnum {
     return switch (widgetName) {
       // App bars.
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
-
-      // Bodies.
-      myoroBodyTitle => throw UnimplementedError(),
 
       // Buttons.
       myoroHoverButtonTitle => throw UnimplementedError(),
@@ -255,7 +246,6 @@ enum WidgetListingEnum {
   }
 
   bool get isAppBars => this == appBars;
-  bool get isBodies => this == bodies;
   bool get isButtons => this == buttons;
   bool get isCards => this == cards;
   bool get isCarousels => this == carousels;

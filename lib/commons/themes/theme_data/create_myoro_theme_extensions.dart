@@ -5,7 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     ...createAppBarThemeExtensions(colorScheme),
-    ...createBodyThemeExtensions(),
     ...createButtonThemeExtensions(colorScheme, textTheme),
     ...createCardThemeExtensions(colorScheme, textTheme),
     ...createCarouselThemeExtensions(),
@@ -46,12 +45,6 @@ List<ThemeExtension> createDropdownThemeExtensions() {
       inputStyle: MyoroInputStyleEnum.outlined,
       spacing: 10,
     ),
-  ];
-}
-
-List<ThemeExtension> createBodyThemeExtensions() {
-  return const [
-    MyoroBodyThemeExtension(),
   ];
 }
 

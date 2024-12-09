@@ -4,7 +4,6 @@
 
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- (**IN PROGRESS**) bodies
 - (**BEFORE DOING THIS, ADD DEBOUNCE & THROTTLING**) buttons
 - cards
 - carousels
