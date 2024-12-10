@@ -11,7 +11,7 @@
 - Checkboxes;
 - Dividers;
 - Drawers;
-- (**BEFORE DOING THIS, ADD SEARCH TO THE DROPDOWN (DO IT GAB'S WAY, SEARCH AT THE TOP OF THE ITEMS**) Dropdowns;
+- Dropdowns;
 - Forms;
 - Graphs;
 - (**BEFORE DOING THIS, MAKE A DATE PICKER INPUT**) Inputs;
