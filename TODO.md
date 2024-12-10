@@ -2,8 +2,6 @@
 
 ## Current
 
-1. (**IN PROGRESS**) Finish [MyoroMenu] search thing;
-
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
 - (**IN PROGRESS**) Buttons;
