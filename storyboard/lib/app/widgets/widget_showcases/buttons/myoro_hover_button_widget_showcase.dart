@@ -85,6 +85,11 @@ final class _ColorDropdown extends StatelessWidget {
 
   const _ColorDropdown(this._label);
 
+  List<Color> _searchCallback(String query, List<Color> items) {
+    print('Hello');
+    return [];
+  }
+
   MyoroMenuItem _itemBuilder(Color color) {
     return MyoroMenuItem(
       itemBuilder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
@@ -103,6 +108,7 @@ final class _ColorDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroDropdown<Color>(
       label: _label,
+      searchCallback: _searchCallback,
       dataConfiguration: const MyoroDataConfiguration(staticItems: kMyoroTestColors),
       itemBuilder: _itemBuilder,
       itemLabelBuilder: _itemLabelBuilder,

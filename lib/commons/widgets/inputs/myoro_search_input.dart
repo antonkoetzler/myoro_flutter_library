@@ -6,9 +6,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Request to be executed when the input is triggered;
 typedef MyoroSearchInputRequest<T> = FutureOr<List<T>> Function(String text);
 
-/// [MyoroMenuItem] builder because this widget is templated.
-typedef MyoroSearchInputItemBuilder<T> = MyoroMenuItem Function(T item);
-
 /// Search input. Shows a dropdown after making a search request.
 final class MyoroSearchInput<T> extends StatefulWidget {
   /// [MyoroInput] configuration.
@@ -18,7 +15,7 @@ final class MyoroSearchInput<T> extends StatefulWidget {
   final MyoroSearchInputRequest<T> request;
 
   /// [MyoroMenuItem] builder to display the items in [_SearchSection].
-  final MyoroSearchInputItemBuilder<T> itemBuilder;
+  final MyoroMenuItemBuilder<T> itemBuilder;
 
   const MyoroSearchInput({
     super.key,
@@ -34,7 +31,7 @@ final class MyoroSearchInput<T> extends StatefulWidget {
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   MyoroInputConfiguration get _configuration => widget.configuration;
   MyoroSearchInputRequest<T> get _request => widget.request;
-  MyoroSearchInputItemBuilder<T> get _itemBuilder => widget.itemBuilder;
+  MyoroMenuItemBuilder<T> get _itemBuilder => widget.itemBuilder;
 
   TextEditingController? _localTextController;
   TextEditingController get _textController {
@@ -147,7 +144,7 @@ final class _SearchButton extends StatelessWidget {
 
 final class _SearchSection<T> extends StatelessWidget {
   final List<T>? results;
-  final MyoroSearchInputItemBuilder<T> itemBuilder;
+  final MyoroMenuItemBuilder<T> itemBuilder;
 
   const _SearchSection(this.results, this.itemBuilder);
 
@@ -155,9 +152,8 @@ final class _SearchSection<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroMenu(
       maxWidth: double.infinity,
-      dataConfiguration: MyoroDataConfiguration(
-        staticItems: results!.map((T result) => itemBuilder.call(result)).toList(),
-      ),
+      itemBuilder: itemBuilder,
+      dataConfiguration: MyoroDataConfiguration(staticItems: results!),
     );
   }
 }

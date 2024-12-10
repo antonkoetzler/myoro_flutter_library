@@ -2,11 +2,10 @@
 
 ## Current
 
+1. (**IN PROGRESS**) Finish [MyoroMenu] search thing;
+
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- Use [WidgetShowcaseWidgetOptions];
-
-- (**COMPLETE**) App bars;
 - (**IN PROGRESS**) Buttons;
 - Layout builders;
 - Cards;
@@ -14,7 +13,7 @@
 - Checkboxes;
 - Dividers;
 - Drawers;
-- (**BEFORE DOING THIS, ADD SEARCH TO THE DROPDOWN**) Dropdowns;
+- (**BEFORE DOING THIS, ADD SEARCH TO THE DROPDOWN (DO IT GAB'S WAY, SEARCH AT THE TOP OF THE ITEMS**) Dropdowns;
 - Forms;
 - Graphs;
 - Inputs;

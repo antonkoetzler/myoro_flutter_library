@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -31,15 +32,14 @@ final class _Widget extends StatelessWidget {
       builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu(
           iconSize: state.iconSize,
+          itemBuilder: (String item) => MyoroMenuItem.fake(),
           dataConfiguration: MyoroDataConfiguration(
             asyncronousItems: () async {
               await Future.delayed(const Duration(milliseconds: 1500));
 
               return List.generate(
                 state.itemCount,
-                (_) => MyoroMenuItem.fake().copyWith(
-                  onPressed: () {},
-                ),
+                (_) => faker.randomGenerator.string(50),
               );
             },
           ),

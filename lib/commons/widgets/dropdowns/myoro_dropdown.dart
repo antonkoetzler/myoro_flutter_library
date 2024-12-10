@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Item builder to build [_Dropdown]'s items.
-typedef MyoroDropdownItemBuilder<T> = MyoroMenuItem Function(T item);
-
 /// [String] builder for displaying the selected item in the [_Input].
 typedef MyoroDropdownItemLabelBuilder<T> = String Function(T item);
 
 /// A customizable dropdown widgets with features like multi-selection, search, etc.
 final class MyoroDropdown<T> extends StatefulWidget {
+  /// Controller to externally manage the dropdown's state.
+  final MyoroDropdownController<T>? controller;
+
   /// Label at the top of [_Input].
   final String? label;
 
@@ -18,8 +18,8 @@ final class MyoroDropdown<T> extends StatefulWidget {
   /// Enables multi-selection.
   final bool? enableMultiSelection;
 
-  /// Controller to externally manage the dropdown's state.
-  final MyoroDropdownController<T>? controller;
+  /// Enables search functionality.
+  final MyoroMenuSearchCallback<T>? searchCallback;
 
   /// Configuration for loading the dropdown's items.
   final MyoroDataConfiguration<T> dataConfiguration;
@@ -28,14 +28,15 @@ final class MyoroDropdown<T> extends StatefulWidget {
   final MyoroDropdownItemLabelBuilder<T> itemLabelBuilder;
 
   /// [_Dropdown] [MyoroMenuItem] builder.
-  final MyoroDropdownItemBuilder<T> itemBuilder;
+  final MyoroMenuItemBuilder<T> itemBuilder;
 
   const MyoroDropdown({
     super.key,
+    this.controller,
     this.label,
     this.labelTextStyle,
     this.enableMultiSelection,
-    this.controller,
+    this.searchCallback,
     required this.dataConfiguration,
     required this.itemLabelBuilder,
     required this.itemBuilder,
@@ -49,9 +50,10 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   String? get _label => widget.label;
   TextStyle? get _labelTextStyle => widget.labelTextStyle;
   bool get _enableMultiSelection => widget.enableMultiSelection ?? false;
+  MyoroMenuSearchCallback<T>? get _searchCallback => widget.searchCallback;
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
   MyoroDropdownItemLabelBuilder<T> get _itemLabelBuilder => widget.itemLabelBuilder;
-  MyoroDropdownItemBuilder<T> get _itemBuilder => widget.itemBuilder;
+  MyoroMenuItemBuilder<T> get _itemBuilder => widget.itemBuilder;
 
   MyoroDropdownController<T>? _localController;
   MyoroDropdownController<T> get _controller {
@@ -65,7 +67,6 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   void _supplyController() {
     _controller.enableMultiSelection = _enableMultiSelection;
     _controller.itemLabelBuilder = _itemLabelBuilder;
-    _controller.itemBuilder = _itemBuilder;
   }
 
   /// To close the dropdown when clicked elsewhere.
@@ -123,9 +124,11 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
                           top: themeExtension.spacing,
                         ),
                         child: _Dropdown(
-                          _controller,
-                          _dataConfiguration,
                           _enableMultiSelection,
+                          _controller,
+                          _searchCallback,
+                          _dataConfiguration,
+                          _itemBuilder,
                         ),
                       ),
                     ],
@@ -235,9 +238,14 @@ final class _DropdownTriggerArea extends StatelessWidget {
         },
         child: MyoroLayoutBuilder(
           builder: (_, BoxConstraints constraints) {
-            return SizedBox(
-              width: constraints.maxWidth - (_controller.selectedItems.isEmpty ? 0 : 44),
-              height: 43.1, // Size of the input.
+            return ValueListenableBuilder(
+              valueListenable: _controller.selectedItemsNotifier,
+              builder: (_, __, ___) {
+                return SizedBox(
+                  width: constraints.maxWidth - (_controller.selectedItems.isEmpty ? 0 : 44),
+                  height: 43.1, // Size of the input.
+                );
+              },
             );
           },
         ),
@@ -247,39 +255,39 @@ final class _DropdownTriggerArea extends StatelessWidget {
 }
 
 final class _Dropdown<T> extends StatelessWidget {
-  final MyoroDropdownController<T> _controller;
-  final MyoroDataConfiguration<T> _dataConfiguration;
   final bool _enableMultiSelection;
+  final MyoroDropdownController<T> _controller;
+  final MyoroMenuSearchCallback<T>? _searchCallback;
+  final MyoroDataConfiguration<T> _dataConfiguration;
+  final MyoroMenuItemBuilder<T> _itemBuilder;
 
   const _Dropdown(
-    this._controller,
-    this._dataConfiguration,
     this._enableMultiSelection,
+    this._controller,
+    this._searchCallback,
+    this._dataConfiguration,
+    this._itemBuilder,
   );
 
   @override
   Widget build(BuildContext context) {
     return MyoroMenu(
       maxWidth: double.infinity,
-      dataConfiguration: MyoroDataConfiguration(
-        asyncronousItems: () async {
-          return (await _dataConfiguration.items).map<MyoroMenuItem>(
-            (T item) {
-              final MyoroMenuItem builtItem = _controller.itemBuilder.call(item);
-              final bool isSelected = _controller.isSelected(item);
+      searchCallback: _searchCallback,
+      itemBuilder: (T item) {
+        final MyoroMenuItem builtItem = _itemBuilder.call(item);
+        final bool isSelected = _controller.isSelected(item);
 
-              return builtItem.copyWith(
-                isHovered: isSelected,
-                onPressed: () {
-                  builtItem.onPressed?.call();
-                  isSelected ? _controller.removeItems([item]) : _controller.addItems([item]);
-                  if (!_enableMultiSelection) _controller.toggleDropdown(false);
-                },
-              );
-            },
-          ).toList();
-        },
-      ),
+        return builtItem.copyWith(
+          isHovered: isSelected,
+          onPressed: () {
+            builtItem.onPressed?.call();
+            isSelected ? _controller.removeItems([item]) : _controller.addItems([item]);
+            if (!_enableMultiSelection) _controller.toggleDropdown(false);
+          },
+        );
+      },
+      dataConfiguration: _dataConfiguration,
     );
   }
 }

@@ -20,6 +20,12 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
   /// Border radius of the menu.
   final BorderRadius borderRadius;
 
+  /// Padding of [_SearchBar].
+  final EdgeInsets searchBarPadding;
+
+  /// [MyoroInputStyleEnum] of [_SearchBar].
+  final MyoroInputStyleEnum searchBarInputStyle;
+
   /// [BorderRadius] of [_Item].
   final BorderRadius itemBorderRadius;
 
@@ -32,6 +38,8 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     required this.primaryColor,
     required this.border,
     required this.borderRadius,
+    required this.searchBarPadding,
+    required this.searchBarInputStyle,
     required this.itemBorderRadius,
     required this.dialogTextStyle,
   });
@@ -43,6 +51,8 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     Color? primaryColor,
     Border? border,
     BorderRadius? borderRadius,
+    EdgeInsets? searchBarPadding,
+    MyoroInputStyleEnum? searchBarInputStyle,
     BorderRadius? itemBorderRadius,
     TextStyle? dialogTextStyle,
   }) {
@@ -52,6 +62,8 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
       primaryColor: primaryColor ?? this.primaryColor,
       border: border ?? this.border,
       borderRadius: borderRadius ?? this.borderRadius,
+      searchBarPadding: searchBarPadding ?? this.searchBarPadding,
+      searchBarInputStyle: searchBarInputStyle ?? this.searchBarInputStyle,
       itemBorderRadius: itemBorderRadius ?? this.itemBorderRadius,
       dialogTextStyle: dialogTextStyle ?? this.dialogTextStyle,
     );
@@ -69,6 +81,8 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       border: Border.lerp(border, other.border, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
+      searchBarPadding: EdgeInsets.lerp(searchBarPadding, other.searchBarPadding, t),
+      searchBarInputStyle: MyoroLerpHelper.lerp(searchBarInputStyle, other.searchBarInputStyle, t),
       itemBorderRadius: BorderRadius.lerp(itemBorderRadius, other.itemBorderRadius, t),
       dialogTextStyle: TextStyle.lerp(dialogTextStyle, other.dialogTextStyle, t),
     );

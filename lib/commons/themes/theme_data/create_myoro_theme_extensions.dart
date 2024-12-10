@@ -210,7 +210,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
       spacing: 10,
-      clearTextButtonPadding: const EdgeInsets.all(5),
+      clearTextButtonPadding: const EdgeInsets.fromLTRB(5, 5, 6.5, 5),
       clearTextButtonIcon: Icons.close,
     ),
     MyoroSearchInputThemeExtension(
@@ -255,6 +255,8 @@ List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextThem
         color: colorScheme.onPrimary,
       ),
       borderRadius: MyoroDecorationHelper.inputBorderRadius,
+      searchBarPadding: const EdgeInsets.all(10),
+      searchBarInputStyle: MyoroInputStyleEnum.outlined,
       itemBorderRadius: BorderRadius.zero,
       dialogTextStyle: textTheme.bodyMedium!,
     ),

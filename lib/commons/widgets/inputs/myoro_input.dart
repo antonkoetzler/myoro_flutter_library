@@ -239,11 +239,12 @@ final class _ClearTextButton extends StatelessWidget {
       child: Padding(
         padding: themeExtension.clearTextButtonPadding,
         child: MyoroIconTextHoverButton(
-            icon: themeExtension.clearTextButtonIcon,
-            onPressed: () {
-              controller.clear();
-              onCleared?.call();
-            }),
+          icon: themeExtension.clearTextButtonIcon,
+          onPressed: () {
+            controller.clear();
+            onCleared?.call();
+          },
+        ),
       ),
     );
   }
