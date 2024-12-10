@@ -17,7 +17,7 @@ final class MyoroSnackBarContainer extends SnackBar {
     required MyoroSnackBar snackBar,
   }) : super(
           key: key,
-          backgroundColor: themeExtension.backgroundColor,
+          backgroundColor: themeExtension.primaryColor,
           behavior: themeExtension.behavior,
           margin: themeExtension.margin,
           padding: themeExtension.padding,

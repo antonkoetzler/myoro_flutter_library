@@ -38,7 +38,7 @@ final class MyoroAppBar extends StatelessWidget {
       children: [
         Flexible(
           child: Container(
-            color: themeExtension.backgroundColor,
+            color: themeExtension.primaryColor,
             padding: themeExtension.contentPadding,
             child: child,
           ),

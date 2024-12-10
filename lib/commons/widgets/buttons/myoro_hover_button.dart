@@ -1,37 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Function executed when the hover of the button changes.
-typedef MyoroHoverButtonOnHover = Function(bool hovered);
-
-/// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
-typedef MyoroHoverButtonBuilder = Widget Function(bool hovered, Color contentColor, Color backgroundColor);
-
 /// Hover button of the design system.
 ///
 /// Should be avoided by using pre-built hover buttons like [IconTextMyoroHoverButton].
 /// However, if you need to create a complex hover button, use a [MyoroHoverButton].
 final class MyoroHoverButton extends StatefulWidget {
-  /// Color of the border & background when hovered.
-  final Color? contentColor;
-
-  /// Color of the background when not hovered.
-  final Color? backgroundColor;
-
-  /// If the button will already be hovered (there will be no hover effect).
-  final bool? isHovered;
-
-  /// Builds a rounded border if [true]; no border if [false].
-  final bool? bordered;
-
-  /// Border radius of the background.
-  final BorderRadius? borderRadius;
-
-  /// Tooltip message of the button.
-  final String? tooltip;
-
-  /// Function executed when the hover of the button changes.
-  final MyoroHoverButtonOnHover? onHover;
+  /// Configuration members.
+  final MyoroHoverButtonConfiguration? configuration;
 
   /// Function executed when the button is clicked.
   final VoidCallback? onPressed;
@@ -41,13 +17,7 @@ final class MyoroHoverButton extends StatefulWidget {
 
   const MyoroHoverButton({
     super.key,
-    this.contentColor,
-    this.backgroundColor,
-    this.isHovered,
-    this.bordered,
-    this.borderRadius,
-    this.tooltip,
-    this.onHover,
+    this.configuration,
     this.onPressed,
     required this.builder,
   });
@@ -57,13 +27,7 @@ final class MyoroHoverButton extends StatefulWidget {
 }
 
 final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
-  Color? get _contentColor => widget.contentColor;
-  Color? get _backgroundColor => widget.backgroundColor;
-  bool? get _isHovered => widget.isHovered;
-  bool? get _bordered => widget.bordered;
-  BorderRadius? get _borderRadius => widget.borderRadius;
-  String? get _tooltip => widget.tooltip;
-  MyoroHoverButtonOnHover? get _onHover => widget.onHover;
+  MyoroHoverButtonConfiguration? get _configuration => widget.configuration;
   VoidCallback? get _onPressed => widget.onPressed;
   MyoroHoverButtonBuilder get _builder => widget.builder;
 
@@ -80,7 +44,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
     final themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
     return MyoroTooltip(
-      text: _tooltip,
+      text: _configuration?.tooltip,
       child: InkWell(
         focusColor: MyoroColorTheme.transparent,
         hoverColor: MyoroColorTheme.transparent,
@@ -95,34 +59,34 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
         onHover: (bool hovered) {
           if (_onPressed == null) return;
           _hoverNotifier.value = hovered;
-          _onHover?.call(hovered);
+          _configuration?.onHover?.call(hovered);
         },
         child: ValueListenableBuilder(
           valueListenable: _hoverNotifier,
           builder: (_, bool hovered, __) {
-            final contentColor = _contentColor ?? themeExtension.contentColor;
-            final backgroundColor = _backgroundColor ?? themeExtension.backgroundColor;
+            final onPrimaryColor = _configuration?.onPrimaryColor ?? themeExtension.onPrimaryColor;
+            final primaryColor = _configuration?.primaryColor ?? themeExtension.primaryColor;
 
             // So we may add a slight tint on hover when [_isHovered] is [true].
             late final Color correctedBackgroundColor;
-            if (_isHovered == true) {
-              correctedBackgroundColor = hovered ? contentColor.withAlpha(225) : contentColor;
+            if (_configuration?.isHovered == true) {
+              correctedBackgroundColor = hovered ? onPrimaryColor.withAlpha(225) : onPrimaryColor;
             } else {
-              correctedBackgroundColor = hovered ? contentColor : backgroundColor;
+              correctedBackgroundColor = hovered ? onPrimaryColor : primaryColor;
             }
 
             return Container(
               decoration: BoxDecoration(
-                border: (_bordered ?? themeExtension.bordered)
+                border: (_configuration?.bordered ?? themeExtension.bordered)
                     ? Border.all(
                         width: 2,
-                        color: hovered ? backgroundColor : contentColor,
+                        color: hovered ? primaryColor : onPrimaryColor,
                       )
                     : null,
-                borderRadius: _borderRadius ?? themeExtension.borderRadius,
+                borderRadius: _configuration?.borderRadius ?? themeExtension.borderRadius,
                 color: correctedBackgroundColor,
               ),
-              child: _builder(hovered, contentColor, backgroundColor),
+              child: _builder(hovered, onPrimaryColor, primaryColor),
             );
           },
         ),

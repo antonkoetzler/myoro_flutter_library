@@ -38,7 +38,7 @@ final class MyoroSnackBar extends StatelessWidget {
     return Container(
       padding: themeExtension.padding,
       decoration: BoxDecoration(
-        color: themeExtension.backgroundColor,
+        color: themeExtension.primaryColor,
         border: Border.all(
           width: themeExtension.borderWidth,
           color: snackBarType.getBorderColor(context),

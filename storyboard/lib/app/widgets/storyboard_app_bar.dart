@@ -75,8 +75,10 @@ final class _ShowWidgetShowcaseButton extends StatelessWidget {
 
         return MyoroIconTextHoverButton(
           icon: context.resolveThemeExtension<StoryboardAppBarThemeExtension>().showWidgetOptionsButtonIcon,
-          tooltip: 'Show widget showcase options',
-          isHovered: state.displayingWidgetOptions,
+          configuration: MyoroHoverButtonConfiguration(
+            tooltip: 'Show widget showcase options',
+            isHovered: state.displayingWidgetOptions,
+          ),
           onPressed: () => context.resolveBloc<WidgetShowcaseBloc>().add(const ToggleWidgetOptionsDisplayEvent()),
         );
       },
@@ -91,7 +93,7 @@ final class _ToggleThemeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextHoverButton(
       icon: context.resolveThemeExtension<StoryboardAppBarThemeExtension>().themeButtonIcon,
-      tooltip: 'Toggle theme',
+      configuration: const MyoroHoverButtonConfiguration(tooltip: 'Toggle theme'),
       onPressed: () => context.resolveBloc<ThemeModeCubit>().toggle(),
     );
   }

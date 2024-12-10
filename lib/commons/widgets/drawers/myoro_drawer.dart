@@ -134,9 +134,11 @@ final class _CloseButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return MyoroIconTextHoverButton(
+      configuration: MyoroHoverButtonConfiguration(
+        primaryColor: themeExtension.closeButtonBackgroundColor,
+        bordered: themeExtension.closeButtonBordered,
+      ),
       icon: !_isEndDrawer ? themeExtension.closeButtonDrawerIcon : themeExtension.closeButtonEndDrawerIcon,
-      backgroundColor: themeExtension.closeButtonBackgroundColor,
-      bordered: themeExtension.closeButtonBordered,
       onPressed: () => context.closeDrawer(),
     );
   }

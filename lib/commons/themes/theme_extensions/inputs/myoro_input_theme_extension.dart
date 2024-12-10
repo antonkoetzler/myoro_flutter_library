@@ -12,7 +12,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   final InputBorder outlinedBorder;
 
   /// Background color of the input.
-  final Color backgroundColor;
+  final Color primaryColor;
 
   /// Color of the border when said input's [validation] function returns an error.
   final Color errorBorderColor;
@@ -47,7 +47,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   const MyoroInputThemeExtension({
     required this.underlinedBorder,
     required this.outlinedBorder,
-    required this.backgroundColor,
+    required this.primaryColor,
     required this.errorBorderColor,
     required this.borderRadius,
     required this.isDense,
@@ -64,7 +64,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   MyoroInputThemeExtension copyWith({
     InputBorder? underlinedBorder,
     InputBorder? outlinedBorder,
-    Color? backgroundColor,
+    Color? primaryColor,
     Color? errorBorderColor,
     BorderRadius? borderRadius,
     bool? isDense,
@@ -79,7 +79,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     return MyoroInputThemeExtension(
       underlinedBorder: underlinedBorder ?? this.underlinedBorder,
       outlinedBorder: outlinedBorder ?? this.outlinedBorder,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
       errorBorderColor: errorBorderColor ?? this.errorBorderColor,
       borderRadius: borderRadius ?? this.borderRadius,
       isDense: isDense ?? this.isDense,
@@ -102,7 +102,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     return copyWith(
       underlinedBorder: MyoroLerpHelper.lerp(underlinedBorder, other.underlinedBorder, t),
       outlinedBorder: MyoroLerpHelper.lerp(outlinedBorder, other.outlinedBorder, t),
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       isDense: MyoroLerpHelper.lerp(isDense, other.isDense, t),

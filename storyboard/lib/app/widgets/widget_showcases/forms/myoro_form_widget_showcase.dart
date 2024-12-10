@@ -105,9 +105,9 @@ final class _SubmitButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
 
     return MyoroIconTextHoverButton(
-      mainAxisAlignment: themeExtension.submitButtonMainAxisAlignment,
+      configuration: MyoroHoverButtonConfiguration(bordered: themeExtension.submitButtonBordered),
       text: 'Click me!',
-      bordered: themeExtension.submitButtonBordered,
+      mainAxisAlignment: themeExtension.submitButtonMainAxisAlignment,
       onPressed: onPressed,
     );
   }

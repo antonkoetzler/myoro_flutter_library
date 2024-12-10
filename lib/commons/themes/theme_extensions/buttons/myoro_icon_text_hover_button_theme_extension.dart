@@ -5,11 +5,11 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroIconTextHoverButton].
 final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroIconTextHoverButtonThemeExtension> {
-  /// [MyoroColorTheme.secondary] by default.
-  final Color contentColor;
-
   /// [MyoroColorTheme.primary] by default.
-  final Color backgroundColor;
+  final Color primaryColor;
+
+  /// [MyoroColorTheme.secondary] by default.
+  final Color onPrimaryColor;
 
   /// Default padding of the button.
   final EdgeInsets contentPadding;
@@ -33,8 +33,8 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   final MainAxisAlignment mainAxisAlignment;
 
   const MyoroIconTextHoverButtonThemeExtension({
-    required this.contentColor,
-    required this.backgroundColor,
+    required this.primaryColor,
+    required this.onPrimaryColor,
     required this.contentPadding,
     required this.textStyle,
     required this.textAlign,
@@ -46,8 +46,8 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
 
   @override
   MyoroIconTextHoverButtonThemeExtension copyWith({
-    Color? contentColor,
-    Color? backgroundColor,
+    Color? primaryColor,
+    Color? onPrimaryColor,
     EdgeInsets? contentPadding,
     TextStyle? textStyle,
     TextAlign? textAlign,
@@ -57,8 +57,8 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     MainAxisAlignment? mainAxisAlignment,
   }) {
     return MyoroIconTextHoverButtonThemeExtension(
-      backgroundColor: backgroundColor ?? this.backgroundColor,
-      contentColor: contentColor ?? this.contentColor,
+      primaryColor: primaryColor ?? this.primaryColor,
+      onPrimaryColor: onPrimaryColor ?? this.onPrimaryColor,
       contentPadding: contentPadding ?? this.contentPadding,
       textStyle: textStyle ?? this.textStyle,
       textAlign: textAlign ?? this.textAlign,
@@ -76,8 +76,8 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   ) {
     if (other is! MyoroIconTextHoverButtonThemeExtension) return this;
     return copyWith(
-      contentColor: Color.lerp(contentColor, other.contentColor, t),
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
+      onPrimaryColor: Color.lerp(onPrimaryColor, other.onPrimaryColor, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
       textAlign: MyoroLerpHelper.lerp(textAlign, other.textAlign, t),

@@ -124,7 +124,7 @@ final class _MyoroInputState extends State<MyoroInput> {
         Expanded(
           child: Container(
             decoration: BoxDecoration(
-              color: themeExtension.backgroundColor,
+              color: themeExtension.primaryColor,
               borderRadius: themeExtension.borderRadius,
             ),
             child: ValueListenableBuilder(

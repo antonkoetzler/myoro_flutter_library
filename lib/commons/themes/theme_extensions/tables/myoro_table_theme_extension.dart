@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] for [MyoroTable].
 final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> {
   /// Background color of the table.
-  final Color backgroundColor;
+  final Color primaryColor;
 
   /// Border of the table.
   final Border border;
@@ -48,7 +48,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   final BorderRadius rowBorderRadius;
 
   const MyoroTableThemeExtension({
-    required this.backgroundColor,
+    required this.primaryColor,
     required this.border,
     required this.borderRadius,
     required this.contentPadding,
@@ -66,7 +66,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
 
   @override
   MyoroTableThemeExtension copyWith({
-    Color? backgroundColor,
+    Color? primaryColor,
     Border? border,
     BorderRadius? borderRadius,
     EdgeInsets? contentPadding,
@@ -82,7 +82,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     BorderRadius? rowBorderRadius,
   }) {
     return MyoroTableThemeExtension(
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
       border: border ?? this.border,
       borderRadius: borderRadius ?? this.borderRadius,
       contentPadding: contentPadding ?? this.contentPadding,
@@ -106,7 +106,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   ) {
     if (other is! MyoroTableThemeExtension) return this;
     return copyWith(
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       border: Border.lerp(border, other.border, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),

@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] for [MyoroSnackBar].
 final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension> {
   /// Background color of the snack bar.
-  final Color backgroundColor;
+  final Color primaryColor;
 
   /// [MyoroSnackBarEnum.standard].
   final Color standardBorderColor;
@@ -42,7 +42,7 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
   final double closeButtonIconSize;
 
   const MyoroSnackBarThemeExtension({
-    required this.backgroundColor,
+    required this.primaryColor,
     required this.standardBorderColor,
     required this.attentionBorderColor,
     required this.successBorderColor,
@@ -58,7 +58,7 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
 
   @override
   MyoroSnackBarThemeExtension copyWith({
-    Color? backgroundColor,
+    Color? primaryColor,
     Color? standardBorderColor,
     Color? attentionBorderColor,
     Color? successBorderColor,
@@ -72,7 +72,7 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
     double? closeButtonIconSize,
   }) {
     return MyoroSnackBarThemeExtension(
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
       standardBorderColor: standardBorderColor ?? this.standardBorderColor,
       attentionBorderColor: attentionBorderColor ?? this.attentionBorderColor,
       successBorderColor: successBorderColor ?? this.successBorderColor,
@@ -94,7 +94,7 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
   ) {
     if (other is! MyoroSnackBarThemeExtension) return this;
     return copyWith(
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       standardBorderColor: Color.lerp(standardBorderColor, other.standardBorderColor, t),
       attentionBorderColor: Color.lerp(attentionBorderColor, other.attentionBorderColor, t),
       successBorderColor: Color.lerp(successBorderColor, other.successBorderColor, t),

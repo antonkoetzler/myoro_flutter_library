@@ -51,7 +51,7 @@ final class MyoroModal extends StatelessWidget {
 
     return Center(
       child: Material(
-        color: themeExtension.backgroundColor,
+        color: themeExtension.primaryColor,
         borderRadius: themeExtension.borderRadius,
         child: Container(
           constraints: _configuration?.constraints ?? themeExtension.constraints,

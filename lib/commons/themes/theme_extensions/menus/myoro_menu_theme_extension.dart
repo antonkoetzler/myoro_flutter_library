@@ -12,13 +12,13 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
   final double maxWidth;
 
   /// Background color of the menu.
-  final Color backgroundColor;
-
-  /// Border radius of the menu.
-  final BorderRadius borderRadius;
+  final Color primaryColor;
 
   /// Border of the menu.
   final Border border;
+
+  /// Border radius of the menu.
+  final BorderRadius borderRadius;
 
   /// Text style of [_EmptyMenuDialog].
   final TextStyle dialogTextStyle;
@@ -26,9 +26,9 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
   const MyoroMenuThemeExtension({
     required this.maxHeight,
     required this.maxWidth,
-    required this.backgroundColor,
-    required this.borderRadius,
+    required this.primaryColor,
     required this.border,
+    required this.borderRadius,
     required this.dialogTextStyle,
   });
 
@@ -36,20 +36,17 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
   MyoroMenuThemeExtension copyWith({
     double? maxHeight,
     double? maxWidth,
-    Color? backgroundColor,
-    BorderRadius? borderRadius,
+    Color? primaryColor,
     Border? border,
-    double? iconSize,
-    TextStyle? textStyle,
-    double? itemSpacing,
+    BorderRadius? borderRadius,
     TextStyle? dialogTextStyle,
   }) {
     return MyoroMenuThemeExtension(
       maxHeight: maxHeight ?? this.maxHeight,
       maxWidth: maxWidth ?? this.maxWidth,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
-      borderRadius: borderRadius ?? this.borderRadius,
+      primaryColor: primaryColor ?? this.primaryColor,
       border: border ?? this.border,
+      borderRadius: borderRadius ?? this.borderRadius,
       dialogTextStyle: dialogTextStyle ?? this.dialogTextStyle,
     );
   }
@@ -63,9 +60,9 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     return copyWith(
       maxHeight: lerpDouble(maxHeight, other.maxHeight, t),
       maxWidth: lerpDouble(maxWidth, other.maxWidth, t),
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       border: Border.lerp(border, other.border, t),
+      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       dialogTextStyle: TextStyle.lerp(dialogTextStyle, other.dialogTextStyle, t),
     );
   }

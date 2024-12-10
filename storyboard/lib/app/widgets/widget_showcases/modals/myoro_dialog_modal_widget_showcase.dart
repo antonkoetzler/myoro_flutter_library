@@ -22,8 +22,8 @@ final class _Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicWidth(
       child: MyoroIconTextHoverButton(
+        configuration: const MyoroHoverButtonConfiguration(bordered: true),
         text: 'Click to launch the modal.',
-        bordered: true,
         onPressed: () => MyoroDialogModal.show(
           context,
           child: const Text(

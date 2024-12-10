@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] for [MyoroModal].
 final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> {
   /// Background color of the modal.
-  final Color backgroundColor;
+  final Color primaryColor;
 
   /// Border radius of the modal.
   final BorderRadius borderRadius;
@@ -30,7 +30,7 @@ final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExten
   final IconData closeButtonIcon;
 
   const MyoroModalThemeExtension({
-    required this.backgroundColor,
+    required this.primaryColor,
     required this.borderRadius,
     required this.border,
     required this.padding,
@@ -42,7 +42,7 @@ final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExten
 
   @override
   MyoroModalThemeExtension copyWith({
-    Color? backgroundColor,
+    Color? primaryColor,
     BorderRadius? borderRadius,
     Border? border,
     EdgeInsets? padding,
@@ -52,7 +52,7 @@ final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExten
     IconData? closeButtonIcon,
   }) {
     return MyoroModalThemeExtension(
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
       borderRadius: borderRadius ?? this.borderRadius,
       border: border ?? this.border,
       padding: padding ?? this.padding,
@@ -70,7 +70,7 @@ final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExten
   ) {
     if (other is! MyoroModalThemeExtension) return this;
     return copyWith(
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       border: Border.lerp(border, other.border, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),

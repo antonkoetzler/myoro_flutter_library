@@ -123,7 +123,7 @@ final class _SearchButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
     return MyoroHoverButton(
-      bordered: themeExtension.searchButtonBordered,
+      configuration: MyoroHoverButtonConfiguration(bordered: themeExtension.searchButtonBordered),
       onPressed: () => status.isLoading ? {} : formController.finish(),
       builder: (bool hovered, Color contentColor, Color backgroundColor) {
         final color = hovered ? themeExtension.searchButtonHoverColor : contentColor;

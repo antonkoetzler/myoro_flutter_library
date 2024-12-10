@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] for [MyoroSnackBarContainer].
 final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension> {
   /// Background color of the container.
-  final Color backgroundColor;
+  final Color primaryColor;
 
   /// [SnackBarBehavior] of the container.
   final SnackBarBehavior behavior;
@@ -27,7 +27,7 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
   final Duration duration;
 
   const MyoroSnackBarContainerThemeExtension({
-    required this.backgroundColor,
+    required this.primaryColor,
     required this.behavior,
     required this.margin,
     required this.padding,
@@ -38,7 +38,7 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
 
   @override
   MyoroSnackBarContainerThemeExtension copyWith({
-    Color? backgroundColor,
+    Color? primaryColor,
     SnackBarBehavior? behavior,
     EdgeInsets? margin,
     EdgeInsets? padding,
@@ -47,7 +47,7 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
     Duration? duration,
   }) {
     return MyoroSnackBarContainerThemeExtension(
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
       behavior: behavior ?? this.behavior,
       margin: margin ?? this.margin,
       padding: padding ?? this.padding,
@@ -64,7 +64,7 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
   ) {
     if (other is! MyoroSnackBarContainerThemeExtension) return this;
     return copyWith(
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       behavior: MyoroLerpHelper.lerp(behavior, other.behavior, t),
       margin: EdgeInsets.lerp(margin, other.margin, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),

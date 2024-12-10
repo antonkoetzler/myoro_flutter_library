@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] of [MyoroCard].
 final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> {
   /// Background color of the card.
-  final Color backgroundColor;
+  final Color primaryColor;
 
   /// Border of the card.
   final Border border;
@@ -24,7 +24,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
   final TextStyle textStyle;
 
   const MyoroCardThemeExtension({
-    required this.backgroundColor,
+    required this.primaryColor,
     required this.border,
     required this.borderRadius,
     required this.padding,
@@ -34,7 +34,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
 
   @override
   MyoroCardThemeExtension copyWith({
-    Color? backgroundColor,
+    Color? primaryColor,
     Border? border,
     BorderRadius? borderRadius,
     EdgeInsets? padding,
@@ -42,7 +42,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
     TextStyle? textStyle,
   }) {
     return MyoroCardThemeExtension(
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
       border: border ?? this.border,
       borderRadius: borderRadius ?? this.borderRadius,
       padding: padding ?? this.padding,
@@ -58,7 +58,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
   ) {
     if (other is! MyoroCardThemeExtension) return this;
     return copyWith(
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       border: Border.lerp(border, other.border, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),

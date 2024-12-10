@@ -41,7 +41,7 @@ final class MyoroMenu extends StatelessWidget {
       borderRadius: themeExtension.borderRadius,
       child: Container(
         decoration: BoxDecoration(
-          color: themeExtension.backgroundColor,
+          color: themeExtension.primaryColor,
           border: themeExtension.border,
           borderRadius: themeExtension.borderRadius,
         ),
@@ -123,13 +123,15 @@ final class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroIconTextHoverButton(
+      configuration: MyoroHoverButtonConfiguration(
+        borderRadius: BorderRadius.zero,
+        isHovered: item.isHovered,
+      ),
       icon: item.icon,
       iconSize: iconSize,
       text: item.text,
       textStyle: textStyle,
       textAlign: textAlign,
-      borderRadius: BorderRadius.zero,
-      isHovered: item.isHovered,
       onPressed: item.onPressed,
     );
   }

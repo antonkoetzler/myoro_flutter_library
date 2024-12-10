@@ -4,23 +4,23 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] for [MyoroAppBar].
 final class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension> {
   /// Background [Color] of the app bar.
-  final Color backgroundColor;
+  final Color primaryColor;
 
   /// [EdgeInsets] of the contents of the [MyoroAppBar], not it's bottom border.
   final EdgeInsets contentPadding;
 
   const MyoroAppBarThemeExtension({
-    required this.backgroundColor,
+    required this.primaryColor,
     required this.contentPadding,
   });
 
   @override
   MyoroAppBarThemeExtension copyWith({
-    Color? backgroundColor,
+    Color? primaryColor,
     EdgeInsets? contentPadding,
   }) {
     return MyoroAppBarThemeExtension(
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
       contentPadding: contentPadding ?? this.contentPadding,
     );
   }

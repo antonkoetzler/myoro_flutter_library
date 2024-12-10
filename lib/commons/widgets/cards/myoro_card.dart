@@ -74,7 +74,7 @@ final class _Card extends StatelessWidget {
       height: _height,
       padding: themeExtension.padding,
       decoration: BoxDecoration(
-        color: themeExtension.backgroundColor,
+        color: themeExtension.primaryColor,
         border: themeExtension.border,
         borderRadius: themeExtension.borderRadius,
       ),

@@ -22,8 +22,8 @@ final class _Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicWidth(
       child: MyoroIconTextHoverButton(
+        configuration: const MyoroHoverButtonConfiguration(bordered: true),
         text: 'Click to launch the snack bar.',
-        bordered: true,
         onPressed: () => context.showSnackBar(
           snackBar: const MyoroSnackBar(
             snackBarType: MyoroSnackBarTypeEnum.success,

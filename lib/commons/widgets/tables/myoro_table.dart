@@ -95,7 +95,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
       child: Container(
         constraints: _constraints,
         decoration: BoxDecoration(
-          color: themeExtension.backgroundColor,
+          color: themeExtension.primaryColor,
           border: themeExtension.border,
           borderRadius: themeExtension.borderRadius,
         ),
@@ -463,11 +463,13 @@ final class _Row<T> extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return MyoroHoverButton(
-      borderRadius: themeExtension.rowBorderRadius,
-      contentColor: themeExtension.rowBackgroundHoverColor,
-      onHover: _toggleRowHover,
+      configuration: MyoroHoverButtonConfiguration(
+        borderRadius: themeExtension.rowBorderRadius,
+        onPrimaryColor: themeExtension.rowBackgroundHoverColor,
+        onHover: _toggleRowHover,
+      ),
       onPressed: () => _row.onPressed?.call(),
-      builder: (bool hovered, Color contentColor, Color backgroundColor) {
+      builder: (bool hovered, Color onPrimaryColor, Color primaryColor) {
         return Padding(
           padding: EdgeInsets.symmetric(
             horizontal: themeExtension.contentPadding.horizontal / 2,

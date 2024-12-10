@@ -3,6 +3,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Creates a [HoverButton] that accepts an icon and/or text.
 final class MyoroIconTextHoverButton extends StatelessWidget {
+  /// [MyoroHoverButton] configuration.
+  final MyoroHoverButtonConfiguration? configuration;
+
   /// Icon of the button.
   final IconData? icon;
 
@@ -18,48 +21,25 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   /// Alignment of the text.
   final TextAlign? textAlign;
 
-  /// Color of the border, icon/text, & background when hovered.
-  final Color? contentColor;
-
-  /// Builds a rounded border if [true]; no border if [false].
-  final bool? bordered;
-
-  /// Border radius of the background.
-  final BorderRadius? borderRadius;
-
   /// Padding of the content in the button.
   final EdgeInsets? padding;
 
-  /// Color of the icon/text when hovered & background when not hovered.
-  final Color? backgroundColor;
-
-  /// If the button will already be hovered (there will be no hover effect).
-  final bool? isHovered;
-
   /// [MainAxisAlignment] of the [Row] holding the items.
   final MainAxisAlignment? mainAxisAlignment;
-
-  /// Tooltip message of the button.
-  final String? tooltip;
 
   /// Function executed when the button is clicked.
   final VoidCallback? onPressed;
 
   const MyoroIconTextHoverButton({
     super.key,
+    this.configuration,
     this.icon,
     this.iconSize,
     this.text,
     this.textStyle,
     this.textAlign,
-    this.contentColor,
-    this.bordered,
-    this.borderRadius,
     this.padding,
-    this.backgroundColor,
-    this.isHovered,
     this.mainAxisAlignment,
-    this.tooltip,
     this.onPressed,
   }) : assert(
           !(icon == null && text == null),
@@ -73,16 +53,12 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
     final iconAndTextNotNull = icon != null && text != null;
 
     return MyoroHoverButton(
-      contentColor: contentColor,
-      backgroundColor: backgroundColor,
-      isHovered: isHovered,
-      bordered: bordered,
-      borderRadius: borderRadius,
-      tooltip: tooltip,
+      configuration: configuration,
       onPressed: onPressed,
       builder: (bool hovered, _, __) {
-        final actualContentColor =
-            (hovered || isHovered == true) ? (backgroundColor ?? themeExtension.backgroundColor) : (contentColor ?? themeExtension.contentColor);
+        final actualContentColor = (hovered || configuration?.isHovered == true)
+            ? (configuration?.primaryColor ?? themeExtension.primaryColor)
+            : (configuration?.onPrimaryColor ?? themeExtension.onPrimaryColor);
 
         return Padding(
           padding: contentPadding.copyWith(

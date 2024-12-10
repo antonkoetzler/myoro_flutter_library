@@ -3,11 +3,11 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroHoverButton].
 final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButtonThemeExtension> {
-  /// [MyoroColorTheme.secondary] by default.
-  final Color contentColor;
-
   /// [MyoroColorTheme.transparent] by default.
-  final Color backgroundColor;
+  final Color primaryColor;
+
+  /// [MyoroColorTheme.secondary] by default.
+  final Color onPrimaryColor;
 
   /// Border radius of the background. [kMyoroBorderRadius] by default.
   final BorderRadius borderRadius;
@@ -16,22 +16,22 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   final bool bordered;
 
   const MyoroHoverButtonThemeExtension({
-    required this.contentColor,
-    required this.backgroundColor,
+    required this.primaryColor,
+    required this.onPrimaryColor,
     required this.borderRadius,
     required this.bordered,
   });
 
   @override
   MyoroHoverButtonThemeExtension copyWith({
-    Color? contentColor,
-    Color? backgroundColor,
+    Color? primaryColor,
+    Color? onPrimaryColor,
     BorderRadius? borderRadius,
     bool? bordered,
   }) {
     return MyoroHoverButtonThemeExtension(
-      contentColor: contentColor ?? this.contentColor,
-      backgroundColor: backgroundColor ?? this.backgroundColor,
+      primaryColor: primaryColor ?? this.primaryColor,
+      onPrimaryColor: onPrimaryColor ?? this.onPrimaryColor,
       borderRadius: borderRadius ?? this.borderRadius,
       bordered: bordered ?? this.bordered,
     );
@@ -41,8 +41,8 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   ThemeExtension<MyoroHoverButtonThemeExtension> lerp(covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other, double t) {
     if (other is! MyoroHoverButtonThemeExtension) return this;
     return copyWith(
-      contentColor: Color.lerp(contentColor, other.contentColor, t),
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
+      onPrimaryColor: Color.lerp(onPrimaryColor, other.onPrimaryColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       bordered: MyoroLerpHelper.lerp(bordered, other.bordered, t),
     );

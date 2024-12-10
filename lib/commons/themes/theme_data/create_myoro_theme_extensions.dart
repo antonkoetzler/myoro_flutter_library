@@ -33,7 +33,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
 List<ThemeExtension> createAppBarThemeExtensions(ColorScheme colorScheme) {
   return [
     MyoroAppBarThemeExtension(
-      backgroundColor: colorScheme.primary,
+      primaryColor: colorScheme.primary,
       contentPadding: const EdgeInsets.fromLTRB(10, 5, 5, 5),
     ),
   ];
@@ -51,14 +51,14 @@ List<ThemeExtension> createDropdownThemeExtensions() {
 List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroHoverButtonThemeExtension(
-      contentColor: colorScheme.onPrimary,
-      backgroundColor: colorScheme.primary,
+      primaryColor: colorScheme.primary,
+      onPrimaryColor: colorScheme.onPrimary,
       borderRadius: MyoroDecorationHelper.borderRadius,
       bordered: false,
     ),
     MyoroIconTextHoverButtonThemeExtension(
-      backgroundColor: colorScheme.primary,
-      contentColor: colorScheme.onPrimary,
+      primaryColor: colorScheme.primary,
+      onPrimaryColor: colorScheme.onPrimary,
       contentPadding: const EdgeInsets.all(5),
       textStyle: textTheme.bodyMedium!,
       textAlign: TextAlign.left,
@@ -73,7 +73,7 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
 List<ThemeExtension> createCardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroCardThemeExtension(
-      backgroundColor: colorScheme.primary,
+      primaryColor: colorScheme.primary,
       border: Border.all(
         width: kMyoroBorderLength,
         color: colorScheme.onPrimary,
@@ -199,7 +199,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
           color: colorScheme.onPrimary,
         ),
       ),
-      backgroundColor: colorScheme.primary,
+      primaryColor: colorScheme.primary,
       errorBorderColor: colorScheme.error,
       borderRadius: MyoroDecorationHelper.borderRadius,
       isDense: true,
@@ -239,14 +239,14 @@ List<ThemeExtension> createMaterialAppThemeExtensions() {
 List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroMenuThemeExtension(
-      backgroundColor: colorScheme.primary,
-      borderRadius: MyoroDecorationHelper.inputBorderRadius,
+      maxHeight: kMyoroMenuMaxSize.height,
+      maxWidth: kMyoroMenuMaxSize.width,
+      primaryColor: colorScheme.primary,
       border: Border.all(
         width: kMyoroBorderLength,
         color: colorScheme.onPrimary,
       ),
-      maxHeight: kMyoroMenuMaxSize.height,
-      maxWidth: kMyoroMenuMaxSize.width,
+      borderRadius: MyoroDecorationHelper.inputBorderRadius,
       dialogTextStyle: textTheme.bodyMedium!,
     ),
   ];
@@ -258,7 +258,7 @@ List<ThemeExtension> createModalThemeExtensions(ColorScheme colorScheme, TextThe
 
   return [
     MyoroModalThemeExtension(
-      backgroundColor: colorScheme.primary,
+      primaryColor: colorScheme.primary,
       borderRadius: MyoroDecorationHelper.borderRadius,
       border: Border.all(
         width: kMyoroBorderLength,
@@ -334,7 +334,7 @@ List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
 List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     const MyoroSnackBarContainerThemeExtension(
-      backgroundColor: MyoroColorTheme.transparent,
+      primaryColor: MyoroColorTheme.transparent,
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.zero,
@@ -343,7 +343,7 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
       duration: Duration(seconds: 3),
     ),
     MyoroSnackBarThemeExtension(
-      backgroundColor: colorScheme.primary,
+      primaryColor: colorScheme.primary,
       standardBorderColor: colorScheme.onPrimary,
       attentionBorderColor: MyoroColorTheme.attention,
       successBorderColor: MyoroColorTheme.success,
@@ -362,7 +362,7 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
 List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroTableThemeExtension(
-      backgroundColor: colorScheme.primary,
+      primaryColor: colorScheme.primary,
       border: Border.all(
         width: kMyoroBorderLength,
         color: colorScheme.onPrimary,

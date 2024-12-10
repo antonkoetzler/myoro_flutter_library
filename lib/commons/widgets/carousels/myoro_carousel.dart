@@ -127,7 +127,9 @@ final class _TraversalButton extends StatelessWidget {
       alignment: _alignment,
       child: IntrinsicWidth(
         child: MyoroIconTextHoverButton(
-          bordered: context.resolveThemeExtension<MyoroCarouselThemeExtension>().traversalButtonBordered,
+          configuration: MyoroHoverButtonConfiguration(
+            bordered: context.resolveThemeExtension<MyoroCarouselThemeExtension>().traversalButtonBordered,
+          ),
           icon: _icon,
           onPressed: _onPressed,
         ),
