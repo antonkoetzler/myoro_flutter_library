@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+// Debounce.
+const kMyoroDebounceDuration = Duration(milliseconds: 200);
+
+// Throttling.
+const kMyoroThrottleDuration = Duration(milliseconds: 500);
+
 // Borders.
 const kMyoroBorderLength = 2.0;
 const kMyoroBorderRadiusLength = 10.0;

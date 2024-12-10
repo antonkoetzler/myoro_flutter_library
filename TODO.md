@@ -4,7 +4,7 @@
 
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- (**BEFORE DOING THIS, ADD DEBOUNCE & THROTTLING**) buttons
+- buttons
 - cards
 - carousels
 - checkboxes
