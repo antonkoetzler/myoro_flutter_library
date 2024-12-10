@@ -41,6 +41,9 @@ enum WidgetListingEnum {
     myoroInputTitle,
     myoroSearchInputTitle,
   ]),
+  layoutBuilders('Layout builders', [
+    myoroLayoutBuilderTitle,
+  ]),
   loaders('Loaders', [
     myoroCircularLoaderTitle,
   ]),
@@ -123,6 +126,9 @@ enum WidgetListingEnum {
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
 
+  // Layout builders.
+  static const myoroLayoutBuilderTitle = 'MyoroLayoutBuilder';
+
   // Loaders.
   static const myoroCircularLoaderTitle = 'MyoroCircularLoader';
 
@@ -168,7 +174,7 @@ enum WidgetListingEnum {
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
 
       // Buttons.
-      myoroHoverButtonTitle => throw UnimplementedError(),
+      myoroHoverButtonTitle => const MyoroHoverButtonWidgetShowcase(),
       myoroIconTextHoverButtonTitle => throw UnimplementedError(),
 
       // Cards.
@@ -201,6 +207,9 @@ enum WidgetListingEnum {
       // Inputs.
       myoroInputTitle => const MyoroInputWidgetShowcase(),
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
+
+      // Layout builders.
+      myoroLayoutBuilderTitle => throw UnimplementedError(),
 
       // Loaders.
       myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),
@@ -256,6 +265,7 @@ enum WidgetListingEnum {
   bool get isForms => this == forms;
   bool get isGraphs => this == graphs;
   bool get isInputs => this == inputs;
+  bool get isLayoutBuilders => this == layoutBuilders;
   bool get isLoaders => this == loaders;
   bool get isMaterialApps => this == materialApps;
   bool get isMenus => this == menus;

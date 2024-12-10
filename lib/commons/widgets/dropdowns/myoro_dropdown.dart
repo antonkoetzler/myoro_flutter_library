@@ -4,8 +4,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Item builder to build [_Dropdown]'s items.
 typedef MyoroDropdownItemBuilder<T> = MyoroMenuItem Function(T item);
 
+/// [String] builder for displaying the selected item in the [_Input].
+typedef MyoroDropdownItemLabelBuilder<T> = String Function(T item);
+
 /// A customizable dropdown widgets with features like multi-selection, search, etc.
 final class MyoroDropdown<T> extends StatefulWidget {
+  /// Label at the top of [_Input].
+  final String? label;
+
+  /// Text style of [label].
+  final TextStyle? labelTextStyle;
+
   /// Enables multi-selection.
   final bool? enableMultiSelection;
 
@@ -15,14 +24,20 @@ final class MyoroDropdown<T> extends StatefulWidget {
   /// Configuration for loading the dropdown's items.
   final MyoroDataConfiguration<T> dataConfiguration;
 
+  /// [String] of the selected item(s) that are being displayed in the [_Input].
+  final MyoroDropdownItemLabelBuilder<T> itemLabelBuilder;
+
   /// [_Dropdown] [MyoroMenuItem] builder.
   final MyoroDropdownItemBuilder<T> itemBuilder;
 
   const MyoroDropdown({
     super.key,
+    this.label,
+    this.labelTextStyle,
     this.enableMultiSelection,
     this.controller,
     required this.dataConfiguration,
+    required this.itemLabelBuilder,
     required this.itemBuilder,
   });
 
@@ -31,8 +46,11 @@ final class MyoroDropdown<T> extends StatefulWidget {
 }
 
 final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
+  String? get _label => widget.label;
+  TextStyle? get _labelTextStyle => widget.labelTextStyle;
   bool get _enableMultiSelection => widget.enableMultiSelection ?? false;
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
+  MyoroDropdownItemLabelBuilder<T> get _itemLabelBuilder => widget.itemLabelBuilder;
   MyoroDropdownItemBuilder<T> get _itemBuilder => widget.itemBuilder;
 
   MyoroDropdownController<T>? _localController;
@@ -46,6 +64,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   /// Provides [_enableMultiSelection] & [_itemBuilder] to [_controller].
   void _supplyController() {
     _controller.enableMultiSelection = _enableMultiSelection;
+    _controller.itemLabelBuilder = _itemLabelBuilder;
     _controller.itemBuilder = _itemBuilder;
   }
 
@@ -77,11 +96,18 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+
     return Focus(
       focusNode: _focusNode,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (_label != null) ...[
+            _Label(_label!, _labelTextStyle),
+            SizedBox(height: themeExtension.spacing),
+          ],
           _Input(
             _controller,
             _focusNode,
@@ -92,12 +118,15 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(height: context.resolveThemeExtension<MyoroDropdownThemeExtension>().spacing),
-                      _Dropdown(
-                        _controller,
-                        _dataConfiguration,
-                        _itemBuilder,
-                        _enableMultiSelection,
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: themeExtension.spacing,
+                        ),
+                        child: _Dropdown(
+                          _controller,
+                          _dataConfiguration,
+                          _enableMultiSelection,
+                        ),
                       ),
                     ],
                   )
@@ -105,6 +134,21 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
           ),
         ],
       ),
+    );
+  }
+}
+
+final class _Label extends StatelessWidget {
+  final String _label;
+  final TextStyle? _labelTextStyle;
+
+  const _Label(this._label, this._labelTextStyle);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _label,
+      style: _labelTextStyle ?? context.resolveThemeExtension<MyoroDropdownThemeExtension>().labelTextStyle,
     );
   }
 }
@@ -189,16 +233,11 @@ final class _DropdownTriggerArea extends StatelessWidget {
           _focusNode.requestFocus();
           _controller.toggleDropdown();
         },
-        child: LayoutBuilder(
+        child: MyoroLayoutBuilder(
           builder: (_, BoxConstraints constraints) {
-            return ValueListenableBuilder(
-              valueListenable: _controller.displayDropdownNotifier,
-              builder: (_, bool displayingDropdown, __) {
-                return SizedBox(
-                  width: displayingDropdown ? 0 : constraints.maxWidth - (_controller.selectedItems.isEmpty ? 0 : 44),
-                  height: 43.1, // Size of the input.
-                );
-              },
+            return SizedBox(
+              width: constraints.maxWidth - (_controller.selectedItems.isEmpty ? 0 : 44),
+              height: 43.1, // Size of the input.
             );
           },
         ),
@@ -210,13 +249,11 @@ final class _DropdownTriggerArea extends StatelessWidget {
 final class _Dropdown<T> extends StatelessWidget {
   final MyoroDropdownController<T> _controller;
   final MyoroDataConfiguration<T> _dataConfiguration;
-  final MyoroDropdownItemBuilder<T> _itemBuilder;
   final bool _enableMultiSelection;
 
   const _Dropdown(
     this._controller,
     this._dataConfiguration,
-    this._itemBuilder,
     this._enableMultiSelection,
   );
 
@@ -228,7 +265,7 @@ final class _Dropdown<T> extends StatelessWidget {
         asyncronousItems: () async {
           return (await _dataConfiguration.items).map<MyoroMenuItem>(
             (T item) {
-              final MyoroMenuItem builtItem = _itemBuilder.call(item);
+              final MyoroMenuItem builtItem = _controller.itemBuilder.call(item);
               final bool isSelected = _controller.isSelected(item);
 
               return builtItem.copyWith(

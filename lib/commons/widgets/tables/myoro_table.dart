@@ -469,7 +469,7 @@ final class _Row<T> extends StatelessWidget {
         onHover: _toggleRowHover,
       ),
       onPressed: () => _row.onPressed?.call(),
-      builder: (bool hovered, Color onPrimaryColor, Color primaryColor) {
+      builder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
         return Padding(
           padding: EdgeInsets.symmetric(
             horizontal: themeExtension.contentPadding.horizontal / 2,

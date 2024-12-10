@@ -5,65 +5,79 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A model that loads an item in [MyoroMenu], but also can
 /// be seen as a general model to load items into a menu.
+///
+/// 2 "modes":
+/// 1. [icon] and/or [text] is provided; a simple [MyoroMenuItem];
+/// 2. [itemBuilder] provided for a custom [MyoroMenuItem] widget.
 final class MyoroMenuItem extends Equatable {
-  /// [IconData] of the item.
-  final IconData? icon;
-
-  /// Text of the item.
-  final String? text;
-
   /// If the item is isHovered or not.
   final bool? isHovered;
 
   /// What is called when the item is clicked.
   final VoidCallback? onPressed;
 
+  /// [IconData] of the item.
+  final IconData? icon;
+
+  /// Text of the item.
+  final String? text;
+
+  /// [MyoroMenuItemBuilder] of the item.
+  final MyoroHoverButtonBuilder? itemBuilder;
+
   const MyoroMenuItem({
-    this.icon,
-    this.text,
     this.isHovered,
     this.onPressed,
+    this.icon,
+    this.text,
+    this.itemBuilder,
   }) : assert(
-          icon != null || text != null,
-          '[MyoroMenuItem]: [icon] and/or [text] need to be provided.',
+          itemBuilder != null ? (icon == null && text == null) : (icon != null || text != null),
+          '[MyoroMenuItem]: If [itemBuilder] is provided, [text] & [icon] must be null. '
+          'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
         );
 
   MyoroMenuItem copyWith({
-    IconData? icon,
-    String? text,
     bool? isHovered,
     VoidCallback? onPressed,
+    IconData? icon,
+    String? text,
+    MyoroHoverButtonBuilder? itemBuilder,
   }) {
     return MyoroMenuItem(
-      icon: icon ?? this.icon,
-      text: text ?? this.text,
       isHovered: isHovered ?? this.isHovered,
       onPressed: onPressed ?? this.onPressed,
+      icon: icon ?? this.icon,
+      text: text ?? this.text,
+      itemBuilder: itemBuilder ?? this.itemBuilder,
     );
   }
 
   MyoroMenuItem.fake()
-      : icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      : isHovered = faker.randomGenerator.boolean(),
+        onPressed = null,
+        icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
         text = faker.randomGenerator.string(50),
-        isHovered = faker.randomGenerator.boolean(),
-        onPressed = null;
+        itemBuilder = null;
 
   @override
   String toString() => ''
       'MyoroMenuItem(\n'
-      '  icon: $icon\n,'
-      '  text: $text\n,'
       '  isHovered: $isHovered,\n'
       '  onPressed: $onPressed\n,'
+      '  icon: $icon\n,'
+      '  text: $text\n,'
+      '  itemBuilder: $itemBuilder,\n'
       ');';
 
   @override
   List<Object?> get props {
     return [
-      icon,
-      text,
       isHovered,
       onPressed,
+      icon,
+      text,
+      itemBuilder,
     ];
   }
 }

@@ -13,7 +13,7 @@ final class MyoroCheckboxWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroCheckboxWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: _WidgetOptions(),
+        widgetOptions: [_LabelTextOption()],
       ),
     );
   }
@@ -32,20 +32,6 @@ final class _Widget extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _LabelTextOption(),
-      ],
     );
   }
 }

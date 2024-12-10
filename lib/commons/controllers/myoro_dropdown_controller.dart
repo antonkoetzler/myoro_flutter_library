@@ -10,8 +10,11 @@ final class MyoroDropdownController<T> {
   /// Transfer [MyoroDropdown.enableMultiSelection] over here to the controller.
   late bool _enableMultiSelection;
 
-  /// Transfer [MyoroDropdown.itemBuilder]over here to the controller.
-  late MyoroDropdownItemBuilder<T> _itemBuilder;
+  /// Transfer [MyoroDropdown.itemLabelBuilder] over here to the controller.
+  late MyoroDropdownItemLabelBuilder<T> _itemLabelBuilder;
+
+  /// Transfer [MyoroDropdown.itemBuilder] over here to the controller.
+  late MyoroDropdownItemBuilder<T> itemBuilder;
 
   /// Selected items of the dropdown.
   late final ValueNotifier<List<T>> _selectedItemsNotifier;
@@ -59,23 +62,23 @@ final class MyoroDropdownController<T> {
   String get formattedItems {
     return _selectedItemsNotifier.value.fold<String>(
       '',
-      (String current, T item) => '$current${current.isEmpty ? '' : ' '}${_itemBuilder.call(item).text}',
+      (String current, T item) => '$current${current.isEmpty ? '' : ' '}${_itemLabelBuilder.call(item)}',
     );
   }
+
+  /// Simple helper method to assert logic with [_enableMultiSelection].
+  void _assert(List<T> items) {
+    assert(
+      _enableMultiSelection ? true : items.length == 1,
+      '[MyoroDropdownController]: [_enableMultiSelection] is [false]. Only one item may be provided.',
+    );
+  }
+
+  set enableMultiSelection(bool enableMultiSelection) => _enableMultiSelection = enableMultiSelection;
+  set itemLabelBuilder(MyoroDropdownItemLabelBuilder<T> itemLabelBuilder) => _itemLabelBuilder = itemLabelBuilder;
 
   ValueNotifier<List<T>> get selectedItemsNotifier => _selectedItemsNotifier;
   List<T> get selectedItems => _selectedItemsNotifier.value;
   ValueNotifier<bool> get displayDropdownNotifier => _displayDropdownNotifier;
   bool get displayingDropdown => _displayDropdownNotifier.value;
-
-  set enableMultiSelection(bool enableMultiSelection) => _enableMultiSelection = enableMultiSelection;
-  set itemBuilder(MyoroDropdownItemBuilder<T> itemBuilder) => _itemBuilder = itemBuilder;
-
-  /// Simple helper method to assert logic with [enableMultiSelection].
-  void _assert(List<T> items) {
-    assert(
-      _enableMultiSelection ? true : items.length == 1,
-      '[MyoroDropdownController]: [enableMultiSelection] is [false]. Only one item may be provided.',
-    );
-  }
 }

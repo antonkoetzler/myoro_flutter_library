@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-List<ThemeExtension> createStoryboardThemeExtensions(TextTheme textTheme) {
+List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
+    // [WidgetShowcase] & [WidgetShowcase]s.
     WidgetShowcaseThemeExtension(
       widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
       widgetWrapperPadding: const EdgeInsets.all(20),
@@ -14,12 +15,23 @@ List<ThemeExtension> createStoryboardThemeExtensions(TextTheme textTheme) {
         color: MyoroColorTheme.attention,
       ),
       wrapperWrapperAlignment: Alignment.center,
+      widgetOptionsPadding: const EdgeInsets.all(10),
+      widgetOptionsDividerPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
     ),
     MyoroAppBarWidgetShowcaseThemeExtension(
       mockAppLogoIcon: Icons.people,
       mockAppTitleTextStyle: textTheme.titleMedium!,
       logoTitleSpacing: 5,
       mockMenuButtonIcon: Icons.menu,
+    ),
+    MyoroHoverButtonWidgetShowcaseThemeExtension(
+      widgetContentPadding: const EdgeInsets.all(10),
+      widgetContentTextStyle: textTheme.titleLarge!.copyWith(height: 0.8),
+      colorDropdownitemPrimaryColor: colorScheme.primary,
+      colorDropdownItemPadding: const EdgeInsets.all(10),
+      colorDropdownItemColorSize: const Size(50, 50),
+      colorDropdownItemColorTextStyle: textTheme.bodyMedium!,
+      colorDropdownItemSpacing: 10,
     ),
     const MyoroCardWidgetShowcaseThemeExtension(),
     const MyoroCarouselWidgetShowcaseThemeExtension(),
@@ -35,12 +47,8 @@ List<ThemeExtension> createStoryboardThemeExtensions(TextTheme textTheme) {
     ),
     const MyoroBarGraphWidgetShowcaseThemeExtension(),
     const MyoroPieGraphWidgetShowcaseThemeExtension(),
-    const MyoroCircularLoaderWidgetShowcaseThemeExtension(
-      widgetOptionsSpacing: 20,
-    ),
-    const MyoroMenuWidgetShowcaseThemeExtension(
-      widgetOptionsSpacing: 20,
-    ),
+    const MyoroCircularLoaderWidgetShowcaseThemeExtension(),
+    const MyoroMenuWidgetShowcaseThemeExtension(),
     const MyoroModalWidgetShowcaseThemeExtension(),
     const MyoroDialogModalWidgetShowcaseThemeExtension(),
     const MyoroGroupRadioWidgetShowcaseThemeExtension(),
@@ -56,6 +64,8 @@ List<ThemeExtension> createStoryboardThemeExtensions(TextTheme textTheme) {
       containerSize: const Size(200, 50),
       containerTextStyle: textTheme.titleMedium!,
     ),
+
+    // Main app widgets (app bar & body).
     StoryboardAppBarThemeExtension(
       titleTextStyle: textTheme.titleMedium!,
       subtitleTextStyle: textTheme.bodySmall!,

@@ -16,7 +16,6 @@ final class _MyoroDropdownWidgetShowcaseState extends State<MyoroDropdownWidgetS
   Widget build(BuildContext context) {
     return const WidgetShowcase(
       widget: _Widget(),
-      widgetOptions: _WidgetOptions(),
     );
   }
 }
@@ -33,16 +32,8 @@ final class _Widget extends StatelessWidget {
           (_) => faker.person.name(),
         ),
       ),
+      itemLabelBuilder: (String item) => item,
       itemBuilder: (String item) => MyoroMenuItem(text: item),
     );
-  }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text('Hello, World!');
   }
 }

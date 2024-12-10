@@ -5,9 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Function executed when the hover of the button changes.
 typedef MyoroHoverButtonOnHover = Function(bool hovered);
 
-/// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
-typedef MyoroHoverButtonBuilder = Widget Function(bool hovered, Color onPrimaryColor, Color primaryColor);
-
 /// Configuration model for passing the configuration members of [MyoroHoverButton].
 final class MyoroHoverButtonConfiguration extends Equatable {
   /// 1. Color of the background when not hovered;

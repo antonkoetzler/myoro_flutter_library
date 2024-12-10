@@ -10,7 +10,6 @@ final class MyoroModalWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return const WidgetShowcase(
       widget: _Widget(),
-      widgetOptions: _WidgetOptions(),
     );
   }
 }
@@ -35,11 +34,4 @@ final class _Widget extends StatelessWidget {
       ),
     );
   }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
-
-  @override
-  Widget build(BuildContext context) => const Text('TODO');
 }

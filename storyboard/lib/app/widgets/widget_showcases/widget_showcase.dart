@@ -10,12 +10,12 @@ final class WidgetShowcase extends StatefulWidget {
   final Widget widget;
 
   /// Options to experiment on the widget that will be on the right.
-  final Widget? widgetOptions;
+  final List<Widget> widgetOptions;
 
   const WidgetShowcase({
     super.key,
     required this.widget,
-    this.widgetOptions,
+    this.widgetOptions = const [],
   });
 
   @override
@@ -24,14 +24,14 @@ final class WidgetShowcase extends StatefulWidget {
 
 final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget get _widget => widget.widget;
-  Widget? get _widgetOptions => widget.widgetOptions;
+  List<Widget> get _widgetOptions => widget.widgetOptions;
 
   @override
   void initState() {
     super.initState();
     context.resolveBloc<WidgetShowcaseBloc>().add(
           ToggleWidgetShowcaseDisplayEvent(
-            enabled: _widgetOptions != null,
+            enabled: _widgetOptions.isNotEmpty,
           ),
         );
   }
@@ -41,20 +41,7 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
     return Row(
       children: [
         Expanded(child: _WidgetWrapper(_widget)),
-        BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
-          builder: (_, WidgetShowcaseState state) {
-            if (_widgetOptions == null || !state.displayingWidgetOptions) return const SizedBox.shrink();
-
-            return Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const MyoroBasicDivider(Axis.vertical),
-                _WidgetOptions(_widgetOptions!),
-              ],
-            );
-          },
-        ),
+        if (_widgetOptions.isNotEmpty) _WidgetOptions(_widgetOptions),
       ],
     );
   }
@@ -89,22 +76,54 @@ final class _WidgetWrapper extends StatelessWidget {
 }
 
 final class _WidgetOptions extends StatelessWidget {
-  final Widget widgetOptions;
+  final List<Widget> _widgetOptions;
 
-  const _WidgetOptions(this.widgetOptions);
+  const _WidgetOptions(this._widgetOptions);
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          minWidth: 200,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: widgetOptions,
-        ),
-      ),
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
+      builder: (_, WidgetShowcaseState state) {
+        if (_widgetOptions.isEmpty || !state.displayingWidgetOptions) return const SizedBox.shrink();
+
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const MyoroBasicDivider(Axis.vertical),
+            IntrinsicWidth(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 200,
+                ),
+                child: Padding(
+                  padding: themeExtension.widgetOptionsPadding,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: _widgetOptions.map<Widget>(
+                      (Widget widgetOption) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            widgetOption,
+                            if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
+                              MyoroBasicDivider(
+                                Axis.horizontal,
+                                padding: themeExtension.widgetOptionsDividerPadding,
+                              ),
+                          ],
+                        );
+                      },
+                    ).toList(),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

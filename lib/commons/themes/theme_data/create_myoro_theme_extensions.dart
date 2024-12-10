@@ -11,10 +11,11 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createCheckboxThemeExtensions(colorScheme, textTheme),
     ...createDividerThemeExtensions(colorScheme),
     ...createDrawerThemeExtension(colorScheme, textTheme),
-    ...createDropdownThemeExtensions(),
+    ...createDropdownThemeExtensions(textTheme),
     ...createFormThemeExtensions(),
     ...createGraphThemeExtensions(colorScheme, textTheme),
     ...createInputThemeExtensions(colorScheme, textTheme),
+    ...createLayoutBuilderThemeExtensions(),
     ...createLoaderThemeExtensions(colorScheme),
     ...createMaterialAppThemeExtensions(),
     ...createMenuThemeExtensions(colorScheme, textTheme),
@@ -39,9 +40,10 @@ List<ThemeExtension> createAppBarThemeExtensions(ColorScheme colorScheme) {
   ];
 }
 
-List<ThemeExtension> createDropdownThemeExtensions() {
-  return const [
+List<ThemeExtension> createDropdownThemeExtensions(TextTheme textTheme) {
+  return [
     MyoroDropdownThemeExtension(
+      labelTextStyle: textTheme.bodySmall!.copyWith(height: 0.8),
       inputStyle: MyoroInputStyleEnum.outlined,
       spacing: 10,
     ),
@@ -221,6 +223,12 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
   ];
 }
 
+List<ThemeExtension> createLayoutBuilderThemeExtensions() {
+  return const [
+    MyoroLayoutBuilderThemeExtension(),
+  ];
+}
+
 List<ThemeExtension> createLoaderThemeExtensions(ColorScheme colorScheme) {
   return [
     MyoroCircularLoaderThemeExtension(
@@ -247,6 +255,7 @@ List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextThem
         color: colorScheme.onPrimary,
       ),
       borderRadius: MyoroDecorationHelper.inputBorderRadius,
+      itemBorderRadius: BorderRadius.zero,
       dialogTextStyle: textTheme.bodyMedium!,
     ),
   ];

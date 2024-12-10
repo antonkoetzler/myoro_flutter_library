@@ -4,28 +4,32 @@
 
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- buttons
-- cards
-- carousels
-- checkboxes
-- dividers
-- drawers
-- dropdowns
-- forms
-- graphs
-- inputs
-- loaders
-- material_apps
-- (**BEFORE DOING THIS, ADD ANIMATIONS WHEN OPENING/CLOSING THE MENU**) menus
-- modals
-- radios
-- resolvers
-- screens
-- scrollables
-- sliders
-- snack_bars
-- tooltips
-- (**BEFORE DOING THIS, REMAKE [MyoroTable]**) tables
+- Use [WidgetShowcaseWidgetOptions];
+
+- (**COMPLETE**) App bars;
+- (**IN PROGRESS**) Buttons;
+- Layout builders;
+- Cards;
+- Carousels;
+- Checkboxes;
+- Dividers;
+- Drawers;
+- (**BEFORE DOING THIS, ADD SEARCH TO THE DROPDOWN**) Dropdowns;
+- Forms;
+- Graphs;
+- Inputs;
+- Loaders;
+- Material_apps;
+- (**BEFORE DOING THIS, ADD ANIMATIONS WHEN OPENING/CLOSING THE MENU**) Menus;
+- Modals;
+- Radios;
+- Resolvers;
+- Screens;
+- Scrollables;
+- Sliders;
+- Snack_bars;
+- Tooltips;
+- (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.
 
 1. Widget tests;
 1. Resolve TODOs;

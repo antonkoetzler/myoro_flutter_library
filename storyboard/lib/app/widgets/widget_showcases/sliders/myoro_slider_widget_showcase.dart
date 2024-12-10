@@ -23,7 +23,7 @@ class _MyoroSliderWidgetShowcaseState extends State<MyoroSliderWidgetShowcase> {
   Widget build(BuildContext context) {
     return WidgetShowcase(
       widget: const _Widget(),
-      widgetOptions: _WidgetOptions(_widthNotifier),
+      widgetOptions: [_Width(_widthNotifier)],
     );
   }
 }
@@ -72,10 +72,10 @@ class _WidgetState extends State<_Widget> {
   }
 }
 
-final class _WidgetOptions extends StatelessWidget {
+final class _Width extends StatelessWidget {
   final ValueNotifier<double?> widthNotifier;
 
-  const _WidgetOptions(this.widthNotifier);
+  const _Width(this.widthNotifier);
 
   @override
   Widget build(BuildContext context) {

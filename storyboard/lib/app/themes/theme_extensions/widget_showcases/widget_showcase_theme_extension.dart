@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -21,6 +23,12 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// [Container.alignment] of [_WrapperWrapper].
   final Alignment wrapperWrapperAlignment;
 
+  /// Padding of [_WidgetOptions].
+  final EdgeInsets widgetOptionsPadding;
+
+  /// Spacing of items in [_WidgetOptions].
+  final EdgeInsets widgetOptionsDividerPadding;
+
   const WidgetShowcaseThemeExtension({
     required this.widgetWrapperBackgroundColor,
     required this.widgetWrapperPadding,
@@ -28,6 +36,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.widgetWrapperBorderRadius,
     required this.widgetWrapperBorder,
     required this.wrapperWrapperAlignment,
+    required this.widgetOptionsPadding,
+    required this.widgetOptionsDividerPadding,
   });
 
   @override
@@ -38,6 +48,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     BorderRadius? widgetWrapperBorderRadius,
     Border? widgetWrapperBorder,
     Alignment? wrapperWrapperAlignment,
+    EdgeInsets? widgetOptionsPadding,
+    EdgeInsets? widgetOptionsDividerPadding,
   }) {
     return WidgetShowcaseThemeExtension(
       widgetWrapperBackgroundColor: widgetWrapperBackgroundColor ?? this.widgetWrapperBackgroundColor,
@@ -46,6 +58,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetWrapperBorderRadius: widgetWrapperBorderRadius ?? this.widgetWrapperBorderRadius,
       widgetWrapperBorder: widgetWrapperBorder ?? this.widgetWrapperBorder,
       wrapperWrapperAlignment: wrapperWrapperAlignment ?? this.wrapperWrapperAlignment,
+      widgetOptionsPadding: widgetOptionsPadding ?? this.widgetOptionsPadding,
+      widgetOptionsDividerPadding: widgetOptionsDividerPadding ?? this.widgetOptionsDividerPadding,
     );
   }
 
@@ -62,6 +76,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetWrapperBorderRadius: BorderRadius.lerp(widgetWrapperBorderRadius, other.widgetWrapperBorderRadius, t),
       widgetWrapperBorder: Border.lerp(widgetWrapperBorder, other.widgetWrapperBorder, t),
       wrapperWrapperAlignment: Alignment.lerp(wrapperWrapperAlignment, other.wrapperWrapperAlignment, t),
+      widgetOptionsPadding: EdgeInsets.lerp(widgetOptionsPadding, other.widgetOptionsPadding, t),
+      widgetOptionsDividerPadding: EdgeInsets.lerp(widgetOptionsDividerPadding, other.widgetOptionsDividerPadding, t),
     );
   }
 }

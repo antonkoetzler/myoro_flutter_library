@@ -11,23 +11,14 @@ final class MyoroInputWidgetShowcase extends StatefulWidget {
 }
 
 final class _MyoroInputWidgetShowcaseState extends State<MyoroInputWidgetShowcase> {
-  var _inputType = MyoroInputStyleEnum.outlined;
-
   @override
   Widget build(BuildContext context) {
-    return WidgetShowcase(
-      widget: _Widget(_inputType),
-      widgetOptions: _WidgetOptions(
-        onChangeInputType: (MyoroInputStyleEnum inputType) => _inputType = inputType,
-      ),
-    );
+    return const WidgetShowcase(widget: _Widget());
   }
 }
 
 final class _Widget extends StatelessWidget {
-  final MyoroInputStyleEnum inputType;
-
-  const _Widget(this.inputType);
+  const _Widget();
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +28,5 @@ final class _Widget extends StatelessWidget {
       ),
       formatters: [MyoroTimeInputFormatter()],
     );
-  }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  final Function(MyoroInputStyleEnum inputType) onChangeInputType;
-
-  const _WidgetOptions({
-    required this.onChangeInputType,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text('THIS NEEDS TO BE FINISHED FUCK');
   }
 }

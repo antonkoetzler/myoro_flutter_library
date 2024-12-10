@@ -41,7 +41,7 @@ final class _App extends StatelessWidget {
           return MyoroMaterialApp(
             title: 'myoro_flutter_library storyboard',
             themeMode: themeMode,
-            themeExtensionsBuilder: (_, TextTheme textTheme) => createStoryboardThemeExtensions(textTheme),
+            themeExtensionsBuilder: createStoryboardThemeExtensions,
             home: const MyoroScreen(
               appBar: StoryboardAppBar(),
               body: StoryboardBody(),

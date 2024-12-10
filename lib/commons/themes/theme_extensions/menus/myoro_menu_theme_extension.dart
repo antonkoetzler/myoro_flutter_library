@@ -20,6 +20,9 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
   /// Border radius of the menu.
   final BorderRadius borderRadius;
 
+  /// [BorderRadius] of [_Item].
+  final BorderRadius itemBorderRadius;
+
   /// Text style of [_EmptyMenuDialog].
   final TextStyle dialogTextStyle;
 
@@ -29,6 +32,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     required this.primaryColor,
     required this.border,
     required this.borderRadius,
+    required this.itemBorderRadius,
     required this.dialogTextStyle,
   });
 
@@ -39,6 +43,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     Color? primaryColor,
     Border? border,
     BorderRadius? borderRadius,
+    BorderRadius? itemBorderRadius,
     TextStyle? dialogTextStyle,
   }) {
     return MyoroMenuThemeExtension(
@@ -47,6 +52,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
       primaryColor: primaryColor ?? this.primaryColor,
       border: border ?? this.border,
       borderRadius: borderRadius ?? this.borderRadius,
+      itemBorderRadius: itemBorderRadius ?? this.itemBorderRadius,
       dialogTextStyle: dialogTextStyle ?? this.dialogTextStyle,
     );
   }
@@ -63,6 +69,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       border: Border.lerp(border, other.border, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
+      itemBorderRadius: BorderRadius.lerp(itemBorderRadius, other.itemBorderRadius, t),
       dialogTextStyle: TextStyle.lerp(dialogTextStyle, other.dialogTextStyle, t),
     );
   }

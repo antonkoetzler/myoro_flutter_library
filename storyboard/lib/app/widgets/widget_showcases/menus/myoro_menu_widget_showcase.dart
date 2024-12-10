@@ -13,7 +13,10 @@ final class MyoroMenuWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroMenuWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: _WidgetOptions(),
+        widgetOptions: const [
+          _IconSizeOption(),
+          _ItemCountOption(),
+        ],
       ),
     );
   }
@@ -42,22 +45,6 @@ final class _Widget extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const _IconSizeOption(),
-        SizedBox(height: context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>().widgetOptionsSpacing),
-        const _ItemCountOption(),
-      ],
     );
   }
 }

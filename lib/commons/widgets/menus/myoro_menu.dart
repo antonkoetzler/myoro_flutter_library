@@ -75,30 +75,30 @@ final class _Loader extends StatelessWidget {
 }
 
 final class _Items extends StatelessWidget {
-  final List<MyoroMenuItem> items;
-  final double? iconSize;
-  final TextStyle? textStyle;
-  final TextAlign? textAlign;
+  final List<MyoroMenuItem> _items;
+  final double? _iconSize;
+  final TextStyle? _textStyle;
+  final TextAlign? _textAlign;
 
   const _Items(
-    this.items,
-    this.iconSize,
-    this.textStyle,
-    this.textAlign,
+    this._items,
+    this._iconSize,
+    this._textStyle,
+    this._textAlign,
   );
 
   @override
   Widget build(BuildContext context) {
-    return items.isNotEmpty
+    return _items.isNotEmpty
         ? MyoroScrollable(
             scrollableType: MyoroScrollableEnum.singleChildScrollView,
-            children: items
+            children: _items
                 .map<Widget>(
                   (MyoroMenuItem item) => _Item(
                     item,
-                    iconSize,
-                    textStyle,
-                    textAlign,
+                    _iconSize,
+                    _textStyle,
+                    _textAlign,
                   ),
                 )
                 .toList(),
@@ -108,45 +108,55 @@ final class _Items extends StatelessWidget {
 }
 
 final class _Item extends StatelessWidget {
-  final MyoroMenuItem item;
-  final double? iconSize;
-  final TextStyle? textStyle;
-  final TextAlign? textAlign;
+  final MyoroMenuItem _item;
+  final double? _iconSize;
+  final TextStyle? _textStyle;
+  final TextAlign? _textAlign;
 
   const _Item(
-    this.item,
-    this.iconSize,
-    this.textStyle,
-    this.textAlign,
+    this._item,
+    this._iconSize,
+    this._textStyle,
+    this._textAlign,
   );
 
   @override
   Widget build(BuildContext context) {
+    final configuration = MyoroHoverButtonConfiguration(
+      borderRadius: context.resolveThemeExtension<MyoroMenuThemeExtension>().itemBorderRadius,
+      isHovered: _item.isHovered,
+    );
+
+    if (_item.itemBuilder != null) {
+      return MyoroHoverButton(
+        configuration: configuration.copyWith(primaryColor: MyoroColorTheme.transparent),
+        builder: _item.itemBuilder!,
+        onPressed: _item.onPressed,
+      );
+    }
+
     return MyoroIconTextHoverButton(
-      configuration: MyoroHoverButtonConfiguration(
-        borderRadius: BorderRadius.zero,
-        isHovered: item.isHovered,
-      ),
-      icon: item.icon,
-      iconSize: iconSize,
-      text: item.text,
-      textStyle: textStyle,
-      textAlign: textAlign,
-      onPressed: item.onPressed,
+      configuration: configuration,
+      icon: _item.icon,
+      iconSize: _iconSize,
+      text: _item.text,
+      textStyle: _textStyle,
+      textAlign: _textAlign,
+      onPressed: _item.onPressed,
     );
   }
 }
 
 final class _DialogText extends StatelessWidget {
-  final String text;
+  final String _text;
 
-  const _DialogText(this.text);
+  const _DialogText(this._text);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        text,
+        _text,
         style: context.resolveThemeExtension<MyoroMenuThemeExtension>().dialogTextStyle,
       ),
     );

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+/// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
+typedef MyoroHoverButtonBuilder = Widget Function(bool hovered, Color primaryColor, Color onPrimaryColor);
+
 /// Hover button of the design system.
 ///
 /// Should be avoided by using pre-built hover buttons like [IconTextMyoroHoverButton].
@@ -86,7 +89,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
                 borderRadius: _configuration?.borderRadius ?? themeExtension.borderRadius,
                 color: correctedBackgroundColor,
               ),
-              child: _builder(hovered, onPrimaryColor, primaryColor),
+              child: _builder(hovered, primaryColor, onPrimaryColor),
             );
           },
         ),

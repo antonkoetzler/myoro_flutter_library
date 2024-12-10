@@ -10,7 +10,6 @@ final class MyoroCardWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return const WidgetShowcase(
       widget: _Widget(),
-      widgetOptions: _WidgetOptions(),
     );
   }
 }
@@ -24,11 +23,4 @@ final class _Widget extends StatelessWidget {
       child: Text('Start'),
     );
   }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
-
-  @override
-  Widget build(BuildContext context) => const Text('TODO'); // TODO
 }

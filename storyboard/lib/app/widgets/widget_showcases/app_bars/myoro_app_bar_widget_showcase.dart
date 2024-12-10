@@ -18,7 +18,7 @@ class _MyoroAppBarWidgetShowcaseState extends State<MyoroAppBarWidgetShowcase> {
       create: (_) => MyoroAppBarWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: _WidgetOptions(),
+        widgetOptions: [_Bordered()],
       ),
     );
   }
@@ -84,8 +84,8 @@ final class _MockMenuButton extends StatelessWidget {
   }
 }
 
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
+final class _Bordered extends StatelessWidget {
+  const _Bordered();
 
   @override
   Widget build(BuildContext context) {

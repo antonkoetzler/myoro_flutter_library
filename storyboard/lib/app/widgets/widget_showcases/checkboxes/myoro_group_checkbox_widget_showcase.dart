@@ -13,7 +13,7 @@ final class MyoroGroupCheckboxWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroGroupCheckboxWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: _WidgetOptions(),
+        widgetOptions: [_DirectionOption()],
       ),
     );
   }
@@ -30,20 +30,6 @@ final class _Widget extends StatelessWidget {
           checkboxes: state.checkboxes,
         );
       },
-    );
-  }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _DirectionOption(),
-      ],
     );
   }
 }

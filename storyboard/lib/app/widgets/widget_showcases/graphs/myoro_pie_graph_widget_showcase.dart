@@ -9,10 +9,7 @@ final class MyoroPieGraphWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WidgetShowcase(
-      widget: _Widget(),
-      widgetOptions: _WidgetOptions(),
-    );
+    return const WidgetShowcase(widget: _Widget());
   }
 }
 
@@ -34,11 +31,4 @@ final class _Widget extends StatelessWidget {
       ),
     );
   }
-}
-
-final class _WidgetOptions extends StatelessWidget {
-  const _WidgetOptions();
-
-  @override
-  Widget build(BuildContext context) => const Text('TODO'); // TODO
 }
