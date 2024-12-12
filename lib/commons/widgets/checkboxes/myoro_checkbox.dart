@@ -68,6 +68,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ValueListenableBuilder(
           valueListenable: _notifier,
@@ -94,9 +95,12 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
         if (_label?.isNotEmpty == true) ...[
           SizedBox(width: themeExtension.spacing),
           Flexible(
-            child: Text(
-              _label!,
-              style: _labelTextStyle ?? themeExtension.labelTextStyle,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                _label!,
+                style: _labelTextStyle ?? themeExtension.labelTextStyle,
+              ),
             ),
           ),
         ],

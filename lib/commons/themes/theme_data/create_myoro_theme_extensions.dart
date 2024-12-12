@@ -107,7 +107,7 @@ List<ThemeExtension> createCheckboxThemeExtensions(ColorScheme colorScheme, Text
       focusColor: MyoroColorTheme.transparent,
       splashRadius: 0,
       labelTextStyle: textTheme.bodySmall!,
-      spacing: 3,
+      spacing: 5,
     ),
     const MyoroGroupCheckboxThemeExtension(
       direction: Axis.horizontal,
@@ -334,7 +334,7 @@ List<ThemeExtension> createScrollableThemeExtensions() {
 List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
   return [
     MyoroSliderThemeExtension(
-      labelTextStyle: textTheme.titleSmall!.copyWith(fontSize: MyoroFontSizeEnum.tiny.size),
+      labelTextStyle: textTheme.bodySmall!,
       sliderPadding: EdgeInsets.zero,
       labelSliderSpacing: 5,
       footerLabelTextStyle: textTheme.bodySmall!.copyWith(height: 0.5),

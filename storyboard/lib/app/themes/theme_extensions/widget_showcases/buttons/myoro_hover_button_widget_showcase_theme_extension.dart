@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroHoverButtonWidgetShowcase].
@@ -26,6 +27,12 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
   /// Spacing between the items in [_ColorDropdownItem].
   final double colorDropdownItemSpacing;
 
+  /// [_BorderRadiusSlider] [MyoroSlider.maxValue].
+  final double borderRadiusSliderMaxValue;
+
+  /// [_BorderRadiusSliDer] [MyoroIconTextHoverButton.configuration.bordered].
+  final bool borderRadiusSliderMaxValueBordered;
+
   const MyoroHoverButtonWidgetShowcaseThemeExtension({
     required this.widgetContentPadding,
     required this.widgetContentTextStyle,
@@ -34,6 +41,8 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
     required this.colorDropdownItemColorSize,
     required this.colorDropdownItemColorTextStyle,
     required this.colorDropdownItemSpacing,
+    required this.borderRadiusSliderMaxValue,
+    required this.borderRadiusSliderMaxValueBordered,
   });
 
   @override
@@ -45,6 +54,8 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
     Size? colorDropdownItemColorSize,
     TextStyle? colorDropdownItemColorTextStyle,
     double? colorDropdownItemSpacing,
+    double? borderRadiusSliderMaxValue,
+    bool? borderRadiusSliderMaxValueBordered,
   }) {
     return MyoroHoverButtonWidgetShowcaseThemeExtension(
       widgetContentPadding: widgetContentPadding ?? this.widgetContentPadding,
@@ -54,6 +65,8 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
       colorDropdownItemColorSize: colorDropdownItemColorSize ?? this.colorDropdownItemColorSize,
       colorDropdownItemColorTextStyle: colorDropdownItemColorTextStyle ?? this.colorDropdownItemColorTextStyle,
       colorDropdownItemSpacing: colorDropdownItemSpacing ?? this.colorDropdownItemSpacing,
+      borderRadiusSliderMaxValue: borderRadiusSliderMaxValue ?? this.borderRadiusSliderMaxValue,
+      borderRadiusSliderMaxValueBordered: borderRadiusSliderMaxValueBordered ?? this.borderRadiusSliderMaxValueBordered,
     );
   }
 
@@ -71,6 +84,8 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
       colorDropdownItemColorSize: Size.lerp(colorDropdownItemColorSize, other.colorDropdownItemColorSize, t),
       colorDropdownItemColorTextStyle: TextStyle.lerp(colorDropdownItemColorTextStyle, other.colorDropdownItemColorTextStyle, t),
       colorDropdownItemSpacing: lerpDouble(colorDropdownItemSpacing, other.colorDropdownItemSpacing, t),
+      borderRadiusSliderMaxValue: lerpDouble(borderRadiusSliderMaxValue, other.borderRadiusSliderMaxValue, t),
+      borderRadiusSliderMaxValueBordered: MyoroLerpHelper.lerp(borderRadiusSliderMaxValueBordered, other.borderRadiusSliderMaxValueBordered, t),
     );
   }
 }

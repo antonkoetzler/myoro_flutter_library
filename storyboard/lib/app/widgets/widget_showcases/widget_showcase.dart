@@ -101,7 +101,6 @@ final class _WidgetOptions extends StatelessWidget {
                   padding: themeExtension.widgetOptionsPadding,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: _widgetOptions.map<Widget>(
                       (Widget widgetOption) {
                         return Column(

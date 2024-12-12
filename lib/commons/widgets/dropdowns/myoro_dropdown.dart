@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+/// Callback executed when [MyoroDropdownController.selectedItemsNotifier] changes.
+typedef MyoroDropdownOnChangeItems<T> = void Function(List<T> items);
+
 /// [String] builder for displaying the selected item in the [_Input].
 typedef MyoroDropdownItemLabelBuilder<T> = String Function(T item);
 
@@ -21,6 +24,9 @@ final class MyoroDropdown<T> extends StatefulWidget {
   /// Enables search functionality.
   final MyoroMenuSearchCallback<T>? searchCallback;
 
+  /// Callback executed when [controller.selectedItemsNotifier] changes.
+  final MyoroDropdownOnChangeItems<T>? onChangedItems;
+
   /// Configuration for loading the dropdown's items.
   final MyoroDataConfiguration<T> dataConfiguration;
 
@@ -37,6 +43,7 @@ final class MyoroDropdown<T> extends StatefulWidget {
     this.labelTextStyle,
     this.enableMultiSelection,
     this.searchCallback,
+    this.onChangedItems,
     required this.dataConfiguration,
     required this.itemLabelBuilder,
     required this.itemBuilder,
@@ -50,6 +57,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   String? get _label => widget.label;
   TextStyle? get _labelTextStyle => widget.labelTextStyle;
   bool get _enableMultiSelection => widget.enableMultiSelection ?? false;
+  MyoroDropdownOnChangeItems<T>? get _onChangedItems => widget.onChangedItems;
   MyoroMenuSearchCallback<T>? get _searchCallback => widget.searchCallback;
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
   MyoroDropdownItemLabelBuilder<T> get _itemLabelBuilder => widget.itemLabelBuilder;
@@ -80,6 +88,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
     super.initState();
     _focusNode.addListener(_focusNodeListener);
     _supplyController();
+    _controller.selectedItemsNotifier.addListener(() => _onChangedItems?.call(_controller.selectedItems));
   }
 
   @override

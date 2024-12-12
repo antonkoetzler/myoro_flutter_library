@@ -83,7 +83,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
                 border: (_configuration?.bordered ?? themeExtension.bordered)
                     ? Border.all(
                         width: 2,
-                        color: hovered ? primaryColor : onPrimaryColor,
+                        color: onPrimaryColor,
                       )
                     : null,
                 borderRadius: _configuration?.borderRadius ?? themeExtension.borderRadius,

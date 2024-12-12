@@ -32,6 +32,8 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
       colorDropdownItemColorSize: const Size(50, 50),
       colorDropdownItemColorTextStyle: textTheme.bodyMedium!,
       colorDropdownItemSpacing: 10,
+      borderRadiusSliderMaxValue: 20,
+      borderRadiusSliderMaxValueBordered: true,
     ),
     const MyoroCardWidgetShowcaseThemeExtension(),
     const MyoroCarouselWidgetShowcaseThemeExtension(),

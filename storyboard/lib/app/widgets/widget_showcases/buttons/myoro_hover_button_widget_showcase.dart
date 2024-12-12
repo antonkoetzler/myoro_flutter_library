@@ -14,8 +14,13 @@ final class MyoroHoverButtonWidgetShowcase extends StatelessWidget {
       child: const WidgetShowcase(
         widget: _Widget(),
         widgetOptions: [
-          _OnPressedEnabledCheckbox(),
           _PrimaryColorDropdown(),
+          _OnPrimaryColorDropdown(),
+          _IsHoveredCheckbox(),
+          _BorderedCheckbox(),
+          _BorderRadiusSlider(),
+          _TooltipEnabledCheckbox(),
+          _OnPressedEnabledCheckbox(),
         ],
       ),
     );
@@ -40,6 +45,14 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroHoverButtonWidgetShowcaseBloc, MyoroHoverButtonWidgetShowcaseState>(
       builder: (_, MyoroHoverButtonWidgetShowcaseState state) {
         return MyoroHoverButton(
+          configuration: MyoroHoverButtonConfiguration(
+            primaryColor: state.primaryColor,
+            onPrimaryColor: state.onPrimaryColor,
+            isHovered: state.isHovered,
+            bordered: state.bordered,
+            borderRadius: state.borderRadius,
+            tooltip: state.tooltipEnabled ? 'A description of the button!' : null,
+          ),
           onPressed: state.onPressedEnabled ? () => _onPressed(context) : null,
           builder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
             return Padding(
@@ -47,13 +60,149 @@ final class _Widget extends StatelessWidget {
               child: Text(
                 'Click me!',
                 style: themeExtension.widgetContentTextStyle.withColor(
-                  hovered ? primaryColor : onPrimaryColor,
+                  state.isHovered || hovered ? primaryColor : onPrimaryColor,
                 ),
               ),
             );
           },
         );
       },
+    );
+  }
+}
+
+final class _PrimaryColorDropdown extends StatelessWidget {
+  const _PrimaryColorDropdown();
+
+  @override
+  Widget build(BuildContext context) {
+    return _ColorDropdown(
+      '[MyoroHoverButtonConfiguration.primaryColor]',
+      (List<Color> colors) {
+        context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(
+              SetPrimaryColorEvent(
+                colors.isEmpty ? null : colors.first,
+              ),
+            );
+      },
+    );
+  }
+}
+
+final class _OnPrimaryColorDropdown extends StatelessWidget {
+  const _OnPrimaryColorDropdown();
+
+  @override
+  Widget build(BuildContext context) {
+    return _ColorDropdown(
+      '[MyoroHoverButtonConfiguration.onPrimaryColor]',
+      (List<Color> colors) {
+        context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(SetOnPrimaryColorEvent(
+              colors.isEmpty ? null : colors.first,
+            ));
+      },
+    );
+  }
+}
+
+final class _IsHoveredCheckbox extends StatelessWidget {
+  const _IsHoveredCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>();
+
+    return MyoroCheckbox(
+      initialValue: bloc.state.isHovered,
+      label: '[MyoroHoverButtonConfiguration.isHovered]',
+      onChanged: (_) => bloc.add(const SetIsHoveredEvent()),
+    );
+  }
+}
+
+final class _BorderedCheckbox extends StatelessWidget {
+  const _BorderedCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>();
+
+    return MyoroCheckbox(
+      initialValue: bloc.state.bordered,
+      label: '[MyoroHoverButtonConfiguration.bordered]',
+      onChanged: (_) => bloc.add(const SetBorderedEvent()),
+    );
+  }
+}
+
+final class _BorderRadiusSlider extends StatefulWidget {
+  const _BorderRadiusSlider();
+
+  @override
+  State<_BorderRadiusSlider> createState() => _BorderRadiusSliderState();
+}
+
+final class _BorderRadiusSliderState extends State<_BorderRadiusSlider> {
+  late final _defaultBorderRadius = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>().borderRadius.bottomLeft.x;
+  late double _value = _defaultBorderRadius;
+
+  void _event(double? value) {
+    context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(
+          SetBorderRadiusEvent(
+            value,
+          ),
+        );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        MyoroSlider(
+          maxValue: themeExtension.borderRadiusSliderMaxValue,
+          initialValue: _value,
+          label: '[MyoroHoverButtonConfiguration.borderRadius]',
+          onChanged: (double value) {
+            setState(() {
+              _value = value;
+              _event(_value);
+            });
+          },
+        ),
+        if (_value != _defaultBorderRadius)
+          IntrinsicWidth(
+            child: MyoroIconTextHoverButton(
+              text: 'Reset',
+              configuration: MyoroHoverButtonConfiguration(
+                bordered: themeExtension.borderRadiusSliderMaxValueBordered,
+              ),
+              onPressed: () {
+                setState(() {
+                  _value = _defaultBorderRadius;
+                  _event(null);
+                });
+              },
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+final class _TooltipEnabledCheckbox extends StatelessWidget {
+  const _TooltipEnabledCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>();
+
+    return MyoroCheckbox(
+      initialValue: bloc.state.tooltipEnabled,
+      label: '[MyoroHoverButtonConfiguration.tooltip] enabled?',
+      onChanged: (_) => bloc.add(const SetTooltipEnabledEvent()),
     );
   }
 }
@@ -67,28 +216,20 @@ final class _OnPressedEnabledCheckbox extends StatelessWidget {
 
     return MyoroCheckbox(
       initialValue: bloc.state.onPressedEnabled,
-      label: '[onPressed] not [null]?',
-      onChanged: (_) => bloc.add(const ToggleOnPressedEnabledEvent()),
+      label: '[MyoroHoverButton.onPressed] not [null]?',
+      onChanged: (_) => bloc.add(const SetOnPressedEnabledEvent()),
     );
   }
 }
 
-final class _PrimaryColorDropdown extends StatelessWidget {
-  const _PrimaryColorDropdown();
-
-  @override
-  Widget build(BuildContext context) => const _ColorDropdown('[configuration.primaryColor]');
-}
-
 final class _ColorDropdown extends StatelessWidget {
   final String _label;
+  final MyoroDropdownOnChangeItems<Color> _onChangedItems;
 
-  const _ColorDropdown(this._label);
-
-  List<Color> _searchCallback(String query, List<Color> items) {
-    print('Hello');
-    return [];
-  }
+  const _ColorDropdown(
+    this._label,
+    this._onChangedItems,
+  );
 
   MyoroMenuItem _itemBuilder(Color color) {
     return MyoroMenuItem(
@@ -108,7 +249,7 @@ final class _ColorDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroDropdown<Color>(
       label: _label,
-      searchCallback: _searchCallback,
+      onChangedItems: _onChangedItems,
       dataConfiguration: const MyoroDataConfiguration(staticItems: kMyoroTestColors),
       itemBuilder: _itemBuilder,
       itemLabelBuilder: _itemLabelBuilder,

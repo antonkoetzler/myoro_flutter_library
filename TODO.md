@@ -4,7 +4,6 @@
 
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- (**IN PROGRESS**) Buttons;
 - Layout builders;
 - Cards;
 - Carousels;

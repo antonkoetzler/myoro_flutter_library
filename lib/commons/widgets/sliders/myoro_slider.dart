@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the value of the slider changes.
-typedef MyoroSliderOnChanged = Function(double value);
+typedef MyoroSliderOnChanged = void Function(double value);
 
 /// Builder that displays some text under the slider.
 typedef MyoroSliderFooterLabelBuilder = String Function(double value);
@@ -45,7 +45,7 @@ final class MyoroSlider extends StatefulWidget {
   State<MyoroSlider> createState() => _MyoroSliderState();
 }
 
-class _MyoroSliderState extends State<MyoroSlider> {
+final class _MyoroSliderState extends State<MyoroSlider> {
   String? get _label => widget.label;
   TextStyle? get _labelTextStyle => widget.labelTextStyle;
   double? get _width => widget.width;
@@ -63,6 +63,12 @@ class _MyoroSliderState extends State<MyoroSlider> {
   }
 
   @override
+  void didUpdateWidget(covariant MyoroSlider oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _sliderValue = _initialValue;
+  }
+
+  @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
@@ -71,7 +77,6 @@ class _MyoroSliderState extends State<MyoroSlider> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (_label != null)
             Text(
@@ -91,11 +96,9 @@ class _MyoroSliderState extends State<MyoroSlider> {
             ),
           ),
           if (_footerLabelBuilder != null)
-            Center(
-              child: Text(
-                _footerLabelBuilder!.call(_sliderValue),
-                style: themeExtension.footerLabelTextStyle,
-              ),
+            Text(
+              _footerLabelBuilder!.call(_sliderValue),
+              style: themeExtension.footerLabelTextStyle,
             ),
         ],
       ),
