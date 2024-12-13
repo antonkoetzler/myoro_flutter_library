@@ -5,9 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroDropdown].
 final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> {
-  /// Text style of [_Label].
-  final TextStyle labelTextStyle;
-
   /// [MyoroInputStyleEnum] of [_Input].
   final MyoroInputStyleEnum inputStyle;
 
@@ -15,19 +12,16 @@ final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThem
   final double spacing;
 
   const MyoroDropdownThemeExtension({
-    required this.labelTextStyle,
     required this.inputStyle,
     required this.spacing,
   });
 
   @override
   MyoroDropdownThemeExtension copyWith({
-    TextStyle? labelTextStyle,
     MyoroInputStyleEnum? inputStyle,
     double? spacing,
   }) {
     return MyoroDropdownThemeExtension(
-      labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       inputStyle: inputStyle ?? this.inputStyle,
       spacing: spacing ?? this.spacing,
     );
@@ -40,7 +34,6 @@ final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThem
   ) {
     if (other is! MyoroDropdownThemeExtension) return this;
     return copyWith(
-      labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
       spacing: lerpDouble(spacing, other.spacing, t),
     );

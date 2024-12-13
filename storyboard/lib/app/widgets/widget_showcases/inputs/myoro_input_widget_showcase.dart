@@ -26,7 +26,7 @@ final class _Widget extends StatelessWidget {
       configuration: const MyoroInputConfiguration(
         inputStyle: MyoroInputStyleEnum.outlined,
       ),
-      formatters: [MyoroTimeInputFormatter()],
+      formatter: MyoroTimeInputFormatter(),
     );
   }
 }

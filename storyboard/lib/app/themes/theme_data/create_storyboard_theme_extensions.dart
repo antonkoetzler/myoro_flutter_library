@@ -14,7 +14,7 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
         width: 2,
         color: MyoroColorTheme.attention,
       ),
-      wrapperWrapperAlignment: Alignment.center,
+      widgetWrapperAlignment: Alignment.center,
       widgetOptionsPadding: const EdgeInsets.all(10),
       widgetOptionsDividerPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
     ),
@@ -35,7 +35,15 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
       borderRadiusSliderMaxValue: 20,
       borderRadiusSliderMaxValueBordered: true,
     ),
-    const MyoroCardWidgetShowcaseThemeExtension(),
+    MyoroCardWidgetShowcaseThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+      titleOptionTextAlign: TextAlign.center,
+      titleTextStyleOptionTextStyles: [
+        ('Regular', textTheme.bodyMedium!),
+        ('Italic', textTheme.headlineMedium!),
+        ('Bold', textTheme.titleMedium!),
+      ],
+    ),
     const MyoroCarouselWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(
       widgetMainAxisAlignment: MainAxisAlignment.center,
@@ -49,6 +57,10 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
     ),
     const MyoroBarGraphWidgetShowcaseThemeExtension(),
     const MyoroPieGraphWidgetShowcaseThemeExtension(),
+    MyoroLayoutBuilderWidgetShowcaseThemeExtension(
+      textStyle: textTheme.bodyMedium!,
+      descriptionWidth: 200,
+    ),
     const MyoroCircularLoaderWidgetShowcaseThemeExtension(),
     const MyoroMenuWidgetShowcaseThemeExtension(),
     const MyoroModalWidgetShowcaseThemeExtension(),

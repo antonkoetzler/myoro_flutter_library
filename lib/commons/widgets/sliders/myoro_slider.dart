@@ -21,6 +21,9 @@ final class MyoroSlider extends StatefulWidget {
   /// Initial value of the slider.
   final double? initialValue;
 
+  /// Minimum value of the slider.
+  final double? minValue;
+
   /// Maximum value of the slider.
   final double? maxValue;
 
@@ -36,6 +39,7 @@ final class MyoroSlider extends StatefulWidget {
     this.labelTextStyle,
     this.width,
     this.initialValue,
+    this.minValue,
     this.maxValue,
     this.footerLabelBuilder,
     required this.onChanged,
@@ -49,7 +53,8 @@ final class _MyoroSliderState extends State<MyoroSlider> {
   String? get _label => widget.label;
   TextStyle? get _labelTextStyle => widget.labelTextStyle;
   double? get _width => widget.width;
-  double get _initialValue => widget.initialValue ?? 0.5;
+  double get _initialValue => widget.initialValue ?? _minValue;
+  double get _minValue => widget.minValue ?? 0;
   double get _maxValue => widget.maxValue ?? 1;
   MyoroSliderFooterLabelBuilder? get _footerLabelBuilder => widget.footerLabelBuilder;
   MyoroSliderOnChanged get _onChanged => widget.onChanged;
@@ -88,6 +93,7 @@ final class _MyoroSliderState extends State<MyoroSlider> {
             padding: themeExtension.sliderPadding,
             child: Slider(
               value: _sliderValue,
+              min: _minValue,
               max: _maxValue,
               onChanged: (double value) {
                 setState(() => _sliderValue = value);

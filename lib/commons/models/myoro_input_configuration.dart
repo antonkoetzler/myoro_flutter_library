@@ -26,6 +26,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Type of input.
   final MyoroInputStyleEnum inputStyle;
 
+  /// [TextAlign] of the input.
+  final TextAlign? textAlign;
+
   /// Text style of the input.
   final TextStyle? inputTextStyle;
 
@@ -76,6 +79,7 @@ final class MyoroInputConfiguration extends Equatable {
 
   const MyoroInputConfiguration({
     required this.inputStyle,
+    this.textAlign,
     this.inputTextStyle,
     this.label,
     this.placeholder,
@@ -94,6 +98,7 @@ final class MyoroInputConfiguration extends Equatable {
 
   MyoroInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
+    TextAlign? textAlign,
     TextStyle? inputTextStyle,
     String? label,
     String? placeholder,
@@ -111,6 +116,7 @@ final class MyoroInputConfiguration extends Equatable {
   }) {
     return MyoroInputConfiguration(
       inputStyle: inputStyle ?? this.inputStyle,
+      textAlign: textAlign ?? this.textAlign,
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
       label: label ?? this.label,
       placeholder: placeholder ?? this.placeholder,
@@ -132,6 +138,7 @@ final class MyoroInputConfiguration extends Equatable {
   String toString() => ''
       'MyoroInputConfiguration(\n'
       '  inputStyle: $inputStyle,\n'
+      '  textAlign: $textAlign,\n'
       '  inputTextStyle: $inputTextStyle,\n'
       '  label: $label,\n'
       '  placeholder: $placeholder,\n'
@@ -152,6 +159,7 @@ final class MyoroInputConfiguration extends Equatable {
   List<Object?> get props {
     return [
       inputStyle,
+      textAlign,
       inputTextStyle,
       label,
       placeholder,

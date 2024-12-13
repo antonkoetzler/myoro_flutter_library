@@ -12,7 +12,7 @@ final class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExten
   final Color hoverColor;
 
   /// [TextStyle] of [MyoroRadio.label].
-  final TextStyle? labelTextStyle;
+  final TextStyle labelTextStyle;
 
   /// Spacing in between the radio and [MyoroRadio.label].
   final double spacing;

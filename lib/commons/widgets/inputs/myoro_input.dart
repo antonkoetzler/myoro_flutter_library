@@ -14,7 +14,7 @@ final class MyoroInput extends StatefulWidget {
   /// Formatters of the input.
   ///
   /// Stored here rather than in [configuration] to have named constructors that preload formatters.
-  final List<TextInputFormatter>? formatters;
+  final TextInputFormatter? formatter;
 
   /// Constructor for a generic input in which you may load any type of formatter or have no formatters.
   ///
@@ -22,8 +22,20 @@ final class MyoroInput extends StatefulWidget {
   const MyoroInput({
     super.key,
     required this.configuration,
-    this.formatters,
+    this.formatter,
   });
+
+  /// An input that auto formats a date.
+  factory MyoroInput.date({
+    Key? key,
+    required MyoroInputConfiguration configuration,
+  }) {
+    return MyoroInput(
+      key: key,
+      configuration: configuration,
+      formatter: MyoroDateInputFormatter(),
+    );
+  }
 
   /// An input that only accepts numbers (integers or decimal).
   factory MyoroInput.number({
@@ -48,13 +60,11 @@ final class MyoroInput extends StatefulWidget {
       configuration: configuration.copyWith(
         controller: controllerProvided ? null : TextEditingController(text: text),
       ),
-      formatters: [
-        MyoroNumberInputFormatter(
-          min: min,
-          max: max,
-          decimalPlaces: decimalPlaces,
-        ),
-      ],
+      formatter: MyoroNumberInputFormatter(
+        min: min,
+        max: max,
+        decimalPlaces: decimalPlaces,
+      ),
     );
   }
 
@@ -64,7 +74,7 @@ final class MyoroInput extends StatefulWidget {
 
 final class _MyoroInputState extends State<MyoroInput> {
   MyoroInputConfiguration get _configuration => widget.configuration;
-  List<TextInputFormatter>? get _formatters => widget.formatters;
+  TextInputFormatter? get _formatter => widget.formatter;
 
   TextEditingController? _localController;
   TextEditingController get _controller {
@@ -90,7 +100,7 @@ final class _MyoroInputState extends State<MyoroInput> {
   void initState() {
     super.initState();
     _controller.addListener(_listener);
-    _enabled = _configuration.enabled ?? true;
+    _enabled = _configuration.checkboxOnChanged != null ? false : _configuration.enabled ?? true;
     _showClearTextButtonNotifier = ValueNotifier(_controller.text.isNotEmpty);
   }
 
@@ -141,6 +151,7 @@ final class _MyoroInputState extends State<MyoroInput> {
                     ),
                   ),
                   decoration: InputDecoration(
+                    floatingLabelBehavior: themeExtension.labelBehavior,
                     label: _label,
                     hintText: _configuration.placeholder,
                     hintStyle: textStyle.withColor(
@@ -165,14 +176,28 @@ final class _MyoroInputState extends State<MyoroInput> {
                     isDense: themeExtension.isDense,
                     suffixIcon: showClearTextButton
                         ? _ClearTextButton(
-                            _controller,
-                            _configuration.onCleared,
+                            () {
+                              if (_formatter == null) {
+                                _controller.clear();
+                              } else {
+                                if (_formatter is MyoroNumberInputFormatter) {
+                                  _controller.text = (_formatter as MyoroNumberInputFormatter).min?.toString() ?? '0';
+                                } else if (_formatter is MyoroDateInputFormatter) {
+                                  _controller.text = '00/00/0000';
+                                } else if (_formatter is MyoroTimeInputFormatter) {
+                                  _controller.text = (_formatter as MyoroTimeInputFormatter).mmSs ? '00:00' : '00:00:00';
+                                }
+                              }
+                              _configuration.onChanged?.call(_controller.text);
+                              _configuration.onCleared?.call();
+                            },
                           )
                         : null,
                   ),
+                  textAlign: _configuration.textAlign ?? TextAlign.start,
                   cursorHeight: themeExtension.cursorHeight,
                   validator: (_) => _configuration.validation?.call(_controller.text),
-                  inputFormatters: _formatters,
+                  inputFormatters: _formatter != null ? [_formatter!] : null,
                   onFieldSubmitted: _configuration.onFieldSubmitted,
                   onChanged: _configuration.onChanged,
                   focusNode: _configuration.focusNode,
@@ -218,18 +243,23 @@ final class _Label extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      configuration.label!,
-      style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+    return Padding(
+      padding: const EdgeInsets.only(
+        // Needed to center the text of the label.
+        bottom: 5,
+      ),
+      child: Text(
+        configuration.label!,
+        style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+      ),
     );
   }
 }
 
 final class _ClearTextButton extends StatelessWidget {
-  final TextEditingController controller;
-  final VoidCallback? onCleared;
+  final VoidCallback _onPressed;
 
-  const _ClearTextButton(this.controller, this.onCleared);
+  const _ClearTextButton(this._onPressed);
 
   @override
   Widget build(BuildContext context) {
@@ -240,10 +270,7 @@ final class _ClearTextButton extends StatelessWidget {
         padding: themeExtension.clearTextButtonPadding,
         child: MyoroIconTextHoverButton(
           icon: themeExtension.clearTextButtonIcon,
-          onPressed: () {
-            controller.clear();
-            onCleared?.call();
-          },
+          onPressed: _onPressed,
         ),
       ),
     );

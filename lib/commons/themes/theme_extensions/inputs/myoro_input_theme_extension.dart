@@ -38,6 +38,9 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   /// Text style of [_Label].
   final TextStyle labelTextStyle;
 
+  /// [TextFormField.floatingLabelBehavior]. Used so the label will stay at the top of the
+  final FloatingLabelBehavior labelBehavior;
+
   /// Padding of [_ClearTextButton].
   final EdgeInsets clearTextButtonPadding;
 
@@ -56,6 +59,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     required this.inputTextStyle,
     required this.spacing,
     required this.labelTextStyle,
+    required this.labelBehavior,
     required this.clearTextButtonPadding,
     required this.clearTextButtonIcon,
   });
@@ -73,6 +77,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     TextStyle? inputTextStyle,
     double? spacing,
     TextStyle? labelTextStyle,
+    FloatingLabelBehavior? labelBehavior,
     EdgeInsets? clearTextButtonPadding,
     IconData? clearTextButtonIcon,
   }) {
@@ -88,6 +93,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       inputTextStyle: inputTextStyle ?? this.inputTextStyle,
       spacing: spacing ?? this.spacing,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
+      labelBehavior: labelBehavior ?? this.labelBehavior,
       clearTextButtonPadding: clearTextButtonPadding ?? this.clearTextButtonPadding,
       clearTextButtonIcon: clearTextButtonIcon ?? this.clearTextButtonIcon,
     );
@@ -111,6 +117,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
       spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
+      labelBehavior: MyoroLerpHelper.lerp(labelBehavior, other.labelBehavior, t),
       clearTextButtonPadding: EdgeInsets.lerp(clearTextButtonPadding, other.clearTextButtonPadding, t),
       clearTextButtonIcon: MyoroLerpHelper.lerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
     );

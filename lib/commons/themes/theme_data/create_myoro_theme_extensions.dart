@@ -41,9 +41,8 @@ List<ThemeExtension> createAppBarThemeExtensions(ColorScheme colorScheme) {
 }
 
 List<ThemeExtension> createDropdownThemeExtensions(TextTheme textTheme) {
-  return [
+  return const [
     MyoroDropdownThemeExtension(
-      labelTextStyle: textTheme.bodySmall!.copyWith(height: 0.8),
       inputStyle: MyoroInputStyleEnum.outlined,
       spacing: 10,
     ),
@@ -106,7 +105,7 @@ List<ThemeExtension> createCheckboxThemeExtensions(ColorScheme colorScheme, Text
       hoverColor: MyoroColorTheme.transparent,
       focusColor: MyoroColorTheme.transparent,
       splashRadius: 0,
-      labelTextStyle: textTheme.bodySmall!,
+      labelTextStyle: textTheme.headlineSmall!,
       spacing: 5,
     ),
     const MyoroGroupCheckboxThemeExtension(
@@ -209,6 +208,7 @@ List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextThe
       disabledOpacity: 0.5,
       inputTextStyle: textTheme.bodyMedium!,
       labelTextStyle: textTheme.headlineSmall!,
+      labelBehavior: FloatingLabelBehavior.always,
       spacing: 10,
       clearTextButtonPadding: const EdgeInsets.fromLTRB(5, 5, 6.5, 5),
       clearTextButtonIcon: Icons.close,
@@ -298,7 +298,7 @@ List<ThemeExtension> createRadioThemeExtensions(ColorScheme colorScheme, TextThe
     MyoroRadioThemeExtension(
       activeColor: colorScheme.onPrimary,
       hoverColor: colorScheme.onPrimary.withOpacity(0.3),
-      labelTextStyle: textTheme.bodySmall,
+      labelTextStyle: textTheme.headlineSmall!,
       spacing: 5,
       splashRadius: 15,
     ),
@@ -334,7 +334,7 @@ List<ThemeExtension> createScrollableThemeExtensions() {
 List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
   return [
     MyoroSliderThemeExtension(
-      labelTextStyle: textTheme.bodySmall!,
+      labelTextStyle: textTheme.headlineSmall!,
       sliderPadding: EdgeInsets.zero,
       labelSliderSpacing: 5,
       footerLabelTextStyle: textTheme.bodySmall!.copyWith(height: 0.5),

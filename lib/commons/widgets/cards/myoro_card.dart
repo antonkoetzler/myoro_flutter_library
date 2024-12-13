@@ -37,7 +37,7 @@ final class MyoroCard extends StatelessWidget {
       children: [
         if (title != null) _Title(title!, titleTextStyle),
         SizedBox(height: context.resolveThemeExtension<MyoroCardThemeExtension>().titleCardSpacing),
-        Flexible(child: _Card(width, height, child)),
+        Flexible(child: _Card(padding, width, height, child)),
       ],
     );
   }
@@ -59,11 +59,17 @@ final class _Title extends StatelessWidget {
 }
 
 final class _Card extends StatelessWidget {
+  final EdgeInsets? _padding;
   final double? _width;
   final double? _height;
   final Widget _child;
 
-  const _Card(this._width, this._height, this._child);
+  const _Card(
+    this._padding,
+    this._width,
+    this._height,
+    this._child,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +78,7 @@ final class _Card extends StatelessWidget {
     return Container(
       width: _width,
       height: _height,
-      padding: themeExtension.padding,
+      padding: _padding ?? themeExtension.padding,
       decoration: BoxDecoration(
         color: themeExtension.primaryColor,
         border: themeExtension.border,

@@ -3,10 +3,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 
 /// Callback to pass the current [BoxConstraints] of the [MyoroLayoutBuilder].
-typedef MyoroLayoutBuilderConstraintsCallback = Function(BoxConstraints constraints);
+typedef MyoroLayoutBuilderConstraintsCallback = void Function(BoxConstraints constraints);
 
 /// Callback to builder to build the [MyoroLayoutBuilder].
-typedef MyoroLayoutBuilderChildCallback = Function(BuildContext context, BoxConstraints constraints);
+typedef MyoroLayoutBuilderChildCallback = Widget Function(BuildContext context, BoxConstraints constraints);
 
 /// [Widget] used as an improved [LayoutBuilder].
 ///

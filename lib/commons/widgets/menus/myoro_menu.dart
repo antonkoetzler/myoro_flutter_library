@@ -52,31 +52,27 @@ final class MyoroMenu<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
-    return ClipRRect(
-      clipBehavior: Clip.hardEdge,
-      borderRadius: themeExtension.borderRadius,
-      child: Container(
-        decoration: BoxDecoration(
-          color: themeExtension.primaryColor,
-          border: themeExtension.border,
-          borderRadius: themeExtension.borderRadius,
+    return Container(
+      decoration: BoxDecoration(
+        color: themeExtension.primaryColor,
+        border: themeExtension.border,
+        borderRadius: themeExtension.borderRadius,
+      ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: maxHeight ?? themeExtension.maxHeight,
+          maxWidth: maxWidth ?? themeExtension.maxWidth,
         ),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: maxHeight ?? themeExtension.maxHeight,
-            maxWidth: maxWidth ?? themeExtension.maxWidth,
-          ),
-          child: MyoroResolver(
-            request: () async => await dataConfiguration.items,
-            builder: (List<T>? items, MyoroRequestEnum status, _, __) {
-              return switch (status) {
-                MyoroRequestEnum.idle => const _Loader(),
-                MyoroRequestEnum.loading => const _Loader(),
-                MyoroRequestEnum.success => _Items(searchCallback, itemBuilder, items!, iconSize, textStyle, textAlign),
-                MyoroRequestEnum.error => const _DialogText('Error getting items.'),
-              };
-            },
-          ),
+        child: MyoroResolver(
+          request: () async => await dataConfiguration.items,
+          builder: (List<T>? items, MyoroRequestEnum status, _, __) {
+            return switch (status) {
+              MyoroRequestEnum.idle => const _Loader(),
+              MyoroRequestEnum.loading => const _Loader(),
+              MyoroRequestEnum.success => _Items(searchCallback, itemBuilder, items!, iconSize, textStyle, textAlign),
+              MyoroRequestEnum.error => const _DialogText('Error getting items.'),
+            };
+          },
         ),
       ),
     );
@@ -130,33 +126,44 @@ class _ItemsState<T> extends State<_Items<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        if (_searchCallback != null) _SearchBar(_onSearch),
-        if (_items.isNotEmpty) ...[
-          Flexible(
-            child: MyoroScrollable(
-              scrollableType: MyoroScrollableEnum.singleChildScrollView,
-              children: [
-                ..._items.map<Widget>(
-                  (T item) => _Item(
-                    _itemBuilder.call(item),
-                    _iconSize,
-                    _textStyle,
-                    _textAlign,
-                  ),
-                )
-              ],
+    final borderRadius = context.resolveThemeExtension<MyoroMenuThemeExtension>().borderRadius;
+
+    return ClipRRect(
+      clipBehavior: Clip.hardEdge,
+      borderRadius: borderRadius.copyWith(
+        topLeft: Radius.circular(borderRadius.topLeft.x - 4),
+        topRight: Radius.circular(borderRadius.topLeft.x - 4),
+        bottomLeft: Radius.circular(borderRadius.topLeft.x - 4),
+        bottomRight: Radius.circular(borderRadius.topLeft.x - 4),
+      ),
+      child: Column(
+        children: [
+          if (_searchCallback != null) _SearchBar(_onSearch),
+          if (_items.isNotEmpty) ...[
+            Flexible(
+              child: MyoroScrollable(
+                scrollableType: MyoroScrollableEnum.singleChildScrollView,
+                children: [
+                  ..._items.map<Widget>(
+                    (T item) => _Item(
+                      _itemBuilder.call(item),
+                      _iconSize,
+                      _textStyle,
+                      _textAlign,
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-        ] else ...[
-          const Flexible(
-            child: _DialogText(
-              'No items to display.',
+          ] else ...[
+            const Flexible(
+              child: _DialogText(
+                'No items to display.',
+              ),
             ),
-          ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }

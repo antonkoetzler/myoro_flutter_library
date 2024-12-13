@@ -209,7 +209,7 @@ enum WidgetListingEnum {
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
 
       // Layout builders.
-      myoroLayoutBuilderTitle => throw UnimplementedError(),
+      myoroLayoutBuilderTitle => const MyoroLayoutBuilderWidgetShowcase(),
 
       // Loaders.
       myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),

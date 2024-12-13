@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -20,8 +18,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// Border of [_WidgetWrapper].
   final Border widgetWrapperBorder;
 
-  /// [Container.alignment] of [_WrapperWrapper].
-  final Alignment wrapperWrapperAlignment;
+  /// Alignment of [_WidgetWrapper].
+  final Alignment widgetWrapperAlignment;
 
   /// Padding of [_WidgetOptions].
   final EdgeInsets widgetOptionsPadding;
@@ -35,7 +33,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.widgetWrapperContentPadding,
     required this.widgetWrapperBorderRadius,
     required this.widgetWrapperBorder,
-    required this.wrapperWrapperAlignment,
+    required this.widgetWrapperAlignment,
     required this.widgetOptionsPadding,
     required this.widgetOptionsDividerPadding,
   });
@@ -47,7 +45,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     EdgeInsets? widgetWrapperContentPadding,
     BorderRadius? widgetWrapperBorderRadius,
     Border? widgetWrapperBorder,
-    Alignment? wrapperWrapperAlignment,
+    Alignment? widgetWrapperAlignment,
     EdgeInsets? widgetOptionsPadding,
     EdgeInsets? widgetOptionsDividerPadding,
   }) {
@@ -57,7 +55,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetWrapperContentPadding: widgetWrapperContentPadding ?? this.widgetWrapperContentPadding,
       widgetWrapperBorderRadius: widgetWrapperBorderRadius ?? this.widgetWrapperBorderRadius,
       widgetWrapperBorder: widgetWrapperBorder ?? this.widgetWrapperBorder,
-      wrapperWrapperAlignment: wrapperWrapperAlignment ?? this.wrapperWrapperAlignment,
+      widgetWrapperAlignment: widgetWrapperAlignment ?? this.widgetWrapperAlignment,
       widgetOptionsPadding: widgetOptionsPadding ?? this.widgetOptionsPadding,
       widgetOptionsDividerPadding: widgetOptionsDividerPadding ?? this.widgetOptionsDividerPadding,
     );
@@ -75,7 +73,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetWrapperContentPadding: EdgeInsets.lerp(widgetWrapperContentPadding, other.widgetWrapperContentPadding, t),
       widgetWrapperBorderRadius: BorderRadius.lerp(widgetWrapperBorderRadius, other.widgetWrapperBorderRadius, t),
       widgetWrapperBorder: Border.lerp(widgetWrapperBorder, other.widgetWrapperBorder, t),
-      wrapperWrapperAlignment: Alignment.lerp(wrapperWrapperAlignment, other.wrapperWrapperAlignment, t),
+      widgetWrapperAlignment: Alignment.lerp(widgetWrapperAlignment, other.widgetWrapperAlignment, t),
       widgetOptionsPadding: EdgeInsets.lerp(widgetOptionsPadding, other.widgetOptionsPadding, t),
       widgetOptionsDividerPadding: EdgeInsets.lerp(widgetOptionsDividerPadding, other.widgetOptionsDividerPadding, t),
     );

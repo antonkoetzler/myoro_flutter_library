@@ -114,11 +114,9 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (_label != null) ...[
-            _Label(_label!, _labelTextStyle),
-            SizedBox(height: themeExtension.spacing),
-          ],
           _Input(
+            _label,
+            _labelTextStyle,
             _controller,
             _focusNode,
           ),
@@ -150,26 +148,15 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   }
 }
 
-final class _Label extends StatelessWidget {
-  final String _label;
-  final TextStyle? _labelTextStyle;
-
-  const _Label(this._label, this._labelTextStyle);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      _label,
-      style: _labelTextStyle ?? context.resolveThemeExtension<MyoroDropdownThemeExtension>().labelTextStyle,
-    );
-  }
-}
-
 final class _Input<T> extends StatefulWidget {
+  final String? _label;
+  final TextStyle? _labelTextStyle;
   final MyoroDropdownController<T> _controller;
   final FocusNode _focusNode;
 
   const _Input(
+    this._label,
+    this._labelTextStyle,
     this._controller,
     this._focusNode,
   );
@@ -179,6 +166,8 @@ final class _Input<T> extends StatefulWidget {
 }
 
 final class _InputState<T> extends State<_Input<T>> {
+  String? get _label => widget._label;
+  TextStyle? get _labelTextStyle => widget._labelTextStyle;
   MyoroDropdownController<T> get _controller => widget._controller;
   FocusNode get _focusNode => widget._focusNode;
 
@@ -210,6 +199,8 @@ final class _InputState<T> extends State<_Input<T>> {
         MyoroInput(
           configuration: MyoroInputConfiguration(
             controller: _inputController,
+            label: _label,
+            labelTextStyle: _labelTextStyle,
             inputStyle: context.resolveThemeExtension<MyoroDropdownThemeExtension>().inputStyle,
             readOnly: true,
             onCleared: () => _controller.clear(),

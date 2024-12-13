@@ -4,8 +4,6 @@
 
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- Layout builders;
-- Cards;
 - Carousels;
 - Checkboxes;
 - Dividers;
