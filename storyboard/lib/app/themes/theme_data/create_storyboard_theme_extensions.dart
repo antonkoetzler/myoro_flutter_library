@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/app/themes/theme_extensions/widget_showcases/checkboxes/myoro_checkbox_widget_showcase_theme_extension.dart';
 import 'package:storyboard/storyboard.dart';
 
 List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     // [WidgetShowcase] & [WidgetShowcase]s.
     WidgetShowcaseThemeExtension(
-      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
+      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(alpha: 0.1),
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
@@ -43,6 +44,9 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
         ('Italic', textTheme.headlineMedium!),
         ('Bold', textTheme.titleMedium!),
       ],
+    ),
+    const MyoroCheckboxWidgetShowcaseThemeExtension(
+      labelTextStyleOptionWidth: 198,
     ),
     const MyoroCarouselWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(

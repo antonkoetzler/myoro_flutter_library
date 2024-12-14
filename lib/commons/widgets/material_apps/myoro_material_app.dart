@@ -45,7 +45,12 @@ final class MyoroMaterialApp extends StatelessWidget {
       // onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: MaterialApp(
         title: title,
-        home: home,
+        home: Builder(
+          builder: (context) {
+            MyoroTypographyTheme.textTheme = context.textTheme;
+            return home;
+          },
+        ),
         themeMode: themeMode ?? ThemeMode.dark,
         theme: createMyoroThemeData(themeExtensionsBuilder, includeMyoroThemeExtensions, isDarkMode: false),
         darkTheme: createMyoroThemeData(themeExtensionsBuilder, includeMyoroThemeExtensions, isDarkMode: true),

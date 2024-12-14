@@ -11,10 +11,15 @@ final class MyoroCheckboxWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyoroCheckboxWidgetShowcaseBloc(),
+      create: (_) => MyoroCheckboxWidgetShowcaseBloc(
+        labelTextStyle: MyoroTypographyTheme.instance.italicSmall,
+      ),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: [_LabelTextOption()],
+        widgetOptions: [
+          _LabelOption(),
+          _LabelTextStyleOption(),
+        ],
       ),
     );
   }
@@ -30,6 +35,7 @@ final class _Widget extends StatelessWidget {
         builder: (_, MyoroCheckboxWidgetShowcaseState state) {
           return MyoroCheckbox(
             label: state.label,
+            labelTextStyle: state.labelTextStyle,
           );
         },
       ),
@@ -37,8 +43,8 @@ final class _Widget extends StatelessWidget {
   }
 }
 
-final class _LabelTextOption extends StatelessWidget {
-  const _LabelTextOption();
+final class _LabelOption extends StatelessWidget {
+  const _LabelOption();
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +53,50 @@ final class _LabelTextOption extends StatelessWidget {
         inputStyle: MyoroInputStyleEnum.outlined,
         label: 'Label text',
         onChanged: (String text) => context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(
-              SetLabelTextEvent(text),
+              SetLabelEvent(text),
             ),
+      ),
+    );
+  }
+}
+
+final class _LabelTextStyleOption extends StatefulWidget {
+  const _LabelTextStyleOption();
+
+  @override
+  State<_LabelTextStyleOption> createState() => _LabelTextStyleOptionState();
+}
+
+final class _LabelTextStyleOptionState extends State<_LabelTextStyleOption> {
+  final _typographyTheme = MyoroTypographyTheme.instance;
+  late final _controller = MyoroDropdownController<TextStyle>([_typographyTheme.italicSmall]);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    late final textStyles = _typographyTheme.getAllTextStyles;
+
+    return SizedBox(
+      width: context.resolveThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension>().labelTextStyleOptionWidth,
+      child: MyoroDropdown<TextStyle>(
+        controller: _controller,
+        label: '[MyoroCheckbox.labelTextStyle]',
+        showClearTextButton: false,
+        dataConfiguration: MyoroDataConfiguration(staticItems: textStyles),
+        itemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: _typographyTheme.getTextStyleName(textStyle)),
+        itemLabelBuilder: _typographyTheme.getTextStyleName,
+        onChangedItems: (List<TextStyle> textStyles) {
+          context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(
+                SetLabelTextStyleEvent(
+                  textStyles.first,
+                ),
+              );
+        },
       ),
     );
   }

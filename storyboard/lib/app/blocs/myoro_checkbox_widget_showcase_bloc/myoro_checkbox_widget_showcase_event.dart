@@ -5,8 +5,14 @@ sealed class MyoroCheckboxWidgetShowcaseEvent {
   const MyoroCheckboxWidgetShowcaseEvent();
 }
 
-final class SetLabelTextEvent extends MyoroCheckboxWidgetShowcaseEvent {
+final class SetLabelEvent extends MyoroCheckboxWidgetShowcaseEvent {
   final String label;
 
-  const SetLabelTextEvent(this.label);
+  const SetLabelEvent(this.label);
+}
+
+final class SetLabelTextStyleEvent extends MyoroCheckboxWidgetShowcaseEvent {
+  final TextStyle textStyle;
+
+  const SetLabelTextStyleEvent(this.textStyle);
 }

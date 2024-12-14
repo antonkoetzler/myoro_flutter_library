@@ -4,7 +4,6 @@
 
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- Checkboxes;
 - Dividers;
 - Drawers;
 - Dropdowns;

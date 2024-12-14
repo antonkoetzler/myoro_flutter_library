@@ -220,6 +220,7 @@ final class _InputState<T> extends State<_Input<T>> {
         _DropdownTriggerArea(
           _controller,
           _focusNode,
+          _showClearTextButton,
         ),
       ],
     );
@@ -229,10 +230,12 @@ final class _InputState<T> extends State<_Input<T>> {
 final class _DropdownTriggerArea extends StatelessWidget {
   final MyoroDropdownController _controller;
   final FocusNode _focusNode;
+  final bool? _showClearTextButton;
 
   const _DropdownTriggerArea(
     this._controller,
     this._focusNode,
+    this._showClearTextButton,
   );
 
   @override
@@ -253,7 +256,7 @@ final class _DropdownTriggerArea extends StatelessWidget {
               valueListenable: _controller.selectedItemsNotifier,
               builder: (_, __, ___) {
                 return SizedBox(
-                  width: constraints.maxWidth - (_controller.selectedItems.isEmpty ? 0 : 44),
+                  width: constraints.maxWidth - (_controller.selectedItems.isEmpty || !(_showClearTextButton != false) ? 0 : 44),
                   height: 43.1, // Size of the input.
                 );
               },

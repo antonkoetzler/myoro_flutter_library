@@ -1,18 +1,24 @@
 part of 'myoro_checkbox_widget_showcase_bloc.dart';
 
 final class MyoroCheckboxWidgetShowcaseState extends Equatable {
-  /// Text of the label.
+  /// [MyoroCheckbox.label].
   final String label;
+
+  /// [MyoroCheckbox.labelTextStyle].
+  final TextStyle labelTextStyle;
 
   const MyoroCheckboxWidgetShowcaseState({
     this.label = '',
+    required this.labelTextStyle,
   });
 
   MyoroCheckboxWidgetShowcaseState copyWith({
     String? label,
+    TextStyle? labelTextStyle,
   }) {
     return MyoroCheckboxWidgetShowcaseState(
       label: label ?? this.label,
+      labelTextStyle: labelTextStyle ?? this.labelTextStyle,
     );
   }
 
@@ -20,8 +26,9 @@ final class MyoroCheckboxWidgetShowcaseState extends Equatable {
   String toString() => ''
       'MyoroCheckboxWidgetShowcaseState(\n'
       '  label: $label,\n'
+      '  labelTextStyle: $labelTextStyle,\n'
       ');';
 
   @override
-  List<Object?> get props => [label];
+  List<Object?> get props => [label, labelTextStyle];
 }
