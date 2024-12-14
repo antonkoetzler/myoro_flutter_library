@@ -95,10 +95,6 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                       Flexible(child: _SearchSection(results, _itemBuilder)),
                     ],
                   );
-                  // if (results?.isNotEmpty == true && status.isSuccess) ...[
-                  //   SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
-                  //   Flexible(child: _SearchSection(results, _itemBuilder)),
-                  // ],
                 },
               ),
             ],
