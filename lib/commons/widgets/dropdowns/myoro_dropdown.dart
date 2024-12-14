@@ -21,6 +21,9 @@ final class MyoroDropdown<T> extends StatefulWidget {
   /// Enables multi-selection.
   final bool? enableMultiSelection;
 
+  /// Whether or not to show [_ClearTextButton] in the [MyoroInput] in [_Input].
+  final bool? showClearTextButton;
+
   /// Enables search functionality.
   final MyoroMenuSearchCallback<T>? searchCallback;
 
@@ -42,6 +45,7 @@ final class MyoroDropdown<T> extends StatefulWidget {
     this.label,
     this.labelTextStyle,
     this.enableMultiSelection,
+    this.showClearTextButton,
     this.searchCallback,
     this.onChangedItems,
     required this.dataConfiguration,
@@ -57,6 +61,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   String? get _label => widget.label;
   TextStyle? get _labelTextStyle => widget.labelTextStyle;
   bool get _enableMultiSelection => widget.enableMultiSelection ?? false;
+  bool? get _showClearTextButton => widget.showClearTextButton;
   MyoroDropdownOnChangeItems<T>? get _onChangedItems => widget.onChangedItems;
   MyoroMenuSearchCallback<T>? get _searchCallback => widget.searchCallback;
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
@@ -119,6 +124,7 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
             _labelTextStyle,
             _controller,
             _focusNode,
+            _showClearTextButton,
           ),
           ValueListenableBuilder(
             valueListenable: _controller.displayDropdownNotifier,
@@ -153,12 +159,14 @@ final class _Input<T> extends StatefulWidget {
   final TextStyle? _labelTextStyle;
   final MyoroDropdownController<T> _controller;
   final FocusNode _focusNode;
+  final bool? _showClearTextButton;
 
   const _Input(
     this._label,
     this._labelTextStyle,
     this._controller,
     this._focusNode,
+    this._showClearTextButton,
   );
 
   @override
@@ -170,6 +178,7 @@ final class _InputState<T> extends State<_Input<T>> {
   TextStyle? get _labelTextStyle => widget._labelTextStyle;
   MyoroDropdownController<T> get _controller => widget._controller;
   FocusNode get _focusNode => widget._focusNode;
+  bool? get _showClearTextButton => widget._showClearTextButton;
 
   final _inputController = TextEditingController();
 
@@ -183,6 +192,7 @@ final class _InputState<T> extends State<_Input<T>> {
   void initState() {
     super.initState();
     _controller.selectedItemsNotifier.addListener(_selectedItemsNotifierListener);
+    _selectedItemsNotifierListener(); // In the case the selected items was passed through the [MyoroDropdownController]'s constructor.
   }
 
   @override
@@ -203,6 +213,7 @@ final class _InputState<T> extends State<_Input<T>> {
             labelTextStyle: _labelTextStyle,
             inputStyle: context.resolveThemeExtension<MyoroDropdownThemeExtension>().inputStyle,
             readOnly: true,
+            showClearTextButton: _showClearTextButton,
             onCleared: () => _controller.clear(),
           ),
         ),

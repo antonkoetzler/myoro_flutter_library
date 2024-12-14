@@ -4,7 +4,7 @@
 
 1. (**UNFORTUNATELY IN PROGRESS**) Finish all widget showcases;
 
-- Carousels;
+- (**IN PROGRESS**) Carousels;
 - Checkboxes;
 - Dividers;
 - Drawers;

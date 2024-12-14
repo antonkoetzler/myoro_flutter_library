@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/app/blocs/myoro_menu_widget_showcase_bloc/myoro_menu_widget_showcase_bloc.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase for [MyoroMenu].
@@ -14,7 +15,7 @@ final class MyoroMenuWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroMenuWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: const [
+        widgetOptions: [
           _IconSizeOption(),
           _ItemCountOption(),
         ],

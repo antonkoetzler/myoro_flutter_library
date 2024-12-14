@@ -19,8 +19,8 @@ final class MyoroDropdownController<T> {
   /// [ValueNotifier] that controls if the dropdown is being displayed.
   final _displayDropdownNotifier = ValueNotifier<bool>(false);
 
-  MyoroDropdownController([List<T>? items]) {
-    _selectedItemsNotifier = ValueNotifier(items ?? []);
+  MyoroDropdownController([List<T>? selectedItems]) {
+    _selectedItemsNotifier = ValueNotifier(selectedItems ?? []);
   }
 
   /// Checks if the item is in [selectedItems].

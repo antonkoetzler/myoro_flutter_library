@@ -81,6 +81,8 @@ final class _MyoroInputState extends State<MyoroInput> {
     return _configuration.controller ?? (_localController ??= TextEditingController());
   }
 
+  bool get _showClearTextButton => _configuration.showClearTextButton != false && _controller.text.isNotEmpty;
+
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
   late bool _enabled;
@@ -94,14 +96,14 @@ final class _MyoroInputState extends State<MyoroInput> {
     return _Label(_configuration);
   }
 
-  void _listener() => _showClearTextButtonNotifier.value = _controller.text.isNotEmpty;
+  void _listener() => _showClearTextButtonNotifier.value = _showClearTextButton;
 
   @override
   void initState() {
     super.initState();
     _controller.addListener(_listener);
     _enabled = _configuration.checkboxOnChanged != null ? false : _configuration.enabled ?? true;
-    _showClearTextButtonNotifier = ValueNotifier(_controller.text.isNotEmpty);
+    _showClearTextButtonNotifier = ValueNotifier(_showClearTextButton);
   }
 
   @override

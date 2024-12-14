@@ -7,9 +7,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Function executed when nthe checkbox next to the input is changed.
 typedef MyoroInputCheckboxOnChanged = void Function(bool enabled, String text);
 
-/// Function used for making the [MyoroInput] a search box.
-///
-/// Executes everytime the input is changed.
+/// Function used for making the [MyoroInput] a search box. Executes everytime the input is changed.
 typedef MyoroInputSearchRequest = FutureOr<List<String>> Function(String text);
 
 /// Function executed when a [Form] is triggered.
@@ -50,6 +48,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Whether the input can be editted by the user.
   final bool? readOnly;
 
+  /// Whether to show [_ClearTextButton] or not.
+  final bool? showClearTextButton;
+
   /// On changed when the checkbox next to the input is changed.
   ///
   /// The checkbox is enabled when this function is provided.
@@ -87,6 +88,7 @@ final class MyoroInputConfiguration extends Equatable {
     this.suffix,
     this.enabled,
     this.readOnly,
+    this.showClearTextButton,
     this.checkboxOnChanged,
     this.validation,
     this.onFieldSubmitted,
@@ -106,6 +108,7 @@ final class MyoroInputConfiguration extends Equatable {
     Widget? suffix,
     bool? enabled,
     bool? readOnly,
+    bool? showClearTextButton,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
     MyoroInputValidation? validation,
     MyoroInputOnFieldSubmitted? onFieldSubmitted,
@@ -124,6 +127,7 @@ final class MyoroInputConfiguration extends Equatable {
       suffix: suffix ?? this.suffix,
       enabled: enabled ?? this.enabled,
       readOnly: readOnly ?? this.readOnly,
+      showClearTextButton: showClearTextButton ?? this.showClearTextButton,
       checkboxOnChanged: checkboxOnChanged ?? this.checkboxOnChanged,
       validation: validation ?? this.validation,
       onFieldSubmitted: onFieldSubmitted ?? this.onFieldSubmitted,
@@ -146,6 +150,7 @@ final class MyoroInputConfiguration extends Equatable {
       '  suffix: $suffix,\n'
       '  enabled: $enabled,\n'
       '  readOnly: $readOnly,\n'
+      '  showClearTextButton: $showClearTextButton,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
       '  validation: $validation,\n'
       '  onFieldSubmitted: $onFieldSubmitted,\n'
@@ -167,6 +172,7 @@ final class MyoroInputConfiguration extends Equatable {
       suffix,
       enabled,
       readOnly,
+      showClearTextButton,
       checkboxOnChanged,
       validation,
       onFieldSubmitted,
