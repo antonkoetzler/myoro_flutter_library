@@ -13,7 +13,7 @@
 - (**BEFORE DOING THIS, MAKE A DATE PICKER INPUT**) Inputs;
 - Loaders;
 - Material_apps;
-- (**BEFORE DOING THIS, ADD ANIMATIONS WHEN OPENING/CLOSING THE MENU**) Menus;
+- Menus;
 - Modals;
 - Radios;
 - Resolvers;
