@@ -3,30 +3,19 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple divider.
 final class MyoroBasicDivider extends StatelessWidget {
-  /// Direction of the divider.
-  final Axis direction;
+  /// Configuration model with all configurable options of [MyoroBasicDivider].
+  final MyoroBasicDividerConfiguration configuration;
 
-  /// Short value of the divider (i.e. width for vertical, height for horizontal).
-  final double? shortValue;
-
-  /// Padding of the divider.
-  final EdgeInsets? padding;
-
-  const MyoroBasicDivider(
-    this.direction, {
-    super.key,
-    this.shortValue,
-    this.padding,
-  });
+  const MyoroBasicDivider({super.key, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
-    final isHorizontal = direction.isHorizontal;
-    final setShortValue = shortValue ?? themeExtension.shortValue;
+    final isHorizontal = configuration.direction.isHorizontal;
+    final setShortValue = configuration.shortValue ?? themeExtension.shortValue;
 
     return Padding(
-      padding: padding ?? EdgeInsets.zero,
+      padding: configuration.padding ?? EdgeInsets.zero,
       child: Container(
         color: themeExtension.color,
         width: isHorizontal ? themeExtension.longValue : setShortValue,

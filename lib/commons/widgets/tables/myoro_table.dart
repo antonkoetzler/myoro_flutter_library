@@ -219,7 +219,11 @@ final class _TitleColumns<T> extends StatelessWidget {
             ),
           ),
         ),
-        const MyoroBasicDivider(Axis.horizontal),
+        const MyoroBasicDivider(
+          configuration: MyoroBasicDividerConfiguration(
+            direction: Axis.horizontal,
+          ),
+        ),
       ],
     );
   }
@@ -234,9 +238,11 @@ final class _TitleColumnsDivider extends StatelessWidget {
     final shortValue = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue;
 
     return MyoroBasicDivider(
-      Axis.vertical,
-      padding: EdgeInsets.symmetric(
-        horizontal: (columnSpacing - shortValue) / 2,
+      configuration: MyoroBasicDividerConfiguration(
+        direction: Axis.vertical,
+        padding: EdgeInsets.symmetric(
+          horizontal: (columnSpacing - shortValue) / 2,
+        ),
       ),
     );
   }

@@ -91,8 +91,10 @@ final class _Drawer extends StatelessWidget {
                   _titleTextStyle,
                 ),
                 MyoroBasicDivider(
-                  Axis.horizontal,
-                  padding: themeExtension.titleContentDividerPadding,
+                  configuration: MyoroBasicDividerConfiguration(
+                    direction: Axis.horizontal,
+                    padding: themeExtension.titleContentDividerPadding,
+                  ),
                 ),
               ],
               Expanded(child: _child),

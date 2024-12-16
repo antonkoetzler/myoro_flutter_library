@@ -42,7 +42,7 @@ final class MyoroMaterialApp extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       // Used with [Widget]s like [MyoroDropdown] which close the dropdown when anywhere else is clicked.
-      // onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: MaterialApp(
         title: title,
         home: Builder(

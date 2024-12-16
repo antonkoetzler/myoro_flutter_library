@@ -83,12 +83,13 @@ final class _MyoroSliderState extends State<MyoroSlider> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (_label != null)
+          if (_label != null) ...[
             Text(
               _label!,
               style: _labelTextStyle ?? themeExtension.labelTextStyle,
             ),
-          SizedBox(height: themeExtension.labelSliderSpacing),
+            SizedBox(height: themeExtension.labelSliderSpacing),
+          ],
           Padding(
             padding: themeExtension.sliderPadding,
             child: Slider(

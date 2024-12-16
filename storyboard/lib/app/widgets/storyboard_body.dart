@@ -28,7 +28,7 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IntrinsicWidth(child: _WidgetListing(_widgetLoadedNotifier)),
-            const MyoroBasicDivider(Axis.vertical),
+            const MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: Axis.vertical)),
           ],
         ),
         Expanded(child: _WidgetViewer(_widgetLoadedNotifier)),
@@ -60,9 +60,11 @@ final class _WidgetListing extends StatelessWidget {
               ),
               if (value != WidgetListingEnum.values.last)
                 MyoroBasicDivider(
-                  Axis.horizontal,
-                  shortValue: themeExtension.widgetListingCategoryDividerShortValue,
-                  padding: themeExtension.widgetListingCategoryDividerPadding,
+                  configuration: MyoroBasicDividerConfiguration(
+                    direction: Axis.horizontal,
+                    shortValue: themeExtension.widgetListingCategoryDividerShortValue,
+                    padding: themeExtension.widgetListingCategoryDividerPadding,
+                  ),
                 ),
             ],
           );

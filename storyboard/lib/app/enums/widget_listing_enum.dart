@@ -189,7 +189,7 @@ enum WidgetListingEnum {
 
       // Dividers.
       myoroBasicDividerTitle => const MyoroBasicDividerWidgetShowcase(),
-      myoroResizeDividerTitle => throw UnimplementedError(),
+      myoroResizeDividerTitle => const MyoroResizeDividerWidgetShowcase(),
 
       // Drawers.
       myoroDrawerTitle => const MyoroDrawerWidgetShowcase(),

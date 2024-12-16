@@ -91,7 +91,11 @@ final class _WidgetOptions extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const MyoroBasicDivider(Axis.vertical),
+            const MyoroBasicDivider(
+              configuration: MyoroBasicDividerConfiguration(
+                direction: Axis.vertical,
+              ),
+            ),
             IntrinsicWidth(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
@@ -99,8 +103,8 @@ final class _WidgetOptions extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: themeExtension.widgetOptionsPadding,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                  child: MyoroScrollable(
+                    scrollableType: MyoroScrollableEnum.singleChildScrollView,
                     children: _widgetOptions.map<Widget>(
                       (Widget widgetOption) {
                         return Column(
@@ -109,8 +113,10 @@ final class _WidgetOptions extends StatelessWidget {
                             widgetOption,
                             if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
                               MyoroBasicDivider(
-                                Axis.horizontal,
-                                padding: themeExtension.widgetOptionsDividerPadding,
+                                configuration: MyoroBasicDividerConfiguration(
+                                  direction: Axis.horizontal,
+                                  padding: themeExtension.widgetOptionsDividerPadding,
+                                ),
                               ),
                           ],
                         );

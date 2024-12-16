@@ -43,7 +43,12 @@ final class MyoroAppBar extends StatelessWidget {
             child: child,
           ),
         ),
-        if (bordered) const MyoroBasicDivider(Axis.horizontal),
+        if (bordered)
+          const MyoroBasicDivider(
+            configuration: MyoroBasicDividerConfiguration(
+              direction: Axis.horizontal,
+            ),
+          ),
       ],
     );
   }

@@ -6,15 +6,15 @@ typedef MyoroResizeDividerDragCallback = Function(DragUpdateDetails details);
 
 /// A divider with a click/tap + drag resize functionality.
 final class MyoroResizeDivider extends StatelessWidget {
-  /// Direction of the divider.
-  final Axis direction;
+  /// Configuration model with all configurable options of [MyoroBasicDivider].
+  final MyoroBasicDividerConfiguration configuration;
 
   /// Resize activated callback.
   final MyoroResizeDividerDragCallback? dragCallback;
 
-  const MyoroResizeDivider(
-    this.direction, {
+  const MyoroResizeDivider({
     super.key,
+    required this.configuration,
     this.dragCallback,
   });
 
@@ -23,8 +23,8 @@ final class MyoroResizeDivider extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        MyoroBasicDivider(direction),
-        _ResizeButton(direction, dragCallback),
+        MyoroBasicDivider(configuration: configuration),
+        _ResizeButton(configuration.direction, dragCallback),
       ],
     );
   }

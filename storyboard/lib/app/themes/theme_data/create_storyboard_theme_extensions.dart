@@ -4,7 +4,40 @@ import 'package:storyboard/storyboard.dart';
 
 List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
-    // [WidgetShowcase] & [WidgetShowcase]s.
+    ..._createAppThemeExtensions(textTheme),
+    ..._createWidgetShowcaseThemeExtensions(colorScheme, textTheme),
+  ];
+}
+
+List<ThemeExtension> _createAppThemeExtensions(TextTheme textTheme) {
+  return [
+    StoryboardAppBarThemeExtension(
+      titleTextStyle: textTheme.titleMedium!,
+      subtitleTextStyle: textTheme.bodySmall!,
+      showWidgetOptionsButtonIcon: Icons.remove_red_eye,
+      themeButtonIcon: Icons.sunny,
+      buttonSpacing: 5,
+    ),
+    StoryboardBodyThemeExtension(
+      widgetListingCategoryPadding: const EdgeInsets.all(5),
+      widgetListingCategorySpacing: 5,
+      widgetListingCategoryDividerPadding: const EdgeInsets.only(
+        top: 1,
+        left: 10,
+        right: 10,
+      ),
+      widgetListingCategoryDividerShortValue: 1,
+      widgetListingCategoryDropdownButtonTextStyle: textTheme.titleMedium!,
+      widgetListingCategoryDropdownButtonUnopenedIcon: Icons.keyboard_arrow_right,
+      widgetListingCategoryDropdownButtonOpenedIcon: Icons.keyboard_arrow_down,
+      widgetListingCategoryWidgetButtonContentCentered: MainAxisAlignment.center,
+      widgetListingCategoryWidgetButtonTextStyle: textTheme.bodySmall!,
+    ),
+  ];
+}
+
+List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
     WidgetShowcaseThemeExtension(
       widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(alpha: 0.1),
       widgetWrapperPadding: const EdgeInsets.all(20),
@@ -48,7 +81,13 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
     const MyoroCheckboxWidgetShowcaseThemeExtension(
       labelTextStyleOptionWidth: 198,
     ),
-    const MyoroBasicDividerWidgetShowcaseThemeExtension(),
+    const MyoroBasicDividerWidgetShowcaseThemeExtension(
+      buttonBordered: true,
+    ),
+    MyoroResizeDividerWidgetShowcaseThemeExtension(
+      containerColor: colorScheme.onPrimary,
+      areYouSillyPadding: const EdgeInsets.all(50),
+    ),
     MyoroFormWidgetShowcaseThemeExtension(
       widgetMainAxisAlignment: MainAxisAlignment.center,
       widgetInputStyle: MyoroInputStyleEnum.outlined,
@@ -81,30 +120,6 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
       tooltipMargin: const EdgeInsets.only(top: 10),
       containerSize: const Size(200, 50),
       containerTextStyle: textTheme.titleMedium!,
-    ),
-
-    // Main app widgets (app bar & body).
-    StoryboardAppBarThemeExtension(
-      titleTextStyle: textTheme.titleMedium!,
-      subtitleTextStyle: textTheme.bodySmall!,
-      showWidgetOptionsButtonIcon: Icons.remove_red_eye,
-      themeButtonIcon: Icons.sunny,
-      buttonSpacing: 5,
-    ),
-    StoryboardBodyThemeExtension(
-      widgetListingCategoryPadding: const EdgeInsets.all(5),
-      widgetListingCategorySpacing: 5,
-      widgetListingCategoryDividerPadding: const EdgeInsets.only(
-        top: 1,
-        left: 10,
-        right: 10,
-      ),
-      widgetListingCategoryDividerShortValue: 1,
-      widgetListingCategoryDropdownButtonTextStyle: textTheme.titleMedium!,
-      widgetListingCategoryDropdownButtonUnopenedIcon: Icons.keyboard_arrow_right,
-      widgetListingCategoryDropdownButtonOpenedIcon: Icons.keyboard_arrow_down,
-      widgetListingCategoryWidgetButtonContentCentered: MainAxisAlignment.center,
-      widgetListingCategoryWidgetButtonTextStyle: textTheme.bodySmall!,
     ),
   ];
 }

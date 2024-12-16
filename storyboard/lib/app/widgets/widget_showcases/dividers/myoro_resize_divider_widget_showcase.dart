@@ -4,9 +4,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/app/blocs/myoro_basic_divider_widget_showcase_bloc/myoro_basic_divider_widget_showcase_bloc.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Widget showcase of [MyoroBasicDivider].
-final class MyoroBasicDividerWidgetShowcase extends StatelessWidget {
-  const MyoroBasicDividerWidgetShowcase({super.key});
+/// Widget showcase of [MyoroResizeDivider].
+final class MyoroResizeDividerWidgetShowcase extends StatelessWidget {
+  const MyoroResizeDividerWidgetShowcase({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,40 +26,37 @@ final class MyoroBasicDividerWidgetShowcase extends StatelessWidget {
   }
 }
 
-final class _Widget extends StatelessWidget {
+final class _Widget extends StatefulWidget {
   const _Widget();
+
+  @override
+  State<_Widget> createState() => _WidgetState();
+}
+
+final class _WidgetState extends State<_Widget> {
+  final _firstContainerNotifier = ValueNotifier<double?>(null);
+
+  @override
+  void dispose() {
+    _firstContainerNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MyoroBasicDividerWidgetShowcaseBloc, MyoroBasicDividerWidgetShowcaseState>(
       builder: (_, MyoroBasicDividerWidgetShowcaseState state) {
         final children = [
-          const Flexible(child: _Button('A button')),
-          MyoroBasicDivider(
-            configuration: MyoroBasicDividerConfiguration(
-              direction: state.direction,
-              shortValue: state.shortValue,
-              padding: EdgeInsets.symmetric(
-                vertical: state.verticalPadding,
-                horizontal: state.horizontalPadding,
-              ),
-            ),
-          ),
-          const Flexible(child: _Button('Another button')),
+          Flexible(child: _Container(state.direction, _firstContainerNotifier)),
+          _Divider(state, _firstContainerNotifier),
         ];
 
-        if (state.direction.isHorizontal) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: children,
-          );
-        }
-
-        return IntrinsicHeight(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: children,
-          ),
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            const Positioned(child: _AreYouSilly()),
+            if (state.direction.isHorizontal) Column(children: children) else Row(children: children),
+          ],
         );
       },
     );
@@ -153,19 +150,80 @@ final class _PaddingOption extends StatelessWidget {
   }
 }
 
-final class _Button extends StatelessWidget {
-  final String _text;
-
-  const _Button(this._text);
+final class _AreYouSilly extends StatelessWidget {
+  const _AreYouSilly();
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextHoverButton(
-      text: _text,
-      configuration: MyoroHoverButtonConfiguration(
-        bordered: context.resolveThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension>().buttonBordered,
+    return Padding(
+      padding: context.resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>().areYouSillyPadding,
+      child: Image.asset(kAreYouSillyCat),
+    );
+  }
+}
+
+final class _Divider extends StatelessWidget {
+  final MyoroBasicDividerWidgetShowcaseState _state;
+  final ValueNotifier<double?> _firstContainerNotifier;
+
+  const _Divider(this._state, this._firstContainerNotifier);
+
+  @override
+  Widget build(BuildContext context) {
+    return MyoroResizeDivider(
+      configuration: MyoroBasicDividerConfiguration(
+        direction: _state.direction,
+        shortValue: _state.shortValue,
+        padding: EdgeInsets.symmetric(
+          vertical: _state.verticalPadding,
+          horizontal: _state.horizontalPadding,
+        ),
       ),
-      onPressed: () {},
+      dragCallback: (DragUpdateDetails details) {
+        _firstContainerNotifier.value = _firstContainerNotifier.value! + (_state.direction.isHorizontal ? details.delta.dy : details.delta.dx);
+      },
+    );
+  }
+}
+
+final class _Container extends StatefulWidget {
+  final Axis _direction;
+  final ValueNotifier<double?> _notifier;
+
+  const _Container(this._direction, this._notifier);
+
+  @override
+  State<_Container> createState() => _ContainerState();
+}
+
+final class _ContainerState extends State<_Container> {
+  static const _minValue = 0.0;
+
+  bool get _isHorizontal => widget._direction.isHorizontal;
+  ValueNotifier<double?> get _notifier => widget._notifier;
+
+  final _key = GlobalKey();
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: _notifier,
+      builder: (_, double? widthOrHeight, __) {
+        if (widthOrHeight == null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            final size = (_key.currentContext!.findRenderObject() as RenderBox).size;
+            _notifier.value = _isHorizontal ? size.height : size.width;
+          });
+        }
+
+        return Container(
+          key: _key,
+          width: !_isHorizontal ? widthOrHeight : null,
+          height: _isHorizontal ? widthOrHeight : null,
+          constraints: const BoxConstraints(minWidth: _minValue, minHeight: _minValue),
+          color: context.resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>().containerColor,
+        );
+      },
     );
   }
 }
