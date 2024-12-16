@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/app/themes/theme_extensions/widget_showcases/checkboxes/myoro_checkbox_widget_showcase_theme_extension.dart';
 import 'package:storyboard/storyboard.dart';
 
 List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
@@ -45,10 +44,11 @@ List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, Te
         ('Bold', textTheme.titleMedium!),
       ],
     ),
+    const MyoroCarouselWidgetShowcaseThemeExtension(),
     const MyoroCheckboxWidgetShowcaseThemeExtension(
       labelTextStyleOptionWidth: 198,
     ),
-    const MyoroCarouselWidgetShowcaseThemeExtension(),
+    const MyoroBasicDividerWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(
       widgetMainAxisAlignment: MainAxisAlignment.center,
       widgetInputStyle: MyoroInputStyleEnum.outlined,

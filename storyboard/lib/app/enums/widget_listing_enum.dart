@@ -188,7 +188,7 @@ enum WidgetListingEnum {
       myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
 
       // Dividers.
-      myoroBasicDividerTitle => throw UnimplementedError(),
+      myoroBasicDividerTitle => const MyoroBasicDividerWidgetShowcase(),
       myoroResizeDividerTitle => throw UnimplementedError(),
 
       // Drawers.

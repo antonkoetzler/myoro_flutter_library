@@ -3,6 +3,7 @@ export 'buttons/exports.dart';
 export 'cards/exports.dart';
 export 'carousels/exports.dart';
 export 'checkboxes/exports.dart';
+export 'dividers/exports.dart';
 export 'drawers/exports.dart';
 export 'dropdowns/exports.dart';
 export 'forms/exports.dart';
