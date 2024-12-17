@@ -88,6 +88,10 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       containerColor: colorScheme.onPrimary,
       areYouSillyPadding: const EdgeInsets.all(50),
     ),
+    const MyoroDrawerWidgetShowcaseThemeExtension(
+      buttonBordered: true,
+      inputStyle: MyoroInputStyleEnum.outlined,
+    ),
     MyoroFormWidgetShowcaseThemeExtension(
       widgetMainAxisAlignment: MainAxisAlignment.center,
       widgetInputStyle: MyoroInputStyleEnum.outlined,

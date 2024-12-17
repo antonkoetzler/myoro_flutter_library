@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Function executed when nthe checkbox next to the input is changed.
+/// Function executed when the checkbox next to the input is changed.
 typedef MyoroInputCheckboxOnChanged = void Function(bool enabled, String text);
 
 /// Function used for making the [MyoroInput] a search box. Executes everytime the input is changed.

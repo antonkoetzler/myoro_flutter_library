@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+/// Function executed when the checkbox next to the dropdown is changed.
+typedef MyoroDropdownCheckboxOnChanged<T> = void Function(bool enabled, List<T> items);
+
 /// Callback executed when [MyoroDropdownController.selectedItemsNotifier] changes.
 typedef MyoroDropdownOnChangeItems<T> = void Function(List<T> items);
 
@@ -18,6 +21,9 @@ final class MyoroDropdown<T> extends StatefulWidget {
   /// Text style of [label].
   final TextStyle? labelTextStyle;
 
+  /// If the dropdown is enabled.
+  final bool? enabled;
+
   /// Enables multi-selection.
   final bool? enableMultiSelection;
 
@@ -26,6 +32,11 @@ final class MyoroDropdown<T> extends StatefulWidget {
 
   /// Enables search functionality.
   final MyoroMenuSearchCallback<T>? searchCallback;
+
+  /// On changed when the checkbox next to the dropdown is changed.
+  ///
+  /// The checkbox is enabled when this function is provided.
+  final MyoroDropdownCheckboxOnChanged<T>? checkboxOnChanged;
 
   /// Callback executed when [controller.selectedItemsNotifier] changes.
   final MyoroDropdownOnChangeItems<T>? onChangedItems;
@@ -44,9 +55,11 @@ final class MyoroDropdown<T> extends StatefulWidget {
     this.controller,
     this.label,
     this.labelTextStyle,
+    this.enabled,
     this.enableMultiSelection,
     this.showClearTextButton,
     this.searchCallback,
+    this.checkboxOnChanged,
     this.onChangedItems,
     required this.dataConfiguration,
     required this.itemLabelBuilder,
@@ -60,8 +73,10 @@ final class MyoroDropdown<T> extends StatefulWidget {
 final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
   String? get _label => widget.label;
   TextStyle? get _labelTextStyle => widget.labelTextStyle;
+  bool get _enabled => widget.enabled ?? true;
   bool get _enableMultiSelection => widget.enableMultiSelection ?? false;
   bool? get _showClearTextButton => widget.showClearTextButton;
+  MyoroDropdownCheckboxOnChanged<T>? get _checkboxOnChanged => widget.checkboxOnChanged;
   MyoroDropdownOnChangeItems<T>? get _onChangedItems => widget.onChangedItems;
   MyoroMenuSearchCallback<T>? get _searchCallback => widget.searchCallback;
   MyoroDataConfiguration<T> get _dataConfiguration => widget.dataConfiguration;
@@ -122,9 +137,11 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
           _Input(
             _label,
             _labelTextStyle,
+            _enabled,
             _controller,
             _focusNode,
             _showClearTextButton,
+            _checkboxOnChanged,
           ),
           ValueListenableBuilder(
             valueListenable: _controller.displayDropdownNotifier,
@@ -157,16 +174,20 @@ final class _MyoroDropdownState<T> extends State<MyoroDropdown<T>> {
 final class _Input<T> extends StatefulWidget {
   final String? _label;
   final TextStyle? _labelTextStyle;
+  final bool _enabled;
   final MyoroDropdownController<T> _controller;
   final FocusNode _focusNode;
   final bool? _showClearTextButton;
+  final MyoroDropdownCheckboxOnChanged<T>? _checkboxOnChanged;
 
   const _Input(
     this._label,
     this._labelTextStyle,
+    this._enabled,
     this._controller,
     this._focusNode,
     this._showClearTextButton,
+    this._checkboxOnChanged,
   );
 
   @override
@@ -181,6 +202,14 @@ final class _InputState<T> extends State<_Input<T>> {
   bool? get _showClearTextButton => widget._showClearTextButton;
 
   final _inputController = TextEditingController();
+  late bool _enabled = widget._enabled;
+
+  void _checkboxOnChanged(bool enabled, String text) {
+    setState(() {
+      _enabled = enabled;
+      widget._checkboxOnChanged?.call(enabled, _controller.selectedItems);
+    });
+  }
 
   /// Set input's text in accordance with the changes to the selected items.
   void _selectedItemsNotifierListener() {
@@ -211,17 +240,20 @@ final class _InputState<T> extends State<_Input<T>> {
             controller: _inputController,
             label: _label,
             labelTextStyle: _labelTextStyle,
+            enabled: _enabled,
             inputStyle: context.resolveThemeExtension<MyoroDropdownThemeExtension>().inputStyle,
             readOnly: true,
             showClearTextButton: _showClearTextButton,
+            checkboxOnChanged: widget._checkboxOnChanged != null ? _checkboxOnChanged : null,
             onCleared: () => _controller.clear(),
           ),
         ),
-        _DropdownTriggerArea(
-          _controller,
-          _focusNode,
-          _showClearTextButton,
-        ),
+        if (_enabled)
+          _DropdownTriggerArea(
+            _controller,
+            _focusNode,
+            _showClearTextButton,
+          ),
       ],
     );
   }

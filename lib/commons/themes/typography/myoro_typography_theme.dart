@@ -46,7 +46,7 @@ final class MyoroTypographyTheme {
   TextStyle get extraBoldLarge => _textTheme!.displayLarge!;
 
   /// Grabs all of the available [TextStyles].
-  List<TextStyle> get getAllTextStyles {
+  List<TextStyle> get allTextStyles {
     return [
       // Regular.
       regularSmall,
@@ -77,7 +77,7 @@ final class MyoroTypographyTheme {
 
   /// Displays the name of a given [TextStyle].
   String getTextStyleName(TextStyle textStyle) {
-    return switch (getAllTextStyles.indexOf(textStyle)) {
+    return switch (allTextStyles.indexOf(textStyle)) {
       // Regular.
       0 => 'Regular small', // Small.
       1 => 'Regular medium', // Medium.

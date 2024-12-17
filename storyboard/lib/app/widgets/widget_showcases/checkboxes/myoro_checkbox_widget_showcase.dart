@@ -79,7 +79,7 @@ final class _LabelTextStyleOptionState extends State<_LabelTextStyleOption> {
 
   @override
   Widget build(BuildContext context) {
-    late final textStyles = _typographyTheme.getAllTextStyles;
+    late final textStyles = _typographyTheme.allTextStyles;
 
     return SizedBox(
       width: context.resolveThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension>().labelTextStyleOptionWidth,
