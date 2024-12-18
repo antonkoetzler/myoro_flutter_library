@@ -168,10 +168,24 @@ class _ItemsState<T> extends State<_Items<T>> {
   }
 }
 
-final class _SearchBar<T> extends StatelessWidget {
+final class _SearchBar<T> extends StatefulWidget {
   final void Function(String query) _onChanged;
 
   const _SearchBar(this._onChanged);
+
+  @override
+  State<_SearchBar<T>> createState() => _SearchBarState<T>();
+}
+
+class _SearchBarState<T> extends State<_SearchBar<T>> {
+  void Function(String query) get _onChanged => widget._onChanged;
+
+  final _focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +195,7 @@ final class _SearchBar<T> extends StatelessWidget {
       padding: themeExtension.searchBarPadding,
       child: MyoroInput(
         configuration: MyoroInputConfiguration(
-          focusNode: FocusNode()..requestFocus(),
+          focusNode: _focusNode..requestFocus(),
           inputStyle: themeExtension.searchBarInputStyle,
           onChanged: _onChanged,
         ),

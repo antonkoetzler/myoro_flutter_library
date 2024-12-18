@@ -200,6 +200,7 @@ final class _InputState<T> extends State<_Input<T>> {
   MyoroDropdownController<T> get _controller => widget._controller;
   FocusNode get _focusNode => widget._focusNode;
   bool? get _showClearTextButton => widget._showClearTextButton;
+  bool get _checkboxOnChangedNotNull => widget._checkboxOnChanged != null;
 
   final _inputController = TextEditingController();
   late bool _enabled = widget._enabled;
@@ -234,6 +235,7 @@ final class _InputState<T> extends State<_Input<T>> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.centerRight,
       children: [
         MyoroInput(
           configuration: MyoroInputConfiguration(
@@ -244,7 +246,7 @@ final class _InputState<T> extends State<_Input<T>> {
             inputStyle: context.resolveThemeExtension<MyoroDropdownThemeExtension>().inputStyle,
             readOnly: true,
             showClearTextButton: _showClearTextButton,
-            checkboxOnChanged: widget._checkboxOnChanged != null ? _checkboxOnChanged : null,
+            checkboxOnChanged: _checkboxOnChangedNotNull ? _checkboxOnChanged : null,
             onCleared: () => _controller.clear(),
           ),
         ),
@@ -252,6 +254,7 @@ final class _InputState<T> extends State<_Input<T>> {
           _DropdownTriggerArea(
             _controller,
             _focusNode,
+            _checkboxOnChangedNotNull,
             _showClearTextButton,
           ),
       ],
@@ -259,42 +262,51 @@ final class _InputState<T> extends State<_Input<T>> {
   }
 }
 
-final class _DropdownTriggerArea extends StatelessWidget {
-  final MyoroDropdownController _controller;
+final class _DropdownTriggerArea<T> extends StatelessWidget {
+  final MyoroDropdownController<T> _controller;
   final FocusNode _focusNode;
+  final bool _checkboxEnabled;
   final bool? _showClearTextButton;
 
   const _DropdownTriggerArea(
     this._controller,
     this._focusNode,
+    this._checkboxEnabled,
     this._showClearTextButton,
   );
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      child: InkWell(
-        focusColor: MyoroColorTheme.transparent,
-        hoverColor: MyoroColorTheme.transparent,
-        splashColor: MyoroColorTheme.transparent,
-        highlightColor: MyoroColorTheme.transparent,
-        onTap: () {
-          _focusNode.requestFocus();
-          _controller.toggleDropdown();
+      child: MyoroLayoutBuilder(
+        builder: (_, BoxConstraints constraints) {
+          return ValueListenableBuilder(
+            valueListenable: _controller.selectedItemsNotifier,
+            builder: (_, List<T> selectedItems, __) {
+              return Padding(
+                padding: EdgeInsets.only(right: (selectedItems.isNotEmpty && _showClearTextButton != false) ? 40 : 0),
+                child: InkWell(
+                  focusColor: MyoroColorTheme.transparent,
+                  hoverColor: MyoroColorTheme.transparent,
+                  splashColor: MyoroColorTheme.transparent,
+                  highlightColor: MyoroColorTheme.transparent,
+                  onTap: () {
+                    _focusNode.requestFocus();
+                    _controller.toggleDropdown();
+                  },
+                  child: MyoroLayoutBuilder(
+                    builder: (_, BoxConstraints constraints) {
+                      return SizedBox(
+                        width: constraints.maxWidth - (_checkboxEnabled ? 30 : 0),
+                        height: 43.1, // Size of the input.
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
+          );
         },
-        child: MyoroLayoutBuilder(
-          builder: (_, BoxConstraints constraints) {
-            return ValueListenableBuilder(
-              valueListenable: _controller.selectedItemsNotifier,
-              builder: (_, __, ___) {
-                return SizedBox(
-                  width: constraints.maxWidth - (_controller.selectedItems.isEmpty || !(_showClearTextButton != false) ? 0 : 44),
-                  height: 43.1, // Size of the input.
-                );
-              },
-            );
-          },
-        ),
       ),
     );
   }

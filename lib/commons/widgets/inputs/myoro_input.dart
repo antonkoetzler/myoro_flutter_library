@@ -102,7 +102,7 @@ final class _MyoroInputState extends State<MyoroInput> {
   void initState() {
     super.initState();
     _controller.addListener(_listener);
-    _enabled = _configuration.checkboxOnChanged != null ? false : _configuration.enabled ?? true;
+    _enabled = _configuration.enabled ?? true;
     _showClearTextButtonNotifier = ValueNotifier(_showClearTextButton);
   }
 

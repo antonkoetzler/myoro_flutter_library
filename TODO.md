@@ -4,7 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- (**IN PROGRESS**) Dropdowns;
 - Forms;
 - Graphs;
 - (**BEFORE DOING THIS, MAKE A DATE PICKER INPUT**) Inputs;
@@ -16,7 +15,7 @@
 - Resolvers;
 - Screens;
 - Scrollables;
-- Sliders;
+- (**BEFORE DOING THIS, ADD A TOOLTIP ON THUMB AND VALUES ON THE SIDES**) Sliders;
 - Snack_bars;
 - Tooltips;
 - (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.

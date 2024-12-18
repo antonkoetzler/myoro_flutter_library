@@ -59,7 +59,7 @@ final class MyoroDropdownController<T> {
   String get formattedItems {
     return _selectedItemsNotifier.value.fold<String>(
       '',
-      (String current, T item) => '$current${current.isEmpty ? '' : ' '}${_itemLabelBuilder.call(item)}',
+      (String current, T item) => '$current${current.isEmpty ? '' : ', '}${_itemLabelBuilder.call(item)}',
     );
   }
 
