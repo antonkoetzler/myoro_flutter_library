@@ -39,7 +39,7 @@ List<ThemeExtension> _createAppThemeExtensions(TextTheme textTheme) {
 List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     WidgetShowcaseThemeExtension(
-      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(alpha: 0.1),
+      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
@@ -48,7 +48,10 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
         color: MyoroColorTheme.attention,
       ),
       widgetWrapperAlignment: Alignment.center,
-      widgetOptionsPadding: const EdgeInsets.all(10),
+      widgetOptionsPadding: const EdgeInsets.symmetric(
+        vertical: 15,
+        horizontal: 10,
+      ),
       widgetOptionsDividerPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
     ),
     MyoroAppBarWidgetShowcaseThemeExtension(
@@ -90,6 +93,12 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
     ),
     const MyoroDrawerWidgetShowcaseThemeExtension(
       buttonBordered: true,
+      inputStyle: MyoroInputStyleEnum.outlined,
+    ),
+    MyoroDropdownWidgetShowcaseThemeExtension(
+      dropdownItemColorSize: 50,
+      dropdownItemTextStyle: textTheme.bodyMedium!,
+      dropdownItemSpacing: 10,
       inputStyle: MyoroInputStyleEnum.outlined,
     ),
     MyoroFormWidgetShowcaseThemeExtension(

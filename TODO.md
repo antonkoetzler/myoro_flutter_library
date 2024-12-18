@@ -4,7 +4,7 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Dropdowns;
+- (**IN PROGRESS**) Dropdowns;
 - Forms;
 - Graphs;
 - (**BEFORE DOING THIS, MAKE A DATE PICKER INPUT**) Inputs;

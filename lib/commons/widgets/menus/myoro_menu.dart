@@ -212,7 +212,7 @@ final class _Item extends StatelessWidget {
 
     if (_item.itemBuilder != null) {
       return MyoroHoverButton(
-        configuration: configuration.copyWith(primaryColor: MyoroColorTheme.transparent),
+        configuration: configuration.copyWith(),
         builder: _item.itemBuilder!,
         onPressed: _item.onPressed,
       );
