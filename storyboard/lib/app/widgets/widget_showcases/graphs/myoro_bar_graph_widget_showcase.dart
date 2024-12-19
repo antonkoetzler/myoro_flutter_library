@@ -1,6 +1,8 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/app/blocs/myoro_bar_graph_widget_showcase_bloc/myoro_bar_graph_widget_showcase_bloc.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase of [MyoroBarGraph].
@@ -9,7 +11,13 @@ final class MyoroBarGraphWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WidgetShowcase(widget: _Widget());
+    return BlocProvider(
+      create: (_) => MyoroBarGraphWidgetShowcaseBloc(),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_SortedOption()],
+      ),
+    );
   }
 }
 
@@ -18,25 +26,45 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroBarGraph(
-      items: List.generate(
-        faker.randomGenerator.integer(10, min: 1),
-        (_) => MyoroBarGraphGroup(
-          x: faker.randomGenerator.integer(100),
-          bars: List.generate(
-            faker.randomGenerator.integer(5),
-            (_) => MyoroBarGraphBar(
-              y: faker.randomGenerator.decimal(),
-              color: [
-                Colors.red,
-                Colors.green,
-                Colors.blue,
-                MyoroColorTheme.secondary(context),
-              ][faker.randomGenerator.integer(4)],
+    return BlocBuilder<MyoroBarGraphWidgetShowcaseBloc, MyoroBarGraphWidgetShowcaseState>(
+      builder: (_, MyoroBarGraphWidgetShowcaseState state) {
+        return MyoroBarGraph(
+          sorted: state.sorted,
+          items: List.generate(
+            faker.randomGenerator.integer(10, min: 1),
+            (_) => MyoroBarGraphGroup(
+              x: faker.randomGenerator.integer(100),
+              bars: List.generate(
+                faker.randomGenerator.integer(5),
+                (_) => MyoroBarGraphBar(
+                  y: faker.randomGenerator.decimal(),
+                  color: [
+                    Colors.red,
+                    Colors.green,
+                    Colors.blue,
+                    MyoroColorTheme.secondary(context),
+                  ][faker.randomGenerator.integer(4)],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
+    );
+  }
+}
+
+final class _SortedOption extends StatelessWidget {
+  const _SortedOption();
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = context.resolveBloc<MyoroBarGraphWidgetShowcaseBloc>();
+
+    return MyoroCheckbox(
+      label: '[MyoroBarGraph.sorted]',
+      initialValue: bloc.state.sorted,
+      onChanged: (bool value) => bloc.add(SetSortedEvent(value)),
     );
   }
 }

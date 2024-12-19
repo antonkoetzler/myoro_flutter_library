@@ -112,7 +112,10 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       errorColor: Colors.red,
     ),
     const MyoroBarGraphWidgetShowcaseThemeExtension(),
-    const MyoroPieGraphWidgetShowcaseThemeExtension(),
+    MyoroPieGraphWidgetShowcaseThemeExtension(
+      centerWidgetBorderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+      centerWidgetSize: 125,
+    ),
     MyoroLayoutBuilderWidgetShowcaseThemeExtension(
       textStyle: textTheme.bodyMedium!,
       descriptionWidth: 200,

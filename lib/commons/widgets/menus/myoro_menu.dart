@@ -185,6 +185,7 @@ class _SearchBarState<T> extends State<_SearchBar<T>> {
   @override
   void dispose() {
     _focusNode.dispose();
+    super.dispose();
   }
 
   @override

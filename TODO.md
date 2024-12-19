@@ -4,8 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Forms;
-- Graphs;
 - (**BEFORE DOING THIS, MAKE A DATE PICKER INPUT**) Inputs;
 - Loaders;
 - Material_apps;

@@ -15,7 +15,7 @@ const kMyoroCarouselAutoplayIntervalDuration = Duration(seconds: 3);
 
 // Graphs.
 const kMyoroGraphSideTitleInterval = 0.2;
-const kMyoroGraphVerticalSideTitleReversedSize = 36.0;
+const kMyoroGraphVerticalSideTitleReversedSize = 48.0;
 const kMyoroGraphHorizontalSideTitleReversedSize = 22.0;
 
 // Menus.

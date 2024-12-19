@@ -62,33 +62,36 @@ final class MyoroBarGraph extends StatelessWidget {
       ),
     );
 
-    return BarChart(
-      BarChartData(
-        // Items of the graph.
-        barGroups: formattedItems,
+    return Padding(
+      padding: const EdgeInsets.only(top: 22),
+      child: BarChart(
+        BarChartData(
+          // Items of the graph.
+          barGroups: formattedItems,
 
-        // Border of the graph.
-        borderData: borderData,
+          // Border of the graph.
+          borderData: borderData,
 
-        // Grid information of the graph.
-        gridData: gridData,
+          // Grid information of the graph.
+          gridData: gridData,
 
-        // Label configuration.
-        titlesData: FlTitlesData(
-          topTitles: disabledTitle,
-          bottomTitles: enabledTitle.copyWith(
-            sideTitles: enabledTitle.sideTitles.copyWith(
-              reservedSize: themeExtension.horizontalSideTitleReversedSize,
-              getTitlesWidget: (value, _) => _SideTitle(value, Axis.horizontal),
+          // Label configuration.
+          titlesData: FlTitlesData(
+            topTitles: disabledTitle,
+            bottomTitles: enabledTitle.copyWith(
+              sideTitles: enabledTitle.sideTitles.copyWith(
+                reservedSize: themeExtension.horizontalSideTitleReversedSize,
+                getTitlesWidget: (value, _) => _SideTitle(value, Axis.horizontal),
+              ),
             ),
-          ),
-          leftTitles: enabledTitle.copyWith(
-            sideTitles: enabledTitle.sideTitles.copyWith(
-              reservedSize: themeExtension.verticalSideTitleReversedSize,
-              getTitlesWidget: (value, _) => _SideTitle(value, Axis.vertical),
+            leftTitles: enabledTitle.copyWith(
+              sideTitles: enabledTitle.sideTitles.copyWith(
+                reservedSize: themeExtension.verticalSideTitleReversedSize,
+                getTitlesWidget: (value, _) => _SideTitle(value, Axis.vertical),
+              ),
             ),
+            rightTitles: disabledTitle,
           ),
-          rightTitles: disabledTitle,
         ),
       ),
     );
