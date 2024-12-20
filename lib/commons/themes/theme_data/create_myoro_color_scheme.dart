@@ -13,6 +13,7 @@ ColorScheme createMyoroColorScheme(bool isDarkMode) {
     onPrimary: secondary,
     secondary: primary,
     onSecondary: secondary,
+    outline: Colors.pink,
     error: MyoroColorTheme.error,
     onError: MyoroColorTheme.onError,
     surface: primary,

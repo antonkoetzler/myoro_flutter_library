@@ -4,8 +4,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Extension for [BuildContext].
 extension MyoroBuildContextExtension on BuildContext {
-  bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
-  TextTheme get textTheme => Theme.of(this).textTheme;
+  ThemeData get themeData => Theme.of(this);
+  bool get isDarkMode => themeData.brightness == Brightness.dark;
+  TextTheme get textTheme => themeData.textTheme;
   OverlayState get overlay => Overlay.of(this);
 
   T resolveThemeExtension<T extends ThemeExtension<T>>() {

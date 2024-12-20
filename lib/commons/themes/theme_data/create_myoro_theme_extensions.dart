@@ -186,6 +186,7 @@ List<ThemeExtension> createGraphThemeExtensions(ColorScheme colorScheme, TextThe
 
 List<ThemeExtension> createInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
+    const MyoroDatePickerInputThemeExtension(),
     MyoroInputThemeExtension(
       underlinedBorder: UnderlineInputBorder(
         borderSide: BorderSide(

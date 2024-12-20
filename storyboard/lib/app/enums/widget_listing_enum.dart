@@ -38,6 +38,7 @@ enum WidgetListingEnum {
     myoroPieGraphTitle,
   ]),
   inputs('Inputs', [
+    myoroDatePickerInputTitle,
     myoroInputTitle,
     myoroSearchInputTitle,
   ]),
@@ -123,6 +124,7 @@ enum WidgetListingEnum {
   static const myoroPieGraphTitle = 'MyoroPieGraph';
 
   // Inputs.
+  static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
 
@@ -205,6 +207,7 @@ enum WidgetListingEnum {
       myoroPieGraphTitle => const MyoroPieGraphWidgetShowcase(),
 
       // Inputs.
+      myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcase(),
       myoroInputTitle => const MyoroInputWidgetShowcase(),
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
 

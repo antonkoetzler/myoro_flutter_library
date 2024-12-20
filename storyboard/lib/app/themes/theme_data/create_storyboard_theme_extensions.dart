@@ -116,6 +116,9 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       centerWidgetBorderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       centerWidgetSize: 125,
     ),
+    const MyoroDatePickerInputWidgetShowcaseThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+    ),
     MyoroLayoutBuilderWidgetShowcaseThemeExtension(
       textStyle: textTheme.bodyMedium!,
       descriptionWidth: 200,
