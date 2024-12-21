@@ -119,6 +119,9 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
     const MyoroDatePickerInputWidgetShowcaseThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
     ),
+    MyoroInputWidgetShowcaseThemeExtension(
+      configurationOptionTextStyle: textTheme.titleMedium!,
+    ),
     MyoroLayoutBuilderWidgetShowcaseThemeExtension(
       textStyle: textTheme.bodyMedium!,
       descriptionWidth: 200,
