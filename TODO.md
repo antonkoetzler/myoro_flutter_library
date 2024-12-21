@@ -4,8 +4,7 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Material_apps;
-- Menus;
+- (**IN PROGRESS**) Menus;
 - Modals;
 - Radios;
 - Resolvers;

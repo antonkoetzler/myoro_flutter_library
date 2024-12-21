@@ -20,11 +20,6 @@ final class MyoroMaterialApp extends StatelessWidget {
   /// Will not override the Myoro [ThemeExtension]s.
   final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
 
-  /// If [true], this will not include the [ThemeExtension]s of the Myoro library.
-  ///
-  /// This is usually the case where you'd like to add custom styling with [ThemeExtension.copyWith] with Myoro [ThemeExtension].
-  final bool includeMyoroThemeExtensions;
-
   /// Entry point for the application.
   final MyoroScreen home;
 
@@ -33,7 +28,6 @@ final class MyoroMaterialApp extends StatelessWidget {
     required this.title,
     this.themeMode,
     this.themeExtensionsBuilder,
-    this.includeMyoroThemeExtensions = true,
     required this.home,
   });
 
@@ -44,6 +38,7 @@ final class MyoroMaterialApp extends StatelessWidget {
       // Used with [Widget]s like [MyoroDropdown] which close the dropdown when anywhere else is clicked.
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false, // To not show the "Debug" banner at the top right of the screen.
         title: title,
         home: Builder(
           builder: (context) {
@@ -52,8 +47,8 @@ final class MyoroMaterialApp extends StatelessWidget {
           },
         ),
         themeMode: themeMode ?? ThemeMode.dark,
-        theme: createMyoroThemeData(themeExtensionsBuilder, includeMyoroThemeExtensions, isDarkMode: false),
-        darkTheme: createMyoroThemeData(themeExtensionsBuilder, includeMyoroThemeExtensions, isDarkMode: true),
+        theme: createMyoroThemeData(themeExtensionsBuilder, isDarkMode: false),
+        darkTheme: createMyoroThemeData(themeExtensionsBuilder, isDarkMode: true),
       ),
     );
   }

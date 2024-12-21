@@ -16,12 +16,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///   }
 /// }
 /// ```
-final class MyoroAppBar extends StatelessWidget {
+final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// If the app bar contains a border at the bottom.
   final bool bordered;
 
   /// Content of the app bar.
   final Widget child;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   const MyoroAppBar({
     super.key,

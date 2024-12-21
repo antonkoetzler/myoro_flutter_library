@@ -8,8 +8,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ColorDesignSystem], & [TypographyDesignSystem] should be used for
 /// creating & styling widgets.
 ThemeData createMyoroThemeData(
-  MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
-  bool includeMyoroThemeExtensions, {
+  MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder, {
   required bool isDarkMode,
 }) {
   final colorScheme = createMyoroColorScheme(isDarkMode);
@@ -23,7 +22,7 @@ ThemeData createMyoroThemeData(
     tooltipTheme: createMyoroTooltipThemeData(colorScheme, textTheme),
     textSelectionTheme: createMyoroTextSelectionThemeData(colorScheme),
     extensions: [
-      if (includeMyoroThemeExtensions) ...createMyoroThemeExtensions(colorScheme, textTheme),
+      ...createMyoroThemeExtensions(colorScheme, textTheme),
       ...?themeExtensionsBuilder?.call(colorScheme, textTheme),
     ],
   );

@@ -218,7 +218,7 @@ enum WidgetListingEnum {
       myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),
 
       // Material apps.
-      myoroMaterialAppTitle => throw UnimplementedError(),
+      myoroMaterialAppTitle => const MyoroMaterialAppWidgetShowcase(),
 
       // Menus.
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
