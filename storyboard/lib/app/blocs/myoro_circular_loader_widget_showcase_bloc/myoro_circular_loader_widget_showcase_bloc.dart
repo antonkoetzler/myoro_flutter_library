@@ -11,7 +11,7 @@ typedef _Emitter = Emitter<MyoroCircularLoaderWidgetShowcaseState>;
 
 /// BloC to manage all the state in [MyoroCircularLoaderWidgetShowcase].
 final class MyoroCircularLoaderWidgetShowcaseBloc extends Bloc<MyoroCircularLoaderWidgetShowcaseEvent, MyoroCircularLoaderWidgetShowcaseState> {
-  MyoroCircularLoaderWidgetShowcaseBloc() : super(const MyoroCircularLoaderWidgetShowcaseState()) {
+  MyoroCircularLoaderWidgetShowcaseBloc({required double size}) : super(MyoroCircularLoaderWidgetShowcaseState(size: size)) {
     on<SetColorEvent>(_setColorEvent);
     on<SetSizeEvent>(_setSizeEvent);
   }
@@ -20,6 +20,7 @@ final class MyoroCircularLoaderWidgetShowcaseBloc extends Bloc<MyoroCircularLoad
     emit(
       state.copyWith(
         color: event.color,
+        colorEnabled: event.color != null,
       ),
     );
   }

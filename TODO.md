@@ -4,7 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Loaders;
 - Material_apps;
 - Menus;
 - Modals;

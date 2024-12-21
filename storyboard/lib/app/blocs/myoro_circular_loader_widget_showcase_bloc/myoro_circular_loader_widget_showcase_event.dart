@@ -8,11 +8,11 @@ sealed class MyoroCircularLoaderWidgetShowcaseEvent {
 final class SetColorEvent extends MyoroCircularLoaderWidgetShowcaseEvent {
   final Color? color;
 
-  const SetColorEvent(this.color);
+  const SetColorEvent([this.color]);
 }
 
 final class SetSizeEvent extends MyoroCircularLoaderWidgetShowcaseEvent {
-  final double? size;
+  final double size;
 
   const SetSizeEvent(this.size);
 }
