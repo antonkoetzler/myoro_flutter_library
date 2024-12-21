@@ -11,6 +11,9 @@ final class MyoroSearchInput<T> extends StatefulWidget {
   /// [MyoroInput] configuration.
   final MyoroInputConfiguration configuration;
 
+  /// If [request] will be ran everytime the input's text changes rather than when the input is submitted.
+  final bool requestWhenChanged;
+
   /// Search request.
   final MyoroSearchInputRequest<T> request;
 
@@ -20,6 +23,7 @@ final class MyoroSearchInput<T> extends StatefulWidget {
   const MyoroSearchInput({
     super.key,
     required this.configuration,
+    this.requestWhenChanged = false,
     required this.request,
     required this.itemBuilder,
   });
@@ -30,6 +34,7 @@ final class MyoroSearchInput<T> extends StatefulWidget {
 
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   MyoroInputConfiguration get _configuration => widget.configuration;
+  bool get _requestWhenChanged => widget.requestWhenChanged;
   MyoroSearchInputRequest<T> get _request => widget.request;
   MyoroMenuItemBuilder<T> get _itemBuilder => widget.itemBuilder;
 
@@ -78,6 +83,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                 configuration: _configuration.copyWith(
                   controller: _textController,
                   suffix: _SearchButton(status, controller),
+                  onChanged: _requestWhenChanged ? (_) => _formController.finish() : null,
                   onFieldSubmitted: (_) => _formController.finish(),
                 ),
               ),

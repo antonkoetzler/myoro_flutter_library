@@ -4,7 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- (**IN PROGRESS**) Inputs;
 - Loaders;
 - Material_apps;
 - Menus;
@@ -18,7 +17,6 @@
 - Tooltips;
 - (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.
 
-1. Make theme extensions nullable at set the default styles in the widget;
 1. Widget tests;
 1. Resolve TODOs;
 1. Documentation;

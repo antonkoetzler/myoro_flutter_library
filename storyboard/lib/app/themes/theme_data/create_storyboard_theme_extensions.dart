@@ -121,7 +121,11 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
     ),
     MyoroInputWidgetShowcaseThemeExtension(
       configurationOptionTextStyle: textTheme.titleMedium!,
+      configurationOptionSpacing: 20,
+      inputStyle: MyoroInputStyleEnum.outlined,
+      suffixWidgetIcon: Icons.flag,
     ),
+    const MyoroSearchInputWidgetShowcaseThemeExtension(),
     MyoroLayoutBuilderWidgetShowcaseThemeExtension(
       textStyle: textTheme.bodyMedium!,
       descriptionWidth: 200,
