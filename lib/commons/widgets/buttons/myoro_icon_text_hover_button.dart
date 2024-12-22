@@ -63,9 +63,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
             : (configuration?.onPrimaryColor ?? themeExtension.onPrimaryColor);
 
         return Padding(
-          padding: contentPadding.copyWith(
-              // left: contentPadding.left - (iconAndTextNotNull ? 0 : 0),
-              ),
+          padding: contentPadding,
           child: Row(
             mainAxisAlignment: mainAxisAlignment ?? themeExtension.mainAxisAlignment,
             children: [

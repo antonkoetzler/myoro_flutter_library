@@ -10,20 +10,8 @@ typedef MyoroMenuItemBuilder<T> = MyoroMenuItem Function(T item);
 /// A menu widget that should not be used in production code, it is used
 /// within [MyoroDropdown] & [MyoroInput] similar to the software dmenu.
 final class MyoroMenu<T> extends StatelessWidget {
-  /// Max height constraint of the menu.
-  final double? maxHeight;
-
-  /// Max width constraint of the menu.
-  final double? maxWidth;
-
-  /// Size of the [Icon] in [_Item].
-  final double? iconSize;
-
-  /// Text style of the [Text] in [_Item].
-  final TextStyle? textStyle;
-
-  /// Text alignment of the [Text] in [_Item].
-  final TextAlign? textAlign;
+  /// Constraints of the menu.
+  final BoxConstraints? constraints;
 
   /// Search callback that:
   /// 1. Places a searchbar at the top of the items;
@@ -38,11 +26,7 @@ final class MyoroMenu<T> extends StatelessWidget {
 
   const MyoroMenu({
     super.key,
-    this.maxHeight,
-    this.maxWidth,
-    this.iconSize,
-    this.textStyle,
-    this.textAlign,
+    this.constraints,
     this.searchCallback,
     required this.dataConfiguration,
     required this.itemBuilder,
@@ -59,17 +43,14 @@ final class MyoroMenu<T> extends StatelessWidget {
         borderRadius: themeExtension.borderRadius,
       ),
       child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: maxHeight ?? themeExtension.maxHeight,
-          maxWidth: maxWidth ?? themeExtension.maxWidth,
-        ),
+        constraints: constraints ?? const BoxConstraints(),
         child: MyoroResolver(
           request: () async => await dataConfiguration.items,
           builder: (List<T>? items, MyoroRequestEnum status, _, __) {
             return switch (status) {
               MyoroRequestEnum.idle => const _Loader(),
               MyoroRequestEnum.loading => const _Loader(),
-              MyoroRequestEnum.success => _Items(searchCallback, itemBuilder, items!, iconSize, textStyle, textAlign),
+              MyoroRequestEnum.success => _Items(searchCallback, itemBuilder, items!),
               MyoroRequestEnum.error => const _DialogText('Error getting items.'),
             };
           },
@@ -90,29 +71,21 @@ final class _Items<T> extends StatefulWidget {
   final MyoroMenuSearchCallback<T>? _searchCallback;
   final MyoroMenuItemBuilder<T> _itemBuilder;
   final List<T> _items;
-  final double? _iconSize;
-  final TextStyle? _textStyle;
-  final TextAlign? _textAlign;
 
   const _Items(
     this._searchCallback,
     this._itemBuilder,
     this._items,
-    this._iconSize,
-    this._textStyle,
-    this._textAlign,
   );
 
   @override
   State<_Items<T>> createState() => _ItemsState<T>();
 }
 
-class _ItemsState<T> extends State<_Items<T>> {
+final class _ItemsState<T> extends State<_Items<T>> {
   MyoroMenuSearchCallback<T>? get _searchCallback => widget._searchCallback;
   MyoroMenuItemBuilder<T> get _itemBuilder => widget._itemBuilder;
-  double? get _iconSize => widget._iconSize;
-  TextStyle? get _textStyle => widget._textStyle;
-  TextAlign? get _textAlign => widget._textAlign;
+  List<Widget> get _itemWidgets => _items.map<Widget>((T item) => _Item(_itemBuilder.call(item))).toList();
 
   late List<T> _items = widget._items;
 
@@ -137,22 +110,14 @@ class _ItemsState<T> extends State<_Items<T>> {
         bottomRight: Radius.circular(borderRadius.topLeft.x - 4),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           if (_searchCallback != null) _SearchBar(_onSearch),
           if (_items.isNotEmpty) ...[
             Flexible(
               child: MyoroScrollable(
                 scrollableType: MyoroScrollableEnum.singleChildScrollView,
-                children: [
-                  ..._items.map<Widget>(
-                    (T item) => _Item(
-                      _itemBuilder.call(item),
-                      _iconSize,
-                      _textStyle,
-                      _textAlign,
-                    ),
-                  )
-                ],
+                children: _itemWidgets,
               ),
             ),
           ] else ...[
@@ -177,7 +142,7 @@ final class _SearchBar<T> extends StatefulWidget {
   State<_SearchBar<T>> createState() => _SearchBarState<T>();
 }
 
-class _SearchBarState<T> extends State<_SearchBar<T>> {
+final class _SearchBarState<T> extends State<_SearchBar<T>> {
   void Function(String query) get _onChanged => widget._onChanged;
 
   final _focusNode = FocusNode();
@@ -207,16 +172,8 @@ class _SearchBarState<T> extends State<_SearchBar<T>> {
 
 final class _Item extends StatelessWidget {
   final MyoroMenuItem _item;
-  final double? _iconSize;
-  final TextStyle? _textStyle;
-  final TextAlign? _textAlign;
 
-  const _Item(
-    this._item,
-    this._iconSize,
-    this._textStyle,
-    this._textAlign,
-  );
+  const _Item(this._item);
 
   @override
   Widget build(BuildContext context) {
@@ -227,7 +184,7 @@ final class _Item extends StatelessWidget {
 
     if (_item.itemBuilder != null) {
       return MyoroHoverButton(
-        configuration: configuration.copyWith(),
+        configuration: configuration,
         builder: _item.itemBuilder!,
         onPressed: _item.onPressed,
       );
@@ -236,10 +193,10 @@ final class _Item extends StatelessWidget {
     return MyoroIconTextHoverButton(
       configuration: configuration,
       icon: _item.icon,
-      iconSize: _iconSize,
+      iconSize: _item.iconSize,
       text: _item.text,
-      textStyle: _textStyle,
-      textAlign: _textAlign,
+      textStyle: _item.textStyle,
+      textAlign: _item.textAlign,
       onPressed: _item.onPressed,
     );
   }

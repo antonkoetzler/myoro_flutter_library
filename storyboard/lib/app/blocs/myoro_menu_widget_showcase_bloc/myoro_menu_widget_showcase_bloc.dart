@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -12,22 +12,44 @@ typedef _Emitter = Emitter<MyoroMenuWidgetShowcaseState>;
 /// BloC to manage all of the options in [MyoroMenuWidgetShowcase].
 final class MyoroMenuWidgetShowcaseBloc extends Bloc<MyoroMenuWidgetShowcaseEvent, MyoroMenuWidgetShowcaseState> {
   MyoroMenuWidgetShowcaseBloc() : super(const MyoroMenuWidgetShowcaseState()) {
-    on<SetIconSizeEvent>(_setIconSizeEvent);
-    on<SetItemCountEvent>(_setItemCountEvent);
+    on<SetMinWidthEvent>(_setMinWidthEvent);
+    on<SetMaxWidthEvent>(_setMaxWidthEvent);
+    on<SetMinHeightEvent>(_setMinHeightEvent);
+    on<SetMaxHeightEvent>(_setMaxHeightEvent);
   }
 
-  void _setIconSizeEvent(SetIconSizeEvent event, _Emitter emit) {
+  void _setMinWidthEvent(SetMinWidthEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        iconSize: event.iconSize,
+        minWidth: event.minWidth,
+        enableMinWidth: event.minWidth != null,
       ),
     );
   }
 
-  void _setItemCountEvent(SetItemCountEvent event, _Emitter emit) {
+  void _setMaxWidthEvent(SetMaxWidthEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        itemCount: event.itemCount,
+        maxWidth: event.maxWidth,
+        enableMaxWidth: event.maxWidth != null,
+      ),
+    );
+  }
+
+  void _setMinHeightEvent(SetMinHeightEvent event, _Emitter emit) {
+    emit(
+      state.copyWith(
+        minHeight: event.minHeight,
+        enableMinHeight: event.minHeight != null,
+      ),
+    );
+  }
+
+  void _setMaxHeightEvent(SetMaxHeightEvent event, _Emitter emit) {
+    emit(
+      state.copyWith(
+        maxHeight: event.maxHeight,
+        enableMaxHeight: event.maxHeight != null,
       ),
     );
   }

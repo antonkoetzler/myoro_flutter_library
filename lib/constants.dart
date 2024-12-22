@@ -18,9 +18,6 @@ const kMyoroGraphSideTitleInterval = 0.2;
 const kMyoroGraphVerticalSideTitleReversedSize = 48.0;
 const kMyoroGraphHorizontalSideTitleReversedSize = 22.0;
 
-// Menus.
-const kMyoroMenuMaxSize = Size(400, 300);
-
 // Tooltips.
 const kMyoroTooltipWaitDuration = Duration(milliseconds: 200);
 

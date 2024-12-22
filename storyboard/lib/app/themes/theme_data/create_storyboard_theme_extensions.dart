@@ -143,7 +143,11 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       themeModeOptionTextStyle: textTheme.headlineSmall!,
       themeModeOptionSpacing: 10,
     ),
-    const MyoroMenuWidgetShowcaseThemeExtension(),
+    MyoroMenuWidgetShowcaseThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+      constraintsOptionSpacing: 10,
+      headerTextStyle: textTheme.headlineSmall!,
+    ),
     const MyoroModalWidgetShowcaseThemeExtension(),
     const MyoroDialogModalWidgetShowcaseThemeExtension(),
     const MyoroGroupRadioWidgetShowcaseThemeExtension(),

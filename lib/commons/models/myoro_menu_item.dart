@@ -19,17 +19,29 @@ final class MyoroMenuItem extends Equatable {
   /// [IconData] of the item.
   final IconData? icon;
 
+  /// Size of the [Icon].
+  final double? iconSize;
+
   /// Text of the item.
   final String? text;
 
-  /// [MyoroMenuItemBuilder] of the item.
+  /// Text style of the [Text].
+  final TextStyle? textStyle;
+
+  /// Text alignment of the [Text].
+  final TextAlign? textAlign;
+
+  /// [MyoroMenuItemBuilder] of the item for a customized [Widget].
   final MyoroHoverButtonBuilder? itemBuilder;
 
   const MyoroMenuItem({
     this.isHovered,
     this.onPressed,
     this.icon,
+    this.iconSize,
     this.text,
+    this.textStyle,
+    this.textAlign,
     this.itemBuilder,
   }) : assert(
           itemBuilder != null ? (icon == null && text == null) : (icon != null || text != null),
@@ -41,7 +53,10 @@ final class MyoroMenuItem extends Equatable {
     bool? isHovered,
     VoidCallback? onPressed,
     IconData? icon,
+    double? iconSize,
     String? text,
+    TextStyle? textStyle,
+    TextAlign? textAlign,
     MyoroHoverButtonBuilder? itemBuilder,
   }) {
     return MyoroMenuItem(
@@ -57,7 +72,10 @@ final class MyoroMenuItem extends Equatable {
       : isHovered = faker.randomGenerator.boolean(),
         onPressed = null,
         icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        iconSize = null,
         text = faker.randomGenerator.string(50),
+        textStyle = null,
+        textAlign = null,
         itemBuilder = null;
 
   @override
@@ -66,7 +84,10 @@ final class MyoroMenuItem extends Equatable {
       '  isHovered: $isHovered,\n'
       '  onPressed: $onPressed\n,'
       '  icon: $icon\n,'
+      '  iconSize: $iconSize,\n'
       '  text: $text\n,'
+      '  textStyle: $textStyle,\n'
+      '  textAlign: $textAlign,\n'
       '  itemBuilder: $itemBuilder,\n'
       ');';
 
@@ -76,7 +97,10 @@ final class MyoroMenuItem extends Equatable {
       isHovered,
       onPressed,
       icon,
+      iconSize,
       text,
+      textStyle,
+      textAlign,
       itemBuilder,
     ];
   }

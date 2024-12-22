@@ -153,7 +153,6 @@ final class _SearchSection<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroMenu(
-      maxWidth: double.infinity,
       itemBuilder: itemBuilder,
       dataConfiguration: MyoroDataConfiguration(staticItems: results!),
     );

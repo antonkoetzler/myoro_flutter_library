@@ -330,7 +330,6 @@ final class _Dropdown<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroMenu(
-      maxWidth: double.infinity,
       searchCallback: _searchCallback,
       itemBuilder: (T item) {
         final MyoroMenuItem builtItem = _itemBuilder.call(item);

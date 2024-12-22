@@ -5,14 +5,32 @@ sealed class MyoroMenuWidgetShowcaseEvent {
   const MyoroMenuWidgetShowcaseEvent();
 }
 
-final class SetIconSizeEvent extends MyoroMenuWidgetShowcaseEvent {
-  final double? iconSize;
+final class SetMinWidthEvent extends MyoroMenuWidgetShowcaseEvent {
+  final double? minWidth;
 
-  const SetIconSizeEvent(this.iconSize);
+  const SetMinWidthEvent([this.minWidth]);
 }
 
-final class SetItemCountEvent extends MyoroMenuWidgetShowcaseEvent {
-  final int itemCount;
+final class SetMaxWidthEvent extends MyoroMenuWidgetShowcaseEvent {
+  final double? maxWidth;
 
-  const SetItemCountEvent(this.itemCount);
+  const SetMaxWidthEvent([this.maxWidth]);
+}
+
+final class SetMinHeightEvent extends MyoroMenuWidgetShowcaseEvent {
+  final double? minHeight;
+
+  const SetMinHeightEvent([this.minHeight]);
+}
+
+final class SetMaxHeightEvent extends MyoroMenuWidgetShowcaseEvent {
+  final double? maxHeight;
+
+  const SetMaxHeightEvent([this.maxHeight]);
+}
+
+final class SetSearchCallbackEnabledEvent extends MyoroMenuWidgetShowcaseEvent {
+  final bool enabled;
+
+  const SetSearchCallbackEnabledEvent(this.enabled);
 }

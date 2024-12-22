@@ -248,8 +248,6 @@ List<ThemeExtension> createMaterialAppThemeExtensions() {
 List<ThemeExtension> createMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroMenuThemeExtension(
-      maxHeight: kMyoroMenuMaxSize.height,
-      maxWidth: kMyoroMenuMaxSize.width,
       primaryColor: colorScheme.primary,
       border: Border.all(
         width: kMyoroBorderLength,

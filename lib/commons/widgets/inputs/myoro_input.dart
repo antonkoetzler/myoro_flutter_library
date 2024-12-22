@@ -48,18 +48,9 @@ final class MyoroInput extends StatefulWidget {
     int? decimalPlaces,
     required MyoroInputConfiguration configuration,
   }) {
-    final controllerProvided = configuration.controller != null;
-    final text = (min ?? 0).toStringAsFixed(decimalPlaces ?? 0);
-
-    if (controllerProvided && configuration.controller!.text.isEmpty == true) {
-      configuration.controller!.text = text;
-    }
-
     return MyoroInput(
       key: key,
-      configuration: configuration.copyWith(
-        controller: controllerProvided ? null : TextEditingController(text: text),
-      ),
+      configuration: configuration,
       formatter: MyoroNumberInputFormatter(
         min: min,
         max: max,
@@ -104,6 +95,13 @@ final class _MyoroInputState extends State<MyoroInput> {
     _controller.addListener(_listener);
     _enabled = _configuration.enabled ?? true;
     _showClearTextButtonNotifier = ValueNotifier(_showClearTextButton);
+
+    /// [MyoroInput.number] init configuration.
+    if (_formatter is MyoroNumberInputFormatter && _controller.text.isEmpty) {
+      final formatter = _formatter as MyoroNumberInputFormatter;
+      final text = (formatter.min ?? 0).toStringAsFixed(formatter.decimalPlaces ?? 0);
+      _controller.text = text;
+    }
   }
 
   @override

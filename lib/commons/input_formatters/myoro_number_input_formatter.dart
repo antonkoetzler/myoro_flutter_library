@@ -12,6 +12,8 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
     this.decimalPlaces,
   });
 
+  String _formatResult(double formattedResult) => formattedResult.toStringAsFixed(decimalPlaces ?? 0);
+
   @override
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     // Accepts only numbers.
@@ -22,7 +24,8 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
       return TextEditingValue(text: (min ?? 0).toStringAsFixed(decimalPlaces ?? 0));
     }
 
-    double result = 0;
+    String formattedResult = '';
+    int selection = 0;
     final bool cursorOnLastCharacter = newValue.selection.baseOffset == newValue.text.length;
     final bool decimalPlacesNotNull = decimalPlaces != null;
     final double newValueAsDouble = double.parse(newValue.text);
@@ -47,15 +50,17 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
             final temp = newValueAsDouble * 10;
 
             // Checking that the number isn't greater than the max.
-            result = _isGreaterThenMax(temp) ? max! : temp;
+            formattedResult = _formatResult(_isGreaterThenMax(temp) ? max! : temp);
           } else {
-            // If it's only integers, we don't have to do anything.
-            result = _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble;
+            // If it's only integers, we don't have to do anyting.
+            formattedResult = _formatResult(_isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
           }
+          selection = formattedResult.length;
         }
         // Case where the cursor is not at the last index.
         else {
-          result = _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble;
+          formattedResult = _formatResult(_isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
+          selection = newValue.selection.baseOffset;
         }
       }
     }
@@ -68,21 +73,26 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
         if (decimalPlacesNotNull) {
           // Dividing by 10 to shift everything to the right.
           final double temp = newValueAsDouble / 10;
-          result = _isLessThenMin(temp) ? (min ?? 0) : temp;
+          formattedResult = _formatResult(_isLessThenMin(temp) ? (min ?? 0) : temp);
         } else {
           // If it's only integers, we don't have to do anything.
-          result = _isLessThenMin(newValueAsDouble) ? (min ?? 0) : newValueAsDouble;
+          formattedResult = _formatResult(_isLessThenMin(newValueAsDouble) ? (min ?? 0) : newValueAsDouble);
         }
+        selection = formattedResult.toString().length;
       }
       // Case where the cursor is not at the last index.
       else {
-        result = newValueAsDouble;
+        formattedResult = _formatResult(newValueAsDouble);
+        selection = newValue.selection.baseOffset;
       }
     }
 
-    final String formattedResult = result.toStringAsFixed(decimalPlaces ?? 0);
     return TextEditingValue(
       text: formattedResult,
+      selection: TextSelection(
+        baseOffset: selection,
+        extentOffset: selection,
+      ),
     );
   }
 
