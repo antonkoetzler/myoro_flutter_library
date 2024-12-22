@@ -4,7 +4,7 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Modals;
+- (**IN PROGRESS**) Modals (**BASE DONE, NOW DO DIALOG**);
 - Radios;
 - Resolvers;
 - Screens;
@@ -14,6 +14,7 @@
 - Tooltips;
 - (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.
 
+1. Fix deprecation;
 1. Widget tests;
 1. Resolve TODOs;
 1. Documentation;
