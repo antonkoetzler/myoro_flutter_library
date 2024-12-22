@@ -4,7 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- (**IN PROGRESS**) Modals (**BASE DONE, NOW DO DIALOG**);
 - Radios;
 - Resolvers;
 - Screens;

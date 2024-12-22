@@ -153,7 +153,10 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       headerTextStyle: textTheme.headlineSmall!,
       inputStyle: MyoroInputStyleEnum.outlined,
     ),
-    const MyoroDialogModalWidgetShowcaseThemeExtension(),
+    MyoroDialogModalWidgetShowcaseThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+      childBorderRadius: BorderRadius.circular(kMyoroBorderLength),
+    ),
     const MyoroGroupRadioWidgetShowcaseThemeExtension(),
     const MyoroRadioWidgetShowcaseThemeExtension(),
     MyoroSliderWidgetShowcaseThemeExtension(

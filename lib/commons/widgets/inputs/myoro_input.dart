@@ -105,6 +105,12 @@ final class _MyoroInputState extends State<MyoroInput> {
   }
 
   @override
+  void didUpdateWidget(covariant MyoroInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _enabled = _configuration.enabled ?? true;
+  }
+
+  @override
   void dispose() {
     _controller.removeListener(_listener);
     if (_configuration.controller == null) _controller.dispose();
