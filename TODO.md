@@ -4,8 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Radios;
-- Resolvers;
 - Screens;
 - Scrollables;
 - (**BEFORE DOING THIS, ADD A TOOLTIP ON THUMB AND VALUES ON THE SIDES**) Sliders;
@@ -23,4 +21,5 @@
 ## Future
 
 1. Tri-color design scheme with the blue;
-1. Implement notifications.
+1. Implement notifications;
+1. Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.

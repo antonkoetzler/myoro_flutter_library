@@ -232,7 +232,7 @@ enum WidgetListingEnum {
       myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcase(),
 
       // Resolvers.
-      myoroResolverTitle => throw UnimplementedError(),
+      myoroResolverTitle => const MyoroResolverWidgetShowcase(),
 
       // Screens.
       myoroScreenTitle => throw UnimplementedError(),

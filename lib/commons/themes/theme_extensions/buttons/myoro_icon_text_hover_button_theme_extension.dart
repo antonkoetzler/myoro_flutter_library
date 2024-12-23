@@ -17,9 +17,6 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   /// Default typography of the text.
   final TextStyle textStyle;
 
-  /// Default [TextAlign] of the text.
-  final TextAlign textAlign;
-
   /// Max lines allowed in the text.
   final int textMaxLines;
 
@@ -37,7 +34,6 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     required this.onPrimaryColor,
     required this.contentPadding,
     required this.textStyle,
-    required this.textAlign,
     required this.textMaxLines,
     required this.textOverflow,
     required this.spacing,
@@ -50,7 +46,6 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     Color? onPrimaryColor,
     EdgeInsets? contentPadding,
     TextStyle? textStyle,
-    TextAlign? textAlign,
     int? textMaxLines,
     TextOverflow? textOverflow,
     double? spacing,
@@ -61,7 +56,6 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       onPrimaryColor: onPrimaryColor ?? this.onPrimaryColor,
       contentPadding: contentPadding ?? this.contentPadding,
       textStyle: textStyle ?? this.textStyle,
-      textAlign: textAlign ?? this.textAlign,
       textMaxLines: textMaxLines ?? this.textMaxLines,
       textOverflow: textOverflow ?? this.textOverflow,
       spacing: spacing ?? this.spacing,
@@ -80,7 +74,6 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       onPrimaryColor: Color.lerp(onPrimaryColor, other.onPrimaryColor, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      textAlign: MyoroLerpHelper.lerp(textAlign, other.textAlign, t),
       textMaxLines: lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)?.toInt(),
       textOverflow: MyoroLerpHelper.lerp(textOverflow, other.textOverflow, t),
       spacing: lerpDouble(spacing, other.spacing, t),

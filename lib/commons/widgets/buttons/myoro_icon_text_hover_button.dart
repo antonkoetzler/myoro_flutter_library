@@ -75,10 +75,10 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
                 ),
               if (iconAndTextNotNull) SizedBox(width: themeExtension.spacing),
               if (textNotNull)
-                Flexible(
+                Expanded(
                   child: Text(
                     text!,
-                    textAlign: textAlign ?? themeExtension.textAlign,
+                    textAlign: textAlign ?? (iconNotNull ? TextAlign.left : TextAlign.center),
                     maxLines: themeExtension.textMaxLines,
                     overflow: themeExtension.textOverflow,
                     style: (textStyle ?? themeExtension.textStyle).withColor(

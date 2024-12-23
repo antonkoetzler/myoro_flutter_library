@@ -62,7 +62,6 @@ List<ThemeExtension> createButtonThemeExtensions(ColorScheme colorScheme, TextTh
       onPrimaryColor: colorScheme.onPrimary,
       contentPadding: const EdgeInsets.all(5),
       textStyle: textTheme.bodyMedium!,
-      textAlign: TextAlign.left,
       textMaxLines: 1,
       textOverflow: TextOverflow.ellipsis,
       spacing: 5,

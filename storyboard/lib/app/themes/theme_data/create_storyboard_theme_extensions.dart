@@ -158,7 +158,14 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       childBorderRadius: BorderRadius.circular(kMyoroBorderLength),
     ),
     const MyoroGroupRadioWidgetShowcaseThemeExtension(),
-    const MyoroRadioWidgetShowcaseThemeExtension(),
+    const MyoroResolverWidgetShowcaseThemeExtension(
+      buttonBordered: true,
+      buttonTextAlign: TextAlign.center,
+      spacing: 10,
+    ),
+    const MyoroRadioWidgetShowcaseThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+    ),
     MyoroSliderWidgetShowcaseThemeExtension(
       widgetSliderValueTextStyle: textTheme.headlineSmall!,
       widgetSliderLabelSpacing: 5,

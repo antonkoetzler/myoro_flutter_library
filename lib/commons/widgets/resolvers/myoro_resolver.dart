@@ -17,7 +17,7 @@ typedef MyoroResolverOnError = Function(String errorMessage);
 /// 1. [result]: Result of your request;
 /// 2. [status]: [RequestEnum] status of the request;
 /// 3. [controller]: [MyoroResolverController] connected to this instance so you don't need to create your own.
-typedef MyoroResolverBuilder<T> = Function(
+typedef MyoroResolverBuilder<T> = Widget Function(
   T? result,
   MyoroRequestEnum status,
   String? errorMessage,

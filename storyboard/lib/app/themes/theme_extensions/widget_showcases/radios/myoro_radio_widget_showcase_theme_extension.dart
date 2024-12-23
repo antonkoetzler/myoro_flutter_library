@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroRadioWidgetShowcase].
 final class MyoroRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroRadioWidgetShowcaseThemeExtension> {
-  const MyoroRadioWidgetShowcaseThemeExtension();
+  /// [MyoroInputStyleEnum] of inputs.
+  final MyoroInputStyleEnum inputStyle;
+
+  const MyoroRadioWidgetShowcaseThemeExtension({
+    required this.inputStyle,
+  });
 
   @override
-  MyoroRadioWidgetShowcaseThemeExtension copyWith() {
-    return const MyoroRadioWidgetShowcaseThemeExtension();
+  MyoroRadioWidgetShowcaseThemeExtension copyWith({
+    MyoroInputStyleEnum? inputStyle,
+  }) {
+    return MyoroRadioWidgetShowcaseThemeExtension(
+      inputStyle: inputStyle ?? this.inputStyle,
+    );
   }
 
   @override
@@ -15,6 +25,9 @@ final class MyoroRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroR
     covariant ThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
-    return this;
+    if (other is! MyoroRadioWidgetShowcaseThemeExtension) return this;
+    return copyWith(
+      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+    );
   }
 }
