@@ -163,13 +163,23 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       buttonTextAlign: TextAlign.center,
       spacing: 10,
     ),
+    MyoroScreenWidgetShowcaseThemeExtension(
+      appBarTitleTextStyle: textTheme.titleMedium!.copyWith(height: 1.1),
+      appBarSubtitleTextStyle: textTheme.bodySmall!.copyWith(height: 1.1),
+      appBarMenuButtonIcon: Icons.menu,
+      bodyImageBorderRadius: BorderRadius.circular(kMyoroBorderLength),
+      bodyImageSize: 150,
+      bodyTextStyle: textTheme.bodyMedium!,
+      bodySpacing: 10,
+    ),
+    const MyoroScrollableWidgetShowcaseThemeExtension(
+      itemBordered: true,
+      itemPadding: EdgeInsets.all(5),
+    ),
     const MyoroRadioWidgetShowcaseThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
     ),
-    MyoroSliderWidgetShowcaseThemeExtension(
-      widgetSliderValueTextStyle: textTheme.headlineSmall!,
-      widgetSliderLabelSpacing: 5,
-    ),
+    const MyoroSliderWidgetShowcaseThemeExtension(),
     const MyoroSnackBarWidgetShowcaseThemeExtension(),
     const MyoroTableWidgetShowcaseThemeExtension(),
     MyoroTooltipWidgetShowcaseThemeExtension(

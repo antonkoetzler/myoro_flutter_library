@@ -16,6 +16,8 @@ export 'menus/exports.dart';
 export 'modals/exports.dart';
 export 'radios/exports.dart';
 export 'resolvers/exports.dart';
+export 'screens/exports.dart';
+export 'scrollables/exports.dart';
 export 'sliders/exports.dart';
 export 'snack_bars/exports.dart';
 export 'tables/exports.dart';

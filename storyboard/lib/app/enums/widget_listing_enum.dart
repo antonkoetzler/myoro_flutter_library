@@ -155,7 +155,7 @@ enum WidgetListingEnum {
   static const myoroScreenTitle = 'MyoroScreen';
 
   // Scrollables.
-  static const myoroScrollableTitle = 'MyotoScrollable';
+  static const myoroScrollableTitle = 'MyoroScrollable';
 
   // Sliders.
   static const myoroSliderTitle = 'MyoroSlider';
@@ -235,10 +235,10 @@ enum WidgetListingEnum {
       myoroResolverTitle => const MyoroResolverWidgetShowcase(),
 
       // Screens.
-      myoroScreenTitle => throw UnimplementedError(),
+      myoroScreenTitle => const MyoroScreenWidgetShowcase(),
 
       // Scrollables.
-      myoroScrollableTitle => throw UnimplementedError(),
+      myoroScrollableTitle => const MyoroScrollableWidgetShowcase(),
 
       // Sliders.
       myoroSliderTitle => const MyoroSliderWidgetShowcase(),

@@ -4,9 +4,7 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Screens;
-- Scrollables;
-- (**BEFORE DOING THIS, ADD A TOOLTIP ON THUMB AND VALUES ON THE SIDES**) Sliders;
+- Sliders;
 - Snack_bars;
 - Tooltips;
 - (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.

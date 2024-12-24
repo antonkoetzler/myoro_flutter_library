@@ -332,10 +332,10 @@ List<ThemeExtension> createScrollableThemeExtensions() {
 List<ThemeExtension> createSliderThemeExtensions(TextTheme textTheme) {
   return [
     MyoroSliderThemeExtension(
+      spacing: 2,
       labelTextStyle: textTheme.headlineSmall!,
       sliderPadding: EdgeInsets.zero,
-      labelSliderSpacing: 5,
-      footerLabelTextStyle: textTheme.bodySmall!.copyWith(height: 0.5),
+      indicatorTextStyle: textTheme.bodySmall!.copyWith(height: 0.5),
     ),
   ];
 }
