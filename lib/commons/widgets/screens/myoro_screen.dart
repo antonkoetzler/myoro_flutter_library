@@ -24,7 +24,7 @@ final class MyoroScreen extends StatefulWidget {
   State<MyoroScreen> createState() => _MyoroScreenState();
 }
 
-class _MyoroScreenState extends State<MyoroScreen> {
+final class _MyoroScreenState extends State<MyoroScreen> {
   PreferredSizeWidget? get _appBar => widget.appBar;
   Widget get _body => widget.body;
 
