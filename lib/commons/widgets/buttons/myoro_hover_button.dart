@@ -47,7 +47,7 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
     final themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
     return MyoroTooltip(
-      text: _configuration?.tooltip,
+      text: _configuration?.tooltip ?? '',
       child: InkWell(
         focusColor: MyoroColorTheme.transparent,
         hoverColor: MyoroColorTheme.transparent,

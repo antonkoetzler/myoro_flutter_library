@@ -1,33 +1,42 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroTooltipWidgetShowcase].
 final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension> {
-  /// [MyoroTooltip.margin].
-  final EdgeInsets? tooltipMargin;
+  /// [MyoroInputStyleEnum] of inputs.
+  final MyoroInputStyleEnum inputStyle;
 
-  /// Size of the [Container] in [_Widget].
-  final Size containerSize;
+  /// Size of [_Child].
+  final double childSize;
 
-  /// [TextStyle] of the [Text] in [_Widget].
-  final TextStyle containerTextStyle;
+  /// [BoxDecoration] of [_Child]'s [Container].
+  final BoxDecoration childDecoration;
+
+  /// [TextStyle] of [_Child]'s [Text].
+  final TextStyle childTextStyle;
 
   const MyoroTooltipWidgetShowcaseThemeExtension({
-    required this.tooltipMargin,
-    required this.containerSize,
-    required this.containerTextStyle,
+    required this.inputStyle,
+    required this.childSize,
+    required this.childDecoration,
+    required this.childTextStyle,
   });
 
   @override
   MyoroTooltipWidgetShowcaseThemeExtension copyWith({
-    EdgeInsets? tooltipMargin,
-    Size? containerSize,
-    TextStyle? containerTextStyle,
+    MyoroInputStyleEnum? inputStyle,
+    double? childSize,
+    BoxDecoration? childDecoration,
+    TextStyle? childTextStyle,
   }) {
     return MyoroTooltipWidgetShowcaseThemeExtension(
-      tooltipMargin: tooltipMargin ?? this.tooltipMargin,
-      containerSize: containerSize ?? this.containerSize,
-      containerTextStyle: containerTextStyle ?? this.containerTextStyle,
+      inputStyle: inputStyle ?? this.inputStyle,
+      childSize: childSize ?? this.childSize,
+      childDecoration: childDecoration ?? this.childDecoration,
+      childTextStyle: childTextStyle ?? this.childTextStyle,
     );
   }
 
@@ -38,9 +47,10 @@ final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<Myor
   ) {
     if (other is! MyoroTooltipWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      tooltipMargin: EdgeInsets.lerp(tooltipMargin, other.tooltipMargin, t),
-      containerSize: Size.lerp(containerSize, other.containerSize, t),
-      containerTextStyle: TextStyle.lerp(containerTextStyle, other.containerTextStyle, t),
+      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      childSize: lerpDouble(childSize, other.childSize, t),
+      childDecoration: BoxDecoration.lerp(childDecoration, other.childDecoration, t),
+      childTextStyle: TextStyle.lerp(childTextStyle, other.childTextStyle, t),
     );
   }
 }

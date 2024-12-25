@@ -4,7 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Tooltips;
 - (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.
 
 1. Fix deprecation;

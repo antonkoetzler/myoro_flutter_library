@@ -191,9 +191,16 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
     ),
     const MyoroTableWidgetShowcaseThemeExtension(),
     MyoroTooltipWidgetShowcaseThemeExtension(
-      tooltipMargin: const EdgeInsets.only(top: 10),
-      containerSize: const Size(200, 50),
-      containerTextStyle: textTheme.titleMedium!,
+      inputStyle: MyoroInputStyleEnum.outlined,
+      childSize: 300,
+      childDecoration: BoxDecoration(
+        color: MyoroColorTheme.attention,
+        border: Border.all(
+          width: kMyoroBorderLength,
+          color: MyoroColorTheme.attention,
+        ),
+      ),
+      childTextStyle: textTheme.titleMedium!,
     ),
   ];
 }

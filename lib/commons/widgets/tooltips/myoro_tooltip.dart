@@ -7,16 +7,14 @@ final class MyoroTooltip extends StatelessWidget {
   final EdgeInsets? margin;
 
   /// Text of the tooltip.
-  ///
-  /// Nullable given that there could be senarios in which a tooltip conditionally shows.
-  final String? text;
+  final String text;
 
   /// [Widget] wrapping the tooltip.
   final Widget child;
 
   const MyoroTooltip({
     super.key,
-    this.text,
+    this.text = '',
     this.margin,
     required this.child,
   });
@@ -24,7 +22,7 @@ final class MyoroTooltip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(
-      message: text ?? '',
+      message: text,
       waitDuration: context.resolveThemeExtension<MyoroTooltipThemeExtension>().waitDuration,
       margin: margin,
       child: child,
