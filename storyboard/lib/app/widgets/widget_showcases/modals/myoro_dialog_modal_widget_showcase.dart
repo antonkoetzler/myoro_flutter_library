@@ -32,7 +32,7 @@ final class _Widget extends StatelessWidget {
 
   void _onConfirm(BuildContext context) {
     context.showSnackBar(
-      snackBar: const MyoroSnackBar(
+      snackBar: MyoroSnackBar(
         snackBarType: MyoroSnackBarTypeEnum.success,
         message: 'Action confirmed',
       ),
@@ -42,10 +42,11 @@ final class _Widget extends StatelessWidget {
 
   void _onCancel(BuildContext context) {
     context.showSnackBar(
-        snackBar: const MyoroSnackBar(
-      snackBarType: MyoroSnackBarTypeEnum.error,
-      message: 'Canceled',
-    ));
+      snackBar: MyoroSnackBar(
+        snackBarType: MyoroSnackBarTypeEnum.error,
+        message: 'Canceled',
+      ),
+    );
   }
 
   @override

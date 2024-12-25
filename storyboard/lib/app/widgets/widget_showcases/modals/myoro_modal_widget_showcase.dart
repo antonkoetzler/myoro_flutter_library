@@ -48,7 +48,7 @@ final class _Widget extends StatelessWidget {
               configuration: MyoroModalConfiguration(
                 barrierDismissable: state.barrierDismissable,
                 constraints: state.constraintsEnabled ? constraints : null,
-                onClosed: () => context.showSnackBar(snackBar: const MyoroSnackBar(message: 'Modal closed!')),
+                onClosed: () => context.showSnackBar(snackBar: MyoroSnackBar(message: 'Modal closed!')),
                 title: state.title,
                 showCloseButton: state.showCloseButton,
               ),

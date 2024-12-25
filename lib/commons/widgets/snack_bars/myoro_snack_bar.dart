@@ -15,19 +15,19 @@ final class MyoroSnackBar extends StatelessWidget {
   final bool showCloseButton;
 
   /// [String] content mode of the snack bar.
-  final String? message;
+  final String message;
 
   /// [Widget] content mode of the snack bar.
   final Widget? child;
 
-  const MyoroSnackBar({
+  MyoroSnackBar({
     super.key,
     this.snackBarType = MyoroSnackBarTypeEnum.standard,
     this.showCloseButton = true,
-    this.message,
+    this.message = '',
     this.child,
   }) : assert(
-          (message != null) ^ (child != null),
+          message.isNotEmpty ^ (child != null),
           '[MyoroSnackBar]: [message] (x)or [child] must be provided.',
         );
 
@@ -48,7 +48,7 @@ final class MyoroSnackBar extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (message != null) _Message(message!),
+          if (message.isNotEmpty) _Message(message),
           if (child != null) Flexible(child: child!),
           if (showCloseButton) ...[
             SizedBox(width: themeExtension.contentCloseButtonSpacing),

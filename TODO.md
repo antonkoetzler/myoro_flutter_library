@@ -4,8 +4,6 @@
 
 1. (**IN PROGRESS**) Finish all widget showcases;
 
-- Sliders;
-- Snack_bars;
 - Tooltips;
 - (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.
 

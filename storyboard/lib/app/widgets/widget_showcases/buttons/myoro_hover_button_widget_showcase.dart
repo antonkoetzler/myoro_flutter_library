@@ -33,7 +33,7 @@ final class _Widget extends StatelessWidget {
 
   void _onPressed(BuildContext context) {
     context.showSnackBar(
-      snackBar: const MyoroSnackBar(
+      snackBar: MyoroSnackBar(
         message: 'MyoroHoverButton pressed!',
       ),
     );

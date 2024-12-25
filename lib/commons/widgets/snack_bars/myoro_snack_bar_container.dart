@@ -3,6 +3,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base snack bar class extending [SnackBar] that serves as a container for
 /// the [MyoroSnackBar] that will be shown within the [MyoroSnackBarContainer].
+///
+/// NOTE: No widget showcase in the storyboard for [MyoroSnackBarContainer]
+/// as it is used in [MyoroSnackBar]'s widget showcase.
 final class MyoroSnackBarContainer extends SnackBar {
   MyoroSnackBarContainer(
     // Context to grab [MyoroSnackBarContainerThemeExtension].

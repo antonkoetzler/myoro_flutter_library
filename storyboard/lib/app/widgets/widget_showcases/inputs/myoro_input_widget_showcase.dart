@@ -36,7 +36,7 @@ final class _Widget extends StatelessWidget {
 
   void _onFieldSubmitted(BuildContext context) {
     context.showSnackBar(
-      snackBar: const MyoroSnackBar(
+      snackBar: MyoroSnackBar(
         message: 'Input submitted (enter pressed)',
       ),
     );

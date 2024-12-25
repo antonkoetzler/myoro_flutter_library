@@ -179,8 +179,16 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
     const MyoroRadioWidgetShowcaseThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
     ),
-    const MyoroSliderWidgetShowcaseThemeExtension(),
-    const MyoroSnackBarWidgetShowcaseThemeExtension(),
+    MyoroSliderWidgetShowcaseThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+      widgetSize: 300,
+      hiddenKittyContainerColor: colorScheme.onPrimary,
+    ),
+    const MyoroSnackBarWidgetShowcaseThemeExtension(
+      inputStyle: MyoroInputStyleEnum.outlined,
+      widgetBordered: true,
+      childIcon: Icons.flood,
+    ),
     const MyoroTableWidgetShowcaseThemeExtension(),
     MyoroTooltipWidgetShowcaseThemeExtension(
       tooltipMargin: const EdgeInsets.only(top: 10),
