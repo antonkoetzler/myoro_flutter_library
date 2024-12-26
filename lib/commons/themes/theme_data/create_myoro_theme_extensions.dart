@@ -26,7 +26,6 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createScrollableThemeExtensions(),
     ...createSliderThemeExtensions(textTheme),
     ...createSnackBarThemeExtensions(colorScheme, textTheme),
-    ...createTableThemeExtensions(colorScheme, textTheme),
     ...createTooltipThemeExtensions(),
   ];
 }
@@ -364,30 +363,6 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
       messageTextStyle: textTheme.bodySmall!,
       closeButtonIcon: Icons.close,
       closeButtonIconSize: 15,
-    ),
-  ];
-}
-
-List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [
-    MyoroTableThemeExtension(
-      primaryColor: colorScheme.primary,
-      border: Border.all(
-        width: kMyoroBorderLength,
-        color: colorScheme.onPrimary,
-      ),
-      borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-      columnSpacing: 21,
-      emptyTableTextStyle: textTheme.bodyMedium!,
-      errorMessageTitleTextStyle: textTheme.titleMedium!,
-      errorMessageErrorTextStyle: textTheme.bodySmall!,
-      titleColumnsCellPadding: const EdgeInsets.symmetric(vertical: 5),
-      titleColumnsCellSpacing: 5,
-      titleColumnsCellTextStyle: textTheme.bodyMedium!,
-      titleColumnsCellTextAlign: TextAlign.center,
-      rowBackgroundHoverColor: colorScheme.onPrimary.withOpacity(0.1),
-      rowBorderRadius: BorderRadius.zero,
     ),
   ];
 }

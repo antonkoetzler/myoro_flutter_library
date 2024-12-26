@@ -2,9 +2,14 @@
 
 ## Current
 
-1. (**IN PROGRESS**) Finish all widget showcases;
+1. (**IN PROGRESS**) Finish table remake + widget showcase. What does a table need?
 
-- (**BEFORE DOING THIS, REMAKE [MyoroTable]**) Tables.
+- Row/column (including title column) setup;
+- Pagination (`MyoroDataConfiguration`);
+- Ordenation (`MyoroDataConfiguration`);
+- Checkbox selection;
+- Tooltips;
+- Builders for the top of the table.
 
 1. Fix deprecation;
 1. Widget tests;
