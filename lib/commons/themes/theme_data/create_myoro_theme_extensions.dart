@@ -26,6 +26,7 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createScrollableThemeExtensions(),
     ...createSliderThemeExtensions(textTheme),
     ...createSnackBarThemeExtensions(colorScheme, textTheme),
+    ...createTableThemeExtensions(colorScheme, textTheme),
     ...createTooltipThemeExtensions(),
   ];
 }
@@ -363,6 +364,18 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
       messageTextStyle: textTheme.bodySmall!,
       closeButtonIcon: Icons.close,
       closeButtonIconSize: 15,
+    ),
+  ];
+}
+
+List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [
+    MyoroTableThemeExtension(
+      titleTextStyle: textTheme.titleSmall!,
+      errorMessageHeaderTextStyle: textTheme.titleMedium!.withColor(colorScheme.error),
+      errorMessageErrorTextStyle: textTheme.bodyMedium!.withColor(colorScheme.error),
+      errorMessageButtonConfiguration: const MyoroHoverButtonConfiguration(bordered: true),
+      errorMessageSpacing: 20,
     ),
   ];
 }

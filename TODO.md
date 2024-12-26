@@ -9,6 +9,7 @@
 - Ordenation (`MyoroDataConfiguration`);
 - Checkbox selection;
 - Tooltips;
+- Resizing columns;
 - Builders for the top of the table.
 
 1. Fix deprecation;

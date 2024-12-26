@@ -189,6 +189,7 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       widgetBordered: true,
       childIcon: Icons.flood,
     ),
+    const MyoroTableWidgetShowcaseThemeExtension(),
     MyoroTooltipWidgetShowcaseThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
       childSize: 300,
