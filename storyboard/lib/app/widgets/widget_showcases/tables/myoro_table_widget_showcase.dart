@@ -20,10 +20,17 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final columns = List.generate(
+      faker.randomGenerator.integer(10, min: 1),
+      (_) => MyoroTableColumn.fake(),
+    );
+
     return MyoroTable<String>(
-      columns: List.generate(
-        faker.randomGenerator.integer(10, min: 1),
-        (_) => MyoroTableColumn.fake(),
+      columns: columns,
+      rowBuilder: (String item) => MyoroTableRow(
+        cells: columns.map<MyoroTableCell>((_) {
+          return MyoroTableCell.fake();
+        }).toList(),
       ),
       dataConfiguration: MyoroDataConfiguration(
         asyncronousItems: () async {

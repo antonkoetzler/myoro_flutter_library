@@ -5,6 +5,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroTable].
 final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> {
+  /// [TextStyle] of [_EmptyMessage].
+  final TextStyle emptyMessageTextStyle;
+
   /// [TextStyle] of a column in [_TitleRow].
   final TextStyle titleTextStyle;
 
@@ -14,34 +17,37 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   /// [TextStyle] of the actual error at hand in [_ErrorMessage].
   final TextStyle errorMessageErrorTextStyle;
 
-  /// [MyoroHoverButtonConfiguration] configuration of the button to try again in [_ErrorMessage].
-  final MyoroHoverButtonConfiguration errorMessageButtonConfiguration;
+  /// Spacing of items in [_ErrorMessage] & [_EmptyMessage].
+  final double messageSpacing;
 
-  /// Spacing of items in [_ErrorMessage].
-  final double errorMessageSpacing;
+  /// [MyoroHoverButtonConfiguration] configuration of [_TryAgainButton].
+  final MyoroHoverButtonConfiguration tryAgainButtonConfiguration;
 
   const MyoroTableThemeExtension({
+    required this.emptyMessageTextStyle,
     required this.titleTextStyle,
     required this.errorMessageHeaderTextStyle,
     required this.errorMessageErrorTextStyle,
-    required this.errorMessageButtonConfiguration,
-    required this.errorMessageSpacing,
+    required this.messageSpacing,
+    required this.tryAgainButtonConfiguration,
   });
 
   @override
   MyoroTableThemeExtension copyWith({
+    TextStyle? emptyMessageTextStyle,
     TextStyle? titleTextStyle,
     TextStyle? errorMessageHeaderTextStyle,
     TextStyle? errorMessageErrorTextStyle,
-    MyoroHoverButtonConfiguration? errorMessageButtonConfiguration,
-    double? errorMessageSpacing,
+    double? messageSpacing,
+    MyoroHoverButtonConfiguration? tryAgainButtonConfiguration,
   }) {
     return MyoroTableThemeExtension(
+      emptyMessageTextStyle: emptyMessageTextStyle ?? this.emptyMessageTextStyle,
       titleTextStyle: titleTextStyle ?? this.titleTextStyle,
       errorMessageHeaderTextStyle: errorMessageHeaderTextStyle ?? this.errorMessageHeaderTextStyle,
       errorMessageErrorTextStyle: errorMessageErrorTextStyle ?? this.errorMessageErrorTextStyle,
-      errorMessageButtonConfiguration: errorMessageButtonConfiguration ?? this.errorMessageButtonConfiguration,
-      errorMessageSpacing: errorMessageSpacing ?? this.errorMessageSpacing,
+      messageSpacing: messageSpacing ?? this.messageSpacing,
+      tryAgainButtonConfiguration: tryAgainButtonConfiguration ?? this.tryAgainButtonConfiguration,
     );
   }
 
@@ -52,11 +58,12 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   ) {
     if (other is! MyoroTableThemeExtension) return this;
     return copyWith(
+      emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       errorMessageHeaderTextStyle: TextStyle.lerp(errorMessageHeaderTextStyle, other.errorMessageHeaderTextStyle, t),
       errorMessageErrorTextStyle: TextStyle.lerp(errorMessageErrorTextStyle, other.errorMessageErrorTextStyle, t),
-      errorMessageButtonConfiguration: MyoroLerpHelper.lerp(errorMessageButtonConfiguration, other.errorMessageButtonConfiguration, t),
-      errorMessageSpacing: lerpDouble(errorMessageSpacing, other.errorMessageSpacing, t),
+      messageSpacing: lerpDouble(messageSpacing, other.messageSpacing, t),
+      tryAgainButtonConfiguration: MyoroLerpHelper.lerp(tryAgainButtonConfiguration, other.tryAgainButtonConfiguration, t),
     );
   }
 }

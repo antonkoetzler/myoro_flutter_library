@@ -371,11 +371,12 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
 List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroTableThemeExtension(
+      emptyMessageTextStyle: textTheme.titleMedium!,
       titleTextStyle: textTheme.titleSmall!,
       errorMessageHeaderTextStyle: textTheme.titleMedium!.withColor(colorScheme.error),
       errorMessageErrorTextStyle: textTheme.bodyMedium!.withColor(colorScheme.error),
-      errorMessageButtonConfiguration: const MyoroHoverButtonConfiguration(bordered: true),
-      errorMessageSpacing: 20,
+      tryAgainButtonConfiguration: const MyoroHoverButtonConfiguration(bordered: true),
+      messageSpacing: 20,
     ),
   ];
 }
