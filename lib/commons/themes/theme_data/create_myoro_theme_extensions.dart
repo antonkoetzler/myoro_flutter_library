@@ -371,6 +371,16 @@ List<ThemeExtension> createSnackBarThemeExtensions(ColorScheme colorScheme, Text
 List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroTableThemeExtension(
+      decoration: BoxDecoration(
+        color: colorScheme.primary,
+        border: Border.all(
+          width: kMyoroBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+        borderRadius: MyoroDecorationHelper.borderRadius,
+      ),
+      contentPadding: const EdgeInsets.all(10),
+      columnSpacing: 5,
       emptyMessageTextStyle: textTheme.titleMedium!,
       titleTextStyle: textTheme.titleSmall!,
       errorMessageHeaderTextStyle: textTheme.titleMedium!.withColor(colorScheme.error),

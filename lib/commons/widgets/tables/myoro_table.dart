@@ -43,7 +43,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   MyoroTableController get _controller => widget.controller ?? (_localController ??= MyoroTableController());
 
   /// [List] of [GlobalKey]s for every title column so we may get their
-  /// widths and pass it to their respective column in [_DataRows].
+  /// widths and pass it to their respective column in [_DataSection].
   late final List<GlobalKey> _titleColumnKeys = _columns.map<GlobalKey>((_) => GlobalKey()).toList();
 
   /// [List] of the widths of every title column.
@@ -83,11 +83,14 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
       ).toList();
     });
 
-    return Column(
-      children: [
-        _TitleRow(_titleColumnKeys, _columns),
-        Expanded(child: _DataRows(_controller, _dataConfiguration, _columns, _rowBuilder, _titleColumnWidthsNotifier)),
-      ],
+    return Container(
+      decoration: context.resolveThemeExtension<MyoroTableThemeExtension>().decoration,
+      child: Column(
+        children: [
+          _TitleRow(_titleColumnKeys, _columns),
+          Expanded(child: _DataSection(_controller, _dataConfiguration, _columns, _rowBuilder, _titleColumnWidthsNotifier)),
+        ],
+      ),
     );
   }
 }
@@ -100,47 +103,75 @@ final class _TitleRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: _columns.map<Widget>((MyoroTableColumn column) {
-        final key = _titleColumnKeys[_columns.indexOf(column)];
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-        return switch (column.widthConfiguration?.columnWidthEnum) {
-          MyoroTableColumnWidthEnum.fixed => _TitleColumn(key: key, column),
-          MyoroTableColumnWidthEnum.expanded => Expanded(child: _TitleColumn(key: key, column)),
-          _ => Flexible(child: _TitleColumn(key: key, column)),
-        };
-      }).toList(),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: Padding(
+            padding: themeExtension.contentPadding,
+            child: Row(
+              children: _columns.map<Widget>((MyoroTableColumn column) {
+                final columnIndex = _columns.indexOf(column);
+                final isLastColumn = columnIndex == _columns.length - 1;
+                final key = _titleColumnKeys[columnIndex];
+
+                if (isLastColumn) return Expanded(child: _TitleColumn(key, column, isLastColumn));
+
+                return switch (column.widthConfiguration?.columnWidthEnum) {
+                  MyoroTableColumnWidthEnum.fixed => _TitleColumn(key, column, isLastColumn),
+                  MyoroTableColumnWidthEnum.expanded => Expanded(child: _TitleColumn(key, column, isLastColumn)),
+                  _ => Flexible(child: _TitleColumn(key, column, isLastColumn)),
+                };
+              }).toList(),
+            ),
+          ),
+        ),
+        const MyoroBasicDivider(
+          configuration: MyoroBasicDividerConfiguration(
+            direction: Axis.horizontal,
+          ),
+        ),
+      ],
     );
   }
 }
 
 final class _TitleColumn extends StatelessWidget {
+  final GlobalKey _key;
   final MyoroTableColumn _column;
+  final bool _isLastColumn;
 
-  const _TitleColumn(this._column, {super.key});
+  const _TitleColumn(this._key, this._column, this._isLastColumn);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    return SizedBox(
-      width: _column.widthConfiguration?.fixedWidth,
-      child: Text(
-        _column.title,
-        style: _column.titleTextStyle ?? themeExtension.titleTextStyle,
+    return Padding(
+      padding: EdgeInsets.only(right: _isLastColumn ? 0 : themeExtension.columnSpacing),
+      child: Container(
+        key: _key,
+        color: Colors.pink.withOpacity(0.3),
+        width: _column.widthConfiguration?.fixedWidth,
+        child: Text(
+          _column.title,
+          style: _column.titleTextStyle ?? themeExtension.titleTextStyle,
+        ),
       ),
     );
   }
 }
 
-final class _DataRows<T> extends StatelessWidget {
+final class _DataSection<T> extends StatelessWidget {
   final MyoroTableController _controller;
   final MyoroDataConfiguration<T> _dataConfiguration;
   final List<MyoroTableColumn> _columns;
   final MyoroTableRowBuilder<T> _rowBuilder;
   final ValueNotifier<List<double>?> _titleColumnWidthsNotifier;
 
-  const _DataRows(
+  const _DataSection(
     this._controller,
     this._dataConfiguration,
     this._columns,
@@ -162,7 +193,7 @@ final class _DataRows<T> extends StatelessWidget {
         return switch (status) {
           MyoroRequestEnum.idle => const _Loading(),
           MyoroRequestEnum.loading => const _Loading(),
-          MyoroRequestEnum.success => _BuiltDataRows(_controller, items!, _columns, _rowBuilder, _titleColumnWidthsNotifier),
+          MyoroRequestEnum.success => _BuiltDataSection(_controller, items!, _columns, _rowBuilder, _titleColumnWidthsNotifier),
           MyoroRequestEnum.error => _ErrorMessage(_controller, errorMessage!),
         };
       },
@@ -177,14 +208,14 @@ final class _Loading extends StatelessWidget {
   Widget build(BuildContext context) => const Center(child: MyoroCircularLoader());
 }
 
-final class _BuiltDataRows<T> extends StatelessWidget {
+final class _BuiltDataSection<T> extends StatelessWidget {
   final MyoroTableController _controller;
   final List<T> _items;
   final List<MyoroTableColumn> _columns;
   final MyoroTableRowBuilder<T> _rowBuilder;
   final ValueNotifier<List<double>?> _titleColumnWidthsNotifier;
 
-  const _BuiltDataRows(
+  const _BuiltDataSection(
     this._controller,
     this._items,
     this._columns,
@@ -203,10 +234,35 @@ final class _BuiltDataRows<T> extends StatelessWidget {
     // Asserting that the # of cells is equal to the # of title columns.
     assert(
       builtRows.first.cells.length == _columns.length,
-      '[MyoroTable._BuiltDataRows]: Number of cells in each [MyoroTableRow] must be equal to the number of title columns.',
+      '[MyoroTable._BuiltDataSection]: Number of cells in each [MyoroTableRow] must be equal to the number of title columns.',
     );
 
-    return const Text('Start');
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+
+    return ValueListenableBuilder(
+      valueListenable: _titleColumnWidthsNotifier,
+      builder: (_, List<double>? titleColumnWidths, __) {
+        return MyoroScrollable(
+          scrollableType: MyoroScrollableEnum.customScrollView,
+          padding: themeExtension.contentPadding,
+          children: builtRows.map<Widget>((MyoroTableRow row) {
+            return Row(
+              children: [
+                for (int i = 0; i < row.cells.length; i++)
+                  Padding(
+                    padding: EdgeInsets.only(right: i != _columns.length - 1 ? themeExtension.columnSpacing : 0),
+                    child: Container(
+                      color: Colors.pink.withOpacity(0.3),
+                      width: titleColumnWidths?[i],
+                      child: row.cells[i].child,
+                    ),
+                  ),
+              ],
+            );
+          }).toList(),
+        );
+      },
+    );
   }
 }
 

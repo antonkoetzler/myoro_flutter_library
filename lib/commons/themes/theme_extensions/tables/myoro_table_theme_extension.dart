@@ -5,6 +5,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroTable].
 final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> {
+  /// [BoxDecoration] of the root [Container] in [_MyoroTableState].
+  final BoxDecoration decoration;
+
+  /// [EdgeInsets] of [_TitleRow] & [_BuiltDataSection] (padding of the contents of the table).
+  final EdgeInsets contentPadding;
+
+  /// Spacing between each column.
+  final double columnSpacing;
+
   /// [TextStyle] of [_EmptyMessage].
   final TextStyle emptyMessageTextStyle;
 
@@ -24,6 +33,9 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   final MyoroHoverButtonConfiguration tryAgainButtonConfiguration;
 
   const MyoroTableThemeExtension({
+    required this.decoration,
+    required this.contentPadding,
+    required this.columnSpacing,
     required this.emptyMessageTextStyle,
     required this.titleTextStyle,
     required this.errorMessageHeaderTextStyle,
@@ -34,6 +46,9 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
 
   @override
   MyoroTableThemeExtension copyWith({
+    BoxDecoration? decoration,
+    EdgeInsets? contentPadding,
+    double? columnSpacing,
     TextStyle? emptyMessageTextStyle,
     TextStyle? titleTextStyle,
     TextStyle? errorMessageHeaderTextStyle,
@@ -42,6 +57,9 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     MyoroHoverButtonConfiguration? tryAgainButtonConfiguration,
   }) {
     return MyoroTableThemeExtension(
+      decoration: decoration ?? this.decoration,
+      contentPadding: contentPadding ?? this.contentPadding,
+      columnSpacing: columnSpacing ?? this.columnSpacing,
       emptyMessageTextStyle: emptyMessageTextStyle ?? this.emptyMessageTextStyle,
       titleTextStyle: titleTextStyle ?? this.titleTextStyle,
       errorMessageHeaderTextStyle: errorMessageHeaderTextStyle ?? this.errorMessageHeaderTextStyle,
@@ -58,6 +76,9 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   ) {
     if (other is! MyoroTableThemeExtension) return this;
     return copyWith(
+      decoration: BoxDecoration.lerp(decoration, other.decoration, t),
+      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
+      columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
       emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       errorMessageHeaderTextStyle: TextStyle.lerp(errorMessageHeaderTextStyle, other.errorMessageHeaderTextStyle, t),
