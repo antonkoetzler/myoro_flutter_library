@@ -1,6 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// Builder of the (non-title) rows.
 typedef MyoroTableRowBuilder<T> = MyoroTableRow Function(T item);
@@ -85,46 +86,48 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    return Column(
-      spacing: themeExtension.tableFooterSpacing,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Expanded(
-          child: Container(
-            decoration: themeExtension.decoration,
-            // [MyoroLayoutBuilder] in order to run the post frame callback everytime the window is resized.
-            child: MyoroLayoutBuilder(
-              builder: (_, __) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  _titleColumnWidthsNotifier.value = _titleColumnKeys.map<double>(
-                    (GlobalKey key) {
-                      return (key.currentContext!.findRenderObject() as RenderBox).size.width;
-                    },
-                  ).toList();
-                });
+    return Provider<MyoroTableController<T>>(
+      create: (_) => _controller,
+      child: Column(
+        spacing: themeExtension.tableFooterSpacing,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Expanded(
+            child: Container(
+              decoration: themeExtension.decoration,
+              // [MyoroLayoutBuilder] in order to run the post frame callback everytime the window is resized.
+              child: MyoroLayoutBuilder(
+                builder: (_, __) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    _titleColumnWidthsNotifier.value = _titleColumnKeys.map<double>(
+                      (GlobalKey key) {
+                        return (key.currentContext!.findRenderObject() as RenderBox).size.width;
+                      },
+                    ).toList();
+                  });
 
-                return Column(
-                  children: [
-                    _TitleRow(_controller, _titleColumnKeys, _columns),
-                    Expanded(child: _Contents(_controller, _dataConfiguration, _columns, _rowBuilder, _titleColumnWidthsNotifier)),
-                  ],
-                );
-              },
+                  return Column(
+                    children: [
+                      _TitleRow(_titleColumnKeys, _columns),
+                      Expanded(child: _Contents(_columns, _rowBuilder, _titleColumnWidthsNotifier)),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
-        ),
-        if (_showPaginationControls) _Footer(_controller),
-      ],
+          if (_showPaginationControls) _Footer(_controller),
+        ],
+      ),
     );
   }
 }
 
-final class _TitleRow<T> extends StatelessWidget {
-  final MyoroTableController<T> _controller;
+final class _TitleRow extends StatelessWidget {
   final List<GlobalKey> _titleColumnKeys;
   final List<MyoroTableColumn> _columns;
 
-  const _TitleRow(this._controller, this._titleColumnKeys, this._columns);
+  const _TitleRow(this._titleColumnKeys, this._columns);
 
   @override
   Widget build(BuildContext context) {
@@ -142,12 +145,12 @@ final class _TitleRow<T> extends StatelessWidget {
                 final isLastColumn = columnIndex == _columns.length - 1;
                 final key = _titleColumnKeys[columnIndex];
 
-                if (isLastColumn) return Expanded(child: _TitleColumn(_controller, key, column, isLastColumn));
+                if (isLastColumn) return Expanded(child: _TitleColumn(key, column, isLastColumn));
 
                 return switch (column.widthConfiguration?.columnWidthEnum) {
-                  MyoroTableColumnWidthEnum.fixed => _TitleColumn(_controller, key, column, isLastColumn),
-                  MyoroTableColumnWidthEnum.expanded => Expanded(child: _TitleColumn(_controller, key, column, isLastColumn)),
-                  _ => Flexible(child: _TitleColumn(_controller, key, column, isLastColumn)),
+                  MyoroTableColumnWidthEnum.fixed => _TitleColumn(key, column, isLastColumn),
+                  MyoroTableColumnWidthEnum.expanded => Expanded(child: _TitleColumn(key, column, isLastColumn)),
+                  _ => Flexible(child: _TitleColumn(key, column, isLastColumn)),
                 };
               }).toList(),
             ),
@@ -163,28 +166,21 @@ final class _TitleRow<T> extends StatelessWidget {
   }
 }
 
-final class _TitleColumn<T> extends StatelessWidget {
-  final MyoroTableController<T> _controller;
+final class _TitleColumn extends StatelessWidget {
   final GlobalKey _key;
   final MyoroTableColumn _column;
   final bool _isLastColumn;
 
   const _TitleColumn(
-    this._controller,
     this._key,
     this._column,
     this._isLastColumn,
   );
 
-  void _ordenationCallback(bool value) {
-    _controller
-      ..clearFilters()
-      ..addFilters(_column.ordenationCallback!.call());
-  }
-
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final controller = context.read<MyoroTableController>();
 
     return Padding(
       padding: EdgeInsets.only(right: _isLastColumn ? 0 : themeExtension.columnSpacing),
@@ -196,7 +192,16 @@ final class _TitleColumn<T> extends StatelessWidget {
           child: Row(
             spacing: themeExtension.titleColumnSpacing,
             children: [
-              if (_column.ordenationCallback != null) MyoroCheckbox(onChanged: _ordenationCallback),
+              if (_column.ordenationCallback != null)
+                ValueListenableBuilder(
+                  valueListenable: controller.ordenatedColumnNotifier,
+                  builder: (_, MyoroTableColumn? ordenatedColumn, __) {
+                    return MyoroCheckbox(
+                      initialValue: _column == ordenatedColumn,
+                      onChanged: (bool value) => controller.setOrdenatedColumn(value ? _column : null),
+                    );
+                  },
+                ),
               Expanded(
                 child: Text(
                   _column.title,
@@ -212,15 +217,11 @@ final class _TitleColumn<T> extends StatelessWidget {
 }
 
 final class _Contents<T> extends StatelessWidget {
-  final MyoroTableController _controller;
-  final MyoroDataConfiguration<T> _dataConfiguration;
   final List<MyoroTableColumn> _columns;
   final MyoroTableRowBuilder<T> _rowBuilder;
   final ValueNotifier<List<double>?> _titleColumnWidthsNotifier;
 
   const _Contents(
-    this._controller,
-    this._dataConfiguration,
     this._columns,
     this._rowBuilder,
     this._titleColumnWidthsNotifier,
@@ -228,9 +229,11 @@ final class _Contents<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<MyoroTableController<T>>();
+
     return MyoroResolver<List<T>>(
-      controller: _controller.resolverController,
-      request: () async => await _dataConfiguration.items,
+      controller: controller.resolverController,
+      request: () async => await controller.dataConfiguration.items,
       builder: (
         List<T>? items,
         MyoroRequestEnum status,
@@ -240,8 +243,8 @@ final class _Contents<T> extends StatelessWidget {
         return switch (status) {
           MyoroRequestEnum.idle => const _Loading(),
           MyoroRequestEnum.loading => const _Loading(),
-          MyoroRequestEnum.success => _Rows(_controller, items!, _columns, _rowBuilder, _titleColumnWidthsNotifier),
-          MyoroRequestEnum.error => _ErrorMessage(_controller, errorMessage!),
+          MyoroRequestEnum.success => _Rows(items!, _columns, _rowBuilder, _titleColumnWidthsNotifier),
+          MyoroRequestEnum.error => _ErrorMessage(errorMessage!),
         };
       },
     );
@@ -256,14 +259,12 @@ final class _Loading extends StatelessWidget {
 }
 
 final class _Rows<T> extends StatelessWidget {
-  final MyoroTableController _controller;
   final List<T> _items;
   final List<MyoroTableColumn> _columns;
   final MyoroTableRowBuilder<T> _rowBuilder;
   final ValueNotifier<List<double>?> _titleColumnWidthsNotifier;
 
   const _Rows(
-    this._controller,
     this._items,
     this._columns,
     this._rowBuilder,
@@ -273,7 +274,7 @@ final class _Rows<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Case where there are no items to be displayed.
-    if (_items.isEmpty) _EmptyMessage(_controller);
+    if (_items.isEmpty) return const _EmptyMessage();
 
     // Building the rows.
     final builtRows = _items.map<MyoroTableRow>(_rowBuilder).toList();
@@ -326,9 +327,7 @@ final class _Rows<T> extends StatelessWidget {
 }
 
 final class _EmptyMessage extends StatelessWidget {
-  final MyoroTableController _controller;
-
-  const _EmptyMessage(this._controller);
+  const _EmptyMessage();
 
   @override
   Widget build(BuildContext context) {
@@ -342,20 +341,16 @@ final class _EmptyMessage extends StatelessWidget {
           'No items found!',
           style: themeExtension.emptyMessageTextStyle,
         ),
-        _TryAgainButton(_controller),
+        const _TryAgainButton(),
       ],
     );
   }
 }
 
 final class _ErrorMessage extends StatelessWidget {
-  final MyoroTableController _controller;
   final String _errorMessage;
 
-  const _ErrorMessage(
-    this._controller,
-    this._errorMessage,
-  );
+  const _ErrorMessage(this._errorMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -385,7 +380,7 @@ final class _ErrorMessage extends StatelessWidget {
               ),
             ],
           ),
-          _TryAgainButton(_controller),
+          const _TryAgainButton(),
         ],
       ),
     );
@@ -510,16 +505,14 @@ final class _Button extends StatelessWidget {
   }
 }
 
-final class _TryAgainButton<T> extends StatelessWidget {
-  final MyoroTableController<T> _controller;
-
-  const _TryAgainButton(this._controller);
+final class _TryAgainButton extends StatelessWidget {
+  const _TryAgainButton();
 
   @override
   Widget build(BuildContext context) {
     return _Button(
       text: 'Click to try again',
-      onPressed: () => _controller.refresh(),
+      onPressed: () => context.read<MyoroTableController>().refresh(),
     );
   }
 }

@@ -1,5 +1,5 @@
 /// Request if the [MyoroDataConfiguration.asyncronousItems] is being utilized.
-typedef MyoroDataConfigurationRequest<T> = Future<List<T>> Function();
+typedef MyoroDataConfigurationRequest<T> = Future<List<T>> Function(Map<String, dynamic> filters);
 
 /// A model to represent the requesting, pagination, & filtering of data.
 final class MyoroDataConfiguration<T> {
@@ -67,6 +67,6 @@ final class MyoroDataConfiguration<T> {
 
   bool get staticItemsUsed => staticItems != null;
   bool get asynronousItemsUsed => asyncronousItems != null;
-  Future<List<T>> get items async => staticItemsUsed ? staticItems! : await asyncronousItems!.call();
+  Future<List<T>> get items async => staticItemsUsed ? staticItems! : await asyncronousItems!.call(_filters);
   Map<String, dynamic> get filters => _filters;
 }

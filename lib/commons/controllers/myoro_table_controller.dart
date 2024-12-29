@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller that manages these external controls in [MyoroTable]:
@@ -12,8 +13,18 @@ final class MyoroTableController<T> {
   /// [MyoroResolverController] to refresh the table's contents.
   late MyoroResolverController resolverController;
 
+  /// [ValueNotifier] to track which column is being ordenated.
+  final _ordenatedColumnNotifier = ValueNotifier<MyoroTableColumn?>(null);
+
+  /// Dispose function to dispose of, for example, [_ordenatedColumnNotifier].
+  void dispose() {
+    _ordenatedColumnNotifier.dispose();
+  }
+
   /// Refreshes the items with the same current conditions.
-  void refresh() => resolverController.refresh();
+  void refresh() {
+    resolverController.refresh();
+  }
 
   /// Adds filters (automatically filtering duplicates).
   void addFilters(Map<String, dynamic> filters) {
@@ -48,4 +59,14 @@ final class MyoroTableController<T> {
     dataConfiguration.itemsPerPage = itemsPerPage;
     refresh();
   }
+
+  /// Sets the ordenated [MyoroTableColumn].
+  void setOrdenatedColumn([MyoroTableColumn? column]) {
+    if (_ordenatedColumnNotifier.value != null) removeFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call().keys.toList());
+    _ordenatedColumnNotifier.value = column;
+    addFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call());
+    refresh();
+  }
+
+  ValueNotifier<MyoroTableColumn?> get ordenatedColumnNotifier => _ordenatedColumnNotifier;
 }

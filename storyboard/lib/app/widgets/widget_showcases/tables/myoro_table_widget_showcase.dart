@@ -35,7 +35,7 @@ final class _Widget extends StatelessWidget {
         }).toList(),
       ),
       dataConfiguration: MyoroDataConfiguration(
-        asyncronousItems: () async {
+        asyncronousItems: (_) async {
           await Future.delayed(const Duration(seconds: 1));
           return List.generate(
             faker.randomGenerator.integer(100),
