@@ -13,17 +13,41 @@ final class MyoroTableController<T> {
   /// [MyoroResolverController] to refresh the table's contents.
   late MyoroResolverController resolverController;
 
-  /// [ValueNotifier] to track which column is being ordenated.
+  /// [ValueNotifier] to track which [MyoroTableColumn] is being ordenated.
+  ///
+  /// This will not work if there are no [MyoroTableColumn.ordenationCallback]s provided.
   final _ordenatedColumnNotifier = ValueNotifier<MyoroTableColumn?>(null);
+
+  /// [ValueNotifier] to track which [MyoroTableRow]s are selected via the checkbox functionality.
+  ///
+  /// This will not work if [MyoroTable.enableCheckboxes] is not true.
+  final _rowsSelectedNotifier = ValueNotifier<Set<MyoroTableRow>>({});
 
   /// Dispose function to dispose of, for example, [_ordenatedColumnNotifier].
   void dispose() {
     _ordenatedColumnNotifier.dispose();
+    _rowsSelectedNotifier.dispose();
   }
 
   /// Refreshes the items with the same current conditions.
   void refresh() {
     resolverController.refresh();
+  }
+
+  /// Sets the page number.
+  void changePage(int page) {
+    assert(
+      page <= dataConfiguration.totalPages,
+      '[MyoroTableController<$T>.changePage]: Invalid [page] range.',
+    );
+    dataConfiguration.currentPage = page;
+    refresh();
+  }
+
+  /// Sets the items per page [MyoroDataConfiguration.itemsPerPage].
+  void setItemsPerPage(int itemsPerPage) {
+    dataConfiguration.itemsPerPage = itemsPerPage;
+    refresh();
   }
 
   /// Adds filters (automatically filtering duplicates).
@@ -44,29 +68,36 @@ final class MyoroTableController<T> {
     refresh();
   }
 
-  /// Sets the page number.
-  void changePage(int page) {
-    assert(
-      page <= dataConfiguration.totalPages,
-      '[MyoroTableController<$T>.changePage]: Invalid [page] range.',
-    );
-    dataConfiguration.currentPage = page;
-    refresh();
+  /// Adds rows to [_rowsSelectedNotifier].
+  void selectRows(List<MyoroTableRow> rows) {
+    _rowsSelectedNotifier.value = Set.from(_rowsSelectedNotifier.value)..addAll(rows.toSet());
   }
 
-  /// Sets the items per page [MyoroDataConfiguration.itemsPerPage].
-  void setItemsPerPage(int itemsPerPage) {
-    dataConfiguration.itemsPerPage = itemsPerPage;
-    refresh();
+  /// Removes selected rows.
+  void deselectRows(List<MyoroTableRow> rows) {
+    _rowsSelectedNotifier.value = Set.from(_rowsSelectedNotifier.value)..removeAll(rows.toSet());
+  }
+
+  /// Check if a [MyoroTableRow] is selected].
+  bool isRowSelected(MyoroTableRow row) {
+    return _rowsSelectedNotifier.value.contains(row);
+  }
+
+  /// Clears all selected [MyoroTableRow]s.
+  void clearSelectedRows() {
+    _rowsSelectedNotifier.value = {};
   }
 
   /// Sets the ordenated [MyoroTableColumn].
   void setOrdenatedColumn([MyoroTableColumn? column]) {
     if (_ordenatedColumnNotifier.value != null) removeFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call().keys.toList());
     _ordenatedColumnNotifier.value = column;
-    addFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call());
+    if (column != null) addFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call());
     refresh();
   }
 
   ValueNotifier<MyoroTableColumn?> get ordenatedColumnNotifier => _ordenatedColumnNotifier;
+  MyoroTableColumn? get ordenatedColumn => _ordenatedColumnNotifier.value;
+  ValueNotifier<Set<MyoroTableRow>> get rowsSelectedNotifier => _rowsSelectedNotifier;
+  List<MyoroTableRow> get rowsSelected => _rowsSelectedNotifier.value.toList();
 }

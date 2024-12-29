@@ -4,7 +4,6 @@
 
 1. (**IN PROGRESS**) Finish table remake + widget showcase. What does a table need?
 
-- (**IN PROGRESS**) Checkbox selection;
 - (**IN PROGRESS**) Resizing columns;
 
 1. Fix deprecation;

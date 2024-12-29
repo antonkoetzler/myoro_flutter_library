@@ -390,6 +390,12 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
       messageSpacing: 20,
       footerSpacing: 5,
       titleColumnSpacing: 5,
+      rowsCellSpacing: 3,
+      rowsButtonConfiguration: MyoroHoverButtonConfiguration(
+        onPrimaryColor: colorScheme.onPrimary.withOpacity(0.3),
+        borderRadius: BorderRadius.zero,
+        primaryColor: MyoroColorTheme.transparent,
+      ),
     ),
   ];
 }

@@ -38,8 +38,14 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   /// Spacing between items in [_Footer].
   final double footerSpacing;
 
-  /// Spacing bewtween items in [_TitleColumn].
+  /// Spacing between items in [_TitleColumn].
   final double titleColumnSpacing;
+
+  /// Spacing between additional items like [_RowCheckbox] within a mapped [MyoroTableRow] in [_Rows].
+  final double rowsCellSpacing;
+
+  /// [MyoroHoverButtonConfiguration] of a [MyoroTableRow] in [_Rows].
+  final MyoroHoverButtonConfiguration rowsButtonConfiguration;
 
   const MyoroTableThemeExtension({
     required this.decoration,
@@ -54,6 +60,8 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     required this.buttonConfiguration,
     required this.footerSpacing,
     required this.titleColumnSpacing,
+    required this.rowsCellSpacing,
+    required this.rowsButtonConfiguration,
   });
 
   @override
@@ -70,6 +78,8 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     MyoroHoverButtonConfiguration? buttonConfiguration,
     double? footerSpacing,
     double? titleColumnSpacing,
+    double? rowsCellSpacing,
+    MyoroHoverButtonConfiguration? rowsButtonConfiguration,
   }) {
     return MyoroTableThemeExtension(
       decoration: decoration ?? this.decoration,
@@ -84,6 +94,8 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       buttonConfiguration: buttonConfiguration ?? this.buttonConfiguration,
       footerSpacing: footerSpacing ?? this.footerSpacing,
       titleColumnSpacing: titleColumnSpacing ?? this.titleColumnSpacing,
+      rowsCellSpacing: rowsCellSpacing ?? this.rowsCellSpacing,
+      rowsButtonConfiguration: rowsButtonConfiguration ?? this.rowsButtonConfiguration,
     );
   }
 
@@ -106,6 +118,8 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       buttonConfiguration: MyoroLerpHelper.lerp(buttonConfiguration, other.buttonConfiguration, t),
       footerSpacing: lerpDouble(footerSpacing, other.footerSpacing, t),
       titleColumnSpacing: lerpDouble(titleColumnSpacing, other.titleColumnSpacing, t),
+      rowsCellSpacing: lerpDouble(rowsCellSpacing, other.rowsCellSpacing, t),
+      rowsButtonConfiguration: MyoroHoverButtonConfiguration.lerp(rowsButtonConfiguration, other.rowsButtonConfiguration, t),
     );
   }
 }
