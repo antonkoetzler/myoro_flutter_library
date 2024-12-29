@@ -115,7 +115,7 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
 
   @override
   Widget build(BuildContext context) {
-    const dataConfiguration = MyoroDataConfiguration(staticItems: MyoroSnackBarTypeEnum.values);
+    final dataConfiguration = MyoroDataConfiguration(staticItems: MyoroSnackBarTypeEnum.values);
 
     return MyoroDropdown<MyoroSnackBarTypeEnum>(
       label: '[MyoroSnackBar.snackBarType]',

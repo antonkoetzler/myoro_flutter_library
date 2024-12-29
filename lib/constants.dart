@@ -13,6 +13,9 @@ const kMyoroBorderRadiusLength = 10.0;
 // Carousels.
 const kMyoroCarouselAutoplayIntervalDuration = Duration(seconds: 3);
 
+// Data configuration.
+const kMyoroDataConfigurationItemsPerPageOptions = [5, 10, 15, 20, 25, 50, 100];
+
 // Graphs.
 const kMyoroGraphSideTitleInterval = 0.2;
 const kMyoroGraphVerticalSideTitleReversedSize = 48.0;

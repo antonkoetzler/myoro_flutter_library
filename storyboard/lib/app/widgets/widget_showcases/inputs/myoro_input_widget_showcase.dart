@@ -126,7 +126,7 @@ final class _FormatterOptionState extends State<_FormatterOption> {
   Widget build(BuildContext context) {
     return MyoroDropdown<MyoroInputWidgetShowcaseEnum>(
       label: 'Formatter (named constructors):',
-      dataConfiguration: const MyoroDataConfiguration(staticItems: MyoroInputWidgetShowcaseEnum.values),
+      dataConfiguration: MyoroDataConfiguration(staticItems: MyoroInputWidgetShowcaseEnum.values),
       itemBuilder: (MyoroInputWidgetShowcaseEnum item) => MyoroMenuItem(text: item.title),
       itemLabelBuilder: (MyoroInputWidgetShowcaseEnum item) => item.title,
       showClearTextButton: false,
@@ -205,7 +205,7 @@ final class _InputStyleOptionState extends State<_InputStyleOption> {
   Widget build(BuildContext context) {
     return MyoroDropdown<MyoroInputStyleEnum>(
       label: '[inputStyle]',
-      dataConfiguration: const MyoroDataConfiguration(staticItems: MyoroInputStyleEnum.values),
+      dataConfiguration: MyoroDataConfiguration(staticItems: MyoroInputStyleEnum.values),
       itemBuilder: (MyoroInputStyleEnum item) => MyoroMenuItem(text: _getStyleName(item)),
       itemLabelBuilder: _getStyleName,
       showClearTextButton: false,
@@ -248,7 +248,7 @@ final class _TextAlignOptionState extends State<_TextAlignOption> {
       label: '[textAlign]',
       controller: _controller,
       showClearTextButton: false,
-      dataConfiguration: const MyoroDataConfiguration(staticItems: TextAlign.values),
+      dataConfiguration: MyoroDataConfiguration(staticItems: TextAlign.values),
       itemBuilder: (TextAlign item) => MyoroMenuItem(text: _getTextAlignName(item)),
       itemLabelBuilder: _getTextAlignName,
       onChangedItems: (List<TextAlign> items) => _bloc.add(SetTextAlignEvent(items.first)),

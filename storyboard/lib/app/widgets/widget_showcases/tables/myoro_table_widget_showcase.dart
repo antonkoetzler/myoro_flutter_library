@@ -22,7 +22,9 @@ final class _Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     final columns = List.generate(
       faker.randomGenerator.integer(10, min: 1),
-      (_) => MyoroTableColumn.fake(),
+      (int index) => MyoroTableColumn.fake().copyWith(
+        ordenationCallback: index == 0 ? () => {} : null,
+      ),
     );
 
     return MyoroTable<String>(

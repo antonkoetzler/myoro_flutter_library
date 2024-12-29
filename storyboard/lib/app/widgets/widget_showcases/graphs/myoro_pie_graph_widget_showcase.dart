@@ -92,7 +92,7 @@ final class _TypeEnumOptionState extends State<_TypeEnumOption> {
       label: '[MyoroPieGraph.typeEnum]',
       showClearTextButton: false,
       controller: _controller,
-      dataConfiguration: const MyoroDataConfiguration(staticItems: MyoroPieGraphEnum.values),
+      dataConfiguration: MyoroDataConfiguration(staticItems: MyoroPieGraphEnum.values),
       itemBuilder: (MyoroPieGraphEnum typeEnum) => MyoroMenuItem(text: typeEnum.name),
       itemLabelBuilder: (MyoroPieGraphEnum typeEnum) => typeEnum.name,
       onChangedItems: (List<MyoroPieGraphEnum> typeEnums) => _bloc.add(SetTypeEnumEvent(typeEnums.first)),

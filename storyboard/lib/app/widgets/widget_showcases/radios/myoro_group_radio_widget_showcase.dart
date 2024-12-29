@@ -94,7 +94,7 @@ final class _DirectionOptionState extends State<_DirectionOption> {
     return MyoroDropdown<Axis>(
       label: '[MyoroGroupRadio.direction]',
       controller: _controller,
-      dataConfiguration: const MyoroDataConfiguration(staticItems: Axis.values),
+      dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
       itemBuilder: (Axis direction) => MyoroMenuItem(text: _getDirectionName(direction)),
       itemLabelBuilder: _getDirectionName,
       showClearTextButton: false,

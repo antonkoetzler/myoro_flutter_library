@@ -82,7 +82,7 @@ final class _DirectionOptionState extends State<_DirectionOption> {
   Widget build(BuildContext context) {
     return MyoroDropdown<Axis>(
       controller: _controller,
-      dataConfiguration: const MyoroDataConfiguration(
+      dataConfiguration: MyoroDataConfiguration(
         staticItems: [
           Axis.horizontal,
           Axis.vertical,

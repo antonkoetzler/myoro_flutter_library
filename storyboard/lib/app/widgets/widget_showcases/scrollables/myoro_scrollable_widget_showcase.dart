@@ -79,7 +79,7 @@ final class _ScrollableTypeOption extends StatefulWidget {
 }
 
 final class _ScrollableTypeOptionState extends State<_ScrollableTypeOption> {
-  static const _dataConfiguration = MyoroDataConfiguration(staticItems: MyoroScrollableEnum.values);
+  final _dataConfiguration = MyoroDataConfiguration(staticItems: MyoroScrollableEnum.values);
 
   late final _bloc = context.resolveBloc<MyoroScrollableWidgetShowcaseBloc>();
   late final _controller = MyoroDropdownController<MyoroScrollableEnum>([_bloc.state.scrollableType]);
@@ -131,7 +131,7 @@ final class _DirectionOption extends StatefulWidget {
 }
 
 final class _DirectionOptionState extends State<_DirectionOption> {
-  static const _dataConfiguration = MyoroDataConfiguration(staticItems: Axis.values);
+  final _dataConfiguration = MyoroDataConfiguration(staticItems: Axis.values);
 
   late final _bloc = context.resolveBloc<MyoroScrollableWidgetShowcaseBloc>();
   late final _controller = MyoroDropdownController<Axis>([_bloc.state.direction]);

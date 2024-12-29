@@ -251,7 +251,7 @@ final class _ColorDropdown extends StatelessWidget {
     return MyoroDropdown<Color>(
       label: _label,
       onChangedItems: _onChangedItems,
-      dataConfiguration: const MyoroDataConfiguration(staticItems: kMyoroTestColors),
+      dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
       itemBuilder: _itemBuilder,
       itemLabelBuilder: _itemLabelBuilder,
     );

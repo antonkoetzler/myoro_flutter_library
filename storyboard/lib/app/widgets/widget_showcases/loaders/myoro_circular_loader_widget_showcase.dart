@@ -80,7 +80,7 @@ final class _ColorOption extends StatelessWidget {
     return MyoroDropdown<Color>(
       label: '[MyoroCircularLoader.color]',
       enabled: false,
-      dataConfiguration: const MyoroDataConfiguration(staticItems: kMyoroTestColors),
+      dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
       itemBuilder: _itemBuilder,
       itemLabelBuilder: _itemLabelBuilder,
       onChangedItems: (List<Color> colors) => _onChangedItems(context, colors),

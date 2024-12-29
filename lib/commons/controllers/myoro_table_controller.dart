@@ -5,9 +5,47 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// 2. Applying pagination actions;
 /// 3. Applying filters;
 /// 4. Managing checked components with a [MyoroTable] that has checkbox functionality.
-final class MyoroTableController {
+final class MyoroTableController<T> {
+  /// [MyoroDataConfiguration] to control pagination & filters.
+  late MyoroDataConfiguration<T> dataConfiguration;
+
+  /// [MyoroResolverController] to refresh the table's contents.
   late MyoroResolverController resolverController;
 
   /// Refreshes the items with the same current conditions.
   void refresh() => resolverController.refresh();
+
+  /// Adds filters (automatically filtering duplicates).
+  void addFilters(Map<String, dynamic> filters) {
+    dataConfiguration.addFilters(filters);
+    refresh();
+  }
+
+  /// Removes filters.
+  void removeFilters(List<String> keys) {
+    dataConfiguration.removeFilters(keys);
+    refresh();
+  }
+
+  /// Clears all filters.
+  void clearFilters() {
+    dataConfiguration.clearFilters();
+    refresh();
+  }
+
+  /// Sets the page number.
+  void changePage(int page) {
+    assert(
+      page <= dataConfiguration.totalPages,
+      '[MyoroTableController<$T>.changePage]: Invalid [page] range.',
+    );
+    dataConfiguration.currentPage = page;
+    refresh();
+  }
+
+  /// Sets the items per page [MyoroDataConfiguration.itemsPerPage].
+  void setItemsPerPage(int itemsPerPage) {
+    dataConfiguration.itemsPerPage = itemsPerPage;
+    refresh();
+  }
 }

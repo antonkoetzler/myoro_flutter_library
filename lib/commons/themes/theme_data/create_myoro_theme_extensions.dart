@@ -381,12 +381,15 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
       ),
       contentPadding: const EdgeInsets.all(10),
       columnSpacing: 5,
+      tableFooterSpacing: 15,
       emptyMessageTextStyle: textTheme.titleMedium!,
       titleTextStyle: textTheme.titleSmall!,
       errorMessageHeaderTextStyle: textTheme.titleMedium!.withColor(colorScheme.error),
       errorMessageErrorTextStyle: textTheme.bodyMedium!.withColor(colorScheme.error),
-      tryAgainButtonConfiguration: const MyoroHoverButtonConfiguration(bordered: true),
+      buttonConfiguration: const MyoroHoverButtonConfiguration(bordered: true),
       messageSpacing: 20,
+      footerSpacing: 5,
+      titleColumnSpacing: 5,
     ),
   ];
 }

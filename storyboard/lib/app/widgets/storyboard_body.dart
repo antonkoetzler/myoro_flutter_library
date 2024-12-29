@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
+typedef _WidgetListingCategoryOnPressWidget = Function(String widgetName);
+
 final class StoryboardBody extends StatefulWidget {
   const StoryboardBody({super.key});
 
@@ -37,70 +39,80 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
   }
 }
 
-final class _WidgetListing extends StatelessWidget {
+final class _WidgetListing extends StatefulWidget {
   final ValueNotifier<Widget?> widgetLoadedNotifier;
 
   const _WidgetListing(this.widgetLoadedNotifier);
 
   @override
+  State<_WidgetListing> createState() => _WidgetListingState();
+}
+
+final class _WidgetListingState extends State<_WidgetListing> {
+  /// [ValueNotifier] responsible for automatically hiding previously opened categories when others are pressed (only display one at a time).
+  final _widgetCategoryShowingNotifier = ValueNotifier<String?>(null);
+
+  @override
+  void dispose() {
+    _widgetCategoryShowingNotifier.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
-    return MyoroScrollable(
-      scrollableType: MyoroScrollableEnum.singleChildScrollView,
-      children: WidgetListingEnum.values.map(
-        (WidgetListingEnum value) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _WidgetListingCategory(
-                category: value.widgetCategory,
-                widgetNames: value.widgetNames,
-                onPressWidget: (String widgetName) => widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
-              ),
-              if (value != WidgetListingEnum.values.last)
-                MyoroBasicDivider(
-                  configuration: MyoroBasicDividerConfiguration(
-                    direction: Axis.horizontal,
-                    shortValue: themeExtension.widgetListingCategoryDividerShortValue,
-                    padding: themeExtension.widgetListingCategoryDividerPadding,
+    return ValueListenableBuilder(
+      valueListenable: _widgetCategoryShowingNotifier,
+      builder: (_, __, ___) {
+        return MyoroScrollable(
+          scrollableType: MyoroScrollableEnum.singleChildScrollView,
+          children: WidgetListingEnum.values.map(
+            (WidgetListingEnum value) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _WidgetListingCategory(
+                    category: value.widgetCategory,
+                    widgetNames: value.widgetNames,
+                    widgetCategoryShowingNotifier: _widgetCategoryShowingNotifier,
+                    onPressWidget: (String widgetName) => widget.widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
                   ),
-                ),
-            ],
-          );
-        },
-      ).toList(),
+                  if (value != WidgetListingEnum.values.last)
+                    MyoroBasicDivider(
+                      configuration: MyoroBasicDividerConfiguration(
+                        direction: Axis.horizontal,
+                        shortValue: themeExtension.widgetListingCategoryDividerShortValue,
+                        padding: themeExtension.widgetListingCategoryDividerPadding,
+                      ),
+                    ),
+                ],
+              );
+            },
+          ).toList(),
+        );
+      },
     );
   }
 }
 
-typedef _WidgetListingCategoryOnPressWidget = Function(String widgetName);
-
-final class _WidgetListingCategory extends StatefulWidget {
+final class _WidgetListingCategory extends StatelessWidget {
   final String category;
   final List<String> widgetNames;
+  final ValueNotifier<String?> widgetCategoryShowingNotifier;
   final _WidgetListingCategoryOnPressWidget onPressWidget;
 
   const _WidgetListingCategory({
     required this.category,
     required this.widgetNames,
+    required this.widgetCategoryShowingNotifier,
     required this.onPressWidget,
   });
 
   @override
-  State<_WidgetListingCategory> createState() => _WidgetListingCategoryState();
-}
-
-final class _WidgetListingCategoryState extends State<_WidgetListingCategory> {
-  String get _category => widget.category;
-  List<String> get _widgetNames => widget.widgetNames;
-  _WidgetListingCategoryOnPressWidget get _onPressWidget => widget.onPressWidget;
-
-  bool _showOptions = false;
-
-  @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
+    final isSelected = category == widgetCategoryShowingNotifier.value;
 
     return Padding(
       padding: themeExtension.widgetListingCategoryPadding,
@@ -108,17 +120,17 @@ final class _WidgetListingCategoryState extends State<_WidgetListingCategory> {
         mainAxisSize: MainAxisSize.min,
         children: [
           _WidgetListingCategoryDropdownButton(
-            _showOptions,
-            category: _category,
-            onPressed: () => setState(() => _showOptions = !_showOptions),
+            isSelected,
+            category: category,
+            onPressed: () => widgetCategoryShowingNotifier.value = isSelected ? null : category,
           ),
-          if (_showOptions) ...[
+          if (isSelected) ...[
             SizedBox(height: themeExtension.widgetListingCategorySpacing),
-            ..._widgetNames.map<Widget>(
+            ...widgetNames.map<Widget>(
               (String widgetName) {
                 return _WidgetListingCategoryWidgetButton(
                   widgetName,
-                  onPressed: () => _onPressWidget(widgetName),
+                  onPressed: () => onPressWidget(widgetName),
                 );
               },
             ),
