@@ -16,6 +16,7 @@ final class MyoroTableWidgetShowcase extends StatelessWidget {
       child: const WidgetShowcase(
         widget: _Widget(),
         widgetOptions: [
+          _EnableColumnResizingOption(),
           _EnableCheckboxesOption(),
           _ShowPaginationControlsOption(),
         ],
@@ -54,10 +55,26 @@ final class _Widget extends StatelessWidget {
               );
             },
           ),
+          enableColumnResizing: state.enableColumnResizing,
           enableCheckboxes: state.enableCheckboxes,
           showPaginationControls: state.showPaginationControls,
         );
       },
+    );
+  }
+}
+
+final class _EnableColumnResizingOption extends StatelessWidget {
+  const _EnableColumnResizingOption();
+
+  @override
+  Widget build(BuildContext context) {
+    final bloc = context.resolveBloc<MyoroTableWidgetShowcaseBloc>();
+
+    return MyoroCheckbox(
+      label: '[MyoroTable.enableColumnResizing]',
+      initialValue: bloc.state.enableColumnResizing,
+      onChanged: (bool value) => bloc.add(SetEnableColumnResizingEvent(value)),
     );
   }
 }

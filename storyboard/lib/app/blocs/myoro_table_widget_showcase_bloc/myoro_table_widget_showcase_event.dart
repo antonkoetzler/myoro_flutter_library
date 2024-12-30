@@ -5,6 +5,12 @@ sealed class MyoroTableWidgetShowcaseEvent {
   const MyoroTableWidgetShowcaseEvent();
 }
 
+final class SetEnableColumnResizingEvent extends MyoroTableWidgetShowcaseEvent {
+  final bool enableColumnResizing;
+
+  const SetEnableColumnResizingEvent(this.enableColumnResizing);
+}
+
 final class SetEnableCheckboxesEvent extends MyoroTableWidgetShowcaseEvent {
   final bool enableCheckboxes;
 

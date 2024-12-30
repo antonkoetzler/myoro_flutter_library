@@ -124,8 +124,8 @@ List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
     ),
     MyoroResizeDividerThemeExtension(
       secondary: colorScheme.onPrimary,
-      resizeButtonShortValue: 5,
-      resizeButtonLongValue: 20,
+      resizeButtonShortValue: 8,
+      resizeButtonLongValue: 8,
       resizeButtonBorderRadius: MyoroDecorationHelper.borderRadius,
     ),
   ];
@@ -380,6 +380,7 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
         borderRadius: MyoroDecorationHelper.borderRadius,
       ),
       titleRowHeight: 45,
+      titleRowCellMinWidth: 50,
       contentPadding: const EdgeInsets.all(10),
       columnSpacing: 5,
       tableFooterSpacing: 15,
