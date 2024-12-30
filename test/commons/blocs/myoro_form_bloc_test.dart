@@ -10,8 +10,8 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   final formKey = GlobalKey<FormState>();
-  const validationErrorMessage = 'Error';
-  const result = 'Success';
+  const validationErrorMessage = 'Error.';
+  const result = 'Success.';
 
   blocTest(
     '[MyoroFormBloc.FinishFormEvent]: Emits error state when provided [MyoroForm] validation callback returns an error.',
@@ -55,17 +55,12 @@ void main() {
   );
 
   blocTest(
-    '[MyoroFormBloc.FinishFormEvent]: Emits success state when there are not errors from validation callbacks.',
+    '[MyoroFormBloc.FinishFormEvent]: Emits successful state when there are not errors from validation callbacks.',
     build: () => MyoroFormBloc<String>(formKey, null, () => result),
     act: (MyoroFormBloc<String> bloc) => bloc.add(const FinishFormEvent()),
     expect: () => const [
-      MyoroFormState<String>(
-        status: MyoroRequestEnum.loading,
-      ),
-      MyoroFormState<String>(
-        status: MyoroRequestEnum.success,
-        result: result,
-      ),
+      MyoroFormState<String>(status: MyoroRequestEnum.loading),
+      MyoroFormState<String>(status: MyoroRequestEnum.success, result: result),
     ],
   );
 }
