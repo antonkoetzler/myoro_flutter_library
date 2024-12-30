@@ -2,8 +2,7 @@
 
 ## Current
 
-1. HTTP helper;
-1. Widget tests, code coverage, & GitHub actions (**IN PROGRESS:** `MyoroDrawerController`);
+1. Widget tests, code coverage, & GitHub actions (**IN PROGRESS:** `MyoroDropdownController`);
 1. Resolve TODOs;
 1. Documentation;
 1. Contributing documentation;
@@ -11,6 +10,7 @@
 
 ## Future
 
+1. HTTP helper;
 1. Tri-color design scheme with the blue;
 1. Implement notifications;
 1. Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
