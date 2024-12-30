@@ -2,7 +2,7 @@
 
 ## Current
 
-1. Widget tests (**IN PROGRESS:** `MyoroResolverBloc`);
+1. Widget tests, code coverage, & GitHub actions (**IN PROGRESS:** `MyoroResolverBloc`);
 1. Resolve TODOs;
 1. Documentation;
 1. Contributing documentation;

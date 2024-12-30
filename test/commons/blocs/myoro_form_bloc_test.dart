@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Unit test for [MyoroFormBloc].
+import '../../myoro_widget_tester.dart';
+
+// Unit test for [MyoroFormBloc].
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -12,13 +14,44 @@ void main() {
   const result = 'Success';
 
   blocTest(
-    '[MyoroFormBloc.FinishFormEvent]: Emits error state when provided validation callbacks returns an error.',
+    '[MyoroFormBloc.FinishFormEvent]: Emits error state when provided [MyoroForm] validation callback returns an error.',
     build: () => MyoroFormBloc(formKey, () => validationErrorMessage, null),
     act: (MyoroFormBloc bloc) => bloc.add(const FinishFormEvent()),
     expect: () => const [
       MyoroFormState(status: MyoroRequestEnum.loading),
       MyoroFormState(status: MyoroRequestEnum.error, errorMessage: validationErrorMessage),
     ],
+  );
+
+  testWidgets(
+    '[MyoroFormBloc.FinishFormEvent]: Emits error state when a input\'s validation callback returns an error.',
+    (WidgetTester tester) async {
+      final controller = MyoroFormController();
+
+      await tester.pumpWidget(
+        MyoroWidgetTester(
+          child: MyoroForm(
+            controller: controller,
+            builder: (_, __, ___) {
+              return MyoroInput(
+                configuration: MyoroInputConfiguration(
+                  inputStyle: MyoroInputStyleEnum.outlined,
+                  validation: (_) => validationErrorMessage,
+                ),
+              );
+            },
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Trigger the [MyoroInput]'s validation callback.
+      controller.finish();
+      await tester.pumpAndSettle();
+
+      // Confirm that the [MyoroInput] is showing the error message.
+      expect(find.text(validationErrorMessage), findsOneWidget);
+    },
   );
 
   blocTest(
