@@ -2,11 +2,7 @@
 
 ## Current
 
-1. Widget tests;
-
-- https://pub.dev/packages/bloc_test
-- https://bloclibrary.dev/testing/
-
+1. Widget tests (**IN PROGRESS:** `MyoroResolverBloc`);
 1. Resolve TODOs;
 1. Documentation;
 1. Contributing documentation;

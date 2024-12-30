@@ -24,7 +24,7 @@ final class MyoroFormBloc<T> extends Bloc<MyoroFormEvent, MyoroFormState<T>> {
 
       // Flutter's [Form] validation call, this will check validation functions
       // in, for example, a [MyoroInput] with [MyoroInput.validation] provided.
-      final bool formKeyValidation = key.currentState!.validate();
+      final bool formKeyValidation = key.currentState?.validate() ?? true;
 
       if (validationErrorMessage != null || !formKeyValidation) {
         emit(

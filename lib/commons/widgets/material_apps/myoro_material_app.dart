@@ -10,7 +10,7 @@ final class MyoroMaterialApp extends StatelessWidget {
   ///
   /// However, a plugin like [window_manager] needs to be used
   /// to for example, set the title of the window on desktop.
-  final String title;
+  final String? title;
 
   /// Default theme (dark or light mode) of the application.
   final ThemeMode? themeMode;
@@ -25,7 +25,7 @@ final class MyoroMaterialApp extends StatelessWidget {
 
   const MyoroMaterialApp({
     super.key,
-    required this.title,
+    this.title,
     this.themeMode,
     this.themeExtensionsBuilder,
     required this.home,

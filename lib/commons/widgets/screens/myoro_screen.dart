@@ -8,16 +8,16 @@ final class MyoroScreen extends StatefulWidget {
   final MyoroDrawerController? drawerController;
 
   /// App bar of the screen.
-  final PreferredSizeWidget? appBar;
+  final MyoroAppBar? appBar;
 
   /// Body of the screen.
-  final Widget body;
+  final Widget? body;
 
   const MyoroScreen({
     super.key,
     this.drawerController,
     this.appBar,
-    required this.body,
+    this.body,
   });
 
   @override
@@ -25,8 +25,8 @@ final class MyoroScreen extends StatefulWidget {
 }
 
 final class _MyoroScreenState extends State<MyoroScreen> {
-  PreferredSizeWidget? get _appBar => widget.appBar;
-  Widget get _body => widget.body;
+  MyoroAppBar? get _appBar => widget.appBar;
+  Widget? get _body => widget.body;
 
   MyoroDrawerController? _localDrawerController;
   MyoroDrawerController get _drawerController {
