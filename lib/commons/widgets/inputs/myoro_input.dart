@@ -152,8 +152,8 @@ final class _MyoroInputState extends State<MyoroInput> {
                   enabled: _enabled,
                   readOnly: _configuration.readOnly ?? false,
                   style: textStyle.withColor(
-                    textStyle.color!.withOpacity(
-                      _enabled ? 1 : themeExtension.disabledOpacity,
+                    textStyle.color!.withValues(
+                      alpha: _enabled ? 1 : themeExtension.disabledOpacity,
                     ),
                   ),
                   decoration: InputDecoration(
@@ -161,8 +161,8 @@ final class _MyoroInputState extends State<MyoroInput> {
                     label: _label,
                     hintText: _configuration.placeholder,
                     hintStyle: textStyle.withColor(
-                      textStyle.color!.withOpacity(
-                        themeExtension.disabledOpacity,
+                      textStyle.color!.withValues(
+                        alpha: themeExtension.disabledOpacity,
                       ),
                     ),
                     enabledBorder: border,
@@ -174,8 +174,8 @@ final class _MyoroInputState extends State<MyoroInput> {
                     ),
                     disabledBorder: border.copyWith(
                       borderSide: border.borderSide.copyWith(
-                        color: border.borderSide.color.withOpacity(
-                          themeExtension.disabledOpacity,
+                        color: border.borderSide.color.withValues(
+                          alpha: themeExtension.disabledOpacity,
                         ),
                       ),
                     ),

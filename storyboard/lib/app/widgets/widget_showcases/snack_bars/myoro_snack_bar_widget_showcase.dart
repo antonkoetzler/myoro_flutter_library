@@ -66,7 +66,7 @@ final class _Child extends StatelessWidget {
       child: MyoroIconTextHoverButton(
         icon: context.resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>().childIcon,
         text: 'Buttonception O_O',
-        configuration: MyoroHoverButtonConfiguration(bordered: true),
+        configuration: const MyoroHoverButtonConfiguration(bordered: true),
         onPressed: () {},
       ),
     );

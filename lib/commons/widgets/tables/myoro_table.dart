@@ -136,43 +136,49 @@ final class _TitleRow<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Flexible(
-          child: Padding(
-            padding: context.resolveThemeExtension<MyoroTableThemeExtension>().contentPadding,
-            child: ValueListenableBuilder(
-              valueListenable: context.read<MyoroTableController<T>>().ordenatedColumnNotifier,
-              builder: (_, MyoroTableColumn? ordenatedColumn, __) {
-                return Row(
-                  children: _columns.map<Widget>((MyoroTableColumn column) {
-                    final columnIndex = _columns.indexOf(column);
-                    final isLastColumn = columnIndex == _columns.length - 1;
-                    final isOrdenatedColumn = column == ordenatedColumn;
-                    final key = _titleColumnKeys[columnIndex];
-                    final columnWidget = _TitleColumn<T>(key, column, isLastColumn, isOrdenatedColumn);
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final isMultiColumned = _columns.length > 1;
 
-                    // Always expand the last column.
-                    if (isLastColumn) return Expanded(child: columnWidget);
+    return SizedBox(
+      height: themeExtension.titleRowHeight,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Padding(
+              padding: isMultiColumned ? themeExtension.contentPadding.copyWith(top: 0, bottom: 0) : themeExtension.contentPadding,
+              child: ValueListenableBuilder(
+                valueListenable: context.read<MyoroTableController<T>>().ordenatedColumnNotifier,
+                builder: (_, MyoroTableColumn? ordenatedColumn, __) {
+                  return Row(
+                    children: _columns.map<Widget>((MyoroTableColumn column) {
+                      final columnIndex = _columns.indexOf(column);
+                      final isLastColumn = columnIndex == _columns.length - 1;
+                      final isOrdenatedColumn = column == ordenatedColumn;
+                      final key = _titleColumnKeys[columnIndex];
+                      final columnWidget = _TitleColumn<T>(key, column, isLastColumn, isOrdenatedColumn, isMultiColumned);
 
-                    return switch (column.widthConfiguration?.columnWidthEnum) {
-                      MyoroTableColumnWidthEnum.fixed => columnWidget,
-                      MyoroTableColumnWidthEnum.expanded => Expanded(child: columnWidget),
-                      _ => Flexible(child: columnWidget),
-                    };
-                  }).toList(),
-                );
-              },
+                      // Always expand the last column.
+                      if (isLastColumn) return Expanded(child: columnWidget);
+
+                      return switch (column.widthConfiguration?.columnWidthEnum) {
+                        MyoroTableColumnWidthEnum.fixed => columnWidget,
+                        MyoroTableColumnWidthEnum.expanded => Expanded(child: columnWidget),
+                        _ => Flexible(child: columnWidget),
+                      };
+                    }).toList(),
+                  );
+                },
+              ),
             ),
           ),
-        ),
-        const MyoroBasicDivider(
-          configuration: MyoroBasicDividerConfiguration(
-            direction: Axis.horizontal,
+          const MyoroBasicDivider(
+            configuration: MyoroBasicDividerConfiguration(
+              direction: Axis.horizontal,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -182,12 +188,14 @@ final class _TitleColumn<T> extends StatelessWidget {
   final MyoroTableColumn _column;
   final bool _isLastColumn;
   final bool _isOrdenatedColumn;
+  final bool _isMultiColumned;
 
   const _TitleColumn(
     this._key,
     this._column,
     this._isLastColumn,
     this._isOrdenatedColumn,
+    this._isMultiColumned,
   );
 
   @override
@@ -213,9 +221,17 @@ final class _TitleColumn<T> extends StatelessWidget {
               Expanded(
                 child: Text(
                   _column.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: _column.titleTextStyle ?? themeExtension.titleTextStyle,
                 ),
               ),
+              if (_isMultiColumned && !_isLastColumn)
+                const MyoroBasicDivider(
+                  configuration: MyoroBasicDividerConfiguration(
+                    direction: Axis.vertical,
+                  ),
+                ),
             ],
           ),
         ),
@@ -325,7 +341,7 @@ final class _Rows<T> extends StatelessWidget {
                                     child: Row(
                                       spacing: themeExtension.rowsCellSpacing,
                                       children: [
-                                        if (_enableCheckboxes) _RowCheckbox(row, selectedRows.contains(row)),
+                                        if (i == 0 && _enableCheckboxes) _RowCheckbox<T>(row, selectedRows.contains(row)),
                                         Expanded(child: row.cells[i].child),
                                       ],
                                     ),
@@ -433,7 +449,7 @@ final class _Footer<T> extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(child: _ItemsPerPageDropdown(_controller)),
+        _ItemsPerPageDropdown(_controller),
         Flexible(child: _PageControls(_controller)),
       ],
     );
@@ -469,13 +485,16 @@ final class _ItemsPerPageDropdownState<T> extends State<_ItemsPerPageDropdown<T>
   Widget build(BuildContext context) {
     final dataConfiguration = MyoroDataConfiguration<int>(staticItems: kMyoroDataConfigurationItemsPerPageOptions);
 
-    return MyoroDropdown<int>(
-      controller: _dropdownController,
-      dataConfiguration: dataConfiguration,
-      itemBuilder: _itemBuilder,
-      itemLabelBuilder: _formatInt,
-      onChangedItems: _onChangedItems,
-      showClearTextButton: false,
+    return SizedBox(
+      width: 55,
+      child: MyoroDropdown<int>(
+        controller: _dropdownController,
+        dataConfiguration: dataConfiguration,
+        itemBuilder: _itemBuilder,
+        itemLabelBuilder: _formatInt,
+        onChangedItems: _onChangedItems,
+        showClearTextButton: false,
+      ),
     );
   }
 }

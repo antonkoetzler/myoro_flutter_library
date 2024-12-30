@@ -2,11 +2,6 @@
 
 ## Current
 
-1. (**IN PROGRESS**) Finish table remake + widget showcase. What does a table need?
-
-- (**IN PROGRESS**) Resizing columns;
-
-1. Fix deprecation;
 1. Widget tests;
 1. Resolve TODOs;
 1. Documentation;

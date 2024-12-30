@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 SliderThemeData createMyoroSliderThemeData(bool isDarkMode, ColorScheme colorScheme) {
   return SliderThemeData(
     activeTrackColor: colorScheme.onPrimary,
-    inactiveTrackColor: colorScheme.onPrimary.withOpacity(0.5),
+    inactiveTrackColor: colorScheme.onPrimary.withValues(alpha: 0.5),
     thumbColor: colorScheme.onPrimary,
     overlayColor: MyoroColorTheme.transparent,
   );

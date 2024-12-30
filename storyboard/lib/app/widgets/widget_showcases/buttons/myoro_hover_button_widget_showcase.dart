@@ -244,7 +244,7 @@ final class _ColorDropdown extends StatelessWidget {
     );
   }
 
-  String _itemLabelBuilder(Color color) => '#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
+  String _itemLabelBuilder(Color color) => color.hexadecimalFormat;
 
   @override
   Widget build(BuildContext context) {
@@ -286,7 +286,7 @@ final class _ColorDropdownItem extends StatelessWidget {
           SizedBox(width: themeExtension.colorDropdownItemSpacing),
           Expanded(
             child: Text(
-              _color.value.toRadixString(16).padLeft(8, '0').toUpperCase(),
+              _color.hexadecimalFormat,
               style: themeExtension.colorDropdownItemColorTextStyle.withColor(
                 _hovered ? themeExtension.colorDropdownitemPrimaryColor : _onPrimaryColor,
               ),

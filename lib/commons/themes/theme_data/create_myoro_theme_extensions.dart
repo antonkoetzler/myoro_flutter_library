@@ -124,8 +124,8 @@ List<ThemeExtension> createDividerThemeExtensions(ColorScheme colorScheme) {
     ),
     MyoroResizeDividerThemeExtension(
       secondary: colorScheme.onPrimary,
-      resizeButtonShortValue: 10,
-      resizeButtonLongValue: 30,
+      resizeButtonShortValue: 5,
+      resizeButtonLongValue: 20,
       resizeButtonBorderRadius: MyoroDecorationHelper.borderRadius,
     ),
   ];
@@ -295,7 +295,7 @@ List<ThemeExtension> createRadioThemeExtensions(ColorScheme colorScheme, TextThe
   return [
     MyoroRadioThemeExtension(
       activeColor: colorScheme.onPrimary,
-      hoverColor: colorScheme.onPrimary.withOpacity(0.3),
+      hoverColor: colorScheme.onPrimary.withValues(alpha: 0.3),
       labelTextStyle: textTheme.headlineSmall!,
       spacing: 5,
       splashRadius: 15,
@@ -379,6 +379,7 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
         ),
         borderRadius: MyoroDecorationHelper.borderRadius,
       ),
+      titleRowHeight: 45,
       contentPadding: const EdgeInsets.all(10),
       columnSpacing: 5,
       tableFooterSpacing: 15,
@@ -392,7 +393,7 @@ List<ThemeExtension> createTableThemeExtensions(ColorScheme colorScheme, TextThe
       titleColumnSpacing: 5,
       rowsCellSpacing: 3,
       rowsButtonConfiguration: MyoroHoverButtonConfiguration(
-        onPrimaryColor: colorScheme.onPrimary.withOpacity(0.3),
+        onPrimaryColor: colorScheme.onPrimary.withValues(alpha: 0.3),
         borderRadius: BorderRadius.zero,
         primaryColor: MyoroColorTheme.transparent,
       ),

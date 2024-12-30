@@ -247,6 +247,7 @@ final class _InputState<T> extends State<_Input<T>> {
             readOnly: true,
             showClearTextButton: _showClearTextButton,
             checkboxOnChanged: _checkboxOnChangedNotNull ? _checkboxOnChanged : null,
+            textAlign: TextAlign.center,
             onCleared: () => _controller.clear(),
           ),
         ),

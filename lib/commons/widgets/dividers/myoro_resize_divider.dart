@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the divider resize is activated.
-typedef MyoroResizeDividerDragCallback = Function(DragUpdateDetails details);
+typedef MyoroResizeDividerDragCallback = void Function(DragUpdateDetails details);
 
 /// A divider with a click/tap + drag resize functionality.
 final class MyoroResizeDivider extends StatelessWidget {

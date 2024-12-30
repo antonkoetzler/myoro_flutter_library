@@ -57,7 +57,7 @@ final class _ColorOption extends StatelessWidget {
     );
   }
 
-  String _itemLabelBuilder(Color color) => '#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
+  String _itemLabelBuilder(Color color) => color.hexadecimalFormat;
 
   void _onChangedItems(BuildContext context, List<Color> colors) {
     context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
@@ -117,7 +117,7 @@ final class _ColorDropdownItem extends StatelessWidget {
           SizedBox(width: themeExtension.colorDropdownItemSpacing),
           Expanded(
             child: Text(
-              _color.value.toRadixString(16).padLeft(8, '0').toUpperCase(),
+              _color.hexadecimalFormat,
               style: themeExtension.colorDropdownItemColorTextStyle.withColor(
                 _hovered ? themeExtension.colorDropdownitemPrimaryColor : _onPrimaryColor,
               ),

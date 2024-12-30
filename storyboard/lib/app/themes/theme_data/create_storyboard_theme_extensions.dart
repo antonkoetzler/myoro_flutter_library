@@ -39,7 +39,7 @@ List<ThemeExtension> _createAppThemeExtensions(TextTheme textTheme) {
 List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     WidgetShowcaseThemeExtension(
-      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withOpacity(0.1),
+      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(alpha: 0.1),
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,

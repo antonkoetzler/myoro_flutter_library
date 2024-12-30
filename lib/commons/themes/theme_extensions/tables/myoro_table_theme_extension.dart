@@ -8,6 +8,9 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   /// [BoxDecoration] of the root [Container] in [_MyoroTableState].
   final BoxDecoration decoration;
 
+  /// Fixed height of [_TitleRow].
+  final double titleRowHeight;
+
   /// [EdgeInsets] of [_TitleRow] & [_BuiltDataSection] (padding of the contents of the table).
   final EdgeInsets contentPadding;
 
@@ -49,6 +52,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
 
   const MyoroTableThemeExtension({
     required this.decoration,
+    required this.titleRowHeight,
     required this.contentPadding,
     required this.columnSpacing,
     required this.tableFooterSpacing,
@@ -67,6 +71,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   @override
   MyoroTableThemeExtension copyWith({
     BoxDecoration? decoration,
+    double? titleRowHeight,
     EdgeInsets? contentPadding,
     double? columnSpacing,
     double? tableFooterSpacing,
@@ -83,6 +88,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   }) {
     return MyoroTableThemeExtension(
       decoration: decoration ?? this.decoration,
+      titleRowHeight: titleRowHeight ?? this.titleRowHeight,
       contentPadding: contentPadding ?? this.contentPadding,
       columnSpacing: columnSpacing ?? this.columnSpacing,
       tableFooterSpacing: tableFooterSpacing ?? this.tableFooterSpacing,
@@ -107,6 +113,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     if (other is! MyoroTableThemeExtension) return this;
     return copyWith(
       decoration: BoxDecoration.lerp(decoration, other.decoration, t),
+      titleRowHeight: lerpDouble(titleRowHeight, other.titleRowHeight, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
       tableFooterSpacing: lerpDouble(tableFooterSpacing, other.tableFooterSpacing, t),
