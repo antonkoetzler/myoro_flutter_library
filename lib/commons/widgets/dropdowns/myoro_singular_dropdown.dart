@@ -3,26 +3,33 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Dropdown that selects a single item at a time.
 final class MyoroSingularDropdown<T> extends StatefulWidget {
-  const MyoroSingularDropdown({super.key});
+  /// Dropdown configuration.
+  final MyoroDropdownConfiguration<T> configuration;
+
+  const MyoroSingularDropdown({super.key, required this.configuration});
 
   @override
   State<MyoroSingularDropdown<T>> createState() => _MyoroSingularDropdownState<T>();
 }
 
 final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T>> {
+  MyoroDropdownConfiguration<T> get _configuration => widget.configuration;
+
   @override
   Widget build(BuildContext context) {
-    return const Stack(
+    return Stack(
       children: [
-        _Input(),
-        _Dropdown(),
+        _Input(_configuration),
+        _Dropdown(_configuration),
       ],
     );
   }
 }
 
-final class _Input extends StatelessWidget {
-  const _Input();
+final class _Input<T> extends StatelessWidget {
+  final MyoroDropdownConfiguration<T> _configuration;
+
+  const _Input(this._configuration);
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +42,6 @@ final class _Input extends StatelessWidget {
             ),
           ),
           Container(
-            width: double.infinity,
-            // height: 43, // Height of the input.
             color: Colors.blue,
           ),
         ],
@@ -45,11 +50,16 @@ final class _Input extends StatelessWidget {
   }
 }
 
-final class _Dropdown extends StatelessWidget {
-  const _Dropdown();
+final class _Dropdown<T> extends StatelessWidget {
+  final MyoroDropdownConfiguration<T> _configuration;
+
+  const _Dropdown(this._configuration);
 
   @override
   Widget build(BuildContext context) {
-    return MyoroMenu();
+    return MyoroMenu(
+      dataConfiguration: _configuration.dataConfiguration,
+      itemBuilder: _configuration.itemBuilder,
+    );
   }
 }
