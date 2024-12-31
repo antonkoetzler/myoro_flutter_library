@@ -46,8 +46,9 @@ List<ThemeExtension> createDropdownThemeExtensions(TextTheme textTheme) {
       inputStyle: MyoroInputStyleEnum.outlined,
       spacing: 10,
     ),
-    MyoroSingularDropdownThemeExtension(
+    MyoroDropdownV2ThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
+      inputDropdownSpacing: 10,
     ),
   ];
 }

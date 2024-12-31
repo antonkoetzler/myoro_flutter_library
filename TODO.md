@@ -13,4 +13,9 @@
 1. HTTP helper;
 1. Tri-color design scheme with the blue;
 1. Implement notifications;
-1. (**MAKE BOTH DROPDOWNS IN ONE FILE**) (**IN PROGRESS**) Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
+1. (**IN PROGRESS**) Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
+
+- Do the click away `FocusNode` shit;
+- (**ABSTRACT DROPDOWN CONTROLLER**) Selecting items;
+- Situation where the menu is hidden;
+- Add padding for the clear text button.
