@@ -101,6 +101,7 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       dropdownItemSpacing: 10,
       inputStyle: MyoroInputStyleEnum.outlined,
     ),
+    const MyoroSingularDropdownWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(
       widgetMainAxisAlignment: MainAxisAlignment.center,
       widgetInputStyle: MyoroInputStyleEnum.outlined,

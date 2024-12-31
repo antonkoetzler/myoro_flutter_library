@@ -29,6 +29,7 @@ enum WidgetListingEnum {
   ]),
   dropdowns('Dropdowns', [
     myoroDropdownTitle,
+    myoroSingularDropdownTitle,
   ]),
   forms('Forms', [
     myoroFormTitle,
@@ -115,6 +116,7 @@ enum WidgetListingEnum {
 
   // Dropdowns.
   static const myoroDropdownTitle = 'MyoroDropdown';
+  static const myoroSingularDropdownTitle = 'MyoroSingularDropdown';
 
   // Forms.
   static const myoroFormTitle = 'MyoroForm';
@@ -198,6 +200,7 @@ enum WidgetListingEnum {
 
       // Dropdowns.
       myoroDropdownTitle => const MyoroDropdownWidgetShowcase(),
+      myoroSingularDropdownTitle => const MyoroSingularDropdownWidgetShowcase(),
 
       // Forms.
       myoroFormTitle => const MyoroFormWidgetShowcase(),

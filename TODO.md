@@ -13,4 +13,4 @@
 1. HTTP helper;
 1. Tri-color design scheme with the blue;
 1. Implement notifications;
-1. Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
+1. (**IN PROGRESS**) Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
