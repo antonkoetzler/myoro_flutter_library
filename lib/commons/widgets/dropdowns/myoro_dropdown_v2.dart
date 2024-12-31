@@ -132,7 +132,7 @@ final class _Input extends StatelessWidget {
             hoverColor: MyoroColorTheme.transparent,
             splashColor: MyoroColorTheme.transparent,
             highlightColor: MyoroColorTheme.transparent,
-            onTap: () => displayingDropdownNotifier.value = true,
+            onTap: () => displayingDropdownNotifier.value = !displayingDropdownNotifier.value,
             child: Container(
               color: Colors.blue,
             ),
