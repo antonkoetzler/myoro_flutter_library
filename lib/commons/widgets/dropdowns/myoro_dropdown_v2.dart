@@ -7,9 +7,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
-
-typedef _DisplayingDropdownNotifier = ValueNotifier<bool>;
 
 /// [_MyoroDropdown] that only selects one item at a time.
 final class MyoroSingularDropdown<T> extends StatelessWidget {
@@ -37,13 +34,13 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
   }
 }
 
+/// The generic class for both [MyoroSingularDropdown] & [MyoroMultiDropdown].
 final class _MyoroDropdown<T> extends StatefulWidget {
-  /// Dropdown configuration.
-  final MyoroDropdownConfiguration<T> configuration;
+  final MyoroDropdownConfiguration<T> _configuration;
 
   const _MyoroDropdown._(
     Key? key,
-    this.configuration,
+    this._configuration,
   ) : super(key: key);
 
   @override
@@ -51,108 +48,108 @@ final class _MyoroDropdown<T> extends StatefulWidget {
 }
 
 final class _MyoroDropdownState<T> extends State<_MyoroDropdown<T>> {
-  MyoroDropdownConfiguration<T> get _configuration => widget.configuration;
+  MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
 
-  /// [GlobalKey] of [_Input] to get it's height to offset [_Dropdown].
+  /// [GlobalKey] of [_Input] to get it's position on the screen to position [_overlayEntry] which holds [_Dropdown].
   final _inputKey = GlobalKey();
 
-  /// [ValueNotifier] to pass the height of [_Input] to offset [_Dropdown] with it's [Positioned].
-  final _inputHeightNotifier = ValueNotifier<double?>(null);
+  /// The [OverlayEntry] to display [_Dropdown].
+  OverlayEntry? _overlayEntry;
 
-  /// [ValueNotifier] controlling whether or not [_Dropdown] is showing.
-  final _displayingDropdownNotifier = _DisplayingDropdownNotifier(false);
-
-  @override
-  void dispose() {
-    _inputHeightNotifier.dispose();
-    _displayingDropdownNotifier.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  OverlayEntry _createOverlay() {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _inputHeightNotifier.value = (_inputKey.currentContext!.findRenderObject() as RenderBox).size.height;
-    });
+    final inputRenderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
+    final inputPosition = inputRenderBox.localToGlobal(Offset.zero);
+    final inputSize = inputRenderBox.size;
 
-    return MultiProvider(
-      providers: [
-        Provider.value(value: _configuration),
-        InheritedProvider.value(value: _displayingDropdownNotifier),
-      ],
-      child: ValueListenableBuilder(
-        valueListenable: _displayingDropdownNotifier,
-        builder: (_, bool displayingDropdown, __) {
-          return Stack(
-            children: [
-              _Input(_inputKey),
-              if (displayingDropdown)
-                ValueListenableBuilder(
-                  valueListenable: _inputHeightNotifier,
-                  builder: (_, double? inputHeight, __) {
-                    // Prevents "glitchy" looking when the post frame callback hasen't finished.
-                    if (inputHeight == null) return const SizedBox.shrink();
-
-                    return Padding(
-                      padding: EdgeInsets.only(top: inputHeight + themeExtension.inputDropdownSpacing),
-                      child: _Dropdown<T>(),
-                    );
-                  },
-                ),
-            ],
-          );
-        },
-      ),
+    return OverlayEntry(
+      builder: (_) {
+        return Positioned(
+          width: inputSize.width,
+          top: inputPosition.dy + inputSize.height + themeExtension.inputDropdownSpacing,
+          left: inputPosition.dx,
+          child: Material(
+            color: MyoroColorTheme.transparent,
+            child: _Dropdown(_configuration),
+          ),
+        );
+      },
     );
   }
-}
 
-final class _Input extends StatelessWidget {
-  const _Input(GlobalKey key) : super(key: key);
+  void _showOverlay() {
+    _removeOverlay();
+    _overlayEntry = _createOverlay();
+    context.overlay.insert(_overlayEntry!);
+  }
+
+  void _removeOverlay() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final displayingDropdownNotifier = context.read<_DisplayingDropdownNotifier>();
-
     return IntrinsicHeight(
       child: Stack(
         children: [
-          // Input which displays the selected item(s).
-          MyoroInput(
-            configuration: MyoroInputConfiguration(
-              inputStyle: context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>().inputStyle,
-            ),
-          ),
-
-          // Clickable area to activate the dropdown.
-          InkWell(
-            focusColor: MyoroColorTheme.transparent,
-            hoverColor: MyoroColorTheme.transparent,
-            splashColor: MyoroColorTheme.transparent,
-            highlightColor: MyoroColorTheme.transparent,
-            onTap: () => displayingDropdownNotifier.value = !displayingDropdownNotifier.value,
-            child: Container(
-              color: Colors.blue,
-            ),
-          ),
+          _Input(_inputKey),
+          _TriggerArea(() => _overlayEntry == null ? _showOverlay() : _removeOverlay()),
         ],
       ),
     );
   }
 }
 
-final class _Dropdown<T> extends StatelessWidget {
-  const _Dropdown();
+final class _Input extends StatelessWidget {
+  final GlobalKey _key;
+
+  const _Input(this._key);
 
   @override
   Widget build(BuildContext context) {
-    final configuration = context.read<MyoroDropdownConfiguration<T>>();
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
 
+    return MyoroInput(
+      key: _key,
+      configuration: MyoroInputConfiguration(
+        inputStyle: themeExtension.inputStyle,
+      ),
+    );
+  }
+}
+
+final class _TriggerArea extends StatelessWidget {
+  final VoidCallback _onPressed;
+
+  const _TriggerArea(this._onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      focusColor: MyoroColorTheme.transparent,
+      hoverColor: MyoroColorTheme.transparent,
+      splashColor: MyoroColorTheme.transparent,
+      highlightColor: MyoroColorTheme.transparent,
+      onTap: _onPressed,
+      child: Container(
+        color: Colors.blue,
+      ),
+    );
+  }
+}
+
+final class _Dropdown<T> extends StatelessWidget {
+  final MyoroDropdownConfiguration<T> _configuration;
+
+  const _Dropdown(this._configuration);
+
+  @override
+  Widget build(BuildContext context) {
     return MyoroMenu(
-      dataConfiguration: configuration.dataConfiguration,
-      itemBuilder: configuration.itemBuilder,
+      dataConfiguration: _configuration.dataConfiguration,
+      itemBuilder: _configuration.itemBuilder,
     );
   }
 }

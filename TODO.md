@@ -15,7 +15,7 @@
 1. Implement notifications;
 1. (**IN PROGRESS**) Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
 
-- Do the click away `FocusNode` shit;
+- (**IN PROGRESS, USE AN OVERLAY**) Do the click away `FocusNode` shit;
 - (**ABSTRACT DROPDOWN CONTROLLER**) Selecting items;
 - Situation where the menu is hidden;
 - Add padding for the clear text button.
