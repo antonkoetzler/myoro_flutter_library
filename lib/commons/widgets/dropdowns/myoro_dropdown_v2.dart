@@ -13,12 +13,17 @@ final class MyoroSingularDropdown<T> extends StatelessWidget {
   /// Dropdown configuration.
   final MyoroDropdownConfiguration<T> configuration;
 
-  const MyoroSingularDropdown({super.key, required this.configuration});
+  /// Controller.
+  final MyoroSingularDropdownController<T>? controller;
+
+  const MyoroSingularDropdown({
+    super.key,
+    required this.configuration,
+    this.controller,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return _MyoroDropdown._(key, configuration);
-  }
+  Widget build(BuildContext context) => _MyoroDropdown._(key, configuration, controller);
 }
 
 /// [_MyoroDropdown] that selects multiple items at a time.
@@ -26,21 +31,28 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
   /// Dropdown configuration.
   final MyoroDropdownConfiguration<T> configuration;
 
-  const MyoroMultiDropdown({super.key, required this.configuration});
+  /// Controller.
+  final MyoroMultiDropdownController<T>? controller;
+
+  const MyoroMultiDropdown({
+    super.key,
+    required this.configuration,
+    this.controller,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    return _MyoroDropdown._(key, configuration);
-  }
+  Widget build(BuildContext context) => _MyoroDropdown._(key, configuration, controller);
 }
 
 /// The generic class for both [MyoroSingularDropdown] & [MyoroMultiDropdown].
 final class _MyoroDropdown<T> extends StatefulWidget {
   final MyoroDropdownConfiguration<T> _configuration;
+  final MyoroDropdownV2Controller<T>? _controller;
 
   const _MyoroDropdown._(
     Key? key,
     this._configuration,
+    this._controller,
   ) : super(key: key);
 
   @override
@@ -49,6 +61,11 @@ final class _MyoroDropdown<T> extends StatefulWidget {
 
 final class _MyoroDropdownState<T> extends State<_MyoroDropdown<T>> {
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
+
+  MyoroDropdownV2Controller? _localController;
+  MyoroDropdownV2Controller get _controller {
+    return widget._controller ?? (_localController ??= MyoroDropdownV2Controller());
+  }
 
   /// [GlobalKey] of [_Input] to get it's position on the screen to position [_overlayEntry] which holds [_Dropdown].
   final _inputKey = GlobalKey();
@@ -87,6 +104,12 @@ final class _MyoroDropdownState<T> extends State<_MyoroDropdown<T>> {
   void _removeOverlay() {
     _overlayEntry?.remove();
     _overlayEntry = null;
+  }
+
+  @override
+  void dispose() {
+    if (widget._controller == null) _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -145,11 +168,21 @@ final class _Dropdown<T> extends StatelessWidget {
 
   const _Dropdown(this._configuration);
 
+  MyoroMenuItem _itemBuilder(T item) {
+    final menuItem = _configuration.itemBuilder(item);
+    return menuItem.copyWith(
+      onPressed: () {
+        menuItem.onPressed?.call();
+        print('Actually start'); // TODO: You are here.
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MyoroMenu(
       dataConfiguration: _configuration.dataConfiguration,
-      itemBuilder: _configuration.itemBuilder,
+      itemBuilder: _itemBuilder,
     );
   }
 }
