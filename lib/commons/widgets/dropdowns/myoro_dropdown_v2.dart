@@ -153,7 +153,7 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
           left: inputPosition.dx,
           child: Material(
             color: MyoroColorTheme.transparent,
-            child: _Menu(_configuration),
+            child: _Menu(_controller, _configuration),
           ),
         );
       },
@@ -239,7 +239,7 @@ final class _Menu<T> extends StatelessWidget {
     return menuItem.copyWith(
       onPressed: () {
         menuItem.onPressed?.call();
-        _controller.isSelected(item) ? _controller.deselectItem(item) : _controller.selectItem(item) // TODO: You are here.
+        _controller.isSelected(item) ? _controller.deselectItem(item) : _controller.selectItem(item); // TODO: You are here.
       },
     );
   }
