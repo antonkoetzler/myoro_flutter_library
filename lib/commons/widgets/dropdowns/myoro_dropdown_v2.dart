@@ -8,7 +8,58 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// [_MyoroDropdown] that only selects one item at a time.
+/// Enum to distinguish if we are working with a [MyoroSingularDropdown] or [MyoroMultiDropdown].
+enum _MyoroDropdownEnum {
+  singular,
+  multi;
+
+  bool get isSingular => this == singular;
+  bool get isMulti => this == multi;
+}
+
+/// Generic controller to call [MyoroSingularDropdown] & [MyoroMultiDropdown] functions.
+final class _MyoroDropdownController<T> {
+  /// Distinguish what kind of dropdown we are working with.
+  late final _MyoroDropdownEnum _dropdownType;
+
+  /// Manages the selected items for both [_singularController] & [_multiController].
+  final _selectedItemsNotifier = ValueNotifier<Set<T>>({});
+
+  final MyoroSingularDropdownController<T>? _singularController;
+  final MyoroMultiDropdownController<T>? _multiController;
+
+  _MyoroDropdownController(this._singularController, this._multiController) {
+    _dropdownType = _singularController != null ? _MyoroDropdownEnum.singular : _MyoroDropdownEnum.multi;
+  }
+
+  void dispose() {
+    _selectedItemsNotifier.dispose();
+    _singularController?.dispose();
+    _multiController?.dispose();
+  }
+
+  bool isSelected(T item) {
+    return _selectedItems.contains(item);
+  }
+
+  void selectItem(T item) {
+    assert(!isSelected(item));
+    _selectedItemsNotifier.value = (_dropdownType.isSingular ? {} : Set.from(_selectedItems))..add(item);
+    _singularController?.selectItem(item);
+    _multiController?.selectItems([item]);
+  }
+
+  void deselectItem(T item) {
+    assert(isSelected(item));
+    _selectedItemsNotifier.value = Set.from(_selectedItems)..remove(item);
+    _singularController?.deselectItem();
+    _multiController?.deselectItems([item]);
+  }
+
+  Set<T> get _selectedItems => _selectedItemsNotifier.value;
+}
+
+/// [_Dropdown] that only selects one item at a time.
 final class MyoroSingularDropdown<T> extends StatelessWidget {
   /// Dropdown configuration.
   final MyoroDropdownConfiguration<T> configuration;
@@ -23,10 +74,16 @@ final class MyoroSingularDropdown<T> extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => _MyoroDropdown._(key, configuration, controller);
+  Widget build(BuildContext context) {
+    return _Dropdown._(
+      key,
+      configuration,
+      singularController: controller,
+    );
+  }
 }
 
-/// [_MyoroDropdown] that selects multiple items at a time.
+/// [_Dropdown] that selects multiple items at a time.
 final class MyoroMultiDropdown<T> extends StatelessWidget {
   /// Dropdown configuration.
   final MyoroDropdownConfiguration<T> configuration;
@@ -41,31 +98,39 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => _MyoroDropdown._(key, configuration, controller);
+  Widget build(BuildContext context) {
+    return _Dropdown._(
+      key,
+      configuration,
+      multiController: controller,
+    );
+  }
 }
 
 /// The generic class for both [MyoroSingularDropdown] & [MyoroMultiDropdown].
-final class _MyoroDropdown<T> extends StatefulWidget {
+final class _Dropdown<T> extends StatefulWidget {
   final MyoroDropdownConfiguration<T> _configuration;
-  final MyoroDropdownV2Controller<T>? _controller;
+  final MyoroSingularDropdownController<T>? singularController;
+  final MyoroMultiDropdownController<T>? multiController;
 
-  const _MyoroDropdown._(
+  const _Dropdown._(
     Key? key,
-    this._configuration,
-    this._controller,
-  ) : super(key: key);
+    this._configuration, {
+    this.singularController,
+    this.multiController,
+  }) : super(key: key);
 
   @override
-  State<_MyoroDropdown<T>> createState() => _MyoroDropdownState<T>();
+  State<_Dropdown<T>> createState() => _DropdownState<T>();
 }
 
-final class _MyoroDropdownState<T> extends State<_MyoroDropdown<T>> {
+final class _DropdownState<T> extends State<_Dropdown<T>> {
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
+  MyoroSingularDropdownController<T>? get _singularController => widget.singularController;
+  MyoroMultiDropdownController<T>? get _multiController => widget.multiController;
 
-  MyoroDropdownV2Controller? _localController;
-  MyoroDropdownV2Controller get _controller {
-    return widget._controller ?? (_localController ??= MyoroDropdownV2Controller());
-  }
+  /// Controller to call functions for both [_singularController] & [_multiController].
+  late final _controller = _MyoroDropdownController<T>(_singularController, _multiController);
 
   /// [GlobalKey] of [_Input] to get it's position on the screen to position [_overlayEntry] which holds [_Dropdown].
   final _inputKey = GlobalKey();
@@ -88,7 +153,7 @@ final class _MyoroDropdownState<T> extends State<_MyoroDropdown<T>> {
           left: inputPosition.dx,
           child: Material(
             color: MyoroColorTheme.transparent,
-            child: _Dropdown(_configuration),
+            child: _Menu(_configuration),
           ),
         );
       },
@@ -108,7 +173,7 @@ final class _MyoroDropdownState<T> extends State<_MyoroDropdown<T>> {
 
   @override
   void dispose() {
-    if (widget._controller == null) _controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -163,17 +228,18 @@ final class _TriggerArea extends StatelessWidget {
   }
 }
 
-final class _Dropdown<T> extends StatelessWidget {
+final class _Menu<T> extends StatelessWidget {
+  final _MyoroDropdownController<T> _controller;
   final MyoroDropdownConfiguration<T> _configuration;
 
-  const _Dropdown(this._configuration);
+  const _Menu(this._controller, this._configuration);
 
   MyoroMenuItem _itemBuilder(T item) {
     final menuItem = _configuration.itemBuilder(item);
     return menuItem.copyWith(
       onPressed: () {
         menuItem.onPressed?.call();
-        print('Actually start'); // TODO: You are here.
+        _controller.isSelected(item) ? _controller.deselectItem(item) : _controller.selectItem(item) // TODO: You are here.
       },
     );
   }

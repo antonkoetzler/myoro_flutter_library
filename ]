@@ -13,3 +13,9 @@ class MyoroDropdownV2Controller<T> {
   ValueNotifier<List<T>> get selectedItemsNotifier => _selectedItemsNotifier;
   List<T> get selectedItems => _selectedItemsNotifier.value;
 }
+
+final class Foo<T> extends MyoroDropdownV2Controller<T> {
+  final int hey = 0;
+}
+
+final foo = Foo();
