@@ -20,17 +20,22 @@ enum _MyoroDropdownEnum {
 /// Generic controller to call [MyoroSingularDropdown] & [MyoroMultiDropdown] functions.
 final class _MyoroDropdownController<T> {
   /// Distinguish what kind of dropdown we are working with.
-  late final _MyoroDropdownEnum _dropdownType;
+  final _MyoroDropdownEnum _dropdownType;
+
+  /// [MyoroSingularDropdownController] controller.
+  final MyoroSingularDropdownController<T>? _singularController;
+
+  /// [MyoroMultiDropdownController] controller.
+  final MyoroMultiDropdownController<T>? _multiController;
 
   /// Manages the selected items for both [_singularController] & [_multiController].
   final _selectedItemsNotifier = ValueNotifier<Set<T>>({});
 
-  final MyoroSingularDropdownController<T>? _singularController;
-  final MyoroMultiDropdownController<T>? _multiController;
-
-  _MyoroDropdownController(this._singularController, this._multiController) {
-    _dropdownType = _singularController != null ? _MyoroDropdownEnum.singular : _MyoroDropdownEnum.multi;
-  }
+  _MyoroDropdownController(
+    this._dropdownType,
+    this._singularController,
+    this._multiController,
+  );
 
   void dispose() {
     _selectedItemsNotifier.dispose();
@@ -38,19 +43,19 @@ final class _MyoroDropdownController<T> {
     _multiController?.dispose();
   }
 
-  bool isSelected(T item) {
+  bool _isSelected(T item) {
     return _selectedItems.contains(item);
   }
 
-  void selectItem(T item) {
-    assert(!isSelected(item));
+  void _selectItem(T item) {
+    assert(!_isSelected(item));
     _selectedItemsNotifier.value = (_dropdownType.isSingular ? {} : Set.from(_selectedItems))..add(item);
     _singularController?.selectItem(item);
     _multiController?.selectItems([item]);
   }
 
   void deselectItem(T item) {
-    assert(isSelected(item));
+    assert(_isSelected(item));
     _selectedItemsNotifier.value = Set.from(_selectedItems)..remove(item);
     _singularController?.deselectItem();
     _multiController?.deselectItems([item]);
@@ -77,6 +82,7 @@ final class MyoroSingularDropdown<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return _Dropdown._(
       key,
+      _MyoroDropdownEnum.singular,
       configuration,
       singularController: controller,
     );
@@ -101,6 +107,7 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return _Dropdown._(
       key,
+      _MyoroDropdownEnum.multi,
       configuration,
       multiController: controller,
     );
@@ -109,12 +116,14 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
 
 /// The generic class for both [MyoroSingularDropdown] & [MyoroMultiDropdown].
 final class _Dropdown<T> extends StatefulWidget {
+  final _MyoroDropdownEnum _dropdownType;
   final MyoroDropdownConfiguration<T> _configuration;
   final MyoroSingularDropdownController<T>? singularController;
   final MyoroMultiDropdownController<T>? multiController;
 
   const _Dropdown._(
     Key? key,
+    this._dropdownType,
     this._configuration, {
     this.singularController,
     this.multiController,
@@ -125,18 +134,27 @@ final class _Dropdown<T> extends StatefulWidget {
 }
 
 final class _DropdownState<T> extends State<_Dropdown<T>> {
+  _MyoroDropdownEnum get _dropdownType => widget._dropdownType;
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
   MyoroSingularDropdownController<T>? get _singularController => widget.singularController;
   MyoroMultiDropdownController<T>? get _multiController => widget.multiController;
 
+  /// [FocusNode] [_Dropdown] in order to be able to click anywhere but [_Menu] to close [_Menu].
+  final _focusNode = FocusNode();
+
   /// Controller to call functions for both [_singularController] & [_multiController].
-  late final _controller = _MyoroDropdownController<T>(_singularController, _multiController);
+  late final _controller = _MyoroDropdownController<T>(_dropdownType, _singularController, _multiController);
 
   /// [GlobalKey] of [_Input] to get it's position on the screen to position [_overlayEntry] which holds [_Dropdown].
   final _inputKey = GlobalKey();
 
   /// The [OverlayEntry] to display [_Dropdown].
   OverlayEntry? _overlayEntry;
+
+  void _focusNodeListener() {
+    if (_focusNode.hasFocus) return;
+    _removeOverlay();
+  }
 
   OverlayEntry _createOverlay() {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
@@ -153,7 +171,7 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
           left: inputPosition.dx,
           child: Material(
             color: MyoroColorTheme.transparent,
-            child: _Menu(_controller, _configuration),
+            child: _Menu(_controller, _configuration, _removeOverlay),
           ),
         );
       },
@@ -164,6 +182,11 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
     _removeOverlay();
     _overlayEntry = _createOverlay();
     context.overlay.insert(_overlayEntry!);
+    _focusNode.requestFocus();
+  }
+
+  void _triggerAreaOnPressed() {
+    _overlayEntry == null ? _showOverlay() : _removeOverlay();
   }
 
   void _removeOverlay() {
@@ -172,7 +195,14 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(_focusNodeListener);
+  }
+
+  @override
   void dispose() {
+    _focusNode.dispose();
     _controller.dispose();
     super.dispose();
   }
@@ -180,50 +210,105 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
-      child: Stack(
-        children: [
-          _Input(_inputKey),
-          _TriggerArea(() => _overlayEntry == null ? _showOverlay() : _removeOverlay()),
-        ],
+      child: Focus(
+        focusNode: _focusNode,
+        child: Stack(
+          children: [
+            _Input(_inputKey, _configuration, _controller),
+            _TriggerArea(_triggerAreaOnPressed, _configuration, _controller),
+          ],
+        ),
       ),
     );
   }
 }
 
-final class _Input extends StatelessWidget {
+final class _Input<T> extends StatefulWidget {
   final GlobalKey _key;
+  final MyoroDropdownConfiguration<T> _configuration;
+  final _MyoroDropdownController<T> _controller;
 
-  const _Input(this._key);
+  const _Input(this._key, this._configuration, this._controller);
+
+  @override
+  State<_Input<T>> createState() => _InputState<T>();
+}
+
+final class _InputState<T> extends State<_Input<T>> {
+  MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
+  _MyoroDropdownController<T> get _controller => widget._controller;
+
+  final _inputController = TextEditingController();
+
+  void _selectedItemsNotifierListener() {
+    final selectedItems = _controller._selectedItems;
+    final itemLabelBuilder = _configuration.itemLabelBuilder;
+
+    _inputController.text = selectedItems.fold<String>(
+      '',
+      (String current, T item) => '$current${current.isEmpty ? '' : ', '}${itemLabelBuilder.call(item)}',
+    );
+  }
+
+  void _onCleared() {
+    _inputController.clear();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller._selectedItemsNotifier.addListener(_selectedItemsNotifierListener);
+  }
+
+  @override
+  void dispose() {
+    _controller._selectedItemsNotifier.removeListener(_selectedItemsNotifierListener);
+    _inputController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
 
     return MyoroInput(
-      key: _key,
+      key: widget._key,
       configuration: MyoroInputConfiguration(
         inputStyle: themeExtension.inputStyle,
+        showClearTextButton: _configuration.allowItemClearing,
+        controller: _inputController,
+        onCleared: _onCleared,
       ),
     );
   }
 }
 
-final class _TriggerArea extends StatelessWidget {
+final class _TriggerArea<T> extends StatelessWidget {
   final VoidCallback _onPressed;
+  final MyoroDropdownConfiguration<T> _configuration;
+  final _MyoroDropdownController<T> _controller;
 
-  const _TriggerArea(this._onPressed);
+  const _TriggerArea(this._onPressed, this._configuration, this._controller);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      focusColor: MyoroColorTheme.transparent,
-      hoverColor: MyoroColorTheme.transparent,
-      splashColor: MyoroColorTheme.transparent,
-      highlightColor: MyoroColorTheme.transparent,
-      onTap: _onPressed,
-      child: Container(
-        color: Colors.blue,
-      ),
+    return ValueListenableBuilder(
+      valueListenable: _controller._selectedItemsNotifier,
+      builder: (_, Set<T> selectedItems, __) {
+        return Padding(
+          padding: EdgeInsets.only(
+            right: (selectedItems.isNotEmpty && _configuration.allowItemClearing != false) ? 40 : 0,
+          ),
+          child: InkWell(
+            focusColor: MyoroColorTheme.transparent,
+            hoverColor: MyoroColorTheme.transparent,
+            splashColor: MyoroColorTheme.transparent,
+            highlightColor: MyoroColorTheme.transparent,
+            onTap: _onPressed,
+            child: Container(color: MyoroColorTheme.transparent),
+          ),
+        );
+      },
     );
   }
 }
@@ -231,15 +316,22 @@ final class _TriggerArea extends StatelessWidget {
 final class _Menu<T> extends StatelessWidget {
   final _MyoroDropdownController<T> _controller;
   final MyoroDropdownConfiguration<T> _configuration;
+  final VoidCallback _removeOverlayCallback;
 
-  const _Menu(this._controller, this._configuration);
+  const _Menu(
+    this._controller,
+    this._configuration,
+    this._removeOverlayCallback,
+  );
 
   MyoroMenuItem _itemBuilder(T item) {
     final menuItem = _configuration.itemBuilder(item);
     return menuItem.copyWith(
+      isHovered: _controller._isSelected(item),
       onPressed: () {
         menuItem.onPressed?.call();
-        _controller.isSelected(item) ? _controller.deselectItem(item) : _controller.selectItem(item); // TODO: You are here.
+        _controller._isSelected(item) ? _controller.deselectItem(item) : _controller._selectItem(item);
+        if (_controller._dropdownType.isSingular) _removeOverlayCallback();
       },
     );
   }

@@ -15,6 +15,4 @@
 1. Implement notifications;
 1. (**IN PROGRESS**) Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
 
-- (**IN PROGRESS**) Selecting items implementing abstract controller logic & `FocusNode` on click away;
-- Situation where the menu is hidden;
-- Add padding for the clear text button.
+- (**IN PROGRESS**) Situation where the menu is hidden;

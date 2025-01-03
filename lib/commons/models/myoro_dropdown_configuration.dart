@@ -15,21 +15,27 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
   /// [String] builder of the selected dropdown items in the dropdown's [MyoroInput].
   final MyoroDropdownConfigurationItemLabelBuilder<T> itemLabelBuilder;
 
+  /// Whether or not to provide [MyoroInputConfiguration.showClearTextButton] to the dropdown's [MyoroInput].
+  final bool allowItemClearing;
+
   const MyoroDropdownConfiguration({
     required this.dataConfiguration,
     required this.itemBuilder,
     required this.itemLabelBuilder,
+    this.allowItemClearing = true,
   });
 
   MyoroDropdownConfiguration<T> copyWith({
     MyoroDataConfiguration<T>? dataConfiguration,
     MyoroMenuItemBuilder<T>? itemBuilder,
     MyoroDropdownConfigurationItemLabelBuilder<T>? itemLabelBuilder,
+    bool? allowItemClearing,
   }) {
     return MyoroDropdownConfiguration(
       dataConfiguration: dataConfiguration ?? this.dataConfiguration,
       itemBuilder: itemBuilder ?? this.itemBuilder,
       itemLabelBuilder: itemLabelBuilder ?? this.itemLabelBuilder,
+      allowItemClearing: allowItemClearing ?? this.allowItemClearing,
     );
   }
 
@@ -39,6 +45,7 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
       '  dataConfiguration: $dataConfiguration,\n'
       '  itemBuilder: $itemBuilder,\n'
       '  itemLabelBuilder: $itemLabelBuilder,\n'
+      '  allowItemClearing: $allowItemClearing,\n'
       ');';
 
   @override
@@ -47,6 +54,7 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
       dataConfiguration,
       itemBuilder,
       itemLabelBuilder,
+      allowItemClearing,
     ];
   }
 }
