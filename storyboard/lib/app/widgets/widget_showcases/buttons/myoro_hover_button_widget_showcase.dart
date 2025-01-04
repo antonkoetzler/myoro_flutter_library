@@ -79,13 +79,7 @@ final class _PrimaryColorDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return _ColorDropdown(
       '[MyoroHoverButtonConfiguration.primaryColor]',
-      (List<Color> colors) {
-        context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(
-              SetPrimaryColorEvent(
-                colors.isEmpty ? null : colors.first,
-              ),
-            );
-      },
+      (Color? color) => context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(SetPrimaryColorEvent(color)),
     );
   }
 }
@@ -97,11 +91,7 @@ final class _OnPrimaryColorDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return _ColorDropdown(
       '[MyoroHoverButtonConfiguration.onPrimaryColor]',
-      (List<Color> colors) {
-        context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(SetOnPrimaryColorEvent(
-              colors.isEmpty ? null : colors.first,
-            ));
-      },
+      (Color? color) => context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(SetOnPrimaryColorEvent(color)),
     );
   }
 }
@@ -225,11 +215,11 @@ final class _OnPressedEnabledCheckbox extends StatelessWidget {
 
 final class _ColorDropdown extends StatelessWidget {
   final String _label;
-  final MyoroDropdownOnChangeItems<Color> _onChangedItems;
+  final MyoroSingularDropdownOnChanged<Color> _onChanged;
 
   const _ColorDropdown(
     this._label,
-    this._onChangedItems,
+    this._onChanged,
   );
 
   MyoroMenuItem _itemBuilder(Color color) {
@@ -248,12 +238,14 @@ final class _ColorDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown<Color>(
-      label: _label,
-      onChangedItems: _onChangedItems,
-      dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
-      itemBuilder: _itemBuilder,
-      itemLabelBuilder: _itemLabelBuilder,
+    return MyoroSingularDropdown<Color>(
+      configuration: MyoroDropdownConfiguration(
+        label: _label,
+        dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
+        itemBuilder: _itemBuilder,
+        itemLabelBuilder: _itemLabelBuilder,
+      ),
+      onChanged: _onChanged,
     );
   }
 }

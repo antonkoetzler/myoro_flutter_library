@@ -78,7 +78,7 @@ final class _TypeEnumOption extends StatefulWidget {
 
 final class _TypeEnumOptionState extends State<_TypeEnumOption> {
   late final _bloc = context.resolveBloc<MyoroPieGraphWidgetShowcaseBloc>();
-  late final _controller = MyoroDropdownController<MyoroPieGraphEnum>([_bloc.state.typeEnum]);
+  late final _controller = MyoroSingularDropdownController<MyoroPieGraphEnum>(_bloc.state.typeEnum);
 
   @override
   void dispose() {
@@ -88,14 +88,16 @@ final class _TypeEnumOptionState extends State<_TypeEnumOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown(
-      label: '[MyoroPieGraph.typeEnum]',
-      showClearTextButton: false,
+    return MyoroSingularDropdown(
+      configuration: MyoroDropdownConfiguration(
+        label: '[MyoroPieGraph.typeEnum]',
+        allowItemClearing: false,
+        dataConfiguration: MyoroDataConfiguration(staticItems: MyoroPieGraphEnum.values),
+        itemBuilder: (MyoroPieGraphEnum typeEnum) => MyoroMenuItem(text: typeEnum.name),
+        itemLabelBuilder: (MyoroPieGraphEnum typeEnum) => typeEnum.name,
+      ),
+      onChanged: (MyoroPieGraphEnum? typeEnum) => _bloc.add(SetTypeEnumEvent(typeEnum!)),
       controller: _controller,
-      dataConfiguration: MyoroDataConfiguration(staticItems: MyoroPieGraphEnum.values),
-      itemBuilder: (MyoroPieGraphEnum typeEnum) => MyoroMenuItem(text: typeEnum.name),
-      itemLabelBuilder: (MyoroPieGraphEnum typeEnum) => typeEnum.name,
-      onChangedItems: (List<MyoroPieGraphEnum> typeEnums) => _bloc.add(SetTypeEnumEvent(typeEnums.first)),
     );
   }
 }

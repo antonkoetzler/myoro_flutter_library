@@ -4,7 +4,11 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Controller for [MyoroMultiDropdown].
 final class MyoroMultiDropdownController<T> {
   /// [ValueNotifier] for the selected item(s).
-  final _selectedItemsNotifier = ValueNotifier<Set<T>>({});
+  late final ValueNotifier<Set<T>> _selectedItemsNotifier;
+
+  MyoroMultiDropdownController([List<T>? selectedItems]) {
+    _selectedItemsNotifier = ValueNotifier(selectedItems?.toSet() ?? {});
+  }
 
   /// Adds an item to [selectedItems].
   void selectItems(List<T> items) {

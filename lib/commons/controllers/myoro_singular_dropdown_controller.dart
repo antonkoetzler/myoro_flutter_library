@@ -4,7 +4,11 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Controller for [MyoroSingularDropdown].
 final class MyoroSingularDropdownController<T> {
   /// [ValueNotifier] for the selected item.
-  final _selectedItemNotifier = ValueNotifier<T?>(null);
+  late final ValueNotifier<T?> _selectedItemNotifier;
+
+  MyoroSingularDropdownController([T? selectedItem]) {
+    _selectedItemNotifier = ValueNotifier(selectedItem);
+  }
 
   /// Sets [selectedItem].
   void selectItem(T item) {

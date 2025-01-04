@@ -114,7 +114,7 @@ final class _FormatterOption extends StatefulWidget {
 
 final class _FormatterOptionState extends State<_FormatterOption> {
   late final _bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
-  late final _controller = MyoroDropdownController<MyoroInputWidgetShowcaseEnum>([_bloc.state.typeEnum]);
+  late final _controller = MyoroSingularDropdownController<MyoroInputWidgetShowcaseEnum>(_bloc.state.typeEnum);
 
   @override
   void dispose() {
@@ -124,13 +124,15 @@ final class _FormatterOptionState extends State<_FormatterOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown<MyoroInputWidgetShowcaseEnum>(
-      label: 'Formatter (named constructors):',
-      dataConfiguration: MyoroDataConfiguration(staticItems: MyoroInputWidgetShowcaseEnum.values),
-      itemBuilder: (MyoroInputWidgetShowcaseEnum item) => MyoroMenuItem(text: item.title),
-      itemLabelBuilder: (MyoroInputWidgetShowcaseEnum item) => item.title,
-      showClearTextButton: false,
-      onChangedItems: (List<MyoroInputWidgetShowcaseEnum> items) => _bloc.add(SetFormatterEvent(items.first)),
+    return MyoroSingularDropdown<MyoroInputWidgetShowcaseEnum>(
+      configuration: MyoroDropdownConfiguration(
+        label: 'Formatter (named constructors):',
+        dataConfiguration: MyoroDataConfiguration(staticItems: MyoroInputWidgetShowcaseEnum.values),
+        itemBuilder: (MyoroInputWidgetShowcaseEnum item) => MyoroMenuItem(text: item.title),
+        itemLabelBuilder: (MyoroInputWidgetShowcaseEnum item) => item.title,
+        allowItemClearing: false,
+      ),
+      onChanged: (MyoroInputWidgetShowcaseEnum? item) => _bloc.add(SetFormatterEvent(item!)),
     );
   }
 }
@@ -186,7 +188,7 @@ final class _InputStyleOption extends StatefulWidget {
 
 final class _InputStyleOptionState extends State<_InputStyleOption> {
   late final _bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
-  late final _controller = MyoroDropdownController<MyoroInputStyleEnum>([_bloc.state.inputStyle]);
+  late final _controller = MyoroSingularDropdownController<MyoroInputStyleEnum>(_bloc.state.inputStyle);
 
   String _getStyleName(MyoroInputStyleEnum item) {
     return switch (item) {
@@ -203,13 +205,15 @@ final class _InputStyleOptionState extends State<_InputStyleOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown<MyoroInputStyleEnum>(
-      label: '[inputStyle]',
-      dataConfiguration: MyoroDataConfiguration(staticItems: MyoroInputStyleEnum.values),
-      itemBuilder: (MyoroInputStyleEnum item) => MyoroMenuItem(text: _getStyleName(item)),
-      itemLabelBuilder: _getStyleName,
-      showClearTextButton: false,
-      onChangedItems: (List<MyoroInputStyleEnum> items) => _bloc.add(SetInputStyleEvent(items.first)),
+    return MyoroSingularDropdown<MyoroInputStyleEnum>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[inputStyle]',
+        dataConfiguration: MyoroDataConfiguration(staticItems: MyoroInputStyleEnum.values),
+        itemBuilder: (MyoroInputStyleEnum item) => MyoroMenuItem(text: _getStyleName(item)),
+        itemLabelBuilder: _getStyleName,
+        allowItemClearing: false,
+      ),
+      onChanged: (MyoroInputStyleEnum? item) => _bloc.add(SetInputStyleEvent(item!)),
     );
   }
 }
@@ -223,7 +227,7 @@ final class _TextAlignOption extends StatefulWidget {
 
 final class _TextAlignOptionState extends State<_TextAlignOption> {
   late final _bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
-  late final _controller = MyoroDropdownController<TextAlign>([_bloc.state.textAlign]);
+  late final _controller = MyoroSingularDropdownController<TextAlign>(_bloc.state.textAlign);
 
   String _getTextAlignName(TextAlign item) {
     return switch (item) {
@@ -244,14 +248,16 @@ final class _TextAlignOptionState extends State<_TextAlignOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown(
-      label: '[textAlign]',
+    return MyoroSingularDropdown<TextAlign>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[textAlign]',
+        allowItemClearing: false,
+        dataConfiguration: MyoroDataConfiguration(staticItems: TextAlign.values),
+        itemBuilder: (TextAlign item) => MyoroMenuItem(text: _getTextAlignName(item)),
+        itemLabelBuilder: _getTextAlignName,
+      ),
+      onChanged: (TextAlign? item) => _bloc.add(SetTextAlignEvent(item)),
       controller: _controller,
-      showClearTextButton: false,
-      dataConfiguration: MyoroDataConfiguration(staticItems: TextAlign.values),
-      itemBuilder: (TextAlign item) => MyoroMenuItem(text: _getTextAlignName(item)),
-      itemLabelBuilder: _getTextAlignName,
-      onChangedItems: (List<TextAlign> items) => _bloc.add(SetTextAlignEvent(items.first)),
     );
   }
 }
@@ -264,13 +270,14 @@ final class _InputTextStyleOption extends StatelessWidget {
     final typographyInstance = MyoroTypographyTheme.instance;
     final bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
 
-    return MyoroDropdown<TextStyle>(
-      label: '[inputTextStyle]',
-      dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
-      itemBuilder: (TextStyle item) => MyoroMenuItem(text: typographyInstance.getTextStyleName(item)),
-      itemLabelBuilder: typographyInstance.getTextStyleName,
-      onChangedItems: (List<TextStyle> items) => bloc.add(SetInputTextStyleEvent(items.isNotEmpty ? items.first : null)),
-      checkboxOnChanged: (bool enabled, List<TextStyle> items) => bloc.add(SetInputTextStyleEvent(items.isNotEmpty && enabled ? items.first : null)),
+    return MyoroSingularDropdown<TextStyle>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[inputTextStyle]',
+        dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
+        itemBuilder: (TextStyle item) => MyoroMenuItem(text: typographyInstance.getTextStyleName(item)),
+        itemLabelBuilder: typographyInstance.getTextStyleName,
+      ),
+      onChanged: (TextStyle? item) => bloc.add(SetInputTextStyleEvent(item)),
     );
   }
 }
@@ -327,13 +334,15 @@ final class _LabelTextStyleOption extends StatelessWidget {
     final typographyInstance = MyoroTypographyTheme.instance;
     final bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
 
-    return MyoroDropdown<TextStyle>(
-      label: '[labelTextStyle]',
-      dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
-      itemBuilder: (TextStyle item) => MyoroMenuItem(text: typographyInstance.getTextStyleName(item)),
-      itemLabelBuilder: typographyInstance.getTextStyleName,
-      onChangedItems: (List<TextStyle> items) => bloc.add(SetLabelTextStyleEvent(items.isNotEmpty ? items.first : null)),
-      checkboxOnChanged: (bool enabled, List<TextStyle> items) => bloc.add(SetLabelTextStyleEvent(enabled && items.isNotEmpty ? items.first : null)),
+    return MyoroSingularDropdown<TextStyle>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[labelTextStyle]',
+        dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
+        itemBuilder: (TextStyle item) => MyoroMenuItem(text: typographyInstance.getTextStyleName(item)),
+        itemLabelBuilder: typographyInstance.getTextStyleName,
+      ),
+      onChanged: (TextStyle? item) => bloc.add(SetLabelTextStyleEvent(item)),
+      checkboxOnChanged: (bool enabled, TextStyle? item) => bloc.add(SetLabelTextStyleEvent(enabled ? item : null)),
     );
   }
 }

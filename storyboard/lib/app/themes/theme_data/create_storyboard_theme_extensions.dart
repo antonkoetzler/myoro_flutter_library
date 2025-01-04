@@ -95,13 +95,8 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       buttonBordered: true,
       inputStyle: MyoroInputStyleEnum.outlined,
     ),
-    MyoroDropdownWidgetShowcaseThemeExtension(
-      dropdownItemColorSize: 50,
-      dropdownItemTextStyle: textTheme.bodyMedium!,
-      dropdownItemSpacing: 10,
-      inputStyle: MyoroInputStyleEnum.outlined,
-    ),
     const MyoroSingularDropdownWidgetShowcaseThemeExtension(),
+    const MyoroMultiDropdownWidgetShowcaseThemeExtension(),
     MyoroFormWidgetShowcaseThemeExtension(
       widgetMainAxisAlignment: MainAxisAlignment.center,
       widgetInputStyle: MyoroInputStyleEnum.outlined,

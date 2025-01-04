@@ -75,17 +75,19 @@ final class _TitleTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown<(String, TextStyle)>(
-      label: '[MyoroCard.titleTextStyle]',
-      dataConfiguration: MyoroDataConfiguration(
-        staticItems: context.resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>().titleTextStyleOptionTextStyles,
+    return MyoroSingularDropdown<(String, TextStyle)>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[MyoroCard.titleTextStyle]',
+        dataConfiguration: MyoroDataConfiguration(
+          staticItems: context.resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>().titleTextStyleOptionTextStyles,
+        ),
+        itemLabelBuilder: ((String, TextStyle) textStyle) => textStyle.$1,
+        itemBuilder: ((String, TextStyle) textStyle) => MyoroMenuItem(text: textStyle.$1),
       ),
-      itemLabelBuilder: ((String, TextStyle) textStyle) => textStyle.$1,
-      itemBuilder: ((String, TextStyle) textStyle) => MyoroMenuItem(text: textStyle.$1),
-      onChangedItems: (List<(String, TextStyle)> textStyles) {
+      onChanged: ((String, TextStyle)? textStyle) {
         context.resolveBloc<MyoroCardWidgetShowcaseBloc>().add(
               SetTitleTextStyleEvent(
-                textStyles.isNotEmpty ? textStyles.first.$2 : context.resolveThemeExtension<MyoroCardThemeExtension>().textStyle,
+                textStyle != null ? textStyle.$2 : context.resolveThemeExtension<MyoroCardThemeExtension>().textStyle,
               ),
             );
       },

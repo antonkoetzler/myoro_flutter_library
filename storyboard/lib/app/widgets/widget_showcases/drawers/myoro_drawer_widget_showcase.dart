@@ -92,14 +92,16 @@ final class _TitleTextStyleOption extends StatelessWidget {
 
     return SizedBox(
       width: 210,
-      child: MyoroDropdown<TextStyle>(
-        label: '[MyoroDrawer.titleTextStyle]',
-        enabled: false,
-        checkboxOnChanged: (bool enabled, List<TextStyle> textStyles) => bloc.add(SetTitleTextStyleEvent(textStyles.isNotEmpty ? textStyles.first : null)),
-        onChangedItems: (List<TextStyle> textStyles) => bloc.add(SetTitleTextStyleEvent(textStyles.first)),
-        dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
-        itemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
-        itemLabelBuilder: (TextStyle textStyle) => typographyInstance.getTextStyleName(textStyle),
+      child: MyoroSingularDropdown<TextStyle>(
+        configuration: MyoroDropdownConfiguration(
+          label: '[MyoroDrawer.titleTextStyle]',
+          enabled: false,
+          dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
+          itemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
+          itemLabelBuilder: (TextStyle textStyle) => typographyInstance.getTextStyleName(textStyle),
+        ),
+        onChanged: (TextStyle? textStyle) => bloc.add(SetTitleTextStyleEvent(textStyle)),
+        checkboxOnChanged: (bool enabled, TextStyle? textStyle) => bloc.add(SetTitleTextStyleEvent(enabled ? textStyle : null)),
       ),
     );
   }

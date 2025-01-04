@@ -82,7 +82,7 @@ final class _ScrollableTypeOptionState extends State<_ScrollableTypeOption> {
   final _dataConfiguration = MyoroDataConfiguration(staticItems: MyoroScrollableEnum.values);
 
   late final _bloc = context.resolveBloc<MyoroScrollableWidgetShowcaseBloc>();
-  late final _controller = MyoroDropdownController<MyoroScrollableEnum>([_bloc.state.scrollableType]);
+  late final _controller = MyoroSingularDropdownController<MyoroScrollableEnum>(_bloc.state.scrollableType);
 
   String _getScrollableTypeName(MyoroScrollableEnum scrollableType) {
     return switch (scrollableType) {
@@ -95,10 +95,10 @@ final class _ScrollableTypeOptionState extends State<_ScrollableTypeOption> {
     return MyoroMenuItem(text: _getScrollableTypeName(scrollableType));
   }
 
-  void _onChangedItems(List<MyoroScrollableEnum> scrollableTypes) {
+  void _onChanged(MyoroScrollableEnum? scrollableTypes) {
     _bloc.add(
       SetScrollableTypeEvent(
-        scrollableTypes.first,
+        scrollableTypes!,
       ),
     );
   }
@@ -111,14 +111,16 @@ final class _ScrollableTypeOptionState extends State<_ScrollableTypeOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown<MyoroScrollableEnum>(
-      label: '[MyoroScrollable.scrollableType]',
+    return MyoroSingularDropdown<MyoroScrollableEnum>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[MyoroScrollable.scrollableType]',
+        dataConfiguration: _dataConfiguration,
+        itemBuilder: _itemBuilder,
+        itemLabelBuilder: _getScrollableTypeName,
+        allowItemClearing: false,
+      ),
+      onChanged: _onChanged,
       controller: _controller,
-      dataConfiguration: _dataConfiguration,
-      itemBuilder: _itemBuilder,
-      itemLabelBuilder: _getScrollableTypeName,
-      onChangedItems: _onChangedItems,
-      showClearTextButton: false,
     );
   }
 }
@@ -134,11 +136,11 @@ final class _DirectionOptionState extends State<_DirectionOption> {
   final _dataConfiguration = MyoroDataConfiguration(staticItems: Axis.values);
 
   late final _bloc = context.resolveBloc<MyoroScrollableWidgetShowcaseBloc>();
-  late final _controller = MyoroDropdownController<Axis>([_bloc.state.direction]);
+  late final _controller = MyoroSingularDropdownController<Axis>(_bloc.state.direction);
 
   String _getDirectionName(Axis direction) => switch (direction) { Axis.vertical => 'Vertical', Axis.horizontal => 'Horizontal' };
   MyoroMenuItem _itemBuilder(Axis direction) => MyoroMenuItem(text: _getDirectionName(direction));
-  void _onChangedItems(List<Axis> directions) => _bloc.add(SetDirectionEvent(directions.first));
+  void _onChanged(Axis? direction) => _bloc.add(SetDirectionEvent(direction!));
 
   @override
   void dispose() {
@@ -148,14 +150,16 @@ final class _DirectionOptionState extends State<_DirectionOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown<Axis>(
-      label: '[MyoroScrollable.direction]',
+    return MyoroSingularDropdown<Axis>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[MyoroScrollable.direction]',
+        dataConfiguration: _dataConfiguration,
+        itemBuilder: _itemBuilder,
+        itemLabelBuilder: _getDirectionName,
+        allowItemClearing: false,
+      ),
+      onChanged: _onChanged,
       controller: _controller,
-      dataConfiguration: _dataConfiguration,
-      itemBuilder: _itemBuilder,
-      itemLabelBuilder: _getDirectionName,
-      onChangedItems: _onChangedItems,
-      showClearTextButton: false,
     );
   }
 }

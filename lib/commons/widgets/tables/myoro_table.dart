@@ -544,12 +544,12 @@ final class _ItemsPerPageDropdown<T> extends StatefulWidget {
 final class _ItemsPerPageDropdownState<T> extends State<_ItemsPerPageDropdown<T>> {
   MyoroTableController<T> get _tableController => widget._tableController;
 
-  late final _dropdownController = MyoroDropdownController<int>([_tableController.dataConfiguration.itemsPerPage]);
+  late final _dropdownController = MyoroSingularDropdownController<int>(_tableController.dataConfiguration.itemsPerPage);
 
   String _formatInt(int itemsPerPage) => itemsPerPage.toString();
   MyoroMenuItem _itemBuilder(int itemsPerPage) => MyoroMenuItem(text: _formatInt(itemsPerPage));
 
-  void _onChangedItems(List<int> itemsPerPage) => _tableController.setItemsPerPage(itemsPerPage.first);
+  void _onChanged(int? itemsPerPage) => _tableController.setItemsPerPage(itemsPerPage!);
 
   @override
   void dispose() {
@@ -563,13 +563,15 @@ final class _ItemsPerPageDropdownState<T> extends State<_ItemsPerPageDropdown<T>
 
     return SizedBox(
       width: 55,
-      child: MyoroDropdown<int>(
+      child: MyoroSingularDropdown<int>(
+        configuration: MyoroDropdownConfiguration(
+          dataConfiguration: dataConfiguration,
+          itemBuilder: _itemBuilder,
+          itemLabelBuilder: _formatInt,
+          allowItemClearing: false,
+        ),
+        onChanged: _onChanged,
         controller: _dropdownController,
-        dataConfiguration: dataConfiguration,
-        itemBuilder: _itemBuilder,
-        itemLabelBuilder: _formatInt,
-        onChangedItems: _onChangedItems,
-        showClearTextButton: false,
       ),
     );
   }

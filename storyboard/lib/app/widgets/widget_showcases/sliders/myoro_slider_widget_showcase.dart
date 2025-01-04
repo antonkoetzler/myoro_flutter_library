@@ -150,10 +150,10 @@ final class _LabelTextStyleOption extends StatelessWidget {
     );
   }
 
-  void _onChangedItems(BuildContext context, List<TextStyle> textStyles) {
+  void _onChanged(BuildContext context, TextStyle? textStyle) {
     context.resolveBloc<MyoroSliderWidgetShowcaseBloc>().add(
           SetLabelTextStyleEvent(
-            textStyles.isNotEmpty ? textStyles.first : null,
+            textStyle,
           ),
         );
   }
@@ -163,12 +163,14 @@ final class _LabelTextStyleOption extends StatelessWidget {
     final typographyInstance = MyoroTypographyTheme.instance;
     final dataConfiguration = MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles);
 
-    return MyoroDropdown<TextStyle>(
-      label: '[MyoroSlider.labelTextStyle]',
-      dataConfiguration: dataConfiguration,
-      itemBuilder: _itemBuilder,
-      itemLabelBuilder: typographyInstance.getTextStyleName,
-      onChangedItems: (List<TextStyle> textStyles) => _onChangedItems(context, textStyles),
+    return MyoroSingularDropdown<TextStyle>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[MyoroSlider.labelTextStyle]',
+        dataConfiguration: dataConfiguration,
+        itemBuilder: _itemBuilder,
+        itemLabelBuilder: typographyInstance.getTextStyleName,
+      ),
+      onChanged: (TextStyle? textStyles) => _onChanged(context, textStyles),
     );
   }
 }

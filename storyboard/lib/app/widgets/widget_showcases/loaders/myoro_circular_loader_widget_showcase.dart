@@ -59,32 +59,21 @@ final class _ColorOption extends StatelessWidget {
 
   String _itemLabelBuilder(Color color) => color.hexadecimalFormat;
 
-  void _onChangedItems(BuildContext context, List<Color> colors) {
-    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
-          SetColorEvent(
-            colors.isNotEmpty ? colors.first : null,
-          ),
-        );
-  }
-
-  void _checkboxOnChanged(BuildContext context, bool enabled, List<Color> colors) {
-    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
-          SetColorEvent(
-            enabled && colors.isNotEmpty ? colors.first : null,
-          ),
-        );
+  void _onChanged(BuildContext context, Color? color) {
+    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(SetColorEvent(color));
   }
 
   @override
   Widget build(BuildContext context) {
-    return MyoroDropdown<Color>(
-      label: '[MyoroCircularLoader.color]',
-      enabled: false,
-      dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
-      itemBuilder: _itemBuilder,
-      itemLabelBuilder: _itemLabelBuilder,
-      onChangedItems: (List<Color> colors) => _onChangedItems(context, colors),
-      checkboxOnChanged: (bool enabled, List<Color> colors) => _checkboxOnChanged(context, enabled, colors),
+    return MyoroSingularDropdown<Color>(
+      configuration: MyoroDropdownConfiguration(
+        label: '[MyoroCircularLoader.color]',
+        enabled: false,
+        dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
+        itemBuilder: _itemBuilder,
+        itemLabelBuilder: _itemLabelBuilder,
+      ),
+      onChanged: (Color? color) => _onChanged(context, color),
     );
   }
 }

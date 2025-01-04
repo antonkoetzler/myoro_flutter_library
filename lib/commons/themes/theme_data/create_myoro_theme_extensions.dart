@@ -42,10 +42,6 @@ List<ThemeExtension> createAppBarThemeExtensions(ColorScheme colorScheme) {
 
 List<ThemeExtension> createDropdownThemeExtensions(TextTheme textTheme) {
   return const [
-    MyoroDropdownThemeExtension(
-      inputStyle: MyoroInputStyleEnum.outlined,
-      spacing: 10,
-    ),
     MyoroDropdownV2ThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
       inputDropdownSpacing: 10,

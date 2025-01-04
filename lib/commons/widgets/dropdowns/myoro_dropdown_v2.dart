@@ -8,6 +8,18 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+/// Function executed when a [MyoroSingularDropdown]'s selected item is changed.
+typedef MyoroSingularDropdownOnChanged<T> = void Function(T? selectedItem);
+
+/// Function executed when a [MyoroMultiDropdown]'s selected items are changed.
+typedef MyoroMultiDropdownOnChanged<T> = void Function(List<T> selectedItems);
+
+/// Function executed when the checkbox next to the [MyoroSingularDropdown] is changed.
+typedef MyoroSingularDropdownCheckboxOnChanged<T> = void Function(bool enabled, T? item);
+
+/// Function executed when the checkbox next to the [MyoroMultiDropdown] is changed.
+typedef MyoroMultiDropdownCheckboxOnChanged<T> = void Function(bool enabled, List<T> items);
+
 /// Enum to distinguish if we are working with a [MyoroSingularDropdown] or [MyoroMultiDropdown].
 enum _MyoroDropdownEnum {
   singular,
@@ -69,12 +81,20 @@ final class MyoroSingularDropdown<T> extends StatelessWidget {
   /// Dropdown configuration.
   final MyoroDropdownConfiguration<T> configuration;
 
+  /// Function executed when the selected item changes.
+  final MyoroSingularDropdownOnChanged<T>? onChanged;
+
+  /// If provided, places a checkbox next to [_Input].
+  final MyoroSingularDropdownCheckboxOnChanged<T>? checkboxOnChanged;
+
   /// Controller.
   final MyoroSingularDropdownController<T>? controller;
 
   const MyoroSingularDropdown({
     super.key,
     required this.configuration,
+    this.onChanged,
+    this.checkboxOnChanged,
     this.controller,
   });
 
@@ -84,6 +104,8 @@ final class MyoroSingularDropdown<T> extends StatelessWidget {
       key,
       _MyoroDropdownEnum.singular,
       configuration,
+      singularOnChanged: onChanged,
+      singularCheckboxOnChanged: checkboxOnChanged,
       singularController: controller,
     );
   }
@@ -94,12 +116,20 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
   /// Dropdown configuration.
   final MyoroDropdownConfiguration<T> configuration;
 
+  /// Function executed when the selected item(s) changes.
+  final MyoroMultiDropdownOnChanged<T>? onChanged;
+
+  /// If provided, places a checkbox next to [_Input].
+  final MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged;
+
   /// Controller.
   final MyoroMultiDropdownController<T>? controller;
 
   const MyoroMultiDropdown({
     super.key,
     required this.configuration,
+    this.onChanged,
+    this.checkboxOnChanged,
     this.controller,
   });
 
@@ -109,6 +139,8 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
       key,
       _MyoroDropdownEnum.multi,
       configuration,
+      multiOnChanged: onChanged,
+      multiCheckboxOnChanged: checkboxOnChanged,
       multiController: controller,
     );
   }
@@ -118,14 +150,24 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
 final class _Dropdown<T> extends StatefulWidget {
   final _MyoroDropdownEnum _dropdownType;
   final MyoroDropdownConfiguration<T> _configuration;
+
+  final MyoroSingularDropdownOnChanged<T>? singularOnChanged;
+  final MyoroSingularDropdownCheckboxOnChanged<T>? singularCheckboxOnChanged;
   final MyoroSingularDropdownController<T>? singularController;
+
+  final MyoroMultiDropdownOnChanged<T>? multiOnChanged;
+  final MyoroMultiDropdownCheckboxOnChanged<T>? multiCheckboxOnChanged;
   final MyoroMultiDropdownController<T>? multiController;
 
   const _Dropdown._(
     Key? key,
     this._dropdownType,
     this._configuration, {
+    this.singularOnChanged,
+    this.singularCheckboxOnChanged,
     this.singularController,
+    this.multiOnChanged,
+    this.multiCheckboxOnChanged,
     this.multiController,
   }) : super(key: key);
 
@@ -136,7 +178,11 @@ final class _Dropdown<T> extends StatefulWidget {
 final class _DropdownState<T> extends State<_Dropdown<T>> {
   _MyoroDropdownEnum get _dropdownType => widget._dropdownType;
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
+  MyoroSingularDropdownOnChanged<T>? get _singularOnChanged => widget.singularOnChanged;
+  MyoroSingularDropdownCheckboxOnChanged<T>? get _singularCheckboxOnChanged => widget.singularCheckboxOnChanged;
   MyoroSingularDropdownController<T>? get _singularController => widget.singularController;
+  MyoroMultiDropdownOnChanged<T>? get _multiOnChanged => widget.multiOnChanged;
+  MyoroMultiDropdownCheckboxOnChanged<T>? get _multiCheckboxOnChanged => widget.multiCheckboxOnChanged;
   MyoroMultiDropdownController<T>? get _multiController => widget.multiController;
 
   /// [FocusNode] [_Dropdown] in order to be able to click anywhere but [_Menu] to close [_Menu].
@@ -185,7 +231,13 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
           left: inputPosition.dx,
           child: Material(
             color: MyoroColorTheme.transparent,
-            child: _Menu(_controller, _configuration, _removeOverlay),
+            child: _Menu(
+              _controller,
+              _configuration,
+              _singularOnChanged,
+              _multiOnChanged,
+              _removeOverlay,
+            ),
           ),
         );
       },
@@ -228,8 +280,8 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
         focusNode: _focusNode,
         child: Stack(
           children: [
-            _Input(_inputKey, _configuration, _controller),
-            _TriggerArea(_triggerAreaOnPressed, _configuration, _controller),
+            _Input(_inputKey, _configuration, _controller, _singularCheckboxOnChanged, _multiCheckboxOnChanged),
+            if (_configuration.enabled) _TriggerArea(_triggerAreaOnPressed, _configuration, _controller),
           ],
         ),
       ),
@@ -241,18 +293,51 @@ final class _Input<T> extends StatefulWidget {
   final GlobalKey _key;
   final MyoroDropdownConfiguration<T> _configuration;
   final _MyoroDropdownController<T> _controller;
+  final MyoroSingularDropdownCheckboxOnChanged<T>? _singularCheckboxOnChanged;
+  final MyoroMultiDropdownCheckboxOnChanged<T>? _multiCheckboxOnChanged;
 
-  const _Input(this._key, this._configuration, this._controller);
+  const _Input(
+    this._key,
+    this._configuration,
+    this._controller,
+    this._singularCheckboxOnChanged,
+    this._multiCheckboxOnChanged,
+  );
 
   @override
   State<_Input<T>> createState() => _InputState<T>();
 }
 
 final class _InputState<T> extends State<_Input<T>> {
+  GlobalKey get _key => widget._key;
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
   _MyoroDropdownController<T> get _controller => widget._controller;
+  MyoroSingularDropdownCheckboxOnChanged<T>? get _singularCheckboxOnChanged => widget._singularCheckboxOnChanged;
+  MyoroMultiDropdownCheckboxOnChanged<T>? get _multiCheckboxOnChanged => widget._multiCheckboxOnChanged;
+
+  bool get _checkboxOnChangedNotNull {
+    return switch (_controller._dropdownType) {
+      _MyoroDropdownEnum.singular => _singularCheckboxOnChanged != null,
+      _MyoroDropdownEnum.multi => _multiCheckboxOnChanged != null,
+    };
+  }
 
   final _inputController = TextEditingController();
+  late bool _enabled = _configuration.enabled;
+
+  void _checkboxOnChanged(bool enabled, String text) {
+    setState(() {
+      _enabled = enabled;
+      switch (_controller._dropdownType) {
+        case _MyoroDropdownEnum.singular:
+          _singularCheckboxOnChanged?.call(_enabled, _controller._selectedItems.isNotEmpty ? _controller._selectedItems.first : null);
+          break;
+        case _MyoroDropdownEnum.multi:
+          _multiCheckboxOnChanged?.call(_enabled, _controller._selectedItems.toList());
+          break;
+      }
+    });
+  }
 
   void _selectedItemsNotifierListener() {
     final selectedItems = _controller._selectedItems;
@@ -286,12 +371,17 @@ final class _InputState<T> extends State<_Input<T>> {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
 
     return MyoroInput(
-      key: widget._key,
+      key: _key,
       configuration: MyoroInputConfiguration(
+        label: _configuration.label,
+        labelTextStyle: _configuration.labelTextStyle,
         inputStyle: themeExtension.inputStyle,
+        readOnly: true,
+        enabled: _configuration.enabled,
         showClearTextButton: _configuration.allowItemClearing,
         controller: _inputController,
         onCleared: _onCleared,
+        checkboxOnChanged: _checkboxOnChangedNotNull ? _checkboxOnChanged : null,
       ),
     );
   }
@@ -330,11 +420,15 @@ final class _TriggerArea<T> extends StatelessWidget {
 final class _Menu<T> extends StatelessWidget {
   final _MyoroDropdownController<T> _controller;
   final MyoroDropdownConfiguration<T> _configuration;
+  final MyoroSingularDropdownOnChanged<T>? _singularOnChanged;
+  final MyoroMultiDropdownOnChanged<T>? _multiOnChanged;
   final VoidCallback _removeOverlayCallback;
 
   const _Menu(
     this._controller,
     this._configuration,
+    this._singularOnChanged,
+    this._multiOnChanged,
     this._removeOverlayCallback,
   );
 
@@ -345,7 +439,15 @@ final class _Menu<T> extends StatelessWidget {
       onPressed: () {
         menuItem.onPressed?.call();
         _controller._isSelected(item) ? _controller.deselectItem(item) : _controller._selectItem(item);
-        if (_controller._dropdownType.isSingular) _removeOverlayCallback();
+        switch (_controller._dropdownType) {
+          case _MyoroDropdownEnum.singular:
+            _singularOnChanged?.call(_controller._selectedItems.isNotEmpty ? _controller._selectedItems.first : null);
+            _removeOverlayCallback();
+            break;
+          case _MyoroDropdownEnum.multi:
+            _multiOnChanged?.call(_controller._selectedItems.toList());
+            break;
+        }
       },
     );
   }
