@@ -8,6 +8,7 @@ extension MyoroBuildContextExtension on BuildContext {
   bool get isDarkMode => themeData.brightness == Brightness.dark;
   TextTheme get textTheme => themeData.textTheme;
   OverlayState get overlay => Overlay.of(this);
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
 
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();

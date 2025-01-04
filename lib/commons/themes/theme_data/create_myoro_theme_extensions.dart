@@ -49,6 +49,7 @@ List<ThemeExtension> createDropdownThemeExtensions(TextTheme textTheme) {
     MyoroDropdownV2ThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
       inputDropdownSpacing: 10,
+      menuMaxHeight: 300,
     ),
   ];
 }

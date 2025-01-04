@@ -18,11 +18,19 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
   /// Whether or not to provide [MyoroInputConfiguration.showClearTextButton] to the dropdown's [MyoroInput].
   final bool allowItemClearing;
 
+  /// Max height of the [MyoroMenu].
+  final double? menuMaxHeight;
+
+  /// [MyoroMenu.searchCallback] (search functionality of the menu to search for items in the menu).
+  final MyoroMenuSearchCallback<T>? menuSearchCallback;
+
   const MyoroDropdownConfiguration({
     required this.dataConfiguration,
     required this.itemBuilder,
     required this.itemLabelBuilder,
     this.allowItemClearing = true,
+    this.menuMaxHeight,
+    this.menuSearchCallback,
   });
 
   MyoroDropdownConfiguration<T> copyWith({
@@ -30,12 +38,16 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
     MyoroMenuItemBuilder<T>? itemBuilder,
     MyoroDropdownConfigurationItemLabelBuilder<T>? itemLabelBuilder,
     bool? allowItemClearing,
+    double? menuMaxHeight,
+    MyoroMenuSearchCallback<T>? menuSearchCallback,
   }) {
     return MyoroDropdownConfiguration(
       dataConfiguration: dataConfiguration ?? this.dataConfiguration,
       itemBuilder: itemBuilder ?? this.itemBuilder,
       itemLabelBuilder: itemLabelBuilder ?? this.itemLabelBuilder,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
+      menuMaxHeight: menuMaxHeight ?? this.menuMaxHeight,
+      menuSearchCallback: menuSearchCallback ?? this.menuSearchCallback,
     );
   }
 
@@ -46,6 +58,8 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
       '  itemBuilder: $itemBuilder,\n'
       '  itemLabelBuilder: $itemLabelBuilder,\n'
       '  allowItemClearing: $allowItemClearing,\n'
+      '  menuMaxHeight: $menuMaxHeight,\n'
+      '  menuSearchCallback: $menuSearchCallback,\n'
       ');';
 
   @override
@@ -55,6 +69,8 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
       itemBuilder,
       itemLabelBuilder,
       allowItemClearing,
+      menuMaxHeight,
+      menuSearchCallback,
     ];
   }
 }

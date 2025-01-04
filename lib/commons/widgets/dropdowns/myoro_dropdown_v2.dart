@@ -159,15 +159,29 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   OverlayEntry _createOverlay() {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
 
-    final inputRenderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
-    final inputPosition = inputRenderBox.localToGlobal(Offset.zero);
-    final inputSize = inputRenderBox.size;
+    final RenderBox inputRenderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
+    final Offset inputPosition = inputRenderBox.localToGlobal(Offset.zero);
+    final Size inputSize = inputRenderBox.size;
+
+    final menuMaxHeight = _configuration.menuMaxHeight ?? themeExtension.menuMaxHeight;
+    final inputDropdownSpacing = themeExtension.inputDropdownSpacing;
+
+    // Start and end positions of the menu when positioned below [_Input].
+    final double menuYStartBottomPosition = inputPosition.dy + inputSize.height + inputDropdownSpacing;
+    final double menuYEndBottomPosition = menuYStartBottomPosition + menuMaxHeight;
+
+    // Stand position of the menu when positioned above [_Input].
+    final double menuYStartUpperPosition = inputPosition.dy - menuMaxHeight - inputDropdownSpacing;
+
+    // If negative, [_Menu] will be clipped by the bottom of the screen.
+    final bool positionMenuAboveInput = context.mediaQuery.size.height - menuYEndBottomPosition < 10;
 
     return OverlayEntry(
       builder: (_) {
         return Positioned(
           width: inputSize.width,
-          top: inputPosition.dy + inputSize.height + themeExtension.inputDropdownSpacing,
+          // top: menuYStartBottomPosition,
+          top: positionMenuAboveInput ? menuYStartUpperPosition : menuYStartBottomPosition,
           left: inputPosition.dx,
           child: Material(
             color: MyoroColorTheme.transparent,
@@ -341,6 +355,10 @@ final class _Menu<T> extends StatelessWidget {
     return MyoroMenu(
       dataConfiguration: _configuration.dataConfiguration,
       itemBuilder: _itemBuilder,
+      constraints: BoxConstraints(
+        maxHeight: _configuration.menuMaxHeight ?? context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>().menuMaxHeight,
+      ),
+      searchCallback: _configuration.menuSearchCallback,
     );
   }
 }

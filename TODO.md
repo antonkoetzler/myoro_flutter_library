@@ -12,6 +12,3 @@
 
 1. HTTP helper;
 1. Implement notifications;
-1. (**IN PROGRESS**) Turn `MyoroDropdown` in `MyoroSingleDropdown` & `MyoroMultiDropdown` for better usability.
-
-- (**IN PROGRESS**) Situation where the menu is hidden;
