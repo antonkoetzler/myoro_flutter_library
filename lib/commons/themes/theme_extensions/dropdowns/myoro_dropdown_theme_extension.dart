@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of dropdowns.
-final class MyoroDropdownV2ThemeExtension extends ThemeExtension<MyoroDropdownV2ThemeExtension> {
+final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> {
   /// [MyoroInputStyleEnum] of [_Input].
   final MyoroInputStyleEnum inputStyle;
 
@@ -14,19 +14,19 @@ final class MyoroDropdownV2ThemeExtension extends ThemeExtension<MyoroDropdownV2
   /// Default max height of [_Menu].
   final double menuMaxHeight;
 
-  const MyoroDropdownV2ThemeExtension({
+  const MyoroDropdownThemeExtension({
     required this.inputStyle,
     required this.inputDropdownSpacing,
     required this.menuMaxHeight,
   });
 
   @override
-  MyoroDropdownV2ThemeExtension copyWith({
+  MyoroDropdownThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
     double? inputDropdownSpacing,
     double? menuMaxHeight,
   }) {
-    return MyoroDropdownV2ThemeExtension(
+    return MyoroDropdownThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
       inputDropdownSpacing: inputDropdownSpacing ?? this.inputDropdownSpacing,
       menuMaxHeight: menuMaxHeight ?? this.menuMaxHeight,
@@ -34,11 +34,11 @@ final class MyoroDropdownV2ThemeExtension extends ThemeExtension<MyoroDropdownV2
   }
 
   @override
-  ThemeExtension<MyoroDropdownV2ThemeExtension> lerp(
-    covariant ThemeExtension<MyoroDropdownV2ThemeExtension>? other,
+  ThemeExtension<MyoroDropdownThemeExtension> lerp(
+    covariant ThemeExtension<MyoroDropdownThemeExtension>? other,
     double t,
   ) {
-    if (other is! MyoroDropdownV2ThemeExtension) return this;
+    if (other is! MyoroDropdownThemeExtension) return this;
     return copyWith(
       inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
       inputDropdownSpacing: lerpDouble(inputDropdownSpacing, other.inputDropdownSpacing, t),

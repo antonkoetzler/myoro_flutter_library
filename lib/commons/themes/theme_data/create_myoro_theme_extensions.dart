@@ -42,7 +42,7 @@ List<ThemeExtension> createAppBarThemeExtensions(ColorScheme colorScheme) {
 
 List<ThemeExtension> createDropdownThemeExtensions(TextTheme textTheme) {
   return const [
-    MyoroDropdownV2ThemeExtension(
+    MyoroDropdownThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
       inputDropdownSpacing: 10,
       menuMaxHeight: 300,

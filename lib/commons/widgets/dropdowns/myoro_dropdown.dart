@@ -203,7 +203,7 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   }
 
   OverlayEntry _createOverlay() {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     final RenderBox inputRenderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
     final Offset inputPosition = inputRenderBox.localToGlobal(Offset.zero);
@@ -368,7 +368,7 @@ final class _InputState<T> extends State<_Input<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     return MyoroInput(
       key: _key,
@@ -458,7 +458,7 @@ final class _Menu<T> extends StatelessWidget {
       dataConfiguration: _configuration.dataConfiguration,
       itemBuilder: _itemBuilder,
       constraints: BoxConstraints(
-        maxHeight: _configuration.menuMaxHeight ?? context.resolveThemeExtension<MyoroDropdownV2ThemeExtension>().menuMaxHeight,
+        maxHeight: _configuration.menuMaxHeight ?? context.resolveThemeExtension<MyoroDropdownThemeExtension>().menuMaxHeight,
       ),
       searchCallback: _configuration.menuSearchCallback,
     );
