@@ -1,7 +1,7 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller to be able to call [MyoroResolverBloc.ExecuteRequestEvent] to refresh a [MyoroResolver].
-final class MyoroResolverController {
+class MyoroResolverController {
   MyoroResolverBloc? _bloc;
 
   /// Make the request of the [MyoroResolver] again.
