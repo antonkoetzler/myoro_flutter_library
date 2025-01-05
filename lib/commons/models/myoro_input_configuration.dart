@@ -79,7 +79,7 @@ final class MyoroInputConfiguration extends Equatable {
   final TextEditingController? controller;
 
   const MyoroInputConfiguration({
-    required this.inputStyle,
+    this.inputStyle = MyoroInputStyleEnum.outlined,
     this.textAlign,
     this.inputTextStyle,
     this.label,
