@@ -324,7 +324,6 @@ List<ThemeExtension> createScreenThemeExtensions() {
 List<ThemeExtension> createScrollableThemeExtensions() {
   return const [
     MyoroScrollableThemeExtension(
-      direction: Axis.vertical,
       padding: EdgeInsets.zero,
     ),
   ];

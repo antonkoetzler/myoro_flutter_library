@@ -15,6 +15,7 @@ enum MyoroFontSizeEnum {
     return values[faker.randomGenerator.integer(values.length)];
   }
 
+  bool get isTiny => this == tiny;
   bool get isSmall => this == small;
   bool get isMedium => this == medium;
   bool get isLarge => this == large;

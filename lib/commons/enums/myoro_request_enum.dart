@@ -1,3 +1,5 @@
+import 'package:faker/faker.dart';
+
 /// Enum used to manage the status of an asyncronous request.
 enum MyoroRequestEnum {
   /// No request is being made.
@@ -11,6 +13,10 @@ enum MyoroRequestEnum {
 
   /// Request executed unsuccessfully.
   error;
+
+  factory MyoroRequestEnum.fake() {
+    return values[faker.randomGenerator.integer(values.length)];
+  }
 
   bool get isIdle => this == idle;
   bool get isLoading => this == loading;
