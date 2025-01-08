@@ -1,3 +1,5 @@
+import 'package:faker/faker.dart';
+
 /// Request if the [MyoroDataConfiguration.asyncronousItems] is being utilized.
 typedef MyoroDataConfigurationRequest<T> = Future<List<T>> Function(Map<String, dynamic> filters);
 
@@ -19,7 +21,7 @@ final class MyoroDataConfiguration<T> {
   int itemsPerPage;
 
   /// JSON of filters to be applied.
-  final Map<String, dynamic> _filters = {};
+  final Map<String, dynamic> _filters;
 
   MyoroDataConfiguration({
     this.staticItems,
@@ -27,18 +29,45 @@ final class MyoroDataConfiguration<T> {
     this.currentPage = 1,
     this.totalPages = 1,
     this.itemsPerPage = 10,
-  }) : assert(
+    Map<String, dynamic>? filters,
+  })  : _filters = filters ?? {},
+        assert(
           (staticItems != null) ^ (asyncronousItems != null),
           '[MyoroDataConfiguration]: [staticItems] (x)or [asyncronousItems] needs to be requests.',
         );
 
   MyoroDataConfiguration<T> copyWith({
     List<T>? staticItems,
+    bool staticItemsEnabled = true,
     MyoroDataConfigurationRequest<T>? asyncronousItems,
+    bool asyncronousItemsEnabled = true,
+    int? currentPage,
+    int? totalPages,
+    int? itemsPerPage,
+    Map<String, dynamic>? filters,
   }) {
     return MyoroDataConfiguration(
-      staticItems: staticItems ?? this.staticItems,
-      asyncronousItems: asyncronousItems ?? this.asyncronousItems,
+      staticItems: staticItemsEnabled ? (staticItems ?? this.staticItems) : null,
+      asyncronousItems: asyncronousItemsEnabled ? (asyncronousItems ?? this.asyncronousItems) : null,
+      currentPage: currentPage ?? this.currentPage,
+      totalPages: totalPages ?? this.totalPages,
+      itemsPerPage: itemsPerPage ?? this.itemsPerPage,
+      filters: filters ?? _filters,
+    );
+  }
+
+  factory MyoroDataConfiguration.fake() {
+    final useStaticItems = faker.randomGenerator.boolean();
+    final totalPages = faker.randomGenerator.integer(9999);
+    return MyoroDataConfiguration(
+      staticItems: useStaticItems ? [] : null,
+      asyncronousItems: useStaticItems ? null : (_) async => [],
+      currentPage: faker.randomGenerator.integer(totalPages),
+      totalPages: totalPages,
+      itemsPerPage: faker.randomGenerator.integer(9999),
+      filters: {
+        for (int i = 0; i < faker.randomGenerator.integer(50); i++) '${faker.lorem.word()}$i': faker.sport.name(),
+      },
     );
   }
 
@@ -47,6 +76,9 @@ final class MyoroDataConfiguration<T> {
       'MyoroDataConfiguration<$T>(\n'
       '  staticItems: $staticItems,\n'
       '  asyncronousItems: $asyncronousItems,\n'
+      '  currentPage: $currentPage,\n'
+      '  totalPages: $totalPages,\n'
+      '  itemsPerPage: $itemsPerPage,\n'
       '  _filters: $_filters,\n'
       ');';
 
@@ -66,7 +98,7 @@ final class MyoroDataConfiguration<T> {
   void clearFilters() => _filters.clear();
 
   bool get staticItemsUsed => staticItems != null;
-  bool get asynronousItemsUsed => asyncronousItems != null;
+  bool get asyncronousItemsUsed => asyncronousItems != null;
   Future<List<T>> get items async => staticItemsUsed ? staticItems! : await asyncronousItems!.call(_filters);
   Map<String, dynamic> get filters => _filters;
 }

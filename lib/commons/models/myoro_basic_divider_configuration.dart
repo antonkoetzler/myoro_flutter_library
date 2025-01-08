@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -30,6 +31,11 @@ final class MyoroBasicDividerConfiguration extends Equatable {
       padding: padding ?? this.padding,
     );
   }
+
+  MyoroBasicDividerConfiguration.fake()
+      : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+        shortValue = faker.randomGenerator.decimal(),
+        padding = null;
 
   @override
   String toString() => ''

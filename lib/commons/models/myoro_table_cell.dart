@@ -1,6 +1,6 @@
+import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:equatable/equatable.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model representing a cell within a [MyoroTableRow].
@@ -12,13 +12,7 @@ final class MyoroTableCell extends Equatable {
     required this.child,
   });
 
-  factory MyoroTableCell.fake() {
-    return MyoroTableCell(
-      child: Text(
-        faker.lorem.word(),
-      ),
-    );
-  }
+  MyoroTableCell.fake() : child = Text(faker.lorem.word());
 
   MyoroTableCell copyWith({
     Widget? child,

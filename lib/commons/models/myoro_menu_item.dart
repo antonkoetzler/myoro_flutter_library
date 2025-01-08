@@ -63,7 +63,10 @@ final class MyoroMenuItem extends Equatable {
       isHovered: isHovered ?? this.isHovered,
       onPressed: onPressed ?? this.onPressed,
       icon: icon ?? this.icon,
+      iconSize: iconSize ?? this.iconSize,
       text: text ?? this.text,
+      textStyle: textStyle ?? this.textStyle,
+      textAlign: textAlign ?? this.textAlign,
       itemBuilder: itemBuilder ?? this.itemBuilder,
     );
   }
@@ -82,10 +85,10 @@ final class MyoroMenuItem extends Equatable {
   String toString() => ''
       'MyoroMenuItem(\n'
       '  isHovered: $isHovered,\n'
-      '  onPressed: $onPressed\n,'
-      '  icon: $icon\n,'
+      '  onPressed: $onPressed,\n'
+      '  icon: $icon,\n'
       '  iconSize: $iconSize,\n'
-      '  text: $text\n,'
+      '  text: $text,\n'
       '  textStyle: $textStyle,\n'
       '  textAlign: $textAlign,\n'
       '  itemBuilder: $itemBuilder,\n'

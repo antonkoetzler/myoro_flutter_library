@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Bar of a [MyoroBarGraphGroup].
@@ -33,6 +34,14 @@ final class MyoroBarGraphBar extends Equatable {
       barSections: barSections ?? this.barSections,
     );
   }
+
+  MyoroBarGraphBar.fake()
+      : y = faker.randomGenerator.decimal(),
+        color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        barSections = List.generate(
+          faker.randomGenerator.integer(5),
+          (_) => MyoroBarGraphBarSection.fake(),
+        );
 
   @override
   String toString() => ''

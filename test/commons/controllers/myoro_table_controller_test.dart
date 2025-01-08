@@ -14,12 +14,12 @@ void main() {
 
   final columnQuantity = faker.randomGenerator.integer(10);
   final rows = List.generate(
-    faker.randomGenerator.integer(100),
+    faker.randomGenerator.integer(100, min: 1),
     (_) => MyoroTableRow.fake(columnQuantity: columnQuantity),
   ).toSet();
 
   setUpAll(() {
-    controller.dataConfiguration = MyoroDataConfiguration(staticItems: [], totalPages: 2);
+    controller.dataConfiguration = MyoroDataConfiguration(staticItems: const [], totalPages: 2);
     controller.resolverController = MockMyoroResolverController();
   });
 

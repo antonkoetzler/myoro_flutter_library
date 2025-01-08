@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Item/section in a [MyoroPieGraph].
 final class MyoroPieGraphItem extends Equatable {
@@ -18,6 +20,11 @@ final class MyoroPieGraphItem extends Equatable {
     this.color,
     this.radius,
   });
+
+  MyoroPieGraphItem.fake()
+      : value = faker.randomGenerator.decimal(),
+        color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        radius = faker.randomGenerator.decimal(min: 0);
 
   MyoroPieGraphItem copyWith({
     double? value,

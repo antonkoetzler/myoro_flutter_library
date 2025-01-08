@@ -40,7 +40,7 @@ final class MyoroTableColumnWidth extends Equatable {
   String toString() => ''
       'MyoroTableColumnWidth(\n'
       '  columnWidthEnum: $columnWidthEnum,\n'
-      '  fixedWidth: $fixedWidth\n'
+      '  fixedWidth: $fixedWidth,\n'
       ');';
 
   @override

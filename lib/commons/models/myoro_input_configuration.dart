@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -98,6 +99,25 @@ final class MyoroInputConfiguration extends Equatable {
     this.controller,
   });
 
+  MyoroInputConfiguration.fake()
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        textAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+        inputTextStyle = null,
+        label = faker.lorem.word(),
+        placeholder = faker.lorem.word(),
+        labelTextStyle = null,
+        suffix = null,
+        enabled = faker.randomGenerator.boolean(),
+        readOnly = faker.randomGenerator.boolean(),
+        showClearTextButton = faker.randomGenerator.boolean(),
+        checkboxOnChanged = null,
+        validation = null,
+        onFieldSubmitted = null,
+        onChanged = null,
+        onCleared = null,
+        focusNode = null,
+        controller = null;
+
   MyoroInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
@@ -169,7 +189,7 @@ final class MyoroInputConfiguration extends Equatable {
       label,
       placeholder,
       labelTextStyle,
-      suffix,
+      // suffix, ~ [Widget]s aren't great for comparison.
       enabled,
       readOnly,
       showClearTextButton,

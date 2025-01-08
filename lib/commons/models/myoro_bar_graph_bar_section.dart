@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// For a [MyoroBarGraphBar] with a non-empty [MyoroBarGraphBar.barSections],
@@ -33,13 +34,22 @@ final class MyoroBarGraphBarSection extends Equatable {
     );
   }
 
+  factory MyoroBarGraphBarSection.fake() {
+    final fromY = faker.randomGenerator.decimal();
+    return MyoroBarGraphBarSection(
+      fromY: fromY,
+      toY: faker.randomGenerator.decimal(min: fromY),
+      color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    );
+  }
+
   @override
   String toString() => ''
       'MyoroBarGraphBarSection(\n'
       '  fromY: $fromY,\n'
       '  toY: $toY,\n'
       '  color: $color,\n'
-      ')';
+      ');';
 
   @override
   List<Object?> get props {

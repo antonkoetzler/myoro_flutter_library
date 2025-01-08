@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Group of bars in a [MyoroBarGraph].
@@ -23,6 +24,13 @@ final class MyoroBarGraphGroup extends Equatable {
       bars: bars ?? this.bars,
     );
   }
+
+  MyoroBarGraphGroup.fake()
+      : x = faker.randomGenerator.integer(1000),
+        bars = List.generate(
+          faker.randomGenerator.integer(50),
+          (_) => MyoroBarGraphBar.fake(),
+        );
 
   @override
   String toString() => ''

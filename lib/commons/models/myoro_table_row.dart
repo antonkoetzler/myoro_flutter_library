@@ -44,5 +44,10 @@ final class MyoroTableRow extends Equatable {
       ');';
 
   @override
-  List<Object?> get props => [onPressed, cells];
+  List<Object?> get props {
+    return [
+      onPressed,
+      cells,
+    ];
+  }
 }
