@@ -47,10 +47,10 @@ final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   ) {
     if (other is! MyoroAppBarWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      mockAppLogoIcon: MyoroLerpHelper.lerp(mockAppLogoIcon, other.mockAppLogoIcon, t),
+      mockAppLogoIcon: myoroLerp(mockAppLogoIcon, other.mockAppLogoIcon, t),
       mockAppTitleTextStyle: TextStyle.lerp(mockAppTitleTextStyle, other.mockAppTitleTextStyle, t),
       logoTitleSpacing: lerpDouble(logoTitleSpacing, other.logoTitleSpacing, t),
-      mockMenuButtonIcon: MyoroLerpHelper.lerp(mockMenuButtonIcon, other.mockMenuButtonIcon, t),
+      mockMenuButtonIcon: myoroLerp(mockMenuButtonIcon, other.mockMenuButtonIcon, t),
     );
   }
 }

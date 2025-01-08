@@ -27,7 +27,7 @@ final class MyoroDatePickerInputWidgetShowcaseThemeExtension extends ThemeExtens
   ) {
     if (other is! MyoroDatePickerInputWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
     );
   }
 }

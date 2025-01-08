@@ -75,9 +75,9 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
       textMaxLines: lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)?.toInt(),
-      textOverflow: MyoroLerpHelper.lerp(textOverflow, other.textOverflow, t),
+      textOverflow: myoroLerp(textOverflow, other.textOverflow, t),
       spacing: lerpDouble(spacing, other.spacing, t),
-      mainAxisAlignment: MyoroLerpHelper.lerp(mainAxisAlignment, other.mainAxisAlignment, t),
+      mainAxisAlignment: myoroLerp(mainAxisAlignment, other.mainAxisAlignment, t),
     );
   }
 }

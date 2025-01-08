@@ -22,7 +22,6 @@ final class MyoroThrottleController {
     _isThrottled = true;
     await callback();
     await Future.delayed(duration);
-    print('reached');
     _isThrottled = false;
   }
 }

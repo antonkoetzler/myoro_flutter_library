@@ -67,7 +67,7 @@ final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     return copyWith(
       appBarTitleTextStyle: TextStyle.lerp(appBarTitleTextStyle, other.appBarTitleTextStyle, t),
       appBarSubtitleTextStyle: TextStyle.lerp(appBarSubtitleTextStyle, other.appBarSubtitleTextStyle, t),
-      appBarMenuButtonIcon: MyoroLerpHelper.lerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
+      appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
       bodyImageBorderRadius: BorderRadius.lerp(bodyImageBorderRadius, other.bodyImageBorderRadius, t),
       bodyImageSize: lerpDouble(bodyImageSize, other.bodyImageSize, t),
       bodyTextStyle: TextStyle.lerp(bodyTextStyle, other.bodyTextStyle, t),

@@ -27,7 +27,7 @@ final class MyoroRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroR
   ) {
     if (other is! MyoroRadioWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
     );
   }
 }

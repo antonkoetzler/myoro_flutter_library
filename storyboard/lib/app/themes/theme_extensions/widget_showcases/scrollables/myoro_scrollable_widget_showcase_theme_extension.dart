@@ -33,7 +33,7 @@ final class MyoroScrollableWidgetShowcaseThemeExtension extends ThemeExtension<M
   ) {
     if (other is! MyoroScrollableWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      itemBordered: MyoroLerpHelper.lerp(itemBordered, other.itemBordered, t),
+      itemBordered: myoroLerp(itemBordered, other.itemBordered, t),
       itemPadding: EdgeInsets.lerp(itemPadding, other.itemPadding, t),
     );
   }

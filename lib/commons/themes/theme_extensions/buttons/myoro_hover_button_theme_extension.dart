@@ -44,7 +44,7 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       onPrimaryColor: Color.lerp(onPrimaryColor, other.onPrimaryColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      bordered: MyoroLerpHelper.lerp(bordered, other.bordered, t),
+      bordered: myoroLerp(bordered, other.bordered, t),
     );
   }
 }

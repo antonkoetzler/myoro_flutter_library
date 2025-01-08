@@ -41,7 +41,7 @@ final class MyoroSliderWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   ) {
     if (other is! MyoroSliderWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       widgetSize: lerpDouble(widgetSize, other.widgetSize, t),
       hiddenKittyContainerColor: Color.lerp(hiddenKittyContainerColor, other.hiddenKittyContainerColor, t),
     );

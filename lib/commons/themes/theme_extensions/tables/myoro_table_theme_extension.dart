@@ -129,7 +129,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       errorMessageHeaderTextStyle: TextStyle.lerp(errorMessageHeaderTextStyle, other.errorMessageHeaderTextStyle, t),
       errorMessageErrorTextStyle: TextStyle.lerp(errorMessageErrorTextStyle, other.errorMessageErrorTextStyle, t),
       messageSpacing: lerpDouble(messageSpacing, other.messageSpacing, t),
-      buttonConfiguration: MyoroLerpHelper.lerp(buttonConfiguration, other.buttonConfiguration, t),
+      buttonConfiguration: myoroLerp(buttonConfiguration, other.buttonConfiguration, t),
       footerSpacing: lerpDouble(footerSpacing, other.footerSpacing, t),
       titleColumnSpacing: lerpDouble(titleColumnSpacing, other.titleColumnSpacing, t),
       rowsCellSpacing: lerpDouble(rowsCellSpacing, other.rowsCellSpacing, t),

@@ -65,11 +65,11 @@ final class MyoroHoverButtonConfiguration extends Equatable {
     return MyoroHoverButtonConfiguration(
       primaryColor: Color.lerp(a.primaryColor, b.primaryColor, t),
       onPrimaryColor: Color.lerp(a.onPrimaryColor, b.onPrimaryColor, t),
-      isHovered: MyoroLerpHelper.lerp(a.isHovered, b.isHovered, t),
-      bordered: MyoroLerpHelper.lerp(a.bordered, b.bordered, t),
+      isHovered: myoroLerp(a.isHovered, b.isHovered, t),
+      bordered: myoroLerp(a.bordered, b.bordered, t),
       borderRadius: BorderRadius.lerp(a.borderRadius, b.borderRadius, t),
-      tooltip: MyoroLerpHelper.lerp(a.tooltip, b.tooltip, t),
-      onHover: MyoroLerpHelper.lerp(a.onHover, b.onHover, t),
+      tooltip: myoroLerp(a.tooltip, b.tooltip, t),
+      onHover: myoroLerp(a.onHover, b.onHover, t),
     );
   }
 

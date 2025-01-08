@@ -43,7 +43,7 @@ final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExt
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       sliderPadding: EdgeInsets.lerp(sliderPadding, other.sliderPadding, t),
       indicatorTextStyle: TextStyle.lerp(indicatorTextStyle, other.indicatorTextStyle, t),
-      indicatorTextAlignment: MyoroLerpHelper.lerp(indicatorTextAlignment, other.indicatorTextAlignment, t),
+      indicatorTextAlignment: myoroLerp(indicatorTextAlignment, other.indicatorTextAlignment, t),
     );
   }
 }

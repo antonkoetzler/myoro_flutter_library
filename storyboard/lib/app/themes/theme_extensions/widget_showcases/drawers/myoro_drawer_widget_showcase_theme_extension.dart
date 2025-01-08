@@ -33,8 +33,8 @@ final class MyoroDrawerWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   ) {
     if (other is! MyoroDrawerWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      buttonBordered: MyoroLerpHelper.lerp(buttonBordered, other.buttonBordered, t),
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      buttonBordered: myoroLerp(buttonBordered, other.buttonBordered, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
     );
   }
 }

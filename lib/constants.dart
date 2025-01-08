@@ -8,6 +8,7 @@ const kMyoroThrottleDuration = Duration(milliseconds: 500);
 
 // Borders.
 const kMyoroBorderLength = 2.0;
+const kMyoroInputBorderLength = 10.0;
 const kMyoroBorderRadiusLength = 10.0;
 
 // Carousels.

@@ -77,7 +77,7 @@ final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExten
       constraints: BoxConstraints.lerp(constraints, other.constraints, t),
       spacing: lerpDouble(spacing, other.spacing, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      closeButtonIcon: MyoroLerpHelper.lerp(closeButtonIcon, other.closeButtonIcon, t),
+      closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
     );
   }
 }

@@ -71,11 +71,11 @@ final class MyoroFormWidgetShowcaseThemeExtension extends ThemeExtension<MyoroFo
   ) {
     if (other is! MyoroFormWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      widgetMainAxisAlignment: MyoroLerpHelper.lerp(widgetMainAxisAlignment, other.widgetMainAxisAlignment, t),
-      widgetInputStyle: MyoroLerpHelper.lerp(widgetInputStyle, other.widgetInputStyle, t),
+      widgetMainAxisAlignment: myoroLerp(widgetMainAxisAlignment, other.widgetMainAxisAlignment, t),
+      widgetInputStyle: myoroLerp(widgetInputStyle, other.widgetInputStyle, t),
       widgetSpacing: lerpDouble(widgetSpacing, other.widgetSpacing, t),
-      submitButtonMainAxisAlignment: MyoroLerpHelper.lerp(submitButtonMainAxisAlignment, other.submitButtonMainAxisAlignment, t),
-      submitButtonBordered: MyoroLerpHelper.lerp(submitButtonBordered, other.submitButtonBordered, t),
+      submitButtonMainAxisAlignment: myoroLerp(submitButtonMainAxisAlignment, other.submitButtonMainAxisAlignment, t),
+      submitButtonBordered: myoroLerp(submitButtonBordered, other.submitButtonBordered, t),
       resultTextStyle: TextStyle.lerp(resultTextStyle, other.resultTextStyle, t),
       successColor: Color.lerp(successColor, other.successColor, t),
       errorColor: Color.lerp(errorColor, other.errorColor, t),

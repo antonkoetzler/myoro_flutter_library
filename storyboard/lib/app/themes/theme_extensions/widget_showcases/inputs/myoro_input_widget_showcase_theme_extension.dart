@@ -49,8 +49,8 @@ final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroI
     return copyWith(
       configurationOptionTextStyle: TextStyle.lerp(configurationOptionTextStyle, other.configurationOptionTextStyle, t),
       configurationOptionSpacing: lerpDouble(configurationOptionSpacing, other.configurationOptionSpacing, t),
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
-      suffixWidgetIcon: MyoroLerpHelper.lerp(suffixWidgetIcon, other.suffixWidgetIcon, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
+      suffixWidgetIcon: myoroLerp(suffixWidgetIcon, other.suffixWidgetIcon, t),
     );
   }
 }

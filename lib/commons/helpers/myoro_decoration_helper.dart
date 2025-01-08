@@ -7,7 +7,7 @@ final class MyoroDecorationHelper {
   static final borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
 
   /// Default [BorderRadius] for inputs.
-  static final inputBorderRadius = BorderRadius.circular(10);
+  static final inputBorderRadius = BorderRadius.circular(kMyoroInputBorderLength);
 
   /// Default [Border] for a, for example, [Container].
   static Border border(BuildContext context) {

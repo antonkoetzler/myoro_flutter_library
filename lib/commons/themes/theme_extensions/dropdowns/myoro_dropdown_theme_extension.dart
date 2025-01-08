@@ -40,7 +40,7 @@ final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThem
   ) {
     if (other is! MyoroDropdownThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       inputDropdownSpacing: lerpDouble(inputDropdownSpacing, other.inputDropdownSpacing, t),
       menuMaxHeight: lerpDouble(menuMaxHeight, other.menuMaxHeight, t),
     );

@@ -85,11 +85,11 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
       widgetListingCategoryDropdownButtonTextStyle:
           TextStyle.lerp(widgetListingCategoryDropdownButtonTextStyle, other.widgetListingCategoryDropdownButtonTextStyle, t),
       widgetListingCategoryDropdownButtonUnopenedIcon:
-          MyoroLerpHelper.lerp(widgetListingCategoryDropdownButtonUnopenedIcon, other.widgetListingCategoryDropdownButtonUnopenedIcon, t),
+          myoroLerp(widgetListingCategoryDropdownButtonUnopenedIcon, other.widgetListingCategoryDropdownButtonUnopenedIcon, t),
       widgetListingCategoryDropdownButtonOpenedIcon:
-          MyoroLerpHelper.lerp(widgetListingCategoryDropdownButtonOpenedIcon, other.widgetListingCategoryDropdownButtonOpenedIcon, t),
+          myoroLerp(widgetListingCategoryDropdownButtonOpenedIcon, other.widgetListingCategoryDropdownButtonOpenedIcon, t),
       widgetListingCategoryWidgetButtonContentCentered:
-          MyoroLerpHelper.lerp(widgetListingCategoryWidgetButtonContentCentered, other.widgetListingCategoryWidgetButtonContentCentered, t),
+          myoroLerp(widgetListingCategoryWidgetButtonContentCentered, other.widgetListingCategoryWidgetButtonContentCentered, t),
       widgetListingCategoryWidgetButtonTextStyle:
           TextStyle.lerp(widgetListingCategoryWidgetButtonTextStyle, other.widgetListingCategoryWidgetButtonTextStyle, t),
     );

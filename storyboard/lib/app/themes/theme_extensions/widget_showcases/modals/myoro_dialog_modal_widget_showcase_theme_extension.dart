@@ -33,7 +33,7 @@ final class MyoroDialogModalWidgetShowcaseThemeExtension extends ThemeExtension<
   ) {
     if (other is! MyoroDialogModalWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       childBorderRadius: BorderRadius.lerp(childBorderRadius, other.childBorderRadius, t),
     );
   }

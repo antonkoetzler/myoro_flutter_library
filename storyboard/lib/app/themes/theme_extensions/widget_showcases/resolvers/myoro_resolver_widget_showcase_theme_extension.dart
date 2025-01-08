@@ -41,8 +41,8 @@ final class MyoroResolverWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   ) {
     if (other is! MyoroResolverWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      buttonBordered: MyoroLerpHelper.lerp(buttonBordered, other.buttonBordered, t),
-      buttonTextAlign: MyoroLerpHelper.lerp(buttonTextAlign, other.buttonTextAlign, t),
+      buttonBordered: myoroLerp(buttonBordered, other.buttonBordered, t),
+      buttonTextAlign: myoroLerp(buttonTextAlign, other.buttonTextAlign, t),
       spacing: lerpDouble(spacing, other.spacing, t),
     );
   }

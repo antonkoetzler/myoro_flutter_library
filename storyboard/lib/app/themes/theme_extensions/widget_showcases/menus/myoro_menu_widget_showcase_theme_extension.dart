@@ -41,7 +41,7 @@ final class MyoroMenuWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMe
   ) {
     if (other is! MyoroMenuWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       constraintsOptionSpacing: lerpDouble(constraintsOptionSpacing, other.constraintsOptionSpacing, t),
       headerTextStyle: TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
     );

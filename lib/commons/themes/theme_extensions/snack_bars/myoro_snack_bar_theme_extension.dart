@@ -104,7 +104,7 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
       padding: EdgeInsets.lerp(padding, other.padding, t),
       contentCloseButtonSpacing: lerpDouble(contentCloseButtonSpacing, other.contentCloseButtonSpacing, t),
       messageTextStyle: TextStyle.lerp(messageTextStyle, other.messageTextStyle, t),
-      closeButtonIcon: MyoroLerpHelper.lerp(closeButtonIcon, other.closeButtonIcon, t),
+      closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
       closeButtonIconSize: lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),
     );
   }

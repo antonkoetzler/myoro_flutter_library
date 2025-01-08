@@ -60,8 +60,8 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
     return copyWith(
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       subtitleTextStyle: TextStyle.lerp(subtitleTextStyle, other.subtitleTextStyle, t),
-      showWidgetOptionsButtonIcon: MyoroLerpHelper.lerp(showWidgetOptionsButtonIcon, other.showWidgetOptionsButtonIcon, t),
-      themeButtonIcon: MyoroLerpHelper.lerp(themeButtonIcon, other.themeButtonIcon, t),
+      showWidgetOptionsButtonIcon: myoroLerp(showWidgetOptionsButtonIcon, other.showWidgetOptionsButtonIcon, t),
+      themeButtonIcon: myoroLerp(themeButtonIcon, other.themeButtonIcon, t),
       buttonSpacing: lerpDouble(buttonSpacing, other.buttonSpacing, t),
     );
   }

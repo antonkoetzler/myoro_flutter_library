@@ -39,9 +39,9 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   ) {
     if (other is! MyoroSnackBarWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
-      widgetBordered: MyoroLerpHelper.lerp(widgetBordered, other.widgetBordered, t),
-      childIcon: MyoroLerpHelper.lerp(childIcon, other.childIcon, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
+      widgetBordered: myoroLerp(widgetBordered, other.widgetBordered, t),
+      childIcon: myoroLerp(childIcon, other.childIcon, t),
     );
   }
 }

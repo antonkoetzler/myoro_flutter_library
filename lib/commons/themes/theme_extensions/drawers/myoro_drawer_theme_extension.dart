@@ -79,10 +79,10 @@ final class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExt
       drawerShape: ShapeBorder.lerp(drawerShape, other.drawerShape, t),
       titleContentDividerPadding: EdgeInsets.lerp(titleContentDividerPadding, other.titleContentDividerPadding, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      closeButtonDrawerIcon: MyoroLerpHelper.lerp(closeButtonDrawerIcon, other.closeButtonDrawerIcon, t),
-      closeButtonEndDrawerIcon: MyoroLerpHelper.lerp(closeButtonEndDrawerIcon, other.closeButtonEndDrawerIcon, t),
+      closeButtonDrawerIcon: myoroLerp(closeButtonDrawerIcon, other.closeButtonDrawerIcon, t),
+      closeButtonEndDrawerIcon: myoroLerp(closeButtonEndDrawerIcon, other.closeButtonEndDrawerIcon, t),
       closeButtonBackgroundColor: Color.lerp(closeButtonBackgroundColor, other.closeButtonBackgroundColor, t),
-      closeButtonBordered: MyoroLerpHelper.lerp(closeButtonBordered, other.closeButtonBordered, t),
+      closeButtonBordered: myoroLerp(closeButtonBordered, other.closeButtonBordered, t),
     );
   }
 }

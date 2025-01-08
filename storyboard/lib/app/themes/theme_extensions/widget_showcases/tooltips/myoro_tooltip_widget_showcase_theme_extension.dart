@@ -47,7 +47,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<Myor
   ) {
     if (other is! MyoroTooltipWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       childSize: lerpDouble(childSize, other.childSize, t),
       childDecoration: BoxDecoration.lerp(childDecoration, other.childDecoration, t),
       childTextStyle: TextStyle.lerp(childTextStyle, other.childTextStyle, t),

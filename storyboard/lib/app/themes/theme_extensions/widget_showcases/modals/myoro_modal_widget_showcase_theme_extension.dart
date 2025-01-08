@@ -43,7 +43,7 @@ final class MyoroModalWidgetShowcaseThemeExtension extends ThemeExtension<MyoroM
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       headerTextStyle: TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
     );
   }
 }

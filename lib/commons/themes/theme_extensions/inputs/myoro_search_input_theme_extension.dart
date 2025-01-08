@@ -53,8 +53,8 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
     if (other is! MyoroSearchInputThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
-      searchButtonIcon: MyoroLerpHelper.lerp(searchButtonIcon, other.searchButtonIcon, t),
-      searchButtonBordered: MyoroLerpHelper.lerp(searchButtonBordered, other.searchButtonBordered, t),
+      searchButtonIcon: myoroLerp(searchButtonIcon, other.searchButtonIcon, t),
+      searchButtonBordered: myoroLerp(searchButtonBordered, other.searchButtonBordered, t),
       searchButtonHoverColor: Color.lerp(searchButtonHoverColor, other.searchButtonHoverColor, t),
       searchButtonLoadingSize: lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
     );

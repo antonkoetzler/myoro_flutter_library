@@ -106,20 +106,20 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   ) {
     if (other is! MyoroInputThemeExtension) return this;
     return copyWith(
-      underlinedBorder: MyoroLerpHelper.lerp(underlinedBorder, other.underlinedBorder, t),
-      outlinedBorder: MyoroLerpHelper.lerp(outlinedBorder, other.outlinedBorder, t),
+      underlinedBorder: myoroLerp(underlinedBorder, other.underlinedBorder, t),
+      outlinedBorder: myoroLerp(outlinedBorder, other.outlinedBorder, t),
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      isDense: MyoroLerpHelper.lerp(isDense, other.isDense, t),
+      isDense: myoroLerp(isDense, other.isDense, t),
       cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
       disabledOpacity: lerpDouble(disabledOpacity, other.disabledOpacity, t),
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
       spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
-      labelBehavior: MyoroLerpHelper.lerp(labelBehavior, other.labelBehavior, t),
+      labelBehavior: myoroLerp(labelBehavior, other.labelBehavior, t),
       clearTextButtonPadding: EdgeInsets.lerp(clearTextButtonPadding, other.clearTextButtonPadding, t),
-      clearTextButtonIcon: MyoroLerpHelper.lerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
+      clearTextButtonIcon: myoroLerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
     );
   }
 }

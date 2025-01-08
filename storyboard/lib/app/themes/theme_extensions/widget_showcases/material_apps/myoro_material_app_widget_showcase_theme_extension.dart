@@ -84,13 +84,13 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension extends ThemeExtension<
     if (other is! MyoroMaterialAppWidgetShowcaseThemeExtension) return this;
     return copyWith(
       appBarContentColor: Color.lerp(appBarContentColor, other.appBarContentColor, t),
-      appBarLogoIcon: MyoroLerpHelper.lerp(appBarLogoIcon, other.appBarLogoIcon, t),
+      appBarLogoIcon: myoroLerp(appBarLogoIcon, other.appBarLogoIcon, t),
       appBarTextStyle: TextStyle.lerp(appBarTextStyle, other.appBarTextStyle, t),
-      appBarMenuButtonIcon: MyoroLerpHelper.lerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
+      appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
       appBarSpacing: lerpDouble(appBarSpacing, other.appBarSpacing, t),
-      themeModeOptionButtonBordered: MyoroLerpHelper.lerp(themeModeOptionButtonBordered, other.themeModeOptionButtonBordered, t),
-      themeModeOptionButtonDarkModeIcon: MyoroLerpHelper.lerp(themeModeOptionButtonDarkModeIcon, other.themeModeOptionButtonDarkModeIcon, t),
-      themeModeOptionButtonLightModeIcon: MyoroLerpHelper.lerp(themeModeOptionButtonLightModeIcon, other.themeModeOptionButtonLightModeIcon, t),
+      themeModeOptionButtonBordered: myoroLerp(themeModeOptionButtonBordered, other.themeModeOptionButtonBordered, t),
+      themeModeOptionButtonDarkModeIcon: myoroLerp(themeModeOptionButtonDarkModeIcon, other.themeModeOptionButtonDarkModeIcon, t),
+      themeModeOptionButtonLightModeIcon: myoroLerp(themeModeOptionButtonLightModeIcon, other.themeModeOptionButtonLightModeIcon, t),
       themeModeOptionTextStyle: TextStyle.lerp(themeModeOptionTextStyle, other.themeModeOptionTextStyle, t),
       themeModeOptionSpacing: lerpDouble(themeModeOptionSpacing, other.themeModeOptionSpacing, t),
     );

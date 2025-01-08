@@ -65,12 +65,12 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
     if (other is! MyoroSnackBarContainerThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
-      behavior: MyoroLerpHelper.lerp(behavior, other.behavior, t),
+      behavior: myoroLerp(behavior, other.behavior, t),
       margin: EdgeInsets.lerp(margin, other.margin, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
       elevation: lerpDouble(elevation, other.elevation, t),
-      dismissDirection: MyoroLerpHelper.lerp(dismissDirection, other.dismissDirection, t),
-      duration: MyoroLerpHelper.lerp(duration, other.duration, t),
+      dismissDirection: myoroLerp(dismissDirection, other.dismissDirection, t),
+      duration: myoroLerp(duration, other.duration, t),
     );
   }
 }

@@ -27,7 +27,7 @@ final class MyoroBasicDividerWidgetShowcaseThemeExtension extends ThemeExtension
   ) {
     if (other is! MyoroBasicDividerWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      buttonBordered: MyoroLerpHelper.lerp(buttonBordered, other.buttonBordered, t),
+      buttonBordered: myoroLerp(buttonBordered, other.buttonBordered, t),
     );
   }
 }

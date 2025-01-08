@@ -40,7 +40,7 @@ final class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadio
   ) {
     if (other is! MyoroGroupRadioThemeExtension) return this;
     return copyWith(
-      direction: MyoroLerpHelper.lerp(direction, other.direction, t),
+      direction: myoroLerp(direction, other.direction, t),
       spacing: lerpDouble(spacing, other.spacing, t),
       runSpacing: lerpDouble(runSpacing, other.runSpacing, t),
     );

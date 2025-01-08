@@ -26,7 +26,7 @@ final class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeE
   ) {
     if (other is! MyoroTooltipThemeExtension) return this;
     return copyWith(
-      waitDuration: MyoroLerpHelper.lerp(waitDuration, other.waitDuration, t),
+      waitDuration: myoroLerp(waitDuration, other.waitDuration, t),
     );
   }
 }

@@ -39,9 +39,9 @@ final class MyoroCardWidgetShowcaseThemeExtension extends ThemeExtension<MyoroCa
   ) {
     if (other is! MyoroCardWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      inputStyle: MyoroLerpHelper.lerp(inputStyle, other.inputStyle, t),
-      titleOptionTextAlign: MyoroLerpHelper.lerp(titleOptionTextAlign, other.titleOptionTextAlign, t),
-      titleTextStyleOptionTextStyles: MyoroLerpHelper.lerp(titleTextStyleOptionTextStyles, other.titleTextStyleOptionTextStyles, t),
+      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
+      titleOptionTextAlign: myoroLerp(titleOptionTextAlign, other.titleOptionTextAlign, t),
+      titleTextStyleOptionTextStyles: myoroLerp(titleTextStyleOptionTextStyles, other.titleTextStyleOptionTextStyles, t),
     );
   }
 }

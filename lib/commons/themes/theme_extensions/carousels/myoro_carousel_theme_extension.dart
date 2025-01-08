@@ -38,9 +38,9 @@ final class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThem
   ) {
     if (other is! MyoroCarouselThemeExtension) return this;
     return copyWith(
-      traversalButtonBordered: MyoroLerpHelper.lerp(traversalButtonBordered, other.traversalButtonBordered, t),
-      previousItemButtonIcon: MyoroLerpHelper.lerp(previousItemButtonIcon, other.previousItemButtonIcon, t),
-      nextItemButtonIcon: MyoroLerpHelper.lerp(nextItemButtonIcon, other.nextItemButtonIcon, t),
+      traversalButtonBordered: myoroLerp(traversalButtonBordered, other.traversalButtonBordered, t),
+      previousItemButtonIcon: myoroLerp(previousItemButtonIcon, other.previousItemButtonIcon, t),
+      nextItemButtonIcon: myoroLerp(nextItemButtonIcon, other.nextItemButtonIcon, t),
     );
   }
 }

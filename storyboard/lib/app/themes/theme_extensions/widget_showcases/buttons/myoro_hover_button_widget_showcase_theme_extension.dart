@@ -85,7 +85,7 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
       colorDropdownItemColorTextStyle: TextStyle.lerp(colorDropdownItemColorTextStyle, other.colorDropdownItemColorTextStyle, t),
       colorDropdownItemSpacing: lerpDouble(colorDropdownItemSpacing, other.colorDropdownItemSpacing, t),
       borderRadiusSliderMaxValue: lerpDouble(borderRadiusSliderMaxValue, other.borderRadiusSliderMaxValue, t),
-      borderRadiusSliderMaxValueBordered: MyoroLerpHelper.lerp(borderRadiusSliderMaxValueBordered, other.borderRadiusSliderMaxValueBordered, t),
+      borderRadiusSliderMaxValueBordered: myoroLerp(borderRadiusSliderMaxValueBordered, other.borderRadiusSliderMaxValueBordered, t),
     );
   }
 }
