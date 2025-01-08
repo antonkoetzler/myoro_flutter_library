@@ -21,14 +21,14 @@ final class MyoroInput extends StatefulWidget {
   /// The named constructors of [MyoroInput] provide pre-inserted formatters.
   const MyoroInput({
     super.key,
-    required this.configuration,
+    this.configuration = const MyoroInputConfiguration(),
     this.formatter,
   });
 
   /// An input that auto formats a date.
   factory MyoroInput.date({
     Key? key,
-    required MyoroInputConfiguration configuration,
+    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
   }) {
     return MyoroInput(
       key: key,
@@ -40,13 +40,10 @@ final class MyoroInput extends StatefulWidget {
   /// An input that only accepts numbers (integers or decimal).
   factory MyoroInput.number({
     Key? key,
-    // Minimum number accepted.
-    double? min,
-    // Maximum number accepted.
+    double min = 0,
     double? max,
-    // # of numbers to place after the decimal point. If this is null, it only accepts integers.
-    int? decimalPlaces,
-    required MyoroInputConfiguration configuration,
+    int decimalPlaces = 0,
+    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
   }) {
     return MyoroInput(
       key: key,
@@ -56,6 +53,19 @@ final class MyoroInput extends StatefulWidget {
         max: max,
         decimalPlaces: decimalPlaces,
       ),
+    );
+  }
+
+  /// An input that formats a time in MM:SS or HH:MM:SS.
+  factory MyoroInput.time({
+    Key? key,
+    MyoroTimeInputFormatterEnum formatType = MyoroTimeInputFormatterEnum.mmSs,
+    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
+  }) {
+    return MyoroInput(
+      key: key,
+      configuration: configuration,
+      formatter: MyoroTimeInputFormatter(formatType: formatType),
     );
   }
 
@@ -99,7 +109,7 @@ final class _MyoroInputState extends State<MyoroInput> {
     /// [MyoroInput.number] init configuration.
     if (_formatter is MyoroNumberInputFormatter && _controller.text.isEmpty) {
       final formatter = _formatter as MyoroNumberInputFormatter;
-      final text = (formatter.min ?? 0).toStringAsFixed(formatter.decimalPlaces ?? 0);
+      final text = formatter.min.toStringAsFixed(formatter.decimalPlaces);
       _controller.text = text;
     }
   }
@@ -187,11 +197,11 @@ final class _MyoroInputState extends State<MyoroInput> {
                                 _controller.clear();
                               } else {
                                 if (_formatter is MyoroNumberInputFormatter) {
-                                  _controller.text = (_formatter as MyoroNumberInputFormatter).min?.toString() ?? '0';
+                                  _controller.text = (_formatter as MyoroNumberInputFormatter).min.toString();
                                 } else if (_formatter is MyoroDateInputFormatter) {
                                   _controller.text = '00/00/0000';
                                 } else if (_formatter is MyoroTimeInputFormatter) {
-                                  _controller.text = (_formatter as MyoroTimeInputFormatter).mmSs ? '00:00' : '00:00:00';
+                                  _controller.text = (_formatter as MyoroTimeInputFormatter).formatType.emptyValue;
                                 }
                               }
                               _configuration.onChanged?.call(_controller.text);
