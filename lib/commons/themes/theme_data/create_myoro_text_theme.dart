@@ -3,15 +3,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the [TextTheme] for [createMyoroThemeData]'s [ThemeData].
 TextTheme createMyoroTextTheme(bool isDarkMode) {
-  final secondary = isDarkMode ? MyoroDarkModeColorTheme.secondary : MyoroLightModeColorTheme.secondary;
-
   TextStyle createTextStyle({
     required MyoroFontSizeEnum fontSize,
     FontWeight fontWeight = FontWeight.normal,
     FontStyle fontStyle = FontStyle.normal,
   }) {
     return TextStyle(
-      color: secondary,
+      color: isDarkMode ? MyoroDarkModeColorTheme.secondary : MyoroLightModeColorTheme.secondary,
       fontSize: fontSize.size,
       fontWeight: fontWeight,
       fontStyle: fontStyle,
