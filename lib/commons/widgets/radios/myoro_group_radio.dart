@@ -86,8 +86,8 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
               return MyoroRadio(
                 label: entry.key,
                 initialValue: entry.value,
-                onChanged: (bool value) {
-                  _notifier.toggle(entry.key, value);
+                onChanged: (_) {
+                  _notifier.enable(entry.key);
                   _onChanged?.call(entry.key, _notifier.radios);
                 },
               );

@@ -6,11 +6,9 @@ final class MyoroGroupCheckboxNotifier extends ValueNotifier<MyoroGroupCheckboxI
   MyoroGroupCheckboxNotifier(super._value);
 
   /// Method to toggle a checkbox in the group.
-  void toggle(String key, [bool? enabled]) => value = Map.from(value)
-    ..update(
-      key,
-      (bool keyChanged) => enabled ?? !keyChanged,
-    );
+  void toggle(String key, [bool? enabled]) {
+    value = Map.from(value)..update(key, (bool keyChanged) => enabled ?? !keyChanged);
+  }
 
   /// Sets all of the checkboxes to a value.
   void changeAll([bool enabled = false]) {
