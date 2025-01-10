@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -14,6 +15,10 @@ final class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExt
     required this.contentPadding,
   });
 
+  MyoroAppBarThemeExtension.fake()
+      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        contentPadding = EdgeInsets.all(faker.randomGenerator.integer(50).toDouble());
+
   @override
   MyoroAppBarThemeExtension copyWith({
     Color? primaryColor,
@@ -26,12 +31,13 @@ final class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExt
   }
 
   @override
-  ThemeExtension<MyoroAppBarThemeExtension> lerp(
+  MyoroAppBarThemeExtension lerp(
     covariant ThemeExtension<MyoroAppBarThemeExtension>? other,
     double t,
   ) {
     if (other is! MyoroAppBarThemeExtension) return this;
     return copyWith(
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
     );
   }

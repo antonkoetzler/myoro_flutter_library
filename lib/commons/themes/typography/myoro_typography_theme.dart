@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -107,4 +108,7 @@ final class MyoroTypographyTheme {
       _ => throw AssertionError('[MyoroTypographyTheme.getTextStyleName]: [textStyle] is not apart of [MyoroTypographyTheme.getAllTextStyles].'),
     };
   }
+
+  /// Retrieves a random text style.
+  TextStyle get randomTextStyle => allTextStyles[faker.randomGenerator.integer(allTextStyles.length)];
 }

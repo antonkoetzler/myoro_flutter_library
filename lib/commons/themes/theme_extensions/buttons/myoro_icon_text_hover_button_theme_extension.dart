@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -39,6 +40,16 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     required this.spacing,
     required this.mainAxisAlignment,
   });
+
+  MyoroIconTextHoverButtonThemeExtension.fake()
+      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        contentPadding = EdgeInsets.all(faker.randomGenerator.integer(50).toDouble()),
+        textStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        textMaxLines = faker.randomGenerator.integer(5),
+        textOverflow = TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)],
+        spacing = faker.randomGenerator.decimal(),
+        mainAxisAlignment = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)];
 
   @override
   MyoroIconTextHoverButtonThemeExtension copyWith({
