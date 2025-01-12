@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -32,6 +33,17 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
     required this.textStyle,
   });
 
+  MyoroCardThemeExtension.fake()
+      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        border = Border.all(
+          width: faker.randomGenerator.integer(50, min: 1).toDouble(),
+          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        ),
+        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        titleCardSpacing = faker.randomGenerator.decimal(),
+        textStyle = MyoroTypographyTheme.instance.randomTextStyle;
+
   @override
   MyoroCardThemeExtension copyWith({
     Color? primaryColor,
@@ -52,7 +64,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
   }
 
   @override
-  ThemeExtension<MyoroCardThemeExtension> lerp(
+  MyoroCardThemeExtension lerp(
     covariant ThemeExtension<MyoroCardThemeExtension>? other,
     double t,
   ) {

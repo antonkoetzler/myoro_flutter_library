@@ -75,7 +75,7 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   }
 
   @override
-  ThemeExtension<MyoroIconTextHoverButtonThemeExtension> lerp(
+  MyoroIconTextHoverButtonThemeExtension lerp(
     covariant ThemeExtension<MyoroIconTextHoverButtonThemeExtension>? other,
     double t,
   ) {

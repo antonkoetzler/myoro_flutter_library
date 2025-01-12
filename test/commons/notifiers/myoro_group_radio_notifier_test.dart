@@ -16,11 +16,11 @@ void main() {
   test('MyoroGroupRadio constructor assertions', () {
     expect(
       () => MyoroGroupRadioNotifier({'hello': true, 'world': true}),
-      throwsA(isA<AssertionError>()),
+      throwsAssertionError,
     );
     expect(
       () => MyoroGroupRadioNotifier({'hello': false, 'world': false}),
-      throwsA(isA<AssertionError>()),
+      throwsAssertionError,
     );
   });
 

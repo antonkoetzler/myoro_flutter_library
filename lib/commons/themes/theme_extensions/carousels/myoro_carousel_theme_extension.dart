@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -18,6 +19,11 @@ final class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThem
     required this.nextItemButtonIcon,
   });
 
+  MyoroCarouselThemeExtension.fake()
+      : traversalButtonBordered = faker.randomGenerator.boolean(),
+        previousItemButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        nextItemButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+
   @override
   MyoroCarouselThemeExtension copyWith({
     bool? traversalButtonBordered,
@@ -32,7 +38,7 @@ final class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThem
   }
 
   @override
-  ThemeExtension<MyoroCarouselThemeExtension> lerp(
+  MyoroCarouselThemeExtension lerp(
     covariant ThemeExtension<MyoroCarouselThemeExtension>? other,
     double t,
   ) {

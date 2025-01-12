@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -36,6 +37,15 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
     required this.spacing,
   });
 
+  MyoroCheckboxThemeExtension.fake()
+      : activeColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        checkColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        hoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        focusColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        splashRadius = faker.randomGenerator.decimal(),
+        labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        spacing = faker.randomGenerator.decimal();
+
   @override
   MyoroCheckboxThemeExtension copyWith({
     Color? activeColor,
@@ -58,7 +68,7 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
   }
 
   @override
-  ThemeExtension<MyoroCheckboxThemeExtension> lerp(
+  MyoroCheckboxThemeExtension lerp(
     covariant ThemeExtension<MyoroCheckboxThemeExtension>? other,
     double t,
   ) {
