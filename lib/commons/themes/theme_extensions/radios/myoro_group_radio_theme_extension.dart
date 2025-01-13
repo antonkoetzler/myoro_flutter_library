@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -20,6 +21,11 @@ final class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadio
     required this.runSpacing,
   });
 
+  MyoroGroupRadioThemeExtension.fake()
+      : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+        spacing = faker.randomGenerator.decimal(),
+        runSpacing = faker.randomGenerator.decimal();
+
   @override
   MyoroGroupRadioThemeExtension copyWith({
     Axis? direction,
@@ -34,7 +40,7 @@ final class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadio
   }
 
   @override
-  ThemeExtension<MyoroGroupRadioThemeExtension> lerp(
+  MyoroGroupRadioThemeExtension lerp(
     covariant ThemeExtension<MyoroGroupRadioThemeExtension>? other,
     double t,
   ) {
