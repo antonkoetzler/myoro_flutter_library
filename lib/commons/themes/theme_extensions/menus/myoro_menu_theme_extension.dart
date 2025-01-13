@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -34,6 +35,18 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
     required this.dialogTextStyle,
   });
 
+  MyoroMenuThemeExtension.fake()
+      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        border = Border.all(
+          width: faker.randomGenerator.decimal(),
+          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        ),
+        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        searchBarPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        searchBarInputStyle = MyoroInputStyleEnum.fake(),
+        itemBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        dialogTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+
   @override
   MyoroMenuThemeExtension copyWith({
     BoxConstraints? constraints,
@@ -57,7 +70,7 @@ final class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtensi
   }
 
   @override
-  ThemeExtension<MyoroMenuThemeExtension> lerp(
+  MyoroMenuThemeExtension lerp(
     covariant ThemeExtension<MyoroMenuThemeExtension>? other,
     double t,
   ) {

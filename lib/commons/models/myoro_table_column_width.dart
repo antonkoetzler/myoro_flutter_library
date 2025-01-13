@@ -30,9 +30,10 @@ final class MyoroTableColumnWidth extends Equatable {
     MyoroTableColumnWidthEnum? columnWidthEnum,
     double? fixedWidth,
   }) {
+    columnWidthEnum = columnWidthEnum ?? this.columnWidthEnum;
     return MyoroTableColumnWidth(
-      columnWidthEnum: columnWidthEnum ?? this.columnWidthEnum,
-      fixedWidth: fixedWidth ?? this.fixedWidth,
+      columnWidthEnum: columnWidthEnum,
+      fixedWidth: columnWidthEnum.isFixed ? (fixedWidth ?? this.fixedWidth) : null,
     );
   }
 

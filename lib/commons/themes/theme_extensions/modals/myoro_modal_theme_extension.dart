@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -40,6 +41,30 @@ final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExten
     required this.closeButtonIcon,
   });
 
+  factory MyoroModalThemeExtension.fake() {
+    final maxWidth = faker.randomGenerator.decimal();
+    final maxHeight = faker.randomGenerator.decimal();
+
+    return MyoroModalThemeExtension(
+      primaryColor: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      borderRadius: BorderRadius.circular(faker.randomGenerator.decimal()),
+      border: Border.all(
+        width: faker.randomGenerator.decimal(),
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      ),
+      padding: EdgeInsets.all(faker.randomGenerator.decimal()),
+      constraints: BoxConstraints(
+        minWidth: faker.randomGenerator.integer(maxWidth.toInt()).toDouble(),
+        minHeight: faker.randomGenerator.integer(maxHeight.toInt()).toDouble(),
+        maxWidth: maxWidth,
+        maxHeight: maxHeight,
+      ),
+      spacing: faker.randomGenerator.decimal(),
+      titleTextStyle: MyoroTypographyTheme.instance.randomTextStyle,
+      closeButtonIcon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+    );
+  }
+
   @override
   MyoroModalThemeExtension copyWith({
     Color? primaryColor,
@@ -64,7 +89,7 @@ final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExten
   }
 
   @override
-  ThemeExtension<MyoroModalThemeExtension> lerp(
+  MyoroModalThemeExtension lerp(
     covariant ThemeExtension<MyoroModalThemeExtension>? other,
     double t,
   ) {

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -64,6 +65,33 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
     required this.clearTextButtonIcon,
   });
 
+  MyoroInputThemeExtension.fake()
+      : underlinedBorder = UnderlineInputBorder(
+          borderSide: BorderSide(
+            width: faker.randomGenerator.decimal(),
+            color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+          ),
+        ),
+        outlinedBorder = OutlineInputBorder(
+          borderRadius: MyoroDecorationHelper.inputBorderRadius,
+          borderSide: BorderSide(
+            width: faker.randomGenerator.decimal(),
+            color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+          ),
+        ),
+        primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        errorBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        isDense = faker.randomGenerator.boolean(),
+        cursorHeight = faker.randomGenerator.decimal(),
+        disabledOpacity = faker.randomGenerator.decimal(),
+        inputTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        spacing = faker.randomGenerator.decimal(),
+        labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        labelBehavior = FloatingLabelBehavior.values[faker.randomGenerator.integer(FloatingLabelBehavior.values.length)],
+        clearTextButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        clearTextButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+
   @override
   MyoroInputThemeExtension copyWith({
     InputBorder? underlinedBorder,
@@ -100,7 +128,7 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
   }
 
   @override
-  ThemeExtension<MyoroInputThemeExtension> lerp(
+  MyoroInputThemeExtension lerp(
     covariant ThemeExtension<MyoroInputThemeExtension>? other,
     double t,
   ) {

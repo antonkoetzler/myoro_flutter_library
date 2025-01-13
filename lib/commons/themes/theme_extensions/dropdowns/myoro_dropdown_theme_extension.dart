@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -20,6 +21,11 @@ final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThem
     required this.menuMaxHeight,
   });
 
+  MyoroDropdownThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        inputDropdownSpacing = faker.randomGenerator.decimal(),
+        menuMaxHeight = faker.randomGenerator.decimal();
+
   @override
   MyoroDropdownThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -34,7 +40,7 @@ final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThem
   }
 
   @override
-  ThemeExtension<MyoroDropdownThemeExtension> lerp(
+  MyoroDropdownThemeExtension lerp(
     covariant ThemeExtension<MyoroDropdownThemeExtension>? other,
     double t,
   ) {

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -16,6 +17,10 @@ final class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThem
     required this.itemRadius,
   });
 
+  MyoroPieGraphThemeExtension.fake()
+      : itemColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        itemRadius = faker.randomGenerator.decimal();
+
   @override
   MyoroPieGraphThemeExtension copyWith({
     Color? itemColor,
@@ -28,7 +33,7 @@ final class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThem
   }
 
   @override
-  ThemeExtension<MyoroPieGraphThemeExtension> lerp(
+  MyoroPieGraphThemeExtension lerp(
     covariant ThemeExtension<MyoroPieGraphThemeExtension>? other,
     double t,
   ) {

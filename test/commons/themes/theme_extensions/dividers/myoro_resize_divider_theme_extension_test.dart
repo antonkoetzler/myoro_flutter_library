@@ -32,7 +32,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.resizeButtonShortValue,
-        lerpDouble(themeExtension1.resizeButtonShortValue, themeExtension1.resizeButtonShortValue, i),
+        lerpDouble(themeExtension1.resizeButtonShortValue, themeExtension2.resizeButtonShortValue, i),
       );
       expect(
         lerpedThemeExtension.resizeButtonLongValue,

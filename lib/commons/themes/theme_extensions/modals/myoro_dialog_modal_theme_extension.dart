@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -16,6 +17,10 @@ final class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogMod
     required this.footerButtonsSpacing,
   });
 
+  MyoroDialogModalThemeExtension.fake()
+      : textStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        footerButtonsSpacing = faker.randomGenerator.decimal();
+
   @override
   MyoroDialogModalThemeExtension copyWith({
     TextStyle? textStyle,
@@ -28,7 +33,7 @@ final class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogMod
   }
 
   @override
-  ThemeExtension<MyoroDialogModalThemeExtension> lerp(
+  MyoroDialogModalThemeExtension lerp(
     covariant ThemeExtension<MyoroDialogModalThemeExtension>? other,
     double t,
   ) {

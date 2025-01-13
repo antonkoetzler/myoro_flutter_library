@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -16,6 +17,10 @@ final class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircul
     required this.size,
   });
 
+  MyoroCircularLoaderThemeExtension.fake()
+      : color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        size = faker.randomGenerator.decimal();
+
   @override
   MyoroCircularLoaderThemeExtension copyWith({
     Color? color,
@@ -28,7 +33,7 @@ final class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircul
   }
 
   @override
-  ThemeExtension<MyoroCircularLoaderThemeExtension> lerp(
+  MyoroCircularLoaderThemeExtension lerp(
     covariant ThemeExtension<MyoroCircularLoaderThemeExtension>? other,
     double t,
   ) {

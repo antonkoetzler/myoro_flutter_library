@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -42,6 +43,22 @@ final class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExt
     required this.closeButtonBordered,
   });
 
+  MyoroDrawerThemeExtension.fake()
+      : drawerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        drawerContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        drawerShape = RoundedRectangleBorder(
+          side: BorderSide(
+            width: 2,
+            color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+          ),
+        ),
+        titleContentDividerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        closeButtonDrawerIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        closeButtonEndDrawerIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        closeButtonBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        closeButtonBordered = faker.randomGenerator.boolean();
+
   @override
   MyoroDrawerThemeExtension copyWith({
     EdgeInsets? drawerPadding,
@@ -68,7 +85,7 @@ final class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExt
   }
 
   @override
-  ThemeExtension<MyoroDrawerThemeExtension> lerp(
+  MyoroDrawerThemeExtension lerp(
     covariant ThemeExtension<MyoroDrawerThemeExtension>? other,
     double t,
   ) {

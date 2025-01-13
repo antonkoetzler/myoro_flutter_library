@@ -2,7 +2,7 @@
 
 ## Current
 
-1. (**IN PROGRESS**) Widget tests, code coverage, & GitHub actions (**IN PROGRESS:** `MyoroDrawerThemeExtension`);
+1. (**IN PROGRESS**) Widget tests, code coverage, & GitHub actions (**IN PROGRESS:** `MyoroGroupRadioThemeExtension`);
 1. Documentation;
 1. Contributing documentation;
 1. Create a logo.

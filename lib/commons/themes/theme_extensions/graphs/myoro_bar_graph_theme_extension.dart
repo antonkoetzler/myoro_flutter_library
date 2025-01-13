@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -36,6 +37,18 @@ final class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThem
     required this.horizontalSideTitleReversedSize,
   });
 
+  MyoroBarGraphThemeExtension.fake()
+      : border = Border.all(
+          width: faker.randomGenerator.decimal(min: 1),
+          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        ),
+        barColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        barBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        sideTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        sideTitleInterval = faker.randomGenerator.decimal(),
+        verticalSideTitleReversedSize = faker.randomGenerator.decimal(),
+        horizontalSideTitleReversedSize = faker.randomGenerator.decimal();
+
   @override
   MyoroBarGraphThemeExtension copyWith({
     Border? border,
@@ -58,7 +71,7 @@ final class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThem
   }
 
   @override
-  ThemeExtension<MyoroBarGraphThemeExtension> lerp(
+  MyoroBarGraphThemeExtension lerp(
     covariant ThemeExtension<MyoroBarGraphThemeExtension>? other,
     double t,
   ) {

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -28,6 +29,13 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
     required this.searchButtonLoadingSize,
   });
 
+  MyoroSearchInputThemeExtension.fake()
+      : spacing = faker.randomGenerator.decimal(),
+        searchButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        searchButtonBordered = faker.randomGenerator.boolean(),
+        searchButtonHoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        searchButtonLoadingSize = faker.randomGenerator.decimal();
+
   @override
   MyoroSearchInputThemeExtension copyWith({
     double? spacing,
@@ -46,7 +54,7 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
   }
 
   @override
-  ThemeExtension<MyoroSearchInputThemeExtension> lerp(
+  MyoroSearchInputThemeExtension lerp(
     covariant ThemeExtension<MyoroSearchInputThemeExtension>? other,
     double t,
   ) {
