@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -20,6 +21,11 @@ final class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCh
     required this.runSpacing,
   });
 
+  MyoroGroupCheckboxThemeExtension.fake()
+      : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+        spacing = faker.randomGenerator.decimal(),
+        runSpacing = faker.randomGenerator.decimal();
+
   @override
   MyoroGroupCheckboxThemeExtension copyWith({
     Axis? direction,
@@ -34,7 +40,7 @@ final class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCh
   }
 
   @override
-  ThemeExtension<MyoroGroupCheckboxThemeExtension> lerp(
+  MyoroGroupCheckboxThemeExtension lerp(
     covariant ThemeExtension<MyoroGroupCheckboxThemeExtension>? other,
     double t,
   ) {

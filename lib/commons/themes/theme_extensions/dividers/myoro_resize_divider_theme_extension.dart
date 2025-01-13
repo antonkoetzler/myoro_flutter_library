@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -24,6 +25,12 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
     required this.resizeButtonBorderRadius,
   });
 
+  MyoroResizeDividerThemeExtension.fake()
+      : secondary = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        resizeButtonShortValue = faker.randomGenerator.decimal(),
+        resizeButtonLongValue = faker.randomGenerator.decimal(),
+        resizeButtonBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal());
+
   @override
   MyoroResizeDividerThemeExtension copyWith({
     Color? secondary,
@@ -40,7 +47,7 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
   }
 
   @override
-  ThemeExtension<MyoroResizeDividerThemeExtension> lerp(
+  MyoroResizeDividerThemeExtension lerp(
     covariant ThemeExtension<MyoroResizeDividerThemeExtension>? other,
     double t,
   ) {

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -20,6 +21,11 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
     required this.longValue,
   });
 
+  MyoroBasicDividerThemeExtension.fake()
+      : color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        shortValue = faker.randomGenerator.decimal(),
+        longValue = faker.randomGenerator.decimal();
+
   @override
   MyoroBasicDividerThemeExtension copyWith({
     Color? color,
@@ -34,7 +40,7 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
   }
 
   @override
-  ThemeExtension<MyoroBasicDividerThemeExtension> lerp(
+  MyoroBasicDividerThemeExtension lerp(
     covariant ThemeExtension<MyoroBasicDividerThemeExtension>? other,
     double t,
   ) {
