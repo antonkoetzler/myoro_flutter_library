@@ -6,6 +6,22 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// This singleton is automatically initialized within [MyoroMaterialApp] so you don't need to worry about that.
 final class MyoroTypographyTheme {
+  static const regularSmallName = 'Regular small';
+  static const regularMediumName = 'Regular medium';
+  static const regularLargeName = 'Regular large';
+  static const italicSmallName = 'Italic small';
+  static const italicMediumName = 'Italic medium';
+  static const italicLargeName = 'Italic large';
+  static const semiBoldSmallName = 'Semi-bold small';
+  static const semiBoldMediumName = 'Semi-bold medium';
+  static const semiBoldLargeName = 'Semi-bold large';
+  static const boldSmallName = 'Bold small';
+  static const boldMediumName = 'Bold medium';
+  static const boldLargeName = 'Bold large';
+  static const extraBoldSmallName = 'Extra bold small';
+  static const extraBoldMediumName = 'Extra bold medium';
+  static const extraBoldLargeName = 'Extra bold large';
+
   static final _instance = MyoroTypographyTheme();
   static TextTheme? _textTheme;
 
@@ -80,29 +96,29 @@ final class MyoroTypographyTheme {
   String getTextStyleName(TextStyle textStyle) {
     return switch (allTextStyles.indexOf(textStyle)) {
       // Regular.
-      0 => 'Regular small', // Small.
-      1 => 'Regular medium', // Medium.
-      2 => 'Regular large', // Large.
+      0 => regularSmallName,
+      1 => regularMediumName,
+      2 => regularLargeName,
 
       // Italic.
-      3 => 'Italic small', // Small.
-      4 => 'Italic medium',
-      5 => 'Italic large',
+      3 => italicSmallName,
+      4 => italicMediumName,
+      5 => italicLargeName,
 
       // Semi-bold.
-      6 => 'Semi-bold small',
-      7 => 'Semi-bold medium',
-      8 => 'Semi-bold large',
+      6 => semiBoldSmallName,
+      7 => semiBoldMediumName,
+      8 => semiBoldLargeName,
 
       // Bold.
-      9 => 'Bold small',
-      10 => 'Bold medium',
-      11 => 'Bold large',
+      9 => boldSmallName,
+      10 => boldMediumName,
+      11 => boldLargeName,
 
       // Extra bold.
-      12 => 'Extra bold small',
-      13 => 'Extra bold medium',
-      14 => 'Extra bold large',
+      12 => extraBoldSmallName,
+      13 => extraBoldMediumName,
+      14 => extraBoldLargeName,
 
       // Should never get here.
       _ => throw AssertionError('[MyoroTypographyTheme.getTextStyleName]: [textStyle] is not apart of [MyoroTypographyTheme.getAllTextStyles].'),
