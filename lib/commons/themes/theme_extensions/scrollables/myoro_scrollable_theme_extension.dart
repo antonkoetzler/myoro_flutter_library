@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -10,6 +11,8 @@ final class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollable
     required this.padding,
   });
 
+  MyoroScrollableThemeExtension.fake() : padding = EdgeInsets.all(faker.randomGenerator.decimal());
+
   @override
   MyoroScrollableThemeExtension copyWith({
     EdgeInsets? padding,
@@ -20,7 +23,7 @@ final class MyoroScrollableThemeExtension extends ThemeExtension<MyoroScrollable
   }
 
   @override
-  ThemeExtension<MyoroScrollableThemeExtension> lerp(
+  MyoroScrollableThemeExtension lerp(
     covariant ThemeExtension<MyoroScrollableThemeExtension>? other,
     double t,
   ) {

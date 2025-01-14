@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -21,6 +22,12 @@ final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExt
     required this.indicatorTextAlignment,
   });
 
+  MyoroSliderThemeExtension.fake()
+      : labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        sliderPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        indicatorTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        indicatorTextAlignment = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)];
+
   @override
   MyoroSliderThemeExtension copyWith({
     TextStyle? labelTextStyle,
@@ -37,7 +44,7 @@ final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExt
   }
 
   @override
-  ThemeExtension<MyoroSliderThemeExtension> lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
+  MyoroSliderThemeExtension lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
     if (other is! MyoroSliderThemeExtension) return this;
     return copyWith(
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),

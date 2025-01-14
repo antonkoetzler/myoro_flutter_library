@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -36,6 +37,15 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
     required this.duration,
   });
 
+  MyoroSnackBarContainerThemeExtension.fake()
+      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        behavior = SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)],
+        margin = EdgeInsets.all(faker.randomGenerator.decimal()),
+        padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        elevation = faker.randomGenerator.decimal(),
+        dismissDirection = DismissDirection.values[faker.randomGenerator.integer(DismissDirection.values.length)],
+        duration = Duration(milliseconds: faker.randomGenerator.integer(9999));
+
   @override
   MyoroSnackBarContainerThemeExtension copyWith({
     Color? primaryColor,
@@ -58,7 +68,7 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
   }
 
   @override
-  ThemeExtension<MyoroSnackBarContainerThemeExtension> lerp(
+  MyoroSnackBarContainerThemeExtension lerp(
     covariant ThemeExtension<MyoroSnackBarContainerThemeExtension>? other,
     double t,
   ) {

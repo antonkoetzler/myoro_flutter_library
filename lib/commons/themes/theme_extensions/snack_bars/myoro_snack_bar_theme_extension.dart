@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -56,6 +57,20 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
     required this.closeButtonIconSize,
   });
 
+  MyoroSnackBarThemeExtension.fake()
+      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        standardBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        attentionBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        successBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        errorBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        borderWidth = faker.randomGenerator.decimal(),
+        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        contentCloseButtonSpacing = faker.randomGenerator.decimal(),
+        messageTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        closeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        closeButtonIconSize = faker.randomGenerator.decimal();
+
   @override
   MyoroSnackBarThemeExtension copyWith({
     Color? primaryColor,
@@ -88,7 +103,7 @@ final class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThem
   }
 
   @override
-  ThemeExtension<MyoroSnackBarThemeExtension> lerp(
+  MyoroSnackBarThemeExtension lerp(
     covariant ThemeExtension<MyoroSnackBarThemeExtension>? other,
     double t,
   ) {

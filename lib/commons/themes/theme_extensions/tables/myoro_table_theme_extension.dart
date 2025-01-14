@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -72,6 +73,26 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     required this.rowsButtonConfiguration,
   });
 
+  MyoroTableThemeExtension.fake()
+      : decoration = BoxDecoration(
+          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        ),
+        titleRowHeight = faker.randomGenerator.decimal(),
+        titleRowCellMinWidth = faker.randomGenerator.decimal(),
+        contentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        columnSpacing = faker.randomGenerator.decimal(),
+        tableFooterSpacing = faker.randomGenerator.decimal(),
+        emptyMessageTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        errorMessageHeaderTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        errorMessageErrorTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        messageSpacing = faker.randomGenerator.decimal(),
+        buttonConfiguration = MyoroHoverButtonConfiguration.fake(),
+        footerSpacing = faker.randomGenerator.decimal(),
+        titleColumnSpacing = faker.randomGenerator.decimal(),
+        rowsCellSpacing = faker.randomGenerator.decimal(),
+        rowsButtonConfiguration = MyoroHoverButtonConfiguration.fake();
+
   @override
   MyoroTableThemeExtension copyWith({
     BoxDecoration? decoration,
@@ -112,7 +133,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
   }
 
   @override
-  ThemeExtension<MyoroTableThemeExtension> lerp(
+  MyoroTableThemeExtension lerp(
     covariant ThemeExtension<MyoroTableThemeExtension>? other,
     double t,
   ) {
@@ -129,7 +150,7 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       errorMessageHeaderTextStyle: TextStyle.lerp(errorMessageHeaderTextStyle, other.errorMessageHeaderTextStyle, t),
       errorMessageErrorTextStyle: TextStyle.lerp(errorMessageErrorTextStyle, other.errorMessageErrorTextStyle, t),
       messageSpacing: lerpDouble(messageSpacing, other.messageSpacing, t),
-      buttonConfiguration: myoroLerp(buttonConfiguration, other.buttonConfiguration, t),
+      buttonConfiguration: MyoroHoverButtonConfiguration.lerp(buttonConfiguration, other.buttonConfiguration, t),
       footerSpacing: lerpDouble(footerSpacing, other.footerSpacing, t),
       titleColumnSpacing: lerpDouble(titleColumnSpacing, other.titleColumnSpacing, t),
       rowsCellSpacing: lerpDouble(rowsCellSpacing, other.rowsCellSpacing, t),
