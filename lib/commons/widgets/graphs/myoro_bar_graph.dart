@@ -50,7 +50,7 @@ final class MyoroBarGraph extends StatelessWidget {
           ),
         )
         .toList()
-      ..sort((a, b) => sorted ? a.x : a.x.compareTo(b.x));
+      ..sort((a, b) => !sorted ? a.x : a.x.compareTo(b.x));
 
     final borderData = FlBorderData(border: themeExtension.border);
     const gridData = FlGridData(show: false);
