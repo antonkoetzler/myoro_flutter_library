@@ -35,8 +35,10 @@ final class MyoroCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (title != null) _Title(title!, titleTextStyle),
-        SizedBox(height: context.resolveThemeExtension<MyoroCardThemeExtension>().titleCardSpacing),
+        if (title != null) ...[
+          _Title(title!, titleTextStyle),
+          SizedBox(height: context.resolveThemeExtension<MyoroCardThemeExtension>().titleCardSpacing),
+        ],
         Flexible(child: _Card(padding, width, height, child)),
       ],
     );

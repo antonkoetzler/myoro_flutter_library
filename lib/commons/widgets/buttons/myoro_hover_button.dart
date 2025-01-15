@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
-typedef MyoroHoverButtonBuilder = Widget Function(bool hovered, Color primaryColor, Color onPrimaryColor);
+typedef MyoroHoverButtonBuilder = Widget Function(
+  bool hovered,
+  Color primaryColor,
+  Color onPrimaryColor,
+);
 
 /// Hover button of the design system.
 ///

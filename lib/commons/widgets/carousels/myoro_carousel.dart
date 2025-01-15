@@ -36,7 +36,7 @@ final class MyoroCarousel extends StatefulWidget {
   State<MyoroCarousel> createState() => _MyoroCarouselState();
 }
 
-class _MyoroCarouselState extends State<MyoroCarousel> {
+final class _MyoroCarouselState extends State<MyoroCarousel> {
   Axis get _direction => widget.direction;
   bool get _displayTraversalButtons => widget.displayTraversalButtons;
   int get _initialItem => widget.initialItem;

@@ -19,7 +19,7 @@ void main() {
   );
 
   blocTest(
-    '[MyoroResolverBloc.ExecuteRequestEventy]: Emits error state when a generic [Exception] is encountered.',
+    '[MyoroResolverBloc.ExecuteRequestEvent]: Emits error state when a generic [Exception] is encountered.',
     build: () => MyoroResolverBloc<dynamic>(() => throw Exception(validationErrorMessage)),
     act: (MyoroResolverBloc bloc) => bloc.add(const ExecuteRequestEvent()),
     expect: () => const [
