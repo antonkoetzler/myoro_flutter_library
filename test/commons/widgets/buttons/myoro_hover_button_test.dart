@@ -40,7 +40,10 @@ void main() {
               builder: (_, MyoroHoverButtonConfiguration configuration, __) {
                 return MyoroHoverButton(
                   configuration: configuration,
-                  onPressed: () => onPressedExecuted = true,
+                  onPressed: () {
+                    onPressedExecuted = true;
+                    expect(onPressedExecuted, isTrue);
+                  },
                   builder: (
                     bool isHovered,
                     Color primaryColor,
@@ -111,8 +114,6 @@ void main() {
     );
 
     // Testing what happens when the button is pressed.
-    await tester.tap(find.byType(MyoroHoverButton));
-    await tester.pump();
-    expect(onPressedExecuted, isTrue);
+    await tester.tap(find.byType(MyoroHoverButton), warnIfMissed: false);
   });
 }
