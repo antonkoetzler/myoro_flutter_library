@@ -49,6 +49,16 @@ final class MyoroMenuItem extends Equatable {
           'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
         );
 
+  MyoroMenuItem.fake()
+      : isHovered = faker.randomGenerator.boolean(),
+        onPressed = null,
+        icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        iconSize = null,
+        text = faker.lorem.word(),
+        textStyle = null,
+        textAlign = null,
+        itemBuilder = null;
+
   MyoroMenuItem copyWith({
     bool? isHovered,
     VoidCallback? onPressed,
@@ -70,16 +80,6 @@ final class MyoroMenuItem extends Equatable {
       itemBuilder: itemBuilder ?? this.itemBuilder,
     );
   }
-
-  MyoroMenuItem.fake()
-      : isHovered = faker.randomGenerator.boolean(),
-        onPressed = null,
-        icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        iconSize = null,
-        text = faker.randomGenerator.string(50),
-        textStyle = null,
-        textAlign = null,
-        itemBuilder = null;
 
   @override
   String toString() => ''

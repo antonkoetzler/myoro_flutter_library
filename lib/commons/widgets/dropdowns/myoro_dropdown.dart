@@ -226,7 +226,6 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
       builder: (_) {
         return Positioned(
           width: inputSize.width,
-          // top: menuYStartBottomPosition,
           top: positionMenuAboveInput ? menuYStartUpperPosition : menuYStartBottomPosition,
           left: inputPosition.dx,
           child: Material(
