@@ -148,13 +148,15 @@ final class _FooterButtons extends StatelessWidget {
 
     return Align(
       alignment: Alignment.bottomRight,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IntrinsicWidth(child: !_invertButtons ? confirmButton : cancelButton),
-          SizedBox(width: context.resolveThemeExtension<MyoroDialogModalThemeExtension>().footerButtonsSpacing),
-          IntrinsicWidth(child: !_invertButtons ? cancelButton : confirmButton),
-        ],
+      child: IntrinsicWidth(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(child: !_invertButtons ? confirmButton : cancelButton),
+            SizedBox(width: context.resolveThemeExtension<MyoroDialogModalThemeExtension>().footerButtonsSpacing),
+            Flexible(child: !_invertButtons ? cancelButton : confirmButton),
+          ],
+        ),
       ),
     );
   }

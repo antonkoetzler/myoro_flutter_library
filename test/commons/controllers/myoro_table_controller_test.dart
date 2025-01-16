@@ -14,7 +14,7 @@ void main() {
 
   final columnQuantity = faker.randomGenerator.integer(10);
   final rows = List.generate(
-    faker.randomGenerator.integer(100, min: 1),
+    faker.randomGenerator.integer(100, min: 10),
     (_) => MyoroTableRow.fake(columnQuantity: columnQuantity),
   ).toSet();
 
