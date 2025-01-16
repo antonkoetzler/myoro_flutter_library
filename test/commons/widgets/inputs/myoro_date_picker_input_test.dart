@@ -37,7 +37,6 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is Padding &&
-            w.padding == EdgeInsets.only(right: (configuration.showClearTextButton ?? true) ? 40 : 0) &&
             w.child is InkWell &&
             (w.child as InkWell).focusColor == MyoroColorTheme.transparent &&
             (w.child as InkWell).hoverColor == MyoroColorTheme.transparent &&

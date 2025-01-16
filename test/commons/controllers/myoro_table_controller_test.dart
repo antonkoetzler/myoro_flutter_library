@@ -91,7 +91,7 @@ void main() {
   });
 
   test('MyoroTableController.isRowSelected', () {
-    controller.selectRows(rows.toList());
+    controller.selectRows([rows.first]);
     expect(controller.isRowSelected(rows.first), isTrue);
     expect(
       controller.isRowSelected(const MyoroTableRow(cells: [])),
