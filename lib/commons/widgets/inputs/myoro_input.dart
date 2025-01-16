@@ -92,11 +92,6 @@ final class _MyoroInputState extends State<MyoroInput> {
   /// [_ClearTextButton] in [TextFormField.decoration.suffix].
   late final ValueNotifier<bool> _showClearTextButtonNotifier;
 
-  Widget? get _label {
-    if (_configuration.label == null) return null;
-    return _Label(_configuration);
-  }
-
   void _listener() => _showClearTextButtonNotifier.value = _showClearTextButton;
 
   @override
@@ -131,8 +126,6 @@ final class _MyoroInputState extends State<MyoroInput> {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final border = _configuration.inputStyle.getBorder(context);
-    final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
     return Row(
       children: [
@@ -148,79 +141,12 @@ final class _MyoroInputState extends State<MyoroInput> {
           SizedBox(width: themeExtension.spacing),
         ],
         Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              color: themeExtension.primaryColor,
-              borderRadius: themeExtension.borderRadius,
-            ),
-            child: ValueListenableBuilder(
-              valueListenable: _showClearTextButtonNotifier,
-              builder: (_, bool showClearTextButton, __) {
-                return TextFormField(
-                  // So the checkbox prefix may be clicked
-                  ignorePointers: false,
-                  enabled: _enabled,
-                  readOnly: _configuration.readOnly ?? false,
-                  style: textStyle.withColor(
-                    textStyle.color!.withValues(
-                      alpha: _enabled ? 1 : themeExtension.disabledOpacity,
-                    ),
-                  ),
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: themeExtension.labelBehavior,
-                    label: _label,
-                    hintText: _configuration.placeholder,
-                    hintStyle: textStyle.withColor(
-                      textStyle.color!.withValues(
-                        alpha: themeExtension.disabledOpacity,
-                      ),
-                    ),
-                    enabledBorder: border,
-                    focusedBorder: border,
-                    errorBorder: border.copyWith(
-                      borderSide: border.borderSide.copyWith(
-                        color: themeExtension.errorBorderColor,
-                      ),
-                    ),
-                    disabledBorder: border.copyWith(
-                      borderSide: border.borderSide.copyWith(
-                        color: border.borderSide.color.withValues(
-                          alpha: themeExtension.disabledOpacity,
-                        ),
-                      ),
-                    ),
-                    isDense: themeExtension.isDense,
-                    suffixIcon: showClearTextButton
-                        ? _ClearTextButton(
-                            () {
-                              if (_formatter == null) {
-                                _controller.clear();
-                              } else {
-                                if (_formatter is MyoroNumberInputFormatter) {
-                                  _controller.text = (_formatter as MyoroNumberInputFormatter).min.toString();
-                                } else if (_formatter is MyoroDateInputFormatter) {
-                                  _controller.text = '00/00/0000';
-                                } else if (_formatter is MyoroTimeInputFormatter) {
-                                  _controller.text = (_formatter as MyoroTimeInputFormatter).formatType.emptyValue;
-                                }
-                              }
-                              _configuration.onChanged?.call(_controller.text);
-                              _configuration.onCleared?.call();
-                            },
-                          )
-                        : null,
-                  ),
-                  textAlign: _configuration.textAlign ?? TextAlign.start,
-                  cursorHeight: themeExtension.cursorHeight,
-                  validator: (_) => _configuration.validation?.call(_controller.text),
-                  inputFormatters: _formatter != null ? [_formatter!] : null,
-                  onFieldSubmitted: _configuration.onFieldSubmitted,
-                  onChanged: _configuration.onChanged,
-                  focusNode: _configuration.focusNode,
-                  controller: _controller,
-                );
-              },
-            ),
+          child: _TextFormField(
+            _configuration,
+            _formatter,
+            _enabled,
+            _showClearTextButtonNotifier,
+            _controller,
           ),
         ),
         if (_configuration.suffix != null) ...[
@@ -248,6 +174,104 @@ final class _Checkbox extends StatelessWidget {
     return MyoroCheckbox(
       initialValue: enabled,
       onChanged: onChanged,
+    );
+  }
+}
+
+final class _TextFormField extends StatelessWidget {
+  final MyoroInputConfiguration _configuration;
+  final TextInputFormatter? _formatter;
+  final bool _enabled;
+  final ValueNotifier<bool> _showClearTextButtonNotifier;
+  final TextEditingController _controller;
+
+  const _TextFormField(
+    this._configuration,
+    this._formatter,
+    this._enabled,
+    this._showClearTextButtonNotifier,
+    this._controller,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final border = _configuration.inputStyle.getBorder(context);
+    final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: themeExtension.primaryColor,
+        borderRadius: themeExtension.borderRadius,
+      ),
+      child: ValueListenableBuilder(
+        valueListenable: _showClearTextButtonNotifier,
+        builder: (_, bool showClearTextButton, __) {
+          return TextFormField(
+            // So the checkbox prefix may be clicked
+            ignorePointers: false,
+            enabled: _enabled,
+            readOnly: _configuration.readOnly ?? false,
+            style: textStyle.withColor(
+              textStyle.color!.withValues(
+                alpha: _enabled ? 1 : themeExtension.disabledOpacity,
+              ),
+            ),
+            decoration: InputDecoration(
+              floatingLabelBehavior: themeExtension.labelBehavior,
+              label: _configuration.label != null ? _Label(_configuration) : null,
+              hintText: _configuration.placeholder,
+              hintStyle: textStyle.withColor(
+                textStyle.color!.withValues(
+                  alpha: themeExtension.disabledOpacity,
+                ),
+              ),
+              enabledBorder: border,
+              focusedBorder: border,
+              errorBorder: border.copyWith(
+                borderSide: border.borderSide.copyWith(
+                  color: themeExtension.errorBorderColor,
+                ),
+              ),
+              disabledBorder: border.copyWith(
+                borderSide: border.borderSide.copyWith(
+                  color: border.borderSide.color.withValues(
+                    alpha: themeExtension.disabledOpacity,
+                  ),
+                ),
+              ),
+              isDense: themeExtension.isDense,
+              suffixIcon: showClearTextButton
+                  ? _ClearTextButton(
+                      () {
+                        if (_formatter == null) {
+                          _controller.clear();
+                        } else {
+                          if (_formatter is MyoroNumberInputFormatter) {
+                            _controller.text = (_formatter as MyoroNumberInputFormatter).min.toString();
+                          } else if (_formatter is MyoroDateInputFormatter) {
+                            _controller.text = '00/00/0000';
+                          } else if (_formatter is MyoroTimeInputFormatter) {
+                            _controller.text = (_formatter as MyoroTimeInputFormatter).formatType.emptyValue;
+                          }
+                        }
+                        _configuration.onChanged?.call(_controller.text);
+                        _configuration.onCleared?.call();
+                      },
+                    )
+                  : null,
+            ),
+            textAlign: _configuration.textAlign ?? TextAlign.start,
+            cursorHeight: themeExtension.cursorHeight,
+            validator: (_) => _configuration.validation?.call(_controller.text),
+            inputFormatters: _formatter != null ? [_formatter!] : null,
+            onFieldSubmitted: _configuration.onFieldSubmitted,
+            onChanged: _configuration.onChanged,
+            focusNode: _configuration.focusNode,
+            controller: _controller,
+          );
+        },
+      ),
     );
   }
 }
