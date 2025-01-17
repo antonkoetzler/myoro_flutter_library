@@ -62,7 +62,41 @@ void main() {
                 ) &&
             ((w.child as Material).child as Container).child is Column &&
             (((w.child as Material).child as Container).child as Column).mainAxisSize == MainAxisSize.min &&
-            (((w.child as Material).child as Container).child as Column).children.length == 
+            (((w.child as Material).child as Container).child as Column).children.length == 3 &&
+            // (((w.child as Material).child as Container).child as Column).children.first is _Header &&
+            (((w.child as Material).child as Container).child as Column).children[1] is SizedBox &&
+            ((((w.child as Material).child as Container).child as Column).children[1] as SizedBox).height == themeExtension.spacing &&
+            (((w.child as Material).child as Container).child as Column).children.last is Flexible &&
+            ((((w.child as Material).child as Container).child as Column).children.last as Flexible).child is SizedBox, // [MyoroModal.child]
+      ),
+      findsOneWidget,
+    );
+
+    // [_Header].
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) => w is Row && w.mainAxisAlignment == MainAxisAlignment.spaceBetween && w.children.length == 2,
+      ),
+      findsOneWidget,
+    );
+
+    // [_Title].
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is Padding &&
+            w.padding == const EdgeInsets.only(left: 8) &&
+            w.child is Text &&
+            (w.child as Text).data == configuration.title &&
+            (w.child as Text).style == themeExtension.titleTextStyle,
+      ),
+      findsOneWidget,
+    );
+
+    // [_CloseButton].
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) => w is MyoroIconTextHoverButton && w.icon == themeExtension.closeButtonIcon && w.onPressed != null,
       ),
       findsOneWidget,
     );

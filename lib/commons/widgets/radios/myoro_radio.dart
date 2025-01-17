@@ -11,9 +11,9 @@ final class MyoroRadio extends StatefulWidget {
 
   /// Value of the radio.
   ///
-  /// Typically used as the initial value, but this member may
-  /// also be used to change the value of the radio externally
-  /// in the [Widget] state of the parent using [MyoroRadio].
+  /// Typically used as the initial value, but this member may also
+  /// be used to change the value of the radio externally in the
+  /// [Widget] state of the parent using [MyoroRadio] via rebuild.
   final bool? initialValue;
 
   /// Label to the right of the radio.
