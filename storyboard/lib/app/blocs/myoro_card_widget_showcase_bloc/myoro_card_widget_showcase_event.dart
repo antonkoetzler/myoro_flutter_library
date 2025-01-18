@@ -14,7 +14,7 @@ final class SetTitleEvent extends MyoroCardWidgetShowcaseEvent {
 final class SetTitleTextStyleEvent extends MyoroCardWidgetShowcaseEvent {
   final TextStyle? textStyle;
 
-  const SetTitleTextStyleEvent(this.textStyle);
+  const SetTitleTextStyleEvent([this.textStyle]);
 }
 
 final class SetPaddingEvent extends MyoroCardWidgetShowcaseEvent {

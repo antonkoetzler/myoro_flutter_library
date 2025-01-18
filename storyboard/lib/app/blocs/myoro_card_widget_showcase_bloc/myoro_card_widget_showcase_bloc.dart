@@ -32,6 +32,7 @@ final class MyoroCardWidgetShowcaseBloc extends Bloc<MyoroCardWidgetShowcaseEven
     emit(
       state.copyWith(
         titleTextStyle: event.textStyle,
+        titleTextStyleEnabled: event.textStyle != null,
       ),
     );
   }

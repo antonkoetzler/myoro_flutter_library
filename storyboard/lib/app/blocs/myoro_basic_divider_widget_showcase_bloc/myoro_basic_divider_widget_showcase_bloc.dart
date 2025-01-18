@@ -43,7 +43,9 @@ final class MyoroBasicDividerWidgetShowcaseBloc extends Bloc<MyoroBasicDividerWi
     emit(
       state.copyWith(
         verticalPadding: event.direction.isVertical ? event.value : null,
+        verticalPaddingEnabled: event.direction.isVertical,
         horizontalPadding: event.direction.isHorizontal ? event.value : null,
+        horizontalPaddingEnabled: event.direction.isHorizontal,
       ),
     );
   }

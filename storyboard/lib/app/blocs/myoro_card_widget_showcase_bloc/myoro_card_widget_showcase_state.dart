@@ -27,13 +27,14 @@ final class MyoroCardWidgetShowcaseState extends Equatable {
   MyoroCardWidgetShowcaseState copyWith({
     String? title,
     TextStyle? titleTextStyle,
+    bool titleTextStyleEnabled = true,
     double? padding,
     MyoroCardWidgetShowcaseBlocDimension? width,
     MyoroCardWidgetShowcaseBlocDimension? height,
   }) {
     return MyoroCardWidgetShowcaseState(
       title: title ?? this.title,
-      titleTextStyle: titleTextStyle ?? this.titleTextStyle,
+      titleTextStyle: titleTextStyleEnabled ? (titleTextStyle ?? this.titleTextStyle) : null,
       padding: padding ?? this.padding,
       width: width ?? this.width,
       height: height ?? this.height,

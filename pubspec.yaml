@@ -25,13 +25,13 @@ dependencies:
   fl_chart: ^0.69.2
   shared_preferences: ^2.3.3
   intl: ^0.20.1
-  bloc_test: ^9.1.7
-  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.4
 
 flutter:
   uses-material-design: true
