@@ -108,12 +108,33 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                   children: [
                     Row(
                       children: [
-                        if (_currentValueIndicatorTextBuilder != null) _IndicatorText(_currentValueIndicatorTextBuilder!.call(sliderValue)),
-                        Expanded(child: Slider(value: sliderValue, min: _minValue, max: _maxValue, onChanged: _onChanged)),
-                        if (_maxValueIndicatorTextBuilder != null) _IndicatorText(_maxValueIndicatorTextBuilder!.call(_maxValue)),
+                        if (_currentValueIndicatorTextBuilder != null)
+                          _IndicatorText(
+                            _currentValueIndicatorTextBuilder!.call(
+                              sliderValue,
+                            ),
+                          ),
+                        Expanded(
+                          child: Slider(
+                            value: sliderValue,
+                            min: _minValue,
+                            max: _maxValue,
+                            onChanged: _onChanged,
+                          ),
+                        ),
+                        if (_maxValueIndicatorTextBuilder != null)
+                          _IndicatorText(
+                            _maxValueIndicatorTextBuilder!.call(
+                              _maxValue,
+                            ),
+                          ),
                       ],
                     ),
-                    if (_footerIndicatorTextBuilder != null) _IndicatorText(_footerIndicatorTextBuilder!.call(sliderValue), isFooter: true),
+                    if (_footerIndicatorTextBuilder != null)
+                      _IndicatorText(
+                        _footerIndicatorTextBuilder!.call(sliderValue),
+                        isFooter: true,
+                      ),
                   ],
                 );
               },

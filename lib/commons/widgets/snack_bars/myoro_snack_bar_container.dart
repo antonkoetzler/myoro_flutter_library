@@ -7,11 +7,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// NOTE: No widget showcase in the storyboard for [MyoroSnackBarContainer]
 /// as it is used in [MyoroSnackBar]'s widget showcase.
 final class MyoroSnackBarContainer extends SnackBar {
-  MyoroSnackBarContainer(
-    // Context to grab [MyoroSnackBarContainerThemeExtension].
-    MyoroSnackBarContainerThemeExtension themeExtension, {
-    // Key for testing purposes.
+  MyoroSnackBarContainer({
+    // Key for whatever purpose.
     Key? key,
+
+    // Theme extension that needs to be passed via caller's [BuildContext].
+    required MyoroSnackBarContainerThemeExtension themeExtension,
 
     // Duration that the snack bar will be shown for.
     Duration? duration,
