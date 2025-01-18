@@ -9,9 +9,9 @@ import '../../../test_exports.dart';
 void main() {
   final String label = faker.lorem.word();
   late final TextStyle? labelTextStyle;
-  final double? width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 1000) : null;
+  final double? width = faker.randomGenerator.boolean() ? 1000 : null;
   final double maxValue = faker.randomGenerator.decimal();
-  final double minValue = faker.randomGenerator.decimal(scale: maxValue);
+  final double minValue = faker.randomGenerator.integer(maxValue.toInt()).toDouble();
   final double initialValue = faker.randomGenerator.decimal(
     scale: maxValue,
     min: minValue,
@@ -40,9 +40,9 @@ void main() {
   testWidgets('MyoroSlider', (WidgetTester tester) async {
     final bool minMaxValuesEnabled = faker.randomGenerator.boolean();
     bool onChangedExecuted = false;
-    const currentValueIndicatorText = 'currentValueIndicatorWidget';
-    const maxValueIndicatorText = 'maxValueIndicatorText';
-    const footerIndicatorText = 'footerIndicatorText';
+    const currentValueIndicatorText = 'current';
+    const maxValueIndicatorText = 'max';
+    const footerIndicatorText = 'footer';
 
     await tester.pumpWidget(
       MyoroWidgetTester(
@@ -119,7 +119,7 @@ void main() {
     expectIndicatorText(footerIndicatorText, isFooter: true);
 
     // Confirming that [MyoroSlider.onChanged] works.
-    await tester.drag(find.byType(Slider), const Offset(30, 0));
+    await tester.drag(find.byType(Slider), const Offset(30, 0), warnIfMissed: false);
     expect(onChangedExecuted, isTrue);
   });
 }

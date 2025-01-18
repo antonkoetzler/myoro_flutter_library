@@ -8,10 +8,7 @@ final class MyoroGroupRadioNotifier extends ValueNotifier<MyoroGroupRadioItems> 
   /// 2. Only one of the radios may be true.
   static bool radiosAreValid(MyoroGroupRadioItems radios) {
     int counter = 0;
-    radios.forEach((String key, bool value) {
-      counter += value ? 1 : 0;
-      if (counter == 2) return;
-    });
+    radios.forEach((_, bool value) => counter += value ? 1 : 0);
     return counter == 1;
   }
 

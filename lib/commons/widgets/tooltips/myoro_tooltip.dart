@@ -6,6 +6,9 @@ final class MyoroTooltip extends StatelessWidget {
   /// Margin [EdgeInsets] of the tooltip.
   final EdgeInsets? margin;
 
+  /// [Duration] before the tooltip message is shown.
+  final Duration? waitDuration;
+
   /// Text of the tooltip.
   final String text;
 
@@ -15,6 +18,7 @@ final class MyoroTooltip extends StatelessWidget {
   const MyoroTooltip({
     super.key,
     this.text = '',
+    this.waitDuration,
     this.margin,
     required this.child,
   });
@@ -23,7 +27,7 @@ final class MyoroTooltip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: text,
-      waitDuration: context.resolveThemeExtension<MyoroTooltipThemeExtension>().waitDuration,
+      waitDuration: waitDuration ?? context.resolveThemeExtension<MyoroTooltipThemeExtension>().waitDuration,
       margin: margin,
       child: child,
     );

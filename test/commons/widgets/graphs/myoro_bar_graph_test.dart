@@ -10,7 +10,7 @@ import '../../../test_exports.dart';
 void main() {
   final bool sorted = faker.randomGenerator.boolean();
   final List<MyoroBarGraphGroup> items = List.generate(
-    faker.randomGenerator.integer(100),
+    faker.randomGenerator.integer(100, min: 1),
     (_) => MyoroBarGraphGroup.fake(),
   );
 
