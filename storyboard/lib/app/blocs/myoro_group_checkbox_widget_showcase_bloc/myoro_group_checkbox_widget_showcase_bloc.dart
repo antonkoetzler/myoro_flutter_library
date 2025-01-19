@@ -12,12 +12,13 @@ typedef _Emitter = Emitter<MyoroGroupCheckboxWidgetShowcaseState>;
 
 /// BloC to manage all the state in [MyoroGroupCheckboxWidgetShowcase].
 final class MyoroGroupCheckboxWidgetShowcaseBloc extends Bloc<MyoroGroupCheckboxWidgetShowcaseEvent, MyoroGroupCheckboxWidgetShowcaseState> {
-  MyoroGroupCheckboxWidgetShowcaseBloc()
+  MyoroGroupCheckboxWidgetShowcaseBloc({MyoroGroupCheckboxItems? checkboxes})
       : super(
           MyoroGroupCheckboxWidgetShowcaseState(
-            checkboxes: {
-              for (int i = 0; i < 5; i++) faker.person.name(): faker.randomGenerator.boolean(),
-            },
+            checkboxes: checkboxes ??
+                {
+                  for (int i = 0; i < 5; i++) faker.person.name(): faker.randomGenerator.boolean(),
+                },
           ),
         ) {
     on<SetDirectionEvent>(_setDirectionEvent);

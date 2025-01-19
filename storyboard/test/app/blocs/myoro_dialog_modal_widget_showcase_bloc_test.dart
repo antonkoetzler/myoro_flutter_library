@@ -70,7 +70,7 @@ void main() {
     act: (bloc) => bloc.add(SetChildEvent(childEnabled)),
     expect: () => [
       MyoroDialogModalWidgetShowcaseState(
-        text: childEnabled ? null : '',
+        text: childEnabled ? null : 'Message regarding the action goes here.',
         textEnabled: !childEnabled,
         childEnabled: childEnabled,
       ),

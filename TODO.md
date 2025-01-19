@@ -2,6 +2,7 @@
 
 ## Current
 
+1. (**IN PROGRESS**) Storyboard tests;
 1. GitHub testing/coverage action;
 1. `README.md` documentation;
 
