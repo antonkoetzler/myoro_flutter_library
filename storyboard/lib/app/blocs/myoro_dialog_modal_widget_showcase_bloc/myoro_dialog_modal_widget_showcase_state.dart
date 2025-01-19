@@ -8,11 +8,9 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
 
   /// [MyoroDialogModal._confirmButtonText].
   final String? confirmButtonText;
-  final bool confirmButtonTextEnabled;
 
   /// [MyoroDialogModal._cancelButtonText].
   final String? cancelButtonText;
-  final bool cancelButtonTextEnabled;
 
   /// [MyoroDialogModal._text].
   final String? text;
@@ -20,7 +18,6 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
 
   /// [MyoroDialogModal._textStyle].
   final TextStyle? textStyle;
-  final bool textStyleEnabled;
 
   /// [MyoroDialogModal._child].
   final bool childEnabled;
@@ -28,13 +25,10 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
   const MyoroDialogModalWidgetShowcaseState({
     this.invertButtons = false,
     this.confirmButtonText,
-    this.confirmButtonTextEnabled = false,
     this.cancelButtonText,
-    this.cancelButtonTextEnabled = false,
     this.text = _defaultText,
     this.textEnabled = true,
     this.textStyle,
-    this.textStyleEnabled = false,
     this.childEnabled = false,
   }) : assert(
           (text != null) ^ childEnabled,
@@ -44,19 +38,16 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
   MyoroDialogModalWidgetShowcaseState copyWith({
     bool? invertButtons,
     String? confirmButtonText,
-    bool? confirmButtonTextEnabled,
+    bool confirmButtonTextEnabled = true,
     String? cancelButtonText,
-    bool? cancelButtonTextEnabled,
+    bool cancelButtonTextEnabled = true,
     String? text,
     bool? textEnabled,
     TextStyle? textStyle,
-    bool? textStyleEnabled,
+    bool textStyleEnabled = true,
     bool? childEnabled,
   }) {
-    confirmButtonTextEnabled = confirmButtonTextEnabled ?? this.confirmButtonTextEnabled;
-    cancelButtonTextEnabled = cancelButtonTextEnabled ?? this.cancelButtonTextEnabled;
     textEnabled = textEnabled ?? this.textEnabled;
-    textStyleEnabled = textStyleEnabled ?? this.textStyleEnabled;
     childEnabled = childEnabled ?? this.childEnabled;
 
     // [MyoroDialogModal.text] (x)or [MyoroDialogModal.child] are not provided.
@@ -81,13 +72,10 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
     return MyoroDialogModalWidgetShowcaseState(
       invertButtons: invertButtons ?? this.invertButtons,
       confirmButtonText: confirmButtonTextEnabled ? (confirmButtonText ?? this.confirmButtonText) : null,
-      confirmButtonTextEnabled: confirmButtonTextEnabled,
       cancelButtonText: cancelButtonTextEnabled ? (cancelButtonText ?? this.cancelButtonText) : null,
-      cancelButtonTextEnabled: cancelButtonTextEnabled,
       text: textEnabled ? (text ?? this.text) : null,
       textEnabled: textEnabled,
       textStyle: textStyleEnabled && !childEnabled ? (textStyle ?? this.textStyle) : null,
-      textStyleEnabled: textStyleEnabled && !childEnabled,
       childEnabled: childEnabled,
     );
   }
@@ -97,13 +85,10 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
       'MyoroDialogModalWidgetShowcaseState(\n'
       '  invertButtons: $invertButtons,\n'
       '  confirmButtonText: $confirmButtonText,\n'
-      '  confirmButtonTextEnabled: $confirmButtonTextEnabled,\n'
       '  cancelButtonText: $cancelButtonText,\n'
-      '  cancelButtonTextEnabled: $cancelButtonTextEnabled,\n'
       '  text: $text,\n'
       '  textEnabled: $textEnabled,\n'
       '  textStyle: $textStyle,\n'
-      '  textStyleEnabled: $textStyleEnabled,\n'
       '  childEnabled: $childEnabled,\n'
       ');';
 
@@ -112,13 +97,10 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
     return [
       invertButtons,
       confirmButtonText,
-      confirmButtonTextEnabled,
       cancelButtonText,
-      cancelButtonTextEnabled,
       text,
       textEnabled,
       textStyle,
-      textStyleEnabled,
       childEnabled,
     ];
   }

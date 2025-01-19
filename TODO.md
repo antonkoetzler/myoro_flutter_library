@@ -4,10 +4,7 @@
 
 1. (**IN PROGRESS**) Storyboard tests;
 1. GitHub testing/coverage action;
-1. Documentation HTML;
-1. Contributing documentation;
-1. `README.md`
-1. Create a logo.
+1. `README.md` documentation;
 
 ## Future
 
