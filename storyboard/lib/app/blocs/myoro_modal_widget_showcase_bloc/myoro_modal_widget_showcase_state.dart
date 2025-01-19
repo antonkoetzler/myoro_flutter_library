@@ -6,23 +6,18 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
 
   /// [MyoroModalConfiguration.constraints.minWidth].
   final double? minWidth;
-  final bool minWidthEnabled;
 
   /// [MyoroModalConfiguration.constraints.maxWidth].
   final double? maxWidth;
-  final bool maxWidthEnabled;
 
   /// [MyoroModalConfiguration.constraints.minHeight].
   final double? minHeight;
-  final bool minHeightEnabled;
 
   /// [MyoroModalConfiguration.constraints.maxHeight].
   final double? maxHeight;
-  final bool maxHeightEnabled;
 
   /// [MyoroModalConfiguration.title].
   final String? title;
-  final bool titleEnabled;
 
   /// [MyoroModalConfiguration.showCloseButton].
   final bool showCloseButton;
@@ -30,50 +25,34 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
   const MyoroModalWidgetShowcaseState({
     this.barrierDismissable = true,
     this.minWidth,
-    this.minWidthEnabled = false,
     this.maxWidth,
-    this.maxWidthEnabled = false,
     this.minHeight,
-    this.minHeightEnabled = false,
     this.maxHeight,
-    this.maxHeightEnabled = false,
     this.title,
-    this.titleEnabled = false,
     this.showCloseButton = false,
   });
 
   MyoroModalWidgetShowcaseState copyWith({
     bool? barrierDismissable,
     double? minWidth,
-    bool? minWidthEnabled,
+    bool minWidthEnabled = true,
     double? maxWidth,
-    bool? maxWidthEnabled,
+    bool maxWidthEnabled = true,
     double? minHeight,
-    bool? minHeightEnabled,
+    bool minHeightEnabled = true,
     double? maxHeight,
-    bool? maxHeightEnabled,
+    bool maxHeightEnabled = true,
     String? title,
-    bool? titleEnabled,
+    bool titleEnabled = true,
     bool? showCloseButton,
   }) {
-    minWidthEnabled = minWidthEnabled ?? this.minWidthEnabled;
-    maxWidthEnabled = maxWidthEnabled ?? this.maxWidthEnabled;
-    minHeightEnabled = minHeightEnabled ?? this.minHeightEnabled;
-    maxHeightEnabled = maxHeightEnabled ?? this.maxHeightEnabled;
-    titleEnabled = titleEnabled ?? this.titleEnabled;
-
     return MyoroModalWidgetShowcaseState(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
       minWidth: minWidthEnabled ? (minWidth ?? this.minWidth) : null,
-      minWidthEnabled: minWidthEnabled,
       maxWidth: maxWidthEnabled ? (maxWidth ?? this.maxWidth) : null,
-      maxWidthEnabled: maxWidthEnabled,
       minHeight: minHeightEnabled ? (minHeight ?? this.minHeight) : null,
-      minHeightEnabled: minHeightEnabled,
       maxHeight: maxHeightEnabled ? (maxHeight ?? this.maxHeight) : null,
-      maxHeightEnabled: maxHeightEnabled,
       title: titleEnabled ? (title ?? this.title) : null,
-      titleEnabled: titleEnabled,
       showCloseButton: showCloseButton ?? this.showCloseButton,
     );
   }
@@ -83,15 +62,10 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
       'MyoroModalWidgetShowcaseState(\n'
       '  barrierDismissable: $barrierDismissable,\n'
       '  minWidth: $minWidth,\n'
-      '  minWidthEnabled: $minWidthEnabled,\n'
       '  maxWidth: $maxWidth,\n'
-      '  maxWidthEnabled: $maxWidthEnabled,\n'
       '  minHeight: $minHeight,\n'
-      '  minHeightEnabled: $maxHeightEnabled,\n'
       '  maxHeight: $maxHeight,\n'
-      '  maxHeightEnabled: $maxHeightEnabled,\n'
       '  title: $title,\n'
-      '  titleEnabled: $titleEnabled,\n'
       '  showCloseButton: $showCloseButton,\n'
       ');';
 
@@ -100,15 +74,10 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
     return [
       barrierDismissable,
       minWidth,
-      minWidthEnabled,
       maxWidth,
-      maxWidthEnabled,
       minHeight,
-      minHeightEnabled,
       maxHeight,
-      maxHeightEnabled,
       title,
-      titleEnabled,
       showCloseButton,
     ];
   }
