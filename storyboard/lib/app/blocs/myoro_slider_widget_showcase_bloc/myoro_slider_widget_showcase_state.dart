@@ -6,7 +6,6 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
 
   /// [MyoroSlider.labelTextStyle].
   final TextStyle? labelTextStyle;
-  final bool labelTextStyleEnabled;
 
   /// [MyoroSlider.width].
   final double width;
@@ -23,7 +22,6 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
   const MyoroSliderWidgetShowcaseState({
     this.label = '',
     this.labelTextStyle,
-    this.labelTextStyleEnabled = false,
     required this.width,
     this.currentValueIndicatorTextBuilderEnabled = false,
     this.maxValueIndicatorTextBuilderEnabled = false,
@@ -33,18 +31,15 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
   MyoroSliderWidgetShowcaseState copyWith({
     String? label,
     TextStyle? labelTextStyle,
-    bool? labelTextStyleEnabled,
+    bool labelTextStyleEnabled = true,
     double? width,
     bool? currentValueIndicatorTextBuilderEnabled,
     bool? maxValueIndicatorTextBuilderEnabled,
     bool? footerIndicatorTextBuilderEnabled,
   }) {
-    labelTextStyleEnabled = labelTextStyleEnabled ?? this.labelTextStyleEnabled;
-
     return MyoroSliderWidgetShowcaseState(
       label: label ?? this.label,
       labelTextStyle: labelTextStyleEnabled ? (labelTextStyle ?? this.labelTextStyle) : null,
-      labelTextStyleEnabled: labelTextStyleEnabled,
       width: width ?? this.width,
       currentValueIndicatorTextBuilderEnabled: currentValueIndicatorTextBuilderEnabled ?? this.currentValueIndicatorTextBuilderEnabled,
       maxValueIndicatorTextBuilderEnabled: maxValueIndicatorTextBuilderEnabled ?? this.maxValueIndicatorTextBuilderEnabled,
@@ -57,7 +52,6 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
       'MyoroSliderWidgetShowcaseState(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'
-      '  labelTextStyleEnabled: $labelTextStyleEnabled,\n'
       '  width: $width,\n'
       '  currentValueIndicatorTextBuilderEnabled: $currentValueIndicatorTextBuilderEnabled,\n'
       '  maxValueIndicatorTextBuilderEnabled: $maxValueIndicatorTextBuilderEnabled,\n'
@@ -69,7 +63,6 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
     return [
       label,
       labelTextStyle,
-      labelTextStyleEnabled,
       width,
       currentValueIndicatorTextBuilderEnabled,
       maxValueIndicatorTextBuilderEnabled,

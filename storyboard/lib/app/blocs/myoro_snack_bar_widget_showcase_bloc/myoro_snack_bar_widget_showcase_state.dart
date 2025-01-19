@@ -29,21 +29,8 @@ final class MyoroSnackBarWidgetShowcaseState extends Equatable {
     String? message,
     bool? childEnabled,
   }) {
-    final bool bothNotProvided = message?.isNotEmpty == false && childEnabled == false;
-    final bool bothProvided = message?.isNotEmpty == true && childEnabled == true;
-
-    if (bothNotProvided || bothProvided) {
-      if (this.message.isNotEmpty) {
-        message = '';
-        childEnabled = true;
-      } else {
-        message = 'Hello, World!';
-        childEnabled = false;
-      }
-    } else {
-      message = message ?? '';
-      childEnabled = childEnabled ?? false;
-    }
+    message = childEnabled == false ? 'Hello, World!' : (message ?? this.message);
+    childEnabled = childEnabled ?? message.isEmpty;
 
     return MyoroSnackBarWidgetShowcaseState(
       snackBarType: snackBarType ?? this.snackBarType,
