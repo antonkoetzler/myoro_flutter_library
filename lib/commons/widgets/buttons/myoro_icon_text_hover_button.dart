@@ -13,7 +13,7 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   final double? iconSize;
 
   /// Text of the button.
-  final String? text;
+  final String text;
 
   /// Style of the button.
   final TextStyle? textStyle;
@@ -30,19 +30,19 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   /// Function executed when the button is clicked.
   final VoidCallback? onPressed;
 
-  const MyoroIconTextHoverButton({
+  MyoroIconTextHoverButton({
     super.key,
     this.configuration,
     this.icon,
     this.iconSize,
-    this.text,
+    this.text = '',
     this.textStyle,
     this.textAlign,
     this.padding,
     this.mainAxisAlignment,
     this.onPressed,
   }) : assert(
-          !(icon == null && text == null),
+          !(icon == null && text.isEmpty),
           '[MyoroIconTextHoverButton]: An [icon] or [text] must be provided.',
         );
 
@@ -50,9 +50,9 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextHoverButtonThemeExtension>();
     final contentPadding = padding ?? themeExtension.contentPadding;
-    final iconNotNull = icon != null;
-    final textNotNull = text != null;
-    final iconAndTextNotNull = iconNotNull && textNotNull;
+    final iconProvided = icon != null;
+    final textProvided = text.isNotEmpty;
+    final iconAndTextProvided = iconProvided && textProvided;
 
     return MyoroHoverButton(
       configuration: configuration,
@@ -67,18 +67,18 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: mainAxisAlignment ?? themeExtension.mainAxisAlignment,
             children: [
-              if (iconNotNull)
+              if (iconProvided)
                 Icon(
                   icon,
                   size: iconSize,
                   color: actualContentColor,
                 ),
-              if (iconAndTextNotNull) SizedBox(width: themeExtension.spacing),
-              if (textNotNull)
+              if (iconAndTextProvided) SizedBox(width: themeExtension.spacing),
+              if (textProvided)
                 Expanded(
                   child: Text(
-                    text!,
-                    textAlign: textAlign ?? (iconNotNull ? TextAlign.left : TextAlign.center),
+                    text,
+                    textAlign: textAlign ?? (iconProvided ? TextAlign.left : TextAlign.center),
                     maxLines: themeExtension.textMaxLines,
                     overflow: themeExtension.textOverflow,
                     style: (textStyle ?? themeExtension.textStyle).withColor(

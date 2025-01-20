@@ -91,6 +91,7 @@ void main() {
   });
 
   test('MyoroTableController.isRowSelected', () {
+    print('One day I will find this stupid fucking error, rows.length: ${rows.length}');
     controller.selectRows([rows.first]);
     expect(controller.isRowSelected(rows.first), isTrue);
     expect(

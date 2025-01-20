@@ -194,7 +194,7 @@ final class _Item extends StatelessWidget {
       configuration: configuration,
       icon: _item.icon,
       iconSize: _item.iconSize,
-      text: _item.text,
+      text: _item.text ?? '',
       textStyle: _item.textStyle,
       textAlign: _item.textAlign,
       onPressed: _item.onPressed,

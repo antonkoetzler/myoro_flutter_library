@@ -17,4 +17,8 @@ enum MyoroInputWidgetShowcaseEnum {
   const MyoroInputWidgetShowcaseEnum(this.title);
 
   factory MyoroInputWidgetShowcaseEnum.fake() => values[faker.randomGenerator.integer(values.length)];
+
+  bool get isNone => this == none;
+  bool get isDate => this == date;
+  bool get isNumber => this == number;
 }

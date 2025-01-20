@@ -630,7 +630,7 @@ final class _Button extends StatelessWidget {
     return IntrinsicWidth(
       child: MyoroIconTextHoverButton(
         icon: icon,
-        text: text,
+        text: text ?? '',
         configuration: context.resolveThemeExtension<MyoroTableThemeExtension>().buttonConfiguration,
         onPressed: onPressed,
       ),

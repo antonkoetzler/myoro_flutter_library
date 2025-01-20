@@ -179,7 +179,7 @@ enum WidgetListingEnum {
 
       // Buttons.
       myoroHoverButtonTitle => const MyoroHoverButtonWidgetShowcase(),
-      myoroIconTextHoverButtonTitle => throw UnimplementedError(),
+      myoroIconTextHoverButtonTitle => const MyoroIconTextHoverButtonWidgetShowcase(),
 
       // Cards.
       myoroCardTitle => const MyoroCardWidgetShowcase(),

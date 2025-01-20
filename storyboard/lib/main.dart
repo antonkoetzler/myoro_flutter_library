@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kiwi/kiwi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -12,7 +14,10 @@ void main() async {
   windowManager.setMinimumSize(const Size(1000, 1000));
 
   // Shared preferences initialization (to save theme state).
-  final instance = await MyoroSharedPreferences.initialize();
+  final kiwiContainer = KiwiContainer();
+  SharedPreferences instance = await SharedPreferences.getInstance();
+  kiwiContainer.registerSingleton<SharedPreferences>((_) => instance);
+  instance = kiwiContainer.resolve<SharedPreferences>();
   if (instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey) == null) {
     instance.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true);
   }
@@ -20,9 +25,7 @@ void main() async {
   runApp(
     BlocProvider(
       create: (_) => WidgetShowcaseBloc(),
-      child: _App(
-        MyoroSharedPreferences.instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!,
-      ),
+      child: _App(instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!),
     ),
   );
 }

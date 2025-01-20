@@ -16,6 +16,8 @@ dependencies:
   equatable: ^2.0.5
   # Latest conflicts with the Flutter's material library like [Color].
   faker: 2.1.0
+  kiwi: ^5.0.1
+  shared_preferences: ^2.3.5
 
 dev_dependencies:
   flutter_test:
