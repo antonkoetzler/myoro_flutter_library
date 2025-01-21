@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -45,6 +46,17 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
     required this.borderRadiusSliderMaxValueBordered,
   });
 
+  MyoroHoverButtonWidgetShowcaseThemeExtension.fake()
+      : widgetContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        widgetContentTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        colorDropdownitemPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        colorDropdownItemPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        colorDropdownItemColorSize = Size(faker.randomGenerator.decimal(), faker.randomGenerator.decimal()),
+        colorDropdownItemColorTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        colorDropdownItemSpacing = faker.randomGenerator.decimal(),
+        borderRadiusSliderMaxValue = faker.randomGenerator.decimal(),
+        borderRadiusSliderMaxValueBordered = faker.randomGenerator.boolean();
+
   @override
   MyoroHoverButtonWidgetShowcaseThemeExtension copyWith({
     EdgeInsets? widgetContentPadding,
@@ -71,7 +83,7 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension extends ThemeExtension<
   }
 
   @override
-  ThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension> lerp(
+  MyoroHoverButtonWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

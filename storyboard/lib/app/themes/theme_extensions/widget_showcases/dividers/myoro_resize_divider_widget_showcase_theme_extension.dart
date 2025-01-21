@@ -1,4 +1,6 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroResizeDividerWidgetShowcase].
@@ -14,6 +16,10 @@ final class MyoroResizeDividerWidgetShowcaseThemeExtension extends ThemeExtensio
     required this.areYouSillyPadding,
   });
 
+  MyoroResizeDividerWidgetShowcaseThemeExtension.fake()
+      : containerColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        areYouSillyPadding = EdgeInsets.all(faker.randomGenerator.decimal());
+
   @override
   MyoroResizeDividerWidgetShowcaseThemeExtension copyWith({
     Color? containerColor,
@@ -26,7 +32,7 @@ final class MyoroResizeDividerWidgetShowcaseThemeExtension extends ThemeExtensio
   }
 
   @override
-  ThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension> lerp(
+  MyoroResizeDividerWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

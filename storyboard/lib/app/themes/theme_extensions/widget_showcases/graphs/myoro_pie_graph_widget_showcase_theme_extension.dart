@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -16,6 +17,10 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension extends ThemeExtension<Myo
     required this.centerWidgetSize,
   });
 
+  MyoroPieGraphWidgetShowcaseThemeExtension.fake()
+      : centerWidgetBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        centerWidgetSize = faker.randomGenerator.decimal();
+
   @override
   MyoroPieGraphWidgetShowcaseThemeExtension copyWith({
     BorderRadius? centerWidgetBorderRadius,
@@ -28,7 +33,7 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   }
 
   @override
-  ThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension> lerp(
+  MyoroPieGraphWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

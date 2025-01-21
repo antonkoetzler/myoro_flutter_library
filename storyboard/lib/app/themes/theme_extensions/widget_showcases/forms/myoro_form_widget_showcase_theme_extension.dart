@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -41,6 +42,16 @@ final class MyoroFormWidgetShowcaseThemeExtension extends ThemeExtension<MyoroFo
     required this.errorColor,
   });
 
+  MyoroFormWidgetShowcaseThemeExtension.fake()
+      : widgetMainAxisAlignment = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
+        widgetInputStyle = MyoroInputStyleEnum.fake(),
+        widgetSpacing = faker.randomGenerator.decimal(),
+        submitButtonMainAxisAlignment = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
+        submitButtonBordered = faker.randomGenerator.boolean(),
+        resultTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        successColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        errorColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+
   @override
   MyoroFormWidgetShowcaseThemeExtension copyWith({
     MainAxisAlignment? widgetMainAxisAlignment,
@@ -65,7 +76,7 @@ final class MyoroFormWidgetShowcaseThemeExtension extends ThemeExtension<MyoroFo
   }
 
   @override
-  ThemeExtension<MyoroFormWidgetShowcaseThemeExtension> lerp(
+  MyoroFormWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroFormWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

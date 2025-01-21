@@ -11,6 +11,8 @@ final class MyoroDatePickerInputWidgetShowcaseThemeExtension extends ThemeExtens
     required this.inputStyle,
   });
 
+  MyoroDatePickerInputWidgetShowcaseThemeExtension.fake() : inputStyle = MyoroInputStyleEnum.fake();
+
   @override
   MyoroDatePickerInputWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -21,7 +23,7 @@ final class MyoroDatePickerInputWidgetShowcaseThemeExtension extends ThemeExtens
   }
 
   @override
-  ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension> lerp(
+  MyoroDatePickerInputWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

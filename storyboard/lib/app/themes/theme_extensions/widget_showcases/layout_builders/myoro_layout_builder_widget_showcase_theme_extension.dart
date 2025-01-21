@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroLayoutBuilderWidgetShowcase].
@@ -16,6 +18,10 @@ final class MyoroLayoutBuilderWidgetShowcaseThemeExtension extends ThemeExtensio
     required this.descriptionWidth,
   });
 
+  MyoroLayoutBuilderWidgetShowcaseThemeExtension.fake()
+      : textStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        descriptionWidth = faker.randomGenerator.decimal();
+
   @override
   MyoroLayoutBuilderWidgetShowcaseThemeExtension copyWith({
     TextStyle? textStyle,
@@ -28,7 +34,7 @@ final class MyoroLayoutBuilderWidgetShowcaseThemeExtension extends ThemeExtensio
   }
 
   @override
-  ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension> lerp(
+  MyoroLayoutBuilderWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -19,6 +20,14 @@ final class MyoroCardWidgetShowcaseThemeExtension extends ThemeExtension<MyoroCa
     required this.titleTextStyleOptionTextStyles,
   });
 
+  MyoroCardWidgetShowcaseThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        titleOptionTextAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+        titleTextStyleOptionTextStyles = List.generate(
+          faker.randomGenerator.integer(10),
+          (_) => (faker.lorem.word(), MyoroTypographyTheme.instance.randomTextStyle),
+        );
+
   @override
   MyoroCardWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -33,7 +42,7 @@ final class MyoroCardWidgetShowcaseThemeExtension extends ThemeExtension<MyoroCa
   }
 
   @override
-  ThemeExtension<MyoroCardWidgetShowcaseThemeExtension> lerp(
+  MyoroCardWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroCardWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

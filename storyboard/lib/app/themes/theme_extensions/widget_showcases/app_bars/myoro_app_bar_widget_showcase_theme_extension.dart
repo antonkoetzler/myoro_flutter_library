@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -25,6 +26,12 @@ final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     required this.mockMenuButtonIcon,
   });
 
+  MyoroAppBarWidgetShowcaseThemeExtension.fake()
+      : mockAppLogoIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        mockAppTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        logoTitleSpacing = faker.randomGenerator.decimal(),
+        mockMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+
   @override
   MyoroAppBarWidgetShowcaseThemeExtension copyWith({
     IconData? mockAppLogoIcon,
@@ -41,7 +48,7 @@ final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   }
 
   @override
-  ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension> lerp(
+  MyoroAppBarWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

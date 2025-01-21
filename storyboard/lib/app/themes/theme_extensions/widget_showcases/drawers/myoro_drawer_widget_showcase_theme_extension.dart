@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -15,6 +16,10 @@ final class MyoroDrawerWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     required this.inputStyle,
   });
 
+  MyoroDrawerWidgetShowcaseThemeExtension.fake()
+      : buttonBordered = faker.randomGenerator.boolean(),
+        inputStyle = MyoroInputStyleEnum.fake();
+
   @override
   MyoroDrawerWidgetShowcaseThemeExtension copyWith({
     bool? buttonBordered,
@@ -27,7 +32,7 @@ final class MyoroDrawerWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   }
 
   @override
-  ThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension> lerp(
+  MyoroDrawerWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

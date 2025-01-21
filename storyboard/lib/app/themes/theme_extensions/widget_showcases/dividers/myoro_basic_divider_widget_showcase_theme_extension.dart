@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -11,6 +12,8 @@ final class MyoroBasicDividerWidgetShowcaseThemeExtension extends ThemeExtension
     required this.buttonBordered,
   });
 
+  MyoroBasicDividerWidgetShowcaseThemeExtension.fake() : buttonBordered = faker.randomGenerator.boolean();
+
   @override
   MyoroBasicDividerWidgetShowcaseThemeExtension copyWith({
     bool? buttonBordered,
@@ -21,7 +24,7 @@ final class MyoroBasicDividerWidgetShowcaseThemeExtension extends ThemeExtension
   }
 
   @override
-  ThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension> lerp(
+  MyoroBasicDividerWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

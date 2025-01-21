@@ -9,7 +9,7 @@ final class MyoroCarouselWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   MyoroCarouselWidgetShowcaseThemeExtension copyWith() => this;
 
   @override
-  ThemeExtension<MyoroCarouselWidgetShowcaseThemeExtension> lerp(
+  MyoroCarouselWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroCarouselWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
