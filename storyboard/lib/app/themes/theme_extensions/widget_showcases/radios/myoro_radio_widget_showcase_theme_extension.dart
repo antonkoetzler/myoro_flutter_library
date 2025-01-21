@@ -11,6 +11,8 @@ final class MyoroRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroR
     required this.inputStyle,
   });
 
+  MyoroRadioWidgetShowcaseThemeExtension.fake() : inputStyle = MyoroInputStyleEnum.fake();
+
   @override
   MyoroRadioWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -21,7 +23,7 @@ final class MyoroRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroR
   }
 
   @override
-  ThemeExtension<MyoroRadioWidgetShowcaseThemeExtension> lerp(
+  MyoroRadioWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

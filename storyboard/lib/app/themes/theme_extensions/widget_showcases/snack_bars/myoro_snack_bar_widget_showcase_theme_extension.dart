@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -19,6 +20,11 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<Myo
     required this.childIcon,
   });
 
+  MyoroSnackBarWidgetShowcaseThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        widgetBordered = faker.randomGenerator.boolean(),
+        childIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+
   @override
   MyoroSnackBarWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -33,7 +39,7 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   }
 
   @override
-  ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension> lerp(
+  MyoroSnackBarWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

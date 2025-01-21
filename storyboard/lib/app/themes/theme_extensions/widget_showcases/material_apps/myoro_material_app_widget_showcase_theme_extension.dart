@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -49,6 +50,18 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension extends ThemeExtension<
     required this.themeModeOptionSpacing,
   });
 
+  MyoroMaterialAppWidgetShowcaseThemeExtension.fake()
+      : appBarContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        appBarLogoIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        appBarTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        appBarMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        appBarSpacing = faker.randomGenerator.decimal(),
+        themeModeOptionButtonBordered = faker.randomGenerator.boolean(),
+        themeModeOptionButtonDarkModeIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        themeModeOptionButtonLightModeIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        themeModeOptionTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        themeModeOptionSpacing = faker.randomGenerator.decimal();
+
   @override
   MyoroMaterialAppWidgetShowcaseThemeExtension copyWith({
     Color? appBarContentColor,
@@ -77,7 +90,7 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension extends ThemeExtension<
   }
 
   @override
-  ThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension> lerp(
+  MyoroMaterialAppWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

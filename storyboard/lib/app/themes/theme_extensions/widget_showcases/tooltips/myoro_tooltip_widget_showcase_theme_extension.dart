@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -25,6 +26,12 @@ final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<Myor
     required this.childTextStyle,
   });
 
+  MyoroTooltipWidgetShowcaseThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        childSize = faker.randomGenerator.decimal(),
+        childDecoration = BoxDecoration(color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
+        childTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+
   @override
   MyoroTooltipWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -41,7 +48,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<Myor
   }
 
   @override
-  ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension> lerp(
+  MyoroTooltipWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

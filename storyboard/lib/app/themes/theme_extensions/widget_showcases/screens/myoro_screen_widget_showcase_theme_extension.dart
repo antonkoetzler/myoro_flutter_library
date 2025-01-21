@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -37,6 +38,15 @@ final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     required this.bodySpacing,
   });
 
+  MyoroScreenWidgetShowcaseThemeExtension.fake()
+      : appBarTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        appBarSubtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        appBarMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        bodyImageBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        bodyImageSize = faker.randomGenerator.decimal(),
+        bodyTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        bodySpacing = faker.randomGenerator.decimal();
+
   @override
   MyoroScreenWidgetShowcaseThemeExtension copyWith({
     TextStyle? appBarTitleTextStyle,
@@ -59,7 +69,7 @@ final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   }
 
   @override
-  ThemeExtension<MyoroScreenWidgetShowcaseThemeExtension> lerp(
+  MyoroScreenWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
@@ -71,7 +81,7 @@ final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
       bodyImageBorderRadius: BorderRadius.lerp(bodyImageBorderRadius, other.bodyImageBorderRadius, t),
       bodyImageSize: lerpDouble(bodyImageSize, other.bodyImageSize, t),
       bodyTextStyle: TextStyle.lerp(bodyTextStyle, other.bodyTextStyle, t),
-      bodySpacing: 10,
+      bodySpacing: lerpDouble(bodySpacing, other.bodySpacing, t),
     );
   }
 }

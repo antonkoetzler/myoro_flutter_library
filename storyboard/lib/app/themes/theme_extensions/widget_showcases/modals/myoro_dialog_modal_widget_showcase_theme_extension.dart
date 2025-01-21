@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -15,6 +16,10 @@ final class MyoroDialogModalWidgetShowcaseThemeExtension extends ThemeExtension<
     required this.childBorderRadius,
   });
 
+  MyoroDialogModalWidgetShowcaseThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        childBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal());
+
   @override
   MyoroDialogModalWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -27,7 +32,7 @@ final class MyoroDialogModalWidgetShowcaseThemeExtension extends ThemeExtension<
   }
 
   @override
-  ThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension> lerp(
+  MyoroDialogModalWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

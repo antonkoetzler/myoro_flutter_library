@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -15,6 +16,10 @@ final class MyoroScrollableWidgetShowcaseThemeExtension extends ThemeExtension<M
     required this.itemPadding,
   });
 
+  MyoroScrollableWidgetShowcaseThemeExtension.fake()
+      : itemBordered = faker.randomGenerator.boolean(),
+        itemPadding = EdgeInsets.all(faker.randomGenerator.decimal());
+
   @override
   MyoroScrollableWidgetShowcaseThemeExtension copyWith({
     bool? itemBordered,
@@ -27,7 +32,7 @@ final class MyoroScrollableWidgetShowcaseThemeExtension extends ThemeExtension<M
   }
 
   @override
-  ThemeExtension<MyoroScrollableWidgetShowcaseThemeExtension> lerp(
+  MyoroScrollableWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroScrollableWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

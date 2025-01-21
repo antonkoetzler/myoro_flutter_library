@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -45,6 +46,17 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
     required this.widgetListingCategoryWidgetButtonTextStyle,
   });
 
+  StoryboardBodyThemeExtension.fake()
+      : widgetListingCategoryPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        widgetListingCategorySpacing = faker.randomGenerator.decimal(),
+        widgetListingCategoryDividerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        widgetListingCategoryDividerShortValue = faker.randomGenerator.decimal(),
+        widgetListingCategoryDropdownButtonTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        widgetListingCategoryDropdownButtonUnopenedIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        widgetListingCategoryDropdownButtonOpenedIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        widgetListingCategoryWidgetButtonContentCentered = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
+        widgetListingCategoryWidgetButtonTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+
   @override
   StoryboardBodyThemeExtension copyWith({
     EdgeInsets? widgetListingCategoryPadding,
@@ -72,10 +84,7 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   }
 
   @override
-  ThemeExtension<StoryboardBodyThemeExtension> lerp(
-    covariant ThemeExtension<StoryboardBodyThemeExtension>? other,
-    double t,
-  ) {
+  StoryboardBodyThemeExtension lerp(covariant ThemeExtension<StoryboardBodyThemeExtension>? other, double t) {
     if (other is! StoryboardBodyThemeExtension) return this;
     return copyWith(
       widgetListingCategoryPadding: EdgeInsets.lerp(widgetListingCategoryPadding, other.widgetListingCategoryPadding, t),

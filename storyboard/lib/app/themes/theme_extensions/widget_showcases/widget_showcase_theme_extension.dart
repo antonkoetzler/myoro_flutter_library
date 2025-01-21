@@ -1,4 +1,6 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [WidgetShowcase].
@@ -38,6 +40,29 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.widgetOptionsDividerPadding,
   });
 
+  WidgetShowcaseThemeExtension.fake()
+      : widgetWrapperBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        widgetWrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        widgetWrapperContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        widgetWrapperBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+        widgetWrapperBorder = Border.all(
+          width: faker.randomGenerator.decimal(),
+          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        ),
+        widgetWrapperAlignment = [
+          Alignment.center,
+          Alignment.topLeft,
+          Alignment.topRight,
+          Alignment.topCenter,
+          Alignment.centerLeft,
+          Alignment.bottomLeft,
+          Alignment.centerRight,
+          Alignment.bottomRight,
+          Alignment.bottomCenter,
+        ][faker.randomGenerator.integer(9)],
+        widgetOptionsPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+        widgetOptionsDividerPadding = EdgeInsets.all(faker.randomGenerator.decimal());
+
   @override
   WidgetShowcaseThemeExtension copyWith({
     Color? widgetWrapperBackgroundColor,
@@ -62,7 +87,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   }
 
   @override
-  ThemeExtension<WidgetShowcaseThemeExtension> lerp(
+  WidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<WidgetShowcaseThemeExtension>? other,
     double t,
   ) {

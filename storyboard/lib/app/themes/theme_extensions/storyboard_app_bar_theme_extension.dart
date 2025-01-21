@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -34,6 +35,13 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
     required this.buttonSpacing,
   });
 
+  StoryboardAppBarThemeExtension.fake()
+      : titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        subtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        showWidgetOptionsButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        themeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        buttonSpacing = faker.randomGenerator.decimal();
+
   @override
   StoryboardAppBarThemeExtension copyWith({
     TextStyle? titleTextStyle,
@@ -52,7 +60,7 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
   }
 
   @override
-  ThemeExtension<StoryboardAppBarThemeExtension> lerp(
+  StoryboardAppBarThemeExtension lerp(
     covariant ThemeExtension<StoryboardAppBarThemeExtension>? other,
     double t,
   ) {

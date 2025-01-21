@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -21,6 +22,11 @@ final class MyoroSliderWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     required this.hiddenKittyContainerColor,
   });
 
+  MyoroSliderWidgetShowcaseThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        widgetSize = faker.randomGenerator.decimal(),
+        hiddenKittyContainerColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+
   @override
   MyoroSliderWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -35,7 +41,7 @@ final class MyoroSliderWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   }
 
   @override
-  ThemeExtension<MyoroSliderWidgetShowcaseThemeExtension> lerp(
+  MyoroSliderWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

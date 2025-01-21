@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -21,6 +22,11 @@ final class MyoroResolverWidgetShowcaseThemeExtension extends ThemeExtension<Myo
     required this.spacing,
   });
 
+  MyoroResolverWidgetShowcaseThemeExtension.fake()
+      : buttonBordered = faker.randomGenerator.boolean(),
+        buttonTextAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+        spacing = faker.randomGenerator.decimal();
+
   @override
   MyoroResolverWidgetShowcaseThemeExtension copyWith({
     bool? buttonBordered,
@@ -35,7 +41,7 @@ final class MyoroResolverWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   }
 
   @override
-  ThemeExtension<MyoroResolverWidgetShowcaseThemeExtension> lerp(
+  MyoroResolverWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>? other,
     double t,
   ) {

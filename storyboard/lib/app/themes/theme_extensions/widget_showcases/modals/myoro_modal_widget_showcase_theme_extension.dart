@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -21,6 +22,11 @@ final class MyoroModalWidgetShowcaseThemeExtension extends ThemeExtension<MyoroM
     required this.inputStyle,
   });
 
+  MyoroModalWidgetShowcaseThemeExtension.fake()
+      : spacing = faker.randomGenerator.decimal(),
+        headerTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        inputStyle = MyoroInputStyleEnum.fake();
+
   @override
   MyoroModalWidgetShowcaseThemeExtension copyWith({
     double? spacing,
@@ -35,7 +41,7 @@ final class MyoroModalWidgetShowcaseThemeExtension extends ThemeExtension<MyoroM
   }
 
   @override
-  ThemeExtension<MyoroModalWidgetShowcaseThemeExtension> lerp(
+  MyoroModalWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroModalWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
