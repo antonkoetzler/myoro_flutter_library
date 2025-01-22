@@ -81,7 +81,7 @@ final class _SnackBarTypeOption extends StatefulWidget {
 }
 
 final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
-  late final _bloc = context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>();
+  late final MyoroSnackBarWidgetShowcaseBloc _bloc;
   late final _controller = MyoroSingularDropdownController<MyoroSnackBarTypeEnum>(_bloc.state.snackBarType);
 
   String _getSnackbarTypeName(MyoroSnackBarTypeEnum snackBarType) {
@@ -105,6 +105,12 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
         snackBarTypes,
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>();
   }
 
   @override

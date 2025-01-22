@@ -51,8 +51,6 @@ final class _MyoroDropdownController<T> {
 
   void dispose() {
     _selectedItemsNotifier.dispose();
-    _singularController?.dispose();
-    _multiController?.dispose();
   }
 
   bool _isSelected(T item) {
