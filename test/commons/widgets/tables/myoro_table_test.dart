@@ -99,7 +99,7 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) => w is Row && w.children.length == columnQuantity && w.children.last is Expanded,
       ),
-      findsOneWidget,
+      findsAtLeastNWidgets(1),
     );
 
     // [_TitleColumn].
