@@ -6,12 +6,16 @@ final class MyoroWidgetTester extends StatelessWidget {
   /// [ThemeMode] of the test.
   final ThemeMode themeMode;
 
+  /// [ThemeExtension]s you'd like to include.
+  final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
+
   /// The [Widget].
   final Widget child;
 
   const MyoroWidgetTester({
     super.key,
     this.themeMode = ThemeMode.dark,
+    this.themeExtensionsBuilder,
     required this.child,
   });
 
@@ -22,21 +26,20 @@ final class MyoroWidgetTester extends StatelessWidget {
     } else if (child is MyoroScreen) {
       return MyoroMaterialApp(
         themeMode: themeMode,
+        themeExtensionsBuilder: themeExtensionsBuilder,
         home: child as MyoroScreen,
       );
     } else if (child is MyoroAppBar) {
       return MyoroMaterialApp(
         themeMode: themeMode,
-        home: MyoroScreen(
-          appBar: child as MyoroAppBar,
-        ),
+        themeExtensionsBuilder: themeExtensionsBuilder,
+        home: MyoroScreen(appBar: child as MyoroAppBar),
       );
     } else {
       return MyoroMaterialApp(
         themeMode: themeMode,
-        home: MyoroScreen(
-          body: child,
-        ),
+        themeExtensionsBuilder: themeExtensionsBuilder,
+        home: MyoroScreen(body: child),
       );
     }
   }

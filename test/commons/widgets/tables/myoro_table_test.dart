@@ -4,8 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
-import '../../../test_exports.dart';
-
 /// Widget test of [MyoroTable].
 void main() {
   final columnQuantity = faker.randomGenerator.integer(5, min: 1);

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-import '../../myoro_widget_tester.dart';
-
 /// Widget test of [MyoroSnackBarHelper].
 void main() {
   testWidgets(

@@ -34,14 +34,22 @@ final class _Widget extends StatelessWidget {
       builder: (_, MyoroAppBarWidgetShowcaseState state) {
         return MyoroAppBar(
           bordered: state.bordered,
-          child: Row(
-            children: [
-              const _MockAppLogo(),
-              SizedBox(width: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().logoTitleSpacing),
-              const _MockAppTitle(),
-              const Spacer(),
-              const _MockMenuButton(),
-            ],
+          child: SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const _MockAppLogo(),
+                    SizedBox(width: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().logoTitleSpacing),
+                    const _MockAppTitle(),
+                  ],
+                ),
+                const _MockMenuButton(),
+              ],
+            ),
           ),
         );
       },
@@ -78,9 +86,11 @@ final class _MockMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextHoverButton(
-      icon: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockMenuButtonIcon,
-      onPressed: () {},
+    return IntrinsicWidth(
+      child: MyoroIconTextHoverButton(
+        icon: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockMenuButtonIcon,
+        onPressed: () {},
+      ),
     );
   }
 }

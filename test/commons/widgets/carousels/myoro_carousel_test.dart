@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-import '../../../test_exports.dart';
-
 /// Widget test of [MyoroCarousel].
 void main() {
   final List<Widget> items = List.generate(

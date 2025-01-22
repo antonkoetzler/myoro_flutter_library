@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-import '../../../test_exports.dart';
-
 /// Widget test of [MyoroResolver].
 void main() {
   testWidgets('MyoroResolver', (WidgetTester tester) async {

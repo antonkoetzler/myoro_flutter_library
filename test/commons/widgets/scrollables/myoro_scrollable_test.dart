@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-import '../../../test_exports.dart';
-
 /// Widget test of [MyoroScrollable].
 void main() {
   final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
