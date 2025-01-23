@@ -68,6 +68,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
     return Row(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ValueListenableBuilder(
@@ -99,6 +100,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
                 _label!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: _labelTextStyle ?? themeExtension.labelTextStyle,
               ),
             ),

@@ -12,14 +12,10 @@ final class WidgetShowcase extends StatefulWidget {
   /// Options to experiment on the widget that will be on the right.
   final List<Widget> widgetOptions;
 
-  /// Width of [_WidgetOptions].
-  final double? widgetOptionsWidth;
-
   const WidgetShowcase({
     super.key,
     required this.widget,
     this.widgetOptions = const [],
-    this.widgetOptionsWidth,
   });
 
   @override
@@ -29,7 +25,6 @@ final class WidgetShowcase extends StatefulWidget {
 final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget get _widget => widget.widget;
   List<Widget> get _widgetOptions => widget.widgetOptions;
-  double? get _widgetOptionsWidth => widget.widgetOptionsWidth;
 
   @override
   void initState() {
@@ -43,11 +38,21 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(child: _WidgetWrapper(_widget)),
-        if (_widgetOptions.isNotEmpty) _WidgetOptions(_widgetOptions, _widgetOptionsWidth),
-      ],
+    return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
+      builder: (_, WidgetShowcaseState state) {
+        if (_widgetOptions.isEmpty || !state.displayingWidgetOptions) return const SizedBox.shrink();
+
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(child: _WidgetWrapper(_widget)),
+            if (_widgetOptions.isNotEmpty && state.displayingWidgetOptions) ...[
+              const _Divider(direction: Axis.vertical),
+              _WidgetOptions(_widgetOptions),
+            ],
+          ],
+        );
+      },
     );
   }
 }
@@ -80,64 +85,54 @@ final class _WidgetWrapper extends StatelessWidget {
   }
 }
 
+final class _Divider extends StatelessWidget {
+  final Axis direction;
+  final EdgeInsets? padding;
+
+  const _Divider({required this.direction, this.padding});
+
+  @override
+  Widget build(BuildContext context) {
+    return MyoroBasicDivider(
+      configuration: MyoroBasicDividerConfiguration(
+        direction: direction,
+        padding: padding,
+      ),
+    );
+  }
+}
+
 final class _WidgetOptions extends StatelessWidget {
   final List<Widget> _widgetOptions;
-  final double? _widgetOptionsWidth;
 
-  const _WidgetOptions(this._widgetOptions, this._widgetOptionsWidth);
+  const _WidgetOptions(this._widgetOptions);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-    return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
-      builder: (_, WidgetShowcaseState state) {
-        if (_widgetOptions.isEmpty || !state.displayingWidgetOptions) return const SizedBox.shrink();
 
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const MyoroBasicDivider(
-              configuration: MyoroBasicDividerConfiguration(
-                direction: Axis.vertical,
-              ),
-            ),
-            IntrinsicWidth(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minWidth: 200,
-                ),
-                child: Padding(
-                  padding: themeExtension.widgetOptionsPadding,
-                  child: MyoroScrollable(
-                    scrollableType: MyoroScrollableEnum.singleChildScrollView,
-                    children: _widgetOptions.map<Widget>(
-                      (Widget widgetOption) {
-                        return SizedBox(
-                          width: _widgetOptionsWidth,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              widgetOption,
-                              if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
-                                MyoroBasicDivider(
-                                  configuration: MyoroBasicDividerConfiguration(
-                                    direction: Axis.horizontal,
-                                    padding: themeExtension.widgetOptionsDividerPadding,
-                                  ),
-                                ),
-                            ],
-                          ),
-                        );
-                      },
-                    ).toList(),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        );
-      },
+    return IntrinsicWidth(
+      child: Padding(
+        padding: themeExtension.widgetOptionsPadding,
+        child: MyoroScrollable(
+          scrollableType: MyoroScrollableEnum.singleChildScrollView,
+          children: _widgetOptions.map<Widget>(
+            (Widget widgetOption) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(child: widgetOption),
+                  if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
+                    _Divider(
+                      direction: Axis.horizontal,
+                      padding: themeExtension.widgetOptionsDividerPadding,
+                    ),
+                ],
+              );
+            },
+          ).toList(),
+        ),
+      ),
     );
   }
 }

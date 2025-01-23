@@ -192,7 +192,7 @@ final class _TooltipEnabledCheckbox extends StatelessWidget {
 
     return MyoroCheckbox(
       initialValue: bloc.state.tooltipEnabled,
-      label: '[MyoroHoverButtonConfiguration.tooltip] enabled?',
+      label: '[MyoroHoverButtonConfiguration.tooltip]',
       onChanged: (_) => bloc.add(const SetTooltipEnabledEvent()),
     );
   }

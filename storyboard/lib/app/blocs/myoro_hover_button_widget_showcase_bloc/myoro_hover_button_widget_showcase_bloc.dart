@@ -25,6 +25,7 @@ final class MyoroHoverButtonWidgetShowcaseBloc extends Bloc<MyoroHoverButtonWidg
     emit(
       state.copyWith(
         primaryColor: event.color,
+        primaryColorEnabled: event.color != null,
       ),
     );
   }
@@ -33,6 +34,7 @@ final class MyoroHoverButtonWidgetShowcaseBloc extends Bloc<MyoroHoverButtonWidg
     emit(
       state.copyWith(
         onPrimaryColor: event.color,
+        onPrimaryColorEnabled: event.color != null,
       ),
     );
   }
@@ -57,6 +59,7 @@ final class MyoroHoverButtonWidgetShowcaseBloc extends Bloc<MyoroHoverButtonWidg
     emit(
       state.copyWith(
         borderRadius: event.borderRadius == null ? null : BorderRadius.circular(event.borderRadius!),
+        borderRadiusEnabled: event.borderRadius != null,
       ),
     );
   }

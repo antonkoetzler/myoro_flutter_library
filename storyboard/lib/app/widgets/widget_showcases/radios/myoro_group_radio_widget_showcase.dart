@@ -24,7 +24,6 @@ final class MyoroGroupRadioWidgetShowcase extends StatelessWidget {
       ),
       child: WidgetShowcase(
         widget: const _Widget(),
-        widgetOptionsWidth: 191,
         widgetOptions: [
           const _DirectionOption(),
           _SpacingOption(spacing),

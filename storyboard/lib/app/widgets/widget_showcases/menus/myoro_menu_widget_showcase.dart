@@ -17,7 +17,6 @@ final class MyoroMenuWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroMenuWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptionsWidth: 250,
         widgetOptions: [
           _ConstraintsOption(),
           _SearchCallbackOption(),

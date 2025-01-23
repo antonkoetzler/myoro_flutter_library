@@ -16,7 +16,6 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
       ),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptionsWidth: 216,
         widgetOptions: [
           _ColorOption(),
           _SizeOption(),

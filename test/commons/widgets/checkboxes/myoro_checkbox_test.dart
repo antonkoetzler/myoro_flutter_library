@@ -42,6 +42,7 @@ void main() {
         (Widget w) =>
             w is Row &&
             w.mainAxisSize == MainAxisSize.min &&
+            w.mainAxisAlignment == MainAxisAlignment.center &&
             w.crossAxisAlignment == CrossAxisAlignment.center &&
             w.children.length == 3 &&
             w.children.first is ValueListenableBuilder &&

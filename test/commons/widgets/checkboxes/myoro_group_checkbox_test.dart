@@ -9,7 +9,7 @@ void main() {
   final double? spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final double? runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final MyoroGroupCheckboxItems checkboxes = {
-    for (int i = 0; i < faker.randomGenerator.integer(100); i++) '$i': faker.randomGenerator.boolean(),
+    for (int i = 0; i < faker.randomGenerator.integer(100, min: 1); i++) '$i': faker.randomGenerator.boolean(),
   };
 
   testWidgets('MyoroGroupCheckbox', (WidgetTester tester) async {
