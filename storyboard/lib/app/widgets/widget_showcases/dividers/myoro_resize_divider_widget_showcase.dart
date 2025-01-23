@@ -78,8 +78,9 @@ final class _DirectionOptionState extends State<_DirectionOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroSingularDropdown(
+    return MyoroSingularDropdown<Axis>(
       configuration: MyoroDropdownConfiguration(
+        label: '[MyoroResizeDivider.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
         itemBuilder: (Axis direction) => MyoroMenuItem(text: _getDirectionName(direction)),
         itemLabelBuilder: _getDirectionName,
@@ -99,7 +100,7 @@ final class _ShortValueOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
 
     return MyoroSlider(
-      label: '[MyoroBasicDivider.shortValue]',
+      label: '[MyoroResizeDivider.shortValue]',
       minValue: 0,
       maxValue: 200,
       initialValue: bloc.state.shortValue,
@@ -129,14 +130,14 @@ final class _PaddingOption extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         MyoroSlider(
-          label: '[MyoroBasicDivider.padding]\'s vertical padding',
+          label: 'Vertical padding',
           minValue: minValue,
           maxValue: maxValue,
           initialValue: bloc.state.verticalPadding,
           onChanged: (double value) => _event(bloc, Axis.vertical, value),
         ),
         MyoroSlider(
-          label: '[MyoroBasicDivider.padding]\'s horizontal padding',
+          label: 'Horizontal padding',
           minValue: minValue,
           maxValue: maxValue,
           initialValue: bloc.state.horizontalPadding,

@@ -2,35 +2,29 @@ part of 'myoro_group_checkbox_widget_showcase_bloc.dart';
 
 final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
   /// [MyoroGroupCheckbox.direction].
-  final Axis? direction;
+  final Axis direction;
 
   /// [MyoroGroupCheckbox.spacing].
-  final double? spacing;
+  final double spacing;
 
   /// [MyoroGroupCheckbox.runSpacing].
-  final double? runSpacing;
-
-  /// [MyoroGroupCheckbox.checkboxes].
-  final MyoroGroupCheckboxItems checkboxes;
+  final double runSpacing;
 
   const MyoroGroupCheckboxWidgetShowcaseState({
-    this.direction,
-    this.spacing,
-    this.runSpacing,
-    required this.checkboxes,
+    this.direction = Axis.horizontal,
+    this.spacing = 5,
+    this.runSpacing = 5,
   });
 
   MyoroGroupCheckboxWidgetShowcaseState copyWith({
     Axis? direction,
     double? spacing,
     double? runSpacing,
-    MyoroGroupCheckboxItems? checkboxes,
   }) {
     return MyoroGroupCheckboxWidgetShowcaseState(
       direction: direction ?? this.direction,
       spacing: spacing ?? this.spacing,
       runSpacing: runSpacing ?? this.runSpacing,
-      checkboxes: checkboxes ?? this.checkboxes,
     );
   }
 
@@ -40,7 +34,6 @@ final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
       '  direction: $direction,\n'
       '  spacing: $spacing,\n'
       '  runSpacing: $runSpacing,\n'
-      '  checkboxes: $checkboxes,\n'
       ');';
 
   @override
@@ -49,7 +42,6 @@ final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
       direction,
       spacing,
       runSpacing,
-      checkboxes,
     ];
   }
 }

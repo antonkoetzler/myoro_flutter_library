@@ -21,9 +21,3 @@ final class SetRunSpacingEvent extends MyoroGroupCheckboxWidgetShowcaseEvent {
 
   const SetRunSpacingEvent(this.runSpacing);
 }
-
-final class SetItemsEvent extends MyoroGroupCheckboxWidgetShowcaseEvent {
-  final MyoroGroupCheckboxItems checkboxes;
-
-  const SetItemsEvent(this.checkboxes);
-}
