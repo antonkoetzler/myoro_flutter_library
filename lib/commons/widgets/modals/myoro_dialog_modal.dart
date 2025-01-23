@@ -1,41 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple yes/no dialog modal.
 final class MyoroDialogModal extends StatelessWidget {
   /// Whether or not to invert the buttons in [_FooterButtons].
-  final bool? _invertButtons;
+  final bool? invertButtons;
 
   /// Text of [_ConfirmButton].
-  final String? _confirmButtonText;
+  final String? confirmButtonText;
 
   /// Text of [_CancelButton].
-  final String? _cancelButtonText;
+  final String? cancelButtonText;
 
   /// Function executed when [_ConfirmButton] is pressed.
-  final VoidCallback? _onConfirm;
+  final VoidCallback? onConfirm;
 
   /// Function executed when [_CancelButton] is pressed.
-  final VoidCallback? _onCancel;
+  final VoidCallback? onCancel;
 
   /// Simple text option of the [MyoroDialogModal].
-  final String? _text;
+  final String? text;
 
   /// Text style of [text].
-  final TextStyle? _textStyle;
+  final TextStyle? textStyle;
 
   /// Custom [Widget] option of the [MyoroDialogModal].
-  final Widget? _child;
+  final Widget? child;
 
   const MyoroDialogModal._(
-    this._invertButtons,
-    this._confirmButtonText,
-    this._cancelButtonText,
-    this._onConfirm,
-    this._onCancel,
-    this._text,
-    this._textStyle,
-    this._child,
+    this.invertButtons,
+    this.confirmButtonText,
+    this.cancelButtonText,
+    this.onConfirm,
+    this.onCancel,
+    this.text,
+    this.textStyle,
+    this.child,
   );
 
   static Future<void> show(
@@ -72,24 +73,56 @@ final class MyoroDialogModal extends StatelessWidget {
     );
   }
 
+  static Finder finder({
+    bool? invertButtons,
+    bool invertButtonsEnabled = false,
+    String? confirmButtonText,
+    bool confirmButtonTextEnabled = false,
+    String? cancelButtonText,
+    bool cancelButtonTextEnabled = false,
+    VoidCallback? onConfirm,
+    bool onConfirmEnabled = false,
+    VoidCallback? onCancel,
+    bool onCancelEnabled = false,
+    String? text,
+    bool textEnabled = false,
+    TextStyle? textStyle,
+    bool textStyleEnabled = false,
+    Widget? child,
+    bool childEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroDialogModal &&
+          (invertButtonsEnabled ? w.invertButtons == invertButtons : true) &&
+          (confirmButtonTextEnabled ? w.confirmButtonText == confirmButtonText : true) &&
+          (cancelButtonTextEnabled ? w.cancelButtonText == cancelButtonText : true) &&
+          (onConfirmEnabled ? w.onConfirm == onConfirm : true) &&
+          (onCancelEnabled ? w.onCancel == onCancel : true) &&
+          (textEnabled ? w.text == text : true) &&
+          (textStyleEnabled ? w.textStyle == textStyle : true) &&
+          (childEnabled ? w.child == child : true),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Expanded(
           child: _Message(
-            _text,
-            _textStyle,
-            _child,
+            text,
+            textStyle,
+            child,
           ),
         ),
         SizedBox(height: context.resolveThemeExtension<MyoroModalThemeExtension>().spacing),
         _FooterButtons(
-          _invertButtons ?? false,
-          _confirmButtonText,
-          _cancelButtonText,
-          _onConfirm,
-          _onCancel,
+          invertButtons ?? false,
+          confirmButtonText,
+          cancelButtonText,
+          onConfirm,
+          onCancel,
         ),
       ],
     );

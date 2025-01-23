@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Request to be executed when the input is triggered;
@@ -27,6 +28,77 @@ final class MyoroSearchInput<T> extends StatefulWidget {
     required this.request,
     required this.itemBuilder,
   });
+
+  static Finder finder<T>({
+    MyoroInputConfiguration? configuration,
+    bool configurationEnabled = false,
+    MyoroInputStyleEnum? inputStyle,
+    bool inputStyleEnabled = false,
+    TextAlign? textAlign,
+    bool textAlignEnabled = false,
+    TextStyle? inputTextStyle,
+    bool inputTextStyleEnabled = false,
+    String? label,
+    bool labelEnabled = false,
+    String? placeholder,
+    bool placeholderEnabled = false,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleEnabled = false,
+    Widget? suffix,
+    bool suffixEnabled = false,
+    bool? enabled,
+    bool enabledEnabled = false,
+    bool? readOnly,
+    bool readOnlyEnabled = false,
+    bool? showClearTextButton,
+    bool showClearTextButtonEnabled = false,
+    MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedEnabled = false,
+    MyoroInputValidation? validation,
+    bool validationEnabled = false,
+    MyoroInputOnFieldSubmitted? onFieldSubmitted,
+    bool onFieldSubmittedEnabled = false,
+    MyoroInputOnChanged? onChanged,
+    bool onChangedEnabled = false,
+    VoidCallback? onCleared,
+    bool onClearedEnabled = false,
+    FocusNode? focusNode,
+    bool focusNodeEnabled = false,
+    TextEditingController? controller,
+    bool controllerEnabled = false,
+    bool? requestWhenChanged,
+    bool requestWhenChangedEnabled = false,
+    MyoroSearchInputRequest<T>? request,
+    bool requestEnabled = false,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+    bool itemBuilderEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroSearchInput &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (inputStyleEnabled ? w.configuration.inputStyle == inputStyle : true) &&
+          (textAlignEnabled ? w.configuration.textAlign == textAlign : true) &&
+          (inputTextStyleEnabled ? w.configuration.inputTextStyle == inputTextStyle : true) &&
+          (labelEnabled ? w.configuration.label == label : true) &&
+          (placeholderEnabled ? w.configuration.placeholder == placeholder : true) &&
+          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
+          (suffixEnabled ? w.configuration.suffix == suffix : true) &&
+          (enabledEnabled ? w.configuration.enabled == enabled : true) &&
+          (readOnlyEnabled ? w.configuration.readOnly == readOnly : true) &&
+          (showClearTextButtonEnabled ? w.configuration.showClearTextButton == showClearTextButton : true) &&
+          (checkboxOnChangedEnabled ? w.configuration.checkboxOnChanged == checkboxOnChanged : true) &&
+          (validationEnabled ? w.configuration.validation == validation : true) &&
+          (onFieldSubmittedEnabled ? w.configuration.onFieldSubmitted == onFieldSubmitted : true) &&
+          (onChangedEnabled ? w.configuration.onChanged == onChanged : true) &&
+          (onClearedEnabled ? w.configuration.onCleared == onCleared : true) &&
+          (focusNodeEnabled ? w.configuration.focusNode == focusNode : true) &&
+          (controllerEnabled ? w.configuration.controller == controller : true) &&
+          (requestWhenChangedEnabled ? w.requestWhenChanged == requestWhenChanged : true) &&
+          (requestEnabled ? w.request == request : true) &&
+          (itemBuilderEnabled ? w.itemBuilder == itemBuilder : true),
+    );
+  }
 
   @override
   State<MyoroSearchInput<T>> createState() => _MyoroSearchInputState<T>();

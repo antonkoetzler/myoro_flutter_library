@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A pie (or donut if specified) chart.
@@ -23,6 +24,23 @@ final class MyoroPieGraph extends StatelessWidget {
           typeEnum.isPie ? centerWidget == null : true,
           '[MyoroPieGraph]: If [typeEnum.isPie] is [true], [centerWidget] cannot be provided.',
         );
+
+  static Finder finder({
+    MyoroPieGraphEnum? typeEnum,
+    bool typeEnumEnabled = false,
+    Widget? centerWidget,
+    bool centerWidgetEnabled = false,
+    List<MyoroPieGraphItem>? items,
+    bool itemsEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroPieGraph &&
+          (typeEnumEnabled ? w.typeEnum == typeEnum : true) &&
+          (centerWidgetEnabled ? w.centerWidget == centerWidget : true) &&
+          (itemsEnabled ? w.items == items : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

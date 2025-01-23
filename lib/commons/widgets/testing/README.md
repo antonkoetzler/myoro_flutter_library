@@ -1,1 +1,1 @@
-# NOTE: No widget showcases in storyboard or theme extensions for this category of widget.
+# NOTE: No widget showcases in storyboard, theme extensions for this category of widget.

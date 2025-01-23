@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function that formats the value of a slider (to display a time like "1:59" for example).
@@ -52,6 +53,44 @@ final class MyoroSlider extends StatefulWidget {
     this.footerIndicatorTextBuilder,
     required this.onChanged,
   });
+
+  static Finder finder({
+    String? label,
+    bool labelEnabled = false,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleEnabled = false,
+    double? width,
+    bool widthEnabled = false,
+    double? initialValue,
+    bool initialValueEnabled = false,
+    double? minValue,
+    bool minValueEnabled = false,
+    double? maxValue,
+    bool maxValueEnabled = false,
+    MyoroSliderIndicatorTextBuilder? currentValueIndicatorTextBuilder,
+    bool currentValueIndicatorTextBuilderEnabled = false,
+    MyoroSliderIndicatorTextBuilder? maxValueIndicatorTextBuilder,
+    bool maxValueIndicatorTextBuilderEnabled = false,
+    MyoroSliderIndicatorTextBuilder? footerValueIndicatorTextBuilder,
+    bool footerValueIndicatorTextBuilderEnabled = false,
+    MyoroSliderOnChanged? onChanged,
+    bool onChangedEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroSlider &&
+          (labelEnabled ? w.label == label : true) &&
+          (labelTextStyleEnabled ? w.labelTextStyle == labelTextStyle : true) &&
+          (widthEnabled ? w.width == width : true) &&
+          (initialValueEnabled ? w.initialValue == initialValue : true) &&
+          (minValueEnabled ? w.minValue == minValue : true) &&
+          (maxValueEnabled ? w.maxValue == maxValue : true) &&
+          (currentValueIndicatorTextBuilderEnabled ? w.currentValueIndicatorTextBuilder == currentValueIndicatorTextBuilder : true) &&
+          (maxValueIndicatorTextBuilderEnabled ? w.maxValueIndicatorTextBuilder == maxValueIndicatorTextBuilder : true) &&
+          (footerValueIndicatorTextBuilderEnabled ? w.footerIndicatorTextBuilder == footerValueIndicatorTextBuilder : true) &&
+          (onChangedEnabled ? w.onChanged == onChanged : true),
+    );
+  }
 
   @override
   State<MyoroSlider> createState() => _MyoroSliderState();

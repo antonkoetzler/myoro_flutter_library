@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base modal. Every modal should be implementing [MyoroModal] like so.
@@ -17,16 +18,45 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// ```
 final class MyoroModal extends StatelessWidget {
   /// Configuration of the modal.
-  final MyoroModalConfiguration? _configuration;
+  final MyoroModalConfiguration? configuration;
 
   /// Contents of the modal.
-  final Widget _child;
+  final Widget child;
 
   /// Private constructor to force [show] to be used.
   const MyoroModal._(
-    this._configuration,
-    this._child,
+    this.configuration,
+    this.child,
   );
+
+  static Finder finder({
+    MyoroModalConfiguration? configuration,
+    bool configurationEnabled = false,
+    bool? barrierDismissable,
+    bool barrierDismissableEnabled = false,
+    BoxConstraints? constraints,
+    bool constraintsEnabled = false,
+    VoidCallback? onClosed,
+    bool onClosedEnabled = false,
+    String? title,
+    bool titleEnabled = false,
+    bool? showCloseButton,
+    bool showCloseButtonEnabled = false,
+    Widget? child,
+    bool childEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroModal &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (barrierDismissableEnabled ? w.configuration?.barrierDismissable == barrierDismissable : true) &&
+          (constraintsEnabled ? w.configuration?.constraints == constraints : true) &&
+          (onClosedEnabled ? w.configuration?.onClosed == onClosed : true) &&
+          (titleEnabled ? w.configuration?.title == title : true) &&
+          (showCloseButtonEnabled ? w.configuration?.showCloseButton == showCloseButton : true) &&
+          (childEnabled ? w.child == child : true),
+    );
+  }
 
   /// Function that opens the modal.
   static Future<void> show(
@@ -47,14 +77,14 @@ final class MyoroModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
-    final showCloseButton = _configuration?.showCloseButton ?? false;
+    final showCloseButton = configuration?.showCloseButton ?? false;
 
     return Center(
       child: Material(
         color: themeExtension.primaryColor,
         borderRadius: themeExtension.borderRadius,
         child: Container(
-          constraints: _configuration?.constraints ?? themeExtension.constraints,
+          constraints: configuration?.constraints ?? themeExtension.constraints,
           padding: themeExtension.padding,
           decoration: BoxDecoration(
             borderRadius: themeExtension.borderRadius,
@@ -63,11 +93,11 @@ final class MyoroModal extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (_configuration?.title != null || showCloseButton) ...[
-                _Header(_configuration?.title, showCloseButton),
+              if (configuration?.title != null || showCloseButton) ...[
+                _Header(configuration?.title, showCloseButton),
                 SizedBox(height: themeExtension.spacing),
               ],
-              Flexible(child: _child),
+              Flexible(child: child),
             ],
           ),
         ),

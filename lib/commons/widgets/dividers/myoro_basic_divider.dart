@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple divider.
@@ -7,6 +8,15 @@ final class MyoroBasicDivider extends StatelessWidget {
   final MyoroBasicDividerConfiguration configuration;
 
   const MyoroBasicDivider({super.key, required this.configuration});
+
+  static Finder finder({
+    MyoroBasicDividerConfiguration? configuration,
+    bool configurationEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) => w is MyoroBasicDivider && (configurationEnabled ? w.configuration == configuration : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

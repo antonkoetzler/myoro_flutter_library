@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Radios of the group. Provided as a map for speed and ease of navigation.
@@ -47,6 +48,32 @@ final class MyoroGroupRadio extends StatefulWidget {
           notifier == null ? MyoroGroupRadioNotifier.radiosAreValid(radios!) : true,
           '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioNotifier.radiosAreValid].',
         );
+
+  static Finder finder({
+    MyoroGroupRadioNotifier? notifier,
+    bool notifierEnabled = false,
+    Axis? direction,
+    bool directionEnabled = false,
+    double? spacing,
+    bool spacingEnabled = false,
+    double? runSpacing,
+    bool runSpacingEnabled = false,
+    MyoroGroupRadioOnChanged? onChanged,
+    bool onChangedEnabled = false,
+    MyoroGroupRadioItems? radios,
+    bool radiosEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroGroupRadio &&
+          (notifierEnabled ? w.notifier == notifier : true) &&
+          (directionEnabled ? w.direction == direction : true) &&
+          (spacingEnabled ? w.spacing == spacing : true) &&
+          (runSpacingEnabled ? w.runSpacing == runSpacing : true) &&
+          (onChangedEnabled ? w.onChanged == onChanged : true) &&
+          (radiosEnabled ? w.radios == radios : true),
+    );
+  }
 
   @override
   State<MyoroGroupRadio> createState() => _MyoroGroupRadioState();

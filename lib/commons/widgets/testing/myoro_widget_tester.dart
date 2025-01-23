@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Widget] that must be created when creating new widget tests.
@@ -18,6 +19,23 @@ final class MyoroWidgetTester extends StatelessWidget {
     this.themeExtensionsBuilder,
     required this.child,
   });
+
+  static Finder finder({
+    ThemeMode? themeMode,
+    bool themeModeEnabled = false,
+    MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
+    bool themeExtensionsBuilderEnabled = false,
+    Widget? child,
+    bool childEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroWidgetTester &&
+          (themeModeEnabled ? w.themeMode == themeMode : true) &&
+          (themeExtensionsBuilderEnabled ? w.themeExtensionsBuilder == themeExtensionsBuilder : true) &&
+          (childEnabled ? w.child == child : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

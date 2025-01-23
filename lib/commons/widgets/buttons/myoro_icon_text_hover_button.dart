@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Creates a [HoverButton] that accepts an icon and/or text.
@@ -45,6 +46,62 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
           !(icon == null && text.isEmpty),
           '[MyoroIconTextHoverButton]: An [icon] or [text] must be provided.',
         );
+
+  static Finder finder({
+    MyoroHoverButtonConfiguration? configuration,
+    bool configurationEnabled = false,
+    Color? primaryColor,
+    bool primaryColorEnabled = false,
+    Color? onPrimaryColor,
+    bool onPrimaryColorEnabled = false,
+    bool? isHovered,
+    bool isHoveredEnabled = false,
+    bool? bordered,
+    bool borderedEnabled = false,
+    BorderRadius? borderRadius,
+    bool borderRadiusEnabled = false,
+    String? tooltip,
+    bool tooltipEnabled = false,
+    MyoroHoverButtonOnHover? onHover,
+    bool onHoverEnabled = false,
+    IconData? icon,
+    bool iconEnabled = false,
+    double? iconSize,
+    bool iconSizeEnabled = false,
+    String? text,
+    bool textEnabled = false,
+    TextStyle? textStyle,
+    bool textStyleEnabled = false,
+    TextAlign? textAlign,
+    bool textAlignEnabled = false,
+    EdgeInsets? padding,
+    bool paddingEnabled = false,
+    MainAxisAlignment? mainAxisAlignment,
+    bool mainAxisAlignmentEnabled = false,
+    VoidCallback? onPressed,
+    bool onPressedEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroIconTextHoverButton &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (primaryColorEnabled ? w.configuration?.primaryColor == primaryColor : true) &&
+          (onPrimaryColorEnabled ? w.configuration?.onPrimaryColor == onPrimaryColor : true) &&
+          (isHoveredEnabled ? w.configuration?.isHovered == isHovered : true) &&
+          (borderedEnabled ? w.configuration?.bordered == bordered : true) &&
+          (borderRadiusEnabled ? w.configuration?.borderRadius == borderRadius : true) &&
+          (tooltipEnabled ? w.configuration?.tooltip == tooltip : true) &&
+          (onHoverEnabled ? w.configuration?.onHover == onHover : true) &&
+          (iconEnabled ? w.icon == icon : true) &&
+          (iconSizeEnabled ? w.iconSize == iconSize : true) &&
+          (textEnabled ? w.text == text : true) &&
+          (textStyleEnabled ? w.textStyle == textStyle : true) &&
+          (textAlignEnabled ? w.textAlign == textAlign : true) &&
+          (paddingEnabled ? w.padding == padding : true) &&
+          (mainAxisAlignmentEnabled ? w.mainAxisAlignment == mainAxisAlignment : true) &&
+          (onPressedEnabled ? w.onPressed == onPressed : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

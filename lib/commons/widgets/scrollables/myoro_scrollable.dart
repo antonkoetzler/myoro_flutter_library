@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Simplifying scrollable widgets (i.e. creating a simple or lazy loaded scrollable).
@@ -29,6 +30,29 @@ final class MyoroScrollable extends StatelessWidget {
     this.scrollController,
     required this.children,
   });
+
+  static Finder finder({
+    MyoroScrollableEnum? scrollableType,
+    bool scrollableTypeEnabled = false,
+    Axis? direction,
+    bool directionEnabled = false,
+    EdgeInsets? padding,
+    bool paddingEnabled = false,
+    ScrollController? scrollController,
+    bool scrollControllerEnabled = false,
+    List<Widget>? children,
+    bool childrenEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroScrollable &&
+          (scrollableTypeEnabled ? w.scrollableType == scrollableType : true) &&
+          (directionEnabled ? w.direction == direction : true) &&
+          (paddingEnabled ? w.padding == padding : true) &&
+          (scrollControllerEnabled ? w.scrollController == scrollController : true) &&
+          (childrenEnabled ? w.children == children : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

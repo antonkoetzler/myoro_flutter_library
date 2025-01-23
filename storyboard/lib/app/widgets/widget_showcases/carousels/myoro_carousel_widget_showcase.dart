@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -37,23 +38,14 @@ final class _Widget extends StatelessWidget {
           displayTraversalButtons: state.displayTraversalButtons,
           autoplay: state.autoplay,
           autoplayIntervalDuration: state.autoplayIntervalDuration,
-          items: [
-            Container(
+          items: List.generate(
+            faker.randomGenerator.integer(10),
+            (_) => Container(
               width: 300,
               height: 300,
-              color: Colors.red,
+              color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
             ),
-            Container(
-              width: 300,
-              height: 300,
-              color: Colors.green,
-            ),
-            Container(
-              width: 300,
-              height: 300,
-              color: Colors.blue,
-            ),
-          ],
+          ),
         );
       },
     );
@@ -82,12 +74,8 @@ final class _DirectionOptionState extends State<_DirectionOption> {
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroDropdownConfiguration(
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: [
-            Axis.horizontal,
-            Axis.vertical,
-          ],
-        ),
+        label: '[MyoroCarousel.direction]',
+        dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
         itemBuilder: (Axis direction) => MyoroMenuItem(text: _getDirectionName(direction)),
         itemLabelBuilder: _getDirectionName,
         allowItemClearing: false,
@@ -140,6 +128,7 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSlider(
+      label: '[MyoroSlider.autoplayIntervalDuration]',
       minValue: 1,
       initialValue: kMyoroCarouselAutoplayIntervalDuration.inSeconds.toDouble(),
       maxValue: 5,

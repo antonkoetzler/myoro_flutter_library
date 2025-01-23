@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Checkboxes of the group. Provided as a map for speed and ease of navigation.
@@ -47,6 +48,32 @@ final class MyoroGroupCheckbox extends StatefulWidget {
           notifier == null ? checkboxes!.isNotEmpty : true,
           '[MyoroGroupCheckbox]: [checkboxes] must not be empty when [notifier] isn\'t provided.',
         );
+
+  static Finder finder({
+    MyoroGroupCheckboxNotifier? notifier,
+    bool notifierEnabled = false,
+    Axis? direction,
+    bool directionEnabled = false,
+    double? spacing,
+    bool spacingEnabled = false,
+    double? runSpacing,
+    bool runSpacingEnabled = false,
+    MyoroGroupCheckboxOnChanged? onChanged,
+    bool onChangedEnabled = false,
+    MyoroGroupCheckboxItems? checkboxes,
+    bool checkboxesEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroGroupCheckbox &&
+          (notifierEnabled ? w.notifier == notifier : true) &&
+          (directionEnabled ? w.direction == direction : true) &&
+          (spacingEnabled ? w.spacing == spacing : true) &&
+          (runSpacingEnabled ? w.runSpacing == runSpacing : true) &&
+          (onChangedEnabled ? w.onChanged == onChanged : true) &&
+          (checkboxesEnabled ? w.checkboxes == checkboxes : true),
+    );
+  }
 
   @override
   State<MyoroGroupCheckbox> createState() => _MyoroGroupCheckboxState();

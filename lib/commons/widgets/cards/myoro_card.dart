@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base card.
@@ -30,6 +31,32 @@ final class MyoroCard extends StatelessWidget {
     this.height,
     required this.child,
   });
+
+  static Finder finder({
+    String? title,
+    bool titleEnabled = false,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleEnabled = false,
+    EdgeInsets? padding,
+    bool paddingEnabled = false,
+    double? width,
+    bool widthEnabled = false,
+    double? height,
+    bool heightEnabled = false,
+    Widget? child,
+    bool childEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroCard &&
+          (titleEnabled ? w.title == title : true) &&
+          (titleTextStyleEnabled ? w.titleTextStyle == titleTextStyle : true) &&
+          (paddingEnabled ? w.padding == padding : true) &&
+          (widthEnabled ? w.width == width : true) &&
+          (heightEnabled ? w.height == height : true) &&
+          (childEnabled ? w.child == child : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

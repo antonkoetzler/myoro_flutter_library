@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
@@ -30,6 +31,26 @@ final class MyoroMaterialApp extends StatelessWidget {
     this.themeExtensionsBuilder,
     required this.home,
   });
+
+  static Finder finder({
+    String? title,
+    bool titleEnabled = false,
+    ThemeMode? themeMode,
+    bool themeModeEnabled = false,
+    MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
+    bool themeExtensionsBuilderEnabled = false,
+    MyoroScreen? home,
+    bool homeEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroMaterialApp &&
+          (titleEnabled ? w.title == title : true) &&
+          (themeModeEnabled ? w.themeMode == themeMode : true) &&
+          (themeExtensionsBuilderEnabled ? w.themeExtensionsBuilder == themeExtensionsBuilder : true) &&
+          (homeEnabled ? w.home == home : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

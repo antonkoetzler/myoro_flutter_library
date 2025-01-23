@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function that is executed when the checkbox is changed.
@@ -33,6 +34,29 @@ final class MyoroCheckbox extends StatefulWidget {
           '[MyoroCheckbox]: If [notifier] is provided, set the initial '
           'value within the [MyoroRadioNotifier]\'s constructor.',
         );
+
+  static Finder finder({
+    MyoroCheckboxNotifier? notifier,
+    bool notifierEnabled = false,
+    String? label,
+    bool labelEnabled = false,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleEnabled = false,
+    bool? initialValue,
+    bool initialValueEnabled = false,
+    MyoroCheckboxOnChanged? onChanged,
+    bool onChangedEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroCheckbox &&
+          (notifierEnabled ? w.notifier == notifier : true) &&
+          (labelEnabled ? w.label == label : true) &&
+          (labelTextStyleEnabled ? w.labelTextStyle == labelTextStyle : true) &&
+          (initialValueEnabled ? w.initialValue == initialValue : true) &&
+          (onChangedEnabled ? w.onChanged == onChanged : true),
+    );
+  }
 
   @override
   State<MyoroCheckbox> createState() => _MyoroCheckboxState();

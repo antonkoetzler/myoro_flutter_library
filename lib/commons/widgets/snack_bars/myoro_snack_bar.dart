@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A snack bar [Widget].
@@ -30,6 +31,26 @@ final class MyoroSnackBar extends StatelessWidget {
           message.isNotEmpty ^ (child != null),
           '[MyoroSnackBar]: [message] (x)or [child] must be provided.',
         );
+
+  static Finder finder({
+    MyoroSnackBarTypeEnum? snackBarType,
+    bool snackBarTypeEnabled = false,
+    bool? showCloseButton,
+    bool showCloseButtonEnabled = false,
+    String? message,
+    bool messageEnabled = false,
+    Widget? child,
+    bool childEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroSnackBar &&
+          (snackBarTypeEnabled ? w.snackBarType == snackBarType : true) &&
+          (showCloseButtonEnabled ? w.showCloseButton == showCloseButton : true) &&
+          (messageEnabled ? w.message == message : true) &&
+          (childEnabled ? w.child == child : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

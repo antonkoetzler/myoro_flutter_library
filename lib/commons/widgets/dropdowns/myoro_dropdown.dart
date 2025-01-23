@@ -6,6 +6,7 @@
 //    made it better to conjoin both [Widget]s into one file.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when a [MyoroSingularDropdown]'s selected item is changed.
@@ -96,6 +97,53 @@ final class MyoroSingularDropdown<T> extends StatelessWidget {
     this.controller,
   });
 
+  static Finder finder<T>({
+    MyoroDropdownConfiguration<T>? configuration,
+    bool configurationEnabled = false,
+    String? label,
+    bool labelEnabled = false,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleEnabled = false,
+    MyoroDataConfiguration<T>? dataConfiguration,
+    bool dataConfigurationEnabled = false,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+    bool itemBuilderEnabled = false,
+    MyoroDropdownConfigurationItemLabelBuilder<T>? itemLabelBuilder,
+    bool itemLabelBuilderEnabled = false,
+    bool? enabled,
+    bool enabledEnabled = false,
+    bool? allowItemClearing,
+    bool allowItemClearingEnabled = false,
+    double? menuMaxHeight,
+    bool menuMaxHeightEnabled = false,
+    MyoroMenuSearchCallback<T>? menuSearchCallback,
+    bool menuSearchCallbackEnabled = false,
+    MyoroSingularDropdownOnChanged<T>? onChanged,
+    bool onChangedEnabled = false,
+    MyoroSingularDropdownCheckboxOnChanged<T>? checkboxOnChanged,
+    bool checkboxOnChangedEnabled = false,
+    MyoroSingularDropdownController<T>? controller,
+    bool controllerEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroSingularDropdown<T> &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (labelEnabled ? w.configuration.label == label : true) &&
+          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
+          (dataConfigurationEnabled ? w.configuration.dataConfiguration == dataConfiguration : true) &&
+          (itemBuilderEnabled ? w.configuration.itemBuilder == itemBuilder : true) &&
+          (itemLabelBuilderEnabled ? w.configuration.itemLabelBuilder == itemLabelBuilder : true) &&
+          (enabledEnabled ? w.configuration.enabled == enabled : true) &&
+          (allowItemClearingEnabled ? w.configuration.allowItemClearing == allowItemClearing : true) &&
+          (menuMaxHeightEnabled ? w.configuration.menuMaxHeight == menuMaxHeight : true) &&
+          (menuSearchCallbackEnabled ? w.configuration.menuSearchCallback == menuSearchCallback : true) &&
+          (onChangedEnabled ? w.onChanged == onChanged : true) &&
+          (checkboxOnChangedEnabled ? w.checkboxOnChanged == checkboxOnChanged : true) &&
+          (controllerEnabled ? w.controller == controller : true),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return _Dropdown._(
@@ -130,6 +178,53 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
     this.checkboxOnChanged,
     this.controller,
   });
+
+  static Finder finder<T>({
+    MyoroDropdownConfiguration<T>? configuration,
+    bool configurationEnabled = false,
+    String? label,
+    bool labelEnabled = false,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleEnabled = false,
+    MyoroDataConfiguration<T>? dataConfiguration,
+    bool dataConfigurationEnabled = false,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+    bool itemBuilderEnabled = false,
+    MyoroDropdownConfigurationItemLabelBuilder<T>? itemLabelBuilder,
+    bool itemLabelBuilderEnabled = false,
+    bool? enabled,
+    bool enabledEnabled = false,
+    bool? allowItemClearing,
+    bool allowItemClearingEnabled = false,
+    double? menuMaxHeight,
+    bool menuMaxHeightEnabled = false,
+    MyoroMenuSearchCallback<T>? menuSearchCallback,
+    bool menuSearchCallbackEnabled = false,
+    MyoroMultiDropdownOnChanged<T>? onChanged,
+    bool onChangedEnabled = false,
+    MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged,
+    bool checkboxOnChangedEnabled = false,
+    MyoroMultiDropdownController<T>? controller,
+    bool controllerEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroMultiDropdown<T> &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (labelEnabled ? w.configuration.label == label : true) &&
+          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
+          (dataConfigurationEnabled ? w.configuration.dataConfiguration == dataConfiguration : true) &&
+          (itemBuilderEnabled ? w.configuration.itemBuilder == itemBuilder : true) &&
+          (itemLabelBuilderEnabled ? w.configuration.itemLabelBuilder == itemLabelBuilder : true) &&
+          (enabledEnabled ? w.configuration.enabled == enabled : true) &&
+          (allowItemClearingEnabled ? w.configuration.allowItemClearing == allowItemClearing : true) &&
+          (menuMaxHeightEnabled ? w.configuration.menuMaxHeight == menuMaxHeight : true) &&
+          (menuSearchCallbackEnabled ? w.configuration.menuSearchCallback == menuSearchCallback : true) &&
+          (onChangedEnabled ? w.onChanged == onChanged : true) &&
+          (checkboxOnChangedEnabled ? w.checkboxOnChanged == checkboxOnChanged : true) &&
+          (controllerEnabled ? w.controller == controller : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed to make the request.
@@ -49,6 +50,29 @@ final class MyoroResolver<T> extends StatefulWidget {
     required this.request,
     required this.builder,
   });
+
+  static Finder finder<T>({
+    MyoroResolverController? controller,
+    bool controllerEnabled = false,
+    MyoroResolverOnSuccess<T>? onSuccess,
+    bool onSuccessEnabled = false,
+    MyoroResolverOnError? onError,
+    bool onErrorEnabled = false,
+    MyoroResolverRequest<T>? request,
+    bool requestEnabled = false,
+    MyoroResolverBuilder<T>? builder,
+    bool builderEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroResolver<T> &&
+          (controllerEnabled ? w.controller == controller : true) &&
+          (onSuccessEnabled ? w.onSuccess == onSuccess : true) &&
+          (onErrorEnabled ? w.onError == onError : true) &&
+          (requestEnabled ? w.request == request : true) &&
+          (builderEnabled ? w.builder == builder : true),
+    );
+  }
 
   @override
   State<MyoroResolver<T>> createState() => _MyoroResolverState<T>();

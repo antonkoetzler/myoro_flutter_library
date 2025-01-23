@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base drawer.
@@ -27,6 +28,29 @@ final class MyoroDrawer extends StatelessWidget {
     this.barrierDismissable = true,
     required this.child,
   });
+
+  static Finder finder({
+    String? title,
+    bool titleEnabled = false,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleEnabled = false,
+    bool? showCloseButton,
+    bool showCloseButtonEnabled = false,
+    bool? barrierDismissable,
+    bool barrierDismissableEnabled = false,
+    Widget? child,
+    bool childEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroDrawer &&
+          (titleEnabled ? w.title == title : true) &&
+          (titleTextStyleEnabled ? w.titleTextStyle == titleTextStyle : true) &&
+          (showCloseButtonEnabled ? w.showCloseButton == showCloseButton : true) &&
+          (barrierDismissableEnabled ? w.barrierDismissable == barrierDismissable : true) &&
+          (childEnabled ? w.child == child : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

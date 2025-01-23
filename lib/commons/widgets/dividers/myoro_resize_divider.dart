@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the divider resize is activated.
@@ -17,6 +18,20 @@ final class MyoroResizeDivider extends StatelessWidget {
     required this.configuration,
     this.dragCallback,
   });
+
+  static Finder finder({
+    MyoroBasicDividerConfiguration? configuration,
+    bool configurationEnabled = false,
+    MyoroResizeDividerDragCallback? dragCallback,
+    bool dragCallbackEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroResizeDivider &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (dragCallbackEnabled ? w.dragCallback == dragCallback : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

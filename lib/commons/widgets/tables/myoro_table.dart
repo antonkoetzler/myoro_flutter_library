@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +43,35 @@ final class MyoroTable<T> extends StatefulWidget {
           columns.isNotEmpty,
           '[MyoroTable]: [columns] must not be empty.',
         );
+
+  static Finder finder<T>({
+    MyoroTableController<T>? controller,
+    bool controllerEnabled = false,
+    List<MyoroTableColumn>? columns,
+    bool columnsEnabled = false,
+    MyoroTableRowBuilder<T>? rowBuilder,
+    bool rowBuilderEnabled = false,
+    MyoroDataConfiguration<T>? dataConfiguration,
+    bool dataConfigurationEnabled = false,
+    bool? enableColumnResizing,
+    bool enableColumnResizingEnabled = false,
+    bool? enableCheckboxes,
+    bool enableCheckboxesEnabled = false,
+    bool? showPaginationControls,
+    bool showPaginationControlsEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroTable<T> &&
+          (controllerEnabled ? w.controller == controller : true) &&
+          (columnsEnabled ? w.columns == columns : true) &&
+          (rowBuilderEnabled ? w.rowBuilder == rowBuilder : true) &&
+          (dataConfigurationEnabled ? w.dataConfiguration == dataConfiguration : true) &&
+          (enableColumnResizingEnabled ? w.enableColumnResizing == enableColumnResizing : true) &&
+          (enableCheckboxesEnabled ? w.enableCheckboxes == enableCheckboxes : true) &&
+          (showPaginationControlsEnabled ? w.showPaginationControls == showPaginationControls : true),
+    );
+  }
 
   @override
   State<MyoroTable<T>> createState() => _MyoroTableState<T>();

@@ -34,18 +34,18 @@ void main() {
     );
 
     // [_TitleOption].
-    expect(myoroInputFinder(label: '[MyoroCard.title]'), findsOneWidget);
+    expect(MyoroInput.finder(label: '[MyoroCard.title]', labelEnabled: true), findsOneWidget);
 
     // [_TitleTextStyleOption].
-    expect(myoroSingularDropdownFinder(label: '[MyoroCard.titleTextStyle]'), findsOneWidget);
+    expect(MyoroSingularDropdown.finder(label: '[MyoroCard.titleTextStyle]', labelEnabled: true), findsOneWidget);
 
     // [_PaddingOption].
-    expect(myoroSliderFinder(label: '[MyoroCard.padding]', maxValue: 50), findsOneWidget);
+    expect(MyoroSlider.finder(label: '[MyoroCard.padding]', labelEnabled: true, maxValue: 50, maxValueEnabled: true), findsOneWidget);
 
     // [_WidthOption].
-    expect(myoroInputFinder(label: '[MyoroCard.width]'), findsOneWidget);
+    expect(MyoroInput.finder(label: '[MyoroCard.width]', labelEnabled: true), findsOneWidget);
 
     // [_HeightOption].
-    expect(myoroInputFinder(label: '[MyoroCard.height]'), findsOneWidget);
+    expect(MyoroInput.finder(label: '[MyoroCard.height]', labelEnabled: true), findsOneWidget);
   });
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Validation function that is executed before [MyoroFormRequest].
@@ -52,6 +52,32 @@ final class MyoroForm<T> extends StatefulWidget {
     this.onError,
     required this.builder,
   });
+
+  static Finder finder<T>({
+    MyoroFormController? controller,
+    bool controllerEnabled = false,
+    MyoroFormValidation? validation,
+    bool validationEnabled = false,
+    MyoroFormRequest<T>? request,
+    bool requestEnabled = false,
+    MyoroFormOnSuccess<T>? onSuccess,
+    bool onSuccessEnabled = false,
+    MyoroFormOnError? onError,
+    bool onErrorEnabled = false,
+    MyoroFormBuilder? builder,
+    bool builderEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroForm<T> &&
+          (controllerEnabled ? w.controller == controller : true) &&
+          (validationEnabled ? w.validation == validation : true) &&
+          (requestEnabled ? w.request == request : true) &&
+          (onSuccessEnabled ? w.onSuccess == onSuccess : true) &&
+          (onErrorEnabled ? w.onError == onError : true) &&
+          (builderEnabled ? w.builder == builder : true),
+    );
+  }
 
   @override
   State<MyoroForm<T>> createState() => _MyoroFormState<T>();

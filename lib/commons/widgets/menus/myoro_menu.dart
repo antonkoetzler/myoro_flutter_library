@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Returns a [List<T>] of the filtered items given the query.
@@ -8,7 +9,7 @@ typedef MyoroMenuSearchCallback<T> = List<T> Function(String query, List<T> item
 typedef MyoroMenuItemBuilder<T> = MyoroMenuItem Function(T item);
 
 /// A menu widget that should not be used in production code, it is used
-/// within [MyoroDropdown] & [MyoroInput] similar to the software dmenu.
+/// within [_MyoroDropdown] & [MyoroInput] similar to the software dmenu.
 final class MyoroMenu<T> extends StatelessWidget {
   /// Constraints of the menu.
   final BoxConstraints? constraints;
@@ -31,6 +32,26 @@ final class MyoroMenu<T> extends StatelessWidget {
     required this.dataConfiguration,
     required this.itemBuilder,
   });
+
+  static Finder finder<T>({
+    BoxConstraints? constraints,
+    bool constraintsEnabled = false,
+    MyoroMenuSearchCallback<T>? searchCallback,
+    bool searchCallbackEnabled = false,
+    MyoroDataConfiguration<T>? dataConfiguration,
+    bool dataConfigurationEnabled = false,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+    bool itemBuilderEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroMenu<T> &&
+          (constraintsEnabled ? w.constraints == constraints : true) &&
+          (searchCallbackEnabled ? w.searchCallback == searchCallback : true) &&
+          (dataConfigurationEnabled ? w.dataConfiguration == dataConfiguration : true) &&
+          (itemBuilderEnabled ? w.itemBuilder == itemBuilder : true),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

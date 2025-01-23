@@ -1,6 +1,7 @@
 // Unit test for [MyoroTableController].
 
 import 'package:faker/faker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -91,7 +92,9 @@ void main() {
   });
 
   test('MyoroTableController.isRowSelected', () {
-    print('One day I will find this stupid fucking error, rows.length: ${rows.length}');
+    if (kDebugMode) {
+      print('One day I will find this stupid fucking error, rows.length: ${rows.length}');
+    }
     controller.selectRows([rows.first]);
     expect(controller.isRowSelected(rows.first), isTrue);
     expect(

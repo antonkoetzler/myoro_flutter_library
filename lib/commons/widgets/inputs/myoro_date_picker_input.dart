@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/intl.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -8,6 +9,68 @@ final class MyoroDatePickerInput extends StatefulWidget {
   final MyoroInputConfiguration configuration;
 
   const MyoroDatePickerInput({super.key, required this.configuration});
+
+  static Finder finder({
+    MyoroInputConfiguration? configuration,
+    bool configurationEnabled = false,
+    MyoroInputStyleEnum? inputStyle,
+    bool inputStyleEnabled = false,
+    TextAlign? textAlign,
+    bool textAlignEnabled = false,
+    TextStyle? inputTextStyle,
+    bool inputTextStyleEnabled = false,
+    String? label,
+    bool labelEnabled = false,
+    String? placeholder,
+    bool placeholderEnabled = false,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleEnabled = false,
+    Widget? suffix,
+    bool suffixEnabled = false,
+    bool? enabled,
+    bool enabledEnabled = false,
+    bool? readOnly,
+    bool readOnlyEnabled = false,
+    bool? showClearTextButton,
+    bool showClearTextButtonEnabled = false,
+    MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedEnabled = false,
+    MyoroInputValidation? validation,
+    bool validationEnabled = false,
+    MyoroInputOnFieldSubmitted? onFieldSubmitted,
+    bool onFieldSubmittedEnabled = false,
+    MyoroInputOnChanged? onChanged,
+    bool onChangedEnabled = false,
+    VoidCallback? onCleared,
+    bool onClearedEnabled = false,
+    FocusNode? focusNode,
+    bool focusNodeEnabled = false,
+    TextEditingController? controller,
+    bool controllerEnabled = false,
+  }) {
+    return find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroDatePickerInput &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (inputStyleEnabled ? w.configuration.inputStyle == inputStyle : true) &&
+          (textAlignEnabled ? w.configuration.textAlign == textAlign : true) &&
+          (inputTextStyleEnabled ? w.configuration.inputTextStyle == inputTextStyle : true) &&
+          (labelEnabled ? w.configuration.label == label : true) &&
+          (placeholderEnabled ? w.configuration.placeholder == placeholder : true) &&
+          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
+          (suffixEnabled ? w.configuration.suffix == suffix : true) &&
+          (enabledEnabled ? w.configuration.enabled == enabled : true) &&
+          (readOnlyEnabled ? w.configuration.readOnly == readOnly : true) &&
+          (showClearTextButtonEnabled ? w.configuration.showClearTextButton == showClearTextButton : true) &&
+          (checkboxOnChangedEnabled ? w.configuration.checkboxOnChanged == checkboxOnChanged : true) &&
+          (validationEnabled ? w.configuration.validation == validation : true) &&
+          (onFieldSubmittedEnabled ? w.configuration.onFieldSubmitted == onFieldSubmitted : true) &&
+          (onChangedEnabled ? w.configuration.onChanged == onChanged : true) &&
+          (onClearedEnabled ? w.configuration.onCleared == onCleared : true) &&
+          (focusNodeEnabled ? w.configuration.focusNode == focusNode : true) &&
+          (controllerEnabled ? w.configuration.controller == controller : true),
+    );
+  }
 
   @override
   State<MyoroDatePickerInput> createState() => _MyoroDatePickerInputState();
