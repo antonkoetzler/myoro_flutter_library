@@ -207,14 +207,17 @@ final class _Input extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroInput(
-      configuration: MyoroInputConfiguration(
-        label: label,
-        inputStyle: context.resolveThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>().inputStyle,
-        onChanged: onChanged,
-        checkboxOnChanged: checkboxOnChanged,
-        enabled: enabled,
-        controller: controller,
+    return SizedBox(
+      width: 300,
+      child: MyoroInput(
+        configuration: MyoroInputConfiguration(
+          label: label,
+          inputStyle: context.resolveThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>().inputStyle,
+          onChanged: onChanged,
+          checkboxOnChanged: checkboxOnChanged,
+          enabled: enabled,
+          controller: controller,
+        ),
       ),
     );
   }

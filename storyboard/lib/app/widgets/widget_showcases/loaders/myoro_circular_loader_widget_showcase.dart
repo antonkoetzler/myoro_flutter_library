@@ -66,7 +66,7 @@ final class _ColorOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Color>(
       configuration: MyoroDropdownConfiguration(
-        label: '[MyoroCircularLoader.color]',
+        label: 'Color',
         enabled: false,
         dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
         itemBuilder: _itemBuilder,
@@ -125,6 +125,7 @@ final class _SizeOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>();
 
     return MyoroSlider(
+      label: 'Size',
       maxValue: bloc.state.size + 500,
       onChanged: (double value) => bloc.add(SetSizeEvent(value)),
     );

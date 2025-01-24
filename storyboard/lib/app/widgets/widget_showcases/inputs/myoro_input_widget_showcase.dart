@@ -113,8 +113,15 @@ final class _FormatterOption extends StatefulWidget {
 }
 
 final class _FormatterOptionState extends State<_FormatterOption> {
-  late final _bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<MyoroInputWidgetShowcaseEnum>(_bloc.state.typeEnum);
+  late final MyoroInputWidgetShowcaseBloc _bloc;
+  late final MyoroSingularDropdownController<MyoroInputWidgetShowcaseEnum> _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
+    _controller = MyoroSingularDropdownController(_bloc.state.typeEnum);
+  }
 
   @override
   void dispose() {
@@ -187,8 +194,15 @@ final class _InputStyleOption extends StatefulWidget {
 }
 
 final class _InputStyleOptionState extends State<_InputStyleOption> {
-  late final _bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<MyoroInputStyleEnum>(_bloc.state.inputStyle);
+  late final MyoroInputWidgetShowcaseBloc _bloc;
+  late final MyoroSingularDropdownController<MyoroInputStyleEnum> _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
+    _controller = MyoroSingularDropdownController(_bloc.state.inputStyle);
+  }
 
   String _getStyleName(MyoroInputStyleEnum item) {
     return switch (item) {
@@ -317,7 +331,7 @@ final class _PlaceholderOption extends StatelessWidget {
 
     return MyoroInput(
       configuration: MyoroInputConfiguration(
-        label: '[label]',
+        label: '[placeholder]',
         inputStyle: context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>().inputStyle,
         onChanged: (String text) => bloc.add(SetPlaceholderEvent(text)),
         checkboxOnChanged: (bool enabled, String text) => bloc.add(SetPlaceholderEvent(enabled ? text : null)),

@@ -102,7 +102,7 @@ final class _LabelOption extends StatelessWidget {
 
     return MyoroInput(
       configuration: MyoroInputConfiguration(
-        label: '[MyoroDropdownConfiguration.label]',
+        label: 'Label',
         onChanged: (String text) => bloc.add(SetLabelEvent(text)),
       ),
     );
@@ -123,7 +123,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroDropdownConfiguration(
-        label: '[MyoroDropdownConfiguration.labelTextStyle]',
+        label: 'Label text style',
         dataConfiguration: dataConfiguration,
         itemBuilder: (TextStyle textStyle) => _itemBuilder(typographyInstance, textStyle),
         itemLabelBuilder: typographyInstance.getTextStyleName,
@@ -147,7 +147,7 @@ final class _EnabledOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroDropdownWidgetShowcasesBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroConfiguration.enabled]',
+      label: 'Enabled',
       initialValue: bloc.state.enabled,
       onChanged: (bool value) => bloc.add(SetEnabledEvent(value)),
     );
@@ -162,7 +162,7 @@ final class _AllowItemClearingOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroDropdownWidgetShowcasesBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroDropdownConfiguration.allowItemClearing]',
+      label: 'Allow item clearing?',
       initialValue: bloc.state.allowItemClearing,
       onChanged: (bool value) => bloc.add(SetAllowItemClearingEvent(value)),
     );
@@ -178,7 +178,7 @@ final class _MenuMaxHeightOption extends StatelessWidget {
 
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
-        label: '[MyoroDropdownConfiguration.menuMaxHeight]',
+        label: 'Menu\'s max height',
         onChanged: (String text) => bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
         checkboxOnChanged: (bool enabled, String text) => bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
       ),
@@ -195,7 +195,7 @@ final class _MenuSearchCallbackEnabledOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroDropdownWidgetShowcasesBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroDropdownConfiguration.menuSearchCallback] enabled?',
+      label: 'Searching enabled?',
       initialValue: bloc.state.menuSearchCallbackEnabled,
       onChanged: (bool value) => bloc.add(SetMenuSearchCallbackEnabledEvent(value)),
     );

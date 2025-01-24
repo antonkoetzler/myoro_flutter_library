@@ -88,7 +88,7 @@ final class _TypeEnumOptionState extends State<_TypeEnumOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroSingularDropdown(
+    return MyoroSingularDropdown<MyoroPieGraphEnum>(
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroPieGraph.typeEnum]',
         allowItemClearing: false,
