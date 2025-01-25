@@ -1,11 +1,5 @@
  TODO
 
-## Current
-
-1. GitHub testing/coverage action;
-
-## Future
-
 1. `README.md` documentation;
 1. Routing;
 1. HTTP helper;
