@@ -1,4 +1,4 @@
-name: MyoroFlutterLibrary tests
+name: Dart fix & format checks
 
 on:
   push:
