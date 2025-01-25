@@ -27,21 +27,14 @@ enum _ResultEnum {
 }
 
 /// Widget showcase of [MyoroResolver].
-final class MyoroResolverWidgetShowcase extends StatelessWidget {
+final class MyoroResolverWidgetShowcase extends StatefulWidget {
   const MyoroResolverWidgetShowcase({super.key});
 
   @override
-  Widget build(BuildContext context) => const WidgetShowcase(widget: _Widget());
+  State<MyoroResolverWidgetShowcase> createState() => _MyoroResolverWidgetShowcaseState();
 }
 
-final class _Widget extends StatefulWidget {
-  const _Widget();
-
-  @override
-  State<_Widget> createState() => _WidgetState();
-}
-
-final class _WidgetState extends State<_Widget> {
+final class _MyoroResolverWidgetShowcaseState extends State<MyoroResolverWidgetShowcase> {
   final _resultEnumNotifier = ValueNotifier<_ResultEnum>(_ResultEnum.success);
 
   void _showSnackBar(

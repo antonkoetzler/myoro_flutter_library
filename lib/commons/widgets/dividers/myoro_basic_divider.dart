@@ -12,9 +12,20 @@ final class MyoroBasicDivider extends StatelessWidget {
   static Finder finder({
     MyoroBasicDividerConfiguration? configuration,
     bool configurationEnabled = false,
+    Axis? direction,
+    bool directionEnabled = false,
+    double? shortValue,
+    bool shortValueEnabled = false,
+    EdgeInsets? padding,
+    bool paddingEnabled = false,
   }) {
     return find.byWidgetPredicate(
-      (Widget w) => w is MyoroBasicDivider && (configurationEnabled ? w.configuration == configuration : true),
+      (Widget w) =>
+          w is MyoroBasicDivider &&
+          (configurationEnabled ? w.configuration == configuration : true) &&
+          (directionEnabled ? w.configuration.direction == direction : true) &&
+          (shortValueEnabled ? w.configuration.shortValue == shortValue : true) &&
+          (paddingEnabled ? w.configuration.padding == padding : true),
     );
   }
 

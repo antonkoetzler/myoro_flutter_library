@@ -31,7 +31,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final columns = List.generate(
-      faker.randomGenerator.integer(10, min: 1),
+      2,
       (int index) => MyoroTableColumn.fake().copyWith(
         ordenationCallback: index == 0 ? () => {} : null,
       ),
