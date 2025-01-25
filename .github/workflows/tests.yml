@@ -26,38 +26,34 @@ jobs:
 
       # Download project dependencies.
       - name: Update dependencies of package
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 5
-          retry_wait_seconds: 5
-          max_attempts: 1
-          retry_on: error
-          command: flutter pub get
+        run: flutter pub get
 
       # Dart fix check.
       - name: Dart fix check (fails if fixes exists)
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 5
-          retry_wait_seconds: 5
-          max_attempts: 1
-          command: dart fix --dry-run .
+        run: dart fix --dry-run .
 
       # Dart format check.
       - name: Dart format check (fails if not formatted)
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 5
-          retry_wait_seconds: 5
-          max_attempts: 1
-          command: dart format --line-length 160 -o none --set-exit-if-changed .
+        run: dart format --line-length 160 -o none --set-exit-if-changed .
 
-      # Cria um retry para o comando flutter test, caso ocorra algum erro
+      # Run tests.
       - name: Run unit tests of package
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 30
-          retry_wait_seconds: 5
-          max_attempts: 1
-          retry_on: error
-          command: flutter test
+        run: flutter test --coverage
+
+      # Install LCOV for code coverage.
+      - name: Run unit tests of package
+        run: sudo apt-get install lcov
+
+      # General LCOV report from --coverage flag in Flutter test.
+      - name: Generate coverage report
+        run: lcov --summary coverage/lcov.info
+
+      # Assert that there is over 70% code coverage.
+      - name: Check coverage threshold
+        run: |
+          COVERAGE=$(lcov --summary coverage/lcov.info | grep lines | awk '{print $2}' | sed 's/%//')
+          echo "Coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < 70" | bc -l) )); then
+            echo "Code coverage is below the required 70% threshold."
+            exit 1
+          fi
