@@ -1,11 +1,11 @@
 <h1 align='center'>Coding practices & habits</h1>
 
-<h2 align='center'>Formatter & auto-fixing code</h2>
+## Formatter & auto-fixing code
 
 1. Always have auto-format enabled;
 1. Before pushing anything run `dart tools/format_and_fix.dart`.
 
-<h2 align='center'>Object creation</h2>
+## Object creation
 
 1. Models:
 
