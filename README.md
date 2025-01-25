@@ -38,9 +38,9 @@ dependencies:
 
 ## Wiki chapters
 
-1. [Coding practices & habits](qwe);
-1. [Nomenclature](qwe);
-1. [Mental checklist when developing](qwe);
+1. [Coding practices & habits](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/docs/Coding_practices_%26_habits.md);
+1. [Nomenclature](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/docs/Mental_checklist_when_developing.md);
+1. [Mental checklist when developing](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/docs/Nomenclature.md);
 
 <p>&nbsp;</p>
 
