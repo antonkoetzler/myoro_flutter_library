@@ -54,7 +54,7 @@ final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
         Flexible(
           child: Container(
             color: themeExtension.primaryColor,
-            // padding: themeExtension.contentPadding,
+            padding: themeExtension.contentPadding,
             child: child,
           ),
         ),
