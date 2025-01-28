@@ -47,7 +47,7 @@ void main() {
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroMaterialApp && w.themeMode == themeMode && w.home.appBar != null && w.home.body == null,
+        (Widget w) => w is MyoroMaterialApp && w.themeMode == themeMode && (w.home as MyoroScreen).appBar != null && (w.home as MyoroScreen).body == null,
       ),
       findsOneWidget,
     );
@@ -60,7 +60,7 @@ void main() {
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroMaterialApp && w.themeMode == themeMode && w.home.appBar == null && w.home.body != null,
+        (Widget w) => w is MyoroMaterialApp && w.themeMode == themeMode && (w.home as MyoroScreen).appBar == null && (w.home as MyoroScreen).body != null,
       ),
       findsOneWidget,
     );
