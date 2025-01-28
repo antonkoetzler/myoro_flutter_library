@@ -39,6 +39,7 @@ void main() {
     (WidgetTester tester) async {
       final themeExtension = await pumpWidget(tester, MyoroScrollableEnum.singleChildScrollView);
       expect(find.byType(MyoroScrollable), findsOneWidget);
+      expect(find.byType(MyoroLayoutBuilder), findsOneWidget);
       expect(
         find.byWidgetPredicate(
           (Widget w) =>
@@ -46,7 +47,8 @@ void main() {
               w.scrollDirection == direction &&
               w.child is Padding &&
               (w.child as Padding).padding == (padding ?? themeExtension.padding) &&
-              (direction.isVertical ? (w.child as Padding).child is Column : (w.child as Padding).child is Row),
+              (w.child as Padding).child is SizedBox &&
+              (direction.isVertical ? ((w.child as Padding).child as SizedBox).child is Column : ((w.child as Padding).child as SizedBox).child is Row),
         ),
         findsOneWidget,
       );

@@ -108,13 +108,20 @@ final class _SingleChildScrollView extends StatelessWidget {
       },
     ).toList();
 
-    return SingleChildScrollView(
-      controller: _scrollController,
-      scrollDirection: _direction,
-      child: Padding(
-        padding: _padding ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().padding,
-        child: _direction.isVertical ? Column(children: children) : Row(children: children),
-      ),
+    return MyoroLayoutBuilder(
+      builder: (_, BoxConstraints constraints) {
+        return SingleChildScrollView(
+          controller: _scrollController,
+          scrollDirection: _direction,
+          child: Padding(
+            padding: _padding ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().padding,
+            child: SizedBox(
+              width: constraints.maxWidth,
+              child: _direction.isVertical ? Column(children: children) : Row(children: children),
+            ),
+          ),
+        );
+      },
     );
   }
 }
