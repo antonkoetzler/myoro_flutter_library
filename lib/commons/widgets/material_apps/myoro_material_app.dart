@@ -21,6 +21,12 @@ final class MyoroMaterialApp extends StatelessWidget {
   /// Will not override the Myoro [ThemeExtension]s.
   final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
 
+  /// Localization delegate setup.
+  final Iterable<LocalizationsDelegate>? localizationsDelegates;
+
+  /// Supported setups in localization setup.
+  final Iterable<Locale>? supportedLocales;
+
   /// Entry point for the application.
   final Widget home;
 
@@ -29,6 +35,8 @@ final class MyoroMaterialApp extends StatelessWidget {
     this.title,
     this.themeMode,
     this.themeExtensionsBuilder,
+    this.localizationsDelegates,
+    this.supportedLocales,
     required this.home,
   });
 
@@ -61,6 +69,8 @@ final class MyoroMaterialApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false, // To not show the "Debug" banner at the top right of the screen.
         title: title,
+        localizationsDelegates: localizationsDelegates,
+        supportedLocales: supportedLocales ?? const <Locale>[Locale('en', 'US')],
         home: Builder(
           builder: (context) {
             MyoroTypographyTheme.textTheme = context.textTheme;
