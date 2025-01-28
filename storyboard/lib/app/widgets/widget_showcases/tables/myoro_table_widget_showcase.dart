@@ -34,6 +34,7 @@ final class _Widget extends StatelessWidget {
       2,
       (int index) => MyoroTableColumn.fake().copyWith(
         title: faker.randomGenerator.string(10),
+        widthConfiguration: MyoroTableColumnWidth(columnWidthEnum: MyoroTableColumnWidthEnum.flexible),
         ordenationCallback: index == 0 ? () => {} : null,
       ),
     );

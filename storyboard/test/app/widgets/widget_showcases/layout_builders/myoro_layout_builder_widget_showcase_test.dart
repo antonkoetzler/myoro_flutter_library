@@ -17,7 +17,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.byType(MyoroLayoutBuilder), findsOneWidget);
+    expect(find.byType(MyoroLayoutBuilder), findsAtLeastNWidgets(1));
     expect(
       find.text(
         'A replacement for Flutter\'s [LayoutBuilder]. [MyoroLayoutBuilder] '

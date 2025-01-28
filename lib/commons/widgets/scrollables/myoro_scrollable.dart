@@ -115,8 +115,13 @@ final class _SingleChildScrollView extends StatelessWidget {
           scrollDirection: _direction,
           child: Padding(
             padding: _padding ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().padding,
+            // This [SizedBox] is used to stretch the cross axis of the [MyoroScrollable]
+            // so that [_constraints] will not affect the dimensions of the [MyoroScrollable].
+            // If you want to change the dimensions of the [MyoroScrollable], a [SizedBox]
+            // wrapping said [MyoroScrollable] must be used.
             child: SizedBox(
-              width: constraints.maxWidth,
+              width: _direction.isVertical ? constraints.maxWidth : null,
+              height: _direction.isHorizontal ? constraints.maxHeight : null,
               child: _direction.isVertical ? Column(children: children) : Row(children: children),
             ),
           ),
