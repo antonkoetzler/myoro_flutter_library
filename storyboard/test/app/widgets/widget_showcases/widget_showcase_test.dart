@@ -90,9 +90,9 @@ void main() {
             w is IntrinsicWidth &&
             w.child is Padding &&
             (w.child as Padding).padding == themeExtension.widgetOptionsPadding &&
-            (w.child as Padding).child is MyoroScrollable &&
-            ((w.child as Padding).child as MyoroScrollable).scrollableType.isSingleChildScrollView &&
-            ((w.child as Padding).child as MyoroScrollable).children.length == widgetOptions.length,
+            (w.child as Padding).child is SingleChildScrollView &&
+            ((w.child as Padding).child as SingleChildScrollView).child is Column &&
+            (((w.child as Padding).child as SingleChildScrollView).child as Column).children.length == widgetOptions.length,
       ),
       findsOneWidget,
     );

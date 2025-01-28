@@ -114,23 +114,24 @@ final class _WidgetOptions extends StatelessWidget {
     return IntrinsicWidth(
       child: Padding(
         padding: themeExtension.widgetOptionsPadding,
-        child: MyoroScrollable(
-          scrollableType: MyoroScrollableEnum.singleChildScrollView,
-          children: _widgetOptions.map<Widget>(
-            (Widget widgetOption) {
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(child: widgetOption),
-                  if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
-                    _Divider(
-                      direction: Axis.horizontal,
-                      padding: themeExtension.widgetOptionsDividerPadding,
-                    ),
-                ],
-              );
-            },
-          ).toList(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: _widgetOptions.map<Widget>(
+              (Widget widgetOption) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(child: widgetOption),
+                    if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
+                      _Divider(
+                        direction: Axis.horizontal,
+                        padding: themeExtension.widgetOptionsDividerPadding,
+                      ),
+                  ],
+                );
+              },
+            ).toList(),
+          ),
         ),
       ),
     );

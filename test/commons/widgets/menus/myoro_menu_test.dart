@@ -149,8 +149,8 @@ void main() {
             (w.child as Column).children.length == 2 &&
             // (w.child as Column).children.first is _SearchBar &&
             (w.child as Column).children.last is Flexible &&
-            ((w.child as Column).children.last as Flexible).child is MyoroScrollable &&
-            (((w.child as Column).children.last as Flexible).child as MyoroScrollable).scrollableType.isSingleChildScrollView,
+            ((w.child as Column).children.last as Flexible).child is SingleChildScrollView &&
+            (((w.child as Column).children.last as Flexible).child as SingleChildScrollView).child is Column,
       ),
       findsOneWidget,
     );

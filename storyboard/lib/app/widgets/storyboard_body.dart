@@ -65,31 +65,32 @@ final class _WidgetListingState extends State<_WidgetListing> {
     return ValueListenableBuilder(
       valueListenable: _widgetCategoryShowingNotifier,
       builder: (_, __, ___) {
-        return MyoroScrollable(
-          scrollableType: MyoroScrollableEnum.singleChildScrollView,
-          children: WidgetListingEnum.values.map(
-            (WidgetListingEnum value) {
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _WidgetListingCategory(
-                    category: value.widgetCategory,
-                    widgetNames: value.widgetNames,
-                    widgetCategoryShowingNotifier: _widgetCategoryShowingNotifier,
-                    onPressWidget: (String widgetName) => widget.widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
-                  ),
-                  if (value != WidgetListingEnum.values.last)
-                    MyoroBasicDivider(
-                      configuration: MyoroBasicDividerConfiguration(
-                        direction: Axis.horizontal,
-                        shortValue: themeExtension.widgetListingCategoryDividerShortValue,
-                        padding: themeExtension.widgetListingCategoryDividerPadding,
-                      ),
+        return SingleChildScrollView(
+          child: Column(
+            children: WidgetListingEnum.values.map(
+              (WidgetListingEnum value) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _WidgetListingCategory(
+                      category: value.widgetCategory,
+                      widgetNames: value.widgetNames,
+                      widgetCategoryShowingNotifier: _widgetCategoryShowingNotifier,
+                      onPressWidget: (String widgetName) => widget.widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
                     ),
-                ],
-              );
-            },
-          ).toList(),
+                    if (value != WidgetListingEnum.values.last)
+                      MyoroBasicDivider(
+                        configuration: MyoroBasicDividerConfiguration(
+                          direction: Axis.horizontal,
+                          shortValue: themeExtension.widgetListingCategoryDividerShortValue,
+                          padding: themeExtension.widgetListingCategoryDividerPadding,
+                        ),
+                      ),
+                  ],
+                );
+              },
+            ).toList(),
+          ),
         );
       },
     );

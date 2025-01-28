@@ -168,10 +168,6 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
       bodyTextStyle: textTheme.bodyMedium!,
       bodySpacing: 10,
     ),
-    const MyoroScrollableWidgetShowcaseThemeExtension(
-      itemBordered: true,
-      itemPadding: EdgeInsets.all(5),
-    ),
     const MyoroRadioWidgetShowcaseThemeExtension(
       inputStyle: MyoroInputStyleEnum.outlined,
     ),

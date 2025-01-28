@@ -23,7 +23,6 @@ List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextThe
     ...createMyoroRadioThemeExtensions(colorScheme, textTheme),
     ...createMyoroResolverThemeExtensions(),
     ...createMyoroScreenThemeExtensions(),
-    ...createMyoroScrollableThemeExtensions(),
     ...createMyoroSliderThemeExtensions(textTheme),
     ...createMyoroSnackBarThemeExtensions(colorScheme, textTheme),
     ...createMyoroTableThemeExtensions(colorScheme, textTheme),
@@ -318,14 +317,6 @@ List<ThemeExtension> createMyoroResolverThemeExtensions() {
 List<ThemeExtension> createMyoroScreenThemeExtensions() {
   return const [
     MyoroScreenThemeExtension(),
-  ];
-}
-
-List<ThemeExtension> createMyoroScrollableThemeExtensions() {
-  return const [
-    MyoroScrollableThemeExtension(
-      padding: EdgeInsets.zero,
-    ),
   ];
 }
 

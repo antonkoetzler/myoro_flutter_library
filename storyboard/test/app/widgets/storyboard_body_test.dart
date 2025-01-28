@@ -41,7 +41,7 @@ void main() {
     expect(find.byType(ValueListenableBuilder<String?>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroScrollable && w.scrollableType.isSingleChildScrollView && w.children.length == WidgetListingEnum.values.length,
+        (Widget w) => w is SingleChildScrollView && w.child is Column && (w.child as Column).children.length == WidgetListingEnum.values.length,
       ),
       findsOneWidget,
     );

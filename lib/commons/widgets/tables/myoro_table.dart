@@ -427,44 +427,47 @@ final class _Rows<T> extends StatelessWidget {
           return ValueListenableBuilder(
             valueListenable: _columnWidthsNotifier,
             builder: (_, List<double>? columnWidths, __) {
-              return MyoroScrollable(
-                scrollableType: MyoroScrollableEnum.customScrollView,
-                children: builtRows.map<Widget>(
-                  (MyoroTableRow row) {
-                    return MyoroHoverButton(
-                      onPressed: row.onPressed != null ? row.onPressed! : () {},
-                      configuration: themeExtension.rowsButtonConfiguration,
-                      builder: (bool hovered, _, __) {
-                        return Padding(
-                          padding: themeExtension.contentPadding,
-                          // This [SingleChildScrollView] prevents overflows when the table is
-                          // resized and [_columnWidthsNotifier] hasen't been updated yet.
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                for (int i = 0; i < row.cells.length; i++)
-                                  Padding(
-                                    padding: EdgeInsets.only(right: i != _columns.length - 1 ? themeExtension.columnSpacing : 0),
-                                    child: SizedBox(
-                                      width: columnWidths?[i],
-                                      child: Row(
-                                        spacing: themeExtension.rowsCellSpacing,
-                                        children: [
-                                          if (i == 0 && _enableCheckboxes) _RowCheckbox<T>(row, selectedRows.contains(row)),
-                                          Expanded(child: row.cells[i].child),
-                                        ],
+              return CustomScrollView(
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate((_, int index) {
+                      final row = builtRows[index];
+
+                      return MyoroHoverButton(
+                        onPressed: row.onPressed != null ? row.onPressed! : () {},
+                        configuration: themeExtension.rowsButtonConfiguration,
+                        builder: (bool hovered, _, __) {
+                          return Padding(
+                            padding: themeExtension.contentPadding,
+                            // This [SingleChildScrollView] prevents overflows when the table is
+                            // resized and [_columnWidthsNotifier] hasen't been updated yet.
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  for (int i = 0; i < row.cells.length; i++)
+                                    Padding(
+                                      padding: EdgeInsets.only(right: i != _columns.length - 1 ? themeExtension.columnSpacing : 0),
+                                      child: SizedBox(
+                                        width: columnWidths?[i],
+                                        child: Row(
+                                          spacing: themeExtension.rowsCellSpacing,
+                                          children: [
+                                            if (i == 0 && _enableCheckboxes) _RowCheckbox<T>(row, selectedRows.contains(row)),
+                                            Expanded(child: row.cells[i].child),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ).toList(),
+                          );
+                        },
+                      );
+                    }),
+                  ),
+                ],
               );
             },
           );

@@ -32,7 +32,6 @@ void main() {
         ...createMyoroRadioThemeExtensions(colorScheme, textTheme),
         ...createMyoroResolverThemeExtensions(),
         ...createMyoroScreenThemeExtensions(),
-        ...createMyoroScrollableThemeExtensions(),
         ...createMyoroSliderThemeExtensions(textTheme),
         ...createMyoroSnackBarThemeExtensions(colorScheme, textTheme),
         ...createMyoroTableThemeExtensions(colorScheme, textTheme),
@@ -60,7 +59,6 @@ void main() {
   test('createMyoroRadioThemeExtensions', () => expect(createMyoroRadioThemeExtensions(colorScheme, textTheme).length, 2));
   test('createMyoroResolverThemeExtensions', () => expect(createMyoroResolverThemeExtensions().length, 1));
   test('createMyoroScreenThemeExtensions', () => expect(createMyoroScreenThemeExtensions().length, 1));
-  test('createMyoroScrollableThemeExtensions', () => expect(createMyoroScrollableThemeExtensions().length, 1));
   test('createMyoroSliderThemeExtensions', () => expect(createMyoroSliderThemeExtensions(textTheme).length, 1));
   test('createMyoroSnackBarThemeExtensions', () => expect(createMyoroSnackBarThemeExtensions(colorScheme, textTheme).length, 2));
   test('createMyoroTableThemeExtensions', () => expect(createMyoroTableThemeExtensions(colorScheme, textTheme).length, 1));

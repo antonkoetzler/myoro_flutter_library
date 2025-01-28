@@ -11,7 +11,7 @@ void main() {
         createMyoroColorScheme(faker.randomGenerator.boolean()),
         createMyoroTextTheme(faker.randomGenerator.boolean()),
       ).length,
-      34,
+      33,
     );
   });
 }

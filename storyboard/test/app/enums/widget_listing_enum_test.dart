@@ -62,9 +62,6 @@ void main() {
     expect(WidgetListingEnum.screens.widgetCategory, 'Screens');
     expect(WidgetListingEnum.screens.widgetNames, ['MyoroScreen']);
 
-    expect(WidgetListingEnum.scrollables.widgetCategory, 'Scrollables');
-    expect(WidgetListingEnum.scrollables.widgetNames, ['MyoroScrollable']);
-
     expect(WidgetListingEnum.sliders.widgetCategory, 'Sliders');
     expect(WidgetListingEnum.sliders.widgetNames, ['MyoroSlider']);
 
@@ -126,8 +123,6 @@ void main() {
 
     expect(WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroScreenTitle), isA<MyoroScreenWidgetShowcase>());
 
-    expect(WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroScrollableTitle), isA<MyoroScrollableWidgetShowcase>());
-
     expect(WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroSliderTitle), isA<MyoroSliderWidgetShowcase>());
 
     expect(WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroSnackBarTitle), isA<MyoroSnackBarWidgetShowcase>());
@@ -159,7 +154,6 @@ void main() {
     expect(WidgetListingEnum.radios.isRadios, isTrue);
     expect(WidgetListingEnum.resolvers.isResolvers, isTrue);
     expect(WidgetListingEnum.screens.isScreens, isTrue);
-    expect(WidgetListingEnum.scrollables.isScrollables, isTrue);
     expect(WidgetListingEnum.sliders.isSliders, isTrue);
     expect(WidgetListingEnum.snackBars.isSnackBars, isTrue);
     expect(WidgetListingEnum.tables.isTables, isTrue);

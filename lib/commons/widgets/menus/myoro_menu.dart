@@ -135,18 +135,9 @@ final class _ItemsState<T> extends State<_Items<T>> {
         children: [
           if (_searchCallback != null) _SearchBar(_onSearch),
           if (_items.isNotEmpty) ...[
-            Flexible(
-              child: MyoroScrollable(
-                scrollableType: MyoroScrollableEnum.singleChildScrollView,
-                children: _itemWidgets,
-              ),
-            ),
+            Flexible(child: SingleChildScrollView(child: Column(children: _itemWidgets)))
           ] else ...[
-            const Flexible(
-              child: _DialogText(
-                'No items to display.',
-              ),
-            ),
+            const Flexible(child: _DialogText('No items to display.'))
           ],
         ],
       ),

@@ -69,9 +69,6 @@ enum WidgetListingEnum {
   screens('Screens', [
     myoroScreenTitle,
   ]),
-  scrollables('Scrollables', [
-    myoroScrollableTitle,
-  ]),
   sliders('Sliders', [
     myoroSliderTitle,
   ]),
@@ -240,9 +237,6 @@ enum WidgetListingEnum {
       // Screens.
       myoroScreenTitle => const MyoroScreenWidgetShowcase(),
 
-      // Scrollables.
-      myoroScrollableTitle => const MyoroScrollableWidgetShowcase(),
-
       // Sliders.
       myoroSliderTitle => const MyoroSliderWidgetShowcase(),
 
@@ -279,7 +273,6 @@ enum WidgetListingEnum {
   bool get isRadios => this == radios;
   bool get isResolvers => this == resolvers;
   bool get isScreens => this == screens;
-  bool get isScrollables => this == scrollables;
   bool get isSliders => this == sliders;
   bool get isSnackBars => this == snackBars;
   bool get isTables => this == tables;
