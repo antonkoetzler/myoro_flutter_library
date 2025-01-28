@@ -35,7 +35,7 @@ List<ThemeExtension> createMyoroAppBarThemeExtensions(ColorScheme colorScheme) {
   return [
     MyoroAppBarThemeExtension(
       primaryColor: colorScheme.primary,
-      contentPadding: const EdgeInsets.fromLTRB(10, 5, 5, 5),
+      contentPadding: const EdgeInsets.all(5),
     ),
   ];
 }
