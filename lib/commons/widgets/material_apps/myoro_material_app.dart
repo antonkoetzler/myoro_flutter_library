@@ -22,7 +22,7 @@ final class MyoroMaterialApp extends StatelessWidget {
   final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
 
   /// Entry point for the application.
-  final MyoroScreen home;
+  final Widget home;
 
   const MyoroMaterialApp({
     super.key,
