@@ -22,3 +22,9 @@ final class SetPaddingEvent extends MyoroScrollableWidgetShowcaseEvent {
 
   const SetPaddingEvent(this.padding);
 }
+
+final class SetConstraintsEvent extends MyoroScrollableWidgetShowcaseEvent {
+  final BoxConstraints? constraints;
+
+  const SetConstraintsEvent([this.constraints]);
+}

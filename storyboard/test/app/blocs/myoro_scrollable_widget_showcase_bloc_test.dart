@@ -30,4 +30,17 @@ void main() {
     act: (bloc) => bloc.add(SetPaddingEvent(padding)),
     expect: () => [MyoroScrollableWidgetShowcaseState(padding: padding)],
   );
+
+  blocTest(
+    'MyoroScrollableWidgetShowcaseBloc.SetConstraintsEvent',
+    build: () => MyoroScrollableWidgetShowcaseBloc(),
+    act: (bloc) {
+      bloc.add(const SetConstraintsEvent(BoxConstraints()));
+      bloc.add(const SetConstraintsEvent(null));
+    },
+    expect: () => const [
+      MyoroScrollableWidgetShowcaseState(constraints: BoxConstraints()),
+      MyoroScrollableWidgetShowcaseState(constraints: null),
+    ],
+  );
 }

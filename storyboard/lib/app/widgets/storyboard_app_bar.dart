@@ -7,7 +7,7 @@ final class StoryboardAppBar extends StatelessWidget implements PreferredSizeWid
   const StoryboardAppBar({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 5);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
 
   @override
   Widget build(BuildContext context) {

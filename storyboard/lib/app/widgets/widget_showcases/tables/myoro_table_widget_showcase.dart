@@ -33,6 +33,7 @@ final class _Widget extends StatelessWidget {
     final columns = List.generate(
       2,
       (int index) => MyoroTableColumn.fake().copyWith(
+        title: faker.randomGenerator.string(10),
         ordenationCallback: index == 0 ? () => {} : null,
       ),
     );

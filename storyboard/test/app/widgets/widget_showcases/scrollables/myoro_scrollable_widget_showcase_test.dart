@@ -39,5 +39,10 @@ void main() {
       MyoroSlider.finder(label: '[MyoroScrollable.padding]', labelEnabled: true),
       findsOneWidget,
     );
+    expect(find.text('[MyoroScrollable.constraints]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroInput, 'Min width'), findsOneWidget);
+    expect(find.widgetWithText(MyoroInput, 'Max width'), findsOneWidget);
+    expect(find.widgetWithText(MyoroInput, 'Min height'), findsOneWidget);
+    expect(find.widgetWithText(MyoroInput, 'Min height'), findsOneWidget);
   });
 }

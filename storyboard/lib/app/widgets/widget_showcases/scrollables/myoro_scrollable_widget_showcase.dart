@@ -19,6 +19,7 @@ final class MyoroScrollableWidgetShowcase extends StatelessWidget {
           _ScrollableTypeOption(),
           _DirectionOption(),
           _PaddingOption(),
+          _ConstraintsOption(),
         ],
       ),
     );
@@ -176,6 +177,138 @@ final class _PaddingOption extends StatelessWidget {
       initialValue: bloc.state.padding,
       maxValue: 100,
       onChanged: (double value) => bloc.add(SetPaddingEvent(value)),
+    );
+  }
+}
+
+final class _ConstraintsOption extends StatefulWidget {
+  const _ConstraintsOption();
+
+  @override
+  State<_ConstraintsOption> createState() => _ConstraintsOptionState();
+}
+
+final class _ConstraintsOptionState extends State<_ConstraintsOption> {
+  late final MyoroScrollableWidgetShowcaseBloc _bloc;
+
+  final _minWidthController = TextEditingController();
+  final _maxWidthController = TextEditingController();
+  final _minHeightController = TextEditingController();
+  final _maxHeightController = TextEditingController();
+
+  void _event() {
+    final minWidth = double.parse(_minWidthController.text);
+    final maxWidth = double.parse(_maxWidthController.text);
+    final minHeight = double.parse(_minHeightController.text);
+    final maxHeight = double.parse(_maxHeightController.text);
+
+    BoxConstraints? constraints;
+
+    if (minWidth != 0 && maxWidth != 0 && minHeight != 0 && maxHeight != 0) {
+      constraints = BoxConstraints(
+        minWidth: minWidth,
+        maxWidth: maxWidth,
+        minHeight: minHeight,
+        maxHeight: maxHeight,
+      );
+    }
+
+    _bloc.add(SetConstraintsEvent(constraints));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = context.resolveBloc<MyoroScrollableWidgetShowcaseBloc>();
+  }
+
+  @override
+  void dispose() {
+    _minWidthController.dispose();
+    _maxWidthController.dispose();
+    _minHeightController.dispose();
+    _maxHeightController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>();
+    final spacing = themeExtension.spacing;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      spacing: spacing,
+      children: [
+        Text(
+          '[MyoroScrollable.constraints]',
+          style: themeExtension.headerTextStyle,
+        ),
+        SizedBox(height: themeExtension.spacing / 3),
+        Row(
+          spacing: spacing,
+          children: [
+            Expanded(
+              child: _NumberInput(
+                label: 'Min width',
+                controller: _minWidthController,
+                onChanged: (_) => _event(),
+              ),
+            ),
+            Expanded(
+              child: _NumberInput(
+                label: 'Max width',
+                controller: _maxWidthController,
+                onChanged: (_) => _event(),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          spacing: spacing,
+          children: [
+            Expanded(
+              child: _NumberInput(
+                label: 'Min height',
+                controller: _minHeightController,
+                onChanged: (_) => _event(),
+              ),
+            ),
+            Expanded(
+              child: _NumberInput(
+                label: 'Max height',
+                controller: _maxHeightController,
+                onChanged: (_) => _event(),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+final class _NumberInput extends StatelessWidget {
+  final String label;
+  final TextEditingController controller;
+  final void Function(double value) onChanged;
+
+  const _NumberInput({
+    required this.label,
+    required this.controller,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return MyoroInput.number(
+      max: 500,
+      configuration: MyoroInputConfiguration(
+        label: label,
+        controller: controller,
+        inputStyle: context.resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>().inputStyle,
+        onChanged: (String text) => onChanged.call(double.parse(text)),
+      ),
     );
   }
 }

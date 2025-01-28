@@ -15,6 +15,7 @@ final class MyoroScrollableWidgetShowcaseBloc extends Bloc<MyoroScrollableWidget
     on<SetScrollableTypeEvent>(_setScrollableTypeEvent);
     on<SetDirectionEvent>(_setDirectionEvent);
     on<SetPaddingEvent>(_setPaddingEvent);
+    on<SetConstraintsEvent>(_setConstraintsEvent);
   }
 
   void _setScrollableTypeEvent(SetScrollableTypeEvent event, _Emitter emit) {
@@ -37,6 +38,15 @@ final class MyoroScrollableWidgetShowcaseBloc extends Bloc<MyoroScrollableWidget
     emit(
       state.copyWith(
         padding: event.padding,
+      ),
+    );
+  }
+
+  void _setConstraintsEvent(SetConstraintsEvent event, _Emitter emit) {
+    emit(
+      state.copyWith(
+        constraints: event.constraints,
+        constraintsEnabled: event.constraints != null,
       ),
     );
   }

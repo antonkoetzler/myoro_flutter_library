@@ -50,6 +50,7 @@ void main() {
         ),
         findsOneWidget,
       );
+      expect(find.byType(ConstrainedBox), findsAtLeastNWidgets(children.length));
     },
   );
 
@@ -69,6 +70,9 @@ void main() {
         ),
         findsOneWidget,
       );
+      // findsAtLeastWidgets(1) and not findsNWidgets(children.length) because of the
+      // way that [CustomScrollView] hides content that does not need to be rendered.
+      if (children.isNotEmpty) expect(find.byType(ConstrainedBox), findsAtLeastNWidgets(1));
     },
   );
 }

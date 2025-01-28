@@ -10,36 +10,42 @@ final class MyoroScrollable extends StatelessWidget {
   /// Type of list.
   final MyoroScrollableEnum scrollableType;
 
+  /// [ScrollController] when the scrollbar needs to be adjusted programmatically.
+  final ScrollController? scrollController;
+
   /// Direction of the list.
   final Axis direction;
 
   /// Padding of the content within the [MyoroScrollable].
   final EdgeInsets? padding;
 
-  /// [ScrollController] when the scrollbar needs to be adjusted programmatically.
-  final ScrollController? scrollController;
+  /// Constraints of the [MyoroScrollable].
+  final BoxConstraints? constraints;
 
   /// Children inside of the list.
   final List<Widget> children;
 
   const MyoroScrollable({
     super.key,
+    this.scrollController,
     required this.scrollableType,
     this.direction = Axis.vertical,
     this.padding,
-    this.scrollController,
+    this.constraints,
     required this.children,
   });
 
   static Finder finder({
     MyoroScrollableEnum? scrollableType,
     bool scrollableTypeEnabled = false,
+    ScrollController? scrollController,
+    bool scrollControllerEnabled = false,
     Axis? direction,
     bool directionEnabled = false,
     EdgeInsets? padding,
     bool paddingEnabled = false,
-    ScrollController? scrollController,
-    bool scrollControllerEnabled = false,
+    BoxConstraints? constraints,
+    bool constraintsEnabled = false,
     List<Widget>? children,
     bool childrenEnabled = false,
   }) {
@@ -47,9 +53,10 @@ final class MyoroScrollable extends StatelessWidget {
       (Widget w) =>
           w is MyoroScrollable &&
           (scrollableTypeEnabled ? w.scrollableType == scrollableType : true) &&
+          (scrollControllerEnabled ? w.scrollController == scrollController : true) &&
           (directionEnabled ? w.direction == direction : true) &&
           (paddingEnabled ? w.padding == padding : true) &&
-          (scrollControllerEnabled ? w.scrollController == scrollController : true) &&
+          (constraintsEnabled ? w.constraints == constraints : true) &&
           (childrenEnabled ? w.children == children : true),
     );
   }
@@ -57,8 +64,20 @@ final class MyoroScrollable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return switch (scrollableType) {
-      MyoroScrollableEnum.singleChildScrollView => _SingleChildScrollView(scrollController, direction, padding, children),
-      MyoroScrollableEnum.customScrollView => _CustomScrollView(scrollController, direction, padding, children),
+      MyoroScrollableEnum.singleChildScrollView => _SingleChildScrollView(
+          scrollController,
+          direction,
+          padding,
+          constraints,
+          children,
+        ),
+      MyoroScrollableEnum.customScrollView => _CustomScrollView(
+          scrollController,
+          direction,
+          padding,
+          constraints,
+          children,
+        ),
     };
   }
 }
@@ -67,23 +86,34 @@ final class _SingleChildScrollView extends StatelessWidget {
   final ScrollController? _scrollController;
   final Axis _direction;
   final EdgeInsets? _padding;
+  final BoxConstraints? _constraints;
   final List<Widget> _children;
 
   const _SingleChildScrollView(
     this._scrollController,
     this._direction,
     this._padding,
+    this._constraints,
     this._children,
   );
 
   @override
   Widget build(BuildContext context) {
+    final children = _children.map<Widget>(
+      (Widget child) {
+        return ConstrainedBox(
+          constraints: _constraints ?? const BoxConstraints(),
+          child: child,
+        );
+      },
+    ).toList();
+
     return SingleChildScrollView(
       controller: _scrollController,
       scrollDirection: _direction,
       child: Padding(
         padding: _padding ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().padding,
-        child: _direction.isVertical ? Column(children: _children) : Row(children: _children),
+        child: _direction.isVertical ? Column(children: children) : Row(children: children),
       ),
     );
   }
@@ -93,12 +123,14 @@ final class _CustomScrollView extends StatelessWidget {
   final ScrollController? _scrollController;
   final Axis _direction;
   final EdgeInsets? _padding;
+  final BoxConstraints? _constraints;
   final List<Widget> _children;
 
   const _CustomScrollView(
     this._scrollController,
     this._direction,
     this._padding,
+    this._constraints,
     this._children,
   );
 
@@ -112,7 +144,12 @@ final class _CustomScrollView extends StatelessWidget {
           padding: _padding ?? context.resolveThemeExtension<MyoroScrollableThemeExtension>().padding,
           sliver: SliverList.builder(
             itemCount: _children.length,
-            itemBuilder: (_, int index) => _children[index],
+            itemBuilder: (_, int index) {
+              return ConstrainedBox(
+                constraints: _constraints ?? const BoxConstraints(),
+                child: _children[index],
+              );
+            },
           ),
         ),
       ],
