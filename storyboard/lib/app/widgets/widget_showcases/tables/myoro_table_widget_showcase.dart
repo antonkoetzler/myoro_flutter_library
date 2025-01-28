@@ -51,7 +51,7 @@ final class _Widget extends StatelessWidget {
               await Future.delayed(const Duration(seconds: 1));
               return List.generate(
                 faker.randomGenerator.integer(100),
-                (_) => faker.lorem.word(),
+                (_) => faker.randomGenerator.string(10),
               );
             },
           ),

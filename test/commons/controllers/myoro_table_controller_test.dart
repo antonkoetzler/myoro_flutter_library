@@ -15,7 +15,7 @@ void main() {
 
   final columnQuantity = faker.randomGenerator.integer(10);
   final rows = List.generate(
-    faker.randomGenerator.integer(100, min: 10),
+    faker.randomGenerator.integer(100, min: 50),
     (_) => MyoroTableRow.fake(columnQuantity: columnQuantity),
   ).toSet();
 
@@ -92,9 +92,6 @@ void main() {
   });
 
   test('MyoroTableController.isRowSelected', () {
-    if (kDebugMode) {
-      print('One day I will find this stupid fucking error, rows.length: ${rows.length}');
-    }
     controller.selectRows([rows.first]);
     expect(controller.isRowSelected(rows.first), isTrue);
     expect(

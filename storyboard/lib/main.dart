@@ -25,15 +25,15 @@ void main() async {
   runApp(
     BlocProvider(
       create: (_) => WidgetShowcaseBloc(),
-      child: _App(instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!),
+      child: App(instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!),
     ),
   );
 }
 
-final class _App extends StatelessWidget {
+final class App extends StatelessWidget {
   final bool _darkModeEnabled;
 
-  const _App(this._darkModeEnabled);
+  const App(this._darkModeEnabled, {super.key});
 
   @override
   Widget build(BuildContext context) {
