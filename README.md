@@ -44,4 +44,4 @@ dependencies:
 
 <p>&nbsp;</p>
 
-<em align='center'>MFL is a <strong>production ready work in constant progress</strong>. May new tools always be added... Contributions are welcome!</em>
+<h4 align='center'><em>MFL is production ready; however bugs definitely exist. May new tools always be added... Contributions are welcome!</em></h1>
