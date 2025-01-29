@@ -61,6 +61,7 @@ final class MyoroCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         if (title != null) ...[
           _Title(title!, titleTextStyle),

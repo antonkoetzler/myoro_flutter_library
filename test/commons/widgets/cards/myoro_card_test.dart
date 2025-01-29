@@ -46,6 +46,7 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is Column &&
+            w.mainAxisSize == MainAxisSize.min &&
             w.children.length == 3 &&
             w.children[1] is SizedBox &&
             (w.children[1] as SizedBox).height == themeExtension.titleCardSpacing &&
