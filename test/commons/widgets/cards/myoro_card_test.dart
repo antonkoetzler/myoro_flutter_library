@@ -71,7 +71,7 @@ void main() {
             w.padding == (padding ?? themeExtension.padding) &&
             w.decoration ==
                 BoxDecoration(
-                  color: themeExtension.primaryColor,
+                  color: themeExtension.backgroundColor,
                   border: themeExtension.border,
                   borderRadius: themeExtension.borderRadius,
                 ) &&

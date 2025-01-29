@@ -110,7 +110,7 @@ final class _Card extends StatelessWidget {
       height: _height,
       padding: _padding ?? themeExtension.padding,
       decoration: BoxDecoration(
-        color: themeExtension.primaryColor,
+        color: themeExtension.backgroundColor,
         border: themeExtension.border,
         borderRadius: themeExtension.borderRadius,
       ),

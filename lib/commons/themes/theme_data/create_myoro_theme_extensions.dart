@@ -63,7 +63,7 @@ List<ThemeExtension> createMyoroButtonThemeExtensions(ColorScheme colorScheme, T
 List<ThemeExtension> createMyoroCardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroCardThemeExtension(
-      primaryColor: colorScheme.primary,
+      backgroundColor: colorScheme.primary,
       border: Border.all(
         width: kMyoroBorderLength,
         color: colorScheme.onPrimary,

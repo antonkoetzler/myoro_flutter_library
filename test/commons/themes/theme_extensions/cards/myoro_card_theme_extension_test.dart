@@ -18,14 +18,14 @@ void main() {
 
   test('MyoroCardThemeExtension.copyWith', () {
     final copiedThemeExtension = themeExtension1.copyWith(
-      primaryColor: themeExtension2.primaryColor,
+      backgroundColor: themeExtension2.backgroundColor,
       border: themeExtension2.border,
       borderRadius: themeExtension2.borderRadius,
       padding: themeExtension2.padding,
       titleCardSpacing: themeExtension2.titleCardSpacing,
       textStyle: themeExtension2.textStyle,
     );
-    expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
+    expect(copiedThemeExtension.backgroundColor, themeExtension2.backgroundColor);
     expect(copiedThemeExtension.border, themeExtension2.border);
     expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
     expect(copiedThemeExtension.padding, themeExtension2.padding);
@@ -37,8 +37,8 @@ void main() {
     for (double i = 0; i < faker.randomGenerator.integer(1000); i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
-        lerpedThemeExtension.primaryColor,
-        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+        lerpedThemeExtension.backgroundColor,
+        Color.lerp(themeExtension1.backgroundColor, themeExtension2.backgroundColor, i),
       );
       expect(
         lerpedThemeExtension.border,

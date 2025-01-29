@@ -7,7 +7,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] of [MyoroCard].
 final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> {
   /// Background color of the card.
-  final Color primaryColor;
+  final Color backgroundColor;
 
   /// Border of the card.
   final Border border;
@@ -25,7 +25,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
   final TextStyle textStyle;
 
   const MyoroCardThemeExtension({
-    required this.primaryColor,
+    required this.backgroundColor,
     required this.border,
     required this.borderRadius,
     required this.padding,
@@ -34,7 +34,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
   });
 
   MyoroCardThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      : backgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
         border = Border.all(
           width: faker.randomGenerator.integer(50, min: 1).toDouble(),
           color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
@@ -46,7 +46,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
 
   @override
   MyoroCardThemeExtension copyWith({
-    Color? primaryColor,
+    Color? backgroundColor,
     Border? border,
     BorderRadius? borderRadius,
     EdgeInsets? padding,
@@ -54,7 +54,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
     TextStyle? textStyle,
   }) {
     return MyoroCardThemeExtension(
-      primaryColor: primaryColor ?? this.primaryColor,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
       border: border ?? this.border,
       borderRadius: borderRadius ?? this.borderRadius,
       padding: padding ?? this.padding,
@@ -70,7 +70,7 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
   ) {
     if (other is! MyoroCardThemeExtension) return this;
     return copyWith(
-      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
+      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
       border: Border.lerp(border, other.border, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
