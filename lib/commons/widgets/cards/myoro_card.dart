@@ -19,6 +19,9 @@ final class MyoroCard extends StatelessWidget {
   /// Height of [_Card].
   final double? height;
 
+  /// Constraints of [_Card].
+  final BoxConstraints? constraints;
+
   /// Content of the card.
   final Widget child;
 
@@ -29,6 +32,7 @@ final class MyoroCard extends StatelessWidget {
     this.padding,
     this.width,
     this.height,
+    this.constraints,
     required this.child,
   });
 
@@ -43,6 +47,8 @@ final class MyoroCard extends StatelessWidget {
     bool widthEnabled = false,
     double? height,
     bool heightEnabled = false,
+    BoxConstraints? constraints,
+    bool constraintsEnabled = false,
     Widget? child,
     bool childEnabled = false,
   }) {
@@ -54,6 +60,7 @@ final class MyoroCard extends StatelessWidget {
           (paddingEnabled ? w.padding == padding : true) &&
           (widthEnabled ? w.width == width : true) &&
           (heightEnabled ? w.height == height : true) &&
+          (constraintsEnabled ? w.constraints == constraints : true) &&
           (childEnabled ? w.child == child : true),
     );
   }
@@ -67,7 +74,7 @@ final class MyoroCard extends StatelessWidget {
           _Title(title!, titleTextStyle),
           SizedBox(height: context.resolveThemeExtension<MyoroCardThemeExtension>().titleCardSpacing),
         ],
-        Flexible(child: _Card(padding, width, height, child)),
+        Flexible(child: _Card(padding, width, height, constraints, child)),
       ],
     );
   }
@@ -92,12 +99,14 @@ final class _Card extends StatelessWidget {
   final EdgeInsets? _padding;
   final double? _width;
   final double? _height;
+  final BoxConstraints? _constraints;
   final Widget _child;
 
   const _Card(
     this._padding,
     this._width,
     this._height,
+    this._constraints,
     this._child,
   );
 
@@ -108,6 +117,7 @@ final class _Card extends StatelessWidget {
     return Container(
       width: _width,
       height: _height,
+      constraints: _constraints,
       padding: _padding ?? themeExtension.padding,
       decoration: BoxDecoration(
         color: themeExtension.backgroundColor,

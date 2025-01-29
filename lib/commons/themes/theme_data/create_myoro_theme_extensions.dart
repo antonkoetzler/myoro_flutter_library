@@ -70,7 +70,7 @@ List<ThemeExtension> createMyoroCardThemeExtensions(ColorScheme colorScheme, Tex
       ),
       borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       padding: const EdgeInsets.all(10),
-      titleCardSpacing: 5,
+      titleCardSpacing: 10,
       textStyle: textTheme.titleMedium!,
     ),
   ];
