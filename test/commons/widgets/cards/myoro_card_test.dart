@@ -10,6 +10,7 @@ void main() {
   final EdgeInsets? padding = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null;
   final double? width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final double? height = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final BoxConstraints? constraints = faker.randomGenerator.boolean() ? BoxConstraints(maxWidth: faker.randomGenerator.decimal()) : null;
 
   setUp(() {
     MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
@@ -31,6 +32,7 @@ void main() {
               padding: padding,
               width: width,
               height: height,
+              constraints: constraints,
               child: const SizedBox.shrink(),
             );
           },
@@ -69,6 +71,7 @@ void main() {
         (Widget w) =>
             w is Container &&
             w.padding == (padding ?? themeExtension.padding) &&
+            w.constraints == constraints &&
             w.decoration ==
                 BoxDecoration(
                   color: themeExtension.backgroundColor,

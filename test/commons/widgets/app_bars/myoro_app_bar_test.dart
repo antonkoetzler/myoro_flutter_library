@@ -1,12 +1,12 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroAppBar].
 void main() {
-  final borderedNotifier = ValueNotifier<bool>(false);
-
-  tearDown(() => borderedNotifier.dispose());
+  final bool bordered = faker.randomGenerator.boolean();
+  final Color? backgroundColor = faker.randomGenerator.boolean() ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] : null;
 
   testWidgets('MyoroAppBar', (WidgetTester tester) async {
     late final MyoroAppBarThemeExtension themeExtension;
@@ -17,14 +17,10 @@ void main() {
           builder: (BuildContext context) {
             themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
-            return ValueListenableBuilder(
-              valueListenable: borderedNotifier,
-              builder: (_, bool bordered, __) {
-                return MyoroAppBar(
-                  bordered: bordered,
-                  child: const SizedBox.shrink(),
-                );
-              },
+            return MyoroAppBar(
+              bordered: bordered,
+              backgroundColor: backgroundColor,
+              child: const SizedBox.shrink(),
             );
           },
         ),
@@ -37,7 +33,7 @@ void main() {
     // Wrapper
     expect(
       find.byWidgetPredicate(
-        (w) => w is Column && w.mainAxisSize == MainAxisSize.min && w.children.length == 1,
+        (w) => w is Column && w.mainAxisSize == MainAxisSize.min && w.children.length == (bordered ? 2 : 1),
       ),
       findsOneWidget,
     );
@@ -48,18 +44,13 @@ void main() {
         (w) =>
             w is Flexible &&
             w.child is Container &&
-            (w.child as Container).color == themeExtension.primaryColor &&
+            (w.child as Container).color == (backgroundColor ?? themeExtension.primaryColor) &&
             (w.child as Container).padding == themeExtension.contentPadding,
       ),
       findsOneWidget,
     );
 
-    // Since [borderedNotifier.value] is false by default, there shouldn't be a border.
-    expect(find.byType(MyoroBasicDivider), findsNothing);
-
-    // Now there should be a border.
-    borderedNotifier.value = true;
-    await tester.pump();
+    // Border
     expect(
       find.byWidgetPredicate(
         (w) =>
@@ -69,7 +60,7 @@ void main() {
                   direction: Axis.horizontal,
                 ),
       ),
-      findsOneWidget,
+      bordered ? findsOneWidget : findsNothing,
     );
   });
 }

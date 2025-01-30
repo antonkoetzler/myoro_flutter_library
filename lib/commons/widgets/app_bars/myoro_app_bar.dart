@@ -21,6 +21,9 @@ final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// If the app bar contains a border at the bottom.
   final bool bordered;
 
+  /// Background color of the [MyoroAppBar].
+  final Color? backgroundColor;
+
   /// Content of the app bar.
   final Widget child;
 
@@ -30,6 +33,7 @@ final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyoroAppBar({
     super.key,
     this.bordered = false,
+    this.backgroundColor,
     required this.child,
   });
 
@@ -53,7 +57,7 @@ final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         Flexible(
           child: Container(
-            color: themeExtension.primaryColor,
+            color: backgroundColor ?? themeExtension.primaryColor,
             padding: themeExtension.contentPadding,
             child: child,
           ),
