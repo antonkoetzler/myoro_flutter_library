@@ -91,13 +91,14 @@ void main() {
   });
 
   test('MyoroTableController.isRowSelected', () {
-    controller.selectRows([rows.first]);
-    expect(controller.isRowSelected(rows.first), isTrue);
+    final row = MyoroTableRow.fake(columnQuantity: columnQuantity);
+    controller.selectRows([row]);
+    expect(controller.isRowSelected(row), isTrue);
     expect(
       controller.isRowSelected(const MyoroTableRow(cells: [])),
       isFalse,
     );
-    controller.deselectRows(rows.toList());
+    controller.deselectRows([row]);
   });
 
   test('MyoroTableController.clearSelectedRows', () {
