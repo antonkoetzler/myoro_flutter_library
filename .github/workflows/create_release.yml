@@ -1,5 +1,6 @@
 name: Create release
 
+
 on:
   push:
     branches:
@@ -8,6 +9,8 @@ on:
 jobs:
   create_release:
     runs-on: ubuntu-latest
+
+    if: github.actor != 'github-actions'
 
     steps:
       - name: Install actions checkout
@@ -44,11 +47,26 @@ jobs:
           echo "New version: $NEW_VERSION"
           echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
-      # - name: Install flutter using stable channel
-      #   uses: subosito/flutter-action@v2
-      #   with:
-      #     channel: 'stable'
-      #     cache: true
+      - name: Install flutter using stable channel
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
 
-      # - name: Download project dependencies
-      #   run: flutter pub get
+      - name: Update pubspec.yaml version
+        run: |
+          sed -i "s/^version: .*/version: $NEW_VERSION+1/" pubspec.yaml
+          rm pubspec.lock
+          flutter pub get
+
+      - name: Create Git tag and push everything
+        run: |
+          git tag "v$NEW_VERSION"
+          git push origin "v$NEW_VERSION"
+          git push
+
+      - name: Push and finish
+        run: |
+          git add .
+          git commit -m "Deploy $NEW_VERSION"
+          git push origin main -f
