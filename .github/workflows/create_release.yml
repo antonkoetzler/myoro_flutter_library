@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'pubspec.yaml'
 
 jobs:
   create_release:
     runs-on: ubuntu-latest
-
-    if: github.actor != 'github-actions'
 
     steps:
       - name: Checkout target repo
@@ -68,16 +68,6 @@ jobs:
           git checkout -b $branch_name
           git push origin $branch_name
 
-      # - name: Create a pull request
-      #   id: create_pr
-      #   uses: peter-evans/create-pull-request@v7
-      #   with:
-      #     token: ${{ secrets.token }}
-      #     branch: ${{ env.BRANCH_NAME }}
-      #     commit-message: "release: $NEW_VERSION"
-      #     base: main
-      #     title: "release: $NEW_VERSION"
-      #     body: "Automated release PR"
       - name: Create a pull request
         id: create_pr
         uses: peter-evans/create-pull-request@v7
@@ -88,8 +78,3 @@ jobs:
           base: main
           title: "release: ${{ env.NEW_VERSION }}"
           body: "Automated release PR"
-
-      - uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.token }}
-          pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
