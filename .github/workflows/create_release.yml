@@ -82,17 +82,21 @@ jobs:
         with:
           token: ${{ secrets.token }}
           branch: ${{ env.BRANCH_NAME }}
-          commit-message: "release: $NEW_VERSION"
+          commit-message: "release: ${{ NEW_VERSION }}"
           base: main
           title: "release: $NEW_VERSION"
           body: "Automated release PR"
 
-      - name: Approve and merge PR
+      # - name: Approve and merge PR
+      #   run: |
+      #     gh pr review release/$NEW_VERSION --approve
+      #     gh pr merge release/$NEW_VERSION --merge
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.token }}
+      - name: Approve the pull request
         run: |
           gh pr review release/$NEW_VERSION --approve
-          gh pr merge release/$NEW_VERSION --merge
-        env:
-          GITHUB_TOKEN: ${{ secrets.token }}
+        if: github.actor != 'github-actions[bot]'
 
       # - name: Create Git tag and push everything
       #   run: |
