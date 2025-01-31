@@ -87,16 +87,12 @@ jobs:
           title: "release: $NEW_VERSION"
           body: "Automated release PR"
 
-      # - name: Approve and merge PR
-      #   run: |
-      #     gh pr review release/$NEW_VERSION --approve
-      #     gh pr merge release/$NEW_VERSION --merge
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.token }}
-      - name: Approve the pull request
+      - name: Approve and merge PR
         run: |
           gh pr review release/$NEW_VERSION --approve
-        if: github.actor != 'github-actions[bot]'
+          gh pr merge release/$NEW_VERSION --merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
 
       # - name: Create Git tag and push everything
       #   run: |
