@@ -1,0 +1,28 @@
+name: Create release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install actions checkout
+        uses: actions/checkout@v3
+
+      - name: Get current version from pubspec.yaml
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | awk '{ print $2 }')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      # - name: Install flutter using stable channel
+      #   uses: subosito/flutter-action@v2
+      #   with:
+      #     channel: 'stable'
+      #     cache: true
+
+      # - name: Download project dependencies
+      #   run: flutter pub get

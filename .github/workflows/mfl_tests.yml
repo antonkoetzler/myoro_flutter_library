@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  tests:
+  mfl_tests:
     runs-on: ubuntu-latest
     steps:
       - name: Install actions checkout

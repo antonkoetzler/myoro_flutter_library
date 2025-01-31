@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  tests:
+  fix_and_format:
     runs-on: ubuntu-latest
     steps:
       # Get code.
