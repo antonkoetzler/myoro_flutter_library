@@ -58,6 +58,7 @@ jobs:
           sed -i "s/^version: .*/version: $NEW_VERSION+1/" pubspec.yaml
           rm pubspec.lock
           flutter pub get
+          echo "$(cat pubspec.yaml)"
 
       - name: Initialize git for action
         run: |
@@ -76,22 +77,22 @@ jobs:
           git push origin $branch_name
           echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
 
-      - name: Create a pull request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.token }}
-          branch: ${{ env.BRANCH_NAME }}
-          commit-message: "Deploy $NEW_VERSION"
-          base: main
-          title: "release: $NEW_VERSION"
-          body: "Automated release PR"
+      # - name: Create a pull request
+      #   uses: peter-evans/create-pull-request@v7
+      #   with:
+      #     token: ${{ secrets.token }}
+      #     branch: ${{ env.BRANCH_NAME }}
+      #     commit-message: "Deploy $NEW_VERSION"
+      #     base: main
+      #     title: "release: $NEW_VERSION"
+      #     body: "Automated release PR"
 
-      - name: Approve and merge PR
-        run: |
-          gh pr review release/$NEW_VERSION --approve
-          gh pr merge release/$NEW_VERSION --merge
-        env:
-          GITHUB_TOKEN: ${{ secrets.token }}
+      # - name: Approve and merge PR
+      #   run: |
+      #     gh pr review release/$NEW_VERSION --approve
+      #     gh pr merge release/$NEW_VERSION --merge
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.token }}
 
       # - name: Create Git tag and push everything
       #   run: |
