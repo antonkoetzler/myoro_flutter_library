@@ -10,6 +10,8 @@ jobs:
   create_release:
     runs-on: ubuntu-latest
 
+    if: github.actor != 'github-actions'
+
     steps:
       - name: Install actions checkout
         uses: actions/checkout@v3
