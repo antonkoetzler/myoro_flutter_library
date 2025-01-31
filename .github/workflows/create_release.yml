@@ -59,22 +59,33 @@ jobs:
           rm pubspec.lock
           flutter pub get
 
-      - name: Create Git tag and push everything
-        run: |
-          git tag "v$NEW_VERSION"
-          git push origin "v$NEW_VERSION"
-          git push
+      # - name: Initialize git for action
+      #   run: |
+      #     git init
+      #     git config --global user.email "antonkoetzler-faust@hotmail.com"
+      #     git config --global user.name "Anton Koetzler-Faust"
+      #     git remote get-url origin || git remote add origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
+      #     git remote set-url origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
 
-      - name: Initialize git for action
+      - name: Push to a new branch
         run: |
-          git init
-          git config --global user.email "antonkoetzler-faust@hotmail.com"
-          git config --global user.name "Anton Koetzler-Faust"
-          git remote get-url origin || git remote add origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
-          git remote set-url origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
-
-      - name: Push and finish
-        run: |
+          git checkout -b release/$NEW_VERSION
           git add .
-          git commit -m "Deploy $NEW_VERSION"
-          git push origin main -f
+          git commit -m "release: $NEW_VERSION"
+          git push origin release/$NEW_VERSION
+
+      - name: Create a pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.token }}
+          commit-message: "Deploy $NEW_VERSION"
+          branch: release/$NEW_VERSION
+          base: main
+          title: "release: $NEW_VERSION"
+          body: "Automated release PR"
+
+      # - name: Create Git tag and push everything
+      #   run: |
+      #     git tag "v$NEW_VERSION"
+      #     git push origin "v$NEW_VERSION"
+      #     git push
