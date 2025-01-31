@@ -1,21 +1,23 @@
-name: Create release
+name: Create Release PR
 
 on:
   push:
     branches:
       - main
     paths-ignore:
-      - 'pubspec.yaml'
+      - "pubspec.yaml"
 
 jobs:
   create_release:
     runs-on: ubuntu-latest
 
+    if: github.ref == 'refs/heads/main'
+
     steps:
       - name: Checkout target repo
         uses: actions/checkout@v4
         with:
-          repository: 'antonkoetzler/myoro_flutter_library'
+          repository: "antonkoetzler/myoro_flutter_library"
           token: ${{ secrets.TOKEN }}
 
       - name: Get current version from pubspec.yaml
@@ -52,7 +54,7 @@ jobs:
       - name: Install flutter using stable channel
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          channel: "stable"
           cache: true
 
       - name: Update pubspec.yaml version

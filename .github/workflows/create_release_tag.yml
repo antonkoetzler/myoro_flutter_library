@@ -1,0 +1,30 @@
+name: Create Release Tag
+
+on:
+  workflow_run:
+    workflows: ["Create Release PR"]
+    types:
+      - completed
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          repository: 'antonkoetzler/myoro_flutter_library'
+          token: ${{ secrets.token }}
+
+      - name: Get version from pubspec.yaml
+        run: |
+          VERSION=$(grep '^version:' pubspec.yaml | awk '{ print $2 }')
+          echo "Current version is: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Create and push a Git tag
+        run: |
+          git fetch --tags
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
