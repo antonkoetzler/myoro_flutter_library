@@ -59,13 +59,13 @@ jobs:
           rm pubspec.lock
           flutter pub get
 
-      # - name: Initialize git for action
-      #   run: |
-      #     git init
-      #     git config --global user.email "antonkoetzler-faust@hotmail.com"
-      #     git config --global user.name "Anton Koetzler-Faust"
-      #     git remote get-url origin || git remote add origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
-      #     git remote set-url origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
+      - name: Initialize git for action
+        run: |
+          git init
+          git config --global user.email "antonkoetzler-faust@hotmail.com"
+          git config --global user.name "Anton Koetzler-Faust"
+          git remote get-url origin || git remote add origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
+          git remote set-url origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
 
       - name: Push to a new branch
         run: |
@@ -83,6 +83,13 @@ jobs:
           base: main
           title: "release: $NEW_VERSION"
           body: "Automated release PR"
+
+      - name: Approve and merge PR
+        run: |
+          gh pr review release/$NEW_VERSION --approve
+          gh pr merge release/$NEW_VERSION --merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
 
       # - name: Create Git tag and push everything
       #   run: |
