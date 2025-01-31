@@ -69,17 +69,19 @@ jobs:
 
       - name: Push to a new branch
         run: |
-          git checkout -b release/$NEW_VERSION
+          branch_name="release/$NEW_VERSION"
+          git checkout -b $branch_name
           git add .
           git commit -m "release: $NEW_VERSION"
-          git push origin release/$NEW_VERSION
+          git push origin $branch_name
+          echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
 
       - name: Create a pull request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.token }}
+          branch: ${{ env.BRANCH_NAME }}
           commit-message: "Deploy $NEW_VERSION"
-          branch: release/$NEW_VERSION
           base: main
           title: "release: $NEW_VERSION"
           body: "Automated release PR"
