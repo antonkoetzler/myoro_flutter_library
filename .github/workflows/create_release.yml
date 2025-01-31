@@ -68,32 +68,28 @@ jobs:
           git checkout -b $branch_name
           git push origin $branch_name
 
+      # - name: Create a pull request
+      #   id: create_pr
+      #   uses: peter-evans/create-pull-request@v7
+      #   with:
+      #     token: ${{ secrets.token }}
+      #     branch: ${{ env.BRANCH_NAME }}
+      #     commit-message: "release: $NEW_VERSION"
+      #     base: main
+      #     title: "release: $NEW_VERSION"
+      #     body: "Automated release PR"
       - name: Create a pull request
         id: create_pr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.token }}
           branch: ${{ env.BRANCH_NAME }}
-          commit-message: "release: $NEW_VERSION"
+          commit-message: "release: ${{ env.NEW_VERSION }}"
           base: main
-          title: "release: $NEW_VERSION"
+          title: "release: ${{ env.NEW_VERSION }}"
           body: "Automated release PR"
-
-      # - name: Merge pull request
-      #   if: ${{ steps.create_pr.outputs.pull-request-url }}
-      #   uses: peter-evans/merge-pull-request@v3
-      #   with:
-      #     github-token: ${{ secrets.TOKEN }}
-      #     pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
-      #     merge-method: merge  # Options: merge, squash, rebase
 
       - uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.token }}
           pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
-
-      # - name: Create Git tag and push everything
-      #   run: |
-      #     git tag "v$NEW_VERSION"
-      #     git push origin "v$NEW_VERSION"
-      #     git push
