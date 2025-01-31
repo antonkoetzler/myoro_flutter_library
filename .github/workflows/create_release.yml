@@ -79,19 +79,18 @@ jobs:
           title: "release: $NEW_VERSION"
           body: "Automated release PR"
 
-      - name: Approve pull request
-        if: ${{ steps.create_pr.outputs.pull-request-url }}
-        uses: hmarr/auto-approve-action@v4
-        with:
-          github-token: ${{ secrets.TOKEN }}
+      # - name: Merge pull request
+      #   if: ${{ steps.create_pr.outputs.pull-request-url }}
+      #   uses: peter-evans/merge-pull-request@v3
+      #   with:
+      #     github-token: ${{ secrets.TOKEN }}
+      #     pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
+      #     merge-method: merge  # Options: merge, squash, rebase
 
-      - name: Merge pull request
-        if: ${{ steps.create_pr.outputs.pull-request-url }}
-        uses: peter-evans/merge-pull-request@v3
+      - uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          github-token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.token }}
           pull-request-number: ${{ steps.create_pr.outputs.pull-request-number }}
-          merge-method: merge  # Options: merge, squash, rebase
 
       # - name: Create Git tag and push everything
       #   run: |
