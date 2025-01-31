@@ -13,8 +13,11 @@ jobs:
     if: github.actor != 'github-actions'
 
     steps:
-      - name: Install actions checkout
-        uses: actions/checkout@v3
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          repository: 'antonkoetzler/myoro_flutter_library'
+          token: ${{ secrets.TOKEN }}
 
       - name: Get current version from pubspec.yaml
         run: |
@@ -58,41 +61,38 @@ jobs:
           sed -i "s/^version: .*/version: $NEW_VERSION+1/" pubspec.yaml
           rm pubspec.lock
           flutter pub get
-          echo "$(cat pubspec.yaml)"
 
-      - name: Initialize git for action
-        run: |
-          git init
-          git config --global user.email "antonkoetzler-faust@hotmail.com"
-          git config --global user.name "Anton Koetzler-Faust"
-          git remote get-url origin || git remote add origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
-          git remote set-url origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
+      # - name: Initialize git for action
+      #   run: |
+      #     git init
+      #     git config --global user.email "antonkoetzler-faust@hotmail.com"
+      #     git config --global user.name "Anton Koetzler-Faust"
+      #     git remote get-url origin || git remote add origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
+      #     git remote set-url origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
 
       - name: Push to a new branch
         run: |
           branch_name="release/$NEW_VERSION"
-          git checkout -b $branch_name
-          git add .
-          git commit -m "release: $NEW_VERSION"
-          git push origin $branch_name
           echo "BRANCH_NAME=$branch_name" >> $GITHUB_ENV
+          git checkout -b $branch_name
+          git push origin $branch_name
 
-      # - name: Create a pull request
-      #   uses: peter-evans/create-pull-request@v7
-      #   with:
-      #     token: ${{ secrets.token }}
-      #     branch: ${{ env.BRANCH_NAME }}
-      #     commit-message: "Deploy $NEW_VERSION"
-      #     base: main
-      #     title: "release: $NEW_VERSION"
-      #     body: "Automated release PR"
+      - name: Create a pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.token }}
+          branch: ${{ env.BRANCH_NAME }}
+          commit-message: "release: $NEW_VERSION"
+          base: main
+          title: "release: $NEW_VERSION"
+          body: "Automated release PR"
 
-      # - name: Approve and merge PR
-      #   run: |
-      #     gh pr review release/$NEW_VERSION --approve
-      #     gh pr merge release/$NEW_VERSION --merge
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.token }}
+      - name: Approve and merge PR
+        run: |
+          gh pr review release/$NEW_VERSION --approve
+          gh pr merge release/$NEW_VERSION --merge
+        env:
+          GITHUB_TOKEN: ${{ secrets.token }}
 
       # - name: Create Git tag and push everything
       #   run: |
