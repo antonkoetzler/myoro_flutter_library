@@ -65,6 +65,15 @@ jobs:
           git push origin "v$NEW_VERSION"
           git push
 
+      - name: Initialize git for action
+        run: |
+          git init
+          git config --global user.email "antonkoetzler-faust@hotmail.com"
+          git config --global user.name "Anton Koetzler-Faust"
+          git remote get-url origin || git remote add origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
+          git remote set-url origin https://${{secrets.token}}@github.com/antonkoetzler/myoro_flutter_library
+
+
       - name: Push and finish
         run: |
           git add .
