@@ -9,8 +9,6 @@ jobs:
   create_release:
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]')
-
     steps:
       - name: Echo GitHub Actor
         run: |
