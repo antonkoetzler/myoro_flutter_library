@@ -9,7 +9,7 @@ jobs:
   create_release:
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/main' && github.actor != 'github-actions'
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]')
 
     steps:
       - name: Echo GitHub Actor
@@ -73,7 +73,7 @@ jobs:
       - name: Deploy
         run: |
           git add -A
-          git commit --amend -m "Release: $NEW_VERSION"
+          git commit --amend -m "Release: $NEW_VERSION [skip ci]"
           git tag "v$NEW_VERSION"
           git push origin main --force
           git push origin "v$NEW_VERSION"
