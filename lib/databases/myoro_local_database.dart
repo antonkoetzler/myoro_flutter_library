@@ -31,11 +31,13 @@ final class MyoroLocalDatabase {
     /// existing database. WILL DELETE YOUR DATABASE IF USED, YOU ARE WARNED.
     bool cleanRun = false,
   }) async {
+    // Initialize SQLite FFI.
+    databaseFactory = databaseFactoryFfi;
+
     // Path to the database on the computer.
     final formattedPath = join(
       path ?? (await getApplicationSupportDirectory()).path,
-      fileName,
-      '.db',
+      '$fileName.db',
     );
 
     // Opening database at [formattedPath] or creating a new database there.

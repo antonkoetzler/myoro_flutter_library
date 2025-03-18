@@ -4,8 +4,6 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-import '../../test_exports.dart';
-
 void main() {
   final controller = MyoroTableController();
 
@@ -13,11 +11,10 @@ void main() {
   final filters = {filterKeys.first: 1, filterKeys.last: 2};
 
   final columnQuantity = faker.randomGenerator.integer(10);
-  final rows =
-      List.generate(
-        faker.randomGenerator.integer(100, min: 50),
-        (_) => MyoroTableRow.fake(columnQuantity: columnQuantity),
-      ).toSet();
+  final rows = List.generate(
+    faker.randomGenerator.integer(100, min: 50),
+    (_) => MyoroTableRow.fake(columnQuantity: columnQuantity),
+  ).toSet();
 
   setUpAll(() {
     controller.dataConfiguration = MyoroDataConfiguration(
