@@ -4,20 +4,15 @@ final class MyoroBarGraphWidgetShowcaseState extends Equatable {
   /// [MyoroBarGraph.sorted].
   final bool sorted;
 
-  const MyoroBarGraphWidgetShowcaseState({
-    this.sorted = true,
-  });
+  const MyoroBarGraphWidgetShowcaseState({this.sorted = true});
 
-  MyoroBarGraphWidgetShowcaseState copyWith({
-    bool? sorted,
-  }) {
-    return MyoroBarGraphWidgetShowcaseState(
-      sorted: sorted ?? this.sorted,
-    );
+  MyoroBarGraphWidgetShowcaseState copyWith({bool? sorted}) {
+    return MyoroBarGraphWidgetShowcaseState(sorted: sorted ?? this.sorted);
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroBarGraphWidgetShowcaseState(\n'
       '  sorted: $sorted,\n'
       ');';

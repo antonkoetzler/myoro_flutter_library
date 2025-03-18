@@ -12,8 +12,9 @@ void main() {
   late final MyoroHoverButtonWidgetShowcaseThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroHoverButtonWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroHoverButtonWidgetShowcaseThemeExtension.fake();
   });
@@ -33,24 +34,42 @@ void main() {
       borderRadiusSliderMaxValueBordered:
           themeExtension2.borderRadiusSliderMaxValueBordered,
     );
-    expect(copiedThemeExtension.widgetContentPadding,
-        themeExtension2.widgetContentPadding);
-    expect(copiedThemeExtension.widgetContentTextStyle,
-        themeExtension2.widgetContentTextStyle);
-    expect(copiedThemeExtension.colorDropdownitemPrimaryColor,
-        themeExtension2.colorDropdownitemPrimaryColor);
-    expect(copiedThemeExtension.colorDropdownItemPadding,
-        themeExtension2.colorDropdownItemPadding);
-    expect(copiedThemeExtension.colorDropdownItemColorSize,
-        themeExtension2.colorDropdownItemColorSize);
-    expect(copiedThemeExtension.colorDropdownItemColorTextStyle,
-        themeExtension2.colorDropdownItemColorTextStyle);
-    expect(copiedThemeExtension.colorDropdownItemSpacing,
-        themeExtension2.colorDropdownItemSpacing);
-    expect(copiedThemeExtension.borderRadiusSliderMaxValue,
-        themeExtension2.borderRadiusSliderMaxValue);
-    expect(copiedThemeExtension.borderRadiusSliderMaxValueBordered,
-        themeExtension2.borderRadiusSliderMaxValueBordered);
+    expect(
+      copiedThemeExtension.widgetContentPadding,
+      themeExtension2.widgetContentPadding,
+    );
+    expect(
+      copiedThemeExtension.widgetContentTextStyle,
+      themeExtension2.widgetContentTextStyle,
+    );
+    expect(
+      copiedThemeExtension.colorDropdownitemPrimaryColor,
+      themeExtension2.colorDropdownitemPrimaryColor,
+    );
+    expect(
+      copiedThemeExtension.colorDropdownItemPadding,
+      themeExtension2.colorDropdownItemPadding,
+    );
+    expect(
+      copiedThemeExtension.colorDropdownItemColorSize,
+      themeExtension2.colorDropdownItemColorSize,
+    );
+    expect(
+      copiedThemeExtension.colorDropdownItemColorTextStyle,
+      themeExtension2.colorDropdownItemColorTextStyle,
+    );
+    expect(
+      copiedThemeExtension.colorDropdownItemSpacing,
+      themeExtension2.colorDropdownItemSpacing,
+    );
+    expect(
+      copiedThemeExtension.borderRadiusSliderMaxValue,
+      themeExtension2.borderRadiusSliderMaxValue,
+    );
+    expect(
+      copiedThemeExtension.borderRadiusSliderMaxValueBordered,
+      themeExtension2.borderRadiusSliderMaxValueBordered,
+    );
   });
 
   test('MyoroHoverButtonWidgetShowcaseThemeExtension.lerp', () {
@@ -58,48 +77,75 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.widgetContentPadding,
-        EdgeInsets.lerp(themeExtension1.widgetContentPadding,
-            themeExtension2.widgetContentPadding, i),
+        EdgeInsets.lerp(
+          themeExtension1.widgetContentPadding,
+          themeExtension2.widgetContentPadding,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetContentTextStyle,
-        TextStyle.lerp(themeExtension1.widgetContentTextStyle,
-            themeExtension2.widgetContentTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.widgetContentTextStyle,
+          themeExtension2.widgetContentTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.colorDropdownitemPrimaryColor,
-        Color.lerp(themeExtension1.colorDropdownitemPrimaryColor,
-            themeExtension2.colorDropdownitemPrimaryColor, i),
+        Color.lerp(
+          themeExtension1.colorDropdownitemPrimaryColor,
+          themeExtension2.colorDropdownitemPrimaryColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.colorDropdownItemPadding,
-        EdgeInsets.lerp(themeExtension1.colorDropdownItemPadding,
-            themeExtension2.colorDropdownItemPadding, i),
+        EdgeInsets.lerp(
+          themeExtension1.colorDropdownItemPadding,
+          themeExtension2.colorDropdownItemPadding,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.colorDropdownItemColorSize,
-        Size.lerp(themeExtension1.colorDropdownItemColorSize,
-            themeExtension2.colorDropdownItemColorSize, i),
+        Size.lerp(
+          themeExtension1.colorDropdownItemColorSize,
+          themeExtension2.colorDropdownItemColorSize,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.colorDropdownItemColorTextStyle,
-        TextStyle.lerp(themeExtension1.colorDropdownItemColorTextStyle,
-            themeExtension2.colorDropdownItemColorTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.colorDropdownItemColorTextStyle,
+          themeExtension2.colorDropdownItemColorTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.colorDropdownItemSpacing,
-        lerpDouble(themeExtension1.colorDropdownItemSpacing,
-            themeExtension2.colorDropdownItemSpacing, i),
+        lerpDouble(
+          themeExtension1.colorDropdownItemSpacing,
+          themeExtension2.colorDropdownItemSpacing,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.borderRadiusSliderMaxValue,
-        lerpDouble(themeExtension1.borderRadiusSliderMaxValue,
-            themeExtension2.borderRadiusSliderMaxValue, i),
+        lerpDouble(
+          themeExtension1.borderRadiusSliderMaxValue,
+          themeExtension2.borderRadiusSliderMaxValue,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.borderRadiusSliderMaxValueBordered,
-        myoroLerp(themeExtension1.borderRadiusSliderMaxValueBordered,
-            themeExtension2.borderRadiusSliderMaxValueBordered, i),
+        myoroLerp(
+          themeExtension1.borderRadiusSliderMaxValueBordered,
+          themeExtension2.borderRadiusSliderMaxValueBordered,
+          i,
+        ),
       );
     }
   });

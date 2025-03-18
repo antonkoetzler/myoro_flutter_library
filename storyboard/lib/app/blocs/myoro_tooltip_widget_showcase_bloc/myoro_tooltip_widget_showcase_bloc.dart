@@ -10,27 +10,20 @@ part 'myoro_tooltip_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroTooltipWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroTooltipWidgetShowcase].
-final class MyoroTooltipWidgetShowcaseBloc extends Bloc<
-    MyoroTooltipWidgetShowcaseEvent, MyoroTooltipWidgetShowcaseState> {
+final class MyoroTooltipWidgetShowcaseBloc
+    extends
+        Bloc<MyoroTooltipWidgetShowcaseEvent, MyoroTooltipWidgetShowcaseState> {
   MyoroTooltipWidgetShowcaseBloc()
-      : super(const MyoroTooltipWidgetShowcaseState()) {
+    : super(const MyoroTooltipWidgetShowcaseState()) {
     on<SetMarginEvent>(_setMarginEvent);
     on<SetTextEvent>(_setTextEvent);
   }
 
   void _setMarginEvent(SetMarginEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        margin: event.margin,
-      ),
-    );
+    emit(state.copyWith(margin: event.margin));
   }
 
   void _setTextEvent(SetTextEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        text: event.text,
-      ),
-    );
+    emit(state.copyWith(text: event.text));
   }
 }

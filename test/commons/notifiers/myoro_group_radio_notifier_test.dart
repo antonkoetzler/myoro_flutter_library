@@ -25,8 +25,9 @@ void main() {
   });
 
   test('MyoroGroupRadio.toggle', () {
-    final String enabledKey = radios.keys
-        .elementAt(faker.randomGenerator.integer(radios.keys.length));
+    final String enabledKey = radios.keys.elementAt(
+      faker.randomGenerator.integer(radios.keys.length),
+    );
     notifier.enable(enabledKey);
     expect(notifier.enabledKey, enabledKey);
   });

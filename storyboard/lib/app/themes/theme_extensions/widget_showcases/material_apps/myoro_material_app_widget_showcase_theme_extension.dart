@@ -52,22 +52,31 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
   });
 
   MyoroMaterialAppWidgetShowcaseThemeExtension.fake()
-      : appBarContentColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        appBarLogoIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        appBarTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        appBarMenuButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        appBarSpacing = faker.randomGenerator.decimal(),
-        themeModeOptionButtonBordered = faker.randomGenerator.boolean(),
-        themeModeOptionButtonDarkModeIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        themeModeOptionButtonLightModeIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        themeModeOptionTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle,
-        themeModeOptionSpacing = faker.randomGenerator.decimal();
+    : appBarContentColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      appBarLogoIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      appBarTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      appBarMenuButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      appBarSpacing = faker.randomGenerator.decimal(),
+      themeModeOptionButtonBordered = faker.randomGenerator.boolean(),
+      themeModeOptionButtonDarkModeIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      themeModeOptionButtonLightModeIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      themeModeOptionTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      themeModeOptionSpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroMaterialAppWidgetShowcaseThemeExtension copyWith({
@@ -90,9 +99,11 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
       appBarSpacing: appBarSpacing ?? this.appBarSpacing,
       themeModeOptionButtonBordered:
           themeModeOptionButtonBordered ?? this.themeModeOptionButtonBordered,
-      themeModeOptionButtonDarkModeIcon: themeModeOptionButtonDarkModeIcon ??
+      themeModeOptionButtonDarkModeIcon:
+          themeModeOptionButtonDarkModeIcon ??
           this.themeModeOptionButtonDarkModeIcon,
-      themeModeOptionButtonLightModeIcon: themeModeOptionButtonLightModeIcon ??
+      themeModeOptionButtonLightModeIcon:
+          themeModeOptionButtonLightModeIcon ??
           this.themeModeOptionButtonLightModeIcon,
       themeModeOptionTextStyle:
           themeModeOptionTextStyle ?? this.themeModeOptionTextStyle,
@@ -104,33 +115,53 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
   @override
   MyoroMaterialAppWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>?
-        other,
+    other,
     double t,
   ) {
     if (other is! MyoroMaterialAppWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      appBarContentColor:
-          Color.lerp(appBarContentColor, other.appBarContentColor, t),
+      appBarContentColor: Color.lerp(
+        appBarContentColor,
+        other.appBarContentColor,
+        t,
+      ),
       appBarLogoIcon: myoroLerp(appBarLogoIcon, other.appBarLogoIcon, t),
-      appBarTextStyle:
-          TextStyle.lerp(appBarTextStyle, other.appBarTextStyle, t),
-      appBarMenuButtonIcon:
-          myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
+      appBarTextStyle: TextStyle.lerp(
+        appBarTextStyle,
+        other.appBarTextStyle,
+        t,
+      ),
+      appBarMenuButtonIcon: myoroLerp(
+        appBarMenuButtonIcon,
+        other.appBarMenuButtonIcon,
+        t,
+      ),
       appBarSpacing: lerpDouble(appBarSpacing, other.appBarSpacing, t),
-      themeModeOptionButtonBordered: myoroLerp(themeModeOptionButtonBordered,
-          other.themeModeOptionButtonBordered, t),
+      themeModeOptionButtonBordered: myoroLerp(
+        themeModeOptionButtonBordered,
+        other.themeModeOptionButtonBordered,
+        t,
+      ),
       themeModeOptionButtonDarkModeIcon: myoroLerp(
-          themeModeOptionButtonDarkModeIcon,
-          other.themeModeOptionButtonDarkModeIcon,
-          t),
+        themeModeOptionButtonDarkModeIcon,
+        other.themeModeOptionButtonDarkModeIcon,
+        t,
+      ),
       themeModeOptionButtonLightModeIcon: myoroLerp(
-          themeModeOptionButtonLightModeIcon,
-          other.themeModeOptionButtonLightModeIcon,
-          t),
+        themeModeOptionButtonLightModeIcon,
+        other.themeModeOptionButtonLightModeIcon,
+        t,
+      ),
       themeModeOptionTextStyle: TextStyle.lerp(
-          themeModeOptionTextStyle, other.themeModeOptionTextStyle, t),
-      themeModeOptionSpacing:
-          lerpDouble(themeModeOptionSpacing, other.themeModeOptionSpacing, t),
+        themeModeOptionTextStyle,
+        other.themeModeOptionTextStyle,
+        t,
+      ),
+      themeModeOptionSpacing: lerpDouble(
+        themeModeOptionSpacing,
+        other.themeModeOptionSpacing,
+        t,
+      ),
     );
   }
 }

@@ -6,8 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroGroupRadioItems = Map<String, bool>;
 
 /// Function executed when any of the radio's values are changed.
-typedef MyoroGroupRadioOnChanged = void Function(
-    String keyChanged, MyoroGroupRadioItems items);
+typedef MyoroGroupRadioOnChanged =
+    void Function(String keyChanged, MyoroGroupRadioItems items);
 
 /// A group of [MyoroRadio]s.
 final class MyoroGroupRadio extends StatefulWidget {
@@ -40,17 +40,17 @@ final class MyoroGroupRadio extends StatefulWidget {
     this.runSpacing,
     this.onChanged,
     this.radios,
-  })  : assert(
-          !(notifier != null && radios != null),
-          '[MyoroGroupRadio]: If you are providing [notifier], you must '
-          'pass [radios] within its constructor and remove [radios] here.',
-        ),
-        assert(
-          notifier == null
-              ? MyoroGroupRadioNotifier.radiosAreValid(radios!)
-              : true,
-          '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioNotifier.radiosAreValid].',
-        );
+  }) : assert(
+         !(notifier != null && radios != null),
+         '[MyoroGroupRadio]: If you are providing [notifier], you must '
+         'pass [radios] within its constructor and remove [radios] here.',
+       ),
+       assert(
+         notifier == null
+             ? MyoroGroupRadioNotifier.radiosAreValid(radios!)
+             : true,
+         '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioNotifier.radiosAreValid].',
+       );
 
   static Finder finder({
     MyoroGroupRadioNotifier? notifier,
@@ -113,18 +113,17 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
           direction: _direction ?? themeExtension.direction,
           spacing: _spacing ?? themeExtension.spacing,
           runSpacing: _runSpacing ?? themeExtension.runSpacing,
-          children: radios.entries.map<Widget>(
-            (MapEntry<String, bool> entry) {
-              return MyoroRadio(
-                label: entry.key,
-                initialValue: entry.value,
-                onChanged: (_) {
-                  _notifier.enable(entry.key);
-                  _onChanged?.call(entry.key, _notifier.radios);
-                },
-              );
-            },
-          ).toList(),
+          children:
+              radios.entries.map<Widget>((MapEntry<String, bool> entry) {
+                return MyoroRadio(
+                  label: entry.key,
+                  initialValue: entry.value,
+                  onChanged: (_) {
+                    _notifier.enable(entry.key);
+                    _onChanged?.call(entry.key, _notifier.radios);
+                  },
+                );
+              }).toList(),
         );
       },
     );

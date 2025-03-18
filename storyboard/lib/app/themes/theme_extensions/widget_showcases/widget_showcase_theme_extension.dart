@@ -42,32 +42,40 @@ final class WidgetShowcaseThemeExtension
   });
 
   WidgetShowcaseThemeExtension.fake()
-      : widgetWrapperBackgroundColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        widgetWrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        widgetWrapperContentPadding =
-            EdgeInsets.all(faker.randomGenerator.decimal()),
-        widgetWrapperBorderRadius =
-            BorderRadius.circular(faker.randomGenerator.decimal()),
-        widgetWrapperBorder = Border.all(
-          width: faker.randomGenerator.decimal(),
-          color: kMyoroTestColors[
-              faker.randomGenerator.integer(kMyoroTestColors.length)],
-        ),
-        widgetWrapperAlignment = [
-          Alignment.center,
-          Alignment.topLeft,
-          Alignment.topRight,
-          Alignment.topCenter,
-          Alignment.centerLeft,
-          Alignment.bottomLeft,
-          Alignment.centerRight,
-          Alignment.bottomRight,
-          Alignment.bottomCenter,
-        ][faker.randomGenerator.integer(9)],
-        widgetOptionsPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        widgetOptionsDividerPadding =
-            EdgeInsets.all(faker.randomGenerator.decimal());
+    : widgetWrapperBackgroundColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      widgetWrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      widgetWrapperContentPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      ),
+      widgetWrapperBorderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(),
+      ),
+      widgetWrapperBorder = Border.all(
+        width: faker.randomGenerator.decimal(),
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
+      ),
+      widgetWrapperAlignment =
+          [
+            Alignment.center,
+            Alignment.topLeft,
+            Alignment.topRight,
+            Alignment.topCenter,
+            Alignment.centerLeft,
+            Alignment.bottomLeft,
+            Alignment.centerRight,
+            Alignment.bottomRight,
+            Alignment.bottomCenter,
+          ][faker.randomGenerator.integer(9)],
+      widgetOptionsPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      widgetOptionsDividerPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      );
 
   @override
   WidgetShowcaseThemeExtension copyWith({
@@ -105,21 +113,45 @@ final class WidgetShowcaseThemeExtension
     if (other is! WidgetShowcaseThemeExtension) return this;
     return copyWith(
       widgetWrapperBackgroundColor: Color.lerp(
-          widgetWrapperBackgroundColor, other.widgetWrapperBackgroundColor, t),
-      widgetWrapperPadding:
-          EdgeInsets.lerp(widgetWrapperPadding, other.widgetWrapperPadding, t),
+        widgetWrapperBackgroundColor,
+        other.widgetWrapperBackgroundColor,
+        t,
+      ),
+      widgetWrapperPadding: EdgeInsets.lerp(
+        widgetWrapperPadding,
+        other.widgetWrapperPadding,
+        t,
+      ),
       widgetWrapperContentPadding: EdgeInsets.lerp(
-          widgetWrapperContentPadding, other.widgetWrapperContentPadding, t),
+        widgetWrapperContentPadding,
+        other.widgetWrapperContentPadding,
+        t,
+      ),
       widgetWrapperBorderRadius: BorderRadius.lerp(
-          widgetWrapperBorderRadius, other.widgetWrapperBorderRadius, t),
-      widgetWrapperBorder:
-          Border.lerp(widgetWrapperBorder, other.widgetWrapperBorder, t),
+        widgetWrapperBorderRadius,
+        other.widgetWrapperBorderRadius,
+        t,
+      ),
+      widgetWrapperBorder: Border.lerp(
+        widgetWrapperBorder,
+        other.widgetWrapperBorder,
+        t,
+      ),
       widgetWrapperAlignment: Alignment.lerp(
-          widgetWrapperAlignment, other.widgetWrapperAlignment, t),
-      widgetOptionsPadding:
-          EdgeInsets.lerp(widgetOptionsPadding, other.widgetOptionsPadding, t),
+        widgetWrapperAlignment,
+        other.widgetWrapperAlignment,
+        t,
+      ),
+      widgetOptionsPadding: EdgeInsets.lerp(
+        widgetOptionsPadding,
+        other.widgetOptionsPadding,
+        t,
+      ),
       widgetOptionsDividerPadding: EdgeInsets.lerp(
-          widgetOptionsDividerPadding, other.widgetOptionsDividerPadding, t),
+        widgetOptionsDividerPadding,
+        other.widgetOptionsDividerPadding,
+        t,
+      ),
     );
   }
 }

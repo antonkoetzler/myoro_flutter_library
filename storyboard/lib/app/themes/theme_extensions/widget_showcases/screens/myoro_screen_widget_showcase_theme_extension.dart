@@ -40,15 +40,18 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   });
 
   MyoroScreenWidgetShowcaseThemeExtension.fake()
-      : appBarTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        appBarSubtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        appBarMenuButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        bodyImageBorderRadius =
-            BorderRadius.circular(faker.randomGenerator.decimal()),
-        bodyImageSize = faker.randomGenerator.decimal(),
-        bodyTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        bodySpacing = faker.randomGenerator.decimal();
+    : appBarTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      appBarSubtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      appBarMenuButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      bodyImageBorderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(),
+      ),
+      bodyImageSize = faker.randomGenerator.decimal(),
+      bodyTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      bodySpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroScreenWidgetShowcaseThemeExtension copyWith({
@@ -80,14 +83,26 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   ) {
     if (other is! MyoroScreenWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      appBarTitleTextStyle:
-          TextStyle.lerp(appBarTitleTextStyle, other.appBarTitleTextStyle, t),
+      appBarTitleTextStyle: TextStyle.lerp(
+        appBarTitleTextStyle,
+        other.appBarTitleTextStyle,
+        t,
+      ),
       appBarSubtitleTextStyle: TextStyle.lerp(
-          appBarSubtitleTextStyle, other.appBarSubtitleTextStyle, t),
-      appBarMenuButtonIcon:
-          myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
+        appBarSubtitleTextStyle,
+        other.appBarSubtitleTextStyle,
+        t,
+      ),
+      appBarMenuButtonIcon: myoroLerp(
+        appBarMenuButtonIcon,
+        other.appBarMenuButtonIcon,
+        t,
+      ),
       bodyImageBorderRadius: BorderRadius.lerp(
-          bodyImageBorderRadius, other.bodyImageBorderRadius, t),
+        bodyImageBorderRadius,
+        other.bodyImageBorderRadius,
+        t,
+      ),
       bodyImageSize: lerpDouble(bodyImageSize, other.bodyImageSize, t),
       bodyTextStyle: TextStyle.lerp(bodyTextStyle, other.bodyTextStyle, t),
       bodySpacing: lerpDouble(bodySpacing, other.bodySpacing, t),

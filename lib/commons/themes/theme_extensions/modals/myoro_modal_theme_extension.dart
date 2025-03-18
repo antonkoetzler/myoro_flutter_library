@@ -47,13 +47,17 @@ final class MyoroModalThemeExtension
     final maxHeight = faker.randomGenerator.decimal();
 
     return MyoroModalThemeExtension(
-      primaryColor: kMyoroTestColors[
-          faker.randomGenerator.integer(kMyoroTestColors.length)],
+      primaryColor:
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
       borderRadius: BorderRadius.circular(faker.randomGenerator.decimal()),
       border: Border.all(
         width: faker.randomGenerator.decimal(),
-        color: kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
       ),
       padding: EdgeInsets.all(faker.randomGenerator.decimal()),
       constraints: BoxConstraints(
@@ -64,8 +68,10 @@ final class MyoroModalThemeExtension
       ),
       spacing: faker.randomGenerator.decimal(),
       titleTextStyle: MyoroTypographyTheme.instance.randomTextStyle,
-      closeButtonIcon: kMyoroTestIcons[
-          faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      closeButtonIcon:
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
     );
   }
 

@@ -12,7 +12,7 @@ final class MyoroSingularDropdownWidgetShowcaseThemeExtension
   @override
   ThemeExtension<MyoroSingularDropdownWidgetShowcaseThemeExtension> lerp(
     covariant ThemeExtension<MyoroSingularDropdownWidgetShowcaseThemeExtension>?
-        other,
+    other,
     double t,
   ) {
     return this;

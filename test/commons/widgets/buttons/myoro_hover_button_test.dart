@@ -4,8 +4,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroHoverButton].
 void main() {
-  final configurationNotifier =
-      ValueNotifier(MyoroHoverButtonConfiguration.fake());
+  final configurationNotifier = ValueNotifier(
+    MyoroHoverButtonConfiguration.fake(),
+  );
 
   bool getTooltipPredicateCondition(Widget w) {
     return w is MyoroTooltip &&
@@ -74,12 +75,17 @@ void main() {
 
     // Tooltip should be disabled then enabled after [tooltipEnabledNotifier] is changed.
     expect(
-        find.byWidgetPredicate(getTooltipPredicateCondition), findsOneWidget);
-    configurationNotifier.value =
-        configurationNotifier.value.copyWith(tooltip: 'Hello, World!');
+      find.byWidgetPredicate(getTooltipPredicateCondition),
+      findsOneWidget,
+    );
+    configurationNotifier.value = configurationNotifier.value.copyWith(
+      tooltip: 'Hello, World!',
+    );
     await tester.pump();
     expect(
-        find.byWidgetPredicate(getTooltipPredicateCondition), findsOneWidget);
+      find.byWidgetPredicate(getTooltipPredicateCondition),
+      findsOneWidget,
+    );
 
     // Wrapper
     expect(
@@ -106,18 +112,21 @@ void main() {
             w is Container &&
             w.decoration ==
                 BoxDecoration(
-                  border: (configurationNotifier.value.bordered ??
-                          themeExtension.bordered)
-                      ? Border.all(
-                          width: 2,
-                          color: getOnPrimaryColor(themeExtension),
-                        )
-                      : null,
-                  borderRadius: configurationNotifier.value.borderRadius ??
+                  border:
+                      (configurationNotifier.value.bordered ??
+                              themeExtension.bordered)
+                          ? Border.all(
+                            width: 2,
+                            color: getOnPrimaryColor(themeExtension),
+                          )
+                          : null,
+                  borderRadius:
+                      configurationNotifier.value.borderRadius ??
                       themeExtension.borderRadius,
-                  color: configurationNotifier.value.isHovered == true
-                      ? getOnPrimaryColor(themeExtension)
-                      : getPrimaryColor(themeExtension),
+                  color:
+                      configurationNotifier.value.isHovered == true
+                          ? getOnPrimaryColor(themeExtension)
+                          : getPrimaryColor(themeExtension),
                 ) &&
             w.child is SizedBox,
       ),

@@ -18,11 +18,12 @@ final class MyoroGroupRadioWidgetShowcase extends StatelessWidget {
     final runSpacing = themeExtension.runSpacing;
 
     return BlocProvider(
-      create: (_) => MyoroGroupRadioWidgetShowcaseBloc(
-        direction: direction,
-        spacing: spacing,
-        runSpacing: runSpacing,
-      ),
+      create:
+          (_) => MyoroGroupRadioWidgetShowcaseBloc(
+            direction: direction,
+            spacing: spacing,
+            runSpacing: runSpacing,
+          ),
       child: WidgetShowcase(
         widget: const _Widget(),
         widgetOptions: [
@@ -40,20 +41,22 @@ final class _Widget extends StatelessWidget {
 
   void _onChanged(BuildContext context, String keyChanged) {
     context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        message: '$keyChanged is now selected!',
-      ),
+      snackBar: MyoroSnackBar(message: '$keyChanged is now selected!'),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final keys = List.generate(
-        faker.randomGenerator.integer(20, min: 2), (_) => faker.lorem.word());
+      faker.randomGenerator.integer(20, min: 2),
+      (_) => faker.lorem.word(),
+    );
     final trueKey = keys[faker.randomGenerator.integer(keys.length)];
 
-    return BlocBuilder<MyoroGroupRadioWidgetShowcaseBloc,
-        MyoroGroupRadioWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroGroupRadioWidgetShowcaseBloc,
+      MyoroGroupRadioWidgetShowcaseState
+    >(
       builder: (_, MyoroGroupRadioWidgetShowcaseState state) {
         return MyoroGroupRadio(
           direction: state.direction,
@@ -76,8 +79,9 @@ final class _DirectionOption extends StatefulWidget {
 
 final class _DirectionOptionState extends State<_DirectionOption> {
   late final _bloc = context.resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>();
-  late final _controller =
-      MyoroSingularDropdownController<Axis>(_bloc.state.direction);
+  late final _controller = MyoroSingularDropdownController<Axis>(
+    _bloc.state.direction,
+  );
 
   String _getDirectionName(Axis direction) {
     return switch (direction) {
@@ -98,8 +102,9 @@ final class _DirectionOptionState extends State<_DirectionOption> {
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroGroupRadio.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        itemBuilder: (Axis direction) =>
-            MyoroMenuItem(text: _getDirectionName(direction)),
+        itemBuilder:
+            (Axis direction) =>
+                MyoroMenuItem(text: _getDirectionName(direction)),
         itemLabelBuilder: _getDirectionName,
         allowItemClearing: false,
       ),
@@ -119,9 +124,10 @@ final class _SpacingOption extends StatelessWidget {
     return _Slider(
       label: '[MyoroGroupRadio.spacing]',
       initialValue: _spacing,
-      onChanged: (double value) => context
-          .resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>()
-          .add(SetSpacingEvent(value)),
+      onChanged:
+          (double value) => context
+              .resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>()
+              .add(SetSpacingEvent(value)),
     );
   }
 }
@@ -136,9 +142,10 @@ final class _RunSpacingOption extends StatelessWidget {
     return _Slider(
       label: '[MyoroGroupRadio.runSpacing]',
       initialValue: _runSpacing,
-      onChanged: (double value) => context
-          .resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>()
-          .add(SetRunSpacingEvent(value)),
+      onChanged:
+          (double value) => context
+              .resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>()
+              .add(SetRunSpacingEvent(value)),
     );
   }
 }

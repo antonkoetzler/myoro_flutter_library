@@ -21,12 +21,17 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is BlocProvider<MyoroResolverBloc<Null>> &&
-            w.child is BlocConsumer<MyoroResolverBloc<Null>,
-                MyoroResolverState<Null>>,
+            w.child
+                is BlocConsumer<
+                  MyoroResolverBloc<Null>,
+                  MyoroResolverState<Null>
+                >,
       ),
       findsOneWidget,
     );
-    expect(find.byType(MyoroRadio),
-        findsOneWidget); // [Widget] returned in builder.
+    expect(
+      find.byType(MyoroRadio),
+      findsOneWidget,
+    ); // [Widget] returned in builder.
   });
 }

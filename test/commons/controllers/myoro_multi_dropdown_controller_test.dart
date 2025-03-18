@@ -28,7 +28,7 @@ void main() {
     controller = MyoroMultiDropdownController();
     controller.selectItems([
       ...presetValues,
-      10
+      10,
     ]); // 10 repeated, should be converted to a set and removed.
     expect(controller.selectedItems.length, presetValues.length);
     controller.selectItems(presetValues); // Should add nothing.
@@ -38,15 +38,19 @@ void main() {
 
   test('MyoroMultiDropdownController.deselectItems', () {
     final controller = MyoroMultiDropdownController(presetValues);
-    final randomPresetValues = List.generate(
-      faker.randomGenerator.integer(presetValues.length),
-      (_) => presetValues[faker.randomGenerator.integer(presetValues.length)],
-    ).toSet();
+    final randomPresetValues =
+        List.generate(
+          faker.randomGenerator.integer(presetValues.length),
+          (_) =>
+              presetValues[faker.randomGenerator.integer(presetValues.length)],
+        ).toSet();
 
     final originalLength = controller.selectedItems.length;
     controller.deselectItems(randomPresetValues.toList());
-    expect(controller.selectedItems.length,
-        originalLength - randomPresetValues.length);
+    expect(
+      controller.selectedItems.length,
+      originalLength - randomPresetValues.length,
+    );
 
     controller.clear();
     controller.deselectItems(presetValues);

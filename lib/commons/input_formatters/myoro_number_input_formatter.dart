@@ -6,18 +6,16 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
   final double? max;
   final int decimalPlaces;
 
-  MyoroNumberInputFormatter({
-    this.min = 0,
-    this.max,
-    this.decimalPlaces = 0,
-  });
+  MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0});
 
   String _formatResult(double formattedResult) =>
       formattedResult.toStringAsFixed(decimalPlaces);
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     final decimalPlacesNotZero = decimalPlaces > 0;
 
     // Assert that only numbers are ever provided.
@@ -47,19 +45,22 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
           final temp = newValueAsDouble * 10;
 
           // Checking that the number isn't greater than the max.
-          formattedResult =
-              _formatResult(_isGreaterThenMax(temp) ? max! : temp);
+          formattedResult = _formatResult(
+            _isGreaterThenMax(temp) ? max! : temp,
+          );
         } else {
           // If it's only integers, we don't have to do anyting.
           formattedResult = _formatResult(
-              _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
+            _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble,
+          );
         }
         selection = formattedResult.length;
       }
       // Case where the cursor is not at the last index.
       else {
         formattedResult = _formatResult(
-            _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
+          _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble,
+        );
         selection = newValue.selection.baseOffset;
       }
     }
@@ -76,7 +77,8 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
         } else {
           // If it's only integers, we don't have to do anything.
           formattedResult = _formatResult(
-              _isLessThenMin(newValueAsDouble) ? min : newValueAsDouble);
+            _isLessThenMin(newValueAsDouble) ? min : newValueAsDouble,
+          );
         }
         selection = formattedResult.toString().length;
       }
@@ -89,10 +91,7 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
 
     return TextEditingValue(
       text: formattedResult,
-      selection: TextSelection(
-        baseOffset: selection,
-        extentOffset: selection,
-      ),
+      selection: TextSelection(baseOffset: selection, extentOffset: selection),
     );
   }
 

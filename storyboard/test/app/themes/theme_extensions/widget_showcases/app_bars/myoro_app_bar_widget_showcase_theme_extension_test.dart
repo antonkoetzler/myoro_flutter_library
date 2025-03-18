@@ -12,8 +12,9 @@ void main() {
   late final MyoroAppBarWidgetShowcaseThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroAppBarWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroAppBarWidgetShowcaseThemeExtension.fake();
   });
@@ -26,13 +27,21 @@ void main() {
       mockMenuButtonIcon: themeExtension2.mockMenuButtonIcon,
     );
     expect(
-        copiedThemeExtension.mockAppLogoIcon, themeExtension2.mockAppLogoIcon);
-    expect(copiedThemeExtension.mockAppTitleTextStyle,
-        themeExtension2.mockAppTitleTextStyle);
-    expect(copiedThemeExtension.logoTitleSpacing,
-        themeExtension2.logoTitleSpacing);
+      copiedThemeExtension.mockAppLogoIcon,
+      themeExtension2.mockAppLogoIcon,
+    );
     expect(
-        copiedThemeExtension.mockAppLogoIcon, themeExtension2.mockAppLogoIcon);
+      copiedThemeExtension.mockAppTitleTextStyle,
+      themeExtension2.mockAppTitleTextStyle,
+    );
+    expect(
+      copiedThemeExtension.logoTitleSpacing,
+      themeExtension2.logoTitleSpacing,
+    );
+    expect(
+      copiedThemeExtension.mockAppLogoIcon,
+      themeExtension2.mockAppLogoIcon,
+    );
   });
 
   test('MyoroAppBarWidgetShowcaseThemeExtension.lerp', () {
@@ -40,23 +49,35 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.mockAppLogoIcon,
-        myoroLerp(themeExtension1.mockAppLogoIcon,
-            themeExtension2.mockAppLogoIcon, i),
+        myoroLerp(
+          themeExtension1.mockAppLogoIcon,
+          themeExtension2.mockAppLogoIcon,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.mockAppTitleTextStyle,
-        TextStyle.lerp(themeExtension1.mockAppTitleTextStyle,
-            themeExtension2.mockAppTitleTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.mockAppTitleTextStyle,
+          themeExtension2.mockAppTitleTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.logoTitleSpacing,
-        lerpDouble(themeExtension1.logoTitleSpacing,
-            themeExtension2.logoTitleSpacing, i),
+        lerpDouble(
+          themeExtension1.logoTitleSpacing,
+          themeExtension2.logoTitleSpacing,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.mockMenuButtonIcon,
-        myoroLerp(themeExtension1.mockMenuButtonIcon,
-            themeExtension2.mockMenuButtonIcon, i),
+        myoroLerp(
+          themeExtension1.mockMenuButtonIcon,
+          themeExtension2.mockMenuButtonIcon,
+          i,
+        ),
       );
     }
   });

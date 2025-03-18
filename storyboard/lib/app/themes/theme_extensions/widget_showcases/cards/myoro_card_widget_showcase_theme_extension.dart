@@ -22,16 +22,18 @@ final class MyoroCardWidgetShowcaseThemeExtension
   });
 
   MyoroCardWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake(),
-        titleOptionTextAlign = TextAlign
-            .values[faker.randomGenerator.integer(TextAlign.values.length)],
-        titleTextStyleOptionTextStyles = List.generate(
-          faker.randomGenerator.integer(10),
-          (_) => (
-            faker.lorem.word(),
-            MyoroTypographyTheme.instance.randomTextStyle
-          ),
-        );
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      titleOptionTextAlign =
+          TextAlign.values[faker.randomGenerator.integer(
+            TextAlign.values.length,
+          )],
+      titleTextStyleOptionTextStyles = List.generate(
+        faker.randomGenerator.integer(10),
+        (_) => (
+          faker.lorem.word(),
+          MyoroTypographyTheme.instance.randomTextStyle,
+        ),
+      );
 
   @override
   MyoroCardWidgetShowcaseThemeExtension copyWith({
@@ -55,10 +57,16 @@ final class MyoroCardWidgetShowcaseThemeExtension
     if (other is! MyoroCardWidgetShowcaseThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      titleOptionTextAlign:
-          myoroLerp(titleOptionTextAlign, other.titleOptionTextAlign, t),
-      titleTextStyleOptionTextStyles: myoroLerp(titleTextStyleOptionTextStyles,
-          other.titleTextStyleOptionTextStyles, t),
+      titleOptionTextAlign: myoroLerp(
+        titleOptionTextAlign,
+        other.titleOptionTextAlign,
+        t,
+      ),
+      titleTextStyleOptionTextStyles: myoroLerp(
+        titleTextStyleOptionTextStyles,
+        other.titleTextStyleOptionTextStyles,
+        t,
+      ),
     );
   }
 }

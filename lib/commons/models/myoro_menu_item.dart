@@ -44,23 +44,25 @@ final class MyoroMenuItem extends Equatable {
     this.textAlign,
     this.itemBuilder,
   }) : assert(
-          itemBuilder != null
-              ? (icon == null && text == null)
-              : (icon != null || text != null),
-          '[MyoroMenuItem]: If [itemBuilder] is provided, [text] & [icon] must be null. '
-          'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
-        );
+         itemBuilder != null
+             ? (icon == null && text == null)
+             : (icon != null || text != null),
+         '[MyoroMenuItem]: If [itemBuilder] is provided, [text] & [icon] must be null. '
+         'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
+       );
 
   MyoroMenuItem.fake()
-      : isHovered = faker.randomGenerator.boolean(),
-        onPressed = null,
-        icon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        iconSize = null,
-        text = faker.lorem.word(),
-        textStyle = null,
-        textAlign = null,
-        itemBuilder = null;
+    : isHovered = faker.randomGenerator.boolean(),
+      onPressed = null,
+      icon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      iconSize = null,
+      text = faker.lorem.word(),
+      textStyle = null,
+      textAlign = null,
+      itemBuilder = null;
 
   MyoroMenuItem copyWith({
     bool? isHovered,
@@ -85,7 +87,8 @@ final class MyoroMenuItem extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroMenuItem(\n'
       '  isHovered: $isHovered,\n'
       '  onPressed: $onPressed,\n'

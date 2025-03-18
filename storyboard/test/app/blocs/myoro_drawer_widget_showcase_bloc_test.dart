@@ -14,8 +14,9 @@ void main() {
   final bool barrierDismissable = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
   });
 
@@ -30,24 +31,29 @@ void main() {
     'MyoroDrawerWidgetShowcaseBloc.SetTitleTextStyleEvent',
     build: () => MyoroDrawerWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTitleTextStyleEvent(titleTextStyle)),
-    expect: () =>
-        [MyoroDrawerWidgetShowcaseState(titleTextStyle: titleTextStyle)],
+    expect:
+        () => [MyoroDrawerWidgetShowcaseState(titleTextStyle: titleTextStyle)],
   );
 
   blocTest(
     'MyoroDrawerWidgetShowcaseBloc.SetShowCloseButtonEvent',
     build: () => MyoroDrawerWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetShowCloseButtonEvent(showCloseButton)),
-    expect: () =>
-        [MyoroDrawerWidgetShowcaseState(showCloseButton: showCloseButton)],
+    expect:
+        () => [
+          MyoroDrawerWidgetShowcaseState(showCloseButton: showCloseButton),
+        ],
   );
 
   blocTest(
     'MyoroDrawerWidgetShowcaseBloc.SetBarrierDismissableEvent',
     build: () => MyoroDrawerWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetBarrierDismissableEvent(barrierDismissable)),
-    expect: () => [
-      MyoroDrawerWidgetShowcaseState(barrierDismissable: barrierDismissable)
-    ],
+    expect:
+        () => [
+          MyoroDrawerWidgetShowcaseState(
+            barrierDismissable: barrierDismissable,
+          ),
+        ],
   );
 }

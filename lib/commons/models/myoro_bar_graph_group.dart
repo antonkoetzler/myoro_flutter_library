@@ -10,30 +10,22 @@ final class MyoroBarGraphGroup extends Equatable {
   /// Bars in the group.
   final List<MyoroBarGraphBar> bars;
 
-  const MyoroBarGraphGroup({
-    required this.x,
-    required this.bars,
-  });
+  const MyoroBarGraphGroup({required this.x, required this.bars});
 
-  MyoroBarGraphGroup copyWith({
-    int? x,
-    List<MyoroBarGraphBar>? bars,
-  }) {
-    return MyoroBarGraphGroup(
-      x: x ?? this.x,
-      bars: bars ?? this.bars,
-    );
+  MyoroBarGraphGroup copyWith({int? x, List<MyoroBarGraphBar>? bars}) {
+    return MyoroBarGraphGroup(x: x ?? this.x, bars: bars ?? this.bars);
   }
 
   MyoroBarGraphGroup.fake()
-      : x = faker.randomGenerator.integer(1000),
-        bars = List.generate(
-          faker.randomGenerator.integer(50),
-          (_) => MyoroBarGraphBar.fake(),
-        );
+    : x = faker.randomGenerator.integer(1000),
+      bars = List.generate(
+        faker.randomGenerator.integer(50),
+        (_) => MyoroBarGraphBar.fake(),
+      );
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroBarGraphGroup(\n'
       '  x: $x,\n'
       '  bars: $bars,\n'

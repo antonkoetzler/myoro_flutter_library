@@ -29,9 +29,9 @@ final class MyoroTableColumn extends Equatable {
   });
 
   MyoroTableColumn.fake({this.titleTextStyle})
-      : title = faker.lorem.word(),
-        widthConfiguration = MyoroTableColumnWidth.fake(),
-        ordenationCallback = null;
+    : title = faker.lorem.word(),
+      widthConfiguration = MyoroTableColumnWidth.fake(),
+      ordenationCallback = null;
 
   MyoroTableColumn copyWith({
     String? title,
@@ -48,7 +48,8 @@ final class MyoroTableColumn extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroTableColumn(\n'
       '  title: $title,\n'
       '  titleTextStyle: $titleTextStyle,\n'
@@ -58,11 +59,6 @@ final class MyoroTableColumn extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      title,
-      titleTextStyle,
-      widthConfiguration,
-      ordenationCallback,
-    ];
+    return [title, titleTextStyle, widthConfiguration, ordenationCallback];
   }
 }

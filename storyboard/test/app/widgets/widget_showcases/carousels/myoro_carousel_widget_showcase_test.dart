@@ -35,22 +35,29 @@ void main() {
 
     // [_DisplayTraversalButtonsOptions].
     expect(
-        MyoroCheckbox.finder(
-            label: '[MyoroCarousel.displayTraversalButtons]',
-            labelEnabled: true),
-        findsOneWidget);
+      MyoroCheckbox.finder(
+        label: '[MyoroCarousel.displayTraversalButtons]',
+        labelEnabled: true,
+      ),
+      findsOneWidget,
+    );
 
     // [_AutoplayOption].
     expect(
-        MyoroCheckbox.finder(
-            label: '[MyoroCarousel.autoplay]', labelEnabled: true),
-        findsOneWidget);
+      MyoroCheckbox.finder(
+        label: '[MyoroCarousel.autoplay]',
+        labelEnabled: true,
+      ),
+      findsOneWidget,
+    );
 
     // [_AutoplayIntervalDurationOption].
     expect(
-        MyoroSlider.finder(
-            label: '[MyoroSlider.autoplayIntervalDuration]',
-            labelEnabled: true),
-        findsOneWidget);
+      MyoroSlider.finder(
+        label: '[MyoroSlider.autoplayIntervalDuration]',
+        labelEnabled: true,
+      ),
+      findsOneWidget,
+    );
   });
 }

@@ -19,15 +19,14 @@ final class MyoroCircularLoaderThemeExtension
   });
 
   MyoroCircularLoaderThemeExtension.fake()
-      : color = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        size = faker.randomGenerator.decimal();
+    : color =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      size = faker.randomGenerator.decimal();
 
   @override
-  MyoroCircularLoaderThemeExtension copyWith({
-    Color? color,
-    double? size,
-  }) {
+  MyoroCircularLoaderThemeExtension copyWith({Color? color, double? size}) {
     return MyoroCircularLoaderThemeExtension(
       color: color ?? this.color,
       size: size ?? this.size,

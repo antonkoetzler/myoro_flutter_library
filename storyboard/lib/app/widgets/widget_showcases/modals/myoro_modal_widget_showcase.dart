@@ -31,8 +31,10 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(
-      child: BlocBuilder<MyoroModalWidgetShowcaseBloc,
-          MyoroModalWidgetShowcaseState>(
+      child: BlocBuilder<
+        MyoroModalWidgetShowcaseBloc,
+        MyoroModalWidgetShowcaseState
+      >(
         builder: (_, MyoroModalWidgetShowcaseState state) {
           final constraints = BoxConstraints(
             minWidth: state.minWidth ?? 0,
@@ -44,18 +46,21 @@ final class _Widget extends StatelessWidget {
           return MyoroIconTextHoverButton(
             configuration: const MyoroHoverButtonConfiguration(bordered: true),
             text: 'Click to launch the modal.',
-            onPressed: () => MyoroModal.show(
-              context,
-              configuration: MyoroModalConfiguration(
-                barrierDismissable: state.barrierDismissable,
-                constraints: state.constraintsEnabled ? constraints : null,
-                onClosed: () => context.showSnackBar(
-                    snackBar: MyoroSnackBar(message: 'Modal closed!')),
-                title: state.title,
-                showCloseButton: state.showCloseButton,
-              ),
-              child: const SizedBox.shrink(),
-            ),
+            onPressed:
+                () => MyoroModal.show(
+                  context,
+                  configuration: MyoroModalConfiguration(
+                    barrierDismissable: state.barrierDismissable,
+                    constraints: state.constraintsEnabled ? constraints : null,
+                    onClosed:
+                        () => context.showSnackBar(
+                          snackBar: MyoroSnackBar(message: 'Modal closed!'),
+                        ),
+                    title: state.title,
+                    showCloseButton: state.showCloseButton,
+                  ),
+                  child: const SizedBox.shrink(),
+                ),
           );
         },
       ),
@@ -103,16 +108,18 @@ final class _ConstraintsOption extends StatelessWidget {
               child: _NumberInput(
                 label: 'Min width',
                 onChanged: (double value) => bloc.add(SetMinWidthEvent(value)),
-                checkboxOnChanged: (bool enabled, double value) =>
-                    bloc.add(SetMinWidthEvent(enabled ? value : null)),
+                checkboxOnChanged:
+                    (bool enabled, double value) =>
+                        bloc.add(SetMinWidthEvent(enabled ? value : null)),
               ),
             ),
             Expanded(
               child: _NumberInput(
                 label: 'Max width',
                 onChanged: (double value) => bloc.add(SetMaxWidthEvent(value)),
-                checkboxOnChanged: (bool enabled, double value) =>
-                    bloc.add(SetMaxWidthEvent(enabled ? value : null)),
+                checkboxOnChanged:
+                    (bool enabled, double value) =>
+                        bloc.add(SetMaxWidthEvent(enabled ? value : null)),
               ),
             ),
           ],
@@ -124,16 +131,18 @@ final class _ConstraintsOption extends StatelessWidget {
               child: _NumberInput(
                 label: 'Min height',
                 onChanged: (double value) => bloc.add(SetMinHeightEvent(value)),
-                checkboxOnChanged: (bool enabled, double value) =>
-                    bloc.add(SetMinHeightEvent(enabled ? value : null)),
+                checkboxOnChanged:
+                    (bool enabled, double value) =>
+                        bloc.add(SetMinHeightEvent(enabled ? value : null)),
               ),
             ),
             Expanded(
               child: _NumberInput(
                 label: 'Max height',
                 onChanged: (double value) => bloc.add(SetMaxHeightEvent(value)),
-                checkboxOnChanged: (bool enabled, double value) =>
-                    bloc.add(SetMaxHeightEvent(enabled ? value : null)),
+                checkboxOnChanged:
+                    (bool enabled, double value) =>
+                        bloc.add(SetMaxHeightEvent(enabled ? value : null)),
               ),
             ),
           ],
@@ -153,13 +162,17 @@ final class _TitleOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[MyoroModalConfiguration.title]',
-        inputStyle: context
-            .resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>()
-            .inputStyle,
-        onChanged: (String text) =>
-            bloc.add(SetTitleEvent(text.isNotEmpty ? text : null)),
-        checkboxOnChanged: (bool enabled, String text) =>
-            bloc.add(SetTitleEvent((enabled && text.isNotEmpty) ? text : null)),
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>()
+                .inputStyle,
+        onChanged:
+            (String text) =>
+                bloc.add(SetTitleEvent(text.isNotEmpty ? text : null)),
+        checkboxOnChanged:
+            (bool enabled, String text) => bloc.add(
+              SetTitleEvent((enabled && text.isNotEmpty) ? text : null),
+            ),
       ),
     );
   }
@@ -182,13 +195,15 @@ final class _NumberInput extends StatelessWidget {
       max: 500,
       configuration: MyoroInputConfiguration(
         label: label,
-        inputStyle: context
-            .resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>()
-            .inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>()
+                .inputStyle,
         enabled: false,
         onChanged: (String text) => onChanged.call(double.parse(text)),
-        checkboxOnChanged: (bool enabled, String text) =>
-            checkboxOnChanged.call(enabled, double.parse(text)),
+        checkboxOnChanged:
+            (bool enabled, String text) =>
+                checkboxOnChanged.call(enabled, double.parse(text)),
       ),
     );
   }

@@ -12,9 +12,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroInput.date(
-          configuration: MyoroInputConfiguration(
-            controller: controller,
-          ),
+          configuration: MyoroInputConfiguration(controller: controller),
         ),
       ),
     );

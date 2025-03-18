@@ -18,12 +18,18 @@ void main() {
       resizeButtonBorderRadius: themeExtension2.resizeButtonBorderRadius,
     );
     expect(copiedThemeExtension.secondary, themeExtension2.secondary);
-    expect(copiedThemeExtension.resizeButtonShortValue,
-        themeExtension2.resizeButtonShortValue);
-    expect(copiedThemeExtension.resizeButtonLongValue,
-        themeExtension2.resizeButtonLongValue);
-    expect(copiedThemeExtension.resizeButtonBorderRadius,
-        themeExtension2.resizeButtonBorderRadius);
+    expect(
+      copiedThemeExtension.resizeButtonShortValue,
+      themeExtension2.resizeButtonShortValue,
+    );
+    expect(
+      copiedThemeExtension.resizeButtonLongValue,
+      themeExtension2.resizeButtonLongValue,
+    );
+    expect(
+      copiedThemeExtension.resizeButtonBorderRadius,
+      themeExtension2.resizeButtonBorderRadius,
+    );
   });
 
   test('MyoroResizeDividerThemeExtension.lerp', () {
@@ -35,18 +41,27 @@ void main() {
       );
       expect(
         lerpedThemeExtension.resizeButtonShortValue,
-        lerpDouble(themeExtension1.resizeButtonShortValue,
-            themeExtension2.resizeButtonShortValue, i),
+        lerpDouble(
+          themeExtension1.resizeButtonShortValue,
+          themeExtension2.resizeButtonShortValue,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.resizeButtonLongValue,
-        lerpDouble(themeExtension1.resizeButtonLongValue,
-            themeExtension2.resizeButtonLongValue, i),
+        lerpDouble(
+          themeExtension1.resizeButtonLongValue,
+          themeExtension2.resizeButtonLongValue,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.resizeButtonBorderRadius,
-        BorderRadius.lerp(themeExtension1.resizeButtonBorderRadius,
-            themeExtension2.resizeButtonBorderRadius, i),
+        BorderRadius.lerp(
+          themeExtension1.resizeButtonBorderRadius,
+          themeExtension2.resizeButtonBorderRadius,
+          i,
+        ),
       );
     }
   });

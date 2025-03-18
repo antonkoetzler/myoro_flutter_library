@@ -10,10 +10,14 @@ part 'myoro_dialog_modal_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroDialogModalWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroDialogModalWidgetShowcase].
-final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<
-    MyoroDialogModalWidgetShowcaseEvent, MyoroDialogModalWidgetShowcaseState> {
+final class MyoroDialogModalWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroDialogModalWidgetShowcaseEvent,
+          MyoroDialogModalWidgetShowcaseState
+        > {
   MyoroDialogModalWidgetShowcaseBloc()
-      : super(const MyoroDialogModalWidgetShowcaseState()) {
+    : super(const MyoroDialogModalWidgetShowcaseState()) {
     on<SetInvertButtonsEvent>(_setInvertButtonsEvent);
     on<SetConfirmButtonTextEvent>(_setConfirmButtonTextEvent);
     on<SetTextEvent>(_setTextEvent);
@@ -22,15 +26,13 @@ final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<
   }
 
   void _setInvertButtonsEvent(SetInvertButtonsEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        invertButtons: event.invertButtons,
-      ),
-    );
+    emit(state.copyWith(invertButtons: event.invertButtons));
   }
 
   void _setConfirmButtonTextEvent(
-      SetConfirmButtonTextEvent event, _Emitter emit) {
+    SetConfirmButtonTextEvent event,
+    _Emitter emit,
+  ) {
     emit(
       state.copyWith(
         confirmButtonText: event.confirmButtonText,
@@ -40,12 +42,7 @@ final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<
   }
 
   void _setTextEvent(SetTextEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        text: event.text,
-        textEnabled: event.text != null,
-      ),
-    );
+    emit(state.copyWith(text: event.text, textEnabled: event.text != null));
   }
 
   void _setTextStyleEvent(SetTextStyleEvent event, _Emitter emit) {
@@ -58,10 +55,6 @@ final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<
   }
 
   void _setChildEvent(SetChildEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        childEnabled: event.childEnabled,
-      ),
-    );
+    emit(state.copyWith(childEnabled: event.childEnabled));
   }
 }

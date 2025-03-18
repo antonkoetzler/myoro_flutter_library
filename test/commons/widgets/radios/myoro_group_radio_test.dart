@@ -5,9 +5,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroGroupRadio].
 void main() {
-  final Axis? direction = faker.randomGenerator.boolean()
-      ? Axis.values[faker.randomGenerator.integer(Axis.values.length)]
-      : null;
+  final Axis? direction =
+      faker.randomGenerator.boolean()
+          ? Axis.values[faker.randomGenerator.integer(Axis.values.length)]
+          : null;
   final double? spacing =
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final double? runSpacing =
@@ -40,8 +41,10 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroGroupRadio), findsOneWidget);
-    expect(find.byType(ValueListenableBuilder<MyoroGroupRadioItems>),
-        findsOneWidget);
+    expect(
+      find.byType(ValueListenableBuilder<MyoroGroupRadioItems>),
+      findsOneWidget,
+    );
     expect(
       find.byWidgetPredicate(
         (Widget w) =>

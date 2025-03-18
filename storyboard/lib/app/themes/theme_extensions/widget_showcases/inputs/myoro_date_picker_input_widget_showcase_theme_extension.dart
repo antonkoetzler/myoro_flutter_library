@@ -13,7 +13,7 @@ final class MyoroDatePickerInputWidgetShowcaseThemeExtension
   });
 
   MyoroDatePickerInputWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake();
+    : inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroDatePickerInputWidgetShowcaseThemeExtension copyWith({
@@ -27,12 +27,10 @@ final class MyoroDatePickerInputWidgetShowcaseThemeExtension
   @override
   MyoroDatePickerInputWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension>?
-        other,
+    other,
     double t,
   ) {
     if (other is! MyoroDatePickerInputWidgetShowcaseThemeExtension) return this;
-    return copyWith(
-      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-    );
+    return copyWith(inputStyle: myoroLerp(inputStyle, other.inputStyle, t));
   }
 }

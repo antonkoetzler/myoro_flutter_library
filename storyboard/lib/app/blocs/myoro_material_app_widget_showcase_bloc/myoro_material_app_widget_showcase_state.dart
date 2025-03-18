@@ -4,28 +4,23 @@ final class MyoroMaterialAppWidgetShowcaseState extends Equatable {
   /// [MyoroMaterialApp.themeMode].
   final ThemeMode themeMode;
 
-  const MyoroMaterialAppWidgetShowcaseState({
-    this.themeMode = ThemeMode.dark,
-  });
+  const MyoroMaterialAppWidgetShowcaseState({this.themeMode = ThemeMode.dark});
 
-  MyoroMaterialAppWidgetShowcaseState copyWith({
-    ThemeMode? themeMode,
-  }) {
+  MyoroMaterialAppWidgetShowcaseState copyWith({ThemeMode? themeMode}) {
     return MyoroMaterialAppWidgetShowcaseState(
       themeMode: themeMode ?? this.themeMode,
     );
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroMaterialAppWidgetShowcaseState(\n'
       '  themeMode: $themeMode,\n'
       ');';
 
   @override
   List<Object?> get props {
-    return [
-      themeMode,
-    ];
+    return [themeMode];
   }
 }

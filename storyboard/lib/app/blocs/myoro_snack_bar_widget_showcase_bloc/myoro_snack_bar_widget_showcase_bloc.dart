@@ -10,10 +10,14 @@ part 'myoro_snack_bar_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroSnackBarWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroSnackBarWidgetShowcase].
-final class MyoroSnackBarWidgetShowcaseBloc extends Bloc<
-    MyoroSnackBarWidgetShowcaseEvent, MyoroSnackBarWidgetShowcaseState> {
+final class MyoroSnackBarWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroSnackBarWidgetShowcaseEvent,
+          MyoroSnackBarWidgetShowcaseState
+        > {
   MyoroSnackBarWidgetShowcaseBloc()
-      : super(MyoroSnackBarWidgetShowcaseState()) {
+    : super(MyoroSnackBarWidgetShowcaseState()) {
     on<SetSnackBarTypeEvent>(_setSnackBarTypeEvent);
     on<SetShowCloseButtonEvent>(_setShowCloseButtonEvent);
     on<SetMessageEvent>(_setMessageEvent);
@@ -21,34 +25,18 @@ final class MyoroSnackBarWidgetShowcaseBloc extends Bloc<
   }
 
   void _setSnackBarTypeEvent(SetSnackBarTypeEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        snackBarType: event.snackBarType,
-      ),
-    );
+    emit(state.copyWith(snackBarType: event.snackBarType));
   }
 
   void _setShowCloseButtonEvent(SetShowCloseButtonEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        showCloseButton: event.showCloseButton,
-      ),
-    );
+    emit(state.copyWith(showCloseButton: event.showCloseButton));
   }
 
   void _setMessageEvent(SetMessageEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        message: event.message,
-      ),
-    );
+    emit(state.copyWith(message: event.message));
   }
 
   void _setChildEnabledEvent(SetChildEnabledEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        childEnabled: event.childEnabled,
-      ),
-    );
+    emit(state.copyWith(childEnabled: event.childEnabled));
   }
 }

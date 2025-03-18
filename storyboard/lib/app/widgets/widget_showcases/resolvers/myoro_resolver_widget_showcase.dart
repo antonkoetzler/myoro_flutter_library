@@ -69,10 +69,18 @@ final class _MyoroResolverWidgetShowcaseState
   @override
   Widget build(BuildContext context) {
     return MyoroResolver<String>(
-      onSuccess: (String? result) => _showSnackBar(context,
-          text: result!, resultEnum: _ResultEnum.success),
-      onError: (String errorMessage) => _showSnackBar(context,
-          text: errorMessage, resultEnum: _ResultEnum.error),
+      onSuccess:
+          (String? result) => _showSnackBar(
+            context,
+            text: result!,
+            resultEnum: _ResultEnum.success,
+          ),
+      onError:
+          (String errorMessage) => _showSnackBar(
+            context,
+            text: errorMessage,
+            resultEnum: _ResultEnum.error,
+          ),
       request: () async => await _makeRequest(),
       builder: (
         String? result,
@@ -83,10 +91,14 @@ final class _MyoroResolverWidgetShowcaseState
         return switch (status) {
           MyoroRequestEnum.idle => const MyoroCircularLoader(),
           MyoroRequestEnum.loading => const MyoroCircularLoader(),
-          MyoroRequestEnum.success =>
-            _RefreshButtons(controller, _resultEnumNotifier),
-          MyoroRequestEnum.error =>
-            _RefreshButtons(controller, _resultEnumNotifier),
+          MyoroRequestEnum.success => _RefreshButtons(
+            controller,
+            _resultEnumNotifier,
+          ),
+          MyoroRequestEnum.error => _RefreshButtons(
+            controller,
+            _resultEnumNotifier,
+          ),
         };
       },
     );
@@ -109,9 +121,12 @@ final class _RefreshButtons extends StatelessWidget {
     return IntrinsicWidth(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: context
-            .resolveThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>()
-            .spacing,
+        spacing:
+            context
+                .resolveThemeExtension<
+                  MyoroResolverWidgetShowcaseThemeExtension
+                >()
+                .spacing,
         children: [
           _RefreshButton(
             'Click to execute a successful request',
@@ -131,21 +146,20 @@ final class _RefreshButton extends StatelessWidget {
   final String _text;
   final VoidCallback _onPressed;
 
-  const _RefreshButton(
-    this._text,
-    this._onPressed,
-  );
+  const _RefreshButton(this._text, this._onPressed);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>();
 
     return MyoroIconTextHoverButton(
       text: _text,
       textAlign: themeExtension.buttonTextAlign,
       configuration: MyoroHoverButtonConfiguration(
-          bordered: themeExtension.buttonBordered),
+        bordered: themeExtension.buttonBordered,
+      ),
       onPressed: _onPressed,
     );
   }

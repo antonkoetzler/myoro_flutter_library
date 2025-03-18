@@ -22,10 +22,7 @@ void main() {
             themeExtension =
                 context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
-            return MyoroBarGraph(
-              sorted: sorted,
-              items: items,
-            );
+            return MyoroBarGraph(sorted: sorted, items: items);
           },
         ),
       ),

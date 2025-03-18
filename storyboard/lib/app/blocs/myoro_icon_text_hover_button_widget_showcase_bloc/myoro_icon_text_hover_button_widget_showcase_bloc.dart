@@ -10,11 +10,14 @@ part 'myoro_icon_text_hover_button_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroIconTextHoverButtonWidgetShowcaseState>;
 
 /// BLoC of [MyoroIconTextHoverButtonWidgetShowcase].
-final class MyoroIconTextHoverButtonWidgetShowcaseBloc extends Bloc<
-    MyoroIconTextHoverButtonWidgetShowcaseEvent,
-    MyoroIconTextHoverButtonWidgetShowcaseState> {
+final class MyoroIconTextHoverButtonWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroIconTextHoverButtonWidgetShowcaseEvent,
+          MyoroIconTextHoverButtonWidgetShowcaseState
+        > {
   MyoroIconTextHoverButtonWidgetShowcaseBloc()
-      : super(MyoroIconTextHoverButtonWidgetShowcaseState()) {
+    : super(MyoroIconTextHoverButtonWidgetShowcaseState()) {
     on<SetIconEvent>(_setIconEvent);
     on<SetIconSizeEvent>(_setIconSizeEvent);
     on<SetTextEvent>(_setTextEvent);
@@ -26,12 +29,7 @@ final class MyoroIconTextHoverButtonWidgetShowcaseBloc extends Bloc<
   }
 
   void _setIconEvent(SetIconEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        icon: event.icon,
-        iconEnabled: event.icon != null,
-      ),
-    );
+    emit(state.copyWith(icon: event.icon, iconEnabled: event.icon != null));
   }
 
   void _setIconSizeEvent(SetIconSizeEvent event, _Emitter emit) {
@@ -44,12 +42,7 @@ final class MyoroIconTextHoverButtonWidgetShowcaseBloc extends Bloc<
   }
 
   void _setTextEvent(SetTextEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        text: event.text,
-        textEnabled: event.text.isNotEmpty,
-      ),
-    );
+    emit(state.copyWith(text: event.text, textEnabled: event.text.isNotEmpty));
   }
 
   void _setTextStyleEvent(SetTextStyleEvent event, _Emitter emit) {
@@ -80,7 +73,9 @@ final class MyoroIconTextHoverButtonWidgetShowcaseBloc extends Bloc<
   }
 
   void _setMainAxisAlignmentEvent(
-      SetMainAxisAlignmentEvent event, _Emitter emit) {
+    SetMainAxisAlignmentEvent event,
+    _Emitter emit,
+  ) {
     emit(
       state.copyWith(
         mainAxisAlignment: event.mainAxisAlignment,
@@ -90,11 +85,9 @@ final class MyoroIconTextHoverButtonWidgetShowcaseBloc extends Bloc<
   }
 
   void _setOnPressedEnabledEvent(
-      SetOnPressedEnabledEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        onPressedEnabled: event.onPressedEnabled,
-      ),
-    );
+    SetOnPressedEnabledEvent event,
+    _Emitter emit,
+  ) {
+    emit(state.copyWith(onPressedEnabled: event.onPressedEnabled));
   }
 }

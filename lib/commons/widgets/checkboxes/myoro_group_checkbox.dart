@@ -6,8 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroGroupCheckboxItems = Map<String, bool>;
 
 /// Function executed when any of the checkbox's values are changed.
-typedef MyoroGroupCheckboxOnChanged = void Function(
-    String key, MyoroGroupCheckboxItems items);
+typedef MyoroGroupCheckboxOnChanged =
+    void Function(String key, MyoroGroupCheckboxItems items);
 
 /// A group of [MyoroCheckbox]s.
 final class MyoroGroupCheckbox extends StatefulWidget {
@@ -40,15 +40,15 @@ final class MyoroGroupCheckbox extends StatefulWidget {
     this.runSpacing,
     this.onChanged,
     this.checkboxes,
-  })  : assert(
-          !(notifier != null && checkboxes != null),
-          '[MyoroGroupCheckbox]: If you are providing [notifier], you must pass '
-          '[checkboxes] within its constructor and remove [checkboxes] here.',
-        ),
-        assert(
-          notifier == null ? checkboxes!.isNotEmpty : true,
-          '[MyoroGroupCheckbox]: [checkboxes] must not be empty when [notifier] isn\'t provided.',
-        );
+  }) : assert(
+         !(notifier != null && checkboxes != null),
+         '[MyoroGroupCheckbox]: If you are providing [notifier], you must pass '
+         '[checkboxes] within its constructor and remove [checkboxes] here.',
+       ),
+       assert(
+         notifier == null ? checkboxes!.isNotEmpty : true,
+         '[MyoroGroupCheckbox]: [checkboxes] must not be empty when [notifier] isn\'t provided.',
+       );
 
   static Finder finder({
     MyoroGroupCheckboxNotifier? notifier,
@@ -111,18 +111,17 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
           direction: _direction ?? themeExtension.direction,
           spacing: _spacing ?? themeExtension.spacing,
           runSpacing: _runSpacing ?? themeExtension.runSpacing,
-          children: checkboxes.entries.map<Widget>(
-            (MapEntry<String, bool> entry) {
-              return MyoroCheckbox(
-                label: entry.key,
-                initialValue: entry.value,
-                onChanged: (bool value) {
-                  _notifier.toggle(entry.key, value);
-                  _onChanged?.call(entry.key, _notifier.checkboxes);
-                },
-              );
-            },
-          ).toList(),
+          children:
+              checkboxes.entries.map<Widget>((MapEntry<String, bool> entry) {
+                return MyoroCheckbox(
+                  label: entry.key,
+                  initialValue: entry.value,
+                  onChanged: (bool value) {
+                    _notifier.toggle(entry.key, value);
+                    _onChanged?.call(entry.key, _notifier.checkboxes);
+                  },
+                );
+              }).toList(),
         );
       },
     );

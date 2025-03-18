@@ -12,8 +12,9 @@ void main() {
       themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroInputWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroInputWidgetShowcaseThemeExtension.fake();
   });
@@ -26,13 +27,19 @@ void main() {
       inputStyle: themeExtension2.inputStyle,
       suffixWidgetIcon: themeExtension2.suffixWidgetIcon,
     );
-    expect(copiedThemeExtension.configurationOptionTextStyle,
-        themeExtension2.configurationOptionTextStyle);
-    expect(copiedThemeExtension.configurationOptionSpacing,
-        themeExtension2.configurationOptionSpacing);
+    expect(
+      copiedThemeExtension.configurationOptionTextStyle,
+      themeExtension2.configurationOptionTextStyle,
+    );
+    expect(
+      copiedThemeExtension.configurationOptionSpacing,
+      themeExtension2.configurationOptionSpacing,
+    );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
-    expect(copiedThemeExtension.suffixWidgetIcon,
-        themeExtension2.suffixWidgetIcon);
+    expect(
+      copiedThemeExtension.suffixWidgetIcon,
+      themeExtension2.suffixWidgetIcon,
+    );
   });
 
   test('MyoroInputWidgetShowcaseThemeExtension.lerp', () {
@@ -40,13 +47,19 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.configurationOptionTextStyle,
-        TextStyle.lerp(themeExtension1.configurationOptionTextStyle,
-            themeExtension2.configurationOptionTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.configurationOptionTextStyle,
+          themeExtension2.configurationOptionTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.configurationOptionSpacing,
-        lerpDouble(themeExtension1.configurationOptionSpacing,
-            themeExtension2.configurationOptionSpacing, i),
+        lerpDouble(
+          themeExtension1.configurationOptionSpacing,
+          themeExtension2.configurationOptionSpacing,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.inputStyle,
@@ -54,8 +67,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.suffixWidgetIcon,
-        myoroLerp(themeExtension1.suffixWidgetIcon,
-            themeExtension2.suffixWidgetIcon, i),
+        myoroLerp(
+          themeExtension1.suffixWidgetIcon,
+          themeExtension2.suffixWidgetIcon,
+          i,
+        ),
       );
     }
   });

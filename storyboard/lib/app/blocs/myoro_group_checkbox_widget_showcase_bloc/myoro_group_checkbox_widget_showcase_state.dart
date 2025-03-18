@@ -29,7 +29,8 @@ final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroGroupCheckboxWidgetShowcaseState(\n'
       '  direction: $direction,\n'
       '  spacing: $spacing,\n'
@@ -38,10 +39,6 @@ final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      direction,
-      spacing,
-      runSpacing,
-    ];
+    return [direction, spacing, runSpacing];
   }
 }

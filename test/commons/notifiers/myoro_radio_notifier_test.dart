@@ -12,10 +12,11 @@ void main() {
   test('MyoroRadioNotifier.toggle', () {
     expect((MyoroRadioNotifier()..toggle()).enabled, isTrue);
     expect(
-        (MyoroRadioNotifier()
-              ..toggle()
-              ..toggle())
-            .enabled,
-        isFalse);
+      (MyoroRadioNotifier()
+            ..toggle()
+            ..toggle())
+          .enabled,
+      isFalse,
+    );
   });
 }

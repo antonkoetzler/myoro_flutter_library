@@ -21,8 +21,8 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroBarGraph), findsOneWidget);
     expect(
-        MyoroCheckbox.finder(
-            label: '[MyoroBarGraph.sorted]', labelEnabled: true),
-        findsOneWidget);
+      MyoroCheckbox.finder(label: '[MyoroBarGraph.sorted]', labelEnabled: true),
+      findsOneWidget,
+    );
   });
 }

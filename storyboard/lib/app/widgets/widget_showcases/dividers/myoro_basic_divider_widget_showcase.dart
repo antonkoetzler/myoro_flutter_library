@@ -11,11 +11,13 @@ final class MyoroBasicDividerWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyoroBasicDividerWidgetShowcaseBloc(
-        shortValue: context
-            .resolveThemeExtension<MyoroBasicDividerThemeExtension>()
-            .shortValue,
-      ),
+      create:
+          (_) => MyoroBasicDividerWidgetShowcaseBloc(
+            shortValue:
+                context
+                    .resolveThemeExtension<MyoroBasicDividerThemeExtension>()
+                    .shortValue,
+          ),
       child: const WidgetShowcase(
         widget: _Widget(),
         widgetOptions: [
@@ -33,8 +35,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroBasicDividerWidgetShowcaseBloc,
-        MyoroBasicDividerWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroBasicDividerWidgetShowcaseBloc,
+      MyoroBasicDividerWidgetShowcaseState
+    >(
       builder: (_, MyoroBasicDividerWidgetShowcaseState state) {
         final children = [
           const Flexible(child: _Button('A button')),
@@ -52,17 +56,11 @@ final class _Widget extends StatelessWidget {
         ];
 
         if (state.direction.isHorizontal) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: children,
-          );
+          return Column(mainAxisSize: MainAxisSize.min, children: children);
         }
 
         return IntrinsicHeight(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: children,
-          ),
+          child: Row(mainAxisSize: MainAxisSize.min, children: children),
         );
       },
     );
@@ -78,8 +76,9 @@ final class _DirectionOption extends StatefulWidget {
 
 final class _DirectionOptionState extends State<_DirectionOption> {
   late final _bloc = context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
-  late final _controller =
-      MyoroSingularDropdownController<Axis>(_bloc.state.direction);
+  late final _controller = MyoroSingularDropdownController<Axis>(
+    _bloc.state.direction,
+  );
 
   String _getDirectionName(Axis direction) =>
       direction.name[0].toUpperCase() + direction.name.substring(1);
@@ -90,8 +89,9 @@ final class _DirectionOptionState extends State<_DirectionOption> {
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroBasicDivider.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        itemBuilder: (Axis direction) =>
-            MyoroMenuItem(text: _getDirectionName(direction)),
+        itemBuilder:
+            (Axis direction) =>
+                MyoroMenuItem(text: _getDirectionName(direction)),
         itemLabelBuilder: _getDirectionName,
         allowItemClearing: false,
       ),
@@ -122,13 +122,11 @@ final class _PaddingOption extends StatelessWidget {
   const _PaddingOption();
 
   void _event(
-      MyoroBasicDividerWidgetShowcaseBloc bloc, Axis direction, double value) {
-    bloc.add(
-      SetPaddingEvent(
-        direction,
-        value,
-      ),
-    );
+    MyoroBasicDividerWidgetShowcaseBloc bloc,
+    Axis direction,
+    double value,
+  ) {
+    bloc.add(SetPaddingEvent(direction, value));
   }
 
   @override
@@ -168,10 +166,12 @@ final class _Button extends StatelessWidget {
     return MyoroIconTextHoverButton(
       text: _text,
       configuration: MyoroHoverButtonConfiguration(
-        bordered: context
-            .resolveThemeExtension<
-                MyoroBasicDividerWidgetShowcaseThemeExtension>()
-            .buttonBordered,
+        bordered:
+            context
+                .resolveThemeExtension<
+                  MyoroBasicDividerWidgetShowcaseThemeExtension
+                >()
+                .buttonBordered,
       ),
       onPressed: () {},
     );

@@ -37,13 +37,17 @@ final class StoryboardAppBarThemeExtension
   });
 
   StoryboardAppBarThemeExtension.fake()
-      : titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        subtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        showWidgetOptionsButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        themeButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        buttonSpacing = faker.randomGenerator.decimal();
+    : titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      subtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      showWidgetOptionsButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      themeButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      buttonSpacing = faker.randomGenerator.decimal();
 
   @override
   StoryboardAppBarThemeExtension copyWith({
@@ -71,10 +75,16 @@ final class StoryboardAppBarThemeExtension
     if (other is! StoryboardAppBarThemeExtension) return this;
     return copyWith(
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      subtitleTextStyle:
-          TextStyle.lerp(subtitleTextStyle, other.subtitleTextStyle, t),
+      subtitleTextStyle: TextStyle.lerp(
+        subtitleTextStyle,
+        other.subtitleTextStyle,
+        t,
+      ),
       showWidgetOptionsButtonIcon: myoroLerp(
-          showWidgetOptionsButtonIcon, other.showWidgetOptionsButtonIcon, t),
+        showWidgetOptionsButtonIcon,
+        other.showWidgetOptionsButtonIcon,
+        t,
+      ),
       themeButtonIcon: myoroLerp(themeButtonIcon, other.themeButtonIcon, t),
       buttonSpacing: lerpDouble(buttonSpacing, other.buttonSpacing, t),
     );

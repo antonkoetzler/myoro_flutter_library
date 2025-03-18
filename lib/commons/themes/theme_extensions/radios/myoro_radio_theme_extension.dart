@@ -31,13 +31,17 @@ final class MyoroRadioThemeExtension
   });
 
   MyoroRadioThemeExtension.fake()
-      : activeColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        hoverColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        spacing = faker.randomGenerator.decimal(),
-        splashRadius = faker.randomGenerator.decimal();
+    : activeColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      hoverColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      spacing = faker.randomGenerator.decimal(),
+      splashRadius = faker.randomGenerator.decimal();
 
   @override
   MyoroRadioThemeExtension copyWith({

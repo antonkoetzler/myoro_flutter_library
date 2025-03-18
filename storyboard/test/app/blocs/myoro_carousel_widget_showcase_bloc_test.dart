@@ -15,45 +15,42 @@ void main() {
     'MyoroCarouselWidgetShowcaseBloc.SetDirectionEvent',
     build: () => MyoroCarouselWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetDirectionEvent(direction)),
-    expect: () => [
-      MyoroCarouselWidgetShowcaseState(
-        direction: direction,
-      ),
-    ],
+    expect: () => [MyoroCarouselWidgetShowcaseState(direction: direction)],
   );
 
   blocTest(
     'MyoroCarouselWidgetShowcaseBloc.SetDisplayTraversalButtonsEvent',
     build: () => MyoroCarouselWidgetShowcaseBloc(),
-    act: (bloc) =>
-        bloc.add(SetDisplayTraversalButtonsEvent(displayTraversalButtons)),
-    expect: () => [
-      MyoroCarouselWidgetShowcaseState(
-        displayTraversalButtons: displayTraversalButtons,
-      ),
-    ],
+    act:
+        (bloc) =>
+            bloc.add(SetDisplayTraversalButtonsEvent(displayTraversalButtons)),
+    expect:
+        () => [
+          MyoroCarouselWidgetShowcaseState(
+            displayTraversalButtons: displayTraversalButtons,
+          ),
+        ],
   );
 
   blocTest(
     'MyoroCarouselWidgetShowcaseBloc.SetAutoplayEvent',
     build: () => MyoroCarouselWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetAutoplayEvent(autoplay)),
-    expect: () => [
-      MyoroCarouselWidgetShowcaseState(
-        autoplay: autoplay,
-      ),
-    ],
+    expect: () => [MyoroCarouselWidgetShowcaseState(autoplay: autoplay)],
   );
 
   blocTest(
     'MyoroCarouselWidgetShowcaseBloc.SetAutoplayIntervalDurationEvent',
     build: () => MyoroCarouselWidgetShowcaseBloc(),
-    act: (bloc) => bloc
-        .add(const SetAutoplayIntervalDurationEvent(autoplayIntervalDuration)),
-    expect: () => const [
-      MyoroCarouselWidgetShowcaseState(
-        autoplayIntervalDuration: autoplayIntervalDuration,
-      ),
-    ],
+    act:
+        (bloc) => bloc.add(
+          const SetAutoplayIntervalDurationEvent(autoplayIntervalDuration),
+        ),
+    expect:
+        () => const [
+          MyoroCarouselWidgetShowcaseState(
+            autoplayIntervalDuration: autoplayIntervalDuration,
+          ),
+        ],
   );
 }

@@ -176,9 +176,10 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                 configuration: _configuration.copyWith(
                   controller: _textController,
                   suffix: _SearchButton(status, controller),
-                  onChanged: _requestWhenChanged
-                      ? (_) => _formController.finish()
-                      : null,
+                  onChanged:
+                      _requestWhenChanged
+                          ? (_) => _formController.finish()
+                          : null,
                   onFieldSubmitted: (_) => _formController.finish(),
                 ),
               ),
@@ -195,10 +196,13 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                          height: context
-                              .resolveThemeExtension<
-                                  MyoroSearchInputThemeExtension>()
-                              .spacing),
+                        height:
+                            context
+                                .resolveThemeExtension<
+                                  MyoroSearchInputThemeExtension
+                                >()
+                                .spacing,
+                      ),
                       Flexible(child: _SearchSection(results, _itemBuilder)),
                     ],
                   );
@@ -225,7 +229,8 @@ final class _SearchButton extends StatelessWidget {
 
     return MyoroHoverButton(
       configuration: MyoroHoverButtonConfiguration(
-          bordered: themeExtension.searchButtonBordered),
+        bordered: themeExtension.searchButtonBordered,
+      ),
       onPressed: () => status.isLoading ? {} : formController.finish(),
       builder: (bool hovered, _, Color onPrimaryColor) {
         final color =
@@ -233,15 +238,13 @@ final class _SearchButton extends StatelessWidget {
 
         return Padding(
           padding: EdgeInsets.all(status.isLoading ? 9.5 : 7.5),
-          child: status.isLoading
-              ? MyoroCircularLoader(
-                  color: color,
-                  size: themeExtension.searchButtonLoadingSize,
-                )
-              : Icon(
-                  themeExtension.searchButtonIcon,
-                  color: color,
-                ),
+          child:
+              status.isLoading
+                  ? MyoroCircularLoader(
+                    color: color,
+                    size: themeExtension.searchButtonLoadingSize,
+                  )
+                  : Icon(themeExtension.searchButtonIcon, color: color),
         );
       },
     );

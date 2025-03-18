@@ -5,8 +5,9 @@ import 'package:storyboard/storyboard.dart';
 
 /// Widget test of [MyoroDatePickerInputWidgetShowcase].
 void main() {
-  testWidgets('MyoroDatePickerInputWidgetShowcase',
-      (WidgetTester tester) async {
+  testWidgets('MyoroDatePickerInputWidgetShowcase', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createStoryboardThemeExtensions,

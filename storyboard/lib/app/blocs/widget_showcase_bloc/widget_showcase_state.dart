@@ -25,13 +25,16 @@ final class WidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'WidgetShowcaseState(\n'
       '  displayingWidgetShowcase: $displayingWidgetShowcase,\n'
       '  displayingWidgetOptions: $displayingWidgetOptions,\n'
       ');';
 
   @override
-  List<Object?> get props =>
-      [displayingWidgetShowcase, displayingWidgetOptions];
+  List<Object?> get props => [
+    displayingWidgetShowcase,
+    displayingWidgetOptions,
+  ];
 }

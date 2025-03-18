@@ -9,8 +9,9 @@ void main() {
   late final MyoroMenuThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroMenuThemeExtension.fake();
     themeExtension2 = MyoroMenuThemeExtension.fake();
   });
@@ -28,14 +29,22 @@ void main() {
     expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
     expect(copiedThemeExtension.border, themeExtension2.border);
     expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
-    expect(copiedThemeExtension.searchBarPadding,
-        themeExtension2.searchBarPadding);
-    expect(copiedThemeExtension.searchBarInputStyle,
-        themeExtension2.searchBarInputStyle);
-    expect(copiedThemeExtension.itemBorderRadius,
-        themeExtension2.itemBorderRadius);
     expect(
-        copiedThemeExtension.dialogTextStyle, themeExtension2.dialogTextStyle);
+      copiedThemeExtension.searchBarPadding,
+      themeExtension2.searchBarPadding,
+    );
+    expect(
+      copiedThemeExtension.searchBarInputStyle,
+      themeExtension2.searchBarInputStyle,
+    );
+    expect(
+      copiedThemeExtension.itemBorderRadius,
+      themeExtension2.itemBorderRadius,
+    );
+    expect(
+      copiedThemeExtension.dialogTextStyle,
+      themeExtension2.dialogTextStyle,
+    );
   });
 
   test('MyoroMenuThemeExtension.lerp', () {
@@ -44,7 +53,10 @@ void main() {
       expect(
         lerpedThemeExtension.primaryColor,
         Color.lerp(
-            themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+          themeExtension1.primaryColor,
+          themeExtension2.primaryColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.border,
@@ -53,27 +65,42 @@ void main() {
       expect(
         lerpedThemeExtension.borderRadius,
         BorderRadius.lerp(
-            themeExtension1.borderRadius, themeExtension2.borderRadius, i),
+          themeExtension1.borderRadius,
+          themeExtension2.borderRadius,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.searchBarPadding,
-        EdgeInsets.lerp(themeExtension1.searchBarPadding,
-            themeExtension2.searchBarPadding, i),
+        EdgeInsets.lerp(
+          themeExtension1.searchBarPadding,
+          themeExtension2.searchBarPadding,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.searchBarInputStyle,
-        myoroLerp(themeExtension1.searchBarInputStyle,
-            themeExtension2.searchBarInputStyle, i),
+        myoroLerp(
+          themeExtension1.searchBarInputStyle,
+          themeExtension2.searchBarInputStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.itemBorderRadius,
-        BorderRadius.lerp(themeExtension1.itemBorderRadius,
-            themeExtension2.itemBorderRadius, i),
+        BorderRadius.lerp(
+          themeExtension1.itemBorderRadius,
+          themeExtension2.itemBorderRadius,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.dialogTextStyle,
-        TextStyle.lerp(themeExtension1.dialogTextStyle,
-            themeExtension2.dialogTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.dialogTextStyle,
+          themeExtension2.dialogTextStyle,
+          i,
+        ),
       );
     }
   });

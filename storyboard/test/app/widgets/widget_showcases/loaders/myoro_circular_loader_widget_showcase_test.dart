@@ -22,13 +22,12 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroCircularLoader), findsOneWidget);
     expect(
-      MyoroSingularDropdown.finder<Color>(
-        label: 'Color',
-        labelEnabled: true,
-      ),
+      MyoroSingularDropdown.finder<Color>(label: 'Color', labelEnabled: true),
       findsOneWidget,
     );
     expect(
-        MyoroSlider.finder(label: 'Size', labelEnabled: true), findsOneWidget);
+      MyoroSlider.finder(label: 'Size', labelEnabled: true),
+      findsOneWidget,
+    );
   });
 }

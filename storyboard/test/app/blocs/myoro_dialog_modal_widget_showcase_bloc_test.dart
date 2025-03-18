@@ -16,8 +16,9 @@ void main() {
   final bool childEnabled = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     textStyle = MyoroTypographyTheme.instance.randomTextStyle;
   });
 
@@ -25,58 +26,57 @@ void main() {
     'MyoroDialogModalWidgetShowcaseBloc.SetInvertButtonsEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetInvertButtonsEvent(invertButtons)),
-    expect: () => [
-      MyoroDialogModalWidgetShowcaseState(
-        invertButtons: invertButtons,
-      ),
-    ],
+    expect:
+        () => [
+          MyoroDialogModalWidgetShowcaseState(invertButtons: invertButtons),
+        ],
   );
 
   blocTest(
     'MyoroDialogModalWidgetShowcaseBloc.SetConfirmButtonTextEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetConfirmButtonTextEvent(confirmButtonText)),
-    expect: () => [
-      MyoroDialogModalWidgetShowcaseState(
-        confirmButtonText: confirmButtonText,
-      ),
-    ],
+    expect:
+        () => [
+          MyoroDialogModalWidgetShowcaseState(
+            confirmButtonText: confirmButtonText,
+          ),
+        ],
   );
 
   blocTest(
     'MyoroDialogModalWidgetShowcaseBloc.SetTextEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTextEvent(text)),
-    expect: () => [
-      MyoroDialogModalWidgetShowcaseState(
-        text: text,
-        textEnabled: text != null,
-        childEnabled: text == null,
-      ),
-    ],
+    expect:
+        () => [
+          MyoroDialogModalWidgetShowcaseState(
+            text: text,
+            textEnabled: text != null,
+            childEnabled: text == null,
+          ),
+        ],
   );
 
   blocTest(
     'MyoroDialogModalWidgetShowcaseBloc.SetTextStyleEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTextStyleEvent(textStyle)),
-    expect: () => [
-      MyoroDialogModalWidgetShowcaseState(
-        textStyle: textStyle,
-      ),
-    ],
+    expect: () => [MyoroDialogModalWidgetShowcaseState(textStyle: textStyle)],
   );
 
   blocTest(
     'MyoroDialogModalWidgetShowcaseBloc.SetChildEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetChildEvent(childEnabled)),
-    expect: () => [
-      MyoroDialogModalWidgetShowcaseState(
-        text: childEnabled ? null : 'Message regarding the action goes here.',
-        textEnabled: !childEnabled,
-        childEnabled: childEnabled,
-      ),
-    ],
+    expect:
+        () => [
+          MyoroDialogModalWidgetShowcaseState(
+            text:
+                childEnabled ? null : 'Message regarding the action goes here.',
+            textEnabled: !childEnabled,
+            childEnabled: childEnabled,
+          ),
+        ],
   );
 }

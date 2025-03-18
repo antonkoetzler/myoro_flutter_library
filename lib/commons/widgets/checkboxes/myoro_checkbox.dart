@@ -30,10 +30,10 @@ final class MyoroCheckbox extends StatefulWidget {
     this.onChanged,
     this.notifier,
   }) : assert(
-          !(notifier != null && initialValue != null),
-          '[MyoroCheckbox]: If [notifier] is provided, set the initial '
-          'value within the [MyoroRadioNotifier]\'s constructor.',
-        );
+         !(notifier != null && initialValue != null),
+         '[MyoroCheckbox]: If [notifier] is provided, set the initial '
+         'value within the [MyoroRadioNotifier]\'s constructor.',
+       );
 
   static Finder finder({
     MyoroCheckboxNotifier? notifier,

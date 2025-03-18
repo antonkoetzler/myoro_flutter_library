@@ -59,24 +59,36 @@ final class MyoroSnackBarThemeExtension
   });
 
   MyoroSnackBarThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        standardBorderColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        attentionBorderColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        successBorderColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        errorBorderColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        borderWidth = faker.randomGenerator.decimal(),
-        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
-        padding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        contentCloseButtonSpacing = faker.randomGenerator.decimal(),
-        messageTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        closeButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        closeButtonIconSize = faker.randomGenerator.decimal();
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      standardBorderColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      attentionBorderColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      successBorderColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      errorBorderColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      borderWidth = faker.randomGenerator.decimal(),
+      borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      contentCloseButtonSpacing = faker.randomGenerator.decimal(),
+      messageTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      closeButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      closeButtonIconSize = faker.randomGenerator.decimal();
 
   @override
   MyoroSnackBarThemeExtension copyWith({
@@ -118,23 +130,41 @@ final class MyoroSnackBarThemeExtension
     if (other is! MyoroSnackBarThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
-      standardBorderColor:
-          Color.lerp(standardBorderColor, other.standardBorderColor, t),
-      attentionBorderColor:
-          Color.lerp(attentionBorderColor, other.attentionBorderColor, t),
-      successBorderColor:
-          Color.lerp(successBorderColor, other.successBorderColor, t),
+      standardBorderColor: Color.lerp(
+        standardBorderColor,
+        other.standardBorderColor,
+        t,
+      ),
+      attentionBorderColor: Color.lerp(
+        attentionBorderColor,
+        other.attentionBorderColor,
+        t,
+      ),
+      successBorderColor: Color.lerp(
+        successBorderColor,
+        other.successBorderColor,
+        t,
+      ),
       errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
       borderWidth: lerpDouble(borderWidth, other.borderWidth, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
       contentCloseButtonSpacing: lerpDouble(
-          contentCloseButtonSpacing, other.contentCloseButtonSpacing, t),
-      messageTextStyle:
-          TextStyle.lerp(messageTextStyle, other.messageTextStyle, t),
+        contentCloseButtonSpacing,
+        other.contentCloseButtonSpacing,
+        t,
+      ),
+      messageTextStyle: TextStyle.lerp(
+        messageTextStyle,
+        other.messageTextStyle,
+        t,
+      ),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
-      closeButtonIconSize:
-          lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),
+      closeButtonIconSize: lerpDouble(
+        closeButtonIconSize,
+        other.closeButtonIconSize,
+        t,
+      ),
     );
   }
 }

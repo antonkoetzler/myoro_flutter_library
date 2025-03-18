@@ -113,17 +113,11 @@ final class MyoroDialogModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: _Message(
-            text,
-            textStyle,
-            child,
-          ),
-        ),
+        Expanded(child: _Message(text, textStyle, child)),
         SizedBox(
-            height: context
-                .resolveThemeExtension<MyoroModalThemeExtension>()
-                .spacing),
+          height:
+              context.resolveThemeExtension<MyoroModalThemeExtension>().spacing,
+        ),
         _FooterButtons(
           invertButtons ?? false,
           confirmButtonText,
@@ -141,11 +135,7 @@ final class _Message extends StatelessWidget {
   final TextStyle? _textStyle;
   final Widget? _child;
 
-  const _Message(
-    this._text,
-    this._textStyle,
-    this._child,
-  );
+  const _Message(this._text, this._textStyle, this._child);
 
   @override
   Widget build(BuildContext context) {
@@ -153,10 +143,7 @@ final class _Message extends StatelessWidget {
         context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     if (_text != null) {
-      return Text(
-        _text,
-        style: _textStyle ?? themeExtension.textStyle,
-      );
+      return Text(_text, style: _textStyle ?? themeExtension.textStyle);
     }
 
     if (_child != null) {
@@ -164,7 +151,8 @@ final class _Message extends StatelessWidget {
     }
 
     throw AssertionError(
-        '[MyoroDialogModal._Message.build]: [_text] (x)or [_child] must always not be null');
+      '[MyoroDialogModal._Message.build]: [_text] (x)or [_child] must always not be null',
+    );
   }
 }
 
@@ -196,9 +184,11 @@ final class _FooterButtons extends StatelessWidget {
           children: [
             Flexible(child: !_invertButtons ? confirmButton : cancelButton),
             SizedBox(
-                width: context
-                    .resolveThemeExtension<MyoroDialogModalThemeExtension>()
-                    .footerButtonsSpacing),
+              width:
+                  context
+                      .resolveThemeExtension<MyoroDialogModalThemeExtension>()
+                      .footerButtonsSpacing,
+            ),
             Flexible(child: !_invertButtons ? cancelButton : confirmButton),
           ],
         ),

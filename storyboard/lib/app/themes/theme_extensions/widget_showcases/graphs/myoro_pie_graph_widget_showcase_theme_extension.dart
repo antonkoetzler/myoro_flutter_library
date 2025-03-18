@@ -19,9 +19,10 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension
   });
 
   MyoroPieGraphWidgetShowcaseThemeExtension.fake()
-      : centerWidgetBorderRadius =
-            BorderRadius.circular(faker.randomGenerator.decimal()),
-        centerWidgetSize = faker.randomGenerator.decimal();
+    : centerWidgetBorderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(),
+      ),
+      centerWidgetSize = faker.randomGenerator.decimal();
 
   @override
   MyoroPieGraphWidgetShowcaseThemeExtension copyWith({
@@ -43,7 +44,10 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension
     if (other is! MyoroPieGraphWidgetShowcaseThemeExtension) return this;
     return copyWith(
       centerWidgetBorderRadius: BorderRadius.lerp(
-          centerWidgetBorderRadius, other.centerWidgetBorderRadius, t),
+        centerWidgetBorderRadius,
+        other.centerWidgetBorderRadius,
+        t,
+      ),
       centerWidgetSize: lerpDouble(centerWidgetSize, other.centerWidgetSize, t),
     );
   }

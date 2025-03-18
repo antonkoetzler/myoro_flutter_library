@@ -13,7 +13,7 @@ typedef _Emitter = Emitter<MyoroModalWidgetShowcaseState>;
 final class MyoroModalWidgetShowcaseBloc
     extends Bloc<MyoroModalWidgetShowcaseEvent, MyoroModalWidgetShowcaseState> {
   MyoroModalWidgetShowcaseBloc()
-      : super(const MyoroModalWidgetShowcaseState()) {
+    : super(const MyoroModalWidgetShowcaseState()) {
     on<SetBarrierDismissableEvent>(_setBarrierDismissableEvent);
     on<SetMinWidthEvent>(_setMinWidthEvent);
     on<SetMaxWidthEvent>(_setMaxWidthEvent);
@@ -24,12 +24,10 @@ final class MyoroModalWidgetShowcaseBloc
   }
 
   void _setBarrierDismissableEvent(
-      SetBarrierDismissableEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        barrierDismissable: event.barrierDismissable,
-      ),
-    );
+    SetBarrierDismissableEvent event,
+    _Emitter emit,
+  ) {
+    emit(state.copyWith(barrierDismissable: event.barrierDismissable));
   }
 
   void _setMinWidthEvent(SetMinWidthEvent event, _Emitter emit) {
@@ -69,19 +67,10 @@ final class MyoroModalWidgetShowcaseBloc
   }
 
   void _setTitleEvent(SetTitleEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        title: event.title,
-        titleEnabled: event.title != null,
-      ),
-    );
+    emit(state.copyWith(title: event.title, titleEnabled: event.title != null));
   }
 
   void _setShowCloseButtonEvent(SetShowCloseButtonEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        showCloseButton: event.showCloseButton,
-      ),
-    );
+    emit(state.copyWith(showCloseButton: event.showCloseButton));
   }
 }

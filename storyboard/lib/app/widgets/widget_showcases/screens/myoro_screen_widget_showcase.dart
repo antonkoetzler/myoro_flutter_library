@@ -26,8 +26,9 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
 
     return MyoroAppBar(
       child: Row(
@@ -37,10 +38,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'MyoroScreen',
-                style: themeExtension.appBarTitleTextStyle,
-              ),
+              Text('MyoroScreen', style: themeExtension.appBarTitleTextStyle),
               Text(
                 'A widget used to create new [Scaffold]s (screens)',
                 style: themeExtension.appBarSubtitleTextStyle,
@@ -67,8 +65,9 @@ final class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
 
     return Center(
       child: Column(
@@ -79,8 +78,10 @@ final class _Body extends StatelessWidget {
           ClipRRect(
             clipBehavior: Clip.hardEdge,
             borderRadius: themeExtension.bodyImageBorderRadius,
-            child: Image.asset('assets/images/happy_cat.jpg',
-                width: themeExtension.bodyImageSize),
+            child: Image.asset(
+              'assets/images/happy_cat.jpg',
+              width: themeExtension.bodyImageSize,
+            ),
           ),
           Text(
             'The contents of the screen would go here.',

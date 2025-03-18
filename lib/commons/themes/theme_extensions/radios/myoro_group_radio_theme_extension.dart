@@ -23,10 +23,10 @@ final class MyoroGroupRadioThemeExtension
   });
 
   MyoroGroupRadioThemeExtension.fake()
-      : direction =
-            Axis.values[faker.randomGenerator.integer(Axis.values.length)],
-        spacing = faker.randomGenerator.decimal(),
-        runSpacing = faker.randomGenerator.decimal();
+    : direction =
+          Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+      spacing = faker.randomGenerator.decimal(),
+      runSpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroGroupRadioThemeExtension copyWith({

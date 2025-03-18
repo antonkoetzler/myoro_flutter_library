@@ -41,7 +41,8 @@ void main() {
     // [MyoroSearchInput].
     expect(
       find.byWidgetPredicate(
-          (Widget w) => w is Focus && w.child is MyoroForm<List<String>>),
+        (Widget w) => w is Focus && w.child is MyoroForm<List<String>>,
+      ),
       findsOneWidget,
     );
     expect(

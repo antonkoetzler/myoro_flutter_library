@@ -12,8 +12,9 @@ void main() {
       themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroModalWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroModalWidgetShowcaseThemeExtension.fake();
   });
@@ -26,7 +27,9 @@ void main() {
     );
     expect(copiedThemeExtension.spacing, themeExtension2.spacing);
     expect(
-        copiedThemeExtension.headerTextStyle, themeExtension2.headerTextStyle);
+      copiedThemeExtension.headerTextStyle,
+      themeExtension2.headerTextStyle,
+    );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
   });
 
@@ -39,8 +42,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.headerTextStyle,
-        TextStyle.lerp(themeExtension1.headerTextStyle,
-            themeExtension2.headerTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.headerTextStyle,
+          themeExtension2.headerTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.inputStyle,

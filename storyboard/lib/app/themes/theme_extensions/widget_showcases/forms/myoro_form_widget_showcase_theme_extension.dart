@@ -44,18 +44,26 @@ final class MyoroFormWidgetShowcaseThemeExtension
   });
 
   MyoroFormWidgetShowcaseThemeExtension.fake()
-      : widgetMainAxisAlignment = MainAxisAlignment.values[
-            faker.randomGenerator.integer(MainAxisAlignment.values.length)],
-        widgetInputStyle = MyoroInputStyleEnum.fake(),
-        widgetSpacing = faker.randomGenerator.decimal(),
-        submitButtonMainAxisAlignment = MainAxisAlignment.values[
-            faker.randomGenerator.integer(MainAxisAlignment.values.length)],
-        submitButtonBordered = faker.randomGenerator.boolean(),
-        resultTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        successColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        errorColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)];
+    : widgetMainAxisAlignment =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )],
+      widgetInputStyle = MyoroInputStyleEnum.fake(),
+      widgetSpacing = faker.randomGenerator.decimal(),
+      submitButtonMainAxisAlignment =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )],
+      submitButtonBordered = faker.randomGenerator.boolean(),
+      resultTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      successColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      errorColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )];
 
   @override
   MyoroFormWidgetShowcaseThemeExtension copyWith({
@@ -89,16 +97,28 @@ final class MyoroFormWidgetShowcaseThemeExtension
   ) {
     if (other is! MyoroFormWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      widgetMainAxisAlignment:
-          myoroLerp(widgetMainAxisAlignment, other.widgetMainAxisAlignment, t),
+      widgetMainAxisAlignment: myoroLerp(
+        widgetMainAxisAlignment,
+        other.widgetMainAxisAlignment,
+        t,
+      ),
       widgetInputStyle: myoroLerp(widgetInputStyle, other.widgetInputStyle, t),
       widgetSpacing: lerpDouble(widgetSpacing, other.widgetSpacing, t),
-      submitButtonMainAxisAlignment: myoroLerp(submitButtonMainAxisAlignment,
-          other.submitButtonMainAxisAlignment, t),
-      submitButtonBordered:
-          myoroLerp(submitButtonBordered, other.submitButtonBordered, t),
-      resultTextStyle:
-          TextStyle.lerp(resultTextStyle, other.resultTextStyle, t),
+      submitButtonMainAxisAlignment: myoroLerp(
+        submitButtonMainAxisAlignment,
+        other.submitButtonMainAxisAlignment,
+        t,
+      ),
+      submitButtonBordered: myoroLerp(
+        submitButtonBordered,
+        other.submitButtonBordered,
+        t,
+      ),
+      resultTextStyle: TextStyle.lerp(
+        resultTextStyle,
+        other.resultTextStyle,
+        t,
+      ),
       successColor: Color.lerp(successColor, other.successColor, t),
       errorColor: Color.lerp(errorColor, other.errorColor, t),
     );

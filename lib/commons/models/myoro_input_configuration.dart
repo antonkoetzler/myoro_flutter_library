@@ -100,24 +100,26 @@ final class MyoroInputConfiguration extends Equatable {
   });
 
   MyoroInputConfiguration.fake()
-      : inputStyle = MyoroInputStyleEnum.fake(),
-        textAlign = TextAlign
-            .values[faker.randomGenerator.integer(TextAlign.values.length)],
-        inputTextStyle = null,
-        label = faker.lorem.word(),
-        placeholder = faker.lorem.word(),
-        labelTextStyle = null,
-        suffix = null,
-        enabled = faker.randomGenerator.boolean(),
-        readOnly = faker.randomGenerator.boolean(),
-        showClearTextButton = faker.randomGenerator.boolean(),
-        checkboxOnChanged = null,
-        validation = null,
-        onFieldSubmitted = null,
-        onChanged = null,
-        onCleared = null,
-        focusNode = null,
-        controller = null;
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      textAlign =
+          TextAlign.values[faker.randomGenerator.integer(
+            TextAlign.values.length,
+          )],
+      inputTextStyle = null,
+      label = faker.lorem.word(),
+      placeholder = faker.lorem.word(),
+      labelTextStyle = null,
+      suffix = null,
+      enabled = faker.randomGenerator.boolean(),
+      readOnly = faker.randomGenerator.boolean(),
+      showClearTextButton = faker.randomGenerator.boolean(),
+      checkboxOnChanged = null,
+      validation = null,
+      onFieldSubmitted = null,
+      onChanged = null,
+      onCleared = null,
+      focusNode = null,
+      controller = null;
 
   MyoroInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -160,7 +162,8 @@ final class MyoroInputConfiguration extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroInputConfiguration(\n'
       '  inputStyle: $inputStyle,\n'
       '  textAlign: $textAlign,\n'

@@ -30,9 +30,10 @@ final class MyoroFormBloc<T> extends Bloc<MyoroFormEvent, MyoroFormState<T>> {
         emit(
           state.copyWith(
             status: MyoroRequestEnum.error,
-            errorMessage: !formKeyValidation
-                ? 'Form not completed.'
-                : validationErrorMessage,
+            errorMessage:
+                !formKeyValidation
+                    ? 'Form not completed.'
+                    : validationErrorMessage,
           ),
         );
         return;
@@ -42,23 +43,20 @@ final class MyoroFormBloc<T> extends Bloc<MyoroFormEvent, MyoroFormState<T>> {
       try {
         final T? result = await request?.call();
 
-        emit(
-          state.copyWith(
-            status: MyoroRequestEnum.success,
-            result: result,
-          ),
-        );
+        emit(state.copyWith(status: MyoroRequestEnum.success, result: result));
       } on HttpException catch (httpError) {
         errorMessage = httpError.message;
         if (kDebugMode) {
           print(
-              '[MyoroFormBloc.FinishFormEvent]: HTTP exception: "$errorMessage".');
+            '[MyoroFormBloc.FinishFormEvent]: HTTP exception: "$errorMessage".',
+          );
         }
       } catch (genericError, stackTrace) {
         errorMessage = genericError.toString();
         if (kDebugMode) {
           print(
-              '[MyoroFormBloc.FinishFormEvent]: Generic error: "$errorMessage".');
+            '[MyoroFormBloc.FinishFormEvent]: Generic error: "$errorMessage".',
+          );
           print('Stack trace:\n$stackTrace');
         }
       }

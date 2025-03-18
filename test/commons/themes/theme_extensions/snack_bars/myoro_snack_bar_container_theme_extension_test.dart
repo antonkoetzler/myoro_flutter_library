@@ -25,8 +25,10 @@ void main() {
     expect(copiedThemeExtension.margin, themeExtension2.margin);
     expect(copiedThemeExtension.padding, themeExtension2.padding);
     expect(copiedThemeExtension.elevation, themeExtension2.elevation);
-    expect(copiedThemeExtension.dismissDirection,
-        themeExtension2.dismissDirection);
+    expect(
+      copiedThemeExtension.dismissDirection,
+      themeExtension2.dismissDirection,
+    );
     expect(copiedThemeExtension.duration, themeExtension2.duration);
   });
 
@@ -36,7 +38,10 @@ void main() {
       expect(
         lerpedThemeExtension.primaryColor,
         Color.lerp(
-            themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+          themeExtension1.primaryColor,
+          themeExtension2.primaryColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.behavior,
@@ -56,8 +61,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.dismissDirection,
-        myoroLerp(themeExtension1.dismissDirection,
-            themeExtension2.dismissDirection, i),
+        myoroLerp(
+          themeExtension1.dismissDirection,
+          themeExtension2.dismissDirection,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.duration,

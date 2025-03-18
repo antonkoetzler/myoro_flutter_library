@@ -20,11 +20,19 @@ void main() {
   test('MyoroAppBarThemeExtension.lerp', () {
     for (double i = 0; i < faker.randomGenerator.integer(1000); i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
-      final primaryColor = Color.lerp(
-              themeExtension1.primaryColor, themeExtension2.primaryColor, i) ??
+      final primaryColor =
+          Color.lerp(
+            themeExtension1.primaryColor,
+            themeExtension2.primaryColor,
+            i,
+          ) ??
           themeExtension1.primaryColor;
-      final contentPadding = EdgeInsets.lerp(themeExtension1.contentPadding,
-              themeExtension2.contentPadding, i) ??
+      final contentPadding =
+          EdgeInsets.lerp(
+            themeExtension1.contentPadding,
+            themeExtension2.contentPadding,
+            i,
+          ) ??
           themeExtension1.contentPadding;
       expect(lerpedThemeExtension.primaryColor, primaryColor);
       expect(lerpedThemeExtension.contentPadding, contentPadding);

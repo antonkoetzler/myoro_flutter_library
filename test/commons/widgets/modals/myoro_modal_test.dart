@@ -71,18 +71,23 @@ void main() {
                 3 &&
             // (((w.child as Material).child as Container).child as Column).children.first is _Header &&
             (((w.child as Material).child as Container).child as Column)
-                .children[1] is SizedBox &&
+                    .children[1]
+                is SizedBox &&
             ((((w.child as Material).child as Container).child as Column)
-                        .children[1] as SizedBox)
+                            .children[1]
+                        as SizedBox)
                     .height ==
                 themeExtension.spacing &&
             (((w.child as Material).child as Container).child as Column)
-                .children
-                .last is Flexible &&
-            ((((w.child as Material).child as Container).child as Column)
                     .children
-                    .last as Flexible)
-                .child is SizedBox, // [MyoroModal.child]
+                    .last
+                is Flexible &&
+            ((((w.child as Material).child as Container).child as Column)
+                            .children
+                            .last
+                        as Flexible)
+                    .child
+                is SizedBox, // [MyoroModal.child]
       ),
       findsOneWidget,
     );

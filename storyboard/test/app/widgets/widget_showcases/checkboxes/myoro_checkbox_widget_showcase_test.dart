@@ -22,13 +22,18 @@ void main() {
     expect(find.byType(MyoroCheckbox), findsOneWidget);
 
     // [_LabelOption].
-    expect(MyoroInput.finder(label: 'Label text', labelEnabled: true),
-        findsOneWidget);
+    expect(
+      MyoroInput.finder(label: 'Label text', labelEnabled: true),
+      findsOneWidget,
+    );
 
     // [_LabelTextStyleOption].
     expect(
-        MyoroSingularDropdown.finder(
-            label: '[MyoroCheckbox.labelTextStyle]', labelEnabled: true),
-        findsOneWidget);
+      MyoroSingularDropdown.finder(
+        label: '[MyoroCheckbox.labelTextStyle]',
+        labelEnabled: true,
+      ),
+      findsOneWidget,
+    );
   });
 }

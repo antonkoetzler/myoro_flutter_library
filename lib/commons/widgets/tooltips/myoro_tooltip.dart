@@ -48,7 +48,8 @@ final class MyoroTooltip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: text,
-      waitDuration: waitDuration ??
+      waitDuration:
+          waitDuration ??
           context
               .resolveThemeExtension<MyoroTooltipThemeExtension>()
               .waitDuration,

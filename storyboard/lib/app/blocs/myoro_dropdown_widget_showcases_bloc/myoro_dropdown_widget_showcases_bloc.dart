@@ -10,10 +10,14 @@ part 'myoro_dropdown_widget_showcases_event.dart';
 typedef _Emitter = Emitter<MyoroDropdownWidgetShowcasesState>;
 
 /// BLoC that manages options that are used in both [MyoroSingularDropdownWidgetShowcase] & [MyoroMultiDropdownWidgetShowcase].
-final class MyoroDropdownWidgetShowcasesBloc extends Bloc<
-    MyoroDropdownWidgetShowcasesEvent, MyoroDropdownWidgetShowcasesState> {
+final class MyoroDropdownWidgetShowcasesBloc
+    extends
+        Bloc<
+          MyoroDropdownWidgetShowcasesEvent,
+          MyoroDropdownWidgetShowcasesState
+        > {
   MyoroDropdownWidgetShowcasesBloc()
-      : super(const MyoroDropdownWidgetShowcasesState()) {
+    : super(const MyoroDropdownWidgetShowcasesState()) {
     on<SetLabelEvent>(_setLabelEvent);
     on<SetLabelTextStyleEvent>(_setLabelTextStyleEvent);
     on<SetEnabledEvent>(_setEnabledEvent);
@@ -24,11 +28,7 @@ final class MyoroDropdownWidgetShowcasesBloc extends Bloc<
   }
 
   void _setLabelEvent(SetLabelEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        label: event.label,
-      ),
-    );
+    emit(state.copyWith(label: event.label));
   }
 
   void _setLabelTextStyleEvent(SetLabelTextStyleEvent event, _Emitter emit) {
@@ -41,20 +41,14 @@ final class MyoroDropdownWidgetShowcasesBloc extends Bloc<
   }
 
   void _setEnabledEvent(SetEnabledEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        enabled: event.enabled,
-      ),
-    );
+    emit(state.copyWith(enabled: event.enabled));
   }
 
   void _setAllowItemClearingEvent(
-      SetAllowItemClearingEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        allowItemClearing: event.allowItemClearing,
-      ),
-    );
+    SetAllowItemClearingEvent event,
+    _Emitter emit,
+  ) {
+    emit(state.copyWith(allowItemClearing: event.allowItemClearing));
   }
 
   void _setMenuMaxHeightEvent(SetMenuMaxHeightEvent event, _Emitter emit) {
@@ -67,7 +61,9 @@ final class MyoroDropdownWidgetShowcasesBloc extends Bloc<
   }
 
   void _setMenuSearchCallbackEnabledEvent(
-      SetMenuSearchCallbackEnabledEvent event, _Emitter emit) {
+    SetMenuSearchCallbackEnabledEvent event,
+    _Emitter emit,
+  ) {
     emit(
       state.copyWith(
         menuSearchCallbackEnabled: event.menuSearchCallbackEnabled,
@@ -76,11 +72,11 @@ final class MyoroDropdownWidgetShowcasesBloc extends Bloc<
   }
 
   void _setCheckboxOnChangedEnabledEvent(
-      SetCheckboxOnChangedEnabledEvent event, _Emitter emit) {
+    SetCheckboxOnChangedEnabledEvent event,
+    _Emitter emit,
+  ) {
     emit(
-      state.copyWith(
-        checkboxOnChangedEnabled: event.checkboxOnChangedEnabled,
-      ),
+      state.copyWith(checkboxOnChangedEnabled: event.checkboxOnChangedEnabled),
     );
   }
 }

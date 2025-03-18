@@ -21,11 +21,15 @@ final class MyoroCarouselThemeExtension
   });
 
   MyoroCarouselThemeExtension.fake()
-      : traversalButtonBordered = faker.randomGenerator.boolean(),
-        previousItemButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        nextItemButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)];
+    : traversalButtonBordered = faker.randomGenerator.boolean(),
+      previousItemButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      nextItemButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
   @override
   MyoroCarouselThemeExtension copyWith({
@@ -49,12 +53,21 @@ final class MyoroCarouselThemeExtension
   ) {
     if (other is! MyoroCarouselThemeExtension) return this;
     return copyWith(
-      traversalButtonBordered:
-          myoroLerp(traversalButtonBordered, other.traversalButtonBordered, t),
-      previousItemButtonIcon:
-          myoroLerp(previousItemButtonIcon, other.previousItemButtonIcon, t),
-      nextItemButtonIcon:
-          myoroLerp(nextItemButtonIcon, other.nextItemButtonIcon, t),
+      traversalButtonBordered: myoroLerp(
+        traversalButtonBordered,
+        other.traversalButtonBordered,
+        t,
+      ),
+      previousItemButtonIcon: myoroLerp(
+        previousItemButtonIcon,
+        other.previousItemButtonIcon,
+        t,
+      ),
+      nextItemButtonIcon: myoroLerp(
+        nextItemButtonIcon,
+        other.nextItemButtonIcon,
+        t,
+      ),
     );
   }
 }

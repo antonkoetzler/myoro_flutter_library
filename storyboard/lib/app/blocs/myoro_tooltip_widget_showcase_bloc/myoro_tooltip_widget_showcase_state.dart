@@ -7,15 +7,9 @@ final class MyoroTooltipWidgetShowcaseState extends Equatable {
   /// [MyoroTooltip.text].
   final String text;
 
-  const MyoroTooltipWidgetShowcaseState({
-    this.margin = 0,
-    this.text = '',
-  });
+  const MyoroTooltipWidgetShowcaseState({this.margin = 0, this.text = ''});
 
-  MyoroTooltipWidgetShowcaseState copyWith({
-    double? margin,
-    String? text,
-  }) {
+  MyoroTooltipWidgetShowcaseState copyWith({double? margin, String? text}) {
     return MyoroTooltipWidgetShowcaseState(
       margin: margin ?? this.margin,
       text: text ?? this.text,
@@ -23,7 +17,8 @@ final class MyoroTooltipWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroTooltipWidgetShowcaseState(\n'
       '  margin: $margin,\n'
       '  text: $text,\n'
@@ -31,9 +26,6 @@ final class MyoroTooltipWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      margin,
-      text,
-    ];
+    return [margin, text];
   }
 }

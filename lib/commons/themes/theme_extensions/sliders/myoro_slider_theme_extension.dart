@@ -24,11 +24,13 @@ final class MyoroSliderThemeExtension
   });
 
   MyoroSliderThemeExtension.fake()
-      : labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        sliderPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        indicatorTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        indicatorTextAlignment = TextAlign
-            .values[faker.randomGenerator.integer(TextAlign.values.length)];
+    : labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      sliderPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      indicatorTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      indicatorTextAlignment =
+          TextAlign.values[faker.randomGenerator.integer(
+            TextAlign.values.length,
+          )];
 
   @override
   MyoroSliderThemeExtension copyWith({
@@ -48,15 +50,23 @@ final class MyoroSliderThemeExtension
 
   @override
   MyoroSliderThemeExtension lerp(
-      covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
+    covariant ThemeExtension<MyoroSliderThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroSliderThemeExtension) return this;
     return copyWith(
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       sliderPadding: EdgeInsets.lerp(sliderPadding, other.sliderPadding, t),
-      indicatorTextStyle:
-          TextStyle.lerp(indicatorTextStyle, other.indicatorTextStyle, t),
-      indicatorTextAlignment:
-          myoroLerp(indicatorTextAlignment, other.indicatorTextAlignment, t),
+      indicatorTextStyle: TextStyle.lerp(
+        indicatorTextStyle,
+        other.indicatorTextStyle,
+        t,
+      ),
+      indicatorTextAlignment: myoroLerp(
+        indicatorTextAlignment,
+        other.indicatorTextAlignment,
+        t,
+      ),
     );
   }
 }

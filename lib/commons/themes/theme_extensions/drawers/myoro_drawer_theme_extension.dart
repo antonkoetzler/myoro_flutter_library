@@ -45,25 +45,34 @@ final class MyoroDrawerThemeExtension
   });
 
   MyoroDrawerThemeExtension.fake()
-      : drawerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        drawerContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        drawerShape = RoundedRectangleBorder(
-          side: BorderSide(
-            width: 2,
-            color: kMyoroTestColors[
-                faker.randomGenerator.integer(kMyoroTestColors.length)],
-          ),
+    : drawerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      drawerContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      drawerShape = RoundedRectangleBorder(
+        side: BorderSide(
+          width: 2,
+          color:
+              kMyoroTestColors[faker.randomGenerator.integer(
+                kMyoroTestColors.length,
+              )],
         ),
-        titleContentDividerPadding =
-            EdgeInsets.all(faker.randomGenerator.decimal()),
-        titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        closeButtonDrawerIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        closeButtonEndDrawerIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        closeButtonBackgroundColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        closeButtonBordered = faker.randomGenerator.boolean();
+      ),
+      titleContentDividerPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      ),
+      titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      closeButtonDrawerIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      closeButtonEndDrawerIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      closeButtonBackgroundColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      closeButtonBordered = faker.randomGenerator.boolean();
 
   @override
   MyoroDrawerThemeExtension copyWith({
@@ -102,20 +111,38 @@ final class MyoroDrawerThemeExtension
     if (other is! MyoroDrawerThemeExtension) return this;
     return copyWith(
       drawerPadding: EdgeInsets.lerp(drawerPadding, other.drawerPadding, t),
-      drawerContentPadding:
-          EdgeInsets.lerp(drawerContentPadding, other.drawerContentPadding, t),
+      drawerContentPadding: EdgeInsets.lerp(
+        drawerContentPadding,
+        other.drawerContentPadding,
+        t,
+      ),
       drawerShape: ShapeBorder.lerp(drawerShape, other.drawerShape, t),
       titleContentDividerPadding: EdgeInsets.lerp(
-          titleContentDividerPadding, other.titleContentDividerPadding, t),
+        titleContentDividerPadding,
+        other.titleContentDividerPadding,
+        t,
+      ),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      closeButtonDrawerIcon:
-          myoroLerp(closeButtonDrawerIcon, other.closeButtonDrawerIcon, t),
+      closeButtonDrawerIcon: myoroLerp(
+        closeButtonDrawerIcon,
+        other.closeButtonDrawerIcon,
+        t,
+      ),
       closeButtonEndDrawerIcon: myoroLerp(
-          closeButtonEndDrawerIcon, other.closeButtonEndDrawerIcon, t),
+        closeButtonEndDrawerIcon,
+        other.closeButtonEndDrawerIcon,
+        t,
+      ),
       closeButtonBackgroundColor: Color.lerp(
-          closeButtonBackgroundColor, other.closeButtonBackgroundColor, t),
-      closeButtonBordered:
-          myoroLerp(closeButtonBordered, other.closeButtonBordered, t),
+        closeButtonBackgroundColor,
+        other.closeButtonBackgroundColor,
+        t,
+      ),
+      closeButtonBordered: myoroLerp(
+        closeButtonBordered,
+        other.closeButtonBordered,
+        t,
+      ),
     );
   }
 }

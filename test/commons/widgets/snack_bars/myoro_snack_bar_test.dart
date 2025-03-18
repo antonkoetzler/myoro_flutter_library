@@ -118,17 +118,23 @@ void main() {
   }
 
   test('MyoroSnackBar text (x)or child assertion', () {
-    expect(() => MyoroSnackBar(message: message, child: child),
-        throwsAssertionError);
+    expect(
+      () => MyoroSnackBar(message: message, child: child),
+      throwsAssertionError,
+    );
   });
 
   testWidgets('MyoroSnackBar using text', (WidgetTester tester) async {
-    expectCalls(await pumpWidget(tester, isUsingMessage: true),
-        isUsingMessage: true);
+    expectCalls(
+      await pumpWidget(tester, isUsingMessage: true),
+      isUsingMessage: true,
+    );
   });
 
   testWidgets('MyoroSnackBar using a widget', (WidgetTester tester) async {
-    expectCalls(await pumpWidget(tester, isUsingChild: true),
-        isUsingChild: true);
+    expectCalls(
+      await pumpWidget(tester, isUsingChild: true),
+      isUsingChild: true,
+    );
   });
 }

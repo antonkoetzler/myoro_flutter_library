@@ -21,16 +21,16 @@ final class MyoroSnackBarContainer extends SnackBar {
     // Snack bar widget to be displayed.
     required MyoroSnackBar snackBar,
   }) : super(
-          key: key,
-          backgroundColor: themeExtension.primaryColor,
-          behavior: themeExtension.behavior,
-          margin: themeExtension.margin,
-          padding: themeExtension.padding,
-          elevation: themeExtension.elevation,
-          dismissDirection: themeExtension.dismissDirection,
-          duration: themeExtension.duration,
-          content: _SnackBar(snackBar),
-        );
+         key: key,
+         backgroundColor: themeExtension.primaryColor,
+         behavior: themeExtension.behavior,
+         margin: themeExtension.margin,
+         padding: themeExtension.padding,
+         elevation: themeExtension.elevation,
+         dismissDirection: themeExtension.dismissDirection,
+         duration: themeExtension.duration,
+         content: _SnackBar(snackBar),
+       );
 
   static Finder finder({
     Color? backgroundColor,
@@ -76,9 +76,7 @@ final class _SnackBar extends StatelessWidget {
     // [Row] added to prevent the snack bar from stretching horizontally.
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        Flexible(child: _snackBar),
-      ],
+      children: [Flexible(child: _snackBar)],
     );
   }
 }

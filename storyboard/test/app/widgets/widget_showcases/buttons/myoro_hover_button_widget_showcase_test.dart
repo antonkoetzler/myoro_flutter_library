@@ -19,7 +19,8 @@ void main() {
   void expectCheckbox({required String label}) {
     expect(
       find.byWidgetPredicate(
-          (Widget w) => w is MyoroCheckbox && w.label == label),
+        (Widget w) => w is MyoroCheckbox && w.label == label,
+      ),
       findsOneWidget,
     );
   }
@@ -32,11 +33,16 @@ void main() {
         create: (_) => WidgetShowcaseBloc(),
         child: MyoroWidgetTester(
           themeExtensionsBuilder: createStoryboardThemeExtensions,
-          child: Builder(builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<
-                MyoroHoverButtonWidgetShowcaseThemeExtension>();
-            return const MyoroHoverButtonWidgetShowcase();
-          }),
+          child: Builder(
+            builder: (BuildContext context) {
+              themeExtension =
+                  context
+                      .resolveThemeExtension<
+                        MyoroHoverButtonWidgetShowcaseThemeExtension
+                      >();
+              return const MyoroHoverButtonWidgetShowcase();
+            },
+          ),
         ),
       ),
     );
@@ -65,7 +71,8 @@ void main() {
 
     // [_OnPrimaryColorDropdown].
     expectColorDropdown(
-        label: '[MyoroHoverButtonConfiguration.onPrimaryColor]');
+      label: '[MyoroHoverButtonConfiguration.onPrimaryColor]',
+    );
 
     // [_IsHoveredCheckbox].
     expectCheckbox(label: '[MyoroHoverButtonConfiguration.isHovered]');

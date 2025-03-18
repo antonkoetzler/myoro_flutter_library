@@ -5,9 +5,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroTooltip].
 void main() {
-  final EdgeInsets? margin = faker.randomGenerator.boolean()
-      ? EdgeInsets.all(faker.randomGenerator.decimal())
-      : null;
+  final EdgeInsets? margin =
+      faker.randomGenerator.boolean()
+          ? EdgeInsets.all(faker.randomGenerator.decimal())
+          : null;
   final Duration? waitDuration =
       faker.randomGenerator.boolean() ? const Duration() : null;
   final String text = faker.randomGenerator.boolean() ? faker.lorem.word() : '';

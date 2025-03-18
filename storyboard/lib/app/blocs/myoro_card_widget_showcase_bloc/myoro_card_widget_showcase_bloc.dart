@@ -22,11 +22,7 @@ final class MyoroCardWidgetShowcaseBloc
   }
 
   void _setTitleEvent(SetTitleEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        title: event.title,
-      ),
-    );
+    emit(state.copyWith(title: event.title));
   }
 
   void _setTitleTextStyleEvent(SetTitleTextStyleEvent event, _Emitter emit) {
@@ -39,26 +35,14 @@ final class MyoroCardWidgetShowcaseBloc
   }
 
   void _setPaddingEvent(SetPaddingEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        padding: event.padding,
-      ),
-    );
+    emit(state.copyWith(padding: event.padding));
   }
 
   void _setWidthEvent(SetWidthEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        width: event.width,
-      ),
-    );
+    emit(state.copyWith(width: event.width));
   }
 
   void _setHeightEvent(SetHeightEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        height: event.height,
-      ),
-    );
+    emit(state.copyWith(height: event.height));
   }
 }

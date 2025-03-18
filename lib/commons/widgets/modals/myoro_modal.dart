@@ -24,10 +24,7 @@ final class MyoroModal extends StatelessWidget {
   final Widget child;
 
   /// Private constructor to force [show] to be used.
-  const MyoroModal._(
-    this.configuration,
-    this.child,
-  );
+  const MyoroModal._(this.configuration, this.child);
 
   static Finder finder({
     MyoroModalConfiguration? configuration,
@@ -73,10 +70,7 @@ final class MyoroModal extends StatelessWidget {
     return await showDialog(
       context: context,
       barrierDismissible: configuration?.barrierDismissable ?? true,
-      builder: (_) => MyoroModal._(
-        configuration,
-        child,
-      ),
+      builder: (_) => MyoroModal._(configuration, child),
     ).then((_) => configuration?.onClosed?.call());
   }
 
@@ -145,9 +139,10 @@ final class _Title extends StatelessWidget {
       ),
       child: Text(
         _title,
-        style: context
-            .resolveThemeExtension<MyoroModalThemeExtension>()
-            .titleTextStyle,
+        style:
+            context
+                .resolveThemeExtension<MyoroModalThemeExtension>()
+                .titleTextStyle,
       ),
     );
   }
@@ -159,9 +154,10 @@ final class _CloseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroIconTextHoverButton(
-      icon: context
-          .resolveThemeExtension<MyoroModalThemeExtension>()
-          .closeButtonIcon,
+      icon:
+          context
+              .resolveThemeExtension<MyoroModalThemeExtension>()
+              .closeButtonIcon,
       onPressed: () => Navigator.of(context).pop(),
     );
   }

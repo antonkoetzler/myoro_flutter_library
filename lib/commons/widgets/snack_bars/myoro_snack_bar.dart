@@ -28,9 +28,9 @@ final class MyoroSnackBar extends StatelessWidget {
     this.message = '',
     this.child,
   }) : assert(
-          message.isNotEmpty ^ (child != null),
-          '[MyoroSnackBar]: [message] (x)or [child] must be provided.',
-        );
+         message.isNotEmpty ^ (child != null),
+         '[MyoroSnackBar]: [message] (x)or [child] must be provided.',
+       );
 
   static Finder finder({
     MyoroSnackBarTypeEnum? snackBarType,
@@ -93,9 +93,10 @@ final class _Message extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _message,
-      style: context
-          .resolveThemeExtension<MyoroSnackBarThemeExtension>()
-          .messageTextStyle,
+      style:
+          context
+              .resolveThemeExtension<MyoroSnackBarThemeExtension>()
+              .messageTextStyle,
     );
   }
 }

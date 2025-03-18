@@ -3,7 +3,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 List<ThemeExtension> createStoryboardThemeExtensions(
-    ColorScheme colorScheme, TextTheme textTheme) {
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
   return [
     ..._createAppThemeExtensions(textTheme),
     ..._createWidgetShowcaseThemeExtensions(colorScheme, textTheme),
@@ -40,11 +42,14 @@ List<ThemeExtension> _createAppThemeExtensions(TextTheme textTheme) {
 }
 
 List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
-    ColorScheme colorScheme, TextTheme textTheme) {
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
   return [
     WidgetShowcaseThemeExtension(
-      widgetWrapperBackgroundColor:
-          MyoroColorTheme.attention.withValues(alpha: 0.1),
+      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(
+        alpha: 0.1,
+      ),
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
@@ -57,8 +62,10 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
         vertical: 15,
         horizontal: 10,
       ),
-      widgetOptionsDividerPadding:
-          const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+      widgetOptionsDividerPadding: const EdgeInsets.symmetric(
+        vertical: 20,
+        horizontal: 12,
+      ),
     ),
     MyoroAppBarWidgetShowcaseThemeExtension(
       mockAppLogoIcon: Icons.people,
@@ -90,9 +97,7 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
     const MyoroCheckboxWidgetShowcaseThemeExtension(
       labelTextStyleOptionWidth: 198,
     ),
-    const MyoroBasicDividerWidgetShowcaseThemeExtension(
-      buttonBordered: true,
-    ),
+    const MyoroBasicDividerWidgetShowcaseThemeExtension(buttonBordered: true),
     MyoroResizeDividerWidgetShowcaseThemeExtension(
       containerColor: colorScheme.onPrimary,
       areYouSillyPadding: const EdgeInsets.all(50),

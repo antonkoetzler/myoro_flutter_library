@@ -7,11 +7,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroMenu].
 void main() {
-  final constraints = faker.randomGenerator.boolean()
-      ? BoxConstraints(
-          minWidth: faker.randomGenerator.integer(500, min: 100).toDouble(),
-        )
-      : null;
+  final constraints =
+      faker.randomGenerator.boolean()
+          ? BoxConstraints(
+            minWidth: faker.randomGenerator.integer(500, min: 100).toDouble(),
+          )
+          : null;
 
   Future<MyoroMenuThemeExtension> pumpWidget(
     WidgetTester tester,
@@ -35,8 +36,8 @@ void main() {
               constraints: constraints,
               searchCallback: searchCallback,
               dataConfiguration: dataConfiguration,
-              itemBuilder: (String item) =>
-                  MyoroMenuItem.fake().copyWith(text: item),
+              itemBuilder:
+                  (String item) => MyoroMenuItem.fake().copyWith(text: item),
             );
           },
         ),
@@ -75,7 +76,8 @@ void main() {
   void expectLoader() {
     expect(
       find.byWidgetPredicate(
-          (Widget w) => w is Center && w.child is MyoroCircularLoader),
+        (Widget w) => w is Center && w.child is MyoroCircularLoader,
+      ),
       findsOneWidget,
     );
   }
@@ -156,8 +158,9 @@ void main() {
             ((w.child as Column).children.last as Flexible).child
                 is SingleChildScrollView &&
             (((w.child as Column).children.last as Flexible).child
-                    as SingleChildScrollView)
-                .child is Column,
+                        as SingleChildScrollView)
+                    .child
+                is Column,
       ),
       findsOneWidget,
     );
@@ -177,7 +180,9 @@ void main() {
 
     // Executing [MyoroMenu.searchCallback] provided to display the empty message dialog.
     await tester.enterText(
-        find.byType(MyoroInput), 'Skibidi'); // Executes when text changes.
+      find.byType(MyoroInput),
+      'Skibidi',
+    ); // Executes when text changes.
     await tester.pumpAndSettle();
 
     // Empty message [_DialogText].

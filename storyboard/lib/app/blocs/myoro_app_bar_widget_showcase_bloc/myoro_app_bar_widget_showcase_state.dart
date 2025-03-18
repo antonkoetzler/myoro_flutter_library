@@ -4,20 +4,15 @@ final class MyoroAppBarWidgetShowcaseState extends Equatable {
   /// [MyoroAppBar.bordered].
   final bool bordered;
 
-  const MyoroAppBarWidgetShowcaseState({
-    this.bordered = true,
-  });
+  const MyoroAppBarWidgetShowcaseState({this.bordered = true});
 
-  MyoroAppBarWidgetShowcaseState copyWith({
-    bool? bordered,
-  }) {
-    return MyoroAppBarWidgetShowcaseState(
-      bordered: bordered ?? this.bordered,
-    );
+  MyoroAppBarWidgetShowcaseState copyWith({bool? bordered}) {
+    return MyoroAppBarWidgetShowcaseState(bordered: bordered ?? this.bordered);
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroAppBarWidgetShowcaseState(\n'
       '  bordered: $bordered,\n'
       ');';

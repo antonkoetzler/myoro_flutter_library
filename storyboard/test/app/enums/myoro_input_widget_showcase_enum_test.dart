@@ -17,8 +17,10 @@ void main() {
 
   test('MyoroInputWidgetShowcaseEnum.fake', () {
     expect(
-        MyoroInputWidgetShowcaseEnum.values
-            .contains(MyoroInputWidgetShowcaseEnum.fake()),
-        isTrue);
+      MyoroInputWidgetShowcaseEnum.values.contains(
+        MyoroInputWidgetShowcaseEnum.fake(),
+      ),
+      isTrue,
+    );
   });
 }

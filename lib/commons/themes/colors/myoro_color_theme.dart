@@ -8,12 +8,14 @@ const _primaryDarkModeColor = Color(0xFF181818);
 const _primaryLightModeColor = Color(0xFFEDE6D6);
 
 final class MyoroColorTheme {
-  static Color primary(BuildContext context) => context.isDarkMode
-      ? MyoroDarkModeColorTheme.primary
-      : MyoroLightModeColorTheme.primary;
-  static Color secondary(BuildContext context) => context.isDarkMode
-      ? MyoroDarkModeColorTheme.secondary
-      : MyoroLightModeColorTheme.secondary;
+  static Color primary(BuildContext context) =>
+      context.isDarkMode
+          ? MyoroDarkModeColorTheme.primary
+          : MyoroLightModeColorTheme.primary;
+  static Color secondary(BuildContext context) =>
+      context.isDarkMode
+          ? MyoroDarkModeColorTheme.secondary
+          : MyoroLightModeColorTheme.secondary;
   static const Color success = Colors.green;
   static const Color error = Colors.red;
   static const Color onError = Colors.white;

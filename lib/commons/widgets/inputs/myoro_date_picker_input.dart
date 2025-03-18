@@ -96,7 +96,8 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   TextEditingController? _localController;
   MyoroInputConfiguration get _configuration {
     return widget.configuration.copyWith(
-      controller: widget.configuration.controller ??
+      controller:
+          widget.configuration.controller ??
           (_localController ??= TextEditingController()),
     );
   }
@@ -125,9 +126,7 @@ final class _Input extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroInput(
-      configuration: _configuration,
-    );
+    return MyoroInput(configuration: _configuration);
   }
 }
 
@@ -164,10 +163,11 @@ final class _TriggerArea extends StatelessWidget {
       builder: (_, __) {
         return Padding(
           padding: EdgeInsets.only(
-            right: _configuration.controller!.text.isNotEmpty &&
-                    (_configuration.showClearTextButton ?? true)
-                ? 40
-                : 0,
+            right:
+                _configuration.controller!.text.isNotEmpty &&
+                        (_configuration.showClearTextButton ?? true)
+                    ? 40
+                    : 0,
           ),
           child: InkWell(
             focusColor: MyoroColorTheme.transparent,
@@ -179,7 +179,8 @@ final class _TriggerArea extends StatelessWidget {
               builder: (_, BoxConstraints constraints) {
                 return SizedBox(
                   height: 43.1, // Height of the input.
-                  width: constraints.maxWidth -
+                  width:
+                      constraints.maxWidth -
                       (_configuration.checkboxOnChanged != null ? 30 : 0),
                 );
               },

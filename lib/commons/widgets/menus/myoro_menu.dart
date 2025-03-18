@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Returns a [List<T>] of the filtered items given the query.
-typedef MyoroMenuSearchCallback<T> = List<T> Function(
-    String query, List<T> items);
+typedef MyoroMenuSearchCallback<T> =
+    List<T> Function(String query, List<T> items);
 
 /// [MyoroMenuItem] builder from a generic object.
 typedef MyoroMenuItemBuilder<T> = MyoroMenuItem Function(T item);
@@ -75,10 +75,14 @@ final class MyoroMenu<T> extends StatelessWidget {
             return switch (status) {
               MyoroRequestEnum.idle => const _Loader(),
               MyoroRequestEnum.loading => const _Loader(),
-              MyoroRequestEnum.success =>
-                _Items(searchCallback, itemBuilder, items!),
-              MyoroRequestEnum.error =>
-                const _DialogText('Error getting items.'),
+              MyoroRequestEnum.success => _Items(
+                searchCallback,
+                itemBuilder,
+                items!,
+              ),
+              MyoroRequestEnum.error => const _DialogText(
+                'Error getting items.',
+              ),
             };
           },
         ),
@@ -100,11 +104,7 @@ final class _Items<T> extends StatefulWidget {
   final MyoroMenuItemBuilder<T> _itemBuilder;
   final List<T> _items;
 
-  const _Items(
-    this._searchCallback,
-    this._itemBuilder,
-    this._items,
-  );
+  const _Items(this._searchCallback, this._itemBuilder, this._items);
 
   @override
   State<_Items<T>> createState() => _ItemsState<T>();
@@ -145,10 +145,12 @@ final class _ItemsState<T> extends State<_Items<T>> {
           if (_searchCallback != null) _SearchBar(_onSearch),
           if (_items.isNotEmpty) ...[
             Flexible(
-                child: SingleChildScrollView(
-                    child: Column(children: _itemWidgets)))
+              child: SingleChildScrollView(
+                child: Column(children: _itemWidgets),
+              ),
+            ),
           ] else ...[
-            const Flexible(child: _DialogText('No items to display.'))
+            const Flexible(child: _DialogText('No items to display.')),
           ],
         ],
       ),
@@ -202,9 +204,10 @@ final class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final configuration = MyoroHoverButtonConfiguration(
-      borderRadius: context
-          .resolveThemeExtension<MyoroMenuThemeExtension>()
-          .itemBorderRadius,
+      borderRadius:
+          context
+              .resolveThemeExtension<MyoroMenuThemeExtension>()
+              .itemBorderRadius,
       isHovered: _item.isHovered,
     );
 
@@ -238,9 +241,10 @@ final class _DialogText extends StatelessWidget {
     return Center(
       child: Text(
         _text,
-        style: context
-            .resolveThemeExtension<MyoroMenuThemeExtension>()
-            .dialogTextStyle,
+        style:
+            context
+                .resolveThemeExtension<MyoroMenuThemeExtension>()
+                .dialogTextStyle,
       ),
     );
   }

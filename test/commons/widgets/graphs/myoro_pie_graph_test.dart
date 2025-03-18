@@ -12,7 +12,9 @@ void main() {
   );
 
   Future<void> pumpWidget(
-      WidgetTester tester, MyoroPieGraphEnum typeEnum) async {
+    WidgetTester tester,
+    MyoroPieGraphEnum typeEnum,
+  ) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroPieGraph(
@@ -53,15 +55,17 @@ void main() {
     );
   }
 
-  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.pie]',
-      (WidgetTester tester) async {
+  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.pie]', (
+    WidgetTester tester,
+  ) async {
     const typeEnum = MyoroPieGraphEnum.pie;
     await pumpWidget(tester, typeEnum);
     sharedExpects(typeEnum);
   });
 
-  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.donut]',
-      (WidgetTester tester) async {
+  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.donut]', (
+    WidgetTester tester,
+  ) async {
     const typeEnum = MyoroPieGraphEnum.donut;
     await pumpWidget(tester, typeEnum);
     sharedExpects(typeEnum);

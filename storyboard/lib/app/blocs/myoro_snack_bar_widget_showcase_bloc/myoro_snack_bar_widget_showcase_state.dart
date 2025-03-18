@@ -19,9 +19,9 @@ final class MyoroSnackBarWidgetShowcaseState extends Equatable {
     this.message = '',
     this.childEnabled = true,
   }) : assert(
-          message.isNotEmpty ^ childEnabled,
-          '[MyoroSnackBarWidgetShowcaseState]: [message] must not be null (x)or [childEnabled] must be true.',
-        );
+         message.isNotEmpty ^ childEnabled,
+         '[MyoroSnackBarWidgetShowcaseState]: [message] must not be null (x)or [childEnabled] must be true.',
+       );
 
   MyoroSnackBarWidgetShowcaseState copyWith({
     MyoroSnackBarTypeEnum? snackBarType,
@@ -42,7 +42,8 @@ final class MyoroSnackBarWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroSnackBarWidgetShowcaseState(\n'
       '  snackBarType: $snackBarType,\n'
       '  showCloseButton: $showCloseButton,\n'
@@ -52,11 +53,6 @@ final class MyoroSnackBarWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      snackBarType,
-      showCloseButton,
-      message,
-      childEnabled,
-    ];
+    return [snackBarType, showCloseButton, message, childEnabled];
   }
 }

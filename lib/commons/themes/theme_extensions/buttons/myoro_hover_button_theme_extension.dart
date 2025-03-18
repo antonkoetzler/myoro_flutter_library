@@ -25,13 +25,18 @@ final class MyoroHoverButtonThemeExtension
   });
 
   MyoroHoverButtonThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        onPrimaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        borderRadius =
-            BorderRadius.circular(faker.randomGenerator.integer(50).toDouble()),
-        bordered = faker.randomGenerator.boolean();
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      onPrimaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      borderRadius = BorderRadius.circular(
+        faker.randomGenerator.integer(50).toDouble(),
+      ),
+      bordered = faker.randomGenerator.boolean();
 
   @override
   MyoroHoverButtonThemeExtension copyWith({
@@ -50,8 +55,9 @@ final class MyoroHoverButtonThemeExtension
 
   @override
   MyoroHoverButtonThemeExtension lerp(
-      covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other,
-      double t) {
+    covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroHoverButtonThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),

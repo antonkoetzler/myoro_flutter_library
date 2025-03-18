@@ -15,23 +15,17 @@ final class MyoroPieGraphItem extends Equatable {
   /// Radius aka height of the item.
   final double? radius;
 
-  const MyoroPieGraphItem({
-    required this.value,
-    this.color,
-    this.radius,
-  });
+  const MyoroPieGraphItem({required this.value, this.color, this.radius});
 
   MyoroPieGraphItem.fake()
-      : value = faker.randomGenerator.decimal(),
-        color = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        radius = faker.randomGenerator.decimal(min: 0);
+    : value = faker.randomGenerator.decimal(),
+      color =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      radius = faker.randomGenerator.decimal(min: 0);
 
-  MyoroPieGraphItem copyWith({
-    double? value,
-    Color? color,
-    double? radius,
-  }) {
+  MyoroPieGraphItem copyWith({double? value, Color? color, double? radius}) {
     return MyoroPieGraphItem(
       value: value ?? this.value,
       color: color ?? this.color,
@@ -40,7 +34,8 @@ final class MyoroPieGraphItem extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroPieGraphItem(\n'
       '  value: $value,\n'
       '  color: $color,\n'
@@ -49,10 +44,6 @@ final class MyoroPieGraphItem extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      value,
-      color,
-      radius,
-    ];
+    return [value, color, radius];
   }
 }

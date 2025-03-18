@@ -4,12 +4,12 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Callback to pass the current [BoxConstraints] of the [MyoroLayoutBuilder].
-typedef MyoroLayoutBuilderConstraintsCallback = void Function(
-    BoxConstraints constraints);
+typedef MyoroLayoutBuilderConstraintsCallback =
+    void Function(BoxConstraints constraints);
 
 /// Callback to builder to build the [MyoroLayoutBuilder].
-typedef MyoroLayoutBuilderChildCallback = Widget Function(
-    BuildContext context, BoxConstraints constraints);
+typedef MyoroLayoutBuilderChildCallback =
+    Widget Function(BuildContext context, BoxConstraints constraints);
 
 /// [Widget] used as an improved [LayoutBuilder].
 ///
@@ -24,10 +24,7 @@ typedef MyoroLayoutBuilderChildCallback = Widget Function(
 final class MyoroLayoutBuilder extends StatefulWidget {
   final MyoroLayoutBuilderChildCallback builder;
 
-  const MyoroLayoutBuilder({
-    super.key,
-    required this.builder,
-  });
+  const MyoroLayoutBuilder({super.key, required this.builder});
 
   static Finder finder({
     MyoroLayoutBuilderChildCallback? builder,
@@ -47,8 +44,9 @@ final class MyoroLayoutBuilder extends StatefulWidget {
 final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
   MyoroLayoutBuilderChildCallback get _builder => widget.builder;
 
-  final _constraintsNotifier =
-      ValueNotifier<BoxConstraints>(const BoxConstraints());
+  final _constraintsNotifier = ValueNotifier<BoxConstraints>(
+    const BoxConstraints(),
+  );
 
   @override
   void dispose() {
@@ -90,7 +88,9 @@ final class _MyoroLayoutBuilder extends SingleChildRenderObjectWidget {
 
   @override
   void updateRenderObject(
-      BuildContext context, _RenderMyoroLayoutBuilder renderObject) {
+    BuildContext context,
+    _RenderMyoroLayoutBuilder renderObject,
+  ) {
     renderObject.constraintsCallback = constraintsCallback;
   }
 }

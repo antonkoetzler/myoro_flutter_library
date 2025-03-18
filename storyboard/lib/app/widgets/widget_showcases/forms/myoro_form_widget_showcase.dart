@@ -50,10 +50,14 @@ class _WidgetState extends State<_Widget> {
     return MyoroForm<_FormResult>(
       validation: () => _validation(_controller),
       request: () => ('Form finish successfully!', themeExtension.successColor),
-      onSuccess: (_FormResult? result) =>
-          _formResultTextNotifier.value = result,
-      onError: (String errorMessage) => _formResultTextNotifier.value =
-          (errorMessage, themeExtension.errorColor),
+      onSuccess:
+          (_FormResult? result) => _formResultTextNotifier.value = result,
+      onError:
+          (String errorMessage) =>
+              _formResultTextNotifier.value = (
+                errorMessage,
+                themeExtension.errorColor,
+              ),
       builder: (result, status, controller) {
         return Column(
           mainAxisAlignment: themeExtension.widgetMainAxisAlignment,
@@ -92,9 +96,10 @@ final class _Input extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         controller: controller,
-        inputStyle: context
-            .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
-            .widgetInputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
+                .widgetInputStyle,
         placeholder: 'Type "$_errorText" in the input to display an error.',
         validation: (_) => _validation(controller),
       ),
@@ -114,7 +119,8 @@ final class _SubmitButton extends StatelessWidget {
 
     return MyoroIconTextHoverButton(
       configuration: MyoroHoverButtonConfiguration(
-          bordered: themeExtension.submitButtonBordered),
+        bordered: themeExtension.submitButtonBordered,
+      ),
       text: 'Click me!',
       mainAxisAlignment: themeExtension.submitButtonMainAxisAlignment,
       onPressed: onPressed,
@@ -134,9 +140,7 @@ final class _ResultText extends StatelessWidget {
       style: context
           .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
           .resultTextStyle
-          .withColor(
-            formResult.$2,
-          ),
+          .withColor(formResult.$2),
     );
   }
 }

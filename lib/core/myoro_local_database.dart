@@ -92,11 +92,7 @@ final class MyoroLocalDatabase {
     String? where,
     List<Object?>? whereArgs,
   }) async {
-    final rows = await select(
-      tableName,
-      where: where,
-      whereArgs: whereArgs,
-    );
+    final rows = await select(tableName, where: where, whereArgs: whereArgs);
     return rows.isEmpty ? null : rows.first;
   }
 
@@ -121,10 +117,6 @@ final class MyoroLocalDatabase {
     String? where,
     List<Object?>? whereArgs,
   }) async {
-    await _database!.delete(
-      tableName,
-      where: where,
-      whereArgs: whereArgs,
-    );
+    await _database!.delete(tableName, where: where, whereArgs: whereArgs);
   }
 }

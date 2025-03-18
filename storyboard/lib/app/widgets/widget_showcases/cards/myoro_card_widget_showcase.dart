@@ -31,8 +31,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroCardWidgetShowcaseBloc,
-        MyoroCardWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroCardWidgetShowcaseBloc,
+      MyoroCardWidgetShowcaseState
+    >(
       builder: (_, MyoroCardWidgetShowcaseState state) {
         return IntrinsicHeight(
           child: MyoroCard(
@@ -82,24 +84,28 @@ final class _TitleTextStyleOption extends StatelessWidget {
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroCard.titleTextStyle]',
         dataConfiguration: MyoroDataConfiguration(
-          staticItems: context
-              .resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>()
-              .titleTextStyleOptionTextStyles,
+          staticItems:
+              context
+                  .resolveThemeExtension<
+                    MyoroCardWidgetShowcaseThemeExtension
+                  >()
+                  .titleTextStyleOptionTextStyles,
         ),
         itemLabelBuilder: ((String, TextStyle) textStyle) => textStyle.$1,
-        itemBuilder: ((String, TextStyle) textStyle) =>
-            MyoroMenuItem(text: textStyle.$1),
+        itemBuilder:
+            ((String, TextStyle) textStyle) =>
+                MyoroMenuItem(text: textStyle.$1),
       ),
       onChanged: ((String, TextStyle)? textStyle) {
         context.resolveBloc<MyoroCardWidgetShowcaseBloc>().add(
-              SetTitleTextStyleEvent(
-                textStyle != null
-                    ? textStyle.$2
-                    : context
-                        .resolveThemeExtension<MyoroCardThemeExtension>()
-                        .textStyle,
-              ),
-            );
+          SetTitleTextStyleEvent(
+            textStyle != null
+                ? textStyle.$2
+                : context
+                    .resolveThemeExtension<MyoroCardThemeExtension>()
+                    .textStyle,
+          ),
+        );
       },
     );
   }
@@ -117,10 +123,8 @@ final class _PaddingOption extends StatelessWidget {
       maxValue: 50,
       onChanged: (double value) {
         context.resolveBloc<MyoroCardWidgetShowcaseBloc>().add(
-              SetPaddingEvent(
-                value,
-              ),
-            );
+          SetPaddingEvent(value),
+        );
       },
     );
   }
@@ -135,18 +139,12 @@ final class _WidthOption extends StatefulWidget {
 
 final class _WidthOptionState extends State<_WidthOption> {
   late final _bloc = context.resolveBloc<MyoroCardWidgetShowcaseBloc>();
-  late final _controller =
-      TextEditingController(text: _bloc.state.width.$2.toStringAsFixed(2));
+  late final _controller = TextEditingController(
+    text: _bloc.state.width.$2.toStringAsFixed(2),
+  );
 
   void _onChanged(bool enabled, String text) {
-    _bloc.add(
-      SetWidthEvent(
-        (
-          enabled,
-          double.parse(text),
-        ),
-      ),
-    );
+    _bloc.add(SetWidthEvent((enabled, double.parse(text))));
   }
 
   @override
@@ -160,13 +158,14 @@ final class _WidthOptionState extends State<_WidthOption> {
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
         controller: _controller,
-        inputStyle: context
-            .resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>()
-            .inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>()
+                .inputStyle,
         label: '[MyoroCard.width]',
         onChanged: (String text) => _onChanged(true, text),
-        checkboxOnChanged: (bool enabled, String text) =>
-            _onChanged(enabled, text),
+        checkboxOnChanged:
+            (bool enabled, String text) => _onChanged(enabled, text),
       ),
     );
   }
@@ -181,18 +180,12 @@ final class _HeightOption extends StatefulWidget {
 
 final class _HeightOptionState extends State<_HeightOption> {
   late final _bloc = context.resolveBloc<MyoroCardWidgetShowcaseBloc>();
-  late final _controller =
-      TextEditingController(text: _bloc.state.width.$2.toStringAsFixed(2));
+  late final _controller = TextEditingController(
+    text: _bloc.state.width.$2.toStringAsFixed(2),
+  );
 
   void _onChanged(bool enabled, String text) {
-    _bloc.add(
-      SetHeightEvent(
-        (
-          enabled,
-          double.parse(text),
-        ),
-      ),
-    );
+    _bloc.add(SetHeightEvent((enabled, double.parse(text))));
   }
 
   @override
@@ -206,13 +199,14 @@ final class _HeightOptionState extends State<_HeightOption> {
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
         controller: _controller,
-        inputStyle: context
-            .resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>()
-            .inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>()
+                .inputStyle,
         label: '[MyoroCard.height]',
         onChanged: (String text) => _onChanged(true, text),
-        checkboxOnChanged: (bool enabled, String text) =>
-            _onChanged(enabled, text),
+        checkboxOnChanged:
+            (bool enabled, String text) => _onChanged(enabled, text),
       ),
     );
   }

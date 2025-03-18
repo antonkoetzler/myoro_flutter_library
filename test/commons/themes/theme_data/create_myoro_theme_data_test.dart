@@ -20,8 +20,9 @@ void main() {
     List<ThemeExtension> themeExtensions = const [],
   }) {
     final themeData = createMyoroThemeData(
-        themeExtensions.isNotEmpty ? (_, __) => themeExtensions : null,
-        isDarkMode: isDarkMode);
+      themeExtensions.isNotEmpty ? (_, __) => themeExtensions : null,
+      isDarkMode: isDarkMode,
+    );
 
     final colorScheme = createMyoroColorScheme(isDarkMode);
     final textTheme = createMyoroTextTheme(isDarkMode);
@@ -44,7 +45,9 @@ void main() {
     expect(themeData.sliderTheme, comparisonThemeData.sliderTheme);
     expect(themeData.tooltipTheme, comparisonThemeData.tooltipTheme);
     expect(
-        themeData.textSelectionTheme, comparisonThemeData.textSelectionTheme);
+      themeData.textSelectionTheme,
+      comparisonThemeData.textSelectionTheme,
+    );
     expect(themeData.extensions.length, comparisonThemeData.extensions.length);
   }
 
@@ -52,7 +55,8 @@ void main() {
     createAndExpectThemeData(isDarkMode: true);
     createAndExpectThemeData(isDarkMode: false);
     createAndExpectThemeData(
-        isDarkMode: faker.randomGenerator.boolean(),
-        themeExtensions: const [_FooThemeExtension()]);
+      isDarkMode: faker.randomGenerator.boolean(),
+      themeExtensions: const [_FooThemeExtension()],
+    );
   });
 }

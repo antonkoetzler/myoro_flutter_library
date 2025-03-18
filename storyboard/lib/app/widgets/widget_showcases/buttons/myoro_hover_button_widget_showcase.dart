@@ -33,19 +33,22 @@ final class _Widget extends StatelessWidget {
 
   void _onPressed(BuildContext context) {
     context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        message: 'MyoroHoverButton pressed!',
-      ),
+      snackBar: MyoroSnackBar(message: 'MyoroHoverButton pressed!'),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<
+              MyoroHoverButtonWidgetShowcaseThemeExtension
+            >();
 
-    return BlocBuilder<MyoroHoverButtonWidgetShowcaseBloc,
-        MyoroHoverButtonWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroHoverButtonWidgetShowcaseBloc,
+      MyoroHoverButtonWidgetShowcaseState
+    >(
       builder: (_, MyoroHoverButtonWidgetShowcaseState state) {
         return MyoroHoverButton(
           configuration: MyoroHoverButtonConfiguration(
@@ -141,25 +144,27 @@ final class _BorderRadiusSlider extends StatefulWidget {
 }
 
 final class _BorderRadiusSliderState extends State<_BorderRadiusSlider> {
-  late final _defaultBorderRadius = context
-      .resolveThemeExtension<MyoroHoverButtonThemeExtension>()
-      .borderRadius
-      .bottomLeft
-      .x;
+  late final _defaultBorderRadius =
+      context
+          .resolveThemeExtension<MyoroHoverButtonThemeExtension>()
+          .borderRadius
+          .bottomLeft
+          .x;
   late double _value = _defaultBorderRadius;
 
   void _event(double? value) {
     context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(
-          SetBorderRadiusEvent(
-            value,
-          ),
-        );
+      SetBorderRadiusEvent(value),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<
+              MyoroHoverButtonWidgetShowcaseThemeExtension
+            >();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -229,19 +234,12 @@ final class _ColorDropdown extends StatelessWidget {
   final String _label;
   final MyoroSingularDropdownOnChanged<Color> _onChanged;
 
-  const _ColorDropdown(
-    this._label,
-    this._onChanged,
-  );
+  const _ColorDropdown(this._label, this._onChanged);
 
   MyoroMenuItem _itemBuilder(Color color) {
     return MyoroMenuItem(
       itemBuilder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
-        return _ColorDropdownItem(
-          color,
-          hovered,
-          onPrimaryColor,
-        );
+        return _ColorDropdownItem(color, hovered, onPrimaryColor);
       },
     );
   }
@@ -253,8 +251,9 @@ final class _ColorDropdown extends StatelessWidget {
     return MyoroSingularDropdown<Color>(
       configuration: MyoroDropdownConfiguration(
         label: _label,
-        dataConfiguration:
-            MyoroDataConfiguration(staticItems: kMyoroTestColors),
+        dataConfiguration: MyoroDataConfiguration(
+          staticItems: kMyoroTestColors,
+        ),
         itemBuilder: _itemBuilder,
         itemLabelBuilder: _itemLabelBuilder,
       ),
@@ -268,16 +267,15 @@ final class _ColorDropdownItem extends StatelessWidget {
   final bool _hovered;
   final Color _onPrimaryColor;
 
-  const _ColorDropdownItem(
-    this._color,
-    this._hovered,
-    this._onPrimaryColor,
-  );
+  const _ColorDropdownItem(this._color, this._hovered, this._onPrimaryColor);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<
+              MyoroHoverButtonWidgetShowcaseThemeExtension
+            >();
     final colorSize = themeExtension.colorDropdownItemColorSize;
 
     return Padding(

@@ -9,7 +9,9 @@ void main() {
 
   /// [expect] calls used in both of the [testWidget]s.
   Future<void> testDropdown(
-      WidgetTester tester, MyoroDropdownThemeExtension themeExtension) async {
+    WidgetTester tester,
+    MyoroDropdownThemeExtension themeExtension,
+  ) async {
     // [_Dropdown].
     expect(
       find.byWidgetPredicate(
@@ -65,33 +67,42 @@ void main() {
   }
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     configuration = MyoroDropdownConfiguration<String>(
       label: faker.lorem.word(),
-      labelTextStyle: faker.randomGenerator.boolean()
-          ? MyoroTypographyTheme.instance.randomTextStyle
-          : null,
+      labelTextStyle:
+          faker.randomGenerator.boolean()
+              ? MyoroTypographyTheme.instance.randomTextStyle
+              : null,
       dataConfiguration: MyoroDataConfiguration(
         staticItems: List.generate(
           faker.randomGenerator.integer(1000),
           (int index) => '$index: ${faker.lorem.word()}',
         ),
       ),
-      itemBuilder: (String item) => MyoroMenuItem(
-        isHovered: faker.randomGenerator.boolean(),
-        icon: kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        iconSize: faker.randomGenerator.boolean()
-            ? faker.randomGenerator.decimal()
-            : null,
-        text: item,
-        textStyle: faker.randomGenerator.boolean()
-            ? MyoroTypographyTheme.instance.randomTextStyle
-            : null,
-        textAlign: TextAlign
-            .values[faker.randomGenerator.integer(TextAlign.values.length)],
-      ),
+      itemBuilder:
+          (String item) => MyoroMenuItem(
+            isHovered: faker.randomGenerator.boolean(),
+            icon:
+                kMyoroTestIcons[faker.randomGenerator.integer(
+                  kMyoroTestIcons.length,
+                )],
+            iconSize:
+                faker.randomGenerator.boolean()
+                    ? faker.randomGenerator.decimal()
+                    : null,
+            text: item,
+            textStyle:
+                faker.randomGenerator.boolean()
+                    ? MyoroTypographyTheme.instance.randomTextStyle
+                    : null,
+            textAlign:
+                TextAlign.values[faker.randomGenerator.integer(
+                  TextAlign.values.length,
+                )],
+          ),
       itemLabelBuilder: (String item) => item,
       menuMaxHeight: faker.randomGenerator.integer(1000, min: 100).toDouble(),
       menuSearchCallback: (_, List<String> items) => items,

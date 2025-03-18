@@ -36,16 +36,19 @@ final class MyoroBarGraphBar extends Equatable {
   }
 
   MyoroBarGraphBar.fake()
-      : y = faker.randomGenerator.decimal(),
-        color = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        barSections = List.generate(
-          faker.randomGenerator.integer(5),
-          (_) => MyoroBarGraphBarSection.fake(),
-        );
+    : y = faker.randomGenerator.decimal(),
+      color =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      barSections = List.generate(
+        faker.randomGenerator.integer(5),
+        (_) => MyoroBarGraphBarSection.fake(),
+      );
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroBarGraphBar(\n'
       '  y: $y,\n'
       '  color: $color,\n'
@@ -54,10 +57,6 @@ final class MyoroBarGraphBar extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      y,
-      color,
-      barSections,
-    ];
+    return [y, color, barSections];
   }
 }

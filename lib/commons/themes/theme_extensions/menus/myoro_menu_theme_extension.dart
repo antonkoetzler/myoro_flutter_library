@@ -37,19 +37,22 @@ final class MyoroMenuThemeExtension
   });
 
   MyoroMenuThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        border = Border.all(
-          width: faker.randomGenerator.decimal(),
-          color: kMyoroTestColors[
-              faker.randomGenerator.integer(kMyoroTestColors.length)],
-        ),
-        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
-        searchBarPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        searchBarInputStyle = MyoroInputStyleEnum.fake(),
-        itemBorderRadius =
-            BorderRadius.circular(faker.randomGenerator.decimal()),
-        dialogTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      border = Border.all(
+        width: faker.randomGenerator.decimal(),
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
+      ),
+      borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      searchBarPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      searchBarInputStyle = MyoroInputStyleEnum.fake(),
+      itemBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      dialogTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
 
   @override
   MyoroMenuThemeExtension copyWith({
@@ -83,14 +86,26 @@ final class MyoroMenuThemeExtension
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       border: Border.lerp(border, other.border, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      searchBarPadding:
-          EdgeInsets.lerp(searchBarPadding, other.searchBarPadding, t),
-      searchBarInputStyle:
-          myoroLerp(searchBarInputStyle, other.searchBarInputStyle, t),
-      itemBorderRadius:
-          BorderRadius.lerp(itemBorderRadius, other.itemBorderRadius, t),
-      dialogTextStyle:
-          TextStyle.lerp(dialogTextStyle, other.dialogTextStyle, t),
+      searchBarPadding: EdgeInsets.lerp(
+        searchBarPadding,
+        other.searchBarPadding,
+        t,
+      ),
+      searchBarInputStyle: myoroLerp(
+        searchBarInputStyle,
+        other.searchBarInputStyle,
+        t,
+      ),
+      itemBorderRadius: BorderRadius.lerp(
+        itemBorderRadius,
+        other.itemBorderRadius,
+        t,
+      ),
+      dialogTextStyle: TextStyle.lerp(
+        dialogTextStyle,
+        other.dialogTextStyle,
+        t,
+      ),
     );
   }
 }

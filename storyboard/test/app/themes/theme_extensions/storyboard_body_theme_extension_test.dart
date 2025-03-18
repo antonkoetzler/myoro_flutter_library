@@ -11,8 +11,9 @@ void main() {
   late final StoryboardBodyThemeExtension themeExtension1, themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = StoryboardBodyThemeExtension.fake();
     themeExtension2 = StoryboardBodyThemeExtension.fake();
   });
@@ -38,25 +39,42 @@ void main() {
       widgetListingCategoryWidgetButtonTextStyle:
           themeExtension2.widgetListingCategoryWidgetButtonTextStyle,
     );
-    expect(copiedThemeExtension.widgetListingCategoryPadding,
-        themeExtension2.widgetListingCategoryPadding);
-    expect(copiedThemeExtension.widgetListingCategorySpacing,
-        themeExtension2.widgetListingCategorySpacing);
-    expect(copiedThemeExtension.widgetListingCategoryDividerPadding,
-        themeExtension2.widgetListingCategoryDividerPadding);
-    expect(copiedThemeExtension.widgetListingCategoryDividerShortValue,
-        themeExtension2.widgetListingCategoryDividerShortValue);
-    expect(copiedThemeExtension.widgetListingCategoryDropdownButtonTextStyle,
-        themeExtension2.widgetListingCategoryDropdownButtonTextStyle);
-    expect(copiedThemeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
-        themeExtension2.widgetListingCategoryDropdownButtonUnopenedIcon);
-    expect(copiedThemeExtension.widgetListingCategoryDropdownButtonOpenedIcon,
-        themeExtension2.widgetListingCategoryDropdownButtonOpenedIcon);
     expect(
-        copiedThemeExtension.widgetListingCategoryWidgetButtonContentCentered,
-        themeExtension2.widgetListingCategoryWidgetButtonContentCentered);
-    expect(copiedThemeExtension.widgetListingCategoryWidgetButtonTextStyle,
-        themeExtension2.widgetListingCategoryWidgetButtonTextStyle);
+      copiedThemeExtension.widgetListingCategoryPadding,
+      themeExtension2.widgetListingCategoryPadding,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategorySpacing,
+      themeExtension2.widgetListingCategorySpacing,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategoryDividerPadding,
+      themeExtension2.widgetListingCategoryDividerPadding,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategoryDividerShortValue,
+      themeExtension2.widgetListingCategoryDividerShortValue,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategoryDropdownButtonTextStyle,
+      themeExtension2.widgetListingCategoryDropdownButtonTextStyle,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
+      themeExtension2.widgetListingCategoryDropdownButtonUnopenedIcon,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategoryDropdownButtonOpenedIcon,
+      themeExtension2.widgetListingCategoryDropdownButtonOpenedIcon,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategoryWidgetButtonContentCentered,
+      themeExtension2.widgetListingCategoryWidgetButtonContentCentered,
+    );
+    expect(
+      copiedThemeExtension.widgetListingCategoryWidgetButtonTextStyle,
+      themeExtension2.widgetListingCategoryWidgetButtonTextStyle,
+    );
   });
 
   test('StoryboardBodyThemeExtension.lerp', () {
@@ -64,56 +82,75 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.widgetListingCategoryPadding,
-        EdgeInsets.lerp(themeExtension1.widgetListingCategoryPadding,
-            themeExtension2.widgetListingCategoryPadding, i),
+        EdgeInsets.lerp(
+          themeExtension1.widgetListingCategoryPadding,
+          themeExtension2.widgetListingCategoryPadding,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategorySpacing,
-        lerpDouble(themeExtension1.widgetListingCategorySpacing,
-            themeExtension2.widgetListingCategorySpacing, i),
+        lerpDouble(
+          themeExtension1.widgetListingCategorySpacing,
+          themeExtension2.widgetListingCategorySpacing,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategoryDividerPadding,
-        EdgeInsets.lerp(themeExtension1.widgetListingCategoryDividerPadding,
-            themeExtension2.widgetListingCategoryDividerPadding, i),
+        EdgeInsets.lerp(
+          themeExtension1.widgetListingCategoryDividerPadding,
+          themeExtension2.widgetListingCategoryDividerPadding,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategoryDividerShortValue,
-        lerpDouble(themeExtension1.widgetListingCategoryDividerShortValue,
-            themeExtension2.widgetListingCategoryDividerShortValue, i),
+        lerpDouble(
+          themeExtension1.widgetListingCategoryDividerShortValue,
+          themeExtension2.widgetListingCategoryDividerShortValue,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategoryDropdownButtonTextStyle,
         TextStyle.lerp(
-            themeExtension1.widgetListingCategoryDropdownButtonTextStyle,
-            themeExtension2.widgetListingCategoryDropdownButtonTextStyle,
-            i),
+          themeExtension1.widgetListingCategoryDropdownButtonTextStyle,
+          themeExtension2.widgetListingCategoryDropdownButtonTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
         myoroLerp(
-            themeExtension1.widgetListingCategoryDropdownButtonUnopenedIcon,
-            themeExtension2.widgetListingCategoryDropdownButtonUnopenedIcon,
-            i),
+          themeExtension1.widgetListingCategoryDropdownButtonUnopenedIcon,
+          themeExtension2.widgetListingCategoryDropdownButtonUnopenedIcon,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategoryDropdownButtonOpenedIcon,
-        myoroLerp(themeExtension1.widgetListingCategoryDropdownButtonOpenedIcon,
-            themeExtension2.widgetListingCategoryDropdownButtonOpenedIcon, i),
+        myoroLerp(
+          themeExtension1.widgetListingCategoryDropdownButtonOpenedIcon,
+          themeExtension2.widgetListingCategoryDropdownButtonOpenedIcon,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategoryWidgetButtonContentCentered,
         myoroLerp(
-            themeExtension1.widgetListingCategoryWidgetButtonContentCentered,
-            themeExtension2.widgetListingCategoryWidgetButtonContentCentered,
-            i),
+          themeExtension1.widgetListingCategoryWidgetButtonContentCentered,
+          themeExtension2.widgetListingCategoryWidgetButtonContentCentered,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetListingCategoryWidgetButtonTextStyle,
         TextStyle.lerp(
-            themeExtension1.widgetListingCategoryWidgetButtonTextStyle,
-            themeExtension2.widgetListingCategoryWidgetButtonTextStyle,
-            i),
+          themeExtension1.widgetListingCategoryWidgetButtonTextStyle,
+          themeExtension2.widgetListingCategoryWidgetButtonTextStyle,
+          i,
+        ),
       );
     }
   });

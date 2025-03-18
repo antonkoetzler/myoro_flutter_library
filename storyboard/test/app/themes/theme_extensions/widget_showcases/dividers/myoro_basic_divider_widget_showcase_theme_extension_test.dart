@@ -10,7 +10,8 @@ void main() {
 
   test('MyoroBasicDividerWidgetShowcaseThemeExtension.copyWith', () {
     final copiedThemeExtension = themeExtension1.copyWith(
-        buttonBordered: themeExtension2.buttonBordered);
+      buttonBordered: themeExtension2.buttonBordered,
+    );
     expect(copiedThemeExtension.buttonBordered, themeExtension2.buttonBordered);
   });
 
@@ -20,7 +21,10 @@ void main() {
       expect(
         lerpedThemeExtension.buttonBordered,
         myoroLerp(
-            themeExtension1.buttonBordered, themeExtension2.buttonBordered, i),
+          themeExtension1.buttonBordered,
+          themeExtension2.buttonBordered,
+          i,
+        ),
       );
     }
   });

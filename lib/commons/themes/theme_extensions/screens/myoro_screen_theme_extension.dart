@@ -11,7 +11,7 @@ final class MyoroScreenThemeExtension
 
   @override
   ThemeExtension<MyoroScreenThemeExtension> lerp(
-          covariant ThemeExtension<MyoroScreenThemeExtension>? other,
-          double t) =>
-      this;
+    covariant ThemeExtension<MyoroScreenThemeExtension>? other,
+    double t,
+  ) => this;
 }

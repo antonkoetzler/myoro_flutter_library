@@ -25,16 +25,26 @@ void main() {
   test('MyoroHoverButtonConfiguration.lerp', () {
     for (double i = 0; i < 1; i += 0.01) {
       final lerpedModel = MyoroHoverButtonConfiguration.lerp(model1, model2, i);
-      expect(lerpedModel.primaryColor,
-          Color.lerp(model1.primaryColor, model2.primaryColor, i));
-      expect(lerpedModel.onPrimaryColor,
-          Color.lerp(model1.onPrimaryColor, model2.onPrimaryColor, i));
-      expect(lerpedModel.isHovered,
-          myoroLerp(model1.isHovered, model2.isHovered, i));
       expect(
-          lerpedModel.bordered, myoroLerp(model1.bordered, model2.bordered, i));
-      expect(lerpedModel.borderRadius,
-          BorderRadius.lerp(model1.borderRadius, model2.borderRadius, i));
+        lerpedModel.primaryColor,
+        Color.lerp(model1.primaryColor, model2.primaryColor, i),
+      );
+      expect(
+        lerpedModel.onPrimaryColor,
+        Color.lerp(model1.onPrimaryColor, model2.onPrimaryColor, i),
+      );
+      expect(
+        lerpedModel.isHovered,
+        myoroLerp(model1.isHovered, model2.isHovered, i),
+      );
+      expect(
+        lerpedModel.bordered,
+        myoroLerp(model1.bordered, model2.bordered, i),
+      );
+      expect(
+        lerpedModel.borderRadius,
+        BorderRadius.lerp(model1.borderRadius, model2.borderRadius, i),
+      );
       expect(lerpedModel.tooltip, myoroLerp(model1.tooltip, model2.tooltip, i));
       expect(lerpedModel.onHover, myoroLerp(model1.onHover, model2.onHover, i));
     }

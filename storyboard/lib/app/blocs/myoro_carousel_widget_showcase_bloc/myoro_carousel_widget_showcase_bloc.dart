@@ -10,10 +10,14 @@ part 'myoro_carousel_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroCarouselWidgetShowcaseState>;
 
 /// BLoC to manage all of the state of [MyoroCarouselWidgetShowcase].
-final class MyoroCarouselWidgetShowcaseBloc extends Bloc<
-    MyoroCarouselWidgetShowcaseEvent, MyoroCarouselWidgetShowcaseState> {
+final class MyoroCarouselWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroCarouselWidgetShowcaseEvent,
+          MyoroCarouselWidgetShowcaseState
+        > {
   MyoroCarouselWidgetShowcaseBloc()
-      : super(const MyoroCarouselWidgetShowcaseState()) {
+    : super(const MyoroCarouselWidgetShowcaseState()) {
     on<SetDirectionEvent>(_setDirectionEvent);
     on<SetDisplayTraversalButtonsEvent>(_setDisplayTraversalButtonsEvent);
     on<SetAutoplayEvent>(_setAutoplayEvent);
@@ -21,36 +25,26 @@ final class MyoroCarouselWidgetShowcaseBloc extends Bloc<
   }
 
   void _setDirectionEvent(SetDirectionEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        direction: event.direction,
-      ),
-    );
+    emit(state.copyWith(direction: event.direction));
   }
 
   void _setDisplayTraversalButtonsEvent(
-      SetDisplayTraversalButtonsEvent event, _Emitter emit) {
+    SetDisplayTraversalButtonsEvent event,
+    _Emitter emit,
+  ) {
     emit(
-      state.copyWith(
-        displayTraversalButtons: event.displayTraversalButtons,
-      ),
+      state.copyWith(displayTraversalButtons: event.displayTraversalButtons),
     );
   }
 
   void _setAutoplayEvent(SetAutoplayEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        autoplay: event.autoplay,
-      ),
-    );
+    emit(state.copyWith(autoplay: event.autoplay));
   }
 
   void _setAutoplayIntervalDurationEvent(
-      SetAutoplayIntervalDurationEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        autoplayIntervalDuration: event.duration,
-      ),
-    );
+    SetAutoplayIntervalDurationEvent event,
+    _Emitter emit,
+  ) {
+    emit(state.copyWith(autoplayIntervalDuration: event.duration));
   }
 }

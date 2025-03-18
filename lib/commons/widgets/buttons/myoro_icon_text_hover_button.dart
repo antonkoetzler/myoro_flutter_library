@@ -43,9 +43,9 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
     this.mainAxisAlignment,
     this.onPressed,
   }) : assert(
-          !(icon == null && text.isEmpty),
-          '[MyoroIconTextHoverButton]: An [icon] or [text] must be provided.',
-        );
+         !(icon == null && text.isEmpty),
+         '[MyoroIconTextHoverButton]: An [icon] or [text] must be provided.',
+       );
 
   static Finder finder({
     MyoroHoverButtonConfiguration? configuration,
@@ -124,9 +124,11 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
       configuration: configuration,
       onPressed: onPressed,
       builder: (bool hovered, _, __) {
-        final actualContentColor = (hovered || configuration?.isHovered == true)
-            ? (configuration?.primaryColor ?? themeExtension.primaryColor)
-            : (configuration?.onPrimaryColor ?? themeExtension.onPrimaryColor);
+        final actualContentColor =
+            (hovered || configuration?.isHovered == true)
+                ? (configuration?.primaryColor ?? themeExtension.primaryColor)
+                : (configuration?.onPrimaryColor ??
+                    themeExtension.onPrimaryColor);
 
         return Padding(
           padding: contentPadding,
@@ -135,17 +137,14 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
                 mainAxisAlignment ?? themeExtension.mainAxisAlignment,
             children: [
               if (iconProvided)
-                Icon(
-                  icon,
-                  size: iconSize,
-                  color: actualContentColor,
-                ),
+                Icon(icon, size: iconSize, color: actualContentColor),
               if (iconAndTextProvided) SizedBox(width: themeExtension.spacing),
               if (textProvided)
                 Expanded(
                   child: Text(
                     text,
-                    textAlign: textAlign ??
+                    textAlign:
+                        textAlign ??
                         (iconProvided ? TextAlign.left : TextAlign.center),
                     maxLines: themeExtension.textMaxLines,
                     overflow: themeExtension.textOverflow,

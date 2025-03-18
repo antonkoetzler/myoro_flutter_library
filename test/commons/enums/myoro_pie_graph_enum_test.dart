@@ -14,9 +14,6 @@ void main() {
   });
 
   test('MyoroPieGraphEnum.fake', () {
-    expect(
-      MyoroPieGraphEnum.values.contains(MyoroPieGraphEnum.fake()),
-      isTrue,
-    );
+    expect(MyoroPieGraphEnum.values.contains(MyoroPieGraphEnum.fake()), isTrue);
   });
 }

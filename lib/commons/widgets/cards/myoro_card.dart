@@ -73,9 +73,11 @@ final class MyoroCard extends StatelessWidget {
         if (title != null) ...[
           _Title(title!, titleTextStyle),
           SizedBox(
-              height: context
-                  .resolveThemeExtension<MyoroCardThemeExtension>()
-                  .titleCardSpacing),
+            height:
+                context
+                    .resolveThemeExtension<MyoroCardThemeExtension>()
+                    .titleCardSpacing,
+          ),
         ],
         Flexible(child: _Card(padding, width, height, constraints, child)),
       ],
@@ -93,7 +95,8 @@ final class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _title,
-      style: _titleTextStyle ??
+      style:
+          _titleTextStyle ??
           context.resolveThemeExtension<MyoroCardThemeExtension>().textStyle,
     );
   }

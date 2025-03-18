@@ -23,9 +23,9 @@ final class MyoroDropdownThemeExtension
   });
 
   MyoroDropdownThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake(),
-        inputDropdownSpacing = faker.randomGenerator.decimal(),
-        menuMaxHeight = faker.randomGenerator.decimal();
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      inputDropdownSpacing = faker.randomGenerator.decimal(),
+      menuMaxHeight = faker.randomGenerator.decimal();
 
   @override
   MyoroDropdownThemeExtension copyWith({
@@ -48,8 +48,11 @@ final class MyoroDropdownThemeExtension
     if (other is! MyoroDropdownThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      inputDropdownSpacing:
-          lerpDouble(inputDropdownSpacing, other.inputDropdownSpacing, t),
+      inputDropdownSpacing: lerpDouble(
+        inputDropdownSpacing,
+        other.inputDropdownSpacing,
+        t,
+      ),
       menuMaxHeight: lerpDouble(menuMaxHeight, other.menuMaxHeight, t),
     );
   }

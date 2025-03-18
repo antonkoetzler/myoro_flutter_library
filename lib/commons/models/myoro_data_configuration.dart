@@ -1,8 +1,8 @@
 import 'package:faker/faker.dart';
 
 /// Request if the [MyoroDataConfiguration.asyncronousItems] is being utilized.
-typedef MyoroDataConfigurationRequest<T> = Future<List<T>> Function(
-    Map<String, dynamic> filters);
+typedef MyoroDataConfigurationRequest<T> =
+    Future<List<T>> Function(Map<String, dynamic> filters);
 
 /// A model to represent the requesting, pagination, & filtering of data.
 final class MyoroDataConfiguration<T> {
@@ -31,11 +31,11 @@ final class MyoroDataConfiguration<T> {
     this.totalPages = 1,
     this.itemsPerPage = 10,
     Map<String, dynamic>? filters,
-  })  : _filters = filters ?? {},
-        assert(
-          (staticItems != null) ^ (asyncronousItems != null),
-          '[MyoroDataConfiguration]: [staticItems] (x)or [asyncronousItems] needs to be requests.',
-        );
+  }) : _filters = filters ?? {},
+       assert(
+         (staticItems != null) ^ (asyncronousItems != null),
+         '[MyoroDataConfiguration]: [staticItems] (x)or [asyncronousItems] needs to be requests.',
+       );
 
   MyoroDataConfiguration<T> copyWith({
     List<T>? staticItems,
@@ -50,9 +50,10 @@ final class MyoroDataConfiguration<T> {
     return MyoroDataConfiguration(
       staticItems:
           staticItemsEnabled ? (staticItems ?? this.staticItems) : null,
-      asyncronousItems: asyncronousItemsEnabled
-          ? (asyncronousItems ?? this.asyncronousItems)
-          : null,
+      asyncronousItems:
+          asyncronousItemsEnabled
+              ? (asyncronousItems ?? this.asyncronousItems)
+              : null,
       currentPage: currentPage ?? this.currentPage,
       totalPages: totalPages ?? this.totalPages,
       itemsPerPage: itemsPerPage ?? this.itemsPerPage,
@@ -77,7 +78,8 @@ final class MyoroDataConfiguration<T> {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroDataConfiguration<$T>(\n'
       '  staticItems: $staticItems,\n'
       '  asyncronousItems: $asyncronousItems,\n'

@@ -15,8 +15,10 @@ void main() {
       childBorderRadius: themeExtension2.childBorderRadius,
     );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
-    expect(copiedThemeExtension.childBorderRadius,
-        themeExtension2.childBorderRadius);
+    expect(
+      copiedThemeExtension.childBorderRadius,
+      themeExtension2.childBorderRadius,
+    );
   });
 
   test('MyoroDialogModalWidgetShowcaseThemeExtension.lerp', () {
@@ -28,8 +30,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.childBorderRadius,
-        BorderRadius.lerp(themeExtension1.childBorderRadius,
-            themeExtension2.childBorderRadius, i),
+        BorderRadius.lerp(
+          themeExtension1.childBorderRadius,
+          themeExtension2.childBorderRadius,
+          i,
+        ),
       );
     }
   });

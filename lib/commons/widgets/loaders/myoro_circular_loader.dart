@@ -10,11 +10,7 @@ final class MyoroCircularLoader extends StatelessWidget {
   /// Size of the [MyoroCircularLoader].
   final double? size;
 
-  const MyoroCircularLoader({
-    super.key,
-    this.color,
-    this.size,
-  });
+  const MyoroCircularLoader({super.key, this.color, this.size});
 
   static Finder finder({
     Color? color,
@@ -39,9 +35,7 @@ final class MyoroCircularLoader extends StatelessWidget {
     return SizedBox(
       width: chosenSize,
       height: chosenSize,
-      child: CircularProgressIndicator(
-        color: color ?? themeExtension.color,
-      ),
+      child: CircularProgressIndicator(color: color ?? themeExtension.color),
     );
   }
 }

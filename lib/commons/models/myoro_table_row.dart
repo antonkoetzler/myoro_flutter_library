@@ -11,18 +11,12 @@ final class MyoroTableRow extends Equatable {
   /// [MyoroTableCell]s of the row.
   final List<MyoroTableCell> cells;
 
-  const MyoroTableRow({
-    this.onPressed,
-    required this.cells,
-  });
+  const MyoroTableRow({this.onPressed, required this.cells});
 
   factory MyoroTableRow.fake({required int columnQuantity}) {
     return MyoroTableRow(
       onPressed: null,
-      cells: List.generate(
-        columnQuantity,
-        (_) => MyoroTableCell.fake(),
-      ),
+      cells: List.generate(columnQuantity, (_) => MyoroTableCell.fake()),
     );
   }
 
@@ -37,7 +31,8 @@ final class MyoroTableRow extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroTableRow(\n'
       '  onPressed: $onPressed,\n'
       '  cells: $cells,\n'
@@ -45,9 +40,6 @@ final class MyoroTableRow extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      onPressed,
-      cells,
-    ];
+    return [onPressed, cells];
   }
 }

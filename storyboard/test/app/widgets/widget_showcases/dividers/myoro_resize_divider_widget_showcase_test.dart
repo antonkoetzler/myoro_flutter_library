@@ -22,16 +22,26 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroResizeDivider), findsOneWidget);
     expect(
-        MyoroSingularDropdown.finder<Axis>(
-            label: '[MyoroResizeDivider.direction]', labelEnabled: true),
-        findsOneWidget);
+      MyoroSingularDropdown.finder<Axis>(
+        label: '[MyoroResizeDivider.direction]',
+        labelEnabled: true,
+      ),
+      findsOneWidget,
+    );
     expect(
-        MyoroSlider.finder(
-            label: '[MyoroResizeDivider.shortValue]', labelEnabled: true),
-        findsOneWidget);
-    expect(MyoroSlider.finder(label: 'Vertical padding', labelEnabled: true),
-        findsOneWidget);
-    expect(MyoroSlider.finder(label: 'Horizontal padding', labelEnabled: true),
-        findsOneWidget);
+      MyoroSlider.finder(
+        label: '[MyoroResizeDivider.shortValue]',
+        labelEnabled: true,
+      ),
+      findsOneWidget,
+    );
+    expect(
+      MyoroSlider.finder(label: 'Vertical padding', labelEnabled: true),
+      findsOneWidget,
+    );
+    expect(
+      MyoroSlider.finder(label: 'Horizontal padding', labelEnabled: true),
+      findsOneWidget,
+    );
   });
 }

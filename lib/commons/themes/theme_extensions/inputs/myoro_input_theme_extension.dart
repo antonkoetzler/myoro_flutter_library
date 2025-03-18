@@ -67,38 +67,49 @@ final class MyoroInputThemeExtension
   });
 
   MyoroInputThemeExtension.fake()
-      : underlinedBorder = UnderlineInputBorder(
-          borderSide: BorderSide(
-            width: faker.randomGenerator.decimal(),
-            color: kMyoroTestColors[
-                faker.randomGenerator.integer(kMyoroTestColors.length)],
-          ),
+    : underlinedBorder = UnderlineInputBorder(
+        borderSide: BorderSide(
+          width: faker.randomGenerator.decimal(),
+          color:
+              kMyoroTestColors[faker.randomGenerator.integer(
+                kMyoroTestColors.length,
+              )],
         ),
-        outlinedBorder = OutlineInputBorder(
-          borderRadius: MyoroDecorationHelper.inputBorderRadius,
-          borderSide: BorderSide(
-            width: faker.randomGenerator.decimal(),
-            color: kMyoroTestColors[
-                faker.randomGenerator.integer(kMyoroTestColors.length)],
-          ),
+      ),
+      outlinedBorder = OutlineInputBorder(
+        borderRadius: MyoroDecorationHelper.inputBorderRadius,
+        borderSide: BorderSide(
+          width: faker.randomGenerator.decimal(),
+          color:
+              kMyoroTestColors[faker.randomGenerator.integer(
+                kMyoroTestColors.length,
+              )],
         ),
-        primaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        errorBorderColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
-        isDense = faker.randomGenerator.boolean(),
-        cursorHeight = faker.randomGenerator.decimal(),
-        disabledOpacity = faker.randomGenerator.decimal(),
-        inputTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        spacing = faker.randomGenerator.decimal(),
-        labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        labelBehavior = FloatingLabelBehavior.values[
-            faker.randomGenerator.integer(FloatingLabelBehavior.values.length)],
-        clearTextButtonPadding =
-            EdgeInsets.all(faker.randomGenerator.decimal()),
-        clearTextButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      ),
+      primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      errorBorderColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      isDense = faker.randomGenerator.boolean(),
+      cursorHeight = faker.randomGenerator.decimal(),
+      disabledOpacity = faker.randomGenerator.decimal(),
+      inputTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      spacing = faker.randomGenerator.decimal(),
+      labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      labelBehavior =
+          FloatingLabelBehavior.values[faker.randomGenerator.integer(
+            FloatingLabelBehavior.values.length,
+          )],
+      clearTextButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      clearTextButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
   @override
   MyoroInputThemeExtension copyWith({
@@ -156,9 +167,15 @@ final class MyoroInputThemeExtension
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       labelBehavior: myoroLerp(labelBehavior, other.labelBehavior, t),
       clearTextButtonPadding: EdgeInsets.lerp(
-          clearTextButtonPadding, other.clearTextButtonPadding, t),
-      clearTextButtonIcon:
-          myoroLerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
+        clearTextButtonPadding,
+        other.clearTextButtonPadding,
+        t,
+      ),
+      clearTextButtonIcon: myoroLerp(
+        clearTextButtonIcon,
+        other.clearTextButtonIcon,
+        t,
+      ),
     );
   }
 }

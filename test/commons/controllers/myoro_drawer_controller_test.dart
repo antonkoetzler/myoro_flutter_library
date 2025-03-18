@@ -7,63 +7,63 @@ void main() {
   const drawer = MyoroDrawer(child: SizedBox.shrink());
 
   Future<void> closeDrawerAndExpectNothing(
-      BuildContext context, WidgetTester tester) async {
+    BuildContext context,
+    WidgetTester tester,
+  ) async {
     context.closeDrawer();
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDrawer), findsNothing);
   }
 
-  testWidgets(
-    '[MyoroDrawerController] normal drawer tests.',
-    (WidgetTester tester) async {
-      late final BuildContext context;
+  testWidgets('[MyoroDrawerController] normal drawer tests.', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
 
-      await tester.pumpWidget(
-        MyoroWidgetTester(
-          child: Builder(
-            builder: (BuildContext builderContext) {
-              context = builderContext;
-              return const SizedBox.shrink();
-            },
-          ),
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: Builder(
+          builder: (BuildContext builderContext) {
+            context = builderContext;
+            return const SizedBox.shrink();
+          },
         ),
-      );
-      await tester.pumpAndSettle();
+      ),
+    );
+    await tester.pumpAndSettle();
 
-      // Open a normal drawer.
-      context.openDrawer(drawer: drawer);
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroDrawer), findsOneWidget);
+    // Open a normal drawer.
+    context.openDrawer(drawer: drawer);
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroDrawer), findsOneWidget);
 
-      // Close a normal drawer.
-      await closeDrawerAndExpectNothing(context, tester);
-    },
-  );
+    // Close a normal drawer.
+    await closeDrawerAndExpectNothing(context, tester);
+  });
 
-  testWidgets(
-    '[MyoroDrawerController] end drawer tests.',
-    (WidgetTester tester) async {
-      late final BuildContext context;
+  testWidgets('[MyoroDrawerController] end drawer tests.', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
 
-      await tester.pumpWidget(
-        MyoroWidgetTester(
-          child: Builder(
-            builder: (BuildContext builderContext) {
-              context = builderContext;
-              return const SizedBox.shrink();
-            },
-          ),
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: Builder(
+          builder: (BuildContext builderContext) {
+            context = builderContext;
+            return const SizedBox.shrink();
+          },
         ),
-      );
-      await tester.pumpAndSettle();
+      ),
+    );
+    await tester.pumpAndSettle();
 
-      // Open an end drawer.
-      context.openDrawer(isEndDrawer: true, drawer: drawer);
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroDrawer), findsOneWidget);
+    // Open an end drawer.
+    context.openDrawer(isEndDrawer: true, drawer: drawer);
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroDrawer), findsOneWidget);
 
-      // Close an end drawer.
-      await closeDrawerAndExpectNothing(context, tester);
-    },
-  );
+    // Close an end drawer.
+    await closeDrawerAndExpectNothing(context, tester);
+  });
 }

@@ -8,12 +8,10 @@ final class MyoroRadioWidgetShowcaseThemeExtension
   /// [MyoroInputStyleEnum] of inputs.
   final MyoroInputStyleEnum inputStyle;
 
-  const MyoroRadioWidgetShowcaseThemeExtension({
-    required this.inputStyle,
-  });
+  const MyoroRadioWidgetShowcaseThemeExtension({required this.inputStyle});
 
   MyoroRadioWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake();
+    : inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroRadioWidgetShowcaseThemeExtension copyWith({
@@ -30,8 +28,6 @@ final class MyoroRadioWidgetShowcaseThemeExtension
     double t,
   ) {
     if (other is! MyoroRadioWidgetShowcaseThemeExtension) return this;
-    return copyWith(
-      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-    );
+    return copyWith(inputStyle: myoroLerp(inputStyle, other.inputStyle, t));
   }
 }

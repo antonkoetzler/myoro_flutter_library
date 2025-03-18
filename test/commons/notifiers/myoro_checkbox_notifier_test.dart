@@ -12,11 +12,12 @@ void main() {
   test('MyoroCheckboxNotifier.toggle', () {
     expect((MyoroCheckboxNotifier()..toggle()).enabled, isTrue);
     expect(
-        (MyoroCheckboxNotifier()
-              ..toggle()
-              ..toggle())
-            .enabled,
-        isFalse);
+      (MyoroCheckboxNotifier()
+            ..toggle()
+            ..toggle())
+          .enabled,
+      isFalse,
+    );
     expect((MyoroCheckboxNotifier()..toggle(false)).enabled, isFalse);
     expect((MyoroCheckboxNotifier()..toggle(true)).enabled, isTrue);
   });

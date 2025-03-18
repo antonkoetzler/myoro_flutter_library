@@ -174,9 +174,7 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                         ),
                         if (_maxValueIndicatorTextBuilder != null)
                           _IndicatorText(
-                            _maxValueIndicatorTextBuilder!.call(
-                              _maxValue,
-                            ),
+                            _maxValueIndicatorTextBuilder!.call(_maxValue),
                           ),
                       ],
                     ),
@@ -206,7 +204,8 @@ final class _Label extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _label,
-      style: _labelTextStyle ??
+      style:
+          _labelTextStyle ??
           context
               .resolveThemeExtension<MyoroSliderThemeExtension>()
               .labelTextStyle,
@@ -228,8 +227,9 @@ final class _IndicatorText extends StatelessWidget {
     return Text(
       _text,
       textAlign: themeExtension.indicatorTextAlignment,
-      style: themeExtension.indicatorTextStyle
-          .copyWith(height: isFooter ? 0 : 0.5),
+      style: themeExtension.indicatorTextStyle.copyWith(
+        height: isFooter ? 0 : 0.5,
+      ),
     );
   }
 }

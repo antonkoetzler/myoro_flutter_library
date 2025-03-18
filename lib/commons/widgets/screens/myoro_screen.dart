@@ -14,12 +14,7 @@ final class MyoroScreen extends StatefulWidget {
   /// Body of the screen.
   final Widget? body;
 
-  const MyoroScreen({
-    super.key,
-    this.drawerController,
-    this.appBar,
-    this.body,
-  });
+  const MyoroScreen({super.key, this.drawerController, this.appBar, this.body});
 
   static Finder finder({
     MyoroDrawerController? drawerController,

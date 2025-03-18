@@ -7,20 +7,23 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   final String title = faker.lorem.word();
   late final TextStyle? titleTextStyle;
-  final EdgeInsets? padding = faker.randomGenerator.boolean()
-      ? EdgeInsets.all(faker.randomGenerator.decimal())
-      : null;
+  final EdgeInsets? padding =
+      faker.randomGenerator.boolean()
+          ? EdgeInsets.all(faker.randomGenerator.decimal())
+          : null;
   final double? width =
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final double? height =
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   setUp(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
-    titleTextStyle = faker.randomGenerator.boolean()
-        ? MyoroTypographyTheme.instance.randomTextStyle
-        : null;
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
+    titleTextStyle =
+        faker.randomGenerator.boolean()
+            ? MyoroTypographyTheme.instance.randomTextStyle
+            : null;
   });
 
   testWidgets('MyoroCard', (WidgetTester tester) async {

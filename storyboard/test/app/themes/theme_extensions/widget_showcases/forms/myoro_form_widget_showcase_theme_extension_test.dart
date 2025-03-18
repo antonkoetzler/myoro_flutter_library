@@ -12,8 +12,9 @@ void main() {
       themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroFormWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroFormWidgetShowcaseThemeExtension.fake();
   });
@@ -30,17 +31,27 @@ void main() {
       successColor: themeExtension2.successColor,
       errorColor: themeExtension2.errorColor,
     );
-    expect(copiedThemeExtension.widgetMainAxisAlignment,
-        themeExtension2.widgetMainAxisAlignment);
-    expect(copiedThemeExtension.widgetInputStyle,
-        themeExtension2.widgetInputStyle);
-    expect(copiedThemeExtension.widgetSpacing, themeExtension2.widgetSpacing);
-    expect(copiedThemeExtension.submitButtonMainAxisAlignment,
-        themeExtension2.submitButtonMainAxisAlignment);
-    expect(copiedThemeExtension.submitButtonBordered,
-        themeExtension2.submitButtonBordered);
     expect(
-        copiedThemeExtension.resultTextStyle, themeExtension2.resultTextStyle);
+      copiedThemeExtension.widgetMainAxisAlignment,
+      themeExtension2.widgetMainAxisAlignment,
+    );
+    expect(
+      copiedThemeExtension.widgetInputStyle,
+      themeExtension2.widgetInputStyle,
+    );
+    expect(copiedThemeExtension.widgetSpacing, themeExtension2.widgetSpacing);
+    expect(
+      copiedThemeExtension.submitButtonMainAxisAlignment,
+      themeExtension2.submitButtonMainAxisAlignment,
+    );
+    expect(
+      copiedThemeExtension.submitButtonBordered,
+      themeExtension2.submitButtonBordered,
+    );
+    expect(
+      copiedThemeExtension.resultTextStyle,
+      themeExtension2.resultTextStyle,
+    );
     expect(copiedThemeExtension.successColor, themeExtension2.successColor);
     expect(copiedThemeExtension.errorColor, themeExtension2.errorColor);
   });
@@ -50,38 +61,59 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.widgetMainAxisAlignment,
-        myoroLerp(themeExtension1.widgetMainAxisAlignment,
-            themeExtension2.widgetMainAxisAlignment, i),
+        myoroLerp(
+          themeExtension1.widgetMainAxisAlignment,
+          themeExtension2.widgetMainAxisAlignment,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetInputStyle,
-        myoroLerp(themeExtension1.widgetInputStyle,
-            themeExtension2.widgetInputStyle, i),
+        myoroLerp(
+          themeExtension1.widgetInputStyle,
+          themeExtension2.widgetInputStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.widgetSpacing,
         lerpDouble(
-            themeExtension1.widgetSpacing, themeExtension2.widgetSpacing, i),
+          themeExtension1.widgetSpacing,
+          themeExtension2.widgetSpacing,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.submitButtonMainAxisAlignment,
-        myoroLerp(themeExtension1.submitButtonMainAxisAlignment,
-            themeExtension2.submitButtonMainAxisAlignment, i),
+        myoroLerp(
+          themeExtension1.submitButtonMainAxisAlignment,
+          themeExtension2.submitButtonMainAxisAlignment,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.submitButtonBordered,
-        myoroLerp(themeExtension1.submitButtonBordered,
-            themeExtension2.submitButtonBordered, i),
+        myoroLerp(
+          themeExtension1.submitButtonBordered,
+          themeExtension2.submitButtonBordered,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.resultTextStyle,
-        TextStyle.lerp(themeExtension1.resultTextStyle,
-            themeExtension2.resultTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.resultTextStyle,
+          themeExtension2.resultTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.successColor,
         Color.lerp(
-            themeExtension1.successColor, themeExtension2.successColor, i),
+          themeExtension1.successColor,
+          themeExtension2.successColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.errorColor,

@@ -16,12 +16,12 @@ typedef MyoroSingularDropdownOnChanged<T> = void Function(T? selectedItem);
 typedef MyoroMultiDropdownOnChanged<T> = void Function(List<T> selectedItems);
 
 /// Function executed when the checkbox next to the [MyoroSingularDropdown] is changed.
-typedef MyoroSingularDropdownCheckboxOnChanged<T> = void Function(
-    bool enabled, T? item);
+typedef MyoroSingularDropdownCheckboxOnChanged<T> =
+    void Function(bool enabled, T? item);
 
 /// Function executed when the checkbox next to the [MyoroMultiDropdown] is changed.
-typedef MyoroMultiDropdownCheckboxOnChanged<T> = void Function(
-    bool enabled, List<T> items);
+typedef MyoroMultiDropdownCheckboxOnChanged<T> =
+    void Function(bool enabled, List<T> items);
 
 /// Enum to distinguish if we are working with a [MyoroSingularDropdown] or [MyoroMultiDropdown].
 enum _MyoroDropdownEnum {
@@ -323,7 +323,10 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
 
   /// Controller to call functions for both [_singularController] & [_multiController].
   late final _controller = _MyoroDropdownController<T>(
-      _dropdownType, _singularController, _multiController);
+    _dropdownType,
+    _singularController,
+    _multiController,
+  );
 
   /// [GlobalKey] of [_Input] to get it's position on the screen to position [_overlayEntry] which holds [_Dropdown].
   final _inputKey = GlobalKey();
@@ -367,9 +370,10 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
       builder: (_) {
         return Positioned(
           width: inputSize.width,
-          top: positionMenuAboveInput
-              ? menuYStartUpperPosition
-              : menuYStartBottomPosition,
+          top:
+              positionMenuAboveInput
+                  ? menuYStartUpperPosition
+                  : menuYStartBottomPosition,
           left: inputPosition.dx,
           child: Material(
             color: MyoroColorTheme.transparent,
@@ -422,8 +426,13 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
         focusNode: _focusNode,
         child: Stack(
           children: [
-            _Input(_inputKey, _configuration, _controller,
-                _singularCheckboxOnChanged, _multiCheckboxOnChanged),
+            _Input(
+              _inputKey,
+              _configuration,
+              _controller,
+              _singularCheckboxOnChanged,
+              _multiCheckboxOnChanged,
+            ),
             if (_configuration.enabled)
               _TriggerArea(_triggerAreaOnPressed, _configuration, _controller),
           ],
@@ -477,14 +486,17 @@ final class _InputState<T> extends State<_Input<T>> {
       switch (_controller._dropdownType) {
         case _MyoroDropdownEnum.singular:
           _singularCheckboxOnChanged?.call(
-              _enabled,
-              _controller._selectedItems.isNotEmpty
-                  ? _controller._selectedItems.first
-                  : null);
+            _enabled,
+            _controller._selectedItems.isNotEmpty
+                ? _controller._selectedItems.first
+                : null,
+          );
           break;
         case _MyoroDropdownEnum.multi:
           _multiCheckboxOnChanged?.call(
-              _enabled, _controller._selectedItems.toList());
+            _enabled,
+            _controller._selectedItems.toList(),
+          );
           break;
       }
     });
@@ -508,14 +520,16 @@ final class _InputState<T> extends State<_Input<T>> {
   @override
   void initState() {
     super.initState();
-    _controller._selectedItemsNotifier
-        .addListener(_selectedItemsNotifierListener);
+    _controller._selectedItemsNotifier.addListener(
+      _selectedItemsNotifierListener,
+    );
   }
 
   @override
   void dispose() {
-    _controller._selectedItemsNotifier
-        .removeListener(_selectedItemsNotifierListener);
+    _controller._selectedItemsNotifier.removeListener(
+      _selectedItemsNotifierListener,
+    );
     _inputController.dispose();
     super.dispose();
   }
@@ -557,10 +571,11 @@ final class _TriggerArea<T> extends StatelessWidget {
       builder: (_, Set<T> selectedItems, __) {
         return Padding(
           padding: EdgeInsets.only(
-            right: (selectedItems.isNotEmpty &&
-                    _configuration.allowItemClearing != false)
-                ? 40
-                : 0,
+            right:
+                (selectedItems.isNotEmpty &&
+                        _configuration.allowItemClearing != false)
+                    ? 40
+                    : 0,
           ),
           child: InkWell(
             focusColor: MyoroColorTheme.transparent,
@@ -602,9 +617,11 @@ final class _Menu<T> extends StatelessWidget {
             : _controller._selectItem(item);
         switch (_controller._dropdownType) {
           case _MyoroDropdownEnum.singular:
-            _singularOnChanged?.call(_controller._selectedItems.isNotEmpty
-                ? _controller._selectedItems.first
-                : null);
+            _singularOnChanged?.call(
+              _controller._selectedItems.isNotEmpty
+                  ? _controller._selectedItems.first
+                  : null,
+            );
             _removeOverlayCallback();
             break;
           case _MyoroDropdownEnum.multi:
@@ -621,7 +638,8 @@ final class _Menu<T> extends StatelessWidget {
       dataConfiguration: _configuration.dataConfiguration,
       itemBuilder: _itemBuilder,
       constraints: BoxConstraints(
-        maxHeight: _configuration.menuMaxHeight ??
+        maxHeight:
+            _configuration.menuMaxHeight ??
             context
                 .resolveThemeExtension<MyoroDropdownThemeExtension>()
                 .menuMaxHeight,

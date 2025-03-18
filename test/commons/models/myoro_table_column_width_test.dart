@@ -8,7 +8,8 @@ void main() {
   test('MyoroTableColumnWidth constructor assertion', () {
     expect(
       () => MyoroTableColumnWidth(
-          columnWidthEnum: MyoroTableColumnWidthEnum.fixed),
+        columnWidthEnum: MyoroTableColumnWidthEnum.fixed,
+      ),
       throwsAssertionError,
     );
   });

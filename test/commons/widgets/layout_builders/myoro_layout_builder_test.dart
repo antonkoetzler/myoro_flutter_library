@@ -7,9 +7,7 @@ void main() {
   testWidgets('MyoroLayoutBuilder', (WidgetTester tester) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
-        child: MyoroLayoutBuilder(
-          builder: (_, __) => const SizedBox.shrink(),
-        ),
+        child: MyoroLayoutBuilder(builder: (_, __) => const SizedBox.shrink()),
       ),
     );
     await tester.pumpAndSettle();

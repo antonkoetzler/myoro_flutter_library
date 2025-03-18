@@ -4,20 +4,17 @@ final class MyoroSearchInputWidgetShowcaseState extends Equatable {
   /// [MyoroSearchInput.requestWhenChanged].
   final bool requestWhenChanged;
 
-  const MyoroSearchInputWidgetShowcaseState({
-    this.requestWhenChanged = false,
-  });
+  const MyoroSearchInputWidgetShowcaseState({this.requestWhenChanged = false});
 
-  MyoroSearchInputWidgetShowcaseState copyWith({
-    bool? requestWhenChanged,
-  }) {
+  MyoroSearchInputWidgetShowcaseState copyWith({bool? requestWhenChanged}) {
     return MyoroSearchInputWidgetShowcaseState(
       requestWhenChanged: requestWhenChanged ?? this.requestWhenChanged,
     );
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroSearchInputWidgetShowcaseState(\n'
       '  requestWhenChanged: $requestWhenChanged,\n'
       ');';

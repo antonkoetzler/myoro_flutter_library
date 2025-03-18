@@ -161,11 +161,13 @@ void main() {
   }
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
-    textStyle = faker.randomGenerator.boolean()
-        ? MyoroTypographyTheme.instance.randomTextStyle
-        : null;
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
+    textStyle =
+        faker.randomGenerator.boolean()
+            ? MyoroTypographyTheme.instance.randomTextStyle
+            : null;
   });
 
   testWidgets(

@@ -13,7 +13,7 @@ typedef _Emitter = Emitter<MyoroInputWidgetShowcaseState>;
 final class MyoroInputWidgetShowcaseBloc
     extends Bloc<MyoroInputWidgetShowcaseEvent, MyoroInputWidgetShowcaseState> {
   MyoroInputWidgetShowcaseBloc()
-      : super(const MyoroInputWidgetShowcaseState()) {
+    : super(const MyoroInputWidgetShowcaseState()) {
     on<SetFormatterEvent>(_setFormatterEvent);
     on<SetInputStyleEvent>(_setInputStyleEvent);
     on<SetTextAlignEvent>(_setTextAlignEvent);
@@ -29,27 +29,15 @@ final class MyoroInputWidgetShowcaseBloc
   }
 
   void _setFormatterEvent(SetFormatterEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        typeEnum: event.typeEnum,
-      ),
-    );
+    emit(state.copyWith(typeEnum: event.typeEnum));
   }
 
   void _setInputStyleEvent(SetInputStyleEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        inputStyle: event.inputStyle,
-      ),
-    );
+    emit(state.copyWith(inputStyle: event.inputStyle));
   }
 
   void _setTextAlignEvent(SetTextAlignEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        textAlign: event.textAlign,
-      ),
-    );
+    emit(state.copyWith(textAlign: event.textAlign));
   }
 
   void _setInputTextStyleEvent(SetInputTextStyleEvent event, _Emitter emit) {
@@ -62,12 +50,7 @@ final class MyoroInputWidgetShowcaseBloc
   }
 
   void _setLabelEvent(SetLabelEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        label: event.label,
-        labelEnabled: event.label != null,
-      ),
-    );
+    emit(state.copyWith(label: event.label, labelEnabled: event.label != null));
   }
 
   void _setPlaceholderEvent(SetPlaceholderEvent event, _Emitter emit) {
@@ -89,44 +72,28 @@ final class MyoroInputWidgetShowcaseBloc
   }
 
   void _setSuffixEnabledEvent(SetSuffixEnabledEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        suffixEnabled: event.enabled,
-      ),
-    );
+    emit(state.copyWith(suffixEnabled: event.enabled));
   }
 
   void _setEnabledEvent(SetEnabledEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        enabled: event.enabled,
-      ),
-    );
+    emit(state.copyWith(enabled: event.enabled));
   }
 
   void _setReadOnlyEvent(SetReadOnlyEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        readOnly: event.enabled,
-      ),
-    );
+    emit(state.copyWith(readOnly: event.enabled));
   }
 
   void _setShowClearTextButtonEvent(
-      SetShowClearTextButtonEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        showClearTextButton: event.enabled,
-      ),
-    );
+    SetShowClearTextButtonEvent event,
+    _Emitter emit,
+  ) {
+    emit(state.copyWith(showClearTextButton: event.enabled));
   }
 
   void _setCheckboxOnChangedEnabledEvent(
-      SetCheckboxOnChangedEnabledEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        checkboxOnChangedEnabled: event.enabled,
-      ),
-    );
+    SetCheckboxOnChangedEnabledEvent event,
+    _Emitter emit,
+  ) {
+    emit(state.copyWith(checkboxOnChangedEnabled: event.enabled));
   }
 }

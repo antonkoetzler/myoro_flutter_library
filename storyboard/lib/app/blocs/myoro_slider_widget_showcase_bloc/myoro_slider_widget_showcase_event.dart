@@ -28,7 +28,8 @@ final class SetCurrentValueIndicatorTextBuilderEnabledEvent
   final bool currentValueIndicatorTextBuilderEnabled;
 
   const SetCurrentValueIndicatorTextBuilderEnabledEvent(
-      this.currentValueIndicatorTextBuilderEnabled);
+    this.currentValueIndicatorTextBuilderEnabled,
+  );
 }
 
 final class SetMaxValueIndicatorTextBuilderEnabledEvent
@@ -36,7 +37,8 @@ final class SetMaxValueIndicatorTextBuilderEnabledEvent
   final bool maxValueIndicatorTextBuilderEnabled;
 
   const SetMaxValueIndicatorTextBuilderEnabledEvent(
-      this.maxValueIndicatorTextBuilderEnabled);
+    this.maxValueIndicatorTextBuilderEnabled,
+  );
 }
 
 final class SetFooterIndicatorTextBuilderEnabledEvent
@@ -44,5 +46,6 @@ final class SetFooterIndicatorTextBuilderEnabledEvent
   final bool footerIndicatorTextBuilderEnabled;
 
   const SetFooterIndicatorTextBuilderEnabledEvent(
-      this.footerIndicatorTextBuilderEnabled);
+    this.footerIndicatorTextBuilderEnabled,
+  );
 }

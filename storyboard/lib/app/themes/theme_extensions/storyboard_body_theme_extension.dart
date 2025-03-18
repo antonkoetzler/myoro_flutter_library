@@ -48,24 +48,30 @@ final class StoryboardBodyThemeExtension
   });
 
   StoryboardBodyThemeExtension.fake()
-      : widgetListingCategoryPadding =
-            EdgeInsets.all(faker.randomGenerator.decimal()),
-        widgetListingCategorySpacing = faker.randomGenerator.decimal(),
-        widgetListingCategoryDividerPadding =
-            EdgeInsets.all(faker.randomGenerator.decimal()),
-        widgetListingCategoryDividerShortValue =
-            faker.randomGenerator.decimal(),
-        widgetListingCategoryDropdownButtonTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle,
-        widgetListingCategoryDropdownButtonUnopenedIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        widgetListingCategoryDropdownButtonOpenedIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        widgetListingCategoryWidgetButtonContentCentered =
-            MainAxisAlignment.values[
-                faker.randomGenerator.integer(MainAxisAlignment.values.length)],
-        widgetListingCategoryWidgetButtonTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle;
+    : widgetListingCategoryPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      ),
+      widgetListingCategorySpacing = faker.randomGenerator.decimal(),
+      widgetListingCategoryDividerPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      ),
+      widgetListingCategoryDividerShortValue = faker.randomGenerator.decimal(),
+      widgetListingCategoryDropdownButtonTextStyle =
+          MyoroTypographyTheme.instance.randomTextStyle,
+      widgetListingCategoryDropdownButtonUnopenedIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      widgetListingCategoryDropdownButtonOpenedIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      widgetListingCategoryWidgetButtonContentCentered =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )],
+      widgetListingCategoryWidgetButtonTextStyle =
+          MyoroTypographyTheme.instance.randomTextStyle;
 
   @override
   StoryboardBodyThemeExtension copyWith({
@@ -86,65 +92,80 @@ final class StoryboardBodyThemeExtension
           widgetListingCategorySpacing ?? this.widgetListingCategorySpacing,
       widgetListingCategoryDividerPadding:
           widgetListingCategoryDividerPadding ??
-              this.widgetListingCategoryDividerPadding,
+          this.widgetListingCategoryDividerPadding,
       widgetListingCategoryDividerShortValue:
           widgetListingCategoryDividerShortValue ??
-              this.widgetListingCategoryDividerShortValue,
+          this.widgetListingCategoryDividerShortValue,
       widgetListingCategoryDropdownButtonTextStyle:
           widgetListingCategoryDropdownButtonTextStyle ??
-              this.widgetListingCategoryDropdownButtonTextStyle,
+          this.widgetListingCategoryDropdownButtonTextStyle,
       widgetListingCategoryDropdownButtonUnopenedIcon:
           widgetListingCategoryDropdownButtonUnopenedIcon ??
-              this.widgetListingCategoryDropdownButtonUnopenedIcon,
+          this.widgetListingCategoryDropdownButtonUnopenedIcon,
       widgetListingCategoryDropdownButtonOpenedIcon:
           widgetListingCategoryDropdownButtonOpenedIcon ??
-              this.widgetListingCategoryDropdownButtonOpenedIcon,
+          this.widgetListingCategoryDropdownButtonOpenedIcon,
       widgetListingCategoryWidgetButtonContentCentered:
           widgetListingCategoryWidgetButtonContentCentered ??
-              this.widgetListingCategoryWidgetButtonContentCentered,
+          this.widgetListingCategoryWidgetButtonContentCentered,
       widgetListingCategoryWidgetButtonTextStyle:
           widgetListingCategoryWidgetButtonTextStyle ??
-              this.widgetListingCategoryWidgetButtonTextStyle,
+          this.widgetListingCategoryWidgetButtonTextStyle,
     );
   }
 
   @override
   StoryboardBodyThemeExtension lerp(
-      covariant ThemeExtension<StoryboardBodyThemeExtension>? other, double t) {
+    covariant ThemeExtension<StoryboardBodyThemeExtension>? other,
+    double t,
+  ) {
     if (other is! StoryboardBodyThemeExtension) return this;
     return copyWith(
       widgetListingCategoryPadding: EdgeInsets.lerp(
-          widgetListingCategoryPadding, other.widgetListingCategoryPadding, t),
+        widgetListingCategoryPadding,
+        other.widgetListingCategoryPadding,
+        t,
+      ),
       widgetListingCategorySpacing: lerpDouble(
-          widgetListingCategorySpacing, other.widgetListingCategorySpacing, t),
+        widgetListingCategorySpacing,
+        other.widgetListingCategorySpacing,
+        t,
+      ),
       widgetListingCategoryDividerPadding: EdgeInsets.lerp(
-          widgetListingCategoryDividerPadding,
-          other.widgetListingCategoryDividerPadding,
-          t),
+        widgetListingCategoryDividerPadding,
+        other.widgetListingCategoryDividerPadding,
+        t,
+      ),
       widgetListingCategoryDividerShortValue: lerpDouble(
-          widgetListingCategoryDividerShortValue,
-          other.widgetListingCategoryDividerShortValue,
-          t),
+        widgetListingCategoryDividerShortValue,
+        other.widgetListingCategoryDividerShortValue,
+        t,
+      ),
       widgetListingCategoryDropdownButtonTextStyle: TextStyle.lerp(
-          widgetListingCategoryDropdownButtonTextStyle,
-          other.widgetListingCategoryDropdownButtonTextStyle,
-          t),
+        widgetListingCategoryDropdownButtonTextStyle,
+        other.widgetListingCategoryDropdownButtonTextStyle,
+        t,
+      ),
       widgetListingCategoryDropdownButtonUnopenedIcon: myoroLerp(
-          widgetListingCategoryDropdownButtonUnopenedIcon,
-          other.widgetListingCategoryDropdownButtonUnopenedIcon,
-          t),
+        widgetListingCategoryDropdownButtonUnopenedIcon,
+        other.widgetListingCategoryDropdownButtonUnopenedIcon,
+        t,
+      ),
       widgetListingCategoryDropdownButtonOpenedIcon: myoroLerp(
-          widgetListingCategoryDropdownButtonOpenedIcon,
-          other.widgetListingCategoryDropdownButtonOpenedIcon,
-          t),
+        widgetListingCategoryDropdownButtonOpenedIcon,
+        other.widgetListingCategoryDropdownButtonOpenedIcon,
+        t,
+      ),
       widgetListingCategoryWidgetButtonContentCentered: myoroLerp(
-          widgetListingCategoryWidgetButtonContentCentered,
-          other.widgetListingCategoryWidgetButtonContentCentered,
-          t),
+        widgetListingCategoryWidgetButtonContentCentered,
+        other.widgetListingCategoryWidgetButtonContentCentered,
+        t,
+      ),
       widgetListingCategoryWidgetButtonTextStyle: TextStyle.lerp(
-          widgetListingCategoryWidgetButtonTextStyle,
-          other.widgetListingCategoryWidgetButtonTextStyle,
-          t),
+        widgetListingCategoryWidgetButtonTextStyle,
+        other.widgetListingCategoryWidgetButtonTextStyle,
+        t,
+      ),
     );
   }
 }

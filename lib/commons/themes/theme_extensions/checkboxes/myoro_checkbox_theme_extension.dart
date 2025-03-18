@@ -39,17 +39,25 @@ final class MyoroCheckboxThemeExtension
   });
 
   MyoroCheckboxThemeExtension.fake()
-      : activeColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        checkColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        hoverColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        focusColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        splashRadius = faker.randomGenerator.decimal(),
-        labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        spacing = faker.randomGenerator.decimal();
+    : activeColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      checkColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      hoverColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      focusColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      splashRadius = faker.randomGenerator.decimal(),
+      labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      spacing = faker.randomGenerator.decimal();
 
   @override
   MyoroCheckboxThemeExtension copyWith({

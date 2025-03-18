@@ -29,7 +29,8 @@ final class MyoroFormState<T> extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroFormState<$T>(\n'
       '  status: $status,\n'
       '  errorMessage: $errorMessage,\n'

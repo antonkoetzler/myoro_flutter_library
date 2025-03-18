@@ -47,9 +47,12 @@ final class _Widget extends StatelessWidget {
     return IntrinsicWidth(
       child: MyoroIconTextHoverButton(
         configuration: MyoroHoverButtonConfiguration(
-          bordered: context
-              .resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>()
-              .buttonBordered,
+          bordered:
+              context
+                  .resolveThemeExtension<
+                    MyoroDrawerWidgetShowcaseThemeExtension
+                  >()
+                  .buttonBordered,
         ),
         text: 'Click to launch the drawer.',
         onPressed: () => _onPressed(context),
@@ -62,12 +65,11 @@ final class _TitleOption extends StatelessWidget {
   const _TitleOption();
 
   void _checkboxOnChanged(
-      MyoroDrawerWidgetShowcaseBloc bloc, bool enabled, String text) {
-    bloc.add(
-      SetTitleEvent(
-        enabled ? text : null,
-      ),
-    );
+    MyoroDrawerWidgetShowcaseBloc bloc,
+    bool enabled,
+    String text,
+  ) {
+    bloc.add(SetTitleEvent(enabled ? text : null));
   }
 
   @override
@@ -77,11 +79,15 @@ final class _TitleOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[MyoroDrawer.title]',
-        inputStyle: context
-            .resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>()
-            .inputStyle,
-        checkboxOnChanged: (bool enabled, String text) =>
-            _checkboxOnChanged(bloc, enabled, text),
+        inputStyle:
+            context
+                .resolveThemeExtension<
+                  MyoroDrawerWidgetShowcaseThemeExtension
+                >()
+                .inputStyle,
+        checkboxOnChanged:
+            (bool enabled, String text) =>
+                _checkboxOnChanged(bloc, enabled, text),
         onChanged: (String text) => bloc.add(SetTitleEvent(text)),
       ),
     );
@@ -103,16 +109,22 @@ final class _TitleTextStyleOption extends StatelessWidget {
           label: '[MyoroDrawer.titleTextStyle]',
           enabled: false,
           dataConfiguration: MyoroDataConfiguration(
-              staticItems: typographyInstance.allTextStyles),
-          itemBuilder: (TextStyle textStyle) => MyoroMenuItem(
-              text: typographyInstance.getTextStyleName(textStyle)),
-          itemLabelBuilder: (TextStyle textStyle) =>
-              typographyInstance.getTextStyleName(textStyle),
+            staticItems: typographyInstance.allTextStyles,
+          ),
+          itemBuilder:
+              (TextStyle textStyle) => MyoroMenuItem(
+                text: typographyInstance.getTextStyleName(textStyle),
+              ),
+          itemLabelBuilder:
+              (TextStyle textStyle) =>
+                  typographyInstance.getTextStyleName(textStyle),
         ),
-        onChanged: (TextStyle? textStyle) =>
-            bloc.add(SetTitleTextStyleEvent(textStyle)),
-        checkboxOnChanged: (bool enabled, TextStyle? textStyle) =>
-            bloc.add(SetTitleTextStyleEvent(enabled ? textStyle : null)),
+        onChanged:
+            (TextStyle? textStyle) =>
+                bloc.add(SetTitleTextStyleEvent(textStyle)),
+        checkboxOnChanged:
+            (bool enabled, TextStyle? textStyle) =>
+                bloc.add(SetTitleTextStyleEvent(enabled ? textStyle : null)),
       ),
     );
   }

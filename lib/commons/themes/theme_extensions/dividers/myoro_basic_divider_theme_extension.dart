@@ -23,10 +23,12 @@ final class MyoroBasicDividerThemeExtension
   });
 
   MyoroBasicDividerThemeExtension.fake()
-      : color = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        shortValue = faker.randomGenerator.decimal(),
-        longValue = faker.randomGenerator.decimal();
+    : color =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      shortValue = faker.randomGenerator.decimal(),
+      longValue = faker.randomGenerator.decimal();
 
   @override
   MyoroBasicDividerThemeExtension copyWith({

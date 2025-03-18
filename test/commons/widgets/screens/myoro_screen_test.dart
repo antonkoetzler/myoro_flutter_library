@@ -10,7 +10,9 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(MyoroScreen), findsOneWidget);
     expect(
-        find.byType(InheritedProvider<MyoroDrawerController>), findsOneWidget);
+      find.byType(InheritedProvider<MyoroDrawerController>),
+      findsOneWidget,
+    );
     expect(find.byType(Scaffold), findsOneWidget);
   });
 }

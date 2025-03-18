@@ -14,7 +14,7 @@ final class MyoroGroupRadioWidgetShowcaseThemeExtension
   @override
   ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension> lerp(
     covariant ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension>?
-        other,
+    other,
     double t,
   ) {
     return this;

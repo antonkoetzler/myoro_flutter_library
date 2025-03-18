@@ -25,8 +25,9 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context
-                .resolveThemeExtension<MyoroResizeDividerThemeExtension>();
+            themeExtension =
+                context
+                    .resolveThemeExtension<MyoroResizeDividerThemeExtension>();
 
             return MyoroResizeDivider(
               configuration: configuration,
@@ -75,7 +76,9 @@ void main() {
     );
 
     // Assert that the drag is working.
-    await tester.drag(find.byWidgetPredicate(getGestureDetectorPredicate),
-        const Offset(100, 100));
+    await tester.drag(
+      find.byWidgetPredicate(getGestureDetectorPredicate),
+      const Offset(100, 100),
+    );
   });
 }

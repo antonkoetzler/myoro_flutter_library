@@ -24,9 +24,9 @@ final class MyoroModalWidgetShowcaseThemeExtension
   });
 
   MyoroModalWidgetShowcaseThemeExtension.fake()
-      : spacing = faker.randomGenerator.decimal(),
-        headerTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        inputStyle = MyoroInputStyleEnum.fake();
+    : spacing = faker.randomGenerator.decimal(),
+      headerTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroModalWidgetShowcaseThemeExtension copyWith({
@@ -49,8 +49,11 @@ final class MyoroModalWidgetShowcaseThemeExtension
     if (other is! MyoroModalWidgetShowcaseThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
-      headerTextStyle:
-          TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
+      headerTextStyle: TextStyle.lerp(
+        headerTextStyle,
+        other.headerTextStyle,
+        t,
+      ),
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
     );
   }

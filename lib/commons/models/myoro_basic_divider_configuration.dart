@@ -33,13 +33,14 @@ final class MyoroBasicDividerConfiguration extends Equatable {
   }
 
   MyoroBasicDividerConfiguration.fake()
-      : direction =
-            Axis.values[faker.randomGenerator.integer(Axis.values.length)],
-        shortValue = faker.randomGenerator.decimal(),
-        padding = null;
+    : direction =
+          Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+      shortValue = faker.randomGenerator.decimal(),
+      padding = null;
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroBasicDividerConfiguration(\n'
       '  direction: $direction,\n'
       '  shortValue: $shortValue,\n'
@@ -48,10 +49,6 @@ final class MyoroBasicDividerConfiguration extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      direction,
-      shortValue,
-      padding,
-    ];
+    return [direction, shortValue, padding];
   }
 }

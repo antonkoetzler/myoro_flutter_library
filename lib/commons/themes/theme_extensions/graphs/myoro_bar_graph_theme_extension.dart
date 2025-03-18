@@ -39,19 +39,22 @@ final class MyoroBarGraphThemeExtension
   });
 
   MyoroBarGraphThemeExtension.fake()
-      : border = Border.all(
-          width: faker.randomGenerator.decimal(min: 1),
-          color: kMyoroTestColors[
-              faker.randomGenerator.integer(kMyoroTestColors.length)],
-        ),
-        barColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        barBorderRadius =
-            BorderRadius.circular(faker.randomGenerator.decimal()),
-        sideTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        sideTitleInterval = faker.randomGenerator.decimal(),
-        verticalSideTitleReversedSize = faker.randomGenerator.decimal(),
-        horizontalSideTitleReversedSize = faker.randomGenerator.decimal();
+    : border = Border.all(
+        width: faker.randomGenerator.decimal(min: 1),
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
+      ),
+      barColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      barBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      sideTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      sideTitleInterval = faker.randomGenerator.decimal(),
+      verticalSideTitleReversedSize = faker.randomGenerator.decimal(),
+      horizontalSideTitleReversedSize = faker.randomGenerator.decimal();
 
   @override
   MyoroBarGraphThemeExtension copyWith({
@@ -71,7 +74,8 @@ final class MyoroBarGraphThemeExtension
       sideTitleInterval: sideTitleInterval ?? this.sideTitleInterval,
       verticalSideTitleReversedSize:
           verticalSideTitleReversedSize ?? this.verticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize: horizontalSideTitleReversedSize ??
+      horizontalSideTitleReversedSize:
+          horizontalSideTitleReversedSize ??
           this.horizontalSideTitleReversedSize,
     );
   }
@@ -85,18 +89,31 @@ final class MyoroBarGraphThemeExtension
     return copyWith(
       border: Border.lerp(border, other.border, t),
       barColor: Color.lerp(barColor, other.barColor, t),
-      barBorderRadius:
-          BorderRadius.lerp(barBorderRadius, other.barBorderRadius, t),
-      sideTitleTextStyle:
-          TextStyle.lerp(sideTitleTextStyle, other.sideTitleTextStyle, t),
-      sideTitleInterval:
-          lerpDouble(sideTitleInterval, other.sideTitleInterval, t),
-      verticalSideTitleReversedSize: lerpDouble(verticalSideTitleReversedSize,
-          other.verticalSideTitleReversedSize, t),
+      barBorderRadius: BorderRadius.lerp(
+        barBorderRadius,
+        other.barBorderRadius,
+        t,
+      ),
+      sideTitleTextStyle: TextStyle.lerp(
+        sideTitleTextStyle,
+        other.sideTitleTextStyle,
+        t,
+      ),
+      sideTitleInterval: lerpDouble(
+        sideTitleInterval,
+        other.sideTitleInterval,
+        t,
+      ),
+      verticalSideTitleReversedSize: lerpDouble(
+        verticalSideTitleReversedSize,
+        other.verticalSideTitleReversedSize,
+        t,
+      ),
       horizontalSideTitleReversedSize: lerpDouble(
-          horizontalSideTitleReversedSize,
-          other.horizontalSideTitleReversedSize,
-          t),
+        horizontalSideTitleReversedSize,
+        other.horizontalSideTitleReversedSize,
+        t,
+      ),
     );
   }
 }

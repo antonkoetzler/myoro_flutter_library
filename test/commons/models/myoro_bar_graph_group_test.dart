@@ -7,13 +7,7 @@ void main() {
 
   test('MyoroBarGraphGroup.copyWith', () {
     final newModel = MyoroBarGraphGroup.fake();
-    expect(
-      model.copyWith(
-        x: newModel.x,
-        bars: newModel.bars,
-      ),
-      newModel,
-    );
+    expect(model.copyWith(x: newModel.x, bars: newModel.bars), newModel);
   });
 
   test('MyoroBarGraphGroup.toString', () {

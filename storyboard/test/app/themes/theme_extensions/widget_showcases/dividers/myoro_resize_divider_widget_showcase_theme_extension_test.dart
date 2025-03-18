@@ -14,8 +14,10 @@ void main() {
       areYouSillyPadding: themeExtension2.areYouSillyPadding,
     );
     expect(copiedThemeExtension.containerColor, themeExtension2.containerColor);
-    expect(copiedThemeExtension.areYouSillyPadding,
-        themeExtension2.areYouSillyPadding);
+    expect(
+      copiedThemeExtension.areYouSillyPadding,
+      themeExtension2.areYouSillyPadding,
+    );
   });
 
   test('MyoroResizeDividerWidgetShowcaseThemeExtension.lerp', () {
@@ -24,12 +26,18 @@ void main() {
       expect(
         lerpedThemeExtension.containerColor,
         Color.lerp(
-            themeExtension1.containerColor, themeExtension2.containerColor, i),
+          themeExtension1.containerColor,
+          themeExtension2.containerColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.areYouSillyPadding,
-        EdgeInsets.lerp(themeExtension1.areYouSillyPadding,
-            themeExtension2.areYouSillyPadding, i),
+        EdgeInsets.lerp(
+          themeExtension1.areYouSillyPadding,
+          themeExtension2.areYouSillyPadding,
+          i,
+        ),
       );
     }
   });

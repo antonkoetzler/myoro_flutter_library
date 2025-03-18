@@ -26,16 +26,18 @@ void main() {
             w.data == text &&
             w.textAlign == themeExtension.indicatorTextAlignment &&
             w.style ==
-                themeExtension.indicatorTextStyle
-                    .copyWith(height: isFooter ? 0 : 0.5),
+                themeExtension.indicatorTextStyle.copyWith(
+                  height: isFooter ? 0 : 0.5,
+                ),
       ),
       findsOneWidget,
     );
   }
 
   setUp(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
   });
 
@@ -60,8 +62,8 @@ void main() {
               initialValue: minMaxValuesEnabled ? initialValue : null,
               minValue: minMaxValuesEnabled ? minValue : null,
               maxValue: minMaxValuesEnabled ? maxValue : null,
-              currentValueIndicatorTextBuilder: (_) =>
-                  currentValueIndicatorText,
+              currentValueIndicatorTextBuilder:
+                  (_) => currentValueIndicatorText,
               maxValueIndicatorTextBuilder: (_) => maxValueIndicatorText,
               footerIndicatorTextBuilder: (_) => footerIndicatorText,
               onChanged: (_) => onChangedExecuted = true,
@@ -130,8 +132,11 @@ void main() {
     expectIndicatorText(footerIndicatorText, isFooter: true);
 
     // Confirming that [MyoroSlider.onChanged] works.
-    await tester.drag(find.byType(Slider), const Offset(30, 0),
-        warnIfMissed: false);
+    await tester.drag(
+      find.byType(Slider),
+      const Offset(30, 0),
+      warnIfMissed: false,
+    );
     expect(onChangedExecuted, isTrue);
   });
 }

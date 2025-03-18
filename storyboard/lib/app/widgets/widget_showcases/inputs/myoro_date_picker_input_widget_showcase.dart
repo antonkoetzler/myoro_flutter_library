@@ -8,9 +8,7 @@ final class MyoroDatePickerInputWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WidgetShowcase(
-      widget: _Widget(),
-    );
+    return const WidgetShowcase(widget: _Widget());
   }
 }
 
@@ -21,10 +19,12 @@ final class _Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroDatePickerInput(
       configuration: MyoroInputConfiguration(
-        inputStyle: context
-            .resolveThemeExtension<
-                MyoroDatePickerInputWidgetShowcaseThemeExtension>()
-            .inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<
+                  MyoroDatePickerInputWidgetShowcaseThemeExtension
+                >()
+                .inputStyle,
       ),
     );
   }

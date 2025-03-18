@@ -9,9 +9,7 @@ void main() {
   testWidgets('MyoroDatePickerInput', (WidgetTester tester) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
-        child: MyoroDatePickerInput(
-          configuration: configuration,
-        ),
+        child: MyoroDatePickerInput(configuration: configuration),
       ),
     );
     await tester.pumpAndSettle();

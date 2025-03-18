@@ -6,9 +6,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget test of [MyoroAppBar].
 void main() {
   final bool bordered = faker.randomGenerator.boolean();
-  final Color? backgroundColor = faker.randomGenerator.boolean()
-      ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]
-      : null;
+  final Color? backgroundColor =
+      faker.randomGenerator.boolean()
+          ? kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )]
+          : null;
 
   testWidgets('MyoroAppBar', (WidgetTester tester) async {
     late final MyoroAppBarThemeExtension themeExtension;

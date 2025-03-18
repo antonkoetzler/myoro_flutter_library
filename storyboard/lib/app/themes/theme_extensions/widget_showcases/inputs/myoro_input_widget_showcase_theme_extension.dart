@@ -28,12 +28,14 @@ final class MyoroInputWidgetShowcaseThemeExtension
   });
 
   MyoroInputWidgetShowcaseThemeExtension.fake()
-      : configurationOptionTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle,
-        configurationOptionSpacing = faker.randomGenerator.decimal(),
-        inputStyle = MyoroInputStyleEnum.fake(),
-        suffixWidgetIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)];
+    : configurationOptionTextStyle =
+          MyoroTypographyTheme.instance.randomTextStyle,
+      configurationOptionSpacing = faker.randomGenerator.decimal(),
+      inputStyle = MyoroInputStyleEnum.fake(),
+      suffixWidgetIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
   @override
   MyoroInputWidgetShowcaseThemeExtension copyWith({
@@ -60,9 +62,15 @@ final class MyoroInputWidgetShowcaseThemeExtension
     if (other is! MyoroInputWidgetShowcaseThemeExtension) return this;
     return copyWith(
       configurationOptionTextStyle: TextStyle.lerp(
-          configurationOptionTextStyle, other.configurationOptionTextStyle, t),
+        configurationOptionTextStyle,
+        other.configurationOptionTextStyle,
+        t,
+      ),
       configurationOptionSpacing: lerpDouble(
-          configurationOptionSpacing, other.configurationOptionSpacing, t),
+        configurationOptionSpacing,
+        other.configurationOptionSpacing,
+        t,
+      ),
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       suffixWidgetIcon: myoroLerp(suffixWidgetIcon, other.suffixWidgetIcon, t),
     );

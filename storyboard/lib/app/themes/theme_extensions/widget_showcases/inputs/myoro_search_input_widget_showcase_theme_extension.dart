@@ -12,7 +12,7 @@ final class MyoroSearchInputWidgetShowcaseThemeExtension
   @override
   ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension> lerp(
     covariant ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension>?
-        other,
+    other,
     double t,
   ) {
     return this;

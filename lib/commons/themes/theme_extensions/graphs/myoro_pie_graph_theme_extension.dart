@@ -19,15 +19,14 @@ final class MyoroPieGraphThemeExtension
   });
 
   MyoroPieGraphThemeExtension.fake()
-      : itemColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        itemRadius = faker.randomGenerator.decimal();
+    : itemColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      itemRadius = faker.randomGenerator.decimal();
 
   @override
-  MyoroPieGraphThemeExtension copyWith({
-    Color? itemColor,
-    double? itemRadius,
-  }) {
+  MyoroPieGraphThemeExtension copyWith({Color? itemColor, double? itemRadius}) {
     return MyoroPieGraphThemeExtension(
       itemColor: itemColor ?? this.itemColor,
       itemRadius: itemRadius ?? this.itemRadius,

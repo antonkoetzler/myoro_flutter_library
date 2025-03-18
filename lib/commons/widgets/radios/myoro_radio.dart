@@ -34,10 +34,10 @@ final class MyoroRadio extends StatefulWidget {
     this.labelTextStyle,
     this.onChanged,
   }) : assert(
-          !(notifier != null && initialValue != null),
-          '[MyoroRadio]: If [notifier] is provided, set the initial '
-          'value within the [MyoroRadioNotifier]\'s constructor.',
-        );
+         !(notifier != null && initialValue != null),
+         '[MyoroRadio]: If [notifier] is provided, set the initial '
+         'value within the [MyoroRadioNotifier]\'s constructor.',
+       );
 
   static Finder finder({
     MyoroRadioNotifier? notifier,

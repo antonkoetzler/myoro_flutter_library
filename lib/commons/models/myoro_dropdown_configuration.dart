@@ -71,7 +71,8 @@ final class MyoroDropdownConfiguration<T> extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroDropdownConfiguration(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'

@@ -11,14 +11,8 @@ final class MyoroBarGraph extends StatelessWidget {
   /// Items of the graph.
   final List<MyoroBarGraphGroup> items;
 
-  MyoroBarGraph({
-    super.key,
-    this.sorted = true,
-    required this.items,
-  }) : assert(
-          items.isNotEmpty,
-          '[MyoroBarGraph]: [items] must not be empty.',
-        );
+  MyoroBarGraph({super.key, this.sorted = true, required this.items})
+    : assert(items.isNotEmpty, '[MyoroBarGraph]: [items] must not be empty.');
 
   static Finder finder({
     bool? sorted,
@@ -39,34 +33,35 @@ final class MyoroBarGraph extends StatelessWidget {
     final themeExtension =
         context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
-    final List<BarChartGroupData> formattedItems = items
-        .map<BarChartGroupData>(
-          (MyoroBarGraphGroup group) => BarChartGroupData(
-            x: group.x,
-            barRods: group.bars.map<BarChartRodData>(
-              (MyoroBarGraphBar bar) {
-                return BarChartRodData(
-                  toY: bar.y,
-                  color: bar.color ?? themeExtension.barColor,
-                  borderRadius: themeExtension.barBorderRadius,
-                  rodStackItems: bar.barSections.isEmpty
-                      ? null
-                      : bar.barSections.map<BarChartRodStackItem>(
-                          (MyoroBarGraphBarSection barSection) {
-                            return BarChartRodStackItem(
-                              barSection.fromY,
-                              barSection.toY,
-                              barSection.color,
-                            );
-                          },
-                        ).toList(),
-                );
-              },
-            ).toList(),
-          ),
-        )
-        .toList()
-      ..sort((a, b) => !sorted ? a.x : a.x.compareTo(b.x));
+    final List<BarChartGroupData> formattedItems =
+        items
+            .map<BarChartGroupData>(
+              (MyoroBarGraphGroup group) => BarChartGroupData(
+                x: group.x,
+                barRods:
+                    group.bars.map<BarChartRodData>((MyoroBarGraphBar bar) {
+                      return BarChartRodData(
+                        toY: bar.y,
+                        color: bar.color ?? themeExtension.barColor,
+                        borderRadius: themeExtension.barBorderRadius,
+                        rodStackItems:
+                            bar.barSections.isEmpty
+                                ? null
+                                : bar.barSections.map<BarChartRodStackItem>((
+                                  MyoroBarGraphBarSection barSection,
+                                ) {
+                                  return BarChartRodStackItem(
+                                    barSection.fromY,
+                                    barSection.toY,
+                                    barSection.color,
+                                  );
+                                }).toList(),
+                      );
+                    }).toList(),
+              ),
+            )
+            .toList()
+          ..sort((a, b) => !sorted ? a.x : a.x.compareTo(b.x));
 
     final borderData = FlBorderData(border: themeExtension.border);
     const gridData = FlGridData(show: false);
@@ -97,8 +92,8 @@ final class MyoroBarGraph extends StatelessWidget {
             bottomTitles: enabledTitle.copyWith(
               sideTitles: enabledTitle.sideTitles.copyWith(
                 reservedSize: themeExtension.horizontalSideTitleReversedSize,
-                getTitlesWidget: (value, _) =>
-                    _SideTitle(value, Axis.horizontal),
+                getTitlesWidget:
+                    (value, _) => _SideTitle(value, Axis.horizontal),
               ),
             ),
             leftTitles: enabledTitle.copyWith(
@@ -124,15 +119,14 @@ final class _SideTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        right: _axis.isVertical ? 5 : 0,
-      ),
+      padding: EdgeInsets.only(right: _axis.isVertical ? 5 : 0),
       child: Text(
         _value.toStringAsFixed(_value == 0 || _value == _value.toInt() ? 0 : 2),
         textAlign: TextAlign.right,
-        style: context
-            .resolveThemeExtension<MyoroBarGraphThemeExtension>()
-            .sideTitleTextStyle,
+        style:
+            context
+                .resolveThemeExtension<MyoroBarGraphThemeExtension>()
+                .sideTitleTextStyle,
       ),
     );
   }

@@ -30,7 +30,8 @@ final class MyoroTableWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroTableWidgetShowcaseState(\n'
       '  enableColumnResizing: $enableColumnResizing,\n'
       '  enableCheckboxes: $enableCheckboxes,\n'
@@ -39,10 +40,6 @@ final class MyoroTableWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      enableColumnResizing,
-      enableCheckboxes,
-      showPaginationControls,
-    ];
+    return [enableColumnResizing, enableCheckboxes, showPaginationControls];
   }
 }

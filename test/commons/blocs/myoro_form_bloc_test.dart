@@ -15,11 +15,14 @@ void main() {
     '[MyoroFormBloc.FinishFormEvent]: Emits error state when provided [MyoroForm] validation callback returns an error.',
     build: () => MyoroFormBloc(formKey, () => validationErrorMessage, null),
     act: (MyoroFormBloc bloc) => bloc.add(const FinishFormEvent()),
-    expect: () => const [
-      MyoroFormState(status: MyoroRequestEnum.loading),
-      MyoroFormState(
-          status: MyoroRequestEnum.error, errorMessage: validationErrorMessage),
-    ],
+    expect:
+        () => const [
+          MyoroFormState(status: MyoroRequestEnum.loading),
+          MyoroFormState(
+            status: MyoroRequestEnum.error,
+            errorMessage: validationErrorMessage,
+          ),
+        ],
   );
 
   testWidgets(
@@ -57,9 +60,13 @@ void main() {
     '[MyoroFormBloc.FinishFormEvent]: Emits successful state when there are not errors from validation callbacks.',
     build: () => MyoroFormBloc<String>(formKey, null, () => result),
     act: (MyoroFormBloc<String> bloc) => bloc.add(const FinishFormEvent()),
-    expect: () => const [
-      MyoroFormState<String>(status: MyoroRequestEnum.loading),
-      MyoroFormState<String>(status: MyoroRequestEnum.success, result: result),
-    ],
+    expect:
+        () => const [
+          MyoroFormState<String>(status: MyoroRequestEnum.loading),
+          MyoroFormState<String>(
+            status: MyoroRequestEnum.success,
+            result: result,
+          ),
+        ],
   );
 }

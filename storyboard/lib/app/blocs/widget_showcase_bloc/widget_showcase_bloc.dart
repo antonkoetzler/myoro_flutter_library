@@ -14,23 +14,20 @@ final class WidgetShowcaseBloc
   WidgetShowcaseBloc() : super(const WidgetShowcaseState()) {
     on<ToggleWidgetShowcaseDisplayEvent>(_toggleWidgetShowcaseDisplayEvent);
     on<ToggleWidgetOptionsDisplayEvent>(
-        (_, emit) => _toggleWidgetOptionsDisplayEvent(emit));
+      (_, emit) => _toggleWidgetOptionsDisplayEvent(emit),
+    );
   }
 
   void _toggleWidgetShowcaseDisplayEvent(
-      ToggleWidgetShowcaseDisplayEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        displayingWidgetShowcase: event.enabled,
-      ),
-    );
+    ToggleWidgetShowcaseDisplayEvent event,
+    _Emitter emit,
+  ) {
+    emit(state.copyWith(displayingWidgetShowcase: event.enabled));
   }
 
   void _toggleWidgetOptionsDisplayEvent(_Emitter emit) {
     emit(
-      state.copyWith(
-        displayingWidgetOptions: !state.displayingWidgetOptions,
-      ),
+      state.copyWith(displayingWidgetOptions: !state.displayingWidgetOptions),
     );
   }
 }

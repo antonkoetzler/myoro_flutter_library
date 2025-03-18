@@ -31,8 +31,10 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
           children: [
             IntrinsicWidth(child: _WidgetListing(_widgetLoadedNotifier)),
             const MyoroBasicDivider(
-                configuration:
-                    MyoroBasicDividerConfiguration(direction: Axis.vertical)),
+              configuration: MyoroBasicDividerConfiguration(
+                direction: Axis.vertical,
+              ),
+            ),
           ],
         ),
         Expanded(child: _WidgetViewer(_widgetLoadedNotifier)),
@@ -70,34 +72,38 @@ final class _WidgetListingState extends State<_WidgetListing> {
       builder: (_, __, ___) {
         return SingleChildScrollView(
           child: Column(
-            children: WidgetListingEnum.values.map(
-              (WidgetListingEnum value) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _WidgetListingCategory(
-                      category: value.widgetCategory,
-                      widgetNames: value.widgetNames,
-                      widgetCategoryShowingNotifier:
-                          _widgetCategoryShowingNotifier,
-                      onPressWidget: (String widgetName) =>
-                          widget.widgetLoadedNotifier.value =
-                              WidgetListingEnum.widgetViewerWidget(widgetName),
-                    ),
-                    if (value != WidgetListingEnum.values.last)
-                      MyoroBasicDivider(
-                        configuration: MyoroBasicDividerConfiguration(
-                          direction: Axis.horizontal,
-                          shortValue: themeExtension
-                              .widgetListingCategoryDividerShortValue,
-                          padding: themeExtension
-                              .widgetListingCategoryDividerPadding,
-                        ),
+            children:
+                WidgetListingEnum.values.map((WidgetListingEnum value) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      _WidgetListingCategory(
+                        category: value.widgetCategory,
+                        widgetNames: value.widgetNames,
+                        widgetCategoryShowingNotifier:
+                            _widgetCategoryShowingNotifier,
+                        onPressWidget:
+                            (String widgetName) =>
+                                widget.widgetLoadedNotifier.value =
+                                    WidgetListingEnum.widgetViewerWidget(
+                                      widgetName,
+                                    ),
                       ),
-                  ],
-                );
-              },
-            ).toList(),
+                      if (value != WidgetListingEnum.values.last)
+                        MyoroBasicDivider(
+                          configuration: MyoroBasicDividerConfiguration(
+                            direction: Axis.horizontal,
+                            shortValue:
+                                themeExtension
+                                    .widgetListingCategoryDividerShortValue,
+                            padding:
+                                themeExtension
+                                    .widgetListingCategoryDividerPadding,
+                          ),
+                        ),
+                    ],
+                  );
+                }).toList(),
           ),
         );
       },
@@ -132,19 +138,19 @@ final class _WidgetListingCategory extends StatelessWidget {
           _WidgetListingCategoryDropdownButton(
             isSelected,
             category: category,
-            onPressed: () => widgetCategoryShowingNotifier.value =
-                isSelected ? null : category,
+            onPressed:
+                () =>
+                    widgetCategoryShowingNotifier.value =
+                        isSelected ? null : category,
           ),
           if (isSelected) ...[
             SizedBox(height: themeExtension.widgetListingCategorySpacing),
-            ...widgetNames.map<Widget>(
-              (String widgetName) {
-                return _WidgetListingCategoryWidgetButton(
-                  widgetName,
-                  onPressed: () => onPressWidget(widgetName),
-                );
-              },
-            ),
+            ...widgetNames.map<Widget>((String widgetName) {
+              return _WidgetListingCategoryWidgetButton(
+                widgetName,
+                onPressed: () => onPressWidget(widgetName),
+              );
+            }),
           ],
         ],
       ),
@@ -169,9 +175,10 @@ final class _WidgetListingCategoryDropdownButton extends StatelessWidget {
         context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
     return MyoroIconTextHoverButton(
-      icon: showOptions
-          ? themeExtension.widgetListingCategoryDropdownButtonOpenedIcon
-          : themeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
+      icon:
+          showOptions
+              ? themeExtension.widgetListingCategoryDropdownButtonOpenedIcon
+              : themeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
       text: category,
       textStyle: themeExtension.widgetListingCategoryDropdownButtonTextStyle,
       onPressed: onPressed,

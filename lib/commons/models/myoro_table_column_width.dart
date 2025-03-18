@@ -10,21 +10,20 @@ final class MyoroTableColumnWidth extends Equatable {
   /// When [MyoroTableColumnWidth.fixed] is used, this is the fixed width.
   final double? fixedWidth;
 
-  MyoroTableColumnWidth({
-    required this.columnWidthEnum,
-    this.fixedWidth,
-  }) : assert(
-          columnWidthEnum.isFixed ? fixedWidth != null : true,
-          '[MyoroTableColumnWidth]: If [columnWidthEnum] is [MyoroTableColumnWidthEnum.fixed], [fixedWidth] must be provided.',
-        );
+  MyoroTableColumnWidth({required this.columnWidthEnum, this.fixedWidth})
+    : assert(
+        columnWidthEnum.isFixed ? fixedWidth != null : true,
+        '[MyoroTableColumnWidth]: If [columnWidthEnum] is [MyoroTableColumnWidthEnum.fixed], [fixedWidth] must be provided.',
+      );
 
   factory MyoroTableColumnWidth.fake() {
     final columnWidthEnum = MyoroTableColumnWidthEnum.fake();
     return MyoroTableColumnWidth(
       columnWidthEnum: columnWidthEnum,
-      fixedWidth: columnWidthEnum.isFixed
-          ? faker.randomGenerator.integer(200, min: 50).toDouble()
-          : null,
+      fixedWidth:
+          columnWidthEnum.isFixed
+              ? faker.randomGenerator.integer(200, min: 50).toDouble()
+              : null,
     );
   }
 
@@ -41,7 +40,8 @@ final class MyoroTableColumnWidth extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroTableColumnWidth(\n'
       '  columnWidthEnum: $columnWidthEnum,\n'
       '  fixedWidth: $fixedWidth,\n'

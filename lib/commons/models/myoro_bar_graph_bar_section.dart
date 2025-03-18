@@ -22,11 +22,7 @@ final class MyoroBarGraphBarSection extends Equatable {
     required this.color,
   });
 
-  MyoroBarGraphBarSection copyWith({
-    double? fromY,
-    double? toY,
-    Color? color,
-  }) {
+  MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
     return MyoroBarGraphBarSection(
       fromY: fromY ?? this.fromY,
       toY: toY ?? this.toY,
@@ -39,13 +35,16 @@ final class MyoroBarGraphBarSection extends Equatable {
     return MyoroBarGraphBarSection(
       fromY: fromY,
       toY: faker.randomGenerator.decimal(min: fromY),
-      color: kMyoroTestColors[
-          faker.randomGenerator.integer(kMyoroTestColors.length)],
+      color:
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
     );
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroBarGraphBarSection(\n'
       '  fromY: $fromY,\n'
       '  toY: $toY,\n'
@@ -54,10 +53,6 @@ final class MyoroBarGraphBarSection extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      fromY,
-      toY,
-      color,
-    ];
+    return [fromY, toY, color];
   }
 }

@@ -83,8 +83,12 @@ void main() {
 
     // [_TraversalButton]s.
     expectTraversalButton(
-        Alignment.centerLeft, themeExtension.previousItemButtonIcon);
+      Alignment.centerLeft,
+      themeExtension.previousItemButtonIcon,
+    );
     expectTraversalButton(
-        Alignment.centerRight, themeExtension.nextItemButtonIcon);
+      Alignment.centerRight,
+      themeExtension.nextItemButtonIcon,
+    );
   });
 }

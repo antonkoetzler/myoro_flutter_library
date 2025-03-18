@@ -24,7 +24,9 @@ void main() {
 
   testWidgets('WidgetShowcase', (WidgetTester tester) async {
     final widgetOptions = List.generate(
-        faker.randomGenerator.integer(100), (_) => const SizedBox.shrink());
+      faker.randomGenerator.integer(100),
+      (_) => const SizedBox.shrink(),
+    );
     late final WidgetShowcaseThemeExtension themeExtension;
 
     await tester.pumpWidget(
@@ -126,7 +128,8 @@ void main() {
 
     // [_Divider in [_WidgetOptions].
     expectDivider(
-        direction: Axis.horizontal,
-        padding: themeExtension.widgetOptionsDividerPadding);
+      direction: Axis.horizontal,
+      padding: themeExtension.widgetOptionsDividerPadding,
+    );
   });
 }

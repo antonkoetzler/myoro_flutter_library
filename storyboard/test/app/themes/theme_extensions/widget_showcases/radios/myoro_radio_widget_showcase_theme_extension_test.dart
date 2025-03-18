@@ -9,8 +9,9 @@ void main() {
   final themeExtension2 = MyoroRadioWidgetShowcaseThemeExtension.fake();
 
   test('MyoroRadioWidgetShowcaseThemeExtension.copyWith', () {
-    final copiedThemeExtension =
-        themeExtension1.copyWith(inputStyle: themeExtension2.inputStyle);
+    final copiedThemeExtension = themeExtension1.copyWith(
+      inputStyle: themeExtension2.inputStyle,
+    );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
   });
 

@@ -11,8 +11,9 @@ void main() {
   late final MyoroDialogModalThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroDialogModalThemeExtension.fake();
     themeExtension2 = MyoroDialogModalThemeExtension.fake();
   });
@@ -23,8 +24,10 @@ void main() {
       footerButtonsSpacing: themeExtension2.footerButtonsSpacing,
     );
     expect(copiedThemeExtension.textStyle, themeExtension2.textStyle);
-    expect(copiedThemeExtension.footerButtonsSpacing,
-        themeExtension2.footerButtonsSpacing);
+    expect(
+      copiedThemeExtension.footerButtonsSpacing,
+      themeExtension2.footerButtonsSpacing,
+    );
   });
 
   test('MyoroDialogModalThemeExtension.lerp', () {
@@ -36,8 +39,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.footerButtonsSpacing,
-        lerpDouble(themeExtension1.footerButtonsSpacing,
-            themeExtension2.footerButtonsSpacing, i),
+        lerpDouble(
+          themeExtension1.footerButtonsSpacing,
+          themeExtension2.footerButtonsSpacing,
+          i,
+        ),
       );
     }
   });

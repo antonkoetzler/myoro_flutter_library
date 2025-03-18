@@ -29,7 +29,10 @@ void main() {
       expect(
         lerpedThemeExtension.widgetBordered,
         myoroLerp(
-            themeExtension1.widgetBordered, themeExtension2.widgetBordered, i),
+          themeExtension1.widgetBordered,
+          themeExtension2.widgetBordered,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.childIcon,

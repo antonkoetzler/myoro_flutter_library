@@ -11,9 +11,6 @@ void main() {
   });
 
   test('MyoroRequestEnum.fake()', () {
-    expect(
-      MyoroRequestEnum.values.contains(MyoroRequestEnum.fake()),
-      isTrue,
-    );
+    expect(MyoroRequestEnum.values.contains(MyoroRequestEnum.fake()), isTrue);
   });
 }

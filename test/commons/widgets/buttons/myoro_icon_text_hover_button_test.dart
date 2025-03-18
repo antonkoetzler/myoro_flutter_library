@@ -8,26 +8,34 @@ void main() {
   final configuration = MyoroHoverButtonConfiguration.fake();
   final icon =
       kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
-  final iconSize = faker.randomGenerator.boolean()
-      ? faker.randomGenerator.integer(500).toDouble()
-      : null;
+  final iconSize =
+      faker.randomGenerator.boolean()
+          ? faker.randomGenerator.integer(500).toDouble()
+          : null;
   final text = faker.lorem.word();
   late final TextStyle? textStyle;
-  final textAlign = faker.randomGenerator.boolean()
-      ? TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)]
-      : null;
-  final padding = faker.randomGenerator.boolean()
-      ? EdgeInsets.all(faker.randomGenerator.decimal())
-      : null;
-  final mainAxisAlignment = faker.randomGenerator.boolean()
-      ? MainAxisAlignment.values[
-          faker.randomGenerator.integer(MainAxisAlignment.values.length)]
-      : null;
+  final textAlign =
+      faker.randomGenerator.boolean()
+          ? TextAlign.values[faker.randomGenerator.integer(
+            TextAlign.values.length,
+          )]
+          : null;
+  final padding =
+      faker.randomGenerator.boolean()
+          ? EdgeInsets.all(faker.randomGenerator.decimal())
+          : null;
+  final mainAxisAlignment =
+      faker.randomGenerator.boolean()
+          ? MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )]
+          : null;
   bool onPressedExecuted = false;
 
   setUp(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     textStyle = MyoroTypographyTheme.instance.randomTextStyle;
   });
 
@@ -41,8 +49,11 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<
-                MyoroIconTextHoverButtonThemeExtension>();
+            themeExtension =
+                context
+                    .resolveThemeExtension<
+                      MyoroIconTextHoverButtonThemeExtension
+                    >();
 
             return MyoroIconTextHoverButton(
               configuration: configuration,

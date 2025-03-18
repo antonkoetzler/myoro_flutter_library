@@ -11,17 +11,16 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyoroCircularLoaderWidgetShowcaseBloc(
-        size: context
-            .resolveThemeExtension<MyoroCircularLoaderThemeExtension>()
-            .size,
-      ),
+      create:
+          (_) => MyoroCircularLoaderWidgetShowcaseBloc(
+            size:
+                context
+                    .resolveThemeExtension<MyoroCircularLoaderThemeExtension>()
+                    .size,
+          ),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: [
-          _ColorOption(),
-          _SizeOption(),
-        ],
+        widgetOptions: [_ColorOption(), _SizeOption()],
       ),
     );
   }
@@ -32,13 +31,12 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroCircularLoaderWidgetShowcaseBloc,
-        MyoroCircularLoaderWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroCircularLoaderWidgetShowcaseBloc,
+      MyoroCircularLoaderWidgetShowcaseState
+    >(
       builder: (_, MyoroCircularLoaderWidgetShowcaseState state) {
-        return MyoroCircularLoader(
-          color: state.color,
-          size: state.size,
-        );
+        return MyoroCircularLoader(color: state.color, size: state.size);
       },
     );
   }
@@ -50,11 +48,7 @@ final class _ColorOption extends StatelessWidget {
   MyoroMenuItem _itemBuilder(Color color) {
     return MyoroMenuItem(
       itemBuilder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
-        return _ColorDropdownItem(
-          color,
-          hovered,
-          onPrimaryColor,
-        );
+        return _ColorDropdownItem(color, hovered, onPrimaryColor);
       },
     );
   }
@@ -62,9 +56,9 @@ final class _ColorOption extends StatelessWidget {
   String _itemLabelBuilder(Color color) => color.hexadecimalFormat;
 
   void _onChanged(BuildContext context, Color? color) {
-    context
-        .resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>()
-        .add(SetColorEvent(color));
+    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
+      SetColorEvent(color),
+    );
   }
 
   @override
@@ -73,8 +67,9 @@ final class _ColorOption extends StatelessWidget {
       configuration: MyoroDropdownConfiguration(
         label: 'Color',
         enabled: false,
-        dataConfiguration:
-            MyoroDataConfiguration(staticItems: kMyoroTestColors),
+        dataConfiguration: MyoroDataConfiguration(
+          staticItems: kMyoroTestColors,
+        ),
         itemBuilder: _itemBuilder,
         itemLabelBuilder: _itemLabelBuilder,
       ),
@@ -88,16 +83,15 @@ final class _ColorDropdownItem extends StatelessWidget {
   final bool _hovered;
   final Color _onPrimaryColor;
 
-  const _ColorDropdownItem(
-    this._color,
-    this._hovered,
-    this._onPrimaryColor,
-  );
+  const _ColorDropdownItem(this._color, this._hovered, this._onPrimaryColor);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<
+              MyoroHoverButtonWidgetShowcaseThemeExtension
+            >();
     final colorSize = themeExtension.colorDropdownItemColorSize;
 
     return Padding(

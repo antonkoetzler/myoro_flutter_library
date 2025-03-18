@@ -7,14 +7,12 @@ final class MyoroDecorationHelper {
   static final borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
 
   /// Default [BorderRadius] for inputs.
-  static final inputBorderRadius =
-      BorderRadius.circular(kMyoroInputBorderLength);
+  static final inputBorderRadius = BorderRadius.circular(
+    kMyoroInputBorderLength,
+  );
 
   /// Default [Border] for a, for example, [Container].
   static Border border(BuildContext context) {
-    return Border.all(
-      width: 2,
-      color: MyoroColorTheme.secondary(context),
-    );
+    return Border.all(width: 2, color: MyoroColorTheme.secondary(context));
   }
 }

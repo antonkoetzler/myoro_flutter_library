@@ -11,11 +11,13 @@ void main() {
   final bool barrierDismissable = faker.randomGenerator.boolean();
 
   setUp(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
-    titleTextStyle = faker.randomGenerator.boolean()
-        ? MyoroTypographyTheme.instance.randomTextStyle
-        : null;
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
+    titleTextStyle =
+        faker.randomGenerator.boolean()
+            ? MyoroTypographyTheme.instance.randomTextStyle
+            : null;
   });
 
   testWidgets('MyoroDrawer', (WidgetTester tester) async {
@@ -105,20 +107,24 @@ void main() {
             (((w.child as Drawer).child as Padding).child as Column).children[1]
                 is MyoroBasicDivider &&
             ((((w.child as Drawer).child as Padding).child as Column)
-                        .children[1] as MyoroBasicDivider)
+                            .children[1]
+                        as MyoroBasicDivider)
                     .configuration ==
                 MyoroBasicDividerConfiguration(
                   direction: Axis.horizontal,
                   padding: themeExtension.titleContentDividerPadding,
                 ) &&
             (((w.child as Drawer).child as Padding).child as Column)
-                .children
-                .last is Expanded &&
+                    .children
+                    .last
+                is Expanded &&
             // The [SizedBox.shrink] we placed in the [tester.pumpWidget] call.
             ((((w.child as Drawer).child as Padding).child as Column)
-                    .children
-                    .last as Expanded)
-                .child is SizedBox,
+                            .children
+                            .last
+                        as Expanded)
+                    .child
+                is SizedBox,
       ),
       findsOneWidget,
     );

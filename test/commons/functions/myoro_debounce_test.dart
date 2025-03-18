@@ -6,8 +6,10 @@ void main() {
   test('myoroDebouce', () {
     bool changedValue = false;
     const duration = Duration(seconds: 2);
-    myoroDebounce(() => changedValue = true, duration)
-        .then((_) => expect(changedValue, isTrue));
+    myoroDebounce(
+      () => changedValue = true,
+      duration,
+    ).then((_) => expect(changedValue, isTrue));
     expect(changedValue, isFalse);
   });
 }

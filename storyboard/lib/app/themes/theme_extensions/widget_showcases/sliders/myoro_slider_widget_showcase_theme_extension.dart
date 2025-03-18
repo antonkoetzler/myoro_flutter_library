@@ -24,10 +24,12 @@ final class MyoroSliderWidgetShowcaseThemeExtension
   });
 
   MyoroSliderWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake(),
-        widgetSize = faker.randomGenerator.decimal(),
-        hiddenKittyContainerColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)];
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      widgetSize = faker.randomGenerator.decimal(),
+      hiddenKittyContainerColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )];
 
   @override
   MyoroSliderWidgetShowcaseThemeExtension copyWith({
@@ -53,7 +55,10 @@ final class MyoroSliderWidgetShowcaseThemeExtension
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       widgetSize: lerpDouble(widgetSize, other.widgetSize, t),
       hiddenKittyContainerColor: Color.lerp(
-          hiddenKittyContainerColor, other.hiddenKittyContainerColor, t),
+        hiddenKittyContainerColor,
+        other.hiddenKittyContainerColor,
+        t,
+      ),
     );
   }
 }

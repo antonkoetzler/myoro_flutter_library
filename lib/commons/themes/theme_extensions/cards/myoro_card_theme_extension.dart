@@ -35,17 +35,21 @@ final class MyoroCardThemeExtension
   });
 
   MyoroCardThemeExtension.fake()
-      : backgroundColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        border = Border.all(
-          width: faker.randomGenerator.integer(50, min: 1).toDouble(),
-          color: kMyoroTestColors[
-              faker.randomGenerator.integer(kMyoroTestColors.length)],
-        ),
-        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
-        padding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        titleCardSpacing = faker.randomGenerator.decimal(),
-        textStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    : backgroundColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      border = Border.all(
+        width: faker.randomGenerator.integer(50, min: 1).toDouble(),
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
+      ),
+      borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      titleCardSpacing = faker.randomGenerator.decimal(),
+      textStyle = MyoroTypographyTheme.instance.randomTextStyle;
 
   @override
   MyoroCardThemeExtension copyWith({

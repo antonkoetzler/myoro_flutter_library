@@ -11,8 +11,9 @@ void main() {
   late final MyoroInputThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroInputThemeExtension.fake();
     themeExtension2 = MyoroInputThemeExtension.fake();
   });
@@ -34,25 +35,35 @@ void main() {
       clearTextButtonPadding: themeExtension2.clearTextButtonPadding,
       clearTextButtonIcon: themeExtension2.clearTextButtonIcon,
     );
-    expect(copiedThemeExtension.underlinedBorder,
-        themeExtension2.underlinedBorder);
+    expect(
+      copiedThemeExtension.underlinedBorder,
+      themeExtension2.underlinedBorder,
+    );
     expect(copiedThemeExtension.outlinedBorder, themeExtension2.outlinedBorder);
     expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(copiedThemeExtension.errorBorderColor,
-        themeExtension2.errorBorderColor);
+    expect(
+      copiedThemeExtension.errorBorderColor,
+      themeExtension2.errorBorderColor,
+    );
     expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
     expect(copiedThemeExtension.isDense, themeExtension2.isDense);
     expect(copiedThemeExtension.cursorHeight, themeExtension2.cursorHeight);
     expect(
-        copiedThemeExtension.disabledOpacity, themeExtension2.disabledOpacity);
+      copiedThemeExtension.disabledOpacity,
+      themeExtension2.disabledOpacity,
+    );
     expect(copiedThemeExtension.inputTextStyle, themeExtension2.inputTextStyle);
     expect(copiedThemeExtension.spacing, themeExtension2.spacing);
     expect(copiedThemeExtension.labelTextStyle, themeExtension2.labelTextStyle);
     expect(copiedThemeExtension.labelBehavior, themeExtension2.labelBehavior);
-    expect(copiedThemeExtension.clearTextButtonPadding,
-        themeExtension2.clearTextButtonPadding);
-    expect(copiedThemeExtension.clearTextButtonIcon,
-        themeExtension2.clearTextButtonIcon);
+    expect(
+      copiedThemeExtension.clearTextButtonPadding,
+      themeExtension2.clearTextButtonPadding,
+    );
+    expect(
+      copiedThemeExtension.clearTextButtonIcon,
+      themeExtension2.clearTextButtonIcon,
+    );
   });
 
   test('MyoroInputThemeExtension.lerp', () {
@@ -60,28 +71,43 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.underlinedBorder,
-        myoroLerp(themeExtension1.underlinedBorder,
-            themeExtension2.underlinedBorder, i),
+        myoroLerp(
+          themeExtension1.underlinedBorder,
+          themeExtension2.underlinedBorder,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.outlinedBorder,
         myoroLerp(
-            themeExtension1.outlinedBorder, themeExtension2.outlinedBorder, i),
+          themeExtension1.outlinedBorder,
+          themeExtension2.outlinedBorder,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.primaryColor,
         Color.lerp(
-            themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+          themeExtension1.primaryColor,
+          themeExtension2.primaryColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.errorBorderColor,
-        Color.lerp(themeExtension1.errorBorderColor,
-            themeExtension2.errorBorderColor, i),
+        Color.lerp(
+          themeExtension1.errorBorderColor,
+          themeExtension2.errorBorderColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.borderRadius,
         BorderRadius.lerp(
-            themeExtension1.borderRadius, themeExtension2.borderRadius, i),
+          themeExtension1.borderRadius,
+          themeExtension2.borderRadius,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.isDense,
@@ -90,17 +116,26 @@ void main() {
       expect(
         lerpedThemeExtension.cursorHeight,
         lerpDouble(
-            themeExtension1.cursorHeight, themeExtension2.cursorHeight, i),
+          themeExtension1.cursorHeight,
+          themeExtension2.cursorHeight,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.disabledOpacity,
-        lerpDouble(themeExtension1.disabledOpacity,
-            themeExtension2.disabledOpacity, i),
+        lerpDouble(
+          themeExtension1.disabledOpacity,
+          themeExtension2.disabledOpacity,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.inputTextStyle,
         TextStyle.lerp(
-            themeExtension1.inputTextStyle, themeExtension2.inputTextStyle, i),
+          themeExtension1.inputTextStyle,
+          themeExtension2.inputTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.spacing,
@@ -109,22 +144,34 @@ void main() {
       expect(
         lerpedThemeExtension.labelTextStyle,
         TextStyle.lerp(
-            themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
+          themeExtension1.labelTextStyle,
+          themeExtension2.labelTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.labelBehavior,
         myoroLerp(
-            themeExtension1.labelBehavior, themeExtension2.labelBehavior, i),
+          themeExtension1.labelBehavior,
+          themeExtension2.labelBehavior,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.clearTextButtonPadding,
-        EdgeInsets.lerp(themeExtension1.clearTextButtonPadding,
-            themeExtension2.clearTextButtonPadding, i),
+        EdgeInsets.lerp(
+          themeExtension1.clearTextButtonPadding,
+          themeExtension2.clearTextButtonPadding,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.clearTextButtonIcon,
-        myoroLerp(themeExtension1.clearTextButtonIcon,
-            themeExtension2.clearTextButtonIcon, i),
+        myoroLerp(
+          themeExtension1.clearTextButtonIcon,
+          themeExtension2.clearTextButtonIcon,
+          i,
+        ),
       );
     }
   });

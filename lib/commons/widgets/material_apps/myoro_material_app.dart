@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
-typedef MyoroMaterialAppThemeExtensionsBuilder = List<ThemeExtension> Function(
-    ColorScheme colorScheme, TextTheme textTheme);
+typedef MyoroMaterialAppThemeExtensionsBuilder =
+    List<ThemeExtension> Function(ColorScheme colorScheme, TextTheme textTheme);
 
 /// Root widget of your [App] widget in main.dart.
 final class MyoroMaterialApp extends StatelessWidget {
@@ -84,8 +84,10 @@ final class MyoroMaterialApp extends StatelessWidget {
         ),
         themeMode: themeMode ?? ThemeMode.dark,
         theme: createMyoroThemeData(themeExtensionsBuilder, isDarkMode: false),
-        darkTheme:
-            createMyoroThemeData(themeExtensionsBuilder, isDarkMode: true),
+        darkTheme: createMyoroThemeData(
+          themeExtensionsBuilder,
+          isDarkMode: true,
+        ),
       ),
     );
   }

@@ -43,19 +43,28 @@ final class MyoroIconTextHoverButtonThemeExtension
   });
 
   MyoroIconTextHoverButtonThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        onPrimaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        contentPadding =
-            EdgeInsets.all(faker.randomGenerator.integer(50).toDouble()),
-        textStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        textMaxLines = faker.randomGenerator.integer(5),
-        textOverflow = TextOverflow
-            .values[faker.randomGenerator.integer(TextOverflow.values.length)],
-        spacing = faker.randomGenerator.decimal(),
-        mainAxisAlignment = MainAxisAlignment.values[
-            faker.randomGenerator.integer(MainAxisAlignment.values.length)];
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      onPrimaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      contentPadding = EdgeInsets.all(
+        faker.randomGenerator.integer(50).toDouble(),
+      ),
+      textStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      textMaxLines = faker.randomGenerator.integer(5),
+      textOverflow =
+          TextOverflow.values[faker.randomGenerator.integer(
+            TextOverflow.values.length,
+          )],
+      spacing = faker.randomGenerator.decimal(),
+      mainAxisAlignment =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )];
 
   @override
   MyoroIconTextHoverButtonThemeExtension copyWith({
@@ -92,12 +101,18 @@ final class MyoroIconTextHoverButtonThemeExtension
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
       textMaxLines:
-          lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)
-              ?.toInt(),
+          lerpDouble(
+            textMaxLines.toDouble(),
+            other.textMaxLines.toDouble(),
+            t,
+          )?.toInt(),
       textOverflow: myoroLerp(textOverflow, other.textOverflow, t),
       spacing: lerpDouble(spacing, other.spacing, t),
-      mainAxisAlignment:
-          myoroLerp(mainAxisAlignment, other.mainAxisAlignment, t),
+      mainAxisAlignment: myoroLerp(
+        mainAxisAlignment,
+        other.mainAxisAlignment,
+        t,
+      ),
     );
   }
 }

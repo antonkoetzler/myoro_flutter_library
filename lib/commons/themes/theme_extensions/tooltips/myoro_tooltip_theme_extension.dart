@@ -8,18 +8,15 @@ final class MyoroTooltipThemeExtension
   /// [Tooltip.waitDuration].
   final Duration waitDuration;
 
-  const MyoroTooltipThemeExtension({
-    required this.waitDuration,
-  });
+  const MyoroTooltipThemeExtension({required this.waitDuration});
 
   MyoroTooltipThemeExtension.fake()
-      : waitDuration =
-            Duration(milliseconds: faker.randomGenerator.integer(9999));
+    : waitDuration = Duration(
+        milliseconds: faker.randomGenerator.integer(9999),
+      );
 
   @override
-  MyoroTooltipThemeExtension copyWith({
-    Duration? waitDuration,
-  }) {
+  MyoroTooltipThemeExtension copyWith({Duration? waitDuration}) {
     return MyoroTooltipThemeExtension(
       waitDuration: waitDuration ?? this.waitDuration,
     );

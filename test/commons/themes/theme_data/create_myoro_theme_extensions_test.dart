@@ -40,74 +40,129 @@ void main() {
     );
   });
 
-  test('createAppBarThemeExtensions',
-      () => expect(createMyoroAppBarThemeExtensions(colorScheme).length, 1));
   test(
-      'createMyoroButtonThemeExtensions',
-      () => expect(
-          createMyoroButtonThemeExtensions(colorScheme, textTheme).length, 2));
+    'createAppBarThemeExtensions',
+    () => expect(createMyoroAppBarThemeExtensions(colorScheme).length, 1),
+  );
   test(
-      'createMyoroCardThemeExtensions',
-      () => expect(
-          createMyoroCardThemeExtensions(colorScheme, textTheme).length, 1));
-  test('createMyoroCarouselThemeExtensions',
-      () => expect(createMyoroCarouselThemeExtensions().length, 1));
+    'createMyoroButtonThemeExtensions',
+    () => expect(
+      createMyoroButtonThemeExtensions(colorScheme, textTheme).length,
+      2,
+    ),
+  );
   test(
-      'createMyoroCheckboxThemeExtensions',
-      () => expect(
-          createMyoroCheckboxThemeExtensions(colorScheme, textTheme).length,
-          2));
-  test('createMyoroDividerThemeExtensions',
-      () => expect(createMyoroDividerThemeExtensions(colorScheme).length, 2));
-  test('createMyoroDropdownThemeExtensions',
-      () => expect(createMyoroDropdownThemeExtensions(textTheme).length, 1));
+    'createMyoroCardThemeExtensions',
+    () => expect(
+      createMyoroCardThemeExtensions(colorScheme, textTheme).length,
+      1,
+    ),
+  );
   test(
-      'createMyoroDrawerThemeExtension',
-      () => expect(
-          createMyoroDrawerThemeExtension(colorScheme, textTheme).length, 1));
-  test('createMyoroFormThemeExtensions',
-      () => expect(createMyoroFormThemeExtensions().length, 1));
+    'createMyoroCarouselThemeExtensions',
+    () => expect(createMyoroCarouselThemeExtensions().length, 1),
+  );
   test(
-      'createMyoroGraphThemeExtensions',
-      () => expect(
-          createMyoroGraphThemeExtensions(colorScheme, textTheme).length, 2));
+    'createMyoroCheckboxThemeExtensions',
+    () => expect(
+      createMyoroCheckboxThemeExtensions(colorScheme, textTheme).length,
+      2,
+    ),
+  );
   test(
-      'createMyoroInputThemeExtensions',
-      () => expect(
-          createMyoroInputThemeExtensions(colorScheme, textTheme).length, 3));
-  test('createMyoroLayoutBuilderThemeExtensions',
-      () => expect(createMyoroLayoutBuilderThemeExtensions().length, 1));
-  test('createMyoroLoaderThemeExtensions',
-      () => expect(createMyoroLoaderThemeExtensions(colorScheme).length, 1));
-  test('createMyoroMaterialAppThemeExtensions',
-      () => expect(createMyoroMaterialAppThemeExtensions().length, 1));
+    'createMyoroDividerThemeExtensions',
+    () => expect(createMyoroDividerThemeExtensions(colorScheme).length, 2),
+  );
   test(
-      'createMyoroMenuThemeExtensions',
-      () => expect(
-          createMyoroMenuThemeExtensions(colorScheme, textTheme).length, 1));
+    'createMyoroDropdownThemeExtensions',
+    () => expect(createMyoroDropdownThemeExtensions(textTheme).length, 1),
+  );
   test(
-      'createMyoroModalThemeExtensions',
-      () => expect(
-          createMyoroModalThemeExtensions(colorScheme, textTheme).length, 2));
+    'createMyoroDrawerThemeExtension',
+    () => expect(
+      createMyoroDrawerThemeExtension(colorScheme, textTheme).length,
+      1,
+    ),
+  );
   test(
-      'createMyoroRadioThemeExtensions',
-      () => expect(
-          createMyoroRadioThemeExtensions(colorScheme, textTheme).length, 2));
-  test('createMyoroResolverThemeExtensions',
-      () => expect(createMyoroResolverThemeExtensions().length, 1));
-  test('createMyoroScreenThemeExtensions',
-      () => expect(createMyoroScreenThemeExtensions().length, 1));
-  test('createMyoroSliderThemeExtensions',
-      () => expect(createMyoroSliderThemeExtensions(textTheme).length, 1));
+    'createMyoroFormThemeExtensions',
+    () => expect(createMyoroFormThemeExtensions().length, 1),
+  );
   test(
-      'createMyoroSnackBarThemeExtensions',
-      () => expect(
-          createMyoroSnackBarThemeExtensions(colorScheme, textTheme).length,
-          2));
+    'createMyoroGraphThemeExtensions',
+    () => expect(
+      createMyoroGraphThemeExtensions(colorScheme, textTheme).length,
+      2,
+    ),
+  );
   test(
-      'createMyoroTableThemeExtensions',
-      () => expect(
-          createMyoroTableThemeExtensions(colorScheme, textTheme).length, 1));
-  test('createMyoroTooltipThemeExtensions',
-      () => expect(createMyoroTooltipThemeExtensions().length, 1));
+    'createMyoroInputThemeExtensions',
+    () => expect(
+      createMyoroInputThemeExtensions(colorScheme, textTheme).length,
+      3,
+    ),
+  );
+  test(
+    'createMyoroLayoutBuilderThemeExtensions',
+    () => expect(createMyoroLayoutBuilderThemeExtensions().length, 1),
+  );
+  test(
+    'createMyoroLoaderThemeExtensions',
+    () => expect(createMyoroLoaderThemeExtensions(colorScheme).length, 1),
+  );
+  test(
+    'createMyoroMaterialAppThemeExtensions',
+    () => expect(createMyoroMaterialAppThemeExtensions().length, 1),
+  );
+  test(
+    'createMyoroMenuThemeExtensions',
+    () => expect(
+      createMyoroMenuThemeExtensions(colorScheme, textTheme).length,
+      1,
+    ),
+  );
+  test(
+    'createMyoroModalThemeExtensions',
+    () => expect(
+      createMyoroModalThemeExtensions(colorScheme, textTheme).length,
+      2,
+    ),
+  );
+  test(
+    'createMyoroRadioThemeExtensions',
+    () => expect(
+      createMyoroRadioThemeExtensions(colorScheme, textTheme).length,
+      2,
+    ),
+  );
+  test(
+    'createMyoroResolverThemeExtensions',
+    () => expect(createMyoroResolverThemeExtensions().length, 1),
+  );
+  test(
+    'createMyoroScreenThemeExtensions',
+    () => expect(createMyoroScreenThemeExtensions().length, 1),
+  );
+  test(
+    'createMyoroSliderThemeExtensions',
+    () => expect(createMyoroSliderThemeExtensions(textTheme).length, 1),
+  );
+  test(
+    'createMyoroSnackBarThemeExtensions',
+    () => expect(
+      createMyoroSnackBarThemeExtensions(colorScheme, textTheme).length,
+      2,
+    ),
+  );
+  test(
+    'createMyoroTableThemeExtensions',
+    () => expect(
+      createMyoroTableThemeExtensions(colorScheme, textTheme).length,
+      1,
+    ),
+  );
+  test(
+    'createMyoroTooltipThemeExtensions',
+    () => expect(createMyoroTooltipThemeExtensions().length, 1),
+  );
 }

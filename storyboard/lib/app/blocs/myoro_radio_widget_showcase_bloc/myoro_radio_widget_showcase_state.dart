@@ -7,10 +7,7 @@ final class MyoroRadioWidgetShowcaseState extends Equatable {
   /// [MyoroRadio.labelTextStyle].
   final TextStyle? labelTextStyle;
 
-  const MyoroRadioWidgetShowcaseState({
-    this.label,
-    this.labelTextStyle,
-  });
+  const MyoroRadioWidgetShowcaseState({this.label, this.labelTextStyle});
 
   MyoroRadioWidgetShowcaseState copyWith({
     String? label,
@@ -20,14 +17,16 @@ final class MyoroRadioWidgetShowcaseState extends Equatable {
   }) {
     return MyoroRadioWidgetShowcaseState(
       label: labelEnabled ? (label ?? this.label) : null,
-      labelTextStyle: labelTextStyleEnabled
-          ? (labelTextStyle ?? this.labelTextStyle)
-          : null,
+      labelTextStyle:
+          labelTextStyleEnabled
+              ? (labelTextStyle ?? this.labelTextStyle)
+              : null,
     );
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroRadioWidgetShowcaseState(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'
@@ -35,9 +34,6 @@ final class MyoroRadioWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      label,
-      labelTextStyle,
-    ];
+    return [label, labelTextStyle];
   }
 }

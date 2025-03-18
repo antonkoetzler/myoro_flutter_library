@@ -23,17 +23,23 @@ void main() {
     expect(find.byType(MyoroGroupRadio), findsOneWidget);
     expect(
       MyoroSingularDropdown.finder<Axis>(
-          label: '[MyoroGroupRadio.direction]', labelEnabled: true),
+        label: '[MyoroGroupRadio.direction]',
+        labelEnabled: true,
+      ),
       findsOneWidget,
     );
     expect(
       MyoroSlider.finder(
-          label: '[MyoroGroupRadio.spacing]', labelEnabled: true),
+        label: '[MyoroGroupRadio.spacing]',
+        labelEnabled: true,
+      ),
       findsOneWidget,
     );
     expect(
       MyoroSlider.finder(
-          label: '[MyoroGroupRadio.runSpacing]', labelEnabled: true),
+        label: '[MyoroGroupRadio.runSpacing]',
+        labelEnabled: true,
+      ),
       findsOneWidget,
     );
   });

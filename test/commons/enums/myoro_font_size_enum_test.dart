@@ -18,9 +18,6 @@ void main() {
   });
 
   test('MyoroFontSizeEnum.fake', () {
-    expect(
-      MyoroFontSizeEnum.values.contains(MyoroFontSizeEnum.fake()),
-      isTrue,
-    );
+    expect(MyoroFontSizeEnum.values.contains(MyoroFontSizeEnum.fake()), isTrue);
   });
 }

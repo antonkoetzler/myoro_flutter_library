@@ -21,9 +21,9 @@ final class MyoroPieGraph extends StatelessWidget {
     this.centerWidget,
     required this.items,
   }) : assert(
-          typeEnum.isPie ? centerWidget == null : true,
-          '[MyoroPieGraph]: If [typeEnum.isPie] is [true], [centerWidget] cannot be provided.',
-        );
+         typeEnum.isPie ? centerWidget == null : true,
+         '[MyoroPieGraph]: If [typeEnum.isPie] is [true], [centerWidget] cannot be provided.',
+       );
 
   static Finder finder({
     MyoroPieGraphEnum? typeEnum,
@@ -68,16 +68,15 @@ final class _PieGraph extends StatelessWidget {
     return PieChart(
       PieChartData(
         centerSpaceRadius: _typeEnum.isPie ? 0 : 100,
-        sections: _items.map<PieChartSectionData>(
-          (MyoroPieGraphItem item) {
-            return PieChartSectionData(
-              showTitle: false,
-              value: item.value,
-              color: item.color ?? themeExtension.itemColor,
-              radius: item.radius ?? themeExtension.itemRadius,
-            );
-          },
-        ).toList(),
+        sections:
+            _items.map<PieChartSectionData>((MyoroPieGraphItem item) {
+              return PieChartSectionData(
+                showTitle: false,
+                value: item.value,
+                color: item.color ?? themeExtension.itemColor,
+                radius: item.radius ?? themeExtension.itemRadius,
+              );
+            }).toList(),
       ),
     );
   }

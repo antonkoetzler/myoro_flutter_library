@@ -251,18 +251,11 @@ final class _Checkbox extends StatelessWidget {
   final bool enabled;
   final void Function(bool value) onChanged;
 
-  const _Checkbox(
-    this.controller,
-    this.enabled, {
-    required this.onChanged,
-  });
+  const _Checkbox(this.controller, this.enabled, {required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
-    return MyoroCheckbox(
-      initialValue: enabled,
-      onChanged: onChanged,
-    );
+    return MyoroCheckbox(initialValue: enabled, onChanged: onChanged);
   }
 }
 
@@ -332,16 +325,15 @@ final class _TextFormField extends StatelessWidget {
                 ),
               ),
               isDense: themeExtension.isDense,
-              suffixIcon: showClearTextButton
-                  ? _ClearTextButton(
-                      () {
+              suffixIcon:
+                  showClearTextButton
+                      ? _ClearTextButton(() {
                         if (_formatter == null) {
                           _controller.clear();
                         } else {
                           if (_formatter is MyoroNumberInputFormatter) {
                             _controller.text =
-                                (_formatter as MyoroNumberInputFormatter)
-                                    .min
+                                (_formatter as MyoroNumberInputFormatter).min
                                     .toString();
                           } else if (_formatter is MyoroDateInputFormatter) {
                             _controller.text = '00/00/0000';
@@ -354,9 +346,8 @@ final class _TextFormField extends StatelessWidget {
                         }
                         _configuration.onChanged?.call(_controller.text);
                         _configuration.onCleared?.call();
-                      },
-                    )
-                  : null,
+                      })
+                      : null,
             ),
             textAlign: _configuration.textAlign ?? TextAlign.start,
             cursorHeight: themeExtension.cursorHeight,
@@ -387,7 +378,8 @@ final class _Label extends StatelessWidget {
       ),
       child: Text(
         configuration.label!,
-        style: configuration.labelTextStyle ??
+        style:
+            configuration.labelTextStyle ??
             context
                 .resolveThemeExtension<MyoroInputThemeExtension>()
                 .labelTextStyle,

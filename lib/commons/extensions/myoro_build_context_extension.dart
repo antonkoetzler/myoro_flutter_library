@@ -14,7 +14,8 @@ extension MyoroBuildContextExtension on BuildContext {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
     throw Exception(
-        '[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.');
+      '[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.',
+    );
   }
 
   T resolveBloc<T extends BlocBase>() {
@@ -23,15 +24,13 @@ extension MyoroBuildContextExtension on BuildContext {
       return bloc;
     } catch (_) {
       throw Exception(
-          '[BuildContextExtension.resolveBloc]: [Bloc] does not exist.');
+        '[BuildContextExtension.resolveBloc]: [Bloc] does not exist.',
+      );
     }
   }
 
   /// Opens the drawer of the [BuildContext]'s [MyoroScreen].
-  void openDrawer({
-    bool isEndDrawer = false,
-    required MyoroDrawer drawer,
-  }) {
+  void openDrawer({bool isEndDrawer = false, required MyoroDrawer drawer}) {
     read<MyoroDrawerController>().openDrawer(
       this,
       isEndDrawer: isEndDrawer,
@@ -43,10 +42,7 @@ extension MyoroBuildContextExtension on BuildContext {
   void closeDrawer() => read<MyoroDrawerController>().closeDrawer(this);
 
   /// Opens a snack bar.
-  void showSnackBar({
-    Duration? duration,
-    required MyoroSnackBar snackBar,
-  }) {
+  void showSnackBar({Duration? duration, required MyoroSnackBar snackBar}) {
     MyoroSnackBarHelper.showSnackBar(
       this,
       duration: duration,

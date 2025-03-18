@@ -30,11 +30,11 @@ final class MyoroModalConfiguration extends Equatable {
   });
 
   MyoroModalConfiguration.fake()
-      : barrierDismissable = faker.randomGenerator.boolean(),
-        constraints = null,
-        onClosed = null,
-        title = faker.lorem.word(),
-        showCloseButton = faker.randomGenerator.boolean();
+    : barrierDismissable = faker.randomGenerator.boolean(),
+      constraints = null,
+      onClosed = null,
+      title = faker.lorem.word(),
+      showCloseButton = faker.randomGenerator.boolean();
 
   MyoroModalConfiguration copyWith({
     bool? barrierDismissable,
@@ -53,7 +53,8 @@ final class MyoroModalConfiguration extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroModalConfiguration(\n'
       '  barrierDismissable: $barrierDismissable,\n'
       '  constraints: $constraints,\n'
@@ -64,12 +65,6 @@ final class MyoroModalConfiguration extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      barrierDismissable,
-      constraints,
-      onClosed,
-      title,
-      showCloseButton,
-    ];
+    return [barrierDismissable, constraints, onClosed, title, showCloseButton];
   }
 }

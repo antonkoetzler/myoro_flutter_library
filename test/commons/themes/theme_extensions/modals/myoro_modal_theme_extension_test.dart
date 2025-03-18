@@ -11,8 +11,9 @@ void main() {
   late final MyoroModalThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroModalThemeExtension.fake();
     themeExtension2 = MyoroModalThemeExtension.fake();
   });
@@ -36,7 +37,9 @@ void main() {
     expect(copiedThemeExtension.spacing, themeExtension2.spacing);
     expect(copiedThemeExtension.titleTextStyle, themeExtension2.titleTextStyle);
     expect(
-        copiedThemeExtension.closeButtonIcon, themeExtension2.closeButtonIcon);
+      copiedThemeExtension.closeButtonIcon,
+      themeExtension2.closeButtonIcon,
+    );
   });
 
   test('MyoroModalThemeExtension.lerp', () {
@@ -45,12 +48,18 @@ void main() {
       expect(
         lerpedThemeExtension.primaryColor,
         Color.lerp(
-            themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+          themeExtension1.primaryColor,
+          themeExtension2.primaryColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.borderRadius,
         BorderRadius.lerp(
-            themeExtension1.borderRadius, themeExtension2.borderRadius, i),
+          themeExtension1.borderRadius,
+          themeExtension2.borderRadius,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.border,
@@ -63,7 +72,10 @@ void main() {
       expect(
         lerpedThemeExtension.constraints,
         BoxConstraints.lerp(
-            themeExtension1.constraints, themeExtension2.constraints, i),
+          themeExtension1.constraints,
+          themeExtension2.constraints,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.spacing,
@@ -72,12 +84,18 @@ void main() {
       expect(
         lerpedThemeExtension.titleTextStyle,
         TextStyle.lerp(
-            themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
+          themeExtension1.titleTextStyle,
+          themeExtension2.titleTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.closeButtonIcon,
-        myoroLerp(themeExtension1.closeButtonIcon,
-            themeExtension2.closeButtonIcon, i),
+        myoroLerp(
+          themeExtension1.closeButtonIcon,
+          themeExtension2.closeButtonIcon,
+          i,
+        ),
       );
     }
   });

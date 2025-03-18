@@ -13,8 +13,11 @@ final class MyoroSnackBarHelper {
       ..hideCurrentSnackBar()
       ..showSnackBar(
         MyoroSnackBarContainer(
-          themeExtension: context
-              .resolveThemeExtension<MyoroSnackBarContainerThemeExtension>(),
+          themeExtension:
+              context
+                  .resolveThemeExtension<
+                    MyoroSnackBarContainerThemeExtension
+                  >(),
           duration: duration,
           snackBar: snackBar,
         ),

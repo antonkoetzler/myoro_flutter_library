@@ -19,8 +19,8 @@ final class MyoroDialogModalThemeExtension
   });
 
   MyoroDialogModalThemeExtension.fake()
-      : textStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        footerButtonsSpacing = faker.randomGenerator.decimal();
+    : textStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      footerButtonsSpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroDialogModalThemeExtension copyWith({
@@ -41,8 +41,11 @@ final class MyoroDialogModalThemeExtension
     if (other is! MyoroDialogModalThemeExtension) return this;
     return copyWith(
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      footerButtonsSpacing:
-          lerpDouble(footerButtonsSpacing, other.footerButtonsSpacing, t),
+      footerButtonsSpacing: lerpDouble(
+        footerButtonsSpacing,
+        other.footerButtonsSpacing,
+        t,
+      ),
     );
   }
 }

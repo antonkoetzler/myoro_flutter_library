@@ -17,10 +17,13 @@ final class MyoroAppBarThemeExtension
   });
 
   MyoroAppBarThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        contentPadding =
-            EdgeInsets.all(faker.randomGenerator.integer(50).toDouble());
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      contentPadding = EdgeInsets.all(
+        faker.randomGenerator.integer(50).toDouble(),
+      );
 
   @override
   MyoroAppBarThemeExtension copyWith({

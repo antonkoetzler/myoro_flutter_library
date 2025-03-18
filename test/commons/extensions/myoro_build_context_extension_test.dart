@@ -21,106 +21,104 @@ void main() {
     );
   }
 
-  testWidgets(
-    'MyoroBuildContextExtension getters',
-    (WidgetTester tester) async {
-      late final BuildContext context;
-      await tester
-          .pumpWidget(createWidget((buildContext) => context = buildContext));
-      await tester.pumpAndSettle();
-      expect(context.themeData, Theme.of(context));
-      expect(
-          context.isDarkMode, context.themeData.brightness == Brightness.dark);
-      expect(context.textTheme, context.themeData.textTheme);
-      expect(context.overlay, Overlay.of(context));
-      expect(context.mediaQuery, MediaQuery.of(context));
-    },
-  );
+  testWidgets('MyoroBuildContextExtension getters', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
+    await tester.pumpWidget(
+      createWidget((buildContext) => context = buildContext),
+    );
+    await tester.pumpAndSettle();
+    expect(context.themeData, Theme.of(context));
+    expect(context.isDarkMode, context.themeData.brightness == Brightness.dark);
+    expect(context.textTheme, context.themeData.textTheme);
+    expect(context.overlay, Overlay.of(context));
+    expect(context.mediaQuery, MediaQuery.of(context));
+  });
 
-  testWidgets(
-    'MyoroBuildContextExtension.resolveThemeExtension',
-    (WidgetTester tester) async {
-      late final BuildContext context;
-      await tester
-          .pumpWidget(createWidget((buildContext) => context = buildContext));
-      await tester.pumpAndSettle();
-      expect(
-        context.resolveThemeExtension<MyoroMaterialAppThemeExtension>(),
-        isA<MyoroMaterialAppThemeExtension>(),
-      );
-    },
-  );
+  testWidgets('MyoroBuildContextExtension.resolveThemeExtension', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
+    await tester.pumpWidget(
+      createWidget((buildContext) => context = buildContext),
+    );
+    await tester.pumpAndSettle();
+    expect(
+      context.resolveThemeExtension<MyoroMaterialAppThemeExtension>(),
+      isA<MyoroMaterialAppThemeExtension>(),
+    );
+  });
 
-  testWidgets(
-    'MyoroBuildContextExtension.resolveBloc',
-    (WidgetTester tester) async {
-      late final BuildContext context;
-      await tester.pumpWidget(
-        BlocProvider(
-          create: (_) => _Cubit(),
-          child: createWidget((buildContext) => context = buildContext),
-        ),
-      );
-      await tester.pumpAndSettle();
-      expect(context.resolveBloc<_Cubit>(), isA<_Cubit>());
-    },
-  );
+  testWidgets('MyoroBuildContextExtension.resolveBloc', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
+    await tester.pumpWidget(
+      BlocProvider(
+        create: (_) => _Cubit(),
+        child: createWidget((buildContext) => context = buildContext),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(context.resolveBloc<_Cubit>(), isA<_Cubit>());
+  });
 
-  testWidgets(
-    'MyoroBuildContextExtension.openDrawer',
-    (WidgetTester tester) async {
-      late final BuildContext context;
-      await tester
-          .pumpWidget(createWidget((buildContext) => context = buildContext));
-      await tester.pumpAndSettle();
-      context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroDrawer), findsOneWidget);
-    },
-  );
+  testWidgets('MyoroBuildContextExtension.openDrawer', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
+    await tester.pumpWidget(
+      createWidget((buildContext) => context = buildContext),
+    );
+    await tester.pumpAndSettle();
+    context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroDrawer), findsOneWidget);
+  });
 
-  testWidgets(
-    'MyoroBuildContextExtension.closeDrawer',
-    (WidgetTester tester) async {
-      late final BuildContext context;
-      await tester
-          .pumpWidget(createWidget((buildContext) => context = buildContext));
-      await tester.pumpAndSettle();
-      context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroDrawer), findsOneWidget);
-      context.closeDrawer();
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroDrawer), findsNothing);
-    },
-  );
+  testWidgets('MyoroBuildContextExtension.closeDrawer', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
+    await tester.pumpWidget(
+      createWidget((buildContext) => context = buildContext),
+    );
+    await tester.pumpAndSettle();
+    context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroDrawer), findsOneWidget);
+    context.closeDrawer();
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroDrawer), findsNothing);
+  });
 
-  testWidgets(
-    'MyoroBuildContextExtension.showSnackBar',
-    (WidgetTester tester) async {
-      late final BuildContext context;
-      await tester
-          .pumpWidget(createWidget((buildContext) => context = buildContext));
-      await tester.pumpAndSettle();
-      context.showSnackBar(snackBar: MyoroSnackBar(message: 'Hello, World!'));
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroSnackBar), findsOneWidget);
-    },
-  );
+  testWidgets('MyoroBuildContextExtension.showSnackBar', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
+    await tester.pumpWidget(
+      createWidget((buildContext) => context = buildContext),
+    );
+    await tester.pumpAndSettle();
+    context.showSnackBar(snackBar: MyoroSnackBar(message: 'Hello, World!'));
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroSnackBar), findsOneWidget);
+  });
 
-  testWidgets(
-    'MyoroBuildContextExtension.hideSnackBar',
-    (WidgetTester tester) async {
-      late final BuildContext context;
-      await tester
-          .pumpWidget(createWidget((buildContext) => context = buildContext));
-      await tester.pumpAndSettle();
-      context.showSnackBar(snackBar: MyoroSnackBar(message: 'Hello, World!'));
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroSnackBar), findsOneWidget);
-      context.hideSnackBar();
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroSnackBar), findsNothing);
-    },
-  );
+  testWidgets('MyoroBuildContextExtension.hideSnackBar', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
+    await tester.pumpWidget(
+      createWidget((buildContext) => context = buildContext),
+    );
+    await tester.pumpAndSettle();
+    context.showSnackBar(snackBar: MyoroSnackBar(message: 'Hello, World!'));
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroSnackBar), findsOneWidget);
+    context.hideSnackBar();
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroSnackBar), findsNothing);
+  });
 }

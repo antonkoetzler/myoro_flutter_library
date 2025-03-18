@@ -160,9 +160,10 @@ final class _TraversalButton extends StatelessWidget {
       child: IntrinsicWidth(
         child: MyoroIconTextHoverButton(
           configuration: MyoroHoverButtonConfiguration(
-            bordered: context
-                .resolveThemeExtension<MyoroCarouselThemeExtension>()
-                .traversalButtonBordered,
+            bordered:
+                context
+                    .resolveThemeExtension<MyoroCarouselThemeExtension>()
+                    .traversalButtonBordered,
           ),
           icon: _icon,
           onPressed: _onPressed,

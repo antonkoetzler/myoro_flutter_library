@@ -49,10 +49,7 @@ void main() {
       findsOneWidget,
     );
     expect(
-      MyoroInput.finder(
-        label: '[MyoroDialogModal.text]',
-        labelEnabled: true,
-      ),
+      MyoroInput.finder(label: '[MyoroDialogModal.text]', labelEnabled: true),
       findsOneWidget,
     );
     expect(

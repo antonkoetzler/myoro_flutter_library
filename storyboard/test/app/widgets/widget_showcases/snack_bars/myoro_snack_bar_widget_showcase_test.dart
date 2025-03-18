@@ -21,7 +21,9 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(
       MyoroIconTextHoverButton.finder(
-          text: 'Click to launch the snack bar.', textEnabled: true),
+        text: 'Click to launch the snack bar.',
+        textEnabled: true,
+      ),
       findsOneWidget,
     );
     expect(
@@ -33,7 +35,9 @@ void main() {
     );
     expect(
       MyoroCheckbox.finder(
-          label: '[MyoroSnackBar.showCloseButton]', labelEnabled: true),
+        label: '[MyoroSnackBar.showCloseButton]',
+        labelEnabled: true,
+      ),
       findsOneWidget,
     );
     expect(
@@ -42,7 +46,9 @@ void main() {
     );
     expect(
       MyoroCheckbox.finder(
-          label: '[MyoroSnackBar.child] enabled?', labelEnabled: true),
+        label: '[MyoroSnackBar.child] enabled?',
+        labelEnabled: true,
+      ),
       findsOneWidget,
     );
   });

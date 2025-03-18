@@ -18,8 +18,10 @@ void main() {
     );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
     expect(copiedThemeExtension.widgetSize, themeExtension2.widgetSize);
-    expect(copiedThemeExtension.hiddenKittyContainerColor,
-        themeExtension2.hiddenKittyContainerColor);
+    expect(
+      copiedThemeExtension.hiddenKittyContainerColor,
+      themeExtension2.hiddenKittyContainerColor,
+    );
   });
 
   test('MyoroSliderWidgetShowcaseThemeExtension.lerp', () {
@@ -35,8 +37,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.hiddenKittyContainerColor,
-        Color.lerp(themeExtension1.hiddenKittyContainerColor,
-            themeExtension2.hiddenKittyContainerColor, i),
+        Color.lerp(
+          themeExtension1.hiddenKittyContainerColor,
+          themeExtension2.hiddenKittyContainerColor,
+          i,
+        ),
       );
     }
   });

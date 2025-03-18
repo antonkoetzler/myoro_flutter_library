@@ -8,8 +8,10 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   void expectDropdown<T>(String label) {
     expect(
-      find.byWidgetPredicate((Widget w) =>
-          w is MyoroSingularDropdown<T> && w.configuration.label == label),
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<T> && w.configuration.label == label,
+      ),
       findsOneWidget,
     );
   }
@@ -17,13 +19,15 @@ void main() {
   void expectInput(String label) {
     expect(
       find.byWidgetPredicate(
-          (Widget w) => w is MyoroInput && w.configuration.label == label),
+        (Widget w) => w is MyoroInput && w.configuration.label == label,
+      ),
       findsOneWidget,
     );
   }
 
-  testWidgets('MyoroIconTextHoverButtonWidgetShowcase',
-      (WidgetTester tester) async {
+  testWidgets('MyoroIconTextHoverButtonWidgetShowcase', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createStoryboardThemeExtensions,
@@ -59,13 +63,16 @@ void main() {
 
     // [_MainAxisAlignmentOption].
     expectDropdown<MainAxisAlignment>(
-        '[MyoroIconTextHoverButton.mainAxisAlignment]');
+      '[MyoroIconTextHoverButton.mainAxisAlignment]',
+    );
 
     // [_OnPressedEnabledOption].
     expect(
-      find.byWidgetPredicate((Widget w) =>
-          w is MyoroCheckbox &&
-          w.label == '[MyoroIconTextHoverButton.onPressed] enabled?'),
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroCheckbox &&
+            w.label == '[MyoroIconTextHoverButton.onPressed] enabled?',
+      ),
       findsOneWidget,
     );
   });

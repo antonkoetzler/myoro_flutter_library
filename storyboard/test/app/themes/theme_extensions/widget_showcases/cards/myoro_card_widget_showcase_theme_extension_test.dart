@@ -9,8 +9,9 @@ void main() {
   late final MyoroCardWidgetShowcaseThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
     themeExtension1 = MyoroCardWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroCardWidgetShowcaseThemeExtension.fake();
   });
@@ -23,10 +24,14 @@ void main() {
           themeExtension2.titleTextStyleOptionTextStyles,
     );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
-    expect(copiedThemeExtension.titleOptionTextAlign,
-        themeExtension2.titleOptionTextAlign);
-    expect(copiedThemeExtension.titleTextStyleOptionTextStyles,
-        themeExtension2.titleTextStyleOptionTextStyles);
+    expect(
+      copiedThemeExtension.titleOptionTextAlign,
+      themeExtension2.titleOptionTextAlign,
+    );
+    expect(
+      copiedThemeExtension.titleTextStyleOptionTextStyles,
+      themeExtension2.titleTextStyleOptionTextStyles,
+    );
   });
 
   test('MyoroCardWidgetShowcaseThemeExtension.lerp', () {
@@ -38,13 +43,19 @@ void main() {
       );
       expect(
         lerpedThemeExtension.titleOptionTextAlign,
-        myoroLerp(themeExtension1.titleOptionTextAlign,
-            themeExtension2.titleOptionTextAlign, i),
+        myoroLerp(
+          themeExtension1.titleOptionTextAlign,
+          themeExtension2.titleOptionTextAlign,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.titleTextStyleOptionTextStyles,
-        myoroLerp(themeExtension1.titleTextStyleOptionTextStyles,
-            themeExtension2.titleTextStyleOptionTextStyles, i),
+        myoroLerp(
+          themeExtension1.titleTextStyleOptionTextStyles,
+          themeExtension2.titleTextStyleOptionTextStyles,
+          i,
+        ),
       );
     }
   });

@@ -96,11 +96,7 @@ final class _Drawer extends StatelessWidget {
   final TextStyle? _titleTextStyle;
   final Widget _child;
 
-  const _Drawer(
-    this._title,
-    this._titleTextStyle,
-    this._child,
-  );
+  const _Drawer(this._title, this._titleTextStyle, this._child);
 
   @override
   Widget build(BuildContext context) {
@@ -116,10 +112,7 @@ final class _Drawer extends StatelessWidget {
           child: Column(
             children: [
               if (_title != null) ...[
-                _Title(
-                  _title,
-                  _titleTextStyle,
-                ),
+                _Title(_title, _titleTextStyle),
                 MyoroBasicDivider(
                   configuration: MyoroBasicDividerConfiguration(
                     direction: Axis.horizontal,
@@ -140,10 +133,7 @@ final class _Title extends StatelessWidget {
   final String _title;
   final TextStyle? _titleTextStyle;
 
-  const _Title(
-    this._title,
-    this._titleTextStyle,
-  );
+  const _Title(this._title, this._titleTextStyle);
 
   @override
   Widget build(BuildContext context) {
@@ -172,9 +162,10 @@ final class _CloseButton extends StatelessWidget {
         primaryColor: themeExtension.closeButtonBackgroundColor,
         bordered: themeExtension.closeButtonBordered,
       ),
-      icon: !_isEndDrawer
-          ? themeExtension.closeButtonDrawerIcon
-          : themeExtension.closeButtonEndDrawerIcon,
+      icon:
+          !_isEndDrawer
+              ? themeExtension.closeButtonDrawerIcon
+              : themeExtension.closeButtonEndDrawerIcon,
       onPressed: () => context.closeDrawer(),
     );
   }

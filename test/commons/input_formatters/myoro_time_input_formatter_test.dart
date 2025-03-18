@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   final controller = TextEditingController();
   final formatTypeNotifier = ValueNotifier<MyoroTimeInputFormatterEnum>(
-      MyoroTimeInputFormatterEnum.mmSs);
+    MyoroTimeInputFormatterEnum.mmSs,
+  );
 
   Future<void> enterText(WidgetTester tester, String text) async {
     await tester.enterText(find.byType(MyoroInput), text);

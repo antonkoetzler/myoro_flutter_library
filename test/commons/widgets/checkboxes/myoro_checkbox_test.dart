@@ -6,17 +6,19 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget test of [MyoroCheckbox].
 void main() {
   setUp(() {
-    MyoroTypographyTheme.textTheme =
-        createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+      faker.randomGenerator.boolean(),
+    );
   });
 
   testWidgets('MyoroCheckbox', (WidgetTester tester) async {
     late final MyoroCheckboxThemeExtension themeExtension;
 
     final String label = faker.lorem.word();
-    final TextStyle? labelTextStyle = faker.randomGenerator.boolean()
-        ? MyoroTypographyTheme.instance.randomTextStyle
-        : null;
+    final TextStyle? labelTextStyle =
+        faker.randomGenerator.boolean()
+            ? MyoroTypographyTheme.instance.randomTextStyle
+            : null;
     final bool initialValue = faker.randomGenerator.boolean();
 
     await tester.pumpWidget(

@@ -15,10 +15,14 @@ void main() {
       centerWidgetBorderRadius: themeExtension2.centerWidgetBorderRadius,
       centerWidgetSize: themeExtension2.centerWidgetSize,
     );
-    expect(copiedThemeExtension.centerWidgetBorderRadius,
-        themeExtension2.centerWidgetBorderRadius);
-    expect(copiedThemeExtension.centerWidgetSize,
-        themeExtension2.centerWidgetSize);
+    expect(
+      copiedThemeExtension.centerWidgetBorderRadius,
+      themeExtension2.centerWidgetBorderRadius,
+    );
+    expect(
+      copiedThemeExtension.centerWidgetSize,
+      themeExtension2.centerWidgetSize,
+    );
   });
 
   test('MyoroPieGraphWidgetShowcaseThemeExtension.lerp', () {
@@ -26,13 +30,19 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.centerWidgetBorderRadius,
-        BorderRadius.lerp(themeExtension1.centerWidgetBorderRadius,
-            themeExtension2.centerWidgetBorderRadius, i),
+        BorderRadius.lerp(
+          themeExtension1.centerWidgetBorderRadius,
+          themeExtension2.centerWidgetBorderRadius,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.centerWidgetSize,
-        lerpDouble(themeExtension1.centerWidgetSize,
-            themeExtension2.centerWidgetSize, i),
+        lerpDouble(
+          themeExtension1.centerWidgetSize,
+          themeExtension2.centerWidgetSize,
+          i,
+        ),
       );
     }
   });

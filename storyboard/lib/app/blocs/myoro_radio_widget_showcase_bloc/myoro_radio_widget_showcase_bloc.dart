@@ -13,18 +13,13 @@ typedef _Emitter = Emitter<MyoroRadioWidgetShowcaseState>;
 final class MyoroRadioWidgetShowcaseBloc
     extends Bloc<MyoroRadioWidgetShowcaseEvent, MyoroRadioWidgetShowcaseState> {
   MyoroRadioWidgetShowcaseBloc()
-      : super(const MyoroRadioWidgetShowcaseState()) {
+    : super(const MyoroRadioWidgetShowcaseState()) {
     on<SetLabelEvent>(_setLabelEvent);
     on<SetLabelTextStyleEvent>(_setLabelTextStyleEvent);
   }
 
   void _setLabelEvent(SetLabelEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        label: event.label,
-        labelEnabled: event.label != null,
-      ),
-    );
+    emit(state.copyWith(label: event.label, labelEnabled: event.label != null));
   }
 
   void _setLabelTextStyleEvent(SetLabelTextStyleEvent event, _Emitter emit) {

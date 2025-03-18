@@ -27,12 +27,15 @@ final class MyoroResizeDividerThemeExtension
   });
 
   MyoroResizeDividerThemeExtension.fake()
-      : secondary = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        resizeButtonShortValue = faker.randomGenerator.decimal(),
-        resizeButtonLongValue = faker.randomGenerator.decimal(),
-        resizeButtonBorderRadius =
-            BorderRadius.circular(faker.randomGenerator.decimal());
+    : secondary =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      resizeButtonShortValue = faker.randomGenerator.decimal(),
+      resizeButtonLongValue = faker.randomGenerator.decimal(),
+      resizeButtonBorderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(),
+      );
 
   @override
   MyoroResizeDividerThemeExtension copyWith({
@@ -60,12 +63,21 @@ final class MyoroResizeDividerThemeExtension
     if (other is! MyoroResizeDividerThemeExtension) return this;
     return copyWith(
       secondary: Color.lerp(secondary, other.secondary, t),
-      resizeButtonShortValue:
-          lerpDouble(resizeButtonShortValue, other.resizeButtonShortValue, t),
-      resizeButtonLongValue:
-          lerpDouble(resizeButtonLongValue, other.resizeButtonLongValue, t),
+      resizeButtonShortValue: lerpDouble(
+        resizeButtonShortValue,
+        other.resizeButtonShortValue,
+        t,
+      ),
+      resizeButtonLongValue: lerpDouble(
+        resizeButtonLongValue,
+        other.resizeButtonLongValue,
+        t,
+      ),
       resizeButtonBorderRadius: BorderRadius.lerp(
-          resizeButtonBorderRadius, other.resizeButtonBorderRadius, t),
+        resizeButtonBorderRadius,
+        other.resizeButtonBorderRadius,
+        t,
+      ),
     );
   }
 }

@@ -4,17 +4,16 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Unit test of [MyoroTableRow].
 void main() {
-  final model =
-      MyoroTableRow.fake(columnQuantity: faker.randomGenerator.integer(100));
+  final model = MyoroTableRow.fake(
+    columnQuantity: faker.randomGenerator.integer(100),
+  );
 
   test('MyoroTableRow.copyWith', () {
-    final newModel =
-        MyoroTableRow.fake(columnQuantity: faker.randomGenerator.integer(100));
+    final newModel = MyoroTableRow.fake(
+      columnQuantity: faker.randomGenerator.integer(100),
+    );
     expect(
-      model.copyWith(
-        onPressed: newModel.onPressed,
-        cells: newModel.cells,
-      ),
+      model.copyWith(onPressed: newModel.onPressed, cells: newModel.cells),
       newModel,
     );
   });

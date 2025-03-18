@@ -24,7 +24,8 @@ final class MyoroCircularLoaderWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroCircularLoaderWidgetShowcaseState(\n'
       '  color: $color,\n'
       '  size: $size,\n'
@@ -32,9 +33,6 @@ final class MyoroCircularLoaderWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      color,
-      size,
-    ];
+    return [color, size];
   }
 }

@@ -93,10 +93,12 @@ final class MyoroTableController<T> {
   /// Sets the ordenated [MyoroTableColumn].
   void setOrdenatedColumn([MyoroTableColumn? column]) {
     if (_ordenatedColumnNotifier.value != null) {
-      removeFilters(_ordenatedColumnNotifier.value!.ordenationCallback!
-          .call()
-          .keys
-          .toList());
+      removeFilters(
+        _ordenatedColumnNotifier.value!.ordenationCallback!
+            .call()
+            .keys
+            .toList(),
+      );
     }
     _ordenatedColumnNotifier.value = column;
     if (column != null) {

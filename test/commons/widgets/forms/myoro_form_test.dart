@@ -7,9 +7,7 @@ void main() {
   testWidgets('MyoroForm', (WidgetTester tester) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
-        child: MyoroForm(
-          builder: (_, __, ___) => const SizedBox.shrink(),
-        ),
+        child: MyoroForm(builder: (_, __, ___) => const SizedBox.shrink()),
       ),
     );
     await tester.pumpAndSettle();

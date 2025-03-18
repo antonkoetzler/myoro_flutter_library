@@ -22,7 +22,9 @@ void main() {
     expect(find.byType(MyoroSearchInput<String>), findsOneWidget);
     expect(
       MyoroCheckbox.finder(
-          label: '[MyoroSearchInput.requestWhenChanged]', labelEnabled: true),
+        label: '[MyoroSearchInput.requestWhenChanged]',
+        labelEnabled: true,
+      ),
       findsOneWidget,
     );
   });

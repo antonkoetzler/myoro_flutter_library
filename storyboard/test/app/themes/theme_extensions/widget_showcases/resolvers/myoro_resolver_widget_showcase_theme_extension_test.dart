@@ -18,7 +18,9 @@ void main() {
     );
     expect(copiedThemeExtension.buttonBordered, themeExtension2.buttonBordered);
     expect(
-        copiedThemeExtension.buttonTextAlign, themeExtension2.buttonTextAlign);
+      copiedThemeExtension.buttonTextAlign,
+      themeExtension2.buttonTextAlign,
+    );
     expect(copiedThemeExtension.spacing, themeExtension2.spacing);
   });
 
@@ -28,12 +30,18 @@ void main() {
       expect(
         lerpedThemeExtension.buttonBordered,
         myoroLerp(
-            themeExtension1.buttonBordered, themeExtension2.buttonBordered, i),
+          themeExtension1.buttonBordered,
+          themeExtension2.buttonBordered,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.buttonTextAlign,
-        myoroLerp(themeExtension1.buttonTextAlign,
-            themeExtension2.buttonTextAlign, i),
+        myoroLerp(
+          themeExtension1.buttonTextAlign,
+          themeExtension2.buttonTextAlign,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.spacing,

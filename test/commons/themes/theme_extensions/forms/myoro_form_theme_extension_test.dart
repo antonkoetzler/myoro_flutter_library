@@ -12,6 +12,8 @@ void main() {
 
   test('MyoroFormThemeExtension.lerp', () {
     themeExtension.lerp(
-        const MyoroFormThemeExtension(), faker.randomGenerator.decimal());
+      const MyoroFormThemeExtension(),
+      faker.randomGenerator.decimal(),
+    );
   });
 }

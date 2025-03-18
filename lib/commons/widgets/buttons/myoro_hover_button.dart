@@ -3,11 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
-typedef MyoroHoverButtonBuilder = Widget Function(
-  bool hovered,
-  Color primaryColor,
-  Color onPrimaryColor,
-);
+typedef MyoroHoverButtonBuilder =
+    Widget Function(bool hovered, Color primaryColor, Color onPrimaryColor);
 
 /// Hover button of the design system.
 ///
@@ -134,12 +131,10 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
 
             return Container(
               decoration: BoxDecoration(
-                border: (_configuration?.bordered ?? themeExtension.bordered)
-                    ? Border.all(
-                        width: 2,
-                        color: onPrimaryColor,
-                      )
-                    : null,
+                border:
+                    (_configuration?.bordered ?? themeExtension.bordered)
+                        ? Border.all(width: 2, color: onPrimaryColor)
+                        : null,
                 borderRadius:
                     _configuration?.borderRadius ?? themeExtension.borderRadius,
                 color: correctedBackgroundColor,

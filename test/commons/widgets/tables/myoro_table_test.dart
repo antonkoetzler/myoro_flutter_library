@@ -23,8 +23,9 @@ void main() {
                 columnQuantity,
                 (_) => MyoroTableColumn.fake(),
               ),
-              rowBuilder: (String item) =>
-                  MyoroTableRow.fake(columnQuantity: columnQuantity),
+              rowBuilder:
+                  (String item) =>
+                      MyoroTableRow.fake(columnQuantity: columnQuantity),
               dataConfiguration: MyoroDataConfiguration(
                 staticItems: List.generate(
                   faker.randomGenerator.integer(100),
@@ -92,7 +93,8 @@ void main() {
                     ? themeExtension.contentPadding.copyWith(top: 0, bottom: 0)
                     : themeExtension.contentPadding) &&
             (((w.child as Column).children.first as Flexible).child as Padding)
-                .child is ValueListenableBuilder<MyoroTableColumn?> &&
+                    .child
+                is ValueListenableBuilder<MyoroTableColumn?> &&
             (w.child as Column).children.last is MyoroBasicDivider &&
             ((w.child as Column).children.last as MyoroBasicDivider)
                     .configuration ==
@@ -115,7 +117,8 @@ void main() {
     // [_TitleColumn].
     expect(
       find.byWidgetPredicate(
-          (Widget w) => w is Padding && w.child is MyoroLayoutBuilder),
+        (Widget w) => w is Padding && w.child is MyoroLayoutBuilder,
+      ),
       findsAtLeastNWidgets(columnQuantity),
     );
     expect(

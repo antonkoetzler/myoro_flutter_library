@@ -31,13 +31,17 @@ final class MyoroSearchInputThemeExtension
   });
 
   MyoroSearchInputThemeExtension.fake()
-      : spacing = faker.randomGenerator.decimal(),
-        searchButtonIcon = kMyoroTestIcons[
-            faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        searchButtonBordered = faker.randomGenerator.boolean(),
-        searchButtonHoverColor = kMyoroTestColors[
-            faker.randomGenerator.integer(kMyoroTestColors.length)],
-        searchButtonLoadingSize = faker.randomGenerator.decimal();
+    : spacing = faker.randomGenerator.decimal(),
+      searchButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      searchButtonBordered = faker.randomGenerator.boolean(),
+      searchButtonHoverColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      searchButtonLoadingSize = faker.randomGenerator.decimal();
 
   @override
   MyoroSearchInputThemeExtension copyWith({
@@ -67,12 +71,21 @@ final class MyoroSearchInputThemeExtension
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       searchButtonIcon: myoroLerp(searchButtonIcon, other.searchButtonIcon, t),
-      searchButtonBordered:
-          myoroLerp(searchButtonBordered, other.searchButtonBordered, t),
-      searchButtonHoverColor:
-          Color.lerp(searchButtonHoverColor, other.searchButtonHoverColor, t),
-      searchButtonLoadingSize:
-          lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
+      searchButtonBordered: myoroLerp(
+        searchButtonBordered,
+        other.searchButtonBordered,
+        t,
+      ),
+      searchButtonHoverColor: Color.lerp(
+        searchButtonHoverColor,
+        other.searchButtonHoverColor,
+        t,
+      ),
+      searchButtonLoadingSize: lerpDouble(
+        searchButtonLoadingSize,
+        other.searchButtonLoadingSize,
+        t,
+      ),
     );
   }
 }

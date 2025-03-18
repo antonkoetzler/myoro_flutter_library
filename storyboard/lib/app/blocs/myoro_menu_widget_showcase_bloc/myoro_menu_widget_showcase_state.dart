@@ -46,7 +46,8 @@ final class MyoroMenuWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroMenuWidgetShowcaseState(\n'
       '  minWidth: $minWidth,\n'
       '  maxWidth: $maxWidth,\n'
@@ -57,12 +58,6 @@ final class MyoroMenuWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      minWidth,
-      maxWidth,
-      minHeight,
-      maxHeight,
-      searchCallbackEnabled,
-    ];
+    return [minWidth, maxWidth, minHeight, maxHeight, searchCallbackEnabled];
   }
 }
