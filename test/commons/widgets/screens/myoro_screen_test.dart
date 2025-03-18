@@ -13,6 +13,11 @@ void main() {
       find.byType(InheritedProvider<MyoroDrawerController>),
       findsOneWidget,
     );
-    expect(find.byType(Scaffold), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) => w is SafeArea && w.child is Scaffold,
+      ),
+      findsOneWidget,
+    );
   });
 }

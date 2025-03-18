@@ -11,7 +11,7 @@ void main() async {
 
   // Window constraints initialization.
   windowManager.ensureInitialized();
-  windowManager.setMinimumSize(const Size(1000, 1000));
+  windowManager.setMinimumSize(const Size(600, 600));
 
   // Shared preferences initialization (to save theme state).
   final kiwiContainer = KiwiContainer();

@@ -69,12 +69,14 @@ final class _MyoroScreenState extends State<MyoroScreen> {
 
     return InheritedProvider.value(
       value: _drawerController,
-      child: Scaffold(
-        key: _drawerController.scaffoldKey,
-        appBar: _appBar,
-        body: _body,
-        drawer: drawer,
-        endDrawer: drawer,
+      child: SafeArea(
+        child: Scaffold(
+          key: _drawerController.scaffoldKey,
+          appBar: _appBar,
+          body: _body,
+          drawer: drawer,
+          endDrawer: drawer,
+        ),
       ),
     );
   }
