@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroCarousel].
-final class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension> {
+final class MyoroCarouselThemeExtension
+    extends ThemeExtension<MyoroCarouselThemeExtension> {
   /// [MyoroIconTextHoverButton.bordered] of [_TraversalButton].
   final bool traversalButtonBordered;
 
@@ -21,8 +22,10 @@ final class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThem
 
   MyoroCarouselThemeExtension.fake()
       : traversalButtonBordered = faker.randomGenerator.boolean(),
-        previousItemButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        nextItemButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+        previousItemButtonIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        nextItemButtonIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   @override
   MyoroCarouselThemeExtension copyWith({
@@ -31,8 +34,10 @@ final class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThem
     IconData? nextItemButtonIcon,
   }) {
     return MyoroCarouselThemeExtension(
-      traversalButtonBordered: traversalButtonBordered ?? this.traversalButtonBordered,
-      previousItemButtonIcon: previousItemButtonIcon ?? this.previousItemButtonIcon,
+      traversalButtonBordered:
+          traversalButtonBordered ?? this.traversalButtonBordered,
+      previousItemButtonIcon:
+          previousItemButtonIcon ?? this.previousItemButtonIcon,
       nextItemButtonIcon: nextItemButtonIcon ?? this.nextItemButtonIcon,
     );
   }
@@ -44,9 +49,12 @@ final class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThem
   ) {
     if (other is! MyoroCarouselThemeExtension) return this;
     return copyWith(
-      traversalButtonBordered: myoroLerp(traversalButtonBordered, other.traversalButtonBordered, t),
-      previousItemButtonIcon: myoroLerp(previousItemButtonIcon, other.previousItemButtonIcon, t),
-      nextItemButtonIcon: myoroLerp(nextItemButtonIcon, other.nextItemButtonIcon, t),
+      traversalButtonBordered:
+          myoroLerp(traversalButtonBordered, other.traversalButtonBordered, t),
+      previousItemButtonIcon:
+          myoroLerp(previousItemButtonIcon, other.previousItemButtonIcon, t),
+      nextItemButtonIcon:
+          myoroLerp(nextItemButtonIcon, other.nextItemButtonIcon, t),
     );
   }
 }

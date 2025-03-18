@@ -6,22 +6,27 @@ import 'package:storyboard/app/blocs/myoro_hover_button_widget_showcase_bloc/myo
 
 /// Unit test of [MyoroHoverButtonWidgetShowcaseBloc].
 void main() {
-  final Color primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
-  final Color onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
-  final double? borderRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final Color primaryColor =
+      kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final Color onPrimaryColor =
+      kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final double? borderRadius =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   blocTest(
     'MyoroHoverButtonWidgetShowcaseBloc.SetPrimaryColorEvent',
     build: () => MyoroHoverButtonWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetPrimaryColorEvent(primaryColor)),
-    expect: () => [MyoroHoverButtonWidgetShowcaseState(primaryColor: primaryColor)],
+    expect: () =>
+        [MyoroHoverButtonWidgetShowcaseState(primaryColor: primaryColor)],
   );
 
   blocTest(
     'MyoroHoverButtonWidgetShowcaseBloc.SetOnPrimaryColorEvent',
     build: () => MyoroHoverButtonWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetOnPrimaryColorEvent(onPrimaryColor)),
-    expect: () => [MyoroHoverButtonWidgetShowcaseState(onPrimaryColor: onPrimaryColor)],
+    expect: () =>
+        [MyoroHoverButtonWidgetShowcaseState(onPrimaryColor: onPrimaryColor)],
   );
 
   blocTest(
@@ -52,7 +57,8 @@ void main() {
     act: (bloc) => bloc.add(SetBorderRadiusEvent(borderRadius)),
     expect: () => [
       MyoroHoverButtonWidgetShowcaseState(
-        borderRadius: borderRadius == null ? null : BorderRadius.circular(borderRadius),
+        borderRadius:
+            borderRadius == null ? null : BorderRadius.circular(borderRadius),
       ),
     ],
   );
@@ -63,7 +69,8 @@ void main() {
     act: (bloc) => bloc.add(const SetTooltipEnabledEvent()),
     expect: () => [
       MyoroHoverButtonWidgetShowcaseState(
-        tooltipEnabled: !const MyoroHoverButtonWidgetShowcaseState().tooltipEnabled,
+        tooltipEnabled:
+            !const MyoroHoverButtonWidgetShowcaseState().tooltipEnabled,
       ),
     ],
   );
@@ -74,7 +81,8 @@ void main() {
     act: (bloc) => bloc.add(const SetOnPressedEnabledEvent()),
     expect: () => [
       MyoroHoverButtonWidgetShowcaseState(
-        onPressedEnabled: !const MyoroHoverButtonWidgetShowcaseState().onPressedEnabled,
+        onPressedEnabled:
+            !const MyoroHoverButtonWidgetShowcaseState().onPressedEnabled,
       ),
     ],
   );

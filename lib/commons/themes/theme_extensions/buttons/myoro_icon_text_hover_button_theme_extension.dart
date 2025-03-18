@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroIconTextHoverButton].
-final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroIconTextHoverButtonThemeExtension> {
+final class MyoroIconTextHoverButtonThemeExtension
+    extends ThemeExtension<MyoroIconTextHoverButtonThemeExtension> {
   /// [MyoroColorTheme.primary] by default.
   final Color primaryColor;
 
@@ -42,14 +43,19 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   });
 
   MyoroIconTextHoverButtonThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        contentPadding = EdgeInsets.all(faker.randomGenerator.integer(50).toDouble()),
+      : primaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        onPrimaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        contentPadding =
+            EdgeInsets.all(faker.randomGenerator.integer(50).toDouble()),
         textStyle = MyoroTypographyTheme.instance.randomTextStyle,
         textMaxLines = faker.randomGenerator.integer(5),
-        textOverflow = TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)],
+        textOverflow = TextOverflow
+            .values[faker.randomGenerator.integer(TextOverflow.values.length)],
         spacing = faker.randomGenerator.decimal(),
-        mainAxisAlignment = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)];
+        mainAxisAlignment = MainAxisAlignment.values[
+            faker.randomGenerator.integer(MainAxisAlignment.values.length)];
 
   @override
   MyoroIconTextHoverButtonThemeExtension copyWith({
@@ -85,10 +91,13 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       onPrimaryColor: Color.lerp(onPrimaryColor, other.onPrimaryColor, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      textMaxLines: lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)?.toInt(),
+      textMaxLines:
+          lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)
+              ?.toInt(),
       textOverflow: myoroLerp(textOverflow, other.textOverflow, t),
       spacing: lerpDouble(spacing, other.spacing, t),
-      mainAxisAlignment: myoroLerp(mainAxisAlignment, other.mainAxisAlignment, t),
+      mainAxisAlignment:
+          myoroLerp(mainAxisAlignment, other.mainAxisAlignment, t),
     );
   }
 }

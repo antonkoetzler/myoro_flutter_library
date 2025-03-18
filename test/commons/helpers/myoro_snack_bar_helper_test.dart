@@ -21,7 +21,8 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      MyoroSnackBarHelper.showSnackBar(context, snackBar: MyoroSnackBar(message: 'Hello, World!'));
+      MyoroSnackBarHelper.showSnackBar(context,
+          snackBar: MyoroSnackBar(message: 'Hello, World!'));
       await tester.pumpAndSettle();
       expect(find.byType(MyoroSnackBar), findsOneWidget);
 

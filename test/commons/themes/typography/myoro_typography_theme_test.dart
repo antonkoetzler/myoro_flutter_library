@@ -5,7 +5,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Unit test of [MyoroTypographyTheme].
 void main() {
-  final TextTheme textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+  final TextTheme textTheme =
+      createMyoroTextTheme(faker.randomGenerator.boolean());
 
   test('MyoroTypographyTheme.instance', () {
     // Assertion error when [MyoroTypographyTheme.textTheme] isn't set.
@@ -15,7 +16,8 @@ void main() {
   });
 
   test('MyoroTypographyTheme.allTextStyles', () {
-    final List<TextStyle> allTextStyles = MyoroTypographyTheme.instance.allTextStyles;
+    final List<TextStyle> allTextStyles =
+        MyoroTypographyTheme.instance.allTextStyles;
     expect(allTextStyles.length, 15);
     expect(allTextStyles.contains(textTheme.bodySmall), isTrue);
     expect(allTextStyles.contains(textTheme.bodyMedium), isTrue);
@@ -36,22 +38,38 @@ void main() {
 
   test('MyoroTypographyTheme.getTextStyleName', () {
     final instance = MyoroTypographyTheme.instance;
-    expect(instance.getTextStyleName(instance.regularSmall), MyoroTypographyTheme.regularSmallName);
-    expect(instance.getTextStyleName(instance.regularMedium), MyoroTypographyTheme.regularMediumName);
-    expect(instance.getTextStyleName(instance.regularLarge), MyoroTypographyTheme.regularLargeName);
-    expect(instance.getTextStyleName(instance.italicSmall), MyoroTypographyTheme.italicSmallName);
-    expect(instance.getTextStyleName(instance.italicMedium), MyoroTypographyTheme.italicMediumName);
-    expect(instance.getTextStyleName(instance.italicLarge), MyoroTypographyTheme.italicLargeName);
-    expect(instance.getTextStyleName(instance.semiBoldSmall), MyoroTypographyTheme.semiBoldSmallName);
-    expect(instance.getTextStyleName(instance.semiBoldMedium), MyoroTypographyTheme.semiBoldMediumName);
-    expect(instance.getTextStyleName(instance.semiBoldLarge), MyoroTypographyTheme.semiBoldLargeName);
-    expect(instance.getTextStyleName(instance.boldSmall), MyoroTypographyTheme.boldSmallName);
-    expect(instance.getTextStyleName(instance.boldMedium), MyoroTypographyTheme.boldMediumName);
-    expect(instance.getTextStyleName(instance.boldLarge), MyoroTypographyTheme.boldLargeName);
-    expect(instance.getTextStyleName(instance.extraBoldSmall), MyoroTypographyTheme.extraBoldSmallName);
-    expect(instance.getTextStyleName(instance.extraBoldMedium), MyoroTypographyTheme.extraBoldMediumName);
-    expect(instance.getTextStyleName(instance.extraBoldLarge), MyoroTypographyTheme.extraBoldLargeName);
-    expect(() => instance.getTextStyleName(const TextStyle()), throwsAssertionError);
+    expect(instance.getTextStyleName(instance.regularSmall),
+        MyoroTypographyTheme.regularSmallName);
+    expect(instance.getTextStyleName(instance.regularMedium),
+        MyoroTypographyTheme.regularMediumName);
+    expect(instance.getTextStyleName(instance.regularLarge),
+        MyoroTypographyTheme.regularLargeName);
+    expect(instance.getTextStyleName(instance.italicSmall),
+        MyoroTypographyTheme.italicSmallName);
+    expect(instance.getTextStyleName(instance.italicMedium),
+        MyoroTypographyTheme.italicMediumName);
+    expect(instance.getTextStyleName(instance.italicLarge),
+        MyoroTypographyTheme.italicLargeName);
+    expect(instance.getTextStyleName(instance.semiBoldSmall),
+        MyoroTypographyTheme.semiBoldSmallName);
+    expect(instance.getTextStyleName(instance.semiBoldMedium),
+        MyoroTypographyTheme.semiBoldMediumName);
+    expect(instance.getTextStyleName(instance.semiBoldLarge),
+        MyoroTypographyTheme.semiBoldLargeName);
+    expect(instance.getTextStyleName(instance.boldSmall),
+        MyoroTypographyTheme.boldSmallName);
+    expect(instance.getTextStyleName(instance.boldMedium),
+        MyoroTypographyTheme.boldMediumName);
+    expect(instance.getTextStyleName(instance.boldLarge),
+        MyoroTypographyTheme.boldLargeName);
+    expect(instance.getTextStyleName(instance.extraBoldSmall),
+        MyoroTypographyTheme.extraBoldSmallName);
+    expect(instance.getTextStyleName(instance.extraBoldMedium),
+        MyoroTypographyTheme.extraBoldMediumName);
+    expect(instance.getTextStyleName(instance.extraBoldLarge),
+        MyoroTypographyTheme.extraBoldLargeName);
+    expect(() => instance.getTextStyleName(const TextStyle()),
+        throwsAssertionError);
   });
 
   test('MyoroTypographyTheme.randomTextStyle', () {

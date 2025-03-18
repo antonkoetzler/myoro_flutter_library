@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroPieGraph].
-final class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension> {
+final class MyoroPieGraphThemeExtension
+    extends ThemeExtension<MyoroPieGraphThemeExtension> {
   /// Default color of an item.
   final Color itemColor;
 
@@ -18,7 +19,8 @@ final class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThem
   });
 
   MyoroPieGraphThemeExtension.fake()
-      : itemColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      : itemColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
         itemRadius = faker.randomGenerator.decimal();
 
   @override

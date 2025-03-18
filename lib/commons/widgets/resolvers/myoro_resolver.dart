@@ -86,7 +86,8 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
 
   MyoroResolverController? _localController;
   MyoroResolverController get _controller {
-    return widget.controller ?? (_localController ??= MyoroResolverController());
+    return widget.controller ??
+        (_localController ??= MyoroResolverController());
   }
 
   late final MyoroResolverBloc<T> _bloc;

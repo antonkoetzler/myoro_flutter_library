@@ -19,7 +19,9 @@ void main() {
     required bool isDarkMode,
     List<ThemeExtension> themeExtensions = const [],
   }) {
-    final themeData = createMyoroThemeData(themeExtensions.isNotEmpty ? (_, __) => themeExtensions : null, isDarkMode: isDarkMode);
+    final themeData = createMyoroThemeData(
+        themeExtensions.isNotEmpty ? (_, __) => themeExtensions : null,
+        isDarkMode: isDarkMode);
 
     final colorScheme = createMyoroColorScheme(isDarkMode);
     final textTheme = createMyoroTextTheme(isDarkMode);
@@ -41,13 +43,16 @@ void main() {
     expect(themeData.textTheme, themeData.textTheme);
     expect(themeData.sliderTheme, comparisonThemeData.sliderTheme);
     expect(themeData.tooltipTheme, comparisonThemeData.tooltipTheme);
-    expect(themeData.textSelectionTheme, comparisonThemeData.textSelectionTheme);
+    expect(
+        themeData.textSelectionTheme, comparisonThemeData.textSelectionTheme);
     expect(themeData.extensions.length, comparisonThemeData.extensions.length);
   }
 
   test('createMyoroThemeData', () {
     createAndExpectThemeData(isDarkMode: true);
     createAndExpectThemeData(isDarkMode: false);
-    createAndExpectThemeData(isDarkMode: faker.randomGenerator.boolean(), themeExtensions: const [_FooThemeExtension()]);
+    createAndExpectThemeData(
+        isDarkMode: faker.randomGenerator.boolean(),
+        themeExtensions: const [_FooThemeExtension()]);
   });
 }

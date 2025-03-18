@@ -16,7 +16,8 @@ void main() {
           create: (_) => WidgetShowcaseBloc(),
           child: Builder(
             builder: (BuildContext context) {
-              themeExtension = context.resolveThemeExtension<StoryboardAppBarThemeExtension>();
+              themeExtension = context
+                  .resolveThemeExtension<StoryboardAppBarThemeExtension>();
               return const StoryboardAppBar();
             },
           ),
@@ -34,10 +35,12 @@ void main() {
             w.crossAxisAlignment == CrossAxisAlignment.start &&
             w.children.length == 2 &&
             w.children.first is Text &&
-            (w.children.first as Text).data == 'myoro_flutter_library storyboard' &&
+            (w.children.first as Text).data ==
+                'myoro_flutter_library storyboard' &&
             (w.children.first as Text).overflow == TextOverflow.ellipsis &&
             (w.children.first as Text).style == themeExtension.titleTextStyle &&
-            (w.children.last as Text).data == 'Used for testing/visualizing widgets and the design system' &&
+            (w.children.last as Text).data ==
+                'Used for testing/visualizing widgets and the design system' &&
             (w.children.last as Text).overflow == TextOverflow.ellipsis &&
             (w.children.last as Text).style == themeExtension.subtitleTextStyle,
       ),
@@ -45,7 +48,10 @@ void main() {
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Wrap && w.spacing == themeExtension.buttonSpacing && w.children.length == 2,
+        (Widget w) =>
+            w is Wrap &&
+            w.spacing == themeExtension.buttonSpacing &&
+            w.children.length == 2,
       ),
       findsOneWidget,
     );

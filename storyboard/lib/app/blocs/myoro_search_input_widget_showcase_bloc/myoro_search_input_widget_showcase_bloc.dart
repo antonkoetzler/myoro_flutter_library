@@ -10,12 +10,15 @@ part 'myoro_search_input_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroSearchInputWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroSearchInputWidgetShowcase].
-final class MyoroSearchInputWidgetShowcaseBloc extends Bloc<MyoroSearchInputWidgetShowcaseEvent, MyoroSearchInputWidgetShowcaseState> {
-  MyoroSearchInputWidgetShowcaseBloc() : super(const MyoroSearchInputWidgetShowcaseState()) {
+final class MyoroSearchInputWidgetShowcaseBloc extends Bloc<
+    MyoroSearchInputWidgetShowcaseEvent, MyoroSearchInputWidgetShowcaseState> {
+  MyoroSearchInputWidgetShowcaseBloc()
+      : super(const MyoroSearchInputWidgetShowcaseState()) {
     on<SetRequestWhenChangedEvent>(_setRequestWhenChangedEvent);
   }
 
-  void _setRequestWhenChangedEvent(SetRequestWhenChangedEvent event, _Emitter emit) {
+  void _setRequestWhenChangedEvent(
+      SetRequestWhenChangedEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         requestWhenChanged: event.requestWhenChanged,

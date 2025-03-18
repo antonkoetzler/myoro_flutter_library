@@ -10,8 +10,10 @@ part 'myoro_drawer_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroDrawerWidgetShowcaseState>;
 
 /// BLoC to manage the state in [MyoroDrawerWidgetShowcase].
-final class MyoroDrawerWidgetShowcaseBloc extends Bloc<MyoroDrawerWidgetShowcaseEvent, MyoroDrawerWidgetShowcaseState> {
-  MyoroDrawerWidgetShowcaseBloc() : super(const MyoroDrawerWidgetShowcaseState()) {
+final class MyoroDrawerWidgetShowcaseBloc extends Bloc<
+    MyoroDrawerWidgetShowcaseEvent, MyoroDrawerWidgetShowcaseState> {
+  MyoroDrawerWidgetShowcaseBloc()
+      : super(const MyoroDrawerWidgetShowcaseState()) {
     on<SetTitleEvent>(_setTitleEvent);
     on<SetTitleTextStyleEvent>(_setTitleTextStyleEvent);
     on<SetShowCloseButtonEvent>(_setShowCloseButtonEvent);
@@ -44,7 +46,8 @@ final class MyoroDrawerWidgetShowcaseBloc extends Bloc<MyoroDrawerWidgetShowcase
     );
   }
 
-  void _setBarrierDismissableEvent(SetBarrierDismissableEvent event, _Emitter emit) {
+  void _setBarrierDismissableEvent(
+      SetBarrierDismissableEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         barrierDismissable: event.barrierDismissable,

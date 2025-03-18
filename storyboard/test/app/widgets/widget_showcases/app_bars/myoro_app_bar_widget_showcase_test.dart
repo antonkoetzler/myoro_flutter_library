@@ -16,7 +16,8 @@ void main() {
           create: (_) => WidgetShowcaseBloc(),
           child: Builder(
             builder: (BuildContext context) {
-              themeExtension = context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>();
+              themeExtension = context.resolveThemeExtension<
+                  MyoroAppBarWidgetShowcaseThemeExtension>();
 
               return const MyoroAppBarWidgetShowcase();
             },
@@ -37,14 +38,24 @@ void main() {
             w.child is SizedBox &&
             (w.child as SizedBox).width == double.infinity &&
             (w.child as SizedBox).child is Wrap &&
-            ((w.child as SizedBox).child as Wrap).alignment == WrapAlignment.spaceBetween &&
+            ((w.child as SizedBox).child as Wrap).alignment ==
+                WrapAlignment.spaceBetween &&
             ((w.child as SizedBox).child as Wrap).children.length == 2 &&
             ((w.child as SizedBox).child as Wrap).children.first is Row &&
-            (((w.child as SizedBox).child as Wrap).children.first as Row).mainAxisSize == MainAxisSize.min &&
-            (((w.child as SizedBox).child as Wrap).children.first as Row).children.length == 3 &&
+            (((w.child as SizedBox).child as Wrap).children.first as Row)
+                    .mainAxisSize ==
+                MainAxisSize.min &&
+            (((w.child as SizedBox).child as Wrap).children.first as Row)
+                    .children
+                    .length ==
+                3 &&
             // (((w.child as SizedBox).child as Wrap).children.first as Row).children.first is _MockAppLogo &&
-            (((w.child as SizedBox).child as Wrap).children.first as Row).children[1] is SizedBox &&
-            ((((w.child as SizedBox).child as Wrap).children.first as Row).children[1] as SizedBox).width == themeExtension.logoTitleSpacing,
+            (((w.child as SizedBox).child as Wrap).children.first as Row)
+                .children[1] is SizedBox &&
+            ((((w.child as SizedBox).child as Wrap).children.first as Row)
+                        .children[1] as SizedBox)
+                    .width ==
+                themeExtension.logoTitleSpacing,
         // (((w.child as SizedBox).child as Wrap).children.first as Row).children.last is _MockAppTitle &&
         // ((w.child as SizedBox).child as Wrap).children.last is _MockMenuButton,
       ),
@@ -54,7 +65,10 @@ void main() {
     // [_MockAppLogo].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Icon && w.icon == themeExtension.mockAppLogoIcon && w.size == 30,
+        (Widget w) =>
+            w is Icon &&
+            w.icon == themeExtension.mockAppLogoIcon &&
+            w.size == 30,
       ),
       findsOneWidget,
     );
@@ -62,7 +76,10 @@ void main() {
     // [_MockAppTitle].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Text && w.data == 'Hello, World!' && w.style == themeExtension.mockAppTitleTextStyle,
+        (Widget w) =>
+            w is Text &&
+            w.data == 'Hello, World!' &&
+            w.style == themeExtension.mockAppTitleTextStyle,
       ),
       findsOneWidget,
     );
@@ -73,7 +90,8 @@ void main() {
         (Widget w) =>
             w is IntrinsicWidth &&
             w.child is MyoroIconTextHoverButton &&
-            (w.child as MyoroIconTextHoverButton).icon == themeExtension.mockMenuButtonIcon &&
+            (w.child as MyoroIconTextHoverButton).icon ==
+                themeExtension.mockMenuButtonIcon &&
             (w.child as MyoroIconTextHoverButton).onPressed != null,
       ),
       findsOneWidget,
@@ -82,7 +100,10 @@ void main() {
     // [_Bordered].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[MyoroAppBar.bordered]' && w.onChanged != null,
+        (Widget w) =>
+            w is MyoroCheckbox &&
+            w.label == '[MyoroAppBar.bordered]' &&
+            w.onChanged != null,
       ),
       findsOneWidget,
     );

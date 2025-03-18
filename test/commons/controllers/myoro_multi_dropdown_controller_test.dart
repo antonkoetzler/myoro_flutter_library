@@ -8,7 +8,8 @@ void main() {
 
   test('MyoroMultiDropdownController\'s constructor', () {
     // No preset values
-    MyoroMultiDropdownController<int> controller = MyoroMultiDropdownController();
+    MyoroMultiDropdownController<int> controller =
+        MyoroMultiDropdownController();
     expect(controller.selectedItems.isEmpty, isTrue);
     controller.dispose();
 
@@ -18,13 +19,17 @@ void main() {
   });
 
   test('MyoroMultiDropdownController.selectItems', () {
-    MyoroMultiDropdownController<int> controller = MyoroMultiDropdownController();
+    MyoroMultiDropdownController<int> controller =
+        MyoroMultiDropdownController();
     controller.selectItems(presetValues);
     expect(controller.selectedItems.length, presetValues.length);
     controller.dispose();
 
     controller = MyoroMultiDropdownController();
-    controller.selectItems([...presetValues, 10]); // 10 repeated, should be converted to a set and removed.
+    controller.selectItems([
+      ...presetValues,
+      10
+    ]); // 10 repeated, should be converted to a set and removed.
     expect(controller.selectedItems.length, presetValues.length);
     controller.selectItems(presetValues); // Should add nothing.
     expect(controller.selectedItems.length, presetValues.length);
@@ -40,7 +45,8 @@ void main() {
 
     final originalLength = controller.selectedItems.length;
     controller.deselectItems(randomPresetValues.toList());
-    expect(controller.selectedItems.length, originalLength - randomPresetValues.length);
+    expect(controller.selectedItems.length,
+        originalLength - randomPresetValues.length);
 
     controller.clear();
     controller.deselectItems(presetValues);

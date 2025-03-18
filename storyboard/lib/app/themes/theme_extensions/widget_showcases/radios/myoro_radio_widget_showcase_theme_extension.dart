@@ -3,7 +3,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroRadioWidgetShowcase].
-final class MyoroRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroRadioWidgetShowcaseThemeExtension> {
+final class MyoroRadioWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroRadioWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -11,7 +12,8 @@ final class MyoroRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroR
     required this.inputStyle,
   });
 
-  MyoroRadioWidgetShowcaseThemeExtension.fake() : inputStyle = MyoroInputStyleEnum.fake();
+  MyoroRadioWidgetShowcaseThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroRadioWidgetShowcaseThemeExtension copyWith({

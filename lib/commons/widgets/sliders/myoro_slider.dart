@@ -85,9 +85,16 @@ final class MyoroSlider extends StatefulWidget {
           (initialValueEnabled ? w.initialValue == initialValue : true) &&
           (minValueEnabled ? w.minValue == minValue : true) &&
           (maxValueEnabled ? w.maxValue == maxValue : true) &&
-          (currentValueIndicatorTextBuilderEnabled ? w.currentValueIndicatorTextBuilder == currentValueIndicatorTextBuilder : true) &&
-          (maxValueIndicatorTextBuilderEnabled ? w.maxValueIndicatorTextBuilder == maxValueIndicatorTextBuilder : true) &&
-          (footerValueIndicatorTextBuilderEnabled ? w.footerIndicatorTextBuilder == footerValueIndicatorTextBuilder : true) &&
+          (currentValueIndicatorTextBuilderEnabled
+              ? w.currentValueIndicatorTextBuilder ==
+                  currentValueIndicatorTextBuilder
+              : true) &&
+          (maxValueIndicatorTextBuilderEnabled
+              ? w.maxValueIndicatorTextBuilder == maxValueIndicatorTextBuilder
+              : true) &&
+          (footerValueIndicatorTextBuilderEnabled
+              ? w.footerIndicatorTextBuilder == footerValueIndicatorTextBuilder
+              : true) &&
           (onChangedEnabled ? w.onChanged == onChanged : true),
     );
   }
@@ -103,9 +110,12 @@ final class _MyoroSliderState extends State<MyoroSlider> {
   double get _initialValue => widget.initialValue ?? _minValue;
   double get _minValue => widget.minValue ?? 0;
   double get _maxValue => widget.maxValue ?? 1;
-  MyoroSliderIndicatorTextBuilder? get _currentValueIndicatorTextBuilder => widget.currentValueIndicatorTextBuilder;
-  MyoroSliderIndicatorTextBuilder? get _maxValueIndicatorTextBuilder => widget.maxValueIndicatorTextBuilder;
-  MyoroSliderIndicatorTextBuilder? get _footerIndicatorTextBuilder => widget.footerIndicatorTextBuilder;
+  MyoroSliderIndicatorTextBuilder? get _currentValueIndicatorTextBuilder =>
+      widget.currentValueIndicatorTextBuilder;
+  MyoroSliderIndicatorTextBuilder? get _maxValueIndicatorTextBuilder =>
+      widget.maxValueIndicatorTextBuilder;
+  MyoroSliderIndicatorTextBuilder? get _footerIndicatorTextBuilder =>
+      widget.footerIndicatorTextBuilder;
 
   late final _sliderValueNotifier = ValueNotifier<double>(_initialValue);
 
@@ -128,7 +138,8 @@ final class _MyoroSliderState extends State<MyoroSlider> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSliderThemeExtension>();
     final sliderPadding = themeExtension.sliderPadding;
 
     return SizedBox(
@@ -195,7 +206,10 @@ final class _Label extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _label,
-      style: _labelTextStyle ?? context.resolveThemeExtension<MyoroSliderThemeExtension>().labelTextStyle,
+      style: _labelTextStyle ??
+          context
+              .resolveThemeExtension<MyoroSliderThemeExtension>()
+              .labelTextStyle,
     );
   }
 }
@@ -208,12 +222,14 @@ final class _IndicatorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
     return Text(
       _text,
       textAlign: themeExtension.indicatorTextAlignment,
-      style: themeExtension.indicatorTextStyle.copyWith(height: isFooter ? 0 : 0.5),
+      style: themeExtension.indicatorTextStyle
+          .copyWith(height: isFooter ? 0 : 0.5),
     );
   }
 }

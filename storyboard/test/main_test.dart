@@ -13,7 +13,8 @@ final class MockSharedPreferences extends Mock implements SharedPreferences {}
 void main() {
   final kiwiContainer = KiwiContainer();
 
-  setUp(() => kiwiContainer.registerSingleton<SharedPreferences>((_) => MockSharedPreferences()));
+  setUp(() => kiwiContainer
+      .registerSingleton<SharedPreferences>((_) => MockSharedPreferences()));
   tearDown(() => kiwiContainer.clear());
 
   testWidgets('App', (WidgetTester tester) async {

@@ -5,8 +5,11 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroMaterialApp].
 void main() {
-  final String? title = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
-  final ThemeMode? themeMode = faker.randomGenerator.boolean() ? ThemeMode.values[faker.randomGenerator.integer(ThemeMode.values.length)] : null;
+  final String? title =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final ThemeMode? themeMode = faker.randomGenerator.boolean()
+      ? ThemeMode.values[faker.randomGenerator.integer(ThemeMode.values.length)]
+      : null;
 
   testWidgets('MyoroMaterialApp', (WidgetTester tester) async {
     await tester.pumpWidget(

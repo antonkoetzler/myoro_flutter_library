@@ -14,7 +14,8 @@ void main() {
         themeExtensionsBuilder: createStoryboardThemeExtensions,
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>();
+            themeExtension = context.resolveThemeExtension<
+                MyoroDrawerWidgetShowcaseThemeExtension>();
 
             return BlocProvider(
               create: (_) => WidgetShowcaseBloc(),
@@ -35,8 +36,10 @@ void main() {
         (Widget w) =>
             w is IntrinsicWidth &&
             w.child is MyoroIconTextHoverButton &&
-            (w.child as MyoroIconTextHoverButton).configuration?.bordered == true &&
-            (w.child as MyoroIconTextHoverButton).text == 'Click to launch the drawer.' &&
+            (w.child as MyoroIconTextHoverButton).configuration?.bordered ==
+                true &&
+            (w.child as MyoroIconTextHoverButton).text ==
+                'Click to launch the drawer.' &&
             (w.child as MyoroIconTextHoverButton).onPressed != null,
       ),
       findsOneWidget,
@@ -56,7 +59,9 @@ void main() {
     // [_TitleTextStyleOption].
     expect(
       find.byWidgetPredicate((Widget w) {
-        return w is SizedBox && w.width == 210 && w.child is MyoroSingularDropdown<TextStyle>;
+        return w is SizedBox &&
+            w.width == 210 &&
+            w.child is MyoroSingularDropdown<TextStyle>;
       }),
       findsOneWidget,
     );

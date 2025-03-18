@@ -10,8 +10,10 @@ part 'myoro_modal_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroModalWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroModalWidgetShowcase].
-final class MyoroModalWidgetShowcaseBloc extends Bloc<MyoroModalWidgetShowcaseEvent, MyoroModalWidgetShowcaseState> {
-  MyoroModalWidgetShowcaseBloc() : super(const MyoroModalWidgetShowcaseState()) {
+final class MyoroModalWidgetShowcaseBloc
+    extends Bloc<MyoroModalWidgetShowcaseEvent, MyoroModalWidgetShowcaseState> {
+  MyoroModalWidgetShowcaseBloc()
+      : super(const MyoroModalWidgetShowcaseState()) {
     on<SetBarrierDismissableEvent>(_setBarrierDismissableEvent);
     on<SetMinWidthEvent>(_setMinWidthEvent);
     on<SetMaxWidthEvent>(_setMaxWidthEvent);
@@ -21,7 +23,8 @@ final class MyoroModalWidgetShowcaseBloc extends Bloc<MyoroModalWidgetShowcaseEv
     on<SetShowCloseButtonEvent>(_setShowCloseButtonEvent);
   }
 
-  void _setBarrierDismissableEvent(SetBarrierDismissableEvent event, _Emitter emit) {
+  void _setBarrierDismissableEvent(
+      SetBarrierDismissableEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         barrierDismissable: event.barrierDismissable,

@@ -23,7 +23,8 @@ void main() {
   }
 
   testWidgets('WidgetShowcase', (WidgetTester tester) async {
-    final widgetOptions = List.generate(faker.randomGenerator.integer(100), (_) => const SizedBox.shrink());
+    final widgetOptions = List.generate(
+        faker.randomGenerator.integer(100), (_) => const SizedBox.shrink());
     late final WidgetShowcaseThemeExtension themeExtension;
 
     await tester.pumpWidget(
@@ -33,7 +34,8 @@ void main() {
           create: (_) => WidgetShowcaseBloc(),
           child: Builder(
             builder: (BuildContext context) {
-              themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+              themeExtension =
+                  context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
               return WidgetShowcase(
                 widget: const SizedBox.shrink(),
@@ -51,7 +53,11 @@ void main() {
     // [WidgetShowcase].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Row && w.crossAxisAlignment == CrossAxisAlignment.start && w.children.length == 3 && w.children.first is Expanded,
+        (Widget w) =>
+            w is Row &&
+            w.crossAxisAlignment == CrossAxisAlignment.start &&
+            w.children.length == 3 &&
+            w.children.first is Expanded,
         // (w.children.first as Expanded).child is _WidgetWrapper &&
         // w.children[1] is _Divider &&
         // w.children.last is _WidgetOptions,
@@ -69,7 +75,8 @@ void main() {
             w is Padding &&
             w.padding == themeExtension.widgetWrapperPadding &&
             w.child is Container &&
-            (w.child as Container).alignment == themeExtension.widgetWrapperAlignment &&
+            (w.child as Container).alignment ==
+                themeExtension.widgetWrapperAlignment &&
             (w.child as Container).decoration ==
                 BoxDecoration(
                   color: themeExtension.widgetWrapperBackgroundColor,
@@ -77,8 +84,10 @@ void main() {
                   border: themeExtension.widgetWrapperBorder,
                 ) &&
             (w.child as Container).child is Padding &&
-            ((w.child as Container).child as Padding).padding == themeExtension.widgetWrapperContentPadding &&
-            ((w.child as Container).child as Padding).child is SizedBox, // SizedBox.shrink inserted in this test.
+            ((w.child as Container).child as Padding).padding ==
+                themeExtension.widgetWrapperContentPadding &&
+            ((w.child as Container).child as Padding).child
+                is SizedBox, // SizedBox.shrink inserted in this test.
       ),
       findsOneWidget,
     );
@@ -89,10 +98,16 @@ void main() {
         (Widget w) =>
             w is IntrinsicWidth &&
             w.child is Padding &&
-            (w.child as Padding).padding == themeExtension.widgetOptionsPadding &&
+            (w.child as Padding).padding ==
+                themeExtension.widgetOptionsPadding &&
             (w.child as Padding).child is SingleChildScrollView &&
-            ((w.child as Padding).child as SingleChildScrollView).child is Column &&
-            (((w.child as Padding).child as SingleChildScrollView).child as Column).children.length == widgetOptions.length,
+            ((w.child as Padding).child as SingleChildScrollView).child
+                is Column &&
+            (((w.child as Padding).child as SingleChildScrollView).child
+                        as Column)
+                    .children
+                    .length ==
+                widgetOptions.length,
       ),
       findsOneWidget,
     );
@@ -100,12 +115,18 @@ void main() {
     // Item in [_WidgetOptions].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Column && w.mainAxisSize == MainAxisSize.min && w.children.length == 2 && w.children.first is Flexible,
+        (Widget w) =>
+            w is Column &&
+            w.mainAxisSize == MainAxisSize.min &&
+            w.children.length == 2 &&
+            w.children.first is Flexible,
       ),
       findsNWidgets(widgetOptions.length),
     );
 
     // [_Divider in [_WidgetOptions].
-    expectDivider(direction: Axis.horizontal, padding: themeExtension.widgetOptionsDividerPadding);
+    expectDivider(
+        direction: Axis.horizontal,
+        padding: themeExtension.widgetOptionsDividerPadding);
   });
 }

@@ -56,11 +56,17 @@ final class MyoroHoverButton extends StatefulWidget {
       (Widget w) =>
           w is MyoroHoverButton &&
           (configurationEnabled ? w.configuration == configuration : true) &&
-          (primaryColorEnabled ? w.configuration?.primaryColor == primaryColor : true) &&
-          (onPrimaryColorEnabled ? w.configuration?.onPrimaryColor == onPrimaryColor : true) &&
+          (primaryColorEnabled
+              ? w.configuration?.primaryColor == primaryColor
+              : true) &&
+          (onPrimaryColorEnabled
+              ? w.configuration?.onPrimaryColor == onPrimaryColor
+              : true) &&
           (isHoveredEnabled ? w.configuration?.isHovered == isHovered : true) &&
           (borderedEnabled ? w.configuration?.bordered == bordered : true) &&
-          (borderRadiusEnabled ? w.configuration?.borderRadius == borderRadius : true) &&
+          (borderRadiusEnabled
+              ? w.configuration?.borderRadius == borderRadius
+              : true) &&
           (tooltipEnabled ? w.configuration?.tooltip == tooltip : true) &&
           (onHoverEnabled ? w.configuration?.onHover == onHover : true) &&
           (onPressedEnabled ? w.onPressed == onPressed : true) &&
@@ -87,7 +93,8 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
     return MyoroTooltip(
       text: _configuration?.tooltip ?? '',
@@ -110,15 +117,19 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
         child: ValueListenableBuilder(
           valueListenable: _hoverNotifier,
           builder: (_, bool hovered, __) {
-            final onPrimaryColor = _configuration?.onPrimaryColor ?? themeExtension.onPrimaryColor;
-            final primaryColor = _configuration?.primaryColor ?? themeExtension.primaryColor;
+            final onPrimaryColor =
+                _configuration?.onPrimaryColor ?? themeExtension.onPrimaryColor;
+            final primaryColor =
+                _configuration?.primaryColor ?? themeExtension.primaryColor;
 
             // So we may add a slight tint on hover when [_isHovered] is [true].
             late final Color correctedBackgroundColor;
             if (_configuration?.isHovered == true) {
-              correctedBackgroundColor = hovered ? onPrimaryColor.withAlpha(225) : onPrimaryColor;
+              correctedBackgroundColor =
+                  hovered ? onPrimaryColor.withAlpha(225) : onPrimaryColor;
             } else {
-              correctedBackgroundColor = hovered ? onPrimaryColor : primaryColor;
+              correctedBackgroundColor =
+                  hovered ? onPrimaryColor : primaryColor;
             }
 
             return Container(
@@ -129,7 +140,8 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
                         color: onPrimaryColor,
                       )
                     : null,
-                borderRadius: _configuration?.borderRadius ?? themeExtension.borderRadius,
+                borderRadius:
+                    _configuration?.borderRadius ?? themeExtension.borderRadius,
                 color: correctedBackgroundColor,
               ),
               child: _builder(hovered, primaryColor, onPrimaryColor),

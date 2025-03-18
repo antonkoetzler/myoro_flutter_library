@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroCheckboxWidgetShowcase].
-final class MyoroCheckboxWidgetShowcaseThemeExtension extends ThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension> {
+final class MyoroCheckboxWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension> {
   /// Width of [_LabelTextStyleOption].
   final double labelTextStyleOptionWidth;
 
@@ -13,14 +14,16 @@ final class MyoroCheckboxWidgetShowcaseThemeExtension extends ThemeExtension<Myo
     required this.labelTextStyleOptionWidth,
   });
 
-  MyoroCheckboxWidgetShowcaseThemeExtension.fake() : labelTextStyleOptionWidth = faker.randomGenerator.decimal();
+  MyoroCheckboxWidgetShowcaseThemeExtension.fake()
+      : labelTextStyleOptionWidth = faker.randomGenerator.decimal();
 
   @override
   MyoroCheckboxWidgetShowcaseThemeExtension copyWith({
     double? labelTextStyleOptionWidth,
   }) {
     return MyoroCheckboxWidgetShowcaseThemeExtension(
-      labelTextStyleOptionWidth: labelTextStyleOptionWidth ?? this.labelTextStyleOptionWidth,
+      labelTextStyleOptionWidth:
+          labelTextStyleOptionWidth ?? this.labelTextStyleOptionWidth,
     );
   }
 
@@ -31,7 +34,8 @@ final class MyoroCheckboxWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   ) {
     if (other is! MyoroCheckboxWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      labelTextStyleOptionWidth: lerpDouble(labelTextStyleOptionWidth, other.labelTextStyleOptionWidth, t),
+      labelTextStyleOptionWidth: lerpDouble(
+          labelTextStyleOptionWidth, other.labelTextStyleOptionWidth, t),
     );
   }
 }

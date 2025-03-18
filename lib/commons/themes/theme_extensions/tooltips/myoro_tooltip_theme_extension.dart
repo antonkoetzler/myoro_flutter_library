@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroTooltip].
-final class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension> {
+final class MyoroTooltipThemeExtension
+    extends ThemeExtension<MyoroTooltipThemeExtension> {
   /// [Tooltip.waitDuration].
   final Duration waitDuration;
 
@@ -11,7 +12,9 @@ final class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeE
     required this.waitDuration,
   });
 
-  MyoroTooltipThemeExtension.fake() : waitDuration = Duration(milliseconds: faker.randomGenerator.integer(9999));
+  MyoroTooltipThemeExtension.fake()
+      : waitDuration =
+            Duration(milliseconds: faker.randomGenerator.integer(9999));
 
   @override
   MyoroTooltipThemeExtension copyWith({

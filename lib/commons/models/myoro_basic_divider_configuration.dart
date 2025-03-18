@@ -33,7 +33,8 @@ final class MyoroBasicDividerConfiguration extends Equatable {
   }
 
   MyoroBasicDividerConfiguration.fake()
-      : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+      : direction =
+            Axis.values[faker.randomGenerator.integer(Axis.values.length)],
         shortValue = faker.randomGenerator.decimal(),
         padding = null;
 

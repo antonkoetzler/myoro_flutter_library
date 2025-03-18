@@ -30,13 +30,17 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroGroupCheckboxWidgetShowcaseBloc, MyoroGroupCheckboxWidgetShowcaseState>(
+    return BlocBuilder<MyoroGroupCheckboxWidgetShowcaseBloc,
+        MyoroGroupCheckboxWidgetShowcaseState>(
       builder: (_, MyoroGroupCheckboxWidgetShowcaseState state) {
         return MyoroGroupCheckbox(
           direction: state.direction,
           spacing: state.spacing,
           runSpacing: state.runSpacing,
-          checkboxes: {for (int i = 0; i < 5; i++) faker.person.name(): faker.randomGenerator.boolean()},
+          checkboxes: {
+            for (int i = 0; i < 5; i++)
+              faker.person.name(): faker.randomGenerator.boolean()
+          },
         );
       },
     );
@@ -51,10 +55,13 @@ final class _DirectionOption extends StatefulWidget {
 }
 
 final class _DirectionOptionState extends State<_DirectionOption> {
-  late final _bloc = context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<Axis>(_bloc.state.direction);
+  late final _bloc =
+      context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
+  late final _controller =
+      MyoroSingularDropdownController<Axis>(_bloc.state.direction);
 
-  String _directionName(Axis direction) => direction.isHorizontal ? 'Horizontal' : 'Vertical';
+  String _directionName(Axis direction) =>
+      direction.isHorizontal ? 'Horizontal' : 'Vertical';
 
   @override
   void dispose() {
@@ -67,7 +74,8 @@ final class _DirectionOptionState extends State<_DirectionOption> {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroGroupCheckbox.direction]',
-        itemBuilder: (Axis direction) => MyoroMenuItem(text: _directionName(direction)),
+        itemBuilder: (Axis direction) =>
+            MyoroMenuItem(text: _directionName(direction)),
         itemLabelBuilder: _directionName,
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
       ),
@@ -85,8 +93,10 @@ final class _SpacingOption extends StatefulWidget {
 }
 
 final class _SpacingOptionState extends State<_SpacingOption> {
-  late final _bloc = context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
-  late final _controller = TextEditingController(text: _bloc.state.spacing.toString());
+  late final _bloc =
+      context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
+  late final _controller =
+      TextEditingController(text: _bloc.state.spacing.toString());
 
   @override
   void dispose() {
@@ -101,7 +111,8 @@ final class _SpacingOptionState extends State<_SpacingOption> {
       configuration: MyoroInputConfiguration(
         label: '[MyoroGroupCheckbox.spacing]',
         controller: _controller,
-        onChanged: (_) => _bloc.add(SetSpacingEvent(double.parse(_controller.text))),
+        onChanged: (_) =>
+            _bloc.add(SetSpacingEvent(double.parse(_controller.text))),
       ),
     );
   }
@@ -115,8 +126,10 @@ final class _RunSpacingOption extends StatefulWidget {
 }
 
 final class _RunSpacingOptionState extends State<_RunSpacingOption> {
-  late final _bloc = context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
-  late final _controller = TextEditingController(text: _bloc.state.spacing.toString());
+  late final _bloc =
+      context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
+  late final _controller =
+      TextEditingController(text: _bloc.state.spacing.toString());
 
   @override
   void dispose() {
@@ -131,7 +144,8 @@ final class _RunSpacingOptionState extends State<_RunSpacingOption> {
       configuration: MyoroInputConfiguration(
         label: '[MyoroGroupCheckbox.runSpacing]',
         controller: _controller,
-        onChanged: (_) => _bloc.add(SetRunSpacingEvent(double.parse(_controller.text))),
+        onChanged: (_) =>
+            _bloc.add(SetRunSpacingEvent(double.parse(_controller.text))),
       ),
     );
   }

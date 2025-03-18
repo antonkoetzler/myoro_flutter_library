@@ -29,7 +29,8 @@ final class _Widget extends StatelessWidget {
   void _onChanged(BuildContext context, bool value) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        snackBarType: value ? MyoroSnackBarTypeEnum.success : MyoroSnackBarTypeEnum.error,
+        snackBarType:
+            value ? MyoroSnackBarTypeEnum.success : MyoroSnackBarTypeEnum.error,
         message: 'Radio ${value ? 'enabled' : 'disabled'}!',
       ),
     );
@@ -37,7 +38,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroRadioWidgetShowcaseBloc, MyoroRadioWidgetShowcaseState>(
+    return BlocBuilder<MyoroRadioWidgetShowcaseBloc,
+        MyoroRadioWidgetShowcaseState>(
       builder: (_, MyoroRadioWidgetShowcaseState state) {
         return MyoroRadio(
           label: state.label,
@@ -65,7 +67,9 @@ final class _LabelOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[MyoroRadio.label]',
-        inputStyle: context.resolveThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle: context
+            .resolveThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>()
+            .inputStyle,
         onChanged: (String text) => _onChanged(context, text),
       ),
     );
@@ -90,8 +94,10 @@ final class _LabelTextStyleOption extends StatelessWidget {
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroRadio.labelTextStyle]',
-        dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
-        itemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
+        dataConfiguration: MyoroDataConfiguration(
+            staticItems: typographyInstance.allTextStyles),
+        itemBuilder: (TextStyle textStyle) =>
+            MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
         itemLabelBuilder: typographyInstance.getTextStyleName,
       ),
       onChanged: (TextStyle? textStyle) => _onChanged(context, textStyle),

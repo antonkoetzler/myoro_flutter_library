@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroCircularLoaderWidgetShowcase].
-final class MyoroCircularLoaderWidgetShowcaseThemeExtension extends ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> {
+final class MyoroCircularLoaderWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> {
   const MyoroCircularLoaderWidgetShowcaseThemeExtension();
 
   @override
@@ -10,7 +11,8 @@ final class MyoroCircularLoaderWidgetShowcaseThemeExtension extends ThemeExtensi
 
   @override
   ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> lerp(
-    covariant ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension>? other,
+    covariant ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension>?
+        other,
     double t,
   ) {
     return this;

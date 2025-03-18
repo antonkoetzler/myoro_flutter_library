@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSearchInput].
-final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThemeExtension> {
+final class MyoroSearchInputThemeExtension
+    extends ThemeExtension<MyoroSearchInputThemeExtension> {
   /// Spacing in between the [MyoroInput] & [_SearchSection].
   final double spacing;
 
@@ -31,9 +32,11 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
 
   MyoroSearchInputThemeExtension.fake()
       : spacing = faker.randomGenerator.decimal(),
-        searchButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        searchButtonIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
         searchButtonBordered = faker.randomGenerator.boolean(),
-        searchButtonHoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        searchButtonHoverColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
         searchButtonLoadingSize = faker.randomGenerator.decimal();
 
   @override
@@ -48,8 +51,10 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
       spacing: spacing ?? this.spacing,
       searchButtonIcon: searchButtonIcon ?? this.searchButtonIcon,
       searchButtonBordered: searchButtonBordered ?? this.searchButtonBordered,
-      searchButtonHoverColor: searchButtonHoverColor ?? this.searchButtonHoverColor,
-      searchButtonLoadingSize: searchButtonLoadingSize ?? this.searchButtonLoadingSize,
+      searchButtonHoverColor:
+          searchButtonHoverColor ?? this.searchButtonHoverColor,
+      searchButtonLoadingSize:
+          searchButtonLoadingSize ?? this.searchButtonLoadingSize,
     );
   }
 
@@ -62,9 +67,12 @@ final class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInp
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       searchButtonIcon: myoroLerp(searchButtonIcon, other.searchButtonIcon, t),
-      searchButtonBordered: myoroLerp(searchButtonBordered, other.searchButtonBordered, t),
-      searchButtonHoverColor: Color.lerp(searchButtonHoverColor, other.searchButtonHoverColor, t),
-      searchButtonLoadingSize: lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
+      searchButtonBordered:
+          myoroLerp(searchButtonBordered, other.searchButtonBordered, t),
+      searchButtonHoverColor:
+          Color.lerp(searchButtonHoverColor, other.searchButtonHoverColor, t),
+      searchButtonLoadingSize:
+          lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
     );
   }
 }

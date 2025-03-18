@@ -13,7 +13,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
+            themeExtension = context
+                .resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
             return MyoroBasicDivider(
               configuration: configuration,

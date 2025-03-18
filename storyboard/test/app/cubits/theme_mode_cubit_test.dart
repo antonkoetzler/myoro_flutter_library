@@ -16,7 +16,8 @@ void main() {
 
   final bool darkModeEnabled = faker.randomGenerator.boolean();
 
-  setUp(() => kiwiContainer.registerSingleton<SharedPreferences>((_) => MockSharedPreferences()));
+  setUp(() => kiwiContainer
+      .registerSingleton<SharedPreferences>((_) => MockSharedPreferences()));
 
   tearDown(() => kiwiContainer.clear());
 

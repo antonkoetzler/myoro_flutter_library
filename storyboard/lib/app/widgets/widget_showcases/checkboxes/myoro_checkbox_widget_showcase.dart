@@ -31,7 +31,8 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BlocBuilder<MyoroCheckboxWidgetShowcaseBloc, MyoroCheckboxWidgetShowcaseState>(
+      child: BlocBuilder<MyoroCheckboxWidgetShowcaseBloc,
+          MyoroCheckboxWidgetShowcaseState>(
         builder: (_, MyoroCheckboxWidgetShowcaseState state) {
           return MyoroCheckbox(
             label: state.label,
@@ -52,9 +53,10 @@ final class _LabelOption extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         inputStyle: MyoroInputStyleEnum.outlined,
         label: 'Label text',
-        onChanged: (String text) => context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(
-              SetLabelEvent(text),
-            ),
+        onChanged: (String text) =>
+            context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(
+                  SetLabelEvent(text),
+                ),
       ),
     );
   }
@@ -69,7 +71,8 @@ final class _LabelTextStyleOption extends StatefulWidget {
 
 final class _LabelTextStyleOptionState extends State<_LabelTextStyleOption> {
   final _typographyTheme = MyoroTypographyTheme.instance;
-  late final _controller = MyoroSingularDropdownController<TextStyle>(_typographyTheme.italicSmall);
+  late final _controller =
+      MyoroSingularDropdownController<TextStyle>(_typographyTheme.italicSmall);
 
   @override
   void dispose() {
@@ -82,16 +85,21 @@ final class _LabelTextStyleOptionState extends State<_LabelTextStyleOption> {
     late final textStyles = _typographyTheme.allTextStyles;
 
     return SizedBox(
-      width: context.resolveThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension>().labelTextStyleOptionWidth,
+      width: context
+          .resolveThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension>()
+          .labelTextStyleOptionWidth,
       child: MyoroSingularDropdown<TextStyle>(
         configuration: MyoroDropdownConfiguration(
           label: '[MyoroCheckbox.labelTextStyle]',
           allowItemClearing: false,
           dataConfiguration: MyoroDataConfiguration(staticItems: textStyles),
-          itemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: _typographyTheme.getTextStyleName(textStyle)),
+          itemBuilder: (TextStyle textStyle) =>
+              MyoroMenuItem(text: _typographyTheme.getTextStyleName(textStyle)),
           itemLabelBuilder: _typographyTheme.getTextStyleName,
         ),
-        onChanged: (TextStyle? textStyle) => context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(SetLabelTextStyleEvent(textStyle!)),
+        onChanged: (TextStyle? textStyle) => context
+            .resolveBloc<MyoroCheckboxWidgetShowcaseBloc>()
+            .add(SetLabelTextStyleEvent(textStyle!)),
         controller: _controller,
       ),
     );

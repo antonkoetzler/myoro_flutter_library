@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroTable].
-final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> {
+final class MyoroTableThemeExtension
+    extends ThemeExtension<MyoroTableThemeExtension> {
   /// [BoxDecoration] of the root [Container] in [_MyoroTableState].
   final BoxDecoration decoration;
 
@@ -75,7 +76,8 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
 
   MyoroTableThemeExtension.fake()
       : decoration = BoxDecoration(
-          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+          color: kMyoroTestColors[
+              faker.randomGenerator.integer(kMyoroTestColors.length)],
         ),
         titleRowHeight = faker.randomGenerator.decimal(),
         titleRowCellMinWidth = faker.randomGenerator.decimal(),
@@ -84,8 +86,10 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
         tableFooterSpacing = faker.randomGenerator.decimal(),
         emptyMessageTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
         titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        errorMessageHeaderTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        errorMessageErrorTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        errorMessageHeaderTextStyle =
+            MyoroTypographyTheme.instance.randomTextStyle,
+        errorMessageErrorTextStyle =
+            MyoroTypographyTheme.instance.randomTextStyle,
         messageSpacing = faker.randomGenerator.decimal(),
         buttonConfiguration = MyoroHoverButtonConfiguration.fake(),
         footerSpacing = faker.randomGenerator.decimal(),
@@ -119,16 +123,20 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
       contentPadding: contentPadding ?? this.contentPadding,
       columnSpacing: columnSpacing ?? this.columnSpacing,
       tableFooterSpacing: tableFooterSpacing ?? this.tableFooterSpacing,
-      emptyMessageTextStyle: emptyMessageTextStyle ?? this.emptyMessageTextStyle,
+      emptyMessageTextStyle:
+          emptyMessageTextStyle ?? this.emptyMessageTextStyle,
       titleTextStyle: titleTextStyle ?? this.titleTextStyle,
-      errorMessageHeaderTextStyle: errorMessageHeaderTextStyle ?? this.errorMessageHeaderTextStyle,
-      errorMessageErrorTextStyle: errorMessageErrorTextStyle ?? this.errorMessageErrorTextStyle,
+      errorMessageHeaderTextStyle:
+          errorMessageHeaderTextStyle ?? this.errorMessageHeaderTextStyle,
+      errorMessageErrorTextStyle:
+          errorMessageErrorTextStyle ?? this.errorMessageErrorTextStyle,
       messageSpacing: messageSpacing ?? this.messageSpacing,
       buttonConfiguration: buttonConfiguration ?? this.buttonConfiguration,
       footerSpacing: footerSpacing ?? this.footerSpacing,
       titleColumnSpacing: titleColumnSpacing ?? this.titleColumnSpacing,
       rowsCellSpacing: rowsCellSpacing ?? this.rowsCellSpacing,
-      rowsButtonConfiguration: rowsButtonConfiguration ?? this.rowsButtonConfiguration,
+      rowsButtonConfiguration:
+          rowsButtonConfiguration ?? this.rowsButtonConfiguration,
     );
   }
 
@@ -141,20 +149,28 @@ final class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExten
     return copyWith(
       decoration: BoxDecoration.lerp(decoration, other.decoration, t),
       titleRowHeight: lerpDouble(titleRowHeight, other.titleRowHeight, t),
-      titleRowCellMinWidth: lerpDouble(titleRowCellMinWidth, other.titleRowCellMinWidth, t),
+      titleRowCellMinWidth:
+          lerpDouble(titleRowCellMinWidth, other.titleRowCellMinWidth, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
-      tableFooterSpacing: lerpDouble(tableFooterSpacing, other.tableFooterSpacing, t),
-      emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
+      tableFooterSpacing:
+          lerpDouble(tableFooterSpacing, other.tableFooterSpacing, t),
+      emptyMessageTextStyle:
+          TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      errorMessageHeaderTextStyle: TextStyle.lerp(errorMessageHeaderTextStyle, other.errorMessageHeaderTextStyle, t),
-      errorMessageErrorTextStyle: TextStyle.lerp(errorMessageErrorTextStyle, other.errorMessageErrorTextStyle, t),
+      errorMessageHeaderTextStyle: TextStyle.lerp(
+          errorMessageHeaderTextStyle, other.errorMessageHeaderTextStyle, t),
+      errorMessageErrorTextStyle: TextStyle.lerp(
+          errorMessageErrorTextStyle, other.errorMessageErrorTextStyle, t),
       messageSpacing: lerpDouble(messageSpacing, other.messageSpacing, t),
-      buttonConfiguration: MyoroHoverButtonConfiguration.lerp(buttonConfiguration, other.buttonConfiguration, t),
+      buttonConfiguration: MyoroHoverButtonConfiguration.lerp(
+          buttonConfiguration, other.buttonConfiguration, t),
       footerSpacing: lerpDouble(footerSpacing, other.footerSpacing, t),
-      titleColumnSpacing: lerpDouble(titleColumnSpacing, other.titleColumnSpacing, t),
+      titleColumnSpacing:
+          lerpDouble(titleColumnSpacing, other.titleColumnSpacing, t),
       rowsCellSpacing: lerpDouble(rowsCellSpacing, other.rowsCellSpacing, t),
-      rowsButtonConfiguration: MyoroHoverButtonConfiguration.lerp(rowsButtonConfiguration, other.rowsButtonConfiguration, t),
+      rowsButtonConfiguration: MyoroHoverButtonConfiguration.lerp(
+          rowsButtonConfiguration, other.rowsButtonConfiguration, t),
     );
   }
 }

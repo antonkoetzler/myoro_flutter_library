@@ -3,7 +3,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroDatePickerInputWidgetShowcase].
-final class MyoroDatePickerInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension> {
+final class MyoroDatePickerInputWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of [_Widget].
   final MyoroInputStyleEnum inputStyle;
 
@@ -11,7 +12,8 @@ final class MyoroDatePickerInputWidgetShowcaseThemeExtension extends ThemeExtens
     required this.inputStyle,
   });
 
-  MyoroDatePickerInputWidgetShowcaseThemeExtension.fake() : inputStyle = MyoroInputStyleEnum.fake();
+  MyoroDatePickerInputWidgetShowcaseThemeExtension.fake()
+      : inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroDatePickerInputWidgetShowcaseThemeExtension copyWith({
@@ -24,7 +26,8 @@ final class MyoroDatePickerInputWidgetShowcaseThemeExtension extends ThemeExtens
 
   @override
   MyoroDatePickerInputWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension>? other,
+    covariant ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension>?
+        other,
     double t,
   ) {
     if (other is! MyoroDatePickerInputWidgetShowcaseThemeExtension) return this;

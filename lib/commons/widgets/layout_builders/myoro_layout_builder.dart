@@ -4,10 +4,12 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// Callback to pass the current [BoxConstraints] of the [MyoroLayoutBuilder].
-typedef MyoroLayoutBuilderConstraintsCallback = void Function(BoxConstraints constraints);
+typedef MyoroLayoutBuilderConstraintsCallback = void Function(
+    BoxConstraints constraints);
 
 /// Callback to builder to build the [MyoroLayoutBuilder].
-typedef MyoroLayoutBuilderChildCallback = Widget Function(BuildContext context, BoxConstraints constraints);
+typedef MyoroLayoutBuilderChildCallback = Widget Function(
+    BuildContext context, BoxConstraints constraints);
 
 /// [Widget] used as an improved [LayoutBuilder].
 ///
@@ -32,7 +34,9 @@ final class MyoroLayoutBuilder extends StatefulWidget {
     bool builderEnabled = false,
   }) {
     return find.byWidgetPredicate(
-      (Widget w) => w is MyoroLayoutBuilder && (builderEnabled ? w.builder == builder : true),
+      (Widget w) =>
+          w is MyoroLayoutBuilder &&
+          (builderEnabled ? w.builder == builder : true),
     );
   }
 
@@ -43,7 +47,8 @@ final class MyoroLayoutBuilder extends StatefulWidget {
 final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
   MyoroLayoutBuilderChildCallback get _builder => widget.builder;
 
-  final _constraintsNotifier = ValueNotifier<BoxConstraints>(const BoxConstraints());
+  final _constraintsNotifier =
+      ValueNotifier<BoxConstraints>(const BoxConstraints());
 
   @override
   void dispose() {
@@ -84,7 +89,8 @@ final class _MyoroLayoutBuilder extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, _RenderMyoroLayoutBuilder renderObject) {
+  void updateRenderObject(
+      BuildContext context, _RenderMyoroLayoutBuilder renderObject) {
     renderObject.constraintsCallback = constraintsCallback;
   }
 }
@@ -93,7 +99,8 @@ final class _RenderMyoroLayoutBuilder extends RenderProxyBox {
   _RenderMyoroLayoutBuilder(this._constraintsCallback);
 
   MyoroLayoutBuilderConstraintsCallback _constraintsCallback;
-  MyoroLayoutBuilderConstraintsCallback get constraintsCallback => _constraintsCallback;
+  MyoroLayoutBuilderConstraintsCallback get constraintsCallback =>
+      _constraintsCallback;
   set constraintsCallback(MyoroLayoutBuilderConstraintsCallback value) {
     if (_constraintsCallback == value) return;
 

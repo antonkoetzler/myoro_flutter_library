@@ -41,9 +41,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
 
-    return BlocBuilder<MyoroHoverButtonWidgetShowcaseBloc, MyoroHoverButtonWidgetShowcaseState>(
+    return BlocBuilder<MyoroHoverButtonWidgetShowcaseBloc,
+        MyoroHoverButtonWidgetShowcaseState>(
       builder: (_, MyoroHoverButtonWidgetShowcaseState state) {
         return MyoroHoverButton(
           configuration: MyoroHoverButtonConfiguration(
@@ -52,7 +54,8 @@ final class _Widget extends StatelessWidget {
             isHovered: state.isHovered,
             bordered: state.bordered,
             borderRadius: state.borderRadius,
-            tooltip: state.tooltipEnabled ? 'A description of the button!' : null,
+            tooltip:
+                state.tooltipEnabled ? 'A description of the button!' : null,
           ),
           onPressed: state.onPressedEnabled ? () => _onPressed(context) : null,
           builder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
@@ -79,7 +82,9 @@ final class _PrimaryColorDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return _ColorDropdown(
       '[MyoroHoverButtonConfiguration.primaryColor]',
-      (Color? color) => context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(SetPrimaryColorEvent(color)),
+      (Color? color) => context
+          .resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>()
+          .add(SetPrimaryColorEvent(color)),
     );
   }
 }
@@ -91,7 +96,9 @@ final class _OnPrimaryColorDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return _ColorDropdown(
       '[MyoroHoverButtonConfiguration.onPrimaryColor]',
-      (Color? color) => context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(SetOnPrimaryColorEvent(color)),
+      (Color? color) => context
+          .resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>()
+          .add(SetOnPrimaryColorEvent(color)),
     );
   }
 }
@@ -134,7 +141,11 @@ final class _BorderRadiusSlider extends StatefulWidget {
 }
 
 final class _BorderRadiusSliderState extends State<_BorderRadiusSlider> {
-  late final _defaultBorderRadius = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>().borderRadius.bottomLeft.x;
+  late final _defaultBorderRadius = context
+      .resolveThemeExtension<MyoroHoverButtonThemeExtension>()
+      .borderRadius
+      .bottomLeft
+      .x;
   late double _value = _defaultBorderRadius;
 
   void _event(double? value) {
@@ -147,7 +158,8 @@ final class _BorderRadiusSliderState extends State<_BorderRadiusSlider> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -241,7 +253,8 @@ final class _ColorDropdown extends StatelessWidget {
     return MyoroSingularDropdown<Color>(
       configuration: MyoroDropdownConfiguration(
         label: _label,
-        dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestColors),
+        dataConfiguration:
+            MyoroDataConfiguration(staticItems: kMyoroTestColors),
         itemBuilder: _itemBuilder,
         itemLabelBuilder: _itemLabelBuilder,
       ),
@@ -263,7 +276,8 @@ final class _ColorDropdownItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
     final colorSize = themeExtension.colorDropdownItemColorSize;
 
     return Padding(
@@ -280,7 +294,9 @@ final class _ColorDropdownItem extends StatelessWidget {
             child: Text(
               _color.hexadecimalFormat,
               style: themeExtension.colorDropdownItemColorTextStyle.withColor(
-                _hovered ? themeExtension.colorDropdownitemPrimaryColor : _onPrimaryColor,
+                _hovered
+                    ? themeExtension.colorDropdownitemPrimaryColor
+                    : _onPrimaryColor,
               ),
             ),
           ),

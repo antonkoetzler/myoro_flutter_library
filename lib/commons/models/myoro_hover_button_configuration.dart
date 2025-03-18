@@ -63,15 +63,19 @@ final class MyoroHoverButtonConfiguration extends Equatable {
   }
 
   MyoroHoverButtonConfiguration.fake()
-      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      : primaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        onPrimaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
         isHovered = faker.randomGenerator.boolean(),
         bordered = faker.randomGenerator.boolean(),
-        borderRadius = BorderRadius.circular(faker.randomGenerator.decimal(min: 0)),
+        borderRadius =
+            BorderRadius.circular(faker.randomGenerator.decimal(min: 0)),
         tooltip = faker.lorem.word(),
         onHover = null;
 
-  static MyoroHoverButtonConfiguration lerp(MyoroHoverButtonConfiguration a, MyoroHoverButtonConfiguration b, double t) {
+  static MyoroHoverButtonConfiguration lerp(MyoroHoverButtonConfiguration a,
+      MyoroHoverButtonConfiguration b, double t) {
     return MyoroHoverButtonConfiguration(
       primaryColor: Color.lerp(a.primaryColor, b.primaryColor, t),
       onPrimaryColor: Color.lerp(a.onPrimaryColor, b.onPrimaryColor, t),

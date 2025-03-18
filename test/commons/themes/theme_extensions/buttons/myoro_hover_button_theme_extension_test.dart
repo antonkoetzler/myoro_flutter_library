@@ -26,15 +26,18 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+        Color.lerp(
+            themeExtension1.primaryColor, themeExtension2.primaryColor, i),
       );
       expect(
         lerpedThemeExtension.onPrimaryColor,
-        Color.lerp(themeExtension1.onPrimaryColor, themeExtension2.onPrimaryColor, i),
+        Color.lerp(
+            themeExtension1.onPrimaryColor, themeExtension2.onPrimaryColor, i),
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
+        BorderRadius.lerp(
+            themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
       expect(
         lerpedThemeExtension.bordered,

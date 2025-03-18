@@ -28,24 +28,37 @@ void main() {
             w is IntrinsicHeight &&
             w.child is MyoroCard &&
             (w.child as MyoroCard).child is Text &&
-            ((w.child as MyoroCard).child as Text).data == 'This is a [MyoroCard]!',
+            ((w.child as MyoroCard).child as Text).data ==
+                'This is a [MyoroCard]!',
       ),
       findsOneWidget,
     );
 
     // [_TitleOption].
-    expect(MyoroInput.finder(label: '[MyoroCard.title]', labelEnabled: true), findsOneWidget);
+    expect(MyoroInput.finder(label: '[MyoroCard.title]', labelEnabled: true),
+        findsOneWidget);
 
     // [_TitleTextStyleOption].
-    expect(MyoroSingularDropdown.finder(label: '[MyoroCard.titleTextStyle]', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroSingularDropdown.finder(
+            label: '[MyoroCard.titleTextStyle]', labelEnabled: true),
+        findsOneWidget);
 
     // [_PaddingOption].
-    expect(MyoroSlider.finder(label: '[MyoroCard.padding]', labelEnabled: true, maxValue: 50, maxValueEnabled: true), findsOneWidget);
+    expect(
+        MyoroSlider.finder(
+            label: '[MyoroCard.padding]',
+            labelEnabled: true,
+            maxValue: 50,
+            maxValueEnabled: true),
+        findsOneWidget);
 
     // [_WidthOption].
-    expect(MyoroInput.finder(label: '[MyoroCard.width]', labelEnabled: true), findsOneWidget);
+    expect(MyoroInput.finder(label: '[MyoroCard.width]', labelEnabled: true),
+        findsOneWidget);
 
     // [_HeightOption].
-    expect(MyoroInput.finder(label: '[MyoroCard.height]', labelEnabled: true), findsOneWidget);
+    expect(MyoroInput.finder(label: '[MyoroCard.height]', labelEnabled: true),
+        findsOneWidget);
   });
 }

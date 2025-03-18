@@ -11,16 +11,23 @@ void main() {
   late final TextStyle? labelTextStyle;
   final double width1 = faker.randomGenerator.decimal();
   final double width2 = faker.randomGenerator.decimal();
-  final bool currentValueIndicatorTextBuilderEnabled = faker.randomGenerator.boolean();
-  final bool maxValueIndicatorTextBuilderEnabled = faker.randomGenerator.boolean();
-  final bool footerIndicatorTextBuilderEnabled = faker.randomGenerator.boolean();
+  final bool currentValueIndicatorTextBuilderEnabled =
+      faker.randomGenerator.boolean();
+  final bool maxValueIndicatorTextBuilderEnabled =
+      faker.randomGenerator.boolean();
+  final bool footerIndicatorTextBuilderEnabled =
+      faker.randomGenerator.boolean();
 
-  MyoroSliderWidgetShowcaseBloc createBloc() => MyoroSliderWidgetShowcaseBloc(width: width1);
+  MyoroSliderWidgetShowcaseBloc createBloc() =>
+      MyoroSliderWidgetShowcaseBloc(width: width1);
   final defaultState = MyoroSliderWidgetShowcaseState(width: width1);
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
-    labelTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyTheme.instance.randomTextStyle : null;
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
+    labelTextStyle = faker.randomGenerator.boolean()
+        ? MyoroTypographyTheme.instance.randomTextStyle
+        : null;
   });
 
   blocTest(
@@ -47,21 +54,35 @@ void main() {
   blocTest(
     'MyoroSliderWidgetShowcaseBloc.SetCurrentValueIndicatorTextBuilderEnabledEvent',
     build: createBloc,
-    act: (bloc) => bloc.add(SetCurrentValueIndicatorTextBuilderEnabledEvent(currentValueIndicatorTextBuilderEnabled)),
-    expect: () => [defaultState.copyWith(currentValueIndicatorTextBuilderEnabled: currentValueIndicatorTextBuilderEnabled)],
+    act: (bloc) => bloc.add(SetCurrentValueIndicatorTextBuilderEnabledEvent(
+        currentValueIndicatorTextBuilderEnabled)),
+    expect: () => [
+      defaultState.copyWith(
+          currentValueIndicatorTextBuilderEnabled:
+              currentValueIndicatorTextBuilderEnabled)
+    ],
   );
 
   blocTest(
     'MyoroSliderWidgetShowcaseBloc.SetMaxValueIndicatorTextBuilderEnabledEvent',
     build: createBloc,
-    act: (bloc) => bloc.add(SetMaxValueIndicatorTextBuilderEnabledEvent(maxValueIndicatorTextBuilderEnabled)),
-    expect: () => [defaultState.copyWith(maxValueIndicatorTextBuilderEnabled: maxValueIndicatorTextBuilderEnabled)],
+    act: (bloc) => bloc.add(SetMaxValueIndicatorTextBuilderEnabledEvent(
+        maxValueIndicatorTextBuilderEnabled)),
+    expect: () => [
+      defaultState.copyWith(
+          maxValueIndicatorTextBuilderEnabled:
+              maxValueIndicatorTextBuilderEnabled)
+    ],
   );
 
   blocTest(
     'MyoroSliderWidgetShowcaseBloc.SetFooterIndicatorTextBuilderEnabledEvent',
     build: createBloc,
-    act: (bloc) => bloc.add(SetFooterIndicatorTextBuilderEnabledEvent(footerIndicatorTextBuilderEnabled)),
-    expect: () => [defaultState.copyWith(footerIndicatorTextBuilderEnabled: footerIndicatorTextBuilderEnabled)],
+    act: (bloc) => bloc.add(SetFooterIndicatorTextBuilderEnabledEvent(
+        footerIndicatorTextBuilderEnabled)),
+    expect: () => [
+      defaultState.copyWith(
+          footerIndicatorTextBuilderEnabled: footerIndicatorTextBuilderEnabled)
+    ],
   );
 }

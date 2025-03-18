@@ -7,8 +7,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   final MyoroModalConfiguration configuration = MyoroModalConfiguration.fake();
   final bool invertButtons = faker.randomGenerator.boolean();
-  final String? confirmButtonText = faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
-  final String? cancelButtonText = faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
+  final String? confirmButtonText =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
+  final String? cancelButtonText =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
   final String text = faker.lorem.word();
   late final TextStyle? textStyle;
 
@@ -42,7 +44,10 @@ void main() {
     if (isText) {
       expect(
         find.byWidgetPredicate(
-          (Widget w) => w is Text && w.data == text && w.style == (textStyle ?? dialogModalThemeExtension.textStyle),
+          (Widget w) =>
+              w is Text &&
+              w.data == text &&
+              w.style == (textStyle ?? dialogModalThemeExtension.textStyle),
         ),
         findsOneWidget,
       );
@@ -60,12 +65,18 @@ void main() {
             w.alignment == Alignment.bottomRight &&
             w.child is IntrinsicWidth &&
             (w.child as IntrinsicWidth).child is Row &&
-            ((w.child as IntrinsicWidth).child as Row).mainAxisSize == MainAxisSize.min &&
+            ((w.child as IntrinsicWidth).child as Row).mainAxisSize ==
+                MainAxisSize.min &&
             ((w.child as IntrinsicWidth).child as Row).children.length == 3 &&
-            ((w.child as IntrinsicWidth).child as Row).children.first is Flexible &&
-            ((w.child as IntrinsicWidth).child as Row).children[1] is SizedBox &&
-            (((w.child as IntrinsicWidth).child as Row).children[1] as SizedBox).width == dialogModalThemeExtension.footerButtonsSpacing &&
-            ((w.child as IntrinsicWidth).child as Row).children.last is Flexible,
+            ((w.child as IntrinsicWidth).child as Row).children.first
+                is Flexible &&
+            ((w.child as IntrinsicWidth).child as Row).children[1]
+                is SizedBox &&
+            (((w.child as IntrinsicWidth).child as Row).children[1] as SizedBox)
+                    .width ==
+                dialogModalThemeExtension.footerButtonsSpacing &&
+            ((w.child as IntrinsicWidth).child as Row).children.last
+                is Flexible,
       ),
       findsOneWidget,
     );
@@ -73,7 +84,10 @@ void main() {
     // [_ConfirmButton].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroIconTextHoverButton && w.text == (confirmButtonText ?? 'Confirm') && w.onPressed != null,
+        (Widget w) =>
+            w is MyoroIconTextHoverButton &&
+            w.text == (confirmButtonText ?? 'Confirm') &&
+            w.onPressed != null,
       ),
       findsOneWidget,
     );
@@ -81,7 +95,10 @@ void main() {
     // [_CancelButton].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroIconTextHoverButton && w.text == (cancelButtonText ?? 'Cancel') && w.onPressed != null,
+        (Widget w) =>
+            w is MyoroIconTextHoverButton &&
+            w.text == (cancelButtonText ?? 'Cancel') &&
+            w.onPressed != null,
       ),
       findsOneWidget,
     );
@@ -144,8 +161,11 @@ void main() {
   }
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
-    textStyle = faker.randomGenerator.boolean() ? MyoroTypographyTheme.instance.randomTextStyle : null;
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
+    textStyle = faker.randomGenerator.boolean()
+        ? MyoroTypographyTheme.instance.randomTextStyle
+        : null;
   });
 
   testWidgets(

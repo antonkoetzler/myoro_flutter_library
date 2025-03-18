@@ -51,12 +51,16 @@ final class MyoroSnackBarContainer extends SnackBar {
     return find.byWidgetPredicate(
       (Widget w) =>
           w is MyoroSnackBarContainer &&
-          (backgroundColorEnabled ? w.backgroundColor == backgroundColor : true) &&
+          (backgroundColorEnabled
+              ? w.backgroundColor == backgroundColor
+              : true) &&
           (behaviorEnabled ? w.behavior == behavior : true) &&
           (marginEnabled ? w.margin == margin : true) &&
           (paddingEnabled ? w.padding == padding : true) &&
           (elevationEnabled ? w.elevation == elevation : true) &&
-          (dismissDirectionEnabled ? w.dismissDirection == dismissDirection : true) &&
+          (dismissDirectionEnabled
+              ? w.dismissDirection == dismissDirection
+              : true) &&
           (durationEnabled ? w.duration == duration : true),
     );
   }

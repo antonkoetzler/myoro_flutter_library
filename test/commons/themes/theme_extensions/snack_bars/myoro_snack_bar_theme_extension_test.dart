@@ -11,7 +11,8 @@ void main() {
   late final MyoroSnackBarThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroSnackBarThemeExtension.fake();
     themeExtension2 = MyoroSnackBarThemeExtension.fake();
   });
@@ -32,17 +33,25 @@ void main() {
       closeButtonIconSize: themeExtension2.closeButtonIconSize,
     );
     expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(copiedThemeExtension.standardBorderColor, themeExtension2.standardBorderColor);
-    expect(copiedThemeExtension.attentionBorderColor, themeExtension2.attentionBorderColor);
-    expect(copiedThemeExtension.successBorderColor, themeExtension2.successBorderColor);
-    expect(copiedThemeExtension.errorBorderColor, themeExtension2.errorBorderColor);
+    expect(copiedThemeExtension.standardBorderColor,
+        themeExtension2.standardBorderColor);
+    expect(copiedThemeExtension.attentionBorderColor,
+        themeExtension2.attentionBorderColor);
+    expect(copiedThemeExtension.successBorderColor,
+        themeExtension2.successBorderColor);
+    expect(copiedThemeExtension.errorBorderColor,
+        themeExtension2.errorBorderColor);
     expect(copiedThemeExtension.borderWidth, themeExtension2.borderWidth);
     expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
     expect(copiedThemeExtension.padding, themeExtension2.padding);
-    expect(copiedThemeExtension.contentCloseButtonSpacing, themeExtension2.contentCloseButtonSpacing);
-    expect(copiedThemeExtension.messageTextStyle, themeExtension2.messageTextStyle);
-    expect(copiedThemeExtension.closeButtonIcon, themeExtension2.closeButtonIcon);
-    expect(copiedThemeExtension.closeButtonIconSize, themeExtension2.closeButtonIconSize);
+    expect(copiedThemeExtension.contentCloseButtonSpacing,
+        themeExtension2.contentCloseButtonSpacing);
+    expect(copiedThemeExtension.messageTextStyle,
+        themeExtension2.messageTextStyle);
+    expect(
+        copiedThemeExtension.closeButtonIcon, themeExtension2.closeButtonIcon);
+    expect(copiedThemeExtension.closeButtonIconSize,
+        themeExtension2.closeButtonIconSize);
   });
 
   test('MyoroSnackBarThemeExtension.lerp', () {
@@ -50,23 +59,28 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+        Color.lerp(
+            themeExtension1.primaryColor, themeExtension2.primaryColor, i),
       );
       expect(
         lerpedThemeExtension.standardBorderColor,
-        Color.lerp(themeExtension1.standardBorderColor, themeExtension2.standardBorderColor, i),
+        Color.lerp(themeExtension1.standardBorderColor,
+            themeExtension2.standardBorderColor, i),
       );
       expect(
         lerpedThemeExtension.attentionBorderColor,
-        Color.lerp(themeExtension1.attentionBorderColor, themeExtension2.attentionBorderColor, i),
+        Color.lerp(themeExtension1.attentionBorderColor,
+            themeExtension2.attentionBorderColor, i),
       );
       expect(
         lerpedThemeExtension.successBorderColor,
-        Color.lerp(themeExtension1.successBorderColor, themeExtension2.successBorderColor, i),
+        Color.lerp(themeExtension1.successBorderColor,
+            themeExtension2.successBorderColor, i),
       );
       expect(
         lerpedThemeExtension.errorBorderColor,
-        Color.lerp(themeExtension1.errorBorderColor, themeExtension2.errorBorderColor, i),
+        Color.lerp(themeExtension1.errorBorderColor,
+            themeExtension2.errorBorderColor, i),
       );
       expect(
         lerpedThemeExtension.borderWidth,
@@ -74,7 +88,8 @@ void main() {
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
+        BorderRadius.lerp(
+            themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
       expect(
         lerpedThemeExtension.padding,
@@ -82,19 +97,23 @@ void main() {
       );
       expect(
         lerpedThemeExtension.contentCloseButtonSpacing,
-        lerpDouble(themeExtension1.contentCloseButtonSpacing, themeExtension2.contentCloseButtonSpacing, i),
+        lerpDouble(themeExtension1.contentCloseButtonSpacing,
+            themeExtension2.contentCloseButtonSpacing, i),
       );
       expect(
         lerpedThemeExtension.messageTextStyle,
-        TextStyle.lerp(themeExtension1.messageTextStyle, themeExtension2.messageTextStyle, i),
+        TextStyle.lerp(themeExtension1.messageTextStyle,
+            themeExtension2.messageTextStyle, i),
       );
       expect(
         lerpedThemeExtension.closeButtonIcon,
-        myoroLerp(themeExtension1.closeButtonIcon, themeExtension2.closeButtonIcon, i),
+        myoroLerp(themeExtension1.closeButtonIcon,
+            themeExtension2.closeButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.closeButtonIconSize,
-        lerpDouble(themeExtension1.closeButtonIconSize, themeExtension2.closeButtonIconSize, i),
+        lerpDouble(themeExtension1.closeButtonIconSize,
+            themeExtension2.closeButtonIconSize, i),
       );
     }
   });

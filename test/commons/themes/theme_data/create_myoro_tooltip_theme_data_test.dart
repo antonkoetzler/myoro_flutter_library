@@ -9,7 +9,8 @@ void main() {
     final bool isDarkMode = faker.randomGenerator.boolean();
     final ColorScheme colorScheme = createMyoroColorScheme(isDarkMode);
     final TextTheme textTheme = createMyoroTextTheme(isDarkMode);
-    final TooltipThemeData tooltipThemeData = createMyoroTooltipThemeData(colorScheme, textTheme);
+    final TooltipThemeData tooltipThemeData =
+        createMyoroTooltipThemeData(colorScheme, textTheme);
     expect(
       tooltipThemeData,
       TooltipThemeData(

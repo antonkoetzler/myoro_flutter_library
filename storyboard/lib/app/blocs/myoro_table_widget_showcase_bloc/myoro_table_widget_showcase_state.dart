@@ -24,7 +24,8 @@ final class MyoroTableWidgetShowcaseState extends Equatable {
     return MyoroTableWidgetShowcaseState(
       enableColumnResizing: enableColumnResizing ?? this.enableColumnResizing,
       enableCheckboxes: enableCheckboxes ?? this.enableCheckboxes,
-      showPaginationControls: showPaginationControls ?? this.showPaginationControls,
+      showPaginationControls:
+          showPaginationControls ?? this.showPaginationControls,
     );
   }
 

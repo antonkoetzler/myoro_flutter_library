@@ -16,8 +16,10 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            searchInputThemeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
-            hoverButtonThemeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
+            searchInputThemeExtension =
+                context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+            hoverButtonThemeExtension =
+                context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
             return MyoroSearchInput<String>(
               configuration: configuration,
@@ -38,7 +40,8 @@ void main() {
 
     // [MyoroSearchInput].
     expect(
-      find.byWidgetPredicate((Widget w) => w is Focus && w.child is MyoroForm<List<String>>),
+      find.byWidgetPredicate(
+          (Widget w) => w is Focus && w.child is MyoroForm<List<String>>),
       findsOneWidget,
     );
     expect(
@@ -60,7 +63,8 @@ void main() {
           w.mainAxisSize == MainAxisSize.min &&
           w.children.length == 2 &&
           w.children.first is SizedBox &&
-          (w.children.first as SizedBox).height == searchInputThemeExtension.spacing &&
+          (w.children.first as SizedBox).height ==
+              searchInputThemeExtension.spacing &&
           w.children.last is Flexible,
     );
     expect(searchDropdownSectionFinder, findsNothing);
@@ -82,8 +86,10 @@ void main() {
             w is Padding &&
             w.padding == const EdgeInsets.all(7.5) &&
             w.child is Icon &&
-            (w.child as Icon).color == hoverButtonThemeExtension.onPrimaryColor &&
-            (w.child as Icon).icon == searchInputThemeExtension.searchButtonIcon,
+            (w.child as Icon).color ==
+                hoverButtonThemeExtension.onPrimaryColor &&
+            (w.child as Icon).icon ==
+                searchInputThemeExtension.searchButtonIcon,
       ),
       findsOneWidget,
     );

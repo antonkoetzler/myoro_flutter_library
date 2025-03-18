@@ -10,15 +10,19 @@ part 'myoro_material_app_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroMaterialAppWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroMaterialAppWidgetShowcase].
-final class MyoroMaterialAppWidgetShowcaseBloc extends Bloc<MyoroMaterialAppWidgetShowcaseEvent, MyoroMaterialAppWidgetShowcaseState> {
-  MyoroMaterialAppWidgetShowcaseBloc() : super(const MyoroMaterialAppWidgetShowcaseState()) {
+final class MyoroMaterialAppWidgetShowcaseBloc extends Bloc<
+    MyoroMaterialAppWidgetShowcaseEvent, MyoroMaterialAppWidgetShowcaseState> {
+  MyoroMaterialAppWidgetShowcaseBloc()
+      : super(const MyoroMaterialAppWidgetShowcaseState()) {
     on<ToggleThemeModeEvent>(_toggleThemeModeEvent);
   }
 
   void _toggleThemeModeEvent(ToggleThemeModeEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        themeMode: state.themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark,
+        themeMode: state.themeMode == ThemeMode.dark
+            ? ThemeMode.light
+            : ThemeMode.dark,
       ),
     );
   }

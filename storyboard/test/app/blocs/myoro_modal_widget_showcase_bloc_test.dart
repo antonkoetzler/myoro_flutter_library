@@ -5,18 +5,24 @@ import 'package:storyboard/app/blocs/myoro_modal_widget_showcase_bloc/myoro_moda
 /// Unit test of [MyoroModalWidgetShowcaseBloc].
 void main() {
   final bool barrierDismissable = faker.randomGenerator.boolean();
-  final double? minWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  final double? maxWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  final double? minHeight = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  final double? maxHeight = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  final String? title = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final double? minWidth =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final double? maxWidth =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final double? minHeight =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final double? maxHeight =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final String? title =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
   final bool showCloseButton = faker.randomGenerator.boolean();
 
   blocTest(
     'MyoroModalWidgetShowcaseBloc.SetBarrierDismissableEvent',
     build: () => MyoroModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetBarrierDismissableEvent(barrierDismissable)),
-    expect: () => [MyoroModalWidgetShowcaseState(barrierDismissable: barrierDismissable)],
+    expect: () =>
+        [MyoroModalWidgetShowcaseState(barrierDismissable: barrierDismissable)],
   );
 
   blocTest(
@@ -58,6 +64,7 @@ void main() {
     'MyoroModalWidgetShowcaseBloc.SetShowCloseButtonEvent',
     build: () => MyoroModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetShowCloseButtonEvent(showCloseButton)),
-    expect: () => [MyoroModalWidgetShowcaseState(showCloseButton: showCloseButton)],
+    expect: () =>
+        [MyoroModalWidgetShowcaseState(showCloseButton: showCloseButton)],
   );
 }

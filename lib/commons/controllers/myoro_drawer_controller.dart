@@ -24,12 +24,16 @@ final class MyoroDrawerController extends ChangeNotifier {
     if (_drawer == drawer) return;
     _drawer = drawer;
     _isEndDrawer = isEndDrawer;
-    !_isEndDrawer ? _scaffoldKey.currentState?.openDrawer() : _scaffoldKey.currentState?.openEndDrawer();
+    !_isEndDrawer
+        ? _scaffoldKey.currentState?.openDrawer()
+        : _scaffoldKey.currentState?.openEndDrawer();
   }
 
   /// Closes the drawer.
   void closeDrawer(BuildContext context) {
-    !_isEndDrawer ? Scaffold.of(context).closeDrawer() : Scaffold.of(context).closeEndDrawer();
+    !_isEndDrawer
+        ? Scaffold.of(context).closeDrawer()
+        : Scaffold.of(context).closeEndDrawer();
   }
 
   GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;

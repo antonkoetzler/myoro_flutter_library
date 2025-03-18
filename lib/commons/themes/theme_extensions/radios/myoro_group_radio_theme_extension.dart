@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroGroupRadio].
-final class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension> {
+final class MyoroGroupRadioThemeExtension
+    extends ThemeExtension<MyoroGroupRadioThemeExtension> {
   /// Default direction of the [MyoroGroupCheckbox].
   final Axis direction;
 
@@ -22,7 +23,8 @@ final class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadio
   });
 
   MyoroGroupRadioThemeExtension.fake()
-      : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+      : direction =
+            Axis.values[faker.randomGenerator.integer(Axis.values.length)],
         spacing = faker.randomGenerator.decimal(),
         runSpacing = faker.randomGenerator.decimal();
 

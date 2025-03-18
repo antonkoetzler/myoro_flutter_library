@@ -121,10 +121,12 @@ final class MyoroTypographyTheme {
       14 => extraBoldLargeName,
 
       // Should never get here.
-      _ => throw AssertionError('[MyoroTypographyTheme.getTextStyleName]: [textStyle] is not apart of [MyoroTypographyTheme.getAllTextStyles].'),
+      _ => throw AssertionError(
+          '[MyoroTypographyTheme.getTextStyleName]: [textStyle] is not apart of [MyoroTypographyTheme.getAllTextStyles].'),
     };
   }
 
   /// Retrieves a random text style.
-  TextStyle get randomTextStyle => allTextStyles[faker.randomGenerator.integer(allTextStyles.length)];
+  TextStyle get randomTextStyle =>
+      allTextStyles[faker.randomGenerator.integer(allTextStyles.length)];
 }

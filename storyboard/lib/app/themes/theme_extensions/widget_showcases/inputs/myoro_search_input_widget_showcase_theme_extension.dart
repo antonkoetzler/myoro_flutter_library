@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroSearchInputWidgetShowcase].
-final class MyoroSearchInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension> {
+final class MyoroSearchInputWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension> {
   const MyoroSearchInputWidgetShowcaseThemeExtension();
 
   @override
@@ -10,7 +11,8 @@ final class MyoroSearchInputWidgetShowcaseThemeExtension extends ThemeExtension<
 
   @override
   ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension> lerp(
-    covariant ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension>? other,
+    covariant ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension>?
+        other,
     double t,
   ) {
     return this;

@@ -11,7 +11,8 @@ void main() {
   late final StoryboardAppBarThemeExtension themeExtension1, themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = StoryboardAppBarThemeExtension.fake();
     themeExtension2 = StoryboardAppBarThemeExtension.fake();
   });
@@ -25,9 +26,12 @@ void main() {
       buttonSpacing: themeExtension2.buttonSpacing,
     );
     expect(copiedThemeExtension.titleTextStyle, themeExtension2.titleTextStyle);
-    expect(copiedThemeExtension.subtitleTextStyle, themeExtension2.subtitleTextStyle);
-    expect(copiedThemeExtension.showWidgetOptionsButtonIcon, themeExtension2.showWidgetOptionsButtonIcon);
-    expect(copiedThemeExtension.themeButtonIcon, themeExtension2.themeButtonIcon);
+    expect(copiedThemeExtension.subtitleTextStyle,
+        themeExtension2.subtitleTextStyle);
+    expect(copiedThemeExtension.showWidgetOptionsButtonIcon,
+        themeExtension2.showWidgetOptionsButtonIcon);
+    expect(
+        copiedThemeExtension.themeButtonIcon, themeExtension2.themeButtonIcon);
     expect(copiedThemeExtension.buttonSpacing, themeExtension2.buttonSpacing);
   });
 
@@ -36,23 +40,28 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.titleTextStyle,
-        TextStyle.lerp(themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
+        TextStyle.lerp(
+            themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.subtitleTextStyle,
-        TextStyle.lerp(themeExtension1.subtitleTextStyle, themeExtension2.subtitleTextStyle, i),
+        TextStyle.lerp(themeExtension1.subtitleTextStyle,
+            themeExtension2.subtitleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.showWidgetOptionsButtonIcon,
-        myoroLerp(themeExtension1.showWidgetOptionsButtonIcon, themeExtension2.showWidgetOptionsButtonIcon, i),
+        myoroLerp(themeExtension1.showWidgetOptionsButtonIcon,
+            themeExtension2.showWidgetOptionsButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.themeButtonIcon,
-        myoroLerp(themeExtension1.themeButtonIcon, themeExtension2.themeButtonIcon, i),
+        myoroLerp(themeExtension1.themeButtonIcon,
+            themeExtension2.themeButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.buttonSpacing,
-        lerpDouble(themeExtension1.buttonSpacing, themeExtension2.buttonSpacing, i),
+        lerpDouble(
+            themeExtension1.buttonSpacing, themeExtension2.buttonSpacing, i),
       );
     }
   });

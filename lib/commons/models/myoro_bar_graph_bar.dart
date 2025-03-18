@@ -37,7 +37,8 @@ final class MyoroBarGraphBar extends Equatable {
 
   MyoroBarGraphBar.fake()
       : y = faker.randomGenerator.decimal(),
-        color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        color = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
         barSections = List.generate(
           faker.randomGenerator.integer(5),
           (_) => MyoroBarGraphBarSection.fake(),

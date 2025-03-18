@@ -52,7 +52,8 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(
-      child: BlocBuilder<MyoroDialogModalWidgetShowcaseBloc, MyoroDialogModalWidgetShowcaseState>(
+      child: BlocBuilder<MyoroDialogModalWidgetShowcaseBloc,
+          MyoroDialogModalWidgetShowcaseState>(
         builder: (_, MyoroDialogModalWidgetShowcaseState state) {
           return MyoroIconTextHoverButton(
             configuration: const MyoroHoverButtonConfiguration(bordered: true),
@@ -82,7 +83,9 @@ final class _Child extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
-      borderRadius: context.resolveThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>().childBorderRadius,
+      borderRadius: context
+          .resolveThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>()
+          .childBorderRadius,
       child: IntrinsicWidth(
         child: Image.asset(
           'assets/images/are_you_silly.jpg',
@@ -116,8 +119,11 @@ final class _ConfirmButtonTextOption extends StatelessWidget {
 
     return _Input(
       label: '[MyoroDialogModal.confirmButtonText]',
-      onChanged: (String text) => bloc.add(SetConfirmButtonTextEvent(text.isNotEmpty ? text : null)),
-      checkboxOnChanged: (bool enabled, String text) => bloc.add(SetConfirmButtonTextEvent((enabled && text.isNotEmpty) ? text : null)),
+      onChanged: (String text) =>
+          bloc.add(SetConfirmButtonTextEvent(text.isNotEmpty ? text : null)),
+      checkboxOnChanged: (bool enabled, String text) => bloc.add(
+          SetConfirmButtonTextEvent(
+              (enabled && text.isNotEmpty) ? text : null)),
     );
   }
 }
@@ -131,8 +137,10 @@ final class _CancelButtonTextOption extends StatelessWidget {
 
     return _Input(
       label: '[MyoroDialogModal._cancelButtonText]',
-      onChanged: (String text) => bloc.add(SetCancelButtonTextEvent(text.isNotEmpty ? text : null)),
-      checkboxOnChanged: (bool enabled, String text) => bloc.add(SetCancelButtonTextEvent((enabled && text.isNotEmpty) ? text : null)),
+      onChanged: (String text) =>
+          bloc.add(SetCancelButtonTextEvent(text.isNotEmpty ? text : null)),
+      checkboxOnChanged: (bool enabled, String text) => bloc.add(
+          SetCancelButtonTextEvent((enabled && text.isNotEmpty) ? text : null)),
     );
   }
 }
@@ -156,13 +164,16 @@ final class _TextOptionState extends State<_TextOption> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroDialogModalWidgetShowcaseBloc, MyoroDialogModalWidgetShowcaseState>(
+    return BlocBuilder<MyoroDialogModalWidgetShowcaseBloc,
+        MyoroDialogModalWidgetShowcaseState>(
       builder: (_, MyoroDialogModalWidgetShowcaseState state) {
         return _Input(
           label: '[MyoroDialogModal.text]',
           enabled: state.textEnabled,
-          onChanged: (String text) => _bloc.add(SetTextEvent(text.isNotEmpty ? text : null)),
-          checkboxOnChanged: (bool enabled, String text) => _bloc.add(SetTextEvent((enabled && text.isNotEmpty) ? text : null)),
+          onChanged: (String text) =>
+              _bloc.add(SetTextEvent(text.isNotEmpty ? text : null)),
+          checkboxOnChanged: (bool enabled, String text) => _bloc
+              .add(SetTextEvent((enabled && text.isNotEmpty) ? text : null)),
           controller: _controller,
         );
       },
@@ -181,11 +192,14 @@ final class _TextStyleOption extends StatelessWidget {
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroDialogModal.textStyle]',
-        dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
-        itemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
+        dataConfiguration: MyoroDataConfiguration(
+            staticItems: typographyInstance.allTextStyles),
+        itemBuilder: (TextStyle textStyle) =>
+            MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
         itemLabelBuilder: typographyInstance.getTextStyleName,
       ),
-      onChanged: (TextStyle? textStyle) => bloc.add(SetTextStyleEvent(textStyle)),
+      onChanged: (TextStyle? textStyle) =>
+          bloc.add(SetTextStyleEvent(textStyle)),
     );
   }
 }
@@ -212,7 +226,10 @@ final class _Input extends StatelessWidget {
       child: MyoroInput(
         configuration: MyoroInputConfiguration(
           label: label,
-          inputStyle: context.resolveThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>().inputStyle,
+          inputStyle: context
+              .resolveThemeExtension<
+                  MyoroDialogModalWidgetShowcaseThemeExtension>()
+              .inputStyle,
           onChanged: onChanged,
           checkboxOnChanged: checkboxOnChanged,
           enabled: enabled,
@@ -228,12 +245,15 @@ final class _ChildOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroDialogModalWidgetShowcaseBloc, MyoroDialogModalWidgetShowcaseState>(
+    return BlocBuilder<MyoroDialogModalWidgetShowcaseBloc,
+        MyoroDialogModalWidgetShowcaseState>(
       builder: (_, MyoroDialogModalWidgetShowcaseState state) {
         return MyoroCheckbox(
           label: '[MyoroDialogModal._child] not null?',
           initialValue: state.childEnabled,
-          onChanged: (bool value) => context.resolveBloc<MyoroDialogModalWidgetShowcaseBloc>().add(SetChildEvent(value)),
+          onChanged: (bool value) => context
+              .resolveBloc<MyoroDialogModalWidgetShowcaseBloc>()
+              .add(SetChildEvent(value)),
         );
       },
     );

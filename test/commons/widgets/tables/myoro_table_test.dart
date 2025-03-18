@@ -15,14 +15,16 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroTableThemeExtension>();
 
             return MyoroTable<String>(
               columns: List.generate(
                 columnQuantity,
                 (_) => MyoroTableColumn.fake(),
               ),
-              rowBuilder: (String item) => MyoroTableRow.fake(columnQuantity: columnQuantity),
+              rowBuilder: (String item) =>
+                  MyoroTableRow.fake(columnQuantity: columnQuantity),
               dataConfiguration: MyoroDataConfiguration(
                 staticItems: List.generate(
                   faker.randomGenerator.integer(100),
@@ -52,8 +54,10 @@ void main() {
             w.children.length == 2 &&
             w.children.first is Expanded &&
             (w.children.first as Expanded).child is Container &&
-            ((w.children.first as Expanded).child as Container).decoration == themeExtension.decoration &&
-            ((w.children.first as Expanded).child as Container).child is MyoroLayoutBuilder,
+            ((w.children.first as Expanded).child as Container).decoration ==
+                themeExtension.decoration &&
+            ((w.children.first as Expanded).child as Container).child
+                is MyoroLayoutBuilder,
         // w.children.last is _Footer,
       ),
       findsOneWidget,
@@ -82,11 +86,16 @@ void main() {
             (w.child as Column).children.length == 2 &&
             (w.child as Column).children.first is Flexible &&
             ((w.child as Column).children.first as Flexible).child is Padding &&
-            (((w.child as Column).children.first as Flexible).child as Padding).padding ==
-                (columnQuantity > 1 ? themeExtension.contentPadding.copyWith(top: 0, bottom: 0) : themeExtension.contentPadding) &&
-            (((w.child as Column).children.first as Flexible).child as Padding).child is ValueListenableBuilder<MyoroTableColumn?> &&
+            (((w.child as Column).children.first as Flexible).child as Padding)
+                    .padding ==
+                (columnQuantity > 1
+                    ? themeExtension.contentPadding.copyWith(top: 0, bottom: 0)
+                    : themeExtension.contentPadding) &&
+            (((w.child as Column).children.first as Flexible).child as Padding)
+                .child is ValueListenableBuilder<MyoroTableColumn?> &&
             (w.child as Column).children.last is MyoroBasicDivider &&
-            ((w.child as Column).children.last as MyoroBasicDivider).configuration ==
+            ((w.child as Column).children.last as MyoroBasicDivider)
+                    .configuration ==
                 const MyoroBasicDividerConfiguration(
                   direction: Axis.horizontal,
                 ),
@@ -95,14 +104,18 @@ void main() {
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Row && w.children.length == columnQuantity && w.children.last is Expanded,
+        (Widget w) =>
+            w is Row &&
+            w.children.length == columnQuantity &&
+            w.children.last is Expanded,
       ),
       findsAtLeastNWidgets(1),
     );
 
     // [_TitleColumn].
     expect(
-      find.byWidgetPredicate((Widget w) => w is Padding && w.child is MyoroLayoutBuilder),
+      find.byWidgetPredicate(
+          (Widget w) => w is Padding && w.child is MyoroLayoutBuilder),
       findsAtLeastNWidgets(columnQuantity),
     );
     expect(

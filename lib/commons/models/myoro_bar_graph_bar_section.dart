@@ -39,7 +39,8 @@ final class MyoroBarGraphBarSection extends Equatable {
     return MyoroBarGraphBarSection(
       fromY: fromY,
       toY: faker.randomGenerator.decimal(min: fromY),
-      color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      color: kMyoroTestColors[
+          faker.randomGenerator.integer(kMyoroTestColors.length)],
     );
   }
 

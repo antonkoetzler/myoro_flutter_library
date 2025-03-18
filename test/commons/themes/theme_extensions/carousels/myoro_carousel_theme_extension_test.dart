@@ -13,9 +13,12 @@ void main() {
       previousItemButtonIcon: themeExtension2.previousItemButtonIcon,
       nextItemButtonIcon: themeExtension2.nextItemButtonIcon,
     );
-    expect(copiedThemeExtension.traversalButtonBordered, themeExtension2.traversalButtonBordered);
-    expect(copiedThemeExtension.previousItemButtonIcon, themeExtension2.previousItemButtonIcon);
-    expect(copiedThemeExtension.nextItemButtonIcon, themeExtension2.nextItemButtonIcon);
+    expect(copiedThemeExtension.traversalButtonBordered,
+        themeExtension2.traversalButtonBordered);
+    expect(copiedThemeExtension.previousItemButtonIcon,
+        themeExtension2.previousItemButtonIcon);
+    expect(copiedThemeExtension.nextItemButtonIcon,
+        themeExtension2.nextItemButtonIcon);
   });
 
   test('MyoroCarouselThemeExtension.lerp', () {
@@ -23,15 +26,18 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.traversalButtonBordered,
-        myoroLerp(themeExtension1.traversalButtonBordered, themeExtension2.traversalButtonBordered, i),
+        myoroLerp(themeExtension1.traversalButtonBordered,
+            themeExtension2.traversalButtonBordered, i),
       );
       expect(
         lerpedThemeExtension.previousItemButtonIcon,
-        myoroLerp(themeExtension1.previousItemButtonIcon, themeExtension2.previousItemButtonIcon, i),
+        myoroLerp(themeExtension1.previousItemButtonIcon,
+            themeExtension2.previousItemButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.nextItemButtonIcon,
-        myoroLerp(themeExtension1.nextItemButtonIcon, themeExtension2.nextItemButtonIcon, i),
+        myoroLerp(themeExtension1.nextItemButtonIcon,
+            themeExtension2.nextItemButtonIcon, i),
       );
     }
   });

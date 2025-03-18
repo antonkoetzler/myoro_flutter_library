@@ -8,10 +8,12 @@ import 'package:storyboard/storyboard.dart';
 
 /// Unit test of [MyoroMaterialAppWidgetShowcaseThemeExtension].
 void main() {
-  late final MyoroMaterialAppWidgetShowcaseThemeExtension themeExtension1, themeExtension2;
+  late final MyoroMaterialAppWidgetShowcaseThemeExtension themeExtension1,
+      themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroMaterialAppWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroMaterialAppWidgetShowcaseThemeExtension.fake();
   });
@@ -23,22 +25,33 @@ void main() {
       appBarTextStyle: themeExtension2.appBarTextStyle,
       appBarMenuButtonIcon: themeExtension2.appBarMenuButtonIcon,
       appBarSpacing: themeExtension2.appBarSpacing,
-      themeModeOptionButtonBordered: themeExtension2.themeModeOptionButtonBordered,
-      themeModeOptionButtonDarkModeIcon: themeExtension2.themeModeOptionButtonDarkModeIcon,
-      themeModeOptionButtonLightModeIcon: themeExtension2.themeModeOptionButtonLightModeIcon,
+      themeModeOptionButtonBordered:
+          themeExtension2.themeModeOptionButtonBordered,
+      themeModeOptionButtonDarkModeIcon:
+          themeExtension2.themeModeOptionButtonDarkModeIcon,
+      themeModeOptionButtonLightModeIcon:
+          themeExtension2.themeModeOptionButtonLightModeIcon,
       themeModeOptionTextStyle: themeExtension2.themeModeOptionTextStyle,
       themeModeOptionSpacing: themeExtension2.themeModeOptionSpacing,
     );
-    expect(copiedThemeExtension.appBarContentColor, themeExtension2.appBarContentColor);
+    expect(copiedThemeExtension.appBarContentColor,
+        themeExtension2.appBarContentColor);
     expect(copiedThemeExtension.appBarLogoIcon, themeExtension2.appBarLogoIcon);
-    expect(copiedThemeExtension.appBarTextStyle, themeExtension2.appBarTextStyle);
-    expect(copiedThemeExtension.appBarMenuButtonIcon, themeExtension2.appBarMenuButtonIcon);
+    expect(
+        copiedThemeExtension.appBarTextStyle, themeExtension2.appBarTextStyle);
+    expect(copiedThemeExtension.appBarMenuButtonIcon,
+        themeExtension2.appBarMenuButtonIcon);
     expect(copiedThemeExtension.appBarSpacing, themeExtension2.appBarSpacing);
-    expect(copiedThemeExtension.themeModeOptionButtonBordered, themeExtension2.themeModeOptionButtonBordered);
-    expect(copiedThemeExtension.themeModeOptionButtonDarkModeIcon, themeExtension2.themeModeOptionButtonDarkModeIcon);
-    expect(copiedThemeExtension.themeModeOptionButtonLightModeIcon, themeExtension2.themeModeOptionButtonLightModeIcon);
-    expect(copiedThemeExtension.themeModeOptionTextStyle, themeExtension2.themeModeOptionTextStyle);
-    expect(copiedThemeExtension.themeModeOptionSpacing, themeExtension2.themeModeOptionSpacing);
+    expect(copiedThemeExtension.themeModeOptionButtonBordered,
+        themeExtension2.themeModeOptionButtonBordered);
+    expect(copiedThemeExtension.themeModeOptionButtonDarkModeIcon,
+        themeExtension2.themeModeOptionButtonDarkModeIcon);
+    expect(copiedThemeExtension.themeModeOptionButtonLightModeIcon,
+        themeExtension2.themeModeOptionButtonLightModeIcon);
+    expect(copiedThemeExtension.themeModeOptionTextStyle,
+        themeExtension2.themeModeOptionTextStyle);
+    expect(copiedThemeExtension.themeModeOptionSpacing,
+        themeExtension2.themeModeOptionSpacing);
   });
 
   test('MyoroMaterialAppWidgetShowcaseThemeExtension.lerp', () {
@@ -46,43 +59,53 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.appBarContentColor,
-        Color.lerp(themeExtension1.appBarContentColor, themeExtension2.appBarContentColor, i),
+        Color.lerp(themeExtension1.appBarContentColor,
+            themeExtension2.appBarContentColor, i),
       );
       expect(
         lerpedThemeExtension.appBarLogoIcon,
-        myoroLerp(themeExtension1.appBarLogoIcon, themeExtension2.appBarLogoIcon, i),
+        myoroLerp(
+            themeExtension1.appBarLogoIcon, themeExtension2.appBarLogoIcon, i),
       );
       expect(
         lerpedThemeExtension.appBarTextStyle,
-        TextStyle.lerp(themeExtension1.appBarTextStyle, themeExtension2.appBarTextStyle, i),
+        TextStyle.lerp(themeExtension1.appBarTextStyle,
+            themeExtension2.appBarTextStyle, i),
       );
       expect(
         lerpedThemeExtension.appBarMenuButtonIcon,
-        myoroLerp(themeExtension1.appBarMenuButtonIcon, themeExtension2.appBarMenuButtonIcon, i),
+        myoroLerp(themeExtension1.appBarMenuButtonIcon,
+            themeExtension2.appBarMenuButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.appBarSpacing,
-        lerpDouble(themeExtension1.appBarSpacing, themeExtension2.appBarSpacing, i),
+        lerpDouble(
+            themeExtension1.appBarSpacing, themeExtension2.appBarSpacing, i),
       );
       expect(
         lerpedThemeExtension.themeModeOptionButtonBordered,
-        myoroLerp(themeExtension1.themeModeOptionButtonBordered, themeExtension2.themeModeOptionButtonBordered, i),
+        myoroLerp(themeExtension1.themeModeOptionButtonBordered,
+            themeExtension2.themeModeOptionButtonBordered, i),
       );
       expect(
         lerpedThemeExtension.themeModeOptionButtonDarkModeIcon,
-        myoroLerp(themeExtension1.themeModeOptionButtonDarkModeIcon, themeExtension2.themeModeOptionButtonDarkModeIcon, i),
+        myoroLerp(themeExtension1.themeModeOptionButtonDarkModeIcon,
+            themeExtension2.themeModeOptionButtonDarkModeIcon, i),
       );
       expect(
         lerpedThemeExtension.themeModeOptionButtonLightModeIcon,
-        myoroLerp(themeExtension1.themeModeOptionButtonLightModeIcon, themeExtension2.themeModeOptionButtonLightModeIcon, i),
+        myoroLerp(themeExtension1.themeModeOptionButtonLightModeIcon,
+            themeExtension2.themeModeOptionButtonLightModeIcon, i),
       );
       expect(
         lerpedThemeExtension.themeModeOptionTextStyle,
-        TextStyle.lerp(themeExtension1.themeModeOptionTextStyle, themeExtension2.themeModeOptionTextStyle, i),
+        TextStyle.lerp(themeExtension1.themeModeOptionTextStyle,
+            themeExtension2.themeModeOptionTextStyle, i),
       );
       expect(
         lerpedThemeExtension.themeModeOptionSpacing,
-        lerpDouble(themeExtension1.themeModeOptionSpacing, themeExtension2.themeModeOptionSpacing, i),
+        lerpDouble(themeExtension1.themeModeOptionSpacing,
+            themeExtension2.themeModeOptionSpacing, i),
       );
     }
   });

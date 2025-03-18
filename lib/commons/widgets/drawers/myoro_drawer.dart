@@ -46,8 +46,12 @@ final class MyoroDrawer extends StatelessWidget {
           w is MyoroDrawer &&
           (titleEnabled ? w.title == title : true) &&
           (titleTextStyleEnabled ? w.titleTextStyle == titleTextStyle : true) &&
-          (showCloseButtonEnabled ? w.showCloseButton == showCloseButton : true) &&
-          (barrierDismissableEnabled ? w.barrierDismissable == barrierDismissable : true) &&
+          (showCloseButtonEnabled
+              ? w.showCloseButton == showCloseButton
+              : true) &&
+          (barrierDismissableEnabled
+              ? w.barrierDismissable == barrierDismissable
+              : true) &&
           (childEnabled ? w.child == child : true),
     );
   }
@@ -60,7 +64,8 @@ final class MyoroDrawer extends StatelessWidget {
       children: [
         _Barrier(barrierDismissable),
         Row(
-          mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
+          mainAxisAlignment:
+              !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
           children: [
             if (showCloseButton && isEndDrawer) _CloseButton(isEndDrawer),
             _Drawer(title, titleTextStyle, child),
@@ -99,7 +104,8 @@ final class _Drawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return Padding(
       padding: themeExtension.drawerPadding,
@@ -141,7 +147,8 @@ final class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return Text(
       _title,
@@ -157,14 +164,17 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return MyoroIconTextHoverButton(
       configuration: MyoroHoverButtonConfiguration(
         primaryColor: themeExtension.closeButtonBackgroundColor,
         bordered: themeExtension.closeButtonBordered,
       ),
-      icon: !_isEndDrawer ? themeExtension.closeButtonDrawerIcon : themeExtension.closeButtonEndDrawerIcon,
+      icon: !_isEndDrawer
+          ? themeExtension.closeButtonDrawerIcon
+          : themeExtension.closeButtonEndDrawerIcon,
       onPressed: () => context.closeDrawer(),
     );
   }

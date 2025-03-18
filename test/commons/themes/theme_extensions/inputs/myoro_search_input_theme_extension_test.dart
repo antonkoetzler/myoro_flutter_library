@@ -18,9 +18,12 @@ void main() {
     );
 
     expect(copiedThemeExtension.spacing, themeExtension2.spacing);
-    expect(copiedThemeExtension.searchButtonIcon, themeExtension2.searchButtonIcon);
-    expect(copiedThemeExtension.searchButtonBordered, copiedThemeExtension.searchButtonBordered);
-    expect(copiedThemeExtension.searchButtonLoadingSize, themeExtension2.searchButtonLoadingSize);
+    expect(copiedThemeExtension.searchButtonIcon,
+        themeExtension2.searchButtonIcon);
+    expect(copiedThemeExtension.searchButtonBordered,
+        copiedThemeExtension.searchButtonBordered);
+    expect(copiedThemeExtension.searchButtonLoadingSize,
+        themeExtension2.searchButtonLoadingSize);
   });
 
   test('MyoroSearchInputThemeExtension.copyWith', () {
@@ -32,19 +35,23 @@ void main() {
       );
       expect(
         lerpedThemeExtension.searchButtonIcon,
-        myoroLerp(themeExtension1.searchButtonIcon, themeExtension2.searchButtonIcon, i),
+        myoroLerp(themeExtension1.searchButtonIcon,
+            themeExtension2.searchButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.searchButtonBordered,
-        myoroLerp(themeExtension1.searchButtonBordered, themeExtension2.searchButtonBordered, i),
+        myoroLerp(themeExtension1.searchButtonBordered,
+            themeExtension2.searchButtonBordered, i),
       );
       expect(
         lerpedThemeExtension.searchButtonHoverColor,
-        Color.lerp(themeExtension1.searchButtonHoverColor, themeExtension2.searchButtonHoverColor, i),
+        Color.lerp(themeExtension1.searchButtonHoverColor,
+            themeExtension2.searchButtonHoverColor, i),
       );
       expect(
         lerpedThemeExtension.searchButtonLoadingSize,
-        lerpDouble(themeExtension1.searchButtonLoadingSize, themeExtension2.searchButtonLoadingSize, i),
+        lerpDouble(themeExtension1.searchButtonLoadingSize,
+            themeExtension2.searchButtonLoadingSize, i),
       );
     }
   });

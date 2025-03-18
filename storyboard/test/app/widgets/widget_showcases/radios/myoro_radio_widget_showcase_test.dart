@@ -21,7 +21,8 @@ void main() {
     expect(find.byType(MyoroRadioWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroRadio), findsOneWidget);
-    expect(MyoroInput.finder(label: '[MyoroRadio.label]', labelEnabled: true), findsOneWidget);
+    expect(MyoroInput.finder(label: '[MyoroRadio.label]', labelEnabled: true),
+        findsOneWidget);
     expect(
       MyoroSingularDropdown.finder<TextStyle>(
         label: '[MyoroRadio.labelTextStyle]',

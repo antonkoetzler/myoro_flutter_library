@@ -24,6 +24,8 @@ void main() {
     'MyoroPieGraphWidgetShowcaseBloc.SetCenterWidgetEnabledEvent',
     build: () => MyoroPieGraphWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetCenterWidgetEnabledEvent(centerWidgetEnabled)),
-    expect: () => [MyoroPieGraphWidgetShowcaseState(centerWidgetEnabled: centerWidgetEnabled)],
+    expect: () => [
+      MyoroPieGraphWidgetShowcaseState(centerWidgetEnabled: centerWidgetEnabled)
+    ],
   );
 }

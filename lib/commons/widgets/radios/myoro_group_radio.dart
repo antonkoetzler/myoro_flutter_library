@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroGroupRadioItems = Map<String, bool>;
 
 /// Function executed when any of the radio's values are changed.
-typedef MyoroGroupRadioOnChanged = void Function(String keyChanged, MyoroGroupRadioItems items);
+typedef MyoroGroupRadioOnChanged = void Function(
+    String keyChanged, MyoroGroupRadioItems items);
 
 /// A group of [MyoroRadio]s.
 final class MyoroGroupRadio extends StatefulWidget {
@@ -45,7 +46,9 @@ final class MyoroGroupRadio extends StatefulWidget {
           'pass [radios] within its constructor and remove [radios] here.',
         ),
         assert(
-          notifier == null ? MyoroGroupRadioNotifier.radiosAreValid(radios!) : true,
+          notifier == null
+              ? MyoroGroupRadioNotifier.radiosAreValid(radios!)
+              : true,
           '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioNotifier.radiosAreValid].',
         );
 
@@ -88,7 +91,8 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
 
   MyoroGroupRadioNotifier? _localNotifier;
   MyoroGroupRadioNotifier get _notifier {
-    return widget.notifier ?? (_localNotifier ??= MyoroGroupRadioNotifier(_radios!));
+    return widget.notifier ??
+        (_localNotifier ??= MyoroGroupRadioNotifier(_radios!));
   }
 
   @override
@@ -99,7 +103,8 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
 
     return ValueListenableBuilder(
       valueListenable: _notifier,

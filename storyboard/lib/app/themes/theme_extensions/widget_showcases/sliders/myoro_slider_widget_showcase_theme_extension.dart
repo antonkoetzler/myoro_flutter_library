@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroSliderWidgetShowcase].
-final class MyoroSliderWidgetShowcaseThemeExtension extends ThemeExtension<MyoroSliderWidgetShowcaseThemeExtension> {
+final class MyoroSliderWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroSliderWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -25,7 +26,8 @@ final class MyoroSliderWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   MyoroSliderWidgetShowcaseThemeExtension.fake()
       : inputStyle = MyoroInputStyleEnum.fake(),
         widgetSize = faker.randomGenerator.decimal(),
-        hiddenKittyContainerColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+        hiddenKittyContainerColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)];
 
   @override
   MyoroSliderWidgetShowcaseThemeExtension copyWith({
@@ -36,7 +38,8 @@ final class MyoroSliderWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     return MyoroSliderWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
       widgetSize: widgetSize ?? this.widgetSize,
-      hiddenKittyContainerColor: hiddenKittyContainerColor ?? this.hiddenKittyContainerColor,
+      hiddenKittyContainerColor:
+          hiddenKittyContainerColor ?? this.hiddenKittyContainerColor,
     );
   }
 
@@ -49,7 +52,8 @@ final class MyoroSliderWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       widgetSize: lerpDouble(widgetSize, other.widgetSize, t),
-      hiddenKittyContainerColor: Color.lerp(hiddenKittyContainerColor, other.hiddenKittyContainerColor, t),
+      hiddenKittyContainerColor: Color.lerp(
+          hiddenKittyContainerColor, other.hiddenKittyContainerColor, t),
     );
   }
 }

@@ -23,7 +23,8 @@ final class SetEnabledEvent extends MyoroDropdownWidgetShowcasesEvent {
   const SetEnabledEvent(this.enabled);
 }
 
-final class SetAllowItemClearingEvent extends MyoroDropdownWidgetShowcasesEvent {
+final class SetAllowItemClearingEvent
+    extends MyoroDropdownWidgetShowcasesEvent {
   final bool allowItemClearing;
 
   const SetAllowItemClearingEvent(this.allowItemClearing);
@@ -35,13 +36,15 @@ final class SetMenuMaxHeightEvent extends MyoroDropdownWidgetShowcasesEvent {
   const SetMenuMaxHeightEvent([this.menuMaxHeight]);
 }
 
-final class SetMenuSearchCallbackEnabledEvent extends MyoroDropdownWidgetShowcasesEvent {
+final class SetMenuSearchCallbackEnabledEvent
+    extends MyoroDropdownWidgetShowcasesEvent {
   final bool menuSearchCallbackEnabled;
 
   const SetMenuSearchCallbackEnabledEvent(this.menuSearchCallbackEnabled);
 }
 
-final class SetCheckboxOnChangedEnabledEvent extends MyoroDropdownWidgetShowcasesEvent {
+final class SetCheckboxOnChangedEnabledEvent
+    extends MyoroDropdownWidgetShowcasesEvent {
   final bool checkboxOnChangedEnabled;
 
   const SetCheckboxOnChangedEnabledEvent(this.checkboxOnChangedEnabled);

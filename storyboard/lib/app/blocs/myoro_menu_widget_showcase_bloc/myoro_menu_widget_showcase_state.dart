@@ -40,7 +40,8 @@ final class MyoroMenuWidgetShowcaseState extends Equatable {
       maxWidth: enableMaxWidth ? (maxWidth ?? this.maxWidth) : null,
       minHeight: enableMinHeight ? (minHeight ?? this.minHeight) : null,
       maxHeight: enableMaxHeight ? (maxHeight ?? this.maxHeight) : null,
-      searchCallbackEnabled: searchCallbackEnabled ?? this.searchCallbackEnabled,
+      searchCallbackEnabled:
+          searchCallbackEnabled ?? this.searchCallbackEnabled,
     );
   }
 

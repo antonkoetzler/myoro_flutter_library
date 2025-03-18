@@ -6,7 +6,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget test of [MyoroAppBar].
 void main() {
   final bool bordered = faker.randomGenerator.boolean();
-  final Color? backgroundColor = faker.randomGenerator.boolean() ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] : null;
+  final Color? backgroundColor = faker.randomGenerator.boolean()
+      ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]
+      : null;
 
   testWidgets('MyoroAppBar', (WidgetTester tester) async {
     late final MyoroAppBarThemeExtension themeExtension;
@@ -15,7 +17,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
             return MyoroAppBar(
               bordered: bordered,
@@ -33,7 +36,10 @@ void main() {
     // Wrapper
     expect(
       find.byWidgetPredicate(
-        (w) => w is Column && w.mainAxisSize == MainAxisSize.min && w.children.length == (bordered ? 2 : 1),
+        (w) =>
+            w is Column &&
+            w.mainAxisSize == MainAxisSize.min &&
+            w.children.length == (bordered ? 2 : 1),
       ),
       findsOneWidget,
     );
@@ -44,7 +50,8 @@ void main() {
         (w) =>
             w is Flexible &&
             w.child is Container &&
-            (w.child as Container).color == (backgroundColor ?? themeExtension.primaryColor) &&
+            (w.child as Container).color ==
+                (backgroundColor ?? themeExtension.primaryColor) &&
             (w.child as Container).padding == themeExtension.contentPadding,
       ),
       findsOneWidget,

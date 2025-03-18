@@ -9,7 +9,8 @@ void main() {
   late final MyoroSliderThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroSliderThemeExtension.fake();
     themeExtension2 = MyoroSliderThemeExtension.fake();
   });
@@ -23,8 +24,10 @@ void main() {
     );
     expect(copiedThemeExtension.labelTextStyle, themeExtension2.labelTextStyle);
     expect(copiedThemeExtension.sliderPadding, themeExtension2.sliderPadding);
-    expect(copiedThemeExtension.indicatorTextStyle, themeExtension2.indicatorTextStyle);
-    expect(copiedThemeExtension.indicatorTextAlignment, themeExtension2.indicatorTextAlignment);
+    expect(copiedThemeExtension.indicatorTextStyle,
+        themeExtension2.indicatorTextStyle);
+    expect(copiedThemeExtension.indicatorTextAlignment,
+        themeExtension2.indicatorTextAlignment);
   });
 
   test('MyoroSliderThemeExtension.lerp', () {
@@ -32,19 +35,23 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.labelTextStyle,
-        TextStyle.lerp(themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
+        TextStyle.lerp(
+            themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
       );
       expect(
         lerpedThemeExtension.sliderPadding,
-        EdgeInsets.lerp(themeExtension1.sliderPadding, themeExtension2.sliderPadding, i),
+        EdgeInsets.lerp(
+            themeExtension1.sliderPadding, themeExtension2.sliderPadding, i),
       );
       expect(
         lerpedThemeExtension.indicatorTextStyle,
-        TextStyle.lerp(themeExtension1.indicatorTextStyle, themeExtension2.indicatorTextStyle, i),
+        TextStyle.lerp(themeExtension1.indicatorTextStyle,
+            themeExtension2.indicatorTextStyle, i),
       );
       expect(
         lerpedThemeExtension.indicatorTextAlignment,
-        myoroLerp(themeExtension1.indicatorTextAlignment, themeExtension2.indicatorTextAlignment, i),
+        myoroLerp(themeExtension1.indicatorTextAlignment,
+            themeExtension2.indicatorTextAlignment, i),
       );
     }
   });

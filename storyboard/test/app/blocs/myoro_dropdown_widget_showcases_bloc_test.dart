@@ -11,12 +11,14 @@ void main() {
   late final TextStyle labelTextStyle;
   final bool enabled = faker.randomGenerator.boolean();
   final bool allowItemClearing = faker.randomGenerator.boolean();
-  final double? menuMaxHeight = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final double? menuMaxHeight =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final bool menuSearchCallbackEnabled = faker.randomGenerator.boolean();
   final bool checkboxOnChangedEnabled = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
   });
 
@@ -31,7 +33,8 @@ void main() {
     'MyoroDropdownWidgetShowcaseBloc.SetLabelTextStyleEvent',
     build: () => MyoroDropdownWidgetShowcasesBloc(),
     act: (bloc) => bloc.add(SetLabelTextStyleEvent(labelTextStyle)),
-    expect: () => [MyoroDropdownWidgetShowcasesState(labelTextStyle: labelTextStyle)],
+    expect: () =>
+        [MyoroDropdownWidgetShowcasesState(labelTextStyle: labelTextStyle)],
   );
 
   blocTest(
@@ -45,27 +48,38 @@ void main() {
     'MyoroDropdownWidgetShowcaseBloc.SetAllowItemClearingEvent',
     build: () => MyoroDropdownWidgetShowcasesBloc(),
     act: (bloc) => bloc.add(SetAllowItemClearingEvent(allowItemClearing)),
-    expect: () => [MyoroDropdownWidgetShowcasesState(allowItemClearing: allowItemClearing)],
+    expect: () => [
+      MyoroDropdownWidgetShowcasesState(allowItemClearing: allowItemClearing)
+    ],
   );
 
   blocTest(
     'MyoroDropdownWidgetShowcaseBloc.SetMenuMaxHeightEvent',
     build: () => MyoroDropdownWidgetShowcasesBloc(),
     act: (bloc) => bloc.add(SetMenuMaxHeightEvent(menuMaxHeight)),
-    expect: () => [MyoroDropdownWidgetShowcasesState(menuMaxHeight: menuMaxHeight)],
+    expect: () =>
+        [MyoroDropdownWidgetShowcasesState(menuMaxHeight: menuMaxHeight)],
   );
 
   blocTest(
     'MyoroDropdownWidgetShowcaseBloc.SetMenuSearchCallbackEnabledEvent',
     build: () => MyoroDropdownWidgetShowcasesBloc(),
-    act: (bloc) => bloc.add(SetMenuSearchCallbackEnabledEvent(menuSearchCallbackEnabled)),
-    expect: () => [MyoroDropdownWidgetShowcasesState(menuSearchCallbackEnabled: menuSearchCallbackEnabled)],
+    act: (bloc) =>
+        bloc.add(SetMenuSearchCallbackEnabledEvent(menuSearchCallbackEnabled)),
+    expect: () => [
+      MyoroDropdownWidgetShowcasesState(
+          menuSearchCallbackEnabled: menuSearchCallbackEnabled)
+    ],
   );
 
   blocTest(
     'MyoroDropdownWidgetShowcaseBloc.SetCheckboxOnChangedEvent',
     build: () => MyoroDropdownWidgetShowcasesBloc(),
-    act: (bloc) => bloc.add(SetCheckboxOnChangedEnabledEvent(checkboxOnChangedEnabled)),
-    expect: () => [MyoroDropdownWidgetShowcasesState(checkboxOnChangedEnabled: checkboxOnChangedEnabled)],
+    act: (bloc) =>
+        bloc.add(SetCheckboxOnChangedEnabledEvent(checkboxOnChangedEnabled)),
+    expect: () => [
+      MyoroDropdownWidgetShowcasesState(
+          checkboxOnChangedEnabled: checkboxOnChangedEnabled)
+    ],
   );
 }

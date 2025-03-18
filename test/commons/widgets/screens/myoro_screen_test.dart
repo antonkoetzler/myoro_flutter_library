@@ -9,7 +9,8 @@ void main() {
     await tester.pumpWidget(const MyoroWidgetTester(child: MyoroScreen()));
     await tester.pumpAndSettle();
     expect(find.byType(MyoroScreen), findsOneWidget);
-    expect(find.byType(InheritedProvider<MyoroDrawerController>), findsOneWidget);
+    expect(
+        find.byType(InheritedProvider<MyoroDrawerController>), findsOneWidget);
     expect(find.byType(Scaffold), findsOneWidget);
   });
 }

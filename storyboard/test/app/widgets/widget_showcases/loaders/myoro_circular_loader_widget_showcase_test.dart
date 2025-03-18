@@ -28,6 +28,7 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(MyoroSlider.finder(label: 'Size', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroSlider.finder(label: 'Size', labelEnabled: true), findsOneWidget);
   });
 }

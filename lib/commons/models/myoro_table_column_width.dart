@@ -22,7 +22,9 @@ final class MyoroTableColumnWidth extends Equatable {
     final columnWidthEnum = MyoroTableColumnWidthEnum.fake();
     return MyoroTableColumnWidth(
       columnWidthEnum: columnWidthEnum,
-      fixedWidth: columnWidthEnum.isFixed ? faker.randomGenerator.integer(200, min: 50).toDouble() : null,
+      fixedWidth: columnWidthEnum.isFixed
+          ? faker.randomGenerator.integer(200, min: 50).toDouble()
+          : null,
     );
   }
 
@@ -33,7 +35,8 @@ final class MyoroTableColumnWidth extends Equatable {
     columnWidthEnum = columnWidthEnum ?? this.columnWidthEnum;
     return MyoroTableColumnWidth(
       columnWidthEnum: columnWidthEnum,
-      fixedWidth: columnWidthEnum.isFixed ? (fixedWidth ?? this.fixedWidth) : null,
+      fixedWidth:
+          columnWidthEnum.isFixed ? (fixedWidth ?? this.fixedWidth) : null,
     );
   }
 

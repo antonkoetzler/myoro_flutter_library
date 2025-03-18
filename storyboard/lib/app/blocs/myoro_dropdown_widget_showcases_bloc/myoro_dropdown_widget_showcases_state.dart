@@ -45,12 +45,17 @@ final class MyoroDropdownWidgetShowcasesState extends Equatable {
   }) {
     return MyoroDropdownWidgetShowcasesState(
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleEnabled ? (labelTextStyle ?? this.labelTextStyle) : null,
+      labelTextStyle: labelTextStyleEnabled
+          ? (labelTextStyle ?? this.labelTextStyle)
+          : null,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
-      menuMaxHeight: menuMaxHeightEnabled ? (menuMaxHeight ?? this.menuMaxHeight) : null,
-      menuSearchCallbackEnabled: menuSearchCallbackEnabled ?? this.menuSearchCallbackEnabled,
-      checkboxOnChangedEnabled: checkboxOnChangedEnabled ?? this.checkboxOnChangedEnabled,
+      menuMaxHeight:
+          menuMaxHeightEnabled ? (menuMaxHeight ?? this.menuMaxHeight) : null,
+      menuSearchCallbackEnabled:
+          menuSearchCallbackEnabled ?? this.menuSearchCallbackEnabled,
+      checkboxOnChangedEnabled:
+          checkboxOnChangedEnabled ?? this.checkboxOnChangedEnabled,
     );
   }
 

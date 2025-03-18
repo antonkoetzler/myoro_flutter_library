@@ -44,7 +44,9 @@ final class MyoroMenuItem extends Equatable {
     this.textAlign,
     this.itemBuilder,
   }) : assert(
-          itemBuilder != null ? (icon == null && text == null) : (icon != null || text != null),
+          itemBuilder != null
+              ? (icon == null && text == null)
+              : (icon != null || text != null),
           '[MyoroMenuItem]: If [itemBuilder] is provided, [text] & [icon] must be null. '
           'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
         );
@@ -52,7 +54,8 @@ final class MyoroMenuItem extends Equatable {
   MyoroMenuItem.fake()
       : isHovered = faker.randomGenerator.boolean(),
         onPressed = null,
-        icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        icon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
         iconSize = null,
         text = faker.lorem.word(),
         textStyle = null,

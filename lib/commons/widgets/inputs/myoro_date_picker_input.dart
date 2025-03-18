@@ -52,19 +52,35 @@ final class MyoroDatePickerInput extends StatefulWidget {
       (Widget w) =>
           w is MyoroDatePickerInput &&
           (configurationEnabled ? w.configuration == configuration : true) &&
-          (inputStyleEnabled ? w.configuration.inputStyle == inputStyle : true) &&
+          (inputStyleEnabled
+              ? w.configuration.inputStyle == inputStyle
+              : true) &&
           (textAlignEnabled ? w.configuration.textAlign == textAlign : true) &&
-          (inputTextStyleEnabled ? w.configuration.inputTextStyle == inputTextStyle : true) &&
+          (inputTextStyleEnabled
+              ? w.configuration.inputTextStyle == inputTextStyle
+              : true) &&
           (labelEnabled ? w.configuration.label == label : true) &&
-          (placeholderEnabled ? w.configuration.placeholder == placeholder : true) &&
-          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
+          (placeholderEnabled
+              ? w.configuration.placeholder == placeholder
+              : true) &&
+          (labelTextStyleEnabled
+              ? w.configuration.labelTextStyle == labelTextStyle
+              : true) &&
           (suffixEnabled ? w.configuration.suffix == suffix : true) &&
           (enabledEnabled ? w.configuration.enabled == enabled : true) &&
           (readOnlyEnabled ? w.configuration.readOnly == readOnly : true) &&
-          (showClearTextButtonEnabled ? w.configuration.showClearTextButton == showClearTextButton : true) &&
-          (checkboxOnChangedEnabled ? w.configuration.checkboxOnChanged == checkboxOnChanged : true) &&
-          (validationEnabled ? w.configuration.validation == validation : true) &&
-          (onFieldSubmittedEnabled ? w.configuration.onFieldSubmitted == onFieldSubmitted : true) &&
+          (showClearTextButtonEnabled
+              ? w.configuration.showClearTextButton == showClearTextButton
+              : true) &&
+          (checkboxOnChangedEnabled
+              ? w.configuration.checkboxOnChanged == checkboxOnChanged
+              : true) &&
+          (validationEnabled
+              ? w.configuration.validation == validation
+              : true) &&
+          (onFieldSubmittedEnabled
+              ? w.configuration.onFieldSubmitted == onFieldSubmitted
+              : true) &&
           (onChangedEnabled ? w.configuration.onChanged == onChanged : true) &&
           (onClearedEnabled ? w.configuration.onCleared == onCleared : true) &&
           (focusNodeEnabled ? w.configuration.focusNode == focusNode : true) &&
@@ -80,7 +96,8 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   TextEditingController? _localController;
   MyoroInputConfiguration get _configuration {
     return widget.configuration.copyWith(
-      controller: widget.configuration.controller ?? (_localController ??= TextEditingController()),
+      controller: widget.configuration.controller ??
+          (_localController ??= TextEditingController()),
     );
   }
 
@@ -147,7 +164,10 @@ final class _TriggerArea extends StatelessWidget {
       builder: (_, __) {
         return Padding(
           padding: EdgeInsets.only(
-            right: _configuration.controller!.text.isNotEmpty && (_configuration.showClearTextButton ?? true) ? 40 : 0,
+            right: _configuration.controller!.text.isNotEmpty &&
+                    (_configuration.showClearTextButton ?? true)
+                ? 40
+                : 0,
           ),
           child: InkWell(
             focusColor: MyoroColorTheme.transparent,
@@ -159,7 +179,8 @@ final class _TriggerArea extends StatelessWidget {
               builder: (_, BoxConstraints constraints) {
                 return SizedBox(
                   height: 43.1, // Height of the input.
-                  width: constraints.maxWidth - (_configuration.checkboxOnChanged != null ? 30 : 0),
+                  width: constraints.maxWidth -
+                      (_configuration.checkboxOnChanged != null ? 30 : 0),
                 );
               },
             ),

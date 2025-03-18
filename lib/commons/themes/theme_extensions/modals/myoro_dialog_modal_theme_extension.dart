@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroDialogModal].
-final class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThemeExtension> {
+final class MyoroDialogModalThemeExtension
+    extends ThemeExtension<MyoroDialogModalThemeExtension> {
   /// Text style of the simple text option in [_Message].
   final TextStyle textStyle;
 
@@ -40,7 +41,8 @@ final class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogMod
     if (other is! MyoroDialogModalThemeExtension) return this;
     return copyWith(
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      footerButtonsSpacing: lerpDouble(footerButtonsSpacing, other.footerButtonsSpacing, t),
+      footerButtonsSpacing:
+          lerpDouble(footerButtonsSpacing, other.footerButtonsSpacing, t),
     );
   }
 }

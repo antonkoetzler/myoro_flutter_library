@@ -30,7 +30,9 @@ final class MyoroDrawerWidgetShowcaseState extends Equatable {
   }) {
     return MyoroDrawerWidgetShowcaseState(
       title: titleEnabled ? (title ?? this.title) : null,
-      titleTextStyle: titleTextStyleEnabled ? (titleTextStyle ?? this.titleTextStyle) : null,
+      titleTextStyle: titleTextStyleEnabled
+          ? (titleTextStyle ?? this.titleTextStyle)
+          : null,
       showCloseButton: showCloseButton ?? this.showCloseButton,
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
     );

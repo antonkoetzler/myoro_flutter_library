@@ -7,13 +7,20 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   final String title = faker.lorem.word();
   late final TextStyle? titleTextStyle;
-  final EdgeInsets? padding = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null;
-  final double? width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  final double? height = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final EdgeInsets? padding = faker.randomGenerator.boolean()
+      ? EdgeInsets.all(faker.randomGenerator.decimal())
+      : null;
+  final double? width =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final double? height =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   setUp(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
-    titleTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyTheme.instance.randomTextStyle : null;
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
+    titleTextStyle = faker.randomGenerator.boolean()
+        ? MyoroTypographyTheme.instance.randomTextStyle
+        : null;
   });
 
   testWidgets('MyoroCard', (WidgetTester tester) async {
@@ -23,7 +30,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroCardThemeExtension>();
 
             return MyoroCard(
               title: title,
@@ -49,7 +57,8 @@ void main() {
             w.mainAxisSize == MainAxisSize.min &&
             w.children.length == 3 &&
             w.children[1] is SizedBox &&
-            (w.children[1] as SizedBox).height == themeExtension.titleCardSpacing &&
+            (w.children[1] as SizedBox).height ==
+                themeExtension.titleCardSpacing &&
             w.children.last is Flexible,
       ),
       findsOneWidget,
@@ -58,7 +67,10 @@ void main() {
     // [_Title].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Text && w.data == title && w.style == (titleTextStyle ?? themeExtension.textStyle),
+        (Widget w) =>
+            w is Text &&
+            w.data == title &&
+            w.style == (titleTextStyle ?? themeExtension.textStyle),
       ),
       findsOneWidget,
     );

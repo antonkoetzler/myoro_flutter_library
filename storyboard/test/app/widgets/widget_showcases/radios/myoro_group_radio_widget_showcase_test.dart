@@ -22,15 +22,18 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroGroupRadio), findsOneWidget);
     expect(
-      MyoroSingularDropdown.finder<Axis>(label: '[MyoroGroupRadio.direction]', labelEnabled: true),
+      MyoroSingularDropdown.finder<Axis>(
+          label: '[MyoroGroupRadio.direction]', labelEnabled: true),
       findsOneWidget,
     );
     expect(
-      MyoroSlider.finder(label: '[MyoroGroupRadio.spacing]', labelEnabled: true),
+      MyoroSlider.finder(
+          label: '[MyoroGroupRadio.spacing]', labelEnabled: true),
       findsOneWidget,
     );
     expect(
-      MyoroSlider.finder(label: '[MyoroGroupRadio.runSpacing]', labelEnabled: true),
+      MyoroSlider.finder(
+          label: '[MyoroGroupRadio.runSpacing]', labelEnabled: true),
       findsOneWidget,
     );
   });

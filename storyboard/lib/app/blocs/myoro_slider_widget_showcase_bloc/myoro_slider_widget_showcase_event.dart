@@ -23,20 +23,26 @@ final class SetWidthEvent extends MyoroSliderWidgetShowcaseEvent {
   const SetWidthEvent(this.width);
 }
 
-final class SetCurrentValueIndicatorTextBuilderEnabledEvent extends MyoroSliderWidgetShowcaseEvent {
+final class SetCurrentValueIndicatorTextBuilderEnabledEvent
+    extends MyoroSliderWidgetShowcaseEvent {
   final bool currentValueIndicatorTextBuilderEnabled;
 
-  const SetCurrentValueIndicatorTextBuilderEnabledEvent(this.currentValueIndicatorTextBuilderEnabled);
+  const SetCurrentValueIndicatorTextBuilderEnabledEvent(
+      this.currentValueIndicatorTextBuilderEnabled);
 }
 
-final class SetMaxValueIndicatorTextBuilderEnabledEvent extends MyoroSliderWidgetShowcaseEvent {
+final class SetMaxValueIndicatorTextBuilderEnabledEvent
+    extends MyoroSliderWidgetShowcaseEvent {
   final bool maxValueIndicatorTextBuilderEnabled;
 
-  const SetMaxValueIndicatorTextBuilderEnabledEvent(this.maxValueIndicatorTextBuilderEnabled);
+  const SetMaxValueIndicatorTextBuilderEnabledEvent(
+      this.maxValueIndicatorTextBuilderEnabled);
 }
 
-final class SetFooterIndicatorTextBuilderEnabledEvent extends MyoroSliderWidgetShowcaseEvent {
+final class SetFooterIndicatorTextBuilderEnabledEvent
+    extends MyoroSliderWidgetShowcaseEvent {
   final bool footerIndicatorTextBuilderEnabled;
 
-  const SetFooterIndicatorTextBuilderEnabledEvent(this.footerIndicatorTextBuilderEnabled);
+  const SetFooterIndicatorTextBuilderEnabledEvent(
+      this.footerIndicatorTextBuilderEnabled);
 }

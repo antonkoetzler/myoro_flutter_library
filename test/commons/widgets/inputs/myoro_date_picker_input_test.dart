@@ -21,7 +21,10 @@ void main() {
     // Wrapper.
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Stack && w.children.length == 2 && w.children.last is Positioned,
+        (Widget w) =>
+            w is Stack &&
+            w.children.length == 2 &&
+            w.children.last is Positioned,
       ),
       findsOneWidget,
     );
@@ -39,7 +42,8 @@ void main() {
             (w.child as InkWell).focusColor == MyoroColorTheme.transparent &&
             (w.child as InkWell).hoverColor == MyoroColorTheme.transparent &&
             (w.child as InkWell).splashColor == MyoroColorTheme.transparent &&
-            (w.child as InkWell).highlightColor == MyoroColorTheme.transparent &&
+            (w.child as InkWell).highlightColor ==
+                MyoroColorTheme.transparent &&
             (w.child as InkWell).child is MyoroLayoutBuilder,
       ),
       findsOneWidget,

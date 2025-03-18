@@ -25,10 +25,12 @@ void main() {
     'MyoroBuildContextExtension getters',
     (WidgetTester tester) async {
       late final BuildContext context;
-      await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
+      await tester
+          .pumpWidget(createWidget((buildContext) => context = buildContext));
       await tester.pumpAndSettle();
       expect(context.themeData, Theme.of(context));
-      expect(context.isDarkMode, context.themeData.brightness == Brightness.dark);
+      expect(
+          context.isDarkMode, context.themeData.brightness == Brightness.dark);
       expect(context.textTheme, context.themeData.textTheme);
       expect(context.overlay, Overlay.of(context));
       expect(context.mediaQuery, MediaQuery.of(context));
@@ -39,7 +41,8 @@ void main() {
     'MyoroBuildContextExtension.resolveThemeExtension',
     (WidgetTester tester) async {
       late final BuildContext context;
-      await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
+      await tester
+          .pumpWidget(createWidget((buildContext) => context = buildContext));
       await tester.pumpAndSettle();
       expect(
         context.resolveThemeExtension<MyoroMaterialAppThemeExtension>(),
@@ -67,7 +70,8 @@ void main() {
     'MyoroBuildContextExtension.openDrawer',
     (WidgetTester tester) async {
       late final BuildContext context;
-      await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
+      await tester
+          .pumpWidget(createWidget((buildContext) => context = buildContext));
       await tester.pumpAndSettle();
       context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
       await tester.pumpAndSettle();
@@ -79,7 +83,8 @@ void main() {
     'MyoroBuildContextExtension.closeDrawer',
     (WidgetTester tester) async {
       late final BuildContext context;
-      await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
+      await tester
+          .pumpWidget(createWidget((buildContext) => context = buildContext));
       await tester.pumpAndSettle();
       context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
       await tester.pumpAndSettle();
@@ -94,7 +99,8 @@ void main() {
     'MyoroBuildContextExtension.showSnackBar',
     (WidgetTester tester) async {
       late final BuildContext context;
-      await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
+      await tester
+          .pumpWidget(createWidget((buildContext) => context = buildContext));
       await tester.pumpAndSettle();
       context.showSnackBar(snackBar: MyoroSnackBar(message: 'Hello, World!'));
       await tester.pumpAndSettle();
@@ -106,7 +112,8 @@ void main() {
     'MyoroBuildContextExtension.hideSnackBar',
     (WidgetTester tester) async {
       late final BuildContext context;
-      await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
+      await tester
+          .pumpWidget(createWidget((buildContext) => context = buildContext));
       await tester.pumpAndSettle();
       context.showSnackBar(snackBar: MyoroSnackBar(message: 'Hello, World!'));
       await tester.pumpAndSettle();

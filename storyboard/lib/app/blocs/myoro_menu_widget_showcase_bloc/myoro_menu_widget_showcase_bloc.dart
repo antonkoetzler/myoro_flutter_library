@@ -10,7 +10,8 @@ part 'myoro_menu_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroMenuWidgetShowcaseState>;
 
 /// BloC to manage all of the options in [MyoroMenuWidgetShowcase].
-final class MyoroMenuWidgetShowcaseBloc extends Bloc<MyoroMenuWidgetShowcaseEvent, MyoroMenuWidgetShowcaseState> {
+final class MyoroMenuWidgetShowcaseBloc
+    extends Bloc<MyoroMenuWidgetShowcaseEvent, MyoroMenuWidgetShowcaseState> {
   MyoroMenuWidgetShowcaseBloc() : super(const MyoroMenuWidgetShowcaseState()) {
     on<SetMinWidthEvent>(_setMinWidthEvent);
     on<SetMaxWidthEvent>(_setMaxWidthEvent);

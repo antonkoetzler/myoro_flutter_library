@@ -11,7 +11,8 @@ void main() {
     (_) => MyoroPieGraphItem.fake(),
   );
 
-  Future<void> pumpWidget(WidgetTester tester, MyoroPieGraphEnum typeEnum) async {
+  Future<void> pumpWidget(
+      WidgetTester tester, MyoroPieGraphEnum typeEnum) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroPieGraph(
@@ -32,7 +33,10 @@ void main() {
             w is Stack &&
             w.alignment == Alignment.center &&
             w.children.length == (typeEnum.isPie ? 1 : 2) &&
-            (typeEnum.isPie ? true : w.children.last is SizedBox), // The inserted [SizedBox.shrink].
+            (typeEnum.isPie
+                ? true
+                : w.children.last
+                    is SizedBox), // The inserted [SizedBox.shrink].
       ),
       findsOneWidget,
     );
@@ -40,19 +44,24 @@ void main() {
     // [_PieGraph].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is PieChart && w.data.centerSpaceRadius == (typeEnum.isPie ? 0 : 100) && w.data.sections.length == items.length,
+        (Widget w) =>
+            w is PieChart &&
+            w.data.centerSpaceRadius == (typeEnum.isPie ? 0 : 100) &&
+            w.data.sections.length == items.length,
       ),
       findsOneWidget,
     );
   }
 
-  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.pie]', (WidgetTester tester) async {
+  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.pie]',
+      (WidgetTester tester) async {
     const typeEnum = MyoroPieGraphEnum.pie;
     await pumpWidget(tester, typeEnum);
     sharedExpects(typeEnum);
   });
 
-  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.donut]', (WidgetTester tester) async {
+  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.donut]',
+      (WidgetTester tester) async {
     const typeEnum = MyoroPieGraphEnum.donut;
     await pumpWidget(tester, typeEnum);
     sharedExpects(typeEnum);

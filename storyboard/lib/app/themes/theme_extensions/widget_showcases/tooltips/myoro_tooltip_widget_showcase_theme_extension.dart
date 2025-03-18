@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroTooltipWidgetShowcase].
-final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension> {
+final class MyoroTooltipWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -29,7 +30,9 @@ final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<Myor
   MyoroTooltipWidgetShowcaseThemeExtension.fake()
       : inputStyle = MyoroInputStyleEnum.fake(),
         childSize = faker.randomGenerator.decimal(),
-        childDecoration = BoxDecoration(color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
+        childDecoration = BoxDecoration(
+            color: kMyoroTestColors[
+                faker.randomGenerator.integer(kMyoroTestColors.length)]),
         childTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
 
   @override
@@ -56,7 +59,8 @@ final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<Myor
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       childSize: lerpDouble(childSize, other.childSize, t),
-      childDecoration: BoxDecoration.lerp(childDecoration, other.childDecoration, t),
+      childDecoration:
+          BoxDecoration.lerp(childDecoration, other.childDecoration, t),
       childTextStyle: TextStyle.lerp(childTextStyle, other.childTextStyle, t),
     );
   }

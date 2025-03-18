@@ -28,13 +28,15 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
             return MyoroMenu<String>(
               constraints: constraints,
               searchCallback: searchCallback,
               dataConfiguration: dataConfiguration,
-              itemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
+              itemBuilder: (String item) =>
+                  MyoroMenuItem.fake().copyWith(text: item),
             );
           },
         ),
@@ -61,7 +63,8 @@ void main() {
                   borderRadius: themeExtension.borderRadius,
                 ) &&
             w.child is ConstrainedBox &&
-            (w.child as ConstrainedBox).constraints == (constraints ?? const BoxConstraints()) &&
+            (w.child as ConstrainedBox).constraints ==
+                (constraints ?? const BoxConstraints()) &&
             (w.child as ConstrainedBox).child is MyoroResolver,
       ),
       findsOneWidget,
@@ -71,7 +74,8 @@ void main() {
   /// [_Loader] expect.
   void expectLoader() {
     expect(
-      find.byWidgetPredicate((Widget w) => w is Center && w.child is MyoroCircularLoader),
+      find.byWidgetPredicate(
+          (Widget w) => w is Center && w.child is MyoroCircularLoader),
       findsOneWidget,
     );
   }
@@ -149,8 +153,11 @@ void main() {
             (w.child as Column).children.length == 2 &&
             // (w.child as Column).children.first is _SearchBar &&
             (w.child as Column).children.last is Flexible &&
-            ((w.child as Column).children.last as Flexible).child is SingleChildScrollView &&
-            (((w.child as Column).children.last as Flexible).child as SingleChildScrollView).child is Column,
+            ((w.child as Column).children.last as Flexible).child
+                is SingleChildScrollView &&
+            (((w.child as Column).children.last as Flexible).child
+                    as SingleChildScrollView)
+                .child is Column,
       ),
       findsOneWidget,
     );
@@ -162,19 +169,24 @@ void main() {
             w is Padding &&
             w.padding == themeExtension.searchBarPadding &&
             w.child is MyoroInput &&
-            (w.child as MyoroInput).configuration.inputStyle == themeExtension.searchBarInputStyle,
+            (w.child as MyoroInput).configuration.inputStyle ==
+                themeExtension.searchBarInputStyle,
       ),
       findsOneWidget,
     );
 
     // Executing [MyoroMenu.searchCallback] provided to display the empty message dialog.
-    await tester.enterText(find.byType(MyoroInput), 'Skibidi'); // Executes when text changes.
+    await tester.enterText(
+        find.byType(MyoroInput), 'Skibidi'); // Executes when text changes.
     await tester.pumpAndSettle();
 
     // Empty message [_DialogText].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Text && w.data == 'No items to display.' && w.style == themeExtension.dialogTextStyle,
+        (Widget w) =>
+            w is Text &&
+            w.data == 'No items to display.' &&
+            w.style == themeExtension.dialogTextStyle,
       ),
       findsOneWidget,
     );

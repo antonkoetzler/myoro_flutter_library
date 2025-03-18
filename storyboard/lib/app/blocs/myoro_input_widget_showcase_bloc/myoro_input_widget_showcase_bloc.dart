@@ -10,8 +10,10 @@ part 'myoro_input_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroInputWidgetShowcaseState>;
 
 /// BLoC to manage the state in [MyoroInputWidgetShowcase].
-final class MyoroInputWidgetShowcaseBloc extends Bloc<MyoroInputWidgetShowcaseEvent, MyoroInputWidgetShowcaseState> {
-  MyoroInputWidgetShowcaseBloc() : super(const MyoroInputWidgetShowcaseState()) {
+final class MyoroInputWidgetShowcaseBloc
+    extends Bloc<MyoroInputWidgetShowcaseEvent, MyoroInputWidgetShowcaseState> {
+  MyoroInputWidgetShowcaseBloc()
+      : super(const MyoroInputWidgetShowcaseState()) {
     on<SetFormatterEvent>(_setFormatterEvent);
     on<SetInputStyleEvent>(_setInputStyleEvent);
     on<SetTextAlignEvent>(_setTextAlignEvent);
@@ -110,7 +112,8 @@ final class MyoroInputWidgetShowcaseBloc extends Bloc<MyoroInputWidgetShowcaseEv
     );
   }
 
-  void _setShowClearTextButtonEvent(SetShowClearTextButtonEvent event, _Emitter emit) {
+  void _setShowClearTextButtonEvent(
+      SetShowClearTextButtonEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         showClearTextButton: event.enabled,
@@ -118,7 +121,8 @@ final class MyoroInputWidgetShowcaseBloc extends Bloc<MyoroInputWidgetShowcaseEv
     );
   }
 
-  void _setCheckboxOnChangedEnabledEvent(SetCheckboxOnChangedEnabledEvent event, _Emitter emit) {
+  void _setCheckboxOnChangedEnabledEvent(
+      SetCheckboxOnChangedEnabledEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         checkboxOnChangedEnabled: event.enabled,

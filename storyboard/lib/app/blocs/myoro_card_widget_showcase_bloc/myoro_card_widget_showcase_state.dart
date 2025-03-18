@@ -34,7 +34,9 @@ final class MyoroCardWidgetShowcaseState extends Equatable {
   }) {
     return MyoroCardWidgetShowcaseState(
       title: title ?? this.title,
-      titleTextStyle: titleTextStyleEnabled ? (titleTextStyle ?? this.titleTextStyle) : null,
+      titleTextStyle: titleTextStyleEnabled
+          ? (titleTextStyle ?? this.titleTextStyle)
+          : null,
       padding: padding ?? this.padding,
       width: width ?? this.width,
       height: height ?? this.height,

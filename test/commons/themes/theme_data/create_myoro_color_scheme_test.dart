@@ -4,9 +4,14 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Unit test for [createMyoroColorScheme].
 void main() {
-  Brightness brightness(bool isDarkMode) => isDarkMode ? Brightness.dark : Brightness.light;
-  Color primary(bool isDarkMode) => isDarkMode ? MyoroDarkModeColorTheme.primary : MyoroLightModeColorTheme.primary;
-  Color secondary(bool isDarkMode) => isDarkMode ? MyoroDarkModeColorTheme.secondary : MyoroLightModeColorTheme.secondary;
+  Brightness brightness(bool isDarkMode) =>
+      isDarkMode ? Brightness.dark : Brightness.light;
+  Color primary(bool isDarkMode) => isDarkMode
+      ? MyoroDarkModeColorTheme.primary
+      : MyoroLightModeColorTheme.primary;
+  Color secondary(bool isDarkMode) => isDarkMode
+      ? MyoroDarkModeColorTheme.secondary
+      : MyoroLightModeColorTheme.secondary;
 
   test('createMyoroColorScheme', () {
     final darkModeColorScheme = createMyoroColorScheme(true);

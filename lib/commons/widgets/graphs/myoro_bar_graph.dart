@@ -27,13 +27,17 @@ final class MyoroBarGraph extends StatelessWidget {
     bool itemsEnabled = false,
   }) {
     return find.byWidgetPredicate(
-      (Widget w) => w is MyoroBarGraph && (sortedEnabled ? w.sorted == sorted : true) && (itemsEnabled ? w.items == items : true),
+      (Widget w) =>
+          w is MyoroBarGraph &&
+          (sortedEnabled ? w.sorted == sorted : true) &&
+          (itemsEnabled ? w.items == items : true),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
     final List<BarChartGroupData> formattedItems = items
         .map<BarChartGroupData>(
@@ -93,7 +97,8 @@ final class MyoroBarGraph extends StatelessWidget {
             bottomTitles: enabledTitle.copyWith(
               sideTitles: enabledTitle.sideTitles.copyWith(
                 reservedSize: themeExtension.horizontalSideTitleReversedSize,
-                getTitlesWidget: (value, _) => _SideTitle(value, Axis.horizontal),
+                getTitlesWidget: (value, _) =>
+                    _SideTitle(value, Axis.horizontal),
               ),
             ),
             leftTitles: enabledTitle.copyWith(
@@ -125,7 +130,9 @@ final class _SideTitle extends StatelessWidget {
       child: Text(
         _value.toStringAsFixed(_value == 0 || _value == _value.toInt() ? 0 : 2),
         textAlign: TextAlign.right,
-        style: context.resolveThemeExtension<MyoroBarGraphThemeExtension>().sideTitleTextStyle,
+        style: context
+            .resolveThemeExtension<MyoroBarGraphThemeExtension>()
+            .sideTitleTextStyle,
       ),
     );
   }

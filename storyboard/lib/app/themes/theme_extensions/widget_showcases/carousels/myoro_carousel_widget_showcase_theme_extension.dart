@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroCarouselWidgetShowcase].
-final class MyoroCarouselWidgetShowcaseThemeExtension extends ThemeExtension<MyoroCarouselWidgetShowcaseThemeExtension> {
+final class MyoroCarouselWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroCarouselWidgetShowcaseThemeExtension> {
   const MyoroCarouselWidgetShowcaseThemeExtension();
 
   @override

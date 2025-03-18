@@ -10,8 +10,10 @@ part 'myoro_hover_button_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroHoverButtonWidgetShowcaseState>;
 
 /// BLoC to manage all of the state in [MyoroHoverButtonWidgetShowcase].
-final class MyoroHoverButtonWidgetShowcaseBloc extends Bloc<MyoroHoverButtonWidgetShowcaseEvent, MyoroHoverButtonWidgetShowcaseState> {
-  MyoroHoverButtonWidgetShowcaseBloc() : super(const MyoroHoverButtonWidgetShowcaseState()) {
+final class MyoroHoverButtonWidgetShowcaseBloc extends Bloc<
+    MyoroHoverButtonWidgetShowcaseEvent, MyoroHoverButtonWidgetShowcaseState> {
+  MyoroHoverButtonWidgetShowcaseBloc()
+      : super(const MyoroHoverButtonWidgetShowcaseState()) {
     on<SetPrimaryColorEvent>(_setPrimaryColorEvent);
     on<SetOnPrimaryColorEvent>(_setOnPrimaryColorEvent);
     on<SetIsHoveredEvent>((_, emit) => _setIsHoveredEvent(emit));
@@ -58,7 +60,9 @@ final class MyoroHoverButtonWidgetShowcaseBloc extends Bloc<MyoroHoverButtonWidg
   void _setBorderRadiusEvent(SetBorderRadiusEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        borderRadius: event.borderRadius == null ? null : BorderRadius.circular(event.borderRadius!),
+        borderRadius: event.borderRadius == null
+            ? null
+            : BorderRadius.circular(event.borderRadius!),
         borderRadiusEnabled: event.borderRadius != null,
       ),
     );

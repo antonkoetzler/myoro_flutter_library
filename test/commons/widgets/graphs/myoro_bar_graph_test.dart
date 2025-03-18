@@ -19,7 +19,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
             return MyoroBarGraph(
               sorted: sorted,
@@ -36,7 +37,10 @@ void main() {
     // Wrapper.
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Padding && w.padding == const EdgeInsets.only(top: 22) && w.child is BarChart,
+        (Widget w) =>
+            w is Padding &&
+            w.padding == const EdgeInsets.only(top: 22) &&
+            w.child is BarChart,
       ),
       findsOneWidget,
     );
@@ -45,7 +49,10 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is Padding && w.child is Text && (w.child as Text).textAlign == TextAlign.right && (w.child as Text).style == themeExtension.sideTitleTextStyle,
+            w is Padding &&
+            w.child is Text &&
+            (w.child as Text).textAlign == TextAlign.right &&
+            (w.child as Text).style == themeExtension.sideTitleTextStyle,
       ),
       findsAtLeastNWidgets(1),
     );

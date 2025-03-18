@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroHoverButton].
-final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButtonThemeExtension> {
+final class MyoroHoverButtonThemeExtension
+    extends ThemeExtension<MyoroHoverButtonThemeExtension> {
   /// [MyoroColorTheme.transparent] by default.
   final Color primaryColor;
 
@@ -24,9 +25,12 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   });
 
   MyoroHoverButtonThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        borderRadius = BorderRadius.circular(faker.randomGenerator.integer(50).toDouble()),
+      : primaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        onPrimaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        borderRadius =
+            BorderRadius.circular(faker.randomGenerator.integer(50).toDouble()),
         bordered = faker.randomGenerator.boolean();
 
   @override
@@ -45,7 +49,9 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   }
 
   @override
-  MyoroHoverButtonThemeExtension lerp(covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other, double t) {
+  MyoroHoverButtonThemeExtension lerp(
+      covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other,
+      double t) {
     if (other is! MyoroHoverButtonThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),

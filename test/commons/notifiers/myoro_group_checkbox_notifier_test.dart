@@ -5,7 +5,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Unit test [MyoroGroupCheckboxNotifier].
 void main() {
   final checkboxes = {
-    for (int i = 0; i < faker.randomGenerator.integer(50); i++) '$i': faker.randomGenerator.boolean(),
+    for (int i = 0; i < faker.randomGenerator.integer(50); i++)
+      '$i': faker.randomGenerator.boolean(),
   };
   final notifier = MyoroGroupCheckboxNotifier(checkboxes);
 
@@ -23,7 +24,8 @@ void main() {
   tearDownAll(() => notifier.dispose());
 
   test('MyoroGroupCheckboxNotifier.toggle', () {
-    final key = checkboxes.keys.elementAt(faker.randomGenerator.integer(checkboxes.keys.length));
+    final key = checkboxes.keys
+        .elementAt(faker.randomGenerator.integer(checkboxes.keys.length));
     final keyOldValue = notifier.checkboxes[key];
     notifier.toggle(key);
     expect(notifier.checkboxes[key], !keyOldValue!);

@@ -49,11 +49,17 @@ final class MyoroModal extends StatelessWidget {
       (Widget w) =>
           w is MyoroModal &&
           (configurationEnabled ? w.configuration == configuration : true) &&
-          (barrierDismissableEnabled ? w.configuration?.barrierDismissable == barrierDismissable : true) &&
-          (constraintsEnabled ? w.configuration?.constraints == constraints : true) &&
+          (barrierDismissableEnabled
+              ? w.configuration?.barrierDismissable == barrierDismissable
+              : true) &&
+          (constraintsEnabled
+              ? w.configuration?.constraints == constraints
+              : true) &&
           (onClosedEnabled ? w.configuration?.onClosed == onClosed : true) &&
           (titleEnabled ? w.configuration?.title == title : true) &&
-          (showCloseButtonEnabled ? w.configuration?.showCloseButton == showCloseButton : true) &&
+          (showCloseButtonEnabled
+              ? w.configuration?.showCloseButton == showCloseButton
+              : true) &&
           (childEnabled ? w.child == child : true),
     );
   }
@@ -76,7 +82,8 @@ final class MyoroModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroModalThemeExtension>();
     final showCloseButton = configuration?.showCloseButton ?? false;
 
     return Center(
@@ -138,7 +145,9 @@ final class _Title extends StatelessWidget {
       ),
       child: Text(
         _title,
-        style: context.resolveThemeExtension<MyoroModalThemeExtension>().titleTextStyle,
+        style: context
+            .resolveThemeExtension<MyoroModalThemeExtension>()
+            .titleTextStyle,
       ),
     );
   }
@@ -150,7 +159,9 @@ final class _CloseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroIconTextHoverButton(
-      icon: context.resolveThemeExtension<MyoroModalThemeExtension>().closeButtonIcon,
+      icon: context
+          .resolveThemeExtension<MyoroModalThemeExtension>()
+          .closeButtonIcon,
       onPressed: () => Navigator.of(context).pop(),
     );
   }

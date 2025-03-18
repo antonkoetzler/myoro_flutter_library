@@ -11,7 +11,8 @@ import 'package:storyboard/storyboard.dart';
 /// [StoryboardAppBar.preferredSize]'s height. So, for example,
 /// increasing the spacing of the title & header would cause an
 /// overflow.
-final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppBarThemeExtension> {
+final class StoryboardAppBarThemeExtension
+    extends ThemeExtension<StoryboardAppBarThemeExtension> {
   /// [TextStyle] of the title in [_TitleHeader].
   final TextStyle titleTextStyle;
 
@@ -38,8 +39,10 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
   StoryboardAppBarThemeExtension.fake()
       : titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
         subtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        showWidgetOptionsButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        themeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        showWidgetOptionsButtonIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        themeButtonIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
         buttonSpacing = faker.randomGenerator.decimal();
 
   @override
@@ -53,7 +56,8 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
     return StoryboardAppBarThemeExtension(
       titleTextStyle: titleTextStyle ?? this.titleTextStyle,
       subtitleTextStyle: subtitleTextStyle ?? this.subtitleTextStyle,
-      showWidgetOptionsButtonIcon: showWidgetOptionsButtonIcon ?? this.showWidgetOptionsButtonIcon,
+      showWidgetOptionsButtonIcon:
+          showWidgetOptionsButtonIcon ?? this.showWidgetOptionsButtonIcon,
       themeButtonIcon: themeButtonIcon ?? this.themeButtonIcon,
       buttonSpacing: buttonSpacing ?? this.buttonSpacing,
     );
@@ -67,8 +71,10 @@ final class StoryboardAppBarThemeExtension extends ThemeExtension<StoryboardAppB
     if (other is! StoryboardAppBarThemeExtension) return this;
     return copyWith(
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      subtitleTextStyle: TextStyle.lerp(subtitleTextStyle, other.subtitleTextStyle, t),
-      showWidgetOptionsButtonIcon: myoroLerp(showWidgetOptionsButtonIcon, other.showWidgetOptionsButtonIcon, t),
+      subtitleTextStyle:
+          TextStyle.lerp(subtitleTextStyle, other.subtitleTextStyle, t),
+      showWidgetOptionsButtonIcon: myoroLerp(
+          showWidgetOptionsButtonIcon, other.showWidgetOptionsButtonIcon, t),
       themeButtonIcon: myoroLerp(themeButtonIcon, other.themeButtonIcon, t),
       buttonSpacing: lerpDouble(buttonSpacing, other.buttonSpacing, t),
     );

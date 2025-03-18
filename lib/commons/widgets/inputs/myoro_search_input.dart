@@ -77,24 +77,44 @@ final class MyoroSearchInput<T> extends StatefulWidget {
       (Widget w) =>
           w is MyoroSearchInput &&
           (configurationEnabled ? w.configuration == configuration : true) &&
-          (inputStyleEnabled ? w.configuration.inputStyle == inputStyle : true) &&
+          (inputStyleEnabled
+              ? w.configuration.inputStyle == inputStyle
+              : true) &&
           (textAlignEnabled ? w.configuration.textAlign == textAlign : true) &&
-          (inputTextStyleEnabled ? w.configuration.inputTextStyle == inputTextStyle : true) &&
+          (inputTextStyleEnabled
+              ? w.configuration.inputTextStyle == inputTextStyle
+              : true) &&
           (labelEnabled ? w.configuration.label == label : true) &&
-          (placeholderEnabled ? w.configuration.placeholder == placeholder : true) &&
-          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
+          (placeholderEnabled
+              ? w.configuration.placeholder == placeholder
+              : true) &&
+          (labelTextStyleEnabled
+              ? w.configuration.labelTextStyle == labelTextStyle
+              : true) &&
           (suffixEnabled ? w.configuration.suffix == suffix : true) &&
           (enabledEnabled ? w.configuration.enabled == enabled : true) &&
           (readOnlyEnabled ? w.configuration.readOnly == readOnly : true) &&
-          (showClearTextButtonEnabled ? w.configuration.showClearTextButton == showClearTextButton : true) &&
-          (checkboxOnChangedEnabled ? w.configuration.checkboxOnChanged == checkboxOnChanged : true) &&
-          (validationEnabled ? w.configuration.validation == validation : true) &&
-          (onFieldSubmittedEnabled ? w.configuration.onFieldSubmitted == onFieldSubmitted : true) &&
+          (showClearTextButtonEnabled
+              ? w.configuration.showClearTextButton == showClearTextButton
+              : true) &&
+          (checkboxOnChangedEnabled
+              ? w.configuration.checkboxOnChanged == checkboxOnChanged
+              : true) &&
+          (validationEnabled
+              ? w.configuration.validation == validation
+              : true) &&
+          (onFieldSubmittedEnabled
+              ? w.configuration.onFieldSubmitted == onFieldSubmitted
+              : true) &&
           (onChangedEnabled ? w.configuration.onChanged == onChanged : true) &&
           (onClearedEnabled ? w.configuration.onCleared == onCleared : true) &&
           (focusNodeEnabled ? w.configuration.focusNode == focusNode : true) &&
-          (controllerEnabled ? w.configuration.controller == controller : true) &&
-          (requestWhenChangedEnabled ? w.requestWhenChanged == requestWhenChanged : true) &&
+          (controllerEnabled
+              ? w.configuration.controller == controller
+              : true) &&
+          (requestWhenChangedEnabled
+              ? w.requestWhenChanged == requestWhenChanged
+              : true) &&
           (requestEnabled ? w.request == request : true) &&
           (itemBuilderEnabled ? w.itemBuilder == itemBuilder : true),
     );
@@ -112,7 +132,8 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   TextEditingController? _localTextController;
   TextEditingController get _textController {
-    return _configuration.controller ?? (_localTextController ??= TextEditingController());
+    return _configuration.controller ??
+        (_localTextController ??= TextEditingController());
   }
 
   final _formController = MyoroFormController();
@@ -155,21 +176,29 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                 configuration: _configuration.copyWith(
                   controller: _textController,
                   suffix: _SearchButton(status, controller),
-                  onChanged: _requestWhenChanged ? (_) => _formController.finish() : null,
+                  onChanged: _requestWhenChanged
+                      ? (_) => _formController.finish()
+                      : null,
                   onFieldSubmitted: (_) => _formController.finish(),
                 ),
               ),
               ValueListenableBuilder(
                 valueListenable: _displaySearchSectionNotifier,
                 builder: (_, bool displaySearchSection, __) {
-                  if (!(results?.isNotEmpty == true && status.isSuccess && displaySearchSection)) {
+                  if (!(results?.isNotEmpty == true &&
+                      status.isSuccess &&
+                      displaySearchSection)) {
                     return const SizedBox.shrink();
                   }
 
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
+                      SizedBox(
+                          height: context
+                              .resolveThemeExtension<
+                                  MyoroSearchInputThemeExtension>()
+                              .spacing),
                       Flexible(child: _SearchSection(results, _itemBuilder)),
                     ],
                   );
@@ -191,13 +220,16 @@ final class _SearchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
     return MyoroHoverButton(
-      configuration: MyoroHoverButtonConfiguration(bordered: themeExtension.searchButtonBordered),
+      configuration: MyoroHoverButtonConfiguration(
+          bordered: themeExtension.searchButtonBordered),
       onPressed: () => status.isLoading ? {} : formController.finish(),
       builder: (bool hovered, _, Color onPrimaryColor) {
-        final color = hovered ? themeExtension.searchButtonHoverColor : onPrimaryColor;
+        final color =
+            hovered ? themeExtension.searchButtonHoverColor : onPrimaryColor;
 
         return Padding(
           padding: EdgeInsets.all(status.isLoading ? 9.5 : 7.5),

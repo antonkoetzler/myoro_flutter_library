@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroLayoutBuilderWidgetShowcase].
-final class MyoroLayoutBuilderWidgetShowcaseThemeExtension extends ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension> {
+final class MyoroLayoutBuilderWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension> {
   /// [TextStyle] of everything.
   final TextStyle textStyle;
 
@@ -35,7 +36,8 @@ final class MyoroLayoutBuilderWidgetShowcaseThemeExtension extends ThemeExtensio
 
   @override
   MyoroLayoutBuilderWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>? other,
+    covariant ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>?
+        other,
     double t,
   ) {
     if (other is! MyoroLayoutBuilderWidgetShowcaseThemeExtension) return this;

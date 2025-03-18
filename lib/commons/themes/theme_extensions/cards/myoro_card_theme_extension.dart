@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroCard].
-final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> {
+final class MyoroCardThemeExtension
+    extends ThemeExtension<MyoroCardThemeExtension> {
   /// Background color of the card.
   final Color backgroundColor;
 
@@ -34,10 +35,12 @@ final class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtensi
   });
 
   MyoroCardThemeExtension.fake()
-      : backgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      : backgroundColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
         border = Border.all(
           width: faker.randomGenerator.integer(50, min: 1).toDouble(),
-          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+          color: kMyoroTestColors[
+              faker.randomGenerator.integer(kMyoroTestColors.length)],
         ),
         borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
         padding = EdgeInsets.all(faker.randomGenerator.decimal()),

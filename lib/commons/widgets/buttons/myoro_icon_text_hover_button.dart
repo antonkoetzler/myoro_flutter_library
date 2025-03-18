@@ -85,11 +85,17 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
       (Widget w) =>
           w is MyoroIconTextHoverButton &&
           (configurationEnabled ? w.configuration == configuration : true) &&
-          (primaryColorEnabled ? w.configuration?.primaryColor == primaryColor : true) &&
-          (onPrimaryColorEnabled ? w.configuration?.onPrimaryColor == onPrimaryColor : true) &&
+          (primaryColorEnabled
+              ? w.configuration?.primaryColor == primaryColor
+              : true) &&
+          (onPrimaryColorEnabled
+              ? w.configuration?.onPrimaryColor == onPrimaryColor
+              : true) &&
           (isHoveredEnabled ? w.configuration?.isHovered == isHovered : true) &&
           (borderedEnabled ? w.configuration?.bordered == bordered : true) &&
-          (borderRadiusEnabled ? w.configuration?.borderRadius == borderRadius : true) &&
+          (borderRadiusEnabled
+              ? w.configuration?.borderRadius == borderRadius
+              : true) &&
           (tooltipEnabled ? w.configuration?.tooltip == tooltip : true) &&
           (onHoverEnabled ? w.configuration?.onHover == onHover : true) &&
           (iconEnabled ? w.icon == icon : true) &&
@@ -98,14 +104,17 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
           (textStyleEnabled ? w.textStyle == textStyle : true) &&
           (textAlignEnabled ? w.textAlign == textAlign : true) &&
           (paddingEnabled ? w.padding == padding : true) &&
-          (mainAxisAlignmentEnabled ? w.mainAxisAlignment == mainAxisAlignment : true) &&
+          (mainAxisAlignmentEnabled
+              ? w.mainAxisAlignment == mainAxisAlignment
+              : true) &&
           (onPressedEnabled ? w.onPressed == onPressed : true),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroIconTextHoverButtonThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroIconTextHoverButtonThemeExtension>();
     final contentPadding = padding ?? themeExtension.contentPadding;
     final iconProvided = icon != null;
     final textProvided = text.isNotEmpty;
@@ -122,7 +131,8 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
         return Padding(
           padding: contentPadding,
           child: Row(
-            mainAxisAlignment: mainAxisAlignment ?? themeExtension.mainAxisAlignment,
+            mainAxisAlignment:
+                mainAxisAlignment ?? themeExtension.mainAxisAlignment,
             children: [
               if (iconProvided)
                 Icon(
@@ -135,7 +145,8 @@ final class MyoroIconTextHoverButton extends StatelessWidget {
                 Expanded(
                   child: Text(
                     text,
-                    textAlign: textAlign ?? (iconProvided ? TextAlign.left : TextAlign.center),
+                    textAlign: textAlign ??
+                        (iconProvided ? TextAlign.left : TextAlign.center),
                     maxLines: themeExtension.textMaxLines,
                     overflow: themeExtension.textOverflow,
                     style: (textStyle ?? themeExtension.textStyle).withColor(

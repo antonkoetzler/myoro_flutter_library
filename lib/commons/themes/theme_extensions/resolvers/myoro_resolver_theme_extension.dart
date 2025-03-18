@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroResolver].
-final class MyoroResolverThemeExtension extends ThemeExtension<MyoroResolverThemeExtension> {
+final class MyoroResolverThemeExtension
+    extends ThemeExtension<MyoroResolverThemeExtension> {
   const MyoroResolverThemeExtension();
 
   @override

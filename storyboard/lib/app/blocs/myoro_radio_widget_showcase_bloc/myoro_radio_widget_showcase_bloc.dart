@@ -10,8 +10,10 @@ part 'myoro_radio_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroRadioWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroRadioWidgetShowcase].
-final class MyoroRadioWidgetShowcaseBloc extends Bloc<MyoroRadioWidgetShowcaseEvent, MyoroRadioWidgetShowcaseState> {
-  MyoroRadioWidgetShowcaseBloc() : super(const MyoroRadioWidgetShowcaseState()) {
+final class MyoroRadioWidgetShowcaseBloc
+    extends Bloc<MyoroRadioWidgetShowcaseEvent, MyoroRadioWidgetShowcaseState> {
+  MyoroRadioWidgetShowcaseBloc()
+      : super(const MyoroRadioWidgetShowcaseState()) {
     on<SetLabelEvent>(_setLabelEvent);
     on<SetLabelTextStyleEvent>(_setLabelTextStyleEvent);
   }

@@ -49,8 +49,10 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(MyoroInput.finder(label: '[label]', labelEnabled: true), findsOneWidget);
-    expect(MyoroInput.finder(label: '[placeholder]', labelEnabled: true), findsOneWidget);
+    expect(MyoroInput.finder(label: '[label]', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroInput.finder(label: '[placeholder]', labelEnabled: true),
+        findsOneWidget);
     expect(
       MyoroSingularDropdown.finder<TextStyle>(
         label: '[labelTextStyle]',
@@ -58,10 +60,19 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(MyoroCheckbox.finder(label: '[suffix] enabled?', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: '[enabled]', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: '[readOnly]', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: '[showClearTextButton]', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: '[checkboxOnChanged] not null?', labelEnabled: true), findsOneWidget);
+    expect(MyoroCheckbox.finder(label: '[suffix] enabled?', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroCheckbox.finder(label: '[enabled]', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroCheckbox.finder(label: '[readOnly]', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(
+            label: '[showClearTextButton]', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(
+            label: '[checkboxOnChanged] not null?', labelEnabled: true),
+        findsOneWidget);
   });
 }

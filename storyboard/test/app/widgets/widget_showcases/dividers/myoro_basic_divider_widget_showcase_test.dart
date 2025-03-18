@@ -20,11 +20,23 @@ void main() {
     expect(find.byType(MyoroBasicDividerWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroBasicDivider), findsAtLeastNWidgets(1));
-    expect(MyoroIconTextHoverButton.finder(text: 'A button', textEnabled: true), findsOneWidget);
-    expect(MyoroIconTextHoverButton.finder(text: 'Another button', textEnabled: true), findsOneWidget);
-    expect(MyoroSingularDropdown.finder(label: '[MyoroBasicDivider.direction]', labelEnabled: true), findsOneWidget);
-    expect(MyoroSlider.finder(label: '[MyoroBasicDivider.shortValue]', labelEnabled: true), findsOneWidget);
-    expect(MyoroSlider.finder(label: 'Vertical padding', labelEnabled: true), findsOneWidget);
-    expect(MyoroSlider.finder(label: 'Horizontal padding', labelEnabled: true), findsOneWidget);
+    expect(MyoroIconTextHoverButton.finder(text: 'A button', textEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroIconTextHoverButton.finder(
+            text: 'Another button', textEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroSingularDropdown.finder(
+            label: '[MyoroBasicDivider.direction]', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroSlider.finder(
+            label: '[MyoroBasicDivider.shortValue]', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroSlider.finder(label: 'Vertical padding', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroSlider.finder(label: 'Horizontal padding', labelEnabled: true),
+        findsOneWidget);
   });
 }

@@ -11,14 +11,16 @@ void main() {
   late final TextStyle labelTextStyle1, labelTextStyle2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     labelTextStyle1 = MyoroTypographyTheme.instance.randomTextStyle;
     labelTextStyle2 = MyoroTypographyTheme.instance.randomTextStyle;
   });
 
   blocTest(
     'MyoroCheckboxWidgetShowcaseBloc.SetLabelEvent',
-    build: () => MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
+    build: () =>
+        MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
     act: (bloc) => bloc.add(SetLabelEvent(label)),
     expect: () => [
       MyoroCheckboxWidgetShowcaseState(
@@ -30,7 +32,8 @@ void main() {
 
   blocTest(
     'MyoroCheckboxWidgetShowcaseBloc.SetLabelTextStyleEvent',
-    build: () => MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
+    build: () =>
+        MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
     act: (bloc) => bloc.add(SetLabelTextStyleEvent(labelTextStyle2)),
     expect: () => [
       MyoroCheckboxWidgetShowcaseState(

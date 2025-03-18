@@ -17,7 +17,8 @@ final class SetOnPrimaryColorEvent extends MyoroHoverButtonWidgetShowcaseEvent {
   const SetOnPrimaryColorEvent(this.color);
 }
 
-final class SetOnPressedEnabledEvent extends MyoroHoverButtonWidgetShowcaseEvent {
+final class SetOnPressedEnabledEvent
+    extends MyoroHoverButtonWidgetShowcaseEvent {
   const SetOnPressedEnabledEvent();
 }
 

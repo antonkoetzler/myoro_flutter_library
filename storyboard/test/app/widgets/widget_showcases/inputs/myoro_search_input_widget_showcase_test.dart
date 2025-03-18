@@ -21,7 +21,8 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroSearchInput<String>), findsOneWidget);
     expect(
-      MyoroCheckbox.finder(label: '[MyoroSearchInput.requestWhenChanged]', labelEnabled: true),
+      MyoroCheckbox.finder(
+          label: '[MyoroSearchInput.requestWhenChanged]', labelEnabled: true),
       findsOneWidget,
     );
   });

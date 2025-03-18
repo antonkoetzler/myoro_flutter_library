@@ -62,7 +62,8 @@ final class _PieGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
 
     return PieChart(
       PieChartData(

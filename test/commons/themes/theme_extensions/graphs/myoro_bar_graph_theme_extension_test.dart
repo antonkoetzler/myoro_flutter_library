@@ -11,7 +11,8 @@ void main() {
   late final MyoroBarGraphThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroBarGraphThemeExtension.fake();
     themeExtension2 = MyoroBarGraphThemeExtension.fake();
   });
@@ -23,16 +24,23 @@ void main() {
       barBorderRadius: themeExtension2.barBorderRadius,
       sideTitleTextStyle: themeExtension2.sideTitleTextStyle,
       sideTitleInterval: themeExtension2.sideTitleInterval,
-      verticalSideTitleReversedSize: themeExtension2.verticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize: themeExtension2.horizontalSideTitleReversedSize,
+      verticalSideTitleReversedSize:
+          themeExtension2.verticalSideTitleReversedSize,
+      horizontalSideTitleReversedSize:
+          themeExtension2.horizontalSideTitleReversedSize,
     );
     expect(copiedThemeExtension.border, themeExtension2.border);
     expect(copiedThemeExtension.barColor, themeExtension2.barColor);
-    expect(copiedThemeExtension.barBorderRadius, themeExtension2.barBorderRadius);
-    expect(copiedThemeExtension.sideTitleTextStyle, themeExtension2.sideTitleTextStyle);
-    expect(copiedThemeExtension.sideTitleInterval, themeExtension2.sideTitleInterval);
-    expect(copiedThemeExtension.verticalSideTitleReversedSize, themeExtension2.verticalSideTitleReversedSize);
-    expect(copiedThemeExtension.horizontalSideTitleReversedSize, themeExtension2.horizontalSideTitleReversedSize);
+    expect(
+        copiedThemeExtension.barBorderRadius, themeExtension2.barBorderRadius);
+    expect(copiedThemeExtension.sideTitleTextStyle,
+        themeExtension2.sideTitleTextStyle);
+    expect(copiedThemeExtension.sideTitleInterval,
+        themeExtension2.sideTitleInterval);
+    expect(copiedThemeExtension.verticalSideTitleReversedSize,
+        themeExtension2.verticalSideTitleReversedSize);
+    expect(copiedThemeExtension.horizontalSideTitleReversedSize,
+        themeExtension2.horizontalSideTitleReversedSize);
   });
 
   test('MyoroBarGraphThemeExtension.lerp', () {
@@ -48,23 +56,28 @@ void main() {
       );
       expect(
         lerpedThemeExtension.barBorderRadius,
-        BorderRadius.lerp(themeExtension1.barBorderRadius, themeExtension2.barBorderRadius, i),
+        BorderRadius.lerp(themeExtension1.barBorderRadius,
+            themeExtension2.barBorderRadius, i),
       );
       expect(
         lerpedThemeExtension.sideTitleTextStyle,
-        TextStyle.lerp(themeExtension1.sideTitleTextStyle, themeExtension2.sideTitleTextStyle, i),
+        TextStyle.lerp(themeExtension1.sideTitleTextStyle,
+            themeExtension2.sideTitleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.sideTitleInterval,
-        lerpDouble(themeExtension1.sideTitleInterval, themeExtension2.sideTitleInterval, i),
+        lerpDouble(themeExtension1.sideTitleInterval,
+            themeExtension2.sideTitleInterval, i),
       );
       expect(
         lerpedThemeExtension.verticalSideTitleReversedSize,
-        lerpDouble(themeExtension1.verticalSideTitleReversedSize, themeExtension2.verticalSideTitleReversedSize, i),
+        lerpDouble(themeExtension1.verticalSideTitleReversedSize,
+            themeExtension2.verticalSideTitleReversedSize, i),
       );
       expect(
         lerpedThemeExtension.horizontalSideTitleReversedSize,
-        lerpDouble(themeExtension1.horizontalSideTitleReversedSize, themeExtension2.horizontalSideTitleReversedSize, i),
+        lerpDouble(themeExtension1.horizontalSideTitleReversedSize,
+            themeExtension2.horizontalSideTitleReversedSize, i),
       );
     }
   });

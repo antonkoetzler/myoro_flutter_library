@@ -46,12 +46,14 @@ void main() {
 
   test('MyoroDataConfiguration.addFilters', () {
     final filters = {
-      for (int i = 0; i < faker.randomGenerator.integer(9999); i++) '#$i: ${faker.lorem.word()}': faker.sport.name(),
+      for (int i = 0; i < faker.randomGenerator.integer(9999); i++)
+        '#$i: ${faker.lorem.word()}': faker.sport.name(),
     };
     model.addFilters(filters);
     for (int i = 0; i < filters.keys.length; i++) {
       expect(model.filters.containsKey(filters.keys.elementAt(i)), isTrue);
-      expect(model.filters.containsValue(filters[filters.keys.elementAt(i)]), isTrue);
+      expect(model.filters.containsValue(filters[filters.keys.elementAt(i)]),
+          isTrue);
     }
   });
 
@@ -67,12 +69,14 @@ void main() {
   });
 
   test('MyoroDataConfiguration getters', () async {
-    final staticItemsModel = MyoroDataConfiguration(staticItems: const ['Static']);
+    final staticItemsModel =
+        MyoroDataConfiguration(staticItems: const ['Static']);
     expect(staticItemsModel.staticItemsUsed, isTrue);
     expect(staticItemsModel.asyncronousItemsUsed, isFalse);
     expect(await staticItemsModel.items, ['Static']);
 
-    final asyncronousItemsModel = MyoroDataConfiguration(asyncronousItems: (_) async => ['Asyncronous']);
+    final asyncronousItemsModel =
+        MyoroDataConfiguration(asyncronousItems: (_) async => ['Asyncronous']);
     expect(asyncronousItemsModel.staticItemsUsed, isFalse);
     expect(asyncronousItemsModel.asyncronousItemsUsed, isTrue);
     expect(await asyncronousItemsModel.items, ['Asyncronous']);

@@ -6,21 +6,25 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget test of [MyoroCheckbox].
 void main() {
   setUp(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
   });
 
   testWidgets('MyoroCheckbox', (WidgetTester tester) async {
     late final MyoroCheckboxThemeExtension themeExtension;
 
     final String label = faker.lorem.word();
-    final TextStyle? labelTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyTheme.instance.randomTextStyle : null;
+    final TextStyle? labelTextStyle = faker.randomGenerator.boolean()
+        ? MyoroTypographyTheme.instance.randomTextStyle
+        : null;
     final bool initialValue = faker.randomGenerator.boolean();
 
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
             return MyoroCheckbox(
               label: label,
@@ -81,7 +85,8 @@ void main() {
             (w.child as Padding).padding == const EdgeInsets.only(bottom: 4) &&
             (w.child as Padding).child is Text &&
             ((w.child as Padding).child as Text).data == label &&
-            ((w.child as Padding).child as Text).style == (labelTextStyle ?? themeExtension.labelTextStyle),
+            ((w.child as Padding).child as Text).style ==
+                (labelTextStyle ?? themeExtension.labelTextStyle),
       ),
       findsOneWidget,
     );

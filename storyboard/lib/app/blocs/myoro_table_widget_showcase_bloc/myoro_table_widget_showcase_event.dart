@@ -17,7 +17,8 @@ final class SetEnableCheckboxesEvent extends MyoroTableWidgetShowcaseEvent {
   const SetEnableCheckboxesEvent(this.enableCheckboxes);
 }
 
-final class SetShowPaginationControlsEvent extends MyoroTableWidgetShowcaseEvent {
+final class SetShowPaginationControlsEvent
+    extends MyoroTableWidgetShowcaseEvent {
   final bool showPaginationControls;
 
   const SetShowPaginationControlsEvent(this.showPaginationControls);

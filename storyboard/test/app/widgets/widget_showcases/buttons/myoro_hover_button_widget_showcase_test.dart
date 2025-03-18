@@ -9,7 +9,8 @@ void main() {
   void expectColorDropdown({required String label}) {
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroSingularDropdown<Color> && w.configuration.label == label,
+        (Widget w) =>
+            w is MyoroSingularDropdown<Color> && w.configuration.label == label,
       ),
       findsOneWidget,
     );
@@ -17,7 +18,8 @@ void main() {
 
   void expectCheckbox({required String label}) {
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == label),
+      find.byWidgetPredicate(
+          (Widget w) => w is MyoroCheckbox && w.label == label),
       findsOneWidget,
     );
   }
@@ -31,7 +33,8 @@ void main() {
         child: MyoroWidgetTester(
           themeExtensionsBuilder: createStoryboardThemeExtensions,
           child: Builder(builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+            themeExtension = context.resolveThemeExtension<
+                MyoroHoverButtonWidgetShowcaseThemeExtension>();
             return const MyoroHoverButtonWidgetShowcase();
           }),
         ),
@@ -48,7 +51,11 @@ void main() {
     // Content within [MyoroHoverButton] in [_Widget].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Padding && w.padding == themeExtension.widgetContentPadding && w.child is Text && (w.child as Text).data == 'Click me!',
+        (Widget w) =>
+            w is Padding &&
+            w.padding == themeExtension.widgetContentPadding &&
+            w.child is Text &&
+            (w.child as Text).data == 'Click me!',
       ),
       findsOneWidget,
     );
@@ -57,7 +64,8 @@ void main() {
     expectColorDropdown(label: '[MyoroHoverButtonConfiguration.primaryColor]');
 
     // [_OnPrimaryColorDropdown].
-    expectColorDropdown(label: '[MyoroHoverButtonConfiguration.onPrimaryColor]');
+    expectColorDropdown(
+        label: '[MyoroHoverButtonConfiguration.onPrimaryColor]');
 
     // [_IsHoveredCheckbox].
     expectCheckbox(label: '[MyoroHoverButtonConfiguration.isHovered]');
@@ -72,7 +80,8 @@ void main() {
             w is Column &&
             w.mainAxisSize == MainAxisSize.min &&
             w.children.first is MyoroSlider &&
-            (w.children.first as MyoroSlider).label == '[MyoroHoverButtonConfiguration.borderRadius]',
+            (w.children.first as MyoroSlider).label ==
+                '[MyoroHoverButtonConfiguration.borderRadius]',
       ),
       findsOneWidget,
     );

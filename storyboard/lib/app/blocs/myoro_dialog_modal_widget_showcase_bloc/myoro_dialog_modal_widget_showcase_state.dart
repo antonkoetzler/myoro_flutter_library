@@ -71,11 +71,17 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
 
     return MyoroDialogModalWidgetShowcaseState(
       invertButtons: invertButtons ?? this.invertButtons,
-      confirmButtonText: confirmButtonTextEnabled ? (confirmButtonText ?? this.confirmButtonText) : null,
-      cancelButtonText: cancelButtonTextEnabled ? (cancelButtonText ?? this.cancelButtonText) : null,
+      confirmButtonText: confirmButtonTextEnabled
+          ? (confirmButtonText ?? this.confirmButtonText)
+          : null,
+      cancelButtonText: cancelButtonTextEnabled
+          ? (cancelButtonText ?? this.cancelButtonText)
+          : null,
       text: textEnabled ? (text ?? this.text) : null,
       textEnabled: textEnabled,
-      textStyle: textStyleEnabled && !childEnabled ? (textStyle ?? this.textStyle) : null,
+      textStyle: textStyleEnabled && !childEnabled
+          ? (textStyle ?? this.textStyle)
+          : null,
       childEnabled: childEnabled,
     );
   }

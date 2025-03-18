@@ -4,7 +4,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroSnackBarWidgetShowcase].
-final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension> {
+final class MyoroSnackBarWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] for inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -23,7 +24,8 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   MyoroSnackBarWidgetShowcaseThemeExtension.fake()
       : inputStyle = MyoroInputStyleEnum.fake(),
         widgetBordered = faker.randomGenerator.boolean(),
-        childIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+        childIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   @override
   MyoroSnackBarWidgetShowcaseThemeExtension copyWith({

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to createMyoro the [List<ThemeExtension>] for [createMyoroMyoroThemeData]'s [ThemeData].
-List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     ...createMyoroAppBarThemeExtensions(colorScheme),
     ...createMyoroButtonThemeExtensions(colorScheme, textTheme),
@@ -39,7 +40,8 @@ List<ThemeExtension> createMyoroAppBarThemeExtensions(ColorScheme colorScheme) {
   ];
 }
 
-List<ThemeExtension> createMyoroButtonThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroButtonThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroHoverButtonThemeExtension(
       primaryColor: colorScheme.primary,
@@ -60,7 +62,8 @@ List<ThemeExtension> createMyoroButtonThemeExtensions(ColorScheme colorScheme, T
   ];
 }
 
-List<ThemeExtension> createMyoroCardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroCardThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroCardThemeExtension(
       backgroundColor: colorScheme.onPrimary.withValues(alpha: 0.1),
@@ -86,7 +89,8 @@ List<ThemeExtension> createMyoroCarouselThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> createMyoroCheckboxThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroCheckboxThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroCheckboxThemeExtension(
       activeColor: colorScheme.onPrimary,
@@ -105,7 +109,8 @@ List<ThemeExtension> createMyoroCheckboxThemeExtensions(ColorScheme colorScheme,
   ];
 }
 
-List<ThemeExtension> createMyoroDividerThemeExtensions(ColorScheme colorScheme) {
+List<ThemeExtension> createMyoroDividerThemeExtensions(
+    ColorScheme colorScheme) {
   return [
     MyoroBasicDividerThemeExtension(
       color: colorScheme.onPrimary,
@@ -131,7 +136,8 @@ List<ThemeExtension> createMyoroDropdownThemeExtensions(TextTheme textTheme) {
   ];
 }
 
-List<ThemeExtension> createMyoroDrawerThemeExtension(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroDrawerThemeExtension(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroDrawerThemeExtension(
       drawerPadding: const EdgeInsets.all(20),
@@ -162,7 +168,8 @@ List<ThemeExtension> createMyoroFormThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> createMyoroGraphThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroGraphThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroBarGraphThemeExtension(
       border: Border.all(
@@ -174,7 +181,8 @@ List<ThemeExtension> createMyoroGraphThemeExtensions(ColorScheme colorScheme, Te
       sideTitleTextStyle: textTheme.bodySmall!,
       sideTitleInterval: kMyoroGraphSideTitleInterval,
       verticalSideTitleReversedSize: kMyoroGraphVerticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize: kMyoroGraphHorizontalSideTitleReversedSize,
+      horizontalSideTitleReversedSize:
+          kMyoroGraphHorizontalSideTitleReversedSize,
     ),
     MyoroPieGraphThemeExtension(
       itemColor: colorScheme.onPrimary,
@@ -183,7 +191,8 @@ List<ThemeExtension> createMyoroGraphThemeExtensions(ColorScheme colorScheme, Te
   ];
 }
 
-List<ThemeExtension> createMyoroInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroInputThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     const MyoroDatePickerInputThemeExtension(),
     MyoroInputThemeExtension(
@@ -244,7 +253,8 @@ List<ThemeExtension> createMyoroMaterialAppThemeExtensions() {
   ];
 }
 
-List<ThemeExtension> createMyoroMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroMenuThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroMenuThemeExtension(
       primaryColor: colorScheme.primary,
@@ -261,7 +271,8 @@ List<ThemeExtension> createMyoroMenuThemeExtensions(ColorScheme colorScheme, Tex
   ];
 }
 
-List<ThemeExtension> createMyoroModalThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroModalThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   const width = 300.0;
   const height = 400.0;
 
@@ -291,7 +302,8 @@ List<ThemeExtension> createMyoroModalThemeExtensions(ColorScheme colorScheme, Te
   ];
 }
 
-List<ThemeExtension> createMyoroRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroRadioThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroRadioThemeExtension(
       activeColor: colorScheme.onPrimary,
@@ -331,7 +343,8 @@ List<ThemeExtension> createMyoroSliderThemeExtensions(TextTheme textTheme) {
   ];
 }
 
-List<ThemeExtension> createMyoroSnackBarThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroSnackBarThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     const MyoroSnackBarContainerThemeExtension(
       primaryColor: MyoroColorTheme.transparent,
@@ -359,7 +372,8 @@ List<ThemeExtension> createMyoroSnackBarThemeExtensions(ColorScheme colorScheme,
   ];
 }
 
-List<ThemeExtension> createMyoroTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroTableThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     MyoroTableThemeExtension(
       decoration: BoxDecoration(
@@ -377,8 +391,10 @@ List<ThemeExtension> createMyoroTableThemeExtensions(ColorScheme colorScheme, Te
       tableFooterSpacing: 15,
       emptyMessageTextStyle: textTheme.titleMedium!,
       titleTextStyle: textTheme.titleSmall!,
-      errorMessageHeaderTextStyle: textTheme.titleMedium!.withColor(colorScheme.error),
-      errorMessageErrorTextStyle: textTheme.bodyMedium!.withColor(colorScheme.error),
+      errorMessageHeaderTextStyle:
+          textTheme.titleMedium!.withColor(colorScheme.error),
+      errorMessageErrorTextStyle:
+          textTheme.bodyMedium!.withColor(colorScheme.error),
       buttonConfiguration: const MyoroHoverButtonConfiguration(bordered: true),
       messageSpacing: 20,
       footerSpacing: 5,

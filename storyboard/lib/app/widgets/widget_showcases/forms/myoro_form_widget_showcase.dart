@@ -7,7 +7,9 @@ const _errorText = '123';
 
 /// Form & input validation.
 String? _validation(TextEditingController controller) {
-  if (controller.text == _errorText) return 'Error message ($_errorText) provided.';
+  if (controller.text == _errorText) {
+    return 'Error message ($_errorText) provided.';
+  }
   return null;
 }
 
@@ -42,13 +44,16 @@ class _WidgetState extends State<_Widget> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
 
     return MyoroForm<_FormResult>(
       validation: () => _validation(_controller),
       request: () => ('Form finish successfully!', themeExtension.successColor),
-      onSuccess: (_FormResult? result) => _formResultTextNotifier.value = result,
-      onError: (String errorMessage) => _formResultTextNotifier.value = (errorMessage, themeExtension.errorColor),
+      onSuccess: (_FormResult? result) =>
+          _formResultTextNotifier.value = result,
+      onError: (String errorMessage) => _formResultTextNotifier.value =
+          (errorMessage, themeExtension.errorColor),
       builder: (result, status, controller) {
         return Column(
           mainAxisAlignment: themeExtension.widgetMainAxisAlignment,
@@ -87,7 +92,9 @@ final class _Input extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         controller: controller,
-        inputStyle: context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().widgetInputStyle,
+        inputStyle: context
+            .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
+            .widgetInputStyle,
         placeholder: 'Type "$_errorText" in the input to display an error.',
         validation: (_) => _validation(controller),
       ),
@@ -102,10 +109,12 @@ final class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
 
     return MyoroIconTextHoverButton(
-      configuration: MyoroHoverButtonConfiguration(bordered: themeExtension.submitButtonBordered),
+      configuration: MyoroHoverButtonConfiguration(
+          bordered: themeExtension.submitButtonBordered),
       text: 'Click me!',
       mainAxisAlignment: themeExtension.submitButtonMainAxisAlignment,
       onPressed: onPressed,
@@ -122,7 +131,10 @@ final class _ResultText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       formResult.$1,
-      style: context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().resultTextStyle.withColor(
+      style: context
+          .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
+          .resultTextStyle
+          .withColor(
             formResult.$2,
           ),
     );

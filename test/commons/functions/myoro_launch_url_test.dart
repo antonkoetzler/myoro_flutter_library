@@ -4,13 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void _setupUrlLauncherMethodHandler({required bool canLaunch}) {
-  TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+  TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+      .setMockMethodCallHandler(
     const MethodChannel('plugins.flutter.io/url_launcher'),
     (MethodCall methodCall) async {
       return switch (methodCall.method) {
         'canLaunch' => canLaunch,
         'launch' => true,
-        _ => throw PlatformException(code: 'Unimplemented', details: 'Method not implemented'),
+        _ => throw PlatformException(
+            code: 'Unimplemented', details: 'Method not implemented'),
       };
     },
   );

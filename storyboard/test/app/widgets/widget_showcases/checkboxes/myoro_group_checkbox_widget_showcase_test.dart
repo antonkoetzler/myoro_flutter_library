@@ -21,8 +21,17 @@ void main() {
     expect(find.byType(MyoroGroupCheckboxWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroGroupCheckbox), findsOneWidget);
-    expect(MyoroSingularDropdown.finder<Axis>(label: '[MyoroGroupCheckbox.direction]', labelEnabled: true), findsOneWidget);
-    expect(MyoroInput.finder(label: '[MyoroGroupCheckbox.spacing]', labelEnabled: true), findsOneWidget);
-    expect(MyoroInput.finder(label: '[MyoroGroupCheckbox.runSpacing]', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroSingularDropdown.finder<Axis>(
+            label: '[MyoroGroupCheckbox.direction]', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroInput.finder(
+            label: '[MyoroGroupCheckbox.spacing]', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroInput.finder(
+            label: '[MyoroGroupCheckbox.runSpacing]', labelEnabled: true),
+        findsOneWidget);
   });
 }

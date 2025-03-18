@@ -12,20 +12,27 @@ void main() {
     'MyoroTableWidgetShowcaseBloc.SetEnableColumnResizingEvent',
     build: () => MyoroTableWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetEnableColumnResizingEvent(enableColumnResizing)),
-    expect: () => [MyoroTableWidgetShowcaseState(enableColumnResizing: enableColumnResizing)],
+    expect: () => [
+      MyoroTableWidgetShowcaseState(enableColumnResizing: enableColumnResizing)
+    ],
   );
 
   blocTest(
     'MyoroTableWidgetShowcaseBloc.SetEnableCheckboxesEvent',
     build: () => MyoroTableWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetEnableCheckboxesEvent(enableCheckboxes)),
-    expect: () => [MyoroTableWidgetShowcaseState(enableCheckboxes: enableCheckboxes)],
+    expect: () =>
+        [MyoroTableWidgetShowcaseState(enableCheckboxes: enableCheckboxes)],
   );
 
   blocTest(
     'MyoroTableWidgetShowcaseBloc.SetShowPaginationControlsEvent',
     build: () => MyoroTableWidgetShowcaseBloc(),
-    act: (bloc) => bloc.add(SetShowPaginationControlsEvent(showPaginationControls)),
-    expect: () => [MyoroTableWidgetShowcaseState(showPaginationControls: showPaginationControls)],
+    act: (bloc) =>
+        bloc.add(SetShowPaginationControlsEvent(showPaginationControls)),
+    expect: () => [
+      MyoroTableWidgetShowcaseState(
+          showPaginationControls: showPaginationControls)
+    ],
   );
 }

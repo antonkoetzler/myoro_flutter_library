@@ -6,7 +6,8 @@ import 'package:storyboard/app/blocs/myoro_circular_loader_widget_showcase_bloc/
 
 /// Unit test of [MyoroCircularLoaderWidgetShowcaseBloc].
 void main() {
-  final Color color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final Color color =
+      kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
   final double size1 = faker.randomGenerator.decimal();
   final double size2 = faker.randomGenerator.decimal();
 

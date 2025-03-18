@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroAppBar].
-final class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension> {
+final class MyoroAppBarThemeExtension
+    extends ThemeExtension<MyoroAppBarThemeExtension> {
   /// Background [Color] of the app bar.
   final Color primaryColor;
 
@@ -16,8 +17,10 @@ final class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExt
   });
 
   MyoroAppBarThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        contentPadding = EdgeInsets.all(faker.randomGenerator.integer(50).toDouble());
+      : primaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        contentPadding =
+            EdgeInsets.all(faker.randomGenerator.integer(50).toDouble());
 
   @override
   MyoroAppBarThemeExtension copyWith({

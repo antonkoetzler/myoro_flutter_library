@@ -17,7 +17,8 @@ void main() {
     act: (MyoroFormBloc bloc) => bloc.add(const FinishFormEvent()),
     expect: () => const [
       MyoroFormState(status: MyoroRequestEnum.loading),
-      MyoroFormState(status: MyoroRequestEnum.error, errorMessage: validationErrorMessage),
+      MyoroFormState(
+          status: MyoroRequestEnum.error, errorMessage: validationErrorMessage),
     ],
   );
 

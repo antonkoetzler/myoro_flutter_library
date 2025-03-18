@@ -8,13 +8,16 @@ import 'package:storyboard/app/blocs/myoro_dialog_modal_widget_showcase_bloc/myo
 /// Unit test of [MyoroDialogModalWidgetShowcaseBloc].
 void main() {
   final bool invertButtons = faker.randomGenerator.boolean();
-  final String? confirmButtonText = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
-  final String? text = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? confirmButtonText =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? text =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
   late final TextStyle? textStyle;
   final bool childEnabled = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     textStyle = MyoroTypographyTheme.instance.randomTextStyle;
   });
 

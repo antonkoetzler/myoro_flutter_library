@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSnackBarContainer].
-final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension> {
+final class MyoroSnackBarContainerThemeExtension
+    extends ThemeExtension<MyoroSnackBarContainerThemeExtension> {
   /// Background color of the container.
   final Color primaryColor;
 
@@ -38,12 +39,15 @@ final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSna
   });
 
   MyoroSnackBarContainerThemeExtension.fake()
-      : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        behavior = SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)],
+      : primaryColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        behavior = SnackBarBehavior.values[
+            faker.randomGenerator.integer(SnackBarBehavior.values.length)],
         margin = EdgeInsets.all(faker.randomGenerator.decimal()),
         padding = EdgeInsets.all(faker.randomGenerator.decimal()),
         elevation = faker.randomGenerator.decimal(),
-        dismissDirection = DismissDirection.values[faker.randomGenerator.integer(DismissDirection.values.length)],
+        dismissDirection = DismissDirection.values[
+            faker.randomGenerator.integer(DismissDirection.values.length)],
         duration = Duration(milliseconds: faker.randomGenerator.integer(9999));
 
   @override

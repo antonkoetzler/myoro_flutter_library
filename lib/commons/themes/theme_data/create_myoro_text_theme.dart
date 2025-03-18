@@ -9,7 +9,9 @@ TextTheme createMyoroTextTheme(bool isDarkMode) {
     FontStyle fontStyle = FontStyle.normal,
   }) {
     return TextStyle(
-      color: isDarkMode ? MyoroDarkModeColorTheme.secondary : MyoroLightModeColorTheme.secondary,
+      color: isDarkMode
+          ? MyoroDarkModeColorTheme.secondary
+          : MyoroLightModeColorTheme.secondary,
       fontSize: fontSize.size,
       fontWeight: fontWeight,
       fontStyle: fontStyle,

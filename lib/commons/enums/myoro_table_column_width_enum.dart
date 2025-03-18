@@ -12,7 +12,8 @@ enum MyoroTableColumnWidthEnum {
   /// Expands the maximum amount available.
   expanded;
 
-  factory MyoroTableColumnWidthEnum.fake() => values[faker.randomGenerator.integer(values.length)];
+  factory MyoroTableColumnWidthEnum.fake() =>
+      values[faker.randomGenerator.integer(values.length)];
 
   bool get isFixed => this == fixed;
   bool get isFlexible => this == flexible;

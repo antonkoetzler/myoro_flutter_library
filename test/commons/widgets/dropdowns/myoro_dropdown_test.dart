@@ -8,7 +8,8 @@ void main() {
   late final MyoroDropdownConfiguration<String> configuration;
 
   /// [expect] calls used in both of the [testWidget]s.
-  Future<void> testDropdown(WidgetTester tester, MyoroDropdownThemeExtension themeExtension) async {
+  Future<void> testDropdown(
+      WidgetTester tester, MyoroDropdownThemeExtension themeExtension) async {
     // [_Dropdown].
     expect(
       find.byWidgetPredicate(
@@ -33,7 +34,8 @@ void main() {
             w.configuration.inputStyle == themeExtension.inputStyle &&
             w.configuration.readOnly == true &&
             w.configuration.enabled == configuration.enabled &&
-            w.configuration.showClearTextButton == configuration.allowItemClearing &&
+            w.configuration.showClearTextButton ==
+                configuration.allowItemClearing &&
             w.configuration.controller != null &&
             w.configuration.onCleared != null &&
             w.configuration.checkboxOnChanged != null,
@@ -52,19 +54,24 @@ void main() {
             (w.child as InkWell).focusColor == MyoroColorTheme.transparent &&
             (w.child as InkWell).hoverColor == MyoroColorTheme.transparent &&
             (w.child as InkWell).splashColor == MyoroColorTheme.transparent &&
-            (w.child as InkWell).highlightColor == MyoroColorTheme.transparent &&
+            (w.child as InkWell).highlightColor ==
+                MyoroColorTheme.transparent &&
             (w.child as InkWell).child is Container &&
-            ((w.child as InkWell).child as Container).color == MyoroColorTheme.transparent,
+            ((w.child as InkWell).child as Container).color ==
+                MyoroColorTheme.transparent,
       ),
       findsOneWidget,
     );
   }
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     configuration = MyoroDropdownConfiguration<String>(
       label: faker.lorem.word(),
-      labelTextStyle: faker.randomGenerator.boolean() ? MyoroTypographyTheme.instance.randomTextStyle : null,
+      labelTextStyle: faker.randomGenerator.boolean()
+          ? MyoroTypographyTheme.instance.randomTextStyle
+          : null,
       dataConfiguration: MyoroDataConfiguration(
         staticItems: List.generate(
           faker.randomGenerator.integer(1000),
@@ -73,11 +80,17 @@ void main() {
       ),
       itemBuilder: (String item) => MyoroMenuItem(
         isHovered: faker.randomGenerator.boolean(),
-        icon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        iconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+        icon: kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        iconSize: faker.randomGenerator.boolean()
+            ? faker.randomGenerator.decimal()
+            : null,
         text: item,
-        textStyle: faker.randomGenerator.boolean() ? MyoroTypographyTheme.instance.randomTextStyle : null,
-        textAlign: TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+        textStyle: faker.randomGenerator.boolean()
+            ? MyoroTypographyTheme.instance.randomTextStyle
+            : null,
+        textAlign: TextAlign
+            .values[faker.randomGenerator.integer(TextAlign.values.length)],
       ),
       itemLabelBuilder: (String item) => item,
       menuMaxHeight: faker.randomGenerator.integer(1000, min: 100).toDouble(),
@@ -95,7 +108,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
             return MyoroSingularDropdown<String>(
               configuration: configuration,
@@ -128,7 +142,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
             return MyoroMultiDropdown<String>(
               configuration: configuration,

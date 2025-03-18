@@ -19,7 +19,8 @@ void main() {
   ).toSet();
 
   setUpAll(() {
-    controller.dataConfiguration = MyoroDataConfiguration(staticItems: const [], totalPages: 2);
+    controller.dataConfiguration =
+        MyoroDataConfiguration(staticItems: const [], totalPages: 2);
     controller.resolverController = MockMyoroResolverController();
   });
 
@@ -56,7 +57,8 @@ void main() {
 
     controller.addFilters(filters);
     controller.removeFilters([filterKeys.first]);
-    expect(controller.dataConfiguration.filters, filters..remove(filterKeys.first));
+    expect(controller.dataConfiguration.filters,
+        filters..remove(filterKeys.first));
 
     controller.removeFilters(filterKeys);
     expect(controller.dataConfiguration.filters.isEmpty, isTrue);
@@ -108,7 +110,8 @@ void main() {
   });
 
   test('MyoroTableController.setOrdenatedColumn', () {
-    final column = MyoroTableColumn.fake().copyWith(ordenationCallback: () => {});
+    final column =
+        MyoroTableColumn.fake().copyWith(ordenationCallback: () => {});
     controller.setOrdenatedColumn(column);
     expect(controller.ordenatedColumn, column);
     controller.setOrdenatedColumn();

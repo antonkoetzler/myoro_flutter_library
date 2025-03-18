@@ -30,7 +30,9 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IntrinsicWidth(child: _WidgetListing(_widgetLoadedNotifier)),
-            const MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: Axis.vertical)),
+            const MyoroBasicDivider(
+                configuration:
+                    MyoroBasicDividerConfiguration(direction: Axis.vertical)),
           ],
         ),
         Expanded(child: _WidgetViewer(_widgetLoadedNotifier)),
@@ -60,7 +62,8 @@ final class _WidgetListingState extends State<_WidgetListing> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
     return ValueListenableBuilder(
       valueListenable: _widgetCategoryShowingNotifier,
@@ -75,15 +78,20 @@ final class _WidgetListingState extends State<_WidgetListing> {
                     _WidgetListingCategory(
                       category: value.widgetCategory,
                       widgetNames: value.widgetNames,
-                      widgetCategoryShowingNotifier: _widgetCategoryShowingNotifier,
-                      onPressWidget: (String widgetName) => widget.widgetLoadedNotifier.value = WidgetListingEnum.widgetViewerWidget(widgetName),
+                      widgetCategoryShowingNotifier:
+                          _widgetCategoryShowingNotifier,
+                      onPressWidget: (String widgetName) =>
+                          widget.widgetLoadedNotifier.value =
+                              WidgetListingEnum.widgetViewerWidget(widgetName),
                     ),
                     if (value != WidgetListingEnum.values.last)
                       MyoroBasicDivider(
                         configuration: MyoroBasicDividerConfiguration(
                           direction: Axis.horizontal,
-                          shortValue: themeExtension.widgetListingCategoryDividerShortValue,
-                          padding: themeExtension.widgetListingCategoryDividerPadding,
+                          shortValue: themeExtension
+                              .widgetListingCategoryDividerShortValue,
+                          padding: themeExtension
+                              .widgetListingCategoryDividerPadding,
                         ),
                       ),
                   ],
@@ -112,7 +120,8 @@ final class _WidgetListingCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardBodyThemeExtension>();
     final isSelected = category == widgetCategoryShowingNotifier.value;
 
     return Padding(
@@ -123,7 +132,8 @@ final class _WidgetListingCategory extends StatelessWidget {
           _WidgetListingCategoryDropdownButton(
             isSelected,
             category: category,
-            onPressed: () => widgetCategoryShowingNotifier.value = isSelected ? null : category,
+            onPressed: () => widgetCategoryShowingNotifier.value =
+                isSelected ? null : category,
           ),
           if (isSelected) ...[
             SizedBox(height: themeExtension.widgetListingCategorySpacing),
@@ -155,10 +165,13 @@ final class _WidgetListingCategoryDropdownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
     return MyoroIconTextHoverButton(
-      icon: showOptions ? themeExtension.widgetListingCategoryDropdownButtonOpenedIcon : themeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
+      icon: showOptions
+          ? themeExtension.widgetListingCategoryDropdownButtonOpenedIcon
+          : themeExtension.widgetListingCategoryDropdownButtonUnopenedIcon,
       text: category,
       textStyle: themeExtension.widgetListingCategoryDropdownButtonTextStyle,
       onPressed: onPressed,
@@ -177,12 +190,14 @@ final class _WidgetListingCategoryWidgetButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardBodyThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
     return MyoroIconTextHoverButton(
       text: widgetName,
       textStyle: themeExtension.widgetListingCategoryWidgetButtonTextStyle,
-      mainAxisAlignment: themeExtension.widgetListingCategoryWidgetButtonContentCentered,
+      mainAxisAlignment:
+          themeExtension.widgetListingCategoryWidgetButtonContentCentered,
       onPressed: onPressed,
     );
   }

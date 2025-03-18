@@ -17,7 +17,8 @@ void main() {
     expect(find.byType(MyoroForm), findsOneWidget);
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Form && w.child is SizedBox, // Our [SizedBox.shrink].
+        (Widget w) =>
+            w is Form && w.child is SizedBox, // Our [SizedBox.shrink].
       ),
       findsOneWidget,
     );

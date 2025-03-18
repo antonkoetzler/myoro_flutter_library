@@ -32,7 +32,9 @@ final class MyoroScreen extends StatefulWidget {
     return find.byWidgetPredicate(
       (Widget w) =>
           w is MyoroScreen &&
-          (drawerControllerEnabled ? w.drawerController == drawerController : true) &&
+          (drawerControllerEnabled
+              ? w.drawerController == drawerController
+              : true) &&
           (appBarEnabled ? w.appBar == appBar : true) &&
           (bodyEnabled ? w.body == body : true),
     );
@@ -48,7 +50,8 @@ final class _MyoroScreenState extends State<MyoroScreen> {
 
   MyoroDrawerController? _localDrawerController;
   MyoroDrawerController get _drawerController {
-    return widget.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
+    return widget.drawerController ??
+        (_localDrawerController ??= MyoroDrawerController());
   }
 
   @override

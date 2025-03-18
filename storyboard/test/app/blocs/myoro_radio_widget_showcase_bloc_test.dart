@@ -7,12 +7,16 @@ import 'package:storyboard/app/blocs/myoro_radio_widget_showcase_bloc/myoro_radi
 
 /// Unit test of [MyoroRadioWidgetShowcaseBloc].
 void main() {
-  final String? label = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? label =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
   late final TextStyle? labelTextStyle;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
-    labelTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyTheme.instance.randomTextStyle : null;
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
+    labelTextStyle = faker.randomGenerator.boolean()
+        ? MyoroTypographyTheme.instance.randomTextStyle
+        : null;
   });
 
   blocTest(
@@ -26,6 +30,7 @@ void main() {
     'MyoroRadioWidgetShowcaseBloc.SetLabelTextStyleEvent',
     build: () => MyoroRadioWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetLabelTextStyleEvent(labelTextStyle)),
-    expect: () => [MyoroRadioWidgetShowcaseState(labelTextStyle: labelTextStyle)],
+    expect: () =>
+        [MyoroRadioWidgetShowcaseState(labelTextStyle: labelTextStyle)],
   );
 }

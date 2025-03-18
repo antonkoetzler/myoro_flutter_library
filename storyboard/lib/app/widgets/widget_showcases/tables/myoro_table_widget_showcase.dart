@@ -34,12 +34,14 @@ final class _Widget extends StatelessWidget {
       2,
       (int index) => MyoroTableColumn.fake().copyWith(
         title: faker.randomGenerator.string(10),
-        widthConfiguration: MyoroTableColumnWidth(columnWidthEnum: MyoroTableColumnWidthEnum.flexible),
+        widthConfiguration: MyoroTableColumnWidth(
+            columnWidthEnum: MyoroTableColumnWidthEnum.flexible),
         ordenationCallback: index == 0 ? () => {} : null,
       ),
     );
 
-    return BlocBuilder<MyoroTableWidgetShowcaseBloc, MyoroTableWidgetShowcaseState>(
+    return BlocBuilder<MyoroTableWidgetShowcaseBloc,
+        MyoroTableWidgetShowcaseState>(
       builder: (_, MyoroTableWidgetShowcaseState state) {
         return MyoroTable<String>(
           columns: columns,
@@ -106,7 +108,8 @@ final class _ShowPaginationControlsOption extends StatelessWidget {
     return MyoroCheckbox(
       label: '[MyoroTable.showPaginationControls]',
       initialValue: bloc.state.showPaginationControls,
-      onChanged: (bool value) => bloc.add(SetShowPaginationControlsEvent(value)),
+      onChanged: (bool value) =>
+          bloc.add(SetShowPaginationControlsEvent(value)),
     );
   }
 }

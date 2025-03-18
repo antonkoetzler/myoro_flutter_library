@@ -10,8 +10,10 @@ void main() {
   final themeExtension2 = MyoroCheckboxWidgetShowcaseThemeExtension.fake();
 
   test('MyoroCheckboxWidgetShowcaseThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(labelTextStyleOptionWidth: themeExtension2.labelTextStyleOptionWidth);
-    expect(copiedThemeExtension.labelTextStyleOptionWidth, themeExtension2.labelTextStyleOptionWidth);
+    final copiedThemeExtension = themeExtension1.copyWith(
+        labelTextStyleOptionWidth: themeExtension2.labelTextStyleOptionWidth);
+    expect(copiedThemeExtension.labelTextStyleOptionWidth,
+        themeExtension2.labelTextStyleOptionWidth);
   });
 
   test('MyoroCheckboxWidgetShowcaseThemeExtension.lerp', () {
@@ -19,7 +21,8 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.labelTextStyleOptionWidth,
-        lerpDouble(themeExtension1.labelTextStyleOptionWidth, themeExtension2.labelTextStyleOptionWidth, i),
+        lerpDouble(themeExtension1.labelTextStyleOptionWidth,
+            themeExtension2.labelTextStyleOptionWidth, i),
       );
     }
   });

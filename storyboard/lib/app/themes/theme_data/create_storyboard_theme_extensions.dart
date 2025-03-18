@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createStoryboardThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     ..._createAppThemeExtensions(textTheme),
     ..._createWidgetShowcaseThemeExtensions(colorScheme, textTheme),
@@ -28,18 +29,22 @@ List<ThemeExtension> _createAppThemeExtensions(TextTheme textTheme) {
       ),
       widgetListingCategoryDividerShortValue: 1,
       widgetListingCategoryDropdownButtonTextStyle: textTheme.titleMedium!,
-      widgetListingCategoryDropdownButtonUnopenedIcon: Icons.keyboard_arrow_right,
+      widgetListingCategoryDropdownButtonUnopenedIcon:
+          Icons.keyboard_arrow_right,
       widgetListingCategoryDropdownButtonOpenedIcon: Icons.keyboard_arrow_down,
-      widgetListingCategoryWidgetButtonContentCentered: MainAxisAlignment.center,
+      widgetListingCategoryWidgetButtonContentCentered:
+          MainAxisAlignment.center,
       widgetListingCategoryWidgetButtonTextStyle: textTheme.bodySmall!,
     ),
   ];
 }
 
-List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
+    ColorScheme colorScheme, TextTheme textTheme) {
   return [
     WidgetShowcaseThemeExtension(
-      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(alpha: 0.1),
+      widgetWrapperBackgroundColor:
+          MyoroColorTheme.attention.withValues(alpha: 0.1),
       widgetWrapperPadding: const EdgeInsets.all(20),
       widgetWrapperContentPadding: const EdgeInsets.all(20),
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
@@ -52,7 +57,8 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorSchem
         vertical: 15,
         horizontal: 10,
       ),
-      widgetOptionsDividerPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+      widgetOptionsDividerPadding:
+          const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
     ),
     MyoroAppBarWidgetShowcaseThemeExtension(
       mockAppLogoIcon: Icons.people,

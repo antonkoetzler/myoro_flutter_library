@@ -15,7 +15,8 @@ void main() {
           child: Builder(
             builder: (BuildContext buildContext) {
               context = buildContext;
-              themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+              themeExtension =
+                  context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
               return const SizedBox.shrink();
             },
           ),

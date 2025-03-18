@@ -68,7 +68,9 @@ final class MyoroIconTextHoverButtonWidgetShowcaseState extends Equatable {
       textStyle: textStyleEnabled ? (textStyle ?? this.textStyle) : null,
       textAlign: textAlignEnabled ? (textAlign ?? this.textAlign) : null,
       padding: paddingEnabled ? (padding ?? this.padding) : null,
-      mainAxisAlignment: mainAxisAlignmentEnabled ? (mainAxisAlignment ?? this.mainAxisAlignment) : null,
+      mainAxisAlignment: mainAxisAlignmentEnabled
+          ? (mainAxisAlignment ?? this.mainAxisAlignment)
+          : null,
       onPressedEnabled: onPressedEnabled ?? this.onPressedEnabled,
     );
   }

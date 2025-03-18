@@ -70,12 +70,14 @@ final class MyoroTableController<T> {
 
   /// Adds rows to [_rowsSelectedNotifier].
   void selectRows(List<MyoroTableRow> rows) {
-    _rowsSelectedNotifier.value = Set.from(_rowsSelectedNotifier.value)..addAll(rows.toSet());
+    _rowsSelectedNotifier.value = Set.from(_rowsSelectedNotifier.value)
+      ..addAll(rows.toSet());
   }
 
   /// Removes selected rows.
   void deselectRows(List<MyoroTableRow> rows) {
-    _rowsSelectedNotifier.value = Set.from(_rowsSelectedNotifier.value)..removeAll(rows.toSet());
+    _rowsSelectedNotifier.value = Set.from(_rowsSelectedNotifier.value)
+      ..removeAll(rows.toSet());
   }
 
   /// Check if a [MyoroTableRow] is selected].
@@ -90,14 +92,23 @@ final class MyoroTableController<T> {
 
   /// Sets the ordenated [MyoroTableColumn].
   void setOrdenatedColumn([MyoroTableColumn? column]) {
-    if (_ordenatedColumnNotifier.value != null) removeFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call().keys.toList());
+    if (_ordenatedColumnNotifier.value != null) {
+      removeFilters(_ordenatedColumnNotifier.value!.ordenationCallback!
+          .call()
+          .keys
+          .toList());
+    }
     _ordenatedColumnNotifier.value = column;
-    if (column != null) addFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call());
+    if (column != null) {
+      addFilters(_ordenatedColumnNotifier.value!.ordenationCallback!.call());
+    }
     refresh();
   }
 
-  ValueNotifier<MyoroTableColumn?> get ordenatedColumnNotifier => _ordenatedColumnNotifier;
+  ValueNotifier<MyoroTableColumn?> get ordenatedColumnNotifier =>
+      _ordenatedColumnNotifier;
   MyoroTableColumn? get ordenatedColumn => _ordenatedColumnNotifier.value;
-  ValueNotifier<Set<MyoroTableRow>> get rowsSelectedNotifier => _rowsSelectedNotifier;
+  ValueNotifier<Set<MyoroTableRow>> get rowsSelectedNotifier =>
+      _rowsSelectedNotifier;
   List<MyoroTableRow> get rowsSelected => _rowsSelectedNotifier.value.toList();
 }

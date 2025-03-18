@@ -11,7 +11,8 @@ void main() {
   late final MyoroIconTextHoverButtonThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroIconTextHoverButtonThemeExtension.fake();
     themeExtension2 = MyoroIconTextHoverButtonThemeExtension.fake();
   });
@@ -34,7 +35,8 @@ void main() {
     expect(copiedThemeExtension.textMaxLines, themeExtension2.textMaxLines);
     expect(copiedThemeExtension.textOverflow, themeExtension2.textOverflow);
     expect(copiedThemeExtension.spacing, themeExtension2.spacing);
-    expect(copiedThemeExtension.mainAxisAlignment, themeExtension2.mainAxisAlignment);
+    expect(copiedThemeExtension.mainAxisAlignment,
+        themeExtension2.mainAxisAlignment);
   });
 
   test('MyoroIconTextHoverButtonThemeExtension.lerp', () {
@@ -42,15 +44,18 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+        Color.lerp(
+            themeExtension1.primaryColor, themeExtension2.primaryColor, i),
       );
       expect(
         lerpedThemeExtension.onPrimaryColor,
-        Color.lerp(themeExtension1.onPrimaryColor, themeExtension2.onPrimaryColor, i),
+        Color.lerp(
+            themeExtension1.onPrimaryColor, themeExtension2.onPrimaryColor, i),
       );
       expect(
         lerpedThemeExtension.contentPadding,
-        EdgeInsets.lerp(themeExtension1.contentPadding, themeExtension2.contentPadding, i),
+        EdgeInsets.lerp(
+            themeExtension1.contentPadding, themeExtension2.contentPadding, i),
       );
       expect(
         lerpedThemeExtension.textStyle,
@@ -67,7 +72,8 @@ void main() {
       );
       expect(
         lerpedThemeExtension.textOverflow,
-        myoroLerp(themeExtension1.textOverflow, themeExtension2.textOverflow, i),
+        myoroLerp(
+            themeExtension1.textOverflow, themeExtension2.textOverflow, i),
       );
       expect(
         lerpedThemeExtension.spacing,
@@ -75,7 +81,8 @@ void main() {
       );
       expect(
         lerpedThemeExtension.mainAxisAlignment,
-        myoroLerp(themeExtension1.mainAxisAlignment, themeExtension2.mainAxisAlignment, i),
+        myoroLerp(themeExtension1.mainAxisAlignment,
+            themeExtension2.mainAxisAlignment, i),
       );
     }
   });

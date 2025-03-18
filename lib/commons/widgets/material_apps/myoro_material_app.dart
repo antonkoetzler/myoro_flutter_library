@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
-typedef MyoroMaterialAppThemeExtensionsBuilder = List<ThemeExtension> Function(ColorScheme colorScheme, TextTheme textTheme);
+typedef MyoroMaterialAppThemeExtensionsBuilder = List<ThemeExtension> Function(
+    ColorScheme colorScheme, TextTheme textTheme);
 
 /// Root widget of your [App] widget in main.dart.
 final class MyoroMaterialApp extends StatelessWidget {
@@ -55,7 +56,9 @@ final class MyoroMaterialApp extends StatelessWidget {
           w is MyoroMaterialApp &&
           (titleEnabled ? w.title == title : true) &&
           (themeModeEnabled ? w.themeMode == themeMode : true) &&
-          (themeExtensionsBuilderEnabled ? w.themeExtensionsBuilder == themeExtensionsBuilder : true) &&
+          (themeExtensionsBuilderEnabled
+              ? w.themeExtensionsBuilder == themeExtensionsBuilder
+              : true) &&
           (homeEnabled ? w.home == home : true),
     );
   }
@@ -67,10 +70,12 @@ final class MyoroMaterialApp extends StatelessWidget {
       // Used with [Widget]s like [MyoroDropdown] which close the dropdown when anywhere else is clicked.
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false, // To not show the "Debug" banner at the top right of the screen.
+        debugShowCheckedModeBanner:
+            false, // To not show the "Debug" banner at the top right of the screen.
         title: title,
         localizationsDelegates: localizationsDelegates,
-        supportedLocales: supportedLocales ?? const <Locale>[Locale('en', 'US')],
+        supportedLocales:
+            supportedLocales ?? const <Locale>[Locale('en', 'US')],
         home: Builder(
           builder: (context) {
             MyoroTypographyTheme.textTheme = context.textTheme;
@@ -79,7 +84,8 @@ final class MyoroMaterialApp extends StatelessWidget {
         ),
         themeMode: themeMode ?? ThemeMode.dark,
         theme: createMyoroThemeData(themeExtensionsBuilder, isDarkMode: false),
-        darkTheme: createMyoroThemeData(themeExtensionsBuilder, isDarkMode: true),
+        darkTheme:
+            createMyoroThemeData(themeExtensionsBuilder, isDarkMode: true),
       ),
     );
   }

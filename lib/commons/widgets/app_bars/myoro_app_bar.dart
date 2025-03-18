@@ -44,13 +44,16 @@ final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
     bool childEnabled = false,
   }) {
     return find.byWidgetPredicate((Widget w) {
-      return w is MyoroAppBar && (borderedEnabled ? w.bordered == bordered : true) && (childEnabled ? w.child == child : true);
+      return w is MyoroAppBar &&
+          (borderedEnabled ? w.bordered == bordered : true) &&
+          (childEnabled ? w.child == child : true);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,

@@ -14,14 +14,16 @@ void main() {
     'MyoroSnackBarWidgetShowcaseBloc.SetSnackBarTypeEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetSnackBarTypeEvent(snackBarType)),
-    expect: () => [MyoroSnackBarWidgetShowcaseState(snackBarType: snackBarType)],
+    expect: () =>
+        [MyoroSnackBarWidgetShowcaseState(snackBarType: snackBarType)],
   );
 
   blocTest(
     'MyoroSnackBarWidgetShowcaseBloc.SetShowCloseButtonEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetShowCloseButtonEvent(showCloseButton)),
-    expect: () => [MyoroSnackBarWidgetShowcaseState(showCloseButton: showCloseButton)],
+    expect: () =>
+        [MyoroSnackBarWidgetShowcaseState(showCloseButton: showCloseButton)],
   );
 
   blocTest(

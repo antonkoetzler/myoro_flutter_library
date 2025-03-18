@@ -16,7 +16,8 @@ enum MyoroInputStyleEnum {
 
   /// Border of the input.
   InputBorder getBorder(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return switch (this) {
       underlined => themeExtension.underlinedBorder,

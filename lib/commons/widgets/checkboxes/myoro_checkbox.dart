@@ -70,7 +70,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   MyoroCheckboxNotifier? _localNotifier;
   MyoroCheckboxNotifier get _notifier {
-    return widget.notifier ?? (_localNotifier ??= MyoroCheckboxNotifier(_initialValue));
+    return widget.notifier ??
+        (_localNotifier ??= MyoroCheckboxNotifier(_initialValue));
   }
 
   @override
@@ -88,7 +89,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
     return Row(
       mainAxisSize: MainAxisSize.min,

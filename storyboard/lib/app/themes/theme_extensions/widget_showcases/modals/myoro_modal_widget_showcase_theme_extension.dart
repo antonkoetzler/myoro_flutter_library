@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroModalWidgetShowcase].
-final class MyoroModalWidgetShowcaseThemeExtension extends ThemeExtension<MyoroModalWidgetShowcaseThemeExtension> {
+final class MyoroModalWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroModalWidgetShowcaseThemeExtension> {
   /// Spacing of content.
   final double spacing;
 
@@ -48,7 +49,8 @@ final class MyoroModalWidgetShowcaseThemeExtension extends ThemeExtension<MyoroM
     if (other is! MyoroModalWidgetShowcaseThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
-      headerTextStyle: TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
+      headerTextStyle:
+          TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
     );
   }

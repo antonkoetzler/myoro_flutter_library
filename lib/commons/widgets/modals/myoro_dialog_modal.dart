@@ -95,8 +95,12 @@ final class MyoroDialogModal extends StatelessWidget {
       (Widget w) =>
           w is MyoroDialogModal &&
           (invertButtonsEnabled ? w.invertButtons == invertButtons : true) &&
-          (confirmButtonTextEnabled ? w.confirmButtonText == confirmButtonText : true) &&
-          (cancelButtonTextEnabled ? w.cancelButtonText == cancelButtonText : true) &&
+          (confirmButtonTextEnabled
+              ? w.confirmButtonText == confirmButtonText
+              : true) &&
+          (cancelButtonTextEnabled
+              ? w.cancelButtonText == cancelButtonText
+              : true) &&
           (onConfirmEnabled ? w.onConfirm == onConfirm : true) &&
           (onCancelEnabled ? w.onCancel == onCancel : true) &&
           (textEnabled ? w.text == text : true) &&
@@ -116,7 +120,10 @@ final class MyoroDialogModal extends StatelessWidget {
             child,
           ),
         ),
-        SizedBox(height: context.resolveThemeExtension<MyoroModalThemeExtension>().spacing),
+        SizedBox(
+            height: context
+                .resolveThemeExtension<MyoroModalThemeExtension>()
+                .spacing),
         _FooterButtons(
           invertButtons ?? false,
           confirmButtonText,
@@ -142,7 +149,8 @@ final class _Message extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     if (_text != null) {
       return Text(
@@ -155,7 +163,8 @@ final class _Message extends StatelessWidget {
       return _child;
     }
 
-    throw AssertionError('[MyoroDialogModal._Message.build]: [_text] (x)or [_child] must always not be null');
+    throw AssertionError(
+        '[MyoroDialogModal._Message.build]: [_text] (x)or [_child] must always not be null');
   }
 }
 
@@ -186,7 +195,10 @@ final class _FooterButtons extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(child: !_invertButtons ? confirmButton : cancelButton),
-            SizedBox(width: context.resolveThemeExtension<MyoroDialogModalThemeExtension>().footerButtonsSpacing),
+            SizedBox(
+                width: context
+                    .resolveThemeExtension<MyoroDialogModalThemeExtension>()
+                    .footerButtonsSpacing),
             Flexible(child: !_invertButtons ? cancelButton : confirmButton),
           ],
         ),

@@ -4,18 +4,22 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroHoverButton].
 void main() {
-  final configurationNotifier = ValueNotifier(MyoroHoverButtonConfiguration.fake());
+  final configurationNotifier =
+      ValueNotifier(MyoroHoverButtonConfiguration.fake());
 
   bool getTooltipPredicateCondition(Widget w) {
-    return w is MyoroTooltip && w.text == (configurationNotifier.value.tooltip ?? '');
+    return w is MyoroTooltip &&
+        w.text == (configurationNotifier.value.tooltip ?? '');
   }
 
   Color getPrimaryColor(MyoroHoverButtonThemeExtension themeExtension) {
-    return configurationNotifier.value.primaryColor ?? themeExtension.primaryColor;
+    return configurationNotifier.value.primaryColor ??
+        themeExtension.primaryColor;
   }
 
   Color getOnPrimaryColor(MyoroHoverButtonThemeExtension themeExtension) {
-    return configurationNotifier.value.onPrimaryColor ?? themeExtension.onPrimaryColor;
+    return configurationNotifier.value.onPrimaryColor ??
+        themeExtension.onPrimaryColor;
   }
 
   tearDown(() => configurationNotifier.dispose());
@@ -31,7 +35,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
             return ValueListenableBuilder(
               valueListenable: configurationNotifier,
@@ -68,10 +73,13 @@ void main() {
     expect(builderOnPrimaryColor, getOnPrimaryColor(themeExtension));
 
     // Tooltip should be disabled then enabled after [tooltipEnabledNotifier] is changed.
-    expect(find.byWidgetPredicate(getTooltipPredicateCondition), findsOneWidget);
-    configurationNotifier.value = configurationNotifier.value.copyWith(tooltip: 'Hello, World!');
+    expect(
+        find.byWidgetPredicate(getTooltipPredicateCondition), findsOneWidget);
+    configurationNotifier.value =
+        configurationNotifier.value.copyWith(tooltip: 'Hello, World!');
     await tester.pump();
-    expect(find.byWidgetPredicate(getTooltipPredicateCondition), findsOneWidget);
+    expect(
+        find.byWidgetPredicate(getTooltipPredicateCondition), findsOneWidget);
 
     // Wrapper
     expect(
@@ -82,7 +90,8 @@ void main() {
             (w.child as InkWell).focusColor == MyoroColorTheme.transparent &&
             (w.child as InkWell).hoverColor == MyoroColorTheme.transparent &&
             (w.child as InkWell).splashColor == MyoroColorTheme.transparent &&
-            (w.child as InkWell).highlightColor == MyoroColorTheme.transparent &&
+            (w.child as InkWell).highlightColor ==
+                MyoroColorTheme.transparent &&
             (w.child as InkWell).onTap != null &&
             (w.child as InkWell).onHover != null &&
             (w.child as InkWell).child is ValueListenableBuilder,
@@ -97,14 +106,18 @@ void main() {
             w is Container &&
             w.decoration ==
                 BoxDecoration(
-                  border: (configurationNotifier.value.bordered ?? themeExtension.bordered)
+                  border: (configurationNotifier.value.bordered ??
+                          themeExtension.bordered)
                       ? Border.all(
                           width: 2,
                           color: getOnPrimaryColor(themeExtension),
                         )
                       : null,
-                  borderRadius: configurationNotifier.value.borderRadius ?? themeExtension.borderRadius,
-                  color: configurationNotifier.value.isHovered == true ? getOnPrimaryColor(themeExtension) : getPrimaryColor(themeExtension),
+                  borderRadius: configurationNotifier.value.borderRadius ??
+                      themeExtension.borderRadius,
+                  color: configurationNotifier.value.isHovered == true
+                      ? getOnPrimaryColor(themeExtension)
+                      : getPrimaryColor(themeExtension),
                 ) &&
             w.child is SizedBox,
       ),

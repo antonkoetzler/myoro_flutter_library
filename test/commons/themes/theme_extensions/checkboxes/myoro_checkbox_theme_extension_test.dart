@@ -11,7 +11,8 @@ void main() {
   late final MyoroCheckboxThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroCheckboxThemeExtension.fake();
     themeExtension2 = MyoroCheckboxThemeExtension.fake();
   });
@@ -57,11 +58,13 @@ void main() {
       );
       expect(
         lerpedThemeExtension.splashRadius,
-        lerpDouble(themeExtension1.splashRadius, themeExtension2.splashRadius, i),
+        lerpDouble(
+            themeExtension1.splashRadius, themeExtension2.splashRadius, i),
       );
       expect(
         lerpedThemeExtension.labelTextStyle,
-        TextStyle.lerp(themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
+        TextStyle.lerp(
+            themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
       );
       expect(
         lerpedThemeExtension.spacing,

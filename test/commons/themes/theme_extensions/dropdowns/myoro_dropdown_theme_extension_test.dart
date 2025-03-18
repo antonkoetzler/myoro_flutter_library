@@ -16,7 +16,8 @@ void main() {
       menuMaxHeight: themeExtension2.menuMaxHeight,
     );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
-    expect(copiedThemeExtension.inputDropdownSpacing, themeExtension2.inputDropdownSpacing);
+    expect(copiedThemeExtension.inputDropdownSpacing,
+        themeExtension2.inputDropdownSpacing);
     expect(copiedThemeExtension.menuMaxHeight, themeExtension2.menuMaxHeight);
   });
 
@@ -29,11 +30,13 @@ void main() {
       );
       expect(
         lerpedThemeExtension.inputDropdownSpacing,
-        lerpDouble(themeExtension1.inputDropdownSpacing, themeExtension2.inputDropdownSpacing, i),
+        lerpDouble(themeExtension1.inputDropdownSpacing,
+            themeExtension2.inputDropdownSpacing, i),
       );
       expect(
         lerpedThemeExtension.menuMaxHeight,
-        lerpDouble(themeExtension1.menuMaxHeight, themeExtension2.menuMaxHeight, i),
+        lerpDouble(
+            themeExtension1.menuMaxHeight, themeExtension2.menuMaxHeight, i),
       );
     }
   });

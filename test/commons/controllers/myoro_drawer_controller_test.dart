@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   const drawer = MyoroDrawer(child: SizedBox.shrink());
 
-  Future<void> closeDrawerAndExpectNothing(BuildContext context, WidgetTester tester) async {
+  Future<void> closeDrawerAndExpectNothing(
+      BuildContext context, WidgetTester tester) async {
     context.closeDrawer();
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDrawer), findsNothing);

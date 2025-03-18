@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroGroupRadioWidgetShowcase].
-final class MyoroGroupRadioWidgetShowcaseThemeExtension extends ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension> {
+final class MyoroGroupRadioWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension> {
   const MyoroGroupRadioWidgetShowcaseThemeExtension();
 
   @override
@@ -12,7 +13,8 @@ final class MyoroGroupRadioWidgetShowcaseThemeExtension extends ThemeExtension<M
 
   @override
   ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension> lerp(
-    covariant ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension>? other,
+    covariant ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension>?
+        other,
     double t,
   ) {
     return this;

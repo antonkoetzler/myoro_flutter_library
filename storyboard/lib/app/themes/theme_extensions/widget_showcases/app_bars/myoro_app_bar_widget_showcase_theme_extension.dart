@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroAppBarWidgetShowcase].
-final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension> {
+final class MyoroAppBarWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension> {
   /// [_MockAppLogo] icon.
   final IconData mockAppLogoIcon;
 
@@ -27,10 +28,12 @@ final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   });
 
   MyoroAppBarWidgetShowcaseThemeExtension.fake()
-      : mockAppLogoIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      : mockAppLogoIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
         mockAppTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
         logoTitleSpacing = faker.randomGenerator.decimal(),
-        mockMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+        mockMenuButtonIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   @override
   MyoroAppBarWidgetShowcaseThemeExtension copyWith({
@@ -41,7 +44,8 @@ final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   }) {
     return MyoroAppBarWidgetShowcaseThemeExtension(
       mockAppLogoIcon: mockAppLogoIcon ?? this.mockAppLogoIcon,
-      mockAppTitleTextStyle: mockAppTitleTextStyle ?? this.mockAppTitleTextStyle,
+      mockAppTitleTextStyle:
+          mockAppTitleTextStyle ?? this.mockAppTitleTextStyle,
       logoTitleSpacing: logoTitleSpacing ?? this.logoTitleSpacing,
       mockMenuButtonIcon: mockMenuButtonIcon ?? this.mockMenuButtonIcon,
     );
@@ -55,9 +59,11 @@ final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     if (other is! MyoroAppBarWidgetShowcaseThemeExtension) return this;
     return copyWith(
       mockAppLogoIcon: myoroLerp(mockAppLogoIcon, other.mockAppLogoIcon, t),
-      mockAppTitleTextStyle: TextStyle.lerp(mockAppTitleTextStyle, other.mockAppTitleTextStyle, t),
+      mockAppTitleTextStyle:
+          TextStyle.lerp(mockAppTitleTextStyle, other.mockAppTitleTextStyle, t),
       logoTitleSpacing: lerpDouble(logoTitleSpacing, other.logoTitleSpacing, t),
-      mockMenuButtonIcon: myoroLerp(mockMenuButtonIcon, other.mockMenuButtonIcon, t),
+      mockMenuButtonIcon:
+          myoroLerp(mockMenuButtonIcon, other.mockMenuButtonIcon, t),
     );
   }
 }

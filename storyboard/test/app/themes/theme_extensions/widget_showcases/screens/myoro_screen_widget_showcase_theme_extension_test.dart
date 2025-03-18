@@ -8,10 +8,12 @@ import 'package:storyboard/storyboard.dart';
 
 /// Unit test of [MyoroScreenWidgetShowcaseThemeExtension].
 void main() {
-  late final MyoroScreenWidgetShowcaseThemeExtension themeExtension1, themeExtension2;
+  late final MyoroScreenWidgetShowcaseThemeExtension themeExtension1,
+      themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroScreenWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroScreenWidgetShowcaseThemeExtension.fake();
   });
@@ -26,10 +28,14 @@ void main() {
       bodyTextStyle: themeExtension2.bodyTextStyle,
       bodySpacing: themeExtension2.bodySpacing,
     );
-    expect(copiedThemeExtension.appBarTitleTextStyle, themeExtension2.appBarTitleTextStyle);
-    expect(copiedThemeExtension.appBarSubtitleTextStyle, themeExtension2.appBarSubtitleTextStyle);
-    expect(copiedThemeExtension.appBarMenuButtonIcon, themeExtension2.appBarMenuButtonIcon);
-    expect(copiedThemeExtension.bodyImageBorderRadius, themeExtension2.bodyImageBorderRadius);
+    expect(copiedThemeExtension.appBarTitleTextStyle,
+        themeExtension2.appBarTitleTextStyle);
+    expect(copiedThemeExtension.appBarSubtitleTextStyle,
+        themeExtension2.appBarSubtitleTextStyle);
+    expect(copiedThemeExtension.appBarMenuButtonIcon,
+        themeExtension2.appBarMenuButtonIcon);
+    expect(copiedThemeExtension.bodyImageBorderRadius,
+        themeExtension2.bodyImageBorderRadius);
     expect(copiedThemeExtension.bodyImageSize, themeExtension2.bodyImageSize);
     expect(copiedThemeExtension.bodyTextStyle, themeExtension2.bodyTextStyle);
     expect(copiedThemeExtension.bodySpacing, themeExtension2.bodySpacing);
@@ -40,27 +46,33 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.appBarTitleTextStyle,
-        TextStyle.lerp(themeExtension1.appBarTitleTextStyle, themeExtension2.appBarTitleTextStyle, i),
+        TextStyle.lerp(themeExtension1.appBarTitleTextStyle,
+            themeExtension2.appBarTitleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.appBarSubtitleTextStyle,
-        TextStyle.lerp(themeExtension1.appBarSubtitleTextStyle, themeExtension2.appBarSubtitleTextStyle, i),
+        TextStyle.lerp(themeExtension1.appBarSubtitleTextStyle,
+            themeExtension2.appBarSubtitleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.appBarMenuButtonIcon,
-        myoroLerp(themeExtension1.appBarMenuButtonIcon, themeExtension2.appBarMenuButtonIcon, i),
+        myoroLerp(themeExtension1.appBarMenuButtonIcon,
+            themeExtension2.appBarMenuButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.bodyImageBorderRadius,
-        BorderRadius.lerp(themeExtension1.bodyImageBorderRadius, themeExtension2.bodyImageBorderRadius, i),
+        BorderRadius.lerp(themeExtension1.bodyImageBorderRadius,
+            themeExtension2.bodyImageBorderRadius, i),
       );
       expect(
         lerpedThemeExtension.bodyImageSize,
-        lerpDouble(themeExtension1.bodyImageSize, themeExtension2.bodyImageSize, i),
+        lerpDouble(
+            themeExtension1.bodyImageSize, themeExtension2.bodyImageSize, i),
       );
       expect(
         lerpedThemeExtension.bodyTextStyle,
-        TextStyle.lerp(themeExtension1.bodyTextStyle, themeExtension2.bodyTextStyle, i),
+        TextStyle.lerp(
+            themeExtension1.bodyTextStyle, themeExtension2.bodyTextStyle, i),
       );
       expect(
         lerpedThemeExtension.bodySpacing,

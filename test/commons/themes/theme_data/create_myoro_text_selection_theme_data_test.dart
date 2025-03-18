@@ -7,7 +7,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   test('createMyoroTextSelectionThemeData', () {
     final colorScheme = createMyoroColorScheme(faker.randomGenerator.boolean());
-    final textSelectionThemeData = createMyoroTextSelectionThemeData(colorScheme);
+    final textSelectionThemeData =
+        createMyoroTextSelectionThemeData(colorScheme);
     final translucentOnPrimary = colorScheme.onPrimary.withValues(alpha: 0.3);
 
     expect(

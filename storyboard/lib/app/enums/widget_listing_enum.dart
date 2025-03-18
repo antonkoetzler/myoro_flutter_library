@@ -176,7 +176,8 @@ enum WidgetListingEnum {
 
       // Buttons.
       myoroHoverButtonTitle => const MyoroHoverButtonWidgetShowcase(),
-      myoroIconTextHoverButtonTitle => const MyoroIconTextHoverButtonWidgetShowcase(),
+      myoroIconTextHoverButtonTitle =>
+        const MyoroIconTextHoverButtonWidgetShowcase(),
 
       // Cards.
       myoroCardTitle => const MyoroCardWidgetShowcase(),
@@ -250,7 +251,8 @@ enum WidgetListingEnum {
       myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
 
       // Should never get here.
-      _ => throw Exception('[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.'),
+      _ => throw Exception(
+          '[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.'),
     };
   }
 

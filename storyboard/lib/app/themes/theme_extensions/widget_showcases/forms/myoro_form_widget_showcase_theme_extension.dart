@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroFormWidgetShowcase].
-final class MyoroFormWidgetShowcaseThemeExtension extends ThemeExtension<MyoroFormWidgetShowcaseThemeExtension> {
+final class MyoroFormWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroFormWidgetShowcaseThemeExtension> {
   /// [_Widget]'s children's alignment.
   final MainAxisAlignment widgetMainAxisAlignment;
 
@@ -43,14 +44,18 @@ final class MyoroFormWidgetShowcaseThemeExtension extends ThemeExtension<MyoroFo
   });
 
   MyoroFormWidgetShowcaseThemeExtension.fake()
-      : widgetMainAxisAlignment = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
+      : widgetMainAxisAlignment = MainAxisAlignment.values[
+            faker.randomGenerator.integer(MainAxisAlignment.values.length)],
         widgetInputStyle = MyoroInputStyleEnum.fake(),
         widgetSpacing = faker.randomGenerator.decimal(),
-        submitButtonMainAxisAlignment = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
+        submitButtonMainAxisAlignment = MainAxisAlignment.values[
+            faker.randomGenerator.integer(MainAxisAlignment.values.length)],
         submitButtonBordered = faker.randomGenerator.boolean(),
         resultTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        successColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        errorColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+        successColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        errorColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)];
 
   @override
   MyoroFormWidgetShowcaseThemeExtension copyWith({
@@ -64,10 +69,12 @@ final class MyoroFormWidgetShowcaseThemeExtension extends ThemeExtension<MyoroFo
     Color? errorColor,
   }) {
     return MyoroFormWidgetShowcaseThemeExtension(
-      widgetMainAxisAlignment: widgetMainAxisAlignment ?? this.widgetMainAxisAlignment,
+      widgetMainAxisAlignment:
+          widgetMainAxisAlignment ?? this.widgetMainAxisAlignment,
       widgetInputStyle: widgetInputStyle ?? this.widgetInputStyle,
       widgetSpacing: widgetSpacing ?? this.widgetSpacing,
-      submitButtonMainAxisAlignment: submitButtonMainAxisAlignment ?? this.submitButtonMainAxisAlignment,
+      submitButtonMainAxisAlignment:
+          submitButtonMainAxisAlignment ?? this.submitButtonMainAxisAlignment,
       submitButtonBordered: submitButtonBordered ?? this.submitButtonBordered,
       resultTextStyle: resultTextStyle ?? this.resultTextStyle,
       successColor: successColor ?? this.successColor,
@@ -82,12 +89,16 @@ final class MyoroFormWidgetShowcaseThemeExtension extends ThemeExtension<MyoroFo
   ) {
     if (other is! MyoroFormWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      widgetMainAxisAlignment: myoroLerp(widgetMainAxisAlignment, other.widgetMainAxisAlignment, t),
+      widgetMainAxisAlignment:
+          myoroLerp(widgetMainAxisAlignment, other.widgetMainAxisAlignment, t),
       widgetInputStyle: myoroLerp(widgetInputStyle, other.widgetInputStyle, t),
       widgetSpacing: lerpDouble(widgetSpacing, other.widgetSpacing, t),
-      submitButtonMainAxisAlignment: myoroLerp(submitButtonMainAxisAlignment, other.submitButtonMainAxisAlignment, t),
-      submitButtonBordered: myoroLerp(submitButtonBordered, other.submitButtonBordered, t),
-      resultTextStyle: TextStyle.lerp(resultTextStyle, other.resultTextStyle, t),
+      submitButtonMainAxisAlignment: myoroLerp(submitButtonMainAxisAlignment,
+          other.submitButtonMainAxisAlignment, t),
+      submitButtonBordered:
+          myoroLerp(submitButtonBordered, other.submitButtonBordered, t),
+      resultTextStyle:
+          TextStyle.lerp(resultTextStyle, other.resultTextStyle, t),
       successColor: Color.lerp(successColor, other.successColor, t),
       errorColor: Color.lerp(errorColor, other.errorColor, t),
     );

@@ -5,7 +5,8 @@ import 'package:storyboard/app/blocs/myoro_group_checkbox_widget_showcase_bloc/m
 
 /// Unit test of [MyoroGroupCheckboxWidgetShowcaseBloc].
 void main() {
-  final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
+  final Axis direction =
+      Axis.values[faker.randomGenerator.integer(Axis.values.length)];
   final double spacing = faker.randomGenerator.decimal();
   final double runSpacing = faker.randomGenerator.decimal();
 
@@ -27,6 +28,7 @@ void main() {
     'MyoroGroupCheckboxWidgetShowcaseBloc.SetRunSpacingEvent',
     build: () => MyoroGroupCheckboxWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetRunSpacingEvent(runSpacing)),
-    expect: () => [MyoroGroupCheckboxWidgetShowcaseState(runSpacing: runSpacing)],
+    expect: () =>
+        [MyoroGroupCheckboxWidgetShowcaseState(runSpacing: runSpacing)],
   );
 }

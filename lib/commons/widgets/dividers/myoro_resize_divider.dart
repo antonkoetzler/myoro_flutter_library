@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the divider resize is activated.
-typedef MyoroResizeDividerDragCallback = void Function(DragUpdateDetails details);
+typedef MyoroResizeDividerDragCallback = void Function(
+    DragUpdateDetails details);
 
 /// A divider with a click/tap + drag resize functionality.
 final class MyoroResizeDivider extends StatelessWidget {
@@ -53,13 +54,16 @@ final class _ResizeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroResizeDividerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroResizeDividerThemeExtension>();
     final shortValue = themeExtension.resizeButtonShortValue;
     final longValue = themeExtension.resizeButtonLongValue;
     final isHorizontal = direction.isHorizontal;
 
     return MouseRegion(
-      cursor: isHorizontal ? SystemMouseCursors.resizeRow : SystemMouseCursors.resizeColumn,
+      cursor: isHorizontal
+          ? SystemMouseCursors.resizeRow
+          : SystemMouseCursors.resizeColumn,
       child: GestureDetector(
         onHorizontalDragUpdate: isHorizontal ? null : dragCallback,
         onVerticalDragUpdate: isHorizontal ? dragCallback : null,

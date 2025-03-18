@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [StoryboardBody].
-final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyThemeExtension> {
+final class StoryboardBodyThemeExtension
+    extends ThemeExtension<StoryboardBodyThemeExtension> {
   /// Padding of the content within [_WidgetListingCategory].
   final EdgeInsets widgetListingCategoryPadding;
 
@@ -47,15 +48,24 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
   });
 
   StoryboardBodyThemeExtension.fake()
-      : widgetListingCategoryPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      : widgetListingCategoryPadding =
+            EdgeInsets.all(faker.randomGenerator.decimal()),
         widgetListingCategorySpacing = faker.randomGenerator.decimal(),
-        widgetListingCategoryDividerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        widgetListingCategoryDividerShortValue = faker.randomGenerator.decimal(),
-        widgetListingCategoryDropdownButtonTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        widgetListingCategoryDropdownButtonUnopenedIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        widgetListingCategoryDropdownButtonOpenedIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        widgetListingCategoryWidgetButtonContentCentered = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
-        widgetListingCategoryWidgetButtonTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+        widgetListingCategoryDividerPadding =
+            EdgeInsets.all(faker.randomGenerator.decimal()),
+        widgetListingCategoryDividerShortValue =
+            faker.randomGenerator.decimal(),
+        widgetListingCategoryDropdownButtonTextStyle =
+            MyoroTypographyTheme.instance.randomTextStyle,
+        widgetListingCategoryDropdownButtonUnopenedIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        widgetListingCategoryDropdownButtonOpenedIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        widgetListingCategoryWidgetButtonContentCentered =
+            MainAxisAlignment.values[
+                faker.randomGenerator.integer(MainAxisAlignment.values.length)],
+        widgetListingCategoryWidgetButtonTextStyle =
+            MyoroTypographyTheme.instance.randomTextStyle;
 
   @override
   StoryboardBodyThemeExtension copyWith({
@@ -70,37 +80,71 @@ final class StoryboardBodyThemeExtension extends ThemeExtension<StoryboardBodyTh
     TextStyle? widgetListingCategoryWidgetButtonTextStyle,
   }) {
     return StoryboardBodyThemeExtension(
-      widgetListingCategoryPadding: widgetListingCategoryPadding ?? this.widgetListingCategoryPadding,
-      widgetListingCategorySpacing: widgetListingCategorySpacing ?? this.widgetListingCategorySpacing,
-      widgetListingCategoryDividerPadding: widgetListingCategoryDividerPadding ?? this.widgetListingCategoryDividerPadding,
-      widgetListingCategoryDividerShortValue: widgetListingCategoryDividerShortValue ?? this.widgetListingCategoryDividerShortValue,
-      widgetListingCategoryDropdownButtonTextStyle: widgetListingCategoryDropdownButtonTextStyle ?? this.widgetListingCategoryDropdownButtonTextStyle,
-      widgetListingCategoryDropdownButtonUnopenedIcon: widgetListingCategoryDropdownButtonUnopenedIcon ?? this.widgetListingCategoryDropdownButtonUnopenedIcon,
-      widgetListingCategoryDropdownButtonOpenedIcon: widgetListingCategoryDropdownButtonOpenedIcon ?? this.widgetListingCategoryDropdownButtonOpenedIcon,
+      widgetListingCategoryPadding:
+          widgetListingCategoryPadding ?? this.widgetListingCategoryPadding,
+      widgetListingCategorySpacing:
+          widgetListingCategorySpacing ?? this.widgetListingCategorySpacing,
+      widgetListingCategoryDividerPadding:
+          widgetListingCategoryDividerPadding ??
+              this.widgetListingCategoryDividerPadding,
+      widgetListingCategoryDividerShortValue:
+          widgetListingCategoryDividerShortValue ??
+              this.widgetListingCategoryDividerShortValue,
+      widgetListingCategoryDropdownButtonTextStyle:
+          widgetListingCategoryDropdownButtonTextStyle ??
+              this.widgetListingCategoryDropdownButtonTextStyle,
+      widgetListingCategoryDropdownButtonUnopenedIcon:
+          widgetListingCategoryDropdownButtonUnopenedIcon ??
+              this.widgetListingCategoryDropdownButtonUnopenedIcon,
+      widgetListingCategoryDropdownButtonOpenedIcon:
+          widgetListingCategoryDropdownButtonOpenedIcon ??
+              this.widgetListingCategoryDropdownButtonOpenedIcon,
       widgetListingCategoryWidgetButtonContentCentered:
-          widgetListingCategoryWidgetButtonContentCentered ?? this.widgetListingCategoryWidgetButtonContentCentered,
-      widgetListingCategoryWidgetButtonTextStyle: widgetListingCategoryWidgetButtonTextStyle ?? this.widgetListingCategoryWidgetButtonTextStyle,
+          widgetListingCategoryWidgetButtonContentCentered ??
+              this.widgetListingCategoryWidgetButtonContentCentered,
+      widgetListingCategoryWidgetButtonTextStyle:
+          widgetListingCategoryWidgetButtonTextStyle ??
+              this.widgetListingCategoryWidgetButtonTextStyle,
     );
   }
 
   @override
-  StoryboardBodyThemeExtension lerp(covariant ThemeExtension<StoryboardBodyThemeExtension>? other, double t) {
+  StoryboardBodyThemeExtension lerp(
+      covariant ThemeExtension<StoryboardBodyThemeExtension>? other, double t) {
     if (other is! StoryboardBodyThemeExtension) return this;
     return copyWith(
-      widgetListingCategoryPadding: EdgeInsets.lerp(widgetListingCategoryPadding, other.widgetListingCategoryPadding, t),
-      widgetListingCategorySpacing: lerpDouble(widgetListingCategorySpacing, other.widgetListingCategorySpacing, t),
-      widgetListingCategoryDividerPadding: EdgeInsets.lerp(widgetListingCategoryDividerPadding, other.widgetListingCategoryDividerPadding, t),
-      widgetListingCategoryDividerShortValue: lerpDouble(widgetListingCategoryDividerShortValue, other.widgetListingCategoryDividerShortValue, t),
-      widgetListingCategoryDropdownButtonTextStyle:
-          TextStyle.lerp(widgetListingCategoryDropdownButtonTextStyle, other.widgetListingCategoryDropdownButtonTextStyle, t),
-      widgetListingCategoryDropdownButtonUnopenedIcon:
-          myoroLerp(widgetListingCategoryDropdownButtonUnopenedIcon, other.widgetListingCategoryDropdownButtonUnopenedIcon, t),
-      widgetListingCategoryDropdownButtonOpenedIcon:
-          myoroLerp(widgetListingCategoryDropdownButtonOpenedIcon, other.widgetListingCategoryDropdownButtonOpenedIcon, t),
-      widgetListingCategoryWidgetButtonContentCentered:
-          myoroLerp(widgetListingCategoryWidgetButtonContentCentered, other.widgetListingCategoryWidgetButtonContentCentered, t),
-      widgetListingCategoryWidgetButtonTextStyle:
-          TextStyle.lerp(widgetListingCategoryWidgetButtonTextStyle, other.widgetListingCategoryWidgetButtonTextStyle, t),
+      widgetListingCategoryPadding: EdgeInsets.lerp(
+          widgetListingCategoryPadding, other.widgetListingCategoryPadding, t),
+      widgetListingCategorySpacing: lerpDouble(
+          widgetListingCategorySpacing, other.widgetListingCategorySpacing, t),
+      widgetListingCategoryDividerPadding: EdgeInsets.lerp(
+          widgetListingCategoryDividerPadding,
+          other.widgetListingCategoryDividerPadding,
+          t),
+      widgetListingCategoryDividerShortValue: lerpDouble(
+          widgetListingCategoryDividerShortValue,
+          other.widgetListingCategoryDividerShortValue,
+          t),
+      widgetListingCategoryDropdownButtonTextStyle: TextStyle.lerp(
+          widgetListingCategoryDropdownButtonTextStyle,
+          other.widgetListingCategoryDropdownButtonTextStyle,
+          t),
+      widgetListingCategoryDropdownButtonUnopenedIcon: myoroLerp(
+          widgetListingCategoryDropdownButtonUnopenedIcon,
+          other.widgetListingCategoryDropdownButtonUnopenedIcon,
+          t),
+      widgetListingCategoryDropdownButtonOpenedIcon: myoroLerp(
+          widgetListingCategoryDropdownButtonOpenedIcon,
+          other.widgetListingCategoryDropdownButtonOpenedIcon,
+          t),
+      widgetListingCategoryWidgetButtonContentCentered: myoroLerp(
+          widgetListingCategoryWidgetButtonContentCentered,
+          other.widgetListingCategoryWidgetButtonContentCentered,
+          t),
+      widgetListingCategoryWidgetButtonTextStyle: TextStyle.lerp(
+          widgetListingCategoryWidgetButtonTextStyle,
+          other.widgetListingCategoryWidgetButtonTextStyle,
+          t),
     );
   }
 }

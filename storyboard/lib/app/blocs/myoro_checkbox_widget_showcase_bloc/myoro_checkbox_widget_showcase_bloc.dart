@@ -10,7 +10,8 @@ part 'myoro_checkbox_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroCheckboxWidgetShowcaseState>;
 
 /// BloC to manage all the state in [MyoroCheckboxWidgetShowcase].
-final class MyoroCheckboxWidgetShowcaseBloc extends Bloc<MyoroCheckboxWidgetShowcaseEvent, MyoroCheckboxWidgetShowcaseState> {
+final class MyoroCheckboxWidgetShowcaseBloc extends Bloc<
+    MyoroCheckboxWidgetShowcaseEvent, MyoroCheckboxWidgetShowcaseState> {
   MyoroCheckboxWidgetShowcaseBloc({
     required TextStyle labelTextStyle,
   }) : super(

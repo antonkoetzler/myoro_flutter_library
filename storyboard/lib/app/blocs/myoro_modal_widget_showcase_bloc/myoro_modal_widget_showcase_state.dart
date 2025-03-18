@@ -82,5 +82,9 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
     ];
   }
 
-  bool get constraintsEnabled => minWidth != null || maxWidth != null || minHeight != null || maxHeight != null;
+  bool get constraintsEnabled =>
+      minWidth != null ||
+      maxWidth != null ||
+      minHeight != null ||
+      maxHeight != null;
 }

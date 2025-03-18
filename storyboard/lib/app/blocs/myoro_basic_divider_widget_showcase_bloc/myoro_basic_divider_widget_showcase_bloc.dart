@@ -10,7 +10,9 @@ part 'myoro_basic_divider_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroBasicDividerWidgetShowcaseState>;
 
 /// BLoC to manage all of the state in [MyoroBasicDividerWidgetShowcase].
-final class MyoroBasicDividerWidgetShowcaseBloc extends Bloc<MyoroBasicDividerWidgetShowcaseEvent, MyoroBasicDividerWidgetShowcaseState> {
+final class MyoroBasicDividerWidgetShowcaseBloc extends Bloc<
+    MyoroBasicDividerWidgetShowcaseEvent,
+    MyoroBasicDividerWidgetShowcaseState> {
   MyoroBasicDividerWidgetShowcaseBloc({
     required double shortValue,
   }) : super(

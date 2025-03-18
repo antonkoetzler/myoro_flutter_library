@@ -47,7 +47,8 @@ void main() {
   }) {
     assert(isUsingMessage ^ isUsingChild);
 
-    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     expect(find.byType(MyoroSnackBar), findsOneWidget);
 
@@ -70,7 +71,9 @@ void main() {
             (w.child as Row).mainAxisSize == MainAxisSize.min &&
             (w.child as Row).children.length == (showCloseButton ? 3 : 1) &&
             (showCloseButton
-                ? ((w.child as Row).children[1] is SizedBox && ((w.child as Row).children[1] as SizedBox).width == themeExtension.contentCloseButtonSpacing)
+                ? ((w.child as Row).children[1] is SizedBox &&
+                    ((w.child as Row).children[1] as SizedBox).width ==
+                        themeExtension.contentCloseButtonSpacing)
                 : (true)),
       ),
       findsOneWidget,
@@ -80,7 +83,10 @@ void main() {
     if (isUsingMessage) {
       expect(
         find.byWidgetPredicate(
-          (Widget w) => w is Text && w.data == message && w.style == themeExtension.messageTextStyle,
+          (Widget w) =>
+              w is Text &&
+              w.data == message &&
+              w.style == themeExtension.messageTextStyle,
         ),
         findsOneWidget,
       );
@@ -112,14 +118,17 @@ void main() {
   }
 
   test('MyoroSnackBar text (x)or child assertion', () {
-    expect(() => MyoroSnackBar(message: message, child: child), throwsAssertionError);
+    expect(() => MyoroSnackBar(message: message, child: child),
+        throwsAssertionError);
   });
 
   testWidgets('MyoroSnackBar using text', (WidgetTester tester) async {
-    expectCalls(await pumpWidget(tester, isUsingMessage: true), isUsingMessage: true);
+    expectCalls(await pumpWidget(tester, isUsingMessage: true),
+        isUsingMessage: true);
   });
 
   testWidgets('MyoroSnackBar using a widget', (WidgetTester tester) async {
-    expectCalls(await pumpWidget(tester, isUsingChild: true), isUsingChild: true);
+    expectCalls(await pumpWidget(tester, isUsingChild: true),
+        isUsingChild: true);
   });
 }

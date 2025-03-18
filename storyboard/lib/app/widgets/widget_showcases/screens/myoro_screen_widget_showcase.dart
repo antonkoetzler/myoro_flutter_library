@@ -14,7 +14,8 @@ final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
-  Widget build(BuildContext context) => const MyoroScreen(appBar: _AppBar(), body: _Body());
+  Widget build(BuildContext context) =>
+      const MyoroScreen(appBar: _AppBar(), body: _Body());
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -25,7 +26,8 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
 
     return MyoroAppBar(
       child: Row(
@@ -65,7 +67,8 @@ final class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
 
     return Center(
       child: Column(
@@ -76,7 +79,8 @@ final class _Body extends StatelessWidget {
           ClipRRect(
             clipBehavior: Clip.hardEdge,
             borderRadius: themeExtension.bodyImageBorderRadius,
-            child: Image.asset('assets/images/happy_cat.jpg', width: themeExtension.bodyImageSize),
+            child: Image.asset('assets/images/happy_cat.jpg',
+                width: themeExtension.bodyImageSize),
           ),
           Text(
             'The contents of the screen would go here.',

@@ -40,7 +40,9 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget build(BuildContext context) {
     return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
       builder: (_, WidgetShowcaseState state) {
-        if (_widgetOptions.isEmpty || !state.displayingWidgetOptions) return const SizedBox.shrink();
+        if (_widgetOptions.isEmpty || !state.displayingWidgetOptions) {
+          return const SizedBox.shrink();
+        }
 
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +66,8 @@ final class _WidgetWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Padding(
       padding: themeExtension.widgetWrapperPadding,
@@ -109,7 +112,8 @@ final class _WidgetOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return IntrinsicWidth(
       child: Padding(
@@ -122,7 +126,8 @@ final class _WidgetOptions extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Flexible(child: widgetOption),
-                    if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
+                    if (_widgetOptions.indexOf(widgetOption) !=
+                        _widgetOptions.length - 1)
                       _Divider(
                         direction: Axis.horizontal,
                         padding: themeExtension.widgetOptionsDividerPadding,

@@ -7,7 +7,8 @@ import 'package:storyboard/app/blocs/myoro_basic_divider_widget_showcase_bloc/my
 void main() {
   final double shortValue = faker.randomGenerator.decimal();
   final double newShortValue = faker.randomGenerator.decimal();
-  final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
+  final Axis direction =
+      Axis.values[faker.randomGenerator.integer(Axis.values.length)];
   final double padding = faker.randomGenerator.decimal();
 
   blocTest(

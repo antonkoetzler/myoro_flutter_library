@@ -10,6 +10,9 @@ void main() {
     'MyoroSearchInputWidgetShowcaseBloc.SetRequestWhenChangedEvent',
     build: () => MyoroSearchInputWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetRequestWhenChangedEvent(requestWhenChanged)),
-    expect: () => [MyoroSearchInputWidgetShowcaseState(requestWhenChanged: requestWhenChanged)],
+    expect: () => [
+      MyoroSearchInputWidgetShowcaseState(
+          requestWhenChanged: requestWhenChanged)
+    ],
   );
 }

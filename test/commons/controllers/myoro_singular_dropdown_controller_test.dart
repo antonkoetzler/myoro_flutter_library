@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   test('MyoroSingularDropdownController\'s constructors', () {
-    MyoroSingularDropdownController<int> controller = MyoroSingularDropdownController();
+    MyoroSingularDropdownController<int> controller =
+        MyoroSingularDropdownController();
     expect(controller.selectedItem, isNull);
     controller.dispose();
 

@@ -22,7 +22,8 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.buttonBordered,
-        myoroLerp(themeExtension1.buttonBordered, themeExtension2.buttonBordered, i),
+        myoroLerp(
+            themeExtension1.buttonBordered, themeExtension2.buttonBordered, i),
       );
       expect(
         lerpedThemeExtension.inputStyle,

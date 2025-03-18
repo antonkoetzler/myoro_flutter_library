@@ -101,7 +101,8 @@ final class MyoroInputConfiguration extends Equatable {
 
   MyoroInputConfiguration.fake()
       : inputStyle = MyoroInputStyleEnum.fake(),
-        textAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+        textAlign = TextAlign
+            .values[faker.randomGenerator.integer(TextAlign.values.length)],
         inputTextStyle = null,
         label = faker.lorem.word(),
         placeholder = faker.lorem.word(),

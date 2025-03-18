@@ -32,7 +32,9 @@ final class MyoroWidgetTester extends StatelessWidget {
       (Widget w) =>
           w is MyoroWidgetTester &&
           (themeModeEnabled ? w.themeMode == themeMode : true) &&
-          (themeExtensionsBuilderEnabled ? w.themeExtensionsBuilder == themeExtensionsBuilder : true) &&
+          (themeExtensionsBuilderEnabled
+              ? w.themeExtensionsBuilder == themeExtensionsBuilder
+              : true) &&
           (childEnabled ? w.child == child : true),
     );
   }

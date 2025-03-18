@@ -10,14 +10,17 @@ part 'myoro_table_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroTableWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroTableWidgetShowcase].
-final class MyoroTableWidgetShowcaseBloc extends Bloc<MyoroTableWidgetShowcaseEvent, MyoroTableWidgetShowcaseState> {
-  MyoroTableWidgetShowcaseBloc() : super(const MyoroTableWidgetShowcaseState()) {
+final class MyoroTableWidgetShowcaseBloc
+    extends Bloc<MyoroTableWidgetShowcaseEvent, MyoroTableWidgetShowcaseState> {
+  MyoroTableWidgetShowcaseBloc()
+      : super(const MyoroTableWidgetShowcaseState()) {
     on<SetEnableColumnResizingEvent>(_setEnableColumnResizingEvent);
     on<SetEnableCheckboxesEvent>(_setEnableCheckboxesEvent);
     on<SetShowPaginationControlsEvent>(_setShowPaginationControlsEvent);
   }
 
-  void _setEnableColumnResizingEvent(SetEnableColumnResizingEvent event, _Emitter emit) {
+  void _setEnableColumnResizingEvent(
+      SetEnableColumnResizingEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         enableColumnResizing: event.enableColumnResizing,
@@ -25,7 +28,8 @@ final class MyoroTableWidgetShowcaseBloc extends Bloc<MyoroTableWidgetShowcaseEv
     );
   }
 
-  void _setEnableCheckboxesEvent(SetEnableCheckboxesEvent event, _Emitter emit) {
+  void _setEnableCheckboxesEvent(
+      SetEnableCheckboxesEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         enableCheckboxes: event.enableCheckboxes,
@@ -33,7 +37,8 @@ final class MyoroTableWidgetShowcaseBloc extends Bloc<MyoroTableWidgetShowcaseEv
     );
   }
 
-  void _setShowPaginationControlsEvent(SetShowPaginationControlsEvent event, _Emitter emit) {
+  void _setShowPaginationControlsEvent(
+      SetShowPaginationControlsEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         showPaginationControls: event.showPaginationControls,

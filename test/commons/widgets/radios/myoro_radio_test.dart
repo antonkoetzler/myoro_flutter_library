@@ -5,12 +5,14 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroRadio].
 void main() {
-  final bool? initialValue = faker.randomGenerator.boolean() ? faker.randomGenerator.boolean() : null;
+  final bool? initialValue =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.boolean() : null;
   final String label = faker.lorem.word();
   late final TextStyle? labelTextStyle;
 
   setUp(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
   });
 
@@ -23,7 +25,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroRadioThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroRadioThemeExtension>();
 
             return MyoroRadio(
               initialValue: initialValue,
@@ -50,7 +53,8 @@ void main() {
             w.children.last is Flexible &&
             (w.children.last as Flexible).child is Text &&
             ((w.children.last as Flexible).child as Text).data == label &&
-            ((w.children.last as Flexible).child as Text).style == (labelTextStyle ?? themeExtension.labelTextStyle),
+            ((w.children.last as Flexible).child as Text).style ==
+                (labelTextStyle ?? themeExtension.labelTextStyle),
       ),
       findsOneWidget,
     );

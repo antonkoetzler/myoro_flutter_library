@@ -10,8 +10,10 @@ part 'myoro_bar_graph_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroBarGraphWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroBarGraphWidgetShowcase].
-final class MyoroBarGraphWidgetShowcaseBloc extends Bloc<MyoroBarGraphWidgetShowcaseEvent, MyoroBarGraphWidgetShowcaseState> {
-  MyoroBarGraphWidgetShowcaseBloc() : super(const MyoroBarGraphWidgetShowcaseState()) {
+final class MyoroBarGraphWidgetShowcaseBloc extends Bloc<
+    MyoroBarGraphWidgetShowcaseEvent, MyoroBarGraphWidgetShowcaseState> {
+  MyoroBarGraphWidgetShowcaseBloc()
+      : super(const MyoroBarGraphWidgetShowcaseState()) {
     on<SetSortedEvent>(_setSortedEvent);
   }
 

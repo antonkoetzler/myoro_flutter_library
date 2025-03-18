@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroLayoutBuilder].
-final class MyoroLayoutBuilderThemeExtension extends ThemeExtension<MyoroLayoutBuilderThemeExtension> {
+final class MyoroLayoutBuilderThemeExtension
+    extends ThemeExtension<MyoroLayoutBuilderThemeExtension> {
   const MyoroLayoutBuilderThemeExtension();
 
   @override

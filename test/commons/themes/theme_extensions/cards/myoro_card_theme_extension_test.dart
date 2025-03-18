@@ -11,7 +11,8 @@ void main() {
   late final MyoroCardThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroCardThemeExtension.fake();
     themeExtension2 = MyoroCardThemeExtension.fake();
   });
@@ -25,11 +26,13 @@ void main() {
       titleCardSpacing: themeExtension2.titleCardSpacing,
       textStyle: themeExtension2.textStyle,
     );
-    expect(copiedThemeExtension.backgroundColor, themeExtension2.backgroundColor);
+    expect(
+        copiedThemeExtension.backgroundColor, themeExtension2.backgroundColor);
     expect(copiedThemeExtension.border, themeExtension2.border);
     expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
     expect(copiedThemeExtension.padding, themeExtension2.padding);
-    expect(copiedThemeExtension.titleCardSpacing, themeExtension2.titleCardSpacing);
+    expect(copiedThemeExtension.titleCardSpacing,
+        themeExtension2.titleCardSpacing);
     expect(copiedThemeExtension.textStyle, themeExtension2.textStyle);
   });
 
@@ -38,7 +41,8 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.backgroundColor,
-        Color.lerp(themeExtension1.backgroundColor, themeExtension2.backgroundColor, i),
+        Color.lerp(themeExtension1.backgroundColor,
+            themeExtension2.backgroundColor, i),
       );
       expect(
         lerpedThemeExtension.border,
@@ -46,7 +50,8 @@ void main() {
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
+        BorderRadius.lerp(
+            themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
       expect(
         lerpedThemeExtension.padding,
@@ -54,7 +59,8 @@ void main() {
       );
       expect(
         lerpedThemeExtension.titleCardSpacing,
-        lerpDouble(themeExtension1.titleCardSpacing, themeExtension2.titleCardSpacing, i),
+        lerpDouble(themeExtension1.titleCardSpacing,
+            themeExtension2.titleCardSpacing, i),
       );
       expect(
         lerpedThemeExtension.textStyle,

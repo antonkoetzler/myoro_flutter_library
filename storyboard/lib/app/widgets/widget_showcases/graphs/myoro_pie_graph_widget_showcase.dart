@@ -13,7 +13,9 @@ final class MyoroPieGraphWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroPieGraphWidgetShowcaseBloc(),
-      child: BlocBuilder<MyoroPieGraphWidgetShowcaseBloc, MyoroPieGraphWidgetShowcaseState>(builder: (_, MyoroPieGraphWidgetShowcaseState state) {
+      child: BlocBuilder<MyoroPieGraphWidgetShowcaseBloc,
+              MyoroPieGraphWidgetShowcaseState>(
+          builder: (_, MyoroPieGraphWidgetShowcaseState state) {
         return WidgetShowcase(
           widget: const _Widget(),
           widgetOptions: [
@@ -31,17 +33,20 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroPieGraphWidgetShowcaseBloc, MyoroPieGraphWidgetShowcaseState>(
+    return BlocBuilder<MyoroPieGraphWidgetShowcaseBloc,
+        MyoroPieGraphWidgetShowcaseState>(
       builder: (_, MyoroPieGraphWidgetShowcaseState state) {
         return MyoroPieGraph(
           state.typeEnum,
-          centerWidget: state.centerWidgetEnabled ? const _CenterWidget() : null,
+          centerWidget:
+              state.centerWidgetEnabled ? const _CenterWidget() : null,
           items: List.generate(
             faker.randomGenerator.integer(10),
             (_) => MyoroPieGraphItem(
               value: faker.randomGenerator.decimal(),
               radius: faker.randomGenerator.integer(100).toDouble(),
-              color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+              color: kMyoroTestColors[
+                  faker.randomGenerator.integer(kMyoroTestColors.length)],
             ),
           ),
         );
@@ -55,7 +60,8 @@ final class _CenterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>();
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
@@ -78,7 +84,8 @@ final class _TypeEnumOption extends StatefulWidget {
 
 final class _TypeEnumOptionState extends State<_TypeEnumOption> {
   late final _bloc = context.resolveBloc<MyoroPieGraphWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<MyoroPieGraphEnum>(_bloc.state.typeEnum);
+  late final _controller =
+      MyoroSingularDropdownController<MyoroPieGraphEnum>(_bloc.state.typeEnum);
 
   @override
   void dispose() {
@@ -92,11 +99,14 @@ final class _TypeEnumOptionState extends State<_TypeEnumOption> {
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroPieGraph.typeEnum]',
         allowItemClearing: false,
-        dataConfiguration: MyoroDataConfiguration(staticItems: MyoroPieGraphEnum.values),
-        itemBuilder: (MyoroPieGraphEnum typeEnum) => MyoroMenuItem(text: typeEnum.name),
+        dataConfiguration:
+            MyoroDataConfiguration(staticItems: MyoroPieGraphEnum.values),
+        itemBuilder: (MyoroPieGraphEnum typeEnum) =>
+            MyoroMenuItem(text: typeEnum.name),
         itemLabelBuilder: (MyoroPieGraphEnum typeEnum) => typeEnum.name,
       ),
-      onChanged: (MyoroPieGraphEnum? typeEnum) => _bloc.add(SetTypeEnumEvent(typeEnum!)),
+      onChanged: (MyoroPieGraphEnum? typeEnum) =>
+          _bloc.add(SetTypeEnumEvent(typeEnum!)),
       controller: _controller,
     );
   }

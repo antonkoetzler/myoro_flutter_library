@@ -34,12 +34,23 @@ void main() {
     );
 
     // [_DisplayTraversalButtonsOptions].
-    expect(MyoroCheckbox.finder(label: '[MyoroCarousel.displayTraversalButtons]', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(
+            label: '[MyoroCarousel.displayTraversalButtons]',
+            labelEnabled: true),
+        findsOneWidget);
 
     // [_AutoplayOption].
-    expect(MyoroCheckbox.finder(label: '[MyoroCarousel.autoplay]', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(
+            label: '[MyoroCarousel.autoplay]', labelEnabled: true),
+        findsOneWidget);
 
     // [_AutoplayIntervalDurationOption].
-    expect(MyoroSlider.finder(label: '[MyoroSlider.autoplayIntervalDuration]', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroSlider.finder(
+            label: '[MyoroSlider.autoplayIntervalDuration]',
+            labelEnabled: true),
+        findsOneWidget);
   });
 }

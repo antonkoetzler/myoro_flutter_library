@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroCircularLoader].
-final class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension> {
+final class MyoroCircularLoaderThemeExtension
+    extends ThemeExtension<MyoroCircularLoaderThemeExtension> {
   /// Color of the [MyoroCircularLoader].
   final Color color;
 
@@ -18,7 +19,8 @@ final class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircul
   });
 
   MyoroCircularLoaderThemeExtension.fake()
-      : color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      : color = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
         size = faker.randomGenerator.decimal();
 
   @override

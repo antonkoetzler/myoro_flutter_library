@@ -1,7 +1,8 @@
 import 'package:faker/faker.dart';
 
 /// Request if the [MyoroDataConfiguration.asyncronousItems] is being utilized.
-typedef MyoroDataConfigurationRequest<T> = Future<List<T>> Function(Map<String, dynamic> filters);
+typedef MyoroDataConfigurationRequest<T> = Future<List<T>> Function(
+    Map<String, dynamic> filters);
 
 /// A model to represent the requesting, pagination, & filtering of data.
 final class MyoroDataConfiguration<T> {
@@ -47,8 +48,11 @@ final class MyoroDataConfiguration<T> {
     Map<String, dynamic>? filters,
   }) {
     return MyoroDataConfiguration(
-      staticItems: staticItemsEnabled ? (staticItems ?? this.staticItems) : null,
-      asyncronousItems: asyncronousItemsEnabled ? (asyncronousItems ?? this.asyncronousItems) : null,
+      staticItems:
+          staticItemsEnabled ? (staticItems ?? this.staticItems) : null,
+      asyncronousItems: asyncronousItemsEnabled
+          ? (asyncronousItems ?? this.asyncronousItems)
+          : null,
       currentPage: currentPage ?? this.currentPage,
       totalPages: totalPages ?? this.totalPages,
       itemsPerPage: itemsPerPage ?? this.itemsPerPage,
@@ -66,7 +70,8 @@ final class MyoroDataConfiguration<T> {
       totalPages: totalPages,
       itemsPerPage: faker.randomGenerator.integer(9999),
       filters: {
-        for (int i = 0; i < faker.randomGenerator.integer(50); i++) '${faker.lorem.word()}$i': faker.sport.name(),
+        for (int i = 0; i < faker.randomGenerator.integer(50); i++)
+          '${faker.lorem.word()}$i': faker.sport.name(),
       },
     );
   }
@@ -99,6 +104,7 @@ final class MyoroDataConfiguration<T> {
 
   bool get staticItemsUsed => staticItems != null;
   bool get asyncronousItemsUsed => asyncronousItems != null;
-  Future<List<T>> get items async => staticItemsUsed ? staticItems! : await asyncronousItems!.call(_filters);
+  Future<List<T>> get items async =>
+      staticItemsUsed ? staticItems! : await asyncronousItems!.call(_filters);
   Map<String, dynamic> get filters => _filters;
 }

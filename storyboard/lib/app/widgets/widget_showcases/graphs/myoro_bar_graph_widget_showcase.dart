@@ -26,7 +26,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroBarGraphWidgetShowcaseBloc, MyoroBarGraphWidgetShowcaseState>(
+    return BlocBuilder<MyoroBarGraphWidgetShowcaseBloc,
+        MyoroBarGraphWidgetShowcaseState>(
       builder: (_, MyoroBarGraphWidgetShowcaseState state) {
         return MyoroBarGraph(
           sorted: state.sorted,

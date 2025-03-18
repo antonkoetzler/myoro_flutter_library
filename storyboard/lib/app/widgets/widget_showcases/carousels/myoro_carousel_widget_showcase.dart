@@ -31,7 +31,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroCarouselWidgetShowcaseBloc, MyoroCarouselWidgetShowcaseState>(
+    return BlocBuilder<MyoroCarouselWidgetShowcaseBloc,
+        MyoroCarouselWidgetShowcaseState>(
       builder: (_, MyoroCarouselWidgetShowcaseState state) {
         return MyoroCarousel(
           direction: state.direction,
@@ -43,7 +44,8 @@ final class _Widget extends StatelessWidget {
             (_) => Container(
               width: 300,
               height: 300,
-              color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+              color: kMyoroTestColors[
+                  faker.randomGenerator.integer(kMyoroTestColors.length)],
             ),
           ),
         );
@@ -62,7 +64,8 @@ final class _DirectionOption extends StatefulWidget {
 final class _DirectionOptionState extends State<_DirectionOption> {
   final _controller = MyoroSingularDropdownController<Axis>(Axis.horizontal);
 
-  String _getDirectionName(Axis direction) => direction.isHorizontal ? 'Horizontal' : 'Vertical';
+  String _getDirectionName(Axis direction) =>
+      direction.isHorizontal ? 'Horizontal' : 'Vertical';
 
   @override
   void dispose() {
@@ -76,11 +79,14 @@ final class _DirectionOptionState extends State<_DirectionOption> {
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroCarousel.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        itemBuilder: (Axis direction) => MyoroMenuItem(text: _getDirectionName(direction)),
+        itemBuilder: (Axis direction) =>
+            MyoroMenuItem(text: _getDirectionName(direction)),
         itemLabelBuilder: _getDirectionName,
         allowItemClearing: false,
       ),
-      onChanged: (Axis? direction) => context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(SetDirectionEvent(direction!)),
+      onChanged: (Axis? direction) => context
+          .resolveBloc<MyoroCarouselWidgetShowcaseBloc>()
+          .add(SetDirectionEvent(direction!)),
       controller: _controller,
     );
   }

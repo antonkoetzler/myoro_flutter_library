@@ -24,14 +24,17 @@ final class MyoroBasicDivider extends StatelessWidget {
           w is MyoroBasicDivider &&
           (configurationEnabled ? w.configuration == configuration : true) &&
           (directionEnabled ? w.configuration.direction == direction : true) &&
-          (shortValueEnabled ? w.configuration.shortValue == shortValue : true) &&
+          (shortValueEnabled
+              ? w.configuration.shortValue == shortValue
+              : true) &&
           (paddingEnabled ? w.configuration.padding == padding : true),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
     final isHorizontal = configuration.direction.isHorizontal;
     final setShortValue = configuration.shortValue ?? themeExtension.shortValue;
 

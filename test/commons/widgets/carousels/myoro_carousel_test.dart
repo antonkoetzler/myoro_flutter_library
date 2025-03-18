@@ -10,7 +10,8 @@ void main() {
     faker.randomGenerator.integer(10),
     (int index) => Text('$index'),
   );
-  final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
+  final Axis direction =
+      Axis.values[faker.randomGenerator.integer(Axis.values.length)];
   const bool displayTraversalButtons = true;
   final int initialItem = faker.randomGenerator.integer(items.length);
 
@@ -24,7 +25,10 @@ void main() {
             w.alignment == alignment &&
             w.child is IntrinsicWidth &&
             (w.child as IntrinsicWidth).child is MyoroIconTextHoverButton &&
-            ((w.child as IntrinsicWidth).child as MyoroIconTextHoverButton).configuration?.bordered == themeExtension.traversalButtonBordered,
+            ((w.child as IntrinsicWidth).child as MyoroIconTextHoverButton)
+                    .configuration
+                    ?.bordered ==
+                themeExtension.traversalButtonBordered,
       ),
       findsOneWidget,
     );
@@ -35,7 +39,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroCarouselThemeExtension>();
 
             return MyoroCarousel(
               direction: direction,
@@ -54,7 +59,12 @@ void main() {
     // Wrapper.
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Stack && w.alignment == Alignment.center && w.children.length == 3 && w.children[1] is Positioned && w.children.last is Positioned,
+        (Widget w) =>
+            w is Stack &&
+            w.alignment == Alignment.center &&
+            w.children.length == 3 &&
+            w.children[1] is Positioned &&
+            w.children.last is Positioned,
       ),
       findsOneWidget,
     );
@@ -62,13 +72,19 @@ void main() {
     // [_Carousel].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is CarouselSlider && w.items == items && w.options.initialPage == initialItem && w.options.scrollDirection == direction,
+        (Widget w) =>
+            w is CarouselSlider &&
+            w.items == items &&
+            w.options.initialPage == initialItem &&
+            w.options.scrollDirection == direction,
       ),
       findsOneWidget,
     );
 
     // [_TraversalButton]s.
-    expectTraversalButton(Alignment.centerLeft, themeExtension.previousItemButtonIcon);
-    expectTraversalButton(Alignment.centerRight, themeExtension.nextItemButtonIcon);
+    expectTraversalButton(
+        Alignment.centerLeft, themeExtension.previousItemButtonIcon);
+    expectTraversalButton(
+        Alignment.centerRight, themeExtension.nextItemButtonIcon);
   });
 }

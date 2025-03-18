@@ -10,11 +10,15 @@ void main() {
   void expectMyoroColorThemeContextColors(BuildContext context) {
     expect(
       MyoroColorTheme.primary(context),
-      context.isDarkMode ? MyoroDarkModeColorTheme.primary : MyoroLightModeColorTheme.primary,
+      context.isDarkMode
+          ? MyoroDarkModeColorTheme.primary
+          : MyoroLightModeColorTheme.primary,
     );
     expect(
       MyoroColorTheme.secondary(context),
-      context.isDarkMode ? MyoroDarkModeColorTheme.secondary : MyoroLightModeColorTheme.secondary,
+      context.isDarkMode
+          ? MyoroDarkModeColorTheme.secondary
+          : MyoroLightModeColorTheme.secondary,
     );
   }
 

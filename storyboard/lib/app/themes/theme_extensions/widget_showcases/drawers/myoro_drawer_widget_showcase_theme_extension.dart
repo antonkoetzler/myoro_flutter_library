@@ -4,7 +4,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroDrawerWidgetShowcase].
-final class MyoroDrawerWidgetShowcaseThemeExtension extends ThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension> {
+final class MyoroDrawerWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension> {
   /// [MyoroIconTextHoverButton.bordered] of [_Button].
   final bool buttonBordered;
 

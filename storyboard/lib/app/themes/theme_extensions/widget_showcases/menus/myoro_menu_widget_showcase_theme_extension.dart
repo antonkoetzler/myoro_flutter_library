@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroMenuWidgetShowcase].
-final class MyoroMenuWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMenuWidgetShowcaseThemeExtension> {
+final class MyoroMenuWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroMenuWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -35,7 +36,8 @@ final class MyoroMenuWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMe
   }) {
     return MyoroMenuWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
-      constraintsOptionSpacing: constraintsOptionSpacing ?? this.constraintsOptionSpacing,
+      constraintsOptionSpacing:
+          constraintsOptionSpacing ?? this.constraintsOptionSpacing,
       headerTextStyle: headerTextStyle ?? this.headerTextStyle,
     );
   }
@@ -48,8 +50,10 @@ final class MyoroMenuWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMe
     if (other is! MyoroMenuWidgetShowcaseThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      constraintsOptionSpacing: lerpDouble(constraintsOptionSpacing, other.constraintsOptionSpacing, t),
-      headerTextStyle: TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
+      constraintsOptionSpacing: lerpDouble(
+          constraintsOptionSpacing, other.constraintsOptionSpacing, t),
+      headerTextStyle:
+          TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
     );
   }
 }

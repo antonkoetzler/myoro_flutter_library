@@ -6,7 +6,8 @@ import 'package:storyboard/storyboard.dart';
 
 /// Widget test of [MyoroSingularDropdownWidgetShowcase].
 void main() {
-  testWidgets('MyoroSingularDropdownWidgetShowcase', (WidgetTester tester) async {
+  testWidgets('MyoroSingularDropdownWidgetShowcase',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createStoryboardThemeExtensions,
@@ -21,14 +22,22 @@ void main() {
     expect(find.byType(MyoroSingularDropdownWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroSingularDropdown<String>), findsOneWidget);
-    expect(MyoroInput.finder(label: 'Label', labelEnabled: true), findsOneWidget);
     expect(
-      MyoroSingularDropdown.finder<TextStyle>(label: 'Label text style', labelEnabled: true),
+        MyoroInput.finder(label: 'Label', labelEnabled: true), findsOneWidget);
+    expect(
+      MyoroSingularDropdown.finder<TextStyle>(
+          label: 'Label text style', labelEnabled: true),
       findsOneWidget,
     );
-    expect(MyoroCheckbox.finder(label: 'Enabled', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: 'Allow item clearing?', labelEnabled: true), findsOneWidget);
-    expect(MyoroInput.finder(label: 'Menu\'s max height', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: 'Searching enabled?', labelEnabled: true), findsOneWidget);
+    expect(MyoroCheckbox.finder(label: 'Enabled', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(label: 'Allow item clearing?', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroInput.finder(label: 'Menu\'s max height', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(label: 'Searching enabled?', labelEnabled: true),
+        findsOneWidget);
   });
 }

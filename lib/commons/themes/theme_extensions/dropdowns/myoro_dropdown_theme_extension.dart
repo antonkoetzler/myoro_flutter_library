@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of dropdowns.
-final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> {
+final class MyoroDropdownThemeExtension
+    extends ThemeExtension<MyoroDropdownThemeExtension> {
   /// [MyoroInputStyleEnum] of [_Input].
   final MyoroInputStyleEnum inputStyle;
 
@@ -47,7 +48,8 @@ final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThem
     if (other is! MyoroDropdownThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      inputDropdownSpacing: lerpDouble(inputDropdownSpacing, other.inputDropdownSpacing, t),
+      inputDropdownSpacing:
+          lerpDouble(inputDropdownSpacing, other.inputDropdownSpacing, t),
       menuMaxHeight: lerpDouble(menuMaxHeight, other.menuMaxHeight, t),
     );
   }

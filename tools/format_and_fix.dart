@@ -3,7 +3,7 @@
 import 'dart:io';
 
 void main() async {
-  const lineLength = 160;
+  const lineLength = 80;
 
   stdout.write('Formatting and fixing files...');
 

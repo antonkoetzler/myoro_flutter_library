@@ -21,11 +21,21 @@ void main() {
     expect(find.byType(MyoroMultiDropdownWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroMultiDropdown<String>), findsOneWidget);
-    expect(MyoroInput.finder(label: 'Label', labelEnabled: true), findsOneWidget);
-    expect(MyoroSingularDropdown.finder<TextStyle>(label: 'Label text style', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: 'Enabled?', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: 'Allow item clearing?', labelEnabled: true), findsOneWidget);
-    expect(MyoroInput.finder(label: 'Menu\'s max height', labelEnabled: true), findsOneWidget);
-    expect(MyoroCheckbox.finder(label: 'Searching enabled?', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroInput.finder(label: 'Label', labelEnabled: true), findsOneWidget);
+    expect(
+        MyoroSingularDropdown.finder<TextStyle>(
+            label: 'Label text style', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroCheckbox.finder(label: 'Enabled?', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(label: 'Allow item clearing?', labelEnabled: true),
+        findsOneWidget);
+    expect(MyoroInput.finder(label: 'Menu\'s max height', labelEnabled: true),
+        findsOneWidget);
+    expect(
+        MyoroCheckbox.finder(label: 'Searching enabled?', labelEnabled: true),
+        findsOneWidget);
   });
 }

@@ -2,7 +2,8 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension> {
+final class MyoroSliderThemeExtension
+    extends ThemeExtension<MyoroSliderThemeExtension> {
   /// Default [TextStyle] of [MyoroSlider.label].
   final TextStyle labelTextStyle;
 
@@ -26,7 +27,8 @@ final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExt
       : labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
         sliderPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
         indicatorTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        indicatorTextAlignment = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)];
+        indicatorTextAlignment = TextAlign
+            .values[faker.randomGenerator.integer(TextAlign.values.length)];
 
   @override
   MyoroSliderThemeExtension copyWith({
@@ -39,18 +41,22 @@ final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExt
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       sliderPadding: sliderPadding ?? this.sliderPadding,
       indicatorTextStyle: indicatorTextStyle ?? this.indicatorTextStyle,
-      indicatorTextAlignment: indicatorTextAlignment ?? this.indicatorTextAlignment,
+      indicatorTextAlignment:
+          indicatorTextAlignment ?? this.indicatorTextAlignment,
     );
   }
 
   @override
-  MyoroSliderThemeExtension lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
+  MyoroSliderThemeExtension lerp(
+      covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
     if (other is! MyoroSliderThemeExtension) return this;
     return copyWith(
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       sliderPadding: EdgeInsets.lerp(sliderPadding, other.sliderPadding, t),
-      indicatorTextStyle: TextStyle.lerp(indicatorTextStyle, other.indicatorTextStyle, t),
-      indicatorTextAlignment: myoroLerp(indicatorTextAlignment, other.indicatorTextAlignment, t),
+      indicatorTextStyle:
+          TextStyle.lerp(indicatorTextStyle, other.indicatorTextStyle, t),
+      indicatorTextAlignment:
+          myoroLerp(indicatorTextAlignment, other.indicatorTextAlignment, t),
     );
   }
 }

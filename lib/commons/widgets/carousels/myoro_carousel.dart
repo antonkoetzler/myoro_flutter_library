@@ -51,10 +51,14 @@ final class MyoroCarousel extends StatefulWidget {
       (Widget w) =>
           w is MyoroCarousel &&
           (directionEnabled ? w.direction == direction : true) &&
-          (displayTraversalButtonsEnabled ? w.displayTraversalButtons == displayTraversalButtons : true) &&
+          (displayTraversalButtonsEnabled
+              ? w.displayTraversalButtons == displayTraversalButtons
+              : true) &&
           (initialItemEnabled ? w.initialItem == initialItem : true) &&
           (autoplayEnabled ? w.autoplay == autoplay : true) &&
-          (autoplayIntervalDurationEnabled ? w.autoplayIntervalDuration == autoplayIntervalDuration : true) &&
+          (autoplayIntervalDurationEnabled
+              ? w.autoplayIntervalDuration == autoplayIntervalDuration
+              : true) &&
           (itemsEnabled ? w.items == items : true),
     );
   }
@@ -75,7 +79,8 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCarouselThemeExtension>();
 
     return Stack(
       alignment: Alignment.center,
@@ -155,7 +160,9 @@ final class _TraversalButton extends StatelessWidget {
       child: IntrinsicWidth(
         child: MyoroIconTextHoverButton(
           configuration: MyoroHoverButtonConfiguration(
-            bordered: context.resolveThemeExtension<MyoroCarouselThemeExtension>().traversalButtonBordered,
+            bordered: context
+                .resolveThemeExtension<MyoroCarouselThemeExtension>()
+                .traversalButtonBordered,
           ),
           icon: _icon,
           onPressed: _onPressed,

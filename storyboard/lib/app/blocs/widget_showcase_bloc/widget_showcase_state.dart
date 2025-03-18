@@ -17,8 +17,10 @@ final class WidgetShowcaseState extends Equatable {
     bool? displayingWidgetOptions,
   }) {
     return WidgetShowcaseState(
-      displayingWidgetShowcase: displayingWidgetShowcase ?? this.displayingWidgetShowcase,
-      displayingWidgetOptions: displayingWidgetOptions ?? this.displayingWidgetOptions,
+      displayingWidgetShowcase:
+          displayingWidgetShowcase ?? this.displayingWidgetShowcase,
+      displayingWidgetOptions:
+          displayingWidgetOptions ?? this.displayingWidgetOptions,
     );
   }
 
@@ -30,5 +32,6 @@ final class WidgetShowcaseState extends Equatable {
       ');';
 
   @override
-  List<Object?> get props => [displayingWidgetShowcase, displayingWidgetOptions];
+  List<Object?> get props =>
+      [displayingWidgetShowcase, displayingWidgetOptions];
 }

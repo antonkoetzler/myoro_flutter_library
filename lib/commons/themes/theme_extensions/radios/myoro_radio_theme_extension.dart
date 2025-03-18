@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroRadio].
-final class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> {
+final class MyoroRadioThemeExtension
+    extends ThemeExtension<MyoroRadioThemeExtension> {
   /// Color of the radio itself.
   final Color activeColor;
 
@@ -30,8 +31,10 @@ final class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExten
   });
 
   MyoroRadioThemeExtension.fake()
-      : activeColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        hoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      : activeColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
+        hoverColor = kMyoroTestColors[
+            faker.randomGenerator.integer(kMyoroTestColors.length)],
         labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
         spacing = faker.randomGenerator.decimal(),
         splashRadius = faker.randomGenerator.decimal();

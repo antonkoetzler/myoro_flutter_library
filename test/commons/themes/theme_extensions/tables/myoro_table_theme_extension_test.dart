@@ -11,7 +11,8 @@ void main() {
   late final MyoroTableThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroTableThemeExtension.fake();
     themeExtension2 = MyoroTableThemeExtension.fake();
   });
@@ -37,20 +38,29 @@ void main() {
     );
     expect(copiedThemeExtension.decoration, themeExtension2.decoration);
     expect(copiedThemeExtension.titleRowHeight, themeExtension2.titleRowHeight);
-    expect(copiedThemeExtension.titleRowCellMinWidth, themeExtension2.titleRowCellMinWidth);
+    expect(copiedThemeExtension.titleRowCellMinWidth,
+        themeExtension2.titleRowCellMinWidth);
     expect(copiedThemeExtension.contentPadding, themeExtension2.contentPadding);
     expect(copiedThemeExtension.columnSpacing, themeExtension2.columnSpacing);
-    expect(copiedThemeExtension.tableFooterSpacing, themeExtension2.tableFooterSpacing);
-    expect(copiedThemeExtension.emptyMessageTextStyle, themeExtension2.emptyMessageTextStyle);
+    expect(copiedThemeExtension.tableFooterSpacing,
+        themeExtension2.tableFooterSpacing);
+    expect(copiedThemeExtension.emptyMessageTextStyle,
+        themeExtension2.emptyMessageTextStyle);
     expect(copiedThemeExtension.titleTextStyle, themeExtension2.titleTextStyle);
-    expect(copiedThemeExtension.errorMessageHeaderTextStyle, themeExtension2.errorMessageHeaderTextStyle);
-    expect(copiedThemeExtension.errorMessageErrorTextStyle, themeExtension2.errorMessageErrorTextStyle);
+    expect(copiedThemeExtension.errorMessageHeaderTextStyle,
+        themeExtension2.errorMessageHeaderTextStyle);
+    expect(copiedThemeExtension.errorMessageErrorTextStyle,
+        themeExtension2.errorMessageErrorTextStyle);
     expect(copiedThemeExtension.messageSpacing, themeExtension2.messageSpacing);
-    expect(copiedThemeExtension.buttonConfiguration, themeExtension2.buttonConfiguration);
+    expect(copiedThemeExtension.buttonConfiguration,
+        themeExtension2.buttonConfiguration);
     expect(copiedThemeExtension.footerSpacing, themeExtension2.footerSpacing);
-    expect(copiedThemeExtension.titleColumnSpacing, themeExtension2.titleColumnSpacing);
-    expect(copiedThemeExtension.rowsCellSpacing, themeExtension2.rowsCellSpacing);
-    expect(copiedThemeExtension.rowsButtonConfiguration, themeExtension2.rowsButtonConfiguration);
+    expect(copiedThemeExtension.titleColumnSpacing,
+        themeExtension2.titleColumnSpacing);
+    expect(
+        copiedThemeExtension.rowsCellSpacing, themeExtension2.rowsCellSpacing);
+    expect(copiedThemeExtension.rowsButtonConfiguration,
+        themeExtension2.rowsButtonConfiguration);
   });
 
   test('MyoroTableThemeExtension.lerp', () {
@@ -58,67 +68,85 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.decoration,
-        BoxDecoration.lerp(themeExtension1.decoration, themeExtension2.decoration, i),
+        BoxDecoration.lerp(
+            themeExtension1.decoration, themeExtension2.decoration, i),
       );
       expect(
         lerpedThemeExtension.titleRowHeight,
-        lerpDouble(themeExtension1.titleRowHeight, themeExtension2.titleRowHeight, i),
+        lerpDouble(
+            themeExtension1.titleRowHeight, themeExtension2.titleRowHeight, i),
       );
       expect(
         lerpedThemeExtension.titleRowCellMinWidth,
-        lerpDouble(themeExtension1.titleRowCellMinWidth, themeExtension2.titleRowCellMinWidth, i),
+        lerpDouble(themeExtension1.titleRowCellMinWidth,
+            themeExtension2.titleRowCellMinWidth, i),
       );
       expect(
         lerpedThemeExtension.contentPadding,
-        EdgeInsets.lerp(themeExtension1.contentPadding, themeExtension2.contentPadding, i),
+        EdgeInsets.lerp(
+            themeExtension1.contentPadding, themeExtension2.contentPadding, i),
       );
       expect(
         lerpedThemeExtension.columnSpacing,
-        lerpDouble(themeExtension1.columnSpacing, themeExtension2.columnSpacing, i),
+        lerpDouble(
+            themeExtension1.columnSpacing, themeExtension2.columnSpacing, i),
       );
       expect(
         lerpedThemeExtension.tableFooterSpacing,
-        lerpDouble(themeExtension1.tableFooterSpacing, themeExtension2.tableFooterSpacing, i),
+        lerpDouble(themeExtension1.tableFooterSpacing,
+            themeExtension2.tableFooterSpacing, i),
       );
       expect(
         lerpedThemeExtension.emptyMessageTextStyle,
-        TextStyle.lerp(themeExtension1.emptyMessageTextStyle, themeExtension2.emptyMessageTextStyle, i),
+        TextStyle.lerp(themeExtension1.emptyMessageTextStyle,
+            themeExtension2.emptyMessageTextStyle, i),
       );
       expect(
         lerpedThemeExtension.titleTextStyle,
-        TextStyle.lerp(themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
+        TextStyle.lerp(
+            themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.errorMessageHeaderTextStyle,
-        TextStyle.lerp(themeExtension1.errorMessageHeaderTextStyle, themeExtension2.errorMessageHeaderTextStyle, i),
+        TextStyle.lerp(themeExtension1.errorMessageHeaderTextStyle,
+            themeExtension2.errorMessageHeaderTextStyle, i),
       );
       expect(
         lerpedThemeExtension.errorMessageErrorTextStyle,
-        TextStyle.lerp(themeExtension1.errorMessageErrorTextStyle, themeExtension2.errorMessageErrorTextStyle, i),
+        TextStyle.lerp(themeExtension1.errorMessageErrorTextStyle,
+            themeExtension2.errorMessageErrorTextStyle, i),
       );
       expect(
         lerpedThemeExtension.messageSpacing,
-        lerpDouble(themeExtension1.messageSpacing, themeExtension2.messageSpacing, i),
+        lerpDouble(
+            themeExtension1.messageSpacing, themeExtension2.messageSpacing, i),
       );
       expect(
         lerpedThemeExtension.buttonConfiguration,
-        MyoroHoverButtonConfiguration.lerp(themeExtension1.buttonConfiguration, themeExtension2.buttonConfiguration, i),
+        MyoroHoverButtonConfiguration.lerp(themeExtension1.buttonConfiguration,
+            themeExtension2.buttonConfiguration, i),
       );
       expect(
         lerpedThemeExtension.footerSpacing,
-        lerpDouble(themeExtension1.footerSpacing, themeExtension2.footerSpacing, i),
+        lerpDouble(
+            themeExtension1.footerSpacing, themeExtension2.footerSpacing, i),
       );
       expect(
         lerpedThemeExtension.titleColumnSpacing,
-        lerpDouble(themeExtension1.titleColumnSpacing, themeExtension2.titleColumnSpacing, i),
+        lerpDouble(themeExtension1.titleColumnSpacing,
+            themeExtension2.titleColumnSpacing, i),
       );
       expect(
         lerpedThemeExtension.rowsCellSpacing,
-        lerpDouble(themeExtension1.rowsCellSpacing, themeExtension2.rowsCellSpacing, i),
+        lerpDouble(themeExtension1.rowsCellSpacing,
+            themeExtension2.rowsCellSpacing, i),
       );
       expect(
         lerpedThemeExtension.rowsButtonConfiguration,
-        MyoroHoverButtonConfiguration.lerp(themeExtension1.rowsButtonConfiguration, themeExtension2.rowsButtonConfiguration, i),
+        MyoroHoverButtonConfiguration.lerp(
+            themeExtension1.rowsButtonConfiguration,
+            themeExtension2.rowsButtonConfiguration,
+            i),
       );
     }
   });

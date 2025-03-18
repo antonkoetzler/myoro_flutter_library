@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroPieGraphWidgetShowcase].
-final class MyoroPieGraphWidgetShowcaseThemeExtension extends ThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension> {
+final class MyoroPieGraphWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension> {
   /// [BorderRadius] of [_CenterWidget].
   final BorderRadius centerWidgetBorderRadius;
 
@@ -18,7 +19,8 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   });
 
   MyoroPieGraphWidgetShowcaseThemeExtension.fake()
-      : centerWidgetBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      : centerWidgetBorderRadius =
+            BorderRadius.circular(faker.randomGenerator.decimal()),
         centerWidgetSize = faker.randomGenerator.decimal();
 
   @override
@@ -27,7 +29,8 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension extends ThemeExtension<Myo
     double? centerWidgetSize,
   }) {
     return MyoroPieGraphWidgetShowcaseThemeExtension(
-      centerWidgetBorderRadius: centerWidgetBorderRadius ?? this.centerWidgetBorderRadius,
+      centerWidgetBorderRadius:
+          centerWidgetBorderRadius ?? this.centerWidgetBorderRadius,
       centerWidgetSize: centerWidgetSize ?? this.centerWidgetSize,
     );
   }
@@ -39,7 +42,8 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   ) {
     if (other is! MyoroPieGraphWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      centerWidgetBorderRadius: BorderRadius.lerp(centerWidgetBorderRadius, other.centerWidgetBorderRadius, t),
+      centerWidgetBorderRadius: BorderRadius.lerp(
+          centerWidgetBorderRadius, other.centerWidgetBorderRadius, t),
       centerWidgetSize: lerpDouble(centerWidgetSize, other.centerWidgetSize, t),
     );
   }

@@ -8,10 +8,12 @@ import 'package:storyboard/storyboard.dart';
 
 /// Unit test of [MyoroMenuWidgetShowcaseThemeExtension].
 void main() {
-  late final MyoroMenuWidgetShowcaseThemeExtension themeExtension1, themeExtension2;
+  late final MyoroMenuWidgetShowcaseThemeExtension themeExtension1,
+      themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(faker.randomGenerator.boolean());
+    MyoroTypographyTheme.textTheme =
+        createMyoroTextTheme(faker.randomGenerator.boolean());
     themeExtension1 = MyoroMenuWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroMenuWidgetShowcaseThemeExtension.fake();
   });
@@ -23,8 +25,10 @@ void main() {
       headerTextStyle: themeExtension2.headerTextStyle,
     );
     expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
-    expect(copiedThemeExtension.constraintsOptionSpacing, themeExtension2.constraintsOptionSpacing);
-    expect(copiedThemeExtension.headerTextStyle, themeExtension2.headerTextStyle);
+    expect(copiedThemeExtension.constraintsOptionSpacing,
+        themeExtension2.constraintsOptionSpacing);
+    expect(
+        copiedThemeExtension.headerTextStyle, themeExtension2.headerTextStyle);
   });
 
   test('MyoroMenuWidgetShowcaseThemeExtension.lerp', () {
@@ -36,11 +40,13 @@ void main() {
       );
       expect(
         lerpedThemeExtension.constraintsOptionSpacing,
-        lerpDouble(themeExtension1.constraintsOptionSpacing, themeExtension2.constraintsOptionSpacing, i),
+        lerpDouble(themeExtension1.constraintsOptionSpacing,
+            themeExtension2.constraintsOptionSpacing, i),
       );
       expect(
         lerpedThemeExtension.headerTextStyle,
-        TextStyle.lerp(themeExtension1.headerTextStyle, themeExtension2.headerTextStyle, i),
+        TextStyle.lerp(themeExtension1.headerTextStyle,
+            themeExtension2.headerTextStyle, i),
       );
     }
   });

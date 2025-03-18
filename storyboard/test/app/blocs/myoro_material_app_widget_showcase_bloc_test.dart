@@ -10,7 +10,10 @@ void main() {
     act: (bloc) => bloc.add(const ToggleThemeModeEvent()),
     expect: () => [
       MyoroMaterialAppWidgetShowcaseState(
-        themeMode: const MyoroMaterialAppWidgetShowcaseState().themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark,
+        themeMode: const MyoroMaterialAppWidgetShowcaseState().themeMode ==
+                ThemeMode.dark
+            ? ThemeMode.light
+            : ThemeMode.dark,
       ),
     ],
   );

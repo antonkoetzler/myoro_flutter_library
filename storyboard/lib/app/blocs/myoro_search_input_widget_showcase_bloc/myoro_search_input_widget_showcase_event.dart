@@ -5,7 +5,8 @@ sealed class MyoroSearchInputWidgetShowcaseEvent {
   const MyoroSearchInputWidgetShowcaseEvent();
 }
 
-final class SetRequestWhenChangedEvent extends MyoroSearchInputWidgetShowcaseEvent {
+final class SetRequestWhenChangedEvent
+    extends MyoroSearchInputWidgetShowcaseEvent {
   final bool requestWhenChanged;
 
   const SetRequestWhenChangedEvent(this.requestWhenChanged);

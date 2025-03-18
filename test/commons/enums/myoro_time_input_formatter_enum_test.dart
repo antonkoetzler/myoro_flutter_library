@@ -16,6 +16,9 @@ void main() {
   });
 
   test('MyoroTimeInputFormatterEnum.fake', () {
-    expect(MyoroTimeInputFormatterEnum.values.contains(MyoroTimeInputFormatterEnum.fake()), isTrue);
+    expect(
+        MyoroTimeInputFormatterEnum.values
+            .contains(MyoroTimeInputFormatterEnum.fake()),
+        isTrue);
   });
 }

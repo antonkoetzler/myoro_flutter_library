@@ -16,10 +16,12 @@ typedef MyoroSingularDropdownOnChanged<T> = void Function(T? selectedItem);
 typedef MyoroMultiDropdownOnChanged<T> = void Function(List<T> selectedItems);
 
 /// Function executed when the checkbox next to the [MyoroSingularDropdown] is changed.
-typedef MyoroSingularDropdownCheckboxOnChanged<T> = void Function(bool enabled, T? item);
+typedef MyoroSingularDropdownCheckboxOnChanged<T> = void Function(
+    bool enabled, T? item);
 
 /// Function executed when the checkbox next to the [MyoroMultiDropdown] is changed.
-typedef MyoroMultiDropdownCheckboxOnChanged<T> = void Function(bool enabled, List<T> items);
+typedef MyoroMultiDropdownCheckboxOnChanged<T> = void Function(
+    bool enabled, List<T> items);
 
 /// Enum to distinguish if we are working with a [MyoroSingularDropdown] or [MyoroMultiDropdown].
 enum _MyoroDropdownEnum {
@@ -60,7 +62,8 @@ final class _MyoroDropdownController<T> {
 
   void _selectItem(T item) {
     assert(!_isSelected(item));
-    _selectedItemsNotifier.value = (_dropdownType.isSingular ? {} : Set.from(_selectedItems))..add(item);
+    _selectedItemsNotifier.value =
+        (_dropdownType.isSingular ? {} : Set.from(_selectedItems))..add(item);
     _singularController?.selectItem(item);
     _multiController?.selectItems([item]);
   }
@@ -130,16 +133,32 @@ final class MyoroSingularDropdown<T> extends StatelessWidget {
           w is MyoroSingularDropdown<T> &&
           (configurationEnabled ? w.configuration == configuration : true) &&
           (labelEnabled ? w.configuration.label == label : true) &&
-          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
-          (dataConfigurationEnabled ? w.configuration.dataConfiguration == dataConfiguration : true) &&
-          (itemBuilderEnabled ? w.configuration.itemBuilder == itemBuilder : true) &&
-          (itemLabelBuilderEnabled ? w.configuration.itemLabelBuilder == itemLabelBuilder : true) &&
+          (labelTextStyleEnabled
+              ? w.configuration.labelTextStyle == labelTextStyle
+              : true) &&
+          (dataConfigurationEnabled
+              ? w.configuration.dataConfiguration == dataConfiguration
+              : true) &&
+          (itemBuilderEnabled
+              ? w.configuration.itemBuilder == itemBuilder
+              : true) &&
+          (itemLabelBuilderEnabled
+              ? w.configuration.itemLabelBuilder == itemLabelBuilder
+              : true) &&
           (enabledEnabled ? w.configuration.enabled == enabled : true) &&
-          (allowItemClearingEnabled ? w.configuration.allowItemClearing == allowItemClearing : true) &&
-          (menuMaxHeightEnabled ? w.configuration.menuMaxHeight == menuMaxHeight : true) &&
-          (menuSearchCallbackEnabled ? w.configuration.menuSearchCallback == menuSearchCallback : true) &&
+          (allowItemClearingEnabled
+              ? w.configuration.allowItemClearing == allowItemClearing
+              : true) &&
+          (menuMaxHeightEnabled
+              ? w.configuration.menuMaxHeight == menuMaxHeight
+              : true) &&
+          (menuSearchCallbackEnabled
+              ? w.configuration.menuSearchCallback == menuSearchCallback
+              : true) &&
           (onChangedEnabled ? w.onChanged == onChanged : true) &&
-          (checkboxOnChangedEnabled ? w.checkboxOnChanged == checkboxOnChanged : true) &&
+          (checkboxOnChangedEnabled
+              ? w.checkboxOnChanged == checkboxOnChanged
+              : true) &&
           (controllerEnabled ? w.controller == controller : true),
     );
   }
@@ -212,16 +231,32 @@ final class MyoroMultiDropdown<T> extends StatelessWidget {
           w is MyoroMultiDropdown<T> &&
           (configurationEnabled ? w.configuration == configuration : true) &&
           (labelEnabled ? w.configuration.label == label : true) &&
-          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
-          (dataConfigurationEnabled ? w.configuration.dataConfiguration == dataConfiguration : true) &&
-          (itemBuilderEnabled ? w.configuration.itemBuilder == itemBuilder : true) &&
-          (itemLabelBuilderEnabled ? w.configuration.itemLabelBuilder == itemLabelBuilder : true) &&
+          (labelTextStyleEnabled
+              ? w.configuration.labelTextStyle == labelTextStyle
+              : true) &&
+          (dataConfigurationEnabled
+              ? w.configuration.dataConfiguration == dataConfiguration
+              : true) &&
+          (itemBuilderEnabled
+              ? w.configuration.itemBuilder == itemBuilder
+              : true) &&
+          (itemLabelBuilderEnabled
+              ? w.configuration.itemLabelBuilder == itemLabelBuilder
+              : true) &&
           (enabledEnabled ? w.configuration.enabled == enabled : true) &&
-          (allowItemClearingEnabled ? w.configuration.allowItemClearing == allowItemClearing : true) &&
-          (menuMaxHeightEnabled ? w.configuration.menuMaxHeight == menuMaxHeight : true) &&
-          (menuSearchCallbackEnabled ? w.configuration.menuSearchCallback == menuSearchCallback : true) &&
+          (allowItemClearingEnabled
+              ? w.configuration.allowItemClearing == allowItemClearing
+              : true) &&
+          (menuMaxHeightEnabled
+              ? w.configuration.menuMaxHeight == menuMaxHeight
+              : true) &&
+          (menuSearchCallbackEnabled
+              ? w.configuration.menuSearchCallback == menuSearchCallback
+              : true) &&
           (onChangedEnabled ? w.onChanged == onChanged : true) &&
-          (checkboxOnChangedEnabled ? w.checkboxOnChanged == checkboxOnChanged : true) &&
+          (checkboxOnChangedEnabled
+              ? w.checkboxOnChanged == checkboxOnChanged
+              : true) &&
           (controllerEnabled ? w.controller == controller : true),
     );
   }
@@ -271,18 +306,24 @@ final class _Dropdown<T> extends StatefulWidget {
 final class _DropdownState<T> extends State<_Dropdown<T>> {
   _MyoroDropdownEnum get _dropdownType => widget._dropdownType;
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
-  MyoroSingularDropdownOnChanged<T>? get _singularOnChanged => widget.singularOnChanged;
-  MyoroSingularDropdownCheckboxOnChanged<T>? get _singularCheckboxOnChanged => widget.singularCheckboxOnChanged;
-  MyoroSingularDropdownController<T>? get _singularController => widget.singularController;
+  MyoroSingularDropdownOnChanged<T>? get _singularOnChanged =>
+      widget.singularOnChanged;
+  MyoroSingularDropdownCheckboxOnChanged<T>? get _singularCheckboxOnChanged =>
+      widget.singularCheckboxOnChanged;
+  MyoroSingularDropdownController<T>? get _singularController =>
+      widget.singularController;
   MyoroMultiDropdownOnChanged<T>? get _multiOnChanged => widget.multiOnChanged;
-  MyoroMultiDropdownCheckboxOnChanged<T>? get _multiCheckboxOnChanged => widget.multiCheckboxOnChanged;
-  MyoroMultiDropdownController<T>? get _multiController => widget.multiController;
+  MyoroMultiDropdownCheckboxOnChanged<T>? get _multiCheckboxOnChanged =>
+      widget.multiCheckboxOnChanged;
+  MyoroMultiDropdownController<T>? get _multiController =>
+      widget.multiController;
 
   /// [FocusNode] [_Dropdown] in order to be able to click anywhere but [_Menu] to close [_Menu].
   final _focusNode = FocusNode();
 
   /// Controller to call functions for both [_singularController] & [_multiController].
-  late final _controller = _MyoroDropdownController<T>(_dropdownType, _singularController, _multiController);
+  late final _controller = _MyoroDropdownController<T>(
+      _dropdownType, _singularController, _multiController);
 
   /// [GlobalKey] of [_Input] to get it's position on the screen to position [_overlayEntry] which holds [_Dropdown].
   final _inputKey = GlobalKey();
@@ -296,30 +337,39 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   }
 
   OverlayEntry _createOverlay() {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
-    final RenderBox inputRenderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
+    final RenderBox inputRenderBox =
+        _inputKey.currentContext!.findRenderObject() as RenderBox;
     final Offset inputPosition = inputRenderBox.localToGlobal(Offset.zero);
     final Size inputSize = inputRenderBox.size;
 
-    final menuMaxHeight = _configuration.menuMaxHeight ?? themeExtension.menuMaxHeight;
+    final menuMaxHeight =
+        _configuration.menuMaxHeight ?? themeExtension.menuMaxHeight;
     final inputDropdownSpacing = themeExtension.inputDropdownSpacing;
 
     // Start and end positions of the menu when positioned below [_Input].
-    final double menuYStartBottomPosition = inputPosition.dy + inputSize.height + inputDropdownSpacing;
-    final double menuYEndBottomPosition = menuYStartBottomPosition + menuMaxHeight;
+    final double menuYStartBottomPosition =
+        inputPosition.dy + inputSize.height + inputDropdownSpacing;
+    final double menuYEndBottomPosition =
+        menuYStartBottomPosition + menuMaxHeight;
 
     // Stand position of the menu when positioned above [_Input].
-    final double menuYStartUpperPosition = inputPosition.dy - menuMaxHeight - inputDropdownSpacing;
+    final double menuYStartUpperPosition =
+        inputPosition.dy - menuMaxHeight - inputDropdownSpacing;
 
     // If negative, [_Menu] will be clipped by the bottom of the screen.
-    final bool positionMenuAboveInput = context.mediaQuery.size.height - menuYEndBottomPosition < 10;
+    final bool positionMenuAboveInput =
+        context.mediaQuery.size.height - menuYEndBottomPosition < 10;
 
     return OverlayEntry(
       builder: (_) {
         return Positioned(
           width: inputSize.width,
-          top: positionMenuAboveInput ? menuYStartUpperPosition : menuYStartBottomPosition,
+          top: positionMenuAboveInput
+              ? menuYStartUpperPosition
+              : menuYStartBottomPosition,
           left: inputPosition.dx,
           child: Material(
             color: MyoroColorTheme.transparent,
@@ -372,8 +422,10 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
         focusNode: _focusNode,
         child: Stack(
           children: [
-            _Input(_inputKey, _configuration, _controller, _singularCheckboxOnChanged, _multiCheckboxOnChanged),
-            if (_configuration.enabled) _TriggerArea(_triggerAreaOnPressed, _configuration, _controller),
+            _Input(_inputKey, _configuration, _controller,
+                _singularCheckboxOnChanged, _multiCheckboxOnChanged),
+            if (_configuration.enabled)
+              _TriggerArea(_triggerAreaOnPressed, _configuration, _controller),
           ],
         ),
       ),
@@ -404,8 +456,10 @@ final class _InputState<T> extends State<_Input<T>> {
   GlobalKey get _key => widget._key;
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
   _MyoroDropdownController<T> get _controller => widget._controller;
-  MyoroSingularDropdownCheckboxOnChanged<T>? get _singularCheckboxOnChanged => widget._singularCheckboxOnChanged;
-  MyoroMultiDropdownCheckboxOnChanged<T>? get _multiCheckboxOnChanged => widget._multiCheckboxOnChanged;
+  MyoroSingularDropdownCheckboxOnChanged<T>? get _singularCheckboxOnChanged =>
+      widget._singularCheckboxOnChanged;
+  MyoroMultiDropdownCheckboxOnChanged<T>? get _multiCheckboxOnChanged =>
+      widget._multiCheckboxOnChanged;
 
   bool get _checkboxOnChangedNotNull {
     return switch (_controller._dropdownType) {
@@ -422,10 +476,15 @@ final class _InputState<T> extends State<_Input<T>> {
       _enabled = enabled;
       switch (_controller._dropdownType) {
         case _MyoroDropdownEnum.singular:
-          _singularCheckboxOnChanged?.call(_enabled, _controller._selectedItems.isNotEmpty ? _controller._selectedItems.first : null);
+          _singularCheckboxOnChanged?.call(
+              _enabled,
+              _controller._selectedItems.isNotEmpty
+                  ? _controller._selectedItems.first
+                  : null);
           break;
         case _MyoroDropdownEnum.multi:
-          _multiCheckboxOnChanged?.call(_enabled, _controller._selectedItems.toList());
+          _multiCheckboxOnChanged?.call(
+              _enabled, _controller._selectedItems.toList());
           break;
       }
     });
@@ -437,7 +496,8 @@ final class _InputState<T> extends State<_Input<T>> {
 
     _inputController.text = selectedItems.fold<String>(
       '',
-      (String current, T item) => '$current${current.isEmpty ? '' : ', '}${itemLabelBuilder.call(item)}',
+      (String current, T item) =>
+          '$current${current.isEmpty ? '' : ', '}${itemLabelBuilder.call(item)}',
     );
   }
 
@@ -448,19 +508,22 @@ final class _InputState<T> extends State<_Input<T>> {
   @override
   void initState() {
     super.initState();
-    _controller._selectedItemsNotifier.addListener(_selectedItemsNotifierListener);
+    _controller._selectedItemsNotifier
+        .addListener(_selectedItemsNotifierListener);
   }
 
   @override
   void dispose() {
-    _controller._selectedItemsNotifier.removeListener(_selectedItemsNotifierListener);
+    _controller._selectedItemsNotifier
+        .removeListener(_selectedItemsNotifierListener);
     _inputController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     return MyoroInput(
       key: _key,
@@ -473,7 +536,8 @@ final class _InputState<T> extends State<_Input<T>> {
         showClearTextButton: _configuration.allowItemClearing,
         controller: _inputController,
         onCleared: _onCleared,
-        checkboxOnChanged: _checkboxOnChangedNotNull ? _checkboxOnChanged : null,
+        checkboxOnChanged:
+            _checkboxOnChangedNotNull ? _checkboxOnChanged : null,
       ),
     );
   }
@@ -493,7 +557,10 @@ final class _TriggerArea<T> extends StatelessWidget {
       builder: (_, Set<T> selectedItems, __) {
         return Padding(
           padding: EdgeInsets.only(
-            right: (selectedItems.isNotEmpty && _configuration.allowItemClearing != false) ? 40 : 0,
+            right: (selectedItems.isNotEmpty &&
+                    _configuration.allowItemClearing != false)
+                ? 40
+                : 0,
           ),
           child: InkWell(
             focusColor: MyoroColorTheme.transparent,
@@ -530,10 +597,14 @@ final class _Menu<T> extends StatelessWidget {
       isHovered: _controller._isSelected(item),
       onPressed: () {
         menuItem.onPressed?.call();
-        _controller._isSelected(item) ? _controller.deselectItem(item) : _controller._selectItem(item);
+        _controller._isSelected(item)
+            ? _controller.deselectItem(item)
+            : _controller._selectItem(item);
         switch (_controller._dropdownType) {
           case _MyoroDropdownEnum.singular:
-            _singularOnChanged?.call(_controller._selectedItems.isNotEmpty ? _controller._selectedItems.first : null);
+            _singularOnChanged?.call(_controller._selectedItems.isNotEmpty
+                ? _controller._selectedItems.first
+                : null);
             _removeOverlayCallback();
             break;
           case _MyoroDropdownEnum.multi:
@@ -550,7 +621,10 @@ final class _Menu<T> extends StatelessWidget {
       dataConfiguration: _configuration.dataConfiguration,
       itemBuilder: _itemBuilder,
       constraints: BoxConstraints(
-        maxHeight: _configuration.menuMaxHeight ?? context.resolveThemeExtension<MyoroDropdownThemeExtension>().menuMaxHeight,
+        maxHeight: _configuration.menuMaxHeight ??
+            context
+                .resolveThemeExtension<MyoroDropdownThemeExtension>()
+                .menuMaxHeight,
       ),
       searchCallback: _configuration.menuSearchCallback,
     );

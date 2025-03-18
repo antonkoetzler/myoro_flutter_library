@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Returns a [List<T>] of the filtered items given the query.
-typedef MyoroMenuSearchCallback<T> = List<T> Function(String query, List<T> items);
+typedef MyoroMenuSearchCallback<T> = List<T> Function(
+    String query, List<T> items);
 
 /// [MyoroMenuItem] builder from a generic object.
 typedef MyoroMenuItemBuilder<T> = MyoroMenuItem Function(T item);
@@ -48,14 +49,17 @@ final class MyoroMenu<T> extends StatelessWidget {
           w is MyoroMenu<T> &&
           (constraintsEnabled ? w.constraints == constraints : true) &&
           (searchCallbackEnabled ? w.searchCallback == searchCallback : true) &&
-          (dataConfigurationEnabled ? w.dataConfiguration == dataConfiguration : true) &&
+          (dataConfigurationEnabled
+              ? w.dataConfiguration == dataConfiguration
+              : true) &&
           (itemBuilderEnabled ? w.itemBuilder == itemBuilder : true),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
     return Container(
       decoration: BoxDecoration(
@@ -71,8 +75,10 @@ final class MyoroMenu<T> extends StatelessWidget {
             return switch (status) {
               MyoroRequestEnum.idle => const _Loader(),
               MyoroRequestEnum.loading => const _Loader(),
-              MyoroRequestEnum.success => _Items(searchCallback, itemBuilder, items!),
-              MyoroRequestEnum.error => const _DialogText('Error getting items.'),
+              MyoroRequestEnum.success =>
+                _Items(searchCallback, itemBuilder, items!),
+              MyoroRequestEnum.error =>
+                const _DialogText('Error getting items.'),
             };
           },
         ),
@@ -85,7 +91,8 @@ final class _Loader extends StatelessWidget {
   const _Loader();
 
   @override
-  Widget build(BuildContext context) => const Center(child: MyoroCircularLoader());
+  Widget build(BuildContext context) =>
+      const Center(child: MyoroCircularLoader());
 }
 
 final class _Items<T> extends StatefulWidget {
@@ -106,7 +113,8 @@ final class _Items<T> extends StatefulWidget {
 final class _ItemsState<T> extends State<_Items<T>> {
   MyoroMenuSearchCallback<T>? get _searchCallback => widget._searchCallback;
   MyoroMenuItemBuilder<T> get _itemBuilder => widget._itemBuilder;
-  List<Widget> get _itemWidgets => _items.map<Widget>((T item) => _Item(_itemBuilder.call(item))).toList();
+  List<Widget> get _itemWidgets =>
+      _items.map<Widget>((T item) => _Item(_itemBuilder.call(item))).toList();
 
   late List<T> _items = widget._items;
 
@@ -120,7 +128,8 @@ final class _ItemsState<T> extends State<_Items<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius = context.resolveThemeExtension<MyoroMenuThemeExtension>().borderRadius;
+    final borderRadius =
+        context.resolveThemeExtension<MyoroMenuThemeExtension>().borderRadius;
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
@@ -135,7 +144,9 @@ final class _ItemsState<T> extends State<_Items<T>> {
         children: [
           if (_searchCallback != null) _SearchBar(_onSearch),
           if (_items.isNotEmpty) ...[
-            Flexible(child: SingleChildScrollView(child: Column(children: _itemWidgets)))
+            Flexible(
+                child: SingleChildScrollView(
+                    child: Column(children: _itemWidgets)))
           ] else ...[
             const Flexible(child: _DialogText('No items to display.'))
           ],
@@ -167,7 +178,8 @@ final class _SearchBarState<T> extends State<_SearchBar<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
     return Padding(
       padding: themeExtension.searchBarPadding,
@@ -190,7 +202,9 @@ final class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final configuration = MyoroHoverButtonConfiguration(
-      borderRadius: context.resolveThemeExtension<MyoroMenuThemeExtension>().itemBorderRadius,
+      borderRadius: context
+          .resolveThemeExtension<MyoroMenuThemeExtension>()
+          .itemBorderRadius,
       isHovered: _item.isHovered,
     );
 
@@ -224,7 +238,9 @@ final class _DialogText extends StatelessWidget {
     return Center(
       child: Text(
         _text,
-        style: context.resolveThemeExtension<MyoroMenuThemeExtension>().dialogTextStyle,
+        style: context
+            .resolveThemeExtension<MyoroMenuThemeExtension>()
+            .dialogTextStyle,
       ),
     );
   }

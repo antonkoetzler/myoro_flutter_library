@@ -8,5 +8,6 @@ final class MockSharedPreferences extends Mock implements SharedPreferences {
   bool? getBool(String key) => faker.randomGenerator.boolean();
 
   @override
-  Future<bool> setBool(String key, bool value) async => faker.randomGenerator.boolean();
+  Future<bool> setBool(String key, bool value) async =>
+      faker.randomGenerator.boolean();
 }

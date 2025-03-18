@@ -35,7 +35,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroMenuWidgetShowcaseBloc, MyoroMenuWidgetShowcaseState>(
+    return BlocBuilder<MyoroMenuWidgetShowcaseBloc,
+        MyoroMenuWidgetShowcaseState>(
       builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu<_Item>(
           constraints: BoxConstraints(
@@ -48,7 +49,11 @@ final class _Widget extends StatelessWidget {
           dataConfiguration: MyoroDataConfiguration(
             staticItems: List.generate(
               faker.randomGenerator.integer(50),
-              (_) => (kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)], faker.person.name()),
+              (_) => (
+                kMyoroTestIcons[
+                    faker.randomGenerator.integer(kMyoroTestIcons.length)],
+                faker.person.name()
+              ),
             ),
           ),
           itemBuilder: (_Item item) => MyoroMenuItem(
@@ -68,7 +73,8 @@ final class _ConstraintsOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroMenuWidgetShowcaseBloc>();
-    final themeExtension = context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>();
     final spacing = themeExtension.constraintsOptionSpacing;
 
     return Column(
@@ -85,15 +91,19 @@ final class _ConstraintsOption extends StatelessWidget {
             Expanded(
               child: _NumberInput(
                 label: 'Min width',
-                onChanged: (String text) => bloc.add(SetMinWidthEvent(double.parse(text))),
-                checkboxOnChanged: (bool enabled, String text) => bloc.add(SetMinWidthEvent(enabled ? double.parse(text) : null)),
+                onChanged: (String text) =>
+                    bloc.add(SetMinWidthEvent(double.parse(text))),
+                checkboxOnChanged: (bool enabled, String text) => bloc
+                    .add(SetMinWidthEvent(enabled ? double.parse(text) : null)),
               ),
             ),
             Expanded(
               child: _NumberInput(
                 label: 'Max width',
-                onChanged: (String text) => bloc.add(SetMaxWidthEvent(double.parse(text))),
-                checkboxOnChanged: (bool enabled, String text) => bloc.add(SetMaxWidthEvent(enabled ? double.parse(text) : null)),
+                onChanged: (String text) =>
+                    bloc.add(SetMaxWidthEvent(double.parse(text))),
+                checkboxOnChanged: (bool enabled, String text) => bloc
+                    .add(SetMaxWidthEvent(enabled ? double.parse(text) : null)),
               ),
             ),
           ],
@@ -104,15 +114,19 @@ final class _ConstraintsOption extends StatelessWidget {
             Expanded(
               child: _NumberInput(
                 label: 'Min height',
-                onChanged: (String text) => bloc.add(SetMinHeightEvent(double.parse(text))),
-                checkboxOnChanged: (bool enabled, String text) => bloc.add(SetMinHeightEvent(enabled ? double.parse(text) : null)),
+                onChanged: (String text) =>
+                    bloc.add(SetMinHeightEvent(double.parse(text))),
+                checkboxOnChanged: (bool enabled, String text) => bloc.add(
+                    SetMinHeightEvent(enabled ? double.parse(text) : null)),
               ),
             ),
             Expanded(
               child: _NumberInput(
                 label: 'Max height',
-                onChanged: (String text) => bloc.add(SetMaxHeightEvent(double.parse(text))),
-                checkboxOnChanged: (bool enabled, String text) => bloc.add(SetMaxHeightEvent(enabled ? double.parse(text) : null)),
+                onChanged: (String text) =>
+                    bloc.add(SetMaxHeightEvent(double.parse(text))),
+                checkboxOnChanged: (bool enabled, String text) => bloc.add(
+                    SetMaxHeightEvent(enabled ? double.parse(text) : null)),
               ),
             ),
           ],
@@ -155,7 +169,9 @@ final class _NumberInput extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: label,
         enabled: false,
-        inputStyle: context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle: context
+            .resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>()
+            .inputStyle,
         onChanged: onChanged,
         checkboxOnChanged: checkboxOnChanged,
       ),

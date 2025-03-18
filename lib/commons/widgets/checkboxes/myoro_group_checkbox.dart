@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroGroupCheckboxItems = Map<String, bool>;
 
 /// Function executed when any of the checkbox's values are changed.
-typedef MyoroGroupCheckboxOnChanged = void Function(String key, MyoroGroupCheckboxItems items);
+typedef MyoroGroupCheckboxOnChanged = void Function(
+    String key, MyoroGroupCheckboxItems items);
 
 /// A group of [MyoroCheckbox]s.
 final class MyoroGroupCheckbox extends StatefulWidget {
@@ -88,7 +89,8 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
 
   MyoroGroupCheckboxNotifier? _localNotifier;
   MyoroGroupCheckboxNotifier get _notifier {
-    return widget.notifier ?? (_localNotifier ??= MyoroGroupCheckboxNotifier(_checkboxes!));
+    return widget.notifier ??
+        (_localNotifier ??= MyoroGroupCheckboxNotifier(_checkboxes!));
   }
 
   @override
@@ -99,7 +101,8 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
     return ValueListenableBuilder(
       valueListenable: _notifier,

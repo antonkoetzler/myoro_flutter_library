@@ -13,7 +13,8 @@ extension MyoroBuildContextExtension on BuildContext {
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
-    throw Exception('[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.');
+    throw Exception(
+        '[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.');
   }
 
   T resolveBloc<T extends BlocBase>() {
@@ -21,7 +22,8 @@ extension MyoroBuildContextExtension on BuildContext {
       final bloc = BlocProvider.of<T>(this);
       return bloc;
     } catch (_) {
-      throw Exception('[BuildContextExtension.resolveBloc]: [Bloc] does not exist.');
+      throw Exception(
+          '[BuildContextExtension.resolveBloc]: [Bloc] does not exist.');
     }
   }
 

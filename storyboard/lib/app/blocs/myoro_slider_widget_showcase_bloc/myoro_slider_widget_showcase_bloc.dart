@@ -10,7 +10,8 @@ part 'myoro_slider_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroSliderWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroSlider]'s options in [MyoroSliderWidgetShowcase].
-final class MyoroSliderWidgetShowcaseBloc extends Bloc<MyoroSliderWidgetShowcaseEvent, MyoroSliderWidgetShowcaseState> {
+final class MyoroSliderWidgetShowcaseBloc extends Bloc<
+    MyoroSliderWidgetShowcaseEvent, MyoroSliderWidgetShowcaseState> {
   MyoroSliderWidgetShowcaseBloc({
     required double width,
   }) : super(
@@ -21,9 +22,12 @@ final class MyoroSliderWidgetShowcaseBloc extends Bloc<MyoroSliderWidgetShowcase
     on<SetLabelEvent>(_setLabelEvent);
     on<SetLabelTextStyleEvent>(_setLabelTextStyleEvent);
     on<SetWidthEvent>(_setWidthEvent);
-    on<SetCurrentValueIndicatorTextBuilderEnabledEvent>(_setCurrentValueIndicatorTextBuilderEnabledEvent);
-    on<SetMaxValueIndicatorTextBuilderEnabledEvent>(_setMaxValueIndicatorTextBuilderEnabledEvent);
-    on<SetFooterIndicatorTextBuilderEnabledEvent>(_setFooterIndicatorTextBuilderEnabledEvent);
+    on<SetCurrentValueIndicatorTextBuilderEnabledEvent>(
+        _setCurrentValueIndicatorTextBuilderEnabledEvent);
+    on<SetMaxValueIndicatorTextBuilderEnabledEvent>(
+        _setMaxValueIndicatorTextBuilderEnabledEvent);
+    on<SetFooterIndicatorTextBuilderEnabledEvent>(
+        _setFooterIndicatorTextBuilderEnabledEvent);
   }
 
   void _setLabelEvent(SetLabelEvent event, _Emitter emit) {
@@ -51,26 +55,32 @@ final class MyoroSliderWidgetShowcaseBloc extends Bloc<MyoroSliderWidgetShowcase
     );
   }
 
-  void _setCurrentValueIndicatorTextBuilderEnabledEvent(SetCurrentValueIndicatorTextBuilderEnabledEvent event, _Emitter emit) {
+  void _setCurrentValueIndicatorTextBuilderEnabledEvent(
+      SetCurrentValueIndicatorTextBuilderEnabledEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        currentValueIndicatorTextBuilderEnabled: event.currentValueIndicatorTextBuilderEnabled,
+        currentValueIndicatorTextBuilderEnabled:
+            event.currentValueIndicatorTextBuilderEnabled,
       ),
     );
   }
 
-  void _setMaxValueIndicatorTextBuilderEnabledEvent(SetMaxValueIndicatorTextBuilderEnabledEvent event, _Emitter emit) {
+  void _setMaxValueIndicatorTextBuilderEnabledEvent(
+      SetMaxValueIndicatorTextBuilderEnabledEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        maxValueIndicatorTextBuilderEnabled: event.maxValueIndicatorTextBuilderEnabled,
+        maxValueIndicatorTextBuilderEnabled:
+            event.maxValueIndicatorTextBuilderEnabled,
       ),
     );
   }
 
-  void _setFooterIndicatorTextBuilderEnabledEvent(SetFooterIndicatorTextBuilderEnabledEvent event, _Emitter emit) {
+  void _setFooterIndicatorTextBuilderEnabledEvent(
+      SetFooterIndicatorTextBuilderEnabledEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        footerIndicatorTextBuilderEnabled: event.footerIndicatorTextBuilderEnabled,
+        footerIndicatorTextBuilderEnabled:
+            event.footerIndicatorTextBuilderEnabled,
       ),
     );
   }

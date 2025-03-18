@@ -21,7 +21,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroModalThemeExtension>();
             return GestureDetector(
               key: key,
               onTap: () {
@@ -51,21 +52,37 @@ void main() {
             (w.child as Material).color == themeExtension.primaryColor &&
             (w.child as Material).borderRadius == themeExtension.borderRadius &&
             (w.child as Material).child is Container &&
-            ((w.child as Material).child as Container).constraints == (configuration.constraints ?? themeExtension.constraints) &&
-            ((w.child as Material).child as Container).padding == themeExtension.padding &&
+            ((w.child as Material).child as Container).constraints ==
+                (configuration.constraints ?? themeExtension.constraints) &&
+            ((w.child as Material).child as Container).padding ==
+                themeExtension.padding &&
             ((w.child as Material).child as Container).decoration ==
                 BoxDecoration(
                   borderRadius: themeExtension.borderRadius,
                   border: themeExtension.border,
                 ) &&
             ((w.child as Material).child as Container).child is Column &&
-            (((w.child as Material).child as Container).child as Column).mainAxisSize == MainAxisSize.min &&
-            (((w.child as Material).child as Container).child as Column).children.length == 3 &&
+            (((w.child as Material).child as Container).child as Column)
+                    .mainAxisSize ==
+                MainAxisSize.min &&
+            (((w.child as Material).child as Container).child as Column)
+                    .children
+                    .length ==
+                3 &&
             // (((w.child as Material).child as Container).child as Column).children.first is _Header &&
-            (((w.child as Material).child as Container).child as Column).children[1] is SizedBox &&
-            ((((w.child as Material).child as Container).child as Column).children[1] as SizedBox).height == themeExtension.spacing &&
-            (((w.child as Material).child as Container).child as Column).children.last is Flexible &&
-            ((((w.child as Material).child as Container).child as Column).children.last as Flexible).child is SizedBox, // [MyoroModal.child]
+            (((w.child as Material).child as Container).child as Column)
+                .children[1] is SizedBox &&
+            ((((w.child as Material).child as Container).child as Column)
+                        .children[1] as SizedBox)
+                    .height ==
+                themeExtension.spacing &&
+            (((w.child as Material).child as Container).child as Column)
+                .children
+                .last is Flexible &&
+            ((((w.child as Material).child as Container).child as Column)
+                    .children
+                    .last as Flexible)
+                .child is SizedBox, // [MyoroModal.child]
       ),
       findsOneWidget,
     );
@@ -73,7 +90,10 @@ void main() {
     // [_Header].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Row && w.mainAxisAlignment == MainAxisAlignment.spaceBetween && w.children.length == 2,
+        (Widget w) =>
+            w is Row &&
+            w.mainAxisAlignment == MainAxisAlignment.spaceBetween &&
+            w.children.length == 2,
       ),
       findsOneWidget,
     );
@@ -94,7 +114,10 @@ void main() {
     // [_CloseButton].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroIconTextHoverButton && w.icon == themeExtension.closeButtonIcon && w.onPressed != null,
+        (Widget w) =>
+            w is MyoroIconTextHoverButton &&
+            w.icon == themeExtension.closeButtonIcon &&
+            w.onPressed != null,
       ),
       findsOneWidget,
     );
@@ -102,7 +125,10 @@ void main() {
     // Confirming that [configuration.onClosed] was executed & [MyoroModal] was called when it is closed.
     await tester.tap(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroIconTextHoverButton && w.icon == themeExtension.closeButtonIcon && w.onPressed != null,
+        (Widget w) =>
+            w is MyoroIconTextHoverButton &&
+            w.icon == themeExtension.closeButtonIcon &&
+            w.onPressed != null,
       ),
     );
     await tester.pumpAndSettle();

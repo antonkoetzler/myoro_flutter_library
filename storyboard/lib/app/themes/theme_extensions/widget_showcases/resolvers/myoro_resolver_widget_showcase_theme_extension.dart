@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroResolverWidgetShowcase].
-final class MyoroResolverWidgetShowcaseThemeExtension extends ThemeExtension<MyoroResolverWidgetShowcaseThemeExtension> {
+final class MyoroResolverWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroResolverWidgetShowcaseThemeExtension> {
   /// [MyoroHoverButtonConfiguration.buttonBordered] of buttons.
   final bool buttonBordered;
 
@@ -24,7 +25,8 @@ final class MyoroResolverWidgetShowcaseThemeExtension extends ThemeExtension<Myo
 
   MyoroResolverWidgetShowcaseThemeExtension.fake()
       : buttonBordered = faker.randomGenerator.boolean(),
-        buttonTextAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+        buttonTextAlign = TextAlign
+            .values[faker.randomGenerator.integer(TextAlign.values.length)],
         spacing = faker.randomGenerator.decimal();
 
   @override

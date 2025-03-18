@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroInputWidgetShowcase].
-final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension> {
+final class MyoroInputWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension> {
   /// [TextStyle] of [_ConfigurationOption]'s title.
   final TextStyle configurationOptionTextStyle;
 
@@ -27,10 +28,12 @@ final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroI
   });
 
   MyoroInputWidgetShowcaseThemeExtension.fake()
-      : configurationOptionTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      : configurationOptionTextStyle =
+            MyoroTypographyTheme.instance.randomTextStyle,
         configurationOptionSpacing = faker.randomGenerator.decimal(),
         inputStyle = MyoroInputStyleEnum.fake(),
-        suffixWidgetIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+        suffixWidgetIcon = kMyoroTestIcons[
+            faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   @override
   MyoroInputWidgetShowcaseThemeExtension copyWith({
@@ -40,8 +43,10 @@ final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroI
     IconData? suffixWidgetIcon,
   }) {
     return MyoroInputWidgetShowcaseThemeExtension(
-      configurationOptionTextStyle: configurationOptionTextStyle ?? this.configurationOptionTextStyle,
-      configurationOptionSpacing: configurationOptionSpacing ?? this.configurationOptionSpacing,
+      configurationOptionTextStyle:
+          configurationOptionTextStyle ?? this.configurationOptionTextStyle,
+      configurationOptionSpacing:
+          configurationOptionSpacing ?? this.configurationOptionSpacing,
       inputStyle: inputStyle ?? this.inputStyle,
       suffixWidgetIcon: suffixWidgetIcon ?? this.suffixWidgetIcon,
     );
@@ -54,8 +59,10 @@ final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroI
   ) {
     if (other is! MyoroInputWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      configurationOptionTextStyle: TextStyle.lerp(configurationOptionTextStyle, other.configurationOptionTextStyle, t),
-      configurationOptionSpacing: lerpDouble(configurationOptionSpacing, other.configurationOptionSpacing, t),
+      configurationOptionTextStyle: TextStyle.lerp(
+          configurationOptionTextStyle, other.configurationOptionTextStyle, t),
+      configurationOptionSpacing: lerpDouble(
+          configurationOptionSpacing, other.configurationOptionSpacing, t),
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       suffixWidgetIcon: myoroLerp(suffixWidgetIcon, other.suffixWidgetIcon, t),
     );

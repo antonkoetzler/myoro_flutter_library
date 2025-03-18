@@ -70,23 +70,41 @@ final class MyoroInput extends StatefulWidget {
       (Widget w) =>
           w is MyoroInput &&
           (configurationEnabled ? w.configuration == configuration : true) &&
-          (inputStyleEnabled ? w.configuration.inputStyle == inputStyle : true) &&
+          (inputStyleEnabled
+              ? w.configuration.inputStyle == inputStyle
+              : true) &&
           (textAlignEnabled ? w.configuration.textAlign == textAlign : true) &&
-          (inputTextStyleEnabled ? w.configuration.inputTextStyle == inputTextStyle : true) &&
+          (inputTextStyleEnabled
+              ? w.configuration.inputTextStyle == inputTextStyle
+              : true) &&
           (labelEnabled ? w.configuration.label == label : true) &&
-          (placeholderEnabled ? w.configuration.placeholder == placeholder : true) &&
-          (labelTextStyleEnabled ? w.configuration.labelTextStyle == labelTextStyle : true) &&
+          (placeholderEnabled
+              ? w.configuration.placeholder == placeholder
+              : true) &&
+          (labelTextStyleEnabled
+              ? w.configuration.labelTextStyle == labelTextStyle
+              : true) &&
           (suffixEnabled ? w.configuration.suffix == suffix : true) &&
           (enabledEnabled ? w.configuration.enabled == enabled : true) &&
           (readOnlyEnabled ? w.configuration.readOnly == readOnly : true) &&
-          (showClearTextButtonEnabled ? w.configuration.showClearTextButton == showClearTextButton : true) &&
-          (checkboxOnChangedEnabled ? w.configuration.checkboxOnChanged == checkboxOnChanged : true) &&
-          (validationEnabled ? w.configuration.validation == validation : true) &&
-          (onFieldSubmittedEnabled ? w.configuration.onFieldSubmitted == onFieldSubmitted : true) &&
+          (showClearTextButtonEnabled
+              ? w.configuration.showClearTextButton == showClearTextButton
+              : true) &&
+          (checkboxOnChangedEnabled
+              ? w.configuration.checkboxOnChanged == checkboxOnChanged
+              : true) &&
+          (validationEnabled
+              ? w.configuration.validation == validation
+              : true) &&
+          (onFieldSubmittedEnabled
+              ? w.configuration.onFieldSubmitted == onFieldSubmitted
+              : true) &&
           (onChangedEnabled ? w.configuration.onChanged == onChanged : true) &&
           (onClearedEnabled ? w.configuration.onCleared == onCleared : true) &&
           (focusNodeEnabled ? w.configuration.focusNode == focusNode : true) &&
-          (controllerEnabled ? w.configuration.controller == controller : true) &&
+          (controllerEnabled
+              ? w.configuration.controller == controller
+              : true) &&
           (formatterEnabled ? w.formatter == formatter : true),
     );
   }
@@ -145,10 +163,13 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   TextEditingController? _localController;
   TextEditingController get _controller {
-    return _configuration.controller ?? (_localController ??= TextEditingController());
+    return _configuration.controller ??
+        (_localController ??= TextEditingController());
   }
 
-  bool get _showClearTextButton => _configuration.showClearTextButton != false && _controller.text.isNotEmpty;
+  bool get _showClearTextButton =>
+      _configuration.showClearTextButton != false &&
+      _controller.text.isNotEmpty;
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
@@ -191,7 +212,8 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return Row(
       children: [
@@ -261,9 +283,11 @@ final class _TextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
     final border = _configuration.inputStyle.getBorder(context);
-    final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
+    final textStyle =
+        _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
     return Container(
       decoration: BoxDecoration(
@@ -285,7 +309,8 @@ final class _TextFormField extends StatelessWidget {
             ),
             decoration: InputDecoration(
               floatingLabelBehavior: themeExtension.labelBehavior,
-              label: _configuration.label != null ? _Label(_configuration) : null,
+              label:
+                  _configuration.label != null ? _Label(_configuration) : null,
               hintText: _configuration.placeholder,
               hintStyle: textStyle.withColor(
                 textStyle.color!.withValues(
@@ -314,11 +339,17 @@ final class _TextFormField extends StatelessWidget {
                           _controller.clear();
                         } else {
                           if (_formatter is MyoroNumberInputFormatter) {
-                            _controller.text = (_formatter as MyoroNumberInputFormatter).min.toString();
+                            _controller.text =
+                                (_formatter as MyoroNumberInputFormatter)
+                                    .min
+                                    .toString();
                           } else if (_formatter is MyoroDateInputFormatter) {
                             _controller.text = '00/00/0000';
                           } else if (_formatter is MyoroTimeInputFormatter) {
-                            _controller.text = (_formatter as MyoroTimeInputFormatter).formatType.emptyValue;
+                            _controller.text =
+                                (_formatter as MyoroTimeInputFormatter)
+                                    .formatType
+                                    .emptyValue;
                           }
                         }
                         _configuration.onChanged?.call(_controller.text);
@@ -356,7 +387,10 @@ final class _Label extends StatelessWidget {
       ),
       child: Text(
         configuration.label!,
-        style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+        style: configuration.labelTextStyle ??
+            context
+                .resolveThemeExtension<MyoroInputThemeExtension>()
+                .labelTextStyle,
       ),
     );
   }
@@ -369,7 +403,8 @@ final class _ClearTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return IntrinsicWidth(
       child: Padding(
