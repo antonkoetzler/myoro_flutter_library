@@ -24,8 +24,8 @@ final class MyoroLocalDatabase {
     /// Alternative path to the database. Default is:
     String? path,
 
-    /// Table initialization. This should be raw SQL.
-    String? tables,
+    /// Raw SQL to execute.
+    String? sql,
 
     /// For debugging, used to always create a new .db instead of opening an
     /// existing database. WILL DELETE YOUR DATABASE IF USED, YOU ARE WARNED.
@@ -48,8 +48,8 @@ final class MyoroLocalDatabase {
     _database = await openDatabase(formattedPath);
 
     // Table initialization
-    if (tables == null) return;
-    _database!.execute(tables);
+    if (sql == null) return;
+    _database!.execute(sql);
   }
 
   /// Closes the database.
@@ -99,13 +99,15 @@ final class MyoroLocalDatabase {
   }
 
   /// UPDATE operation.
-  Future<void> update(
+  ///
+  /// Returns the number of changes made.
+  Future<int> update(
     String tableName, {
     required Map<String, dynamic> data,
     String? where,
     List<Object?>? whereArgs,
   }) async {
-    await _database!.update(
+    return await _database!.update(
       tableName,
       data,
       where: where,
@@ -114,11 +116,22 @@ final class MyoroLocalDatabase {
   }
 
   /// DELETE operation.
-  Future<void> delete(
+  ///
+  /// Returns the number of rows affected.
+  Future<int> delete(
     String tableName, {
     String? where,
     List<Object?>? whereArgs,
   }) async {
-    await _database!.delete(tableName, where: where, whereArgs: whereArgs);
+    return await _database!.delete(
+      tableName,
+      where: where,
+      whereArgs: whereArgs,
+    );
+  }
+
+  /// Function to execute raw SQL.
+  Future<void> executeSql(String sql) async {
+    return await _database!.execute(sql);
   }
 }
