@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] for the drawer of a [MyoroScreen].
-final class MyoroDrawerController extends ChangeNotifier {
+class MyoroDrawerController extends ChangeNotifier {
   /// Key of the [Scaffold] within [MyoroScreen] to control the drawer.
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -16,24 +16,16 @@ final class MyoroDrawerController extends ChangeNotifier {
   MyoroDrawer? _drawer;
 
   /// Opens the drawer.
-  void openDrawer(
-    BuildContext context, {
-    bool isEndDrawer = false,
-    required MyoroDrawer drawer,
-  }) {
+  void openDrawer(BuildContext context, {bool isEndDrawer = false, required MyoroDrawer drawer}) {
     if (_drawer == drawer) return;
     _drawer = drawer;
     _isEndDrawer = isEndDrawer;
-    !_isEndDrawer
-        ? _scaffoldKey.currentState?.openDrawer()
-        : _scaffoldKey.currentState?.openEndDrawer();
+    !_isEndDrawer ? _scaffoldKey.currentState?.openDrawer() : _scaffoldKey.currentState?.openEndDrawer();
   }
 
   /// Closes the drawer.
   void closeDrawer(BuildContext context) {
-    !_isEndDrawer
-        ? Scaffold.of(context).closeDrawer()
-        : Scaffold.of(context).closeEndDrawer();
+    !_isEndDrawer ? Scaffold.of(context).closeDrawer() : Scaffold.of(context).closeEndDrawer();
   }
 
   GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;
