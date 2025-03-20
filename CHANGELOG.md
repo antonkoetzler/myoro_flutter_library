@@ -1,12 +1,4 @@
-# Changelog
-
-## 1.1.2
-
-1. Remove creation of a release in `deploy.yml` GitHub Action.
-
-## 1.1.1
-
-1. Fix `CHANGELOG.md`.
+# Changelog (of major and minor versions)
 
 ## 1.1.0
 
