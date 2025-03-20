@@ -1,4 +1,14 @@
-# 1.1.0
+# Changelog
+
+## 1.1.2
+
+1. Remove creation of a release in `deploy.yml` GitHub Action.
+
+## 1.1.1
+
+1. Fix `CHANGELOG.md`.
+
+## 1.1.0
 
 1. Implement all tests (MyoroLocalDatabase wasn't created yet);
 1. Remove the `core` and `commons` directories placing all of their contents in `lib`;
