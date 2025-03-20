@@ -37,8 +37,7 @@ final class MyoroCarouselWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroCarouselWidgetShowcaseState(\n'
       '  direction: $direction,\n'
       '  displayTraversalButtons: $displayTraversalButtons,\n'

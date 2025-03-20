@@ -9,7 +9,7 @@ final class ThemeModeCubit extends Cubit<ThemeMode> {
   final sharedPreferences = KiwiContainer().resolve<SharedPreferences>();
 
   ThemeModeCubit(bool darkModeEnabled)
-    : super(darkModeEnabled ? ThemeMode.dark : ThemeMode.light);
+      : super(darkModeEnabled ? ThemeMode.dark : ThemeMode.light);
 
   void toggle() async {
     await sharedPreferences.setBool(

@@ -8,15 +8,13 @@ void main() {
     'MyoroMaterialAppWidgetShowcaseBloc.ToggleThemeModeEvent',
     build: () => MyoroMaterialAppWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(const ToggleThemeModeEvent()),
-    expect:
-        () => [
-          MyoroMaterialAppWidgetShowcaseState(
-            themeMode:
-                const MyoroMaterialAppWidgetShowcaseState().themeMode ==
-                        ThemeMode.dark
-                    ? ThemeMode.light
-                    : ThemeMode.dark,
-          ),
-        ],
+    expect: () => [
+      MyoroMaterialAppWidgetShowcaseState(
+        themeMode: const MyoroMaterialAppWidgetShowcaseState().themeMode ==
+                ThemeMode.dark
+            ? ThemeMode.light
+            : ThemeMode.dark,
+      ),
+    ],
   );
 }

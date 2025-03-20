@@ -17,16 +17,14 @@ final class MyoroRadioWidgetShowcaseState extends Equatable {
   }) {
     return MyoroRadioWidgetShowcaseState(
       label: labelEnabled ? (label ?? this.label) : null,
-      labelTextStyle:
-          labelTextStyleEnabled
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      labelTextStyle: labelTextStyleEnabled
+          ? (labelTextStyle ?? this.labelTextStyle)
+          : null,
     );
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroRadioWidgetShowcaseState(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'

@@ -45,10 +45,9 @@ final class MyoroDropdownWidgetShowcasesState extends Equatable {
   }) {
     return MyoroDropdownWidgetShowcasesState(
       label: label ?? this.label,
-      labelTextStyle:
-          labelTextStyleEnabled
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      labelTextStyle: labelTextStyleEnabled
+          ? (labelTextStyle ?? this.labelTextStyle)
+          : null,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
       menuMaxHeight:
@@ -61,8 +60,7 @@ final class MyoroDropdownWidgetShowcasesState extends Equatable {
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroDropdownWidgetShowcasesState(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'

@@ -20,8 +20,8 @@ final class MyoroLayoutBuilderWidgetShowcaseThemeExtension
   });
 
   MyoroLayoutBuilderWidgetShowcaseThemeExtension.fake()
-    : textStyle = MyoroTypographyTheme.instance.randomTextStyle,
-      descriptionWidth = faker.randomGenerator.decimal();
+      : textStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        descriptionWidth = faker.randomGenerator.decimal();
 
   @override
   MyoroLayoutBuilderWidgetShowcaseThemeExtension copyWith({
@@ -37,7 +37,7 @@ final class MyoroLayoutBuilderWidgetShowcaseThemeExtension
   @override
   MyoroLayoutBuilderWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>?
-    other,
+        other,
     double t,
   ) {
     if (other is! MyoroLayoutBuilderWidgetShowcaseThemeExtension) return this;

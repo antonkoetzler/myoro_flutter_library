@@ -10,14 +10,11 @@ part 'myoro_circular_loader_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroCircularLoaderWidgetShowcaseState>;
 
 /// BloC to manage all the state in [MyoroCircularLoaderWidgetShowcase].
-final class MyoroCircularLoaderWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroCircularLoaderWidgetShowcaseEvent,
-          MyoroCircularLoaderWidgetShowcaseState
-        > {
+final class MyoroCircularLoaderWidgetShowcaseBloc extends Bloc<
+    MyoroCircularLoaderWidgetShowcaseEvent,
+    MyoroCircularLoaderWidgetShowcaseState> {
   MyoroCircularLoaderWidgetShowcaseBloc({required double size})
-    : super(MyoroCircularLoaderWidgetShowcaseState(size: size)) {
+      : super(MyoroCircularLoaderWidgetShowcaseState(size: size)) {
     on<SetColorEvent>(_setColorEvent);
     on<SetSizeEvent>(_setSizeEvent);
   }

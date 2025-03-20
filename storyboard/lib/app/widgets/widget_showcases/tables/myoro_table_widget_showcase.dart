@@ -41,20 +41,16 @@ final class _Widget extends StatelessWidget {
       ),
     );
 
-    return BlocBuilder<
-      MyoroTableWidgetShowcaseBloc,
-      MyoroTableWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroTableWidgetShowcaseBloc,
+        MyoroTableWidgetShowcaseState>(
       builder: (_, MyoroTableWidgetShowcaseState state) {
         return MyoroTable<String>(
           columns: columns,
-          rowBuilder:
-              (String item) => MyoroTableRow(
-                cells:
-                    columns.map<MyoroTableCell>((_) {
-                      return MyoroTableCell.fake();
-                    }).toList(),
-              ),
+          rowBuilder: (String item) => MyoroTableRow(
+            cells: columns.map<MyoroTableCell>((_) {
+              return MyoroTableCell.fake();
+            }).toList(),
+          ),
           dataConfiguration: MyoroDataConfiguration(
             asyncronousItems: (_) async {
               await Future.delayed(const Duration(seconds: 1));
@@ -113,8 +109,8 @@ final class _ShowPaginationControlsOption extends StatelessWidget {
     return MyoroCheckbox(
       label: '[MyoroTable.showPaginationControls]',
       initialValue: bloc.state.showPaginationControls,
-      onChanged:
-          (bool value) => bloc.add(SetShowPaginationControlsEvent(value)),
+      onChanged: (bool value) =>
+          bloc.add(SetShowPaginationControlsEvent(value)),
     );
   }
 }

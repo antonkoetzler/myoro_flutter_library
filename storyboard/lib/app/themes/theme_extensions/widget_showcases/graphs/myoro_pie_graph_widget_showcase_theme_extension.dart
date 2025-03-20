@@ -19,10 +19,10 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension
   });
 
   MyoroPieGraphWidgetShowcaseThemeExtension.fake()
-    : centerWidgetBorderRadius = BorderRadius.circular(
-        faker.randomGenerator.decimal(),
-      ),
-      centerWidgetSize = faker.randomGenerator.decimal();
+      : centerWidgetBorderRadius = BorderRadius.circular(
+          faker.randomGenerator.decimal(),
+        ),
+        centerWidgetSize = faker.randomGenerator.decimal();
 
   @override
   MyoroPieGraphWidgetShowcaseThemeExtension copyWith({

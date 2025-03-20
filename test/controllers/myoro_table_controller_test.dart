@@ -11,10 +11,11 @@ void main() {
   final filters = {filterKeys.first: 1, filterKeys.last: 2};
 
   final columnQuantity = faker.randomGenerator.integer(10);
-  final rows = List.generate(
-    faker.randomGenerator.integer(100, min: 50),
-    (_) => MyoroTableRow.fake(columnQuantity: columnQuantity),
-  ).toSet();
+  final rows =
+      List.generate(
+        faker.randomGenerator.integer(100, min: 50),
+        (_) => MyoroTableRow.fake(columnQuantity: columnQuantity),
+      ).toSet();
 
   setUpAll(() {
     controller.dataConfiguration = MyoroDataConfiguration(

@@ -24,12 +24,12 @@ final class MyoroSliderWidgetShowcaseThemeExtension
   });
 
   MyoroSliderWidgetShowcaseThemeExtension.fake()
-    : inputStyle = MyoroInputStyleEnum.fake(),
-      widgetSize = faker.randomGenerator.decimal(),
-      hiddenKittyContainerColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )];
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        widgetSize = faker.randomGenerator.decimal(),
+        hiddenKittyContainerColor =
+            kMyoroTestColors[faker.randomGenerator.integer(
+          kMyoroTestColors.length,
+        )];
 
   @override
   MyoroSliderWidgetShowcaseThemeExtension copyWith({

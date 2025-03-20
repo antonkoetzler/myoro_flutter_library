@@ -111,4 +111,4 @@ linter:
 analyzer:
 
 dartfmt:
-  line-length: 160
+  line-length: 80

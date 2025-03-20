@@ -26,10 +26,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroSearchInputWidgetShowcaseBloc,
-      MyoroSearchInputWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroSearchInputWidgetShowcaseBloc,
+        MyoroSearchInputWidgetShowcaseState>(
       builder: (_, MyoroSearchInputWidgetShowcaseState state) {
         return MyoroSearchInput<String>(
           configuration: const MyoroInputConfiguration(
@@ -43,8 +41,8 @@ final class _Widget extends StatelessWidget {
               (_) => faker.randomGenerator.string(150),
             );
           },
-          itemBuilder:
-              (String item) => MyoroMenuItem(text: item, onPressed: () {}),
+          itemBuilder: (String item) =>
+              MyoroMenuItem(text: item, onPressed: () {}),
         );
       },
     );

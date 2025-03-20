@@ -10,14 +10,10 @@ part 'myoro_snack_bar_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroSnackBarWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroSnackBarWidgetShowcase].
-final class MyoroSnackBarWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroSnackBarWidgetShowcaseEvent,
-          MyoroSnackBarWidgetShowcaseState
-        > {
+final class MyoroSnackBarWidgetShowcaseBloc extends Bloc<
+    MyoroSnackBarWidgetShowcaseEvent, MyoroSnackBarWidgetShowcaseState> {
   MyoroSnackBarWidgetShowcaseBloc()
-    : super(MyoroSnackBarWidgetShowcaseState()) {
+      : super(MyoroSnackBarWidgetShowcaseState()) {
     on<SetSnackBarTypeEvent>(_setSnackBarTypeEvent);
     on<SetShowCloseButtonEvent>(_setShowCloseButtonEvent);
     on<SetMessageEvent>(_setMessageEvent);

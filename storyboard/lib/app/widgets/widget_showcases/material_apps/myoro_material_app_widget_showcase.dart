@@ -25,16 +25,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroMaterialAppWidgetShowcaseThemeExtension
-            >();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
 
-    return BlocBuilder<
-      MyoroMaterialAppWidgetShowcaseBloc,
-      MyoroMaterialAppWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroMaterialAppWidgetShowcaseBloc,
+        MyoroMaterialAppWidgetShowcaseState>(
       builder: (_, MyoroMaterialAppWidgetShowcaseState state) {
         return MyoroMaterialApp(
           title: 'MyoroMaterialApp Storyboard',
@@ -89,16 +84,11 @@ final class _ThemeModeOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroMaterialAppWidgetShowcaseThemeExtension
-            >();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
 
-    return BlocBuilder<
-      MyoroMaterialAppWidgetShowcaseBloc,
-      MyoroMaterialAppWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroMaterialAppWidgetShowcaseBloc,
+        MyoroMaterialAppWidgetShowcaseState>(
       builder: (_, MyoroMaterialAppWidgetShowcaseState state) {
         final isDarkMode = state.themeMode == ThemeMode.dark;
 
@@ -106,17 +96,15 @@ final class _ThemeModeOption extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             MyoroIconTextHoverButton(
-              icon:
-                  isDarkMode
-                      ? themeExtension.themeModeOptionButtonDarkModeIcon
-                      : themeExtension.themeModeOptionButtonLightModeIcon,
+              icon: isDarkMode
+                  ? themeExtension.themeModeOptionButtonDarkModeIcon
+                  : themeExtension.themeModeOptionButtonLightModeIcon,
               configuration: MyoroHoverButtonConfiguration(
                 bordered: themeExtension.themeModeOptionButtonBordered,
               ),
-              onPressed:
-                  () => context
-                      .resolveBloc<MyoroMaterialAppWidgetShowcaseBloc>()
-                      .add(const ToggleThemeModeEvent()),
+              onPressed: () => context
+                  .resolveBloc<MyoroMaterialAppWidgetShowcaseBloc>()
+                  .add(const ToggleThemeModeEvent()),
             ),
             SizedBox(width: themeExtension.themeModeOptionSpacing),
             Flexible(

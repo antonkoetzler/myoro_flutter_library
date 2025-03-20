@@ -28,7 +28,7 @@ void main() {
     'MyoroGroupCheckboxWidgetShowcaseBloc.SetRunSpacingEvent',
     build: () => MyoroGroupCheckboxWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetRunSpacingEvent(runSpacing)),
-    expect:
-        () => [MyoroGroupCheckboxWidgetShowcaseState(runSpacing: runSpacing)],
+    expect: () =>
+        [MyoroGroupCheckboxWidgetShowcaseState(runSpacing: runSpacing)],
   );
 }

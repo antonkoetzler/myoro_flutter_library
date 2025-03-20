@@ -47,10 +47,9 @@ final class MyoroHoverButtonWidgetShowcaseState extends Equatable {
     return MyoroHoverButtonWidgetShowcaseState(
       primaryColor:
           primaryColorEnabled ? (primaryColor ?? this.primaryColor) : null,
-      onPrimaryColor:
-          onPrimaryColorEnabled
-              ? (onPrimaryColor ?? this.onPrimaryColor)
-              : null,
+      onPrimaryColor: onPrimaryColorEnabled
+          ? (onPrimaryColor ?? this.onPrimaryColor)
+          : null,
       isHovered: isHovered ?? this.isHovered,
       bordered: bordered ?? this.bordered,
       borderRadius:
@@ -61,8 +60,7 @@ final class MyoroHoverButtonWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroHoverButtonWidgetShowcaseState(\n'
       '  primaryColor: $primaryColor,\n'
       '  onPrimaryColor: $onPrimaryColor,\n'

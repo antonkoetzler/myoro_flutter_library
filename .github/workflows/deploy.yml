@@ -77,3 +77,23 @@ jobs:
           git tag "v$NEW_VERSION"
           git push origin main --force
           git push origin "v$NEW_VERSION"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.TOKEN }}
+          tag_name: "v${{ env.NEW_VERSION }}"
+          name: "Release v${{ env.NEW_VERSION }}"
+          body_path: "CHANGELOG.md"
+          draft: false
+          prerelease: false
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.TOKEN }}
+          tag_name: "v${{ env.NEW_VERSION }}"
+          name: "Release v${{ env.NEW_VERSION }}"
+          body: "## Changes\n\n- Auto-generated release for version ${{ env.NEW_VERSION }}"
+          draft: false
+          prerelease: false

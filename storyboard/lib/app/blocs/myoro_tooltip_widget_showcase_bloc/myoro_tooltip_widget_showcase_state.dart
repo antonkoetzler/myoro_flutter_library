@@ -17,8 +17,7 @@ final class MyoroTooltipWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroTooltipWidgetShowcaseState(\n'
       '  margin: $margin,\n'
       '  text: $text,\n'

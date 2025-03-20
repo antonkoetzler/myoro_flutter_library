@@ -12,21 +12,15 @@ final _row = {_dummyTableFooAttribute: faker.lorem.word()};
 
 void main() {
   group('[MyoroLocalDatabase.instance/initialize]', () {
-    test(
-      '[instance]: Assertion error case',
-      () {
-        expect(() => _instance, throwsAssertionError);
-      },
-    );
+    test('[instance]: Assertion error case', () {
+      expect(() => _instance, throwsAssertionError);
+    });
 
-    test(
-      '[instance]: Success case',
-      () async {
-        await _createDatabase();
-        expect(() => _instance, returnsNormally);
-        _closeDatabase();
-      },
-    );
+    test('[instance]: Success case', () async {
+      await _createDatabase();
+      expect(() => _instance, returnsNormally);
+      _closeDatabase();
+    });
   });
 
   group('[MyoroLocalDatabase.insert/select/get/update/delete]', () {
@@ -57,13 +51,11 @@ void main() {
       }
 
       expect((await _select()).length, rows.length);
-      final filteredRows = await _select(
-        '$_dummyTableFooAttribute = ?',
-        [
-          rows[faker.randomGenerator.integer(rows.length)]
-              [_dummyTableFooAttribute]
-        ],
-      );
+      final filteredRows = await _select('$_dummyTableFooAttribute = ?', [
+        rows[faker.randomGenerator.integer(
+          rows.length,
+        )][_dummyTableFooAttribute],
+      ]);
       expect(filteredRows.length, 1);
     });
 
@@ -73,17 +65,15 @@ void main() {
       await _insert(row);
       expect(await _get(), isNotNull);
       expect(
-        await _get(
-          '$_dummyTableFooAttribute = ?',
-          [faker.randomGenerator.string(100)],
-        ),
+        await _get('$_dummyTableFooAttribute = ?', [
+          faker.randomGenerator.string(100),
+        ]),
         isNull,
       );
       expect(
-        await _get(
-          '$_dummyTableFooAttribute = ?',
-          [row[_dummyTableFooAttribute]],
-        ),
+        await _get('$_dummyTableFooAttribute = ?', [
+          row[_dummyTableFooAttribute],
+        ]),
         isNotNull,
       );
     });
@@ -106,16 +96,12 @@ void main() {
       await _insert();
       final rowId = (await _get())![_dummyTableIdAttribute];
 
-      int rowsAffected = await _delete(
-        '$_dummyTableIdAttribute = ?',
-        [faker.randomGenerator.string(100)],
-      );
+      int rowsAffected = await _delete('$_dummyTableIdAttribute = ?', [
+        faker.randomGenerator.string(100),
+      ]);
       expect(rowsAffected, 0);
 
-      rowsAffected = await _delete(
-        '$_dummyTableIdAttribute = ?',
-        [rowId],
-      );
+      rowsAffected = await _delete('$_dummyTableIdAttribute = ?', [rowId]);
       expect(rowsAffected, 1);
     });
   });
@@ -140,10 +126,7 @@ void _closeDatabase() {
 }
 
 Future<int> _insert([Map<String, dynamic>? row]) async {
-  return await _instance.insert(
-    _dummyTableName,
-    data: row ?? _row,
-  );
+  return await _instance.insert(_dummyTableName, data: row ?? _row);
 }
 
 Future<Map<String, dynamic>?> _get([
@@ -181,10 +164,7 @@ Future<int> _update(
   );
 }
 
-Future<int> _delete(
-  String? where,
-  List<Object?> whereArgs,
-) async {
+Future<int> _delete(String? where, List<Object?> whereArgs) async {
   return await _instance.delete(
     _dummyTableName,
     where: where,

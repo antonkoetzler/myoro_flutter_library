@@ -15,10 +15,9 @@ void main() {
     'MyoroCircularLoaderWidgetShowcaseBloc.SetColorEvent',
     build: () => MyoroCircularLoaderWidgetShowcaseBloc(size: size1),
     act: (bloc) => bloc.add(SetColorEvent(color)),
-    expect:
-        () => [
-          MyoroCircularLoaderWidgetShowcaseState(color: color, size: size1),
-        ],
+    expect: () => [
+      MyoroCircularLoaderWidgetShowcaseState(color: color, size: size1),
+    ],
   );
 
   blocTest(

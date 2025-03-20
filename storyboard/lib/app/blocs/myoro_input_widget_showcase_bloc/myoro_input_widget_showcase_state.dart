@@ -75,17 +75,15 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
       typeEnum: typeEnum ?? this.typeEnum,
       inputStyle: inputStyle ?? this.inputStyle,
       textAlign: textAlign ?? this.textAlign,
-      inputTextStyle:
-          inputTextStyleEnabled
-              ? (inputTextStyle ?? this.inputTextStyle)
-              : null,
+      inputTextStyle: inputTextStyleEnabled
+          ? (inputTextStyle ?? this.inputTextStyle)
+          : null,
       label: labelEnabled ? (label ?? this.label) : null,
       placeholder:
           placeholderEnabled ? (placeholder ?? this.placeholder) : null,
-      labelTextStyle:
-          labelTextStyleEnabled
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      labelTextStyle: labelTextStyleEnabled
+          ? (labelTextStyle ?? this.labelTextStyle)
+          : null,
       suffixEnabled: suffixEnabled ?? this.suffixEnabled,
       enabled: enabled ?? this.enabled,
       readOnly: readOnly ?? this.readOnly,
@@ -96,8 +94,7 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroInputWidgetShowcaseState(\n'
       '  typeEnum: $typeEnum,\n'
       '  inputStyle: $inputStyle,\n'

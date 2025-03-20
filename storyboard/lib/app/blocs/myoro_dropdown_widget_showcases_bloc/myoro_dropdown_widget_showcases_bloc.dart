@@ -10,14 +10,10 @@ part 'myoro_dropdown_widget_showcases_event.dart';
 typedef _Emitter = Emitter<MyoroDropdownWidgetShowcasesState>;
 
 /// BLoC that manages options that are used in both [MyoroSingularDropdownWidgetShowcase] & [MyoroMultiDropdownWidgetShowcase].
-final class MyoroDropdownWidgetShowcasesBloc
-    extends
-        Bloc<
-          MyoroDropdownWidgetShowcasesEvent,
-          MyoroDropdownWidgetShowcasesState
-        > {
+final class MyoroDropdownWidgetShowcasesBloc extends Bloc<
+    MyoroDropdownWidgetShowcasesEvent, MyoroDropdownWidgetShowcasesState> {
   MyoroDropdownWidgetShowcasesBloc()
-    : super(const MyoroDropdownWidgetShowcasesState()) {
+      : super(const MyoroDropdownWidgetShowcasesState()) {
     on<SetLabelEvent>(_setLabelEvent);
     on<SetLabelTextStyleEvent>(_setLabelTextStyleEvent);
     on<SetEnabledEvent>(_setEnabledEvent);

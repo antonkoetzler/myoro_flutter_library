@@ -14,11 +14,8 @@ void main() {
         themeExtensionsBuilder: createStoryboardThemeExtensions,
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context
-                    .resolveThemeExtension<
-                      MyoroDrawerWidgetShowcaseThemeExtension
-                    >();
+            themeExtension = context.resolveThemeExtension<
+                MyoroDrawerWidgetShowcaseThemeExtension>();
 
             return BlocProvider(
               create: (_) => WidgetShowcaseBloc(),

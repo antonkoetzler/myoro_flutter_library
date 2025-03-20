@@ -14,43 +14,40 @@ void main() {
     'MyoroSnackBarWidgetShowcaseBloc.SetSnackBarTypeEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetSnackBarTypeEvent(snackBarType)),
-    expect:
-        () => [MyoroSnackBarWidgetShowcaseState(snackBarType: snackBarType)],
+    expect: () =>
+        [MyoroSnackBarWidgetShowcaseState(snackBarType: snackBarType)],
   );
 
   blocTest(
     'MyoroSnackBarWidgetShowcaseBloc.SetShowCloseButtonEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetShowCloseButtonEvent(showCloseButton)),
-    expect:
-        () => [
-          MyoroSnackBarWidgetShowcaseState(showCloseButton: showCloseButton),
-        ],
+    expect: () => [
+      MyoroSnackBarWidgetShowcaseState(showCloseButton: showCloseButton),
+    ],
   );
 
   blocTest(
     'MyoroSnackBarWidgetShowcaseBloc.SetMessageEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetMessageEvent(message)),
-    expect:
-        () => [
-          MyoroSnackBarWidgetShowcaseState(
-            message: message,
-            childEnabled: message.isEmpty,
-          ),
-        ],
+    expect: () => [
+      MyoroSnackBarWidgetShowcaseState(
+        message: message,
+        childEnabled: message.isEmpty,
+      ),
+    ],
   );
 
   blocTest(
     'MyoroSnackBarWidgetShowcaseBloc.SetChildEnabledEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetChildEnabledEvent(childEnabled)),
-    expect:
-        () => [
-          MyoroSnackBarWidgetShowcaseState(
-            message: childEnabled ? '' : 'Hello, World!',
-            childEnabled: childEnabled,
-          ),
-        ],
+    expect: () => [
+      MyoroSnackBarWidgetShowcaseState(
+        message: childEnabled ? '' : 'Hello, World!',
+        childEnabled: childEnabled,
+      ),
+    ],
   );
 }

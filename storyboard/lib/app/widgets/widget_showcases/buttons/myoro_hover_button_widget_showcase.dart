@@ -39,16 +39,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroHoverButtonWidgetShowcaseThemeExtension
-            >();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
 
-    return BlocBuilder<
-      MyoroHoverButtonWidgetShowcaseBloc,
-      MyoroHoverButtonWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroHoverButtonWidgetShowcaseBloc,
+        MyoroHoverButtonWidgetShowcaseState>(
       builder: (_, MyoroHoverButtonWidgetShowcaseState state) {
         return MyoroHoverButton(
           configuration: MyoroHoverButtonConfiguration(
@@ -144,27 +139,23 @@ final class _BorderRadiusSlider extends StatefulWidget {
 }
 
 final class _BorderRadiusSliderState extends State<_BorderRadiusSlider> {
-  late final _defaultBorderRadius =
-      context
-          .resolveThemeExtension<MyoroHoverButtonThemeExtension>()
-          .borderRadius
-          .bottomLeft
-          .x;
+  late final _defaultBorderRadius = context
+      .resolveThemeExtension<MyoroHoverButtonThemeExtension>()
+      .borderRadius
+      .bottomLeft
+      .x;
   late double _value = _defaultBorderRadius;
 
   void _event(double? value) {
     context.resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>().add(
-      SetBorderRadiusEvent(value),
-    );
+          SetBorderRadiusEvent(value),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroHoverButtonWidgetShowcaseThemeExtension
-            >();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -271,11 +262,8 @@ final class _ColorDropdownItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroHoverButtonWidgetShowcaseThemeExtension
-            >();
+    final themeExtension = context
+        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
     final colorSize = themeExtension.colorDropdownItemColorSize;
 
     return Padding(

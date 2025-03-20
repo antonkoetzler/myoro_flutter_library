@@ -13,7 +13,7 @@ typedef _Emitter = Emitter<MyoroTableWidgetShowcaseState>;
 final class MyoroTableWidgetShowcaseBloc
     extends Bloc<MyoroTableWidgetShowcaseEvent, MyoroTableWidgetShowcaseState> {
   MyoroTableWidgetShowcaseBloc()
-    : super(const MyoroTableWidgetShowcaseState()) {
+      : super(const MyoroTableWidgetShowcaseState()) {
     on<SetEnableColumnResizingEvent>(_setEnableColumnResizingEvent);
     on<SetEnableCheckboxesEvent>(_setEnableCheckboxesEvent);
     on<SetShowPaginationControlsEvent>(_setShowPaginationControlsEvent);

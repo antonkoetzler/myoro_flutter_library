@@ -10,14 +10,10 @@ part 'myoro_carousel_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroCarouselWidgetShowcaseState>;
 
 /// BLoC to manage all of the state of [MyoroCarouselWidgetShowcase].
-final class MyoroCarouselWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroCarouselWidgetShowcaseEvent,
-          MyoroCarouselWidgetShowcaseState
-        > {
+final class MyoroCarouselWidgetShowcaseBloc extends Bloc<
+    MyoroCarouselWidgetShowcaseEvent, MyoroCarouselWidgetShowcaseState> {
   MyoroCarouselWidgetShowcaseBloc()
-    : super(const MyoroCarouselWidgetShowcaseState()) {
+      : super(const MyoroCarouselWidgetShowcaseState()) {
     on<SetDirectionEvent>(_setDirectionEvent);
     on<SetDisplayTraversalButtonsEvent>(_setDisplayTraversalButtonsEvent);
     on<SetAutoplayEvent>(_setAutoplayEvent);

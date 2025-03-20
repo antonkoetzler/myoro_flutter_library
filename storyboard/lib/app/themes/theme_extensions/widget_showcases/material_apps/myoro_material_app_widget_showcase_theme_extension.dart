@@ -52,31 +52,29 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
   });
 
   MyoroMaterialAppWidgetShowcaseThemeExtension.fake()
-    : appBarContentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
-      appBarLogoIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      appBarTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-      appBarMenuButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      appBarSpacing = faker.randomGenerator.decimal(),
-      themeModeOptionButtonBordered = faker.randomGenerator.boolean(),
-      themeModeOptionButtonDarkModeIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      themeModeOptionButtonLightModeIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      themeModeOptionTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-      themeModeOptionSpacing = faker.randomGenerator.decimal();
+      : appBarContentColor = kMyoroTestColors[faker.randomGenerator.integer(
+          kMyoroTestColors.length,
+        )],
+        appBarLogoIcon = kMyoroTestIcons[faker.randomGenerator.integer(
+          kMyoroTestIcons.length,
+        )],
+        appBarTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+        appBarMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(
+          kMyoroTestIcons.length,
+        )],
+        appBarSpacing = faker.randomGenerator.decimal(),
+        themeModeOptionButtonBordered = faker.randomGenerator.boolean(),
+        themeModeOptionButtonDarkModeIcon =
+            kMyoroTestIcons[faker.randomGenerator.integer(
+          kMyoroTestIcons.length,
+        )],
+        themeModeOptionButtonLightModeIcon =
+            kMyoroTestIcons[faker.randomGenerator.integer(
+          kMyoroTestIcons.length,
+        )],
+        themeModeOptionTextStyle =
+            MyoroTypographyTheme.instance.randomTextStyle,
+        themeModeOptionSpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroMaterialAppWidgetShowcaseThemeExtension copyWith({
@@ -99,11 +97,9 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
       appBarSpacing: appBarSpacing ?? this.appBarSpacing,
       themeModeOptionButtonBordered:
           themeModeOptionButtonBordered ?? this.themeModeOptionButtonBordered,
-      themeModeOptionButtonDarkModeIcon:
-          themeModeOptionButtonDarkModeIcon ??
+      themeModeOptionButtonDarkModeIcon: themeModeOptionButtonDarkModeIcon ??
           this.themeModeOptionButtonDarkModeIcon,
-      themeModeOptionButtonLightModeIcon:
-          themeModeOptionButtonLightModeIcon ??
+      themeModeOptionButtonLightModeIcon: themeModeOptionButtonLightModeIcon ??
           this.themeModeOptionButtonLightModeIcon,
       themeModeOptionTextStyle:
           themeModeOptionTextStyle ?? this.themeModeOptionTextStyle,
@@ -115,7 +111,7 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
   @override
   MyoroMaterialAppWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>?
-    other,
+        other,
     double t,
   ) {
     if (other is! MyoroMaterialAppWidgetShowcaseThemeExtension) return this;

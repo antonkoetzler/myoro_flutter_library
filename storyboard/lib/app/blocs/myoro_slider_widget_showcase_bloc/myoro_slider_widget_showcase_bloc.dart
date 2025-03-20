@@ -10,11 +10,10 @@ part 'myoro_slider_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroSliderWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroSlider]'s options in [MyoroSliderWidgetShowcase].
-final class MyoroSliderWidgetShowcaseBloc
-    extends
-        Bloc<MyoroSliderWidgetShowcaseEvent, MyoroSliderWidgetShowcaseState> {
+final class MyoroSliderWidgetShowcaseBloc extends Bloc<
+    MyoroSliderWidgetShowcaseEvent, MyoroSliderWidgetShowcaseState> {
   MyoroSliderWidgetShowcaseBloc({required double width})
-    : super(MyoroSliderWidgetShowcaseState(width: width)) {
+      : super(MyoroSliderWidgetShowcaseState(width: width)) {
     on<SetLabelEvent>(_setLabelEvent);
     on<SetLabelTextStyleEvent>(_setLabelTextStyleEvent);
     on<SetWidthEvent>(_setWidthEvent);

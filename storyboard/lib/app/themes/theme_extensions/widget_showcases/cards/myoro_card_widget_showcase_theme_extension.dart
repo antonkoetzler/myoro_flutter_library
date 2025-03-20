@@ -22,18 +22,17 @@ final class MyoroCardWidgetShowcaseThemeExtension
   });
 
   MyoroCardWidgetShowcaseThemeExtension.fake()
-    : inputStyle = MyoroInputStyleEnum.fake(),
-      titleOptionTextAlign =
-          TextAlign.values[faker.randomGenerator.integer(
-            TextAlign.values.length,
-          )],
-      titleTextStyleOptionTextStyles = List.generate(
-        faker.randomGenerator.integer(10),
-        (_) => (
-          faker.lorem.word(),
-          MyoroTypographyTheme.instance.randomTextStyle,
-        ),
-      );
+      : inputStyle = MyoroInputStyleEnum.fake(),
+        titleOptionTextAlign = TextAlign.values[faker.randomGenerator.integer(
+          TextAlign.values.length,
+        )],
+        titleTextStyleOptionTextStyles = List.generate(
+          faker.randomGenerator.integer(10),
+          (_) => (
+            faker.lorem.word(),
+            MyoroTypographyTheme.instance.randomTextStyle,
+          ),
+        );
 
   @override
   MyoroCardWidgetShowcaseThemeExtension copyWith({

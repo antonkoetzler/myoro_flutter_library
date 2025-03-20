@@ -31,9 +31,9 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
     this.textStyle,
     this.childEnabled = false,
   }) : assert(
-         (text != null) ^ childEnabled,
-         '[MyoroDialogModalWidgetShowcaseState]: [text] must not be null (x)or [childEnabled] must be true.',
-       );
+          (text != null) ^ childEnabled,
+          '[MyoroDialogModalWidgetShowcaseState]: [text] must not be null (x)or [childEnabled] must be true.',
+        );
 
   MyoroDialogModalWidgetShowcaseState copyWith({
     bool? invertButtons,
@@ -71,27 +71,23 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
 
     return MyoroDialogModalWidgetShowcaseState(
       invertButtons: invertButtons ?? this.invertButtons,
-      confirmButtonText:
-          confirmButtonTextEnabled
-              ? (confirmButtonText ?? this.confirmButtonText)
-              : null,
-      cancelButtonText:
-          cancelButtonTextEnabled
-              ? (cancelButtonText ?? this.cancelButtonText)
-              : null,
+      confirmButtonText: confirmButtonTextEnabled
+          ? (confirmButtonText ?? this.confirmButtonText)
+          : null,
+      cancelButtonText: cancelButtonTextEnabled
+          ? (cancelButtonText ?? this.cancelButtonText)
+          : null,
       text: textEnabled ? (text ?? this.text) : null,
       textEnabled: textEnabled,
-      textStyle:
-          textStyleEnabled && !childEnabled
-              ? (textStyle ?? this.textStyle)
-              : null,
+      textStyle: textStyleEnabled && !childEnabled
+          ? (textStyle ?? this.textStyle)
+          : null,
       childEnabled: childEnabled,
     );
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroDialogModalWidgetShowcaseState(\n'
       '  invertButtons: $invertButtons,\n'
       '  confirmButtonText: $confirmButtonText,\n'

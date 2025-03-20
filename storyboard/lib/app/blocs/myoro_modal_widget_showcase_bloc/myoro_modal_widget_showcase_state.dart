@@ -58,8 +58,7 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroModalWidgetShowcaseState(\n'
       '  barrierDismissable: $barrierDismissable,\n'
       '  minWidth: $minWidth,\n'

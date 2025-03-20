@@ -12,24 +12,22 @@ void main() {
     'MyoroPieGraphWidgetShowcaseBloc.SetTypeEnumEvent',
     build: () => MyoroPieGraphWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTypeEnumEvent(typeEnum)),
-    expect:
-        () => [
-          MyoroPieGraphWidgetShowcaseState(
-            typeEnum: typeEnum,
-            centerWidgetEnabled: typeEnum.isDonut,
-          ),
-        ],
+    expect: () => [
+      MyoroPieGraphWidgetShowcaseState(
+        typeEnum: typeEnum,
+        centerWidgetEnabled: typeEnum.isDonut,
+      ),
+    ],
   );
 
   blocTest(
     'MyoroPieGraphWidgetShowcaseBloc.SetCenterWidgetEnabledEvent',
     build: () => MyoroPieGraphWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetCenterWidgetEnabledEvent(centerWidgetEnabled)),
-    expect:
-        () => [
-          MyoroPieGraphWidgetShowcaseState(
-            centerWidgetEnabled: centerWidgetEnabled,
-          ),
-        ],
+    expect: () => [
+      MyoroPieGraphWidgetShowcaseState(
+        centerWidgetEnabled: centerWidgetEnabled,
+      ),
+    ],
   );
 }

@@ -30,10 +30,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroGroupCheckboxWidgetShowcaseBloc,
-      MyoroGroupCheckboxWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroGroupCheckboxWidgetShowcaseBloc,
+        MyoroGroupCheckboxWidgetShowcaseState>(
       builder: (_, MyoroGroupCheckboxWidgetShowcaseState state) {
         return MyoroGroupCheckbox(
           direction: state.direction,
@@ -77,8 +75,8 @@ final class _DirectionOptionState extends State<_DirectionOption> {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroGroupCheckbox.direction]',
-        itemBuilder:
-            (Axis direction) => MyoroMenuItem(text: _directionName(direction)),
+        itemBuilder: (Axis direction) =>
+            MyoroMenuItem(text: _directionName(direction)),
         itemLabelBuilder: _directionName,
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
       ),
@@ -115,8 +113,8 @@ final class _SpacingOptionState extends State<_SpacingOption> {
       configuration: MyoroInputConfiguration(
         label: '[MyoroGroupCheckbox.spacing]',
         controller: _controller,
-        onChanged:
-            (_) => _bloc.add(SetSpacingEvent(double.parse(_controller.text))),
+        onChanged: (_) =>
+            _bloc.add(SetSpacingEvent(double.parse(_controller.text))),
       ),
     );
   }
@@ -149,9 +147,8 @@ final class _RunSpacingOptionState extends State<_RunSpacingOption> {
       configuration: MyoroInputConfiguration(
         label: '[MyoroGroupCheckbox.runSpacing]',
         controller: _controller,
-        onChanged:
-            (_) =>
-                _bloc.add(SetRunSpacingEvent(double.parse(_controller.text))),
+        onChanged: (_) =>
+            _bloc.add(SetRunSpacingEvent(double.parse(_controller.text))),
       ),
     );
   }

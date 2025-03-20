@@ -13,8 +13,7 @@ final class MyoroSearchInputWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroSearchInputWidgetShowcaseState(\n'
       '  requestWhenChanged: $requestWhenChanged,\n'
       ');';

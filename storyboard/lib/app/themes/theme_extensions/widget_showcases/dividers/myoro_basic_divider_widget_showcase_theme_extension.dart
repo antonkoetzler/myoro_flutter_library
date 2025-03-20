@@ -14,7 +14,7 @@ final class MyoroBasicDividerWidgetShowcaseThemeExtension
   });
 
   MyoroBasicDividerWidgetShowcaseThemeExtension.fake()
-    : buttonBordered = faker.randomGenerator.boolean();
+      : buttonBordered = faker.randomGenerator.boolean();
 
   @override
   MyoroBasicDividerWidgetShowcaseThemeExtension copyWith({
@@ -28,7 +28,7 @@ final class MyoroBasicDividerWidgetShowcaseThemeExtension
   @override
   MyoroBasicDividerWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension>?
-    other,
+        other,
     double t,
   ) {
     if (other is! MyoroBasicDividerWidgetShowcaseThemeExtension) return this;

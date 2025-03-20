@@ -200,8 +200,7 @@ enum WidgetListingEnum {
       myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
 
       // Should never get here.
-      _ =>
-        throw Exception(
+      _ => throw Exception(
           '[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.',
         ),
     };

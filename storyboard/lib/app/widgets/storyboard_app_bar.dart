@@ -52,10 +52,9 @@ final class _Buttons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing:
-          context
-              .resolveThemeExtension<StoryboardAppBarThemeExtension>()
-              .buttonSpacing,
+      spacing: context
+          .resolveThemeExtension<StoryboardAppBarThemeExtension>()
+          .buttonSpacing,
       children: const [_ShowWidgetShowcaseButton(), _ToggleThemeButton()],
     );
   }
@@ -71,16 +70,14 @@ final class _ShowWidgetShowcaseButton extends StatelessWidget {
         if (!state.displayingWidgetShowcase) return const SizedBox.shrink();
 
         return MyoroIconTextHoverButton(
-          icon:
-              context
-                  .resolveThemeExtension<StoryboardAppBarThemeExtension>()
-                  .showWidgetOptionsButtonIcon,
+          icon: context
+              .resolveThemeExtension<StoryboardAppBarThemeExtension>()
+              .showWidgetOptionsButtonIcon,
           configuration: MyoroHoverButtonConfiguration(
             tooltip: 'Show widget showcase options',
             isHovered: state.displayingWidgetOptions,
           ),
-          onPressed:
-              () => context.resolveBloc<WidgetShowcaseBloc>().add(
+          onPressed: () => context.resolveBloc<WidgetShowcaseBloc>().add(
                 const ToggleWidgetOptionsDisplayEvent(),
               ),
         );
@@ -95,10 +92,9 @@ final class _ToggleThemeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroIconTextHoverButton(
-      icon:
-          context
-              .resolveThemeExtension<StoryboardAppBarThemeExtension>()
-              .themeButtonIcon,
+      icon: context
+          .resolveThemeExtension<StoryboardAppBarThemeExtension>()
+          .themeButtonIcon,
       configuration: const MyoroHoverButtonConfiguration(
         tooltip: 'Toggle theme',
       ),

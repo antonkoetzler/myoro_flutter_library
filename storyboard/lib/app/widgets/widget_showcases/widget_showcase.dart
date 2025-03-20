@@ -30,8 +30,8 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
   void initState() {
     super.initState();
     context.resolveBloc<WidgetShowcaseBloc>().add(
-      ToggleWidgetShowcaseDisplayEvent(enabled: _widgetOptions.isNotEmpty),
-    );
+          ToggleWidgetShowcaseDisplayEvent(enabled: _widgetOptions.isNotEmpty),
+        );
   }
 
   @override
@@ -118,21 +118,20 @@ final class _WidgetOptions extends StatelessWidget {
         padding: themeExtension.widgetOptionsPadding,
         child: SingleChildScrollView(
           child: Column(
-            children:
-                _widgetOptions.map<Widget>((Widget widgetOption) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Flexible(child: widgetOption),
-                      if (_widgetOptions.indexOf(widgetOption) !=
-                          _widgetOptions.length - 1)
-                        _Divider(
-                          direction: Axis.horizontal,
-                          padding: themeExtension.widgetOptionsDividerPadding,
-                        ),
-                    ],
-                  );
-                }).toList(),
+            children: _widgetOptions.map<Widget>((Widget widgetOption) {
+              return Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(child: widgetOption),
+                  if (_widgetOptions.indexOf(widgetOption) !=
+                      _widgetOptions.length - 1)
+                    _Divider(
+                      direction: Axis.horizontal,
+                      padding: themeExtension.widgetOptionsDividerPadding,
+                    ),
+                ],
+              );
+            }).toList(),
           ),
         ),
       ),

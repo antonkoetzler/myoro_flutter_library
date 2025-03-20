@@ -34,10 +34,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroIconTextHoverButtonWidgetShowcaseBloc,
-      MyoroIconTextHoverButtonWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroIconTextHoverButtonWidgetShowcaseBloc,
+        MyoroIconTextHoverButtonWidgetShowcaseState>(
       builder: (_, MyoroIconTextHoverButtonWidgetShowcaseState state) {
         return MyoroIconTextHoverButton(
           configuration: const MyoroHoverButtonConfiguration(bordered: true),
@@ -86,9 +84,8 @@ final class _IconOptionState extends State<_IconOption> {
         label: '[MyoroIconTextHoverButton.icon]',
         dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestIcons),
         itemLabelBuilder: _itemLabelBuilder,
-        itemBuilder:
-            (IconData icon) =>
-                MyoroMenuItem(icon: icon, text: _itemLabelBuilder(icon)),
+        itemBuilder: (IconData icon) =>
+            MyoroMenuItem(icon: icon, text: _itemLabelBuilder(icon)),
       ),
       controller: _controller,
       onChanged: (IconData? icon) => _bloc.add(SetIconEvent(icon)),
@@ -207,15 +204,14 @@ final class _TextStyleOptionState extends State<_TextStyleOption> {
         dataConfiguration: MyoroDataConfiguration(
           staticItems: typographyInstance.allTextStyles,
         ),
-        itemBuilder:
-            (TextStyle textStyle) => MyoroMenuItem(
-              text: typographyInstance.getTextStyleName(textStyle),
-            ),
+        itemBuilder: (TextStyle textStyle) => MyoroMenuItem(
+          text: typographyInstance.getTextStyleName(textStyle),
+        ),
         itemLabelBuilder: typographyInstance.getTextStyleName,
       ),
       controller: _controller,
-      onChanged:
-          (TextStyle? textStyle) => _bloc.add(SetTextStyleEvent(textStyle)),
+      onChanged: (TextStyle? textStyle) =>
+          _bloc.add(SetTextStyleEvent(textStyle)),
     );
   }
 }
@@ -248,13 +244,13 @@ final class _TextAlignOptionState extends State<_TextAlignOption> {
         dataConfiguration: MyoroDataConfiguration(
           staticItems: TextAlign.values,
         ),
-        itemBuilder:
-            (TextAlign textAlign) => MyoroMenuItem(text: textAlign.name),
+        itemBuilder: (TextAlign textAlign) =>
+            MyoroMenuItem(text: textAlign.name),
         itemLabelBuilder: (TextAlign textAlign) => textAlign.name,
       ),
       controller: _controller,
-      onChanged:
-          (TextAlign? textAlign) => _bloc.add(SetTextAlignEvent(textAlign)),
+      onChanged: (TextAlign? textAlign) =>
+          _bloc.add(SetTextAlignEvent(textAlign)),
     );
   }
 }
@@ -335,15 +331,13 @@ final class _MainAxisAlignmentOptionState
         dataConfiguration: MyoroDataConfiguration(
           staticItems: MainAxisAlignment.values,
         ),
-        itemBuilder:
-            (MainAxisAlignment mainAxisAlignment) =>
-                MyoroMenuItem(text: mainAxisAlignment.name),
-        itemLabelBuilder:
-            (MainAxisAlignment mainAxisAlignment) => mainAxisAlignment.name,
+        itemBuilder: (MainAxisAlignment mainAxisAlignment) =>
+            MyoroMenuItem(text: mainAxisAlignment.name),
+        itemLabelBuilder: (MainAxisAlignment mainAxisAlignment) =>
+            mainAxisAlignment.name,
       ),
-      onChanged:
-          (MainAxisAlignment? mainAxisAlignment) =>
-              _bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment)),
+      onChanged: (MainAxisAlignment? mainAxisAlignment) =>
+          _bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment)),
       controller: _controller,
     );
   }
@@ -360,9 +354,8 @@ final class _OnPressedEnabledOption extends StatelessWidget {
     return MyoroCheckbox(
       label: '[MyoroIconTextHoverButton.onPressed] enabled?',
       initialValue: bloc.state.onPressedEnabled,
-      onChanged:
-          (bool onPressedEnabled) =>
-              bloc.add(SetOnPressedEnabledEvent(onPressedEnabled)),
+      onChanged: (bool onPressedEnabled) =>
+          bloc.add(SetOnPressedEnabledEvent(onPressedEnabled)),
     );
   }
 }

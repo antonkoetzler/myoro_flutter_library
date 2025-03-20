@@ -35,9 +35,9 @@ final class MyoroIconTextHoverButtonWidgetShowcaseState extends Equatable {
     this.mainAxisAlignment,
     this.onPressedEnabled = true,
   }) : assert(
-         !(icon == null && text.isEmpty),
-         '[MyoroIconTextHoverButtonWidgetShowcaseState]: An [icon] or [text] must be provided.',
-       );
+          !(icon == null && text.isEmpty),
+          '[MyoroIconTextHoverButtonWidgetShowcaseState]: An [icon] or [text] must be provided.',
+        );
 
   MyoroIconTextHoverButtonWidgetShowcaseState copyWith({
     IconData? icon,
@@ -68,17 +68,15 @@ final class MyoroIconTextHoverButtonWidgetShowcaseState extends Equatable {
       textStyle: textStyleEnabled ? (textStyle ?? this.textStyle) : null,
       textAlign: textAlignEnabled ? (textAlign ?? this.textAlign) : null,
       padding: paddingEnabled ? (padding ?? this.padding) : null,
-      mainAxisAlignment:
-          mainAxisAlignmentEnabled
-              ? (mainAxisAlignment ?? this.mainAxisAlignment)
-              : null,
+      mainAxisAlignment: mainAxisAlignmentEnabled
+          ? (mainAxisAlignment ?? this.mainAxisAlignment)
+          : null,
       onPressedEnabled: onPressedEnabled ?? this.onPressedEnabled,
     );
   }
 
   @override
-  String toString() =>
-      ''
+  String toString() => ''
       'MyoroIconTextHoverButtonWidgetShowcaseState(\n'
       '  icon: $icon,\n'
       '  iconSize: $iconSize,\n'

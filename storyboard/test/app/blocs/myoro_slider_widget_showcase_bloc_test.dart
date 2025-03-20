@@ -26,10 +26,9 @@ void main() {
     MyoroTypographyTheme.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    labelTextStyle =
-        faker.randomGenerator.boolean()
-            ? MyoroTypographyTheme.instance.randomTextStyle
-            : null;
+    labelTextStyle = faker.randomGenerator.boolean()
+        ? MyoroTypographyTheme.instance.randomTextStyle
+        : null;
   });
 
   blocTest(
@@ -56,54 +55,47 @@ void main() {
   blocTest(
     'MyoroSliderWidgetShowcaseBloc.SetCurrentValueIndicatorTextBuilderEnabledEvent',
     build: createBloc,
-    act:
-        (bloc) => bloc.add(
-          SetCurrentValueIndicatorTextBuilderEnabledEvent(
+    act: (bloc) => bloc.add(
+      SetCurrentValueIndicatorTextBuilderEnabledEvent(
+        currentValueIndicatorTextBuilderEnabled,
+      ),
+    ),
+    expect: () => [
+      defaultState.copyWith(
+        currentValueIndicatorTextBuilderEnabled:
             currentValueIndicatorTextBuilderEnabled,
-          ),
-        ),
-    expect:
-        () => [
-          defaultState.copyWith(
-            currentValueIndicatorTextBuilderEnabled:
-                currentValueIndicatorTextBuilderEnabled,
-          ),
-        ],
+      ),
+    ],
   );
 
   blocTest(
     'MyoroSliderWidgetShowcaseBloc.SetMaxValueIndicatorTextBuilderEnabledEvent',
     build: createBloc,
-    act:
-        (bloc) => bloc.add(
-          SetMaxValueIndicatorTextBuilderEnabledEvent(
+    act: (bloc) => bloc.add(
+      SetMaxValueIndicatorTextBuilderEnabledEvent(
+        maxValueIndicatorTextBuilderEnabled,
+      ),
+    ),
+    expect: () => [
+      defaultState.copyWith(
+        maxValueIndicatorTextBuilderEnabled:
             maxValueIndicatorTextBuilderEnabled,
-          ),
-        ),
-    expect:
-        () => [
-          defaultState.copyWith(
-            maxValueIndicatorTextBuilderEnabled:
-                maxValueIndicatorTextBuilderEnabled,
-          ),
-        ],
+      ),
+    ],
   );
 
   blocTest(
     'MyoroSliderWidgetShowcaseBloc.SetFooterIndicatorTextBuilderEnabledEvent',
     build: createBloc,
-    act:
-        (bloc) => bloc.add(
-          SetFooterIndicatorTextBuilderEnabledEvent(
-            footerIndicatorTextBuilderEnabled,
-          ),
-        ),
-    expect:
-        () => [
-          defaultState.copyWith(
-            footerIndicatorTextBuilderEnabled:
-                footerIndicatorTextBuilderEnabled,
-          ),
-        ],
+    act: (bloc) => bloc.add(
+      SetFooterIndicatorTextBuilderEnabledEvent(
+        footerIndicatorTextBuilderEnabled,
+      ),
+    ),
+    expect: () => [
+      defaultState.copyWith(
+        footerIndicatorTextBuilderEnabled: footerIndicatorTextBuilderEnabled,
+      ),
+    ],
   );
 }
