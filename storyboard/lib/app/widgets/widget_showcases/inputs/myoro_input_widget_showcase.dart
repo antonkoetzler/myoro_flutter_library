@@ -321,7 +321,7 @@ final class _InputTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
     final bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<TextStyle>(
@@ -399,7 +399,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
     final bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<TextStyle>(

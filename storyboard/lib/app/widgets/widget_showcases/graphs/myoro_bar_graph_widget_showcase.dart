@@ -46,7 +46,7 @@ final class _Widget extends StatelessWidget {
                         Colors.red,
                         Colors.green,
                         Colors.blue,
-                        MyoroColorTheme.secondary(context),
+                        MyoroColorDesignSystem.secondary(context),
                       ][faker.randomGenerator.integer(4)],
                 ),
               ),

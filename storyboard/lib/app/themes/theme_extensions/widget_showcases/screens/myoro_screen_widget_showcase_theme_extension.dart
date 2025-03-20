@@ -40,8 +40,10 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   });
 
   MyoroScreenWidgetShowcaseThemeExtension.fake()
-    : appBarTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-      appBarSubtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+    : appBarTitleTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
+      appBarSubtitleTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       appBarMenuButtonIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
@@ -50,7 +52,7 @@ final class MyoroScreenWidgetShowcaseThemeExtension
         faker.randomGenerator.decimal(),
       ),
       bodyImageSize = faker.randomGenerator.decimal(),
-      bodyTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      bodyTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       bodySpacing = faker.randomGenerator.decimal();
 
   @override

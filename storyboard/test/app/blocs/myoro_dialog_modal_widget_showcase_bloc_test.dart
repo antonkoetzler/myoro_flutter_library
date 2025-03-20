@@ -16,10 +16,10 @@ void main() {
   final bool childEnabled = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    textStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 
   blocTest(

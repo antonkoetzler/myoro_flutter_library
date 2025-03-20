@@ -14,10 +14,10 @@ void main() {
   final bool barrierDismissable = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 
   blocTest(

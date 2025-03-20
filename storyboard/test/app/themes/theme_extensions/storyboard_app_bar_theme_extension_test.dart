@@ -11,7 +11,7 @@ void main() {
   late final StoryboardAppBarThemeExtension themeExtension1, themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
     themeExtension1 = StoryboardAppBarThemeExtension.fake();

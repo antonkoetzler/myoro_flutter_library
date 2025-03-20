@@ -96,10 +96,10 @@ final class _MyoroHoverButtonState extends State<MyoroHoverButton> {
     return MyoroTooltip(
       text: _configuration?.tooltip ?? '',
       child: InkWell(
-        focusColor: MyoroColorTheme.transparent,
-        hoverColor: MyoroColorTheme.transparent,
-        splashColor: MyoroColorTheme.transparent,
-        highlightColor: MyoroColorTheme.transparent,
+        focusColor: MyoroColorDesignSystem.transparent,
+        hoverColor: MyoroColorDesignSystem.transparent,
+        splashColor: MyoroColorDesignSystem.transparent,
+        highlightColor: MyoroColorDesignSystem.transparent,
         onTap: () {
           if (_onPressed == null) return;
           // Visual feedback that the button was clicked.

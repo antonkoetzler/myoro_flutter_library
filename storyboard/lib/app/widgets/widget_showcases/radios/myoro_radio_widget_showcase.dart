@@ -85,7 +85,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
 
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroDropdownConfiguration(

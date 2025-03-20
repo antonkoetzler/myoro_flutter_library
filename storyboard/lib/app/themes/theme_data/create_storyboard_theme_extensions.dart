@@ -47,7 +47,7 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
 ) {
   return [
     WidgetShowcaseThemeExtension(
-      widgetWrapperBackgroundColor: MyoroColorTheme.attention.withValues(
+      widgetWrapperBackgroundColor: MyoroColorDesignSystem.attention.withValues(
         alpha: 0.1,
       ),
       widgetWrapperPadding: const EdgeInsets.all(20),
@@ -55,7 +55,7 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
       widgetWrapperBorderRadius: MyoroDecorationHelper.borderRadius,
       widgetWrapperBorder: Border.all(
         width: 2,
-        color: MyoroColorTheme.attention,
+        color: MyoroColorDesignSystem.attention,
       ),
       widgetWrapperAlignment: Alignment.center,
       widgetOptionsPadding: const EdgeInsets.symmetric(
@@ -197,10 +197,10 @@ List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
       inputStyle: MyoroInputStyleEnum.outlined,
       childSize: 300,
       childDecoration: BoxDecoration(
-        color: MyoroColorTheme.attention,
+        color: MyoroColorDesignSystem.attention,
         border: Border.all(
           width: kMyoroBorderLength,
-          color: MyoroColorTheme.attention,
+          color: MyoroColorDesignSystem.attention,
         ),
       ),
       childTextStyle: textTheme.titleMedium!,

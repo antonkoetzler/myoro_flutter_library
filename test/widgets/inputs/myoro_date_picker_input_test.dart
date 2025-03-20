@@ -37,11 +37,14 @@ void main() {
         (Widget w) =>
             w is Padding &&
             w.child is InkWell &&
-            (w.child as InkWell).focusColor == MyoroColorTheme.transparent &&
-            (w.child as InkWell).hoverColor == MyoroColorTheme.transparent &&
-            (w.child as InkWell).splashColor == MyoroColorTheme.transparent &&
+            (w.child as InkWell).focusColor ==
+                MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).hoverColor ==
+                MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).splashColor ==
+                MyoroColorDesignSystem.transparent &&
             (w.child as InkWell).highlightColor ==
-                MyoroColorTheme.transparent &&
+                MyoroColorDesignSystem.transparent &&
             (w.child as InkWell).child is MyoroLayoutBuilder,
       ),
       findsOneWidget,

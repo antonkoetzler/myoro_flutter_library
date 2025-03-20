@@ -55,7 +55,7 @@ final class MyoroFormWidgetShowcaseThemeExtension
             MainAxisAlignment.values.length,
           )],
       submitButtonBordered = faker.randomGenerator.boolean(),
-      resultTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      resultTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       successColor =
           kMyoroTestColors[faker.randomGenerator.integer(
             kMyoroTestColors.length,

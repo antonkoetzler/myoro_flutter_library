@@ -129,7 +129,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
   const _LabelTextStyleOption();
 
   MyoroMenuItem _itemBuilder(
-    MyoroTypographyTheme typographyInstance,
+    MyoroTypographyDesignSystem typographyInstance,
     TextStyle textStyle,
   ) {
     return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
@@ -137,7 +137,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
     final dataConfiguration = MyoroDataConfiguration<TextStyle>(
       staticItems: typographyInstance.allTextStyles,
     );

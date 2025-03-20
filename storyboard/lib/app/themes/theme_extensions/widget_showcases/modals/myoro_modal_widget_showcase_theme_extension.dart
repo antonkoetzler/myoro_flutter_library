@@ -25,7 +25,7 @@ final class MyoroModalWidgetShowcaseThemeExtension
 
   MyoroModalWidgetShowcaseThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(),
-      headerTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      headerTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       inputStyle = MyoroInputStyleEnum.fake();
 
   @override

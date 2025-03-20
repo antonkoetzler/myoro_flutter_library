@@ -60,7 +60,7 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
           )],
-      appBarTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      appBarTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       appBarMenuButtonIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
@@ -75,7 +75,8 @@ final class MyoroMaterialAppWidgetShowcaseThemeExtension
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
           )],
-      themeModeOptionTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      themeModeOptionTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       themeModeOptionSpacing = faker.randomGenerator.decimal();
 
   @override

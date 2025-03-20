@@ -12,12 +12,12 @@ void main() {
   late final TextStyle? labelTextStyle;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
     labelTextStyle =
         faker.randomGenerator.boolean()
-            ? MyoroTypographyTheme.instance.randomTextStyle
+            ? MyoroTypographyDesignSystem.instance.randomTextStyle
             : null;
   });
 

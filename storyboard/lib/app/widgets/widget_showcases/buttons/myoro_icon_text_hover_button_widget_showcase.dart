@@ -199,7 +199,7 @@ final class _TextStyleOptionState extends State<_TextStyleOption> {
 
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
 
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroDropdownConfiguration(

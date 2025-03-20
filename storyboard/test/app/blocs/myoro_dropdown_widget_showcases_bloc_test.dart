@@ -17,10 +17,10 @@ void main() {
   final bool checkboxOnChangedEnabled = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 
   blocTest(

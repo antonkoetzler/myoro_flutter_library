@@ -53,28 +53,31 @@ void main() {
             w is Padding &&
             w.padding == const EdgeInsets.only(right: 0) &&
             w.child is InkWell &&
-            (w.child as InkWell).focusColor == MyoroColorTheme.transparent &&
-            (w.child as InkWell).hoverColor == MyoroColorTheme.transparent &&
-            (w.child as InkWell).splashColor == MyoroColorTheme.transparent &&
+            (w.child as InkWell).focusColor ==
+                MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).hoverColor ==
+                MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).splashColor ==
+                MyoroColorDesignSystem.transparent &&
             (w.child as InkWell).highlightColor ==
-                MyoroColorTheme.transparent &&
+                MyoroColorDesignSystem.transparent &&
             (w.child as InkWell).child is Container &&
             ((w.child as InkWell).child as Container).color ==
-                MyoroColorTheme.transparent,
+                MyoroColorDesignSystem.transparent,
       ),
       findsOneWidget,
     );
   }
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
     configuration = MyoroDropdownConfiguration<String>(
       label: faker.lorem.word(),
       labelTextStyle:
           faker.randomGenerator.boolean()
-              ? MyoroTypographyTheme.instance.randomTextStyle
+              ? MyoroTypographyDesignSystem.instance.randomTextStyle
               : null,
       dataConfiguration: MyoroDataConfiguration(
         staticItems: List.generate(
@@ -96,7 +99,7 @@ void main() {
             text: item,
             textStyle:
                 faker.randomGenerator.boolean()
-                    ? MyoroTypographyTheme.instance.randomTextStyle
+                    ? MyoroTypographyDesignSystem.instance.randomTextStyle
                     : null,
             textAlign:
                 TextAlign.values[faker.randomGenerator.integer(

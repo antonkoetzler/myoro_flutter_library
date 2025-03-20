@@ -37,8 +37,8 @@ final class StoryboardAppBarThemeExtension
   });
 
   StoryboardAppBarThemeExtension.fake()
-    : titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-      subtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+    : titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      subtitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       showWidgetOptionsButtonIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,

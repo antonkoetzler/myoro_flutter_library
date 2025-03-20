@@ -26,7 +26,7 @@ final class MyoroMenuWidgetShowcaseThemeExtension
   MyoroMenuWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
       constraintsOptionSpacing = faker.randomGenerator.decimal(),
-      headerTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+      headerTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
 
   @override
   MyoroMenuWidgetShowcaseThemeExtension copyWith({

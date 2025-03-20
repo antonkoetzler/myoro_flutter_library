@@ -49,7 +49,8 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension
 
   MyoroHoverButtonWidgetShowcaseThemeExtension.fake()
     : widgetContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      widgetContentTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      widgetContentTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       colorDropdownitemPrimaryColor =
           kMyoroTestColors[faker.randomGenerator.integer(
             kMyoroTestColors.length,
@@ -62,7 +63,7 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension
         faker.randomGenerator.decimal(),
       ),
       colorDropdownItemColorTextStyle =
-          MyoroTypographyTheme.instance.randomTextStyle,
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       colorDropdownItemSpacing = faker.randomGenerator.decimal(),
       borderRadiusSliderMaxValue = faker.randomGenerator.decimal(),
       borderRadiusSliderMaxValueBordered = faker.randomGenerator.boolean();

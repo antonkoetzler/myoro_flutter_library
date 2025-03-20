@@ -29,7 +29,7 @@ final class MyoroInputWidgetShowcaseThemeExtension
 
   MyoroInputWidgetShowcaseThemeExtension.fake()
     : configurationOptionTextStyle =
-          MyoroTypographyTheme.instance.randomTextStyle,
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       configurationOptionSpacing = faker.randomGenerator.decimal(),
       inputStyle = MyoroInputStyleEnum.fake(),
       suffixWidgetIcon =

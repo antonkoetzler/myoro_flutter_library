@@ -57,7 +57,7 @@ final class StoryboardBodyThemeExtension
       ),
       widgetListingCategoryDividerShortValue = faker.randomGenerator.decimal(),
       widgetListingCategoryDropdownButtonTextStyle =
-          MyoroTypographyTheme.instance.randomTextStyle,
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       widgetListingCategoryDropdownButtonUnopenedIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
@@ -71,7 +71,7 @@ final class StoryboardBodyThemeExtension
             MainAxisAlignment.values.length,
           )],
       widgetListingCategoryWidgetButtonTextStyle =
-          MyoroTypographyTheme.instance.randomTextStyle;
+          MyoroTypographyDesignSystem.instance.randomTextStyle;
 
   @override
   StoryboardBodyThemeExtension copyWith({

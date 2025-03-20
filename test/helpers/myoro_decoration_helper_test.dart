@@ -35,7 +35,7 @@ void main() {
 
     expect(
       MyoroDecorationHelper.border(context),
-      Border.all(width: 2, color: MyoroColorTheme.secondary(context)),
+      Border.all(width: 2, color: MyoroColorDesignSystem.secondary(context)),
     );
   });
 }

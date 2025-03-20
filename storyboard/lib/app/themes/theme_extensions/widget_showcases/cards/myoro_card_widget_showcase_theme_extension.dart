@@ -31,7 +31,7 @@ final class MyoroCardWidgetShowcaseThemeExtension
         faker.randomGenerator.integer(10),
         (_) => (
           faker.lorem.word(),
-          MyoroTypographyTheme.instance.randomTextStyle,
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
         ),
       );
 

@@ -205,7 +205,7 @@ final class _TextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
     final bloc = context.resolveBloc<MyoroDialogModalWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<TextStyle>(

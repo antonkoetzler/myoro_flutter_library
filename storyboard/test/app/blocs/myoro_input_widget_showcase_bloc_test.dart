@@ -28,16 +28,16 @@ void main() {
   late final TextStyle? inputTextStyle, labelTextStyle;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
     inputTextStyle =
         faker.randomGenerator.boolean()
-            ? MyoroTypographyTheme.instance.randomTextStyle
+            ? MyoroTypographyDesignSystem.instance.randomTextStyle
             : null;
     labelTextStyle =
         faker.randomGenerator.boolean()
-            ? MyoroTypographyTheme.instance.randomTextStyle
+            ? MyoroTypographyDesignSystem.instance.randomTextStyle
             : null;
   });
 

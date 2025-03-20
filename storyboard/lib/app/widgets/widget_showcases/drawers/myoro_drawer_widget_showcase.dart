@@ -100,7 +100,7 @@ final class _TitleTextStyleOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroDrawerWidgetShowcaseBloc>();
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
 
     return SizedBox(
       width: 210,

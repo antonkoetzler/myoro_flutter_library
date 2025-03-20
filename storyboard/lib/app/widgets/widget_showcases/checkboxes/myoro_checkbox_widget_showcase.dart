@@ -13,7 +13,7 @@ final class MyoroCheckboxWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create:
           (_) => MyoroCheckboxWidgetShowcaseBloc(
-            labelTextStyle: MyoroTypographyTheme.instance.italicSmall,
+            labelTextStyle: MyoroTypographyDesignSystem.instance.italicSmall,
           ),
       child: const WidgetShowcase(
         widget: _Widget(),
@@ -70,7 +70,7 @@ final class _LabelTextStyleOption extends StatefulWidget {
 }
 
 final class _LabelTextStyleOptionState extends State<_LabelTextStyleOption> {
-  final _typographyTheme = MyoroTypographyTheme.instance;
+  final _typographyTheme = MyoroTypographyDesignSystem.instance;
   late final _controller = MyoroSingularDropdownController<TextStyle>(
     _typographyTheme.italicSmall,
   );

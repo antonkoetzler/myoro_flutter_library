@@ -20,7 +20,7 @@ final class MyoroLayoutBuilderWidgetShowcaseThemeExtension
   });
 
   MyoroLayoutBuilderWidgetShowcaseThemeExtension.fake()
-    : textStyle = MyoroTypographyTheme.instance.randomTextStyle,
+    : textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       descriptionWidth = faker.randomGenerator.decimal();
 
   @override

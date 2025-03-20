@@ -32,7 +32,8 @@ final class MyoroAppBarWidgetShowcaseThemeExtension
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
           )],
-      mockAppTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      mockAppTitleTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       logoTitleSpacing = faker.randomGenerator.decimal(),
       mockMenuButtonIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(

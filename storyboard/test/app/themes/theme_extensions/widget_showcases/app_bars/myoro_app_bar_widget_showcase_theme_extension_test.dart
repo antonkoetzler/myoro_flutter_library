@@ -12,7 +12,7 @@ void main() {
   late final MyoroAppBarWidgetShowcaseThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
     themeExtension1 = MyoroAppBarWidgetShowcaseThemeExtension.fake();

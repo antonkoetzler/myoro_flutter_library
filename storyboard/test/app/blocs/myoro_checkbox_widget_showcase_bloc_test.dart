@@ -11,11 +11,11 @@ void main() {
   late final TextStyle labelTextStyle1, labelTextStyle2;
 
   setUpAll(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    labelTextStyle1 = MyoroTypographyTheme.instance.randomTextStyle;
-    labelTextStyle2 = MyoroTypographyTheme.instance.randomTextStyle;
+    labelTextStyle1 = MyoroTypographyDesignSystem.instance.randomTextStyle;
+    labelTextStyle2 = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 
   blocTest(

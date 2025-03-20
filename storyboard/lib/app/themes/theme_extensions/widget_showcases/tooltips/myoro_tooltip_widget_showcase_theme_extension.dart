@@ -36,7 +36,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
               kMyoroTestColors.length,
             )],
       ),
-      childTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+      childTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
 
   @override
   MyoroTooltipWidgetShowcaseThemeExtension copyWith({
