@@ -6,6 +6,8 @@ final class MyoroScreenThemeExtension
     extends ThemeExtension<MyoroScreenThemeExtension> {
   const MyoroScreenThemeExtension();
 
+  const MyoroScreenThemeExtension.builder();
+
   @override
   MyoroScreenThemeExtension copyWith() => const MyoroScreenThemeExtension();
 
@@ -14,4 +16,15 @@ final class MyoroScreenThemeExtension
     covariant ThemeExtension<MyoroScreenThemeExtension>? other,
     double t,
   ) => this;
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroScreenThemeExtension &&
+        other.runtimeType == runtimeType;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll(const []);
+  }
 }

@@ -19,7 +19,10 @@ void main() {
   });
 
   test('MyoroSnackBarThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroSnackBarThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
       standardBorderColor: themeExtension2.standardBorderColor,
       attentionBorderColor: themeExtension2.attentionBorderColor,
@@ -33,42 +36,7 @@ void main() {
       closeButtonIcon: themeExtension2.closeButtonIcon,
       closeButtonIconSize: themeExtension2.closeButtonIconSize,
     );
-    expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(
-      copiedThemeExtension.standardBorderColor,
-      themeExtension2.standardBorderColor,
-    );
-    expect(
-      copiedThemeExtension.attentionBorderColor,
-      themeExtension2.attentionBorderColor,
-    );
-    expect(
-      copiedThemeExtension.successBorderColor,
-      themeExtension2.successBorderColor,
-    );
-    expect(
-      copiedThemeExtension.errorBorderColor,
-      themeExtension2.errorBorderColor,
-    );
-    expect(copiedThemeExtension.borderWidth, themeExtension2.borderWidth);
-    expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
-    expect(copiedThemeExtension.padding, themeExtension2.padding);
-    expect(
-      copiedThemeExtension.contentCloseButtonSpacing,
-      themeExtension2.contentCloseButtonSpacing,
-    );
-    expect(
-      copiedThemeExtension.messageTextStyle,
-      themeExtension2.messageTextStyle,
-    );
-    expect(
-      copiedThemeExtension.closeButtonIcon,
-      themeExtension2.closeButtonIcon,
-    );
-    expect(
-      copiedThemeExtension.closeButtonIconSize,
-      themeExtension2.closeButtonIconSize,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroSnackBarThemeExtension.lerp', () {

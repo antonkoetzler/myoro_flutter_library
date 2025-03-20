@@ -11,7 +11,10 @@ void main() {
   final themeExtension2 = MyoroSnackBarContainerThemeExtension.fake();
 
   test('MyoroSnackBarContainerThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroSnackBarContainerThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
       behavior: themeExtension2.behavior,
       margin: themeExtension2.margin,
@@ -20,16 +23,7 @@ void main() {
       dismissDirection: themeExtension2.dismissDirection,
       duration: themeExtension2.duration,
     );
-    expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(copiedThemeExtension.behavior, themeExtension2.behavior);
-    expect(copiedThemeExtension.margin, themeExtension2.margin);
-    expect(copiedThemeExtension.padding, themeExtension2.padding);
-    expect(copiedThemeExtension.elevation, themeExtension2.elevation);
-    expect(
-      copiedThemeExtension.dismissDirection,
-      themeExtension2.dismissDirection,
-    );
-    expect(copiedThemeExtension.duration, themeExtension2.duration);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroSnackBarContainerThemeExtension.lerp', () {

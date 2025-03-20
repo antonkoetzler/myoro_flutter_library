@@ -54,6 +54,18 @@ final class MyoroMenuThemeExtension
       itemBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       dialogTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
 
+  MyoroMenuThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : primaryColor = colorScheme.primary,
+      border = Border.all(
+        width: kMyoroBorderLength,
+        color: colorScheme.onPrimary,
+      ),
+      borderRadius = MyoroDecorationHelper.inputBorderRadius,
+      searchBarPadding = const EdgeInsets.all(10),
+      searchBarInputStyle = MyoroInputStyleEnum.outlined,
+      itemBorderRadius = BorderRadius.zero,
+      dialogTextStyle = textTheme.bodyMedium!;
+
   @override
   MyoroMenuThemeExtension copyWith({
     BoxConstraints? constraints,
@@ -106,6 +118,32 @@ final class MyoroMenuThemeExtension
         other.dialogTextStyle,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroMenuThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.primaryColor == primaryColor &&
+        other.border == border &&
+        other.borderRadius == borderRadius &&
+        other.searchBarPadding == searchBarPadding &&
+        other.searchBarInputStyle == searchBarInputStyle &&
+        other.itemBorderRadius == itemBorderRadius &&
+        other.dialogTextStyle == dialogTextStyle;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      primaryColor,
+      border,
+      borderRadius,
+      searchBarPadding,
+      searchBarInputStyle,
+      itemBorderRadius,
+      dialogTextStyle,
     );
   }
 }

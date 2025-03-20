@@ -27,6 +27,11 @@ final class MyoroDropdownThemeExtension
       inputDropdownSpacing = faker.randomGenerator.decimal(),
       menuMaxHeight = faker.randomGenerator.decimal();
 
+  const MyoroDropdownThemeExtension.builder()
+    : inputStyle = MyoroInputStyleEnum.outlined,
+      inputDropdownSpacing = 10,
+      menuMaxHeight = 300;
+
   @override
   MyoroDropdownThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -55,5 +60,19 @@ final class MyoroDropdownThemeExtension
       ),
       menuMaxHeight: lerpDouble(menuMaxHeight, other.menuMaxHeight, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroDropdownThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.inputStyle == inputStyle &&
+        other.inputDropdownSpacing == inputDropdownSpacing &&
+        other.menuMaxHeight == menuMaxHeight;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(inputStyle, inputDropdownSpacing, menuMaxHeight);
   }
 }

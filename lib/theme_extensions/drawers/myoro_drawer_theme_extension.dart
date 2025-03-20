@@ -74,6 +74,25 @@ final class MyoroDrawerThemeExtension
           )],
       closeButtonBordered = faker.randomGenerator.boolean();
 
+  MyoroDrawerThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : drawerPadding = const EdgeInsets.all(20),
+      drawerContentPadding = const EdgeInsets.all(10),
+      drawerShape = RoundedRectangleBorder(
+        side: BorderSide(
+          width: kMyoroBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+      ),
+      titleContentDividerPadding = const EdgeInsets.only(top: 4, bottom: 10),
+      titleTextStyle = textTheme.titleLarge!,
+      closeButtonDrawerIcon = Icons.keyboard_arrow_left,
+      closeButtonEndDrawerIcon = Icons.keyboard_arrow_right,
+      closeButtonBackgroundColor = colorScheme.primary,
+      closeButtonBordered = true;
+
   @override
   MyoroDrawerThemeExtension copyWith({
     EdgeInsets? drawerPadding,
@@ -143,6 +162,36 @@ final class MyoroDrawerThemeExtension
         other.closeButtonBordered,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroDrawerThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.drawerContentPadding == drawerContentPadding &&
+        other.drawerPadding == drawerPadding &&
+        other.drawerShape == drawerShape &&
+        other.titleContentDividerPadding == titleContentDividerPadding &&
+        other.titleTextStyle == titleTextStyle &&
+        other.closeButtonDrawerIcon == closeButtonDrawerIcon &&
+        other.closeButtonEndDrawerIcon == closeButtonEndDrawerIcon &&
+        other.closeButtonBackgroundColor == closeButtonBackgroundColor &&
+        other.closeButtonBordered == closeButtonBordered;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      drawerContentPadding,
+      drawerPadding,
+      drawerShape,
+      titleContentDividerPadding,
+      titleTextStyle,
+      closeButtonDrawerIcon,
+      closeButtonEndDrawerIcon,
+      closeButtonBackgroundColor,
+      closeButtonBordered,
     );
   }
 }

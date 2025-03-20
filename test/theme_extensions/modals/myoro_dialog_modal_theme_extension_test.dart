@@ -19,15 +19,14 @@ void main() {
   });
 
   test('MyoroDialogModalThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroDialogModalThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       textStyle: themeExtension2.textStyle,
       footerButtonsSpacing: themeExtension2.footerButtonsSpacing,
     );
-    expect(copiedThemeExtension.textStyle, themeExtension2.textStyle);
-    expect(
-      copiedThemeExtension.footerButtonsSpacing,
-      themeExtension2.footerButtonsSpacing,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroDialogModalThemeExtension.lerp', () {

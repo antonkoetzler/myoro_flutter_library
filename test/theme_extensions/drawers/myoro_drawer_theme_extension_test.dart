@@ -17,7 +17,9 @@ void main() {
   });
 
   test('MyoroDrawerThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroDrawerThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       drawerPadding: themeExtension2.drawerPadding,
       drawerContentPadding: themeExtension2.drawerContentPadding,
       drawerShape: themeExtension2.drawerShape,
@@ -28,33 +30,7 @@ void main() {
       closeButtonBackgroundColor: themeExtension2.closeButtonBackgroundColor,
       closeButtonBordered: themeExtension2.closeButtonBordered,
     );
-    expect(copiedThemeExtension.drawerPadding, themeExtension2.drawerPadding);
-    expect(
-      copiedThemeExtension.drawerContentPadding,
-      themeExtension2.drawerContentPadding,
-    );
-    expect(copiedThemeExtension.drawerShape, themeExtension2.drawerShape);
-    expect(
-      copiedThemeExtension.titleContentDividerPadding,
-      themeExtension2.titleContentDividerPadding,
-    );
-    expect(copiedThemeExtension.titleTextStyle, themeExtension2.titleTextStyle);
-    expect(
-      copiedThemeExtension.closeButtonDrawerIcon,
-      themeExtension2.closeButtonDrawerIcon,
-    );
-    expect(
-      copiedThemeExtension.closeButtonEndDrawerIcon,
-      themeExtension2.closeButtonEndDrawerIcon,
-    );
-    expect(
-      copiedThemeExtension.closeButtonBackgroundColor,
-      themeExtension2.closeButtonBackgroundColor,
-    );
-    expect(
-      copiedThemeExtension.closeButtonBordered,
-      themeExtension2.closeButtonBordered,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroDrawerThemeExtension.lerp', () {

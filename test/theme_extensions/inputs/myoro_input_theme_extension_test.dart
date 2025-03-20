@@ -19,7 +19,9 @@ void main() {
   });
 
   test('MyoroInputThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroInputThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       underlinedBorder: themeExtension2.underlinedBorder,
       outlinedBorder: themeExtension2.outlinedBorder,
       primaryColor: themeExtension2.primaryColor,
@@ -35,35 +37,7 @@ void main() {
       clearTextButtonPadding: themeExtension2.clearTextButtonPadding,
       clearTextButtonIcon: themeExtension2.clearTextButtonIcon,
     );
-    expect(
-      copiedThemeExtension.underlinedBorder,
-      themeExtension2.underlinedBorder,
-    );
-    expect(copiedThemeExtension.outlinedBorder, themeExtension2.outlinedBorder);
-    expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(
-      copiedThemeExtension.errorBorderColor,
-      themeExtension2.errorBorderColor,
-    );
-    expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
-    expect(copiedThemeExtension.isDense, themeExtension2.isDense);
-    expect(copiedThemeExtension.cursorHeight, themeExtension2.cursorHeight);
-    expect(
-      copiedThemeExtension.disabledOpacity,
-      themeExtension2.disabledOpacity,
-    );
-    expect(copiedThemeExtension.inputTextStyle, themeExtension2.inputTextStyle);
-    expect(copiedThemeExtension.spacing, themeExtension2.spacing);
-    expect(copiedThemeExtension.labelTextStyle, themeExtension2.labelTextStyle);
-    expect(copiedThemeExtension.labelBehavior, themeExtension2.labelBehavior);
-    expect(
-      copiedThemeExtension.clearTextButtonPadding,
-      themeExtension2.clearTextButtonPadding,
-    );
-    expect(
-      copiedThemeExtension.clearTextButtonIcon,
-      themeExtension2.clearTextButtonIcon,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroInputThemeExtension.lerp', () {

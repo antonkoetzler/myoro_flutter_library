@@ -10,6 +10,7 @@ MyoroLocalDatabase get _instance => MyoroLocalDatabase.instance;
 
 final _row = {_dummyTableFooAttribute: faker.lorem.word()};
 
+// OBS: If you're running the tests on ubuntu, make sure sqlite3-dev is installed (`apt install sqlite3-dev`).
 void main() {
   group('[MyoroLocalDatabase.instance/initialize]', () {
     test('[instance]: Assertion error case', () {

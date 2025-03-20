@@ -10,12 +10,14 @@ void main() {
   final themeExtension2 = MyoroPieGraphThemeExtension.fake();
 
   test('MyoroPieGraphThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroPieGraphThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       itemColor: themeExtension2.itemColor,
       itemRadius: themeExtension2.itemRadius,
     );
-    expect(copiedThemeExtension.itemColor, themeExtension2.itemColor);
-    expect(copiedThemeExtension.itemRadius, themeExtension2.itemRadius);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroPieGraphThemeExtension.lerp', () {

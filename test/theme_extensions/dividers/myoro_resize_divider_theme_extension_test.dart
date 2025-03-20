@@ -11,25 +11,16 @@ void main() {
   final themeExtension2 = MyoroResizeDividerThemeExtension.fake();
 
   test('MyoroResizeDividerThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroResizeDividerThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       secondary: themeExtension2.secondary,
       resizeButtonShortValue: themeExtension2.resizeButtonShortValue,
       resizeButtonLongValue: themeExtension2.resizeButtonLongValue,
       resizeButtonBorderRadius: themeExtension2.resizeButtonBorderRadius,
     );
-    expect(copiedThemeExtension.secondary, themeExtension2.secondary);
-    expect(
-      copiedThemeExtension.resizeButtonShortValue,
-      themeExtension2.resizeButtonShortValue,
-    );
-    expect(
-      copiedThemeExtension.resizeButtonLongValue,
-      themeExtension2.resizeButtonLongValue,
-    );
-    expect(
-      copiedThemeExtension.resizeButtonBorderRadius,
-      themeExtension2.resizeButtonBorderRadius,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroResizeDividerThemeExtension.lerp', () {

@@ -22,6 +22,11 @@ final class MyoroGroupRadioThemeExtension
     required this.runSpacing,
   });
 
+  const MyoroGroupRadioThemeExtension.builder()
+    : direction = Axis.vertical,
+      spacing = 5,
+      runSpacing = 5;
+
   MyoroGroupRadioThemeExtension.fake()
     : direction =
           Axis.values[faker.randomGenerator.integer(Axis.values.length)],
@@ -52,5 +57,19 @@ final class MyoroGroupRadioThemeExtension
       spacing: lerpDouble(spacing, other.spacing, t),
       runSpacing: lerpDouble(runSpacing, other.runSpacing, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroGroupRadioThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.direction == direction &&
+        other.spacing == spacing &&
+        other.runSpacing == runSpacing;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(direction, spacing, runSpacing);
   }
 }

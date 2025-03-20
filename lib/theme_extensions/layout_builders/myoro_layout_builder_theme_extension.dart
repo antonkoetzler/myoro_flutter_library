@@ -6,6 +6,8 @@ final class MyoroLayoutBuilderThemeExtension
     extends ThemeExtension<MyoroLayoutBuilderThemeExtension> {
   const MyoroLayoutBuilderThemeExtension();
 
+  const MyoroLayoutBuilderThemeExtension.builder();
+
   @override
   MyoroLayoutBuilderThemeExtension copyWith() => this;
 
@@ -15,5 +17,16 @@ final class MyoroLayoutBuilderThemeExtension
     double t,
   ) {
     return this;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroLayoutBuilderThemeExtension &&
+        other.runtimeType == runtimeType;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll(const []);
   }
 }

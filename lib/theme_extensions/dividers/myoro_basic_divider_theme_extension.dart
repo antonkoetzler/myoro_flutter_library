@@ -22,6 +22,11 @@ final class MyoroBasicDividerThemeExtension
     required this.longValue,
   });
 
+  MyoroBasicDividerThemeExtension.builder(ColorScheme colorScheme)
+    : color = colorScheme.onPrimary,
+      shortValue = kMyoroBorderLength,
+      longValue = double.infinity;
+
   MyoroBasicDividerThemeExtension.fake()
     : color =
           kMyoroTestColors[faker.randomGenerator.integer(
@@ -54,5 +59,19 @@ final class MyoroBasicDividerThemeExtension
       shortValue: lerpDouble(shortValue, other.shortValue, t),
       longValue: lerpDouble(longValue, other.longValue, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroBasicDividerThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.color == color &&
+        other.shortValue == shortValue &&
+        other.longValue == longValue;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(color, shortValue, longValue);
   }
 }

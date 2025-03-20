@@ -42,6 +42,18 @@ final class MyoroIconTextHoverButtonThemeExtension
     required this.mainAxisAlignment,
   });
 
+  MyoroIconTextHoverButtonThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : primaryColor = colorScheme.primary,
+      onPrimaryColor = colorScheme.onPrimary,
+      contentPadding = const EdgeInsets.all(5),
+      textStyle = textTheme.bodyMedium!,
+      textMaxLines = 1,
+      textOverflow = TextOverflow.ellipsis,
+      spacing = 5,
+      mainAxisAlignment = MainAxisAlignment.start;
+
   MyoroIconTextHoverButtonThemeExtension.fake()
     : primaryColor =
           kMyoroTestColors[faker.randomGenerator.integer(
@@ -113,6 +125,34 @@ final class MyoroIconTextHoverButtonThemeExtension
         other.mainAxisAlignment,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroIconTextHoverButtonThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.primaryColor == primaryColor &&
+        other.onPrimaryColor == onPrimaryColor &&
+        other.contentPadding == contentPadding &&
+        other.textStyle == textStyle &&
+        other.textMaxLines == textMaxLines &&
+        other.textOverflow == textOverflow &&
+        other.spacing == spacing &&
+        other.mainAxisAlignment == mainAxisAlignment;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      primaryColor,
+      onPrimaryColor,
+      contentPadding,
+      textStyle,
+      textMaxLines,
+      textOverflow,
+      spacing,
+      mainAxisAlignment,
     );
   }
 }

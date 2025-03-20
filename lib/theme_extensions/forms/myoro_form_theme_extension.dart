@@ -6,6 +6,8 @@ final class MyoroFormThemeExtension
     extends ThemeExtension<MyoroFormThemeExtension> {
   const MyoroFormThemeExtension();
 
+  const MyoroFormThemeExtension.builder();
+
   @override
   MyoroFormThemeExtension copyWith() => this;
 
@@ -15,5 +17,15 @@ final class MyoroFormThemeExtension
     double t,
   ) {
     return this;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroFormThemeExtension && other.runtimeType == runtimeType;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll(const []);
   }
 }

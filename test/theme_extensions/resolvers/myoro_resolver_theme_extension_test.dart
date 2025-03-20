@@ -8,7 +8,7 @@ void main() {
   const themeExtension2 = MyoroResolverThemeExtension();
 
   test('MyoroResolverThemeExtension.copyWith', () {
-    themeExtension1.copyWith();
+    expect(themeExtension1.copyWith(), themeExtension1);
   });
 
   test('MyoroResolverThemeExtension.lerp', () {

@@ -10,16 +10,16 @@ final class MyoroSnackBarThemeExtension
   /// Background color of the snack bar.
   final Color primaryColor;
 
-  /// [MyoroSnackBarEnum.standard].
+  /// [MyoroSnackBarTypeEnum.standard].
   final Color standardBorderColor;
 
-  /// [MyoroSnackBarEnum.attention].
+  /// [MyoroSnackBarTypeEnum.attention].
   final Color attentionBorderColor;
 
-  /// [MyoroSnackBarEnum.success].
+  /// [MyoroSnackBarTypeEnum.success].
   final Color successBorderColor;
 
-  /// [MyoroSnackBarEnum.error].
+  /// [MyoroSnackBarTypeEnum.error].
   final Color errorBorderColor;
 
   /// Border of the snack bar.
@@ -89,6 +89,22 @@ final class MyoroSnackBarThemeExtension
             kMyoroTestIcons.length,
           )],
       closeButtonIconSize = faker.randomGenerator.decimal();
+
+  MyoroSnackBarThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : primaryColor = colorScheme.primary,
+      standardBorderColor = colorScheme.onPrimary,
+      attentionBorderColor = MyoroColorDesignSystem.attention,
+      successBorderColor = MyoroColorDesignSystem.success,
+      errorBorderColor = MyoroColorDesignSystem.error,
+      borderWidth = 2,
+      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      padding = const EdgeInsets.all(10),
+      contentCloseButtonSpacing = 10,
+      messageTextStyle = textTheme.bodySmall!,
+      closeButtonIcon = Icons.close,
+      closeButtonIconSize = 15;
 
   @override
   MyoroSnackBarThemeExtension copyWith({
@@ -165,6 +181,42 @@ final class MyoroSnackBarThemeExtension
         other.closeButtonIconSize,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroSnackBarThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.primaryColor == primaryColor &&
+        other.standardBorderColor == standardBorderColor &&
+        other.attentionBorderColor == attentionBorderColor &&
+        other.successBorderColor == successBorderColor &&
+        other.errorBorderColor == errorBorderColor &&
+        other.borderWidth == borderWidth &&
+        other.borderRadius == borderRadius &&
+        other.padding == padding &&
+        other.contentCloseButtonSpacing == contentCloseButtonSpacing &&
+        other.messageTextStyle == messageTextStyle &&
+        other.closeButtonIcon == closeButtonIcon &&
+        other.closeButtonIconSize == closeButtonIconSize;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      primaryColor,
+      standardBorderColor,
+      attentionBorderColor,
+      successBorderColor,
+      errorBorderColor,
+      borderWidth,
+      borderRadius,
+      padding,
+      contentCloseButtonSpacing,
+      messageTextStyle,
+      closeButtonIcon,
+      closeButtonIconSize,
     );
   }
 }

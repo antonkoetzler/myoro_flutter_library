@@ -9,49 +9,42 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      # Get code.
       - name: Install actions checkout
         uses: actions/checkout@v3
 
-      # Install LCOV to get the code coverage percentage
+      - name: Install sqlite3-dev so tests run properly (Ubuntu doesn't preinstall this package)
+        run: sudo apt-get install sqlite3-dev
+
       - name: Install LCOV for code coverage report generation
         run: sudo apt-get install lcov
 
-      # Install Flutter (stable channel).
       - name: Install flutter using stable channel
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           cache: true
 
-      # Disable Flutter animations (speeds up tests).
       - name: Disable flutter animations (speed up CI)
         run: flutter config --no-cli-animations
 
-      # Dart fix check.
       - name: Dart fix check (fails if fixes exists)
         run: dart fix --dry-run .
 
-      # Dart format check.
       - name: Dart format check (fails if not formatted)
         run: dart format --line-length 80 -o none --set-exit-if-changed .
 
-      # Download MFL dependencies
       - name: Download MFL dependencies
         run: |
           flutter pub get
           cd storyboard
           flutter pub get
 
-      # Run MFL tests
       - name: Run MFL tests
         run: flutter test --coverage
 
-      # Generate LCOV code coverage report
       - name: Generate coverage report
         run: lcov --summary coverage/lcov.info
 
-      # Assert that MFL has >=70% code coverage
       - name: Check coverage threshold for MFL (Must be >= 70%)
         run: |
           COVERAGE=$(lcov --summary coverage/lcov.info | grep lines | awk '{print $2}' | sed 's/%//')
@@ -61,17 +54,14 @@ jobs:
             exit 1
           fi
 
-      # Runs storyboard's tests
       - name: Run storyboard tests
         run: |
           cd storyboard
           flutter test --coverage
 
-      # Generate storyboard's code coverage report
       - name: Generate coverage report
         run: lcov --summary storyboard/coverage/lcov.info
 
-      # Assert storyboard has >=70% code coverage
       - name: Check coverage threshold (Must be >= 70%)
         run: |
           COVERAGE=$(lcov --summary storyboard/coverage/lcov.info | grep lines | awk '{print $2}' | sed 's/%//')

@@ -37,6 +37,12 @@ final class MyoroResizeDividerThemeExtension
         faker.randomGenerator.decimal(),
       );
 
+  MyoroResizeDividerThemeExtension.builder(ColorScheme colorScheme)
+    : secondary = colorScheme.onPrimary,
+      resizeButtonShortValue = 8,
+      resizeButtonLongValue = 8,
+      resizeButtonBorderRadius = MyoroDecorationHelper.borderRadius;
+
   @override
   MyoroResizeDividerThemeExtension copyWith({
     Color? secondary,
@@ -78,6 +84,26 @@ final class MyoroResizeDividerThemeExtension
         other.resizeButtonBorderRadius,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroResizeDividerThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.secondary == secondary &&
+        other.resizeButtonShortValue == resizeButtonShortValue &&
+        other.resizeButtonLongValue == resizeButtonLongValue &&
+        other.resizeButtonBorderRadius == resizeButtonBorderRadius;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      secondary,
+      resizeButtonShortValue,
+      resizeButtonLongValue,
+      resizeButtonBorderRadius,
     );
   }
 }

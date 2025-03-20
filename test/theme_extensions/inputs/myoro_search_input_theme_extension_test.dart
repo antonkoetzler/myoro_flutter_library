@@ -10,26 +10,17 @@ void main() {
   final themeExtension2 = MyoroSearchInputThemeExtension.fake();
 
   test('MyoroSearchInputThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroSearchInputThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       spacing: themeExtension2.spacing,
       searchButtonIcon: themeExtension2.searchButtonIcon,
       searchButtonBordered: themeExtension2.searchButtonBordered,
+      searchButtonHoverColor: themeExtension2.searchButtonHoverColor,
       searchButtonLoadingSize: themeExtension2.searchButtonLoadingSize,
     );
-
-    expect(copiedThemeExtension.spacing, themeExtension2.spacing);
-    expect(
-      copiedThemeExtension.searchButtonIcon,
-      themeExtension2.searchButtonIcon,
-    );
-    expect(
-      copiedThemeExtension.searchButtonBordered,
-      copiedThemeExtension.searchButtonBordered,
-    );
-    expect(
-      copiedThemeExtension.searchButtonLoadingSize,
-      themeExtension2.searchButtonLoadingSize,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroSearchInputThemeExtension.copyWith', () {

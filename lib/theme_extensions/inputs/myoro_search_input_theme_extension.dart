@@ -43,6 +43,13 @@ final class MyoroSearchInputThemeExtension
           )],
       searchButtonLoadingSize = faker.randomGenerator.decimal();
 
+  MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
+    : spacing = 10,
+      searchButtonIcon = Icons.search,
+      searchButtonBordered = true,
+      searchButtonHoverColor = colorScheme.primary,
+      searchButtonLoadingSize = 20;
+
   @override
   MyoroSearchInputThemeExtension copyWith({
     double? spacing,
@@ -86,6 +93,28 @@ final class MyoroSearchInputThemeExtension
         other.searchButtonLoadingSize,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroSearchInputThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.spacing == spacing &&
+        other.searchButtonIcon == searchButtonIcon &&
+        other.searchButtonBordered == searchButtonBordered &&
+        other.searchButtonHoverColor == searchButtonHoverColor &&
+        other.searchButtonLoadingSize == searchButtonLoadingSize;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      spacing,
+      searchButtonIcon,
+      searchButtonBordered,
+      searchButtonHoverColor,
+      searchButtonLoadingSize,
     );
   }
 }

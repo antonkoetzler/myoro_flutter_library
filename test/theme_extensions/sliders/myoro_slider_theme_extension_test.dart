@@ -17,22 +17,15 @@ void main() {
   });
 
   test('MyoroSliderThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroSliderThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       labelTextStyle: themeExtension2.labelTextStyle,
       sliderPadding: themeExtension2.sliderPadding,
       indicatorTextStyle: themeExtension2.indicatorTextStyle,
       indicatorTextAlignment: themeExtension2.indicatorTextAlignment,
     );
-    expect(copiedThemeExtension.labelTextStyle, themeExtension2.labelTextStyle);
-    expect(copiedThemeExtension.sliderPadding, themeExtension2.sliderPadding);
-    expect(
-      copiedThemeExtension.indicatorTextStyle,
-      themeExtension2.indicatorTextStyle,
-    );
-    expect(
-      copiedThemeExtension.indicatorTextAlignment,
-      themeExtension2.indicatorTextAlignment,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroSliderThemeExtension.lerp', () {

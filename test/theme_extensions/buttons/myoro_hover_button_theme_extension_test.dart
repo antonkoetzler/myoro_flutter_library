@@ -9,16 +9,16 @@ void main() {
   final themeExtension2 = MyoroHoverButtonThemeExtension.fake();
 
   test('MyoroHoverButtonThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroHoverButtonThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
       onPrimaryColor: themeExtension2.onPrimaryColor,
       borderRadius: themeExtension2.borderRadius,
       bordered: themeExtension2.bordered,
     );
-    expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(copiedThemeExtension.onPrimaryColor, themeExtension2.onPrimaryColor);
-    expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
-    expect(copiedThemeExtension.bordered, themeExtension2.bordered);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroHoverButtonThemeExtension.lerp', () {

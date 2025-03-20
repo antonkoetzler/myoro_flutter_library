@@ -6,6 +6,8 @@ final class MyoroMaterialAppThemeExtension
     extends ThemeExtension<MyoroMaterialAppThemeExtension> {
   const MyoroMaterialAppThemeExtension();
 
+  const MyoroMaterialAppThemeExtension.builder();
+
   @override
   MyoroMaterialAppThemeExtension copyWith() =>
       const MyoroMaterialAppThemeExtension();
@@ -16,5 +18,16 @@ final class MyoroMaterialAppThemeExtension
     double t,
   ) {
     return this;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroMaterialAppThemeExtension &&
+        other.runtimeType == runtimeType;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll(const []);
   }
 }

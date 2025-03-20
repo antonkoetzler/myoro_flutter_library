@@ -24,6 +24,12 @@ final class MyoroHoverButtonThemeExtension
     required this.bordered,
   });
 
+  MyoroHoverButtonThemeExtension.builder(ColorScheme colorScheme)
+    : primaryColor = colorScheme.primary,
+      onPrimaryColor = colorScheme.onPrimary,
+      borderRadius = MyoroDecorationHelper.borderRadius,
+      bordered = false;
+
   MyoroHoverButtonThemeExtension.fake()
     : primaryColor =
           kMyoroTestColors[faker.randomGenerator.integer(
@@ -65,5 +71,20 @@ final class MyoroHoverButtonThemeExtension
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       bordered: myoroLerp(bordered, other.bordered, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroHoverButtonThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.primaryColor == primaryColor &&
+        other.onPrimaryColor == onPrimaryColor &&
+        other.borderRadius == borderRadius &&
+        other.bordered == bordered;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(primaryColor, onPrimaryColor, borderRadius, bordered);
   }
 }

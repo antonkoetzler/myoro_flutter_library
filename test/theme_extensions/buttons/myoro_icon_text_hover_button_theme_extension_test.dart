@@ -19,7 +19,10 @@ void main() {
   });
 
   test('MyoroIconTextHoverButtonThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroIconTextHoverButtonThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
       onPrimaryColor: themeExtension2.onPrimaryColor,
       contentPadding: themeExtension2.contentPadding,
@@ -29,17 +32,7 @@ void main() {
       spacing: themeExtension2.spacing,
       mainAxisAlignment: themeExtension2.mainAxisAlignment,
     );
-    expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(copiedThemeExtension.onPrimaryColor, themeExtension2.onPrimaryColor);
-    expect(copiedThemeExtension.contentPadding, themeExtension2.contentPadding);
-    expect(copiedThemeExtension.textStyle, themeExtension2.textStyle);
-    expect(copiedThemeExtension.textMaxLines, themeExtension2.textMaxLines);
-    expect(copiedThemeExtension.textOverflow, themeExtension2.textOverflow);
-    expect(copiedThemeExtension.spacing, themeExtension2.spacing);
-    expect(
-      copiedThemeExtension.mainAxisAlignment,
-      themeExtension2.mainAxisAlignment,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroIconTextHoverButtonThemeExtension.lerp', () {

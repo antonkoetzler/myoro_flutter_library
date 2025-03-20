@@ -8,23 +8,15 @@ void main() {
   final themeExtension2 = MyoroCarouselThemeExtension.fake();
 
   test('MyoroCarouselThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroCarouselThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       traversalButtonBordered: themeExtension2.traversalButtonBordered,
       previousItemButtonIcon: themeExtension2.previousItemButtonIcon,
       nextItemButtonIcon: themeExtension2.nextItemButtonIcon,
     );
-    expect(
-      copiedThemeExtension.traversalButtonBordered,
-      themeExtension2.traversalButtonBordered,
-    );
-    expect(
-      copiedThemeExtension.previousItemButtonIcon,
-      themeExtension2.previousItemButtonIcon,
-    );
-    expect(
-      copiedThemeExtension.nextItemButtonIcon,
-      themeExtension2.nextItemButtonIcon,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroCarouselThemeExtension.lerp', () {

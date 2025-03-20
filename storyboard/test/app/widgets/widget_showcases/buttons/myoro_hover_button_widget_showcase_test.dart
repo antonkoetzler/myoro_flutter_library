@@ -32,7 +32,7 @@ void main() {
       BlocProvider(
         create: (_) => WidgetShowcaseBloc(),
         child: MyoroWidgetTester(
-          themeExtensionsBuilder: createStoryboardThemeExtensions,
+          themeExtensionsBuilder: createThemeExtensions,
           child: Builder(
             builder: (BuildContext context) {
               themeExtension =

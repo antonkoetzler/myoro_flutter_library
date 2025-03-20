@@ -56,6 +56,18 @@ final class MyoroBarGraphThemeExtension
       verticalSideTitleReversedSize = faker.randomGenerator.decimal(),
       horizontalSideTitleReversedSize = faker.randomGenerator.decimal();
 
+  MyoroBarGraphThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : border = Border.all(width: 2, color: colorScheme.onPrimary),
+      barColor = colorScheme.onPrimary,
+      barBorderRadius = BorderRadius.zero,
+      sideTitleTextStyle = textTheme.bodySmall!,
+      sideTitleInterval = kMyoroGraphSideTitleInterval,
+      verticalSideTitleReversedSize = kMyoroGraphVerticalSideTitleReversedSize,
+      horizontalSideTitleReversedSize =
+          kMyoroGraphHorizontalSideTitleReversedSize;
+
   @override
   MyoroBarGraphThemeExtension copyWith({
     Border? border,
@@ -114,6 +126,33 @@ final class MyoroBarGraphThemeExtension
         other.horizontalSideTitleReversedSize,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroBarGraphThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.border == border &&
+        other.barColor == barColor &&
+        other.barBorderRadius == barBorderRadius &&
+        other.sideTitleTextStyle == sideTitleTextStyle &&
+        other.sideTitleInterval == sideTitleInterval &&
+        other.verticalSideTitleReversedSize == verticalSideTitleReversedSize &&
+        other.horizontalSideTitleReversedSize ==
+            horizontalSideTitleReversedSize;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      border,
+      barColor,
+      barBorderRadius,
+      sideTitleTextStyle,
+      sideTitleInterval,
+      verticalSideTitleReversedSize,
+      horizontalSideTitleReversedSize,
     );
   }
 }

@@ -34,6 +34,17 @@ final class MyoroCardThemeExtension
     required this.textStyle,
   });
 
+  MyoroCardThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),
+      border = Border.all(
+        width: kMyoroBorderLength,
+        color: colorScheme.onPrimary,
+      ),
+      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      padding = const EdgeInsets.all(10),
+      titleCardSpacing = 10,
+      textStyle = textTheme.titleMedium!;
+
   MyoroCardThemeExtension.fake()
     : backgroundColor =
           kMyoroTestColors[faker.randomGenerator.integer(
@@ -83,6 +94,30 @@ final class MyoroCardThemeExtension
       padding: EdgeInsets.lerp(padding, other.padding, t),
       titleCardSpacing: lerpDouble(titleCardSpacing, other.titleCardSpacing, t),
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroCardThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.backgroundColor == backgroundColor &&
+        other.border == border &&
+        other.borderRadius == borderRadius &&
+        other.padding == padding &&
+        other.titleCardSpacing == titleCardSpacing &&
+        other.textStyle == textStyle;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      backgroundColor,
+      border,
+      borderRadius,
+      padding,
+      titleCardSpacing,
+      textStyle,
     );
   }
 }

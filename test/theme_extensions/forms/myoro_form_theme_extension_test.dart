@@ -7,7 +7,7 @@ void main() {
   const themeExtension = MyoroFormThemeExtension();
 
   test('MyoroFormThemeExtension.copyWith', () {
-    themeExtension.copyWith();
+    expect(themeExtension.copyWith(), themeExtension);
   });
 
   test('MyoroFormThemeExtension.lerp', () {

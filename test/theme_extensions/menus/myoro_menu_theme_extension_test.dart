@@ -17,7 +17,9 @@ void main() {
   });
 
   test('MyoroMenuThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroMenuThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
       border: themeExtension2.border,
       borderRadius: themeExtension2.borderRadius,
@@ -26,25 +28,7 @@ void main() {
       itemBorderRadius: themeExtension2.itemBorderRadius,
       dialogTextStyle: themeExtension2.dialogTextStyle,
     );
-    expect(copiedThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(copiedThemeExtension.border, themeExtension2.border);
-    expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
-    expect(
-      copiedThemeExtension.searchBarPadding,
-      themeExtension2.searchBarPadding,
-    );
-    expect(
-      copiedThemeExtension.searchBarInputStyle,
-      themeExtension2.searchBarInputStyle,
-    );
-    expect(
-      copiedThemeExtension.itemBorderRadius,
-      themeExtension2.itemBorderRadius,
-    );
-    expect(
-      copiedThemeExtension.dialogTextStyle,
-      themeExtension2.dialogTextStyle,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroMenuThemeExtension.lerp', () {

@@ -7,7 +7,7 @@ void main() {
   const themeExtension = MyoroDatePickerInputThemeExtension();
 
   test('MyoroDatePickerInputThemeExtension.copyWith', () {
-    themeExtension.copyWith();
+    expect(themeExtension.copyWith(), themeExtension);
   });
 
   test('MyoroDatePickerInputThemeExtension.lerp', () {

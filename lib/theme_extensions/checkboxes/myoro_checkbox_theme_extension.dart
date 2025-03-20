@@ -38,6 +38,17 @@ final class MyoroCheckboxThemeExtension
     required this.spacing,
   });
 
+  MyoroCheckboxThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : activeColor = colorScheme.onPrimary,
+      checkColor = colorScheme.primary,
+      hoverColor = MyoroColorDesignSystem.transparent,
+      focusColor = MyoroColorDesignSystem.transparent,
+      splashRadius = 0,
+      labelTextStyle = textTheme.headlineSmall!,
+      spacing = 5;
+
   MyoroCheckboxThemeExtension.fake()
     : activeColor =
           kMyoroTestColors[faker.randomGenerator.integer(
@@ -94,6 +105,32 @@ final class MyoroCheckboxThemeExtension
       splashRadius: lerpDouble(splashRadius, other.splashRadius, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       spacing: lerpDouble(spacing, other.spacing, t),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroCheckboxThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.activeColor == activeColor &&
+        other.checkColor == checkColor &&
+        other.hoverColor == hoverColor &&
+        other.focusColor == focusColor &&
+        other.splashRadius == splashRadius &&
+        other.labelTextStyle == labelTextStyle &&
+        other.spacing == spacing;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      activeColor,
+      checkColor,
+      hoverColor,
+      focusColor,
+      splashRadius,
+      labelTextStyle,
+      spacing,
     );
   }
 }

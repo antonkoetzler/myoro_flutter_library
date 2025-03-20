@@ -22,6 +22,11 @@ final class MyoroGroupCheckboxThemeExtension
     required this.runSpacing,
   });
 
+  const MyoroGroupCheckboxThemeExtension.builder()
+    : direction = Axis.horizontal,
+      spacing = 5,
+      runSpacing = 5;
+
   MyoroGroupCheckboxThemeExtension.fake()
     : direction =
           Axis.values[faker.randomGenerator.integer(Axis.values.length)],
@@ -52,5 +57,19 @@ final class MyoroGroupCheckboxThemeExtension
       spacing: lerpDouble(spacing, other.spacing, t),
       runSpacing: lerpDouble(runSpacing, other.runSpacing, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroGroupCheckboxThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.direction == direction &&
+        other.spacing == spacing &&
+        other.runSpacing == runSpacing;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(direction, spacing, runSpacing);
   }
 }

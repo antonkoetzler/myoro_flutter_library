@@ -75,6 +75,33 @@ final class MyoroModalThemeExtension
     );
   }
 
+  factory MyoroModalThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) {
+    const width = 300.0;
+    const height = 400.0;
+
+    return MyoroModalThemeExtension(
+      primaryColor: colorScheme.primary,
+      borderRadius: MyoroDecorationHelper.borderRadius,
+      border: Border.all(
+        width: kMyoroBorderLength,
+        color: colorScheme.onPrimary,
+      ),
+      padding: const EdgeInsets.all(5),
+      constraints: const BoxConstraints(
+        minWidth: width,
+        minHeight: height,
+        maxWidth: width,
+        maxHeight: height,
+      ),
+      spacing: 10,
+      titleTextStyle: textTheme.titleSmall!,
+      closeButtonIcon: Icons.close,
+    );
+  }
+
   @override
   MyoroModalThemeExtension copyWith({
     Color? primaryColor,
@@ -113,6 +140,34 @@ final class MyoroModalThemeExtension
       spacing: lerpDouble(spacing, other.spacing, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroModalThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.primaryColor == primaryColor &&
+        other.borderRadius == borderRadius &&
+        other.border == border &&
+        other.padding == padding &&
+        other.constraints == constraints &&
+        other.spacing == spacing &&
+        other.titleTextStyle == titleTextStyle &&
+        other.closeButtonIcon == closeButtonIcon;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      primaryColor,
+      borderRadius,
+      border,
+      padding,
+      constraints,
+      spacing,
+      titleTextStyle,
+      closeButtonIcon,
     );
   }
 }

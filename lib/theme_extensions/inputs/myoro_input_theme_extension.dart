@@ -111,6 +111,33 @@ final class MyoroInputThemeExtension
             kMyoroTestIcons.length,
           )];
 
+  MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : underlinedBorder = UnderlineInputBorder(
+        borderSide: BorderSide(
+          width: kMyoroBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+      ),
+      outlinedBorder = OutlineInputBorder(
+        borderRadius: MyoroDecorationHelper.inputBorderRadius,
+        borderSide: BorderSide(
+          width: kMyoroBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+      ),
+      primaryColor = colorScheme.primary,
+      errorBorderColor = colorScheme.error,
+      borderRadius = MyoroDecorationHelper.borderRadius,
+      isDense = true,
+      cursorHeight = 20,
+      disabledOpacity = 0.5,
+      inputTextStyle = textTheme.bodyMedium!,
+      labelTextStyle = textTheme.headlineSmall!,
+      labelBehavior = FloatingLabelBehavior.always,
+      spacing = 10,
+      clearTextButtonPadding = const EdgeInsets.fromLTRB(5, 5, 6.5, 5),
+      clearTextButtonIcon = Icons.close;
+
   @override
   MyoroInputThemeExtension copyWith({
     InputBorder? underlinedBorder,
@@ -176,6 +203,46 @@ final class MyoroInputThemeExtension
         other.clearTextButtonIcon,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroInputThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.underlinedBorder == underlinedBorder &&
+        other.outlinedBorder == outlinedBorder &&
+        other.primaryColor == primaryColor &&
+        other.errorBorderColor == errorBorderColor &&
+        other.borderRadius == borderRadius &&
+        other.isDense == isDense &&
+        other.cursorHeight == cursorHeight &&
+        other.disabledOpacity == disabledOpacity &&
+        other.inputTextStyle == inputTextStyle &&
+        other.spacing == spacing &&
+        other.labelTextStyle == labelTextStyle &&
+        other.labelBehavior == labelBehavior &&
+        other.clearTextButtonPadding == clearTextButtonPadding &&
+        other.clearTextButtonIcon == clearTextButtonIcon;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      underlinedBorder,
+      outlinedBorder,
+      primaryColor,
+      errorBorderColor,
+      borderRadius,
+      isDense,
+      cursorHeight,
+      disabledOpacity,
+      inputTextStyle,
+      spacing,
+      labelTextStyle,
+      labelBehavior,
+      clearTextButtonPadding,
+      clearTextButtonIcon,
     );
   }
 }

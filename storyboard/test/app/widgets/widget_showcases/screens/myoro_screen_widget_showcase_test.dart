@@ -10,7 +10,7 @@ void main() {
       BlocProvider(
         create: (_) => WidgetShowcaseBloc(),
         child: const MyoroWidgetTester(
-          themeExtensionsBuilder: createStoryboardThemeExtensions,
+          themeExtensionsBuilder: createThemeExtensions,
           child: MyoroScreenWidgetShowcase(),
         ),
       ),

@@ -30,6 +30,13 @@ final class MyoroRadioThemeExtension
     required this.splashRadius,
   });
 
+  MyoroRadioThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : activeColor = colorScheme.onPrimary,
+      hoverColor = colorScheme.onPrimary.withValues(alpha: 0.3),
+      labelTextStyle = textTheme.headlineSmall!,
+      spacing = 5,
+      splashRadius = 15;
+
   MyoroRadioThemeExtension.fake()
     : activeColor =
           kMyoroTestColors[faker.randomGenerator.integer(
@@ -72,6 +79,28 @@ final class MyoroRadioThemeExtension
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       spacing: lerpDouble(spacing, other.spacing, t),
       splashRadius: lerpDouble(splashRadius, other.splashRadius, t),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroRadioThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.activeColor == activeColor &&
+        other.hoverColor == hoverColor &&
+        other.labelTextStyle == labelTextStyle &&
+        other.spacing == spacing &&
+        other.splashRadius == splashRadius;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      activeColor,
+      hoverColor,
+      labelTextStyle,
+      spacing,
+      splashRadius,
     );
   }
 }

@@ -25,6 +25,10 @@ final class MyoroCircularLoaderThemeExtension
           )],
       size = faker.randomGenerator.decimal();
 
+  MyoroCircularLoaderThemeExtension.builder(ColorScheme colorScheme)
+    : color = colorScheme.onPrimary,
+      size = 25;
+
   @override
   MyoroCircularLoaderThemeExtension copyWith({Color? color, double? size}) {
     return MyoroCircularLoaderThemeExtension(
@@ -43,5 +47,18 @@ final class MyoroCircularLoaderThemeExtension
       color: Color.lerp(color, other.color, t),
       size: lerpDouble(size, other.size, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroCircularLoaderThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.color == color &&
+        other.size == size;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(color, size);
   }
 }

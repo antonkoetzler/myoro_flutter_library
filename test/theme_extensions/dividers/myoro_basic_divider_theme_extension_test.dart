@@ -10,14 +10,15 @@ void main() {
   final themeExtension2 = MyoroBasicDividerThemeExtension.fake();
 
   test('MyoroBasicDividerThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroBasicDividerThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       color: themeExtension2.color,
       shortValue: themeExtension2.shortValue,
       longValue: themeExtension2.longValue,
     );
-    expect(copiedThemeExtension.color, themeExtension2.color);
-    expect(copiedThemeExtension.shortValue, themeExtension2.shortValue);
-    expect(copiedThemeExtension.longValue, themeExtension2.longValue);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroBasicDividerThemeExtension.lerp', () {

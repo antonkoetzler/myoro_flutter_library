@@ -25,6 +25,10 @@ final class MyoroPieGraphThemeExtension
           )],
       itemRadius = faker.randomGenerator.decimal();
 
+  MyoroPieGraphThemeExtension.builder(ColorScheme colorScheme)
+    : itemColor = colorScheme.onPrimary,
+      itemRadius = 200;
+
   @override
   MyoroPieGraphThemeExtension copyWith({Color? itemColor, double? itemRadius}) {
     return MyoroPieGraphThemeExtension(
@@ -43,5 +47,18 @@ final class MyoroPieGraphThemeExtension
       itemColor: Color.lerp(itemColor, other.itemColor, t),
       itemRadius: lerpDouble(itemRadius, other.itemRadius, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroPieGraphThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.itemColor == itemColor &&
+        other.itemRadius == itemRadius;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(itemColor, itemRadius);
   }
 }

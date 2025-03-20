@@ -19,7 +19,10 @@ void main() {
   });
 
   test('MyoroBarGraphThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroBarGraphThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       border: themeExtension2.border,
       barColor: themeExtension2.barColor,
       barBorderRadius: themeExtension2.barBorderRadius,
@@ -30,28 +33,7 @@ void main() {
       horizontalSideTitleReversedSize:
           themeExtension2.horizontalSideTitleReversedSize,
     );
-    expect(copiedThemeExtension.border, themeExtension2.border);
-    expect(copiedThemeExtension.barColor, themeExtension2.barColor);
-    expect(
-      copiedThemeExtension.barBorderRadius,
-      themeExtension2.barBorderRadius,
-    );
-    expect(
-      copiedThemeExtension.sideTitleTextStyle,
-      themeExtension2.sideTitleTextStyle,
-    );
-    expect(
-      copiedThemeExtension.sideTitleInterval,
-      themeExtension2.sideTitleInterval,
-    );
-    expect(
-      copiedThemeExtension.verticalSideTitleReversedSize,
-      themeExtension2.verticalSideTitleReversedSize,
-    );
-    expect(
-      copiedThemeExtension.horizontalSideTitleReversedSize,
-      themeExtension2.horizontalSideTitleReversedSize,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroBarGraphThemeExtension.lerp', () {

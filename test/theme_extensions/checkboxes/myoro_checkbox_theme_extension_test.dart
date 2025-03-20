@@ -19,7 +19,10 @@ void main() {
   });
 
   test('MyoroCheckboxThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroCheckboxThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       activeColor: themeExtension2.activeColor,
       checkColor: themeExtension2.checkColor,
       hoverColor: themeExtension2.hoverColor,
@@ -28,14 +31,7 @@ void main() {
       labelTextStyle: themeExtension2.labelTextStyle,
       spacing: themeExtension2.spacing,
     );
-
-    expect(copiedThemeExtension.activeColor, themeExtension2.activeColor);
-    expect(copiedThemeExtension.checkColor, themeExtension2.checkColor);
-    expect(copiedThemeExtension.hoverColor, themeExtension2.hoverColor);
-    expect(copiedThemeExtension.focusColor, themeExtension2.focusColor);
-    expect(copiedThemeExtension.splashRadius, themeExtension2.splashRadius);
-    expect(copiedThemeExtension.labelTextStyle, themeExtension2.labelTextStyle);
-    expect(copiedThemeExtension.spacing, themeExtension2.spacing);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroCheckboxThemeExtension.lerp', () {

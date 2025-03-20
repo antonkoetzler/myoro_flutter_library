@@ -31,6 +31,11 @@ final class MyoroCarouselThemeExtension
             kMyoroTestIcons.length,
           )];
 
+  const MyoroCarouselThemeExtension.builder()
+    : traversalButtonBordered = true,
+      previousItemButtonIcon = Icons.keyboard_arrow_left,
+      nextItemButtonIcon = Icons.keyboard_arrow_right;
+
   @override
   MyoroCarouselThemeExtension copyWith({
     bool? traversalButtonBordered,
@@ -68,6 +73,24 @@ final class MyoroCarouselThemeExtension
         other.nextItemButtonIcon,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroCarouselThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.traversalButtonBordered == traversalButtonBordered &&
+        other.previousItemButtonIcon == previousItemButtonIcon &&
+        other.nextItemButtonIcon == nextItemButtonIcon;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      traversalButtonBordered,
+      previousItemButtonIcon,
+      nextItemButtonIcon,
     );
   }
 }

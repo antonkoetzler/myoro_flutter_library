@@ -19,7 +19,9 @@ void main() {
   });
 
   test('MyoroCardThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroCardThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       backgroundColor: themeExtension2.backgroundColor,
       border: themeExtension2.border,
       borderRadius: themeExtension2.borderRadius,
@@ -27,18 +29,7 @@ void main() {
       titleCardSpacing: themeExtension2.titleCardSpacing,
       textStyle: themeExtension2.textStyle,
     );
-    expect(
-      copiedThemeExtension.backgroundColor,
-      themeExtension2.backgroundColor,
-    );
-    expect(copiedThemeExtension.border, themeExtension2.border);
-    expect(copiedThemeExtension.borderRadius, themeExtension2.borderRadius);
-    expect(copiedThemeExtension.padding, themeExtension2.padding);
-    expect(
-      copiedThemeExtension.titleCardSpacing,
-      themeExtension2.titleCardSpacing,
-    );
-    expect(copiedThemeExtension.textStyle, themeExtension2.textStyle);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroCardThemeExtension.lerp', () {

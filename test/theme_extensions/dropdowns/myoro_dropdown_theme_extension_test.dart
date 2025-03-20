@@ -10,17 +10,15 @@ void main() {
   final themeExtension2 = MyoroDropdownThemeExtension.fake();
 
   test('MyoroDropdownThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroDropdownThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       inputStyle: themeExtension2.inputStyle,
       inputDropdownSpacing: themeExtension2.inputDropdownSpacing,
       menuMaxHeight: themeExtension2.menuMaxHeight,
     );
-    expect(copiedThemeExtension.inputStyle, themeExtension2.inputStyle);
-    expect(
-      copiedThemeExtension.inputDropdownSpacing,
-      themeExtension2.inputDropdownSpacing,
-    );
-    expect(copiedThemeExtension.menuMaxHeight, themeExtension2.menuMaxHeight);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroDropdownThemeExtension.lerp', () {

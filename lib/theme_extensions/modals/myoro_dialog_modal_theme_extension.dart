@@ -22,6 +22,10 @@ final class MyoroDialogModalThemeExtension
     : textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       footerButtonsSpacing = faker.randomGenerator.decimal();
 
+  MyoroDialogModalThemeExtension.builder(TextTheme textTheme)
+    : textStyle = textTheme.bodyMedium!,
+      footerButtonsSpacing = 10;
+
   @override
   MyoroDialogModalThemeExtension copyWith({
     TextStyle? textStyle,
@@ -47,5 +51,18 @@ final class MyoroDialogModalThemeExtension
         t,
       ),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroDialogModalThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.textStyle == textStyle &&
+        other.footerButtonsSpacing == footerButtonsSpacing;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(textStyle, footerButtonsSpacing);
   }
 }

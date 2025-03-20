@@ -19,7 +19,9 @@ void main() {
   });
 
   test('MyoroTableThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroTableThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       decoration: themeExtension2.decoration,
       titleRowHeight: themeExtension2.titleRowHeight,
       titleRowCellMinWidth: themeExtension2.titleRowCellMinWidth,
@@ -37,49 +39,7 @@ void main() {
       rowsCellSpacing: themeExtension2.rowsCellSpacing,
       rowsButtonConfiguration: themeExtension2.rowsButtonConfiguration,
     );
-    expect(copiedThemeExtension.decoration, themeExtension2.decoration);
-    expect(copiedThemeExtension.titleRowHeight, themeExtension2.titleRowHeight);
-    expect(
-      copiedThemeExtension.titleRowCellMinWidth,
-      themeExtension2.titleRowCellMinWidth,
-    );
-    expect(copiedThemeExtension.contentPadding, themeExtension2.contentPadding);
-    expect(copiedThemeExtension.columnSpacing, themeExtension2.columnSpacing);
-    expect(
-      copiedThemeExtension.tableFooterSpacing,
-      themeExtension2.tableFooterSpacing,
-    );
-    expect(
-      copiedThemeExtension.emptyMessageTextStyle,
-      themeExtension2.emptyMessageTextStyle,
-    );
-    expect(copiedThemeExtension.titleTextStyle, themeExtension2.titleTextStyle);
-    expect(
-      copiedThemeExtension.errorMessageHeaderTextStyle,
-      themeExtension2.errorMessageHeaderTextStyle,
-    );
-    expect(
-      copiedThemeExtension.errorMessageErrorTextStyle,
-      themeExtension2.errorMessageErrorTextStyle,
-    );
-    expect(copiedThemeExtension.messageSpacing, themeExtension2.messageSpacing);
-    expect(
-      copiedThemeExtension.buttonConfiguration,
-      themeExtension2.buttonConfiguration,
-    );
-    expect(copiedThemeExtension.footerSpacing, themeExtension2.footerSpacing);
-    expect(
-      copiedThemeExtension.titleColumnSpacing,
-      themeExtension2.titleColumnSpacing,
-    );
-    expect(
-      copiedThemeExtension.rowsCellSpacing,
-      themeExtension2.rowsCellSpacing,
-    );
-    expect(
-      copiedThemeExtension.rowsButtonConfiguration,
-      themeExtension2.rowsButtonConfiguration,
-    );
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroTableThemeExtension.lerp', () {

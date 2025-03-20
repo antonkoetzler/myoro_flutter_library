@@ -6,6 +6,8 @@ final class MyoroDatePickerInputThemeExtension
     extends ThemeExtension<MyoroDatePickerInputThemeExtension> {
   const MyoroDatePickerInputThemeExtension();
 
+  const MyoroDatePickerInputThemeExtension.builder();
+
   @override
   MyoroDatePickerInputThemeExtension copyWith() => this;
 
@@ -15,5 +17,16 @@ final class MyoroDatePickerInputThemeExtension
     double t,
   ) {
     return this;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroDatePickerInputThemeExtension &&
+        other.runtimeType == runtimeType;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll(const []);
   }
 }

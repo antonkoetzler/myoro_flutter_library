@@ -100,6 +100,39 @@ final class MyoroTableThemeExtension
       rowsCellSpacing = faker.randomGenerator.decimal(),
       rowsButtonConfiguration = MyoroHoverButtonConfiguration.fake();
 
+  MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : decoration = BoxDecoration(
+        color: colorScheme.primary,
+        border: Border.all(
+          width: kMyoroBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+        borderRadius: MyoroDecorationHelper.borderRadius,
+      ),
+      titleRowHeight = 45,
+      titleRowCellMinWidth = 50,
+      contentPadding = const EdgeInsets.all(10),
+      columnSpacing = 5,
+      tableFooterSpacing = 15,
+      emptyMessageTextStyle = textTheme.titleMedium!,
+      titleTextStyle = textTheme.titleSmall!,
+      errorMessageHeaderTextStyle = textTheme.titleMedium!.withColor(
+        colorScheme.error,
+      ),
+      errorMessageErrorTextStyle = textTheme.bodyMedium!.withColor(
+        colorScheme.error,
+      ),
+      buttonConfiguration = const MyoroHoverButtonConfiguration(bordered: true),
+      messageSpacing = 20,
+      footerSpacing = 5,
+      titleColumnSpacing = 5,
+      rowsCellSpacing = 3,
+      rowsButtonConfiguration = MyoroHoverButtonConfiguration(
+        onPrimaryColor: colorScheme.onPrimary.withValues(alpha: 0.3),
+        borderRadius: BorderRadius.zero,
+        primaryColor: MyoroColorDesignSystem.transparent,
+      );
+
   @override
   MyoroTableThemeExtension copyWith({
     BoxDecoration? decoration,
@@ -198,6 +231,50 @@ final class MyoroTableThemeExtension
         other.rowsButtonConfiguration,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroTableThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.decoration == decoration &&
+        other.titleRowHeight == titleRowHeight &&
+        other.titleRowCellMinWidth == titleRowCellMinWidth &&
+        other.contentPadding == contentPadding &&
+        other.columnSpacing == columnSpacing &&
+        other.tableFooterSpacing == tableFooterSpacing &&
+        other.emptyMessageTextStyle == emptyMessageTextStyle &&
+        other.titleTextStyle == titleTextStyle &&
+        other.errorMessageHeaderTextStyle == errorMessageHeaderTextStyle &&
+        other.errorMessageErrorTextStyle == errorMessageErrorTextStyle &&
+        other.messageSpacing == messageSpacing &&
+        other.buttonConfiguration == buttonConfiguration &&
+        other.footerSpacing == footerSpacing &&
+        other.titleColumnSpacing == titleColumnSpacing &&
+        other.rowsCellSpacing == rowsCellSpacing &&
+        other.rowsButtonConfiguration == rowsButtonConfiguration;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      decoration,
+      titleRowHeight,
+      titleRowCellMinWidth,
+      contentPadding,
+      columnSpacing,
+      tableFooterSpacing,
+      emptyMessageTextStyle,
+      titleTextStyle,
+      errorMessageHeaderTextStyle,
+      errorMessageErrorTextStyle,
+      messageSpacing,
+      buttonConfiguration,
+      footerSpacing,
+      titleColumnSpacing,
+      rowsCellSpacing,
+      rowsButtonConfiguration,
     );
   }
 }

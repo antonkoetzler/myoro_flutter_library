@@ -11,7 +11,7 @@ void main() {
   ) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardThemeExtensions,
+        themeExtensionsBuilder: createThemeExtensions,
         child: BlocProvider(
           create: (_) => WidgetShowcaseBloc(),
           child: const MyoroSingularDropdownWidgetShowcase(),

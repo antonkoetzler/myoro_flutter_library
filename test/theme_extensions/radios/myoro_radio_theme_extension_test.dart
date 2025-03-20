@@ -19,18 +19,16 @@ void main() {
   });
 
   test('MyoroRadioThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroRadioThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       activeColor: themeExtension2.activeColor,
       hoverColor: themeExtension2.hoverColor,
       labelTextStyle: themeExtension2.labelTextStyle,
       spacing: themeExtension2.spacing,
       splashRadius: themeExtension2.splashRadius,
     );
-    expect(copiedThemeExtension.activeColor, themeExtension2.activeColor);
-    expect(copiedThemeExtension.hoverColor, themeExtension2.hoverColor);
-    expect(copiedThemeExtension.labelTextStyle, themeExtension2.labelTextStyle);
-    expect(copiedThemeExtension.spacing, themeExtension2.spacing);
-    expect(copiedThemeExtension.splashRadius, themeExtension2.splashRadius);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroRadioThemeExtension.copyWith', () {

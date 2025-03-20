@@ -6,6 +6,8 @@ final class MyoroResolverThemeExtension
     extends ThemeExtension<MyoroResolverThemeExtension> {
   const MyoroResolverThemeExtension();
 
+  const MyoroResolverThemeExtension.builder();
+
   @override
   MyoroResolverThemeExtension copyWith() => this;
 
@@ -15,5 +17,16 @@ final class MyoroResolverThemeExtension
     double t,
   ) {
     return this;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroResolverThemeExtension &&
+        other.runtimeType == runtimeType;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll(const []);
   }
 }

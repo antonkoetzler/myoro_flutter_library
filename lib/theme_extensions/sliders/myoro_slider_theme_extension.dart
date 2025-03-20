@@ -32,6 +32,12 @@ final class MyoroSliderThemeExtension
             TextAlign.values.length,
           )];
 
+  MyoroSliderThemeExtension.builder(TextTheme textTheme)
+    : labelTextStyle = textTheme.headlineSmall!,
+      sliderPadding = EdgeInsets.zero,
+      indicatorTextStyle = textTheme.bodySmall!,
+      indicatorTextAlignment = TextAlign.center;
+
   @override
   MyoroSliderThemeExtension copyWith({
     TextStyle? labelTextStyle,
@@ -67,6 +73,26 @@ final class MyoroSliderThemeExtension
         other.indicatorTextAlignment,
         t,
       ),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroSliderThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.labelTextStyle == labelTextStyle &&
+        other.sliderPadding == sliderPadding &&
+        other.indicatorTextStyle == indicatorTextStyle &&
+        other.indicatorTextAlignment == indicatorTextAlignment;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      labelTextStyle,
+      sliderPadding,
+      indicatorTextStyle,
+      indicatorTextAlignment,
     );
   }
 }

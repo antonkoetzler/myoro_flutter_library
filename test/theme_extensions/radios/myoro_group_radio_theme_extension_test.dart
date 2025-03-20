@@ -10,14 +10,15 @@ void main() {
   final themeExtension2 = MyoroGroupRadioThemeExtension.fake();
 
   test('MyoroGroupRadioThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
+    MyoroGroupRadioThemeExtension copiedThemeExtension =
+        themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       direction: themeExtension2.direction,
       spacing: themeExtension2.spacing,
       runSpacing: themeExtension2.runSpacing,
     );
-    expect(copiedThemeExtension.direction, themeExtension2.direction);
-    expect(copiedThemeExtension.spacing, themeExtension2.spacing);
-    expect(copiedThemeExtension.runSpacing, themeExtension2.runSpacing);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroGroupRadioThemeExtension.lerp', () {

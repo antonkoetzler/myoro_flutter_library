@@ -56,6 +56,15 @@ final class MyoroSnackBarContainerThemeExtension
           )],
       duration = Duration(milliseconds: faker.randomGenerator.integer(9999));
 
+  const MyoroSnackBarContainerThemeExtension.builder()
+    : primaryColor = MyoroColorDesignSystem.transparent,
+      behavior = SnackBarBehavior.floating,
+      margin = const EdgeInsets.all(10),
+      padding = EdgeInsets.zero,
+      elevation = 0,
+      dismissDirection = DismissDirection.none,
+      duration = const Duration(seconds: 3);
+
   @override
   MyoroSnackBarContainerThemeExtension copyWith({
     Color? primaryColor,
@@ -91,6 +100,32 @@ final class MyoroSnackBarContainerThemeExtension
       elevation: lerpDouble(elevation, other.elevation, t),
       dismissDirection: myoroLerp(dismissDirection, other.dismissDirection, t),
       duration: myoroLerp(duration, other.duration, t),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroSnackBarContainerThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.primaryColor == primaryColor &&
+        other.behavior == behavior &&
+        other.margin == margin &&
+        other.padding == padding &&
+        other.elevation == elevation &&
+        other.dismissDirection == dismissDirection &&
+        other.duration == duration;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      primaryColor,
+      behavior,
+      margin,
+      padding,
+      elevation,
+      dismissDirection,
+      duration,
     );
   }
 }

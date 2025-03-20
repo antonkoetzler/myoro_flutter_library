@@ -25,6 +25,10 @@ final class MyoroAppBarThemeExtension
         faker.randomGenerator.integer(50).toDouble(),
       );
 
+  MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
+    : primaryColor = colorScheme.primary,
+      contentPadding = const EdgeInsets.all(10);
+
   @override
   MyoroAppBarThemeExtension copyWith({
     Color? primaryColor,
@@ -46,5 +50,18 @@ final class MyoroAppBarThemeExtension
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
     );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroAppBarThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.primaryColor == primaryColor &&
+        other.contentPadding == contentPadding;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(primaryColor, contentPadding);
   }
 }

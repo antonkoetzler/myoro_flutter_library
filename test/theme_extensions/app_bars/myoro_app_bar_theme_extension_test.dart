@@ -9,12 +9,13 @@ void main() {
   final themeExtension2 = MyoroAppBarThemeExtension.fake();
 
   test('MyoroAppBarThemeExtension.copyWith', () {
-    final copyThemeExtension = themeExtension1.copyWith(
+    MyoroAppBarThemeExtension copiedThemeExtension = themeExtension1.copyWith();
+    expect(copiedThemeExtension, themeExtension1);
+    copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
       contentPadding: themeExtension2.contentPadding,
     );
-    expect(copyThemeExtension.primaryColor, themeExtension2.primaryColor);
-    expect(copyThemeExtension.contentPadding, themeExtension2.contentPadding);
+    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroAppBarThemeExtension.lerp', () {
