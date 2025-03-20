@@ -12,8 +12,8 @@ jobs:
       - name: Install actions checkout
         uses: actions/checkout@v3
 
-      - name: Install sqlite3-dev so tests run properly (Ubuntu doesn't preinstall this package)
-        run: sudo apt-get install sqlite3-dev
+      - name: Install libsqlite3-dev so tests run properly (Ubuntu doesn't preinstall this package)
+        run: sudo apt-get install libsqlite3-dev
 
       - name: Install LCOV for code coverage report generation
         run: sudo apt-get install lcov
