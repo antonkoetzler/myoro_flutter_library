@@ -24,7 +24,7 @@ void main() {
 
   testWidgets('WidgetShowcase', (WidgetTester tester) async {
     final widgetOptions = List.generate(
-      faker.randomGenerator.integer(100),
+      faker.randomGenerator.integer(100, min: 0),
       (_) => const SizedBox.shrink(),
     );
     late final WidgetShowcaseThemeExtension themeExtension;
@@ -120,7 +120,7 @@ void main() {
         (Widget w) =>
             w is Column &&
             w.mainAxisSize == MainAxisSize.min &&
-            w.children.length == 2 &&
+            w.children.length == (widgetOptions.isNotEmpty ? 2 : 1) &&
             w.children.first is Flexible,
       ),
       findsNWidgets(widgetOptions.length),
