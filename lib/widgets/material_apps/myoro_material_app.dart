@@ -76,18 +76,13 @@ final class MyoroMaterialApp extends StatelessWidget {
         localizationsDelegates: localizationsDelegates,
         supportedLocales:
             supportedLocales ?? const <Locale>[Locale('en', 'US')],
-        home: Builder(
-          builder: (context) {
-            MyoroTypographyDesignSystem.textTheme = context.textTheme;
-            return home;
-          },
-        ),
         themeMode: themeMode ?? ThemeMode.dark,
         theme: createMyoroThemeData(themeExtensionsBuilder, isDarkMode: false),
         darkTheme: createMyoroThemeData(
           themeExtensionsBuilder,
           isDarkMode: true,
         ),
+        home: home,
       ),
     );
   }
