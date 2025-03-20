@@ -11,11 +11,13 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyoroCircularLoaderWidgetShowcaseBloc(
-        size: context
-            .resolveThemeExtension<MyoroCircularLoaderThemeExtension>()
-            .size,
-      ),
+      create:
+          (_) => MyoroCircularLoaderWidgetShowcaseBloc(
+            size:
+                context
+                    .resolveThemeExtension<MyoroCircularLoaderThemeExtension>()
+                    .size,
+          ),
       child: const WidgetShowcase(
         widget: _Widget(),
         widgetOptions: [_ColorOption(), _SizeOption()],
@@ -29,8 +31,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroCircularLoaderWidgetShowcaseBloc,
-        MyoroCircularLoaderWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroCircularLoaderWidgetShowcaseBloc,
+      MyoroCircularLoaderWidgetShowcaseState
+    >(
       builder: (_, MyoroCircularLoaderWidgetShowcaseState state) {
         return MyoroCircularLoader(color: state.color, size: state.size);
       },
@@ -53,8 +57,8 @@ final class _ColorOption extends StatelessWidget {
 
   void _onChanged(BuildContext context, Color? color) {
     context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
-          SetColorEvent(color),
-        );
+      SetColorEvent(color),
+    );
   }
 
   @override
@@ -83,8 +87,11 @@ final class _ColorDropdownItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context
-        .resolveThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<
+              MyoroHoverButtonWidgetShowcaseThemeExtension
+            >();
     final colorSize = themeExtension.colorDropdownItemColorSize;
 
     return Padding(

@@ -10,11 +10,14 @@ part 'myoro_group_checkbox_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroGroupCheckboxWidgetShowcaseState>;
 
 /// BloC to manage all the state in [MyoroGroupCheckboxWidgetShowcase].
-final class MyoroGroupCheckboxWidgetShowcaseBloc extends Bloc<
-    MyoroGroupCheckboxWidgetShowcaseEvent,
-    MyoroGroupCheckboxWidgetShowcaseState> {
+final class MyoroGroupCheckboxWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroGroupCheckboxWidgetShowcaseEvent,
+          MyoroGroupCheckboxWidgetShowcaseState
+        > {
   MyoroGroupCheckboxWidgetShowcaseBloc({MyoroGroupCheckboxItems? checkboxes})
-      : super(const MyoroGroupCheckboxWidgetShowcaseState()) {
+    : super(const MyoroGroupCheckboxWidgetShowcaseState()) {
     on<SetDirectionEvent>(_setDirectionEvent);
     on<SetSpacingEvent>(_setSpacingEvent);
     on<SetRunSpacingEvent>(_setRunSpacingEvent);

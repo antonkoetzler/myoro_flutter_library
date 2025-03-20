@@ -28,13 +28,14 @@ final class MyoroInputWidgetShowcaseThemeExtension
   });
 
   MyoroInputWidgetShowcaseThemeExtension.fake()
-      : configurationOptionTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle,
-        configurationOptionSpacing = faker.randomGenerator.decimal(),
-        inputStyle = MyoroInputStyleEnum.fake(),
-        suffixWidgetIcon = kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )];
+    : configurationOptionTextStyle =
+          MyoroTypographyTheme.instance.randomTextStyle,
+      configurationOptionSpacing = faker.randomGenerator.decimal(),
+      inputStyle = MyoroInputStyleEnum.fake(),
+      suffixWidgetIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
   @override
   MyoroInputWidgetShowcaseThemeExtension copyWith({

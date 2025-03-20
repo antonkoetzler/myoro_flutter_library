@@ -27,13 +27,16 @@ void main() {
   blocTest(
     'MyoroCardWidgetShowcaseBloc.SetTitleTextStyle',
     build: () => MyoroCardWidgetShowcaseBloc(),
-    act: (bloc) => bloc
-      ..add(const SetTitleTextStyleEvent(textStyle))
-      ..add(const SetTitleTextStyleEvent()),
-    expect: () => const [
-      MyoroCardWidgetShowcaseState(titleTextStyle: textStyle),
-      MyoroCardWidgetShowcaseState(),
-    ],
+    act:
+        (bloc) =>
+            bloc
+              ..add(const SetTitleTextStyleEvent(textStyle))
+              ..add(const SetTitleTextStyleEvent()),
+    expect:
+        () => const [
+          MyoroCardWidgetShowcaseState(titleTextStyle: textStyle),
+          MyoroCardWidgetShowcaseState(),
+        ],
   );
 
   blocTest(

@@ -44,9 +44,12 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final configuration = MyoroHoverButtonConfiguration(
-      bordered: context
-          .resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>()
-          .widgetBordered,
+      bordered:
+          context
+              .resolveThemeExtension<
+                MyoroSnackBarWidgetShowcaseThemeExtension
+              >()
+              .widgetBordered,
     );
 
     return IntrinsicWidth(
@@ -66,9 +69,12 @@ final class _Child extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicWidth(
       child: MyoroIconTextHoverButton(
-        icon: context
-            .resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>()
-            .childIcon,
+        icon:
+            context
+                .resolveThemeExtension<
+                  MyoroSnackBarWidgetShowcaseThemeExtension
+                >()
+                .childIcon,
         text: 'Buttonception O_O',
         configuration: const MyoroHoverButtonConfiguration(bordered: true),
         onPressed: () {},
@@ -88,8 +94,8 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
   late final MyoroSnackBarWidgetShowcaseBloc _bloc;
   late final _controller =
       MyoroSingularDropdownController<MyoroSnackBarTypeEnum>(
-    _bloc.state.snackBarType,
-  );
+        _bloc.state.snackBarType,
+      );
 
   String _getSnackbarTypeName(MyoroSnackBarTypeEnum snackBarType) {
     return switch (snackBarType) {
@@ -134,8 +140,8 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
         itemLabelBuilder: _getSnackbarTypeName,
         allowItemClearing: false,
       ),
-      onChanged: (MyoroSnackBarTypeEnum? selectedItem) =>
-          _onChanged(selectedItem!),
+      onChanged:
+          (MyoroSnackBarTypeEnum? selectedItem) => _onChanged(selectedItem!),
     );
   }
 }
@@ -188,16 +194,20 @@ final class _MessageOptionState extends State<_MessageOption> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<MyoroSnackBarWidgetShowcaseBloc,
-        MyoroSnackBarWidgetShowcaseState>(
+    return BlocListener<
+      MyoroSnackBarWidgetShowcaseBloc,
+      MyoroSnackBarWidgetShowcaseState
+    >(
       listener: _listener,
       child: MyoroInput(
         configuration: MyoroInputConfiguration(
           label: '[MyoroSnackBar.message]',
-          inputStyle: context
-              .resolveThemeExtension<
-                  MyoroSnackBarWidgetShowcaseThemeExtension>()
-              .inputStyle,
+          inputStyle:
+              context
+                  .resolveThemeExtension<
+                    MyoroSnackBarWidgetShowcaseThemeExtension
+                  >()
+                  .inputStyle,
           controller: _controller,
           onChanged: _onChanged,
         ),
@@ -211,14 +221,16 @@ final class _ChildOption extends StatelessWidget {
 
   void _onChanged(BuildContext context, bool value) {
     context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>().add(
-          SetChildEnabledEvent(value),
-        );
+      SetChildEnabledEvent(value),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroSnackBarWidgetShowcaseBloc,
-        MyoroSnackBarWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroSnackBarWidgetShowcaseBloc,
+      MyoroSnackBarWidgetShowcaseState
+    >(
       builder: (_, MyoroSnackBarWidgetShowcaseState state) {
         return MyoroCheckbox(
           label: '[MyoroSnackBar.child] enabled?',

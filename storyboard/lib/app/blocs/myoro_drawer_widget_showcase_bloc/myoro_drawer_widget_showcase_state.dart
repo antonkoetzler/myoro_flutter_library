@@ -30,16 +30,18 @@ final class MyoroDrawerWidgetShowcaseState extends Equatable {
   }) {
     return MyoroDrawerWidgetShowcaseState(
       title: titleEnabled ? (title ?? this.title) : null,
-      titleTextStyle: titleTextStyleEnabled
-          ? (titleTextStyle ?? this.titleTextStyle)
-          : null,
+      titleTextStyle:
+          titleTextStyleEnabled
+              ? (titleTextStyle ?? this.titleTextStyle)
+              : null,
       showCloseButton: showCloseButton ?? this.showCloseButton,
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
     );
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroDrawerWidgetShowcaseState(\n'
       '  title: $title,\n'
       '  titleTextStyle: $titleTextStyle,\n'

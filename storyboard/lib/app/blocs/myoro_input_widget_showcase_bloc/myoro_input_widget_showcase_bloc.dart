@@ -13,7 +13,7 @@ typedef _Emitter = Emitter<MyoroInputWidgetShowcaseState>;
 final class MyoroInputWidgetShowcaseBloc
     extends Bloc<MyoroInputWidgetShowcaseEvent, MyoroInputWidgetShowcaseState> {
   MyoroInputWidgetShowcaseBloc()
-      : super(const MyoroInputWidgetShowcaseState()) {
+    : super(const MyoroInputWidgetShowcaseState()) {
     on<SetFormatterEvent>(_setFormatterEvent);
     on<SetInputStyleEvent>(_setInputStyleEvent);
     on<SetTextAlignEvent>(_setTextAlignEvent);

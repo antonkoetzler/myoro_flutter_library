@@ -18,10 +18,10 @@ final class MyoroDialogModalWidgetShowcaseThemeExtension
   });
 
   MyoroDialogModalWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake(),
-        childBorderRadius = BorderRadius.circular(
-          faker.randomGenerator.decimal(),
-        );
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      childBorderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(),
+      );
 
   @override
   MyoroDialogModalWidgetShowcaseThemeExtension copyWith({
@@ -37,7 +37,7 @@ final class MyoroDialogModalWidgetShowcaseThemeExtension
   @override
   MyoroDialogModalWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>?
-        other,
+    other,
     double t,
   ) {
     if (other is! MyoroDialogModalWidgetShowcaseThemeExtension) return this;

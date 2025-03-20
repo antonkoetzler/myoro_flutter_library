@@ -15,9 +15,10 @@ void main() {
     MyoroTypographyTheme.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    labelTextStyle = faker.randomGenerator.boolean()
-        ? MyoroTypographyTheme.instance.randomTextStyle
-        : null;
+    labelTextStyle =
+        faker.randomGenerator.boolean()
+            ? MyoroTypographyTheme.instance.randomTextStyle
+            : null;
   });
 
   blocTest(
@@ -31,7 +32,7 @@ void main() {
     'MyoroRadioWidgetShowcaseBloc.SetLabelTextStyleEvent',
     build: () => MyoroRadioWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetLabelTextStyleEvent(labelTextStyle)),
-    expect: () =>
-        [MyoroRadioWidgetShowcaseState(labelTextStyle: labelTextStyle)],
+    expect:
+        () => [MyoroRadioWidgetShowcaseState(labelTextStyle: labelTextStyle)],
   );
 }

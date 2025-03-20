@@ -21,9 +21,10 @@ void main() {
     'MyoroModalWidgetShowcaseBloc.SetBarrierDismissableEvent',
     build: () => MyoroModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetBarrierDismissableEvent(barrierDismissable)),
-    expect: () => [
-      MyoroModalWidgetShowcaseState(barrierDismissable: barrierDismissable),
-    ],
+    expect:
+        () => [
+          MyoroModalWidgetShowcaseState(barrierDismissable: barrierDismissable),
+        ],
   );
 
   blocTest(
@@ -65,7 +66,7 @@ void main() {
     'MyoroModalWidgetShowcaseBloc.SetShowCloseButtonEvent',
     build: () => MyoroModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetShowCloseButtonEvent(showCloseButton)),
-    expect: () =>
-        [MyoroModalWidgetShowcaseState(showCloseButton: showCloseButton)],
+    expect:
+        () => [MyoroModalWidgetShowcaseState(showCloseButton: showCloseButton)],
   );
 }

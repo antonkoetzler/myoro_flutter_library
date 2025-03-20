@@ -56,9 +56,10 @@ final class _Widget extends StatelessWidget {
   void _checkboxOnChanged(BuildContext context, bool enabled, String? item) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        snackBarType: enabled
-            ? MyoroSnackBarTypeEnum.success
-            : MyoroSnackBarTypeEnum.error,
+        snackBarType:
+            enabled
+                ? MyoroSnackBarTypeEnum.success
+                : MyoroSnackBarTypeEnum.error,
         message:
             'Dropdown ${enabled ? 'enabled' : 'disabled'}! ${item != null ? 'Selected item is $item' : 'No selected items'}.',
       ),
@@ -74,8 +75,10 @@ final class _Widget extends StatelessWidget {
       ),
     );
 
-    return BlocBuilder<MyoroDropdownWidgetShowcasesBloc,
-        MyoroDropdownWidgetShowcasesState>(
+    return BlocBuilder<
+      MyoroDropdownWidgetShowcasesBloc,
+      MyoroDropdownWidgetShowcasesState
+    >(
       builder: (_, MyoroDropdownWidgetShowcasesState state) {
         return MyoroSingularDropdown<String>(
           configuration: MyoroDropdownConfiguration<String>(
@@ -91,10 +94,11 @@ final class _Widget extends StatelessWidget {
                 state.menuSearchCallbackEnabled ? _menuSearchCallback : null,
           ),
           onChanged: (String? item) => _onChanged(context, item),
-          checkboxOnChanged: state.checkboxOnChangedEnabled
-              ? (bool enabled, String? item) =>
-                  _checkboxOnChanged(context, enabled, item)
-              : null,
+          checkboxOnChanged:
+              state.checkboxOnChangedEnabled
+                  ? (bool enabled, String? item) =>
+                      _checkboxOnChanged(context, enabled, item)
+                  : null,
         );
       },
     );
@@ -138,14 +142,15 @@ final class _LabelTextStyleOption extends StatelessWidget {
       configuration: MyoroDropdownConfiguration(
         label: 'Label text style',
         dataConfiguration: dataConfiguration,
-        itemBuilder: (TextStyle textStyle) =>
-            _itemBuilder(typographyInstance, textStyle),
+        itemBuilder:
+            (TextStyle textStyle) =>
+                _itemBuilder(typographyInstance, textStyle),
         itemLabelBuilder: typographyInstance.getTextStyleName,
       ),
       onChanged: (TextStyle? textStyle) {
         context.resolveBloc<MyoroDropdownWidgetShowcasesBloc>().add(
-              SetLabelTextStyleEvent(textStyle),
-            );
+          SetLabelTextStyleEvent(textStyle),
+        );
       },
     );
   }
@@ -191,10 +196,12 @@ final class _MenuMaxHeightOption extends StatelessWidget {
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
         label: 'Menu\'s max height',
-        onChanged: (String text) =>
-            bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
-        checkboxOnChanged: (bool enabled, String text) =>
-            bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
+        onChanged:
+            (String text) =>
+                bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
+        checkboxOnChanged:
+            (bool enabled, String text) =>
+                bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
       ),
       max: 400,
     );
@@ -211,8 +218,8 @@ final class _MenuSearchCallbackEnabledOption extends StatelessWidget {
     return MyoroCheckbox(
       label: 'Searching enabled?',
       initialValue: bloc.state.menuSearchCallbackEnabled,
-      onChanged: (bool value) =>
-          bloc.add(SetMenuSearchCallbackEnabledEvent(value)),
+      onChanged:
+          (bool value) => bloc.add(SetMenuSearchCallbackEnabledEvent(value)),
     );
   }
 }

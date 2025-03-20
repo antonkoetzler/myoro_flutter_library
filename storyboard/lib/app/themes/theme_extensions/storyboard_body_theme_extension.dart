@@ -48,31 +48,30 @@ final class StoryboardBodyThemeExtension
   });
 
   StoryboardBodyThemeExtension.fake()
-      : widgetListingCategoryPadding = EdgeInsets.all(
-          faker.randomGenerator.decimal(),
-        ),
-        widgetListingCategorySpacing = faker.randomGenerator.decimal(),
-        widgetListingCategoryDividerPadding = EdgeInsets.all(
-          faker.randomGenerator.decimal(),
-        ),
-        widgetListingCategoryDividerShortValue =
-            faker.randomGenerator.decimal(),
-        widgetListingCategoryDropdownButtonTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle,
-        widgetListingCategoryDropdownButtonUnopenedIcon =
-            kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )],
-        widgetListingCategoryDropdownButtonOpenedIcon =
-            kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )],
-        widgetListingCategoryWidgetButtonContentCentered =
-            MainAxisAlignment.values[faker.randomGenerator.integer(
-          MainAxisAlignment.values.length,
-        )],
-        widgetListingCategoryWidgetButtonTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle;
+    : widgetListingCategoryPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      ),
+      widgetListingCategorySpacing = faker.randomGenerator.decimal(),
+      widgetListingCategoryDividerPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      ),
+      widgetListingCategoryDividerShortValue = faker.randomGenerator.decimal(),
+      widgetListingCategoryDropdownButtonTextStyle =
+          MyoroTypographyTheme.instance.randomTextStyle,
+      widgetListingCategoryDropdownButtonUnopenedIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      widgetListingCategoryDropdownButtonOpenedIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      widgetListingCategoryWidgetButtonContentCentered =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )],
+      widgetListingCategoryWidgetButtonTextStyle =
+          MyoroTypographyTheme.instance.randomTextStyle;
 
   @override
   StoryboardBodyThemeExtension copyWith({
@@ -93,25 +92,25 @@ final class StoryboardBodyThemeExtension
           widgetListingCategorySpacing ?? this.widgetListingCategorySpacing,
       widgetListingCategoryDividerPadding:
           widgetListingCategoryDividerPadding ??
-              this.widgetListingCategoryDividerPadding,
+          this.widgetListingCategoryDividerPadding,
       widgetListingCategoryDividerShortValue:
           widgetListingCategoryDividerShortValue ??
-              this.widgetListingCategoryDividerShortValue,
+          this.widgetListingCategoryDividerShortValue,
       widgetListingCategoryDropdownButtonTextStyle:
           widgetListingCategoryDropdownButtonTextStyle ??
-              this.widgetListingCategoryDropdownButtonTextStyle,
+          this.widgetListingCategoryDropdownButtonTextStyle,
       widgetListingCategoryDropdownButtonUnopenedIcon:
           widgetListingCategoryDropdownButtonUnopenedIcon ??
-              this.widgetListingCategoryDropdownButtonUnopenedIcon,
+          this.widgetListingCategoryDropdownButtonUnopenedIcon,
       widgetListingCategoryDropdownButtonOpenedIcon:
           widgetListingCategoryDropdownButtonOpenedIcon ??
-              this.widgetListingCategoryDropdownButtonOpenedIcon,
+          this.widgetListingCategoryDropdownButtonOpenedIcon,
       widgetListingCategoryWidgetButtonContentCentered:
           widgetListingCategoryWidgetButtonContentCentered ??
-              this.widgetListingCategoryWidgetButtonContentCentered,
+          this.widgetListingCategoryWidgetButtonContentCentered,
       widgetListingCategoryWidgetButtonTextStyle:
           widgetListingCategoryWidgetButtonTextStyle ??
-              this.widgetListingCategoryWidgetButtonTextStyle,
+          this.widgetListingCategoryWidgetButtonTextStyle,
     );
   }
 

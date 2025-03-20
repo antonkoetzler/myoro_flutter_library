@@ -18,8 +18,8 @@ final class MyoroDrawerWidgetShowcaseThemeExtension
   });
 
   MyoroDrawerWidgetShowcaseThemeExtension.fake()
-      : buttonBordered = faker.randomGenerator.boolean(),
-        inputStyle = MyoroInputStyleEnum.fake();
+    : buttonBordered = faker.randomGenerator.boolean(),
+      inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroDrawerWidgetShowcaseThemeExtension copyWith({

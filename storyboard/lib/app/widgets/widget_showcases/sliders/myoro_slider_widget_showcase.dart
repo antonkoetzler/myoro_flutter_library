@@ -11,11 +11,15 @@ final class MyoroSliderWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyoroSliderWidgetShowcaseBloc(
-        width: context
-            .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
-            .widgetSize,
-      ),
+      create:
+          (_) => MyoroSliderWidgetShowcaseBloc(
+            width:
+                context
+                    .resolveThemeExtension<
+                      MyoroSliderWidgetShowcaseThemeExtension
+                    >()
+                    .widgetSize,
+          ),
       child: const WidgetShowcase(
         widget: _Widget(),
         widgetOptions: [
@@ -39,9 +43,10 @@ final class _Widget extends StatefulWidget {
 }
 
 final class _WidgetState extends State<_Widget> {
-  late final _widgetSize = context
-      .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
-      .widgetSize;
+  late final _widgetSize =
+      context
+          .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
+          .widgetSize;
   late final _hiddenKittyCoverWidthNotifier = ValueNotifier<double>(
     _widgetSize,
   );
@@ -84,10 +89,12 @@ final class _HiddenKitty extends StatelessWidget {
             builder: (_, double width, __) {
               return Container(
                 width: width,
-                color: context
-                    .resolveThemeExtension<
-                        MyoroSliderWidgetShowcaseThemeExtension>()
-                    .hiddenKittyContainerColor,
+                color:
+                    context
+                        .resolveThemeExtension<
+                          MyoroSliderWidgetShowcaseThemeExtension
+                        >()
+                        .hiddenKittyContainerColor,
               );
             },
           ),
@@ -113,12 +120,15 @@ final class _Slider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetSize = context
-        .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
-        .widgetSize;
+    final widgetSize =
+        context
+            .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
+            .widgetSize;
 
-    return BlocBuilder<MyoroSliderWidgetShowcaseBloc,
-        MyoroSliderWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroSliderWidgetShowcaseBloc,
+      MyoroSliderWidgetShowcaseState
+    >(
       builder: (_, MyoroSliderWidgetShowcaseState state) {
         return MyoroSlider(
           label: state.label,
@@ -132,9 +142,11 @@ final class _Slider extends StatelessWidget {
               state.maxValueIndicatorTextBuilderEnabled
                   ? _maxValueIndicatorTextBuilder
                   : null,
-          footerIndicatorTextBuilder: state.footerIndicatorTextBuilderEnabled
-              ? (double value) => _footerIndicatorTextBuilder(widgetSize, value)
-              : null,
+          footerIndicatorTextBuilder:
+              state.footerIndicatorTextBuilderEnabled
+                  ? (double value) =>
+                      _footerIndicatorTextBuilder(widgetSize, value)
+                  : null,
           initialValue: _hiddenKittyCoverWidthNotifier.value,
           maxValue: widgetSize,
           onChanged: _onChanged,
@@ -149,17 +161,20 @@ final class _LabelOption extends StatelessWidget {
 
   void _onChanged(BuildContext context, String text) {
     context.resolveBloc<MyoroSliderWidgetShowcaseBloc>().add(
-          SetLabelEvent(text),
-        );
+      SetLabelEvent(text),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
-        inputStyle: context
-            .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
-            .inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<
+                  MyoroSliderWidgetShowcaseThemeExtension
+                >()
+                .inputStyle,
         label: '[MyoroSlider.label]',
         onChanged: (String text) => _onChanged(context, text),
       ),
@@ -178,8 +193,8 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
   void _onChanged(BuildContext context, TextStyle? textStyle) {
     context.resolveBloc<MyoroSliderWidgetShowcaseBloc>().add(
-          SetLabelTextStyleEvent(textStyle),
-        );
+      SetLabelTextStyleEvent(textStyle),
+    );
   }
 
   @override
@@ -206,15 +221,16 @@ final class _WidthOption extends StatelessWidget {
 
   void _onChanged(BuildContext context, double value) {
     context.resolveBloc<MyoroSliderWidgetShowcaseBloc>().add(
-          SetWidthEvent(value),
-        );
+      SetWidthEvent(value),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final widgetSize = context
-        .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
-        .widgetSize;
+    final widgetSize =
+        context
+            .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
+            .widgetSize;
 
     return MyoroSlider(
       label: '[MyoroSlider.width]',

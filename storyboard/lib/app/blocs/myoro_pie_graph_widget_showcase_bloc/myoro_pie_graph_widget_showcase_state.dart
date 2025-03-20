@@ -23,7 +23,8 @@ final class MyoroPieGraphWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroPieGraphWidgetShowcaseState(\n'
       '  typeEnum: $typeEnum,\n'
       '  centerWidgetEnabled: $centerWidgetEnabled,\n'

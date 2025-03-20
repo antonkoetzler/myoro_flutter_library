@@ -40,17 +40,18 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   });
 
   MyoroScreenWidgetShowcaseThemeExtension.fake()
-      : appBarTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        appBarSubtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        appBarMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )],
-        bodyImageBorderRadius = BorderRadius.circular(
-          faker.randomGenerator.decimal(),
-        ),
-        bodyImageSize = faker.randomGenerator.decimal(),
-        bodyTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        bodySpacing = faker.randomGenerator.decimal();
+    : appBarTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      appBarSubtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      appBarMenuButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      bodyImageBorderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(),
+      ),
+      bodyImageSize = faker.randomGenerator.decimal(),
+      bodyTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      bodySpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroScreenWidgetShowcaseThemeExtension copyWith({

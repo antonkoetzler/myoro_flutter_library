@@ -28,14 +28,15 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
   });
 
   MyoroTooltipWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake(),
-        childSize = faker.randomGenerator.decimal(),
-        childDecoration = BoxDecoration(
-          color: kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
-        ),
-        childTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      childSize = faker.randomGenerator.decimal(),
+      childDecoration = BoxDecoration(
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
+      ),
+      childTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
 
   @override
   MyoroTooltipWidgetShowcaseThemeExtension copyWith({

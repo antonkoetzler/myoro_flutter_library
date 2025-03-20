@@ -15,7 +15,7 @@ final class MyoroCheckboxWidgetShowcaseThemeExtension
   });
 
   MyoroCheckboxWidgetShowcaseThemeExtension.fake()
-      : labelTextStyleOptionWidth = faker.randomGenerator.decimal();
+    : labelTextStyleOptionWidth = faker.randomGenerator.decimal();
 
   @override
   MyoroCheckboxWidgetShowcaseThemeExtension copyWith({

@@ -28,14 +28,16 @@ final class MyoroAppBarWidgetShowcaseThemeExtension
   });
 
   MyoroAppBarWidgetShowcaseThemeExtension.fake()
-      : mockAppLogoIcon = kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )],
-        mockAppTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        logoTitleSpacing = faker.randomGenerator.decimal(),
-        mockMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )];
+    : mockAppLogoIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      mockAppTitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      logoTitleSpacing = faker.randomGenerator.decimal(),
+      mockMenuButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
   @override
   MyoroAppBarWidgetShowcaseThemeExtension copyWith({

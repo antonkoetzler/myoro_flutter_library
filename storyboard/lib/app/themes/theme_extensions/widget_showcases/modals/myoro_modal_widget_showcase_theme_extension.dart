@@ -24,9 +24,9 @@ final class MyoroModalWidgetShowcaseThemeExtension
   });
 
   MyoroModalWidgetShowcaseThemeExtension.fake()
-      : spacing = faker.randomGenerator.decimal(),
-        headerTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        inputStyle = MyoroInputStyleEnum.fake();
+    : spacing = faker.randomGenerator.decimal(),
+      headerTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroModalWidgetShowcaseThemeExtension copyWith({

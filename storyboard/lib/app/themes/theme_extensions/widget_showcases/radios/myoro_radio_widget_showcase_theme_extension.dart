@@ -11,7 +11,7 @@ final class MyoroRadioWidgetShowcaseThemeExtension
   const MyoroRadioWidgetShowcaseThemeExtension({required this.inputStyle});
 
   MyoroRadioWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake();
+    : inputStyle = MyoroInputStyleEnum.fake();
 
   @override
   MyoroRadioWidgetShowcaseThemeExtension copyWith({

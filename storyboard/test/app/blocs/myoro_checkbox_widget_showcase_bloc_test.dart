@@ -20,24 +20,26 @@ void main() {
 
   blocTest(
     'MyoroCheckboxWidgetShowcaseBloc.SetLabelEvent',
-    build: () =>
-        MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
+    build:
+        () => MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
     act: (bloc) => bloc.add(SetLabelEvent(label)),
-    expect: () => [
-      MyoroCheckboxWidgetShowcaseState(
-        label: label,
-        labelTextStyle: labelTextStyle1,
-      ),
-    ],
+    expect:
+        () => [
+          MyoroCheckboxWidgetShowcaseState(
+            label: label,
+            labelTextStyle: labelTextStyle1,
+          ),
+        ],
   );
 
   blocTest(
     'MyoroCheckboxWidgetShowcaseBloc.SetLabelTextStyleEvent',
-    build: () =>
-        MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
+    build:
+        () => MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: labelTextStyle1),
     act: (bloc) => bloc.add(SetLabelTextStyleEvent(labelTextStyle2)),
-    expect: () => [
-      MyoroCheckboxWidgetShowcaseState(labelTextStyle: labelTextStyle2),
-    ],
+    expect:
+        () => [
+          MyoroCheckboxWidgetShowcaseState(labelTextStyle: labelTextStyle2),
+        ],
   );
 }

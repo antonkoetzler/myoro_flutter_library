@@ -44,24 +44,26 @@ final class MyoroFormWidgetShowcaseThemeExtension
   });
 
   MyoroFormWidgetShowcaseThemeExtension.fake()
-      : widgetMainAxisAlignment =
-            MainAxisAlignment.values[faker.randomGenerator.integer(
-          MainAxisAlignment.values.length,
-        )],
-        widgetInputStyle = MyoroInputStyleEnum.fake(),
-        widgetSpacing = faker.randomGenerator.decimal(),
-        submitButtonMainAxisAlignment =
-            MainAxisAlignment.values[faker.randomGenerator.integer(
-          MainAxisAlignment.values.length,
-        )],
-        submitButtonBordered = faker.randomGenerator.boolean(),
-        resultTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        successColor = kMyoroTestColors[faker.randomGenerator.integer(
-          kMyoroTestColors.length,
-        )],
-        errorColor = kMyoroTestColors[faker.randomGenerator.integer(
-          kMyoroTestColors.length,
-        )];
+    : widgetMainAxisAlignment =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )],
+      widgetInputStyle = MyoroInputStyleEnum.fake(),
+      widgetSpacing = faker.randomGenerator.decimal(),
+      submitButtonMainAxisAlignment =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )],
+      submitButtonBordered = faker.randomGenerator.boolean(),
+      resultTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      successColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      errorColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )];
 
   @override
   MyoroFormWidgetShowcaseThemeExtension copyWith({

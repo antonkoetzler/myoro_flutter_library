@@ -35,8 +35,11 @@ void main() {
           themeExtensionsBuilder: createStoryboardThemeExtensions,
           child: Builder(
             builder: (BuildContext context) {
-              themeExtension = context.resolveThemeExtension<
-                  MyoroHoverButtonWidgetShowcaseThemeExtension>();
+              themeExtension =
+                  context
+                      .resolveThemeExtension<
+                        MyoroHoverButtonWidgetShowcaseThemeExtension
+                      >();
               return const MyoroHoverButtonWidgetShowcase();
             },
           ),

@@ -37,16 +37,17 @@ final class StoryboardAppBarThemeExtension
   });
 
   StoryboardAppBarThemeExtension.fake()
-      : titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        subtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        showWidgetOptionsButtonIcon =
-            kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )],
-        themeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )],
-        buttonSpacing = faker.randomGenerator.decimal();
+    : titleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      subtitleTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      showWidgetOptionsButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      themeButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      buttonSpacing = faker.randomGenerator.decimal();
 
   @override
   StoryboardAppBarThemeExtension copyWith({

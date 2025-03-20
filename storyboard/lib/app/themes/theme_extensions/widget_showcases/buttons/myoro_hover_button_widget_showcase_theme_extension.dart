@@ -48,24 +48,24 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension
   });
 
   MyoroHoverButtonWidgetShowcaseThemeExtension.fake()
-      : widgetContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-        widgetContentTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
-        colorDropdownitemPrimaryColor =
-            kMyoroTestColors[faker.randomGenerator.integer(
-          kMyoroTestColors.length,
-        )],
-        colorDropdownItemPadding = EdgeInsets.all(
-          faker.randomGenerator.decimal(),
-        ),
-        colorDropdownItemColorSize = Size(
-          faker.randomGenerator.decimal(),
-          faker.randomGenerator.decimal(),
-        ),
-        colorDropdownItemColorTextStyle =
-            MyoroTypographyTheme.instance.randomTextStyle,
-        colorDropdownItemSpacing = faker.randomGenerator.decimal(),
-        borderRadiusSliderMaxValue = faker.randomGenerator.decimal(),
-        borderRadiusSliderMaxValueBordered = faker.randomGenerator.boolean();
+    : widgetContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      widgetContentTextStyle = MyoroTypographyTheme.instance.randomTextStyle,
+      colorDropdownitemPrimaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      colorDropdownItemPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(),
+      ),
+      colorDropdownItemColorSize = Size(
+        faker.randomGenerator.decimal(),
+        faker.randomGenerator.decimal(),
+      ),
+      colorDropdownItemColorTextStyle =
+          MyoroTypographyTheme.instance.randomTextStyle,
+      colorDropdownItemSpacing = faker.randomGenerator.decimal(),
+      borderRadiusSliderMaxValue = faker.randomGenerator.decimal(),
+      borderRadiusSliderMaxValueBordered = faker.randomGenerator.boolean();
 
   @override
   MyoroHoverButtonWidgetShowcaseThemeExtension copyWith({
@@ -89,13 +89,15 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension
           colorDropdownItemPadding ?? this.colorDropdownItemPadding,
       colorDropdownItemColorSize:
           colorDropdownItemColorSize ?? this.colorDropdownItemColorSize,
-      colorDropdownItemColorTextStyle: colorDropdownItemColorTextStyle ??
+      colorDropdownItemColorTextStyle:
+          colorDropdownItemColorTextStyle ??
           this.colorDropdownItemColorTextStyle,
       colorDropdownItemSpacing:
           colorDropdownItemSpacing ?? this.colorDropdownItemSpacing,
       borderRadiusSliderMaxValue:
           borderRadiusSliderMaxValue ?? this.borderRadiusSliderMaxValue,
-      borderRadiusSliderMaxValueBordered: borderRadiusSliderMaxValueBordered ??
+      borderRadiusSliderMaxValueBordered:
+          borderRadiusSliderMaxValueBordered ??
           this.borderRadiusSliderMaxValueBordered,
     );
   }
@@ -103,7 +105,7 @@ final class MyoroHoverButtonWidgetShowcaseThemeExtension
   @override
   MyoroHoverButtonWidgetShowcaseThemeExtension lerp(
     covariant ThemeExtension<MyoroHoverButtonWidgetShowcaseThemeExtension>?
-        other,
+    other,
     double t,
   ) {
     if (other is! MyoroHoverButtonWidgetShowcaseThemeExtension) return this;

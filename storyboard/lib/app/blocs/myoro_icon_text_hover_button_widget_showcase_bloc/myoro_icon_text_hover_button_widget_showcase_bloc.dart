@@ -10,11 +10,14 @@ part 'myoro_icon_text_hover_button_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroIconTextHoverButtonWidgetShowcaseState>;
 
 /// BLoC of [MyoroIconTextHoverButtonWidgetShowcase].
-final class MyoroIconTextHoverButtonWidgetShowcaseBloc extends Bloc<
-    MyoroIconTextHoverButtonWidgetShowcaseEvent,
-    MyoroIconTextHoverButtonWidgetShowcaseState> {
+final class MyoroIconTextHoverButtonWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroIconTextHoverButtonWidgetShowcaseEvent,
+          MyoroIconTextHoverButtonWidgetShowcaseState
+        > {
   MyoroIconTextHoverButtonWidgetShowcaseBloc()
-      : super(MyoroIconTextHoverButtonWidgetShowcaseState()) {
+    : super(MyoroIconTextHoverButtonWidgetShowcaseState()) {
     on<SetIconEvent>(_setIconEvent);
     on<SetIconSizeEvent>(_setIconSizeEvent);
     on<SetTextEvent>(_setTextEvent);

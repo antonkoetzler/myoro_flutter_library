@@ -22,11 +22,12 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension
   });
 
   MyoroSnackBarWidgetShowcaseThemeExtension.fake()
-      : inputStyle = MyoroInputStyleEnum.fake(),
-        widgetBordered = faker.randomGenerator.boolean(),
-        childIcon = kMyoroTestIcons[faker.randomGenerator.integer(
-          kMyoroTestIcons.length,
-        )];
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      widgetBordered = faker.randomGenerator.boolean(),
+      childIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
   @override
   MyoroSnackBarWidgetShowcaseThemeExtension copyWith({

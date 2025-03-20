@@ -16,8 +16,9 @@ void main() {
           create: (_) => WidgetShowcaseBloc(),
           child: Builder(
             builder: (BuildContext context) {
-              themeExtension = context
-                  .resolveThemeExtension<StoryboardAppBarThemeExtension>();
+              themeExtension =
+                  context
+                      .resolveThemeExtension<StoryboardAppBarThemeExtension>();
               return const StoryboardAppBar();
             },
           ),

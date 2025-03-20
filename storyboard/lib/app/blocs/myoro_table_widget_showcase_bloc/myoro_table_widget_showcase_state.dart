@@ -30,7 +30,8 @@ final class MyoroTableWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroTableWidgetShowcaseState(\n'
       '  enableColumnResizing: $enableColumnResizing,\n'
       '  enableCheckboxes: $enableCheckboxes,\n'
