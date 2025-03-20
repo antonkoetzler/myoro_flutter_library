@@ -1,4 +1,4 @@
-# 1.1.4
+# 1.1.0
 
 1. Implement all tests (MyoroLocalDatabase wasn't created yet);
 1. Remove the `core` and `commons` directories placing all of their contents in `lib`;
