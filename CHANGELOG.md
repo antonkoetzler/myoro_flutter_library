@@ -2,7 +2,7 @@
 
 ## 1.2.0
 
-1. Removed `./lib/themes` and placed contents of the folder in `./lib`;
+1. Removed `./lib/themes` directory and moved contents of it in `./lib`;
 1. Moved functions that creates the principal `ThemeData` to `./lib/functions/theme_data`;'
 1. `MyoroColorTheme` -> `MyoroColorDesignSystem`;
 1. `MyoroTypographyTheme` --> `MyoroTypographyDesignSystem`;
