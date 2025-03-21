@@ -42,7 +42,7 @@ void main() {
             w is Tooltip &&
             w.message == text &&
             w.waitDuration == (waitDuration ?? themeExtension.waitDuration) &&
-            w.margin == margin &&
+            w.margin == (margin ?? themeExtension.margin) &&
             w.child is SizedBox,
       ),
       findsOneWidget,

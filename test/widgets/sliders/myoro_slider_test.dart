@@ -35,10 +35,10 @@ void main() {
   }
 
   setUp(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    labelTextStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 
   testWidgets('MyoroSlider', (WidgetTester tester) async {

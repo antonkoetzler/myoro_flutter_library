@@ -10,7 +10,7 @@ void main() {
 
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardThemeExtensions,
+        themeExtensionsBuilder: createThemeExtensions,
         child: Builder(
           builder: (BuildContext context) {
             themeExtension =

@@ -376,7 +376,7 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
                   : menuYStartBottomPosition,
           left: inputPosition.dx,
           child: Material(
-            color: MyoroColorTheme.transparent,
+            color: MyoroColorDesignSystem.transparent,
             child: _Menu(
               _controller,
               _configuration,
@@ -578,12 +578,12 @@ final class _TriggerArea<T> extends StatelessWidget {
                     : 0,
           ),
           child: InkWell(
-            focusColor: MyoroColorTheme.transparent,
-            hoverColor: MyoroColorTheme.transparent,
-            splashColor: MyoroColorTheme.transparent,
-            highlightColor: MyoroColorTheme.transparent,
+            focusColor: MyoroColorDesignSystem.transparent,
+            hoverColor: MyoroColorDesignSystem.transparent,
+            splashColor: MyoroColorDesignSystem.transparent,
+            highlightColor: MyoroColorDesignSystem.transparent,
             onTap: _onPressed,
-            child: Container(color: MyoroColorTheme.transparent),
+            child: Container(color: MyoroColorDesignSystem.transparent),
           ),
         );
       },

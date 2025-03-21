@@ -11,12 +11,12 @@ void main() {
   final bool barrierDismissable = faker.randomGenerator.boolean();
 
   setUp(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
     titleTextStyle =
         faker.randomGenerator.boolean()
-            ? MyoroTypographyTheme.instance.randomTextStyle
+            ? MyoroTypographyDesignSystem.instance.randomTextStyle
             : null;
   });
 
@@ -69,7 +69,7 @@ void main() {
             w is GestureDetector &&
             (barrierDismissable ? w.onTap != null : w.onTap == null) &&
             w.child is Container &&
-            (w.child as Container).color == MyoroColorTheme.transparent,
+            (w.child as Container).color == MyoroColorDesignSystem.transparent,
       ),
       findsOneWidget,
     );

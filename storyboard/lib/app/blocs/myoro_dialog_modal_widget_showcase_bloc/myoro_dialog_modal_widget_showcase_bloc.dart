@@ -10,10 +10,14 @@ part 'myoro_dialog_modal_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroDialogModalWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroDialogModalWidgetShowcase].
-final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<
-    MyoroDialogModalWidgetShowcaseEvent, MyoroDialogModalWidgetShowcaseState> {
+final class MyoroDialogModalWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroDialogModalWidgetShowcaseEvent,
+          MyoroDialogModalWidgetShowcaseState
+        > {
   MyoroDialogModalWidgetShowcaseBloc()
-      : super(const MyoroDialogModalWidgetShowcaseState()) {
+    : super(const MyoroDialogModalWidgetShowcaseState()) {
     on<SetInvertButtonsEvent>(_setInvertButtonsEvent);
     on<SetConfirmButtonTextEvent>(_setConfirmButtonTextEvent);
     on<SetTextEvent>(_setTextEvent);

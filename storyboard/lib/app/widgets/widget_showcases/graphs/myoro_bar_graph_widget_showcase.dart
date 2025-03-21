@@ -26,8 +26,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroBarGraphWidgetShowcaseBloc,
-        MyoroBarGraphWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroBarGraphWidgetShowcaseBloc,
+      MyoroBarGraphWidgetShowcaseState
+    >(
       builder: (_, MyoroBarGraphWidgetShowcaseState state) {
         return MyoroBarGraph(
           sorted: state.sorted,
@@ -39,12 +41,13 @@ final class _Widget extends StatelessWidget {
                 faker.randomGenerator.integer(5),
                 (_) => MyoroBarGraphBar(
                   y: faker.randomGenerator.decimal(),
-                  color: [
-                    Colors.red,
-                    Colors.green,
-                    Colors.blue,
-                    MyoroColorTheme.secondary(context),
-                  ][faker.randomGenerator.integer(4)],
+                  color:
+                      [
+                        Colors.red,
+                        Colors.green,
+                        Colors.blue,
+                        MyoroColorDesignSystem.secondary(context),
+                      ][faker.randomGenerator.integer(4)],
                 ),
               ),
             ),

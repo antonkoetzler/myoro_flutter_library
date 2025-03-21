@@ -9,7 +9,7 @@ void main() {
   testWidgets('MyoroMultiDropdownWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardThemeExtensions,
+        themeExtensionsBuilder: createThemeExtensions,
         child: BlocProvider(
           create: (_) => WidgetShowcaseBloc(),
           child: const MyoroMultiDropdownWidgetShowcase(),

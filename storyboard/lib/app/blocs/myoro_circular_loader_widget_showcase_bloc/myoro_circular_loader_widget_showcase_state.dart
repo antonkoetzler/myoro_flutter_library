@@ -24,7 +24,8 @@ final class MyoroCircularLoaderWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroCircularLoaderWidgetShowcaseState(\n'
       '  color: $color,\n'
       '  size: $size,\n'

@@ -39,23 +39,26 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
   }) {
     return MyoroSliderWidgetShowcaseState(
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleEnabled
-          ? (labelTextStyle ?? this.labelTextStyle)
-          : null,
+      labelTextStyle:
+          labelTextStyleEnabled
+              ? (labelTextStyle ?? this.labelTextStyle)
+              : null,
       width: width ?? this.width,
       currentValueIndicatorTextBuilderEnabled:
           currentValueIndicatorTextBuilderEnabled ??
-              this.currentValueIndicatorTextBuilderEnabled,
+          this.currentValueIndicatorTextBuilderEnabled,
       maxValueIndicatorTextBuilderEnabled:
           maxValueIndicatorTextBuilderEnabled ??
-              this.maxValueIndicatorTextBuilderEnabled,
-      footerIndicatorTextBuilderEnabled: footerIndicatorTextBuilderEnabled ??
+          this.maxValueIndicatorTextBuilderEnabled,
+      footerIndicatorTextBuilderEnabled:
+          footerIndicatorTextBuilderEnabled ??
           this.footerIndicatorTextBuilderEnabled,
     );
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroSliderWidgetShowcaseState(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'

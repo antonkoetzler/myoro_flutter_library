@@ -11,13 +11,14 @@ void main() {
 
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardThemeExtensions,
+        themeExtensionsBuilder: createThemeExtensions,
         child: BlocProvider(
           create: (_) => WidgetShowcaseBloc(),
           child: Builder(
             builder: (BuildContext context) {
-              themeExtension = context
-                  .resolveThemeExtension<StoryboardAppBarThemeExtension>();
+              themeExtension =
+                  context
+                      .resolveThemeExtension<StoryboardAppBarThemeExtension>();
               return const StoryboardAppBar();
             },
           ),

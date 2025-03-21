@@ -11,11 +11,14 @@ void main() {
 
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardThemeExtensions,
+        themeExtensionsBuilder: createThemeExtensions,
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<
-                MyoroDrawerWidgetShowcaseThemeExtension>();
+            themeExtension =
+                context
+                    .resolveThemeExtension<
+                      MyoroDrawerWidgetShowcaseThemeExtension
+                    >();
 
             return BlocProvider(
               create: (_) => WidgetShowcaseBloc(),

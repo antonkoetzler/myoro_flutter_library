@@ -31,8 +31,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroCarouselWidgetShowcaseBloc,
-        MyoroCarouselWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroCarouselWidgetShowcaseBloc,
+      MyoroCarouselWidgetShowcaseState
+    >(
       builder: (_, MyoroCarouselWidgetShowcaseState state) {
         return MyoroCarousel(
           direction: state.direction,
@@ -44,9 +46,10 @@ final class _Widget extends StatelessWidget {
             (_) => Container(
               width: 300,
               height: 300,
-              color: kMyoroTestColors[faker.randomGenerator.integer(
-                kMyoroTestColors.length,
-              )],
+              color:
+                  kMyoroTestColors[faker.randomGenerator.integer(
+                    kMyoroTestColors.length,
+                  )],
             ),
           ),
         );
@@ -80,14 +83,16 @@ final class _DirectionOptionState extends State<_DirectionOption> {
       configuration: MyoroDropdownConfiguration(
         label: '[MyoroCarousel.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        itemBuilder: (Axis direction) =>
-            MyoroMenuItem(text: _getDirectionName(direction)),
+        itemBuilder:
+            (Axis direction) =>
+                MyoroMenuItem(text: _getDirectionName(direction)),
         itemLabelBuilder: _getDirectionName,
         allowItemClearing: false,
       ),
-      onChanged: (Axis? direction) => context
-          .resolveBloc<MyoroCarouselWidgetShowcaseBloc>()
-          .add(SetDirectionEvent(direction!)),
+      onChanged:
+          (Axis? direction) => context
+              .resolveBloc<MyoroCarouselWidgetShowcaseBloc>()
+              .add(SetDirectionEvent(direction!)),
       controller: _controller,
     );
   }
@@ -137,9 +142,8 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
       maxValue: 5,
       onChanged: (double value) {
         context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(
-              SetAutoplayIntervalDurationEvent(
-                  Duration(seconds: value.toInt())),
-            );
+          SetAutoplayIntervalDurationEvent(Duration(seconds: value.toInt())),
+        );
       },
     );
   }

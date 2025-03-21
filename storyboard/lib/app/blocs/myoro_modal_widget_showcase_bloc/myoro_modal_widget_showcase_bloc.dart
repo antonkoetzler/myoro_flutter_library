@@ -13,7 +13,7 @@ typedef _Emitter = Emitter<MyoroModalWidgetShowcaseState>;
 final class MyoroModalWidgetShowcaseBloc
     extends Bloc<MyoroModalWidgetShowcaseEvent, MyoroModalWidgetShowcaseState> {
   MyoroModalWidgetShowcaseBloc()
-      : super(const MyoroModalWidgetShowcaseState()) {
+    : super(const MyoroModalWidgetShowcaseState()) {
     on<SetBarrierDismissableEvent>(_setBarrierDismissableEvent);
     on<SetMinWidthEvent>(_setMinWidthEvent);
     on<SetMaxWidthEvent>(_setMaxWidthEvent);

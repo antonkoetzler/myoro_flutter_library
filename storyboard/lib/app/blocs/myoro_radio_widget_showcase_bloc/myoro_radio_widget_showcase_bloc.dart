@@ -13,7 +13,7 @@ typedef _Emitter = Emitter<MyoroRadioWidgetShowcaseState>;
 final class MyoroRadioWidgetShowcaseBloc
     extends Bloc<MyoroRadioWidgetShowcaseEvent, MyoroRadioWidgetShowcaseState> {
   MyoroRadioWidgetShowcaseBloc()
-      : super(const MyoroRadioWidgetShowcaseState()) {
+    : super(const MyoroRadioWidgetShowcaseState()) {
     on<SetLabelEvent>(_setLabelEvent);
     on<SetLabelTextStyleEvent>(_setLabelTextStyleEvent);
   }

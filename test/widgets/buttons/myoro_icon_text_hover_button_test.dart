@@ -33,10 +33,10 @@ void main() {
   bool onPressedExecuted = false;
 
   setUp(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
-    textStyle = MyoroTypographyTheme.instance.randomTextStyle;
+    textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 
   testWidgets('MyoroIconTextHoverButton', (WidgetTester tester) async {

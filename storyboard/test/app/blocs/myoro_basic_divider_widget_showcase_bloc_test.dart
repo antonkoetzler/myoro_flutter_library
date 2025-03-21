@@ -15,37 +15,41 @@ void main() {
     'MyoroBasicDividerWidgetShowcaseBloc.SetDirectionEvent',
     build: () => MyoroBasicDividerWidgetShowcaseBloc(shortValue: shortValue),
     act: (bloc) => bloc.add(SetDirectionEvent(direction)),
-    expect: () => [
-      MyoroBasicDividerWidgetShowcaseState(
-        shortValue: shortValue,
-        direction: direction,
-      ),
-    ],
+    expect:
+        () => [
+          MyoroBasicDividerWidgetShowcaseState(
+            shortValue: shortValue,
+            direction: direction,
+          ),
+        ],
   );
 
   blocTest(
     'MyoroBasicDividerWidgetShowcaseBloc.SetShortValueEvent',
     build: () => MyoroBasicDividerWidgetShowcaseBloc(shortValue: shortValue),
     act: (bloc) => bloc.add(SetShortValueEvent(newShortValue)),
-    expect: () =>
-        [MyoroBasicDividerWidgetShowcaseState(shortValue: newShortValue)],
+    expect:
+        () => [MyoroBasicDividerWidgetShowcaseState(shortValue: newShortValue)],
   );
 
   blocTest(
     'MyoroBasicDividerWidgetShowcaseBloc.SetPaddingEvent',
     build: () => MyoroBasicDividerWidgetShowcaseBloc(shortValue: shortValue),
-    act: (bloc) => bloc
-      ..add(SetPaddingEvent(Axis.vertical, padding))
-      ..add(SetPaddingEvent(Axis.horizontal, padding)),
-    expect: () => [
-      MyoroBasicDividerWidgetShowcaseState(
-        shortValue: shortValue,
-        verticalPadding: padding,
-      ),
-      MyoroBasicDividerWidgetShowcaseState(
-        shortValue: shortValue,
-        horizontalPadding: padding,
-      ),
-    ],
+    act:
+        (bloc) =>
+            bloc
+              ..add(SetPaddingEvent(Axis.vertical, padding))
+              ..add(SetPaddingEvent(Axis.horizontal, padding)),
+    expect:
+        () => [
+          MyoroBasicDividerWidgetShowcaseState(
+            shortValue: shortValue,
+            verticalPadding: padding,
+          ),
+          MyoroBasicDividerWidgetShowcaseState(
+            shortValue: shortValue,
+            horizontalPadding: padding,
+          ),
+        ],
   );
 }

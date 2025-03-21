@@ -36,11 +36,10 @@ void main() {
             w.child is MaterialApp &&
             !(w.child as MaterialApp).debugShowCheckedModeBanner &&
             (w.child as MaterialApp).title == title &&
-            (w.child as MaterialApp).home is Builder &&
+            (w.child as MaterialApp).home is MyoroScreen &&
             (w.child as MaterialApp).themeMode == (themeMode ?? ThemeMode.dark),
       ),
       findsOneWidget,
     );
-    expect(find.byType(MyoroScreen), findsOneWidget);
   });
 }

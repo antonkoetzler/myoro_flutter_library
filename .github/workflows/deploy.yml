@@ -35,19 +35,21 @@ jobs:
 
       - name: Determine new version
         id: new_version
+        env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
           IFS='.' read -r -a VERSION_ARRAY <<< "$VERSION"
           PATCH=${VERSION_ARRAY[2]}
           MINOR=${VERSION_ARRAY[1]}
           MAJOR=${VERSION_ARRAY[0]}
           
-          echo "Commit message: $GITHUB_EVENT_HEAD_COMMIT_MESSAGE"
+          echo "Commit message: $COMMIT_MESSAGE"
           
-          if [[ "$GITHUB_EVENT_HEAD_COMMIT_MESSAGE" == *"major"* ]]; then
+          if [[ "$COMMIT_MESSAGE" == *"major"* ]]; then
             MAJOR=$((MAJOR + 1))
             MINOR=0
             PATCH=0
-          elif [[ "$GITHUB_EVENT_HEAD_COMMIT_MESSAGE" == *"minor"* ]]; then
+          elif [[ "$COMMIT_MESSAGE" == *"minor"* ]]; then
             MINOR=$((MINOR + 1))
             PATCH=0
           else
@@ -68,6 +70,7 @@ jobs:
         run: |
           sed -i "s/^version: .*/version: $NEW_VERSION/" pubspec.yaml
           rm pubspec.lock
+          flutter clean
           flutter pub get
 
       - name: Deploy
@@ -77,23 +80,3 @@ jobs:
           git tag "v$NEW_VERSION"
           git push origin main --force
           git push origin "v$NEW_VERSION"
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          token: ${{ secrets.TOKEN }}
-          tag_name: "v${{ env.NEW_VERSION }}"
-          name: "Release v${{ env.NEW_VERSION }}"
-          body_path: "CHANGELOG.md"
-          draft: false
-          prerelease: false
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          token: ${{ secrets.TOKEN }}
-          tag_name: "v${{ env.NEW_VERSION }}"
-          name: "Release v${{ env.NEW_VERSION }}"
-          body: "## Changes\n\n- Auto-generated release for version ${{ env.NEW_VERSION }}"
-          draft: false
-          prerelease: false

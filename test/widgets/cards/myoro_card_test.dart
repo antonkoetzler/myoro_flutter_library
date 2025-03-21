@@ -17,12 +17,12 @@ void main() {
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   setUp(() {
-    MyoroTypographyTheme.textTheme = createMyoroTextTheme(
+    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
       faker.randomGenerator.boolean(),
     );
     titleTextStyle =
         faker.randomGenerator.boolean()
-            ? MyoroTypographyTheme.instance.randomTextStyle
+            ? MyoroTypographyDesignSystem.instance.randomTextStyle
             : null;
   });
 

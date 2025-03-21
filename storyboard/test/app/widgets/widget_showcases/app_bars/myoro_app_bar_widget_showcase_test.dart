@@ -11,13 +11,16 @@ void main() {
 
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardThemeExtensions,
+        themeExtensionsBuilder: createThemeExtensions,
         child: BlocProvider(
           create: (_) => WidgetShowcaseBloc(),
           child: Builder(
             builder: (BuildContext context) {
-              themeExtension = context.resolveThemeExtension<
-                  MyoroAppBarWidgetShowcaseThemeExtension>();
+              themeExtension =
+                  context
+                      .resolveThemeExtension<
+                        MyoroAppBarWidgetShowcaseThemeExtension
+                      >();
 
               return const MyoroAppBarWidgetShowcase();
             },
@@ -51,9 +54,11 @@ void main() {
                 3 &&
             // (((w.child as SizedBox).child as Wrap).children.first as Row).children.first is _MockAppLogo &&
             (((w.child as SizedBox).child as Wrap).children.first as Row)
-                .children[1] is SizedBox &&
+                    .children[1]
+                is SizedBox &&
             ((((w.child as SizedBox).child as Wrap).children.first as Row)
-                        .children[1] as SizedBox)
+                            .children[1]
+                        as SizedBox)
                     .width ==
                 themeExtension.logoTitleSpacing,
         // (((w.child as SizedBox).child as Wrap).children.first as Row).children.last is _MockAppTitle &&

@@ -144,8 +144,8 @@ final class _TriggerArea extends StatelessWidget {
         return Theme(
           data: context.themeData.copyWith(
             colorScheme: context.themeData.colorScheme.copyWith(
-              primary: MyoroColorTheme.secondary(context),
-              onPrimary: MyoroColorTheme.primary(context),
+              primary: MyoroColorDesignSystem.secondary(context),
+              onPrimary: MyoroColorDesignSystem.primary(context),
             ),
           ),
           child: child!,
@@ -170,10 +170,10 @@ final class _TriggerArea extends StatelessWidget {
                     : 0,
           ),
           child: InkWell(
-            focusColor: MyoroColorTheme.transparent,
-            hoverColor: MyoroColorTheme.transparent,
-            splashColor: MyoroColorTheme.transparent,
-            highlightColor: MyoroColorTheme.transparent,
+            focusColor: MyoroColorDesignSystem.transparent,
+            hoverColor: MyoroColorDesignSystem.transparent,
+            splashColor: MyoroColorDesignSystem.transparent,
+            highlightColor: MyoroColorDesignSystem.transparent,
             onTap: () => _openDatePicker(context),
             child: MyoroLayoutBuilder(
               builder: (_, BoxConstraints constraints) {

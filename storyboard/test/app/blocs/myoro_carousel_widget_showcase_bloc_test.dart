@@ -21,13 +21,15 @@ void main() {
   blocTest(
     'MyoroCarouselWidgetShowcaseBloc.SetDisplayTraversalButtonsEvent',
     build: () => MyoroCarouselWidgetShowcaseBloc(),
-    act: (bloc) =>
-        bloc.add(SetDisplayTraversalButtonsEvent(displayTraversalButtons)),
-    expect: () => [
-      MyoroCarouselWidgetShowcaseState(
-        displayTraversalButtons: displayTraversalButtons,
-      ),
-    ],
+    act:
+        (bloc) =>
+            bloc.add(SetDisplayTraversalButtonsEvent(displayTraversalButtons)),
+    expect:
+        () => [
+          MyoroCarouselWidgetShowcaseState(
+            displayTraversalButtons: displayTraversalButtons,
+          ),
+        ],
   );
 
   blocTest(
@@ -40,13 +42,15 @@ void main() {
   blocTest(
     'MyoroCarouselWidgetShowcaseBloc.SetAutoplayIntervalDurationEvent',
     build: () => MyoroCarouselWidgetShowcaseBloc(),
-    act: (bloc) => bloc.add(
-      const SetAutoplayIntervalDurationEvent(autoplayIntervalDuration),
-    ),
-    expect: () => const [
-      MyoroCarouselWidgetShowcaseState(
-        autoplayIntervalDuration: autoplayIntervalDuration,
-      ),
-    ],
+    act:
+        (bloc) => bloc.add(
+          const SetAutoplayIntervalDurationEvent(autoplayIntervalDuration),
+        ),
+    expect:
+        () => const [
+          MyoroCarouselWidgetShowcaseState(
+            autoplayIntervalDuration: autoplayIntervalDuration,
+          ),
+        ],
   );
 }

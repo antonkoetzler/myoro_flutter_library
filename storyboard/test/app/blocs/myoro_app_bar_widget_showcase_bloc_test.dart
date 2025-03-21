@@ -6,12 +6,15 @@ void main() {
   blocTest(
     'MyoroAppBarWidgetShowcaseBloc.ToggleBorderedEvent',
     build: () => MyoroAppBarWidgetShowcaseBloc(),
-    act: (bloc) => bloc
-      ..add(const ToggleBorderedEvent())
-      ..add(const ToggleBorderedEvent()),
-    expect: () => const [
-      MyoroAppBarWidgetShowcaseState(bordered: false),
-      MyoroAppBarWidgetShowcaseState(bordered: true),
-    ],
+    act:
+        (bloc) =>
+            bloc
+              ..add(const ToggleBorderedEvent())
+              ..add(const ToggleBorderedEvent()),
+    expect:
+        () => const [
+          MyoroAppBarWidgetShowcaseState(bordered: false),
+          MyoroAppBarWidgetShowcaseState(bordered: true),
+        ],
   );
 }

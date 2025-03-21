@@ -29,7 +29,8 @@ final class MyoroGroupRadioWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroGroupRadioWidgetShowcaseState(\n'
       '  direction: $direction,\n'
       '  spacing: $spacing,\n'

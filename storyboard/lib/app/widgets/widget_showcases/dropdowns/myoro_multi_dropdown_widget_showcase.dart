@@ -60,9 +60,10 @@ final class _Widget extends StatelessWidget {
   ) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        snackBarType: enabled
-            ? MyoroSnackBarTypeEnum.success
-            : MyoroSnackBarTypeEnum.error,
+        snackBarType:
+            enabled
+                ? MyoroSnackBarTypeEnum.success
+                : MyoroSnackBarTypeEnum.error,
         message:
             'Dropdown ${enabled ? 'enabled' : 'disabled'}! ${item != null ? 'Selected item is $item' : 'No selected items'}.',
       ),
@@ -78,8 +79,10 @@ final class _Widget extends StatelessWidget {
       ),
     );
 
-    return BlocBuilder<MyoroDropdownWidgetShowcasesBloc,
-        MyoroDropdownWidgetShowcasesState>(
+    return BlocBuilder<
+      MyoroDropdownWidgetShowcasesBloc,
+      MyoroDropdownWidgetShowcasesState
+    >(
       builder: (_, MyoroDropdownWidgetShowcasesState state) {
         return MyoroMultiDropdown<String>(
           configuration: MyoroDropdownConfiguration<String>(
@@ -95,10 +98,11 @@ final class _Widget extends StatelessWidget {
                 state.menuSearchCallbackEnabled ? _menuSearchCallback : null,
           ),
           onChanged: (List<String> items) => _onChanged(context, items),
-          checkboxOnChanged: state.checkboxOnChangedEnabled
-              ? (bool enabled, List<String> items) =>
-                  _checkboxOnChanged(context, enabled, items)
-              : null,
+          checkboxOnChanged:
+              state.checkboxOnChangedEnabled
+                  ? (bool enabled, List<String> items) =>
+                      _checkboxOnChanged(context, enabled, items)
+                  : null,
         );
       },
     );
@@ -125,7 +129,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
   const _LabelTextStyleOption();
 
   MyoroMenuItem _itemBuilder(
-    MyoroTypographyTheme typographyInstance,
+    MyoroTypographyDesignSystem typographyInstance,
     TextStyle textStyle,
   ) {
     return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
@@ -133,7 +137,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyTheme.instance;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
     final dataConfiguration = MyoroDataConfiguration<TextStyle>(
       staticItems: typographyInstance.allTextStyles,
     );
@@ -142,14 +146,15 @@ final class _LabelTextStyleOption extends StatelessWidget {
       configuration: MyoroDropdownConfiguration(
         label: 'Label text style',
         dataConfiguration: dataConfiguration,
-        itemBuilder: (TextStyle textStyle) =>
-            _itemBuilder(typographyInstance, textStyle),
+        itemBuilder:
+            (TextStyle textStyle) =>
+                _itemBuilder(typographyInstance, textStyle),
         itemLabelBuilder: typographyInstance.getTextStyleName,
       ),
       onChanged: (TextStyle? textStyle) {
         context.resolveBloc<MyoroDropdownWidgetShowcasesBloc>().add(
-              SetLabelTextStyleEvent(textStyle),
-            );
+          SetLabelTextStyleEvent(textStyle),
+        );
       },
     );
   }
@@ -195,10 +200,12 @@ final class _MenuMaxHeightOption extends StatelessWidget {
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
         label: 'Menu\'s max height',
-        onChanged: (String text) =>
-            bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
-        checkboxOnChanged: (bool enabled, String text) =>
-            bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
+        onChanged:
+            (String text) =>
+                bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
+        checkboxOnChanged:
+            (bool enabled, String text) =>
+                bloc.add(SetMenuMaxHeightEvent(double.parse(text))),
       ),
       max: 400,
     );
@@ -215,8 +222,8 @@ final class _MenuSearchCallbackEnabledOption extends StatelessWidget {
     return MyoroCheckbox(
       label: 'Searching enabled?',
       initialValue: bloc.state.menuSearchCallbackEnabled,
-      onChanged: (bool value) =>
-          bloc.add(SetMenuSearchCallbackEnabledEvent(value)),
+      onChanged:
+          (bool value) => bloc.add(SetMenuSearchCallbackEnabledEvent(value)),
     );
   }
 }

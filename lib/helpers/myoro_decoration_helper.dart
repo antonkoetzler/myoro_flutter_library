@@ -13,6 +13,9 @@ final class MyoroDecorationHelper {
 
   /// Default [Border] for a, for example, [Container].
   static Border border(BuildContext context) {
-    return Border.all(width: 2, color: MyoroColorTheme.secondary(context));
+    return Border.all(
+      width: 2,
+      color: MyoroColorDesignSystem.secondary(context),
+    );
   }
 }

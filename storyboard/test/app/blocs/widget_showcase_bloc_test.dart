@@ -9,25 +9,28 @@ void main() {
   blocTest(
     'WidgetShowcaseBloc.ToggleWidgetShowcaseDisplayEvent',
     build: () => WidgetShowcaseBloc(),
-    act: (bloc) => bloc.add(
-      ToggleWidgetShowcaseDisplayEvent(enabled: displayingWidgetShowcase),
-    ),
-    expect: () => [
-      WidgetShowcaseState(
-        displayingWidgetShowcase: displayingWidgetShowcase,
-      ),
-    ],
+    act:
+        (bloc) => bloc.add(
+          ToggleWidgetShowcaseDisplayEvent(enabled: displayingWidgetShowcase),
+        ),
+    expect:
+        () => [
+          WidgetShowcaseState(
+            displayingWidgetShowcase: displayingWidgetShowcase,
+          ),
+        ],
   );
 
   blocTest(
     'WidgetShowcaseBloc.ToggleWidgetOptionsDisplayEvent',
     build: () => WidgetShowcaseBloc(),
     act: (bloc) => bloc.add(const ToggleWidgetOptionsDisplayEvent()),
-    expect: () => [
-      WidgetShowcaseState(
-        displayingWidgetOptions:
-            !const WidgetShowcaseState().displayingWidgetOptions,
-      ),
-    ],
+    expect:
+        () => [
+          WidgetShowcaseState(
+            displayingWidgetOptions:
+                !const WidgetShowcaseState().displayingWidgetOptions,
+          ),
+        ],
   );
 }

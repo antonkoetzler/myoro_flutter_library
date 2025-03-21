@@ -13,7 +13,8 @@ final class MyoroMaterialAppWidgetShowcaseState extends Equatable {
   }
 
   @override
-  String toString() => ''
+  String toString() =>
+      ''
       'MyoroMaterialAppWidgetShowcaseState(\n'
       '  themeMode: $themeMode,\n'
       ');';
