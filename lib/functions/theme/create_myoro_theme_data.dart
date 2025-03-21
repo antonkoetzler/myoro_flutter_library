@@ -8,11 +8,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [MyoroColorDesignSystem], & [MyoroTypographyDesignSystem] should be used for
 /// creating & styling widgets.
 ThemeData createMyoroThemeData(
+  MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder,
+  MyoroMaterialAppTextThemeBuilder? textThemeBuilder,
   MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder, {
   required bool isDarkMode,
 }) {
-  final colorScheme = createMyoroColorScheme(isDarkMode);
-  final textTheme = createMyoroTextTheme(isDarkMode);
+  final myoroColorScheme = createMyoroColorScheme(isDarkMode);
+  final myoroTextTheme = createMyoroTextTheme(isDarkMode);
+
+  final colorScheme =
+      colorSchemeBuilder?.call(myoroColorScheme) ?? myoroColorScheme;
+  final textTheme = textThemeBuilder?.call(myoroTextTheme) ?? myoroTextTheme;
 
   MyoroTypographyDesignSystem.textTheme = textTheme;
 

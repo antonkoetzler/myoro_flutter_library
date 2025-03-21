@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+/// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
+typedef MyoroMaterialAppColorSchemeBuilder =
+    ColorScheme Function(ColorScheme myoroColorScheme);
+
+/// Builder to create a custom [TextTheme] instead of using [createMyoroColorScheme].
+typedef MyoroMaterialAppTextThemeBuilder =
+    TextTheme Function(TextTheme myoroTextTheme);
+
 /// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
 typedef MyoroMaterialAppThemeExtensionsBuilder =
     List<ThemeExtension> Function(ColorScheme colorScheme, TextTheme textTheme);
@@ -16,6 +24,12 @@ final class MyoroMaterialApp extends StatelessWidget {
 
   /// Default theme (dark or light mode) of the application.
   final ThemeMode? themeMode;
+
+  /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
+  final MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder;
+
+  /// Builder to create a custom [TextTheme] instead of using [createMyoroColorScheme].
+  final MyoroMaterialAppTextThemeBuilder? textThemeBuilder;
 
   /// [ThemeExtension]s for the widgets in your application.
   ///
@@ -35,6 +49,8 @@ final class MyoroMaterialApp extends StatelessWidget {
     super.key,
     this.title,
     this.themeMode,
+    this.colorSchemeBuilder,
+    this.textThemeBuilder,
     this.themeExtensionsBuilder,
     this.localizationsDelegates,
     this.supportedLocales,
@@ -46,6 +62,10 @@ final class MyoroMaterialApp extends StatelessWidget {
     bool titleEnabled = false,
     ThemeMode? themeMode,
     bool themeModeEnabled = false,
+    MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder,
+    bool colorSchemeBuilderEnabled = false,
+    MyoroMaterialAppTextThemeBuilder? textThemeBuilder,
+    bool textThemeBuilderEnabled = false,
     MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
     bool themeExtensionsBuilderEnabled = false,
     MyoroScreen? home,
@@ -56,6 +76,12 @@ final class MyoroMaterialApp extends StatelessWidget {
           w is MyoroMaterialApp &&
           (titleEnabled ? w.title == title : true) &&
           (themeModeEnabled ? w.themeMode == themeMode : true) &&
+          (colorSchemeBuilderEnabled
+              ? w.colorSchemeBuilder == colorSchemeBuilder
+              : true) &&
+          (textThemeBuilderEnabled
+              ? w.textThemeBuilder == textThemeBuilder
+              : true) &&
           (themeExtensionsBuilderEnabled
               ? w.themeExtensionsBuilder == themeExtensionsBuilder
               : true) &&
@@ -77,7 +103,12 @@ final class MyoroMaterialApp extends StatelessWidget {
         supportedLocales:
             supportedLocales ?? const <Locale>[Locale('en', 'US')],
         themeMode: themeMode ?? ThemeMode.dark,
-        theme: createMyoroThemeData(themeExtensionsBuilder, isDarkMode: false),
+        theme: createMyoroThemeData(
+          colorSchemeBuilder,
+          textThemeBuilder,
+          themeExtensionsBuilder,
+          isDarkMode: false,
+        ),
         darkTheme: createMyoroThemeData(
           themeExtensionsBuilder,
           isDarkMode: true,
