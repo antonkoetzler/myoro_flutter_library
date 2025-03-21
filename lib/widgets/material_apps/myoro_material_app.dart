@@ -96,8 +96,8 @@ final class MyoroMaterialApp extends StatelessWidget {
       // Used with [Widget]s like [MyoroDropdown] which close the dropdown when anywhere else is clicked.
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: MaterialApp(
-        debugShowCheckedModeBanner:
-            false, // To not show the "Debug" banner at the top right of the screen.
+        // To not show the "Debug" banner at the top right of the screen.
+        debugShowCheckedModeBanner: false,
         title: title,
         localizationsDelegates: localizationsDelegates,
         supportedLocales:
@@ -110,6 +110,8 @@ final class MyoroMaterialApp extends StatelessWidget {
           isDarkMode: false,
         ),
         darkTheme: createMyoroThemeData(
+          colorSchemeBuilder,
+          textThemeBuilder,
           themeExtensionsBuilder,
           isDarkMode: true,
         ),
