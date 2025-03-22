@@ -1,13 +1,33 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+final class _FooThemeExtension extends ThemeExtension<_FooThemeExtension> {
+  const _FooThemeExtension();
+
+  @override
+  ThemeExtension<_FooThemeExtension> copyWith() {
+    return this;
+  }
+
+  @override
+  ThemeExtension<_FooThemeExtension> lerp(
+    covariant ThemeExtension<_FooThemeExtension>? other,
+    double t,
+  ) {
+    return this;
+  }
+}
+
 /// Widget test of [MyoroMaterialApp].
 void main() {
+  /// [MyoroMaterialApp.title]
   final String? title =
       faker.randomGenerator.boolean() ? faker.lorem.word() : null;
 
+  /// [MyoroMaterialApp.themeMode]
   final ThemeMode? themeMode =
       faker.randomGenerator.boolean()
           ? ThemeMode.values[faker.randomGenerator.integer(
@@ -15,18 +35,39 @@ void main() {
           )]
           : null;
 
+  /// [MyoroMaterialApp.colorSchemeBuilder]
   final MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder =
       faker.randomGenerator.boolean()
-          ? (ColorScheme colorScheme) => colorScheme.copyWith(
-            brightness: colorScheme.brightness,
-            primary: Colors.pink,
+          ? (ColorScheme colorScheme) =>
+              colorScheme.copyWith(primary: Colors.pink)
+          : null;
+
+  /// [MyoroMaterialApp.textThemeBuilder]
+  final Color bodySmallColor =
+      kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final MyoroMaterialAppTextThemeBuilder? textThemeBuilder =
+      faker.randomGenerator.boolean()
+          ? (TextTheme textTheme) => textTheme.copyWith(
+            bodySmall: textTheme.bodySmall!.withColor(bodySmallColor),
           )
           : null;
 
-  const textStyle = TextStyle();
-  final MyoroMaterialAppTextThemeBuilder? textThemeBuilder =
+  /// [MyoroMaterialApp.themeExtensionsBuilder]
+  final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder =
       faker.randomGenerator.boolean()
-          ? (TextTheme textTheme) => textTheme.copyWith(bodyLarge: textStyle)
+          ? (_, __) => const [_FooThemeExtension()]
+          : null;
+
+  /// [MyoroMaterialApp.localizationsDelegates]
+  final Iterable<LocalizationsDelegate>? localizationsDelegates =
+      faker.randomGenerator.boolean()
+          ? ([GlobalCupertinoLocalizations.delegate])
+          : null;
+
+  /// [MyoroMaterialApp.supportedLocales]
+  final List<Locale>? supportedLocales =
+      faker.randomGenerator.boolean()
+          ? const [Locale('en'), Locale('pt')]
           : null;
 
   testWidgets('MyoroMaterialApp', (WidgetTester tester) async {
@@ -38,6 +79,10 @@ void main() {
           title: title,
           themeMode: themeMode,
           colorSchemeBuilder: colorSchemeBuilder,
+          textThemeBuilder: textThemeBuilder,
+          themeExtensionsBuilder: themeExtensionsBuilder,
+          localizationsDelegates: localizationsDelegates,
+          supportedLocales: supportedLocales,
           home: Builder(
             builder: (BuildContext buildContext) {
               context = buildContext;
@@ -62,26 +107,37 @@ void main() {
             (w.child as MaterialApp).title == title &&
             (w.child as MaterialApp).themeMode ==
                 (themeMode ?? ThemeMode.dark) &&
+            (w.child as MaterialApp).localizationsDelegates?.length ==
+                (localizationsDelegates?.length ?? 3) &&
+            (w.child as MaterialApp).supportedLocales ==
+                (supportedLocales ?? const [Locale('en', 'US')]) &&
             (w.child as MaterialApp).home is Builder,
       ),
       findsOneWidget,
     );
 
-    // Grabbing if the test is in dark mode or not.
     final bool isDarkMode =
         themeMode != null ? themeMode == ThemeMode.dark : true;
+    final myoroColorScheme = createMyoroColorScheme(isDarkMode);
+    final myoroTextTheme = createMyoroTextTheme(isDarkMode);
+    final myoroThemeExtensions = createMyoroThemeExtensions(
+      myoroColorScheme,
+      myoroTextTheme,
+    );
 
     // Testing the generated [ColorScheme].
-    final myoroColorScheme = createMyoroColorScheme(isDarkMode);
-    expect(
-      ColorScheme.of(context) == myoroColorScheme,
-      colorSchemeBuilder == null,
-    );
+    expect(context.colorScheme == myoroColorScheme, colorSchemeBuilder == null);
 
     // Testing the generated [TextTheme].
     expect(
-      TextTheme.of(context).bodyLarge == textStyle,
-      textThemeBuilder == null,
+      context.textTheme.bodySmall!.color == bodySmallColor,
+      textThemeBuilder != null,
+    );
+
+    // Testing the generated [ThemeExtension]s.
+    expect(
+      context.themeExtensions.length,
+      myoroThemeExtensions.length + (themeExtensionsBuilder != null ? 1 : 0),
     );
   });
 }

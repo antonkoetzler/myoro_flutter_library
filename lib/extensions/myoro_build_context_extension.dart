@@ -4,12 +4,44 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Extension for [BuildContext].
 extension MyoroBuildContextExtension on BuildContext {
-  ThemeData get themeData => Theme.of(this);
-  bool get isDarkMode => themeData.brightness == Brightness.dark;
-  TextTheme get textTheme => themeData.textTheme;
-  OverlayState get overlay => Overlay.of(this);
-  MediaQueryData get mediaQuery => MediaQuery.of(this);
+  /// Returns if the application is using [ThemeMode.dark]
+  /// (dark mode) or [ThemeMode.light] (light mode).
+  bool get isDarkMode {
+    return themeData.brightness == Brightness.dark;
+  }
 
+  /// [ThemeData] getter.
+  ThemeData get themeData {
+    return Theme.of(this);
+  }
+
+  /// [ColorScheme] getter.
+  ColorScheme get colorScheme {
+    return ColorScheme.of(this);
+  }
+
+  /// [TextTheme] getter.
+  TextTheme get textTheme {
+    return TextTheme.of(this);
+  }
+
+  /// Getter for an [OverlayState] of an [Overlay]
+  OverlayState get overlay {
+    return Overlay.of(this);
+  }
+
+  /// Getter for a [MediaQueryData] of a [MediaQuery].
+  MediaQueryData get mediaQuery {
+    return MediaQuery.of(this);
+  }
+
+  /// Getter for all [ThemeExtension]s.
+  Map<Object, ThemeExtension<dynamic>> get themeExtensions {
+    return Theme.of(this).extensions;
+  }
+
+  /// Resolves a [ThemeExtension] and throws an [Exception]
+  /// if the [ThemeExtension] isn't apart of the [BuildContext].
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
@@ -18,6 +50,8 @@ extension MyoroBuildContextExtension on BuildContext {
     );
   }
 
+  /// Resolvers a [Bloc] or [Cubit] and thorws an [Exception]
+  /// if the [Bloc]/[Cubit] isn't apart of the [BuildContext].
   T resolveBloc<T extends BlocBase>() {
     try {
       final bloc = BlocProvider.of<T>(this);
@@ -39,7 +73,9 @@ extension MyoroBuildContextExtension on BuildContext {
   }
 
   /// Closes the drawer of the [BuildContext]'s [MyoroScreen].
-  void closeDrawer() => read<MyoroDrawerController>().closeDrawer(this);
+  void closeDrawer() {
+    read<MyoroDrawerController>().closeDrawer(this);
+  }
 
   /// Opens a snack bar.
   void showSnackBar({Duration? duration, required MyoroSnackBar snackBar}) {
@@ -51,5 +87,7 @@ extension MyoroBuildContextExtension on BuildContext {
   }
 
   /// Hides a snack bar.
-  void hideSnackBar() => MyoroSnackBarHelper.hideSnackBar(this);
+  void hideSnackBar() {
+    MyoroSnackBarHelper.hideSnackBar(this);
+  }
 }

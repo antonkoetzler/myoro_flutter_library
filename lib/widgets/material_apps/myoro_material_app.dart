@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -99,7 +100,13 @@ final class MyoroMaterialApp extends StatelessWidget {
         // To not show the "Debug" banner at the top right of the screen.
         debugShowCheckedModeBanner: false,
         title: title,
-        localizationsDelegates: localizationsDelegates,
+        localizationsDelegates:
+            localizationsDelegates ??
+            [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
         supportedLocales:
             supportedLocales ?? const <Locale>[Locale('en', 'US')],
         themeMode: themeMode ?? ThemeMode.dark,
