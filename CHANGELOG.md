@@ -1,5 +1,14 @@
 # Changelog (of major and minor versions)
 
+## 1.3.0
+
+1. improvement: `MyoroMaterialApp` test;
+1. feature: `MyoroMaterialApp.colorSchemeBuilder` and `MyoroMaterialApp.textThemeBuilder`;
+1. refactor: `MyoroTypographyDesignSystem`;
+1. improvement: Remove global `GestureDetector` in `MyoroMaterialApp` and use `TagRegion` instead;
+1. fix: Selected Widget button was not hovered when selected in storyboard;
+1. feature: Make `MyoroMaterialApp` support `GoRouter`;
+
 ## 1.2.0
 
 1. Removed `./lib/themes` directory and moved contents of it in `./lib`;
