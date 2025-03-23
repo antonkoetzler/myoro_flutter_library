@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
@@ -43,8 +44,11 @@ final class MyoroMaterialApp extends StatelessWidget {
   /// Supported setups in localization setup.
   final Iterable<Locale>? supportedLocales;
 
-  /// Entry point for the application.
-  final Widget home;
+  /// [GoRouter]
+  final GoRouter? router;
+
+  /// Entry point for the application when a [GoRouter] is not being used.
+  final Widget? home;
 
   const MyoroMaterialApp({
     super.key,
@@ -55,8 +59,12 @@ final class MyoroMaterialApp extends StatelessWidget {
     this.themeExtensionsBuilder,
     this.localizationsDelegates,
     this.supportedLocales,
-    required this.home,
-  });
+    this.router,
+    this.home,
+  }) : assert(
+         (router != null) ^ (home != null),
+         '[MyoroMaterialApp]: [router] (x)or [home] must be provided.',
+       );
 
   static Finder finder({
     String? title,
@@ -69,6 +77,8 @@ final class MyoroMaterialApp extends StatelessWidget {
     bool textThemeBuilderEnabled = false,
     MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
     bool themeExtensionsBuilderEnabled = false,
+    GoRouter? router,
+    bool routerEnabled = false,
     MyoroScreen? home,
     bool homeEnabled = false,
   }) {
@@ -86,38 +96,59 @@ final class MyoroMaterialApp extends StatelessWidget {
           (themeExtensionsBuilderEnabled
               ? w.themeExtensionsBuilder == themeExtensionsBuilder
               : true) &&
+          (routerEnabled ? w.router == router : true) &&
           (homeEnabled ? w.home == home : true),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // To not show the "Debug" banner at the top right of the screen.
-      debugShowCheckedModeBanner: false,
+    const bool debugShowCheckedModeBanner = false;
+    final Iterable<LocalizationsDelegate> localizationsDelegatesInUse =
+        localizationsDelegates ??
+        [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ];
+    final Iterable<Locale> supportedLocalesInUse =
+        supportedLocales ?? const [Locale('en', 'US')];
+    final ThemeMode themeModeInUse = themeMode ?? ThemeMode.dark;
+    final ThemeData lightTheme = createMyoroThemeData(
+      colorSchemeBuilder,
+      textThemeBuilder,
+      themeExtensionsBuilder,
+      isDarkMode: false,
+    );
+    final ThemeData darkTheme = createMyoroThemeData(
+      colorSchemeBuilder,
+      textThemeBuilder,
+      themeExtensionsBuilder,
+      isDarkMode: true,
+    );
+
+    if (home != null) {
+      return MaterialApp(
+        title: title,
+        debugShowCheckedModeBanner: debugShowCheckedModeBanner,
+        localizationsDelegates: localizationsDelegatesInUse,
+        supportedLocales: supportedLocalesInUse,
+        themeMode: themeModeInUse,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        home: home,
+      );
+    }
+
+    return MaterialApp.router(
       title: title,
-      localizationsDelegates:
-          localizationsDelegates ??
-          [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-      supportedLocales: supportedLocales ?? const <Locale>[Locale('en', 'US')],
-      themeMode: themeMode ?? ThemeMode.dark,
-      theme: createMyoroThemeData(
-        colorSchemeBuilder,
-        textThemeBuilder,
-        themeExtensionsBuilder,
-        isDarkMode: false,
-      ),
-      darkTheme: createMyoroThemeData(
-        colorSchemeBuilder,
-        textThemeBuilder,
-        themeExtensionsBuilder,
-        isDarkMode: true,
-      ),
-      home: home,
+      debugShowCheckedModeBanner: debugShowCheckedModeBanner,
+      localizationsDelegates: localizationsDelegatesInUse,
+      supportedLocales: supportedLocalesInUse,
+      themeMode: themeModeInUse,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      routerConfig: router,
     );
   }
 }
