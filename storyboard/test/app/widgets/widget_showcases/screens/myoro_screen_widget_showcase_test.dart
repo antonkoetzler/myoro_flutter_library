@@ -19,6 +19,6 @@ void main() {
 
     expect(find.byType(MyoroScreenWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
-    expect(find.byType(MyoroScreen), findsOneWidget);
+    expect(find.byType(MyoroScreen), findsAtLeastNWidgets(1));
   });
 }

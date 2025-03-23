@@ -11,9 +11,7 @@ void main() {
   late final TextStyle? labelTextStyle;
 
   setUp(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 

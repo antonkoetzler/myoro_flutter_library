@@ -33,9 +33,7 @@ void main() {
   bool onPressedExecuted = false;
 
   setUp(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 

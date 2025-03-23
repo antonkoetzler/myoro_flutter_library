@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
+typedef _WidgetLoaded = (String widgetName, Widget widget);
 typedef _WidgetListingCategoryOnPressWidget = Function(String widgetName);
 
 final class StoryboardBody extends StatefulWidget {
@@ -13,7 +14,7 @@ final class StoryboardBody extends StatefulWidget {
 
 final class _StoryboardBodyState extends State<StoryboardBody> {
   /// Control what widget is being shown in [_WidgetViewer].
-  final _widgetLoadedNotifier = ValueNotifier<Widget?>(null);
+  final _widgetLoadedNotifier = ValueNotifier<_WidgetLoaded?>(null);
 
   @override
   void dispose() {
@@ -44,7 +45,7 @@ final class _StoryboardBodyState extends State<StoryboardBody> {
 }
 
 final class _WidgetListing extends StatefulWidget {
-  final ValueNotifier<Widget?> widgetLoadedNotifier;
+  final ValueNotifier<_WidgetLoaded?> widgetLoadedNotifier;
 
   const _WidgetListing(this.widgetLoadedNotifier);
 
@@ -53,6 +54,10 @@ final class _WidgetListing extends StatefulWidget {
 }
 
 final class _WidgetListingState extends State<_WidgetListing> {
+  ValueNotifier<_WidgetLoaded?> get _widgetLoadedNotifier {
+    return widget.widgetLoadedNotifier;
+  }
+
   /// [ValueNotifier] responsible for automatically hiding previously opened categories when others are pressed (only display one at a time).
   final _widgetCategoryShowingNotifier = ValueNotifier<String?>(null);
 
@@ -80,14 +85,10 @@ final class _WidgetListingState extends State<_WidgetListing> {
                       _WidgetListingCategory(
                         category: value.widgetCategory,
                         widgetNames: value.widgetNames,
+                        widgetLoadedNotifier: _widgetLoadedNotifier,
                         widgetCategoryShowingNotifier:
                             _widgetCategoryShowingNotifier,
-                        onPressWidget:
-                            (String widgetName) =>
-                                widget.widgetLoadedNotifier.value =
-                                    WidgetListingEnum.widgetViewerWidget(
-                                      widgetName,
-                                    ),
+                        onPressWidget: _onPressWidget,
                       ),
                       if (value != WidgetListingEnum.values.last)
                         MyoroBasicDivider(
@@ -109,17 +110,26 @@ final class _WidgetListingState extends State<_WidgetListing> {
       },
     );
   }
+
+  void _onPressWidget(String widgetName) {
+    _widgetLoadedNotifier.value = (
+      widgetName,
+      WidgetListingEnum.widgetViewerWidget(widgetName),
+    );
+  }
 }
 
 final class _WidgetListingCategory extends StatelessWidget {
   final String category;
   final List<String> widgetNames;
+  final ValueNotifier<_WidgetLoaded?> widgetLoadedNotifier;
   final ValueNotifier<String?> widgetCategoryShowingNotifier;
   final _WidgetListingCategoryOnPressWidget onPressWidget;
 
   const _WidgetListingCategory({
     required this.category,
     required this.widgetNames,
+    required this.widgetLoadedNotifier,
     required this.widgetCategoryShowingNotifier,
     required this.onPressWidget,
   });
@@ -134,6 +144,7 @@ final class _WidgetListingCategory extends StatelessWidget {
       padding: themeExtension.widgetListingCategoryPadding,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        spacing: themeExtension.widgetListingCategorySpacing,
         children: [
           _WidgetListingCategoryDropdownButton(
             isSelected,
@@ -144,9 +155,9 @@ final class _WidgetListingCategory extends StatelessWidget {
                         isSelected ? null : category,
           ),
           if (isSelected) ...[
-            SizedBox(height: themeExtension.widgetListingCategorySpacing),
             ...widgetNames.map<Widget>((String widgetName) {
               return _WidgetListingCategoryWidgetButton(
+                widgetLoadedNotifier,
                 widgetName,
                 onPressed: () => onPressWidget(widgetName),
               );
@@ -187,11 +198,13 @@ final class _WidgetListingCategoryDropdownButton extends StatelessWidget {
 }
 
 final class _WidgetListingCategoryWidgetButton extends StatelessWidget {
-  final String widgetName;
+  final ValueNotifier<_WidgetLoaded?> _widgetLoadedNotifier;
+  final String _widgetName;
   final VoidCallback onPressed;
 
   const _WidgetListingCategoryWidgetButton(
-    this.widgetName, {
+    this._widgetLoadedNotifier,
+    this._widgetName, {
     required this.onPressed,
   });
 
@@ -200,28 +213,36 @@ final class _WidgetListingCategoryWidgetButton extends StatelessWidget {
     final themeExtension =
         context.resolveThemeExtension<StoryboardBodyThemeExtension>();
 
-    return MyoroIconTextHoverButton(
-      text: widgetName,
-      textStyle: themeExtension.widgetListingCategoryWidgetButtonTextStyle,
-      mainAxisAlignment:
-          themeExtension.widgetListingCategoryWidgetButtonContentCentered,
-      onPressed: onPressed,
+    return ValueListenableBuilder(
+      valueListenable: _widgetLoadedNotifier,
+      builder: (_, _WidgetLoaded? widgetLoaded, __) {
+        return MyoroIconTextHoverButton(
+          text: _widgetName,
+          textStyle: themeExtension.widgetListingCategoryWidgetButtonTextStyle,
+          mainAxisAlignment:
+              themeExtension.widgetListingCategoryWidgetButtonContentCentered,
+          configuration: MyoroHoverButtonConfiguration(
+            isHovered: widgetLoaded?.$1 == _widgetName,
+          ),
+          onPressed: onPressed,
+        );
+      },
     );
   }
 }
 
 final class _WidgetViewer extends StatelessWidget {
-  final ValueNotifier<Widget?> widgetLoadedNotifier;
+  final ValueNotifier<_WidgetLoaded?> _widgetLoadedNotifier;
 
-  const _WidgetViewer(this.widgetLoadedNotifier);
+  const _WidgetViewer(this._widgetLoadedNotifier);
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: widgetLoadedNotifier,
-      builder: (_, Widget? widgetLoaded, __) {
+      valueListenable: _widgetLoadedNotifier,
+      builder: (_, _WidgetLoaded? widgetLoaded, __) {
         if (widgetLoaded == null) return const SizedBox.shrink();
-        return widgetLoaded;
+        return widgetLoaded.$2;
       },
     );
   }

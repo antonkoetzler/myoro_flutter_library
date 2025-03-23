@@ -84,7 +84,7 @@ final class _PrimaryColorDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _ColorDropdown(
-      '[MyoroHoverButtonConfiguration.primaryColor]',
+      'Primary color',
       (Color? color) => context
           .resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>()
           .add(SetPrimaryColorEvent(color)),
@@ -98,7 +98,7 @@ final class _OnPrimaryColorDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _ColorDropdown(
-      '[MyoroHoverButtonConfiguration.onPrimaryColor]',
+      'On primary color',
       (Color? color) => context
           .resolveBloc<MyoroHoverButtonWidgetShowcaseBloc>()
           .add(SetOnPrimaryColorEvent(color)),
@@ -115,7 +115,7 @@ final class _IsHoveredCheckbox extends StatelessWidget {
 
     return MyoroCheckbox(
       initialValue: bloc.state.isHovered,
-      label: '[MyoroHoverButtonConfiguration.isHovered]',
+      label: 'Is hovered?',
       onChanged: (_) => bloc.add(const SetIsHoveredEvent()),
     );
   }
@@ -130,7 +130,7 @@ final class _BorderedCheckbox extends StatelessWidget {
 
     return MyoroCheckbox(
       initialValue: bloc.state.bordered,
-      label: '[MyoroHoverButtonConfiguration.bordered]',
+      label: 'Bordered?',
       onChanged: (_) => bloc.add(const SetBorderedEvent()),
     );
   }
@@ -172,7 +172,7 @@ final class _BorderRadiusSliderState extends State<_BorderRadiusSlider> {
         MyoroSlider(
           maxValue: themeExtension.borderRadiusSliderMaxValue,
           initialValue: _value,
-          label: '[MyoroHoverButtonConfiguration.borderRadius]',
+          label: 'Border radius',
           onChanged: (double value) {
             setState(() {
               _value = value;
@@ -209,7 +209,7 @@ final class _TooltipEnabledCheckbox extends StatelessWidget {
 
     return MyoroCheckbox(
       initialValue: bloc.state.tooltipEnabled,
-      label: '[MyoroHoverButtonConfiguration.tooltip]',
+      label: 'Tooltip',
       onChanged: (_) => bloc.add(const SetTooltipEnabledEvent()),
     );
   }
@@ -224,7 +224,7 @@ final class _OnPressedEnabledCheckbox extends StatelessWidget {
 
     return MyoroCheckbox(
       initialValue: bloc.state.onPressedEnabled,
-      label: '[MyoroHoverButton.onPressed] not [null]?',
+      label: 'onPressed enabled?',
       onChanged: (_) => bloc.add(const SetOnPressedEnabledEvent()),
     );
   }

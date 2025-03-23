@@ -81,7 +81,7 @@ final class _DirectionOptionState extends State<_DirectionOption> {
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroDropdownConfiguration(
-        label: '[MyoroCarousel.direction]',
+        label: 'Direction',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
         itemBuilder:
             (Axis direction) =>
@@ -106,7 +106,7 @@ final class _DisplayTraversalButtonsOptions extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroCarousel.displayTraversalButtons]',
+      label: 'Display traversal buttons?',
       initialValue: bloc.state.displayTraversalButtons,
       onChanged: (bool value) {
         bloc.add(SetDisplayTraversalButtonsEvent(value));
@@ -123,7 +123,7 @@ final class _AutoplayOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroCarousel.autoplay]',
+      label: 'Autoplay',
       initialValue: bloc.state.autoplay,
       onChanged: (bool value) => bloc.add(SetAutoplayEvent(value)),
     );
@@ -136,7 +136,7 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSlider(
-      label: '[MyoroSlider.autoplayIntervalDuration]',
+      label: 'Autoplay duration',
       minValue: 1,
       initialValue: kMyoroCarouselAutoplayIntervalDuration.inSeconds.toDouble(),
       maxValue: 5,

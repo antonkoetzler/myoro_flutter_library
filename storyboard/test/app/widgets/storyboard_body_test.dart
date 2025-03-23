@@ -72,6 +72,8 @@ void main() {
             w.padding == themeExtension.widgetListingCategoryPadding &&
             w.child is Column &&
             (w.child as Column).mainAxisSize == MainAxisSize.min &&
+            (w.child as Column).spacing ==
+                themeExtension.widgetListingCategorySpacing &&
             (w.child as Column).children.length == 1,
       ),
       findsNWidgets(WidgetListingEnum.values.length),

@@ -11,9 +11,7 @@ void main() {
   late final MyoroCardThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroCardThemeExtension.fake();
     themeExtension2 = MyoroCardThemeExtension.fake();
   });

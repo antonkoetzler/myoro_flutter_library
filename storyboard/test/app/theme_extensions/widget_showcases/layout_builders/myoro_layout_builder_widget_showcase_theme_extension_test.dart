@@ -12,9 +12,7 @@ void main() {
       themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroLayoutBuilderWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroLayoutBuilderWidgetShowcaseThemeExtension.fake();
   });

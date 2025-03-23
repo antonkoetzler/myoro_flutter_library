@@ -22,7 +22,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   const _AppBar();
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 6);
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +34,25 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('MyoroScreen', style: themeExtension.appBarTitleTextStyle),
-              Text(
-                'A widget used to create new [Scaffold]s (screens)',
-                style: themeExtension.appBarSubtitleTextStyle,
-              ),
-            ],
+          Flexible(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Flexible(
+                  child: Text(
+                    'MyoroScreen',
+                    style: themeExtension.appBarTitleTextStyle,
+                  ),
+                ),
+                Flexible(
+                  child: Text(
+                    'A widget used to create new [Scaffold]s (screens)',
+                    style: themeExtension.appBarSubtitleTextStyle,
+                  ),
+                ),
+              ],
+            ),
           ),
           Column(
             mainAxisSize: MainAxisSize.min,

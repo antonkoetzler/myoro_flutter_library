@@ -11,9 +11,7 @@ void main() {
   late final MyoroInputThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroInputThemeExtension.fake();
     themeExtension2 = MyoroInputThemeExtension.fake();
   });

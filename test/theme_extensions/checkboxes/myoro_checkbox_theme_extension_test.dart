@@ -11,9 +11,7 @@ void main() {
   late final MyoroCheckboxThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroCheckboxThemeExtension.fake();
     themeExtension2 = MyoroCheckboxThemeExtension.fake();
   });

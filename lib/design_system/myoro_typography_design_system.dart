@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// This singleton is automatically initialized within [MyoroMaterialApp] so you don't need to worry about that.
 final class MyoroTypographyDesignSystem {
+  // Names of each [TextStyle].
   static const regularSmallName = 'Regular small';
   static const regularMediumName = 'Regular medium';
   static const regularLargeName = 'Regular large';
@@ -18,74 +19,214 @@ final class MyoroTypographyDesignSystem {
   static const boldSmallName = 'Bold small';
   static const boldMediumName = 'Bold medium';
   static const boldLargeName = 'Bold large';
+  static const boldItalicSmallName = 'Bold italic small';
+  static const boldItalicMediumName = 'Bold italic medium';
+  static const boldItalicLargeName = 'Bold italic large';
   static const extraBoldSmallName = 'Extra bold small';
   static const extraBoldMediumName = 'Extra bold medium';
   static const extraBoldLargeName = 'Extra bold large';
 
+  /// Singleton instance of the class.
   static final _instance = MyoroTypographyDesignSystem();
-  static TextTheme? _textTheme;
 
-  static set textTheme(TextTheme textTheme) {
-    _textTheme = textTheme;
-  }
+  /// [bool] of whether the application is in dark or light mode.
+  static bool? _isDarkMode;
+  static set isDarkMode(bool isDarkMode) => _isDarkMode = isDarkMode;
 
   static MyoroTypographyDesignSystem get instance {
     assert(
-      _textTheme != null,
-      '[MyoroTypographyDesignSystem.instance]: You need to set a [TextTheme] before using [MyoroTypographyDesignSystem].',
+      _isDarkMode != null,
+      '[MyoroTypographyDesignSystem.instance]: You need to set [_isDarkMode] via '
+      '[MyoroTypographyDesignSystem.isDarkMode] before using [MyoroTypographyDesignSystem].',
     );
     return _instance;
   }
 
-  // Regular.
-  TextStyle get regularSmall => _textTheme!.bodySmall!;
-  TextStyle get regularMedium => _textTheme!.bodyMedium!;
-  TextStyle get regularLarge => _textTheme!.bodyLarge!;
+  // ########## REGULAR ##########
+  TextStyle get regularSmall {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.small,
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.normal,
+    );
+  }
 
-  // Italic.
-  TextStyle get italicSmall => _textTheme!.headlineSmall!;
-  TextStyle get italicMedium => _textTheme!.headlineMedium!;
-  TextStyle get italicLarge => _textTheme!.headlineLarge!;
+  TextStyle get regularMedium {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.medium,
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.normal,
+    );
+  }
 
-  // Semi-bold.
-  TextStyle get semiBoldSmall => _textTheme!.labelSmall!;
-  TextStyle get semiBoldMedium => _textTheme!.labelMedium!;
-  TextStyle get semiBoldLarge => _textTheme!.labelLarge!;
+  TextStyle get regularLarge {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.large,
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.normal,
+    );
+  }
+  // #############################
 
-  // Bold.
-  TextStyle get boldSmall => _textTheme!.titleSmall!;
-  TextStyle get boldMedium => _textTheme!.titleMedium!;
-  TextStyle get boldLarge => _textTheme!.titleLarge!;
+  // ########## ITALIC ##########
+  TextStyle get italicSmall {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.small,
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.italic,
+    );
+  }
 
-  // Extra bold.
-  TextStyle get extraBoldSmall => _textTheme!.displaySmall!;
-  TextStyle get extraBoldMedium => _textTheme!.displayMedium!;
-  TextStyle get extraBoldLarge => _textTheme!.displayLarge!;
+  TextStyle get italicMedium {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.medium,
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.italic,
+    );
+  }
 
-  /// Grabs all of the available [TextStyles].
+  TextStyle get italicLarge {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.large,
+      fontWeight: FontWeight.normal,
+      fontStyle: FontStyle.italic,
+    );
+  }
+  // ############################
+
+  // ########## SEMI-BOLD #########
+  TextStyle get semiBoldSmall {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.small,
+      fontWeight: FontWeight.w600,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
+  TextStyle get semiBoldMedium {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.medium,
+      fontWeight: FontWeight.w600,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
+  TextStyle get semiBoldLarge {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.large,
+      fontWeight: FontWeight.w600,
+      fontStyle: FontStyle.normal,
+    );
+  }
+  // ##############################
+
+  // ########## BOLD ##########
+  TextStyle get boldSmall {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.small,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
+  TextStyle get boldMedium {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.medium,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
+  TextStyle get boldLarge {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.large,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.normal,
+    );
+  }
+  // ##########################
+
+  // ########## BOLD-ITALIC ##########
+  TextStyle get boldItalicSmall {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.small,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+    );
+  }
+
+  TextStyle get boldItalicMedium {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.medium,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+    );
+  }
+
+  TextStyle get boldItalicLarge {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.large,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+    );
+  }
+  // #################################
+
+  // ########## EXTRA BOLD ##########
+  TextStyle get extraBoldSmall {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.small,
+      fontWeight: FontWeight.w800,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
+  TextStyle get extraBoldMedium {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.medium,
+      fontWeight: FontWeight.w800,
+      fontStyle: FontStyle.normal,
+    );
+  }
+
+  TextStyle get extraBoldLarge {
+    return _createTextStyle(
+      fontSize: MyoroFontSizeEnum.large,
+      fontWeight: FontWeight.w800,
+      fontStyle: FontStyle.normal,
+    );
+  }
+  // ################################
+
+  /// Grabs all of the available [TextStyle].
   List<TextStyle> get allTextStyles {
     return [
-      // Regular.
+      // Regular
       regularSmall,
       regularMedium,
       regularLarge,
 
-      // Italic.
+      // Italic
       italicSmall,
       italicMedium,
       italicLarge,
 
-      // Semi-bold.
+      // Semi-bold
       semiBoldSmall,
       semiBoldMedium,
       semiBoldLarge,
 
-      // Bold.
+      // Bold
       boldSmall,
       boldMedium,
       boldLarge,
 
-      // Extra bold.
+      // Bold italic
+      boldItalicSmall,
+      boldItalicMedium,
+      boldItalicLarge,
+
+      // Extra bold
       extraBoldSmall,
       extraBoldMedium,
       extraBoldLarge,
@@ -95,32 +236,37 @@ final class MyoroTypographyDesignSystem {
   /// Displays the name of a given [TextStyle].
   String getTextStyleName(TextStyle textStyle) {
     return switch (allTextStyles.indexOf(textStyle)) {
-      // Regular.
+      // Regular
       0 => regularSmallName,
       1 => regularMediumName,
       2 => regularLargeName,
 
-      // Italic.
+      // Italic
       3 => italicSmallName,
       4 => italicMediumName,
       5 => italicLargeName,
 
-      // Semi-bold.
+      // Semi-bold
       6 => semiBoldSmallName,
       7 => semiBoldMediumName,
       8 => semiBoldLargeName,
 
-      // Bold.
+      // Bold
       9 => boldSmallName,
       10 => boldMediumName,
       11 => boldLargeName,
 
-      // Extra bold.
-      12 => extraBoldSmallName,
-      13 => extraBoldMediumName,
-      14 => extraBoldLargeName,
+      // Bold italic
+      12 => boldItalicSmallName,
+      13 => boldItalicSmallName,
+      14 => boldItalicSmallName,
 
-      // Should never get here.
+      // Extra bold
+      15 => extraBoldSmallName,
+      16 => extraBoldMediumName,
+      17 => extraBoldLargeName,
+
+      // Should never get here
       _ =>
         throw AssertionError(
           '[MyoroTypographyDesignSystem.getTextStyleName]: [textStyle] is not apart of [MyoroTypographyDesignSystem.getAllTextStyles].',
@@ -129,6 +275,25 @@ final class MyoroTypographyDesignSystem {
   }
 
   /// Retrieves a random text style.
-  TextStyle get randomTextStyle =>
-      allTextStyles[faker.randomGenerator.integer(allTextStyles.length)];
+  TextStyle get randomTextStyle {
+    return allTextStyles[faker.randomGenerator.integer(allTextStyles.length)];
+  }
+
+  /// Creates a [TextStyle].
+  TextStyle _createTextStyle({
+    required MyoroFontSizeEnum fontSize,
+    required FontWeight fontWeight,
+    required FontStyle fontStyle,
+  }) {
+    return TextStyle(
+      fontFamily: 'Nunito',
+      color:
+          _isDarkMode!
+              ? MyoroDarkModeColorDesignSystem.secondary
+              : MyoroLightModeColorDesignSystem.secondary,
+      fontSize: fontSize.size,
+      fontWeight: fontWeight,
+      fontStyle: fontStyle,
+    );
+  }
 }

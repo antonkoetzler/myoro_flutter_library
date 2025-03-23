@@ -72,7 +72,7 @@ final class MyoroSnackBar extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (message.isNotEmpty) _Message(message),
+          if (message.isNotEmpty) Flexible(child: _Message(message)),
           if (child != null) Flexible(child: child!),
           if (showCloseButton) ...[
             SizedBox(width: themeExtension.contentCloseButtonSpacing),

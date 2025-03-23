@@ -38,10 +38,6 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget build(BuildContext context) {
     return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
       builder: (_, WidgetShowcaseState state) {
-        if (_widgetOptions.isEmpty || !state.displayingWidgetOptions) {
-          return const SizedBox.shrink();
-        }
-
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -114,9 +110,9 @@ final class _WidgetOptions extends StatelessWidget {
         context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return IntrinsicWidth(
-      child: Padding(
-        padding: themeExtension.widgetOptionsPadding,
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: themeExtension.widgetOptionsPadding,
           child: Column(
             children:
                 _widgetOptions.map<Widget>((Widget widgetOption) {

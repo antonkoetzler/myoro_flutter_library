@@ -17,9 +17,7 @@ void main() {
   final bool checkboxOnChangedEnabled = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 

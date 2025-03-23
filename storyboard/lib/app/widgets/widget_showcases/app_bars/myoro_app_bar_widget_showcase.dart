@@ -13,7 +13,8 @@ final class MyoroAppBarWidgetShowcase extends StatefulWidget {
       _MyoroAppBarWidgetShowcaseState();
 }
 
-class _MyoroAppBarWidgetShowcaseState extends State<MyoroAppBarWidgetShowcase> {
+final class _MyoroAppBarWidgetShowcaseState
+    extends State<MyoroAppBarWidgetShowcase> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -55,7 +56,7 @@ final class _Widget extends StatelessWidget {
                               >()
                               .logoTitleSpacing,
                     ),
-                    const _MockAppTitle(),
+                    const Flexible(child: _MockAppTitle()),
                   ],
                 ),
                 const _MockMenuButton(),

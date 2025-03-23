@@ -161,9 +161,7 @@ void main() {
   }
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     textStyle =
         faker.randomGenerator.boolean()
             ? MyoroTypographyDesignSystem.instance.randomTextStyle

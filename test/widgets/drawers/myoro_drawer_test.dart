@@ -11,9 +11,7 @@ void main() {
   final bool barrierDismissable = faker.randomGenerator.boolean();
 
   setUp(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     titleTextStyle =
         faker.randomGenerator.boolean()
             ? MyoroTypographyDesignSystem.instance.randomTextStyle
