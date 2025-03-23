@@ -99,19 +99,15 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is GestureDetector &&
-            w.behavior == HitTestBehavior.opaque &&
-            w.onTap != null &&
-            w.child is MaterialApp &&
-            !(w.child as MaterialApp).debugShowCheckedModeBanner &&
-            (w.child as MaterialApp).title == title &&
-            (w.child as MaterialApp).themeMode ==
-                (themeMode ?? ThemeMode.dark) &&
-            (w.child as MaterialApp).localizationsDelegates?.length ==
+            w is MaterialApp &&
+            !w.debugShowCheckedModeBanner &&
+            w.title == title &&
+            w.themeMode == (themeMode ?? ThemeMode.dark) &&
+            w.localizationsDelegates?.length ==
                 (localizationsDelegates?.length ?? 3) &&
-            (w.child as MaterialApp).supportedLocales ==
+            w.supportedLocales ==
                 (supportedLocales ?? const [Locale('en', 'US')]) &&
-            (w.child as MaterialApp).home is Builder,
+            w.home is Builder,
       ),
       findsOneWidget,
     );

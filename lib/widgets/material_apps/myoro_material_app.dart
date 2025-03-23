@@ -92,38 +92,32 @@ final class MyoroMaterialApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      // Used with [Widget]s like [MyoroDropdown] which close the dropdown when anywhere else is clicked.
-      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-      child: MaterialApp(
-        // To not show the "Debug" banner at the top right of the screen.
-        debugShowCheckedModeBanner: false,
-        title: title,
-        localizationsDelegates:
-            localizationsDelegates ??
-            [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-        supportedLocales:
-            supportedLocales ?? const <Locale>[Locale('en', 'US')],
-        themeMode: themeMode ?? ThemeMode.dark,
-        theme: createMyoroThemeData(
-          colorSchemeBuilder,
-          textThemeBuilder,
-          themeExtensionsBuilder,
-          isDarkMode: false,
-        ),
-        darkTheme: createMyoroThemeData(
-          colorSchemeBuilder,
-          textThemeBuilder,
-          themeExtensionsBuilder,
-          isDarkMode: true,
-        ),
-        home: home,
+    return MaterialApp(
+      // To not show the "Debug" banner at the top right of the screen.
+      debugShowCheckedModeBanner: false,
+      title: title,
+      localizationsDelegates:
+          localizationsDelegates ??
+          [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+      supportedLocales: supportedLocales ?? const <Locale>[Locale('en', 'US')],
+      themeMode: themeMode ?? ThemeMode.dark,
+      theme: createMyoroThemeData(
+        colorSchemeBuilder,
+        textThemeBuilder,
+        themeExtensionsBuilder,
+        isDarkMode: false,
       ),
+      darkTheme: createMyoroThemeData(
+        colorSchemeBuilder,
+        textThemeBuilder,
+        themeExtensionsBuilder,
+        isDarkMode: true,
+      ),
+      home: home,
     );
   }
 }

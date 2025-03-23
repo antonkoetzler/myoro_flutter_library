@@ -318,9 +318,6 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   MyoroMultiDropdownController<T>? get _multiController =>
       widget.multiController;
 
-  /// [FocusNode] [_Dropdown] in order to be able to click anywhere but [_Menu] to close [_Menu].
-  final _focusNode = FocusNode();
-
   /// Controller to call functions for both [_singularController] & [_multiController].
   late final _controller = _MyoroDropdownController<T>(
     _dropdownType,
@@ -333,11 +330,6 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
 
   /// The [OverlayEntry] to display [_Dropdown].
   OverlayEntry? _overlayEntry;
-
-  void _focusNodeListener() {
-    if (_focusNode.hasFocus) return;
-    _removeOverlay();
-  }
 
   OverlayEntry _createOverlay() {
     final themeExtension =
@@ -394,10 +386,9 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
     _removeOverlay();
     _overlayEntry = _createOverlay();
     context.overlay.insert(_overlayEntry!);
-    _focusNode.requestFocus();
   }
 
-  void _triggerAreaOnPressed() {
+  void _triggerAreaOnTap() {
     _overlayEntry == null ? _showOverlay() : _removeOverlay();
   }
 
@@ -409,12 +400,10 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   @override
   void initState() {
     super.initState();
-    _focusNode.addListener(_focusNodeListener);
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
     _controller.dispose();
     super.dispose();
   }
@@ -422,21 +411,23 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
-      child: Focus(
-        focusNode: _focusNode,
-        child: Stack(
-          children: [
-            _Input(
-              _inputKey,
+      child: Stack(
+        children: [
+          _Input(
+            _inputKey,
+            _configuration,
+            _controller,
+            _singularCheckboxOnChanged,
+            _multiCheckboxOnChanged,
+          ),
+          if (_configuration.enabled)
+            _TriggerArea(
               _configuration,
               _controller,
-              _singularCheckboxOnChanged,
-              _multiCheckboxOnChanged,
+              onTapInside: _triggerAreaOnTap,
+              onTapOutside: _removeOverlay,
             ),
-            if (_configuration.enabled)
-              _TriggerArea(_triggerAreaOnPressed, _configuration, _controller),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -558,11 +549,17 @@ final class _InputState<T> extends State<_Input<T>> {
 }
 
 final class _TriggerArea<T> extends StatelessWidget {
-  final VoidCallback _onPressed;
   final MyoroDropdownConfiguration<T> _configuration;
   final _MyoroDropdownController<T> _controller;
+  final VoidCallback onTapInside;
+  final VoidCallback onTapOutside;
 
-  const _TriggerArea(this._onPressed, this._configuration, this._controller);
+  const _TriggerArea(
+    this._configuration,
+    this._controller, {
+    required this.onTapInside,
+    required this.onTapOutside,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -577,13 +574,14 @@ final class _TriggerArea<T> extends StatelessWidget {
                     ? 40
                     : 0,
           ),
-          child: InkWell(
-            focusColor: MyoroColorDesignSystem.transparent,
-            hoverColor: MyoroColorDesignSystem.transparent,
-            splashColor: MyoroColorDesignSystem.transparent,
-            highlightColor: MyoroColorDesignSystem.transparent,
-            onTap: _onPressed,
-            child: Container(color: MyoroColorDesignSystem.transparent),
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: TapRegion(
+              groupId: 'MyoroDropdown#$hashCode',
+              onTapInside: (_) => onTapInside(),
+              onTapOutside: (_) => onTapOutside(),
+              child: Container(color: MyoroColorDesignSystem.transparent),
+            ),
           ),
         );
       },

@@ -17,10 +17,8 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is IntrinsicHeight &&
-            w.child is Focus &&
-            (w.child as Focus).focusNode != null &&
-            (w.child as Focus).child is Stack &&
-            ((w.child as Focus).child as Stack).children.length == 2,
+            w.child is Stack &&
+            (w.child as Stack).children.length == 2,
       ),
       findsOneWidget,
     );
@@ -52,18 +50,13 @@ void main() {
         (Widget w) =>
             w is Padding &&
             w.padding == const EdgeInsets.only(right: 0) &&
-            w.child is InkWell &&
-            (w.child as InkWell).focusColor ==
-                MyoroColorDesignSystem.transparent &&
-            (w.child as InkWell).hoverColor ==
-                MyoroColorDesignSystem.transparent &&
-            (w.child as InkWell).splashColor ==
-                MyoroColorDesignSystem.transparent &&
-            (w.child as InkWell).highlightColor ==
-                MyoroColorDesignSystem.transparent &&
-            (w.child as InkWell).child is Container &&
-            ((w.child as InkWell).child as Container).color ==
-                MyoroColorDesignSystem.transparent,
+            w.child is MouseRegion &&
+            (w.child as MouseRegion).cursor == SystemMouseCursors.click &&
+            (w.child as MouseRegion).child is TapRegion &&
+            ((w.child as MouseRegion).child as TapRegion).child is Container &&
+            (((w.child as MouseRegion).child as TapRegion).child as Container)
+                    .color ==
+                Colors.transparent,
       ),
       findsOneWidget,
     );
