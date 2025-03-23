@@ -11,9 +11,7 @@ void main() {
   late final MyoroBarGraphThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroBarGraphThemeExtension.fake();
     themeExtension2 = MyoroBarGraphThemeExtension.fake();
   });

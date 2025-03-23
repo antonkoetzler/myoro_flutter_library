@@ -83,7 +83,7 @@ final class _IconOptionState extends State<_IconOption> {
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<IconData>(
       configuration: MyoroDropdownConfiguration(
-        label: '[MyoroIconTextHoverButton.icon]',
+        label: 'Icon',
         dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestIcons),
         itemLabelBuilder: _itemLabelBuilder,
         itemBuilder:
@@ -132,7 +132,7 @@ final class _IconSizeOptionState extends State<_IconSizeOption> {
     return MyoroInput.number(
       max: 200,
       configuration: MyoroInputConfiguration(
-        label: '[MyoroIconTextHoverButton.iconSize]',
+        label: 'Icon size',
         controller: _controller,
       ),
     );
@@ -170,7 +170,7 @@ final class _TextOptionState extends State<_TextOption> {
   Widget build(BuildContext context) {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
-        label: '[MyoroIconTextHoverButton.text]',
+        label: 'Text',
         controller: _controller,
       ),
     );
@@ -203,7 +203,7 @@ final class _TextStyleOptionState extends State<_TextStyleOption> {
 
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroDropdownConfiguration(
-        label: '[MyoroIconTextHoverButton.textStyle]',
+        label: 'Text style',
         dataConfiguration: MyoroDataConfiguration(
           staticItems: typographyInstance.allTextStyles,
         ),
@@ -244,7 +244,7 @@ final class _TextAlignOptionState extends State<_TextAlignOption> {
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<TextAlign>(
       configuration: MyoroDropdownConfiguration(
-        label: '[MyoroIconTextHoverButton.textAlign]',
+        label: 'Text alignment',
         dataConfiguration: MyoroDataConfiguration(
           staticItems: TextAlign.values,
         ),
@@ -296,7 +296,7 @@ final class _PaddingOptionState extends State<_PaddingOption> {
     return MyoroInput.number(
       max: 200,
       configuration: MyoroInputConfiguration(
-        label: '[MyoroIconTextHoverButton.padding]',
+        label: 'Padding',
         controller: _controller,
         onChanged: (_) => _setPaddingEvent(),
         checkboxOnChanged: _checkboxOnChanged,
@@ -331,7 +331,7 @@ final class _MainAxisAlignmentOptionState
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<MainAxisAlignment>(
       configuration: MyoroDropdownConfiguration(
-        label: '[MyoroIconTextHoverButton.mainAxisAlignment]',
+        label: 'MainAxisAlignment',
         dataConfiguration: MyoroDataConfiguration(
           staticItems: MainAxisAlignment.values,
         ),
@@ -358,7 +358,7 @@ final class _OnPressedEnabledOption extends StatelessWidget {
         context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroIconTextHoverButton.onPressed] enabled?',
+      label: 'onPressed enabled?',
       initialValue: bloc.state.onPressedEnabled,
       onChanged:
           (bool onPressedEnabled) =>

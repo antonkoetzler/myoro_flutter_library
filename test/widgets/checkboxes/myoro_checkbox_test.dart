@@ -6,9 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget test of [MyoroCheckbox].
 void main() {
   setUp(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
   });
 
   testWidgets('MyoroCheckbox', (WidgetTester tester) async {

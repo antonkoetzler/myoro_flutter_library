@@ -6,8 +6,13 @@ import 'package:storyboard/storyboard.dart';
 
 /// Sanity test of [createThemeExtensions].
 void main() {
+  final isDarkMode = faker.randomGenerator.boolean();
+
+  setUp(() {
+    MyoroTypographyDesignSystem.isDarkMode = isDarkMode;
+  });
+
   test('createThemeExtensions', () {
-    final isDarkMode = faker.randomGenerator.boolean();
     final themeExtensions = createThemeExtensions(
       createMyoroColorScheme(isDarkMode),
       createMyoroTextTheme(isDarkMode),

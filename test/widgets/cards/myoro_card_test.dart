@@ -17,9 +17,7 @@ void main() {
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   setUp(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     titleTextStyle =
         faker.randomGenerator.boolean()
             ? MyoroTypographyDesignSystem.instance.randomTextStyle

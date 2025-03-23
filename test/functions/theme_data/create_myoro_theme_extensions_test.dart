@@ -6,8 +6,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Unit test of [createMyoroThemeExtensions].
 void main() {
+  final bool isDarkMode = faker.randomGenerator.boolean();
+
+  setUp(() {
+    MyoroTypographyDesignSystem.isDarkMode = isDarkMode;
+  });
+
   test('createMyoroThemeExtensions', () {
-    final bool isDarkMode = faker.randomGenerator.boolean();
     final List<ThemeExtension> themeExtensions = createMyoroThemeExtensions(
       createMyoroColorScheme(isDarkMode),
       createMyoroTextTheme(isDarkMode),

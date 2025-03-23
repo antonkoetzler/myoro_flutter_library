@@ -5,8 +5,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Unit test of [createMyoroTooltipThemeData].
 void main() {
+  final bool isDarkMode = faker.randomGenerator.boolean();
+
+  setUp(() {
+    MyoroTypographyDesignSystem.isDarkMode = isDarkMode;
+  });
+
   test('createMyoroTooltipThemeData', () {
-    final bool isDarkMode = faker.randomGenerator.boolean();
     final ColorScheme colorScheme = createMyoroColorScheme(isDarkMode);
     final TextTheme textTheme = createMyoroTextTheme(isDarkMode);
     final TooltipThemeData tooltipThemeData = createMyoroTooltipThemeData(

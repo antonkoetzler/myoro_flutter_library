@@ -76,7 +76,7 @@ final class _BarrierDismissableOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroModalWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroModalConfiguration.barrierDismissable]',
+      label: 'Barrier dismissable?',
       initialValue: bloc.state.barrierDismissable,
       onChanged: (bool value) => bloc.add(SetBarrierDismissableEvent(value)),
     );
@@ -97,10 +97,7 @@ final class _ConstraintsOption extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       spacing: spacing,
       children: [
-        Text(
-          '[MyoroModalConfiguration.constraints]',
-          style: themeExtension.headerTextStyle,
-        ),
+        Text('Constraints', style: themeExtension.headerTextStyle),
         Row(
           spacing: spacing,
           children: [
@@ -161,7 +158,7 @@ final class _TitleOption extends StatelessWidget {
 
     return MyoroInput(
       configuration: MyoroInputConfiguration(
-        label: '[MyoroModalConfiguration.title]',
+        label: 'Title',
         inputStyle:
             context
                 .resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>()
@@ -217,7 +214,7 @@ final class _ShowCloseButtonOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroModalWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroModalConfiguration.showCloseButton]',
+      label: 'Show close button?',
       initialValue: bloc.state.showCloseButton,
       onChanged: (bool value) => bloc.add(SetShowCloseButtonEvent(value)),
     );

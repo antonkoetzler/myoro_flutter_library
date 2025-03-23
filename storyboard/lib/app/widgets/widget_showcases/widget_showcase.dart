@@ -114,9 +114,9 @@ final class _WidgetOptions extends StatelessWidget {
         context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return IntrinsicWidth(
-      child: Padding(
-        padding: themeExtension.widgetOptionsPadding,
-        child: SingleChildScrollView(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: themeExtension.widgetOptionsPadding,
           child: Column(
             children:
                 _widgetOptions.map<Widget>((Widget widgetOption) {

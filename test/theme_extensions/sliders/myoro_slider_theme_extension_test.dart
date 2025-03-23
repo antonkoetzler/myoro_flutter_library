@@ -9,9 +9,7 @@ void main() {
   late final MyoroSliderThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroSliderThemeExtension.fake();
     themeExtension2 = MyoroSliderThemeExtension.fake();
   });

@@ -70,9 +70,8 @@ void main() {
   }
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+
     configuration = MyoroDropdownConfiguration<String>(
       label: faker.lorem.word(),
       labelTextStyle:

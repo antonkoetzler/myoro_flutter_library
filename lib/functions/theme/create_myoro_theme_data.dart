@@ -13,14 +13,14 @@ ThemeData createMyoroThemeData(
   MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder, {
   required bool isDarkMode,
 }) {
+  MyoroTypographyDesignSystem.isDarkMode = isDarkMode;
+
   final myoroColorScheme = createMyoroColorScheme(isDarkMode);
   final myoroTextTheme = createMyoroTextTheme(isDarkMode);
 
   final colorScheme =
       colorSchemeBuilder?.call(myoroColorScheme) ?? myoroColorScheme;
   final textTheme = textThemeBuilder?.call(myoroTextTheme) ?? myoroTextTheme;
-
-  MyoroTypographyDesignSystem.textTheme = textTheme;
 
   return ThemeData(
     brightness: isDarkMode ? Brightness.dark : Brightness.light,

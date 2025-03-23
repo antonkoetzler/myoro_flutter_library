@@ -11,9 +11,7 @@ void main() {
   late final MyoroIconTextHoverButtonThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroIconTextHoverButtonThemeExtension.fake();
     themeExtension2 = MyoroIconTextHoverButtonThemeExtension.fake();
   });

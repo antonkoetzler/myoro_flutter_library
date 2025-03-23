@@ -23,9 +23,7 @@ void main() {
   final defaultState = MyoroSliderWidgetShowcaseState(width: width1);
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     labelTextStyle =
         faker.randomGenerator.boolean()
             ? MyoroTypographyDesignSystem.instance.randomTextStyle

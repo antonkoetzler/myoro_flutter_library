@@ -3,82 +3,32 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the [TextTheme] for [createMyoroThemeData]'s [ThemeData].
 TextTheme createMyoroTextTheme(bool isDarkMode) {
-  TextStyle createTextStyle({
-    required MyoroFontSizeEnum fontSize,
-    FontWeight fontWeight = FontWeight.normal,
-    FontStyle fontStyle = FontStyle.normal,
-  }) {
-    return TextStyle(
-      color:
-          isDarkMode
-              ? MyoroDarkModeColorDesignSystem.secondary
-              : MyoroLightModeColorDesignSystem.secondary,
-      fontSize: fontSize.size,
-      fontWeight: fontWeight,
-      fontStyle: fontStyle,
-    );
-  }
+  final typography = MyoroTypographyDesignSystem.instance;
 
   return TextTheme(
     /// Regular.
-    bodyLarge: createTextStyle(fontSize: MyoroFontSizeEnum.large),
-    bodyMedium: createTextStyle(fontSize: MyoroFontSizeEnum.medium),
-    bodySmall: createTextStyle(fontSize: MyoroFontSizeEnum.small),
+    bodyLarge: typography.regularSmall,
+    bodyMedium: typography.regularMedium,
+    bodySmall: typography.regularLarge,
 
     /// Italic.
-    headlineLarge: createTextStyle(
-      fontSize: MyoroFontSizeEnum.large,
-      fontStyle: FontStyle.italic,
-    ),
-    headlineMedium: createTextStyle(
-      fontSize: MyoroFontSizeEnum.medium,
-      fontStyle: FontStyle.italic,
-    ),
-    headlineSmall: createTextStyle(
-      fontSize: MyoroFontSizeEnum.small,
-      fontStyle: FontStyle.italic,
-    ),
+    headlineLarge: typography.italicSmall,
+    headlineMedium: typography.italicMedium,
+    headlineSmall: typography.italicLarge,
 
     /// Semi bold.
-    labelLarge: createTextStyle(
-      fontSize: MyoroFontSizeEnum.large,
-      fontWeight: FontWeight.w600,
-    ),
-    labelMedium: createTextStyle(
-      fontSize: MyoroFontSizeEnum.medium,
-      fontWeight: FontWeight.w600,
-    ),
-    labelSmall: createTextStyle(
-      fontSize: MyoroFontSizeEnum.small,
-      fontWeight: FontWeight.w600,
-    ),
+    labelLarge: typography.semiBoldSmall,
+    labelMedium: typography.semiBoldMedium,
+    labelSmall: typography.semiBoldLarge,
 
     /// Bold.
-    titleLarge: createTextStyle(
-      fontSize: MyoroFontSizeEnum.large,
-      fontWeight: FontWeight.bold,
-    ),
-    titleMedium: createTextStyle(
-      fontSize: MyoroFontSizeEnum.medium,
-      fontWeight: FontWeight.bold,
-    ),
-    titleSmall: createTextStyle(
-      fontSize: MyoroFontSizeEnum.small,
-      fontWeight: FontWeight.bold,
-    ),
+    titleLarge: typography.boldSmall,
+    titleMedium: typography.boldMedium,
+    titleSmall: typography.boldLarge,
 
     /// Extra bold.
-    displayLarge: createTextStyle(
-      fontSize: MyoroFontSizeEnum.large,
-      fontWeight: FontWeight.w800,
-    ),
-    displayMedium: createTextStyle(
-      fontSize: MyoroFontSizeEnum.medium,
-      fontWeight: FontWeight.w800,
-    ),
-    displaySmall: createTextStyle(
-      fontSize: MyoroFontSizeEnum.small,
-      fontWeight: FontWeight.w800,
-    ),
+    displayLarge: typography.extraBoldSmall,
+    displayMedium: typography.extraBoldMedium,
+    displaySmall: typography.extraBoldLarge,
   );
 }

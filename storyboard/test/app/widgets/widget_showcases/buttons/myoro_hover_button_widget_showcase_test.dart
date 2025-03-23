@@ -67,18 +67,16 @@ void main() {
     );
 
     // [_PrimaryColorDropdown].
-    expectColorDropdown(label: '[MyoroHoverButtonConfiguration.primaryColor]');
+    expectColorDropdown(label: 'Primary color');
 
     // [_OnPrimaryColorDropdown].
-    expectColorDropdown(
-      label: '[MyoroHoverButtonConfiguration.onPrimaryColor]',
-    );
+    expectColorDropdown(label: 'On primary color');
 
     // [_IsHoveredCheckbox].
-    expectCheckbox(label: '[MyoroHoverButtonConfiguration.isHovered]');
+    expectCheckbox(label: 'Is hovered?');
 
     // [_BorderedCheckbox].
-    expectCheckbox(label: '[MyoroHoverButtonConfiguration.bordered]');
+    expectCheckbox(label: 'Bordered?');
 
     // [_BorderRadiusSlider].
     expect(
@@ -87,16 +85,15 @@ void main() {
             w is Column &&
             w.mainAxisSize == MainAxisSize.min &&
             w.children.first is MyoroSlider &&
-            (w.children.first as MyoroSlider).label ==
-                '[MyoroHoverButtonConfiguration.borderRadius]',
+            (w.children.first as MyoroSlider).label == 'Border radius',
       ),
       findsOneWidget,
     );
 
     // [_TooltipEnabledCheckbox].
-    expectCheckbox(label: '[MyoroHoverButtonConfiguration.tooltip]');
+    expectCheckbox(label: 'Tooltip');
 
     // [_OnPressedEnabledCheckbox].
-    expectCheckbox(label: '[MyoroHoverButton.onPressed] not [null]?');
+    expectCheckbox(label: 'onPressed enabled?');
   });
 }

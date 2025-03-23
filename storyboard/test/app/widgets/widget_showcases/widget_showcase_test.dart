@@ -60,9 +60,6 @@ void main() {
             w.crossAxisAlignment == CrossAxisAlignment.start &&
             w.children.length == 3 &&
             w.children.first is Expanded,
-        // (w.children.first as Expanded).child is _WidgetWrapper &&
-        // w.children[1] is _Divider &&
-        // w.children.last is _WidgetOptions,
       ),
       findsOneWidget,
     );
@@ -99,13 +96,13 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is IntrinsicWidth &&
-            w.child is Padding &&
-            (w.child as Padding).padding ==
+            w.child is SingleChildScrollView &&
+            (w.child as SingleChildScrollView).child is Padding &&
+            ((w.child as SingleChildScrollView).child as Padding).padding ==
                 themeExtension.widgetOptionsPadding &&
-            (w.child as Padding).child is SingleChildScrollView &&
-            ((w.child as Padding).child as SingleChildScrollView).child
+            ((w.child as SingleChildScrollView).child as Padding).child
                 is Column &&
-            (((w.child as Padding).child as SingleChildScrollView).child
+            (((w.child as SingleChildScrollView).child as Padding).child
                         as Column)
                     .children
                     .length ==

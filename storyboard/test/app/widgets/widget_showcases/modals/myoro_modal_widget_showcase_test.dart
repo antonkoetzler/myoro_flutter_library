@@ -26,29 +26,20 @@ void main() {
       findsOneWidget,
     );
     expect(
-      MyoroCheckbox.finder(
-        label: '[MyoroModalConfiguration.barrierDismissable]',
-        labelEnabled: true,
-      ),
+      MyoroCheckbox.finder(label: 'Barrier dismissable?', labelEnabled: true),
       findsOneWidget,
     );
-    expect(find.text('[MyoroModalConfiguration.constraints]'), findsOneWidget);
+    expect(find.text('Constraints'), findsOneWidget);
     expect(find.text('Min width'), findsOneWidget);
     expect(find.text('Max width'), findsOneWidget);
     expect(find.text('Min height'), findsOneWidget);
     expect(find.text('Max height'), findsOneWidget);
     expect(
-      MyoroInput.finder(
-        label: '[MyoroModalConfiguration.title]',
-        labelEnabled: true,
-      ),
+      MyoroInput.finder(label: 'Title', labelEnabled: true),
       findsOneWidget,
     );
     expect(
-      MyoroCheckbox.finder(
-        label: '[MyoroModalConfiguration.showCloseButton]',
-        labelEnabled: true,
-      ),
+      MyoroCheckbox.finder(label: 'Show close button?', labelEnabled: true),
       findsOneWidget,
     );
   });

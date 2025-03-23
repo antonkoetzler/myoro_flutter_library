@@ -44,34 +44,30 @@ void main() {
     expect(find.byType(MyoroIconTextHoverButton), findsAtLeastNWidgets(1));
 
     // [_IconOption].
-    expectDropdown<IconData>('[MyoroIconTextHoverButton.icon]');
+    expectDropdown<IconData>('Icon');
 
     // [_IconSizeOption].
-    expectInput('[MyoroIconTextHoverButton.iconSize]');
+    expectInput('Icon size');
 
     // [_TextOption].
-    expectInput('[MyoroIconTextHoverButton.text]');
+    expectInput('Text');
 
     // [_TextStyleOption].
-    expectDropdown<TextStyle>('[MyoroIconTextHoverButton.textStyle]');
+    expectDropdown<TextStyle>('Text style');
 
     // [_TextAlignOption].
-    expectDropdown<TextAlign>('[MyoroIconTextHoverButton.textAlign]');
+    expectDropdown<TextAlign>('Text alignment');
 
     // [_PaddingOption].
-    expectInput('[MyoroIconTextHoverButton.padding]');
+    expectInput('Padding');
 
     // [_MainAxisAlignmentOption].
-    expectDropdown<MainAxisAlignment>(
-      '[MyoroIconTextHoverButton.mainAxisAlignment]',
-    );
+    expectDropdown<MainAxisAlignment>('MainAxisAlignment');
 
     // [_OnPressedEnabledOption].
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroCheckbox &&
-            w.label == '[MyoroIconTextHoverButton.onPressed] enabled?',
+        (Widget w) => w is MyoroCheckbox && w.label == 'onPressed enabled?',
       ),
       findsOneWidget,
     );

@@ -16,9 +16,7 @@ void main() {
   final bool childEnabled = faker.randomGenerator.boolean();
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
   });
 

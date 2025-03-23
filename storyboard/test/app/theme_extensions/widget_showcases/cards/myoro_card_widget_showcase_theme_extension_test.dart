@@ -9,9 +9,7 @@ void main() {
   late final MyoroCardWidgetShowcaseThemeExtension themeExtension2;
 
   setUpAll(() {
-    MyoroTypographyDesignSystem.textTheme = createMyoroTextTheme(
-      faker.randomGenerator.boolean(),
-    );
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
     themeExtension1 = MyoroCardWidgetShowcaseThemeExtension.fake();
     themeExtension2 = MyoroCardWidgetShowcaseThemeExtension.fake();
   });

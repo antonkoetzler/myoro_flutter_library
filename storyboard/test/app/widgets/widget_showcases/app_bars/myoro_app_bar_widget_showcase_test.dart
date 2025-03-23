@@ -61,8 +61,6 @@ void main() {
                         as SizedBox)
                     .width ==
                 themeExtension.logoTitleSpacing,
-        // (((w.child as SizedBox).child as Wrap).children.first as Row).children.last is _MockAppTitle &&
-        // ((w.child as SizedBox).child as Wrap).children.last is _MockMenuButton,
       ),
       findsOneWidget,
     );

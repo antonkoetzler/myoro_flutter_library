@@ -17,24 +17,36 @@ final class _FooThemeExtension extends ThemeExtension<_FooThemeExtension> {
 void main() {
   void createAndExpectThemeData({
     required bool isDarkMode,
+    ColorScheme? colorScheme,
+    TextTheme? textTheme,
     List<ThemeExtension> themeExtensions = const [],
   }) {
+    MyoroTypographyDesignSystem.isDarkMode = isDarkMode;
+
+    final ColorScheme colorSchemeInUse =
+        colorScheme ?? createMyoroColorScheme(isDarkMode);
+    final TextTheme textThemeInUse =
+        textTheme ?? createMyoroTextTheme(isDarkMode);
+
     final themeData = createMyoroThemeData(
+      colorScheme != null ? (_) => colorSchemeInUse : null,
+      textTheme != null ? (_) => textThemeInUse : null,
       themeExtensions.isNotEmpty ? (_, __) => themeExtensions : null,
       isDarkMode: isDarkMode,
     );
 
-    final colorScheme = createMyoroColorScheme(isDarkMode);
-    final textTheme = createMyoroTextTheme(isDarkMode);
     final comparisonThemeData = ThemeData(
       brightness: isDarkMode ? Brightness.dark : Brightness.light,
-      colorScheme: colorScheme,
-      textTheme: textTheme,
-      sliderTheme: createMyoroSliderThemeData(colorScheme),
-      tooltipTheme: createMyoroTooltipThemeData(colorScheme, textTheme),
-      textSelectionTheme: createMyoroTextSelectionThemeData(colorScheme),
+      colorScheme: colorSchemeInUse,
+      textTheme: textThemeInUse,
+      sliderTheme: createMyoroSliderThemeData(colorSchemeInUse),
+      tooltipTheme: createMyoroTooltipThemeData(
+        colorSchemeInUse,
+        textThemeInUse,
+      ),
+      textSelectionTheme: createMyoroTextSelectionThemeData(colorSchemeInUse),
       extensions: [
-        ...createMyoroThemeExtensions(colorScheme, textTheme),
+        ...createMyoroThemeExtensions(colorSchemeInUse, textThemeInUse),
         ...themeExtensions,
       ],
     );

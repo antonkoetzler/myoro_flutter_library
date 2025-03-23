@@ -25,7 +25,7 @@ void main() {
     // [_DirectionOption].
     expect(
       MyoroSingularDropdown.finder<Axis>(
-        label: '[MyoroCarousel.direction]',
+        label: 'Direction',
         labelEnabled: true,
         allowItemClearing: false,
         allowItemClearingEnabled: true,
@@ -36,7 +36,7 @@ void main() {
     // [_DisplayTraversalButtonsOptions].
     expect(
       MyoroCheckbox.finder(
-        label: '[MyoroCarousel.displayTraversalButtons]',
+        label: 'Display traversal buttons?',
         labelEnabled: true,
       ),
       findsOneWidget,
@@ -44,19 +44,13 @@ void main() {
 
     // [_AutoplayOption].
     expect(
-      MyoroCheckbox.finder(
-        label: '[MyoroCarousel.autoplay]',
-        labelEnabled: true,
-      ),
+      MyoroCheckbox.finder(label: 'Autoplay', labelEnabled: true),
       findsOneWidget,
     );
 
     // [_AutoplayIntervalDurationOption].
     expect(
-      MyoroSlider.finder(
-        label: '[MyoroSlider.autoplayIntervalDuration]',
-        labelEnabled: true,
-      ),
+      MyoroSlider.finder(label: 'Autoplay duration', labelEnabled: true),
       findsOneWidget,
     );
   });
