@@ -38,10 +38,6 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget build(BuildContext context) {
     return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
       builder: (_, WidgetShowcaseState state) {
-        if (_widgetOptions.isEmpty || !state.displayingWidgetOptions) {
-          return const SizedBox.shrink();
-        }
-
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
