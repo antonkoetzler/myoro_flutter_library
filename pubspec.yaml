@@ -31,7 +31,6 @@ dependencies:
   intl: any
   url_launcher: ^6.3.1
   mocktail: ^1.0.4
-  go_router: ^14.8.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:go_router/go_router.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
@@ -44,10 +43,10 @@ final class MyoroMaterialApp extends StatelessWidget {
   /// Supported setups in localization setup.
   final Iterable<Locale>? supportedLocales;
 
-  /// [GoRouter]
-  final GoRouter? router;
+  /// Router to support packages such as go_router.
+  final RouterConfig<Object>? router;
 
-  /// Entry point for the application when a [GoRouter] is not being used.
+  /// Entry point for the application when a [MyoroMaterialApp.router] is not being used.
   final Widget? home;
 
   const MyoroMaterialApp({
@@ -77,7 +76,7 @@ final class MyoroMaterialApp extends StatelessWidget {
     bool textThemeBuilderEnabled = false,
     MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
     bool themeExtensionsBuilderEnabled = false,
-    GoRouter? router,
+    RouterConfig<Object>? router,
     bool routerEnabled = false,
     MyoroScreen? home,
     bool homeEnabled = false,
