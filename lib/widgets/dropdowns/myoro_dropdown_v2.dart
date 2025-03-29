@@ -45,6 +45,13 @@ final class _Dropdown<T> extends StatefulWidget {
 final class _DropdownState<T> extends State<_Dropdown<T>> {
   MyoroDropdownV2Configuration<T> get _configuration => widget._configuration;
 
+  /// [MyoroDropdownV2Controller] of [_Dropdown].
+  MyoroDropdownV2Controller<T>? _localController;
+  MyoroDropdownV2Controller<T> get _controller {
+    return widget._configuration.controller ??
+        (_localController ??= MyoroDropdownV2Controller());
+  }
+
   /// [Bloc] of [_Dropdown].
   late final MyoroDropdownV2Bloc<T> _bloc;
 
@@ -52,13 +59,15 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
   void initState() {
     super.initState();
     _bloc = MyoroDropdownV2Bloc(enabled: _configuration.enabled);
+    _controller.bloc = _bloc;
     _setInitiallySelectedItems();
   }
 
   @override
   void didUpdateWidget(covariant _Dropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _bloc.add(ToggleEnabledEvent(_configuration.enabled));
+    _controller.bloc = _bloc;
+    _controller.toggleEnabled(_configuration.enabled);
     _setInitiallySelectedItems();
   }
 
@@ -79,7 +88,7 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
         child: Row(
           spacing: themeExtension.spacing,
           children: [
-            if (_checkboxOnChangedNotNull) _Checkbox<T>(),
+            if (_checkboxOnChangedNotNull) _Checkbox(_configuration),
             Expanded(child: _Input(_configuration)),
           ],
         ),
@@ -92,14 +101,15 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
       final configuration =
           _configuration as MyoroSingularDropdownV2Configuration<T>;
       if (configuration.initialSelectedItem != null) {
-        _bloc.add(SelectItemsEvent({configuration.initialSelectedItem as T}));
+        _controller.toggleItem(configuration.initialSelectedItem as T);
       }
     }
     if (_configuration is MyoroMultiDropdownV2Configuration<T>) {
       final configuration =
           _configuration as MyoroMultiDropdownV2Configuration<T>;
+      final controller = _controller as MyoroMultiDropdownV2Controller<T>;
       if (configuration.initialSelectedItems.isNotEmpty) {
-        _bloc.add(SelectItemsEvent(configuration.initialSelectedItems));
+        controller.selectItems(configuration.initialSelectedItems);
       }
     }
   }
@@ -123,19 +133,41 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
 
 /// [MyoroCheckbox] that enables/disables the dropdown.
 final class _Checkbox<T> extends StatelessWidget {
-  const _Checkbox();
+  final MyoroDropdownV2Configuration<T> _configuration;
+
+  const _Checkbox(this._configuration);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroDropdownV2Bloc<T>, MyoroDropdownV2State<T>>(
+    return BlocConsumer<MyoroDropdownV2Bloc<T>, MyoroDropdownV2State<T>>(
+      listenWhen: _listenWhen,
+      listener: _listener,
       buildWhen: _buildWhen,
-      builder: (_, MyoroDropdownV2State<T> state) {
-        return MyoroCheckbox(
-          initialValue: state.enabled,
-          onChanged: (bool enabled) => _onChanged(context),
-        );
-      },
+      builder: _builder,
     );
+  }
+
+  bool _listenWhen(
+    MyoroDropdownV2State<T> previous,
+    MyoroDropdownV2State<T> current,
+  ) {
+    return previous.enabled != current.enabled;
+  }
+
+  void _listener(_, MyoroDropdownV2State<T> state) {
+    if (_configuration is MyoroSingularDropdownV2Configuration<T>) {
+      final configuration =
+          _configuration as MyoroSingularDropdownV2Configuration<T>;
+      configuration.checkboxOnChanged?.call(
+        state.enabled,
+        state.selectedItems.isNotEmpty ? state.selectedItems.first : null,
+      );
+    }
+    if (_configuration is MyoroMultiDropdownV2Configuration<T>) {
+      final configuration =
+          _configuration as MyoroMultiDropdownV2Configuration<T>;
+      configuration.checkboxOnChanged?.call(state.enabled, state.selectedItems);
+    }
   }
 
   bool _buildWhen(
@@ -143,6 +175,13 @@ final class _Checkbox<T> extends StatelessWidget {
     MyoroDropdownV2State<T> current,
   ) {
     return previous.enabled != current.enabled;
+  }
+
+  Widget _builder(BuildContext context, MyoroDropdownV2State<T> state) {
+    return MyoroCheckbox(
+      initialValue: state.enabled,
+      onChanged: (bool enabled) => _onChanged(context),
+    );
   }
 
   void _onChanged(BuildContext context) {
@@ -467,20 +506,28 @@ final class _Menu<T> extends StatelessWidget {
         child: TapRegion(
           groupId: _groupId,
           onTapOutside: (_) => _toggleMenu(),
-          child: MyoroMenu(
-            dataConfiguration: _configuration.dataConfiguration,
-            itemBuilder: (T item) => _menuItemBuilder(context, item),
+          child: BlocBuilder<MyoroDropdownV2Bloc<T>, MyoroDropdownV2State<T>>(
+            builder: (_, MyoroDropdownV2State<T> state) {
+              return MyoroMenu(
+                dataConfiguration: _configuration.dataConfiguration,
+                itemBuilder: (T item) => _menuItemBuilder(context, state, item),
+              );
+            },
           ),
         ),
       ),
     );
   }
 
-  MyoroMenuItem _menuItemBuilder(BuildContext context, T item) {
+  MyoroMenuItem _menuItemBuilder(
+    BuildContext context,
+    MyoroDropdownV2State<T> state,
+    T item,
+  ) {
     return _configuration
         .menuItemBuilder(item)
         .copyWith(
-          isHovered: false,
+          isHovered: state.selectedItems.contains(item),
           onPressed: () => _menuItemOnPressed(context, item),
         );
   }

@@ -37,7 +37,7 @@ final class ClearSelectedItemsEvent<T> extends MyoroDropdownV2Event<T> {
   const ClearSelectedItemsEvent();
 }
 
-/// Toggles the value of [MyoroDropdownV2State.enabled]..
+/// Toggles the value of [MyoroDropdownV2State.enabled].
 final class ToggleEnabledEvent<T> extends MyoroDropdownV2Event<T> {
   final bool? enabled;
 

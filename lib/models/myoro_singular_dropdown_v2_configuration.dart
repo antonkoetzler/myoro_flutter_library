@@ -32,7 +32,8 @@ final class MyoroSingularDropdownV2Configuration<T>
     this.initialSelectedItem,
     this.onChanged,
     this.checkboxOnChanged,
-  });
+    MyoroSingularDropdownV2Controller<T>? controller,
+  }) : super(controller: controller);
 
   @override
   MyoroSingularDropdownV2Configuration<T> copyWith({
@@ -48,6 +49,8 @@ final class MyoroSingularDropdownV2Configuration<T>
     bool onChangedEnabled = true,
     MyoroSingularDropdownV2ConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedEnabled = true,
+    MyoroSingularDropdownV2Controller<T>? controller,
+    bool controllerEnabled = true,
   }) {
     return MyoroSingularDropdownV2Configuration(
       label: labelEnabled ? (label ?? this.label) : null,
@@ -64,6 +67,7 @@ final class MyoroSingularDropdownV2Configuration<T>
           checkboxOnChangedEnabled
               ? (checkboxOnChanged ?? this.checkboxOnChanged)
               : null,
+      controller: controllerEnabled ? (controller ?? this.controller) : null,
     );
   }
 
@@ -78,6 +82,7 @@ final class MyoroSingularDropdownV2Configuration<T>
       initialSelectedItem,
       onChanged,
       checkboxOnChanged,
+      controller,
     ];
   }
 
@@ -92,5 +97,6 @@ final class MyoroSingularDropdownV2Configuration<T>
       '  initialSelectedItem: $initialSelectedItem,\n'
       '  onChanged: $onChanged,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
+      '  controller: $controller,\n'
       ');';
 }

@@ -31,12 +31,16 @@ abstract class MyoroDropdownV2Configuration<T> extends Equatable {
   /// Builder of the [String] displayed when a [T] item is selected.
   final MyoroDropdownV2ConfigurationSelectedItemBuilder<T> selectedItemBuilder;
 
+  /// Controller of the dropdown.
+  final MyoroDropdownV2Controller<T>? controller;
+
   const MyoroDropdownV2Configuration({
     this.label,
     this.enabled = true,
     required this.dataConfiguration,
     required this.menuItemBuilder,
     required this.selectedItemBuilder,
+    this.controller,
   });
 
   MyoroDropdownV2Configuration<T> copyWith();

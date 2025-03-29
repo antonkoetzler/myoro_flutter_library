@@ -32,7 +32,8 @@ final class MyoroMultiDropdownV2Configuration<T>
     this.initialSelectedItems = const {},
     this.onChanged,
     this.checkboxOnChanged,
-  });
+    MyoroMultiDropdownV2Controller<T>? controller,
+  }) : super(controller: controller);
 
   @override
   MyoroMultiDropdownV2Configuration<T> copyWith({
@@ -47,6 +48,8 @@ final class MyoroMultiDropdownV2Configuration<T>
     bool onChangedEnabled = true,
     MyoroMultiDropdownV2ConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedEnabled = true,
+    MyoroMultiDropdownV2Controller<T>? controller,
+    bool controllerEnabled = true,
   }) {
     return MyoroMultiDropdownV2Configuration(
       label: labelEnabled ? (label ?? this.label) : null,
@@ -60,6 +63,7 @@ final class MyoroMultiDropdownV2Configuration<T>
           checkboxOnChangedEnabled
               ? (checkboxOnChanged ?? this.checkboxOnChanged)
               : null,
+      controller: controllerEnabled ? (controller ?? this.controller) : null,
     );
   }
 
@@ -74,6 +78,7 @@ final class MyoroMultiDropdownV2Configuration<T>
       initialSelectedItems,
       onChanged,
       checkboxOnChanged,
+      controller,
     ];
   }
 
@@ -88,5 +93,6 @@ final class MyoroMultiDropdownV2Configuration<T>
       '  initialSelectedItem: $initialSelectedItems,\n'
       '  onChanged: $onChanged,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
+      '  controller: $controller,\n'
       ');';
 }
