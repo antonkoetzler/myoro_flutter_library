@@ -278,7 +278,7 @@ final class _TextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension =
         context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final border = _configuration.inputStyle.getBorder(context);
+    final border = _configuration.getBorder(context);
     final textStyle =
         _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 

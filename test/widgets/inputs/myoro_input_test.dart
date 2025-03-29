@@ -32,7 +32,7 @@ void main() {
           builder: (BuildContext context) {
             themeExtension =
                 context.resolveThemeExtension<MyoroInputThemeExtension>();
-            border = configuration.inputStyle.getBorder(context);
+            border = configuration.getBorder(context);
             return MyoroInput(
               configuration: configuration,
               formatter: formatter,

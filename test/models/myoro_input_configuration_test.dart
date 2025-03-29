@@ -15,6 +15,7 @@ void main() {
         label: newModel.label,
         placeholder: newModel.placeholder,
         labelTextStyle: newModel.labelTextStyle,
+        border: newModel.border,
         suffix: newModel.suffix,
         enabled: newModel.enabled,
         readOnly: newModel.readOnly,
@@ -41,6 +42,7 @@ void main() {
       '  label: ${model.label},\n'
       '  placeholder: ${model.placeholder},\n'
       '  labelTextStyle: ${model.labelTextStyle},\n'
+      '  border: ${model.border}\n'
       '  suffix: ${model.suffix},\n'
       '  enabled: ${model.enabled},\n'
       '  readOnly: ${model.readOnly},\n'

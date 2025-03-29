@@ -40,6 +40,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Text style of the label.
   final TextStyle? labelTextStyle;
 
+  /// [InputBorder] of the input.
+  final InputBorder? border;
+
   /// Suffix [Widget] (i.e. a search button).
   final Widget? suffix;
 
@@ -86,6 +89,7 @@ final class MyoroInputConfiguration extends Equatable {
     this.label,
     this.placeholder,
     this.labelTextStyle,
+    this.border,
     this.suffix,
     this.enabled,
     this.readOnly,
@@ -109,6 +113,7 @@ final class MyoroInputConfiguration extends Equatable {
       label = faker.lorem.word(),
       placeholder = faker.lorem.word(),
       labelTextStyle = null,
+      border = null,
       suffix = null,
       enabled = faker.randomGenerator.boolean(),
       readOnly = faker.randomGenerator.boolean(),
@@ -128,6 +133,7 @@ final class MyoroInputConfiguration extends Equatable {
     String? label,
     String? placeholder,
     TextStyle? labelTextStyle,
+    InputBorder? border,
     Widget? suffix,
     bool? enabled,
     bool? readOnly,
@@ -147,6 +153,7 @@ final class MyoroInputConfiguration extends Equatable {
       label: label ?? this.label,
       placeholder: placeholder ?? this.placeholder,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
+      border: border ?? this.border,
       suffix: suffix ?? this.suffix,
       enabled: enabled ?? this.enabled,
       readOnly: readOnly ?? this.readOnly,
@@ -171,6 +178,7 @@ final class MyoroInputConfiguration extends Equatable {
       '  label: $label,\n'
       '  placeholder: $placeholder,\n'
       '  labelTextStyle: $labelTextStyle,\n'
+      '  border: $border,\n'
       '  suffix: $suffix,\n'
       '  enabled: $enabled,\n'
       '  readOnly: $readOnly,\n'
@@ -193,6 +201,7 @@ final class MyoroInputConfiguration extends Equatable {
       label,
       placeholder,
       labelTextStyle,
+      border,
       // suffix, ~ [Widget]s aren't great for comparison.
       enabled,
       readOnly,
@@ -205,5 +214,9 @@ final class MyoroInputConfiguration extends Equatable {
       focusNode,
       controller,
     ];
+  }
+
+  InputBorder getBorder(BuildContext context) {
+    return border ?? inputStyle.getBorder(context);
   }
 }

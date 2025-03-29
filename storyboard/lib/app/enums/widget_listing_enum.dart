@@ -10,7 +10,12 @@ enum WidgetListingEnum {
   checkboxes('Checkboxes', [myoroCheckboxTitle, myoroGroupCheckboxTitle]),
   dividers('Dividers', [myoroBasicDividerTitle, myoroResizeDividerTitle]),
   drawers('Drawers', [myoroDrawerTitle]),
-  dropdowns('Dropdowns', [myoroSingularDropdownTitle, myoroMultiDropdownTitle]),
+  dropdowns('Dropdowns', [
+    myoroSingularDropdownTitle,
+    myoroMultiDropdownTitle,
+    myoroSingularDropdownV2Title,
+    myoroMultiDropdownV2Title,
+  ]),
   forms('Forms', [myoroFormTitle]),
   graphs('Graphs', [myoroBarGraphTitle, myoroPieGraphTitle]),
   inputs('Inputs', [
@@ -63,6 +68,8 @@ enum WidgetListingEnum {
   // Dropdowns.
   static const myoroSingularDropdownTitle = 'MyoroSingularDropdown';
   static const myoroMultiDropdownTitle = 'MyoroMultiDropdown';
+  static const myoroSingularDropdownV2Title = 'MyoroSingularDropdownV2';
+  static const myoroMultiDropdownV2Title = 'MyoroMultiDropdownV2';
 
   // Forms.
   static const myoroFormTitle = 'MyoroForm';
@@ -148,6 +155,9 @@ enum WidgetListingEnum {
       // Dropdowns.
       myoroSingularDropdownTitle => const MyoroSingularDropdownWidgetShowcase(),
       myoroMultiDropdownTitle => const MyoroMultiDropdownWidgetShowcase(),
+      myoroSingularDropdownV2Title =>
+        const MyoroSingularDropdownV2WidgetShowcase(),
+      myoroMultiDropdownV2Title => const MyoroMultiDropdownV2WidgetShowcase(),
 
       // Forms.
       myoroFormTitle => const MyoroFormWidgetShowcase(),
