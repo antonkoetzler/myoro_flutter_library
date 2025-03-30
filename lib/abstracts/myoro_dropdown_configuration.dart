@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [String] displayed when a [T] item is selected.
-typedef MyoroDropdownV2ConfigurationSelectedItemBuilder<T> =
+typedef MyoroDropdownConfigurationSelectedItemBuilder<T> =
     String Function(T item);
 
-/// Abstract model that encapsulates options for [MyoroDropdownV2].
+/// Abstract model that encapsulates options for [MyoroDropdown].
 ///
-/// [MyoroSingularDropdownV2] and [MyoroMultiDropdownV2] have their separation
-/// configuration classes extending [MyoroDropdownV2Configuration] for specific args.
-abstract class MyoroDropdownV2Configuration<T> extends Equatable {
+/// [MyoroSingularDropdown] and [MyoroMultiDropdown] have their separation
+/// configuration classes extending [MyoroDropdownConfiguration] for specific args.
+abstract class MyoroDropdownConfiguration<T> extends Equatable {
   /// Label of the dropdown.
   ///
   /// [MyoroInputConfiguration.label] of [_Input].
@@ -22,6 +22,9 @@ abstract class MyoroDropdownV2Configuration<T> extends Equatable {
   /// within the same dropdown [Widget] lifespan.
   final bool enabled;
 
+  /// If the clear button of [_Input]'s [MyoroInput] will be displayed.
+  final bool allowItemClearing;
+
   /// Items of the menu.
   final MyoroDataConfiguration<T> dataConfiguration;
 
@@ -29,19 +32,20 @@ abstract class MyoroDropdownV2Configuration<T> extends Equatable {
   final MyoroMenuItemBuilder<T> menuItemBuilder;
 
   /// Builder of the [String] displayed when a [T] item is selected.
-  final MyoroDropdownV2ConfigurationSelectedItemBuilder<T> selectedItemBuilder;
+  final MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder;
 
   /// Controller of the dropdown.
-  final MyoroDropdownV2Controller<T>? controller;
+  final MyoroDropdownController<T>? controller;
 
-  const MyoroDropdownV2Configuration({
+  const MyoroDropdownConfiguration({
     this.label,
     this.enabled = true,
+    this.allowItemClearing = true,
     required this.dataConfiguration,
     required this.menuItemBuilder,
     required this.selectedItemBuilder,
     this.controller,
   });
 
-  MyoroDropdownV2Configuration<T> copyWith();
+  MyoroDropdownConfiguration<T> copyWith();
 }

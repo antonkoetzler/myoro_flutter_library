@@ -56,43 +56,30 @@ final class _Widget extends StatelessWidget {
   }
 }
 
-final class _IconOption extends StatefulWidget {
+final class _IconOption extends StatelessWidget {
   const _IconOption();
 
   @override
-  State<_IconOption> createState() => _IconOptionState();
-}
-
-final class _IconOptionState extends State<_IconOption> {
-  String _itemLabelBuilder(IconData icon) =>
-      'kMyoroTestIcons[${kMyoroTestIcons.indexOf(icon).toString()}]';
-
-  late final _bloc =
-      context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<IconData>(
-    _bloc.state.icon,
-  );
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+
     return MyoroSingularDropdown<IconData>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: 'Icon',
         dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestIcons),
-        itemLabelBuilder: _itemLabelBuilder,
-        itemBuilder:
+        menuItemBuilder:
             (IconData icon) =>
                 MyoroMenuItem(icon: icon, text: _itemLabelBuilder(icon)),
+        selectedItemBuilder: _itemLabelBuilder,
+        initialSelectedItem: bloc.state.icon,
+        onChanged: (IconData? icon) => bloc.add(SetIconEvent(icon)),
       ),
-      controller: _controller,
-      onChanged: (IconData? icon) => _bloc.add(SetIconEvent(icon)),
     );
+  }
+
+  String _itemLabelBuilder(IconData icon) {
+    return 'kMyoroTestIcons[${kMyoroTestIcons.indexOf(icon).toString()}]';
   }
 }
 
@@ -177,84 +164,56 @@ final class _TextOptionState extends State<_TextOption> {
   }
 }
 
-final class _TextStyleOption extends StatefulWidget {
+final class _TextStyleOption extends StatelessWidget {
   const _TextStyleOption();
 
   @override
-  State<_TextStyleOption> createState() => _TextStyleOptionState();
-}
-
-final class _TextStyleOptionState extends State<_TextStyleOption> {
-  late final _bloc =
-      context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<TextStyle>(
-    _bloc.state.textStyle,
-  );
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+
     final typographyInstance = MyoroTypographyDesignSystem.instance;
 
     return MyoroSingularDropdown<TextStyle>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: 'Text style',
         dataConfiguration: MyoroDataConfiguration(
           staticItems: typographyInstance.allTextStyles,
         ),
-        itemBuilder:
+        menuItemBuilder:
             (TextStyle textStyle) => MyoroMenuItem(
               text: typographyInstance.getTextStyleName(textStyle),
             ),
-        itemLabelBuilder: typographyInstance.getTextStyleName,
+        selectedItemBuilder: typographyInstance.getTextStyleName,
+        initialSelectedItem: bloc.state.textStyle,
+        onChanged:
+            (TextStyle? textStyle) => bloc.add(SetTextStyleEvent(textStyle)),
       ),
-      controller: _controller,
-      onChanged:
-          (TextStyle? textStyle) => _bloc.add(SetTextStyleEvent(textStyle)),
     );
   }
 }
 
-final class _TextAlignOption extends StatefulWidget {
+final class _TextAlignOption extends StatelessWidget {
   const _TextAlignOption();
 
   @override
-  State<_TextAlignOption> createState() => _TextAlignOptionState();
-}
-
-final class _TextAlignOptionState extends State<_TextAlignOption> {
-  late final _bloc =
-      context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<TextAlign>(
-    _bloc.state.textAlign,
-  );
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+
     return MyoroSingularDropdown<TextAlign>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: 'Text alignment',
         dataConfiguration: MyoroDataConfiguration(
           staticItems: TextAlign.values,
         ),
-        itemBuilder:
+        menuItemBuilder:
             (TextAlign textAlign) => MyoroMenuItem(text: textAlign.name),
-        itemLabelBuilder: (TextAlign textAlign) => textAlign.name,
+        selectedItemBuilder: (TextAlign textAlign) => textAlign.name,
+        initialSelectedItem: bloc.state.textAlign,
+        onChanged:
+            (TextAlign? textAlign) => bloc.add(SetTextAlignEvent(textAlign)),
       ),
-      controller: _controller,
-      onChanged:
-          (TextAlign? textAlign) => _bloc.add(SetTextAlignEvent(textAlign)),
     );
   }
 }
@@ -305,46 +264,30 @@ final class _PaddingOptionState extends State<_PaddingOption> {
   }
 }
 
-final class _MainAxisAlignmentOption extends StatefulWidget {
+final class _MainAxisAlignmentOption extends StatelessWidget {
   const _MainAxisAlignmentOption();
 
   @override
-  State<_MainAxisAlignmentOption> createState() =>
-      _MainAxisAlignmentOptionState();
-}
-
-final class _MainAxisAlignmentOptionState
-    extends State<_MainAxisAlignmentOption> {
-  late final _bloc =
-      context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<MainAxisAlignment>(
-    _bloc.state.mainAxisAlignment,
-  );
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+
     return MyoroSingularDropdown<MainAxisAlignment>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: 'MainAxisAlignment',
         dataConfiguration: MyoroDataConfiguration(
           staticItems: MainAxisAlignment.values,
         ),
-        itemBuilder:
+        menuItemBuilder:
             (MainAxisAlignment mainAxisAlignment) =>
                 MyoroMenuItem(text: mainAxisAlignment.name),
-        itemLabelBuilder:
+        selectedItemBuilder:
             (MainAxisAlignment mainAxisAlignment) => mainAxisAlignment.name,
+        initialSelectedItem: bloc.state.mainAxisAlignment,
+        onChanged:
+            (MainAxisAlignment? mainAxisAlignment) =>
+                bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment)),
       ),
-      onChanged:
-          (MainAxisAlignment? mainAxisAlignment) =>
-              _bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment)),
-      controller: _controller,
     );
   }
 }

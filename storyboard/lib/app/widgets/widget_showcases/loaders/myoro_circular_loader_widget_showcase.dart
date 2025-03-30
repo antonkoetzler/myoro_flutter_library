@@ -64,16 +64,16 @@ final class _ColorOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Color>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: 'Color',
         enabled: false,
         dataConfiguration: MyoroDataConfiguration(
           staticItems: kMyoroTestColors,
         ),
-        itemBuilder: _itemBuilder,
-        itemLabelBuilder: _itemLabelBuilder,
+        menuItemBuilder: _itemBuilder,
+        selectedItemBuilder: _itemLabelBuilder,
+        onChanged: (Color? color) => _onChanged(context, color),
       ),
-      onChanged: (Color? color) => _onChanged(context, color),
     );
   }
 }

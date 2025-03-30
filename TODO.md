@@ -4,6 +4,7 @@
 
 - Refactor all dropdowns
 - Tests
+- Widget showcases
 
 1. refactor: `MyoroTable`
 1. Remove `finder` functions

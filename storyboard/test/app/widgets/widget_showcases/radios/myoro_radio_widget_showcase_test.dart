@@ -26,9 +26,10 @@ void main() {
       findsOneWidget,
     );
     expect(
-      MyoroSingularDropdown.finder<TextStyle>(
-        label: '[MyoroRadio.labelTextStyle]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextStyle> &&
+            w.configuration.label == '[MyoroRadio.labelTextStyle]',
       ),
       findsOneWidget,
     );

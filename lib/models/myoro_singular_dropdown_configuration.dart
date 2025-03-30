@@ -1,69 +1,80 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the selected item changes.
-typedef MyoroMultiDropdownV2ConfigurationOnChanged<T> =
-    void Function(Set<T>? selectedItems);
+typedef MyoroSingularDropdownConfigurationOnChanged<T> =
+    void Function(T? selectedItem);
 
 /// Function executed when the enabled/disabled checkbox is pressed.
-typedef MyoroMultiDropdownV2ConfigurationCheckboxOnChanged<T> =
-    void Function(bool enabled, Set<T>? selectedItems);
+typedef MyoroSingularDropdownConfigurationCheckboxOnChanged<T> =
+    void Function(bool enabled, T? selectedItem);
 
-/// Configuration model of [MyoroMultiDropdownV2].
-final class MyoroMultiDropdownV2Configuration<T>
-    extends MyoroDropdownV2Configuration<T> {
+/// Configuration model of [MyoroSingularDropdown].
+final class MyoroSingularDropdownConfiguration<T>
+    extends MyoroDropdownConfiguration<T> {
   /// Initial selected item.
   ///
-  /// Updates the selected items when you update this value within the same dropdown [Widget] lifespan.
-  final Set<T> initialSelectedItems;
+  /// Updates the selected item when you update this value within the same dropdown [Widget] lifespan.
+  final T? initialSelectedItem;
 
   /// Function executed when the selected item changes.
-  final MyoroMultiDropdownV2ConfigurationOnChanged<T>? onChanged;
+  final MyoroSingularDropdownConfigurationOnChanged<T>? onChanged;
 
   /// Function executed when the enabled/disabled checkbox is pressed.
-  final MyoroMultiDropdownV2ConfigurationCheckboxOnChanged<T>?
+  final MyoroSingularDropdownConfigurationCheckboxOnChanged<T>?
   checkboxOnChanged;
 
-  const MyoroMultiDropdownV2Configuration({
+  const MyoroSingularDropdownConfiguration({
     super.label,
     super.enabled,
+    super.allowItemClearing,
     required super.dataConfiguration,
     required super.menuItemBuilder,
     required super.selectedItemBuilder,
-    this.initialSelectedItems = const {},
+    this.initialSelectedItem,
     this.onChanged,
     this.checkboxOnChanged,
-    MyoroMultiDropdownV2Controller<T>? controller,
+    MyoroSingularDropdownController<T>? controller,
   }) : super(controller: controller);
 
   @override
-  MyoroMultiDropdownV2Configuration<T> copyWith({
+  MyoroSingularDropdownConfiguration<T> copyWith({
     String? label,
     bool labelEnabled = true,
     bool? enabled,
+    bool? allowItemClearing,
     MyoroDataConfiguration<T>? dataConfiguration,
     MyoroMenuItemBuilder<T>? menuItemBuilder,
-    MyoroDropdownV2ConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
-    Set<T>? initialSelectedItems,
-    MyoroMultiDropdownV2ConfigurationOnChanged<T>? onChanged,
+    MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
+    T? initialSelectedItem,
+    bool initialSelectedItemEnabled = true,
+    MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
     bool onChangedEnabled = true,
-    MyoroMultiDropdownV2ConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedEnabled = true,
-    MyoroMultiDropdownV2Controller<T>? controller,
+    MyoroSingularDropdownController<T>? controller,
     bool controllerEnabled = true,
   }) {
-    return MyoroMultiDropdownV2Configuration(
+    return MyoroSingularDropdownConfiguration(
       label: labelEnabled ? (label ?? this.label) : null,
       enabled: enabled ?? this.enabled,
+      allowItemClearing: allowItemClearing ?? this.allowItemClearing,
       dataConfiguration: dataConfiguration ?? this.dataConfiguration,
       menuItemBuilder: menuItemBuilder ?? this.menuItemBuilder,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      initialSelectedItems: initialSelectedItems ?? this.initialSelectedItems,
+      initialSelectedItem:
+          initialSelectedItemEnabled
+              ? (initialSelectedItem ?? this.initialSelectedItem)
+              : null,
       onChanged: onChangedEnabled ? (onChanged ?? this.onChanged) : null,
       checkboxOnChanged:
           checkboxOnChangedEnabled
               ? (checkboxOnChanged ?? this.checkboxOnChanged)
               : null,
-      controller: controllerEnabled ? (controller ?? this.controller) : null,
+      controller:
+          controllerEnabled
+              ? (controller ??
+                  (this.controller as MyoroSingularDropdownController<T>))
+              : null,
     );
   }
 
@@ -72,10 +83,11 @@ final class MyoroMultiDropdownV2Configuration<T>
     return [
       label,
       enabled,
+      allowItemClearing,
       dataConfiguration,
       menuItemBuilder,
       selectedItemBuilder,
-      initialSelectedItems,
+      initialSelectedItem,
       onChanged,
       checkboxOnChanged,
       controller,
@@ -84,13 +96,14 @@ final class MyoroMultiDropdownV2Configuration<T>
 
   @override
   String toString() =>
-      'MyoroMultiDropdownV2Configuration<$T>(\n'
+      'MyoroSingularDropdownConfiguration<$T>(\n'
       '  label: $label,\n'
       '  enabled: $enabled,\n'
+      '  allowItemClearing: $allowItemClearing,\n'
       '  dataConfiguration: $dataConfiguration,\n'
       '  menuItemBuilder: $menuItemBuilder,\n'
       '  selectedItemBuilder: $selectedItemBuilder,\n'
-      '  initialSelectedItem: $initialSelectedItems,\n'
+      '  initialSelectedItem: $initialSelectedItem,\n'
       '  onChanged: $onChanged,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
       '  controller: $controller,\n'

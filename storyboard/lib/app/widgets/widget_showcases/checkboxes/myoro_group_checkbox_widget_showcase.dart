@@ -59,31 +59,25 @@ final class _DirectionOption extends StatefulWidget {
 final class _DirectionOptionState extends State<_DirectionOption> {
   late final _bloc =
       context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<Axis>(
-    _bloc.state.direction,
-  );
+  final _controller = MyoroSingularDropdownController<Axis>();
 
   String _directionName(Axis direction) =>
       direction.isHorizontal ? 'Horizontal' : 'Vertical';
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Axis>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroGroupCheckbox.direction]',
-        itemBuilder:
+        menuItemBuilder:
             (Axis direction) => MyoroMenuItem(text: _directionName(direction)),
-        itemLabelBuilder: _directionName,
+        selectedItemBuilder: _directionName,
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
+        initialSelectedItem: _bloc.state.direction,
+        onChanged:
+            (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
+        controller: _controller,
       ),
-      onChanged: (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
-      controller: _controller,
     );
   }
 }

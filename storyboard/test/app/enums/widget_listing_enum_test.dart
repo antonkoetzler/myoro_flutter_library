@@ -165,19 +165,6 @@ void main() {
     );
 
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroSingularDropdownTitle,
-      ),
-      isA<MyoroSingularDropdownWidgetShowcase>(),
-    );
-    expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroMultiDropdownTitle,
-      ),
-      isA<MyoroMultiDropdownWidgetShowcase>(),
-    );
-
-    expect(
       WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroFormTitle),
       isA<MyoroFormWidgetShowcase>(),
     );

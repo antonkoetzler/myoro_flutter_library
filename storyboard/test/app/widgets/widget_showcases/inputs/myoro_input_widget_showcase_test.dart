@@ -22,30 +22,34 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroInput), findsAtLeastNWidgets(1));
     expect(
-      MyoroSingularDropdown.finder<MyoroInputWidgetShowcaseEnum>(
-        label: 'Formatter (named constructors):',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<MyoroInputWidgetShowcaseEnum> &&
+            w.configuration.label == 'Formatter (named constructors):',
       ),
       findsOneWidget,
     );
     expect(
-      MyoroSingularDropdown.finder<MyoroInputStyleEnum>(
-        label: '[inputStyle]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<MyoroInputStyleEnum> &&
+            w.configuration.label == '[inputStyle]',
       ),
       findsOneWidget,
     );
     expect(
-      MyoroSingularDropdown.finder<TextAlign>(
-        label: '[textAlign]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextAlign> &&
+            w.configuration.label == '[textAlign]',
       ),
       findsOneWidget,
     );
     expect(
-      MyoroSingularDropdown.finder<TextStyle>(
-        label: '[inputTextStyle]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextStyle> &&
+            w.configuration.label == '[inputTextStyle]',
       ),
       findsOneWidget,
     );
@@ -58,9 +62,10 @@ void main() {
       findsOneWidget,
     );
     expect(
-      MyoroSingularDropdown.finder<TextStyle>(
-        label: '[labelTextStyle]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextStyle> &&
+            w.configuration.label == '[labelTextStyle]',
       ),
       findsOneWidget,
     );

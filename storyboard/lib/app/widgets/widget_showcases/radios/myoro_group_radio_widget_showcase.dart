@@ -79,9 +79,7 @@ final class _DirectionOption extends StatefulWidget {
 
 final class _DirectionOptionState extends State<_DirectionOption> {
   late final _bloc = context.resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<Axis>(
-    _bloc.state.direction,
-  );
+  final _controller = MyoroSingularDropdownController<Axis>();
 
   String _getDirectionName(Axis direction) {
     return switch (direction) {
@@ -91,25 +89,21 @@ final class _DirectionOptionState extends State<_DirectionOption> {
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Axis>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroGroupRadio.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        itemBuilder:
+        menuItemBuilder:
             (Axis direction) =>
                 MyoroMenuItem(text: _getDirectionName(direction)),
-        itemLabelBuilder: _getDirectionName,
+        selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
+        initialSelectedItem: _bloc.state.direction,
+        onChanged:
+            (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
+        controller: _controller,
       ),
-      onChanged: (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
-      controller: _controller,
     );
   }
 }

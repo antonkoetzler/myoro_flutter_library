@@ -24,11 +24,11 @@ void main() {
 
     // [_DirectionOption].
     expect(
-      MyoroSingularDropdown.finder<Axis>(
-        label: 'Direction',
-        labelEnabled: true,
-        allowItemClearing: false,
-        allowItemClearingEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<Axis> &&
+            w.configuration.label == 'Direction' &&
+            !w.configuration.allowItemClearing,
       ),
       findsOneWidget,
     );

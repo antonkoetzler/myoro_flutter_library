@@ -48,10 +48,6 @@ void main() {
       // Drawers
       MyoroDrawerWidgetShowcaseThemeExtension,
 
-      // Dropdowns
-      MyoroSingularDropdownWidgetShowcaseThemeExtension,
-      MyoroMultiDropdownWidgetShowcaseThemeExtension,
-
       // Forms
       MyoroFormWidgetShowcaseThemeExtension,
 

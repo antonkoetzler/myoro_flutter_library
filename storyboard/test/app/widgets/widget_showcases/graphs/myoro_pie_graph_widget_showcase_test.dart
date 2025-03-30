@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -21,9 +22,10 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroPieGraph), findsOneWidget);
     expect(
-      MyoroSingularDropdown.finder<MyoroPieGraphEnum>(
-        label: '[MyoroPieGraph.typeEnum]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<MyoroPieGraphEnum> &&
+            w.configuration.label == '[MyoroPieGraph.typeEnum]',
       ),
       findsOneWidget,
     );

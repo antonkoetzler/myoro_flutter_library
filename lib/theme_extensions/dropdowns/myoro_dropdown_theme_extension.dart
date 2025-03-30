@@ -2,47 +2,23 @@ import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// [ThemeExtension] of dropdowns.
+/// [ThemeExtension] of [MyoroDropdown].
 final class MyoroDropdownThemeExtension
     extends ThemeExtension<MyoroDropdownThemeExtension> {
-  /// [MyoroInputStyleEnum] of [_Input].
-  final MyoroInputStyleEnum inputStyle;
+  /// Standard spacing between items.
+  final double spacing;
 
-  /// Spacing between [_Input] & [_Menu].
-  final double inputDropdownSpacing;
+  const MyoroDropdownThemeExtension({required this.spacing});
 
-  /// Default max height of [_Menu].
-  final double menuMaxHeight;
-
-  const MyoroDropdownThemeExtension({
-    required this.inputStyle,
-    required this.inputDropdownSpacing,
-    required this.menuMaxHeight,
-  });
+  const MyoroDropdownThemeExtension.builder() : spacing = 10;
 
   MyoroDropdownThemeExtension.fake()
-    : inputStyle = MyoroInputStyleEnum.fake(),
-      inputDropdownSpacing = faker.randomGenerator.decimal(),
-      menuMaxHeight = faker.randomGenerator.decimal();
-
-  const MyoroDropdownThemeExtension.builder()
-    : inputStyle = MyoroInputStyleEnum.outlined,
-      inputDropdownSpacing = 10,
-      menuMaxHeight = 300;
+    : spacing = faker.randomGenerator.decimal(scale: 50);
 
   @override
-  MyoroDropdownThemeExtension copyWith({
-    MyoroInputStyleEnum? inputStyle,
-    double? inputDropdownSpacing,
-    double? menuMaxHeight,
-  }) {
-    return MyoroDropdownThemeExtension(
-      inputStyle: inputStyle ?? this.inputStyle,
-      inputDropdownSpacing: inputDropdownSpacing ?? this.inputDropdownSpacing,
-      menuMaxHeight: menuMaxHeight ?? this.menuMaxHeight,
-    );
+  MyoroDropdownThemeExtension copyWith({double? spacing}) {
+    return MyoroDropdownThemeExtension(spacing: spacing ?? this.spacing);
   }
 
   @override
@@ -51,28 +27,24 @@ final class MyoroDropdownThemeExtension
     double t,
   ) {
     if (other is! MyoroDropdownThemeExtension) return this;
-    return copyWith(
-      inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      inputDropdownSpacing: lerpDouble(
-        inputDropdownSpacing,
-        other.inputDropdownSpacing,
-        t,
-      ),
-      menuMaxHeight: lerpDouble(menuMaxHeight, other.menuMaxHeight, t),
-    );
+    return copyWith(spacing: lerpDouble(spacing, other.spacing, t));
   }
 
   @override
   bool operator ==(Object other) {
     return other is MyoroDropdownThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.inputStyle == inputStyle &&
-        other.inputDropdownSpacing == inputDropdownSpacing &&
-        other.menuMaxHeight == menuMaxHeight;
+        other.spacing == spacing;
   }
 
   @override
   int get hashCode {
-    return Object.hash(inputStyle, inputDropdownSpacing, menuMaxHeight);
+    return Object.hashAll([spacing]);
   }
+
+  @override
+  String toString() =>
+      'MyoroDropdownThemeExtension(\n'
+      '  spacing: $spacing,\n'
+      ');';
 }

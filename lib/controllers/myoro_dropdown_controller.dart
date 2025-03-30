@@ -8,9 +8,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// Additionally, this controller is has methods that
 /// are used to shared logic in myoro_dropdown_v2.dart.
-class MyoroDropdownV2Controller<T> {
+class MyoroDropdownController<T> {
   /// [Bloc] of the corresponding dropdown [Widget].
-  late MyoroDropdownV2Bloc<T> bloc;
+  late MyoroDropdownBloc<T> bloc;
 
   /// Toggles (or sets if a [enabled] is provided) if the dropdown is enabled or not.
   void toggleEnabled([bool? enabled]) {

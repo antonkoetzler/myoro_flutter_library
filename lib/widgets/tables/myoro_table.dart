@@ -668,9 +668,7 @@ final class _ItemsPerPageDropdownState<T>
     extends State<_ItemsPerPageDropdown<T>> {
   MyoroTableController<T> get _tableController => widget._tableController;
 
-  late final _dropdownController = MyoroSingularDropdownController<int>(
-    _tableController.dataConfiguration.itemsPerPage,
-  );
+  final _dropdownController = MyoroSingularDropdownController<int>();
 
   String _formatInt(int itemsPerPage) => itemsPerPage.toString();
   MyoroMenuItem _itemBuilder(int itemsPerPage) =>
@@ -678,12 +676,6 @@ final class _ItemsPerPageDropdownState<T>
 
   void _onChanged(int? itemsPerPage) =>
       _tableController.setItemsPerPage(itemsPerPage!);
-
-  @override
-  void dispose() {
-    _dropdownController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -694,14 +686,15 @@ final class _ItemsPerPageDropdownState<T>
     return SizedBox(
       width: 55,
       child: MyoroSingularDropdown<int>(
-        configuration: MyoroDropdownConfiguration(
+        configuration: MyoroSingularDropdownConfiguration(
           dataConfiguration: dataConfiguration,
-          itemBuilder: _itemBuilder,
-          itemLabelBuilder: _formatInt,
+          menuItemBuilder: _itemBuilder,
+          selectedItemBuilder: _formatInt,
           allowItemClearing: false,
+          initialSelectedItem: _tableController.dataConfiguration.itemsPerPage,
+          onChanged: _onChanged,
+          controller: _dropdownController,
         ),
-        onChanged: _onChanged,
-        controller: _dropdownController,
       ),
     );
   }

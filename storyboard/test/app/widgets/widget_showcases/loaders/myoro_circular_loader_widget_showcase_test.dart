@@ -22,7 +22,11 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroCircularLoader), findsOneWidget);
     expect(
-      MyoroSingularDropdown.finder<Color>(label: 'Color', labelEnabled: true),
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<Color> &&
+            w.configuration.label == 'Color',
+      ),
       findsOneWidget,
     );
     expect(

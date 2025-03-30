@@ -1,19 +1,19 @@
-part of 'myoro_dropdown_v2_bloc.dart';
+part of 'myoro_dropdown_bloc.dart';
 
-final class MyoroDropdownV2State<T> extends Equatable {
+final class MyoroDropdownState<T> extends Equatable {
   /// If the dropdown is enabled/usable.
   final bool enabled;
 
   /// Selected items displaying in [_Input].
   final Set<T> selectedItems;
 
-  const MyoroDropdownV2State({
+  const MyoroDropdownState({
     required this.enabled,
     this.selectedItems = const {},
   });
 
-  MyoroDropdownV2State<T> copyWith({bool? enabled, Set<T>? selectedItems}) {
-    return MyoroDropdownV2State(
+  MyoroDropdownState<T> copyWith({bool? enabled, Set<T>? selectedItems}) {
+    return MyoroDropdownState(
       enabled: enabled ?? this.enabled,
       selectedItems: selectedItems ?? this.selectedItems,
     );
@@ -26,7 +26,7 @@ final class MyoroDropdownV2State<T> extends Equatable {
 
   @override
   String toString() =>
-      'MyoroDropdownV2State<$T>(\n'
+      'MyoroDropdownState<$T>(\n'
       '  enabled: $enabled,\n'
       '  selectedItems: $selectedItems,\n'
       ');';

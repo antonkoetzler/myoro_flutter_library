@@ -83,42 +83,28 @@ final class _CenterWidget extends StatelessWidget {
   }
 }
 
-final class _TypeEnumOption extends StatefulWidget {
+final class _TypeEnumOption extends StatelessWidget {
   const _TypeEnumOption();
 
   @override
-  State<_TypeEnumOption> createState() => _TypeEnumOptionState();
-}
-
-final class _TypeEnumOptionState extends State<_TypeEnumOption> {
-  late final _bloc = context.resolveBloc<MyoroPieGraphWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<MyoroPieGraphEnum>(
-    _bloc.state.typeEnum,
-  );
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final bloc = context.resolveBloc<MyoroPieGraphWidgetShowcaseBloc>();
+
     return MyoroSingularDropdown<MyoroPieGraphEnum>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroPieGraph.typeEnum]',
         allowItemClearing: false,
         dataConfiguration: MyoroDataConfiguration(
           staticItems: MyoroPieGraphEnum.values,
         ),
-        itemBuilder:
+        menuItemBuilder:
             (MyoroPieGraphEnum typeEnum) => MyoroMenuItem(text: typeEnum.name),
-        itemLabelBuilder: (MyoroPieGraphEnum typeEnum) => typeEnum.name,
+        selectedItemBuilder: (MyoroPieGraphEnum typeEnum) => typeEnum.name,
+        initialSelectedItem: bloc.state.typeEnum,
+        onChanged:
+            (MyoroPieGraphEnum? typeEnum) =>
+                bloc.add(SetTypeEnumEvent(typeEnum!)),
       ),
-      onChanged:
-          (MyoroPieGraphEnum? typeEnum) =>
-              _bloc.add(SetTypeEnumEvent(typeEnum!)),
-      controller: _controller,
     );
   }
 }

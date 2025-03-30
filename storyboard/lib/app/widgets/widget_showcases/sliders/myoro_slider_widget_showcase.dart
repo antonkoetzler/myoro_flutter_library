@@ -205,13 +205,13 @@ final class _LabelTextStyleOption extends StatelessWidget {
     );
 
     return MyoroSingularDropdown<TextStyle>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroSlider.labelTextStyle]',
         dataConfiguration: dataConfiguration,
-        itemBuilder: _itemBuilder,
-        itemLabelBuilder: typographyInstance.getTextStyleName,
+        menuItemBuilder: _itemBuilder,
+        selectedItemBuilder: typographyInstance.getTextStyleName,
+        onChanged: (TextStyle? textStyles) => _onChanged(context, textStyles),
       ),
-      onChanged: (TextStyle? textStyles) => _onChanged(context, textStyles),
     );
   }
 }

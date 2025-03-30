@@ -73,37 +73,31 @@ final class _WidgetState extends State<_Widget> {
   }
 }
 
-final class _DirectionOption extends StatefulWidget {
+final class _DirectionOption extends StatelessWidget {
   const _DirectionOption();
 
   @override
-  State<_DirectionOption> createState() => _DirectionOptionState();
-}
-
-final class _DirectionOptionState extends State<_DirectionOption> {
-  late final _bloc = context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
-  late final _controller = MyoroSingularDropdownController<Axis>(
-    _bloc.state.direction,
-  );
-
-  String _getDirectionName(Axis direction) =>
-      direction.name[0].toUpperCase() + direction.name.substring(1);
-
-  @override
   Widget build(BuildContext context) {
+    late final bloc =
+        context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
+
     return MyoroSingularDropdown<Axis>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroResizeDivider.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        itemBuilder:
+        menuItemBuilder:
             (Axis direction) =>
                 MyoroMenuItem(text: _getDirectionName(direction)),
-        itemLabelBuilder: _getDirectionName,
+        selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
+        initialSelectedItem: bloc.state.direction,
+        onChanged: (Axis? direction) => bloc.add(SetDirectionEvent(direction!)),
       ),
-      onChanged: (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
-      controller: _controller,
     );
+  }
+
+  String _getDirectionName(Axis direction) {
+    return direction.name[0].toUpperCase() + direction.name.substring(1);
   }
 }
 

@@ -22,9 +22,10 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroGroupRadio), findsOneWidget);
     expect(
-      MyoroSingularDropdown.finder<Axis>(
-        label: '[MyoroGroupRadio.direction]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<Axis> &&
+            w.configuration.label == '[MyoroGroupRadio.direction]',
       ),
       findsOneWidget,
     );

@@ -232,7 +232,7 @@ final class _OnPressedEnabledCheckbox extends StatelessWidget {
 
 final class _ColorDropdown extends StatelessWidget {
   final String _label;
-  final MyoroSingularDropdownOnChanged<Color> _onChanged;
+  final MyoroSingularDropdownConfigurationOnChanged<Color> _onChanged;
 
   const _ColorDropdown(this._label, this._onChanged);
 
@@ -249,15 +249,15 @@ final class _ColorDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Color>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: _label,
         dataConfiguration: MyoroDataConfiguration(
           staticItems: kMyoroTestColors,
         ),
-        itemBuilder: _itemBuilder,
-        itemLabelBuilder: _itemLabelBuilder,
+        menuItemBuilder: _itemBuilder,
+        selectedItemBuilder: _itemLabelBuilder,
+        onChanged: _onChanged,
       ),
-      onChanged: _onChanged,
     );
   }
 }

@@ -62,28 +62,13 @@ final class _LabelOption extends StatelessWidget {
   }
 }
 
-final class _LabelTextStyleOption extends StatefulWidget {
+final class _LabelTextStyleOption extends StatelessWidget {
   const _LabelTextStyleOption();
 
   @override
-  State<_LabelTextStyleOption> createState() => _LabelTextStyleOptionState();
-}
-
-final class _LabelTextStyleOptionState extends State<_LabelTextStyleOption> {
-  final _typographyTheme = MyoroTypographyDesignSystem.instance;
-  late final _controller = MyoroSingularDropdownController<TextStyle>(
-    _typographyTheme.italicSmall,
-  );
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    late final textStyles = _typographyTheme.allTextStyles;
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
+    late final textStyles = typographyInstance.allTextStyles;
 
     return SizedBox(
       width:
@@ -93,21 +78,21 @@ final class _LabelTextStyleOptionState extends State<_LabelTextStyleOption> {
               >()
               .labelTextStyleOptionWidth,
       child: MyoroSingularDropdown<TextStyle>(
-        configuration: MyoroDropdownConfiguration(
+        configuration: MyoroSingularDropdownConfiguration(
           label: '[MyoroCheckbox.labelTextStyle]',
           allowItemClearing: false,
           dataConfiguration: MyoroDataConfiguration(staticItems: textStyles),
-          itemBuilder:
+          menuItemBuilder:
               (TextStyle textStyle) => MyoroMenuItem(
-                text: _typographyTheme.getTextStyleName(textStyle),
+                text: typographyInstance.getTextStyleName(textStyle),
               ),
-          itemLabelBuilder: _typographyTheme.getTextStyleName,
+          selectedItemBuilder: typographyInstance.getTextStyleName,
+          initialSelectedItem: typographyInstance.italicSmall,
+          onChanged:
+              (TextStyle? textStyle) => context
+                  .resolveBloc<MyoroCheckboxWidgetShowcaseBloc>()
+                  .add(SetLabelTextStyleEvent(textStyle!)),
         ),
-        onChanged:
-            (TextStyle? textStyle) => context
-                .resolveBloc<MyoroCheckboxWidgetShowcaseBloc>()
-                .add(SetLabelTextStyleEvent(textStyle!)),
-        controller: _controller,
       ),
     );
   }

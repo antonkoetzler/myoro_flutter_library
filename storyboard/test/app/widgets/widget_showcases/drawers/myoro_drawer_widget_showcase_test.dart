@@ -69,11 +69,11 @@ void main() {
       findsOneWidget,
     );
     expect(
-      MyoroSingularDropdown.finder<TextStyle>(
-        label: '[MyoroDrawer.titleTextStyle]',
-        labelEnabled: true,
-        enabled: false,
-        enabledEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextStyle> &&
+            w.configuration.label == '[MyoroDrawer.titleTextStyle]' &&
+            !w.configuration.enabled,
       ),
       findsOneWidget,
     );

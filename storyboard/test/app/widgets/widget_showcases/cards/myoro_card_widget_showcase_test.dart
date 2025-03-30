@@ -42,9 +42,10 @@ void main() {
 
     // [_TitleTextStyleOption].
     expect(
-      MyoroSingularDropdown.finder(
-        label: '[MyoroCard.titleTextStyle]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextStyle> &&
+            w.configuration.label == '[MyoroCard.titleTextStyle]',
       ),
       findsOneWidget,
     );

@@ -92,10 +92,7 @@ final class _SnackBarTypeOption extends StatefulWidget {
 
 final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
   late final MyoroSnackBarWidgetShowcaseBloc _bloc;
-  late final _controller =
-      MyoroSingularDropdownController<MyoroSnackBarTypeEnum>(
-        _bloc.state.snackBarType,
-      );
+  final _controller = MyoroSingularDropdownController<MyoroSnackBarTypeEnum>();
 
   String _getSnackbarTypeName(MyoroSnackBarTypeEnum snackBarType) {
     return switch (snackBarType) {
@@ -121,27 +118,23 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final dataConfiguration = MyoroDataConfiguration(
       staticItems: MyoroSnackBarTypeEnum.values,
     );
 
     return MyoroSingularDropdown<MyoroSnackBarTypeEnum>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroSnackBar.snackBarType]',
         dataConfiguration: dataConfiguration,
-        itemBuilder: _itemBuilder,
-        itemLabelBuilder: _getSnackbarTypeName,
+        menuItemBuilder: _itemBuilder,
+        selectedItemBuilder: _getSnackbarTypeName,
         allowItemClearing: false,
+        initialSelectedItem: _bloc.state.snackBarType,
+        onChanged:
+            (MyoroSnackBarTypeEnum? selectedItem) => _onChanged(selectedItem!),
+        controller: _controller,
       ),
-      onChanged:
-          (MyoroSnackBarTypeEnum? selectedItem) => _onChanged(selectedItem!),
     );
   }
 }

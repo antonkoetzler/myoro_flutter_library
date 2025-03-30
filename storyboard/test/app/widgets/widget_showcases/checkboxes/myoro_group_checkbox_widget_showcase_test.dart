@@ -22,9 +22,10 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroGroupCheckbox), findsOneWidget);
     expect(
-      MyoroSingularDropdown.finder<Axis>(
-        label: '[MyoroGroupCheckbox.direction]',
-        labelEnabled: true,
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<Axis> &&
+            w.configuration.label == '[MyoroGrupoCheckbox.direction]',
       ),
       findsOneWidget,
     );

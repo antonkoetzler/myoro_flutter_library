@@ -58,43 +58,31 @@ final class _Widget extends StatelessWidget {
   }
 }
 
-final class _DirectionOption extends StatefulWidget {
+final class _DirectionOption extends StatelessWidget {
   const _DirectionOption();
-
-  @override
-  State<_DirectionOption> createState() => _DirectionOptionState();
-}
-
-final class _DirectionOptionState extends State<_DirectionOption> {
-  final _controller = MyoroSingularDropdownController<Axis>(Axis.horizontal);
-
-  String _getDirectionName(Axis direction) =>
-      direction.isHorizontal ? 'Horizontal' : 'Vertical';
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Axis>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: 'Direction',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        itemBuilder:
+        menuItemBuilder:
             (Axis direction) =>
                 MyoroMenuItem(text: _getDirectionName(direction)),
-        itemLabelBuilder: _getDirectionName,
+        selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
+        initialSelectedItem: Axis.horizontal,
+        onChanged:
+            (Axis? direction) => context
+                .resolveBloc<MyoroCarouselWidgetShowcaseBloc>()
+                .add(SetDirectionEvent(direction!)),
       ),
-      onChanged:
-          (Axis? direction) => context
-              .resolveBloc<MyoroCarouselWidgetShowcaseBloc>()
-              .add(SetDirectionEvent(direction!)),
-      controller: _controller,
     );
+  }
+
+  String _getDirectionName(Axis direction) {
+    return direction.isHorizontal ? 'Horizontal' : 'Vertical';
   }
 }
 

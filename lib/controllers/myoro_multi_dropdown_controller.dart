@@ -1,35 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Controller for [MyoroMultiDropdown].
-final class MyoroMultiDropdownController<T> {
-  /// [ValueNotifier] for the selected item(s).
-  late final ValueNotifier<Set<T>> _selectedItemsNotifier;
-
-  MyoroMultiDropdownController([List<T>? selectedItems]) {
-    _selectedItemsNotifier = ValueNotifier(selectedItems?.toSet() ?? {});
+/// Controller of [MyoroMultiDropdown].
+final class MyoroMultiDropdownController<T>
+    extends MyoroDropdownController<T> {
+  /// Selects various items. If any items are already added, they will not be removed.
+  void selectItems(Set<T> items) {
+    bloc.add(SelectItemsEvent(items));
   }
 
-  /// Adds an item to [selectedItems].
-  void selectItems(List<T> items) {
-    _selectedItemsNotifier.value = Set.from(selectedItems)..addAll(items);
+  /// Removes various selected items. If any items are already removed, they will not be added.
+  void removeItems(Set<T> items) {
+    bloc.add(RemoveSelectedItemsEvent(items));
   }
-
-  /// Removes item(s) from [selectedItems].
-  void deselectItems(List<T> items) {
-    _selectedItemsNotifier.value = Set.from(selectedItems)..removeAll(items);
-  }
-
-  /// Clears [selectedItems].
-  void clear() {
-    _selectedItemsNotifier.value = {};
-  }
-
-  /// Disposes [_selectedItemsNotifier].
-  void dispose() {
-    _selectedItemsNotifier.dispose();
-  }
-
-  ValueNotifier<Set<T>> get selectedItemsNotifier => _selectedItemsNotifier;
-  Set<T> get selectedItems => _selectedItemsNotifier.value;
 }

@@ -81,7 +81,7 @@ final class _TitleTextStyleOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<(String, TextStyle)>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroCard.titleTextStyle]',
         dataConfiguration: MyoroDataConfiguration(
           staticItems:
@@ -91,22 +91,22 @@ final class _TitleTextStyleOption extends StatelessWidget {
                   >()
                   .titleTextStyleOptionTextStyles,
         ),
-        itemLabelBuilder: ((String, TextStyle) textStyle) => textStyle.$1,
-        itemBuilder:
+        menuItemBuilder:
             ((String, TextStyle) textStyle) =>
                 MyoroMenuItem(text: textStyle.$1),
+        selectedItemBuilder: ((String, TextStyle) textStyle) => textStyle.$1,
+        onChanged: ((String, TextStyle)? textStyle) {
+          context.resolveBloc<MyoroCardWidgetShowcaseBloc>().add(
+            SetTitleTextStyleEvent(
+              textStyle != null
+                  ? textStyle.$2
+                  : context
+                      .resolveThemeExtension<MyoroCardThemeExtension>()
+                      .textStyle,
+            ),
+          );
+        },
       ),
-      onChanged: ((String, TextStyle)? textStyle) {
-        context.resolveBloc<MyoroCardWidgetShowcaseBloc>().add(
-          SetTitleTextStyleEvent(
-            textStyle != null
-                ? textStyle.$2
-                : context
-                    .resolveThemeExtension<MyoroCardThemeExtension>()
-                    .textStyle,
-          ),
-        );
-      },
     );
   }
 }

@@ -1,18 +1,19 @@
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_dropdown_v2_state.dart';
-part 'myoro_dropdown_v2_event.dart';
+part 'myoro_dropdown_state.dart';
+part 'myoro_dropdown_event.dart';
 
-typedef _Emitter<T> = Emitter<MyoroDropdownV2State<T>>;
+typedef _Emitter<T> = Emitter<MyoroDropdownState<T>>;
 
-/// [Bloc] which manages the logic of [MyoroSingularDropdownV2] and [MyoroMultiDropdownV2].
-final class MyoroDropdownV2Bloc<T>
-    extends Bloc<MyoroDropdownV2Event<T>, MyoroDropdownV2State<T>> {
-  MyoroDropdownV2Bloc({required bool enabled})
-    : super(MyoroDropdownV2State<T>(enabled: enabled)) {
+/// [Bloc] which manages the logic of [MyoroSingularDropdown] and [MyoroMultiDropdown].
+final class MyoroDropdownBloc<T>
+    extends Bloc<MyoroDropdownEvent<T>, MyoroDropdownState<T>> {
+  MyoroDropdownBloc({required bool enabled})
+    : super(MyoroDropdownState<T>(enabled: enabled)) {
     on<ToggleItemEvent<T>>(_toggleItemEvent);
     on<SelectItemsEvent<T>>(_selectItemsEvent);
     on<RemoveSelectedItemsEvent<T>>(_removeSelectedItemsEvent);

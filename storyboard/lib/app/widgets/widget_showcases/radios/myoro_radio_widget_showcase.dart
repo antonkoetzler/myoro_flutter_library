@@ -88,18 +88,18 @@ final class _LabelTextStyleOption extends StatelessWidget {
     final typographyInstance = MyoroTypographyDesignSystem.instance;
 
     return MyoroSingularDropdown<TextStyle>(
-      configuration: MyoroDropdownConfiguration(
+      configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroRadio.labelTextStyle]',
         dataConfiguration: MyoroDataConfiguration(
           staticItems: typographyInstance.allTextStyles,
         ),
-        itemBuilder:
+        menuItemBuilder:
             (TextStyle textStyle) => MyoroMenuItem(
               text: typographyInstance.getTextStyleName(textStyle),
             ),
-        itemLabelBuilder: typographyInstance.getTextStyleName,
+        selectedItemBuilder: typographyInstance.getTextStyleName,
+        onChanged: (TextStyle? textStyle) => _onChanged(context, textStyle),
       ),
-      onChanged: (TextStyle? textStyle) => _onChanged(context, textStyle),
     );
   }
 }
