@@ -73,7 +73,7 @@ final class MyoroSingularDropdownConfiguration<T>
       controller:
           controllerEnabled
               ? (controller ??
-                  (this.controller as MyoroSingularDropdownController<T>))
+                  (this.controller as MyoroSingularDropdownController<T>?))
               : null,
     );
   }

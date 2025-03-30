@@ -68,7 +68,7 @@ final class MyoroMultiDropdownConfiguration<T>
       controller:
           controllerEnabled
               ? (controller ??
-                  (this.controller as MyoroMultiDropdownController<T>))
+                  (this.controller as MyoroMultiDropdownController<T>?))
               : null,
     );
   }

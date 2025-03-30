@@ -2,8 +2,8 @@
 
 1. refactor: `MyoroDropdown` using `OverlayPortal`/`CompositedTransformTarget`/`CompositedTransformFollower`
 
-- Refactor all dropdowns
-- Tests
+- (**FIN**) Refactor all dropdowns
+- (**IN PROGRESS**) Tests
 - Widget showcases
 
 1. refactor: `MyoroTable`

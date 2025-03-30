@@ -48,4 +48,18 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
   });
 
   MyoroDropdownConfiguration<T> copyWith();
+
+  bool get checkboxOnChangedNotNull {
+    if (this is MyoroSingularDropdownConfiguration<T>) {
+      final configuration = this as MyoroSingularDropdownConfiguration<T>;
+      return configuration.checkboxOnChanged != null;
+    }
+    if (this is MyoroMultiDropdownConfiguration<T>) {
+      final configuration = this as MyoroMultiDropdownConfiguration<T>;
+      return configuration.checkboxOnChanged != null;
+    }
+    throw AssertionError(
+      '[_DropdownState<$T>._checkboxOnchangedNotNull]: Invalid [MyoroDropdownConfiguration<$T>] extension provided.',
+    );
+  }
 }

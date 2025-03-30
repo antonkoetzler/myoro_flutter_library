@@ -88,7 +88,8 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
         child: Row(
           spacing: themeExtension.spacing,
           children: [
-            if (_checkboxOnChangedNotNull) _Checkbox(_configuration),
+            if (_configuration.checkboxOnChangedNotNull)
+              _Checkbox(_configuration),
             Expanded(child: _Input(_configuration)),
           ],
         ),
@@ -112,22 +113,6 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
         controller.selectItems(configuration.initialSelectedItems);
       }
     }
-  }
-
-  bool get _checkboxOnChangedNotNull {
-    if (_configuration is MyoroSingularDropdownConfiguration<T>) {
-      final configuration =
-          _configuration as MyoroSingularDropdownConfiguration<T>;
-      return configuration.checkboxOnChanged != null;
-    }
-    if (_configuration is MyoroMultiDropdownConfiguration<T>) {
-      final configuration =
-          _configuration as MyoroMultiDropdownConfiguration<T>;
-      return configuration.checkboxOnChanged != null;
-    }
-    throw AssertionError(
-      '[_DropdownState<$T>._checkboxOnchangedNotNull]: Invalid [MyoroDropdownConfiguration<$T>] extension provided.',
-    );
   }
 }
 
