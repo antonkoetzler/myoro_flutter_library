@@ -15,7 +15,12 @@ final class MyoroCarouselWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroCarouselWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: [_DirectionOption(), _DisplayTraversalButtonsOptions(), _AutoplayOption(), _AutoplayIntervalDurationOption()],
+        widgetOptions: [
+          _DirectionOption(),
+          _DisplayTraversalButtonsOptions(),
+          _AutoplayOption(),
+          _AutoplayIntervalDurationOption(),
+        ],
       ),
     );
   }
@@ -26,7 +31,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroCarouselWidgetShowcaseBloc, MyoroCarouselWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroCarouselWidgetShowcaseBloc,
+      MyoroCarouselWidgetShowcaseState
+    >(
       builder: (_, MyoroCarouselWidgetShowcaseState state) {
         return MyoroCarousel(
           direction: state.direction,
@@ -35,7 +43,14 @@ final class _Widget extends StatelessWidget {
           autoplayIntervalDuration: state.autoplayIntervalDuration,
           items: List.generate(
             faker.randomGenerator.integer(10),
-            (_) => Container(width: 300, height: 300, color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
+            (_) => Container(
+              width: 300,
+              height: 300,
+              color:
+                  kMyoroTestColors[faker.randomGenerator.integer(
+                    kMyoroTestColors.length,
+                  )],
+            ),
           ),
         );
       },
@@ -52,11 +67,16 @@ final class _DirectionOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Direction',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        menuItemBuilder: (Axis direction) => MyoroMenuItem(text: _getDirectionName(direction)),
+        menuItemBuilder:
+            (Axis direction) =>
+                MyoroMenuItem(text: _getDirectionName(direction)),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: Axis.horizontal,
-        onChanged: (Axis? direction) => context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(SetDirectionEvent(direction!)),
+        onChanged:
+            (Axis? direction) => context
+                .resolveBloc<MyoroCarouselWidgetShowcaseBloc>()
+                .add(SetDirectionEvent(direction!)),
       ),
     );
   }
@@ -90,7 +110,11 @@ final class _AutoplayOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>();
 
-    return MyoroCheckbox(label: 'Autoplay', initialValue: bloc.state.autoplay, onChanged: (bool value) => bloc.add(SetAutoplayEvent(value)));
+    return MyoroCheckbox(
+      label: 'Autoplay',
+      initialValue: bloc.state.autoplay,
+      onChanged: (bool value) => bloc.add(SetAutoplayEvent(value)),
+    );
   }
 }
 
@@ -105,7 +129,9 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
       initialValue: kMyoroCarouselAutoplayIntervalDuration.inSeconds.toDouble(),
       maxValue: 5,
       onChanged: (double value) {
-        context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(SetAutoplayIntervalDurationEvent(Duration(seconds: value.toInt())));
+        context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(
+          SetAutoplayIntervalDurationEvent(Duration(seconds: value.toInt())),
+        );
       },
     );
   }

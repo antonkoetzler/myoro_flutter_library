@@ -11,8 +11,14 @@ final class MyoroCheckboxWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyoroCheckboxWidgetShowcaseBloc(labelTextStyle: MyoroTypographyDesignSystem.instance.italicSmall),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_LabelOption(), _LabelTextStyleOption()]),
+      create:
+          (_) => MyoroCheckboxWidgetShowcaseBloc(
+            labelTextStyle: MyoroTypographyDesignSystem.instance.italicSmall,
+          ),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_LabelOption(), _LabelTextStyleOption()],
+      ),
     );
   }
 }
@@ -23,9 +29,15 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BlocBuilder<MyoroCheckboxWidgetShowcaseBloc, MyoroCheckboxWidgetShowcaseState>(
+      child: BlocBuilder<
+        MyoroCheckboxWidgetShowcaseBloc,
+        MyoroCheckboxWidgetShowcaseState
+      >(
         builder: (_, MyoroCheckboxWidgetShowcaseState state) {
-          return MyoroCheckbox(label: state.label, labelTextStyle: state.labelTextStyle);
+          return MyoroCheckbox(
+            label: state.label,
+            labelTextStyle: state.labelTextStyle,
+          );
         },
       ),
     );
@@ -41,7 +53,10 @@ final class _LabelOption extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         inputStyle: MyoroInputStyleEnum.outlined,
         label: 'Label text',
-        onChanged: (String text) => context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(SetLabelEvent(text)),
+        onChanged:
+            (String text) => context
+                .resolveBloc<MyoroCheckboxWidgetShowcaseBloc>()
+                .add(SetLabelEvent(text)),
       ),
     );
   }
@@ -56,16 +71,27 @@ final class _LabelTextStyleOption extends StatelessWidget {
     late final textStyles = typographyInstance.allTextStyles;
 
     return SizedBox(
-      width: context.resolveThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension>().labelTextStyleOptionWidth,
+      width:
+          context
+              .resolveThemeExtension<
+                MyoroCheckboxWidgetShowcaseThemeExtension
+              >()
+              .labelTextStyleOptionWidth,
       child: MyoroSingularDropdown<TextStyle>(
         configuration: MyoroSingularDropdownConfiguration(
           label: '[MyoroCheckbox.labelTextStyle]',
           allowItemClearing: false,
           dataConfiguration: MyoroDataConfiguration(staticItems: textStyles),
-          menuItemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
+          menuItemBuilder:
+              (TextStyle textStyle) => MyoroMenuItem(
+                text: typographyInstance.getTextStyleName(textStyle),
+              ),
           selectedItemBuilder: typographyInstance.getTextStyleName,
           initiallySelectedItem: typographyInstance.italicSmall,
-          onChanged: (TextStyle? textStyle) => context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(SetLabelTextStyleEvent(textStyle!)),
+          onChanged:
+              (TextStyle? textStyle) => context
+                  .resolveBloc<MyoroCheckboxWidgetShowcaseBloc>()
+                  .add(SetLabelTextStyleEvent(textStyle!)),
         ),
       ),
     );

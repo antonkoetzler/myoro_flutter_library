@@ -73,14 +73,19 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     return BlocProvider.value(
       value: _bloc,
       child: RepaintBoundary(
         child: Row(
           spacing: themeExtension.spacing,
-          children: [if (_configuration.checkboxOnChangedNotNull) _Checkbox(_configuration), Expanded(child: _Input(_configuration))],
+          children: [
+            if (_configuration.checkboxOnChangedNotNull)
+              _Checkbox(_configuration),
+            Expanded(child: _Input(_configuration)),
+          ],
         ),
       ),
     );
@@ -95,10 +100,18 @@ final class _Checkbox<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(listenWhen: _listenWhen, listener: _listener, buildWhen: _buildWhen, builder: _builder);
+    return BlocConsumer<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
+      listenWhen: _listenWhen,
+      listener: _listener,
+      buildWhen: _buildWhen,
+      builder: _builder,
+    );
   }
 
-  bool _listenWhen(MyoroDropdownState<T> previous, MyoroDropdownState<T> current) {
+  bool _listenWhen(
+    MyoroDropdownState<T> previous,
+    MyoroDropdownState<T> current,
+  ) {
     return previous.enabled != current.enabled;
   }
 
@@ -106,12 +119,18 @@ final class _Checkbox<T> extends StatelessWidget {
     _configuration.handleCheckboxOnChanged(state.enabled, state.selectedItems);
   }
 
-  bool _buildWhen(MyoroDropdownState<T> previous, MyoroDropdownState<T> current) {
+  bool _buildWhen(
+    MyoroDropdownState<T> previous,
+    MyoroDropdownState<T> current,
+  ) {
     return previous.enabled != current.enabled;
   }
 
   Widget _builder(BuildContext context, MyoroDropdownState<T> state) {
-    return MyoroCheckbox(initialValue: state.enabled, onChanged: (bool enabled) => _onChanged(context));
+    return MyoroCheckbox(
+      initialValue: state.enabled,
+      onChanged: (bool enabled) => _onChanged(context),
+    );
   }
 
   void _onChanged(BuildContext context) {
@@ -143,9 +162,6 @@ final class _InputState<T> extends State<_Input<T>> {
   /// [OverlayPortal] relative to the position of [_DropdownState].
   final _link = LayerLink();
 
-  /// Controller of [OverlayPortalController] to show/hide [_Menu].
-  final _overlayPortalController = OverlayPortalController();
-
   /// [TapRegion.groupId] of [_InputTriggerArea] and [_Menu] so [TapRegion.onTapOutside]
   /// (which closes the menu) only activates when [_InputTriggerArea]/[_Menu] is not pressed.
   late final String _tapRegionGroupId;
@@ -169,7 +185,7 @@ final class _InputState<T> extends State<_Input<T>> {
   @override
   Widget build(BuildContext context) {
     return OverlayPortal(
-      controller: _overlayPortalController,
+      controller: _configuration.controller.overlayPortalController,
       overlayChildBuilder: _overlayChildBuilder,
       child: Stack(
         children: [
@@ -177,7 +193,8 @@ final class _InputState<T> extends State<_Input<T>> {
           MyoroLayoutBuilder(
             builder: (_, __) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                final renderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
+                final renderBox =
+                    _inputKey.currentContext!.findRenderObject() as RenderBox;
                 _inputSizeNotifier.value = renderBox.size;
               });
 
@@ -189,14 +206,19 @@ final class _InputState<T> extends State<_Input<T>> {
               );
             },
           ),
-          _InputTriggerArea<T>(_inputSizeNotifier, _toggleMenu, _tapRegionGroupId),
+          _InputTriggerArea<T>(
+            _configuration,
+            _inputSizeNotifier,
+            _tapRegionGroupId,
+          ),
         ],
       ),
     );
   }
 
   Widget _overlayChildBuilder(_) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDropdownThemeExtension>();
     return ValueListenableBuilder(
       valueListenable: _inputSizeNotifier,
       builder: (_, Size? inputSize, __) {
@@ -204,19 +226,21 @@ final class _InputState<T> extends State<_Input<T>> {
           width: inputSize?.width,
           child: CompositedTransformFollower(
             link: _link,
-            offset: Offset(0, (inputSize?.height ?? 0) + themeExtension.spacing),
-            child: _Menu(_configuration, _toggleMenu, _tapRegionGroupId),
+            offset: Offset(
+              0,
+              (inputSize?.height ?? 0) + themeExtension.spacing,
+            ),
+            child: _Menu(_configuration, _tapRegionGroupId),
           ),
         );
       },
     );
   }
 
-  void _toggleMenu() {
-    _overlayPortalController.isShowing ? _overlayPortalController.hide() : _overlayPortalController.show();
-  }
-
-  bool _listenWhen(MyoroDropdownState<T> previous, MyoroDropdownState<T> current) {
+  bool _listenWhen(
+    MyoroDropdownState<T> previous,
+    MyoroDropdownState<T> current,
+  ) {
     return previous.selectedItems != current.selectedItems;
   }
 
@@ -225,7 +249,10 @@ final class _InputState<T> extends State<_Input<T>> {
     _formatSelectedItems(state);
   }
 
-  bool _buildWhen(MyoroDropdownState<T> previous, MyoroDropdownState<T> current) {
+  bool _buildWhen(
+    MyoroDropdownState<T> previous,
+    MyoroDropdownState<T> current,
+  ) {
     return previous.enabled != current.enabled;
   }
 
@@ -264,15 +291,20 @@ final class _InputState<T> extends State<_Input<T>> {
 
 /// [Widget] responsible for opening the dropdown when [_Input] is pressed.
 final class _InputTriggerArea<T> extends StatelessWidget {
+  final MyoroDropdownConfiguration<T> _configuration;
   final ValueNotifier<Size?> _inputSizeNotifier;
-  final VoidCallback _onTapUp;
   final String _tapRegionGroupId;
 
-  const _InputTriggerArea(this._inputSizeNotifier, this._onTapUp, this._tapRegionGroupId);
+  const _InputTriggerArea(
+    this._configuration,
+    this._inputSizeNotifier,
+    this._tapRegionGroupId,
+  );
 
   @override
   Widget build(BuildContext context) {
-    final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final inputThemeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return ValueListenableBuilder(
       valueListenable: _inputSizeNotifier,
@@ -280,21 +312,33 @@ final class _InputTriggerArea<T> extends StatelessWidget {
         return ClipRRect(
           borderRadius: inputThemeExtension.borderRadius,
           clipBehavior: Clip.hardEdge,
-          child: SizedBox(height: inputSize?.height, child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(buildWhen: _buildWhen, builder: _builder)),
+          child: SizedBox(
+            height: inputSize?.height,
+            child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
+              buildWhen: _buildWhen,
+              builder: _builder,
+            ),
+          ),
         );
       },
     );
   }
 
-  bool _buildWhen(MyoroDropdownState<T> previous, MyoroDropdownState<T> current) {
-    return (previous.selectedItems != current.selectedItems) || (previous.enabled || current.enabled);
+  bool _buildWhen(
+    MyoroDropdownState<T> previous,
+    MyoroDropdownState<T> current,
+  ) {
+    return (previous.selectedItems != current.selectedItems) ||
+        (previous.enabled || current.enabled);
   }
 
   Widget _builder(BuildContext context, MyoroDropdownState<T> state) {
-    final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final EdgeInsets clearTextButtonPadding = inputThemeExtension.clearTextButtonPadding;
+    final inputThemeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final EdgeInsets clearTextButtonPadding =
+        inputThemeExtension.clearTextButtonPadding;
 
-    final onTapUp = state.enabled ? _onTapUp : null;
+    final onTapUp = state.enabled ? _configuration.controller.toggleMenu : null;
 
     return Row(
       children: [
@@ -305,13 +349,25 @@ final class _InputTriggerArea<T> extends StatelessWidget {
             width: 29,
             child: Column(
               children: [
-                _InputTriggerAreaRegion(_tapRegionGroupId, onTapUp, height: clearTextButtonPadding.top + 2),
+                _InputTriggerAreaRegion(
+                  _tapRegionGroupId,
+                  onTapUp,
+                  height: clearTextButtonPadding.top + 2,
+                ),
                 const Spacer(),
-                _InputTriggerAreaRegion(_tapRegionGroupId, onTapUp, height: clearTextButtonPadding.bottom + 2),
+                _InputTriggerAreaRegion(
+                  _tapRegionGroupId,
+                  onTapUp,
+                  height: clearTextButtonPadding.bottom + 2,
+                ),
               ],
             ),
           ),
-          _InputTriggerAreaRegion(_tapRegionGroupId, onTapUp, width: clearTextButtonPadding.right),
+          _InputTriggerAreaRegion(
+            _tapRegionGroupId,
+            onTapUp,
+            width: clearTextButtonPadding.right,
+          ),
         ],
       ],
     );
@@ -328,7 +384,12 @@ final class _InputTriggerAreaRegion extends StatelessWidget {
   final double? width;
   final double? height;
 
-  const _InputTriggerAreaRegion(this._tapRegionGroupId, this._onTapUp, {this.width, this.height});
+  const _InputTriggerAreaRegion(
+    this._tapRegionGroupId,
+    this._onTapUp, {
+    this.width,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -338,10 +399,16 @@ final class _InputTriggerAreaRegion extends StatelessWidget {
       width: width,
       height: height,
       child: MouseRegion(
-        cursor: onTapUpNotNull ? SystemMouseCursors.click : SystemMouseCursors.basic,
+        cursor:
+            onTapUpNotNull
+                ? SystemMouseCursors.click
+                : SystemMouseCursors.basic,
         child: GestureDetector(
           onTapUp: onTapUpNotNull ? (_) => _onTapUp() : null,
-          child: TapRegion(groupId: _tapRegionGroupId, child: Container(color: Colors.transparent)),
+          child: TapRegion(
+            groupId: _tapRegionGroupId,
+            child: Container(color: Colors.transparent),
+          ),
         ),
       ),
     );
@@ -351,23 +418,27 @@ final class _InputTriggerAreaRegion extends StatelessWidget {
 /// [MyoroMenu] responsible for acting as the dropdown menu.
 final class _Menu<T> extends StatelessWidget {
   final MyoroDropdownConfiguration<T> _configuration;
-  final VoidCallback _toggleMenu;
   final String _groupId;
 
-  const _Menu(this._configuration, this._toggleMenu, this._groupId);
+  const _Menu(this._configuration, this._groupId);
 
   @override
   Widget build(BuildContext context) {
+    final VoidCallback toggleMenu = _configuration.controller.toggleMenu;
+
     return CallbackShortcuts(
-      bindings: {const SingleActivator(LogicalKeyboardKey.escape): _toggleMenu},
+      bindings: {const SingleActivator(LogicalKeyboardKey.escape): toggleMenu},
       child: Focus(
         autofocus: true,
         child: TapRegion(
           groupId: _groupId,
-          onTapOutside: (_) => _toggleMenu(),
+          onTapOutside: (_) => toggleMenu(),
           child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
             builder: (_, MyoroDropdownState<T> state) {
-              return MyoroMenu(dataConfiguration: _configuration.dataConfiguration, itemBuilder: (T item) => _menuItemBuilder(context, state, item));
+              return MyoroMenu(
+                dataConfiguration: _configuration.dataConfiguration,
+                itemBuilder: (T item) => _menuItemBuilder(context, state, item),
+              );
             },
           ),
         ),
@@ -375,16 +446,16 @@ final class _Menu<T> extends StatelessWidget {
     );
   }
 
-  MyoroMenuItem _menuItemBuilder(BuildContext context, MyoroDropdownState<T> state, T item) {
-    return _configuration.menuItemBuilder(item).copyWith(isHovered: state.selectedItems.contains(item), onPressed: () => _menuItemOnPressed(context, item));
-  }
-
-  void _menuItemOnPressed(BuildContext context, T item) {
-    final bloc = context.resolveBloc<MyoroDropdownBloc<T>>();
-    if (_configuration is MyoroSingularDropdownConfiguration<T>) {
-      bloc.add(const ClearSelectedItemsEvent());
-      _toggleMenu();
-    }
-    bloc.add(ToggleItemEvent(item));
+  MyoroMenuItem _menuItemBuilder(
+    BuildContext context,
+    MyoroDropdownState<T> state,
+    T item,
+  ) {
+    return _configuration
+        .menuItemBuilder(item)
+        .copyWith(
+          isHovered: state.selectedItems.contains(item),
+          onPressed: () => _configuration.controller.toggleItem(item),
+        );
   }
 }

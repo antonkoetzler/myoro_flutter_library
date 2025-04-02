@@ -34,7 +34,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroIconTextHoverButtonWidgetShowcaseBloc, MyoroIconTextHoverButtonWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroIconTextHoverButtonWidgetShowcaseBloc,
+      MyoroIconTextHoverButtonWidgetShowcaseState
+    >(
       builder: (_, MyoroIconTextHoverButtonWidgetShowcaseState state) {
         return MyoroIconTextHoverButton(
           configuration: const MyoroHoverButtonConfiguration(bordered: true),
@@ -43,7 +46,8 @@ final class _Widget extends StatelessWidget {
           text: state.text,
           textStyle: state.textStyle,
           textAlign: state.textAlign,
-          padding: state.padding != null ? EdgeInsets.all(state.padding!) : null,
+          padding:
+              state.padding != null ? EdgeInsets.all(state.padding!) : null,
           mainAxisAlignment: state.mainAxisAlignment,
           onPressed: state.onPressedEnabled ? () {} : null,
         );
@@ -57,13 +61,16 @@ final class _IconOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<IconData>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Icon',
         dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestIcons),
-        menuItemBuilder: (IconData icon) => MyoroMenuItem(icon: icon, text: _itemLabelBuilder(icon)),
+        menuItemBuilder:
+            (IconData icon) =>
+                MyoroMenuItem(icon: icon, text: _itemLabelBuilder(icon)),
         selectedItemBuilder: _itemLabelBuilder,
         initiallySelectedItem: bloc.state.icon,
         onChanged: (IconData? icon) => bloc.add(SetIconEvent(icon)),
@@ -84,11 +91,16 @@ final class _IconSizeOption extends StatefulWidget {
 }
 
 final class _IconSizeOptionState extends State<_IconSizeOption> {
-  late final _bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
-  late final _controller = TextEditingController(text: _bloc.state.iconSize?.toString());
+  late final _bloc =
+      context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+  late final _controller = TextEditingController(
+    text: _bloc.state.iconSize?.toString(),
+  );
 
-  void _setIconSizeEvent([String? text]) => _bloc.add(SetIconSizeEvent(text != null ? double.parse(text) : null));
-  void _controllerListener() => _setIconSizeEvent(_controller.text.isEmpty ? null : _controller.text);
+  void _setIconSizeEvent([String? text]) =>
+      _bloc.add(SetIconSizeEvent(text != null ? double.parse(text) : null));
+  void _controllerListener() =>
+      _setIconSizeEvent(_controller.text.isEmpty ? null : _controller.text);
 
   @override
   void initState() {
@@ -104,7 +116,13 @@ final class _IconSizeOptionState extends State<_IconSizeOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroInput.number(max: 200, configuration: MyoroInputConfiguration(label: 'Icon size', controller: _controller));
+    return MyoroInput.number(
+      max: 200,
+      configuration: MyoroInputConfiguration(
+        label: 'Icon size',
+        controller: _controller,
+      ),
+    );
   }
 }
 
@@ -116,7 +134,8 @@ final class _TextOption extends StatefulWidget {
 }
 
 final class _TextOptionState extends State<_TextOption> {
-  late final _bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+  late final _bloc =
+      context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
   late final _controller = TextEditingController(text: _bloc.state.text);
 
   void _setTextEvent([String text = '']) => _bloc.add(SetTextEvent(text));
@@ -136,7 +155,12 @@ final class _TextOptionState extends State<_TextOption> {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroInput(configuration: MyoroInputConfiguration(label: 'Text', controller: _controller));
+    return MyoroInput(
+      configuration: MyoroInputConfiguration(
+        label: 'Text',
+        controller: _controller,
+      ),
+    );
   }
 }
 
@@ -145,18 +169,25 @@ final class _TextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
 
     final typographyInstance = MyoroTypographyDesignSystem.instance;
 
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Text style',
-        dataConfiguration: MyoroDataConfiguration(staticItems: typographyInstance.allTextStyles),
-        menuItemBuilder: (TextStyle textStyle) => MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle)),
+        dataConfiguration: MyoroDataConfiguration(
+          staticItems: typographyInstance.allTextStyles,
+        ),
+        menuItemBuilder:
+            (TextStyle textStyle) => MyoroMenuItem(
+              text: typographyInstance.getTextStyleName(textStyle),
+            ),
         selectedItemBuilder: typographyInstance.getTextStyleName,
         initiallySelectedItem: bloc.state.textStyle,
-        onChanged: (TextStyle? textStyle) => bloc.add(SetTextStyleEvent(textStyle)),
+        onChanged:
+            (TextStyle? textStyle) => bloc.add(SetTextStyleEvent(textStyle)),
       ),
     );
   }
@@ -167,16 +198,21 @@ final class _TextAlignOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<TextAlign>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Text alignment',
-        dataConfiguration: MyoroDataConfiguration(staticItems: TextAlign.values),
-        menuItemBuilder: (TextAlign textAlign) => MyoroMenuItem(text: textAlign.name),
+        dataConfiguration: MyoroDataConfiguration(
+          staticItems: TextAlign.values,
+        ),
+        menuItemBuilder:
+            (TextAlign textAlign) => MyoroMenuItem(text: textAlign.name),
         selectedItemBuilder: (TextAlign textAlign) => textAlign.name,
         initiallySelectedItem: bloc.state.textAlign,
-        onChanged: (TextAlign? textAlign) => bloc.add(SetTextAlignEvent(textAlign)),
+        onChanged:
+            (TextAlign? textAlign) => bloc.add(SetTextAlignEvent(textAlign)),
       ),
     );
   }
@@ -190,11 +226,20 @@ final class _PaddingOption extends StatefulWidget {
 }
 
 final class _PaddingOptionState extends State<_PaddingOption> {
-  late final _bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
-  late final _controller = TextEditingController(text: _bloc.state.padding?.toString());
+  late final _bloc =
+      context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+  late final _controller = TextEditingController(
+    text: _bloc.state.padding?.toString(),
+  );
 
   void _setPaddingEvent([bool enabled = true]) {
-    _bloc.add(SetPaddingEvent(enabled && _controller.text.isNotEmpty ? double.parse(_controller.text) : null));
+    _bloc.add(
+      SetPaddingEvent(
+        enabled && _controller.text.isNotEmpty
+            ? double.parse(_controller.text)
+            : null,
+      ),
+    );
   }
 
   void _checkboxOnChanged(bool enabled, _) => _setPaddingEvent(enabled);
@@ -224,16 +269,24 @@ final class _MainAxisAlignmentOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<MainAxisAlignment>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'MainAxisAlignment',
-        dataConfiguration: MyoroDataConfiguration(staticItems: MainAxisAlignment.values),
-        menuItemBuilder: (MainAxisAlignment mainAxisAlignment) => MyoroMenuItem(text: mainAxisAlignment.name),
-        selectedItemBuilder: (MainAxisAlignment mainAxisAlignment) => mainAxisAlignment.name,
+        dataConfiguration: MyoroDataConfiguration(
+          staticItems: MainAxisAlignment.values,
+        ),
+        menuItemBuilder:
+            (MainAxisAlignment mainAxisAlignment) =>
+                MyoroMenuItem(text: mainAxisAlignment.name),
+        selectedItemBuilder:
+            (MainAxisAlignment mainAxisAlignment) => mainAxisAlignment.name,
         initiallySelectedItem: bloc.state.mainAxisAlignment,
-        onChanged: (MainAxisAlignment? mainAxisAlignment) => bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment)),
+        onChanged:
+            (MainAxisAlignment? mainAxisAlignment) =>
+                bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment)),
       ),
     );
   }
@@ -244,12 +297,15 @@ final class _OnPressedEnabledOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
       label: 'onPressed enabled?',
       initialValue: bloc.state.onPressedEnabled,
-      onChanged: (bool onPressedEnabled) => bloc.add(SetOnPressedEnabledEvent(onPressedEnabled)),
+      onChanged:
+          (bool onPressedEnabled) =>
+              bloc.add(SetOnPressedEnabledEvent(onPressedEnabled)),
     );
   }
 }

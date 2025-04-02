@@ -11,8 +11,21 @@ final class MyoroResizeDividerWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyoroBasicDividerWidgetShowcaseBloc(shortValue: context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_DirectionOption(), _ShortValueOption(), _PaddingOption()]),
+      create:
+          (_) => MyoroBasicDividerWidgetShowcaseBloc(
+            shortValue:
+                context
+                    .resolveThemeExtension<MyoroBasicDividerThemeExtension>()
+                    .shortValue,
+          ),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          _DirectionOption(),
+          _ShortValueOption(),
+          _PaddingOption(),
+        ],
+      ),
     );
   }
 }
@@ -35,13 +48,25 @@ final class _WidgetState extends State<_Widget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroBasicDividerWidgetShowcaseBloc, MyoroBasicDividerWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroBasicDividerWidgetShowcaseBloc,
+      MyoroBasicDividerWidgetShowcaseState
+    >(
       builder: (_, MyoroBasicDividerWidgetShowcaseState state) {
-        final children = [Flexible(child: _Container(state.direction, _firstContainerNotifier)), _Divider(state, _firstContainerNotifier)];
+        final children = [
+          Flexible(child: _Container(state.direction, _firstContainerNotifier)),
+          _Divider(state, _firstContainerNotifier),
+        ];
 
         return Stack(
           alignment: Alignment.center,
-          children: [const Positioned(child: _AreYouSilly()), if (state.direction.isHorizontal) Column(children: children) else Row(children: children)],
+          children: [
+            const Positioned(child: _AreYouSilly()),
+            if (state.direction.isHorizontal)
+              Column(children: children)
+            else
+              Row(children: children),
+          ],
         );
       },
     );
@@ -53,13 +78,16 @@ final class _DirectionOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late final bloc = context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
+    late final bloc =
+        context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroResizeDivider.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        menuItemBuilder: (Axis direction) => MyoroMenuItem(text: _getDirectionName(direction)),
+        menuItemBuilder:
+            (Axis direction) =>
+                MyoroMenuItem(text: _getDirectionName(direction)),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: bloc.state.direction,
@@ -93,7 +121,11 @@ final class _ShortValueOption extends StatelessWidget {
 final class _PaddingOption extends StatelessWidget {
   const _PaddingOption();
 
-  void _event(MyoroBasicDividerWidgetShowcaseBloc bloc, Axis direction, double value) {
+  void _event(
+    MyoroBasicDividerWidgetShowcaseBloc bloc,
+    Axis direction,
+    double value,
+  ) {
     bloc.add(SetPaddingEvent(direction, value));
   }
 
@@ -130,7 +162,12 @@ final class _AreYouSilly extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: context.resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>().areYouSillyPadding,
+      padding:
+          context
+              .resolveThemeExtension<
+                MyoroResizeDividerWidgetShowcaseThemeExtension
+              >()
+              .areYouSillyPadding,
       child: Image.asset(kAreYouSillyCat),
     );
   }
@@ -148,10 +185,17 @@ final class _Divider extends StatelessWidget {
       configuration: MyoroBasicDividerConfiguration(
         direction: _state.direction,
         shortValue: _state.shortValue,
-        padding: EdgeInsets.symmetric(vertical: _state.verticalPadding, horizontal: _state.horizontalPadding),
+        padding: EdgeInsets.symmetric(
+          vertical: _state.verticalPadding,
+          horizontal: _state.horizontalPadding,
+        ),
       ),
       dragCallback: (DragUpdateDetails details) {
-        _firstContainerNotifier.value = _firstContainerNotifier.value! + (_state.direction.isHorizontal ? details.delta.dy : details.delta.dx);
+        _firstContainerNotifier.value =
+            _firstContainerNotifier.value! +
+            (_state.direction.isHorizontal
+                ? details.delta.dy
+                : details.delta.dx);
       },
     );
   }
@@ -182,7 +226,8 @@ final class _ContainerState extends State<_Container> {
       builder: (_, double? widthOrHeight, __) {
         if (widthOrHeight == null) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            final size = (_key.currentContext!.findRenderObject() as RenderBox).size;
+            final size =
+                (_key.currentContext!.findRenderObject() as RenderBox).size;
             _notifier.value = _isHorizontal ? size.height : size.width;
           });
         }
@@ -191,8 +236,16 @@ final class _ContainerState extends State<_Container> {
           key: _key,
           width: !_isHorizontal ? widthOrHeight : null,
           height: _isHorizontal ? widthOrHeight : null,
-          constraints: const BoxConstraints(minWidth: _minValue, minHeight: _minValue),
-          color: context.resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>().containerColor,
+          constraints: const BoxConstraints(
+            minWidth: _minValue,
+            minHeight: _minValue,
+          ),
+          color:
+              context
+                  .resolveThemeExtension<
+                    MyoroResizeDividerWidgetShowcaseThemeExtension
+                  >()
+                  .containerColor,
         );
       },
     );

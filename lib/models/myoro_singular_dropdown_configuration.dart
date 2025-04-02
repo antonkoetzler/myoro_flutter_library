@@ -1,13 +1,16 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the selected item changes.
-typedef MyoroSingularDropdownConfigurationOnChanged<T> = void Function(T? selectedItem);
+typedef MyoroSingularDropdownConfigurationOnChanged<T> =
+    void Function(T? selectedItem);
 
 /// Function executed when the enabled/disabled checkbox is pressed.
-typedef MyoroSingularDropdownConfigurationCheckboxOnChanged<T> = void Function(bool enabled, T? selectedItem);
+typedef MyoroSingularDropdownConfigurationCheckboxOnChanged<T> =
+    void Function(bool enabled, T? selectedItem);
 
 /// Configuration model of [MyoroSingularDropdown].
-final class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
+final class MyoroSingularDropdownConfiguration<T>
+    extends MyoroDropdownConfiguration<T> {
   /// Initial selected item.
   ///
   /// Updates the selected item when you update this value within the same dropdown [Widget] lifespan.
@@ -17,7 +20,8 @@ final class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfigura
   final MyoroSingularDropdownConfigurationOnChanged<T>? onChanged;
 
   /// Function executed when the enabled/disabled checkbox is pressed.
-  final MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
+  final MyoroSingularDropdownConfigurationCheckboxOnChanged<T>?
+  checkboxOnChanged;
 
   const MyoroSingularDropdownConfiguration._({
     super.label,
@@ -35,10 +39,12 @@ final class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfigura
   factory MyoroSingularDropdownConfiguration({
     String? label,
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
-    bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    bool allowItemClearing =
+        MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     required MyoroDataConfiguration<T> dataConfiguration,
     required MyoroMenuItemBuilder<T> menuItemBuilder,
-    required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
+    required MyoroDropdownConfigurationSelectedItemBuilder<T>
+    selectedItemBuilder,
     T? initiallySelectedItem,
     MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
     MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
@@ -83,10 +89,20 @@ final class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfigura
       dataConfiguration: dataConfiguration ?? this.dataConfiguration,
       menuItemBuilder: menuItemBuilder ?? this.menuItemBuilder,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      initiallySelectedItem: initiallySelectedItemEnabled ? (initiallySelectedItem ?? this.initiallySelectedItem) : null,
+      initiallySelectedItem:
+          initiallySelectedItemEnabled
+              ? (initiallySelectedItem ?? this.initiallySelectedItem)
+              : null,
       onChanged: onChangedEnabled ? (onChanged ?? this.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedEnabled ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
-      controller: controllerEnabled ? (controller ?? (this.controller as MyoroSingularDropdownController<T>?)) : null,
+      checkboxOnChanged:
+          checkboxOnChangedEnabled
+              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              : null,
+      controller:
+          controllerEnabled
+              ? (controller ??
+                  (this.controller as MyoroSingularDropdownController<T>?))
+              : null,
     );
   }
 
@@ -103,7 +119,10 @@ final class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfigura
 
   @override
   void handleCheckboxOnChanged(bool enabled, Set<T> selectedItems) {
-    checkboxOnChanged?.call(enabled, selectedItems.isNotEmpty ? selectedItems.first : null);
+    checkboxOnChanged?.call(
+      enabled,
+      selectedItems.isNotEmpty ? selectedItems.first : null,
+    );
   }
 
   @override

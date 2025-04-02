@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Pseudo-abstract dropdown controller of dropdowns.
@@ -8,9 +9,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// Additionally, this controller is has methods that
 /// are used to shared logic in myoro_dropdown_v2.dart.
-class MyoroDropdownController<T> {
-  /// [Bloc] of the corresponding dropdown [Widget].
+abstract class MyoroDropdownController<T> {
+  /// [Bloc] of the corresponding dropdown.
   late MyoroDropdownBloc<T> bloc;
+
+  /// [OverlayPortalController] of the dropdown menu.
+  final overlayPortalController = OverlayPortalController();
 
   /// Toggles (or sets if a [enabled] is provided) if the dropdown is enabled or not.
   void toggleEnabled([bool? enabled]) {
@@ -25,5 +29,12 @@ class MyoroDropdownController<T> {
   /// Removes all selected items.
   void clear() {
     bloc.add(const ClearSelectedItemsEvent());
+  }
+
+  /// Toggles whether the dropdown menu is showing.
+  void toggleMenu([bool? enabled]) {
+    enabled ?? overlayPortalController.isShowing
+        ? overlayPortalController.hide()
+        : overlayPortalController.show();
   }
 }
