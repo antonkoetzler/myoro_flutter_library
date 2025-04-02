@@ -1,20 +1,17 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the selected item changes.
-typedef MyoroMultiDropdownConfigurationOnChanged<T> =
-    void Function(Set<T>? selectedItems);
+typedef MyoroMultiDropdownConfigurationOnChanged<T> = void Function(Set<T>? selectedItems);
 
 /// Function executed when the enabled/disabled checkbox is pressed.
-typedef MyoroMultiDropdownConfigurationCheckboxOnChanged<T> =
-    void Function(bool enabled, Set<T>? selectedItems);
+typedef MyoroMultiDropdownConfigurationCheckboxOnChanged<T> = void Function(bool enabled, Set<T>? selectedItems);
 
 /// Configuration model of [MyoroMultiDropdown].
-final class MyoroMultiDropdownConfiguration<T>
-    extends MyoroDropdownConfiguration<T> {
+final class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   /// Initial selected item.
   ///
   /// Updates the selected items when you update this value within the same dropdown [Widget] lifespan.
-  final Set<T> initialSelectedItems;
+  final Set<T> initiallySelectedItems;
 
   /// Function executed when the selected item changes.
   final MyoroMultiDropdownConfigurationOnChanged<T>? onChanged;
@@ -22,18 +19,44 @@ final class MyoroMultiDropdownConfiguration<T>
   /// Function executed when the enabled/disabled checkbox is pressed.
   final MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
 
-  const MyoroMultiDropdownConfiguration({
+  const MyoroMultiDropdownConfiguration._({
     super.label,
     super.enabled,
     super.allowItemClearing,
     required super.dataConfiguration,
     required super.menuItemBuilder,
     required super.selectedItemBuilder,
-    this.initialSelectedItems = const {},
-    this.onChanged,
-    this.checkboxOnChanged,
-    MyoroMultiDropdownController<T>? controller,
+    required this.initiallySelectedItems,
+    required this.onChanged,
+    required this.checkboxOnChanged,
+    required MyoroMultiDropdownController<T> controller,
   }) : super(controller: controller);
+
+  factory MyoroMultiDropdownConfiguration({
+    String? label,
+    bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
+    bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    required MyoroDataConfiguration<T> dataConfiguration,
+    required MyoroMenuItemBuilder<T> menuItemBuilder,
+    required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
+    Set<T>? initiallySelectedItems,
+    MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
+    MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    MyoroMultiDropdownController<T>? controller,
+  }) {
+    return MyoroMultiDropdownConfiguration._(
+      label: label,
+      enabled: enabled,
+      allowItemClearing: allowItemClearing,
+      dataConfiguration: dataConfiguration,
+      menuItemBuilder: menuItemBuilder,
+      selectedItemBuilder: selectedItemBuilder,
+      initiallySelectedItems: initiallySelectedItems ?? const {},
+      onChanged: onChanged,
+      checkboxOnChanged: checkboxOnChanged,
+      controller: controller ?? MyoroMultiDropdownController<T>(),
+    );
+  }
 
   @override
   MyoroMultiDropdownConfiguration<T> copyWith({
@@ -44,7 +67,7 @@ final class MyoroMultiDropdownConfiguration<T>
     MyoroDataConfiguration<T>? dataConfiguration,
     MyoroMenuItemBuilder<T>? menuItemBuilder,
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
-    Set<T>? initialSelectedItems,
+    Set<T>? initiallySelectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     bool onChangedEnabled = true,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
@@ -59,19 +82,31 @@ final class MyoroMultiDropdownConfiguration<T>
       dataConfiguration: dataConfiguration ?? this.dataConfiguration,
       menuItemBuilder: menuItemBuilder ?? this.menuItemBuilder,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      initialSelectedItems: initialSelectedItems ?? this.initialSelectedItems,
+      initiallySelectedItems: initiallySelectedItems ?? this.initiallySelectedItems,
       onChanged: onChangedEnabled ? (onChanged ?? this.onChanged) : null,
-      checkboxOnChanged:
-          checkboxOnChangedEnabled
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
-              : null,
-      controller:
-          controllerEnabled
-              ? (controller ??
-                  (this.controller as MyoroMultiDropdownController<T>?))
-              : null,
+      checkboxOnChanged: checkboxOnChangedEnabled ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+      controller: controllerEnabled ? (controller ?? (this.controller as MyoroMultiDropdownController<T>?)) : null,
     );
   }
+
+  @override
+  void setInitiallySelectedItems() {
+    if (initiallySelectedItems.isEmpty) return;
+    (controller as MyoroMultiDropdownController<T>?)?.selectItems(initiallySelectedItems);
+  }
+
+  @override
+  void handleOnChanged(Set<T> selectedItems) {
+    onChanged?.call(selectedItems);
+  }
+
+  @override
+  void handleCheckboxOnChanged(bool enabled, Set<T> selectedItems) {
+    checkboxOnChanged?.call(enabled, selectedItems);
+  }
+
+  @override
+  bool get checkboxOnChangedNotNull => checkboxOnChanged != null;
 
   @override
   List<Object?> get props {
@@ -82,7 +117,7 @@ final class MyoroMultiDropdownConfiguration<T>
       dataConfiguration,
       menuItemBuilder,
       selectedItemBuilder,
-      initialSelectedItems,
+      initiallySelectedItems,
       onChanged,
       checkboxOnChanged,
       controller,
@@ -98,7 +133,7 @@ final class MyoroMultiDropdownConfiguration<T>
       '  dataConfiguration: $dataConfiguration,\n'
       '  menuItemBuilder: $menuItemBuilder,\n'
       '  selectedItemBuilder: $selectedItemBuilder,\n'
-      '  initialSelectedItem: $initialSelectedItems,\n'
+      '  initialSelectedItem: $initiallySelectedItems,\n'
       '  onChanged: $onChanged,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
       '  controller: $controller,\n'

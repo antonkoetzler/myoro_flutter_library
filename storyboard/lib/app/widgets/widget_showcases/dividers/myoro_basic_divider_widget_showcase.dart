@@ -11,21 +11,8 @@ final class MyoroBasicDividerWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (_) => MyoroBasicDividerWidgetShowcaseBloc(
-            shortValue:
-                context
-                    .resolveThemeExtension<MyoroBasicDividerThemeExtension>()
-                    .shortValue,
-          ),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [
-          _DirectionOption(),
-          _ShortValueOption(),
-          _PaddingOption(),
-        ],
-      ),
+      create: (_) => MyoroBasicDividerWidgetShowcaseBloc(shortValue: context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_DirectionOption(), _ShortValueOption(), _PaddingOption()]),
     );
   }
 }
@@ -35,10 +22,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroBasicDividerWidgetShowcaseBloc,
-      MyoroBasicDividerWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroBasicDividerWidgetShowcaseBloc, MyoroBasicDividerWidgetShowcaseState>(
       builder: (_, MyoroBasicDividerWidgetShowcaseState state) {
         final children = [
           const Flexible(child: _Button('A button')),
@@ -46,10 +30,7 @@ final class _Widget extends StatelessWidget {
             configuration: MyoroBasicDividerConfiguration(
               direction: state.direction,
               shortValue: state.shortValue,
-              padding: EdgeInsets.symmetric(
-                vertical: state.verticalPadding,
-                horizontal: state.horizontalPadding,
-              ),
+              padding: EdgeInsets.symmetric(vertical: state.verticalPadding, horizontal: state.horizontalPadding),
             ),
           ),
           const Flexible(child: _Button('Another button')),
@@ -59,9 +40,7 @@ final class _Widget extends StatelessWidget {
           return Column(mainAxisSize: MainAxisSize.min, children: children);
         }
 
-        return IntrinsicHeight(
-          child: Row(mainAxisSize: MainAxisSize.min, children: children),
-        );
+        return IntrinsicHeight(child: Row(mainAxisSize: MainAxisSize.min, children: children));
       },
     );
   }
@@ -78,12 +57,10 @@ final class _DirectionOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroBasicDivider.direction]',
         dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        menuItemBuilder:
-            (Axis direction) =>
-                MyoroMenuItem(text: _getDirectionName(direction)),
+        menuItemBuilder: (Axis direction) => MyoroMenuItem(text: _getDirectionName(direction)),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
-        initialSelectedItem: bloc.state.direction,
+        initiallySelectedItem: bloc.state.direction,
         onChanged: (Axis? direction) => bloc.add(SetDirectionEvent(direction!)),
       ),
     );
@@ -114,11 +91,7 @@ final class _ShortValueOption extends StatelessWidget {
 final class _PaddingOption extends StatelessWidget {
   const _PaddingOption();
 
-  void _event(
-    MyoroBasicDividerWidgetShowcaseBloc bloc,
-    Axis direction,
-    double value,
-  ) {
+  void _event(MyoroBasicDividerWidgetShowcaseBloc bloc, Axis direction, double value) {
     bloc.add(SetPaddingEvent(direction, value));
   }
 
@@ -158,14 +131,7 @@ final class _Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextHoverButton(
       text: _text,
-      configuration: MyoroHoverButtonConfiguration(
-        bordered:
-            context
-                .resolveThemeExtension<
-                  MyoroBasicDividerWidgetShowcaseThemeExtension
-                >()
-                .buttonBordered,
-      ),
+      configuration: MyoroHoverButtonConfiguration(bordered: context.resolveThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension>().buttonBordered),
       onPressed: () {},
     );
   }

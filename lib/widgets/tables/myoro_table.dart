@@ -63,18 +63,10 @@ final class MyoroTable<T> extends StatefulWidget {
           (controllerEnabled ? w.controller == controller : true) &&
           (columnsEnabled ? w.columns == columns : true) &&
           (rowBuilderEnabled ? w.rowBuilder == rowBuilder : true) &&
-          (dataConfigurationEnabled
-              ? w.dataConfiguration == dataConfiguration
-              : true) &&
-          (enableColumnResizingEnabled
-              ? w.enableColumnResizing == enableColumnResizing
-              : true) &&
-          (enableCheckboxesEnabled
-              ? w.enableCheckboxes == enableCheckboxes
-              : true) &&
-          (showPaginationControlsEnabled
-              ? w.showPaginationControls == showPaginationControls
-              : true),
+          (dataConfigurationEnabled ? w.dataConfiguration == dataConfiguration : true) &&
+          (enableColumnResizingEnabled ? w.enableColumnResizing == enableColumnResizing : true) &&
+          (enableCheckboxesEnabled ? w.enableCheckboxes == enableCheckboxes : true) &&
+          (showPaginationControlsEnabled ? w.showPaginationControls == showPaginationControls : true),
     );
   }
 
@@ -91,13 +83,11 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   bool get _showPaginationControls => widget.showPaginationControls;
 
   MyoroTableController<T>? _localController;
-  MyoroTableController<T> get _controller =>
-      widget.controller ?? (_localController ??= MyoroTableController());
+  MyoroTableController<T> get _controller => widget.controller ?? (_localController ??= MyoroTableController());
 
   /// [List] of [GlobalKey]s for every title column so we may get their
   /// widths and pass it to their respective column in [_RowsSection].
-  late final List<GlobalKey> _columnKeys =
-      _columns.map<GlobalKey>((_) => GlobalKey()).toList();
+  late final List<GlobalKey> _columnKeys = _columns.map<GlobalKey>((_) => GlobalKey()).toList();
 
   /// [List] of the widths of every title column.
   final _columnWidthsNotifier = ValueNotifier<List<double>?>(null);
@@ -136,8 +126,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return Provider<MyoroTableController<T>>(
       create: (_) => _controller,
@@ -158,29 +147,14 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
                       WidgetsBinding.instance.addPostFrameCallback((_) {
                         _columnWidthsNotifier.value =
                             _columnKeys.map<double>((GlobalKey key) {
-                              return (key.currentContext!.findRenderObject()
-                                      as RenderBox)
-                                  .size
-                                  .width;
+                              return (key.currentContext!.findRenderObject() as RenderBox).size.width;
                             }).toList();
                       });
 
                       return Column(
                         children: [
-                          _TitleRow<T>(
-                            _columnKeys,
-                            _columns,
-                            _enableColumnResizing,
-                            _columnResizedNotifier,
-                          ),
-                          Expanded(
-                            child: _RowsSection(
-                              _columns,
-                              _rowBuilder,
-                              _enableCheckboxes,
-                              _columnWidthsNotifier,
-                            ),
-                          ),
+                          _TitleRow<T>(_columnKeys, _columns, _enableColumnResizing, _columnResizedNotifier),
+                          Expanded(child: _RowsSection(_columns, _rowBuilder, _enableCheckboxes, _columnWidthsNotifier)),
                         ],
                       );
                     },
@@ -202,17 +176,11 @@ final class _TitleRow<T> extends StatelessWidget {
   final bool _enableColumnResizing;
   final ValueNotifier<int> _columnResizedNotifier;
 
-  const _TitleRow(
-    this._columnKeys,
-    this._columns,
-    this._enableColumnResizing,
-    this._columnResizedNotifier,
-  );
+  const _TitleRow(this._columnKeys, this._columns, this._enableColumnResizing, this._columnResizedNotifier);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     final isMultiColumned = _columns.length > 1;
 
     return SizedBox(
@@ -222,25 +190,15 @@ final class _TitleRow<T> extends StatelessWidget {
         children: [
           Flexible(
             child: Padding(
-              padding:
-                  isMultiColumned
-                      ? themeExtension.contentPadding.copyWith(
-                        top: 0,
-                        bottom: 0,
-                      )
-                      : themeExtension.contentPadding,
+              padding: isMultiColumned ? themeExtension.contentPadding.copyWith(top: 0, bottom: 0) : themeExtension.contentPadding,
               child: ValueListenableBuilder(
-                valueListenable:
-                    context
-                        .read<MyoroTableController<T>>()
-                        .ordenatedColumnNotifier,
+                valueListenable: context.read<MyoroTableController<T>>().ordenatedColumnNotifier,
                 builder: (_, MyoroTableColumn? ordenatedColumn, __) {
                   return Row(
                     children:
                         _columns.map<Widget>((MyoroTableColumn column) {
                           final columnIndex = _columns.indexOf(column);
-                          final isLastColumn =
-                              columnIndex == _columns.length - 1;
+                          final isLastColumn = columnIndex == _columns.length - 1;
                           final isOrdenatedColumn = column == ordenatedColumn;
                           final key = _columnKeys[columnIndex];
                           final columnWidget = _TitleColumn<T>(
@@ -258,13 +216,9 @@ final class _TitleRow<T> extends StatelessWidget {
                             return Expanded(child: columnWidget);
                           }
 
-                          return switch (column
-                              .widthConfiguration
-                              ?.columnWidthEnum) {
+                          return switch (column.widthConfiguration?.columnWidthEnum) {
                             MyoroTableColumnWidthEnum.fixed => columnWidget,
-                            MyoroTableColumnWidthEnum.expanded => Expanded(
-                              child: columnWidget,
-                            ),
+                            MyoroTableColumnWidthEnum.expanded => Expanded(child: columnWidget),
                             _ => Flexible(child: columnWidget),
                           };
                         }).toList(),
@@ -273,11 +227,7 @@ final class _TitleRow<T> extends StatelessWidget {
               ),
             ),
           ),
-          const MyoroBasicDivider(
-            configuration: MyoroBasicDividerConfiguration(
-              direction: Axis.horizontal,
-            ),
-          ),
+          const MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal)),
         ],
       ),
     );
@@ -314,17 +264,14 @@ final class _TitleColumnState<T> extends State<_TitleColumn<T>> {
   bool get _isOrdenatedColumn => widget._isOrdenatedColumn;
   bool get _isMultiColumned => widget._isMultiColumned;
   bool get _enableColumnResizing => widget._enableColumnResizing;
-  ValueNotifier<int> get _columnResizedNotifier =>
-      widget._columnResizedNotifier;
+  ValueNotifier<int> get _columnResizedNotifier => widget._columnResizedNotifier;
 
   /// [ValueNotifier] to control the width applied from resizing the [_TitleColumn].
   final _widthAppliedNotifier = ValueNotifier<double>(0);
 
   void _dragCallback(DragUpdateDetails details) {
-    _widthAppliedNotifier.value =
-        _widthAppliedNotifier.value + details.delta.dx;
-    _columnResizedNotifier.value =
-        _columnResizedNotifier.value + 1; // Poll the [ValueNotifier].
+    _widthAppliedNotifier.value = _widthAppliedNotifier.value + details.delta.dx;
+    _columnResizedNotifier.value = _columnResizedNotifier.value + 1; // Poll the [ValueNotifier].
   }
 
   @override
@@ -335,19 +282,14 @@ final class _TitleColumnState<T> extends State<_TitleColumn<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
-    const dividerConfiguration = MyoroBasicDividerConfiguration(
-      direction: Axis.vertical,
-    );
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    const dividerConfiguration = MyoroBasicDividerConfiguration(direction: Axis.vertical);
 
     final controller = context.read<MyoroTableController<T>>();
     final showDivider = _isMultiColumned && !_isLastColumn;
 
     return Padding(
-      padding: EdgeInsets.only(
-        right: _isLastColumn ? 0 : themeExtension.columnSpacing,
-      ),
+      padding: EdgeInsets.only(right: _isLastColumn ? 0 : themeExtension.columnSpacing),
       child: MyoroLayoutBuilder(
         builder: (_, BoxConstraints constraints) {
           return ValueListenableBuilder(
@@ -355,45 +297,27 @@ final class _TitleColumnState<T> extends State<_TitleColumn<T>> {
             builder: (_, double widthApplied, __) {
               return Container(
                 key: _key,
-                width:
-                    (_column.widthConfiguration?.fixedWidth ??
-                        constraints.maxWidth) +
-                    widthApplied,
-                constraints: BoxConstraints(
-                  minWidth: themeExtension.titleRowCellMinWidth,
-                ),
+                width: (_column.widthConfiguration?.fixedWidth ?? constraints.maxWidth) + widthApplied,
+                constraints: BoxConstraints(minWidth: themeExtension.titleRowCellMinWidth),
                 child: MyoroTooltip(
                   text: _column.title,
                   child: Row(
                     spacing: themeExtension.titleColumnSpacing,
                     children: [
                       if (_column.ordenationCallback != null)
-                        MyoroCheckbox(
-                          initialValue: _isOrdenatedColumn,
-                          onChanged:
-                              (bool value) => controller.setOrdenatedColumn(
-                                value ? _column : null,
-                              ),
-                        ),
+                        MyoroCheckbox(initialValue: _isOrdenatedColumn, onChanged: (bool value) => controller.setOrdenatedColumn(value ? _column : null)),
                       Expanded(
                         child: Text(
                           _column.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style:
-                              _column.titleTextStyle ??
-                              themeExtension.titleTextStyle,
+                          style: _column.titleTextStyle ?? themeExtension.titleTextStyle,
                         ),
                       ),
                       if (showDivider && !_enableColumnResizing)
-                        const MyoroBasicDivider(
-                          configuration: dividerConfiguration,
-                        )
+                        const MyoroBasicDivider(configuration: dividerConfiguration)
                       else if (showDivider && _enableColumnResizing)
-                        MyoroResizeDivider(
-                          configuration: dividerConfiguration,
-                          dragCallback: _dragCallback,
-                        ),
+                        MyoroResizeDivider(configuration: dividerConfiguration, dragCallback: _dragCallback),
                     ],
                   ),
                 ),
@@ -412,12 +336,7 @@ final class _RowsSection<T> extends StatelessWidget {
   final bool _enableCheckboxes;
   final ValueNotifier<List<double>?> _columnWidthsNotifier;
 
-  const _RowsSection(
-    this._columns,
-    this._rowBuilder,
-    this._enableCheckboxes,
-    this._columnWidthsNotifier,
-  );
+  const _RowsSection(this._columns, this._rowBuilder, this._enableCheckboxes, this._columnWidthsNotifier);
 
   @override
   Widget build(BuildContext context) {
@@ -426,22 +345,11 @@ final class _RowsSection<T> extends StatelessWidget {
     return MyoroResolver<List<T>>(
       controller: controller.resolverController,
       request: () async => await controller.dataConfiguration.items,
-      builder: (
-        List<T>? items,
-        MyoroRequestEnum status,
-        String? errorMessage,
-        MyoroResolverController resolverController,
-      ) {
+      builder: (List<T>? items, MyoroRequestEnum status, String? errorMessage, MyoroResolverController resolverController) {
         return switch (status) {
           MyoroRequestEnum.idle => const _Loading(),
           MyoroRequestEnum.loading => const _Loading(),
-          MyoroRequestEnum.success => _Rows(
-            items!,
-            _columns,
-            _rowBuilder,
-            _enableCheckboxes,
-            _columnWidthsNotifier,
-          ),
+          MyoroRequestEnum.success => _Rows(items!, _columns, _rowBuilder, _enableCheckboxes, _columnWidthsNotifier),
           MyoroRequestEnum.error => _ErrorMessage(errorMessage!),
         };
       },
@@ -453,8 +361,7 @@ final class _Loading extends StatelessWidget {
   const _Loading();
 
   @override
-  Widget build(BuildContext context) =>
-      const Center(child: MyoroCircularLoader());
+  Widget build(BuildContext context) => const Center(child: MyoroCircularLoader());
 }
 
 final class _Rows<T> extends StatelessWidget {
@@ -464,13 +371,7 @@ final class _Rows<T> extends StatelessWidget {
   final bool _enableCheckboxes;
   final ValueNotifier<List<double>?> _columnWidthsNotifier;
 
-  const _Rows(
-    this._items,
-    this._columns,
-    this._rowBuilder,
-    this._enableCheckboxes,
-    this._columnWidthsNotifier,
-  );
+  const _Rows(this._items, this._columns, this._rowBuilder, this._enableCheckboxes, this._columnWidthsNotifier);
 
   @override
   Widget build(BuildContext context) {
@@ -486,12 +387,10 @@ final class _Rows<T> extends StatelessWidget {
       '[MyoroTable._Rows]: Number of cells in each [MyoroTableRow] must be equal to the number of title columns.',
     );
 
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable:
-          context.read<MyoroTableController<T>>().rowsSelectedNotifier,
+      valueListenable: context.read<MyoroTableController<T>>().rowsSelectedNotifier,
       builder: (_, Set<MyoroTableRow> selectedRows, __) {
         return ValueListenableBuilder(
           valueListenable: _columnWidthsNotifier,
@@ -516,22 +415,13 @@ final class _Rows<T> extends StatelessWidget {
                               children: [
                                 for (int i = 0; i < row.cells.length; i++)
                                   Padding(
-                                    padding: EdgeInsets.only(
-                                      right:
-                                          i != _columns.length - 1
-                                              ? themeExtension.columnSpacing
-                                              : 0,
-                                    ),
+                                    padding: EdgeInsets.only(right: i != _columns.length - 1 ? themeExtension.columnSpacing : 0),
                                     child: SizedBox(
                                       width: columnWidths?[i],
                                       child: Row(
                                         spacing: themeExtension.rowsCellSpacing,
                                         children: [
-                                          if (i == 0 && _enableCheckboxes)
-                                            _RowCheckbox<T>(
-                                              row,
-                                              selectedRows.contains(row),
-                                            ),
+                                          if (i == 0 && _enableCheckboxes) _RowCheckbox<T>(row, selectedRows.contains(row)),
                                           Expanded(child: row.cells[i].child),
                                         ],
                                       ),
@@ -564,14 +454,7 @@ final class _RowCheckbox<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.read<MyoroTableController<T>>();
 
-    return MyoroCheckbox(
-      initialValue: _initialValue,
-      onChanged:
-          (bool value) =>
-              value
-                  ? controller.selectRows([_row])
-                  : controller.deselectRows([_row]),
-    );
+    return MyoroCheckbox(initialValue: _initialValue, onChanged: (bool value) => value ? controller.selectRows([_row]) : controller.deselectRows([_row]));
   }
 }
 
@@ -580,16 +463,12 @@ final class _EmptyMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: themeExtension.messageSpacing,
-      children: [
-        Text('No items found!', style: themeExtension.emptyMessageTextStyle),
-        const _TryAgainButton(),
-      ],
+      children: [Text('No items found!', style: themeExtension.emptyMessageTextStyle), const _TryAgainButton()],
     );
   }
 }
@@ -601,13 +480,8 @@ final class _ErrorMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final errorMessages = [
-      'Oops! Error retrieving items...',
-      'Uh-oh! Failed to get items...',
-      'There was a problem getting the items... Please try again!',
-    ];
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final errorMessages = ['Oops! Error retrieving items...', 'Uh-oh! Failed to get items...', 'There was a problem getting the items... Please try again!'];
 
     return Center(
       child: Column(
@@ -618,16 +492,8 @@ final class _ErrorMessage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                errorMessages[faker.randomGenerator.integer(
-                  errorMessages.length,
-                )],
-                style: themeExtension.errorMessageHeaderTextStyle,
-              ),
-              Text(
-                _errorMessage,
-                style: themeExtension.errorMessageErrorTextStyle,
-              ),
+              Text(errorMessages[faker.randomGenerator.integer(errorMessages.length)], style: themeExtension.errorMessageHeaderTextStyle),
+              Text(_errorMessage, style: themeExtension.errorMessageErrorTextStyle),
             ],
           ),
           const _TryAgainButton(),
@@ -644,13 +510,7 @@ final class _Footer<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        _ItemsPerPageDropdown(_controller),
-        Flexible(child: _PageControls(_controller)),
-      ],
-    );
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [_ItemsPerPageDropdown(_controller), Flexible(child: _PageControls(_controller))]);
   }
 }
 
@@ -660,28 +520,22 @@ final class _ItemsPerPageDropdown<T> extends StatefulWidget {
   const _ItemsPerPageDropdown(this._tableController);
 
   @override
-  State<_ItemsPerPageDropdown<T>> createState() =>
-      _ItemsPerPageDropdownState<T>();
+  State<_ItemsPerPageDropdown<T>> createState() => _ItemsPerPageDropdownState<T>();
 }
 
-final class _ItemsPerPageDropdownState<T>
-    extends State<_ItemsPerPageDropdown<T>> {
+final class _ItemsPerPageDropdownState<T> extends State<_ItemsPerPageDropdown<T>> {
   MyoroTableController<T> get _tableController => widget._tableController;
 
   final _dropdownController = MyoroSingularDropdownController<int>();
 
   String _formatInt(int itemsPerPage) => itemsPerPage.toString();
-  MyoroMenuItem _itemBuilder(int itemsPerPage) =>
-      MyoroMenuItem(text: _formatInt(itemsPerPage));
+  MyoroMenuItem _itemBuilder(int itemsPerPage) => MyoroMenuItem(text: _formatInt(itemsPerPage));
 
-  void _onChanged(int? itemsPerPage) =>
-      _tableController.setItemsPerPage(itemsPerPage!);
+  void _onChanged(int? itemsPerPage) => _tableController.setItemsPerPage(itemsPerPage!);
 
   @override
   Widget build(BuildContext context) {
-    final dataConfiguration = MyoroDataConfiguration<int>(
-      staticItems: kMyoroDataConfigurationItemsPerPageOptions,
-    );
+    final dataConfiguration = MyoroDataConfiguration<int>(staticItems: kMyoroDataConfigurationItemsPerPageOptions);
 
     return SizedBox(
       width: 55,
@@ -691,7 +545,7 @@ final class _ItemsPerPageDropdownState<T>
           menuItemBuilder: _itemBuilder,
           selectedItemBuilder: _formatInt,
           allowItemClearing: false,
-          initialSelectedItem: _tableController.dataConfiguration.itemsPerPage,
+          initiallySelectedItem: _tableController.dataConfiguration.itemsPerPage,
           onChanged: _onChanged,
           controller: _dropdownController,
         ),
@@ -712,40 +566,19 @@ final class _PageControls<T> extends StatelessWidget {
 
     return Row(
       mainAxisSize: MainAxisSize.min,
-      spacing:
-          context
-              .resolveThemeExtension<MyoroTableThemeExtension>()
-              .footerSpacing,
+      spacing: context.resolveThemeExtension<MyoroTableThemeExtension>().footerSpacing,
       children: [
         if (currentPage > 1) ...[
-          _Button(
-            text: 'First page',
-            onPressed: () => _controller.changePage(1),
-          ),
-          _Button(
-            icon: Icons.keyboard_arrow_left,
-            onPressed: () => _controller.changePage(currentPage - 1),
-          ),
+          _Button(text: 'First page', onPressed: () => _controller.changePage(1)),
+          _Button(icon: Icons.keyboard_arrow_left, onPressed: () => _controller.changePage(currentPage - 1)),
         ],
         SizedBox(
           width: 20,
-          child: Text(
-            currentPage.toString(),
-            style: context
-                .resolveThemeExtension<MyoroIconTextHoverButtonThemeExtension>()
-                .textStyle
-                .copyWith(fontSize: 20),
-          ),
+          child: Text(currentPage.toString(), style: context.resolveThemeExtension<MyoroIconTextHoverButtonThemeExtension>().textStyle.copyWith(fontSize: 20)),
         ),
         if (currentPage < totalPages) ...[
-          _Button(
-            icon: Icons.keyboard_arrow_right,
-            onPressed: () => _controller.changePage(currentPage + 1),
-          ),
-          _Button(
-            text: 'Last page',
-            onPressed: () => _controller.changePage(totalPages),
-          ),
+          _Button(icon: Icons.keyboard_arrow_right, onPressed: () => _controller.changePage(currentPage + 1)),
+          _Button(text: 'Last page', onPressed: () => _controller.changePage(totalPages)),
         ],
       ],
     );
@@ -757,11 +590,7 @@ final class _Button extends StatelessWidget {
   final String? text;
   final VoidCallback? onPressed;
 
-  const _Button({this.icon, this.text, this.onPressed})
-    : assert(
-        (icon != null) ^ (text != null),
-        '[_PaginationButton]: [icon] (x)or [text] must be provided]',
-      );
+  const _Button({this.icon, this.text, this.onPressed}) : assert((icon != null) ^ (text != null), '[_PaginationButton]: [icon] (x)or [text] must be provided]');
 
   @override
   Widget build(BuildContext context) {
@@ -769,10 +598,7 @@ final class _Button extends StatelessWidget {
       child: MyoroIconTextHoverButton(
         icon: icon,
         text: text ?? '',
-        configuration:
-            context
-                .resolveThemeExtension<MyoroTableThemeExtension>()
-                .buttonConfiguration,
+        configuration: context.resolveThemeExtension<MyoroTableThemeExtension>().buttonConfiguration,
         onPressed: onPressed,
       ),
     );
@@ -784,9 +610,6 @@ final class _TryAgainButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _Button(
-      text: 'Click to try again',
-      onPressed: () => context.read<MyoroTableController<T>>().refresh(),
-    );
+    return _Button(text: 'Click to try again', onPressed: () => context.read<MyoroTableController<T>>().refresh());
   }
 }

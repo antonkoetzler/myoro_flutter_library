@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [String] displayed when a [T] item is selected.
-typedef MyoroDropdownConfigurationSelectedItemBuilder<T> =
-    String Function(T item);
+typedef MyoroDropdownConfigurationSelectedItemBuilder<T> = String Function(T item);
 
 /// Abstract model that encapsulates options for [MyoroDropdown].
 ///
 /// [MyoroSingularDropdown] and [MyoroMultiDropdown] have their separation
 /// configuration classes extending [MyoroDropdownConfiguration] for specific args.
 abstract class MyoroDropdownConfiguration<T> extends Equatable {
+  static const enabledDefaultValue = true;
+  static const allowItemClearingDefaultValue = true;
+
   /// Label of the dropdown.
   ///
   /// [MyoroInputConfiguration.label] of [_Input].
@@ -35,31 +37,30 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
   final MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder;
 
   /// Controller of the dropdown.
-  final MyoroDropdownController<T>? controller;
+  final MyoroDropdownController<T> controller;
 
   const MyoroDropdownConfiguration({
     this.label,
-    this.enabled = true,
-    this.allowItemClearing = true,
+    this.enabled = enabledDefaultValue,
+    this.allowItemClearing = allowItemClearingDefaultValue,
     required this.dataConfiguration,
     required this.menuItemBuilder,
     required this.selectedItemBuilder,
-    this.controller,
+    required this.controller,
   });
 
+  /// Standard [copyWith] implementation.
   MyoroDropdownConfiguration<T> copyWith();
 
-  bool get checkboxOnChangedNotNull {
-    if (this is MyoroSingularDropdownConfiguration<T>) {
-      final configuration = this as MyoroSingularDropdownConfiguration<T>;
-      return configuration.checkboxOnChanged != null;
-    }
-    if (this is MyoroMultiDropdownConfiguration<T>) {
-      final configuration = this as MyoroMultiDropdownConfiguration<T>;
-      return configuration.checkboxOnChanged != null;
-    }
-    throw AssertionError(
-      '[_DropdownState<$T>._checkboxOnchangedNotNull]: Invalid [MyoroDropdownConfiguration<$T>] extension provided.',
-    );
-  }
+  /// Sets [controller] with initially selected items in the dropdown.
+  void setInitiallySelectedItems();
+
+  /// Handles executing the on changed functions of extended classes.
+  void handleOnChanged(Set<T> selectedItems);
+
+  /// Handles executing the checkbox on changed functions of extended classes.
+  void handleCheckboxOnChanged(bool enabled, Set<T> selectedItems);
+
+  /// Returns if the checkbox callback is provided.
+  bool get checkboxOnChangedNotNull;
 }
