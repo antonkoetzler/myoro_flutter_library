@@ -31,7 +31,7 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is MyoroSingularDropdown<MyoroSnackBarTypeEnum> &&
-            w.configuration.label == '[MyoroSnackBar.snackBartype]',
+            w.configuration.label == '[MyoroSnackBar.snackBarType]',
       ),
       findsOneWidget,
     );

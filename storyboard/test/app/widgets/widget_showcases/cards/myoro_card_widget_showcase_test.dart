@@ -44,7 +44,7 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroSingularDropdown<TextStyle> &&
+            w is MyoroSingularDropdown<(String, TextStyle)> &&
             w.configuration.label == '[MyoroCard.titleTextStyle]',
       ),
       findsOneWidget,

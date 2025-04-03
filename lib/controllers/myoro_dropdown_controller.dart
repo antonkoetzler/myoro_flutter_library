@@ -9,7 +9,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// Additionally, this controller is has methods that
 /// are used to shared logic in myoro_dropdown_v2.dart.
-abstract class MyoroDropdownController<T> {
+class MyoroDropdownController<T> {
   /// [Bloc] of the corresponding dropdown.
   late MyoroDropdownBloc<T> bloc;
 
@@ -33,8 +33,12 @@ abstract class MyoroDropdownController<T> {
 
   /// Toggles whether the dropdown menu is showing.
   void toggleMenu([bool? enabled]) {
-    enabled ?? overlayPortalController.isShowing
-        ? overlayPortalController.hide()
-        : overlayPortalController.show();
+    if (enabled != null && enabled != overlayPortalController.isShowing) {
+      enabled ? overlayPortalController.show() : overlayPortalController.hide();
+    } else {
+      overlayPortalController.isShowing
+          ? overlayPortalController.hide()
+          : overlayPortalController.show();
+    }
   }
 }

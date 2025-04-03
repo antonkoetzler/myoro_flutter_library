@@ -62,7 +62,6 @@ final class _DropdownState<T> extends State<_Dropdown<T>> {
     super.didUpdateWidget(oldWidget);
     _controller.bloc = _bloc;
     _controller.toggleEnabled(_configuration.enabled);
-    _configuration.setInitiallySelectedItems();
   }
 
   @override

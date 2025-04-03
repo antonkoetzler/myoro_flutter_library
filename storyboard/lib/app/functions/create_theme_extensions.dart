@@ -97,7 +97,10 @@ List<ThemeExtension> _createDrawerWidgetShowcaseThemeExtensions() {
 }
 
 List<ThemeExtension> _createDropdownWidgetShowcaseThemeExtensions() {
-  return const [MyoroDropdownThemeExtension.builder()];
+  return const [
+    MyoroMultiDropdownWidgetShowcaseThemeExtension(),
+    MyoroSingularDropdownWidgetShowcaseThemeExtension(),
+  ];
 }
 
 List<ThemeExtension> _createFormWidgetShowcaseThemeExtensions(

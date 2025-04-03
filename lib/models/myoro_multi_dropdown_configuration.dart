@@ -78,7 +78,6 @@ final class MyoroMultiDropdownConfiguration<T>
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedEnabled = true,
     MyoroMultiDropdownController<T>? controller,
-    bool controllerEnabled = true,
   }) {
     return MyoroMultiDropdownConfiguration(
       label: labelEnabled ? (label ?? this.label) : null,
@@ -94,11 +93,7 @@ final class MyoroMultiDropdownConfiguration<T>
           checkboxOnChangedEnabled
               ? (checkboxOnChanged ?? this.checkboxOnChanged)
               : null,
-      controller:
-          controllerEnabled
-              ? (controller ??
-                  (this.controller as MyoroMultiDropdownController<T>?))
-              : null,
+      controller: this.controller as MyoroMultiDropdownController<T>?,
     );
   }
 
@@ -135,7 +130,7 @@ final class MyoroMultiDropdownConfiguration<T>
       initiallySelectedItems,
       onChanged,
       checkboxOnChanged,
-      controller,
+      // controller,
     ];
   }
 
@@ -143,8 +138,8 @@ final class MyoroMultiDropdownConfiguration<T>
   String toString() =>
       'MyoroMultiDropdownConfiguration<$T>(\n'
       '  label: $label,\n'
-      '  allowItemClearing: $allowItemClearing,\n'
       '  enabled: $enabled,\n'
+      '  allowItemClearing: $allowItemClearing,\n'
       '  dataConfiguration: $dataConfiguration,\n'
       '  menuItemBuilder: $menuItemBuilder,\n'
       '  selectedItemBuilder: $selectedItemBuilder,\n'

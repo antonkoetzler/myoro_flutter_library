@@ -25,7 +25,7 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is MyoroSingularDropdown<Axis> &&
-            w.configuration.label == '[MyoroGrupoCheckbox.direction]',
+            w.configuration.label == '[MyoroGroupCheckbox.direction]',
       ),
       findsOneWidget,
     );

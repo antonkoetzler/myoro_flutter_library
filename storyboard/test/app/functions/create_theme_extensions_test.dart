@@ -18,9 +18,10 @@ void main() {
       createMyoroTextTheme(isDarkMode),
     );
     final themeExtensionTypes = [
-      // Base UI
+      // ########## Base UI ##########
       StoryboardAppBarThemeExtension,
       StoryboardBodyThemeExtension,
+      // #############################
 
       // ########## Widget showcases ##########
       // The generic [WidgetShowcase] variable.
@@ -47,6 +48,10 @@ void main() {
 
       // Drawers
       MyoroDrawerWidgetShowcaseThemeExtension,
+
+      // Dropdowns
+      MyoroMultiDropdownWidgetShowcaseThemeExtension,
+      MyoroSingularDropdownWidgetShowcaseThemeExtension,
 
       // Forms
       MyoroFormWidgetShowcaseThemeExtension,

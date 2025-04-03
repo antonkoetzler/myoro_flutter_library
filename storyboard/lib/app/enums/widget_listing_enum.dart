@@ -10,7 +10,7 @@ enum WidgetListingEnum {
   checkboxes('Checkboxes', [myoroCheckboxTitle, myoroGroupCheckboxTitle]),
   dividers('Dividers', [myoroBasicDividerTitle, myoroResizeDividerTitle]),
   drawers('Drawers', [myoroDrawerTitle]),
-  dropdowns('Dropdowns', []),
+  dropdowns('Dropdowns', [myoroSingularDropdownTitle, myoroMultiDropdownTitle]),
   forms('Forms', [myoroFormTitle]),
   graphs('Graphs', [myoroBarGraphTitle, myoroPieGraphTitle]),
   inputs('Inputs', [
@@ -36,162 +36,170 @@ enum WidgetListingEnum {
 
   const WidgetListingEnum(this.widgetCategory, this.widgetNames);
 
-  // App bars.
+  // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';
 
-  // Buttons.
+  // Buttons
   static const myoroHoverButtonTitle = 'MyoroHoverButton';
   static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
 
-  // Cards.
+  // Cards
   static const myoroCardTitle = 'MyoroCard';
 
-  // Carousels.
+  // Carousels
   static const myoroCarouselTitle = 'MyoroCarousel';
 
-  // Checkboxes.
+  // Checkboxes
   static const myoroCheckboxTitle = 'MyoroCheckbox';
   static const myoroGroupCheckboxTitle = 'MyoroGroupCheckbox';
 
-  // Dividers.
+  // Dividers
   static const myoroBasicDividerTitle = 'MyoroBasicDivider';
   static const myoroResizeDividerTitle = 'MyoroResizeDivider';
 
-  // Drawers.
+  // Drawers
   static const myoroDrawerTitle = 'MyoroDrawer';
 
-  // Forms.
+  // Dropdowns
+  static const myoroSingularDropdownTitle = 'MyoroSingularDropdown';
+  static const myoroMultiDropdownTitle = 'MyoroMultiDropdown';
+
+  // Forms
   static const myoroFormTitle = 'MyoroForm';
 
-  // Graphs.
+  // Graphs
   static const myoroBarGraphTitle = 'MyoroBarGraph';
   static const myoroPieGraphTitle = 'MyoroPieGraph';
 
-  // Inputs.
+  // Inputs
   static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
 
-  // Layout builders.
+  // Layout builders
   static const myoroLayoutBuilderTitle = 'MyoroLayoutBuilder';
 
-  // Loaders.
+  // Loaders
   static const myoroCircularLoaderTitle = 'MyoroCircularLoader';
 
-  // Material apps.
+  // Material apps
   static const myoroMaterialAppTitle = 'MyoroMaterialApp';
 
-  // Menus.
+  // Menus
   static const myoroMenuTitle = 'MyoroMenu';
 
-  // Modals.
+  // Modals
   static const myoroModalTitle = 'MyoroModal';
   static const myoroDialogModalTitle = 'MyoroDialogModal';
 
-  // Radios.
+  // Radios
   static const myoroRadioTitle = 'MyoroRadio';
   static const myoroGroupRadioTitle = 'MyoroGroupRadio';
 
-  // Resolvers.
+  // Resolvers
   static const myoroResolverTitle = 'MyoroResolver';
 
-  // Screens.
+  // Screens
   static const myoroScreenTitle = 'MyoroScreen';
 
-  // Scrollables.
+  // Scrollables
   static const myoroScrollableTitle = 'MyoroScrollable';
 
-  // Sliders.
+  // Sliders
   static const myoroSliderTitle = 'MyoroSlider';
 
-  // Snack bars.
+  // Snack bars
   static const myoroSnackBarTitle = 'MyoroSnackBar';
 
-  // Tables.
+  // Tables
   static const myoroTableTitle = 'MyoroTable';
 
-  // Tooltips.
+  // Tooltips
   static const myoroTooltipTitle = 'MyoroTooltip';
 
   /// Widget that will be displayed in [_WidgetViewer].
   static Widget widgetViewerWidget(String widgetName) {
     return switch (widgetName) {
-      // App bars.
+      // App bars
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
 
-      // Buttons.
+      // Buttons
       myoroHoverButtonTitle => const MyoroHoverButtonWidgetShowcase(),
       myoroIconTextHoverButtonTitle =>
         const MyoroIconTextHoverButtonWidgetShowcase(),
 
-      // Cards.
+      // Cards
       myoroCardTitle => const MyoroCardWidgetShowcase(),
 
-      // Carousels.
+      // Carousels
       myoroCarouselTitle => const MyoroCarouselWidgetShowcase(),
 
-      // Checkboxes.
+      // Checkboxes
       myoroCheckboxTitle => const MyoroCheckboxWidgetShowcase(),
       myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
 
-      // Dividers.
+      // Dividers
       myoroBasicDividerTitle => const MyoroBasicDividerWidgetShowcase(),
       myoroResizeDividerTitle => const MyoroResizeDividerWidgetShowcase(),
 
-      // Drawers.
+      // Drawers
       myoroDrawerTitle => const MyoroDrawerWidgetShowcase(),
 
-      // Forms.
+      // Dropdowns
+      myoroSingularDropdownTitle => const MyoroSingularDropdownWidgetShowcase(),
+      myoroMultiDropdownTitle => const MyoroMultiDropdownWidgetShowcase(),
+
+      // Forms
       myoroFormTitle => const MyoroFormWidgetShowcase(),
 
-      // Graphs.
+      // Graphs
       myoroBarGraphTitle => const MyoroBarGraphWidgetShowcase(),
       myoroPieGraphTitle => const MyoroPieGraphWidgetShowcase(),
 
-      // Inputs.
+      // Inputs
       myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcase(),
       myoroInputTitle => const MyoroInputWidgetShowcase(),
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
 
-      // Layout builders.
+      // Layout builders
       myoroLayoutBuilderTitle => const MyoroLayoutBuilderWidgetShowcase(),
 
-      // Loaders.
+      // Loaders
       myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),
 
-      // Material apps.
+      // Material apps
       myoroMaterialAppTitle => const MyoroMaterialAppWidgetShowcase(),
 
-      // Menus.
+      // Menus
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
 
-      // Modals.
+      // Modals
       myoroModalTitle => const MyoroModalWidgetShowcase(),
       myoroDialogModalTitle => const MyoroDialogModalWidgetShowcase(),
 
-      // Radios.
+      // Radios
       myoroRadioTitle => const MyoroRadioWidgetShowcase(),
       myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcase(),
 
-      // Resolvers.
+      // Resolvers
       myoroResolverTitle => const MyoroResolverWidgetShowcase(),
 
-      // Screens.
+      // Screens
       myoroScreenTitle => const MyoroScreenWidgetShowcase(),
 
-      // Sliders.
+      // Sliders
       myoroSliderTitle => const MyoroSliderWidgetShowcase(),
 
-      // Snack bars.
+      // Snack bars
       myoroSnackBarTitle => const MyoroSnackBarWidgetShowcase(),
 
-      // Tables.
+      // Tables
       myoroTableTitle => const MyoroTableWidgetShowcase(),
 
-      // Tooltips.
+      // Tooltips
       myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
 
-      // Should never get here.
+      // Should never get here
       _ =>
         throw Exception(
           '[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.',

@@ -140,7 +140,7 @@ final class MyoroSingularDropdownConfiguration<T>
       initiallySelectedItem,
       onChanged,
       checkboxOnChanged,
-      controller,
+      // controller,
     ];
   }
 
