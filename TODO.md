@@ -3,8 +3,8 @@
 1. refactor: `MyoroDropdown` using `OverlayPortal`/`CompositedTransformTarget`/`CompositedTransformFollower`
 
 - (**FIN**) Refactor all dropdowns
-- (**IN PROGRESS**) Tests
-- Widget showcases
+- (**IN PROGRESS**) Widget showcases
+- (**IN PROGRESS**) Tests + storyboard tests
 
 1. refactor: `MyoroTable`
 1. Remove `finder` functions

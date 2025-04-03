@@ -11,11 +11,4 @@ final class MyoroMultiDropdownController<T> extends MyoroDropdownController<T> {
   void removeItems(Set<T> items) {
     bloc.add(RemoveSelectedItemsEvent(items));
   }
-
-  @override
-  void toggleItem(T item) {
-    bloc.add(const ClearSelectedItemsEvent());
-    toggleMenu();
-    bloc.add(ToggleItemEvent(item));
-  }
 }

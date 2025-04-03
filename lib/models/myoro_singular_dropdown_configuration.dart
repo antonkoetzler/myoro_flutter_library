@@ -80,7 +80,6 @@ final class MyoroSingularDropdownConfiguration<T>
     MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedEnabled = true,
     MyoroSingularDropdownController<T>? controller,
-    bool controllerEnabled = true,
   }) {
     return MyoroSingularDropdownConfiguration(
       label: labelEnabled ? (label ?? this.label) : null,
@@ -98,11 +97,7 @@ final class MyoroSingularDropdownConfiguration<T>
           checkboxOnChangedEnabled
               ? (checkboxOnChanged ?? this.checkboxOnChanged)
               : null,
-      controller:
-          controllerEnabled
-              ? (controller ??
-                  (this.controller as MyoroSingularDropdownController<T>?))
-              : null,
+      controller: this.controller as MyoroSingularDropdownController<T>?,
     );
   }
 
