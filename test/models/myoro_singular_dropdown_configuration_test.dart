@@ -13,9 +13,9 @@ void main() {
     expect(
       configuration1.copyWith(
         label: configuration2.label,
-        labelEnabled: configuration2.label != null,
         enabled: configuration2.enabled,
         allowItemClearing: configuration2.allowItemClearing,
+        menuMaxHeight: configuration2.menuMaxHeight,
         dataConfiguration: configuration2.dataConfiguration,
         menuItemBuilder: configuration2.menuItemBuilder,
         selectedItemBuilder: configuration2.selectedItemBuilder,
@@ -41,17 +41,18 @@ void main() {
     configuration.controller.bloc = MyoroDropdownBloc<String>(enabled: enabled);
     configuration.setInitiallySelectedItems();
     // Won't emit a new state if [MyoroSingularDropdownConfiguration.initiallySelectedItem] is empty.
-    expectLater(
-      configuration.controller.bloc.stream,
-      emitsInOrder([
-        MyoroDropdownState<String>(enabled: enabled),
-        if (configuration.initiallySelectedItem != null)
+    if (configuration.initiallySelectedItem != null) {
+      expectLater(
+        configuration.controller.bloc.stream,
+        emitsInOrder([
+          MyoroDropdownState<String>(enabled: enabled),
           MyoroDropdownState<String>(
             enabled: enabled,
             selectedItems: {configuration.initiallySelectedItem!},
           ),
-      ]),
-    );
+        ]),
+      );
+    }
   });
 
   test('MyoroSingularDropdownConfiguration.handleOnChanged', () {
@@ -86,6 +87,7 @@ void main() {
       '  label: ${configuration1.label},\n'
       '  enabled: ${configuration1.enabled},\n'
       '  allowItemClearing: ${configuration1.allowItemClearing},\n'
+      '  menuMaxHeight: ${configuration1.menuMaxHeight},\n'
       '  dataConfiguration: ${configuration1.dataConfiguration},\n'
       '  menuItemBuilder: ${configuration1.menuItemBuilder},\n'
       '  selectedItemBuilder: ${configuration1.selectedItemBuilder},\n'
@@ -108,6 +110,7 @@ MyoroSingularDropdownConfiguration<String> _createConfiguration() {
     label: faker.randomGenerator.string(50, min: 0),
     enabled: faker.randomGenerator.boolean(),
     allowItemClearing: faker.randomGenerator.boolean(),
+    menuMaxHeight: faker.randomGenerator.decimal(),
     dataConfiguration: MyoroDataConfiguration(staticItems: items),
     menuItemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
     selectedItemBuilder: (String item) => item,

@@ -15,6 +15,7 @@ void main() {
         label: configuration2.label,
         enabled: configuration2.enabled,
         allowItemClearing: configuration2.allowItemClearing,
+        menuMaxHeight: configuration2.menuMaxHeight,
         dataConfiguration: configuration2.dataConfiguration,
         menuItemBuilder: configuration2.menuItemBuilder,
         selectedItemBuilder: configuration2.selectedItemBuilder,
@@ -82,6 +83,7 @@ void main() {
       '  label: ${configuration1.label},\n'
       '  enabled: ${configuration1.enabled},\n'
       '  allowItemClearing: ${configuration1.allowItemClearing},\n'
+      '  menuMaxHeight: ${configuration1.menuMaxHeight},\n'
       '  dataConfiguration: ${configuration1.dataConfiguration},\n'
       '  menuItemBuilder: ${configuration1.menuItemBuilder},\n'
       '  selectedItemBuilder: ${configuration1.selectedItemBuilder},\n'
@@ -105,6 +107,7 @@ MyoroMultiDropdownConfiguration<String> _createConfiguration() {
     label: faker.randomGenerator.string(50, min: 0),
     enabled: faker.randomGenerator.boolean(),
     allowItemClearing: faker.randomGenerator.boolean(),
+    menuMaxHeight: faker.randomGenerator.decimal(),
     dataConfiguration: MyoroDataConfiguration(staticItems: items.toList()),
     menuItemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
     selectedItemBuilder: (String item) => item,

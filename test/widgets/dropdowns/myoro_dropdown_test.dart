@@ -113,7 +113,8 @@ void _expectCalls(
     find.byWidgetPredicate(
       (Widget w) =>
           w is MyoroInput &&
-          w.configuration.label == configuration.label &&
+          w.configuration.label ==
+              (configuration.label.isNotEmpty ? configuration.label : null) &&
           w.configuration.enabled == configuration.enabled &&
           w.configuration.readOnly == true &&
           w.configuration.showClearTextButton ==
