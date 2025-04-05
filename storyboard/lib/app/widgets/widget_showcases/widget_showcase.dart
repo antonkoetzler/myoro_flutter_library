@@ -109,7 +109,10 @@ final class _WidgetOptions extends StatelessWidget {
     final themeExtension =
         context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
-    return IntrinsicWidth(
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: themeExtension.widgetOptionsMaxWidth,
+      ),
       child: SingleChildScrollView(
         child: Padding(
           padding: themeExtension.widgetOptionsPadding,

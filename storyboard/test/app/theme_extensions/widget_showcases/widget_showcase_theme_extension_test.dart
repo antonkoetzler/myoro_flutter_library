@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,6 +19,7 @@ void main() {
       widgetWrapperBorderRadius: themeExtension2.widgetWrapperBorderRadius,
       widgetWrapperBorder: themeExtension2.widgetWrapperBorder,
       widgetWrapperAlignment: themeExtension2.widgetWrapperAlignment,
+      widgetOptionsMaxWidth: themeExtension2.widgetOptionsMaxWidth,
       widgetOptionsPadding: themeExtension2.widgetOptionsPadding,
       widgetOptionsDividerPadding: themeExtension2.widgetOptionsDividerPadding,
     );
@@ -43,6 +46,10 @@ void main() {
     expect(
       copiedThemeExtension.widgetWrapperAlignment,
       themeExtension2.widgetWrapperAlignment,
+    );
+    expect(
+      copiedThemeExtension.widgetOptionsMaxWidth,
+      themeExtension2.widgetOptionsMaxWidth,
     );
     expect(
       copiedThemeExtension.widgetOptionsPadding,
@@ -102,6 +109,14 @@ void main() {
         Alignment.lerp(
           themeExtension1.widgetWrapperAlignment,
           themeExtension2.widgetWrapperAlignment,
+          i,
+        ),
+      );
+      expect(
+        lerpedThemeExtension.widgetOptionsMaxWidth,
+        lerpDouble(
+          themeExtension1.widgetOptionsMaxWidth,
+          themeExtension2.widgetOptionsMaxWidth,
           i,
         ),
       );

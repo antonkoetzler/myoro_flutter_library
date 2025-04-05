@@ -13,11 +13,12 @@ typedef MyoroDropdownConfigurationSelectedItemBuilder<T> =
 abstract class MyoroDropdownConfiguration<T> extends Equatable {
   static const enabledDefaultValue = true;
   static const allowItemClearingDefaultValue = true;
+  static const menuMaxHeightDefaultValue = double.infinity;
 
   /// Label of the dropdown.
   ///
   /// [MyoroInputConfiguration.label] of [_Input].
-  final String? label;
+  final String label;
 
   /// If the dropdown is enabled/usable.
   ///
@@ -27,6 +28,9 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
 
   /// If the clear button of [_Input]'s [MyoroInput] will be displayed.
   final bool allowItemClearing;
+
+  /// Max height of [_Menu].
+  final double menuMaxHeight;
 
   /// Items of the menu.
   final MyoroDataConfiguration<T> dataConfiguration;
@@ -41,9 +45,10 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
   final MyoroDropdownController<T> controller;
 
   const MyoroDropdownConfiguration({
-    this.label,
+    this.label = '',
     this.enabled = enabledDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
+    this.menuMaxHeight = menuMaxHeightDefaultValue,
     required this.dataConfiguration,
     required this.menuItemBuilder,
     required this.selectedItemBuilder,

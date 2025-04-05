@@ -200,6 +200,7 @@ final class _MyoroInputState extends State<MyoroInput> {
   void didUpdateWidget(covariant MyoroInput oldWidget) {
     super.didUpdateWidget(oldWidget);
     _enabled = _configuration.enabled ?? true;
+    _showClearTextButtonNotifier.value = _showClearTextButton;
   }
 
   @override

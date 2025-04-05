@@ -95,7 +95,8 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is IntrinsicWidth &&
+            w is ConstrainedBox &&
+            w.constraints.maxWidth == themeExtension.widgetOptionsMaxWidth &&
             w.child is SingleChildScrollView &&
             (w.child as SingleChildScrollView).child is Padding &&
             ((w.child as SingleChildScrollView).child as Padding).padding ==

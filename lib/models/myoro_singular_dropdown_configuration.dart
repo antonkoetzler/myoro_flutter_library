@@ -16,7 +16,7 @@ final class MyoroSingularDropdownConfiguration<T>
   /// Updates the selected item when you update this value within the same dropdown [Widget] lifespan.
   final T? initiallySelectedItem;
 
-  /// Function executed when the selected item changes.
+  /// Function executed when the selected item changes.hurricanes
   final MyoroSingularDropdownConfigurationOnChanged<T>? onChanged;
 
   /// Function executed when the enabled/disabled checkbox is pressed.
@@ -27,6 +27,7 @@ final class MyoroSingularDropdownConfiguration<T>
     super.label,
     super.enabled,
     super.allowItemClearing,
+    super.menuMaxHeight,
     required super.dataConfiguration,
     required super.menuItemBuilder,
     required super.selectedItemBuilder,
@@ -37,10 +38,11 @@ final class MyoroSingularDropdownConfiguration<T>
   }) : super(controller: controller);
 
   factory MyoroSingularDropdownConfiguration({
-    String? label,
+    String label = '',
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing =
         MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    double? menuMaxHeight,
     required MyoroDataConfiguration<T> dataConfiguration,
     required MyoroMenuItemBuilder<T> menuItemBuilder,
     required MyoroDropdownConfigurationSelectedItemBuilder<T>
@@ -54,6 +56,8 @@ final class MyoroSingularDropdownConfiguration<T>
       label: label,
       enabled: enabled,
       allowItemClearing: allowItemClearing,
+      menuMaxHeight:
+          menuMaxHeight ?? MyoroDropdownConfiguration.menuMaxHeightDefaultValue,
       dataConfiguration: dataConfiguration,
       menuItemBuilder: menuItemBuilder,
       selectedItemBuilder: selectedItemBuilder,
@@ -67,9 +71,9 @@ final class MyoroSingularDropdownConfiguration<T>
   @override
   MyoroSingularDropdownConfiguration<T> copyWith({
     String? label,
-    bool labelEnabled = true,
     bool? enabled,
     bool? allowItemClearing,
+    double? menuMaxHeight,
     MyoroDataConfiguration<T>? dataConfiguration,
     MyoroMenuItemBuilder<T>? menuItemBuilder,
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
@@ -82,9 +86,10 @@ final class MyoroSingularDropdownConfiguration<T>
     MyoroSingularDropdownController<T>? controller,
   }) {
     return MyoroSingularDropdownConfiguration(
-      label: labelEnabled ? (label ?? this.label) : null,
+      label: label ?? this.label,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
+      menuMaxHeight: menuMaxHeight ?? this.menuMaxHeight,
       dataConfiguration: dataConfiguration ?? this.dataConfiguration,
       menuItemBuilder: menuItemBuilder ?? this.menuItemBuilder,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
@@ -129,6 +134,7 @@ final class MyoroSingularDropdownConfiguration<T>
       label,
       enabled,
       allowItemClearing,
+      menuMaxHeight,
       dataConfiguration,
       menuItemBuilder,
       selectedItemBuilder,
@@ -145,6 +151,7 @@ final class MyoroSingularDropdownConfiguration<T>
       '  label: $label,\n'
       '  enabled: $enabled,\n'
       '  allowItemClearing: $allowItemClearing,\n'
+      '  menuMaxHeight: $menuMaxHeight,\n'
       '  dataConfiguration: $dataConfiguration,\n'
       '  menuItemBuilder: $menuItemBuilder,\n'
       '  selectedItemBuilder: $selectedItemBuilder,\n'

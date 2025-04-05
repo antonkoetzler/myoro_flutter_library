@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -24,6 +26,9 @@ final class WidgetShowcaseThemeExtension
   /// Alignment of [_WidgetWrapper].
   final Alignment widgetWrapperAlignment;
 
+  /// [BoxConstraints.maxWidth] of [_WidgetOptions].
+  final double widgetOptionsMaxWidth;
+
   /// Padding of [_WidgetOptions].
   final EdgeInsets widgetOptionsPadding;
 
@@ -37,6 +42,7 @@ final class WidgetShowcaseThemeExtension
     required this.widgetWrapperBorderRadius,
     required this.widgetWrapperBorder,
     required this.widgetWrapperAlignment,
+    required this.widgetOptionsMaxWidth,
     required this.widgetOptionsPadding,
     required this.widgetOptionsDividerPadding,
   });
@@ -72,6 +78,7 @@ final class WidgetShowcaseThemeExtension
             Alignment.bottomRight,
             Alignment.bottomCenter,
           ][faker.randomGenerator.integer(9)],
+      widgetOptionsMaxWidth = faker.randomGenerator.decimal(min: 200),
       widgetOptionsPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       widgetOptionsDividerPadding = EdgeInsets.all(
         faker.randomGenerator.decimal(),
@@ -88,6 +95,7 @@ final class WidgetShowcaseThemeExtension
         color: MyoroColorDesignSystem.attention,
       ),
       widgetWrapperAlignment = Alignment.center,
+      widgetOptionsMaxWidth = 500,
       widgetOptionsPadding = const EdgeInsets.symmetric(
         vertical: 15,
         horizontal: 10,
@@ -105,6 +113,7 @@ final class WidgetShowcaseThemeExtension
     BorderRadius? widgetWrapperBorderRadius,
     Border? widgetWrapperBorder,
     Alignment? widgetWrapperAlignment,
+    double? widgetOptionsMaxWidth,
     EdgeInsets? widgetOptionsPadding,
     EdgeInsets? widgetOptionsDividerPadding,
   }) {
@@ -119,6 +128,8 @@ final class WidgetShowcaseThemeExtension
       widgetWrapperBorder: widgetWrapperBorder ?? this.widgetWrapperBorder,
       widgetWrapperAlignment:
           widgetWrapperAlignment ?? this.widgetWrapperAlignment,
+      widgetOptionsMaxWidth:
+          widgetOptionsMaxWidth ?? this.widgetOptionsMaxWidth,
       widgetOptionsPadding: widgetOptionsPadding ?? this.widgetOptionsPadding,
       widgetOptionsDividerPadding:
           widgetOptionsDividerPadding ?? this.widgetOptionsDividerPadding,
@@ -162,6 +173,11 @@ final class WidgetShowcaseThemeExtension
         other.widgetWrapperAlignment,
         t,
       ),
+      widgetOptionsMaxWidth: lerpDouble(
+        widgetOptionsMaxWidth,
+        other.widgetOptionsMaxWidth,
+        t,
+      ),
       widgetOptionsPadding: EdgeInsets.lerp(
         widgetOptionsPadding,
         other.widgetOptionsPadding,
@@ -185,6 +201,7 @@ final class WidgetShowcaseThemeExtension
         other.widgetWrapperBorderRadius == widgetWrapperBorderRadius &&
         other.widgetWrapperBorder == widgetWrapperBorder &&
         other.widgetWrapperAlignment == widgetWrapperAlignment &&
+        other.widgetOptionsMaxWidth == widgetOptionsMaxWidth &&
         other.widgetOptionsPadding == widgetOptionsPadding &&
         other.widgetOptionsDividerPadding == widgetOptionsDividerPadding;
   }
@@ -198,6 +215,7 @@ final class WidgetShowcaseThemeExtension
       widgetWrapperBorderRadius,
       widgetWrapperBorder,
       widgetWrapperAlignment,
+      widgetOptionsMaxWidth,
       widgetOptionsPadding,
       widgetOptionsDividerPadding,
     );

@@ -26,6 +26,7 @@ final class MyoroMultiDropdownConfiguration<T>
     super.label,
     super.enabled,
     super.allowItemClearing,
+    super.menuMaxHeight,
     required super.dataConfiguration,
     required super.menuItemBuilder,
     required super.selectedItemBuilder,
@@ -36,10 +37,11 @@ final class MyoroMultiDropdownConfiguration<T>
   }) : super(controller: controller);
 
   factory MyoroMultiDropdownConfiguration({
-    String? label,
+    String label = '',
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing =
         MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    double? menuMaxHeight,
     required MyoroDataConfiguration<T> dataConfiguration,
     required MyoroMenuItemBuilder<T> menuItemBuilder,
     required MyoroDropdownConfigurationSelectedItemBuilder<T>
@@ -53,6 +55,8 @@ final class MyoroMultiDropdownConfiguration<T>
       label: label,
       enabled: enabled,
       allowItemClearing: allowItemClearing,
+      menuMaxHeight:
+          menuMaxHeight ?? MyoroDropdownConfiguration.menuMaxHeightDefaultValue,
       dataConfiguration: dataConfiguration,
       menuItemBuilder: menuItemBuilder,
       selectedItemBuilder: selectedItemBuilder,
@@ -66,9 +70,9 @@ final class MyoroMultiDropdownConfiguration<T>
   @override
   MyoroMultiDropdownConfiguration<T> copyWith({
     String? label,
-    bool labelEnabled = true,
     bool? enabled,
     bool? allowItemClearing,
+    double? menuMaxHeight,
     MyoroDataConfiguration<T>? dataConfiguration,
     MyoroMenuItemBuilder<T>? menuItemBuilder,
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
@@ -80,9 +84,10 @@ final class MyoroMultiDropdownConfiguration<T>
     MyoroMultiDropdownController<T>? controller,
   }) {
     return MyoroMultiDropdownConfiguration(
-      label: labelEnabled ? (label ?? this.label) : null,
+      label: label ?? this.label,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
+      menuMaxHeight: menuMaxHeight ?? this.menuMaxHeight,
       dataConfiguration: dataConfiguration ?? this.dataConfiguration,
       menuItemBuilder: menuItemBuilder ?? this.menuItemBuilder,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
@@ -124,6 +129,7 @@ final class MyoroMultiDropdownConfiguration<T>
       label,
       enabled,
       allowItemClearing,
+      menuMaxHeight,
       dataConfiguration,
       menuItemBuilder,
       selectedItemBuilder,
@@ -140,6 +146,7 @@ final class MyoroMultiDropdownConfiguration<T>
       '  label: $label,\n'
       '  enabled: $enabled,\n'
       '  allowItemClearing: $allowItemClearing,\n'
+      '  menuMaxHeight: $menuMaxHeight,\n'
       '  dataConfiguration: $dataConfiguration,\n'
       '  menuItemBuilder: $menuItemBuilder,\n'
       '  selectedItemBuilder: $selectedItemBuilder,\n'

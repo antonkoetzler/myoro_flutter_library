@@ -19,15 +19,4 @@ final class MyoroMultiDropdownWidgetShowcaseThemeExtension
   ) {
     return this;
   }
-
-  @override
-  bool operator ==(Object other) {
-    return other is MyoroMultiDropdownWidgetShowcaseThemeExtension &&
-        other.runtimeType == runtimeType;
-  }
-
-  @override
-  int get hashCode {
-    return Object.hashAll(const []);
-  }
 }

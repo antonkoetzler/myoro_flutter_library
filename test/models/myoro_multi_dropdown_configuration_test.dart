@@ -13,7 +13,6 @@ void main() {
     expect(
       configuration1.copyWith(
         label: configuration2.label,
-        labelEnabled: configuration2.label != null,
         enabled: configuration2.enabled,
         allowItemClearing: configuration2.allowItemClearing,
         dataConfiguration: configuration2.dataConfiguration,
@@ -103,10 +102,7 @@ MyoroMultiDropdownConfiguration<String> _createConfiguration() {
       ).toSet();
 
   return MyoroMultiDropdownConfiguration<String>(
-    label:
-        faker.randomGenerator.boolean()
-            ? faker.randomGenerator.string(50)
-            : null,
+    label: faker.randomGenerator.string(50, min: 0),
     enabled: faker.randomGenerator.boolean(),
     allowItemClearing: faker.randomGenerator.boolean(),
     dataConfiguration: MyoroDataConfiguration(staticItems: items.toList()),

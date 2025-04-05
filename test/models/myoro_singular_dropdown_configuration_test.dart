@@ -105,10 +105,7 @@ MyoroSingularDropdownConfiguration<String> _createConfiguration() {
   );
 
   return MyoroSingularDropdownConfiguration(
-    label:
-        faker.randomGenerator.boolean()
-            ? faker.randomGenerator.string(50)
-            : null,
+    label: faker.randomGenerator.string(50, min: 0),
     enabled: faker.randomGenerator.boolean(),
     allowItemClearing: faker.randomGenerator.boolean(),
     dataConfiguration: MyoroDataConfiguration(staticItems: items),

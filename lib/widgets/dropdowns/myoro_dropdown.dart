@@ -261,7 +261,7 @@ final class _InputState<T> extends State<_Input<T>> {
       child: MyoroInput(
         key: _inputKey,
         configuration: MyoroInputConfiguration(
-          label: _configuration.label,
+          label: _configuration.label.isNotEmpty ? _configuration.label : null,
           enabled: state.enabled,
           readOnly: true,
           showClearTextButton: _configuration.allowItemClearing,
@@ -435,6 +435,9 @@ final class _Menu<T> extends StatelessWidget {
           child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
             builder: (_, MyoroDropdownState<T> state) {
               return MyoroMenu(
+                constraints: BoxConstraints(
+                  maxHeight: _configuration.menuMaxHeight,
+                ),
                 dataConfiguration: _configuration.dataConfiguration,
                 itemBuilder: (T item) => _menuItemBuilder(context, state, item),
               );
