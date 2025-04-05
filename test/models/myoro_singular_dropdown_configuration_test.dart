@@ -41,17 +41,17 @@ void main() {
     configuration.controller.bloc = MyoroDropdownBloc<String>(enabled: enabled);
     configuration.setInitiallySelectedItems();
     // Won't emit a new state if [MyoroSingularDropdownConfiguration.initiallySelectedItem] is empty.
-    if (configuration.initiallySelectedItem != null) {
-      expectLater(
-        configuration.controller.bloc.stream,
-        emitsInOrder([
+    expectLater(
+      configuration.controller.bloc.stream,
+      emitsInOrder([
+        MyoroDropdownState<String>(enabled: enabled),
+        if (configuration.initiallySelectedItem != null)
           MyoroDropdownState<String>(
             enabled: enabled,
             selectedItems: {configuration.initiallySelectedItem!},
           ),
-        ]),
-      );
-    }
+      ]),
+    );
   });
 
   test('MyoroSingularDropdownConfiguration.handleOnChanged', () {
