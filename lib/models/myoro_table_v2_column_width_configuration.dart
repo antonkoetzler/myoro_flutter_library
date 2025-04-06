@@ -10,11 +10,12 @@ final class MyoroTableV2ColumnWidthConfiguration extends Equatable {
   /// Fixed width of the [MyoroTableV2Column] if [enum] is [MyoroTableV2ColumnWidthConfigurationEnum.fixed].
   final double? fixedWidth;
 
-  MyoroTableV2ColumnWidthConfiguration({
+  const MyoroTableV2ColumnWidthConfiguration({
     required this.enumValue,
     this.fixedWidth,
   }) : assert(
-         !(enumValue.isFixed && fixedWidth == null),
+         !(enumValue == MyoroTableV2ColumnWidthConfigurationEnum.fixed &&
+             fixedWidth == null),
          '[MyoroTableV2ColumnWidthConfiguration]: If [enumValue] is '
          '[MyoroTableV2ColumnWidthConfigurationEnum], [fixedWidth] cannot be null.',
        );
