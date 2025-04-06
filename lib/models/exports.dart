@@ -14,3 +14,6 @@ export 'myoro_table_cell.dart';
 export 'myoro_table_column.dart';
 export 'myoro_table_column_width.dart';
 export 'myoro_table_row.dart';
+export 'myoro_table_v2_configuration.dart';
+export 'myoro_table_v2_column.dart';
+export 'myoro_table_v2_column_width_configuration.dart';

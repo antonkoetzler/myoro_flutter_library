@@ -5,7 +5,8 @@ enum MyoroFontSizeEnum {
   tiny(12),
   small(16),
   medium(18),
-  large(20);
+  large(20),
+  extraLarge(24);
 
   final double size;
 
@@ -19,4 +20,5 @@ enum MyoroFontSizeEnum {
   bool get isSmall => this == small;
   bool get isMedium => this == medium;
   bool get isLarge => this == large;
+  bool get isExtraLarge => this == extraLarge;
 }

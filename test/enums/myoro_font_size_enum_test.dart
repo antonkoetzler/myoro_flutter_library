@@ -8,6 +8,7 @@ void main() {
     expect(MyoroFontSizeEnum.small.size, 16);
     expect(MyoroFontSizeEnum.medium.size, 18);
     expect(MyoroFontSizeEnum.large.size, 20);
+    expect(MyoroFontSizeEnum.extraLarge.size, 24);
   });
 
   test('MyoroFontSizeEnum getters', () {
@@ -15,6 +16,7 @@ void main() {
     expect(MyoroFontSizeEnum.small.isSmall, isTrue);
     expect(MyoroFontSizeEnum.medium.isMedium, isTrue);
     expect(MyoroFontSizeEnum.large.isLarge, isTrue);
+    expect(MyoroFontSizeEnum.extraLarge.isExtraLarge, isTrue);
   });
 
   test('MyoroFontSizeEnum.fake', () {
