@@ -27,8 +27,9 @@ final class _MyoroTableV2State<T> extends State<MyoroTableV2<T>> {
   @override
   void initState() {
     super.initState();
-    _bloc = MyoroTableV2Bloc(_configuration)..add(const FetchEvent());
+    _bloc = MyoroTableV2Bloc(_configuration);
     _controller.bloc = _bloc;
+    _controller.fetch();
   }
 
   @override
