@@ -5,7 +5,7 @@
 1. improvement: `MyoroMaterialApp` test;
 1. feature: `MyoroMaterialApp.colorSchemeBuilder` and `MyoroMaterialApp.textThemeBuilder`;
 1. refactor: `MyoroTypographyDesignSystem`;
-1. improvement: Remove global `GestureDetector` in `MyoroMaterialApp` and use `TagRegion` instead;
+1. improvement: Remove global `GestureDetector` in `MyoroMaterialApp` and use `TapRegion` instead;
 1. fix: Selected Widget button was not hovered when selected in storyboard;
 1. feature: Make `MyoroMaterialApp` support `GoRouter`;
 
