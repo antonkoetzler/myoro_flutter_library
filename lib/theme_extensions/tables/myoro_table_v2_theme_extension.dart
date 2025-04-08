@@ -15,24 +15,32 @@ final class MyoroTableV2ThemeExtension
   /// Size of [_Loader]'s [MyoroCircularLoader].
   final double loaderSize;
 
+  /// [TextStyle] of [_EmptyMessage].
+  final TextStyle emptyMessageTextStyle;
+
   /// [TextStyle] of [_ErrorMessage].
   final TextStyle errorMessageTextStyle;
 
-  /// [EdgeInsets] of [_Loader] and [_ErrorMessage].
-  final EdgeInsets loaderErrorMessagePadding;
+  /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
+  final EdgeInsets dialogPadding;
 
   const MyoroTableV2ThemeExtension({
     required this.decoration,
     required this.titleColumnTextStyle,
     required this.loaderSize,
+    required this.emptyMessageTextStyle,
     required this.errorMessageTextStyle,
-    required this.loaderErrorMessagePadding,
+    required this.dialogPadding,
   });
 
-  MyoroTableV2ThemeExtension.builder(
+  factory MyoroTableV2ThemeExtension.builder(
     ColorScheme colorScheme,
     TextTheme textTheme,
-  ) : decoration = BoxDecoration(
+  ) {
+    final TextStyle headlineLarge = textTheme.headlineLarge!;
+
+    return MyoroTableV2ThemeExtension(
+      decoration: BoxDecoration(
         color: colorScheme.primary,
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
         border: Border.all(
@@ -40,30 +48,35 @@ final class MyoroTableV2ThemeExtension
           color: colorScheme.onPrimary,
         ),
       ),
-      titleColumnTextStyle = textTheme.bodyMedium!,
-      loaderSize = 35,
-      errorMessageTextStyle = textTheme.headlineLarge!.copyWith(
+      titleColumnTextStyle: textTheme.bodyMedium!,
+      loaderSize: 35,
+      emptyMessageTextStyle: headlineLarge,
+      errorMessageTextStyle: headlineLarge.copyWith(
         fontSize: MyoroFontSizeEnum.extraLarge.size,
         color: colorScheme.error,
       ),
-      loaderErrorMessagePadding = const EdgeInsets.all(15);
+      dialogPadding: const EdgeInsets.all(15),
+    );
+  }
 
   @override
   MyoroTableV2ThemeExtension copyWith({
     BoxDecoration? decoration,
     TextStyle? titleColumnTextStyle,
     double? loaderSize,
+    TextStyle? emptyMessageTextStyle,
     TextStyle? errorMessageTextStyle,
-    EdgeInsets? loaderErrorMessagePadding,
+    EdgeInsets? dialogPadding,
   }) {
     return MyoroTableV2ThemeExtension(
       decoration: decoration ?? this.decoration,
       titleColumnTextStyle: titleColumnTextStyle ?? this.titleColumnTextStyle,
       loaderSize: loaderSize ?? this.loaderSize,
+      emptyMessageTextStyle:
+          emptyMessageTextStyle ?? this.emptyMessageTextStyle,
       errorMessageTextStyle:
           errorMessageTextStyle ?? this.errorMessageTextStyle,
-      loaderErrorMessagePadding:
-          loaderErrorMessagePadding ?? this.loaderErrorMessagePadding,
+      dialogPadding: dialogPadding ?? this.dialogPadding,
     );
   }
 
@@ -81,16 +94,17 @@ final class MyoroTableV2ThemeExtension
         t,
       ),
       loaderSize: lerpDouble(loaderSize, other.loaderSize, t),
+      emptyMessageTextStyle: TextStyle.lerp(
+        emptyMessageTextStyle,
+        other.emptyMessageTextStyle,
+        t,
+      ),
       errorMessageTextStyle: TextStyle.lerp(
         errorMessageTextStyle,
         other.errorMessageTextStyle,
         t,
       ),
-      loaderErrorMessagePadding: EdgeInsets.lerp(
-        loaderErrorMessagePadding,
-        other.loaderErrorMessagePadding,
-        t,
-      ),
+      dialogPadding: EdgeInsets.lerp(dialogPadding, other.dialogPadding, t),
     );
   }
 
@@ -102,7 +116,7 @@ final class MyoroTableV2ThemeExtension
         other.titleColumnTextStyle == titleColumnTextStyle &&
         other.loaderSize == loaderSize &&
         other.errorMessageTextStyle == errorMessageTextStyle &&
-        other.loaderErrorMessagePadding == loaderErrorMessagePadding;
+        other.dialogPadding == dialogPadding;
   }
 
   @override
@@ -112,7 +126,7 @@ final class MyoroTableV2ThemeExtension
       titleColumnTextStyle,
       loaderSize,
       errorMessageTextStyle,
-      loaderErrorMessagePadding,
+      dialogPadding,
     );
   }
 
@@ -123,6 +137,6 @@ final class MyoroTableV2ThemeExtension
       '  titleColumnTextStyle: $titleColumnTextStyle,\n'
       '  loaderSize: $loaderSize,\n'
       '  errorMessageTextStyle: $errorMessageTextStyle,\n'
-      '  loaderErrorMessagePadding: $loaderErrorMessagePadding,\n'
+      '  dialogPadding: $dialogPadding,\n'
       ');';
 }

@@ -51,7 +51,7 @@ final class _MyoroTableV2State<T> extends State<MyoroTableV2<T>> {
           mainAxisSize: MainAxisSize.min,
           children: [
             _TitleColumns(_configuration),
-            Flexible(child: _RowsSection<T>()),
+            Flexible(child: _RowsSection(_configuration)),
           ],
         ),
       ),
@@ -154,7 +154,9 @@ final class _Divider extends StatelessWidget {
 
 /// Section where the fetched items (rows) of the table will be.
 final class _RowsSection<T> extends StatelessWidget {
-  const _RowsSection();
+  final MyoroTableV2Configuration<T> _configuration;
+
+  const _RowsSection(this._configuration);
 
   @override
   Widget build(BuildContext context) {
@@ -172,7 +174,7 @@ final class _RowsSection<T> extends StatelessWidget {
     return switch (state.status) {
       MyoroRequestEnum.idle => const _Loader(),
       MyoroRequestEnum.loading => const _Loader(),
-      MyoroRequestEnum.success => const _Rows(),
+      MyoroRequestEnum.success => _Rows(_configuration, state.items),
       MyoroRequestEnum.error => _ErrorMessage(state.errorMessage!),
     };
   }
@@ -188,19 +190,42 @@ final class _Loader extends StatelessWidget {
         context.resolveThemeExtension<MyoroTableV2ThemeExtension>();
 
     return Padding(
-      padding: themeExtension.loaderErrorMessagePadding,
+      padding: themeExtension.dialogPadding,
       child: MyoroCircularLoader(size: themeExtension.loaderSize),
     );
   }
 }
 
 /// Where the rows of the (successfully) fetched items of the [MyoroTableV2] are built.
-final class _Rows extends StatelessWidget {
-  const _Rows();
+final class _Rows<T> extends StatelessWidget {
+  final MyoroTableV2Configuration<T> _configuration;
+  final List<T> _items;
+
+  const _Rows(this._configuration, this._items);
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Hello, World!');
+    if (_items.isEmpty) {
+      return const _EmptyMessage();
+    }
+  }
+}
+
+/// Empty message when there are no items to display.
+final class _EmptyMessage extends StatelessWidget {
+  const _EmptyMessage();
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableV2ThemeExtension>();
+    return Padding(
+      padding: themeExtension.dialogPadding,
+      child: Text(
+        'No items to display!',
+        style: themeExtension.emptyMessageTextStyle,
+      ),
+    );
   }
 }
 
@@ -216,7 +241,7 @@ final class _ErrorMessage extends StatelessWidget {
         context.resolveThemeExtension<MyoroTableV2ThemeExtension>();
 
     return Padding(
-      padding: themeExtension.loaderErrorMessagePadding,
+      padding: themeExtension.dialogPadding,
       child: Text(
         _message,
         textAlign: TextAlign.center,
