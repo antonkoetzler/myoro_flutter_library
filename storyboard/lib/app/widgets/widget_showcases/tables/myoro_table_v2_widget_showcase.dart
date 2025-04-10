@@ -18,7 +18,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleColumns = List.generate(
+    final titleCells = List.generate(
       faker.randomGenerator.integer(5, min: 1),
       _buildColumn,
     );
@@ -29,15 +29,23 @@ final class _Widget extends StatelessWidget {
 
     return MyoroTableV2(
       configuration: MyoroTableV2Configuration(
-        titleColumns: titleColumns,
+        titleCells: titleCells,
         dataConfiguration: dataConfiguration,
+        rowBuilder: (item) {
+          return MyoroTableV2Row(
+            cells:
+                titleCells.map<Widget>((_) {
+                  return Text(faker.lorem.word());
+                }).toList(),
+          );
+        },
       ),
     );
   }
 
   MyoroTableV2Column _buildColumn(_) {
     final column = MyoroTableV2Column.fake();
-    return column.copyWith(child: _TitleColumn(column));
+    return column.copyWith(child: _TitleCell(column));
   }
 
   Future<List<String>> _asyncronousItems(_) async {
@@ -49,10 +57,10 @@ final class _Widget extends StatelessWidget {
   }
 }
 
-final class _TitleColumn extends StatelessWidget {
+final class _TitleCell extends StatelessWidget {
   final MyoroTableV2Column _column;
 
-  const _TitleColumn(this._column);
+  const _TitleCell(this._column);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +80,7 @@ final class _TitleColumn extends StatelessWidget {
     }
 
     return Padding(
-      padding: themeExtension.titleColumnPadding,
+      padding: themeExtension.titleCellPadding,
       child: Text(
         stringBuffer.toString(),
         maxLines: 1,

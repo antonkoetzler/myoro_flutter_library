@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -9,8 +10,11 @@ final class MyoroTableV2ThemeExtension
   /// [BoxDecoration] of the [Container] in [_MyoroTableV2State].
   final BoxDecoration decoration;
 
-  /// Standard [TextStyle] of a [_TitleColumn].
-  final TextStyle titleColumnTextStyle;
+  /// Spacing between columns without dividers.
+  final double columnSpacing;
+
+  /// Standard [TextStyle] of a [_TitleCell].
+  final TextStyle titleCellTextStyle;
 
   /// Size of [_Loader]'s [MyoroCircularLoader].
   final double loaderSize;
@@ -26,12 +30,31 @@ final class MyoroTableV2ThemeExtension
 
   const MyoroTableV2ThemeExtension({
     required this.decoration,
-    required this.titleColumnTextStyle,
+    required this.columnSpacing,
+    required this.titleCellTextStyle,
     required this.loaderSize,
     required this.emptyMessageTextStyle,
     required this.errorMessageTextStyle,
     required this.dialogPadding,
   });
+
+  factory MyoroTableV2ThemeExtension.fake() {
+    final typography = MyoroTypographyDesignSystem.instance;
+    return MyoroTableV2ThemeExtension(
+      decoration: BoxDecoration(
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
+      ),
+      columnSpacing: faker.randomGenerator.decimal(scale: 20),
+      titleCellTextStyle: typography.randomTextStyle,
+      loaderSize: faker.randomGenerator.decimal(scale: 100, min: 10),
+      emptyMessageTextStyle: typography.randomTextStyle,
+      errorMessageTextStyle: typography.randomTextStyle,
+      dialogPadding: EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
+    );
+  }
 
   factory MyoroTableV2ThemeExtension.builder(
     ColorScheme colorScheme,
@@ -48,7 +71,8 @@ final class MyoroTableV2ThemeExtension
           color: colorScheme.onPrimary,
         ),
       ),
-      titleColumnTextStyle: textTheme.bodyMedium!,
+      columnSpacing: 10,
+      titleCellTextStyle: textTheme.bodyMedium!,
       loaderSize: 35,
       emptyMessageTextStyle: headlineLarge,
       errorMessageTextStyle: headlineLarge.copyWith(
@@ -62,7 +86,8 @@ final class MyoroTableV2ThemeExtension
   @override
   MyoroTableV2ThemeExtension copyWith({
     BoxDecoration? decoration,
-    TextStyle? titleColumnTextStyle,
+    double? columnSpacing,
+    TextStyle? titleCellTextStyle,
     double? loaderSize,
     TextStyle? emptyMessageTextStyle,
     TextStyle? errorMessageTextStyle,
@@ -70,7 +95,8 @@ final class MyoroTableV2ThemeExtension
   }) {
     return MyoroTableV2ThemeExtension(
       decoration: decoration ?? this.decoration,
-      titleColumnTextStyle: titleColumnTextStyle ?? this.titleColumnTextStyle,
+      columnSpacing: columnSpacing ?? this.columnSpacing,
+      titleCellTextStyle: titleCellTextStyle ?? this.titleCellTextStyle,
       loaderSize: loaderSize ?? this.loaderSize,
       emptyMessageTextStyle:
           emptyMessageTextStyle ?? this.emptyMessageTextStyle,
@@ -88,9 +114,10 @@ final class MyoroTableV2ThemeExtension
     if (other is! MyoroTableV2ThemeExtension) return this;
     return copyWith(
       decoration: BoxDecoration.lerp(decoration, other.decoration, t),
-      titleColumnTextStyle: TextStyle.lerp(
-        titleColumnTextStyle,
-        other.titleColumnTextStyle,
+      columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
+      titleCellTextStyle: TextStyle.lerp(
+        titleCellTextStyle,
+        other.titleCellTextStyle,
         t,
       ),
       loaderSize: lerpDouble(loaderSize, other.loaderSize, t),
@@ -113,7 +140,7 @@ final class MyoroTableV2ThemeExtension
     return other is MyoroTableV2ThemeExtension &&
         other.runtimeType == runtimeType &&
         other.decoration == decoration &&
-        other.titleColumnTextStyle == titleColumnTextStyle &&
+        other.titleCellTextStyle == titleCellTextStyle &&
         other.loaderSize == loaderSize &&
         other.errorMessageTextStyle == errorMessageTextStyle &&
         other.dialogPadding == dialogPadding;
@@ -123,7 +150,7 @@ final class MyoroTableV2ThemeExtension
   int get hashCode {
     return Object.hash(
       decoration,
-      titleColumnTextStyle,
+      titleCellTextStyle,
       loaderSize,
       errorMessageTextStyle,
       dialogPadding,
@@ -134,7 +161,7 @@ final class MyoroTableV2ThemeExtension
   String toString() =>
       'MyoroTableV2ThemeExtension(\n'
       '  decoration: $decoration,\n'
-      '  titleColumnTextStyle: $titleColumnTextStyle,\n'
+      '  titleCellTextStyle: $titleCellTextStyle,\n'
       '  loaderSize: $loaderSize,\n'
       '  errorMessageTextStyle: $errorMessageTextStyle,\n'
       '  dialogPadding: $dialogPadding,\n'

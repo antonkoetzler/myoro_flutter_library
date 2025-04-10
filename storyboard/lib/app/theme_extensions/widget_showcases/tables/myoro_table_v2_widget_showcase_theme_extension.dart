@@ -4,22 +4,22 @@ import 'package:storyboard/storyboard.dart';
 /// [ThemeExtension] of [MyoroTableV2WidgetShowcase].
 final class MyoroTableV2WidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroTableV2WidgetShowcaseThemeExtension> {
-  /// [EdgeInsets] of a [_TitleColumn].
-  final EdgeInsets titleColumnPadding;
+  /// [EdgeInsets] of a [_TitleCell].
+  final EdgeInsets titleCellPadding;
 
   const MyoroTableV2WidgetShowcaseThemeExtension({
-    required this.titleColumnPadding,
+    required this.titleCellPadding,
   });
 
   const MyoroTableV2WidgetShowcaseThemeExtension.builder()
-    : titleColumnPadding = const EdgeInsets.all(10);
+    : titleCellPadding = const EdgeInsets.all(10);
 
   @override
   MyoroTableV2WidgetShowcaseThemeExtension copyWith({
-    EdgeInsets? titleColumnPadding,
+    EdgeInsets? titleCellPadding,
   }) {
     return MyoroTableV2WidgetShowcaseThemeExtension(
-      titleColumnPadding: titleColumnPadding ?? this.titleColumnPadding,
+      titleCellPadding: titleCellPadding ?? this.titleCellPadding,
     );
   }
 
@@ -30,9 +30,9 @@ final class MyoroTableV2WidgetShowcaseThemeExtension
   ) {
     if (other is! MyoroTableV2WidgetShowcaseThemeExtension) return this;
     return copyWith(
-      titleColumnPadding: EdgeInsets.lerp(
-        titleColumnPadding,
-        other.titleColumnPadding,
+      titleCellPadding: EdgeInsets.lerp(
+        titleCellPadding,
+        other.titleCellPadding,
         t,
       ),
     );
