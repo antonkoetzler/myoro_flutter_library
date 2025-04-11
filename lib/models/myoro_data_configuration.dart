@@ -4,6 +4,10 @@ import 'package:faker/faker.dart';
 typedef MyoroDataConfigurationRequest<T> =
     Future<List<T>> Function(Map<String, dynamic> filters);
 
+1. Delete this model;
+2. Make a proper pagination model with all final fields (copyWith dependent);
+3. Refactor the widgets using this model to have a request field returning a pagination model.
+
 /// A model to represent the requesting, pagination, & filtering of data.
 final class MyoroDataConfiguration<T> {
   /// Static items.
