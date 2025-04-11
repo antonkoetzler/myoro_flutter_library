@@ -49,7 +49,7 @@ final class _Widget extends StatelessWidget {
   }
 
   Future<List<String>> _asyncronousItems(_) async {
-    await Future.delayed(const Duration(milliseconds: 1500));
+    await Future.delayed(const Duration(milliseconds: 500));
     return List.generate(
       faker.randomGenerator.integer(100),
       (int index) => '#$index: ${faker.lorem.word()}',
