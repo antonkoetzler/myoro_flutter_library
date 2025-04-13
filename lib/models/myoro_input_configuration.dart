@@ -211,7 +211,6 @@ final class MyoroInputConfiguration extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroInputConfiguration(\n'
       '  inputStyle: $inputStyle,\n'
       '  textAlign: $textAlign,\n'

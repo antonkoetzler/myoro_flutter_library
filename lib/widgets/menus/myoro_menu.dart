@@ -38,6 +38,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     super.initState();
     _bloc = MyoroMenuBloc(_configuration);
     _supplyController();
+    _controller.fetch();
     if (_configuration.onEndReachedRequest != null) {
       _scrollController.addListener(_scrollControllerListener);
     }
@@ -61,17 +62,20 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     final themeExtension =
         context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
-    return Container(
-      decoration: BoxDecoration(
-        color: themeExtension.primaryColor,
-        border: themeExtension.border,
-        borderRadius: themeExtension.borderRadius,
-      ),
-      child: ConstrainedBox(
-        constraints: _configuration.constraints,
-        child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
-          buildWhen: _buildWhen,
-          builder: _builder,
+    return BlocProvider.value(
+      value: _bloc,
+      child: Container(
+        decoration: BoxDecoration(
+          color: themeExtension.primaryColor,
+          border: themeExtension.border,
+          borderRadius: themeExtension.borderRadius,
+        ),
+        child: ConstrainedBox(
+          constraints: _configuration.constraints,
+          child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
+            buildWhen: _buildWhen,
+            builder: _builder,
+          ),
         ),
       ),
     );
@@ -121,7 +125,14 @@ final class _Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: MyoroCircularLoader());
+    final themeExtension =
+        context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    return Center(
+      child: Padding(
+        padding: themeExtension.dialogTextLoaderPadding,
+        child: const MyoroCircularLoader(),
+      ),
+    );
   }
 }
 
@@ -178,6 +189,7 @@ final class _Items<T> extends StatelessWidget {
           Flexible(
             child: ListView.builder(
               controller: _scrollController,
+              shrinkWrap: true,
               itemCount: itemWidgets.length,
               itemBuilder: (_, int index) => itemWidgets[index],
             ),
@@ -255,13 +267,18 @@ final class _DialogText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension =
+        context.resolveThemeExtension<MyoroMenuThemeExtension>();
     return Center(
-      child: Text(
-        _text,
-        style:
-            context
-                .resolveThemeExtension<MyoroMenuThemeExtension>()
-                .dialogTextStyle,
+      child: Padding(
+        padding: themeExtension.dialogTextLoaderPadding,
+        child: Text(
+          _text,
+          style:
+              context
+                  .resolveThemeExtension<MyoroMenuThemeExtension>()
+                  .dialogTextStyle,
+        ),
       ),
     );
   }

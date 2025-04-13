@@ -12,7 +12,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.byType(MyoroForm), findsOneWidget);
+    expect(find.byType(MyoroForm<Object>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>

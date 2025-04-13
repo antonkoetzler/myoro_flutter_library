@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myoro_flutter_library/blocs/myoro_resolver_bloc/myoro_resolver_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroResolver].

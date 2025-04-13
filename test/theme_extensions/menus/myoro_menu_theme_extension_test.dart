@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Unit test of [MyoroMenuThemeExtension].
 void main() {
   late final MyoroMenuThemeExtension themeExtension1;
   late final MyoroMenuThemeExtension themeExtension2;
@@ -15,22 +14,24 @@ void main() {
   });
 
   test('MyoroMenuThemeExtension.copyWith', () {
-    MyoroMenuThemeExtension copiedThemeExtension = themeExtension1.copyWith();
-    expect(copiedThemeExtension, themeExtension1);
-    copiedThemeExtension = themeExtension1.copyWith(
-      primaryColor: themeExtension2.primaryColor,
-      border: themeExtension2.border,
-      borderRadius: themeExtension2.borderRadius,
-      searchBarPadding: themeExtension2.searchBarPadding,
-      searchBarInputStyle: themeExtension2.searchBarInputStyle,
-      itemBorderRadius: themeExtension2.itemBorderRadius,
-      dialogTextStyle: themeExtension2.dialogTextStyle,
+    expect(themeExtension1.copyWith(), themeExtension1);
+    expect(
+      themeExtension1.copyWith(
+        primaryColor: themeExtension2.primaryColor,
+        border: themeExtension2.border,
+        borderRadius: themeExtension2.borderRadius,
+        searchBarPadding: themeExtension2.searchBarPadding,
+        searchBarInputStyle: themeExtension2.searchBarInputStyle,
+        itemBorderRadius: themeExtension2.itemBorderRadius,
+        dialogTextStyle: themeExtension2.dialogTextStyle,
+        dialogTextLoaderPadding: themeExtension2.dialogTextLoaderPadding,
+      ),
+      themeExtension2,
     );
-    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroMenuThemeExtension.lerp', () {
-    for (double i = 0; i < faker.randomGenerator.decimal(); i += 0.1) {
+    for (double i = 0; i < 1; i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
@@ -84,6 +85,30 @@ void main() {
           i,
         ),
       );
+      expect(
+        lerpedThemeExtension.dialogTextLoaderPadding,
+        EdgeInsets.lerp(
+          themeExtension1.dialogTextLoaderPadding,
+          themeExtension2.dialogTextLoaderPadding,
+          i,
+        ),
+      );
     }
+  });
+
+  test('MyoroMenuThemeExtension.toString', () {
+    expect(
+      themeExtension1.toString(),
+      'MyoroMenuThemeExtension(\n'
+      '  primaryColor: ${themeExtension1.primaryColor},\n'
+      '  border: ${themeExtension1.border},\n'
+      '  borderRadius: ${themeExtension1.borderRadius},\n'
+      '  searchBarPadding: ${themeExtension1.searchBarPadding},\n'
+      '  searchBarInputStyle: ${themeExtension1.searchBarInputStyle},\n'
+      '  itemBorderRadius: ${themeExtension1.itemBorderRadius},\n'
+      '  dialogTextStyle: ${themeExtension1.dialogTextStyle},\n'
+      '  dialogTextLoaderPadding: ${themeExtension1.dialogTextLoaderPadding},\n'
+      ');',
+    );
   });
 }

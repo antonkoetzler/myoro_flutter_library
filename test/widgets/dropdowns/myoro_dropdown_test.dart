@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
@@ -194,19 +195,21 @@ void _expectCalls(
 }
 
 final _standardSingularConfiguration = MyoroSingularDropdownConfiguration(
-  dataConfiguration: _dataConfiguration,
-  menuItemBuilder: _menuItemBuilder,
+  menuConfiguration: const MyoroMenuConfiguration(
+    itemBuilder: _itemBuilder,
+    request: _request,
+  ),
   selectedItemBuilder: _selectedItemBuilder,
 );
 
-final _dataConfiguration = MyoroDataConfiguration<String>(
-  staticItems: List.generate(
+Set<String> _request() {
+  return List.generate(
     faker.randomGenerator.integer(100),
     (int index) => '#$index ${faker.lorem.word()}',
-  ),
-);
+  ).toSet();
+}
 
-MyoroMenuItem _menuItemBuilder(String item) {
+MyoroMenuItem _itemBuilder(String item) {
   return MyoroMenuItem.fake().copyWith(text: item);
 }
 

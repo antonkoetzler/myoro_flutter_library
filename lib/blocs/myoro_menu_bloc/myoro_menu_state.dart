@@ -28,7 +28,7 @@ final class MyoroMenuState<T> extends Equatable {
     this.queriedItems,
     this.initialRequestMade = false,
   }) : assert(
-         status == MyoroRequestEnum.error && errorMessage != null,
+         !(status == MyoroRequestEnum.error && errorMessage == null),
          '[MyoroMenuState<$T>]: [status] cannot be [MyoroRequestEnum.error] '
          'when [errorMessage] is not null',
        );

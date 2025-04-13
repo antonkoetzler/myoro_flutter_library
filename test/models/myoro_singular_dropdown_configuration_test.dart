@@ -1,5 +1,7 @@
 import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
@@ -15,9 +17,7 @@ void main() {
         label: configuration2.label,
         enabled: configuration2.enabled,
         allowItemClearing: configuration2.allowItemClearing,
-        menuMaxHeight: configuration2.menuMaxHeight,
-        dataConfiguration: configuration2.dataConfiguration,
-        menuItemBuilder: configuration2.menuItemBuilder,
+        menuConfiguration: configuration2.menuConfiguration,
         selectedItemBuilder: configuration2.selectedItemBuilder,
         initiallySelectedItem: configuration2.initiallySelectedItem,
         initiallySelectedItemEnabled:
@@ -87,9 +87,7 @@ void main() {
       '  label: ${configuration1.label},\n'
       '  enabled: ${configuration1.enabled},\n'
       '  allowItemClearing: ${configuration1.allowItemClearing},\n'
-      '  menuMaxHeight: ${configuration1.menuMaxHeight},\n'
-      '  dataConfiguration: ${configuration1.dataConfiguration},\n'
-      '  menuItemBuilder: ${configuration1.menuItemBuilder},\n'
+      '  menuConfiguration: ${configuration1.menuConfiguration},\n'
       '  selectedItemBuilder: ${configuration1.selectedItemBuilder},\n'
       '  initiallySelectedItem: ${configuration1.initiallySelectedItem},\n'
       '  onChanged: ${configuration1.onChanged},\n'
@@ -101,22 +99,38 @@ void main() {
 }
 
 MyoroSingularDropdownConfiguration<String> _createConfiguration() {
-  final items = List.generate(
-    faker.randomGenerator.integer(9999),
-    (int index) => '#$index: ${faker.randomGenerator.string(50)}',
-  );
+  final minWidth = faker.randomGenerator.decimal(scale: 50);
+  final minHeight = faker.randomGenerator.decimal(scale: 50);
+
+  final items =
+      List.generate(
+        faker.randomGenerator.integer(9999),
+        (int index) => '#$index: ${faker.randomGenerator.string(50)}',
+      ).toSet();
 
   return MyoroSingularDropdownConfiguration(
     label: faker.randomGenerator.string(50, min: 0),
     enabled: faker.randomGenerator.boolean(),
     allowItemClearing: faker.randomGenerator.boolean(),
-    menuMaxHeight: faker.randomGenerator.decimal(),
-    dataConfiguration: MyoroDataConfiguration(staticItems: items),
-    menuItemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
+    menuConfiguration: MyoroMenuConfiguration(
+      controller:
+          faker.randomGenerator.boolean() ? MyoroMenuController() : null,
+      constraints: BoxConstraints(
+        minWidth: minWidth,
+        maxWidth: faker.randomGenerator.decimal(scale: 100, min: minWidth),
+        minHeight: minHeight,
+        maxHeight: faker.randomGenerator.decimal(scale: 100, min: minHeight),
+      ),
+      request: () => items,
+      onEndReachedRequest:
+          faker.randomGenerator.boolean() ? (_) => items : null,
+      searchCallback: faker.randomGenerator.boolean() ? (_, __) => items : null,
+      itemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
+    ),
     selectedItemBuilder: (String item) => item,
     initiallySelectedItem:
         faker.randomGenerator.boolean()
-            ? items[faker.randomGenerator.integer(items.length)]
+            ? items.toList()[faker.randomGenerator.integer(items.length)]
             : null,
     onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
     checkboxOnChanged: faker.randomGenerator.boolean() ? ((_, __) {}) : null,

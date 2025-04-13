@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Generic input widget.
@@ -15,7 +13,7 @@ final class MyoroInput extends StatefulWidget {
   /// Formatters of the input.
   ///
   /// Stored here rather than in [configuration] to have named constructors that preload formatters.
-  final TextInputFormatter? formatter;
+  final MyoroInputFormatter? formatter;
 
   /// Constructor for a generic input in which you may load any type of formatter or have no formatters.
   ///
@@ -25,89 +23,6 @@ final class MyoroInput extends StatefulWidget {
     this.configuration = const MyoroInputConfiguration(),
     this.formatter,
   });
-
-  static Finder finder({
-    MyoroInputConfiguration? configuration,
-    bool configurationEnabled = false,
-    MyoroInputStyleEnum? inputStyle,
-    bool inputStyleEnabled = false,
-    TextAlign? textAlign,
-    bool textAlignEnabled = false,
-    TextStyle? inputTextStyle,
-    bool inputTextStyleEnabled = false,
-    String? label,
-    bool labelEnabled = false,
-    String? placeholder,
-    bool placeholderEnabled = false,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleEnabled = false,
-    Widget? suffix,
-    bool suffixEnabled = false,
-    bool? enabled,
-    bool enabledEnabled = false,
-    bool? readOnly,
-    bool readOnlyEnabled = false,
-    bool? showClearTextButton,
-    bool showClearTextButtonEnabled = false,
-    MyoroInputCheckboxOnChanged? checkboxOnChanged,
-    bool checkboxOnChangedEnabled = false,
-    MyoroInputValidation? validation,
-    bool validationEnabled = false,
-    MyoroInputOnFieldSubmitted? onFieldSubmitted,
-    bool onFieldSubmittedEnabled = false,
-    MyoroInputOnChanged? onChanged,
-    bool onChangedEnabled = false,
-    VoidCallback? onCleared,
-    bool onClearedEnabled = false,
-    FocusNode? focusNode,
-    bool focusNodeEnabled = false,
-    TextEditingController? controller,
-    bool controllerEnabled = false,
-    TextInputFormatter? formatter,
-    bool formatterEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroInput &&
-          (configurationEnabled ? w.configuration == configuration : true) &&
-          (inputStyleEnabled
-              ? w.configuration.inputStyle == inputStyle
-              : true) &&
-          (textAlignEnabled ? w.configuration.textAlign == textAlign : true) &&
-          (inputTextStyleEnabled
-              ? w.configuration.inputTextStyle == inputTextStyle
-              : true) &&
-          (labelEnabled ? w.configuration.label == label : true) &&
-          (placeholderEnabled
-              ? w.configuration.placeholder == placeholder
-              : true) &&
-          (labelTextStyleEnabled
-              ? w.configuration.labelTextStyle == labelTextStyle
-              : true) &&
-          (suffixEnabled ? w.configuration.suffix == suffix : true) &&
-          (enabledEnabled ? w.configuration.enabled == enabled : true) &&
-          (readOnlyEnabled ? w.configuration.readOnly == readOnly : true) &&
-          (showClearTextButtonEnabled
-              ? w.configuration.showClearTextButton == showClearTextButton
-              : true) &&
-          (checkboxOnChangedEnabled
-              ? w.configuration.checkboxOnChanged == checkboxOnChanged
-              : true) &&
-          (validationEnabled
-              ? w.configuration.validation == validation
-              : true) &&
-          (onFieldSubmittedEnabled
-              ? w.configuration.onFieldSubmitted == onFieldSubmitted
-              : true) &&
-          (onChangedEnabled ? w.configuration.onChanged == onChanged : true) &&
-          (onClearedEnabled ? w.configuration.onCleared == onCleared : true) &&
-          (focusNodeEnabled ? w.configuration.focusNode == focusNode : true) &&
-          (controllerEnabled
-              ? w.configuration.controller == controller
-              : true) &&
-          (formatterEnabled ? w.formatter == formatter : true),
-    );
-  }
 
   /// An input that auto formats a date.
   factory MyoroInput.date({
@@ -159,7 +74,7 @@ final class MyoroInput extends StatefulWidget {
 
 final class _MyoroInputState extends State<MyoroInput> {
   MyoroInputConfiguration get _configuration => widget.configuration;
-  TextInputFormatter? get _formatter => widget.formatter;
+  MyoroInputFormatter? get _formatter => widget.formatter;
 
   TextEditingController? _localController;
   TextEditingController get _controller {
@@ -187,12 +102,8 @@ final class _MyoroInputState extends State<MyoroInput> {
     _controller.addListener(_listener);
     _enabled = _configuration.enabled ?? true;
     _showClearTextButtonNotifier = ValueNotifier(_showClearTextButton);
-
-    /// [MyoroInput.number] init configuration.
-    if (_formatter is MyoroNumberInputFormatter && _controller.text.isEmpty) {
-      final formatter = _formatter as MyoroNumberInputFormatter;
-      final text = formatter.min.toStringAsFixed(formatter.decimalPlaces);
-      _controller.text = text;
+    if (_formatter != null && _controller.text.isEmpty) {
+      _controller.text = _formatter!.initialText;
     }
   }
 
@@ -262,7 +173,7 @@ final class _Checkbox extends StatelessWidget {
 
 final class _TextFormField extends StatelessWidget {
   final MyoroInputConfiguration _configuration;
-  final TextInputFormatter? _formatter;
+  final MyoroInputFormatter? _formatter;
   final bool _enabled;
   final ValueNotifier<bool> _showClearTextButtonNotifier;
   final TextEditingController _controller;
@@ -330,23 +241,9 @@ final class _TextFormField extends StatelessWidget {
               suffixIcon:
                   showClearTextButton
                       ? _ClearTextButton(() {
-                        if (_formatter == null) {
-                          _controller.clear();
-                        } else {
-                          // TODO: This is breaking solid principles.
-                          if (_formatter is MyoroNumberInputFormatter) {
-                            _controller.text =
-                                (_formatter as MyoroNumberInputFormatter).min
-                                    .toString();
-                          } else if (_formatter is MyoroDateInputFormatter) {
-                            _controller.text = '00/00/0000';
-                          } else if (_formatter is MyoroTimeInputFormatter) {
-                            _controller.text =
-                                (_formatter as MyoroTimeInputFormatter)
-                                    .formatType
-                                    .emptyValue;
-                          }
-                        }
+                        _formatter == null
+                            ? _controller.clear()
+                            : _controller.text = _formatter!.initialText;
                         _configuration.onChanged?.call(_controller.text);
                         _configuration.onCleared?.call();
                       })

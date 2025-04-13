@@ -1,7 +1,9 @@
 import 'package:flutter/services.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [TextInputFormatter] to only accept numbers (integer/double) and only allow a range of numbers.
-final class MyoroNumberInputFormatter extends TextInputFormatter {
+final class MyoroNumberInputFormatter extends TextInputFormatter
+    implements MyoroInputFormatter {
   final double min;
   final double? max;
   final int decimalPlaces;
@@ -102,4 +104,7 @@ final class MyoroNumberInputFormatter extends TextInputFormatter {
   bool _isLessThenMin(double number) {
     return min > number;
   }
+
+  @override
+  String get initialText => min.toStringAsFixed(decimalPlaces);
 }

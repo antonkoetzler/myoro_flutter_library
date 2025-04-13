@@ -51,7 +51,8 @@ final class _Widget extends StatelessWidget {
     );
   }
 
-  Set<_Item> _request() {
+  Future<Set<_Item>> _request() async {
+    await Future.delayed(const Duration(milliseconds: 500));
     return List.generate(
       faker.randomGenerator.integer(50),
       (_) => (

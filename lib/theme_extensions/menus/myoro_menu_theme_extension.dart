@@ -26,6 +26,9 @@ final class MyoroMenuThemeExtension
   /// Text style of [_EmptyMenuDialog].
   final TextStyle dialogTextStyle;
 
+  /// [EdgeInsets] of [_DialogText] & [_Loader].
+  final EdgeInsets dialogTextLoaderPadding;
+
   const MyoroMenuThemeExtension({
     required this.primaryColor,
     required this.border,
@@ -34,6 +37,7 @@ final class MyoroMenuThemeExtension
     required this.searchBarInputStyle,
     required this.itemBorderRadius,
     required this.dialogTextStyle,
+    required this.dialogTextLoaderPadding,
   });
 
   MyoroMenuThemeExtension.fake()
@@ -52,7 +56,8 @@ final class MyoroMenuThemeExtension
       searchBarPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       searchBarInputStyle = MyoroInputStyleEnum.fake(),
       itemBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
-      dialogTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
+      dialogTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      dialogTextLoaderPadding = EdgeInsets.all(faker.randomGenerator.decimal());
 
   MyoroMenuThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,
@@ -64,7 +69,8 @@ final class MyoroMenuThemeExtension
       searchBarPadding = const EdgeInsets.all(10),
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
       itemBorderRadius = BorderRadius.zero,
-      dialogTextStyle = textTheme.bodyMedium!;
+      dialogTextStyle = textTheme.bodyMedium!,
+      dialogTextLoaderPadding = const EdgeInsets.all(15);
 
   @override
   MyoroMenuThemeExtension copyWith({
@@ -76,6 +82,7 @@ final class MyoroMenuThemeExtension
     MyoroInputStyleEnum? searchBarInputStyle,
     BorderRadius? itemBorderRadius,
     TextStyle? dialogTextStyle,
+    EdgeInsets? dialogTextLoaderPadding,
   }) {
     return MyoroMenuThemeExtension(
       primaryColor: primaryColor ?? this.primaryColor,
@@ -85,6 +92,8 @@ final class MyoroMenuThemeExtension
       searchBarInputStyle: searchBarInputStyle ?? this.searchBarInputStyle,
       itemBorderRadius: itemBorderRadius ?? this.itemBorderRadius,
       dialogTextStyle: dialogTextStyle ?? this.dialogTextStyle,
+      dialogTextLoaderPadding:
+          dialogTextLoaderPadding ?? this.dialogTextLoaderPadding,
     );
   }
 
@@ -118,6 +127,11 @@ final class MyoroMenuThemeExtension
         other.dialogTextStyle,
         t,
       ),
+      dialogTextLoaderPadding: EdgeInsets.lerp(
+        dialogTextLoaderPadding,
+        other.dialogTextLoaderPadding,
+        t,
+      ),
     );
   }
 
@@ -131,7 +145,8 @@ final class MyoroMenuThemeExtension
         other.searchBarPadding == searchBarPadding &&
         other.searchBarInputStyle == searchBarInputStyle &&
         other.itemBorderRadius == itemBorderRadius &&
-        other.dialogTextStyle == dialogTextStyle;
+        other.dialogTextStyle == dialogTextStyle &&
+        other.dialogTextLoaderPadding == dialogTextLoaderPadding;
   }
 
   @override
@@ -144,6 +159,20 @@ final class MyoroMenuThemeExtension
       searchBarInputStyle,
       itemBorderRadius,
       dialogTextStyle,
+      dialogTextLoaderPadding,
     );
   }
+
+  @override
+  String toString() =>
+      'MyoroMenuThemeExtension(\n'
+      '  primaryColor: $primaryColor,\n'
+      '  border: $border,\n'
+      '  borderRadius: $borderRadius,\n'
+      '  searchBarPadding: $searchBarPadding,\n'
+      '  searchBarInputStyle: $searchBarInputStyle,\n'
+      '  itemBorderRadius: $itemBorderRadius,\n'
+      '  dialogTextStyle: $dialogTextStyle,\n'
+      '  dialogTextLoaderPadding: $dialogTextLoaderPadding,\n'
+      ');';
 }

@@ -12,7 +12,8 @@
 - Fix `MyoroDropdown` tests
 
 1. (**FIN**) feature: Added `MyoroFontSizeEnum.extraLarge`
-1. (**IN PROGRESS**) improvment: `MyoroMenu`
+1. (**IN PROGRESS**) improvement: `MyoroMenu`
+1. (**IN PROGRESS**) improvement: Input formatters.
 1. chore: Remove `finder` functions
 1. chore: Add `==` override, `hashCode` and `toString` on all theme extensions;
 1. chore: 100% code coverage

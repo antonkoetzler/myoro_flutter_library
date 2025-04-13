@@ -28,7 +28,7 @@ void main() {
                 return List.generate(
                   faker.randomGenerator.integer(100, min: 1),
                   (_) => faker.lorem.word(),
-                );
+                ).toSet();
               },
               itemBuilder: (String item) => MyoroMenuItem(text: item),
             );
@@ -41,7 +41,7 @@ void main() {
     // [MyoroSearchInput].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Focus && w.child is MyoroForm<List<String>>,
+        (Widget w) => w is Focus && w.child is MyoroForm<Set<String>>,
       ),
       findsOneWidget,
     );

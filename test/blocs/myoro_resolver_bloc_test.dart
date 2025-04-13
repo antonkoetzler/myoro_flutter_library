@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc_test/bloc_test.dart';
+import 'package:myoro_flutter_library/blocs/myoro_resolver_bloc/myoro_resolver_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Unit test for [MyoroResolverBloc].
