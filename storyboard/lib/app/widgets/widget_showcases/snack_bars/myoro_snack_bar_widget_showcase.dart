@@ -94,6 +94,31 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
   late final MyoroSnackBarWidgetShowcaseBloc _bloc;
   final _controller = MyoroSingularDropdownController<MyoroSnackBarTypeEnum>();
 
+  @override
+  void initState() {
+    super.initState();
+    _bloc = context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MyoroSingularDropdown<MyoroSnackBarTypeEnum>(
+      configuration: MyoroSingularDropdownConfiguration(
+        label: '[MyoroSnackBar.snackBarType]',
+        menuConfiguration: MyoroMenuConfiguration(
+          request: MyoroSnackBarTypeEnum.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
+        selectedItemBuilder: _getSnackbarTypeName,
+        allowItemClearing: false,
+        initiallySelectedItem: _bloc.state.snackBarType,
+        onChanged:
+            (MyoroSnackBarTypeEnum? selectedItem) => _onChanged(selectedItem!),
+        controller: _controller,
+      ),
+    );
+  }
+
   String _getSnackbarTypeName(MyoroSnackBarTypeEnum snackBarType) {
     return switch (snackBarType) {
       MyoroSnackBarTypeEnum.standard => 'Standard',
@@ -109,33 +134,6 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
 
   void _onChanged(MyoroSnackBarTypeEnum snackBarTypes) {
     _bloc.add(SetSnackBarTypeEvent(snackBarTypes));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _bloc = context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final dataConfiguration = MyoroDataConfiguration(
-      staticItems: MyoroSnackBarTypeEnum.values,
-    );
-
-    return MyoroSingularDropdown<MyoroSnackBarTypeEnum>(
-      configuration: MyoroSingularDropdownConfiguration(
-        label: '[MyoroSnackBar.snackBarType]',
-        dataConfiguration: dataConfiguration,
-        menuItemBuilder: _itemBuilder,
-        selectedItemBuilder: _getSnackbarTypeName,
-        allowItemClearing: false,
-        initiallySelectedItem: _bloc.state.snackBarType,
-        onChanged:
-            (MyoroSnackBarTypeEnum? selectedItem) => _onChanged(selectedItem!),
-        controller: _controller,
-      ),
-    );
   }
 }
 

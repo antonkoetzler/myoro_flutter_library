@@ -66,23 +66,29 @@ final class _DirectionOption extends StatelessWidget {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Direction',
-        dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        menuItemBuilder:
-            (Axis direction) =>
-                MyoroMenuItem(text: _getDirectionName(direction)),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: Axis.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: Axis.horizontal,
-        onChanged:
-            (Axis? direction) => context
-                .resolveBloc<MyoroCarouselWidgetShowcaseBloc>()
-                .add(SetDirectionEvent(direction!)),
+        onChanged: (Axis? direction) => _onChanged(context, direction),
       ),
     );
   }
 
+  MyoroMenuItem _itemBuilder(Axis direction) {
+    return MyoroMenuItem(text: _getDirectionName(direction));
+  }
+
   String _getDirectionName(Axis direction) {
     return direction.isHorizontal ? 'Horizontal' : 'Vertical';
+  }
+
+  void _onChanged(BuildContext context, Axis? direction) {
+    final bloc = context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>();
+    bloc.add(SetDirectionEvent(direction!));
   }
 }
 

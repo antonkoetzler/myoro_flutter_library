@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myoro_flutter_library/blocs/myoro_form_bloc/myoro_form_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Validation function that is executed before [MyoroFormRequest].
@@ -46,7 +47,7 @@ final class MyoroForm<T> extends StatefulWidget {
   final MyoroFormOnError? onError;
 
   /// Builder of the content within the form.
-  final MyoroFormBuilder builder;
+  final MyoroFormBuilder<T> builder;
 
   const MyoroForm({
     super.key,
@@ -93,7 +94,7 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
   MyoroFormValidation? get _validation => widget.validation;
   MyoroFormOnSuccess<T>? get _onSuccess => widget.onSuccess;
   MyoroFormOnError? get _onError => widget.onError;
-  MyoroFormBuilder get _builder => widget.builder;
+  MyoroFormBuilder<T> get _builder => widget.builder;
 
   MyoroFormController? _localController;
   MyoroFormController get _controller {

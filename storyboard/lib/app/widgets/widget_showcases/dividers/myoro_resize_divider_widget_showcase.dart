@@ -84,20 +84,29 @@ final class _DirectionOption extends StatelessWidget {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroResizeDivider.direction]',
-        dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        menuItemBuilder:
-            (Axis direction) =>
-                MyoroMenuItem(text: _getDirectionName(direction)),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: Axis.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: bloc.state.direction,
-        onChanged: (Axis? direction) => bloc.add(SetDirectionEvent(direction!)),
+        onChanged: (Axis? direction) => _onChanged(context, direction),
       ),
     );
   }
 
+  MyoroMenuItem _itemBuilder(Axis direction) {
+    return MyoroMenuItem(text: _getDirectionName(direction));
+  }
+
   String _getDirectionName(Axis direction) {
     return direction.name[0].toUpperCase() + direction.name.substring(1);
+  }
+
+  void _onChanged(BuildContext context, Axis? direction) {
+    final bloc = context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
+    bloc.add(SetDirectionEvent(direction!));
   }
 }
 

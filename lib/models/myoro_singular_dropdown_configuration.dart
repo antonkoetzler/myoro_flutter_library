@@ -24,12 +24,10 @@ final class MyoroSingularDropdownConfiguration<T>
   checkboxOnChanged;
 
   const MyoroSingularDropdownConfiguration._({
-    super.label,
-    super.enabled,
-    super.allowItemClearing,
-    super.menuMaxHeight,
-    required super.dataConfiguration,
-    required super.menuItemBuilder,
+    required super.label,
+    required super.enabled,
+    required super.allowItemClearing,
+    required super.menuConfiguration,
     required super.selectedItemBuilder,
     required this.initiallySelectedItem,
     required this.onChanged,
@@ -42,9 +40,7 @@ final class MyoroSingularDropdownConfiguration<T>
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing =
         MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-    double? menuMaxHeight,
-    required MyoroDataConfiguration<T> dataConfiguration,
-    required MyoroMenuItemBuilder<T> menuItemBuilder,
+    required MyoroMenuConfiguration<T> menuConfiguration,
     required MyoroDropdownConfigurationSelectedItemBuilder<T>
     selectedItemBuilder,
     T? initiallySelectedItem,
@@ -56,10 +52,7 @@ final class MyoroSingularDropdownConfiguration<T>
       label: label,
       enabled: enabled,
       allowItemClearing: allowItemClearing,
-      menuMaxHeight:
-          menuMaxHeight ?? MyoroDropdownConfiguration.menuMaxHeightDefaultValue,
-      dataConfiguration: dataConfiguration,
-      menuItemBuilder: menuItemBuilder,
+      menuConfiguration: menuConfiguration,
       selectedItemBuilder: selectedItemBuilder,
       initiallySelectedItem: initiallySelectedItem,
       onChanged: onChanged,
@@ -73,9 +66,7 @@ final class MyoroSingularDropdownConfiguration<T>
     String? label,
     bool? enabled,
     bool? allowItemClearing,
-    double? menuMaxHeight,
-    MyoroDataConfiguration<T>? dataConfiguration,
-    MyoroMenuItemBuilder<T>? menuItemBuilder,
+    MyoroMenuConfiguration<T>? menuConfiguration,
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
     T? initiallySelectedItem,
     bool initiallySelectedItemEnabled = true,
@@ -89,9 +80,7 @@ final class MyoroSingularDropdownConfiguration<T>
       label: label ?? this.label,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
-      menuMaxHeight: menuMaxHeight ?? this.menuMaxHeight,
-      dataConfiguration: dataConfiguration ?? this.dataConfiguration,
-      menuItemBuilder: menuItemBuilder ?? this.menuItemBuilder,
+      menuConfiguration: menuConfiguration ?? this.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
       initiallySelectedItem:
           initiallySelectedItemEnabled
@@ -134,13 +123,12 @@ final class MyoroSingularDropdownConfiguration<T>
       label,
       enabled,
       allowItemClearing,
-      menuMaxHeight,
-      dataConfiguration,
-      menuItemBuilder,
+      menuConfiguration,
       selectedItemBuilder,
       initiallySelectedItem,
       onChanged,
       checkboxOnChanged,
+      // Breaks comparisons.
       // controller,
     ];
   }
@@ -151,9 +139,7 @@ final class MyoroSingularDropdownConfiguration<T>
       '  label: $label,\n'
       '  enabled: $enabled,\n'
       '  allowItemClearing: $allowItemClearing,\n'
-      '  menuMaxHeight: $menuMaxHeight,\n'
-      '  dataConfiguration: $dataConfiguration,\n'
-      '  menuItemBuilder: $menuItemBuilder,\n'
+      '  menuConfiguration: $menuConfiguration,\n'
       '  selectedItemBuilder: $selectedItemBuilder,\n'
       '  initiallySelectedItem: $initiallySelectedItem,\n'
       '  onChanged: $onChanged,\n'

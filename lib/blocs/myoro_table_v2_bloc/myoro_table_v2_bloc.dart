@@ -15,25 +15,48 @@ final class MyoroTableV2Bloc<T>
     extends Bloc<MyoroTableV2Event<T>, MyoroTableV2State<T>> {
   late final MyoroTableV2Configuration<T> _configuration;
 
-  MyoroDataConfiguration<T> get _dataConfiguration {
-    return _configuration.dataConfiguration;
-  }
-
   MyoroTableV2Bloc(MyoroTableV2Configuration<T> configuration)
-    : super(MyoroTableV2State<T>()) {
+    : super(MyoroTableV2State<T>(pagination: MyoroTableV2Pagination())) {
     _configuration = configuration;
 
     on<FetchEvent<T>>((event, emit) async => await _fetchEvent(event, emit));
+    on<AddFiltersEvent<T>>(_addFiltersEvent);
+    on<RemoveFiltersEvent<T>>(_removeFiltersEvent);
+    on<ClearFiltersEvent<T>>(_clearFiltersEvent);
   }
 
   Future<void> _fetchEvent(FetchEvent<T> event, _Emitter<T> emit) async {
-    await _treatExceptions(emit, event, () async {
-      final List<T> items = await _dataConfiguration.items;
-      emit(state.copyWith(status: MyoroRequestEnum.success, items: items));
+    await _treatRequest(emit, event, () async {
+      final MyoroTableV2Pagination<T> pagination = await _configuration
+          .paginationBuilder(state.filters);
+      emit(
+        state.copyWith(
+          status: MyoroRequestEnum.success,
+          pagination: pagination,
+        ),
+      );
     });
   }
 
-  Future<void> _treatExceptions(
+  void _addFiltersEvent(AddFiltersEvent<T> event, _Emitter<T> emit) {
+    emit(
+      state.copyWith(filters: Set.from(state.filters)..addAll(event.filters)),
+    );
+  }
+
+  void _removeFiltersEvent(RemoveFiltersEvent<T> event, _Emitter<T> emit) {
+    emit(
+      state.copyWith(
+        filters: Set.from(state.filters)..removeAll(event.filters),
+      ),
+    );
+  }
+
+  void _clearFiltersEvent(ClearFiltersEvent<T> event, _Emitter<T> emit) {
+    emit(state.copyWith(filters: const {}));
+  }
+
+  Future<void> _treatRequest(
     _Emitter<T> emit,
     MyoroTableV2Event<T> event,
     Function() function,

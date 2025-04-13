@@ -1,59 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myoro_flutter_library/blocs/myoro_menu_bloc/myoro_menu_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-
-/// Returns a [List<T>] of the filtered items given the query.
-typedef MyoroMenuSearchCallback<T> =
-    List<T> Function(String query, List<T> items);
-
-/// [MyoroMenuItem] builder from a generic object.
-typedef MyoroMenuItemBuilder<T> = MyoroMenuItem Function(T item);
 
 /// A menu widget that should not be used in production code, it is used
 /// within [_MyoroDropdown] & [MyoroInput] similar to the software dmenu.
-final class MyoroMenu<T> extends StatelessWidget {
-  /// Constraints of the menu.
-  final BoxConstraints? constraints;
+final class MyoroMenu<T> extends StatefulWidget {
+  /// Configuration options.
+  final MyoroMenuConfiguration<T> configuration;
 
-  /// Search callback that:
-  /// 1. Places a searchbar at the top of the items;
-  /// 2. Returns a [List<T>] of the filtered items given the query.
-  final MyoroMenuSearchCallback<T>? searchCallback;
+  const MyoroMenu({super.key, required this.configuration});
 
-  /// Items in the menu.
-  final MyoroDataConfiguration<T> dataConfiguration;
+  @override
+  State<MyoroMenu<T>> createState() => _MyoroMenuState<T>();
+}
 
-  /// Menu item builder.
-  final MyoroMenuItemBuilder<T> itemBuilder;
+final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
+  MyoroMenuConfiguration<T> get _configuration => widget.configuration;
 
-  const MyoroMenu({
-    super.key,
-    this.constraints,
-    this.searchCallback,
-    required this.dataConfiguration,
-    required this.itemBuilder,
-  });
+  MyoroMenuController<T>? _localController;
+  MyoroMenuController<T> get _controller {
+    return _configuration.controller ??
+        (_localController ??= MyoroMenuController());
+  }
 
-  static Finder finder<T>({
-    BoxConstraints? constraints,
-    bool constraintsEnabled = false,
-    MyoroMenuSearchCallback<T>? searchCallback,
-    bool searchCallbackEnabled = false,
-    MyoroDataConfiguration<T>? dataConfiguration,
-    bool dataConfigurationEnabled = false,
-    MyoroMenuItemBuilder<T>? itemBuilder,
-    bool itemBuilderEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroMenu<T> &&
-          (constraintsEnabled ? w.constraints == constraints : true) &&
-          (searchCallbackEnabled ? w.searchCallback == searchCallback : true) &&
-          (dataConfigurationEnabled
-              ? w.dataConfiguration == dataConfiguration
-              : true) &&
-          (itemBuilderEnabled ? w.itemBuilder == itemBuilder : true),
-    );
+  /// [Bloc] of the [MyoroMenu].
+  late final MyoroMenuBloc<T> _bloc;
+
+  /// To call [MyoroMenuConfiguration.onEndReachedRequest].
+  final _scrollController = ScrollController();
+
+  /// Last position of [_scrollController] before [MyoroMenuConfiguration.onEndReachedRequest].
+  double? _onEndReachedPosition;
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = MyoroMenuBloc(_configuration);
+    _supplyController();
+    if (_configuration.onEndReachedRequest != null) {
+      _scrollController.addListener(_scrollControllerListener);
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant MyoroMenu<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _supplyController();
+  }
+
+  @override
+  void dispose() {
+    _bloc.close();
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -68,26 +68,51 @@ final class MyoroMenu<T> extends StatelessWidget {
         borderRadius: themeExtension.borderRadius,
       ),
       child: ConstrainedBox(
-        constraints: constraints ?? const BoxConstraints(),
-        child: MyoroResolver(
-          request: () async => await dataConfiguration.items,
-          builder: (List<T>? items, MyoroRequestEnum status, _, __) {
-            return switch (status) {
-              MyoroRequestEnum.idle => const _Loader(),
-              MyoroRequestEnum.loading => const _Loader(),
-              MyoroRequestEnum.success => _Items(
-                searchCallback,
-                itemBuilder,
-                items!,
-              ),
-              MyoroRequestEnum.error => const _DialogText(
-                'Error getting items.',
-              ),
-            };
-          },
+        constraints: _configuration.constraints,
+        child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
+          buildWhen: _buildWhen,
+          builder: _builder,
         ),
       ),
     );
+  }
+
+  void _supplyController() {
+    _controller.bloc = _bloc;
+  }
+
+  void _scrollControllerListener() {
+    final ScrollPosition position = _scrollController.position;
+    final double pixels = position.pixels;
+    final double maxScrollExtent = position.maxScrollExtent;
+    if (pixels != maxScrollExtent) return;
+    _onEndReachedPosition = pixels;
+    _controller.fetch();
+  }
+
+  bool _buildWhen(MyoroMenuState<T> previous, MyoroMenuState<T> current) {
+    return previous.status != current.status;
+  }
+
+  Widget _builder(_, MyoroMenuState<T> state) {
+    // Jump to the last position of the list before
+    // calling [MyoroMenuConfiguration.onEndReachedRequest].
+    if (state.status.isSuccess && _onEndReachedPosition != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollController.jumpTo(_onEndReachedPosition!);
+      });
+    }
+
+    return switch (state.status) {
+      MyoroRequestEnum.idle => const _Loader(),
+      MyoroRequestEnum.loading => const _Loader(),
+      MyoroRequestEnum.success => _Items(
+        _controller,
+        _configuration,
+        _scrollController,
+      ),
+      MyoroRequestEnum.error => const _DialogText('Error getting items.'),
+    };
   }
 }
 
@@ -95,36 +120,17 @@ final class _Loader extends StatelessWidget {
   const _Loader();
 
   @override
-  Widget build(BuildContext context) =>
-      const Center(child: MyoroCircularLoader());
-}
-
-final class _Items<T> extends StatefulWidget {
-  final MyoroMenuSearchCallback<T>? _searchCallback;
-  final MyoroMenuItemBuilder<T> _itemBuilder;
-  final List<T> _items;
-
-  const _Items(this._searchCallback, this._itemBuilder, this._items);
-
-  @override
-  State<_Items<T>> createState() => _ItemsState<T>();
-}
-
-final class _ItemsState<T> extends State<_Items<T>> {
-  MyoroMenuSearchCallback<T>? get _searchCallback => widget._searchCallback;
-  MyoroMenuItemBuilder<T> get _itemBuilder => widget._itemBuilder;
-  List<Widget> get _itemWidgets =>
-      _items.map<Widget>((T item) => _Item(_itemBuilder.call(item))).toList();
-
-  late List<T> _items = widget._items;
-
-  void _onSearch(String query) {
-    if (query.isEmpty) {
-      setState(() => _items = List.from(widget._items));
-      return;
-    }
-    setState(() => _items = _searchCallback!.call(query, widget._items));
+  Widget build(BuildContext context) {
+    return const Center(child: MyoroCircularLoader());
   }
+}
+
+final class _Items<T> extends StatelessWidget {
+  final MyoroMenuController<T> _controller;
+  final MyoroMenuConfiguration<T> _configuration;
+  final ScrollController _scrollController;
+
+  const _Items(this._controller, this._configuration, this._scrollController);
 
   @override
   Widget build(BuildContext context) {
@@ -142,41 +148,52 @@ final class _ItemsState<T> extends State<_Items<T>> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (_searchCallback != null) _SearchBar(_onSearch),
-          if (_items.isNotEmpty) ...[
-            Flexible(
-              child: SingleChildScrollView(
-                child: Column(children: _itemWidgets),
-              ),
+          if (_configuration.searchCallback != null) _SearchBar(_controller),
+          Flexible(
+            child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
+              buildWhen: _buildWhen,
+              builder: _builder,
             ),
-          ] else ...[
-            const Flexible(child: _DialogText('No items to display.')),
-          ],
+          ),
         ],
       ),
     );
   }
-}
 
-final class _SearchBar<T> extends StatefulWidget {
-  final void Function(String query) _onChanged;
-
-  const _SearchBar(this._onChanged);
-
-  @override
-  State<_SearchBar<T>> createState() => _SearchBarState<T>();
-}
-
-final class _SearchBarState<T> extends State<_SearchBar<T>> {
-  void Function(String query) get _onChanged => widget._onChanged;
-
-  final _focusNode = FocusNode();
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
+  bool _buildWhen(MyoroMenuState<T> previous, MyoroMenuState<T> current) {
+    return previous.queriedItems != current.queriedItems;
   }
+
+  Widget _builder(_, MyoroMenuState<T> state) {
+    final items = state.queriedItems ?? state.items;
+    final itemWidgets =
+        items
+            .map<Widget>((T item) => _Item(_configuration.itemBuilder(item)))
+            .toList();
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (items.isNotEmpty) ...[
+          Flexible(
+            child: ListView.builder(
+              controller: _scrollController,
+              itemCount: itemWidgets.length,
+              itemBuilder: (_, int index) => itemWidgets[index],
+            ),
+          ),
+        ] else ...[
+          const Flexible(child: _DialogText('No items to display.')),
+        ],
+      ],
+    );
+  }
+}
+
+final class _SearchBar<T> extends StatelessWidget {
+  final MyoroMenuController<T> _controller;
+
+  const _SearchBar(this._controller);
 
   @override
   Widget build(BuildContext context) {
@@ -187,9 +204,9 @@ final class _SearchBarState<T> extends State<_SearchBar<T>> {
       padding: themeExtension.searchBarPadding,
       child: MyoroInput(
         configuration: MyoroInputConfiguration(
-          focusNode: _focusNode..requestFocus(),
           inputStyle: themeExtension.searchBarInputStyle,
-          onChanged: _onChanged,
+          autofocus: true,
+          onChanged: _controller.search,
         ),
       ),
     );

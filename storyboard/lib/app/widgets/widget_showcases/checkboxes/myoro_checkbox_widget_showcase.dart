@@ -68,7 +68,6 @@ final class _LabelTextStyleOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final typographyInstance = MyoroTypographyDesignSystem.instance;
-    late final textStyles = typographyInstance.allTextStyles;
 
     return SizedBox(
       width:
@@ -81,19 +80,26 @@ final class _LabelTextStyleOption extends StatelessWidget {
         configuration: MyoroSingularDropdownConfiguration(
           label: '[MyoroCheckbox.labelTextStyle]',
           allowItemClearing: false,
-          dataConfiguration: MyoroDataConfiguration(staticItems: textStyles),
-          menuItemBuilder:
-              (TextStyle textStyle) => MyoroMenuItem(
-                text: typographyInstance.getTextStyleName(textStyle),
-              ),
+          menuConfiguration: MyoroMenuConfiguration(
+            request: typographyInstance.allTextStyles.toSet,
+            itemBuilder: _itemBuilder,
+          ),
           selectedItemBuilder: typographyInstance.getTextStyleName,
           initiallySelectedItem: typographyInstance.italicSmall,
-          onChanged:
-              (TextStyle? textStyle) => context
-                  .resolveBloc<MyoroCheckboxWidgetShowcaseBloc>()
-                  .add(SetLabelTextStyleEvent(textStyle!)),
+          onChanged: (TextStyle? textStyle) => _onChanged(context, textStyle),
         ),
       ),
+    );
+  }
+
+  MyoroMenuItem _itemBuilder(TextStyle textStyle) {
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
+    return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
+  }
+
+  void _onChanged(BuildContext context, TextStyle? textStyle) {
+    context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(
+      SetLabelTextStyleEvent(textStyle!),
     );
   }
 }

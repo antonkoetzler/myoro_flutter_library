@@ -1,19 +1,23 @@
 part of 'myoro_table_v2_bloc.dart';
 
 final class MyoroTableV2State<T> extends Equatable {
-  /// Standard request enum to fetch [items].
+  /// Standard request enum to fetch [pagination].
   final MyoroRequestEnum status;
 
-  /// Standard error message if there is an error fetching [items].
+  /// Standard error message if there is an error fetching [pagination].
   final String? errorMessage;
 
+  /// Filters being used when generating [pagination].
+  final Set<MyoroFilter> filters;
+
   /// Items of the [MyoroTableV2].
-  final List<T> items;
+  final MyoroTableV2Pagination<T> pagination;
 
   const MyoroTableV2State({
     this.status = MyoroRequestEnum.idle,
     this.errorMessage,
-    this.items = const [],
+    this.filters = const {},
+    required this.pagination,
   }) : assert(
          !(status == MyoroRequestEnum.error && errorMessage == null),
          '[MyoroTableV2State<$T>]: [status] cannot be '
@@ -23,18 +27,20 @@ final class MyoroTableV2State<T> extends Equatable {
   MyoroTableV2State<T> copyWith({
     MyoroRequestEnum? status,
     String? errorMessage,
-    List<T>? items,
+    Set<MyoroFilter>? filters,
+    MyoroTableV2Pagination<T>? pagination,
   }) {
     return MyoroTableV2State(
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
-      items: items ?? this.items,
+      filters: filters ?? this.filters,
+      pagination: pagination ?? this.pagination,
     );
   }
 
   @override
   List<Object?> get props {
-    return [status, errorMessage, items];
+    return [status, errorMessage, filters, pagination];
   }
 
   @override
@@ -42,6 +48,7 @@ final class MyoroTableV2State<T> extends Equatable {
       'MyoroTableV2State<$T>(\n'
       '  status: $status,\n'
       '  errorMessage: $errorMessage,\n'
-      '  items: $items,\n'
+      '  filters: $filters,\n'
+      '  pagination: $pagination,\n'
       ');';
 }

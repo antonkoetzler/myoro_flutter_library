@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Singular item dropdown.
@@ -435,11 +436,10 @@ final class _Menu<T> extends StatelessWidget {
           child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
             builder: (_, MyoroDropdownState<T> state) {
               return MyoroMenu(
-                constraints: BoxConstraints(
-                  maxHeight: _configuration.menuMaxHeight,
+                configuration: _configuration.menuConfiguration.copyWith(
+                  itemBuilder:
+                      (T item) => _menuItemBuilder(context, state, item),
                 ),
-                dataConfiguration: _configuration.dataConfiguration,
-                itemBuilder: (T item) => _menuItemBuilder(context, state, item),
               );
             },
           ),
@@ -453,8 +453,8 @@ final class _Menu<T> extends StatelessWidget {
     MyoroDropdownState<T> state,
     T item,
   ) {
-    return _configuration
-        .menuItemBuilder(item)
+    return _configuration.menuConfiguration
+        .itemBuilder(item)
         .copyWith(
           isHovered: state.selectedItems.contains(item),
           onPressed: () => _configuration.controller.toggleItem(item),

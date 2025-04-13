@@ -26,10 +26,6 @@ final class MyoroMenuWidgetShowcase extends StatelessWidget {
 final class _Widget extends StatelessWidget {
   const _Widget();
 
-  List<_Item> _searchCallback(String query, List<_Item> items) {
-    return items.where((_Item item) => item.$2.contains(query)).toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<
@@ -38,30 +34,39 @@ final class _Widget extends StatelessWidget {
     >(
       builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu<_Item>(
-          constraints: BoxConstraints(
-            minWidth: state.minWidth ?? 0,
-            maxWidth: state.maxWidth ?? double.infinity,
-            minHeight: state.minHeight ?? 0,
-            maxHeight: state.maxHeight ?? double.infinity,
-          ),
-          searchCallback: state.searchCallbackEnabled ? _searchCallback : null,
-          dataConfiguration: MyoroDataConfiguration(
-            staticItems: List.generate(
-              faker.randomGenerator.integer(50),
-              (_) => (
-                kMyoroTestIcons[faker.randomGenerator.integer(
-                  kMyoroTestIcons.length,
-                )],
-                faker.person.name(),
-              ),
+          configuration: MyoroMenuConfiguration(
+            constraints: BoxConstraints(
+              minWidth: state.minWidth ?? 0,
+              maxWidth: state.maxWidth ?? double.infinity,
+              minHeight: state.minHeight ?? 0,
+              maxHeight: state.maxHeight ?? double.infinity,
             ),
+            searchCallback:
+                state.searchCallbackEnabled ? _searchCallback : null,
+            request: _request,
+            itemBuilder: _itemBuilder,
           ),
-          itemBuilder:
-              (_Item item) =>
-                  MyoroMenuItem(icon: item.$1, text: item.$2, onPressed: () {}),
         );
       },
     );
+  }
+
+  Set<_Item> _request() {
+    return List.generate(
+      faker.randomGenerator.integer(50),
+      (_) => (
+        kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+        faker.person.name(),
+      ),
+    ).toSet();
+  }
+
+  Set<_Item> _searchCallback(String query, Set<_Item> items) {
+    return items.where((_Item item) => item.$2.contains(query)).toSet();
+  }
+
+  MyoroMenuItem _itemBuilder(_Item item) {
+    return MyoroMenuItem(icon: item.$1, text: item.$2, onPressed: () {});
   }
 }
 

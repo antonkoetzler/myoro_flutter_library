@@ -7,8 +7,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] of [MyoroTableV2].
 final class MyoroTableV2ThemeExtension
     extends ThemeExtension<MyoroTableV2ThemeExtension> {
-  /// [BoxDecoration] of the [Container] in [_MyoroTableV2State].
-  final BoxDecoration decoration;
+  /// [Container.decoration] of [_Table].
+  final BoxDecoration tableDecoration;
 
   /// Spacing between columns without dividers.
   final double columnSpacing;
@@ -29,7 +29,7 @@ final class MyoroTableV2ThemeExtension
   final EdgeInsets dialogPadding;
 
   const MyoroTableV2ThemeExtension({
-    required this.decoration,
+    required this.tableDecoration,
     required this.columnSpacing,
     required this.titleCellTextStyle,
     required this.loaderSize,
@@ -41,7 +41,7 @@ final class MyoroTableV2ThemeExtension
   factory MyoroTableV2ThemeExtension.fake() {
     final typography = MyoroTypographyDesignSystem.instance;
     return MyoroTableV2ThemeExtension(
-      decoration: BoxDecoration(
+      tableDecoration: BoxDecoration(
         color:
             kMyoroTestColors[faker.randomGenerator.integer(
               kMyoroTestColors.length,
@@ -63,7 +63,7 @@ final class MyoroTableV2ThemeExtension
     final TextStyle headlineLarge = textTheme.headlineLarge!;
 
     return MyoroTableV2ThemeExtension(
-      decoration: BoxDecoration(
+      tableDecoration: BoxDecoration(
         color: colorScheme.primary,
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
         border: Border.all(
@@ -85,7 +85,7 @@ final class MyoroTableV2ThemeExtension
 
   @override
   MyoroTableV2ThemeExtension copyWith({
-    BoxDecoration? decoration,
+    BoxDecoration? tableDecoration,
     double? columnSpacing,
     TextStyle? titleCellTextStyle,
     double? loaderSize,
@@ -94,7 +94,7 @@ final class MyoroTableV2ThemeExtension
     EdgeInsets? dialogPadding,
   }) {
     return MyoroTableV2ThemeExtension(
-      decoration: decoration ?? this.decoration,
+      tableDecoration: tableDecoration ?? this.tableDecoration,
       columnSpacing: columnSpacing ?? this.columnSpacing,
       titleCellTextStyle: titleCellTextStyle ?? this.titleCellTextStyle,
       loaderSize: loaderSize ?? this.loaderSize,
@@ -113,7 +113,11 @@ final class MyoroTableV2ThemeExtension
   ) {
     if (other is! MyoroTableV2ThemeExtension) return this;
     return copyWith(
-      decoration: BoxDecoration.lerp(decoration, other.decoration, t),
+      tableDecoration: BoxDecoration.lerp(
+        tableDecoration,
+        other.tableDecoration,
+        t,
+      ),
       columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
       titleCellTextStyle: TextStyle.lerp(
         titleCellTextStyle,
@@ -139,7 +143,7 @@ final class MyoroTableV2ThemeExtension
   bool operator ==(Object other) {
     return other is MyoroTableV2ThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.decoration == decoration &&
+        other.tableDecoration == tableDecoration &&
         other.titleCellTextStyle == titleCellTextStyle &&
         other.loaderSize == loaderSize &&
         other.errorMessageTextStyle == errorMessageTextStyle &&
@@ -149,7 +153,7 @@ final class MyoroTableV2ThemeExtension
   @override
   int get hashCode {
     return Object.hash(
-      decoration,
+      tableDecoration,
       titleCellTextStyle,
       loaderSize,
       errorMessageTextStyle,
@@ -160,7 +164,7 @@ final class MyoroTableV2ThemeExtension
   @override
   String toString() =>
       'MyoroTableV2ThemeExtension(\n'
-      '  decoration: $decoration,\n'
+      '  tableDecoration: $tableDecoration,\n'
       '  titleCellTextStyle: $titleCellTextStyle,\n'
       '  loaderSize: $loaderSize,\n'
       '  errorMessageTextStyle: $errorMessageTextStyle,\n'

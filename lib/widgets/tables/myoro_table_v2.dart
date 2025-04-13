@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myoro_flutter_library/blocs/myoro_table_v2_bloc/myoro_table_v2_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Table of MFL.
@@ -51,27 +52,39 @@ final class _MyoroTableV2State<T> extends State<MyoroTableV2<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableV2ThemeExtension>();
-
     return BlocProvider.value(
       value: _bloc,
-      child: Container(
-        decoration: themeExtension.decoration,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _TitleCells(_configuration, _titleCellKeys),
-            Flexible(child: _RowsSection(_configuration, _titleCellKeys)),
-          ],
-        ),
-      ),
+      child: _Table(_configuration, _titleCellKeys),
     );
   }
 
   void _initializeTitleCellKeys() {
     _titleCellKeys =
         _configuration.titleCells.map<GlobalKey>((_) => GlobalKey()).toList();
+  }
+}
+
+/// The actual table of [MyoroTableV2].
+final class _Table<T> extends StatelessWidget {
+  final MyoroTableV2Configuration<T> _configuration;
+  final List<GlobalKey> _titleCellKeys;
+
+  const _Table(this._configuration, this._titleCellKeys);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableV2ThemeExtension>();
+    return Container(
+      decoration: themeExtension.tableDecoration,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _TitleCells(_configuration, _titleCellKeys),
+          Flexible(child: _RowsSection(_configuration, _titleCellKeys)),
+        ],
+      ),
+    );
   }
 }
 
@@ -211,7 +224,7 @@ final class _RowsSection<T> extends StatelessWidget {
       MyoroRequestEnum.success => _Rows(
         _configuration,
         _titleCellKeys,
-        state.items,
+        state.pagination,
       ),
       MyoroRequestEnum.error => _ErrorMessage(state.errorMessage!),
     };
@@ -238,9 +251,9 @@ final class _Loader extends StatelessWidget {
 final class _Rows<T> extends StatefulWidget {
   final MyoroTableV2Configuration<T> _configuration;
   final List<GlobalKey> _titleCellKeys;
-  final List<T> _items;
+  final MyoroTableV2Pagination<T> _pagination;
 
-  const _Rows(this._configuration, this._titleCellKeys, this._items);
+  const _Rows(this._configuration, this._titleCellKeys, this._pagination);
 
   @override
   State<_Rows<T>> createState() => _RowsState<T>();
@@ -249,7 +262,7 @@ final class _Rows<T> extends StatefulWidget {
 final class _RowsState<T> extends State<_Rows<T>> {
   MyoroTableV2Configuration<T> get _configuration => widget._configuration;
   List<GlobalKey> get _titleCellKeys => widget._titleCellKeys;
-  List<T> get _items => widget._items;
+  MyoroTableV2Pagination<T> get _pagination => widget._pagination;
 
   final _scrollController = ScrollController();
 
@@ -261,7 +274,7 @@ final class _RowsState<T> extends State<_Rows<T>> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget._items.isEmpty) {
+    if (_items.isEmpty) {
       return const _EmptyMessage();
     }
 
@@ -330,6 +343,8 @@ final class _RowsState<T> extends State<_Rows<T>> {
 
     return builtCells;
   }
+
+  List<T> get _items => _pagination.items;
 }
 
 /// Empty message when there are no items to display.

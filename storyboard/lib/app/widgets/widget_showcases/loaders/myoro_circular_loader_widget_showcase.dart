@@ -67,10 +67,10 @@ final class _ColorOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Color',
         enabled: false,
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: kMyoroTestColors,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: kMyoroTestColors.toSet,
+          itemBuilder: _itemBuilder,
         ),
-        menuItemBuilder: _itemBuilder,
         selectedItemBuilder: _itemLabelBuilder,
         onChanged: (Color? color) => _onChanged(context, color),
       ),

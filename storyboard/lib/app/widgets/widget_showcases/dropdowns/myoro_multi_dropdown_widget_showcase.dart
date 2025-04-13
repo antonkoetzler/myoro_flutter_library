@@ -38,22 +38,6 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool staticallyLoaded = faker.randomGenerator.boolean();
-    final List<String> items = List.generate(
-      faker.randomGenerator.integer(50),
-      (int index) => '#$index: ${faker.randomGenerator.string(50)}',
-    );
-    final MyoroDataConfiguration<String> dataConfiguration =
-        MyoroDataConfiguration(
-          staticItems: staticallyLoaded ? items : null,
-          asyncronousItems:
-              staticallyLoaded
-                  ? null
-                  : (_) async => Future.delayed(
-                    const Duration(seconds: 1),
-                  ).then((_) => items),
-        );
-
     return BlocBuilder<
       MyoroDropdownWidgetShowcaseBloc,
       MyoroDropdownWidgetShowcaseState
@@ -64,9 +48,11 @@ final class _Widget extends StatelessWidget {
             label: state.label,
             enabled: state.enabled,
             allowItemClearing: state.allowItemClearing,
-            menuMaxHeight: state.menuMaxHeight,
-            dataConfiguration: dataConfiguration,
-            menuItemBuilder: _menuItemBuilder,
+            // TODO: Add widget showcase options for this.
+            menuConfiguration: MyoroMenuConfiguration(
+              request: _request,
+              itemBuilder: _itemBuilder,
+            ),
             selectedItemBuilder: _selectedItemBuilder,
             checkboxOnChanged:
                 state.checkboxOnChangedEnabled ? ((_, __) {}) : null,
@@ -76,7 +62,14 @@ final class _Widget extends StatelessWidget {
     );
   }
 
-  MyoroMenuItem _menuItemBuilder(String item) {
+  Set<String> _request() {
+    return List.generate(
+      faker.randomGenerator.integer(50),
+      (int index) => '#$index: ${faker.randomGenerator.string(50)}',
+    ).toSet();
+  }
+
+  MyoroMenuItem _itemBuilder(String item) {
     return MyoroMenuItem.fake().copyWith(text: item);
   }
 

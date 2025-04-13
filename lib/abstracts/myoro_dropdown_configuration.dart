@@ -29,14 +29,8 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
   /// If the clear button of [_Input]'s [MyoroInput] will be displayed.
   final bool allowItemClearing;
 
-  /// Max height of [_Menu].
-  final double menuMaxHeight;
-
-  /// Items of the menu.
-  final MyoroDataConfiguration<T> dataConfiguration;
-
-  /// [MyoroMenu.itemBuilder]. Builder for an item in the menu.
-  final MyoroMenuItemBuilder<T> menuItemBuilder;
+  /// [MyoroMenuConfiguration] of the [_Menu]'s [MyoroMenu].
+  final MyoroMenuConfiguration<T> menuConfiguration;
 
   /// Builder of the [String] displayed when a [T] item is selected.
   final MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder;
@@ -48,9 +42,7 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
     this.label = '',
     this.enabled = enabledDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
-    this.menuMaxHeight = menuMaxHeightDefaultValue,
-    required this.dataConfiguration,
-    required this.menuItemBuilder,
+    required this.menuConfiguration,
     required this.selectedItemBuilder,
     required this.controller,
   });

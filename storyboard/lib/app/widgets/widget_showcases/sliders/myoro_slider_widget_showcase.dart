@@ -185,6 +185,23 @@ final class _LabelOption extends StatelessWidget {
 final class _LabelTextStyleOption extends StatelessWidget {
   const _LabelTextStyleOption();
 
+  @override
+  Widget build(BuildContext context) {
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
+
+    return MyoroSingularDropdown<TextStyle>(
+      configuration: MyoroSingularDropdownConfiguration(
+        label: '[MyoroSlider.labelTextStyle]',
+        menuConfiguration: MyoroMenuConfiguration(
+          request: typographyInstance.allTextStyles.toSet,
+          itemBuilder: _itemBuilder,
+        ),
+        selectedItemBuilder: typographyInstance.getTextStyleName,
+        onChanged: (TextStyle? textStyles) => _onChanged(context, textStyles),
+      ),
+    );
+  }
+
   MyoroMenuItem _itemBuilder(TextStyle textStyle) {
     return MyoroMenuItem(
       text: MyoroTypographyDesignSystem.instance.getTextStyleName(textStyle),
@@ -194,24 +211,6 @@ final class _LabelTextStyleOption extends StatelessWidget {
   void _onChanged(BuildContext context, TextStyle? textStyle) {
     context.resolveBloc<MyoroSliderWidgetShowcaseBloc>().add(
       SetLabelTextStyleEvent(textStyle),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyDesignSystem.instance;
-    final dataConfiguration = MyoroDataConfiguration(
-      staticItems: typographyInstance.allTextStyles,
-    );
-
-    return MyoroSingularDropdown<TextStyle>(
-      configuration: MyoroSingularDropdownConfiguration(
-        label: '[MyoroSlider.labelTextStyle]',
-        dataConfiguration: dataConfiguration,
-        menuItemBuilder: _itemBuilder,
-        selectedItemBuilder: typographyInstance.getTextStyleName,
-        onChanged: (TextStyle? textStyles) => _onChanged(context, textStyles),
-      ),
     );
   }
 }

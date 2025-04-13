@@ -28,7 +28,7 @@ enum WidgetListingEnum {
   screens('Screens', [myoroScreenTitle]),
   sliders('Sliders', [myoroSliderTitle]),
   snackBars('Snack bars', [myoroSnackBarTitle]),
-  tables('Tables', [myoroTableTitle, myoroTableV2Title]),
+  tables('Tables', [myoroTableV2Title]),
   tooltips('Tooltips', [myoroTooltipTitle]);
 
   final String widgetCategory;
@@ -112,7 +112,6 @@ enum WidgetListingEnum {
   static const myoroSnackBarTitle = 'MyoroSnackBar';
 
   // Tables
-  static const myoroTableTitle = 'MyoroTable';
   static const myoroTableV2Title = 'MyoroTableV2';
 
   // Tooltips
@@ -195,7 +194,6 @@ enum WidgetListingEnum {
       myoroSnackBarTitle => const MyoroSnackBarWidgetShowcase(),
 
       // Tables
-      myoroTableTitle => const MyoroTableWidgetShowcase(),
       myoroTableV2Title => const MyoroTableV2WidgetShowcase(),
 
       // Tooltips

@@ -67,10 +67,10 @@ final class _IconOption extends StatelessWidget {
     return MyoroSingularDropdown<IconData>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Icon',
-        dataConfiguration: MyoroDataConfiguration(staticItems: kMyoroTestIcons),
-        menuItemBuilder:
-            (IconData icon) =>
-                MyoroMenuItem(icon: icon, text: _itemLabelBuilder(icon)),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: kMyoroTestIcons.toSet,
+          itemBuilder: _menuItemBuilder,
+        ),
         selectedItemBuilder: _itemLabelBuilder,
         initiallySelectedItem: bloc.state.icon,
         onChanged: (IconData? icon) => bloc.add(SetIconEvent(icon)),
@@ -80,6 +80,10 @@ final class _IconOption extends StatelessWidget {
 
   String _itemLabelBuilder(IconData icon) {
     return 'kMyoroTestIcons[${kMyoroTestIcons.indexOf(icon).toString()}]';
+  }
+
+  MyoroMenuItem _menuItemBuilder(IconData icon) {
+    return MyoroMenuItem(icon: icon, text: _itemLabelBuilder(icon));
   }
 }
 
@@ -177,19 +181,26 @@ final class _TextStyleOption extends StatelessWidget {
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Text style',
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: typographyInstance.allTextStyles,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: typographyInstance.allTextStyles.toSet,
+          itemBuilder: _itemBuilder,
         ),
-        menuItemBuilder:
-            (TextStyle textStyle) => MyoroMenuItem(
-              text: typographyInstance.getTextStyleName(textStyle),
-            ),
         selectedItemBuilder: typographyInstance.getTextStyleName,
         initiallySelectedItem: bloc.state.textStyle,
-        onChanged:
-            (TextStyle? textStyle) => bloc.add(SetTextStyleEvent(textStyle)),
+        onChanged: (TextStyle? textStyle) => _onChanged(context, textStyle),
       ),
     );
+  }
+
+  MyoroMenuItem _itemBuilder(TextStyle textStyle) {
+    final typographyInstance = MyoroTypographyDesignSystem.instance;
+    return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
+  }
+
+  void _onChanged(BuildContext context, TextStyle? textStyle) {
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    bloc.add(SetTextStyleEvent(textStyle));
   }
 }
 
@@ -204,17 +215,25 @@ final class _TextAlignOption extends StatelessWidget {
     return MyoroSingularDropdown<TextAlign>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Text alignment',
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: TextAlign.values,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: TextAlign.values.toSet,
+          itemBuilder: _itemBuilder,
         ),
-        menuItemBuilder:
-            (TextAlign textAlign) => MyoroMenuItem(text: textAlign.name),
         selectedItemBuilder: (TextAlign textAlign) => textAlign.name,
         initiallySelectedItem: bloc.state.textAlign,
-        onChanged:
-            (TextAlign? textAlign) => bloc.add(SetTextAlignEvent(textAlign)),
+        onChanged: (TextAlign? textAlign) => _onChanged(context, textAlign),
       ),
     );
+  }
+
+  MyoroMenuItem _itemBuilder(TextAlign textAlign) {
+    return MyoroMenuItem(text: textAlign.name);
+  }
+
+  void _onChanged(BuildContext context, TextAlign? textAlign) {
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    bloc.add(SetTextAlignEvent(textAlign));
   }
 }
 
@@ -275,20 +294,30 @@ final class _MainAxisAlignmentOption extends StatelessWidget {
     return MyoroSingularDropdown<MainAxisAlignment>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'MainAxisAlignment',
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: MainAxisAlignment.values,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: MainAxisAlignment.values.toSet,
+          itemBuilder: _itemBuilder,
         ),
-        menuItemBuilder:
-            (MainAxisAlignment mainAxisAlignment) =>
-                MyoroMenuItem(text: mainAxisAlignment.name),
-        selectedItemBuilder:
-            (MainAxisAlignment mainAxisAlignment) => mainAxisAlignment.name,
+        selectedItemBuilder: _selectedItemBuilder,
         initiallySelectedItem: bloc.state.mainAxisAlignment,
         onChanged:
-            (MainAxisAlignment? mainAxisAlignment) =>
-                bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment)),
+            (mainAxisAlignment) => _onChanged(context, mainAxisAlignment),
       ),
     );
+  }
+
+  MyoroMenuItem _itemBuilder(MainAxisAlignment mainAxisAlignment) {
+    return MyoroMenuItem(text: mainAxisAlignment.name);
+  }
+
+  String _selectedItemBuilder(MainAxisAlignment mainAxisAlignment) {
+    return mainAxisAlignment.name;
+  }
+
+  void _onChanged(BuildContext context, MainAxisAlignment? mainAxisAlignment) {
+    final bloc =
+        context.resolveBloc<MyoroIconTextHoverButtonWidgetShowcaseBloc>();
+    bloc.add(SetMainAxisAlignmentEvent(mainAxisAlignment));
   }
 }
 

@@ -77,29 +77,33 @@ final class _LabelOption extends StatelessWidget {
 final class _LabelTextStyleOption extends StatelessWidget {
   const _LabelTextStyleOption();
 
-  void _onChanged(BuildContext context, TextStyle? textStyle) {
-    context.resolveBloc<MyoroRadioWidgetShowcaseBloc>().add(
-      SetLabelTextStyleEvent(textStyle),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    final typographyInstance = MyoroTypographyDesignSystem.instance;
-
+    final typography = MyoroTypographyDesignSystem.instance;
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroRadio.labelTextStyle]',
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: typographyInstance.allTextStyles,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: typography.allTextStyles.toSet,
+          itemBuilder:
+              (TextStyle textStyle) => _itemBuilder(typography, textStyle),
         ),
-        menuItemBuilder:
-            (TextStyle textStyle) => MyoroMenuItem(
-              text: typographyInstance.getTextStyleName(textStyle),
-            ),
-        selectedItemBuilder: typographyInstance.getTextStyleName,
+        selectedItemBuilder: typography.getTextStyleName,
         onChanged: (TextStyle? textStyle) => _onChanged(context, textStyle),
       ),
+    );
+  }
+
+  MyoroMenuItem _itemBuilder(
+    MyoroTypographyDesignSystem typography,
+    TextStyle textStyle,
+  ) {
+    return MyoroMenuItem(text: typography.getTextStyleName(textStyle));
+  }
+
+  void _onChanged(BuildContext context, TextStyle? textStyle) {
+    context.resolveBloc<MyoroRadioWidgetShowcaseBloc>().add(
+      SetLabelTextStyleEvent(textStyle),
     );
   }
 }

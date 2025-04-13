@@ -236,6 +236,21 @@ final class _ColorDropdown extends StatelessWidget {
 
   const _ColorDropdown(this._label, this._onChanged);
 
+  @override
+  Widget build(BuildContext context) {
+    return MyoroSingularDropdown<Color>(
+      configuration: MyoroSingularDropdownConfiguration(
+        label: _label,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: kMyoroTestColors.toSet,
+          itemBuilder: _itemBuilder,
+        ),
+        selectedItemBuilder: _itemLabelBuilder,
+        onChanged: _onChanged,
+      ),
+    );
+  }
+
   MyoroMenuItem _itemBuilder(Color color) {
     return MyoroMenuItem(
       itemBuilder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
@@ -245,21 +260,6 @@ final class _ColorDropdown extends StatelessWidget {
   }
 
   String _itemLabelBuilder(Color color) => color.hexadecimalFormat;
-
-  @override
-  Widget build(BuildContext context) {
-    return MyoroSingularDropdown<Color>(
-      configuration: MyoroSingularDropdownConfiguration(
-        label: _label,
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: kMyoroTestColors,
-        ),
-        menuItemBuilder: _itemBuilder,
-        selectedItemBuilder: _itemLabelBuilder,
-        onChanged: _onChanged,
-      ),
-    );
-  }
 }
 
 final class _ColorDropdownItem extends StatelessWidget {

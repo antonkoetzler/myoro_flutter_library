@@ -296,6 +296,7 @@ final class _TextFormField extends StatelessWidget {
             ignorePointers: false,
             enabled: _enabled,
             readOnly: _configuration.readOnly ?? false,
+            autofocus: _configuration.autofocus ?? false,
             style: textStyle.withColor(
               textStyle.color!.withValues(
                 alpha: _enabled ? 1 : themeExtension.disabledOpacity,
@@ -332,6 +333,7 @@ final class _TextFormField extends StatelessWidget {
                         if (_formatter == null) {
                           _controller.clear();
                         } else {
+                          // TODO: This is breaking solid principles.
                           if (_formatter is MyoroNumberInputFormatter) {
                             _controller.text =
                                 (_formatter as MyoroNumberInputFormatter).min

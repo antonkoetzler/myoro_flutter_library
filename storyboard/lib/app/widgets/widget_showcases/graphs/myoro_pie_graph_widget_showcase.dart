@@ -94,18 +94,30 @@ final class _TypeEnumOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroPieGraph.typeEnum]',
         allowItemClearing: false,
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: MyoroPieGraphEnum.values,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: MyoroPieGraphEnum.values.toSet,
+          itemBuilder: _itemBuilder,
         ),
-        menuItemBuilder:
-            (MyoroPieGraphEnum typeEnum) => MyoroMenuItem(text: typeEnum.name),
-        selectedItemBuilder: (MyoroPieGraphEnum typeEnum) => typeEnum.name,
+        selectedItemBuilder: _selectedItemBuilder,
         initiallySelectedItem: bloc.state.typeEnum,
-        onChanged:
-            (MyoroPieGraphEnum? typeEnum) =>
-                bloc.add(SetTypeEnumEvent(typeEnum!)),
+        onChanged: (typeEnum) => _onChanged(bloc, typeEnum),
       ),
     );
+  }
+
+  MyoroMenuItem _itemBuilder(MyoroPieGraphEnum typeEnum) {
+    return MyoroMenuItem(text: typeEnum.name);
+  }
+
+  String _selectedItemBuilder(MyoroPieGraphEnum typeEnum) {
+    return typeEnum.name;
+  }
+
+  void _onChanged(
+    MyoroPieGraphWidgetShowcaseBloc bloc,
+    MyoroPieGraphEnum? typeEnum,
+  ) {
+    bloc.add(SetTypeEnumEvent(typeEnum!));
   }
 }
 

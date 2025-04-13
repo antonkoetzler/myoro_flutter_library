@@ -52,6 +52,9 @@ final class MyoroInputConfiguration extends Equatable {
   /// Whether the input can be editted by the user.
   final bool? readOnly;
 
+  /// Whether the input should focus when it is inserted into the widget tree.
+  final bool? autofocus;
+
   /// Whether to show [_ClearTextButton] or not.
   final bool? showClearTextButton;
 
@@ -93,6 +96,7 @@ final class MyoroInputConfiguration extends Equatable {
     this.suffix,
     this.enabled,
     this.readOnly,
+    this.autofocus,
     this.showClearTextButton,
     this.checkboxOnChanged,
     this.validation,
@@ -117,6 +121,7 @@ final class MyoroInputConfiguration extends Equatable {
       suffix = null,
       enabled = faker.randomGenerator.boolean(),
       readOnly = faker.randomGenerator.boolean(),
+      autofocus = faker.randomGenerator.boolean(),
       showClearTextButton = faker.randomGenerator.boolean(),
       checkboxOnChanged = null,
       validation = null,
@@ -129,42 +134,78 @@ final class MyoroInputConfiguration extends Equatable {
   MyoroInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
+    bool textAlignEnabled = true,
     TextStyle? inputTextStyle,
+    bool inputTextStyleEnabled = true,
     String? label,
+    bool labelEnabled = true,
     String? placeholder,
+    bool placeholderEnabled = true,
     TextStyle? labelTextStyle,
+    bool labelTextStyleEnabled = true,
     InputBorder? border,
+    bool borderEnabled = true,
     Widget? suffix,
+    bool suffixEnabled = true,
     bool? enabled,
+    bool enabledEnabled = true,
     bool? readOnly,
+    bool readOnlyEnabled = true,
+    bool? autofocus,
+    bool autofocusEnabled = true,
     bool? showClearTextButton,
+    bool showClearTextButtonEnabled = true,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedEnabled = true,
     MyoroInputValidation? validation,
+    bool validationEnabled = true,
     MyoroInputOnFieldSubmitted? onFieldSubmitted,
+    bool onFieldSubmittedEnabled = true,
     MyoroInputOnChanged? onChanged,
+    bool onChangedEnabled = true,
     VoidCallback? onCleared,
+    bool onClearedEnabled = true,
     FocusNode? focusNode,
+    bool focusNodeEnabled = true,
     TextEditingController? controller,
+    bool controllerEnabled = true,
   }) {
     return MyoroInputConfiguration(
       inputStyle: inputStyle ?? this.inputStyle,
-      textAlign: textAlign ?? this.textAlign,
-      inputTextStyle: inputTextStyle ?? this.inputTextStyle,
-      label: label ?? this.label,
-      placeholder: placeholder ?? this.placeholder,
-      labelTextStyle: labelTextStyle ?? this.labelTextStyle,
-      border: border ?? this.border,
-      suffix: suffix ?? this.suffix,
-      enabled: enabled ?? this.enabled,
-      readOnly: readOnly ?? this.readOnly,
-      showClearTextButton: showClearTextButton ?? this.showClearTextButton,
-      checkboxOnChanged: checkboxOnChanged ?? this.checkboxOnChanged,
-      validation: validation ?? this.validation,
-      onFieldSubmitted: onFieldSubmitted ?? this.onFieldSubmitted,
-      onChanged: onChanged ?? this.onChanged,
-      onCleared: onCleared ?? this.onCleared,
-      focusNode: focusNode ?? this.focusNode,
-      controller: controller ?? this.controller,
+      textAlign: textAlignEnabled ? (textAlign ?? this.textAlign) : null,
+      inputTextStyle:
+          inputTextStyleEnabled
+              ? (inputTextStyle ?? this.inputTextStyle)
+              : null,
+      label: labelEnabled ? (label ?? this.label) : null,
+      placeholder:
+          placeholderEnabled ? (placeholder ?? this.placeholder) : null,
+      labelTextStyle:
+          labelTextStyleEnabled
+              ? (labelTextStyle ?? this.labelTextStyle)
+              : null,
+      border: borderEnabled ? (border ?? this.border) : null,
+      suffix: suffixEnabled ? (suffix ?? this.suffix) : null,
+      enabled: enabledEnabled ? (enabled ?? this.enabled) : null,
+      readOnly: readOnlyEnabled ? (readOnly ?? this.readOnly) : null,
+      autofocus: autofocusEnabled ? (autofocus ?? this.autofocus) : null,
+      showClearTextButton:
+          showClearTextButtonEnabled
+              ? (showClearTextButton ?? this.showClearTextButton)
+              : null,
+      checkboxOnChanged:
+          checkboxOnChangedEnabled
+              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              : null,
+      validation: validationEnabled ? (validation ?? this.validation) : null,
+      onFieldSubmitted:
+          onFieldSubmittedEnabled
+              ? (onFieldSubmitted ?? this.onFieldSubmitted)
+              : null,
+      onChanged: onChangedEnabled ? (onChanged ?? this.onChanged) : null,
+      onCleared: onClearedEnabled ? (onCleared ?? this.onCleared) : null,
+      focusNode: focusNodeEnabled ? (focusNode ?? this.focusNode) : null,
+      controller: controllerEnabled ? (controller ?? this.controller) : null,
     );
   }
 
@@ -182,6 +223,7 @@ final class MyoroInputConfiguration extends Equatable {
       '  suffix: $suffix,\n'
       '  enabled: $enabled,\n'
       '  readOnly: $readOnly,\n'
+      '  autofocus: $autofocus,\n'
       '  showClearTextButton: $showClearTextButton,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
       '  validation: $validation,\n'
@@ -205,6 +247,7 @@ final class MyoroInputConfiguration extends Equatable {
       // suffix, ~ [Widget]s aren't great for comparison.
       enabled,
       readOnly,
+      autofocus,
       showClearTextButton,
       checkboxOnChanged,
       validation,

@@ -13,7 +13,7 @@ final class MyoroCardWidgetShowcaseThemeExtension
   final TextAlign titleOptionTextAlign;
 
   /// Available [TextStyle]s of [_TitleTextStyleOption].
-  final List<(String, TextStyle)> titleTextStyleOptionTextStyles;
+  final Set<(String, TextStyle)> titleTextStyleOptionTextStyles;
 
   const MyoroCardWidgetShowcaseThemeExtension({
     required this.inputStyle,
@@ -27,28 +27,29 @@ final class MyoroCardWidgetShowcaseThemeExtension
           TextAlign.values[faker.randomGenerator.integer(
             TextAlign.values.length,
           )],
-      titleTextStyleOptionTextStyles = List.generate(
-        faker.randomGenerator.integer(10),
-        (_) => (
-          faker.lorem.word(),
-          MyoroTypographyDesignSystem.instance.randomTextStyle,
-        ),
-      );
+      titleTextStyleOptionTextStyles =
+          List.generate(
+            faker.randomGenerator.integer(10),
+            (_) => (
+              faker.lorem.word(),
+              MyoroTypographyDesignSystem.instance.randomTextStyle,
+            ),
+          ).toSet();
 
   MyoroCardWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : inputStyle = MyoroInputStyleEnum.outlined,
       titleOptionTextAlign = TextAlign.center,
-      titleTextStyleOptionTextStyles = [
+      titleTextStyleOptionTextStyles = {
         ('Regular', textTheme.bodyMedium!),
         ('Italic', textTheme.headlineMedium!),
         ('Bold', textTheme.titleMedium!),
-      ];
+      };
 
   @override
   MyoroCardWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? titleOptionTextAlign,
-    List<(String, TextStyle)>? titleTextStyleOptionTextStyles,
+    Set<(String, TextStyle)>? titleTextStyleOptionTextStyles,
   }) {
     return MyoroCardWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,

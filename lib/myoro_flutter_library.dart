@@ -1,5 +1,4 @@
 export 'abstracts/exports.dart';
-export 'blocs/exports.dart';
 export 'controllers/exports.dart';
 export 'databases/exports.dart';
 export 'design_system/exports.dart';

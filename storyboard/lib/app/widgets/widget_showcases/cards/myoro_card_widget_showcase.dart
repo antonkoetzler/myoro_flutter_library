@@ -80,32 +80,34 @@ final class _TitleTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>();
+
     return MyoroSingularDropdown<(String, TextStyle)>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroCard.titleTextStyle]',
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems:
-              context
-                  .resolveThemeExtension<
-                    MyoroCardWidgetShowcaseThemeExtension
-                  >()
-                  .titleTextStyleOptionTextStyles,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: () => themeExtension.titleTextStyleOptionTextStyles,
+          itemBuilder: _itemBuilder,
         ),
-        menuItemBuilder:
-            ((String, TextStyle) textStyle) =>
-                MyoroMenuItem(text: textStyle.$1),
-        selectedItemBuilder: ((String, TextStyle) textStyle) => textStyle.$1,
-        onChanged: ((String, TextStyle)? textStyle) {
-          context.resolveBloc<MyoroCardWidgetShowcaseBloc>().add(
-            SetTitleTextStyleEvent(
-              textStyle != null
-                  ? textStyle.$2
-                  : context
-                      .resolveThemeExtension<MyoroCardThemeExtension>()
-                      .textStyle,
-            ),
-          );
-        },
+        selectedItemBuilder: (textStyle) => textStyle.$1,
+        onChanged: (textStyle) => _onChanged(context, textStyle),
+      ),
+    );
+  }
+
+  MyoroMenuItem _itemBuilder((String, TextStyle) textStyle) {
+    return MyoroMenuItem(text: textStyle.$1);
+  }
+
+  void _onChanged(BuildContext context, (String, TextStyle)? textStyle) {
+    final bloc = context.resolveBloc<MyoroCardWidgetShowcaseBloc>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCardThemeExtension>();
+
+    bloc.add(
+      SetTitleTextStyleEvent(
+        textStyle != null ? textStyle.$2 : themeExtension.textStyle,
       ),
     );
   }

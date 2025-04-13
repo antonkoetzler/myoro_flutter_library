@@ -108,25 +108,38 @@ final class _TitleTextStyleOption extends StatelessWidget {
         configuration: MyoroSingularDropdownConfiguration(
           label: '[MyoroDrawer.titleTextStyle]',
           enabled: false,
-          dataConfiguration: MyoroDataConfiguration(
-            staticItems: typographyInstance.allTextStyles,
+          menuConfiguration: MyoroMenuConfiguration(
+            request: typographyInstance.allTextStyles.toSet,
+            itemBuilder:
+                (textStyle) => _itemBuilder(typographyInstance, textStyle),
           ),
-          menuItemBuilder:
-              (TextStyle textStyle) => MyoroMenuItem(
-                text: typographyInstance.getTextStyleName(textStyle),
-              ),
-          selectedItemBuilder:
-              (TextStyle textStyle) =>
-                  typographyInstance.getTextStyleName(textStyle),
-          onChanged:
-              (TextStyle? textStyle) =>
-                  bloc.add(SetTitleTextStyleEvent(textStyle)),
+          selectedItemBuilder: typographyInstance.getTextStyleName,
+          onChanged: (textStyle) => _onChanged(bloc, textStyle),
           checkboxOnChanged:
-              (bool enabled, TextStyle? textStyle) =>
-                  bloc.add(SetTitleTextStyleEvent(enabled ? textStyle : null)),
+              (enabled, textStyle) =>
+                  _checkboxOnChanged(bloc, enabled, textStyle),
         ),
       ),
     );
+  }
+
+  MyoroMenuItem _itemBuilder(
+    MyoroTypographyDesignSystem typographyInstance,
+    TextStyle textStyle,
+  ) {
+    return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
+  }
+
+  void _onChanged(MyoroDrawerWidgetShowcaseBloc bloc, TextStyle? textStyle) {
+    bloc.add(SetTitleTextStyleEvent(textStyle));
+  }
+
+  void _checkboxOnChanged(
+    MyoroDrawerWidgetShowcaseBloc bloc,
+    bool enabled,
+    TextStyle? textStyle,
+  ) {
+    bloc.add(SetTitleTextStyleEvent(enabled ? textStyle : null));
   }
 }
 

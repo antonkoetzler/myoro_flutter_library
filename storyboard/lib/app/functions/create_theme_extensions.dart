@@ -190,10 +190,7 @@ List<ThemeExtension> _createSnackBarWidgetShowcaseThemeExtensions() {
 }
 
 List<ThemeExtension> _createTableWidgetShowcaseThemeExtensions() {
-  return const [
-    MyoroTableWidgetShowcaseThemeExtension.builder(),
-    MyoroTableV2WidgetShowcaseThemeExtension.builder(),
-  ];
+  return const [MyoroTableV2WidgetShowcaseThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createTooltipWidgetShowcaseThemeExtensions(

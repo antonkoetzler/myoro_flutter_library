@@ -206,23 +206,31 @@ final class _TextStyleOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final typographyInstance = MyoroTypographyDesignSystem.instance;
-    final bloc = context.resolveBloc<MyoroDialogModalWidgetShowcaseBloc>();
 
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroDialogModal.textStyle]',
-        dataConfiguration: MyoroDataConfiguration(
-          staticItems: typographyInstance.allTextStyles,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: typographyInstance.allTextStyles.toSet,
+          itemBuilder:
+              (textStyle) => _itemBuilder(typographyInstance, textStyle),
         ),
-        menuItemBuilder:
-            (TextStyle textStyle) => MyoroMenuItem(
-              text: typographyInstance.getTextStyleName(textStyle),
-            ),
         selectedItemBuilder: typographyInstance.getTextStyleName,
-        onChanged:
-            (TextStyle? textStyle) => bloc.add(SetTextStyleEvent(textStyle)),
+        onChanged: (textStyle) => _onChanged(context, textStyle),
       ),
     );
+  }
+
+  MyoroMenuItem _itemBuilder(
+    MyoroTypographyDesignSystem typographyInstance,
+    TextStyle textStyle,
+  ) {
+    return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
+  }
+
+  void _onChanged(BuildContext context, TextStyle? textStyle) {
+    final bloc = context.resolveBloc<MyoroDialogModalWidgetShowcaseBloc>();
+    bloc.add(SetTextStyleEvent(textStyle));
   }
 }
 

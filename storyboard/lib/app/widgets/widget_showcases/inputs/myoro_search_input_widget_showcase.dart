@@ -36,18 +36,23 @@ final class _Widget extends StatelessWidget {
             inputStyle: MyoroInputStyleEnum.outlined,
           ),
           requestWhenChanged: state.requestWhenChanged,
-          request: (_) async {
-            await Future.delayed(const Duration(milliseconds: 300));
-            return List.generate(
-              faker.randomGenerator.integer(50),
-              (_) => faker.randomGenerator.string(150),
-            );
-          },
-          itemBuilder:
-              (String item) => MyoroMenuItem(text: item, onPressed: () {}),
+          request: _request,
+          itemBuilder: _itemBuilder,
         );
       },
     );
+  }
+
+  Future<Set<String>> _request(_) async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    return List.generate(
+      faker.randomGenerator.integer(50),
+      (_) => faker.randomGenerator.string(150),
+    ).toSet();
+  }
+
+  MyoroMenuItem _itemBuilder(String item) {
+    return MyoroMenuItem(text: item, onPressed: () {});
   }
 }
 

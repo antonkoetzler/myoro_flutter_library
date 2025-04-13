@@ -19,6 +19,8 @@ final class MyoroDropdownWidgetShowcaseState extends Equatable {
   final bool checkboxOnChangedEnabled;
 
   /// [MyoroDropdownConfiguration.menuMaxHeight].
+  ///
+  /// TODO: Redo this and do [BoxConstraints].
   final double menuMaxHeight;
 
   const MyoroDropdownWidgetShowcaseState({

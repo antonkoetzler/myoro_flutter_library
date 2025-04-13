@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Request to be executed when the input is triggered;
-typedef MyoroSearchInputRequest<T> = FutureOr<List<T>> Function(String text);
+typedef MyoroSearchInputRequest<T> = FutureOr<Set<T>> Function(String text);
 
 /// Search input. Shows a dropdown after making a search request.
 final class MyoroSearchInput<T> extends StatefulWidget {
@@ -164,11 +164,15 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   Widget build(BuildContext context) {
     return Focus(
       focusNode: _focusNode,
-      child: MyoroForm<List<T>>(
+      child: MyoroForm<Set<T>>(
         controller: _formController,
         request: () async => await _request.call(_textController.text),
         onSuccess: (_) => _focusNode.requestFocus(),
-        builder: (results, status, controller) {
+        builder: (
+          Set<T>? results,
+          MyoroRequestEnum status,
+          MyoroFormController controller,
+        ) {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -252,7 +256,7 @@ final class _SearchButton extends StatelessWidget {
 }
 
 final class _SearchSection<T> extends StatelessWidget {
-  final List<T>? results;
+  final Set<T>? results;
   final MyoroMenuItemBuilder<T> itemBuilder;
 
   const _SearchSection(this.results, this.itemBuilder);
@@ -260,8 +264,10 @@ final class _SearchSection<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroMenu(
-      itemBuilder: itemBuilder,
-      dataConfiguration: MyoroDataConfiguration(staticItems: results!),
+      configuration: MyoroMenuConfiguration(
+        itemBuilder: itemBuilder,
+        request: () => results!,
+      ),
     );
   }
 }

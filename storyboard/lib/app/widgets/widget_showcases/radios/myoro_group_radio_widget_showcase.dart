@@ -93,18 +93,25 @@ final class _DirectionOptionState extends State<_DirectionOption> {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroGroupRadio.direction]',
-        dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
-        menuItemBuilder:
-            (Axis direction) =>
-                MyoroMenuItem(text: _getDirectionName(direction)),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: Axis.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: _bloc.state.direction,
-        onChanged:
-            (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
+        onChanged: _onChanged,
         controller: _controller,
       ),
     );
+  }
+
+  MyoroMenuItem _itemBuilder(Axis direction) {
+    return MyoroMenuItem(text: _getDirectionName(direction));
+  }
+
+  void _onChanged(Axis? direction) {
+    _bloc.add(SetDirectionEvent(direction!));
   }
 }
 

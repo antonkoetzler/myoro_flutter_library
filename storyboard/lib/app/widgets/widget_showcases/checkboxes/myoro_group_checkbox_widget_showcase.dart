@@ -61,24 +61,30 @@ final class _DirectionOptionState extends State<_DirectionOption> {
       context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
   final _controller = MyoroSingularDropdownController<Axis>();
 
-  String _directionName(Axis direction) =>
-      direction.isHorizontal ? 'Horizontal' : 'Vertical';
-
   @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroGroupCheckbox.direction]',
-        menuItemBuilder:
-            (Axis direction) => MyoroMenuItem(text: _directionName(direction)),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: Axis.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _directionName,
-        dataConfiguration: MyoroDataConfiguration(staticItems: Axis.values),
         initiallySelectedItem: _bloc.state.direction,
         onChanged:
             (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
         controller: _controller,
       ),
     );
+  }
+
+  String _directionName(Axis direction) {
+    return direction.isHorizontal ? 'Horizontal' : 'Vertical';
+  }
+
+  MyoroMenuItem _itemBuilder(Axis direction) {
+    return MyoroMenuItem(text: _directionName(direction));
   }
 }
 

@@ -23,12 +23,10 @@ final class MyoroMultiDropdownConfiguration<T>
   final MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
 
   const MyoroMultiDropdownConfiguration._({
-    super.label,
-    super.enabled,
-    super.allowItemClearing,
-    super.menuMaxHeight,
-    required super.dataConfiguration,
-    required super.menuItemBuilder,
+    required super.label,
+    required super.enabled,
+    required super.allowItemClearing,
+    required super.menuConfiguration,
     required super.selectedItemBuilder,
     required this.initiallySelectedItems,
     required this.onChanged,
@@ -41,9 +39,7 @@ final class MyoroMultiDropdownConfiguration<T>
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing =
         MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-    double? menuMaxHeight,
-    required MyoroDataConfiguration<T> dataConfiguration,
-    required MyoroMenuItemBuilder<T> menuItemBuilder,
+    required MyoroMenuConfiguration<T> menuConfiguration,
     required MyoroDropdownConfigurationSelectedItemBuilder<T>
     selectedItemBuilder,
     Set<T>? initiallySelectedItems,
@@ -55,10 +51,7 @@ final class MyoroMultiDropdownConfiguration<T>
       label: label,
       enabled: enabled,
       allowItemClearing: allowItemClearing,
-      menuMaxHeight:
-          menuMaxHeight ?? MyoroDropdownConfiguration.menuMaxHeightDefaultValue,
-      dataConfiguration: dataConfiguration,
-      menuItemBuilder: menuItemBuilder,
+      menuConfiguration: menuConfiguration,
       selectedItemBuilder: selectedItemBuilder,
       initiallySelectedItems: initiallySelectedItems ?? const {},
       onChanged: onChanged,
@@ -72,9 +65,7 @@ final class MyoroMultiDropdownConfiguration<T>
     String? label,
     bool? enabled,
     bool? allowItemClearing,
-    double? menuMaxHeight,
-    MyoroDataConfiguration<T>? dataConfiguration,
-    MyoroMenuItemBuilder<T>? menuItemBuilder,
+    MyoroMenuConfiguration<T>? menuConfiguration,
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
     Set<T>? initiallySelectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
@@ -87,9 +78,7 @@ final class MyoroMultiDropdownConfiguration<T>
       label: label ?? this.label,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
-      menuMaxHeight: menuMaxHeight ?? this.menuMaxHeight,
-      dataConfiguration: dataConfiguration ?? this.dataConfiguration,
-      menuItemBuilder: menuItemBuilder ?? this.menuItemBuilder,
+      menuConfiguration: menuConfiguration ?? this.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
       initiallySelectedItems:
           initiallySelectedItems ?? this.initiallySelectedItems,
@@ -129,13 +118,12 @@ final class MyoroMultiDropdownConfiguration<T>
       label,
       enabled,
       allowItemClearing,
-      menuMaxHeight,
-      dataConfiguration,
-      menuItemBuilder,
+      menuConfiguration,
       selectedItemBuilder,
       initiallySelectedItems,
       onChanged,
       checkboxOnChanged,
+      // Breaks comparisons.
       // controller,
     ];
   }
@@ -146,9 +134,7 @@ final class MyoroMultiDropdownConfiguration<T>
       '  label: $label,\n'
       '  enabled: $enabled,\n'
       '  allowItemClearing: $allowItemClearing,\n'
-      '  menuMaxHeight: $menuMaxHeight,\n'
-      '  dataConfiguration: $dataConfiguration,\n'
-      '  menuItemBuilder: $menuItemBuilder,\n'
+      '  menuConfiguration: $menuConfiguration,\n'
       '  selectedItemBuilder: $selectedItemBuilder,\n'
       '  initialSelectedItem: $initiallySelectedItems,\n'
       '  onChanged: $onChanged,\n'

@@ -1,11 +1,22 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function that builds a [MyoroTableV2Row] to then be rendered.
 typedef MyoroTableV2RowBuilder<T> = MyoroTableV2Row<T> Function(T item);
 
+/// Function that gathers the [MyoroTableV2Pagination] of the [MyoroTableV2].
+///
+/// Passes the [List] of [MyoroFilter]s that was applied to get the previous [MyoroTableV2Pagination].
+typedef MyoroTableV2ConfigurationPaginationRequest<T> =
+    FutureOr<MyoroTableV2Pagination<T>> Function(Set<MyoroFilter> filters);
+
 /// Configuration model for [MyoroTableV2].
 final class MyoroTableV2Configuration<T> extends Equatable {
+  static const showPageNumberControlDefaultValue = false;
+  static const showItemsPerPageControlDefaultValue = false;
+
   /// [MyoroTableV2Controller] of the [MyoroTableV2].
   final MyoroTableV2Controller<T>? controller;
 
@@ -15,14 +26,14 @@ final class MyoroTableV2Configuration<T> extends Equatable {
   /// Function that builds a [MyoroTableV2Row] to then be rendered.
   final MyoroTableV2RowBuilder<T> rowBuilder;
 
-  /// [MyoroDataConfiguration] of the [MyoroTableV2].
-  final MyoroDataConfiguration<T> dataConfiguration;
+  /// [MyoroTableV2Pagination] of the [MyoroTableV2].
+  final MyoroTableV2ConfigurationPaginationRequest<T> paginationBuilder;
 
   MyoroTableV2Configuration({
     this.controller,
     required this.titleCells,
     required this.rowBuilder,
-    required this.dataConfiguration,
+    required this.paginationBuilder,
   }) : assert(
          titleCells.isNotEmpty,
          '[MyoroTableV2]: [titleCells] cannot be empty',
@@ -32,19 +43,19 @@ final class MyoroTableV2Configuration<T> extends Equatable {
     MyoroTableV2Controller<T>? controller,
     List<MyoroTableV2Column>? titleCells,
     MyoroTableV2RowBuilder<T>? rowBuilder,
-    MyoroDataConfiguration<T>? dataConfiguration,
+    MyoroTableV2ConfigurationPaginationRequest<T>? paginationBuilder,
   }) {
     return MyoroTableV2Configuration(
       controller: controller ?? this.controller,
       titleCells: titleCells ?? this.titleCells,
       rowBuilder: rowBuilder ?? this.rowBuilder,
-      dataConfiguration: dataConfiguration ?? this.dataConfiguration,
+      paginationBuilder: paginationBuilder ?? this.paginationBuilder,
     );
   }
 
   @override
   List<Object?> get props {
-    return [controller, titleCells, rowBuilder, dataConfiguration];
+    return [controller, titleCells, rowBuilder, paginationBuilder];
   }
 
   @override
@@ -53,6 +64,6 @@ final class MyoroTableV2Configuration<T> extends Equatable {
       '  controller: $controller,\n'
       '  titleCells: $titleCells,\n'
       '  rowBuilder: $rowBuilder,\n'
-      '  dataConfiguration: $dataConfiguration,\n'
+      '  paginationBuilder: $paginationBuilder,\n'
       ');';
 }
