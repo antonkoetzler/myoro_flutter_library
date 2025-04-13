@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the hover of the button changes.
-typedef MyoroHoverButtonOnHover = Function(bool hovered);
+typedef MyoroHoverButtonOnHover = void Function(bool hovered);
 
 /// Configuration model for passing the configuration members of [MyoroHoverButton].
 final class MyoroHoverButtonConfiguration extends Equatable {

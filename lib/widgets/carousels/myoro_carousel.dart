@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Slider carousel.
@@ -32,36 +31,6 @@ final class MyoroCarousel extends StatefulWidget {
     this.autoplayIntervalDuration = kMyoroCarouselAutoplayIntervalDuration,
     required this.items,
   });
-
-  static Finder finder({
-    Axis? direction,
-    bool directionEnabled = false,
-    bool? displayTraversalButtons,
-    bool displayTraversalButtonsEnabled = false,
-    int? initialItem,
-    bool initialItemEnabled = false,
-    bool? autoplay,
-    bool autoplayEnabled = false,
-    Duration? autoplayIntervalDuration,
-    bool autoplayIntervalDurationEnabled = false,
-    List<Widget>? items,
-    bool itemsEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroCarousel &&
-          (directionEnabled ? w.direction == direction : true) &&
-          (displayTraversalButtonsEnabled
-              ? w.displayTraversalButtons == displayTraversalButtons
-              : true) &&
-          (initialItemEnabled ? w.initialItem == initialItem : true) &&
-          (autoplayEnabled ? w.autoplay == autoplay : true) &&
-          (autoplayIntervalDurationEnabled
-              ? w.autoplayIntervalDuration == autoplayIntervalDuration
-              : true) &&
-          (itemsEnabled ? w.items == items : true),
-    );
-  }
 
   @override
   State<MyoroCarousel> createState() => _MyoroCarouselState();

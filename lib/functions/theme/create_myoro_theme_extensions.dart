@@ -182,7 +182,7 @@ List<ThemeExtension> _createMyoroTableThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
-  return [MyoroTableV2ThemeExtension.builder(colorScheme, textTheme)];
+  return [MyoroTableThemeExtension.builder(colorScheme, textTheme)];
 }
 
 List<ThemeExtension> _createMyoroTooltipThemeExtensions() {

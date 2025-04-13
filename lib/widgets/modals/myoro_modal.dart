@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base modal. Every modal should be implementing [MyoroModal] like so.
@@ -25,41 +24,6 @@ final class MyoroModal extends StatelessWidget {
 
   /// Private constructor to force [show] to be used.
   const MyoroModal._(this.configuration, this.child);
-
-  static Finder finder({
-    MyoroModalConfiguration? configuration,
-    bool configurationEnabled = false,
-    bool? barrierDismissable,
-    bool barrierDismissableEnabled = false,
-    BoxConstraints? constraints,
-    bool constraintsEnabled = false,
-    VoidCallback? onClosed,
-    bool onClosedEnabled = false,
-    String? title,
-    bool titleEnabled = false,
-    bool? showCloseButton,
-    bool showCloseButtonEnabled = false,
-    Widget? child,
-    bool childEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroModal &&
-          (configurationEnabled ? w.configuration == configuration : true) &&
-          (barrierDismissableEnabled
-              ? w.configuration?.barrierDismissable == barrierDismissable
-              : true) &&
-          (constraintsEnabled
-              ? w.configuration?.constraints == constraints
-              : true) &&
-          (onClosedEnabled ? w.configuration?.onClosed == onClosed : true) &&
-          (titleEnabled ? w.configuration?.title == title : true) &&
-          (showCloseButtonEnabled
-              ? w.configuration?.showCloseButton == showCloseButton
-              : true) &&
-          (childEnabled ? w.child == child : true),
-    );
-  }
 
   /// Function that opens the modal.
   static Future<void> show(

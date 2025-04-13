@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 /// Callback to pass the current [BoxConstraints] of the [MyoroLayoutBuilder].
 typedef MyoroLayoutBuilderConstraintsCallback =
@@ -25,17 +24,6 @@ final class MyoroLayoutBuilder extends StatefulWidget {
   final MyoroLayoutBuilderChildCallback builder;
 
   const MyoroLayoutBuilder({super.key, required this.builder});
-
-  static Finder finder({
-    MyoroLayoutBuilderChildCallback? builder,
-    bool builderEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroLayoutBuilder &&
-          (builderEnabled ? w.builder == builder : true),
-    );
-  }
 
   @override
   State<MyoroLayoutBuilder> createState() => _MyoroLayoutBuilderState();

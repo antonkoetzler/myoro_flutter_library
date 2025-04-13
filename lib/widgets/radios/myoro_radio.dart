@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the [MyoroRadio] is clicked.
@@ -38,29 +37,6 @@ final class MyoroRadio extends StatefulWidget {
          '[MyoroRadio]: If [notifier] is provided, set the initial '
          'value within the [MyoroRadioNotifier]\'s constructor.',
        );
-
-  static Finder finder({
-    MyoroRadioNotifier? notifier,
-    bool notifierEnabled = false,
-    bool? initialValue,
-    bool initialValueEnabled = false,
-    String? label,
-    bool labelEnabled = false,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleEnabled = false,
-    MyoroRadioOnChanged? onChanged,
-    bool onChangedEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroRadio &&
-          (notifierEnabled ? w.notifier == notifier : true) &&
-          (initialValueEnabled ? w.initialValue == initialValue : true) &&
-          (labelEnabled ? w.label == label : true) &&
-          (labelTextStyleEnabled ? w.labelTextStyle == labelTextStyle : true) &&
-          (onChangedEnabled ? w.onChanged == onChanged : true),
-    );
-  }
 
   @override
   State<MyoroRadio> createState() => _MyoroRadioState();

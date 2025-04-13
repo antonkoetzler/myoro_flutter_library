@@ -2,19 +2,19 @@ import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum encapsulating available width configuration
-/// for a [MyoroTableV2ColumnWidthConfiguration]
-enum MyoroTableV2ColumnWidthConfigurationEnum {
+/// for a [MyoroTableColumnWidthConfiguration]
+enum MyoroTableColumnWidthConfigurationEnum {
   /// Fixed width: Width never changes.
   fixed,
 
   /// Intrinsic: Width expands only as much as the
-  /// [MyoroTableV2ColumnWidthConfiguration] needs.
+  /// [MyoroTableColumnWidthConfiguration] needs.
   intrinsic,
 
   /// Expanded: Width expands as much as possible.
   expanded;
 
-  factory MyoroTableV2ColumnWidthConfigurationEnum.fake() {
+  factory MyoroTableColumnWidthConfigurationEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
 

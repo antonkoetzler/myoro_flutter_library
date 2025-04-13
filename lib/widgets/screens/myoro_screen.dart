@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
@@ -15,25 +14,6 @@ final class MyoroScreen extends StatefulWidget {
   final Widget? body;
 
   const MyoroScreen({super.key, this.drawerController, this.appBar, this.body});
-
-  static Finder finder({
-    MyoroDrawerController? drawerController,
-    bool drawerControllerEnabled = false,
-    PreferredSizeWidget? appBar,
-    bool appBarEnabled = false,
-    Widget? body,
-    bool bodyEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroScreen &&
-          (drawerControllerEnabled
-              ? w.drawerController == drawerController
-              : true) &&
-          (appBarEnabled ? w.appBar == appBar : true) &&
-          (bodyEnabled ? w.body == body : true),
-    );
-  }
 
   @override
   State<MyoroScreen> createState() => _MyoroScreenState();

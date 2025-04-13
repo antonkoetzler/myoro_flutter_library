@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base snack bar class extending [SnackBar] that serves as a container for
@@ -31,39 +30,6 @@ final class MyoroSnackBarContainer extends SnackBar {
          duration: themeExtension.duration,
          content: _SnackBar(snackBar),
        );
-
-  static Finder finder({
-    Color? backgroundColor,
-    bool backgroundColorEnabled = false,
-    SnackBarBehavior? behavior,
-    bool behaviorEnabled = false,
-    EdgeInsets? margin,
-    bool marginEnabled = false,
-    EdgeInsets? padding,
-    bool paddingEnabled = false,
-    double? elevation,
-    bool elevationEnabled = false,
-    DismissDirection? dismissDirection,
-    bool dismissDirectionEnabled = false,
-    Duration? duration,
-    bool durationEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroSnackBarContainer &&
-          (backgroundColorEnabled
-              ? w.backgroundColor == backgroundColor
-              : true) &&
-          (behaviorEnabled ? w.behavior == behavior : true) &&
-          (marginEnabled ? w.margin == margin : true) &&
-          (paddingEnabled ? w.padding == padding : true) &&
-          (elevationEnabled ? w.elevation == elevation : true) &&
-          (dismissDirectionEnabled
-              ? w.dismissDirection == dismissDirection
-              : true) &&
-          (durationEnabled ? w.duration == duration : true),
-    );
-  }
 }
 
 final class _SnackBar extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
@@ -64,41 +63,6 @@ final class MyoroMaterialApp extends StatelessWidget {
          (router != null) ^ (home != null),
          '[MyoroMaterialApp]: [router] (x)or [home] must be provided.',
        );
-
-  static Finder finder({
-    String? title,
-    bool titleEnabled = false,
-    ThemeMode? themeMode,
-    bool themeModeEnabled = false,
-    MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder,
-    bool colorSchemeBuilderEnabled = false,
-    MyoroMaterialAppTextThemeBuilder? textThemeBuilder,
-    bool textThemeBuilderEnabled = false,
-    MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
-    bool themeExtensionsBuilderEnabled = false,
-    RouterConfig<Object>? router,
-    bool routerEnabled = false,
-    MyoroScreen? home,
-    bool homeEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroMaterialApp &&
-          (titleEnabled ? w.title == title : true) &&
-          (themeModeEnabled ? w.themeMode == themeMode : true) &&
-          (colorSchemeBuilderEnabled
-              ? w.colorSchemeBuilder == colorSchemeBuilder
-              : true) &&
-          (textThemeBuilderEnabled
-              ? w.textThemeBuilder == textThemeBuilder
-              : true) &&
-          (themeExtensionsBuilderEnabled
-              ? w.themeExtensionsBuilder == themeExtensionsBuilder
-              : true) &&
-          (routerEnabled ? w.router == router : true) &&
-          (homeEnabled ? w.home == home : true),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

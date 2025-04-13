@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple yes/no dialog modal.
@@ -70,42 +69,6 @@ final class MyoroDialogModal extends StatelessWidget {
         textStyle,
         child,
       ),
-    );
-  }
-
-  static Finder finder({
-    bool? invertButtons,
-    bool invertButtonsEnabled = false,
-    String? confirmButtonText,
-    bool confirmButtonTextEnabled = false,
-    String? cancelButtonText,
-    bool cancelButtonTextEnabled = false,
-    VoidCallback? onConfirm,
-    bool onConfirmEnabled = false,
-    VoidCallback? onCancel,
-    bool onCancelEnabled = false,
-    String? text,
-    bool textEnabled = false,
-    TextStyle? textStyle,
-    bool textStyleEnabled = false,
-    Widget? child,
-    bool childEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroDialogModal &&
-          (invertButtonsEnabled ? w.invertButtons == invertButtons : true) &&
-          (confirmButtonTextEnabled
-              ? w.confirmButtonText == confirmButtonText
-              : true) &&
-          (cancelButtonTextEnabled
-              ? w.cancelButtonText == cancelButtonText
-              : true) &&
-          (onConfirmEnabled ? w.onConfirm == onConfirm : true) &&
-          (onCancelEnabled ? w.onCancel == onCancel : true) &&
-          (textEnabled ? w.text == text : true) &&
-          (textStyleEnabled ? w.textStyle == textStyle : true) &&
-          (childEnabled ? w.child == child : true),
     );
   }
 

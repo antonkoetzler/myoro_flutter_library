@@ -92,7 +92,7 @@ void main() {
       MyoroSnackBarThemeExtension,
 
       // Tables
-      MyoroTableV2ThemeExtension,
+      MyoroTableThemeExtension,
 
       // Tooltips
       MyoroTooltipThemeExtension,

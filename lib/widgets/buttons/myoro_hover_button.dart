@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [MyoroHoverButton] to pass if the button is being hovered.
@@ -26,50 +25,6 @@ final class MyoroHoverButton extends StatefulWidget {
     this.onPressed,
     required this.builder,
   });
-
-  static Finder finder({
-    MyoroHoverButtonConfiguration? configuration,
-    bool configurationEnabled = false,
-    Color? primaryColor,
-    bool primaryColorEnabled = false,
-    Color? onPrimaryColor,
-    bool onPrimaryColorEnabled = false,
-    bool? isHovered,
-    bool isHoveredEnabled = false,
-    bool? bordered,
-    bool borderedEnabled = false,
-    BorderRadius? borderRadius,
-    bool borderRadiusEnabled = false,
-    String? tooltip,
-    bool tooltipEnabled = false,
-    MyoroHoverButtonOnHover? onHover,
-    bool onHoverEnabled = false,
-    VoidCallback? onPressed,
-    bool onPressedEnabled = false,
-    MyoroHoverButtonBuilder? builder,
-    bool builderEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroHoverButton &&
-          (configurationEnabled ? w.configuration == configuration : true) &&
-          (primaryColorEnabled
-              ? w.configuration?.primaryColor == primaryColor
-              : true) &&
-          (onPrimaryColorEnabled
-              ? w.configuration?.onPrimaryColor == onPrimaryColor
-              : true) &&
-          (isHoveredEnabled ? w.configuration?.isHovered == isHovered : true) &&
-          (borderedEnabled ? w.configuration?.bordered == bordered : true) &&
-          (borderRadiusEnabled
-              ? w.configuration?.borderRadius == borderRadius
-              : true) &&
-          (tooltipEnabled ? w.configuration?.tooltip == tooltip : true) &&
-          (onHoverEnabled ? w.configuration?.onHover == onHover : true) &&
-          (onPressedEnabled ? w.onPressed == onPressed : true) &&
-          (builderEnabled ? w.builder == builder : true),
-    );
-  }
 
   @override
   State<MyoroHoverButton> createState() => _MyoroHoverButtonState();

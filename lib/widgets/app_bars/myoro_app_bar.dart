@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Library's [AppBar] widget.
@@ -36,19 +35,6 @@ final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     required this.child,
   });
-
-  static Finder finder({
-    bool? bordered,
-    bool borderedEnabled = false,
-    Widget? child,
-    bool childEnabled = false,
-  }) {
-    return find.byWidgetPredicate((Widget w) {
-      return w is MyoroAppBar &&
-          (borderedEnabled ? w.bordered == bordered : true) &&
-          (childEnabled ? w.child == child : true);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Widget showcase of [MyoroTableV2].
-final class MyoroTableV2WidgetShowcase extends StatelessWidget {
-  const MyoroTableV2WidgetShowcase({super.key});
+/// Widget showcase of [MyoroTable].
+final class MyoroTableWidgetShowcase extends StatelessWidget {
+  const MyoroTableWidgetShowcase({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ final class _Widget extends StatelessWidget {
       _buildColumn,
     );
 
-    return MyoroTableV2(
-      configuration: MyoroTableV2Configuration(
+    return MyoroTable(
+      configuration: MyoroTableConfiguration(
         titleCells: titleCells,
         paginationBuilder: _paginationBuilder,
         rowBuilder: (String item) => _rowBuilder(item, titleCells),
@@ -32,8 +32,8 @@ final class _Widget extends StatelessWidget {
     );
   }
 
-  MyoroTableV2Pagination<String> _paginationBuilder(_) {
-    return MyoroTableV2Pagination(
+  MyoroTablePagination<String> _paginationBuilder(_) {
+    return MyoroTablePagination(
       items: List.generate(
         faker.randomGenerator.integer(100),
         (int index) => '#$index: ${faker.lorem.word()}',
@@ -41,11 +41,11 @@ final class _Widget extends StatelessWidget {
     );
   }
 
-  MyoroTableV2Row<String> _rowBuilder(
+  MyoroTableRow<String> _rowBuilder(
     String item,
-    List<MyoroTableV2Column> titleCells,
+    List<MyoroTableColumn> titleCells,
   ) {
-    return MyoroTableV2Row(
+    return MyoroTableRow(
       cells:
           titleCells.map<Widget>((_) {
             return Text(faker.lorem.word());
@@ -53,14 +53,14 @@ final class _Widget extends StatelessWidget {
     );
   }
 
-  MyoroTableV2Column _buildColumn(_) {
-    final column = MyoroTableV2Column.fake();
+  MyoroTableColumn _buildColumn(_) {
+    final column = MyoroTableColumn.fake();
     return column.copyWith(child: _TitleCell(column));
   }
 }
 
 final class _TitleCell extends StatelessWidget {
-  final MyoroTableV2Column _column;
+  final MyoroTableColumn _column;
 
   const _TitleCell(this._column);
 

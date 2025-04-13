@@ -4,9 +4,18 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// [ThemeExtension] of [MyoroTableV2].
-final class MyoroTableV2ThemeExtension
-    extends ThemeExtension<MyoroTableV2ThemeExtension> {
+/// [ThemeExtension] of [MyoroTable].
+final class MyoroTableThemeExtension
+    extends ThemeExtension<MyoroTableThemeExtension> {
+  /// [MyoroInputStyleEnum] of [_PageNumberControlInput].
+  final MyoroInputStyleEnum pageNumberControlInputStyle;
+
+  /// [IconData] of [_PageNumberControlPreviousPageButton].
+  final IconData pageNumberControlPreviousPageButtonIcon;
+
+  /// [IconData] of [_PageNumberControlNextPageButton].
+  final IconData pageNumberControlNextPageButtonIcon;
+
   /// [Container.decoration] of [_Table].
   final BoxDecoration tableDecoration;
 
@@ -28,7 +37,10 @@ final class MyoroTableV2ThemeExtension
   /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
   final EdgeInsets dialogPadding;
 
-  const MyoroTableV2ThemeExtension({
+  const MyoroTableThemeExtension({
+    required this.pageNumberControlInputStyle,
+    required this.pageNumberControlPreviousPageButtonIcon,
+    required this.pageNumberControlNextPageButtonIcon,
     required this.tableDecoration,
     required this.columnSpacing,
     required this.titleCellTextStyle,
@@ -38,9 +50,18 @@ final class MyoroTableV2ThemeExtension
     required this.dialogPadding,
   });
 
-  factory MyoroTableV2ThemeExtension.fake() {
+  factory MyoroTableThemeExtension.fake() {
     final typography = MyoroTypographyDesignSystem.instance;
-    return MyoroTableV2ThemeExtension(
+    return MyoroTableThemeExtension(
+      pageNumberControlInputStyle: MyoroInputStyleEnum.fake(),
+      pageNumberControlPreviousPageButtonIcon:
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      pageNumberControlNextPageButtonIcon:
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
       tableDecoration: BoxDecoration(
         color:
             kMyoroTestColors[faker.randomGenerator.integer(
@@ -56,13 +77,16 @@ final class MyoroTableV2ThemeExtension
     );
   }
 
-  factory MyoroTableV2ThemeExtension.builder(
+  factory MyoroTableThemeExtension.builder(
     ColorScheme colorScheme,
     TextTheme textTheme,
   ) {
     final TextStyle headlineLarge = textTheme.headlineLarge!;
 
-    return MyoroTableV2ThemeExtension(
+    return MyoroTableThemeExtension(
+      pageNumberControlInputStyle: MyoroInputStyleEnum.underlined,
+      pageNumberControlPreviousPageButtonIcon: Icons.keyboard_arrow_left,
+      pageNumberControlNextPageButtonIcon: Icons.keyboard_arrow_right,
       tableDecoration: BoxDecoration(
         color: colorScheme.primary,
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
@@ -84,7 +108,10 @@ final class MyoroTableV2ThemeExtension
   }
 
   @override
-  MyoroTableV2ThemeExtension copyWith({
+  MyoroTableThemeExtension copyWith({
+    MyoroInputStyleEnum? pageNumberControlInputStyle,
+    IconData? pageNumberControlPreviousPageButtonIcon,
+    IconData? pageNumberControlNextPageButtonIcon,
     BoxDecoration? tableDecoration,
     double? columnSpacing,
     TextStyle? titleCellTextStyle,
@@ -93,7 +120,15 @@ final class MyoroTableV2ThemeExtension
     TextStyle? errorMessageTextStyle,
     EdgeInsets? dialogPadding,
   }) {
-    return MyoroTableV2ThemeExtension(
+    return MyoroTableThemeExtension(
+      pageNumberControlInputStyle:
+          pageNumberControlInputStyle ?? this.pageNumberControlInputStyle,
+      pageNumberControlPreviousPageButtonIcon:
+          pageNumberControlPreviousPageButtonIcon ??
+          this.pageNumberControlPreviousPageButtonIcon,
+      pageNumberControlNextPageButtonIcon:
+          pageNumberControlNextPageButtonIcon ??
+          this.pageNumberControlNextPageButtonIcon,
       tableDecoration: tableDecoration ?? this.tableDecoration,
       columnSpacing: columnSpacing ?? this.columnSpacing,
       titleCellTextStyle: titleCellTextStyle ?? this.titleCellTextStyle,
@@ -107,12 +142,27 @@ final class MyoroTableV2ThemeExtension
   }
 
   @override
-  MyoroTableV2ThemeExtension lerp(
-    covariant ThemeExtension<MyoroTableV2ThemeExtension>? other,
+  MyoroTableThemeExtension lerp(
+    covariant ThemeExtension<MyoroTableThemeExtension>? other,
     double t,
   ) {
-    if (other is! MyoroTableV2ThemeExtension) return this;
+    if (other is! MyoroTableThemeExtension) return this;
     return copyWith(
+      pageNumberControlInputStyle: myoroLerp(
+        pageNumberControlInputStyle,
+        other.pageNumberControlInputStyle,
+        t,
+      ),
+      pageNumberControlPreviousPageButtonIcon: myoroLerp(
+        pageNumberControlPreviousPageButtonIcon,
+        other.pageNumberControlPreviousPageButtonIcon,
+        t,
+      ),
+      pageNumberControlNextPageButtonIcon: myoroLerp(
+        pageNumberControlNextPageButtonIcon,
+        other.pageNumberControlNextPageButtonIcon,
+        t,
+      ),
       tableDecoration: BoxDecoration.lerp(
         tableDecoration,
         other.tableDecoration,
@@ -141,11 +191,18 @@ final class MyoroTableV2ThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroTableV2ThemeExtension &&
+    return other is MyoroTableThemeExtension &&
         other.runtimeType == runtimeType &&
+        other.pageNumberControlInputStyle == pageNumberControlInputStyle &&
+        other.pageNumberControlPreviousPageButtonIcon ==
+            pageNumberControlPreviousPageButtonIcon &&
+        other.pageNumberControlNextPageButtonIcon ==
+            pageNumberControlNextPageButtonIcon &&
         other.tableDecoration == tableDecoration &&
+        other.columnSpacing == columnSpacing &&
         other.titleCellTextStyle == titleCellTextStyle &&
         other.loaderSize == loaderSize &&
+        other.emptyMessageTextStyle == emptyMessageTextStyle &&
         other.errorMessageTextStyle == errorMessageTextStyle &&
         other.dialogPadding == dialogPadding;
   }
@@ -153,9 +210,14 @@ final class MyoroTableV2ThemeExtension
   @override
   int get hashCode {
     return Object.hash(
+      pageNumberControlInputStyle,
+      pageNumberControlPreviousPageButtonIcon,
+      pageNumberControlNextPageButtonIcon,
       tableDecoration,
+      columnSpacing,
       titleCellTextStyle,
       loaderSize,
+      emptyMessageTextStyle,
       errorMessageTextStyle,
       dialogPadding,
     );
@@ -163,10 +225,15 @@ final class MyoroTableV2ThemeExtension
 
   @override
   String toString() =>
-      'MyoroTableV2ThemeExtension(\n'
+      'MyoroTableThemeExtension(\n'
+      '  pageNumberControlInputStyle: $pageNumberControlInputStyle,\n'
+      '  pageNumberControlPreviousPageButtonIcon: $pageNumberControlPreviousPageButtonIcon,\n'
+      '  pageNumberControlNextPageButtonIcon: $pageNumberControlNextPageButtonIcon,\n'
       '  tableDecoration: $tableDecoration,\n'
+      '  columnSpacing: $columnSpacing,\n'
       '  titleCellTextStyle: $titleCellTextStyle,\n'
       '  loaderSize: $loaderSize,\n'
+      '  emptyMessageTextStyle: $emptyMessageTextStyle,\n'
       '  errorMessageTextStyle: $errorMessageTextStyle,\n'
       '  dialogPadding: $dialogPadding,\n'
       ');';

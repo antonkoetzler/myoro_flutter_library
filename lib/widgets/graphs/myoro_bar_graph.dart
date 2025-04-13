@@ -1,6 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A bar graph.
@@ -13,20 +12,6 @@ final class MyoroBarGraph extends StatelessWidget {
 
   MyoroBarGraph({super.key, this.sorted = true, required this.items})
     : assert(items.isNotEmpty, '[MyoroBarGraph]: [items] must not be empty.');
-
-  static Finder finder({
-    bool? sorted,
-    bool sortedEnabled = false,
-    List<MyoroBarGraphGroup>? items,
-    bool itemsEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroBarGraph &&
-          (sortedEnabled ? w.sorted == sorted : true) &&
-          (itemsEnabled ? w.items == items : true),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
