@@ -12,7 +12,14 @@ final class ToggleItemEvent<T> extends MyoroDropdownEvent<T> {
   const ToggleItemEvent(this.item);
 }
 
-/// Adds a [Set] of items to [MyoroDropdownState.selectedItems].
+/// Sets [MyoroDropdownState.selectedItems] to [selectedItems].
+final class SetSelectedItemsEvent<T> extends MyoroDropdownEvent<T> {
+  final Set<T> items;
+
+  const SetSelectedItemsEvent(this.items);
+}
+
+/// Adds a [Set] of [T] to [MyoroDropdownState.selectedItems].
 ///
 /// If any items are already apart of [MyoroDropdownState.selectedItems],
 /// they will not be removed from [MyoroDropdownState.selectedItems].
@@ -22,7 +29,7 @@ final class SelectItemsEvent<T> extends MyoroDropdownEvent<T> {
   const SelectItemsEvent(this.items);
 }
 
-/// Adds a [Set] of items to [MyoroDropdownState.selectedItems].
+/// Adds a [Set] of [T] to [MyoroDropdownState.selectedItems].
 ///
 /// If any items are already apart of [MyoroDropdownState.selectedItems],
 /// they will not be added to [MyoroDropdownState.selectedItems].

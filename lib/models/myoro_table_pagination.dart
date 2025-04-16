@@ -14,8 +14,9 @@ class MyoroTablePagination<T> extends Equatable {
 
   /// [List] of accepted [itemsPerPage] values.
   ///
-  /// If null, [_ItemsPerPageControl] will not be displayed.
-  final List<int>? acceptedItemsPerPage;
+  /// If the length of [acceptedItemsPerPage] is empty,
+  /// [_ItemsPerPageControl] will not be displayed.
+  final Set<int> acceptedItemsPerPage;
 
   /// Items of the [MyoroTablePagination].
   final List<T> items;
@@ -24,26 +25,25 @@ class MyoroTablePagination<T> extends Equatable {
     this.currentPage = 1,
     this.totalPages = 1,
     this.itemsPerPage = 10,
-    this.acceptedItemsPerPage,
+    this.acceptedItemsPerPage = const {},
     this.items = const [],
-  });
+  }) : assert(
+         acceptedItemsPerPage.length != 1,
+         '[MyoroTablePagination<$T>]: [acceptItemsPerPage] cannot be 1.',
+       );
 
   MyoroTablePagination<T> copyWith({
     int? currentPage,
     int? totalPages,
     int? itemsPerPage,
-    List<int>? acceptedItemsPerPage,
-    bool acceptedItemsPerPageProvided = true,
+    Set<int>? acceptedItemsPerPage,
     List<T>? items,
   }) {
     return MyoroTablePagination(
       currentPage: currentPage ?? this.currentPage,
       totalPages: totalPages ?? this.totalPages,
       itemsPerPage: itemsPerPage ?? this.itemsPerPage,
-      acceptedItemsPerPage:
-          acceptedItemsPerPageProvided
-              ? (acceptedItemsPerPage ?? this.acceptedItemsPerPage)
-              : null,
+      acceptedItemsPerPage: acceptedItemsPerPage ?? this.acceptedItemsPerPage,
       items: items ?? this.items,
     );
   }

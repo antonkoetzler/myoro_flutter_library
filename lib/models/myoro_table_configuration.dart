@@ -17,7 +17,7 @@ final class MyoroTableConfiguration<T> extends Equatable {
   static const showPaginationControlsDefaultValue = false;
 
   /// [MyoroTableController] of the [MyoroTable].
-  final MyoroTableController<T>? controller;
+  final MyoroTableController<T> controller;
 
   /// If [_PaginationControls] should be displayed.
   ///
@@ -36,16 +36,32 @@ final class MyoroTableConfiguration<T> extends Equatable {
   /// [MyoroTablePagination] of the [MyoroTable].
   final MyoroTableConfigurationPaginationRequest<T> paginationBuilder;
 
-  MyoroTableConfiguration({
+  MyoroTableConfiguration._(
     this.controller,
-    this.showPaginationControls = showPaginationControlsDefaultValue,
-    required this.titleCells,
-    required this.rowBuilder,
-    required this.paginationBuilder,
-  }) : assert(
-         titleCells.isNotEmpty,
-         '[MyoroTable]: [titleCells] cannot be empty',
-       );
+    this.showPaginationControls,
+    this.titleCells,
+    this.rowBuilder,
+    this.paginationBuilder,
+  ) : assert(
+        titleCells.isNotEmpty,
+        '[MyoroTable]: [titleCells] cannot be empty',
+      );
+
+  factory MyoroTableConfiguration({
+    MyoroTableController<T>? controller,
+    bool showPaginationControls = showPaginationControlsDefaultValue,
+    required List<MyoroTableColumn> titleCells,
+    required MyoroTableRowBuilder<T> rowBuilder,
+    required MyoroTableConfigurationPaginationRequest<T> paginationBuilder,
+  }) {
+    return MyoroTableConfiguration._(
+      controller ?? MyoroTableController(),
+      showPaginationControls,
+      titleCells,
+      rowBuilder,
+      paginationBuilder,
+    );
+  }
 
   MyoroTableConfiguration<T> copyWith({
     MyoroTableController<T>? controller,

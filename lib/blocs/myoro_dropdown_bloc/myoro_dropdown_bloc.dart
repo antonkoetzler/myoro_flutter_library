@@ -14,6 +14,7 @@ final class MyoroDropdownBloc<T>
   MyoroDropdownBloc({required bool enabled})
     : super(MyoroDropdownState<T>(enabled: enabled)) {
     on<ToggleItemEvent<T>>(_toggleItemEvent);
+    on<SetSelectedItemsEvent<T>>(_setSelectedItemsEvent);
     on<SelectItemsEvent<T>>(_selectItemsEvent);
     on<RemoveSelectedItemsEvent<T>>(_removeSelectedItemsEvent);
     on<ClearSelectedItemsEvent<T>>(_clearSelectedItemsEvent);
@@ -31,6 +32,13 @@ final class MyoroDropdownBloc<T>
                 : (selectedItems..add(event.item)),
       ),
     );
+  }
+
+  void _setSelectedItemsEvent(
+    SetSelectedItemsEvent<T> event,
+    _Emitter<T> emit,
+  ) {
+    emit(state.copyWith(selectedItems: event.items));
   }
 
   void _selectItemsEvent(SelectItemsEvent<T> event, _Emitter<T> emit) {

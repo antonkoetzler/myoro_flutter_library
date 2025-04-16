@@ -129,13 +129,12 @@ final class _Checkbox<T> extends StatelessWidget {
   Widget _builder(BuildContext context, MyoroDropdownState<T> state) {
     return MyoroCheckbox(
       initialValue: state.enabled,
-      onChanged: (bool enabled) => _onChanged(context),
+      onChanged: (bool enabled) => _onChanged(enabled),
     );
   }
 
-  void _onChanged(BuildContext context) {
-    final bloc = context.resolveBloc<MyoroDropdownBloc<T>>();
-    bloc.add(const ToggleEnabledEvent());
+  void _onChanged(bool enabled) {
+    _configuration.controller.toggleEnabled(enabled);
   }
 }
 
@@ -151,8 +150,6 @@ final class _Input<T> extends StatefulWidget {
 
 final class _InputState<T> extends State<_Input<T>> {
   MyoroDropdownConfiguration<T> get _configuration => widget._configuration;
-
-  late final MyoroDropdownBloc<T> _bloc;
 
   /// In order to pass the [Size] of the [MyoroInput] to [_InputTriggerArea] and [_Menu].
   final _inputKey = GlobalKey();
@@ -172,7 +169,6 @@ final class _InputState<T> extends State<_Input<T>> {
   void initState() {
     super.initState();
     _tapRegionGroupId = 'MyoroDropdown#$hashCode';
-    _bloc = context.resolveBloc<MyoroDropdownBloc<T>>();
   }
 
   @override
@@ -266,7 +262,7 @@ final class _InputState<T> extends State<_Input<T>> {
           enabled: state.enabled,
           readOnly: true,
           showClearTextButton: _configuration.allowItemClearing,
-          onCleared: () => _bloc.add(const ClearSelectedItemsEvent()),
+          onCleared: _configuration.controller.clear,
           controller: _inputController,
         ),
       ),
@@ -344,7 +340,8 @@ final class _InputTriggerArea<T> extends StatelessWidget {
       children: [
         Expanded(child: _InputTriggerAreaRegion(_tapRegionGroupId, onTapUp)),
         // Allows [MyoroInput._ClearTextButton] to be pressed.
-        if (state.selectedItems.isNotEmpty) ...[
+        if (_configuration.allowItemClearing &&
+            state.selectedItems.isNotEmpty) ...[
           SizedBox(
             width: 29,
             child: Column(
@@ -407,7 +404,9 @@ final class _InputTriggerAreaRegion extends StatelessWidget {
           onTapUp: onTapUpNotNull ? (_) => _onTapUp() : null,
           child: TapRegion(
             groupId: _tapRegionGroupId,
-            child: Container(color: Colors.transparent),
+            child: Container(
+              color: Colors.pink.withOpacity(0.5),
+            ), // TODO: Set to transparent after
           ),
         ),
       ),
@@ -424,15 +423,13 @@ final class _Menu<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final VoidCallback toggleMenu = _configuration.controller.toggleMenu;
-
     return CallbackShortcuts(
-      bindings: {const SingleActivator(LogicalKeyboardKey.escape): toggleMenu},
+      bindings: {const SingleActivator(LogicalKeyboardKey.escape): _toggleMenu},
       child: Focus(
         autofocus: true,
         child: TapRegion(
           groupId: _groupId,
-          onTapOutside: (_) => toggleMenu(),
+          onTapOutside: (_) => _toggleMenu(),
           child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
             builder: (_, MyoroDropdownState<T> state) {
               return MyoroMenu(
@@ -448,16 +445,25 @@ final class _Menu<T> extends StatelessWidget {
     );
   }
 
+  void _toggleMenu() {
+    final MyoroDropdownController<T> controller = _configuration.controller;
+    controller.menuShowing ? controller.hideMenu() : controller.showMenu();
+  }
+
   MyoroMenuItem _menuItemBuilder(
     BuildContext context,
     MyoroDropdownState<T> state,
     T item,
   ) {
-    return _configuration.menuConfiguration
-        .itemBuilder(item)
-        .copyWith(
-          isHovered: state.selectedItems.contains(item),
-          onPressed: () => _configuration.controller.toggleItem(item),
-        );
+    final MyoroMenuItemBuilder<T> menuItemBuilder =
+        _configuration.menuConfiguration.itemBuilder;
+    final MyoroMenuItem menuItem = menuItemBuilder.call(item);
+    return menuItem.copyWith(
+      isHovered: state.selectedItems.contains(item),
+      onPressed: () {
+        menuItem.onPressed?.call();
+        _configuration.controller.toggleItem(item);
+      },
+    );
   }
 }

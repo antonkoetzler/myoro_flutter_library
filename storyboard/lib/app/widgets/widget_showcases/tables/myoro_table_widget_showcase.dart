@@ -26,6 +26,7 @@ final class _Widget extends StatelessWidget {
     return MyoroTable(
       configuration: MyoroTableConfiguration(
         titleCells: titleCells,
+        showPaginationControls: true,
         paginationBuilder: _paginationBuilder,
         rowBuilder: (String item) => _rowBuilder(item, titleCells),
       ),
@@ -38,6 +39,12 @@ final class _Widget extends StatelessWidget {
         faker.randomGenerator.integer(100),
         (int index) => '#$index: ${faker.lorem.word()}',
       ),
+      totalPages: faker.randomGenerator.integer(9999),
+      acceptedItemsPerPage:
+          List.generate(
+            faker.randomGenerator.integer(10, min: 2),
+            (int index) => index + 5,
+          ).toSet(),
     );
   }
 

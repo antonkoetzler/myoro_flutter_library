@@ -16,12 +16,7 @@ final class MyoroTable<T> extends StatefulWidget {
 
 final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   MyoroTableConfiguration<T> get _configuration => widget.configuration;
-
-  MyoroTableController<T>? _localTableController;
-  MyoroTableController<T> get _tableController {
-    return _configuration.controller ??
-        (_localTableController ??= MyoroTableController());
-  }
+  MyoroTableController<T> get _tableController => _configuration.controller;
 
   /// Central [Bloc] of [MyoroTable].
   late final MyoroTableBloc<T> _bloc;
@@ -41,6 +36,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   @override
   void didUpdateWidget(covariant MyoroTable<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
+    _tableController.bloc = _bloc;
     _initializeTitleCellKeys();
   }
 
@@ -58,9 +54,9 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (_configuration.showPaginationControls) ...[
-            _PaginationControls(_configuration, _tableController),
+            _PaginationControls(_tableController),
           ],
-          _Table(_configuration, _titleCellKeys),
+          Flexible(child: _Table(_configuration, _titleCellKeys)),
         ],
       ),
     );
@@ -74,10 +70,9 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
 /// Section where the pagination controls are shown.
 final class _PaginationControls<T> extends StatelessWidget {
-  final MyoroTableConfiguration<T> _configuration;
   final MyoroTableController<T> _tableController;
 
-  const _PaginationControls(this._configuration, this._tableController);
+  const _PaginationControls(this._tableController);
 
   @override
   Widget build(BuildContext context) {
@@ -95,13 +90,13 @@ final class _PaginationControls<T> extends StatelessWidget {
     final MyoroTablePagination<T> pagination = state.pagination;
     return Row(
       children: [
-        if (pagination.acceptedItemsPerPage != null) ...[
-          const _ItemsPerPageControl(),
+        if (pagination.acceptedItemsPerPage.isNotEmpty) ...[
+          _ItemsPerPageControl(_tableController),
         ],
-        const Spacer(),
-        if (pagination.totalPages > 1) ...[
-          _PageNumberControl(_tableController),
-        ],
+        // const Spacer(),
+        // if (pagination.totalPages > 1) ...[
+        //   _PageNumberControl(_tableController),
+        // ],
       ],
     );
   }
@@ -177,12 +172,14 @@ final class _PageNumberControlPreviousPageButton<T> extends StatelessWidget {
         context.resolveThemeExtension<MyoroTableThemeExtension>();
     return _PageNumberControlTraversalButton(
       themeExtension.pageNumberControlPreviousPageButtonIcon,
-      _enabled
-          ? () => _tableController.setCurrentPage(
-            _tableController.pagination.currentPage + 1,
-          )
-          : null,
+      _enabled ? _onPressed : null,
     );
+  }
+
+  void _onPressed() {
+    _tableController
+      ..setCurrentPage(_tableController.pagination.currentPage - 1)
+      ..fetch();
   }
 }
 
@@ -199,12 +196,14 @@ final class _PageNumberControlNextPageButton<T> extends StatelessWidget {
         context.resolveThemeExtension<MyoroTableThemeExtension>();
     return _PageNumberControlTraversalButton(
       themeExtension.pageNumberControlPreviousPageButtonIcon,
-      _enabled
-          ? () => _tableController.setCurrentPage(
-            _tableController.pagination.currentPage - 1,
-          )
-          : null,
+      _enabled ? _onPressed : null,
     );
+  }
+
+  void _onPressed() {
+    _tableController
+      ..setCurrentPage(_tableController.pagination.currentPage + 1)
+      ..fetch();
   }
 }
 
@@ -262,7 +261,9 @@ final class _PageNumberControlInputState<T>
             ? _tableController.pagination.isValidPageNumber(pageNumber)
             : false;
     if (invalidPageNumber) return;
-    _tableController.setCurrentPage(pageNumber ?? 1);
+    _tableController
+      ..setCurrentPage(pageNumber ?? 1)
+      ..fetch();
   }
 }
 
@@ -285,7 +286,38 @@ final class _ItemsPerPageControl<T> extends StatelessWidget {
   }
 
   Widget _builder(_, MyoroTableState<T> state) {
-    You are here.
+    return IntrinsicWidth(
+      child: MyoroSingularDropdown<int>(
+        configuration: MyoroSingularDropdownConfiguration(
+          allowItemClearing: false,
+          menuConfiguration: MyoroMenuConfiguration(
+            request: _request,
+            itemBuilder: _itemBuilder,
+          ),
+          selectedItemBuilder: _textBuilder,
+          initiallySelectedItem: _tableController.pagination.itemsPerPage,
+          onChanged: (int? item) => _onChanged(item!),
+        ),
+      ),
+    );
+  }
+
+  Set<int> _request() {
+    return _tableController.pagination.acceptedItemsPerPage;
+  }
+
+  MyoroMenuItem _itemBuilder(int item) {
+    return MyoroMenuItem(text: _textBuilder(item));
+  }
+
+  String _textBuilder(int item) {
+    return item.toString();
+  }
+
+  void _onChanged(int item) {
+    _tableController
+      ..setItemsPerPage(item)
+      ..fetch();
   }
 }
 

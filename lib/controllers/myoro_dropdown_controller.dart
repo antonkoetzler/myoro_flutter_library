@@ -31,14 +31,25 @@ class MyoroDropdownController<T> {
     bloc.add(const ClearSelectedItemsEvent());
   }
 
-  /// Toggles whether the dropdown menu is showing.
-  void toggleMenu([bool? enabled]) {
-    if (enabled != null && enabled != overlayPortalController.isShowing) {
-      enabled ? overlayPortalController.show() : overlayPortalController.hide();
-    } else {
-      overlayPortalController.isShowing
-          ? overlayPortalController.hide()
-          : overlayPortalController.show();
-    }
+  /// Shows the menu.
+  void showMenu() {
+    if (overlayPortalController.isShowing) return;
+    overlayPortalController.show();
   }
+
+  /// Hides the menu.
+  void hideMenu() {
+    if (!overlayPortalController.isShowing) return;
+    overlayPortalController.hide();
+  }
+
+  /// Toggles the menu.
+  void toggleMenu() {
+    overlayPortalController.isShowing
+        ? overlayPortalController.hide()
+        : overlayPortalController.show();
+  }
+
+  /// Returns if the menu is active
+  bool get menuShowing => overlayPortalController.isShowing;
 }
