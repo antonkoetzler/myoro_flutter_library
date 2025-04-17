@@ -16,32 +16,25 @@ final class MyoroMenuWidgetShowcaseState extends Equatable {
   /// If [MyoroMenu.searchCallback] is not null.
   final bool searchCallbackEnabled;
 
-  const MyoroMenuWidgetShowcaseState({
-    this.minWidth,
-    this.maxWidth,
-    this.minHeight,
-    this.maxHeight,
-    this.searchCallbackEnabled = false,
-  });
+  const MyoroMenuWidgetShowcaseState({this.minWidth, this.maxWidth, this.minHeight, this.maxHeight, this.searchCallbackEnabled = false});
 
   MyoroMenuWidgetShowcaseState copyWith({
     double? minWidth,
-    bool enableMinWidth = true,
+    bool minWidthProvided = true,
     double? maxWidth,
-    bool enableMaxWidth = true,
+    bool maxWidthProvided = true,
     double? minHeight,
-    bool enableMinHeight = true,
+    bool minHeightProvided = true,
     double? maxHeight,
-    bool enableMaxHeight = true,
+    bool maxHeightProvided = true,
     bool? searchCallbackEnabled,
   }) {
     return MyoroMenuWidgetShowcaseState(
-      minWidth: enableMinWidth ? (minWidth ?? this.minWidth) : null,
-      maxWidth: enableMaxWidth ? (maxWidth ?? this.maxWidth) : null,
-      minHeight: enableMinHeight ? (minHeight ?? this.minHeight) : null,
-      maxHeight: enableMaxHeight ? (maxHeight ?? this.maxHeight) : null,
-      searchCallbackEnabled:
-          searchCallbackEnabled ?? this.searchCallbackEnabled,
+      minWidth: minWidthProvided ? (minWidth ?? this.minWidth) : null,
+      maxWidth: maxWidthProvided ? (maxWidth ?? this.maxWidth) : null,
+      minHeight: minHeightProvided ? (minHeight ?? this.minHeight) : null,
+      maxHeight: maxHeightProvided ? (maxHeight ?? this.maxHeight) : null,
+      searchCallbackEnabled: searchCallbackEnabled ?? this.searchCallbackEnabled,
     );
   }
 

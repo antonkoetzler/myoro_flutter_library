@@ -16,29 +16,21 @@ final class MyoroCardWidgetShowcaseState extends Equatable {
   /// [MyoroCard.height].
   final MyoroCardWidgetShowcaseBlocDimension height;
 
-  const MyoroCardWidgetShowcaseState({
-    this.title = '',
-    this.titleTextStyle,
-    this.padding,
-    this.width = (false, 225),
-    this.height = (false, 50),
-  });
+  const MyoroCardWidgetShowcaseState({this.title = '', this.titleTextStyle, this.padding, this.width = (false, 225), this.height = (false, 50)});
 
   MyoroCardWidgetShowcaseState copyWith({
     String? title,
     TextStyle? titleTextStyle,
-    bool titleTextStyleEnabled = true,
+    bool titleTextStyleProvided = true,
     double? padding,
+    bool paddingProvided = true,
     MyoroCardWidgetShowcaseBlocDimension? width,
     MyoroCardWidgetShowcaseBlocDimension? height,
   }) {
     return MyoroCardWidgetShowcaseState(
       title: title ?? this.title,
-      titleTextStyle:
-          titleTextStyleEnabled
-              ? (titleTextStyle ?? this.titleTextStyle)
-              : null,
-      padding: padding ?? this.padding,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
       width: width ?? this.width,
       height: height ?? this.height,
     );

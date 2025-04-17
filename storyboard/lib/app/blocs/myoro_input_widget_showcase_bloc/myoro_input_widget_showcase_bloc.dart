@@ -10,10 +10,8 @@ part 'myoro_input_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroInputWidgetShowcaseState>;
 
 /// BLoC to manage the state in [MyoroInputWidgetShowcase].
-final class MyoroInputWidgetShowcaseBloc
-    extends Bloc<MyoroInputWidgetShowcaseEvent, MyoroInputWidgetShowcaseState> {
-  MyoroInputWidgetShowcaseBloc()
-    : super(const MyoroInputWidgetShowcaseState()) {
+final class MyoroInputWidgetShowcaseBloc extends Bloc<MyoroInputWidgetShowcaseEvent, MyoroInputWidgetShowcaseState> {
+  MyoroInputWidgetShowcaseBloc() : super(const MyoroInputWidgetShowcaseState()) {
     on<SetFormatterEvent>(_setFormatterEvent);
     on<SetInputStyleEvent>(_setInputStyleEvent);
     on<SetTextAlignEvent>(_setTextAlignEvent);
@@ -41,38 +39,23 @@ final class MyoroInputWidgetShowcaseBloc
   }
 
   void _setInputTextStyleEvent(SetInputTextStyleEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        inputTextStyle: event.inputTextStyle,
-        inputTextStyleEnabled: event.inputTextStyle != null,
-      ),
-    );
+    emit(state.copyWith(inputTextStyle: event.inputTextStyle, inputTextStyleProvided: event.inputTextStyle != null));
   }
 
   void _setLabelEvent(SetLabelEvent event, _Emitter emit) {
-    emit(state.copyWith(label: event.label, labelEnabled: event.label != null));
+    emit(state.copyWith(label: event.label, labelProvided: event.label != null));
   }
 
   void _setPlaceholderEvent(SetPlaceholderEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        placeholder: event.placeholder,
-        placeholderEnabled: event.placeholder != null,
-      ),
-    );
+    emit(state.copyWith(placeholder: event.placeholder, placeholderProvided: event.placeholder != null));
   }
 
   void _setLabelTextStyleEvent(SetLabelTextStyleEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        labelTextStyle: event.labelTextStyle,
-        labelTextStyleEnabled: event.labelTextStyle != null,
-      ),
-    );
+    emit(state.copyWith(labelTextStyle: event.labelTextStyle, labelTextStyleProvided: event.labelTextStyle != null));
   }
 
   void _setSuffixEnabledEvent(SetSuffixEnabledEvent event, _Emitter emit) {
-    emit(state.copyWith(suffixEnabled: event.enabled));
+    emit(state.copyWith(suffixProvided: event.enabled));
   }
 
   void _setEnabledEvent(SetEnabledEvent event, _Emitter emit) {
@@ -83,17 +66,11 @@ final class MyoroInputWidgetShowcaseBloc
     emit(state.copyWith(readOnly: event.enabled));
   }
 
-  void _setShowClearTextButtonEvent(
-    SetShowClearTextButtonEvent event,
-    _Emitter emit,
-  ) {
+  void _setShowClearTextButtonEvent(SetShowClearTextButtonEvent event, _Emitter emit) {
     emit(state.copyWith(showClearTextButton: event.enabled));
   }
 
-  void _setCheckboxOnChangedEnabledEvent(
-    SetCheckboxOnChangedEnabledEvent event,
-    _Emitter emit,
-  ) {
-    emit(state.copyWith(checkboxOnChangedEnabled: event.enabled));
+  void _setCheckboxOnChangedEnabledEvent(SetCheckboxOnChangedEnabledEvent event, _Emitter emit) {
+    emit(state.copyWith(checkboxOnChangedProvided: event.enabled));
   }
 }

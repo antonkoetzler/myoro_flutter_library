@@ -10,35 +10,20 @@ final class MyoroTableColumnWidthConfiguration extends Equatable {
   /// Fixed width of the [MyoroTableColumn] if [enum] is [MyoroTableColumnWidthConfigurationEnum.fixed].
   final double? fixedWidth;
 
-  const MyoroTableColumnWidthConfiguration({
-    required this.enumValue,
-    this.fixedWidth,
-  }) : assert(
-         !(enumValue == MyoroTableColumnWidthConfigurationEnum.fixed &&
-             fixedWidth == null),
-         '[MyoroTableColumnWidthConfiguration]: If [enumValue] is '
-         '[MyoroTableColumnWidthConfigurationEnum], [fixedWidth] cannot be null.',
-       );
+  const MyoroTableColumnWidthConfiguration({required this.enumValue, this.fixedWidth})
+    : assert(
+        !(enumValue == MyoroTableColumnWidthConfigurationEnum.fixed && fixedWidth == null),
+        '[MyoroTableColumnWidthConfiguration]: If [enumValue] is '
+        '[MyoroTableColumnWidthConfigurationEnum], [fixedWidth] cannot be null.',
+      );
 
   factory MyoroTableColumnWidthConfiguration.fake() {
     final enumValue = MyoroTableColumnWidthConfigurationEnum.fake();
-    return MyoroTableColumnWidthConfiguration(
-      enumValue: enumValue,
-      fixedWidth:
-          enumValue.isFixed
-              ? faker.randomGenerator.decimal(scale: 200, min: 20)
-              : null,
-    );
+    return MyoroTableColumnWidthConfiguration(enumValue: enumValue, fixedWidth: enumValue.isFixed ? faker.randomGenerator.decimal(scale: 200, min: 20) : null);
   }
 
-  MyoroTableColumnWidthConfiguration copyWith({
-    MyoroTableColumnWidthConfigurationEnum? enumValue,
-    double? fixedWidth,
-  }) {
-    return MyoroTableColumnWidthConfiguration(
-      enumValue: enumValue ?? this.enumValue,
-      fixedWidth: fixedWidth ?? this.fixedWidth,
-    );
+  MyoroTableColumnWidthConfiguration copyWith({MyoroTableColumnWidthConfigurationEnum? enumValue, double? fixedWidth, bool fixedWidthProvided = true}) {
+    return MyoroTableColumnWidthConfiguration(enumValue: enumValue ?? this.enumValue, fixedWidth: fixedWidthProvided ? (fixedWidth ?? this.fixedWidth) : null);
   }
 
   @override

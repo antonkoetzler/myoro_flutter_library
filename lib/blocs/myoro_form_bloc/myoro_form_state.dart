@@ -10,21 +10,17 @@ final class MyoroFormState<T> extends Equatable {
   /// Result of the form.
   final T? result;
 
-  const MyoroFormState({
-    this.status = MyoroRequestEnum.idle,
-    this.errorMessage,
-    this.result,
-  });
+  const MyoroFormState({this.status = MyoroRequestEnum.idle, this.errorMessage, this.result})
+    : assert(
+        !(status == MyoroRequestEnum.error && errorMessage == null),
+        '[MyoroFormState<$T>]: [status] cannot be [MyoroRequestEnum.error] while [errorMessage] is null.',
+      );
 
-  MyoroFormState<T> copyWith({
-    MyoroRequestEnum? status,
-    String? errorMessage,
-    T? result,
-  }) {
+  MyoroFormState<T> copyWith({MyoroRequestEnum? status, String? errorMessage, bool errorMessageProvided = true, T? result, bool resultProvided = true}) {
     return MyoroFormState(
       status: status ?? this.status,
-      errorMessage: errorMessage ?? this.errorMessage,
-      result: result ?? this.result,
+      errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
+      result: resultProvided ? (result ?? this.result) : null,
     );
   }
 

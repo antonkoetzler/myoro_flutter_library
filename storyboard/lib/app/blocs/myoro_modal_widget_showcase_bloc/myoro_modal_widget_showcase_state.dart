@@ -35,24 +35,24 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
   MyoroModalWidgetShowcaseState copyWith({
     bool? barrierDismissable,
     double? minWidth,
-    bool minWidthEnabled = true,
+    bool minWidthProvided = true,
     double? maxWidth,
-    bool maxWidthEnabled = true,
+    bool maxWidthProvided = true,
     double? minHeight,
-    bool minHeightEnabled = true,
+    bool minHeightProvided = true,
     double? maxHeight,
-    bool maxHeightEnabled = true,
+    bool maxHeightProvided = true,
     String? title,
-    bool titleEnabled = true,
+    bool titleProvided = true,
     bool? showCloseButton,
   }) {
     return MyoroModalWidgetShowcaseState(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
-      minWidth: minWidthEnabled ? (minWidth ?? this.minWidth) : null,
-      maxWidth: maxWidthEnabled ? (maxWidth ?? this.maxWidth) : null,
-      minHeight: minHeightEnabled ? (minHeight ?? this.minHeight) : null,
-      maxHeight: maxHeightEnabled ? (maxHeight ?? this.maxHeight) : null,
-      title: titleEnabled ? (title ?? this.title) : null,
+      minWidth: minWidthProvided ? (minWidth ?? this.minWidth) : null,
+      maxWidth: maxWidthProvided ? (maxWidth ?? this.maxWidth) : null,
+      minHeight: minHeightProvided ? (minHeight ?? this.minHeight) : null,
+      maxHeight: maxHeightProvided ? (maxHeight ?? this.maxHeight) : null,
+      title: titleProvided ? (title ?? this.title) : null,
       showCloseButton: showCloseButton ?? this.showCloseButton,
     );
   }
@@ -72,20 +72,8 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      barrierDismissable,
-      minWidth,
-      maxWidth,
-      minHeight,
-      maxHeight,
-      title,
-      showCloseButton,
-    ];
+    return [barrierDismissable, minWidth, maxWidth, minHeight, maxHeight, title, showCloseButton];
   }
 
-  bool get constraintsEnabled =>
-      minWidth != null ||
-      maxWidth != null ||
-      minHeight != null ||
-      maxHeight != null;
+  bool get constraintsProvided => minWidth != null || maxWidth != null || minHeight != null || maxHeight != null;
 }

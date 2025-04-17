@@ -18,27 +18,14 @@ final class MyoroTableColumn extends Equatable {
   /// apply [MyoroTableThemeExtension.titleColumnTextStyle].
   final Widget child;
 
-  const MyoroTableColumn({
-    required this.widthConfiguration,
-    required this.child,
-  });
+  const MyoroTableColumn({required this.widthConfiguration, required this.child});
 
   MyoroTableColumn.fake()
     : widthConfiguration = MyoroTableColumnWidthConfiguration.fake(),
-      child = Text(
-        faker.lorem.word(),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      );
+      child = Text(faker.lorem.word(), maxLines: 1, overflow: TextOverflow.ellipsis);
 
-  MyoroTableColumn copyWith({
-    MyoroTableColumnWidthConfiguration? widthConfiguration,
-    Widget? child,
-  }) {
-    return MyoroTableColumn(
-      widthConfiguration: widthConfiguration ?? this.widthConfiguration,
-      child: child ?? this.child,
-    );
+  MyoroTableColumn copyWith({MyoroTableColumnWidthConfiguration? widthConfiguration, Widget? child}) {
+    return MyoroTableColumn(widthConfiguration: widthConfiguration ?? this.widthConfiguration, child: child ?? this.child);
   }
 
   @override

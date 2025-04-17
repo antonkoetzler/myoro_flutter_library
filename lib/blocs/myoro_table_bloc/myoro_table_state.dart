@@ -13,26 +13,23 @@ final class MyoroTableState<T> extends Equatable {
   /// Items of the [MyoroTable].
   final MyoroTablePagination<T> pagination;
 
-  const MyoroTableState({
-    this.status = MyoroRequestEnum.idle,
-    this.errorMessage,
-    this.filters = const {},
-    required this.pagination,
-  }) : assert(
-         !(status == MyoroRequestEnum.error && errorMessage == null),
-         '[MyoroTableState<$T>]: [status] cannot be '
-         '[MyoroRequestEnum.error] while [errorMessage] is null',
-       );
+  const MyoroTableState({this.status = MyoroRequestEnum.idle, this.errorMessage, this.filters = const {}, required this.pagination})
+    : assert(
+        !(status == MyoroRequestEnum.error && errorMessage == null),
+        '[MyoroTableState<$T>]: [status] cannot be '
+        '[MyoroRequestEnum.error] while [errorMessage] is null',
+      );
 
   MyoroTableState<T> copyWith({
     MyoroRequestEnum? status,
     String? errorMessage,
+    bool errorMessageProvided = true,
     Set<MyoroFilter>? filters,
     MyoroTablePagination<T>? pagination,
   }) {
     return MyoroTableState(
       status: status ?? this.status,
-      errorMessage: errorMessage ?? this.errorMessage,
+      errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
       filters: filters ?? this.filters,
       pagination: pagination ?? this.pagination,
     );

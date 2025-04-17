@@ -69,9 +69,9 @@ final class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguratio
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
     Set<T>? initiallySelectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
-    bool onChangedEnabled = true,
+    bool onChangedProvided = true,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
-    bool checkboxOnChangedEnabled = true,
+    bool checkboxOnChangedProvided = true,
     MyoroMultiDropdownController<T>? controller,
   }) {
     return MyoroMultiDropdownConfiguration(
@@ -82,8 +82,8 @@ final class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguratio
       menuConfiguration: menuConfiguration ?? this.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
       initiallySelectedItems: initiallySelectedItems ?? this.initiallySelectedItems,
-      onChanged: onChangedEnabled ? (onChanged ?? this.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedEnabled ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
       controller: this.controller as MyoroMultiDropdownController<T>?,
     );
   }

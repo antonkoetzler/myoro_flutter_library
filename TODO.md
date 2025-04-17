@@ -10,8 +10,8 @@
 1. (**FIN**) improvement: Input formatters.
 1. (**FIN**) chore: Remove `finder` functions
 1. chore: Add `==` override, `hashCode` and `toString` on all theme extensions;
+1. (**FIN**) chore: `_Enabled` --> `_Provided` in `copyWith` functions
 1. chore: 100% code coverage
-1. chore: `_Enabled` --> `_Provided` in `copyWith` functions
 1. chore: Make widgets betters on mobile
 
 - Open a modal instead of `MyoroMenu` on mobile

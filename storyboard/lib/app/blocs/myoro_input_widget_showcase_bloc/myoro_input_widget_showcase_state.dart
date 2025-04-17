@@ -23,7 +23,7 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
   final TextStyle? labelTextStyle;
 
   /// If [MyoroInputConfiguration.suffix] will not be null.
-  final bool suffixEnabled;
+  final bool suffixProvided;
 
   /// [MyoroInputConfiguration.enabled].
   final bool enabled;
@@ -35,7 +35,7 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
   final bool showClearTextButton;
 
   /// If [MyoroInputConfiguration.checkboxOnChanged] will not be null.
-  final bool checkboxOnChangedEnabled;
+  final bool checkboxOnChangedProvided;
 
   const MyoroInputWidgetShowcaseState({
     this.typeEnum = MyoroInputWidgetShowcaseEnum.none,
@@ -45,59 +45,49 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
     this.label,
     this.placeholder,
     this.labelTextStyle,
-    this.suffixEnabled = false,
+    this.suffixProvided = false,
     this.enabled = true,
     this.readOnly = false,
     this.showClearTextButton = true,
-    this.checkboxOnChangedEnabled = false,
+    this.checkboxOnChangedProvided = false,
   });
 
   MyoroInputWidgetShowcaseState copyWith({
     MyoroInputWidgetShowcaseEnum? typeEnum,
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
-    bool textAlignEnabled = true,
     TextStyle? inputTextStyle,
-    bool inputTextStyleEnabled = true,
+    bool inputTextStyleProvided = true,
     String? label,
-    bool labelEnabled = true,
+    bool labelProvided = true,
     String? placeholder,
-    bool placeholderEnabled = true,
+    bool placeholderProvided = true,
     TextStyle? labelTextStyle,
-    bool labelTextStyleEnabled = true,
-    bool? suffixEnabled,
+    bool labelTextStyleProvided = true,
+    bool? suffixProvided,
     bool? enabled,
     bool? readOnly,
     bool? showClearTextButton,
-    bool? checkboxOnChangedEnabled,
+    bool? checkboxOnChangedProvided,
   }) {
     return MyoroInputWidgetShowcaseState(
       typeEnum: typeEnum ?? this.typeEnum,
       inputStyle: inputStyle ?? this.inputStyle,
       textAlign: textAlign ?? this.textAlign,
-      inputTextStyle:
-          inputTextStyleEnabled
-              ? (inputTextStyle ?? this.inputTextStyle)
-              : null,
-      label: labelEnabled ? (label ?? this.label) : null,
-      placeholder:
-          placeholderEnabled ? (placeholder ?? this.placeholder) : null,
-      labelTextStyle:
-          labelTextStyleEnabled
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
-      suffixEnabled: suffixEnabled ?? this.suffixEnabled,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? this.inputTextStyle) : null,
+      label: labelProvided ? (label ?? this.label) : null,
+      placeholder: placeholderProvided ? (placeholder ?? this.placeholder) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
+      suffixProvided: suffixProvided ?? this.suffixProvided,
       enabled: enabled ?? this.enabled,
       readOnly: readOnly ?? this.readOnly,
       showClearTextButton: showClearTextButton ?? this.showClearTextButton,
-      checkboxOnChangedEnabled:
-          checkboxOnChangedEnabled ?? this.checkboxOnChangedEnabled,
+      checkboxOnChangedProvided: checkboxOnChangedProvided ?? this.checkboxOnChangedProvided,
     );
   }
 
   @override
   String toString() =>
-      ''
       'MyoroInputWidgetShowcaseState(\n'
       '  typeEnum: $typeEnum,\n'
       '  inputStyle: $inputStyle,\n'
@@ -106,11 +96,11 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
       '  label: $label,\n'
       '  placeholder: $placeholder,\n'
       '  labelTextStyle: $labelTextStyle,\n'
-      '  suffixEnabled: $suffixEnabled,\n'
+      '  suffixProvided: $suffixProvided,\n'
       '  enabled: $enabled,\n'
       '  readOnly: $readOnly,\n'
       '  showClearTextButton: $showClearTextButton,\n'
-      '  checkboxOnChangedEnabled: $checkboxOnChangedEnabled,\n'
+      '  checkboxOnChangedProvided: $checkboxOnChangedProvided,\n'
       ');';
 
   @override
@@ -123,11 +113,11 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
       label,
       placeholder,
       labelTextStyle,
-      suffixEnabled,
+      suffixProvided,
       enabled,
       readOnly,
       showClearTextButton,
-      checkboxOnChangedEnabled,
+      checkboxOnChangedProvided,
     ];
   }
 }

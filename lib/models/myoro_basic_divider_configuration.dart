@@ -14,27 +14,24 @@ final class MyoroBasicDividerConfiguration extends Equatable {
   /// Padding of the divider.
   final EdgeInsets? padding;
 
-  const MyoroBasicDividerConfiguration({
-    required this.direction,
-    this.shortValue,
-    this.padding,
-  });
+  const MyoroBasicDividerConfiguration({required this.direction, this.shortValue, this.padding});
 
   MyoroBasicDividerConfiguration copyWith({
     Axis? direction,
     double? shortValue,
+    bool shortValueProvided = true,
     EdgeInsets? padding,
+    bool paddingProvided = true,
   }) {
     return MyoroBasicDividerConfiguration(
       direction: direction ?? this.direction,
-      shortValue: shortValue ?? this.shortValue,
-      padding: padding ?? this.padding,
+      shortValue: shortValueProvided ? (shortValue ?? this.shortValue) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
     );
   }
 
   MyoroBasicDividerConfiguration.fake()
-    : direction =
-          Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+    : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
       shortValue = faker.randomGenerator.decimal(),
       padding = null;
 

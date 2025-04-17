@@ -68,11 +68,11 @@ final class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfigura
     MyoroMenuConfiguration<T>? menuConfiguration,
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
     T? initiallySelectedItem,
-    bool initiallySelectedItemEnabled = true,
+    bool initiallySelectedItemProvided = true,
     MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
-    bool onChangedEnabled = true,
+    bool onChangedProvided = true,
     MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
-    bool checkboxOnChangedEnabled = true,
+    bool checkboxOnChangedProvided = true,
     MyoroSingularDropdownController<T>? controller,
   }) {
     return MyoroSingularDropdownConfiguration(
@@ -82,9 +82,9 @@ final class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfigura
       selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? this.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      initiallySelectedItem: initiallySelectedItemEnabled ? (initiallySelectedItem ?? this.initiallySelectedItem) : null,
-      onChanged: onChangedEnabled ? (onChanged ?? this.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedEnabled ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+      initiallySelectedItem: initiallySelectedItemProvided ? (initiallySelectedItem ?? this.initiallySelectedItem) : null,
+      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
       controller: this.controller as MyoroSingularDropdownController<T>?,
     );
   }

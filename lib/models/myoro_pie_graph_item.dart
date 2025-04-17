@@ -19,17 +19,14 @@ final class MyoroPieGraphItem extends Equatable {
 
   MyoroPieGraphItem.fake()
     : value = faker.randomGenerator.decimal(),
-      color =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+      color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       radius = faker.randomGenerator.decimal(min: 0);
 
-  MyoroPieGraphItem copyWith({double? value, Color? color, double? radius}) {
+  MyoroPieGraphItem copyWith({double? value, Color? color, bool colorProvided = true, double? radius, bool radiusProvided = true}) {
     return MyoroPieGraphItem(
       value: value ?? this.value,
-      color: color ?? this.color,
-      radius: radius ?? this.radius,
+      color: colorProvided ? (color ?? this.color) : null,
+      radius: radiusProvided ? (radius ?? this.radius) : null,
     );
   }
 

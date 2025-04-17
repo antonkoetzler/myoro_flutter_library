@@ -31,7 +31,7 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
   MyoroSliderWidgetShowcaseState copyWith({
     String? label,
     TextStyle? labelTextStyle,
-    bool labelTextStyleEnabled = true,
+    bool labelTextStyleProvided = true,
     double? width,
     bool? currentValueIndicatorTextBuilderEnabled,
     bool? maxValueIndicatorTextBuilderEnabled,
@@ -39,20 +39,11 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
   }) {
     return MyoroSliderWidgetShowcaseState(
       label: label ?? this.label,
-      labelTextStyle:
-          labelTextStyleEnabled
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       width: width ?? this.width,
-      currentValueIndicatorTextBuilderEnabled:
-          currentValueIndicatorTextBuilderEnabled ??
-          this.currentValueIndicatorTextBuilderEnabled,
-      maxValueIndicatorTextBuilderEnabled:
-          maxValueIndicatorTextBuilderEnabled ??
-          this.maxValueIndicatorTextBuilderEnabled,
-      footerIndicatorTextBuilderEnabled:
-          footerIndicatorTextBuilderEnabled ??
-          this.footerIndicatorTextBuilderEnabled,
+      currentValueIndicatorTextBuilderEnabled: currentValueIndicatorTextBuilderEnabled ?? this.currentValueIndicatorTextBuilderEnabled,
+      maxValueIndicatorTextBuilderEnabled: maxValueIndicatorTextBuilderEnabled ?? this.maxValueIndicatorTextBuilderEnabled,
+      footerIndicatorTextBuilderEnabled: footerIndicatorTextBuilderEnabled ?? this.footerIndicatorTextBuilderEnabled,
     );
   }
 
@@ -70,13 +61,6 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      label,
-      labelTextStyle,
-      width,
-      currentValueIndicatorTextBuilderEnabled,
-      maxValueIndicatorTextBuilderEnabled,
-      footerIndicatorTextBuilderEnabled,
-    ];
+    return [label, labelTextStyle, width, currentValueIndicatorTextBuilderEnabled, maxValueIndicatorTextBuilderEnabled, footerIndicatorTextBuilderEnabled];
   }
 }

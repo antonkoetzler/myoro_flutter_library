@@ -20,12 +20,14 @@ final class MyoroTableRow<T> extends Equatable {
 
   MyoroTableRow<T> copyWith({
     MyoroTableRowTapEvent<T>? onTapDown,
+    bool onTapDownProvided = true,
     MyoroTableRowTapEvent<T>? onTapUp,
+    bool onTapUpProvided = true,
     List<Widget>? cells,
   }) {
     return MyoroTableRow(
-      onTapDown: onTapDown ?? this.onTapDown,
-      onTapUp: onTapUp ?? this.onTapUp,
+      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
       cells: cells ?? this.cells,
     );
   }
