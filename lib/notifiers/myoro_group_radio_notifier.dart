@@ -2,8 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] for [MyoroGroupRadio].
-final class MyoroGroupRadioNotifier
-    extends ValueNotifier<MyoroGroupRadioItems> {
+class MyoroGroupRadioNotifier extends ValueNotifier<MyoroGroupRadioItems> {
   /// Checks if there the [MyoroGroupRadioItems] provided breaks the logic of the radios:
   /// 1. Radios cannot be empty;
   /// 2. Only one of the radios may be true.

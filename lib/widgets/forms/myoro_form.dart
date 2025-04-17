@@ -27,7 +27,7 @@ typedef MyoroFormBuilder<T> =
     );
 
 /// Base form widget. Should always be used for any type of form content.
-final class MyoroForm<T> extends StatefulWidget {
+class MyoroForm<T> extends StatefulWidget {
   /// Controller in the case that the controller needs to be used outside of [builder]'s scope.
   final MyoroFormController? controller;
 

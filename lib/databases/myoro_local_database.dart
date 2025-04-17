@@ -8,7 +8,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 /// A note on [where] & [whereArgs] arguments.
 /// - [where]: SQL syntax placeholders of the condition you are creating, i.e. 'foo = ?', 'foo = ? AND bar = ? OR baz = ?';
 /// - [whereArgs]: List of the values of the placeholders, i.e. ['foo'], ['foo', true, 5];
-final class MyoroLocalDatabase {
+class MyoroLocalDatabase {
   /// Instance of [MyoroLocalDatabase] so we don't recreate a
   /// [MyoroLocalDatabase] object everytime [instance] is called.
   static final _instance = MyoroLocalDatabase();

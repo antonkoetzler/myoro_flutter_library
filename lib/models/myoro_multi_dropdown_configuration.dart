@@ -10,8 +10,7 @@ typedef MyoroMultiDropdownConfigurationCheckboxOnChanged<T> =
     void Function(bool enabled, Set<T>? selectedItems);
 
 /// Configuration model of [MyoroMultiDropdown].
-final class MyoroMultiDropdownConfiguration<T>
-    extends MyoroDropdownConfiguration<T> {
+class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   /// Initial selected item.
   ///
   /// Updates the selected items when you update this value within the same dropdown [Widget] lifespan.

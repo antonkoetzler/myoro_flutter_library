@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox].
-final class MyoroGroupCheckboxThemeExtension
+class MyoroGroupCheckboxThemeExtension
     extends ThemeExtension<MyoroGroupCheckboxThemeExtension> {
   /// Default direction of the [MyoroGroupCheckbox].
   final Axis direction;

@@ -21,7 +21,7 @@ typedef MyoroInputOnFieldSubmitted = void Function(String text);
 typedef MyoroInputOnChanged = void Function(String text);
 
 /// Model to load all of the configurable arguments of [MyoroInput].
-final class MyoroInputConfiguration extends Equatable {
+class MyoroInputConfiguration extends Equatable {
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
   static const textAlignDefaultValue = TextAlign.start;
   static const contentPaddingDefaultValue = EdgeInsets.only(

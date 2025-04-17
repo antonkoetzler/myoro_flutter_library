@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Base modal. Every modal should be implementing [MyoroModal] like so.
 ///
 /// ``` dart
-/// final class FooModal extends StatelessWidget {
+/// class FooModal extends StatelessWidget {
 ///   // Has a private constructor.
 ///   const FooModal._();
 ///
@@ -15,7 +15,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///   }
 /// }
 /// ```
-final class MyoroModal extends StatelessWidget {
+class MyoroModal extends StatelessWidget {
   /// Configuration of the modal.
   final MyoroModalConfiguration? configuration;
 

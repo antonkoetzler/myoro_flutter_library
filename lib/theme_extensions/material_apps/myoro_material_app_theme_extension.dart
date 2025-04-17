@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroMaterialApp].
-final class MyoroMaterialAppThemeExtension
+class MyoroMaterialAppThemeExtension
     extends ThemeExtension<MyoroMaterialAppThemeExtension> {
   const MyoroMaterialAppThemeExtension();
 

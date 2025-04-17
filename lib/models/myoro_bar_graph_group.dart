@@ -3,7 +3,7 @@ import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Group of bars in a [MyoroBarGraph].
-final class MyoroBarGraphGroup extends Equatable {
+class MyoroBarGraphGroup extends Equatable {
   /// Position of the group in the x axis.
   final int x;
 

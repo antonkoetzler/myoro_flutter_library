@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroHoverButton].
-final class MyoroHoverButtonThemeExtension
+class MyoroHoverButtonThemeExtension
     extends ThemeExtension<MyoroHoverButtonThemeExtension> {
   /// [MyoroColorDesignSystem.transparent] by default.
   final Color primaryColor;

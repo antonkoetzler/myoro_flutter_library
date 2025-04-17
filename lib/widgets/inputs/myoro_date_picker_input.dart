@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Date picker input (click date, not type).
-final class MyoroDatePickerInput extends StatefulWidget {
+class MyoroDatePickerInput extends StatefulWidget {
   /// [MyoroInput] configuration.
   final MyoroInputConfiguration configuration;
 

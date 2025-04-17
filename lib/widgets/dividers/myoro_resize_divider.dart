@@ -6,7 +6,7 @@ typedef MyoroResizeDividerDragCallback =
     void Function(DragUpdateDetails details);
 
 /// A divider with a click/tap + drag resize functionality.
-final class MyoroResizeDivider extends StatelessWidget {
+class MyoroResizeDivider extends StatelessWidget {
   /// Configuration model with all configurable options of [MyoroBasicDivider].
   final MyoroBasicDividerConfiguration configuration;
 

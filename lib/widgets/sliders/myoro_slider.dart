@@ -8,7 +8,7 @@ typedef MyoroSliderIndicatorTextBuilder = String Function(double value);
 typedef MyoroSliderOnChanged = void Function(double value);
 
 /// A horizontal slider.
-final class MyoroSlider extends StatefulWidget {
+class MyoroSlider extends StatefulWidget {
   /// Label of the slider.
   final String label;
 

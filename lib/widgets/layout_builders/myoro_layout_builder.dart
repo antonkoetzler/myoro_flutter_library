@@ -20,7 +20,7 @@ typedef MyoroLayoutBuilderChildCallback =
 /// `LayoutBuilder does not support returning intrinsic dimensions.`
 /// `Calculating the intrinsic dimensions would require running the layout callback speculatively, which`
 /// `might mutate the live render object tree.`
-final class MyoroLayoutBuilder extends StatefulWidget {
+class MyoroLayoutBuilder extends StatefulWidget {
   final MyoroLayoutBuilderChildCallback builder;
 
   const MyoroLayoutBuilder({super.key, required this.builder});

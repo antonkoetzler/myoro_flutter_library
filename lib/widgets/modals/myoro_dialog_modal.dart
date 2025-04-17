@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple yes/no dialog modal.
-final class MyoroDialogModal extends StatelessWidget {
+class MyoroDialogModal extends StatelessWidget {
   /// Whether or not to invert the buttons in [_FooterButtons].
   final bool? invertButtons;
 

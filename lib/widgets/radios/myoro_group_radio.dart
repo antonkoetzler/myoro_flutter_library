@@ -9,7 +9,7 @@ typedef MyoroGroupRadioOnChanged =
     void Function(String keyChanged, MyoroGroupRadioItems items);
 
 /// A group of [MyoroRadio]s.
-final class MyoroGroupRadio extends StatefulWidget {
+class MyoroGroupRadio extends StatefulWidget {
   /// [ValueNotifier] of the [MyoroGroupRadio] for more complex scope situations.
   final MyoroGroupRadioNotifier? notifier;
 

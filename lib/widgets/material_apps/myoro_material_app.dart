@@ -15,7 +15,7 @@ typedef MyoroMaterialAppThemeExtensionsBuilder =
     List<ThemeExtension> Function(ColorScheme colorScheme, TextTheme textTheme);
 
 /// Root widget of your [App] widget in main.dart.
-final class MyoroMaterialApp extends StatelessWidget {
+class MyoroMaterialApp extends StatelessWidget {
   /// Title of the application.
   ///
   /// However, a plugin like [window_manager] needs to be used

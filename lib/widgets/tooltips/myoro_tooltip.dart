@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Simple tooltip.
-final class MyoroTooltip extends StatelessWidget {
+class MyoroTooltip extends StatelessWidget {
   /// Margin [EdgeInsets] of the tooltip.
   final EdgeInsets? margin;
 

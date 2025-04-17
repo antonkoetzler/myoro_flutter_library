@@ -3,7 +3,7 @@ import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model used to encapsulate the width configuration of a [MyoroTableColumn].
-final class MyoroTableColumnWidthConfiguration extends Equatable {
+class MyoroTableColumnWidthConfiguration extends Equatable {
   /// Width configuration enum.
   final MyoroTableColumnWidthConfigurationEnum enumValue;
 

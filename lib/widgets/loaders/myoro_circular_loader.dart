@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple circular loading widget.
-final class MyoroCircularLoader extends StatelessWidget {
+class MyoroCircularLoader extends StatelessWidget {
   /// Color of the [MyoroCircularLoader].
   final Color? color;
 

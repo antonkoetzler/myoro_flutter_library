@@ -3,7 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 /// Root widget of any screen widget.
-final class MyoroScreen extends StatefulWidget {
+class MyoroScreen extends StatefulWidget {
   /// [MyoroDrawerController] if it needs to be controlled externally.
   final MyoroDrawerController? drawerController;
 

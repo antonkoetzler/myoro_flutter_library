@@ -8,7 +8,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// set [duration] has passed, [run.callback] will not be executed.
 ///
 /// To use this class, just create a variable of it and start calling [run]!
-final class MyoroThrottleController {
+class MyoroThrottleController {
   /// [Duration] to be awaited after unthrottled [run] execution.
   final Duration duration;
 

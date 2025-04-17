@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base drawer.
-final class MyoroDrawer extends StatelessWidget {
+class MyoroDrawer extends StatelessWidget {
   /// Title of the drawer.
   final String? title;
 

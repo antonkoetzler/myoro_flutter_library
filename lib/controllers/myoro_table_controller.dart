@@ -2,7 +2,7 @@ import 'package:myoro_flutter_library/blocs/myoro_table_bloc/myoro_table_bloc.da
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of a [MyoroTable].
-final class MyoroTableController<T> {
+class MyoroTableController<T> {
   static const fetchAfterwardsDefaultValue = true;
 
   /// [MyoroTableBloc] that is connected to this [MyoroTableController].

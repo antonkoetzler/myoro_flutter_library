@@ -2,8 +2,7 @@ import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_b
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroSingularDropdown].
-final class MyoroSingularDropdownController<T>
-    extends MyoroDropdownController<T> {
+class MyoroSingularDropdownController<T> extends MyoroDropdownController<T> {
   @override
   void toggleItem(T item) {
     bloc.add(SetSelectedItemsEvent({item}));

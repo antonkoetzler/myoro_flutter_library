@@ -5,7 +5,7 @@ import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Bar of a [MyoroBarGraphGroup].
-final class MyoroBarGraphBar extends Equatable {
+class MyoroBarGraphBar extends Equatable {
   /// Position of the bar on the y axis.
   final double y;
 

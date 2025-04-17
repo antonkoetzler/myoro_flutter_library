@@ -7,7 +7,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroHoverButtonOnHover = void Function(bool hovered);
 
 /// Configuration model for passing the configuration members of [MyoroHoverButton].
-final class MyoroHoverButtonConfiguration extends Equatable {
+class MyoroHoverButtonConfiguration extends Equatable {
   /// 1. Color of the background when not hovered;
   /// 2. Color of the content when hovered.
   final Color? primaryColor;

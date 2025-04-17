@@ -1,6 +1,6 @@
 import 'package:myoro_flutter_library/blocs/myoro_form_bloc/myoro_form_bloc.dart';
 
-final class MyoroFormController {
+class MyoroFormController {
   late final MyoroFormBloc _bloc;
 
   /// Start the form execution process.

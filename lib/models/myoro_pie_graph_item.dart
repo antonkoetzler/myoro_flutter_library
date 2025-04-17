@@ -5,7 +5,7 @@ import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Item/section in a [MyoroPieGraph].
-final class MyoroPieGraphItem extends Equatable {
+class MyoroPieGraphItem extends Equatable {
   /// Value of the item.
   final double value;
 

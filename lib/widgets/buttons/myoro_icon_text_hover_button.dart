@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Creates a [HoverButton] that accepts an icon and/or text.
-final class MyoroIconTextHoverButton extends StatelessWidget {
+class MyoroIconTextHoverButton extends StatelessWidget {
   /// [MyoroHoverButton] configuration.
   final MyoroHoverButtonConfiguration? configuration;
 

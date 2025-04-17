@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// NOTE: No widget showcase in the storyboard for [MyoroSnackBarContainer]
 /// as it is used in [MyoroSnackBar]'s widget showcase.
-final class MyoroSnackBarContainer extends SnackBar {
+class MyoroSnackBarContainer extends SnackBar {
   MyoroSnackBarContainer({
     // Key for whatever purpose.
     Key? key,

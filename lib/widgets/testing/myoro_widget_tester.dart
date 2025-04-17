@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Widget] that must be created when creating new widget tests.
-final class MyoroWidgetTester extends StatelessWidget {
+class MyoroWidgetTester extends StatelessWidget {
   /// [ThemeMode] of the test.
   final ThemeMode themeMode;
 

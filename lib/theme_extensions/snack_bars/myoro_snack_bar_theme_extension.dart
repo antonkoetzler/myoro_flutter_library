@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSnackBar].
-final class MyoroSnackBarThemeExtension
+class MyoroSnackBarThemeExtension
     extends ThemeExtension<MyoroSnackBarThemeExtension> {
   /// Background color of the snack bar.
   final Color primaryColor;

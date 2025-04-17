@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model of a title column of a [MyoroTable].
-final class MyoroTableColumn extends Equatable {
+class MyoroTableColumn extends Equatable {
   /// Width configuration of the [MyoroTableColumn].
   final MyoroTableColumnWidthConfiguration widthConfiguration;
 

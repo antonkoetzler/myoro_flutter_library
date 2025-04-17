@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroRadioOnChanged = void Function(bool enabled);
 
 /// Singular radio(box) [Widget].
-final class MyoroRadio extends StatefulWidget {
+class MyoroRadio extends StatefulWidget {
   /// [ValueNotifier] to manage state externally.
   final MyoroRadioNotifier? notifier;
 

@@ -10,7 +10,7 @@ import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_b
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Singular item dropdown.
-final class MyoroSingularDropdown<T> extends StatelessWidget {
+class MyoroSingularDropdown<T> extends StatelessWidget {
   final MyoroSingularDropdownConfiguration<T> configuration;
 
   const MyoroSingularDropdown({super.key, required this.configuration});

@@ -9,7 +9,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// 2 "modes":
 /// 1. [icon] and/or [text] is provided; a simple [MyoroMenuItem];
 /// 2. [itemBuilder] provided for a custom [MyoroMenuItem] widget.
-final class MyoroMenuItem extends Equatable {
+class MyoroMenuItem extends Equatable {
   /// If the item is isHovered or not.
   final bool? isHovered;
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A bar graph.
-final class MyoroBarGraph extends StatelessWidget {
+class MyoroBarGraph extends StatelessWidget {
   /// If the items of the graph should be sorted.
   final bool sorted;
 

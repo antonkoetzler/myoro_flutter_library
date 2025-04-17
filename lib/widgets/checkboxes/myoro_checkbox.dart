@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroCheckboxOnChanged = void Function(bool value);
 
 /// A checkbox that can have a label on the right side of it.
-final class MyoroCheckbox extends StatefulWidget {
+class MyoroCheckbox extends StatefulWidget {
   /// [ValueNotifier] for more complex situations where [onChanged] does not suffice.
   final MyoroCheckboxNotifier? notifier;
 

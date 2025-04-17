@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroTableRowTapEvent<T> = void Function(BuildContext context, T item);
 
 /// A row within a [MyoroTable].
-final class MyoroTableRow<T> extends Equatable {
+class MyoroTableRow<T> extends Equatable {
   /// Function that is executed when a tap is received.
   final MyoroTableRowTapEvent<T>? onTapDown;
 

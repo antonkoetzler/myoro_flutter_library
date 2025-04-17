@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroModal].
-final class MyoroModalThemeExtension
+class MyoroModalThemeExtension
     extends ThemeExtension<MyoroModalThemeExtension> {
   /// Background color of the modal.
   final Color primaryColor;

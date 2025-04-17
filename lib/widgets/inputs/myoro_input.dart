@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [MyoroInput] also serves as a base input for creating other inputs in the commons folder.
 /// A [MyoroInputConfiguration] is passed to every other input [Widget] in the commons folder.
 /// This means that [MyoroInput] should always be completely compatible with the other inputs.
-final class MyoroInput extends StatefulWidget {
+class MyoroInput extends StatefulWidget {
   /// Configuration of the input.
   final MyoroInputConfiguration configuration;
 

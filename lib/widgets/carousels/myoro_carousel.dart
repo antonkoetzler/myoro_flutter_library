@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Slider carousel.
-final class MyoroCarousel extends StatefulWidget {
+class MyoroCarousel extends StatefulWidget {
   /// Direction that the carousel is sliding in.
   final Axis direction;
 

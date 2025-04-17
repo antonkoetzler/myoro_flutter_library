@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// Example of using the widget with [MyoroScreen]:
 /// ``` dart
-/// final class FooAppBar extends StatelessWidget implements PreferredSizeWidget {
+/// class FooAppBar extends StatelessWidget implements PreferredSizeWidget {
 ///   const FooAppBar({super.key});
 ///
 ///   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -16,7 +16,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///   }
 /// }
 /// ```
-final class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
   /// If the app bar contains a border at the bottom.
   final bool bordered;
 

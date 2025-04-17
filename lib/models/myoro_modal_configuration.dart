@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model to store the configuration members of [MyoroModal] that
 /// may be altered within other modals to not repeat the members.
-final class MyoroModalConfiguration extends Equatable {
+class MyoroModalConfiguration extends Equatable {
   /// If you click everywhere but the modal, it closes
   final bool? barrierDismissable;
 

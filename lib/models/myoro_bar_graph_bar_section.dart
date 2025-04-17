@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// For a [MyoroBarGraphBar] with a non-empty [MyoroBarGraphBar.barSections],
 /// [MyoroBarGraphBarSection] will occupy a specified piece of a [MyoroBarGraph].
-final class MyoroBarGraphBarSection extends Equatable {
+class MyoroBarGraphBarSection extends Equatable {
   /// Starting position of the bar section.
   final double fromY;
 

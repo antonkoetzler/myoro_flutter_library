@@ -7,7 +7,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroSearchInputRequest<T> = FutureOr<Set<T>> Function(String text);
 
 /// Search input. Shows a dropdown after making a search request.
-final class MyoroSearchInput<T> extends StatefulWidget {
+class MyoroSearchInput<T> extends StatefulWidget {
   /// [MyoroInput] configuration.
   final MyoroInputConfiguration configuration;
 

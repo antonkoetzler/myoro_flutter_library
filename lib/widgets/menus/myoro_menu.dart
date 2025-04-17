@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A menu widget that should not be used in production code, it is used
 /// within [_MyoroDropdown] & [MyoroInput] similar to the software dmenu.
-final class MyoroMenu<T> extends StatefulWidget {
+class MyoroMenu<T> extends StatefulWidget {
   /// Configuration options.
   final MyoroMenuConfiguration<T> configuration;
 

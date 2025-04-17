@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A pie (or donut if specified) chart.
-final class MyoroPieGraph extends StatelessWidget {
+class MyoroPieGraph extends StatelessWidget {
   /// Pie/donut enum.
   final MyoroPieGraphEnum typeEnum;
 

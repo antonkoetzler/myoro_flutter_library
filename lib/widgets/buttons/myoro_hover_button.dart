@@ -9,7 +9,7 @@ typedef MyoroHoverButtonBuilder =
 ///
 /// Should be avoided by using pre-built hover buttons like [IconTextMyoroHoverButton].
 /// However, if you need to create a complex hover button, use a [MyoroHoverButton].
-final class MyoroHoverButton extends StatefulWidget {
+class MyoroHoverButton extends StatefulWidget {
   /// Configuration members.
   final MyoroHoverButtonConfiguration? configuration;
 

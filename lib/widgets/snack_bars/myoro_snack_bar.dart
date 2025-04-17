@@ -7,7 +7,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// snack bar that will be displayed within a [MyoroSnackBarContainer].
 ///
 /// Two main "modes": Providing a [Widget] or a simple [String] message for the content.
-final class MyoroSnackBar extends StatelessWidget {
+class MyoroSnackBar extends StatelessWidget {
   /// Type of snack bar dialog.
   final MyoroSnackBarTypeEnum snackBarType;
 

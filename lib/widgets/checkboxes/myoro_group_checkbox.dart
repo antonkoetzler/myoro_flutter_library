@@ -9,7 +9,7 @@ typedef MyoroGroupCheckboxOnChanged =
     void Function(String key, MyoroGroupCheckboxItems items);
 
 /// A group of [MyoroCheckbox]s.
-final class MyoroGroupCheckbox extends StatefulWidget {
+class MyoroGroupCheckbox extends StatefulWidget {
   /// [ValueNotifier] of the [MyoroGroupCheckbox] for more complex scope situations.
   final MyoroGroupCheckboxNotifier? notifier;
 

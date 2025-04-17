@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] to manage the value of a [MyoroCheckbox].
-final class MyoroCheckboxNotifier extends ValueNotifier<bool> {
+class MyoroCheckboxNotifier extends ValueNotifier<bool> {
   MyoroCheckboxNotifier([bool? enabled]) : super(enabled ?? false);
 
   /// Toggles the [MyoroCheckbox].

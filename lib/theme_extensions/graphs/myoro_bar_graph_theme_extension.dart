@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroBarGraph].
-final class MyoroBarGraphThemeExtension
+class MyoroBarGraphThemeExtension
     extends ThemeExtension<MyoroBarGraphThemeExtension> {
   /// Border of the graph's content (the square holding the bars).
   final Border border;

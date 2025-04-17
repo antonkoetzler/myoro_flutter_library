@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroCarousel].
-final class MyoroCarouselThemeExtension
+class MyoroCarouselThemeExtension
     extends ThemeExtension<MyoroCarouselThemeExtension> {
   /// [MyoroIconTextHoverButton.bordered] of [_TraversalButton].
   final bool traversalButtonBordered;

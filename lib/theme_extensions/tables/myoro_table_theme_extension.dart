@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroTable].
-final class MyoroTableThemeExtension
+class MyoroTableThemeExtension
     extends ThemeExtension<MyoroTableThemeExtension> {
   /// Spacing of items in [_PageNumberControl]
   final double pageNumberControlSpacing;

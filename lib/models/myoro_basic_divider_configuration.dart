@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration model to store the class members of [MyoroBasicDivider].
-final class MyoroBasicDividerConfiguration extends Equatable {
+class MyoroBasicDividerConfiguration extends Equatable {
   /// Direction of the divider.
   final Axis direction;
 

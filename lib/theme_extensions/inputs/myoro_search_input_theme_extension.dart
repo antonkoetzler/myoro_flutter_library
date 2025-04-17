@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSearchInput].
-final class MyoroSearchInputThemeExtension
+class MyoroSearchInputThemeExtension
     extends ThemeExtension<MyoroSearchInputThemeExtension> {
   /// Spacing in between the [MyoroInput] & [_SearchSection].
   final double spacing;

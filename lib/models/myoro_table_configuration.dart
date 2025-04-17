@@ -13,7 +13,7 @@ typedef MyoroTableConfigurationPaginationRequest<T> =
     FutureOr<MyoroTablePagination<T>> Function(Set<MyoroFilter> filters);
 
 /// Configuration model for [MyoroTable].
-final class MyoroTableConfiguration<T> extends Equatable {
+class MyoroTableConfiguration<T> extends Equatable {
   static const showPaginationControlsDefaultValue = false;
 
   /// [MyoroTableController] of the [MyoroTable].

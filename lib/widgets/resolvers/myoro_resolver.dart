@@ -27,7 +27,7 @@ typedef MyoroResolverBuilder<T> =
     );
 
 /// Widget used to make any kind of asyncronous request with having to create a BloC.
-final class MyoroResolver<T> extends StatefulWidget {
+class MyoroResolver<T> extends StatefulWidget {
   /// Controller in the case that the controller needs to be used outside of [builder]'s scope.
   final MyoroResolverController? controller;
 

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 
 /// A model to present a filter (of a request for example).
-final class MyoroFilter<T> extends Equatable {
+class MyoroFilter<T> extends Equatable {
   /// Key of the filter.
   final String key;
 

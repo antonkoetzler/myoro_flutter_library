@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base card.
-final class MyoroCard extends StatelessWidget {
+class MyoroCard extends StatelessWidget {
   /// Title of the card.
   final String? title;
 

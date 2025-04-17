@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroIconTextHoverButton].
-final class MyoroIconTextHoverButtonThemeExtension
+class MyoroIconTextHoverButtonThemeExtension
     extends ThemeExtension<MyoroIconTextHoverButtonThemeExtension> {
   /// [MyoroColorDesignSystem.primary] by default.
   final Color primaryColor;

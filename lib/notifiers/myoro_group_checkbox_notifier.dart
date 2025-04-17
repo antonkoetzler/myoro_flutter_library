@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] for [MyoroGroupCheckbox].
-final class MyoroGroupCheckboxNotifier
+class MyoroGroupCheckboxNotifier
     extends ValueNotifier<MyoroGroupCheckboxItems> {
   MyoroGroupCheckboxNotifier(super._value);
 

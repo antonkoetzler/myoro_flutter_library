@@ -10,7 +10,7 @@ typedef MyoroSingularDropdownConfigurationCheckboxOnChanged<T> =
     void Function(bool enabled, T? selectedItem);
 
 /// Configuration model of [MyoroSingularDropdown].
-final class MyoroSingularDropdownConfiguration<T>
+class MyoroSingularDropdownConfiguration<T>
     extends MyoroDropdownConfiguration<T> {
   /// Initial selected item.
   ///

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox]
-final class MyoroCheckboxThemeExtension
+class MyoroCheckboxThemeExtension
     extends ThemeExtension<MyoroCheckboxThemeExtension> {
   /// Background color of the checkbox when selected.
   final Color activeColor;
