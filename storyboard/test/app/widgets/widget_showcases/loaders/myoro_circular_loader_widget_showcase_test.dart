@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroCircularLoaderWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroCircularLoaderWidgetShowcase()),
       ),
     );
     await tester.pump();
@@ -21,17 +18,7 @@ void main() {
     expect(find.byType(MyoroCircularLoaderWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroCircularLoader), findsOneWidget);
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<Color> &&
-            w.configuration.label == 'Color',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroSlider.finder(label: 'Size', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<Color> && w.configuration.label == 'Color'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, 'Size'), findsOneWidget);
   });
 }

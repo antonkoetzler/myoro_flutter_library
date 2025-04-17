@@ -12,10 +12,7 @@ final class MyoroSingularDropdownWidgetShowcase extends StatelessWidget {
   /// See myoro_singular_dropdown_widget_showcase_test.dart for it's application.
   final Key? widgetShowcaseKey;
 
-  const MyoroSingularDropdownWidgetShowcase({
-    this.widgetShowcaseKey,
-    super.key,
-  });
+  const MyoroSingularDropdownWidgetShowcase({this.widgetShowcaseKey, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +26,6 @@ final class MyoroSingularDropdownWidgetShowcase extends StatelessWidget {
           MyoroDropdownWidgetShowcaseEnabledOption(),
           MyoroDropdownWidgetShowcaseAllowItemClearingOption(),
           MyoroDropdownWidgetShowcaseCheckboxOnChangedOption(),
-          MyoroDropdownWidgetShowcaseMenuMaxHeightOption(),
         ],
       ),
     );
@@ -41,24 +37,16 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroDropdownWidgetShowcaseBloc,
-      MyoroDropdownWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroDropdownWidgetShowcaseBloc, MyoroDropdownWidgetShowcaseState>(
       builder: (_, MyoroDropdownWidgetShowcaseState state) {
         return MyoroSingularDropdown(
           configuration: MyoroSingularDropdownConfiguration<String>(
             label: state.label,
             enabled: state.enabled,
             allowItemClearing: state.allowItemClearing,
-            // TODO: Add widget showcase options.
-            menuConfiguration: MyoroMenuConfiguration(
-              request: _request,
-              itemBuilder: _itemBuilder,
-            ),
+            menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
             selectedItemBuilder: _selectedItemBuilder,
-            checkboxOnChanged:
-                state.checkboxOnChangedEnabled ? ((_, __) {}) : null,
+            checkboxOnChanged: state.checkboxOnChangedEnabled ? ((_, __) {}) : null,
           ),
         );
       },
@@ -66,10 +54,7 @@ final class _Widget extends StatelessWidget {
   }
 
   Set<String> _request() {
-    return List.generate(
-      faker.randomGenerator.integer(50),
-      (int index) => '#$index: ${faker.randomGenerator.string(50)}',
-    ).toSet();
+    return List.generate(faker.randomGenerator.integer(50), (int index) => '#$index: ${faker.randomGenerator.string(50)}').toSet();
   }
 
   MyoroMenuItem _itemBuilder(String item) {

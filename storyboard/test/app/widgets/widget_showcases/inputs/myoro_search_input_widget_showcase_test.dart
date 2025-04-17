@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -9,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroSearchInputWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroSearchInputWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -20,12 +18,6 @@ void main() {
     expect(find.byType(MyoroSearchInputWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroSearchInput<String>), findsOneWidget);
-    expect(
-      MyoroCheckbox.finder(
-        label: '[MyoroSearchInput.requestWhenChanged]',
-        labelEnabled: true,
-      ),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[MyoroSearchInput.requestWhenChanged]'), findsOneWidget);
   });
 }

@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroCarouselWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroCarouselWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -24,34 +21,17 @@ void main() {
 
     // [_DirectionOption].
     expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<Axis> &&
-            w.configuration.label == 'Direction' &&
-            !w.configuration.allowItemClearing,
-      ),
+      find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<Axis> && w.configuration.label == 'Direction' && !w.configuration.allowItemClearing),
       findsOneWidget,
     );
 
     // [_DisplayTraversalButtonsOptions].
-    expect(
-      MyoroCheckbox.finder(
-        label: 'Display traversal buttons?',
-        labelEnabled: true,
-      ),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroCheckbox, 'Display traversal buttons?'), findsOneWidget);
 
     // [_AutoplayOption].
-    expect(
-      MyoroCheckbox.finder(label: 'Autoplay', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroCheckbox, 'Autoplay'), findsOneWidget);
 
     // [_AutoplayIntervalDurationOption].
-    expect(
-      MyoroSlider.finder(label: 'Autoplay duration', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroSlider, 'Autoplay duration'), findsOneWidget);
   });
 }

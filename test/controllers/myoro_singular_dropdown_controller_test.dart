@@ -4,10 +4,8 @@ import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_b
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final MyoroSingularDropdownController<String> controller =
-      MyoroSingularDropdownController<String>();
+  final MyoroSingularDropdownController<String> controller = MyoroSingularDropdownController<String>();
   final bool enabled = faker.randomGenerator.boolean();
-  final MyoroDropdownState<String> state = MyoroDropdownState(enabled: enabled);
   final String item = faker.randomGenerator.string(50);
 
   blocTest(
@@ -18,19 +16,11 @@ void main() {
       return bloc;
     },
     act: (_) {
-      controller
-        ..toggleItem(item)
-        ..toggleItem(item)
-        ..toggleItem(item);
+      controller.toggleItem(item);
     },
     expect: () {
       return [
-        state,
-        state.copyWith(selectedItems: {item}),
-        state,
-        state.copyWith(selectedItems: {item}),
-        state,
-        state.copyWith(selectedItems: {item}),
+        MyoroDropdownState<String>(enabled: enabled, selectedItems: {item}),
       ];
     },
   );

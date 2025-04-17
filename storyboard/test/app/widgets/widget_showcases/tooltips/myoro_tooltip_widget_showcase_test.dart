@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -9,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroTooltipWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroTooltipWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -21,13 +19,7 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroTooltip), findsOneWidget);
     expect(find.text('Hover over me!'), findsOneWidget);
-    expect(
-      MyoroSlider.finder(label: '[MyoroTooltip.margin]', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroInput.finder(label: '[MyoroTooltip.text]', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSlider && w.label == '[MyoroTooltip.margin]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroInput && w.configuration.label == '[MyoroTooltip.text]'), findsOneWidget);
   });
 }

@@ -17,8 +17,7 @@ void main() {
     },
     suffix: const SizedBox.shrink(),
   );
-  final formatter =
-      faker.randomGenerator.boolean() ? MyoroTimeInputFormatter() : null;
+  final formatter = faker.randomGenerator.boolean() ? MyoroTimeInputFormatter() : null;
 
   tearDown(() => controller.dispose());
 
@@ -30,13 +29,9 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroInputThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
             border = configuration.getBorder(context);
-            return MyoroInput(
-              configuration: configuration,
-              formatter: formatter,
-            );
+            return MyoroInput(configuration: configuration, formatter: formatter);
           },
         ),
       ),
@@ -58,33 +53,20 @@ void main() {
             // (w.children[2] as Expanded).child is _TextFormField &&
             w.children[3] is SizedBox &&
             (w.children[3] as SizedBox).width == themeExtension.spacing &&
-            w.children.last
-                is SizedBox, // The [SizedBox] inserted in [configuration].
+            w.children.last is SizedBox, // The [SizedBox] inserted in [configuration].
       ),
       findsOneWidget,
     );
 
     // [_Checkbox].
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroCheckbox &&
-            w.initialValue == configuration.enabled &&
-            w.onChanged != null,
-      ),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.initialValue == configuration.enabled && w.onChanged != null), findsOneWidget);
 
     // [_TextFormField].
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
             w is Container &&
-            w.decoration ==
-                BoxDecoration(
-                  color: themeExtension.primaryColor,
-                  borderRadius: themeExtension.borderRadius,
-                ) &&
+            w.decoration == BoxDecoration(color: themeExtension.primaryColor, borderRadius: themeExtension.borderRadius) &&
             w.child is ValueListenableBuilder<bool>,
       ),
       findsOneWidget,
@@ -95,27 +77,15 @@ void main() {
             w is TextField &&
             w.ignorePointers == false &&
             w.readOnly == (configuration.readOnly ?? false) &&
-            w.decoration?.floatingLabelBehavior ==
-                themeExtension.labelBehavior &&
+            w.decoration?.floatingLabelBehavior == themeExtension.labelBehavior &&
             w.decoration?.hintText == configuration.placeholder &&
             w.decoration?.enabledBorder == border &&
             w.decoration?.focusedBorder == border &&
-            w.decoration?.errorBorder ==
-                border.copyWith(
-                  borderSide: border.borderSide.copyWith(
-                    color: themeExtension.errorBorderColor,
-                  ),
-                ) &&
+            w.decoration?.errorBorder == border.copyWith(borderSide: border.borderSide.copyWith(color: themeExtension.errorBorderColor)) &&
             w.decoration?.disabledBorder ==
-                border.copyWith(
-                  borderSide: border.borderSide.copyWith(
-                    color: border.borderSide.color.withValues(
-                      alpha: themeExtension.disabledOpacity,
-                    ),
-                  ),
-                ) &&
+                border.copyWith(borderSide: border.borderSide.copyWith(color: border.borderSide.color.withValues(alpha: themeExtension.disabledOpacity))) &&
             w.decoration?.isDense == themeExtension.isDense &&
-            w.textAlign == (configuration.textAlign ?? TextAlign.start) &&
+            w.textAlign == configuration.textAlign &&
             w.cursorHeight == themeExtension.cursorHeight,
       ),
       findsOneWidget,
@@ -130,30 +100,23 @@ void main() {
               w.padding == const EdgeInsets.only(bottom: 5) &&
               w.child is Text &&
               (w.child as Text).data == configuration.label &&
-              (w.child as Text).style ==
-                  (configuration.labelTextStyle ??
-                      themeExtension.labelTextStyle),
+              (w.child as Text).style == (configuration.labelTextStyle ?? themeExtension.labelTextStyle),
         ),
         findsOneWidget,
       );
     }
 
     // [_ClearTextButton].
-    if (configuration.showClearTextButton == true &&
-        configuration.controller?.text.isNotEmpty == true) {
+    if (configuration.showClearTextButton == true && configuration.controller?.text.isNotEmpty == true) {
       expect(
         find.byWidgetPredicate(
           (Widget w) =>
               w is IntrinsicWidth &&
               w.child is Padding &&
-              (w.child as Padding).padding ==
-                  themeExtension.clearTextButtonPadding &&
+              (w.child as Padding).padding == themeExtension.clearTextButtonPadding &&
               (w.child as Padding).child is MyoroIconTextHoverButton &&
-              ((w.child as Padding).child as MyoroIconTextHoverButton).icon ==
-                  themeExtension.clearTextButtonIcon &&
-              ((w.child as Padding).child as MyoroIconTextHoverButton)
-                      .onPressed !=
-                  null,
+              ((w.child as Padding).child as MyoroIconTextHoverButton).icon == themeExtension.clearTextButtonIcon &&
+              ((w.child as Padding).child as MyoroIconTextHoverButton).onPressed != null,
         ),
         findsOneWidget,
       );

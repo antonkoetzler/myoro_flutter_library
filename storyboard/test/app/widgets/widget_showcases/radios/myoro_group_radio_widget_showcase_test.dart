@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroGroupRadioWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroGroupRadioWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -21,27 +18,8 @@ void main() {
     expect(find.byType(MyoroGroupRadioWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroGroupRadio), findsOneWidget);
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<Axis> &&
-            w.configuration.label == '[MyoroGroupRadio.direction]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroSlider.finder(
-        label: '[MyoroGroupRadio.spacing]',
-        labelEnabled: true,
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroSlider.finder(
-        label: '[MyoroGroupRadio.runSpacing]',
-        labelEnabled: true,
-      ),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<Axis> && w.configuration.label == '[MyoroGroupRadio.direction]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, '[MyoroGroupRadio.spacing]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, '[MyoroGroupRadio.runSpacing]'), findsOneWidget);
   });
 }

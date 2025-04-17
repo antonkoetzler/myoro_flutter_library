@@ -20,8 +20,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
 
   MyoroMenuController<T>? _localController;
   MyoroMenuController<T> get _controller {
-    return _configuration.controller ??
-        (_localController ??= MyoroMenuController());
+    return _configuration.controller ?? (_localController ??= MyoroMenuController());
   }
 
   /// [Bloc] of the [MyoroMenu].
@@ -59,24 +58,14 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
     return BlocProvider.value(
       value: _bloc,
       child: Container(
-        decoration: BoxDecoration(
-          color: themeExtension.primaryColor,
-          border: themeExtension.border,
-          borderRadius: themeExtension.borderRadius,
-        ),
-        child: ConstrainedBox(
-          constraints: _configuration.constraints,
-          child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
-            buildWhen: _buildWhen,
-            builder: _builder,
-          ),
-        ),
+        decoration: BoxDecoration(color: themeExtension.primaryColor, border: themeExtension.border, borderRadius: themeExtension.borderRadius),
+        constraints: _configuration.constraints,
+        child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(buildWhen: _buildWhen, builder: _builder),
       ),
     );
   }
@@ -110,11 +99,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     return switch (state.status) {
       MyoroRequestEnum.idle => const _Loader(),
       MyoroRequestEnum.loading => const _Loader(),
-      MyoroRequestEnum.success => _Items(
-        _controller,
-        _configuration,
-        _scrollController,
-      ),
+      MyoroRequestEnum.success => _Items(_controller, _configuration, _scrollController),
       MyoroRequestEnum.error => const _DialogText('Error getting items.'),
     };
   }
@@ -125,14 +110,8 @@ final class _Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    return Center(
-      child: Padding(
-        padding: themeExtension.dialogTextLoaderPadding,
-        child: const MyoroCircularLoader(),
-      ),
-    );
+    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    return Center(child: Padding(padding: themeExtension.dialogTextLoaderPadding, child: const MyoroCircularLoader()));
   }
 }
 
@@ -145,8 +124,7 @@ final class _Items<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius =
-        context.resolveThemeExtension<MyoroMenuThemeExtension>().borderRadius;
+    final borderRadius = context.resolveThemeExtension<MyoroMenuThemeExtension>().borderRadius;
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
@@ -160,12 +138,7 @@ final class _Items<T> extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (_configuration.searchCallback != null) _SearchBar(_controller),
-          Flexible(
-            child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
-              buildWhen: _buildWhen,
-              builder: _builder,
-            ),
-          ),
+          Flexible(child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(buildWhen: _buildWhen, builder: _builder)),
         ],
       ),
     );
@@ -177,10 +150,7 @@ final class _Items<T> extends StatelessWidget {
 
   Widget _builder(_, MyoroMenuState<T> state) {
     final items = state.queriedItems ?? state.items;
-    final itemWidgets =
-        items
-            .map<Widget>((T item) => _Item(_configuration.itemBuilder(item)))
-            .toList();
+    final itemWidgets = items.map<Widget>((T item) => _Item(_configuration.itemBuilder(item))).toList();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -209,18 +179,11 @@ final class _SearchBar<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
     return Padding(
       padding: themeExtension.searchBarPadding,
-      child: MyoroInput(
-        configuration: MyoroInputConfiguration(
-          inputStyle: themeExtension.searchBarInputStyle,
-          autofocus: true,
-          onChanged: _controller.search,
-        ),
-      ),
+      child: MyoroInput(configuration: MyoroInputConfiguration(inputStyle: themeExtension.searchBarInputStyle, autofocus: true, onChanged: _controller.search)),
     );
   }
 }
@@ -233,19 +196,12 @@ final class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final configuration = MyoroHoverButtonConfiguration(
-      borderRadius:
-          context
-              .resolveThemeExtension<MyoroMenuThemeExtension>()
-              .itemBorderRadius,
+      borderRadius: context.resolveThemeExtension<MyoroMenuThemeExtension>().itemBorderRadius,
       isHovered: _item.isHovered,
     );
 
     if (_item.itemBuilder != null) {
-      return MyoroHoverButton(
-        configuration: configuration,
-        builder: _item.itemBuilder!,
-        onPressed: _item.onPressed,
-      );
+      return MyoroHoverButton(configuration: configuration, builder: _item.itemBuilder!, onPressed: _item.onPressed);
     }
 
     return MyoroIconTextHoverButton(
@@ -267,18 +223,11 @@ final class _DialogText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     return Center(
       child: Padding(
         padding: themeExtension.dialogTextLoaderPadding,
-        child: Text(
-          _text,
-          style:
-              context
-                  .resolveThemeExtension<MyoroMenuThemeExtension>()
-                  .dialogTextStyle,
-        ),
+        child: Text(_text, style: context.resolveThemeExtension<MyoroMenuThemeExtension>().dialogTextStyle),
       ),
     );
   }

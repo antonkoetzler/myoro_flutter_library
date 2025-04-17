@@ -22,11 +22,15 @@ typedef MyoroInputOnChanged = void Function(String text);
 
 /// Model to load all of the configurable arguments of [MyoroInput].
 final class MyoroInputConfiguration extends Equatable {
+  static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
+  static const textAlignDefaultValue = TextAlign.start;
+  static const contentPaddingDefaultValue = EdgeInsets.only(top: 10, bottom: 10, left: 8, right: 5);
+
   /// Type of input.
   final MyoroInputStyleEnum inputStyle;
 
   /// [TextAlign] of the input.
-  final TextAlign? textAlign;
+  final TextAlign textAlign;
 
   /// Text style of the input.
   final TextStyle? inputTextStyle;
@@ -39,6 +43,9 @@ final class MyoroInputConfiguration extends Equatable {
 
   /// Text style of the label.
   final TextStyle? labelTextStyle;
+
+  /// [EdgeInsets] within the input.
+  final EdgeInsets contentPadding;
 
   /// [InputBorder] of the input.
   final InputBorder? border;
@@ -86,12 +93,13 @@ final class MyoroInputConfiguration extends Equatable {
   final TextEditingController? controller;
 
   const MyoroInputConfiguration({
-    this.inputStyle = MyoroInputStyleEnum.outlined,
-    this.textAlign,
+    this.inputStyle = inputStyleDefaultValue,
+    this.textAlign = textAlignDefaultValue,
     this.inputTextStyle,
     this.label,
     this.placeholder,
     this.labelTextStyle,
+    this.contentPadding = contentPaddingDefaultValue,
     this.border,
     this.suffix,
     this.enabled,
@@ -109,14 +117,12 @@ final class MyoroInputConfiguration extends Equatable {
 
   MyoroInputConfiguration.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
-      textAlign =
-          TextAlign.values[faker.randomGenerator.integer(
-            TextAlign.values.length,
-          )],
+      textAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
       inputTextStyle = null,
       label = faker.lorem.word(),
       placeholder = faker.lorem.word(),
       labelTextStyle = null,
+      contentPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
       border = null,
       suffix = null,
       enabled = faker.randomGenerator.boolean(),
@@ -134,7 +140,6 @@ final class MyoroInputConfiguration extends Equatable {
   MyoroInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
-    bool textAlignEnabled = true,
     TextStyle? inputTextStyle,
     bool inputTextStyleEnabled = true,
     String? label,
@@ -143,6 +148,7 @@ final class MyoroInputConfiguration extends Equatable {
     bool placeholderEnabled = true,
     TextStyle? labelTextStyle,
     bool labelTextStyleEnabled = true,
+    EdgeInsets? contentPadding,
     InputBorder? border,
     bool borderEnabled = true,
     Widget? suffix,
@@ -172,36 +178,21 @@ final class MyoroInputConfiguration extends Equatable {
   }) {
     return MyoroInputConfiguration(
       inputStyle: inputStyle ?? this.inputStyle,
-      textAlign: textAlignEnabled ? (textAlign ?? this.textAlign) : null,
-      inputTextStyle:
-          inputTextStyleEnabled
-              ? (inputTextStyle ?? this.inputTextStyle)
-              : null,
+      textAlign: textAlign ?? this.textAlign,
+      inputTextStyle: inputTextStyleEnabled ? (inputTextStyle ?? this.inputTextStyle) : null,
       label: labelEnabled ? (label ?? this.label) : null,
-      placeholder:
-          placeholderEnabled ? (placeholder ?? this.placeholder) : null,
-      labelTextStyle:
-          labelTextStyleEnabled
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      placeholder: placeholderEnabled ? (placeholder ?? this.placeholder) : null,
+      labelTextStyle: labelTextStyleEnabled ? (labelTextStyle ?? this.labelTextStyle) : null,
+      contentPadding: contentPadding ?? this.contentPadding,
       border: borderEnabled ? (border ?? this.border) : null,
       suffix: suffixEnabled ? (suffix ?? this.suffix) : null,
       enabled: enabledEnabled ? (enabled ?? this.enabled) : null,
       readOnly: readOnlyEnabled ? (readOnly ?? this.readOnly) : null,
       autofocus: autofocusEnabled ? (autofocus ?? this.autofocus) : null,
-      showClearTextButton:
-          showClearTextButtonEnabled
-              ? (showClearTextButton ?? this.showClearTextButton)
-              : null,
-      checkboxOnChanged:
-          checkboxOnChangedEnabled
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
-              : null,
+      showClearTextButton: showClearTextButtonEnabled ? (showClearTextButton ?? this.showClearTextButton) : null,
+      checkboxOnChanged: checkboxOnChangedEnabled ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
       validation: validationEnabled ? (validation ?? this.validation) : null,
-      onFieldSubmitted:
-          onFieldSubmittedEnabled
-              ? (onFieldSubmitted ?? this.onFieldSubmitted)
-              : null,
+      onFieldSubmitted: onFieldSubmittedEnabled ? (onFieldSubmitted ?? this.onFieldSubmitted) : null,
       onChanged: onChangedEnabled ? (onChanged ?? this.onChanged) : null,
       onCleared: onClearedEnabled ? (onCleared ?? this.onCleared) : null,
       focusNode: focusNodeEnabled ? (focusNode ?? this.focusNode) : null,
@@ -218,6 +209,7 @@ final class MyoroInputConfiguration extends Equatable {
       '  label: $label,\n'
       '  placeholder: $placeholder,\n'
       '  labelTextStyle: $labelTextStyle,\n'
+      '  contentPadding: $contentPadding,\n'
       '  border: $border,\n'
       '  suffix: $suffix,\n'
       '  enabled: $enabled,\n'
@@ -242,6 +234,7 @@ final class MyoroInputConfiguration extends Equatable {
       label,
       placeholder,
       labelTextStyle,
+      contentPadding,
       border,
       // suffix, ~ [Widget]s aren't great for comparison.
       enabled,

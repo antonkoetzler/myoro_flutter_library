@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroCardWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroCardWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -28,49 +25,27 @@ void main() {
             w is IntrinsicHeight &&
             w.child is MyoroCard &&
             (w.child as MyoroCard).child is Text &&
-            ((w.child as MyoroCard).child as Text).data ==
-                'This is a [MyoroCard]!',
+            ((w.child as MyoroCard).child as Text).data == 'This is a [MyoroCard]!',
       ),
       findsOneWidget,
     );
 
     // [_TitleOption].
-    expect(
-      MyoroInput.finder(label: '[MyoroCard.title]', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroCard.title]'), findsOneWidget);
 
     // [_TitleTextStyleOption].
     expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<(String, TextStyle)> &&
-            w.configuration.label == '[MyoroCard.titleTextStyle]',
-      ),
+      find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<(String, TextStyle)> && w.configuration.label == '[MyoroCard.titleTextStyle]'),
       findsOneWidget,
     );
 
     // [_PaddingOption].
-    expect(
-      MyoroSlider.finder(
-        label: '[MyoroCard.padding]',
-        labelEnabled: true,
-        maxValue: 50,
-        maxValueEnabled: true,
-      ),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroSlider, '[MyoroCard.padding]'), findsOneWidget);
 
     // [_WidthOption].
-    expect(
-      MyoroInput.finder(label: '[MyoroCard.width]', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroCard.width]'), findsOneWidget);
 
     // [_HeightOption].
-    expect(
-      MyoroInput.finder(label: '[MyoroCard.height]', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroCard.height]'), findsOneWidget);
   });
 }

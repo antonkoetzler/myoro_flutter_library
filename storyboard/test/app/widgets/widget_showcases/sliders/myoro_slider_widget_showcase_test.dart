@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroSliderWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroSliderWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -21,33 +18,14 @@ void main() {
     expect(find.byType(MyoroSliderWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroSlider), findsNWidgets(2));
+    expect(find.widgetWithText(MyoroInput, '[MyoroSlider.label]'), findsOneWidget);
     expect(
-      MyoroInput.finder(label: '[MyoroSlider.label]', labelEnabled: true),
+      find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<TextStyle> && w.configuration.label == '[MyoroSlider.labelTextStyle]'),
       findsOneWidget,
     );
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<TextStyle> &&
-            w.configuration.label == '[MyoroSlider.labelTextStyle]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroSlider.finder(label: '[MyoroSlider.width]', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: 'Label on the left?', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: 'Label on the right?', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: 'Label on the bottom?', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroSlider, '[MyoroSlider.width]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Label on the left?'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Label on the right?'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Label on the bottom?'), findsOneWidget);
   });
 }

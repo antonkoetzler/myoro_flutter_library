@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroResizeDividerWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroResizeDividerWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -21,28 +18,9 @@ void main() {
     expect(find.byType(MyoroResizeDividerWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroResizeDivider), findsOneWidget);
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<Axis> &&
-            w.configuration.label == '[MyoroResizeDivider.direction]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroSlider.finder(
-        label: '[MyoroResizeDivider.shortValue]',
-        labelEnabled: true,
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroSlider.finder(label: 'Vertical padding', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroSlider.finder(label: 'Horizontal padding', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<Axis> && w.configuration.label == '[MyoroResizeDivider.direction]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, '[MyoroResizeDivider.shortValue]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, 'Vertical padding'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, 'Horizontal padding'), findsOneWidget);
   });
 }

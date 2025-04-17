@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroCheckboxWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroCheckboxWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -23,19 +20,9 @@ void main() {
     expect(find.byType(MyoroCheckbox), findsOneWidget);
 
     // [_LabelOption].
-    expect(
-      MyoroInput.finder(label: 'Label text', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, 'Label text'), findsOneWidget);
 
     // [_LabelTextStyleOption].
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<TextStyle> &&
-            w.configuration.label == '[MyoroCheckbox.labelTextStyle]',
-      ),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroSingularDropdown<TextStyle>, '[MyoroCheckbox.labelTextStyle]'), findsOneWidget);
   });
 }

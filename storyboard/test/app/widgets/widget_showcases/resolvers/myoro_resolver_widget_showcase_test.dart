@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -9,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroResolverWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroResolverWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -22,19 +20,7 @@ void main() {
 
     // [_RefreshButtons].
     expect(find.byType(MyoroIconTextHoverButton), findsNWidgets(3));
-    expect(
-      MyoroIconTextHoverButton.finder(
-        text: 'Click to execute a successful request',
-        textEnabled: true,
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroIconTextHoverButton.finder(
-        text: 'Click to execute an unsuccessful request',
-        textEnabled: true,
-      ),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroIconTextHoverButton && w.text == 'Click to execute a successful request'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroIconTextHoverButton && w.text == 'Click to execute an unsuccessful request'), findsOneWidget);
   });
 }

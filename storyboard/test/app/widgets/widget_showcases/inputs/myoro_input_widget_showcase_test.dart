@@ -10,10 +10,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroInputWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroInputWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
@@ -23,74 +20,20 @@ void main() {
     expect(find.byType(MyoroInput), findsAtLeastNWidgets(1));
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<MyoroInputWidgetShowcaseEnum> &&
-            w.configuration.label == 'Formatter (named constructors):',
+        (Widget w) => w is MyoroSingularDropdown<MyoroInputWidgetShowcaseEnum> && w.configuration.label == 'Formatter (named constructors):',
       ),
       findsOneWidget,
     );
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<MyoroInputStyleEnum> &&
-            w.configuration.label == '[inputStyle]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<TextAlign> &&
-            w.configuration.label == '[textAlign]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<TextStyle> &&
-            w.configuration.label == '[inputTextStyle]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroInput.finder(label: '[label]', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroInput.finder(label: '[placeholder]', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<TextStyle> &&
-            w.configuration.label == '[labelTextStyle]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: '[suffix] enabled?', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: '[enabled]', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: '[readOnly]', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: '[showClearTextButton]', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(
-        label: '[checkboxOnChanged] not null?',
-        labelEnabled: true,
-      ),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<MyoroInputStyleEnum> && w.configuration.label == '[inputStyle]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<TextAlign> && w.configuration.label == '[textAlign]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<TextStyle> && w.configuration.label == '[inputTextStyle]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroInput && w.configuration.label == '[label]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroInput && w.configuration.label == '[placeholder]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<TextStyle> && w.configuration.label == '[labelTextStyle]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[suffix] enabled?'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[enabled]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[readOnly]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[showClearTextButton]'), findsOneWidget);
+    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[checkboxOnChanged] not null?'), findsOneWidget);
   });
 }

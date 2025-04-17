@@ -6,12 +6,9 @@ import 'package:storyboard/app/blocs/myoro_dropdown_widget_showcase_bloc/myoro_d
 import 'package:storyboard/storyboard.dart';
 
 void main() {
-  testWidgets('MyoroSingularDropdownWidgetShowcase', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('MyoroSingularDropdownWidgetShowcase', (WidgetTester tester) async {
     final myoroSingularDropdownWidgetShowcaseKey = GlobalKey();
-    late final MyoroDropdownWidgetShowcaseState
-    myoroDropdownWidgetShowcaseBlocState;
+    late final MyoroDropdownWidgetShowcaseState myoroDropdownWidgetShowcaseBlocState;
 
     await tester.pumpWidget(
       MyoroWidgetTester(
@@ -22,14 +19,10 @@ void main() {
             builder: (BuildContext context) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 myoroDropdownWidgetShowcaseBlocState =
-                    myoroSingularDropdownWidgetShowcaseKey.currentContext!
-                        .resolveBloc<MyoroDropdownWidgetShowcaseBloc>()
-                        .state;
+                    myoroSingularDropdownWidgetShowcaseKey.currentContext!.resolveBloc<MyoroDropdownWidgetShowcaseBloc>().state;
               });
 
-              return MyoroSingularDropdownWidgetShowcase(
-                widgetShowcaseKey: myoroSingularDropdownWidgetShowcaseKey,
-              );
+              return MyoroSingularDropdownWidgetShowcase(widgetShowcaseKey: myoroSingularDropdownWidgetShowcaseKey);
             },
           ),
         ),
@@ -42,41 +35,24 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is WidgetShowcase &&
-            w.widgetOptions.length == 5 &&
+            w.widgetOptions.length == 4 &&
             w.widgetOptions.first is MyoroDropdownWidgetShowcaseLabelOption &&
             w.widgetOptions[1] is MyoroDropdownWidgetShowcaseEnabledOption &&
-            w.widgetOptions[2]
-                is MyoroDropdownWidgetShowcaseAllowItemClearingOption &&
-            w.widgetOptions[3]
-                is MyoroDropdownWidgetShowcaseCheckboxOnChangedOption &&
-            w.widgetOptions.last
-                is MyoroDropdownWidgetShowcaseMenuMaxHeightOption,
+            w.widgetOptions[2] is MyoroDropdownWidgetShowcaseAllowItemClearingOption &&
+            w.widgetOptions[3] is MyoroDropdownWidgetShowcaseCheckboxOnChangedOption,
       ),
       findsOneWidget,
     );
 
     // [_Widget]
-    expect(
-      find.byType(
-        BlocBuilder<
-          MyoroDropdownWidgetShowcaseBloc,
-          MyoroDropdownWidgetShowcaseState
-        >,
-      ),
-      findsOneWidget,
-    );
+    expect(find.byType(BlocBuilder<MyoroDropdownWidgetShowcaseBloc, MyoroDropdownWidgetShowcaseState>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
             w is MyoroSingularDropdown &&
-            w.configuration.label ==
-                myoroDropdownWidgetShowcaseBlocState.label &&
-            w.configuration.enabled ==
-                myoroDropdownWidgetShowcaseBlocState.enabled &&
-            w.configuration.allowItemClearing ==
-                myoroDropdownWidgetShowcaseBlocState.allowItemClearing &&
-            w.configuration.menuMaxHeight ==
-                myoroDropdownWidgetShowcaseBlocState.menuMaxHeight,
+            w.configuration.label == myoroDropdownWidgetShowcaseBlocState.label &&
+            w.configuration.enabled == myoroDropdownWidgetShowcaseBlocState.enabled &&
+            w.configuration.allowItemClearing == myoroDropdownWidgetShowcaseBlocState.allowItemClearing,
       ),
       findsOneWidget,
     );

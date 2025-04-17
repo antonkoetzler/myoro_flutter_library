@@ -23,15 +23,8 @@ final class SetAllowItemClearingEvent extends MyoroDropdownWidgetShowcaseEvent {
   const SetAllowItemClearingEvent([this.allowItemClearing]);
 }
 
-final class SetCheckboxOnChangedEnabledEvent
-    extends MyoroDropdownWidgetShowcaseEvent {
+final class SetCheckboxOnChangedEnabledEvent extends MyoroDropdownWidgetShowcaseEvent {
   final bool? checkboxOnChangedEnabled;
 
   const SetCheckboxOnChangedEnabledEvent([this.checkboxOnChangedEnabled]);
-}
-
-final class SetMenuMaxHeightEvent extends MyoroDropdownWidgetShowcaseEvent {
-  final double menuMaxHeight;
-
-  const SetMenuMaxHeightEvent(this.menuMaxHeight);
 }

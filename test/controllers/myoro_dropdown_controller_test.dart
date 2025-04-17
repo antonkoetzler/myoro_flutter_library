@@ -23,11 +23,7 @@ void main() {
         ..toggleEnabled(!enabled);
     },
     expect: () {
-      return [
-        MyoroDropdownState<String>(enabled: !enabled),
-        MyoroDropdownState<String>(enabled: enabled),
-        MyoroDropdownState<String>(enabled: !enabled),
-      ];
+      return [MyoroDropdownState<String>(enabled: !enabled), MyoroDropdownState<String>(enabled: enabled), MyoroDropdownState<String>(enabled: !enabled)];
     },
   );
 
@@ -49,17 +45,11 @@ void main() {
     expect: () {
       return [
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1}),
-        MyoroDropdownState<String>(
-          enabled: enabled,
-          selectedItems: {item1, item2},
-        ),
+        MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1, item2}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item2}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: const {}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1}),
-        MyoroDropdownState<String>(
-          enabled: enabled,
-          selectedItems: {item1, item2},
-        ),
+        MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1, item2}),
       ];
     },
   );
@@ -79,14 +69,27 @@ void main() {
     expect: () {
       return [
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1}),
-        MyoroDropdownState<String>(
-          enabled: enabled,
-          selectedItems: {item1, item2},
-        ),
+        MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1, item2}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: const {}),
       ];
     },
   );
+
+  test('MyoroDropdownController.showMenu', () {
+    expect(controller.overlayPortalController.isShowing, isFalse);
+    controller.showMenu();
+    expect(controller.overlayPortalController.isShowing, isTrue);
+    controller.showMenu();
+    expect(controller.overlayPortalController.isShowing, isTrue);
+  });
+
+  test('MyoroDropdownController.showMenu', () {
+    expect(controller.overlayPortalController.isShowing, isTrue);
+    controller.hideMenu();
+    expect(controller.overlayPortalController.isShowing, isFalse);
+    controller.hideMenu();
+    expect(controller.overlayPortalController.isShowing, isFalse);
+  });
 
   test('MyoroDropdownController.toggleMenu', () {
     expect(controller.overlayPortalController.isShowing, isFalse);
@@ -94,8 +97,5 @@ void main() {
     expect(controller.overlayPortalController.isShowing, isTrue);
     controller.toggleMenu();
     expect(controller.overlayPortalController.isShowing, isFalse);
-    final bool isShowing = !controller.overlayPortalController.isShowing;
-    controller.toggleMenu(isShowing);
-    expect(controller.overlayPortalController.isShowing, isShowing);
   });
 }

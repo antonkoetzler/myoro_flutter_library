@@ -7,48 +7,31 @@ void main() {
 
   test('MyoroInputConfiguration.copyWith', () {
     expect(model.copyWith(), model);
-    final newModel = MyoroInputConfiguration.fake();
+    final otherModel = MyoroInputConfiguration.fake();
     expect(
       model.copyWith(
-        inputStyle: newModel.inputStyle,
-        textAlign: newModel.textAlign,
-        textAlignEnabled: newModel.textAlign != null,
-        inputTextStyle: newModel.inputTextStyle,
-        inputTextStyleEnabled: newModel.inputTextStyle != null,
-        label: newModel.label,
-        labelEnabled: newModel.label != null,
-        placeholder: newModel.placeholder,
-        placeholderEnabled: newModel.placeholder != null,
-        labelTextStyle: newModel.labelTextStyle,
-        labelTextStyleEnabled: newModel.labelTextStyle != null,
-        border: newModel.border,
-        borderEnabled: newModel.border != null,
-        suffix: newModel.suffix,
-        suffixEnabled: newModel.suffix != null,
-        enabled: newModel.enabled,
-        enabledEnabled: newModel.enabled != null,
-        readOnly: newModel.readOnly,
-        readOnlyEnabled: newModel.readOnly != null,
-        autofocus: newModel.autofocus,
-        autofocusEnabled: newModel.autofocus != null,
-        showClearTextButton: newModel.showClearTextButton,
-        showClearTextButtonEnabled: newModel.showClearTextButton != null,
-        checkboxOnChanged: newModel.checkboxOnChanged,
-        checkboxOnChangedEnabled: newModel.checkboxOnChanged != null,
-        validation: newModel.validation,
-        validationEnabled: newModel.validation != null,
-        onFieldSubmitted: newModel.onFieldSubmitted,
-        onFieldSubmittedEnabled: newModel.onFieldSubmitted != null,
-        onChanged: newModel.onChanged,
-        onChangedEnabled: newModel.onChanged != null,
-        onCleared: newModel.onCleared,
-        onClearedEnabled: newModel.onCleared != null,
-        focusNode: newModel.focusNode,
-        focusNodeEnabled: newModel.focusNode != null,
-        controller: newModel.controller,
-        controllerEnabled: newModel.controller != null,
+        inputStyle: otherModel.inputStyle,
+        textAlign: otherModel.textAlign,
+        inputTextStyle: otherModel.inputTextStyle,
+        label: otherModel.label,
+        placeholder: otherModel.placeholder,
+        labelTextStyle: otherModel.labelTextStyle,
+        contentPadding: otherModel.contentPadding,
+        border: otherModel.border,
+        suffix: otherModel.suffix,
+        enabled: otherModel.enabled,
+        readOnly: otherModel.readOnly,
+        autofocus: otherModel.autofocus,
+        showClearTextButton: otherModel.showClearTextButton,
+        checkboxOnChanged: otherModel.checkboxOnChanged,
+        validation: otherModel.validation,
+        onFieldSubmitted: otherModel.onFieldSubmitted,
+        onChanged: otherModel.onChanged,
+        onCleared: otherModel.onCleared,
+        focusNode: otherModel.focusNode,
+        controller: otherModel.controller,
       ),
-      newModel,
+      otherModel,
     );
   });
 
@@ -62,6 +45,7 @@ void main() {
       '  label: ${model.label},\n'
       '  placeholder: ${model.placeholder},\n'
       '  labelTextStyle: ${model.labelTextStyle},\n'
+      '  contentPadding: ${model.contentPadding},\n'
       '  border: ${model.border},\n'
       '  suffix: ${model.suffix},\n'
       '  enabled: ${model.enabled},\n'
@@ -80,33 +64,19 @@ void main() {
   });
 
   testWidgets('MyoroInputConfiguration.getBorder', (WidgetTester tester) async {
-    late final BuildContext context;
-    late final MyoroInputThemeExtension themeExtension;
+    const modelWithBorder = MyoroInputConfiguration(border: OutlineInputBorder());
+    const modelWithoutBorder = MyoroInputConfiguration();
 
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: Builder(
-          builder: (BuildContext buildContext) {
-            context = buildContext;
-            themeExtension =
-                context.resolveThemeExtension<MyoroInputThemeExtension>();
+          builder: (BuildContext context) {
+            expect(modelWithBorder.getBorder(context), modelWithBorder.border);
+            expect(modelWithoutBorder.getBorder(context), modelWithoutBorder.inputStyle.getBorder(context));
             return const SizedBox.shrink();
           },
         ),
       ),
-    );
-
-    const border = OutlineInputBorder();
-    const modelWithCustomBorder = MyoroInputConfiguration(border: border);
-    expect(modelWithCustomBorder.getBorder(context), border);
-
-    const modelWithoutCustomBorder = MyoroInputConfiguration();
-    expect(
-      modelWithoutCustomBorder.getBorder(context),
-      switch (modelWithoutCustomBorder.inputStyle) {
-        MyoroInputStyleEnum.underlined => themeExtension.underlinedBorder,
-        MyoroInputStyleEnum.outlined => themeExtension.outlinedBorder,
-      },
     );
   });
 }

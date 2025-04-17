@@ -5,7 +5,6 @@ import 'package:storyboard/app/blocs/myoro_dropdown_widget_showcase_bloc/myoro_d
 
 void main() {
   final String label = faker.randomGenerator.string(100, min: 1);
-  final double menuMaxHeight = faker.randomGenerator.decimal();
 
   blocTest(
     'MyoroDropdownWidgetShowcaseBloc.SetLabelEvent',
@@ -16,10 +15,7 @@ void main() {
         ..add(const SetLabelEvent());
     },
     expect: () {
-      return [
-        MyoroDropdownWidgetShowcaseState(label: label),
-        const MyoroDropdownWidgetShowcaseState(),
-      ];
+      return [MyoroDropdownWidgetShowcaseState(label: label), const MyoroDropdownWidgetShowcaseState()];
     },
   );
 
@@ -29,18 +25,12 @@ void main() {
     act: (bloc) {
       bloc
         ..add(const SetEnabledEvent())
-        ..add(
-          const SetEnabledEvent(MyoroDropdownConfiguration.enabledDefaultValue),
-        );
+        ..add(const SetEnabledEvent(MyoroDropdownConfiguration.enabledDefaultValue));
     },
     expect: () {
       return [
-        const MyoroDropdownWidgetShowcaseState(
-          enabled: !MyoroDropdownConfiguration.enabledDefaultValue,
-        ),
-        const MyoroDropdownWidgetShowcaseState(
-          enabled: MyoroDropdownConfiguration.enabledDefaultValue,
-        ),
+        const MyoroDropdownWidgetShowcaseState(enabled: !MyoroDropdownConfiguration.enabledDefaultValue),
+        const MyoroDropdownWidgetShowcaseState(enabled: MyoroDropdownConfiguration.enabledDefaultValue),
       ];
     },
   );
@@ -51,22 +41,12 @@ void main() {
     act: (bloc) {
       bloc
         ..add(const SetAllowItemClearingEvent())
-        ..add(
-          const SetAllowItemClearingEvent(
-            MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-          ),
-        );
+        ..add(const SetAllowItemClearingEvent(MyoroDropdownConfiguration.allowItemClearingDefaultValue));
     },
     expect: () {
       return [
-        const MyoroDropdownWidgetShowcaseState(
-          allowItemClearing:
-              !MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-        ),
-        const MyoroDropdownWidgetShowcaseState(
-          allowItemClearing:
-              MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-        ),
+        const MyoroDropdownWidgetShowcaseState(allowItemClearing: !MyoroDropdownConfiguration.allowItemClearingDefaultValue),
+        const MyoroDropdownWidgetShowcaseState(allowItemClearing: MyoroDropdownConfiguration.allowItemClearingDefaultValue),
       ];
     },
   );
@@ -77,35 +57,13 @@ void main() {
     act: (bloc) {
       bloc
         ..add(const SetCheckboxOnChangedEnabledEvent())
-        ..add(
-          const SetCheckboxOnChangedEnabledEvent(
-            MyoroDropdownWidgetShowcaseState
-                .checkboxOnChangedEnabledDefaultValue,
-          ),
-        );
+        ..add(const SetCheckboxOnChangedEnabledEvent(MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue));
     },
     expect: () {
       return [
-        const MyoroDropdownWidgetShowcaseState(
-          checkboxOnChangedEnabled:
-              !MyoroDropdownWidgetShowcaseState
-                  .checkboxOnChangedEnabledDefaultValue,
-        ),
-        const MyoroDropdownWidgetShowcaseState(
-          checkboxOnChangedEnabled:
-              MyoroDropdownWidgetShowcaseState
-                  .checkboxOnChangedEnabledDefaultValue,
-        ),
+        const MyoroDropdownWidgetShowcaseState(checkboxOnChangedEnabled: !MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue),
+        const MyoroDropdownWidgetShowcaseState(checkboxOnChangedEnabled: MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue),
       ];
-    },
-  );
-
-  blocTest(
-    'MyoroDropdownWidgetShowcaseBloc.SetMenuMaxHeightEvent',
-    build: () => MyoroDropdownWidgetShowcaseBloc(),
-    act: (bloc) => bloc.add(SetMenuMaxHeightEvent(menuMaxHeight)),
-    expect: () {
-      return [MyoroDropdownWidgetShowcaseState(menuMaxHeight: menuMaxHeight)];
     },
   );
 }

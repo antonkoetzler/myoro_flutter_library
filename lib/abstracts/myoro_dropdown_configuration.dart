@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [String] displayed when a [T] item is selected.
-typedef MyoroDropdownConfigurationSelectedItemBuilder<T> =
-    String Function(T item);
+typedef MyoroDropdownConfigurationSelectedItemBuilder<T> = String Function(T item);
 
 /// Abstract model that encapsulates options for [MyoroDropdown].
 ///
@@ -29,6 +28,9 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
   /// If the clear button of [_Input]'s [MyoroInput] will be displayed.
   final bool allowItemClearing;
 
+  /// [MyoroInputConfiguration.textAlign] of [_Input].
+  final TextAlign selectedItemTextAlign;
+
   /// [MyoroMenuConfiguration] of the [_Menu]'s [MyoroMenu].
   final MyoroMenuConfiguration<T> menuConfiguration;
 
@@ -42,6 +44,7 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
     this.label = '',
     this.enabled = enabledDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
+    this.selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
     required this.menuConfiguration,
     required this.selectedItemBuilder,
     required this.controller,

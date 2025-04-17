@@ -9,38 +9,20 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroModalWidgetShowcase(),
-        ),
+        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroModalWidgetShowcase()),
       ),
     );
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroModalWidgetShowcase), findsOneWidget);
-    expect(
-      MyoroIconTextHoverButton.finder(
-        text: 'Click to launch the modal.',
-        textEnabled: true,
-      ),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: 'Barrier dismissable?', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroIconTextHoverButton, 'Click to launch the modal.'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Barrier dismissable?'), findsOneWidget);
     expect(find.text('Constraints'), findsOneWidget);
     expect(find.text('Min width'), findsOneWidget);
     expect(find.text('Max width'), findsOneWidget);
     expect(find.text('Min height'), findsOneWidget);
     expect(find.text('Max height'), findsOneWidget);
-    expect(
-      MyoroInput.finder(label: 'Title', labelEnabled: true),
-      findsOneWidget,
-    );
-    expect(
-      MyoroCheckbox.finder(label: 'Show close button?', labelEnabled: true),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, 'Title'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Show close button?'), findsOneWidget);
   });
 }
