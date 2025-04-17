@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Enum for all for all of the widgets we showcase in the storyboard.
+/// Enum for all of the widgets we showcase in the storyboard.
 enum WidgetListingEnum {
   appBars('App bars', [myoroAppBarTitle]),
   buttons('Buttons', [myoroHoverButtonTitle, myoroIconTextHoverButtonTitle]),
@@ -31,10 +31,10 @@ enum WidgetListingEnum {
   tables('Tables', [myoroTableTitle]),
   tooltips('Tooltips', [myoroTooltipTitle]);
 
-  final String widgetCategory;
+  final String category;
   final List<String> widgetNames;
 
-  const WidgetListingEnum(this.widgetCategory, this.widgetNames);
+  const WidgetListingEnum(this.category, this.widgetNames);
 
   // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';

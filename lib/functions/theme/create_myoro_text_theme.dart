@@ -7,28 +7,28 @@ TextTheme createMyoroTextTheme(bool isDarkMode) {
 
   return TextTheme(
     /// Regular.
-    bodyLarge: typography.regularSmall,
+    bodyLarge: typography.regularLarge,
     bodyMedium: typography.regularMedium,
-    bodySmall: typography.regularLarge,
+    bodySmall: typography.regularSmall,
 
     /// Italic.
-    headlineLarge: typography.italicSmall,
+    headlineLarge: typography.italicLarge,
     headlineMedium: typography.italicMedium,
-    headlineSmall: typography.italicLarge,
+    headlineSmall: typography.italicSmall,
 
     /// Semi bold.
-    labelLarge: typography.semiBoldSmall,
+    labelLarge: typography.semiBoldLarge,
     labelMedium: typography.semiBoldMedium,
-    labelSmall: typography.semiBoldLarge,
+    labelSmall: typography.semiBoldSmall,
 
     /// Bold.
-    titleLarge: typography.boldSmall,
+    titleLarge: typography.boldLarge,
     titleMedium: typography.boldMedium,
-    titleSmall: typography.boldLarge,
+    titleSmall: typography.boldSmall,
 
     /// Extra bold.
-    displayLarge: typography.extraBoldSmall,
+    displayLarge: typography.extraBoldLarge,
     displayMedium: typography.extraBoldMedium,
-    displaySmall: typography.extraBoldLarge,
+    displaySmall: typography.extraBoldSmall,
   );
 }

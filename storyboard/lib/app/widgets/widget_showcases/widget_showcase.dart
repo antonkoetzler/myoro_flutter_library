@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -29,26 +28,19 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
   @override
   void initState() {
     super.initState();
-    context.resolveBloc<WidgetShowcaseBloc>().add(
-      ToggleWidgetShowcaseDisplayEvent(enabled: _widgetOptions.isNotEmpty),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WidgetShowcaseBloc, WidgetShowcaseState>(
-      builder: (_, WidgetShowcaseState state) {
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(child: _WidgetWrapper(_widget)),
-            if (_widgetOptions.isNotEmpty && state.displayingWidgetOptions) ...[
-              const _Divider(direction: Axis.vertical),
-              _WidgetOptions(_widgetOptions),
-            ],
-          ],
-        );
-      },
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(child: _WidgetWrapper(_widget)),
+        if (_widgetOptions.isNotEmpty) ...[
+          const _Divider(direction: Axis.vertical),
+          _WidgetOptions(_widgetOptions),
+        ],
+      ],
     );
   }
 }

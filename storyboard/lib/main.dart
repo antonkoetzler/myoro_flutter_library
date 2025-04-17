@@ -22,12 +22,7 @@ void main() async {
     instance.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true);
   }
 
-  runApp(
-    BlocProvider(
-      create: (_) => WidgetShowcaseBloc(),
-      child: App(instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!),
-    ),
-  );
+  runApp(App(instance.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!));
 }
 
 final class App extends StatelessWidget {
@@ -42,13 +37,10 @@ final class App extends StatelessWidget {
       child: BlocBuilder<ThemeModeCubit, ThemeMode>(
         builder: (_, ThemeMode themeMode) {
           return MyoroMaterialApp(
-            title: 'myoro_flutter_library storyboard',
+            title: 'MFL Storyboard',
             themeMode: themeMode,
             themeExtensionsBuilder: createThemeExtensions,
-            home: const MyoroScreen(
-              appBar: StoryboardAppBar(),
-              body: StoryboardBody(),
-            ),
+            router: router,
           );
         },
       ),

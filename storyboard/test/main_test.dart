@@ -32,9 +32,7 @@ void main() {
     expect(find.byType(App), findsOneWidget);
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroMaterialApp &&
-            w.title == 'myoro_flutter_library storyboard',
+        (Widget w) => w is MyoroMaterialApp && w.title == 'MFL Storyboard',
       ),
       findsOneWidget,
     );

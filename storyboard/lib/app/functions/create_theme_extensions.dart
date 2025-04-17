@@ -12,10 +12,7 @@ List<ThemeExtension> createThemeExtensions(
 }
 
 List<ThemeExtension> _createAppThemeExtensions(TextTheme textTheme) {
-  return [
-    StoryboardAppBarThemeExtension.builder(textTheme),
-    StoryboardBodyThemeExtension.builder(textTheme),
-  ];
+  return [MainScreenThemeExtension.builder(textTheme)];
 }
 
 List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
