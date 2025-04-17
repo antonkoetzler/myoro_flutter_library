@@ -6,8 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroAppBarWidgetShowcase].
-final class MyoroAppBarWidgetShowcaseThemeExtension
-    extends ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension> {
+final class MyoroAppBarWidgetShowcaseThemeExtension extends ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension> {
   /// [_MockAppLogo] icon.
   final IconData mockAppLogoIcon;
 
@@ -28,17 +27,10 @@ final class MyoroAppBarWidgetShowcaseThemeExtension
   });
 
   MyoroAppBarWidgetShowcaseThemeExtension.fake()
-    : mockAppLogoIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      mockAppTitleTextStyle =
-          MyoroTypographyDesignSystem.instance.randomTextStyle,
+    : mockAppLogoIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      mockAppTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       logoTitleSpacing = faker.randomGenerator.decimal(),
-      mockMenuButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )];
+      mockMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   MyoroAppBarWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : mockAppLogoIcon = Icons.people,
@@ -55,32 +47,20 @@ final class MyoroAppBarWidgetShowcaseThemeExtension
   }) {
     return MyoroAppBarWidgetShowcaseThemeExtension(
       mockAppLogoIcon: mockAppLogoIcon ?? this.mockAppLogoIcon,
-      mockAppTitleTextStyle:
-          mockAppTitleTextStyle ?? this.mockAppTitleTextStyle,
+      mockAppTitleTextStyle: mockAppTitleTextStyle ?? this.mockAppTitleTextStyle,
       logoTitleSpacing: logoTitleSpacing ?? this.logoTitleSpacing,
       mockMenuButtonIcon: mockMenuButtonIcon ?? this.mockMenuButtonIcon,
     );
   }
 
   @override
-  MyoroAppBarWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>? other,
-    double t,
-  ) {
+  MyoroAppBarWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>? other, double t) {
     if (other is! MyoroAppBarWidgetShowcaseThemeExtension) return this;
     return copyWith(
       mockAppLogoIcon: myoroLerp(mockAppLogoIcon, other.mockAppLogoIcon, t),
-      mockAppTitleTextStyle: TextStyle.lerp(
-        mockAppTitleTextStyle,
-        other.mockAppTitleTextStyle,
-        t,
-      ),
+      mockAppTitleTextStyle: TextStyle.lerp(mockAppTitleTextStyle, other.mockAppTitleTextStyle, t),
       logoTitleSpacing: lerpDouble(logoTitleSpacing, other.logoTitleSpacing, t),
-      mockMenuButtonIcon: myoroLerp(
-        mockMenuButtonIcon,
-        other.mockMenuButtonIcon,
-        t,
-      ),
+      mockMenuButtonIcon: myoroLerp(mockMenuButtonIcon, other.mockMenuButtonIcon, t),
     );
   }
 
@@ -96,11 +76,15 @@ final class MyoroAppBarWidgetShowcaseThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      mockAppLogoIcon,
-      mockAppTitleTextStyle,
-      logoTitleSpacing,
-      mockMenuButtonIcon,
-    );
+    return Object.hash(mockAppLogoIcon, mockAppTitleTextStyle, logoTitleSpacing, mockMenuButtonIcon);
   }
+
+  @override
+  String toString() =>
+      'MyoroAppBarWidgetShowcaseThemeExtension(\n'
+      '  mockAppLogoIcon: $mockAppLogoIcon,\n'
+      '  mockAppTitleTextStyle: $mockAppTitleTextStyle,\n'
+      '  logoTitleSpacing: $logoTitleSpacing,\n'
+      '  mockMenuButtonIcon: $mockMenuButtonIcon,\n'
+      ');';
 }

@@ -84,7 +84,6 @@ final class MyoroHoverButtonConfiguration extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroHoverButtonConfiguration(\n'
       '  primaryColor: $primaryColor,\n'
       '  onPrimaryColor: $onPrimaryColor,\n'

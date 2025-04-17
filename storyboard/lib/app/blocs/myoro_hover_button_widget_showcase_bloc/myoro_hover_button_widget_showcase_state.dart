@@ -57,7 +57,6 @@ final class MyoroHoverButtonWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroHoverButtonWidgetShowcaseState(\n'
       '  primaryColor: $primaryColor,\n'
       '  onPrimaryColor: $onPrimaryColor,\n'

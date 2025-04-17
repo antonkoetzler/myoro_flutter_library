@@ -32,7 +32,6 @@ final class MyoroPieGraphItem extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroPieGraphItem(\n'
       '  value: $value,\n'
       '  color: $color,\n'

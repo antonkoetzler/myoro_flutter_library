@@ -6,8 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroInputWidgetShowcase].
-final class MyoroInputWidgetShowcaseThemeExtension
-    extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension> {
+final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension> {
   /// [TextStyle] of [_ConfigurationOption]'s title.
   final TextStyle configurationOptionTextStyle;
 
@@ -28,14 +27,10 @@ final class MyoroInputWidgetShowcaseThemeExtension
   });
 
   MyoroInputWidgetShowcaseThemeExtension.fake()
-    : configurationOptionTextStyle =
-          MyoroTypographyDesignSystem.instance.randomTextStyle,
+    : configurationOptionTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       configurationOptionSpacing = faker.randomGenerator.decimal(),
       inputStyle = MyoroInputStyleEnum.fake(),
-      suffixWidgetIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )];
+      suffixWidgetIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   MyoroInputWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : configurationOptionTextStyle = textTheme.titleMedium!,
@@ -51,32 +46,19 @@ final class MyoroInputWidgetShowcaseThemeExtension
     IconData? suffixWidgetIcon,
   }) {
     return MyoroInputWidgetShowcaseThemeExtension(
-      configurationOptionTextStyle:
-          configurationOptionTextStyle ?? this.configurationOptionTextStyle,
-      configurationOptionSpacing:
-          configurationOptionSpacing ?? this.configurationOptionSpacing,
+      configurationOptionTextStyle: configurationOptionTextStyle ?? this.configurationOptionTextStyle,
+      configurationOptionSpacing: configurationOptionSpacing ?? this.configurationOptionSpacing,
       inputStyle: inputStyle ?? this.inputStyle,
       suffixWidgetIcon: suffixWidgetIcon ?? this.suffixWidgetIcon,
     );
   }
 
   @override
-  MyoroInputWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroInputWidgetShowcaseThemeExtension>? other,
-    double t,
-  ) {
+  MyoroInputWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroInputWidgetShowcaseThemeExtension>? other, double t) {
     if (other is! MyoroInputWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      configurationOptionTextStyle: TextStyle.lerp(
-        configurationOptionTextStyle,
-        other.configurationOptionTextStyle,
-        t,
-      ),
-      configurationOptionSpacing: lerpDouble(
-        configurationOptionSpacing,
-        other.configurationOptionSpacing,
-        t,
-      ),
+      configurationOptionTextStyle: TextStyle.lerp(configurationOptionTextStyle, other.configurationOptionTextStyle, t),
+      configurationOptionSpacing: lerpDouble(configurationOptionSpacing, other.configurationOptionSpacing, t),
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       suffixWidgetIcon: myoroLerp(suffixWidgetIcon, other.suffixWidgetIcon, t),
     );
@@ -94,11 +76,15 @@ final class MyoroInputWidgetShowcaseThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      configurationOptionTextStyle,
-      configurationOptionSpacing,
-      inputStyle,
-      suffixWidgetIcon,
-    );
+    return Object.hash(configurationOptionTextStyle, configurationOptionSpacing, inputStyle, suffixWidgetIcon);
   }
+
+  @override
+  String toString() =>
+      'MyoroInputWidgetShowcaseThemeExtension(\n'
+      '  configurationOptionTextStyle: $configurationOptionTextStyle,\n'
+      '  configurationOptionSpacing: $configurationOptionSpacing,\n'
+      '  inputStyle: $inputStyle,\n'
+      '  suffixWidgetIcon: $suffixWidgetIcon,\n'
+      ');';
 }

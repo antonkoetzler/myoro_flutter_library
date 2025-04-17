@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroDatePickerInput].
-final class MyoroDatePickerInputThemeExtension
-    extends ThemeExtension<MyoroDatePickerInputThemeExtension> {
+final class MyoroDatePickerInputThemeExtension extends ThemeExtension<MyoroDatePickerInputThemeExtension> {
   const MyoroDatePickerInputThemeExtension();
 
   const MyoroDatePickerInputThemeExtension.builder();
@@ -12,21 +11,22 @@ final class MyoroDatePickerInputThemeExtension
   MyoroDatePickerInputThemeExtension copyWith() => this;
 
   @override
-  ThemeExtension<MyoroDatePickerInputThemeExtension> lerp(
-    covariant ThemeExtension<MyoroDatePickerInputThemeExtension>? other,
-    double t,
-  ) {
+  ThemeExtension<MyoroDatePickerInputThemeExtension> lerp(covariant ThemeExtension<MyoroDatePickerInputThemeExtension>? other, double t) {
     return this;
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDatePickerInputThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroDatePickerInputThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override
   int get hashCode {
     return Object.hashAll(const []);
   }
+
+  @override
+  String toString() =>
+      'MyoroDatePickerInputThemeExtension(\n'
+      ');';
 }

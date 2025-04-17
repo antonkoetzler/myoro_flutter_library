@@ -37,7 +37,6 @@ final class MyoroBasicDividerConfiguration extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroBasicDividerConfiguration(\n'
       '  direction: $direction,\n'
       '  shortValue: $shortValue,\n'

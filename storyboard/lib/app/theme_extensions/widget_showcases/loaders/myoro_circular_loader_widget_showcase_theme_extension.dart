@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroCircularLoaderWidgetShowcase].
-final class MyoroCircularLoaderWidgetShowcaseThemeExtension
-    extends ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> {
+final class MyoroCircularLoaderWidgetShowcaseThemeExtension extends ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> {
   const MyoroCircularLoaderWidgetShowcaseThemeExtension();
 
   const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder();
@@ -13,8 +12,7 @@ final class MyoroCircularLoaderWidgetShowcaseThemeExtension
 
   @override
   ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> lerp(
-    covariant ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension>?
-    other,
+    covariant ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
     return this;
@@ -22,12 +20,16 @@ final class MyoroCircularLoaderWidgetShowcaseThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroCircularLoaderWidgetShowcaseThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroCircularLoaderWidgetShowcaseThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override
   int get hashCode {
     return Object.hashAll(const []);
   }
+
+  @override
+  String toString() =>
+      'MyoroCircularLoaderWidgetShowcaseThemeExtension(\n'
+      ');';
 }

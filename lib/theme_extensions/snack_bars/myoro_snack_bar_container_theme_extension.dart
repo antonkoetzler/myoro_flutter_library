@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSnackBarContainer].
-final class MyoroSnackBarContainerThemeExtension
-    extends ThemeExtension<MyoroSnackBarContainerThemeExtension> {
+final class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension> {
   /// Background color of the container.
   final Color primaryColor;
 
@@ -39,21 +38,12 @@ final class MyoroSnackBarContainerThemeExtension
   });
 
   MyoroSnackBarContainerThemeExtension.fake()
-    : primaryColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
-      behavior =
-          SnackBarBehavior.values[faker.randomGenerator.integer(
-            SnackBarBehavior.values.length,
-          )],
+    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      behavior = SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)],
       margin = EdgeInsets.all(faker.randomGenerator.decimal()),
       padding = EdgeInsets.all(faker.randomGenerator.decimal()),
       elevation = faker.randomGenerator.decimal(),
-      dismissDirection =
-          DismissDirection.values[faker.randomGenerator.integer(
-            DismissDirection.values.length,
-          )],
+      dismissDirection = DismissDirection.values[faker.randomGenerator.integer(DismissDirection.values.length)],
       duration = Duration(milliseconds: faker.randomGenerator.integer(9999));
 
   const MyoroSnackBarContainerThemeExtension.builder()
@@ -87,10 +77,7 @@ final class MyoroSnackBarContainerThemeExtension
   }
 
   @override
-  MyoroSnackBarContainerThemeExtension lerp(
-    covariant ThemeExtension<MyoroSnackBarContainerThemeExtension>? other,
-    double t,
-  ) {
+  MyoroSnackBarContainerThemeExtension lerp(covariant ThemeExtension<MyoroSnackBarContainerThemeExtension>? other, double t) {
     if (other is! MyoroSnackBarContainerThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
@@ -118,14 +105,18 @@ final class MyoroSnackBarContainerThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      primaryColor,
-      behavior,
-      margin,
-      padding,
-      elevation,
-      dismissDirection,
-      duration,
-    );
+    return Object.hash(primaryColor, behavior, margin, padding, elevation, dismissDirection, duration);
   }
+
+  @override
+  String toString() =>
+      'MyoroSnackBarContainerThemeExtension(\n'
+      '  primaryColor: $primaryColor,\n'
+      '  behavior: $behavior,\n'
+      '  margin: $margin,\n'
+      '  padding: $padding,\n'
+      '  elevation: $elevation,\n'
+      '  dismissDirection: $dismissDirection,\n'
+      '  duration: $duration,\n'
+      ');';
 }

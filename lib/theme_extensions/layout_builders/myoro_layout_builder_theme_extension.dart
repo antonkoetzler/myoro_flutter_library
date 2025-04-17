@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroLayoutBuilder].
-final class MyoroLayoutBuilderThemeExtension
-    extends ThemeExtension<MyoroLayoutBuilderThemeExtension> {
+final class MyoroLayoutBuilderThemeExtension extends ThemeExtension<MyoroLayoutBuilderThemeExtension> {
   const MyoroLayoutBuilderThemeExtension();
 
   const MyoroLayoutBuilderThemeExtension.builder();
@@ -12,21 +11,22 @@ final class MyoroLayoutBuilderThemeExtension
   MyoroLayoutBuilderThemeExtension copyWith() => this;
 
   @override
-  ThemeExtension<MyoroLayoutBuilderThemeExtension> lerp(
-    covariant ThemeExtension<MyoroLayoutBuilderThemeExtension>? other,
-    double t,
-  ) {
+  ThemeExtension<MyoroLayoutBuilderThemeExtension> lerp(covariant ThemeExtension<MyoroLayoutBuilderThemeExtension>? other, double t) {
     return this;
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroLayoutBuilderThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroLayoutBuilderThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override
   int get hashCode {
     return Object.hashAll(const []);
   }
+
+  @override
+  String toString() =>
+      'MyoroLayoutBuilderThemeExtension(\n'
+      ');';
 }

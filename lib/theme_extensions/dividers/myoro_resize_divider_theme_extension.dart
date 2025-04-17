@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroResizeDivider].
-final class MyoroResizeDividerThemeExtension
-    extends ThemeExtension<MyoroResizeDividerThemeExtension> {
+final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDividerThemeExtension> {
   /// [MyoroColorDesignSystem.secondary] by default.
   final Color secondary;
 
@@ -27,15 +26,10 @@ final class MyoroResizeDividerThemeExtension
   });
 
   MyoroResizeDividerThemeExtension.fake()
-    : secondary =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+    : secondary = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       resizeButtonShortValue = faker.randomGenerator.decimal(),
       resizeButtonLongValue = faker.randomGenerator.decimal(),
-      resizeButtonBorderRadius = BorderRadius.circular(
-        faker.randomGenerator.decimal(),
-      );
+      resizeButtonBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal());
 
   MyoroResizeDividerThemeExtension.builder(ColorScheme colorScheme)
     : secondary = colorScheme.onPrimary,
@@ -52,38 +46,20 @@ final class MyoroResizeDividerThemeExtension
   }) {
     return MyoroResizeDividerThemeExtension(
       secondary: secondary ?? this.secondary,
-      resizeButtonShortValue:
-          resizeButtonShortValue ?? this.resizeButtonShortValue,
-      resizeButtonLongValue:
-          resizeButtonLongValue ?? this.resizeButtonLongValue,
-      resizeButtonBorderRadius:
-          resizeButtonBorderRadius ?? this.resizeButtonBorderRadius,
+      resizeButtonShortValue: resizeButtonShortValue ?? this.resizeButtonShortValue,
+      resizeButtonLongValue: resizeButtonLongValue ?? this.resizeButtonLongValue,
+      resizeButtonBorderRadius: resizeButtonBorderRadius ?? this.resizeButtonBorderRadius,
     );
   }
 
   @override
-  MyoroResizeDividerThemeExtension lerp(
-    covariant ThemeExtension<MyoroResizeDividerThemeExtension>? other,
-    double t,
-  ) {
+  MyoroResizeDividerThemeExtension lerp(covariant ThemeExtension<MyoroResizeDividerThemeExtension>? other, double t) {
     if (other is! MyoroResizeDividerThemeExtension) return this;
     return copyWith(
       secondary: Color.lerp(secondary, other.secondary, t),
-      resizeButtonShortValue: lerpDouble(
-        resizeButtonShortValue,
-        other.resizeButtonShortValue,
-        t,
-      ),
-      resizeButtonLongValue: lerpDouble(
-        resizeButtonLongValue,
-        other.resizeButtonLongValue,
-        t,
-      ),
-      resizeButtonBorderRadius: BorderRadius.lerp(
-        resizeButtonBorderRadius,
-        other.resizeButtonBorderRadius,
-        t,
-      ),
+      resizeButtonShortValue: lerpDouble(resizeButtonShortValue, other.resizeButtonShortValue, t),
+      resizeButtonLongValue: lerpDouble(resizeButtonLongValue, other.resizeButtonLongValue, t),
+      resizeButtonBorderRadius: BorderRadius.lerp(resizeButtonBorderRadius, other.resizeButtonBorderRadius, t),
     );
   }
 
@@ -99,11 +75,15 @@ final class MyoroResizeDividerThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      secondary,
-      resizeButtonShortValue,
-      resizeButtonLongValue,
-      resizeButtonBorderRadius,
-    );
+    return Object.hash(secondary, resizeButtonShortValue, resizeButtonLongValue, resizeButtonBorderRadius);
   }
+
+  @override
+  String toString() =>
+      'MyoroResizeDividerThemeExtension(\n'
+      '  secondary: $secondary,\n'
+      '  resizeButtonShortValue: $resizeButtonShortValue,\n'
+      '  resizeButtonLongValue: $resizeButtonLongValue,\n'
+      '  resizeButtonBorderRadius: $resizeButtonBorderRadius,\n'
+      ');';
 }

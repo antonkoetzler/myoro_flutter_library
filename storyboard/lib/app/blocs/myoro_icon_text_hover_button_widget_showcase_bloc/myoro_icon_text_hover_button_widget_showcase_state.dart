@@ -72,7 +72,6 @@ final class MyoroIconTextHoverButtonWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroIconTextHoverButtonWidgetShowcaseState(\n'
       '  icon: $icon,\n'
       '  iconSize: $iconSize,\n'

@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroModal].
-final class MyoroModalThemeExtension
-    extends ThemeExtension<MyoroModalThemeExtension> {
+final class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> {
   /// Background color of the modal.
   final Color primaryColor;
 
@@ -47,18 +46,9 @@ final class MyoroModalThemeExtension
     final maxHeight = faker.randomGenerator.decimal();
 
     return MyoroModalThemeExtension(
-      primaryColor:
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+      primaryColor: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       borderRadius: BorderRadius.circular(faker.randomGenerator.decimal()),
-      border: Border.all(
-        width: faker.randomGenerator.decimal(),
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
-      ),
+      border: Border.all(width: faker.randomGenerator.decimal(), color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
       padding: EdgeInsets.all(faker.randomGenerator.decimal()),
       constraints: BoxConstraints(
         minWidth: faker.randomGenerator.integer(maxWidth.toInt()).toDouble(),
@@ -68,34 +58,20 @@ final class MyoroModalThemeExtension
       ),
       spacing: faker.randomGenerator.decimal(),
       titleTextStyle: MyoroTypographyDesignSystem.instance.randomTextStyle,
-      closeButtonIcon:
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+      closeButtonIcon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
     );
   }
 
-  factory MyoroModalThemeExtension.builder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
+  factory MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme) {
     const width = 300.0;
     const height = 400.0;
 
     return MyoroModalThemeExtension(
       primaryColor: colorScheme.primary,
       borderRadius: MyoroDecorationHelper.borderRadius,
-      border: Border.all(
-        width: kMyoroBorderLength,
-        color: colorScheme.onPrimary,
-      ),
+      border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
       padding: const EdgeInsets.all(5),
-      constraints: const BoxConstraints(
-        minWidth: width,
-        minHeight: height,
-        maxWidth: width,
-        maxHeight: height,
-      ),
+      constraints: const BoxConstraints(minWidth: width, minHeight: height, maxWidth: width, maxHeight: height),
       spacing: 10,
       titleTextStyle: textTheme.titleSmall!,
       closeButtonIcon: Icons.close,
@@ -126,10 +102,7 @@ final class MyoroModalThemeExtension
   }
 
   @override
-  MyoroModalThemeExtension lerp(
-    covariant ThemeExtension<MyoroModalThemeExtension>? other,
-    double t,
-  ) {
+  MyoroModalThemeExtension lerp(covariant ThemeExtension<MyoroModalThemeExtension>? other, double t) {
     if (other is! MyoroModalThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
@@ -159,15 +132,19 @@ final class MyoroModalThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      primaryColor,
-      borderRadius,
-      border,
-      padding,
-      constraints,
-      spacing,
-      titleTextStyle,
-      closeButtonIcon,
-    );
+    return Object.hash(primaryColor, borderRadius, border, padding, constraints, spacing, titleTextStyle, closeButtonIcon);
   }
+
+  @override
+  String toString() =>
+      'MyoroModalThemeExtension(\n'
+      '  primaryColor: $primaryColor,\n'
+      '  borderRadius: $borderRadius,\n'
+      '  border: $border,\n'
+      '  padding: $padding,\n'
+      '  constraints: $constraints,\n'
+      '  spacing: $spacing,\n'
+      '  titleTextStyle: $titleTextStyle,\n'
+      '  closeButtonIcon: $closeButtonIcon,\n'
+      ');';
 }

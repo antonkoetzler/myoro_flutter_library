@@ -33,7 +33,6 @@ final class MyoroDrawerWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroDrawerWidgetShowcaseState(\n'
       '  title: $title,\n'
       '  titleTextStyle: $titleTextStyle,\n'

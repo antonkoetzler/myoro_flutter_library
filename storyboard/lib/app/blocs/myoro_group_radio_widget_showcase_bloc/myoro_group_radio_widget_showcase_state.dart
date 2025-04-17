@@ -10,17 +10,9 @@ final class MyoroGroupRadioWidgetShowcaseState extends Equatable {
   /// [MyoroGroupRadio.runSpacing].
   final double runSpacing;
 
-  const MyoroGroupRadioWidgetShowcaseState({
-    required this.direction,
-    required this.spacing,
-    required this.runSpacing,
-  });
+  const MyoroGroupRadioWidgetShowcaseState({required this.direction, required this.spacing, required this.runSpacing});
 
-  MyoroGroupRadioWidgetShowcaseState copyWith({
-    Axis? direction,
-    double? spacing,
-    double? runSpacing,
-  }) {
+  MyoroGroupRadioWidgetShowcaseState copyWith({Axis? direction, double? spacing, double? runSpacing}) {
     return MyoroGroupRadioWidgetShowcaseState(
       direction: direction ?? this.direction,
       spacing: spacing ?? this.spacing,
@@ -30,7 +22,6 @@ final class MyoroGroupRadioWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroGroupRadioWidgetShowcaseState(\n'
       '  direction: $direction,\n'
       '  spacing: $spacing,\n'

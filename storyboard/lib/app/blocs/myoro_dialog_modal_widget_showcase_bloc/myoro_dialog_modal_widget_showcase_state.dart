@@ -79,7 +79,6 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroDialogModalWidgetShowcaseState(\n'
       '  invertButtons: $invertButtons,\n'
       '  confirmButtonText: $confirmButtonText,\n'

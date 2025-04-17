@@ -6,8 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroTooltipWidgetShowcase].
-final class MyoroTooltipWidgetShowcaseThemeExtension
-    extends ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension> {
+final class MyoroTooltipWidgetShowcaseThemeExtension extends ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -30,12 +29,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
   MyoroTooltipWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
       childSize = faker.randomGenerator.decimal(),
-      childDecoration = BoxDecoration(
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
-      ),
+      childDecoration = BoxDecoration(color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
       childTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
 
   MyoroTooltipWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
@@ -43,10 +37,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
       childSize = 300,
       childDecoration = BoxDecoration(
         color: MyoroColorDesignSystem.attention,
-        border: Border.all(
-          width: kMyoroBorderLength,
-          color: MyoroColorDesignSystem.attention,
-        ),
+        border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
       ),
       childTextStyle = textTheme.titleMedium!;
 
@@ -66,19 +57,12 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
   }
 
   @override
-  MyoroTooltipWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>? other,
-    double t,
-  ) {
+  MyoroTooltipWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>? other, double t) {
     if (other is! MyoroTooltipWidgetShowcaseThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       childSize: lerpDouble(childSize, other.childSize, t),
-      childDecoration: BoxDecoration.lerp(
-        childDecoration,
-        other.childDecoration,
-        t,
-      ),
+      childDecoration: BoxDecoration.lerp(childDecoration, other.childDecoration, t),
       childTextStyle: TextStyle.lerp(childTextStyle, other.childTextStyle, t),
     );
   }
@@ -97,4 +81,13 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
   int get hashCode {
     return Object.hash(inputStyle, childSize, childDecoration, childTextStyle);
   }
+
+  @override
+  String toString() =>
+      'MyoroTooltipWidgetShowcaseThemeExtension(\n'
+      '  inputStyle: $inputStyle,\n'
+      '  childSize: $childSize,\n'
+      '  childDecoration: $childDecoration,\n'
+      '  childTextStyle: $childTextStyle,\n'
+      ');';
 }

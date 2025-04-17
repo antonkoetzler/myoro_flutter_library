@@ -53,7 +53,6 @@ final class MyoroModalConfiguration extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroModalConfiguration(\n'
       '  barrierDismissable: $barrierDismissable,\n'
       '  constraints: $constraints,\n'

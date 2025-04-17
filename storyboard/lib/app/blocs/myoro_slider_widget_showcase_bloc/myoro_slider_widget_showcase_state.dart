@@ -49,7 +49,6 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroSliderWidgetShowcaseState(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'

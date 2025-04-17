@@ -38,7 +38,6 @@ final class MyoroCardWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroCardWidgetShowcaseState(\n'
       '  title: $title,\n'
       '  titleTextStyle: $titleTextStyle,\n'

@@ -22,7 +22,6 @@ final class MyoroResolverState<T> extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroResolverState<$T>(\n'
       '  status: $status,\n'
       '  errorMessage: $errorMessage,\n'

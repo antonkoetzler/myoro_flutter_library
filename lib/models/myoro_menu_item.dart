@@ -83,7 +83,6 @@ final class MyoroMenuItem extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroMenuItem(\n'
       '  isHovered: $isHovered,\n'
       '  onPressed: $onPressed,\n'

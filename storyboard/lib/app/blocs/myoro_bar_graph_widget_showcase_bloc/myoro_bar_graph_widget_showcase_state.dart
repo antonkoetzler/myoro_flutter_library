@@ -12,7 +12,6 @@ final class MyoroBarGraphWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroBarGraphWidgetShowcaseState(\n'
       '  sorted: $sorted,\n'
       ');';

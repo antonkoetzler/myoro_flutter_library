@@ -40,7 +40,6 @@ final class MyoroMenuWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroMenuWidgetShowcaseState(\n'
       '  minWidth: $minWidth,\n'
       '  maxWidth: $maxWidth,\n'

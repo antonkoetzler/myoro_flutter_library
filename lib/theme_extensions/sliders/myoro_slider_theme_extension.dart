@@ -2,8 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-final class MyoroSliderThemeExtension
-    extends ThemeExtension<MyoroSliderThemeExtension> {
+final class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension> {
   /// Default [TextStyle] of [MyoroSlider.label].
   final TextStyle labelTextStyle;
 
@@ -27,10 +26,7 @@ final class MyoroSliderThemeExtension
     : labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       sliderPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       indicatorTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      indicatorTextAlignment =
-          TextAlign.values[faker.randomGenerator.integer(
-            TextAlign.values.length,
-          )];
+      indicatorTextAlignment = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)];
 
   MyoroSliderThemeExtension.builder(TextTheme textTheme)
     : labelTextStyle = textTheme.headlineSmall!,
@@ -39,40 +35,23 @@ final class MyoroSliderThemeExtension
       indicatorTextAlignment = TextAlign.center;
 
   @override
-  MyoroSliderThemeExtension copyWith({
-    TextStyle? labelTextStyle,
-    EdgeInsets? sliderPadding,
-    TextStyle? indicatorTextStyle,
-    TextAlign? indicatorTextAlignment,
-  }) {
+  MyoroSliderThemeExtension copyWith({TextStyle? labelTextStyle, EdgeInsets? sliderPadding, TextStyle? indicatorTextStyle, TextAlign? indicatorTextAlignment}) {
     return MyoroSliderThemeExtension(
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       sliderPadding: sliderPadding ?? this.sliderPadding,
       indicatorTextStyle: indicatorTextStyle ?? this.indicatorTextStyle,
-      indicatorTextAlignment:
-          indicatorTextAlignment ?? this.indicatorTextAlignment,
+      indicatorTextAlignment: indicatorTextAlignment ?? this.indicatorTextAlignment,
     );
   }
 
   @override
-  MyoroSliderThemeExtension lerp(
-    covariant ThemeExtension<MyoroSliderThemeExtension>? other,
-    double t,
-  ) {
+  MyoroSliderThemeExtension lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
     if (other is! MyoroSliderThemeExtension) return this;
     return copyWith(
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       sliderPadding: EdgeInsets.lerp(sliderPadding, other.sliderPadding, t),
-      indicatorTextStyle: TextStyle.lerp(
-        indicatorTextStyle,
-        other.indicatorTextStyle,
-        t,
-      ),
-      indicatorTextAlignment: myoroLerp(
-        indicatorTextAlignment,
-        other.indicatorTextAlignment,
-        t,
-      ),
+      indicatorTextStyle: TextStyle.lerp(indicatorTextStyle, other.indicatorTextStyle, t),
+      indicatorTextAlignment: myoroLerp(indicatorTextAlignment, other.indicatorTextAlignment, t),
     );
   }
 
@@ -88,11 +67,15 @@ final class MyoroSliderThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      labelTextStyle,
-      sliderPadding,
-      indicatorTextStyle,
-      indicatorTextAlignment,
-    );
+    return Object.hash(labelTextStyle, sliderPadding, indicatorTextStyle, indicatorTextAlignment);
   }
+
+  @override
+  String toString() =>
+      'MyoroSliderThemeExtension(\n'
+      '  labelTextStyle: $labelTextStyle,\n'
+      '  sliderPadding: $sliderPadding,\n'
+      '  indicatorTextStyle: $indicatorTextStyle,\n'
+      '  indicatorTextAlignment: $indicatorTextAlignment,\n'
+      ');';
 }

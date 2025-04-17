@@ -18,7 +18,6 @@ final class MyoroRadioWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroRadioWidgetShowcaseState(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'

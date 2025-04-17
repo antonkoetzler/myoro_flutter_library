@@ -30,7 +30,6 @@ final class MyoroBarGraphBar extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroBarGraphBar(\n'
       '  y: $y,\n'
       '  color: $color,\n'

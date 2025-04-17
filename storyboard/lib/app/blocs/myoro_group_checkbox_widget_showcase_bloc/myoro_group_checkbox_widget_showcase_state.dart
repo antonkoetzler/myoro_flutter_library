@@ -10,17 +10,9 @@ final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
   /// [MyoroGroupCheckbox.runSpacing].
   final double runSpacing;
 
-  const MyoroGroupCheckboxWidgetShowcaseState({
-    this.direction = Axis.horizontal,
-    this.spacing = 5,
-    this.runSpacing = 5,
-  });
+  const MyoroGroupCheckboxWidgetShowcaseState({this.direction = Axis.horizontal, this.spacing = 5, this.runSpacing = 5});
 
-  MyoroGroupCheckboxWidgetShowcaseState copyWith({
-    Axis? direction,
-    double? spacing,
-    double? runSpacing,
-  }) {
+  MyoroGroupCheckboxWidgetShowcaseState copyWith({Axis? direction, double? spacing, double? runSpacing}) {
     return MyoroGroupCheckboxWidgetShowcaseState(
       direction: direction ?? this.direction,
       spacing: spacing ?? this.spacing,
@@ -30,7 +22,6 @@ final class MyoroGroupCheckboxWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroGroupCheckboxWidgetShowcaseState(\n'
       '  direction: $direction,\n'
       '  spacing: $spacing,\n'

@@ -4,8 +4,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 /// [ThemeExtension] of [MyoroDropdown].
-final class MyoroDropdownThemeExtension
-    extends ThemeExtension<MyoroDropdownThemeExtension> {
+final class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> {
   /// Standard spacing between items.
   final double spacing;
 
@@ -13,8 +12,7 @@ final class MyoroDropdownThemeExtension
 
   const MyoroDropdownThemeExtension.builder() : spacing = 10;
 
-  MyoroDropdownThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(scale: 50);
+  MyoroDropdownThemeExtension.fake() : spacing = faker.randomGenerator.decimal(scale: 50);
 
   @override
   MyoroDropdownThemeExtension copyWith({double? spacing}) {
@@ -22,19 +20,14 @@ final class MyoroDropdownThemeExtension
   }
 
   @override
-  MyoroDropdownThemeExtension lerp(
-    covariant ThemeExtension<MyoroDropdownThemeExtension>? other,
-    double t,
-  ) {
+  MyoroDropdownThemeExtension lerp(covariant ThemeExtension<MyoroDropdownThemeExtension>? other, double t) {
     if (other is! MyoroDropdownThemeExtension) return this;
     return copyWith(spacing: lerpDouble(spacing, other.spacing, t));
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDropdownThemeExtension &&
-        other.runtimeType == runtimeType &&
-        other.spacing == spacing;
+    return other is MyoroDropdownThemeExtension && other.runtimeType == runtimeType && other.spacing == spacing;
   }
 
   @override

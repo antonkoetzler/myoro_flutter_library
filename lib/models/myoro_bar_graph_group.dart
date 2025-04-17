@@ -16,16 +16,10 @@ final class MyoroBarGraphGroup extends Equatable {
     return MyoroBarGraphGroup(x: x ?? this.x, bars: bars ?? this.bars);
   }
 
-  MyoroBarGraphGroup.fake()
-    : x = faker.randomGenerator.integer(1000),
-      bars = List.generate(
-        faker.randomGenerator.integer(50),
-        (_) => MyoroBarGraphBar.fake(),
-      );
+  MyoroBarGraphGroup.fake() : x = faker.randomGenerator.integer(1000), bars = List.generate(faker.randomGenerator.integer(50), (_) => MyoroBarGraphBar.fake());
 
   @override
   String toString() =>
-      ''
       'MyoroBarGraphGroup(\n'
       '  x: $x,\n'
       '  bars: $bars,\n'

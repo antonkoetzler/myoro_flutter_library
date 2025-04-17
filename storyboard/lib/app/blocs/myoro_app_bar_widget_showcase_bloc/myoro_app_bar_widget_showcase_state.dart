@@ -12,7 +12,6 @@ final class MyoroAppBarWidgetShowcaseState extends Equatable {
 
   @override
   String toString() =>
-      ''
       'MyoroAppBarWidgetShowcaseState(\n'
       '  bordered: $bordered,\n'
       ');';
