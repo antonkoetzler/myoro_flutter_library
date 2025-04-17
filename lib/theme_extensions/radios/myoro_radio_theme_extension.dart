@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroRadio].
-final class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> {
+final class MyoroRadioThemeExtension
+    extends ThemeExtension<MyoroRadioThemeExtension> {
   /// Color of the radio itself.
   final Color activeColor;
 
@@ -37,14 +38,26 @@ final class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExten
       splashRadius = 15;
 
   MyoroRadioThemeExtension.fake()
-    : activeColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      hoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : activeColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      hoverColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal(),
       splashRadius = faker.randomGenerator.decimal();
 
   @override
-  MyoroRadioThemeExtension copyWith({Color? activeColor, Color? hoverColor, TextStyle? labelTextStyle, double? spacing, double? splashRadius}) {
+  MyoroRadioThemeExtension copyWith({
+    Color? activeColor,
+    Color? hoverColor,
+    TextStyle? labelTextStyle,
+    double? spacing,
+    double? splashRadius,
+  }) {
     return MyoroRadioThemeExtension(
       activeColor: activeColor ?? this.activeColor,
       hoverColor: hoverColor ?? this.hoverColor,
@@ -55,7 +68,10 @@ final class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExten
   }
 
   @override
-  MyoroRadioThemeExtension lerp(covariant ThemeExtension<MyoroRadioThemeExtension>? other, double t) {
+  MyoroRadioThemeExtension lerp(
+    covariant ThemeExtension<MyoroRadioThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroRadioThemeExtension) return this;
     return copyWith(
       activeColor: Color.lerp(activeColor, other.activeColor, t),
@@ -79,7 +95,13 @@ final class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExten
 
   @override
   int get hashCode {
-    return Object.hash(activeColor, hoverColor, labelTextStyle, spacing, splashRadius);
+    return Object.hash(
+      activeColor,
+      hoverColor,
+      labelTextStyle,
+      spacing,
+      splashRadius,
+    );
   }
 
   @override

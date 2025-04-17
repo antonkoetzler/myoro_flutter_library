@@ -10,7 +10,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroTooltipWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroTooltipWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -19,7 +22,18 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroTooltip), findsOneWidget);
     expect(find.text('Hover over me!'), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroSlider && w.label == '[MyoroTooltip.margin]'), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroInput && w.configuration.label == '[MyoroTooltip.text]'), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) => w is MyoroSlider && w.label == '[MyoroTooltip.margin]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroInput && w.configuration.label == '[MyoroTooltip.text]',
+      ),
+      findsOneWidget,
+    );
   });
 }

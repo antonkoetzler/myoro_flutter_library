@@ -21,7 +21,13 @@ final class MyoroModalConfiguration extends Equatable {
   /// If [_CloseButton] will be shown.
   final bool? showCloseButton;
 
-  const MyoroModalConfiguration({this.barrierDismissable, this.constraints, this.onClosed, this.title, this.showCloseButton});
+  const MyoroModalConfiguration({
+    this.barrierDismissable,
+    this.constraints,
+    this.onClosed,
+    this.title,
+    this.showCloseButton,
+  });
 
   MyoroModalConfiguration.fake()
     : barrierDismissable = faker.randomGenerator.boolean(),
@@ -43,11 +49,18 @@ final class MyoroModalConfiguration extends Equatable {
     bool showCloseButtonProvided = true,
   }) {
     return MyoroModalConfiguration(
-      barrierDismissable: barrierDismissableProvided ? (barrierDismissable ?? this.barrierDismissable) : null,
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
+      barrierDismissable:
+          barrierDismissableProvided
+              ? (barrierDismissable ?? this.barrierDismissable)
+              : null,
+      constraints:
+          constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: titleProvided ? (title ?? this.title) : null,
-      showCloseButton: showCloseButtonProvided ? (showCloseButton ?? this.showCloseButton) : null,
+      showCloseButton:
+          showCloseButtonProvided
+              ? (showCloseButton ?? this.showCloseButton)
+              : null,
     );
   }
 

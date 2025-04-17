@@ -11,7 +11,8 @@ typedef _Emitter = Emitter<MyoroCardWidgetShowcaseState>;
 typedef MyoroCardWidgetShowcaseBlocDimension = (bool enabled, double value);
 
 /// BLoC to manage all the state of [MyoroCardWidgetShowcase].
-final class MyoroCardWidgetShowcaseBloc extends Bloc<MyoroCardWidgetShowcaseEvent, MyoroCardWidgetShowcaseState> {
+final class MyoroCardWidgetShowcaseBloc
+    extends Bloc<MyoroCardWidgetShowcaseEvent, MyoroCardWidgetShowcaseState> {
   MyoroCardWidgetShowcaseBloc() : super(const MyoroCardWidgetShowcaseState()) {
     on<SetTitleEvent>(_setTitleEvent);
     on<SetTitleTextStyleEvent>(_setTitleTextStyleEvent);
@@ -25,7 +26,12 @@ final class MyoroCardWidgetShowcaseBloc extends Bloc<MyoroCardWidgetShowcaseEven
   }
 
   void _setTitleTextStyleEvent(SetTitleTextStyleEvent event, _Emitter emit) {
-    emit(state.copyWith(titleTextStyle: event.textStyle, titleTextStyleProvided: event.textStyle != null));
+    emit(
+      state.copyWith(
+        titleTextStyle: event.textStyle,
+        titleTextStyleProvided: event.textStyle != null,
+      ),
+    );
   }
 
   void _setPaddingEvent(SetPaddingEvent event, _Emitter emit) {

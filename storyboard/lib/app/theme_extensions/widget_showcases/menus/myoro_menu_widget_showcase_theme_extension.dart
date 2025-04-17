@@ -6,7 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroMenuWidgetShowcase].
-final class MyoroMenuWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMenuWidgetShowcaseThemeExtension> {
+final class MyoroMenuWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroMenuWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -16,7 +17,11 @@ final class MyoroMenuWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMe
   /// Text style of headers.
   final TextStyle headerTextStyle;
 
-  const MyoroMenuWidgetShowcaseThemeExtension({required this.inputStyle, required this.constraintsOptionSpacing, required this.headerTextStyle});
+  const MyoroMenuWidgetShowcaseThemeExtension({
+    required this.inputStyle,
+    required this.constraintsOptionSpacing,
+    required this.headerTextStyle,
+  });
 
   MyoroMenuWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
@@ -29,21 +34,37 @@ final class MyoroMenuWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMe
       headerTextStyle = textTheme.headlineSmall!;
 
   @override
-  MyoroMenuWidgetShowcaseThemeExtension copyWith({MyoroInputStyleEnum? inputStyle, double? constraintsOptionSpacing, TextStyle? headerTextStyle}) {
+  MyoroMenuWidgetShowcaseThemeExtension copyWith({
+    MyoroInputStyleEnum? inputStyle,
+    double? constraintsOptionSpacing,
+    TextStyle? headerTextStyle,
+  }) {
     return MyoroMenuWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
-      constraintsOptionSpacing: constraintsOptionSpacing ?? this.constraintsOptionSpacing,
+      constraintsOptionSpacing:
+          constraintsOptionSpacing ?? this.constraintsOptionSpacing,
       headerTextStyle: headerTextStyle ?? this.headerTextStyle,
     );
   }
 
   @override
-  MyoroMenuWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>? other, double t) {
+  MyoroMenuWidgetShowcaseThemeExtension lerp(
+    covariant ThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroMenuWidgetShowcaseThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      constraintsOptionSpacing: lerpDouble(constraintsOptionSpacing, other.constraintsOptionSpacing, t),
-      headerTextStyle: TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
+      constraintsOptionSpacing: lerpDouble(
+        constraintsOptionSpacing,
+        other.constraintsOptionSpacing,
+        t,
+      ),
+      headerTextStyle: TextStyle.lerp(
+        headerTextStyle,
+        other.headerTextStyle,
+        t,
+      ),
     );
   }
 

@@ -64,9 +64,12 @@ final class _MyoroSliderState extends State<MyoroSlider> {
   double get _initialValue => widget.initialValue ?? _minValue;
   double get _minValue => widget.minValue ?? 0;
   double get _maxValue => widget.maxValue ?? 1;
-  MyoroSliderIndicatorTextBuilder? get _currentValueIndicatorTextBuilder => widget.currentValueIndicatorTextBuilder;
-  MyoroSliderIndicatorTextBuilder? get _maxValueIndicatorTextBuilder => widget.maxValueIndicatorTextBuilder;
-  MyoroSliderIndicatorTextBuilder? get _footerIndicatorTextBuilder => widget.footerIndicatorTextBuilder;
+  MyoroSliderIndicatorTextBuilder? get _currentValueIndicatorTextBuilder =>
+      widget.currentValueIndicatorTextBuilder;
+  MyoroSliderIndicatorTextBuilder? get _maxValueIndicatorTextBuilder =>
+      widget.maxValueIndicatorTextBuilder;
+  MyoroSliderIndicatorTextBuilder? get _footerIndicatorTextBuilder =>
+      widget.footerIndicatorTextBuilder;
 
   late final _sliderValueNotifier = ValueNotifier<double>(_initialValue);
 
@@ -89,7 +92,8 @@ final class _MyoroSliderState extends State<MyoroSlider> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSliderThemeExtension>();
     final sliderPadding = themeExtension.sliderPadding;
 
     return SizedBox(
@@ -108,12 +112,31 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                   children: [
                     Row(
                       children: [
-                        if (_currentValueIndicatorTextBuilder != null) _IndicatorText(_currentValueIndicatorTextBuilder!.call(sliderValue)),
-                        Expanded(child: Slider(value: sliderValue, min: _minValue, max: _maxValue, onChanged: _onChanged)),
-                        if (_maxValueIndicatorTextBuilder != null) _IndicatorText(_maxValueIndicatorTextBuilder!.call(_maxValue)),
+                        if (_currentValueIndicatorTextBuilder != null)
+                          _IndicatorText(
+                            _currentValueIndicatorTextBuilder!.call(
+                              sliderValue,
+                            ),
+                          ),
+                        Expanded(
+                          child: Slider(
+                            value: sliderValue,
+                            min: _minValue,
+                            max: _maxValue,
+                            onChanged: _onChanged,
+                          ),
+                        ),
+                        if (_maxValueIndicatorTextBuilder != null)
+                          _IndicatorText(
+                            _maxValueIndicatorTextBuilder!.call(_maxValue),
+                          ),
                       ],
                     ),
-                    if (_footerIndicatorTextBuilder != null) _IndicatorText(_footerIndicatorTextBuilder!.call(sliderValue), isFooter: true),
+                    if (_footerIndicatorTextBuilder != null)
+                      _IndicatorText(
+                        _footerIndicatorTextBuilder!.call(sliderValue),
+                        isFooter: true,
+                      ),
                   ],
                 );
               },
@@ -133,7 +156,14 @@ final class _Label extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(_label, style: _labelTextStyle ?? context.resolveThemeExtension<MyoroSliderThemeExtension>().labelTextStyle);
+    return Text(
+      _label,
+      style:
+          _labelTextStyle ??
+          context
+              .resolveThemeExtension<MyoroSliderThemeExtension>()
+              .labelTextStyle,
+    );
   }
 }
 
@@ -145,8 +175,15 @@ final class _IndicatorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
-    return Text(_text, textAlign: themeExtension.indicatorTextAlignment, style: themeExtension.indicatorTextStyle.copyWith(height: isFooter ? 0 : 0.5));
+    return Text(
+      _text,
+      textAlign: themeExtension.indicatorTextAlignment,
+      style: themeExtension.indicatorTextStyle.copyWith(
+        height: isFooter ? 0 : 0.5,
+      ),
+    );
   }
 }

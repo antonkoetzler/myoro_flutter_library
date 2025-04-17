@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroTableWidgetShowcase].
-final class MyoroTableWidgetShowcaseThemeExtension extends ThemeExtension<MyoroTableWidgetShowcaseThemeExtension> {
+final class MyoroTableWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroTableWidgetShowcaseThemeExtension> {
   const MyoroTableWidgetShowcaseThemeExtension();
 
   const MyoroTableWidgetShowcaseThemeExtension.builder();
@@ -13,13 +14,17 @@ final class MyoroTableWidgetShowcaseThemeExtension extends ThemeExtension<MyoroT
   }
 
   @override
-  MyoroTableWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroTableWidgetShowcaseThemeExtension>? other, double t) {
+  MyoroTableWidgetShowcaseThemeExtension lerp(
+    covariant ThemeExtension<MyoroTableWidgetShowcaseThemeExtension>? other,
+    double t,
+  ) {
     return this;
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroTableWidgetShowcaseThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroTableWidgetShowcaseThemeExtension &&
+        other.runtimeType == runtimeType;
   }
 
   @override

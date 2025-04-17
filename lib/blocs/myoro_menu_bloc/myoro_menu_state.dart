@@ -21,12 +21,17 @@ final class MyoroMenuState<T> extends Equatable {
   /// Otherwise, [MyoroMenuConfiguration.onEndReachedRequest] is called if it is not null.
   final bool initialRequestMade;
 
-  const MyoroMenuState({this.status = MyoroRequestEnum.idle, this.errorMessage, this.items = const {}, this.queriedItems, this.initialRequestMade = false})
-    : assert(
-        !(status == MyoroRequestEnum.error && errorMessage == null),
-        '[MyoroMenuState<$T>]: [status] cannot be [MyoroRequestEnum.error] '
-        'when [errorMessage] is not null',
-      );
+  const MyoroMenuState({
+    this.status = MyoroRequestEnum.idle,
+    this.errorMessage,
+    this.items = const {},
+    this.queriedItems,
+    this.initialRequestMade = false,
+  }) : assert(
+         !(status == MyoroRequestEnum.error && errorMessage == null),
+         '[MyoroMenuState<$T>]: [status] cannot be [MyoroRequestEnum.error] '
+         'when [errorMessage] is not null',
+       );
 
   MyoroMenuState<T> copyWith({
     MyoroRequestEnum? status,
@@ -39,9 +44,11 @@ final class MyoroMenuState<T> extends Equatable {
   }) {
     return MyoroMenuState(
       status: status ?? this.status,
-      errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
+      errorMessage:
+          errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
       items: items ?? this.items,
-      queriedItems: queriedItemsProvided ? (queriedItems ?? this.queriedItems) : null,
+      queriedItems:
+          queriedItemsProvided ? (queriedItems ?? this.queriedItems) : null,
       initialRequestMade: initialRequestMade ?? this.initialRequestMade,
     );
   }

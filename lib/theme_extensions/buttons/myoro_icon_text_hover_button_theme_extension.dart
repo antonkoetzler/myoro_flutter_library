@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroIconTextHoverButton].
-final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroIconTextHoverButtonThemeExtension> {
+final class MyoroIconTextHoverButtonThemeExtension
+    extends ThemeExtension<MyoroIconTextHoverButtonThemeExtension> {
   /// [MyoroColorDesignSystem.primary] by default.
   final Color primaryColor;
 
@@ -41,8 +42,10 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
     required this.mainAxisAlignment,
   });
 
-  MyoroIconTextHoverButtonThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : primaryColor = colorScheme.primary,
+  MyoroIconTextHoverButtonThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : primaryColor = colorScheme.primary,
       onPrimaryColor = colorScheme.onPrimary,
       contentPadding = const EdgeInsets.all(5),
       textStyle = textTheme.bodyMedium!,
@@ -52,14 +55,28 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
       mainAxisAlignment = MainAxisAlignment.start;
 
   MyoroIconTextHoverButtonThemeExtension.fake()
-    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      contentPadding = EdgeInsets.all(faker.randomGenerator.integer(50).toDouble()),
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      onPrimaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      contentPadding = EdgeInsets.all(
+        faker.randomGenerator.integer(50).toDouble(),
+      ),
       textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       textMaxLines = faker.randomGenerator.integer(5),
-      textOverflow = TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)],
+      textOverflow =
+          TextOverflow.values[faker.randomGenerator.integer(
+            TextOverflow.values.length,
+          )],
       spacing = faker.randomGenerator.decimal(),
-      mainAxisAlignment = MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)];
+      mainAxisAlignment =
+          MainAxisAlignment.values[faker.randomGenerator.integer(
+            MainAxisAlignment.values.length,
+          )];
 
   @override
   MyoroIconTextHoverButtonThemeExtension copyWith({
@@ -85,17 +102,29 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
   }
 
   @override
-  MyoroIconTextHoverButtonThemeExtension lerp(covariant ThemeExtension<MyoroIconTextHoverButtonThemeExtension>? other, double t) {
+  MyoroIconTextHoverButtonThemeExtension lerp(
+    covariant ThemeExtension<MyoroIconTextHoverButtonThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroIconTextHoverButtonThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       onPrimaryColor: Color.lerp(onPrimaryColor, other.onPrimaryColor, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      textMaxLines: lerpDouble(textMaxLines.toDouble(), other.textMaxLines.toDouble(), t)?.toInt(),
+      textMaxLines:
+          lerpDouble(
+            textMaxLines.toDouble(),
+            other.textMaxLines.toDouble(),
+            t,
+          )?.toInt(),
       textOverflow: myoroLerp(textOverflow, other.textOverflow, t),
       spacing: lerpDouble(spacing, other.spacing, t),
-      mainAxisAlignment: myoroLerp(mainAxisAlignment, other.mainAxisAlignment, t),
+      mainAxisAlignment: myoroLerp(
+        mainAxisAlignment,
+        other.mainAxisAlignment,
+        t,
+      ),
     );
   }
 
@@ -115,7 +144,16 @@ final class MyoroIconTextHoverButtonThemeExtension extends ThemeExtension<MyoroI
 
   @override
   int get hashCode {
-    return Object.hash(primaryColor, onPrimaryColor, contentPadding, textStyle, textMaxLines, textOverflow, spacing, mainAxisAlignment);
+    return Object.hash(
+      primaryColor,
+      onPrimaryColor,
+      contentPadding,
+      textStyle,
+      textMaxLines,
+      textOverflow,
+      spacing,
+      mainAxisAlignment,
+    );
   }
 
   @override

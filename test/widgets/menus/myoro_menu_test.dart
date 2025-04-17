@@ -8,7 +8,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   testWidgets('MyoroMenu', (WidgetTester tester) async {
     final configuration = MyoroMenuConfiguration<String>(
-      request: () => List.generate(faker.randomGenerator.integer(100), (int index) => '#$index: ${faker.lorem.word()}').toSet(),
+      request:
+          () =>
+              List.generate(
+                faker.randomGenerator.integer(100),
+                (int index) => '#$index: ${faker.lorem.word()}',
+              ).toSet(),
       itemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
     );
 
@@ -18,7 +23,8 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroMenuThemeExtension>();
             return MyoroMenu(configuration: configuration);
           },
         ),
@@ -34,11 +40,14 @@ void main() {
         (Widget w) =>
             w is Container &&
             w.decoration is BoxDecoration &&
-            (w.decoration as BoxDecoration).color == themeExtension.primaryColor &&
+            (w.decoration as BoxDecoration).color ==
+                themeExtension.primaryColor &&
             (w.decoration as BoxDecoration).border == themeExtension.border &&
-            (w.decoration as BoxDecoration).borderRadius == themeExtension.borderRadius &&
+            (w.decoration as BoxDecoration).borderRadius ==
+                themeExtension.borderRadius &&
             w.constraints == configuration.constraints &&
-            w.child is BlocBuilder<MyoroMenuBloc<String>, MyoroMenuState<String>>,
+            w.child
+                is BlocBuilder<MyoroMenuBloc<String>, MyoroMenuState<String>>,
       ),
       findsOneWidget,
     );
@@ -71,7 +80,8 @@ void main() {
               w is Padding &&
               w.padding == themeExtension.searchBarPadding &&
               w.child is MyoroInput &&
-              (w.child as MyoroInput).configuration.inputStyle == themeExtension.searchBarInputStyle &&
+              (w.child as MyoroInput).configuration.inputStyle ==
+                  themeExtension.searchBarInputStyle &&
               (w.child as MyoroInput).configuration.autofocus == true,
         ),
         findsOneWidget,

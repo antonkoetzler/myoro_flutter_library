@@ -10,20 +10,53 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroSnackBarWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroSnackBarWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroSnackBarWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroIconTextHoverButton && w.text == 'Click to launch the snack bar.'), findsOneWidget);
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<MyoroSnackBarTypeEnum> && w.configuration.label == '[MyoroSnackBar.snackBarType]'),
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroIconTextHoverButton &&
+            w.text == 'Click to launch the snack bar.',
+      ),
       findsOneWidget,
     );
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[MyoroSnackBar.showCloseButton]'), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroInput && w.configuration.label == '[MyoroSnackBar.message]'), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[MyoroSnackBar.child] enabled?'), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<MyoroSnackBarTypeEnum> &&
+            w.configuration.label == '[MyoroSnackBar.snackBarType]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroCheckbox && w.label == '[MyoroSnackBar.showCloseButton]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroInput &&
+            w.configuration.label == '[MyoroSnackBar.message]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroCheckbox && w.label == '[MyoroSnackBar.child] enabled?',
+      ),
+      findsOneWidget,
+    );
   });
 }

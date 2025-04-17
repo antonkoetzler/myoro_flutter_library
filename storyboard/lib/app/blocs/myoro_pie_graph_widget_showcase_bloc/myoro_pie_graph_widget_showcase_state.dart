@@ -7,10 +7,19 @@ final class MyoroPieGraphWidgetShowcaseState extends Equatable {
   /// [MyoroPieGraph.centerWidget].
   final bool centerWidgetEnabled;
 
-  const MyoroPieGraphWidgetShowcaseState({this.typeEnum = MyoroPieGraphEnum.pie, this.centerWidgetEnabled = false});
+  const MyoroPieGraphWidgetShowcaseState({
+    this.typeEnum = MyoroPieGraphEnum.pie,
+    this.centerWidgetEnabled = false,
+  });
 
-  MyoroPieGraphWidgetShowcaseState copyWith({MyoroPieGraphEnum? typeEnum, bool? centerWidgetEnabled}) {
-    return MyoroPieGraphWidgetShowcaseState(typeEnum: typeEnum ?? this.typeEnum, centerWidgetEnabled: centerWidgetEnabled ?? this.centerWidgetEnabled);
+  MyoroPieGraphWidgetShowcaseState copyWith({
+    MyoroPieGraphEnum? typeEnum,
+    bool? centerWidgetEnabled,
+  }) {
+    return MyoroPieGraphWidgetShowcaseState(
+      typeEnum: typeEnum ?? this.typeEnum,
+      centerWidgetEnabled: centerWidgetEnabled ?? this.centerWidgetEnabled,
+    );
   }
 
   @override

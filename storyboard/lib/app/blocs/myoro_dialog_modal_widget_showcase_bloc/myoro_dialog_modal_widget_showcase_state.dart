@@ -30,7 +30,10 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
     this.textEnabled = true,
     this.textStyle,
     this.childEnabled = false,
-  }) : assert((text != null) ^ childEnabled, '[MyoroDialogModalWidgetShowcaseState]: [text] must not be null (x)or [childEnabled] must be true.');
+  }) : assert(
+         (text != null) ^ childEnabled,
+         '[MyoroDialogModalWidgetShowcaseState]: [text] must not be null (x)or [childEnabled] must be true.',
+       );
 
   MyoroDialogModalWidgetShowcaseState copyWith({
     bool? invertButtons,
@@ -68,11 +71,20 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
 
     return MyoroDialogModalWidgetShowcaseState(
       invertButtons: invertButtons ?? this.invertButtons,
-      confirmButtonText: confirmButtonTextProvided ? (confirmButtonText ?? this.confirmButtonText) : null,
-      cancelButtonText: cancelButtonTextProvided ? (cancelButtonText ?? this.cancelButtonText) : null,
+      confirmButtonText:
+          confirmButtonTextProvided
+              ? (confirmButtonText ?? this.confirmButtonText)
+              : null,
+      cancelButtonText:
+          cancelButtonTextProvided
+              ? (cancelButtonText ?? this.cancelButtonText)
+              : null,
       text: textEnabled ? (text ?? this.text) : null,
       textEnabled: textEnabled,
-      textStyle: textStyleProvided && !childEnabled ? (textStyle ?? this.textStyle) : null,
+      textStyle:
+          textStyleProvided && !childEnabled
+              ? (textStyle ?? this.textStyle)
+              : null,
       childEnabled: childEnabled,
     );
   }
@@ -91,6 +103,14 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [invertButtons, confirmButtonText, cancelButtonText, text, textEnabled, textStyle, childEnabled];
+    return [
+      invertButtons,
+      confirmButtonText,
+      cancelButtonText,
+      text,
+      textEnabled,
+      textStyle,
+      childEnabled,
+    ];
   }
 }

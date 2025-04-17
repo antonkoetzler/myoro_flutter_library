@@ -16,7 +16,13 @@ final class MyoroMenuWidgetShowcaseState extends Equatable {
   /// If [MyoroMenu.searchCallback] is not null.
   final bool searchCallbackEnabled;
 
-  const MyoroMenuWidgetShowcaseState({this.minWidth, this.maxWidth, this.minHeight, this.maxHeight, this.searchCallbackEnabled = false});
+  const MyoroMenuWidgetShowcaseState({
+    this.minWidth,
+    this.maxWidth,
+    this.minHeight,
+    this.maxHeight,
+    this.searchCallbackEnabled = false,
+  });
 
   MyoroMenuWidgetShowcaseState copyWith({
     double? minWidth,
@@ -34,7 +40,8 @@ final class MyoroMenuWidgetShowcaseState extends Equatable {
       maxWidth: maxWidthProvided ? (maxWidth ?? this.maxWidth) : null,
       minHeight: minHeightProvided ? (minHeight ?? this.minHeight) : null,
       maxHeight: maxHeightProvided ? (maxHeight ?? this.maxHeight) : null,
-      searchCallbackEnabled: searchCallbackEnabled ?? this.searchCallbackEnabled,
+      searchCallbackEnabled:
+          searchCallbackEnabled ?? this.searchCallbackEnabled,
     );
   }
 

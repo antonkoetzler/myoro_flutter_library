@@ -34,7 +34,10 @@ final class MyoroIconTextHoverButtonWidgetShowcaseState extends Equatable {
     this.padding,
     this.mainAxisAlignment,
     this.onPressedEnabled = true,
-  }) : assert(!(icon == null && text.isEmpty), '[MyoroIconTextHoverButtonWidgetShowcaseState]: An [icon] or [text] must be provided.');
+  }) : assert(
+         !(icon == null && text.isEmpty),
+         '[MyoroIconTextHoverButtonWidgetShowcaseState]: An [icon] or [text] must be provided.',
+       );
 
   MyoroIconTextHoverButtonWidgetShowcaseState copyWith({
     IconData? icon,
@@ -65,7 +68,10 @@ final class MyoroIconTextHoverButtonWidgetShowcaseState extends Equatable {
       textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
       textAlign: textAlignProvided ? (textAlign ?? this.textAlign) : null,
       padding: paddingProvided ? (padding ?? this.padding) : null,
-      mainAxisAlignment: mainAxisAlignmentProvided ? (mainAxisAlignment ?? this.mainAxisAlignment) : null,
+      mainAxisAlignment:
+          mainAxisAlignmentProvided
+              ? (mainAxisAlignment ?? this.mainAxisAlignment)
+              : null,
       onPressedEnabled: onPressedEnabled ?? this.onPressedEnabled,
     );
   }
@@ -85,6 +91,15 @@ final class MyoroIconTextHoverButtonWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [icon, iconSize, text, textStyle, textAlign, padding, mainAxisAlignment, onPressedEnabled];
+    return [
+      icon,
+      iconSize,
+      text,
+      textStyle,
+      textAlign,
+      padding,
+      mainAxisAlignment,
+      onPressedEnabled,
+    ];
   }
 }

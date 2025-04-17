@@ -18,11 +18,22 @@ final class MyoroInput extends StatefulWidget {
   /// Constructor for a generic input in which you may load any type of formatter or have no formatters.
   ///
   /// The named constructors of [MyoroInput] provide pre-inserted formatters.
-  const MyoroInput({super.key, this.configuration = const MyoroInputConfiguration(), this.formatter});
+  const MyoroInput({
+    super.key,
+    this.configuration = const MyoroInputConfiguration(),
+    this.formatter,
+  });
 
   /// An input that auto formats a date.
-  factory MyoroInput.date({Key? key, MyoroInputConfiguration configuration = const MyoroInputConfiguration()}) {
-    return MyoroInput(key: key, configuration: configuration, formatter: MyoroDateInputFormatter());
+  factory MyoroInput.date({
+    Key? key,
+    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
+  }) {
+    return MyoroInput(
+      key: key,
+      configuration: configuration,
+      formatter: MyoroDateInputFormatter(),
+    );
   }
 
   /// An input that only accepts numbers (integers or decimal).
@@ -33,7 +44,15 @@ final class MyoroInput extends StatefulWidget {
     int decimalPlaces = 0,
     MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
   }) {
-    return MyoroInput(key: key, configuration: configuration, formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces));
+    return MyoroInput(
+      key: key,
+      configuration: configuration,
+      formatter: MyoroNumberInputFormatter(
+        min: min,
+        max: max,
+        decimalPlaces: decimalPlaces,
+      ),
+    );
   }
 
   /// An input that formats a time in MM:SS or HH:MM:SS.
@@ -42,7 +61,11 @@ final class MyoroInput extends StatefulWidget {
     MyoroTimeInputFormatterEnum formatType = MyoroTimeInputFormatterEnum.mmSs,
     MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
   }) {
-    return MyoroInput(key: key, configuration: configuration, formatter: MyoroTimeInputFormatter(formatType: formatType));
+    return MyoroInput(
+      key: key,
+      configuration: configuration,
+      formatter: MyoroTimeInputFormatter(formatType: formatType),
+    );
   }
 
   @override
@@ -55,10 +78,13 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   TextEditingController? _localController;
   TextEditingController get _controller {
-    return _configuration.controller ?? (_localController ??= TextEditingController());
+    return _configuration.controller ??
+        (_localController ??= TextEditingController());
   }
 
-  bool get _showClearTextButton => _configuration.showClearTextButton != false && _controller.text.isNotEmpty;
+  bool get _showClearTextButton =>
+      _configuration.showClearTextButton != false &&
+      _controller.text.isNotEmpty;
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
@@ -98,7 +124,8 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return Row(
       children: [
@@ -113,8 +140,19 @@ final class _MyoroInputState extends State<MyoroInput> {
           ),
           SizedBox(width: themeExtension.spacing),
         ],
-        Expanded(child: _TextFormField(_configuration, _formatter, _enabled, _showClearTextButtonNotifier, _controller)),
-        if (_configuration.suffix != null) ...[SizedBox(width: themeExtension.spacing), _configuration.suffix!],
+        Expanded(
+          child: _TextFormField(
+            _configuration,
+            _formatter,
+            _enabled,
+            _showClearTextButtonNotifier,
+            _controller,
+          ),
+        ),
+        if (_configuration.suffix != null) ...[
+          SizedBox(width: themeExtension.spacing),
+          _configuration.suffix!,
+        ],
       ],
     );
   }
@@ -140,16 +178,27 @@ final class _TextFormField extends StatelessWidget {
   final ValueNotifier<bool> _showClearTextButtonNotifier;
   final TextEditingController _controller;
 
-  const _TextFormField(this._configuration, this._formatter, this._enabled, this._showClearTextButtonNotifier, this._controller);
+  const _TextFormField(
+    this._configuration,
+    this._formatter,
+    this._enabled,
+    this._showClearTextButtonNotifier,
+    this._controller,
+  );
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
     final border = _configuration.getBorder(context);
-    final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
+    final textStyle =
+        _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
     return Container(
-      decoration: BoxDecoration(color: themeExtension.primaryColor, borderRadius: themeExtension.borderRadius),
+      decoration: BoxDecoration(
+        color: themeExtension.primaryColor,
+        borderRadius: themeExtension.borderRadius,
+      ),
       child: ValueListenableBuilder(
         valueListenable: _showClearTextButtonNotifier,
         builder: (_, bool showClearTextButton, __) {
@@ -159,24 +208,43 @@ final class _TextFormField extends StatelessWidget {
             enabled: _enabled,
             readOnly: _configuration.readOnly ?? false,
             autofocus: _configuration.autofocus ?? false,
-            style: textStyle.withColor(textStyle.color!.withValues(alpha: _enabled ? 1 : themeExtension.disabledOpacity)),
+            style: textStyle.withColor(
+              textStyle.color!.withValues(
+                alpha: _enabled ? 1 : themeExtension.disabledOpacity,
+              ),
+            ),
             decoration: InputDecoration(
               floatingLabelBehavior: themeExtension.labelBehavior,
-              label: _configuration.label != null ? _Label(_configuration) : null,
+              label:
+                  _configuration.label != null ? _Label(_configuration) : null,
               hintText: _configuration.placeholder,
-              hintStyle: textStyle.withColor(textStyle.color!.withValues(alpha: themeExtension.disabledOpacity)),
+              hintStyle: textStyle.withColor(
+                textStyle.color!.withValues(
+                  alpha: themeExtension.disabledOpacity,
+                ),
+              ),
               enabledBorder: border,
               focusedBorder: border,
-              errorBorder: border.copyWith(borderSide: border.borderSide.copyWith(color: themeExtension.errorBorderColor)),
+              errorBorder: border.copyWith(
+                borderSide: border.borderSide.copyWith(
+                  color: themeExtension.errorBorderColor,
+                ),
+              ),
               disabledBorder: border.copyWith(
-                borderSide: border.borderSide.copyWith(color: border.borderSide.color.withValues(alpha: themeExtension.disabledOpacity)),
+                borderSide: border.borderSide.copyWith(
+                  color: border.borderSide.color.withValues(
+                    alpha: themeExtension.disabledOpacity,
+                  ),
+                ),
               ),
               isDense: themeExtension.isDense,
               contentPadding: _configuration.contentPadding,
               suffixIcon:
                   showClearTextButton
                       ? _ClearTextButton(() {
-                        _formatter == null ? _controller.clear() : _controller.text = _formatter!.initialText;
+                        _formatter == null
+                            ? _controller.clear()
+                            : _controller.text = _formatter!.initialText;
                         _configuration.onChanged?.call(_controller.text);
                         _configuration.onCleared?.call();
                       })
@@ -209,7 +277,14 @@ final class _Label extends StatelessWidget {
         // Needed to center the text of the label.
         bottom: 5,
       ),
-      child: Text(configuration.label!, style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle),
+      child: Text(
+        configuration.label!,
+        style:
+            configuration.labelTextStyle ??
+            context
+                .resolveThemeExtension<MyoroInputThemeExtension>()
+                .labelTextStyle,
+      ),
     );
   }
 }
@@ -221,12 +296,16 @@ final class _ClearTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return IntrinsicWidth(
       child: Padding(
         padding: themeExtension.clearTextButtonPadding,
-        child: MyoroIconTextHoverButton(icon: themeExtension.clearTextButtonIcon, onPressed: _onPressed),
+        child: MyoroIconTextHoverButton(
+          icon: themeExtension.clearTextButtonIcon,
+          onPressed: _onPressed,
+        ),
       ),
     );
   }

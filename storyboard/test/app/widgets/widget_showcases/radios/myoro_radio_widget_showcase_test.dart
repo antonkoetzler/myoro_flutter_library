@@ -10,7 +10,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroRadioWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroRadioWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -18,9 +21,16 @@ void main() {
     expect(find.byType(MyoroRadioWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroRadio), findsOneWidget);
-    expect(find.widgetWithText(MyoroInput, '[MyoroRadio.label]'), findsOneWidget);
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<TextStyle> && w.configuration.label == '[MyoroRadio.labelTextStyle]'),
+      find.widgetWithText(MyoroInput, '[MyoroRadio.label]'),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextStyle> &&
+            w.configuration.label == '[MyoroRadio.labelTextStyle]',
+      ),
       findsOneWidget,
     );
   });

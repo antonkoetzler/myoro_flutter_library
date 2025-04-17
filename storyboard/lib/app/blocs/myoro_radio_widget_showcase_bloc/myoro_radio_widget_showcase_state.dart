@@ -9,10 +9,18 @@ final class MyoroRadioWidgetShowcaseState extends Equatable {
 
   const MyoroRadioWidgetShowcaseState({this.label, this.labelTextStyle});
 
-  MyoroRadioWidgetShowcaseState copyWith({String? label, bool labelProvided = true, TextStyle? labelTextStyle, bool labelTextStyleProvided = true}) {
+  MyoroRadioWidgetShowcaseState copyWith({
+    String? label,
+    bool labelProvided = true,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+  }) {
     return MyoroRadioWidgetShowcaseState(
       label: labelProvided ? (label ?? this.label) : null,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
+      labelTextStyle:
+          labelTextStyleProvided
+              ? (labelTextStyle ?? this.labelTextStyle)
+              : null,
     );
   }
 

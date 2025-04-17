@@ -9,7 +9,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroMenuWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroMenuWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -17,6 +20,12 @@ void main() {
     expect(find.byType(MyoroMenuWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.text('[MyoroMenu.constraints]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroCheckbox, '[MyoroMenu.searchCallback] not null?'), findsOneWidget);
+    expect(
+      find.widgetWithText(
+        MyoroCheckbox,
+        '[MyoroMenu.searchCallback] not null?',
+      ),
+      findsOneWidget,
+    );
   });
 }

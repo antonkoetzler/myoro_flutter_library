@@ -4,7 +4,11 @@ import 'package:myoro_flutter_library/blocs/myoro_menu_bloc/myoro_menu_bloc.dart
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final Set<String> items = List.generate(faker.randomGenerator.integer(100), (int index) => '#$index: ${faker.lorem.word()}').toSet();
+  final Set<String> items =
+      List.generate(
+        faker.randomGenerator.integer(100),
+        (int index) => '#$index: ${faker.lorem.word()}',
+      ).toSet();
   final configuration = MyoroMenuConfiguration(
     request: () => items,
     itemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
@@ -27,9 +31,21 @@ void main() {
     expect: () {
       return [
         const MyoroMenuState<String>(status: MyoroRequestEnum.loading),
-        MyoroMenuState<String>(status: MyoroRequestEnum.success, items: items, initialRequestMade: true),
-        MyoroMenuState<String>(status: MyoroRequestEnum.loading, items: items, initialRequestMade: true),
-        MyoroMenuState<String>(status: MyoroRequestEnum.success, items: items, initialRequestMade: true),
+        MyoroMenuState<String>(
+          status: MyoroRequestEnum.success,
+          items: items,
+          initialRequestMade: true,
+        ),
+        MyoroMenuState<String>(
+          status: MyoroRequestEnum.loading,
+          items: items,
+          initialRequestMade: true,
+        ),
+        MyoroMenuState<String>(
+          status: MyoroRequestEnum.success,
+          items: items,
+          initialRequestMade: true,
+        ),
       ];
     },
   );
@@ -45,12 +61,19 @@ void main() {
     expect: () {
       return [
         const MyoroMenuState<String>(status: MyoroRequestEnum.loading),
-        MyoroMenuState<String>(status: MyoroRequestEnum.success, items: items, initialRequestMade: true),
         MyoroMenuState<String>(
           status: MyoroRequestEnum.success,
           items: items,
           initialRequestMade: true,
-          queriedItems: query.isEmpty ? items : configuration.searchCallback!(query, items),
+        ),
+        MyoroMenuState<String>(
+          status: MyoroRequestEnum.success,
+          items: items,
+          initialRequestMade: true,
+          queriedItems:
+              query.isEmpty
+                  ? items
+                  : configuration.searchCallback!(query, items),
         ),
       ];
     },

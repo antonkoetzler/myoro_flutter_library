@@ -10,7 +10,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroBasicDividerWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroBasicDividerWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -18,11 +21,33 @@ void main() {
     expect(find.byType(MyoroBasicDividerWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroBasicDivider), findsAtLeastNWidgets(1));
-    expect(find.widgetWithText(MyoroIconTextHoverButton, 'A button'), findsOneWidget);
-    expect(find.widgetWithText(MyoroIconTextHoverButton, 'Another button'), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<Axis> && w.configuration.label == '[MyoroBasicDivider.direction]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroSlider, '[MyoroBasicDivider.shortValue]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroSlider, 'Vertical padding'), findsOneWidget);
-    expect(find.widgetWithText(MyoroSlider, 'Horizontal padding'), findsOneWidget);
+    expect(
+      find.widgetWithText(MyoroIconTextHoverButton, 'A button'),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroIconTextHoverButton, 'Another button'),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<Axis> &&
+            w.configuration.label == '[MyoroBasicDivider.direction]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroSlider, '[MyoroBasicDivider.shortValue]'),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroSlider, 'Vertical padding'),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroSlider, 'Horizontal padding'),
+      findsOneWidget,
+    );
   });
 }

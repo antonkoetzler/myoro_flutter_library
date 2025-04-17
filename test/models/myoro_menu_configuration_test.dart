@@ -44,7 +44,11 @@ MyoroMenuConfiguration<String> get _fake {
   final double minWidth = faker.randomGenerator.decimal(scale: 500);
   final double minHeight = faker.randomGenerator.decimal(scale: 500);
 
-  final Set<String> items = List.generate(faker.randomGenerator.integer(9999), (int index) => '#$index: ${faker.lorem.word()}').toSet();
+  final Set<String> items =
+      List.generate(
+        faker.randomGenerator.integer(9999),
+        (int index) => '#$index: ${faker.lorem.word()}',
+      ).toSet();
 
   return MyoroMenuConfiguration(
     controller: faker.randomGenerator.boolean() ? MyoroMenuController() : null,

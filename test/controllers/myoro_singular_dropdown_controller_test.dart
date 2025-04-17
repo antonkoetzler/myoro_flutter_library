@@ -4,7 +4,8 @@ import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_b
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final MyoroSingularDropdownController<String> controller = MyoroSingularDropdownController<String>();
+  final MyoroSingularDropdownController<String> controller =
+      MyoroSingularDropdownController<String>();
   final bool enabled = faker.randomGenerator.boolean();
   final String item = faker.randomGenerator.string(50);
 

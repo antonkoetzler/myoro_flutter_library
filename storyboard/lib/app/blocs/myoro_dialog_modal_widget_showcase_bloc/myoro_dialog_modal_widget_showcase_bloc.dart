@@ -10,8 +10,14 @@ part 'myoro_dialog_modal_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroDialogModalWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroDialogModalWidgetShowcase].
-final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<MyoroDialogModalWidgetShowcaseEvent, MyoroDialogModalWidgetShowcaseState> {
-  MyoroDialogModalWidgetShowcaseBloc() : super(const MyoroDialogModalWidgetShowcaseState()) {
+final class MyoroDialogModalWidgetShowcaseBloc
+    extends
+        Bloc<
+          MyoroDialogModalWidgetShowcaseEvent,
+          MyoroDialogModalWidgetShowcaseState
+        > {
+  MyoroDialogModalWidgetShowcaseBloc()
+    : super(const MyoroDialogModalWidgetShowcaseState()) {
     on<SetInvertButtonsEvent>(_setInvertButtonsEvent);
     on<SetConfirmButtonTextEvent>(_setConfirmButtonTextEvent);
     on<SetTextEvent>(_setTextEvent);
@@ -23,8 +29,16 @@ final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<MyoroDialogModalWidg
     emit(state.copyWith(invertButtons: event.invertButtons));
   }
 
-  void _setConfirmButtonTextEvent(SetConfirmButtonTextEvent event, _Emitter emit) {
-    emit(state.copyWith(confirmButtonText: event.confirmButtonText, confirmButtonTextProvided: event.confirmButtonText != null));
+  void _setConfirmButtonTextEvent(
+    SetConfirmButtonTextEvent event,
+    _Emitter emit,
+  ) {
+    emit(
+      state.copyWith(
+        confirmButtonText: event.confirmButtonText,
+        confirmButtonTextProvided: event.confirmButtonText != null,
+      ),
+    );
   }
 
   void _setTextEvent(SetTextEvent event, _Emitter emit) {
@@ -32,7 +46,12 @@ final class MyoroDialogModalWidgetShowcaseBloc extends Bloc<MyoroDialogModalWidg
   }
 
   void _setTextStyleEvent(SetTextStyleEvent event, _Emitter emit) {
-    emit(state.copyWith(textStyle: event.textStyle, textEnabled: event.textStyle != null));
+    emit(
+      state.copyWith(
+        textStyle: event.textStyle,
+        textEnabled: event.textStyle != null,
+      ),
+    );
   }
 
   void _setChildEvent(SetChildEvent event, _Emitter emit) {

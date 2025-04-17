@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroForm].
-final class MyoroFormThemeExtension extends ThemeExtension<MyoroFormThemeExtension> {
+final class MyoroFormThemeExtension
+    extends ThemeExtension<MyoroFormThemeExtension> {
   const MyoroFormThemeExtension();
 
   const MyoroFormThemeExtension.builder();
@@ -11,7 +12,10 @@ final class MyoroFormThemeExtension extends ThemeExtension<MyoroFormThemeExtensi
   MyoroFormThemeExtension copyWith() => this;
 
   @override
-  ThemeExtension<MyoroFormThemeExtension> lerp(covariant ThemeExtension<MyoroFormThemeExtension>? other, double t) {
+  ThemeExtension<MyoroFormThemeExtension> lerp(
+    covariant ThemeExtension<MyoroFormThemeExtension>? other,
+    double t,
+  ) {
     return this;
   }
 

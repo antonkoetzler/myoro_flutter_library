@@ -34,17 +34,30 @@ final class MyoroMenuItem extends Equatable {
   /// [MyoroMenuItemBuilder] of the item for a customized [Widget].
   final MyoroHoverButtonBuilder? itemBuilder;
 
-  const MyoroMenuItem({this.isHovered, this.onPressed, this.icon, this.iconSize, this.text, this.textStyle, this.textAlign, this.itemBuilder})
-    : assert(
-        itemBuilder != null ? (icon == null && text == null) : (icon != null || text != null),
-        '[MyoroMenuItem]: If [itemBuilder] is provided, [text] & [icon] must be null. '
-        'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
-      );
+  const MyoroMenuItem({
+    this.isHovered,
+    this.onPressed,
+    this.icon,
+    this.iconSize,
+    this.text,
+    this.textStyle,
+    this.textAlign,
+    this.itemBuilder,
+  }) : assert(
+         itemBuilder != null
+             ? (icon == null && text == null)
+             : (icon != null || text != null),
+         '[MyoroMenuItem]: If [itemBuilder] is provided, [text] & [icon] must be null. '
+         'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
+       );
 
   MyoroMenuItem.fake()
     : isHovered = faker.randomGenerator.boolean(),
       onPressed = null,
-      icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      icon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
       iconSize = null,
       text = faker.lorem.word(),
       textStyle = null,
@@ -77,7 +90,8 @@ final class MyoroMenuItem extends Equatable {
       text: textProvided ? (text ?? this.text) : null,
       textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
       textAlign: textAlignProvided ? (textAlign ?? this.textAlign) : null,
-      itemBuilder: itemBuilderProvided ? (itemBuilder ?? this.itemBuilder) : null,
+      itemBuilder:
+          itemBuilderProvided ? (itemBuilder ?? this.itemBuilder) : null,
     );
   }
 
@@ -96,6 +110,15 @@ final class MyoroMenuItem extends Equatable {
 
   @override
   List<Object?> get props {
-    return [isHovered, onPressed, icon, iconSize, text, textStyle, textAlign, itemBuilder];
+    return [
+      isHovered,
+      onPressed,
+      icon,
+      iconSize,
+      text,
+      textStyle,
+      textAlign,
+      itemBuilder,
+    ];
   }
 }

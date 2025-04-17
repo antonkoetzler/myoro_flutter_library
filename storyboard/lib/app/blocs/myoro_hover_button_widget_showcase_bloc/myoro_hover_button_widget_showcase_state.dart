@@ -45,11 +45,16 @@ final class MyoroHoverButtonWidgetShowcaseState extends Equatable {
     bool? onPressedEnabled,
   }) {
     return MyoroHoverButtonWidgetShowcaseState(
-      primaryColor: primaryColorProvided ? (primaryColor ?? this.primaryColor) : null,
-      onPrimaryColor: onPrimaryColorProvided ? (onPrimaryColor ?? this.onPrimaryColor) : null,
+      primaryColor:
+          primaryColorProvided ? (primaryColor ?? this.primaryColor) : null,
+      onPrimaryColor:
+          onPrimaryColorProvided
+              ? (onPrimaryColor ?? this.onPrimaryColor)
+              : null,
       isHovered: isHovered ?? this.isHovered,
       bordered: bordered ?? this.bordered,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      borderRadius:
+          borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       tooltipEnabled: tooltipEnabled ?? this.tooltipEnabled,
       onPressedEnabled: onPressedEnabled ?? this.onPressedEnabled,
     );
@@ -69,6 +74,14 @@ final class MyoroHoverButtonWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [primaryColor, onPrimaryColor, isHovered, bordered, borderRadius, tooltipEnabled, onPressedEnabled];
+    return [
+      primaryColor,
+      onPrimaryColor,
+      isHovered,
+      bordered,
+      borderRadius,
+      tooltipEnabled,
+      onPressedEnabled,
+    ];
   }
 }

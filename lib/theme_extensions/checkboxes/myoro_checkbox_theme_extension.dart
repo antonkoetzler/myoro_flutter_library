@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox]
-final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension> {
+final class MyoroCheckboxThemeExtension
+    extends ThemeExtension<MyoroCheckboxThemeExtension> {
   /// Background color of the checkbox when selected.
   final Color activeColor;
 
@@ -37,8 +38,10 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
     required this.spacing,
   });
 
-  MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : activeColor = colorScheme.onPrimary,
+  MyoroCheckboxThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : activeColor = colorScheme.onPrimary,
       checkColor = colorScheme.primary,
       hoverColor = MyoroColorDesignSystem.transparent,
       focusColor = MyoroColorDesignSystem.transparent,
@@ -47,10 +50,22 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
       spacing = 5;
 
   MyoroCheckboxThemeExtension.fake()
-    : activeColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      checkColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      hoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      focusColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : activeColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      checkColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      hoverColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      focusColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
       splashRadius = faker.randomGenerator.decimal(),
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal();
@@ -77,7 +92,10 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
   }
 
   @override
-  MyoroCheckboxThemeExtension lerp(covariant ThemeExtension<MyoroCheckboxThemeExtension>? other, double t) {
+  MyoroCheckboxThemeExtension lerp(
+    covariant ThemeExtension<MyoroCheckboxThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroCheckboxThemeExtension) return this;
     return copyWith(
       activeColor: Color.lerp(activeColor, other.activeColor, t),
@@ -105,7 +123,15 @@ final class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThem
 
   @override
   int get hashCode {
-    return Object.hash(activeColor, checkColor, hoverColor, focusColor, splashRadius, labelTextStyle, spacing);
+    return Object.hash(
+      activeColor,
+      checkColor,
+      hoverColor,
+      focusColor,
+      splashRadius,
+      labelTextStyle,
+      spacing,
+    );
   }
 
   @override

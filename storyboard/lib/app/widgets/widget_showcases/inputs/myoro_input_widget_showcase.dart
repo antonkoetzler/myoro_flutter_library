@@ -12,7 +12,10 @@ final class MyoroInputWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroInputWidgetShowcaseBloc(),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_FormatterOption(), _ConfigurationOption()]),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_FormatterOption(), _ConfigurationOption()],
+      ),
     );
   }
 }
@@ -21,11 +24,17 @@ final class _Widget extends StatelessWidget {
   const _Widget();
 
   void _checkboxOnChanged(BuildContext context, bool enabled) {
-    context.showSnackBar(snackBar: MyoroSnackBar(message: 'Input ${enabled ? 'enabled' : 'disabled'}'));
+    context.showSnackBar(
+      snackBar: MyoroSnackBar(
+        message: 'Input ${enabled ? 'enabled' : 'disabled'}',
+      ),
+    );
   }
 
   void _onFieldSubmitted(BuildContext context) {
-    context.showSnackBar(snackBar: MyoroSnackBar(message: 'Input submitted (enter pressed)'));
+    context.showSnackBar(
+      snackBar: MyoroSnackBar(message: 'Input submitted (enter pressed)'),
+    );
   }
 
   @override
@@ -36,7 +45,10 @@ final class _Widget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(
-              child: BlocBuilder<MyoroInputWidgetShowcaseBloc, MyoroInputWidgetShowcaseState>(
+              child: BlocBuilder<
+                MyoroInputWidgetShowcaseBloc,
+                MyoroInputWidgetShowcaseState
+              >(
                 builder: (_, MyoroInputWidgetShowcaseState state) {
                   final configuration = MyoroInputConfiguration(
                     inputStyle: state.inputStyle,
@@ -49,15 +61,25 @@ final class _Widget extends StatelessWidget {
                     enabled: state.enabled,
                     readOnly: state.readOnly,
                     showClearTextButton: state.showClearTextButton,
-                    checkboxOnChanged: state.checkboxOnChangedProvided ? (bool enabled, _) => _checkboxOnChanged(context, enabled) : null,
+                    checkboxOnChanged:
+                        state.checkboxOnChangedProvided
+                            ? (bool enabled, _) =>
+                                _checkboxOnChanged(context, enabled)
+                            : null,
                     validation: (_) => 'Valiation error!',
                     onFieldSubmitted: (_) => _onFieldSubmitted(context),
                   );
 
                   return switch (state.typeEnum) {
-                    MyoroInputWidgetShowcaseEnum.none => MyoroInput(configuration: configuration),
-                    MyoroInputWidgetShowcaseEnum.date => MyoroInput.date(configuration: configuration),
-                    MyoroInputWidgetShowcaseEnum.number => MyoroInput.number(configuration: configuration),
+                    MyoroInputWidgetShowcaseEnum.none => MyoroInput(
+                      configuration: configuration,
+                    ),
+                    MyoroInputWidgetShowcaseEnum.date => MyoroInput.date(
+                      configuration: configuration,
+                    ),
+                    MyoroInputWidgetShowcaseEnum.number => MyoroInput.number(
+                      configuration: configuration,
+                    ),
                   };
                 },
               ),
@@ -66,7 +88,9 @@ final class _Widget extends StatelessWidget {
             IntrinsicWidth(
               child: MyoroIconTextHoverButton(
                 text: 'Click to show a validation error',
-                configuration: const MyoroHoverButtonConfiguration(bordered: true),
+                configuration: const MyoroHoverButtonConfiguration(
+                  bordered: true,
+                ),
                 onPressed: () => controller.finish(),
               ),
             ),
@@ -83,7 +107,10 @@ final class _SuffixWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroIconTextHoverButton(
-      icon: context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>().suffixWidgetIcon,
+      icon:
+          context
+              .resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>()
+              .suffixWidgetIcon,
       iconSize: 30,
       configuration: const MyoroHoverButtonConfiguration(bordered: true),
       onPressed: () {},
@@ -100,7 +127,10 @@ final class _FormatterOption extends StatelessWidget {
     return MyoroSingularDropdown<MyoroInputWidgetShowcaseEnum>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Formatter (named constructors):',
-        menuConfiguration: MyoroMenuConfiguration(request: MyoroInputWidgetShowcaseEnum.values.toSet, itemBuilder: _itemBuilder),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: MyoroInputWidgetShowcaseEnum.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _selectedItemBuilder,
         allowItemClearing: false,
         initiallySelectedItem: bloc.state.typeEnum,
@@ -117,7 +147,10 @@ final class _FormatterOption extends StatelessWidget {
     return item.title;
   }
 
-  void _onChanged(MyoroInputWidgetShowcaseBloc bloc, MyoroInputWidgetShowcaseEnum? item) {
+  void _onChanged(
+    MyoroInputWidgetShowcaseBloc bloc,
+    MyoroInputWidgetShowcaseEnum? item,
+  ) {
     bloc.add(SetFormatterEvent(item!));
   }
 }
@@ -127,13 +160,26 @@ final class _ConfigurationOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final spacing = SizedBox(height: context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>().configurationOptionSpacing);
+    final spacing = SizedBox(
+      height:
+          context
+              .resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>()
+              .configurationOptionSpacing,
+    );
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('[MyoroInputConfiguration]', style: context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>().configurationOptionTextStyle),
+        Text(
+          '[MyoroInputConfiguration]',
+          style:
+              context
+                  .resolveThemeExtension<
+                    MyoroInputWidgetShowcaseThemeExtension
+                  >()
+                  .configurationOptionTextStyle,
+        ),
         spacing,
         const _InputStyleOption(),
         spacing,
@@ -171,7 +217,10 @@ final class _InputStyleOption extends StatelessWidget {
     return MyoroSingularDropdown<MyoroInputStyleEnum>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[inputStyle]',
-        menuConfiguration: MyoroMenuConfiguration(request: MyoroInputStyleEnum.values.toSet, itemBuilder: _itemBuilder),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: MyoroInputStyleEnum.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _getStyleName,
         allowItemClearing: false,
         initiallySelectedItem: bloc.state.inputStyle,
@@ -191,7 +240,10 @@ final class _InputStyleOption extends StatelessWidget {
     };
   }
 
-  void _onChanged(MyoroInputWidgetShowcaseBloc bloc, MyoroInputStyleEnum? item) {
+  void _onChanged(
+    MyoroInputWidgetShowcaseBloc bloc,
+    MyoroInputStyleEnum? item,
+  ) {
     bloc.add(SetInputStyleEvent(item!));
   }
 }
@@ -207,7 +259,10 @@ final class _TextAlignOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: '[textAlign]',
         allowItemClearing: false,
-        menuConfiguration: MyoroMenuConfiguration(request: TextAlign.values.toSet, itemBuilder: _itemBuilder),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: TextAlign.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _getTextAlignName,
         initiallySelectedItem: bloc.state.textAlign,
         onChanged: (TextAlign? textAlign) => _onChanged(bloc, textAlign),
@@ -245,14 +300,20 @@ final class _InputTextStyleOption extends StatelessWidget {
     return MyoroSingularDropdown<TextStyle>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[inputTextStyle]',
-        menuConfiguration: MyoroMenuConfiguration(request: typography.allTextStyles.toSet, itemBuilder: (textStyle) => _itemBuilder(typography, textStyle)),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: typography.allTextStyles.toSet,
+          itemBuilder: (textStyle) => _itemBuilder(typography, textStyle),
+        ),
         selectedItemBuilder: typography.getTextStyleName,
         onChanged: (textStyle) => _onChanged(context, textStyle),
       ),
     );
   }
 
-  MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typography, TextStyle item) {
+  MyoroMenuItem _itemBuilder(
+    MyoroTypographyDesignSystem typography,
+    TextStyle item,
+  ) {
     return MyoroMenuItem(text: typography.getTextStyleName(item));
   }
 
@@ -265,7 +326,11 @@ final class _InputTextStyleOption extends StatelessWidget {
 final class _LabelOption extends StatelessWidget {
   const _LabelOption();
 
-  void _checkboxOnChanged(MyoroInputWidgetShowcaseBloc bloc, bool enabled, String text) {
+  void _checkboxOnChanged(
+    MyoroInputWidgetShowcaseBloc bloc,
+    bool enabled,
+    String text,
+  ) {
     bloc.add(SetLabelEvent(enabled ? text : null));
   }
 
@@ -276,9 +341,14 @@ final class _LabelOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[label]',
-        inputStyle: context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>()
+                .inputStyle,
         onChanged: (String text) => bloc.add(SetLabelEvent(text)),
-        checkboxOnChanged: (bool enabled, String text) => _checkboxOnChanged(bloc, enabled, text),
+        checkboxOnChanged:
+            (bool enabled, String text) =>
+                _checkboxOnChanged(bloc, enabled, text),
       ),
     );
   }
@@ -294,9 +364,14 @@ final class _PlaceholderOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[placeholder]',
-        inputStyle: context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>()
+                .inputStyle,
         onChanged: (String text) => bloc.add(SetPlaceholderEvent(text)),
-        checkboxOnChanged: (bool enabled, String text) => bloc.add(SetPlaceholderEvent(enabled ? text : null)),
+        checkboxOnChanged:
+            (bool enabled, String text) =>
+                bloc.add(SetPlaceholderEvent(enabled ? text : null)),
       ),
     );
   }
@@ -315,16 +390,22 @@ final class _LabelTextStyleOption extends StatelessWidget {
         label: '[labelTextStyle]',
         menuConfiguration: MyoroMenuConfiguration(
           request: typography.allTextStyles.toSet,
-          itemBuilder: (TextStyle textStyle) => _itemBuilder(typography, textStyle),
+          itemBuilder:
+              (TextStyle textStyle) => _itemBuilder(typography, textStyle),
         ),
         selectedItemBuilder: typography.getTextStyleName,
         onChanged: (TextStyle? textStyle) => _onChanged(bloc, textStyle),
-        checkboxOnChanged: (bool enabled, TextStyle? item) => _checkboxOnChanged(bloc, enabled, item),
+        checkboxOnChanged:
+            (bool enabled, TextStyle? item) =>
+                _checkboxOnChanged(bloc, enabled, item),
       ),
     );
   }
 
-  MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typography, TextStyle item) {
+  MyoroMenuItem _itemBuilder(
+    MyoroTypographyDesignSystem typography,
+    TextStyle item,
+  ) {
     return MyoroMenuItem(text: typography.getTextStyleName(item));
   }
 
@@ -332,7 +413,11 @@ final class _LabelTextStyleOption extends StatelessWidget {
     bloc.add(SetLabelTextStyleEvent(textStyle));
   }
 
-  void _checkboxOnChanged(MyoroInputWidgetShowcaseBloc bloc, bool enabled, TextStyle? item) {
+  void _checkboxOnChanged(
+    MyoroInputWidgetShowcaseBloc bloc,
+    bool enabled,
+    TextStyle? item,
+  ) {
     bloc.add(SetLabelTextStyleEvent(enabled ? item : null));
   }
 }
@@ -359,7 +444,11 @@ final class _EnabledOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
 
-    return MyoroCheckbox(label: '[enabled]', initialValue: bloc.state.enabled, onChanged: (bool value) => bloc.add(SetEnabledEvent(value)));
+    return MyoroCheckbox(
+      label: '[enabled]',
+      initialValue: bloc.state.enabled,
+      onChanged: (bool value) => bloc.add(SetEnabledEvent(value)),
+    );
   }
 }
 
@@ -370,7 +459,11 @@ final class _ReadOnlyOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroInputWidgetShowcaseBloc>();
 
-    return MyoroCheckbox(label: '[readOnly]', initialValue: bloc.state.readOnly, onChanged: (bool value) => bloc.add(SetReadOnlyEvent(value)));
+    return MyoroCheckbox(
+      label: '[readOnly]',
+      initialValue: bloc.state.readOnly,
+      onChanged: (bool value) => bloc.add(SetReadOnlyEvent(value)),
+    );
   }
 }
 
@@ -399,7 +492,8 @@ final class _CheckboxOnChangedOption extends StatelessWidget {
     return MyoroCheckbox(
       label: '[checkboxOnChanged] not null?',
       initialValue: bloc.state.checkboxOnChangedProvided,
-      onChanged: (bool value) => bloc.add(SetCheckboxOnChangedEnabledEvent(value)),
+      onChanged:
+          (bool value) => bloc.add(SetCheckboxOnChangedEnabledEvent(value)),
     );
   }
 }

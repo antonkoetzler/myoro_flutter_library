@@ -7,10 +7,20 @@ final class MyoroCircularLoaderWidgetShowcaseState extends Equatable {
   /// Size of the [MyoroCircularLoader].
   final double size;
 
-  const MyoroCircularLoaderWidgetShowcaseState({this.color, required this.size});
+  const MyoroCircularLoaderWidgetShowcaseState({
+    this.color,
+    required this.size,
+  });
 
-  MyoroCircularLoaderWidgetShowcaseState copyWith({Color? color, bool colorProvided = true, double? size}) {
-    return MyoroCircularLoaderWidgetShowcaseState(color: colorProvided ? (color ?? this.color) : null, size: size ?? this.size);
+  MyoroCircularLoaderWidgetShowcaseState copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? size,
+  }) {
+    return MyoroCircularLoaderWidgetShowcaseState(
+      color: colorProvided ? (color ?? this.color) : null,
+      size: size ?? this.size,
+    );
   }
 
   @override

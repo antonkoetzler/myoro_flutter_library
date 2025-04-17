@@ -7,7 +7,9 @@ final class MyoroMaterialAppWidgetShowcaseState extends Equatable {
   const MyoroMaterialAppWidgetShowcaseState({this.themeMode = ThemeMode.dark});
 
   MyoroMaterialAppWidgetShowcaseState copyWith({ThemeMode? themeMode}) {
-    return MyoroMaterialAppWidgetShowcaseState(themeMode: themeMode ?? this.themeMode);
+    return MyoroMaterialAppWidgetShowcaseState(
+      themeMode: themeMode ?? this.themeMode,
+    );
   }
 
   @override

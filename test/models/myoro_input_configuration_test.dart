@@ -64,7 +64,9 @@ void main() {
   });
 
   testWidgets('MyoroInputConfiguration.getBorder', (WidgetTester tester) async {
-    const modelWithBorder = MyoroInputConfiguration(border: OutlineInputBorder());
+    const modelWithBorder = MyoroInputConfiguration(
+      border: OutlineInputBorder(),
+    );
     const modelWithoutBorder = MyoroInputConfiguration();
 
     await tester.pumpWidget(
@@ -72,7 +74,10 @@ void main() {
         child: Builder(
           builder: (BuildContext context) {
             expect(modelWithBorder.getBorder(context), modelWithBorder.border);
-            expect(modelWithoutBorder.getBorder(context), modelWithoutBorder.inputStyle.getBorder(context));
+            expect(
+              modelWithoutBorder.getBorder(context),
+              modelWithoutBorder.inputStyle.getBorder(context),
+            );
             return const SizedBox.shrink();
           },
         ),

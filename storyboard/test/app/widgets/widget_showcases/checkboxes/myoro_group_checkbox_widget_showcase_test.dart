@@ -10,7 +10,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroGroupCheckboxWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroGroupCheckboxWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -18,8 +21,21 @@ void main() {
     expect(find.byType(MyoroGroupCheckboxWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroGroupCheckbox), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<Axis> && w.configuration.label == '[MyoroGroupCheckbox.direction]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroInput, '[MyoroGroupCheckbox.spacing]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroInput, '[MyoroGroupCheckbox.runSpacing]'), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<Axis> &&
+            w.configuration.label == '[MyoroGroupCheckbox.direction]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroInput, '[MyoroGroupCheckbox.spacing]'),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroInput, '[MyoroGroupCheckbox.runSpacing]'),
+      findsOneWidget,
+    );
   });
 }

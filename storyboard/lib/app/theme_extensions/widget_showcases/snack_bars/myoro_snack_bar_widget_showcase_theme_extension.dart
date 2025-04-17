@@ -4,7 +4,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroSnackBarWidgetShowcase].
-final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension> {
+final class MyoroSnackBarWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] for inputs.
   final MyoroInputStyleEnum inputStyle;
 
@@ -14,17 +15,31 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   /// [IconData] of [_Child].
   final IconData childIcon;
 
-  const MyoroSnackBarWidgetShowcaseThemeExtension({required this.inputStyle, required this.widgetBordered, required this.childIcon});
+  const MyoroSnackBarWidgetShowcaseThemeExtension({
+    required this.inputStyle,
+    required this.widgetBordered,
+    required this.childIcon,
+  });
 
   MyoroSnackBarWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
       widgetBordered = faker.randomGenerator.boolean(),
-      childIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      childIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
-  const MyoroSnackBarWidgetShowcaseThemeExtension.builder() : inputStyle = MyoroInputStyleEnum.outlined, widgetBordered = true, childIcon = Icons.flood;
+  const MyoroSnackBarWidgetShowcaseThemeExtension.builder()
+    : inputStyle = MyoroInputStyleEnum.outlined,
+      widgetBordered = true,
+      childIcon = Icons.flood;
 
   @override
-  MyoroSnackBarWidgetShowcaseThemeExtension copyWith({MyoroInputStyleEnum? inputStyle, bool? widgetBordered, IconData? childIcon}) {
+  MyoroSnackBarWidgetShowcaseThemeExtension copyWith({
+    MyoroInputStyleEnum? inputStyle,
+    bool? widgetBordered,
+    IconData? childIcon,
+  }) {
     return MyoroSnackBarWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
       widgetBordered: widgetBordered ?? this.widgetBordered,
@@ -33,7 +48,10 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension extends ThemeExtension<Myo
   }
 
   @override
-  MyoroSnackBarWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>? other, double t) {
+  MyoroSnackBarWidgetShowcaseThemeExtension lerp(
+    covariant ThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroSnackBarWidgetShowcaseThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),

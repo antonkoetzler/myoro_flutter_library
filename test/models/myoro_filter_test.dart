@@ -7,7 +7,10 @@ void main() {
   test('MyoroFilter.copyWith', () {
     expect(model.copyWith(), model);
     final otherModel = MyoroFilter.fake();
-    expect(model.copyWith(key: otherModel.key, value: otherModel.value), otherModel);
+    expect(
+      model.copyWith(key: otherModel.key, value: otherModel.value),
+      otherModel,
+    );
   });
 
   test('MyoroFilter.toString', () {

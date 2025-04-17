@@ -9,22 +9,50 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroDialogModalWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroDialogModalWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroDialogModalWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
-    expect(find.widgetWithText(MyoroIconTextHoverButton, 'Click to launch the modal.'), findsOneWidget);
-    expect(find.widgetWithText(MyoroCheckbox, '[MyoroDialogModal._invertButtons]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroInput, '[MyoroDialogModal.confirmButtonText]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroInput, '[MyoroDialogModal._cancelButtonText]'), findsOneWidget);
-    expect(find.widgetWithText(MyoroInput, '[MyoroDialogModal.text]'), findsOneWidget);
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroSingularDropdown<TextStyle> && w.configuration.label == '[MyoroDialogModal.textStyle]'),
+      find.widgetWithText(
+        MyoroIconTextHoverButton,
+        'Click to launch the modal.',
+      ),
       findsOneWidget,
     );
-    expect(find.widgetWithText(MyoroCheckbox, '[MyoroDialogModal._child] not null?'), findsOneWidget);
+    expect(
+      find.widgetWithText(MyoroCheckbox, '[MyoroDialogModal._invertButtons]'),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroInput, '[MyoroDialogModal.confirmButtonText]'),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroInput, '[MyoroDialogModal._cancelButtonText]'),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroInput, '[MyoroDialogModal.text]'),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroSingularDropdown<TextStyle> &&
+            w.configuration.label == '[MyoroDialogModal.textStyle]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(MyoroCheckbox, '[MyoroDialogModal._child] not null?'),
+      findsOneWidget,
+    );
   });
 }

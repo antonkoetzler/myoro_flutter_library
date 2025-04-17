@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroHoverButton].
-final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButtonThemeExtension> {
+final class MyoroHoverButtonThemeExtension
+    extends ThemeExtension<MyoroHoverButtonThemeExtension> {
   /// [MyoroColorDesignSystem.transparent] by default.
   final Color primaryColor;
 
@@ -16,7 +17,12 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   /// Whether the button has an outline bordered applied. [false] by default.
   final bool bordered;
 
-  const MyoroHoverButtonThemeExtension({required this.primaryColor, required this.onPrimaryColor, required this.borderRadius, required this.bordered});
+  const MyoroHoverButtonThemeExtension({
+    required this.primaryColor,
+    required this.onPrimaryColor,
+    required this.borderRadius,
+    required this.bordered,
+  });
 
   MyoroHoverButtonThemeExtension.builder(ColorScheme colorScheme)
     : primaryColor = colorScheme.primary,
@@ -25,13 +31,26 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
       bordered = false;
 
   MyoroHoverButtonThemeExtension.fake()
-    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      borderRadius = BorderRadius.circular(faker.randomGenerator.integer(50).toDouble()),
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      onPrimaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      borderRadius = BorderRadius.circular(
+        faker.randomGenerator.integer(50).toDouble(),
+      ),
       bordered = faker.randomGenerator.boolean();
 
   @override
-  MyoroHoverButtonThemeExtension copyWith({Color? primaryColor, Color? onPrimaryColor, BorderRadius? borderRadius, bool? bordered}) {
+  MyoroHoverButtonThemeExtension copyWith({
+    Color? primaryColor,
+    Color? onPrimaryColor,
+    BorderRadius? borderRadius,
+    bool? bordered,
+  }) {
     return MyoroHoverButtonThemeExtension(
       primaryColor: primaryColor ?? this.primaryColor,
       onPrimaryColor: onPrimaryColor ?? this.onPrimaryColor,
@@ -41,7 +60,10 @@ final class MyoroHoverButtonThemeExtension extends ThemeExtension<MyoroHoverButt
   }
 
   @override
-  MyoroHoverButtonThemeExtension lerp(covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other, double t) {
+  MyoroHoverButtonThemeExtension lerp(
+    covariant ThemeExtension<MyoroHoverButtonThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroHoverButtonThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),

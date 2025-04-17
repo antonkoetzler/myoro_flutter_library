@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroMultiDropdownWidgetShowcase].
-final class MyoroMultiDropdownWidgetShowcaseThemeExtension extends ThemeExtension<MyoroMultiDropdownWidgetShowcaseThemeExtension> {
+final class MyoroMultiDropdownWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroMultiDropdownWidgetShowcaseThemeExtension> {
   const MyoroMultiDropdownWidgetShowcaseThemeExtension();
 
   @override
@@ -11,7 +12,11 @@ final class MyoroMultiDropdownWidgetShowcaseThemeExtension extends ThemeExtensio
   }
 
   @override
-  MyoroMultiDropdownWidgetShowcaseThemeExtension lerp(covariant ThemeExtension<MyoroMultiDropdownWidgetShowcaseThemeExtension>? other, double t) {
+  MyoroMultiDropdownWidgetShowcaseThemeExtension lerp(
+    covariant ThemeExtension<MyoroMultiDropdownWidgetShowcaseThemeExtension>?
+    other,
+    double t,
+  ) {
     return this;
   }
 

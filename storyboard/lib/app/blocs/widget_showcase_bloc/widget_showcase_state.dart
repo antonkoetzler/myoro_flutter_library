@@ -7,12 +7,20 @@ final class WidgetShowcaseState extends Equatable {
   /// If [_WidgetOptions] is being displayed.
   final bool displayingWidgetOptions;
 
-  const WidgetShowcaseState({this.displayingWidgetShowcase = false, this.displayingWidgetOptions = true});
+  const WidgetShowcaseState({
+    this.displayingWidgetShowcase = false,
+    this.displayingWidgetOptions = true,
+  });
 
-  WidgetShowcaseState copyWith({bool? displayingWidgetShowcase, bool? displayingWidgetOptions}) {
+  WidgetShowcaseState copyWith({
+    bool? displayingWidgetShowcase,
+    bool? displayingWidgetOptions,
+  }) {
     return WidgetShowcaseState(
-      displayingWidgetShowcase: displayingWidgetShowcase ?? this.displayingWidgetShowcase,
-      displayingWidgetOptions: displayingWidgetOptions ?? this.displayingWidgetOptions,
+      displayingWidgetShowcase:
+          displayingWidgetShowcase ?? this.displayingWidgetShowcase,
+      displayingWidgetOptions:
+          displayingWidgetOptions ?? this.displayingWidgetOptions,
     );
   }
 
@@ -24,5 +32,8 @@ final class WidgetShowcaseState extends Equatable {
       ');';
 
   @override
-  List<Object?> get props => [displayingWidgetShowcase, displayingWidgetOptions];
+  List<Object?> get props => [
+    displayingWidgetShowcase,
+    displayingWidgetOptions,
+  ];
 }

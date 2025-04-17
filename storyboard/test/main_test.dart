@@ -14,14 +14,30 @@ final class MockSharedPreferences extends Mock implements SharedPreferences {}
 void main() {
   final kiwiContainer = KiwiContainer();
 
-  setUp(() => kiwiContainer.registerSingleton<SharedPreferences>((_) => MockSharedPreferences()));
+  setUp(
+    () => kiwiContainer.registerSingleton<SharedPreferences>(
+      (_) => MockSharedPreferences(),
+    ),
+  );
   tearDown(() => kiwiContainer.clear());
 
   testWidgets('App', (WidgetTester tester) async {
-    await tester.pumpWidget(BlocProvider(create: (_) => WidgetShowcaseBloc(), child: App(faker.randomGenerator.boolean())));
+    await tester.pumpWidget(
+      BlocProvider(
+        create: (_) => WidgetShowcaseBloc(),
+        child: App(faker.randomGenerator.boolean()),
+      ),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(App), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroMaterialApp && w.title == 'myoro_flutter_library storyboard'), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroMaterialApp &&
+            w.title == 'myoro_flutter_library storyboard',
+      ),
+      findsOneWidget,
+    );
     expect(find.byType(MyoroScreen), findsOneWidget);
     expect(find.byType(StoryboardAppBar), findsOneWidget);
     expect(find.byType(StoryboardBody), findsOneWidget);

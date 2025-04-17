@@ -15,7 +15,10 @@ void main() {
         ..add(const SetLabelEvent());
     },
     expect: () {
-      return [MyoroDropdownWidgetShowcaseState(label: label), const MyoroDropdownWidgetShowcaseState()];
+      return [
+        MyoroDropdownWidgetShowcaseState(label: label),
+        const MyoroDropdownWidgetShowcaseState(),
+      ];
     },
   );
 
@@ -25,12 +28,18 @@ void main() {
     act: (bloc) {
       bloc
         ..add(const SetEnabledEvent())
-        ..add(const SetEnabledEvent(MyoroDropdownConfiguration.enabledDefaultValue));
+        ..add(
+          const SetEnabledEvent(MyoroDropdownConfiguration.enabledDefaultValue),
+        );
     },
     expect: () {
       return [
-        const MyoroDropdownWidgetShowcaseState(enabled: !MyoroDropdownConfiguration.enabledDefaultValue),
-        const MyoroDropdownWidgetShowcaseState(enabled: MyoroDropdownConfiguration.enabledDefaultValue),
+        const MyoroDropdownWidgetShowcaseState(
+          enabled: !MyoroDropdownConfiguration.enabledDefaultValue,
+        ),
+        const MyoroDropdownWidgetShowcaseState(
+          enabled: MyoroDropdownConfiguration.enabledDefaultValue,
+        ),
       ];
     },
   );
@@ -41,12 +50,22 @@ void main() {
     act: (bloc) {
       bloc
         ..add(const SetAllowItemClearingEvent())
-        ..add(const SetAllowItemClearingEvent(MyoroDropdownConfiguration.allowItemClearingDefaultValue));
+        ..add(
+          const SetAllowItemClearingEvent(
+            MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+          ),
+        );
     },
     expect: () {
       return [
-        const MyoroDropdownWidgetShowcaseState(allowItemClearing: !MyoroDropdownConfiguration.allowItemClearingDefaultValue),
-        const MyoroDropdownWidgetShowcaseState(allowItemClearing: MyoroDropdownConfiguration.allowItemClearingDefaultValue),
+        const MyoroDropdownWidgetShowcaseState(
+          allowItemClearing:
+              !MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+        ),
+        const MyoroDropdownWidgetShowcaseState(
+          allowItemClearing:
+              MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+        ),
       ];
     },
   );
@@ -57,12 +76,25 @@ void main() {
     act: (bloc) {
       bloc
         ..add(const SetCheckboxOnChangedEnabledEvent())
-        ..add(const SetCheckboxOnChangedEnabledEvent(MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue));
+        ..add(
+          const SetCheckboxOnChangedEnabledEvent(
+            MyoroDropdownWidgetShowcaseState
+                .checkboxOnChangedEnabledDefaultValue,
+          ),
+        );
     },
     expect: () {
       return [
-        const MyoroDropdownWidgetShowcaseState(checkboxOnChangedEnabled: !MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue),
-        const MyoroDropdownWidgetShowcaseState(checkboxOnChangedEnabled: MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue),
+        const MyoroDropdownWidgetShowcaseState(
+          checkboxOnChangedEnabled:
+              !MyoroDropdownWidgetShowcaseState
+                  .checkboxOnChangedEnabledDefaultValue,
+        ),
+        const MyoroDropdownWidgetShowcaseState(
+          checkboxOnChangedEnabled:
+              MyoroDropdownWidgetShowcaseState
+                  .checkboxOnChangedEnabledDefaultValue,
+        ),
       ];
     },
   );

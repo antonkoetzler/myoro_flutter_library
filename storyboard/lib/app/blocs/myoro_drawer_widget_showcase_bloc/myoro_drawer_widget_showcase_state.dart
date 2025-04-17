@@ -13,7 +13,12 @@ final class MyoroDrawerWidgetShowcaseState extends Equatable {
   /// [MyoroDrawer.barrierDismissable].
   final bool barrierDismissable;
 
-  const MyoroDrawerWidgetShowcaseState({this.title, this.titleTextStyle, this.showCloseButton = true, this.barrierDismissable = true});
+  const MyoroDrawerWidgetShowcaseState({
+    this.title,
+    this.titleTextStyle,
+    this.showCloseButton = true,
+    this.barrierDismissable = true,
+  });
 
   MyoroDrawerWidgetShowcaseState copyWith({
     String? title,
@@ -25,7 +30,10 @@ final class MyoroDrawerWidgetShowcaseState extends Equatable {
   }) {
     return MyoroDrawerWidgetShowcaseState(
       title: titleProvided ? (title ?? this.title) : null,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
+      titleTextStyle:
+          titleTextStyleProvided
+              ? (titleTextStyle ?? this.titleTextStyle)
+              : null,
       showCloseButton: showCloseButton ?? this.showCloseButton,
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
     );

@@ -32,7 +32,15 @@ final class MyoroHoverButtonConfiguration extends Equatable {
   /// Function executed when the hover of the button changes.
   final MyoroHoverButtonOnHover? onHover;
 
-  const MyoroHoverButtonConfiguration({this.primaryColor, this.onPrimaryColor, this.isHovered, this.bordered, this.borderRadius, this.tooltip, this.onHover});
+  const MyoroHoverButtonConfiguration({
+    this.primaryColor,
+    this.onPrimaryColor,
+    this.isHovered,
+    this.bordered,
+    this.borderRadius,
+    this.tooltip,
+    this.onHover,
+  });
 
   MyoroHoverButtonConfiguration copyWith({
     Color? primaryColor,
@@ -51,26 +59,43 @@ final class MyoroHoverButtonConfiguration extends Equatable {
     bool onHoverProvided = true,
   }) {
     return MyoroHoverButtonConfiguration(
-      primaryColor: primaryColorProvided ? (primaryColor ?? this.primaryColor) : null,
-      onPrimaryColor: onPrimaryColorProvided ? (onPrimaryColor ?? this.onPrimaryColor) : null,
+      primaryColor:
+          primaryColorProvided ? (primaryColor ?? this.primaryColor) : null,
+      onPrimaryColor:
+          onPrimaryColorProvided
+              ? (onPrimaryColor ?? this.onPrimaryColor)
+              : null,
       isHovered: isHoveredProvided ? (isHovered ?? this.isHovered) : null,
       bordered: borderedProvided ? (bordered ?? this.bordered) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      borderRadius:
+          borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       tooltip: tooltipProvided ? (tooltip ?? this.tooltip) : null,
       onHover: onHoverProvided ? (onHover ?? this.onHover) : null,
     );
   }
 
   MyoroHoverButtonConfiguration.fake()
-    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      onPrimaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      onPrimaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
       isHovered = faker.randomGenerator.boolean(),
       bordered = faker.randomGenerator.boolean(),
-      borderRadius = BorderRadius.circular(faker.randomGenerator.decimal(min: 0)),
+      borderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(min: 0),
+      ),
       tooltip = faker.lorem.word(),
       onHover = null;
 
-  static MyoroHoverButtonConfiguration lerp(MyoroHoverButtonConfiguration a, MyoroHoverButtonConfiguration b, double t) {
+  static MyoroHoverButtonConfiguration lerp(
+    MyoroHoverButtonConfiguration a,
+    MyoroHoverButtonConfiguration b,
+    double t,
+  ) {
     return MyoroHoverButtonConfiguration(
       primaryColor: Color.lerp(a.primaryColor, b.primaryColor, t),
       onPrimaryColor: Color.lerp(a.onPrimaryColor, b.onPrimaryColor, t),
@@ -96,6 +121,14 @@ final class MyoroHoverButtonConfiguration extends Equatable {
 
   @override
   List<Object?> get props {
-    return [primaryColor, onPrimaryColor, isHovered, bordered, borderRadius, tooltip, onHover];
+    return [
+      primaryColor,
+      onPrimaryColor,
+      isHovered,
+      bordered,
+      borderRadius,
+      tooltip,
+      onHover,
+    ];
   }
 }

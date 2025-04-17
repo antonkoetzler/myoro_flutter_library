@@ -10,7 +10,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroSearchInputWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroSearchInputWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -18,6 +21,13 @@ void main() {
     expect(find.byType(MyoroSearchInputWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroSearchInput<String>), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[MyoroSearchInput.requestWhenChanged]'), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroCheckbox &&
+            w.label == '[MyoroSearchInput.requestWhenChanged]',
+      ),
+      findsOneWidget,
+    );
   });
 }

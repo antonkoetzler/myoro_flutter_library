@@ -17,16 +17,35 @@ final class MyoroBarGraphBar extends Equatable {
   /// Overlaps [color] as the bars will have their own colors.
   final List<MyoroBarGraphBarSection> barSections;
 
-  const MyoroBarGraphBar({required this.y, this.color, this.barSections = const []});
+  const MyoroBarGraphBar({
+    required this.y,
+    this.color,
+    this.barSections = const [],
+  });
 
-  MyoroBarGraphBar copyWith({double? y, Color? color, bool colorProvided = true, List<MyoroBarGraphBarSection>? barSections}) {
-    return MyoroBarGraphBar(y: y ?? this.y, color: colorProvided ? (color ?? this.color) : null, barSections: barSections ?? this.barSections);
+  MyoroBarGraphBar copyWith({
+    double? y,
+    Color? color,
+    bool colorProvided = true,
+    List<MyoroBarGraphBarSection>? barSections,
+  }) {
+    return MyoroBarGraphBar(
+      y: y ?? this.y,
+      color: colorProvided ? (color ?? this.color) : null,
+      barSections: barSections ?? this.barSections,
+    );
   }
 
   MyoroBarGraphBar.fake()
     : y = faker.randomGenerator.decimal(),
-      color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      barSections = List.generate(faker.randomGenerator.integer(5), (_) => MyoroBarGraphBarSection.fake());
+      color =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      barSections = List.generate(
+        faker.randomGenerator.integer(5),
+        (_) => MyoroBarGraphBarSection.fake(),
+      );
 
   @override
   String toString() =>

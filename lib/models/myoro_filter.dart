@@ -12,7 +12,10 @@ final class MyoroFilter<T> extends Equatable {
   const MyoroFilter({required this.key, required this.value});
 
   static MyoroFilter fake() {
-    return MyoroFilter(key: faker.randomGenerator.string(100), value: faker.randomGenerator.boolean());
+    return MyoroFilter(
+      key: faker.randomGenerator.string(100),
+      value: faker.randomGenerator.boolean(),
+    );
   }
 
   MyoroFilter<T> copyWith({String? key, T? value}) {

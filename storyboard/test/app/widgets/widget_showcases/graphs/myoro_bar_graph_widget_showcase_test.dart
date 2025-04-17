@@ -9,7 +9,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroBarGraphWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroBarGraphWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -17,6 +20,9 @@ void main() {
     expect(find.byType(MyoroBarGraphWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroBarGraph), findsOneWidget);
-    expect(find.widgetWithText(MyoroCheckbox, '[MyoroBarGraph.sorted]'), findsOneWidget);
+    expect(
+      find.widgetWithText(MyoroCheckbox, '[MyoroBarGraph.sorted]'),
+      findsOneWidget,
+    );
   });
 }

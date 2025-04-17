@@ -10,7 +10,10 @@ final class MyoroTooltipWidgetShowcaseState extends Equatable {
   const MyoroTooltipWidgetShowcaseState({this.margin = 0, this.text = ''});
 
   MyoroTooltipWidgetShowcaseState copyWith({double? margin, String? text}) {
-    return MyoroTooltipWidgetShowcaseState(margin: margin ?? this.margin, text: text ?? this.text);
+    return MyoroTooltipWidgetShowcaseState(
+      margin: margin ?? this.margin,
+      text: text ?? this.text,
+    );
   }
 
   @override

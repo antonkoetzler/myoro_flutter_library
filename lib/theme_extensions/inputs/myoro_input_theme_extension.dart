@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroInput].
-final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> {
+final class MyoroInputThemeExtension
+    extends ThemeExtension<MyoroInputThemeExtension> {
   /// Border for [MyoroInputStyleEnum.underlined].
   final InputBorder underlinedBorder;
 
@@ -67,14 +68,32 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
 
   MyoroInputThemeExtension.fake()
     : underlinedBorder = UnderlineInputBorder(
-        borderSide: BorderSide(width: faker.randomGenerator.decimal(), color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
+        borderSide: BorderSide(
+          width: faker.randomGenerator.decimal(),
+          color:
+              kMyoroTestColors[faker.randomGenerator.integer(
+                kMyoroTestColors.length,
+              )],
+        ),
       ),
       outlinedBorder = OutlineInputBorder(
         borderRadius: MyoroDecorationHelper.inputBorderRadius,
-        borderSide: BorderSide(width: faker.randomGenerator.decimal(), color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
+        borderSide: BorderSide(
+          width: faker.randomGenerator.decimal(),
+          color:
+              kMyoroTestColors[faker.randomGenerator.integer(
+                kMyoroTestColors.length,
+              )],
+        ),
       ),
-      primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      errorBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      primaryColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
+      errorBorderColor =
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
       borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       isDense = faker.randomGenerator.boolean(),
       cursorHeight = faker.randomGenerator.decimal(),
@@ -82,15 +101,29 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       inputTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal(),
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      labelBehavior = FloatingLabelBehavior.values[faker.randomGenerator.integer(FloatingLabelBehavior.values.length)],
+      labelBehavior =
+          FloatingLabelBehavior.values[faker.randomGenerator.integer(
+            FloatingLabelBehavior.values.length,
+          )],
       clearTextButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      clearTextButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      clearTextButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )];
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : underlinedBorder = UnderlineInputBorder(borderSide: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary)),
+    : underlinedBorder = UnderlineInputBorder(
+        borderSide: BorderSide(
+          width: kMyoroBorderLength,
+          color: colorScheme.onPrimary,
+        ),
+      ),
       outlinedBorder = OutlineInputBorder(
         borderRadius: MyoroDecorationHelper.inputBorderRadius,
-        borderSide: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+        borderSide: BorderSide(
+          width: kMyoroBorderLength,
+          color: colorScheme.onPrimary,
+        ),
       ),
       primaryColor = colorScheme.primary,
       errorBorderColor = colorScheme.error,
@@ -135,13 +168,17 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       spacing: spacing ?? this.spacing,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
       labelBehavior: labelBehavior ?? this.labelBehavior,
-      clearTextButtonPadding: clearTextButtonPadding ?? this.clearTextButtonPadding,
+      clearTextButtonPadding:
+          clearTextButtonPadding ?? this.clearTextButtonPadding,
       clearTextButtonIcon: clearTextButtonIcon ?? this.clearTextButtonIcon,
     );
   }
 
   @override
-  MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
+  MyoroInputThemeExtension lerp(
+    covariant ThemeExtension<MyoroInputThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroInputThemeExtension) return this;
     return copyWith(
       underlinedBorder: myoroLerp(underlinedBorder, other.underlinedBorder, t),
@@ -156,8 +193,16 @@ final class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExten
       spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       labelBehavior: myoroLerp(labelBehavior, other.labelBehavior, t),
-      clearTextButtonPadding: EdgeInsets.lerp(clearTextButtonPadding, other.clearTextButtonPadding, t),
-      clearTextButtonIcon: myoroLerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
+      clearTextButtonPadding: EdgeInsets.lerp(
+        clearTextButtonPadding,
+        other.clearTextButtonPadding,
+        t,
+      ),
+      clearTextButtonIcon: myoroLerp(
+        clearTextButtonIcon,
+        other.clearTextButtonIcon,
+        t,
+      ),
     );
   }
 

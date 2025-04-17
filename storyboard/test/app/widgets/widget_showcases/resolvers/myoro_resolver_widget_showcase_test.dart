@@ -10,7 +10,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(create: (_) => WidgetShowcaseBloc(), child: const MyoroResolverWidgetShowcase()),
+        child: BlocProvider(
+          create: (_) => WidgetShowcaseBloc(),
+          child: const MyoroResolverWidgetShowcase(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -20,7 +23,21 @@ void main() {
 
     // [_RefreshButtons].
     expect(find.byType(MyoroIconTextHoverButton), findsNWidgets(3));
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroIconTextHoverButton && w.text == 'Click to execute a successful request'), findsOneWidget);
-    expect(find.byWidgetPredicate((Widget w) => w is MyoroIconTextHoverButton && w.text == 'Click to execute an unsuccessful request'), findsOneWidget);
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroIconTextHoverButton &&
+            w.text == 'Click to execute a successful request',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroIconTextHoverButton &&
+            w.text == 'Click to execute an unsuccessful request',
+      ),
+      findsOneWidget,
+    );
   });
 }
