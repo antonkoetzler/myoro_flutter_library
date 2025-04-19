@@ -18,7 +18,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   const _AppBar();
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
       bordered: true,
       child: Row(
         spacing: themeExtension.headerToggleThemeButtonSpacing,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const [_Header(), _ToggleThemeButton()],
       ),
     );
@@ -39,9 +40,9 @@ final class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    this is where you currently are
     return const Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Flexible(child: _HeaderTitleText()),
         Flexible(child: _HeaderSubtitleText()),
@@ -114,74 +115,33 @@ final class _ToggleThemeButton extends StatelessWidget {
   }
 }
 
-final class _Body extends StatefulWidget {
+final class _Body extends StatelessWidget {
   const _Body();
 
   @override
-  State<_Body> createState() => _BodyState();
-}
-
-final class _BodyState extends State<_Body> {
-  final _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final widgetListingEnumValuesLength = WidgetListingEnum.values.length;
-
-    return Scrollbar(
-      controller: _scrollController,
-      thumbVisibility: true,
-      child: ListView.builder(
-        controller: _scrollController,
-        itemCount: widgetListingEnumValuesLength,
-        itemBuilder: (_, int index) {
-          final bool isLastValue = index == widgetListingEnumValuesLength - 1;
-          final WidgetListingEnum value = WidgetListingEnum.values[index];
-
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _CategoryButton(value),
-              if (!isLastValue) const _Divider(),
-            ],
-          );
-        },
+    return MyoroAccordion(
+      configuration: MyoroAccordionConfiguration(
+        items:
+            WidgetListingEnum.values
+                .map<MyoroAccordionItem>(_itemBuilder)
+                .toList(),
       ),
     );
   }
-}
 
-final class _CategoryButton extends StatelessWidget {
-  final WidgetListingEnum _listing;
-
-  const _CategoryButton(this._listing);
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MainScreenThemeExtension>();
-    return MyoroIconTextHoverButton(
-      text: _listing.category,
-      textStyle: themeExtension.categoryButtonTextStyle,
-      configuration: themeExtension.categoryButtonConfiguration,
-      onPressed: () => throw UnimplementedError(),
+  MyoroAccordionItem _itemBuilder(WidgetListingEnum widgetListingEnum) {
+    return MyoroAccordionItem(
+      titleBuilder: (_) => _titleBuilder(widgetListingEnum),
+      contentBuilder: _contentBuilder,
     );
   }
-}
 
-final class _Divider extends StatelessWidget {
-  const _Divider();
+  Widget _titleBuilder(WidgetListingEnum widgetListingEnum) {
+    return Text(widgetListingEnum.categoryName);
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return const MyoroBasicDivider(
-      configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal),
-    );
+  Widget _contentBuilder(_) {
+    return const Text('Hello, World!');
   }
 }

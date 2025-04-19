@@ -31,10 +31,10 @@ enum WidgetListingEnum {
   tables('Tables', [myoroTableTitle]),
   tooltips('Tooltips', [myoroTooltipTitle]);
 
-  final String category;
+  final String categoryName;
   final List<String> widgetNames;
 
-  const WidgetListingEnum(this.category, this.widgetNames);
+  const WidgetListingEnum(this.categoryName, this.widgetNames);
 
   // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';

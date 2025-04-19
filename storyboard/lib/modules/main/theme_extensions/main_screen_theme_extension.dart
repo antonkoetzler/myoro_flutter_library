@@ -21,19 +21,11 @@ final class MainScreenThemeExtension
   /// [IconData] of [_ToggleThemeButton].
   final IconData toggleThemeButtonIcon;
 
-  /// [TextStyle] of [_CategoryButton].
-  final TextStyle categoryButtonTextStyle;
-
-  /// [MyoroHoverButtonConfiguration] of [_CategoryButton].
-  final MyoroHoverButtonConfiguration categoryButtonConfiguration;
-
   const MainScreenThemeExtension({
     required this.headerTitleTextStyle,
     required this.headerSubtitleTextStyle,
     required this.headerToggleThemeButtonSpacing,
     required this.toggleThemeButtonIcon,
-    required this.categoryButtonTextStyle,
-    required this.categoryButtonConfiguration,
   });
 
   factory MainScreenThemeExtension.fake() {
@@ -47,8 +39,6 @@ final class MainScreenThemeExtension
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
           )],
-      categoryButtonTextStyle: typography.randomTextStyle,
-      categoryButtonConfiguration: MyoroHoverButtonConfiguration.fake(),
     );
   }
 
@@ -56,11 +46,7 @@ final class MainScreenThemeExtension
     : headerTitleTextStyle = textTheme.titleMedium!,
       headerSubtitleTextStyle = textTheme.bodySmall!,
       headerToggleThemeButtonSpacing = 20,
-      toggleThemeButtonIcon = Icons.sunny,
-      categoryButtonTextStyle = textTheme.bodyLarge!,
-      categoryButtonConfiguration = const MyoroHoverButtonConfiguration(
-        borderRadius: BorderRadius.zero,
-      );
+      toggleThemeButtonIcon = Icons.sunny;
 
   @override
   MainScreenThemeExtension copyWith({
@@ -79,10 +65,6 @@ final class MainScreenThemeExtension
           headerToggleThemeButtonSpacing ?? this.headerToggleThemeButtonSpacing,
       toggleThemeButtonIcon:
           toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
-      categoryButtonTextStyle:
-          categoryButtonTextStyle ?? this.categoryButtonTextStyle,
-      categoryButtonConfiguration:
-          categoryButtonConfiguration ?? this.categoryButtonConfiguration,
     );
   }
 
@@ -113,16 +95,6 @@ final class MainScreenThemeExtension
         other.toggleThemeButtonIcon,
         t,
       ),
-      categoryButtonTextStyle: TextStyle.lerp(
-        categoryButtonTextStyle,
-        other.categoryButtonTextStyle,
-        t,
-      ),
-      categoryButtonConfiguration: MyoroHoverButtonConfiguration.lerp(
-        categoryButtonConfiguration,
-        other.categoryButtonConfiguration,
-        t,
-      ),
     );
   }
 
@@ -134,9 +106,7 @@ final class MainScreenThemeExtension
         other.headerSubtitleTextStyle == headerSubtitleTextStyle &&
         other.headerToggleThemeButtonSpacing ==
             headerToggleThemeButtonSpacing &&
-        other.toggleThemeButtonIcon == toggleThemeButtonIcon &&
-        other.categoryButtonTextStyle == categoryButtonTextStyle &&
-        other.categoryButtonConfiguration == categoryButtonConfiguration;
+        other.toggleThemeButtonIcon == toggleThemeButtonIcon;
   }
 
   @override
@@ -146,8 +116,6 @@ final class MainScreenThemeExtension
       headerSubtitleTextStyle,
       headerToggleThemeButtonSpacing,
       toggleThemeButtonIcon,
-      categoryButtonTextStyle,
-      categoryButtonConfiguration,
     );
   }
 
@@ -158,7 +126,5 @@ final class MainScreenThemeExtension
       '  headerSubtitleTextStyle: $headerSubtitleTextStyle,\n'
       '  headerToggleThemeButtonSpacing: $headerToggleThemeButtonSpacing,\n'
       '  toggleThemeButtonIcon: $toggleThemeButtonIcon,\n'
-      '  categoryButtonTextStyle: $categoryButtonTextStyle,\n'
-      '  categoryButtonConfiguration: $categoryButtonConfiguration,\n'
       ');';
 }

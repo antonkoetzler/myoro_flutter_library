@@ -2,9 +2,6 @@
 
 1. (**FIN**) refactor: `MyoroDropdown` using `OverlayPortal`/`CompositedTransformTarget`/`CompositedTransformFollower`
 1. (**IN PROGRESS**) refactor: `MyoroTable`
-
-- Test all table files
-
 1. (**FIN**) feature: Added `MyoroFontSizeEnum.extraLarge`
 1. (**FIN**) improvement: `MyoroMenu`
 1. (**FIN**) improvement: Input formatters
@@ -12,6 +9,9 @@
 1. (**FIN**) chore: Add `==` override, `hashCode` and `toString` on all theme extensions
 1. (**FIN**) chore: `_Enabled` --> `_Provided` in `copyWith` functions
 1. (**FIN**) chore: Remove `final` from various classes to allow extensions
+1. feature: `getRandomColor`, `getRandomTextStyle`, `getRandomCursor`, etc
+1. (**IN PROGRESS**) refactor: Buttons
+1. (**IN PROGRESS**) feature: `MyoroAccordion`
 1. (**IN PROGRESS**) refactor: Revamping Storyboard
 
 - Make sure everything is organized correctly after shifting the folder structure

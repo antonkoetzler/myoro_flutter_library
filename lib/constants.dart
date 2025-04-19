@@ -25,7 +25,7 @@ const kMyoroGraphHorizontalSideTitleReversedSize = 22.0;
 // Tooltips.
 const kMyoroTooltipWaitDuration = Duration(milliseconds: 200);
 
-// Icons for testing.
+/// Icons for testing.
 const kMyoroTestIcons = [
   Icons.abc,
   Icons.ac_unit,
@@ -46,4 +46,15 @@ const kMyoroTestColors = [
   Colors.lightBlue,
   Colors.blueGrey,
   Colors.orange,
+];
+
+/// [SystemMouseCursors] for testing.
+const kMyoroTestCursors = [
+  SystemMouseCursors.basic,
+  SystemMouseCursors.click,
+  SystemMouseCursors.help,
+  SystemMouseCursors.resizeRow,
+  SystemMouseCursors.resizeColumn,
+  SystemMouseCursors.zoomIn,
+  SystemMouseCursors.zoomOut,
 ];

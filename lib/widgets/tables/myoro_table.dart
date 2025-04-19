@@ -4,6 +4,8 @@ import 'package:myoro_flutter_library/blocs/myoro_table_bloc/myoro_table_bloc.da
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Table of MFL.
+///
+/// TODO: Needs to be tested.
 class MyoroTable<T> extends StatefulWidget {
   /// Configuration of [MyoroTable].
   final MyoroTableConfiguration<T> configuration;

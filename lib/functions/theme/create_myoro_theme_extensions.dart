@@ -7,60 +7,68 @@ List<ThemeExtension> createMyoroThemeExtensions(
   TextTheme textTheme,
 ) {
   return [
-    ..._createMyoroAppBarThemeExtensions(colorScheme),
-    ..._createMyoroButtonThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroCardThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroCarouselThemeExtensions(),
-    ..._createMyoroCheckboxThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroDividerThemeExtensions(colorScheme),
-    ..._createMyoroDrawerThemeExtension(colorScheme, textTheme),
-    ..._createMyoroDropdownThemeExtensions(textTheme),
-    ..._createMyoroFormThemeExtensions(),
-    ..._createMyoroGraphThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroInputThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroLayoutBuilderThemeExtensions(),
-    ..._createMyoroLoaderThemeExtensions(colorScheme),
-    ..._createMyoroMaterialAppThemeExtensions(),
-    ..._createMyoroMenuThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroModalThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroRadioThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroResolverThemeExtensions(),
-    ..._createMyoroScreenThemeExtensions(),
-    ..._createMyoroSliderThemeExtensions(textTheme),
-    ..._createMyoroSnackBarThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroTableThemeExtensions(colorScheme, textTheme),
-    ..._createMyoroTooltipThemeExtensions(),
+    ..._createAccordionThemeExtensions(colorScheme, textTheme),
+    ..._createAppBarThemeExtensions(colorScheme),
+    ..._createButtonThemeExtensions(colorScheme, textTheme),
+    ..._createCardThemeExtensions(colorScheme, textTheme),
+    ..._createCarouselThemeExtensions(),
+    ..._createCheckboxThemeExtensions(colorScheme, textTheme),
+    ..._createDividerThemeExtensions(colorScheme),
+    ..._createDrawerThemeExtension(colorScheme, textTheme),
+    ..._createDropdownThemeExtensions(textTheme),
+    ..._createFormThemeExtensions(),
+    ..._createGraphThemeExtensions(colorScheme, textTheme),
+    ..._createInputThemeExtensions(colorScheme, textTheme),
+    ..._createLayoutBuilderThemeExtensions(),
+    ..._createLoaderThemeExtensions(colorScheme),
+    ..._createMaterialAppThemeExtensions(),
+    ..._createMenuThemeExtensions(colorScheme, textTheme),
+    ..._createModalThemeExtensions(colorScheme, textTheme),
+    ..._createRadioThemeExtensions(colorScheme, textTheme),
+    ..._createResolverThemeExtensions(),
+    ..._createScreenThemeExtensions(),
+    ..._createSliderThemeExtensions(textTheme),
+    ..._createSnackBarThemeExtensions(colorScheme, textTheme),
+    ..._createTableThemeExtensions(colorScheme, textTheme),
+    ..._createTooltipThemeExtensions(),
   ];
 }
 
-List<ThemeExtension> _createMyoroAppBarThemeExtensions(
+List<ThemeExtension> _createAccordionThemeExtensions(
   ColorScheme colorScheme,
+  TextTheme textTheme,
 ) {
+  return [MyoroAccordionThemeExtension.builder(colorScheme, textTheme)];
+}
+
+List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
   return [MyoroAppBarThemeExtension.builder(colorScheme)];
 }
 
-List<ThemeExtension> _createMyoroButtonThemeExtensions(
+List<ThemeExtension> _createButtonThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
   return [
+    MyoroButtonThemeExtension.builder(colorScheme),
     MyoroHoverButtonThemeExtension.builder(colorScheme),
+    MyoroIconTextButtonThemeExtension.builder(textTheme),
     MyoroIconTextHoverButtonThemeExtension.builder(colorScheme, textTheme),
   ];
 }
 
-List<ThemeExtension> _createMyoroCardThemeExtensions(
+List<ThemeExtension> _createCardThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
   return [MyoroCardThemeExtension.builder(colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createMyoroCarouselThemeExtensions() {
+List<ThemeExtension> _createCarouselThemeExtensions() {
   return const [MyoroCarouselThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createMyoroCheckboxThemeExtensions(
+List<ThemeExtension> _createCheckboxThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
@@ -70,31 +78,29 @@ List<ThemeExtension> _createMyoroCheckboxThemeExtensions(
   ];
 }
 
-List<ThemeExtension> _createMyoroDividerThemeExtensions(
-  ColorScheme colorScheme,
-) {
+List<ThemeExtension> _createDividerThemeExtensions(ColorScheme colorScheme) {
   return [
     MyoroBasicDividerThemeExtension.builder(colorScheme),
     MyoroResizeDividerThemeExtension.builder(colorScheme),
   ];
 }
 
-List<ThemeExtension> _createMyoroDrawerThemeExtension(
+List<ThemeExtension> _createDrawerThemeExtension(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
   return [MyoroDrawerThemeExtension.builder(colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createMyoroDropdownThemeExtensions(TextTheme textTheme) {
+List<ThemeExtension> _createDropdownThemeExtensions(TextTheme textTheme) {
   return const [MyoroDropdownThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createMyoroFormThemeExtensions() {
+List<ThemeExtension> _createFormThemeExtensions() {
   return const [MyoroFormThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createMyoroGraphThemeExtensions(
+List<ThemeExtension> _createGraphThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
@@ -104,7 +110,7 @@ List<ThemeExtension> _createMyoroGraphThemeExtensions(
   ];
 }
 
-List<ThemeExtension> _createMyoroInputThemeExtensions(
+List<ThemeExtension> _createInputThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
@@ -115,28 +121,26 @@ List<ThemeExtension> _createMyoroInputThemeExtensions(
   ];
 }
 
-List<ThemeExtension> _createMyoroLayoutBuilderThemeExtensions() {
+List<ThemeExtension> _createLayoutBuilderThemeExtensions() {
   return const [MyoroLayoutBuilderThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createMyoroLoaderThemeExtensions(
-  ColorScheme colorScheme,
-) {
+List<ThemeExtension> _createLoaderThemeExtensions(ColorScheme colorScheme) {
   return [MyoroCircularLoaderThemeExtension.builder(colorScheme)];
 }
 
-List<ThemeExtension> _createMyoroMaterialAppThemeExtensions() {
+List<ThemeExtension> _createMaterialAppThemeExtensions() {
   return const [MyoroMaterialAppThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createMyoroMenuThemeExtensions(
+List<ThemeExtension> _createMenuThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
   return [MyoroMenuThemeExtension.builder(colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createMyoroModalThemeExtensions(
+List<ThemeExtension> _createModalThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
@@ -146,7 +150,7 @@ List<ThemeExtension> _createMyoroModalThemeExtensions(
   ];
 }
 
-List<ThemeExtension> _createMyoroRadioThemeExtensions(
+List<ThemeExtension> _createRadioThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
@@ -156,19 +160,19 @@ List<ThemeExtension> _createMyoroRadioThemeExtensions(
   ];
 }
 
-List<ThemeExtension> _createMyoroResolverThemeExtensions() {
+List<ThemeExtension> _createResolverThemeExtensions() {
   return const [MyoroResolverThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createMyoroScreenThemeExtensions() {
+List<ThemeExtension> _createScreenThemeExtensions() {
   return const [MyoroScreenThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createMyoroSliderThemeExtensions(TextTheme textTheme) {
+List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {
   return [MyoroSliderThemeExtension.builder(textTheme)];
 }
 
-List<ThemeExtension> _createMyoroSnackBarThemeExtensions(
+List<ThemeExtension> _createSnackBarThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
@@ -178,13 +182,13 @@ List<ThemeExtension> _createMyoroSnackBarThemeExtensions(
   ];
 }
 
-List<ThemeExtension> _createMyoroTableThemeExtensions(
+List<ThemeExtension> _createTableThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
   return [MyoroTableThemeExtension.builder(colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createMyoroTooltipThemeExtensions() {
+List<ThemeExtension> _createTooltipThemeExtensions() {
   return const [MyoroTooltipThemeExtension.builder()];
 }
