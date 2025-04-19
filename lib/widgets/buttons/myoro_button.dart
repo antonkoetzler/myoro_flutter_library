@@ -117,13 +117,8 @@ final class _Button extends StatelessWidget {
     };
   }
 
-  BoxBorder _getBorder(MyoroButtonThemeExtension themeExtension) {
-    final MyoroButtonConfigurationBorderBuilder? borderBuilder =
-        _configuration?.borderBuilder;
-    if (borderBuilder != null) {
-      return borderBuilder(_tapStatusEnum);
-    }
-    return themeExtension.border;
+  BoxBorder? _getBorder(MyoroButtonThemeExtension themeExtension) {
+    return _configuration?.borderBuilder?.call(_tapStatusEnum);
   }
 
   BorderRadius _getBorderRadius(MyoroButtonThemeExtension themeExtension) {

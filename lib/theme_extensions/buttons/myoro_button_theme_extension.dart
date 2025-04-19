@@ -16,9 +16,6 @@ final class MyoroButtonThemeExtension
   /// Background color when pressed ([MyoroTapStatusEnum.tap]).
   final Color tapBackgroundColor;
 
-  /// Border.
-  final BoxBorder border;
-
   /// Border radius.
   final BorderRadius borderRadius;
 
@@ -26,7 +23,6 @@ final class MyoroButtonThemeExtension
     required this.idleBackgroundColor,
     required this.hoverBackgroundColor,
     required this.tapBackgroundColor,
-    required this.border,
     required this.borderRadius,
   });
 
@@ -43,13 +39,6 @@ final class MyoroButtonThemeExtension
           kMyoroTestColors[faker.randomGenerator.integer(
             kMyoroTestColors.length,
           )],
-      border = Border.all(
-        width: faker.randomGenerator.decimal(scale: 20, min: 1),
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
-      ),
       borderRadius = BorderRadius.circular(
         faker.randomGenerator.decimal(scale: 50, min: 1),
       );
@@ -58,10 +47,6 @@ final class MyoroButtonThemeExtension
     : idleBackgroundColor = colorScheme.primary,
       hoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.25),
       tapBackgroundColor = colorScheme.onPrimary,
-      border = Border.all(
-        width: kMyoroBorderLength,
-        color: colorScheme.onPrimary,
-      ),
       borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
 
   @override
@@ -69,14 +54,12 @@ final class MyoroButtonThemeExtension
     Color? idleBackgroundColor,
     Color? hoverBackgroundColor,
     Color? tapBackgroundColor,
-    BoxBorder? border,
     BorderRadius? borderRadius,
   }) {
     return MyoroButtonThemeExtension(
       idleBackgroundColor: idleBackgroundColor ?? this.idleBackgroundColor,
       hoverBackgroundColor: hoverBackgroundColor ?? this.hoverBackgroundColor,
       tapBackgroundColor: tapBackgroundColor ?? this.tapBackgroundColor,
-      border: border ?? this.border,
       borderRadius: borderRadius ?? this.borderRadius,
     );
   }
@@ -103,7 +86,6 @@ final class MyoroButtonThemeExtension
         other.tapBackgroundColor,
         t,
       ),
-      border: BoxBorder.lerp(border, other.border, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
     );
   }
@@ -115,7 +97,6 @@ final class MyoroButtonThemeExtension
         other.idleBackgroundColor == idleBackgroundColor &&
         other.hoverBackgroundColor == hoverBackgroundColor &&
         other.tapBackgroundColor == tapBackgroundColor &&
-        other.border == border &&
         other.borderRadius == borderRadius;
   }
 
@@ -125,7 +106,6 @@ final class MyoroButtonThemeExtension
       idleBackgroundColor,
       hoverBackgroundColor,
       tapBackgroundColor,
-      border,
       borderRadius,
     );
   }
@@ -136,7 +116,6 @@ final class MyoroButtonThemeExtension
       '  idleBackgroundColor: $idleBackgroundColor,\n'
       '  hoverBackgroundColor: $hoverBackgroundColor,\n'
       '  tapBackgroundColor: $tapBackgroundColor,\n'
-      '  border: $border,\n'
       '  borderRadius: $borderRadius,\n'
       ');';
 }
