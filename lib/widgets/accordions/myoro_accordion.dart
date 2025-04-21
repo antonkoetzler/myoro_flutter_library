@@ -17,10 +17,18 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   MyoroAccordionConfiguration get _configuration => widget.configuration;
   List<MyoroAccordionItem> get _items => _configuration.items;
 
+  MyoroAccordionNotifier? _localNotifier;
+  you are here
+  MyoroAccordionNotifier get _notifier {
+    return _configuration.notifier ??
+        (_localNotifier ??= MyoroAccordionNotifier());
+  }
+
   final _scrollController = ScrollController();
 
   @override
   void dispose() {
+    _localNotifier?.dispose();
     _scrollController.dispose();
     super.dispose();
   }
@@ -60,23 +68,10 @@ final class _Item extends StatelessWidget {
   }
 }
 
-final class _ItemTitleButton extends StatefulWidget {
+final class _ItemTitleButton extends StatelessWidget {
   final MyoroAccordionItemTitleBuilder _itemTitleBuilder;
 
   const _ItemTitleButton(this._itemTitleBuilder);
-
-  @override
-  State<_ItemTitleButton> createState() => _ItemTitleButtonState();
-}
-
-final class _ItemTitleButtonState extends State<_ItemTitleButton> {
-  final _displayingDropdownNotifer = ValueNotifier(false);
-
-  @override
-  void dispose() {
-    _displayingDropdownNotifer.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +98,7 @@ final class _ItemTitleButtonState extends State<_ItemTitleButton> {
           Expanded(
             child: DefaultTextStyle(
               style: themeExtension.itemTitleButtonTitleTextStyle,
-              child: widget._itemTitleBuilder(context),
+              child: _itemTitleBuilder(context),
             ),
           ),
           const _ItemTitleButtonArrow(),
