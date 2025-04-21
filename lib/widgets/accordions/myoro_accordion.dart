@@ -60,10 +60,23 @@ final class _Item extends StatelessWidget {
   }
 }
 
-final class _ItemTitleButton extends StatelessWidget {
+final class _ItemTitleButton extends StatefulWidget {
   final MyoroAccordionItemTitleBuilder _itemTitleBuilder;
 
   const _ItemTitleButton(this._itemTitleBuilder);
+
+  @override
+  State<_ItemTitleButton> createState() => _ItemTitleButtonState();
+}
+
+final class _ItemTitleButtonState extends State<_ItemTitleButton> {
+  final _displayingDropdownNotifer = ValueNotifier(false);
+
+  @override
+  void dispose() {
+    _displayingDropdownNotifer.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,17 +95,20 @@ final class _ItemTitleButton extends StatelessWidget {
     BuildContext context,
     MyoroAccordionThemeExtension themeExtension,
   ) {
-    return Row(
-      spacing: themeExtension.itemTitleButtonSpacing,
-      children: [
-        Expanded(
-          child: DefaultTextStyle(
-            style: themeExtension.itemTitleButtonTitleTextStyle,
-            child: _itemTitleBuilder(context),
+    return Padding(
+      padding: themeExtension.itemTitleButtonContentPadding,
+      child: Row(
+        spacing: themeExtension.itemTitleButtonSpacing,
+        children: [
+          Expanded(
+            child: DefaultTextStyle(
+              style: themeExtension.itemTitleButtonTitleTextStyle,
+              child: widget._itemTitleBuilder(context),
+            ),
           ),
-        ),
-        const _ItemTitleButtonArrow(),
-      ],
+          const _ItemTitleButtonArrow(),
+        ],
+      ),
     );
   }
 }

@@ -10,6 +10,10 @@ typedef MyoroIconTextButtonConfigurationContentColorBuilder =
 ///
 /// TODO: Needs to be tested.
 class MyoroIconTextButtonConfiguration extends Equatable {
+  static const invertDefaultValue = false;
+  static const spacingDefaultValue = 10.0;
+  static const paddingDefaultValue = EdgeInsets.all(10);
+
   /// By default, the icon is displays on the left, and
   /// the text on the right, this is to invert the order.
   final bool invert;
@@ -34,9 +38,9 @@ class MyoroIconTextButtonConfiguration extends Equatable {
   final MyoroButtonConfiguration? buttonConfiguration;
 
   const MyoroIconTextButtonConfiguration({
-    this.invert = false,
-    this.spacing = 10,
-    this.padding = const EdgeInsets.all(10),
+    this.invert = invertDefaultValue,
+    this.spacing = spacingDefaultValue,
+    this.padding = paddingDefaultValue,
     this.contentColorBuilder,
     this.iconConfiguration,
     this.textConfiguration,

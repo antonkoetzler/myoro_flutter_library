@@ -10,6 +10,9 @@ class MyoroAccordionThemeExtension
   /// [BorderRadius] of [_ItemTitleButton].
   final BorderRadius itemTitleButtonBorderRadius;
 
+  /// [EdgeInsets] of [_ItemTitleButton].
+  final EdgeInsets itemTitleButtonContentPadding;
+
   /// [Row.spacing] of [_ItemTitleButton].
   final double itemTitleButtonSpacing;
 
@@ -27,6 +30,7 @@ class MyoroAccordionThemeExtension
 
   const MyoroAccordionThemeExtension({
     required this.itemTitleButtonBorderRadius,
+    required this.itemTitleButtonContentPadding,
     required this.itemTitleButtonSpacing,
     required this.itemTitleButtonTitleTextStyle,
     required this.itemTitleButtonArrowIcon,
@@ -36,6 +40,9 @@ class MyoroAccordionThemeExtension
 
   MyoroAccordionThemeExtension.fake()
     : itemTitleButtonBorderRadius = BorderRadius.circular(
+        faker.randomGenerator.decimal(scale: 50),
+      ),
+      itemTitleButtonContentPadding = EdgeInsets.all(
         faker.randomGenerator.decimal(scale: 50),
       ),
       itemTitleButtonSpacing = faker.randomGenerator.decimal(scale: 50),
@@ -59,8 +66,9 @@ class MyoroAccordionThemeExtension
     ColorScheme colorScheme,
     TextTheme textTheme,
   ) : itemTitleButtonBorderRadius = BorderRadius.zero,
+      itemTitleButtonContentPadding = const EdgeInsets.all(10),
       itemTitleButtonSpacing = 10,
-      itemTitleButtonTitleTextStyle = textTheme.bodyMedium!,
+      itemTitleButtonTitleTextStyle = textTheme.titleLarge!,
       itemTitleButtonArrowIcon = Icons.keyboard_arrow_down,
       itemTitleButtonArrowIconSize = 25,
       itemTitleButtonArrowIconColor = colorScheme.onPrimary;
@@ -68,6 +76,7 @@ class MyoroAccordionThemeExtension
   @override
   MyoroAccordionThemeExtension copyWith({
     BorderRadius? itemTitleButtonBorderRadius,
+    EdgeInsets? itemTitleButtonContentPadding,
     double? itemTitleButtonSpacing,
     TextStyle? itemTitleButtonTitleTextStyle,
     IconData? itemTitleButtonArrowIcon,
@@ -77,6 +86,8 @@ class MyoroAccordionThemeExtension
     return MyoroAccordionThemeExtension(
       itemTitleButtonBorderRadius:
           itemTitleButtonBorderRadius ?? this.itemTitleButtonBorderRadius,
+      itemTitleButtonContentPadding:
+          itemTitleButtonContentPadding ?? this.itemTitleButtonContentPadding,
       itemTitleButtonSpacing:
           itemTitleButtonSpacing ?? this.itemTitleButtonSpacing,
       itemTitleButtonTitleTextStyle:
@@ -100,6 +111,11 @@ class MyoroAccordionThemeExtension
       itemTitleButtonBorderRadius: BorderRadius.lerp(
         itemTitleButtonBorderRadius,
         other.itemTitleButtonBorderRadius,
+        t,
+      ),
+      itemTitleButtonContentPadding: EdgeInsets.lerp(
+        itemTitleButtonContentPadding,
+        other.itemTitleButtonContentPadding,
         t,
       ),
       itemTitleButtonSpacing: lerpDouble(
@@ -135,6 +151,7 @@ class MyoroAccordionThemeExtension
     return other is MyoroAccordionThemeExtension &&
         other.runtimeType == runtimeType &&
         other.itemTitleButtonBorderRadius == itemTitleButtonBorderRadius &&
+        other.itemTitleButtonContentPadding == itemTitleButtonContentPadding &&
         other.itemTitleButtonSpacing == itemTitleButtonSpacing &&
         other.itemTitleButtonTitleTextStyle == itemTitleButtonTitleTextStyle &&
         other.itemTitleButtonArrowIcon == itemTitleButtonArrowIcon &&
@@ -146,6 +163,7 @@ class MyoroAccordionThemeExtension
   int get hashCode {
     return Object.hash(
       itemTitleButtonBorderRadius,
+      itemTitleButtonContentPadding,
       itemTitleButtonSpacing,
       itemTitleButtonTitleTextStyle,
       itemTitleButtonArrowIcon,
@@ -158,6 +176,7 @@ class MyoroAccordionThemeExtension
   String toString() =>
       'MyoroAccordionThemeExtension(\n'
       '  itemTitleButtonBorderRadius: $itemTitleButtonBorderRadius,\n'
+      '  itemTitleButtonContentPadding: $itemTitleButtonContentPadding,\n'
       '  itemTitleButtonSpacing: $itemTitleButtonSpacing,\n'
       '  itemTitleButtonTitleTextStyle: $itemTitleButtonTitleTextStyle,\n'
       '  itemTitleButtonArrowIcon: $itemTitleButtonArrowIcon,\n'
