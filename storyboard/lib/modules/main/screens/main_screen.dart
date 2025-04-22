@@ -133,7 +133,7 @@ final class _Body extends StatelessWidget {
   MyoroAccordionItem _itemBuilder(WidgetListingEnum widgetListingEnum) {
     return MyoroAccordionItem(
       titleBuilder: (_) => _titleBuilder(widgetListingEnum),
-      contentBuilder: _contentBuilder,
+      contentBuilder: (_) => _contentBuilder(widgetListingEnum),
     );
   }
 
@@ -141,7 +141,31 @@ final class _Body extends StatelessWidget {
     return Text(widgetListingEnum.categoryName);
   }
 
-  Widget _contentBuilder(_) {
-    return const Text('Hello, World!');
+  Widget _contentBuilder(WidgetListingEnum widgetListingEnum) {
+    return _WidgetCategoryDropdown(widgetListingEnum);
+  }
+}
+
+final class _WidgetCategoryDropdown extends StatelessWidget {
+  final WidgetListingEnum _widgetListingEnum;
+
+  const _WidgetCategoryDropdown(this._widgetListingEnum);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children:
+          _widgetListingEnum.widgetNames.map<Widget>(_buttonBuilder).toList(),
+    );
+  }
+
+  Widget _buttonBuilder(String widgetName) {
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroIconTextButtonTextConfiguration(
+          text: widgetName,
+        ),
+      ),
+    );
   }
 }

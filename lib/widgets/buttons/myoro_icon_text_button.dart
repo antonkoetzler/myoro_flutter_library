@@ -1,20 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Default color builder.
-Color _defaultContentColorBuilder(
-  BuildContext context,
-  MyoroTapStatusEnum tapStatusEnum,
-) {
-  final buttonThemeExtension =
-      context.resolveThemeExtension<MyoroButtonThemeExtension>();
-  return switch (tapStatusEnum) {
-    MyoroTapStatusEnum.idle => buttonThemeExtension.tapBackgroundColor,
-    MyoroTapStatusEnum.hover => buttonThemeExtension.tapBackgroundColor,
-    MyoroTapStatusEnum.tap => buttonThemeExtension.idleBackgroundColor,
-  };
-}
-
 /// Button that holds an icon and/or text.
 ///
 /// TODO: Needs to be tested.
@@ -101,12 +87,15 @@ final class _Icon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension =
+        context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+
     return Icon(
       _iconConfiguration.icon,
       size: _iconConfiguration.size,
       color:
           _contentColorBuilder?.call(_tapStatusEnum) ??
-          _defaultContentColorBuilder(context, _tapStatusEnum),
+          themeExtension.contentColor,
     );
   }
 }
@@ -136,7 +125,7 @@ final class _Text extends StatelessWidget {
         textAlign: _textConfiguration.alignment,
         style: (_textConfiguration.style ?? themeExtension.textStyle).withColor(
           _contentColorBuilder?.call(_tapStatusEnum) ??
-              _defaultContentColorBuilder(context, _tapStatusEnum),
+              themeExtension.contentColor,
         ),
       ),
     );

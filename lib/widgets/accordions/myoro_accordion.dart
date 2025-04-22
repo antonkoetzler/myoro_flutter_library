@@ -88,20 +88,34 @@ final class _ItemTitleButton extends StatelessWidget {
     final themeExtension =
         context.resolveThemeExtension<MyoroAccordionThemeExtension>();
 
+    return ValueListenableBuilder(
+      valueListenable: _notifier,
+      builder: (_, MyoroAccordionItem? expandedItem, __) {
+        return _valueListenableBuilder(context, themeExtension, expandedItem);
+      },
+    );
+  }
+
+  Widget _valueListenableBuilder(
+    BuildContext context,
+    MyoroAccordionThemeExtension themeExtension,
+    MyoroAccordionItem? expandedItem,
+  ) {
+    final bool isExpanded = (_item == expandedItem);
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
         borderRadius: themeExtension.itemTitleButtonBorderRadius,
-        backgroundColorBuilder: _backgroundColorBuilder,
+        backgroundColorBuilder: isExpanded ? _backgroundColorBuilder : null,
         onTapUp: _onTapUp,
       ),
       builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
-        return _builder(context, themeExtension, tapStatusEnum);
+        return _buttonBuilder(context, themeExtension, tapStatusEnum);
       },
     );
   }
 
   Color _backgroundColorBuilder(_) {
-    return Colors.transparent;
+    return MyoroColorDesignSystem.transparent;
   }
 
   void _onTapUp(_) {
@@ -110,7 +124,7 @@ final class _ItemTitleButton extends StatelessWidget {
         : _notifier.reset();
   }
 
-  Widget _builder(
+  Widget _buttonBuilder(
     BuildContext context,
     MyoroAccordionThemeExtension themeExtension,
     MyoroTapStatusEnum tapStatusEnum,
@@ -150,14 +164,17 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: _notifier,
       builder: (_, MyoroAccordionItem? expandedItem, __) {
+        final bool isExpanded = (_item == expandedItem);
+
         return AnimatedRotation(
-          turns: (_item == expandedItem) ? 0.5 : 0,
+          turns: isExpanded ? 0.5 : 0,
           duration:
               accordionThemeExtension.itemTitleButtonArrowAnimationDuration,
           curve: accordionThemeExtension.itemTitleButtonArrowAnimationCurve,
           child: Container(
             decoration: BoxDecoration(
-              color: _getBackgroundColor(buttonThemeExtension),
+              color:
+                  isExpanded ? _getBackgroundColor(buttonThemeExtension) : null,
               borderRadius:
                   accordionThemeExtension.itemTitleButtonArrowBorderRadius,
             ),
