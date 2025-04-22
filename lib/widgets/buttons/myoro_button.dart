@@ -73,7 +73,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
   }
 
   void _onTapUp(TapUpDetails details) {
-    _tapStatusNotifier.value = MyoroTapStatusEnum.idle;
+    _tapStatusNotifier.value = MyoroTapStatusEnum.hover;
     _configuration?.onTapUp?.call(details);
   }
 

@@ -18,7 +18,6 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   List<MyoroAccordionItem> get _items => _configuration.items;
 
   MyoroAccordionNotifier? _localNotifier;
-  you are here
   MyoroAccordionNotifier get _notifier {
     return _configuration.notifier ??
         (_localNotifier ??= MyoroAccordionNotifier());
@@ -46,32 +45,43 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   }
 
   Widget _itemBuilder(_, int index) {
-    return _Item(_items[index], index == _items.length - 1);
+    return _Item(
+      _notifier,
+      item: _items[index],
+      isLastItem: index == _items.length - 1,
+    );
   }
 }
 
 final class _Item extends StatelessWidget {
-  final MyoroAccordionItem _item;
-  final bool _isLastItem;
+  final MyoroAccordionNotifier _notifier;
+  final MyoroAccordionItem item;
+  final bool isLastItem;
 
-  const _Item(this._item, this._isLastItem);
+  const _Item(this._notifier, {required this.item, required this.isLastItem});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _ItemTitleButton(_item.titleBuilder),
-        if (!_isLastItem) const _Divider(),
+        _ItemTitleButton(item, _notifier),
+        ValueListenableBuilder(valueListenable: _notifier, builder: _builder),
+        if (!isLastItem) const _Divider(),
       ],
     );
+  }
+
+  Widget _builder(BuildContext context, MyoroAccordionItem? expandedItem, __) {
+    return _ItemContent(item, expandedItem);
   }
 }
 
 final class _ItemTitleButton extends StatelessWidget {
-  final MyoroAccordionItemTitleBuilder _itemTitleBuilder;
+  final MyoroAccordionItem _item;
+  final MyoroAccordionNotifier _notifier;
 
-  const _ItemTitleButton(this._itemTitleBuilder);
+  const _ItemTitleButton(this._item, this._notifier);
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +91,29 @@ final class _ItemTitleButton extends StatelessWidget {
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
         borderRadius: themeExtension.itemTitleButtonBorderRadius,
+        backgroundColorBuilder: _backgroundColorBuilder,
+        onTapUp: _onTapUp,
       ),
-      builder: (BuildContext context, __) => _builder(context, themeExtension),
+      builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
+        return _builder(context, themeExtension, tapStatusEnum);
+      },
     );
+  }
+
+  Color _backgroundColorBuilder(_) {
+    return Colors.transparent;
+  }
+
+  void _onTapUp(_) {
+    _notifier.expandedItem != _item
+        ? _notifier.expandItem(_item)
+        : _notifier.reset();
   }
 
   Widget _builder(
     BuildContext context,
     MyoroAccordionThemeExtension themeExtension,
+    MyoroTapStatusEnum tapStatusEnum,
   ) {
     return Padding(
       padding: themeExtension.itemTitleButtonContentPadding,
@@ -98,10 +123,10 @@ final class _ItemTitleButton extends StatelessWidget {
           Expanded(
             child: DefaultTextStyle(
               style: themeExtension.itemTitleButtonTitleTextStyle,
-              child: _itemTitleBuilder(context),
+              child: _item.titleBuilder(context),
             ),
           ),
-          const _ItemTitleButtonArrow(),
+          _ItemTitleButtonArrow(_item, _notifier, tapStatusEnum),
         ],
       ),
     );
@@ -109,18 +134,50 @@ final class _ItemTitleButton extends StatelessWidget {
 }
 
 final class _ItemTitleButtonArrow extends StatelessWidget {
-  const _ItemTitleButtonArrow();
+  final MyoroAccordionItem _item;
+  final MyoroAccordionNotifier _notifier;
+  final MyoroTapStatusEnum _tapStatusEnum;
+
+  const _ItemTitleButtonArrow(this._item, this._notifier, this._tapStatusEnum);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
+    final accordionThemeExtension =
         context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final buttonThemeExtension =
+        context.resolveThemeExtension<MyoroButtonThemeExtension>();
 
-    return Icon(
-      themeExtension.itemTitleButtonArrowIcon,
-      size: themeExtension.itemTitleButtonArrowIconSize,
-      color: themeExtension.itemTitleButtonArrowIconColor,
+    return ValueListenableBuilder(
+      valueListenable: _notifier,
+      builder: (_, MyoroAccordionItem? expandedItem, __) {
+        return AnimatedRotation(
+          turns: (_item == expandedItem) ? 0.5 : 0,
+          duration:
+              accordionThemeExtension.itemTitleButtonArrowAnimationDuration,
+          curve: accordionThemeExtension.itemTitleButtonArrowAnimationCurve,
+          child: Container(
+            decoration: BoxDecoration(
+              color: _getBackgroundColor(buttonThemeExtension),
+              borderRadius:
+                  accordionThemeExtension.itemTitleButtonArrowBorderRadius,
+            ),
+            child: Icon(
+              accordionThemeExtension.itemTitleButtonArrowIcon,
+              size: accordionThemeExtension.itemTitleButtonArrowIconSize,
+              color: accordionThemeExtension.itemTitleButtonArrowIconColor,
+            ),
+          ),
+        );
+      },
     );
+  }
+
+  Color _getBackgroundColor(MyoroButtonThemeExtension buttonThemeExtension) {
+    return switch (_tapStatusEnum) {
+      MyoroTapStatusEnum.hover => buttonThemeExtension.hoverBackgroundColor,
+      MyoroTapStatusEnum.tap => buttonThemeExtension.tapBackgroundColor,
+      _ => Colors.transparent,
+    };
   }
 }
 
@@ -131,6 +188,31 @@ final class _Divider extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MyoroBasicDivider(
       configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal),
+    );
+  }
+}
+
+final class _ItemContent extends StatelessWidget {
+  final MyoroAccordionItem _item;
+  final MyoroAccordionItem? _expandedItem;
+
+  const _ItemContent(this._item, this._expandedItem);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension =
+        context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+
+    return AnimatedSize(
+      duration: themeExtension.itemContentAnimationDuration,
+      curve: themeExtension.itemContentAnimationCurve,
+      child: SizedBox(
+        width: double.infinity,
+        child:
+            (_item == _expandedItem)
+                ? _item.contentBuilder(context)
+                : const SizedBox.shrink(),
+      ),
     );
   }
 }

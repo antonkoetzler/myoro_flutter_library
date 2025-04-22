@@ -58,3 +58,14 @@ const kMyoroTestCursors = [
   SystemMouseCursors.zoomIn,
   SystemMouseCursors.zoomOut,
 ];
+
+/// [Curve]s for testing.
+const kMyoroTestCurves = [
+  Curves.ease,
+  Curves.easeIn,
+  Curves.easeOut,
+  Curves.linear,
+  Curves.bounceIn,
+  Curves.bounceOut,
+  Curves.bounceInOut,
+];

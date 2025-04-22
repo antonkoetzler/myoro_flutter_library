@@ -45,8 +45,8 @@ final class MyoroButtonThemeExtension
 
   MyoroButtonThemeExtension.builder(ColorScheme colorScheme)
     : idleBackgroundColor = colorScheme.primary,
-      hoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.25),
-      tapBackgroundColor = colorScheme.onPrimary,
+      hoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.20),
+      tapBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.50),
       borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
 
   @override
