@@ -10,108 +10,7 @@ final class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroScreen(appBar: _AppBar(), body: _Body());
-  }
-}
-
-final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _AppBar();
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MainScreenThemeExtension>();
-    return MyoroAppBar(
-      bordered: true,
-      child: Row(
-        spacing: themeExtension.headerToggleThemeButtonSpacing,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [_Header(), _ToggleThemeButton()],
-      ),
-    );
-  }
-}
-
-final class _Header extends StatelessWidget {
-  const _Header();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Flexible(child: _HeaderTitleText()),
-        Flexible(child: _HeaderSubtitleText()),
-      ],
-    );
-  }
-}
-
-final class _HeaderText extends StatelessWidget {
-  final String text;
-  final TextStyle style;
-
-  const _HeaderText({required this.text, required this.style});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: style,
-    );
-  }
-}
-
-final class _HeaderTitleText extends StatelessWidget {
-  const _HeaderTitleText();
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MainScreenThemeExtension>();
-    return _HeaderText(
-      text: 'MFL\'s Storyboard',
-      style: themeExtension.headerTitleTextStyle,
-    );
-  }
-}
-
-final class _HeaderSubtitleText extends StatelessWidget {
-  const _HeaderSubtitleText();
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MainScreenThemeExtension>();
-    return _HeaderText(
-      text: 'Application to visualize and create MFL widgets.',
-      style: themeExtension.headerSubtitleTextStyle,
-    );
-  }
-}
-
-final class _ToggleThemeButton extends StatelessWidget {
-  const _ToggleThemeButton();
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MainScreenThemeExtension>();
-    return MyoroIconTextHoverButton(
-      icon: themeExtension.toggleThemeButtonIcon,
-      onPressed: () => _onPressed(context),
-    );
-  }
-
-  void _onPressed(BuildContext context) {
-    final themeModeCubit = context.resolveBloc<ThemeModeCubit>();
-    themeModeCubit.toggle();
+    return const StoryboardScreen(body: _Body());
   }
 }
 
@@ -153,19 +52,37 @@ final class _WidgetCategoryDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children:
-          _widgetListingEnum.widgetNames.map<Widget>(_buttonBuilder).toList(),
-    );
-  }
+    final children =
+        _widgetListingEnum.widgetNames.map<_WidgetCategoryDropdownButton>((
+          String widgetName,
+        ) {
+          return _WidgetCategoryDropdownButton(widgetName);
+        }).toList();
 
-  Widget _buttonBuilder(String widgetName) {
+    return Column(children: children);
+  }
+}
+
+final class _WidgetCategoryDropdownButton extends StatelessWidget {
+  final String _widgetName;
+
+  const _WidgetCategoryDropdownButton(this._widgetName);
+
+  @override
+  Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
+        borderRadius: BorderRadius.zero,
+        onTapUp: (_) => _onTapUp(context),
         textConfiguration: MyoroIconTextButtonTextConfiguration(
-          text: widgetName,
+          text: _widgetName,
         ),
       ),
     );
+  }
+
+  void _onTapUp(BuildContext context) {
+    // TODO
+    print('Hello');
   }
 }

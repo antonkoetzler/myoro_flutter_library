@@ -117,8 +117,8 @@ enum WidgetListingEnum {
   // Tooltips
   static const myoroTooltipTitle = 'MyoroTooltip';
 
-  /// Widget that will be displayed in [_WidgetViewer].
-  static Widget widgetViewerWidget(String widgetName) {
+  /// [WidgetShowcase] that will be displayed in [_WidgetViewer].
+  static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // App bars
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),

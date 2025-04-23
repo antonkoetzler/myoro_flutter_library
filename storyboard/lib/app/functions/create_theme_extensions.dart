@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
+organize this and storyboard folder structure
+
 List<ThemeExtension> createThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
   return [
-    ..._createAppThemeExtensions(textTheme),
+    ..._createCommonsThemeExtensions(textTheme),
+    ..._createAppThemeExtensions(),
     ..._createWidgetShowcaseThemeExtensions(colorScheme, textTheme),
   ];
 }
 
-List<ThemeExtension> _createAppThemeExtensions(TextTheme textTheme) {
-  return [MainScreenThemeExtension.builder(textTheme)];
+List<ThemeExtension> _createCommonsThemeExtensions(TextTheme textTheme) {
+  return [StoryboardScreenThemeExtension.builder(textTheme)];
+}
+
+List<ThemeExtension> _createAppThemeExtensions() {
+  return [const MainScreenThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createWidgetShowcaseThemeExtensions(

@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -9,7 +8,7 @@ typedef MyoroIconTextButtonConfigurationContentColorBuilder =
 /// Configuration model of [MyoroIconTextButton].
 ///
 /// TODO: Needs to be tested.
-class MyoroIconTextButtonConfiguration extends Equatable {
+class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
   static const invertDefaultValue = false;
   static const spacingDefaultValue = 10.0;
   static const paddingDefaultValue = EdgeInsets.all(10);
@@ -34,17 +33,19 @@ class MyoroIconTextButtonConfiguration extends Equatable {
   /// Text configuration of the [MyoroIconTextButton].
   final MyoroIconTextButtonTextConfiguration? textConfiguration;
 
-  /// Configuration of the base [MyoroButton].
-  final MyoroButtonConfiguration? buttonConfiguration;
-
   const MyoroIconTextButtonConfiguration({
+    super.cursor,
+    super.borderRadius,
+    super.backgroundColorBuilder,
+    super.borderBuilder,
+    super.onTapDown,
+    super.onTapUp,
     this.invert = invertDefaultValue,
     this.spacing = spacingDefaultValue,
     this.padding = paddingDefaultValue,
     this.contentColorBuilder,
     this.iconConfiguration,
     this.textConfiguration,
-    this.buttonConfiguration,
   }) : assert(
          !(iconConfiguration == null && textConfiguration == null),
          '[MyoroIconTextButtonConfiguration]: [iconConfiguration] '
@@ -52,6 +53,18 @@ class MyoroIconTextButtonConfiguration extends Equatable {
        );
 
   MyoroIconTextButtonConfiguration copyWith({
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder,
+    bool backgroundColorBuilderProvided = true,
+    MyoroButtonConfigurationBorderBuilder? borderBuilder,
+    bool borderBuilderProvided = true,
+    MyoroButtonConfigurationOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonConfigurationOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
     bool? invert,
     double? spacing,
     EdgeInsets? padding,
@@ -61,10 +74,19 @@ class MyoroIconTextButtonConfiguration extends Equatable {
     bool iconConfigurationProvided = true,
     MyoroIconTextButtonTextConfiguration? textConfiguration,
     bool textConfigurationProvided = true,
-    MyoroButtonConfiguration? buttonConfiguration,
-    bool buttonConfigurationProvided = true,
   }) {
     return MyoroIconTextButtonConfiguration(
+      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
+      borderRadius:
+          borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      backgroundColorBuilder:
+          backgroundColorBuilderProvided
+              ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
+              : null,
+      borderBuilder:
+          borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
       invert: invert ?? this.invert,
       spacing: spacing ?? this.spacing,
       padding: padding ?? this.padding,
@@ -80,35 +102,41 @@ class MyoroIconTextButtonConfiguration extends Equatable {
           textConfigurationProvided
               ? (textConfiguration ?? this.textConfiguration)
               : null,
-      buttonConfiguration:
-          buttonConfigurationProvided
-              ? (buttonConfiguration ?? this.buttonConfiguration)
-              : null,
     );
   }
 
   @override
   List<Object?> get props {
     return [
+      cursor,
+      borderRadius,
+      backgroundColorBuilder,
+      borderBuilder,
+      onTapDown,
+      onTapUp,
       invert,
       spacing,
       padding,
       contentColorBuilder,
       iconConfiguration,
       textConfiguration,
-      buttonConfiguration,
     ];
   }
 
   @override
   String toString() =>
       'MyoroIconTextButtonConfiguration(\n'
+      '  cursor: $cursor,\n'
+      '  borderRadius: $borderRadius,\n'
+      '  backgroundColorBuilder: $backgroundColorBuilder,\n'
+      '  borderBuilder: $borderBuilder,\n'
+      '  onTapDown: $onTapDown,\n'
+      '  onTapUp: $onTapUp,\n'
       '  invert: $invert,\n'
       '  spacing: $spacing,\n'
       '  padding: $padding,\n'
       '  contentColorBuilder: $contentColorBuilder,\n'
       '  iconConfiguration: $iconConfiguration,\n'
       '  textConfiguration: $textConfiguration,\n'
-      '  buttonConfiguration: $buttonConfiguration,\n'
       ');';
 }

@@ -107,6 +107,9 @@ final class _Button extends StatelessWidget {
   Color _getBackgroundColor(MyoroButtonThemeExtension themeExtension) {
     final MyoroButtonConfigurationBackgroundColorBuilder?
     backgroundColorBuilder = _configuration?.backgroundColorBuilder;
+    if (_configuration?.onTapProvided != true) {
+      return MyoroColorDesignSystem.transparent;
+    }
     if (backgroundColorBuilder != null) {
       return backgroundColorBuilder(_tapStatusEnum);
     }
