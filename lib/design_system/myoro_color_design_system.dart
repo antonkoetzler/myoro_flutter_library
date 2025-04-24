@@ -5,13 +5,16 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Principal colors. Default color scheme is a 2-color layout.
 const _primaryDarkModeColor = Color(0xFF181818);
-const _primaryLightModeColor = Color(0xFFEDE6D6);
+const _primaryLightModeColor = Color(0xFFEFEFEF);
 
 final class MyoroColorDesignSystem {
+  // TODO: Kill this function.
   static Color primary(BuildContext context) =>
       context.isDarkMode
           ? MyoroDarkModeColorDesignSystem.primary
           : MyoroLightModeColorDesignSystem.primary;
+
+  // TODO: Kill this function.
   static Color secondary(BuildContext context) =>
       context.isDarkMode
           ? MyoroDarkModeColorDesignSystem.secondary

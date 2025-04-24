@@ -4,6 +4,8 @@ import 'package:storyboard/storyboard.dart';
 /// Controller that stores all of the [Module]s of the application.
 ///
 /// Each module is a folder within the `./lib/modules` directory.
+///
+/// TODO: Needs to be tested.
 final class ModulesController {
   /// All of the modules.
   final Set<Module> modules = const {MainModule(), WidgetShowcaseModule()};

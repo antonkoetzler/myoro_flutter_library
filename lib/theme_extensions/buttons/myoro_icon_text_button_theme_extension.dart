@@ -10,35 +10,18 @@ class MyoroIconTextButtonThemeExtension
   /// [TextStyle] of [_Text].
   final TextStyle textStyle;
 
-  /// [Color] of [_Icon] and [_Text].
-  final Color contentColor;
-
-  const MyoroIconTextButtonThemeExtension({
-    required this.textStyle,
-    required this.contentColor,
-  });
+  const MyoroIconTextButtonThemeExtension({required this.textStyle});
 
   MyoroIconTextButtonThemeExtension.fake()
-    : textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      contentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )];
+    : textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
 
-  MyoroIconTextButtonThemeExtension.builder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) : textStyle = textTheme.bodyMedium!,
-      contentColor = colorScheme.onPrimary;
+  MyoroIconTextButtonThemeExtension.builder(TextTheme textTheme)
+    : textStyle = textTheme.bodyMedium!;
 
   @override
-  MyoroIconTextButtonThemeExtension copyWith({
-    TextStyle? textStyle,
-    Color? contentColor,
-  }) {
+  MyoroIconTextButtonThemeExtension copyWith({TextStyle? textStyle}) {
     return MyoroIconTextButtonThemeExtension(
       textStyle: textStyle ?? this.textStyle,
-      contentColor: contentColor ?? this.contentColor,
     );
   }
 
@@ -48,29 +31,24 @@ class MyoroIconTextButtonThemeExtension
     double t,
   ) {
     if (other is! MyoroIconTextButtonThemeExtension) return this;
-    return copyWith(
-      textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      contentColor: Color.lerp(contentColor, other.contentColor, t),
-    );
+    return copyWith(textStyle: TextStyle.lerp(textStyle, other.textStyle, t));
   }
 
   @override
   bool operator ==(Object other) {
     return other is MyoroIconTextButtonThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.textStyle == textStyle &&
-        other.contentColor == contentColor;
+        other.textStyle == textStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hash(textStyle, contentColor);
+    return Object.hashAll([textStyle]);
   }
 
   @override
   String toString() =>
       'MyoroIconTextButtonThemeExtension(\n'
       '  textStyle: $textStyle,\n'
-      '  contentColor: $contentColor,\n'
       ');';
 }

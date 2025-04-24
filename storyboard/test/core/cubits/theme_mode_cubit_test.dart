@@ -6,7 +6,7 @@ import 'package:kiwi/kiwi.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:storyboard/storyboard.dart';
 
-import '../../test_exports.dart';
+import '../../exports.dart';
 
 /// Unit test of [ThemeModeCubit].
 void main() {

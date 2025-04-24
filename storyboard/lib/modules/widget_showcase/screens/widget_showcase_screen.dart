@@ -10,6 +10,8 @@ final class WidgetShowcaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const StoryboardScreen(body: Text('Hello, World!'));
+    return StoryboardScreen(
+      body: WidgetListingEnum.getWidgetShowcase(_widgetName),
+    );
   }
 }

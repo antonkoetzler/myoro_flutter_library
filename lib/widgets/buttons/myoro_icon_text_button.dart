@@ -84,15 +84,15 @@ final class _Icon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
-
     return Icon(
       _iconConfiguration.icon,
       size: _iconConfiguration.size,
       color:
           _contentColorBuilder?.call(_tapStatusEnum) ??
-          themeExtension.contentColor,
+          MyoroButtonVariantEnum.primary.contentColorBuilder(
+            context,
+            _tapStatusEnum,
+          ),
     );
   }
 }
@@ -122,7 +122,10 @@ final class _Text extends StatelessWidget {
         textAlign: _textConfiguration.alignment,
         style: (_textConfiguration.style ?? themeExtension.textStyle).withColor(
           _contentColorBuilder?.call(_tapStatusEnum) ??
-              themeExtension.contentColor,
+              MyoroButtonVariantEnum.primary.contentColorBuilder(
+                context,
+                _tapStatusEnum,
+              ),
         ),
       ),
     );

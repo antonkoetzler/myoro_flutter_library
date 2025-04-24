@@ -3,36 +3,36 @@ import 'package:storyboard/storyboard.dart';
 
 /// Enum for all of the widgets we showcase in the storyboard.
 enum WidgetListingEnum {
-  appBars('App bars', [myoroAppBarTitle]),
-  buttons('Buttons', [myoroHoverButtonTitle, myoroIconTextHoverButtonTitle]),
-  cards('Cards', [myoroCardTitle]),
-  carousels('Carousels', [myoroCarouselTitle]),
-  checkboxes('Checkboxes', [myoroCheckboxTitle, myoroGroupCheckboxTitle]),
-  dividers('Dividers', [myoroBasicDividerTitle, myoroResizeDividerTitle]),
-  drawers('Drawers', [myoroDrawerTitle]),
-  dropdowns('Dropdowns', [myoroSingularDropdownTitle, myoroMultiDropdownTitle]),
-  forms('Forms', [myoroFormTitle]),
-  graphs('Graphs', [myoroBarGraphTitle, myoroPieGraphTitle]),
-  inputs('Inputs', [
+  appBars('App bars', {myoroAppBarTitle}),
+  buttons('Buttons', {myoroHoverButtonTitle, myoroIconTextHoverButtonTitle}),
+  cards('Cards', {myoroCardTitle}),
+  carousels('Carousels', {myoroCarouselTitle}),
+  checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
+  dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle}),
+  drawers('Drawers', {myoroDrawerTitle}),
+  dropdowns('Dropdowns', {myoroSingularDropdownTitle, myoroMultiDropdownTitle}),
+  forms('Forms', {myoroFormTitle}),
+  graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
+  inputs('Inputs', {
     myoroDatePickerInputTitle,
     myoroInputTitle,
     myoroSearchInputTitle,
-  ]),
-  layoutBuilders('Layout builders', [myoroLayoutBuilderTitle]),
-  loaders('Loaders', [myoroCircularLoaderTitle]),
-  materialApps('Material apps', [myoroMaterialAppTitle]),
-  menus('Menus', [myoroMenuTitle]),
-  modals('Modals', [myoroModalTitle, myoroDialogModalTitle]),
-  radios('Radios', [myoroRadioTitle, myoroGroupRadioTitle]),
-  resolvers('Resolvers', [myoroResolverTitle]),
-  screens('Screens', [myoroScreenTitle]),
-  sliders('Sliders', [myoroSliderTitle]),
-  snackBars('Snack bars', [myoroSnackBarTitle]),
-  tables('Tables', [myoroTableTitle]),
-  tooltips('Tooltips', [myoroTooltipTitle]);
+  }),
+  layoutBuilders('Layout builders', {myoroLayoutBuilderTitle}),
+  loaders('Loaders', {myoroCircularLoaderTitle}),
+  materialApps('Material apps', {myoroMaterialAppTitle}),
+  menus('Menus', {myoroMenuTitle}),
+  modals('Modals', {myoroModalTitle, myoroDialogModalTitle}),
+  radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle}),
+  resolvers('Resolvers', {myoroResolverTitle}),
+  screens('Screens', {myoroScreenTitle}),
+  sliders('Sliders', {myoroSliderTitle}),
+  snackBars('Snack bars', {myoroSnackBarTitle}),
+  tables('Tables', {myoroTableTitle}),
+  tooltips('Tooltips', {myoroTooltipTitle});
 
   final String categoryName;
-  final List<String> widgetNames;
+  final Set<String> widgetNames;
 
   const WidgetListingEnum(this.categoryName, this.widgetNames);
 

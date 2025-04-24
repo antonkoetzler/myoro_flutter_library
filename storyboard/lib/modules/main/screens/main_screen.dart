@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -52,14 +53,10 @@ final class _WidgetCategoryDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final children =
-        _widgetListingEnum.widgetNames.map<_WidgetCategoryDropdownButton>((
-          String widgetName,
-        ) {
-          return _WidgetCategoryDropdownButton(widgetName);
-        }).toList();
-
-    return Column(children: children);
+    final children = _widgetListingEnum.widgetNames.map((String widgetName) {
+      return _WidgetCategoryDropdownButton(widgetName);
+    });
+    return Column(children: children.toList());
   }
 }
 
@@ -70,19 +67,23 @@ final class _WidgetCategoryDropdownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        borderRadius: BorderRadius.zero,
-        onTapUp: (_) => _onTapUp(context),
-        textConfiguration: MyoroIconTextButtonTextConfiguration(
-          text: _widgetName,
+    final themeExtension =
+        context.resolveThemeExtension<MainScreenThemeExtension>();
+
+    return Padding(
+      padding: themeExtension.widgetCategoryDropdownButtonPadding,
+      child: MyoroIconTextButton(
+        configuration: MyoroIconTextButtonConfiguration(
+          onTapUp: (_) => _onTapUp(context),
+          textConfiguration: MyoroIconTextButtonTextConfiguration(
+            text: _widgetName,
+          ),
         ),
       ),
     );
   }
 
   void _onTapUp(BuildContext context) {
-    // TODO
-    print('Hello');
+    context.push('/widget_showcase/$_widgetName');
   }
 }

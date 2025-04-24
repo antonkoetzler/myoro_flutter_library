@@ -25,6 +25,13 @@ extension MyoroBuildContextExtension on BuildContext {
     return TextTheme.of(this);
   }
 
+  /// [NavigatorState] getter.
+  ///
+  /// TODO: Needs to be tested.
+  NavigatorState get navigator {
+    return Navigator.of(this);
+  }
+
   /// Getter for an [OverlayState] of an [Overlay]
   OverlayState get overlay {
     return Overlay.of(this);

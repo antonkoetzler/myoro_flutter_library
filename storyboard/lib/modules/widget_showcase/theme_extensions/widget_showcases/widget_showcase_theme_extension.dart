@@ -26,6 +26,15 @@ final class WidgetShowcaseThemeExtension
   /// Alignment of [_WidgetWrapper].
   final Alignment widgetWrapperAlignment;
 
+  //// [MyoroIconTextButtonIconConfiguration.icon] of [_PreviousPageButton].
+  final IconData previousPageButtonIcon;
+
+  /// [MyoroIconTextButtonIconConfiguration.padding] of [_PreviousPageButton].
+  final EdgeInsets previousPageButtonPadding;
+
+  /// Offset of [_PreviousPageButton]'s [Positioned].
+  final double previousPageButtonOffset;
+
   /// [BoxConstraints.maxWidth] of [_WidgetOptions].
   final double widgetOptionsMaxWidth;
 
@@ -42,6 +51,9 @@ final class WidgetShowcaseThemeExtension
     required this.widgetWrapperBorderRadius,
     required this.widgetWrapperBorder,
     required this.widgetWrapperAlignment,
+    required this.previousPageButtonIcon,
+    required this.previousPageButtonPadding,
+    required this.previousPageButtonOffset,
     required this.widgetOptionsMaxWidth,
     required this.widgetOptionsPadding,
     required this.widgetOptionsDividerPadding,
@@ -78,13 +90,21 @@ final class WidgetShowcaseThemeExtension
             Alignment.bottomRight,
             Alignment.bottomCenter,
           ][faker.randomGenerator.integer(9)],
+      previousPageButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(
+            kMyoroTestIcons.length,
+          )],
+      previousPageButtonPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(scale: 50),
+      ),
+      previousPageButtonOffset = faker.randomGenerator.decimal(scale: 50),
       widgetOptionsMaxWidth = faker.randomGenerator.decimal(min: 200),
       widgetOptionsPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       widgetOptionsDividerPadding = EdgeInsets.all(
         faker.randomGenerator.decimal(),
       );
 
-  WidgetShowcaseThemeExtension.builder()
+  WidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : widgetWrapperBackgroundColor = MyoroColorDesignSystem.attention
           .withValues(alpha: 0.1),
       widgetWrapperPadding = const EdgeInsets.all(20),
@@ -95,6 +115,9 @@ final class WidgetShowcaseThemeExtension
         color: MyoroColorDesignSystem.attention,
       ),
       widgetWrapperAlignment = Alignment.center,
+      previousPageButtonIcon = Icons.keyboard_arrow_left,
+      previousPageButtonPadding = const EdgeInsets.all(3),
+      previousPageButtonOffset = 15,
       widgetOptionsMaxWidth = 500,
       widgetOptionsPadding = const EdgeInsets.symmetric(
         vertical: 15,
@@ -113,6 +136,9 @@ final class WidgetShowcaseThemeExtension
     BorderRadius? widgetWrapperBorderRadius,
     Border? widgetWrapperBorder,
     Alignment? widgetWrapperAlignment,
+    IconData? previousPageButtonIcon,
+    EdgeInsets? previousPageButtonPadding,
+    double? previousPageButtonOffset,
     double? widgetOptionsMaxWidth,
     EdgeInsets? widgetOptionsPadding,
     EdgeInsets? widgetOptionsDividerPadding,
@@ -128,6 +154,12 @@ final class WidgetShowcaseThemeExtension
       widgetWrapperBorder: widgetWrapperBorder ?? this.widgetWrapperBorder,
       widgetWrapperAlignment:
           widgetWrapperAlignment ?? this.widgetWrapperAlignment,
+      previousPageButtonIcon:
+          previousPageButtonIcon ?? this.previousPageButtonIcon,
+      previousPageButtonPadding:
+          previousPageButtonPadding ?? this.previousPageButtonPadding,
+      previousPageButtonOffset:
+          previousPageButtonOffset ?? this.previousPageButtonOffset,
       widgetOptionsMaxWidth:
           widgetOptionsMaxWidth ?? this.widgetOptionsMaxWidth,
       widgetOptionsPadding: widgetOptionsPadding ?? this.widgetOptionsPadding,
@@ -173,6 +205,21 @@ final class WidgetShowcaseThemeExtension
         other.widgetWrapperAlignment,
         t,
       ),
+      previousPageButtonIcon: myoroLerp(
+        previousPageButtonIcon,
+        other.previousPageButtonIcon,
+        t,
+      ),
+      previousPageButtonPadding: EdgeInsets.lerp(
+        previousPageButtonPadding,
+        other.previousPageButtonPadding,
+        t,
+      ),
+      previousPageButtonOffset: lerpDouble(
+        previousPageButtonOffset,
+        other.previousPageButtonOffset,
+        t,
+      ),
       widgetOptionsMaxWidth: lerpDouble(
         widgetOptionsMaxWidth,
         other.widgetOptionsMaxWidth,
@@ -201,6 +248,9 @@ final class WidgetShowcaseThemeExtension
         other.widgetWrapperBorderRadius == widgetWrapperBorderRadius &&
         other.widgetWrapperBorder == widgetWrapperBorder &&
         other.widgetWrapperAlignment == widgetWrapperAlignment &&
+        other.previousPageButtonIcon == previousPageButtonIcon &&
+        other.previousPageButtonPadding == previousPageButtonPadding &&
+        other.previousPageButtonOffset == previousPageButtonOffset &&
         other.widgetOptionsMaxWidth == widgetOptionsMaxWidth &&
         other.widgetOptionsPadding == widgetOptionsPadding &&
         other.widgetOptionsDividerPadding == widgetOptionsDividerPadding;
@@ -215,6 +265,9 @@ final class WidgetShowcaseThemeExtension
       widgetWrapperBorderRadius,
       widgetWrapperBorder,
       widgetWrapperAlignment,
+      previousPageButtonIcon,
+      previousPageButtonPadding,
+      previousPageButtonOffset,
       widgetOptionsMaxWidth,
       widgetOptionsPadding,
       widgetOptionsDividerPadding,
@@ -230,6 +283,9 @@ final class WidgetShowcaseThemeExtension
       '  widgetWrapperBorderRadius: $widgetWrapperBorderRadius,\n'
       '  widgetWrapperBorder: $widgetWrapperBorder,\n'
       '  widgetWrapperAlignment: $widgetWrapperAlignment,\n'
+      '  previousPageButtonIcon: $previousPageButtonIcon,\n'
+      '  previousPageButtonPadding: $previousPageButtonPadding,\n'
+      '  previousPageButtonOffset: $previousPageButtonOffset,\n'
       '  widgetOptionsMaxWidth: $widgetOptionsMaxWidth,\n'
       '  widgetOptionsPadding: $widgetOptionsPadding,\n'
       '  widgetOptionsDividerPadding: $widgetOptionsDividerPadding,\n'

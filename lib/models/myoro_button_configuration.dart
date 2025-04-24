@@ -10,7 +10,7 @@ typedef MyoroButtonConfigurationBackgroundColorBuilder =
 
 /// Builder of the [MyoroButton]'s border.
 typedef MyoroButtonConfigurationBorderBuilder =
-    Border Function(MyoroTapStatusEnum tapStatusEnum);
+    BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Function executed when the [MyoroButton] is tapped.
 typedef MyoroButtonConfigurationOnTapDown =

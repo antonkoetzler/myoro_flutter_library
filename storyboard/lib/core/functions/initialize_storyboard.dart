@@ -7,6 +7,8 @@ import 'package:window_manager/window_manager.dart';
 final _kiwiContainer = KiwiContainer();
 
 /// Function to initialize Storyboard.
+///
+/// TODO: Needs to be tested.
 Future<void> initializeStoryboard() async {
   _initializeWindowManager();
   await _initializeKiwi();

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [Module] model of the main module.
+///
+/// TODO: Needs to be tested.
 final class MainModule implements Module {
   const MainModule();
 

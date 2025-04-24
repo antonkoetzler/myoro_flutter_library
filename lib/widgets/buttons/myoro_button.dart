@@ -91,20 +91,17 @@ final class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroButtonThemeExtension>();
-
     return Container(
       decoration: BoxDecoration(
-        color: _getBackgroundColor(themeExtension),
-        border: _getBorder(themeExtension),
-        borderRadius: _getBorderRadius(themeExtension),
+        color: _getBackgroundColor(context),
+        border: _border,
+        borderRadius: _getBorderRadius(context),
       ),
       child: _builder(context, _tapStatusEnum),
     );
   }
 
-  Color _getBackgroundColor(MyoroButtonThemeExtension themeExtension) {
+  Color _getBackgroundColor(BuildContext context) {
     final MyoroButtonConfigurationBackgroundColorBuilder?
     backgroundColorBuilder = _configuration?.backgroundColorBuilder;
     if (_configuration?.onTapProvided != true) {
@@ -113,18 +110,19 @@ final class _Button extends StatelessWidget {
     if (backgroundColorBuilder != null) {
       return backgroundColorBuilder(_tapStatusEnum);
     }
-    return switch (_tapStatusEnum) {
-      MyoroTapStatusEnum.idle => themeExtension.idleBackgroundColor,
-      MyoroTapStatusEnum.hover => themeExtension.hoverBackgroundColor,
-      MyoroTapStatusEnum.tap => themeExtension.tapBackgroundColor,
-    };
+    return MyoroButtonVariantEnum.primary.backgroundColorBuilder(
+      context,
+      _tapStatusEnum,
+    );
   }
 
-  BoxBorder? _getBorder(MyoroButtonThemeExtension themeExtension) {
+  BorderRadius _getBorderRadius(BuildContext context) {
+    final buttonThemeExtension =
+        context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    return _configuration?.borderRadius ?? buttonThemeExtension.borderRadius;
+  }
+
+  BoxBorder? get _border {
     return _configuration?.borderBuilder?.call(_tapStatusEnum);
-  }
-
-  BorderRadius _getBorderRadius(MyoroButtonThemeExtension themeExtension) {
-    return _configuration?.borderRadius ?? themeExtension.borderRadius;
   }
 }

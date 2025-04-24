@@ -158,8 +158,8 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
   Widget build(BuildContext context) {
     final accordionThemeExtension =
         context.resolveThemeExtension<MyoroAccordionThemeExtension>();
-    final buttonThemeExtension =
-        context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final buttonVariantThemeExtension =
+        context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
 
     return ValueListenableBuilder(
       valueListenable: _notifier,
@@ -174,7 +174,9 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color:
-                  isExpanded ? _getBackgroundColor(buttonThemeExtension) : null,
+                  isExpanded
+                      ? _getBackgroundColor(buttonVariantThemeExtension)
+                      : null,
               borderRadius:
                   accordionThemeExtension.itemTitleButtonArrowBorderRadius,
             ),
@@ -189,10 +191,14 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
     );
   }
 
-  Color _getBackgroundColor(MyoroButtonThemeExtension buttonThemeExtension) {
+  Color _getBackgroundColor(
+    MyoroButtonVariantThemeExtension buttonVariantThemeExtension,
+  ) {
     return switch (_tapStatusEnum) {
-      MyoroTapStatusEnum.hover => buttonThemeExtension.hoverBackgroundColor,
-      MyoroTapStatusEnum.tap => buttonThemeExtension.tapBackgroundColor,
+      MyoroTapStatusEnum.hover =>
+        buttonVariantThemeExtension.primaryHoverBackgroundColor,
+      MyoroTapStatusEnum.tap =>
+        buttonVariantThemeExtension.primaryTapBackgroundColor,
       _ => Colors.transparent,
     };
   }
