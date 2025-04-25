@@ -71,7 +71,9 @@ final class _Widget extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuItem.fake().copyWith(text: item);
+    return MyoroMenuItem.fake().copyWith(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
+    );
   }
 
   String _selectedItemBuilder(String item) {

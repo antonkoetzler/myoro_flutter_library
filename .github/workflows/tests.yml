@@ -31,7 +31,7 @@ jobs:
         run: dart fix --dry-run .
 
       - name: Dart format check (fails if not formatted)
-        run: dart format --line-length 80 -o none --set-exit-if-changed .
+        run: dart format --line-length 100 -o none --set-exit-if-changed .
 
       - name: Download MFL dependencies
         run: |

@@ -86,10 +86,14 @@ final class _CloseButton extends StatelessWidget {
     final themeExtension =
         context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
-    return MyoroIconTextHoverButton(
-      icon: themeExtension.closeButtonIcon,
-      iconSize: themeExtension.closeButtonIconSize,
-      onPressed: () => context.hideSnackBar(),
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.closeButtonIcon,
+          size: themeExtension.closeButtonIconSize,
+        ),
+        onTapUp: (_) => context.hideSnackBar(),
+      ),
     );
   }
 }

@@ -74,9 +74,13 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
             style: _themeExtension.themeModeOptionTextStyle,
           ),
           const Spacer(),
-          MyoroIconTextHoverButton(
-            icon: _themeExtension.appBarMenuButtonIcon,
-            onPressed: () {},
+          MyoroIconTextButton(
+            configuration: MyoroIconTextButtonConfiguration(
+              iconConfiguration: MyoroIconTextButtonIconConfiguration(
+                icon: _themeExtension.appBarMenuButtonIcon,
+              ),
+              onTapUp: (_) {},
+            ),
           ),
         ],
       ),
@@ -100,23 +104,23 @@ final class _ThemeModeOption extends StatelessWidget {
       MyoroMaterialAppWidgetShowcaseState
     >(
       builder: (_, MyoroMaterialAppWidgetShowcaseState state) {
-        final isDarkMode = state.themeMode == ThemeMode.dark;
+        final bool isDarkMode = state.themeMode == ThemeMode.dark;
+        final IconData buttonIcon =
+            isDarkMode
+                ? themeExtension.themeModeOptionButtonDarkModeIcon
+                : themeExtension.themeModeOptionButtonLightModeIcon;
 
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            MyoroIconTextHoverButton(
-              icon:
-                  isDarkMode
-                      ? themeExtension.themeModeOptionButtonDarkModeIcon
-                      : themeExtension.themeModeOptionButtonLightModeIcon,
-              configuration: MyoroHoverButtonConfiguration(
-                bordered: themeExtension.themeModeOptionButtonBordered,
+            MyoroIconTextButton(
+              configuration: MyoroIconTextButtonConfiguration(
+                iconConfiguration: MyoroIconTextButtonIconConfiguration(
+                  icon: buttonIcon,
+                ),
+                borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+                onTapUp: (_) => _onTapUp(context),
               ),
-              onPressed:
-                  () => context
-                      .resolveBloc<MyoroMaterialAppWidgetShowcaseBloc>()
-                      .add(const ToggleThemeModeEvent()),
             ),
             SizedBox(width: themeExtension.themeModeOptionSpacing),
             Flexible(
@@ -128,6 +132,12 @@ final class _ThemeModeOption extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+
+  void _onTapUp(BuildContext context) {
+    context.resolveBloc<MyoroMaterialAppWidgetShowcaseBloc>().add(
+      const ToggleThemeModeEvent(),
     );
   }
 }

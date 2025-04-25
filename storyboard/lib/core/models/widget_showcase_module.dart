@@ -15,7 +15,6 @@ final class WidgetShowcaseModule implements Module {
     return [
       WidgetShowcaseThemeExtension.builder(colorScheme),
       ..._createAppBarWidgetShowcaseThemeExtensions(textTheme),
-      ..._createButtonWidgetShowcaseThemeExtensions(colorScheme, textTheme),
       ..._createCardWidgetShowcaseThemeExtensions(textTheme),
       ..._createCarouselWidgetShowcaseThemeExtensions(),
       ..._createCheckboxWidgetShowcaseThemeExtensions(),
@@ -37,7 +36,7 @@ final class WidgetShowcaseModule implements Module {
       ..._createResolverWidgetShowcaseThemeExtensions(),
       ..._createScreenWidgetShowcaseThemeExtensions(textTheme),
       ..._createSliderWidgetShowcaseThemeExtensions(colorScheme),
-      ..._createSnackBarWidgetShowcaseThemeExtensions(),
+      ..._createSnackBarWidgetShowcaseThemeExtensions(colorScheme),
       ..._createTableWidgetShowcaseThemeExtensions(),
       ..._createTooltipWidgetShowcaseThemeExtensions(textTheme),
     ];
@@ -47,18 +46,6 @@ final class WidgetShowcaseModule implements Module {
     TextTheme textTheme,
   ) {
     return [MyoroAppBarWidgetShowcaseThemeExtension.builder(textTheme)];
-  }
-
-  List<ThemeExtension> _createButtonWidgetShowcaseThemeExtensions(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
-    return [
-      MyoroHoverButtonWidgetShowcaseThemeExtension.builder(
-        colorScheme,
-        textTheme,
-      ),
-    ];
   }
 
   List<ThemeExtension> _createCardWidgetShowcaseThemeExtensions(
@@ -178,8 +165,10 @@ final class WidgetShowcaseModule implements Module {
     return [MyoroSliderWidgetShowcaseThemeExtension.builder(colorScheme)];
   }
 
-  List<ThemeExtension> _createSnackBarWidgetShowcaseThemeExtensions() {
-    return const [MyoroSnackBarWidgetShowcaseThemeExtension.builder()];
+  List<ThemeExtension> _createSnackBarWidgetShowcaseThemeExtensions(
+    ColorScheme colorScheme,
+  ) {
+    return [MyoroSnackBarWidgetShowcaseThemeExtension.builder(colorScheme)];
   }
 
   List<ThemeExtension> _createTableWidgetShowcaseThemeExtensions() {

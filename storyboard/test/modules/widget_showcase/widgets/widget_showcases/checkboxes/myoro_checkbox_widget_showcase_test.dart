@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroCheckboxWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroCheckboxWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroCheckboxWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -27,10 +23,7 @@ void main() {
 
     // [_LabelTextStyleOption].
     expect(
-      find.widgetWithText(
-        MyoroSingularDropdown<TextStyle>,
-        '[MyoroCheckbox.labelTextStyle]',
-      ),
+      find.widgetWithText(MyoroSingularDropdown<TextStyle>, '[MyoroCheckbox.labelTextStyle]'),
       findsOneWidget,
     );
   });

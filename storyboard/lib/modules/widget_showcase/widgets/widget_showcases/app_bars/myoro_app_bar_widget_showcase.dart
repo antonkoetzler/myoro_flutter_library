@@ -103,15 +103,19 @@ final class _MockMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension =
+        context
+            .resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>();
+    final IconData mockMenuButtonIcon = themeExtension.mockMenuButtonIcon;
+
     return IntrinsicWidth(
-      child: MyoroIconTextHoverButton(
-        icon:
-            context
-                .resolveThemeExtension<
-                  MyoroAppBarWidgetShowcaseThemeExtension
-                >()
-                .mockMenuButtonIcon,
-        onPressed: () {},
+      child: MyoroIconTextButton(
+        configuration: MyoroIconTextButtonConfiguration(
+          iconConfiguration: MyoroIconTextButtonIconConfiguration(
+            icon: mockMenuButtonIcon,
+          ),
+          onTapUp: (_) {},
+        ),
       ),
     );
   }

@@ -107,10 +107,12 @@ void main() {
       expect(
         find.byWidgetPredicate(
           (Widget w) =>
-              w is MyoroIconTextHoverButton &&
-              w.icon == themeExtension.closeButtonIcon &&
-              w.iconSize == themeExtension.closeButtonIconSize &&
-              w.onPressed != null,
+              w is MyoroIconTextButton &&
+              w.configuration.iconConfiguration?.icon ==
+                  themeExtension.closeButtonIcon &&
+              w.configuration.iconConfiguration?.size ==
+                  themeExtension.closeButtonIconSize &&
+              w.configuration.onTapUp != null,
         ),
         findsOneWidget,
       );

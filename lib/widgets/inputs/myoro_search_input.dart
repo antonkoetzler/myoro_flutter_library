@@ -129,37 +129,33 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 }
 
 final class _SearchButton extends StatelessWidget {
-  final MyoroRequestEnum status;
-  final MyoroFormController formController;
+  final MyoroRequestEnum _status;
+  final MyoroFormController _formController;
 
-  const _SearchButton(this.status, this.formController);
+  const _SearchButton(this._status, this._formController);
 
   @override
   Widget build(BuildContext context) {
+    return MyoroButton(
+      configuration: MyoroButtonConfiguration(
+        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        onTapUp: _onTapUp,
+      ),
+      builder: _builder,
+    );
+  }
+
+  void _onTapUp(_) {
+    _status.isLoading ? {} : _formController.finish();
+  }
+
+  Widget _builder(BuildContext context, __) {
     final themeExtension =
         context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
-    return MyoroHoverButton(
-      configuration: MyoroHoverButtonConfiguration(
-        bordered: themeExtension.searchButtonBordered,
-      ),
-      onPressed: () => status.isLoading ? {} : formController.finish(),
-      builder: (bool hovered, _, Color onPrimaryColor) {
-        final color =
-            hovered ? themeExtension.searchButtonHoverColor : onPrimaryColor;
-
-        return Padding(
-          padding: EdgeInsets.all(status.isLoading ? 9.5 : 7.5),
-          child:
-              status.isLoading
-                  ? MyoroCircularLoader(
-                    color: color,
-                    size: themeExtension.searchButtonLoadingSize,
-                  )
-                  : Icon(themeExtension.searchButtonIcon, color: color),
-        );
-      },
-    );
+    return _status.isLoading
+        ? MyoroCircularLoader(size: themeExtension.searchButtonLoadingSize)
+        : Icon(themeExtension.searchButtonIcon);
   }
 }
 

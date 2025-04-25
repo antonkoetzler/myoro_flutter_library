@@ -64,7 +64,7 @@ class _WidgetState extends State<_Widget> {
           children: [
             _Input(_controller),
             SizedBox(height: themeExtension.widgetSpacing),
-            _SubmitButton(() => controller.finish()),
+            _SubmitButton(controller.finish),
             ValueListenableBuilder(
               valueListenable: _formResultTextNotifier,
               builder: (_, _FormResult? formResult, __) {
@@ -108,22 +108,20 @@ final class _Input extends StatelessWidget {
 }
 
 final class _SubmitButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback _onTapUp;
 
-  const _SubmitButton(this.onPressed);
+  const _SubmitButton(this._onTapUp);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
-
-    return MyoroIconTextHoverButton(
-      configuration: MyoroHoverButtonConfiguration(
-        bordered: themeExtension.submitButtonBordered,
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: const MyoroIconTextButtonTextConfiguration(
+          text: 'Click me!',
+        ),
+        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        onTapUp: (_) => _onTapUp(),
       ),
-      text: 'Click me!',
-      mainAxisAlignment: themeExtension.submitButtonMainAxisAlignment,
-      onPressed: onPressed,
     );
   }
 }

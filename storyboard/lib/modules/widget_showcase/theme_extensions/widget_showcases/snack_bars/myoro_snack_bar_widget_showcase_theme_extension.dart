@@ -9,40 +9,32 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension
   /// [MyoroInputStyleEnum] for inputs.
   final MyoroInputStyleEnum inputStyle;
 
-  /// [MyoroHoverButtonConfiguration.bordered] of [_Widget].
-  final bool widgetBordered;
-
   /// [IconData] of [_Child].
   final IconData childIcon;
 
   const MyoroSnackBarWidgetShowcaseThemeExtension({
     required this.inputStyle,
-    required this.widgetBordered,
     required this.childIcon,
   });
 
   MyoroSnackBarWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
-      widgetBordered = faker.randomGenerator.boolean(),
       childIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
           )];
 
-  const MyoroSnackBarWidgetShowcaseThemeExtension.builder()
+  MyoroSnackBarWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : inputStyle = MyoroInputStyleEnum.outlined,
-      widgetBordered = true,
       childIcon = Icons.flood;
 
   @override
   MyoroSnackBarWidgetShowcaseThemeExtension copyWith({
     MyoroInputStyleEnum? inputStyle,
-    bool? widgetBordered,
     IconData? childIcon,
   }) {
     return MyoroSnackBarWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
-      widgetBordered: widgetBordered ?? this.widgetBordered,
       childIcon: childIcon ?? this.childIcon,
     );
   }
@@ -55,7 +47,6 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension
     if (other is! MyoroSnackBarWidgetShowcaseThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      widgetBordered: myoroLerp(widgetBordered, other.widgetBordered, t),
       childIcon: myoroLerp(childIcon, other.childIcon, t),
     );
   }
@@ -65,20 +56,18 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension
     return other is MyoroSnackBarWidgetShowcaseThemeExtension &&
         other.runtimeType == runtimeType &&
         other.inputStyle == inputStyle &&
-        other.widgetBordered == widgetBordered &&
         other.childIcon == childIcon;
   }
 
   @override
   int get hashCode {
-    return Object.hash(inputStyle, widgetBordered, childIcon);
+    return Object.hash(inputStyle, childIcon);
   }
 
   @override
   String toString() =>
       'MyoroSnackBarWidgetShowcaseThemeExtension(\n'
       '  inputStyle: $inputStyle,\n'
-      '  widgetBordered: $widgetBordered,\n'
       '  childIcon: $childIcon,\n'
       ');';
 }

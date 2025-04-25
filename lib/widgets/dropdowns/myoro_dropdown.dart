@@ -458,9 +458,9 @@ final class _Menu<T> extends StatelessWidget {
         _configuration.menuConfiguration.itemBuilder;
     final MyoroMenuItem menuItem = menuItemBuilder.call(item);
     return menuItem.copyWith(
-      isHovered: state.selectedItems.contains(item),
-      onPressed: () {
-        menuItem.onPressed?.call();
+      isSelected: state.selectedItems.contains(item),
+      onTapUp: (TapUpDetails details) {
+        menuItem.onTapUp?.call(details);
         _configuration.controller.toggleItem(item);
       },
     );

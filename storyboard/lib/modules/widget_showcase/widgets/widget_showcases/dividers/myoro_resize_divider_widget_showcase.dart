@@ -97,7 +97,11 @@ final class _DirectionOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(Axis direction) {
-    return MyoroMenuItem(text: _getDirectionName(direction));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _getDirectionName(direction),
+      ),
+    );
   }
 
   String _getDirectionName(Axis direction) {

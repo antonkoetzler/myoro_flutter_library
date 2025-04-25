@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroInputWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroInputWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroInputWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -40,56 +36,44 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroSingularDropdown<TextAlign> &&
-            w.configuration.label == '[textAlign]',
+            w is MyoroSingularDropdown<TextAlign> && w.configuration.label == '[textAlign]',
       ),
       findsOneWidget,
     );
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroSingularDropdown<TextStyle> &&
-            w.configuration.label == '[inputTextStyle]',
+            w is MyoroSingularDropdown<TextStyle> && w.configuration.label == '[inputTextStyle]',
       ),
       findsOneWidget,
     );
     expect(
+      find.byWidgetPredicate((Widget w) => w is MyoroInput && w.configuration.label == '[label]'),
+      findsOneWidget,
+    );
+    expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroInput && w.configuration.label == '[label]',
+        (Widget w) => w is MyoroInput && w.configuration.label == '[placeholder]',
       ),
       findsOneWidget,
     );
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroInput && w.configuration.label == '[placeholder]',
+            w is MyoroSingularDropdown<TextStyle> && w.configuration.label == '[labelTextStyle]',
       ),
       findsOneWidget,
     );
     expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroSingularDropdown<TextStyle> &&
-            w.configuration.label == '[labelTextStyle]',
-      ),
+      find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[suffix] enabled?'),
       findsOneWidget,
     );
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[suffix] enabled?',
-      ),
+      find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[enabled]'),
       findsOneWidget,
     );
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[enabled]',
-      ),
-      findsOneWidget,
-    );
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[readOnly]',
-      ),
+      find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[readOnly]'),
       findsOneWidget,
     );
     expect(
@@ -100,8 +84,7 @@ void main() {
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroCheckbox && w.label == '[checkboxOnChanged] not null?',
+        (Widget w) => w is MyoroCheckbox && w.label == '[checkboxOnChanged] not null?',
       ),
       findsOneWidget,
     );

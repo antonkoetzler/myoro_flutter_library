@@ -90,7 +90,11 @@ final class _DirectionOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(Axis direction) {
-    return MyoroMenuItem(text: _getDirectionName(direction));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _getDirectionName(direction),
+      ),
+    );
   }
 
   String _getDirectionName(Axis direction) {
@@ -165,17 +169,12 @@ final class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextHoverButton(
-      text: _text,
-      configuration: MyoroHoverButtonConfiguration(
-        bordered:
-            context
-                .resolveThemeExtension<
-                  MyoroBasicDividerWidgetShowcaseThemeExtension
-                >()
-                .buttonBordered,
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroIconTextButtonTextConfiguration(text: _text),
+        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        onTapUp: (_) {},
       ),
-      onPressed: () {},
     );
   }
 }

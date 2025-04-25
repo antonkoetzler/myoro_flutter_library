@@ -97,7 +97,11 @@ final class _TitleTextStyleOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder((String, TextStyle) textStyle) {
-    return MyoroMenuItem(text: textStyle.$1);
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: textStyle.$1,
+      ),
+    );
   }
 
   void _onChanged(BuildContext context, (String, TextStyle)? textStyle) {

@@ -28,7 +28,22 @@ final class MyoroSnackBarWidgetShowcase extends StatelessWidget {
 final class _Widget extends StatelessWidget {
   const _Widget();
 
-  void _onPressed(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
+    return IntrinsicWidth(
+      child: MyoroIconTextButton(
+        configuration: MyoroIconTextButtonConfiguration(
+          textConfiguration: const MyoroIconTextButtonTextConfiguration(
+            text: 'Click to launch the snack bar.',
+          ),
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          onTapUp: (_) => _onTapUp(context),
+        ),
+      ),
+    );
+  }
+
+  void _onTapUp(BuildContext context) {
     final state = context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>().state;
 
     context.showSnackBar(
@@ -40,26 +55,6 @@ final class _Widget extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  Widget build(BuildContext context) {
-    final configuration = MyoroHoverButtonConfiguration(
-      bordered:
-          context
-              .resolveThemeExtension<
-                MyoroSnackBarWidgetShowcaseThemeExtension
-              >()
-              .widgetBordered,
-    );
-
-    return IntrinsicWidth(
-      child: MyoroIconTextHoverButton(
-        configuration: configuration,
-        text: 'Click to launch the snack bar.',
-        onPressed: () => _onPressed(context),
-      ),
-    );
-  }
 }
 
 final class _Child extends StatelessWidget {
@@ -67,17 +62,22 @@ final class _Child extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension =
+        context
+            .resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>();
+
     return IntrinsicWidth(
-      child: MyoroIconTextHoverButton(
-        icon:
-            context
-                .resolveThemeExtension<
-                  MyoroSnackBarWidgetShowcaseThemeExtension
-                >()
-                .childIcon,
-        text: 'Buttonception O_O',
-        configuration: const MyoroHoverButtonConfiguration(bordered: true),
-        onPressed: () {},
+      child: MyoroIconTextButton(
+        configuration: MyoroIconTextButtonConfiguration(
+          iconConfiguration: MyoroIconTextButtonIconConfiguration(
+            icon: themeExtension.childIcon,
+          ),
+          textConfiguration: const MyoroIconTextButtonTextConfiguration(
+            text: 'Buttonception O_O',
+          ),
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          onTapUp: (_) {},
+        ),
       ),
     );
   }
@@ -129,7 +129,11 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
   }
 
   MyoroMenuItem _itemBuilder(MyoroSnackBarTypeEnum snackBarType) {
-    return MyoroMenuItem(text: _getSnackbarTypeName(snackBarType));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _getSnackbarTypeName(snackBarType),
+      ),
+    );
   }
 
   void _onChanged(MyoroSnackBarTypeEnum snackBarTypes) {

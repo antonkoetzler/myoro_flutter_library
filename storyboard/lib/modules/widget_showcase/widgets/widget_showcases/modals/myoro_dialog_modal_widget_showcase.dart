@@ -55,26 +55,38 @@ final class _Widget extends StatelessWidget {
       child: BlocBuilder<
         MyoroDialogModalWidgetShowcaseBloc,
         MyoroDialogModalWidgetShowcaseState
-      >(
-        builder: (_, MyoroDialogModalWidgetShowcaseState state) {
-          return MyoroIconTextHoverButton(
-            configuration: const MyoroHoverButtonConfiguration(bordered: true),
-            text: 'Click to launch the modal.',
-            onPressed:
-                () => MyoroDialogModal.show(
-                  context,
-                  invertButtons: state.invertButtons,
-                  confirmButtonText: state.confirmButtonText,
-                  cancelButtonText: state.cancelButtonText,
-                  onConfirm: () => _onConfirm(context),
-                  onCancel: () => _onCancel(context),
-                  text: state.text,
-                  textStyle: state.textStyle,
-                  child: state.childEnabled ? const _Child() : null,
-                ),
-          );
-        },
+      >(builder: _builder),
+    );
+  }
+
+  Widget _builder(
+    BuildContext context,
+    MyoroDialogModalWidgetShowcaseState state,
+  ) {
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: const MyoroIconTextButtonTextConfiguration(
+          text: 'Click to launch the modal.',
+        ),
+        onTapUp: (_) => _onTapUp(context, state),
       ),
+    );
+  }
+
+  void _onTapUp(
+    BuildContext context,
+    MyoroDialogModalWidgetShowcaseState state,
+  ) {
+    MyoroDialogModal.show(
+      context,
+      invertButtons: state.invertButtons,
+      confirmButtonText: state.confirmButtonText,
+      cancelButtonText: state.cancelButtonText,
+      onConfirm: () => _onConfirm(context),
+      onCancel: () => _onCancel(context),
+      text: state.text,
+      textStyle: state.textStyle,
+      child: state.childEnabled ? const _Child() : null,
     );
   }
 }
@@ -225,7 +237,11 @@ final class _TextStyleOption extends StatelessWidget {
     MyoroTypographyDesignSystem typographyInstance,
     TextStyle textStyle,
   ) {
-    return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: typographyInstance.getTextStyleName(textStyle),
+      ),
+    );
   }
 
   void _onChanged(BuildContext context, TextStyle? textStyle) {

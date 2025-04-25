@@ -56,7 +56,6 @@ final class StoryboardScreenThemeExtension
     double? headerToggleThemeButtonSpacing,
     IconData? toggleThemeButtonIcon,
     TextStyle? categoryButtonTextStyle,
-    MyoroHoverButtonConfiguration? categoryButtonConfiguration,
   }) {
     return StoryboardScreenThemeExtension(
       headerTitleTextStyle: headerTitleTextStyle ?? this.headerTitleTextStyle,

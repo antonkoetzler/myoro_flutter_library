@@ -106,7 +106,11 @@ final class _TypeEnumOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(MyoroPieGraphEnum typeEnum) {
-    return MyoroMenuItem(text: typeEnum.name);
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: typeEnum.name,
+      ),
+    );
   }
 
   String _selectedItemBuilder(MyoroPieGraphEnum typeEnum) {

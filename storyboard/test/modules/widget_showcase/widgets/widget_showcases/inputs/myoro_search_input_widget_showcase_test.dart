@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroSearchInputWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroSearchInputWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroSearchInputWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -23,9 +19,7 @@ void main() {
     expect(find.byType(MyoroSearchInput<String>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroCheckbox &&
-            w.label == '[MyoroSearchInput.requestWhenChanged]',
+        (Widget w) => w is MyoroCheckbox && w.label == '[MyoroSearchInput.requestWhenChanged]',
       ),
       findsOneWidget,
     );

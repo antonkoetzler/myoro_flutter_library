@@ -38,7 +38,7 @@ final class App extends StatelessWidget {
     final modulesController = _kiwiContainer.resolve<ModulesController>();
     return [
       ...modulesController.themeExtenionsBuilder(colorScheme, textTheme),
-      ...createCommonsThemeExtensions(colorScheme, textTheme),
+      ...createStoryboardCommonsThemeExtensions(colorScheme, textTheme),
     ];
   }
 }

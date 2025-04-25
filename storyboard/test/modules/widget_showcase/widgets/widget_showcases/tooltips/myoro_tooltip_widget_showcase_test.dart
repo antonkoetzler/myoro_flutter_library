@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroTooltipWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroTooltipWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroTooltipWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -23,15 +19,12 @@ void main() {
     expect(find.byType(MyoroTooltip), findsOneWidget);
     expect(find.text('Hover over me!'), findsOneWidget);
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is MyoroSlider && w.label == '[MyoroTooltip.margin]',
-      ),
+      find.byWidgetPredicate((Widget w) => w is MyoroSlider && w.label == '[MyoroTooltip.margin]'),
       findsOneWidget,
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroInput && w.configuration.label == '[MyoroTooltip.text]',
+        (Widget w) => w is MyoroInput && w.configuration.label == '[MyoroTooltip.text]',
       ),
       findsOneWidget,
     );

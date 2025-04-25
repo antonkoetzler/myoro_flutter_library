@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -7,12 +6,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroScreenWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      BlocProvider(
-        create: (_) => WidgetShowcaseBloc(),
-        child: const MyoroWidgetTester(
-          themeExtensionsBuilder: createThemeExtensions,
-          child: MyoroScreenWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroScreenWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();

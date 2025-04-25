@@ -117,12 +117,16 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextHoverButton(
-      icon:
-          context
-              .resolveThemeExtension<MyoroModalThemeExtension>()
-              .closeButtonIcon,
-      onPressed: () => Navigator.of(context).pop(),
+    final themeExtension =
+        context.resolveThemeExtension<MyoroModalThemeExtension>();
+
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.closeButtonIcon,
+        ),
+        onTapUp: (_) => context.navigator.pop(),
+      ),
     );
   }
 }

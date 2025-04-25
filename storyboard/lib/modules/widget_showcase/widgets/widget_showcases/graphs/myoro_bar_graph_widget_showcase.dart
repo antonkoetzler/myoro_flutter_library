@@ -42,12 +42,9 @@ final class _Widget extends StatelessWidget {
                 (_) => MyoroBarGraphBar(
                   y: faker.randomGenerator.decimal(),
                   color:
-                      [
-                        Colors.red,
-                        Colors.green,
-                        Colors.blue,
-                        MyoroColorDesignSystem.secondary(context),
-                      ][faker.randomGenerator.integer(4)],
+                      [Colors.red, Colors.green, Colors.blue][faker
+                          .randomGenerator
+                          .integer(3)],
                 ),
               ),
             ),

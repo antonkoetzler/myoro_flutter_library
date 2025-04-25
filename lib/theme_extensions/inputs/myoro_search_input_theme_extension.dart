@@ -13,20 +13,12 @@ class MyoroSearchInputThemeExtension
   /// Icon of [_SearchButton].
   final IconData searchButtonIcon;
 
-  /// If [_SearchButton] is bordered or not.
-  final bool searchButtonBordered;
-
-  /// Color of the content in [_SearchButton] when it is not hovered.
-  final Color searchButtonHoverColor;
-
   /// Size of the [MyoroCircularLoader] in [_SearchButton].
   final double searchButtonLoadingSize;
 
   const MyoroSearchInputThemeExtension({
     required this.spacing,
     required this.searchButtonIcon,
-    required this.searchButtonBordered,
-    required this.searchButtonHoverColor,
     required this.searchButtonLoadingSize,
   });
 
@@ -36,34 +28,22 @@ class MyoroSearchInputThemeExtension
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
           )],
-      searchButtonBordered = faker.randomGenerator.boolean(),
-      searchButtonHoverColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
       searchButtonLoadingSize = faker.randomGenerator.decimal();
 
   MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
     : spacing = 10,
       searchButtonIcon = Icons.search,
-      searchButtonBordered = true,
-      searchButtonHoverColor = colorScheme.primary,
       searchButtonLoadingSize = 20;
 
   @override
   MyoroSearchInputThemeExtension copyWith({
     double? spacing,
     IconData? searchButtonIcon,
-    bool? searchButtonBordered,
-    Color? searchButtonHoverColor,
     double? searchButtonLoadingSize,
   }) {
     return MyoroSearchInputThemeExtension(
       spacing: spacing ?? this.spacing,
       searchButtonIcon: searchButtonIcon ?? this.searchButtonIcon,
-      searchButtonBordered: searchButtonBordered ?? this.searchButtonBordered,
-      searchButtonHoverColor:
-          searchButtonHoverColor ?? this.searchButtonHoverColor,
       searchButtonLoadingSize:
           searchButtonLoadingSize ?? this.searchButtonLoadingSize,
     );
@@ -78,16 +58,6 @@ class MyoroSearchInputThemeExtension
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       searchButtonIcon: myoroLerp(searchButtonIcon, other.searchButtonIcon, t),
-      searchButtonBordered: myoroLerp(
-        searchButtonBordered,
-        other.searchButtonBordered,
-        t,
-      ),
-      searchButtonHoverColor: Color.lerp(
-        searchButtonHoverColor,
-        other.searchButtonHoverColor,
-        t,
-      ),
       searchButtonLoadingSize: lerpDouble(
         searchButtonLoadingSize,
         other.searchButtonLoadingSize,
@@ -102,20 +72,12 @@ class MyoroSearchInputThemeExtension
         other.runtimeType == runtimeType &&
         other.spacing == spacing &&
         other.searchButtonIcon == searchButtonIcon &&
-        other.searchButtonBordered == searchButtonBordered &&
-        other.searchButtonHoverColor == searchButtonHoverColor &&
         other.searchButtonLoadingSize == searchButtonLoadingSize;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      spacing,
-      searchButtonIcon,
-      searchButtonBordered,
-      searchButtonHoverColor,
-      searchButtonLoadingSize,
-    );
+    return Object.hash(spacing, searchButtonIcon, searchButtonLoadingSize);
   }
 
   @override
@@ -123,8 +85,6 @@ class MyoroSearchInputThemeExtension
       'MyoroSearchInputThemeExtension(\n'
       '  spacing: $spacing,\n'
       '  searchButtonIcon: $searchButtonIcon,\n'
-      '  searchButtonBordered: $searchButtonBordered,\n'
-      '  searchButtonHoverColor: $searchButtonHoverColor,\n'
       '  searchButtonLoadingSize: $searchButtonLoadingSize,\n'
       ');';
 }

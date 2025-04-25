@@ -168,9 +168,13 @@ final class _ConfirmButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextHoverButton(
-      text: _text ?? 'Confirm',
-      onPressed: () => _onConfirm?.call(),
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroIconTextButtonTextConfiguration(
+          text: _text ?? 'Confirm',
+        ),
+        onTapUp: (_) => _onConfirm?.call(),
+      ),
     );
   }
 }
@@ -183,12 +187,18 @@ final class _CancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextHoverButton(
-      text: _text ?? 'Cancel',
-      onPressed: () {
-        _onCancel?.call();
-        Navigator.of(context).pop();
-      },
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroIconTextButtonTextConfiguration(
+          text: _text ?? 'Cancel',
+        ),
+        onTapUp: (_) => _onTapUp(context),
+      ),
     );
+  }
+
+  void _onTapUp(BuildContext context) {
+    _onCancel?.call();
+    Navigator.of(context).pop();
   }
 }

@@ -11,7 +11,10 @@ void main() {
       ).toSet();
   final configuration = MyoroMenuConfiguration(
     request: () => items,
-    itemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
+    itemBuilder:
+        (String item) => MyoroMenuItem.fake().copyWith(
+          textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
+        ),
     searchCallback:
         (String query, Set<String> items) =>
             items.where((String item) {
@@ -77,10 +80,7 @@ void main() {
           status: MyoroRequestEnum.success,
           items: items,
           initialRequestMade: true,
-          queriedItems:
-              query.isEmpty
-                  ? items
-                  : configuration.searchCallback!(query, items),
+          queriedItems: query.isEmpty ? items : configuration.searchCallback!(query, items),
         ),
       ];
     },

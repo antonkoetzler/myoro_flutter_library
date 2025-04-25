@@ -41,7 +41,9 @@ class MyoroResizeDividerThemeExtension
     : secondary = colorScheme.onPrimary,
       resizeButtonShortValue = 8,
       resizeButtonLongValue = 8,
-      resizeButtonBorderRadius = MyoroDecorationHelper.borderRadius;
+      resizeButtonBorderRadius = BorderRadius.circular(
+        kMyoroBorderRadiusLength,
+      );
 
   @override
   MyoroResizeDividerThemeExtension copyWith({

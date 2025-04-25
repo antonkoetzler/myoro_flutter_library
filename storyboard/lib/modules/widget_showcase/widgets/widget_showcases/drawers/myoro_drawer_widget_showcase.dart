@@ -28,7 +28,22 @@ final class MyoroDrawerWidgetShowcase extends StatelessWidget {
 final class _Widget extends StatelessWidget {
   const _Widget();
 
-  void _onPressed(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
+    return IntrinsicWidth(
+      child: MyoroIconTextButton(
+        configuration: MyoroIconTextButtonConfiguration(
+          textConfiguration: const MyoroIconTextButtonTextConfiguration(
+            text: 'Click to launch the drawer.',
+          ),
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          onTapUp: (_) => _onTapUp(context),
+        ),
+      ),
+    );
+  }
+
+  void _onTapUp(BuildContext context) {
     final state = context.resolveBloc<MyoroDrawerWidgetShowcaseBloc>().state;
 
     context.openDrawer(
@@ -38,24 +53,6 @@ final class _Widget extends StatelessWidget {
         showCloseButton: state.showCloseButton,
         barrierDismissable: state.barrierDismissable,
         child: const SizedBox.shrink(),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return IntrinsicWidth(
-      child: MyoroIconTextHoverButton(
-        configuration: MyoroHoverButtonConfiguration(
-          bordered:
-              context
-                  .resolveThemeExtension<
-                    MyoroDrawerWidgetShowcaseThemeExtension
-                  >()
-                  .buttonBordered,
-        ),
-        text: 'Click to launch the drawer.',
-        onPressed: () => _onPressed(context),
       ),
     );
   }
@@ -127,7 +124,11 @@ final class _TitleTextStyleOption extends StatelessWidget {
     MyoroTypographyDesignSystem typographyInstance,
     TextStyle textStyle,
   ) {
-    return MyoroMenuItem(text: typographyInstance.getTextStyleName(textStyle));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: typographyInstance.getTextStyleName(textStyle),
+      ),
+    );
   }
 
   void _onChanged(MyoroDrawerWidgetShowcaseBloc bloc, TextStyle? textStyle) {

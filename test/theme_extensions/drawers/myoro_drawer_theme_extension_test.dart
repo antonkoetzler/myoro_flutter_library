@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Unit test of [MyoroDrawerThemeExtension].
 void main() {
-  late final MyoroDrawerThemeExtension themeExtension1;
-  late final MyoroDrawerThemeExtension themeExtension2;
+  late final MyoroDrawerThemeExtension themeExtension1, themeExtension2;
 
   setUpAll(() {
     MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
@@ -15,32 +13,27 @@ void main() {
   });
 
   test('MyoroDrawerThemeExtension.copyWith', () {
-    MyoroDrawerThemeExtension copiedThemeExtension = themeExtension1.copyWith();
-    expect(copiedThemeExtension, themeExtension1);
-    copiedThemeExtension = themeExtension1.copyWith(
-      drawerPadding: themeExtension2.drawerPadding,
-      drawerContentPadding: themeExtension2.drawerContentPadding,
-      drawerShape: themeExtension2.drawerShape,
-      titleContentDividerPadding: themeExtension2.titleContentDividerPadding,
-      titleTextStyle: themeExtension2.titleTextStyle,
-      closeButtonDrawerIcon: themeExtension2.closeButtonDrawerIcon,
-      closeButtonEndDrawerIcon: themeExtension2.closeButtonEndDrawerIcon,
-      closeButtonBackgroundColor: themeExtension2.closeButtonBackgroundColor,
-      closeButtonBordered: themeExtension2.closeButtonBordered,
+    expect(themeExtension1.copyWith(), themeExtension1);
+    expect(
+      themeExtension1.copyWith(
+        drawerPadding: themeExtension2.drawerPadding,
+        drawerContentPadding: themeExtension2.drawerContentPadding,
+        drawerShape: themeExtension2.drawerShape,
+        titleContentDividerPadding: themeExtension2.titleContentDividerPadding,
+        titleTextStyle: themeExtension2.titleTextStyle,
+        closeButtonDrawerIcon: themeExtension2.closeButtonDrawerIcon,
+        closeButtonEndDrawerIcon: themeExtension2.closeButtonEndDrawerIcon,
+      ),
+      themeExtension2,
     );
-    expect(copiedThemeExtension, themeExtension2);
   });
 
   test('MyoroDrawerThemeExtension.lerp', () {
-    for (double i = 0; i < faker.randomGenerator.decimal(); i += 0.1) {
+    for (double i = 0; i < 1; i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.drawerPadding,
-        EdgeInsets.lerp(
-          themeExtension1.drawerPadding,
-          themeExtension2.drawerPadding,
-          i,
-        ),
+        EdgeInsets.lerp(themeExtension1.drawerPadding, themeExtension2.drawerPadding, i),
       );
       expect(
         lerpedThemeExtension.drawerContentPadding,
@@ -52,11 +45,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.drawerShape,
-        ShapeBorder.lerp(
-          themeExtension1.drawerShape,
-          themeExtension2.drawerShape,
-          i,
-        ),
+        ShapeBorder.lerp(themeExtension1.drawerShape, themeExtension2.drawerShape, i),
       );
       expect(
         lerpedThemeExtension.titleContentDividerPadding,
@@ -68,19 +57,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.titleTextStyle,
-        TextStyle.lerp(
-          themeExtension1.titleTextStyle,
-          themeExtension2.titleTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.closeButtonDrawerIcon,
-        myoroLerp(
-          themeExtension1.closeButtonDrawerIcon,
-          themeExtension2.closeButtonDrawerIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.closeButtonDrawerIcon, themeExtension2.closeButtonDrawerIcon, i),
       );
       expect(
         lerpedThemeExtension.closeButtonEndDrawerIcon,
@@ -90,22 +71,21 @@ void main() {
           i,
         ),
       );
-      expect(
-        lerpedThemeExtension.closeButtonBackgroundColor,
-        Color.lerp(
-          themeExtension1.closeButtonBackgroundColor,
-          themeExtension2.closeButtonBackgroundColor,
-          i,
-        ),
-      );
-      expect(
-        lerpedThemeExtension.closeButtonBordered,
-        myoroLerp(
-          themeExtension1.closeButtonBordered,
-          themeExtension2.closeButtonBordered,
-          i,
-        ),
-      );
     }
+  });
+
+  test('MyoroDrawerThemeExtension.toString', () {
+    expect(
+      themeExtension1.toString(),
+      'MyoroDrawerThemeExtension(\n'
+      '  drawerContentPadding: ${themeExtension1.drawerContentPadding},\n'
+      '  drawerPadding: ${themeExtension1.drawerPadding},\n'
+      '  drawerShape: ${themeExtension1.drawerShape},\n'
+      '  titleContentDividerPadding: ${themeExtension1.titleContentDividerPadding},\n'
+      '  titleTextStyle: ${themeExtension1.titleTextStyle},\n'
+      '  closeButtonDrawerIcon: ${themeExtension1.closeButtonDrawerIcon},\n'
+      '  closeButtonEndDrawerIcon: ${themeExtension1.closeButtonEndDrawerIcon},\n'
+      ');',
+    );
   });
 }

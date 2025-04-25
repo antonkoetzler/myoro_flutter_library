@@ -117,25 +117,17 @@ void main() {
     );
 
     // [_CloseButton].
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroIconTextHoverButton &&
-            w.icon == themeExtension.closeButtonIcon &&
-            w.onPressed != null,
-      ),
-      findsOneWidget,
+    final Finder closeButtonFinder = find.byWidgetPredicate(
+      (Widget w) =>
+          w is MyoroIconTextButton &&
+          w.configuration.iconConfiguration?.icon ==
+              themeExtension.closeButtonIcon &&
+          w.configuration.onTapUp != null,
     );
+    expect(closeButtonFinder, findsOneWidget);
 
     // Confirming that [configuration.onClosed] was executed & [MyoroModal] was called when it is closed.
-    await tester.tap(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroIconTextHoverButton &&
-            w.icon == themeExtension.closeButtonIcon &&
-            w.onPressed != null,
-      ),
-    );
+    await tester.tap(closeButtonFinder);
     await tester.pumpAndSettle();
     expect(find.byType(MyoroModal), findsNothing);
     expect(onClosedCalled, isTrue);

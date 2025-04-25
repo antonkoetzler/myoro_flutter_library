@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -29,6 +30,22 @@ class MyoroIconTextButtonTextConfiguration extends Equatable {
          text.length != 0,
          '[MyoroIconTextButtonTextConfiguration]: [text] cannot be empty.',
        );
+
+  MyoroIconTextButtonTextConfiguration.fake()
+    : text = faker.lorem.word(),
+      maxLines = faker.randomGenerator.integer(10),
+      overflow =
+          TextOverflow.values[faker.randomGenerator.integer(
+            TextOverflow.values.length,
+          )],
+      alignment =
+          TextAlign.values[faker.randomGenerator.integer(
+            TextAlign.values.length,
+          )],
+      style =
+          faker.randomGenerator.boolean()
+              ? MyoroTypographyDesignSystem.instance.randomTextStyle
+              : null;
 
   MyoroIconTextButtonTextConfiguration copyWith({
     String? text,

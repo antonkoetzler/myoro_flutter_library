@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -11,19 +10,12 @@ void main() {
 
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
         child: Builder(
           builder: (BuildContext context) {
             themeExtension =
-                context
-                    .resolveThemeExtension<
-                      MyoroDrawerWidgetShowcaseThemeExtension
-                    >();
-
-            return BlocProvider(
-              create: (_) => WidgetShowcaseBloc(),
-              child: const MyoroDrawerWidgetShowcase(),
-            );
+                context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>();
+            return const MyoroDrawerWidgetShowcase();
           },
         ),
       ),
@@ -38,12 +30,11 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is IntrinsicWidth &&
-            w.child is MyoroIconTextHoverButton &&
-            (w.child as MyoroIconTextHoverButton).configuration?.bordered ==
-                true &&
-            (w.child as MyoroIconTextHoverButton).text ==
+            w.child is MyoroIconTextButton &&
+            (w.child as MyoroIconTextButton).configuration.borderBuilder != null &&
+            (w.child as MyoroIconTextButton).configuration.textConfiguration?.text ==
                 'Click to launch the drawer.' &&
-            (w.child as MyoroIconTextHoverButton).onPressed != null,
+            (w.child as MyoroIconTextButton).configuration.onTapUp != null,
       ),
       findsOneWidget,
     );
@@ -62,9 +53,7 @@ void main() {
     // [_TitleTextStyleOption].
     expect(
       find.byWidgetPredicate((Widget w) {
-        return w is SizedBox &&
-            w.width == 210 &&
-            w.child is MyoroSingularDropdown<TextStyle>;
+        return w is SizedBox && w.width == 210 && w.child is MyoroSingularDropdown<TextStyle>;
       }),
       findsOneWidget,
     );
@@ -79,15 +68,9 @@ void main() {
     );
 
     // [_ShowCloseButtonOption].
-    expect(
-      find.widgetWithText(MyoroCheckbox, '[MyoroDrawer.showCloseButton]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroCheckbox, '[MyoroDrawer.showCloseButton]'), findsOneWidget);
 
     // [BarrierDismissableOption].
-    expect(
-      find.widgetWithText(MyoroCheckbox, '[MyoroDrawer.barrierDismissable]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroCheckbox, '[MyoroDrawer.barrierDismissable]'), findsOneWidget);
   });
 }

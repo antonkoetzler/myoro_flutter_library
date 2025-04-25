@@ -154,13 +154,15 @@ final class _RefreshButton extends StatelessWidget {
         context
             .resolveThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>();
 
-    return MyoroIconTextHoverButton(
-      text: _text,
-      textAlign: themeExtension.buttonTextAlign,
-      configuration: MyoroHoverButtonConfiguration(
-        bordered: themeExtension.buttonBordered,
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroIconTextButtonTextConfiguration(
+          text: _text,
+          alignment: themeExtension.buttonTextAlign,
+        ),
+        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        onTapUp: (_) => _onPressed(),
       ),
-      onPressed: _onPressed,
     );
   }
 }

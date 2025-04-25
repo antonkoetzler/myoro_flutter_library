@@ -10,7 +10,6 @@ void main() {
 
   testWidgets('MyoroSearchInput', (WidgetTester tester) async {
     late final MyoroSearchInputThemeExtension searchInputThemeExtension;
-    late final MyoroHoverButtonThemeExtension hoverButtonThemeExtension;
 
     await tester.pumpWidget(
       MyoroWidgetTester(
@@ -18,8 +17,6 @@ void main() {
           builder: (BuildContext context) {
             searchInputThemeExtension =
                 context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
-            hoverButtonThemeExtension =
-                context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
 
             return MyoroSearchInput<String>(
               configuration: configuration,
@@ -30,7 +27,12 @@ void main() {
                   (_) => faker.lorem.word(),
                 ).toSet();
               },
-              itemBuilder: (String item) => MyoroMenuItem(text: item),
+              itemBuilder:
+                  (String item) => MyoroMenuItem(
+                    textConfiguration: MyoroIconTextButtonTextConfiguration(
+                      text: item,
+                    ),
+                  ),
             );
           },
         ),
@@ -70,27 +72,18 @@ void main() {
     );
     expect(searchDropdownSectionFinder, findsNothing);
 
-    // Section holding [_SearchSection] & the respective [SizedBox] for spacing.
+    // [_SearchSection].
     final searchButtonFinder = find.byWidgetPredicate(
       (Widget w) =>
-          w is MyoroHoverButton &&
-          w.configuration ==
-              MyoroHoverButtonConfiguration(
-                bordered: searchInputThemeExtension.searchButtonBordered,
-              ) &&
-          w.onPressed != null,
+          w is MyoroButton &&
+          w.configuration?.borderBuilder != null &&
+          w.configuration?.onTapUp != null,
     );
     expect(searchButtonFinder, findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is Padding &&
-            w.padding == const EdgeInsets.all(7.5) &&
-            w.child is Icon &&
-            (w.child as Icon).color ==
-                hoverButtonThemeExtension.onPrimaryColor &&
-            (w.child as Icon).icon ==
-                searchInputThemeExtension.searchButtonIcon,
+            w is Icon && w.icon == searchInputThemeExtension.searchButtonIcon,
       ),
       findsOneWidget,
     );

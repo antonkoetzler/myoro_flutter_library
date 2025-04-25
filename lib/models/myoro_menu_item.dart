@@ -8,117 +8,102 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// 2 "modes":
 /// 1. [icon] and/or [text] is provided; a simple [MyoroMenuItem];
-/// 2. [itemBuilder] provided for a custom [MyoroMenuItem] widget.
+/// 2. [builder] provided for a custom [MyoroMenuItem] widget.
 class MyoroMenuItem extends Equatable {
-  /// If the item is isHovered or not.
-  final bool? isHovered;
+  /// If the item is selected (a.k.a hovered) or not.
+  final bool isSelected;
 
-  /// What is called when the item is clicked.
-  final VoidCallback? onPressed;
+  /// [MyoroIconTextButtonIconConfiguration] of the item.
+  final MyoroIconTextButtonIconConfiguration? iconConfiguration;
 
-  /// [IconData] of the item.
-  final IconData? icon;
+  /// [MyoroIconTextButtonTextConfiguration] of the item.
+  final MyoroIconTextButtonTextConfiguration? textConfiguration;
 
-  /// Size of the [Icon].
-  final double? iconSize;
+  /// [MyoroButton.builder] for a custom [Widget] rather than just with an icon and/or text.
+  final MyoroButtonBuilder? builder;
 
-  /// Text of the item.
-  final String? text;
+  /// On tap down.
+  final MyoroButtonConfigurationOnTapDown? onTapDown;
 
-  /// Text style of the [Text].
-  final TextStyle? textStyle;
-
-  /// Text alignment of the [Text].
-  final TextAlign? textAlign;
-
-  /// [MyoroMenuItemBuilder] of the item for a customized [Widget].
-  final MyoroHoverButtonBuilder? itemBuilder;
+  /// On tap up.
+  final MyoroButtonConfigurationOnTapUp? onTapUp;
 
   const MyoroMenuItem({
-    this.isHovered,
-    this.onPressed,
-    this.icon,
-    this.iconSize,
-    this.text,
-    this.textStyle,
-    this.textAlign,
-    this.itemBuilder,
+    this.isSelected = false,
+    this.iconConfiguration,
+    this.textConfiguration,
+    this.builder,
+    this.onTapDown,
+    this.onTapUp,
   }) : assert(
-         itemBuilder != null
-             ? (icon == null && text == null)
-             : (icon != null || text != null),
-         '[MyoroMenuItem]: If [itemBuilder] is provided, [text] & [icon] must be null. '
-         'If [itemBuilder] is not provided, [text] (x)or [text] must not be null.',
+         (builder != null)
+             ? (iconConfiguration == null && textConfiguration == null)
+             : !(iconConfiguration == null && textConfiguration == null),
+         '[MyoroMenuItem]: If [builder] is not null, [iconConfiguration] and [textConfiguration] must be '
+         'null. If [builder] is null, [iconConfiguration] and/or [textConfiguration] must not be null.',
        );
 
-  MyoroMenuItem.fake()
-    : isHovered = faker.randomGenerator.boolean(),
-      onPressed = null,
-      icon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      iconSize = null,
-      text = faker.lorem.word(),
-      textStyle = null,
-      textAlign = null,
-      itemBuilder = null;
+  factory MyoroMenuItem.fake() {
+    final bool builderProvided = faker.randomGenerator.boolean();
+
+    return MyoroMenuItem(
+      isSelected: faker.randomGenerator.boolean(),
+      iconConfiguration:
+          builderProvided
+              ? null
+              : (faker.randomGenerator.boolean()
+                  ? MyoroIconTextButtonIconConfiguration.fake()
+                  : null),
+      textConfiguration:
+          builderProvided
+              ? null
+              : (faker.randomGenerator.boolean()
+                  ? MyoroIconTextButtonTextConfiguration.fake()
+                  : null),
+      builder: builderProvided ? ((_, __) => const SizedBox.shrink()) : null,
+      onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
+    );
+  }
 
   MyoroMenuItem copyWith({
-    bool? isHovered,
-    bool isHoveredProvided = true,
-    VoidCallback? onPressed,
-    bool onPressedProvided = true,
-    IconData? icon,
-    bool iconProvided = true,
-    double? iconSize,
-    bool iconSizeProvided = true,
-    String? text,
-    bool textProvided = true,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
-    TextAlign? textAlign,
-    bool textAlignProvided = true,
-    MyoroHoverButtonBuilder? itemBuilder,
-    bool itemBuilderProvided = true,
+    bool? isSelected,
+    MyoroIconTextButtonIconConfiguration? iconConfiguration,
+    bool iconConfigurationProvided = true,
+    MyoroIconTextButtonTextConfiguration? textConfiguration,
+    bool textConfigurationProvided = true,
+    MyoroButtonBuilder? builder,
+    bool builderProvided = true,
+    MyoroButtonConfigurationOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonConfigurationOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
   }) {
     return MyoroMenuItem(
-      isHovered: isHoveredProvided ? (isHovered ?? this.isHovered) : null,
-      onPressed: onPressedProvided ? (onPressed ?? this.onPressed) : null,
-      icon: iconProvided ? (icon ?? this.icon) : null,
-      iconSize: iconSizeProvided ? (iconSize ?? this.iconSize) : null,
-      text: textProvided ? (text ?? this.text) : null,
-      textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
-      textAlign: textAlignProvided ? (textAlign ?? this.textAlign) : null,
-      itemBuilder:
-          itemBuilderProvided ? (itemBuilder ?? this.itemBuilder) : null,
+      isSelected: isSelected ?? this.isSelected,
+      iconConfiguration:
+          iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
+      textConfiguration:
+          textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
+      builder: builderProvided ? (builder ?? this.builder) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
     );
+  }
+
+  @override
+  List<Object?> get props {
+    return [isSelected, iconConfiguration, textConfiguration, builder, onTapDown, onTapUp];
   }
 
   @override
   String toString() =>
       'MyoroMenuItem(\n'
-      '  isHovered: $isHovered,\n'
-      '  onPressed: $onPressed,\n'
-      '  icon: $icon,\n'
-      '  iconSize: $iconSize,\n'
-      '  text: $text,\n'
-      '  textStyle: $textStyle,\n'
-      '  textAlign: $textAlign,\n'
-      '  itemBuilder: $itemBuilder,\n'
+      '  isSelected: $isSelected,\n'
+      '  iconConfiguration: $iconConfiguration,\n'
+      '  textConfiguration: $textConfiguration,\n'
+      '  builder: $builder,\n'
+      '  onTapDown: $onTapDown,\n'
+      '  onTapUp: $onTapUp,\n'
       ');';
-
-  @override
-  List<Object?> get props {
-    return [
-      isHovered,
-      onPressed,
-      icon,
-      iconSize,
-      text,
-      textStyle,
-      textAlign,
-      itemBuilder,
-    ];
-  }
 }

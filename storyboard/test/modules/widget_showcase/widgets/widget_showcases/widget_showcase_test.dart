@@ -1,6 +1,5 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -13,10 +12,7 @@ void main() {
         (Widget w) =>
             w is MyoroBasicDivider &&
             w.configuration ==
-                MyoroBasicDividerConfiguration(
-                  direction: direction,
-                  padding: padding,
-                ),
+                MyoroBasicDividerConfiguration(direction: direction, padding: padding),
       ),
       findsAtLeastNWidgets(1),
     );
@@ -31,20 +27,13 @@ void main() {
 
     await tester.pumpWidget(
       MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: Builder(
-            builder: (BuildContext context) {
-              themeExtension =
-                  context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: Builder(
+          builder: (BuildContext context) {
+            themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
-              return WidgetShowcase(
-                widget: const SizedBox.shrink(),
-                widgetOptions: widgetOptions,
-              );
-            },
-          ),
+            return WidgetShowcase(widget: const SizedBox.shrink(), widgetOptions: widgetOptions);
+          },
         ),
       ),
     );
@@ -74,8 +63,7 @@ void main() {
             w is Padding &&
             w.padding == themeExtension.widgetWrapperPadding &&
             w.child is Container &&
-            (w.child as Container).alignment ==
-                themeExtension.widgetWrapperAlignment &&
+            (w.child as Container).alignment == themeExtension.widgetWrapperAlignment &&
             (w.child as Container).decoration ==
                 BoxDecoration(
                   color: themeExtension.widgetWrapperBackgroundColor,
@@ -101,10 +89,8 @@ void main() {
             (w.child as SingleChildScrollView).child is Padding &&
             ((w.child as SingleChildScrollView).child as Padding).padding ==
                 themeExtension.widgetOptionsPadding &&
-            ((w.child as SingleChildScrollView).child as Padding).child
-                is Column &&
-            (((w.child as SingleChildScrollView).child as Padding).child
-                        as Column)
+            ((w.child as SingleChildScrollView).child as Padding).child is Column &&
+            (((w.child as SingleChildScrollView).child as Padding).child as Column)
                     .children
                     .length ==
                 widgetOptions.length,
@@ -125,9 +111,6 @@ void main() {
     );
 
     // [_Divider in [_WidgetOptions].
-    expectDivider(
-      direction: Axis.horizontal,
-      padding: themeExtension.widgetOptionsDividerPadding,
-    );
+    expectDivider(direction: Axis.horizontal, padding: themeExtension.widgetOptionsDividerPadding);
   });
 }

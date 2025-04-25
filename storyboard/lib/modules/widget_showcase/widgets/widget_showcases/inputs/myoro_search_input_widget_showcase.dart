@@ -52,7 +52,10 @@ final class _Widget extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuItem(text: item, onPressed: () {});
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
+      onTapDown: (_) {},
+    );
   }
 }
 

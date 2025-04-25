@@ -106,13 +106,17 @@ final class _ToggleThemeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension =
         context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    return MyoroIconTextHoverButton(
-      icon: themeExtension.toggleThemeButtonIcon,
-      onPressed: () => _onPressed(context),
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.toggleThemeButtonIcon,
+        ),
+        onTapUp: (_) => _onTapUp(context),
+      ),
     );
   }
 
-  void _onPressed(BuildContext context) {
+  void _onTapUp(BuildContext context) {
     final themeModeCubit = context.resolveBloc<ThemeModeCubit>();
     themeModeCubit.toggle();
   }

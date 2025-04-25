@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Enum for all of the widgets we showcase in the storyboard.
-enum WidgetListingEnum {
+enum StoryboardWidgetListingEnum {
   appBars('App bars', {myoroAppBarTitle}),
-  buttons('Buttons', {myoroHoverButtonTitle, myoroIconTextHoverButtonTitle}),
+  buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle}),
   cards('Cards', {myoroCardTitle}),
   carousels('Carousels', {myoroCarouselTitle}),
   checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
@@ -34,14 +34,14 @@ enum WidgetListingEnum {
   final String categoryName;
   final Set<String> widgetNames;
 
-  const WidgetListingEnum(this.categoryName, this.widgetNames);
+  const StoryboardWidgetListingEnum(this.categoryName, this.widgetNames);
 
   // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';
 
   // Buttons
-  static const myoroHoverButtonTitle = 'MyoroHoverButton';
-  static const myoroIconTextHoverButtonTitle = 'MyoroIconTextHoverButton';
+  static const myoroButtonTitle = 'MyoroButton';
+  static const myoroIconTextButtonTitle = 'MyoroIconTextButton';
 
   // Cards
   static const myoroCardTitle = 'MyoroCard';
@@ -124,9 +124,10 @@ enum WidgetListingEnum {
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
 
       // Buttons
-      myoroHoverButtonTitle => const MyoroHoverButtonWidgetShowcase(),
-      myoroIconTextHoverButtonTitle =>
-        const MyoroIconTextHoverButtonWidgetShowcase(),
+      // TODO
+      myoroButtonTitle => throw UnimplementedError(),
+      // TODO
+      myoroIconTextButtonTitle => throw UnimplementedError(),
 
       // Cards
       myoroCardTitle => const MyoroCardWidgetShowcase(),

@@ -84,7 +84,11 @@ final class _DirectionOptionState extends State<_DirectionOption> {
   }
 
   MyoroMenuItem _itemBuilder(Axis direction) {
-    return MyoroMenuItem(text: _directionName(direction));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _directionName(direction),
+      ),
+    );
   }
 }
 

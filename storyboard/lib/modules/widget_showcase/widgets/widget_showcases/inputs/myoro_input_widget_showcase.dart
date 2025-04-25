@@ -86,12 +86,14 @@ final class _Widget extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             IntrinsicWidth(
-              child: MyoroIconTextHoverButton(
-                text: 'Click to show a validation error',
-                configuration: const MyoroHoverButtonConfiguration(
-                  bordered: true,
+              child: MyoroIconTextButton(
+                configuration: MyoroIconTextButtonConfiguration(
+                  textConfiguration: const MyoroIconTextButtonTextConfiguration(
+                    text: 'Click to show a validation error',
+                  ),
+                  borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+                  onTapUp: (_) => controller.finish(),
                 ),
-                onPressed: () => controller.finish(),
               ),
             ),
           ],
@@ -106,14 +108,18 @@ final class _SuffixWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroIconTextHoverButton(
-      icon:
-          context
-              .resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>()
-              .suffixWidgetIcon,
-      iconSize: 30,
-      configuration: const MyoroHoverButtonConfiguration(bordered: true),
-      onPressed: () {},
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>();
+    final IconData suffixWidgetIcon = themeExtension.suffixWidgetIcon;
+
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: suffixWidgetIcon,
+        ),
+        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        onTapUp: (_) {},
+      ),
     );
   }
 }
@@ -140,7 +146,9 @@ final class _FormatterOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(MyoroInputWidgetShowcaseEnum item) {
-    return MyoroMenuItem(text: item.title);
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: item.title),
+    );
   }
 
   String _selectedItemBuilder(MyoroInputWidgetShowcaseEnum item) {
@@ -230,7 +238,11 @@ final class _InputStyleOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(MyoroInputStyleEnum item) {
-    return MyoroMenuItem(text: _getStyleName(item));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _getStyleName(item),
+      ),
+    );
   }
 
   String _getStyleName(MyoroInputStyleEnum item) {
@@ -271,7 +283,11 @@ final class _TextAlignOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(TextAlign item) {
-    return MyoroMenuItem(text: _getTextAlignName(item));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _getTextAlignName(item),
+      ),
+    );
   }
 
   String _getTextAlignName(TextAlign item) {
@@ -314,7 +330,11 @@ final class _InputTextStyleOption extends StatelessWidget {
     MyoroTypographyDesignSystem typography,
     TextStyle item,
   ) {
-    return MyoroMenuItem(text: typography.getTextStyleName(item));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: typography.getTextStyleName(item),
+      ),
+    );
   }
 
   void _onChanged(BuildContext context, TextStyle? item) {
@@ -406,7 +426,11 @@ final class _LabelTextStyleOption extends StatelessWidget {
     MyoroTypographyDesignSystem typography,
     TextStyle item,
   ) {
-    return MyoroMenuItem(text: typography.getTextStyleName(item));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: typography.getTextStyleName(item),
+      ),
+    );
   }
 
   void _onChanged(MyoroInputWidgetShowcaseBloc bloc, TextStyle? textStyle) {

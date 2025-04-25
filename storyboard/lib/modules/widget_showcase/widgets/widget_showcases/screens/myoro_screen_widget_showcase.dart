@@ -57,9 +57,13 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              MyoroIconTextHoverButton(
-                icon: themeExtension.appBarMenuButtonIcon,
-                onPressed: () {},
+              MyoroIconTextButton(
+                configuration: MyoroIconTextButtonConfiguration(
+                  iconConfiguration: MyoroIconTextButtonIconConfiguration(
+                    icon: themeExtension.appBarMenuButtonIcon,
+                  ),
+                  onTapUp: (_) => {},
+                ),
               ),
             ],
           ),

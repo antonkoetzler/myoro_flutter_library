@@ -16,10 +16,6 @@ class MyoroTableThemeExtension
   /// [MyoroIconTextHoverButton.iconSize] of [_PageNumberControlTraversalButton].
   final double pageNumberControlTraversalButtonIconSize;
 
-  /// [MyoroHoverButtonConfiguration] of [_PageNumberControlTraversalButton].
-  final MyoroHoverButtonConfiguration
-  pageNumberControlTraversalButtonConfiguration;
-
   /// [IconData] of [_PageNumberControlPreviousPageButton].
   final IconData pageNumberControlPreviousPageButtonIcon;
 
@@ -54,7 +50,6 @@ class MyoroTableThemeExtension
     required this.pageNumberControlSpacing,
     required this.pageNumberControlInputStyle,
     required this.pageNumberControlTraversalButtonIconSize,
-    required this.pageNumberControlTraversalButtonConfiguration,
     required this.pageNumberControlPreviousPageButtonIcon,
     required this.pageNumberControlNextPageButtonIcon,
     required this.tableDecoration,
@@ -76,8 +71,6 @@ class MyoroTableThemeExtension
         scale: 100,
         min: 5,
       ),
-      pageNumberControlTraversalButtonConfiguration:
-          MyoroHoverButtonConfiguration.fake(),
       pageNumberControlPreviousPageButtonIcon:
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
@@ -112,8 +105,6 @@ class MyoroTableThemeExtension
       pageNumberControlSpacing: 5,
       pageNumberControlInputStyle: MyoroInputStyleEnum.underlined,
       pageNumberControlTraversalButtonIconSize: 15,
-      pageNumberControlTraversalButtonConfiguration:
-          const MyoroHoverButtonConfiguration(bordered: true),
       pageNumberControlPreviousPageButtonIcon: Icons.keyboard_arrow_left,
       pageNumberControlNextPageButtonIcon: Icons.keyboard_arrow_right,
       tableDecoration: BoxDecoration(
@@ -142,8 +133,6 @@ class MyoroTableThemeExtension
     double? pageNumberControlSpacing,
     MyoroInputStyleEnum? pageNumberControlInputStyle,
     double? pageNumberControlTraversalButtonIconSize,
-    MyoroHoverButtonConfiguration?
-    pageNumberControlTraversalButtonConfiguration,
     IconData? pageNumberControlPreviousPageButtonIcon,
     IconData? pageNumberControlNextPageButtonIcon,
     BoxDecoration? tableDecoration,
@@ -163,9 +152,6 @@ class MyoroTableThemeExtension
       pageNumberControlTraversalButtonIconSize:
           pageNumberControlTraversalButtonIconSize ??
           this.pageNumberControlTraversalButtonIconSize,
-      pageNumberControlTraversalButtonConfiguration:
-          pageNumberControlTraversalButtonConfiguration ??
-          this.pageNumberControlTraversalButtonConfiguration,
       pageNumberControlPreviousPageButtonIcon:
           pageNumberControlPreviousPageButtonIcon ??
           this.pageNumberControlPreviousPageButtonIcon,
@@ -208,12 +194,6 @@ class MyoroTableThemeExtension
         other.pageNumberControlTraversalButtonIconSize,
         t,
       ),
-      pageNumberControlTraversalButtonConfiguration:
-          MyoroHoverButtonConfiguration.lerp(
-            pageNumberControlTraversalButtonConfiguration,
-            other.pageNumberControlTraversalButtonConfiguration,
-            t,
-          ),
       pageNumberControlPreviousPageButtonIcon: myoroLerp(
         pageNumberControlPreviousPageButtonIcon,
         other.pageNumberControlPreviousPageButtonIcon,
@@ -263,8 +243,6 @@ class MyoroTableThemeExtension
         other.pageNumberControlInputStyle == pageNumberControlInputStyle &&
         other.pageNumberControlTraversalButtonIconSize ==
             pageNumberControlTraversalButtonIconSize &&
-        other.pageNumberControlTraversalButtonConfiguration ==
-            pageNumberControlTraversalButtonConfiguration &&
         other.pageNumberControlPreviousPageButtonIcon ==
             pageNumberControlPreviousPageButtonIcon &&
         other.pageNumberControlNextPageButtonIcon ==
@@ -286,7 +264,6 @@ class MyoroTableThemeExtension
       pageNumberControlSpacing,
       pageNumberControlInputStyle,
       pageNumberControlTraversalButtonIconSize,
-      pageNumberControlTraversalButtonConfiguration,
       pageNumberControlPreviousPageButtonIcon,
       pageNumberControlNextPageButtonIcon,
       tableDecoration,

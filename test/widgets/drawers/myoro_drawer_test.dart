@@ -28,8 +28,7 @@ void main() {
         child: Builder(
           builder: (BuildContext buildContext) {
             context = buildContext;
-            themeExtension =
-                context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
             return const SizedBox.shrink();
           },
         ),
@@ -54,8 +53,7 @@ void main() {
     // Wrapper.
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is Stack && w.children.length == 2 && w.children.last is Row,
+        (Widget w) => w is Stack && w.children.length == 2 && w.children.last is Row,
       ),
       findsOneWidget,
     );
@@ -78,9 +76,7 @@ void main() {
         (Widget w) =>
             w is Row &&
             w.mainAxisAlignment ==
-                (!isEndDrawer
-                    ? MainAxisAlignment.start
-                    : MainAxisAlignment.end) &&
+                (!isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end) &&
             w.children.length == 2,
       ),
       findsOneWidget,
@@ -95,32 +91,21 @@ void main() {
             w.child is Drawer &&
             (w.child as Drawer).shape == themeExtension.drawerShape &&
             (w.child as Drawer).child is Padding &&
-            ((w.child as Drawer).child as Padding).padding ==
-                themeExtension.drawerContentPadding &&
+            ((w.child as Drawer).child as Padding).padding == themeExtension.drawerContentPadding &&
             ((w.child as Drawer).child as Padding).child is Column &&
-            (((w.child as Drawer).child as Padding).child as Column)
-                    .children
-                    .length ==
-                3 &&
+            (((w.child as Drawer).child as Padding).child as Column).children.length == 3 &&
             (((w.child as Drawer).child as Padding).child as Column).children[1]
                 is MyoroBasicDivider &&
-            ((((w.child as Drawer).child as Padding).child as Column)
-                            .children[1]
+            ((((w.child as Drawer).child as Padding).child as Column).children[1]
                         as MyoroBasicDivider)
                     .configuration ==
                 MyoroBasicDividerConfiguration(
                   direction: Axis.horizontal,
                   padding: themeExtension.titleContentDividerPadding,
                 ) &&
-            (((w.child as Drawer).child as Padding).child as Column)
-                    .children
-                    .last
-                is Expanded &&
+            (((w.child as Drawer).child as Padding).child as Column).children.last is Expanded &&
             // The [SizedBox.shrink] we placed in the [tester.pumpWidget] call.
-            ((((w.child as Drawer).child as Padding).child as Column)
-                            .children
-                            .last
-                        as Expanded)
+            ((((w.child as Drawer).child as Padding).child as Column).children.last as Expanded)
                     .child
                 is SizedBox,
       ),
@@ -142,17 +127,13 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroIconTextHoverButton &&
-            w.configuration ==
-                MyoroHoverButtonConfiguration(
-                  primaryColor: themeExtension.closeButtonBackgroundColor,
-                  bordered: themeExtension.closeButtonBordered,
-                ) &&
-            w.icon ==
+            w is MyoroIconTextButton &&
+            w.configuration.borderBuilder != null &&
+            w.configuration.iconConfiguration?.icon ==
                 (!isEndDrawer
                     ? themeExtension.closeButtonDrawerIcon
                     : themeExtension.closeButtonEndDrawerIcon) &&
-            w.onPressed != null,
+            w.configuration.onTapUp != null,
       ),
       findsOneWidget,
     );

@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -7,12 +6,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroBarGraphWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroBarGraphWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroBarGraphWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -20,9 +16,6 @@ void main() {
     expect(find.byType(MyoroBarGraphWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroBarGraph), findsOneWidget);
-    expect(
-      find.widgetWithText(MyoroCheckbox, '[MyoroBarGraph.sorted]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroCheckbox, '[MyoroBarGraph.sorted]'), findsOneWidget);
   });
 }

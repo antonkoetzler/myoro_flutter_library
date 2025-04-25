@@ -10,8 +10,7 @@ void main() {
     faker.randomGenerator.integer(10),
     (int index) => Text('$index'),
   );
-  final Axis direction =
-      Axis.values[faker.randomGenerator.integer(Axis.values.length)];
+  final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
   const bool displayTraversalButtons = true;
   final int initialItem = faker.randomGenerator.integer(items.length);
 
@@ -24,11 +23,11 @@ void main() {
             w is Align &&
             w.alignment == alignment &&
             w.child is IntrinsicWidth &&
-            (w.child as IntrinsicWidth).child is MyoroIconTextHoverButton &&
-            ((w.child as IntrinsicWidth).child as MyoroIconTextHoverButton)
+            (w.child as IntrinsicWidth).child is MyoroIconTextButton &&
+            ((w.child as IntrinsicWidth).child as MyoroIconTextButton)
                     .configuration
-                    ?.bordered ==
-                themeExtension.traversalButtonBordered,
+                    .borderBuilder !=
+                null,
       ),
       findsOneWidget,
     );
@@ -39,8 +38,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
 
             return MyoroCarousel(
               direction: direction,
@@ -82,13 +80,7 @@ void main() {
     );
 
     // [_TraversalButton]s.
-    expectTraversalButton(
-      Alignment.centerLeft,
-      themeExtension.previousItemButtonIcon,
-    );
-    expectTraversalButton(
-      Alignment.centerRight,
-      themeExtension.nextItemButtonIcon,
-    );
+    expectTraversalButton(Alignment.centerLeft, themeExtension.previousItemButtonIcon);
+    expectTraversalButton(Alignment.centerRight, themeExtension.nextItemButtonIcon);
   });
 }

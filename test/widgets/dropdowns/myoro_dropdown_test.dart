@@ -210,7 +210,9 @@ Set<String> _request() {
 }
 
 MyoroMenuItem _itemBuilder(String item) {
-  return MyoroMenuItem.fake().copyWith(text: item);
+  return MyoroMenuItem.fake().copyWith(
+    textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
+  );
 }
 
 String _selectedItemBuilder(String item) {

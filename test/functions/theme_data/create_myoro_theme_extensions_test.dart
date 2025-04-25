@@ -22,10 +22,6 @@ void main() {
       // App bars
       MyoroAppBarThemeExtension,
 
-      // Buttons
-      MyoroHoverButtonThemeExtension,
-      MyoroIconTextHoverButtonThemeExtension,
-
       // Cards
       MyoroCardThemeExtension,
 

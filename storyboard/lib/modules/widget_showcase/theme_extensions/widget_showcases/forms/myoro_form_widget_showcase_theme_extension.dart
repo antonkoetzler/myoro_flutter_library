@@ -20,9 +20,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
   /// [_SubmitButton]'s [MyoroIconTextHoverButton.mainAxisAlignment].
   final MainAxisAlignment submitButtonMainAxisAlignment;
 
-  /// [_SubmitButton]'s [MyoroIconTextHoverButton.bordered].
-  final bool submitButtonBordered;
-
   /// [_ResultText]'s [TextStyle].
   final TextStyle resultTextStyle;
 
@@ -37,7 +34,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
     required this.widgetInputStyle,
     required this.widgetSpacing,
     required this.submitButtonMainAxisAlignment,
-    required this.submitButtonBordered,
     required this.resultTextStyle,
     required this.successColor,
     required this.errorColor,
@@ -54,7 +50,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
           MainAxisAlignment.values[faker.randomGenerator.integer(
             MainAxisAlignment.values.length,
           )],
-      submitButtonBordered = faker.randomGenerator.boolean(),
       resultTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       successColor =
           kMyoroTestColors[faker.randomGenerator.integer(
@@ -70,7 +65,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
       widgetInputStyle = MyoroInputStyleEnum.outlined,
       widgetSpacing = 10,
       submitButtonMainAxisAlignment = MainAxisAlignment.center,
-      submitButtonBordered = true,
       resultTextStyle = textTheme.headlineLarge!,
       successColor = Colors.green,
       errorColor = Colors.red;
@@ -81,7 +75,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
     MyoroInputStyleEnum? widgetInputStyle,
     double? widgetSpacing,
     MainAxisAlignment? submitButtonMainAxisAlignment,
-    bool? submitButtonBordered,
     TextStyle? resultTextStyle,
     Color? successColor,
     Color? errorColor,
@@ -93,7 +86,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
       widgetSpacing: widgetSpacing ?? this.widgetSpacing,
       submitButtonMainAxisAlignment:
           submitButtonMainAxisAlignment ?? this.submitButtonMainAxisAlignment,
-      submitButtonBordered: submitButtonBordered ?? this.submitButtonBordered,
       resultTextStyle: resultTextStyle ?? this.resultTextStyle,
       successColor: successColor ?? this.successColor,
       errorColor: errorColor ?? this.errorColor,
@@ -119,11 +111,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
         other.submitButtonMainAxisAlignment,
         t,
       ),
-      submitButtonBordered: myoroLerp(
-        submitButtonBordered,
-        other.submitButtonBordered,
-        t,
-      ),
       resultTextStyle: TextStyle.lerp(
         resultTextStyle,
         other.resultTextStyle,
@@ -142,7 +129,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
         other.widgetInputStyle == widgetInputStyle &&
         other.widgetSpacing == widgetSpacing &&
         other.submitButtonMainAxisAlignment == submitButtonMainAxisAlignment &&
-        other.submitButtonBordered == submitButtonBordered &&
         other.resultTextStyle == resultTextStyle &&
         other.successColor == successColor &&
         other.errorColor == errorColor;
@@ -155,7 +141,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
       widgetInputStyle,
       widgetSpacing,
       submitButtonMainAxisAlignment,
-      submitButtonBordered,
       resultTextStyle,
       successColor,
       errorColor,
@@ -169,7 +154,6 @@ final class MyoroFormWidgetShowcaseThemeExtension
       '  widgetInputStyle: $widgetInputStyle,\n'
       '  widgetSpacing: $widgetSpacing,\n'
       '  submitButtonMainAxisAlignment: $submitButtonMainAxisAlignment,\n'
-      '  submitButtonBordered: $submitButtonBordered,\n'
       '  resultTextStyle: $resultTextStyle,\n'
       '  successColor: $successColor,\n'
       '  errorColor: $errorColor,\n'

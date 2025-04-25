@@ -5,9 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] of [MyoroCarousel].
 class MyoroCarouselThemeExtension
     extends ThemeExtension<MyoroCarouselThemeExtension> {
-  /// [MyoroIconTextHoverButton.bordered] of [_TraversalButton].
-  final bool traversalButtonBordered;
-
   /// Icon of the previous item [_TraversalButton] in [_TraversalButtons].
   final IconData previousItemButtonIcon;
 
@@ -15,14 +12,12 @@ class MyoroCarouselThemeExtension
   final IconData nextItemButtonIcon;
 
   const MyoroCarouselThemeExtension({
-    required this.traversalButtonBordered,
     required this.previousItemButtonIcon,
     required this.nextItemButtonIcon,
   });
 
   MyoroCarouselThemeExtension.fake()
-    : traversalButtonBordered = faker.randomGenerator.boolean(),
-      previousItemButtonIcon =
+    : previousItemButtonIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(
             kMyoroTestIcons.length,
           )],
@@ -32,19 +27,15 @@ class MyoroCarouselThemeExtension
           )];
 
   const MyoroCarouselThemeExtension.builder()
-    : traversalButtonBordered = true,
-      previousItemButtonIcon = Icons.keyboard_arrow_left,
+    : previousItemButtonIcon = Icons.keyboard_arrow_left,
       nextItemButtonIcon = Icons.keyboard_arrow_right;
 
   @override
   MyoroCarouselThemeExtension copyWith({
-    bool? traversalButtonBordered,
     IconData? previousItemButtonIcon,
     IconData? nextItemButtonIcon,
   }) {
     return MyoroCarouselThemeExtension(
-      traversalButtonBordered:
-          traversalButtonBordered ?? this.traversalButtonBordered,
       previousItemButtonIcon:
           previousItemButtonIcon ?? this.previousItemButtonIcon,
       nextItemButtonIcon: nextItemButtonIcon ?? this.nextItemButtonIcon,
@@ -58,11 +49,6 @@ class MyoroCarouselThemeExtension
   ) {
     if (other is! MyoroCarouselThemeExtension) return this;
     return copyWith(
-      traversalButtonBordered: myoroLerp(
-        traversalButtonBordered,
-        other.traversalButtonBordered,
-        t,
-      ),
       previousItemButtonIcon: myoroLerp(
         previousItemButtonIcon,
         other.previousItemButtonIcon,
@@ -80,24 +66,18 @@ class MyoroCarouselThemeExtension
   bool operator ==(Object other) {
     return other is MyoroCarouselThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.traversalButtonBordered == traversalButtonBordered &&
         other.previousItemButtonIcon == previousItemButtonIcon &&
         other.nextItemButtonIcon == nextItemButtonIcon;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      traversalButtonBordered,
-      previousItemButtonIcon,
-      nextItemButtonIcon,
-    );
+    return Object.hash(previousItemButtonIcon, nextItemButtonIcon);
   }
 
   @override
   String toString() =>
       'MyoroCarouselThemeExtension(\n'
-      '  traversalButtonBordered: $traversalButtonBordered,\n'
       '  previousItemButtonIcon: $previousItemButtonIcon,\n'
       '  nextItemButtonIcon: $nextItemButtonIcon,\n'
       ');';

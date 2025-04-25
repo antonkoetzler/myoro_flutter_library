@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroSliderWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroSliderWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroSliderWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -21,10 +17,7 @@ void main() {
     expect(find.byType(MyoroSliderWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroSlider), findsNWidgets(2));
-    expect(
-      find.widgetWithText(MyoroInput, '[MyoroSlider.label]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroSlider.label]'), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
@@ -33,21 +26,9 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(
-      find.widgetWithText(MyoroSlider, '[MyoroSlider.width]'),
-      findsOneWidget,
-    );
-    expect(
-      find.widgetWithText(MyoroCheckbox, 'Label on the left?'),
-      findsOneWidget,
-    );
-    expect(
-      find.widgetWithText(MyoroCheckbox, 'Label on the right?'),
-      findsOneWidget,
-    );
-    expect(
-      find.widgetWithText(MyoroCheckbox, 'Label on the bottom?'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroSlider, '[MyoroSlider.width]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Label on the left?'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Label on the right?'), findsOneWidget);
+    expect(find.widgetWithText(MyoroCheckbox, 'Label on the bottom?'), findsOneWidget);
   });
 }

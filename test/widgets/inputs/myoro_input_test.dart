@@ -148,11 +148,15 @@ void main() {
               w.child is Padding &&
               (w.child as Padding).padding ==
                   themeExtension.clearTextButtonPadding &&
-              (w.child as Padding).child is MyoroIconTextHoverButton &&
-              ((w.child as Padding).child as MyoroIconTextHoverButton).icon ==
+              (w.child as Padding).child is MyoroIconTextButton &&
+              ((w.child as Padding).child as MyoroIconTextButton)
+                      .configuration
+                      .iconConfiguration
+                      ?.icon ==
                   themeExtension.clearTextButtonIcon &&
-              ((w.child as Padding).child as MyoroIconTextHoverButton)
-                      .onPressed !=
+              ((w.child as Padding).child as MyoroIconTextButton)
+                      .configuration
+                      .onTapUp !=
                   null,
         ),
         findsOneWidget,

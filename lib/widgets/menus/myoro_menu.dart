@@ -230,31 +230,41 @@ final class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final configuration = MyoroHoverButtonConfiguration(
-      borderRadius:
-          context
-              .resolveThemeExtension<MyoroMenuThemeExtension>()
-              .itemBorderRadius,
-      isHovered: _item.isHovered,
-    );
+    final themeExtension =
+        context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final BorderRadius itemBorderRadius = themeExtension.itemBorderRadius;
+    final MyoroButtonConfigurationBackgroundColorBuilder?
+    backgroundColorBuilder =
+        _item.isSelected ? (_) => _backgroundColorBuilder(context) : null;
 
-    if (_item.itemBuilder != null) {
-      return MyoroHoverButton(
-        configuration: configuration,
-        builder: _item.itemBuilder!,
-        onPressed: _item.onPressed,
+    if (_item.builder != null) {
+      return MyoroButton(
+        configuration: MyoroButtonConfiguration(
+          borderRadius: itemBorderRadius,
+          backgroundColorBuilder: backgroundColorBuilder,
+          onTapDown: _item.onTapDown,
+          onTapUp: _item.onTapUp,
+        ),
+        builder: _item.builder!,
       );
     }
 
-    return MyoroIconTextHoverButton(
-      configuration: configuration,
-      icon: _item.icon,
-      iconSize: _item.iconSize,
-      text: _item.text ?? '',
-      textStyle: _item.textStyle,
-      textAlign: _item.textAlign,
-      onPressed: _item.onPressed,
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        iconConfiguration: _item.iconConfiguration,
+        textConfiguration: _item.textConfiguration,
+        borderRadius: itemBorderRadius,
+        backgroundColorBuilder: backgroundColorBuilder,
+        onTapDown: _item.onTapDown,
+        onTapUp: _item.onTapUp,
+      ),
     );
+  }
+
+  Color _backgroundColorBuilder(BuildContext context) {
+    final buttonVariantThemeExtension =
+        context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
+    return buttonVariantThemeExtension.primaryHoverContentColor;
   }
 }
 

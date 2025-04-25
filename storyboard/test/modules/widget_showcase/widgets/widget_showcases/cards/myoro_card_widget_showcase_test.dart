@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroCardWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroCardWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroCardWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -28,17 +24,13 @@ void main() {
             w is IntrinsicHeight &&
             w.child is MyoroCard &&
             (w.child as MyoroCard).child is Text &&
-            ((w.child as MyoroCard).child as Text).data ==
-                'This is a [MyoroCard]!',
+            ((w.child as MyoroCard).child as Text).data == 'This is a [MyoroCard]!',
       ),
       findsOneWidget,
     );
 
     // [_TitleOption].
-    expect(
-      find.widgetWithText(MyoroInput, '[MyoroCard.title]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroCard.title]'), findsOneWidget);
 
     // [_TitleTextStyleOption].
     expect(
@@ -51,21 +43,12 @@ void main() {
     );
 
     // [_PaddingOption].
-    expect(
-      find.widgetWithText(MyoroSlider, '[MyoroCard.padding]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroSlider, '[MyoroCard.padding]'), findsOneWidget);
 
     // [_WidthOption].
-    expect(
-      find.widgetWithText(MyoroInput, '[MyoroCard.width]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroCard.width]'), findsOneWidget);
 
     // [_HeightOption].
-    expect(
-      find.widgetWithText(MyoroInput, '[MyoroCard.height]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroCard.height]'), findsOneWidget);
   });
 }

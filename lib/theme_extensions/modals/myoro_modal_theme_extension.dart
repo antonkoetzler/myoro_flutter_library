@@ -84,7 +84,7 @@ class MyoroModalThemeExtension
 
     return MyoroModalThemeExtension(
       primaryColor: colorScheme.primary,
-      borderRadius: MyoroDecorationHelper.borderRadius,
+      borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       border: Border.all(
         width: kMyoroBorderLength,
         color: colorScheme.onPrimary,

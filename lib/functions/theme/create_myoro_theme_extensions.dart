@@ -52,9 +52,7 @@ List<ThemeExtension> _createButtonThemeExtensions(
   return [
     MyoroButtonThemeExtension.builder(),
     MyoroButtonVariantThemeExtension.builder(colorScheme),
-    MyoroHoverButtonThemeExtension.builder(colorScheme),
     MyoroIconTextButtonThemeExtension.builder(textTheme),
-    MyoroIconTextHoverButtonThemeExtension.builder(colorScheme, textTheme),
   ];
 }
 

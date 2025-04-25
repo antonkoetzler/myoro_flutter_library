@@ -85,9 +85,10 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroIconTextHoverButton &&
-            w.text == (confirmButtonText ?? 'Confirm') &&
-            w.onPressed != null,
+            w is MyoroIconTextButton &&
+            w.configuration.textConfiguration?.text ==
+                (confirmButtonText ?? 'Confirm') &&
+            w.configuration.onTapUp != null,
       ),
       findsOneWidget,
     );
@@ -96,9 +97,10 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroIconTextHoverButton &&
-            w.text == (cancelButtonText ?? 'Cancel') &&
-            w.onPressed != null,
+            w is MyoroIconTextButton &&
+            w.configuration.textConfiguration?.text ==
+                (confirmButtonText ?? 'Cancel') &&
+            w.configuration.onTapUp != null,
       ),
       findsOneWidget,
     );

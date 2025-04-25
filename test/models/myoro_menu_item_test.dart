@@ -1,39 +1,40 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Unit test of [MyoroMenuItem].
 void main() {
   final model = MyoroMenuItem.fake();
 
-  test('MyoroMenuItem.copyWith', () {
-    final newModel = MyoroMenuItem.fake();
+  expect('MyoroMenuItem.copyWith', () {
+    expect(model.copyWith(), model);
+    final otherModel = MyoroMenuItem.fake();
     expect(
       model.copyWith(
-        isHovered: newModel.isHovered,
-        onPressed: newModel.onPressed,
-        icon: newModel.icon,
-        iconSize: newModel.iconSize,
-        text: newModel.text,
-        textStyle: newModel.textStyle,
-        textAlign: newModel.textAlign,
-        itemBuilder: newModel.itemBuilder,
+        isSelected: otherModel.isSelected,
+        iconConfiguration: otherModel.iconConfiguration,
+        iconConfigurationProvided: otherModel.iconConfiguration != null,
+        textConfiguration: otherModel.textConfiguration,
+        textConfigurationProvided: otherModel.textConfiguration != null,
+        builder: otherModel.builder,
+        builderProvided: otherModel.builder != null,
+        onTapDown: otherModel.onTapDown,
+        onTapDownProvided: otherModel.onTapDown != null,
+        onTapUp: otherModel.onTapUp,
+        onTapUpProvided: otherModel.onTapUp != null,
       ),
-      newModel,
+      otherModel,
     );
   });
 
-  test('MyoroMenuItem.toString', () {
+  expect('MyoroMenuItem.toString,', () {
     expect(
       model.toString(),
       'MyoroMenuItem(\n'
-      '  isHovered: ${model.isHovered},\n'
-      '  onPressed: ${model.onPressed},\n'
-      '  icon: ${model.icon},\n'
-      '  iconSize: ${model.iconSize},\n'
-      '  text: ${model.text},\n'
-      '  textStyle: ${model.textStyle},\n'
-      '  textAlign: ${model.textAlign},\n'
-      '  itemBuilder: ${model.itemBuilder},\n'
+      '  isSelected: ${model.isSelected},\n'
+      '  iconConfiguration: ${model.iconConfiguration},\n'
+      '  textConfiguration: ${model.textConfiguration},\n'
+      '  builder: ${model.builder},\n'
+      '  onTapDown: ${model.onTapDown},\n'
+      '  onTapUp: ${model.onTapUp},\n'
       ');',
     );
   });

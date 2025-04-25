@@ -34,36 +34,43 @@ final class _Widget extends StatelessWidget {
       child: BlocBuilder<
         MyoroModalWidgetShowcaseBloc,
         MyoroModalWidgetShowcaseState
-      >(
-        builder: (_, MyoroModalWidgetShowcaseState state) {
-          final constraints = BoxConstraints(
-            minWidth: state.minWidth ?? 0,
-            maxWidth: state.maxWidth ?? double.infinity,
-            minHeight: state.minHeight ?? 0,
-            maxHeight: state.maxHeight ?? double.infinity,
-          );
+      >(builder: _builder),
+    );
+  }
 
-          return MyoroIconTextHoverButton(
-            configuration: const MyoroHoverButtonConfiguration(bordered: true),
-            text: 'Click to launch the modal.',
-            onPressed:
-                () => MyoroModal.show(
-                  context,
-                  configuration: MyoroModalConfiguration(
-                    barrierDismissable: state.barrierDismissable,
-                    constraints: state.constraintsProvided ? constraints : null,
-                    onClosed:
-                        () => context.showSnackBar(
-                          snackBar: MyoroSnackBar(message: 'Modal closed!'),
-                        ),
-                    title: state.title,
-                    showCloseButton: state.showCloseButton,
-                  ),
-                  child: const SizedBox.shrink(),
-                ),
-          );
-        },
+  Widget _builder(BuildContext context, MyoroModalWidgetShowcaseState state) {
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        textConfiguration: const MyoroIconTextButtonTextConfiguration(
+          text: 'Click to launch the modal.',
+        ),
+        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        onTapUp: (_) => _onTapUp(context, state),
       ),
+    );
+  }
+
+  void _onTapUp(BuildContext context, MyoroModalWidgetShowcaseState state) {
+    final constraints = BoxConstraints(
+      minWidth: state.minWidth ?? 0,
+      maxWidth: state.maxWidth ?? double.infinity,
+      minHeight: state.minHeight ?? 0,
+      maxHeight: state.maxHeight ?? double.infinity,
+    );
+
+    MyoroModal.show(
+      context,
+      configuration: MyoroModalConfiguration(
+        barrierDismissable: state.barrierDismissable,
+        constraints: state.constraintsProvided ? constraints : null,
+        onClosed:
+            () => context.showSnackBar(
+              snackBar: MyoroSnackBar(message: 'Modal closed!'),
+            ),
+        title: state.title,
+        showCloseButton: state.showCloseButton,
+      ),
+      child: const SizedBox.shrink(),
     );
   }
 }

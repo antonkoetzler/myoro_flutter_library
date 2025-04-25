@@ -67,7 +67,7 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
             child: _TraversalButton(
               Alignment.centerLeft,
               themeExtension.previousItemButtonIcon,
-              () => _controller.previousPage(),
+              _controller.previousPage,
             ),
           ),
           Positioned(
@@ -118,24 +118,23 @@ final class _Carousel extends StatelessWidget {
 final class _TraversalButton extends StatelessWidget {
   final Alignment _alignment;
   final IconData _icon;
-  final VoidCallback _onPressed;
+  final VoidCallback _onTapUp;
 
-  const _TraversalButton(this._alignment, this._icon, this._onPressed);
+  const _TraversalButton(this._alignment, this._icon, this._onTapUp);
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: _alignment,
       child: IntrinsicWidth(
-        child: MyoroIconTextHoverButton(
-          configuration: MyoroHoverButtonConfiguration(
-            bordered:
-                context
-                    .resolveThemeExtension<MyoroCarouselThemeExtension>()
-                    .traversalButtonBordered,
+        child: MyoroIconTextButton(
+          configuration: MyoroIconTextButtonConfiguration(
+            iconConfiguration: MyoroIconTextButtonIconConfiguration(
+              icon: _icon,
+            ),
+            borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+            onTapUp: (_) => _onTapUp(),
           ),
-          icon: _icon,
-          onPressed: _onPressed,
         ),
       ),
     );

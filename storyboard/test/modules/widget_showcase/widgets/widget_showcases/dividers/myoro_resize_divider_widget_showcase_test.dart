@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroResizeDividerWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroResizeDividerWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroResizeDividerWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -29,17 +25,8 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(
-      find.widgetWithText(MyoroSlider, '[MyoroResizeDivider.shortValue]'),
-      findsOneWidget,
-    );
-    expect(
-      find.widgetWithText(MyoroSlider, 'Vertical padding'),
-      findsOneWidget,
-    );
-    expect(
-      find.widgetWithText(MyoroSlider, 'Horizontal padding'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroSlider, '[MyoroResizeDivider.shortValue]'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, 'Vertical padding'), findsOneWidget);
+    expect(find.widgetWithText(MyoroSlider, 'Horizontal padding'), findsOneWidget);
   });
 }

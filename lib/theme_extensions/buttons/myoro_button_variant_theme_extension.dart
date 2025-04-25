@@ -4,27 +4,35 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of the [Color]s used in [MyoroButtonVariantEnum].
 ///
-/// TODO: Needs to be tested.
+/// TODO: Needs to be tested AND it needs a new name. Variant is not accurate because of [border].
 @immutable
 class MyoroButtonVariantThemeExtension
     extends ThemeExtension<MyoroButtonVariantThemeExtension> {
+  /// Standard [BoxBorder].
+  final BoxBorder border;
+
+  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.primary].
   final Color primaryIdleBackgroundColor;
   final Color primaryHoverBackgroundColor;
   final Color primaryTapBackgroundColor;
 
+  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.primary].
   final Color primaryIdleContentColor;
   final Color primaryHoverContentColor;
   final Color primaryTapContentColor;
 
+  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.secondary].
   final Color secondaryIdleBackgroundColor;
   final Color secondaryHoverBackgroundColor;
   final Color secondaryTapBackgroundColor;
 
+  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.secondary].
   final Color secondaryIdleContentColor;
   final Color secondaryHoverContentColor;
   final Color secondaryTapContentColor;
 
   const MyoroButtonVariantThemeExtension({
+    required this.border,
     required this.primaryIdleBackgroundColor,
     required this.primaryHoverBackgroundColor,
     required this.primaryTapBackgroundColor,
@@ -40,7 +48,14 @@ class MyoroButtonVariantThemeExtension
   });
 
   MyoroButtonVariantThemeExtension.fake()
-    : primaryIdleBackgroundColor =
+    : border = Border.all(
+        width: faker.randomGenerator.decimal(scale: 10),
+        color:
+            kMyoroTestColors[faker.randomGenerator.integer(
+              kMyoroTestColors.length,
+            )],
+      ),
+      primaryIdleBackgroundColor =
           kMyoroTestColors[faker.randomGenerator.integer(
             kMyoroTestColors.length,
           )],
@@ -90,7 +105,11 @@ class MyoroButtonVariantThemeExtension
           )];
 
   MyoroButtonVariantThemeExtension.builder(ColorScheme colorScheme)
-    : primaryIdleBackgroundColor = colorScheme.primary,
+    : border = Border.all(
+        width: kMyoroBorderLength,
+        color: colorScheme.onPrimary,
+      ),
+      primaryIdleBackgroundColor = colorScheme.primary,
       primaryHoverBackgroundColor = colorScheme.onPrimary.withValues(
         alpha: 0.15,
       ),
@@ -113,6 +132,7 @@ class MyoroButtonVariantThemeExtension
 
   @override
   MyoroButtonVariantThemeExtension copyWith({
+    BoxBorder? border,
     Color? primaryIdleBackgroundColor,
     Color? primaryHoverBackgroundColor,
     Color? primaryTapBackgroundColor,
@@ -127,6 +147,7 @@ class MyoroButtonVariantThemeExtension
     Color? secondaryTapContentColor,
   }) {
     return MyoroButtonVariantThemeExtension(
+      border: border ?? this.border,
       primaryIdleBackgroundColor:
           primaryIdleBackgroundColor ?? this.primaryIdleBackgroundColor,
       primaryHoverBackgroundColor:
@@ -161,6 +182,7 @@ class MyoroButtonVariantThemeExtension
   ) {
     if (other is! MyoroButtonVariantThemeExtension) return this;
     return copyWith(
+      border: BoxBorder.lerp(border, other.border, t),
       primaryIdleBackgroundColor: Color.lerp(
         primaryIdleBackgroundColor,
         other.primaryIdleBackgroundColor,
@@ -228,6 +250,7 @@ class MyoroButtonVariantThemeExtension
   bool operator ==(Object other) {
     return other is MyoroButtonVariantThemeExtension &&
         other.runtimeType == runtimeType &&
+        other.border == border &&
         other.primaryIdleBackgroundColor == primaryIdleBackgroundColor &&
         other.primaryHoverBackgroundColor == primaryHoverBackgroundColor &&
         other.primaryTapBackgroundColor == primaryTapBackgroundColor &&
@@ -245,6 +268,7 @@ class MyoroButtonVariantThemeExtension
   @override
   int get hashCode {
     return Object.hash(
+      border,
       primaryIdleBackgroundColor,
       primaryHoverBackgroundColor,
       primaryTapBackgroundColor,
@@ -263,6 +287,7 @@ class MyoroButtonVariantThemeExtension
   @override
   String toString() =>
       'MyoroButtonVariantThemeExtension(\n'
+      '  border: $border,\n'
       '  primaryIdleBackgroundColor: $primaryIdleBackgroundColor,\n'
       '  primaryHoverBackgroundColor: $primaryHoverBackgroundColor,\n'
       '  primaryTapBackgroundColor: $primaryTapBackgroundColor,\n'

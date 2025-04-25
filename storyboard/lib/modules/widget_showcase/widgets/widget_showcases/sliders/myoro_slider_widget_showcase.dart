@@ -204,7 +204,9 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(TextStyle textStyle) {
     return MyoroMenuItem(
-      text: MyoroTypographyDesignSystem.instance.getTextStyleName(textStyle),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: MyoroTypographyDesignSystem.instance.getTextStyleName(textStyle),
+      ),
     );
   }
 

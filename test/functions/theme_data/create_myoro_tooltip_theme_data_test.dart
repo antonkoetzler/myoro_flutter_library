@@ -14,17 +14,14 @@ void main() {
   test('createMyoroTooltipThemeData', () {
     final ColorScheme colorScheme = createMyoroColorScheme(isDarkMode);
     final TextTheme textTheme = createMyoroTextTheme(isDarkMode);
-    final TooltipThemeData tooltipThemeData = createMyoroTooltipThemeData(
-      colorScheme,
-      textTheme,
-    );
+    final TooltipThemeData tooltipThemeData = createMyoroTooltipThemeData(colorScheme, textTheme);
     expect(
       tooltipThemeData,
       TooltipThemeData(
         decoration: BoxDecoration(
           color: colorScheme.primary,
-          borderRadius: MyoroDecorationHelper.borderRadius,
-          border: Border.all(width: 2, color: colorScheme.onPrimary),
+          borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+          border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
         ),
         textStyle: textTheme.bodySmall,
         padding: const EdgeInsets.all(10),

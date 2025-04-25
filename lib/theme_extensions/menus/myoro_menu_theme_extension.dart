@@ -64,7 +64,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> {
         width: kMyoroBorderLength,
         color: colorScheme.onPrimary,
       ),
-      borderRadius = MyoroDecorationHelper.inputBorderRadius,
+      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
       searchBarPadding = const EdgeInsets.all(10),
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
       itemBorderRadius = BorderRadius.zero,

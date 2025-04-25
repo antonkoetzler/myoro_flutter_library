@@ -290,9 +290,9 @@ final class _Label extends StatelessWidget {
 }
 
 final class _ClearTextButton extends StatelessWidget {
-  final VoidCallback _onPressed;
+  final VoidCallback _onTapUp;
 
-  const _ClearTextButton(this._onPressed);
+  const _ClearTextButton(this._onTapUp);
 
   @override
   Widget build(BuildContext context) {
@@ -302,9 +302,13 @@ final class _ClearTextButton extends StatelessWidget {
     return IntrinsicWidth(
       child: Padding(
         padding: themeExtension.clearTextButtonPadding,
-        child: MyoroIconTextHoverButton(
-          icon: themeExtension.clearTextButtonIcon,
-          onPressed: _onPressed,
+        child: MyoroIconTextButton(
+          configuration: MyoroIconTextButtonConfiguration(
+            iconConfiguration: MyoroIconTextButtonIconConfiguration(
+              icon: themeExtension.clearTextButtonIcon,
+            ),
+            onTapUp: (_) => _onTapUp(),
+          ),
         ),
       ),
     );

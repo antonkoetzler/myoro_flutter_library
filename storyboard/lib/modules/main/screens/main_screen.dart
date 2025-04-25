@@ -23,31 +23,33 @@ final class _Body extends StatelessWidget {
     return MyoroAccordion(
       configuration: MyoroAccordionConfiguration(
         items:
-            WidgetListingEnum.values
+            StoryboardWidgetListingEnum.values
                 .map<MyoroAccordionItem>(_itemBuilder)
                 .toList(),
       ),
     );
   }
 
-  MyoroAccordionItem _itemBuilder(WidgetListingEnum widgetListingEnum) {
+  MyoroAccordionItem _itemBuilder(
+    StoryboardWidgetListingEnum widgetListingEnum,
+  ) {
     return MyoroAccordionItem(
       titleBuilder: (_) => _titleBuilder(widgetListingEnum),
       contentBuilder: (_) => _contentBuilder(widgetListingEnum),
     );
   }
 
-  Widget _titleBuilder(WidgetListingEnum widgetListingEnum) {
+  Widget _titleBuilder(StoryboardWidgetListingEnum widgetListingEnum) {
     return Text(widgetListingEnum.categoryName);
   }
 
-  Widget _contentBuilder(WidgetListingEnum widgetListingEnum) {
+  Widget _contentBuilder(StoryboardWidgetListingEnum widgetListingEnum) {
     return _WidgetCategoryDropdown(widgetListingEnum);
   }
 }
 
 final class _WidgetCategoryDropdown extends StatelessWidget {
-  final WidgetListingEnum _widgetListingEnum;
+  final StoryboardWidgetListingEnum _widgetListingEnum;
 
   const _WidgetCategoryDropdown(this._widgetListingEnum);
 

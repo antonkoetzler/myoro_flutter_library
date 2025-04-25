@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum centralizing all default button variants provided.
+///
+/// TODO: Not tested AND it needs a new name
 enum MyoroButtonVariantEnum {
-  /// No idle background color and normal coloring of content.
+  /// No idle background [Color] and normal coloring of content.
   primary,
 
-  /// Background color and "inverse" coloring of content.
+  /// Background [Color] and "inverse" coloring of content.
   secondary;
+
+  /// Standard [BoxBorder] if you want to apply the default [BoxBorder].
+  static BoxBorder border(BuildContext context) {
+    final themeExtension = _getThemeExtension(context);
+    return themeExtension.border;
+  }
 
   /// [MyoroButtonConfiguration.backgroundColorBuilder].
   Color backgroundColorBuilder(
@@ -52,7 +60,9 @@ enum MyoroButtonVariantEnum {
     };
   }
 
-  MyoroButtonVariantThemeExtension _getThemeExtension(BuildContext context) {
+  static MyoroButtonVariantThemeExtension _getThemeExtension(
+    BuildContext context,
+  ) {
     return context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
   }
 }

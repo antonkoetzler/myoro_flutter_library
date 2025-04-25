@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,12 +7,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroRadioWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroRadioWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroRadioWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -21,10 +17,7 @@ void main() {
     expect(find.byType(MyoroRadioWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroRadio), findsOneWidget);
-    expect(
-      find.widgetWithText(MyoroInput, '[MyoroRadio.label]'),
-      findsOneWidget,
-    );
+    expect(find.widgetWithText(MyoroInput, '[MyoroRadio.label]'), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>

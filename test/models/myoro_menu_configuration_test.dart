@@ -61,6 +61,9 @@ MyoroMenuConfiguration<String> get _fake {
     request: () => items,
     onEndReachedRequest: faker.randomGenerator.boolean() ? (_) => items : null,
     searchCallback: faker.randomGenerator.boolean() ? (_, __) => items : null,
-    itemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
+    itemBuilder:
+        (String item) => MyoroMenuItem.fake().copyWith(
+          textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
+        ),
   );
 }

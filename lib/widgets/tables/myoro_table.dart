@@ -150,20 +150,25 @@ final class _PageNumberControl<T> extends StatelessWidget {
 /// [_PageNumberControl] page traversal button.
 final class _PageNumberControlTraversalButton extends StatelessWidget {
   final IconData _icon;
-  final VoidCallback? _onPressed;
+  final VoidCallback? _onTapUp;
 
-  const _PageNumberControlTraversalButton(this._icon, this._onPressed);
+  const _PageNumberControlTraversalButton(this._icon, this._onTapUp);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension =
         context.resolveThemeExtension<MyoroTableThemeExtension>();
-    return MyoroIconTextHoverButton(
-      icon: _icon,
-      iconSize: themeExtension.pageNumberControlTraversalButtonIconSize,
-      onPressed: _onPressed,
-      configuration:
-          themeExtension.pageNumberControlTraversalButtonConfiguration,
+    final double pageNumberControlTraversalButtonIconSize =
+        themeExtension.pageNumberControlTraversalButtonIconSize;
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: _icon,
+          size: pageNumberControlTraversalButtonIconSize,
+        ),
+        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        onTapUp: _onTapUp != null ? (_) => _onTapUp() : null,
+      ),
     );
   }
 }
@@ -208,11 +213,11 @@ final class _PageNumberControlNextPageButton<T> extends StatelessWidget {
         context.resolveThemeExtension<MyoroTableThemeExtension>();
     return _PageNumberControlTraversalButton(
       themeExtension.pageNumberControlNextPageButtonIcon,
-      _enabled ? _onPressed : null,
+      _enabled ? _onTapUp : null,
     );
   }
 
-  void _onPressed() {
+  void _onTapUp() {
     _tableController
       ..setCurrentPage(_tableController.pagination.currentPage + 1)
       ..fetch();
@@ -335,7 +340,11 @@ final class _ItemsPerPageControl<T> extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(int item) {
-    return MyoroMenuItem(text: _textBuilder(item));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _textBuilder(item),
+      ),
+    );
   }
 
   String _textBuilder(int item) {
@@ -559,19 +568,12 @@ final class _RowsState<T> extends State<_Rows<T>> {
 
   @override
   Widget build(BuildContext context) {
-    if (_items.isEmpty) {
-      return const _EmptyMessage();
-    }
-
-    return MyoroLayoutBuilder(builder: _builder);
+    return _items.isEmpty
+        ? const _EmptyMessage()
+        : MyoroLayoutBuilder(builder: _builder);
   }
 
   Widget _builder(BuildContext context, __) {
-    final tableThemeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final hoverButtonThemeExtension =
-        context.resolveThemeExtension<MyoroHoverButtonThemeExtension>();
-
     return Scrollbar(
       controller: _scrollController,
       thumbVisibility: true,
@@ -579,28 +581,31 @@ final class _RowsState<T> extends State<_Rows<T>> {
         controller: _scrollController,
         shrinkWrap: true,
         itemCount: _items.length,
-        itemBuilder: (_, int index) {
-          return MyoroHoverButton(
-            onPressed: () => throw UnimplementedError(),
-            configuration: MyoroHoverButtonConfiguration(
-              primaryColor: MyoroColorDesignSystem.transparent,
-              onPrimaryColor: hoverButtonThemeExtension.onPrimaryColor
-                  .withValues(alpha: 0.1),
-              borderRadius: BorderRadius.zero,
-            ),
-            builder: (bool isHovered, __, ___) {
-              return Row(
-                spacing: tableThemeExtension.columnSpacing,
-                children: _buildCells(_items[index], isHovered),
-              );
-            },
-          );
-        },
+        itemBuilder: _itemBuilder,
       ),
     );
   }
 
-  List<Widget> _buildCells(T item, bool isHovered) {
+  Widget _itemBuilder(BuildContext context, int index) {
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
+
+    return MyoroButton(
+      configuration: MyoroButtonConfiguration(
+        borderRadius: BorderRadius.zero,
+        // TODO
+        onTapUp: (_) => throw UnimplementedError(),
+      ),
+      builder: (_, __) {
+        return Row(
+          spacing: themeExtension.columnSpacing,
+          children: _buildCells(_items[index]),
+        );
+      },
+    );
+  }
+
+  List<Widget> _buildCells(T item) {
     final MyoroTableRow<T> row = _configuration.rowBuilder(item);
     final List<Widget> cells = row.cells;
 

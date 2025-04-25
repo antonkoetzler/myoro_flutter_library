@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -7,12 +6,9 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroMenuWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createThemeExtensions,
-        child: BlocProvider(
-          create: (_) => WidgetShowcaseBloc(),
-          child: const MyoroMenuWidgetShowcase(),
-        ),
+      const MyoroWidgetTester(
+        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+        child: MyoroMenuWidgetShowcase(),
       ),
     );
     await tester.pumpAndSettle();
@@ -21,10 +17,7 @@ void main() {
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.text('[MyoroMenu.constraints]'), findsOneWidget);
     expect(
-      find.widgetWithText(
-        MyoroCheckbox,
-        '[MyoroMenu.searchCallback] not null?',
-      ),
+      find.widgetWithText(MyoroCheckbox, '[MyoroMenu.searchCallback] not null?'),
       findsOneWidget,
     );
   });

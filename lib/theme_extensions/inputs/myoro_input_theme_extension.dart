@@ -77,7 +77,7 @@ class MyoroInputThemeExtension
         ),
       ),
       outlinedBorder = OutlineInputBorder(
-        borderRadius: MyoroDecorationHelper.inputBorderRadius,
+        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
         borderSide: BorderSide(
           width: faker.randomGenerator.decimal(),
           color:
@@ -119,7 +119,7 @@ class MyoroInputThemeExtension
         ),
       ),
       outlinedBorder = OutlineInputBorder(
-        borderRadius: MyoroDecorationHelper.inputBorderRadius,
+        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
         borderSide: BorderSide(
           width: kMyoroBorderLength,
           color: colorScheme.onPrimary,
@@ -127,7 +127,7 @@ class MyoroInputThemeExtension
       ),
       primaryColor = colorScheme.primary,
       errorBorderColor = colorScheme.error,
-      borderRadius = MyoroDecorationHelper.borderRadius,
+      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
       isDense = true,
       cursorHeight = 20,
       disabledOpacity = 0.5,

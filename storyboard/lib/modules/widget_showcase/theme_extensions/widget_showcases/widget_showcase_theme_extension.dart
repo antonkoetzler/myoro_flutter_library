@@ -109,7 +109,9 @@ final class WidgetShowcaseThemeExtension
           .withValues(alpha: 0.1),
       widgetWrapperPadding = const EdgeInsets.all(20),
       widgetWrapperContentPadding = const EdgeInsets.all(20),
-      widgetWrapperBorderRadius = MyoroDecorationHelper.borderRadius,
+      widgetWrapperBorderRadius = BorderRadius.circular(
+        kMyoroBorderRadiusLength,
+      ),
       widgetWrapperBorder = Border.all(
         width: 2,
         color: MyoroColorDesignSystem.attention,

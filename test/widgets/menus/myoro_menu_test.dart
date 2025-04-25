@@ -14,7 +14,10 @@ void main() {
                 faker.randomGenerator.integer(100),
                 (int index) => '#$index: ${faker.lorem.word()}',
               ).toSet(),
-      itemBuilder: (String item) => MyoroMenuItem.fake().copyWith(text: item),
+      itemBuilder:
+          (String item) => MyoroMenuItem.fake().copyWith(
+            textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
+          ),
     );
 
     late final MyoroMenuThemeExtension themeExtension;

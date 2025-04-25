@@ -45,16 +45,6 @@ final class _Widget extends StatelessWidget {
 final class _ColorOption extends StatelessWidget {
   const _ColorOption();
 
-  MyoroMenuItem _itemBuilder(Color color) {
-    return MyoroMenuItem(
-      itemBuilder: (bool hovered, Color primaryColor, Color onPrimaryColor) {
-        return _ColorDropdownItem(color, hovered, onPrimaryColor);
-      },
-    );
-  }
-
-  String _itemLabelBuilder(Color color) => color.hexadecimalFormat;
-
   void _onChanged(BuildContext context, Color? color) {
     context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
       SetColorEvent(color),
@@ -63,59 +53,8 @@ final class _ColorOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroSingularDropdown<Color>(
-      configuration: MyoroSingularDropdownConfiguration(
-        label: 'Color',
-        enabled: false,
-        menuConfiguration: MyoroMenuConfiguration(
-          request: kMyoroTestColors.toSet,
-          itemBuilder: _itemBuilder,
-        ),
-        selectedItemBuilder: _itemLabelBuilder,
-        onChanged: (Color? color) => _onChanged(context, color),
-      ),
-    );
-  }
-}
-
-final class _ColorDropdownItem extends StatelessWidget {
-  final Color _color;
-  final bool _hovered;
-  final Color _onPrimaryColor;
-
-  const _ColorDropdownItem(this._color, this._hovered, this._onPrimaryColor);
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroHoverButtonWidgetShowcaseThemeExtension
-            >();
-    final colorSize = themeExtension.colorDropdownItemColorSize;
-
-    return Padding(
-      padding: themeExtension.colorDropdownItemPadding,
-      child: Row(
-        children: [
-          Container(
-            width: colorSize.width,
-            height: colorSize.height,
-            color: _color,
-          ),
-          SizedBox(width: themeExtension.colorDropdownItemSpacing),
-          Expanded(
-            child: Text(
-              _color.hexadecimalFormat,
-              style: themeExtension.colorDropdownItemColorTextStyle.withColor(
-                _hovered
-                    ? themeExtension.colorDropdownitemPrimaryColor
-                    : _onPrimaryColor,
-              ),
-            ),
-          ),
-        ],
-      ),
+    return StoryboardColorDropdown(
+      onChanged: (Color? color) => _onChanged(context, color),
     );
   }
 }
