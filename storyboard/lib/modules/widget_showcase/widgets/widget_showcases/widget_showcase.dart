@@ -11,11 +11,7 @@ final class WidgetShowcase extends StatefulWidget {
   /// Options to experiment on the widget that will be on the right.
   final List<Widget> widgetOptions;
 
-  const WidgetShowcase({
-    super.key,
-    required this.widget,
-    this.widgetOptions = const [],
-  });
+  const WidgetShowcase({super.key, required this.widget, this.widgetOptions = const []});
 
   @override
   State<WidgetShowcase> createState() => _WidgetShowcaseState();
@@ -52,10 +48,8 @@ final class _WidgetWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-    final double previousPageButtonOffset =
-        themeExtension.previousPageButtonOffset;
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final double previousPageButtonOffset = themeExtension.previousPageButtonOffset;
 
     return Padding(
       padding: themeExtension.widgetWrapperPadding,
@@ -64,15 +58,8 @@ final class _WidgetWrapper extends StatelessWidget {
           Container(
             height: double.infinity,
             alignment: themeExtension.widgetWrapperAlignment,
-            decoration: BoxDecoration(
-              color: themeExtension.widgetWrapperBackgroundColor,
-              borderRadius: themeExtension.widgetWrapperBorderRadius,
-              border: themeExtension.widgetWrapperBorder,
-            ),
-            child: Padding(
-              padding: themeExtension.widgetWrapperContentPadding,
-              child: widget,
-            ),
+            decoration: themeExtension.widgetWrapperDecoration,
+            child: Padding(padding: themeExtension.widgetWrapperContentPadding, child: widget),
           ),
           Positioned(
             top: previousPageButtonOffset,
@@ -102,10 +89,7 @@ final class _PreviousPageButton extends StatelessWidget {
           icon: widgetShowcaseThemeExtension.previousPageButtonIcon,
         ),
         backgroundColorBuilder: (MyoroTapStatusEnum tapStatusEnum) {
-          return _backgroundColorBuilder(
-            buttonVariantThemeExtension,
-            tapStatusEnum,
-          );
+          return _backgroundColorBuilder(buttonVariantThemeExtension, tapStatusEnum);
         },
         onTapUp: (_) => _onTapUp(context),
       ),
@@ -118,10 +102,8 @@ final class _PreviousPageButton extends StatelessWidget {
   ) {
     return switch (tapStatusEnum) {
       MyoroTapStatusEnum.idle => MyoroColorDesignSystem.transparent,
-      MyoroTapStatusEnum.hover =>
-        buttonVariantThemeExtension.primaryHoverBackgroundColor,
-      MyoroTapStatusEnum.tap =>
-        buttonVariantThemeExtension.primaryTapBackgroundColor,
+      MyoroTapStatusEnum.hover => buttonVariantThemeExtension.primaryHoverBackgroundColor,
+      MyoroTapStatusEnum.tap => buttonVariantThemeExtension.primaryTapBackgroundColor,
     };
   }
 
@@ -139,10 +121,7 @@ final class _Divider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroBasicDivider(
-      configuration: MyoroBasicDividerConfiguration(
-        direction: direction,
-        padding: padding,
-      ),
+      configuration: MyoroBasicDividerConfiguration(direction: direction, padding: padding),
     );
   }
 }
@@ -154,13 +133,10 @@ final class _WidgetOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: themeExtension.widgetOptionsMaxWidth,
-      ),
+      constraints: BoxConstraints(maxWidth: themeExtension.widgetOptionsMaxWidth),
       child: SingleChildScrollView(
         child: Padding(
           padding: themeExtension.widgetOptionsPadding,
@@ -171,8 +147,7 @@ final class _WidgetOptions extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Flexible(child: widgetOption),
-                      if (_widgetOptions.indexOf(widgetOption) !=
-                          _widgetOptions.length - 1)
+                      if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
                         _Divider(
                           direction: Axis.horizontal,
                           padding: themeExtension.widgetOptionsDividerPadding,

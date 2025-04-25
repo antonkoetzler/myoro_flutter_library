@@ -49,17 +49,11 @@ void main() {
     expect: () {
       return [
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1}),
-        MyoroDropdownState<String>(
-          enabled: enabled,
-          selectedItems: {item1, item2},
-        ),
+        MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1, item2}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item2}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: const {}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1}),
-        MyoroDropdownState<String>(
-          enabled: enabled,
-          selectedItems: {item1, item2},
-        ),
+        MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1, item2}),
       ];
     },
   );
@@ -79,10 +73,7 @@ void main() {
     expect: () {
       return [
         MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1}),
-        MyoroDropdownState<String>(
-          enabled: enabled,
-          selectedItems: {item1, item2},
-        ),
+        MyoroDropdownState<String>(enabled: enabled, selectedItems: {item1, item2}),
         MyoroDropdownState<String>(enabled: enabled, selectedItems: const {}),
       ];
     },

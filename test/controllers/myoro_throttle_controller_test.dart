@@ -14,10 +14,7 @@ void main() {
     throttler.run(incrementValue);
     expect(value, 1); // Successfully ran the callback.
     throttler.run(incrementValue);
-    expect(
-      value,
-      1,
-    ); // Did not run the callback as [throttler] is throttling callbacks.
+    expect(value, 1); // Did not run the callback as [throttler] is throttling callbacks.
     await Future.delayed(
       Duration(milliseconds: duration.inMilliseconds + 2),
     ); // Not too sure why we need to wait an extra 2 milliseconds...

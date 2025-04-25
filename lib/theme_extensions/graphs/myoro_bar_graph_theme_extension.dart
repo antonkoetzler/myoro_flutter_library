@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroBarGraph].
-class MyoroBarGraphThemeExtension
-    extends ThemeExtension<MyoroBarGraphThemeExtension> {
+class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension> {
   /// Border of the graph's content (the square holding the bars).
   final Border border;
 
@@ -41,32 +40,23 @@ class MyoroBarGraphThemeExtension
   MyoroBarGraphThemeExtension.fake()
     : border = Border.all(
         width: faker.randomGenerator.decimal(min: 1),
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       ),
-      barColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+      barColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       barBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       sideTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       sideTitleInterval = faker.randomGenerator.decimal(),
       verticalSideTitleReversedSize = faker.randomGenerator.decimal(),
       horizontalSideTitleReversedSize = faker.randomGenerator.decimal();
 
-  MyoroBarGraphThemeExtension.builder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) : border = Border.all(width: 2, color: colorScheme.onPrimary),
+  MyoroBarGraphThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : border = Border.all(width: 2, color: colorScheme.onPrimary),
       barColor = colorScheme.onPrimary,
       barBorderRadius = BorderRadius.zero,
       sideTitleTextStyle = textTheme.bodySmall!,
       sideTitleInterval = kMyoroGraphSideTitleInterval,
       verticalSideTitleReversedSize = kMyoroGraphVerticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize =
-          kMyoroGraphHorizontalSideTitleReversedSize;
+      horizontalSideTitleReversedSize = kMyoroGraphHorizontalSideTitleReversedSize;
 
   @override
   MyoroBarGraphThemeExtension copyWith({
@@ -87,8 +77,7 @@ class MyoroBarGraphThemeExtension
       verticalSideTitleReversedSize:
           verticalSideTitleReversedSize ?? this.verticalSideTitleReversedSize,
       horizontalSideTitleReversedSize:
-          horizontalSideTitleReversedSize ??
-          this.horizontalSideTitleReversedSize,
+          horizontalSideTitleReversedSize ?? this.horizontalSideTitleReversedSize,
     );
   }
 
@@ -101,21 +90,9 @@ class MyoroBarGraphThemeExtension
     return copyWith(
       border: Border.lerp(border, other.border, t),
       barColor: Color.lerp(barColor, other.barColor, t),
-      barBorderRadius: BorderRadius.lerp(
-        barBorderRadius,
-        other.barBorderRadius,
-        t,
-      ),
-      sideTitleTextStyle: TextStyle.lerp(
-        sideTitleTextStyle,
-        other.sideTitleTextStyle,
-        t,
-      ),
-      sideTitleInterval: lerpDouble(
-        sideTitleInterval,
-        other.sideTitleInterval,
-        t,
-      ),
+      barBorderRadius: BorderRadius.lerp(barBorderRadius, other.barBorderRadius, t),
+      sideTitleTextStyle: TextStyle.lerp(sideTitleTextStyle, other.sideTitleTextStyle, t),
+      sideTitleInterval: lerpDouble(sideTitleInterval, other.sideTitleInterval, t),
       verticalSideTitleReversedSize: lerpDouble(
         verticalSideTitleReversedSize,
         other.verticalSideTitleReversedSize,
@@ -139,8 +116,7 @@ class MyoroBarGraphThemeExtension
         other.sideTitleTextStyle == sideTitleTextStyle &&
         other.sideTitleInterval == sideTitleInterval &&
         other.verticalSideTitleReversedSize == verticalSideTitleReversedSize &&
-        other.horizontalSideTitleReversedSize ==
-            horizontalSideTitleReversedSize;
+        other.horizontalSideTitleReversedSize == horizontalSideTitleReversedSize;
   }
 
   @override

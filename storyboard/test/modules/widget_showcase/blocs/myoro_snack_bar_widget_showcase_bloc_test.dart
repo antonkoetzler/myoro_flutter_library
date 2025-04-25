@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/app/blocs/myoro_snack_bar_widget_showcase_bloc/myoro_snack_bar_widget_showcase_bloc.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_snack_bar_widget_showcase_bloc/myoro_snack_bar_widget_showcase_bloc.dart';
 
 /// Unit test of [MyoroSnackBarWidgetShowcaseBloc].
 void main() {
@@ -14,18 +14,14 @@ void main() {
     'MyoroSnackBarWidgetShowcaseBloc.SetSnackBarTypeEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetSnackBarTypeEvent(snackBarType)),
-    expect:
-        () => [MyoroSnackBarWidgetShowcaseState(snackBarType: snackBarType)],
+    expect: () => [MyoroSnackBarWidgetShowcaseState(snackBarType: snackBarType)],
   );
 
   blocTest(
     'MyoroSnackBarWidgetShowcaseBloc.SetShowCloseButtonEvent',
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetShowCloseButtonEvent(showCloseButton)),
-    expect:
-        () => [
-          MyoroSnackBarWidgetShowcaseState(showCloseButton: showCloseButton),
-        ],
+    expect: () => [MyoroSnackBarWidgetShowcaseState(showCloseButton: showCloseButton)],
   );
 
   blocTest(
@@ -33,12 +29,7 @@ void main() {
     build: () => MyoroSnackBarWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetMessageEvent(message)),
     expect:
-        () => [
-          MyoroSnackBarWidgetShowcaseState(
-            message: message,
-            childEnabled: message.isEmpty,
-          ),
-        ],
+        () => [MyoroSnackBarWidgetShowcaseState(message: message, childEnabled: message.isEmpty)],
   );
 
   blocTest(

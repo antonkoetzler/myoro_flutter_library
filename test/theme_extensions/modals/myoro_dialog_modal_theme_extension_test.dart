@@ -17,8 +17,7 @@ void main() {
   });
 
   test('MyoroDialogModalThemeExtension.copyWith', () {
-    MyoroDialogModalThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroDialogModalThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       textStyle: themeExtension2.textStyle,
@@ -36,11 +35,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.footerButtonsSpacing,
-        lerpDouble(
-          themeExtension1.footerButtonsSpacing,
-          themeExtension2.footerButtonsSpacing,
-          i,
-        ),
+        lerpDouble(themeExtension1.footerButtonsSpacing, themeExtension2.footerButtonsSpacing, i),
       );
     }
   });

@@ -71,8 +71,7 @@ final class SetShowClearTextButtonEvent extends MyoroInputWidgetShowcaseEvent {
   const SetShowClearTextButtonEvent(this.enabled);
 }
 
-final class SetCheckboxOnChangedEnabledEvent
-    extends MyoroInputWidgetShowcaseEvent {
+final class SetCheckboxOnChangedEnabledEvent extends MyoroInputWidgetShowcaseEvent {
   final bool enabled;
 
   const SetCheckboxOnChangedEnabledEvent(this.enabled);

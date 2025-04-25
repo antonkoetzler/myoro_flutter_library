@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroTable].
-class MyoroTableThemeExtension
-    extends ThemeExtension<MyoroTableThemeExtension> {
+class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> {
   /// Spacing of items in [_PageNumberControl]
   final double pageNumberControlSpacing;
 
@@ -67,23 +66,13 @@ class MyoroTableThemeExtension
     return MyoroTableThemeExtension(
       pageNumberControlSpacing: faker.randomGenerator.decimal(scale: 20),
       pageNumberControlInputStyle: MyoroInputStyleEnum.fake(),
-      pageNumberControlTraversalButtonIconSize: faker.randomGenerator.decimal(
-        scale: 100,
-        min: 5,
-      ),
+      pageNumberControlTraversalButtonIconSize: faker.randomGenerator.decimal(scale: 100, min: 5),
       pageNumberControlPreviousPageButtonIcon:
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
       pageNumberControlNextPageButtonIcon:
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
       tableDecoration: BoxDecoration(
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       ),
       paginationControlsTableSpacing: faker.randomGenerator.decimal(scale: 10),
       columnSpacing: faker.randomGenerator.decimal(scale: 20),
@@ -95,10 +84,7 @@ class MyoroTableThemeExtension
     );
   }
 
-  factory MyoroTableThemeExtension.builder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
+  factory MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme) {
     final TextStyle headlineLarge = textTheme.headlineLarge!;
 
     return MyoroTableThemeExtension(
@@ -110,10 +96,7 @@ class MyoroTableThemeExtension
       tableDecoration: BoxDecoration(
         color: colorScheme.primary,
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-        border: Border.all(
-          width: kMyoroBorderLength,
-          color: colorScheme.onPrimary,
-        ),
+        border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
       ),
       paginationControlsTableSpacing: 10,
       columnSpacing: 10,
@@ -145,29 +128,22 @@ class MyoroTableThemeExtension
     EdgeInsets? dialogPadding,
   }) {
     return MyoroTableThemeExtension(
-      pageNumberControlSpacing:
-          pageNumberControlSpacing ?? this.pageNumberControlSpacing,
-      pageNumberControlInputStyle:
-          pageNumberControlInputStyle ?? this.pageNumberControlInputStyle,
+      pageNumberControlSpacing: pageNumberControlSpacing ?? this.pageNumberControlSpacing,
+      pageNumberControlInputStyle: pageNumberControlInputStyle ?? this.pageNumberControlInputStyle,
       pageNumberControlTraversalButtonIconSize:
-          pageNumberControlTraversalButtonIconSize ??
-          this.pageNumberControlTraversalButtonIconSize,
+          pageNumberControlTraversalButtonIconSize ?? this.pageNumberControlTraversalButtonIconSize,
       pageNumberControlPreviousPageButtonIcon:
-          pageNumberControlPreviousPageButtonIcon ??
-          this.pageNumberControlPreviousPageButtonIcon,
+          pageNumberControlPreviousPageButtonIcon ?? this.pageNumberControlPreviousPageButtonIcon,
       pageNumberControlNextPageButtonIcon:
-          pageNumberControlNextPageButtonIcon ??
-          this.pageNumberControlNextPageButtonIcon,
+          pageNumberControlNextPageButtonIcon ?? this.pageNumberControlNextPageButtonIcon,
       tableDecoration: tableDecoration ?? this.tableDecoration,
       paginationControlsTableSpacing:
           paginationControlsTableSpacing ?? this.paginationControlsTableSpacing,
       columnSpacing: columnSpacing ?? this.columnSpacing,
       titleCellTextStyle: titleCellTextStyle ?? this.titleCellTextStyle,
       loaderSize: loaderSize ?? this.loaderSize,
-      emptyMessageTextStyle:
-          emptyMessageTextStyle ?? this.emptyMessageTextStyle,
-      errorMessageTextStyle:
-          errorMessageTextStyle ?? this.errorMessageTextStyle,
+      emptyMessageTextStyle: emptyMessageTextStyle ?? this.emptyMessageTextStyle,
+      errorMessageTextStyle: errorMessageTextStyle ?? this.errorMessageTextStyle,
       dialogPadding: dialogPadding ?? this.dialogPadding,
     );
   }
@@ -204,33 +180,17 @@ class MyoroTableThemeExtension
         other.pageNumberControlNextPageButtonIcon,
         t,
       ),
-      tableDecoration: BoxDecoration.lerp(
-        tableDecoration,
-        other.tableDecoration,
-        t,
-      ),
+      tableDecoration: BoxDecoration.lerp(tableDecoration, other.tableDecoration, t),
       paginationControlsTableSpacing: lerpDouble(
         paginationControlsTableSpacing,
         other.paginationControlsTableSpacing,
         t,
       ),
       columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
-      titleCellTextStyle: TextStyle.lerp(
-        titleCellTextStyle,
-        other.titleCellTextStyle,
-        t,
-      ),
+      titleCellTextStyle: TextStyle.lerp(titleCellTextStyle, other.titleCellTextStyle, t),
       loaderSize: lerpDouble(loaderSize, other.loaderSize, t),
-      emptyMessageTextStyle: TextStyle.lerp(
-        emptyMessageTextStyle,
-        other.emptyMessageTextStyle,
-        t,
-      ),
-      errorMessageTextStyle: TextStyle.lerp(
-        errorMessageTextStyle,
-        other.errorMessageTextStyle,
-        t,
-      ),
+      emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
+      errorMessageTextStyle: TextStyle.lerp(errorMessageTextStyle, other.errorMessageTextStyle, t),
       dialogPadding: EdgeInsets.lerp(dialogPadding, other.dialogPadding, t),
     );
   }
@@ -243,13 +203,10 @@ class MyoroTableThemeExtension
         other.pageNumberControlInputStyle == pageNumberControlInputStyle &&
         other.pageNumberControlTraversalButtonIconSize ==
             pageNumberControlTraversalButtonIconSize &&
-        other.pageNumberControlPreviousPageButtonIcon ==
-            pageNumberControlPreviousPageButtonIcon &&
-        other.pageNumberControlNextPageButtonIcon ==
-            pageNumberControlNextPageButtonIcon &&
+        other.pageNumberControlPreviousPageButtonIcon == pageNumberControlPreviousPageButtonIcon &&
+        other.pageNumberControlNextPageButtonIcon == pageNumberControlNextPageButtonIcon &&
         other.tableDecoration == tableDecoration &&
-        other.paginationControlsTableSpacing ==
-            paginationControlsTableSpacing &&
+        other.paginationControlsTableSpacing == paginationControlsTableSpacing &&
         other.columnSpacing == columnSpacing &&
         other.titleCellTextStyle == titleCellTextStyle &&
         other.loaderSize == loaderSize &&

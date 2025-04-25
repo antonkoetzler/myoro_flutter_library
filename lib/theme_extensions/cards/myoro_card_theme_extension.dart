@@ -35,26 +35,17 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> {
 
   MyoroCardThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),
-      border = Border.all(
-        width: kMyoroBorderLength,
-        color: colorScheme.onPrimary,
-      ),
+      border = Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
       borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
       padding = const EdgeInsets.all(10),
       titleCardSpacing = 10,
       textStyle = textTheme.titleMedium!;
 
   MyoroCardThemeExtension.fake()
-    : backgroundColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+    : backgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       border = Border.all(
         width: faker.randomGenerator.integer(50, min: 1).toDouble(),
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       ),
       borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       padding = EdgeInsets.all(faker.randomGenerator.decimal()),
@@ -81,10 +72,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> {
   }
 
   @override
-  MyoroCardThemeExtension lerp(
-    covariant ThemeExtension<MyoroCardThemeExtension>? other,
-    double t,
-  ) {
+  MyoroCardThemeExtension lerp(covariant ThemeExtension<MyoroCardThemeExtension>? other, double t) {
     if (other is! MyoroCardThemeExtension) return this;
     return copyWith(
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
@@ -110,14 +98,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> {
 
   @override
   int get hashCode {
-    return Object.hash(
-      backgroundColor,
-      border,
-      borderRadius,
-      padding,
-      titleCardSpacing,
-      textStyle,
-    );
+    return Object.hash(backgroundColor, border, borderRadius, padding, titleCardSpacing, textStyle);
   }
 
   @override

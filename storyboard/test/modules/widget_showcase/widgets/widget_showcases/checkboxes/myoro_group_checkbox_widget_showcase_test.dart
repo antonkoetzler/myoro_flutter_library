@@ -7,10 +7,7 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroGroupCheckboxWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroGroupCheckboxWidgetShowcase(),
-      ),
+      const StoryboardWidgetTester(child: MyoroGroupCheckboxWidgetShowcase()),
     );
     await tester.pumpAndSettle();
 

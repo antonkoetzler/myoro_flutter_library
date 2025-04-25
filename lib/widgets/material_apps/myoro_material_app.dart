@@ -3,12 +3,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
-typedef MyoroMaterialAppColorSchemeBuilder =
-    ColorScheme Function(ColorScheme myoroColorScheme);
+typedef MyoroMaterialAppColorSchemeBuilder = ColorScheme Function(ColorScheme myoroColorScheme);
 
 /// Builder to create a custom [TextTheme] instead of using [createMyoroColorScheme].
-typedef MyoroMaterialAppTextThemeBuilder =
-    TextTheme Function(TextTheme myoroTextTheme);
+typedef MyoroMaterialAppTextThemeBuilder = TextTheme Function(TextTheme myoroTextTheme);
 
 /// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
 typedef MyoroMaterialAppThemeExtensionsBuilder =
@@ -74,8 +72,7 @@ class MyoroMaterialApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ];
-    final Iterable<Locale> supportedLocalesInUse =
-        supportedLocales ?? const [Locale('en', 'US')];
+    final Iterable<Locale> supportedLocalesInUse = supportedLocales ?? const [Locale('en', 'US')];
     final ThemeMode themeModeInUse = themeMode ?? ThemeMode.dark;
     final ThemeData lightTheme = createMyoroThemeData(
       colorSchemeBuilder,

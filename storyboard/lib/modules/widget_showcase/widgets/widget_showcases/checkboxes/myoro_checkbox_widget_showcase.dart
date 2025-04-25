@@ -29,15 +29,9 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BlocBuilder<
-        MyoroCheckboxWidgetShowcaseBloc,
-        MyoroCheckboxWidgetShowcaseState
-      >(
+      child: BlocBuilder<MyoroCheckboxWidgetShowcaseBloc, MyoroCheckboxWidgetShowcaseState>(
         builder: (_, MyoroCheckboxWidgetShowcaseState state) {
-          return MyoroCheckbox(
-            label: state.label,
-            labelTextStyle: state.labelTextStyle,
-          );
+          return MyoroCheckbox(label: state.label, labelTextStyle: state.labelTextStyle);
         },
       ),
     );
@@ -54,9 +48,8 @@ final class _LabelOption extends StatelessWidget {
         inputStyle: MyoroInputStyleEnum.outlined,
         label: 'Label text',
         onChanged:
-            (String text) => context
-                .resolveBloc<MyoroCheckboxWidgetShowcaseBloc>()
-                .add(SetLabelEvent(text)),
+            (String text) =>
+                context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(SetLabelEvent(text)),
       ),
     );
   }
@@ -72,9 +65,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
     return SizedBox(
       width:
           context
-              .resolveThemeExtension<
-                MyoroCheckboxWidgetShowcaseThemeExtension
-              >()
+              .resolveThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension>()
               .labelTextStyleOptionWidth,
       child: MyoroSingularDropdown<TextStyle>(
         configuration: MyoroSingularDropdownConfiguration(
@@ -102,8 +93,6 @@ final class _LabelTextStyleOption extends StatelessWidget {
   }
 
   void _onChanged(BuildContext context, TextStyle? textStyle) {
-    context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(
-      SetLabelTextStyleEvent(textStyle!),
-    );
+    context.resolveBloc<MyoroCheckboxWidgetShowcaseBloc>().add(SetLabelTextStyleEvent(textStyle!));
   }
 }

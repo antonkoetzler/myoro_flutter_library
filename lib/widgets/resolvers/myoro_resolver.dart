@@ -64,8 +64,7 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
 
   MyoroResolverController? _localController;
   MyoroResolverController get _controller {
-    return widget.controller ??
-        (_localController ??= MyoroResolverController());
+    return widget.controller ?? (_localController ??= MyoroResolverController());
   }
 
   late final MyoroResolverBloc<T> _bloc;
@@ -107,12 +106,7 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
       child: BlocConsumer<MyoroResolverBloc<T>, MyoroResolverState<T>>(
         listener: (_, MyoroResolverState state) => _blocListener(state),
         builder: (_, MyoroResolverState state) {
-          return _builder.call(
-            state.result,
-            state.status,
-            state.errorMessage,
-            _controller,
-          );
+          return _builder.call(state.result, state.status, state.errorMessage, _controller);
         },
       ),
     );

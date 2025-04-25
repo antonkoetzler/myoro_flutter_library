@@ -33,8 +33,7 @@ class MyoroSnackBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     return Container(
       padding: themeExtension.padding,
@@ -70,10 +69,7 @@ final class _Message extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _message,
-      style:
-          context
-              .resolveThemeExtension<MyoroSnackBarThemeExtension>()
-              .messageTextStyle,
+      style: context.resolveThemeExtension<MyoroSnackBarThemeExtension>().messageTextStyle,
     );
   }
 }
@@ -83,8 +79,7 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(

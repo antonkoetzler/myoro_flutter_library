@@ -6,8 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// TODO: Needs to be tested AND it needs a new name. Variant is not accurate because of [border].
 @immutable
-class MyoroButtonVariantThemeExtension
-    extends ThemeExtension<MyoroButtonVariantThemeExtension> {
+class MyoroButtonVariantThemeExtension extends ThemeExtension<MyoroButtonVariantThemeExtension> {
   /// Standard [BoxBorder].
   final BoxBorder border;
 
@@ -50,82 +49,44 @@ class MyoroButtonVariantThemeExtension
   MyoroButtonVariantThemeExtension.fake()
     : border = Border.all(
         width: faker.randomGenerator.decimal(scale: 10),
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       ),
       primaryIdleBackgroundColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       primaryHoverBackgroundColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       primaryTapBackgroundColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       primaryIdleContentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       primaryHoverContentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       primaryTapContentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       secondaryIdleBackgroundColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       secondaryHoverBackgroundColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       secondaryTapBackgroundColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       secondaryIdleContentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       secondaryHoverContentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       secondaryTapContentColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )];
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
 
   MyoroButtonVariantThemeExtension.builder(ColorScheme colorScheme)
-    : border = Border.all(
-        width: kMyoroBorderLength,
-        color: colorScheme.onPrimary,
-      ),
+    : border = Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
       primaryIdleBackgroundColor = colorScheme.primary,
-      primaryHoverBackgroundColor = colorScheme.onPrimary.withValues(
-        alpha: 0.15,
-      ),
+      primaryHoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.15),
       primaryTapBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.5),
       primaryIdleContentColor = colorScheme.onPrimary,
       primaryHoverContentColor = colorScheme.onPrimary,
       primaryTapContentColor = colorScheme.onPrimary,
       secondaryIdleBackgroundColor = colorScheme.onPrimary,
-      secondaryHoverBackgroundColor = myoroDarkenColor(
-        colorScheme.onPrimary,
-        0.1,
-      ),
-      secondaryTapBackgroundColor = myoroDarkenColor(
-        colorScheme.onPrimary,
-        0.2,
-      ),
+      secondaryHoverBackgroundColor = myoroDarkenColor(colorScheme.onPrimary, 0.1),
+      secondaryTapBackgroundColor = myoroDarkenColor(colorScheme.onPrimary, 0.2),
       secondaryIdleContentColor = colorScheme.primary,
       secondaryHoverContentColor = colorScheme.primary,
       secondaryTapContentColor = colorScheme.primary;
@@ -148,30 +109,20 @@ class MyoroButtonVariantThemeExtension
   }) {
     return MyoroButtonVariantThemeExtension(
       border: border ?? this.border,
-      primaryIdleBackgroundColor:
-          primaryIdleBackgroundColor ?? this.primaryIdleBackgroundColor,
-      primaryHoverBackgroundColor:
-          primaryHoverBackgroundColor ?? this.primaryHoverBackgroundColor,
-      primaryTapBackgroundColor:
-          primaryTapBackgroundColor ?? this.primaryTapBackgroundColor,
-      primaryIdleContentColor:
-          primaryIdleContentColor ?? this.primaryIdleContentColor,
-      primaryHoverContentColor:
-          primaryHoverContentColor ?? this.primaryHoverContentColor,
-      primaryTapContentColor:
-          primaryTapContentColor ?? this.primaryTapContentColor,
+      primaryIdleBackgroundColor: primaryIdleBackgroundColor ?? this.primaryIdleBackgroundColor,
+      primaryHoverBackgroundColor: primaryHoverBackgroundColor ?? this.primaryHoverBackgroundColor,
+      primaryTapBackgroundColor: primaryTapBackgroundColor ?? this.primaryTapBackgroundColor,
+      primaryIdleContentColor: primaryIdleContentColor ?? this.primaryIdleContentColor,
+      primaryHoverContentColor: primaryHoverContentColor ?? this.primaryHoverContentColor,
+      primaryTapContentColor: primaryTapContentColor ?? this.primaryTapContentColor,
       secondaryIdleBackgroundColor:
           secondaryIdleBackgroundColor ?? this.secondaryIdleBackgroundColor,
       secondaryHoverBackgroundColor:
           secondaryHoverBackgroundColor ?? this.secondaryHoverBackgroundColor,
-      secondaryTapBackgroundColor:
-          secondaryTapBackgroundColor ?? this.secondaryTapBackgroundColor,
-      secondaryIdleContentColor:
-          secondaryIdleContentColor ?? this.secondaryIdleContentColor,
-      secondaryHoverContentColor:
-          secondaryHoverContentColor ?? this.secondaryHoverContentColor,
-      secondaryTapContentColor:
-          secondaryTapContentColor ?? this.secondaryTapContentColor,
+      secondaryTapBackgroundColor: secondaryTapBackgroundColor ?? this.secondaryTapBackgroundColor,
+      secondaryIdleContentColor: secondaryIdleContentColor ?? this.secondaryIdleContentColor,
+      secondaryHoverContentColor: secondaryHoverContentColor ?? this.secondaryHoverContentColor,
+      secondaryTapContentColor: secondaryTapContentColor ?? this.secondaryTapContentColor,
     );
   }
 
@@ -208,11 +159,7 @@ class MyoroButtonVariantThemeExtension
         other.primaryHoverContentColor,
         t,
       ),
-      primaryTapContentColor: Color.lerp(
-        primaryTapContentColor,
-        other.primaryTapContentColor,
-        t,
-      ),
+      primaryTapContentColor: Color.lerp(primaryTapContentColor, other.primaryTapContentColor, t),
       secondaryIdleBackgroundColor: Color.lerp(
         secondaryIdleBackgroundColor,
         other.secondaryIdleBackgroundColor,

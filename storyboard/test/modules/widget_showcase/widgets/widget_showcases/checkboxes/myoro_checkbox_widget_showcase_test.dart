@@ -6,12 +6,7 @@ import 'package:storyboard/storyboard.dart';
 /// Widget test of [MyoroCheckboxWidgetShowcase].
 void main() {
   testWidgets('MyoroCheckboxWidgetShowcase', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroCheckboxWidgetShowcase(),
-      ),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: MyoroCheckboxWidgetShowcase()));
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroCheckboxWidgetShowcase), findsOneWidget);

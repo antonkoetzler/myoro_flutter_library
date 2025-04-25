@@ -33,8 +33,7 @@ final class MyoroTableState<T> extends Equatable {
   }) {
     return MyoroTableState(
       status: status ?? this.status,
-      errorMessage:
-          errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
+      errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
       filters: filters ?? this.filters,
       pagination: pagination ?? this.pagination,
     );

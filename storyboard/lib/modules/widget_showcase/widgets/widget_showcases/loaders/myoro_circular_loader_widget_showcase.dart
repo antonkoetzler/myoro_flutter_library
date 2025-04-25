@@ -13,10 +13,7 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create:
           (_) => MyoroCircularLoaderWidgetShowcaseBloc(
-            size:
-                context
-                    .resolveThemeExtension<MyoroCircularLoaderThemeExtension>()
-                    .size,
+            size: context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>().size,
           ),
       child: const WidgetShowcase(
         widget: _Widget(),
@@ -46,16 +43,12 @@ final class _ColorOption extends StatelessWidget {
   const _ColorOption();
 
   void _onChanged(BuildContext context, Color? color) {
-    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
-      SetColorEvent(color),
-    );
+    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(SetColorEvent(color));
   }
 
   @override
   Widget build(BuildContext context) {
-    return StoryboardColorDropdown(
-      onChanged: (Color? color) => _onChanged(context, color),
-    );
+    return StoryboardColorDropdown(onChanged: (Color? color) => _onChanged(context, color));
   }
 }
 

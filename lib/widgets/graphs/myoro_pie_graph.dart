@@ -14,24 +14,17 @@ class MyoroPieGraph extends StatelessWidget {
   /// Items of the graph.
   final List<MyoroPieGraphItem> items;
 
-  MyoroPieGraph(
-    this.typeEnum, {
-    super.key,
-    this.centerWidget,
-    required this.items,
-  }) : assert(
-         typeEnum.isPie ? centerWidget == null : true,
-         '[MyoroPieGraph]: If [typeEnum.isPie] is [true], [centerWidget] cannot be provided.',
-       );
+  MyoroPieGraph(this.typeEnum, {super.key, this.centerWidget, required this.items})
+    : assert(
+        typeEnum.isPie ? centerWidget == null : true,
+        '[MyoroPieGraph]: If [typeEnum.isPie] is [true], [centerWidget] cannot be provided.',
+      );
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
-      children: [
-        _PieGraph(typeEnum, items),
-        if (centerWidget != null) centerWidget!,
-      ],
+      children: [_PieGraph(typeEnum, items), if (centerWidget != null) centerWidget!],
     );
   }
 }
@@ -44,8 +37,7 @@ final class _PieGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
 
     return PieChart(
       PieChartData(

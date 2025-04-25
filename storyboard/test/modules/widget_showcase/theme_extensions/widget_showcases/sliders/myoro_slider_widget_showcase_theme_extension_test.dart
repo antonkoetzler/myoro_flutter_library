@@ -11,8 +11,7 @@ void main() {
   final themeExtension2 = MyoroSliderWidgetShowcaseThemeExtension.fake();
 
   test('MyoroSliderWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroSliderWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroSliderWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       inputStyle: themeExtension2.inputStyle,

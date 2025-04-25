@@ -17,8 +17,7 @@ void main() {
   });
 
   test('MyoroSnackBarThemeExtension.copyWith', () {
-    MyoroSnackBarThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroSnackBarThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
@@ -42,43 +41,23 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(
-          themeExtension1.primaryColor,
-          themeExtension2.primaryColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
       );
       expect(
         lerpedThemeExtension.standardBorderColor,
-        Color.lerp(
-          themeExtension1.standardBorderColor,
-          themeExtension2.standardBorderColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.standardBorderColor, themeExtension2.standardBorderColor, i),
       );
       expect(
         lerpedThemeExtension.attentionBorderColor,
-        Color.lerp(
-          themeExtension1.attentionBorderColor,
-          themeExtension2.attentionBorderColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.attentionBorderColor, themeExtension2.attentionBorderColor, i),
       );
       expect(
         lerpedThemeExtension.successBorderColor,
-        Color.lerp(
-          themeExtension1.successBorderColor,
-          themeExtension2.successBorderColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.successBorderColor, themeExtension2.successBorderColor, i),
       );
       expect(
         lerpedThemeExtension.errorBorderColor,
-        Color.lerp(
-          themeExtension1.errorBorderColor,
-          themeExtension2.errorBorderColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.errorBorderColor, themeExtension2.errorBorderColor, i),
       );
       expect(
         lerpedThemeExtension.borderWidth,
@@ -86,11 +65,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(
-          themeExtension1.borderRadius,
-          themeExtension2.borderRadius,
-          i,
-        ),
+        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
       expect(
         lerpedThemeExtension.padding,
@@ -106,27 +81,15 @@ void main() {
       );
       expect(
         lerpedThemeExtension.messageTextStyle,
-        TextStyle.lerp(
-          themeExtension1.messageTextStyle,
-          themeExtension2.messageTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.messageTextStyle, themeExtension2.messageTextStyle, i),
       );
       expect(
         lerpedThemeExtension.closeButtonIcon,
-        myoroLerp(
-          themeExtension1.closeButtonIcon,
-          themeExtension2.closeButtonIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.closeButtonIcon, themeExtension2.closeButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.closeButtonIconSize,
-        lerpDouble(
-          themeExtension1.closeButtonIconSize,
-          themeExtension2.closeButtonIconSize,
-          i,
-        ),
+        lerpDouble(themeExtension1.closeButtonIconSize, themeExtension2.closeButtonIconSize, i),
       );
     }
   });

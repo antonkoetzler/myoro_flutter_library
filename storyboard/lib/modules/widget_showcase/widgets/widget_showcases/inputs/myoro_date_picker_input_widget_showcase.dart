@@ -21,9 +21,7 @@ final class _Widget extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         inputStyle:
             context
-                .resolveThemeExtension<
-                  MyoroDatePickerInputWidgetShowcaseThemeExtension
-                >()
+                .resolveThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension>()
                 .inputStyle,
       ),
     );

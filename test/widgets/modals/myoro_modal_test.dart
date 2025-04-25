@@ -21,8 +21,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroModalThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
             return GestureDetector(
               key: key,
               onTap: () {
@@ -54,38 +53,24 @@ void main() {
             (w.child as Material).child is Container &&
             ((w.child as Material).child as Container).constraints ==
                 (configuration.constraints ?? themeExtension.constraints) &&
-            ((w.child as Material).child as Container).padding ==
-                themeExtension.padding &&
+            ((w.child as Material).child as Container).padding == themeExtension.padding &&
             ((w.child as Material).child as Container).decoration ==
                 BoxDecoration(
                   borderRadius: themeExtension.borderRadius,
                   border: themeExtension.border,
                 ) &&
             ((w.child as Material).child as Container).child is Column &&
-            (((w.child as Material).child as Container).child as Column)
-                    .mainAxisSize ==
+            (((w.child as Material).child as Container).child as Column).mainAxisSize ==
                 MainAxisSize.min &&
-            (((w.child as Material).child as Container).child as Column)
-                    .children
-                    .length ==
-                3 &&
+            (((w.child as Material).child as Container).child as Column).children.length == 3 &&
             // (((w.child as Material).child as Container).child as Column).children.first is _Header &&
-            (((w.child as Material).child as Container).child as Column)
-                    .children[1]
-                is SizedBox &&
-            ((((w.child as Material).child as Container).child as Column)
-                            .children[1]
-                        as SizedBox)
+            (((w.child as Material).child as Container).child as Column).children[1] is SizedBox &&
+            ((((w.child as Material).child as Container).child as Column).children[1] as SizedBox)
                     .height ==
                 themeExtension.spacing &&
-            (((w.child as Material).child as Container).child as Column)
-                    .children
-                    .last
+            (((w.child as Material).child as Container).child as Column).children.last
                 is Flexible &&
-            ((((w.child as Material).child as Container).child as Column)
-                            .children
-                            .last
-                        as Flexible)
+            ((((w.child as Material).child as Container).child as Column).children.last as Flexible)
                     .child
                 is SizedBox, // [MyoroModal.child]
       ),
@@ -120,8 +105,7 @@ void main() {
     final Finder closeButtonFinder = find.byWidgetPredicate(
       (Widget w) =>
           w is MyoroIconTextButton &&
-          w.configuration.iconConfiguration?.icon ==
-              themeExtension.closeButtonIcon &&
+          w.configuration.iconConfiguration?.icon == themeExtension.closeButtonIcon &&
           w.configuration.onTapUp != null,
     );
     expect(closeButtonFinder, findsOneWidget);

@@ -35,11 +35,7 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.backgroundColor,
-        Color.lerp(
-          themeExtension1.backgroundColor,
-          themeExtension2.backgroundColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.backgroundColor, themeExtension2.backgroundColor, i),
       );
       expect(
         lerpedThemeExtension.border,
@@ -47,11 +43,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(
-          themeExtension1.borderRadius,
-          themeExtension2.borderRadius,
-          i,
-        ),
+        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
       expect(
         lerpedThemeExtension.padding,
@@ -59,11 +51,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.titleCardSpacing,
-        lerpDouble(
-          themeExtension1.titleCardSpacing,
-          themeExtension2.titleCardSpacing,
-          i,
-        ),
+        lerpDouble(themeExtension1.titleCardSpacing, themeExtension2.titleCardSpacing, i),
       );
       expect(
         lerpedThemeExtension.textStyle,

@@ -9,8 +9,7 @@ void main() {
       faker.randomGenerator.boolean()
           ? Axis.values[faker.randomGenerator.integer(Axis.values.length)]
           : null;
-  final double? spacing =
-      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final double? spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final double? runSpacing =
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final MyoroGroupCheckboxItems checkboxes = {
@@ -25,9 +24,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context
-                    .resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
             return MyoroGroupCheckbox(
               direction: direction,
@@ -44,10 +41,7 @@ void main() {
     expect(find.byType(MyoroGroupCheckbox), findsOneWidget);
 
     // Wrapper
-    expect(
-      find.byType(ValueListenableBuilder<MyoroGroupCheckboxItems>),
-      findsOneWidget,
-    );
+    expect(find.byType(ValueListenableBuilder<MyoroGroupCheckboxItems>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>

@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:faker/faker.dart';
-import 'package:storyboard/app/blocs/myoro_search_input_widget_showcase_bloc/myoro_search_input_widget_showcase_bloc.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_search_input_widget_showcase_bloc/myoro_search_input_widget_showcase_bloc.dart';
 
 /// Unit test of [MyoroSearchInputWidgetShowcaseBloc].
 void main() {
@@ -10,11 +10,6 @@ void main() {
     'MyoroSearchInputWidgetShowcaseBloc.SetRequestWhenChangedEvent',
     build: () => MyoroSearchInputWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetRequestWhenChangedEvent(requestWhenChanged)),
-    expect:
-        () => [
-          MyoroSearchInputWidgetShowcaseState(
-            requestWhenChanged: requestWhenChanged,
-          ),
-        ],
+    expect: () => [MyoroSearchInputWidgetShowcaseState(requestWhenChanged: requestWhenChanged)],
   );
 }

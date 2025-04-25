@@ -18,15 +18,11 @@ final class MyoroResizeDividerWidgetShowcaseThemeExtension
   });
 
   MyoroResizeDividerWidgetShowcaseThemeExtension.fake()
-    : containerColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+    : containerColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       areYouSillyPadding = EdgeInsets.all(faker.randomGenerator.decimal());
 
-  MyoroResizeDividerWidgetShowcaseThemeExtension.builder(
-    ColorScheme colorScheme,
-  ) : containerColor = colorScheme.onPrimary,
+  MyoroResizeDividerWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
+    : containerColor = colorScheme.onPrimary,
       areYouSillyPadding = const EdgeInsets.all(50);
 
   @override
@@ -42,18 +38,13 @@ final class MyoroResizeDividerWidgetShowcaseThemeExtension
 
   @override
   MyoroResizeDividerWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>?
-    other,
+    covariant ThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
     if (other is! MyoroResizeDividerWidgetShowcaseThemeExtension) return this;
     return copyWith(
       containerColor: Color.lerp(containerColor, other.containerColor, t),
-      areYouSillyPadding: EdgeInsets.lerp(
-        areYouSillyPadding,
-        other.areYouSillyPadding,
-        t,
-      ),
+      areYouSillyPadding: EdgeInsets.lerp(areYouSillyPadding, other.areYouSillyPadding, t),
     );
   }
 

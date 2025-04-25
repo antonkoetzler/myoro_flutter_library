@@ -8,11 +8,7 @@ void main() {
   test('MyoroPieGraphItem.copyWith', () {
     final newModel = MyoroPieGraphItem.fake();
     expect(
-      model.copyWith(
-        value: newModel.value,
-        color: newModel.color,
-        radius: newModel.radius,
-      ),
+      model.copyWith(value: newModel.value, color: newModel.color, radius: newModel.radius),
       newModel,
     );
   });

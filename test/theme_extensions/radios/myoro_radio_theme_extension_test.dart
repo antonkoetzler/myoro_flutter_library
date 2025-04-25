@@ -42,11 +42,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.labelTextStyle,
-        TextStyle.lerp(
-          themeExtension1.labelTextStyle,
-          themeExtension2.labelTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
       );
       expect(
         lerpedThemeExtension.spacing,
@@ -54,11 +50,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.splashRadius,
-        lerpDouble(
-          themeExtension1.splashRadius,
-          themeExtension2.splashRadius,
-          i,
-        ),
+        lerpDouble(themeExtension1.splashRadius, themeExtension2.splashRadius, i),
       );
     }
   });

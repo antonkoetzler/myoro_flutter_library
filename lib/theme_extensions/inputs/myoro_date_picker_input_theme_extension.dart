@@ -21,8 +21,7 @@ class MyoroDatePickerInputThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDatePickerInputThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroDatePickerInputThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

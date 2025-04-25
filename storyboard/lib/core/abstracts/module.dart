@@ -7,8 +7,5 @@ abstract interface class Module {
   const Module();
 
   /// [ThemeExtension]s builder.
-  List<ThemeExtension> themeExtensionsBuilder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  );
+  List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme);
 }

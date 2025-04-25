@@ -18,10 +18,7 @@ enum MyoroButtonVariantEnum {
   }
 
   /// [MyoroButtonConfiguration.backgroundColorBuilder].
-  Color backgroundColorBuilder(
-    BuildContext context,
-    MyoroTapStatusEnum tapStatusEnum,
-  ) {
+  Color backgroundColorBuilder(BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
     final themeExtension = _getThemeExtension(context);
 
     return switch (this) {
@@ -32,18 +29,14 @@ enum MyoroButtonVariantEnum {
       },
       secondary => switch (tapStatusEnum) {
         MyoroTapStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
-        MyoroTapStatusEnum.hover =>
-          themeExtension.secondaryHoverBackgroundColor,
+        MyoroTapStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
         MyoroTapStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
       },
     };
   }
 
   /// [MyoroIconTextButtonConfiguration.contentColorBuilder].
-  Color contentColorBuilder(
-    BuildContext context,
-    MyoroTapStatusEnum tapStatusEnum,
-  ) {
+  Color contentColorBuilder(BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
     final themeExtension = _getThemeExtension(context);
 
     return switch (this) {
@@ -60,9 +53,7 @@ enum MyoroButtonVariantEnum {
     };
   }
 
-  static MyoroButtonVariantThemeExtension _getThemeExtension(
-    BuildContext context,
-  ) {
+  static MyoroButtonVariantThemeExtension _getThemeExtension(BuildContext context) {
     return context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
   }
 }

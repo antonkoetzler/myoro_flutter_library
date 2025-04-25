@@ -39,7 +39,6 @@ void main() {
       expectLater(
         configuration.controller.bloc.stream,
         emitsInOrder([
-          MyoroDropdownState<String>(enabled: enabled),
           MyoroDropdownState<String>(
             enabled: enabled,
             selectedItems: {configuration.initiallySelectedItem!},

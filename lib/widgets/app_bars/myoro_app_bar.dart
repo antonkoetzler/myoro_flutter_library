@@ -29,17 +29,11 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-  const MyoroAppBar({
-    super.key,
-    this.bordered = false,
-    this.backgroundColor,
-    required this.child,
-  });
+  const MyoroAppBar({super.key, this.bordered = false, this.backgroundColor, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -53,9 +47,7 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         if (bordered)
           const MyoroBasicDivider(
-            configuration: MyoroBasicDividerConfiguration(
-              direction: Axis.horizontal,
-            ),
+            configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal),
           ),
       ],
     );

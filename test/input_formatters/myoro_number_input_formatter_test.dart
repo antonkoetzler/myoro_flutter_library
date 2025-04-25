@@ -37,9 +37,7 @@ void main() {
                       min: min,
                       max: max,
                       decimalPlaces: decimalPlaces,
-                      configuration: MyoroInputConfiguration(
-                        controller: controller,
-                      ),
+                      configuration: MyoroInputConfiguration(controller: controller),
                     );
                   },
                 );

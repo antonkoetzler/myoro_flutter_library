@@ -10,8 +10,7 @@ void main() {
   final themeExtension2 = MyoroGroupRadioThemeExtension.fake();
 
   test('MyoroGroupRadioThemeExtension.copyWith', () {
-    MyoroGroupRadioThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroGroupRadioThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       direction: themeExtension2.direction,

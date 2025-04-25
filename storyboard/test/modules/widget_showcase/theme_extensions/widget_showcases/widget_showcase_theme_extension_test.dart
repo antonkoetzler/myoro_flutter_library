@@ -1,74 +1,41 @@
 import 'dart:ui';
 
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Unit test of [WidgetShowcaseThemeExtension].
 void main() {
   final themeExtension1 = WidgetShowcaseThemeExtension.fake();
   final themeExtension2 = WidgetShowcaseThemeExtension.fake();
 
   test('WidgetShowcaseThemeExtension.copyWith', () {
-    final copiedThemeExtension = themeExtension1.copyWith(
-      widgetWrapperBackgroundColor:
-          themeExtension2.widgetWrapperBackgroundColor,
-      widgetWrapperPadding: themeExtension2.widgetWrapperPadding,
-      widgetWrapperContentPadding: themeExtension2.widgetWrapperContentPadding,
-      widgetWrapperBorderRadius: themeExtension2.widgetWrapperBorderRadius,
-      widgetWrapperBorder: themeExtension2.widgetWrapperBorder,
-      widgetWrapperAlignment: themeExtension2.widgetWrapperAlignment,
-      widgetOptionsMaxWidth: themeExtension2.widgetOptionsMaxWidth,
-      widgetOptionsPadding: themeExtension2.widgetOptionsPadding,
-      widgetOptionsDividerPadding: themeExtension2.widgetOptionsDividerPadding,
-    );
+    expect(themeExtension1.copyWith(), themeExtension1);
     expect(
-      copiedThemeExtension.widgetWrapperBackgroundColor,
-      themeExtension2.widgetWrapperBackgroundColor,
-    );
-    expect(
-      copiedThemeExtension.widgetWrapperPadding,
-      themeExtension2.widgetWrapperPadding,
-    );
-    expect(
-      copiedThemeExtension.widgetWrapperContentPadding,
-      themeExtension2.widgetWrapperContentPadding,
-    );
-    expect(
-      copiedThemeExtension.widgetWrapperBorderRadius,
-      themeExtension2.widgetWrapperBorderRadius,
-    );
-    expect(
-      copiedThemeExtension.widgetWrapperBorder,
-      themeExtension2.widgetWrapperBorder,
-    );
-    expect(
-      copiedThemeExtension.widgetWrapperAlignment,
-      themeExtension2.widgetWrapperAlignment,
-    );
-    expect(
-      copiedThemeExtension.widgetOptionsMaxWidth,
-      themeExtension2.widgetOptionsMaxWidth,
-    );
-    expect(
-      copiedThemeExtension.widgetOptionsPadding,
-      themeExtension2.widgetOptionsPadding,
-    );
-    expect(
-      copiedThemeExtension.widgetOptionsDividerPadding,
-      themeExtension2.widgetOptionsDividerPadding,
+      themeExtension1.copyWith(
+        widgetWrapperDecoration: themeExtension2.widgetWrapperDecoration,
+        widgetWrapperPadding: themeExtension2.widgetWrapperPadding,
+        widgetWrapperContentPadding: themeExtension2.widgetWrapperContentPadding,
+        widgetWrapperAlignment: themeExtension2.widgetWrapperAlignment,
+        previousPageButtonIcon: themeExtension2.previousPageButtonIcon,
+        previousPageButtonPadding: themeExtension2.previousPageButtonPadding,
+        previousPageButtonOffset: themeExtension2.previousPageButtonOffset,
+        widgetOptionsMaxWidth: themeExtension2.widgetOptionsMaxWidth,
+        widgetOptionsPadding: themeExtension2.widgetOptionsPadding,
+        widgetOptionsDividerPadding: themeExtension2.widgetOptionsDividerPadding,
+      ),
+      themeExtension2,
     );
   });
 
   test('WidgetShowcaseThemeExtension.lerp', () {
-    for (double i = 0; i < faker.randomGenerator.decimal(); i += 0.1) {
+    for (double i = 0; i < 1; i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
-        lerpedThemeExtension.widgetWrapperBackgroundColor,
-        Color.lerp(
-          themeExtension1.widgetWrapperBackgroundColor,
-          themeExtension2.widgetWrapperBackgroundColor,
+        lerpedThemeExtension.widgetWrapperDecoration,
+        BoxDecoration.lerp(
+          themeExtension1.widgetWrapperDecoration,
+          themeExtension2.widgetWrapperDecoration,
           i,
         ),
       );
@@ -89,22 +56,6 @@ void main() {
         ),
       );
       expect(
-        lerpedThemeExtension.widgetWrapperBorderRadius,
-        BorderRadius.lerp(
-          themeExtension1.widgetWrapperBorderRadius,
-          themeExtension2.widgetWrapperBorderRadius,
-          i,
-        ),
-      );
-      expect(
-        lerpedThemeExtension.widgetWrapperBorder,
-        Border.lerp(
-          themeExtension1.widgetWrapperBorder,
-          themeExtension2.widgetWrapperBorder,
-          i,
-        ),
-      );
-      expect(
         lerpedThemeExtension.widgetWrapperAlignment,
         Alignment.lerp(
           themeExtension1.widgetWrapperAlignment,
@@ -113,12 +64,32 @@ void main() {
         ),
       );
       expect(
-        lerpedThemeExtension.widgetOptionsMaxWidth,
-        lerpDouble(
-          themeExtension1.widgetOptionsMaxWidth,
-          themeExtension2.widgetOptionsMaxWidth,
+        lerpedThemeExtension.previousPageButtonIcon,
+        myoroLerp(
+          themeExtension1.previousPageButtonIcon,
+          themeExtension2.previousPageButtonIcon,
           i,
         ),
+      );
+      expect(
+        lerpedThemeExtension.previousPageButtonPadding,
+        EdgeInsets.lerp(
+          themeExtension1.previousPageButtonPadding,
+          themeExtension2.previousPageButtonPadding,
+          i,
+        ),
+      );
+      expect(
+        lerpedThemeExtension.previousPageButtonOffset,
+        lerpDouble(
+          themeExtension1.previousPageButtonOffset,
+          themeExtension2.previousPageButtonOffset,
+          i,
+        ),
+      );
+      expect(
+        lerpedThemeExtension.widgetOptionsMaxWidth,
+        lerpDouble(themeExtension1.widgetOptionsMaxWidth, themeExtension2.widgetOptionsMaxWidth, i),
       );
       expect(
         lerpedThemeExtension.widgetOptionsPadding,
@@ -138,4 +109,6 @@ void main() {
       );
     }
   });
+
+  test('WidgetShowcaseThemeExtension.toString', () {});
 }

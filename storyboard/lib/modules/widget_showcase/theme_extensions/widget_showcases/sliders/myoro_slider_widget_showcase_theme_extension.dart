@@ -27,9 +27,7 @@ final class MyoroSliderWidgetShowcaseThemeExtension
     : inputStyle = MyoroInputStyleEnum.fake(),
       widgetSize = faker.randomGenerator.decimal(),
       hiddenKittyContainerColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )];
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
 
   MyoroSliderWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : inputStyle = MyoroInputStyleEnum.outlined,
@@ -45,8 +43,7 @@ final class MyoroSliderWidgetShowcaseThemeExtension
     return MyoroSliderWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
       widgetSize: widgetSize ?? this.widgetSize,
-      hiddenKittyContainerColor:
-          hiddenKittyContainerColor ?? this.hiddenKittyContainerColor,
+      hiddenKittyContainerColor: hiddenKittyContainerColor ?? this.hiddenKittyContainerColor,
     );
   }
 

@@ -17,8 +17,7 @@ void main() {
   });
 
   test('MyoroBarGraphThemeExtension.copyWith', () {
-    MyoroBarGraphThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroBarGraphThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       border: themeExtension2.border,
@@ -26,10 +25,8 @@ void main() {
       barBorderRadius: themeExtension2.barBorderRadius,
       sideTitleTextStyle: themeExtension2.sideTitleTextStyle,
       sideTitleInterval: themeExtension2.sideTitleInterval,
-      verticalSideTitleReversedSize:
-          themeExtension2.verticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize:
-          themeExtension2.horizontalSideTitleReversedSize,
+      verticalSideTitleReversedSize: themeExtension2.verticalSideTitleReversedSize,
+      horizontalSideTitleReversedSize: themeExtension2.horizontalSideTitleReversedSize,
     );
     expect(copiedThemeExtension, themeExtension2);
   });
@@ -47,27 +44,15 @@ void main() {
       );
       expect(
         lerpedThemeExtension.barBorderRadius,
-        BorderRadius.lerp(
-          themeExtension1.barBorderRadius,
-          themeExtension2.barBorderRadius,
-          i,
-        ),
+        BorderRadius.lerp(themeExtension1.barBorderRadius, themeExtension2.barBorderRadius, i),
       );
       expect(
         lerpedThemeExtension.sideTitleTextStyle,
-        TextStyle.lerp(
-          themeExtension1.sideTitleTextStyle,
-          themeExtension2.sideTitleTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.sideTitleTextStyle, themeExtension2.sideTitleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.sideTitleInterval,
-        lerpDouble(
-          themeExtension1.sideTitleInterval,
-          themeExtension2.sideTitleInterval,
-          i,
-        ),
+        lerpDouble(themeExtension1.sideTitleInterval, themeExtension2.sideTitleInterval, i),
       );
       expect(
         lerpedThemeExtension.verticalSideTitleReversedSize,

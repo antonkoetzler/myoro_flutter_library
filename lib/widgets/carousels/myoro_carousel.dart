@@ -48,8 +48,7 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
 
     return Stack(
       alignment: Alignment.center,
@@ -129,9 +128,7 @@ final class _TraversalButton extends StatelessWidget {
       child: IntrinsicWidth(
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
-            iconConfiguration: MyoroIconTextButtonIconConfiguration(
-              icon: _icon,
-            ),
+            iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: _icon),
             borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
             onTapUp: (_) => _onTapUp(),
           ),

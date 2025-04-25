@@ -43,21 +43,23 @@ class MyoroMenuItem extends Equatable {
          'null. If [builder] is null, [iconConfiguration] and/or [textConfiguration] must not be null.',
        );
 
-  factory MyoroMenuItem.fake() {
-    final bool builderProvided = faker.randomGenerator.boolean();
+  factory MyoroMenuItem.fake({bool? builderProvided}) {
+    builderProvided = builderProvided ?? faker.randomGenerator.boolean();
+    // Prevent assertion errors.
+    final bool requiredIconConfiguration = faker.randomGenerator.boolean();
 
     return MyoroMenuItem(
       isSelected: faker.randomGenerator.boolean(),
       iconConfiguration:
           builderProvided
               ? null
-              : (faker.randomGenerator.boolean()
+              : ((requiredIconConfiguration || faker.randomGenerator.boolean())
                   ? MyoroIconTextButtonIconConfiguration.fake()
                   : null),
       textConfiguration:
           builderProvided
               ? null
-              : (faker.randomGenerator.boolean()
+              : ((!requiredIconConfiguration || faker.randomGenerator.boolean())
                   ? MyoroIconTextButtonTextConfiguration.fake()
                   : null),
       builder: builderProvided ? ((_, __) => const SizedBox.shrink()) : null,

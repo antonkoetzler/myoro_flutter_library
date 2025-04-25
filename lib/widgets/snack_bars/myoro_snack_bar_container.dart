@@ -40,9 +40,6 @@ final class _SnackBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // [Row] added to prevent the snack bar from stretching horizontally.
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [Flexible(child: _snackBar)],
-    );
+    return Row(mainAxisSize: MainAxisSize.min, children: [Flexible(child: _snackBar)]);
   }
 }

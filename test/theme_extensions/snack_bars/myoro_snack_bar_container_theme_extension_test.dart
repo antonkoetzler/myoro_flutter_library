@@ -11,8 +11,7 @@ void main() {
   final themeExtension2 = MyoroSnackBarContainerThemeExtension.fake();
 
   test('MyoroSnackBarContainerThemeExtension.copyWith', () {
-    MyoroSnackBarContainerThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroSnackBarContainerThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       primaryColor: themeExtension2.primaryColor,
@@ -31,11 +30,7 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(
-          themeExtension1.primaryColor,
-          themeExtension2.primaryColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
       );
       expect(
         lerpedThemeExtension.behavior,
@@ -55,11 +50,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.dismissDirection,
-        myoroLerp(
-          themeExtension1.dismissDirection,
-          themeExtension2.dismissDirection,
-          i,
-        ),
+        myoroLerp(themeExtension1.dismissDirection, themeExtension2.dismissDirection, i),
       );
       expect(
         lerpedThemeExtension.duration,

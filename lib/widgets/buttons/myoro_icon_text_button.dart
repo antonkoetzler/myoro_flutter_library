@@ -29,8 +29,8 @@ final class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool invert = _configuration.invert;
-    final MyoroIconTextButtonConfigurationContentColorBuilder?
-    contentColorBuilder = _configuration.contentColorBuilder;
+    final MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder =
+        _configuration.contentColorBuilder;
     final MyoroIconTextButtonIconConfiguration? iconConfiguration =
         _configuration.iconConfiguration;
     final MyoroIconTextButtonTextConfiguration? textConfiguration =
@@ -57,10 +57,7 @@ final class _Button extends StatelessWidget {
         spacing: _configuration.spacing,
         children:
             iconConfigurationAndTextConfigurationNotNull
-                ? [
-                  !invert ? iconWidget! : textWidget!,
-                  !invert ? textWidget! : iconWidget!,
-                ]
+                ? [!invert ? iconWidget! : textWidget!, !invert ? textWidget! : iconWidget!]
                 : [
                   if (iconConfigurationNotNull) iconWidget!,
                   if (textConfigurationNotNull) textWidget!,
@@ -72,15 +69,10 @@ final class _Button extends StatelessWidget {
 
 final class _Icon extends StatelessWidget {
   final MyoroTapStatusEnum _tapStatusEnum;
-  final MyoroIconTextButtonConfigurationContentColorBuilder?
-  _contentColorBuilder;
+  final MyoroIconTextButtonConfigurationContentColorBuilder? _contentColorBuilder;
   final MyoroIconTextButtonIconConfiguration _iconConfiguration;
 
-  const _Icon(
-    this._tapStatusEnum,
-    this._contentColorBuilder,
-    this._iconConfiguration,
-  );
+  const _Icon(this._tapStatusEnum, this._contentColorBuilder, this._iconConfiguration);
 
   @override
   Widget build(BuildContext context) {
@@ -89,30 +81,21 @@ final class _Icon extends StatelessWidget {
       size: _iconConfiguration.size,
       color:
           _contentColorBuilder?.call(_tapStatusEnum) ??
-          MyoroButtonVariantEnum.primary.contentColorBuilder(
-            context,
-            _tapStatusEnum,
-          ),
+          MyoroButtonVariantEnum.primary.contentColorBuilder(context, _tapStatusEnum),
     );
   }
 }
 
 final class _Text extends StatelessWidget {
   final MyoroTapStatusEnum _tapStatusEnum;
-  final MyoroIconTextButtonConfigurationContentColorBuilder?
-  _contentColorBuilder;
+  final MyoroIconTextButtonConfigurationContentColorBuilder? _contentColorBuilder;
   final MyoroIconTextButtonTextConfiguration _textConfiguration;
 
-  const _Text(
-    this._tapStatusEnum,
-    this._contentColorBuilder,
-    this._textConfiguration,
-  );
+  const _Text(this._tapStatusEnum, this._contentColorBuilder, this._textConfiguration);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
 
     return Expanded(
       child: Text(
@@ -122,10 +105,7 @@ final class _Text extends StatelessWidget {
         textAlign: _textConfiguration.alignment,
         style: (_textConfiguration.style ?? themeExtension.textStyle).withColor(
           _contentColorBuilder?.call(_tapStatusEnum) ??
-              MyoroButtonVariantEnum.primary.contentColorBuilder(
-                context,
-                _tapStatusEnum,
-              ),
+              MyoroButtonVariantEnum.primary.contentColorBuilder(context, _tapStatusEnum),
         ),
       ),
     );

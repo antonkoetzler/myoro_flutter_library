@@ -10,11 +10,7 @@ final class MyoroResolverState<T> extends Equatable {
   /// Result of the request.
   final T? result;
 
-  const MyoroResolverState({
-    this.status = MyoroRequestEnum.idle,
-    this.errorMessage,
-    this.result,
-  });
+  const MyoroResolverState({this.status = MyoroRequestEnum.idle, this.errorMessage, this.result});
 
   MyoroResolverState<T> copyWith({
     MyoroRequestEnum? status,
@@ -25,8 +21,7 @@ final class MyoroResolverState<T> extends Equatable {
   }) {
     return MyoroResolverState(
       status: status ?? this.status,
-      errorMessage:
-          errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
+      errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
       result: resultProvided ? (result ?? this.result) : null,
     );
   }

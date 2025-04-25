@@ -6,12 +6,7 @@ import 'package:storyboard/storyboard.dart';
 /// Widget test of [MyoroTooltipWidgetShowcase].
 void main() {
   testWidgets('MyoroTooltipWidgetShowcase', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroTooltipWidgetShowcase(),
-      ),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: MyoroTooltipWidgetShowcase()));
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroTooltipWidgetShowcase), findsOneWidget);

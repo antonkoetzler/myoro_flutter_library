@@ -17,8 +17,7 @@ void main() {
     },
     suffix: const SizedBox.shrink(),
   );
-  final formatter =
-      faker.randomGenerator.boolean() ? MyoroTimeInputFormatter() : null;
+  final formatter = faker.randomGenerator.boolean() ? MyoroTimeInputFormatter() : null;
 
   tearDown(() => controller.dispose());
 
@@ -30,13 +29,9 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroInputThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
             border = configuration.getBorder(context);
-            return MyoroInput(
-              configuration: configuration,
-              formatter: formatter,
-            );
+            return MyoroInput(configuration: configuration, formatter: formatter);
           },
         ),
       ),
@@ -58,8 +53,7 @@ void main() {
             // (w.children[2] as Expanded).child is _TextFormField &&
             w.children[3] is SizedBox &&
             (w.children[3] as SizedBox).width == themeExtension.spacing &&
-            w.children.last
-                is SizedBox, // The [SizedBox] inserted in [configuration].
+            w.children.last is SizedBox, // The [SizedBox] inserted in [configuration].
       ),
       findsOneWidget,
     );
@@ -68,9 +62,7 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroCheckbox &&
-            w.initialValue == configuration.enabled &&
-            w.onChanged != null,
+            w is MyoroCheckbox && w.initialValue == configuration.enabled && w.onChanged != null,
       ),
       findsOneWidget,
     );
@@ -95,16 +87,13 @@ void main() {
             w is TextField &&
             w.ignorePointers == false &&
             w.readOnly == (configuration.readOnly ?? false) &&
-            w.decoration?.floatingLabelBehavior ==
-                themeExtension.labelBehavior &&
+            w.decoration?.floatingLabelBehavior == themeExtension.labelBehavior &&
             w.decoration?.hintText == configuration.placeholder &&
             w.decoration?.enabledBorder == border &&
             w.decoration?.focusedBorder == border &&
             w.decoration?.errorBorder ==
                 border.copyWith(
-                  borderSide: border.borderSide.copyWith(
-                    color: themeExtension.errorBorderColor,
-                  ),
+                  borderSide: border.borderSide.copyWith(color: themeExtension.errorBorderColor),
                 ) &&
             w.decoration?.disabledBorder ==
                 border.copyWith(
@@ -131,8 +120,7 @@ void main() {
               w.child is Text &&
               (w.child as Text).data == configuration.label &&
               (w.child as Text).style ==
-                  (configuration.labelTextStyle ??
-                      themeExtension.labelTextStyle),
+                  (configuration.labelTextStyle ?? themeExtension.labelTextStyle),
         ),
         findsOneWidget,
       );
@@ -146,18 +134,14 @@ void main() {
           (Widget w) =>
               w is IntrinsicWidth &&
               w.child is Padding &&
-              (w.child as Padding).padding ==
-                  themeExtension.clearTextButtonPadding &&
+              (w.child as Padding).padding == themeExtension.clearTextButtonPadding &&
               (w.child as Padding).child is MyoroIconTextButton &&
               ((w.child as Padding).child as MyoroIconTextButton)
                       .configuration
                       .iconConfiguration
                       ?.icon ==
                   themeExtension.clearTextButtonIcon &&
-              ((w.child as Padding).child as MyoroIconTextButton)
-                      .configuration
-                      .onTapUp !=
-                  null,
+              ((w.child as Padding).child as MyoroIconTextButton).configuration.onTapUp != null,
         ),
         findsOneWidget,
       );

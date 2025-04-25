@@ -39,20 +39,14 @@ final class MyoroSliderWidgetShowcaseState extends Equatable {
   }) {
     return MyoroSliderWidgetShowcaseState(
       label: label ?? this.label,
-      labelTextStyle:
-          labelTextStyleProvided
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       width: width ?? this.width,
       currentValueIndicatorTextBuilderEnabled:
-          currentValueIndicatorTextBuilderEnabled ??
-          this.currentValueIndicatorTextBuilderEnabled,
+          currentValueIndicatorTextBuilderEnabled ?? this.currentValueIndicatorTextBuilderEnabled,
       maxValueIndicatorTextBuilderEnabled:
-          maxValueIndicatorTextBuilderEnabled ??
-          this.maxValueIndicatorTextBuilderEnabled,
+          maxValueIndicatorTextBuilderEnabled ?? this.maxValueIndicatorTextBuilderEnabled,
       footerIndicatorTextBuilderEnabled:
-          footerIndicatorTextBuilderEnabled ??
-          this.footerIndicatorTextBuilderEnabled,
+          footerIndicatorTextBuilderEnabled ?? this.footerIndicatorTextBuilderEnabled,
     );
   }
 

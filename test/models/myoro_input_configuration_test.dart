@@ -64,9 +64,7 @@ void main() {
   });
 
   testWidgets('MyoroInputConfiguration.getBorder', (WidgetTester tester) async {
-    const modelWithBorder = MyoroInputConfiguration(
-      border: OutlineInputBorder(),
-    );
+    const modelWithBorder = MyoroInputConfiguration(border: OutlineInputBorder());
     const modelWithoutBorder = MyoroInputConfiguration();
 
     await tester.pumpWidget(

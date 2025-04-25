@@ -23,10 +23,8 @@ void main() {
   }) {
     MyoroTypographyDesignSystem.isDarkMode = isDarkMode;
 
-    final ColorScheme colorSchemeInUse =
-        colorScheme ?? createMyoroColorScheme(isDarkMode);
-    final TextTheme textThemeInUse =
-        textTheme ?? createMyoroTextTheme(isDarkMode);
+    final ColorScheme colorSchemeInUse = colorScheme ?? createMyoroColorScheme(isDarkMode);
+    final TextTheme textThemeInUse = textTheme ?? createMyoroTextTheme(isDarkMode);
 
     final themeData = createMyoroThemeData(
       colorScheme != null ? (_) => colorSchemeInUse : null,
@@ -40,10 +38,7 @@ void main() {
       colorScheme: colorSchemeInUse,
       textTheme: textThemeInUse,
       sliderTheme: createMyoroSliderThemeData(colorSchemeInUse),
-      tooltipTheme: createMyoroTooltipThemeData(
-        colorSchemeInUse,
-        textThemeInUse,
-      ),
+      tooltipTheme: createMyoroTooltipThemeData(colorSchemeInUse, textThemeInUse),
       textSelectionTheme: createMyoroTextSelectionThemeData(colorSchemeInUse),
       extensions: [
         ...createMyoroThemeExtensions(colorSchemeInUse, textThemeInUse),
@@ -56,10 +51,7 @@ void main() {
     expect(themeData.textTheme, themeData.textTheme);
     expect(themeData.sliderTheme, comparisonThemeData.sliderTheme);
     expect(themeData.tooltipTheme, comparisonThemeData.tooltipTheme);
-    expect(
-      themeData.textSelectionTheme,
-      comparisonThemeData.textSelectionTheme,
-    );
+    expect(themeData.textSelectionTheme, comparisonThemeData.textSelectionTheme);
     expect(themeData.extensions.length, comparisonThemeData.extensions.length);
   }
 

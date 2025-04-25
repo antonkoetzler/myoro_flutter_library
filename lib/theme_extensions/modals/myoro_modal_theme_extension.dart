@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroModal].
-class MyoroModalThemeExtension
-    extends ThemeExtension<MyoroModalThemeExtension> {
+class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> {
   /// Background color of the modal.
   final Color primaryColor;
 
@@ -47,17 +46,11 @@ class MyoroModalThemeExtension
     final maxHeight = faker.randomGenerator.decimal();
 
     return MyoroModalThemeExtension(
-      primaryColor:
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+      primaryColor: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       borderRadius: BorderRadius.circular(faker.randomGenerator.decimal()),
       border: Border.all(
         width: faker.randomGenerator.decimal(),
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       ),
       padding: EdgeInsets.all(faker.randomGenerator.decimal()),
       constraints: BoxConstraints(
@@ -68,27 +61,18 @@ class MyoroModalThemeExtension
       ),
       spacing: faker.randomGenerator.decimal(),
       titleTextStyle: MyoroTypographyDesignSystem.instance.randomTextStyle,
-      closeButtonIcon:
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+      closeButtonIcon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
     );
   }
 
-  factory MyoroModalThemeExtension.builder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
+  factory MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme) {
     const width = 300.0;
     const height = 400.0;
 
     return MyoroModalThemeExtension(
       primaryColor: colorScheme.primary,
       borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-      border: Border.all(
-        width: kMyoroBorderLength,
-        color: colorScheme.onPrimary,
-      ),
+      border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
       padding: const EdgeInsets.all(5),
       constraints: const BoxConstraints(
         minWidth: width,

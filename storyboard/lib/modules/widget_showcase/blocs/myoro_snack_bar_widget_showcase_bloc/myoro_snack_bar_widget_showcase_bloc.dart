@@ -11,13 +11,8 @@ typedef _Emitter = Emitter<MyoroSnackBarWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroSnackBarWidgetShowcase].
 final class MyoroSnackBarWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroSnackBarWidgetShowcaseEvent,
-          MyoroSnackBarWidgetShowcaseState
-        > {
-  MyoroSnackBarWidgetShowcaseBloc()
-    : super(MyoroSnackBarWidgetShowcaseState()) {
+    extends Bloc<MyoroSnackBarWidgetShowcaseEvent, MyoroSnackBarWidgetShowcaseState> {
+  MyoroSnackBarWidgetShowcaseBloc() : super(MyoroSnackBarWidgetShowcaseState()) {
     on<SetSnackBarTypeEvent>(_setSnackBarTypeEvent);
     on<SetShowCloseButtonEvent>(_setShowCloseButtonEvent);
     on<SetMessageEvent>(_setMessageEvent);

@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 typedef MyoroAccordionItemTitleBuilder = Widget Function(BuildContext context);
 
 /// Builder ofthe content of the [MyoroAccordionItem].
-typedef MyoroAccordionItemContentBuilder =
-    Widget Function(BuildContext context);
+typedef MyoroAccordionItemContentBuilder = Widget Function(BuildContext context);
 
 /// Item of a [MyoroAccordion].
 class MyoroAccordionItem extends Equatable {
@@ -16,10 +15,7 @@ class MyoroAccordionItem extends Equatable {
   /// Builder of the content of the [MyoroAccordionItem].
   final MyoroAccordionItemContentBuilder contentBuilder;
 
-  const MyoroAccordionItem({
-    required this.titleBuilder,
-    required this.contentBuilder,
-  });
+  const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
 
   MyoroAccordionItem copyWith({
     MyoroAccordionItemTitleBuilder? titleBuilder,

@@ -10,8 +10,7 @@ void main() {
   final themeExtension2 = MyoroCheckboxWidgetShowcaseThemeExtension.fake();
 
   test('MyoroCheckboxWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroCheckboxWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroCheckboxWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       labelTextStyleOptionWidth: themeExtension2.labelTextStyleOptionWidth,

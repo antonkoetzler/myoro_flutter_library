@@ -17,8 +17,7 @@ final class MyoroBasicDividerWidgetShowcaseThemeExtension
 
   @override
   MyoroBasicDividerWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension>?
-    other,
+    covariant ThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
     return this;

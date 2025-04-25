@@ -24,16 +24,11 @@ final class MyoroCardWidgetShowcaseThemeExtension
   MyoroCardWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
       titleOptionTextAlign =
-          TextAlign.values[faker.randomGenerator.integer(
-            TextAlign.values.length,
-          )],
+          TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
       titleTextStyleOptionTextStyles =
           List.generate(
             faker.randomGenerator.integer(10),
-            (_) => (
-              faker.lorem.word(),
-              MyoroTypographyDesignSystem.instance.randomTextStyle,
-            ),
+            (_) => (faker.lorem.word(), MyoroTypographyDesignSystem.instance.randomTextStyle),
           ).toSet();
 
   MyoroCardWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
@@ -67,11 +62,7 @@ final class MyoroCardWidgetShowcaseThemeExtension
     if (other is! MyoroCardWidgetShowcaseThemeExtension) return this;
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
-      titleOptionTextAlign: myoroLerp(
-        titleOptionTextAlign,
-        other.titleOptionTextAlign,
-        t,
-      ),
+      titleOptionTextAlign: myoroLerp(titleOptionTextAlign, other.titleOptionTextAlign, t),
       titleTextStyleOptionTextStyles: myoroLerp(
         titleTextStyleOptionTextStyles,
         other.titleTextStyleOptionTextStyles,
@@ -91,11 +82,7 @@ final class MyoroCardWidgetShowcaseThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      inputStyle,
-      titleOptionTextAlign,
-      titleTextStyleOptionTextStyles,
-    );
+    return Object.hash(inputStyle, titleOptionTextAlign, titleTextStyleOptionTextStyles);
   }
 
   @override

@@ -25,8 +25,7 @@ final class _MyoroScreenState extends State<MyoroScreen> {
 
   MyoroDrawerController? _localDrawerController;
   MyoroDrawerController get _drawerController {
-    return widget.drawerController ??
-        (_localDrawerController ??= MyoroDrawerController());
+    return widget.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
   }
 
   @override

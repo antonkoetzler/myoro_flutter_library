@@ -29,9 +29,7 @@ void main() {
               },
               itemBuilder:
                   (String item) => MyoroMenuItem(
-                    textConfiguration: MyoroIconTextButtonTextConfiguration(
-                      text: item,
-                    ),
+                    textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
                   ),
             );
           },
@@ -42,9 +40,7 @@ void main() {
 
     // [MyoroSearchInput].
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is Focus && w.child is MyoroForm<Set<String>>,
-      ),
+      find.byWidgetPredicate((Widget w) => w is Focus && w.child is MyoroForm<Set<String>>),
       findsOneWidget,
     );
     expect(
@@ -66,8 +62,7 @@ void main() {
           w.mainAxisSize == MainAxisSize.min &&
           w.children.length == 2 &&
           w.children.first is SizedBox &&
-          (w.children.first as SizedBox).height ==
-              searchInputThemeExtension.spacing &&
+          (w.children.first as SizedBox).height == searchInputThemeExtension.spacing &&
           w.children.last is Flexible,
     );
     expect(searchDropdownSectionFinder, findsNothing);
@@ -82,8 +77,7 @@ void main() {
     expect(searchButtonFinder, findsOneWidget);
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is Icon && w.icon == searchInputThemeExtension.searchButtonIcon,
+        (Widget w) => w is Icon && w.icon == searchInputThemeExtension.searchButtonIcon,
       ),
       findsOneWidget,
     );

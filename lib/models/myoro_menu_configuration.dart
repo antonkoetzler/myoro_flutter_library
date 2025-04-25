@@ -5,15 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Returns a [List] of [T] of the filtered items given the query.
-typedef MyoroMenuSearchCallback<T> =
-    Set<T> Function(String query, Set<T> items);
+typedef MyoroMenuSearchCallback<T> = Set<T> Function(String query, Set<T> items);
 
 /// Request that returns the [MyoroPagination] of the [MyoroMenu].
 typedef MyoroMenuRequest<T> = FutureOr<Set<T>> Function();
 
 /// Request that executes when the bottom of the menu is reached.
-typedef MyoroMenuOnEndReachedRequest<T> =
-    FutureOr<Set<T>> Function(Set<T> items);
+typedef MyoroMenuOnEndReachedRequest<T> = FutureOr<Set<T>> Function(Set<T> items);
 
 /// [MyoroMenuItem] builder from a generic object.
 typedef MyoroMenuItemBuilder<T> = MyoroMenuItem Function(T item);
@@ -65,27 +63,15 @@ class MyoroMenuConfiguration<T> extends Equatable {
       constraints: constraints ?? this.constraints,
       request: request ?? this.request,
       onEndReachedRequest:
-          onEndReachedRequestProvided
-              ? (onEndReachedRequest ?? this.onEndReachedRequest)
-              : null,
-      searchCallback:
-          searchCallbackProvided
-              ? (searchCallback ?? this.searchCallback)
-              : null,
+          onEndReachedRequestProvided ? (onEndReachedRequest ?? this.onEndReachedRequest) : null,
+      searchCallback: searchCallbackProvided ? (searchCallback ?? this.searchCallback) : null,
       itemBuilder: itemBuilder ?? this.itemBuilder,
     );
   }
 
   @override
   List<Object?> get props {
-    return [
-      controller,
-      constraints,
-      request,
-      onEndReachedRequest,
-      searchCallback,
-      itemBuilder,
-    ];
+    return [controller, constraints, request, onEndReachedRequest, searchCallback, itemBuilder];
   }
 
   @override

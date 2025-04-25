@@ -10,8 +10,7 @@ void main() {
   final themeExtension2 = MyoroPieGraphThemeExtension.fake();
 
   test('MyoroPieGraphThemeExtension.copyWith', () {
-    MyoroPieGraphThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroPieGraphThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       itemColor: themeExtension2.itemColor,

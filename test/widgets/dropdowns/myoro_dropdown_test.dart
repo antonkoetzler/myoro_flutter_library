@@ -11,10 +11,7 @@ void main() {
     (WidgetTester tester) async {
       final MyoroSingularDropdownConfiguration<String> configuration =
           _standardSingularConfiguration;
-      final BuildContext context = await _pumpMyoroSingularDropdown(
-        tester,
-        configuration,
-      );
+      final BuildContext context = await _pumpMyoroSingularDropdown(tester, configuration);
       _expectCalls(tester, context, configuration);
     },
   );
@@ -23,13 +20,8 @@ void main() {
     '[MyoroSingularDropdown]: [MyoroSingularDropdownConfiguration.checkboxOnChanged] passed',
     (WidgetTester tester) async {
       final MyoroSingularDropdownConfiguration<String> configuration =
-          _standardSingularConfiguration.copyWith(
-            checkboxOnChanged: (_, __) {},
-          );
-      final BuildContext context = await _pumpMyoroSingularDropdown(
-        tester,
-        configuration,
-      );
+          _standardSingularConfiguration.copyWith(checkboxOnChanged: (_, __) {});
+      final BuildContext context = await _pumpMyoroSingularDropdown(tester, configuration);
       _expectCalls(tester, context, configuration);
     },
   );
@@ -59,10 +51,8 @@ void _expectCalls(
   BuildContext context,
   MyoroDropdownConfiguration<String> configuration,
 ) async {
-  final dropdownThemeExtension =
-      context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-  final inputThemeExtension =
-      context.resolveThemeExtension<MyoroInputThemeExtension>();
+  final dropdownThemeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+  final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
   expect(find.byType(MyoroSingularDropdown<String>), findsOneWidget);
 
@@ -73,8 +63,7 @@ void _expectCalls(
           w is BlocProvider<MyoroDropdownBloc<String>> &&
           w.child is RepaintBoundary &&
           (w.child as RepaintBoundary).child is Row &&
-          ((w.child as RepaintBoundary).child as Row).spacing ==
-              dropdownThemeExtension.spacing &&
+          ((w.child as RepaintBoundary).child as Row).spacing == dropdownThemeExtension.spacing &&
           ((w.child as RepaintBoundary).child as Row).children.length ==
               (configuration.checkboxOnChangedNotNull ? 2 : 1),
     ),
@@ -84,17 +73,13 @@ void _expectCalls(
   // [_Checkbox]
   if (configuration.checkboxOnChangedNotNull) {
     expect(
-      find.byType(
-        BlocConsumer<MyoroDropdownBloc<String>, MyoroDropdownState<String>>,
-      ),
+      find.byType(BlocConsumer<MyoroDropdownBloc<String>, MyoroDropdownState<String>>),
       findsAtLeastNWidgets(1),
     );
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroCheckbox &&
-            w.initialValue == configuration.enabled &&
-            w.onChanged != null,
+            w is MyoroCheckbox && w.initialValue == configuration.enabled && w.onChanged != null,
       ),
       findsOneWidget,
     );
@@ -104,9 +89,7 @@ void _expectCalls(
   expect(
     find.byWidgetPredicate(
       (Widget w) =>
-          w is OverlayPortal &&
-          w.child is Stack &&
-          (w.child as Stack).children.length == 2,
+          w is OverlayPortal && w.child is Stack && (w.child as Stack).children.length == 2,
     ),
     findsOneWidget,
   );
@@ -114,12 +97,10 @@ void _expectCalls(
     find.byWidgetPredicate(
       (Widget w) =>
           w is MyoroInput &&
-          w.configuration.label ==
-              (configuration.label.isNotEmpty ? configuration.label : null) &&
+          w.configuration.label == (configuration.label.isNotEmpty ? configuration.label : null) &&
           w.configuration.enabled == configuration.enabled &&
           w.configuration.readOnly == true &&
-          w.configuration.showClearTextButton ==
-              configuration.allowItemClearing &&
+          w.configuration.showClearTextButton == configuration.allowItemClearing &&
           w.configuration.onCleared != null &&
           w.configuration.controller != null,
     ),
@@ -136,17 +117,13 @@ void _expectCalls(
           w.clipBehavior == Clip.hardEdge &&
           w.child is SizedBox &&
           (w.child as SizedBox).child
-              is BlocBuilder<
-                MyoroDropdownBloc<String>,
-                MyoroDropdownState<String>
-              >,
+              is BlocBuilder<MyoroDropdownBloc<String>, MyoroDropdownState<String>>,
     ),
     findsOneWidget,
   );
   expect(
     find.byWidgetPredicate(
-      (Widget w) =>
-          w is Row && w.children.length == 1 && w.children.first is Expanded,
+      (Widget w) => w is Row && w.children.length == 1 && w.children.first is Expanded,
     ),
     findsAtLeastNWidgets(1),
   );
@@ -157,14 +134,10 @@ void _expectCalls(
         w is SizedBox &&
         w.child is MouseRegion &&
         (w.child as MouseRegion).child is GestureDetector &&
-        ((w.child as MouseRegion).child as GestureDetector).child
-            is TapRegion &&
-        (((w.child as MouseRegion).child as GestureDetector).child as TapRegion)
-                .child
+        ((w.child as MouseRegion).child as GestureDetector).child is TapRegion &&
+        (((w.child as MouseRegion).child as GestureDetector).child as TapRegion).child
             is Container &&
-        ((((w.child as MouseRegion).child as GestureDetector).child
-                            as TapRegion)
-                        .child
+        ((((w.child as MouseRegion).child as GestureDetector).child as TapRegion).child
                     as Container)
                 .color ==
             Colors.transparent,
@@ -183,10 +156,7 @@ void _expectCalls(
             (w.child as Focus).autofocus &&
             (w.child as Focus).child is TapRegion &&
             ((w.child as Focus).child as TapRegion).child
-                is BlocBuilder<
-                  MyoroDropdownBloc<String>,
-                  MyoroDropdownState<String>
-                >,
+                is BlocBuilder<MyoroDropdownBloc<String>, MyoroDropdownState<String>>,
       ),
       findsOneWidget,
     );
@@ -195,10 +165,7 @@ void _expectCalls(
 }
 
 final _standardSingularConfiguration = MyoroSingularDropdownConfiguration(
-  menuConfiguration: const MyoroMenuConfiguration(
-    itemBuilder: _itemBuilder,
-    request: _request,
-  ),
+  menuConfiguration: const MyoroMenuConfiguration(itemBuilder: _itemBuilder, request: _request),
   selectedItemBuilder: _selectedItemBuilder,
 );
 
@@ -210,9 +177,9 @@ Set<String> _request() {
 }
 
 MyoroMenuItem _itemBuilder(String item) {
-  return MyoroMenuItem.fake().copyWith(
-    textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
-  );
+  return MyoroMenuItem.fake(
+    builderProvided: false,
+  ).copyWith(textConfiguration: MyoroIconTextButtonTextConfiguration(text: item));
 }
 
 String _selectedItemBuilder(String item) {

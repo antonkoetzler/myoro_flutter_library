@@ -23,8 +23,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
             return MyoroCheckbox(
               label: label,

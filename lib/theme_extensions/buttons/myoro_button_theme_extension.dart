@@ -5,26 +5,21 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] of [MyoroButton].
 ///
 /// TODO: Needs to be tested.
-final class MyoroButtonThemeExtension
-    extends ThemeExtension<MyoroButtonThemeExtension> {
+final class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension> {
   /// Border radius.
   final BorderRadius borderRadius;
 
   const MyoroButtonThemeExtension({required this.borderRadius});
 
   MyoroButtonThemeExtension.fake()
-    : borderRadius = BorderRadius.circular(
-        faker.randomGenerator.decimal(scale: 50, min: 1),
-      );
+    : borderRadius = BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1));
 
   MyoroButtonThemeExtension.builder()
     : borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
 
   @override
   MyoroButtonThemeExtension copyWith({BorderRadius? borderRadius}) {
-    return MyoroButtonThemeExtension(
-      borderRadius: borderRadius ?? this.borderRadius,
-    );
+    return MyoroButtonThemeExtension(borderRadius: borderRadius ?? this.borderRadius);
   }
 
   @override
@@ -33,9 +28,7 @@ final class MyoroButtonThemeExtension
     double t,
   ) {
     if (other is! MyoroButtonThemeExtension) return this;
-    return copyWith(
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-    );
+    return copyWith(borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t));
   }
 
   @override

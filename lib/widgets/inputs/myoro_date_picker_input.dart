@@ -17,9 +17,7 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   TextEditingController? _localController;
   MyoroInputConfiguration get _configuration {
     return widget.configuration.copyWith(
-      controller:
-          widget.configuration.controller ??
-          (_localController ??= TextEditingController()),
+      controller: widget.configuration.controller ?? (_localController ??= TextEditingController()),
     );
   }
 
@@ -32,10 +30,7 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
-        _Input(_configuration),
-        Positioned(child: _TriggerArea(_configuration)),
-      ],
+      children: [_Input(_configuration), Positioned(child: _TriggerArea(_configuration))],
     );
   }
 }
@@ -105,9 +100,7 @@ final class _TriggerArea extends StatelessWidget {
               builder: (_, BoxConstraints constraints) {
                 return SizedBox(
                   height: 43.1, // Height of the input.
-                  width:
-                      constraints.maxWidth -
-                      (_configuration.checkboxOnChanged != null ? 30 : 0),
+                  width: constraints.maxWidth - (_configuration.checkboxOnChanged != null ? 30 : 0),
                 );
               },
             ),

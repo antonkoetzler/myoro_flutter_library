@@ -6,17 +6,14 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   testWidgets('MyoroForm', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        child: MyoroForm(builder: (_, __, ___) => const SizedBox.shrink()),
-      ),
+      MyoroWidgetTester(child: MyoroForm(builder: (_, __, ___) => const SizedBox.shrink())),
     );
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroForm<Object>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is Form && w.child is SizedBox, // Our [SizedBox.shrink].
+        (Widget w) => w is Form && w.child is SizedBox, // Our [SizedBox.shrink].
       ),
       findsOneWidget,
     );

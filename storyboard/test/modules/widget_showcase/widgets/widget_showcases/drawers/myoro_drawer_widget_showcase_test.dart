@@ -9,8 +9,7 @@ void main() {
     late final MyoroDrawerWidgetShowcaseThemeExtension themeExtension;
 
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+      StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
             themeExtension =

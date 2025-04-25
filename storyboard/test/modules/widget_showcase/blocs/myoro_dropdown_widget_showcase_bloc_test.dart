@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/app/blocs/myoro_dropdown_widget_showcase_bloc/myoro_dropdown_widget_showcase_bloc.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_dropdown_widget_showcase_bloc/myoro_dropdown_widget_showcase_bloc.dart';
 
 void main() {
   final String label = faker.randomGenerator.string(100, min: 1);
@@ -28,9 +28,7 @@ void main() {
     act: (bloc) {
       bloc
         ..add(const SetEnabledEvent())
-        ..add(
-          const SetEnabledEvent(MyoroDropdownConfiguration.enabledDefaultValue),
-        );
+        ..add(const SetEnabledEvent(MyoroDropdownConfiguration.enabledDefaultValue));
     },
     expect: () {
       return [
@@ -51,20 +49,16 @@ void main() {
       bloc
         ..add(const SetAllowItemClearingEvent())
         ..add(
-          const SetAllowItemClearingEvent(
-            MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-          ),
+          const SetAllowItemClearingEvent(MyoroDropdownConfiguration.allowItemClearingDefaultValue),
         );
     },
     expect: () {
       return [
         const MyoroDropdownWidgetShowcaseState(
-          allowItemClearing:
-              !MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+          allowItemClearing: !MyoroDropdownConfiguration.allowItemClearingDefaultValue,
         ),
         const MyoroDropdownWidgetShowcaseState(
-          allowItemClearing:
-              MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+          allowItemClearing: MyoroDropdownConfiguration.allowItemClearingDefaultValue,
         ),
       ];
     },
@@ -78,8 +72,7 @@ void main() {
         ..add(const SetCheckboxOnChangedEnabledEvent())
         ..add(
           const SetCheckboxOnChangedEnabledEvent(
-            MyoroDropdownWidgetShowcaseState
-                .checkboxOnChangedEnabledDefaultValue,
+            MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue,
           ),
         );
     },
@@ -87,13 +80,11 @@ void main() {
       return [
         const MyoroDropdownWidgetShowcaseState(
           checkboxOnChangedEnabled:
-              !MyoroDropdownWidgetShowcaseState
-                  .checkboxOnChangedEnabledDefaultValue,
+              !MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue,
         ),
         const MyoroDropdownWidgetShowcaseState(
           checkboxOnChangedEnabled:
-              MyoroDropdownWidgetShowcaseState
-                  .checkboxOnChangedEnabledDefaultValue,
+              MyoroDropdownWidgetShowcaseState.checkboxOnChangedEnabledDefaultValue,
         ),
       ];
     },

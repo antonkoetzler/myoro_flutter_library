@@ -24,8 +24,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroRadioThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroRadioThemeExtension>();
 
             return MyoroRadio(
               initialValue: initialValue,

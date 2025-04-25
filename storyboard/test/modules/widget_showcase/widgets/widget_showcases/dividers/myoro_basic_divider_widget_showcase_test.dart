@@ -6,12 +6,7 @@ import 'package:storyboard/storyboard.dart';
 /// Widget test of [MyoroBasicDividerWidgetShowcase].
 void main() {
   testWidgets('MyoroBasicDivider', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroBasicDividerWidgetShowcase(),
-      ),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: MyoroBasicDividerWidgetShowcase()));
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroBasicDividerWidgetShowcase), findsOneWidget);

@@ -31,27 +31,15 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.labelTextStyle,
-        TextStyle.lerp(
-          themeExtension1.labelTextStyle,
-          themeExtension2.labelTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
       );
       expect(
         lerpedThemeExtension.sliderPadding,
-        EdgeInsets.lerp(
-          themeExtension1.sliderPadding,
-          themeExtension2.sliderPadding,
-          i,
-        ),
+        EdgeInsets.lerp(themeExtension1.sliderPadding, themeExtension2.sliderPadding, i),
       );
       expect(
         lerpedThemeExtension.indicatorTextStyle,
-        TextStyle.lerp(
-          themeExtension1.indicatorTextStyle,
-          themeExtension2.indicatorTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.indicatorTextStyle, themeExtension2.indicatorTextStyle, i),
       );
       expect(
         lerpedThemeExtension.indicatorTextAlignment,

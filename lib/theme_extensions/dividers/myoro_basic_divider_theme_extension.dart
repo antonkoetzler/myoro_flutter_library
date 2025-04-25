@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroBasicDivider].
-class MyoroBasicDividerThemeExtension
-    extends ThemeExtension<MyoroBasicDividerThemeExtension> {
+class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerThemeExtension> {
   /// [MyoroColorDesignSystem.secondary] by default.
   final Color color;
 
@@ -28,19 +27,12 @@ class MyoroBasicDividerThemeExtension
       longValue = double.infinity;
 
   MyoroBasicDividerThemeExtension.fake()
-    : color =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+    : color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       shortValue = faker.randomGenerator.decimal(),
       longValue = faker.randomGenerator.decimal();
 
   @override
-  MyoroBasicDividerThemeExtension copyWith({
-    Color? color,
-    double? shortValue,
-    double? longValue,
-  }) {
+  MyoroBasicDividerThemeExtension copyWith({Color? color, double? shortValue, double? longValue}) {
     return MyoroBasicDividerThemeExtension(
       color: color ?? this.color,
       shortValue: shortValue ?? this.shortValue,

@@ -11,10 +11,8 @@ typedef _Emitter = Emitter<MyoroTooltipWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroTooltipWidgetShowcase].
 final class MyoroTooltipWidgetShowcaseBloc
-    extends
-        Bloc<MyoroTooltipWidgetShowcaseEvent, MyoroTooltipWidgetShowcaseState> {
-  MyoroTooltipWidgetShowcaseBloc()
-    : super(const MyoroTooltipWidgetShowcaseState()) {
+    extends Bloc<MyoroTooltipWidgetShowcaseEvent, MyoroTooltipWidgetShowcaseState> {
+  MyoroTooltipWidgetShowcaseBloc() : super(const MyoroTooltipWidgetShowcaseState()) {
     on<SetMarginEvent>(_setMarginEvent);
     on<SetTextEvent>(_setTextEvent);
   }

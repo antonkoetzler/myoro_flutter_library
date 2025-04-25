@@ -11,11 +11,7 @@ typedef _Emitter = Emitter<MyoroGroupCheckboxWidgetShowcaseState>;
 
 /// BloC to manage all the state in [MyoroGroupCheckboxWidgetShowcase].
 final class MyoroGroupCheckboxWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroGroupCheckboxWidgetShowcaseEvent,
-          MyoroGroupCheckboxWidgetShowcaseState
-        > {
+    extends Bloc<MyoroGroupCheckboxWidgetShowcaseEvent, MyoroGroupCheckboxWidgetShowcaseState> {
   MyoroGroupCheckboxWidgetShowcaseBloc({MyoroGroupCheckboxItems? checkboxes})
     : super(const MyoroGroupCheckboxWidgetShowcaseState()) {
     on<SetDirectionEvent>(_setDirectionEvent);

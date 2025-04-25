@@ -13,11 +13,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context
-                    .resolveThemeExtension<
-                      MyoroSnackBarContainerThemeExtension
-                    >();
+            themeExtension = context.resolveThemeExtension<MyoroSnackBarContainerThemeExtension>();
 
             return GestureDetector(
               key: key,
@@ -25,10 +21,7 @@ void main() {
                 ScaffoldMessenger.of(context).showSnackBar(
                   MyoroSnackBarContainer(
                     themeExtension: themeExtension,
-                    duration:
-                        faker.randomGenerator.boolean()
-                            ? const Duration()
-                            : null,
+                    duration: faker.randomGenerator.boolean() ? const Duration() : null,
                     snackBar: MyoroSnackBar(message: faker.lorem.word()),
                   ),
                 );

@@ -18,8 +18,7 @@ final class MyoroDropdownWidgetShowcaseState extends Equatable {
   const MyoroDropdownWidgetShowcaseState({
     this.label = '',
     this.enabled = MyoroDropdownConfiguration.enabledDefaultValue,
-    this.allowItemClearing =
-        MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    this.allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     this.checkboxOnChangedEnabled = checkboxOnChangedEnabledDefaultValue,
   });
 
@@ -33,8 +32,7 @@ final class MyoroDropdownWidgetShowcaseState extends Equatable {
       label: label ?? this.label,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
-      checkboxOnChangedEnabled:
-          checkboxOnChangedEnabled ?? this.checkboxOnChangedEnabled,
+      checkboxOnChangedEnabled: checkboxOnChangedEnabled ?? this.checkboxOnChangedEnabled,
     );
   }
 

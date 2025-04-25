@@ -19,6 +19,14 @@ void main() {
     );
 
     final themeExtensionTypes = [
+      // Accordions
+      MyoroAccordionThemeExtension,
+
+      // Buttons
+      MyoroButtonThemeExtension,
+      MyoroButtonVariantThemeExtension,
+      MyoroIconTextButtonThemeExtension,
+
       // App bars
       MyoroAppBarThemeExtension,
 

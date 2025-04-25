@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSnackBar].
-class MyoroSnackBarThemeExtension
-    extends ThemeExtension<MyoroSnackBarThemeExtension> {
+class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension> {
   /// Background color of the snack bar.
   final Color primaryColor;
 
@@ -59,41 +58,23 @@ class MyoroSnackBarThemeExtension
   });
 
   MyoroSnackBarThemeExtension.fake()
-    : primaryColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       standardBorderColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       attentionBorderColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
-      successBorderColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
-      errorBorderColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      successBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      errorBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       borderWidth = faker.randomGenerator.decimal(),
       borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       padding = EdgeInsets.all(faker.randomGenerator.decimal()),
       contentCloseButtonSpacing = faker.randomGenerator.decimal(),
       messageTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      closeButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+      closeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
       closeButtonIconSize = faker.randomGenerator.decimal();
 
-  MyoroSnackBarThemeExtension.builder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) : primaryColor = colorScheme.primary,
+  MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : primaryColor = colorScheme.primary,
       standardBorderColor = colorScheme.onPrimary,
       attentionBorderColor = MyoroColorDesignSystem.attention,
       successBorderColor = MyoroColorDesignSystem.success,
@@ -130,8 +111,7 @@ class MyoroSnackBarThemeExtension
       borderWidth: borderWidth ?? this.borderWidth,
       borderRadius: borderRadius ?? this.borderRadius,
       padding: padding ?? this.padding,
-      contentCloseButtonSpacing:
-          contentCloseButtonSpacing ?? this.contentCloseButtonSpacing,
+      contentCloseButtonSpacing: contentCloseButtonSpacing ?? this.contentCloseButtonSpacing,
       messageTextStyle: messageTextStyle ?? this.messageTextStyle,
       closeButtonIcon: closeButtonIcon ?? this.closeButtonIcon,
       closeButtonIconSize: closeButtonIconSize ?? this.closeButtonIconSize,
@@ -146,21 +126,9 @@ class MyoroSnackBarThemeExtension
     if (other is! MyoroSnackBarThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
-      standardBorderColor: Color.lerp(
-        standardBorderColor,
-        other.standardBorderColor,
-        t,
-      ),
-      attentionBorderColor: Color.lerp(
-        attentionBorderColor,
-        other.attentionBorderColor,
-        t,
-      ),
-      successBorderColor: Color.lerp(
-        successBorderColor,
-        other.successBorderColor,
-        t,
-      ),
+      standardBorderColor: Color.lerp(standardBorderColor, other.standardBorderColor, t),
+      attentionBorderColor: Color.lerp(attentionBorderColor, other.attentionBorderColor, t),
+      successBorderColor: Color.lerp(successBorderColor, other.successBorderColor, t),
       errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
       borderWidth: lerpDouble(borderWidth, other.borderWidth, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
@@ -170,17 +138,9 @@ class MyoroSnackBarThemeExtension
         other.contentCloseButtonSpacing,
         t,
       ),
-      messageTextStyle: TextStyle.lerp(
-        messageTextStyle,
-        other.messageTextStyle,
-        t,
-      ),
+      messageTextStyle: TextStyle.lerp(messageTextStyle, other.messageTextStyle, t),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
-      closeButtonIconSize: lerpDouble(
-        closeButtonIconSize,
-        other.closeButtonIconSize,
-        t,
-      ),
+      closeButtonIconSize: lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),
     );
   }
 

@@ -50,8 +50,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
 
   MyoroRadioNotifier? _localNotifier;
   MyoroRadioNotifier get _notifier {
-    return widget.notifier ??
-        (_localNotifier ??= MyoroRadioNotifier(_initialValue));
+    return widget.notifier ?? (_localNotifier ??= MyoroRadioNotifier(_initialValue));
   }
 
   @override
@@ -69,8 +68,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroRadioThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroRadioThemeExtension>();
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -94,12 +92,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
         ),
         if (_label != null) ...[
           SizedBox(width: themeExtension.spacing),
-          Flexible(
-            child: Text(
-              _label!,
-              style: _labelTextStyle ?? themeExtension.labelTextStyle,
-            ),
-          ),
+          Flexible(child: Text(_label!, style: _labelTextStyle ?? themeExtension.labelTextStyle)),
         ],
       ],
     );

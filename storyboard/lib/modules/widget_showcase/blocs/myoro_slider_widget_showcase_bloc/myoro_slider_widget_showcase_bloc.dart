@@ -11,8 +11,7 @@ typedef _Emitter = Emitter<MyoroSliderWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroSlider]'s options in [MyoroSliderWidgetShowcase].
 final class MyoroSliderWidgetShowcaseBloc
-    extends
-        Bloc<MyoroSliderWidgetShowcaseEvent, MyoroSliderWidgetShowcaseState> {
+    extends Bloc<MyoroSliderWidgetShowcaseEvent, MyoroSliderWidgetShowcaseState> {
   MyoroSliderWidgetShowcaseBloc({required double width})
     : super(MyoroSliderWidgetShowcaseState(width: width)) {
     on<SetLabelEvent>(_setLabelEvent);
@@ -21,12 +20,8 @@ final class MyoroSliderWidgetShowcaseBloc
     on<SetCurrentValueIndicatorTextBuilderEnabledEvent>(
       _setCurrentValueIndicatorTextBuilderEnabledEvent,
     );
-    on<SetMaxValueIndicatorTextBuilderEnabledEvent>(
-      _setMaxValueIndicatorTextBuilderEnabledEvent,
-    );
-    on<SetFooterIndicatorTextBuilderEnabledEvent>(
-      _setFooterIndicatorTextBuilderEnabledEvent,
-    );
+    on<SetMaxValueIndicatorTextBuilderEnabledEvent>(_setMaxValueIndicatorTextBuilderEnabledEvent);
+    on<SetFooterIndicatorTextBuilderEnabledEvent>(_setFooterIndicatorTextBuilderEnabledEvent);
   }
 
   void _setLabelEvent(SetLabelEvent event, _Emitter emit) {
@@ -52,8 +47,7 @@ final class MyoroSliderWidgetShowcaseBloc
   ) {
     emit(
       state.copyWith(
-        currentValueIndicatorTextBuilderEnabled:
-            event.currentValueIndicatorTextBuilderEnabled,
+        currentValueIndicatorTextBuilderEnabled: event.currentValueIndicatorTextBuilderEnabled,
       ),
     );
   }
@@ -64,8 +58,7 @@ final class MyoroSliderWidgetShowcaseBloc
   ) {
     emit(
       state.copyWith(
-        maxValueIndicatorTextBuilderEnabled:
-            event.maxValueIndicatorTextBuilderEnabled,
+        maxValueIndicatorTextBuilderEnabled: event.maxValueIndicatorTextBuilderEnabled,
       ),
     );
   }
@@ -75,10 +68,7 @@ final class MyoroSliderWidgetShowcaseBloc
     _Emitter emit,
   ) {
     emit(
-      state.copyWith(
-        footerIndicatorTextBuilderEnabled:
-            event.footerIndicatorTextBuilderEnabled,
-      ),
+      state.copyWith(footerIndicatorTextBuilderEnabled: event.footerIndicatorTextBuilderEnabled),
     );
   }
 }

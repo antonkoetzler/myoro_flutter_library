@@ -51,10 +51,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
       child: GestureDetector(
         onTapDown: _onTapDown,
         onTapUp: _onTapUp,
-        child: ValueListenableBuilder(
-          valueListenable: _tapStatusNotifier,
-          builder: _builder,
-        ),
+        child: ValueListenableBuilder(valueListenable: _tapStatusNotifier, builder: _builder),
       ),
     );
   }
@@ -102,23 +99,19 @@ final class _Button extends StatelessWidget {
   }
 
   Color _getBackgroundColor(BuildContext context) {
-    final MyoroButtonConfigurationBackgroundColorBuilder?
-    backgroundColorBuilder = _configuration?.backgroundColorBuilder;
+    final MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder =
+        _configuration?.backgroundColorBuilder;
     if (_configuration?.onTapProvided != true) {
       return MyoroColorDesignSystem.transparent;
     }
     if (backgroundColorBuilder != null) {
       return backgroundColorBuilder(_tapStatusEnum);
     }
-    return MyoroButtonVariantEnum.primary.backgroundColorBuilder(
-      context,
-      _tapStatusEnum,
-    );
+    return MyoroButtonVariantEnum.primary.backgroundColorBuilder(context, _tapStatusEnum);
   }
 
   BorderRadius _getBorderRadius(BuildContext context) {
-    final buttonThemeExtension =
-        context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
     return _configuration?.borderRadius ?? buttonThemeExtension.borderRadius;
   }
 

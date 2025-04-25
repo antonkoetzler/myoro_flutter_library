@@ -41,8 +41,7 @@ final class MyoroMenuWidgetShowcaseThemeExtension
   }) {
     return MyoroMenuWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
-      constraintsOptionSpacing:
-          constraintsOptionSpacing ?? this.constraintsOptionSpacing,
+      constraintsOptionSpacing: constraintsOptionSpacing ?? this.constraintsOptionSpacing,
       headerTextStyle: headerTextStyle ?? this.headerTextStyle,
     );
   }
@@ -60,11 +59,7 @@ final class MyoroMenuWidgetShowcaseThemeExtension
         other.constraintsOptionSpacing,
         t,
       ),
-      headerTextStyle: TextStyle.lerp(
-        headerTextStyle,
-        other.headerTextStyle,
-        t,
-      ),
+      headerTextStyle: TextStyle.lerp(headerTextStyle, other.headerTextStyle, t),
     );
   }
 

@@ -6,18 +6,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   const drawer = MyoroDrawer(child: SizedBox.shrink());
 
-  Future<void> closeDrawerAndExpectNothing(
-    BuildContext context,
-    WidgetTester tester,
-  ) async {
+  Future<void> closeDrawerAndExpectNothing(BuildContext context, WidgetTester tester) async {
     context.closeDrawer();
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDrawer), findsNothing);
   }
 
-  testWidgets('[MyoroDrawerController] normal drawer tests.', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('[MyoroDrawerController] normal drawer tests.', (WidgetTester tester) async {
     late final BuildContext context;
 
     await tester.pumpWidget(
@@ -41,9 +36,7 @@ void main() {
     await closeDrawerAndExpectNothing(context, tester);
   });
 
-  testWidgets('[MyoroDrawerController] end drawer tests.', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('[MyoroDrawerController] end drawer tests.', (WidgetTester tester) async {
     late final BuildContext context;
 
     await tester.pumpWidget(

@@ -13,11 +13,7 @@ enum StoryboardWidgetListingEnum {
   dropdowns('Dropdowns', {myoroSingularDropdownTitle, myoroMultiDropdownTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
-  inputs('Inputs', {
-    myoroDatePickerInputTitle,
-    myoroInputTitle,
-    myoroSearchInputTitle,
-  }),
+  inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
   layoutBuilders('Layout builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
   materialApps('Material apps', {myoroMaterialAppTitle}),
@@ -201,10 +197,7 @@ enum StoryboardWidgetListingEnum {
       myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
 
       // Should never get here
-      _ =>
-        throw Exception(
-          '[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.',
-        ),
+      _ => throw Exception('[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.'),
     };
   }
 

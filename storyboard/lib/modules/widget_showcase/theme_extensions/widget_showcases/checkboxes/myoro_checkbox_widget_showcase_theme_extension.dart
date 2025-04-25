@@ -10,23 +10,17 @@ final class MyoroCheckboxWidgetShowcaseThemeExtension
   /// Width of [_LabelTextStyleOption].
   final double labelTextStyleOptionWidth;
 
-  const MyoroCheckboxWidgetShowcaseThemeExtension({
-    required this.labelTextStyleOptionWidth,
-  });
+  const MyoroCheckboxWidgetShowcaseThemeExtension({required this.labelTextStyleOptionWidth});
 
   MyoroCheckboxWidgetShowcaseThemeExtension.fake()
     : labelTextStyleOptionWidth = faker.randomGenerator.decimal();
 
-  const MyoroCheckboxWidgetShowcaseThemeExtension.builder()
-    : labelTextStyleOptionWidth = 198;
+  const MyoroCheckboxWidgetShowcaseThemeExtension.builder() : labelTextStyleOptionWidth = 198;
 
   @override
-  MyoroCheckboxWidgetShowcaseThemeExtension copyWith({
-    double? labelTextStyleOptionWidth,
-  }) {
+  MyoroCheckboxWidgetShowcaseThemeExtension copyWith({double? labelTextStyleOptionWidth}) {
     return MyoroCheckboxWidgetShowcaseThemeExtension(
-      labelTextStyleOptionWidth:
-          labelTextStyleOptionWidth ?? this.labelTextStyleOptionWidth,
+      labelTextStyleOptionWidth: labelTextStyleOptionWidth ?? this.labelTextStyleOptionWidth,
     );
   }
 

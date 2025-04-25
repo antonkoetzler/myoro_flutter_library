@@ -8,9 +8,7 @@ void main() {
   final bool bordered = faker.randomGenerator.boolean();
   final Color? backgroundColor =
       faker.randomGenerator.boolean()
-          ? kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )]
+          ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]
           : null;
 
   testWidgets('MyoroAppBar', (WidgetTester tester) async {
@@ -20,8 +18,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
             return MyoroAppBar(
               bordered: bordered,
@@ -53,8 +50,7 @@ void main() {
         (w) =>
             w is Flexible &&
             w.child is Container &&
-            (w.child as Container).color ==
-                (backgroundColor ?? themeExtension.primaryColor) &&
+            (w.child as Container).color == (backgroundColor ?? themeExtension.primaryColor) &&
             (w.child as Container).padding == themeExtension.contentPadding,
       ),
       findsOneWidget,
@@ -65,10 +61,7 @@ void main() {
       find.byWidgetPredicate(
         (w) =>
             w is MyoroBasicDivider &&
-            w.configuration ==
-                const MyoroBasicDividerConfiguration(
-                  direction: Axis.horizontal,
-                ),
+            w.configuration == const MyoroBasicDividerConfiguration(direction: Axis.horizontal),
       ),
       bordered ? findsOneWidget : findsNothing,
     );

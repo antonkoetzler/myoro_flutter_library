@@ -19,8 +19,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   MyoroAccordionNotifier? _localNotifier;
   MyoroAccordionNotifier get _notifier {
-    return _configuration.notifier ??
-        (_localNotifier ??= MyoroAccordionNotifier());
+    return _configuration.notifier ?? (_localNotifier ??= MyoroAccordionNotifier());
   }
 
   final _scrollController = ScrollController();
@@ -45,11 +44,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   }
 
   Widget _itemBuilder(_, int index) {
-    return _Item(
-      _notifier,
-      item: _items[index],
-      isLastItem: index == _items.length - 1,
-    );
+    return _Item(_notifier, item: _items[index], isLastItem: index == _items.length - 1);
   }
 }
 
@@ -85,8 +80,7 @@ final class _ItemTitleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
 
     return ValueListenableBuilder(
       valueListenable: _notifier,
@@ -119,9 +113,7 @@ final class _ItemTitleButton extends StatelessWidget {
   }
 
   void _onTapUp(_) {
-    _notifier.expandedItem != _item
-        ? _notifier.expandItem(_item)
-        : _notifier.reset();
+    _notifier.expandedItem != _item ? _notifier.expandItem(_item) : _notifier.reset();
   }
 
   Widget _buttonBuilder(
@@ -156,8 +148,7 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accordionThemeExtension =
-        context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final buttonVariantThemeExtension =
         context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
 
@@ -168,17 +159,12 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
 
         return AnimatedRotation(
           turns: isExpanded ? 0.5 : 0,
-          duration:
-              accordionThemeExtension.itemTitleButtonArrowAnimationDuration,
+          duration: accordionThemeExtension.itemTitleButtonArrowAnimationDuration,
           curve: accordionThemeExtension.itemTitleButtonArrowAnimationCurve,
           child: Container(
             decoration: BoxDecoration(
-              color:
-                  isExpanded
-                      ? _getBackgroundColor(buttonVariantThemeExtension)
-                      : null,
-              borderRadius:
-                  accordionThemeExtension.itemTitleButtonArrowBorderRadius,
+              color: isExpanded ? _getBackgroundColor(buttonVariantThemeExtension) : null,
+              borderRadius: accordionThemeExtension.itemTitleButtonArrowBorderRadius,
             ),
             child: Icon(
               accordionThemeExtension.itemTitleButtonArrowIcon,
@@ -191,14 +177,10 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
     );
   }
 
-  Color _getBackgroundColor(
-    MyoroButtonVariantThemeExtension buttonVariantThemeExtension,
-  ) {
+  Color _getBackgroundColor(MyoroButtonVariantThemeExtension buttonVariantThemeExtension) {
     return switch (_tapStatusEnum) {
-      MyoroTapStatusEnum.hover =>
-        buttonVariantThemeExtension.primaryHoverBackgroundColor,
-      MyoroTapStatusEnum.tap =>
-        buttonVariantThemeExtension.primaryTapBackgroundColor,
+      MyoroTapStatusEnum.hover => buttonVariantThemeExtension.primaryHoverBackgroundColor,
+      MyoroTapStatusEnum.tap => buttonVariantThemeExtension.primaryTapBackgroundColor,
       _ => Colors.transparent,
     };
   }
@@ -223,18 +205,14 @@ final class _ItemContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
 
     return AnimatedSize(
       duration: themeExtension.itemContentAnimationDuration,
       curve: themeExtension.itemContentAnimationCurve,
       child: SizedBox(
         width: double.infinity,
-        child:
-            (_item == _expandedItem)
-                ? _item.contentBuilder(context)
-                : const SizedBox.shrink(),
+        child: (_item == _expandedItem) ? _item.contentBuilder(context) : const SizedBox.shrink(),
       ),
     );
   }

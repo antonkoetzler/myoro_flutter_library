@@ -10,8 +10,7 @@ void main() {
   final themeExtension2 = MyoroBasicDividerThemeExtension.fake();
 
   test('MyoroBasicDividerThemeExtension.copyWith', () {
-    MyoroBasicDividerThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroBasicDividerThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       color: themeExtension2.color,

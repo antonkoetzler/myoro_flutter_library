@@ -6,51 +6,102 @@ import 'package:storyboard/storyboard.dart';
 ///
 /// TODO: Needs to be tested.
 final class StoryboardScreen extends StatelessWidget {
+  /// Text of [_HeaderTitleText].
+  final String? headerTitleText;
+
+  /// Text of [_HeaderSubtitleText].
+  final String? headerSubtitleText;
+
   /// [MyoroScreen.body].
   final Widget body;
 
-  const StoryboardScreen({super.key, required this.body});
+  const StoryboardScreen({
+    super.key,
+    this.headerTitleText,
+    this.headerSubtitleText,
+    required this.body,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MyoroScreen(appBar: const _AppBar(), body: body);
+    return MyoroScreen(appBar: _AppBar(headerTitleText, headerSubtitleText), body: body);
   }
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _AppBar();
+  final String? _headerTitleText;
+  final String? _headerSubtitleText;
+
+  const _AppBar(this._headerTitleText, this._headerSubtitleText);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final bool headerTitleTextIsNotNull = _headerTitleText != null;
+    final bool headerSubtitleTextIsNotNull = _headerSubtitleText != null;
+
     return MyoroAppBar(
       bordered: true,
       child: Row(
         spacing: themeExtension.headerToggleThemeButtonSpacing,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [_Header(), _ToggleThemeButton()],
+        children: [
+          if (headerTitleTextIsNotNull || headerSubtitleTextIsNotNull) ...[
+            _Header(_headerTitleText, _headerSubtitleText),
+          ],
+          const _ToggleThemeButton(),
+        ],
       ),
     );
   }
 }
 
 final class _Header extends StatelessWidget {
-  const _Header();
+  final String? _headerTitleText;
+  final String? _headerSubtitleText;
+
+  const _Header(this._headerTitleText, this._headerSubtitleText);
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final bool headerTitleTextIsNotNull = _headerTitleText != null;
+    final bool headerSubtitleTextIsNotNull = _headerSubtitleText != null;
+
+    return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Flexible(child: _HeaderTitleText()),
-        Flexible(child: _HeaderSubtitleText()),
+        if (headerTitleTextIsNotNull) Flexible(child: _HeaderTitleText(_headerTitleText)),
+        if (headerSubtitleTextIsNotNull) Flexible(child: _HeaderSubtitleText(_headerSubtitleText)),
       ],
     );
+  }
+}
+
+final class _HeaderTitleText extends StatelessWidget {
+  final String _text;
+
+  const _HeaderTitleText(this._text);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    return _HeaderText(text: _text, style: themeExtension.headerTitleTextStyle);
+  }
+}
+
+final class _HeaderSubtitleText extends StatelessWidget {
+  final String _text;
+
+  const _HeaderSubtitleText(this._text);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    return _HeaderText(text: _text, style: themeExtension.headerSubtitleTextStyle);
   }
 }
 
@@ -62,40 +113,7 @@ final class _HeaderText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: style,
-    );
-  }
-}
-
-final class _HeaderTitleText extends StatelessWidget {
-  const _HeaderTitleText();
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    return _HeaderText(
-      text: 'MFL\'s Storyboard',
-      style: themeExtension.headerTitleTextStyle,
-    );
-  }
-}
-
-final class _HeaderSubtitleText extends StatelessWidget {
-  const _HeaderSubtitleText();
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    return _HeaderText(
-      text: 'Application to visualize and create MFL widgets.',
-      style: themeExtension.headerSubtitleTextStyle,
-    );
+    return Text(text, maxLines: 1, overflow: TextOverflow.ellipsis, style: style);
   }
 }
 
@@ -104,8 +122,7 @@ final class _ToggleThemeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         iconConfiguration: MyoroIconTextButtonIconConfiguration(

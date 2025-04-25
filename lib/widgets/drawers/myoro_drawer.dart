@@ -36,8 +36,7 @@ class MyoroDrawer extends StatelessWidget {
       children: [
         _Barrier(barrierDismissable),
         Row(
-          mainAxisAlignment:
-              !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
+          mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
           children: [
             if (showCloseButton && isEndDrawer) _CloseButton(isEndDrawer),
             _Drawer(title, titleTextStyle, child),
@@ -72,8 +71,7 @@ final class _Drawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return Padding(
       padding: themeExtension.drawerPadding,
@@ -109,13 +107,9 @@ final class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
-    return Text(
-      _title,
-      style: _titleTextStyle ?? themeExtension.titleTextStyle,
-    );
+    return Text(_title, style: _titleTextStyle ?? themeExtension.titleTextStyle);
   }
 }
 
@@ -126,8 +120,7 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(

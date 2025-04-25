@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [String] displayed when a [T] item is selected.
-typedef MyoroDropdownConfigurationSelectedItemBuilder<T> =
-    String Function(T item);
+typedef MyoroDropdownConfigurationSelectedItemBuilder<T> = String Function(T item);
 
 /// Abstract model that encapsulates options for [MyoroDropdown].
 ///

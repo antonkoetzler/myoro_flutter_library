@@ -10,8 +10,7 @@ void main() {
   final themeExtension2 = MyoroGroupCheckboxThemeExtension.fake();
 
   test('MyoroGroupCheckboxThemeExtension.copyWith', () {
-    MyoroGroupCheckboxThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroGroupCheckboxThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       direction: themeExtension2.direction,

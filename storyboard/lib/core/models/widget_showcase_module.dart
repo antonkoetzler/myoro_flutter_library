@@ -8,10 +8,7 @@ final class WidgetShowcaseModule implements Module {
   const WidgetShowcaseModule();
 
   @override
-  List<ThemeExtension> themeExtensionsBuilder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
       WidgetShowcaseThemeExtension.builder(colorScheme),
       ..._createAppBarWidgetShowcaseThemeExtensions(textTheme),
@@ -26,10 +23,7 @@ final class WidgetShowcaseModule implements Module {
       ..._createInputWidgetShowcaseThemeExtensions(textTheme),
       ..._createLayoutBuilderWidgetShowcaseThemeExtensions(textTheme),
       ..._createLoaderWidgetShowcaseThemeExtensions(),
-      ..._createMaterialAppWidgetShowcaseThemeExtensions(
-        colorScheme,
-        textTheme,
-      ),
+      ..._createMaterialAppWidgetShowcaseThemeExtensions(colorScheme, textTheme),
       ..._createMenuWidgetShowcaseThemeExtensions(textTheme),
       ..._createModalWidgetShowcaseThemeExtensions(textTheme),
       ..._createRadioWidgetShowcaseThemeExtensions(),
@@ -42,15 +36,11 @@ final class WidgetShowcaseModule implements Module {
     ];
   }
 
-  List<ThemeExtension> _createAppBarWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createAppBarWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [MyoroAppBarWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 
-  List<ThemeExtension> _createCardWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createCardWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [MyoroCardWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 
@@ -62,9 +52,7 @@ final class WidgetShowcaseModule implements Module {
     return const [MyoroCheckboxWidgetShowcaseThemeExtension.builder()];
   }
 
-  List<ThemeExtension> _createDividerWidgetShowcaseThemeExtensions(
-    ColorScheme colorScheme,
-  ) {
+  List<ThemeExtension> _createDividerWidgetShowcaseThemeExtensions(ColorScheme colorScheme) {
     return [
       const MyoroBasicDividerWidgetShowcaseThemeExtension.builder(),
       MyoroResizeDividerWidgetShowcaseThemeExtension.builder(colorScheme),
@@ -82,9 +70,7 @@ final class WidgetShowcaseModule implements Module {
     ];
   }
 
-  List<ThemeExtension> _createFormWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createFormWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [MyoroFormWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 
@@ -95,9 +81,7 @@ final class WidgetShowcaseModule implements Module {
     ];
   }
 
-  List<ThemeExtension> _createInputWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createInputWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [
       const MyoroDatePickerInputWidgetShowcaseThemeExtension.builder(),
       MyoroInputWidgetShowcaseThemeExtension.builder(textTheme),
@@ -105,9 +89,7 @@ final class WidgetShowcaseModule implements Module {
     ];
   }
 
-  List<ThemeExtension> _createLayoutBuilderWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createLayoutBuilderWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [MyoroLayoutBuilderWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 
@@ -119,23 +101,14 @@ final class WidgetShowcaseModule implements Module {
     ColorScheme colorScheme,
     TextTheme textTheme,
   ) {
-    return [
-      MyoroMaterialAppWidgetShowcaseThemeExtension.builder(
-        colorScheme,
-        textTheme,
-      ),
-    ];
+    return [MyoroMaterialAppWidgetShowcaseThemeExtension.builder(colorScheme, textTheme)];
   }
 
-  List<ThemeExtension> _createMenuWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createMenuWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [MyoroMenuWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 
-  List<ThemeExtension> _createModalWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createModalWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [
       MyoroModalWidgetShowcaseThemeExtension.builder(textTheme),
       MyoroDialogModalWidgetShowcaseThemeExtension.builder(),
@@ -153,21 +126,15 @@ final class WidgetShowcaseModule implements Module {
     return const [MyoroResolverWidgetShowcaseThemeExtension.builder()];
   }
 
-  List<ThemeExtension> _createScreenWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createScreenWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [MyoroScreenWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 
-  List<ThemeExtension> _createSliderWidgetShowcaseThemeExtensions(
-    ColorScheme colorScheme,
-  ) {
+  List<ThemeExtension> _createSliderWidgetShowcaseThemeExtensions(ColorScheme colorScheme) {
     return [MyoroSliderWidgetShowcaseThemeExtension.builder(colorScheme)];
   }
 
-  List<ThemeExtension> _createSnackBarWidgetShowcaseThemeExtensions(
-    ColorScheme colorScheme,
-  ) {
+  List<ThemeExtension> _createSnackBarWidgetShowcaseThemeExtensions(ColorScheme colorScheme) {
     return [MyoroSnackBarWidgetShowcaseThemeExtension.builder(colorScheme)];
   }
 
@@ -175,9 +142,7 @@ final class WidgetShowcaseModule implements Module {
     return const [MyoroTableWidgetShowcaseThemeExtension.builder()];
   }
 
-  List<ThemeExtension> _createTooltipWidgetShowcaseThemeExtensions(
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createTooltipWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [MyoroTooltipWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 }

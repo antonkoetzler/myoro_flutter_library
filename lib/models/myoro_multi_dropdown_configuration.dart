@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the selected item changes.
-typedef MyoroMultiDropdownConfigurationOnChanged<T> =
-    void Function(Set<T>? selectedItems);
+typedef MyoroMultiDropdownConfigurationOnChanged<T> = void Function(Set<T>? selectedItems);
 
 /// Function executed when the enabled/disabled checkbox is pressed.
 typedef MyoroMultiDropdownConfigurationCheckboxOnChanged<T> =
@@ -38,13 +37,10 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   factory MyoroMultiDropdownConfiguration({
     String label = '',
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
-    bool allowItemClearing =
-        MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-    TextAlign selectedItemTextAlign =
-        MyoroInputConfiguration.textAlignDefaultValue,
+    bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
     required MyoroMenuConfiguration<T> menuConfiguration,
-    required MyoroDropdownConfigurationSelectedItemBuilder<T>
-    selectedItemBuilder,
+    required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
     Set<T>? initiallySelectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
@@ -83,17 +79,13 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
       label: label ?? this.label,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
-      selectedItemTextAlign:
-          selectedItemTextAlign ?? this.selectedItemTextAlign,
+      selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? this.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      initiallySelectedItems:
-          initiallySelectedItems ?? this.initiallySelectedItems,
+      initiallySelectedItems: initiallySelectedItems ?? this.initiallySelectedItems,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
       checkboxOnChanged:
-          checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
-              : null,
+          checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
       controller: this.controller as MyoroMultiDropdownController<T>?,
     );
   }
@@ -101,9 +93,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   @override
   void setInitiallySelectedItems() {
     if (initiallySelectedItems.isEmpty) return;
-    (controller as MyoroMultiDropdownController<T>?)?.selectItems(
-      initiallySelectedItems,
-    );
+    (controller as MyoroMultiDropdownController<T>?)?.selectItems(initiallySelectedItems);
   }
 
   @override

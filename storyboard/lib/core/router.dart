@@ -14,10 +14,7 @@ final router = GoRouter(
       path: '/',
       builder: _mainScreenBuilder,
       routes: [
-        GoRoute(
-          path: 'widget_showcase/:$_widgetNameKey',
-          builder: _widgetShowcaseScreenBuilder,
-        ),
+        GoRoute(path: 'widget_showcase/:$_widgetNameKey', builder: _widgetShowcaseScreenBuilder),
       ],
     ),
   ],
@@ -29,10 +26,9 @@ Widget _mainScreenBuilder(_, __) {
 
 Widget _widgetShowcaseScreenBuilder(_, GoRouterState state) {
   final String widgetName = state.pathParameters[_widgetNameKey]!;
-  final StoryboardWidgetListingEnum? widgetListingEnum =
-      StoryboardWidgetListingEnum.values.firstWhereOrNull(
-        (StoryboardWidgetListingEnum value) =>
-            value.widgetNames.contains(widgetName),
+  final StoryboardWidgetListingEnum? widgetListingEnum = StoryboardWidgetListingEnum.values
+      .firstWhereOrNull(
+        (StoryboardWidgetListingEnum value) => value.widgetNames.contains(widgetName),
       );
   assert(
     widgetListingEnum != null,

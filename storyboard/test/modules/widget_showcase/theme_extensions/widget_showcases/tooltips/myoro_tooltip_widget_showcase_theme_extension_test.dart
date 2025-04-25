@@ -8,8 +8,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// Unit test of [MyoroTooltipWidgetShowcaseThemeExtension].
 void main() {
-  late final MyoroTooltipWidgetShowcaseThemeExtension themeExtension1,
-      themeExtension2;
+  late final MyoroTooltipWidgetShowcaseThemeExtension themeExtension1, themeExtension2;
 
   setUpAll(() {
     MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
@@ -18,8 +17,7 @@ void main() {
   });
 
   test('MyoroTooltipWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroTooltipWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroTooltipWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       inputStyle: themeExtension2.inputStyle,
@@ -43,19 +41,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.childDecoration,
-        BoxDecoration.lerp(
-          themeExtension1.childDecoration,
-          themeExtension2.childDecoration,
-          i,
-        ),
+        BoxDecoration.lerp(themeExtension1.childDecoration, themeExtension2.childDecoration, i),
       );
       expect(
         lerpedThemeExtension.childTextStyle,
-        TextStyle.lerp(
-          themeExtension1.childTextStyle,
-          themeExtension2.childTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.childTextStyle, themeExtension2.childTextStyle, i),
       );
     }
   });

@@ -11,12 +11,10 @@ part 'myoro_menu_event.dart';
 typedef _Emitter<T> = Emitter<MyoroMenuState<T>>;
 
 /// [Bloc] that controls the logic of a [MyoroMenu].
-final class MyoroMenuBloc<T>
-    extends Bloc<MyoroMenuEvent<T>, MyoroMenuState<T>> {
+final class MyoroMenuBloc<T> extends Bloc<MyoroMenuEvent<T>, MyoroMenuState<T>> {
   late final MyoroMenuConfiguration<T> _configuration;
 
-  MyoroMenuBloc(MyoroMenuConfiguration<T> configuration)
-    : super(MyoroMenuState<T>()) {
+  MyoroMenuBloc(MyoroMenuConfiguration<T> configuration) : super(MyoroMenuState<T>()) {
     _configuration = configuration;
     on<FetchEvent<T>>(_fetchEvent);
     on<SearchEvent<T>>(_searchEvent);
@@ -34,11 +32,7 @@ final class MyoroMenuBloc<T>
       }
 
       emit(
-        state.copyWith(
-          status: MyoroRequestEnum.success,
-          items: items,
-          initialRequestMade: true,
-        ),
+        state.copyWith(status: MyoroRequestEnum.success, items: items, initialRequestMade: true),
       );
     });
   }
@@ -54,19 +48,12 @@ final class MyoroMenuBloc<T>
 
     emit(
       state.copyWith(
-        queriedItems:
-            query.isEmpty
-                ? items
-                : _configuration.searchCallback!(query, items),
+        queriedItems: query.isEmpty ? items : _configuration.searchCallback!(query, items),
       ),
     );
   }
 
-  Future<void> _treatRequest(
-    MyoroMenuEvent<T> event,
-    _Emitter<T> emit,
-    Function() function,
-  ) async {
+  Future<void> _treatRequest(MyoroMenuEvent<T> event, _Emitter<T> emit, Function() function) async {
     String? errorMessage;
 
     try {
@@ -75,27 +62,18 @@ final class MyoroMenuBloc<T>
     } on HttpException catch (httpError) {
       errorMessage = httpError.message;
       if (kDebugMode) {
-        print(
-          '[MyoroMenuBloc<$T>.${event.runtimeType}]: HTTP error: "$errorMessage".',
-        );
+        print('[MyoroMenuBloc<$T>.${event.runtimeType}]: HTTP error: "$errorMessage".');
       }
     } catch (error, stackTrace) {
       errorMessage = error.toString();
       if (kDebugMode) {
-        print(
-          '[MyoroMenuBloc<$T>.${event.runtimeType}]: Generic error: "$errorMessage".',
-        );
+        print('[MyoroMenuBloc<$T>.${event.runtimeType}]: Generic error: "$errorMessage".');
         print('Stack trace:\n$stackTrace');
       }
     }
 
     if (errorMessage == null) return;
 
-    emit(
-      state.copyWith(
-        status: MyoroRequestEnum.error,
-        errorMessage: errorMessage,
-      ),
-    );
+    emit(state.copyWith(status: MyoroRequestEnum.error, errorMessage: errorMessage));
   }
 }

@@ -42,27 +42,20 @@ final class _Widget extends StatelessWidget {
 
   void _onCancel(BuildContext context) {
     context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        snackBarType: MyoroSnackBarTypeEnum.error,
-        message: 'Canceled',
-      ),
+      snackBar: MyoroSnackBar(snackBarType: MyoroSnackBarTypeEnum.error, message: 'Canceled'),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(
-      child: BlocBuilder<
-        MyoroDialogModalWidgetShowcaseBloc,
-        MyoroDialogModalWidgetShowcaseState
-      >(builder: _builder),
+      child: BlocBuilder<MyoroDialogModalWidgetShowcaseBloc, MyoroDialogModalWidgetShowcaseState>(
+        builder: _builder,
+      ),
     );
   }
 
-  Widget _builder(
-    BuildContext context,
-    MyoroDialogModalWidgetShowcaseState state,
-  ) {
+  Widget _builder(BuildContext context, MyoroDialogModalWidgetShowcaseState state) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         textConfiguration: const MyoroIconTextButtonTextConfiguration(
@@ -73,10 +66,7 @@ final class _Widget extends StatelessWidget {
     );
   }
 
-  void _onTapUp(
-    BuildContext context,
-    MyoroDialogModalWidgetShowcaseState state,
-  ) {
+  void _onTapUp(BuildContext context, MyoroDialogModalWidgetShowcaseState state) {
     MyoroDialogModal.show(
       context,
       invertButtons: state.invertButtons,
@@ -100,13 +90,9 @@ final class _Child extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       borderRadius:
           context
-              .resolveThemeExtension<
-                MyoroDialogModalWidgetShowcaseThemeExtension
-              >()
+              .resolveThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>()
               .childBorderRadius,
-      child: IntrinsicWidth(
-        child: Image.asset('assets/images/are_you_silly.jpg'),
-      ),
+      child: IntrinsicWidth(child: Image.asset('assets/images/are_you_silly.jpg')),
     );
   }
 }
@@ -136,15 +122,10 @@ final class _ConfirmButtonTextOption extends StatelessWidget {
     return _Input(
       label: '[MyoroDialogModal.confirmButtonText]',
       onChanged:
-          (String text) => bloc.add(
-            SetConfirmButtonTextEvent(text.isNotEmpty ? text : null),
-          ),
+          (String text) => bloc.add(SetConfirmButtonTextEvent(text.isNotEmpty ? text : null)),
       checkboxOnChanged:
-          (bool enabled, String text) => bloc.add(
-            SetConfirmButtonTextEvent(
-              (enabled && text.isNotEmpty) ? text : null,
-            ),
-          ),
+          (bool enabled, String text) =>
+              bloc.add(SetConfirmButtonTextEvent((enabled && text.isNotEmpty) ? text : null)),
     );
   }
 }
@@ -158,15 +139,10 @@ final class _CancelButtonTextOption extends StatelessWidget {
 
     return _Input(
       label: '[MyoroDialogModal._cancelButtonText]',
-      onChanged:
-          (String text) =>
-              bloc.add(SetCancelButtonTextEvent(text.isNotEmpty ? text : null)),
+      onChanged: (String text) => bloc.add(SetCancelButtonTextEvent(text.isNotEmpty ? text : null)),
       checkboxOnChanged:
-          (bool enabled, String text) => bloc.add(
-            SetCancelButtonTextEvent(
-              (enabled && text.isNotEmpty) ? text : null,
-            ),
-          ),
+          (bool enabled, String text) =>
+              bloc.add(SetCancelButtonTextEvent((enabled && text.isNotEmpty) ? text : null)),
     );
   }
 }
@@ -190,21 +166,15 @@ final class _TextOptionState extends State<_TextOption> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroDialogModalWidgetShowcaseBloc,
-      MyoroDialogModalWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroDialogModalWidgetShowcaseBloc, MyoroDialogModalWidgetShowcaseState>(
       builder: (_, MyoroDialogModalWidgetShowcaseState state) {
         return _Input(
           label: '[MyoroDialogModal.text]',
           enabled: state.textEnabled,
-          onChanged:
-              (String text) =>
-                  _bloc.add(SetTextEvent(text.isNotEmpty ? text : null)),
+          onChanged: (String text) => _bloc.add(SetTextEvent(text.isNotEmpty ? text : null)),
           checkboxOnChanged:
-              (bool enabled, String text) => _bloc.add(
-                SetTextEvent((enabled && text.isNotEmpty) ? text : null),
-              ),
+              (bool enabled, String text) =>
+                  _bloc.add(SetTextEvent((enabled && text.isNotEmpty) ? text : null)),
           controller: _controller,
         );
       },
@@ -224,8 +194,7 @@ final class _TextStyleOption extends StatelessWidget {
         label: '[MyoroDialogModal.textStyle]',
         menuConfiguration: MyoroMenuConfiguration(
           request: typographyInstance.allTextStyles.toSet,
-          itemBuilder:
-              (textStyle) => _itemBuilder(typographyInstance, textStyle),
+          itemBuilder: (textStyle) => _itemBuilder(typographyInstance, textStyle),
         ),
         selectedItemBuilder: typographyInstance.getTextStyleName,
         onChanged: (textStyle) => _onChanged(context, textStyle),
@@ -233,10 +202,7 @@ final class _TextStyleOption extends StatelessWidget {
     );
   }
 
-  MyoroMenuItem _itemBuilder(
-    MyoroTypographyDesignSystem typographyInstance,
-    TextStyle textStyle,
-  ) {
+  MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typographyInstance, TextStyle textStyle) {
     return MyoroMenuItem(
       textConfiguration: MyoroIconTextButtonTextConfiguration(
         text: typographyInstance.getTextStyleName(textStyle),
@@ -274,9 +240,7 @@ final class _Input extends StatelessWidget {
           label: label,
           inputStyle:
               context
-                  .resolveThemeExtension<
-                    MyoroDialogModalWidgetShowcaseThemeExtension
-                  >()
+                  .resolveThemeExtension<MyoroDialogModalWidgetShowcaseThemeExtension>()
                   .inputStyle,
           onChanged: onChanged,
           checkboxOnChanged: checkboxOnChanged,
@@ -293,18 +257,15 @@ final class _ChildOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroDialogModalWidgetShowcaseBloc,
-      MyoroDialogModalWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroDialogModalWidgetShowcaseBloc, MyoroDialogModalWidgetShowcaseState>(
       builder: (_, MyoroDialogModalWidgetShowcaseState state) {
         return MyoroCheckbox(
           label: '[MyoroDialogModal._child] not null?',
           initialValue: state.childEnabled,
           onChanged:
-              (bool value) => context
-                  .resolveBloc<MyoroDialogModalWidgetShowcaseBloc>()
-                  .add(SetChildEvent(value)),
+              (bool value) => context.resolveBloc<MyoroDialogModalWidgetShowcaseBloc>().add(
+                SetChildEvent(value),
+              ),
         );
       },
     );

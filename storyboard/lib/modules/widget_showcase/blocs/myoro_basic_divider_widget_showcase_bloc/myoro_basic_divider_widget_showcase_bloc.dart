@@ -11,11 +11,7 @@ typedef _Emitter = Emitter<MyoroBasicDividerWidgetShowcaseState>;
 
 /// BLoC to manage all of the state in [MyoroBasicDividerWidgetShowcase].
 final class MyoroBasicDividerWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroBasicDividerWidgetShowcaseEvent,
-          MyoroBasicDividerWidgetShowcaseState
-        > {
+    extends Bloc<MyoroBasicDividerWidgetShowcaseEvent, MyoroBasicDividerWidgetShowcaseState> {
   MyoroBasicDividerWidgetShowcaseBloc({required double shortValue})
     : super(MyoroBasicDividerWidgetShowcaseState(shortValue: shortValue)) {
     on<SetDirectionEvent>(_setDirectionEvent);

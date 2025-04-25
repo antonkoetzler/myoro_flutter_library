@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSearchInput].
-class MyoroSearchInputThemeExtension
-    extends ThemeExtension<MyoroSearchInputThemeExtension> {
+class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThemeExtension> {
   /// Spacing in between the [MyoroInput] & [_SearchSection].
   final double spacing;
 
@@ -24,10 +23,7 @@ class MyoroSearchInputThemeExtension
 
   MyoroSearchInputThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(),
-      searchButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+      searchButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
       searchButtonLoadingSize = faker.randomGenerator.decimal();
 
   MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
@@ -44,8 +40,7 @@ class MyoroSearchInputThemeExtension
     return MyoroSearchInputThemeExtension(
       spacing: spacing ?? this.spacing,
       searchButtonIcon: searchButtonIcon ?? this.searchButtonIcon,
-      searchButtonLoadingSize:
-          searchButtonLoadingSize ?? this.searchButtonLoadingSize,
+      searchButtonLoadingSize: searchButtonLoadingSize ?? this.searchButtonLoadingSize,
     );
   }
 

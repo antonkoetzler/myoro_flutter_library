@@ -19,10 +19,7 @@ void main() {
     expect:
         () => const [
           MyoroFormState(status: MyoroRequestEnum.loading),
-          MyoroFormState(
-            status: MyoroRequestEnum.error,
-            errorMessage: validationErrorMessage,
-          ),
+          MyoroFormState(status: MyoroRequestEnum.error, errorMessage: validationErrorMessage),
         ],
   );
 
@@ -64,10 +61,7 @@ void main() {
     expect:
         () => const [
           MyoroFormState<String>(status: MyoroRequestEnum.loading),
-          MyoroFormState<String>(
-            status: MyoroRequestEnum.success,
-            result: result,
-          ),
+          MyoroFormState<String>(status: MyoroRequestEnum.success, result: result),
         ],
   );
 }

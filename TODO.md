@@ -12,7 +12,7 @@
 1. feature: `getRandomColor`, `getRandomTextStyle`, `getRandomCursor`, etc
 1. (**IN PROGRESS**) refactor: Buttons
 
-- (**YOU ARE HERE**) Fix all tests of the system then implement the button's tests
+- (**YOU ARE HERE**) Implement the button's tests
 - Implement widget showcases
 
 1. (**DELAYED**) feature: `MyoroAccordion`

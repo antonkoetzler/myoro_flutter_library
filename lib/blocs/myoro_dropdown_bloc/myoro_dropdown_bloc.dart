@@ -9,10 +9,8 @@ part 'myoro_dropdown_event.dart';
 typedef _Emitter<T> = Emitter<MyoroDropdownState<T>>;
 
 /// [Bloc] which manages the logic of [MyoroSingularDropdown] and [MyoroMultiDropdown].
-final class MyoroDropdownBloc<T>
-    extends Bloc<MyoroDropdownEvent<T>, MyoroDropdownState<T>> {
-  MyoroDropdownBloc({required bool enabled})
-    : super(MyoroDropdownState<T>(enabled: enabled)) {
+final class MyoroDropdownBloc<T> extends Bloc<MyoroDropdownEvent<T>, MyoroDropdownState<T>> {
+  MyoroDropdownBloc({required bool enabled}) : super(MyoroDropdownState<T>(enabled: enabled)) {
     on<ToggleItemEvent<T>>(_toggleItemEvent);
     on<SetSelectedItemsEvent<T>>(_setSelectedItemsEvent);
     on<SelectItemsEvent<T>>(_selectItemsEvent);
@@ -34,36 +32,19 @@ final class MyoroDropdownBloc<T>
     );
   }
 
-  void _setSelectedItemsEvent(
-    SetSelectedItemsEvent<T> event,
-    _Emitter<T> emit,
-  ) {
+  void _setSelectedItemsEvent(SetSelectedItemsEvent<T> event, _Emitter<T> emit) {
     emit(state.copyWith(selectedItems: event.items));
   }
 
   void _selectItemsEvent(SelectItemsEvent<T> event, _Emitter<T> emit) {
-    emit(
-      state.copyWith(
-        selectedItems: Set<T>.from(state.selectedItems)..addAll(event.items),
-      ),
-    );
+    emit(state.copyWith(selectedItems: Set<T>.from(state.selectedItems)..addAll(event.items)));
   }
 
-  void _removeSelectedItemsEvent(
-    RemoveSelectedItemsEvent<T> event,
-    _Emitter<T> emit,
-  ) {
-    emit(
-      state.copyWith(
-        selectedItems: Set<T>.from(state.selectedItems)..removeAll(event.items),
-      ),
-    );
+  void _removeSelectedItemsEvent(RemoveSelectedItemsEvent<T> event, _Emitter<T> emit) {
+    emit(state.copyWith(selectedItems: Set<T>.from(state.selectedItems)..removeAll(event.items)));
   }
 
-  void _clearSelectedItemsEvent(
-    ClearSelectedItemsEvent<T> event,
-    _Emitter<T> emit,
-  ) {
+  void _clearSelectedItemsEvent(ClearSelectedItemsEvent<T> event, _Emitter<T> emit) {
     emit(state.copyWith(selectedItems: const {}));
   }
 

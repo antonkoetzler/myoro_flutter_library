@@ -29,8 +29,7 @@ final class MyoroSnackBarWidgetShowcaseState extends Equatable {
     String? message,
     bool? childEnabled,
   }) {
-    message =
-        childEnabled == false ? 'Hello, World!' : (message ?? this.message);
+    message = childEnabled == false ? 'Hello, World!' : (message ?? this.message);
     childEnabled = childEnabled ?? message.isEmpty;
 
     return MyoroSnackBarWidgetShowcaseState(

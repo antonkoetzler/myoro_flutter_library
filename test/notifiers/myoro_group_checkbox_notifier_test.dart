@@ -24,9 +24,7 @@ void main() {
   tearDownAll(() => notifier.dispose());
 
   test('MyoroGroupCheckboxNotifier.toggle', () {
-    final key = checkboxes.keys.elementAt(
-      faker.randomGenerator.integer(checkboxes.keys.length),
-    );
+    final key = checkboxes.keys.elementAt(faker.randomGenerator.integer(checkboxes.keys.length));
     final keyOldValue = notifier.checkboxes[key];
     notifier.toggle(key);
     expect(notifier.checkboxes[key], !keyOldValue!);

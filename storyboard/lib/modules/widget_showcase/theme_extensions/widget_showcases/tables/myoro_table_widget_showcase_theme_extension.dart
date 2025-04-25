@@ -23,8 +23,7 @@ final class MyoroTableWidgetShowcaseThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroTableWidgetShowcaseThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroTableWidgetShowcaseThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

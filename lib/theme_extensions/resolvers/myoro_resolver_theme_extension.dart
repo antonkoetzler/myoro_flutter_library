@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroResolver].
-class MyoroResolverThemeExtension
-    extends ThemeExtension<MyoroResolverThemeExtension> {
+class MyoroResolverThemeExtension extends ThemeExtension<MyoroResolverThemeExtension> {
   const MyoroResolverThemeExtension();
 
   const MyoroResolverThemeExtension.builder();
@@ -21,8 +20,7 @@ class MyoroResolverThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroResolverThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroResolverThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

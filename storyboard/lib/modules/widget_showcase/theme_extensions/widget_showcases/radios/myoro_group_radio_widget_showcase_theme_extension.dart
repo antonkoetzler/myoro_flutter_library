@@ -15,8 +15,7 @@ final class MyoroGroupRadioWidgetShowcaseThemeExtension
 
   @override
   ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension> lerp(
-    covariant ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension>?
-    other,
+    covariant ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
     return this;
@@ -24,8 +23,7 @@ final class MyoroGroupRadioWidgetShowcaseThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroGroupRadioWidgetShowcaseThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroGroupRadioWidgetShowcaseThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

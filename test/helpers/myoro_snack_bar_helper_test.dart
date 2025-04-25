@@ -4,33 +4,29 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroSnackBarHelper].
 void main() {
-  testWidgets(
-    'MyoroSnackBarHelper.showSnackBar & MyoroSnackBarHelper.hideSnackBar',
-    (WidgetTester tester) async {
-      late final BuildContext context;
+  testWidgets('MyoroSnackBarHelper.showSnackBar & MyoroSnackBarHelper.hideSnackBar', (
+    WidgetTester tester,
+  ) async {
+    late final BuildContext context;
 
-      await tester.pumpWidget(
-        MyoroWidgetTester(
-          child: Builder(
-            builder: (BuildContext buildContext) {
-              context = buildContext;
-              return const SizedBox.shrink();
-            },
-          ),
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: Builder(
+          builder: (BuildContext buildContext) {
+            context = buildContext;
+            return const SizedBox.shrink();
+          },
         ),
-      );
-      await tester.pumpAndSettle();
+      ),
+    );
+    await tester.pumpAndSettle();
 
-      MyoroSnackBarHelper.showSnackBar(
-        context,
-        snackBar: MyoroSnackBar(message: 'Hello, World!'),
-      );
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroSnackBar), findsOneWidget);
+    MyoroSnackBarHelper.showSnackBar(context, snackBar: MyoroSnackBar(message: 'Hello, World!'));
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroSnackBar), findsOneWidget);
 
-      MyoroSnackBarHelper.hideSnackBar(context);
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroSnackBar), findsNothing);
-    },
-  );
+    MyoroSnackBarHelper.hideSnackBar(context);
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroSnackBar), findsNothing);
+  });
 }

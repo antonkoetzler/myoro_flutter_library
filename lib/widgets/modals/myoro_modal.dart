@@ -40,8 +40,7 @@ class MyoroModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
     final showCloseButton = configuration?.showCloseButton ?? false;
 
     return Center(
@@ -81,10 +80,7 @@ final class _Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        if (_title != null) _Title(_title),
-        if (_showCloseButton) const _CloseButton(),
-      ],
+      children: [if (_title != null) _Title(_title), if (_showCloseButton) const _CloseButton()],
     );
   }
 }
@@ -103,10 +99,7 @@ final class _Title extends StatelessWidget {
       ),
       child: Text(
         _title,
-        style:
-            context
-                .resolveThemeExtension<MyoroModalThemeExtension>()
-                .titleTextStyle,
+        style: context.resolveThemeExtension<MyoroModalThemeExtension>().titleTextStyle,
       ),
     );
   }
@@ -117,8 +110,7 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(

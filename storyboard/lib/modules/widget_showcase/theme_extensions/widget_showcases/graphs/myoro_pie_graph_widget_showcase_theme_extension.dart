@@ -20,15 +20,11 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension
   });
 
   MyoroPieGraphWidgetShowcaseThemeExtension.fake()
-    : centerWidgetBorderRadius = BorderRadius.circular(
-        faker.randomGenerator.decimal(),
-      ),
+    : centerWidgetBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       centerWidgetSize = faker.randomGenerator.decimal();
 
   MyoroPieGraphWidgetShowcaseThemeExtension.builder()
-    : centerWidgetBorderRadius = BorderRadius.circular(
-        kMyoroBorderRadiusLength,
-      ),
+    : centerWidgetBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
       centerWidgetSize = 125;
 
   @override
@@ -37,8 +33,7 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension
     double? centerWidgetSize,
   }) {
     return MyoroPieGraphWidgetShowcaseThemeExtension(
-      centerWidgetBorderRadius:
-          centerWidgetBorderRadius ?? this.centerWidgetBorderRadius,
+      centerWidgetBorderRadius: centerWidgetBorderRadius ?? this.centerWidgetBorderRadius,
       centerWidgetSize: centerWidgetSize ?? this.centerWidgetSize,
     );
   }

@@ -13,8 +13,7 @@ typedef MyoroButtonConfigurationBorderBuilder =
     BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Function executed when the [MyoroButton] is tapped.
-typedef MyoroButtonConfigurationOnTapDown =
-    void Function(TapDownDetails details);
+typedef MyoroButtonConfigurationOnTapDown = void Function(TapDownDetails details);
 
 /// Function executed when the [MyoroButton] is released being tapped.
 ///
@@ -59,31 +58,21 @@ class MyoroButtonConfiguration extends Equatable {
   MyoroButtonConfiguration.fake()
     : cursor =
           faker.randomGenerator.boolean()
-              ? kMyoroTestCursors[faker.randomGenerator.integer(
-                kMyoroTestCursors.length,
-              )]
+              ? kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)]
               : null,
       borderRadius =
           faker.randomGenerator.boolean()
-              ? BorderRadius.circular(
-                faker.randomGenerator.decimal(scale: 50, min: 1),
-              )
+              ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
               : null,
       backgroundColorBuilder =
           faker.randomGenerator.boolean()
-              ? ((_) =>
-                  kMyoroTestColors[faker.randomGenerator.integer(
-                    kMyoroTestColors.length,
-                  )])
+              ? ((_) => kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)])
               : null,
       borderBuilder =
           faker.randomGenerator.boolean()
               ? ((_) => Border.all(
                 width: faker.randomGenerator.decimal(scale: 10),
-                color:
-                    kMyoroTestColors[faker.randomGenerator.integer(
-                      kMyoroTestColors.length,
-                    )],
+                color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
               ))
               : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
@@ -105,14 +94,12 @@ class MyoroButtonConfiguration extends Equatable {
   }) {
     return MyoroButtonConfiguration(
       cursor: cursorProvided ? (cursor ?? this.cursor) : null,
-      borderRadius:
-          borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       backgroundColorBuilder:
           backgroundColorBuilderProvided
               ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
               : null,
-      borderBuilder:
-          borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
+      borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
     );
@@ -120,14 +107,7 @@ class MyoroButtonConfiguration extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      cursor,
-      borderRadius,
-      backgroundColorBuilder,
-      borderBuilder,
-      onTapDown,
-      onTapUp,
-    ];
+    return [cursor, borderRadius, backgroundColorBuilder, borderBuilder, onTapDown, onTapUp];
   }
 
   @override

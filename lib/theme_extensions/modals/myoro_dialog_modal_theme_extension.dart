@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroDialogModal].
-class MyoroDialogModalThemeExtension
-    extends ThemeExtension<MyoroDialogModalThemeExtension> {
+class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThemeExtension> {
   /// Text style of the simple text option in [_Message].
   final TextStyle textStyle;
 
@@ -27,10 +26,7 @@ class MyoroDialogModalThemeExtension
       footerButtonsSpacing = 10;
 
   @override
-  MyoroDialogModalThemeExtension copyWith({
-    TextStyle? textStyle,
-    double? footerButtonsSpacing,
-  }) {
+  MyoroDialogModalThemeExtension copyWith({TextStyle? textStyle, double? footerButtonsSpacing}) {
     return MyoroDialogModalThemeExtension(
       textStyle: textStyle ?? this.textStyle,
       footerButtonsSpacing: footerButtonsSpacing ?? this.footerButtonsSpacing,
@@ -45,11 +41,7 @@ class MyoroDialogModalThemeExtension
     if (other is! MyoroDialogModalThemeExtension) return this;
     return copyWith(
       textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      footerButtonsSpacing: lerpDouble(
-        footerButtonsSpacing,
-        other.footerButtonsSpacing,
-        t,
-      ),
+      footerButtonsSpacing: lerpDouble(footerButtonsSpacing, other.footerButtonsSpacing, t),
     );
   }
 

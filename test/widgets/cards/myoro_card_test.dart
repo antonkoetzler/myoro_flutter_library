@@ -8,13 +8,9 @@ void main() {
   final String title = faker.lorem.word();
   late final TextStyle? titleTextStyle;
   final EdgeInsets? padding =
-      faker.randomGenerator.boolean()
-          ? EdgeInsets.all(faker.randomGenerator.decimal())
-          : null;
-  final double? width =
-      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  final double? height =
-      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+      faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null;
+  final double? width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final double? height = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   setUp(() {
     MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
@@ -31,8 +27,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroCardThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
 
             return MyoroCard(
               title: title,
@@ -58,8 +53,7 @@ void main() {
             w.mainAxisSize == MainAxisSize.min &&
             w.children.length == 3 &&
             w.children[1] is SizedBox &&
-            (w.children[1] as SizedBox).height ==
-                themeExtension.titleCardSpacing &&
+            (w.children[1] as SizedBox).height == themeExtension.titleCardSpacing &&
             w.children.last is Flexible,
       ),
       findsOneWidget,
@@ -69,9 +63,7 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is Text &&
-            w.data == title &&
-            w.style == (titleTextStyle ?? themeExtension.textStyle),
+            w is Text && w.data == title && w.style == (titleTextStyle ?? themeExtension.textStyle),
       ),
       findsOneWidget,
     );

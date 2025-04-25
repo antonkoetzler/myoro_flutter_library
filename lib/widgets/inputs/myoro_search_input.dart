@@ -40,8 +40,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   TextEditingController? _localTextController;
   TextEditingController get _textController {
-    return _configuration.controller ??
-        (_localTextController ??= TextEditingController());
+    return _configuration.controller ?? (_localTextController ??= TextEditingController());
   }
 
   final _formController = MyoroFormController();
@@ -76,11 +75,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
         controller: _formController,
         request: () async => await _request.call(_textController.text),
         onSuccess: (_) => _focusNode.requestFocus(),
-        builder: (
-          Set<T>? results,
-          MyoroRequestEnum status,
-          MyoroFormController controller,
-        ) {
+        builder: (Set<T>? results, MyoroRequestEnum status, MyoroFormController controller) {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -88,19 +83,14 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                 configuration: _configuration.copyWith(
                   controller: _textController,
                   suffix: _SearchButton(status, controller),
-                  onChanged:
-                      _requestWhenChanged
-                          ? (_) => _formController.finish()
-                          : null,
+                  onChanged: _requestWhenChanged ? (_) => _formController.finish() : null,
                   onFieldSubmitted: (_) => _formController.finish(),
                 ),
               ),
               ValueListenableBuilder(
                 valueListenable: _displaySearchSectionNotifier,
                 builder: (_, bool displaySearchSection, __) {
-                  if (!(results?.isNotEmpty == true &&
-                      status.isSuccess &&
-                      displaySearchSection)) {
+                  if (!(results?.isNotEmpty == true && status.isSuccess && displaySearchSection)) {
                     return const SizedBox.shrink();
                   }
 
@@ -109,11 +99,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
                     children: [
                       SizedBox(
                         height:
-                            context
-                                .resolveThemeExtension<
-                                  MyoroSearchInputThemeExtension
-                                >()
-                                .spacing,
+                            context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing,
                       ),
                       Flexible(child: _SearchSection(results, _itemBuilder)),
                     ],
@@ -150,8 +136,7 @@ final class _SearchButton extends StatelessWidget {
   }
 
   Widget _builder(BuildContext context, __) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
     return _status.isLoading
         ? MyoroCircularLoader(size: themeExtension.searchButtonLoadingSize)
@@ -168,10 +153,7 @@ final class _SearchSection<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroMenu(
-      configuration: MyoroMenuConfiguration(
-        itemBuilder: itemBuilder,
-        request: () => results!,
-      ),
+      configuration: MyoroMenuConfiguration(itemBuilder: itemBuilder, request: () => results!),
     );
   }
 }

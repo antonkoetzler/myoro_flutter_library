@@ -14,8 +14,7 @@ final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
-  Widget build(BuildContext context) =>
-      const MyoroScreen(appBar: _AppBar(), body: _Body());
+  Widget build(BuildContext context) => const MyoroScreen(appBar: _AppBar(), body: _Body());
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -26,9 +25,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
 
     return MyoroAppBar(
       child: Row(
@@ -39,12 +36,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Flexible(
-                  child: Text(
-                    'MyoroScreen',
-                    style: themeExtension.appBarTitleTextStyle,
-                  ),
-                ),
+                Flexible(child: Text('MyoroScreen', style: themeExtension.appBarTitleTextStyle)),
                 Flexible(
                   child: Text(
                     'A widget used to create new [Scaffold]s (screens)',
@@ -54,18 +46,15 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
           ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              MyoroIconTextButton(
-                configuration: MyoroIconTextButtonConfiguration(
-                  iconConfiguration: MyoroIconTextButtonIconConfiguration(
-                    icon: themeExtension.appBarMenuButtonIcon,
-                  ),
-                  onTapUp: (_) => {},
+          IntrinsicWidth(
+            child: MyoroIconTextButton(
+              configuration: MyoroIconTextButtonConfiguration(
+                iconConfiguration: MyoroIconTextButtonIconConfiguration(
+                  icon: themeExtension.appBarMenuButtonIcon,
                 ),
+                onTapUp: (_) => {},
               ),
-            ],
+            ),
           ),
         ],
       ),
@@ -78,9 +67,7 @@ final class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
 
     return Center(
       child: Column(
@@ -91,15 +78,9 @@ final class _Body extends StatelessWidget {
           ClipRRect(
             clipBehavior: Clip.hardEdge,
             borderRadius: themeExtension.bodyImageBorderRadius,
-            child: Image.asset(
-              'assets/images/happy_cat.jpg',
-              width: themeExtension.bodyImageSize,
-            ),
+            child: Image.asset('assets/images/happy_cat.jpg', width: themeExtension.bodyImageSize),
           ),
-          Text(
-            'The contents of the screen would go here.',
-            style: themeExtension.bodyTextStyle,
-          ),
+          Text('The contents of the screen would go here.', style: themeExtension.bodyTextStyle),
         ],
       ),
     );

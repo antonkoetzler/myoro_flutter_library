@@ -11,13 +11,8 @@ typedef _Emitter = Emitter<MyoroBarGraphWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroBarGraphWidgetShowcase].
 final class MyoroBarGraphWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroBarGraphWidgetShowcaseEvent,
-          MyoroBarGraphWidgetShowcaseState
-        > {
-  MyoroBarGraphWidgetShowcaseBloc()
-    : super(const MyoroBarGraphWidgetShowcaseState()) {
+    extends Bloc<MyoroBarGraphWidgetShowcaseEvent, MyoroBarGraphWidgetShowcaseState> {
+  MyoroBarGraphWidgetShowcaseBloc() : super(const MyoroBarGraphWidgetShowcaseState()) {
     on<SetSortedEvent>(_setSortedEvent);
   }
 

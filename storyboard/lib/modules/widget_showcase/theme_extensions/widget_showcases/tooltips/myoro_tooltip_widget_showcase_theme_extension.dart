@@ -31,10 +31,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
     : inputStyle = MyoroInputStyleEnum.fake(),
       childSize = faker.randomGenerator.decimal(),
       childDecoration = BoxDecoration(
-        color:
-            kMyoroTestColors[faker.randomGenerator.integer(
-              kMyoroTestColors.length,
-            )],
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       ),
       childTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
 
@@ -43,10 +40,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
       childSize = 300,
       childDecoration = BoxDecoration(
         color: MyoroColorDesignSystem.attention,
-        border: Border.all(
-          width: kMyoroBorderLength,
-          color: MyoroColorDesignSystem.attention,
-        ),
+        border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
       ),
       childTextStyle = textTheme.titleMedium!;
 
@@ -74,11 +68,7 @@ final class MyoroTooltipWidgetShowcaseThemeExtension
     return copyWith(
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       childSize: lerpDouble(childSize, other.childSize, t),
-      childDecoration: BoxDecoration.lerp(
-        childDecoration,
-        other.childDecoration,
-        t,
-      ),
+      childDecoration: BoxDecoration.lerp(childDecoration, other.childDecoration, t),
       childTextStyle: TextStyle.lerp(childTextStyle, other.childTextStyle, t),
     );
   }

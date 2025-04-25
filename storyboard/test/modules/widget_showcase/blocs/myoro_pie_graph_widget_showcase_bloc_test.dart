@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/app/blocs/myoro_pie_graph_widget_showcase_bloc/myoro_pie_graph_widget_showcase_bloc.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_pie_graph_widget_showcase_bloc/myoro_pie_graph_widget_showcase_bloc.dart';
 
 /// Unit test of [MyoroPieGraphWidgetShowcaseBloc].
 void main() {
@@ -25,11 +25,6 @@ void main() {
     'MyoroPieGraphWidgetShowcaseBloc.SetCenterWidgetEnabledEvent',
     build: () => MyoroPieGraphWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetCenterWidgetEnabledEvent(centerWidgetEnabled)),
-    expect:
-        () => [
-          MyoroPieGraphWidgetShowcaseState(
-            centerWidgetEnabled: centerWidgetEnabled,
-          ),
-        ],
+    expect: () => [MyoroPieGraphWidgetShowcaseState(centerWidgetEnabled: centerWidgetEnabled)],
   );
 }

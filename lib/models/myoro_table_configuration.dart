@@ -42,10 +42,7 @@ class MyoroTableConfiguration<T> extends Equatable {
     this.titleCells,
     this.rowBuilder,
     this.paginationBuilder,
-  ) : assert(
-        titleCells.isNotEmpty,
-        '[MyoroTable]: [titleCells] cannot be empty',
-      );
+  ) : assert(titleCells.isNotEmpty, '[MyoroTable]: [titleCells] cannot be empty');
 
   factory MyoroTableConfiguration({
     MyoroTableController<T>? controller,
@@ -72,8 +69,7 @@ class MyoroTableConfiguration<T> extends Equatable {
   }) {
     return MyoroTableConfiguration(
       controller: controller ?? this.controller,
-      showPaginationControls:
-          showPaginationControls ?? this.showPaginationControls,
+      showPaginationControls: showPaginationControls ?? this.showPaginationControls,
       titleCells: titleCells ?? this.titleCells,
       rowBuilder: rowBuilder ?? this.rowBuilder,
       paginationBuilder: paginationBuilder ?? this.paginationBuilder,
@@ -82,13 +78,7 @@ class MyoroTableConfiguration<T> extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      controller,
-      showPaginationControls,
-      titleCells,
-      rowBuilder,
-      paginationBuilder,
-    ];
+    return [controller, showPaginationControls, titleCells, rowBuilder, paginationBuilder];
   }
 
   @override

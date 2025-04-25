@@ -44,20 +44,15 @@ class _WidgetState extends State<_Widget> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
 
     return MyoroForm<_FormResult>(
       validation: () => _validation(_controller),
       request: () => ('Form finish successfully!', themeExtension.successColor),
-      onSuccess:
-          (_FormResult? result) => _formResultTextNotifier.value = result,
+      onSuccess: (_FormResult? result) => _formResultTextNotifier.value = result,
       onError:
           (String errorMessage) =>
-              _formResultTextNotifier.value = (
-                errorMessage,
-                themeExtension.errorColor,
-              ),
+              _formResultTextNotifier.value = (errorMessage, themeExtension.errorColor),
       builder: (result, status, controller) {
         return Column(
           mainAxisAlignment: themeExtension.widgetMainAxisAlignment,
@@ -97,9 +92,7 @@ final class _Input extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         controller: controller,
         inputStyle:
-            context
-                .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
-                .widgetInputStyle,
+            context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().widgetInputStyle,
         placeholder: 'Type "$_errorText" in the input to display an error.',
         validation: (_) => _validation(controller),
       ),
@@ -116,9 +109,7 @@ final class _SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        textConfiguration: const MyoroIconTextButtonTextConfiguration(
-          text: 'Click me!',
-        ),
+        textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Click me!'),
         borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
         onTapUp: (_) => _onTapUp(),
       ),

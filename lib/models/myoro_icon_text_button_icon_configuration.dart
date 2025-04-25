@@ -14,14 +14,8 @@ class MyoroIconTextButtonIconConfiguration extends Equatable {
   const MyoroIconTextButtonIconConfiguration({required this.icon, this.size});
 
   MyoroIconTextButtonIconConfiguration.fake()
-    : icon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      size =
-          faker.randomGenerator.boolean()
-              ? faker.randomGenerator.decimal(scale: 100)
-              : null;
+    : icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null;
 
   MyoroIconTextButtonIconConfiguration copyWith({
     IconData? icon,

@@ -6,12 +6,7 @@ import 'package:storyboard/storyboard.dart';
 /// Widget test of [MyoroRadioWidgetShowcase].
 void main() {
   testWidgets('MyoroRadioWidgetShowcase', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroRadioWidgetShowcase(),
-      ),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: MyoroRadioWidgetShowcase()));
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroRadioWidgetShowcase), findsOneWidget);

@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox].
-class MyoroGroupCheckboxThemeExtension
-    extends ThemeExtension<MyoroGroupCheckboxThemeExtension> {
+class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckboxThemeExtension> {
   /// Default direction of the [MyoroGroupCheckbox].
   final Axis direction;
 
@@ -28,8 +27,7 @@ class MyoroGroupCheckboxThemeExtension
       runSpacing = 5;
 
   MyoroGroupCheckboxThemeExtension.fake()
-    : direction =
-          Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+    : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
       spacing = faker.randomGenerator.decimal(),
       runSpacing = faker.randomGenerator.decimal();
 

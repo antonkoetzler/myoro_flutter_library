@@ -31,10 +31,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroCarouselWidgetShowcaseBloc,
-      MyoroCarouselWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroCarouselWidgetShowcaseBloc, MyoroCarouselWidgetShowcaseState>(
       builder: (_, MyoroCarouselWidgetShowcaseState state) {
         return MyoroCarousel(
           direction: state.direction,
@@ -46,10 +43,7 @@ final class _Widget extends StatelessWidget {
             (_) => Container(
               width: 300,
               height: 300,
-              color:
-                  kMyoroTestColors[faker.randomGenerator.integer(
-                    kMyoroTestColors.length,
-                  )],
+              color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
             ),
           ),
         );
@@ -80,9 +74,7 @@ final class _DirectionOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(Axis direction) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(
-        text: _getDirectionName(direction),
-      ),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)),
     );
   }
 

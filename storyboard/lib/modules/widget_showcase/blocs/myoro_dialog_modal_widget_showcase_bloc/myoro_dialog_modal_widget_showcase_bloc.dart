@@ -11,13 +11,8 @@ typedef _Emitter = Emitter<MyoroDialogModalWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroDialogModalWidgetShowcase].
 final class MyoroDialogModalWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroDialogModalWidgetShowcaseEvent,
-          MyoroDialogModalWidgetShowcaseState
-        > {
-  MyoroDialogModalWidgetShowcaseBloc()
-    : super(const MyoroDialogModalWidgetShowcaseState()) {
+    extends Bloc<MyoroDialogModalWidgetShowcaseEvent, MyoroDialogModalWidgetShowcaseState> {
+  MyoroDialogModalWidgetShowcaseBloc() : super(const MyoroDialogModalWidgetShowcaseState()) {
     on<SetInvertButtonsEvent>(_setInvertButtonsEvent);
     on<SetConfirmButtonTextEvent>(_setConfirmButtonTextEvent);
     on<SetTextEvent>(_setTextEvent);
@@ -29,10 +24,7 @@ final class MyoroDialogModalWidgetShowcaseBloc
     emit(state.copyWith(invertButtons: event.invertButtons));
   }
 
-  void _setConfirmButtonTextEvent(
-    SetConfirmButtonTextEvent event,
-    _Emitter emit,
-  ) {
+  void _setConfirmButtonTextEvent(SetConfirmButtonTextEvent event, _Emitter emit) {
     emit(
       state.copyWith(
         confirmButtonText: event.confirmButtonText,
@@ -46,12 +38,7 @@ final class MyoroDialogModalWidgetShowcaseBloc
   }
 
   void _setTextStyleEvent(SetTextStyleEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        textStyle: event.textStyle,
-        textEnabled: event.textStyle != null,
-      ),
-    );
+    emit(state.copyWith(textStyle: event.textStyle, textEnabled: event.textStyle != null));
   }
 
   void _setChildEvent(SetChildEvent event, _Emitter emit) {

@@ -11,8 +11,7 @@ void main() {
   final themeExtension2 = MyoroPieGraphWidgetShowcaseThemeExtension.fake();
 
   test('MyoroPieGraphWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroPieGraphWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroPieGraphWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       centerWidgetBorderRadius: themeExtension2.centerWidgetBorderRadius,
@@ -34,11 +33,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.centerWidgetSize,
-        lerpDouble(
-          themeExtension1.centerWidgetSize,
-          themeExtension2.centerWidgetSize,
-          i,
-        ),
+        lerpDouble(themeExtension1.centerWidgetSize, themeExtension2.centerWidgetSize, i),
       );
     }
   });

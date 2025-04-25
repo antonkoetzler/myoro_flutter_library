@@ -64,19 +64,13 @@ extension MyoroBuildContextExtension on BuildContext {
       final bloc = BlocProvider.of<T>(this);
       return bloc;
     } catch (_) {
-      throw Exception(
-        '[BuildContextExtension.resolveBloc]: [Bloc] does not exist.',
-      );
+      throw Exception('[BuildContextExtension.resolveBloc]: [Bloc] does not exist.');
     }
   }
 
   /// Opens the drawer of the [BuildContext]'s [MyoroScreen].
   void openDrawer({bool isEndDrawer = false, required MyoroDrawer drawer}) {
-    read<MyoroDrawerController>().openDrawer(
-      this,
-      isEndDrawer: isEndDrawer,
-      drawer: drawer,
-    );
+    read<MyoroDrawerController>().openDrawer(this, isEndDrawer: isEndDrawer, drawer: drawer);
   }
 
   /// Closes the drawer of the [BuildContext]'s [MyoroScreen].
@@ -86,11 +80,7 @@ extension MyoroBuildContextExtension on BuildContext {
 
   /// Opens a snack bar.
   void showSnackBar({Duration? duration, required MyoroSnackBar snackBar}) {
-    MyoroSnackBarHelper.showSnackBar(
-      this,
-      duration: duration,
-      snackBar: snackBar,
-    );
+    MyoroSnackBarHelper.showSnackBar(this, duration: duration, snackBar: snackBar);
   }
 
   /// Hides a snack bar.

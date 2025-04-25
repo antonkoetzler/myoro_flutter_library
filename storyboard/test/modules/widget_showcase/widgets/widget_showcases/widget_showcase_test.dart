@@ -26,8 +26,7 @@ void main() {
     late final WidgetShowcaseThemeExtension themeExtension;
 
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+      StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
             themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
@@ -41,13 +40,13 @@ void main() {
 
     expect(find.byType(WidgetShowcase), findsOneWidget);
 
-    // [WidgetShowcase].
+    // [_WidgetShowcaseState].
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
             w is Row &&
             w.crossAxisAlignment == CrossAxisAlignment.start &&
-            w.children.length == 3 &&
+            w.children.length == (widgetOptions.isNotEmpty ? 3 : 1) &&
             w.children.first is Expanded,
       ),
       findsOneWidget,
@@ -62,41 +61,43 @@ void main() {
         (Widget w) =>
             w is Padding &&
             w.padding == themeExtension.widgetWrapperPadding &&
-            w.child is Container &&
-            (w.child as Container).alignment == themeExtension.widgetWrapperAlignment &&
-            (w.child as Container).decoration ==
-                BoxDecoration(
-                  color: themeExtension.widgetWrapperBackgroundColor,
-                  borderRadius: themeExtension.widgetWrapperBorderRadius,
-                  border: themeExtension.widgetWrapperBorder,
-                ) &&
-            (w.child as Container).child is Padding &&
-            ((w.child as Container).child as Padding).padding ==
+            w.child is Stack &&
+            (w.child as Stack).children.length == 2 &&
+            (w.child as Stack).children.first is Container &&
+            ((w.child as Stack).children.first as Container).constraints?.maxHeight ==
+                double.infinity &&
+            ((w.child as Stack).children.first as Container).alignment ==
+                themeExtension.widgetWrapperAlignment &&
+            ((w.child as Stack).children.first as Container).decoration ==
+                themeExtension.widgetWrapperDecoration &&
+            ((w.child as Stack).children.first as Container).child is Padding &&
+            (((w.child as Stack).children.first as Container).child as Padding).padding ==
                 themeExtension.widgetWrapperContentPadding &&
-            ((w.child as Container).child as Padding).child
-                is SizedBox, // SizedBox.shrink inserted in this test.
+            (((w.child as Stack).children.first as Container).child as Padding).child is SizedBox,
       ),
       findsOneWidget,
     );
 
     // [_WidgetOptions].
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is ConstrainedBox &&
-            w.constraints.maxWidth == themeExtension.widgetOptionsMaxWidth &&
-            w.child is SingleChildScrollView &&
-            (w.child as SingleChildScrollView).child is Padding &&
-            ((w.child as SingleChildScrollView).child as Padding).padding ==
-                themeExtension.widgetOptionsPadding &&
-            ((w.child as SingleChildScrollView).child as Padding).child is Column &&
-            (((w.child as SingleChildScrollView).child as Padding).child as Column)
-                    .children
-                    .length ==
-                widgetOptions.length,
-      ),
-      findsOneWidget,
-    );
+    if (widgetOptions.isNotEmpty) {
+      expect(
+        find.byWidgetPredicate(
+          (Widget w) =>
+              w is ConstrainedBox &&
+              w.constraints.maxWidth == themeExtension.widgetOptionsMaxWidth &&
+              w.child is SingleChildScrollView &&
+              (w.child as SingleChildScrollView).child is Padding &&
+              ((w.child as SingleChildScrollView).child as Padding).padding ==
+                  themeExtension.widgetOptionsPadding &&
+              ((w.child as SingleChildScrollView).child as Padding).child is Column &&
+              (((w.child as SingleChildScrollView).child as Padding).child as Column)
+                      .children
+                      .length ==
+                  widgetOptions.length,
+        ),
+        findsOneWidget,
+      );
+    }
 
     // Item in [_WidgetOptions].
     expect(

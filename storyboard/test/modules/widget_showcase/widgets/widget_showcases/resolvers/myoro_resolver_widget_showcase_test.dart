@@ -6,19 +6,14 @@ import 'package:storyboard/storyboard.dart';
 /// Widget test of [MyoroResolverWidgetShowcase].
 void main() {
   testWidgets('MyoroResolverWidgetShowcase', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroResolverWidgetShowcase(),
-      ),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: MyoroResolverWidgetShowcase()));
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroResolverWidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroResolver<String>), findsOneWidget);
 
     // [_RefreshButtons].
-    expect(find.byType(MyoroIconTextButton), findsNWidgets(2));
+    expect(find.byType(MyoroIconTextButton), findsNWidgets(3));
     expect(
       find.byWidgetPredicate(
         (Widget w) =>

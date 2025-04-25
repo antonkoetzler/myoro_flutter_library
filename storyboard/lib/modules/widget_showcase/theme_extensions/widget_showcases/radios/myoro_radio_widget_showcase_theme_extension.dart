@@ -10,19 +10,14 @@ final class MyoroRadioWidgetShowcaseThemeExtension
 
   const MyoroRadioWidgetShowcaseThemeExtension({required this.inputStyle});
 
-  MyoroRadioWidgetShowcaseThemeExtension.fake()
-    : inputStyle = MyoroInputStyleEnum.fake();
+  MyoroRadioWidgetShowcaseThemeExtension.fake() : inputStyle = MyoroInputStyleEnum.fake();
 
   const MyoroRadioWidgetShowcaseThemeExtension.builder()
     : inputStyle = MyoroInputStyleEnum.outlined;
 
   @override
-  MyoroRadioWidgetShowcaseThemeExtension copyWith({
-    MyoroInputStyleEnum? inputStyle,
-  }) {
-    return MyoroRadioWidgetShowcaseThemeExtension(
-      inputStyle: inputStyle ?? this.inputStyle,
-    );
+  MyoroRadioWidgetShowcaseThemeExtension copyWith({MyoroInputStyleEnum? inputStyle}) {
+    return MyoroRadioWidgetShowcaseThemeExtension(inputStyle: inputStyle ?? this.inputStyle);
   }
 
   @override

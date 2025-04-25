@@ -7,10 +7,7 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroResizeDividerWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroResizeDividerWidgetShowcase(),
-      ),
+      const StoryboardWidgetTester(child: MyoroResizeDividerWidgetShowcase()),
     );
     await tester.pumpAndSettle();
 

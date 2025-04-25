@@ -11,13 +11,8 @@ typedef _Emitter = Emitter<MyoroCarouselWidgetShowcaseState>;
 
 /// BLoC to manage all of the state of [MyoroCarouselWidgetShowcase].
 final class MyoroCarouselWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroCarouselWidgetShowcaseEvent,
-          MyoroCarouselWidgetShowcaseState
-        > {
-  MyoroCarouselWidgetShowcaseBloc()
-    : super(const MyoroCarouselWidgetShowcaseState()) {
+    extends Bloc<MyoroCarouselWidgetShowcaseEvent, MyoroCarouselWidgetShowcaseState> {
+  MyoroCarouselWidgetShowcaseBloc() : super(const MyoroCarouselWidgetShowcaseState()) {
     on<SetDirectionEvent>(_setDirectionEvent);
     on<SetDisplayTraversalButtonsEvent>(_setDisplayTraversalButtonsEvent);
     on<SetAutoplayEvent>(_setAutoplayEvent);
@@ -28,23 +23,15 @@ final class MyoroCarouselWidgetShowcaseBloc
     emit(state.copyWith(direction: event.direction));
   }
 
-  void _setDisplayTraversalButtonsEvent(
-    SetDisplayTraversalButtonsEvent event,
-    _Emitter emit,
-  ) {
-    emit(
-      state.copyWith(displayTraversalButtons: event.displayTraversalButtons),
-    );
+  void _setDisplayTraversalButtonsEvent(SetDisplayTraversalButtonsEvent event, _Emitter emit) {
+    emit(state.copyWith(displayTraversalButtons: event.displayTraversalButtons));
   }
 
   void _setAutoplayEvent(SetAutoplayEvent event, _Emitter emit) {
     emit(state.copyWith(autoplay: event.autoplay));
   }
 
-  void _setAutoplayIntervalDurationEvent(
-    SetAutoplayIntervalDurationEvent event,
-    _Emitter emit,
-  ) {
+  void _setAutoplayIntervalDurationEvent(SetAutoplayIntervalDurationEvent event, _Emitter emit) {
     emit(state.copyWith(autoplayIntervalDuration: event.duration));
   }
 }

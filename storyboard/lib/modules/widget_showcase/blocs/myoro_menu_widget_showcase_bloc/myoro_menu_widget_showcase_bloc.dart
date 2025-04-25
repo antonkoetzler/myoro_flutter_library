@@ -20,38 +20,18 @@ final class MyoroMenuWidgetShowcaseBloc
   }
 
   void _setMinWidthEvent(SetMinWidthEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        minWidth: event.minWidth,
-        minWidthProvided: event.minWidth != null,
-      ),
-    );
+    emit(state.copyWith(minWidth: event.minWidth, minWidthProvided: event.minWidth != null));
   }
 
   void _setMaxWidthEvent(SetMaxWidthEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        maxWidth: event.maxWidth,
-        maxWidthProvided: event.maxWidth != null,
-      ),
-    );
+    emit(state.copyWith(maxWidth: event.maxWidth, maxWidthProvided: event.maxWidth != null));
   }
 
   void _setMinHeightEvent(SetMinHeightEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        minHeight: event.minHeight,
-        minHeightProvided: event.minHeight != null,
-      ),
-    );
+    emit(state.copyWith(minHeight: event.minHeight, minHeightProvided: event.minHeight != null));
   }
 
   void _setMaxHeightEvent(SetMaxHeightEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        maxHeight: event.maxHeight,
-        maxHeightProvided: event.maxHeight != null,
-      ),
-    );
+    emit(state.copyWith(maxHeight: event.maxHeight, maxHeightProvided: event.maxHeight != null));
   }
 }

@@ -15,14 +15,12 @@ void main() {
   });
 
   test('MyoroCardWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroCardWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroCardWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       inputStyle: themeExtension2.inputStyle,
       titleOptionTextAlign: themeExtension2.titleOptionTextAlign,
-      titleTextStyleOptionTextStyles:
-          themeExtension2.titleTextStyleOptionTextStyles,
+      titleTextStyleOptionTextStyles: themeExtension2.titleTextStyleOptionTextStyles,
     );
     expect(copiedThemeExtension, themeExtension2);
   });
@@ -36,11 +34,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.titleOptionTextAlign,
-        myoroLerp(
-          themeExtension1.titleOptionTextAlign,
-          themeExtension2.titleOptionTextAlign,
-          i,
-        ),
+        myoroLerp(themeExtension1.titleOptionTextAlign, themeExtension2.titleOptionTextAlign, i),
       );
       expect(
         lerpedThemeExtension.titleTextStyleOptionTextStyles,

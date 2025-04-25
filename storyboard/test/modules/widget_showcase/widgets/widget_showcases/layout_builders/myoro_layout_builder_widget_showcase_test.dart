@@ -6,10 +6,7 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroLayoutBuilderWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroLayoutBuilderWidgetShowcase(),
-      ),
+      const StoryboardWidgetTester(child: MyoroLayoutBuilderWidgetShowcase()),
     );
     await tester.pumpAndSettle();
 

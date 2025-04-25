@@ -9,12 +9,8 @@ void main() {
   late final TextStyle? labelTextStyle;
   final double? width = faker.randomGenerator.boolean() ? 1000 : null;
   final double maxValue = faker.randomGenerator.decimal();
-  final double minValue =
-      faker.randomGenerator.integer(maxValue.toInt()).toDouble();
-  final double initialValue = faker.randomGenerator.decimal(
-    scale: maxValue,
-    min: minValue,
-  );
+  final double minValue = faker.randomGenerator.integer(maxValue.toInt()).toDouble();
+  final double initialValue = faker.randomGenerator.decimal(scale: maxValue, min: minValue);
 
   late final MyoroSliderThemeExtension themeExtension;
 
@@ -25,10 +21,7 @@ void main() {
             w is Text &&
             w.data == text &&
             w.textAlign == themeExtension.indicatorTextAlignment &&
-            w.style ==
-                themeExtension.indicatorTextStyle.copyWith(
-                  height: isFooter ? 0 : 0.5,
-                ),
+            w.style == themeExtension.indicatorTextStyle.copyWith(height: isFooter ? 0 : 0.5),
       ),
       findsOneWidget,
     );
@@ -50,8 +43,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroSliderThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
             return MyoroSlider(
               label: label,
@@ -60,8 +52,7 @@ void main() {
               initialValue: minMaxValuesEnabled ? initialValue : null,
               minValue: minMaxValuesEnabled ? minValue : null,
               maxValue: minMaxValuesEnabled ? maxValue : null,
-              currentValueIndicatorTextBuilder:
-                  (_) => currentValueIndicatorText,
+              currentValueIndicatorTextBuilder: (_) => currentValueIndicatorText,
               maxValueIndicatorTextBuilder: (_) => maxValueIndicatorText,
               footerIndicatorTextBuilder: (_) => footerIndicatorText,
               onChanged: (_) => onChangedExecuted = true,
@@ -88,8 +79,7 @@ void main() {
             (w.child as Column).children.last is Padding &&
             ((w.child as Column).children.last as Padding).padding ==
                 themeExtension.sliderPadding &&
-            ((w.child as Column).children.last as Padding).child
-                is ValueListenableBuilder<double>,
+            ((w.child as Column).children.last as Padding).child is ValueListenableBuilder<double>,
       ),
       findsOneWidget,
     );
@@ -97,9 +87,7 @@ void main() {
     // [_Label].
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is Text &&
-            w.style == (labelTextStyle ?? themeExtension.labelTextStyle),
+        (Widget w) => w is Text && w.style == (labelTextStyle ?? themeExtension.labelTextStyle),
       ),
       findsOneWidget,
     );
@@ -130,11 +118,7 @@ void main() {
     expectIndicatorText(footerIndicatorText, isFooter: true);
 
     // Confirming that [MyoroSlider.onChanged] works.
-    await tester.drag(
-      find.byType(Slider),
-      const Offset(30, 0),
-      warnIfMissed: false,
-    );
+    await tester.drag(find.byType(Slider), const Offset(30, 0), warnIfMissed: false);
     expect(onChangedExecuted, isTrue);
   });
 }

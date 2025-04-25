@@ -77,10 +77,7 @@ class MyoroDialogModal extends StatelessWidget {
     return Column(
       children: [
         Expanded(child: _Message(text, textStyle, child)),
-        SizedBox(
-          height:
-              context.resolveThemeExtension<MyoroModalThemeExtension>().spacing,
-        ),
+        SizedBox(height: context.resolveThemeExtension<MyoroModalThemeExtension>().spacing),
         _FooterButtons(
           invertButtons ?? false,
           confirmButtonText,
@@ -102,8 +99,7 @@ final class _Message extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     if (_text != null) {
       return Text(_text, style: _textStyle ?? themeExtension.textStyle);
@@ -136,6 +132,8 @@ final class _FooterButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+
     final confirmButton = _ConfirmButton(_confirmButtonText, _onConfirm);
     final cancelButton = _CancelButton(_cancelButtonText, _onCancel);
 
@@ -143,15 +141,10 @@ final class _FooterButtons extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: IntrinsicWidth(
         child: Row(
+          spacing: themeExtension.footerButtonsSpacing,
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(child: !_invertButtons ? confirmButton : cancelButton),
-            SizedBox(
-              width:
-                  context
-                      .resolveThemeExtension<MyoroDialogModalThemeExtension>()
-                      .footerButtonsSpacing,
-            ),
             Flexible(child: !_invertButtons ? cancelButton : confirmButton),
           ],
         ),
@@ -170,9 +163,7 @@ final class _ConfirmButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroIconTextButtonTextConfiguration(
-          text: _text ?? 'Confirm',
-        ),
+        textConfiguration: MyoroIconTextButtonTextConfiguration(text: _text ?? 'Confirm'),
         onTapUp: (_) => _onConfirm?.call(),
       ),
     );
@@ -189,9 +180,7 @@ final class _CancelButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroIconTextButtonTextConfiguration(
-          text: _text ?? 'Cancel',
-        ),
+        textConfiguration: MyoroIconTextButtonTextConfiguration(text: _text ?? 'Cancel'),
         onTapUp: (_) => _onTapUp(context),
       ),
     );

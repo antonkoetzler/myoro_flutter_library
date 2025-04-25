@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Unit test of [MyoroColorDesignSystem].
 void main() {
   const primaryDarkModeColor = Color(0xFF181818);
-  const primaryLightModeColor = Color(0xFFEDE6D6);
+  const primaryLightModeColor = Color(0xFFEFEFEF);
 
   test('MyoroColorDesignSystem', () {
     expect(MyoroColorDesignSystem.success, Colors.green);

@@ -22,8 +22,7 @@ enum MyoroSnackBarTypeEnum {
 
   /// Border color of the snack bar.
   Color getBorderColor(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     return switch (this) {
       standard => themeExtension.standardBorderColor,

@@ -18,8 +18,7 @@ void main() {
   });
 
   test('MyoroAppBarWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroAppBarWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroAppBarWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       mockAppLogoIcon: themeExtension2.mockAppLogoIcon,
@@ -35,11 +34,7 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.mockAppLogoIcon,
-        myoroLerp(
-          themeExtension1.mockAppLogoIcon,
-          themeExtension2.mockAppLogoIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.mockAppLogoIcon, themeExtension2.mockAppLogoIcon, i),
       );
       expect(
         lerpedThemeExtension.mockAppTitleTextStyle,
@@ -51,19 +46,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.logoTitleSpacing,
-        lerpDouble(
-          themeExtension1.logoTitleSpacing,
-          themeExtension2.logoTitleSpacing,
-          i,
-        ),
+        lerpDouble(themeExtension1.logoTitleSpacing, themeExtension2.logoTitleSpacing, i),
       );
       expect(
         lerpedThemeExtension.mockMenuButtonIcon,
-        myoroLerp(
-          themeExtension1.mockMenuButtonIcon,
-          themeExtension2.mockMenuButtonIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.mockMenuButtonIcon, themeExtension2.mockMenuButtonIcon, i),
       );
     }
   });

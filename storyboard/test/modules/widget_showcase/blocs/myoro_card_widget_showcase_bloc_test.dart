@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:storyboard/app/blocs/myoro_card_widget_showcase_bloc/myoro_card_widget_showcase_bloc.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_card_widget_showcase_bloc/myoro_card_widget_showcase_bloc.dart';
 
 /// Unit test of [MyoroCardWidgetShowcaseBloc].
 void main() {

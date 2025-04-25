@@ -8,10 +8,7 @@ final class MyoroLayoutBuilderWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WidgetShowcase(
-      widget: _Widget(),
-      widgetOptions: [_Description()],
-    );
+    return const WidgetShowcase(widget: _Widget(), widgetOptions: [_Description()]);
   }
 }
 
@@ -21,11 +18,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textStyle =
-        context
-            .resolveThemeExtension<
-              MyoroLayoutBuilderWidgetShowcaseThemeExtension
-            >()
-            .textStyle;
+        context.resolveThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>().textStyle;
 
     return MyoroLayoutBuilder(
       builder: (_, BoxConstraints constraints) {
@@ -53,10 +46,7 @@ final class _Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroLayoutBuilderWidgetShowcaseThemeExtension
-            >();
+        context.resolveThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>();
 
     return SizedBox(
       width: themeExtension.descriptionWidth,

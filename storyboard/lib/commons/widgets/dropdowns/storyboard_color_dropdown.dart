@@ -14,11 +14,7 @@ final class StoryboardColorDropdown extends StatelessWidget {
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final StoryboardColorDropdownOnChanged onChanged;
 
-  const StoryboardColorDropdown({
-    super.key,
-    this.label,
-    required this.onChanged,
-  });
+  const StoryboardColorDropdown({super.key, this.label, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +52,7 @@ final class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<StoryboardColorDropdownThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<StoryboardColorDropdownThemeExtension>();
     final EdgeInsets itemPadding = themeExtension.itemPadding;
     final double itemSpacing = themeExtension.itemSpacing;
 
@@ -65,10 +60,7 @@ final class _Item extends StatelessWidget {
       padding: itemPadding,
       child: Row(
         spacing: itemSpacing,
-        children: [
-          _ItemColor(_color),
-          Expanded(child: _ItemText(_color, _tapStatusEnum)),
-        ],
+        children: [_ItemColor(_color), Expanded(child: _ItemText(_color, _tapStatusEnum))],
       ),
     );
   }
@@ -81,15 +73,10 @@ final class _ItemColor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<StoryboardColorDropdownThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<StoryboardColorDropdownThemeExtension>();
     final double itemColorSize = themeExtension.itemColorSize;
 
-    return Container(
-      width: itemColorSize,
-      height: itemColorSize,
-      color: _color,
-    );
+    return Container(width: itemColorSize, height: itemColorSize, color: _color);
   }
 }
 
@@ -107,10 +94,7 @@ final class _ItemText extends StatelessWidget {
     return Text(
       _color.hexadecimalFormat,
       style: iconTextButtonThemeExtension.textStyle.withColor(
-        MyoroButtonVariantEnum.primary.contentColorBuilder(
-          context,
-          _tapStatusEnum,
-        ),
+        MyoroButtonVariantEnum.primary.contentColorBuilder(context, _tapStatusEnum),
       ),
     );
   }

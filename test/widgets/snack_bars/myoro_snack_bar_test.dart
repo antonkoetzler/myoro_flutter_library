@@ -40,15 +40,10 @@ void main() {
     return context;
   }
 
-  void expectCalls(
-    BuildContext context, {
-    bool isUsingMessage = false,
-    bool isUsingChild = false,
-  }) {
+  void expectCalls(BuildContext context, {bool isUsingMessage = false, bool isUsingChild = false}) {
     assert(isUsingMessage ^ isUsingChild);
 
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     expect(find.byType(MyoroSnackBar), findsOneWidget);
 
@@ -84,9 +79,7 @@ void main() {
       expect(
         find.byWidgetPredicate(
           (Widget w) =>
-              w is Text &&
-              w.data == message &&
-              w.style == themeExtension.messageTextStyle,
+              w is Text && w.data == message && w.style == themeExtension.messageTextStyle,
         ),
         findsOneWidget,
       );
@@ -95,9 +88,7 @@ void main() {
     // Widget.
     if (isUsingChild) {
       expect(
-        find.byWidgetPredicate(
-          (Widget w) => w is Flexible && w.child is MyoroRadio,
-        ),
+        find.byWidgetPredicate((Widget w) => w is Flexible && w.child is MyoroRadio),
         findsOneWidget,
       );
     }
@@ -108,10 +99,8 @@ void main() {
         find.byWidgetPredicate(
           (Widget w) =>
               w is MyoroIconTextButton &&
-              w.configuration.iconConfiguration?.icon ==
-                  themeExtension.closeButtonIcon &&
-              w.configuration.iconConfiguration?.size ==
-                  themeExtension.closeButtonIconSize &&
+              w.configuration.iconConfiguration?.icon == themeExtension.closeButtonIcon &&
+              w.configuration.iconConfiguration?.size == themeExtension.closeButtonIconSize &&
               w.configuration.onTapUp != null,
         ),
         findsOneWidget,
@@ -120,23 +109,14 @@ void main() {
   }
 
   test('MyoroSnackBar text (x)or child assertion', () {
-    expect(
-      () => MyoroSnackBar(message: message, child: child),
-      throwsAssertionError,
-    );
+    expect(() => MyoroSnackBar(message: message, child: child), throwsAssertionError);
   });
 
   testWidgets('MyoroSnackBar using text', (WidgetTester tester) async {
-    expectCalls(
-      await pumpWidget(tester, isUsingMessage: true),
-      isUsingMessage: true,
-    );
+    expectCalls(await pumpWidget(tester, isUsingMessage: true), isUsingMessage: true);
   });
 
   testWidgets('MyoroSnackBar using a widget', (WidgetTester tester) async {
-    expectCalls(
-      await pumpWidget(tester, isUsingChild: true),
-      isUsingChild: true,
-    );
+    expectCalls(await pumpWidget(tester, isUsingChild: true), isUsingChild: true);
   });
 }

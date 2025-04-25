@@ -21,8 +21,7 @@ final class MyoroBarGraphWidgetShowcaseThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroBarGraphWidgetShowcaseThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroBarGraphWidgetShowcaseThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

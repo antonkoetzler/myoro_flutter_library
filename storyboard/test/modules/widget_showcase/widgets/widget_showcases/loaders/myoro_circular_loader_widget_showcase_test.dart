@@ -7,10 +7,7 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroCircularLoaderWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
-        child: MyoroCircularLoaderWidgetShowcase(),
-      ),
+      const StoryboardWidgetTester(child: MyoroCircularLoaderWidgetShowcase()),
     );
     await tester.pump();
 

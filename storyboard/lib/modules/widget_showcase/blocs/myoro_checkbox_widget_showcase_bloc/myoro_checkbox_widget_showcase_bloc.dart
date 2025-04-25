@@ -10,11 +10,7 @@ typedef _Emitter = Emitter<MyoroCheckboxWidgetShowcaseState>;
 
 /// BloC to manage all the state in [MyoroCheckboxWidgetShowcase].
 final class MyoroCheckboxWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroCheckboxWidgetShowcaseEvent,
-          MyoroCheckboxWidgetShowcaseState
-        > {
+    extends Bloc<MyoroCheckboxWidgetShowcaseEvent, MyoroCheckboxWidgetShowcaseState> {
   MyoroCheckboxWidgetShowcaseBloc({required TextStyle labelTextStyle})
     : super(MyoroCheckboxWidgetShowcaseState(labelTextStyle: labelTextStyle)) {
     on<SetLabelEvent>(_setLabelEvent);

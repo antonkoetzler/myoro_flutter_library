@@ -10,8 +10,7 @@ void main() {
   final themeExtension2 = MyoroDialogModalWidgetShowcaseThemeExtension.fake();
 
   test('MyoroDialogModalWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroDialogModalWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroDialogModalWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       inputStyle: themeExtension2.inputStyle,
@@ -29,11 +28,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.childBorderRadius,
-        BorderRadius.lerp(
-          themeExtension1.childBorderRadius,
-          themeExtension2.childBorderRadius,
-          i,
-        ),
+        BorderRadius.lerp(themeExtension1.childBorderRadius, themeExtension2.childBorderRadius, i),
       );
     }
   });

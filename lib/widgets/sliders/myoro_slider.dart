@@ -92,8 +92,7 @@ final class _MyoroSliderState extends State<MyoroSlider> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
     final sliderPadding = themeExtension.sliderPadding;
 
     return SizedBox(
@@ -113,11 +112,7 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                     Row(
                       children: [
                         if (_currentValueIndicatorTextBuilder != null)
-                          _IndicatorText(
-                            _currentValueIndicatorTextBuilder!.call(
-                              sliderValue,
-                            ),
-                          ),
+                          _IndicatorText(_currentValueIndicatorTextBuilder!.call(sliderValue)),
                         Expanded(
                           child: Slider(
                             value: sliderValue,
@@ -127,9 +122,7 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                           ),
                         ),
                         if (_maxValueIndicatorTextBuilder != null)
-                          _IndicatorText(
-                            _maxValueIndicatorTextBuilder!.call(_maxValue),
-                          ),
+                          _IndicatorText(_maxValueIndicatorTextBuilder!.call(_maxValue)),
                       ],
                     ),
                     if (_footerIndicatorTextBuilder != null)
@@ -160,9 +153,7 @@ final class _Label extends StatelessWidget {
       _label,
       style:
           _labelTextStyle ??
-          context
-              .resolveThemeExtension<MyoroSliderThemeExtension>()
-              .labelTextStyle,
+          context.resolveThemeExtension<MyoroSliderThemeExtension>().labelTextStyle,
     );
   }
 }
@@ -175,15 +166,12 @@ final class _IndicatorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
     return Text(
       _text,
       textAlign: themeExtension.indicatorTextAlignment,
-      style: themeExtension.indicatorTextStyle.copyWith(
-        height: isFooter ? 0 : 0.5,
-      ),
+      style: themeExtension.indicatorTextStyle.copyWith(height: isFooter ? 0 : 0.5),
     );
   }
 }

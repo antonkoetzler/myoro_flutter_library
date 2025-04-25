@@ -10,10 +10,8 @@ typedef _Emitter = Emitter<MyoroAppBarWidgetShowcaseState>;
 
 /// BLoC to manage all the state of [MyoroAppBarWidgetShowcase].
 final class MyoroAppBarWidgetShowcaseBloc
-    extends
-        Bloc<MyoroAppBarWidgetShowcaseEvent, MyoroAppBarWidgetShowcaseState> {
-  MyoroAppBarWidgetShowcaseBloc()
-    : super(const MyoroAppBarWidgetShowcaseState()) {
+    extends Bloc<MyoroAppBarWidgetShowcaseEvent, MyoroAppBarWidgetShowcaseState> {
+  MyoroAppBarWidgetShowcaseBloc() : super(const MyoroAppBarWidgetShowcaseState()) {
     on<ToggleBorderedEvent>((_, emit) => _toggleBorderedEvent(emit));
   }
 

@@ -11,8 +11,7 @@ part 'myoro_table_event.dart';
 typedef _Emitter<T> = Emitter<MyoroTableState<T>>;
 
 /// [Bloc] to manage all state in [MyoroTable].
-final class MyoroTableBloc<T>
-    extends Bloc<MyoroTableEvent<T>, MyoroTableState<T>> {
+final class MyoroTableBloc<T> extends Bloc<MyoroTableEvent<T>, MyoroTableState<T>> {
   late final MyoroTableConfiguration<T> _configuration;
 
   MyoroTableBloc(MyoroTableConfiguration<T> configuration)
@@ -29,29 +28,19 @@ final class MyoroTableBloc<T>
 
   Future<void> _fetchEvent(FetchEvent<T> event, _Emitter<T> emit) async {
     await _treatRequest(emit, event, () async {
-      final MyoroTablePagination<T> pagination = await _configuration
-          .paginationBuilder(state.filters);
-      emit(
-        state.copyWith(
-          status: MyoroRequestEnum.success,
-          pagination: pagination,
-        ),
+      final MyoroTablePagination<T> pagination = await _configuration.paginationBuilder(
+        state.filters,
       );
+      emit(state.copyWith(status: MyoroRequestEnum.success, pagination: pagination));
     });
   }
 
   void _addFiltersEvent(AddFiltersEvent<T> event, _Emitter<T> emit) {
-    emit(
-      state.copyWith(filters: Set.from(state.filters)..addAll(event.filters)),
-    );
+    emit(state.copyWith(filters: Set.from(state.filters)..addAll(event.filters)));
   }
 
   void _removeFiltersEvent(RemoveFiltersEvent<T> event, _Emitter<T> emit) {
-    emit(
-      state.copyWith(
-        filters: Set.from(state.filters)..removeAll(event.filters),
-      ),
-    );
+    emit(state.copyWith(filters: Set.from(state.filters)..removeAll(event.filters)));
   }
 
   void _clearFiltersEvent(ClearFiltersEvent<T> event, _Emitter<T> emit) {
@@ -59,19 +48,11 @@ final class MyoroTableBloc<T>
   }
 
   void _setCurrentPageEvent(SetCurrentPageEvent<T> event, _Emitter<T> emit) {
-    emit(
-      state.copyWith(
-        pagination: state.pagination.copyWith(currentPage: event.currentPage),
-      ),
-    );
+    emit(state.copyWith(pagination: state.pagination.copyWith(currentPage: event.currentPage)));
   }
 
   void _setItemsPerPageEvent(SetItemsPerPageEvent<T> event, _Emitter<T> emit) {
-    emit(
-      state.copyWith(
-        pagination: state.pagination.copyWith(itemsPerPage: event.itemsPerPage),
-      ),
-    );
+    emit(state.copyWith(pagination: state.pagination.copyWith(itemsPerPage: event.itemsPerPage)));
   }
 
   Future<void> _treatRequest(
@@ -87,27 +68,18 @@ final class MyoroTableBloc<T>
     } on HttpException catch (httpError) {
       errorMessage = httpError.message;
       if (kDebugMode) {
-        print(
-          '[MyoroTableBloc<$T>.${event.runtimeType}]: HTTP exception: "$errorMessage"',
-        );
+        print('[MyoroTableBloc<$T>.${event.runtimeType}]: HTTP exception: "$errorMessage"');
       }
     } catch (genericError, stackTrace) {
       errorMessage = genericError.toString();
       if (kDebugMode) {
-        print(
-          '[MyoroTableBloc<$T>.${event.runtimeType}]: Generic exception: "$errorMessage"',
-        );
+        print('[MyoroTableBloc<$T>.${event.runtimeType}]: Generic exception: "$errorMessage"');
         print('Stack trace:\n$stackTrace');
       }
     }
 
     if (errorMessage != null) {
-      emit(
-        state.copyWith(
-          status: MyoroRequestEnum.error,
-          errorMessage: errorMessage,
-        ),
-      );
+      emit(state.copyWith(status: MyoroRequestEnum.error, errorMessage: errorMessage));
     }
   }
 }

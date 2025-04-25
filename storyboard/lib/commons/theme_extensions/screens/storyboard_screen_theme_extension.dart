@@ -8,8 +8,7 @@ import 'package:storyboard/storyboard.dart';
 /// [ThemeExtension] of [StoryboardScreen].
 ///
 /// TODO: Needs to be tested.
-final class StoryboardScreenThemeExtension
-    extends ThemeExtension<StoryboardScreenThemeExtension> {
+final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScreenThemeExtension> {
   /// [TextStyle] of [_HeaderTitleText].
   final TextStyle headerTitleTextStyle;
 
@@ -36,10 +35,7 @@ final class StoryboardScreenThemeExtension
       headerTitleTextStyle: typography.randomTextStyle,
       headerSubtitleTextStyle: typography.randomTextStyle,
       headerToggleThemeButtonSpacing: faker.randomGenerator.decimal(scale: 50),
-      toggleThemeButtonIcon:
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+      toggleThemeButtonIcon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
     );
   }
 
@@ -59,12 +55,10 @@ final class StoryboardScreenThemeExtension
   }) {
     return StoryboardScreenThemeExtension(
       headerTitleTextStyle: headerTitleTextStyle ?? this.headerTitleTextStyle,
-      headerSubtitleTextStyle:
-          headerSubtitleTextStyle ?? this.headerSubtitleTextStyle,
+      headerSubtitleTextStyle: headerSubtitleTextStyle ?? this.headerSubtitleTextStyle,
       headerToggleThemeButtonSpacing:
           headerToggleThemeButtonSpacing ?? this.headerToggleThemeButtonSpacing,
-      toggleThemeButtonIcon:
-          toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
+      toggleThemeButtonIcon: toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
     );
   }
 
@@ -75,11 +69,7 @@ final class StoryboardScreenThemeExtension
   ) {
     if (other is! StoryboardScreenThemeExtension) return this;
     return copyWith(
-      headerTitleTextStyle: TextStyle.lerp(
-        headerTitleTextStyle,
-        other.headerTitleTextStyle,
-        t,
-      ),
+      headerTitleTextStyle: TextStyle.lerp(headerTitleTextStyle, other.headerTitleTextStyle, t),
       headerSubtitleTextStyle: TextStyle.lerp(
         headerSubtitleTextStyle,
         other.headerSubtitleTextStyle,
@@ -90,11 +80,7 @@ final class StoryboardScreenThemeExtension
         other.headerToggleThemeButtonSpacing,
         t,
       ),
-      toggleThemeButtonIcon: myoroLerp(
-        toggleThemeButtonIcon,
-        other.toggleThemeButtonIcon,
-        t,
-      ),
+      toggleThemeButtonIcon: myoroLerp(toggleThemeButtonIcon, other.toggleThemeButtonIcon, t),
     );
   }
 
@@ -104,8 +90,7 @@ final class StoryboardScreenThemeExtension
         other.runtimeType == runtimeType &&
         other.headerTitleTextStyle == headerTitleTextStyle &&
         other.headerSubtitleTextStyle == headerSubtitleTextStyle &&
-        other.headerToggleThemeButtonSpacing ==
-            headerToggleThemeButtonSpacing &&
+        other.headerToggleThemeButtonSpacing == headerToggleThemeButtonSpacing &&
         other.toggleThemeButtonIcon == toggleThemeButtonIcon;
   }
 

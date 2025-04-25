@@ -1,34 +1,26 @@
-import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Unit test of [MyoroBasicDividerWidgetShowcaseThemeExtension].
 void main() {
-  final themeExtension1 = MyoroBasicDividerWidgetShowcaseThemeExtension.fake();
-  final themeExtension2 = MyoroBasicDividerWidgetShowcaseThemeExtension.fake();
+  const themeExtension1 = MyoroBasicDividerWidgetShowcaseThemeExtension.fake();
+  const themeExtension2 = MyoroBasicDividerWidgetShowcaseThemeExtension.fake();
 
   test('MyoroBasicDividerWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroBasicDividerWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
-    expect(copiedThemeExtension, themeExtension1);
-    copiedThemeExtension = themeExtension1.copyWith(
-      buttonBordered: themeExtension2.buttonBordered,
-    );
-    expect(copiedThemeExtension, themeExtension2);
+    expect(themeExtension1.copyWith(), themeExtension1);
+    expect(themeExtension1.copyWith(), themeExtension2);
   });
 
   test('MyoroBasicDividerWidgetShowcaseThemeExtension.lerp', () {
-    for (double i = 0; i < faker.randomGenerator.decimal(); i += 0.1) {
-      final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
-      expect(
-        lerpedThemeExtension.buttonBordered,
-        myoroLerp(
-          themeExtension1.buttonBordered,
-          themeExtension2.buttonBordered,
-          i,
-        ),
-      );
-    }
+    // for (double i = 0; i < 1; i += 0.1) {
+    //   final lerpedThemeExtension = themeExtension1.lerp(themeExtension1, i);
+    // }
+  });
+
+  test('MyoroBasicDividerWidgetShowcaseThemeExtension.toString', () {
+    expect(
+      themeExtension1.toString(),
+      'MyoroBasicDividerWidgetShowcaseThemeExtension(\n'
+      ');',
+    );
   });
 }

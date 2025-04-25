@@ -13,8 +13,7 @@ final class MyoroCircularLoaderWidgetShowcaseThemeExtension
 
   @override
   ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> lerp(
-    covariant ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension>?
-    other,
+    covariant ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
     return this;

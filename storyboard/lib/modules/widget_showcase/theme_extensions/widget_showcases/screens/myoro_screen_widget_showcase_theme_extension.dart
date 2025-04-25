@@ -40,17 +40,10 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   });
 
   MyoroScreenWidgetShowcaseThemeExtension.fake()
-    : appBarTitleTextStyle =
-          MyoroTypographyDesignSystem.instance.randomTextStyle,
-      appBarSubtitleTextStyle =
-          MyoroTypographyDesignSystem.instance.randomTextStyle,
-      appBarMenuButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      bodyImageBorderRadius = BorderRadius.circular(
-        faker.randomGenerator.decimal(),
-      ),
+    : appBarTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      appBarSubtitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      appBarMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      bodyImageBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       bodyImageSize = faker.randomGenerator.decimal(),
       bodyTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       bodySpacing = faker.randomGenerator.decimal();
@@ -76,11 +69,9 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   }) {
     return MyoroScreenWidgetShowcaseThemeExtension(
       appBarTitleTextStyle: appBarTitleTextStyle ?? this.appBarTitleTextStyle,
-      appBarSubtitleTextStyle:
-          appBarSubtitleTextStyle ?? this.appBarSubtitleTextStyle,
+      appBarSubtitleTextStyle: appBarSubtitleTextStyle ?? this.appBarSubtitleTextStyle,
       appBarMenuButtonIcon: appBarMenuButtonIcon ?? this.appBarMenuButtonIcon,
-      bodyImageBorderRadius:
-          bodyImageBorderRadius ?? this.bodyImageBorderRadius,
+      bodyImageBorderRadius: bodyImageBorderRadius ?? this.bodyImageBorderRadius,
       bodyImageSize: bodyImageSize ?? this.bodyImageSize,
       bodyTextStyle: bodyTextStyle ?? this.bodyTextStyle,
       bodySpacing: bodySpacing ?? this.bodySpacing,
@@ -94,21 +85,13 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   ) {
     if (other is! MyoroScreenWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      appBarTitleTextStyle: TextStyle.lerp(
-        appBarTitleTextStyle,
-        other.appBarTitleTextStyle,
-        t,
-      ),
+      appBarTitleTextStyle: TextStyle.lerp(appBarTitleTextStyle, other.appBarTitleTextStyle, t),
       appBarSubtitleTextStyle: TextStyle.lerp(
         appBarSubtitleTextStyle,
         other.appBarSubtitleTextStyle,
         t,
       ),
-      appBarMenuButtonIcon: myoroLerp(
-        appBarMenuButtonIcon,
-        other.appBarMenuButtonIcon,
-        t,
-      ),
+      appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
       bodyImageBorderRadius: BorderRadius.lerp(
         bodyImageBorderRadius,
         other.bodyImageBorderRadius,

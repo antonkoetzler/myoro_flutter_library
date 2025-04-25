@@ -41,24 +41,14 @@ final class MyoroFormWidgetShowcaseThemeExtension
 
   MyoroFormWidgetShowcaseThemeExtension.fake()
     : widgetMainAxisAlignment =
-          MainAxisAlignment.values[faker.randomGenerator.integer(
-            MainAxisAlignment.values.length,
-          )],
+          MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
       widgetInputStyle = MyoroInputStyleEnum.fake(),
       widgetSpacing = faker.randomGenerator.decimal(),
       submitButtonMainAxisAlignment =
-          MainAxisAlignment.values[faker.randomGenerator.integer(
-            MainAxisAlignment.values.length,
-          )],
+          MainAxisAlignment.values[faker.randomGenerator.integer(MainAxisAlignment.values.length)],
       resultTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      successColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
-      errorColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )];
+      successColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      errorColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
 
   MyoroFormWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : widgetMainAxisAlignment = MainAxisAlignment.center,
@@ -80,8 +70,7 @@ final class MyoroFormWidgetShowcaseThemeExtension
     Color? errorColor,
   }) {
     return MyoroFormWidgetShowcaseThemeExtension(
-      widgetMainAxisAlignment:
-          widgetMainAxisAlignment ?? this.widgetMainAxisAlignment,
+      widgetMainAxisAlignment: widgetMainAxisAlignment ?? this.widgetMainAxisAlignment,
       widgetInputStyle: widgetInputStyle ?? this.widgetInputStyle,
       widgetSpacing: widgetSpacing ?? this.widgetSpacing,
       submitButtonMainAxisAlignment:
@@ -99,11 +88,7 @@ final class MyoroFormWidgetShowcaseThemeExtension
   ) {
     if (other is! MyoroFormWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      widgetMainAxisAlignment: myoroLerp(
-        widgetMainAxisAlignment,
-        other.widgetMainAxisAlignment,
-        t,
-      ),
+      widgetMainAxisAlignment: myoroLerp(widgetMainAxisAlignment, other.widgetMainAxisAlignment, t),
       widgetInputStyle: myoroLerp(widgetInputStyle, other.widgetInputStyle, t),
       widgetSpacing: lerpDouble(widgetSpacing, other.widgetSpacing, t),
       submitButtonMainAxisAlignment: myoroLerp(
@@ -111,11 +96,7 @@ final class MyoroFormWidgetShowcaseThemeExtension
         other.submitButtonMainAxisAlignment,
         t,
       ),
-      resultTextStyle: TextStyle.lerp(
-        resultTextStyle,
-        other.resultTextStyle,
-        t,
-      ),
+      resultTextStyle: TextStyle.lerp(resultTextStyle, other.resultTextStyle, t),
       successColor: Color.lerp(successColor, other.successColor, t),
       errorColor: Color.lerp(errorColor, other.errorColor, t),
     );

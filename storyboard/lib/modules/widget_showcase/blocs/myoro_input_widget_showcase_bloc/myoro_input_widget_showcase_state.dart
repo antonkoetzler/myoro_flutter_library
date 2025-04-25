@@ -74,23 +74,15 @@ final class MyoroInputWidgetShowcaseState extends Equatable {
       typeEnum: typeEnum ?? this.typeEnum,
       inputStyle: inputStyle ?? this.inputStyle,
       textAlign: textAlign ?? this.textAlign,
-      inputTextStyle:
-          inputTextStyleProvided
-              ? (inputTextStyle ?? this.inputTextStyle)
-              : null,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? this.inputTextStyle) : null,
       label: labelProvided ? (label ?? this.label) : null,
-      placeholder:
-          placeholderProvided ? (placeholder ?? this.placeholder) : null,
-      labelTextStyle:
-          labelTextStyleProvided
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      placeholder: placeholderProvided ? (placeholder ?? this.placeholder) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       suffixProvided: suffixProvided ?? this.suffixProvided,
       enabled: enabled ?? this.enabled,
       readOnly: readOnly ?? this.readOnly,
       showClearTextButton: showClearTextButton ?? this.showClearTextButton,
-      checkboxOnChangedProvided:
-          checkboxOnChangedProvided ?? this.checkboxOnChangedProvided,
+      checkboxOnChangedProvided: checkboxOnChangedProvided ?? this.checkboxOnChangedProvided,
     );
   }
 

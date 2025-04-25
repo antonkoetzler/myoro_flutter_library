@@ -3,15 +3,13 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/app/blocs/myoro_dialog_modal_widget_showcase_bloc/myoro_dialog_modal_widget_showcase_bloc.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_dialog_modal_widget_showcase_bloc/myoro_dialog_modal_widget_showcase_bloc.dart';
 
 /// Unit test of [MyoroDialogModalWidgetShowcaseBloc].
 void main() {
   final bool invertButtons = faker.randomGenerator.boolean();
-  final String? confirmButtonText =
-      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
-  final String? text =
-      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? confirmButtonText = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? text = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
   late final TextStyle? textStyle;
   final bool childEnabled = faker.randomGenerator.boolean();
 
@@ -24,22 +22,14 @@ void main() {
     'MyoroDialogModalWidgetShowcaseBloc.SetInvertButtonsEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetInvertButtonsEvent(invertButtons)),
-    expect:
-        () => [
-          MyoroDialogModalWidgetShowcaseState(invertButtons: invertButtons),
-        ],
+    expect: () => [MyoroDialogModalWidgetShowcaseState(invertButtons: invertButtons)],
   );
 
   blocTest(
     'MyoroDialogModalWidgetShowcaseBloc.SetConfirmButtonTextEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetConfirmButtonTextEvent(confirmButtonText)),
-    expect:
-        () => [
-          MyoroDialogModalWidgetShowcaseState(
-            confirmButtonText: confirmButtonText,
-          ),
-        ],
+    expect: () => [MyoroDialogModalWidgetShowcaseState(confirmButtonText: confirmButtonText)],
   );
 
   blocTest(
@@ -70,8 +60,7 @@ void main() {
     expect:
         () => [
           MyoroDialogModalWidgetShowcaseState(
-            text:
-                childEnabled ? null : 'Message regarding the action goes here.',
+            text: childEnabled ? null : 'Message regarding the action goes here.',
             textEnabled: !childEnabled,
             childEnabled: childEnabled,
           ),

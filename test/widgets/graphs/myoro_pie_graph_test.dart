@@ -6,15 +6,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroPieGraph].
 void main() {
-  final items = List.generate(
-    faker.randomGenerator.integer(50),
-    (_) => MyoroPieGraphItem.fake(),
-  );
+  final items = List.generate(faker.randomGenerator.integer(50), (_) => MyoroPieGraphItem.fake());
 
-  Future<void> pumpWidget(
-    WidgetTester tester,
-    MyoroPieGraphEnum typeEnum,
-  ) async {
+  Future<void> pumpWidget(WidgetTester tester, MyoroPieGraphEnum typeEnum) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroPieGraph(
@@ -37,8 +31,7 @@ void main() {
             w.children.length == (typeEnum.isPie ? 1 : 2) &&
             (typeEnum.isPie
                 ? true
-                : w.children.last
-                    is SizedBox), // The inserted [SizedBox.shrink].
+                : w.children.last is SizedBox), // The inserted [SizedBox.shrink].
       ),
       findsOneWidget,
     );
@@ -55,17 +48,13 @@ void main() {
     );
   }
 
-  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.pie]', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.pie]', (WidgetTester tester) async {
     const typeEnum = MyoroPieGraphEnum.pie;
     await pumpWidget(tester, typeEnum);
     sharedExpects(typeEnum);
   });
 
-  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.donut]', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('MyoroPieGraph with [MyoroPieGraphEnum.donut]', (WidgetTester tester) async {
     const typeEnum = MyoroPieGraphEnum.donut;
     await pumpWidget(tester, typeEnum);
     sharedExpects(typeEnum);

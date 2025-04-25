@@ -19,8 +19,7 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
             return MyoroBarGraph(sorted: sorted, items: items);
           },
@@ -35,9 +34,7 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is Padding &&
-            w.padding == const EdgeInsets.only(top: 22) &&
-            w.child is BarChart,
+            w is Padding && w.padding == const EdgeInsets.only(top: 22) && w.child is BarChart,
       ),
       findsOneWidget,
     );

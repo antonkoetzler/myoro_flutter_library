@@ -1,10 +1,16 @@
+import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final model = MyoroMenuItem.fake();
+  late final MyoroMenuItem model;
 
-  expect('MyoroMenuItem.copyWith', () {
+  setUpAll(() {
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+    model = MyoroMenuItem.fake();
+  });
+
+  test('MyoroMenuItem.copyWith', () {
     expect(model.copyWith(), model);
     final otherModel = MyoroMenuItem.fake();
     expect(
@@ -25,7 +31,7 @@ void main() {
     );
   });
 
-  expect('MyoroMenuItem.toString,', () {
+  test('MyoroMenuItem.toString,', () {
     expect(
       model.toString(),
       'MyoroMenuItem(\n'

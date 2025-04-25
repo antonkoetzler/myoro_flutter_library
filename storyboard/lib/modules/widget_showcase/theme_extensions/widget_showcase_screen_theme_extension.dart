@@ -25,8 +25,7 @@ final class WidgetShowcaseScreenThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is WidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is WidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

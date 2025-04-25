@@ -24,8 +24,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
   final EdgeInsets padding;
 
   /// [Color] builder of the icon and text.
-  final MyoroIconTextButtonConfigurationContentColorBuilder?
-  contentColorBuilder;
+  final MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder;
 
   /// Icon configuration of the [MyoroIconTextButton].
   final MyoroIconTextButtonIconConfiguration? iconConfiguration;
@@ -52,6 +51,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
          'and/or [textConfiguration] must be provided.',
        );
 
+  @override
   MyoroIconTextButtonConfiguration copyWith({
     MouseCursor? cursor,
     bool cursorProvided = true,
@@ -77,31 +77,23 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
   }) {
     return MyoroIconTextButtonConfiguration(
       cursor: cursorProvided ? (cursor ?? this.cursor) : null,
-      borderRadius:
-          borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       backgroundColorBuilder:
           backgroundColorBuilderProvided
               ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
               : null,
-      borderBuilder:
-          borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
+      borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
       invert: invert ?? this.invert,
       spacing: spacing ?? this.spacing,
       padding: padding ?? this.padding,
       contentColorBuilder:
-          contentColorBuilderProvided
-              ? (contentColorBuilder ?? this.contentColorBuilder)
-              : null,
+          contentColorBuilderProvided ? (contentColorBuilder ?? this.contentColorBuilder) : null,
       iconConfiguration:
-          iconConfigurationProvided
-              ? (iconConfiguration ?? this.iconConfiguration)
-              : null,
+          iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
       textConfiguration:
-          textConfigurationProvided
-              ? (textConfiguration ?? this.textConfiguration)
-              : null,
+          textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
     );
   }
 

@@ -25,10 +25,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroTooltipWidgetShowcaseBloc,
-      MyoroTooltipWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroTooltipWidgetShowcaseBloc, MyoroTooltipWidgetShowcaseState>(
       builder: (_, MyoroTooltipWidgetShowcaseState state) {
         return MyoroTooltip(
           margin: EdgeInsets.all(state.margin),
@@ -46,8 +43,7 @@ final class _Child extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context
-            .resolveThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>();
+        context.resolveThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>();
     final size = themeExtension.childSize;
     final decoration = themeExtension.childDecoration;
     final textStyle = themeExtension.childTextStyle;
@@ -64,15 +60,11 @@ final class _Child extends StatelessWidget {
 final class _MarginOption extends StatelessWidget {
   const _MarginOption();
 
-  String _currentValueIndicatorTextBuilder(double value) =>
-      value.toStringAsFixed(2);
-  String _maxValueIndicatorTextBuilder(double maxValue) =>
-      maxValue.toStringAsFixed(2);
+  String _currentValueIndicatorTextBuilder(double value) => value.toStringAsFixed(2);
+  String _maxValueIndicatorTextBuilder(double maxValue) => maxValue.toStringAsFixed(2);
 
   void _onChanged(BuildContext context, double value) {
-    context.resolveBloc<MyoroTooltipWidgetShowcaseBloc>().add(
-      SetMarginEvent(value),
-    );
+    context.resolveBloc<MyoroTooltipWidgetShowcaseBloc>().add(SetMarginEvent(value));
   }
 
   @override
@@ -96,15 +88,10 @@ final class _TextOption extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: '[MyoroTooltip.text]',
         inputStyle:
-            context
-                .resolveThemeExtension<
-                  MyoroTooltipWidgetShowcaseThemeExtension
-                >()
-                .inputStyle,
+            context.resolveThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>().inputStyle,
         onChanged:
-            (String text) => context
-                .resolveBloc<MyoroTooltipWidgetShowcaseBloc>()
-                .add(SetTextEvent(text)),
+            (String text) =>
+                context.resolveBloc<MyoroTooltipWidgetShowcaseBloc>().add(SetTextEvent(text)),
       ),
     );
   }

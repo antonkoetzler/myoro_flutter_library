@@ -5,24 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroPieGraph].
-class MyoroPieGraphThemeExtension
-    extends ThemeExtension<MyoroPieGraphThemeExtension> {
+class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension> {
   /// Default color of an item.
   final Color itemColor;
 
   /// Default itemRadius (aka height) of an item.
   final double itemRadius;
 
-  const MyoroPieGraphThemeExtension({
-    required this.itemColor,
-    required this.itemRadius,
-  });
+  const MyoroPieGraphThemeExtension({required this.itemColor, required this.itemRadius});
 
   MyoroPieGraphThemeExtension.fake()
-    : itemColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+    : itemColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       itemRadius = faker.randomGenerator.decimal();
 
   MyoroPieGraphThemeExtension.builder(ColorScheme colorScheme)

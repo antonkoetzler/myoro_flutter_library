@@ -4,8 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] of [MyoroIconTextButton].
 ///
 /// TODO: Needs to be tested.
-class MyoroIconTextButtonThemeExtension
-    extends ThemeExtension<MyoroIconTextButtonThemeExtension> {
+class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButtonThemeExtension> {
   /// [TextStyle] of [_Text].
   final TextStyle textStyle;
 
@@ -19,9 +18,7 @@ class MyoroIconTextButtonThemeExtension
 
   @override
   MyoroIconTextButtonThemeExtension copyWith({TextStyle? textStyle}) {
-    return MyoroIconTextButtonThemeExtension(
-      textStyle: textStyle ?? this.textStyle,
-    );
+    return MyoroIconTextButtonThemeExtension(textStyle: textStyle ?? this.textStyle);
   }
 
   @override

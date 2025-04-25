@@ -11,8 +11,7 @@ final class SetTypeEnumEvent extends MyoroPieGraphWidgetShowcaseEvent {
   const SetTypeEnumEvent(this.typeEnum);
 }
 
-final class SetCenterWidgetEnabledEvent
-    extends MyoroPieGraphWidgetShowcaseEvent {
+final class SetCenterWidgetEnabledEvent extends MyoroPieGraphWidgetShowcaseEvent {
   final bool enabled;
 
   const SetCenterWidgetEnabledEvent(this.enabled);

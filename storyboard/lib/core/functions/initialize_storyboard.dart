@@ -32,11 +32,7 @@ Future<void> _initializeKiwi() async {
 /// Initializes [SharedPreferences].
 Future<void> _initializeSharedPreferences() async {
   final sharedPreferences = _kiwiContainer.resolve<SharedPreferences>();
-  if (sharedPreferences.getBool(kSharedPreferencesDarkModeEnabledJsonKey) ==
-      null) {
-    await sharedPreferences.setBool(
-      kSharedPreferencesDarkModeEnabledJsonKey,
-      true,
-    );
+  if (sharedPreferences.getBool(kSharedPreferencesDarkModeEnabledJsonKey) == null) {
+    await sharedPreferences.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true);
   }
 }

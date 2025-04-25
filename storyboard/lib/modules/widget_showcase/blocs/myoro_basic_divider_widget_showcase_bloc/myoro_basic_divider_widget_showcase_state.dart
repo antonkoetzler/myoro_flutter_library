@@ -31,14 +31,9 @@ final class MyoroBasicDividerWidgetShowcaseState extends Equatable {
     return MyoroBasicDividerWidgetShowcaseState(
       direction: direction ?? this.direction,
       shortValue: shortValue ?? this.shortValue,
-      verticalPadding:
-          verticalPaddingEnabled
-              ? (verticalPadding ?? this.verticalPadding)
-              : 10,
+      verticalPadding: verticalPaddingEnabled ? (verticalPadding ?? this.verticalPadding) : 10,
       horizontalPadding:
-          horizontalPaddingEnabled
-              ? (horizontalPadding ?? this.horizontalPadding)
-              : 10,
+          horizontalPaddingEnabled ? (horizontalPadding ?? this.horizontalPadding) : 10,
     );
   }
 

@@ -19,10 +19,7 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension
 
   MyoroSnackBarWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
-      childIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )];
+      childIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   MyoroSnackBarWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : inputStyle = MyoroInputStyleEnum.outlined,

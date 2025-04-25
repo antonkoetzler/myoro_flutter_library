@@ -24,19 +24,11 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.containerColor,
-        Color.lerp(
-          themeExtension1.containerColor,
-          themeExtension2.containerColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.containerColor, themeExtension2.containerColor, i),
       );
       expect(
         lerpedThemeExtension.areYouSillyPadding,
-        EdgeInsets.lerp(
-          themeExtension1.areYouSillyPadding,
-          themeExtension2.areYouSillyPadding,
-          i,
-        ),
+        EdgeInsets.lerp(themeExtension1.areYouSillyPadding, themeExtension2.areYouSillyPadding, i),
       );
     }
   });

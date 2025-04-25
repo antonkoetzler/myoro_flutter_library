@@ -25,8 +25,7 @@ class MyoroTooltip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTooltipThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTooltipThemeExtension>();
     return Tooltip(
       message: text,
       waitDuration: waitDuration ?? themeExtension.waitDuration,

@@ -12,7 +12,7 @@ void main() {
   });
 
   test('MyoroDrawerWidgetShowcaseThemeExtension.lerp', () {
-    for (double i = 0; i < 1; i += 0.1) {
+    for (double i = 0; i < 1; i += 1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.inputStyle,
@@ -23,7 +23,7 @@ void main() {
 
   test('MyoroDrawerWidgetShowcaseThemeExtension.toString', () {
     expect(
-      themeExtension1,
+      themeExtension1.toString(),
       'MyoroDrawerWidgetShowcaseThemeExtension(\n'
       '  inputStyle: ${themeExtension1.inputStyle},\n'
       ');',

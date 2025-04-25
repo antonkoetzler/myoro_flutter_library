@@ -18,8 +18,7 @@ ThemeData createMyoroThemeData(
   final myoroColorScheme = createMyoroColorScheme(isDarkMode);
   final myoroTextTheme = createMyoroTextTheme(isDarkMode);
 
-  final colorScheme =
-      colorSchemeBuilder?.call(myoroColorScheme) ?? myoroColorScheme;
+  final colorScheme = colorSchemeBuilder?.call(myoroColorScheme) ?? myoroColorScheme;
   final textTheme = textThemeBuilder?.call(myoroTextTheme) ?? myoroTextTheme;
 
   return ThemeData(

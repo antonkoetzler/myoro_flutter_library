@@ -5,18 +5,14 @@ import 'package:storyboard/storyboard.dart';
 
 /// Unit test of [MyoroDatePickerInputWidgetShowcaseThemeExtension].
 void main() {
-  final themeExtension1 =
-      MyoroDatePickerInputWidgetShowcaseThemeExtension.fake();
-  final themeExtension2 =
-      MyoroDatePickerInputWidgetShowcaseThemeExtension.fake();
+  final themeExtension1 = MyoroDatePickerInputWidgetShowcaseThemeExtension.fake();
+  final themeExtension2 = MyoroDatePickerInputWidgetShowcaseThemeExtension.fake();
 
   test('MyoroDatePickerInputWidgetShowcaseThemeExtension.copyWith', () {
     MyoroDatePickerInputWidgetShowcaseThemeExtension copiedThemeExtension =
         themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
-    copiedThemeExtension = themeExtension1.copyWith(
-      inputStyle: themeExtension2.inputStyle,
-    );
+    copiedThemeExtension = themeExtension1.copyWith(inputStyle: themeExtension2.inputStyle);
     expect(copiedThemeExtension, themeExtension2);
   });
 

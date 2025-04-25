@@ -9,11 +9,7 @@ void main() {
     final newModel = MyoroBarGraphBar.fake();
 
     expect(
-      model.copyWith(
-        y: newModel.y,
-        color: newModel.color,
-        barSections: newModel.barSections,
-      ),
+      model.copyWith(y: newModel.y, color: newModel.color, barSections: newModel.barSections),
       newModel,
     );
   });

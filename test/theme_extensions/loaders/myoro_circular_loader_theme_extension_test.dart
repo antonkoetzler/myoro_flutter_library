@@ -10,8 +10,7 @@ void main() {
   final themeExtension2 = MyoroCircularLoaderThemeExtension.fake();
 
   test('MyoroCircularLoaderThemeExtension.copyWith', () {
-    MyoroCircularLoaderThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroCircularLoaderThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       color: themeExtension2.color,
@@ -27,10 +26,7 @@ void main() {
         lerpedThemeExtension.color,
         Color.lerp(themeExtension1.color, themeExtension2.color, i),
       );
-      expect(
-        lerpedThemeExtension.size,
-        lerpDouble(themeExtension1.size, themeExtension2.size, i),
-      );
+      expect(lerpedThemeExtension.size, lerpDouble(themeExtension1.size, themeExtension2.size, i));
     }
   });
 }

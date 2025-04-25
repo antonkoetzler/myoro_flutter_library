@@ -20,11 +20,7 @@ typedef MyoroFormOnError = Function(String errorMessage);
 ///
 /// Contains controller so you don't need to create one & the status of the form execution.
 typedef MyoroFormBuilder<T> =
-    Function(
-      T? result,
-      MyoroRequestEnum status,
-      MyoroFormController controller,
-    );
+    Function(T? result, MyoroRequestEnum status, MyoroFormController controller);
 
 /// Base form widget. Should always be used for any type of form content.
 class MyoroForm<T> extends StatefulWidget {
@@ -106,10 +102,7 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
       child: BlocConsumer<MyoroFormBloc, MyoroFormState>(
         listener: (_, MyoroFormState state) => _blocListener(state),
         builder: (_, MyoroFormState state) {
-          return Form(
-            key: _key,
-            child: _builder.call(state.result, state.status, _controller),
-          );
+          return Form(key: _key, child: _builder.call(state.result, state.status, _controller));
         },
       ),
     );

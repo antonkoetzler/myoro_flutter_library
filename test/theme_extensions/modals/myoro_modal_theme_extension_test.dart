@@ -37,19 +37,11 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(
-          themeExtension1.primaryColor,
-          themeExtension2.primaryColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(
-          themeExtension1.borderRadius,
-          themeExtension2.borderRadius,
-          i,
-        ),
+        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
       expect(
         lerpedThemeExtension.border,
@@ -61,11 +53,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.constraints,
-        BoxConstraints.lerp(
-          themeExtension1.constraints,
-          themeExtension2.constraints,
-          i,
-        ),
+        BoxConstraints.lerp(themeExtension1.constraints, themeExtension2.constraints, i),
       );
       expect(
         lerpedThemeExtension.spacing,
@@ -73,19 +61,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.titleTextStyle,
-        TextStyle.lerp(
-          themeExtension1.titleTextStyle,
-          themeExtension2.titleTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.closeButtonIcon,
-        myoroLerp(
-          themeExtension1.closeButtonIcon,
-          themeExtension2.closeButtonIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.closeButtonIcon, themeExtension2.closeButtonIcon, i),
       );
     }
   });

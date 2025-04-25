@@ -11,15 +11,13 @@ final class SetInvertButtonsEvent extends MyoroDialogModalWidgetShowcaseEvent {
   const SetInvertButtonsEvent(this.invertButtons);
 }
 
-final class SetConfirmButtonTextEvent
-    extends MyoroDialogModalWidgetShowcaseEvent {
+final class SetConfirmButtonTextEvent extends MyoroDialogModalWidgetShowcaseEvent {
   final String? confirmButtonText;
 
   const SetConfirmButtonTextEvent([this.confirmButtonText]);
 }
 
-final class SetCancelButtonTextEvent
-    extends MyoroDialogModalWidgetShowcaseEvent {
+final class SetCancelButtonTextEvent extends MyoroDialogModalWidgetShowcaseEvent {
   final String? cancelButtonText;
 
   const SetCancelButtonTextEvent([this.cancelButtonText]);

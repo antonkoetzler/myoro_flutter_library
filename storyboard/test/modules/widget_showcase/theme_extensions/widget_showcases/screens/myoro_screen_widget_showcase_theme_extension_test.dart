@@ -8,8 +8,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// Unit test of [MyoroScreenWidgetShowcaseThemeExtension].
 void main() {
-  late final MyoroScreenWidgetShowcaseThemeExtension themeExtension1,
-      themeExtension2;
+  late final MyoroScreenWidgetShowcaseThemeExtension themeExtension1, themeExtension2;
 
   setUpAll(() {
     MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
@@ -18,8 +17,7 @@ void main() {
   });
 
   test('MyoroScreenWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroScreenWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroScreenWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       appBarTitleTextStyle: themeExtension2.appBarTitleTextStyle,
@@ -54,11 +52,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.appBarMenuButtonIcon,
-        myoroLerp(
-          themeExtension1.appBarMenuButtonIcon,
-          themeExtension2.appBarMenuButtonIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.appBarMenuButtonIcon, themeExtension2.appBarMenuButtonIcon, i),
       );
       expect(
         lerpedThemeExtension.bodyImageBorderRadius,
@@ -70,19 +64,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.bodyImageSize,
-        lerpDouble(
-          themeExtension1.bodyImageSize,
-          themeExtension2.bodyImageSize,
-          i,
-        ),
+        lerpDouble(themeExtension1.bodyImageSize, themeExtension2.bodyImageSize, i),
       );
       expect(
         lerpedThemeExtension.bodyTextStyle,
-        TextStyle.lerp(
-          themeExtension1.bodyTextStyle,
-          themeExtension2.bodyTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.bodyTextStyle, themeExtension2.bodyTextStyle, i),
       );
       expect(
         lerpedThemeExtension.bodySpacing,

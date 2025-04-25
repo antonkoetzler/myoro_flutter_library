@@ -188,10 +188,7 @@ void main() {
 
     // Bold italic
     expect(allTextStyles.contains(_typographyInstance.boldItalicSmall), isTrue);
-    expect(
-      allTextStyles.contains(_typographyInstance.boldItalicMedium),
-      isTrue,
-    );
+    expect(allTextStyles.contains(_typographyInstance.boldItalicMedium), isTrue);
     expect(allTextStyles.contains(_typographyInstance.boldItalicLarge), isTrue);
 
     // Extra bold
@@ -286,18 +283,10 @@ void main() {
     );
 
     // Assertion case
-    expect(
-      () => _typographyInstance.getTextStyleName(const TextStyle()),
-      throwsAssertionError,
-    );
+    expect(() => _typographyInstance.getTextStyleName(const TextStyle()), throwsAssertionError);
   });
 
   test('[MyoroTypographyDesignSystem.randomTextStyle]', () {
-    expect(
-      _typographyInstance.allTextStyles.contains(
-        _typographyInstance.randomTextStyle,
-      ),
-      isTrue,
-    );
+    expect(_typographyInstance.allTextStyles.contains(_typographyInstance.randomTextStyle), isTrue);
   });
 }

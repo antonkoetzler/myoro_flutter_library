@@ -8,9 +8,7 @@ void main() {
 
   testWidgets('MyoroDatePickerInput', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        child: MyoroDatePickerInput(configuration: configuration),
-      ),
+      MyoroWidgetTester(child: MyoroDatePickerInput(configuration: configuration)),
     );
     await tester.pumpAndSettle();
 
@@ -19,10 +17,7 @@ void main() {
     // Wrapper.
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is Stack &&
-            w.children.length == 2 &&
-            w.children.last is Positioned,
+        (Widget w) => w is Stack && w.children.length == 2 && w.children.last is Positioned,
       ),
       findsOneWidget,
     );
@@ -37,21 +32,14 @@ void main() {
         (Widget w) =>
             w is Padding &&
             w.child is InkWell &&
-            (w.child as InkWell).focusColor ==
-                MyoroColorDesignSystem.transparent &&
-            (w.child as InkWell).hoverColor ==
-                MyoroColorDesignSystem.transparent &&
-            (w.child as InkWell).splashColor ==
-                MyoroColorDesignSystem.transparent &&
-            (w.child as InkWell).highlightColor ==
-                MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).focusColor == MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).hoverColor == MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).splashColor == MyoroColorDesignSystem.transparent &&
+            (w.child as InkWell).highlightColor == MyoroColorDesignSystem.transparent &&
             (w.child as InkWell).child is MyoroLayoutBuilder,
       ),
       findsOneWidget,
     );
-    expect(
-      find.byWidgetPredicate((Widget w) => w is SizedBox && w.height == 43.1),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is SizedBox && w.height == 43.1), findsOneWidget);
   });
 }

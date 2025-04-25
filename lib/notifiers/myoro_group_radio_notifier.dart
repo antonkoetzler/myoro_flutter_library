@@ -15,15 +15,11 @@ class MyoroGroupRadioNotifier extends ValueNotifier<MyoroGroupRadioItems> {
   MyoroGroupRadioNotifier(super._value) : assert(radiosAreValid(_value));
 
   /// Toggles one of the radios and manages the state of the other radios afterwards.
-  void enable(String key) =>
-      value = _disabledItems..update(key, (bool value) => true);
+  void enable(String key) => value = _disabledItems..update(key, (bool value) => true);
 
   /// Returns the map with all of the radios disabled ([false]).
   MyoroGroupRadioItems get _disabledItems {
-    return {
-      for (final MapEntry<String, bool> entry in value.entries)
-        entry.key: false,
-    };
+    return {for (final MapEntry<String, bool> entry in value.entries) entry.key: false};
   }
 
   /// Returns the key that is enabled.

@@ -13,8 +13,7 @@ void main() {
         child: Builder(
           builder: (BuildContext buildContext) {
             context = buildContext;
-            themeExtension =
-                context.resolveThemeExtension<MyoroInputThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
             return const SizedBox.shrink();
           },
         ),
@@ -22,14 +21,8 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(
-      MyoroInputStyleEnum.underlined.getBorder(context),
-      themeExtension.underlinedBorder,
-    );
-    expect(
-      MyoroInputStyleEnum.outlined.getBorder(context),
-      themeExtension.outlinedBorder,
-    );
+    expect(MyoroInputStyleEnum.underlined.getBorder(context), themeExtension.underlinedBorder);
+    expect(MyoroInputStyleEnum.outlined.getBorder(context), themeExtension.outlinedBorder);
   });
 
   test('MyoroInputStyleEnum getters', () {
@@ -38,9 +31,6 @@ void main() {
   });
 
   test('MyoroInputStyleEnum.fake', () {
-    expect(
-      MyoroInputStyleEnum.values.contains(MyoroInputStyleEnum.fake()),
-      isTrue,
-    );
+    expect(MyoroInputStyleEnum.values.contains(MyoroInputStyleEnum.fake()), isTrue);
   });
 }

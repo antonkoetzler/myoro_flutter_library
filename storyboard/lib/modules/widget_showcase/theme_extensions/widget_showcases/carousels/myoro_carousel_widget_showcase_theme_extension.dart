@@ -21,8 +21,7 @@ final class MyoroCarouselWidgetShowcaseThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroCarouselWidgetShowcaseThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroCarouselWidgetShowcaseThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

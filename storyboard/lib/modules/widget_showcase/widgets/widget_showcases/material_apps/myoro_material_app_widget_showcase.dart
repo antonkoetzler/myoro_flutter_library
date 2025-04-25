@@ -12,10 +12,7 @@ final class MyoroMaterialAppWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroMaterialAppWidgetShowcaseBloc(),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_ThemeModeOption()],
-      ),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_ThemeModeOption()]),
     );
   }
 }
@@ -26,23 +23,14 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroMaterialAppWidgetShowcaseThemeExtension
-            >();
+        context.resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
 
-    return BlocBuilder<
-      MyoroMaterialAppWidgetShowcaseBloc,
-      MyoroMaterialAppWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroMaterialAppWidgetShowcaseBloc, MyoroMaterialAppWidgetShowcaseState>(
       builder: (_, MyoroMaterialAppWidgetShowcaseState state) {
         return MyoroMaterialApp(
           title: 'MyoroMaterialApp Storyboard',
           themeMode: state.themeMode,
-          home: MyoroScreen(
-            appBar: _AppBar(themeExtension),
-            body: const SizedBox.shrink(),
-          ),
+          home: MyoroScreen(appBar: _AppBar(themeExtension), body: const SizedBox.shrink()),
         );
       },
     );
@@ -64,15 +52,9 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
     return MyoroAppBar(
       child: Row(
         children: [
-          Icon(
-            _themeExtension.appBarLogoIcon,
-            color: _themeExtension.appBarContentColor,
-          ),
+          Icon(_themeExtension.appBarLogoIcon, color: _themeExtension.appBarContentColor),
           spacing,
-          Text(
-            'Hello, World!',
-            style: _themeExtension.themeModeOptionTextStyle,
-          ),
+          Text('Hello, World!', style: _themeExtension.themeModeOptionTextStyle),
           const Spacer(),
           MyoroIconTextButton(
             configuration: MyoroIconTextButtonConfiguration(
@@ -94,15 +76,9 @@ final class _ThemeModeOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context
-            .resolveThemeExtension<
-              MyoroMaterialAppWidgetShowcaseThemeExtension
-            >();
+        context.resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
 
-    return BlocBuilder<
-      MyoroMaterialAppWidgetShowcaseBloc,
-      MyoroMaterialAppWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroMaterialAppWidgetShowcaseBloc, MyoroMaterialAppWidgetShowcaseState>(
       builder: (_, MyoroMaterialAppWidgetShowcaseState state) {
         final bool isDarkMode = state.themeMode == ThemeMode.dark;
         final IconData buttonIcon =
@@ -115,9 +91,7 @@ final class _ThemeModeOption extends StatelessWidget {
           children: [
             MyoroIconTextButton(
               configuration: MyoroIconTextButtonConfiguration(
-                iconConfiguration: MyoroIconTextButtonIconConfiguration(
-                  icon: buttonIcon,
-                ),
+                iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: buttonIcon),
                 borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
                 onTapUp: (_) => _onTapUp(context),
               ),
@@ -136,8 +110,6 @@ final class _ThemeModeOption extends StatelessWidget {
   }
 
   void _onTapUp(BuildContext context) {
-    context.resolveBloc<MyoroMaterialAppWidgetShowcaseBloc>().add(
-      const ToggleThemeModeEvent(),
-    );
+    context.resolveBloc<MyoroMaterialAppWidgetShowcaseBloc>().add(const ToggleThemeModeEvent());
   }
 }

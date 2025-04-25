@@ -11,8 +11,7 @@ void main() {
     late final MyoroDropdownWidgetShowcaseState myoroDropdownWidgetShowcaseBlocState;
 
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        themeExtensionsBuilder: createStoryboardCommonsThemeExtensions,
+      StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
             WidgetsBinding.instance.addPostFrameCallback((_) {

@@ -11,6 +11,7 @@ final class WidgetShowcaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoryboardScreen(
+      headerTitleText: _widgetName,
       body: StoryboardWidgetListingEnum.getWidgetShowcase(_widgetName),
     );
   }

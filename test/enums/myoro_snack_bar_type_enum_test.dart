@@ -4,9 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Unit test of [MyoroSnackBarTypeEnum].
 void main() {
-  testWidgets('MyoroSnackBarTypeEnum.getBorderColor', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('MyoroSnackBarTypeEnum.getBorderColor', (WidgetTester tester) async {
     late final BuildContext context;
     late final MyoroSnackBarThemeExtension themeExtension;
 
@@ -15,8 +13,7 @@ void main() {
         child: Builder(
           builder: (BuildContext buildContext) {
             context = buildContext;
-            themeExtension =
-                context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
             return const SizedBox.shrink();
           },
         ),
@@ -35,10 +32,7 @@ void main() {
       MyoroSnackBarTypeEnum.success.getBorderColor(context),
       themeExtension.successBorderColor,
     );
-    expect(
-      MyoroSnackBarTypeEnum.error.getBorderColor(context),
-      themeExtension.errorBorderColor,
-    );
+    expect(MyoroSnackBarTypeEnum.error.getBorderColor(context), themeExtension.errorBorderColor);
   });
 
   test('MyoroSnackBarTypeEnum getters', () {
@@ -49,9 +43,6 @@ void main() {
   });
 
   test('MyoroSnackBarTypeEnum.fake', () {
-    expect(
-      MyoroSnackBarTypeEnum.values.contains(MyoroSnackBarTypeEnum.fake()),
-      isTrue,
-    );
+    expect(MyoroSnackBarTypeEnum.values.contains(MyoroSnackBarTypeEnum.fake()), isTrue);
   });
 }

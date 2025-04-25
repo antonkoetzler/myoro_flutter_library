@@ -43,43 +43,23 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.underlinedBorder,
-        myoroLerp(
-          themeExtension1.underlinedBorder,
-          themeExtension2.underlinedBorder,
-          i,
-        ),
+        myoroLerp(themeExtension1.underlinedBorder, themeExtension2.underlinedBorder, i),
       );
       expect(
         lerpedThemeExtension.outlinedBorder,
-        myoroLerp(
-          themeExtension1.outlinedBorder,
-          themeExtension2.outlinedBorder,
-          i,
-        ),
+        myoroLerp(themeExtension1.outlinedBorder, themeExtension2.outlinedBorder, i),
       );
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(
-          themeExtension1.primaryColor,
-          themeExtension2.primaryColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
       );
       expect(
         lerpedThemeExtension.errorBorderColor,
-        Color.lerp(
-          themeExtension1.errorBorderColor,
-          themeExtension2.errorBorderColor,
-          i,
-        ),
+        Color.lerp(themeExtension1.errorBorderColor, themeExtension2.errorBorderColor, i),
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(
-          themeExtension1.borderRadius,
-          themeExtension2.borderRadius,
-          i,
-        ),
+        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
       expect(
         lerpedThemeExtension.isDense,
@@ -87,27 +67,15 @@ void main() {
       );
       expect(
         lerpedThemeExtension.cursorHeight,
-        lerpDouble(
-          themeExtension1.cursorHeight,
-          themeExtension2.cursorHeight,
-          i,
-        ),
+        lerpDouble(themeExtension1.cursorHeight, themeExtension2.cursorHeight, i),
       );
       expect(
         lerpedThemeExtension.disabledOpacity,
-        lerpDouble(
-          themeExtension1.disabledOpacity,
-          themeExtension2.disabledOpacity,
-          i,
-        ),
+        lerpDouble(themeExtension1.disabledOpacity, themeExtension2.disabledOpacity, i),
       );
       expect(
         lerpedThemeExtension.inputTextStyle,
-        TextStyle.lerp(
-          themeExtension1.inputTextStyle,
-          themeExtension2.inputTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.inputTextStyle, themeExtension2.inputTextStyle, i),
       );
       expect(
         lerpedThemeExtension.spacing,
@@ -115,19 +83,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.labelTextStyle,
-        TextStyle.lerp(
-          themeExtension1.labelTextStyle,
-          themeExtension2.labelTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
       );
       expect(
         lerpedThemeExtension.labelBehavior,
-        myoroLerp(
-          themeExtension1.labelBehavior,
-          themeExtension2.labelBehavior,
-          i,
-        ),
+        myoroLerp(themeExtension1.labelBehavior, themeExtension2.labelBehavior, i),
       );
       expect(
         lerpedThemeExtension.clearTextButtonPadding,
@@ -139,11 +99,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.clearTextButtonIcon,
-        myoroLerp(
-          themeExtension1.clearTextButtonIcon,
-          themeExtension2.clearTextButtonIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.clearTextButtonIcon, themeExtension2.clearTextButtonIcon, i),
       );
     }
   });

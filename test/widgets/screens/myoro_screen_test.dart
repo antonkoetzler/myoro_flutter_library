@@ -9,14 +9,9 @@ void main() {
     await tester.pumpWidget(const MyoroWidgetTester(child: MyoroScreen()));
     await tester.pumpAndSettle();
     expect(find.byType(MyoroScreen), findsOneWidget);
+    expect(find.byType(InheritedProvider<MyoroDrawerController>), findsOneWidget);
     expect(
-      find.byType(InheritedProvider<MyoroDrawerController>),
-      findsOneWidget,
-    );
-    expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is SafeArea && w.child is Scaffold,
-      ),
+      find.byWidgetPredicate((Widget w) => w is SafeArea && w.child is Scaffold),
       findsOneWidget,
     );
   });

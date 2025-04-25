@@ -65,18 +65,10 @@ void main() {
             w.alignment == Alignment.bottomRight &&
             w.child is IntrinsicWidth &&
             (w.child as IntrinsicWidth).child is Row &&
-            ((w.child as IntrinsicWidth).child as Row).mainAxisSize ==
-                MainAxisSize.min &&
-            ((w.child as IntrinsicWidth).child as Row).children.length == 3 &&
-            ((w.child as IntrinsicWidth).child as Row).children.first
-                is Flexible &&
-            ((w.child as IntrinsicWidth).child as Row).children[1]
-                is SizedBox &&
-            (((w.child as IntrinsicWidth).child as Row).children[1] as SizedBox)
-                    .width ==
-                dialogModalThemeExtension.footerButtonsSpacing &&
-            ((w.child as IntrinsicWidth).child as Row).children.last
-                is Flexible,
+            ((w.child as IntrinsicWidth).child as Row).mainAxisSize == MainAxisSize.min &&
+            ((w.child as IntrinsicWidth).child as Row).children.length == 2 &&
+            ((w.child as IntrinsicWidth).child as Row).children.first is Flexible &&
+            ((w.child as IntrinsicWidth).child as Row).children.last is Flexible,
       ),
       findsOneWidget,
     );
@@ -86,8 +78,7 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is MyoroIconTextButton &&
-            w.configuration.textConfiguration?.text ==
-                (confirmButtonText ?? 'Confirm') &&
+            w.configuration.textConfiguration?.text == (confirmButtonText ?? 'Confirm') &&
             w.configuration.onTapUp != null,
       ),
       findsOneWidget,
@@ -98,19 +89,14 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is MyoroIconTextButton &&
-            w.configuration.textConfiguration?.text ==
-                (confirmButtonText ?? 'Cancel') &&
+            w.configuration.textConfiguration?.text == (cancelButtonText ?? 'Cancel') &&
             w.configuration.onTapUp != null,
       ),
       findsOneWidget,
     );
   }
 
-  Future<void> test(
-    WidgetTester tester, {
-    bool isText = false,
-    bool isWidget = false,
-  }) async {
+  Future<void> test(WidgetTester tester, {bool isText = false, bool isWidget = false}) async {
     late final BuildContext context;
 
     bool onConfirmPressed = false;

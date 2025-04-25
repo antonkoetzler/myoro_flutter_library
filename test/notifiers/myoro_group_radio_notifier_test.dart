@@ -6,22 +6,14 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   final int maxItems = faker.randomGenerator.integer(50);
   final int enabledRadioIndex = faker.randomGenerator.integer(maxItems);
-  final radios = {
-    for (int i = 0; i < maxItems; i++) '$i': i == enabledRadioIndex,
-  };
+  final radios = {for (int i = 0; i < maxItems; i++) '$i': i == enabledRadioIndex};
   final notifier = MyoroGroupRadioNotifier(radios);
 
   tearDownAll(() => notifier.dispose());
 
   test('MyoroGroupRadio constructor assertions', () {
-    expect(
-      () => MyoroGroupRadioNotifier({'hello': true, 'world': true}),
-      throwsAssertionError,
-    );
-    expect(
-      () => MyoroGroupRadioNotifier({'hello': false, 'world': false}),
-      throwsAssertionError,
-    );
+    expect(() => MyoroGroupRadioNotifier({'hello': true, 'world': true}), throwsAssertionError);
+    expect(() => MyoroGroupRadioNotifier({'hello': false, 'world': false}), throwsAssertionError);
   });
 
   test('MyoroGroupRadio.toggle', () {

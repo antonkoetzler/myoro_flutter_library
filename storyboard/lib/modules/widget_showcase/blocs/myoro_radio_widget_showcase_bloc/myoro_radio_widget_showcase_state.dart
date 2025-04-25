@@ -17,10 +17,7 @@ final class MyoroRadioWidgetShowcaseState extends Equatable {
   }) {
     return MyoroRadioWidgetShowcaseState(
       label: labelProvided ? (label ?? this.label) : null,
-      labelTextStyle:
-          labelTextStyleProvided
-              ? (labelTextStyle ?? this.labelTextStyle)
-              : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
     );
   }
 

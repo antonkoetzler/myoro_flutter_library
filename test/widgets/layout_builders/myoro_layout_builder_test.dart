@@ -6,9 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   testWidgets('MyoroLayoutBuilder', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        child: MyoroLayoutBuilder(builder: (_, __) => const SizedBox.shrink()),
-      ),
+      MyoroWidgetTester(child: MyoroLayoutBuilder(builder: (_, __) => const SizedBox.shrink())),
     );
     await tester.pumpAndSettle();
 

@@ -8,8 +8,7 @@ void main() {
   final themeExtension2 = MyoroTooltipThemeExtension.fake();
 
   test('MyoroTooltipThemeExtension.copyWith', () {
-    MyoroTooltipThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroTooltipThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       waitDuration: themeExtension2.waitDuration,
@@ -23,11 +22,7 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.waitDuration,
-        myoroLerp(
-          themeExtension1.waitDuration,
-          themeExtension2.waitDuration,
-          i,
-        ),
+        myoroLerp(themeExtension1.waitDuration, themeExtension2.waitDuration, i),
       );
     }
   });

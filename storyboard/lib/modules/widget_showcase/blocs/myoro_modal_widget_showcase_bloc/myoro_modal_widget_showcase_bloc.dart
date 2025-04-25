@@ -12,8 +12,7 @@ typedef _Emitter = Emitter<MyoroModalWidgetShowcaseState>;
 /// BLoC to manage the state of [MyoroModalWidgetShowcase].
 final class MyoroModalWidgetShowcaseBloc
     extends Bloc<MyoroModalWidgetShowcaseEvent, MyoroModalWidgetShowcaseState> {
-  MyoroModalWidgetShowcaseBloc()
-    : super(const MyoroModalWidgetShowcaseState()) {
+  MyoroModalWidgetShowcaseBloc() : super(const MyoroModalWidgetShowcaseState()) {
     on<SetBarrierDismissableEvent>(_setBarrierDismissableEvent);
     on<SetMinWidthEvent>(_setMinWidthEvent);
     on<SetMaxWidthEvent>(_setMaxWidthEvent);
@@ -23,53 +22,28 @@ final class MyoroModalWidgetShowcaseBloc
     on<SetShowCloseButtonEvent>(_setShowCloseButtonEvent);
   }
 
-  void _setBarrierDismissableEvent(
-    SetBarrierDismissableEvent event,
-    _Emitter emit,
-  ) {
+  void _setBarrierDismissableEvent(SetBarrierDismissableEvent event, _Emitter emit) {
     emit(state.copyWith(barrierDismissable: event.barrierDismissable));
   }
 
   void _setMinWidthEvent(SetMinWidthEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        minWidth: event.minWidth,
-        minWidthProvided: event.minWidth != null,
-      ),
-    );
+    emit(state.copyWith(minWidth: event.minWidth, minWidthProvided: event.minWidth != null));
   }
 
   void _setMaxWidthEvent(SetMaxWidthEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        maxWidth: event.maxWidth,
-        maxWidthProvided: event.maxWidth != null,
-      ),
-    );
+    emit(state.copyWith(maxWidth: event.maxWidth, maxWidthProvided: event.maxWidth != null));
   }
 
   void _setMinHeightEvent(SetMinHeightEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        minHeight: event.minHeight,
-        minHeightProvided: event.minHeight != null,
-      ),
-    );
+    emit(state.copyWith(minHeight: event.minHeight, minHeightProvided: event.minHeight != null));
   }
 
   void _setMaxHeightEvent(SetMaxHeightEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        maxHeight: event.maxHeight,
-        maxHeightProvided: event.maxHeight != null,
-      ),
-    );
+    emit(state.copyWith(maxHeight: event.maxHeight, maxHeightProvided: event.maxHeight != null));
   }
 
   void _setTitleEvent(SetTitleEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(title: event.title, titleProvided: event.title != null),
-    );
+    emit(state.copyWith(title: event.title, titleProvided: event.title != null));
   }
 
   void _setShowCloseButtonEvent(SetShowCloseButtonEvent event, _Emitter emit) {

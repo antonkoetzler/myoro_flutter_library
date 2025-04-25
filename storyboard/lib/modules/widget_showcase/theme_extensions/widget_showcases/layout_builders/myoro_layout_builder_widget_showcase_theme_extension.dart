@@ -40,8 +40,7 @@ final class MyoroLayoutBuilderWidgetShowcaseThemeExtension
 
   @override
   MyoroLayoutBuilderWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>?
-    other,
+    covariant ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
     if (other is! MyoroLayoutBuilderWidgetShowcaseThemeExtension) return this;

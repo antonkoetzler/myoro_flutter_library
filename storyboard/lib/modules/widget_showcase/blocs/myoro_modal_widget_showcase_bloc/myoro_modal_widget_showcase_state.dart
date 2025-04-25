@@ -71,20 +71,9 @@ final class MyoroModalWidgetShowcaseState extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      barrierDismissable,
-      minWidth,
-      maxWidth,
-      minHeight,
-      maxHeight,
-      title,
-      showCloseButton,
-    ];
+    return [barrierDismissable, minWidth, maxWidth, minHeight, maxHeight, title, showCloseButton];
   }
 
   bool get constraintsProvided =>
-      minWidth != null ||
-      maxWidth != null ||
-      minHeight != null ||
-      maxHeight != null;
+      minWidth != null || maxWidth != null || minHeight != null || maxHeight != null;
 }

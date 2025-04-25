@@ -13,13 +13,8 @@ typedef _Emitter = Emitter<MyoroDropdownWidgetShowcaseState>;
 ///
 /// All of [MyoroDropdownConfiguration]'s options should be placed within this [Bloc].
 final class MyoroDropdownWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroDropdownWidgetShowcaseEvent,
-          MyoroDropdownWidgetShowcaseState
-        > {
-  MyoroDropdownWidgetShowcaseBloc()
-    : super(const MyoroDropdownWidgetShowcaseState()) {
+    extends Bloc<MyoroDropdownWidgetShowcaseEvent, MyoroDropdownWidgetShowcaseState> {
+  MyoroDropdownWidgetShowcaseBloc() : super(const MyoroDropdownWidgetShowcaseState()) {
     on<SetLabelEvent>(_setLabelEvent);
     on<SetEnabledEvent>(_setEnabledEvent);
     on<SetAllowItemClearingEvent>(_setAllowItemClearingEvent);
@@ -34,25 +29,14 @@ final class MyoroDropdownWidgetShowcaseBloc
     emit(state.copyWith(enabled: event.enabled ?? !state.enabled));
   }
 
-  void _setAllowItemClearingEvent(
-    SetAllowItemClearingEvent event,
-    _Emitter emit,
-  ) {
-    emit(
-      state.copyWith(
-        allowItemClearing: event.allowItemClearing ?? !state.allowItemClearing,
-      ),
-    );
+  void _setAllowItemClearingEvent(SetAllowItemClearingEvent event, _Emitter emit) {
+    emit(state.copyWith(allowItemClearing: event.allowItemClearing ?? !state.allowItemClearing));
   }
 
-  void _setCheckboxOnChangedEnabledEvent(
-    SetCheckboxOnChangedEnabledEvent event,
-    _Emitter emit,
-  ) {
+  void _setCheckboxOnChangedEnabledEvent(SetCheckboxOnChangedEnabledEvent event, _Emitter emit) {
     emit(
       state.copyWith(
-        checkboxOnChangedEnabled:
-            event.checkboxOnChangedEnabled ?? !state.checkboxOnChangedEnabled,
+        checkboxOnChangedEnabled: event.checkboxOnChangedEnabled ?? !state.checkboxOnChangedEnabled,
       ),
     );
   }

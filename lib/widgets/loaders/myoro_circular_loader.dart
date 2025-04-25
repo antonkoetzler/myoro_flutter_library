@@ -13,8 +13,7 @@ class MyoroCircularLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
     final chosenSize = size ?? themeExtension.size;
 
     return SizedBox(

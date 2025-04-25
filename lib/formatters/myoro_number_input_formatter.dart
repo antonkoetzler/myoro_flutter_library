@@ -2,22 +2,17 @@ import 'package:flutter/services.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [TextInputFormatter] to only accept numbers (integer/double) and only allow a range of numbers.
-final class MyoroNumberInputFormatter extends TextInputFormatter
-    implements MyoroInputFormatter {
+final class MyoroNumberInputFormatter extends TextInputFormatter implements MyoroInputFormatter {
   final double min;
   final double? max;
   final int decimalPlaces;
 
   MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0});
 
-  String _formatResult(double formattedResult) =>
-      formattedResult.toStringAsFixed(decimalPlaces);
+  String _formatResult(double formattedResult) => formattedResult.toStringAsFixed(decimalPlaces);
 
   @override
-  TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
-  ) {
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     final decimalPlacesNotZero = decimalPlaces > 0;
 
     // Assert that only numbers are ever provided.
@@ -32,8 +27,7 @@ final class MyoroNumberInputFormatter extends TextInputFormatter
 
     String formattedResult = '';
     int selection = 0;
-    final bool cursorOnLastCharacter =
-        newValue.selection.baseOffset == newValue.text.length;
+    final bool cursorOnLastCharacter = newValue.selection.baseOffset == newValue.text.length;
     final double newValueAsDouble = double.parse(newValue.text);
 
     // Character added case.
@@ -47,9 +41,7 @@ final class MyoroNumberInputFormatter extends TextInputFormatter
           final temp = newValueAsDouble * 10;
 
           // Checking that the number isn't greater than the max.
-          formattedResult = _formatResult(
-            _isGreaterThenMax(temp) ? max! : temp,
-          );
+          formattedResult = _formatResult(_isGreaterThenMax(temp) ? max! : temp);
         } else {
           // If it's only integers, we don't have to do anyting.
           formattedResult = _formatResult(

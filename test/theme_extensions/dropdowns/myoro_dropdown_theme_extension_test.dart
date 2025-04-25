@@ -9,10 +9,7 @@ void main() {
 
   test('MyoroDropdownThemeExtension.copyWith', () {
     expect(themeExtension1.copyWith(), themeExtension1);
-    expect(
-      themeExtension1.copyWith(spacing: themeExtension2.spacing),
-      themeExtension2,
-    );
+    expect(themeExtension1.copyWith(spacing: themeExtension2.spacing), themeExtension2);
   });
 
   test('MyoroDropdownThemeExtension.lerp', () {

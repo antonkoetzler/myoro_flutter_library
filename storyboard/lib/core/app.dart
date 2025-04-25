@@ -7,6 +7,7 @@ import 'package:storyboard/storyboard.dart';
 
 final _kiwiContainer = KiwiContainer();
 
+/// Root [Widget] of the storyboard.
 final class App extends StatelessWidget {
   const App({super.key});
 
@@ -23,22 +24,11 @@ final class App extends StatelessWidget {
           return MyoroMaterialApp(
             title: 'MFL Storyboard',
             themeMode: themeMode,
-            themeExtensionsBuilder: _createThemeExtenions,
+            themeExtensionsBuilder: createStoryboardThemeExtensions,
             router: router,
           );
         },
       ),
     );
-  }
-
-  List<ThemeExtension> _createThemeExtenions(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
-    final modulesController = _kiwiContainer.resolve<ModulesController>();
-    return [
-      ...modulesController.themeExtenionsBuilder(colorScheme, textTheme),
-      ...createStoryboardCommonsThemeExtensions(colorScheme, textTheme),
-    ];
   }
 }

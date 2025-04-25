@@ -9,10 +9,8 @@ part 'myoro_resolver_state.dart';
 part 'myoro_resolver_event.dart';
 
 /// BloC to make requests in [MyoroResolver].
-final class MyoroResolverBloc<T>
-    extends Bloc<MyoroResolverEvent, MyoroResolverState<T>> {
-  MyoroResolverBloc(MyoroResolverRequest<T> request)
-    : super(MyoroResolverState<T>()) {
+final class MyoroResolverBloc<T> extends Bloc<MyoroResolverEvent, MyoroResolverState<T>> {
+  MyoroResolverBloc(MyoroResolverRequest<T> request) : super(MyoroResolverState<T>()) {
     on<ExecuteRequestEvent>((event, emit) async {
       emit(state.copyWith(status: MyoroRequestEnum.loading));
 
@@ -24,28 +22,19 @@ final class MyoroResolverBloc<T>
       } on HttpException catch (httpError) {
         errorMessage = httpError.message;
         if (kDebugMode) {
-          print(
-            '[MyoroResolverBloc.ExecuteRequestEvent]: HTTP exception: "$errorMessage".',
-          );
+          print('[MyoroResolverBloc.ExecuteRequestEvent]: HTTP exception: "$errorMessage".');
         }
       } catch (genericError, stackTrace) {
         errorMessage = genericError.toString();
         if (kDebugMode) {
-          print(
-            '[MyoroResolverBloc.ExecuteRequestEvent]: Generic error: "$errorMessage".',
-          );
+          print('[MyoroResolverBloc.ExecuteRequestEvent]: Generic error: "$errorMessage".');
           print('Stack trace:\n$stackTrace');
         }
       }
 
       if (errorMessage == null) return;
 
-      emit(
-        state.copyWith(
-          status: MyoroRequestEnum.error,
-          errorMessage: errorMessage,
-        ),
-      );
+      emit(state.copyWith(status: MyoroRequestEnum.error, errorMessage: errorMessage));
     });
   }
 }

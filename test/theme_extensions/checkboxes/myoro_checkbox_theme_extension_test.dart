@@ -17,8 +17,7 @@ void main() {
   });
 
   test('MyoroCheckboxThemeExtension.copyWith', () {
-    MyoroCheckboxThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroCheckboxThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       activeColor: themeExtension2.activeColor,
@@ -53,19 +52,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.splashRadius,
-        lerpDouble(
-          themeExtension1.splashRadius,
-          themeExtension2.splashRadius,
-          i,
-        ),
+        lerpDouble(themeExtension1.splashRadius, themeExtension2.splashRadius, i),
       );
       expect(
         lerpedThemeExtension.labelTextStyle,
-        TextStyle.lerp(
-          themeExtension1.labelTextStyle,
-          themeExtension2.labelTextStyle,
-          i,
-        ),
+        TextStyle.lerp(themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
       );
       expect(
         lerpedThemeExtension.spacing,

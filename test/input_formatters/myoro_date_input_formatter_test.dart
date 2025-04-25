@@ -11,9 +11,7 @@ void main() {
   testWidgets('MyoroDateInputFormatter', (WidgetTester tester) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
-        child: MyoroInput.date(
-          configuration: MyoroInputConfiguration(controller: controller),
-        ),
+        child: MyoroInput.date(configuration: MyoroInputConfiguration(controller: controller)),
       ),
     );
     await tester.pumpAndSettle();

@@ -44,11 +44,9 @@ final class MyoroMenuState<T> extends Equatable {
   }) {
     return MyoroMenuState(
       status: status ?? this.status,
-      errorMessage:
-          errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
+      errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
       items: items ?? this.items,
-      queriedItems:
-          queriedItemsProvided ? (queriedItems ?? this.queriedItems) : null,
+      queriedItems: queriedItemsProvided ? (queriedItems ?? this.queriedItems) : null,
       initialRequestMade: initialRequestMade ?? this.initialRequestMade,
     );
   }

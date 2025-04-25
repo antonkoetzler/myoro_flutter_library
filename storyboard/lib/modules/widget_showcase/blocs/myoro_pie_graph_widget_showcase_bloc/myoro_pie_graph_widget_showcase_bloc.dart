@@ -11,30 +11,17 @@ typedef _Emitter = Emitter<MyoroPieGraphWidgetShowcaseState>;
 
 /// BLoC to manage the state of [MyoroPieGraphWidgetShowcase].
 final class MyoroPieGraphWidgetShowcaseBloc
-    extends
-        Bloc<
-          MyoroPieGraphWidgetShowcaseEvent,
-          MyoroPieGraphWidgetShowcaseState
-        > {
-  MyoroPieGraphWidgetShowcaseBloc()
-    : super(const MyoroPieGraphWidgetShowcaseState()) {
+    extends Bloc<MyoroPieGraphWidgetShowcaseEvent, MyoroPieGraphWidgetShowcaseState> {
+  MyoroPieGraphWidgetShowcaseBloc() : super(const MyoroPieGraphWidgetShowcaseState()) {
     on<SetTypeEnumEvent>(_setTypeEnumEvent);
     on<SetCenterWidgetEnabledEvent>(_setCenterWidgetEnabledEvent);
   }
 
   void _setTypeEnumEvent(SetTypeEnumEvent event, _Emitter emit) {
-    emit(
-      state.copyWith(
-        typeEnum: event.typeEnum,
-        centerWidgetEnabled: event.typeEnum.isDonut,
-      ),
-    );
+    emit(state.copyWith(typeEnum: event.typeEnum, centerWidgetEnabled: event.typeEnum.isDonut));
   }
 
-  void _setCenterWidgetEnabledEvent(
-    SetCenterWidgetEnabledEvent event,
-    _Emitter emit,
-  ) {
+  void _setCenterWidgetEnabledEvent(SetCenterWidgetEnabledEvent event, _Emitter emit) {
     emit(state.copyWith(centerWidgetEnabled: event.enabled));
   }
 }

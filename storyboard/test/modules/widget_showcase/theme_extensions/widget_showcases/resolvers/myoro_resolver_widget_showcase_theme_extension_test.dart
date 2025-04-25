@@ -11,8 +11,7 @@ void main() {
   final themeExtension2 = MyoroResolverWidgetShowcaseThemeExtension.fake();
 
   test('MyoroResolverWidgetShowcaseThemeExtension.copyWith', () {
-    MyoroResolverWidgetShowcaseThemeExtension copiedThemeExtension =
-        themeExtension1.copyWith();
+    MyoroResolverWidgetShowcaseThemeExtension copiedThemeExtension = themeExtension1.copyWith();
     expect(copiedThemeExtension, themeExtension1);
     copiedThemeExtension = themeExtension1.copyWith(
       buttonBordered: themeExtension2.buttonBordered,
@@ -27,19 +26,11 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.buttonBordered,
-        myoroLerp(
-          themeExtension1.buttonBordered,
-          themeExtension2.buttonBordered,
-          i,
-        ),
+        myoroLerp(themeExtension1.buttonBordered, themeExtension2.buttonBordered, i),
       );
       expect(
         lerpedThemeExtension.buttonTextAlign,
-        myoroLerp(
-          themeExtension1.buttonTextAlign,
-          themeExtension2.buttonTextAlign,
-          i,
-        ),
+        myoroLerp(themeExtension1.buttonTextAlign, themeExtension2.buttonTextAlign, i),
       );
       expect(
         lerpedThemeExtension.spacing,

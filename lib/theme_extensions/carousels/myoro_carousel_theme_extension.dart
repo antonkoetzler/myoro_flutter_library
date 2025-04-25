@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroCarousel].
-class MyoroCarouselThemeExtension
-    extends ThemeExtension<MyoroCarouselThemeExtension> {
+class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension> {
   /// Icon of the previous item [_TraversalButton] in [_TraversalButtons].
   final IconData previousItemButtonIcon;
 
@@ -18,13 +17,8 @@ class MyoroCarouselThemeExtension
 
   MyoroCarouselThemeExtension.fake()
     : previousItemButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      nextItemButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )];
+          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      nextItemButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   const MyoroCarouselThemeExtension.builder()
     : previousItemButtonIcon = Icons.keyboard_arrow_left,
@@ -36,8 +30,7 @@ class MyoroCarouselThemeExtension
     IconData? nextItemButtonIcon,
   }) {
     return MyoroCarouselThemeExtension(
-      previousItemButtonIcon:
-          previousItemButtonIcon ?? this.previousItemButtonIcon,
+      previousItemButtonIcon: previousItemButtonIcon ?? this.previousItemButtonIcon,
       nextItemButtonIcon: nextItemButtonIcon ?? this.nextItemButtonIcon,
     );
   }
@@ -49,16 +42,8 @@ class MyoroCarouselThemeExtension
   ) {
     if (other is! MyoroCarouselThemeExtension) return this;
     return copyWith(
-      previousItemButtonIcon: myoroLerp(
-        previousItemButtonIcon,
-        other.previousItemButtonIcon,
-        t,
-      ),
-      nextItemButtonIcon: myoroLerp(
-        nextItemButtonIcon,
-        other.nextItemButtonIcon,
-        t,
-      ),
+      previousItemButtonIcon: myoroLerp(previousItemButtonIcon, other.previousItemButtonIcon, t),
+      nextItemButtonIcon: myoroLerp(nextItemButtonIcon, other.nextItemButtonIcon, t),
     );
   }
 

@@ -5,9 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ColorScheme createMyoroColorScheme(bool isDarkMode) {
   final brightness = isDarkMode ? Brightness.dark : Brightness.light;
   final primary =
-      isDarkMode
-          ? MyoroDarkModeColorDesignSystem.primary
-          : MyoroLightModeColorDesignSystem.primary;
+      isDarkMode ? MyoroDarkModeColorDesignSystem.primary : MyoroLightModeColorDesignSystem.primary;
   final secondary =
       isDarkMode
           ? MyoroDarkModeColorDesignSystem.secondary

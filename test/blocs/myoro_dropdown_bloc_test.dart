@@ -95,11 +95,7 @@ void main() {
         ..add(ToggleEnabledEvent(!enabled));
     },
     expect: () {
-      return [
-        state.copyWith(enabled: !enabled),
-        state,
-        state.copyWith(enabled: !enabled),
-      ];
+      return [state.copyWith(enabled: !enabled), state, state.copyWith(enabled: !enabled)];
     },
   );
 }

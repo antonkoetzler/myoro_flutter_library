@@ -11,8 +11,7 @@ final class SetDirectionEvent extends MyoroCarouselWidgetShowcaseEvent {
   const SetDirectionEvent(this.direction);
 }
 
-final class SetDisplayTraversalButtonsEvent
-    extends MyoroCarouselWidgetShowcaseEvent {
+final class SetDisplayTraversalButtonsEvent extends MyoroCarouselWidgetShowcaseEvent {
   final bool displayTraversalButtons;
 
   const SetDisplayTraversalButtonsEvent(this.displayTraversalButtons);
@@ -24,8 +23,7 @@ final class SetAutoplayEvent extends MyoroCarouselWidgetShowcaseEvent {
   const SetAutoplayEvent(this.autoplay);
 }
 
-final class SetAutoplayIntervalDurationEvent
-    extends MyoroCarouselWidgetShowcaseEvent {
+final class SetAutoplayIntervalDurationEvent extends MyoroCarouselWidgetShowcaseEvent {
   final Duration duration;
 
   const SetAutoplayIntervalDurationEvent(this.duration);

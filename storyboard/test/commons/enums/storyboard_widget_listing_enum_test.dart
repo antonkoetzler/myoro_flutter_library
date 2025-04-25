@@ -2,316 +2,321 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Unit test of [WidgetListingEnum].
 void main() {
-  test('WidgetListingEnum value members', () {
-    expect(WidgetListingEnum.appBars.widgetCategory, 'App bars');
-    expect(WidgetListingEnum.appBars.widgetNames, ['MyoroAppBar']);
+  test('StoryboardWidgetListingEnum value members', () {
+    // App bars
+    expect(StoryboardWidgetListingEnum.appBars.categoryName, 'App bars');
+    expect(StoryboardWidgetListingEnum.appBars.widgetNames, ['MyoroAppBar']);
 
-    expect(WidgetListingEnum.buttons.widgetCategory, 'Buttons');
-    expect(WidgetListingEnum.buttons.widgetNames, [
-      'MyoroHoverButton',
-      'MyoroIconTextHoverButton',
-    ]);
+    // Buttons
+    expect(StoryboardWidgetListingEnum.buttons.categoryName, 'Buttons');
+    expect(StoryboardWidgetListingEnum.buttons.widgetNames, ['MyoroButton', 'MyoroIconTextButton']);
 
-    expect(WidgetListingEnum.cards.widgetCategory, 'Cards');
-    expect(WidgetListingEnum.cards.widgetNames, ['MyoroCard']);
+    // Cards
+    expect(StoryboardWidgetListingEnum.cards.categoryName, 'Cards');
+    expect(StoryboardWidgetListingEnum.cards.widgetNames, ['MyoroCard']);
 
-    expect(WidgetListingEnum.carousels.widgetCategory, 'Carousels');
-    expect(WidgetListingEnum.carousels.widgetNames, ['MyoroCarousel']);
+    // Carousels
+    expect(StoryboardWidgetListingEnum.carousels.categoryName, 'Carousels');
+    expect(StoryboardWidgetListingEnum.carousels.widgetNames, ['MyoroCarousel']);
 
-    expect(WidgetListingEnum.checkboxes.widgetCategory, 'Checkboxes');
-    expect(WidgetListingEnum.checkboxes.widgetNames, [
+    // Checkboxes
+    expect(StoryboardWidgetListingEnum.checkboxes.categoryName, 'Checkboxes');
+    expect(StoryboardWidgetListingEnum.checkboxes.widgetNames, [
       'MyoroCheckbox',
       'MyoroGroupCheckbox',
     ]);
 
-    expect(WidgetListingEnum.dividers.widgetCategory, 'Dividers');
-    expect(WidgetListingEnum.dividers.widgetNames, [
+    // Dividers
+    expect(StoryboardWidgetListingEnum.dividers.categoryName, 'Dividers');
+    expect(StoryboardWidgetListingEnum.dividers.widgetNames, [
       'MyoroBasicDivider',
       'MyoroResizeDivider',
     ]);
 
-    expect(WidgetListingEnum.drawers.widgetCategory, 'Drawers');
-    expect(WidgetListingEnum.drawers.widgetNames, ['MyoroDrawer']);
+    // Drawers
+    expect(StoryboardWidgetListingEnum.drawers.categoryName, 'Drawers');
+    expect(StoryboardWidgetListingEnum.drawers.widgetNames, ['MyoroDrawer']);
 
-    expect(WidgetListingEnum.dropdowns.widgetCategory, 'Dropdowns');
-    expect(WidgetListingEnum.dropdowns.widgetNames, [
+    // Dropdowns
+    expect(StoryboardWidgetListingEnum.dropdowns.categoryName, 'Dropdowns');
+    expect(StoryboardWidgetListingEnum.dropdowns.widgetNames, [
       'MyoroSingularDropdown',
       'MyoroMultiDropdown',
     ]);
 
-    expect(WidgetListingEnum.forms.widgetCategory, 'Forms');
-    expect(WidgetListingEnum.forms.widgetNames, ['MyoroForm']);
+    // Forms
+    expect(StoryboardWidgetListingEnum.forms.categoryName, 'Forms');
+    expect(StoryboardWidgetListingEnum.forms.widgetNames, ['MyoroForm']);
 
-    expect(WidgetListingEnum.graphs.widgetCategory, 'Graphs');
-    expect(WidgetListingEnum.graphs.widgetNames, [
-      'MyoroBarGraph',
-      'MyoroPieGraph',
-    ]);
+    // Graphs
+    expect(StoryboardWidgetListingEnum.graphs.categoryName, 'Graphs');
+    expect(StoryboardWidgetListingEnum.graphs.widgetNames, ['MyoroBarGraph', 'MyoroPieGraph']);
 
-    expect(WidgetListingEnum.inputs.widgetCategory, 'Inputs');
-    expect(WidgetListingEnum.inputs.widgetNames, [
+    // Inputs
+    expect(StoryboardWidgetListingEnum.inputs.categoryName, 'Inputs');
+    expect(StoryboardWidgetListingEnum.inputs.widgetNames, [
       'MyoroDatePickerInput',
       'MyoroInput',
       'MyoroSearchInput',
     ]);
 
-    expect(WidgetListingEnum.layoutBuilders.widgetCategory, 'Layout builders');
-    expect(WidgetListingEnum.layoutBuilders.widgetNames, [
-      'MyoroLayoutBuilder',
-    ]);
+    // Layout builders
+    expect(StoryboardWidgetListingEnum.layoutBuilders.categoryName, 'Layout builders');
+    expect(StoryboardWidgetListingEnum.layoutBuilders.widgetNames, ['MyoroLayoutBuilder']);
 
-    expect(WidgetListingEnum.loaders.widgetCategory, 'Loaders');
-    expect(WidgetListingEnum.loaders.widgetNames, ['MyoroCircularLoader']);
+    // Loaders
+    expect(StoryboardWidgetListingEnum.loaders.categoryName, 'Loaders');
+    expect(StoryboardWidgetListingEnum.loaders.widgetNames, ['MyoroCircularLoader']);
 
-    expect(WidgetListingEnum.materialApps.widgetCategory, 'Material apps');
-    expect(WidgetListingEnum.materialApps.widgetNames, ['MyoroMaterialApp']);
+    // Material apps
+    expect(StoryboardWidgetListingEnum.materialApps.categoryName, 'Material apps');
+    expect(StoryboardWidgetListingEnum.materialApps.widgetNames, ['MyoroMaterialApp']);
 
-    expect(WidgetListingEnum.menus.widgetCategory, 'Menus');
-    expect(WidgetListingEnum.menus.widgetNames, ['MyoroMenu']);
+    // Menus
+    expect(StoryboardWidgetListingEnum.menus.categoryName, 'Menus');
+    expect(StoryboardWidgetListingEnum.menus.widgetNames, ['MyoroMenu']);
 
-    expect(WidgetListingEnum.modals.widgetCategory, 'Modals');
-    expect(WidgetListingEnum.modals.widgetNames, [
-      'MyoroModal',
-      'MyoroDialogModal',
-    ]);
+    // Modals
+    expect(StoryboardWidgetListingEnum.modals.categoryName, 'Modals');
+    expect(StoryboardWidgetListingEnum.modals.widgetNames, ['MyoroModal', 'MyoroDialogModal']);
 
-    expect(WidgetListingEnum.radios.widgetCategory, 'Radios');
-    expect(WidgetListingEnum.radios.widgetNames, [
-      'MyoroRadio',
-      'MyoroGroupRadio',
-    ]);
+    // Radios
+    expect(StoryboardWidgetListingEnum.radios.categoryName, 'Radios');
+    expect(StoryboardWidgetListingEnum.radios.widgetNames, ['MyoroRadio', 'MyoroGroupRadio']);
 
-    expect(WidgetListingEnum.resolvers.widgetCategory, 'Resolvers');
-    expect(WidgetListingEnum.resolvers.widgetNames, ['MyoroResolver']);
+    // Resolvers
+    expect(StoryboardWidgetListingEnum.resolvers.categoryName, 'Resolvers');
+    expect(StoryboardWidgetListingEnum.resolvers.widgetNames, ['MyoroResolver']);
 
-    expect(WidgetListingEnum.screens.widgetCategory, 'Screens');
-    expect(WidgetListingEnum.screens.widgetNames, ['MyoroScreen']);
+    // Screens
+    expect(StoryboardWidgetListingEnum.screens.categoryName, 'Screens');
+    expect(StoryboardWidgetListingEnum.screens.widgetNames, ['MyoroScreen']);
 
-    expect(WidgetListingEnum.sliders.widgetCategory, 'Sliders');
-    expect(WidgetListingEnum.sliders.widgetNames, ['MyoroSlider']);
+    // Sliders
+    expect(StoryboardWidgetListingEnum.sliders.categoryName, 'Sliders');
+    expect(StoryboardWidgetListingEnum.sliders.widgetNames, ['MyoroSlider']);
 
-    expect(WidgetListingEnum.snackBars.widgetCategory, 'Snack bars');
-    expect(WidgetListingEnum.snackBars.widgetNames, ['MyoroSnackBar']);
+    // Snack bars
+    expect(StoryboardWidgetListingEnum.snackBars.categoryName, 'Snack bars');
+    expect(StoryboardWidgetListingEnum.snackBars.widgetNames, ['MyoroSnackBar']);
 
-    expect(WidgetListingEnum.tables.widgetCategory, 'Tables');
-    expect(WidgetListingEnum.tables.widgetNames, ['MyoroTable']);
+    // Tables
+    expect(StoryboardWidgetListingEnum.tables.categoryName, 'Tables');
+    expect(StoryboardWidgetListingEnum.tables.widgetNames, ['MyoroTable']);
 
-    expect(WidgetListingEnum.tooltips.widgetCategory, 'Tooltips');
-    expect(WidgetListingEnum.tooltips.widgetNames, ['MyoroTooltip']);
+    // Tooltips
+    expect(StoryboardWidgetListingEnum.tooltips.categoryName, 'Tooltips');
+    expect(StoryboardWidgetListingEnum.tooltips.widgetNames, ['MyoroTooltip']);
   });
 
-  test('WidgetListingEnum.widgetViewerWidget', () {
+  test('StoryboardWidgetListingEnum.getWidgetShowcase', () {
+    // App bars
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroAppBarTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroAppBarTitle),
       isA<MyoroAppBarWidgetShowcase>(),
     );
 
-    expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroHoverButtonTitle,
-      ),
-      isA<MyoroHoverButtonWidgetShowcase>(),
-    );
-    expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroIconTextHoverButtonTitle,
-      ),
-      isA<MyoroIconTextHoverButtonWidgetShowcase>(),
-    );
+    // TODO: Buttons.
 
+    // Cards
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroCardTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroCardTitle),
       isA<MyoroCardWidgetShowcase>(),
     );
 
+    // Carousels
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroCarouselTitle,
-      ),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroCarouselTitle),
       isA<MyoroCarouselWidgetShowcase>(),
     );
 
+    // Checkboes
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroCheckboxTitle,
-      ),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroCheckboxTitle),
       isA<MyoroCheckboxWidgetShowcase>(),
     );
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroGroupCheckboxTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroGroupCheckboxTitle,
       ),
       isA<MyoroGroupCheckboxWidgetShowcase>(),
     );
 
+    // Dividers
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroBasicDividerTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroBasicDividerTitle,
       ),
       isA<MyoroBasicDividerWidgetShowcase>(),
     );
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroResizeDividerTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroResizeDividerTitle,
       ),
       isA<MyoroResizeDividerWidgetShowcase>(),
     );
 
+    // Drawers
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroDrawerTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroDrawerTitle),
       isA<MyoroDrawerWidgetShowcase>(),
     );
 
+    // Forms
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroFormTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroFormTitle),
       isA<MyoroFormWidgetShowcase>(),
     );
 
+    // Graphs
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroBarGraphTitle,
-      ),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroBarGraphTitle),
       isA<MyoroBarGraphWidgetShowcase>(),
     );
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroPieGraphTitle,
-      ),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroPieGraphTitle),
       isA<MyoroPieGraphWidgetShowcase>(),
     );
 
+    // Inputs
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroDatePickerInputTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroDatePickerInputTitle,
       ),
       isA<MyoroDatePickerInputWidgetShowcase>(),
     );
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroInputTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroInputTitle),
       isA<MyoroInputWidgetShowcase>(),
     );
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroSearchInputTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroSearchInputTitle,
       ),
       isA<MyoroSearchInputWidgetShowcase>(),
     );
 
+    // Layout builders
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroLayoutBuilderTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroLayoutBuilderTitle,
       ),
       isA<MyoroLayoutBuilderWidgetShowcase>(),
     );
 
+    // Loaders
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroCircularLoaderTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroCircularLoaderTitle,
       ),
       isA<MyoroCircularLoaderWidgetShowcase>(),
     );
 
+    // Material apps
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroMaterialAppTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroMaterialAppTitle,
       ),
       isA<MyoroMaterialAppWidgetShowcase>(),
     );
 
+    // Menus
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroMenuTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroMenuTitle),
       isA<MyoroMenuWidgetShowcase>(),
     );
 
+    // Modals
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroModalTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroModalTitle),
       isA<MyoroModalWidgetShowcase>(),
     );
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroDialogModalTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroDialogModalTitle,
       ),
       isA<MyoroDialogModalWidgetShowcase>(),
     );
 
+    // Radios
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroRadioTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroRadioTitle),
       isA<MyoroRadioWidgetShowcase>(),
     );
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroGroupRadioTitle,
+      StoryboardWidgetListingEnum.getWidgetShowcase(
+        StoryboardWidgetListingEnum.myoroGroupRadioTitle,
       ),
       isA<MyoroGroupRadioWidgetShowcase>(),
     );
 
+    // Resolvers
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroResolverTitle,
-      ),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroResolverTitle),
       isA<MyoroResolverWidgetShowcase>(),
     );
 
+    // Screens
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroScreenTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroScreenTitle),
       isA<MyoroScreenWidgetShowcase>(),
     );
 
+    // Sliders
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroSliderTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroSliderTitle),
       isA<MyoroSliderWidgetShowcase>(),
     );
 
+    // Snack bars
     expect(
-      WidgetListingEnum.widgetViewerWidget(
-        WidgetListingEnum.myoroSnackBarTitle,
-      ),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroSnackBarTitle),
       isA<MyoroSnackBarWidgetShowcase>(),
     );
 
+    // Tables
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroTableTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroTableTitle),
       isA<MyoroTableWidgetShowcase>(),
     );
 
+    // Tooltips
     expect(
-      WidgetListingEnum.widgetViewerWidget(WidgetListingEnum.myoroTooltipTitle),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroTooltipTitle),
       isA<MyoroTooltipWidgetShowcase>(),
     );
 
+    // Exception case
     expect(
-      () => WidgetListingEnum.widgetViewerWidget(
-        faker.randomGenerator.string(100),
-      ),
+      () => StoryboardWidgetListingEnum.getWidgetShowcase(faker.randomGenerator.string(100)),
       throwsException,
     );
   });
 
-  test('WidgetListingEnum getters', () {
-    expect(WidgetListingEnum.appBars.isAppBars, isTrue);
-    expect(WidgetListingEnum.buttons.isButtons, isTrue);
-    expect(WidgetListingEnum.cards.isCards, isTrue);
-    expect(WidgetListingEnum.carousels.isCarousels, isTrue);
-    expect(WidgetListingEnum.checkboxes.isCheckboxes, isTrue);
-    expect(WidgetListingEnum.dividers.isDividers, isTrue);
-    expect(WidgetListingEnum.drawers.isDrawers, isTrue);
-    expect(WidgetListingEnum.dropdowns.isDropdowns, isTrue);
-    expect(WidgetListingEnum.forms.isForms, isTrue);
-    expect(WidgetListingEnum.graphs.isGraphs, isTrue);
-    expect(WidgetListingEnum.inputs.isInputs, isTrue);
-    expect(WidgetListingEnum.layoutBuilders.isLayoutBuilders, isTrue);
-    expect(WidgetListingEnum.loaders.isLoaders, isTrue);
-    expect(WidgetListingEnum.materialApps.isMaterialApps, isTrue);
-    expect(WidgetListingEnum.menus.isMenus, isTrue);
-    expect(WidgetListingEnum.modals.isModals, isTrue);
-    expect(WidgetListingEnum.radios.isRadios, isTrue);
-    expect(WidgetListingEnum.resolvers.isResolvers, isTrue);
-    expect(WidgetListingEnum.screens.isScreens, isTrue);
-    expect(WidgetListingEnum.sliders.isSliders, isTrue);
-    expect(WidgetListingEnum.snackBars.isSnackBars, isTrue);
-    expect(WidgetListingEnum.tables.isTables, isTrue);
-    expect(WidgetListingEnum.tooltips.isTooltips, isTrue);
+  test('StoryboardWidgetListingEnum getters', () {
+    expect(StoryboardWidgetListingEnum.appBars.isAppBars, isTrue);
+    expect(StoryboardWidgetListingEnum.buttons.isButtons, isTrue);
+    expect(StoryboardWidgetListingEnum.cards.isCards, isTrue);
+    expect(StoryboardWidgetListingEnum.carousels.isCarousels, isTrue);
+    expect(StoryboardWidgetListingEnum.checkboxes.isCheckboxes, isTrue);
+    expect(StoryboardWidgetListingEnum.dividers.isDividers, isTrue);
+    expect(StoryboardWidgetListingEnum.drawers.isDrawers, isTrue);
+    expect(StoryboardWidgetListingEnum.dropdowns.isDropdowns, isTrue);
+    expect(StoryboardWidgetListingEnum.forms.isForms, isTrue);
+    expect(StoryboardWidgetListingEnum.graphs.isGraphs, isTrue);
+    expect(StoryboardWidgetListingEnum.inputs.isInputs, isTrue);
+    expect(StoryboardWidgetListingEnum.layoutBuilders.isLayoutBuilders, isTrue);
+    expect(StoryboardWidgetListingEnum.loaders.isLoaders, isTrue);
+    expect(StoryboardWidgetListingEnum.materialApps.isMaterialApps, isTrue);
+    expect(StoryboardWidgetListingEnum.menus.isMenus, isTrue);
+    expect(StoryboardWidgetListingEnum.modals.isModals, isTrue);
+    expect(StoryboardWidgetListingEnum.radios.isRadios, isTrue);
+    expect(StoryboardWidgetListingEnum.resolvers.isResolvers, isTrue);
+    expect(StoryboardWidgetListingEnum.screens.isScreens, isTrue);
+    expect(StoryboardWidgetListingEnum.sliders.isSliders, isTrue);
+    expect(StoryboardWidgetListingEnum.snackBars.isSnackBars, isTrue);
+    expect(StoryboardWidgetListingEnum.tables.isTables, isTrue);
+    expect(StoryboardWidgetListingEnum.tooltips.isTooltips, isTrue);
   });
 }

@@ -11,7 +11,11 @@ final class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const StoryboardScreen(body: _Body());
+    return const StoryboardScreen(
+      headerTitleText: 'MFL Storyboard',
+      headerSubtitleText: 'Program to visualize and create MFL widgets.',
+      body: _Body(),
+    );
   }
 }
 
@@ -22,17 +26,12 @@ final class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroAccordion(
       configuration: MyoroAccordionConfiguration(
-        items:
-            StoryboardWidgetListingEnum.values
-                .map<MyoroAccordionItem>(_itemBuilder)
-                .toList(),
+        items: StoryboardWidgetListingEnum.values.map<MyoroAccordionItem>(_itemBuilder).toList(),
       ),
     );
   }
 
-  MyoroAccordionItem _itemBuilder(
-    StoryboardWidgetListingEnum widgetListingEnum,
-  ) {
+  MyoroAccordionItem _itemBuilder(StoryboardWidgetListingEnum widgetListingEnum) {
     return MyoroAccordionItem(
       titleBuilder: (_) => _titleBuilder(widgetListingEnum),
       contentBuilder: (_) => _contentBuilder(widgetListingEnum),
@@ -69,17 +68,14 @@ final class _WidgetCategoryDropdownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MainScreenThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MainScreenThemeExtension>();
 
     return Padding(
       padding: themeExtension.widgetCategoryDropdownButtonPadding,
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
           onTapUp: (_) => _onTapUp(context),
-          textConfiguration: MyoroIconTextButtonTextConfiguration(
-            text: _widgetName,
-          ),
+          textConfiguration: MyoroIconTextButtonTextConfiguration(text: _widgetName),
         ),
       ),
     );

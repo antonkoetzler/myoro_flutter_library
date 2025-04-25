@@ -50,17 +50,11 @@ class MyoroModalConfiguration extends Equatable {
   }) {
     return MyoroModalConfiguration(
       barrierDismissable:
-          barrierDismissableProvided
-              ? (barrierDismissable ?? this.barrierDismissable)
-              : null,
-      constraints:
-          constraintsProvided ? (constraints ?? this.constraints) : null,
+          barrierDismissableProvided ? (barrierDismissable ?? this.barrierDismissable) : null,
+      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: titleProvided ? (title ?? this.title) : null,
-      showCloseButton:
-          showCloseButtonProvided
-              ? (showCloseButton ?? this.showCloseButton)
-              : null,
+      showCloseButton: showCloseButtonProvided ? (showCloseButton ?? this.showCloseButton) : null,
     );
   }
 

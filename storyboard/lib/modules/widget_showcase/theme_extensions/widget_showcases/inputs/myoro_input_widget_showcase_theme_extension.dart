@@ -28,14 +28,10 @@ final class MyoroInputWidgetShowcaseThemeExtension
   });
 
   MyoroInputWidgetShowcaseThemeExtension.fake()
-    : configurationOptionTextStyle =
-          MyoroTypographyDesignSystem.instance.randomTextStyle,
+    : configurationOptionTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       configurationOptionSpacing = faker.randomGenerator.decimal(),
       inputStyle = MyoroInputStyleEnum.fake(),
-      suffixWidgetIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )];
+      suffixWidgetIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   MyoroInputWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : configurationOptionTextStyle = textTheme.titleMedium!,
@@ -53,8 +49,7 @@ final class MyoroInputWidgetShowcaseThemeExtension
     return MyoroInputWidgetShowcaseThemeExtension(
       configurationOptionTextStyle:
           configurationOptionTextStyle ?? this.configurationOptionTextStyle,
-      configurationOptionSpacing:
-          configurationOptionSpacing ?? this.configurationOptionSpacing,
+      configurationOptionSpacing: configurationOptionSpacing ?? this.configurationOptionSpacing,
       inputStyle: inputStyle ?? this.inputStyle,
       suffixWidgetIcon: suffixWidgetIcon ?? this.suffixWidgetIcon,
     );

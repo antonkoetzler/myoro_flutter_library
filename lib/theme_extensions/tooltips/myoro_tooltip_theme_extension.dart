@@ -3,23 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroTooltip].
-class MyoroTooltipThemeExtension
-    extends ThemeExtension<MyoroTooltipThemeExtension> {
+class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension> {
   /// [Tooltip.waitDuration].
   final Duration waitDuration;
 
   /// [Tooltip.margin].
   final EdgeInsets margin;
 
-  const MyoroTooltipThemeExtension({
-    required this.waitDuration,
-    required this.margin,
-  });
+  const MyoroTooltipThemeExtension({required this.waitDuration, required this.margin});
 
   MyoroTooltipThemeExtension.fake()
-    : waitDuration = Duration(
-        milliseconds: faker.randomGenerator.integer(9999),
-      ),
+    : waitDuration = Duration(milliseconds: faker.randomGenerator.integer(9999)),
       margin = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50));
 
   const MyoroTooltipThemeExtension.builder()
@@ -27,10 +21,7 @@ class MyoroTooltipThemeExtension
       margin = EdgeInsets.zero;
 
   @override
-  MyoroTooltipThemeExtension copyWith({
-    Duration? waitDuration,
-    EdgeInsets? margin,
-  }) {
+  MyoroTooltipThemeExtension copyWith({Duration? waitDuration, EdgeInsets? margin}) {
     return MyoroTooltipThemeExtension(
       waitDuration: waitDuration ?? this.waitDuration,
       margin: margin ?? this.margin,

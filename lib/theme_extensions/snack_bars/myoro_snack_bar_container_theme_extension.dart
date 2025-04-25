@@ -39,21 +39,14 @@ class MyoroSnackBarContainerThemeExtension
   });
 
   MyoroSnackBarContainerThemeExtension.fake()
-    : primaryColor =
-          kMyoroTestColors[faker.randomGenerator.integer(
-            kMyoroTestColors.length,
-          )],
+    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       behavior =
-          SnackBarBehavior.values[faker.randomGenerator.integer(
-            SnackBarBehavior.values.length,
-          )],
+          SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)],
       margin = EdgeInsets.all(faker.randomGenerator.decimal()),
       padding = EdgeInsets.all(faker.randomGenerator.decimal()),
       elevation = faker.randomGenerator.decimal(),
       dismissDirection =
-          DismissDirection.values[faker.randomGenerator.integer(
-            DismissDirection.values.length,
-          )],
+          DismissDirection.values[faker.randomGenerator.integer(DismissDirection.values.length)],
       duration = Duration(milliseconds: faker.randomGenerator.integer(9999));
 
   const MyoroSnackBarContainerThemeExtension.builder()

@@ -61,11 +61,7 @@ final class _Widget extends StatelessWidget {
 final class _TitleOption extends StatelessWidget {
   const _TitleOption();
 
-  void _checkboxOnChanged(
-    MyoroDrawerWidgetShowcaseBloc bloc,
-    bool enabled,
-    String text,
-  ) {
+  void _checkboxOnChanged(MyoroDrawerWidgetShowcaseBloc bloc, bool enabled, String text) {
     bloc.add(SetTitleEvent(enabled ? text : null));
   }
 
@@ -77,14 +73,8 @@ final class _TitleOption extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: '[MyoroDrawer.title]',
         inputStyle:
-            context
-                .resolveThemeExtension<
-                  MyoroDrawerWidgetShowcaseThemeExtension
-                >()
-                .inputStyle,
-        checkboxOnChanged:
-            (bool enabled, String text) =>
-                _checkboxOnChanged(bloc, enabled, text),
+            context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>().inputStyle,
+        checkboxOnChanged: (bool enabled, String text) => _checkboxOnChanged(bloc, enabled, text),
         onChanged: (String text) => bloc.add(SetTitleEvent(text)),
       ),
     );
@@ -107,23 +97,17 @@ final class _TitleTextStyleOption extends StatelessWidget {
           enabled: false,
           menuConfiguration: MyoroMenuConfiguration(
             request: typographyInstance.allTextStyles.toSet,
-            itemBuilder:
-                (textStyle) => _itemBuilder(typographyInstance, textStyle),
+            itemBuilder: (textStyle) => _itemBuilder(typographyInstance, textStyle),
           ),
           selectedItemBuilder: typographyInstance.getTextStyleName,
           onChanged: (textStyle) => _onChanged(bloc, textStyle),
-          checkboxOnChanged:
-              (enabled, textStyle) =>
-                  _checkboxOnChanged(bloc, enabled, textStyle),
+          checkboxOnChanged: (enabled, textStyle) => _checkboxOnChanged(bloc, enabled, textStyle),
         ),
       ),
     );
   }
 
-  MyoroMenuItem _itemBuilder(
-    MyoroTypographyDesignSystem typographyInstance,
-    TextStyle textStyle,
-  ) {
+  MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typographyInstance, TextStyle textStyle) {
     return MyoroMenuItem(
       textConfiguration: MyoroIconTextButtonTextConfiguration(
         text: typographyInstance.getTextStyleName(textStyle),
@@ -135,11 +119,7 @@ final class _TitleTextStyleOption extends StatelessWidget {
     bloc.add(SetTitleTextStyleEvent(textStyle));
   }
 
-  void _checkboxOnChanged(
-    MyoroDrawerWidgetShowcaseBloc bloc,
-    bool enabled,
-    TextStyle? textStyle,
-  ) {
+  void _checkboxOnChanged(MyoroDrawerWidgetShowcaseBloc bloc, bool enabled, TextStyle? textStyle) {
     bloc.add(SetTitleTextStyleEvent(enabled ? textStyle : null));
   }
 }
