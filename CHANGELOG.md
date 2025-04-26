@@ -11,6 +11,7 @@
 1. chore: Remove `finder` functions;
 1. chore: `_Enabled` --> `_Provided` in `copyWith` functions;
 1. chore: Remove `final` from various classes to allow extensions;
+1. chore: Add `==` override, `hashCode`, `toString` and `@immutable` on all theme extensions
 
 ## 1.3.0
 

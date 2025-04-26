@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroRadioWidgetShowcase].
+@immutable
 final class MyoroRadioWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroRadioWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.

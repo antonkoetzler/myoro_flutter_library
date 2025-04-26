@@ -5,6 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] of [MyoroButton].
 ///
 /// TODO: Needs to be tested.
+@immutable
 final class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension> {
   /// Border radius.
   final BorderRadius borderRadius;

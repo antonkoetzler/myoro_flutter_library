@@ -8,6 +8,7 @@ import 'package:storyboard/storyboard.dart';
 /// [ThemeExtension] of [StoryboardScreen].
 ///
 /// TODO: Needs to be tested.
+@immutable
 final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScreenThemeExtension> {
   /// [TextStyle] of [_HeaderTitleText].
   final TextStyle headerTitleTextStyle;

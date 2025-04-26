@@ -4,6 +4,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 /// [ThemeExtension] of [MyoroDropdown].
+@immutable
 class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> {
   /// Standard spacing between items.
   final double spacing;

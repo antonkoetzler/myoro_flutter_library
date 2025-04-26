@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/constants.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroPieGraphWidgetShowcase].
+@immutable
 final class MyoroPieGraphWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension> {
   /// [BorderRadius] of [_CenterWidget].

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 /// [ThemeExtension] of [MainScreen].
 ///
 /// TODO: Needs to be tested.
+@immutable
 final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExtension> {
   /// [EdgeInsets] of [_WidgetCategoryDropdownButton].
   final EdgeInsets widgetCategoryDropdownButtonPadding;

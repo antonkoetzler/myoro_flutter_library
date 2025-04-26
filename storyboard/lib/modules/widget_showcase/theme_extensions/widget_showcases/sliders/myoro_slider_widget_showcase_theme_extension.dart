@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroSliderWidgetShowcase].
+@immutable
 final class MyoroSliderWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroSliderWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of inputs.

@@ -4,6 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroResizeDividerWidgetShowcase].
+@immutable
 final class MyoroResizeDividerWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension> {
   /// Color of the [Container]s beside the divider.

@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroInputWidgetShowcase].
+@immutable
 final class MyoroInputWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension> {
   /// [TextStyle] of [_ConfigurationOption]'s title.

@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroLayoutBuilderWidgetShowcase].
+@immutable
 final class MyoroLayoutBuilderWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroLayoutBuilderWidgetShowcaseThemeExtension> {
   /// [TextStyle] of everything.

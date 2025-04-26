@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroCircularLoaderWidgetShowcase].
+@immutable
 final class MyoroCircularLoaderWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroCircularLoaderWidgetShowcaseThemeExtension> {
   const MyoroCircularLoaderWidgetShowcaseThemeExtension();

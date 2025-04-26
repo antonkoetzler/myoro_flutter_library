@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroModalWidgetShowcase].
+@immutable
 final class MyoroModalWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroModalWidgetShowcaseThemeExtension> {
   /// Spacing of content.

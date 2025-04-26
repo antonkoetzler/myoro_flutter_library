@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroBarGraphWidgetShowcase].
+@immutable
 final class MyoroBarGraphWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroBarGraphWidgetShowcaseThemeExtension> {
   const MyoroBarGraphWidgetShowcaseThemeExtension();

@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroFormWidgetShowcase].
+@immutable
 final class MyoroFormWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroFormWidgetShowcaseThemeExtension> {
   /// [_Widget]'s children's alignment.

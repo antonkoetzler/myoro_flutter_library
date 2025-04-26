@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroInput].
+@immutable
 class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> {
   /// Border for [MyoroInputStyleEnum.underlined].
   final InputBorder underlinedBorder;

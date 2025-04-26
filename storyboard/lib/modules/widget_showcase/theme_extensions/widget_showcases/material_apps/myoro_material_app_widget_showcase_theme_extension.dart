@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroMaterialAppWidgetShowcase].
+@immutable
 final class MyoroMaterialAppWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension> {
   /// Color of the content in [_AppBar].

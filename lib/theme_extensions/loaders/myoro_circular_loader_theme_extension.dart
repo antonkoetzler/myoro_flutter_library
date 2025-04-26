@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroCircularLoader].
+@immutable
 class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension> {
   /// Color of the [MyoroCircularLoader].
   final Color color;

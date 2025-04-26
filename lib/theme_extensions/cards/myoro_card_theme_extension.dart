@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroCard].
+@immutable
 class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> {
   /// Background color of the card.
   final Color backgroundColor;

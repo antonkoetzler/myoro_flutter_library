@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroGroupRadioWidgetShowcase].
+@immutable
 final class MyoroGroupRadioWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroGroupRadioWidgetShowcaseThemeExtension> {
   const MyoroGroupRadioWidgetShowcaseThemeExtension();

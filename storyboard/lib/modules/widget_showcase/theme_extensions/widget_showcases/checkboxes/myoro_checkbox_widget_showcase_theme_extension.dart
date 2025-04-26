@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroCheckboxWidgetShowcase].
+@immutable
 final class MyoroCheckboxWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroCheckboxWidgetShowcaseThemeExtension> {
   /// Width of [_LabelTextStyleOption].

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroDrawer].
+@immutable
 class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension> {
   /// Padding of [_Drawer].
   final EdgeInsets drawerPadding;

@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [WidgetShowcase].
+@immutable
 final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseThemeExtension> {
   /// [BoxDecoration] of [_WidgetWrapper].
   final BoxDecoration widgetWrapperDecoration;

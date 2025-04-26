@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroCarousel].
+@immutable
 class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension> {
   /// Icon of the previous item [_TraversalButton] in [_TraversalButtons].
   final IconData previousItemButtonIcon;

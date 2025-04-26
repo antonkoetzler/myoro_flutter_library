@@ -4,6 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [MyoroCardWidgetShowcase].
+@immutable
 final class MyoroCardWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroCardWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of every [MyoroInput].

@@ -5,10 +5,6 @@
 - Implement tests
 - Implement widget showcase
 
-1. (**DELAYED**) chore: Add `==` override, `hashCode`, `toString` and `@immutable` on all theme extensions
-
-- Still need to add the immutable
-
 1. feature: `getRandomColor`, `getRandomTextStyle`, `getRandomCursor`, etc
 1. (**IN PROGRESS**) refactor: Buttons
 

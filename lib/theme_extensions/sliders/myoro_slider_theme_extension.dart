@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroSlider].
+@immutable
 class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension> {
   /// Default [TextStyle] of [MyoroSlider.label].
   final TextStyle labelTextStyle;

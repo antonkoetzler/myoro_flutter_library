@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroMultiDropdownWidgetShowcase].
+@immutable
 final class MyoroMultiDropdownWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroMultiDropdownWidgetShowcaseThemeExtension> {
   const MyoroMultiDropdownWidgetShowcaseThemeExtension();

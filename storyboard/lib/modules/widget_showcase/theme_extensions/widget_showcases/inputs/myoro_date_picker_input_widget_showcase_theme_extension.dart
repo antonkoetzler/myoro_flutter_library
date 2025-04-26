@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroDatePickerInputWidgetShowcase].
+@immutable
 final class MyoroDatePickerInputWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroDatePickerInputWidgetShowcaseThemeExtension> {
   /// [MyoroInputStyleEnum] of [_Widget].

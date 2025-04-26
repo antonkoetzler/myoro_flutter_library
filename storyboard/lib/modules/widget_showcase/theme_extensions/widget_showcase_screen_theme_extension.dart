@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [WidgetShowcaseScreen].
+@immutable
 final class WidgetShowcaseScreenThemeExtension
     extends ThemeExtension<WidgetShowcaseScreenThemeExtension> {
   const WidgetShowcaseScreenThemeExtension();

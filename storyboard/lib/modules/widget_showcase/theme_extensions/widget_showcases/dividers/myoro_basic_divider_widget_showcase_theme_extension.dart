@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroBasicDividerWidgetShowcase].
+@immutable
 final class MyoroBasicDividerWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroBasicDividerWidgetShowcaseThemeExtension> {
   const MyoroBasicDividerWidgetShowcaseThemeExtension();

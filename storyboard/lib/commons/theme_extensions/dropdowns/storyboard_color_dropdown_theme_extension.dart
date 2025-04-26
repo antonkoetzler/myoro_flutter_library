@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [StoryboardColorDropdown].
+@immutable
 final class StoryboardColorDropdownThemeExtension
     extends ThemeExtension<StoryboardColorDropdownThemeExtension> {
   /// [EdgeInsets] of [_Item].

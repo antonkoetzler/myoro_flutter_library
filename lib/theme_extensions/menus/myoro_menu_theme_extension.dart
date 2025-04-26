@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroMenu].
+@immutable
 class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> {
   /// Background color of the menu.
   final Color primaryColor;

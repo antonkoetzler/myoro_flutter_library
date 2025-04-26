@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroScreenWidgetShowcase].
+@immutable
 final class MyoroScreenWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroScreenWidgetShowcaseThemeExtension> {
   /// [TextStyle] of [_AppBar]'s title text.

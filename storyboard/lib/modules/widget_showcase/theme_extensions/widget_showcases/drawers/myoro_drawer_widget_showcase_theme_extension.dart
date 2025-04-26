@@ -5,6 +5,7 @@ import 'package:storyboard/storyboard.dart';
 /// [ThemeExtension] of [MyoroDrawerWidgetShowcase].
 ///
 /// TODO: Test needs to be rewritten.
+@immutable
 final class MyoroDrawerWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension> {
   /// [MyoroInput.configuration.inputStyle] of [_TitleOption].

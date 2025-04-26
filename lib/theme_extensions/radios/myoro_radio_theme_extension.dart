@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroRadio].
+@immutable
 class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> {
   /// Color of the radio itself.
   final Color activeColor;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroSearchInputWidgetShowcase].
+@immutable
 final class MyoroSearchInputWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroSearchInputWidgetShowcaseThemeExtension> {
   const MyoroSearchInputWidgetShowcaseThemeExtension();

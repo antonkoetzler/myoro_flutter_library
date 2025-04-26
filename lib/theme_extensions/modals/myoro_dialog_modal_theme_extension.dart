@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroDialogModal].
+@immutable
 class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThemeExtension> {
   /// Text style of the simple text option in [_Message].
   final TextStyle textStyle;
