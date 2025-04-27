@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-typedef StoryboardColorDropdownOnChanged = void Function(Color? color);
+typedef ColorDropdownWidgetShowcaseOptionOnChanged = void Function(Color? color);
 
 /// [Color] picker [MyoroSingularDropdown].
 ///
 /// TODO: Needs to be tested.
-final class StoryboardColorDropdown extends StatelessWidget {
+final class ColorDropdownWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroSingularDropdownConfiguration.label]
   final String? label;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
-  final StoryboardColorDropdownOnChanged onChanged;
+  final ColorDropdownWidgetShowcaseOptionOnChanged onChanged;
 
-  const StoryboardColorDropdown({super.key, this.label, required this.onChanged});
+  const ColorDropdownWidgetShowcaseOption({super.key, this.label, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,8 @@ final class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardColorDropdownThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension>();
     final EdgeInsets itemPadding = themeExtension.itemPadding;
     final double itemSpacing = themeExtension.itemSpacing;
 
@@ -73,7 +74,8 @@ final class _ItemColor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardColorDropdownThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension>();
     final double itemColorSize = themeExtension.itemColorSize;
 
     return Container(width: itemColorSize, height: itemColorSize, color: _color);

@@ -11,138 +11,101 @@ final class WidgetShowcaseModule implements Module {
   List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
       WidgetShowcaseThemeExtension.builder(colorScheme),
-      ..._createAppBarWidgetShowcaseThemeExtensions(textTheme),
-      ..._createCardWidgetShowcaseThemeExtensions(textTheme),
-      ..._createCarouselWidgetShowcaseThemeExtensions(),
-      ..._createCheckboxWidgetShowcaseThemeExtensions(),
-      ..._createDividerWidgetShowcaseThemeExtensions(colorScheme),
-      ..._createDrawerWidgetShowcaseThemeExtensions(),
-      ..._createDropdownWidgetShowcaseThemeExtensions(),
-      ..._createFormWidgetShowcaseThemeExtensions(textTheme),
-      ..._createGraphWidgetShowcaseThemeExtensions(),
-      ..._createInputWidgetShowcaseThemeExtensions(textTheme),
-      ..._createLayoutBuilderWidgetShowcaseThemeExtensions(textTheme),
-      ..._createLoaderWidgetShowcaseThemeExtensions(),
-      ..._createMaterialAppWidgetShowcaseThemeExtensions(colorScheme, textTheme),
-      ..._createMenuWidgetShowcaseThemeExtensions(textTheme),
-      ..._createModalWidgetShowcaseThemeExtensions(textTheme),
-      ..._createRadioWidgetShowcaseThemeExtensions(),
-      ..._createResolverWidgetShowcaseThemeExtensions(),
-      ..._createScreenWidgetShowcaseThemeExtensions(textTheme),
-      ..._createSliderWidgetShowcaseThemeExtensions(colorScheme),
-      ..._createSnackBarWidgetShowcaseThemeExtensions(colorScheme),
-      ..._createTableWidgetShowcaseThemeExtensions(),
-      ..._createTooltipWidgetShowcaseThemeExtensions(textTheme),
+      ..._createWidgetShowcaseOptionThemeExtensions(),
+      ..._createWidgetShowcaseThemeExtensions(colorScheme, textTheme),
     ];
   }
 
-  List<ThemeExtension> _createAppBarWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [MyoroAppBarWidgetShowcaseThemeExtension.builder(textTheme)];
-  }
-
-  List<ThemeExtension> _createCardWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [MyoroCardWidgetShowcaseThemeExtension.builder(textTheme)];
-  }
-
-  List<ThemeExtension> _createCarouselWidgetShowcaseThemeExtensions() {
-    return const [MyoroCarouselWidgetShowcaseThemeExtension.builder()];
-  }
-
-  List<ThemeExtension> _createCheckboxWidgetShowcaseThemeExtensions() {
-    return const [MyoroCheckboxWidgetShowcaseThemeExtension.builder()];
-  }
-
-  List<ThemeExtension> _createDividerWidgetShowcaseThemeExtensions(ColorScheme colorScheme) {
-    return [
-      const MyoroBasicDividerWidgetShowcaseThemeExtension.builder(),
-      MyoroResizeDividerWidgetShowcaseThemeExtension.builder(colorScheme),
-    ];
-  }
-
-  List<ThemeExtension> _createDrawerWidgetShowcaseThemeExtensions() {
-    return const [MyoroDrawerWidgetShowcaseThemeExtension.builder()];
-  }
-
-  List<ThemeExtension> _createDropdownWidgetShowcaseThemeExtensions() {
+  List<ThemeExtension> _createWidgetShowcaseOptionThemeExtensions() {
     return const [
-      MyoroMultiDropdownWidgetShowcaseThemeExtension(),
-      MyoroSingularDropdownWidgetShowcaseThemeExtension(),
+      ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      PaddingWidgetShowcaseOptionThemeExtension.builder(),
     ];
   }
 
-  List<ThemeExtension> _createFormWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [MyoroFormWidgetShowcaseThemeExtension.builder(textTheme)];
-  }
-
-  List<ThemeExtension> _createGraphWidgetShowcaseThemeExtensions() {
-    return [
-      const MyoroBarGraphWidgetShowcaseThemeExtension.builder(),
-      MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
-    ];
-  }
-
-  List<ThemeExtension> _createInputWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [
-      const MyoroDatePickerInputWidgetShowcaseThemeExtension.builder(),
-      MyoroInputWidgetShowcaseThemeExtension.builder(textTheme),
-      const MyoroSearchInputWidgetShowcaseThemeExtension.builder(),
-    ];
-  }
-
-  List<ThemeExtension> _createLayoutBuilderWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [MyoroLayoutBuilderWidgetShowcaseThemeExtension.builder(textTheme)];
-  }
-
-  List<ThemeExtension> _createLoaderWidgetShowcaseThemeExtensions() {
-    return const [MyoroCircularLoaderWidgetShowcaseThemeExtension.builder()];
-  }
-
-  List<ThemeExtension> _createMaterialAppWidgetShowcaseThemeExtensions(
+  List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
     ColorScheme colorScheme,
     TextTheme textTheme,
   ) {
-    return [MyoroMaterialAppWidgetShowcaseThemeExtension.builder(colorScheme, textTheme)];
-  }
-
-  List<ThemeExtension> _createMenuWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [MyoroMenuWidgetShowcaseThemeExtension.builder(textTheme)];
-  }
-
-  List<ThemeExtension> _createModalWidgetShowcaseThemeExtensions(TextTheme textTheme) {
     return [
+      // App bars
+      MyoroAppBarWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Buttons
+      MyoroButtonWidgetShowcaseThemeExtension.builder(colorScheme, textTheme),
+      const MyoroIconTextButtonWidgetShowcaseThemeExtension.builder(),
+
+      // Cards
+      MyoroCardWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Carousels
+      const MyoroCarouselWidgetShowcaseThemeExtension.builder(),
+
+      // Checkboxes
+      const MyoroCheckboxWidgetShowcaseThemeExtension.builder(),
+      const MyoroGroupCheckboxWidgetShowcaseThemeExtension.builder(),
+
+      // Dividers
+      const MyoroBasicDividerWidgetShowcaseThemeExtension.builder(),
+      MyoroResizeDividerWidgetShowcaseThemeExtension.builder(colorScheme),
+
+      // Drawers
+      const MyoroDrawerWidgetShowcaseThemeExtension.builder(),
+
+      // Dropdowns
+      const MyoroMultiDropdownWidgetShowcaseThemeExtension.builder(),
+      const MyoroSingularDropdownWidgetShowcaseThemeExtension.builder(),
+
+      // Forms
+      MyoroFormWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Graphs
+      const MyoroBarGraphWidgetShowcaseThemeExtension.builder(),
+      MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
+
+      // Inputs
+      const MyoroDatePickerInputWidgetShowcaseThemeExtension.builder(),
+      MyoroInputWidgetShowcaseThemeExtension.builder(textTheme),
+      const MyoroSearchInputWidgetShowcaseThemeExtension.builder(),
+
+      // Layout builders
+      MyoroLayoutBuilderWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Loaders
+      const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
+
+      // Material apps
+      MyoroMaterialAppWidgetShowcaseThemeExtension.builder(colorScheme, textTheme),
+
+      // Menus
+      MyoroMenuWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Modals
       MyoroModalWidgetShowcaseThemeExtension.builder(textTheme),
       MyoroDialogModalWidgetShowcaseThemeExtension.builder(),
+
+      // Radios
+      const MyoroGroupRadioWidgetShowcaseThemeExtension.builder(),
+      const MyoroRadioWidgetShowcaseThemeExtension.builder(),
+
+      // Resolvers
+      const MyoroResolverWidgetShowcaseThemeExtension.builder(),
+
+      // Screens
+      MyoroScreenWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Sliders
+      MyoroSliderWidgetShowcaseThemeExtension.builder(colorScheme),
+
+      // Snack bars
+      MyoroSnackBarWidgetShowcaseThemeExtension.builder(colorScheme),
+
+      // Tables
+      const MyoroTableWidgetShowcaseThemeExtension.builder(),
+
+      // Tooltips
+      MyoroTooltipWidgetShowcaseThemeExtension.builder(textTheme),
     ];
-  }
-
-  List<ThemeExtension> _createRadioWidgetShowcaseThemeExtensions() {
-    return const [
-      MyoroGroupRadioWidgetShowcaseThemeExtension.builder(),
-      MyoroRadioWidgetShowcaseThemeExtension.builder(),
-    ];
-  }
-
-  List<ThemeExtension> _createResolverWidgetShowcaseThemeExtensions() {
-    return const [MyoroResolverWidgetShowcaseThemeExtension.builder()];
-  }
-
-  List<ThemeExtension> _createScreenWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [MyoroScreenWidgetShowcaseThemeExtension.builder(textTheme)];
-  }
-
-  List<ThemeExtension> _createSliderWidgetShowcaseThemeExtensions(ColorScheme colorScheme) {
-    return [MyoroSliderWidgetShowcaseThemeExtension.builder(colorScheme)];
-  }
-
-  List<ThemeExtension> _createSnackBarWidgetShowcaseThemeExtensions(ColorScheme colorScheme) {
-    return [MyoroSnackBarWidgetShowcaseThemeExtension.builder(colorScheme)];
-  }
-
-  List<ThemeExtension> _createTableWidgetShowcaseThemeExtensions() {
-    return const [MyoroTableWidgetShowcaseThemeExtension.builder()];
-  }
-
-  List<ThemeExtension> _createTooltipWidgetShowcaseThemeExtensions(TextTheme textTheme) {
-    return [MyoroTooltipWidgetShowcaseThemeExtension.builder(textTheme)];
   }
 }

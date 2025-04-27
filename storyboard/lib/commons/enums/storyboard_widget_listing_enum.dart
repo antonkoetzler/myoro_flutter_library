@@ -120,10 +120,8 @@ enum StoryboardWidgetListingEnum {
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
 
       // Buttons
-      // TODO
-      myoroButtonTitle => throw UnimplementedError(),
-      // TODO
-      myoroIconTextButtonTitle => throw UnimplementedError(),
+      myoroButtonTitle => const MyoroButtonWidgetShowcase(),
+      myoroIconTextButtonTitle => const MyoroIconTextButtonWidgetShowcase(),
 
       // Cards
       myoroCardTitle => const MyoroCardWidgetShowcase(),

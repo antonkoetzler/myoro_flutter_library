@@ -7,6 +7,10 @@ final class MyoroSingularDropdownWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroSingularDropdownWidgetShowcaseThemeExtension> {
   const MyoroSingularDropdownWidgetShowcaseThemeExtension();
 
+  const MyoroSingularDropdownWidgetShowcaseThemeExtension.fake();
+
+  const MyoroSingularDropdownWidgetShowcaseThemeExtension.builder();
+
   @override
   MyoroSingularDropdownWidgetShowcaseThemeExtension copyWith() {
     return this;
@@ -18,6 +22,17 @@ final class MyoroSingularDropdownWidgetShowcaseThemeExtension
     double t,
   ) {
     return this;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroSingularDropdownWidgetShowcaseThemeExtension &&
+        other.runtimeType == runtimeType;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll(const []);
   }
 
   @override

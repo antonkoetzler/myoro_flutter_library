@@ -48,7 +48,9 @@ final class _ColorOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoryboardColorDropdown(onChanged: (Color? color) => _onChanged(context, color));
+    return ColorDropdownWidgetShowcaseOption(
+      onChanged: (Color? color) => _onChanged(context, color),
+    );
   }
 }
 

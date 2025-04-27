@@ -5,6 +5,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Text configuration of [MyoroIconTextButton].
 class MyoroIconTextButtonTextConfiguration extends Equatable {
+  static const maxLinesDefaultValue = 1;
+  static const overflowDefaultValue = TextOverflow.ellipsis;
+  static const alignmentDefaultValue = TextAlign.center;
+
   /// [Text.data]
   final String text;
 
@@ -22,9 +26,9 @@ class MyoroIconTextButtonTextConfiguration extends Equatable {
 
   const MyoroIconTextButtonTextConfiguration({
     required this.text,
-    this.maxLines = 1,
-    this.overflow = TextOverflow.ellipsis,
-    this.alignment = TextAlign.center,
+    this.maxLines = maxLinesDefaultValue,
+    this.overflow = overflowDefaultValue,
+    this.alignment = alignmentDefaultValue,
     this.style,
   }) : assert(text.length != 0, '[MyoroIconTextButtonTextConfiguration]: [text] cannot be empty.');
 

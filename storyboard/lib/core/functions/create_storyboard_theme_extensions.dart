@@ -18,11 +18,7 @@ List<ThemeExtension> _createStoryboardCommonsThemeExtensions(
   ColorScheme colorScheme,
   TextTheme textTheme,
 ) {
-  return [..._createDropdownThemeExtensions(), ..._createScreenThemeExtensions(textTheme)];
-}
-
-List<ThemeExtension> _createDropdownThemeExtensions() {
-  return const [StoryboardColorDropdownThemeExtension.builder()];
+  return [..._createScreenThemeExtensions(textTheme)];
 }
 
 List<ThemeExtension> _createScreenThemeExtensions(TextTheme textTheme) {

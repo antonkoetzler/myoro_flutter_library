@@ -18,20 +18,30 @@ enum MyoroButtonVariantEnum {
   }
 
   /// [MyoroButtonConfiguration.backgroundColorBuilder].
-  Color backgroundColorBuilder(BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
+  Color backgroundColorBuilder(
+    BuildContext context,
+    MyoroTapStatusEnum tapStatusEnum, {
+    bool onTapProvided = true,
+  }) {
     final themeExtension = _getThemeExtension(context);
 
     return switch (this) {
-      primary => switch (tapStatusEnum) {
-        MyoroTapStatusEnum.idle => themeExtension.primaryIdleBackgroundColor,
-        MyoroTapStatusEnum.hover => themeExtension.primaryHoverBackgroundColor,
-        MyoroTapStatusEnum.tap => themeExtension.primaryTapBackgroundColor,
-      },
-      secondary => switch (tapStatusEnum) {
-        MyoroTapStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
-        MyoroTapStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
-        MyoroTapStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
-      },
+      primary =>
+        onTapProvided
+            ? switch (tapStatusEnum) {
+              MyoroTapStatusEnum.idle => themeExtension.primaryIdleBackgroundColor,
+              MyoroTapStatusEnum.hover => themeExtension.primaryHoverBackgroundColor,
+              MyoroTapStatusEnum.tap => themeExtension.primaryTapBackgroundColor,
+            }
+            : themeExtension.primaryIdleBackgroundColor,
+      secondary =>
+        onTapProvided
+            ? switch (tapStatusEnum) {
+              MyoroTapStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
+              MyoroTapStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
+              MyoroTapStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
+            }
+            : themeExtension.secondaryIdleBackgroundColor,
     };
   }
 

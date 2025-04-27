@@ -8,8 +8,8 @@
 1. feature: `getRandomColor`, `getRandomTextStyle`, `getRandomCursor`, etc
 1. (**IN PROGRESS**) refactor: Buttons
 
-- (**YOU ARE HERE**) Implement the button's tests
-- Implement widget showcases
+- (**YOU ARE HERE**) Implement widget showcases
+- Implement the button's tests
 
 1. (**DELAYED**) feature: `MyoroAccordion`
 
@@ -19,7 +19,7 @@
 1. (**DELAYED**) refactor: Revamping Storyboard
 
 - Documentation on how to use storyboard
-- Fixing old tests
+- Make generic widgets for common widget showcase options
 
 1. chore: Make widgets betters on mobile
 
