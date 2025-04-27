@@ -12,40 +12,30 @@ final class MyoroButtonWidgetShowcaseBackgroundColorBuilderOption extends Statel
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
     final bloc = context.resolveBloc<MyoroButtonWidgetShowcaseBloc>();
 
     return BlocBuilder<MyoroButtonWidgetShowcaseBloc, MyoroButtonWidgetShowcaseState>(
-      buildWhen: (previous, current) {
-        return previous.backgroundColorBuilderEnabled != current.backgroundColorBuilderEnabled;
-      },
-      builder: (_, MyoroButtonWidgetShowcaseState state) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          spacing: themeExtension.spacing,
-          children: [
-            MyoroCheckbox(
-              label: '[MyoroButtonConfiguration.backgroundColorBuilder]',
-              initialValue: state.backgroundColorBuilderEnabled,
-              onChanged: (value) => _checkboxOnChanged(bloc, value),
-            ),
-            if (state.backgroundColorBuilderEnabled) ...[
-              ColorDropdownWidgetShowcaseOption(
-                label: '[MyoroTapStatusEnum.idle] color',
-                onChanged: (color) => _idleColorOnChanged(bloc, color),
-              ),
-              ColorDropdownWidgetShowcaseOption(
-                label: '[MyoroTapStatusEnum.hover] color',
-                onChanged: (color) => _hoverColorOnChanged(bloc, color),
-              ),
-              ColorDropdownWidgetShowcaseOption(
-                label: '[MyoroTapStatusEnum.tap] color',
-                onChanged: (color) => _tapColorOnChanged(bloc, color),
-              ),
-            ],
-          ],
-        );
-      },
+      buildWhen: _buildWhen,
+      builder: (_, state) => _builder(bloc, state),
+    );
+  }
+
+  bool _buildWhen(MyoroButtonWidgetShowcaseState previous, MyoroButtonWidgetShowcaseState current) {
+    return previous.backgroundColorBuilderEnabled != current.backgroundColorBuilderEnabled;
+  }
+
+  Widget _builder(MyoroButtonWidgetShowcaseBloc bloc, MyoroButtonWidgetShowcaseState state) {
+    return MyoroTapStatusEnumWidgetShowcaseOption(
+      configuration: MyoroTapStatusEnumWidgetShowcaseOptionConfiguration(
+        label: 'Background color builder',
+        enabledConfiguration: MyoroTapStatusEnumWidgetShowcaseOptionEnabledConfiguration(
+          initialValue: state.backgroundColorBuilderEnabled,
+          onChanged: (value) => _checkboxOnChanged(bloc, value),
+        ),
+        idleColorOnChanged: (color) => _idleColorOnChanged(bloc, color),
+        hoverColorOnChanged: (color) => _hoverColorOnChanged(bloc, color),
+        tapColorOnChanged: (color) => _tapColorOnChanged(bloc, color),
+      ),
     );
   }
 

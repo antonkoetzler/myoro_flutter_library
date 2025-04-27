@@ -5,44 +5,47 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// [ThemeExtension] of [PaddingWidgetShowcaseOption].
+/// [ThemeExtension] of [MyoroTapStatusEnumWidgetShowcaseOption].
 ///
 /// TODO: Needs to be tested.
-final class PaddingWidgetShowcaseOptionThemeExtension
-    extends ThemeExtension<PaddingWidgetShowcaseOptionThemeExtension> {
-  /// Spacing of general [Widget]s.
+final class MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension
+    extends ThemeExtension<MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension> {
+  /// Spacing of [Widget]s.
   final double spacing;
 
   /// [TextStyle] of [_Label].
   final TextStyle labelTextStyle;
 
-  const PaddingWidgetShowcaseOptionThemeExtension({
+  const MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension({
     required this.spacing,
     required this.labelTextStyle,
   });
 
-  PaddingWidgetShowcaseOptionThemeExtension.fake()
+  MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
 
-  PaddingWidgetShowcaseOptionThemeExtension.builder(TextTheme textTheme)
+  MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension.builder(TextTheme textTheme)
     : spacing = 10,
       labelTextStyle = textTheme.titleSmall!;
 
   @override
-  PaddingWidgetShowcaseOptionThemeExtension copyWith({double? spacing, TextStyle? labelTextStyle}) {
-    return PaddingWidgetShowcaseOptionThemeExtension(
+  MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension copyWith({
+    double? spacing,
+    TextStyle? labelTextStyle,
+  }) {
+    return MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension(
       spacing: spacing ?? this.spacing,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,
     );
   }
 
   @override
-  PaddingWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>? other,
+  MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension lerp(
+    covariant ThemeExtension<MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension>? other,
     double t,
   ) {
-    if (other is! PaddingWidgetShowcaseOptionThemeExtension) return this;
+    if (other is! MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
@@ -51,7 +54,7 @@ final class PaddingWidgetShowcaseOptionThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is PaddingWidgetShowcaseOptionThemeExtension &&
+    return other is MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension &&
         other.runtimeType == runtimeType &&
         other.spacing == spacing &&
         other.labelTextStyle == labelTextStyle;
@@ -64,7 +67,7 @@ final class PaddingWidgetShowcaseOptionThemeExtension
 
   @override
   String toString() =>
-      'PaddingWidgetShowcaseOptionThemeExtension(\n'
+      'MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension(\n'
       '  spacing: $spacing,\n'
       '  labelTextStyle: $labelTextStyle,\n'
       ');';

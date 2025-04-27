@@ -30,6 +30,7 @@ final class MyoroIconTextButtonWidgetShowcase extends StatelessWidget {
           _InvertOption(),
           _SpacingOption(),
           _PaddingOption(),
+          _ContentColorBuilderOption(),
         ],
       ),
     );
@@ -176,7 +177,33 @@ final class _PaddingOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    you are here.
-    return PaddingWidgetShowcaseOption();
+    final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
+
+    return PaddingWidgetShowcaseOption(
+      configuration: PaddingWidgetShowcaseOptionConfiguration(
+        allConfiguration: PaddingWidgetShowcaseOptionAllConfiguration(
+          topOnChanged: (value) => _topOnChanged(bloc, value),
+          bottomOnChanged: (value) => _bottomOnChanged(bloc, value),
+          leftOnChanged: (value) => _leftOnChanged(bloc, value),
+          rightOnChanged: (value) => _rightOnChanged(bloc, value),
+        ),
+      ),
+    );
+  }
+
+  void _topOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, double value) {
+    bloc.add(SetPaddingEvent(top: value));
+  }
+
+  void _bottomOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, double value) {
+    bloc.add(SetPaddingEvent(bottom: value));
+  }
+
+  void _leftOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, double value) {
+    bloc.add(SetPaddingEvent(left: value));
+  }
+
+  void _rightOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, double value) {
+    bloc.add(SetPaddingEvent(right: value));
   }
 }

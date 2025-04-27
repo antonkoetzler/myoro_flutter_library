@@ -11,16 +11,17 @@ final class WidgetShowcaseModule implements Module {
   List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
       WidgetShowcaseThemeExtension.builder(colorScheme),
-      ..._createWidgetShowcaseOptionThemeExtensions(),
+      ..._createWidgetShowcaseOptionThemeExtensions(textTheme),
       ..._createWidgetShowcaseThemeExtensions(colorScheme, textTheme),
     ];
   }
 
-  List<ThemeExtension> _createWidgetShowcaseOptionThemeExtensions() {
-    return const [
-      ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
-      MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
-      PaddingWidgetShowcaseOptionThemeExtension.builder(),
+  List<ThemeExtension> _createWidgetShowcaseOptionThemeExtensions(TextTheme textTheme) {
+    return [
+      const ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension.builder(textTheme),
+      PaddingWidgetShowcaseOptionThemeExtension.builder(textTheme),
     ];
   }
 

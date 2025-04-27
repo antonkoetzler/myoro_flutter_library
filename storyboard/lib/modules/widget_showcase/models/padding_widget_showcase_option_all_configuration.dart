@@ -2,20 +2,54 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
-typedef PaddingWidgetShowcaseOptionAllConfigurationCallback =
-    double Function(double value);
-
-/// [EdgeInsets.all] configuration of [PaddingWidgetShowcaseConfiguration].
+/// [EdgeInsets.all] configuration of [PaddingWidgetShowcaseOptionConfiguration].
+///
+/// TODO: Needs to be tested.
 final class PaddingWidgetShowcaseOptionAllConfiguration extends Equatable {
   /// [EdgeInsets.top]
-  final PaddingWidgetShowcaseOptionAllConfigurationCallback topOnChanged;
+  final PaddingWidgetShowcaseOptionConfigurationOnChanged topOnChanged;
 
   /// [EdgeInsets.bottom]
-  final PaddingWidgetShowcaseOptionAllConfigurationCallback bottomOnChanged;
+  final PaddingWidgetShowcaseOptionConfigurationOnChanged bottomOnChanged;
 
   /// [EdgeInsets.left]
-  final PaddingWidgetShowcaseOptionAllConfigurationCallback leftOnChanged;
+  final PaddingWidgetShowcaseOptionConfigurationOnChanged leftOnChanged;
 
   /// [EdgeInsets.right]
-  final PaddingWidgetShowcaseOptionAllConfigurationCallback rightOnChanged;
+  final PaddingWidgetShowcaseOptionConfigurationOnChanged rightOnChanged;
+
+  const PaddingWidgetShowcaseOptionAllConfiguration({
+    required this.topOnChanged,
+    required this.bottomOnChanged,
+    required this.leftOnChanged,
+    required this.rightOnChanged,
+  });
+
+  PaddingWidgetShowcaseOptionAllConfiguration copyWith({
+    PaddingWidgetShowcaseOptionConfigurationOnChanged? topOnChanged,
+    PaddingWidgetShowcaseOptionConfigurationOnChanged? bottomOnChanged,
+    PaddingWidgetShowcaseOptionConfigurationOnChanged? leftOnChanged,
+    PaddingWidgetShowcaseOptionConfigurationOnChanged? rightOnChanged,
+  }) {
+    return PaddingWidgetShowcaseOptionAllConfiguration(
+      topOnChanged: topOnChanged ?? this.topOnChanged,
+      bottomOnChanged: bottomOnChanged ?? this.bottomOnChanged,
+      leftOnChanged: leftOnChanged ?? this.leftOnChanged,
+      rightOnChanged: rightOnChanged ?? this.rightOnChanged,
+    );
+  }
+
+  @override
+  List<Object?> get props {
+    return [topOnChanged, bottomOnChanged, leftOnChanged, rightOnChanged];
+  }
+
+  @override
+  String toString() =>
+      'PaddingWidgetShowcaseOptionAllConfiguration(\n'
+      '  topOnChanged: $topOnChanged,\n'
+      '  bottomOnChanged: $bottomOnChanged,\n'
+      '  leftOnChanged: $leftOnChanged,\n'
+      '  rightOnChanged: $rightOnChanged,\n'
+      ');';
 }
