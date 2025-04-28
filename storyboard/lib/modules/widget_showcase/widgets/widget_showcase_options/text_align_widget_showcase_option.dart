@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// [WidgetShowcaseOption] used to pick a [TextOverflow].
+/// [TextAlign] [WidgetShowcaseOption].
 ///
 /// TODO: Needs to be tested.
-final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
+final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
 
   /// Configuration.
-  final WidgetShowcaseOptionDropdownConfiguration<TextOverflow> dropdownConfiguration;
+  final WidgetShowcaseOptionDropdownConfiguration<TextAlign> dropdownConfiguration;
 
-  const TextOverflowWidgetShowcaseOption({
+  const TextAlignWidgetShowcaseOption({
     super.key,
     this.labelConfiguration,
     required this.dropdownConfiguration,
@@ -22,30 +22,29 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return WidgetShowcaseOption(
       labelConfiguration:
-          labelConfiguration ?? const WidgetShowcaseOptionLabelConfiguration(label: 'TextOverflow'),
-      child: MyoroSingularDropdown<TextOverflow>(
+          labelConfiguration ?? const WidgetShowcaseOptionLabelConfiguration(label: 'TextAlign'),
+      child: MyoroSingularDropdown<TextAlign>(
         configuration: MyoroSingularDropdownConfiguration(
-          initiallySelectedItem: dropdownConfiguration.initiallySelectedItem,
-          allowItemClearing: dropdownConfiguration.allowItemClearing,
           menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
           selectedItemBuilder: _labelBuilder,
+          initiallySelectedItem: dropdownConfiguration.initiallySelectedItem,
           onChanged: dropdownConfiguration.onChanged,
         ),
       ),
     );
   }
 
-  Set<TextOverflow> _request() {
-    return TextOverflow.values.toSet();
+  Set<TextAlign> _request() {
+    return TextAlign.values.toSet();
   }
 
-  MyoroMenuItem _itemBuilder(TextOverflow overflow) {
+  MyoroMenuItem _itemBuilder(TextAlign textAlign) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _labelBuilder(overflow)),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _labelBuilder(textAlign)),
     );
   }
 
-  String _labelBuilder(TextOverflow overflow) {
-    return overflow.toString();
+  String _labelBuilder(TextAlign textAlign) {
+    return textAlign.name;
   }
 }
