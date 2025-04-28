@@ -8,7 +8,10 @@ final class WidgetShowcaseModule implements Module {
   const WidgetShowcaseModule();
 
   @override
-  List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
+  List<ThemeExtension> themeExtensionsBuilder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) {
     return [
       WidgetShowcaseThemeExtension.builder(colorScheme),
       ..._createWidgetShowcaseOptionThemeExtensions(textTheme),
@@ -16,12 +19,17 @@ final class WidgetShowcaseModule implements Module {
     ];
   }
 
-  List<ThemeExtension> _createWidgetShowcaseOptionThemeExtensions(TextTheme textTheme) {
+  List<ThemeExtension> _createWidgetShowcaseOptionThemeExtensions(
+    TextTheme textTheme,
+  ) {
     return [
-      const ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
-      const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
-      MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension.builder(textTheme),
-      PaddingWidgetShowcaseOptionThemeExtension.builder(textTheme),
+      const ColorWidgetShowcaseOptionThemeExtension.builder(),
+      const IconWidgetShowcaseOptionThemeExtension.builder(),
+      const MouseCursorWidgetShowcaseOptionThemeExtension.builder(),
+      const MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension.builder(),
+      const PaddingWidgetShowcaseOptionThemeExtension.builder(),
+      const TextOverflowWidgetShowcaseOptionThemeExtension.builder(),
+      WidgetShowcaseOptionThemeExtension.builder(textTheme),
     ];
   }
 
@@ -77,7 +85,10 @@ final class WidgetShowcaseModule implements Module {
       const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
 
       // Material apps
-      MyoroMaterialAppWidgetShowcaseThemeExtension.builder(colorScheme, textTheme),
+      MyoroMaterialAppWidgetShowcaseThemeExtension.builder(
+        colorScheme,
+        textTheme,
+      ),
 
       // Menus
       MyoroMenuWidgetShowcaseThemeExtension.builder(textTheme),

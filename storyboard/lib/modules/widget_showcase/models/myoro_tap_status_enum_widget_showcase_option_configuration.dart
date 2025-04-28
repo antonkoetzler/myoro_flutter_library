@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ColorDropdownWidgetShowcaseOption] of the respective [MyoroTapStatusEnum].
-typedef MyoroTapStatusEnumWidgetShowcaseOptionOnChanged = void Function(Color? color);
+typedef MyoroTapStatusEnumWidgetShowcaseOptionOnChanged =
+    void Function(Color? color);
 
 /// Configuration model of [MyoroTapStatusEnumWidgetShowcaseOption].
 ///
 /// TODO: Needs to be tested.
-final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration extends Equatable {
-  /// Text of [_Label].
-  final String label;
-
-  /// Null enabled configuration.
-  final MyoroTapStatusEnumWidgetShowcaseOptionEnabledConfiguration? enabledConfiguration;
+final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration
+    extends Equatable {
+  /// [WidgetShowcaseOption.labelConfiguration]
+  final WidgetShowcaseOptionLabelConfiguration labelConfiguration;
 
   /// [MyoroTapStatusEnum.idle] callback.
   final MyoroTapStatusEnumWidgetShowcaseOptionOnChanged idleColorOnChanged;
@@ -25,25 +24,20 @@ final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration extends Equatabl
   final MyoroTapStatusEnumWidgetShowcaseOptionOnChanged tapColorOnChanged;
 
   const MyoroTapStatusEnumWidgetShowcaseOptionConfiguration({
-    required this.label,
-    this.enabledConfiguration,
+    required this.labelConfiguration,
     required this.idleColorOnChanged,
     required this.hoverColorOnChanged,
     required this.tapColorOnChanged,
   });
 
   MyoroTapStatusEnumWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    MyoroTapStatusEnumWidgetShowcaseOptionEnabledConfiguration? enabledConfiguration,
-    bool enabledConfigurationProvided = true,
+    WidgetShowcaseOptionLabelConfiguration? labelConfiguration,
     MyoroTapStatusEnumWidgetShowcaseOptionOnChanged? idleColorOnChanged,
     MyoroTapStatusEnumWidgetShowcaseOptionOnChanged? hoverColorOnChanged,
     MyoroTapStatusEnumWidgetShowcaseOptionOnChanged? tapColorOnChanged,
   }) {
     return MyoroTapStatusEnumWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
-      enabledConfiguration:
-          enabledConfigurationProvided ? (enabledConfiguration ?? this.enabledConfiguration) : null,
+      labelConfiguration: labelConfiguration ?? this.labelConfiguration,
       idleColorOnChanged: idleColorOnChanged ?? this.idleColorOnChanged,
       hoverColorOnChanged: hoverColorOnChanged ?? this.hoverColorOnChanged,
       tapColorOnChanged: tapColorOnChanged ?? this.tapColorOnChanged,
@@ -53,8 +47,7 @@ final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration extends Equatabl
   @override
   List<Object?> get props {
     return [
-      label,
-      enabledConfiguration,
+      labelConfiguration,
       idleColorOnChanged,
       hoverColorOnChanged,
       tapColorOnChanged,
@@ -64,8 +57,7 @@ final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration extends Equatabl
   @override
   String toString() =>
       'MyoroTapStatusEnumWidgetShowcaseOptionConfiguration(\n'
-      '  label: $label,\n'
-      '  enabledConfiguration: $enabledConfiguration,\n'
+      '  labelConfiguration: $labelConfiguration,\n'
       '  idleColorOnChanged: $idleColorOnChanged,\n'
       '  hoverColorOnChanged: $hoverColorOnChanged,\n'
       '  tapColorOnChanged: $tapColorOnChanged,\n'

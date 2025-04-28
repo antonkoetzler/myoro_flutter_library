@@ -14,15 +14,20 @@ final class MyoroButtonWidgetShowcaseCursorOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroButtonWidgetShowcaseBloc>();
 
-    return MouseCursorDropdownWidgetShowcaseOption(
-      label: '[MyoroButtonConfiguration.cursor]',
+    return MouseCursorWidgetShowcaseOption(
+      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+        label: '[MyoroButtonConfiguration.cursor]',
+      ),
       onChanged: (SystemMouseCursor? cursor) {
         return _onChanged(bloc, cursor);
       },
     );
   }
 
-  void _onChanged(MyoroButtonWidgetShowcaseBloc bloc, SystemMouseCursor? cursor) {
+  void _onChanged(
+    MyoroButtonWidgetShowcaseBloc bloc,
+    SystemMouseCursor? cursor,
+  ) {
     bloc.add(SetCursorEvent(cursor));
   }
 }

@@ -41,9 +41,12 @@ final class MyoroIconTextButtonWidgetShowcaseState extends Equatable {
     this.icon,
     this.iconSize,
     this.text = textDefaultValue,
-    this.textMaxLines = MyoroIconTextButtonTextConfiguration.maxLinesDefaultValue,
-    this.textOverflow = MyoroIconTextButtonTextConfiguration.overflowDefaultValue,
-    this.textAlignment = MyoroIconTextButtonTextConfiguration.alignmentDefaultValue,
+    this.textMaxLines =
+        MyoroIconTextButtonTextConfiguration.maxLinesDefaultValue,
+    this.textOverflow =
+        MyoroIconTextButtonTextConfiguration.overflowDefaultValue,
+    this.textAlignment =
+        MyoroIconTextButtonTextConfiguration.alignmentDefaultValue,
     this.textStyle,
   });
 
@@ -73,12 +76,20 @@ final class MyoroIconTextButtonWidgetShowcaseState extends Equatable {
       invert: invert ?? this.invert,
       spacing: spacing ?? this.spacing,
       padding: padding ?? this.padding,
-      contentColorBuilderEnabled: contentColorBuilderEnabled ?? this.contentColorBuilderEnabled,
+      contentColorBuilderEnabled:
+          contentColorBuilderEnabled ?? this.contentColorBuilderEnabled,
       idleContentColor:
-          idleContentColorProvided ? (idleContentColor ?? this.idleContentColor) : null,
+          idleContentColorProvided
+              ? (idleContentColor ?? this.idleContentColor)
+              : null,
       hoverContentColor:
-          hoverContentColorProvided ? (hoverContentColor ?? this.hoverContentColor) : null,
-      tapContentColor: tapContentColorProvided ? (tapContentColor ?? this.tapContentColor) : null,
+          hoverContentColorProvided
+              ? (hoverContentColor ?? this.hoverContentColor)
+              : null,
+      tapContentColor:
+          tapContentColorProvided
+              ? (tapContentColor ?? this.tapContentColor)
+              : null,
       icon: iconProvided ? (icon ?? this.icon) : null,
       iconSize: iconSizeProvided ? (iconSize ?? this.iconSize) : null,
       text: text ?? this.text,

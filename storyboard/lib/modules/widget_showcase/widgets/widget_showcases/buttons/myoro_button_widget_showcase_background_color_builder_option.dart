@@ -7,28 +7,36 @@ import 'package:storyboard/storyboard.dart';
 /// [MyoroButtonConfiguration.backgroundColorBuilder] option of [MyoroButtonWidgetShowcase].
 ///
 /// TODO: Needs to be tested.
-final class MyoroButtonWidgetShowcaseBackgroundColorBuilderOption extends StatelessWidget {
+final class MyoroButtonWidgetShowcaseBackgroundColorBuilderOption
+    extends StatelessWidget {
   const MyoroButtonWidgetShowcaseBackgroundColorBuilderOption({super.key});
 
   @override
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroButtonWidgetShowcaseBloc>();
 
-    return BlocBuilder<MyoroButtonWidgetShowcaseBloc, MyoroButtonWidgetShowcaseState>(
-      buildWhen: _buildWhen,
-      builder: (_, state) => _builder(bloc, state),
-    );
+    return BlocBuilder<
+      MyoroButtonWidgetShowcaseBloc,
+      MyoroButtonWidgetShowcaseState
+    >(buildWhen: _buildWhen, builder: (_, state) => _builder(bloc, state));
   }
 
-  bool _buildWhen(MyoroButtonWidgetShowcaseState previous, MyoroButtonWidgetShowcaseState current) {
-    return previous.backgroundColorBuilderEnabled != current.backgroundColorBuilderEnabled;
+  bool _buildWhen(
+    MyoroButtonWidgetShowcaseState previous,
+    MyoroButtonWidgetShowcaseState current,
+  ) {
+    return previous.backgroundColorBuilderEnabled !=
+        current.backgroundColorBuilderEnabled;
   }
 
-  Widget _builder(MyoroButtonWidgetShowcaseBloc bloc, MyoroButtonWidgetShowcaseState state) {
+  Widget _builder(
+    MyoroButtonWidgetShowcaseBloc bloc,
+    MyoroButtonWidgetShowcaseState state,
+  ) {
     return MyoroTapStatusEnumWidgetShowcaseOption(
       configuration: MyoroTapStatusEnumWidgetShowcaseOptionConfiguration(
-        label: 'Background color builder',
-        enabledConfiguration: MyoroTapStatusEnumWidgetShowcaseOptionEnabledConfiguration(
+        labelConfiguration: WidgetShowcaseOptionLabelConfiguration(
+          label: 'Background color builder',
           initialValue: state.backgroundColorBuilderEnabled,
           onChanged: (value) => _checkboxOnChanged(bloc, value),
         ),
@@ -39,8 +47,13 @@ final class MyoroButtonWidgetShowcaseBackgroundColorBuilderOption extends Statel
     );
   }
 
-  void _checkboxOnChanged(MyoroButtonWidgetShowcaseBloc bloc, bool backgroundColorBuilderEnabled) {
-    bloc.add(SetBackgroundColorBuilderEnabledEvent(backgroundColorBuilderEnabled));
+  void _checkboxOnChanged(
+    MyoroButtonWidgetShowcaseBloc bloc,
+    bool backgroundColorBuilderEnabled,
+  ) {
+    bloc.add(
+      SetBackgroundColorBuilderEnabledEvent(backgroundColorBuilderEnabled),
+    );
   }
 
   void _idleColorOnChanged(MyoroButtonWidgetShowcaseBloc bloc, Color? color) {

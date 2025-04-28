@@ -2,31 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-typedef ColorDropdownWidgetShowcaseOptionOnChanged = void Function(Color? color);
+typedef ColorWidgetShowcaseOptionOnChanged =
+    void Function(Color? color);
 
 /// [Color] picker [MyoroSingularDropdown].
 ///
 /// TODO: Needs to be tested.
-final class ColorDropdownWidgetShowcaseOption extends StatelessWidget {
-  /// [MyoroSingularDropdownConfiguration.label]
-  final String? label;
+final class ColorWidgetShowcaseOption extends StatelessWidget {
+  /// [WidgetShowcaseOption.labelConfiguration]
+  final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
-  final ColorDropdownWidgetShowcaseOptionOnChanged onChanged;
+  final ColorWidgetShowcaseOptionOnChanged onChanged;
 
-  const ColorDropdownWidgetShowcaseOption({super.key, this.label, required this.onChanged});
+  const ColorWidgetShowcaseOption({
+    super.key,
+    this.labelConfiguration,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MyoroSingularDropdown<Color>(
-      configuration: MyoroSingularDropdownConfiguration(
-        label: label ?? 'Color',
-        menuConfiguration: MyoroMenuConfiguration(
-          request: kMyoroTestColors.toSet,
-          itemBuilder: _itemBuilder,
+    return WidgetShowcaseOption(
+      labelConfiguration:
+          labelConfiguration ??
+          const WidgetShowcaseOptionLabelConfiguration(label: 'Color'),
+      child: MyoroSingularDropdown<Color>(
+        configuration: MyoroSingularDropdownConfiguration(
+          menuConfiguration: MyoroMenuConfiguration(
+            request: kMyoroTestColors.toSet,
+            itemBuilder: _itemBuilder,
+          ),
+          selectedItemBuilder: _itemLabelBuilder,
+          onChanged: onChanged,
         ),
-        selectedItemBuilder: _itemLabelBuilder,
-        onChanged: onChanged,
       ),
     );
   }
@@ -53,7 +62,10 @@ final class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context.resolveThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension>();
+        context
+            .resolveThemeExtension<
+              ColorWidgetShowcaseOptionThemeExtension
+            >();
     final EdgeInsets itemPadding = themeExtension.itemPadding;
     final double itemSpacing = themeExtension.itemSpacing;
 
@@ -61,7 +73,10 @@ final class _Item extends StatelessWidget {
       padding: itemPadding,
       child: Row(
         spacing: itemSpacing,
-        children: [_ItemColor(_color), Expanded(child: _ItemText(_color, _tapStatusEnum))],
+        children: [
+          _ItemColor(_color),
+          Expanded(child: _ItemText(_color, _tapStatusEnum)),
+        ],
       ),
     );
   }
@@ -75,10 +90,17 @@ final class _ItemColor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context.resolveThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension>();
+        context
+            .resolveThemeExtension<
+              ColorWidgetShowcaseOptionThemeExtension
+            >();
     final double itemColorSize = themeExtension.itemColorSize;
 
-    return Container(width: itemColorSize, height: itemColorSize, color: _color);
+    return Container(
+      width: itemColorSize,
+      height: itemColorSize,
+      color: _color,
+    );
   }
 }
 
@@ -96,7 +118,10 @@ final class _ItemText extends StatelessWidget {
     return Text(
       _color.hexadecimalFormat,
       style: iconTextButtonThemeExtension.textStyle.withColor(
-        MyoroButtonVariantEnum.primary.contentColorBuilder(context, _tapStatusEnum),
+        MyoroButtonVariantEnum.primary.contentColorBuilder(
+          context,
+          _tapStatusEnum,
+        ),
       ),
     );
   }

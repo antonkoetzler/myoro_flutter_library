@@ -4,12 +4,12 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// [ThemeExtension] of [ColorDropdownWidgetShowcaseOption].
+/// [ThemeExtension] of [ColorWidgetShowcaseOption].
 ///
 /// TODO: Needs to be tested.
 @immutable
-final class ColorDropdownWidgetShowcaseOptionThemeExtension
-    extends ThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension> {
+final class ColorWidgetShowcaseOptionThemeExtension
+    extends ThemeExtension<ColorWidgetShowcaseOptionThemeExtension> {
   /// [EdgeInsets] of [_Item].
   final EdgeInsets itemPadding;
 
@@ -19,29 +19,29 @@ final class ColorDropdownWidgetShowcaseOptionThemeExtension
   /// Size of [_ItemColor].
   final double itemColorSize;
 
-  const ColorDropdownWidgetShowcaseOptionThemeExtension({
+  const ColorWidgetShowcaseOptionThemeExtension({
     required this.itemPadding,
     required this.itemSpacing,
     required this.itemColorSize,
   });
 
-  ColorDropdownWidgetShowcaseOptionThemeExtension.fake()
+  ColorWidgetShowcaseOptionThemeExtension.fake()
     : itemPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
       itemSpacing = faker.randomGenerator.decimal(scale: 50),
       itemColorSize = faker.randomGenerator.decimal(scale: 100);
 
-  const ColorDropdownWidgetShowcaseOptionThemeExtension.builder()
+  const ColorWidgetShowcaseOptionThemeExtension.builder()
     : itemPadding = const EdgeInsets.all(10),
       itemSpacing = 10,
       itemColorSize = 75;
 
   @override
-  ColorDropdownWidgetShowcaseOptionThemeExtension copyWith({
+  ColorWidgetShowcaseOptionThemeExtension copyWith({
     EdgeInsets? itemPadding,
     double? itemSpacing,
     double? itemColorSize,
   }) {
-    return ColorDropdownWidgetShowcaseOptionThemeExtension(
+    return ColorWidgetShowcaseOptionThemeExtension(
       itemPadding: itemPadding ?? this.itemPadding,
       itemSpacing: itemSpacing ?? this.itemSpacing,
       itemColorSize: itemColorSize ?? this.itemColorSize,
@@ -49,11 +49,12 @@ final class ColorDropdownWidgetShowcaseOptionThemeExtension
   }
 
   @override
-  ColorDropdownWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension>? other,
+  ColorWidgetShowcaseOptionThemeExtension lerp(
+    covariant ThemeExtension<ColorWidgetShowcaseOptionThemeExtension>?
+    other,
     double t,
   ) {
-    if (other is! ColorDropdownWidgetShowcaseOptionThemeExtension) return this;
+    if (other is! ColorWidgetShowcaseOptionThemeExtension) return this;
     return copyWith(
       itemPadding: EdgeInsets.lerp(itemPadding, other.itemPadding, t),
       itemSpacing: lerpDouble(itemSpacing, other.itemSpacing, t),
@@ -63,7 +64,7 @@ final class ColorDropdownWidgetShowcaseOptionThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is ColorDropdownWidgetShowcaseOptionThemeExtension &&
+    return other is ColorWidgetShowcaseOptionThemeExtension &&
         other.runtimeType == runtimeType &&
         other.itemPadding == itemPadding &&
         other.itemSpacing == itemSpacing &&
@@ -77,7 +78,7 @@ final class ColorDropdownWidgetShowcaseOptionThemeExtension
 
   @override
   String toString() =>
-      'ColorDropdownWidgetShowcaseOptionThemeExtension(\n'
+      'ColorWidgetShowcaseOptionThemeExtension(\n'
       '  itemPadding: $itemPadding,\n'
       '  itemSpacing: $itemSpacing,\n'
       '  itemColorSize: $itemColorSize,\n'

@@ -18,8 +18,9 @@
 
 1. (**DELAYED**) refactor: Revamping Storyboard
 
+- Refactor `WidgetShowcase`'s UI
+- Make every `WidgetShowcase` option use `WidgetShowcaseOption`
 - Documentation on how to use storyboard
-- Make generic widgets for common widget showcase options
 
 1. chore: Make widgets betters on mobile
 

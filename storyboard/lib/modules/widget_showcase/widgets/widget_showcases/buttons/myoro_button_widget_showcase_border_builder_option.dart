@@ -7,15 +7,21 @@ import 'package:storyboard/storyboard.dart';
 /// [MyoroButtonConfiguration.borderBuilder] option of [MyoroButtonWidgetShowcase].
 ///
 /// TODO: Needs to be tested.
-final class MyoroButtonWidgetShowcaseBorderBuilderOption extends StatelessWidget {
+final class MyoroButtonWidgetShowcaseBorderBuilderOption
+    extends StatelessWidget {
   const MyoroButtonWidgetShowcaseBorderBuilderOption({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
     final bloc = context.resolveBloc<MyoroButtonWidgetShowcaseBloc>();
 
-    return BlocBuilder<MyoroButtonWidgetShowcaseBloc, MyoroButtonWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroButtonWidgetShowcaseBloc,
+      MyoroButtonWidgetShowcaseState
+    >(
       buildWhen: (previous, current) {
         return previous.borderBuilderEnabled != current.borderBuilderEnabled;
       },
@@ -37,16 +43,25 @@ final class MyoroButtonWidgetShowcaseBorderBuilderOption extends StatelessWidget
                 initialValue: state.borderRadius,
                 onChanged: (value) => _borderWidthOnChanged(bloc, value),
               ),
-              ColorDropdownWidgetShowcaseOption(
-                label: 'Idle color',
+              ColorWidgetShowcaseOption(
+                labelConfiguration:
+                    const WidgetShowcaseOptionLabelConfiguration(
+                      label: 'Idle color',
+                    ),
                 onChanged: (color) => _idleColorOnChanged(bloc, color),
               ),
-              ColorDropdownWidgetShowcaseOption(
-                label: 'Hover color',
+              ColorWidgetShowcaseOption(
+                labelConfiguration:
+                    const WidgetShowcaseOptionLabelConfiguration(
+                      label: 'Hover color',
+                    ),
                 onChanged: (color) => _hoverColorOnChanged(bloc, color),
               ),
-              ColorDropdownWidgetShowcaseOption(
-                label: 'Tap color',
+              ColorWidgetShowcaseOption(
+                labelConfiguration:
+                    const WidgetShowcaseOptionLabelConfiguration(
+                      label: 'Tap color',
+                    ),
                 onChanged: (color) => _tapColorOnChanged(bloc, color),
               ),
             ],
@@ -56,11 +71,17 @@ final class MyoroButtonWidgetShowcaseBorderBuilderOption extends StatelessWidget
     );
   }
 
-  void _checkboxOnChanged(MyoroButtonWidgetShowcaseBloc bloc, bool borderBuilderEnabled) {
+  void _checkboxOnChanged(
+    MyoroButtonWidgetShowcaseBloc bloc,
+    bool borderBuilderEnabled,
+  ) {
     bloc.add(SetBorderBuilderEnabledEvent(borderBuilderEnabled));
   }
 
-  void _borderWidthOnChanged(MyoroButtonWidgetShowcaseBloc bloc, double borderWidth) {
+  void _borderWidthOnChanged(
+    MyoroButtonWidgetShowcaseBloc bloc,
+    double borderWidth,
+  ) {
     bloc.add(SetBorderWidthEvent(borderWidth));
   }
 
