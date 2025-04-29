@@ -1,15 +1,22 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_table_widget_showcase_bloc/myoro_table_widget_showcase_bloc.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Widget showcase of [MyoroTable].
+/// [WidgetShowcase] of [MyoroTable].
+///
+/// TODO: Needs to be tested.
 final class MyoroTableWidgetShowcase extends StatelessWidget {
   const MyoroTableWidgetShowcase({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const WidgetShowcase(widget: _Widget());
+    return BlocProvider(
+      create: (_) => MyoroTableWidgetShowcaseBloc(),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_PaginationControlsOption()]),
+    );
   }
 }
 
@@ -18,64 +25,81 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleCells = List.generate(faker.randomGenerator.integer(5, min: 1), _buildColumn);
+    return BlocBuilder<MyoroTableWidgetShowcaseBloc, MyoroTableWidgetShowcaseState>(
+      builder: _builder,
+    );
+  }
+
+  Widget _builder(_, MyoroTableWidgetShowcaseState state) {
+    final titleCells = _createTitleCells();
 
     return MyoroTable(
-      configuration: MyoroTableConfiguration(
+      configuration: MyoroTableConfiguration<String>(
+        showPaginationControls: state.showPaginationControls,
         titleCells: titleCells,
-        showPaginationControls: true,
-        paginationBuilder: _paginationBuilder,
-        rowBuilder: (String item) => _rowBuilder(item, titleCells),
+        rowBuilder: (String item) => _rowBuilder(item, titleCells.length),
+        request: _request,
       ),
     );
   }
 
-  MyoroTablePagination<String> _paginationBuilder(_) {
-    return MyoroTablePagination(
-      items: List.generate(
-        faker.randomGenerator.integer(100),
-        (int index) => '#$index: ${faker.lorem.word()}',
-      ),
-      totalPages: faker.randomGenerator.integer(9999),
-      acceptedItemsPerPage:
-          List.generate(
-            faker.randomGenerator.integer(10, min: 2),
-            (int index) => index + 5,
-          ).toSet(),
-    );
+  List<MyoroTableColumn> _createTitleCells() {
+    return List.generate(faker.randomGenerator.integer(5, min: 1), (_) => MyoroTableColumn.fake());
   }
 
-  MyoroTableRow<String> _rowBuilder(String item, List<MyoroTableColumn> titleCells) {
+  MyoroTableRow<String> _rowBuilder(String item, int titleCellsLength) {
     return MyoroTableRow(
-      cells:
-          titleCells.map<Widget>((_) {
-            return Text(faker.lorem.word());
-          }).toList(),
+      onTapUp: _onTapUp,
+      onTapDown: _onTapDown,
+      cells: List.generate(titleCellsLength, (_) => Text(item)),
     );
   }
 
-  MyoroTableColumn _buildColumn(_) {
-    final column = MyoroTableColumn.fake();
-    return column.copyWith(child: _TitleCell(column));
+  void _onTapUp(BuildContext context, String item) {
+    context.showSnackBar(
+      snackBar: MyoroSnackBar(
+        message: '$item tapped.',
+        snackBarType: MyoroSnackBarTypeEnum.attention,
+      ),
+    );
+  }
+
+  void _onTapDown(BuildContext context, String item) {
+    context.showSnackBar(
+      snackBar: MyoroSnackBar(
+        message: '$item\'s tap released.',
+        snackBarType: MyoroSnackBarTypeEnum.attention,
+      ),
+    );
+  }
+
+  Future<MyoroTablePagination<String>> _request(_) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    return MyoroTablePagination(
+      items: List.generate(faker.randomGenerator.integer(1000), (_) => faker.animal.name()),
+    );
   }
 }
 
-final class _TitleCell extends StatelessWidget {
-  final MyoroTableColumn _column;
-
-  const _TitleCell(this._column);
+final class _PaginationControlsOption extends StatelessWidget {
+  const _PaginationControlsOption();
 
   @override
   Widget build(BuildContext context) {
-    final widthConfiguration = _column.widthConfiguration;
-    final widthConfigurationEnumValue = widthConfiguration.enumValue;
-    final widthConfigurationFixedWidth = widthConfiguration.fixedWidth;
+    final bloc = context.resolveBloc<MyoroTableWidgetShowcaseBloc>();
 
-    final stringBuffer = StringBuffer(widthConfigurationEnumValue.name);
-    if (widthConfigurationEnumValue.isFixed) {
-      stringBuffer.write('(${widthConfigurationFixedWidth!.toStringAsFixed(2)}px)');
-    }
+    return BlocBuilder<MyoroTableWidgetShowcaseBloc, MyoroTableWidgetShowcaseState>(
+      builder: (_, MyoroTableWidgetShowcaseState state) {
+        return MyoroCheckbox(
+          label: 'Show pagination controls?',
+          initialValue: state.showPaginationControls,
+          onChanged: (bool value) => _onChanged(bloc, value),
+        );
+      },
+    );
+  }
 
-    return Text(stringBuffer.toString(), maxLines: 1, overflow: TextOverflow.ellipsis);
+  void _onChanged(MyoroTableWidgetShowcaseBloc bloc, bool value) {
+    bloc.add(SetShowPaginationControlsEvent(value));
   }
 }

@@ -76,20 +76,42 @@ class MyoroButtonVariantThemeExtension extends ThemeExtension<MyoroButtonVariant
       secondaryTapContentColor =
           kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
 
-  MyoroButtonVariantThemeExtension.builder(ColorScheme colorScheme)
-    : border = Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
-      primaryIdleBackgroundColor = colorScheme.primary,
-      primaryHoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.15),
-      primaryTapBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.5),
-      primaryIdleContentColor = colorScheme.onPrimary,
-      primaryHoverContentColor = colorScheme.onPrimary,
-      primaryTapContentColor = colorScheme.onPrimary,
-      secondaryIdleBackgroundColor = colorScheme.onPrimary,
-      secondaryHoverBackgroundColor = myoroDarkenColor(colorScheme.onPrimary, 0.1),
-      secondaryTapBackgroundColor = myoroDarkenColor(colorScheme.onPrimary, 0.2),
-      secondaryIdleContentColor = colorScheme.primary,
-      secondaryHoverContentColor = colorScheme.primary,
-      secondaryTapContentColor = colorScheme.primary;
+  factory MyoroButtonVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
+    const primaryHoverBackgroundColorFactor = 0.75;
+    const primaryTapBackgroundColorFactor = 0.5;
+    const secondaryHoverBackgroundColorFactor = 0.15;
+    const secondaryTapBackgroundColorFactor = 0.2;
+
+    final Color onPrimary = colorScheme.onPrimary;
+
+    return MyoroButtonVariantThemeExtension(
+      border: Border.all(width: kMyoroBorderLength, color: onPrimary),
+      primaryIdleBackgroundColor: colorScheme.primary,
+      primaryHoverBackgroundColor:
+          isDarkMode
+              ? onPrimary.darken(primaryHoverBackgroundColorFactor)
+              : onPrimary.brighten(primaryHoverBackgroundColorFactor),
+      primaryTapBackgroundColor:
+          isDarkMode
+              ? onPrimary.darken(primaryTapBackgroundColorFactor)
+              : onPrimary.brighten(primaryTapBackgroundColorFactor),
+      primaryIdleContentColor: onPrimary,
+      primaryHoverContentColor: onPrimary,
+      primaryTapContentColor: onPrimary,
+      secondaryIdleBackgroundColor: onPrimary,
+      secondaryHoverBackgroundColor:
+          isDarkMode
+              ? onPrimary.darken(secondaryHoverBackgroundColorFactor)
+              : onPrimary.brighten(secondaryHoverBackgroundColorFactor),
+      secondaryTapBackgroundColor:
+          isDarkMode
+              ? onPrimary.darken(secondaryTapBackgroundColorFactor)
+              : onPrimary.brighten(secondaryTapBackgroundColorFactor),
+      secondaryIdleContentColor: colorScheme.primary,
+      secondaryHoverContentColor: colorScheme.primary,
+      secondaryTapContentColor: colorScheme.primary,
+    );
+  }
 
   @override
   MyoroButtonVariantThemeExtension copyWith({

@@ -10,7 +10,7 @@ typedef MyoroMaterialAppTextThemeBuilder = TextTheme Function(TextTheme myoroTex
 
 /// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
 typedef MyoroMaterialAppThemeExtensionsBuilder =
-    List<ThemeExtension> Function(ColorScheme colorScheme, TextTheme textTheme);
+    List<ThemeExtension> Function(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme);
 
 /// Root widget of your [App] widget in main.dart.
 class MyoroMaterialApp extends StatelessWidget {

@@ -20,7 +20,7 @@ final class App extends StatelessWidget {
     return BlocProvider(
       create: (_) => ThemeModeCubit(darkModeEnabled),
       child: BlocBuilder<ThemeModeCubit, ThemeMode>(
-        builder: (_, ThemeMode themeMode) {
+        builder: (BuildContext context, ThemeMode themeMode) {
           return MyoroMaterialApp(
             title: 'MFL Storyboard',
             themeMode: themeMode,

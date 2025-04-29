@@ -5,7 +5,11 @@ import 'package:storyboard/storyboard.dart';
 /// Creates all [ThemeExtension]s used in the storyboard.
 ///
 /// TODO: Needs to be tested.
-List<ThemeExtension> createStoryboardThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createStoryboardThemeExtensions(
+  bool isDarkMode,
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
   final modulesController = KiwiContainer().resolve<ModulesController>();
   return [
     ...modulesController.themeExtenionsBuilder(colorScheme, textTheme),

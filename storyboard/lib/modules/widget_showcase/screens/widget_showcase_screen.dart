@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Screen to display a [WidgetShowcase] of a MFL widget.
@@ -11,6 +12,7 @@ final class WidgetShowcaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoryboardScreen(
+      onPrevious: context.navigator.pop,
       headerTitleText: _widgetName,
       body: StoryboardWidgetListingEnum.getWidgetShowcase(_widgetName),
     );

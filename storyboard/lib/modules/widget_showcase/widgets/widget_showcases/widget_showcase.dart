@@ -49,66 +49,14 @@ final class _WidgetWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-    final double previousPageButtonOffset = themeExtension.previousPageButtonOffset;
 
-    return Padding(
+    return Container(
+      height: double.infinity,
+      alignment: themeExtension.widgetWrapperAlignment,
+      decoration: themeExtension.widgetWrapperDecoration,
       padding: themeExtension.widgetWrapperPadding,
-      child: Stack(
-        children: [
-          Container(
-            height: double.infinity,
-            alignment: themeExtension.widgetWrapperAlignment,
-            decoration: themeExtension.widgetWrapperDecoration,
-            child: Padding(padding: themeExtension.widgetWrapperContentPadding, child: widget),
-          ),
-          Positioned(
-            top: previousPageButtonOffset,
-            left: previousPageButtonOffset,
-            child: const _PreviousPageButton(),
-          ),
-        ],
-      ),
+      child: Padding(padding: themeExtension.widgetWrapperContentPadding, child: widget),
     );
-  }
-}
-
-final class _PreviousPageButton extends StatelessWidget {
-  const _PreviousPageButton();
-
-  @override
-  Widget build(BuildContext context) {
-    final widgetShowcaseThemeExtension =
-        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-    final buttonVariantThemeExtension =
-        context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
-
-    return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        padding: widgetShowcaseThemeExtension.previousPageButtonPadding,
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(
-          icon: widgetShowcaseThemeExtension.previousPageButtonIcon,
-        ),
-        backgroundColorBuilder: (MyoroTapStatusEnum tapStatusEnum) {
-          return _backgroundColorBuilder(buttonVariantThemeExtension, tapStatusEnum);
-        },
-        onTapUp: (_) => _onTapUp(context),
-      ),
-    );
-  }
-
-  Color _backgroundColorBuilder(
-    MyoroButtonVariantThemeExtension buttonVariantThemeExtension,
-    MyoroTapStatusEnum tapStatusEnum,
-  ) {
-    return switch (tapStatusEnum) {
-      MyoroTapStatusEnum.idle => MyoroColorDesignSystem.transparent,
-      MyoroTapStatusEnum.hover => buttonVariantThemeExtension.primaryHoverBackgroundColor,
-      MyoroTapStatusEnum.tap => buttonVariantThemeExtension.primaryTapBackgroundColor,
-    };
-  }
-
-  void _onTapUp(BuildContext context) {
-    context.navigator.pop();
   }
 }
 

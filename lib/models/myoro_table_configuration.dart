@@ -34,14 +34,14 @@ class MyoroTableConfiguration<T> extends Equatable {
   final MyoroTableRowBuilder<T> rowBuilder;
 
   /// [MyoroTablePagination] of the [MyoroTable].
-  final MyoroTableConfigurationPaginationRequest<T> paginationBuilder;
+  final MyoroTableConfigurationPaginationRequest<T> request;
 
   MyoroTableConfiguration._(
     this.controller,
     this.showPaginationControls,
     this.titleCells,
     this.rowBuilder,
-    this.paginationBuilder,
+    this.request,
   ) : assert(titleCells.isNotEmpty, '[MyoroTable]: [titleCells] cannot be empty');
 
   factory MyoroTableConfiguration({
@@ -49,14 +49,14 @@ class MyoroTableConfiguration<T> extends Equatable {
     bool showPaginationControls = showPaginationControlsDefaultValue,
     required List<MyoroTableColumn> titleCells,
     required MyoroTableRowBuilder<T> rowBuilder,
-    required MyoroTableConfigurationPaginationRequest<T> paginationBuilder,
+    required MyoroTableConfigurationPaginationRequest<T> request,
   }) {
     return MyoroTableConfiguration._(
       controller ?? MyoroTableController(),
       showPaginationControls,
       titleCells,
       rowBuilder,
-      paginationBuilder,
+      request,
     );
   }
 
@@ -65,20 +65,20 @@ class MyoroTableConfiguration<T> extends Equatable {
     bool? showPaginationControls,
     List<MyoroTableColumn>? titleCells,
     MyoroTableRowBuilder<T>? rowBuilder,
-    MyoroTableConfigurationPaginationRequest<T>? paginationBuilder,
+    MyoroTableConfigurationPaginationRequest<T>? request,
   }) {
     return MyoroTableConfiguration(
       controller: controller ?? this.controller,
       showPaginationControls: showPaginationControls ?? this.showPaginationControls,
       titleCells: titleCells ?? this.titleCells,
       rowBuilder: rowBuilder ?? this.rowBuilder,
-      paginationBuilder: paginationBuilder ?? this.paginationBuilder,
+      request: request ?? this.request,
     );
   }
 
   @override
   List<Object?> get props {
-    return [controller, showPaginationControls, titleCells, rowBuilder, paginationBuilder];
+    return [controller, showPaginationControls, titleCells, rowBuilder, request];
   }
 
   @override
@@ -88,6 +88,6 @@ class MyoroTableConfiguration<T> extends Equatable {
       '  showPaginationControls: $showPaginationControls,\n'
       '  titleCells: $titleCells,\n'
       '  rowBuilder: $rowBuilder,\n'
-      '  paginationBuilder: $paginationBuilder,\n'
+      '  request: $request,\n'
       ');';
 }

@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 void main() {
@@ -17,9 +16,6 @@ void main() {
         widgetWrapperPadding: themeExtension2.widgetWrapperPadding,
         widgetWrapperContentPadding: themeExtension2.widgetWrapperContentPadding,
         widgetWrapperAlignment: themeExtension2.widgetWrapperAlignment,
-        previousPageButtonIcon: themeExtension2.previousPageButtonIcon,
-        previousPageButtonPadding: themeExtension2.previousPageButtonPadding,
-        previousPageButtonOffset: themeExtension2.previousPageButtonOffset,
         widgetOptionsMaxWidth: themeExtension2.widgetOptionsMaxWidth,
         widgetOptionsPadding: themeExtension2.widgetOptionsPadding,
         widgetOptionsDividerPadding: themeExtension2.widgetOptionsDividerPadding,
@@ -64,30 +60,6 @@ void main() {
         ),
       );
       expect(
-        lerpedThemeExtension.previousPageButtonIcon,
-        myoroLerp(
-          themeExtension1.previousPageButtonIcon,
-          themeExtension2.previousPageButtonIcon,
-          i,
-        ),
-      );
-      expect(
-        lerpedThemeExtension.previousPageButtonPadding,
-        EdgeInsets.lerp(
-          themeExtension1.previousPageButtonPadding,
-          themeExtension2.previousPageButtonPadding,
-          i,
-        ),
-      );
-      expect(
-        lerpedThemeExtension.previousPageButtonOffset,
-        lerpDouble(
-          themeExtension1.previousPageButtonOffset,
-          themeExtension2.previousPageButtonOffset,
-          i,
-        ),
-      );
-      expect(
         lerpedThemeExtension.widgetOptionsMaxWidth,
         lerpDouble(themeExtension1.widgetOptionsMaxWidth, themeExtension2.widgetOptionsMaxWidth, i),
       );
@@ -110,5 +82,17 @@ void main() {
     }
   });
 
-  test('WidgetShowcaseThemeExtension.toString', () {});
+  test('WidgetShowcaseThemeExtension.toString', () {
+    expect(
+      themeExtension1.toString(),
+      'WidgetShowcaseThemeExtension(\n'
+      '  widgetWrapperPadding: ${themeExtension1.widgetWrapperPadding},\n'
+      '  widgetWrapperContentPadding: ${themeExtension1.widgetWrapperContentPadding},\n'
+      '  widgetWrapperAlignment: ${themeExtension1.widgetWrapperAlignment},\n'
+      '  widgetOptionsMaxWidth: ${themeExtension1.widgetOptionsMaxWidth},\n'
+      '  widgetOptionsPadding: ${themeExtension1.widgetOptionsPadding},\n'
+      '  widgetOptionsDividerPadding: ${themeExtension1.widgetOptionsDividerPadding},\n'
+      ');',
+    );
+  });
 }

@@ -6,6 +6,9 @@ import 'package:storyboard/storyboard.dart';
 ///
 /// TODO: Needs to be tested.
 final class StoryboardScreen extends StatelessWidget {
+  /// Callback that builds [_PreviousPageButton].
+  final VoidCallback? onPrevious;
+
   /// Text of [_HeaderTitleText].
   final String? headerTitleText;
 
@@ -17,6 +20,7 @@ final class StoryboardScreen extends StatelessWidget {
 
   const StoryboardScreen({
     super.key,
+    this.onPrevious,
     this.headerTitleText,
     this.headerSubtitleText,
     required this.body,
@@ -24,15 +28,19 @@ final class StoryboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroScreen(appBar: _AppBar(headerTitleText, headerSubtitleText), body: body);
+    return MyoroScreen(
+      appBar: _AppBar(onPrevious, headerTitleText, headerSubtitleText),
+      body: body,
+    );
   }
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
+  final VoidCallback? _onPrevious;
   final String? _headerTitleText;
   final String? _headerSubtitleText;
 
-  const _AppBar(this._headerTitleText, this._headerSubtitleText);
+  const _AppBar(this._onPrevious, this._headerTitleText, this._headerSubtitleText);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
@@ -46,12 +54,18 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
     return MyoroAppBar(
       bordered: true,
       child: Row(
-        spacing: themeExtension.headerToggleThemeButtonSpacing,
+        spacing: themeExtension.spacing,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (headerTitleTextIsNotNull || headerSubtitleTextIsNotNull) ...[
-            _Header(_headerTitleText, _headerSubtitleText),
-          ],
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: themeExtension.spacing / 2,
+            children: [
+              if (_onPrevious != null) _PreviousPageButton(_onPrevious),
+              if (headerTitleTextIsNotNull || headerSubtitleTextIsNotNull)
+                _Header(_headerTitleText, _headerSubtitleText),
+            ],
+          ),
           const _ToggleThemeButton(),
         ],
       ),
@@ -90,6 +104,27 @@ final class _HeaderTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     return _HeaderText(text: _text, style: themeExtension.headerTitleTextStyle);
+  }
+}
+
+final class _PreviousPageButton extends StatelessWidget {
+  final VoidCallback _onPrevious;
+
+  const _PreviousPageButton(this._onPrevious);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        padding: themeExtension.previousPageButtonPadding,
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.previousPageButtonIcon,
+        ),
+        onTapUp: (_) => _onPrevious(),
+      ),
+    );
   }
 }
 

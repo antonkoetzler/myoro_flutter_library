@@ -29,8 +29,8 @@ ThemeData createMyoroThemeData(
     tooltipTheme: createMyoroTooltipThemeData(colorScheme, textTheme),
     textSelectionTheme: createMyoroTextSelectionThemeData(colorScheme),
     extensions: [
-      ...createMyoroThemeExtensions(colorScheme, textTheme),
-      ...?themeExtensionsBuilder?.call(colorScheme, textTheme),
+      ...createMyoroThemeExtensions(isDarkMode, colorScheme, textTheme),
+      ...?themeExtensionsBuilder?.call(isDarkMode, colorScheme, textTheme),
     ],
   );
 }

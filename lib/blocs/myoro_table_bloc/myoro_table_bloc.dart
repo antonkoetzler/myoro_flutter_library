@@ -11,6 +11,8 @@ part 'myoro_table_event.dart';
 typedef _Emitter<T> = Emitter<MyoroTableState<T>>;
 
 /// [Bloc] to manage all state in [MyoroTable].
+///
+/// TODO: Needs to be tested.
 final class MyoroTableBloc<T> extends Bloc<MyoroTableEvent<T>, MyoroTableState<T>> {
   late final MyoroTableConfiguration<T> _configuration;
 
@@ -28,9 +30,7 @@ final class MyoroTableBloc<T> extends Bloc<MyoroTableEvent<T>, MyoroTableState<T
 
   Future<void> _fetchEvent(FetchEvent<T> event, _Emitter<T> emit) async {
     await _treatRequest(emit, event, () async {
-      final MyoroTablePagination<T> pagination = await _configuration.paginationBuilder(
-        state.filters,
-      );
+      final MyoroTablePagination<T> pagination = await _configuration.request(state.filters);
       emit(state.copyWith(status: MyoroRequestEnum.success, pagination: pagination));
     });
   }

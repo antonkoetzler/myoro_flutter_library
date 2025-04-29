@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the [List] of [ThemeExtension]s for [createMyoroThemeData]'s [ThemeData].
-List<ThemeExtension> createMyoroThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroThemeExtensions(
+  bool isDarkMode,
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
   return [
     ..._createAccordionThemeExtensions(colorScheme, textTheme),
     ..._createAppBarThemeExtensions(colorScheme),
-    ..._createButtonThemeExtensions(colorScheme, textTheme),
+    ..._createButtonThemeExtensions(isDarkMode, colorScheme, textTheme),
     ..._createCardThemeExtensions(colorScheme, textTheme),
     ..._createCarouselThemeExtensions(),
     ..._createCheckboxThemeExtensions(colorScheme, textTheme),
@@ -39,10 +43,14 @@ List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
   return [MyoroAppBarThemeExtension.builder(colorScheme)];
 }
 
-List<ThemeExtension> _createButtonThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> _createButtonThemeExtensions(
+  bool isDarkMode,
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
   return [
     MyoroButtonThemeExtension.builder(),
-    MyoroButtonVariantThemeExtension.builder(colorScheme),
+    MyoroButtonVariantThemeExtension.builder(isDarkMode, colorScheme),
     MyoroIconTextButtonThemeExtension.builder(textTheme),
   ];
 }
