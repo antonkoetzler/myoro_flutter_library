@@ -20,15 +20,13 @@ class MyoroTableV2ViewModel<T> {
   String? get errorMessage => _errorMessage;
 
   /// [MyoroTableV2Pagination] of the [MyoroTableV2].
-  final _paginationNotifier = ValueNotifier<MyoroTableV2Pagination<T>?>(null);
-  ValueNotifier<MyoroTableV2Pagination<T>?> get paginationNotifier => _paginationNotifier;
-  MyoroTableV2Pagination<T>? get pagination => _paginationNotifier.value;
+  late MyoroTableV2Pagination<T> _pagination;
+  MyoroTableV2Pagination<T> get pagination => _pagination;
 
   MyoroTableV2ViewModel({required this.configuration});
 
   void dispose() {
     _statusNotifier.dispose();
-    _paginationNotifier.dispose();
   }
 
   /// Resolves [MyoroTableV2Configuration.request].
@@ -37,8 +35,7 @@ class MyoroTableV2ViewModel<T> {
     String? errorMessage;
 
     try {
-      final MyoroTableV2Pagination<T> pagination = await configuration.request();
-      _paginationNotifier.value = pagination;
+      _pagination = await configuration.request();
       _statusNotifier.value = MyoroRequestEnum.success;
     } on HttpException catch (httpError) {
       errorMessage = httpError.message;
