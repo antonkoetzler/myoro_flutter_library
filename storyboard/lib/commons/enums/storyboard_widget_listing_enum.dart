@@ -24,7 +24,7 @@ enum StoryboardWidgetListingEnum {
   screens('Screens', {myoroScreenTitle}),
   sliders('Sliders', {myoroSliderTitle}),
   snackBars('Snack bars', {myoroSnackBarTitle}),
-  tables('Tables', {myoroTableTitle}),
+  tables('Tables', {myoroTableTitle, myoroTableV2Title}),
   tooltips('Tooltips', {myoroTooltipTitle});
 
   final String categoryName;
@@ -109,6 +109,7 @@ enum StoryboardWidgetListingEnum {
 
   // Tables
   static const myoroTableTitle = 'MyoroTable';
+  static const myoroTableV2Title = 'MyoroTableV2';
 
   // Tooltips
   static const myoroTooltipTitle = 'MyoroTooltip';
@@ -190,6 +191,7 @@ enum StoryboardWidgetListingEnum {
 
       // Tables
       myoroTableTitle => const MyoroTableWidgetShowcase(),
+      myoroTableV2Title => const MyoroTableV2WidgetShowcase(),
 
       // Tooltips
       myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),

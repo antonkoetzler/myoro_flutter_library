@@ -21,3 +21,7 @@ export 'myoro_table_column_width_configuration.dart';
 export 'myoro_table_configuration.dart';
 export 'myoro_table_pagination.dart';
 export 'myoro_table_row.dart';
+export 'myoro_table_v2_column.dart';
+export 'myoro_table_v2_column_width_configuration.dart';
+export 'myoro_table_v2_configuration.dart';
+export 'myoro_table_v2_pagination.dart';

@@ -31,8 +31,8 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   /// Spacing between columns without dividers.
   final double columnSpacing;
 
-  /// Standard [TextStyle] of a [_TitleCell].
-  final TextStyle titleCellTextStyle;
+  /// Standard [TextStyle] of a [_Column].
+  final TextStyle columnTextStyle;
 
   /// Size of [_Loader]'s [MyoroCircularLoader].
   final double loaderSize;
@@ -55,7 +55,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
     required this.tableDecoration,
     required this.paginationControlsTableSpacing,
     required this.columnSpacing,
-    required this.titleCellTextStyle,
+    required this.columnTextStyle,
     required this.loaderSize,
     required this.emptyMessageTextStyle,
     required this.errorMessageTextStyle,
@@ -77,7 +77,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       ),
       paginationControlsTableSpacing: faker.randomGenerator.decimal(scale: 10),
       columnSpacing: faker.randomGenerator.decimal(scale: 20),
-      titleCellTextStyle: typography.randomTextStyle,
+      columnTextStyle: typography.randomTextStyle,
       loaderSize: faker.randomGenerator.decimal(scale: 100, min: 10),
       emptyMessageTextStyle: typography.randomTextStyle,
       errorMessageTextStyle: typography.randomTextStyle,
@@ -101,7 +101,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       ),
       paginationControlsTableSpacing: 10,
       columnSpacing: 10,
-      titleCellTextStyle: textTheme.bodyMedium!,
+      columnTextStyle: textTheme.bodyMedium!,
       loaderSize: 35,
       emptyMessageTextStyle: headlineLarge,
       errorMessageTextStyle: headlineLarge.copyWith(
@@ -122,7 +122,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
     BoxDecoration? tableDecoration,
     double? paginationControlsTableSpacing,
     double? columnSpacing,
-    TextStyle? titleCellTextStyle,
+    TextStyle? columnTextStyle,
     double? loaderSize,
     TextStyle? emptyMessageTextStyle,
     TextStyle? errorMessageTextStyle,
@@ -141,7 +141,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       paginationControlsTableSpacing:
           paginationControlsTableSpacing ?? this.paginationControlsTableSpacing,
       columnSpacing: columnSpacing ?? this.columnSpacing,
-      titleCellTextStyle: titleCellTextStyle ?? this.titleCellTextStyle,
+      columnTextStyle: columnTextStyle ?? this.columnTextStyle,
       loaderSize: loaderSize ?? this.loaderSize,
       emptyMessageTextStyle: emptyMessageTextStyle ?? this.emptyMessageTextStyle,
       errorMessageTextStyle: errorMessageTextStyle ?? this.errorMessageTextStyle,
@@ -188,7 +188,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
         t,
       ),
       columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
-      titleCellTextStyle: TextStyle.lerp(titleCellTextStyle, other.titleCellTextStyle, t),
+      columnTextStyle: TextStyle.lerp(columnTextStyle, other.columnTextStyle, t),
       loaderSize: lerpDouble(loaderSize, other.loaderSize, t),
       emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
       errorMessageTextStyle: TextStyle.lerp(errorMessageTextStyle, other.errorMessageTextStyle, t),
@@ -209,7 +209,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
         other.tableDecoration == tableDecoration &&
         other.paginationControlsTableSpacing == paginationControlsTableSpacing &&
         other.columnSpacing == columnSpacing &&
-        other.titleCellTextStyle == titleCellTextStyle &&
+        other.columnTextStyle == columnTextStyle &&
         other.loaderSize == loaderSize &&
         other.emptyMessageTextStyle == emptyMessageTextStyle &&
         other.errorMessageTextStyle == errorMessageTextStyle &&
@@ -227,7 +227,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       tableDecoration,
       paginationControlsTableSpacing,
       columnSpacing,
-      titleCellTextStyle,
+      columnTextStyle,
       loaderSize,
       emptyMessageTextStyle,
       errorMessageTextStyle,
@@ -246,7 +246,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       '  tableDecoration: $tableDecoration,\n'
       '  paginationControlsTableSpacing: $paginationControlsTableSpacing,\n'
       '  columnSpacing: $columnSpacing,\n'
-      '  titleCellTextStyle: $titleCellTextStyle,\n'
+      '  columnTextStyle: $columnTextStyle,\n'
       '  loaderSize: $loaderSize,\n'
       '  emptyMessageTextStyle: $emptyMessageTextStyle,\n'
       '  errorMessageTextStyle: $errorMessageTextStyle,\n'

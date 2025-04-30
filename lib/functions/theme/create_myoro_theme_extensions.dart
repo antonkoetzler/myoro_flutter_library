@@ -154,7 +154,10 @@ List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, Tex
 }
 
 List<ThemeExtension> _createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [MyoroTableThemeExtension.builder(colorScheme, textTheme)];
+  return [
+    MyoroTableThemeExtension.builder(colorScheme, textTheme),
+    MyoroTableV2ThemeExtension.builder(colorScheme, textTheme),
+  ];
 }
 
 List<ThemeExtension> _createTooltipThemeExtensions() {

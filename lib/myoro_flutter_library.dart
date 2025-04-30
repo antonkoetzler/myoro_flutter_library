@@ -11,5 +11,6 @@ export 'mocks/exports.dart';
 export 'models/exports.dart';
 export 'notifiers/exports.dart';
 export 'theme_extensions/exports.dart';
+export 'view_models/exports.dart';
 export 'widgets/exports.dart';
 export 'constants.dart';

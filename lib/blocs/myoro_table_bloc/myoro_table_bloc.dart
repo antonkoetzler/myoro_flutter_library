@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -26,6 +27,8 @@ final class MyoroTableBloc<T> extends Bloc<MyoroTableEvent<T>, MyoroTableState<T
     on<ClearFiltersEvent<T>>(_clearFiltersEvent);
     on<SetCurrentPageEvent<T>>(_setCurrentPageEvent);
     on<SetItemsPerPageEvent<T>>(_setItemsPerPageEvent);
+    on<InitializeColumnDependenciesEvent<T>>(_initializeColumnDependenciesEvent);
+    on<GetColumnWidthsEvent<T>>(_getColumnWidthsEvent);
   }
 
   Future<void> _fetchEvent(FetchEvent<T> event, _Emitter<T> emit) async {
@@ -53,6 +56,47 @@ final class MyoroTableBloc<T> extends Bloc<MyoroTableEvent<T>, MyoroTableState<T
 
   void _setItemsPerPageEvent(SetItemsPerPageEvent<T> event, _Emitter<T> emit) {
     emit(state.copyWith(pagination: state.pagination.copyWith(itemsPerPage: event.itemsPerPage)));
+  }
+
+  void _initializeColumnDependenciesEvent(
+    InitializeColumnDependenciesEvent<T> event,
+    _Emitter<T> emit,
+  ) {
+    // Resetting to initial state.
+    emit(state.copyWith(columnStateProvided: false));
+
+    // Initializing [GlobalKey]s.
+    final keys = List.generate(_configuration.columns.length, (_) => GlobalKey());
+    final columnState = MyoroTableColumnState(keys: keys);
+    emit(state.copyWith(columnState: columnState));
+  }
+
+  void _getColumnWidthsEvent(GetColumnWidthsEvent<T> event, _Emitter<T> emit) {
+    final MyoroTableColumnState? columnState = state.columnState;
+
+    assert(
+      columnState != null,
+      '[MyoroTableBloc._getColumnWidthsEvent]: [columnState] cannot be null.',
+    );
+
+    final List<GlobalKey> columnStateKeys = columnState!.keys;
+
+    assert(
+      columnStateKeys.isNotEmpty,
+      '[MyoroTableBloc._getColumnWidthsEvent]: [columnStateKeys] cannot be null.',
+    );
+
+    emit(
+      state.copyWith(
+        columnState: state.columnState!.copyWith(
+          widths: List.generate(columnStateKeys.length, (int index) {
+            final renderBox =
+                columnStateKeys[index].currentContext!.findRenderObject() as RenderBox;
+            return renderBox.size.width;
+          }),
+        ),
+      ),
+    );
   }
 
   Future<void> _treatRequest(

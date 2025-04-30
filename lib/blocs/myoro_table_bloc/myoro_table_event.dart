@@ -46,3 +46,17 @@ final class SetItemsPerPageEvent<T> extends MyoroTableEvent<T> {
 
   const SetItemsPerPageEvent(this.itemsPerPage);
 }
+
+/// Initializes [MyoroTableState.columnState].
+final class InitializeColumnDependenciesEvent<T> extends MyoroTableEvent<T> {
+  const InitializeColumnDependenciesEvent();
+}
+
+/// Callback used to get each [MyoroTableColumnState.keys]'s widths.
+///
+/// Is not apart of [InitializeColumnDependenciesEvent] implementation
+/// since we need to call this method within [MyoroTable] to avoid
+/// null [GlobalKey.currentContext].
+final class GetColumnWidthsEvent<T> extends MyoroTableEvent<T> {
+  const GetColumnWidthsEvent();
+}

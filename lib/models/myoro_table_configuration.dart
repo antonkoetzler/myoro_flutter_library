@@ -28,7 +28,7 @@ class MyoroTableConfiguration<T> extends Equatable {
   final bool showPaginationControls;
 
   /// Title columns of the table.
-  final List<MyoroTableColumn> titleColumns;
+  final List<MyoroTableColumn> columns;
 
   /// Function that builds a [MyoroTableRow] to then be rendered.
   final MyoroTableRowBuilder<T> rowBuilder;
@@ -39,25 +39,22 @@ class MyoroTableConfiguration<T> extends Equatable {
   MyoroTableConfiguration._(
     this.controller,
     this.showPaginationControls,
-    this.titleColumns,
+    this.columns,
     this.rowBuilder,
     this.request,
-  ) : assert(
-        titleColumns.isNotEmpty,
-        '[MyoroTable]: [titleColumns] cannot be empty',
-      );
+  ) : assert(columns.isNotEmpty, '[MyoroTable]: [columns] cannot be empty');
 
   factory MyoroTableConfiguration({
     MyoroTableController<T>? controller,
     bool showPaginationControls = showPaginationControlsDefaultValue,
-    required List<MyoroTableColumn> titleColumns,
+    required List<MyoroTableColumn> columns,
     required MyoroTableRowBuilder<T> rowBuilder,
     required MyoroTableConfigurationPaginationRequest<T> request,
   }) {
     return MyoroTableConfiguration._(
       controller ?? MyoroTableController(),
       showPaginationControls,
-      titleColumns,
+      columns,
       rowBuilder,
       request,
     );
@@ -66,15 +63,14 @@ class MyoroTableConfiguration<T> extends Equatable {
   MyoroTableConfiguration<T> copyWith({
     MyoroTableController<T>? controller,
     bool? showPaginationControls,
-    List<MyoroTableColumn>? titleColumns,
+    List<MyoroTableColumn>? columns,
     MyoroTableRowBuilder<T>? rowBuilder,
     MyoroTableConfigurationPaginationRequest<T>? request,
   }) {
     return MyoroTableConfiguration(
       controller: controller ?? this.controller,
-      showPaginationControls:
-          showPaginationControls ?? this.showPaginationControls,
-      titleColumns: titleColumns ?? this.titleColumns,
+      showPaginationControls: showPaginationControls ?? this.showPaginationControls,
+      columns: columns ?? this.columns,
       rowBuilder: rowBuilder ?? this.rowBuilder,
       request: request ?? this.request,
     );
@@ -82,13 +78,7 @@ class MyoroTableConfiguration<T> extends Equatable {
 
   @override
   List<Object?> get props {
-    return [
-      controller,
-      showPaginationControls,
-      titleColumns,
-      rowBuilder,
-      request,
-    ];
+    return [controller, showPaginationControls, columns, rowBuilder, request];
   }
 
   @override
@@ -96,7 +86,7 @@ class MyoroTableConfiguration<T> extends Equatable {
       'MyoroTableConfiguration<$T>(\n'
       '  controller: $controller,\n'
       '  showPaginationControls: $showPaginationControls,\n'
-      '  titleColumns: $titleColumns,\n'
+      '  columns: $columns,\n'
       '  rowBuilder: $rowBuilder,\n'
       '  request: $request,\n'
       ');';

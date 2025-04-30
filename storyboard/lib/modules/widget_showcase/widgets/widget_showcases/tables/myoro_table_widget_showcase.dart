@@ -15,10 +15,7 @@ final class MyoroTableWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroTableWidgetShowcaseBloc(),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_PaginationControlsOption()],
-      ),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_PaginationControlsOption()]),
     );
   }
 }
@@ -28,37 +25,33 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroTableWidgetShowcaseBloc,
-      MyoroTableWidgetShowcaseState
-    >(builder: _builder);
+    return BlocBuilder<MyoroTableWidgetShowcaseBloc, MyoroTableWidgetShowcaseState>(
+      builder: _builder,
+    );
   }
 
   Widget _builder(_, MyoroTableWidgetShowcaseState state) {
-    final titleColumns = _createTitleCells();
+    final columns = _createTitleCells();
 
     return MyoroTable(
       configuration: MyoroTableConfiguration<String>(
         showPaginationControls: state.showPaginationControls,
-        titleColumns: titleColumns,
-        rowBuilder: (String item) => _rowBuilder(item, titleColumns.length),
+        columns: columns,
+        rowBuilder: (String item) => _rowBuilder(item, columns.length),
         request: _request,
       ),
     );
   }
 
   List<MyoroTableColumn> _createTitleCells() {
-    return List.generate(
-      faker.randomGenerator.integer(5, min: 1),
-      (_) => MyoroTableColumn.fake(),
-    );
+    return List.generate(faker.randomGenerator.integer(5, min: 1), (_) => MyoroTableColumn.fake());
   }
 
-  MyoroTableRow<String> _rowBuilder(String item, int titleColumnsLength) {
+  MyoroTableRow<String> _rowBuilder(String item, int columnsLength) {
     return MyoroTableRow(
       onTapUp: _onTapUp,
       onTapDown: _onTapDown,
-      cells: List.generate(titleColumnsLength, (_) => Text(item)),
+      cells: List.generate(columnsLength, (_) => Text(item)),
     );
   }
 
@@ -83,10 +76,7 @@ final class _Widget extends StatelessWidget {
   Future<MyoroTablePagination<String>> _request(_) async {
     await Future.delayed(const Duration(milliseconds: 500));
     return MyoroTablePagination(
-      items: List.generate(
-        faker.randomGenerator.integer(1000),
-        (_) => faker.animal.name(),
-      ),
+      items: List.generate(faker.randomGenerator.integer(1000), (_) => faker.animal.name()),
     );
   }
 }
@@ -98,10 +88,7 @@ final class _PaginationControlsOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroTableWidgetShowcaseBloc>();
 
-    return BlocBuilder<
-      MyoroTableWidgetShowcaseBloc,
-      MyoroTableWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroTableWidgetShowcaseBloc, MyoroTableWidgetShowcaseState>(
       builder: (_, MyoroTableWidgetShowcaseState state) {
         return MyoroCheckbox(
           label: 'Show pagination controls?',

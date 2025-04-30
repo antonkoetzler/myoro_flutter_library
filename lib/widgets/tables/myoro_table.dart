@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Table of MFL.
 ///
-/// TODO: Needs to be tested.
+/// TODO: DELETE ALL TABLE FILES.
 class MyoroTable<T> extends StatefulWidget {
   /// Configuration of [MyoroTable].
   final MyoroTableConfiguration<T> configuration;
@@ -23,23 +23,19 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   /// Central [Bloc] of [MyoroTable].
   late final MyoroTableBloc<T> _bloc;
 
-  /// [GlobalKey]s of [_TitleCell]s.
-  late List<GlobalKey> _titleCellKeys;
-
   @override
   void initState() {
     super.initState();
     _bloc = MyoroTableBloc(_configuration);
+    _bloc.add(const InitializeColumnDependenciesEvent());
     _tableController.bloc = _bloc;
     _tableController.fetch();
-    _initializeTitleCellKeys();
   }
 
   @override
   void didUpdateWidget(covariant MyoroTable<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     _tableController.bloc = _bloc;
-    _initializeTitleCellKeys();
   }
 
   @override
@@ -50,27 +46,33 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return BlocProvider.value(
       value: _bloc,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: themeExtension.paginationControlsTableSpacing,
-        children: [
-          if (_configuration.showPaginationControls) ...[
-            _PaginationControls(_tableController),
+      // Listens for the condition to call [GetColumnWidthsEvent].
+      child: BlocListener<MyoroTableBloc<T>, MyoroTableState<T>>(
+        listenWhen: _listenWhen,
+        listener: _listener,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: themeExtension.paginationControlsTableSpacing,
+          children: [
+            if (_configuration.showPaginationControls) _PaginationControls(_tableController),
+            Flexible(child: _Table(_configuration)),
           ],
-          Flexible(child: _Table(_configuration, _titleCellKeys)),
-        ],
+        ),
       ),
     );
   }
 
-  void _initializeTitleCellKeys() {
-    _titleCellKeys =
-        _configuration.titleColumns.map<GlobalKey>((_) => GlobalKey()).toList();
+  bool _listenWhen(_, MyoroTableState<T> current) {
+    final MyoroTableColumnState? columnState = current.columnState;
+    return (columnState != null) && (columnState.widths.isEmpty);
+  }
+
+  void _listener(_, __) {
+    // _bloc.add(const GetColumnWidthsEvent());
   }
 }
 
@@ -96,8 +98,7 @@ final class _PaginationControls<T> extends StatelessWidget {
     final MyoroTablePagination<T> pagination = state.pagination;
     return Row(
       children: [
-        if (pagination.acceptedItemsPerPage.isNotEmpty)
-          _ItemsPerPageControl(_tableController),
+        if (pagination.acceptedItemsPerPage.isNotEmpty) _ItemsPerPageControl(_tableController),
         const Spacer(),
         if (pagination.totalPages > 1) _PageNumberControl(_tableController),
       ],
@@ -113,8 +114,7 @@ final class _PageNumberControl<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     return BlocBuilder<MyoroTableBloc<T>, MyoroTableState<T>>(
       buildWhen: _buildWhen,
       builder: (_, MyoroTableState<T> state) => _builder(themeExtension, state),
@@ -125,10 +125,7 @@ final class _PageNumberControl<T> extends StatelessWidget {
     return previous.pagination.currentPage != current.pagination.currentPage;
   }
 
-  Widget _builder(
-    MyoroTableThemeExtension themeExtension,
-    MyoroTableState<T> state,
-  ) {
+  Widget _builder(MyoroTableThemeExtension themeExtension, MyoroTableState<T> state) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       spacing: themeExtension.pageNumberControlSpacing,
@@ -138,10 +135,7 @@ final class _PageNumberControl<T> extends StatelessWidget {
           state.pagination.canTraverseBackward,
         ),
         _PageNumberControlInput(_tableController),
-        _PageNumberControlNextPageButton(
-          _tableController,
-          state.pagination.canTraverseForward,
-        ),
+        _PageNumberControlNextPageButton(_tableController, state.pagination.canTraverseForward),
       ],
     );
   }
@@ -156,8 +150,7 @@ final class _PageNumberControlTraversalButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     final double pageNumberControlTraversalButtonIconSize =
         themeExtension.pageNumberControlTraversalButtonIconSize;
     return MyoroIconTextButton(
@@ -178,15 +171,11 @@ final class _PageNumberControlPreviousPageButton<T> extends StatelessWidget {
   final MyoroTableController<T> _tableController;
   final bool _enabled;
 
-  const _PageNumberControlPreviousPageButton(
-    this._tableController,
-    this._enabled,
-  );
+  const _PageNumberControlPreviousPageButton(this._tableController, this._enabled);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     return _PageNumberControlTraversalButton(
       themeExtension.pageNumberControlPreviousPageButtonIcon,
       _enabled ? _onPressed : null,
@@ -209,8 +198,7 @@ final class _PageNumberControlNextPageButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     return _PageNumberControlTraversalButton(
       themeExtension.pageNumberControlNextPageButtonIcon,
       _enabled ? _onTapUp : null,
@@ -232,12 +220,10 @@ final class _PageNumberControlInput<T> extends StatefulWidget {
   const _PageNumberControlInput(this._tableController);
 
   @override
-  State<_PageNumberControlInput<T>> createState() =>
-      _PageNumberControlInputState<T>();
+  State<_PageNumberControlInput<T>> createState() => _PageNumberControlInputState<T>();
 }
 
-final class _PageNumberControlInputState<T>
-    extends State<_PageNumberControlInput<T>> {
+final class _PageNumberControlInputState<T> extends State<_PageNumberControlInput<T>> {
   MyoroTableController<T> get _tableController => widget._tableController;
 
   late final MyoroTableBloc<T> _bloc;
@@ -247,9 +233,8 @@ final class _PageNumberControlInputState<T>
   void initState() {
     super.initState();
     _bloc = context.resolveBloc<MyoroTableBloc<T>>();
-    _inputController = TextEditingController(
-      text: _bloc.state.pagination.currentPage.toString(),
-    )..addListener(_inputControllerListener);
+    _inputController = TextEditingController(text: _bloc.state.pagination.currentPage.toString())
+      ..addListener(_inputControllerListener);
   }
 
   @override
@@ -260,8 +245,7 @@ final class _PageNumberControlInputState<T>
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return IntrinsicWidth(
       child: BlocListener<MyoroTableBloc<T>, MyoroTableState<T>>(
@@ -281,9 +265,7 @@ final class _PageNumberControlInputState<T>
   void _inputControllerListener() {
     final int? pageNumber = int.tryParse(_inputController.text);
     final bool invalidPageNumber =
-        pageNumber != null
-            ? _tableController.pagination.isValidPageNumber(pageNumber)
-            : false;
+        pageNumber != null ? _tableController.pagination.isValidPageNumber(pageNumber) : false;
     if (invalidPageNumber) return;
     _tableController
       ..setCurrentPage(pageNumber ?? 1)
@@ -323,10 +305,7 @@ final class _ItemsPerPageControl<T> extends StatelessWidget {
         configuration: MyoroSingularDropdownConfiguration(
           allowItemClearing: false,
           selectedItemTextAlign: TextAlign.center,
-          menuConfiguration: MyoroMenuConfiguration(
-            request: _request,
-            itemBuilder: _itemBuilder,
-          ),
+          menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
           selectedItemBuilder: _textBuilder,
           initiallySelectedItem: _tableController.pagination.itemsPerPage,
           onChanged: (int? item) => _onChanged(item!),
@@ -341,9 +320,7 @@ final class _ItemsPerPageControl<T> extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(int item) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(
-        text: _textBuilder(item),
-      ),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _textBuilder(item)),
     );
   }
 
@@ -361,55 +338,37 @@ final class _ItemsPerPageControl<T> extends StatelessWidget {
 /// The actual table of [MyoroTable].
 final class _Table<T> extends StatelessWidget {
   final MyoroTableConfiguration<T> _configuration;
-  final List<GlobalKey> _titleCellKeys;
 
-  const _Table(this._configuration, this._titleCellKeys);
+  const _Table(this._configuration);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     return Container(
       decoration: themeExtension.tableDecoration,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          _TitleColumns(_configuration, _titleCellKeys),
-          Flexible(child: _RowsSection(_configuration, _titleCellKeys)),
-        ],
+        children: [_Columns(_configuration), Flexible(child: _RowsSection(_configuration))],
       ),
     );
   }
 }
 
 /// Title columns of the [MyoroTable].
-final class _TitleColumns extends StatelessWidget {
-  final MyoroTableConfiguration _configuration;
-  final List<GlobalKey> _titleCellKeys;
+final class _Columns<T> extends StatelessWidget {
+  final MyoroTableConfiguration<T> _configuration;
 
-  const _TitleColumns(this._configuration, this._titleCellKeys);
+  const _Columns(this._configuration);
 
   @override
   Widget build(BuildContext context) {
-    final myoroTableThemeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final myoroBasicDividerThemeExtension =
-        context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         IntrinsicHeight(
-          child: Row(
-            // Divided by two to "disable" the dividers from adding spacing.
-            //
-            // Subtracted by [myoroBasicDividerThemeExtension.shortValue]
-            // to remove spacing added from the dividers.
-            spacing:
-                (myoroTableThemeExtension.columnSpacing / 2) -
-                (myoroBasicDividerThemeExtension.shortValue / 2),
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: _builtTitleCellWidgets,
+          child: BlocBuilder<MyoroTableBloc<T>, MyoroTableState<T>>(
+            buildWhen: _buildWhen,
+            builder: _builder,
           ),
         ),
         const _Divider(Axis.horizontal),
@@ -417,25 +376,46 @@ final class _TitleColumns extends StatelessWidget {
     );
   }
 
-  List<Widget> get _builtTitleCellWidgets {
-    final List<MyoroTableColumn> titleColumns = _configuration.titleColumns;
-    final List<Widget> builtTitleCellWidgets = [];
+  bool _buildWhen(MyoroTableState<T> previous, MyoroTableState<T> current) {
+    return (current.columnState != null) &&
+        (previous.columnState?.keys != current.columnState?.keys);
+  }
 
-    for (int i = 0; i < titleColumns.length; i++) {
-      final MyoroTableColumn column = titleColumns[i];
-      final bool isLastColumn = i == titleColumns.length - 1;
+  Widget _builder(BuildContext context, MyoroTableState<T> state) {
+    final myoroTableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final myoroBasicDividerThemeExtension =
+        context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
-      builtTitleCellWidgets.add(
-        _TitleCell(_titleCellKeys[i], column, isLastColumn),
-      );
+    return Row(
+      // Divided by two to "disable" the dividers from adding spacing.
+      //
+      // Subtracted by [myoroBasicDividerThemeExtension.shortValue]
+      // to remove spacing added from the dividers.
+      spacing:
+          (myoroTableThemeExtension.columnSpacing / 2) -
+          (myoroBasicDividerThemeExtension.shortValue / 2),
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: _buildColumnWidgets(state.columnState!.keys),
+    );
+  }
+
+  List<Widget> _buildColumnWidgets(List<GlobalKey> columnKeys) {
+    final List<MyoroTableColumn> columns = _configuration.columns;
+    final List<Widget> builtColumnWidgets = [];
+
+    for (int i = 0; i < columns.length; i++) {
+      final MyoroTableColumn column = columns[i];
+      final bool isLastColumn = i == columns.length - 1;
+
+      print('was here');
+
+      builtColumnWidgets.add(_Column(columnKeys[i], column, isLastColumn));
       if (!isLastColumn) {
-        builtTitleCellWidgets.add(
-          _Divider(Axis.vertical, column.resizable ? _dragCallback : null),
-        );
+        builtColumnWidgets.add(_Divider(Axis.vertical, column.resizable ? _dragCallback : null));
       }
     }
 
-    return builtTitleCellWidgets;
+    return builtColumnWidgets;
   }
 
   void _dragCallback(DragUpdateDetails details) {
@@ -444,23 +424,19 @@ final class _TitleColumns extends StatelessWidget {
   }
 }
 
-/// Title column of [_TitleColumns].
-final class _TitleCell extends StatelessWidget {
+/// Title column of [_Columns].
+final class _Column extends StatelessWidget {
   final GlobalKey _key;
   final MyoroTableColumn _column;
   final bool _isLastColumn;
 
-  const _TitleCell(this._key, this._column, this._isLastColumn);
+  const _Column(this._key, this._column, this._isLastColumn);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    final child = DefaultTextStyle(
-      style: themeExtension.titleCellTextStyle,
-      child: _column.child,
-    );
+    final child = DefaultTextStyle(style: themeExtension.columnTextStyle, child: _column.child);
 
     // Last column must always be expanded.
     if (_isLastColumn) {
@@ -473,14 +449,8 @@ final class _TitleCell extends StatelessWidget {
         width: _column.widthConfiguration.fixedWidth!,
         child: child,
       ),
-      MyoroTableColumnWidthConfigurationEnum.intrinsic => IntrinsicWidth(
-        key: _key,
-        child: child,
-      ),
-      MyoroTableColumnWidthConfigurationEnum.expanded => Expanded(
-        key: _key,
-        child: child,
-      ),
+      MyoroTableColumnWidthConfigurationEnum.intrinsic => IntrinsicWidth(key: _key, child: child),
+      MyoroTableColumnWidthConfigurationEnum.expanded => Expanded(key: _key, child: child),
     };
   }
 }
@@ -497,10 +467,7 @@ final class _Divider extends StatelessWidget {
     final configuration = MyoroBasicDividerConfiguration(direction: _direction);
 
     return (_dragCallback != null)
-        ? MyoroResizeDivider(
-          configuration: configuration,
-          dragCallback: _dragCallback,
-        )
+        ? MyoroResizeDivider(configuration: configuration, dragCallback: _dragCallback)
         : MyoroBasicDivider(configuration: configuration);
   }
 }
@@ -508,31 +475,33 @@ final class _Divider extends StatelessWidget {
 /// Section where the fetched items (rows) of the table will be.
 final class _RowsSection<T> extends StatelessWidget {
   final MyoroTableConfiguration<T> _configuration;
-  final List<GlobalKey> _titleCellKeys;
 
-  const _RowsSection(this._configuration, this._titleCellKeys);
+  const _RowsSection(this._configuration);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MyoroTableBloc<T>, MyoroTableState<T>>(
       buildWhen: _buildWhen,
-      builder: (_, MyoroTableState<T> state) {
-        return _builder(state);
-      },
+      builder: _builder,
     );
   }
 
   bool _buildWhen(MyoroTableState<T> previous, MyoroTableState<T> current) {
-    return previous.status != current.status;
+    return (previous.status != current.status) ||
+        (previous.columnState?.widths != current.columnState?.widths);
   }
 
-  Widget _builder(MyoroTableState<T> state) {
+  Widget _builder(_, MyoroTableState<T> state) {
+    if (!state.columnWidthsReady) {
+      return const _Loader();
+    }
+
     return switch (state.status) {
       MyoroRequestEnum.idle => const _Loader(),
       MyoroRequestEnum.loading => const _Loader(),
       MyoroRequestEnum.success => _Rows(
         _configuration,
-        _titleCellKeys,
+        state.columnState!.widths,
         state.pagination,
       ),
       MyoroRequestEnum.error => _ErrorMessage(state.errorMessage!),
@@ -546,8 +515,7 @@ final class _Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return Padding(
       padding: themeExtension.dialogPadding,
@@ -559,10 +527,10 @@ final class _Loader extends StatelessWidget {
 /// Where the rows of the (successfully) fetched items of the [MyoroTable] are built.
 final class _Rows<T> extends StatefulWidget {
   final MyoroTableConfiguration<T> _configuration;
-  final List<GlobalKey> _titleCellKeys;
+  final List<double> _columnWidths;
   final MyoroTablePagination<T> _pagination;
 
-  const _Rows(this._configuration, this._titleCellKeys, this._pagination);
+  const _Rows(this._configuration, this._columnWidths, this._pagination);
 
   @override
   State<_Rows<T>> createState() => _RowsState<T>();
@@ -570,7 +538,7 @@ final class _Rows<T> extends StatefulWidget {
 
 final class _RowsState<T> extends State<_Rows<T>> {
   MyoroTableConfiguration<T> get _configuration => widget._configuration;
-  List<GlobalKey> get _titleCellKeys => widget._titleCellKeys;
+  List<double> get _columnWidths => widget._columnWidths;
   MyoroTablePagination<T> get _pagination => widget._pagination;
 
   final _scrollController = ScrollController();
@@ -583,9 +551,7 @@ final class _RowsState<T> extends State<_Rows<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return _items.isEmpty
-        ? const _EmptyMessage()
-        : MyoroLayoutBuilder(builder: _builder);
+    return _items.isEmpty ? const _EmptyMessage() : MyoroLayoutBuilder(builder: _builder);
   }
 
   Widget _builder(BuildContext context, __) {
@@ -602,8 +568,7 @@ final class _RowsState<T> extends State<_Rows<T>> {
   }
 
   Widget _itemBuilder(BuildContext context, int index) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
@@ -612,10 +577,7 @@ final class _RowsState<T> extends State<_Rows<T>> {
         onTapUp: (_) => throw UnimplementedError(),
       ),
       builder: (_, __) {
-        return Row(
-          spacing: themeExtension.columnSpacing,
-          children: _buildCells(_items[index]),
-        );
+        return Row(spacing: themeExtension.columnSpacing, children: _buildCells(_items[index]));
       },
     );
   }
@@ -625,9 +587,9 @@ final class _RowsState<T> extends State<_Rows<T>> {
     final List<Widget> cells = row.cells;
 
     assert(
-      _titleCellKeys.length == cells.length,
+      _columnWidths.length == cells.length,
       '[MyoroTable._Rows]: # of [Widget]s in [MyoroTableRow.cells] '
-      'must be equal to the length of [MyoroTableConfiguration.titleColumns].',
+      'must be equal to the length of [MyoroTableConfiguration.columns].',
     );
 
     final builtCells = <Widget>[];
@@ -636,11 +598,7 @@ final class _RowsState<T> extends State<_Rows<T>> {
       final Widget cell = cells[i];
 
       if (i != cells.length - 1) {
-        final titleCellWidthRenderBox =
-            _titleCellKeys[i].currentContext?.findRenderObject() as RenderBox?;
-        final double? titleCellWidth = titleCellWidthRenderBox?.size.width;
-
-        builtCells.add(SizedBox(width: titleCellWidth, child: cell));
+        builtCells.add(SizedBox(width: _columnWidths[i], child: cell));
       } else {
         builtCells.add(Expanded(child: cell));
       }
@@ -658,14 +616,10 @@ final class _EmptyMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     return Padding(
       padding: themeExtension.dialogPadding,
-      child: Text(
-        'No items to display!',
-        style: themeExtension.emptyMessageTextStyle,
-      ),
+      child: Text('No items to display!', style: themeExtension.emptyMessageTextStyle),
     );
   }
 }
@@ -678,8 +632,7 @@ final class _ErrorMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return Padding(
       padding: themeExtension.dialogPadding,

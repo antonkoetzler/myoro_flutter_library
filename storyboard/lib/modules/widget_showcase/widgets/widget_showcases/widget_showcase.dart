@@ -50,12 +50,14 @@ final class _WidgetWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
-    return Container(
-      height: double.infinity,
-      alignment: themeExtension.widgetWrapperAlignment,
-      decoration: themeExtension.widgetWrapperDecoration,
+    return Padding(
       padding: themeExtension.widgetWrapperPadding,
-      child: Padding(padding: themeExtension.widgetWrapperContentPadding, child: widget),
+      child: Container(
+        height: double.infinity,
+        alignment: themeExtension.widgetWrapperAlignment,
+        decoration: themeExtension.widgetWrapperDecoration,
+        child: Padding(padding: themeExtension.widgetWrapperContentPadding, child: widget),
+      ),
     );
   }
 }
