@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of [MyoroTableV2].
 ///
 /// TODO: Needs to be tested.
-class MyoroTableV2ViewModel<T> extends ChangeNotifier {
+class MyoroTableV2ViewModel<T> {
   /// Configuration of said [MyoroTableV2].
   MyoroTableV2Configuration<T> configuration;
 
@@ -26,11 +26,9 @@ class MyoroTableV2ViewModel<T> extends ChangeNotifier {
 
   MyoroTableV2ViewModel({required this.configuration});
 
-  @override
   void dispose() {
     _statusNotifier.dispose();
     _paginationNotifier.dispose();
-    super.dispose();
   }
 
   /// Resolves [MyoroTableV2Configuration.request].
