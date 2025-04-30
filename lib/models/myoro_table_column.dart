@@ -4,7 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model of a title column of a [MyoroTable].
+///
+/// TODO: Test needs to be adjusted.
 class MyoroTableColumn extends Equatable {
+  static const resizableDefaultValue = false;
+
+  /// If the [MyoroTableColumn] is resizable.
+  ///
+  /// On the right hand side, will it be resizable.
+  ///
+  /// Last [MyoroTableColumn] of a [MyoroTable] is not resizable.
+  final bool resizable;
+
   /// Width configuration of the [MyoroTableColumn].
   final MyoroTableColumnWidthConfiguration widthConfiguration;
 
@@ -18,17 +29,28 @@ class MyoroTableColumn extends Equatable {
   /// apply [MyoroTableThemeExtension.titleColumnTextStyle].
   final Widget child;
 
-  const MyoroTableColumn({required this.widthConfiguration, required this.child});
+  const MyoroTableColumn({
+    this.resizable = resizableDefaultValue,
+    required this.widthConfiguration,
+    required this.child,
+  });
 
   MyoroTableColumn.fake()
-    : widthConfiguration = MyoroTableColumnWidthConfiguration.fake(),
-      child = Text(faker.lorem.word(), maxLines: 1, overflow: TextOverflow.ellipsis);
+    : resizable = faker.randomGenerator.boolean(),
+      widthConfiguration = MyoroTableColumnWidthConfiguration.fake(),
+      child = Text(
+        faker.lorem.word(),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      );
 
   MyoroTableColumn copyWith({
+    bool? resizable,
     MyoroTableColumnWidthConfiguration? widthConfiguration,
     Widget? child,
   }) {
     return MyoroTableColumn(
+      resizable: resizable ?? this.resizable,
       widthConfiguration: widthConfiguration ?? this.widthConfiguration,
       child: child ?? this.child,
     );
@@ -36,12 +58,13 @@ class MyoroTableColumn extends Equatable {
 
   @override
   List<Object?> get props {
-    return [widthConfiguration, child];
+    return [resizable, widthConfiguration, child];
   }
 
   @override
   String toString() =>
       'MyoroTableColumn(\n'
+      '  resizable: $resizable,\n'
       '  widthConfiguration: $widthConfiguration,\n'
       '  child: $child,\n'
       ');';
