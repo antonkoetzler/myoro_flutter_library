@@ -109,7 +109,6 @@ final class WidgetShowcaseModule implements Module {
 
       // Tables
       const MyoroTableWidgetShowcaseThemeExtension.builder(),
-      const MyoroTableV2WidgetShowcaseThemeExtension.builder(),
 
       // Tooltips
       MyoroTooltipWidgetShowcaseThemeExtension.builder(textTheme),

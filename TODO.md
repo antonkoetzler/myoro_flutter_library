@@ -1,6 +1,10 @@
 # TODO
 
-1. (**IN PROGRESS**) refactor: `MyoroTable`
+1. (**DELAYED**) refactor: `MyoroTable`
+
+- Make view model
+- Finish todos
+
 1. feature: `getRandomColor`, `getRandomTextStyle`, `getRandomCursor`, etc
 1. (**DELAYED**) refactor: Buttons
 
@@ -26,6 +30,6 @@
 1. chore: Make all folders like `./lib/models` categorized by folders instead of just having files
 1. chore: Make every `Widget` have a configuration file instead of arguments in the `Widget`
 
-1. refactor: Remove every sinle bloc and use viewmodel
+1. (**IN PROGRESS**) refactor: Remove every single bloc and use viewmodel
 1. chore: 100% code coverage
 1. Publish to pub.dev
