@@ -107,9 +107,6 @@ final class WidgetShowcaseModule implements Module {
       // Snack bars
       MyoroSnackBarWidgetShowcaseThemeExtension.builder(colorScheme),
 
-      // Tables
-      const MyoroTableWidgetShowcaseThemeExtension.builder(),
-
       // Tooltips
       MyoroTooltipWidgetShowcaseThemeExtension.builder(textTheme),
     ];

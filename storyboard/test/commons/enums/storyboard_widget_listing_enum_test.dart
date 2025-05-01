@@ -101,10 +101,6 @@ void main() {
     expect(StoryboardWidgetListingEnum.snackBars.categoryName, 'Snack bars');
     expect(StoryboardWidgetListingEnum.snackBars.widgetNames, ['MyoroSnackBar']);
 
-    // Tables
-    expect(StoryboardWidgetListingEnum.tables.categoryName, 'Tables');
-    expect(StoryboardWidgetListingEnum.tables.widgetNames, ['MyoroTable']);
-
     // Tooltips
     expect(StoryboardWidgetListingEnum.tooltips.categoryName, 'Tooltips');
     expect(StoryboardWidgetListingEnum.tooltips.widgetNames, ['MyoroTooltip']);
@@ -275,12 +271,6 @@ void main() {
       isA<MyoroSnackBarWidgetShowcase>(),
     );
 
-    // Tables
-    expect(
-      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroTableTitle),
-      isA<MyoroTableWidgetShowcase>(),
-    );
-
     // Tooltips
     expect(
       StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroTooltipTitle),
@@ -316,7 +306,6 @@ void main() {
     expect(StoryboardWidgetListingEnum.screens.isScreens, isTrue);
     expect(StoryboardWidgetListingEnum.sliders.isSliders, isTrue);
     expect(StoryboardWidgetListingEnum.snackBars.isSnackBars, isTrue);
-    expect(StoryboardWidgetListingEnum.tables.isTables, isTrue);
     expect(StoryboardWidgetListingEnum.tooltips.isTooltips, isTrue);
   });
 }

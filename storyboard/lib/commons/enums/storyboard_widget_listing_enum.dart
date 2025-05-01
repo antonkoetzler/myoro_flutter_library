@@ -24,7 +24,6 @@ enum StoryboardWidgetListingEnum {
   screens('Screens', {myoroScreenTitle}),
   sliders('Sliders', {myoroSliderTitle}),
   snackBars('Snack bars', {myoroSnackBarTitle}),
-  tables('Tables', {myoroTableTitle}),
   tooltips('Tooltips', {myoroTooltipTitle});
 
   final String categoryName;
@@ -107,9 +106,6 @@ enum StoryboardWidgetListingEnum {
   // Snack bars
   static const myoroSnackBarTitle = 'MyoroSnackBar';
 
-  // Tables
-  static const myoroTableTitle = 'MyoroTable';
-
   // Tooltips
   static const myoroTooltipTitle = 'MyoroTooltip';
 
@@ -188,9 +184,6 @@ enum StoryboardWidgetListingEnum {
       // Snack bars
       myoroSnackBarTitle => const MyoroSnackBarWidgetShowcase(),
 
-      // Tables
-      myoroTableTitle => const MyoroTableWidgetShowcase(),
-
       // Tooltips
       myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
 
@@ -220,6 +213,5 @@ enum StoryboardWidgetListingEnum {
   bool get isScreens => this == screens;
   bool get isSliders => this == sliders;
   bool get isSnackBars => this == snackBars;
-  bool get isTables => this == tables;
   bool get isTooltips => this == tooltips;
 }
