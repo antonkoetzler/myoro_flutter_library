@@ -40,14 +40,19 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? _headerTitleText;
   final String? _headerSubtitleText;
 
-  const _AppBar(this._onPrevious, this._headerTitleText, this._headerSubtitleText);
+  const _AppBar(
+    this._onPrevious,
+    this._headerTitleText,
+    this._headerSubtitleText,
+  );
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     final bool headerTitleTextIsNotNull = _headerTitleText != null;
     final bool headerSubtitleTextIsNotNull = _headerSubtitleText != null;
 
@@ -88,8 +93,10 @@ final class _Header extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (headerTitleTextIsNotNull) Flexible(child: _HeaderTitleText(_headerTitleText)),
-        if (headerSubtitleTextIsNotNull) Flexible(child: _HeaderSubtitleText(_headerSubtitleText)),
+        if (headerTitleTextIsNotNull)
+          Flexible(child: _HeaderTitleText(_headerTitleText)),
+        if (headerSubtitleTextIsNotNull)
+          Flexible(child: _HeaderSubtitleText(_headerSubtitleText)),
       ],
     );
   }
@@ -102,7 +109,8 @@ final class _HeaderTitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     return _HeaderText(text: _text, style: themeExtension.headerTitleTextStyle);
   }
 }
@@ -114,7 +122,8 @@ final class _PreviousPageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
@@ -135,8 +144,12 @@ final class _HeaderSubtitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    return _HeaderText(text: _text, style: themeExtension.headerSubtitleTextStyle);
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    return _HeaderText(
+      text: _text,
+      style: themeExtension.headerSubtitleTextStyle,
+    );
   }
 }
 
@@ -148,7 +161,12 @@ final class _HeaderText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, maxLines: 1, overflow: TextOverflow.ellipsis, style: style);
+    return Text(
+      text,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: style,
+    );
   }
 }
 
@@ -157,7 +175,8 @@ final class _ToggleThemeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         iconConfiguration: MyoroIconTextButtonIconConfiguration(

@@ -4,8 +4,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [MyoroSingularDropdown] to pick from a selection of [SystemMouseCursor].
-///
-/// TODO: Needs to be tested.
 final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;

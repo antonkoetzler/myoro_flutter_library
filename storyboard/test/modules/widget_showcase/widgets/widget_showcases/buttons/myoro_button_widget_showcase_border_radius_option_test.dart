@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
+
+void main() {
+  testWidgets('MyoroButtonWidgetShowcaseBorderRadiusOption', (
+    WidgetTester tester,
+  ) async {
+    late final MyoroButtonWidgetShowcaseThemeExtension themeExtension;
+
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: Builder(
+          builder: (BuildContext context) {
+            themeExtension =
+                context
+                    .resolveThemeExtension<
+                      MyoroButtonWidgetShowcaseThemeExtension
+                    >();
+            return const MyoroButtonWidgetShowcaseBorderRadiusOption();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(
+      find.byType(MyoroButtonWidgetShowcaseBorderRadiusOption),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is Column &&
+            w.mainAxisSize == MainAxisSize.min &&
+            w.spacing == themeExtension.spacing &&
+            w.children.length == 2 &&
+            w.children.first is MyoroCheckbox &&
+            (w.children.first as MyoroCheckbox).label ==
+                '[MyoroButtonConfiguration.borderRadius]' &&
+            w.children.last is MyoroSlider &&
+            (w.children.last as MyoroSlider).minValue == 0 &&
+            (w.children.last as MyoroSlider).maxValue == 500,
+      ),
+      findsOneWidget,
+    );
+  });
+}

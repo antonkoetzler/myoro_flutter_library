@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -17,9 +18,15 @@ final class WidgetShowcaseOptionDropdownConfiguration<T> extends Equatable {
 
   const WidgetShowcaseOptionDropdownConfiguration({
     this.initiallySelectedItem,
-    this.allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    this.allowItemClearing =
+        MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     required this.onChanged,
   });
+
+  WidgetShowcaseOptionDropdownConfiguration.fake()
+    : initiallySelectedItem = null,
+      allowItemClearing = faker.randomGenerator.boolean(),
+      onChanged = ((_) {});
 
   WidgetShowcaseOptionDropdownConfiguration<T> copyWith({
     T? initiallySelectedItem,
@@ -27,7 +34,8 @@ final class WidgetShowcaseOptionDropdownConfiguration<T> extends Equatable {
     MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
   }) {
     return WidgetShowcaseOptionDropdownConfiguration(
-      initiallySelectedItem: initiallySelectedItem ?? this.initiallySelectedItem,
+      initiallySelectedItem:
+          initiallySelectedItem ?? this.initiallySelectedItem,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
       onChanged: onChanged ?? this.onChanged,
     );

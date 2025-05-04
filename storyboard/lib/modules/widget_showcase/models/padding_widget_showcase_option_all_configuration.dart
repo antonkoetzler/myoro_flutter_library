@@ -25,6 +25,12 @@ final class PaddingWidgetShowcaseOptionAllConfiguration extends Equatable {
     required this.rightOnChanged,
   });
 
+  PaddingWidgetShowcaseOptionAllConfiguration.fake()
+    : topOnChanged = ((_) {}),
+      bottomOnChanged = ((_) {}),
+      leftOnChanged = ((_) {}),
+      rightOnChanged = ((_) {});
+
   PaddingWidgetShowcaseOptionAllConfiguration copyWith({
     PaddingWidgetShowcaseOptionConfigurationOnChanged? topOnChanged,
     PaddingWidgetShowcaseOptionConfigurationOnChanged? bottomOnChanged,

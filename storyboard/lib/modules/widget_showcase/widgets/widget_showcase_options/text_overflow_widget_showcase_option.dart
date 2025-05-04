@@ -3,14 +3,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [WidgetShowcaseOption] used to pick a [TextOverflow].
-///
-/// TODO: Needs to be tested.
 final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
 
   /// Configuration.
-  final WidgetShowcaseOptionDropdownConfiguration<TextOverflow> dropdownConfiguration;
+  final WidgetShowcaseOptionDropdownConfiguration<TextOverflow>
+  dropdownConfiguration;
 
   const TextOverflowWidgetShowcaseOption({
     super.key,
@@ -22,12 +21,16 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return WidgetShowcaseOption(
       labelConfiguration:
-          labelConfiguration ?? const WidgetShowcaseOptionLabelConfiguration(label: 'TextOverflow'),
+          labelConfiguration ??
+          const WidgetShowcaseOptionLabelConfiguration(label: 'TextOverflow'),
       child: MyoroSingularDropdown<TextOverflow>(
         configuration: MyoroSingularDropdownConfiguration(
           initiallySelectedItem: dropdownConfiguration.initiallySelectedItem,
           allowItemClearing: dropdownConfiguration.allowItemClearing,
-          menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
+          menuConfiguration: MyoroMenuConfiguration(
+            request: _request,
+            itemBuilder: _itemBuilder,
+          ),
           selectedItemBuilder: _labelBuilder,
           onChanged: dropdownConfiguration.onChanged,
         ),
@@ -41,7 +44,9 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(TextOverflow overflow) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _labelBuilder(overflow)),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _labelBuilder(overflow),
+      ),
     );
   }
 

@@ -3,6 +3,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// Enum for all of the widgets we showcase in the storyboard.
 enum StoryboardWidgetListingEnum {
+  accordions('Accordions', {myoroAccordionTitle}),
   appBars('App bars', {myoroAppBarTitle}),
   buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle}),
   cards('Cards', {myoroCardTitle}),
@@ -13,7 +14,11 @@ enum StoryboardWidgetListingEnum {
   dropdowns('Dropdowns', {myoroSingularDropdownTitle, myoroMultiDropdownTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
-  inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
+  inputs('Inputs', {
+    myoroDatePickerInputTitle,
+    myoroInputTitle,
+    myoroSearchInputTitle,
+  }),
   layoutBuilders('Layout builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
   materialApps('Material apps', {myoroMaterialAppTitle}),
@@ -30,6 +35,9 @@ enum StoryboardWidgetListingEnum {
   final Set<String> widgetNames;
 
   const StoryboardWidgetListingEnum(this.categoryName, this.widgetNames);
+
+  // Accordions
+  static const myoroAccordionTitle = 'MyoroAccordion';
 
   // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';
@@ -112,6 +120,9 @@ enum StoryboardWidgetListingEnum {
   /// [WidgetShowcase] that will be displayed in [_WidgetViewer].
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
+      // Accordions
+      myoroAccordionTitle => const MyoroAccordionWidgetShowcase(),
+
       // App bars
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
 
@@ -188,10 +199,14 @@ enum StoryboardWidgetListingEnum {
       myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
 
       // Should never get here
-      _ => throw Exception('[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.'),
+      _ =>
+        throw Exception(
+          '[WidgetListingEnum.widgetViewWidget]: Unknown [widgetName] provided.',
+        ),
     };
   }
 
+  bool get isAccordions => this == accordions;
   bool get isAppBars => this == appBars;
   bool get isButtons => this == buttons;
   bool get isCards => this == cards;

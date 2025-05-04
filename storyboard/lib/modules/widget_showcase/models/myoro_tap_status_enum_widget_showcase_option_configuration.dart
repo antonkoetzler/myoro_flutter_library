@@ -30,6 +30,12 @@ final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration
     required this.tapColorOnChanged,
   });
 
+  MyoroTapStatusEnumWidgetShowcaseOptionConfiguration.fake()
+    : labelConfiguration = WidgetShowcaseOptionLabelConfiguration.fake(),
+      idleColorOnChanged = ((_) {}),
+      hoverColorOnChanged = ((_) {}),
+      tapColorOnChanged = ((_) {});
+
   MyoroTapStatusEnumWidgetShowcaseOptionConfiguration copyWith({
     WidgetShowcaseOptionLabelConfiguration? labelConfiguration,
     MyoroTapStatusEnumWidgetShowcaseOptionOnChanged? idleColorOnChanged,

@@ -1,6 +1,6 @@
 # Changelog (of major and minor versions)
 
-## 1.4.0
+## 2.0.0
 
 1. feature: Added `MyoroFontSizeEnum.extraLarge`;
 1. refactor: `MyoroDropdown` using `OverlayPortal`/`CompositedTransformTarget`/`CompositedTransformFollower`;

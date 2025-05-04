@@ -5,7 +5,8 @@ import 'package:storyboard/storyboard.dart';
 /// [EdgeInsets.symmetric] configuration of [PaddingWidgetShowcaseOptionConfiguration].
 ///
 /// TODO: Needs to be tested.
-final class PaddingWidgetShowcaseOptionSymmetricConfiguration extends Equatable {
+final class PaddingWidgetShowcaseOptionSymmetricConfiguration
+    extends Equatable {
   /// [EdgeInsets.vertical]
   final PaddingWidgetShowcaseOptionConfigurationOnChanged verticalOnChanged;
 
@@ -16,6 +17,10 @@ final class PaddingWidgetShowcaseOptionSymmetricConfiguration extends Equatable 
     required this.verticalOnChanged,
     required this.horizontalOnChanged,
   });
+
+  PaddingWidgetShowcaseOptionSymmetricConfiguration.fake()
+    : verticalOnChanged = ((_) {}),
+      horizontalOnChanged = ((_) {});
 
   PaddingWidgetShowcaseOptionSymmetricConfiguration copyWith({
     PaddingWidgetShowcaseOptionConfigurationOnChanged? verticalOnChanged,

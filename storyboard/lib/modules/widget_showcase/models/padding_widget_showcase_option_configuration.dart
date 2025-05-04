@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -30,6 +31,25 @@ final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
          '[PaddingWidgetShowcaseOptionConfiguration]: [allConfiguration] '
          '(x)or [symmetricConfiguration] must be provided.',
        );
+
+  factory PaddingWidgetShowcaseOptionConfiguration.fake() {
+    final bool useAllConfiguration = faker.randomGenerator.boolean();
+
+    return PaddingWidgetShowcaseOptionConfiguration(
+      labelConfiguration:
+          faker.randomGenerator.boolean()
+              ? WidgetShowcaseOptionLabelConfiguration.fake()
+              : null,
+      allConfiguration:
+          useAllConfiguration
+              ? PaddingWidgetShowcaseOptionAllConfiguration.fake()
+              : null,
+      symmetricConfiguration:
+          useAllConfiguration
+              ? null
+              : PaddingWidgetShowcaseOptionSymmetricConfiguration.fake(),
+    );
+  }
 
   PaddingWidgetShowcaseOptionConfiguration copyWith({
     WidgetShowcaseOptionLabelConfiguration? labelConfiguration,

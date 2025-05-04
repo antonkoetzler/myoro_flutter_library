@@ -3,8 +3,6 @@ import 'package:storyboard/storyboard.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Option for selecting colors to display for a [MyoroTapStatusEnum] based builder.
-///
-/// TODO: Needs to be tested.
 final class MyoroTapStatusEnumWidgetShowcaseOption extends StatelessWidget {
   /// Configuration.
   final MyoroTapStatusEnumWidgetShowcaseOptionConfiguration configuration;

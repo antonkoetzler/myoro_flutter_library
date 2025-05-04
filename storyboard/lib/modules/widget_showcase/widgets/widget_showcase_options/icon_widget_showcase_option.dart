@@ -3,8 +3,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [MyoroSingularDropdown] to choose an [IconData].
-///
-/// TODO: Needs to be tested.
 final class IconWidgetShowcaseOption extends StatelessWidget {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;

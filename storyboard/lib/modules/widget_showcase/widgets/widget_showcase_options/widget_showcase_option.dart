@@ -8,8 +8,6 @@ import 'package:storyboard/storyboard.dart';
 ///
 /// If [initialValue] and [onChanged] are provided, [_Label] will
 /// be a [MyoroCheckbox]. This is useful for a nullable argument.
-///
-/// TODO: Needs to be tested.
 final class WidgetShowcaseOption extends StatelessWidget {
   /// [_Label] configuration.
   final WidgetShowcaseOptionLabelConfiguration labelConfiguration;

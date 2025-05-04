@@ -3,8 +3,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [WidgetShowcase] option to add customized padding on all sides (top, bottom, left and right).
-///
-/// TODO: Needs to be tested.
 final class PaddingWidgetShowcaseOption extends StatelessWidget {
   /// Configuration.
   final PaddingWidgetShowcaseOptionConfiguration configuration;

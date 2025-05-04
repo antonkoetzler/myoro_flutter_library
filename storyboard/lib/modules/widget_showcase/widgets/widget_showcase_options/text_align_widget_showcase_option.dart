@@ -3,14 +3,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [TextAlign] [WidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
 
   /// Configuration.
-  final WidgetShowcaseOptionDropdownConfiguration<TextAlign> dropdownConfiguration;
+  final WidgetShowcaseOptionDropdownConfiguration<TextAlign>
+  dropdownConfiguration;
 
   const TextAlignWidgetShowcaseOption({
     super.key,
@@ -22,10 +21,14 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return WidgetShowcaseOption(
       labelConfiguration:
-          labelConfiguration ?? const WidgetShowcaseOptionLabelConfiguration(label: 'TextAlign'),
+          labelConfiguration ??
+          const WidgetShowcaseOptionLabelConfiguration(label: 'TextAlign'),
       child: MyoroSingularDropdown<TextAlign>(
         configuration: MyoroSingularDropdownConfiguration(
-          menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
+          menuConfiguration: MyoroMenuConfiguration(
+            request: _request,
+            itemBuilder: _itemBuilder,
+          ),
           selectedItemBuilder: _labelBuilder,
           initiallySelectedItem: dropdownConfiguration.initiallySelectedItem,
           onChanged: dropdownConfiguration.onChanged,
@@ -40,7 +43,9 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(TextAlign textAlign) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _labelBuilder(textAlign)),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _labelBuilder(textAlign),
+      ),
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -27,6 +28,14 @@ final class WidgetShowcaseOptionLabelConfiguration extends Equatable {
          !((initialValue != null) ^ (onChanged != null)),
          '[WidgetShowcaseOptionLabelConfiguration]: If [initialValue] is provided, [onChanged] must be provided.',
        );
+
+  WidgetShowcaseOptionLabelConfiguration.fake()
+    : label = faker.lorem.word(),
+      initialValue =
+          faker.randomGenerator.boolean()
+              ? faker.randomGenerator.boolean()
+              : null,
+      onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
 
   WidgetShowcaseOptionLabelConfiguration copyWith({
     String? label,
