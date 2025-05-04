@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-typedef ColorWidgetShowcaseOptionOnChanged =
-    void Function(Color? color);
+typedef ColorWidgetShowcaseOptionOnChanged = void Function(Color? color);
 
 /// [Color] picker [MyoroSingularDropdown].
-///
-/// TODO: Needs to be tested.
 final class ColorWidgetShowcaseOption extends StatelessWidget {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
@@ -63,9 +60,7 @@ final class _Item extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension =
         context
-            .resolveThemeExtension<
-              ColorWidgetShowcaseOptionThemeExtension
-            >();
+            .resolveThemeExtension<ColorWidgetShowcaseOptionThemeExtension>();
     final EdgeInsets itemPadding = themeExtension.itemPadding;
     final double itemSpacing = themeExtension.itemSpacing;
 
@@ -91,9 +86,7 @@ final class _ItemColor extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension =
         context
-            .resolveThemeExtension<
-              ColorWidgetShowcaseOptionThemeExtension
-            >();
+            .resolveThemeExtension<ColorWidgetShowcaseOptionThemeExtension>();
     final double itemColorSize = themeExtension.itemColorSize;
 
     return Container(

@@ -5,8 +5,6 @@ import 'package:storyboard/modules/widget_showcase/blocs/myoro_button_widget_sho
 import 'package:storyboard/storyboard.dart';
 
 /// [MyoroButtonConfiguration.backgroundColorBuilder] option of [MyoroButtonWidgetShowcase].
-///
-/// TODO: Needs to be tested.
 final class MyoroButtonWidgetShowcaseBackgroundColorBuilderOption
     extends StatelessWidget {
   const MyoroButtonWidgetShowcaseBackgroundColorBuilderOption({super.key});
