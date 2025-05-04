@@ -14,7 +14,7 @@ void main() {
     bool onChangedExecuted = false;
 
     await tester.pumpWidget(
-      MyoroWidgetTester(
+      StoryboardWidgetTester(
         child: ColorWidgetShowcaseOption(
           labelConfiguration: labelConfiguration,
           onChanged: (_) => onChangedExecuted = true,

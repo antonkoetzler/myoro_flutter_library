@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [ColorWidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 @immutable
 final class ColorWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<ColorWidgetShowcaseOptionThemeExtension> {
@@ -50,8 +48,7 @@ final class ColorWidgetShowcaseOptionThemeExtension
 
   @override
   ColorWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<ColorWidgetShowcaseOptionThemeExtension>?
-    other,
+    covariant ThemeExtension<ColorWidgetShowcaseOptionThemeExtension>? other,
     double t,
   ) {
     if (other is! ColorWidgetShowcaseOptionThemeExtension) return this;

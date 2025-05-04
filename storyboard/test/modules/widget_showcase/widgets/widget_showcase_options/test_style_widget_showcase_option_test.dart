@@ -9,23 +9,20 @@ void main() {
       faker.randomGenerator.boolean()
           ? WidgetShowcaseOptionLabelConfiguration.fake()
           : null;
+  final WidgetShowcaseOptionDropdownConfiguration<TextStyle>
+  dropdownConfiguration = WidgetShowcaseOptionDropdownConfiguration.fake();
 
-  testWidgets('IconWidgetShowcaseOption', (WidgetTester tester) async {
-    bool onChangedExecuted = false;
-
+  testWidgets('TextStyleWidgetShowcaseOption', (WidgetTester tester) async {
     await tester.pumpWidget(
       StoryboardWidgetTester(
-        child: IconWidgetShowcaseOption(
+        child: TextStyleWidgetShowcaseOption(
           labelConfiguration: labelConfiguration,
-          onChanged: (_) {
-            onChangedExecuted = true;
-          },
+          dropdownConfiguration: dropdownConfiguration,
         ),
       ),
     );
     await tester.pumpAndSettle();
 
-    expect(find.byType(IconWidgetShowcaseOption), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
@@ -33,16 +30,11 @@ void main() {
             w.labelConfiguration ==
                 (labelConfiguration ??
                     const WidgetShowcaseOptionLabelConfiguration(
-                      label: 'Icon',
+                      label: 'TextStyle',
                     )) &&
-            w.child is MyoroSingularDropdown<IconData>,
+            w.child is MyoroSingularDropdown<TextStyle>,
       ),
       findsOneWidget,
     );
-
-    await tester.tap(find.byType(MyoroSingularDropdown<IconData>));
-    await tester.pumpAndSettle();
-
-    expect(onChangedExecuted, isTrue);
   });
 }

@@ -12,7 +12,7 @@ void main() {
       late final PaddingWidgetShowcaseOptionThemeExtension themeExtension;
 
       await tester.pumpWidget(
-        MyoroWidgetTester(
+        StoryboardWidgetTester(
           child: Builder(
             builder: (BuildContext context) {
               themeExtension =

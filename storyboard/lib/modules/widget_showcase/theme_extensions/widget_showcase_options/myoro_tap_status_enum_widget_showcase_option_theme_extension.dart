@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroTapStatusEnumWidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension
     extends
         ThemeExtension<MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension> {

@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [PaddingWidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class PaddingWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<PaddingWidgetShowcaseOptionThemeExtension> {
   /// Spacing of general [Widget]s.

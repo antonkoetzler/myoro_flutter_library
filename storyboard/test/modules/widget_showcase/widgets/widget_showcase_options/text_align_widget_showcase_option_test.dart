@@ -14,7 +14,7 @@ void main() {
 
   testWidgets('TextAlignWidgetShowcaseOption', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
+      StoryboardWidgetTester(
         child: TextAlignWidgetShowcaseOption(
           labelConfiguration: labelConfiguration,
           dropdownConfiguration: dropdownConfiguration,

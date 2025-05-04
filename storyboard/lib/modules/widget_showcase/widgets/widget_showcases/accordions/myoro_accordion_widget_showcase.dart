@@ -4,8 +4,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [WidgetShowcase] of [MyoroAccordion].
-///
-/// TODO: Needs to be tested.
 final class MyoroAccordionWidgetShowcase extends StatelessWidget {
   const MyoroAccordionWidgetShowcase({super.key});
 

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MouseCursorWidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class MouseCursorWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<MouseCursorWidgetShowcaseOptionThemeExtension> {
   const MouseCursorWidgetShowcaseOptionThemeExtension();

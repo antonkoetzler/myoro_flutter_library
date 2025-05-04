@@ -15,7 +15,7 @@ void main() {
     bool onChangedExecuted = true;
 
     await tester.pumpWidget(
-      MyoroWidgetTester(
+      StoryboardWidgetTester(
         child: MouseCursorWidgetShowcaseOption(
           labelConfiguration: labelConfiguration,
           onChanged: (_) => onChangedExecuted = true,

@@ -4,8 +4,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Root [Widget] of [Widget] tests.
-///
-/// TODO: Needs to be tested.
 final class StoryboardWidgetTester extends StatefulWidget {
   /// [Widget] that will be tested.
   final Widget child;
@@ -24,7 +22,9 @@ final class _StoryboardWidgetTesterState extends State<StoryboardWidgetTester> {
     super.initState();
 
     // Initializing dependencies required in each [Widget] test.
-    KiwiContainer().registerSingleton<ModulesController>((_) => ModulesController());
+    KiwiContainer().registerSingleton<ModulesController>(
+      (_) => ModulesController(),
+    );
   }
 
   @override

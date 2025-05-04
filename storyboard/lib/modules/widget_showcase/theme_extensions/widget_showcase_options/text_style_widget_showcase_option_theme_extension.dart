@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [TextStyleWidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class TextStyleWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<TextStyleWidgetShowcaseOptionThemeExtension> {
   const TextStyleWidgetShowcaseOptionThemeExtension();
@@ -19,7 +17,8 @@ final class TextStyleWidgetShowcaseOptionThemeExtension
 
   @override
   TextStyleWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<TextStyleWidgetShowcaseOptionThemeExtension>? other,
+    covariant ThemeExtension<TextStyleWidgetShowcaseOptionThemeExtension>?
+    other,
     double t,
   ) {
     return this;
@@ -27,7 +26,8 @@ final class TextStyleWidgetShowcaseOptionThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is TextStyleWidgetShowcaseOptionThemeExtension && other.runtimeType == runtimeType;
+    return other is TextStyleWidgetShowcaseOptionThemeExtension &&
+        other.runtimeType == runtimeType;
   }
 
   @override

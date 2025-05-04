@@ -14,7 +14,7 @@ void main() {
 
   testWidgets('TextOverflowWidgetShowcaseOption', (WidgetTester tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
+      StoryboardWidgetTester(
         child: TextOverflowWidgetShowcaseOption(
           labelConfiguration: labelConfiguration,
           dropdownConfiguration: dropdownConfiguration,

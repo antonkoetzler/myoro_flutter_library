@@ -13,7 +13,7 @@ void main() {
     late final WidgetShowcaseOptionThemeExtension themeExtension;
 
     await tester.pumpWidget(
-      MyoroWidgetTester(
+      StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
             themeExtension =

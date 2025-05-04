@@ -5,7 +5,7 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   testWidgets('MyoroButtonWidgetShowcase', (WidgetTester tester) async {
     await tester.pumpWidget(
-      const MyoroWidgetTester(child: MyoroButtonWidgetShowcase()),
+      const StoryboardWidgetTester(child: MyoroButtonWidgetShowcase()),
     );
     await tester.pumpAndSettle();
 

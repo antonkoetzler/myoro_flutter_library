@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroIconTextButtonWidgetShowcase].
-///
-/// TODO: Needs to be tested.
 final class MyoroIconTextButtonWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroIconTextButtonWidgetShowcaseThemeExtension> {
   const MyoroIconTextButtonWidgetShowcaseThemeExtension();
@@ -19,7 +17,8 @@ final class MyoroIconTextButtonWidgetShowcaseThemeExtension
 
   @override
   MyoroIconTextButtonWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroIconTextButtonWidgetShowcaseThemeExtension>? other,
+    covariant ThemeExtension<MyoroIconTextButtonWidgetShowcaseThemeExtension>?
+    other,
     double t,
   ) {
     return this;

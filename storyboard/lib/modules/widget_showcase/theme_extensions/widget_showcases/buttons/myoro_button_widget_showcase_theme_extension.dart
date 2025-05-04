@@ -6,8 +6,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroButtonWidgetShowcase].
-///
-/// TODO: Needs to be tested.
 final class MyoroButtonWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroButtonWidgetShowcaseThemeExtension> {
   /// Default spacing between various [Widget]s.
@@ -44,18 +42,32 @@ final class MyoroButtonWidgetShowcaseThemeExtension
   MyoroButtonWidgetShowcaseThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
       borderWidth = faker.randomGenerator.decimal(scale: 20),
-      buttonContentPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
-      buttonContentImageSize = faker.randomGenerator.decimal(scale: 100, min: 10),
-      buttonContentTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      buttonContentPadding = EdgeInsets.all(
+        faker.randomGenerator.decimal(scale: 50),
+      ),
+      buttonContentImageSize = faker.randomGenerator.decimal(
+        scale: 100,
+        min: 10,
+      ),
+      buttonContentTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       buttonContentTextIdleColor =
-          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
       buttonContentTextHoverColor =
-          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )],
       buttonContentTextTapColor =
-          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+          kMyoroTestColors[faker.randomGenerator.integer(
+            kMyoroTestColors.length,
+          )];
 
-  MyoroButtonWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : spacing = 10,
+  MyoroButtonWidgetShowcaseThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : spacing = 10,
       borderWidth = kMyoroBorderLength,
       buttonContentPadding = const EdgeInsets.all(10),
       buttonContentImageSize = 50,
@@ -79,11 +91,16 @@ final class MyoroButtonWidgetShowcaseThemeExtension
       spacing: spacing ?? this.spacing,
       borderWidth: borderWidth ?? this.borderWidth,
       buttonContentPadding: buttonContentPadding ?? this.buttonContentPadding,
-      buttonContentImageSize: buttonContentImageSize ?? this.buttonContentImageSize,
-      buttonContentTextStyle: buttonContentTextStyle ?? this.buttonContentTextStyle,
-      buttonContentTextIdleColor: buttonContentTextIdleColor ?? this.buttonContentTextIdleColor,
-      buttonContentTextHoverColor: buttonContentTextHoverColor ?? this.buttonContentTextHoverColor,
-      buttonContentTextTapColor: buttonContentTextTapColor ?? this.buttonContentTextTapColor,
+      buttonContentImageSize:
+          buttonContentImageSize ?? this.buttonContentImageSize,
+      buttonContentTextStyle:
+          buttonContentTextStyle ?? this.buttonContentTextStyle,
+      buttonContentTextIdleColor:
+          buttonContentTextIdleColor ?? this.buttonContentTextIdleColor,
+      buttonContentTextHoverColor:
+          buttonContentTextHoverColor ?? this.buttonContentTextHoverColor,
+      buttonContentTextTapColor:
+          buttonContentTextTapColor ?? this.buttonContentTextTapColor,
     );
   }
 
@@ -96,8 +113,16 @@ final class MyoroButtonWidgetShowcaseThemeExtension
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       borderWidth: lerpDouble(borderWidth, other.borderWidth, t),
-      buttonContentPadding: EdgeInsets.lerp(buttonContentPadding, other.buttonContentPadding, t),
-      buttonContentImageSize: lerpDouble(buttonContentImageSize, other.buttonContentImageSize, t),
+      buttonContentPadding: EdgeInsets.lerp(
+        buttonContentPadding,
+        other.buttonContentPadding,
+        t,
+      ),
+      buttonContentImageSize: lerpDouble(
+        buttonContentImageSize,
+        other.buttonContentImageSize,
+        t,
+      ),
       buttonContentTextStyle: TextStyle.lerp(
         buttonContentTextStyle,
         other.buttonContentTextStyle,

@@ -3,8 +3,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroDrawerWidgetShowcase].
-///
-/// TODO: Test needs to be rewritten.
 @immutable
 final class MyoroDrawerWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension> {
@@ -13,14 +11,19 @@ final class MyoroDrawerWidgetShowcaseThemeExtension
 
   const MyoroDrawerWidgetShowcaseThemeExtension({required this.inputStyle});
 
-  MyoroDrawerWidgetShowcaseThemeExtension.fake() : inputStyle = MyoroInputStyleEnum.fake();
+  MyoroDrawerWidgetShowcaseThemeExtension.fake()
+    : inputStyle = MyoroInputStyleEnum.fake();
 
   const MyoroDrawerWidgetShowcaseThemeExtension.builder()
     : inputStyle = MyoroInputStyleEnum.outlined;
 
   @override
-  MyoroDrawerWidgetShowcaseThemeExtension copyWith({MyoroInputStyleEnum? inputStyle}) {
-    return MyoroDrawerWidgetShowcaseThemeExtension(inputStyle: inputStyle ?? this.inputStyle);
+  MyoroDrawerWidgetShowcaseThemeExtension copyWith({
+    MyoroInputStyleEnum? inputStyle,
+  }) {
+    return MyoroDrawerWidgetShowcaseThemeExtension(
+      inputStyle: inputStyle ?? this.inputStyle,
+    );
   }
 
   @override

@@ -2,8 +2,6 @@ import 'package:faker/faker.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Enum of [PaddingWidgetShowcaseOptionConfiguration].
-///
-/// TODO: Needs to be tested.
 enum PaddingWidgetShowcaseOptionConfigurationEnum {
   /// [PaddingWidgetShowcaseOptionConfiguration.allConfiguration]
   all,

@@ -9,11 +9,14 @@ part 'myoro_icon_text_button_widget_showcase_event.dart';
 typedef _Emitter = Emitter<MyoroIconTextButtonWidgetShowcaseState>;
 
 /// [Bloc] of [MyoroIconTextButtonWidgetShowcase].
-///
-/// TODO: Needs to be tested.
 final class MyoroIconTextButtonWidgetShowcaseBloc
-    extends Bloc<MyoroIconTextButtonWidgetShowcaseEvent, MyoroIconTextButtonWidgetShowcaseState> {
-  MyoroIconTextButtonWidgetShowcaseBloc() : super(const MyoroIconTextButtonWidgetShowcaseState()) {
+    extends
+        Bloc<
+          MyoroIconTextButtonWidgetShowcaseEvent,
+          MyoroIconTextButtonWidgetShowcaseState
+        > {
+  MyoroIconTextButtonWidgetShowcaseBloc()
+    : super(const MyoroIconTextButtonWidgetShowcaseState()) {
     on<SetInvertEvent>(_setInvertEvent);
     on<SetSpacingEvent>(_setSpacingEvent);
     on<SetPaddingEvent>(_setPaddingEvent);
@@ -55,10 +58,17 @@ final class MyoroIconTextButtonWidgetShowcaseBloc
     SetContentColorBuilderEnabledEvent event,
     _Emitter emit,
   ) {
-    emit(state.copyWith(contentColorBuilderEnabled: event.contentColorBuilderEnabled));
+    emit(
+      state.copyWith(
+        contentColorBuilderEnabled: event.contentColorBuilderEnabled,
+      ),
+    );
   }
 
-  void _setIdleContentColorEvent(SetIdleContentColorEvent event, _Emitter emit) {
+  void _setIdleContentColorEvent(
+    SetIdleContentColorEvent event,
+    _Emitter emit,
+  ) {
     emit(
       state.copyWith(
         idleContentColor: event.idleContentColor,
@@ -67,7 +77,10 @@ final class MyoroIconTextButtonWidgetShowcaseBloc
     );
   }
 
-  void _setHoverContentColorEvent(SetHoverContentColorEvent event, _Emitter emit) {
+  void _setHoverContentColorEvent(
+    SetHoverContentColorEvent event,
+    _Emitter emit,
+  ) {
     emit(
       state.copyWith(
         hoverContentColor: event.hoverContentColor,
@@ -90,7 +103,12 @@ final class MyoroIconTextButtonWidgetShowcaseBloc
   }
 
   void _setIconSizeEvent(SetIconSizeEvent event, _Emitter emit) {
-    emit(state.copyWith(iconSize: event.iconSize, iconSizeProvided: event.iconSize != null));
+    emit(
+      state.copyWith(
+        iconSize: event.iconSize,
+        iconSizeProvided: event.iconSize != null,
+      ),
+    );
   }
 
   void _setTextEvent(SetTextEvent event, _Emitter emit) {
@@ -110,6 +128,11 @@ final class MyoroIconTextButtonWidgetShowcaseBloc
   }
 
   void _setTextStyleEvent(SetTextStyleEvent event, _Emitter emit) {
-    emit(state.copyWith(textStyle: event.textStyle, textStyleProvided: event.textStyle != null));
+    emit(
+      state.copyWith(
+        textStyle: event.textStyle,
+        textStyleProvided: event.textStyle != null,
+      ),
+    );
   }
 }

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroAccordionWidgetShowcase].
-///
-/// TODO: Needs to be tested.
 class MyoroAccordionWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroAccordionWidgetShowcaseThemeExtension> {
   const MyoroAccordionWidgetShowcaseThemeExtension();

@@ -4,8 +4,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Main screen of Storyboard.
-///
-/// TODO: Needs to be tested.
 final class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
@@ -26,12 +24,17 @@ final class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroAccordion(
       configuration: MyoroAccordionConfiguration(
-        items: StoryboardWidgetListingEnum.values.map<MyoroAccordionItem>(_itemBuilder).toList(),
+        items:
+            StoryboardWidgetListingEnum.values
+                .map<MyoroAccordionItem>(_itemBuilder)
+                .toList(),
       ),
     );
   }
 
-  MyoroAccordionItem _itemBuilder(StoryboardWidgetListingEnum widgetListingEnum) {
+  MyoroAccordionItem _itemBuilder(
+    StoryboardWidgetListingEnum widgetListingEnum,
+  ) {
     return MyoroAccordionItem(
       titleBuilder: (_) => _titleBuilder(widgetListingEnum),
       contentBuilder: (_) => _contentBuilder(widgetListingEnum),
@@ -68,14 +71,17 @@ final class _WidgetCategoryDropdownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MainScreenThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MainScreenThemeExtension>();
 
     return Padding(
       padding: themeExtension.widgetCategoryDropdownButtonPadding,
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
           onTapUp: (_) => _onTapUp(context),
-          textConfiguration: MyoroIconTextButtonTextConfiguration(text: _widgetName),
+          textConfiguration: MyoroIconTextButtonTextConfiguration(
+            text: _widgetName,
+          ),
         ),
       ),
     );

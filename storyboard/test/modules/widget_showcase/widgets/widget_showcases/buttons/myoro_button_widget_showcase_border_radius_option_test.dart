@@ -10,7 +10,7 @@ void main() {
     late final MyoroButtonWidgetShowcaseThemeExtension themeExtension;
 
     await tester.pumpWidget(
-      MyoroWidgetTester(
+      StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
             themeExtension =
