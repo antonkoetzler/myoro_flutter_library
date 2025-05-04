@@ -7,8 +7,6 @@ typedef MyoroTapStatusEnumWidgetShowcaseOptionOnChanged =
     void Function(Color? color);
 
 /// Configuration model of [MyoroTapStatusEnumWidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration
     extends Equatable {
   /// [WidgetShowcaseOption.labelConfiguration]

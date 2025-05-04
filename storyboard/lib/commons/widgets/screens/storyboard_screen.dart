@@ -3,8 +3,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Base screen [Widget].
-///
-/// TODO: Needs to be tested.
 final class StoryboardScreen extends StatelessWidget {
   /// Callback that builds [_PreviousPageButton].
   final VoidCallback? onPrevious;

@@ -9,8 +9,6 @@ typedef PaddingWidgetShowcaseOptionConfigurationOnChanged =
     void Function(double value);
 
 /// Configuration model of [PaddingWidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
@@ -55,16 +53,23 @@ final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
     WidgetShowcaseOptionLabelConfiguration? labelConfiguration,
     bool labelConfigurationProvided = true,
     PaddingWidgetShowcaseOptionAllConfiguration? allConfiguration,
+    bool allConfigurationProvided = true,
     PaddingWidgetShowcaseOptionSymmetricConfiguration? symmetricConfiguration,
+    bool symmetricConfigurationProvided = true,
   }) {
     return PaddingWidgetShowcaseOptionConfiguration(
       labelConfiguration:
           labelConfigurationProvided
               ? (labelConfiguration ?? this.labelConfiguration)
               : null,
-      allConfiguration: allConfiguration ?? this.allConfiguration,
+      allConfiguration:
+          allConfigurationProvided
+              ? (allConfiguration ?? this.allConfiguration)
+              : null,
       symmetricConfiguration:
-          symmetricConfiguration ?? this.symmetricConfiguration,
+          symmetricConfigurationProvided
+              ? (symmetricConfiguration ?? this.symmetricConfiguration)
+              : null,
     );
   }
 

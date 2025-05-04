@@ -3,8 +3,6 @@ import 'package:kiwi/kiwi.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Creates all [ThemeExtension]s used in the storyboard.
-///
-/// TODO: Needs to be tested.
 List<ThemeExtension> createStoryboardThemeExtensions(
   bool isDarkMode,
   ColorScheme colorScheme,

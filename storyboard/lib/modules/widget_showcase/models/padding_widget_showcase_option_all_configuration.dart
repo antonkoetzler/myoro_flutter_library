@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [EdgeInsets.all] configuration of [PaddingWidgetShowcaseOptionConfiguration].
-///
-/// TODO: Needs to be tested.
 final class PaddingWidgetShowcaseOptionAllConfiguration extends Equatable {
   /// [EdgeInsets.top]
   final PaddingWidgetShowcaseOptionConfigurationOnChanged topOnChanged;

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [Module] model of the widget showcase module.
-///
-/// TODO: Needs to be tested.
 final class WidgetShowcaseModule implements Module {
   const WidgetShowcaseModule();
 

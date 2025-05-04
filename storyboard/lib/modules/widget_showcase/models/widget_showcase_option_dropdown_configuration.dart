@@ -4,8 +4,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Configuration model for a dropdown [WidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class WidgetShowcaseOptionDropdownConfiguration<T> extends Equatable {
   /// [MyoroSingularDropdownConfiguration.initiallySelectedItem]
   final T? initiallySelectedItem;

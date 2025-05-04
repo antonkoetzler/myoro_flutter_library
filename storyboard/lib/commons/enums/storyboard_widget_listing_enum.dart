@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -35,6 +36,10 @@ enum StoryboardWidgetListingEnum {
   final Set<String> widgetNames;
 
   const StoryboardWidgetListingEnum(this.categoryName, this.widgetNames);
+
+  factory StoryboardWidgetListingEnum.fake() {
+    return values[faker.randomGenerator.integer(values.length)];
+  }
 
   // Accordions
   static const myoroAccordionTitle = 'MyoroAccordion';

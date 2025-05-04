@@ -8,8 +8,6 @@ import 'package:storyboard/storyboard.dart';
 /// If [initialValue] and [onChanged] is provided, [_Label]
 /// will be a [MyoroCheckbox] instead of a [Text]. This is
 /// used for a nullable [WidgetShowcaseOption].
-///
-/// TODO: Needs to be tested.
 final class WidgetShowcaseOptionLabelConfiguration extends Equatable {
   /// Text of [_Label].
   final String label;
