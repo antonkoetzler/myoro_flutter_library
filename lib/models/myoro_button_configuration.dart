@@ -22,8 +22,6 @@ typedef MyoroButtonConfigurationOnTapDown = void Function(TapDownDetails details
 typedef MyoroButtonConfigurationOnTapUp = void Function(TapUpDetails details);
 
 /// Configuration model of [MyoroButton].
-///
-/// TODO: Needs to be tested.
 class MyoroButtonConfiguration extends Equatable {
   /// [MouseCursor] when the [MyoroButton] is hovered over.
   ///
@@ -122,5 +120,5 @@ class MyoroButtonConfiguration extends Equatable {
       ');';
 
   /// Returns if [onTapUp] or [onTapDown] was provided.
-  bool get onTapProvided => onTapUp != null || onTapDown != null;
+  bool get onTapProvided => (onTapUp != null) || (onTapDown != null);
 }

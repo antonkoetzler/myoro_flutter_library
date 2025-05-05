@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of the [Color]s used in [MyoroButtonVariantEnum].
-///
-/// TODO: Needs to be tested AND it needs a new name. Variant is not accurate because of [border].
 @immutable
 class MyoroButtonVariantThemeExtension extends ThemeExtension<MyoroButtonVariantThemeExtension> {
   /// Standard [BoxBorder].

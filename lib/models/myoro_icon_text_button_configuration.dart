@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -6,8 +7,6 @@ typedef MyoroIconTextButtonConfigurationContentColorBuilder =
     Color Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Configuration model of [MyoroIconTextButton].
-///
-/// TODO: Needs to be tested.
 class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
   static const invertDefaultValue = false;
   static const spacingDefaultValue = 10.0;
@@ -50,6 +49,49 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
          '[MyoroIconTextButtonConfiguration]: [iconConfiguration] '
          'and/or [textConfiguration] must be provided.',
        );
+
+  factory MyoroIconTextButtonConfiguration.fake() {
+    final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
+
+    return MyoroIconTextButtonConfiguration(
+      cursor:
+          faker.randomGenerator.boolean()
+              ? kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)]
+              : null,
+      borderRadius:
+          faker.randomGenerator.boolean()
+              ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 20))
+              : null,
+      backgroundColorBuilder:
+          faker.randomGenerator.boolean()
+              ? ((_) => kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)])
+              : null,
+      borderBuilder:
+          faker.randomGenerator.boolean()
+              ? ((_) => Border.all(
+                width: faker.randomGenerator.decimal(scale: 10),
+                color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+              ))
+              : null,
+      onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      invert: faker.randomGenerator.boolean(),
+      spacing: faker.randomGenerator.decimal(scale: 20),
+      padding: EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
+      contentColorBuilder:
+          faker.randomGenerator.boolean()
+              ? ((_) => kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)])
+              : null,
+      iconConfiguration:
+          (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'icon')
+              ? MyoroIconTextButtonIconConfiguration.fake()
+              : null,
+      textConfiguration:
+          (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'text')
+              ? MyoroIconTextButtonTextConfiguration.fake()
+              : null,
+    );
+  }
 
   @override
   MyoroIconTextButtonConfiguration copyWith({

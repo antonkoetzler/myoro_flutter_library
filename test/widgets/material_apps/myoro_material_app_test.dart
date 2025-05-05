@@ -49,7 +49,7 @@ void main() {
 
   /// [MyoroMaterialApp.themeExtensionsBuilder]
   final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder =
-      faker.randomGenerator.boolean() ? (_, __) => const [_FooThemeExtension()] : null;
+      faker.randomGenerator.boolean() ? (_, __, ___) => const [_FooThemeExtension()] : null;
 
   /// [MyoroMaterialApp.localizationsDelegates]
   final Iterable<LocalizationsDelegate>? localizationsDelegates =
@@ -102,7 +102,11 @@ void main() {
     final bool isDarkMode = themeMode != null ? themeMode == ThemeMode.dark : true;
     final myoroColorScheme = createMyoroColorScheme(isDarkMode);
     final myoroTextTheme = createMyoroTextTheme(isDarkMode);
-    final myoroThemeExtensions = createMyoroThemeExtensions(myoroColorScheme, myoroTextTheme);
+    final myoroThemeExtensions = createMyoroThemeExtensions(
+      isDarkMode,
+      myoroColorScheme,
+      myoroTextTheme,
+    );
 
     // Testing the generated [ColorScheme].
     expect(context.colorScheme == myoroColorScheme, colorSchemeBuilder == null);

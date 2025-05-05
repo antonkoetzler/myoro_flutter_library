@@ -14,6 +14,7 @@ void main() {
 
   test('createMyoroThemeExtensions', () {
     final List<ThemeExtension> themeExtensions = createMyoroThemeExtensions(
+      isDarkMode,
       createMyoroColorScheme(isDarkMode),
       createMyoroTextTheme(isDarkMode),
     );
@@ -94,9 +95,6 @@ void main() {
       // Snack bars
       MyoroSnackBarContainerThemeExtension,
       MyoroSnackBarThemeExtension,
-
-      // Tables
-      MyoroTableThemeExtension,
 
       // Tooltips
       MyoroTooltipThemeExtension,

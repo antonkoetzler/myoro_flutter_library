@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Accordion of MFL.
-///
-/// TODO: Needs to be tested.
 class MyoroAccordion extends StatefulWidget {
   final MyoroAccordionConfiguration configuration;
 

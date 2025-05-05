@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroIconTextButton].
-///
-/// TODO: Needs to be tested.
 @immutable
 class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButtonThemeExtension> {
   /// [TextStyle] of [_Text].
@@ -23,7 +21,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
   }
 
   @override
-  ThemeExtension<MyoroIconTextButtonThemeExtension> lerp(
+  MyoroIconTextButtonThemeExtension lerp(
     covariant ThemeExtension<MyoroIconTextButtonThemeExtension>? other,
     double t,
   ) {

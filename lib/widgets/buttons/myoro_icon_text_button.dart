@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Button that holds an icon and/or text.
-///
-/// TODO: Needs to be tested.
 class MyoroIconTextButton extends StatelessWidget {
   /// Configuration of the [MyoroIconTextButton].
   final MyoroIconTextButtonConfiguration configuration;

@@ -29,7 +29,7 @@ void main() {
     final themeData = createMyoroThemeData(
       colorScheme != null ? (_) => colorSchemeInUse : null,
       textTheme != null ? (_) => textThemeInUse : null,
-      themeExtensions.isNotEmpty ? (_, __) => themeExtensions : null,
+      themeExtensions.isNotEmpty ? (_, __, ___) => themeExtensions : null,
       isDarkMode: isDarkMode,
     );
 
@@ -41,7 +41,7 @@ void main() {
       tooltipTheme: createMyoroTooltipThemeData(colorSchemeInUse, textThemeInUse),
       textSelectionTheme: createMyoroTextSelectionThemeData(colorSchemeInUse),
       extensions: [
-        ...createMyoroThemeExtensions(colorSchemeInUse, textThemeInUse),
+        ...createMyoroThemeExtensions(isDarkMode, colorSchemeInUse, textThemeInUse),
         ...themeExtensions,
       ],
     );

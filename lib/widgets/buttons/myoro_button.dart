@@ -9,8 +9,6 @@ typedef MyoroButtonBuilder =
 ///
 /// Used when a very custom button is needed, otherwise MFL
 /// provides other buttons that are built with [MyoroButton].
-///
-/// TODO: Needs to be tested.
 class MyoroButton extends StatefulWidget {
   /// Configuration of the [MyoroButton].
   final MyoroButtonConfiguration? configuration;

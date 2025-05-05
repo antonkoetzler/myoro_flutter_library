@@ -26,8 +26,6 @@ extension MyoroBuildContextExtension on BuildContext {
   }
 
   /// [NavigatorState] getter.
-  ///
-  /// TODO: Needs to be tested.
   NavigatorState get navigator {
     return Navigator.of(this);
   }

@@ -12,8 +12,6 @@ extension MyoroColorExtension on Color {
   }
 
   /// Darkerns a color.
-  ///
-  /// TODO: Needs to be tested.
   Color darken([double amount = .1]) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(this);
@@ -22,8 +20,6 @@ extension MyoroColorExtension on Color {
   }
 
   /// Brightens a color.
-  ///
-  /// TODO: Needs to be tested.
   Color brighten([double amount = .1]) {
     assert(amount >= 0 && amount <= 1);
     final hsl = HSLColor.fromColor(this);

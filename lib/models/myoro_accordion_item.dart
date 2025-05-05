@@ -17,6 +17,10 @@ class MyoroAccordionItem extends Equatable {
 
   const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
 
+  MyoroAccordionItem.fake()
+    : titleBuilder = ((_) => const SizedBox.shrink()),
+      contentBuilder = ((_) => const SizedBox.shrink());
+
   MyoroAccordionItem copyWith({
     MyoroAccordionItemTitleBuilder? titleBuilder,
     MyoroAccordionItemContentBuilder? contentBuilder,

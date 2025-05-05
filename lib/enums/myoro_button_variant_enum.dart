@@ -1,15 +1,18 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum centralizing all default button variants provided.
-///
-/// TODO: Not tested AND it needs a new name
 enum MyoroButtonVariantEnum {
   /// No idle background [Color] and normal coloring of content.
   primary,
 
   /// Background [Color] and "inverse" coloring of content.
   secondary;
+
+  factory MyoroButtonVariantEnum.fake() {
+    return values[faker.randomGenerator.integer(values.length)];
+  }
 
   /// Standard [BoxBorder] if you want to apply the default [BoxBorder].
   static BoxBorder border(BuildContext context) {
@@ -66,4 +69,7 @@ enum MyoroButtonVariantEnum {
   static MyoroButtonVariantThemeExtension _getThemeExtension(BuildContext context) {
     return context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
   }
+
+  bool get isPrimary => (this == primary);
+  bool get isSecondary => (this == secondary);
 }

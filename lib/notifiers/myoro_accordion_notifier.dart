@@ -2,10 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] of a [MyoroAccordion].
-///
-/// TODO: Needs to be tested.
 class MyoroAccordionNotifier extends ValueNotifier<MyoroAccordionItem?> {
-  MyoroAccordionNotifier([super.key]);
+  MyoroAccordionNotifier([super._value]);
 
   /// Expands a [MyoroAccordionItem].
   void expandItem(MyoroAccordionItem item) {
