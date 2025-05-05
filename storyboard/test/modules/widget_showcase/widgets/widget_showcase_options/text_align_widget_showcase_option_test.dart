@@ -6,11 +6,9 @@ import 'package:storyboard/storyboard.dart';
 
 void main() {
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration =
-      faker.randomGenerator.boolean()
-          ? WidgetShowcaseOptionLabelConfiguration.fake()
-          : null;
-  final WidgetShowcaseOptionDropdownConfiguration<TextAlign>
-  dropdownConfiguration = WidgetShowcaseOptionDropdownConfiguration.fake();
+      faker.randomGenerator.boolean() ? WidgetShowcaseOptionLabelConfiguration.fake() : null;
+  final WidgetShowcaseOptionDropdownConfiguration<TextAlign> dropdownConfiguration =
+      WidgetShowcaseOptionDropdownConfiguration.fake();
 
   testWidgets('TextAlignWidgetShowcaseOption', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -30,9 +28,7 @@ void main() {
             w is WidgetShowcaseOption &&
             w.labelConfiguration ==
                 (labelConfiguration ??
-                    const WidgetShowcaseOptionLabelConfiguration(
-                      label: 'TextAlign',
-                    )) &&
+                    const WidgetShowcaseOptionLabelConfiguration(label: 'TextAlign')) &&
             w.child is MyoroSingularDropdown<TextAlign>,
       ),
       findsOneWidget,

@@ -17,8 +17,7 @@ final class MouseCursorWidgetShowcaseOptionThemeExtension
 
   @override
   MouseCursorWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<MouseCursorWidgetShowcaseOptionThemeExtension>?
-    other,
+    covariant ThemeExtension<MouseCursorWidgetShowcaseOptionThemeExtension>? other,
     double t,
   ) {
     return this;

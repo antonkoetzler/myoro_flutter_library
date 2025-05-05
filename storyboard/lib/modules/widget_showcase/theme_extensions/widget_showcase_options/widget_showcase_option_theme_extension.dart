@@ -14,10 +14,7 @@ final class WidgetShowcaseOptionThemeExtension
   /// [TextStyle] of [_Label].
   final TextStyle labelTextStyle;
 
-  const WidgetShowcaseOptionThemeExtension({
-    required this.spacing,
-    required this.labelTextStyle,
-  });
+  const WidgetShowcaseOptionThemeExtension({required this.spacing, required this.labelTextStyle});
 
   WidgetShowcaseOptionThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
@@ -28,10 +25,7 @@ final class WidgetShowcaseOptionThemeExtension
       labelTextStyle = textTheme.titleSmall!;
 
   @override
-  WidgetShowcaseOptionThemeExtension copyWith({
-    double? spacing,
-    TextStyle? labelTextStyle,
-  }) {
+  WidgetShowcaseOptionThemeExtension copyWith({double? spacing, TextStyle? labelTextStyle}) {
     return WidgetShowcaseOptionThemeExtension(
       spacing: spacing ?? this.spacing,
       labelTextStyle: labelTextStyle ?? this.labelTextStyle,

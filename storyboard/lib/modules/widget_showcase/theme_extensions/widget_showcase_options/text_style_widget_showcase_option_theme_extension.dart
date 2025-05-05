@@ -17,8 +17,7 @@ final class TextStyleWidgetShowcaseOptionThemeExtension
 
   @override
   TextStyleWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<TextStyleWidgetShowcaseOptionThemeExtension>?
-    other,
+    covariant ThemeExtension<TextStyleWidgetShowcaseOptionThemeExtension>? other,
     double t,
   ) {
     return this;
@@ -26,8 +25,7 @@ final class TextStyleWidgetShowcaseOptionThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is TextStyleWidgetShowcaseOptionThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is TextStyleWidgetShowcaseOptionThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

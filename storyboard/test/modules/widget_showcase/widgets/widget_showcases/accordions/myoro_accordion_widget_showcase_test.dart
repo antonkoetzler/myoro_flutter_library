@@ -4,9 +4,7 @@ import 'package:storyboard/storyboard.dart';
 
 void main() {
   testWidgets('MyoroAccordionWidgetShowcase', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const StoryboardWidgetTester(child: MyoroAccordionWidgetShowcase()),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: MyoroAccordionWidgetShowcase()));
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroAccordionWidgetShowcase), findsOneWidget);

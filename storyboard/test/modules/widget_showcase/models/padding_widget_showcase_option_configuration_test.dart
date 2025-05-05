@@ -14,8 +14,7 @@ void main() {
         allConfiguration: otherModel.allConfiguration,
         allConfigurationProvided: otherModel.allConfiguration != null,
         symmetricConfiguration: otherModel.symmetricConfiguration,
-        symmetricConfigurationProvided:
-            otherModel.symmetricConfiguration != null,
+        symmetricConfigurationProvided: otherModel.symmetricConfiguration != null,
       ),
       otherModel,
     );
@@ -34,16 +33,10 @@ void main() {
 
   test('PaddingWidgetShowcaseOptionConfiguration.effectiveConfiguration', () {
     if (model.allConfiguration != null) {
-      expect(
-        model.effectiveConfiguration,
-        PaddingWidgetShowcaseOptionConfigurationEnum.all,
-      );
+      expect(model.effectiveConfiguration, PaddingWidgetShowcaseOptionConfigurationEnum.all);
     }
     if (model.symmetricConfiguration != null) {
-      expect(
-        model.effectiveConfiguration,
-        PaddingWidgetShowcaseOptionConfigurationEnum.symmetric,
-      );
+      expect(model.effectiveConfiguration, PaddingWidgetShowcaseOptionConfigurationEnum.symmetric);
     }
   });
 }

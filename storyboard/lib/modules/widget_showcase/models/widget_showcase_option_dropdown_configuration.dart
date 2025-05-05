@@ -16,8 +16,7 @@ final class WidgetShowcaseOptionDropdownConfiguration<T> extends Equatable {
 
   const WidgetShowcaseOptionDropdownConfiguration({
     this.initiallySelectedItem,
-    this.allowItemClearing =
-        MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    this.allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     required this.onChanged,
   });
 
@@ -32,8 +31,7 @@ final class WidgetShowcaseOptionDropdownConfiguration<T> extends Equatable {
     MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
   }) {
     return WidgetShowcaseOptionDropdownConfiguration(
-      initiallySelectedItem:
-          initiallySelectedItem ?? this.initiallySelectedItem,
+      initiallySelectedItem: initiallySelectedItem ?? this.initiallySelectedItem,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
       onChanged: onChanged ?? this.onChanged,
     );

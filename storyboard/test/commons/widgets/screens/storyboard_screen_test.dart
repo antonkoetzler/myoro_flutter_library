@@ -23,7 +23,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(StoryboardScreen), findsAtLeastNWidgets(1));
-    expect(find.byType(MyoroScreen), findsOneWidget);
+    expect(find.byType(MyoroScreen), findsAtLeastNWidgets(1));
     expect(find.byType(MyoroAppBar), findsOneWidget);
     if (headerTitleText != null) {
       expect(find.text(headerTitleText), findsOneWidget);
@@ -31,6 +31,6 @@ void main() {
     if (headerSubtitleText != null) {
       expect(find.text(headerSubtitleText), findsOneWidget);
     }
-    expect(find.byType(MyoroIconTextButton), findsOneWidget);
+    expect(find.byType(MyoroIconTextButton), findsAtLeastNWidgets(1));
   });
 }

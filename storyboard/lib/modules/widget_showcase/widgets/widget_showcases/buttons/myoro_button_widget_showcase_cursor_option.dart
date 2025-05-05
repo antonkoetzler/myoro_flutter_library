@@ -22,10 +22,7 @@ final class MyoroButtonWidgetShowcaseCursorOption extends StatelessWidget {
     );
   }
 
-  void _onChanged(
-    MyoroButtonWidgetShowcaseBloc bloc,
-    SystemMouseCursor? cursor,
-  ) {
+  void _onChanged(MyoroButtonWidgetShowcaseBloc bloc, SystemMouseCursor? cursor) {
     bloc.add(SetCursorEvent(cursor));
   }
 }

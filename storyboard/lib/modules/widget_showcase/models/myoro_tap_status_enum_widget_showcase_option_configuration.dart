@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ColorDropdownWidgetShowcaseOption] of the respective [MyoroTapStatusEnum].
-typedef MyoroTapStatusEnumWidgetShowcaseOptionOnChanged =
-    void Function(Color? color);
+typedef MyoroTapStatusEnumWidgetShowcaseOptionOnChanged = void Function(Color? color);
 
 /// Configuration model of [MyoroTapStatusEnumWidgetShowcaseOption].
-final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration
-    extends Equatable {
+final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration extends Equatable {
   /// [WidgetShowcaseOption.labelConfiguration]
   final WidgetShowcaseOptionLabelConfiguration labelConfiguration;
 
@@ -50,12 +48,7 @@ final class MyoroTapStatusEnumWidgetShowcaseOptionConfiguration
 
   @override
   List<Object?> get props {
-    return [
-      labelConfiguration,
-      idleColorOnChanged,
-      hoverColorOnChanged,
-      tapColorOnChanged,
-    ];
+    return [labelConfiguration, idleColorOnChanged, hoverColorOnChanged, tapColorOnChanged];
   }
 
   @override

@@ -31,9 +31,6 @@ void main() {
   });
 
   test('WidgetShowcaseOptionLabelConfiguration.isNullable', () {
-    expect(
-      model.isNullable,
-      model.initialValue != null && model.onChanged != null,
-    );
+    expect(model.isNullable, model.initialValue != null && model.onChanged != null);
   });
 }

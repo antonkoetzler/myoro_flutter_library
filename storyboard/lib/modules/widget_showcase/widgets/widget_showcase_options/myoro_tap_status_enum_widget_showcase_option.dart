@@ -7,15 +7,11 @@ final class MyoroTapStatusEnumWidgetShowcaseOption extends StatelessWidget {
   /// Configuration.
   final MyoroTapStatusEnumWidgetShowcaseOptionConfiguration configuration;
 
-  const MyoroTapStatusEnumWidgetShowcaseOption({
-    super.key,
-    required this.configuration,
-  });
+  const MyoroTapStatusEnumWidgetShowcaseOption({super.key, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
 
     return WidgetShowcaseOption(
       labelConfiguration: configuration.labelConfiguration,
@@ -24,21 +20,15 @@ final class MyoroTapStatusEnumWidgetShowcaseOption extends StatelessWidget {
         spacing: themeExtension.spacing,
         children: [
           ColorWidgetShowcaseOption(
-            labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
-              label: 'Idle color',
-            ),
+            labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Idle color'),
             onChanged: configuration.idleColorOnChanged,
           ),
           ColorWidgetShowcaseOption(
-            labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
-              label: 'Hover color',
-            ),
+            labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Hover color'),
             onChanged: configuration.hoverColorOnChanged,
           ),
           ColorWidgetShowcaseOption(
-            labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
-              label: 'Tap color',
-            ),
+            labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Tap color'),
             onChanged: configuration.tapColorOnChanged,
           ),
         ],

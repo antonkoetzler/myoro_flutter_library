@@ -2,10 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:storyboard/storyboard.dart';
 
 void main() {
-  const themeExtension1 =
-      MyoroIconTextButtonWidgetShowcaseThemeExtension.fake();
-  const themeExtension2 =
-      MyoroIconTextButtonWidgetShowcaseThemeExtension.fake();
+  const themeExtension1 = MyoroIconTextButtonWidgetShowcaseThemeExtension.fake();
+  const themeExtension2 = MyoroIconTextButtonWidgetShowcaseThemeExtension.fake();
 
   test('MyoroIconTextButtonWidgetShowcaseThemeExtension.copyWith', () {
     expect(themeExtension1.copyWith(), themeExtension1);

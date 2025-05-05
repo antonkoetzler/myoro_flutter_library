@@ -10,24 +10,16 @@ final class IconWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<IconData> onChanged;
 
-  const IconWidgetShowcaseOption({
-    super.key,
-    this.labelConfiguration,
-    required this.onChanged,
-  });
+  const IconWidgetShowcaseOption({super.key, this.labelConfiguration, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return WidgetShowcaseOption(
       labelConfiguration:
-          labelConfiguration ??
-          const WidgetShowcaseOptionLabelConfiguration(label: 'Icon'),
+          labelConfiguration ?? const WidgetShowcaseOptionLabelConfiguration(label: 'Icon'),
       child: MyoroSingularDropdown<IconData>(
         configuration: MyoroSingularDropdownConfiguration(
-          menuConfiguration: MyoroMenuConfiguration(
-            request: _request,
-            itemBuilder: _itemBuilder,
-          ),
+          menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
           selectedItemBuilder: _labelBuilder,
           onChanged: onChanged,
         ),
@@ -41,9 +33,7 @@ final class IconWidgetShowcaseOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(IconData icon) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(
-        text: _labelBuilder(icon),
-      ),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _labelBuilder(icon)),
     );
   }
 

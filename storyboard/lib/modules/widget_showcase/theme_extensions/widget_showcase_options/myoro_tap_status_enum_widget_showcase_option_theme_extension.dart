@@ -3,8 +3,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroTapStatusEnumWidgetShowcaseOption].
 final class MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension
-    extends
-        ThemeExtension<MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension> {
+    extends ThemeExtension<MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension> {
   const MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension();
 
   const MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension.fake();
@@ -18,10 +17,7 @@ final class MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension
 
   @override
   MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<
-      MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension
-    >?
-    other,
+    covariant ThemeExtension<MyoroTapStatusEnumWidgetShowcaseOptionThemeExtension>? other,
     double t,
   ) {
     return this;

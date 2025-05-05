@@ -1,13 +1,19 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 void main() {
-  final themeExtension1 = StoryboardScreenThemeExtension.fake();
-  final themeExtension2 = StoryboardScreenThemeExtension.fake();
+  late final StoryboardScreenThemeExtension themeExtension1, themeExtension2;
+
+  setUpAll(() {
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+    themeExtension1 = StoryboardScreenThemeExtension.fake();
+    themeExtension2 = StoryboardScreenThemeExtension.fake();
+  });
 
   test('StoryboardScreenThemeExtension.copyWith', () {
     expect(themeExtension1.copyWith(), themeExtension1);
@@ -65,11 +71,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.toggleThemeButtonIcon,
-        myoroLerp(
-          themeExtension1.toggleThemeButtonIcon,
-          themeExtension2.toggleThemeButtonIcon,
-          i,
-        ),
+        myoroLerp(themeExtension1.toggleThemeButtonIcon, themeExtension2.toggleThemeButtonIcon, i),
       );
     }
   });

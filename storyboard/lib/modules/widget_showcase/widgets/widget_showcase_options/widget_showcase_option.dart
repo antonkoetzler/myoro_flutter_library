@@ -15,24 +15,16 @@ final class WidgetShowcaseOption extends StatelessWidget {
   /// Content of the option.
   final Widget? child;
 
-  const WidgetShowcaseOption({
-    super.key,
-    required this.labelConfiguration,
-    this.child,
-  });
+  const WidgetShowcaseOption({super.key, required this.labelConfiguration, this.child});
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: themeExtension.spacing,
-      children: [
-        _Label(labelConfiguration),
-        if (child != null) Flexible(child: child!),
-      ],
+      children: [_Label(labelConfiguration), if (child != null) Flexible(child: child!)],
     );
   }
 }
@@ -46,8 +38,7 @@ final class _Label extends StatelessWidget {
   Widget build(BuildContext context) {
     final String label = _labelConfiguration.label;
 
-    final themeExtension =
-        context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
     final TextStyle labelTextStyle = themeExtension.labelTextStyle;
 
     if (_labelConfiguration.isNullable) {

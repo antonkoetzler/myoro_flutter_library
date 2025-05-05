@@ -27,9 +27,7 @@ final class _Widget extends StatelessWidget {
               return Text(faker.lorem.word());
             },
             contentBuilder: (_) {
-              return const Text(
-                'This is where the content of the accordion goes',
-              );
+              return const Text('This is where the content of the accordion goes');
             },
           ),
         ),

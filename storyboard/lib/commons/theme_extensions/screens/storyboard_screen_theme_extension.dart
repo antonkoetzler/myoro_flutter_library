@@ -7,8 +7,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [StoryboardScreen].
 @immutable
-final class StoryboardScreenThemeExtension
-    extends ThemeExtension<StoryboardScreenThemeExtension> {
+final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScreenThemeExtension> {
   /// Spacing of [Widget]s.
   final double spacing;
 
@@ -42,18 +41,11 @@ final class StoryboardScreenThemeExtension
     return StoryboardScreenThemeExtension(
       spacing: faker.randomGenerator.decimal(scale: 50),
       previousPageButtonIcon:
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
-      previousPageButtonPadding: EdgeInsets.all(
-        faker.randomGenerator.decimal(scale: 20),
-      ),
+          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      previousPageButtonPadding: EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
       headerTitleTextStyle: typography.randomTextStyle,
       headerSubtitleTextStyle: typography.randomTextStyle,
-      toggleThemeButtonIcon:
-          kMyoroTestIcons[faker.randomGenerator.integer(
-            kMyoroTestIcons.length,
-          )],
+      toggleThemeButtonIcon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
     );
   }
 
@@ -76,15 +68,11 @@ final class StoryboardScreenThemeExtension
   }) {
     return StoryboardScreenThemeExtension(
       spacing: spacing ?? this.spacing,
-      previousPageButtonIcon:
-          previousPageButtonIcon ?? this.previousPageButtonIcon,
-      previousPageButtonPadding:
-          previousPageButtonPadding ?? this.previousPageButtonPadding,
+      previousPageButtonIcon: previousPageButtonIcon ?? this.previousPageButtonIcon,
+      previousPageButtonPadding: previousPageButtonPadding ?? this.previousPageButtonPadding,
       headerTitleTextStyle: headerTitleTextStyle ?? this.headerTitleTextStyle,
-      headerSubtitleTextStyle:
-          headerSubtitleTextStyle ?? this.headerSubtitleTextStyle,
-      toggleThemeButtonIcon:
-          toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
+      headerSubtitleTextStyle: headerSubtitleTextStyle ?? this.headerSubtitleTextStyle,
+      toggleThemeButtonIcon: toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
     );
   }
 
@@ -96,31 +84,19 @@ final class StoryboardScreenThemeExtension
     if (other is! StoryboardScreenThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
-      previousPageButtonIcon: myoroLerp(
-        previousPageButtonIcon,
-        other.previousPageButtonIcon,
-        t,
-      ),
+      previousPageButtonIcon: myoroLerp(previousPageButtonIcon, other.previousPageButtonIcon, t),
       previousPageButtonPadding: EdgeInsets.lerp(
         previousPageButtonPadding,
         other.previousPageButtonPadding,
         t,
       ),
-      headerTitleTextStyle: TextStyle.lerp(
-        headerTitleTextStyle,
-        other.headerTitleTextStyle,
-        t,
-      ),
+      headerTitleTextStyle: TextStyle.lerp(headerTitleTextStyle, other.headerTitleTextStyle, t),
       headerSubtitleTextStyle: TextStyle.lerp(
         headerSubtitleTextStyle,
         other.headerSubtitleTextStyle,
         t,
       ),
-      toggleThemeButtonIcon: myoroLerp(
-        toggleThemeButtonIcon,
-        other.toggleThemeButtonIcon,
-        t,
-      ),
+      toggleThemeButtonIcon: myoroLerp(toggleThemeButtonIcon, other.toggleThemeButtonIcon, t),
     );
   }
 

@@ -17,8 +17,7 @@ final class TextAlignWidgetShowcaseOptionThemeExtension
 
   @override
   TextAlignWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<TextAlignWidgetShowcaseOptionThemeExtension>?
-    other,
+    covariant ThemeExtension<TextAlignWidgetShowcaseOptionThemeExtension>? other,
     double t,
   ) {
     return this;
@@ -26,8 +25,7 @@ final class TextAlignWidgetShowcaseOptionThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is TextAlignWidgetShowcaseOptionThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is TextAlignWidgetShowcaseOptionThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

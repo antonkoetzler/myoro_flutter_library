@@ -9,8 +9,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
-  final MyoroSingularDropdownConfigurationOnChanged<SystemMouseCursor>
-  onChanged;
+  final MyoroSingularDropdownConfigurationOnChanged<SystemMouseCursor> onChanged;
 
   const MouseCursorWidgetShowcaseOption({
     super.key,
@@ -22,14 +21,10 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return WidgetShowcaseOption(
       labelConfiguration:
-          labelConfiguration ??
-          const WidgetShowcaseOptionLabelConfiguration(label: 'Mouse cursor'),
+          labelConfiguration ?? const WidgetShowcaseOptionLabelConfiguration(label: 'Mouse cursor'),
       child: MyoroSingularDropdown<SystemMouseCursor>(
         configuration: MyoroSingularDropdownConfiguration(
-          menuConfiguration: MyoroMenuConfiguration(
-            request: _request,
-            itemBuilder: _itemBuilder,
-          ),
+          menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
           selectedItemBuilder: _selectedItemBuilder,
           onChanged: onChanged,
         ),
@@ -43,9 +38,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(SystemMouseCursor cursor) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(
-        text: cursor.toString(),
-      ),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: cursor.toString()),
     );
   }
 

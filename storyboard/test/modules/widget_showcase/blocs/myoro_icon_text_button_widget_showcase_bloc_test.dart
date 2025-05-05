@@ -7,20 +7,14 @@ import 'package:storyboard/modules/widget_showcase/blocs/myoro_icon_text_button_
 
 void main() {
   final double spacing = faker.randomGenerator.decimal(scale: 50);
-  final EdgeInsets padding = EdgeInsets.all(
-    faker.randomGenerator.decimal(scale: 50),
-  );
-  final Color color =
-      kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
-  final IconData icon =
-      kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+  final EdgeInsets padding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50));
+  final Color color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final IconData icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
   final double iconSize = faker.randomGenerator.decimal(scale: 200);
   final String text = faker.lorem.word();
   final int maxLines = faker.randomGenerator.integer(10);
   final TextOverflow textOverflow =
-      TextOverflow.values[faker.randomGenerator.integer(
-        TextOverflow.values.length,
-      )];
+      TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)];
   final TextAlign textAlign =
       TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)];
   late final TextStyle textStyle;
@@ -35,16 +29,8 @@ void main() {
     build: () => MyoroIconTextButtonWidgetShowcaseBloc(),
     act: (bloc) {
       bloc
-        ..add(
-          const SetInvertEvent(
-            !MyoroIconTextButtonConfiguration.invertDefaultValue,
-          ),
-        )
-        ..add(
-          const SetInvertEvent(
-            MyoroIconTextButtonConfiguration.invertDefaultValue,
-          ),
-        );
+        ..add(const SetInvertEvent(!MyoroIconTextButtonConfiguration.invertDefaultValue))
+        ..add(const SetInvertEvent(MyoroIconTextButtonConfiguration.invertDefaultValue));
     },
     expect: () {
       return const [
@@ -64,11 +50,7 @@ void main() {
     act: (bloc) {
       bloc
         ..add(SetSpacingEvent(spacing))
-        ..add(
-          const SetSpacingEvent(
-            MyoroIconTextButtonConfiguration.spacingDefaultValue,
-          ),
-        );
+        ..add(const SetSpacingEvent(MyoroIconTextButtonConfiguration.spacingDefaultValue));
     },
     expect: () {
       return [
@@ -105,14 +87,12 @@ void main() {
       bloc
         ..add(
           const SetContentColorBuilderEnabledEvent(
-            !MyoroIconTextButtonWidgetShowcaseState
-                .contentColorBuilderEnabledDefaultValue,
+            !MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
           ),
         )
         ..add(
           const SetContentColorBuilderEnabledEvent(
-            MyoroIconTextButtonWidgetShowcaseState
-                .contentColorBuilderEnabledDefaultValue,
+            MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
           ),
         );
     },
@@ -120,13 +100,11 @@ void main() {
       return const [
         MyoroIconTextButtonWidgetShowcaseState(
           contentColorBuilderEnabled:
-              !MyoroIconTextButtonWidgetShowcaseState
-                  .contentColorBuilderEnabledDefaultValue,
+              !MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
         ),
         MyoroIconTextButtonWidgetShowcaseState(
           contentColorBuilderEnabled:
-              MyoroIconTextButtonWidgetShowcaseState
-                  .contentColorBuilderEnabledDefaultValue,
+              MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
         ),
       ];
     },
@@ -237,9 +215,7 @@ void main() {
     build: () => MyoroIconTextButtonWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTextOverflowEvent(textOverflow)),
     expect: () {
-      return [
-        MyoroIconTextButtonWidgetShowcaseState(textOverflow: textOverflow),
-      ];
+      return [MyoroIconTextButtonWidgetShowcaseState(textOverflow: textOverflow)];
     },
   );
 

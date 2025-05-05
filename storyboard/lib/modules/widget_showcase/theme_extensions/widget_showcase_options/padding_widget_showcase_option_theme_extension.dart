@@ -19,9 +19,7 @@ final class PaddingWidgetShowcaseOptionThemeExtension
 
   @override
   PaddingWidgetShowcaseOptionThemeExtension copyWith({double? spacing}) {
-    return PaddingWidgetShowcaseOptionThemeExtension(
-      spacing: spacing ?? this.spacing,
-    );
+    return PaddingWidgetShowcaseOptionThemeExtension(spacing: spacing ?? this.spacing);
   }
 
   @override

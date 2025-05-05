@@ -9,10 +9,7 @@ final class ModulesController {
   final Set<Module> modules = const {MainModule(), WidgetShowcaseModule()};
 
   /// Generates the [List] of [ThemeExtension]s of each [Module] in [modules].
-  List<ThemeExtension> themeExtenionsBuilder(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> themeExtenionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     final themeExtensions =
         modules
             .map((Module module) {

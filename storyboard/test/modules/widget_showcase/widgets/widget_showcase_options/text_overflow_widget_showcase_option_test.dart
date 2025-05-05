@@ -6,11 +6,9 @@ import 'package:storyboard/storyboard.dart';
 
 void main() {
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration =
-      faker.randomGenerator.boolean()
-          ? WidgetShowcaseOptionLabelConfiguration.fake()
-          : null;
-  final WidgetShowcaseOptionDropdownConfiguration<TextOverflow>
-  dropdownConfiguration = WidgetShowcaseOptionDropdownConfiguration.fake();
+      faker.randomGenerator.boolean() ? WidgetShowcaseOptionLabelConfiguration.fake() : null;
+  final WidgetShowcaseOptionDropdownConfiguration<TextOverflow> dropdownConfiguration =
+      WidgetShowcaseOptionDropdownConfiguration.fake();
 
   testWidgets('TextOverflowWidgetShowcaseOption', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -30,9 +28,7 @@ void main() {
             w is WidgetShowcaseOption &&
             w.labelConfiguration ==
                 (labelConfiguration ??
-                    const WidgetShowcaseOptionLabelConfiguration(
-                      label: 'TextOverflow',
-                    )) &&
+                    const WidgetShowcaseOptionLabelConfiguration(label: 'TextOverflow')) &&
             w.child is MyoroSingularDropdown<TextOverflow>,
       ),
       findsOneWidget,

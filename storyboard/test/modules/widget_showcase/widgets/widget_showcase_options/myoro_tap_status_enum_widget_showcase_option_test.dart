@@ -4,26 +4,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 void main() {
-  final configuration =
-      MyoroTapStatusEnumWidgetShowcaseOptionConfiguration.fake();
+  final configuration = MyoroTapStatusEnumWidgetShowcaseOptionConfiguration.fake();
 
-  testWidgets('MyoroTapStatusEnumWidgetShowcaseOption', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('MyoroTapStatusEnumWidgetShowcaseOption', (WidgetTester tester) async {
     late final WidgetShowcaseOptionThemeExtension themeExtension;
 
     await tester.pumpWidget(
       StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context
-                    .resolveThemeExtension<
-                      WidgetShowcaseOptionThemeExtension
-                    >();
-            return MyoroTapStatusEnumWidgetShowcaseOption(
-              configuration: configuration,
-            );
+            themeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+            return MyoroTapStatusEnumWidgetShowcaseOption(configuration: configuration);
           },
         ),
       ),

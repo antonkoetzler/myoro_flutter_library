@@ -25,8 +25,7 @@ class MyoroAccordionWidgetShowcaseThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroAccordionWidgetShowcaseThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroAccordionWidgetShowcaseThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

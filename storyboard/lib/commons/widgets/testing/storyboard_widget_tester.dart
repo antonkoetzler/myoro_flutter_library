@@ -22,9 +22,7 @@ final class _StoryboardWidgetTesterState extends State<StoryboardWidgetTester> {
     super.initState();
 
     // Initializing dependencies required in each [Widget] test.
-    KiwiContainer().registerSingleton<ModulesController>(
-      (_) => ModulesController(),
-    );
+    KiwiContainer().registerSingleton<ModulesController>((_) => ModulesController());
   }
 
   @override

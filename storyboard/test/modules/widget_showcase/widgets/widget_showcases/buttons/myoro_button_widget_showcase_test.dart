@@ -4,30 +4,16 @@ import 'package:storyboard/storyboard.dart';
 
 void main() {
   testWidgets('MyoroButtonWidgetShowcase', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const StoryboardWidgetTester(child: MyoroButtonWidgetShowcase()),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: MyoroButtonWidgetShowcase()));
     await tester.pumpAndSettle();
 
     expect(find.byType(MyoroButtonWidgetShowcase), findsOneWidget);
     expect(find.byType(WidgetShowcase), findsOneWidget);
     expect(find.byType(MyoroButtonWidgetShowcaseCursorOption), findsOneWidget);
-    expect(
-      find.byType(MyoroButtonWidgetShowcaseBorderRadiusOption),
-      findsOneWidget,
-    );
-    expect(
-      find.byType(MyoroButtonWidgetShowcaseBackgroundColorBuilderOption),
-      findsOneWidget,
-    );
-    expect(
-      find.byType(MyoroButtonWidgetShowcaseBorderBuilderOption),
-      findsOneWidget,
-    );
-    expect(
-      find.byType(MyoroButtonWidgetShowcaseOnTapDownOption),
-      findsOneWidget,
-    );
+    expect(find.byType(MyoroButtonWidgetShowcaseBorderRadiusOption), findsOneWidget);
+    expect(find.byType(MyoroButtonWidgetShowcaseBackgroundColorBuilderOption), findsOneWidget);
+    expect(find.byType(MyoroButtonWidgetShowcaseBorderBuilderOption), findsOneWidget);
+    expect(find.byType(MyoroButtonWidgetShowcaseOnTapDownOption), findsOneWidget);
     expect(find.byType(MyoroButtonWidgetShowcaseOnTapUpOption), findsOneWidget);
     expect(find.byType(MyoroButton), findsOneWidget);
   });

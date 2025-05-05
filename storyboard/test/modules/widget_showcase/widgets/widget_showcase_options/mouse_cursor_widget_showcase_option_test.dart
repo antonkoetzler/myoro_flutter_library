@@ -7,9 +7,7 @@ import 'package:storyboard/storyboard.dart';
 
 void main() {
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration =
-      faker.randomGenerator.boolean()
-          ? WidgetShowcaseOptionLabelConfiguration.fake()
-          : null;
+      faker.randomGenerator.boolean() ? WidgetShowcaseOptionLabelConfiguration.fake() : null;
 
   testWidgets('MouseCursorWidgetShowcaseOption', (WidgetTester tester) async {
     bool onChangedExecuted = true;
@@ -31,9 +29,7 @@ void main() {
             w is WidgetShowcaseOption &&
             w.labelConfiguration ==
                 (labelConfiguration ??
-                    const WidgetShowcaseOptionLabelConfiguration(
-                      label: 'Mouse cursor',
-                    )) &&
+                    const WidgetShowcaseOptionLabelConfiguration(label: 'Mouse cursor')) &&
             w.child is MyoroSingularDropdown<SystemMouseCursor>,
       ),
       findsOneWidget,

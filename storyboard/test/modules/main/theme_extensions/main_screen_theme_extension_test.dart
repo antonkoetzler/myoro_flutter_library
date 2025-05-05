@@ -10,8 +10,7 @@ void main() {
     expect(themeExtension1.copyWith(), themeExtension1);
     expect(
       themeExtension1.copyWith(
-        widgetCategoryDropdownButtonPadding:
-            themeExtension2.widgetCategoryDropdownButtonPadding,
+        widgetCategoryDropdownButtonPadding: themeExtension2.widgetCategoryDropdownButtonPadding,
       ),
       themeExtension2,
     );

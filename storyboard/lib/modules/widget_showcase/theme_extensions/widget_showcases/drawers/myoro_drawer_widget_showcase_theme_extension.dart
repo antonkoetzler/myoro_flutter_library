@@ -11,19 +11,14 @@ final class MyoroDrawerWidgetShowcaseThemeExtension
 
   const MyoroDrawerWidgetShowcaseThemeExtension({required this.inputStyle});
 
-  MyoroDrawerWidgetShowcaseThemeExtension.fake()
-    : inputStyle = MyoroInputStyleEnum.fake();
+  MyoroDrawerWidgetShowcaseThemeExtension.fake() : inputStyle = MyoroInputStyleEnum.fake();
 
   const MyoroDrawerWidgetShowcaseThemeExtension.builder()
     : inputStyle = MyoroInputStyleEnum.outlined;
 
   @override
-  MyoroDrawerWidgetShowcaseThemeExtension copyWith({
-    MyoroInputStyleEnum? inputStyle,
-  }) {
-    return MyoroDrawerWidgetShowcaseThemeExtension(
-      inputStyle: inputStyle ?? this.inputStyle,
-    );
+  MyoroDrawerWidgetShowcaseThemeExtension copyWith({MyoroInputStyleEnum? inputStyle}) {
+    return MyoroDrawerWidgetShowcaseThemeExtension(inputStyle: inputStyle ?? this.inputStyle);
   }
 
   @override

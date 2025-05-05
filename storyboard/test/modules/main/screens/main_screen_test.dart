@@ -14,8 +14,7 @@ void main() {
         (Widget w) =>
             w is StoryboardScreen &&
             w.headerTitleText == 'MFL Storyboard' &&
-            w.headerSubtitleText ==
-                'Program to visualize and create MFL widgets.',
+            w.headerSubtitleText == 'Program to visualize and create MFL widgets.',
       ),
       findsOneWidget,
     );

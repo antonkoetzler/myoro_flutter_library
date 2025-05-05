@@ -17,8 +17,7 @@ final class MyoroIconTextButtonWidgetShowcaseThemeExtension
 
   @override
   MyoroIconTextButtonWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroIconTextButtonWidgetShowcaseThemeExtension>?
-    other,
+    covariant ThemeExtension<MyoroIconTextButtonWidgetShowcaseThemeExtension>? other,
     double t,
   ) {
     return this;

@@ -8,8 +8,7 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration;
 
   /// [MyoroSingularDropdownConfiguration] arguments that can be passed.
-  final WidgetShowcaseOptionDropdownConfiguration<TextStyle>
-  dropdownConfiguration;
+  final WidgetShowcaseOptionDropdownConfiguration<TextStyle> dropdownConfiguration;
 
   const TextStyleWidgetShowcaseOption({
     super.key,
@@ -21,14 +20,10 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return WidgetShowcaseOption(
       labelConfiguration:
-          labelConfiguration ??
-          const WidgetShowcaseOptionLabelConfiguration(label: 'Text style'),
+          labelConfiguration ?? const WidgetShowcaseOptionLabelConfiguration(label: 'Text style'),
       child: MyoroSingularDropdown<TextStyle>(
         configuration: MyoroSingularDropdownConfiguration(
-          menuConfiguration: MyoroMenuConfiguration(
-            request: _request,
-            itemBuilder: _itemBuilder,
-          ),
+          menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
           initiallySelectedItem: dropdownConfiguration.initiallySelectedItem,
           allowItemClearing: dropdownConfiguration.allowItemClearing,
           selectedItemBuilder: _selectedItemBuilder,

@@ -5,32 +5,23 @@ import 'package:storyboard/modules/widget_showcase/blocs/myoro_button_widget_sho
 import 'package:storyboard/storyboard.dart';
 
 /// [BorderRadius] option of [MyoroButtonWidgetShowcase].
-final class MyoroButtonWidgetShowcaseBorderRadiusOption
-    extends StatelessWidget {
+final class MyoroButtonWidgetShowcaseBorderRadiusOption extends StatelessWidget {
   static const _initialValue = 250.0;
 
   const MyoroButtonWidgetShowcaseBorderRadiusOption({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
     final bloc = context.resolveBloc<MyoroButtonWidgetShowcaseBloc>();
 
-    return BlocBuilder<
-      MyoroButtonWidgetShowcaseBloc,
-      MyoroButtonWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroButtonWidgetShowcaseBloc, MyoroButtonWidgetShowcaseState>(
       buildWhen: _buildWhen,
       builder: (_, state) => _builder(themeExtension, bloc, state),
     );
   }
 
-  bool _buildWhen(
-    MyoroButtonWidgetShowcaseState previous,
-    MyoroButtonWidgetShowcaseState current,
-  ) {
+  bool _buildWhen(MyoroButtonWidgetShowcaseState previous, MyoroButtonWidgetShowcaseState current) {
     return previous.borderRadius != current.borderRadius;
   }
 
@@ -57,19 +48,11 @@ final class MyoroButtonWidgetShowcaseBorderRadiusOption
     );
   }
 
-  void _checkboxOnChanged(
-    MyoroButtonWidgetShowcaseBloc bloc,
-    bool customBorderRadiusEnabled,
-  ) {
-    bloc.add(
-      SetBorderRadiusEvent(customBorderRadiusEnabled ? _initialValue : null),
-    );
+  void _checkboxOnChanged(MyoroButtonWidgetShowcaseBloc bloc, bool customBorderRadiusEnabled) {
+    bloc.add(SetBorderRadiusEvent(customBorderRadiusEnabled ? _initialValue : null));
   }
 
-  void _sliderOnChanged(
-    MyoroButtonWidgetShowcaseBloc bloc,
-    double borderRadius,
-  ) {
+  void _sliderOnChanged(MyoroButtonWidgetShowcaseBloc bloc, double borderRadius) {
     bloc.add(SetBorderRadiusEvent(borderRadius));
   }
 }

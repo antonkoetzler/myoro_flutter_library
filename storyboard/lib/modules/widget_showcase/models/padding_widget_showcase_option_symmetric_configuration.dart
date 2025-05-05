@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [EdgeInsets.symmetric] configuration of [PaddingWidgetShowcaseOptionConfiguration].
-final class PaddingWidgetShowcaseOptionSymmetricConfiguration
-    extends Equatable {
+final class PaddingWidgetShowcaseOptionSymmetricConfiguration extends Equatable {
   /// [EdgeInsets.vertical]
   final PaddingWidgetShowcaseOptionConfigurationOnChanged verticalOnChanged;
 

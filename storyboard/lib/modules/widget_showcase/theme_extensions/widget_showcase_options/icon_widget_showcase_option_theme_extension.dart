@@ -25,8 +25,7 @@ final class IconWidgetShowcaseOptionThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is IconWidgetShowcaseOptionThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is IconWidgetShowcaseOptionThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

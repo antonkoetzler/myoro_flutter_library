@@ -12,12 +12,11 @@ final class PaddingWidgetShowcaseOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context
-            .resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
+        context.resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
     final PaddingWidgetShowcaseOptionAllConfiguration? allConfiguration =
         configuration.allConfiguration;
-    final PaddingWidgetShowcaseOptionSymmetricConfiguration?
-    symmetricConfiguration = configuration.symmetricConfiguration;
+    final PaddingWidgetShowcaseOptionSymmetricConfiguration? symmetricConfiguration =
+        configuration.symmetricConfiguration;
 
     return WidgetShowcaseOption(
       labelConfiguration:
@@ -73,8 +72,7 @@ final class _InputRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context
-            .resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
+        context.resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
 
     return Row(
       mainAxisSize: MainAxisSize.min,

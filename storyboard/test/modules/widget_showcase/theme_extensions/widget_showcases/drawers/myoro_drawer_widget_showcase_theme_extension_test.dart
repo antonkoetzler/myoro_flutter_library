@@ -8,10 +8,7 @@ void main() {
 
   test('MyoroDrawerWidgetShowcaseThemeExtension.copyWith', () {
     expect(themeExtension1.copyWith(), themeExtension1);
-    expect(
-      themeExtension1.copyWith(inputStyle: themeExtension2.inputStyle),
-      themeExtension2,
-    );
+    expect(themeExtension1.copyWith(inputStyle: themeExtension2.inputStyle), themeExtension2);
   });
 
   test('MyoroDrawerWidgetShowcaseThemeExtension.lerp', () {

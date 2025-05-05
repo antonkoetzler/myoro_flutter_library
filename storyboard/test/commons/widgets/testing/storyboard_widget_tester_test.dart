@@ -5,9 +5,7 @@ import 'package:storyboard/storyboard.dart';
 
 void main() {
   testWidgets('StoryboardWidgetTester', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const StoryboardWidgetTester(child: SizedBox.shrink()),
-    );
+    await tester.pumpWidget(const StoryboardWidgetTester(child: SizedBox.shrink()));
     await tester.pumpAndSettle();
 
     expect(find.byType(StoryboardWidgetTester), findsOneWidget);

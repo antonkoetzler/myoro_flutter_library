@@ -6,8 +6,7 @@ void main() {
 
   test('MyoroTapStatusEnumWidgetShowcaseOptionConfiguration.copyWith', () {
     expect(model.copyWith(), model);
-    final otherModel =
-        MyoroTapStatusEnumWidgetShowcaseOptionConfiguration.fake();
+    final otherModel = MyoroTapStatusEnumWidgetShowcaseOptionConfiguration.fake();
     expect(
       model.copyWith(
         labelConfiguration: otherModel.labelConfiguration,

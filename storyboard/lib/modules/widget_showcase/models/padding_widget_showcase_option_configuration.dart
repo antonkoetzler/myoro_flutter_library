@@ -5,8 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [MyoroInputConfiguration.onChanged] of the respective [MyoroInput].
-typedef PaddingWidgetShowcaseOptionConfigurationOnChanged =
-    void Function(double value);
+typedef PaddingWidgetShowcaseOptionConfigurationOnChanged = void Function(double value);
 
 /// Configuration model of [PaddingWidgetShowcaseOption].
 final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
@@ -17,8 +16,7 @@ final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
   final PaddingWidgetShowcaseOptionAllConfiguration? allConfiguration;
 
   /// [EdgeInsets.symmetric] configuration].
-  final PaddingWidgetShowcaseOptionSymmetricConfiguration?
-  symmetricConfiguration;
+  final PaddingWidgetShowcaseOptionSymmetricConfiguration? symmetricConfiguration;
 
   const PaddingWidgetShowcaseOptionConfiguration({
     this.labelConfiguration,
@@ -35,17 +33,11 @@ final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
 
     return PaddingWidgetShowcaseOptionConfiguration(
       labelConfiguration:
-          faker.randomGenerator.boolean()
-              ? WidgetShowcaseOptionLabelConfiguration.fake()
-              : null,
+          faker.randomGenerator.boolean() ? WidgetShowcaseOptionLabelConfiguration.fake() : null,
       allConfiguration:
-          useAllConfiguration
-              ? PaddingWidgetShowcaseOptionAllConfiguration.fake()
-              : null,
+          useAllConfiguration ? PaddingWidgetShowcaseOptionAllConfiguration.fake() : null,
       symmetricConfiguration:
-          useAllConfiguration
-              ? null
-              : PaddingWidgetShowcaseOptionSymmetricConfiguration.fake(),
+          useAllConfiguration ? null : PaddingWidgetShowcaseOptionSymmetricConfiguration.fake(),
     );
   }
 
@@ -59,13 +51,9 @@ final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
   }) {
     return PaddingWidgetShowcaseOptionConfiguration(
       labelConfiguration:
-          labelConfigurationProvided
-              ? (labelConfiguration ?? this.labelConfiguration)
-              : null,
+          labelConfigurationProvided ? (labelConfiguration ?? this.labelConfiguration) : null,
       allConfiguration:
-          allConfigurationProvided
-              ? (allConfiguration ?? this.allConfiguration)
-              : null,
+          allConfigurationProvided ? (allConfiguration ?? this.allConfiguration) : null,
       symmetricConfiguration:
           symmetricConfigurationProvided
               ? (symmetricConfiguration ?? this.symmetricConfiguration)

@@ -17,8 +17,7 @@ final class TextOverflowWidgetShowcaseOptionThemeExtension
 
   @override
   TextOverflowWidgetShowcaseOptionThemeExtension lerp(
-    covariant ThemeExtension<TextOverflowWidgetShowcaseOptionThemeExtension>?
-    other,
+    covariant ThemeExtension<TextOverflowWidgetShowcaseOptionThemeExtension>? other,
     double t,
   ) {
     return this;

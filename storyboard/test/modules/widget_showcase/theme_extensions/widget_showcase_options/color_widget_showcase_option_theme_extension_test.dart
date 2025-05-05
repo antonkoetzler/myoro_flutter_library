@@ -25,11 +25,7 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.itemPadding,
-        EdgeInsets.lerp(
-          themeExtension1.itemPadding,
-          themeExtension2.itemPadding,
-          i,
-        ),
+        EdgeInsets.lerp(themeExtension1.itemPadding, themeExtension2.itemPadding, i),
       );
       expect(
         lerpedThemeExtension.itemSpacing,
@@ -37,11 +33,7 @@ void main() {
       );
       expect(
         lerpedThemeExtension.itemColorSize,
-        lerpDouble(
-          themeExtension1.itemColorSize,
-          themeExtension2.itemColorSize,
-          i,
-        ),
+        lerpDouble(themeExtension1.itemColorSize, themeExtension2.itemColorSize, i),
       );
     }
   });

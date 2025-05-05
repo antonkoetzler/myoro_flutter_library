@@ -7,9 +7,16 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   final modulesController = ModulesController();
 
-  final bool isDarkMode = faker.randomGenerator.boolean();
-  final ColorScheme colorScheme = createMyoroColorScheme(isDarkMode);
-  final TextTheme textTheme = createMyoroTextTheme(isDarkMode);
+  late final bool isDarkMode;
+  late final ColorScheme colorScheme;
+  late final TextTheme textTheme;
+
+  setUpAll(() {
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+    isDarkMode = faker.randomGenerator.boolean();
+    colorScheme = createMyoroColorScheme(isDarkMode);
+    textTheme = createMyoroTextTheme(isDarkMode);
+  });
 
   test('ModulesController.modules', () {
     expect(modulesController.modules.length, 2);

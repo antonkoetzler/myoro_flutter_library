@@ -8,14 +8,19 @@ import 'package:storyboard/storyboard.dart';
 void main() {
   final kiwiContainer = KiwiContainer();
 
-  final bool isDarkMode = faker.randomGenerator.boolean();
-  final ColorScheme colorScheme = createMyoroColorScheme(isDarkMode);
-  final TextTheme textTheme = createMyoroTextTheme(isDarkMode);
+  late final bool isDarkMode;
+  late final ColorScheme colorScheme;
+  late final TextTheme textTheme;
+
+  setUpAll(() {
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+    isDarkMode = faker.randomGenerator.boolean();
+    colorScheme = createMyoroColorScheme(isDarkMode);
+    textTheme = createMyoroTextTheme(isDarkMode);
+  });
 
   setUp(() {
-    kiwiContainer.registerSingleton<ModulesController>(
-      (_) => ModulesController(),
-    );
+    kiwiContainer.registerSingleton<ModulesController>((_) => ModulesController());
   });
 
   tearDown(() {
@@ -23,11 +28,7 @@ void main() {
   });
 
   test('createStoryboardThemeExtensions', () {
-    final themeExtensions = createStoryboardThemeExtensions(
-      isDarkMode,
-      colorScheme,
-      textTheme,
-    );
+    final themeExtensions = createStoryboardThemeExtensions(isDarkMode, colorScheme, textTheme);
     expect(
       themeExtensions.length,
       kiwiContainer

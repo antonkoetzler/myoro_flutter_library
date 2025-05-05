@@ -9,6 +9,18 @@ void main() {
     TestWidgetsFlutterBinding.ensureInitialized();
 
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+      const MethodChannel('window_manager'),
+      (MethodCall methodCall) async {
+        switch (methodCall.method) {
+          case 'ensureInitialized':
+            return null;
+          default:
+            return null;
+        }
+      },
+    );
+
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
       const MethodChannel('plugins.flutter.io/shared_preferences'),
       (MethodCall methodCall) async {
         switch (methodCall.method) {
