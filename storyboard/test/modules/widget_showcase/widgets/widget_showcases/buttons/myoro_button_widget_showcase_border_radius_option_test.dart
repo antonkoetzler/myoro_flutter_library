@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/modules/widget_showcase/blocs/myoro_button_widget_showcase_bloc/myoro_button_widget_showcase_bloc.dart';
 import 'package:storyboard/storyboard.dart';
 
 void main() {
-  testWidgets('MyoroButtonWidgetShowcaseBorderRadiusOption', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('MyoroButtonWidgetShowcaseBorderRadiusOption', (WidgetTester tester) async {
     late final MyoroButtonWidgetShowcaseThemeExtension themeExtension;
 
     await tester.pumpWidget(
@@ -14,21 +14,18 @@ void main() {
         child: Builder(
           builder: (BuildContext context) {
             themeExtension =
-                context
-                    .resolveThemeExtension<
-                      MyoroButtonWidgetShowcaseThemeExtension
-                    >();
-            return const MyoroButtonWidgetShowcaseBorderRadiusOption();
+                context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
+            return BlocProvider(
+              create: (_) => MyoroButtonWidgetShowcaseBloc(),
+              child: const MyoroButtonWidgetShowcaseBorderRadiusOption(),
+            );
           },
         ),
       ),
     );
     await tester.pumpAndSettle();
 
-    expect(
-      find.byType(MyoroButtonWidgetShowcaseBorderRadiusOption),
-      findsOneWidget,
-    );
+    expect(find.byType(MyoroButtonWidgetShowcaseBorderRadiusOption), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>

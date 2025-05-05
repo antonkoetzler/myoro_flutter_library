@@ -6,9 +6,9 @@ void main() {
   test('MyoroFontSizeEnum.size', () {
     expect(MyoroFontSizeEnum.tiny.size, 12);
     expect(MyoroFontSizeEnum.small.size, 16);
-    expect(MyoroFontSizeEnum.medium.size, 18);
-    expect(MyoroFontSizeEnum.large.size, 20);
-    expect(MyoroFontSizeEnum.extraLarge.size, 24);
+    expect(MyoroFontSizeEnum.medium.size, 20);
+    expect(MyoroFontSizeEnum.large.size, 24);
+    expect(MyoroFontSizeEnum.extraLarge.size, 28);
   });
 
   test('MyoroFontSizeEnum getters', () {

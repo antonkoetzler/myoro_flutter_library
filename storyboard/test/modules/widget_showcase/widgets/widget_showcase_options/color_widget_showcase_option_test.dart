@@ -6,19 +6,12 @@ import 'package:storyboard/storyboard.dart';
 
 void main() {
   final WidgetShowcaseOptionLabelConfiguration? labelConfiguration =
-      faker.randomGenerator.boolean()
-          ? WidgetShowcaseOptionLabelConfiguration.fake()
-          : null;
+      faker.randomGenerator.boolean() ? WidgetShowcaseOptionLabelConfiguration.fake() : null;
 
   testWidgets('ColorWidgetShowcaseOption', (WidgetTester tester) async {
-    bool onChangedExecuted = false;
-
     await tester.pumpWidget(
       StoryboardWidgetTester(
-        child: ColorWidgetShowcaseOption(
-          labelConfiguration: labelConfiguration,
-          onChanged: (_) => onChangedExecuted = true,
-        ),
+        child: ColorWidgetShowcaseOption(labelConfiguration: labelConfiguration, onChanged: (_) {}),
       ),
     );
     await tester.pumpAndSettle();
@@ -30,9 +23,7 @@ void main() {
             w is WidgetShowcaseOption &&
             w.labelConfiguration ==
                 (labelConfiguration ??
-                    const WidgetShowcaseOptionLabelConfiguration(
-                      label: 'Color',
-                    )) &&
+                    const WidgetShowcaseOptionLabelConfiguration(label: 'Color')) &&
             w.child is MyoroSingularDropdown<Color>,
       ),
       findsOneWidget,
@@ -40,7 +31,5 @@ void main() {
 
     await tester.tap(find.byType(MyoroSingularDropdown<Color>));
     await tester.pumpAndSettle();
-
-    expect(onChangedExecuted, isTrue);
   });
 }

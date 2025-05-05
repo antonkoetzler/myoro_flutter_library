@@ -10,6 +10,8 @@ class MockSharedPreferences extends Mock implements SharedPreferences {}
 class MockWindowManager extends Mock implements WindowManager {}
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   late MockSharedPreferences mockPrefs;
   final kiwiContainer = KiwiContainer();
 
@@ -18,25 +20,18 @@ void main() {
     kiwiContainer.clear();
   });
 
-  test(
-    'initializeStoryboard initializes dependencies and sets dark mode pref',
-    () async {
-      when(() => mockPrefs.getBool(any())).thenReturn(null);
-      when(() => mockPrefs.setBool(any(), any())).thenAnswer((_) async => true);
+  test('initializeStoryboard initializes dependencies and sets dark mode pref', () async {
+    when(() => mockPrefs.getBool(any())).thenReturn(null);
+    when(() => mockPrefs.setBool(any(), any())).thenAnswer((_) async => true);
 
-      // Register manually to Kiwi since windowManager is a global singleton
-      kiwiContainer
-        ..registerSingleton<SharedPreferences>((_) => mockPrefs)
-        ..registerSingleton<ModulesController>((_) => ModulesController());
+    // Register manually to Kiwi since windowManager is a global singleton
+    kiwiContainer
+      ..registerSingleton<SharedPreferences>((_) => mockPrefs)
+      ..registerSingleton<ModulesController>((_) => ModulesController());
 
-      await initializeStoryboard();
+    await initializeStoryboard();
 
-      verify(
-        () => mockPrefs.getBool(kSharedPreferencesDarkModeEnabledJsonKey),
-      ).called(1);
-      verify(
-        () => mockPrefs.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true),
-      ).called(1);
-    },
-  );
+    verify(() => mockPrefs.getBool(kSharedPreferencesDarkModeEnabledJsonKey)).called(1);
+    verify(() => mockPrefs.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true)).called(1);
+  });
 }

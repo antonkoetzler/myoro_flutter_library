@@ -61,19 +61,11 @@ void main() {
         (Widget w) =>
             w is Padding &&
             w.padding == themeExtension.widgetWrapperPadding &&
-            w.child is Stack &&
-            (w.child as Stack).children.length == 2 &&
-            (w.child as Stack).children.first is Container &&
-            ((w.child as Stack).children.first as Container).constraints?.maxHeight ==
-                double.infinity &&
-            ((w.child as Stack).children.first as Container).alignment ==
-                themeExtension.widgetWrapperAlignment &&
-            ((w.child as Stack).children.first as Container).decoration ==
-                themeExtension.widgetWrapperDecoration &&
-            ((w.child as Stack).children.first as Container).child is Padding &&
-            (((w.child as Stack).children.first as Container).child as Padding).padding ==
-                themeExtension.widgetWrapperContentPadding &&
-            (((w.child as Stack).children.first as Container).child as Padding).child is SizedBox,
+            w.child is Container &&
+            (w.child as Container).constraints?.maxHeight == double.infinity &&
+            (w.child as Container).alignment == themeExtension.widgetWrapperAlignment &&
+            (w.child as Container).decoration == themeExtension.widgetWrapperDecoration &&
+            (w.child as Container).padding == themeExtension.widgetWrapperContentPadding,
       ),
       findsOneWidget,
     );

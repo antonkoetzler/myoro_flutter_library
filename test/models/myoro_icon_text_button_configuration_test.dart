@@ -1,8 +1,14 @@
+import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final model = MyoroIconTextButtonConfiguration.fake();
+  late final MyoroIconTextButtonConfiguration model;
+
+  setUpAll(() {
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+    model = MyoroIconTextButtonConfiguration.fake();
+  });
 
   test('MyoroIconTextButtonConfiguration.copyWith', () {
     expect(model.copyWith(), model);

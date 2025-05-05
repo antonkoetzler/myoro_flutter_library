@@ -33,10 +33,9 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroButtonWidgetShowcaseBloc,
-      MyoroButtonWidgetShowcaseState
-    >(builder: _builder);
+    return BlocBuilder<MyoroButtonWidgetShowcaseBloc, MyoroButtonWidgetShowcaseState>(
+      builder: _builder,
+    );
   }
 
   Widget _builder(BuildContext context, MyoroButtonWidgetShowcaseState state) {
@@ -44,36 +43,23 @@ final class _Widget extends StatelessWidget {
       configuration: MyoroButtonConfiguration(
         cursor: state.cursor ?? SystemMouseCursors.click,
         borderRadius:
-            state.borderRadius != null
-                ? BorderRadius.circular(state.borderRadius!)
-                : null,
+            state.borderRadius != null ? BorderRadius.circular(state.borderRadius!) : null,
         backgroundColorBuilder:
             state.backgroundColorBuilderEnabled
                 ? (MyoroTapStatusEnum tapStatusEnum) {
-                  return MyoroButtonWidgetShowcaseBloc.backgroundColorBuilder(
-                    tapStatusEnum,
-                    state,
-                  );
+                  return MyoroButtonWidgetShowcaseBloc.backgroundColorBuilder(tapStatusEnum, state);
                 }
                 : null,
         borderBuilder:
             state.borderBuilderEnabled
                 ? (MyoroTapStatusEnum tapStatusEnum) {
-                  return MyoroButtonWidgetShowcaseBloc.borderBuilder(
-                    context,
-                    tapStatusEnum,
-                    state,
-                  );
+                  return MyoroButtonWidgetShowcaseBloc.borderBuilder(context, tapStatusEnum, state);
                 }
                 : null,
         onTapDown:
-            state.onTapDownEnabled
-                ? (_) => MyoroButtonWidgetShowcaseBloc.onTapDown(context)
-                : null,
+            state.onTapDownEnabled ? (_) => MyoroButtonWidgetShowcaseBloc.onTapDown(context) : null,
         onTapUp:
-            state.onTapUpEnabled
-                ? (_) => MyoroButtonWidgetShowcaseBloc.onTapUp(context)
-                : null,
+            state.onTapUpEnabled ? (_) => MyoroButtonWidgetShowcaseBloc.onTapUp(context) : null,
       ),
       builder: (_, MyoroTapStatusEnum tapStatusEnum) {
         return _ButtonContent(tapStatusEnum);
@@ -89,9 +75,7 @@ final class _ButtonContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
     const areYouSilly = _ButtonContentImage('assets/images/are_you_silly.jpg');
     const happyCat = _ButtonContentImage('assets/images/happy_cat.jpg');
     const snazzyCat = _ButtonContentImage('assets/images/snazzy_cat.jpg');
@@ -102,17 +86,21 @@ final class _ButtonContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: themeExtension.spacing,
         children: [
-          switch (_tapStatusEnum) {
-            MyoroTapStatusEnum.idle => areYouSilly,
-            MyoroTapStatusEnum.hover => happyCat,
-            MyoroTapStatusEnum.tap => snazzyCat,
-          },
-          _ButtonContentText(_tapStatusEnum),
-          switch (_tapStatusEnum) {
-            MyoroTapStatusEnum.idle => happyCat,
-            MyoroTapStatusEnum.hover => areYouSilly,
-            MyoroTapStatusEnum.tap => snazzyCat,
-          },
+          Flexible(
+            child: switch (_tapStatusEnum) {
+              MyoroTapStatusEnum.idle => areYouSilly,
+              MyoroTapStatusEnum.hover => happyCat,
+              MyoroTapStatusEnum.tap => snazzyCat,
+            },
+          ),
+          Flexible(child: _ButtonContentText(_tapStatusEnum)),
+          Flexible(
+            child: switch (_tapStatusEnum) {
+              MyoroTapStatusEnum.idle => happyCat,
+              MyoroTapStatusEnum.hover => areYouSilly,
+              MyoroTapStatusEnum.tap => snazzyCat,
+            },
+          ),
         ],
       ),
     );
@@ -126,9 +114,7 @@ final class _ButtonContentImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
     final double size = themeExtension.buttonContentImageSize;
 
     return Image.asset(_imagePath, width: size, height: size);
@@ -142,20 +128,15 @@ final class _ButtonContentText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context
-            .resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
 
     return Text(
       'This is a MyoroButton!',
-      style: themeExtension.buttonContentTextStyle.withColor(
-        switch (_tapStatusEnum) {
-          MyoroTapStatusEnum.idle => themeExtension.buttonContentTextIdleColor,
-          MyoroTapStatusEnum.hover =>
-            themeExtension.buttonContentTextHoverColor,
-          MyoroTapStatusEnum.tap => themeExtension.buttonContentTextTapColor,
-        },
-      ),
+      style: themeExtension.buttonContentTextStyle.withColor(switch (_tapStatusEnum) {
+        MyoroTapStatusEnum.idle => themeExtension.buttonContentTextIdleColor,
+        MyoroTapStatusEnum.hover => themeExtension.buttonContentTextHoverColor,
+        MyoroTapStatusEnum.tap => themeExtension.buttonContentTextTapColor,
+      }),
     );
   }
 }

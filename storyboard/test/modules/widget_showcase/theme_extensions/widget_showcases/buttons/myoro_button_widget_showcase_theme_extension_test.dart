@@ -1,12 +1,19 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 void main() {
-  final themeExtension1 = MyoroButtonWidgetShowcaseThemeExtension.fake();
-  final themeExtension2 = MyoroButtonWidgetShowcaseThemeExtension.fake();
+  late final MyoroButtonWidgetShowcaseThemeExtension themeExtension1, themeExtension2;
+
+  setUpAll(() {
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+    themeExtension1 = MyoroButtonWidgetShowcaseThemeExtension.fake();
+    themeExtension2 = MyoroButtonWidgetShowcaseThemeExtension.fake();
+  });
 
   test('MyoroButtonWidgetShowcaseThemeExtension.copyWith', () {
     expect(themeExtension1.copyWith(), themeExtension1);
@@ -18,8 +25,7 @@ void main() {
         buttonContentImageSize: themeExtension2.buttonContentImageSize,
         buttonContentTextStyle: themeExtension2.buttonContentTextStyle,
         buttonContentTextIdleColor: themeExtension2.buttonContentTextIdleColor,
-        buttonContentTextHoverColor:
-            themeExtension2.buttonContentTextHoverColor,
+        buttonContentTextHoverColor: themeExtension2.buttonContentTextHoverColor,
         buttonContentTextTapColor: themeExtension2.buttonContentTextTapColor,
       ),
       themeExtension2,

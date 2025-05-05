@@ -22,17 +22,11 @@ final class WidgetShowcaseOptionLabelConfiguration extends Equatable {
     required this.label,
     this.initialValue,
     this.onChanged,
-  }) : assert(
-         !((initialValue != null) ^ (onChanged != null)),
-         '[WidgetShowcaseOptionLabelConfiguration]: If [initialValue] is provided, [onChanged] must be provided.',
-       );
+  });
 
   WidgetShowcaseOptionLabelConfiguration.fake()
     : label = faker.lorem.word(),
-      initialValue =
-          faker.randomGenerator.boolean()
-              ? faker.randomGenerator.boolean()
-              : null,
+      initialValue = faker.randomGenerator.boolean() ? faker.randomGenerator.boolean() : null,
       onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
 
   WidgetShowcaseOptionLabelConfiguration copyWith({
@@ -44,8 +38,7 @@ final class WidgetShowcaseOptionLabelConfiguration extends Equatable {
   }) {
     return WidgetShowcaseOptionLabelConfiguration(
       label: label ?? this.label,
-      initialValue:
-          initialValueProvided ? (initialValue ?? this.initialValue) : null,
+      initialValue: initialValueProvided ? (initialValue ?? this.initialValue) : null,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
     );
   }

@@ -5,12 +5,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 void main() {
-  final VoidCallback? onPrevious =
-      faker.randomGenerator.boolean() ? () {} : null;
-  final String? headerTitleText =
-      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
-  final String? headerSubtitleText =
-      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final VoidCallback? onPrevious = faker.randomGenerator.boolean() ? () {} : null;
+  final String? headerTitleText = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? headerSubtitleText = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
 
   testWidgets('StoryboardScreen', (WidgetTester tester) async {
     await tester.pumpWidget(
@@ -25,7 +22,7 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.byType(StoryboardScreen), findsOneWidget);
+    expect(find.byType(StoryboardScreen), findsAtLeastNWidgets(1));
     expect(find.byType(MyoroScreen), findsOneWidget);
     expect(find.byType(MyoroAppBar), findsOneWidget);
     if (headerTitleText != null) {

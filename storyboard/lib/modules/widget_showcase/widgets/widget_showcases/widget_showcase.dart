@@ -56,7 +56,8 @@ final class _WidgetWrapper extends StatelessWidget {
         height: double.infinity,
         alignment: themeExtension.widgetWrapperAlignment,
         decoration: themeExtension.widgetWrapperDecoration,
-        child: Padding(padding: themeExtension.widgetWrapperContentPadding, child: widget),
+        padding: themeExtension.widgetWrapperContentPadding,
+        child: widget,
       ),
     );
   }
