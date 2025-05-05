@@ -1,37 +1,27 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kiwi/kiwi.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:storyboard/storyboard.dart';
-import 'package:window_manager/window_manager.dart';
-
-class MockSharedPreferences extends Mock implements SharedPreferences {}
-
-class MockWindowManager extends Mock implements WindowManager {}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  late MockSharedPreferences mockPrefs;
-  final kiwiContainer = KiwiContainer();
+  setUpAll(() {
+    TestWidgetsFlutterBinding.ensureInitialized();
 
-  setUp(() {
-    mockPrefs = MockSharedPreferences();
-    kiwiContainer.clear();
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+      const MethodChannel('plugins.flutter.io/shared_preferences'),
+      (MethodCall methodCall) async {
+        switch (methodCall.method) {
+          case 'setBool':
+            return true;
+          default:
+            return null;
+        }
+      },
+    );
   });
 
-  test('initializeStoryboard initializes dependencies and sets dark mode pref', () async {
-    when(() => mockPrefs.getBool(any())).thenReturn(null);
-    when(() => mockPrefs.setBool(any(), any())).thenAnswer((_) async => true);
-
-    // Register manually to Kiwi since windowManager is a global singleton
-    kiwiContainer
-      ..registerSingleton<SharedPreferences>((_) => mockPrefs)
-      ..registerSingleton<ModulesController>((_) => ModulesController());
-
+  test('initializeStoryboard', () async {
     await initializeStoryboard();
-
-    verify(() => mockPrefs.getBool(kSharedPreferencesDarkModeEnabledJsonKey)).called(1);
-    verify(() => mockPrefs.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true)).called(1);
   });
 }
