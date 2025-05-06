@@ -8,14 +8,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// TODO: Needs to be tested.
 class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> {
+  /// [Container.decoration] of [_MyoroTableState].
+  final BoxDecoration decoration;
+
   /// Default [TextStyle] of [_Column].
   final TextStyle columnTextStyle;
 
   /// Spacing between columns.
   final double columnSpacing;
 
-  /// [EdgeInsets] of [_Loader].
-  final EdgeInsets loaderPadding;
+  /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
+  final EdgeInsets loaderEmptyMessageErrorMessagePadding;
 
   /// [TextStyle] of [_EmptyMessage].
   final TextStyle emptyMessageTextStyle;
@@ -24,9 +27,10 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   final TextStyle errorMessageTextStyle;
 
   const MyoroTableThemeExtension({
+    required this.decoration,
     required this.columnTextStyle,
     required this.columnSpacing,
-    required this.loaderPadding,
+    required this.loaderEmptyMessageErrorMessagePadding,
     required this.emptyMessageTextStyle,
     required this.errorMessageTextStyle,
   });
@@ -35,33 +39,51 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
     final typography = MyoroTypographyDesignSystem.instance;
 
     return MyoroTableThemeExtension(
+      decoration: BoxDecoration(
+        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        border: Border.all(
+          width: faker.randomGenerator.decimal(scale: 10),
+          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        ),
+        borderRadius: BorderRadius.circular(faker.randomGenerator.decimal(scale: 50)),
+      ),
       columnTextStyle: typography.randomTextStyle,
       columnSpacing: faker.randomGenerator.decimal(scale: 20),
-      loaderPadding: EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
+      loaderEmptyMessageErrorMessagePadding: EdgeInsets.all(
+        faker.randomGenerator.decimal(scale: 50),
+      ),
       emptyMessageTextStyle: typography.randomTextStyle,
       errorMessageTextStyle: typography.randomTextStyle,
     );
   }
 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : columnTextStyle = textTheme.titleMedium!,
+    : decoration = BoxDecoration(
+        color: colorScheme.primary,
+        border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+      ),
+      columnTextStyle = textTheme.titleMedium!,
       columnSpacing = 10,
-      loaderPadding = const EdgeInsets.all(10),
+      loaderEmptyMessageErrorMessagePadding = const EdgeInsets.all(10),
       emptyMessageTextStyle = textTheme.headlineMedium!,
       errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
 
   @override
   MyoroTableThemeExtension copyWith({
+    BoxDecoration? decoration,
     TextStyle? columnTextStyle,
     double? columnSpacing,
-    EdgeInsets? loaderPadding,
+    EdgeInsets? loaderEmptyMessageErrorMessagePadding,
     TextStyle? emptyMessageTextStyle,
     TextStyle? errorMessageTextStyle,
   }) {
     return MyoroTableThemeExtension(
+      decoration: decoration ?? this.decoration,
       columnTextStyle: columnTextStyle ?? this.columnTextStyle,
       columnSpacing: columnSpacing ?? this.columnSpacing,
-      loaderPadding: loaderPadding ?? this.loaderPadding,
+      loaderEmptyMessageErrorMessagePadding:
+          loaderEmptyMessageErrorMessagePadding ?? this.loaderEmptyMessageErrorMessagePadding,
       emptyMessageTextStyle: emptyMessageTextStyle ?? this.emptyMessageTextStyle,
       errorMessageTextStyle: errorMessageTextStyle ?? this.errorMessageTextStyle,
     );
@@ -74,9 +96,14 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   ) {
     if (other is! MyoroTableThemeExtension) return this;
     return copyWith(
+      decoration: BoxDecoration.lerp(decoration, other.decoration, t),
       columnTextStyle: TextStyle.lerp(columnTextStyle, other.columnTextStyle, t),
       columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
-      loaderPadding: EdgeInsets.lerp(loaderPadding, other.loaderPadding, t),
+      loaderEmptyMessageErrorMessagePadding: EdgeInsets.lerp(
+        loaderEmptyMessageErrorMessagePadding,
+        other.loaderEmptyMessageErrorMessagePadding,
+        t,
+      ),
       emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
       errorMessageTextStyle: TextStyle.lerp(errorMessageTextStyle, other.errorMessageTextStyle, t),
     );
@@ -86,9 +113,10 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   bool operator ==(Object other) {
     return other is MyoroTableThemeExtension &&
         other.runtimeType == runtimeType &&
+        other.decoration == decoration &&
         other.columnTextStyle == columnTextStyle &&
         other.columnSpacing == columnSpacing &&
-        other.loaderPadding == loaderPadding &&
+        other.loaderEmptyMessageErrorMessagePadding == loaderEmptyMessageErrorMessagePadding &&
         other.emptyMessageTextStyle == emptyMessageTextStyle &&
         other.errorMessageTextStyle == errorMessageTextStyle;
   }
@@ -96,9 +124,10 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   @override
   int get hashCode {
     return Object.hash(
+      decoration,
       columnTextStyle,
       columnSpacing,
-      loaderPadding,
+      loaderEmptyMessageErrorMessagePadding,
       emptyMessageTextStyle,
       errorMessageTextStyle,
     );
@@ -107,9 +136,10 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   @override
   String toString() =>
       'MyoroTableThemeExtension(\n'
+      '  decoration: $decoration,\n'
       '  columnTextStyle: $columnTextStyle,\n'
       '  columnSpacing: $columnSpacing,\n'
-      '  loaderPadding: $loaderPadding\n'
+      '  loaderEmptyMessageErrorMessagePadding: $loaderEmptyMessageErrorMessagePadding\n'
       '  emptyMessageTextStyle: emptyMessageTextStyle,\n'
       '  errorMessageTextStyle: $errorMessageTextStyle,\n'
       ');';

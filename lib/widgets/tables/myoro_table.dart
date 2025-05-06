@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/blocs/myoro_table_bloc/myoro_table_bloc.dart';
@@ -6,7 +8,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Table of MFL.
 ///
 /// TODO: Needs to be tested.
-@immutable
 class MyoroTable<T> extends StatefulWidget {
   /// Controller.
   ///
@@ -51,32 +52,54 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   void dispose() {
-    _bloc.close();
+    unawaited(_bloc.close());
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+
     return BlocProvider.value(
       value: _bloc,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [IntrinsicHeight(child: _Columns<T>()), Expanded(child: _RowsSection<T>())],
+      child: Container(
+        decoration: themeExtension.decoration,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IntrinsicHeight(child: _Columns<T>()),
+            const _Divider(Axis.horizontal),
+            Flexible(child: _RowsSection<T>()),
+          ],
+        ),
       ),
     );
   }
 }
 
-@immutable
 final class _Columns<T> extends StatelessWidget {
   const _Columns();
 
   @override
   Widget build(BuildContext context) {
-    return _Row(_buildColumns(context));
+    final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final basicDividerThemeExtension =
+        context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
+
+    // Empty [MyoroLayoutBuilder] to rebuild [_Columns] everytime the screen is resized.
+    return MyoroLayoutBuilder(
+      builder: (_, __) {
+        return Row(
+          // Equation to omit spacing of inserted [_Divider] [Widget]s in [_buildColumns].
+          spacing:
+              (tableThemeExtension.columnSpacing / 2) - (basicDividerThemeExtension.shortValue / 2),
+          children: _buildColumns(context),
+        );
+      },
+    );
   }
 
-  List<_Column> _buildColumns(BuildContext context) {
+  List<Widget> _buildColumns(BuildContext context) {
     final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
     final List<MyoroTableColumn> columns = bloc.configuration.columns;
     final List<GlobalKey> titleColumnKeys = bloc.titleColumnKeys;
@@ -88,9 +111,11 @@ final class _Columns<T> extends StatelessWidget {
       '[MyoroTable<$T>._buildColumns]: Length of [columns] must be equal to the length of [titleColumnKeys]',
     );
 
-    final List<_Column> widgets = [];
+    final List<Widget> widgets = [];
     for (int i = 0; i < columns.length; i++) {
-      widgets.add(_Column(titleColumnKeys[i], columns[i]));
+      final bool isLastColumn = (i == columns.length - 1);
+      widgets.add(_Column(titleColumnKeys[i], columns[i], isLastColumn));
+      if (!isLastColumn) widgets.add(const _Divider(Axis.vertical));
     }
 
     // Before returning [widgets], we schedule the post-frame
@@ -107,20 +132,28 @@ final class _Columns<T> extends StatelessWidget {
   }
 }
 
-@immutable
 final class _Column extends StatelessWidget {
   final MyoroTableColumn _column;
+  final bool _isLastColumn;
 
-  const _Column(Key? key, this._column) : super(key: key);
+  const _Column(Key? key, this._column, this._isLastColumn) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    final Widget child = Container(
-      color: Colors.pink.withOpacity(0.3),
-      child: DefaultTextStyle(style: themeExtension.columnTextStyle, child: _column.child),
+    final Widget child = DefaultTextStyle(
+      style: themeExtension.columnTextStyle,
+      child:
+          _column.tooltipMessage != null
+              ? MyoroTooltip(text: _column.tooltipMessage!, child: _column.child)
+              : _column.child,
     );
+
+    // Last [MyoroTableColumn] must always be expanded.
+    if (_isLastColumn) {
+      return Expanded(child: child);
+    }
 
     return switch (_column.widthConfiguration.typeEnum) {
       MyoroTableColumnWidthConfigurationEnum.expanded => Expanded(child: child),
@@ -133,7 +166,6 @@ final class _Column extends StatelessWidget {
   }
 }
 
-@immutable
 final class _RowsSection<T> extends StatelessWidget {
   const _RowsSection();
 
@@ -159,7 +191,6 @@ final class _RowsSection<T> extends StatelessWidget {
   }
 }
 
-@immutable
 final class _Loader extends StatelessWidget {
   const _Loader();
 
@@ -167,11 +198,13 @@ final class _Loader extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    return Padding(padding: themeExtension.loaderPadding, child: const MyoroCircularLoader());
+    return Padding(
+      padding: themeExtension.loaderEmptyMessageErrorMessagePadding,
+      child: const MyoroCircularLoader(),
+    );
   }
 }
 
-@immutable
 final class _Rows<T> extends StatelessWidget {
   final MyoroTablePagination<T> _pagination;
 
@@ -182,6 +215,8 @@ final class _Rows<T> extends StatelessWidget {
     if (_pagination.items.isEmpty) {
       return const _EmptyMessage();
     }
+
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
     final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier =
@@ -194,18 +229,29 @@ final class _Rows<T> extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: titleColumnKeyWidthsNotifier,
-      builder: (_, List<double> titleColumnKeyWidths, __) => _builder(bloc, titleColumnKeyWidths),
+      builder: (_, List<double> titleColumnKeyWidths, __) {
+        return _builder(themeExtension, bloc, titleColumnKeyWidths);
+      },
     );
   }
 
-  Widget _builder(MyoroTableBloc<T> bloc, List<double> titleColumnKeyWidths) {
+  Widget _builder(
+    MyoroTableThemeExtension themeExtension,
+    MyoroTableBloc<T> bloc,
+    List<double> titleColumnKeyWidths,
+  ) {
     final MyoroTableConfiguration<T> configuration = bloc.configuration;
     final Set<T> items = _pagination.items;
 
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (_, int index) {
-        return _itemBuilder(items.elementAt(index), titleColumnKeyWidths, configuration.rowBuilder);
+        return _itemBuilder(
+          items.elementAt(index),
+          titleColumnKeyWidths,
+          configuration.rowBuilder,
+          themeExtension,
+        );
       },
     );
   }
@@ -214,27 +260,39 @@ final class _Rows<T> extends StatelessWidget {
     T item,
     List<double> titleColumnKeyWidths,
     MyoroTableConfigurationRowBuilder<T> rowBuilder,
+    MyoroTableThemeExtension themeExtension,
   ) {
-    final List<Widget> cells = rowBuilder(item);
+    final MyoroTableRow<T> row = rowBuilder(item);
+    final MyoroTableRowTapEvent<T>? onTapDown = row.onTapDown;
+    final MyoroTableRowTapEvent<T>? onTapUp = row.onTapUp;
+    final List<Widget> cells = row.cells;
 
     assert(
       titleColumnKeyWidths.length == cells.length,
       '[_Rows<$T>._itemBuilder]: Length of [columns] must be the same as the length of [cells].',
     );
 
-    return _Row([
-      for (int i = 0; i < cells.length; i++) ...[
-        Container(
-          color: Colors.pink.withOpacity(0.3),
-          width: titleColumnKeyWidths[i],
-          child: cells[i],
-        ),
-      ],
-    ]);
+    return MyoroButton(
+      configuration: MyoroButtonConfiguration(
+        onTapDown: (onTapDown != null) ? (_) => onTapDown(item) : null,
+        onTapUp: (onTapUp != null) ? (_) => onTapUp(item) : null,
+      ),
+      builder: (_, MyoroTapStatusEnum tapStatusEnum) {
+        return Row(
+          spacing: themeExtension.columnSpacing,
+          children: [
+            for (int i = 0; i < cells.length; i++) ...[
+              (i == cells.length - 1)
+                  ? Expanded(child: cells[i])
+                  : SizedBox(width: titleColumnKeyWidths[i], child: cells[i]),
+            ],
+          ],
+        );
+      },
+    );
   }
 }
 
-@immutable
 final class _EmptyMessage extends StatelessWidget {
   const _EmptyMessage();
 
@@ -246,7 +304,6 @@ final class _EmptyMessage extends StatelessWidget {
   }
 }
 
-@immutable
 final class _ErrorMessage extends StatelessWidget {
   final String _errorMessage;
 
@@ -260,16 +317,13 @@ final class _ErrorMessage extends StatelessWidget {
   }
 }
 
-@immutable
-final class _Row extends StatelessWidget {
-  final List<Widget> _children;
+final class _Divider extends StatelessWidget {
+  final Axis _direction;
 
-  const _Row(this._children);
+  const _Divider(this._direction);
 
   @override
-  Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
-    return Row(spacing: themeExtension.columnSpacing, children: _children);
+  Widget build(_) {
+    return MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: _direction));
   }
 }

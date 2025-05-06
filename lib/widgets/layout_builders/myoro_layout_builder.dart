@@ -11,6 +11,8 @@ typedef MyoroLayoutBuilderChildCallback =
 
 /// [Widget] used as an improved [LayoutBuilder].
 ///
+/// Shoutout to https://github.com/gbtb16 for making this [Widget].
+///
 /// The #FlutterMoment at hand:
 /// - Let [W] = A [Widget].
 /// - If [W] contains a [LayoutBuilder], the [Widget]s wrapping [W] in the [Widget]

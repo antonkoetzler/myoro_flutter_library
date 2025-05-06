@@ -3,6 +3,8 @@ import 'package:faker/faker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Width configuration of a [MyoroTable].
+///
+/// TODO: Needs to be tested.
 class MyoroTableColumnWidthConfiguration extends Equatable {
   /// Width configuration enum.
   final MyoroTableColumnWidthConfigurationEnum typeEnum;

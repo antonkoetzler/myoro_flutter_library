@@ -16,7 +16,7 @@ Future<void> initializeStoryboard() async {
 /// Initilize [windowManager].
 void _initializeWindowManager() {
   windowManager.ensureInitialized();
-  windowManager.setMinimumSize(const Size(1200, 1000));
+  windowManager.setMinimumSize(const Size(600, 600));
 }
 
 /// Adds all containers to [_kiwiContainer].

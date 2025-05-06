@@ -31,29 +31,36 @@ final class _Widget extends StatelessWidget {
                 ).toSet(),
           );
         },
-        columns: const [
+        columns: [
           MyoroTableColumn(
-            widthConfiguration: MyoroTableColumnWidthConfiguration(
+            tooltipMessage: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
+            widthConfiguration: const MyoroTableColumnWidthConfiguration(
               typeEnum: MyoroTableColumnWidthConfigurationEnum.expanded,
             ),
-            child: Text('Expanded'),
+            child: const Text('Expanded'),
           ),
           MyoroTableColumn(
-            widthConfiguration: MyoroTableColumnWidthConfiguration(
+            tooltipMessage: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
+            widthConfiguration: const MyoroTableColumnWidthConfiguration(
               typeEnum: MyoroTableColumnWidthConfigurationEnum.intrinsic,
             ),
-            child: Text('Intrinsic'),
+            child: const Text('Intrinsic'),
           ),
           MyoroTableColumn(
-            widthConfiguration: MyoroTableColumnWidthConfiguration(
+            tooltipMessage: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
+            widthConfiguration: const MyoroTableColumnWidthConfiguration(
               typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed,
               fixedWidth: 150,
             ),
-            child: Text('Fixed'),
+            child: const Text('Fixed'),
           ),
         ],
         rowBuilder: (String item) {
-          return [Text(faker.lorem.word()), Text(faker.lorem.word()), Text(faker.lorem.word())];
+          return MyoroTableRow(
+            onTapDown: (_) => print('Hello'),
+            onTapUp: (_) => print('Helqweqwe'),
+            cells: [Text(faker.lorem.word()), Text(faker.lorem.word()), Text(faker.lorem.word())],
+          );
         },
       ),
     );

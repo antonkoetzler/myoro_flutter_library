@@ -8,7 +8,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroTableConfigurationPaginationRequest<T> = FutureOr<MyoroTablePagination<T>> Function();
 
 /// Builder of the cells of a row.
-typedef MyoroTableConfigurationRowBuilder<T> = List<Widget> Function(T item);
+typedef MyoroTableConfigurationRowBuilder<T> = MyoroTableRow<T> Function(T item);
 
 /// Configuration model of [MyoroTable].
 ///
