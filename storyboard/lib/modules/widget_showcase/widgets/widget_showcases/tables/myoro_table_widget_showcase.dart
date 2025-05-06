@@ -52,6 +52,9 @@ final class _Widget extends StatelessWidget {
             child: Text('Fixed'),
           ),
         ],
+        rowBuilder: (String item) {
+          return [Text(faker.lorem.word()), Text(faker.lorem.word()), Text(faker.lorem.word())];
+        },
       ),
     );
   }

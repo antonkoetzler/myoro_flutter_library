@@ -73,9 +73,7 @@ final class _Columns<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
-    return Row(spacing: themeExtension.columnSpacing, children: _buildColumns(context));
+    return _Row(_buildColumns(context));
   }
 
   List<_Column> _buildColumns(BuildContext context) {
@@ -189,12 +187,50 @@ final class _Rows<T> extends StatelessWidget {
     final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier =
         bloc.titleColumnKeyWidthsNotifier;
 
-    return ValueListenableBuilder(valueListenable: titleColumnKeyWidthsNotifier, builder: _builder);
+    // Empty case as there cannot be 0 [MyoroTableColumn]s in a [MyoroTable].
+    if (titleColumnKeyWidthsNotifier.value.isEmpty) {
+      return const _Loader();
+    }
+
+    return ValueListenableBuilder(
+      valueListenable: titleColumnKeyWidthsNotifier,
+      builder: (_, List<double> titleColumnKeyWidths, __) => _builder(bloc, titleColumnKeyWidths),
+    );
   }
 
-  Widget _builder(_, List<double> titleColumnKeyWidths, __) {
-    print(titleColumnKeyWidths);
-    return const Text('This is looking really clean');
+  Widget _builder(MyoroTableBloc<T> bloc, List<double> titleColumnKeyWidths) {
+    final MyoroTableConfiguration<T> configuration = bloc.configuration;
+    final Set<T> items = _pagination.items;
+
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (_, int index) {
+        return _itemBuilder(items.elementAt(index), titleColumnKeyWidths, configuration.rowBuilder);
+      },
+    );
+  }
+
+  Widget _itemBuilder(
+    T item,
+    List<double> titleColumnKeyWidths,
+    MyoroTableConfigurationRowBuilder<T> rowBuilder,
+  ) {
+    final List<Widget> cells = rowBuilder(item);
+
+    assert(
+      titleColumnKeyWidths.length == cells.length,
+      '[_Rows<$T>._itemBuilder]: Length of [columns] must be the same as the length of [cells].',
+    );
+
+    return _Row([
+      for (int i = 0; i < cells.length; i++) ...[
+        Container(
+          color: Colors.pink.withOpacity(0.3),
+          width: titleColumnKeyWidths[i],
+          child: cells[i],
+        ),
+      ],
+    ]);
   }
 }
 
@@ -221,5 +257,19 @@ final class _ErrorMessage extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return Text(_errorMessage, style: themeExtension.errorMessageTextStyle);
+  }
+}
+
+@immutable
+final class _Row extends StatelessWidget {
+  final List<Widget> _children;
+
+  const _Row(this._children);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+
+    return Row(spacing: themeExtension.columnSpacing, children: _children);
   }
 }
