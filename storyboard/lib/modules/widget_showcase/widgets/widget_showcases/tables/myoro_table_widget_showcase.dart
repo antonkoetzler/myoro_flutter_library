@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -19,8 +20,17 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return MyoroTable(
+    return MyoroTable<String>(
       configuration: MyoroTableConfiguration(
+        paginationRequest: () {
+          return MyoroTablePagination(
+            items:
+                List.generate(
+                  faker.randomGenerator.integer(100),
+                  (int index) => '$index)${faker.randomGenerator.string(10)}',
+                ).toSet(),
+          );
+        },
         columns: const [
           MyoroTableColumn(
             widthConfiguration: MyoroTableColumnWidthConfiguration(

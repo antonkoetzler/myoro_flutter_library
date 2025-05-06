@@ -30,7 +30,7 @@ List<ThemeExtension> createMyoroThemeExtensions(
     ..._createScreenThemeExtensions(),
     ..._createSliderThemeExtensions(textTheme),
     ..._createSnackBarThemeExtensions(colorScheme, textTheme),
-    ..._createTableThemeExtensions(textTheme),
+    ..._createTableThemeExtensions(colorScheme, textTheme),
     ..._createTooltipThemeExtensions(),
   ];
 }
@@ -153,8 +153,8 @@ List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, Tex
   ];
 }
 
-List<ThemeExtension> _createTableThemeExtensions(TextTheme textTheme) {
-  return [MyoroTableThemeExtension.builder(textTheme)];
+List<ThemeExtension> _createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [MyoroTableThemeExtension.builder(colorScheme, textTheme)];
 }
 
 List<ThemeExtension> _createTooltipThemeExtensions() {
