@@ -113,13 +113,17 @@ final class _Columns<T> extends StatelessWidget {
 
     final List<Widget> widgets = [];
     for (int i = 0; i < columns.length; i++) {
+      final GlobalKey titleColumnKey = titleColumnKeys[i];
+      final MyoroTableColumn column = columns[i];
       final bool isLastColumn = (i == columns.length - 1);
-      widgets.add(_Column(titleColumnKeys[i], columns[i], isLastColumn));
-      if (!isLastColumn) widgets.add(const _Divider(Axis.vertical));
+      widgets.add(_Column(titleColumnKey, column, isLastColumn));
+      if (!isLastColumn) {
+        widgets.add(_Divider(Axis.vertical, column.resizable ? _dragCallback : null));
+      }
     }
 
     // Before returning [widgets], we schedule the post-frame
-    // callback in order to set [bloc.titleColumnKeyWidthsNotifier].
+    // callback in order to set [titleColumnKeyWidthsNotifier].
     WidgetsBinding.instance.addPostFrameCallback((_) {
       titleColumnKeyWidthsNotifier.value =
           titleColumnKeys.map<double>((GlobalKey titleColumnKey) {
@@ -129,6 +133,11 @@ final class _Columns<T> extends StatelessWidget {
     });
 
     return widgets;
+  }
+
+  void _dragCallback(DragUpdateDetails details) {
+    you are here. you also need to fix the spacing error caused by the resize divider.
+    print('Let\'s start');
   }
 }
 
@@ -216,66 +225,64 @@ final class _Rows<T> extends StatelessWidget {
       return const _EmptyMessage();
     }
 
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
     final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
     final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier =
         bloc.titleColumnKeyWidthsNotifier;
 
-    // Empty case as there cannot be 0 [MyoroTableColumn]s in a [MyoroTable].
-    if (titleColumnKeyWidthsNotifier.value.isEmpty) {
-      return const _Loader();
-    }
-
     return ValueListenableBuilder(
       valueListenable: titleColumnKeyWidthsNotifier,
       builder: (_, List<double> titleColumnKeyWidths, __) {
-        return _builder(themeExtension, bloc, titleColumnKeyWidths);
+        return _builder(titleColumnKeyWidths);
       },
     );
   }
 
-  Widget _builder(
-    MyoroTableThemeExtension themeExtension,
-    MyoroTableBloc<T> bloc,
-    List<double> titleColumnKeyWidths,
-  ) {
-    final MyoroTableConfiguration<T> configuration = bloc.configuration;
+  Widget _builder(List<double> titleColumnKeyWidths) {
     final Set<T> items = _pagination.items;
+
+    // Empty case as there cannot be 0 [MyoroTableColumn]s in a [MyoroTable].
+    if (titleColumnKeyWidths.isEmpty) {
+      return const _Loader();
+    }
 
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (_, int index) {
-        return _itemBuilder(
-          items.elementAt(index),
-          titleColumnKeyWidths,
-          configuration.rowBuilder,
-          themeExtension,
-        );
+        return _Row(items.elementAt(index), titleColumnKeyWidths);
       },
     );
   }
+}
 
-  Widget _itemBuilder(
-    T item,
-    List<double> titleColumnKeyWidths,
-    MyoroTableConfigurationRowBuilder<T> rowBuilder,
-    MyoroTableThemeExtension themeExtension,
-  ) {
-    final MyoroTableRow<T> row = rowBuilder(item);
+final class _Row<T> extends StatelessWidget {
+  final T _item;
+  final List<double> _titleColumnKeyWidths;
+
+  const _Row(this._item, this._titleColumnKeyWidths);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+
+    final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
+    final MyoroTableConfiguration<T> configuration = bloc.configuration;
+    final MyoroTableConfigurationRowBuilder<T> rowBuilder = configuration.rowBuilder;
+
+    final MyoroTableRow<T> row = rowBuilder(_item);
     final MyoroTableRowTapEvent<T>? onTapDown = row.onTapDown;
     final MyoroTableRowTapEvent<T>? onTapUp = row.onTapUp;
     final List<Widget> cells = row.cells;
 
     assert(
-      titleColumnKeyWidths.length == cells.length,
+      _titleColumnKeyWidths.length == cells.length,
       '[_Rows<$T>._itemBuilder]: Length of [columns] must be the same as the length of [cells].',
     );
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
-        onTapDown: (onTapDown != null) ? (_) => onTapDown(item) : null,
-        onTapUp: (onTapUp != null) ? (_) => onTapUp(item) : null,
+        borderRadius: BorderRadius.zero,
+        onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
+        onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
       ),
       builder: (_, MyoroTapStatusEnum tapStatusEnum) {
         return Row(
@@ -284,7 +291,7 @@ final class _Rows<T> extends StatelessWidget {
             for (int i = 0; i < cells.length; i++) ...[
               (i == cells.length - 1)
                   ? Expanded(child: cells[i])
-                  : SizedBox(width: titleColumnKeyWidths[i], child: cells[i]),
+                  : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
             ],
           ],
         );
@@ -319,11 +326,16 @@ final class _ErrorMessage extends StatelessWidget {
 
 final class _Divider extends StatelessWidget {
   final Axis _direction;
+  final MyoroResizeDividerDragCallback? _dragCallback;
 
-  const _Divider(this._direction);
+  const _Divider(this._direction, [this._dragCallback]);
 
   @override
   Widget build(_) {
-    return MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: _direction));
+    final configuration = MyoroBasicDividerConfiguration(direction: _direction);
+
+    return _dragCallback != null
+        ? MyoroResizeDivider(configuration: configuration, dragCallback: _dragCallback)
+        : MyoroBasicDivider(configuration: configuration);
   }
 }

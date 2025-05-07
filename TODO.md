@@ -5,6 +5,7 @@
 - Resizable columns
 - Checkboxes
 - Pagination controls
+- Fix clipping of rows when it's half-visible
 - Widget showcase
 - Tests
 

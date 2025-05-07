@@ -34,6 +34,7 @@ final class _Widget extends StatelessWidget {
         columns: [
           MyoroTableColumn(
             tooltipMessage: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
+            resizable: true,
             widthConfiguration: const MyoroTableColumnWidthConfiguration(
               typeEnum: MyoroTableColumnWidthConfigurationEnum.expanded,
             ),
