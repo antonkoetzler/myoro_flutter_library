@@ -118,7 +118,7 @@ final class _Columns<T> extends StatelessWidget {
       final bool isLastColumn = (i == columns.length - 1);
       widgets.add(_Column(titleColumnKey, column, isLastColumn));
       if (!isLastColumn) {
-        widgets.add(_Divider(Axis.vertical, column.resizable ? _dragCallback : null));
+        widgets.add(const _Divider(Axis.vertical));
       }
     }
 
@@ -134,11 +134,6 @@ final class _Columns<T> extends StatelessWidget {
 
     return widgets;
   }
-
-  void _dragCallback(DragUpdateDetails details) {
-    you are here. you also need to fix the spacing error caused by the resize divider.
-    print('Let\'s start');
-  }
 }
 
 final class _Column extends StatelessWidget {
@@ -151,12 +146,15 @@ final class _Column extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    final Widget child = DefaultTextStyle(
-      style: themeExtension.columnTextStyle,
-      child:
-          _column.tooltipMessage != null
-              ? MyoroTooltip(text: _column.tooltipMessage!, child: _column.child)
-              : _column.child,
+    final Widget child = Container(
+      color: Colors.pink.withOpacity(0.3),
+      child: DefaultTextStyle(
+        style: themeExtension.columnTextStyle,
+        child:
+            _column.tooltipMessage != null
+                ? MyoroTooltip(text: _column.tooltipMessage!, child: _column.child)
+                : _column.child,
+      ),
     );
 
     // Last [MyoroTableColumn] must always be expanded.
@@ -290,8 +288,11 @@ final class _Row<T> extends StatelessWidget {
           children: [
             for (int i = 0; i < cells.length; i++) ...[
               (i == cells.length - 1)
-                  ? Expanded(child: cells[i])
-                  : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
+                  ? Expanded(child: Container(color: Colors.pink.withOpacity(0.3), child: cells[i]))
+                  : SizedBox(
+                    width: _titleColumnKeyWidths[i],
+                    child: Container(color: Colors.pink.withOpacity(0.3), child: cells[i]),
+                  ),
             ],
           ],
         );
@@ -326,16 +327,12 @@ final class _ErrorMessage extends StatelessWidget {
 
 final class _Divider extends StatelessWidget {
   final Axis _direction;
-  final MyoroResizeDividerDragCallback? _dragCallback;
 
-  const _Divider(this._direction, [this._dragCallback]);
+  const _Divider(this._direction);
 
   @override
   Widget build(_) {
     final configuration = MyoroBasicDividerConfiguration(direction: _direction);
-
-    return _dragCallback != null
-        ? MyoroResizeDivider(configuration: configuration, dragCallback: _dragCallback)
-        : MyoroBasicDivider(configuration: configuration);
+    return MyoroBasicDivider(configuration: configuration);
   }
 }

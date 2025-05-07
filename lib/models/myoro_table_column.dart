@@ -8,13 +8,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// TODO: Needs to be tested.
 @immutable
 class MyoroTableColumn extends Equatable {
-  static const resizableDefaultValue = false;
-
   /// [MyoroTooltip.text]
   final String? tooltipMessage;
-
-  /// If the [MyoroTableColumn] is resizable or not.
-  final bool resizable;
 
   /// Width configuration of the [MyoroTableColumn].
   final MyoroTableColumnWidthConfiguration widthConfiguration;
@@ -24,7 +19,6 @@ class MyoroTableColumn extends Equatable {
 
   const MyoroTableColumn({
     this.tooltipMessage,
-    this.resizable = resizableDefaultValue,
     this.widthConfiguration = const MyoroTableColumnWidthConfiguration(
       typeEnum: MyoroTableColumnWidthConfigurationEnum.intrinsic,
     ),
@@ -33,20 +27,17 @@ class MyoroTableColumn extends Equatable {
 
   MyoroTableColumn.fake()
     : tooltipMessage = faker.randomGenerator.boolean() ? faker.lorem.word() : null,
-      resizable = faker.randomGenerator.boolean(),
       widthConfiguration = MyoroTableColumnWidthConfiguration.fake(),
       child = const SizedBox.shrink();
 
   MyoroTableColumn copyWith({
     String? tooltipMessage,
     bool tooltipMessageProvided = true,
-    bool? resizable,
     MyoroTableColumnWidthConfiguration? widthConfiguration,
     Widget? child,
   }) {
     return MyoroTableColumn(
       tooltipMessage: tooltipMessageProvided ? (tooltipMessage ?? this.tooltipMessage) : null,
-      resizable: resizable ?? this.resizable,
       widthConfiguration: widthConfiguration ?? this.widthConfiguration,
       child: child ?? this.child,
     );
@@ -54,14 +45,13 @@ class MyoroTableColumn extends Equatable {
 
   @override
   List<Object?> get props {
-    return [tooltipMessage, resizable, widthConfiguration, child];
+    return [tooltipMessage, widthConfiguration, child];
   }
 
   @override
   String toString() =>
       'MyoroTableColumn(\n'
       '  tooltipMessage: $tooltipMessage\n'
-      '  resizable: $resizable,\n'
       '  widthConfiguration: $widthConfiguration,\n'
       '  child: $child,\n'
       ');';
