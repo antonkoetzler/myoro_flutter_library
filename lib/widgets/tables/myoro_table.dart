@@ -7,11 +7,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Table of MFL.
 ///
-/// Why does [MyoroTable] not have pagination controls?
-/// Because the business logic of pagination is very specific.
-/// Given this, it is on you to make a paginated table.
-///
-/// TODO: Needs to be tested.
+/// Fairly simple implementation as tables are usually very business logic specific.
+/// Thus, extensibility is more important than being feature rich in this senario.
 class MyoroTable<T> extends StatefulWidget {
   /// Controller.
   ///
@@ -296,24 +293,27 @@ final class _Row<T> extends StatelessWidget {
       '[_Rows<$T>._itemBuilder]: Length of [columns] must be the same as the length of [cells].',
     );
 
-    return MyoroButton(
-      configuration: MyoroButtonConfiguration(
-        borderRadius: BorderRadius.zero,
-        onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
-        onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
-      ),
-      builder: (_, MyoroTapStatusEnum tapStatusEnum) {
-        return Row(
-          spacing: themeExtension.columnSpacing,
-          children: [
-            for (int i = 0; i < cells.length; i++) ...[
-              (i == cells.length - 1)
-                  ? Expanded(child: cells[i])
-                  : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
+    return DefaultTextStyle(
+      style: themeExtension.rowTextStyle,
+      child: MyoroButton(
+        configuration: MyoroButtonConfiguration(
+          borderRadius: BorderRadius.zero,
+          onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
+          onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
+        ),
+        builder: (_, MyoroTapStatusEnum tapStatusEnum) {
+          return Row(
+            spacing: themeExtension.columnSpacing,
+            children: [
+              for (int i = 0; i < cells.length; i++) ...[
+                (i == cells.length - 1)
+                    ? Expanded(child: cells[i])
+                    : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
+              ],
             ],
-          ],
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

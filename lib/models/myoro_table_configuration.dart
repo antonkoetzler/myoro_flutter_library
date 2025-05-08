@@ -11,8 +11,6 @@ typedef MyoroTableConfigurationRequest<T> = FutureOr<Set<T>> Function();
 typedef MyoroTableConfigurationRowBuilder<T> = MyoroTableRow<T> Function(T item);
 
 /// Configuration model of [MyoroTable].
-///
-/// TODO: Needs to be tested.
 @immutable
 class MyoroTableConfiguration<T> extends Equatable {
   /// Request of the items of the [MyoroTable].

@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model of a column of a [MyoroTable].
-///
-/// TODO: Needs to be tested.
 @immutable
 class MyoroTableColumn extends Equatable {
   /// [MyoroTooltip.text]

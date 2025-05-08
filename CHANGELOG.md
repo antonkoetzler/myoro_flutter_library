@@ -4,6 +4,7 @@
 
 1. feature: Added `MyoroFontSizeEnum.extraLarge`;
 1. refactor: `MyoroDropdown` using `OverlayPortal`/`CompositedTransformTarget`/`CompositedTransformFollower`;
+1. refactor: `MyoroTable`
 1. improvement: `MyoroMenu`;
 1. improvement: Input formatters;
 1. improvement: Kill `MyoroDecorationHelper`, `MyoroColorDesignSystem.primary`, `MyoroColorDesignSystem.onPrimary` to encourage good Flutter styling standards;

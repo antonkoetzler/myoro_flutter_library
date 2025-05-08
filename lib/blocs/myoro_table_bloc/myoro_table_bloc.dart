@@ -12,8 +12,6 @@ part 'myoro_table_event.dart';
 typedef _Emitter<T> = Emitter<MyoroTableState<T>>;
 
 /// [Bloc] of [MyoroTable].
-///
-/// TODO: Needs to be tested.
 class MyoroTableBloc<T> extends Bloc<MyoroTableEvent<T>, MyoroTableState<T>> {
   /// Configuration of the [MyoroTable].
   late MyoroTableConfiguration<T> _configuration;

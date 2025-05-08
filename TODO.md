@@ -1,18 +1,11 @@
 # TODO
 
-1. (**IN PROGRESS**) refactor: `MyoroTable`
-
-- Widget showcase
-- Tests
-
-1. feature: Create extensions and place various `fake` methods there
-1. chore: Make all folders like `./lib/models` categorized by folders instead of just having files
 1. chore: Make every `Widget` have a configuration file instead of arguments in the `Widget`
-1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile.
+2. spike/improvement: Style configurations with their respective `lerp` functions
+3. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile.
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
+- Redesign the stupid stupid baby widget showcase sidebar
 
-1. spike/improvement: Style configurations with their respective `lerp` functions
-
-1. chore: 100% code coverage
-1. Publish to pub.dev
+4. chore: 100% code coverage
+5. Publish to pub.dev

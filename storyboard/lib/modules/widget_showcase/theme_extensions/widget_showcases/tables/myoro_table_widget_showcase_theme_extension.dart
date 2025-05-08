@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroTableWidgetShowcase].
-///
-/// TODO: Needs to be tested.
 final class MyoroTableWidgetShowcaseThemeExtension
     extends ThemeExtension<MyoroTableWidgetShowcaseThemeExtension> {
   const MyoroTableWidgetShowcaseThemeExtension();

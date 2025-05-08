@@ -96,6 +96,9 @@ void main() {
       MyoroSnackBarContainerThemeExtension,
       MyoroSnackBarThemeExtension,
 
+      // Tables
+      MyoroTableThemeExtension,
+
       // Tooltips
       MyoroTooltipThemeExtension,
     ];
