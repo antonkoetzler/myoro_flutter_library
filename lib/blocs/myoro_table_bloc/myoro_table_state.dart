@@ -9,37 +9,37 @@ class MyoroTableState<T> extends Equatable {
   final String? errorMessage;
 
   /// [MyoroTablePagination] of the [MyoroTable].
-  final MyoroTablePagination<T>? pagination;
+  final Set<T>? items;
 
-  const MyoroTableState({this.status = MyoroRequestEnum.idle, this.errorMessage, this.pagination})
+  const MyoroTableState({this.status = MyoroRequestEnum.idle, this.errorMessage, this.items})
     : assert(
         !(status == MyoroRequestEnum.error && errorMessage == null),
         '[MyoroTableState<$T>]: When [status] is [MyoroRequestEnum.error], '
         '[errorMessage] cannot be null.',
       ),
       assert(
-        !(status == MyoroRequestEnum.success && pagination == null),
+        !(status == MyoroRequestEnum.success && items == null),
         '[MyoroTableState<$T>]: When [status] is [MyoroRequestEnum.success], '
-        '[pagination] cannot be null.',
+        '[items] cannot be null.',
       );
 
   MyoroTableState<T> copyWith({
     MyoroRequestEnum? status,
     String? errorMessage,
     bool errorMessageProvided = true,
-    MyoroTablePagination<T>? pagination,
-    bool paginationProvided = true,
+    Set<T>? items,
+    bool itemsProvided = true,
   }) {
     return MyoroTableState(
       status: status ?? this.status,
       errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
-      pagination: paginationProvided ? (pagination ?? this.pagination) : null,
+      items: itemsProvided ? (items ?? this.items) : null,
     );
   }
 
   @override
   List<Object?> get props {
-    return [status, errorMessage, pagination];
+    return [status, errorMessage, items];
   }
 
   @override
@@ -47,6 +47,6 @@ class MyoroTableState<T> extends Equatable {
       'MyoroTableState(\n'
       '  status: $status,\n'
       '  errorMessage: $errorMessage,\n'
-      '  pagination: $pagination,\n'
+      '  items: $items,\n'
       ');';
 }

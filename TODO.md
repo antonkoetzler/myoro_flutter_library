@@ -2,8 +2,6 @@
 
 1. (**IN PROGRESS**) refactor: `MyoroTable`
 
-- Pagination controls
-- Fix clipping of rows when it's half-visible
 - Widget showcase
 - Tests
 

@@ -7,6 +7,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Table of MFL.
 ///
+/// Why does [MyoroTable] not have pagination controls?
+/// Because the business logic of pagination is very specific.
+/// Given this, it is on you to make a paginated table.
+///
 /// TODO: Needs to be tested.
 class MyoroTable<T> extends StatefulWidget {
   /// Controller.
@@ -89,11 +93,16 @@ final class _Columns<T> extends StatelessWidget {
     // Empty [MyoroLayoutBuilder] to rebuild [_Columns] everytime the screen is resized.
     return MyoroLayoutBuilder(
       builder: (_, __) {
-        return Row(
-          // Equation to omit spacing of inserted [_Divider] [Widget]s in [_buildColumns].
-          spacing:
-              (tableThemeExtension.columnSpacing / 2) - (basicDividerThemeExtension.shortValue / 2),
-          children: _buildColumns(context),
+        return ClipRRect(
+          clipBehavior: Clip.hardEdge,
+          borderRadius: tableThemeExtension.decoration.borderRadius!,
+          child: Row(
+            // Equation to omit spacing of inserted [_Divider] [Widget]s in [_buildColumns].
+            spacing:
+                (tableThemeExtension.columnSpacing / 2) -
+                (basicDividerThemeExtension.shortValue / 2),
+            children: _buildColumns(context),
+          ),
         );
       },
     );
@@ -146,15 +155,12 @@ final class _Column extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    final Widget child = Container(
-      color: Colors.pink.withOpacity(0.3),
-      child: DefaultTextStyle(
-        style: themeExtension.columnTextStyle,
-        child:
-            _column.tooltipMessage != null
-                ? MyoroTooltip(text: _column.tooltipMessage!, child: _column.child)
-                : _column.child,
-      ),
+    final Widget child = DefaultTextStyle(
+      style: themeExtension.columnTextStyle,
+      child:
+          _column.tooltipMessage != null
+              ? MyoroTooltip(text: _column.tooltipMessage!, child: _column.child)
+              : _column.child,
     );
 
     // Last [MyoroTableColumn] must always be expanded.
@@ -192,7 +198,7 @@ final class _RowsSection<T> extends StatelessWidget {
     return switch (state.status) {
       MyoroRequestEnum.idle => const _Loader(),
       MyoroRequestEnum.loading => const _Loader(),
-      MyoroRequestEnum.success => _Rows(state.pagination!),
+      MyoroRequestEnum.success => _Rows(state.items!),
       MyoroRequestEnum.error => _ErrorMessage(state.errorMessage!),
     };
   }
@@ -213,15 +219,17 @@ final class _Loader extends StatelessWidget {
 }
 
 final class _Rows<T> extends StatelessWidget {
-  final MyoroTablePagination<T> _pagination;
+  final Set<T> _items;
 
-  const _Rows(this._pagination);
+  const _Rows(this._items);
 
   @override
   Widget build(BuildContext context) {
-    if (_pagination.items.isEmpty) {
+    if (_items.isEmpty) {
       return const _EmptyMessage();
     }
+
+    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
     final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier =
@@ -230,24 +238,26 @@ final class _Rows<T> extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: titleColumnKeyWidthsNotifier,
       builder: (_, List<double> titleColumnKeyWidths, __) {
-        return _builder(titleColumnKeyWidths);
+        return _builder(themeExtension, titleColumnKeyWidths);
       },
     );
   }
 
-  Widget _builder(List<double> titleColumnKeyWidths) {
-    final Set<T> items = _pagination.items;
-
+  Widget _builder(MyoroTableThemeExtension themeExtension, List<double> titleColumnKeyWidths) {
     // Empty case as there cannot be 0 [MyoroTableColumn]s in a [MyoroTable].
     if (titleColumnKeyWidths.isEmpty) {
       return const _Loader();
     }
 
-    return ListView.builder(
-      itemCount: items.length,
-      itemBuilder: (_, int index) {
-        return _Row(items.elementAt(index), titleColumnKeyWidths);
-      },
+    return ClipRRect(
+      clipBehavior: Clip.hardEdge,
+      borderRadius: themeExtension.decoration.borderRadius!,
+      child: ListView.builder(
+        itemCount: _items.length,
+        itemBuilder: (_, int index) {
+          return _Row(_items.elementAt(index), titleColumnKeyWidths);
+        },
+      ),
     );
   }
 }
@@ -288,11 +298,8 @@ final class _Row<T> extends StatelessWidget {
           children: [
             for (int i = 0; i < cells.length; i++) ...[
               (i == cells.length - 1)
-                  ? Expanded(child: Container(color: Colors.pink.withOpacity(0.3), child: cells[i]))
-                  : SizedBox(
-                    width: _titleColumnKeyWidths[i],
-                    child: Container(color: Colors.pink.withOpacity(0.3), child: cells[i]),
-                  ),
+                  ? Expanded(child: cells[i])
+                  : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
             ],
           ],
         );

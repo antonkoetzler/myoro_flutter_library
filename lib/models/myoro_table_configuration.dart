@@ -4,8 +4,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// [MyoroTablePagination] request.
-typedef MyoroTableConfigurationPaginationRequest<T> = FutureOr<MyoroTablePagination<T>> Function();
+/// Request of the items of the [MyoroTable].
+typedef MyoroTableConfigurationRequest<T> = FutureOr<Set<T>> Function();
 
 /// Builder of the cells of a row.
 typedef MyoroTableConfigurationRowBuilder<T> = MyoroTableRow<T> Function(T item);
@@ -15,8 +15,8 @@ typedef MyoroTableConfigurationRowBuilder<T> = MyoroTableRow<T> Function(T item)
 /// TODO: Needs to be tested.
 @immutable
 class MyoroTableConfiguration<T> extends Equatable {
-  /// [MyoroTablePagination] request.
-  final MyoroTableConfigurationPaginationRequest<T> paginationRequest;
+  /// Request of the items of the [MyoroTable].
+  final MyoroTableConfigurationRequest<T> request;
 
   /// Columns of the [MyoroTable].
   final List<MyoroTableColumn> columns;
@@ -25,18 +25,18 @@ class MyoroTableConfiguration<T> extends Equatable {
   final MyoroTableConfigurationRowBuilder<T> rowBuilder;
 
   const MyoroTableConfiguration({
-    required this.paginationRequest,
+    required this.request,
     required this.columns,
     required this.rowBuilder,
   }) : assert(columns.length != 0, '[MyoroTableConfiguration<$T>]: [columns] cannot be empty.');
 
   MyoroTableConfiguration<T> copyWith({
-    MyoroTableConfigurationPaginationRequest<T>? paginationRequest,
+    MyoroTableConfigurationRequest<T>? request,
     List<MyoroTableColumn>? columns,
     MyoroTableConfigurationRowBuilder<T>? rowBuilder,
   }) {
     return MyoroTableConfiguration(
-      paginationRequest: paginationRequest ?? this.paginationRequest,
+      request: request ?? this.request,
       columns: columns ?? this.columns,
       rowBuilder: rowBuilder ?? this.rowBuilder,
     );
@@ -44,13 +44,13 @@ class MyoroTableConfiguration<T> extends Equatable {
 
   @override
   List<Object?> get props {
-    return [paginationRequest, columns, rowBuilder];
+    return [request, columns, rowBuilder];
   }
 
   @override
   String toString() =>
       'MyoroTableConfiguration<$T>(\n'
-      '  paginationRequest: $paginationRequest,\n'
+      '  request: $request,\n'
       '  columns: $columns,\n'
       '  rowBuilder: $rowBuilder,\n'
       ');';

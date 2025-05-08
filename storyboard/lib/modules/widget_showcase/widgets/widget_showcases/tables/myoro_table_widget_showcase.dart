@@ -22,14 +22,11 @@ final class _Widget extends StatelessWidget {
   Widget build(_) {
     return MyoroTable<String>(
       configuration: MyoroTableConfiguration(
-        paginationRequest: () {
-          return MyoroTablePagination(
-            items:
-                List.generate(
-                  faker.randomGenerator.integer(100),
-                  (int index) => '$index)${faker.randomGenerator.string(10)}',
-                ).toSet(),
-          );
+        request: () {
+          return List.generate(
+            faker.randomGenerator.integer(100),
+            (int index) => '$index)${faker.randomGenerator.string(10)}',
+          ).toSet();
         },
         columns: [
           MyoroTableColumn(

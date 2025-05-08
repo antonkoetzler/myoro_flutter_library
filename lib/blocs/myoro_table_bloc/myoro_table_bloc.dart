@@ -45,8 +45,8 @@ class MyoroTableBloc<T> extends Bloc<MyoroTableEvent<T>, MyoroTableState<T>> {
 
   Future<void> _fetchEvent(FetchEvent<T> event, _Emitter<T> emit) async {
     await _treatExceptions(event, emit, () async {
-      final MyoroTablePagination<T> pagination = await _configuration.paginationRequest();
-      emit(state.copyWith(status: MyoroRequestEnum.success, pagination: pagination));
+      final Set<T> items = await _configuration.request();
+      emit(state.copyWith(status: MyoroRequestEnum.success, items: items));
     });
   }
 
