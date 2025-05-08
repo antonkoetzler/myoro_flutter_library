@@ -2,7 +2,6 @@
 
 1. (**IN PROGRESS**) refactor: `MyoroTable`
 
-- Only apply radius to bottom and top corners of the two ClipRRects
 - Widget showcase
 - Tests
 

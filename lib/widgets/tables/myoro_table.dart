@@ -90,12 +90,17 @@ final class _Columns<T> extends StatelessWidget {
     final basicDividerThemeExtension =
         context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
+    final decorationBorderRadius = tableThemeExtension.decoration.borderRadius as BorderRadius;
+
     // Empty [MyoroLayoutBuilder] to rebuild [_Columns] everytime the screen is resized.
     return MyoroLayoutBuilder(
       builder: (_, __) {
         return ClipRRect(
           clipBehavior: Clip.hardEdge,
-          borderRadius: tableThemeExtension.decoration.borderRadius!,
+          borderRadius: BorderRadius.only(
+            topLeft: decorationBorderRadius.topLeft,
+            topRight: decorationBorderRadius.topRight,
+          ),
           child: Row(
             // Equation to omit spacing of inserted [_Divider] [Widget]s in [_buildColumns].
             spacing:
@@ -249,9 +254,14 @@ final class _Rows<T> extends StatelessWidget {
       return const _Loader();
     }
 
+    final decorationBorderRadius = themeExtension.decoration.borderRadius as BorderRadius;
+
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
-      borderRadius: themeExtension.decoration.borderRadius!,
+      borderRadius: BorderRadius.only(
+        bottomLeft: decorationBorderRadius.bottomLeft,
+        bottomRight: decorationBorderRadius.bottomRight,
+      ),
       child: ListView.builder(
         itemCount: _items.length,
         itemBuilder: (_, int index) {
