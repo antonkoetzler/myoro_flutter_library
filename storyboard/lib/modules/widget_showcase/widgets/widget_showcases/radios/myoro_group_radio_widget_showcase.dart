@@ -17,19 +17,10 @@ final class MyoroGroupRadioWidgetShowcase extends StatelessWidget {
     final runSpacing = themeExtension.runSpacing;
 
     return BlocProvider(
-      create:
-          (_) => MyoroGroupRadioWidgetShowcaseBloc(
-            direction: direction,
-            spacing: spacing,
-            runSpacing: runSpacing,
-          ),
+      create: (_) => MyoroGroupRadioWidgetShowcaseBloc(direction: direction, spacing: spacing, runSpacing: runSpacing),
       child: WidgetShowcase(
         widget: const _Widget(),
-        widgetOptions: [
-          const _DirectionOption(),
-          _SpacingOption(spacing),
-          _RunSpacingOption(runSpacing),
-        ],
+        widgetOptions: [const _DirectionOption(), _SpacingOption(spacing), _RunSpacingOption(runSpacing)],
       ),
     );
   }
@@ -39,25 +30,24 @@ final class _Widget extends StatelessWidget {
   const _Widget();
 
   void _onChanged(BuildContext context, String keyChanged) {
-    context.showSnackBar(snackBar: MyoroSnackBar(message: '$keyChanged is now selected!'));
+    context.showSnackBar(snackBar: MyoroSnackBar(MyoroSnackBarConfiguration(message: '$keyChanged is now selected!')));
   }
 
   @override
   Widget build(BuildContext context) {
-    final keys = List.generate(
-      faker.randomGenerator.integer(20, min: 2),
-      (_) => faker.lorem.word(),
-    );
+    final keys = List.generate(faker.randomGenerator.integer(20, min: 2), (_) => faker.lorem.word());
     final trueKey = keys[faker.randomGenerator.integer(keys.length)];
 
     return BlocBuilder<MyoroGroupRadioWidgetShowcaseBloc, MyoroGroupRadioWidgetShowcaseState>(
       builder: (_, MyoroGroupRadioWidgetShowcaseState state) {
         return MyoroGroupRadio(
-          direction: state.direction,
-          spacing: state.spacing,
-          runSpacing: state.runSpacing,
-          onChanged: (String keyChanged, _) => _onChanged(context, keyChanged),
-          radios: {for (final String key in keys) key: key == trueKey},
+          configuration: MyoroGroupRadioConfiguration(
+            direction: state.direction,
+            spacing: state.spacing,
+            runSpacing: state.runSpacing,
+            onChanged: (String keyChanged, _) => _onChanged(context, keyChanged),
+            radios: {for (final String key in keys) key: key == trueKey},
+          ),
         );
       },
     );
@@ -87,10 +77,7 @@ final class _DirectionOptionState extends State<_DirectionOption> {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroGroupRadio.direction]',
-        menuConfiguration: MyoroMenuConfiguration(
-          request: Axis.values.toSet,
-          itemBuilder: _itemBuilder,
-        ),
+        menuConfiguration: MyoroMenuConfiguration(request: Axis.values.toSet, itemBuilder: _itemBuilder),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: _bloc.state.direction,
@@ -101,9 +88,7 @@ final class _DirectionOptionState extends State<_DirectionOption> {
   }
 
   MyoroMenuItem _itemBuilder(Axis direction) {
-    return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)),
-    );
+    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)));
   }
 
   void _onChanged(Axis? direction) {
@@ -121,9 +106,7 @@ final class _SpacingOption extends StatelessWidget {
     return _Slider(
       label: '[MyoroGroupRadio.spacing]',
       initialValue: _spacing,
-      onChanged:
-          (double value) =>
-              context.resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>().add(SetSpacingEvent(value)),
+      onChanged: (double value) => context.resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>().add(SetSpacingEvent(value)),
     );
   }
 }
@@ -139,9 +122,7 @@ final class _RunSpacingOption extends StatelessWidget {
       label: '[MyoroGroupRadio.runSpacing]',
       initialValue: _runSpacing,
       onChanged:
-          (double value) => context.resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>().add(
-            SetRunSpacingEvent(value),
-          ),
+          (double value) => context.resolveBloc<MyoroGroupRadioWidgetShowcaseBloc>().add(SetRunSpacingEvent(value)),
     );
   }
 }
@@ -156,10 +137,7 @@ final class _Slider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSlider(
-      label: label,
-      maxValue: 50,
-      initialValue: initialValue,
-      onChanged: onChanged,
+      MyoroSliderConfiguration(label: label, maxValue: 50, initialValue: initialValue, onChanged: onChanged),
     );
   }
 }

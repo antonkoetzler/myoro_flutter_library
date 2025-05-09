@@ -14,7 +14,7 @@ final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
-  Widget build(BuildContext context) => const MyoroScreen(appBar: _AppBar(), body: _Body());
+  Widget build(BuildContext context) => const MyoroScreen(MyoroScreenConfiguration(appBar: _AppBar(), body: _Body()));
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -49,10 +49,8 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
           IntrinsicWidth(
             child: MyoroIconTextButton(
               configuration: MyoroIconTextButtonConfiguration(
-                iconConfiguration: MyoroIconTextButtonIconConfiguration(
-                  icon: themeExtension.appBarMenuButtonIcon,
-                ),
-                onTapUp: (_) => {},
+                buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => {}),
+                iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.appBarMenuButtonIcon),
               ),
             ),
           ),

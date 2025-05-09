@@ -31,15 +31,17 @@ void main() {
       await tester.pumpWidget(
         MyoroWidgetTester(
           child: MyoroForm(
-            controller: controller,
-            builder: (_, __, ___) {
-              return MyoroInput(
-                configuration: MyoroInputConfiguration(
-                  inputStyle: MyoroInputStyleEnum.outlined,
-                  validation: (_) => validationErrorMessage,
-                ),
-              );
-            },
+            configuration: MyoroFormConfiguration(
+              controller: controller,
+              builder: (_, __, ___) {
+                return MyoroInput(
+                  configuration: MyoroInputConfiguration(
+                    inputStyle: MyoroInputStyleEnum.outlined,
+                    validation: (_) => validationErrorMessage,
+                  ),
+                );
+              },
+            ),
           ),
         ),
       );

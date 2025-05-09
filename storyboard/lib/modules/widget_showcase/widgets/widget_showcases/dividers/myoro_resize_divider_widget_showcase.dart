@@ -52,10 +52,7 @@ final class _WidgetState extends State<_Widget> {
           alignment: Alignment.center,
           children: [
             const Positioned(child: _AreYouSilly()),
-            if (state.direction.isHorizontal)
-              Column(children: children)
-            else
-              Row(children: children),
+            if (state.direction.isHorizontal) Column(children: children) else Row(children: children),
           ],
         );
       },
@@ -73,10 +70,7 @@ final class _DirectionOption extends StatelessWidget {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroResizeDivider.direction]',
-        menuConfiguration: MyoroMenuConfiguration(
-          request: Axis.values.toSet,
-          itemBuilder: _itemBuilder,
-        ),
+        menuConfiguration: MyoroMenuConfiguration(request: Axis.values.toSet, itemBuilder: _itemBuilder),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: bloc.state.direction,
@@ -86,9 +80,7 @@ final class _DirectionOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(Axis direction) {
-    return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)),
-    );
+    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)));
   }
 
   String _getDirectionName(Axis direction) {
@@ -109,11 +101,13 @@ final class _ShortValueOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
 
     return MyoroSlider(
-      label: '[MyoroResizeDivider.shortValue]',
-      minValue: 0,
-      maxValue: 200,
-      initialValue: bloc.state.shortValue,
-      onChanged: (double value) => bloc.add(SetShortValueEvent(value)),
+      MyoroSliderConfiguration(
+        label: '[MyoroResizeDivider.shortValue]',
+        minValue: 0,
+        maxValue: 200,
+        initialValue: bloc.state.shortValue,
+        onChanged: (double value) => bloc.add(SetShortValueEvent(value)),
+      ),
     );
   }
 }
@@ -134,18 +128,22 @@ final class _PaddingOption extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         MyoroSlider(
-          label: 'Vertical padding',
-          minValue: minValue,
-          maxValue: maxValue,
-          initialValue: bloc.state.verticalPadding,
-          onChanged: (double value) => _event(bloc, Axis.vertical, value),
+          MyoroSliderConfiguration(
+            label: 'Vertical padding',
+            minValue: minValue,
+            maxValue: maxValue,
+            initialValue: bloc.state.verticalPadding,
+            onChanged: (double value) => _event(bloc, Axis.vertical, value),
+          ),
         ),
         MyoroSlider(
-          label: 'Horizontal padding',
-          minValue: minValue,
-          maxValue: maxValue,
-          initialValue: bloc.state.horizontalPadding,
-          onChanged: (double value) => _event(bloc, Axis.horizontal, value),
+          MyoroSliderConfiguration(
+            label: 'Horizontal padding',
+            minValue: minValue,
+            maxValue: maxValue,
+            initialValue: bloc.state.horizontalPadding,
+            onChanged: (double value) => _event(bloc, Axis.horizontal, value),
+          ),
         ),
       ],
     );
@@ -158,10 +156,7 @@ final class _AreYouSilly extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          context
-              .resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>()
-              .areYouSillyPadding,
+      padding: context.resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>().areYouSillyPadding,
       child: Image.asset(kAreYouSillyCat),
     );
   }
@@ -179,15 +174,11 @@ final class _Divider extends StatelessWidget {
       configuration: MyoroBasicDividerConfiguration(
         direction: _state.direction,
         shortValue: _state.shortValue,
-        padding: EdgeInsets.symmetric(
-          vertical: _state.verticalPadding,
-          horizontal: _state.horizontalPadding,
-        ),
+        padding: EdgeInsets.symmetric(vertical: _state.verticalPadding, horizontal: _state.horizontalPadding),
       ),
       dragCallback: (DragUpdateDetails details) {
         _firstContainerNotifier.value =
-            _firstContainerNotifier.value! +
-            (_state.direction.isHorizontal ? details.delta.dy : details.delta.dx);
+            _firstContainerNotifier.value! + (_state.direction.isHorizontal ? details.delta.dy : details.delta.dx);
       },
     );
   }
@@ -228,10 +219,7 @@ final class _ContainerState extends State<_Container> {
           width: !_isHorizontal ? widthOrHeight : null,
           height: _isHorizontal ? widthOrHeight : null,
           constraints: const BoxConstraints(minWidth: _minValue, minHeight: _minValue),
-          color:
-              context
-                  .resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>()
-                  .containerColor,
+          color: context.resolveThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>().containerColor,
         );
       },
     );

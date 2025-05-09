@@ -12,9 +12,11 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroPieGraph(
-          typeEnum,
-          centerWidget: typeEnum.isPie ? null : const SizedBox.shrink(),
-          items: items,
+          configuration: MyoroPieGraphConfiguration(
+            typeEnum: typeEnum,
+            centerWidget: typeEnum.isPie ? null : const SizedBox.shrink(),
+            items: items,
+          ),
         ),
       ),
     );
@@ -29,9 +31,7 @@ void main() {
             w is Stack &&
             w.alignment == Alignment.center &&
             w.children.length == (typeEnum.isPie ? 1 : 2) &&
-            (typeEnum.isPie
-                ? true
-                : w.children.last is SizedBox), // The inserted [SizedBox.shrink].
+            (typeEnum.isPie ? true : w.children.last is SizedBox), // The inserted [SizedBox.shrink].
       ),
       findsOneWidget,
     );

@@ -26,10 +26,12 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroSearchInputWidgetShowcaseBloc, MyoroSearchInputWidgetShowcaseState>(
       builder: (_, MyoroSearchInputWidgetShowcaseState state) {
         return MyoroSearchInput<String>(
-          configuration: const MyoroInputConfiguration(inputStyle: MyoroInputStyleEnum.outlined),
-          requestWhenChanged: state.requestWhenChanged,
-          request: _request,
-          itemBuilder: _itemBuilder,
+          configuration: MyoroSearchInputConfiguration(
+            inputConfiguration: const MyoroInputConfiguration(inputStyle: MyoroInputStyleEnum.outlined),
+            requestWhenChanged: state.requestWhenChanged,
+            request: _request,
+            itemBuilder: _itemBuilder,
+          ),
         );
       },
     );
@@ -37,17 +39,11 @@ final class _Widget extends StatelessWidget {
 
   Future<Set<String>> _request(_) async {
     await Future.delayed(const Duration(milliseconds: 300));
-    return List.generate(
-      faker.randomGenerator.integer(50),
-      (_) => faker.randomGenerator.string(150),
-    ).toSet();
+    return List.generate(faker.randomGenerator.integer(50), (_) => faker.randomGenerator.string(150)).toSet();
   }
 
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
-      onTapDown: (_) {},
-    );
+    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: item), onTapDown: (_) {});
   }
 }
 

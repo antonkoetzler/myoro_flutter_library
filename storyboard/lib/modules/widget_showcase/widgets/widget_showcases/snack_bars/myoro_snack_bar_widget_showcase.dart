@@ -14,12 +14,7 @@ final class MyoroSnackBarWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroSnackBarWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: [
-          _SnackBarTypeOption(),
-          _ShowCloseButtonOption(),
-          _MessageOption(),
-          _ChildOption(),
-        ],
+        widgetOptions: [_SnackBarTypeOption(), _ShowCloseButtonOption(), _MessageOption(), _ChildOption()],
       ),
     );
   }
@@ -33,11 +28,11 @@ final class _Widget extends StatelessWidget {
     return IntrinsicWidth(
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
-          textConfiguration: const MyoroIconTextButtonTextConfiguration(
-            text: 'Click to launch the snack bar.',
+          buttonConfiguration: MyoroButtonConfiguration(
+            borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+            onTapUp: (_) => _onTapUp(context),
           ),
-          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-          onTapUp: (_) => _onTapUp(context),
+          textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Click to launch the snack bar.'),
         ),
       ),
     );
@@ -48,10 +43,12 @@ final class _Widget extends StatelessWidget {
 
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        snackBarType: state.snackBarType,
-        showCloseButton: state.showCloseButton,
-        message: state.message,
-        child: state.childEnabled ? const _Child() : null,
+        MyoroSnackBarConfiguration(
+          snackBarType: state.snackBarType,
+          showCloseButton: state.showCloseButton,
+          message: state.message,
+          child: state.childEnabled ? const _Child() : null,
+        ),
       ),
     );
   }
@@ -62,16 +59,17 @@ final class _Child extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>();
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
+          buttonConfiguration: MyoroButtonConfiguration(
+            borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+            onTapUp: (_) {},
+          ),
           iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.childIcon),
           textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Buttonception O_O'),
-          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-          onTapUp: (_) {},
         ),
       ),
     );
@@ -124,9 +122,7 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
 
   MyoroMenuItem _itemBuilder(MyoroSnackBarTypeEnum snackBarType) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(
-        text: _getSnackbarTypeName(snackBarType),
-      ),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getSnackbarTypeName(snackBarType)),
     );
   }
 
@@ -188,8 +184,7 @@ final class _MessageOptionState extends State<_MessageOption> {
       child: MyoroInput(
         configuration: MyoroInputConfiguration(
           label: '[MyoroSnackBar.message]',
-          inputStyle:
-              context.resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>().inputStyle,
+          inputStyle: context.resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>().inputStyle,
           controller: _controller,
           onChanged: _onChanged,
         ),

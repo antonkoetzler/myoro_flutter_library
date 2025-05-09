@@ -39,10 +39,12 @@ final class MyoroButtonWidgetShowcaseBorderRadiusOption extends StatelessWidget 
           onChanged: (bool value) => _checkboxOnChanged(bloc, value),
         ),
         MyoroSlider(
-          minValue: 0,
-          maxValue: 500,
-          initialValue: state.borderRadius ?? _initialValue,
-          onChanged: (double value) => _sliderOnChanged(bloc, value),
+          MyoroSliderConfiguration(
+            minValue: 0,
+            maxValue: 500,
+            initialValue: state.borderRadius ?? _initialValue,
+            onChanged: (double value) => _sliderOnChanged(bloc, value),
+          ),
         ),
       ],
     );

@@ -12,8 +12,7 @@ void main() {
       StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>();
 
             return const MyoroAppBarWidgetShowcase();
           },
@@ -36,13 +35,11 @@ void main() {
             ((w.child as SizedBox).child as Wrap).alignment == WrapAlignment.spaceBetween &&
             ((w.child as SizedBox).child as Wrap).children.length == 2 &&
             ((w.child as SizedBox).child as Wrap).children.first is Row &&
-            (((w.child as SizedBox).child as Wrap).children.first as Row).mainAxisSize ==
-                MainAxisSize.min &&
+            (((w.child as SizedBox).child as Wrap).children.first as Row).mainAxisSize == MainAxisSize.min &&
             (((w.child as SizedBox).child as Wrap).children.first as Row).children.length == 3 &&
             // (((w.child as SizedBox).child as Wrap).children.first as Row).children.first is _MockAppLogo &&
             (((w.child as SizedBox).child as Wrap).children.first as Row).children[1] is SizedBox &&
-            ((((w.child as SizedBox).child as Wrap).children.first as Row).children[1] as SizedBox)
-                    .width ==
+            ((((w.child as SizedBox).child as Wrap).children.first as Row).children[1] as SizedBox).width ==
                 themeExtension.logoTitleSpacing,
       ),
       findsOneWidget,
@@ -50,19 +47,14 @@ void main() {
 
     // [_MockAppLogo].
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is Icon && w.icon == themeExtension.mockAppLogoIcon && w.size == 30,
-      ),
+      find.byWidgetPredicate((Widget w) => w is Icon && w.icon == themeExtension.mockAppLogoIcon && w.size == 30),
       findsOneWidget,
     );
 
     // [_MockAppTitle].
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is Text &&
-            w.data == 'Hello, World!' &&
-            w.style == themeExtension.mockAppTitleTextStyle,
+        (Widget w) => w is Text && w.data == 'Hello, World!' && w.style == themeExtension.mockAppTitleTextStyle,
       ),
       findsOneWidget,
     );
@@ -75,7 +67,7 @@ void main() {
             w.child is MyoroIconTextButton &&
             (w.child as MyoroIconTextButton).configuration.iconConfiguration?.icon ==
                 themeExtension.mockMenuButtonIcon &&
-            (w.child as MyoroIconTextButton).configuration.onTapUp != null,
+            (w.child as MyoroIconTextButton).configuration.buttonConfiguration?.onTapUp != null,
       ),
       findsOneWidget,
     );
@@ -83,8 +75,7 @@ void main() {
     // [_Bordered].
     expect(
       find.byWidgetPredicate(
-        (Widget w) =>
-            w is MyoroCheckbox && w.label == '[MyoroAppBar.bordered]' && w.onChanged != null,
+        (Widget w) => w is MyoroCheckbox && w.label == '[MyoroAppBar.bordered]' && w.onChanged != null,
       ),
       findsOneWidget,
     );

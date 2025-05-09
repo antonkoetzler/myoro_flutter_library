@@ -12,8 +12,7 @@ void main() {
       StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension =
-                context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>();
+            themeExtension = context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>();
             return const MyoroDrawerWidgetShowcase();
           },
         ),
@@ -30,10 +29,9 @@ void main() {
         (Widget w) =>
             w is IntrinsicWidth &&
             w.child is MyoroIconTextButton &&
-            (w.child as MyoroIconTextButton).configuration.borderBuilder != null &&
-            (w.child as MyoroIconTextButton).configuration.textConfiguration?.text ==
-                'Click to launch the drawer.' &&
-            (w.child as MyoroIconTextButton).configuration.onTapUp != null,
+            (w.child as MyoroIconTextButton).configuration.buttonConfiguration?.borderBuilder != null &&
+            (w.child as MyoroIconTextButton).configuration.textConfiguration?.text == 'Click to launch the drawer.' &&
+            (w.child as MyoroIconTextButton).configuration.buttonConfiguration?.onTapUp != null,
       ),
       findsOneWidget,
     );

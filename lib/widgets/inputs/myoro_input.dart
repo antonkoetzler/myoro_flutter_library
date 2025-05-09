@@ -18,17 +18,10 @@ class MyoroInput extends StatefulWidget {
   /// Constructor for a generic input in which you may load any type of formatter or have no formatters.
   ///
   /// The named constructors of [MyoroInput] provide pre-inserted formatters.
-  const MyoroInput({
-    super.key,
-    this.configuration = const MyoroInputConfiguration(),
-    this.formatter,
-  });
+  const MyoroInput({super.key, this.configuration = const MyoroInputConfiguration(), this.formatter});
 
   /// An input that auto formats a date.
-  factory MyoroInput.date({
-    Key? key,
-    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
-  }) {
+  factory MyoroInput.date({Key? key, MyoroInputConfiguration configuration = const MyoroInputConfiguration()}) {
     return MyoroInput(key: key, configuration: configuration, formatter: MyoroDateInputFormatter());
   }
 
@@ -73,8 +66,7 @@ final class _MyoroInputState extends State<MyoroInput> {
     return _configuration.controller ?? (_localController ??= TextEditingController());
   }
 
-  bool get _showClearTextButton =>
-      _configuration.showClearTextButton != false && _controller.text.isNotEmpty;
+  bool get _showClearTextButton => _configuration.showClearTextButton != false && _controller.text.isNotEmpty;
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
@@ -130,18 +122,9 @@ final class _MyoroInputState extends State<MyoroInput> {
           SizedBox(width: themeExtension.spacing),
         ],
         Expanded(
-          child: _TextFormField(
-            _configuration,
-            _formatter,
-            _enabled,
-            _showClearTextButtonNotifier,
-            _controller,
-          ),
+          child: _TextFormField(_configuration, _formatter, _enabled, _showClearTextButtonNotifier, _controller),
         ),
-        if (_configuration.suffix != null) ...[
-          SizedBox(width: themeExtension.spacing),
-          _configuration.suffix!,
-        ],
+        if (_configuration.suffix != null) ...[SizedBox(width: themeExtension.spacing), _configuration.suffix!],
       ],
     );
   }
@@ -182,10 +165,7 @@ final class _TextFormField extends StatelessWidget {
     final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
     return Container(
-      decoration: BoxDecoration(
-        color: themeExtension.primaryColor,
-        borderRadius: themeExtension.borderRadius,
-      ),
+      decoration: BoxDecoration(color: themeExtension.primaryColor, borderRadius: themeExtension.borderRadius),
       child: ValueListenableBuilder(
         valueListenable: _showClearTextButtonNotifier,
         builder: (_, bool showClearTextButton, __) {
@@ -202,9 +182,7 @@ final class _TextFormField extends StatelessWidget {
               floatingLabelBehavior: themeExtension.labelBehavior,
               label: _configuration.label != null ? _Label(_configuration) : null,
               hintText: _configuration.placeholder,
-              hintStyle: textStyle.withColor(
-                textStyle.color!.withValues(alpha: themeExtension.disabledOpacity),
-              ),
+              hintStyle: textStyle.withColor(textStyle.color!.withValues(alpha: themeExtension.disabledOpacity)),
               enabledBorder: border,
               focusedBorder: border,
               errorBorder: border.copyWith(
@@ -220,9 +198,7 @@ final class _TextFormField extends StatelessWidget {
               suffixIcon:
                   showClearTextButton
                       ? _ClearTextButton(() {
-                        _formatter == null
-                            ? _controller.clear()
-                            : _controller.text = _formatter!.initialText;
+                        _formatter == null ? _controller.clear() : _controller.text = _formatter!.initialText;
                         _configuration.onChanged?.call(_controller.text);
                         _configuration.onCleared?.call();
                       })
@@ -257,9 +233,7 @@ final class _Label extends StatelessWidget {
       ),
       child: Text(
         configuration.label!,
-        style:
-            configuration.labelTextStyle ??
-            context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+        style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
       ),
     );
   }
@@ -279,10 +253,8 @@ final class _ClearTextButton extends StatelessWidget {
         padding: themeExtension.clearTextButtonPadding,
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
-            iconConfiguration: MyoroIconTextButtonIconConfiguration(
-              icon: themeExtension.clearTextButtonIcon,
-            ),
-            onTapUp: (_) => _onTapUp(),
+            buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp()),
+            iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.clearTextButtonIcon),
           ),
         ),
       ),

@@ -60,10 +60,7 @@ final class _DirectionOption extends StatelessWidget {
     return MyoroSingularDropdown<Axis>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Direction',
-        menuConfiguration: MyoroMenuConfiguration(
-          request: Axis.values.toSet,
-          itemBuilder: _itemBuilder,
-        ),
+        menuConfiguration: MyoroMenuConfiguration(request: Axis.values.toSet, itemBuilder: _itemBuilder),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: Axis.horizontal,
@@ -73,9 +70,7 @@ final class _DirectionOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(Axis direction) {
-    return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)),
-    );
+    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)));
   }
 
   String _getDirectionName(Axis direction) {
@@ -126,15 +121,17 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSlider(
-      label: 'Autoplay duration',
-      minValue: 1,
-      initialValue: kMyoroCarouselAutoplayIntervalDuration.inSeconds.toDouble(),
-      maxValue: 5,
-      onChanged: (double value) {
-        context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(
-          SetAutoplayIntervalDurationEvent(Duration(seconds: value.toInt())),
-        );
-      },
+      MyoroSliderConfiguration(
+        label: 'Autoplay duration',
+        minValue: 1,
+        initialValue: kMyoroCarouselAutoplayIntervalDuration.inSeconds.toDouble(),
+        maxValue: 5,
+        onChanged: (double value) {
+          context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(
+            SetAutoplayIntervalDurationEvent(Duration(seconds: value.toInt())),
+          );
+        },
+      ),
     );
   }
 }

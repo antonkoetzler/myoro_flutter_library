@@ -1,0 +1,125 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+
+/// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
+typedef MyoroMaterialAppColorSchemeBuilder = ColorScheme Function(ColorScheme myoroColorScheme);
+
+/// Builder to create a custom [TextTheme] instead of using [createMyoroColorScheme].
+typedef MyoroMaterialAppTextThemeBuilder = TextTheme Function(TextTheme myoroTextTheme);
+
+/// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
+typedef MyoroMaterialAppThemeExtensionsBuilder =
+    List<ThemeExtension> Function(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme);
+
+/// Configuration of [MyoroMaterialApp].
+///
+/// TODO: Need to be tested.
+class MyoroMaterialAppConfiguration extends Equatable {
+  /// Title of the application.
+  ///
+  /// However, a plugin like [window_manager] needs to be used
+  /// to for example, set the title of the window on desktop.
+  final String? title;
+
+  /// Default theme (dark or light mode) of the application.
+  final ThemeMode? themeMode;
+
+  /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
+  final MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder;
+
+  /// Builder to create a custom [TextTheme] instead of using [createMyoroColorScheme].
+  final MyoroMaterialAppTextThemeBuilder? textThemeBuilder;
+
+  /// [ThemeExtension]s for the widgets in your application.
+  ///
+  /// Will not override the Myoro [ThemeExtension]s.
+  final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
+
+  /// Localization delegate setup.
+  final Iterable<LocalizationsDelegate>? localizationsDelegates;
+
+  /// Supported setups in localization setup.
+  final Iterable<Locale>? supportedLocales;
+
+  /// Router to support packages such as go_router.
+  final RouterConfig<Object>? router;
+
+  /// Entry point for the application when a [MyoroMaterialApp.router] is not being used.
+  final Widget? home;
+
+  const MyoroMaterialAppConfiguration({
+    this.title,
+    this.themeMode,
+    this.colorSchemeBuilder,
+    this.textThemeBuilder,
+    this.themeExtensionsBuilder,
+    this.localizationsDelegates,
+    this.supportedLocales,
+    this.router,
+    this.home,
+  }) : assert((router != null) ^ (home != null), '[MyoroMaterialApp]: [router] (x)or [home] must be provided.');
+
+  MyoroMaterialAppConfiguration copyWith({
+    String? title,
+    bool titleProvided = true,
+    ThemeMode? themeMode,
+    bool themeModeProvided = true,
+    MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder,
+    bool colorSchemeBuilderProvided = true,
+    MyoroMaterialAppTextThemeBuilder? textThemeBuilder,
+    bool textThemeBuilderProvided = true,
+    MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
+    bool themeExtensionsBuilderProvided = true,
+    Iterable<LocalizationsDelegate>? localizationsDelegates,
+    bool localizationsDelegatesProvided = true,
+    Iterable<Locale>? supportedLocales,
+    bool supportedLocalesProvided = true,
+    RouterConfig<Object>? router,
+    bool routerProvided = true,
+    Widget? home,
+    bool homeProvided = true,
+  }) {
+    return MyoroMaterialAppConfiguration(
+      title: titleProvided ? (title ?? this.title) : null,
+      themeMode: themeModeProvided ? (themeMode ?? this.themeMode) : null,
+      colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? this.colorSchemeBuilder) : null,
+      textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? this.textThemeBuilder) : null,
+      themeExtensionsBuilder:
+          themeExtensionsBuilderProvided ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder) : null,
+      localizationsDelegates:
+          localizationsDelegatesProvided ? (localizationsDelegates ?? this.localizationsDelegates) : null,
+      supportedLocales: supportedLocalesProvided ? (supportedLocales ?? this.supportedLocales) : null,
+      router: routerProvided ? (router ?? this.router) : null,
+      home: homeProvided ? (home ?? this.home) : null,
+    );
+  }
+
+  @override
+  List<Object?> get props {
+    return [
+      title,
+      themeMode,
+      colorSchemeBuilder,
+      textThemeBuilder,
+      themeExtensionsBuilder,
+      localizationsDelegates,
+      supportedLocales,
+      router,
+      home,
+    ];
+  }
+
+  @override
+  String toString() =>
+      'MyoroMaterialAppConfiguration(\n'
+      '  title: $title,\n'
+      '  themeMode: $themeMode,\n'
+      '  colorSchemeBuilder: $colorSchemeBuilder,\n'
+      '  textThemeBuilder: $textThemeBuilder,\n'
+      '  themeExtensionsBuilder: $themeExtensionsBuilder,\n'
+      '  localizationsDelegates: $localizationsDelegates,\n'
+      '  supportedLocales: $supportedLocales,\n'
+      '  router: $router,\n'
+      '  home: $home,\n'
+      ');';
+}

@@ -14,13 +14,11 @@ void main() {
     expect(find.byType(MyoroTooltip), findsOneWidget);
     expect(find.text('Hover over me!'), findsOneWidget);
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroSlider && w.label == '[MyoroTooltip.margin]'),
+      find.byWidgetPredicate((Widget w) => w is MyoroSlider && w.configuration.label == '[MyoroTooltip.margin]'),
       findsOneWidget,
     );
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is MyoroInput && w.configuration.label == '[MyoroTooltip.text]',
-      ),
+      find.byWidgetPredicate((Widget w) => w is MyoroInput && w.configuration.label == '[MyoroTooltip.text]'),
       findsOneWidget,
     );
   });

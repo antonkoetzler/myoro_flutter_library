@@ -13,10 +13,7 @@ final class _FooThemeExtension extends ThemeExtension<_FooThemeExtension> {
   }
 
   @override
-  ThemeExtension<_FooThemeExtension> lerp(
-    covariant ThemeExtension<_FooThemeExtension>? other,
-    double t,
-  ) {
+  ThemeExtension<_FooThemeExtension> lerp(covariant ThemeExtension<_FooThemeExtension>? other, double t) {
     return this;
   }
 }
@@ -28,23 +25,17 @@ void main() {
 
   /// [MyoroMaterialApp.themeMode]
   final ThemeMode? themeMode =
-      faker.randomGenerator.boolean()
-          ? ThemeMode.values[faker.randomGenerator.integer(ThemeMode.values.length)]
-          : null;
+      faker.randomGenerator.boolean() ? ThemeMode.values[faker.randomGenerator.integer(ThemeMode.values.length)] : null;
 
   /// [MyoroMaterialApp.colorSchemeBuilder]
   final MyoroMaterialAppColorSchemeBuilder? colorSchemeBuilder =
-      faker.randomGenerator.boolean()
-          ? (ColorScheme colorScheme) => colorScheme.copyWith(primary: Colors.pink)
-          : null;
+      faker.randomGenerator.boolean() ? (ColorScheme colorScheme) => colorScheme.copyWith(primary: Colors.pink) : null;
 
   /// [MyoroMaterialApp.textThemeBuilder]
-  final Color bodySmallColor =
-      kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final Color bodySmallColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
   final MyoroMaterialAppTextThemeBuilder? textThemeBuilder =
       faker.randomGenerator.boolean()
-          ? (TextTheme textTheme) =>
-              textTheme.copyWith(bodySmall: textTheme.bodySmall!.withColor(bodySmallColor))
+          ? (TextTheme textTheme) => textTheme.copyWith(bodySmall: textTheme.bodySmall!.withColor(bodySmallColor))
           : null;
 
   /// [MyoroMaterialApp.themeExtensionsBuilder]
@@ -56,8 +47,7 @@ void main() {
       faker.randomGenerator.boolean() ? ([GlobalCupertinoLocalizations.delegate]) : null;
 
   /// [MyoroMaterialApp.supportedLocales]
-  final List<Locale>? supportedLocales =
-      faker.randomGenerator.boolean() ? const [Locale('en'), Locale('pt')] : null;
+  final List<Locale>? supportedLocales = faker.randomGenerator.boolean() ? const [Locale('en'), Locale('pt')] : null;
 
   testWidgets('MyoroMaterialApp', (WidgetTester tester) async {
     late final BuildContext context;
@@ -65,18 +55,20 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroMaterialApp(
-          title: title,
-          themeMode: themeMode,
-          colorSchemeBuilder: colorSchemeBuilder,
-          textThemeBuilder: textThemeBuilder,
-          themeExtensionsBuilder: themeExtensionsBuilder,
-          localizationsDelegates: localizationsDelegates,
-          supportedLocales: supportedLocales,
-          home: Builder(
-            builder: (BuildContext buildContext) {
-              context = buildContext;
-              return const MyoroScreen();
-            },
+          configuration: MyoroMaterialAppConfiguration(
+            title: title,
+            themeMode: themeMode,
+            colorSchemeBuilder: colorSchemeBuilder,
+            textThemeBuilder: textThemeBuilder,
+            themeExtensionsBuilder: themeExtensionsBuilder,
+            localizationsDelegates: localizationsDelegates,
+            supportedLocales: supportedLocales,
+            home: Builder(
+              builder: (BuildContext buildContext) {
+                context = buildContext;
+                return const MyoroScreen();
+              },
+            ),
           ),
         ),
       ),
@@ -102,11 +94,7 @@ void main() {
     final bool isDarkMode = themeMode != null ? themeMode == ThemeMode.dark : true;
     final myoroColorScheme = createMyoroColorScheme(isDarkMode);
     final myoroTextTheme = createMyoroTextTheme(isDarkMode);
-    final myoroThemeExtensions = createMyoroThemeExtensions(
-      isDarkMode,
-      myoroColorScheme,
-      myoroTextTheme,
-    );
+    final myoroThemeExtensions = createMyoroThemeExtensions(isDarkMode, myoroColorScheme, myoroTextTheme);
 
     // Testing the generated [ColorScheme].
     expect(context.colorScheme == myoroColorScheme, colorSchemeBuilder == null);
@@ -115,9 +103,6 @@ void main() {
     expect(context.textTheme.bodySmall!.color == bodySmallColor, textThemeBuilder != null);
 
     // Testing the generated [ThemeExtension]s.
-    expect(
-      context.themeExtensions.length,
-      myoroThemeExtensions.length + (themeExtensionsBuilder != null ? 1 : 0),
-    );
+    expect(context.themeExtensions.length, myoroThemeExtensions.length + (themeExtensionsBuilder != null ? 1 : 0));
   });
 }

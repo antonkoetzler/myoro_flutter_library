@@ -12,10 +12,7 @@ final class MyoroRadioWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroRadioWidgetShowcaseBloc(),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_LabelOption(), _LabelTextStyleOption()],
-      ),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_LabelOption(), _LabelTextStyleOption()]),
     );
   }
 }
@@ -26,8 +23,10 @@ final class _Widget extends StatelessWidget {
   void _onChanged(BuildContext context, bool value) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        snackBarType: value ? MyoroSnackBarTypeEnum.success : MyoroSnackBarTypeEnum.error,
-        message: 'Radio ${value ? 'enabled' : 'disabled'}!',
+        MyoroSnackBarConfiguration(
+          snackBarType: value ? MyoroSnackBarTypeEnum.success : MyoroSnackBarTypeEnum.error,
+          message: 'Radio ${value ? 'enabled' : 'disabled'}!',
+        ),
       ),
     );
   }
@@ -37,9 +36,11 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroRadioWidgetShowcaseBloc, MyoroRadioWidgetShowcaseState>(
       builder: (_, MyoroRadioWidgetShowcaseState state) {
         return MyoroRadio(
-          label: state.label,
-          labelTextStyle: state.labelTextStyle,
-          onChanged: (bool value) => _onChanged(context, value),
+          configuration: MyoroRadioConfiguration(
+            label: state.label,
+            labelTextStyle: state.labelTextStyle,
+            onChanged: (bool value) => _onChanged(context, value),
+          ),
         );
       },
     );
@@ -50,9 +51,7 @@ final class _LabelOption extends StatelessWidget {
   const _LabelOption();
 
   void _onChanged(BuildContext context, String text) {
-    context.resolveBloc<MyoroRadioWidgetShowcaseBloc>().add(
-      SetLabelEvent(text.isNotEmpty ? text : null),
-    );
+    context.resolveBloc<MyoroRadioWidgetShowcaseBloc>().add(SetLabelEvent(text.isNotEmpty ? text : null));
   }
 
   @override
@@ -60,8 +59,7 @@ final class _LabelOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[MyoroRadio.label]',
-        inputStyle:
-            context.resolveThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle: context.resolveThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>().inputStyle,
         onChanged: (String text) => _onChanged(context, text),
       ),
     );
@@ -89,9 +87,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typography, TextStyle textStyle) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(
-        text: typography.getTextStyleName(textStyle),
-      ),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: typography.getTextStyleName(textStyle)),
     );
   }
 

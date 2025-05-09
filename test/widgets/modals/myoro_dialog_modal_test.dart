@@ -5,12 +5,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroDialogModal].
 void main() {
-  final MyoroModalConfiguration configuration = MyoroModalConfiguration.fake();
+  final MyoroModalConfiguration modalConfiguration = MyoroModalConfiguration.fake();
   final bool invertButtons = faker.randomGenerator.boolean();
-  final String? confirmButtonText =
-      faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
-  final String? cancelButtonText =
-      faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
+  final String? confirmButtonText = faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
+  final String? cancelButtonText = faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
   final String text = faker.lorem.word();
   late final TextStyle? textStyle;
 
@@ -44,10 +42,7 @@ void main() {
     if (isText) {
       expect(
         find.byWidgetPredicate(
-          (Widget w) =>
-              w is Text &&
-              w.data == text &&
-              w.style == (textStyle ?? dialogModalThemeExtension.textStyle),
+          (Widget w) => w is Text && w.data == text && w.style == (textStyle ?? dialogModalThemeExtension.textStyle),
         ),
         findsOneWidget,
       );
@@ -79,7 +74,7 @@ void main() {
         (Widget w) =>
             w is MyoroIconTextButton &&
             w.configuration.textConfiguration?.text == (confirmButtonText ?? 'Confirm') &&
-            w.configuration.onTapUp != null,
+            w.configuration.buttonConfiguration?.onTapUp != null,
       ),
       findsOneWidget,
     );
@@ -90,7 +85,7 @@ void main() {
         (Widget w) =>
             w is MyoroIconTextButton &&
             w.configuration.textConfiguration?.text == (cancelButtonText ?? 'Cancel') &&
-            w.configuration.onTapUp != null,
+            w.configuration.buttonConfiguration?.onTapUp != null,
       ),
       findsOneWidget,
     );
@@ -114,15 +109,17 @@ void main() {
               onTap: () {
                 MyoroDialogModal.show(
                   context,
-                  configuration: configuration,
-                  invertButtons: invertButtons,
-                  confirmButtonText: confirmButtonText,
-                  cancelButtonText: cancelButtonText,
-                  onConfirm: () => onConfirmPressed = true,
-                  onCancel: () => onCancelPressed = true,
-                  text: isText ? text : null,
-                  textStyle: textStyle,
-                  child: isWidget ? const MyoroRadio() : null,
+                  modalConfiguration: modalConfiguration,
+                  dialogModalConfiguration: MyoroDialogModalConfiguration(
+                    invertButtons: invertButtons,
+                    confirmButtonText: confirmButtonText,
+                    cancelButtonText: cancelButtonText,
+                    onConfirm: () => onConfirmPressed = true,
+                    onCancel: () => onCancelPressed = true,
+                    text: isText ? text : null,
+                    textStyle: textStyle,
+                    child: isWidget ? const MyoroRadio() : null,
+                  ),
                 );
               },
             );
@@ -150,10 +147,7 @@ void main() {
 
   setUpAll(() {
     MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
-    textStyle =
-        faker.randomGenerator.boolean()
-            ? MyoroTypographyDesignSystem.instance.randomTextStyle
-            : null;
+    textStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null;
   });
 
   testWidgets(

@@ -22,15 +22,16 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
 
     return BlocBuilder<MyoroMaterialAppWidgetShowcaseBloc, MyoroMaterialAppWidgetShowcaseState>(
       builder: (_, MyoroMaterialAppWidgetShowcaseState state) {
         return MyoroMaterialApp(
-          title: 'MyoroMaterialApp Storyboard',
-          themeMode: state.themeMode,
-          home: MyoroScreen(appBar: _AppBar(themeExtension), body: const SizedBox.shrink()),
+          configuration: MyoroMaterialAppConfiguration(
+            title: 'MyoroMaterialApp Storyboard',
+            themeMode: state.themeMode,
+            home: MyoroScreen(MyoroScreenConfiguration(appBar: _AppBar(themeExtension), body: const SizedBox.shrink())),
+          ),
         );
       },
     );
@@ -58,10 +59,8 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
           const Spacer(),
           MyoroIconTextButton(
             configuration: MyoroIconTextButtonConfiguration(
-              iconConfiguration: MyoroIconTextButtonIconConfiguration(
-                icon: _themeExtension.appBarMenuButtonIcon,
-              ),
-              onTapUp: (_) {},
+              buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) {}),
+              iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: _themeExtension.appBarMenuButtonIcon),
             ),
           ),
         ],
@@ -75,8 +74,7 @@ final class _ThemeModeOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroMaterialAppWidgetShowcaseThemeExtension>();
 
     return BlocBuilder<MyoroMaterialAppWidgetShowcaseBloc, MyoroMaterialAppWidgetShowcaseState>(
       builder: (_, MyoroMaterialAppWidgetShowcaseState state) {
@@ -91,17 +89,16 @@ final class _ThemeModeOption extends StatelessWidget {
           children: [
             MyoroIconTextButton(
               configuration: MyoroIconTextButtonConfiguration(
+                buttonConfiguration: MyoroButtonConfiguration(
+                  borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+                  onTapUp: (_) => _onTapUp(context),
+                ),
                 iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: buttonIcon),
-                borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-                onTapUp: (_) => _onTapUp(context),
               ),
             ),
             SizedBox(width: themeExtension.themeModeOptionSpacing),
             Flexible(
-              child: Text(
-                '${isDarkMode ? 'Dark' : 'Light'} mode',
-                style: themeExtension.themeModeOptionTextStyle,
-              ),
+              child: Text('${isDarkMode ? 'Dark' : 'Light'} mode', style: themeExtension.themeModeOptionTextStyle),
             ),
           ],
         );

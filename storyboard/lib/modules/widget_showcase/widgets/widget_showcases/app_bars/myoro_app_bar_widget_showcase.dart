@@ -41,10 +41,7 @@ final class _Widget extends StatelessWidget {
                   children: [
                     const _MockAppLogo(),
                     SizedBox(
-                      width:
-                          context
-                              .resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>()
-                              .logoTitleSpacing,
+                      width: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().logoTitleSpacing,
                     ),
                     const Flexible(child: _MockAppTitle()),
                   ],
@@ -64,10 +61,7 @@ final class _MockAppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockAppLogoIcon,
-      size: 30,
-    );
+    return Icon(context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockAppLogoIcon, size: 30);
   }
 }
 
@@ -78,10 +72,7 @@ final class _MockAppTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Hello, World!',
-      style:
-          context
-              .resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>()
-              .mockAppTitleTextStyle,
+      style: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockAppTitleTextStyle,
     );
   }
 }
@@ -97,8 +88,8 @@ final class _MockMenuButton extends StatelessWidget {
     return IntrinsicWidth(
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
+          buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) {}),
           iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: mockMenuButtonIcon),
-          onTapUp: (_) {},
         ),
       ),
     );
@@ -116,9 +107,7 @@ final class _Bordered extends StatelessWidget {
           initialValue: state.bordered,
           label: '[MyoroAppBar.bordered]',
           onChanged:
-              (bool value) => context.resolveBloc<MyoroAppBarWidgetShowcaseBloc>().add(
-                const ToggleBorderedEvent(),
-              ),
+              (bool value) => context.resolveBloc<MyoroAppBarWidgetShowcaseBloc>().add(const ToggleBorderedEvent()),
         );
       },
     );

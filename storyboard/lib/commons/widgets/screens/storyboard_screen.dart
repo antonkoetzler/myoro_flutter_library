@@ -27,8 +27,7 @@ final class StoryboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroScreen(
-      appBar: _AppBar(onPrevious, headerTitleText, headerSubtitleText),
-      body: body,
+      MyoroScreenConfiguration(appBar: _AppBar(onPrevious, headerTitleText, headerSubtitleText), body: body),
     );
   }
 }
@@ -116,11 +115,9 @@ final class _PreviousPageButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
+        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onPrevious()),
         padding: themeExtension.previousPageButtonPadding,
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(
-          icon: themeExtension.previousPageButtonIcon,
-        ),
-        onTapUp: (_) => _onPrevious(),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.previousPageButtonIcon),
       ),
     );
   }
@@ -158,10 +155,8 @@ final class _ToggleThemeButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(
-          icon: themeExtension.toggleThemeButtonIcon,
-        ),
-        onTapUp: (_) => _onTapUp(context),
+        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.toggleThemeButtonIcon),
       ),
     );
   }

@@ -47,36 +47,33 @@ class _WidgetState extends State<_Widget> {
     final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
 
     return MyoroForm<_FormResult>(
-      validation: () => _validation(_controller),
-      request: () => ('Form finish successfully!', themeExtension.successColor),
-      onSuccess: (_FormResult? result) => _formResultTextNotifier.value = result,
-      onError:
-          (String errorMessage) =>
-              _formResultTextNotifier.value = (errorMessage, themeExtension.errorColor),
-      builder: (result, status, controller) {
-        return Column(
-          mainAxisAlignment: themeExtension.widgetMainAxisAlignment,
-          children: [
-            _Input(_controller),
-            SizedBox(height: themeExtension.widgetSpacing),
-            _SubmitButton(controller.finish),
-            ValueListenableBuilder(
-              valueListenable: _formResultTextNotifier,
-              builder: (_, _FormResult? formResult, __) {
-                if (formResult == null) return const SizedBox.shrink();
+      configuration: MyoroFormConfiguration(
+        validation: () => _validation(_controller),
+        request: () => ('Form finish successfully!', themeExtension.successColor),
+        onSuccess: (_FormResult? result) => _formResultTextNotifier.value = result,
+        onError: (String errorMessage) => _formResultTextNotifier.value = (errorMessage, themeExtension.errorColor),
+        builder: (result, status, controller) {
+          return Column(
+            mainAxisAlignment: themeExtension.widgetMainAxisAlignment,
+            children: [
+              _Input(_controller),
+              SizedBox(height: themeExtension.widgetSpacing),
+              _SubmitButton(controller.finish),
+              ValueListenableBuilder(
+                valueListenable: _formResultTextNotifier,
+                builder: (_, _FormResult? formResult, __) {
+                  if (formResult == null) return const SizedBox.shrink();
 
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(height: themeExtension.widgetSpacing),
-                    _ResultText(formResult),
-                  ],
-                );
-              },
-            ),
-          ],
-        );
-      },
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [SizedBox(height: themeExtension.widgetSpacing), _ResultText(formResult)],
+                  );
+                },
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
@@ -91,8 +88,7 @@ final class _Input extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         controller: controller,
-        inputStyle:
-            context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().widgetInputStyle,
+        inputStyle: context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().widgetInputStyle,
         placeholder: 'Type "$_errorText" in the input to display an error.',
         validation: (_) => _validation(controller),
       ),
@@ -109,9 +105,11 @@ final class _SubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
+        buttonConfiguration: MyoroButtonConfiguration(
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          onTapUp: (_) => _onTapUp(),
+        ),
         textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Click me!'),
-        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-        onTapUp: (_) => _onTapUp(),
       ),
     );
   }
@@ -126,10 +124,9 @@ final class _ResultText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       formResult.$1,
-      style: context
-          .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
-          .resultTextStyle
-          .withColor(formResult.$2),
+      style: context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().resultTextStyle.withColor(
+        formResult.$2,
+      ),
     );
   }
 }

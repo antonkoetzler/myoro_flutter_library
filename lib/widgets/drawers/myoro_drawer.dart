@@ -124,14 +124,13 @@ final class _CloseButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(
-          icon:
-              !_isEndDrawer
-                  ? themeExtension.closeButtonDrawerIcon
-                  : themeExtension.closeButtonEndDrawerIcon,
+        buttonConfiguration: MyoroButtonConfiguration(
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          onTapUp: (_) => context.closeDrawer(),
         ),
-        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-        onTapUp: (_) => context.closeDrawer(),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: !_isEndDrawer ? themeExtension.closeButtonDrawerIcon : themeExtension.closeButtonEndDrawerIcon,
+        ),
       ),
     );
   }

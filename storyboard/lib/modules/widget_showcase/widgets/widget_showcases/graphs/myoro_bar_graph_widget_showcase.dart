@@ -26,16 +26,18 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroBarGraphWidgetShowcaseBloc, MyoroBarGraphWidgetShowcaseState>(
       builder: (_, MyoroBarGraphWidgetShowcaseState state) {
         return MyoroBarGraph(
-          sorted: state.sorted,
-          items: List.generate(
-            faker.randomGenerator.integer(10, min: 1),
-            (_) => MyoroBarGraphGroup(
-              x: faker.randomGenerator.integer(100),
-              bars: List.generate(
-                faker.randomGenerator.integer(5),
-                (_) => MyoroBarGraphBar(
-                  y: faker.randomGenerator.decimal(),
-                  color: [Colors.red, Colors.green, Colors.blue][faker.randomGenerator.integer(3)],
+          configuration: MyoroBarGraphConfiguration(
+            sorted: state.sorted,
+            items: List.generate(
+              faker.randomGenerator.integer(10, min: 1),
+              (_) => MyoroBarGraphGroup(
+                x: faker.randomGenerator.integer(100),
+                bars: List.generate(
+                  faker.randomGenerator.integer(5),
+                  (_) => MyoroBarGraphBar(
+                    y: faker.randomGenerator.decimal(),
+                    color: [Colors.red, Colors.green, Colors.blue][faker.randomGenerator.integer(3)],
+                  ),
                 ),
               ),
             ),

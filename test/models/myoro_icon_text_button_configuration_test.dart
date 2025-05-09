@@ -1,32 +1,16 @@
-import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  late final MyoroIconTextButtonConfiguration model;
-
-  setUpAll(() {
-    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
-    model = MyoroIconTextButtonConfiguration.fake();
-  });
+  final model = MyoroIconTextButtonConfiguration.fake();
 
   test('MyoroIconTextButtonConfiguration.copyWith', () {
     expect(model.copyWith(), model);
     final otherModel = MyoroIconTextButtonConfiguration.fake();
     expect(
       model.copyWith(
-        cursor: otherModel.cursor,
-        cursorProvided: otherModel.cursor != null,
-        borderRadius: otherModel.borderRadius,
-        borderRadiusProvided: otherModel.borderRadius != null,
-        backgroundColorBuilder: otherModel.backgroundColorBuilder,
-        backgroundColorBuilderProvided: otherModel.backgroundColorBuilder != null,
-        borderBuilder: otherModel.borderBuilder,
-        borderBuilderProvided: otherModel.borderBuilder != null,
-        onTapDown: otherModel.onTapDown,
-        onTapDownProvided: otherModel.onTapDown != null,
-        onTapUp: otherModel.onTapUp,
-        onTapUpProvided: otherModel.onTapUp != null,
+        buttonConfiguration: otherModel.buttonConfiguration,
+        buttonConfigurationProvided: otherModel.buttonConfiguration != null,
         invert: otherModel.invert,
         spacing: otherModel.spacing,
         padding: otherModel.padding,
@@ -45,12 +29,7 @@ void main() {
     expect(
       model.toString(),
       'MyoroIconTextButtonConfiguration(\n'
-      '  cursor: ${model.cursor},\n'
-      '  borderRadius: ${model.borderRadius},\n'
-      '  backgroundColorBuilder: ${model.backgroundColorBuilder},\n'
-      '  borderBuilder: ${model.borderBuilder},\n'
-      '  onTapDown: ${model.onTapDown},\n'
-      '  onTapUp: ${model.onTapUp},\n'
+      '  buttonConfiguration: ${model.buttonConfiguration},\n'
       '  invert: ${model.invert},\n'
       '  spacing: ${model.spacing},\n'
       '  padding: ${model.padding},\n'

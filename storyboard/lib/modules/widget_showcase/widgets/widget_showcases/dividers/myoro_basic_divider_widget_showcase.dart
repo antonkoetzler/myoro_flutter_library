@@ -36,10 +36,7 @@ final class _Widget extends StatelessWidget {
             configuration: MyoroBasicDividerConfiguration(
               direction: state.direction,
               shortValue: state.shortValue,
-              padding: EdgeInsets.symmetric(
-                vertical: state.verticalPadding,
-                horizontal: state.horizontalPadding,
-              ),
+              padding: EdgeInsets.symmetric(vertical: state.verticalPadding, horizontal: state.horizontalPadding),
             ),
           ),
           const Flexible(child: _Button('Another button')),
@@ -65,10 +62,7 @@ final class _DirectionOption extends StatelessWidget {
     return MyoroSingularDropdown(
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroBasicDivider.direction]',
-        menuConfiguration: MyoroMenuConfiguration(
-          request: Axis.values.toSet,
-          itemBuilder: _itemBuilder,
-        ),
+        menuConfiguration: MyoroMenuConfiguration(request: Axis.values.toSet, itemBuilder: _itemBuilder),
         selectedItemBuilder: _getDirectionName,
         allowItemClearing: false,
         initiallySelectedItem: bloc.state.direction,
@@ -78,9 +72,7 @@ final class _DirectionOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(Axis direction) {
-    return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)),
-    );
+    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)));
   }
 
   String _getDirectionName(Axis direction) {
@@ -101,11 +93,13 @@ final class _ShortValueOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroBasicDividerWidgetShowcaseBloc>();
 
     return MyoroSlider(
-      label: '[MyoroBasicDivider.shortValue]',
-      minValue: 0,
-      maxValue: 200,
-      initialValue: bloc.state.shortValue,
-      onChanged: (double value) => bloc.add(SetShortValueEvent(value)),
+      MyoroSliderConfiguration(
+        label: '[MyoroBasicDivider.shortValue]',
+        minValue: 0,
+        maxValue: 200,
+        initialValue: bloc.state.shortValue,
+        onChanged: (double value) => bloc.add(SetShortValueEvent(value)),
+      ),
     );
   }
 }
@@ -126,18 +120,22 @@ final class _PaddingOption extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         MyoroSlider(
-          label: 'Vertical padding',
-          minValue: minValue,
-          maxValue: maxValue,
-          initialValue: bloc.state.verticalPadding,
-          onChanged: (double value) => _event(bloc, Axis.vertical, value),
+          MyoroSliderConfiguration(
+            label: 'Vertical padding',
+            minValue: minValue,
+            maxValue: maxValue,
+            initialValue: bloc.state.verticalPadding,
+            onChanged: (double value) => _event(bloc, Axis.vertical, value),
+          ),
         ),
         MyoroSlider(
-          label: 'Horizontal padding',
-          minValue: minValue,
-          maxValue: maxValue,
-          initialValue: bloc.state.horizontalPadding,
-          onChanged: (double value) => _event(bloc, Axis.horizontal, value),
+          MyoroSliderConfiguration(
+            label: 'Horizontal padding',
+            minValue: minValue,
+            maxValue: maxValue,
+            initialValue: bloc.state.horizontalPadding,
+            onChanged: (double value) => _event(bloc, Axis.horizontal, value),
+          ),
         ),
       ],
     );
@@ -153,9 +151,11 @@ final class _Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
+        buttonConfiguration: MyoroButtonConfiguration(
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          onTapUp: (_) {},
+        ),
         textConfiguration: MyoroIconTextButtonTextConfiguration(text: _text),
-        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-        onTapUp: (_) {},
       ),
     );
   }

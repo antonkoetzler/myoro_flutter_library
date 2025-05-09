@@ -29,28 +29,24 @@ final class MyoroButtonWidgetShowcaseBorderBuilderOption extends StatelessWidget
             ),
             if (state.borderBuilderEnabled) ...[
               MyoroSlider(
-                label: 'Border width',
-                minValue: 0.5,
-                maxValue: 10,
-                initialValue: state.borderRadius,
-                onChanged: (value) => _borderWidthOnChanged(bloc, value),
+                MyoroSliderConfiguration(
+                  label: 'Border width',
+                  minValue: 0.5,
+                  maxValue: 10,
+                  initialValue: state.borderRadius ?? MyoroSliderConfiguration.initialValueDefaultValue,
+                  onChanged: (value) => _borderWidthOnChanged(bloc, value),
+                ),
               ),
               ColorWidgetShowcaseOption(
-                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
-                  label: 'Idle color',
-                ),
+                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Idle color'),
                 onChanged: (color) => _idleColorOnChanged(bloc, color),
               ),
               ColorWidgetShowcaseOption(
-                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
-                  label: 'Hover color',
-                ),
+                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Hover color'),
                 onChanged: (color) => _hoverColorOnChanged(bloc, color),
               ),
               ColorWidgetShowcaseOption(
-                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
-                  label: 'Tap color',
-                ),
+                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Tap color'),
                 onChanged: (color) => _tapColorOnChanged(bloc, color),
               ),
             ],

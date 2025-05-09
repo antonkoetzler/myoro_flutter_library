@@ -8,22 +8,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   testWidgets('MyoroTable', (WidgetTester tester) async {
     late final MyoroTableThemeExtension tableThemeExtension;
-    late final MyoroBasicDividerThemeExtension basicDividerThemeExtension;
 
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
             tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-            basicDividerThemeExtension =
-                context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
             return MyoroTable<String>(
-              configuration: MyoroTableConfiguration(
-                request: () => _items,
-                columns: _columns,
-                rowBuilder: _rowBuilder,
-              ),
+              configuration: MyoroTableConfiguration(request: () => _items, columns: _columns, rowBuilder: _rowBuilder),
             );
           },
         ),
@@ -65,9 +58,7 @@ void main() {
       findsOneWidget,
     );
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is DefaultTextStyle && w.style == tableThemeExtension.columnTextStyle,
-      ),
+      find.byWidgetPredicate((Widget w) => w is DefaultTextStyle && w.style == tableThemeExtension.columnTextStyle),
       findsNWidgets(_columns.length),
     );
 
@@ -80,10 +71,8 @@ void main() {
             w.clipBehavior == Clip.hardEdge &&
             w.borderRadius ==
                 BorderRadius.only(
-                  bottomLeft:
-                      (tableThemeExtension.decoration.borderRadius as BorderRadius).bottomLeft,
-                  bottomRight:
-                      (tableThemeExtension.decoration.borderRadius as BorderRadius).bottomRight,
+                  bottomLeft: (tableThemeExtension.decoration.borderRadius as BorderRadius).bottomLeft,
+                  bottomRight: (tableThemeExtension.decoration.borderRadius as BorderRadius).bottomRight,
                 ) &&
             w.child is ListView,
       ),
@@ -104,9 +93,7 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is Row &&
-            w.spacing == tableThemeExtension.columnSpacing &&
-            w.children.length == _columns.length,
+            w is Row && w.spacing == tableThemeExtension.columnSpacing && w.children.length == _columns.length,
       ),
       findsNWidgets(_items.length),
     );

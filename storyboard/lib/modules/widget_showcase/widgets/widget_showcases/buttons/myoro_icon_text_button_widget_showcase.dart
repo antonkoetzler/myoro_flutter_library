@@ -53,14 +53,8 @@ final class _Widget extends StatelessWidget {
     );
   }
 
-  Widget _buttonWidgetShowcaseBlocBuilder(
-    BuildContext context,
-    MyoroButtonWidgetShowcaseState buttonState,
-  ) {
-    return BlocConsumer<
-      MyoroIconTextButtonWidgetShowcaseBloc,
-      MyoroIconTextButtonWidgetShowcaseState
-    >(
+  Widget _buttonWidgetShowcaseBlocBuilder(BuildContext context, MyoroButtonWidgetShowcaseState buttonState) {
+    return BlocConsumer<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
       listener: (_, iconTextButtonState) {
         _iconTextButtonWidgetShowcaseBlocListener(context, iconTextButtonState);
       },
@@ -82,9 +76,7 @@ final class _Widget extends StatelessWidget {
     // assertion error of [MyoroIconTextButtonConfiguration].
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
     if (faker.randomGenerator.boolean()) {
-      bloc.add(
-        SetIconEvent(kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)]),
-      );
+      bloc.add(SetIconEvent(kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)]));
     } else {
       bloc.add(const SetTextEvent(MyoroIconTextButtonWidgetShowcaseState.textDefaultValue));
     }
@@ -97,38 +89,24 @@ final class _Widget extends StatelessWidget {
   ) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        cursor: buttonState.cursor ?? SystemMouseCursors.click,
-        borderRadius:
-            buttonState.borderRadius != null
-                ? BorderRadius.circular(buttonState.borderRadius!)
-                : null,
-        backgroundColorBuilder:
-            buttonState.backgroundColorBuilderEnabled
-                ? (MyoroTapStatusEnum tapStatusEnum) {
-                  return MyoroButtonWidgetShowcaseBloc.backgroundColorBuilder(
-                    tapStatusEnum,
-                    buttonState,
-                  );
-                }
-                : null,
-        borderBuilder:
-            buttonState.borderBuilderEnabled
-                ? (MyoroTapStatusEnum tapStatusEnum) {
-                  return MyoroButtonWidgetShowcaseBloc.borderBuilder(
-                    context,
-                    tapStatusEnum,
-                    buttonState,
-                  );
-                }
-                : null,
-        onTapDown:
-            buttonState.onTapDownEnabled
-                ? (_) => MyoroButtonWidgetShowcaseBloc.onTapDown(context)
-                : null,
-        onTapUp:
-            buttonState.onTapUpEnabled
-                ? (_) => MyoroButtonWidgetShowcaseBloc.onTapUp(context)
-                : null,
+        buttonConfiguration: MyoroButtonConfiguration(
+          cursor: buttonState.cursor ?? SystemMouseCursors.click,
+          borderRadius: buttonState.borderRadius != null ? BorderRadius.circular(buttonState.borderRadius!) : null,
+          backgroundColorBuilder:
+              buttonState.backgroundColorBuilderEnabled
+                  ? (MyoroTapStatusEnum tapStatusEnum) {
+                    return MyoroButtonWidgetShowcaseBloc.backgroundColorBuilder(tapStatusEnum, buttonState);
+                  }
+                  : null,
+          borderBuilder:
+              buttonState.borderBuilderEnabled
+                  ? (MyoroTapStatusEnum tapStatusEnum) {
+                    return MyoroButtonWidgetShowcaseBloc.borderBuilder(context, tapStatusEnum, buttonState);
+                  }
+                  : null,
+          onTapDown: buttonState.onTapDownEnabled ? (_) => MyoroButtonWidgetShowcaseBloc.onTapDown(context) : null,
+          onTapUp: buttonState.onTapUpEnabled ? (_) => MyoroButtonWidgetShowcaseBloc.onTapUp(context) : null,
+        ),
         invert: iconTextButtonState.invert,
         spacing: iconTextButtonState.spacing,
         padding: iconTextButtonState.padding,
@@ -201,12 +179,12 @@ final class _SpacingOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
     return WidgetShowcaseOption(
-      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
-        label: 'Spacing between icon and text.',
-      ),
+      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Spacing between icon and text.'),
       child: MyoroSlider(
-        onChanged: (double value) => _onChanged(bloc, value),
-        footerIndicatorTextBuilder: _footerIndicatorTextBuilder,
+        MyoroSliderConfiguration(
+          onChanged: (double value) => _onChanged(bloc, value),
+          footerIndicatorTextBuilder: _footerIndicatorTextBuilder,
+        ),
       ),
     );
   }
@@ -263,23 +241,17 @@ final class _ContentColorBuilderOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
-    return BlocBuilder<
-      MyoroIconTextButtonWidgetShowcaseBloc,
-      MyoroIconTextButtonWidgetShowcaseState
-    >(buildWhen: _buildWhen, builder: (_, state) => _builder(bloc, state));
+    return BlocBuilder<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
+      buildWhen: _buildWhen,
+      builder: (_, state) => _builder(bloc, state),
+    );
   }
 
-  bool _buildWhen(
-    MyoroIconTextButtonWidgetShowcaseState previous,
-    MyoroIconTextButtonWidgetShowcaseState current,
-  ) {
+  bool _buildWhen(MyoroIconTextButtonWidgetShowcaseState previous, MyoroIconTextButtonWidgetShowcaseState current) {
     return previous.contentColorBuilderEnabled != current.contentColorBuilderEnabled;
   }
 
-  Widget _builder(
-    MyoroIconTextButtonWidgetShowcaseBloc bloc,
-    MyoroIconTextButtonWidgetShowcaseState state,
-  ) {
+  Widget _builder(MyoroIconTextButtonWidgetShowcaseBloc bloc, MyoroIconTextButtonWidgetShowcaseState state) {
     return MyoroTapStatusEnumWidgetShowcaseOption(
       configuration: MyoroTapStatusEnumWidgetShowcaseOptionConfiguration(
         labelConfiguration: WidgetShowcaseOptionLabelConfiguration(
@@ -352,16 +324,13 @@ final class _IconSizeOptionState extends State<_IconSizeOption> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroIconTextButtonWidgetShowcaseBloc,
-      MyoroIconTextButtonWidgetShowcaseState
-    >(buildWhen: _buildWhen, builder: _builder);
+    return BlocBuilder<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
+      buildWhen: _buildWhen,
+      builder: _builder,
+    );
   }
 
-  bool _buildWhen(
-    MyoroIconTextButtonWidgetShowcaseState previous,
-    MyoroIconTextButtonWidgetShowcaseState current,
-  ) {
+  bool _buildWhen(MyoroIconTextButtonWidgetShowcaseState previous, MyoroIconTextButtonWidgetShowcaseState current) {
     return previous.iconSize != current.iconSize;
   }
 
@@ -397,9 +366,7 @@ final class _TextOption extends StatelessWidget {
 
     return WidgetShowcaseOption(
       labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Text'),
-      child: MyoroInput(
-        configuration: MyoroInputConfiguration(onChanged: (String text) => _onChanged(bloc, text)),
-      ),
+      child: MyoroInput(configuration: MyoroInputConfiguration(onChanged: (String text) => _onChanged(bloc, text))),
     );
   }
 
@@ -458,16 +425,12 @@ final class _TextAlignmentOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
-    return BlocBuilder<
-      MyoroIconTextButtonWidgetShowcaseBloc,
-      MyoroIconTextButtonWidgetShowcaseState
-    >(builder: (_, state) => _builder(bloc, state));
+    return BlocBuilder<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
+      builder: (_, state) => _builder(bloc, state),
+    );
   }
 
-  Widget _builder(
-    MyoroIconTextButtonWidgetShowcaseBloc bloc,
-    MyoroIconTextButtonWidgetShowcaseState state,
-  ) {
+  Widget _builder(MyoroIconTextButtonWidgetShowcaseBloc bloc, MyoroIconTextButtonWidgetShowcaseState state) {
     return TextAlignWidgetShowcaseOption(
       labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Text alignment'),
       dropdownConfiguration: WidgetShowcaseOptionDropdownConfiguration(

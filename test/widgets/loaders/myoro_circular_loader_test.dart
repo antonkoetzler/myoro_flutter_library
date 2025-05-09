@@ -6,9 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget test of [MyoroCircularLoader].
 void main() {
   final Color? color =
-      faker.randomGenerator.boolean()
-          ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]
-          : null;
+      faker.randomGenerator.boolean() ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] : null;
   final double? size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   testWidgets('MyoroCircularLoader', (WidgetTester tester) async {
@@ -22,7 +20,7 @@ void main() {
             themeExtension = context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
             chosenSize = size ?? themeExtension.size;
 
-            return MyoroCircularLoader(color: color, size: size);
+            return MyoroCircularLoader(configuration: MyoroCircularLoaderConfiguration(color: color, size: size));
           },
         ),
       ),

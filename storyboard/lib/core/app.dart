@@ -14,18 +14,19 @@ final class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sharedPreferences = _kiwiContainer.resolve<SharedPreferences>();
-    final bool darkModeEnabled =
-        sharedPreferences.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!;
+    final bool darkModeEnabled = sharedPreferences.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!;
 
     return BlocProvider(
       create: (_) => ThemeModeCubit(darkModeEnabled),
       child: BlocBuilder<ThemeModeCubit, ThemeMode>(
         builder: (BuildContext context, ThemeMode themeMode) {
           return MyoroMaterialApp(
-            title: 'MFL Storyboard',
-            themeMode: themeMode,
-            themeExtensionsBuilder: createStoryboardThemeExtensions,
-            router: router,
+            configuration: MyoroMaterialAppConfiguration(
+              title: 'MFL Storyboard',
+              themeMode: themeMode,
+              themeExtensionsBuilder: createStoryboardThemeExtensions,
+              router: router,
+            ),
           );
         },
       ),

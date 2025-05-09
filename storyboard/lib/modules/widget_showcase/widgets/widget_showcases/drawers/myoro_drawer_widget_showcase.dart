@@ -14,12 +14,7 @@ final class MyoroDrawerWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroDrawerWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: [
-          _TitleOption(),
-          _TitleTextStyleOption(),
-          _ShowCloseButtonOption(),
-          _BarrierDismissableOption(),
-        ],
+        widgetOptions: [_TitleOption(), _TitleTextStyleOption(), _ShowCloseButtonOption(), _BarrierDismissableOption()],
       ),
     );
   }
@@ -33,11 +28,11 @@ final class _Widget extends StatelessWidget {
     return IntrinsicWidth(
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
-          textConfiguration: const MyoroIconTextButtonTextConfiguration(
-            text: 'Click to launch the drawer.',
+          buttonConfiguration: MyoroButtonConfiguration(
+            borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+            onTapUp: (_) => _onTapUp(context),
           ),
-          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-          onTapUp: (_) => _onTapUp(context),
+          textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Click to launch the drawer.'),
         ),
       ),
     );
@@ -72,8 +67,7 @@ final class _TitleOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[MyoroDrawer.title]',
-        inputStyle:
-            context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle: context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>().inputStyle,
         checkboxOnChanged: (bool enabled, String text) => _checkboxOnChanged(bloc, enabled, text),
         onChanged: (String text) => bloc.add(SetTitleEvent(text)),
       ),
@@ -109,9 +103,7 @@ final class _TitleTextStyleOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typographyInstance, TextStyle textStyle) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(
-        text: typographyInstance.getTextStyleName(textStyle),
-      ),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: typographyInstance.getTextStyleName(textStyle)),
     );
   }
 

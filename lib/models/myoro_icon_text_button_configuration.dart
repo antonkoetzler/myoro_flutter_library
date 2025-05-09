@@ -1,16 +1,19 @@
+import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Color] builder of the icon and text.
-typedef MyoroIconTextButtonConfigurationContentColorBuilder =
-    Color Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroIconTextButtonConfigurationContentColorBuilder = Color Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Configuration model of [MyoroIconTextButton].
-class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
+class MyoroIconTextButtonConfiguration extends Equatable {
   static const invertDefaultValue = false;
   static const spacingDefaultValue = 10.0;
   static const paddingDefaultValue = EdgeInsets.all(10);
+
+  /// [MyoroButtonConfiguration]
+  final MyoroButtonConfiguration? buttonConfiguration;
 
   /// By default, the icon is displays on the left, and
   /// the text on the right, this is to invert the order.
@@ -32,12 +35,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
   final MyoroIconTextButtonTextConfiguration? textConfiguration;
 
   const MyoroIconTextButtonConfiguration({
-    super.cursor,
-    super.borderRadius,
-    super.backgroundColorBuilder,
-    super.borderBuilder,
-    super.onTapDown,
-    super.onTapUp,
+    this.buttonConfiguration,
     this.invert = invertDefaultValue,
     this.spacing = spacingDefaultValue,
     this.padding = paddingDefaultValue,
@@ -54,27 +52,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
 
     return MyoroIconTextButtonConfiguration(
-      cursor:
-          faker.randomGenerator.boolean()
-              ? kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)]
-              : null,
-      borderRadius:
-          faker.randomGenerator.boolean()
-              ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 20))
-              : null,
-      backgroundColorBuilder:
-          faker.randomGenerator.boolean()
-              ? ((_) => kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)])
-              : null,
-      borderBuilder:
-          faker.randomGenerator.boolean()
-              ? ((_) => Border.all(
-                width: faker.randomGenerator.decimal(scale: 10),
-                color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-              ))
-              : null,
-      onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      buttonConfiguration: faker.randomGenerator.boolean() ? MyoroButtonConfiguration.fake() : null,
       invert: faker.randomGenerator.boolean(),
       spacing: faker.randomGenerator.decimal(scale: 20),
       padding: EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
@@ -93,20 +71,9 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
     );
   }
 
-  @override
   MyoroIconTextButtonConfiguration copyWith({
-    MouseCursor? cursor,
-    bool cursorProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder,
-    bool backgroundColorBuilderProvided = true,
-    MyoroButtonConfigurationBorderBuilder? borderBuilder,
-    bool borderBuilderProvided = true,
-    MyoroButtonConfigurationOnTapDown? onTapDown,
-    bool onTapDownProvided = true,
-    MyoroButtonConfigurationOnTapUp? onTapUp,
-    bool onTapUpProvided = true,
+    MyoroButtonConfiguration? buttonConfiguration,
+    bool buttonConfigurationProvided = true,
     bool? invert,
     double? spacing,
     EdgeInsets? padding,
@@ -118,54 +85,25 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration {
     bool textConfigurationProvided = true,
   }) {
     return MyoroIconTextButtonConfiguration(
-      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
-      backgroundColorBuilder:
-          backgroundColorBuilderProvided
-              ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
-              : null,
-      borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
+      buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? this.buttonConfiguration) : null,
       invert: invert ?? this.invert,
       spacing: spacing ?? this.spacing,
       padding: padding ?? this.padding,
-      contentColorBuilder:
-          contentColorBuilderProvided ? (contentColorBuilder ?? this.contentColorBuilder) : null,
-      iconConfiguration:
-          iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
-      textConfiguration:
-          textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
+      contentColorBuilder: contentColorBuilderProvided ? (contentColorBuilder ?? this.contentColorBuilder) : null,
+      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
+      textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
     );
   }
 
   @override
   List<Object?> get props {
-    return [
-      cursor,
-      borderRadius,
-      backgroundColorBuilder,
-      borderBuilder,
-      onTapDown,
-      onTapUp,
-      invert,
-      spacing,
-      padding,
-      contentColorBuilder,
-      iconConfiguration,
-      textConfiguration,
-    ];
+    return [buttonConfiguration, invert, spacing, padding, contentColorBuilder, iconConfiguration, textConfiguration];
   }
 
   @override
   String toString() =>
       'MyoroIconTextButtonConfiguration(\n'
-      '  cursor: $cursor,\n'
-      '  borderRadius: $borderRadius,\n'
-      '  backgroundColorBuilder: $backgroundColorBuilder,\n'
-      '  borderBuilder: $borderBuilder,\n'
-      '  onTapDown: $onTapDown,\n'
-      '  onTapUp: $onTapUp,\n'
+      '  buttonConfiguration: $buttonConfiguration,\n'
       '  invert: $invert,\n'
       '  spacing: $spacing,\n'
       '  padding: $padding,\n'

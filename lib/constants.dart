@@ -22,17 +22,8 @@ const kMyoroGraphSideTitleInterval = 0.2;
 const kMyoroGraphVerticalSideTitleReversedSize = 48.0;
 const kMyoroGraphHorizontalSideTitleReversedSize = 22.0;
 
-// Tooltips.
-const kMyoroTooltipWaitDuration = Duration(milliseconds: 200);
-
 /// Icons for testing.
-const kMyoroTestIcons = [
-  Icons.abc,
-  Icons.ac_unit,
-  Icons.access_alarm,
-  Icons.access_time,
-  Icons.accessibility,
-];
+const kMyoroTestIcons = [Icons.abc, Icons.ac_unit, Icons.access_alarm, Icons.access_time, Icons.accessibility];
 
 /// Colors for testing.
 const kMyoroTestColors = [

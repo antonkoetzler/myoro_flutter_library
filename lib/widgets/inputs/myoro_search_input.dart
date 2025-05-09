@@ -1,46 +1,23 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Request to be executed when the input is triggered;
-typedef MyoroSearchInputRequest<T> = FutureOr<Set<T>> Function(String text);
-
 /// Search input. Shows a dropdown after making a search request.
 class MyoroSearchInput<T> extends StatefulWidget {
-  /// [MyoroInput] configuration.
-  final MyoroInputConfiguration configuration;
+  /// Configuration.
+  final MyoroSearchInputConfiguration<T> configuration;
 
-  /// If [request] will be ran everytime the input's text changes rather than when the input is submitted.
-  final bool requestWhenChanged;
-
-  /// Search request.
-  final MyoroSearchInputRequest<T> request;
-
-  /// [MyoroMenuItem] builder to display the items in [_SearchSection].
-  final MyoroMenuItemBuilder<T> itemBuilder;
-
-  const MyoroSearchInput({
-    super.key,
-    required this.configuration,
-    this.requestWhenChanged = false,
-    required this.request,
-    required this.itemBuilder,
-  });
+  const MyoroSearchInput({super.key, required this.configuration});
 
   @override
   State<MyoroSearchInput<T>> createState() => _MyoroSearchInputState<T>();
 }
 
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
-  MyoroInputConfiguration get _configuration => widget.configuration;
-  bool get _requestWhenChanged => widget.requestWhenChanged;
-  MyoroSearchInputRequest<T> get _request => widget.request;
-  MyoroMenuItemBuilder<T> get _itemBuilder => widget.itemBuilder;
+  MyoroSearchInputConfiguration<T> get _configuration => widget.configuration;
 
   TextEditingController? _localTextController;
   TextEditingController get _textController {
-    return _configuration.controller ?? (_localTextController ??= TextEditingController());
+    return _configuration.inputConfiguration.controller ?? (_localTextController ??= TextEditingController());
   }
 
   final _formController = MyoroFormController();
@@ -60,7 +37,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   @override
   void dispose() {
-    if (_configuration.controller == null) _textController.dispose();
+    if (_configuration.inputConfiguration.controller == null) _textController.dispose();
     _itemsNotifier.dispose();
     _focusNode.dispose();
     _displaySearchSectionNotifier.dispose();
@@ -72,43 +49,42 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     return Focus(
       focusNode: _focusNode,
       child: MyoroForm<Set<T>>(
-        controller: _formController,
-        request: () async => await _request.call(_textController.text),
-        onSuccess: (_) => _focusNode.requestFocus(),
-        builder: (Set<T>? results, MyoroRequestEnum status, MyoroFormController controller) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              MyoroInput(
-                configuration: _configuration.copyWith(
-                  controller: _textController,
-                  suffix: _SearchButton(status, controller),
-                  onChanged: _requestWhenChanged ? (_) => _formController.finish() : null,
-                  onFieldSubmitted: (_) => _formController.finish(),
+        configuration: MyoroFormConfiguration(
+          controller: _formController,
+          request: () async => await _configuration.request.call(_textController.text),
+          onSuccess: (_) => _focusNode.requestFocus(),
+          builder: (Set<T>? results, MyoroRequestEnum status, MyoroFormController controller) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                MyoroInput(
+                  configuration: _configuration.inputConfiguration.copyWith(
+                    controller: _textController,
+                    suffix: _SearchButton(status, controller),
+                    onChanged: _configuration.requestWhenChanged ? (_) => _formController.finish() : null,
+                    onFieldSubmitted: (_) => _formController.finish(),
+                  ),
                 ),
-              ),
-              ValueListenableBuilder(
-                valueListenable: _displaySearchSectionNotifier,
-                builder: (_, bool displaySearchSection, __) {
-                  if (!(results?.isNotEmpty == true && status.isSuccess && displaySearchSection)) {
-                    return const SizedBox.shrink();
-                  }
+                ValueListenableBuilder(
+                  valueListenable: _displaySearchSectionNotifier,
+                  builder: (_, bool displaySearchSection, __) {
+                    if (!(results?.isNotEmpty == true && status.isSuccess && displaySearchSection)) {
+                      return const SizedBox.shrink();
+                    }
 
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                        height:
-                            context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing,
-                      ),
-                      Flexible(child: _SearchSection(results, _itemBuilder)),
-                    ],
-                  );
-                },
-              ),
-            ],
-          );
-        },
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(height: context.resolveThemeExtension<MyoroSearchInputThemeExtension>().spacing),
+                        Flexible(child: _SearchSection(results, _configuration.itemBuilder)),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -139,7 +115,9 @@ final class _SearchButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
     return _status.isLoading
-        ? MyoroCircularLoader(size: themeExtension.searchButtonLoadingSize)
+        ? MyoroCircularLoader(
+          configuration: MyoroCircularLoaderConfiguration(size: themeExtension.searchButtonLoadingSize),
+        )
         : Icon(themeExtension.searchButtonIcon);
   }
 }
@@ -152,8 +130,6 @@ final class _SearchSection<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroMenu(
-      configuration: MyoroMenuConfiguration(itemBuilder: itemBuilder, request: () => results!),
-    );
+    return MyoroMenu(configuration: MyoroMenuConfiguration(itemBuilder: itemBuilder, request: () => results!));
   }
 }

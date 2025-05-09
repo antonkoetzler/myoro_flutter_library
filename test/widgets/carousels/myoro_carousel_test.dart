@@ -6,10 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroCarousel].
 void main() {
-  final List<Widget> items = List.generate(
-    faker.randomGenerator.integer(10),
-    (int index) => Text('$index'),
-  );
+  final List<Widget> items = List.generate(faker.randomGenerator.integer(10), (int index) => Text('$index'));
   final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
   const bool displayTraversalButtons = true;
   final int initialItem = faker.randomGenerator.integer(items.length);
@@ -26,7 +23,8 @@ void main() {
             (w.child as IntrinsicWidth).child is MyoroIconTextButton &&
             ((w.child as IntrinsicWidth).child as MyoroIconTextButton)
                     .configuration
-                    .borderBuilder !=
+                    .buttonConfiguration
+                    ?.borderBuilder !=
                 null,
       ),
       findsOneWidget,

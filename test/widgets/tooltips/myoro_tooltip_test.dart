@@ -5,8 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroTooltip].
 void main() {
-  final EdgeInsets? margin =
-      faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null;
+  final EdgeInsets? margin = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null;
   final Duration? waitDuration = faker.randomGenerator.boolean() ? const Duration() : null;
   final String text = faker.randomGenerator.boolean() ? faker.lorem.word() : '';
 
@@ -20,10 +19,12 @@ void main() {
             themeExtension = context.resolveThemeExtension<MyoroTooltipThemeExtension>();
 
             return MyoroTooltip(
-              waitDuration: waitDuration,
-              margin: margin,
-              text: text,
-              child: const SizedBox.shrink(),
+              MyoroTooltipConfiguration(
+                waitDuration: waitDuration ?? MyoroTooltipConfiguration.waitDurationDefaultValue,
+                margin: margin,
+                text: text,
+                child: const SizedBox.shrink(),
+              ),
             );
           },
         ),
@@ -37,7 +38,7 @@ void main() {
         (Widget w) =>
             w is Tooltip &&
             w.message == text &&
-            w.waitDuration == (waitDuration ?? themeExtension.waitDuration) &&
+            w.waitDuration == waitDuration &&
             w.margin == (margin ?? themeExtension.margin) &&
             w.child is SizedBox,
       ),

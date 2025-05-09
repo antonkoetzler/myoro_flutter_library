@@ -15,10 +15,7 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
           (_) => MyoroCircularLoaderWidgetShowcaseBloc(
             size: context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>().size,
           ),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_ColorOption(), _SizeOption()],
-      ),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_ColorOption(), _SizeOption()]),
     );
   }
 }
@@ -28,12 +25,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      MyoroCircularLoaderWidgetShowcaseBloc,
-      MyoroCircularLoaderWidgetShowcaseState
-    >(
+    return BlocBuilder<MyoroCircularLoaderWidgetShowcaseBloc, MyoroCircularLoaderWidgetShowcaseState>(
       builder: (_, MyoroCircularLoaderWidgetShowcaseState state) {
-        return MyoroCircularLoader(color: state.color, size: state.size);
+        return MyoroCircularLoader(
+          configuration: MyoroCircularLoaderConfiguration(color: state.color, size: state.size),
+        );
       },
     );
   }
@@ -60,9 +56,11 @@ final class _SizeOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>();
 
     return MyoroSlider(
-      label: 'Size',
-      maxValue: bloc.state.size + 500,
-      onChanged: (double value) => bloc.add(SetSizeEvent(value)),
+      MyoroSliderConfiguration(
+        label: 'Size',
+        maxValue: bloc.state.size + 500,
+        onChanged: (double value) => bloc.add(SetSizeEvent(value)),
+      ),
     );
   }
 }

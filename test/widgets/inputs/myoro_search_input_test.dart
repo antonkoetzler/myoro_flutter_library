@@ -15,22 +15,18 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            searchInputThemeExtension =
-                context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+            searchInputThemeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
             return MyoroSearchInput<String>(
-              configuration: configuration,
-              requestWhenChanged: requestWhenChanged,
-              request: (String query) {
-                return List.generate(
-                  faker.randomGenerator.integer(100, min: 1),
-                  (_) => faker.lorem.word(),
-                ).toSet();
-              },
-              itemBuilder:
-                  (String item) => MyoroMenuItem(
-                    textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
-                  ),
+              configuration: MyoroSearchInputConfiguration(
+                inputConfiguration: configuration,
+                requestWhenChanged: requestWhenChanged,
+                request: (String query) {
+                  return List.generate(faker.randomGenerator.integer(100, min: 1), (_) => faker.lorem.word()).toSet();
+                },
+                itemBuilder:
+                    (String item) => MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: item)),
+              ),
             );
           },
         ),
@@ -39,10 +35,7 @@ void main() {
     await tester.pumpAndSettle();
 
     // [MyoroSearchInput].
-    expect(
-      find.byWidgetPredicate((Widget w) => w is Focus && w.child is MyoroForm<Set<String>>),
-      findsOneWidget,
-    );
+    expect(find.byWidgetPredicate((Widget w) => w is Focus && w.child is MyoroForm<Set<String>>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
@@ -69,16 +62,11 @@ void main() {
 
     // [_SearchSection].
     final searchButtonFinder = find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroButton &&
-          w.configuration?.borderBuilder != null &&
-          w.configuration?.onTapUp != null,
+      (Widget w) => w is MyoroButton && w.configuration?.borderBuilder != null && w.configuration?.onTapUp != null,
     );
     expect(searchButtonFinder, findsOneWidget);
     expect(
-      find.byWidgetPredicate(
-        (Widget w) => w is Icon && w.icon == searchInputThemeExtension.searchButtonIcon,
-      ),
+      find.byWidgetPredicate((Widget w) => w is Icon && w.icon == searchInputThemeExtension.searchButtonIcon),
       findsOneWidget,
     );
 

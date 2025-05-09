@@ -37,15 +37,10 @@ final class MyoroResolverWidgetShowcase extends StatefulWidget {
 final class _MyoroResolverWidgetShowcaseState extends State<MyoroResolverWidgetShowcase> {
   final _resultEnumNotifier = ValueNotifier<_ResultEnum>(_ResultEnum.success);
 
-  void _showSnackBar(
-    BuildContext context, {
-    required String text,
-    required _ResultEnum resultEnum,
-  }) {
+  void _showSnackBar(BuildContext context, {required String text, required _ResultEnum resultEnum}) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        snackBarType: resultEnum.snackBarTypeEnum,
-        message: resultEnum.formatText(text),
+        MyoroSnackBarConfiguration(snackBarType: resultEnum.snackBarTypeEnum, message: resultEnum.formatText(text)),
       ),
     );
   }
@@ -67,26 +62,19 @@ final class _MyoroResolverWidgetShowcaseState extends State<MyoroResolverWidgetS
   @override
   Widget build(BuildContext context) {
     return MyoroResolver<String>(
-      onSuccess:
-          (String? result) =>
-              _showSnackBar(context, text: result!, resultEnum: _ResultEnum.success),
-      onError:
-          (String errorMessage) =>
-              _showSnackBar(context, text: errorMessage, resultEnum: _ResultEnum.error),
-      request: () async => await _makeRequest(),
-      builder: (
-        String? result,
-        MyoroRequestEnum status,
-        String? errorMessage,
-        MyoroResolverController controller,
-      ) {
-        return switch (status) {
-          MyoroRequestEnum.idle => const MyoroCircularLoader(),
-          MyoroRequestEnum.loading => const MyoroCircularLoader(),
-          MyoroRequestEnum.success => _RefreshButtons(controller, _resultEnumNotifier),
-          MyoroRequestEnum.error => _RefreshButtons(controller, _resultEnumNotifier),
-        };
-      },
+      MyoroResolverConfiguration(
+        onSuccess: (String? result) => _showSnackBar(context, text: result!, resultEnum: _ResultEnum.success),
+        onError: (String errorMessage) => _showSnackBar(context, text: errorMessage, resultEnum: _ResultEnum.error),
+        request: () async => await _makeRequest(),
+        builder: (String? result, MyoroRequestEnum status, String? errorMessage, MyoroResolverController controller) {
+          return switch (status) {
+            MyoroRequestEnum.idle => const MyoroCircularLoader(),
+            MyoroRequestEnum.loading => const MyoroCircularLoader(),
+            MyoroRequestEnum.success => _RefreshButtons(controller, _resultEnumNotifier),
+            MyoroRequestEnum.error => _RefreshButtons(controller, _resultEnumNotifier),
+          };
+        },
+      ),
     );
   }
 }
@@ -109,14 +97,8 @@ final class _RefreshButtons extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: context.resolveThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>().spacing,
         children: [
-          _RefreshButton(
-            'Click to execute a successful request',
-            () => _onPressed(_ResultEnum.success),
-          ),
-          _RefreshButton(
-            'Click to execute an unsuccessful request',
-            () => _onPressed(_ResultEnum.error),
-          ),
+          _RefreshButton('Click to execute a successful request', () => _onPressed(_ResultEnum.success)),
+          _RefreshButton('Click to execute an unsuccessful request', () => _onPressed(_ResultEnum.error)),
         ],
       ),
     );
@@ -131,17 +113,15 @@ final class _RefreshButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroResolverWidgetShowcaseThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroIconTextButtonTextConfiguration(
-          text: _text,
-          alignment: themeExtension.buttonTextAlign,
+        buttonConfiguration: MyoroButtonConfiguration(
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          onTapUp: (_) => _onPressed(),
         ),
-        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-        onTapUp: (_) => _onPressed(),
+        textConfiguration: MyoroIconTextButtonTextConfiguration(text: _text, alignment: themeExtension.buttonTextAlign),
       ),
     );
   }

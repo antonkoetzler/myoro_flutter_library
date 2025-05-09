@@ -4,21 +4,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A bar graph.
 class MyoroBarGraph extends StatelessWidget {
-  /// If the items of the graph should be sorted.
-  final bool sorted;
+  /// Configuration.
+  final MyoroBarGraphConfiguration configuration;
 
-  /// Items of the graph.
-  final List<MyoroBarGraphGroup> items;
-
-  MyoroBarGraph({super.key, this.sorted = true, required this.items})
-    : assert(items.isNotEmpty, '[MyoroBarGraph]: [items] must not be empty.');
+  const MyoroBarGraph({super.key, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
     final List<BarChartGroupData> formattedItems =
-        items
+        configuration.items
             .map<BarChartGroupData>(
               (MyoroBarGraphGroup group) => BarChartGroupData(
                 x: group.x,
@@ -31,21 +27,15 @@ class MyoroBarGraph extends StatelessWidget {
                         rodStackItems:
                             bar.barSections.isEmpty
                                 ? null
-                                : bar.barSections.map<BarChartRodStackItem>((
-                                  MyoroBarGraphBarSection barSection,
-                                ) {
-                                  return BarChartRodStackItem(
-                                    barSection.fromY,
-                                    barSection.toY,
-                                    barSection.color,
-                                  );
+                                : bar.barSections.map<BarChartRodStackItem>((MyoroBarGraphBarSection barSection) {
+                                  return BarChartRodStackItem(barSection.fromY, barSection.toY, barSection.color);
                                 }).toList(),
                       );
                     }).toList(),
               ),
             )
             .toList()
-          ..sort((a, b) => !sorted ? a.x : a.x.compareTo(b.x));
+          ..sort((a, b) => !configuration.sorted ? a.x : a.x.compareTo(b.x));
 
     final borderData = FlBorderData(border: themeExtension.border);
     const gridData = FlGridData(show: false);

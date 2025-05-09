@@ -53,14 +53,7 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        _Carousel(
-          _controller,
-          _direction,
-          _initialItem,
-          _autoplay,
-          _autoplayIntervalDuration,
-          _items,
-        ),
+        _Carousel(_controller, _direction, _initialItem, _autoplay, _autoplayIntervalDuration, _items),
         if (_displayTraversalButtons) ...[
           Positioned(
             child: _TraversalButton(
@@ -128,9 +121,11 @@ final class _TraversalButton extends StatelessWidget {
       child: IntrinsicWidth(
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
+            buttonConfiguration: MyoroButtonConfiguration(
+              borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+              onTapUp: (_) => _onTapUp(),
+            ),
             iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: _icon),
-            borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
-            onTapUp: (_) => _onTapUp(),
           ),
         ),
       ),

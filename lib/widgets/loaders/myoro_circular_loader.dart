@@ -3,23 +3,20 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple circular loading widget.
 class MyoroCircularLoader extends StatelessWidget {
-  /// Color of the [MyoroCircularLoader].
-  final Color? color;
+  /// Configuration.
+  final MyoroCircularLoaderConfiguration? configuration;
 
-  /// Size of the [MyoroCircularLoader].
-  final double? size;
-
-  const MyoroCircularLoader({super.key, this.color, this.size});
+  const MyoroCircularLoader({super.key, this.configuration});
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
-    final chosenSize = size ?? themeExtension.size;
+    final chosenSize = configuration?.size ?? themeExtension.size;
 
     return SizedBox(
       width: chosenSize,
       height: chosenSize,
-      child: CircularProgressIndicator(color: color ?? themeExtension.color),
+      child: CircularProgressIndicator(color: configuration?.color ?? themeExtension.color),
     );
   }
 }

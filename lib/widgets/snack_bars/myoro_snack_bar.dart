@@ -8,32 +8,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// Two main "modes": Providing a [Widget] or a simple [String] message for the content.
 class MyoroSnackBar extends StatelessWidget {
-  /// Type of snack bar dialog.
-  final MyoroSnackBarTypeEnum snackBarType;
+  /// Configuration.
+  final MyoroSnackBarConfiguration configuration;
 
-  /// Whether or not to display [_CloseButton].
-  final bool showCloseButton;
-
-  /// [String] content mode of the snack bar.
-  final String message;
-
-  /// [Widget] content mode of the snack bar.
-  final Widget? child;
-
-  MyoroSnackBar({
-    super.key,
-    this.snackBarType = MyoroSnackBarTypeEnum.standard,
-    this.showCloseButton = true,
-    this.message = '',
-    this.child,
-  }) : assert(
-         message.isNotEmpty ^ (child != null),
-         '[MyoroSnackBar]: [message] (x)or [child] must be provided.',
-       );
+  const MyoroSnackBar(this.configuration, {super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+
+    final String message = configuration.message;
+    final Widget? child = configuration.child;
 
     return Container(
       padding: themeExtension.padding,
@@ -41,7 +26,7 @@ class MyoroSnackBar extends StatelessWidget {
         color: themeExtension.primaryColor,
         border: Border.all(
           width: themeExtension.borderWidth,
-          color: snackBarType.getBorderColor(context),
+          color: configuration.snackBarType.getBorderColor(context),
         ),
         borderRadius: themeExtension.borderRadius,
       ),
@@ -49,8 +34,8 @@ class MyoroSnackBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (message.isNotEmpty) Flexible(child: _Message(message)),
-          if (child != null) Flexible(child: child!),
-          if (showCloseButton) ...[
+          if (child != null) Flexible(child: child),
+          if (configuration.showCloseButton) ...[
             SizedBox(width: themeExtension.contentCloseButtonSpacing),
             const _CloseButton(),
           ],
@@ -67,10 +52,7 @@ final class _Message extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _message,
-      style: context.resolveThemeExtension<MyoroSnackBarThemeExtension>().messageTextStyle,
-    );
+    return Text(_message, style: context.resolveThemeExtension<MyoroSnackBarThemeExtension>().messageTextStyle);
   }
 }
 
@@ -83,11 +65,11 @@ final class _CloseButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
+        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => context.hideSnackBar()),
         iconConfiguration: MyoroIconTextButtonIconConfiguration(
           icon: themeExtension.closeButtonIcon,
           size: themeExtension.closeButtonIconSize,
         ),
-        onTapUp: (_) => context.hideSnackBar(),
       ),
     );
   }

@@ -4,33 +4,26 @@ import 'package:provider/provider.dart';
 
 /// Root widget of any screen widget.
 class MyoroScreen extends StatefulWidget {
-  /// [MyoroDrawerController] if it needs to be controlled externally.
-  final MyoroDrawerController? drawerController;
+  /// Configuration.
+  final MyoroScreenConfiguration? configuration;
 
-  /// App bar of the screen.
-  final PreferredSizeWidget? appBar;
-
-  /// Body of the screen.
-  final Widget? body;
-
-  const MyoroScreen({super.key, this.drawerController, this.appBar, this.body});
+  const MyoroScreen([this.configuration, Key? key]) : super(key: key);
 
   @override
   State<MyoroScreen> createState() => _MyoroScreenState();
 }
 
 final class _MyoroScreenState extends State<MyoroScreen> {
-  PreferredSizeWidget? get _appBar => widget.appBar;
-  Widget? get _body => widget.body;
+  MyoroScreenConfiguration? get _configuration => widget.configuration;
 
   MyoroDrawerController? _localDrawerController;
   MyoroDrawerController get _drawerController {
-    return widget.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
+    return _configuration?.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
   }
 
   @override
   void dispose() {
-    if (widget.drawerController == null) _drawerController.dispose();
+    _localDrawerController?.dispose();
     super.dispose();
   }
 
@@ -51,8 +44,8 @@ final class _MyoroScreenState extends State<MyoroScreen> {
       child: SafeArea(
         child: Scaffold(
           key: _drawerController.scaffoldKey,
-          appBar: _appBar,
-          body: _body,
+          appBar: _configuration?.appBar,
+          body: _configuration?.body,
           drawer: drawer,
           endDrawer: drawer,
         ),
