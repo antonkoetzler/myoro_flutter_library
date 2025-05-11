@@ -55,9 +55,9 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
       barColor = colorScheme.onPrimary,
       barBorderRadius = BorderRadius.zero,
       sideTitleTextStyle = textTheme.bodySmall!,
-      sideTitleInterval = kMyoroGraphSideTitleInterval,
-      verticalSideTitleReversedSize = kMyoroGraphVerticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize = kMyoroGraphHorizontalSideTitleReversedSize;
+      sideTitleInterval = 0.2,
+      verticalSideTitleReversedSize = 48,
+      horizontalSideTitleReversedSize = 22;
 
   @override
   MyoroBarGraphThemeExtension copyWith({

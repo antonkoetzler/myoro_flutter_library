@@ -21,9 +21,11 @@ void main() {
             themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
             return MyoroAppBar(
-              bordered: bordered,
-              backgroundColor: backgroundColor,
-              child: const SizedBox.shrink(),
+              configuration: MyoroAppBarConfiguration(
+                bordered: bordered,
+                backgroundColor: backgroundColor,
+                child: const SizedBox.shrink(),
+              ),
             );
           },
         ),

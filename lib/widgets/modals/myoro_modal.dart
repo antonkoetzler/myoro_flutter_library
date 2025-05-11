@@ -50,7 +50,10 @@ class MyoroModal extends StatelessWidget {
         child: Container(
           constraints: configuration?.constraints ?? themeExtension.constraints,
           padding: themeExtension.padding,
-          decoration: BoxDecoration(borderRadius: themeExtension.borderRadius, border: themeExtension.border),
+          decoration: BoxDecoration(
+            borderRadius: themeExtension.borderRadius,
+            border: themeExtension.border,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -94,7 +97,10 @@ final class _Title extends StatelessWidget {
         // Used to align [_Title] with [_CloseButton] visually.
         left: 8,
       ),
-      child: Text(_title, style: context.resolveThemeExtension<MyoroModalThemeExtension>().titleTextStyle),
+      child: Text(
+        _title,
+        style: context.resolveThemeExtension<MyoroModalThemeExtension>().titleTextStyle,
+      ),
     );
   }
 }
@@ -109,7 +115,9 @@ final class _CloseButton extends StatelessWidget {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => context.navigator.pop()),
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.closeButtonIcon),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.closeButtonIcon,
+        ),
       ),
     );
   }

@@ -17,7 +17,10 @@ final class MyoroPieGraphWidgetShowcase extends StatelessWidget {
         builder: (_, MyoroPieGraphWidgetShowcaseState state) {
           return WidgetShowcase(
             widget: const _Widget(),
-            widgetOptions: [const _TypeEnumOption(), if (state.typeEnum.isDonut) const _CenterWidgetOption()],
+            widgetOptions: [
+              const _TypeEnumOption(),
+              if (state.typeEnum.isDonut) const _CenterWidgetOption(),
+            ],
           );
         },
       ),
@@ -56,7 +59,8 @@ final class _CenterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>();
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
@@ -81,7 +85,10 @@ final class _TypeEnumOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: '[MyoroPieGraph.typeEnum]',
         allowItemClearing: false,
-        menuConfiguration: MyoroMenuConfiguration(request: MyoroPieGraphEnum.values.toSet, itemBuilder: _itemBuilder),
+        menuConfiguration: MyoroMenuConfiguration(
+          request: MyoroPieGraphEnum.values.toSet,
+          itemBuilder: _itemBuilder,
+        ),
         selectedItemBuilder: _selectedItemBuilder,
         initiallySelectedItem: bloc.state.typeEnum,
         onChanged: (typeEnum) => _onChanged(bloc, typeEnum),
@@ -90,7 +97,9 @@ final class _TypeEnumOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder(MyoroPieGraphEnum typeEnum) {
-    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: typeEnum.name));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: typeEnum.name),
+    );
   }
 
   String _selectedItemBuilder(MyoroPieGraphEnum typeEnum) {
@@ -110,9 +119,11 @@ final class _CenterWidgetOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroPieGraphWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroPieGraph.centerWidget] enabled?',
-      initialValue: bloc.state.centerWidgetEnabled,
-      onChanged: (bool value) => bloc.add(SetCenterWidgetEnabledEvent(value)),
+      configuration: MyoroCheckboxConfiguration(
+        label: '[MyoroPieGraph.centerWidget] enabled?',
+        initialValue: bloc.state.centerWidgetEnabled,
+        onChanged: (bool value) => bloc.add(SetCenterWidgetEnabledEvent(value)),
+      ),
     );
   }
 }

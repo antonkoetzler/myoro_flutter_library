@@ -11,8 +11,10 @@ final class MyoroButtonWidgetShowcaseOnTapDownOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroButtonWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroButtonConfiguration.onTapDown]',
-      onChanged: (value) => _onChanged(bloc, value),
+      configuration: MyoroCheckboxConfiguration(
+        label: '[MyoroButtonConfiguration.onTapDown]',
+        onChanged: (value) => _onChanged(bloc, value),
+      ),
     );
   }
 

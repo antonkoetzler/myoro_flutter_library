@@ -12,7 +12,7 @@ class MyoroSlider extends StatefulWidget {
   /// Configuration.
   final MyoroSliderConfiguration configuration;
 
-  const MyoroSlider(this.configuration, {super.key});
+  const MyoroSlider({super.key, required this.configuration});
 
   @override
   State<MyoroSlider> createState() => _MyoroSliderState();
@@ -51,7 +51,8 @@ final class _MyoroSliderState extends State<MyoroSlider> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (_configuration.label.isNotEmpty) _Label(_configuration.label, _configuration.labelTextStyle),
+          if (_configuration.label.isNotEmpty)
+            _Label(_configuration.label, _configuration.labelTextStyle),
           Padding(
             padding: sliderPadding,
             child: ValueListenableBuilder(
@@ -62,7 +63,9 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                     Row(
                       children: [
                         if (_configuration.currentValueIndicatorTextBuilder != null) ...[
-                          _IndicatorText(_configuration.currentValueIndicatorTextBuilder!.call(sliderValue)),
+                          _IndicatorText(
+                            _configuration.currentValueIndicatorTextBuilder!.call(sliderValue),
+                          ),
                         ],
                         Expanded(
                           child: Slider(
@@ -73,12 +76,19 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                           ),
                         ),
                         if (_configuration.maxValueIndicatorTextBuilder != null) ...[
-                          _IndicatorText(_configuration.maxValueIndicatorTextBuilder!.call(_configuration.maxValue)),
+                          _IndicatorText(
+                            _configuration.maxValueIndicatorTextBuilder!.call(
+                              _configuration.maxValue,
+                            ),
+                          ),
                         ],
                       ],
                     ),
                     if (_configuration.footerIndicatorTextBuilder != null) ...[
-                      _IndicatorText(_configuration.footerIndicatorTextBuilder!.call(sliderValue), isFooter: true),
+                      _IndicatorText(
+                        _configuration.footerIndicatorTextBuilder!.call(sliderValue),
+                        isFooter: true,
+                      ),
                     ],
                   ],
                 );
@@ -101,7 +111,9 @@ final class _Label extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _label,
-      style: _labelTextStyle ?? context.resolveThemeExtension<MyoroSliderThemeExtension>().labelTextStyle,
+      style:
+          _labelTextStyle ??
+          context.resolveThemeExtension<MyoroSliderThemeExtension>().labelTextStyle,
     );
   }
 }

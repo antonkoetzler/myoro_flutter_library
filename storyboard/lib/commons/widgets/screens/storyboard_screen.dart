@@ -27,7 +27,10 @@ final class StoryboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroScreen(
-      MyoroScreenConfiguration(appBar: _AppBar(onPrevious, headerTitleText, headerSubtitleText), body: body),
+      configuration: MyoroScreenConfiguration(
+        appBar: _AppBar(onPrevious, headerTitleText, headerSubtitleText),
+        body: body,
+      ),
     );
   }
 }
@@ -49,22 +52,24 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
     final bool headerSubtitleTextIsNotNull = _headerSubtitleText != null;
 
     return MyoroAppBar(
-      bordered: true,
-      child: Row(
-        spacing: themeExtension.spacing,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            spacing: themeExtension.spacing / 2,
-            children: [
-              if (_onPrevious != null) _PreviousPageButton(_onPrevious),
-              if (headerTitleTextIsNotNull || headerSubtitleTextIsNotNull)
-                _Header(_headerTitleText, _headerSubtitleText),
-            ],
-          ),
-          const _ToggleThemeButton(),
-        ],
+      configuration: MyoroAppBarConfiguration(
+        bordered: true,
+        child: Row(
+          spacing: themeExtension.spacing,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: themeExtension.spacing / 2,
+              children: [
+                if (_onPrevious != null) _PreviousPageButton(_onPrevious),
+                if (headerTitleTextIsNotNull || headerSubtitleTextIsNotNull)
+                  _Header(_headerTitleText, _headerSubtitleText),
+              ],
+            ),
+            const _ToggleThemeButton(),
+          ],
+        ),
       ),
     );
   }
@@ -117,7 +122,9 @@ final class _PreviousPageButton extends StatelessWidget {
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onPrevious()),
         padding: themeExtension.previousPageButtonPadding,
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.previousPageButtonIcon),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.previousPageButtonIcon,
+        ),
       ),
     );
   }
@@ -156,7 +163,9 @@ final class _ToggleThemeButton extends StatelessWidget {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.toggleThemeButtonIcon),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.toggleThemeButtonIcon,
+        ),
       ),
     );
   }

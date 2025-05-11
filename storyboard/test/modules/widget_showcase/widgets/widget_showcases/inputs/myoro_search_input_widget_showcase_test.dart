@@ -14,7 +14,8 @@ void main() {
     expect(find.byType(MyoroSearchInput<String>), findsOneWidget);
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[MyoroSearchInput.requestWhenChanged]',
+        (Widget w) =>
+            w is MyoroCheckbox && w.configuration.label == '[MyoroSearchInput.requestWhenChanged]',
       ),
       findsOneWidget,
     );

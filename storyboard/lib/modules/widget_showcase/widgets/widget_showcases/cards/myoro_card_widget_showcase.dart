@@ -14,7 +14,13 @@ final class MyoroCardWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroCardWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: [_TitleOption(), _TitleTextStyleOption(), _PaddingOption(), _WidthOption(), _HeightOption()],
+        widgetOptions: [
+          _TitleOption(),
+          _TitleTextStyleOption(),
+          _PaddingOption(),
+          _WidthOption(),
+          _HeightOption(),
+        ],
       ),
     );
   }
@@ -29,12 +35,14 @@ final class _Widget extends StatelessWidget {
       builder: (_, MyoroCardWidgetShowcaseState state) {
         return IntrinsicHeight(
           child: MyoroCard(
-            title: state.title.isEmpty ? null : state.title,
-            titleTextStyle: state.titleTextStyle,
-            padding: state.padding != null ? EdgeInsets.all(state.padding!) : null,
-            width: state.width.$1 ? state.width.$2 : null,
-            height: state.height.$1 ? state.height.$2 : null,
-            child: const Text('This is a [MyoroCard]!'),
+            configuration: MyoroCardConfiguration(
+              title: state.title.isEmpty ? MyoroCardConfiguration.titleDefaultValue : state.title,
+              titleTextStyle: state.titleTextStyle,
+              padding: state.padding != null ? EdgeInsets.all(state.padding!) : null,
+              width: state.width.$1 ? state.width.$2 : null,
+              height: state.height.$1 ? state.height.$2 : null,
+              child: const Text('This is a [MyoroCard]!'),
+            ),
           ),
         );
       },
@@ -85,7 +93,9 @@ final class _TitleTextStyleOption extends StatelessWidget {
   }
 
   MyoroMenuItem _itemBuilder((String, TextStyle) textStyle) {
-    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: textStyle.$1));
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: textStyle.$1),
+    );
   }
 
   void _onChanged(BuildContext context, (String, TextStyle)? textStyle) {
@@ -102,7 +112,7 @@ final class _PaddingOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroSlider(
-      MyoroSliderConfiguration(
+      configuration: MyoroSliderConfiguration(
         label: '[MyoroCard.padding]',
         initialValue: context.resolveThemeExtension<MyoroCardThemeExtension>().padding.top,
         maxValue: 50,
@@ -140,7 +150,8 @@ final class _WidthOptionState extends State<_WidthOption> {
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
         controller: _controller,
-        inputStyle: context.resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle:
+            context.resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>().inputStyle,
         label: '[MyoroCard.width]',
         onChanged: (String text) => _onChanged(true, text),
         checkboxOnChanged: (bool enabled, String text) => _onChanged(enabled, text),
@@ -175,7 +186,8 @@ final class _HeightOptionState extends State<_HeightOption> {
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
         controller: _controller,
-        inputStyle: context.resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle:
+            context.resolveThemeExtension<MyoroCardWidgetShowcaseThemeExtension>().inputStyle,
         label: '[MyoroCard.height]',
         onChanged: (String text) => _onChanged(true, text),
         checkboxOnChanged: (bool enabled, String text) => _onChanged(enabled, text),

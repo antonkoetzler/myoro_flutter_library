@@ -4,45 +4,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Slider carousel.
 class MyoroCarousel extends StatefulWidget {
-  /// Direction that the carousel is sliding in.
-  final Axis direction;
+  /// Configuration.
+  final MyoroCarouselConfiguration configuration;
 
-  /// Display buttons to traverse [items].
-  final bool displayTraversalButtons;
-
-  /// Initial item from [slides] starting in the carousel.
-  final int initialItem;
-
-  /// If the carousel autoslides [items].
-  final bool autoplay;
-
-  /// [autoplay] interval duration.
-  final Duration autoplayIntervalDuration;
-
-  /// Slides of the carousel.
-  final List<Widget> items;
-
-  const MyoroCarousel({
-    super.key,
-    this.direction = Axis.horizontal,
-    this.displayTraversalButtons = false,
-    this.initialItem = 0,
-    this.autoplay = false,
-    this.autoplayIntervalDuration = kMyoroCarouselAutoplayIntervalDuration,
-    required this.items,
-  });
+  const MyoroCarousel({super.key, required this.configuration});
 
   @override
   State<MyoroCarousel> createState() => _MyoroCarouselState();
 }
 
 final class _MyoroCarouselState extends State<MyoroCarousel> {
-  Axis get _direction => widget.direction;
-  bool get _displayTraversalButtons => widget.displayTraversalButtons;
-  int get _initialItem => widget.initialItem;
-  bool get _autoplay => widget.autoplay;
-  Duration get _autoplayIntervalDuration => widget.autoplayIntervalDuration;
-  List<Widget> get _items => widget.items;
+  MyoroCarouselConfiguration get _configuration => widget.configuration;
 
   final _controller = CarouselSliderController();
 
@@ -53,8 +25,8 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        _Carousel(_controller, _direction, _initialItem, _autoplay, _autoplayIntervalDuration, _items),
-        if (_displayTraversalButtons) ...[
+        _Carousel(_configuration, _controller),
+        if (_configuration.displayTraversalButtons) ...[
           Positioned(
             child: _TraversalButton(
               Alignment.centerLeft,
@@ -76,32 +48,21 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
 }
 
 final class _Carousel extends StatelessWidget {
+  final MyoroCarouselConfiguration _configuration;
   final CarouselSliderController _controller;
-  final Axis _direction;
-  final int _initialItem;
-  final bool _autoplay;
-  final Duration _autoplayIntervalDuration;
-  final List<Widget> _items;
 
-  const _Carousel(
-    this._controller,
-    this._direction,
-    this._initialItem,
-    this._autoplay,
-    this._autoplayIntervalDuration,
-    this._items,
-  );
+  const _Carousel(this._configuration, this._controller);
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       carouselController: _controller,
-      items: _items,
+      items: _configuration.items,
       options: CarouselOptions(
-        initialPage: _initialItem,
-        scrollDirection: _direction,
-        autoPlay: _autoplay,
-        autoPlayInterval: _autoplayIntervalDuration,
+        initialPage: _configuration.initialItem,
+        scrollDirection: _configuration.direction,
+        autoPlay: _configuration.autoplay,
+        autoPlayInterval: _configuration.autoplayIntervalDuration,
       ),
     );
   }

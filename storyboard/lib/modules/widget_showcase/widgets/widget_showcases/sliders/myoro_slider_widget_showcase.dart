@@ -13,7 +13,8 @@ final class MyoroSliderWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create:
           (_) => MyoroSliderWidgetShowcaseBloc(
-            width: context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize,
+            width:
+                context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize,
           ),
       child: const WidgetShowcase(
         widget: _Widget(),
@@ -38,7 +39,8 @@ final class _Widget extends StatefulWidget {
 }
 
 final class _WidgetState extends State<_Widget> {
-  late final _widgetSize = context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize;
+  late final _widgetSize =
+      context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize;
   late final _hiddenKittyCoverWidthNotifier = ValueNotifier<double>(_widgetSize);
 
   @override
@@ -80,7 +82,9 @@ final class _HiddenKitty extends StatelessWidget {
               return Container(
                 width: width,
                 color:
-                    context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().hiddenKittyContainerColor,
+                    context
+                        .resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>()
+                        .hiddenKittyContainerColor,
               );
             },
           ),
@@ -104,17 +108,20 @@ final class _Slider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetSize = context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize;
+    final widgetSize =
+        context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize;
 
     return BlocBuilder<MyoroSliderWidgetShowcaseBloc, MyoroSliderWidgetShowcaseState>(
       builder: (_, MyoroSliderWidgetShowcaseState state) {
         return MyoroSlider(
-          MyoroSliderConfiguration(
+          configuration: MyoroSliderConfiguration(
             label: state.label,
             labelTextStyle: state.labelTextStyle,
             width: state.width,
             currentValueIndicatorTextBuilder:
-                state.currentValueIndicatorTextBuilderEnabled ? _currentValueIndicatorBuilder : null,
+                state.currentValueIndicatorTextBuilderEnabled
+                    ? _currentValueIndicatorBuilder
+                    : null,
             maxValueIndicatorTextBuilder:
                 state.maxValueIndicatorTextBuilderEnabled ? _maxValueIndicatorTextBuilder : null,
             footerIndicatorTextBuilder:
@@ -142,7 +149,8 @@ final class _LabelOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
-        inputStyle: context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle:
+            context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().inputStyle,
         label: '[MyoroSlider.label]',
         onChanged: (String text) => _onChanged(context, text),
       ),
@@ -192,10 +200,11 @@ final class _WidthOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetSize = context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize;
+    final widgetSize =
+        context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize;
 
     return MyoroSlider(
-      MyoroSliderConfiguration(
+      configuration: MyoroSliderConfiguration(
         label: '[MyoroSlider.width]',
         minValue: 100,
         maxValue: widgetSize,
@@ -218,9 +227,11 @@ final class _CurrentValueIndicatorTextBuilderOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroSliderWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: 'Label on the left?',
-      initialValue: bloc.state.currentValueIndicatorTextBuilderEnabled,
-      onChanged: (bool value) => _onChanged(bloc, value),
+      configuration: MyoroCheckboxConfiguration(
+        label: 'Label on the left?',
+        initialValue: bloc.state.currentValueIndicatorTextBuilderEnabled,
+        onChanged: (bool value) => _onChanged(bloc, value),
+      ),
     );
   }
 }
@@ -237,9 +248,11 @@ final class _MaxValueIndicatorTextBuilderOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroSliderWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: 'Label on the right?',
-      initialValue: bloc.state.maxValueIndicatorTextBuilderEnabled,
-      onChanged: (bool value) => _onChanged(bloc, value),
+      configuration: MyoroCheckboxConfiguration(
+        label: 'Label on the right?',
+        initialValue: bloc.state.maxValueIndicatorTextBuilderEnabled,
+        onChanged: (bool value) => _onChanged(bloc, value),
+      ),
     );
   }
 }
@@ -256,9 +269,11 @@ final class _FooterIndicatorTextBuilderOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroSliderWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: 'Label on the bottom?',
-      initialValue: bloc.state.footerIndicatorTextBuilderEnabled,
-      onChanged: (bool value) => _onChanged(bloc, value),
+      configuration: MyoroCheckboxConfiguration(
+        label: 'Label on the bottom?',
+        initialValue: bloc.state.footerIndicatorTextBuilderEnabled,
+        onChanged: (bool value) => _onChanged(bloc, value),
+      ),
     );
   }
 }

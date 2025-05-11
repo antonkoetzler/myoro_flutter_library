@@ -69,9 +69,9 @@ void main() {
     expect(StoryboardWidgetListingEnum.loaders.categoryName, 'Loaders');
     expect(StoryboardWidgetListingEnum.loaders.widgetNames, ['MyoroCircularLoader']);
 
-    // Material apps
-    expect(StoryboardWidgetListingEnum.materialApps.categoryName, 'Material apps');
-    expect(StoryboardWidgetListingEnum.materialApps.widgetNames, ['MyoroMaterialApp']);
+    // Apps
+    expect(StoryboardWidgetListingEnum.apps.categoryName, 'Apps');
+    expect(StoryboardWidgetListingEnum.apps.widgetNames, ['MyoroApp']);
 
     // Menus
     expect(StoryboardWidgetListingEnum.menus.categoryName, 'Menus');
@@ -207,12 +207,10 @@ void main() {
       isA<MyoroCircularLoaderWidgetShowcase>(),
     );
 
-    // Material apps
+    // Apps
     expect(
-      StoryboardWidgetListingEnum.getWidgetShowcase(
-        StoryboardWidgetListingEnum.myoroMaterialAppTitle,
-      ),
-      isA<MyoroMaterialAppWidgetShowcase>(),
+      StoryboardWidgetListingEnum.getWidgetShowcase(StoryboardWidgetListingEnum.myoroAppTitle),
+      isA<MyoroAppWidgetShowcase>(),
     );
 
     // Menus
@@ -296,7 +294,7 @@ void main() {
     expect(StoryboardWidgetListingEnum.inputs.isInputs, isTrue);
     expect(StoryboardWidgetListingEnum.layoutBuilders.isLayoutBuilders, isTrue);
     expect(StoryboardWidgetListingEnum.loaders.isLoaders, isTrue);
-    expect(StoryboardWidgetListingEnum.materialApps.isMaterialApps, isTrue);
+    expect(StoryboardWidgetListingEnum.apps.isApps, isTrue);
     expect(StoryboardWidgetListingEnum.menus.isMenus, isTrue);
     expect(StoryboardWidgetListingEnum.modals.isModals, isTrue);
     expect(StoryboardWidgetListingEnum.radios.isRadios, isTrue);

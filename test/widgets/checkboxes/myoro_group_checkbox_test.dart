@@ -5,10 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroGroupCheckbox].
 void main() {
-  final Axis? direction =
-      faker.randomGenerator.boolean()
-          ? Axis.values[faker.randomGenerator.integer(Axis.values.length)]
-          : null;
+  final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
   final double? spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final double? runSpacing =
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
@@ -27,10 +24,12 @@ void main() {
             themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
             return MyoroGroupCheckbox(
-              direction: direction,
-              spacing: spacing,
-              runSpacing: runSpacing,
-              checkboxes: checkboxes,
+              configuration: MyoroGroupCheckboxConfiguration(
+                direction: direction,
+                spacing: spacing,
+                runSpacing: runSpacing,
+                checkboxes: checkboxes,
+              ),
             );
           },
         ),
@@ -46,7 +45,7 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is Wrap &&
-            w.direction == (direction ?? themeExtension.direction) &&
+            w.direction == direction &&
             w.spacing == (spacing ?? themeExtension.spacing) &&
             w.runSpacing == (runSpacing ?? themeExtension.runSpacing) &&
             w.children.length == checkboxes.keys.length,

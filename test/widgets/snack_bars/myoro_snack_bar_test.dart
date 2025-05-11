@@ -10,7 +10,11 @@ void main() {
   final String message = faker.lorem.word();
   const Widget child = MyoroRadio();
 
-  Future<BuildContext> pumpWidget(WidgetTester tester, {bool isUsingMessage = false, bool isUsingChild = false}) async {
+  Future<BuildContext> pumpWidget(
+    WidgetTester tester, {
+    bool isUsingMessage = false,
+    bool isUsingChild = false,
+  }) async {
     assert(isUsingMessage ^ isUsingChild);
 
     late final BuildContext context;
@@ -22,7 +26,7 @@ void main() {
             context = buildContext;
 
             return MyoroSnackBar(
-              MyoroSnackBarConfiguration(
+              configuration: MyoroSnackBarConfiguration(
                 snackBarType: snackBarType,
                 showCloseButton: showCloseButton,
                 message: isUsingMessage ? message : '',
@@ -54,7 +58,10 @@ void main() {
             w.decoration ==
                 BoxDecoration(
                   color: themeExtension.primaryColor,
-                  border: Border.all(width: themeExtension.borderWidth, color: snackBarType.getBorderColor(context)),
+                  border: Border.all(
+                    width: themeExtension.borderWidth,
+                    color: snackBarType.getBorderColor(context),
+                  ),
                   borderRadius: themeExtension.borderRadius,
                 ) &&
             w.child is Row &&
@@ -62,7 +69,8 @@ void main() {
             (w.child as Row).children.length == (showCloseButton ? 3 : 1) &&
             (showCloseButton
                 ? ((w.child as Row).children[1] is SizedBox &&
-                    ((w.child as Row).children[1] as SizedBox).width == themeExtension.contentCloseButtonSpacing)
+                    ((w.child as Row).children[1] as SizedBox).width ==
+                        themeExtension.contentCloseButtonSpacing)
                 : (true)),
       ),
       findsOneWidget,
@@ -72,7 +80,8 @@ void main() {
     if (isUsingMessage) {
       expect(
         find.byWidgetPredicate(
-          (Widget w) => w is Text && w.data == message && w.style == themeExtension.messageTextStyle,
+          (Widget w) =>
+              w is Text && w.data == message && w.style == themeExtension.messageTextStyle,
         ),
         findsOneWidget,
       );
@@ -80,7 +89,10 @@ void main() {
 
     // Widget.
     if (isUsingChild) {
-      expect(find.byWidgetPredicate((Widget w) => w is Flexible && w.child is MyoroRadio), findsOneWidget);
+      expect(
+        find.byWidgetPredicate((Widget w) => w is Flexible && w.child is MyoroRadio),
+        findsOneWidget,
+      );
     }
 
     // [_CloseButton].
@@ -99,7 +111,11 @@ void main() {
   }
 
   test('MyoroSnackBar text (x)or child assertion', () {
-    expect(() => MyoroSnackBar(MyoroSnackBarConfiguration(message: message, child: child)), throwsAssertionError);
+    expect(
+      () =>
+          MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message, child: child)),
+      throwsAssertionError,
+    );
   });
 
   testWidgets('MyoroSnackBar using text', (WidgetTester tester) async {

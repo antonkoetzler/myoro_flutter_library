@@ -11,7 +11,7 @@ class MyoroSnackBar extends StatelessWidget {
   /// Configuration.
   final MyoroSnackBarConfiguration configuration;
 
-  const MyoroSnackBar(this.configuration, {super.key});
+  const MyoroSnackBar({super.key, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,10 @@ final class _Message extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(_message, style: context.resolveThemeExtension<MyoroSnackBarThemeExtension>().messageTextStyle);
+    return Text(
+      _message,
+      style: context.resolveThemeExtension<MyoroSnackBarThemeExtension>().messageTextStyle,
+    );
   }
 }
 

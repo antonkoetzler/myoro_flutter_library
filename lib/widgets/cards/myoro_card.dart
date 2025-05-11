@@ -3,94 +3,62 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base card.
 class MyoroCard extends StatelessWidget {
-  /// Title of the card.
-  final String? title;
+  /// Configuration.
+  final MyoroCardConfiguration configuration;
 
-  /// Text style of [title].
-  final TextStyle? titleTextStyle;
-
-  /// Padding of [child] (not the [MyoroCard]).
-  final EdgeInsets? padding;
-
-  /// Width of [_Card].
-  final double? width;
-
-  /// Height of [_Card].
-  final double? height;
-
-  /// Constraints of [_Card].
-  final BoxConstraints? constraints;
-
-  /// Content of the card.
-  final Widget child;
-
-  const MyoroCard({
-    super.key,
-    this.title,
-    this.titleTextStyle,
-    this.padding,
-    this.width,
-    this.height,
-    this.constraints,
-    required this.child,
-  });
+  const MyoroCard({super.key, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+
     return Column(
       mainAxisSize: MainAxisSize.min,
+      spacing: themeExtension.titleCardSpacing,
       children: [
-        if (title != null) ...[
-          _Title(title!, titleTextStyle),
-          SizedBox(
-            height: context.resolveThemeExtension<MyoroCardThemeExtension>().titleCardSpacing,
-          ),
-        ],
-        Flexible(child: _Card(padding, width, height, constraints, child)),
+        if (configuration.title.isNotEmpty) _Title(configuration),
+        Flexible(child: _Card(configuration)),
       ],
     );
   }
 }
 
 final class _Title extends StatelessWidget {
-  final String _title;
-  final TextStyle? _titleTextStyle;
+  final MyoroCardConfiguration _configuration;
 
-  const _Title(this._title, this._titleTextStyle);
+  const _Title(this._configuration);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      _title,
-      style: _titleTextStyle ?? context.resolveThemeExtension<MyoroCardThemeExtension>().textStyle,
+      _configuration.title,
+      style:
+          _configuration.titleTextStyle ??
+          context.resolveThemeExtension<MyoroCardThemeExtension>().textStyle,
     );
   }
 }
 
 final class _Card extends StatelessWidget {
-  final EdgeInsets? _padding;
-  final double? _width;
-  final double? _height;
-  final BoxConstraints? _constraints;
-  final Widget _child;
+  final MyoroCardConfiguration _configuration;
 
-  const _Card(this._padding, this._width, this._height, this._constraints, this._child);
+  const _Card(this._configuration);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
 
     return Container(
-      width: _width,
-      height: _height,
-      constraints: _constraints,
-      padding: _padding ?? themeExtension.padding,
+      width: _configuration.width,
+      height: _configuration.height,
+      constraints: _configuration.constraints,
+      padding: _configuration.padding ?? themeExtension.padding,
       decoration: BoxDecoration(
         color: themeExtension.backgroundColor,
         border: themeExtension.border,
         borderRadius: themeExtension.borderRadius,
       ),
-      child: _child,
+      child: _configuration.child,
     );
   }
 }

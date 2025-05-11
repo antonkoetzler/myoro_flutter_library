@@ -6,6 +6,7 @@ import 'package:storyboard/storyboard.dart';
 enum StoryboardWidgetListingEnum {
   accordions('Accordions', {myoroAccordionTitle}),
   appBars('App bars', {myoroAppBarTitle}),
+  apps('Apps', {myoroAppTitle}),
   buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle}),
   cards('Cards', {myoroCardTitle}),
   carousels('Carousels', {myoroCarouselTitle}),
@@ -18,7 +19,6 @@ enum StoryboardWidgetListingEnum {
   inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
   layoutBuilders('Layout builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
-  materialApps('Material apps', {myoroMaterialAppTitle}),
   menus('Menus', {myoroMenuTitle}),
   modals('Modals', {myoroModalTitle, myoroDialogModalTitle}),
   radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle}),
@@ -43,6 +43,9 @@ enum StoryboardWidgetListingEnum {
 
   // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';
+
+  // Apps
+  static const myoroAppTitle = 'MyoroApp';
 
   // Buttons
   static const myoroButtonTitle = 'MyoroButton';
@@ -86,9 +89,6 @@ enum StoryboardWidgetListingEnum {
 
   // Loaders
   static const myoroCircularLoaderTitle = 'MyoroCircularLoader';
-
-  // Material apps
-  static const myoroMaterialAppTitle = 'MyoroMaterialApp';
 
   // Menus
   static const myoroMenuTitle = 'MyoroMenu';
@@ -174,8 +174,8 @@ enum StoryboardWidgetListingEnum {
       // Loaders
       myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),
 
-      // Material apps
-      myoroMaterialAppTitle => const MyoroMaterialAppWidgetShowcase(),
+      // Apps
+      myoroAppTitle => const MyoroAppWidgetShowcase(),
 
       // Menus
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
@@ -213,6 +213,7 @@ enum StoryboardWidgetListingEnum {
 
   bool get isAccordions => this == accordions;
   bool get isAppBars => this == appBars;
+  bool get isApps => this == apps;
   bool get isButtons => this == buttons;
   bool get isCards => this == cards;
   bool get isCarousels => this == carousels;
@@ -225,7 +226,6 @@ enum StoryboardWidgetListingEnum {
   bool get isInputs => this == inputs;
   bool get isLayoutBuilders => this == layoutBuilders;
   bool get isLoaders => this == loaders;
-  bool get isMaterialApps => this == materialApps;
   bool get isMenus => this == menus;
   bool get isModals => this == modals;
   bool get isRadios => this == radios;

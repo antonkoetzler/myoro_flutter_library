@@ -31,7 +31,12 @@ final class _Widget extends StatelessWidget {
     return Center(
       child: BlocBuilder<MyoroCheckboxWidgetShowcaseBloc, MyoroCheckboxWidgetShowcaseState>(
         builder: (_, MyoroCheckboxWidgetShowcaseState state) {
-          return MyoroCheckbox(label: state.label, labelTextStyle: state.labelTextStyle);
+          return MyoroCheckbox(
+            configuration: MyoroCheckboxConfiguration(
+              label: state.label,
+              labelTextStyle: state.labelTextStyle,
+            ),
+          );
         },
       ),
     );

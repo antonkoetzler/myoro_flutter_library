@@ -1,9 +1,15 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final configuration = MyoroIconTextButtonConfiguration.fake();
+  late final MyoroIconTextButtonConfiguration configuration;
+
+  setUp(() {
+    MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
+    configuration = MyoroIconTextButtonConfiguration.fake();
+  });
 
   testWidgets('MyoroIconTextButton', (WidgetTester tester) async {
     await tester.pumpWidget(

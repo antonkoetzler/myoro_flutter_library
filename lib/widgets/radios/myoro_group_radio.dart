@@ -4,20 +4,21 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// A group of [MyoroRadio]s.
 class MyoroGroupRadio extends StatefulWidget {
   /// Configuration.
-  final MyoroGroupRadioConfiguration? configuration;
+  final MyoroGroupRadioConfiguration configuration;
 
-  const MyoroGroupRadio({super.key, this.configuration});
+  const MyoroGroupRadio({super.key, required this.configuration});
 
   @override
   State<MyoroGroupRadio> createState() => _MyoroGroupRadioState();
 }
 
 final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
-  MyoroGroupRadioConfiguration? get _configuration => widget.configuration;
+  MyoroGroupRadioConfiguration get _configuration => widget.configuration;
 
   MyoroGroupRadioNotifier? _localNotifier;
   MyoroGroupRadioNotifier get _notifier {
-    return _configuration?.notifier ?? (_localNotifier ??= MyoroGroupRadioNotifier(_configuration!.radios!));
+    return _configuration.notifier ??
+        (_localNotifier ??= MyoroGroupRadioNotifier(_configuration.radios!));
   }
 
   @override
@@ -34,9 +35,9 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
       valueListenable: _notifier,
       builder: (_, MyoroGroupRadioItems radios, __) {
         return Wrap(
-          direction: _configuration?.direction ?? themeExtension.direction,
-          spacing: _configuration?.spacing ?? themeExtension.spacing,
-          runSpacing: _configuration?.runSpacing ?? themeExtension.runSpacing,
+          direction: _configuration.direction,
+          spacing: _configuration.spacing ?? themeExtension.spacing,
+          runSpacing: _configuration.runSpacing ?? themeExtension.runSpacing,
           children:
               radios.entries.map<Widget>((MapEntry<String, bool> entry) {
                 return MyoroRadio(
@@ -45,7 +46,7 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
                     initialValue: entry.value,
                     onChanged: (_) {
                       _notifier.enable(entry.key);
-                      _configuration?.onChanged?.call(entry.key, _notifier.radios);
+                      _configuration.onChanged?.call(entry.key, _notifier.radios);
                     },
                   ),
                 );

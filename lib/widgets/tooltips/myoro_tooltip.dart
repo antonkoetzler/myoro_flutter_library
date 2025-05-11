@@ -6,7 +6,7 @@ class MyoroTooltip extends StatelessWidget {
   /// Configuration.
   final MyoroTooltipConfiguration configuration;
 
-  const MyoroTooltip(this.configuration, {super.key});
+  const MyoroTooltip({super.key, required this.configuration});
 
   @override
   Widget build(BuildContext context) {

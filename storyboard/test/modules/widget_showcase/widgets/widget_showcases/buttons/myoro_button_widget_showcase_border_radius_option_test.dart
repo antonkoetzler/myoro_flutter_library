@@ -13,7 +13,8 @@ void main() {
       StoryboardWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
+            themeExtension =
+                context.resolveThemeExtension<MyoroButtonWidgetShowcaseThemeExtension>();
             return BlocProvider(
               create: (_) => MyoroButtonWidgetShowcaseBloc(),
               child: const MyoroButtonWidgetShowcaseBorderRadiusOption(),
@@ -33,7 +34,8 @@ void main() {
             w.spacing == themeExtension.spacing &&
             w.children.length == 2 &&
             w.children.first is MyoroCheckbox &&
-            (w.children.first as MyoroCheckbox).label == '[MyoroButtonConfiguration.borderRadius]' &&
+            (w.children.first as MyoroCheckbox).configuration.label ==
+                '[MyoroButtonConfiguration.borderRadius]' &&
             w.children.last is MyoroSlider &&
             (w.children.last as MyoroSlider).configuration.minValue == 0 &&
             (w.children.last as MyoroSlider).configuration.maxValue == 500,

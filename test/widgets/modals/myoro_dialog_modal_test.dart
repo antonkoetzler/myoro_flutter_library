@@ -3,38 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Widget test of [MyoroDialogModal].
 void main() {
-  final MyoroModalConfiguration modalConfiguration = MyoroModalConfiguration.fake();
-  final bool invertButtons = faker.randomGenerator.boolean();
-  final String? confirmButtonText = faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
-  final String? cancelButtonText = faker.randomGenerator.boolean() ? faker.randomGenerator.string(10) : null;
-  final String text = faker.lorem.word();
-  late final TextStyle? textStyle;
+  final modalConfiguration = MyoroModalConfiguration.fake();
 
   void sharedExpects(
+    MyoroDialogModalConfiguration dialogModalConfiguration,
     MyoroDialogModalThemeExtension dialogModalThemeExtension,
-    MyoroModalThemeExtension modalThemeExtension, [
-    bool isText = false,
-    bool isWidget = false,
-  ]) {
-    assert(isText ^ isWidget);
-
+    MyoroModalThemeExtension modalThemeExtension,
+    bool isText,
+  ) {
     expect(find.byType(MyoroModal), findsOneWidget);
     expect(find.byType(MyoroDialogModal), findsOneWidget);
 
     // [MyoroDialogModal].
     expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is Column &&
-            w.children.length == 3 &&
-            w.children.first is Expanded &&
-            // (w.children.first as Expanded).child is _Message &&
-            w.children[1] is SizedBox &&
-            (w.children[1] as SizedBox).height == modalThemeExtension.spacing,
-        // w.children.last is _FooterButtons,
-      ),
+      find.byWidgetPredicate((Widget w) => w is Column && w.children.length == 2),
       findsOneWidget,
     );
 
@@ -42,12 +25,15 @@ void main() {
     if (isText) {
       expect(
         find.byWidgetPredicate(
-          (Widget w) => w is Text && w.data == text && w.style == (textStyle ?? dialogModalThemeExtension.textStyle),
+          (Widget w) =>
+              w is Text &&
+              w.data == dialogModalConfiguration.text &&
+              w.style ==
+                  (dialogModalConfiguration.textStyle ?? dialogModalThemeExtension.textStyle),
         ),
         findsOneWidget,
       );
-    }
-    if (isWidget) {
+    } else {
       // [MyoroRadio] inserted in [test].
       expect(find.byType(MyoroRadio), findsOneWidget);
     }
@@ -73,7 +59,8 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is MyoroIconTextButton &&
-            w.configuration.textConfiguration?.text == (confirmButtonText ?? 'Confirm') &&
+            w.configuration.textConfiguration?.text ==
+                (dialogModalConfiguration.confirmButtonText ?? 'Confirm') &&
             w.configuration.buttonConfiguration?.onTapUp != null,
       ),
       findsOneWidget,
@@ -84,18 +71,27 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is MyoroIconTextButton &&
-            w.configuration.textConfiguration?.text == (cancelButtonText ?? 'Cancel') &&
+            w.configuration.textConfiguration?.text ==
+                (dialogModalConfiguration.cancelButtonText ?? 'Cancel') &&
             w.configuration.buttonConfiguration?.onTapUp != null,
       ),
       findsOneWidget,
     );
   }
 
-  Future<void> test(WidgetTester tester, {bool isText = false, bool isWidget = false}) async {
+  Future<void> test(WidgetTester tester, {required bool isText}) async {
     late final BuildContext context;
 
     bool onConfirmPressed = false;
     bool onCancelPressed = false;
+
+    final dialogModalConfiguration = MyoroDialogModalConfiguration.fake().copyWith(
+      onConfirm: () => onConfirmPressed = true,
+      onCancel: () => onCancelPressed = true,
+      text: isText ? faker.lorem.word() : '',
+      child: isText ? null : const MyoroRadio(),
+      childProvided: !isText,
+    );
 
     final key = UniqueKey();
     await tester.pumpWidget(
@@ -110,16 +106,7 @@ void main() {
                 MyoroDialogModal.show(
                   context,
                   modalConfiguration: modalConfiguration,
-                  dialogModalConfiguration: MyoroDialogModalConfiguration(
-                    invertButtons: invertButtons,
-                    confirmButtonText: confirmButtonText,
-                    cancelButtonText: cancelButtonText,
-                    onConfirm: () => onConfirmPressed = true,
-                    onCancel: () => onCancelPressed = true,
-                    text: isText ? text : null,
-                    textStyle: textStyle,
-                    child: isWidget ? const MyoroRadio() : null,
-                  ),
+                  dialogModalConfiguration: dialogModalConfiguration,
                 );
               },
             );
@@ -132,22 +119,21 @@ void main() {
     await tester.pumpAndSettle();
 
     // Pressing [_ConfirmButton] & [_CancelButton].
-    await tester.tap(find.text(confirmButtonText ?? 'Confirm'));
-    await tester.tap(find.text(cancelButtonText ?? 'Cancel'));
+    await tester.tap(find.text(dialogModalConfiguration.confirmButtonText ?? 'Confirm'));
+    await tester.tap(find.text(dialogModalConfiguration.cancelButtonText ?? 'Cancel'));
     await tester.pump();
     expect(onConfirmPressed, onCancelPressed);
 
     sharedExpects(
+      dialogModalConfiguration,
       context.resolveThemeExtension<MyoroDialogModalThemeExtension>(),
       context.resolveThemeExtension<MyoroModalThemeExtension>(),
       isText,
-      isWidget,
     );
   }
 
   setUpAll(() {
     MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
-    textStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null;
   });
 
   testWidgets(
@@ -157,6 +143,6 @@ void main() {
 
   testWidgets(
     'MyoroDialogModal with standard configuration (using [child])',
-    (WidgetTester tester) async => await test(tester, isWidget: true),
+    (WidgetTester tester) async => await test(tester, isText: false),
   );
 }

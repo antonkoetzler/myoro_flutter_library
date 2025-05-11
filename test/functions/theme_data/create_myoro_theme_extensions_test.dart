@@ -28,6 +28,9 @@ void main() {
       MyoroButtonVariantThemeExtension,
       MyoroIconTextButtonThemeExtension,
 
+      // Apps
+      MyoroAppThemeExtension,
+
       // App bars
       MyoroAppBarThemeExtension,
 
@@ -68,9 +71,6 @@ void main() {
 
       // Loaders
       MyoroCircularLoaderThemeExtension,
-
-      // Material apps
-      MyoroMaterialAppThemeExtension,
 
       // Menus
       MyoroMenuThemeExtension,

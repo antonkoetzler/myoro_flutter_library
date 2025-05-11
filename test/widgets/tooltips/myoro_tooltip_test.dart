@@ -1,13 +1,10 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroTooltip].
 void main() {
-  final EdgeInsets? margin = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null;
-  final Duration? waitDuration = faker.randomGenerator.boolean() ? const Duration() : null;
-  final String text = faker.randomGenerator.boolean() ? faker.lorem.word() : '';
+  final configuration = MyoroTooltipConfiguration.fake();
 
   testWidgets('MyoroTooltip', (WidgetTester tester) async {
     late final MyoroTooltipThemeExtension themeExtension;
@@ -17,15 +14,7 @@ void main() {
         child: Builder(
           builder: (BuildContext context) {
             themeExtension = context.resolveThemeExtension<MyoroTooltipThemeExtension>();
-
-            return MyoroTooltip(
-              MyoroTooltipConfiguration(
-                waitDuration: waitDuration ?? MyoroTooltipConfiguration.waitDurationDefaultValue,
-                margin: margin,
-                text: text,
-                child: const SizedBox.shrink(),
-              ),
-            );
+            return MyoroTooltip(configuration: configuration);
           },
         ),
       ),
@@ -37,9 +26,9 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is Tooltip &&
-            w.message == text &&
-            w.waitDuration == waitDuration &&
-            w.margin == (margin ?? themeExtension.margin) &&
+            w.message == configuration.text &&
+            w.waitDuration == configuration.waitDuration &&
+            w.margin == (configuration.margin ?? themeExtension.margin) &&
             w.child is SizedBox,
       ),
       findsOneWidget,

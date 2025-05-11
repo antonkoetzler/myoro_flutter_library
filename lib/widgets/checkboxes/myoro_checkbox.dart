@@ -6,59 +6,34 @@ typedef MyoroCheckboxOnChanged = void Function(bool value);
 
 /// A checkbox that can have a label on the right side of it.
 class MyoroCheckbox extends StatefulWidget {
-  /// [ValueNotifier] for more complex situations where [onChanged] does not suffice.
-  final MyoroCheckboxNotifier? notifier;
+  /// Configuration.
+  final MyoroCheckboxConfiguration configuration;
 
-  /// Label at the right of the checkbox.
-  final String? label;
-
-  /// Text style of [label].
-  final TextStyle? labelTextStyle;
-
-  /// Initial value of the checkbox.
-  final bool? initialValue;
-
-  /// Function that is executed when the checkbox is changed.
-  final MyoroCheckboxOnChanged? onChanged;
-
-  const MyoroCheckbox({
-    super.key,
-    this.label,
-    this.labelTextStyle,
-    this.initialValue,
-    this.onChanged,
-    this.notifier,
-  }) : assert(
-         !(notifier != null && initialValue != null),
-         '[MyoroCheckbox]: If [notifier] is provided, set the initial '
-         'value within the [MyoroRadioNotifier]\'s constructor.',
-       );
+  const MyoroCheckbox({super.key, required this.configuration});
 
   @override
   State<MyoroCheckbox> createState() => _MyoroCheckboxState();
 }
 
 final class _MyoroCheckboxState extends State<MyoroCheckbox> {
-  String? get _label => widget.label;
-  TextStyle? get _labelTextStyle => widget.labelTextStyle;
-  bool get _initialValue => widget.initialValue ?? false;
-  MyoroCheckboxOnChanged? get _onChanged => widget.onChanged;
+  MyoroCheckboxConfiguration get _configuration => widget.configuration;
 
   MyoroCheckboxNotifier? _localNotifier;
   MyoroCheckboxNotifier get _notifier {
-    return widget.notifier ?? (_localNotifier ??= MyoroCheckboxNotifier(_initialValue));
+    return _configuration.notifier ??
+        (_localNotifier ??= MyoroCheckboxNotifier(_configuration.initialValue));
   }
 
   @override
   void didUpdateWidget(covariant MyoroCheckbox oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.notifier != null) return;
-    _notifier.value = _initialValue;
+    if (_configuration.notifier != null) return;
+    _notifier.value = _configuration.initialValue ?? false;
   }
 
   @override
   void dispose() {
-    if (widget.notifier == null) _notifier.dispose();
+    _localNotifier?.dispose();
     super.dispose();
   }
 
@@ -86,23 +61,23 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
                 focusColor: themeExtension.focusColor,
                 splashRadius: themeExtension.splashRadius,
                 onChanged: (_) {
-                  _onChanged?.call(!_notifier.value);
+                  _configuration.onChanged?.call(!_notifier.value);
                   _notifier.value = !_notifier.value;
                 },
               ),
             );
           },
         ),
-        if (_label?.isNotEmpty == true) ...[
+        if (_configuration.label?.isNotEmpty == true) ...[
           SizedBox(width: themeExtension.spacing),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
-                _label!,
+                _configuration.label!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: _labelTextStyle ?? themeExtension.labelTextStyle,
+                style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
               ),
             ),
           ),

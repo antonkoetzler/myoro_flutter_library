@@ -39,6 +39,9 @@ final class WidgetShowcaseModule implements Module {
       // App bars
       MyoroAppBarWidgetShowcaseThemeExtension.builder(textTheme),
 
+      // Apps
+      MyoroAppWidgetShowcaseThemeExtension.builder(colorScheme, textTheme),
+
       // Buttons
       MyoroButtonWidgetShowcaseThemeExtension.builder(colorScheme, textTheme),
       const MyoroIconTextButtonWidgetShowcaseThemeExtension.builder(),
@@ -81,9 +84,6 @@ final class WidgetShowcaseModule implements Module {
 
       // Loaders
       const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
-
-      // Material apps
-      MyoroMaterialAppWidgetShowcaseThemeExtension.builder(colorScheme, textTheme),
 
       // Menus
       MyoroMenuWidgetShowcaseThemeExtension.builder(textTheme),

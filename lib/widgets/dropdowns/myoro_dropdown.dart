@@ -119,7 +119,12 @@ final class _Checkbox<T> extends StatelessWidget {
   }
 
   Widget _builder(BuildContext context, MyoroDropdownState<T> state) {
-    return MyoroCheckbox(initialValue: state.enabled, onChanged: (bool enabled) => _onChanged(enabled));
+    return MyoroCheckbox(
+      configuration: MyoroCheckboxConfiguration(
+        initialValue: state.enabled,
+        onChanged: (bool enabled) => _onChanged(enabled),
+      ),
+    );
   }
 
   void _onChanged(bool enabled) {
@@ -280,7 +285,10 @@ final class _InputTriggerArea<T> extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           child: SizedBox(
             height: inputSize?.height,
-            child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(buildWhen: _buildWhen, builder: _builder),
+            child: BlocBuilder<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
+              buildWhen: _buildWhen,
+              builder: _builder,
+            ),
           ),
         );
       },
@@ -288,7 +296,8 @@ final class _InputTriggerArea<T> extends StatelessWidget {
   }
 
   bool _buildWhen(MyoroDropdownState<T> previous, MyoroDropdownState<T> current) {
-    return (previous.selectedItems != current.selectedItems) || (previous.enabled || current.enabled);
+    return (previous.selectedItems != current.selectedItems) ||
+        (previous.enabled || current.enabled);
   }
 
   Widget _builder(BuildContext context, MyoroDropdownState<T> state) {
@@ -306,9 +315,17 @@ final class _InputTriggerArea<T> extends StatelessWidget {
             width: 29,
             child: Column(
               children: [
-                _InputTriggerAreaRegion(_tapRegionGroupId, onTapUp, height: clearTextButtonPadding.top + 2),
+                _InputTriggerAreaRegion(
+                  _tapRegionGroupId,
+                  onTapUp,
+                  height: clearTextButtonPadding.top + 2,
+                ),
                 const Spacer(),
-                _InputTriggerAreaRegion(_tapRegionGroupId, onTapUp, height: clearTextButtonPadding.bottom + 2),
+                _InputTriggerAreaRegion(
+                  _tapRegionGroupId,
+                  onTapUp,
+                  height: clearTextButtonPadding.bottom + 2,
+                ),
               ],
             ),
           ),

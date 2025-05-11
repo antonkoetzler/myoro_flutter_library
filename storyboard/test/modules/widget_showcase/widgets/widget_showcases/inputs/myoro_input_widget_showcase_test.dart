@@ -60,26 +60,33 @@ void main() {
       findsOneWidget,
     );
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[suffix] enabled?'),
-      findsOneWidget,
-    );
-    expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[enabled]'),
-      findsOneWidget,
-    );
-    expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroCheckbox && w.label == '[readOnly]'),
-      findsOneWidget,
-    );
-    expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[showClearTextButton]',
+        (Widget w) => w is MyoroCheckbox && w.configuration.label == '[suffix] enabled?',
       ),
       findsOneWidget,
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[checkboxOnChanged] not null?',
+        (Widget w) => w is MyoroCheckbox && w.configuration.label == '[enabled]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) => w is MyoroCheckbox && w.configuration.label == '[readOnly]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) => w is MyoroCheckbox && w.configuration.label == '[showClearTextButton]',
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.byWidgetPredicate(
+        (Widget w) =>
+            w is MyoroCheckbox && w.configuration.label == '[checkboxOnChanged] not null?',
       ),
       findsOneWidget,
     );

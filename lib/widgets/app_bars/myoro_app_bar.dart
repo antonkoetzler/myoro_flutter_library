@@ -17,19 +17,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// }
 /// ```
 class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
-  /// If the app bar contains a border at the bottom.
-  final bool bordered;
-
-  /// Background color of the [MyoroAppBar].
-  final Color? backgroundColor;
-
-  /// Content of the app bar.
-  final Widget child;
+  /// Configuration.
+  final MyoroAppBarConfiguration configuration;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
-  const MyoroAppBar({super.key, this.bordered = false, this.backgroundColor, required this.child});
+  const MyoroAppBar({super.key, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +34,12 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
       children: [
         Flexible(
           child: Container(
-            color: backgroundColor ?? themeExtension.primaryColor,
+            color: configuration.backgroundColor ?? themeExtension.primaryColor,
             padding: themeExtension.contentPadding,
-            child: child,
+            child: configuration.child,
           ),
         ),
-        if (bordered)
+        if (configuration.bordered)
           const MyoroBasicDivider(
             configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal),
           ),

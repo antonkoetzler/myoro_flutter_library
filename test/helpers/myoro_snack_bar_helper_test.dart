@@ -4,7 +4,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroSnackBarHelper].
 void main() {
-  testWidgets('MyoroSnackBarHelper.showSnackBar & MyoroSnackBarHelper.hideSnackBar', (WidgetTester tester) async {
+  testWidgets('MyoroSnackBarHelper.showSnackBar & MyoroSnackBarHelper.hideSnackBar', (
+    WidgetTester tester,
+  ) async {
     late final BuildContext context;
 
     await tester.pumpWidget(
@@ -21,7 +23,9 @@ void main() {
 
     MyoroSnackBarHelper.showSnackBar(
       context,
-      snackBar: const MyoroSnackBar(MyoroSnackBarConfiguration(message: 'Hello, World!')),
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(message: 'Hello, World!'),
+      ),
     );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroSnackBar), findsOneWidget);

@@ -10,8 +10,12 @@ part 'myoro_button_widget_showcase_state.dart';
 typedef _Emitter = Emitter<MyoroButtonWidgetShowcaseState>;
 
 /// [Bloc] of [MyoroButtonWidgetShowcase].
-final class MyoroButtonWidgetShowcaseBloc extends Bloc<MyoroButtonWidgetShowcaseEvent, MyoroButtonWidgetShowcaseState> {
-  static Color backgroundColorBuilder(MyoroTapStatusEnum tapStatusEnum, MyoroButtonWidgetShowcaseState state) {
+final class MyoroButtonWidgetShowcaseBloc
+    extends Bloc<MyoroButtonWidgetShowcaseEvent, MyoroButtonWidgetShowcaseState> {
+  static Color backgroundColorBuilder(
+    MyoroTapStatusEnum tapStatusEnum,
+    MyoroButtonWidgetShowcaseState state,
+  ) {
     const Color transparent = MyoroColorDesignSystem.transparent;
     return switch (tapStatusEnum) {
       MyoroTapStatusEnum.idle => state.idleBackgroundColor ?? transparent,
@@ -38,11 +42,19 @@ final class MyoroButtonWidgetShowcaseBloc extends Bloc<MyoroButtonWidgetShowcase
   }
 
   static void onTapDown(BuildContext context) {
-    context.showSnackBar(snackBar: const MyoroSnackBar(MyoroSnackBarConfiguration(message: 'Button was pressed.')));
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(message: 'Button was pressed.'),
+      ),
+    );
   }
 
   static void onTapUp(BuildContext context) {
-    context.showSnackBar(snackBar: const MyoroSnackBar(MyoroSnackBarConfiguration(message: 'Button was released.')));
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(message: 'Button was released.'),
+      ),
+    );
   }
 
   MyoroButtonWidgetShowcaseBloc() : super(const MyoroButtonWidgetShowcaseState()) {
@@ -66,10 +78,18 @@ final class MyoroButtonWidgetShowcaseBloc extends Bloc<MyoroButtonWidgetShowcase
   }
 
   void _setBorderRadiusEvent(SetBorderRadiusEvent event, _Emitter emit) {
-    emit(state.copyWith(borderRadius: event.borderRadius, borderRadiusProvided: event.borderRadius != null));
+    emit(
+      state.copyWith(
+        borderRadius: event.borderRadius,
+        borderRadiusProvided: event.borderRadius != null,
+      ),
+    );
   }
 
-  void _setBackgroundColorBuilderEnabledEvent(SetBackgroundColorBuilderEnabledEvent event, _Emitter emit) {
+  void _setBackgroundColorBuilderEnabledEvent(
+    SetBackgroundColorBuilderEnabledEvent event,
+    _Emitter emit,
+  ) {
     emit(state.copyWith(backgroundColorBuilderEnabled: event.backgroundColorBuilderEnabled));
   }
 
@@ -105,12 +125,20 @@ final class MyoroButtonWidgetShowcaseBloc extends Bloc<MyoroButtonWidgetShowcase
   }
 
   void _setBorderWidthEvent(SetBorderWidthEvent event, _Emitter emit) {
-    emit(state.copyWith(borderWidth: event.borderWidth, borderWidthProvided: event.borderWidth != null));
+    emit(
+      state.copyWith(
+        borderWidth: event.borderWidth,
+        borderWidthProvided: event.borderWidth != null,
+      ),
+    );
   }
 
   void _setIdleBorderColorEvent(SetIdleBorderColorEvent event, _Emitter emit) {
     emit(
-      state.copyWith(idleBorderColor: event.idleBorderColor, idleBorderColorProvided: event.idleBorderColor != null),
+      state.copyWith(
+        idleBorderColor: event.idleBorderColor,
+        idleBorderColorProvided: event.idleBorderColor != null,
+      ),
     );
   }
 
@@ -124,7 +152,12 @@ final class MyoroButtonWidgetShowcaseBloc extends Bloc<MyoroButtonWidgetShowcase
   }
 
   void _setTapBorderColorEvent(SetTapBorderColorEvent event, _Emitter emit) {
-    emit(state.copyWith(tapBorderColor: event.tapBorderColor, tapBorderColorProvided: event.tapBorderColor != null));
+    emit(
+      state.copyWith(
+        tapBorderColor: event.tapBorderColor,
+        tapBorderColorProvided: event.tapBorderColor != null,
+      ),
+    );
   }
 
   void _setOnTapDownEnabledEvent(SetOnTapDownEnabledEvent event, _Emitter emit) {

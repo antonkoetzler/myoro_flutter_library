@@ -30,7 +30,7 @@ dependencies:
 ...
 ```
 
-1. Make sure your `MyoroMaterialApp` is your root widget:
+1. Make sure your `MyoroApp` is your root widget:
 
 - See `storyboard/lib/main.dart` for reference.
 

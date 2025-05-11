@@ -79,7 +79,9 @@ void _expectCalls(
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroCheckbox && w.initialValue == configuration.enabled && w.onChanged != null,
+            w is MyoroCheckbox &&
+            w.configuration.initialValue == configuration.enabled &&
+            w.configuration.onChanged != null,
       ),
       findsOneWidget,
     );

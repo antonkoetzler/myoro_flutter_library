@@ -7,7 +7,7 @@ class MyoroWidgetTester extends StatelessWidget {
   final ThemeMode themeMode;
 
   /// [ThemeExtension]s you'd like to include.
-  final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
+  final MyoroAppThemeExtensionsBuilder? themeExtensionsBuilder;
 
   /// The [Widget].
   final Widget child;
@@ -21,30 +21,35 @@ class MyoroWidgetTester extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (child is MyoroMaterialApp) {
+    if (child is MyoroApp) {
       return child;
     } else if (child is MyoroScreen) {
-      return MyoroMaterialApp(
-        configuration: MyoroMaterialAppConfiguration(
+      return MyoroApp(
+        configuration: MyoroAppConfiguration(
           themeMode: themeMode,
           themeExtensionsBuilder: themeExtensionsBuilder,
           home: child as MyoroScreen,
         ),
       );
     } else if (child is MyoroAppBar) {
-      return MyoroMaterialApp(
-        configuration: MyoroMaterialAppConfiguration(
+      return MyoroApp(
+        configuration: MyoroAppConfiguration(
           themeMode: themeMode,
           themeExtensionsBuilder: themeExtensionsBuilder,
-          home: MyoroScreen(MyoroScreenConfiguration(appBar: child as MyoroAppBar)),
+          home: MyoroScreen(
+            configuration: MyoroScreenConfiguration(
+              appBar: child as MyoroAppBar,
+              body: const SizedBox.shrink(),
+            ),
+          ),
         ),
       );
     } else {
-      return MyoroMaterialApp(
-        configuration: MyoroMaterialAppConfiguration(
+      return MyoroApp(
+        configuration: MyoroAppConfiguration(
           themeMode: themeMode,
           themeExtensionsBuilder: themeExtensionsBuilder,
-          home: MyoroScreen(MyoroScreenConfiguration(body: child)),
+          home: MyoroScreen(configuration: MyoroScreenConfiguration(body: child)),
         ),
       );
     }

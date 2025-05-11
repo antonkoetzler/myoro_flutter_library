@@ -34,14 +34,19 @@ final class MyoroDialogModalWidgetShowcaseBloc
   }
 
   void _setTextEvent(SetTextEvent event, _Emitter emit) {
-    emit(state.copyWith(text: event.text, textEnabled: event.text != null));
+    emit(state.copyWith(text: event.text, childEnabled: event.text.isEmpty));
   }
 
   void _setTextStyleEvent(SetTextStyleEvent event, _Emitter emit) {
-    emit(state.copyWith(textStyle: event.textStyle, textEnabled: event.textStyle != null));
+    emit(state.copyWith(textStyle: event.textStyle));
   }
 
   void _setChildEvent(SetChildEvent event, _Emitter emit) {
-    emit(state.copyWith(childEnabled: event.childEnabled));
+    emit(
+      state.copyWith(
+        text: event.childEnabled ? '' : MyoroDialogModalWidgetShowcaseState.textDefaultValue,
+        childEnabled: event.childEnabled,
+      ),
+    );
   }
 }

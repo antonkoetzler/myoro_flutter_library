@@ -24,9 +24,9 @@ final class SetCancelButtonTextEvent extends MyoroDialogModalWidgetShowcaseEvent
 }
 
 final class SetTextEvent extends MyoroDialogModalWidgetShowcaseEvent {
-  final String? text;
+  final String text;
 
-  const SetTextEvent([this.text]);
+  const SetTextEvent([this.text = '']);
 }
 
 final class SetTextStyleEvent extends MyoroDialogModalWidgetShowcaseEvent {
@@ -36,7 +36,9 @@ final class SetTextStyleEvent extends MyoroDialogModalWidgetShowcaseEvent {
 }
 
 final class SetChildEvent extends MyoroDialogModalWidgetShowcaseEvent {
-  final bool? childEnabled;
+  final bool childEnabled;
 
-  const SetChildEvent([this.childEnabled]);
+  const SetChildEvent([
+    this.childEnabled = MyoroDialogModalWidgetShowcaseState.childEnabledDefaultValue,
+  ]);
 }

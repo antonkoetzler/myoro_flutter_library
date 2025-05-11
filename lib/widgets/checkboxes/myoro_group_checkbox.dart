@@ -9,64 +9,27 @@ typedef MyoroGroupCheckboxOnChanged = void Function(String key, MyoroGroupCheckb
 
 /// A group of [MyoroCheckbox]s.
 class MyoroGroupCheckbox extends StatefulWidget {
-  /// [ValueNotifier] of the [MyoroGroupCheckbox] for more complex scope situations.
-  final MyoroGroupCheckboxNotifier? notifier;
+  /// Configuration.
+  final MyoroGroupCheckboxConfiguration configuration;
 
-  /// Direction that the checkboxes will built in.
-  final Axis? direction;
-
-  /// Spacing in between the checkboxes.
-  final double? spacing;
-
-  /// Spacing in between the checkboxes when the checkboxes are wrapping (cross axis spacing).
-  final double? runSpacing;
-
-  /// Function executed when any of the checkbox's values are changed.
-  final MyoroGroupCheckboxOnChanged? onChanged;
-
-  /// Checkboxes of the group.
-  ///
-  /// The [Map]'s key is the label of the checkbox, which is never null
-  /// or empty. The [Map]'s value is the initial value of the checkbox.
-  final MyoroGroupCheckboxItems? checkboxes;
-
-  MyoroGroupCheckbox({
-    super.key,
-    this.notifier,
-    this.direction,
-    this.spacing,
-    this.runSpacing,
-    this.onChanged,
-    this.checkboxes,
-  }) : assert(
-         !(notifier != null && checkboxes != null),
-         '[MyoroGroupCheckbox]: If you are providing [notifier], you must pass '
-         '[checkboxes] within its constructor and remove [checkboxes] here.',
-       ),
-       assert(
-         notifier == null ? checkboxes!.isNotEmpty : true,
-         '[MyoroGroupCheckbox]: [checkboxes] must not be empty when [notifier] isn\'t provided.',
-       );
+  const MyoroGroupCheckbox({super.key, required this.configuration});
 
   @override
   State<MyoroGroupCheckbox> createState() => _MyoroGroupCheckboxState();
 }
 
 final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
-  Axis? get _direction => widget.direction;
-  double? get _spacing => widget.spacing;
-  double? get _runSpacing => widget.runSpacing;
-  MyoroGroupCheckboxOnChanged? get _onChanged => widget.onChanged;
-  MyoroGroupCheckboxItems? get _checkboxes => widget.checkboxes;
+  MyoroGroupCheckboxConfiguration get _configuration => widget.configuration;
 
   MyoroGroupCheckboxNotifier? _localNotifier;
   MyoroGroupCheckboxNotifier get _notifier {
-    return widget.notifier ?? (_localNotifier ??= MyoroGroupCheckboxNotifier(_checkboxes!));
+    return _configuration.notifier ??
+        (_localNotifier ??= MyoroGroupCheckboxNotifier(_configuration.checkboxes!));
   }
 
   @override
   void dispose() {
-    if (widget.notifier == null) _notifier.dispose();
+    _localNotifier?.dispose();
     super.dispose();
   }
 
@@ -78,18 +41,20 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
       valueListenable: _notifier,
       builder: (_, MyoroGroupCheckboxItems checkboxes, __) {
         return Wrap(
-          direction: _direction ?? themeExtension.direction,
-          spacing: _spacing ?? themeExtension.spacing,
-          runSpacing: _runSpacing ?? themeExtension.runSpacing,
+          direction: _configuration.direction,
+          spacing: _configuration.spacing ?? themeExtension.spacing,
+          runSpacing: _configuration.runSpacing ?? themeExtension.runSpacing,
           children:
               checkboxes.entries.map<Widget>((MapEntry<String, bool> entry) {
                 return MyoroCheckbox(
-                  label: entry.key,
-                  initialValue: entry.value,
-                  onChanged: (bool value) {
-                    _notifier.toggle(entry.key, value);
-                    _onChanged?.call(entry.key, _notifier.checkboxes);
-                  },
+                  configuration: MyoroCheckboxConfiguration(
+                    label: entry.key,
+                    initialValue: entry.value,
+                    onChanged: (bool value) {
+                      _notifier.toggle(entry.key, value);
+                      _configuration.onChanged?.call(entry.key, _notifier.checkboxes);
+                    },
+                  ),
                 );
               }).toList(),
         );

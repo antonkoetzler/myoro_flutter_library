@@ -11,19 +11,14 @@ const kMyoroBorderLength = 2.0;
 const kMyoroInputBorderLength = 10.0;
 const kMyoroBorderRadiusLength = 10.0;
 
-// Carousels.
-const kMyoroCarouselAutoplayIntervalDuration = Duration(seconds: 3);
-
-// Data configuration.
-const kMyoroPaginationItemsPerPageOptions = [5, 10, 15, 20, 25, 50, 100];
-
-// Graphs.
-const kMyoroGraphSideTitleInterval = 0.2;
-const kMyoroGraphVerticalSideTitleReversedSize = 48.0;
-const kMyoroGraphHorizontalSideTitleReversedSize = 22.0;
-
 /// Icons for testing.
-const kMyoroTestIcons = [Icons.abc, Icons.ac_unit, Icons.access_alarm, Icons.access_time, Icons.accessibility];
+const kMyoroTestIcons = [
+  Icons.abc,
+  Icons.ac_unit,
+  Icons.access_alarm,
+  Icons.access_time,
+  Icons.accessibility,
+];
 
 /// Colors for testing.
 const kMyoroTestColors = [

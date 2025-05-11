@@ -10,7 +10,10 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroResolver<Null>(
-          MyoroResolverConfiguration(request: () async => null, builder: (_, __, ___, ____) => const MyoroRadio()),
+          configuration: MyoroResolverConfiguration(
+            request: () async => null,
+            builder: (_, __, ___, ____) => const MyoroRadio(),
+          ),
         ),
       ),
     );

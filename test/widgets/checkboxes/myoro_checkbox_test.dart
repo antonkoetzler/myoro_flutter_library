@@ -26,10 +26,12 @@ void main() {
             themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
             return MyoroCheckbox(
-              label: label,
-              labelTextStyle: labelTextStyle,
-              initialValue: initialValue,
-              onChanged: (bool value) => expect(value, !initialValue),
+              configuration: MyoroCheckboxConfiguration(
+                label: label,
+                labelTextStyle: labelTextStyle,
+                initialValue: initialValue,
+                onChanged: (bool value) => expect(value, !initialValue),
+              ),
             );
           },
         ),

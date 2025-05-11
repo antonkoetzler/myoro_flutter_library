@@ -43,10 +43,12 @@ final class _Label extends StatelessWidget {
 
     if (_labelConfiguration.isNullable) {
       return MyoroCheckbox(
-        label: label,
-        labelTextStyle: labelTextStyle,
-        initialValue: _labelConfiguration.initialValue!,
-        onChanged: _labelConfiguration.onChanged!,
+        configuration: MyoroCheckboxConfiguration(
+          label: label,
+          labelTextStyle: labelTextStyle,
+          initialValue: _labelConfiguration.initialValue!,
+          onChanged: _labelConfiguration.onChanged!,
+        ),
       );
     }
 

@@ -8,7 +8,7 @@ class MyoroResolver<T> extends StatefulWidget {
   /// Configuration.
   final MyoroResolverConfiguration<T> configuration;
 
-  const MyoroResolver(this.configuration, {super.key});
+  const MyoroResolver({super.key, required this.configuration});
 
   @override
   State<MyoroResolver<T>> createState() => _MyoroResolverState<T>();
@@ -63,7 +63,12 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
       child: BlocConsumer<MyoroResolverBloc<T>, MyoroResolverState<T>>(
         listener: (_, MyoroResolverState state) => _blocListener(state),
         builder: (_, MyoroResolverState state) {
-          return _configuration.builder.call(state.result, state.status, state.errorMessage, _controller);
+          return _configuration.builder.call(
+            state.result,
+            state.status,
+            state.errorMessage,
+            _controller,
+          );
         },
       ),
     );

@@ -14,7 +14,12 @@ final class MyoroDrawerWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroDrawerWidgetShowcaseBloc(),
       child: const WidgetShowcase(
         widget: _Widget(),
-        widgetOptions: [_TitleOption(), _TitleTextStyleOption(), _ShowCloseButtonOption(), _BarrierDismissableOption()],
+        widgetOptions: [
+          _TitleOption(),
+          _TitleTextStyleOption(),
+          _ShowCloseButtonOption(),
+          _BarrierDismissableOption(),
+        ],
       ),
     );
   }
@@ -32,7 +37,9 @@ final class _Widget extends StatelessWidget {
             borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
             onTapUp: (_) => _onTapUp(context),
           ),
-          textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Click to launch the drawer.'),
+          textConfiguration: const MyoroIconTextButtonTextConfiguration(
+            text: 'Click to launch the drawer.',
+          ),
         ),
       ),
     );
@@ -43,11 +50,13 @@ final class _Widget extends StatelessWidget {
 
     context.openDrawer(
       drawer: MyoroDrawer(
-        title: state.title,
-        titleTextStyle: state.titleTextStyle,
-        showCloseButton: state.showCloseButton,
-        barrierDismissable: state.barrierDismissable,
-        child: const SizedBox.shrink(),
+        configuration: MyoroDrawerConfiguration(
+          title: state.title,
+          titleTextStyle: state.titleTextStyle,
+          showCloseButton: state.showCloseButton,
+          barrierDismissable: state.barrierDismissable,
+          child: const SizedBox.shrink(),
+        ),
       ),
     );
   }
@@ -67,7 +76,8 @@ final class _TitleOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[MyoroDrawer.title]',
-        inputStyle: context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle:
+            context.resolveThemeExtension<MyoroDrawerWidgetShowcaseThemeExtension>().inputStyle,
         checkboxOnChanged: (bool enabled, String text) => _checkboxOnChanged(bloc, enabled, text),
         onChanged: (String text) => bloc.add(SetTitleEvent(text)),
       ),
@@ -103,7 +113,9 @@ final class _TitleTextStyleOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typographyInstance, TextStyle textStyle) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: typographyInstance.getTextStyleName(textStyle)),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: typographyInstance.getTextStyleName(textStyle),
+      ),
     );
   }
 
@@ -124,9 +136,11 @@ final class _ShowCloseButtonOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroDrawerWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroDrawer.showCloseButton]',
-      initialValue: bloc.state.showCloseButton,
-      onChanged: (bool value) => bloc.add(SetShowCloseButtonEvent(value)),
+      configuration: MyoroCheckboxConfiguration(
+        label: '[MyoroDrawer.showCloseButton]',
+        initialValue: bloc.state.showCloseButton,
+        onChanged: (bool value) => bloc.add(SetShowCloseButtonEvent(value)),
+      ),
     );
   }
 }
@@ -139,9 +153,11 @@ final class _BarrierDismissableOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroDrawerWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroDrawer.barrierDismissable]',
-      initialValue: bloc.state.barrierDismissable,
-      onChanged: (bool value) => bloc.add(SetBarrierDismissableEvent(value)),
+      configuration: MyoroCheckboxConfiguration(
+        label: '[MyoroDrawer.barrierDismissable]',
+        initialValue: bloc.state.barrierDismissable,
+        onChanged: (bool value) => bloc.add(SetBarrierDismissableEvent(value)),
+      ),
     );
   }
 }

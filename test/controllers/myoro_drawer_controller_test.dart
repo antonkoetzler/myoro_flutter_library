@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget/unit test for [MyoroDrawerController].
 void main() {
-  const drawer = MyoroDrawer(child: SizedBox.shrink());
+  const drawer = MyoroDrawer(configuration: MyoroDrawerConfiguration(child: SizedBox.shrink()));
 
   Future<void> closeDrawerAndExpectNothing(BuildContext context, WidgetTester tester) async {
     context.closeDrawer();

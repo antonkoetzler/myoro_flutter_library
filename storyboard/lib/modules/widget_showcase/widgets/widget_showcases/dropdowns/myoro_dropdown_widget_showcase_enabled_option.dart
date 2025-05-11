@@ -10,9 +10,11 @@ final class MyoroDropdownWidgetShowcaseEnabledOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroDropdownWidgetShowcaseBloc>();
     return MyoroCheckbox(
-      label: 'MyoroDropdownConfiguration.enabled',
-      initialValue: bloc.state.enabled,
-      onChanged: (bool value) => _onChanged(bloc, value),
+      configuration: MyoroCheckboxConfiguration(
+        label: 'MyoroDropdownConfiguration.enabled',
+        initialValue: bloc.state.enabled,
+        onChanged: (bool value) => _onChanged(bloc, value),
+      ),
     );
   }
 

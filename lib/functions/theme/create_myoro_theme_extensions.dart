@@ -10,6 +10,7 @@ List<ThemeExtension> createMyoroThemeExtensions(
   return [
     ..._createAccordionThemeExtensions(colorScheme, textTheme),
     ..._createAppBarThemeExtensions(colorScheme),
+    ..._createAppThemeExtensions(),
     ..._createButtonThemeExtensions(isDarkMode, colorScheme, textTheme),
     ..._createCardThemeExtensions(colorScheme, textTheme),
     ..._createCarouselThemeExtensions(),
@@ -22,7 +23,6 @@ List<ThemeExtension> createMyoroThemeExtensions(
     ..._createInputThemeExtensions(colorScheme, textTheme),
     ..._createLayoutBuilderThemeExtensions(),
     ..._createLoaderThemeExtensions(colorScheme),
-    ..._createMaterialAppThemeExtensions(),
     ..._createMenuThemeExtensions(colorScheme, textTheme),
     ..._createModalThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
@@ -41,6 +41,10 @@ List<ThemeExtension> _createAccordionThemeExtensions(ColorScheme colorScheme, Te
 
 List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
   return [MyoroAppBarThemeExtension.builder(colorScheme)];
+}
+
+List<ThemeExtension> _createAppThemeExtensions() {
+  return const [MyoroAppThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createButtonThemeExtensions(
@@ -110,10 +114,6 @@ List<ThemeExtension> _createLayoutBuilderThemeExtensions() {
 
 List<ThemeExtension> _createLoaderThemeExtensions(ColorScheme colorScheme) {
   return [MyoroCircularLoaderThemeExtension.builder(colorScheme)];
-}
-
-List<ThemeExtension> _createMaterialAppThemeExtensions() {
-  return const [MyoroMaterialAppThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

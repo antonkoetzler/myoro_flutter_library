@@ -29,7 +29,8 @@ void main() {
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[MyoroSnackBar.showCloseButton]',
+        (Widget w) =>
+            w is MyoroCheckbox && w.configuration.label == '[MyoroSnackBar.showCloseButton]',
       ),
       findsOneWidget,
     );
@@ -41,7 +42,8 @@ void main() {
     );
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is MyoroCheckbox && w.label == '[MyoroSnackBar.child] enabled?',
+        (Widget w) =>
+            w is MyoroCheckbox && w.configuration.label == '[MyoroSnackBar.child] enabled?',
       ),
       findsOneWidget,
     );

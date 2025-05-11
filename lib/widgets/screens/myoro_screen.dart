@@ -5,20 +5,20 @@ import 'package:provider/provider.dart';
 /// Root widget of any screen widget.
 class MyoroScreen extends StatefulWidget {
   /// Configuration.
-  final MyoroScreenConfiguration? configuration;
+  final MyoroScreenConfiguration configuration;
 
-  const MyoroScreen([this.configuration, Key? key]) : super(key: key);
+  const MyoroScreen({super.key, required this.configuration});
 
   @override
   State<MyoroScreen> createState() => _MyoroScreenState();
 }
 
 final class _MyoroScreenState extends State<MyoroScreen> {
-  MyoroScreenConfiguration? get _configuration => widget.configuration;
+  MyoroScreenConfiguration get _configuration => widget.configuration;
 
   MyoroDrawerController? _localDrawerController;
   MyoroDrawerController get _drawerController {
-    return _configuration?.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
+    return _configuration.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
   }
 
   @override
@@ -44,8 +44,8 @@ final class _MyoroScreenState extends State<MyoroScreen> {
       child: SafeArea(
         child: Scaffold(
           key: _drawerController.scaffoldKey,
-          appBar: _configuration?.appBar,
-          body: _configuration?.body,
+          appBar: _configuration.appBar,
+          body: _configuration.body,
           drawer: drawer,
           endDrawer: drawer,
         ),

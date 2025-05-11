@@ -22,7 +22,9 @@ void main() {
                   MyoroSnackBarContainer(
                     themeExtension: themeExtension,
                     duration: faker.randomGenerator.boolean() ? const Duration() : null,
-                    snackBar: MyoroSnackBar(MyoroSnackBarConfiguration(message: faker.lorem.word())),
+                    snackBar: MyoroSnackBar(
+                      configuration: MyoroSnackBarConfiguration(message: faker.lorem.word()),
+                    ),
                   ),
                 );
               },

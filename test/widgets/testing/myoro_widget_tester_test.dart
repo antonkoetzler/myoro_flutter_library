@@ -13,31 +13,43 @@ void main() {
     return themeMode;
   }
 
-  testWidgets('MyoroWidgetTester: [MyoroMaterialApp] child provided', (WidgetTester tester) async {
-    await setUpTest(tester, const MyoroMaterialApp(configuration: MyoroMaterialAppConfiguration(home: MyoroScreen())));
+  testWidgets('MyoroWidgetTester: [MyoroApp] child provided', (WidgetTester tester) async {
+    await setUpTest(
+      tester,
+      MyoroApp(
+        configuration: MyoroAppConfiguration(
+          home: MyoroScreen(configuration: MyoroScreenConfiguration.fake()),
+        ),
+      ),
+    );
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroMaterialApp && w.configuration.themeMode == null),
+      find.byWidgetPredicate((Widget w) => w is MyoroApp && w.configuration.themeMode == null),
       findsOneWidget,
     );
   });
 
   testWidgets('MyoroWidgetTester: [MyoroScreen] child provided', (WidgetTester tester) async {
-    final ThemeMode themeMode = await setUpTest(tester, const MyoroScreen());
+    final ThemeMode themeMode = await setUpTest(
+      tester,
+      MyoroScreen(configuration: MyoroScreenConfiguration.fake()),
+    );
     expect(
-      find.byWidgetPredicate((Widget w) => w is MyoroMaterialApp && w.configuration.themeMode == themeMode),
+      find.byWidgetPredicate((Widget w) => w is MyoroApp && w.configuration.themeMode == themeMode),
       findsOneWidget,
     );
   });
 
   testWidgets('MyoroWidgetTester: [MyoroAppBar] child provided', (WidgetTester tester) async {
-    final ThemeMode themeMode = await setUpTest(tester, const MyoroAppBar(child: SizedBox.shrink()));
+    final ThemeMode themeMode = await setUpTest(
+      tester,
+      const MyoroAppBar(configuration: MyoroAppBarConfiguration(child: SizedBox.shrink())),
+    );
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroMaterialApp &&
+            w is MyoroApp &&
             w.configuration.themeMode == themeMode &&
-            (w.configuration.home as MyoroScreen).configuration?.appBar != null &&
-            (w.configuration.home as MyoroScreen).configuration?.body == null,
+            (w.configuration.home as MyoroScreen).configuration.appBar != null,
       ),
       findsOneWidget,
     );
@@ -48,10 +60,9 @@ void main() {
     expect(
       find.byWidgetPredicate(
         (Widget w) =>
-            w is MyoroMaterialApp &&
+            w is MyoroApp &&
             w.configuration.themeMode == themeMode &&
-            (w.configuration.home as MyoroScreen).configuration?.appBar == null &&
-            (w.configuration.home as MyoroScreen).configuration?.body != null,
+            (w.configuration.home as MyoroScreen).configuration.appBar == null,
       ),
       findsOneWidget,
     );

@@ -14,7 +14,8 @@ final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
-  Widget build(BuildContext context) => const MyoroScreen(MyoroScreenConfiguration(appBar: _AppBar(), body: _Body()));
+  Widget build(BuildContext context) =>
+      const MyoroScreen(configuration: MyoroScreenConfiguration(appBar: _AppBar(), body: _Body()));
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -28,33 +29,37 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
     final themeExtension = context.resolveThemeExtension<MyoroScreenWidgetShowcaseThemeExtension>();
 
     return MyoroAppBar(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Flexible(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Flexible(child: Text('MyoroScreen', style: themeExtension.appBarTitleTextStyle)),
-                Flexible(
-                  child: Text(
-                    'A widget used to create new [Scaffold]s (screens)',
-                    style: themeExtension.appBarSubtitleTextStyle,
+      configuration: MyoroAppBarConfiguration(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(child: Text('MyoroScreen', style: themeExtension.appBarTitleTextStyle)),
+                  Flexible(
+                    child: Text(
+                      'A widget used to create new [Scaffold]s (screens)',
+                      style: themeExtension.appBarSubtitleTextStyle,
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          IntrinsicWidth(
-            child: MyoroIconTextButton(
-              configuration: MyoroIconTextButtonConfiguration(
-                buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => {}),
-                iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.appBarMenuButtonIcon),
+                ],
               ),
             ),
-          ),
-        ],
+            IntrinsicWidth(
+              child: MyoroIconTextButton(
+                configuration: MyoroIconTextButtonConfiguration(
+                  buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => {}),
+                  iconConfiguration: MyoroIconTextButtonIconConfiguration(
+                    icon: themeExtension.appBarMenuButtonIcon,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

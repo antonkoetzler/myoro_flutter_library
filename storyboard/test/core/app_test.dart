@@ -34,6 +34,6 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(find.widgetWithText(MyoroMaterialApp, 'MFL Storyboard'), findsOneWidget);
+    expect(find.widgetWithText(MyoroApp, 'MFL Storyboard'), findsOneWidget);
   });
 }

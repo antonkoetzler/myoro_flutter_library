@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 /// Widget test of [MyoroScreen].
 void main() {
   testWidgets('MyoroScreen', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyoroWidgetTester(child: MyoroScreen()));
+    await tester.pumpWidget(
+      MyoroWidgetTester(child: MyoroScreen(configuration: MyoroScreenConfiguration.fake())),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroScreen), findsOneWidget);
     expect(find.byType(InheritedProvider<MyoroDrawerController>), findsOneWidget);

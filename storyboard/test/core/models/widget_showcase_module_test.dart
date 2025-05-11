@@ -88,8 +88,8 @@ void main() {
     // Loaders
     expect(themeExtensionExists(MyoroCircularLoaderWidgetShowcaseThemeExtension), isTrue);
 
-    // Material apps
-    expect(themeExtensionExists(MyoroMaterialAppWidgetShowcaseThemeExtension), isTrue);
+    // Apps
+    expect(themeExtensionExists(MyoroAppWidgetShowcaseThemeExtension), isTrue);
 
     // Menus
     expect(themeExtensionExists(MyoroMenuWidgetShowcaseThemeExtension), isTrue);

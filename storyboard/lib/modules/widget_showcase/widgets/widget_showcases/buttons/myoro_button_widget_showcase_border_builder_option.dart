@@ -23,30 +23,38 @@ final class MyoroButtonWidgetShowcaseBorderBuilderOption extends StatelessWidget
           spacing: themeExtension.spacing,
           children: [
             MyoroCheckbox(
-              label: '[MyoroButtonConfiguration.borderBuilder]',
-              initialValue: state.borderBuilderEnabled,
-              onChanged: (value) => _checkboxOnChanged(bloc, value),
+              configuration: MyoroCheckboxConfiguration(
+                label: '[MyoroButtonConfiguration.borderBuilder]',
+                initialValue: state.borderBuilderEnabled,
+                onChanged: (value) => _checkboxOnChanged(bloc, value),
+              ),
             ),
             if (state.borderBuilderEnabled) ...[
               MyoroSlider(
-                MyoroSliderConfiguration(
+                configuration: MyoroSliderConfiguration(
                   label: 'Border width',
                   minValue: 0.5,
                   maxValue: 10,
-                  initialValue: state.borderRadius ?? MyoroSliderConfiguration.initialValueDefaultValue,
+                  initialValue: state.borderRadius ?? 0.5,
                   onChanged: (value) => _borderWidthOnChanged(bloc, value),
                 ),
               ),
               ColorWidgetShowcaseOption(
-                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Idle color'),
+                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+                  label: 'Idle color',
+                ),
                 onChanged: (color) => _idleColorOnChanged(bloc, color),
               ),
               ColorWidgetShowcaseOption(
-                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Hover color'),
+                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+                  label: 'Hover color',
+                ),
                 onChanged: (color) => _hoverColorOnChanged(bloc, color),
               ),
               ColorWidgetShowcaseOption(
-                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Tap color'),
+                labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+                  label: 'Tap color',
+                ),
                 onChanged: (color) => _tapColorOnChanged(bloc, color),
               ),
             ],

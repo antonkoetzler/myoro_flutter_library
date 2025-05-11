@@ -34,7 +34,9 @@ final class _Widget extends StatelessWidget {
   static const List<MyoroTableColumn> _columns = [
     MyoroTableColumn(
       tooltipMessage: 'Expanded\'s tooltip message!',
-      widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.expanded),
+      widthConfiguration: MyoroTableColumnWidthConfiguration(
+        typeEnum: MyoroTableColumnWidthConfigurationEnum.expanded,
+      ),
       child: Text('Expanded'),
     ),
     MyoroTableColumn(
@@ -71,6 +73,8 @@ final class _Widget extends StatelessWidget {
   }
 
   void _showSnackBar(BuildContext context, String message) {
-    context.showSnackBar(snackBar: MyoroSnackBar(MyoroSnackBarConfiguration(message: message)));
+    context.showSnackBar(
+      snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message)),
+    );
   }
 }

@@ -36,13 +36,16 @@ void main() {
     late final BuildContext context;
     await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
     await tester.pumpAndSettle();
-    expect(context.resolveThemeExtension<MyoroMaterialAppThemeExtension>(), isA<MyoroMaterialAppThemeExtension>());
+    expect(context.resolveThemeExtension<MyoroAppThemeExtension>(), isA<MyoroAppThemeExtension>());
   });
 
   testWidgets('MyoroBuildContextExtension.resolveBloc', (WidgetTester tester) async {
     late final BuildContext context;
     await tester.pumpWidget(
-      BlocProvider(create: (_) => _Cubit(), child: createWidget((buildContext) => context = buildContext)),
+      BlocProvider(
+        create: (_) => _Cubit(),
+        child: createWidget((buildContext) => context = buildContext),
+      ),
     );
     await tester.pumpAndSettle();
     expect(context.resolveBloc<_Cubit>(), isA<_Cubit>());
@@ -52,7 +55,9 @@ void main() {
     late final BuildContext context;
     await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
     await tester.pumpAndSettle();
-    context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
+    context.openDrawer(
+      drawer: const MyoroDrawer(configuration: MyoroDrawerConfiguration(child: SizedBox.shrink())),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDrawer), findsOneWidget);
   });
@@ -61,7 +66,9 @@ void main() {
     late final BuildContext context;
     await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
     await tester.pumpAndSettle();
-    context.openDrawer(drawer: const MyoroDrawer(child: SizedBox.shrink()));
+    context.openDrawer(
+      drawer: const MyoroDrawer(configuration: MyoroDrawerConfiguration(child: SizedBox.shrink())),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDrawer), findsOneWidget);
     context.closeDrawer();
@@ -73,7 +80,11 @@ void main() {
     late final BuildContext context;
     await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
     await tester.pumpAndSettle();
-    context.showSnackBar(snackBar: const MyoroSnackBar(MyoroSnackBarConfiguration(message: 'Hello, World!')));
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(message: 'Hello, World!'),
+      ),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroSnackBar), findsOneWidget);
   });
@@ -82,7 +93,11 @@ void main() {
     late final BuildContext context;
     await tester.pumpWidget(createWidget((buildContext) => context = buildContext));
     await tester.pumpAndSettle();
-    context.showSnackBar(snackBar: const MyoroSnackBar(MyoroSnackBarConfiguration(message: 'Hello, World!')));
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(message: 'Hello, World!'),
+      ),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroSnackBar), findsOneWidget);
     context.hideSnackBar();

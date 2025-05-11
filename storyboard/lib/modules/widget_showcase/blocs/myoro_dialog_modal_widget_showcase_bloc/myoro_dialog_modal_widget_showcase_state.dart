@@ -1,8 +1,10 @@
 part of 'myoro_dialog_modal_widget_showcase_bloc.dart';
 
-const _defaultText = 'Message regarding the action goes here.';
-
 final class MyoroDialogModalWidgetShowcaseState extends Equatable {
+  static const invertButtonsDefaultValue = false;
+  static const textDefaultValue = 'Message regarding the action goes here.';
+  static const childEnabledDefaultValue = false;
+
   /// [MyoroDialogModal._invertButtons].
   final bool invertButtons;
 
@@ -13,8 +15,7 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
   final String? cancelButtonText;
 
   /// [MyoroDialogModal._text].
-  final String? text;
-  final bool textEnabled;
+  final String text;
 
   /// [MyoroDialogModal._textStyle].
   final TextStyle? textStyle;
@@ -23,15 +24,14 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
   final bool childEnabled;
 
   const MyoroDialogModalWidgetShowcaseState({
-    this.invertButtons = false,
+    this.invertButtons = invertButtonsDefaultValue,
     this.confirmButtonText,
     this.cancelButtonText,
-    this.text = _defaultText,
-    this.textEnabled = true,
+    this.text = textDefaultValue,
     this.textStyle,
-    this.childEnabled = false,
+    this.childEnabled = childEnabledDefaultValue,
   }) : assert(
-         (text != null) ^ childEnabled,
+         (text.length > 0) ^ childEnabled,
          '[MyoroDialogModalWidgetShowcaseState]: [text] must not be null (x)or [childEnabled] must be true.',
        );
 
@@ -42,43 +42,19 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
     String? cancelButtonText,
     bool cancelButtonTextProvided = true,
     String? text,
-    bool? textEnabled,
     TextStyle? textStyle,
     bool textStyleProvided = true,
     bool? childEnabled,
   }) {
-    textEnabled = textEnabled ?? this.textEnabled;
-    childEnabled = childEnabled ?? this.childEnabled;
-
-    // [MyoroDialogModal.text] (x)or [MyoroDialogModal.child] are not provided.
-    if (!textEnabled && !childEnabled) {
-      if (this.textEnabled) {
-        childEnabled = true;
-      } else if (this.childEnabled) {
-        text = _defaultText;
-        textEnabled = true;
-      }
-    }
-
-    // Both [MyoroDialogModal.text] & [MyoroDialogModal.child] are provided.
-    if (textEnabled && childEnabled) {
-      if (this.textEnabled) {
-        textEnabled = false;
-      } else if (this.childEnabled) {
-        childEnabled = false;
-      }
-    }
-
     return MyoroDialogModalWidgetShowcaseState(
       invertButtons: invertButtons ?? this.invertButtons,
       confirmButtonText:
           confirmButtonTextProvided ? (confirmButtonText ?? this.confirmButtonText) : null,
       cancelButtonText:
           cancelButtonTextProvided ? (cancelButtonText ?? this.cancelButtonText) : null,
-      text: textEnabled ? (text ?? this.text) : null,
-      textEnabled: textEnabled,
-      textStyle: textStyleProvided && !childEnabled ? (textStyle ?? this.textStyle) : null,
-      childEnabled: childEnabled,
+      text: text ?? this.text,
+      textStyle: textStyle ?? this.textStyle,
+      childEnabled: childEnabled ?? this.childEnabled,
     );
   }
 
@@ -89,21 +65,12 @@ final class MyoroDialogModalWidgetShowcaseState extends Equatable {
       '  confirmButtonText: $confirmButtonText,\n'
       '  cancelButtonText: $cancelButtonText,\n'
       '  text: $text,\n'
-      '  textEnabled: $textEnabled,\n'
       '  textStyle: $textStyle,\n'
       '  childEnabled: $childEnabled,\n'
       ');';
 
   @override
   List<Object?> get props {
-    return [
-      invertButtons,
-      confirmButtonText,
-      cancelButtonText,
-      text,
-      textEnabled,
-      textStyle,
-      childEnabled,
-    ];
+    return [invertButtons, confirmButtonText, cancelButtonText, text, textStyle, childEnabled];
   }
 }

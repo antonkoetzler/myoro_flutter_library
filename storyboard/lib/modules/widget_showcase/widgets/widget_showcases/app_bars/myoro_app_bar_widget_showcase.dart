@@ -30,24 +30,29 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroAppBarWidgetShowcaseBloc, MyoroAppBarWidgetShowcaseState>(
       builder: (_, MyoroAppBarWidgetShowcaseState state) {
         return MyoroAppBar(
-          bordered: state.bordered,
-          child: SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const _MockAppLogo(),
-                    SizedBox(
-                      width: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().logoTitleSpacing,
-                    ),
-                    const Flexible(child: _MockAppTitle()),
-                  ],
-                ),
-                const _MockMenuButton(),
-              ],
+          configuration: MyoroAppBarConfiguration(
+            bordered: state.bordered,
+            child: SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const _MockAppLogo(),
+                      SizedBox(
+                        width:
+                            context
+                                .resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>()
+                                .logoTitleSpacing,
+                      ),
+                      const Flexible(child: _MockAppTitle()),
+                    ],
+                  ),
+                  const _MockMenuButton(),
+                ],
+              ),
             ),
           ),
         );
@@ -61,7 +66,10 @@ final class _MockAppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockAppLogoIcon, size: 30);
+    return Icon(
+      context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockAppLogoIcon,
+      size: 30,
+    );
   }
 }
 
@@ -72,7 +80,10 @@ final class _MockAppTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Hello, World!',
-      style: context.resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>().mockAppTitleTextStyle,
+      style:
+          context
+              .resolveThemeExtension<MyoroAppBarWidgetShowcaseThemeExtension>()
+              .mockAppTitleTextStyle,
     );
   }
 }
@@ -104,10 +115,14 @@ final class _Bordered extends StatelessWidget {
     return BlocBuilder<MyoroAppBarWidgetShowcaseBloc, MyoroAppBarWidgetShowcaseState>(
       builder: (_, MyoroAppBarWidgetShowcaseState state) {
         return MyoroCheckbox(
-          initialValue: state.bordered,
-          label: '[MyoroAppBar.bordered]',
-          onChanged:
-              (bool value) => context.resolveBloc<MyoroAppBarWidgetShowcaseBloc>().add(const ToggleBorderedEvent()),
+          configuration: MyoroCheckboxConfiguration(
+            initialValue: state.bordered,
+            label: '[MyoroAppBar.bordered]',
+            onChanged:
+                (bool value) => context.resolveBloc<MyoroAppBarWidgetShowcaseBloc>().add(
+                  const ToggleBorderedEvent(),
+                ),
+          ),
         );
       },
     );

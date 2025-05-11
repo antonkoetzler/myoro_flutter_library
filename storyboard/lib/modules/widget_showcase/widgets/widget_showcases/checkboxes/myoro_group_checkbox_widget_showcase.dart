@@ -29,12 +29,14 @@ final class _Widget extends StatelessWidget {
     return BlocBuilder<MyoroGroupCheckboxWidgetShowcaseBloc, MyoroGroupCheckboxWidgetShowcaseState>(
       builder: (_, MyoroGroupCheckboxWidgetShowcaseState state) {
         return MyoroGroupCheckbox(
-          direction: state.direction,
-          spacing: state.spacing,
-          runSpacing: state.runSpacing,
-          checkboxes: {
-            for (int i = 0; i < 5; i++) faker.person.name(): faker.randomGenerator.boolean(),
-          },
+          configuration: MyoroGroupCheckboxConfiguration(
+            direction: state.direction,
+            spacing: state.spacing,
+            runSpacing: state.runSpacing,
+            checkboxes: {
+              for (int i = 0; i < 5; i++) faker.person.name(): faker.randomGenerator.boolean(),
+            },
+          ),
         );
       },
     );

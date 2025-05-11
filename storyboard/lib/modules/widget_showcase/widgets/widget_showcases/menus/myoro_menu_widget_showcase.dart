@@ -144,9 +144,11 @@ final class _SearchCallbackOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroMenuWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroMenu.searchCallback] not null?',
-      initialValue: bloc.state.searchCallbackEnabled,
-      onChanged: (bool value) => bloc.add(SetSearchCallbackEnabledEvent(value)),
+      configuration: MyoroCheckboxConfiguration(
+        label: '[MyoroMenu.searchCallback] not null?',
+        initialValue: bloc.state.searchCallbackEnabled,
+        onChanged: (bool value) => bloc.add(SetSearchCallbackEnabledEvent(value)),
+      ),
     );
   }
 }

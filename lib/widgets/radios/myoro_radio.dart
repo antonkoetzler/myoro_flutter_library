@@ -17,14 +17,16 @@ final class _MyoroRadioState extends State<MyoroRadio> {
 
   MyoroRadioNotifier? _localNotifier;
   MyoroRadioNotifier get _notifier {
-    return _configuration.notifier ?? (_localNotifier ??= MyoroRadioNotifier(_configuration.initialValue));
+    return _configuration.notifier ??
+        (_localNotifier ??= MyoroRadioNotifier(_configuration.initialValue));
   }
 
   @override
   void didUpdateWidget(covariant MyoroRadio oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (_configuration.notifier != null) return;
-    _notifier.value = _configuration.initialValue ?? MyoroRadioConfiguration.initialValueDefaultValue;
+    _notifier.value =
+        _configuration.initialValue ?? MyoroRadioConfiguration.initialValueDefaultValue;
   }
 
   @override
@@ -60,7 +62,10 @@ final class _MyoroRadioState extends State<MyoroRadio> {
         if (_configuration.label != null) ...[
           SizedBox(width: themeExtension.spacing),
           Flexible(
-            child: Text(_configuration.label!, style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle),
+            child: Text(
+              _configuration.label!,
+              style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
+            ),
           ),
         ],
       ],

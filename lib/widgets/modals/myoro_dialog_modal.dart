@@ -40,15 +40,17 @@ final class _Message extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
-    if (_configuration.text != null) {
-      return Text(_configuration.text!, style: _configuration.textStyle ?? themeExtension.textStyle);
+    if (_configuration.text.isNotEmpty) {
+      return Text(_configuration.text, style: _configuration.textStyle ?? themeExtension.textStyle);
     }
 
     if (_configuration.child != null) {
       return _configuration.child!;
     }
 
-    throw AssertionError('[MyoroDialogModal._Message.build]: [_text] (x)or [_child] must always not be null');
+    throw AssertionError(
+      '[MyoroDialogModal._Message.build]: [_text] (x)or [_child] must always not be null',
+    );
   }
 }
 
@@ -89,8 +91,12 @@ final class _ConfirmButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _configuration.onConfirm?.call()),
-        textConfiguration: MyoroIconTextButtonTextConfiguration(text: _configuration.confirmButtonText ?? 'Confirm'),
+        buttonConfiguration: MyoroButtonConfiguration(
+          onTapUp: (_) => _configuration.onConfirm?.call(),
+        ),
+        textConfiguration: MyoroIconTextButtonTextConfiguration(
+          text: _configuration.confirmButtonText ?? 'Confirm',
+        ),
       ),
     );
   }
@@ -106,7 +112,9 @@ final class _CancelButton extends StatelessWidget {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
-        textConfiguration: MyoroIconTextButtonTextConfiguration(text: _configuration.cancelButtonText ?? 'Cancel'),
+        textConfiguration: MyoroIconTextButtonTextConfiguration(
+          text: _configuration.cancelButtonText ?? 'Cancel',
+        ),
       ),
     );
   }

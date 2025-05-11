@@ -27,7 +27,9 @@ final class _Widget extends StatelessWidget {
       builder: (_, MyoroSearchInputWidgetShowcaseState state) {
         return MyoroSearchInput<String>(
           configuration: MyoroSearchInputConfiguration(
-            inputConfiguration: const MyoroInputConfiguration(inputStyle: MyoroInputStyleEnum.outlined),
+            inputConfiguration: const MyoroInputConfiguration(
+              inputStyle: MyoroInputStyleEnum.outlined,
+            ),
             requestWhenChanged: state.requestWhenChanged,
             request: _request,
             itemBuilder: _itemBuilder,
@@ -39,11 +41,17 @@ final class _Widget extends StatelessWidget {
 
   Future<Set<String>> _request(_) async {
     await Future.delayed(const Duration(milliseconds: 300));
-    return List.generate(faker.randomGenerator.integer(50), (_) => faker.randomGenerator.string(150)).toSet();
+    return List.generate(
+      faker.randomGenerator.integer(50),
+      (_) => faker.randomGenerator.string(150),
+    ).toSet();
   }
 
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: item), onTapDown: (_) {});
+    return MyoroMenuItem(
+      textConfiguration: MyoroIconTextButtonTextConfiguration(text: item),
+      onTapDown: (_) {},
+    );
   }
 }
 
@@ -55,9 +63,11 @@ final class _RequestWhenChangedOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroSearchInputWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroSearchInput.requestWhenChanged]',
-      initialValue: bloc.state.requestWhenChanged,
-      onChanged: (bool value) => bloc.add(SetRequestWhenChangedEvent(value)),
+      configuration: MyoroCheckboxConfiguration(
+        label: '[MyoroSearchInput.requestWhenChanged]',
+        initialValue: bloc.state.requestWhenChanged,
+        onChanged: (bool value) => bloc.add(SetRequestWhenChangedEvent(value)),
+      ),
     );
   }
 }

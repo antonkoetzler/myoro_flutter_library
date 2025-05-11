@@ -46,13 +46,18 @@ void main() {
             themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
             return MyoroSlider(
-              MyoroSliderConfiguration(
+              configuration: MyoroSliderConfiguration(
                 label: label,
                 labelTextStyle: labelTextStyle,
                 width: width,
-                initialValue: minMaxValuesEnabled ? initialValue : MyoroSliderConfiguration.initialValueDefaultValue,
-                minValue: minMaxValuesEnabled ? minValue : MyoroSliderConfiguration.minValueDefaultValue,
-                maxValue: minMaxValuesEnabled ? maxValue : MyoroSliderConfiguration.maxValueDefaultValue,
+                initialValue:
+                    minMaxValuesEnabled
+                        ? initialValue
+                        : MyoroSliderConfiguration.initialValueDefaultValue,
+                minValue:
+                    minMaxValuesEnabled ? minValue : MyoroSliderConfiguration.minValueDefaultValue,
+                maxValue:
+                    minMaxValuesEnabled ? maxValue : MyoroSliderConfiguration.maxValueDefaultValue,
                 currentValueIndicatorTextBuilder: (_) => currentValueIndicatorText,
                 maxValueIndicatorTextBuilder: (_) => maxValueIndicatorText,
                 footerIndicatorTextBuilder: (_) => footerIndicatorText,
@@ -79,7 +84,8 @@ void main() {
             (w.child as Column).children.length == 2 &&
             // (w.child as Column).children.first is [_Label] &&
             (w.child as Column).children.last is Padding &&
-            ((w.child as Column).children.last as Padding).padding == themeExtension.sliderPadding &&
+            ((w.child as Column).children.last as Padding).padding ==
+                themeExtension.sliderPadding &&
             ((w.child as Column).children.last as Padding).child is ValueListenableBuilder<double>,
       ),
       findsOneWidget,
@@ -87,7 +93,9 @@ void main() {
 
     // [_Label].
     expect(
-      find.byWidgetPredicate((Widget w) => w is Text && w.style == (labelTextStyle ?? themeExtension.labelTextStyle)),
+      find.byWidgetPredicate(
+        (Widget w) => w is Text && w.style == (labelTextStyle ?? themeExtension.labelTextStyle),
+      ),
       findsOneWidget,
     );
 
@@ -100,9 +108,12 @@ void main() {
             // w.children.first is [_IndicatorText] &&
             w.children[1] is Expanded &&
             (w.children[1] as Expanded).child is Slider &&
-            ((w.children[1] as Expanded).child as Slider).value == (minMaxValuesEnabled ? initialValue : 0) &&
-            ((w.children[1] as Expanded).child as Slider).min == (minMaxValuesEnabled ? minValue : 0) &&
-            ((w.children[1] as Expanded).child as Slider).max == (minMaxValuesEnabled ? maxValue : 1),
+            ((w.children[1] as Expanded).child as Slider).value ==
+                (minMaxValuesEnabled ? initialValue : 0) &&
+            ((w.children[1] as Expanded).child as Slider).min ==
+                (minMaxValuesEnabled ? minValue : 0) &&
+            ((w.children[1] as Expanded).child as Slider).max ==
+                (minMaxValuesEnabled ? maxValue : 1),
         // w.children.first is [_IndicatorText],
       ),
       findsOneWidget,

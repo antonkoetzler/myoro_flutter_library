@@ -7,35 +7,23 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [ThemeExtension] for [MyoroGroupRadio].
 @immutable
 class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension> {
-  /// Default direction of the [MyoroGroupCheckbox].
-  final Axis direction;
-
   /// Main axis spacing in between each checkbox.
   final double spacing;
 
   /// Cross axis spacing in between each checkbox.
   final double runSpacing;
 
-  const MyoroGroupRadioThemeExtension({
-    required this.direction,
-    required this.spacing,
-    required this.runSpacing,
-  });
+  const MyoroGroupRadioThemeExtension({required this.spacing, required this.runSpacing});
 
-  const MyoroGroupRadioThemeExtension.builder()
-    : direction = Axis.vertical,
-      spacing = 5,
-      runSpacing = 5;
+  const MyoroGroupRadioThemeExtension.builder() : spacing = 5, runSpacing = 5;
 
   MyoroGroupRadioThemeExtension.fake()
-    : direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)],
-      spacing = faker.randomGenerator.decimal(),
+    : spacing = faker.randomGenerator.decimal(),
       runSpacing = faker.randomGenerator.decimal();
 
   @override
-  MyoroGroupRadioThemeExtension copyWith({Axis? direction, double? spacing, double? runSpacing}) {
+  MyoroGroupRadioThemeExtension copyWith({double? spacing, double? runSpacing}) {
     return MyoroGroupRadioThemeExtension(
-      direction: direction ?? this.direction,
       spacing: spacing ?? this.spacing,
       runSpacing: runSpacing ?? this.runSpacing,
     );
@@ -48,7 +36,6 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
   ) {
     if (other is! MyoroGroupRadioThemeExtension) return this;
     return copyWith(
-      direction: myoroLerp(direction, other.direction, t),
       spacing: lerpDouble(spacing, other.spacing, t),
       runSpacing: lerpDouble(runSpacing, other.runSpacing, t),
     );
@@ -58,20 +45,18 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
   bool operator ==(Object other) {
     return other is MyoroGroupRadioThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.direction == direction &&
         other.spacing == spacing &&
         other.runSpacing == runSpacing;
   }
 
   @override
   int get hashCode {
-    return Object.hash(direction, spacing, runSpacing);
+    return Object.hash(spacing, runSpacing);
   }
 
   @override
   String toString() =>
       'MyoroGroupRadioThemeExtension(\n'
-      '  direction: $direction,\n'
       '  spacing: $spacing,\n'
       '  runSpacing: $runSpacing,\n'
       ');';

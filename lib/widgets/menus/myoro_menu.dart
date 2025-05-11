@@ -69,7 +69,10 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
           borderRadius: themeExtension.borderRadius,
         ),
         constraints: _configuration.constraints,
-        child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(buildWhen: _buildWhen, builder: _builder),
+        child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
+          buildWhen: _buildWhen,
+          builder: _builder,
+        ),
       ),
     );
   }
@@ -115,7 +118,12 @@ final class _Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    return Center(child: Padding(padding: themeExtension.dialogTextLoaderPadding, child: const MyoroCircularLoader()));
+    return Center(
+      child: Padding(
+        padding: themeExtension.dialogTextLoaderPadding,
+        child: const MyoroCircularLoader(),
+      ),
+    );
   }
 }
 
@@ -142,7 +150,12 @@ final class _Items<T> extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (_configuration.searchCallback != null) _SearchBar(_controller),
-          Flexible(child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(buildWhen: _buildWhen, builder: _builder)),
+          Flexible(
+            child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(
+              buildWhen: _buildWhen,
+              builder: _builder,
+            ),
+          ),
         ],
       ),
     );
@@ -154,7 +167,8 @@ final class _Items<T> extends StatelessWidget {
 
   Widget _builder(_, MyoroMenuState<T> state) {
     final items = state.queriedItems ?? state.items;
-    final itemWidgets = items.map<Widget>((T item) => _Item(_configuration.itemBuilder(item))).toList();
+    final itemWidgets =
+        items.map<Widget>((T item) => _Item(_configuration.itemBuilder(item))).toList();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -237,7 +251,8 @@ final class _Item extends StatelessWidget {
   }
 
   Color _backgroundColorBuilder(BuildContext context) {
-    final buttonVariantThemeExtension = context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
+    final buttonVariantThemeExtension =
+        context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
     return buttonVariantThemeExtension.primaryHoverContentColor;
   }
 }
@@ -253,7 +268,10 @@ final class _DialogText extends StatelessWidget {
     return Center(
       child: Padding(
         padding: themeExtension.dialogTextLoaderPadding,
-        child: Text(_text, style: context.resolveThemeExtension<MyoroMenuThemeExtension>().dialogTextStyle),
+        child: Text(
+          _text,
+          style: context.resolveThemeExtension<MyoroMenuThemeExtension>().dialogTextStyle,
+        ),
       ),
     );
   }

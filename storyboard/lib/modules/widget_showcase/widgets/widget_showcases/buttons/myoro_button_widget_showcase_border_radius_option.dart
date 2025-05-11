@@ -35,11 +35,13 @@ final class MyoroButtonWidgetShowcaseBorderRadiusOption extends StatelessWidget 
       spacing: themeExtension.spacing,
       children: [
         MyoroCheckbox(
-          label: '[MyoroButtonConfiguration.borderRadius]',
-          onChanged: (bool value) => _checkboxOnChanged(bloc, value),
+          configuration: MyoroCheckboxConfiguration(
+            label: '[MyoroButtonConfiguration.borderRadius]',
+            onChanged: (bool value) => _checkboxOnChanged(bloc, value),
+          ),
         ),
         MyoroSlider(
-          MyoroSliderConfiguration(
+          configuration: MyoroSliderConfiguration(
             minValue: 0,
             maxValue: 500,
             initialValue: state.borderRadius ?? _initialValue,

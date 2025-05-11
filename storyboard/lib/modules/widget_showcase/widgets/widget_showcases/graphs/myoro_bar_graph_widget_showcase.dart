@@ -36,7 +36,8 @@ final class _Widget extends StatelessWidget {
                   faker.randomGenerator.integer(5),
                   (_) => MyoroBarGraphBar(
                     y: faker.randomGenerator.decimal(),
-                    color: [Colors.red, Colors.green, Colors.blue][faker.randomGenerator.integer(3)],
+                    color:
+                        [Colors.red, Colors.green, Colors.blue][faker.randomGenerator.integer(3)],
                   ),
                 ),
               ),
@@ -56,9 +57,11 @@ final class _SortedOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroBarGraphWidgetShowcaseBloc>();
 
     return MyoroCheckbox(
-      label: '[MyoroBarGraph.sorted]',
-      initialValue: bloc.state.sorted,
-      onChanged: (bool value) => bloc.add(SetSortedEvent(value)),
+      configuration: MyoroCheckboxConfiguration(
+        label: '[MyoroBarGraph.sorted]',
+        initialValue: bloc.state.sorted,
+        onChanged: (bool value) => bloc.add(SetSortedEvent(value)),
+      ),
     );
   }
 }

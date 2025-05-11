@@ -9,7 +9,7 @@ import 'package:storyboard/modules/widget_showcase/blocs/myoro_dialog_modal_widg
 void main() {
   final bool invertButtons = faker.randomGenerator.boolean();
   final String? confirmButtonText = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
-  final String? text = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String text = faker.randomGenerator.boolean() ? faker.lorem.word() : '';
   late final TextStyle? textStyle;
   final bool childEnabled = faker.randomGenerator.boolean();
 
@@ -36,14 +36,7 @@ void main() {
     'MyoroDialogModalWidgetShowcaseBloc.SetTextEvent',
     build: () => MyoroDialogModalWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTextEvent(text)),
-    expect:
-        () => [
-          MyoroDialogModalWidgetShowcaseState(
-            text: text,
-            textEnabled: text != null,
-            childEnabled: text == null,
-          ),
-        ],
+    expect: () => [MyoroDialogModalWidgetShowcaseState(text: text, childEnabled: text.isEmpty)],
   );
 
   blocTest(
@@ -60,8 +53,7 @@ void main() {
     expect:
         () => [
           MyoroDialogModalWidgetShowcaseState(
-            text: childEnabled ? null : 'Message regarding the action goes here.',
-            textEnabled: !childEnabled,
+            text: childEnabled ? '' : MyoroDialogModalWidgetShowcaseState.textDefaultValue,
             childEnabled: childEnabled,
           ),
         ],

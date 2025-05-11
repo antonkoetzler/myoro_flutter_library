@@ -18,8 +18,8 @@ void main() {
         (Widget w) =>
             w is IntrinsicHeight &&
             w.child is MyoroCard &&
-            (w.child as MyoroCard).child is Text &&
-            ((w.child as MyoroCard).child as Text).data == 'This is a [MyoroCard]!',
+            (w.child as MyoroCard).configuration.child is Text &&
+            ((w.child as MyoroCard).configuration.child as Text).data == 'This is a [MyoroCard]!',
       ),
       findsOneWidget,
     );

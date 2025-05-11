@@ -12,7 +12,10 @@ void main() {
 
   setUp(() {
     MyoroTypographyDesignSystem.isDarkMode = faker.randomGenerator.boolean();
-    titleTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null;
+    titleTextStyle =
+        faker.randomGenerator.boolean()
+            ? MyoroTypographyDesignSystem.instance.randomTextStyle
+            : null;
   });
 
   testWidgets('MyoroDrawer', (WidgetTester tester) async {
@@ -36,11 +39,13 @@ void main() {
     context.openDrawer(
       isEndDrawer: isEndDrawer,
       drawer: MyoroDrawer(
-        title: title,
-        titleTextStyle: titleTextStyle,
-        showCloseButton: showCloseButton,
-        barrierDismissable: barrierDismissable,
-        child: const SizedBox.shrink(),
+        configuration: MyoroDrawerConfiguration(
+          title: title,
+          titleTextStyle: titleTextStyle,
+          showCloseButton: showCloseButton,
+          barrierDismissable: barrierDismissable,
+          child: const SizedBox.shrink(),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -49,7 +54,9 @@ void main() {
 
     // Wrapper.
     expect(
-      find.byWidgetPredicate((Widget w) => w is Stack && w.children.length == 2 && w.children.last is Row),
+      find.byWidgetPredicate(
+        (Widget w) => w is Stack && w.children.length == 2 && w.children.last is Row,
+      ),
       findsOneWidget,
     );
 
@@ -70,7 +77,8 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is Row &&
-            w.mainAxisAlignment == (!isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end) &&
+            w.mainAxisAlignment ==
+                (!isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end) &&
             w.children.length == 2,
       ),
       findsOneWidget,
@@ -88,15 +96,20 @@ void main() {
             ((w.child as Drawer).child as Padding).padding == themeExtension.drawerContentPadding &&
             ((w.child as Drawer).child as Padding).child is Column &&
             (((w.child as Drawer).child as Padding).child as Column).children.length == 3 &&
-            (((w.child as Drawer).child as Padding).child as Column).children[1] is MyoroBasicDivider &&
-            ((((w.child as Drawer).child as Padding).child as Column).children[1] as MyoroBasicDivider).configuration ==
+            (((w.child as Drawer).child as Padding).child as Column).children[1]
+                is MyoroBasicDivider &&
+            ((((w.child as Drawer).child as Padding).child as Column).children[1]
+                        as MyoroBasicDivider)
+                    .configuration ==
                 MyoroBasicDividerConfiguration(
                   direction: Axis.horizontal,
                   padding: themeExtension.titleContentDividerPadding,
                 ) &&
             (((w.child as Drawer).child as Padding).child as Column).children.last is Expanded &&
             // The [SizedBox.shrink] we placed in the [tester.pumpWidget] call.
-            ((((w.child as Drawer).child as Padding).child as Column).children.last as Expanded).child is SizedBox,
+            ((((w.child as Drawer).child as Padding).child as Column).children.last as Expanded)
+                    .child
+                is SizedBox,
       ),
       findsOneWidget,
     );
@@ -104,7 +117,10 @@ void main() {
     // [_Title].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Text && w.data == title && w.style == (titleTextStyle ?? themeExtension.titleTextStyle),
+        (Widget w) =>
+            w is Text &&
+            w.data == title &&
+            w.style == (titleTextStyle ?? themeExtension.titleTextStyle),
       ),
       findsOneWidget,
     );
@@ -116,7 +132,9 @@ void main() {
             w is MyoroIconTextButton &&
             w.configuration.buttonConfiguration?.borderBuilder != null &&
             w.configuration.iconConfiguration?.icon ==
-                (!isEndDrawer ? themeExtension.closeButtonDrawerIcon : themeExtension.closeButtonEndDrawerIcon) &&
+                (!isEndDrawer
+                    ? themeExtension.closeButtonDrawerIcon
+                    : themeExtension.closeButtonEndDrawerIcon) &&
             w.configuration.buttonConfiguration?.onTapUp != null,
       ),
       findsOneWidget,

@@ -17,7 +17,7 @@ final class MyoroCarouselWidgetShowcaseState extends Equatable {
     this.direction = Axis.horizontal,
     this.displayTraversalButtons = false,
     this.autoplay = true,
-    this.autoplayIntervalDuration = kMyoroCarouselAutoplayIntervalDuration,
+    this.autoplayIntervalDuration = MyoroCarouselConfiguration.autoplayIntervalDurationDefaultValue,
   });
 
   MyoroCarouselWidgetShowcaseState copyWith({

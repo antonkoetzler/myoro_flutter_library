@@ -10,9 +10,11 @@ final class MyoroDropdownWidgetShowcaseCheckboxOnChangedOption extends Stateless
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroDropdownWidgetShowcaseBloc>();
     return MyoroCheckbox(
-      label: 'Checkbox enabled?',
-      initialValue: bloc.state.checkboxOnChangedEnabled,
-      onChanged: (bool value) => _onChanged(bloc, value),
+      configuration: MyoroCheckboxConfiguration(
+        label: 'Checkbox enabled?',
+        initialValue: bloc.state.checkboxOnChangedEnabled,
+        onChanged: (bool value) => _onChanged(bloc, value),
+      ),
     );
   }
 

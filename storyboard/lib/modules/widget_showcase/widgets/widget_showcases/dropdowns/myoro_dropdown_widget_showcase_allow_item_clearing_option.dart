@@ -10,9 +10,11 @@ final class MyoroDropdownWidgetShowcaseAllowItemClearingOption extends Stateless
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroDropdownWidgetShowcaseBloc>();
     return MyoroCheckbox(
-      label: 'MyoroDropdownConfiguration.allowItemClearing',
-      initialValue: bloc.state.allowItemClearing,
-      onChanged: (bool value) => _onChanged(bloc, value),
+      configuration: MyoroCheckboxConfiguration(
+        label: 'MyoroDropdownConfiguration.allowItemClearing',
+        initialValue: bloc.state.allowItemClearing,
+        onChanged: (bool value) => _onChanged(bloc, value),
+      ),
     );
   }
 
