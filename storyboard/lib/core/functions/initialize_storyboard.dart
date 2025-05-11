@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:storyboard/storyboard.dart';
 import 'package:window_manager/window_manager.dart';
@@ -15,8 +16,10 @@ Future<void> initializeStoryboard() async {
 
 /// Initilize [windowManager].
 void _initializeWindowManager() {
-  windowManager.ensureInitialized();
-  windowManager.setMinimumSize(const Size(600, 600));
+  if (MyoroPlatformHelper.isDesktop) {
+    windowManager.ensureInitialized();
+    windowManager.setMinimumSize(const Size(600, 600));
+  }
 }
 
 /// Adds all containers to [_kiwiContainer].
