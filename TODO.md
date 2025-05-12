@@ -1,6 +1,6 @@
 # TODO
 
-1. feature: `MyoroFakeGenerator`
+1. feature: `MyoroFakeHelper`
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
