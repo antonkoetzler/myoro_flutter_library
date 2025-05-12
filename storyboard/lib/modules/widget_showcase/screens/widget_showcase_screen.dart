@@ -13,7 +13,7 @@ final class WidgetShowcaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoryboardScreen(
       onPrevious: context.navigator.pop,
-      headerTitleText: _widgetName,
+      title: _widgetName,
       body: StoryboardWidgetListingEnum.getWidgetShowcase(_widgetName),
     );
   }

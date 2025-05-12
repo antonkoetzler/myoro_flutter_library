@@ -7,40 +7,27 @@ final class StoryboardScreen extends StatelessWidget {
   /// Callback that builds [_PreviousPageButton].
   final VoidCallback? onPrevious;
 
-  /// Text of [_HeaderTitleText].
-  final String? headerTitleText;
-
-  /// Text of [_HeaderSubtitleText].
-  final String? headerSubtitleText;
+  /// Text of [_Title].
+  final String title;
 
   /// [MyoroScreen.body].
   final Widget body;
 
-  const StoryboardScreen({
-    super.key,
-    this.onPrevious,
-    this.headerTitleText,
-    this.headerSubtitleText,
-    required this.body,
-  });
+  const StoryboardScreen({super.key, this.onPrevious, required this.title, required this.body});
 
   @override
   Widget build(BuildContext context) {
     return MyoroScreen(
-      configuration: MyoroScreenConfiguration(
-        appBar: _AppBar(onPrevious, headerTitleText, headerSubtitleText),
-        body: body,
-      ),
+      configuration: MyoroScreenConfiguration(appBar: _AppBar(onPrevious, title), body: body),
     );
   }
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? _onPrevious;
-  final String? _headerTitleText;
-  final String? _headerSubtitleText;
+  final String _title;
 
-  const _AppBar(this._onPrevious, this._headerTitleText, this._headerSubtitleText);
+  const _AppBar(this._onPrevious, this._title);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
@@ -48,8 +35,6 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    final bool headerTitleTextIsNotNull = _headerTitleText != null;
-    final bool headerSubtitleTextIsNotNull = _headerSubtitleText != null;
 
     return MyoroAppBar(
       configuration: MyoroAppBarConfiguration(
@@ -61,11 +46,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               spacing: themeExtension.spacing / 2,
-              children: [
-                if (_onPrevious != null) _PreviousPageButton(_onPrevious),
-                if (headerTitleTextIsNotNull || headerSubtitleTextIsNotNull)
-                  _Header(_headerTitleText, _headerSubtitleText),
-              ],
+              children: [if (_onPrevious != null) _PreviousPageButton(_onPrevious), _Title(_title)],
             ),
             const _ToggleThemeButton(),
           ],
@@ -75,37 +56,15 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-final class _Header extends StatelessWidget {
-  final String? _headerTitleText;
-  final String? _headerSubtitleText;
-
-  const _Header(this._headerTitleText, this._headerSubtitleText);
-
-  @override
-  Widget build(BuildContext context) {
-    final bool headerTitleTextIsNotNull = _headerTitleText != null;
-    final bool headerSubtitleTextIsNotNull = _headerSubtitleText != null;
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (headerTitleTextIsNotNull) Flexible(child: _HeaderTitleText(_headerTitleText)),
-        if (headerSubtitleTextIsNotNull) Flexible(child: _HeaderSubtitleText(_headerSubtitleText)),
-      ],
-    );
-  }
-}
-
-final class _HeaderTitleText extends StatelessWidget {
+final class _Title extends StatelessWidget {
   final String _text;
 
-  const _HeaderTitleText(this._text);
+  const _Title(this._text);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    return _HeaderText(text: _text, style: themeExtension.headerTitleTextStyle);
+    return _HeaderText(text: _text, style: themeExtension.titleTextStyle);
   }
 }
 
@@ -118,27 +77,7 @@ final class _PreviousPageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 
-    return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onPrevious()),
-        padding: themeExtension.previousPageButtonPadding,
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(
-          icon: themeExtension.previousPageButtonIcon,
-        ),
-      ),
-    );
-  }
-}
-
-final class _HeaderSubtitleText extends StatelessWidget {
-  final String _text;
-
-  const _HeaderSubtitleText(this._text);
-
-  @override
-  Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    return _HeaderText(text: _text, style: themeExtension.headerSubtitleTextStyle);
+    return _Button(themeExtension.previousPageButtonIcon, _onPrevious);
   }
 }
 
@@ -160,18 +99,31 @@ final class _ToggleThemeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
-    return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(
-          icon: themeExtension.toggleThemeButtonIcon,
-        ),
-      ),
-    );
+    return _Button(themeExtension.toggleThemeButtonIcon, () => _onTapUp(context));
   }
 
   void _onTapUp(BuildContext context) {
     final themeModeCubit = context.resolveBloc<ThemeModeCubit>();
     themeModeCubit.toggle();
+  }
+}
+
+final class _Button extends StatelessWidget {
+  final IconData _icon;
+  final VoidCallback _onTapUp;
+
+  const _Button(this._icon, this._onTapUp);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp()),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: _icon),
+        padding: themeExtension.buttonPadding,
+      ),
+    );
   }
 }

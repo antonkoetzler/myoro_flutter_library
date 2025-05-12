@@ -12,11 +12,12 @@ final class MyoroInputWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroInputWidgetShowcaseBloc(),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_FormatterOption(), _ConfigurationOption()],
-      ),
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [_FormatterOption(), _ConfigurationOption()];
   }
 }
 

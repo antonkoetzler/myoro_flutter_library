@@ -10,12 +10,7 @@ void main() {
 
     expect(find.byType(MainScreen), findsOneWidget);
     expect(
-      find.byWidgetPredicate(
-        (Widget w) =>
-            w is StoryboardScreen &&
-            w.headerTitleText == 'MFL Storyboard' &&
-            w.headerSubtitleText == 'Program to visualize and create MFL widgets.',
-      ),
+      find.byWidgetPredicate((Widget w) => w is StoryboardScreen && w.title == 'MFL Storyboard'),
       findsOneWidget,
     );
     expect(find.byType(MyoroAccordion), findsOneWidget);

@@ -17,14 +17,15 @@ final class MyoroPieGraphWidgetShowcase extends StatelessWidget {
         builder: (_, MyoroPieGraphWidgetShowcaseState state) {
           return WidgetShowcase(
             widget: const _Widget(),
-            widgetOptions: [
-              const _TypeEnumOption(),
-              if (state.typeEnum.isDonut) const _CenterWidgetOption(),
-            ],
+            widgetOptionsBuilder: () => _widgetOptionsBuilder(state),
           );
         },
       ),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder(MyoroPieGraphWidgetShowcaseState state) {
+    return [const _TypeEnumOption(), if (state.typeEnum.isDonut) const _CenterWidgetOption()];
   }
 }
 

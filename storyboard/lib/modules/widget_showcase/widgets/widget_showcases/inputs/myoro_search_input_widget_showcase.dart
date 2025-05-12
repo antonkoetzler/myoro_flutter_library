@@ -13,8 +13,12 @@ final class MyoroSearchInputWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroSearchInputWidgetShowcaseBloc(),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_RequestWhenChangedOption()]),
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [_RequestWhenChangedOption()];
   }
 }
 

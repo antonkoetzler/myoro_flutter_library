@@ -5,20 +5,19 @@ import 'package:storyboard/modules/widget_showcase/blocs/myoro_app_bar_widget_sh
 import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase for [MyoroAppBar].
-final class MyoroAppBarWidgetShowcase extends StatefulWidget {
+final class MyoroAppBarWidgetShowcase extends StatelessWidget {
   const MyoroAppBarWidgetShowcase({super.key});
 
-  @override
-  State<MyoroAppBarWidgetShowcase> createState() => _MyoroAppBarWidgetShowcaseState();
-}
-
-final class _MyoroAppBarWidgetShowcaseState extends State<MyoroAppBarWidgetShowcase> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroAppBarWidgetShowcaseBloc(),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_Bordered()]),
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [_BorderedOption()];
   }
 }
 
@@ -107,8 +106,8 @@ final class _MockMenuButton extends StatelessWidget {
   }
 }
 
-final class _Bordered extends StatelessWidget {
-  const _Bordered();
+final class _BorderedOption extends StatelessWidget {
+  const _BorderedOption();
 
   @override
   Widget build(BuildContext context) {

@@ -12,16 +12,17 @@ final class MyoroSnackBarWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroSnackBarWidgetShowcaseBloc(),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [
-          _SnackBarTypeOption(),
-          _ShowCloseButtonOption(),
-          _MessageOption(),
-          _ChildOption(),
-        ],
-      ),
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [
+      _SnackBarTypeOption(),
+      _ShowCloseButtonOption(),
+      _MessageOption(),
+      _ChildOption(),
+    ];
   }
 }
 

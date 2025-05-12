@@ -1,13 +1,47 @@
 import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model to store the configuration members of [MyoroModal] that
 /// may be altered within other modals to not repeat the members.
+///
+/// TODO: Test needs to be rewritten.
 class MyoroModalConfiguration extends Equatable {
+  static const barrierDismissableDefaultValue = true;
+  static const useRootNavigatorDefaultValue = true;
+
   /// If you click everywhere but the modal, it closes
-  final bool? barrierDismissable;
+  final bool barrierDismissable;
+
+  /// Whether or not the [MyoroModal] should attach to the root [Navigator] of the [Widget] tree.
+  /// Setting this to false is useful for cases when you need to utilize, for example, [Bloc]s that
+  /// are defined in a specific place. Thus, you avoid the pessimization of globally scoping objects.
+  ///
+  /// In terms of MFL, this is the root [MyoroApp] of the application.
+  ///
+  /// When this is set to false, this means you want to attach the [MyoroModal] to a
+  /// specific [Navigator]/[MyoroApp]. Not using [MyoroApp], here is how you would do so:
+  ///
+  /// ```dart
+  /// final class _FooState extends State<Foo> {
+  ///   final _navigatorKey = GlobalKey<NavigatorState>();
+  ///
+  ///   @override
+  ///   Widget build(_) {
+  ///     return Navigator(
+  ///       key: _navigatorKey,
+  ///       onGenerateRoute: (_) {
+  ///         return MaterialPageRoute(
+  ///           builder: (_) => ...,
+  ///         );
+  ///       },
+  ///     );
+  ///   }
+  /// }
+  /// ```
+  final bool useRootNavigator;
 
   /// Constraints of the modal.
   final BoxConstraints? constraints;
@@ -22,7 +56,8 @@ class MyoroModalConfiguration extends Equatable {
   final bool? showCloseButton;
 
   const MyoroModalConfiguration({
-    this.barrierDismissable,
+    this.barrierDismissable = barrierDismissableDefaultValue,
+    this.useRootNavigator = useRootNavigatorDefaultValue,
     this.constraints,
     this.onClosed,
     this.title,
@@ -31,6 +66,7 @@ class MyoroModalConfiguration extends Equatable {
 
   MyoroModalConfiguration.fake()
     : barrierDismissable = faker.randomGenerator.boolean(),
+      useRootNavigator = faker.randomGenerator.boolean(),
       constraints = null,
       onClosed = null,
       title = faker.lorem.word(),
@@ -38,7 +74,7 @@ class MyoroModalConfiguration extends Equatable {
 
   MyoroModalConfiguration copyWith({
     bool? barrierDismissable,
-    bool barrierDismissableProvided = true,
+    bool? useRootNavigator,
     BoxConstraints? constraints,
     bool constraintsProvided = true,
     VoidCallback? onClosed,
@@ -49,8 +85,8 @@ class MyoroModalConfiguration extends Equatable {
     bool showCloseButtonProvided = true,
   }) {
     return MyoroModalConfiguration(
-      barrierDismissable:
-          barrierDismissableProvided ? (barrierDismissable ?? this.barrierDismissable) : null,
+      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
+      useRootNavigator: useRootNavigator ?? this.useRootNavigator,
       constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: titleProvided ? (title ?? this.title) : null,
@@ -62,6 +98,7 @@ class MyoroModalConfiguration extends Equatable {
   String toString() =>
       'MyoroModalConfiguration(\n'
       '  barrierDismissable: $barrierDismissable,\n'
+      '  useRootNavigator: $useRootNavigator,\n'
       '  constraints: $constraints,\n'
       '  onClosed: $onClosed,\n'
       '  title: $title,\n'
@@ -70,6 +107,6 @@ class MyoroModalConfiguration extends Equatable {
 
   @override
   List<Object?> get props {
-    return [barrierDismissable, constraints, onClosed, title, showCloseButton];
+    return [barrierDismissable, useRootNavigator, constraints, onClosed, title, showCloseButton];
   }
 }

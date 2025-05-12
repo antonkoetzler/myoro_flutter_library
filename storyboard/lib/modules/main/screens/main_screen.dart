@@ -9,11 +9,7 @@ final class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const StoryboardScreen(
-      headerTitleText: 'MFL Storyboard',
-      headerSubtitleText: 'Program to visualize and create MFL widgets.',
-      body: _Body(),
-    );
+    return const StoryboardScreen(title: 'MFL Storyboard', body: _Body());
   }
 }
 

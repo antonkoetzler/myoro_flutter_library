@@ -15,11 +15,12 @@ final class MyoroResizeDividerWidgetShowcase extends StatelessWidget {
           (_) => MyoroBasicDividerWidgetShowcaseBloc(
             shortValue: context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue,
           ),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_DirectionOption(), _ShortValueOption(), _PaddingOption()],
-      ),
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [_DirectionOption(), _ShortValueOption(), _PaddingOption()];
   }
 }
 

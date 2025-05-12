@@ -28,14 +28,15 @@ class MyoroModal extends StatelessWidget {
   /// Function that opens the modal.
   static Future<void> show(
     BuildContext context, {
-    MyoroModalConfiguration? configuration,
+    MyoroModalConfiguration configuration = const MyoroModalConfiguration(),
     required Widget child,
   }) async {
     return await showDialog(
       context: context,
-      barrierDismissible: configuration?.barrierDismissable ?? true,
+      useRootNavigator: configuration.useRootNavigator,
+      barrierDismissible: configuration.barrierDismissable,
       builder: (_) => MyoroModal._(configuration, child),
-    ).then((_) => configuration?.onClosed?.call());
+    ).then((_) => configuration.onClosed?.call());
   }
 
   @override

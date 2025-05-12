@@ -14,14 +14,11 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
   /// [IconData] of [_PreviousPageButton].
   final IconData previousPageButtonIcon;
 
-  /// [MyoroIconTextButtonConfiguration.padding] of [_PreviousPageButton].
-  final EdgeInsets previousPageButtonPadding;
+  /// [MyoroIconTextButtonConfiguration.padding] of [_Button].
+  final EdgeInsets buttonPadding;
 
   /// [TextStyle] of [_HeaderTitleText].
-  final TextStyle headerTitleTextStyle;
-
-  /// [TextStyle] of [_HeaderSubtitleText].
-  final TextStyle headerSubtitleTextStyle;
+  final TextStyle titleTextStyle;
 
   /// [IconData] of [_ToggleThemeButton].
   final IconData toggleThemeButtonIcon;
@@ -29,49 +26,40 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
   const StoryboardScreenThemeExtension({
     required this.spacing,
     required this.previousPageButtonIcon,
-    required this.previousPageButtonPadding,
-    required this.headerTitleTextStyle,
-    required this.headerSubtitleTextStyle,
+    required this.buttonPadding,
+    required this.titleTextStyle,
     required this.toggleThemeButtonIcon,
   });
 
-  factory StoryboardScreenThemeExtension.fake() {
-    final typography = MyoroTypographyDesignSystem.instance;
-
-    return StoryboardScreenThemeExtension(
-      spacing: faker.randomGenerator.decimal(scale: 50),
-      previousPageButtonIcon:
+  StoryboardScreenThemeExtension.fake()
+    : spacing = faker.randomGenerator.decimal(scale: 50),
+      previousPageButtonIcon =
           kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-      previousPageButtonPadding: EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
-      headerTitleTextStyle: typography.randomTextStyle,
-      headerSubtitleTextStyle: typography.randomTextStyle,
-      toggleThemeButtonIcon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-    );
-  }
+      buttonPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
+      titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      toggleThemeButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
   StoryboardScreenThemeExtension.builder(TextTheme textTheme)
     : spacing = 20,
       previousPageButtonIcon = Icons.keyboard_arrow_left,
-      previousPageButtonPadding = const EdgeInsets.all(3),
-      headerTitleTextStyle = textTheme.titleMedium!,
-      headerSubtitleTextStyle = textTheme.bodySmall!,
+      buttonPadding = const EdgeInsets.all(3),
+      titleTextStyle = textTheme.titleLarge!,
       toggleThemeButtonIcon = Icons.sunny;
 
   @override
   StoryboardScreenThemeExtension copyWith({
     double? spacing,
     IconData? previousPageButtonIcon,
-    EdgeInsets? previousPageButtonPadding,
-    TextStyle? headerTitleTextStyle,
-    TextStyle? headerSubtitleTextStyle,
+    EdgeInsets? buttonPadding,
+    TextStyle? titleTextStyle,
     IconData? toggleThemeButtonIcon,
   }) {
     return StoryboardScreenThemeExtension(
       spacing: spacing ?? this.spacing,
       previousPageButtonIcon: previousPageButtonIcon ?? this.previousPageButtonIcon,
-      previousPageButtonPadding: previousPageButtonPadding ?? this.previousPageButtonPadding,
-      headerTitleTextStyle: headerTitleTextStyle ?? this.headerTitleTextStyle,
-      headerSubtitleTextStyle: headerSubtitleTextStyle ?? this.headerSubtitleTextStyle,
+      buttonPadding: buttonPadding ?? this.buttonPadding,
+      titleTextStyle: titleTextStyle ?? this.titleTextStyle,
       toggleThemeButtonIcon: toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
     );
   }
@@ -85,17 +73,8 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       previousPageButtonIcon: myoroLerp(previousPageButtonIcon, other.previousPageButtonIcon, t),
-      previousPageButtonPadding: EdgeInsets.lerp(
-        previousPageButtonPadding,
-        other.previousPageButtonPadding,
-        t,
-      ),
-      headerTitleTextStyle: TextStyle.lerp(headerTitleTextStyle, other.headerTitleTextStyle, t),
-      headerSubtitleTextStyle: TextStyle.lerp(
-        headerSubtitleTextStyle,
-        other.headerSubtitleTextStyle,
-        t,
-      ),
+      buttonPadding: EdgeInsets.lerp(buttonPadding, other.buttonPadding, t),
+      titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       toggleThemeButtonIcon: myoroLerp(toggleThemeButtonIcon, other.toggleThemeButtonIcon, t),
     );
   }
@@ -105,10 +84,9 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
     return other is StoryboardScreenThemeExtension &&
         other.runtimeType == runtimeType &&
         other.previousPageButtonIcon == previousPageButtonIcon &&
-        other.previousPageButtonPadding == previousPageButtonPadding &&
+        other.buttonPadding == buttonPadding &&
         other.spacing == spacing &&
-        other.headerTitleTextStyle == headerTitleTextStyle &&
-        other.headerSubtitleTextStyle == headerSubtitleTextStyle &&
+        other.titleTextStyle == titleTextStyle &&
         other.toggleThemeButtonIcon == toggleThemeButtonIcon;
   }
 
@@ -117,9 +95,8 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
     return Object.hash(
       spacing,
       previousPageButtonIcon,
-      previousPageButtonPadding,
-      headerTitleTextStyle,
-      headerSubtitleTextStyle,
+      buttonPadding,
+      titleTextStyle,
       toggleThemeButtonIcon,
     );
   }
@@ -129,9 +106,8 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
       'StoryboardScreenThemeExtension(\n'
       '  spacing: $spacing,\n'
       '  previousPageButtonIcon: $previousPageButtonIcon,\n'
-      '  previousPageButtonPadding: $previousPageButtonPadding,\n'
-      '  headerTitleTextStyle: $headerTitleTextStyle,\n'
-      '  headerSubtitleTextStyle: $headerSubtitleTextStyle,\n'
+      '  buttonPadding: $buttonPadding,\n'
+      '  titleTextStyle: $titleTextStyle,\n'
       '  toggleThemeButtonIcon: $toggleThemeButtonIcon,\n'
       ');';
 }

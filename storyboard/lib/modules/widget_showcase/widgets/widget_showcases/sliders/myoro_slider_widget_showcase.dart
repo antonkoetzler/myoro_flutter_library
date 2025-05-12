@@ -11,23 +11,25 @@ final class MyoroSliderWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (_) => MyoroSliderWidgetShowcaseBloc(
-            width:
-                context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize,
-          ),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [
-          _LabelOption(),
-          _LabelTextStyleOption(),
-          _WidthOption(),
-          _CurrentValueIndicatorTextBuilderOption(),
-          _MaxValueIndicatorTextBuilderOption(),
-          _FooterIndicatorTextBuilderOption(),
-        ],
-      ),
+      create: (_) {
+        return MyoroSliderWidgetShowcaseBloc(
+          width:
+              context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize,
+        );
+      },
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [
+      _LabelOption(),
+      _LabelTextStyleOption(),
+      _WidthOption(),
+      _CurrentValueIndicatorTextBuilderOption(),
+      _MaxValueIndicatorTextBuilderOption(),
+      _FooterIndicatorTextBuilderOption(),
+    ];
   }
 }
 

@@ -6,19 +6,24 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] for [WidgetShowcase].
+///
+/// TODO: Test needs to be rewritten.
 @immutable
 final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseThemeExtension> {
-  /// [BoxDecoration] of [_WidgetWrapper].
-  final BoxDecoration widgetWrapperDecoration;
+  /// [BoxDecoration] of [_Wrapper].
+  final BoxDecoration wrapperDecoration;
 
-  /// [EdgeInsets] of [_WidgetWrapper].
-  final EdgeInsets widgetWrapperPadding;
+  /// [EdgeInsets] of [_Wrapper].
+  final EdgeInsets wrapperPadding;
 
-  /// [EdgeInsets] of the content in [_WidgetWrapper].
-  final EdgeInsets widgetWrapperContentPadding;
+  /// [EdgeInsets] of the content in [_Wrapper].
+  final EdgeInsets wrapperContentPadding;
 
-  /// Alignment of [_WidgetWrapper].
-  final Alignment widgetWrapperAlignment;
+  /// Alignment of [_Wrapper].
+  final Alignment wrapperAlignment;
+
+  /// [IconData] of [_WidgetOptionsButton].
+  final IconData widgetOptionsButtonIcon;
 
   /// [BoxConstraints.maxWidth] of [_WidgetOptions].
   final double widgetOptionsMaxWidth;
@@ -26,21 +31,22 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// Padding of [_WidgetOptions].
   final EdgeInsets widgetOptionsPadding;
 
-  /// Spacing of items in [_WidgetOptions].
-  final EdgeInsets widgetOptionsDividerPadding;
+  /// [EdgeInsets] of [_Divider].
+  final EdgeInsets dividerPadding;
 
   const WidgetShowcaseThemeExtension({
-    required this.widgetWrapperDecoration,
-    required this.widgetWrapperPadding,
-    required this.widgetWrapperContentPadding,
-    required this.widgetWrapperAlignment,
+    required this.wrapperDecoration,
+    required this.wrapperPadding,
+    required this.wrapperContentPadding,
+    required this.wrapperAlignment,
+    required this.widgetOptionsButtonIcon,
     required this.widgetOptionsMaxWidth,
     required this.widgetOptionsPadding,
-    required this.widgetOptionsDividerPadding,
+    required this.dividerPadding,
   });
 
   WidgetShowcaseThemeExtension.fake()
-    : widgetWrapperDecoration = BoxDecoration(
+    : wrapperDecoration = BoxDecoration(
         color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
         border: Border.all(
           width: faker.randomGenerator.decimal(),
@@ -48,9 +54,11 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         ),
         borderRadius: BorderRadius.circular(faker.randomGenerator.decimal()),
       ),
-      widgetWrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      widgetWrapperContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      widgetWrapperAlignment =
+      wrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      wrapperContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      widgetOptionsButtonIcon =
+          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      wrapperAlignment =
           [
             Alignment.center,
             Alignment.topLeft,
@@ -64,40 +72,43 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
           ][faker.randomGenerator.integer(9)],
       widgetOptionsMaxWidth = faker.randomGenerator.decimal(min: 200),
       widgetOptionsPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      widgetOptionsDividerPadding = EdgeInsets.all(faker.randomGenerator.decimal());
+      dividerPadding = EdgeInsets.all(faker.randomGenerator.decimal());
 
   WidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
-    : widgetWrapperDecoration = BoxDecoration(
+    : wrapperDecoration = BoxDecoration(
         color: MyoroColorDesignSystem.attention.withValues(alpha: 0.1),
         border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
 
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       ),
-      widgetWrapperPadding = const EdgeInsets.all(20),
-      widgetWrapperContentPadding = const EdgeInsets.all(20),
-      widgetWrapperAlignment = Alignment.center,
+      wrapperPadding = const EdgeInsets.all(20),
+      wrapperContentPadding = const EdgeInsets.all(20),
+      wrapperAlignment = Alignment.center,
+      widgetOptionsButtonIcon = Icons.menu,
       widgetOptionsMaxWidth = 500,
       widgetOptionsPadding = const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-      widgetOptionsDividerPadding = const EdgeInsets.symmetric(vertical: 20, horizontal: 12);
+      dividerPadding = const EdgeInsets.symmetric(vertical: 20, horizontal: 12);
 
   @override
   WidgetShowcaseThemeExtension copyWith({
-    BoxDecoration? widgetWrapperDecoration,
-    EdgeInsets? widgetWrapperPadding,
-    EdgeInsets? widgetWrapperContentPadding,
-    Alignment? widgetWrapperAlignment,
+    BoxDecoration? wrapperDecoration,
+    EdgeInsets? wrapperPadding,
+    EdgeInsets? wrapperContentPadding,
+    Alignment? wrapperAlignment,
+    IconData? widgetOptionsButtonIcon,
     double? widgetOptionsMaxWidth,
     EdgeInsets? widgetOptionsPadding,
-    EdgeInsets? widgetOptionsDividerPadding,
+    EdgeInsets? dividerPadding,
   }) {
     return WidgetShowcaseThemeExtension(
-      widgetWrapperDecoration: widgetWrapperDecoration ?? this.widgetWrapperDecoration,
-      widgetWrapperPadding: widgetWrapperPadding ?? this.widgetWrapperPadding,
-      widgetWrapperContentPadding: widgetWrapperContentPadding ?? this.widgetWrapperContentPadding,
-      widgetWrapperAlignment: widgetWrapperAlignment ?? this.widgetWrapperAlignment,
+      wrapperDecoration: wrapperDecoration ?? this.wrapperDecoration,
+      wrapperPadding: wrapperPadding ?? this.wrapperPadding,
+      wrapperContentPadding: wrapperContentPadding ?? this.wrapperContentPadding,
+      wrapperAlignment: wrapperAlignment ?? this.wrapperAlignment,
+      widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
       widgetOptionsMaxWidth: widgetOptionsMaxWidth ?? this.widgetOptionsMaxWidth,
       widgetOptionsPadding: widgetOptionsPadding ?? this.widgetOptionsPadding,
-      widgetOptionsDividerPadding: widgetOptionsDividerPadding ?? this.widgetOptionsDividerPadding,
+      dividerPadding: dividerPadding ?? this.dividerPadding,
     );
   }
 
@@ -108,29 +119,14 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   ) {
     if (other is! WidgetShowcaseThemeExtension) return this;
     return copyWith(
-      widgetWrapperDecoration: BoxDecoration.lerp(
-        widgetWrapperDecoration,
-        other.widgetWrapperDecoration,
-        t,
-      ),
-      widgetWrapperPadding: EdgeInsets.lerp(widgetWrapperPadding, other.widgetWrapperPadding, t),
-      widgetWrapperContentPadding: EdgeInsets.lerp(
-        widgetWrapperContentPadding,
-        other.widgetWrapperContentPadding,
-        t,
-      ),
-      widgetWrapperAlignment: Alignment.lerp(
-        widgetWrapperAlignment,
-        other.widgetWrapperAlignment,
-        t,
-      ),
+      wrapperDecoration: BoxDecoration.lerp(wrapperDecoration, other.wrapperDecoration, t),
+      wrapperPadding: EdgeInsets.lerp(wrapperPadding, other.wrapperPadding, t),
+      wrapperContentPadding: EdgeInsets.lerp(wrapperContentPadding, other.wrapperContentPadding, t),
+      wrapperAlignment: Alignment.lerp(wrapperAlignment, other.wrapperAlignment, t),
+      widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
       widgetOptionsMaxWidth: lerpDouble(widgetOptionsMaxWidth, other.widgetOptionsMaxWidth, t),
       widgetOptionsPadding: EdgeInsets.lerp(widgetOptionsPadding, other.widgetOptionsPadding, t),
-      widgetOptionsDividerPadding: EdgeInsets.lerp(
-        widgetOptionsDividerPadding,
-        other.widgetOptionsDividerPadding,
-        t,
-      ),
+      dividerPadding: EdgeInsets.lerp(dividerPadding, other.dividerPadding, t),
     );
   }
 
@@ -138,36 +134,40 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   bool operator ==(Object other) {
     return other is WidgetShowcaseThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.widgetWrapperDecoration == widgetWrapperDecoration &&
-        other.widgetWrapperPadding == widgetWrapperPadding &&
-        other.widgetWrapperContentPadding == widgetWrapperContentPadding &&
-        other.widgetWrapperAlignment == widgetWrapperAlignment &&
+        other.wrapperDecoration == wrapperDecoration &&
+        other.wrapperPadding == wrapperPadding &&
+        other.wrapperContentPadding == wrapperContentPadding &&
+        other.wrapperAlignment == wrapperAlignment &&
+        other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
         other.widgetOptionsMaxWidth == widgetOptionsMaxWidth &&
         other.widgetOptionsPadding == widgetOptionsPadding &&
-        other.widgetOptionsDividerPadding == widgetOptionsDividerPadding;
+        other.dividerPadding == dividerPadding;
   }
 
   @override
   int get hashCode {
     return Object.hash(
-      widgetWrapperDecoration,
-      widgetWrapperPadding,
-      widgetWrapperContentPadding,
-      widgetWrapperAlignment,
+      wrapperDecoration,
+      wrapperPadding,
+      wrapperContentPadding,
+      wrapperAlignment,
+      widgetOptionsButtonIcon,
       widgetOptionsMaxWidth,
       widgetOptionsPadding,
-      widgetOptionsDividerPadding,
+      dividerPadding,
     );
   }
 
   @override
   String toString() =>
       'WidgetShowcaseThemeExtension(\n'
-      '  widgetWrapperPadding: $widgetWrapperPadding,\n'
-      '  widgetWrapperContentPadding: $widgetWrapperContentPadding,\n'
-      '  widgetWrapperAlignment: $widgetWrapperAlignment,\n'
+      '  wrapperDecoration: $wrapperDecoration,\n'
+      '  wrapperPadding: $wrapperPadding,\n'
+      '  wrapperContentPadding: $wrapperContentPadding,\n'
+      '  wrapperAlignment: $wrapperAlignment,\n'
+      '  widgetOptionsButtonIcon: $widgetOptionsButtonIcon,\n'
       '  widgetOptionsMaxWidth: $widgetOptionsMaxWidth,\n'
       '  widgetOptionsPadding: $widgetOptionsPadding,\n'
-      '  widgetOptionsDividerPadding: $widgetOptionsDividerPadding,\n'
+      '  dividerPadding: $dividerPadding,\n'
       ');';
 }

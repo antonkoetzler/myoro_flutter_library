@@ -21,9 +21,8 @@ void main() {
       themeExtension1.copyWith(
         spacing: themeExtension2.spacing,
         previousPageButtonIcon: themeExtension2.previousPageButtonIcon,
-        previousPageButtonPadding: themeExtension2.previousPageButtonPadding,
-        headerTitleTextStyle: themeExtension2.headerTitleTextStyle,
-        headerSubtitleTextStyle: themeExtension2.headerSubtitleTextStyle,
+        buttonPadding: themeExtension2.buttonPadding,
+        titleTextStyle: themeExtension2.titleTextStyle,
         toggleThemeButtonIcon: themeExtension2.toggleThemeButtonIcon,
       ),
       themeExtension2,
@@ -46,28 +45,12 @@ void main() {
         ),
       );
       expect(
-        lerpedThemeExtension.previousPageButtonPadding,
-        EdgeInsets.lerp(
-          themeExtension1.previousPageButtonPadding,
-          themeExtension2.previousPageButtonPadding,
-          i,
-        ),
+        lerpedThemeExtension.buttonPadding,
+        EdgeInsets.lerp(themeExtension1.buttonPadding, themeExtension2.buttonPadding, i),
       );
       expect(
-        lerpedThemeExtension.headerTitleTextStyle,
-        TextStyle.lerp(
-          themeExtension1.headerTitleTextStyle,
-          themeExtension2.headerTitleTextStyle,
-          i,
-        ),
-      );
-      expect(
-        lerpedThemeExtension.headerSubtitleTextStyle,
-        TextStyle.lerp(
-          themeExtension1.headerSubtitleTextStyle,
-          themeExtension2.headerSubtitleTextStyle,
-          i,
-        ),
+        lerpedThemeExtension.titleTextStyle,
+        TextStyle.lerp(themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
       );
       expect(
         lerpedThemeExtension.toggleThemeButtonIcon,
@@ -82,9 +65,8 @@ void main() {
       'StoryboardScreenThemeExtension(\n'
       '  spacing: ${themeExtension1.spacing},\n'
       '  previousPageButtonIcon: ${themeExtension1.previousPageButtonIcon},\n'
-      '  previousPageButtonPadding: ${themeExtension1.previousPageButtonPadding},\n'
-      '  headerTitleTextStyle: ${themeExtension1.headerTitleTextStyle},\n'
-      '  headerSubtitleTextStyle: ${themeExtension1.headerSubtitleTextStyle},\n'
+      '  buttonPadding: ${themeExtension1.buttonPadding},\n'
+      '  titleTextStyle: ${themeExtension1.titleTextStyle},\n'
       '  toggleThemeButtonIcon: ${themeExtension1.toggleThemeButtonIcon},\n'
       ');',
     );

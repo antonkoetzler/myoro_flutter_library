@@ -49,6 +49,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
       child: GestureDetector(
         onTapDown: _onTapDown,
         onTapUp: _onTapUp,
+        onTapCancel: _onTapCancel,
         child: ValueListenableBuilder(valueListenable: _tapStatusNotifier, builder: _builder),
       ),
     );
@@ -68,8 +69,12 @@ final class _MyoroButtonState extends State<MyoroButton> {
   }
 
   void _onTapUp(TapUpDetails details) {
-    _tapStatusNotifier.value = MyoroTapStatusEnum.hover;
+    _tapStatusNotifier.value = MyoroTapStatusEnum.idle;
     _configuration?.onTapUp?.call(details);
+  }
+
+  void _onTapCancel() {
+    _tapStatusNotifier.value = MyoroTapStatusEnum.idle;
   }
 
   Widget _builder(_, MyoroTapStatusEnum tapStatusEnum, _) {

@@ -18,7 +18,7 @@ void main() {
         widgetWrapperAlignment: themeExtension2.widgetWrapperAlignment,
         widgetOptionsMaxWidth: themeExtension2.widgetOptionsMaxWidth,
         widgetOptionsPadding: themeExtension2.widgetOptionsPadding,
-        widgetOptionsDividerPadding: themeExtension2.widgetOptionsDividerPadding,
+        dividerPadding: themeExtension2.dividerPadding,
       ),
       themeExtension2,
     );
@@ -72,12 +72,8 @@ void main() {
         ),
       );
       expect(
-        lerpedThemeExtension.widgetOptionsDividerPadding,
-        EdgeInsets.lerp(
-          themeExtension1.widgetOptionsDividerPadding,
-          themeExtension2.widgetOptionsDividerPadding,
-          i,
-        ),
+        lerpedThemeExtension.dividerPadding,
+        EdgeInsets.lerp(themeExtension1.dividerPadding, themeExtension2.dividerPadding, i),
       );
     }
   });
@@ -91,7 +87,7 @@ void main() {
       '  widgetWrapperAlignment: ${themeExtension1.widgetWrapperAlignment},\n'
       '  widgetOptionsMaxWidth: ${themeExtension1.widgetOptionsMaxWidth},\n'
       '  widgetOptionsPadding: ${themeExtension1.widgetOptionsPadding},\n'
-      '  widgetOptionsDividerPadding: ${themeExtension1.widgetOptionsDividerPadding},\n'
+      '  dividerPadding: ${themeExtension1.dividerPadding},\n'
       ');',
     );
   });

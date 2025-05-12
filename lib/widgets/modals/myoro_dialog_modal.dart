@@ -10,7 +10,7 @@ class MyoroDialogModal extends StatelessWidget {
 
   static Future<void> show(
     BuildContext context, {
-    MyoroModalConfiguration? modalConfiguration,
+    MyoroModalConfiguration modalConfiguration = const MyoroModalConfiguration(),
     required MyoroDialogModalConfiguration dialogModalConfiguration,
   }) async {
     await MyoroModal.show(

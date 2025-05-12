@@ -11,15 +11,17 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (_) => MyoroCircularLoaderWidgetShowcaseBloc(
-            size: context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>().size,
-          ),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_ColorOption(), _SizeOption()],
-      ),
+      create: (_) {
+        return MyoroCircularLoaderWidgetShowcaseBloc(
+          size: context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>().size,
+        );
+      },
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [_ColorOption(), _SizeOption()];
   }
 }
 

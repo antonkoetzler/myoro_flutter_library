@@ -16,21 +16,22 @@ final class MyoroGroupRadioWidgetShowcase extends StatelessWidget {
     final runSpacing = themeExtension.runSpacing;
 
     return BlocProvider(
-      create:
-          (_) => MyoroGroupRadioWidgetShowcaseBloc(
-            direction: MyoroGroupRadioConfiguration.directionDefaultValue,
-            spacing: spacing,
-            runSpacing: runSpacing,
-          ),
+      create: (_) {
+        return MyoroGroupRadioWidgetShowcaseBloc(
+          direction: MyoroGroupRadioConfiguration.directionDefaultValue,
+          spacing: spacing,
+          runSpacing: runSpacing,
+        );
+      },
       child: WidgetShowcase(
         widget: const _Widget(),
-        widgetOptions: [
-          const _DirectionOption(),
-          _SpacingOption(spacing),
-          _RunSpacingOption(runSpacing),
-        ],
+        widgetOptionsBuilder: () => _widgetOptionsBuilder(spacing, runSpacing),
       ),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder(double spacing, double runSpacing) {
+    return [const _DirectionOption(), _SpacingOption(spacing), _RunSpacingOption(runSpacing)];
   }
 }
 

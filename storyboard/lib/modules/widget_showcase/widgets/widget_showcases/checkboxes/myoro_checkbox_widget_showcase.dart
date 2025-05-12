@@ -11,15 +11,17 @@ final class MyoroCheckboxWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (_) => MyoroCheckboxWidgetShowcaseBloc(
-            labelTextStyle: MyoroTypographyDesignSystem.instance.italicSmall,
-          ),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_LabelOption(), _LabelTextStyleOption()],
-      ),
+      create: (_) {
+        return MyoroCheckboxWidgetShowcaseBloc(
+          labelTextStyle: MyoroTypographyDesignSystem.instance.italicSmall,
+        );
+      },
+      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
     );
+  }
+
+  List<Widget> _widgetOptionsBuilder() {
+    return const [_LabelOption(), _LabelTextStyleOption()];
   }
 }
 

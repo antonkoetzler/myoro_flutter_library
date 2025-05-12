@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Widget that contains a widget on the left, then controls on the right to
-/// experiment with the different options of the _ Used in [StoryboardBody].
+/// Builder of the options of said [Widget] showcase.
+///
+/// Why does this need to be a builder? To attach the options to this
+/// [WidgetShowcase]'s [Widget] tree so there are no [BlocProvider]
+/// errors when launching the [_WidgetOptions]'s [MyoroModal].
+typedef WidgetShowcaseWidgetOptionsBuilder = List<Widget> Function();
+
+/// [Widget] for you to use and experiment with an MFL [Widget].
+///
+/// TODO: Test needs to be rewritten.
 final class WidgetShowcase extends StatefulWidget {
   /// Widget that will be on the left.
   final Widget widget;
 
   /// Options to experiment on the widget that will be on the right.
-  final List<Widget> widgetOptions;
+  final WidgetShowcaseWidgetOptionsBuilder? widgetOptionsBuilder;
 
-  const WidgetShowcase({super.key, required this.widget, this.widgetOptions = const []});
+  const WidgetShowcase({super.key, required this.widget, this.widgetOptionsBuilder});
 
   @override
   State<WidgetShowcase> createState() => _WidgetShowcaseState();
@@ -19,61 +28,85 @@ final class WidgetShowcase extends StatefulWidget {
 
 final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget get _widget => widget.widget;
-  List<Widget> get _widgetOptions => widget.widgetOptions;
+  WidgetShowcaseWidgetOptionsBuilder? get _widgetOptionsBuilder => widget.widgetOptionsBuilder;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  final _navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(child: _WidgetWrapper(_widget)),
-        if (_widgetOptions.isNotEmpty) ...[
-          const _Divider(direction: Axis.vertical),
-          _WidgetOptions(_widgetOptions),
-        ],
-      ],
+    return Navigator(
+      key: _navigatorKey,
+      onGenerateRoute: (_) {
+        return MaterialPageRoute(
+          builder: (_) {
+            return _Wrapper(_navigatorKey, _widget, _widgetOptionsBuilder);
+          },
+        );
+      },
     );
   }
 }
 
-final class _WidgetWrapper extends StatelessWidget {
-  final Widget widget;
+final class _Wrapper extends StatelessWidget {
+  final GlobalKey<NavigatorState> _navigatorKey;
+  final Widget _widget;
+  final WidgetShowcaseWidgetOptionsBuilder? _widgetOptionsBuilder;
 
-  const _WidgetWrapper(this.widget);
+  const _Wrapper(this._navigatorKey, this._widget, this._widgetOptionsBuilder);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Padding(
-      padding: themeExtension.widgetWrapperPadding,
+      padding: themeExtension.wrapperPadding,
       child: Container(
         height: double.infinity,
-        alignment: themeExtension.widgetWrapperAlignment,
-        decoration: themeExtension.widgetWrapperDecoration,
-        padding: themeExtension.widgetWrapperContentPadding,
-        child: widget,
+        alignment: themeExtension.wrapperAlignment,
+        decoration: themeExtension.wrapperDecoration,
+        padding: themeExtension.wrapperPadding,
+        child: SizedBox.expand(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              _widget,
+              if (_widgetOptionsBuilder != null) ...[
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: _WidgetOptionsButton(_navigatorKey, _widgetOptionsBuilder!),
+                ),
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
-final class _Divider extends StatelessWidget {
-  final Axis direction;
-  final EdgeInsets? padding;
+final class _WidgetOptionsButton extends StatelessWidget {
+  final GlobalKey<NavigatorState> _navigatorKey;
+  final WidgetShowcaseWidgetOptionsBuilder _widgetOptionsBuilder;
 
-  const _Divider({required this.direction, this.padding});
+  const _WidgetOptionsButton(this._navigatorKey, this._widgetOptionsBuilder);
 
   @override
   Widget build(BuildContext context) {
-    return MyoroBasicDivider(
-      configuration: MyoroBasicDividerConfiguration(direction: direction, padding: padding),
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.widgetOptionsButtonIcon,
+        ),
+      ),
     );
+  }
+
+  void _onTapUp(BuildContext context) {
+    _WidgetOptions._show(_navigatorKey.currentContext!, _widgetOptionsBuilder);
   }
 }
 
@@ -82,9 +115,34 @@ final class _WidgetOptions extends StatelessWidget {
 
   const _WidgetOptions(this._widgetOptions);
 
+  static Future<void> _show(
+    BuildContext context,
+    WidgetShowcaseWidgetOptionsBuilder widgetOptionsBuilder,
+  ) async {
+    await MyoroModal.show(
+      context,
+      configuration: const MyoroModalConfiguration(useRootNavigator: false),
+      child: Builder(
+        builder: (_) {
+          final List<Widget> widgetOptions = widgetOptionsBuilder.call();
+
+          assert(
+            widgetOptions.isNotEmpty,
+            '[WidgetShowcase._WidgetOptions]: If [WidgetShowcase.widgetOptionsBuilder] '
+            'is provided, the amount of [Widget]s cannot be empty.',
+          );
+
+          return _WidgetOptions(widgetOptions);
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+
+    const divider = _Divider();
 
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: themeExtension.widgetOptionsMaxWidth),
@@ -92,22 +150,35 @@ final class _WidgetOptions extends StatelessWidget {
         child: Padding(
           padding: themeExtension.widgetOptionsPadding,
           child: Column(
-            children:
-                _widgetOptions.map<Widget>((Widget widgetOption) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Flexible(child: widgetOption),
-                      if (_widgetOptions.indexOf(widgetOption) != _widgetOptions.length - 1)
-                        _Divider(
-                          direction: Axis.horizontal,
-                          padding: themeExtension.widgetOptionsDividerPadding,
-                        ),
-                    ],
-                  );
-                }).toList(),
+            children: [
+              for (int i = 0; i < _widgetOptions.length; i++) ...[
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(child: _widgetOptions[i]),
+                    if (i == (_widgetOptions.length - 1)) divider,
+                  ],
+                ),
+              ],
+            ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+final class _Divider extends StatelessWidget {
+  const _Divider();
+
+  @override
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+
+    return MyoroBasicDivider(
+      configuration: MyoroBasicDividerConfiguration(
+        direction: Axis.horizontal,
+        padding: themeExtension.dividerPadding,
       ),
     );
   }
