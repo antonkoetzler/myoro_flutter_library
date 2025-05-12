@@ -40,17 +40,12 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
     : drawerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       drawerContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       drawerShape = RoundedRectangleBorder(
-        side: BorderSide(
-          width: 2,
-          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        ),
+        side: BorderSide(width: 2, color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]),
       ),
       titleContentDividerPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      closeButtonDrawerIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-      closeButtonEndDrawerIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      closeButtonDrawerIcon = myoroFake<IconData>(),
+      closeButtonEndDrawerIcon = myoroFake<IconData>();
 
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : drawerPadding = const EdgeInsets.all(20),
@@ -86,27 +81,16 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
   }
 
   @override
-  MyoroDrawerThemeExtension lerp(
-    covariant ThemeExtension<MyoroDrawerThemeExtension>? other,
-    double t,
-  ) {
+  MyoroDrawerThemeExtension lerp(covariant ThemeExtension<MyoroDrawerThemeExtension>? other, double t) {
     if (other is! MyoroDrawerThemeExtension) return this;
     return copyWith(
       drawerPadding: EdgeInsets.lerp(drawerPadding, other.drawerPadding, t),
       drawerContentPadding: EdgeInsets.lerp(drawerContentPadding, other.drawerContentPadding, t),
       drawerShape: ShapeBorder.lerp(drawerShape, other.drawerShape, t),
-      titleContentDividerPadding: EdgeInsets.lerp(
-        titleContentDividerPadding,
-        other.titleContentDividerPadding,
-        t,
-      ),
+      titleContentDividerPadding: EdgeInsets.lerp(titleContentDividerPadding, other.titleContentDividerPadding, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       closeButtonDrawerIcon: myoroLerp(closeButtonDrawerIcon, other.closeButtonDrawerIcon, t),
-      closeButtonEndDrawerIcon: myoroLerp(
-        closeButtonEndDrawerIcon,
-        other.closeButtonEndDrawerIcon,
-        t,
-      ),
+      closeButtonEndDrawerIcon: myoroLerp(closeButtonEndDrawerIcon, other.closeButtonEndDrawerIcon, t),
     );
   }
 

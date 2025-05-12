@@ -60,10 +60,8 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
 
   MyoroSnackBarThemeExtension.fake()
     : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      standardBorderColor =
-          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      attentionBorderColor =
-          kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      standardBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      attentionBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       successBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       errorBorderColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       borderWidth = faker.randomGenerator.decimal(),
@@ -71,7 +69,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       padding = EdgeInsets.all(faker.randomGenerator.decimal()),
       contentCloseButtonSpacing = faker.randomGenerator.decimal(),
       messageTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      closeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      closeButtonIcon = myoroFake<IconData>(),
       closeButtonIconSize = faker.randomGenerator.decimal();
 
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -120,10 +118,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
   }
 
   @override
-  MyoroSnackBarThemeExtension lerp(
-    covariant ThemeExtension<MyoroSnackBarThemeExtension>? other,
-    double t,
-  ) {
+  MyoroSnackBarThemeExtension lerp(covariant ThemeExtension<MyoroSnackBarThemeExtension>? other, double t) {
     if (other is! MyoroSnackBarThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
@@ -134,11 +129,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       borderWidth: lerpDouble(borderWidth, other.borderWidth, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
-      contentCloseButtonSpacing: lerpDouble(
-        contentCloseButtonSpacing,
-        other.contentCloseButtonSpacing,
-        t,
-      ),
+      contentCloseButtonSpacing: lerpDouble(contentCloseButtonSpacing, other.contentCloseButtonSpacing, t),
       messageTextStyle: TextStyle.lerp(messageTextStyle, other.messageTextStyle, t),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
       closeButtonIconSize: lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),

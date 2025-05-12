@@ -11,6 +11,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 class MyoroModalConfiguration extends Equatable {
   static const barrierDismissableDefaultValue = true;
   static const useRootNavigatorDefaultValue = true;
+  static const showCloseButtonDefaultValue = false;
 
   /// If you click everywhere but the modal, it closes
   final bool barrierDismissable;
@@ -58,10 +59,13 @@ class MyoroModalConfiguration extends Equatable {
   final String? title;
 
   /// If [_CloseButton] will be shown.
-  final bool? showCloseButton;
+  final bool showCloseButton;
 
   /// Content padding of the modal.
   final EdgeInsets? padding;
+
+  /// Padding around [_CloseButton].
+  final EdgeInsets? closeButtonPadding;
 
   const MyoroModalConfiguration({
     this.barrierDismissable = barrierDismissableDefaultValue,
@@ -69,8 +73,9 @@ class MyoroModalConfiguration extends Equatable {
     this.constraints,
     this.onClosed,
     this.title,
-    this.showCloseButton,
+    this.showCloseButton = showCloseButtonDefaultValue,
     this.padding,
+    this.closeButtonPadding,
   });
 
   MyoroModalConfiguration.fake()
@@ -80,10 +85,9 @@ class MyoroModalConfiguration extends Equatable {
       onClosed = null,
       title = faker.lorem.word(),
       showCloseButton = faker.randomGenerator.boolean(),
-      padding =
-          faker.randomGenerator.boolean()
-              ? EdgeInsets.all(faker.randomGenerator.decimal(scale: 20))
-              : null;
+      padding = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)) : null,
+      closeButtonPadding =
+          faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)) : null;
 
   MyoroModalConfiguration copyWith({
     bool? barrierDismissable,
@@ -95,9 +99,10 @@ class MyoroModalConfiguration extends Equatable {
     String? title,
     bool titleProvided = true,
     bool? showCloseButton,
-    bool showCloseButtonProvided = true,
     EdgeInsets? padding,
     bool paddingProvided = true,
+    EdgeInsets? closeButtonPadding,
+    bool closeButtonPaddingProvided = true,
   }) {
     return MyoroModalConfiguration(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
@@ -105,8 +110,9 @@ class MyoroModalConfiguration extends Equatable {
       constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: titleProvided ? (title ?? this.title) : null,
-      showCloseButton: showCloseButtonProvided ? (showCloseButton ?? this.showCloseButton) : null,
+      showCloseButton: showCloseButton ?? this.showCloseButton,
       padding: paddingProvided ? (padding ?? this.padding) : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
     );
   }
 
@@ -120,6 +126,7 @@ class MyoroModalConfiguration extends Equatable {
       title,
       showCloseButton,
       padding,
+      closeButtonPadding,
     ];
   }
 
@@ -133,5 +140,6 @@ class MyoroModalConfiguration extends Equatable {
       '  title: $title,\n'
       '  showCloseButton: $showCloseButton,\n'
       '  padding: $padding,\n'
+      '  closeButtonPadding: $closeButtonPadding,\n'
       ');';
 }

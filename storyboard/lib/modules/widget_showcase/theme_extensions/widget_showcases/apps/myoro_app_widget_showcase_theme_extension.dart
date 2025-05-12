@@ -7,8 +7,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroAppWidgetShowcase].
 @immutable
-final class MyoroAppWidgetShowcaseThemeExtension
-    extends ThemeExtension<MyoroAppWidgetShowcaseThemeExtension> {
+final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroAppWidgetShowcaseThemeExtension> {
   /// Color of the content in [_AppBar].
   final Color appBarContentColor;
 
@@ -54,15 +53,13 @@ final class MyoroAppWidgetShowcaseThemeExtension
 
   MyoroAppWidgetShowcaseThemeExtension.fake()
     : appBarContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      appBarLogoIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      appBarLogoIcon = myoroFake<IconData>(),
       appBarTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      appBarMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      appBarMenuButtonIcon = myoroFake<IconData>(),
       appBarSpacing = faker.randomGenerator.decimal(),
       themeModeOptionButtonBordered = faker.randomGenerator.boolean(),
-      themeModeOptionButtonDarkModeIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-      themeModeOptionButtonLightModeIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      themeModeOptionButtonDarkModeIcon = myoroFake<IconData>(),
+      themeModeOptionButtonLightModeIcon = myoroFake<IconData>(),
       themeModeOptionTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       themeModeOptionSpacing = faker.randomGenerator.decimal();
 
@@ -97,12 +94,9 @@ final class MyoroAppWidgetShowcaseThemeExtension
       appBarTextStyle: appBarTextStyle ?? this.appBarTextStyle,
       appBarMenuButtonIcon: appBarMenuButtonIcon ?? this.appBarMenuButtonIcon,
       appBarSpacing: appBarSpacing ?? this.appBarSpacing,
-      themeModeOptionButtonBordered:
-          themeModeOptionButtonBordered ?? this.themeModeOptionButtonBordered,
-      themeModeOptionButtonDarkModeIcon:
-          themeModeOptionButtonDarkModeIcon ?? this.themeModeOptionButtonDarkModeIcon,
-      themeModeOptionButtonLightModeIcon:
-          themeModeOptionButtonLightModeIcon ?? this.themeModeOptionButtonLightModeIcon,
+      themeModeOptionButtonBordered: themeModeOptionButtonBordered ?? this.themeModeOptionButtonBordered,
+      themeModeOptionButtonDarkModeIcon: themeModeOptionButtonDarkModeIcon ?? this.themeModeOptionButtonDarkModeIcon,
+      themeModeOptionButtonLightModeIcon: themeModeOptionButtonLightModeIcon ?? this.themeModeOptionButtonLightModeIcon,
       themeModeOptionTextStyle: themeModeOptionTextStyle ?? this.themeModeOptionTextStyle,
       themeModeOptionSpacing: themeModeOptionSpacing ?? this.themeModeOptionSpacing,
     );
@@ -120,11 +114,7 @@ final class MyoroAppWidgetShowcaseThemeExtension
       appBarTextStyle: TextStyle.lerp(appBarTextStyle, other.appBarTextStyle, t),
       appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
       appBarSpacing: lerpDouble(appBarSpacing, other.appBarSpacing, t),
-      themeModeOptionButtonBordered: myoroLerp(
-        themeModeOptionButtonBordered,
-        other.themeModeOptionButtonBordered,
-        t,
-      ),
+      themeModeOptionButtonBordered: myoroLerp(themeModeOptionButtonBordered, other.themeModeOptionButtonBordered, t),
       themeModeOptionButtonDarkModeIcon: myoroLerp(
         themeModeOptionButtonDarkModeIcon,
         other.themeModeOptionButtonDarkModeIcon,
@@ -135,11 +125,7 @@ final class MyoroAppWidgetShowcaseThemeExtension
         other.themeModeOptionButtonLightModeIcon,
         t,
       ),
-      themeModeOptionTextStyle: TextStyle.lerp(
-        themeModeOptionTextStyle,
-        other.themeModeOptionTextStyle,
-        t,
-      ),
+      themeModeOptionTextStyle: TextStyle.lerp(themeModeOptionTextStyle, other.themeModeOptionTextStyle, t),
       themeModeOptionSpacing: lerpDouble(themeModeOptionSpacing, other.themeModeOptionSpacing, t),
     );
   }

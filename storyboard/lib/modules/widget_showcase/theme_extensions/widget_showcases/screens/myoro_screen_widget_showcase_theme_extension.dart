@@ -7,8 +7,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroScreenWidgetShowcase].
 @immutable
-final class MyoroScreenWidgetShowcaseThemeExtension
-    extends ThemeExtension<MyoroScreenWidgetShowcaseThemeExtension> {
+final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<MyoroScreenWidgetShowcaseThemeExtension> {
   /// [TextStyle] of [_AppBar]'s title text.
   final TextStyle appBarTitleTextStyle;
 
@@ -43,7 +42,7 @@ final class MyoroScreenWidgetShowcaseThemeExtension
   MyoroScreenWidgetShowcaseThemeExtension.fake()
     : appBarTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       appBarSubtitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      appBarMenuButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      appBarMenuButtonIcon = myoroFake<IconData>(),
       bodyImageBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
       bodyImageSize = faker.randomGenerator.decimal(),
       bodyTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
@@ -87,17 +86,9 @@ final class MyoroScreenWidgetShowcaseThemeExtension
     if (other is! MyoroScreenWidgetShowcaseThemeExtension) return this;
     return copyWith(
       appBarTitleTextStyle: TextStyle.lerp(appBarTitleTextStyle, other.appBarTitleTextStyle, t),
-      appBarSubtitleTextStyle: TextStyle.lerp(
-        appBarSubtitleTextStyle,
-        other.appBarSubtitleTextStyle,
-        t,
-      ),
+      appBarSubtitleTextStyle: TextStyle.lerp(appBarSubtitleTextStyle, other.appBarSubtitleTextStyle, t),
       appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
-      bodyImageBorderRadius: BorderRadius.lerp(
-        bodyImageBorderRadius,
-        other.bodyImageBorderRadius,
-        t,
-      ),
+      bodyImageBorderRadius: BorderRadius.lerp(bodyImageBorderRadius, other.bodyImageBorderRadius, t),
       bodyImageSize: lerpDouble(bodyImageSize, other.bodyImageSize, t),
       bodyTextStyle: TextStyle.lerp(bodyTextStyle, other.bodyTextStyle, t),
       bodySpacing: lerpDouble(bodySpacing, other.bodySpacing, t),

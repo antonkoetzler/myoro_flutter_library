@@ -68,7 +68,10 @@ final class _WidgetCategoryDropdownButton extends StatelessWidget {
       padding: themeExtension.widgetCategoryDropdownButtonPadding,
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
-          buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
+          buttonConfiguration: MyoroButtonConfiguration(
+            onTapUp: (_) => _onTapUp(context),
+            borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+          ),
           textConfiguration: MyoroIconTextButtonTextConfiguration(text: _widgetName),
         ),
       ),

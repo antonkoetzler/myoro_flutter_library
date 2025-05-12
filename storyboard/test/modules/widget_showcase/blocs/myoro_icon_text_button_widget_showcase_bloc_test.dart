@@ -9,14 +9,12 @@ void main() {
   final double spacing = faker.randomGenerator.decimal(scale: 50);
   final EdgeInsets padding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50));
   final Color color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
-  final IconData icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+  final IconData icon = myoroFake<IconData>();
   final double iconSize = faker.randomGenerator.decimal(scale: 200);
   final String text = faker.lorem.word();
   final int maxLines = faker.randomGenerator.integer(10);
-  final TextOverflow textOverflow =
-      TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)];
-  final TextAlign textAlign =
-      TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)];
+  final TextOverflow textOverflow = TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)];
+  final TextAlign textAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)];
   late final TextStyle textStyle;
 
   setUpAll(() {
@@ -34,12 +32,8 @@ void main() {
     },
     expect: () {
       return const [
-        MyoroIconTextButtonWidgetShowcaseState(
-          invert: !MyoroIconTextButtonConfiguration.invertDefaultValue,
-        ),
-        MyoroIconTextButtonWidgetShowcaseState(
-          invert: MyoroIconTextButtonConfiguration.invertDefaultValue,
-        ),
+        MyoroIconTextButtonWidgetShowcaseState(invert: !MyoroIconTextButtonConfiguration.invertDefaultValue),
+        MyoroIconTextButtonWidgetShowcaseState(invert: MyoroIconTextButtonConfiguration.invertDefaultValue),
       ];
     },
   );
@@ -55,9 +49,7 @@ void main() {
     expect: () {
       return [
         MyoroIconTextButtonWidgetShowcaseState(spacing: spacing),
-        const MyoroIconTextButtonWidgetShowcaseState(
-          spacing: MyoroIconTextButtonConfiguration.spacingDefaultValue,
-        ),
+        const MyoroIconTextButtonWidgetShowcaseState(spacing: MyoroIconTextButtonConfiguration.spacingDefaultValue),
       ];
     },
   );
@@ -66,14 +58,7 @@ void main() {
     'MyoroIconTextButtonWidgetShowcaseBloc.SetPaddingEvent',
     build: () => MyoroIconTextButtonWidgetShowcaseBloc(),
     act: (bloc) {
-      bloc.add(
-        SetPaddingEvent(
-          top: padding.top,
-          bottom: padding.bottom,
-          left: padding.left,
-          right: padding.right,
-        ),
-      );
+      bloc.add(SetPaddingEvent(top: padding.top, bottom: padding.bottom, left: padding.left, right: padding.right));
     },
     expect: () {
       return [MyoroIconTextButtonWidgetShowcaseState(padding: padding)];
@@ -99,12 +84,10 @@ void main() {
     expect: () {
       return const [
         MyoroIconTextButtonWidgetShowcaseState(
-          contentColorBuilderEnabled:
-              !MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
+          contentColorBuilderEnabled: !MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
         ),
         MyoroIconTextButtonWidgetShowcaseState(
-          contentColorBuilderEnabled:
-              MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
+          contentColorBuilderEnabled: MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
         ),
       ];
     },
@@ -167,10 +150,7 @@ void main() {
         ..add(const SetIconEvent());
     },
     expect: () {
-      return [
-        MyoroIconTextButtonWidgetShowcaseState(icon: icon),
-        const MyoroIconTextButtonWidgetShowcaseState(),
-      ];
+      return [MyoroIconTextButtonWidgetShowcaseState(icon: icon), const MyoroIconTextButtonWidgetShowcaseState()];
     },
   );
 

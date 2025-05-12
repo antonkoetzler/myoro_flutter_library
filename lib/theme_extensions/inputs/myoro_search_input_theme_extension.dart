@@ -24,7 +24,7 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
 
   MyoroSearchInputThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(),
-      searchButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      searchButtonIcon = myoroFake<IconData>(),
       searchButtonLoadingSize = faker.randomGenerator.decimal();
 
   const MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
@@ -46,19 +46,12 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
   }
 
   @override
-  MyoroSearchInputThemeExtension lerp(
-    covariant ThemeExtension<MyoroSearchInputThemeExtension>? other,
-    double t,
-  ) {
+  MyoroSearchInputThemeExtension lerp(covariant ThemeExtension<MyoroSearchInputThemeExtension>? other, double t) {
     if (other is! MyoroSearchInputThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       searchButtonIcon: myoroLerp(searchButtonIcon, other.searchButtonIcon, t),
-      searchButtonLoadingSize: lerpDouble(
-        searchButtonLoadingSize,
-        other.searchButtonLoadingSize,
-        t,
-      ),
+      searchButtonLoadingSize: lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
     );
   }
 

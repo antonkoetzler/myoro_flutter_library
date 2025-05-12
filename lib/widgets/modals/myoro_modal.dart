@@ -42,7 +42,6 @@ class MyoroModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
-    final showCloseButton = configuration.showCloseButton ?? false;
 
     return Center(
       child: Material(
@@ -54,11 +53,9 @@ class MyoroModal extends StatelessWidget {
           decoration: BoxDecoration(borderRadius: themeExtension.borderRadius, border: themeExtension.border),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            spacing: themeExtension.spacing,
             children: [
-              if (configuration.title != null || showCloseButton) ...[
-                _Header(configuration.title, showCloseButton),
-                SizedBox(height: themeExtension.spacing),
-              ],
+              if (configuration.title != null || configuration.showCloseButton) _Header(configuration),
               Flexible(child: child),
             ],
           ),
@@ -69,16 +66,18 @@ class MyoroModal extends StatelessWidget {
 }
 
 final class _Header extends StatelessWidget {
-  final String? _title;
-  final bool _showCloseButton;
+  final MyoroModalConfiguration _configuration;
 
-  const _Header(this._title, this._showCloseButton);
+  const _Header(this._configuration);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [if (_title != null) _Title(_title), if (_showCloseButton) const _CloseButton()],
+      children: [
+        if (_configuration.title != null) _Title(_configuration.title!),
+        if (_configuration.showCloseButton == true) ...[const Spacer(), _CloseButton(_configuration)],
+      ],
     );
   }
 }
@@ -101,16 +100,24 @@ final class _Title extends StatelessWidget {
 }
 
 final class _CloseButton extends StatelessWidget {
-  const _CloseButton();
+  final MyoroModalConfiguration _configuration;
+
+  const _CloseButton(this._configuration);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
 
-    return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => context.navigator.pop()),
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.closeButtonIcon),
+    return Padding(
+      padding: _configuration.closeButtonPadding ?? EdgeInsets.zero,
+      child: MyoroIconTextButton(
+        configuration: MyoroIconTextButtonConfiguration(
+          buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => context.navigator.pop()),
+          iconConfiguration: MyoroIconTextButtonIconConfiguration(
+            icon: themeExtension.closeButtonIcon,
+            size: themeExtension.closeButtonIconSize,
+          ),
+        ),
       ),
     );
   }

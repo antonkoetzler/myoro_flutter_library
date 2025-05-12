@@ -98,11 +98,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> {
       searchBarInputStyle: myoroLerp(searchBarInputStyle, other.searchBarInputStyle, t),
       itemBorderRadius: BorderRadius.lerp(itemBorderRadius, other.itemBorderRadius, t),
       dialogTextStyle: TextStyle.lerp(dialogTextStyle, other.dialogTextStyle, t),
-      dialogTextLoaderPadding: EdgeInsets.lerp(
-        dialogTextLoaderPadding,
-        other.dialogTextLoaderPadding,
-        t,
-      ),
+      dialogTextLoaderPadding: EdgeInsets.lerp(dialogTextLoaderPadding, other.dialogTextLoaderPadding, t),
     );
   }
 

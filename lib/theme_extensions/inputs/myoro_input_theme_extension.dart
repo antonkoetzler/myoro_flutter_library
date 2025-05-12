@@ -89,12 +89,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       inputTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal(),
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      labelBehavior =
-          FloatingLabelBehavior.values[faker.randomGenerator.integer(
-            FloatingLabelBehavior.values.length,
-          )],
+      labelBehavior = FloatingLabelBehavior.values[faker.randomGenerator.integer(FloatingLabelBehavior.values.length)],
       clearTextButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      clearTextButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      clearTextButtonIcon = myoroFake<IconData>();
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : underlinedBorder = UnderlineInputBorder(
@@ -153,10 +150,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
   }
 
   @override
-  MyoroInputThemeExtension lerp(
-    covariant ThemeExtension<MyoroInputThemeExtension>? other,
-    double t,
-  ) {
+  MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
     if (other is! MyoroInputThemeExtension) return this;
     return copyWith(
       underlinedBorder: myoroLerp(underlinedBorder, other.underlinedBorder, t),
@@ -171,11 +165,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       labelBehavior: myoroLerp(labelBehavior, other.labelBehavior, t),
-      clearTextButtonPadding: EdgeInsets.lerp(
-        clearTextButtonPadding,
-        other.clearTextButtonPadding,
-        t,
-      ),
+      clearTextButtonPadding: EdgeInsets.lerp(clearTextButtonPadding, other.clearTextButtonPadding, t),
       clearTextButtonIcon: myoroLerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
     );
   }

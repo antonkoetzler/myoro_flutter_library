@@ -33,12 +33,10 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
 
   StoryboardScreenThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 50),
-      previousPageButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      previousPageButtonIcon = myoroFake<IconData>(),
       buttonPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
       titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      toggleThemeButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      toggleThemeButtonIcon = myoroFake<IconData>();
 
   StoryboardScreenThemeExtension.builder(TextTheme textTheme)
     : spacing = 20,
@@ -65,10 +63,7 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
   }
 
   @override
-  StoryboardScreenThemeExtension lerp(
-    covariant ThemeExtension<StoryboardScreenThemeExtension>? other,
-    double t,
-  ) {
+  StoryboardScreenThemeExtension lerp(covariant ThemeExtension<StoryboardScreenThemeExtension>? other, double t) {
     if (other is! StoryboardScreenThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
@@ -92,13 +87,7 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
 
   @override
   int get hashCode {
-    return Object.hash(
-      spacing,
-      previousPageButtonIcon,
-      buttonPadding,
-      titleTextStyle,
-      toggleThemeButtonIcon,
-    );
+    return Object.hash(spacing, previousPageButtonIcon, buttonPadding, titleTextStyle, toggleThemeButtonIcon);
   }
 
   @override

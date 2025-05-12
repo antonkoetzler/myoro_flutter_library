@@ -10,7 +10,7 @@ typedef MyoroIconTextButtonConfigurationContentColorBuilder = Color Function(Myo
 class MyoroIconTextButtonConfiguration extends Equatable {
   static const invertDefaultValue = false;
   static const spacingDefaultValue = 10.0;
-  static const paddingDefaultValue = EdgeInsets.all(10);
+  static const paddingDefaultValue = EdgeInsets.all(5);
 
   /// [MyoroButtonConfiguration]
   final MyoroButtonConfiguration? buttonConfiguration;

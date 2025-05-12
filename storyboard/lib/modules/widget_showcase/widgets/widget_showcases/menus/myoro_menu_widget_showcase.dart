@@ -15,10 +15,7 @@ final class MyoroMenuWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroMenuWidgetShowcaseBloc(),
-      child: const WidgetShowcase(
-        widget: _Widget(),
-        widgetOptions: [_ConstraintsOption(), _SearchCallbackOption()],
-      ),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_ConstraintsOption(), _SearchCallbackOption()]),
     );
   }
 }
@@ -51,10 +48,7 @@ final class _Widget extends StatelessWidget {
     await Future.delayed(const Duration(milliseconds: 500));
     return List.generate(
       faker.randomGenerator.integer(50),
-      (_) => (
-        kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-        faker.person.name(),
-      ),
+      (_) => (myoroFake<IconData>(), faker.person.name()),
     ).toSet();
   }
 
@@ -93,8 +87,7 @@ final class _ConstraintsOption extends StatelessWidget {
                 label: 'Min width',
                 onChanged: (String text) => bloc.add(SetMinWidthEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) =>
-                        bloc.add(SetMinWidthEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(SetMinWidthEvent(enabled ? double.parse(text) : null)),
               ),
             ),
             Expanded(
@@ -102,8 +95,7 @@ final class _ConstraintsOption extends StatelessWidget {
                 label: 'Max width',
                 onChanged: (String text) => bloc.add(SetMaxWidthEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) =>
-                        bloc.add(SetMaxWidthEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(SetMaxWidthEvent(enabled ? double.parse(text) : null)),
               ),
             ),
           ],
@@ -116,8 +108,7 @@ final class _ConstraintsOption extends StatelessWidget {
                 label: 'Min height',
                 onChanged: (String text) => bloc.add(SetMinHeightEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) =>
-                        bloc.add(SetMinHeightEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(SetMinHeightEvent(enabled ? double.parse(text) : null)),
               ),
             ),
             Expanded(
@@ -125,8 +116,7 @@ final class _ConstraintsOption extends StatelessWidget {
                 label: 'Max height',
                 onChanged: (String text) => bloc.add(SetMaxHeightEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) =>
-                        bloc.add(SetMaxHeightEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(SetMaxHeightEvent(enabled ? double.parse(text) : null)),
               ),
             ),
           ],
@@ -167,8 +157,7 @@ final class _NumberInput extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: label,
         enabled: false,
-        inputStyle:
-            context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle: context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>().inputStyle,
         onChanged: onChanged,
         checkboxOnChanged: checkboxOnChanged,
       ),

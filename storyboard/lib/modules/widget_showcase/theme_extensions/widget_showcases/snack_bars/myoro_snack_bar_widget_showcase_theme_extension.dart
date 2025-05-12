@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -13,24 +12,18 @@ final class MyoroSnackBarWidgetShowcaseThemeExtension
   /// [IconData] of [_Child].
   final IconData childIcon;
 
-  const MyoroSnackBarWidgetShowcaseThemeExtension({
-    required this.inputStyle,
-    required this.childIcon,
-  });
+  const MyoroSnackBarWidgetShowcaseThemeExtension({required this.inputStyle, required this.childIcon});
 
   MyoroSnackBarWidgetShowcaseThemeExtension.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
-      childIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      childIcon = myoroFake<IconData>();
 
   const MyoroSnackBarWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : inputStyle = MyoroInputStyleEnum.outlined,
       childIcon = Icons.flood;
 
   @override
-  MyoroSnackBarWidgetShowcaseThemeExtension copyWith({
-    MyoroInputStyleEnum? inputStyle,
-    IconData? childIcon,
-  }) {
+  MyoroSnackBarWidgetShowcaseThemeExtension copyWith({MyoroInputStyleEnum? inputStyle, IconData? childIcon}) {
     return MyoroSnackBarWidgetShowcaseThemeExtension(
       inputStyle: inputStyle ?? this.inputStyle,
       childIcon: childIcon ?? this.childIcon,

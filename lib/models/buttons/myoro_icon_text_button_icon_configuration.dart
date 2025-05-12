@@ -14,14 +14,10 @@ class MyoroIconTextButtonIconConfiguration extends Equatable {
   const MyoroIconTextButtonIconConfiguration({required this.icon, this.size});
 
   MyoroIconTextButtonIconConfiguration.fake()
-    : icon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+    : icon = myoroFake<IconData>(),
       size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null;
 
-  MyoroIconTextButtonIconConfiguration copyWith({
-    IconData? icon,
-    double? size,
-    bool sizeProvided = true,
-  }) {
+  MyoroIconTextButtonIconConfiguration copyWith({IconData? icon, double? size, bool sizeProvided = true}) {
     return MyoroIconTextButtonIconConfiguration(
       icon: icon ?? this.icon,
       size: sizeProvided ? (size ?? this.size) : null,

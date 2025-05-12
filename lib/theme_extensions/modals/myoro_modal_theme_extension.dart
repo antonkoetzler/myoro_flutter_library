@@ -30,6 +30,9 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
   /// Icon of [_CloseButton].
   final IconData closeButtonIcon;
 
+  /// Size of the icon of [_CloseButton].
+  final double closeButtonIconSize;
+
   const MyoroModalThemeExtension({
     required this.primaryColor,
     required this.borderRadius,
@@ -38,6 +41,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
     required this.spacing,
     required this.titleTextStyle,
     required this.closeButtonIcon,
+    required this.closeButtonIconSize,
   });
 
   MyoroModalThemeExtension.fake()
@@ -50,7 +54,8 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       padding = EdgeInsets.all(faker.randomGenerator.decimal()),
       spacing = faker.randomGenerator.decimal(),
       titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      closeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      closeButtonIcon = myoroFake<IconData>(),
+      closeButtonIconSize = faker.randomGenerator.decimal(scale: 100);
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,
@@ -59,7 +64,8 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       padding = const EdgeInsets.all(5),
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
-      closeButtonIcon = Icons.close;
+      closeButtonIcon = Icons.close,
+      closeButtonIconSize = 20;
 
   @override
   MyoroModalThemeExtension copyWith({
@@ -70,6 +76,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
     double? spacing,
     TextStyle? titleTextStyle,
     IconData? closeButtonIcon,
+    double? closeButtonIconSize,
   }) {
     return MyoroModalThemeExtension(
       primaryColor: primaryColor ?? this.primaryColor,
@@ -79,6 +86,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       spacing: spacing ?? this.spacing,
       titleTextStyle: titleTextStyle ?? this.titleTextStyle,
       closeButtonIcon: closeButtonIcon ?? this.closeButtonIcon,
+      closeButtonIconSize: closeButtonIconSize ?? this.closeButtonIconSize,
     );
   }
 
@@ -93,6 +101,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       spacing: lerpDouble(spacing, other.spacing, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
+      closeButtonIconSize: lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),
     );
   }
 
@@ -106,12 +115,22 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
         other.padding == padding &&
         other.spacing == spacing &&
         other.titleTextStyle == titleTextStyle &&
-        other.closeButtonIcon == closeButtonIcon;
+        other.closeButtonIcon == closeButtonIcon &&
+        other.closeButtonIconSize == closeButtonIconSize;
   }
 
   @override
   int get hashCode {
-    return Object.hash(primaryColor, borderRadius, border, padding, spacing, titleTextStyle, closeButtonIcon);
+    return Object.hash(
+      primaryColor,
+      borderRadius,
+      border,
+      padding,
+      spacing,
+      titleTextStyle,
+      closeButtonIcon,
+      closeButtonIconSize,
+    );
   }
 
   @override
@@ -124,5 +143,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       '  spacing: $spacing,\n'
       '  titleTextStyle: $titleTextStyle,\n'
       '  closeButtonIcon: $closeButtonIcon,\n'
+      '  closeButtonIconSize: $closeButtonIconSize,\n'
       ');';
 }

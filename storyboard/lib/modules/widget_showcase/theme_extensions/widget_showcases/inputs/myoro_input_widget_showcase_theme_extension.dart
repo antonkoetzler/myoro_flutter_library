@@ -7,8 +7,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroInputWidgetShowcase].
 @immutable
-final class MyoroInputWidgetShowcaseThemeExtension
-    extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension> {
+final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension> {
   /// [TextStyle] of [_ConfigurationOption]'s title.
   final TextStyle configurationOptionTextStyle;
 
@@ -32,7 +31,7 @@ final class MyoroInputWidgetShowcaseThemeExtension
     : configurationOptionTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       configurationOptionSpacing = faker.randomGenerator.decimal(),
       inputStyle = MyoroInputStyleEnum.fake(),
-      suffixWidgetIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+      suffixWidgetIcon = myoroFake<IconData>();
 
   MyoroInputWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : configurationOptionTextStyle = textTheme.titleMedium!,
@@ -48,8 +47,7 @@ final class MyoroInputWidgetShowcaseThemeExtension
     IconData? suffixWidgetIcon,
   }) {
     return MyoroInputWidgetShowcaseThemeExtension(
-      configurationOptionTextStyle:
-          configurationOptionTextStyle ?? this.configurationOptionTextStyle,
+      configurationOptionTextStyle: configurationOptionTextStyle ?? this.configurationOptionTextStyle,
       configurationOptionSpacing: configurationOptionSpacing ?? this.configurationOptionSpacing,
       inputStyle: inputStyle ?? this.inputStyle,
       suffixWidgetIcon: suffixWidgetIcon ?? this.suffixWidgetIcon,
@@ -63,16 +61,8 @@ final class MyoroInputWidgetShowcaseThemeExtension
   ) {
     if (other is! MyoroInputWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      configurationOptionTextStyle: TextStyle.lerp(
-        configurationOptionTextStyle,
-        other.configurationOptionTextStyle,
-        t,
-      ),
-      configurationOptionSpacing: lerpDouble(
-        configurationOptionSpacing,
-        other.configurationOptionSpacing,
-        t,
-      ),
+      configurationOptionTextStyle: TextStyle.lerp(configurationOptionTextStyle, other.configurationOptionTextStyle, t),
+      configurationOptionSpacing: lerpDouble(configurationOptionSpacing, other.configurationOptionSpacing, t),
       inputStyle: myoroLerp(inputStyle, other.inputStyle, t),
       suffixWidgetIcon: myoroLerp(suffixWidgetIcon, other.suffixWidgetIcon, t),
     );
@@ -90,12 +80,7 @@ final class MyoroInputWidgetShowcaseThemeExtension
 
   @override
   int get hashCode {
-    return Object.hash(
-      configurationOptionTextStyle,
-      configurationOptionSpacing,
-      inputStyle,
-      suffixWidgetIcon,
-    );
+    return Object.hash(configurationOptionTextStyle, configurationOptionSpacing, inputStyle, suffixWidgetIcon);
   }
 
   @override

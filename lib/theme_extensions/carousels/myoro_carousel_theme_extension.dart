@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -11,25 +10,18 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
   /// Icon of the next item button in [_TraversalButtons].
   final IconData nextItemButtonIcon;
 
-  const MyoroCarouselThemeExtension({
-    required this.previousItemButtonIcon,
-    required this.nextItemButtonIcon,
-  });
+  const MyoroCarouselThemeExtension({required this.previousItemButtonIcon, required this.nextItemButtonIcon});
 
   MyoroCarouselThemeExtension.fake()
-    : previousItemButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-      nextItemButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
+    : previousItemButtonIcon = myoroFake<IconData>(),
+      nextItemButtonIcon = myoroFake<IconData>();
 
   const MyoroCarouselThemeExtension.builder()
     : previousItemButtonIcon = Icons.keyboard_arrow_left,
       nextItemButtonIcon = Icons.keyboard_arrow_right;
 
   @override
-  MyoroCarouselThemeExtension copyWith({
-    IconData? previousItemButtonIcon,
-    IconData? nextItemButtonIcon,
-  }) {
+  MyoroCarouselThemeExtension copyWith({IconData? previousItemButtonIcon, IconData? nextItemButtonIcon}) {
     return MyoroCarouselThemeExtension(
       previousItemButtonIcon: previousItemButtonIcon ?? this.previousItemButtonIcon,
       nextItemButtonIcon: nextItemButtonIcon ?? this.nextItemButtonIcon,
@@ -37,10 +29,7 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
   }
 
   @override
-  MyoroCarouselThemeExtension lerp(
-    covariant ThemeExtension<MyoroCarouselThemeExtension>? other,
-    double t,
-  ) {
+  MyoroCarouselThemeExtension lerp(covariant ThemeExtension<MyoroCarouselThemeExtension>? other, double t) {
     if (other is! MyoroCarouselThemeExtension) return this;
     return copyWith(
       previousItemButtonIcon: myoroLerp(previousItemButtonIcon, other.previousItemButtonIcon, t),

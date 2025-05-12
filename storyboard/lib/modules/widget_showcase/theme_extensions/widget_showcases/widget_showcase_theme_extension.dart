@@ -29,6 +29,9 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// [EdgeInsets] of an item of [WidgetShowcase.widgetOptions].
   final EdgeInsets widgetOptionsItemPadding;
 
+  /// [EdgeInsets] of [MyoroModalConfiguration.closeButtonPadding] of [_WidgetOptions].
+  final EdgeInsets widgetOptionsCloseButtonPadding;
+
   const WidgetShowcaseThemeExtension({
     required this.wrapperDecoration,
     required this.wrapperPadding,
@@ -37,6 +40,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.widgetOptionsButtonIcon,
     required this.widgetOptionsButtonTooltipMargin,
     required this.widgetOptionsItemPadding,
+    required this.widgetOptionsCloseButtonPadding,
   });
 
   WidgetShowcaseThemeExtension.fake()
@@ -50,7 +54,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       ),
       wrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       wrapperContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      widgetOptionsButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      widgetOptionsButtonIcon = myoroFake<IconData>(),
       wrapperAlignment =
           [
             Alignment.center,
@@ -64,7 +68,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
             Alignment.bottomCenter,
           ][faker.randomGenerator.integer(9)],
       widgetOptionsButtonTooltipMargin = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
-      widgetOptionsItemPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20));
+      widgetOptionsItemPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
+      widgetOptionsCloseButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20));
 
   WidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : wrapperDecoration = BoxDecoration(
@@ -78,7 +83,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperAlignment = Alignment.center,
       widgetOptionsButtonIcon = Icons.menu,
       widgetOptionsButtonTooltipMargin = const EdgeInsets.only(bottom: 10, right: 31),
-      widgetOptionsItemPadding = const EdgeInsets.all(10);
+      widgetOptionsItemPadding = const EdgeInsets.all(10),
+      widgetOptionsCloseButtonPadding = const EdgeInsets.all(5);
 
   @override
   WidgetShowcaseThemeExtension copyWith({
@@ -89,6 +95,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     IconData? widgetOptionsButtonIcon,
     EdgeInsets? widgetOptionsButtonTooltipMargin,
     EdgeInsets? widgetOptionsItemPadding,
+    EdgeInsets? widgetOptionsCloseButtonPadding,
   }) {
     return WidgetShowcaseThemeExtension(
       wrapperDecoration: wrapperDecoration ?? this.wrapperDecoration,
@@ -98,6 +105,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
       widgetOptionsButtonTooltipMargin: widgetOptionsButtonTooltipMargin ?? this.widgetOptionsButtonTooltipMargin,
       widgetOptionsItemPadding: widgetOptionsItemPadding ?? this.widgetOptionsItemPadding,
+      widgetOptionsCloseButtonPadding: widgetOptionsCloseButtonPadding ?? this.widgetOptionsCloseButtonPadding,
     );
   }
 
@@ -116,6 +124,11 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         t,
       ),
       widgetOptionsItemPadding: EdgeInsets.lerp(widgetOptionsItemPadding, other.widgetOptionsItemPadding, t),
+      widgetOptionsCloseButtonPadding: EdgeInsets.lerp(
+        widgetOptionsCloseButtonPadding,
+        other.widgetOptionsCloseButtonPadding,
+        t,
+      ),
     );
   }
 
@@ -129,7 +142,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         other.wrapperAlignment == wrapperAlignment &&
         other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
         other.widgetOptionsButtonTooltipMargin == widgetOptionsButtonTooltipMargin &&
-        other.widgetOptionsItemPadding == widgetOptionsItemPadding;
+        other.widgetOptionsItemPadding == widgetOptionsItemPadding &&
+        other.widgetOptionsCloseButtonPadding == widgetOptionsCloseButtonPadding;
   }
 
   @override
@@ -142,6 +156,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetOptionsButtonIcon,
       widgetOptionsButtonTooltipMargin,
       widgetOptionsItemPadding,
+      widgetOptionsCloseButtonPadding,
     );
   }
 
@@ -155,5 +170,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       '  widgetOptionsButtonIcon: $widgetOptionsButtonIcon,\n'
       '  widgetOptionsButtonTooltipMargin: $widgetOptionsButtonTooltipMargin,\n'
       '  widgetOptionsItemPadding: $widgetOptionsItemPadding,\n'
+      '  widgetOptionsCloseButtonPadding: $widgetOptionsCloseButtonPadding,\n'
       ');';
 }

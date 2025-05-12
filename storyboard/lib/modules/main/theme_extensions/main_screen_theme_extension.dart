@@ -11,12 +11,10 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
   const MainScreenThemeExtension({required this.widgetCategoryDropdownButtonPadding});
 
   MainScreenThemeExtension.fake()
-    : widgetCategoryDropdownButtonPadding = EdgeInsets.all(
-        faker.randomGenerator.decimal(scale: 50),
-      );
+    : widgetCategoryDropdownButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50));
 
   const MainScreenThemeExtension.builder()
-    : widgetCategoryDropdownButtonPadding = const EdgeInsets.only(left: 5, right: 5, bottom: 5);
+    : widgetCategoryDropdownButtonPadding = const EdgeInsets.only(left: 10, right: 10, bottom: 10);
 
   @override
   MainScreenThemeExtension copyWith({EdgeInsets? widgetCategoryDropdownButtonPadding}) {
@@ -27,10 +25,7 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
   }
 
   @override
-  MainScreenThemeExtension lerp(
-    covariant ThemeExtension<MainScreenThemeExtension>? other,
-    double t,
-  ) {
+  MainScreenThemeExtension lerp(covariant ThemeExtension<MainScreenThemeExtension>? other, double t) {
     if (other is! MainScreenThemeExtension) return this;
     return copyWith(
       widgetCategoryDropdownButtonPadding: EdgeInsets.lerp(

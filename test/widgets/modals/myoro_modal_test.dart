@@ -89,9 +89,11 @@ void main() {
     // [_CloseButton].
     final Finder closeButtonFinder = find.byWidgetPredicate(
       (Widget w) =>
-          w is MyoroIconTextButton &&
-          w.configuration.iconConfiguration?.icon == themeExtension.closeButtonIcon &&
-          w.configuration.buttonConfiguration?.onTapUp != null,
+          w is Padding &&
+          w.padding == configuration.closeButtonPadding &&
+          w.child is MyoroIconTextButton &&
+          (w.child as MyoroIconTextButton).configuration.iconConfiguration?.icon == themeExtension.closeButtonIcon &&
+          (w.child as MyoroIconTextButton).configuration.buttonConfiguration?.onTapUp != null,
     );
     expect(closeButtonFinder, findsOneWidget);
 

@@ -117,9 +117,17 @@ final class _WidgetOptions extends StatelessWidget {
   const _WidgetOptions(this._widgetOptions);
 
   static Future<void> _show(BuildContext context, List<Widget> widgetOptions) async {
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+
     await MyoroModal.show(
       context,
-      configuration: const MyoroModalConfiguration(useRootNavigator: false, padding: EdgeInsets.zero),
+      configuration: MyoroModalConfiguration(
+        useRootNavigator: false,
+        padding: EdgeInsets.zero,
+        showCloseButton: true,
+        closeButtonPadding: themeExtension.widgetOptionsCloseButtonPadding,
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),
+      ),
       child: _WidgetOptions(widgetOptions),
     );
   }
