@@ -97,7 +97,10 @@ final class _WidgetOptionsButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
+        buttonConfiguration: MyoroButtonConfiguration(
+          onTapUp: (_) => _onTapUp(context),
+          borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        ),
         iconConfiguration: MyoroIconTextButtonIconConfiguration(
           icon: themeExtension.widgetOptionsButtonIcon,
         ),
@@ -118,7 +121,10 @@ final class _WidgetOptions extends StatelessWidget {
   static Future<void> _show(BuildContext context, List<Widget> widgetOptions) async {
     await MyoroModal.show(
       context,
-      configuration: const MyoroModalConfiguration(useRootNavigator: false),
+      configuration: const MyoroModalConfiguration(
+        useRootNavigator: false,
+        padding: EdgeInsets.zero,
+      ),
       child: _WidgetOptions(widgetOptions),
     );
   }
@@ -132,21 +138,18 @@ final class _WidgetOptions extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: themeExtension.widgetOptionsMaxWidth),
       child: SingleChildScrollView(
-        child: Padding(
-          padding: themeExtension.widgetOptionsPadding,
-          child: Column(
-            children: [
-              for (int i = 0; i < _widgetOptions.length; i++) ...[
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(child: _widgetOptions[i]),
-                    if (i == (_widgetOptions.length - 1)) divider,
-                  ],
-                ),
-              ],
+        child: Column(
+          children: [
+            for (int i = 0; i < _widgetOptions.length; i++) ...[
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(child: _widgetOptions[i]),
+                  if (i == (_widgetOptions.length - 1)) divider,
+                ],
+              ),
             ],
-          ),
+          ],
         ),
       ),
     );
@@ -158,13 +161,8 @@ final class _Divider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-
-    return MyoroBasicDivider(
-      configuration: MyoroBasicDividerConfiguration(
-        direction: Axis.horizontal,
-        padding: themeExtension.dividerPadding,
-      ),
+    return const MyoroBasicDivider(
+      configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal),
     );
   }
 }

@@ -28,12 +28,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// [BoxConstraints.maxWidth] of [_WidgetOptions].
   final double widgetOptionsMaxWidth;
 
-  /// Padding of [_WidgetOptions].
-  final EdgeInsets widgetOptionsPadding;
-
-  /// [EdgeInsets] of [_Divider].
-  final EdgeInsets dividerPadding;
-
   const WidgetShowcaseThemeExtension({
     required this.wrapperDecoration,
     required this.wrapperPadding,
@@ -41,8 +35,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.wrapperAlignment,
     required this.widgetOptionsButtonIcon,
     required this.widgetOptionsMaxWidth,
-    required this.widgetOptionsPadding,
-    required this.dividerPadding,
   });
 
   WidgetShowcaseThemeExtension.fake()
@@ -70,9 +62,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
             Alignment.bottomRight,
             Alignment.bottomCenter,
           ][faker.randomGenerator.integer(9)],
-      widgetOptionsMaxWidth = faker.randomGenerator.decimal(min: 200),
-      widgetOptionsPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      dividerPadding = EdgeInsets.all(faker.randomGenerator.decimal());
+      widgetOptionsMaxWidth = faker.randomGenerator.decimal(min: 200);
 
   WidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : wrapperDecoration = BoxDecoration(
@@ -85,9 +75,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding = const EdgeInsets.all(20),
       wrapperAlignment = Alignment.center,
       widgetOptionsButtonIcon = Icons.menu,
-      widgetOptionsMaxWidth = 500,
-      widgetOptionsPadding = const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-      dividerPadding = const EdgeInsets.symmetric(vertical: 20, horizontal: 12);
+      widgetOptionsMaxWidth = 500;
 
   @override
   WidgetShowcaseThemeExtension copyWith({
@@ -97,8 +85,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     Alignment? wrapperAlignment,
     IconData? widgetOptionsButtonIcon,
     double? widgetOptionsMaxWidth,
-    EdgeInsets? widgetOptionsPadding,
-    EdgeInsets? dividerPadding,
   }) {
     return WidgetShowcaseThemeExtension(
       wrapperDecoration: wrapperDecoration ?? this.wrapperDecoration,
@@ -107,8 +93,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperAlignment: wrapperAlignment ?? this.wrapperAlignment,
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
       widgetOptionsMaxWidth: widgetOptionsMaxWidth ?? this.widgetOptionsMaxWidth,
-      widgetOptionsPadding: widgetOptionsPadding ?? this.widgetOptionsPadding,
-      dividerPadding: dividerPadding ?? this.dividerPadding,
     );
   }
 
@@ -125,8 +109,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperAlignment: Alignment.lerp(wrapperAlignment, other.wrapperAlignment, t),
       widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
       widgetOptionsMaxWidth: lerpDouble(widgetOptionsMaxWidth, other.widgetOptionsMaxWidth, t),
-      widgetOptionsPadding: EdgeInsets.lerp(widgetOptionsPadding, other.widgetOptionsPadding, t),
-      dividerPadding: EdgeInsets.lerp(dividerPadding, other.dividerPadding, t),
     );
   }
 
@@ -139,9 +121,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         other.wrapperContentPadding == wrapperContentPadding &&
         other.wrapperAlignment == wrapperAlignment &&
         other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
-        other.widgetOptionsMaxWidth == widgetOptionsMaxWidth &&
-        other.widgetOptionsPadding == widgetOptionsPadding &&
-        other.dividerPadding == dividerPadding;
+        other.widgetOptionsMaxWidth == widgetOptionsMaxWidth;
   }
 
   @override
@@ -153,8 +133,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperAlignment,
       widgetOptionsButtonIcon,
       widgetOptionsMaxWidth,
-      widgetOptionsPadding,
-      dividerPadding,
     );
   }
 
@@ -167,7 +145,5 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       '  wrapperAlignment: $wrapperAlignment,\n'
       '  widgetOptionsButtonIcon: $widgetOptionsButtonIcon,\n'
       '  widgetOptionsMaxWidth: $widgetOptionsMaxWidth,\n'
-      '  widgetOptionsPadding: $widgetOptionsPadding,\n'
-      '  dividerPadding: $dividerPadding,\n'
       ');';
 }

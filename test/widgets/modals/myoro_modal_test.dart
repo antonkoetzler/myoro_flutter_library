@@ -25,7 +25,11 @@ void main() {
             return GestureDetector(
               key: key,
               onTap: () {
-                MyoroModal.show(context, configuration: configuration, child: const SizedBox.shrink());
+                MyoroModal.show(
+                  context,
+                  configuration: configuration,
+                  child: const SizedBox.shrink(),
+                );
               },
             );
           },
@@ -49,18 +53,26 @@ void main() {
             (w.child as Material).child is Container &&
             ((w.child as Material).child as Container).constraints ==
                 (configuration.constraints ?? themeExtension.constraints) &&
-            ((w.child as Material).child as Container).padding == themeExtension.padding &&
+            ((w.child as Material).child as Container).padding ==
+                (configuration.padding ?? themeExtension.padding) &&
             ((w.child as Material).child as Container).decoration ==
-                BoxDecoration(borderRadius: themeExtension.borderRadius, border: themeExtension.border) &&
+                BoxDecoration(
+                  borderRadius: themeExtension.borderRadius,
+                  border: themeExtension.border,
+                ) &&
             ((w.child as Material).child as Container).child is Column &&
-            (((w.child as Material).child as Container).child as Column).mainAxisSize == MainAxisSize.min &&
+            (((w.child as Material).child as Container).child as Column).mainAxisSize ==
+                MainAxisSize.min &&
             (((w.child as Material).child as Container).child as Column).children.length == 3 &&
             // (((w.child as Material).child as Container).child as Column).children.first is _Header &&
             (((w.child as Material).child as Container).child as Column).children[1] is SizedBox &&
-            ((((w.child as Material).child as Container).child as Column).children[1] as SizedBox).height ==
+            ((((w.child as Material).child as Container).child as Column).children[1] as SizedBox)
+                    .height ==
                 themeExtension.spacing &&
-            (((w.child as Material).child as Container).child as Column).children.last is Flexible &&
-            ((((w.child as Material).child as Container).child as Column).children.last as Flexible).child
+            (((w.child as Material).child as Container).child as Column).children.last
+                is Flexible &&
+            ((((w.child as Material).child as Container).child as Column).children.last as Flexible)
+                    .child
                 is SizedBox, // [MyoroModal.child]
       ),
       findsOneWidget,
@@ -69,7 +81,10 @@ void main() {
     // [_Header].
     expect(
       find.byWidgetPredicate(
-        (Widget w) => w is Row && w.mainAxisAlignment == MainAxisAlignment.spaceBetween && w.children.length == 2,
+        (Widget w) =>
+            w is Row &&
+            w.mainAxisAlignment == MainAxisAlignment.spaceBetween &&
+            w.children.length == 2,
       ),
       findsOneWidget,
     );

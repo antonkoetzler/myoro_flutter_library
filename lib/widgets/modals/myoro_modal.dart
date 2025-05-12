@@ -17,7 +17,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// ```
 class MyoroModal extends StatelessWidget {
   /// Configuration of the modal.
-  final MyoroModalConfiguration? configuration;
+  final MyoroModalConfiguration configuration;
 
   /// Contents of the modal.
   final Widget child;
@@ -42,15 +42,15 @@ class MyoroModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
-    final showCloseButton = configuration?.showCloseButton ?? false;
+    final showCloseButton = configuration.showCloseButton ?? false;
 
     return Center(
       child: Material(
         color: themeExtension.primaryColor,
         borderRadius: themeExtension.borderRadius,
         child: Container(
-          constraints: configuration?.constraints ?? themeExtension.constraints,
-          padding: themeExtension.padding,
+          constraints: configuration.constraints ?? themeExtension.constraints,
+          padding: configuration.padding ?? themeExtension.padding,
           decoration: BoxDecoration(
             borderRadius: themeExtension.borderRadius,
             border: themeExtension.border,
@@ -58,8 +58,8 @@ class MyoroModal extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (configuration?.title != null || showCloseButton) ...[
-                _Header(configuration?.title, showCloseButton),
+              if (configuration.title != null || showCloseButton) ...[
+                _Header(configuration.title, showCloseButton),
                 SizedBox(height: themeExtension.spacing),
               ],
               Flexible(child: child),

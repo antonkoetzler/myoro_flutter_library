@@ -55,6 +55,9 @@ class MyoroModalConfiguration extends Equatable {
   /// If [_CloseButton] will be shown.
   final bool? showCloseButton;
 
+  /// Content padding of the modal.
+  final EdgeInsets? padding;
+
   const MyoroModalConfiguration({
     this.barrierDismissable = barrierDismissableDefaultValue,
     this.useRootNavigator = useRootNavigatorDefaultValue,
@@ -62,6 +65,7 @@ class MyoroModalConfiguration extends Equatable {
     this.onClosed,
     this.title,
     this.showCloseButton,
+    this.padding,
   });
 
   MyoroModalConfiguration.fake()
@@ -70,7 +74,11 @@ class MyoroModalConfiguration extends Equatable {
       constraints = null,
       onClosed = null,
       title = faker.lorem.word(),
-      showCloseButton = faker.randomGenerator.boolean();
+      showCloseButton = faker.randomGenerator.boolean(),
+      padding =
+          faker.randomGenerator.boolean()
+              ? EdgeInsets.all(faker.randomGenerator.decimal(scale: 20))
+              : null;
 
   MyoroModalConfiguration copyWith({
     bool? barrierDismissable,
@@ -83,6 +91,8 @@ class MyoroModalConfiguration extends Equatable {
     bool titleProvided = true,
     bool? showCloseButton,
     bool showCloseButtonProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
   }) {
     return MyoroModalConfiguration(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
@@ -91,7 +101,21 @@ class MyoroModalConfiguration extends Equatable {
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: titleProvided ? (title ?? this.title) : null,
       showCloseButton: showCloseButtonProvided ? (showCloseButton ?? this.showCloseButton) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
     );
+  }
+
+  @override
+  List<Object?> get props {
+    return [
+      barrierDismissable,
+      useRootNavigator,
+      constraints,
+      onClosed,
+      title,
+      showCloseButton,
+      padding,
+    ];
   }
 
   @override
@@ -103,10 +127,6 @@ class MyoroModalConfiguration extends Equatable {
       '  onClosed: $onClosed,\n'
       '  title: $title,\n'
       '  showCloseButton: $showCloseButton,\n'
+      '  padding: $padding,\n'
       ');';
-
-  @override
-  List<Object?> get props {
-    return [barrierDismissable, useRootNavigator, constraints, onClosed, title, showCloseButton];
-  }
 }
