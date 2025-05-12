@@ -17,30 +17,29 @@ final class MyoroIconTextButtonWidgetShowcase extends StatelessWidget {
         BlocProvider(create: (_) => MyoroButtonWidgetShowcaseBloc()),
         BlocProvider(create: (_) => MyoroIconTextButtonWidgetShowcaseBloc()),
       ],
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          MyoroButtonWidgetShowcaseCursorOption(),
+          MyoroButtonWidgetShowcaseBorderRadiusOption(),
+          MyoroButtonWidgetShowcaseBackgroundColorBuilderOption(),
+          MyoroButtonWidgetShowcaseBorderBuilderOption(),
+          MyoroButtonWidgetShowcaseOnTapDownOption(),
+          MyoroButtonWidgetShowcaseOnTapUpOption(),
+          _InvertOption(),
+          _SpacingOption(),
+          _PaddingOption(),
+          _ContentColorBuilderOption(),
+          _IconOption(),
+          _IconSizeOption(),
+          _TextOption(),
+          _TextMaxLinesOption(),
+          _TextOverflowOption(),
+          _TextAlignmentOption(),
+          _TextStyleOption(),
+        ],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      MyoroButtonWidgetShowcaseCursorOption(),
-      MyoroButtonWidgetShowcaseBorderRadiusOption(),
-      MyoroButtonWidgetShowcaseBackgroundColorBuilderOption(),
-      MyoroButtonWidgetShowcaseBorderBuilderOption(),
-      MyoroButtonWidgetShowcaseOnTapDownOption(),
-      MyoroButtonWidgetShowcaseOnTapUpOption(),
-      _InvertOption(),
-      _SpacingOption(),
-      _PaddingOption(),
-      _ContentColorBuilderOption(),
-      _IconOption(),
-      _IconSizeOption(),
-      _TextOption(),
-      _TextMaxLinesOption(),
-      _TextOverflowOption(),
-      _TextAlignmentOption(),
-      _TextStyleOption(),
-    ];
   }
 }
 

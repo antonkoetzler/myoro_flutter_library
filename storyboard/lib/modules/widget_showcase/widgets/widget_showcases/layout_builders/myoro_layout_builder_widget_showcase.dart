@@ -8,11 +8,7 @@ final class MyoroLayoutBuilderWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder);
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_Description()];
+    return const WidgetShowcase(widget: _Widget(), widgetOptions: [_Description()]);
   }
 }
 

@@ -13,19 +13,18 @@ final class MyoroButtonWidgetShowcase extends StatelessWidget {
     BorderRadius;
     return BlocProvider(
       create: (_) => MyoroButtonWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          MyoroButtonWidgetShowcaseCursorOption(),
+          MyoroButtonWidgetShowcaseBorderRadiusOption(),
+          MyoroButtonWidgetShowcaseBackgroundColorBuilderOption(),
+          MyoroButtonWidgetShowcaseBorderBuilderOption(),
+          MyoroButtonWidgetShowcaseOnTapDownOption(),
+          MyoroButtonWidgetShowcaseOnTapUpOption(),
+        ],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      MyoroButtonWidgetShowcaseCursorOption(),
-      MyoroButtonWidgetShowcaseBorderRadiusOption(),
-      MyoroButtonWidgetShowcaseBackgroundColorBuilderOption(),
-      MyoroButtonWidgetShowcaseBorderBuilderOption(),
-      MyoroButtonWidgetShowcaseOnTapDownOption(),
-      MyoroButtonWidgetShowcaseOnTapUpOption(),
-    ];
   }
 }
 

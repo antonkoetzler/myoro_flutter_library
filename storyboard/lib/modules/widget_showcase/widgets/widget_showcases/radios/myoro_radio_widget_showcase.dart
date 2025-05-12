@@ -12,12 +12,11 @@ final class MyoroRadioWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroRadioWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_LabelOption(), _LabelTextStyleOption()],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_LabelOption(), _LabelTextStyleOption()];
   }
 }
 

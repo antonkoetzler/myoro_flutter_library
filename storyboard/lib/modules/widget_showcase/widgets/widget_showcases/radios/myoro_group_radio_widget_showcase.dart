@@ -25,13 +25,13 @@ final class MyoroGroupRadioWidgetShowcase extends StatelessWidget {
       },
       child: WidgetShowcase(
         widget: const _Widget(),
-        widgetOptionsBuilder: () => _widgetOptionsBuilder(spacing, runSpacing),
+        widgetOptions: [
+          const _DirectionOption(),
+          _SpacingOption(spacing),
+          _RunSpacingOption(runSpacing),
+        ],
       ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder(double spacing, double runSpacing) {
-    return [const _DirectionOption(), _SpacingOption(spacing), _RunSpacingOption(runSpacing)];
   }
 }
 

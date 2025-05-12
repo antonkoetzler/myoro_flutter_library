@@ -15,12 +15,11 @@ final class MyoroMenuWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroMenuWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_ConstraintsOption(), _SearchCallbackOption()],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_ConstraintsOption(), _SearchCallbackOption()];
   }
 }
 

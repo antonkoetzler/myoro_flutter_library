@@ -12,18 +12,17 @@ final class MyoroCardWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroCardWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          _TitleOption(),
+          _TitleTextStyleOption(),
+          _PaddingOption(),
+          _WidthOption(),
+          _HeightOption(),
+        ],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      _TitleOption(),
-      _TitleTextStyleOption(),
-      _PaddingOption(),
-      _WidthOption(),
-      _HeightOption(),
-    ];
   }
 }
 

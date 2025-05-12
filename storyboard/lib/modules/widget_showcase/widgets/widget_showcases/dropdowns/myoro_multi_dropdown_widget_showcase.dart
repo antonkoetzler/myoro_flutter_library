@@ -21,18 +21,14 @@ final class MyoroMultiDropdownWidgetShowcase extends StatelessWidget {
       child: WidgetShowcase(
         key: widgetShowcaseKey,
         widget: const _Widget(),
-        widgetOptionsBuilder: _widgetOptionsBuilder,
+        widgetOptions: const [
+          MyoroDropdownWidgetShowcaseLabelOption(),
+          MyoroDropdownWidgetShowcaseEnabledOption(),
+          MyoroDropdownWidgetShowcaseAllowItemClearingOption(),
+          MyoroDropdownWidgetShowcaseCheckboxOnChangedOption(),
+        ],
       ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      MyoroDropdownWidgetShowcaseLabelOption(),
-      MyoroDropdownWidgetShowcaseEnabledOption(),
-      MyoroDropdownWidgetShowcaseAllowItemClearingOption(),
-      MyoroDropdownWidgetShowcaseCheckboxOnChangedOption(),
-    ];
   }
 }
 

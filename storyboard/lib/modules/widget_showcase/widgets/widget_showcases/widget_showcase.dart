@@ -18,9 +18,9 @@ final class WidgetShowcase extends StatefulWidget {
   final Widget widget;
 
   /// Options to experiment on the widget that will be on the right.
-  final WidgetShowcaseWidgetOptionsBuilder? widgetOptionsBuilder;
+  final List<Widget> widgetOptions;
 
-  const WidgetShowcase({super.key, required this.widget, this.widgetOptionsBuilder});
+  const WidgetShowcase({super.key, required this.widget, this.widgetOptions = const []});
 
   @override
   State<WidgetShowcase> createState() => _WidgetShowcaseState();
@@ -28,7 +28,7 @@ final class WidgetShowcase extends StatefulWidget {
 
 final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget get _widget => widget.widget;
-  WidgetShowcaseWidgetOptionsBuilder? get _widgetOptionsBuilder => widget.widgetOptionsBuilder;
+  List<Widget> get _widgetOptions => widget.widgetOptions;
 
   final _navigatorKey = GlobalKey<NavigatorState>();
 
@@ -39,7 +39,7 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
       onGenerateRoute: (_) {
         return MaterialPageRoute(
           builder: (_) {
-            return _Wrapper(_navigatorKey, _widget, _widgetOptionsBuilder);
+            return _Wrapper(_navigatorKey, _widget, _widgetOptions);
           },
         );
       },
@@ -50,9 +50,9 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
 final class _Wrapper extends StatelessWidget {
   final GlobalKey<NavigatorState> _navigatorKey;
   final Widget _widget;
-  final WidgetShowcaseWidgetOptionsBuilder? _widgetOptionsBuilder;
+  final List<Widget> _widgetOptions;
 
-  const _Wrapper(this._navigatorKey, this._widget, this._widgetOptionsBuilder);
+  const _Wrapper(this._navigatorKey, this._widget, this._widgetOptions);
 
   @override
   Widget build(BuildContext context) {
@@ -70,11 +70,11 @@ final class _Wrapper extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               _widget,
-              if (_widgetOptionsBuilder != null) ...[
+              if (_widgetOptions.isNotEmpty) ...[
                 Positioned(
                   bottom: 0,
                   right: 0,
-                  child: _WidgetOptionsButton(_navigatorKey, _widgetOptionsBuilder!),
+                  child: _WidgetOptionsButton(_navigatorKey, _widgetOptions),
                 ),
               ],
             ],
@@ -87,9 +87,9 @@ final class _Wrapper extends StatelessWidget {
 
 final class _WidgetOptionsButton extends StatelessWidget {
   final GlobalKey<NavigatorState> _navigatorKey;
-  final WidgetShowcaseWidgetOptionsBuilder _widgetOptionsBuilder;
+  final List<Widget> _widgetOptions;
 
-  const _WidgetOptionsButton(this._navigatorKey, this._widgetOptionsBuilder);
+  const _WidgetOptionsButton(this._navigatorKey, this._widgetOptions);
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,7 @@ final class _WidgetOptionsButton extends StatelessWidget {
   }
 
   void _onTapUp(BuildContext context) {
-    _WidgetOptions._show(_navigatorKey.currentContext!, _widgetOptionsBuilder);
+    _WidgetOptions._show(_navigatorKey.currentContext!, _widgetOptions);
   }
 }
 
@@ -115,26 +115,11 @@ final class _WidgetOptions extends StatelessWidget {
 
   const _WidgetOptions(this._widgetOptions);
 
-  static Future<void> _show(
-    BuildContext context,
-    WidgetShowcaseWidgetOptionsBuilder widgetOptionsBuilder,
-  ) async {
+  static Future<void> _show(BuildContext context, List<Widget> widgetOptions) async {
     await MyoroModal.show(
       context,
       configuration: const MyoroModalConfiguration(useRootNavigator: false),
-      child: Builder(
-        builder: (_) {
-          final List<Widget> widgetOptions = widgetOptionsBuilder.call();
-
-          assert(
-            widgetOptions.isNotEmpty,
-            '[WidgetShowcase._WidgetOptions]: If [WidgetShowcase.widgetOptionsBuilder] '
-            'is provided, the amount of [Widget]s cannot be empty.',
-          );
-
-          return _WidgetOptions(widgetOptions);
-        },
-      ),
+      child: _WidgetOptions(widgetOptions),
     );
   }
 

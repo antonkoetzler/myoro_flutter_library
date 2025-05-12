@@ -12,17 +12,16 @@ final class MyoroDrawerWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroDrawerWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          _TitleOption(),
+          _TitleTextStyleOption(),
+          _ShowCloseButtonOption(),
+          _BarrierDismissableOption(),
+        ],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      _TitleOption(),
-      _TitleTextStyleOption(),
-      _ShowCloseButtonOption(),
-      _BarrierDismissableOption(),
-    ];
   }
 }
 

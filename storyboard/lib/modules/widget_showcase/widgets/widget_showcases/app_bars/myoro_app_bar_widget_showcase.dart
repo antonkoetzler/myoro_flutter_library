@@ -12,12 +12,8 @@ final class MyoroAppBarWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroAppBarWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_BorderedOption()]),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_BorderedOption()];
   }
 }
 

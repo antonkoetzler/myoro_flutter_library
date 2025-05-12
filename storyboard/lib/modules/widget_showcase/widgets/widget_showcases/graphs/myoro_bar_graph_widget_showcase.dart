@@ -13,12 +13,8 @@ final class MyoroBarGraphWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroBarGraphWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_SortedOption()]),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_SortedOption()];
   }
 }
 

@@ -11,16 +11,16 @@ final class MyoroResizeDividerWidgetShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (_) => MyoroBasicDividerWidgetShowcaseBloc(
-            shortValue: context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue,
-          ),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      create: (_) {
+        return MyoroBasicDividerWidgetShowcaseBloc(
+          shortValue: context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue,
+        );
+      },
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_DirectionOption(), _ShortValueOption(), _PaddingOption()],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_DirectionOption(), _ShortValueOption(), _PaddingOption()];
   }
 }
 

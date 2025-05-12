@@ -13,12 +13,11 @@ final class MyoroGroupCheckboxWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroGroupCheckboxWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_DirectionOption(), _SpacingOption(), _RunSpacingOption()],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_DirectionOption(), _SpacingOption(), _RunSpacingOption()];
   }
 }
 

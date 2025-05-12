@@ -13,17 +13,16 @@ final class MyoroCarouselWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroCarouselWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          _DirectionOption(),
+          _DisplayTraversalButtonsOptions(),
+          _AutoplayOption(),
+          _AutoplayIntervalDurationOption(),
+        ],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      _DirectionOption(),
-      _DisplayTraversalButtonsOptions(),
-      _AutoplayOption(),
-      _AutoplayIntervalDurationOption(),
-    ];
   }
 }
 

@@ -16,12 +16,11 @@ final class MyoroCheckboxWidgetShowcase extends StatelessWidget {
           labelTextStyle: MyoroTypographyDesignSystem.instance.italicSmall,
         );
       },
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_LabelOption(), _LabelTextStyleOption()],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_LabelOption(), _LabelTextStyleOption()];
   }
 }
 

@@ -17,19 +17,18 @@ final class MyoroSliderWidgetShowcase extends StatelessWidget {
               context.resolveThemeExtension<MyoroSliderWidgetShowcaseThemeExtension>().widgetSize,
         );
       },
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          _LabelOption(),
+          _LabelTextStyleOption(),
+          _WidthOption(),
+          _CurrentValueIndicatorTextBuilderOption(),
+          _MaxValueIndicatorTextBuilderOption(),
+          _FooterIndicatorTextBuilderOption(),
+        ],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      _LabelOption(),
-      _LabelTextStyleOption(),
-      _WidthOption(),
-      _CurrentValueIndicatorTextBuilderOption(),
-      _MaxValueIndicatorTextBuilderOption(),
-      _FooterIndicatorTextBuilderOption(),
-    ];
   }
 }
 

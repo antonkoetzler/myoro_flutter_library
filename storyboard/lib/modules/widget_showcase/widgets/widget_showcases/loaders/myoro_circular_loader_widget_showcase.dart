@@ -16,12 +16,11 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
           size: context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>().size,
         );
       },
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_ColorOption(), _SizeOption()],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_ColorOption(), _SizeOption()];
   }
 }
 

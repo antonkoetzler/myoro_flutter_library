@@ -16,12 +16,11 @@ final class MyoroBasicDividerWidgetShowcase extends StatelessWidget {
           shortValue: context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue,
         );
       },
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [_DirectionOption(), _ShortValueOption(), _PaddingOption()],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [_DirectionOption(), _ShortValueOption(), _PaddingOption()];
   }
 }
 

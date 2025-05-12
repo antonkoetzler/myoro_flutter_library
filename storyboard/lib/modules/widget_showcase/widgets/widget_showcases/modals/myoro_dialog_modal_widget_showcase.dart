@@ -12,19 +12,18 @@ final class MyoroDialogModalWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroDialogModalWidgetShowcaseBloc(),
-      child: WidgetShowcase(widget: const _Widget(), widgetOptionsBuilder: _widgetOptionsBuilder),
+      child: const WidgetShowcase(
+        widget: _Widget(),
+        widgetOptions: [
+          _InvertButtonsOption(),
+          _ConfirmButtonTextOption(),
+          _CancelButtonTextOption(),
+          _TextOption(),
+          _TextStyleOption(),
+          _ChildOption(),
+        ],
+      ),
     );
-  }
-
-  List<Widget> _widgetOptionsBuilder() {
-    return const [
-      _InvertButtonsOption(),
-      _ConfirmButtonTextOption(),
-      _CancelButtonTextOption(),
-      _TextOption(),
-      _TextStyleOption(),
-      _ChildOption(),
-    ];
   }
 }
 
