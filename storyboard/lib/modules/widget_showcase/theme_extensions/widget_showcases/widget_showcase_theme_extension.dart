@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -25,8 +23,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// [IconData] of [_WidgetOptionsButton].
   final IconData widgetOptionsButtonIcon;
 
-  /// [BoxConstraints.maxWidth] of [_WidgetOptions].
-  final double widgetOptionsMaxWidth;
+  /// [EdgeInsets] of an item of [WidgetShowcase.widgetOptions].
+  final EdgeInsets widgetOptionsItemPadding;
 
   const WidgetShowcaseThemeExtension({
     required this.wrapperDecoration,
@@ -34,7 +32,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.wrapperContentPadding,
     required this.wrapperAlignment,
     required this.widgetOptionsButtonIcon,
-    required this.widgetOptionsMaxWidth,
+    required this.widgetOptionsItemPadding,
   });
 
   WidgetShowcaseThemeExtension.fake()
@@ -48,8 +46,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       ),
       wrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
       wrapperContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      widgetOptionsButtonIcon =
-          kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
+      widgetOptionsButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
       wrapperAlignment =
           [
             Alignment.center,
@@ -62,7 +59,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
             Alignment.bottomRight,
             Alignment.bottomCenter,
           ][faker.randomGenerator.integer(9)],
-      widgetOptionsMaxWidth = faker.randomGenerator.decimal(min: 200);
+      widgetOptionsItemPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20));
 
   WidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : wrapperDecoration = BoxDecoration(
@@ -75,7 +72,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding = const EdgeInsets.all(20),
       wrapperAlignment = Alignment.center,
       widgetOptionsButtonIcon = Icons.menu,
-      widgetOptionsMaxWidth = 500;
+      widgetOptionsItemPadding = const EdgeInsets.all(10);
 
   @override
   WidgetShowcaseThemeExtension copyWith({
@@ -84,7 +81,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     EdgeInsets? wrapperContentPadding,
     Alignment? wrapperAlignment,
     IconData? widgetOptionsButtonIcon,
-    double? widgetOptionsMaxWidth,
+    EdgeInsets? widgetOptionsItemPadding,
   }) {
     return WidgetShowcaseThemeExtension(
       wrapperDecoration: wrapperDecoration ?? this.wrapperDecoration,
@@ -92,15 +89,12 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding: wrapperContentPadding ?? this.wrapperContentPadding,
       wrapperAlignment: wrapperAlignment ?? this.wrapperAlignment,
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
-      widgetOptionsMaxWidth: widgetOptionsMaxWidth ?? this.widgetOptionsMaxWidth,
+      widgetOptionsItemPadding: widgetOptionsItemPadding ?? this.widgetOptionsItemPadding,
     );
   }
 
   @override
-  WidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<WidgetShowcaseThemeExtension>? other,
-    double t,
-  ) {
+  WidgetShowcaseThemeExtension lerp(covariant ThemeExtension<WidgetShowcaseThemeExtension>? other, double t) {
     if (other is! WidgetShowcaseThemeExtension) return this;
     return copyWith(
       wrapperDecoration: BoxDecoration.lerp(wrapperDecoration, other.wrapperDecoration, t),
@@ -108,7 +102,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding: EdgeInsets.lerp(wrapperContentPadding, other.wrapperContentPadding, t),
       wrapperAlignment: Alignment.lerp(wrapperAlignment, other.wrapperAlignment, t),
       widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
-      widgetOptionsMaxWidth: lerpDouble(widgetOptionsMaxWidth, other.widgetOptionsMaxWidth, t),
+      widgetOptionsItemPadding: EdgeInsets.lerp(widgetOptionsItemPadding, other.widgetOptionsItemPadding, t),
     );
   }
 
@@ -121,7 +115,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         other.wrapperContentPadding == wrapperContentPadding &&
         other.wrapperAlignment == wrapperAlignment &&
         other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
-        other.widgetOptionsMaxWidth == widgetOptionsMaxWidth;
+        other.widgetOptionsItemPadding == widgetOptionsItemPadding;
   }
 
   @override
@@ -132,7 +126,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding,
       wrapperAlignment,
       widgetOptionsButtonIcon,
-      widgetOptionsMaxWidth,
+      widgetOptionsItemPadding,
     );
   }
 
@@ -144,6 +138,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       '  wrapperContentPadding: $wrapperContentPadding,\n'
       '  wrapperAlignment: $wrapperAlignment,\n'
       '  widgetOptionsButtonIcon: $widgetOptionsButtonIcon,\n'
-      '  widgetOptionsMaxWidth: $widgetOptionsMaxWidth,\n'
+      '  widgetOptionsItemPadding: $widgetOptionsItemPadding,\n'
       ');';
 }
