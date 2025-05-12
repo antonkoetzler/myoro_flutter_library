@@ -23,6 +23,9 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// [IconData] of [_WidgetOptionsButton].
   final IconData widgetOptionsButtonIcon;
 
+  /// [MyoroTooltipConfiguration.margin] of [_WidgetOptionsButton].
+  final EdgeInsets widgetOptionsButtonTooltipMargin;
+
   /// [EdgeInsets] of an item of [WidgetShowcase.widgetOptions].
   final EdgeInsets widgetOptionsItemPadding;
 
@@ -32,6 +35,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.wrapperContentPadding,
     required this.wrapperAlignment,
     required this.widgetOptionsButtonIcon,
+    required this.widgetOptionsButtonTooltipMargin,
     required this.widgetOptionsItemPadding,
   });
 
@@ -59,6 +63,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
             Alignment.bottomRight,
             Alignment.bottomCenter,
           ][faker.randomGenerator.integer(9)],
+      widgetOptionsButtonTooltipMargin = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
       widgetOptionsItemPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20));
 
   WidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
@@ -72,6 +77,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding = const EdgeInsets.all(20),
       wrapperAlignment = Alignment.center,
       widgetOptionsButtonIcon = Icons.menu,
+      widgetOptionsButtonTooltipMargin = const EdgeInsets.only(bottom: 10, right: 31),
       widgetOptionsItemPadding = const EdgeInsets.all(10);
 
   @override
@@ -81,6 +87,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     EdgeInsets? wrapperContentPadding,
     Alignment? wrapperAlignment,
     IconData? widgetOptionsButtonIcon,
+    EdgeInsets? widgetOptionsButtonTooltipMargin,
     EdgeInsets? widgetOptionsItemPadding,
   }) {
     return WidgetShowcaseThemeExtension(
@@ -89,6 +96,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding: wrapperContentPadding ?? this.wrapperContentPadding,
       wrapperAlignment: wrapperAlignment ?? this.wrapperAlignment,
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
+      widgetOptionsButtonTooltipMargin: widgetOptionsButtonTooltipMargin ?? this.widgetOptionsButtonTooltipMargin,
       widgetOptionsItemPadding: widgetOptionsItemPadding ?? this.widgetOptionsItemPadding,
     );
   }
@@ -102,6 +110,11 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding: EdgeInsets.lerp(wrapperContentPadding, other.wrapperContentPadding, t),
       wrapperAlignment: Alignment.lerp(wrapperAlignment, other.wrapperAlignment, t),
       widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
+      widgetOptionsButtonTooltipMargin: EdgeInsets.lerp(
+        widgetOptionsButtonTooltipMargin,
+        other.widgetOptionsButtonTooltipMargin,
+        t,
+      ),
       widgetOptionsItemPadding: EdgeInsets.lerp(widgetOptionsItemPadding, other.widgetOptionsItemPadding, t),
     );
   }
@@ -115,6 +128,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         other.wrapperContentPadding == wrapperContentPadding &&
         other.wrapperAlignment == wrapperAlignment &&
         other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
+        other.widgetOptionsButtonTooltipMargin == widgetOptionsButtonTooltipMargin &&
         other.widgetOptionsItemPadding == widgetOptionsItemPadding;
   }
 
@@ -126,6 +140,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding,
       wrapperAlignment,
       widgetOptionsButtonIcon,
+      widgetOptionsButtonTooltipMargin,
       widgetOptionsItemPadding,
     );
   }
@@ -138,6 +153,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       '  wrapperContentPadding: $wrapperContentPadding,\n'
       '  wrapperAlignment: $wrapperAlignment,\n'
       '  widgetOptionsButtonIcon: $widgetOptionsButtonIcon,\n'
+      '  widgetOptionsButtonTooltipMargin: $widgetOptionsButtonTooltipMargin,\n'
       '  widgetOptionsItemPadding: $widgetOptionsItemPadding,\n'
       ');';
 }

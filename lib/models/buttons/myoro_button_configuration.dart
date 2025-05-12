@@ -5,12 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of [MyoroButton]'s background color.
-typedef MyoroButtonConfigurationBackgroundColorBuilder =
-    Color Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonConfigurationBackgroundColorBuilder = Color Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Builder of the [MyoroButton]'s border.
-typedef MyoroButtonConfigurationBorderBuilder =
-    BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonConfigurationBorderBuilder = BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Function executed when the [MyoroButton] is tapped.
 typedef MyoroButtonConfigurationOnTapDown = void Function(TapDownDetails details);
@@ -22,7 +20,12 @@ typedef MyoroButtonConfigurationOnTapDown = void Function(TapDownDetails details
 typedef MyoroButtonConfigurationOnTapUp = void Function(TapUpDetails details);
 
 /// Configuration model of [MyoroButton].
+///
+/// TODO: Test needs to be rewritten.
 class MyoroButtonConfiguration extends Equatable {
+  /// [MyoroTooltip] of the [MyoroButton].
+  final MyoroTooltipConfiguration? tooltipConfiguration;
+
   /// [MouseCursor] when the [MyoroButton] is hovered over.
   ///
   /// If [onTapDown] or [onTapUp] is provided, [cursor] defaults to
@@ -45,6 +48,7 @@ class MyoroButtonConfiguration extends Equatable {
   final MyoroButtonConfigurationOnTapUp? onTapUp;
 
   const MyoroButtonConfiguration({
+    this.tooltipConfiguration,
     this.cursor,
     this.borderRadius,
     this.backgroundColorBuilder,
@@ -54,7 +58,8 @@ class MyoroButtonConfiguration extends Equatable {
   });
 
   MyoroButtonConfiguration.fake()
-    : cursor =
+    : tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
+      cursor =
           faker.randomGenerator.boolean()
               ? kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)]
               : null,
@@ -77,6 +82,8 @@ class MyoroButtonConfiguration extends Equatable {
       onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null;
 
   MyoroButtonConfiguration copyWith({
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
     MouseCursor? cursor,
     bool cursorProvided = true,
     BorderRadius? borderRadius,
@@ -91,12 +98,11 @@ class MyoroButtonConfiguration extends Equatable {
     bool onTapUpProvided = true,
   }) {
     return MyoroButtonConfiguration(
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
       cursor: cursorProvided ? (cursor ?? this.cursor) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       backgroundColorBuilder:
-          backgroundColorBuilderProvided
-              ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
-              : null,
+          backgroundColorBuilderProvided ? (backgroundColorBuilder ?? this.backgroundColorBuilder) : null,
       borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
@@ -105,12 +111,13 @@ class MyoroButtonConfiguration extends Equatable {
 
   @override
   List<Object?> get props {
-    return [cursor, borderRadius, backgroundColorBuilder, borderBuilder, onTapDown, onTapUp];
+    return [tooltipConfiguration, cursor, borderRadius, backgroundColorBuilder, borderBuilder, onTapDown, onTapUp];
   }
 
   @override
   String toString() =>
       'MyoroButtonConfiguration(\n'
+      '  tooltipConfiguration: $tooltipConfiguration,\n'
       '  cursor: $cursor,\n'
       '  borderRadius: $borderRadius,\n'
       '  backgroundColorBuilder: $backgroundColorBuilder,\n'

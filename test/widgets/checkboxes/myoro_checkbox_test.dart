@@ -14,9 +14,7 @@ void main() {
 
     final String label = faker.lorem.word();
     final TextStyle? labelTextStyle =
-        faker.randomGenerator.boolean()
-            ? MyoroTypographyDesignSystem.instance.randomTextStyle
-            : null;
+        faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null;
     final bool initialValue = faker.randomGenerator.boolean();
 
     await tester.pumpWidget(
@@ -82,12 +80,9 @@ void main() {
       find.byWidgetPredicate(
         (Widget w) =>
             w is Flexible &&
-            w.child is Padding &&
-            (w.child as Padding).padding == const EdgeInsets.only(bottom: 4) &&
-            (w.child as Padding).child is Text &&
-            ((w.child as Padding).child as Text).data == label &&
-            ((w.child as Padding).child as Text).style ==
-                (labelTextStyle ?? themeExtension.labelTextStyle),
+            w.child is Text &&
+            (w.child as Text).data == label &&
+            (w.child as Text).style == (labelTextStyle ?? themeExtension.labelTextStyle),
       ),
       findsOneWidget,
     );

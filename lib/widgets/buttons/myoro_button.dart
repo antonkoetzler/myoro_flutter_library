@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Widget] builder of the [MyoroButton].
-typedef MyoroButtonBuilder =
-    Widget Function(BuildContext context, MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonBuilder = Widget Function(BuildContext context, MyoroTapStatusEnum tapStatusEnum);
 
 /// Generic button of MFL.
 ///
@@ -27,9 +26,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   MouseCursor get _cursor =>
       widget.configuration?.cursor ??
-      (widget.configuration?.onTapProvided == true
-          ? SystemMouseCursors.click
-          : SystemMouseCursors.basic);
+      (widget.configuration?.onTapProvided == true ? SystemMouseCursors.click : SystemMouseCursors.basic);
 
   /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
   final _tapStatusNotifier = ValueNotifier(MyoroTapStatusEnum.idle);
@@ -91,7 +88,7 @@ final class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final child = Container(
       decoration: BoxDecoration(
         color: _getBackgroundColor(context),
         border: _border,
@@ -99,6 +96,12 @@ final class _Button extends StatelessWidget {
       ),
       child: _builder(context, _tapStatusEnum),
     );
+
+    if (_configuration?.tooltipConfiguration != null) {
+      return MyoroTooltip(configuration: _configuration!.tooltipConfiguration!, child: child);
+    }
+
+    return child;
   }
 
   Color _getBackgroundColor(BuildContext context) {

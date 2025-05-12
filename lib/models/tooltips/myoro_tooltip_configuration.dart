@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration model of [MyoroTooltip].
+///
+/// TODO: Test needs to be rewritten.
 class MyoroTooltipConfiguration extends Equatable {
   static const waitDurationDefaultValue = Duration(milliseconds: 200);
 
@@ -16,41 +18,29 @@ class MyoroTooltipConfiguration extends Equatable {
   /// Text of the tooltip.
   final String text;
 
-  /// [Widget] wrapping the tooltip.
-  final Widget child;
-
-  const MyoroTooltipConfiguration({
-    this.margin,
-    this.waitDuration = waitDurationDefaultValue,
-    required this.text,
-    required this.child,
-  });
+  const MyoroTooltipConfiguration({this.margin, this.waitDuration = waitDurationDefaultValue, required this.text});
 
   MyoroTooltipConfiguration.fake()
-    : margin =
-          faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null,
+    : margin = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null,
       waitDuration = Duration(milliseconds: faker.randomGenerator.integer(100)),
-      text = faker.lorem.word(),
-      child = const SizedBox.shrink();
+      text = faker.lorem.word();
 
   MyoroTooltipConfiguration copyWith({
     EdgeInsets? margin,
     bool marginProvided = true,
     Duration? waitDuration,
     String? text,
-    Widget? child,
   }) {
     return MyoroTooltipConfiguration(
       margin: marginProvided ? (margin ?? this.margin) : null,
       waitDuration: waitDuration ?? this.waitDuration,
       text: text ?? this.text,
-      child: child ?? this.child,
     );
   }
 
   @override
   List<Object?> get props {
-    return [margin, waitDuration, text, child];
+    return [margin, waitDuration, text];
   }
 
   @override
@@ -59,6 +49,5 @@ class MyoroTooltipConfiguration extends Equatable {
       '  margin: $margin,\n'
       '  waitDuration: $waitDuration,\n'
       '  text: $text,\n'
-      '  child: $child,\n'
       ');';
 }

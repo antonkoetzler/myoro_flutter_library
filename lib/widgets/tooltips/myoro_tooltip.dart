@@ -6,7 +6,10 @@ class MyoroTooltip extends StatelessWidget {
   /// Configuration.
   final MyoroTooltipConfiguration configuration;
 
-  const MyoroTooltip({super.key, required this.configuration});
+  /// [Widget] utilizing the [MyoroTooltip].
+  final Widget child;
+
+  const MyoroTooltip({super.key, required this.configuration, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class MyoroTooltip extends StatelessWidget {
       message: configuration.text,
       waitDuration: configuration.waitDuration,
       margin: configuration.margin ?? themeExtension.margin,
-      child: configuration.child,
+      child: child,
     );
   }
 }

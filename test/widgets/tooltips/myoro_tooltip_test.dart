@@ -14,7 +14,7 @@ void main() {
         child: Builder(
           builder: (BuildContext context) {
             themeExtension = context.resolveThemeExtension<MyoroTooltipThemeExtension>();
-            return MyoroTooltip(configuration: configuration);
+            return MyoroTooltip(configuration: configuration, child: const SizedBox.shrink());
           },
         ),
       ),

@@ -20,8 +20,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   MyoroCheckboxNotifier? _localNotifier;
   MyoroCheckboxNotifier get _notifier {
-    return _configuration.notifier ??
-        (_localNotifier ??= MyoroCheckboxNotifier(_configuration.initialValue));
+    return _configuration.notifier ?? (_localNotifier ??= MyoroCheckboxNotifier(_configuration.initialValue));
   }
 
   @override
@@ -45,6 +44,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: themeExtension.spacing,
       children: [
         ValueListenableBuilder(
           valueListenable: _notifier,
@@ -69,16 +69,12 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
           },
         ),
         if (_configuration.label?.isNotEmpty == true) ...[
-          SizedBox(width: themeExtension.spacing),
           Flexible(
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: Text(
-                _configuration.label!,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
-              ),
+            child: Text(
+              _configuration.label!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
             ),
           ),
         ],

@@ -94,6 +94,10 @@ final class _WidgetOptionsButton extends StatelessWidget {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(
+          tooltipConfiguration: MyoroTooltipConfiguration(
+            text: 'Options of this [Widget].',
+            margin: themeExtension.widgetOptionsButtonTooltipMargin,
+          ),
           onTapUp: (_) => _onTapUp(context),
           borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
         ),
@@ -134,7 +138,7 @@ final class _WidgetOptions extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Flexible(child: Padding(padding: themeExtension.widgetOptionsItemPadding, child: _widgetOptions[i])),
-                if (i == (_widgetOptions.length - 1)) divider,
+                if (i != (_widgetOptions.length - 1)) divider,
               ],
             ),
           ],

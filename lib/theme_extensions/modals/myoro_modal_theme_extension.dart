@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroModal].
+///
+/// TODO: Test needs to be rewritten.
 @immutable
 class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> {
   /// Background color of the modal.
@@ -18,9 +20,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
 
   /// Padding of everything in the modal.
   final EdgeInsets padding;
-
-  /// Constraints of the modal.
-  final BoxConstraints constraints;
 
   /// Spacing between the [_Header] and the contents of the modal.
   final double spacing;
@@ -36,56 +35,31 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
     required this.borderRadius,
     required this.border,
     required this.padding,
-    required this.constraints,
     required this.spacing,
     required this.titleTextStyle,
     required this.closeButtonIcon,
   });
 
-  factory MyoroModalThemeExtension.fake() {
-    final maxWidth = faker.randomGenerator.decimal();
-    final maxHeight = faker.randomGenerator.decimal();
-
-    return MyoroModalThemeExtension(
-      primaryColor: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      borderRadius: BorderRadius.circular(faker.randomGenerator.decimal()),
-      border: Border.all(
+  MyoroModalThemeExtension.fake()
+    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+      border = Border.all(
         width: faker.randomGenerator.decimal(),
         color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
       ),
-      padding: EdgeInsets.all(faker.randomGenerator.decimal()),
-      constraints: BoxConstraints(
-        minWidth: faker.randomGenerator.integer(maxWidth.toInt()).toDouble(),
-        minHeight: faker.randomGenerator.integer(maxHeight.toInt()).toDouble(),
-        maxWidth: maxWidth,
-        maxHeight: maxHeight,
-      ),
-      spacing: faker.randomGenerator.decimal(),
-      titleTextStyle: MyoroTypographyDesignSystem.instance.randomTextStyle,
-      closeButtonIcon: kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)],
-    );
-  }
+      padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+      spacing = faker.randomGenerator.decimal(),
+      titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      closeButtonIcon = kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)];
 
-  factory MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme) {
-    const width = 300.0;
-    const height = 400.0;
-
-    return MyoroModalThemeExtension(
-      primaryColor: colorScheme.primary,
-      borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-      border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
-      padding: const EdgeInsets.all(5),
-      constraints: const BoxConstraints(
-        minWidth: width,
-        minHeight: height,
-        maxWidth: width,
-        maxHeight: height,
-      ),
-      spacing: 10,
-      titleTextStyle: textTheme.titleSmall!,
-      closeButtonIcon: Icons.close,
-    );
-  }
+  MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : primaryColor = colorScheme.primary,
+      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      border = Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+      padding = const EdgeInsets.all(5),
+      spacing = 10,
+      titleTextStyle = textTheme.titleSmall!,
+      closeButtonIcon = Icons.close;
 
   @override
   MyoroModalThemeExtension copyWith({
@@ -93,7 +67,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
     BorderRadius? borderRadius,
     Border? border,
     EdgeInsets? padding,
-    BoxConstraints? constraints,
     double? spacing,
     TextStyle? titleTextStyle,
     IconData? closeButtonIcon,
@@ -103,7 +76,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       borderRadius: borderRadius ?? this.borderRadius,
       border: border ?? this.border,
       padding: padding ?? this.padding,
-      constraints: constraints ?? this.constraints,
       spacing: spacing ?? this.spacing,
       titleTextStyle: titleTextStyle ?? this.titleTextStyle,
       closeButtonIcon: closeButtonIcon ?? this.closeButtonIcon,
@@ -111,17 +83,13 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
   }
 
   @override
-  MyoroModalThemeExtension lerp(
-    covariant ThemeExtension<MyoroModalThemeExtension>? other,
-    double t,
-  ) {
+  MyoroModalThemeExtension lerp(covariant ThemeExtension<MyoroModalThemeExtension>? other, double t) {
     if (other is! MyoroModalThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       border: Border.lerp(border, other.border, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
-      constraints: BoxConstraints.lerp(constraints, other.constraints, t),
       spacing: lerpDouble(spacing, other.spacing, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
@@ -136,7 +104,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
         other.borderRadius == borderRadius &&
         other.border == border &&
         other.padding == padding &&
-        other.constraints == constraints &&
         other.spacing == spacing &&
         other.titleTextStyle == titleTextStyle &&
         other.closeButtonIcon == closeButtonIcon;
@@ -144,16 +111,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
 
   @override
   int get hashCode {
-    return Object.hash(
-      primaryColor,
-      borderRadius,
-      border,
-      padding,
-      constraints,
-      spacing,
-      titleTextStyle,
-      closeButtonIcon,
-    );
+    return Object.hash(primaryColor, borderRadius, border, padding, spacing, titleTextStyle, closeButtonIcon);
   }
 
   @override
@@ -163,7 +121,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       '  borderRadius: $borderRadius,\n'
       '  border: $border,\n'
       '  padding: $padding,\n'
-      '  constraints: $constraints,\n'
       '  spacing: $spacing,\n'
       '  titleTextStyle: $titleTextStyle,\n'
       '  closeButtonIcon: $closeButtonIcon,\n'
