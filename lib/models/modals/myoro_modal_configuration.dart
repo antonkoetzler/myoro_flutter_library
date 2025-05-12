@@ -34,7 +34,12 @@ class MyoroModalConfiguration extends Equatable {
   ///       key: _navigatorKey,
   ///       onGenerateRoute: (_) {
   ///         return MaterialPageRoute(
-  ///           builder: (_) => ...,
+  ///           builder: (_) => GestureDetector(
+  ///             onTap: () => MyoroModal.show(
+  ///               _navigatorKey.currentContext!,
+  ///               ...,
+  ///             ),
+  ///           ),
   ///         );
   ///       },
   ///     );
