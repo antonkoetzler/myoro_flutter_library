@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../enums/myoro_button_variant_enum.dart';
 
 /// [ThemeExtension] of the [Color]s used in [MyoroButtonVariantEnum].
 @immutable

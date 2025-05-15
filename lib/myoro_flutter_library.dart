@@ -10,6 +10,5 @@ export 'formatters/exports.dart';
 export 'mocks/exports.dart';
 export 'models/exports.dart';
 export 'notifiers/exports.dart';
-export 'theme_extensions/exports.dart';
 export 'widgets/exports.dart';
 export 'constants.dart';

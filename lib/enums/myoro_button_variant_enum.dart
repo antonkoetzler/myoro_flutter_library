@@ -1,7 +1,8 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:myoro_flutter_library/theme_extensions/buttons/myoro_button_variant_theme_extension.dart';
+
+part '../../theme_extensions/buttons/myoro_button_variant_theme_extension.dart';
 
 /// Enum centralizing all default button variants provided.
 enum MyoroButtonVariantEnum {
