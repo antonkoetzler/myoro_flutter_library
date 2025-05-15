@@ -1,6 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:myoro_flutter_library/theme_extensions/buttons/myoro_button_variant_theme_extension.dart';
 
 /// Enum centralizing all default button variants provided.
 enum MyoroButtonVariantEnum {
@@ -32,24 +33,33 @@ enum MyoroButtonVariantEnum {
       primary =>
         onTapProvided
             ? switch (tapStatusEnum) {
-              MyoroTapStatusEnum.idle => themeExtension.primaryIdleBackgroundColor,
-              MyoroTapStatusEnum.hover => themeExtension.primaryHoverBackgroundColor,
-              MyoroTapStatusEnum.tap => themeExtension.primaryTapBackgroundColor,
+              MyoroTapStatusEnum.idle =>
+                themeExtension.primaryIdleBackgroundColor,
+              MyoroTapStatusEnum.hover =>
+                themeExtension.primaryHoverBackgroundColor,
+              MyoroTapStatusEnum.tap =>
+                themeExtension.primaryTapBackgroundColor,
             }
             : themeExtension.primaryIdleBackgroundColor,
       secondary =>
         onTapProvided
             ? switch (tapStatusEnum) {
-              MyoroTapStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
-              MyoroTapStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
-              MyoroTapStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
+              MyoroTapStatusEnum.idle =>
+                themeExtension.secondaryIdleBackgroundColor,
+              MyoroTapStatusEnum.hover =>
+                themeExtension.secondaryHoverBackgroundColor,
+              MyoroTapStatusEnum.tap =>
+                themeExtension.secondaryTapBackgroundColor,
             }
             : themeExtension.secondaryIdleBackgroundColor,
     };
   }
 
   /// [MyoroIconTextButtonConfiguration.contentColorBuilder].
-  Color contentColorBuilder(BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
+  Color contentColorBuilder(
+    BuildContext context,
+    MyoroTapStatusEnum tapStatusEnum,
+  ) {
     final themeExtension = _getThemeExtension(context);
 
     return switch (this) {
@@ -66,7 +76,9 @@ enum MyoroButtonVariantEnum {
     };
   }
 
-  static MyoroButtonVariantThemeExtension _getThemeExtension(BuildContext context) {
+  static MyoroButtonVariantThemeExtension _getThemeExtension(
+    BuildContext context,
+  ) {
     return context.resolveThemeExtension<MyoroButtonVariantThemeExtension>();
   }
 

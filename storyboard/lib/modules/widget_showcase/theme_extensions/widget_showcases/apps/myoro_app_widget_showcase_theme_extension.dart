@@ -7,7 +7,8 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroAppWidgetShowcase].
 @immutable
-final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroAppWidgetShowcaseThemeExtension> {
+final class MyoroAppWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroAppWidgetShowcaseThemeExtension> {
   /// Color of the content in [_AppBar].
   final Color appBarContentColor;
 
@@ -52,7 +53,7 @@ final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroApp
   });
 
   MyoroAppWidgetShowcaseThemeExtension.fake()
-    : appBarContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : appBarContentColor = myoroFake<Color>(),
       appBarLogoIcon = myoroFake<IconData>(),
       appBarTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       appBarMenuButtonIcon = myoroFake<IconData>(),
@@ -60,11 +61,14 @@ final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroApp
       themeModeOptionButtonBordered = faker.randomGenerator.boolean(),
       themeModeOptionButtonDarkModeIcon = myoroFake<IconData>(),
       themeModeOptionButtonLightModeIcon = myoroFake<IconData>(),
-      themeModeOptionTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      themeModeOptionTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       themeModeOptionSpacing = faker.randomGenerator.decimal();
 
-  MyoroAppWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : appBarContentColor = colorScheme.onPrimary,
+  MyoroAppWidgetShowcaseThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : appBarContentColor = colorScheme.onPrimary,
       appBarLogoIcon = Icons.work,
       appBarTextStyle = textTheme.titleLarge!,
       appBarMenuButtonIcon = Icons.menu,
@@ -94,11 +98,18 @@ final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroApp
       appBarTextStyle: appBarTextStyle ?? this.appBarTextStyle,
       appBarMenuButtonIcon: appBarMenuButtonIcon ?? this.appBarMenuButtonIcon,
       appBarSpacing: appBarSpacing ?? this.appBarSpacing,
-      themeModeOptionButtonBordered: themeModeOptionButtonBordered ?? this.themeModeOptionButtonBordered,
-      themeModeOptionButtonDarkModeIcon: themeModeOptionButtonDarkModeIcon ?? this.themeModeOptionButtonDarkModeIcon,
-      themeModeOptionButtonLightModeIcon: themeModeOptionButtonLightModeIcon ?? this.themeModeOptionButtonLightModeIcon,
-      themeModeOptionTextStyle: themeModeOptionTextStyle ?? this.themeModeOptionTextStyle,
-      themeModeOptionSpacing: themeModeOptionSpacing ?? this.themeModeOptionSpacing,
+      themeModeOptionButtonBordered:
+          themeModeOptionButtonBordered ?? this.themeModeOptionButtonBordered,
+      themeModeOptionButtonDarkModeIcon:
+          themeModeOptionButtonDarkModeIcon ??
+          this.themeModeOptionButtonDarkModeIcon,
+      themeModeOptionButtonLightModeIcon:
+          themeModeOptionButtonLightModeIcon ??
+          this.themeModeOptionButtonLightModeIcon,
+      themeModeOptionTextStyle:
+          themeModeOptionTextStyle ?? this.themeModeOptionTextStyle,
+      themeModeOptionSpacing:
+          themeModeOptionSpacing ?? this.themeModeOptionSpacing,
     );
   }
 
@@ -109,12 +120,28 @@ final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroApp
   ) {
     if (other is! MyoroAppWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      appBarContentColor: Color.lerp(appBarContentColor, other.appBarContentColor, t),
+      appBarContentColor: Color.lerp(
+        appBarContentColor,
+        other.appBarContentColor,
+        t,
+      ),
       appBarLogoIcon: myoroLerp(appBarLogoIcon, other.appBarLogoIcon, t),
-      appBarTextStyle: TextStyle.lerp(appBarTextStyle, other.appBarTextStyle, t),
-      appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
+      appBarTextStyle: TextStyle.lerp(
+        appBarTextStyle,
+        other.appBarTextStyle,
+        t,
+      ),
+      appBarMenuButtonIcon: myoroLerp(
+        appBarMenuButtonIcon,
+        other.appBarMenuButtonIcon,
+        t,
+      ),
       appBarSpacing: lerpDouble(appBarSpacing, other.appBarSpacing, t),
-      themeModeOptionButtonBordered: myoroLerp(themeModeOptionButtonBordered, other.themeModeOptionButtonBordered, t),
+      themeModeOptionButtonBordered: myoroLerp(
+        themeModeOptionButtonBordered,
+        other.themeModeOptionButtonBordered,
+        t,
+      ),
       themeModeOptionButtonDarkModeIcon: myoroLerp(
         themeModeOptionButtonDarkModeIcon,
         other.themeModeOptionButtonDarkModeIcon,
@@ -125,8 +152,16 @@ final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroApp
         other.themeModeOptionButtonLightModeIcon,
         t,
       ),
-      themeModeOptionTextStyle: TextStyle.lerp(themeModeOptionTextStyle, other.themeModeOptionTextStyle, t),
-      themeModeOptionSpacing: lerpDouble(themeModeOptionSpacing, other.themeModeOptionSpacing, t),
+      themeModeOptionTextStyle: TextStyle.lerp(
+        themeModeOptionTextStyle,
+        other.themeModeOptionTextStyle,
+        t,
+      ),
+      themeModeOptionSpacing: lerpDouble(
+        themeModeOptionSpacing,
+        other.themeModeOptionSpacing,
+        t,
+      ),
     );
   }
 
@@ -140,8 +175,10 @@ final class MyoroAppWidgetShowcaseThemeExtension extends ThemeExtension<MyoroApp
         other.appBarMenuButtonIcon == appBarMenuButtonIcon &&
         other.appBarSpacing == appBarSpacing &&
         other.themeModeOptionButtonBordered == themeModeOptionButtonBordered &&
-        other.themeModeOptionButtonDarkModeIcon == themeModeOptionButtonDarkModeIcon &&
-        other.themeModeOptionButtonLightModeIcon == themeModeOptionButtonLightModeIcon &&
+        other.themeModeOptionButtonDarkModeIcon ==
+            themeModeOptionButtonDarkModeIcon &&
+        other.themeModeOptionButtonLightModeIcon ==
+            themeModeOptionButtonLightModeIcon &&
         other.themeModeOptionTextStyle == themeModeOptionTextStyle &&
         other.themeModeOptionSpacing == themeModeOptionSpacing;
   }

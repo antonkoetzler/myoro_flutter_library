@@ -17,10 +17,18 @@ final class WidgetShowcase extends StatefulWidget {
   /// Widget that will be on the left.
   final Widget widget;
 
+  /// Name of the [Widget].
+  final String widgetName;
+
   /// Options to experiment on the widget that will be on the right.
   final List<Widget> widgetOptions;
 
-  const WidgetShowcase({super.key, required this.widget, this.widgetOptions = const []});
+  const WidgetShowcase({
+    super.key,
+    required this.widget,
+    required this.widgetName,
+    this.widgetOptions = const [],
+  });
 
   @override
   State<WidgetShowcase> createState() => _WidgetShowcaseState();
@@ -28,6 +36,7 @@ final class WidgetShowcase extends StatefulWidget {
 
 final class _WidgetShowcaseState extends State<WidgetShowcase> {
   Widget get _widget => widget.widget;
+  String get _widgetName => widget.widgetName;
   List<Widget> get _widgetOptions => widget.widgetOptions;
 
   final _navigatorKey = GlobalKey<NavigatorState>();
@@ -39,7 +48,12 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
       onGenerateRoute: (_) {
         return MaterialPageRoute(
           builder: (_) {
-            return _Wrapper(_navigatorKey, _widget, _widgetOptions);
+            return _Wrapper(
+              _navigatorKey,
+              _widget,
+              _widgetName,
+              _widgetOptions,
+            );
           },
         );
       },
@@ -50,13 +64,20 @@ final class _WidgetShowcaseState extends State<WidgetShowcase> {
 final class _Wrapper extends StatelessWidget {
   final GlobalKey<NavigatorState> _navigatorKey;
   final Widget _widget;
+  final String _widgetName;
   final List<Widget> _widgetOptions;
 
-  const _Wrapper(this._navigatorKey, this._widget, this._widgetOptions);
+  const _Wrapper(
+    this._navigatorKey,
+    this._widget,
+    this._widgetName,
+    this._widgetOptions,
+  );
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Padding(
       padding: themeExtension.wrapperPadding,
@@ -71,7 +92,15 @@ final class _Wrapper extends StatelessWidget {
             children: [
               _widget,
               if (_widgetOptions.isNotEmpty) ...[
-                Positioned(bottom: 0, right: 0, child: _WidgetOptionsButton(_navigatorKey, _widgetOptions)),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: _WidgetOptionsButton(
+                    _navigatorKey,
+                    _widgetName,
+                    _widgetOptions,
+                  ),
+                ),
               ],
             ],
           ),
@@ -83,31 +112,43 @@ final class _Wrapper extends StatelessWidget {
 
 final class _WidgetOptionsButton extends StatelessWidget {
   final GlobalKey<NavigatorState> _navigatorKey;
+  final String _widgetName;
   final List<Widget> _widgetOptions;
 
-  const _WidgetOptionsButton(this._navigatorKey, this._widgetOptions);
+  const _WidgetOptionsButton(
+    this._navigatorKey,
+    this._widgetName,
+    this._widgetOptions,
+  );
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(
           tooltipConfiguration: MyoroTooltipConfiguration(
-            text: 'Options of this [Widget].',
+            text: 'Options of [$_widgetName]',
             margin: themeExtension.widgetOptionsButtonTooltipMargin,
           ),
           onTapUp: (_) => _onTapUp(context),
           borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
         ),
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(
+          icon: themeExtension.widgetOptionsButtonIcon,
+        ),
       ),
     );
   }
 
   void _onTapUp(BuildContext context) {
-    _WidgetOptions._show(_navigatorKey.currentContext!, _widgetOptions);
+    _WidgetOptions._show(
+      _navigatorKey.currentContext!,
+      _widgetName,
+      _widgetOptions,
+    );
   }
 }
 
@@ -116,17 +157,28 @@ final class _WidgetOptions extends StatelessWidget {
 
   const _WidgetOptions(this._widgetOptions);
 
-  static Future<void> _show(BuildContext context, List<Widget> widgetOptions) async {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+  static Future<void> _show(
+    BuildContext context,
+    String widgetName,
+    List<Widget> widgetOptions,
+  ) async {
+    final themeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     await MyoroModal.show(
       context,
       configuration: MyoroModalConfiguration(
+        title: '$widgetName options',
+        showCloseButton: true,
         useRootNavigator: false,
         padding: EdgeInsets.zero,
-        showCloseButton: true,
         closeButtonPadding: themeExtension.widgetOptionsCloseButtonPadding,
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),
+        constraints: BoxConstraints(
+          maxWidth:
+              MyoroPlatformHelper.isMobile
+                  ? MediaQuery.of(context).size.width * 0.9
+                  : themeExtension.widgetOptionsModalDesktopWidth,
+        ),
       ),
       child: _WidgetOptions(widgetOptions),
     );
@@ -134,7 +186,8 @@ final class _WidgetOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     const divider = _Divider();
 
@@ -145,7 +198,12 @@ final class _WidgetOptions extends StatelessWidget {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Flexible(child: Padding(padding: themeExtension.widgetOptionsItemPadding, child: _widgetOptions[i])),
+                Flexible(
+                  child: Padding(
+                    padding: themeExtension.widgetOptionsItemPadding,
+                    child: _widgetOptions[i],
+                  ),
+                ),
                 if (i != (_widgetOptions.length - 1)) divider,
               ],
             ),
@@ -161,6 +219,8 @@ final class _Divider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal));
+    return const MyoroBasicDivider(
+      configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal),
+    );
   }
 }

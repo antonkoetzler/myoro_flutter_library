@@ -1,8 +1,4 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/snack_bars/myoro_snack_bar_container.dart';
 
 /// [ThemeExtension] for [MyoroSnackBarContainer].
 @immutable
@@ -40,15 +36,13 @@ class MyoroSnackBarContainerThemeExtension
   });
 
   MyoroSnackBarContainerThemeExtension.fake()
-    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      behavior =
-          SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)],
-      margin = EdgeInsets.all(faker.randomGenerator.decimal()),
-      padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+    : primaryColor = myoroFake<Color>(),
+      behavior = myoroFake<SnackBarBehavior>(),
+      margin = myoroFake<EdgeInsets>(),
+      padding = myoroFake<EdgeInsets>(),
       elevation = faker.randomGenerator.decimal(),
-      dismissDirection =
-          DismissDirection.values[faker.randomGenerator.integer(DismissDirection.values.length)],
-      duration = Duration(milliseconds: faker.randomGenerator.integer(9999));
+      dismissDirection = myoroFake<DismissDirection>(),
+      duration = myoroFake<Duration>();
 
   const MyoroSnackBarContainerThemeExtension.builder()
     : primaryColor = MyoroColorDesignSystem.transparent,

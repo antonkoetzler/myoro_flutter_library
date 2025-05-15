@@ -5,11 +5,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/modules/widget_showcase/blocs/myoro_button_widget_showcase_bloc/myoro_button_widget_showcase_bloc.dart';
 
 void main() {
-  final SystemMouseCursor cursor =
-      kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)];
+  final SystemMouseCursor cursor = myoroFake<SystemMouseCursor>();
   final double borderRadius = faker.randomGenerator.decimal(scale: 50);
   final double borderWidth = faker.randomGenerator.decimal(scale: 10);
-  final Color color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final Color color = myoroFake<Color>();
 
   blocTest(
     'MyoroButtonWidgetShowcaseBloc.SetCursorEvent',
@@ -50,12 +49,14 @@ void main() {
       bloc
         ..add(
           const SetBackgroundColorBuilderEnabledEvent(
-            !MyoroButtonWidgetShowcaseState.backgroundColorBuilderEnabledDefaultValue,
+            !MyoroButtonWidgetShowcaseState
+                .backgroundColorBuilderEnabledDefaultValue,
           ),
         )
         ..add(
           const SetBackgroundColorBuilderEnabledEvent(
-            MyoroButtonWidgetShowcaseState.backgroundColorBuilderEnabledDefaultValue,
+            MyoroButtonWidgetShowcaseState
+                .backgroundColorBuilderEnabledDefaultValue,
           ),
         );
     },
@@ -63,11 +64,13 @@ void main() {
       return const [
         MyoroButtonWidgetShowcaseState(
           backgroundColorBuilderEnabled:
-              !MyoroButtonWidgetShowcaseState.backgroundColorBuilderEnabledDefaultValue,
+              !MyoroButtonWidgetShowcaseState
+                  .backgroundColorBuilderEnabledDefaultValue,
         ),
         MyoroButtonWidgetShowcaseState(
           backgroundColorBuilderEnabled:
-              MyoroButtonWidgetShowcaseState.backgroundColorBuilderEnabledDefaultValue,
+              MyoroButtonWidgetShowcaseState
+                  .backgroundColorBuilderEnabledDefaultValue,
         ),
       ];
     },
@@ -140,7 +143,8 @@ void main() {
     expect: () {
       return const [
         MyoroButtonWidgetShowcaseState(
-          borderBuilderEnabled: !MyoroButtonWidgetShowcaseState.borderBuilderEnabledDefaultValue,
+          borderBuilderEnabled:
+              !MyoroButtonWidgetShowcaseState.borderBuilderEnabledDefaultValue,
         ),
         MyoroButtonWidgetShowcaseState(),
       ];
@@ -230,10 +234,12 @@ void main() {
     expect: () {
       return const [
         MyoroButtonWidgetShowcaseState(
-          onTapDownEnabled: !MyoroButtonWidgetShowcaseState.onTapDownEnabledDefaultValue,
+          onTapDownEnabled:
+              !MyoroButtonWidgetShowcaseState.onTapDownEnabledDefaultValue,
         ),
         MyoroButtonWidgetShowcaseState(
-          onTapDownEnabled: MyoroButtonWidgetShowcaseState.onTapDownEnabledDefaultValue,
+          onTapDownEnabled:
+              MyoroButtonWidgetShowcaseState.onTapDownEnabledDefaultValue,
         ),
       ];
     },
@@ -245,19 +251,25 @@ void main() {
     act: (bloc) {
       bloc
         ..add(
-          const SetOnTapUpEnabledEvent(!MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue),
+          const SetOnTapUpEnabledEvent(
+            !MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue,
+          ),
         )
         ..add(
-          const SetOnTapUpEnabledEvent(MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue),
+          const SetOnTapUpEnabledEvent(
+            MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue,
+          ),
         );
     },
     expect: () {
       return const [
         MyoroButtonWidgetShowcaseState(
-          onTapUpEnabled: !MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue,
+          onTapUpEnabled:
+              !MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue,
         ),
         MyoroButtonWidgetShowcaseState(
-          onTapUpEnabled: MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue,
+          onTapUpEnabled:
+              MyoroButtonWidgetShowcaseState.onTapUpEnabledDefaultValue,
         ),
       ];
     },

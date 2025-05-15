@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/snack_bars/myoro_snack_bar_container_theme_extension.dart';
 
 /// Base snack bar class extending [SnackBar] that serves as a container for
 /// the [MyoroSnackBar] that will be shown within the [MyoroSnackBarContainer].
@@ -40,6 +45,9 @@ final class _SnackBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // [Row] added to prevent the snack bar from stretching horizontally.
-    return Row(mainAxisSize: MainAxisSize.min, children: [Flexible(child: _snackBar)]);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [Flexible(child: _snackBar)],
+    );
   }
 }

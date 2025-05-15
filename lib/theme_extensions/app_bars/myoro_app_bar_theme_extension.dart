@@ -1,28 +1,33 @@
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/app_bars/myoro_app_bar.dart';
 
 /// [ThemeExtension] for [MyoroAppBar].
 @immutable
-class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension> {
+class MyoroAppBarThemeExtension
+    extends ThemeExtension<MyoroAppBarThemeExtension> {
   /// Background [Color] of the app bar.
   final Color primaryColor;
 
   /// [EdgeInsets] of the contents of the [MyoroAppBar], not it's bottom border.
   final EdgeInsets contentPadding;
 
-  const MyoroAppBarThemeExtension({required this.primaryColor, required this.contentPadding});
+  const MyoroAppBarThemeExtension({
+    required this.primaryColor,
+    required this.contentPadding,
+  });
 
   MyoroAppBarThemeExtension.fake()
-    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      contentPadding = EdgeInsets.all(faker.randomGenerator.integer(50).toDouble());
+    : primaryColor = myoroFake<Color>(),
+      contentPadding = myoroFake<EdgeInsets>();
 
   MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
     : primaryColor = colorScheme.primary,
       contentPadding = const EdgeInsets.all(10);
 
   @override
-  MyoroAppBarThemeExtension copyWith({Color? primaryColor, EdgeInsets? contentPadding}) {
+  MyoroAppBarThemeExtension copyWith({
+    Color? primaryColor,
+    EdgeInsets? contentPadding,
+  }) {
     return MyoroAppBarThemeExtension(
       primaryColor: primaryColor ?? this.primaryColor,
       contentPadding: contentPadding ?? this.contentPadding,

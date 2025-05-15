@@ -85,9 +85,10 @@ class MyoroModalConfiguration extends Equatable {
       onClosed = null,
       title = faker.lorem.word(),
       showCloseButton = faker.randomGenerator.boolean(),
-      padding = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)) : null,
+      padding =
+          faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       closeButtonPadding =
-          faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)) : null;
+          faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
 
   MyoroModalConfiguration copyWith({
     bool? barrierDismissable,
@@ -107,12 +108,16 @@ class MyoroModalConfiguration extends Equatable {
     return MyoroModalConfiguration(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
       useRootNavigator: useRootNavigator ?? this.useRootNavigator,
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
+      constraints:
+          constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: titleProvided ? (title ?? this.title) : null,
       showCloseButton: showCloseButton ?? this.showCloseButton,
       padding: paddingProvided ? (padding ?? this.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
+      closeButtonPadding:
+          closeButtonPaddingProvided
+              ? (closeButtonPadding ?? this.closeButtonPadding)
+              : null,
     );
   }
 

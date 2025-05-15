@@ -9,7 +9,10 @@ final class MyoroTableWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return const WidgetShowcase(widget: _Widget());
+    return const WidgetShowcase(
+      widgetName: StoryboardWidgetListingEnum.myoroTableTitle,
+      widget: _Widget(),
+    );
   }
 }
 
@@ -28,7 +31,10 @@ final class _Widget extends StatelessWidget {
   }
 
   Set<String> _request() {
-    return List.generate(faker.randomGenerator.integer(100), (int index) => 'Item #$index').toSet();
+    return List.generate(
+      faker.randomGenerator.integer(100),
+      (int index) => 'Item #$index',
+    ).toSet();
   }
 
   static const List<MyoroTableColumn> _columns = [
@@ -74,7 +80,9 @@ final class _Widget extends StatelessWidget {
 
   void _showSnackBar(BuildContext context, String message) {
     context.showSnackBar(
-      snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message)),
+      snackBar: MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(message: message),
+      ),
     );
   }
 }

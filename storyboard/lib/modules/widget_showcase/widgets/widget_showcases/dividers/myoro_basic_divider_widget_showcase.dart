@@ -13,12 +13,20 @@ final class MyoroBasicDividerWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create: (_) {
         return MyoroBasicDividerWidgetShowcaseBloc(
-          shortValue: context.resolveThemeExtension<MyoroBasicDividerThemeExtension>().shortValue,
+          shortValue:
+              context
+                  .resolveThemeExtension<MyoroBasicDividerThemeExtension>()
+                  .shortValue,
         );
       },
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroBasicDividerTitle,
         widget: _Widget(),
-        widgetOptions: [_DirectionOption(), _ShortValueOption(), _PaddingOption()],
+        widgetOptions: [
+          _DirectionOption(),
+          _ShortValueOption(),
+          _PaddingOption(),
+        ],
       ),
     );
   }
@@ -29,7 +37,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroBasicDividerWidgetShowcaseBloc, MyoroBasicDividerWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroBasicDividerWidgetShowcaseBloc,
+      MyoroBasicDividerWidgetShowcaseState
+    >(
       builder: (_, MyoroBasicDividerWidgetShowcaseState state) {
         final children = [
           const Flexible(child: _Button('A button')),
@@ -50,7 +61,9 @@ final class _Widget extends StatelessWidget {
           return Column(mainAxisSize: MainAxisSize.min, children: children);
         }
 
-        return IntrinsicHeight(child: Row(mainAxisSize: MainAxisSize.min, children: children));
+        return IntrinsicHeight(
+          child: Row(mainAxisSize: MainAxisSize.min, children: children),
+        );
       },
     );
   }
@@ -80,7 +93,9 @@ final class _DirectionOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(Axis direction) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _getDirectionName(direction),
+      ),
     );
   }
 
@@ -116,7 +131,11 @@ final class _ShortValueOption extends StatelessWidget {
 final class _PaddingOption extends StatelessWidget {
   const _PaddingOption();
 
-  void _event(MyoroBasicDividerWidgetShowcaseBloc bloc, Axis direction, double value) {
+  void _event(
+    MyoroBasicDividerWidgetShowcaseBloc bloc,
+    Axis direction,
+    double value,
+  ) {
     bloc.add(SetPaddingEvent(direction, value));
   }
 

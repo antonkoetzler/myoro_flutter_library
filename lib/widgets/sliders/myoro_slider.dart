@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/sliders/myoro_slider_theme_extension.dart';
+
 /// Function that formats the value of a slider (to display a time like "1:59" for example).
 typedef MyoroSliderIndicatorTextBuilder = String Function(double value);
 
@@ -21,7 +23,9 @@ class MyoroSlider extends StatefulWidget {
 final class _MyoroSliderState extends State<MyoroSlider> {
   MyoroSliderConfiguration get _configuration => widget.configuration;
 
-  late final _sliderValueNotifier = ValueNotifier<double>(_configuration.initialValue);
+  late final _sliderValueNotifier = ValueNotifier<double>(
+    _configuration.initialValue,
+  );
 
   void _onChanged(double value) {
     _sliderValueNotifier.value = value;
@@ -42,7 +46,8 @@ final class _MyoroSliderState extends State<MyoroSlider> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSliderThemeExtension>();
     final sliderPadding = themeExtension.sliderPadding;
 
     return SizedBox(
@@ -62,9 +67,11 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                   children: [
                     Row(
                       children: [
-                        if (_configuration.currentValueIndicatorTextBuilder != null) ...[
+                        if (_configuration.currentValueIndicatorTextBuilder !=
+                            null) ...[
                           _IndicatorText(
-                            _configuration.currentValueIndicatorTextBuilder!.call(sliderValue),
+                            _configuration.currentValueIndicatorTextBuilder!
+                                .call(sliderValue),
                           ),
                         ],
                         Expanded(
@@ -75,7 +82,8 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                             onChanged: _onChanged,
                           ),
                         ),
-                        if (_configuration.maxValueIndicatorTextBuilder != null) ...[
+                        if (_configuration.maxValueIndicatorTextBuilder !=
+                            null) ...[
                           _IndicatorText(
                             _configuration.maxValueIndicatorTextBuilder!.call(
                               _configuration.maxValue,
@@ -86,7 +94,9 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                     ),
                     if (_configuration.footerIndicatorTextBuilder != null) ...[
                       _IndicatorText(
-                        _configuration.footerIndicatorTextBuilder!.call(sliderValue),
+                        _configuration.footerIndicatorTextBuilder!.call(
+                          sliderValue,
+                        ),
                         isFooter: true,
                       ),
                     ],
@@ -113,7 +123,9 @@ final class _Label extends StatelessWidget {
       _label,
       style:
           _labelTextStyle ??
-          context.resolveThemeExtension<MyoroSliderThemeExtension>().labelTextStyle,
+          context
+              .resolveThemeExtension<MyoroSliderThemeExtension>()
+              .labelTextStyle,
     );
   }
 }
@@ -126,12 +138,15 @@ final class _IndicatorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
     return Text(
       _text,
       textAlign: themeExtension.indicatorTextAlignment,
-      style: themeExtension.indicatorTextStyle.copyWith(height: isFooter ? 0 : 0.5),
+      style: themeExtension.indicatorTextStyle.copyWith(
+        height: isFooter ? 0 : 0.5,
+      ),
     );
   }
 }

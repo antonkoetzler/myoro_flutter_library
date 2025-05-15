@@ -1,10 +1,10 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of the [Color]s used in [MyoroButtonVariantEnum].
 @immutable
-class MyoroButtonVariantThemeExtension extends ThemeExtension<MyoroButtonVariantThemeExtension> {
+class MyoroButtonVariantThemeExtension
+    extends ThemeExtension<MyoroButtonVariantThemeExtension> {
   /// Standard [BoxBorder].
   final BoxBorder border;
 
@@ -45,24 +45,24 @@ class MyoroButtonVariantThemeExtension extends ThemeExtension<MyoroButtonVariant
   });
 
   MyoroButtonVariantThemeExtension.fake()
-    : border = Border.all(
-        width: faker.randomGenerator.decimal(scale: 10),
-        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      ),
-      primaryIdleBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      primaryHoverBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      primaryTapBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      primaryIdleContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      primaryHoverContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      primaryTapContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      secondaryIdleBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      secondaryHoverBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      secondaryTapBackgroundColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      secondaryIdleContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      secondaryHoverContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      secondaryTapContentColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+    : border = myoroFake<Border>(),
+      primaryIdleBackgroundColor = myoroFake<Color>(),
+      primaryHoverBackgroundColor = myoroFake<Color>(),
+      primaryTapBackgroundColor = myoroFake<Color>(),
+      primaryIdleContentColor = myoroFake<Color>(),
+      primaryHoverContentColor = myoroFake<Color>(),
+      primaryTapContentColor = myoroFake<Color>(),
+      secondaryIdleBackgroundColor = myoroFake<Color>(),
+      secondaryHoverBackgroundColor = myoroFake<Color>(),
+      secondaryTapBackgroundColor = myoroFake<Color>(),
+      secondaryIdleContentColor = myoroFake<Color>(),
+      secondaryHoverContentColor = myoroFake<Color>(),
+      secondaryTapContentColor = myoroFake<Color>();
 
-  factory MyoroButtonVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
+  factory MyoroButtonVariantThemeExtension.builder(
+    bool isDarkMode,
+    ColorScheme colorScheme,
+  ) {
     const primaryHoverBackgroundColorFactor = 0.7;
     const primaryTapBackgroundColorFactor = 0.5;
     const secondaryHoverBackgroundColorFactor = 0.15;
@@ -117,38 +117,101 @@ class MyoroButtonVariantThemeExtension extends ThemeExtension<MyoroButtonVariant
   }) {
     return MyoroButtonVariantThemeExtension(
       border: border ?? this.border,
-      primaryIdleBackgroundColor: primaryIdleBackgroundColor ?? this.primaryIdleBackgroundColor,
-      primaryHoverBackgroundColor: primaryHoverBackgroundColor ?? this.primaryHoverBackgroundColor,
-      primaryTapBackgroundColor: primaryTapBackgroundColor ?? this.primaryTapBackgroundColor,
-      primaryIdleContentColor: primaryIdleContentColor ?? this.primaryIdleContentColor,
-      primaryHoverContentColor: primaryHoverContentColor ?? this.primaryHoverContentColor,
-      primaryTapContentColor: primaryTapContentColor ?? this.primaryTapContentColor,
-      secondaryIdleBackgroundColor: secondaryIdleBackgroundColor ?? this.secondaryIdleBackgroundColor,
-      secondaryHoverBackgroundColor: secondaryHoverBackgroundColor ?? this.secondaryHoverBackgroundColor,
-      secondaryTapBackgroundColor: secondaryTapBackgroundColor ?? this.secondaryTapBackgroundColor,
-      secondaryIdleContentColor: secondaryIdleContentColor ?? this.secondaryIdleContentColor,
-      secondaryHoverContentColor: secondaryHoverContentColor ?? this.secondaryHoverContentColor,
-      secondaryTapContentColor: secondaryTapContentColor ?? this.secondaryTapContentColor,
+      primaryIdleBackgroundColor:
+          primaryIdleBackgroundColor ?? this.primaryIdleBackgroundColor,
+      primaryHoverBackgroundColor:
+          primaryHoverBackgroundColor ?? this.primaryHoverBackgroundColor,
+      primaryTapBackgroundColor:
+          primaryTapBackgroundColor ?? this.primaryTapBackgroundColor,
+      primaryIdleContentColor:
+          primaryIdleContentColor ?? this.primaryIdleContentColor,
+      primaryHoverContentColor:
+          primaryHoverContentColor ?? this.primaryHoverContentColor,
+      primaryTapContentColor:
+          primaryTapContentColor ?? this.primaryTapContentColor,
+      secondaryIdleBackgroundColor:
+          secondaryIdleBackgroundColor ?? this.secondaryIdleBackgroundColor,
+      secondaryHoverBackgroundColor:
+          secondaryHoverBackgroundColor ?? this.secondaryHoverBackgroundColor,
+      secondaryTapBackgroundColor:
+          secondaryTapBackgroundColor ?? this.secondaryTapBackgroundColor,
+      secondaryIdleContentColor:
+          secondaryIdleContentColor ?? this.secondaryIdleContentColor,
+      secondaryHoverContentColor:
+          secondaryHoverContentColor ?? this.secondaryHoverContentColor,
+      secondaryTapContentColor:
+          secondaryTapContentColor ?? this.secondaryTapContentColor,
     );
   }
 
   @override
-  MyoroButtonVariantThemeExtension lerp(covariant ThemeExtension<MyoroButtonVariantThemeExtension>? other, double t) {
+  MyoroButtonVariantThemeExtension lerp(
+    covariant ThemeExtension<MyoroButtonVariantThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroButtonVariantThemeExtension) return this;
     return copyWith(
       border: BoxBorder.lerp(border, other.border, t),
-      primaryIdleBackgroundColor: Color.lerp(primaryIdleBackgroundColor, other.primaryIdleBackgroundColor, t),
-      primaryHoverBackgroundColor: Color.lerp(primaryHoverBackgroundColor, other.primaryHoverBackgroundColor, t),
-      primaryTapBackgroundColor: Color.lerp(primaryTapBackgroundColor, other.primaryTapBackgroundColor, t),
-      primaryIdleContentColor: Color.lerp(primaryIdleContentColor, other.primaryIdleContentColor, t),
-      primaryHoverContentColor: Color.lerp(primaryHoverContentColor, other.primaryHoverContentColor, t),
-      primaryTapContentColor: Color.lerp(primaryTapContentColor, other.primaryTapContentColor, t),
-      secondaryIdleBackgroundColor: Color.lerp(secondaryIdleBackgroundColor, other.secondaryIdleBackgroundColor, t),
-      secondaryHoverBackgroundColor: Color.lerp(secondaryHoverBackgroundColor, other.secondaryHoverBackgroundColor, t),
-      secondaryTapBackgroundColor: Color.lerp(secondaryTapBackgroundColor, other.secondaryTapBackgroundColor, t),
-      secondaryIdleContentColor: Color.lerp(secondaryIdleContentColor, other.secondaryIdleContentColor, t),
-      secondaryHoverContentColor: Color.lerp(secondaryHoverContentColor, other.secondaryHoverContentColor, t),
-      secondaryTapContentColor: Color.lerp(secondaryTapContentColor, other.secondaryTapContentColor, t),
+      primaryIdleBackgroundColor: Color.lerp(
+        primaryIdleBackgroundColor,
+        other.primaryIdleBackgroundColor,
+        t,
+      ),
+      primaryHoverBackgroundColor: Color.lerp(
+        primaryHoverBackgroundColor,
+        other.primaryHoverBackgroundColor,
+        t,
+      ),
+      primaryTapBackgroundColor: Color.lerp(
+        primaryTapBackgroundColor,
+        other.primaryTapBackgroundColor,
+        t,
+      ),
+      primaryIdleContentColor: Color.lerp(
+        primaryIdleContentColor,
+        other.primaryIdleContentColor,
+        t,
+      ),
+      primaryHoverContentColor: Color.lerp(
+        primaryHoverContentColor,
+        other.primaryHoverContentColor,
+        t,
+      ),
+      primaryTapContentColor: Color.lerp(
+        primaryTapContentColor,
+        other.primaryTapContentColor,
+        t,
+      ),
+      secondaryIdleBackgroundColor: Color.lerp(
+        secondaryIdleBackgroundColor,
+        other.secondaryIdleBackgroundColor,
+        t,
+      ),
+      secondaryHoverBackgroundColor: Color.lerp(
+        secondaryHoverBackgroundColor,
+        other.secondaryHoverBackgroundColor,
+        t,
+      ),
+      secondaryTapBackgroundColor: Color.lerp(
+        secondaryTapBackgroundColor,
+        other.secondaryTapBackgroundColor,
+        t,
+      ),
+      secondaryIdleContentColor: Color.lerp(
+        secondaryIdleContentColor,
+        other.secondaryIdleContentColor,
+        t,
+      ),
+      secondaryHoverContentColor: Color.lerp(
+        secondaryHoverContentColor,
+        other.secondaryHoverContentColor,
+        t,
+      ),
+      secondaryTapContentColor: Color.lerp(
+        secondaryTapContentColor,
+        other.secondaryTapContentColor,
+        t,
+      ),
     );
   }
 

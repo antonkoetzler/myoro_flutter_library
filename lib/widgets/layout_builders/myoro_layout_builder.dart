@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 
+part '../../theme_extensions/layout_builders/myoro_layout_builder_theme_extension.dart';
+
 /// Callback to pass the current [BoxConstraints] of the [MyoroLayoutBuilder].
-typedef MyoroLayoutBuilderConstraintsCallback = void Function(BoxConstraints constraints);
+typedef MyoroLayoutBuilderConstraintsCallback =
+    void Function(BoxConstraints constraints);
 
 /// Callback to builder to build the [MyoroLayoutBuilder].
 typedef MyoroLayoutBuilderChildCallback =
@@ -33,7 +36,9 @@ class MyoroLayoutBuilder extends StatefulWidget {
 final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
   MyoroLayoutBuilderChildCallback get _builder => widget.builder;
 
-  final _constraintsNotifier = ValueNotifier<BoxConstraints>(const BoxConstraints());
+  final _constraintsNotifier = ValueNotifier<BoxConstraints>(
+    const BoxConstraints(),
+  );
 
   @override
   void dispose() {
@@ -62,8 +67,11 @@ final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
 final class _MyoroLayoutBuilder extends SingleChildRenderObjectWidget {
   final MyoroLayoutBuilderConstraintsCallback constraintsCallback;
 
-  const _MyoroLayoutBuilder({Key? key, required this.constraintsCallback, required Widget child})
-    : super(key: key, child: child);
+  const _MyoroLayoutBuilder({
+    Key? key,
+    required this.constraintsCallback,
+    required Widget child,
+  }) : super(key: key, child: child);
 
   @override
   RenderObject createRenderObject(BuildContext context) {
@@ -71,7 +79,10 @@ final class _MyoroLayoutBuilder extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, _RenderMyoroLayoutBuilder renderObject) {
+  void updateRenderObject(
+    BuildContext context,
+    _RenderMyoroLayoutBuilder renderObject,
+  ) {
     renderObject.constraintsCallback = constraintsCallback;
   }
 }
@@ -80,7 +91,8 @@ final class _RenderMyoroLayoutBuilder extends RenderProxyBox {
   _RenderMyoroLayoutBuilder(this._constraintsCallback);
 
   MyoroLayoutBuilderConstraintsCallback _constraintsCallback;
-  MyoroLayoutBuilderConstraintsCallback get constraintsCallback => _constraintsCallback;
+  MyoroLayoutBuilderConstraintsCallback get constraintsCallback =>
+      _constraintsCallback;
   set constraintsCallback(MyoroLayoutBuilderConstraintsCallback value) {
     if (_constraintsCallback == value) return;
 

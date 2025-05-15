@@ -1,6 +1,6 @@
+// Debounce.
 import 'package:flutter/material.dart';
 
-// Debounce.
 const kMyoroDebounceDuration = Duration(milliseconds: 200);
 
 // Throttling.
@@ -11,16 +11,20 @@ const kMyoroBorderLength = 2.0;
 const kMyoroInputBorderLength = 10.0;
 const kMyoroBorderRadiusLength = 10.0;
 
-/// Icons for testing.
-const kMyoroTestIcons = [
-  Icons.abc,
-  Icons.ac_unit,
-  Icons.access_alarm,
-  Icons.access_time,
-  Icons.accessibility,
+/// [Alignment]s for testing.
+final kMyoroTestAlignments = [
+  Alignment.center,
+  Alignment.topLeft,
+  Alignment.topRight,
+  Alignment.topCenter,
+  Alignment.centerLeft,
+  Alignment.bottomLeft,
+  Alignment.centerRight,
+  Alignment.bottomRight,
+  Alignment.bottomCenter,
 ];
 
-/// Colors for testing.
+/// [Color]s for testing.
 const kMyoroTestColors = [
   Colors.red,
   Colors.green,
@@ -34,7 +38,18 @@ const kMyoroTestColors = [
   Colors.orange,
 ];
 
-/// [SystemMouseCursors] for testing.
+/// [Curve]s for testing.
+const kMyoroTestCurves = [
+  Curves.ease,
+  Curves.easeIn,
+  Curves.easeOut,
+  Curves.linear,
+  Curves.bounceIn,
+  Curves.bounceOut,
+  Curves.bounceInOut,
+];
+
+/// [SystemMouseCursor]s for testing.
 const kMyoroTestCursors = [
   SystemMouseCursors.basic,
   SystemMouseCursors.click,
@@ -45,13 +60,11 @@ const kMyoroTestCursors = [
   SystemMouseCursors.zoomOut,
 ];
 
-/// [Curve]s for testing.
-const kMyoroTestCurves = [
-  Curves.ease,
-  Curves.easeIn,
-  Curves.easeOut,
-  Curves.linear,
-  Curves.bounceIn,
-  Curves.bounceOut,
-  Curves.bounceInOut,
+/// [IconData]s for testing.
+const kMyoroTestIcons = [
+  Icons.abc,
+  Icons.ac_unit,
+  Icons.access_alarm,
+  Icons.access_time,
+  Icons.accessibility,
 ];

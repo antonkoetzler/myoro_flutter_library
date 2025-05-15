@@ -1,14 +1,9 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/modals/myoro_modal.dart';
 
 /// [ThemeExtension] for [MyoroModal].
-///
-/// TODO: Test needs to be rewritten.
 @immutable
-class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> {
+class MyoroModalThemeExtension
+    extends ThemeExtension<MyoroModalThemeExtension> {
   /// Background color of the modal.
   final Color primaryColor;
 
@@ -45,13 +40,10 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
   });
 
   MyoroModalThemeExtension.fake()
-    : primaryColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      borderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
-      border = Border.all(
-        width: faker.randomGenerator.decimal(),
-        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      ),
-      padding = EdgeInsets.all(faker.randomGenerator.decimal()),
+    : primaryColor = myoroFake<Color>(),
+      borderRadius = myoroFake<BorderRadius>(),
+      border = myoroFake<Border>(),
+      padding = myoroFake<EdgeInsets>(),
       spacing = faker.randomGenerator.decimal(),
       titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       closeButtonIcon = myoroFake<IconData>(),
@@ -60,7 +52,10 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
-      border = Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+      border = Border.all(
+        width: kMyoroBorderLength,
+        color: colorScheme.onPrimary,
+      ),
       padding = const EdgeInsets.all(5),
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
@@ -91,7 +86,10 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
   }
 
   @override
-  MyoroModalThemeExtension lerp(covariant ThemeExtension<MyoroModalThemeExtension>? other, double t) {
+  MyoroModalThemeExtension lerp(
+    covariant ThemeExtension<MyoroModalThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroModalThemeExtension) return this;
     return copyWith(
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
@@ -101,7 +99,11 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       spacing: lerpDouble(spacing, other.spacing, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
-      closeButtonIconSize: lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),
+      closeButtonIconSize: lerpDouble(
+        closeButtonIconSize,
+        other.closeButtonIconSize,
+        t,
+      ),
     );
   }
 

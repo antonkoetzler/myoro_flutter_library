@@ -14,6 +14,7 @@ final class MyoroCarouselWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create: (_) => MyoroCarouselWidgetShowcaseBloc(),
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroCarouselTitle,
         widget: _Widget(),
         widgetOptions: [
           _DirectionOption(),
@@ -31,7 +32,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroCarouselWidgetShowcaseBloc, MyoroCarouselWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroCarouselWidgetShowcaseBloc,
+      MyoroCarouselWidgetShowcaseState
+    >(
       builder: (_, MyoroCarouselWidgetShowcaseState state) {
         return MyoroCarousel(
           configuration: MyoroCarouselConfiguration(
@@ -39,14 +43,13 @@ final class _Widget extends StatelessWidget {
             displayTraversalButtons: state.displayTraversalButtons,
             autoplay: state.autoplay,
             autoplayIntervalDuration: state.autoplayIntervalDuration,
-            items: List.generate(
-              faker.randomGenerator.integer(10),
-              (_) => Container(
+            items: List.generate(faker.randomGenerator.integer(10), (_) {
+              return Container(
                 width: 300,
                 height: 300,
-                color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-              ),
-            ),
+                color: myoroFake<Color>(),
+              );
+            }),
           ),
         );
       },
@@ -76,7 +79,9 @@ final class _DirectionOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(Axis direction) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getDirectionName(direction)),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _getDirectionName(direction),
+      ),
     );
   }
 
@@ -136,7 +141,10 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
         label: 'Autoplay duration',
         minValue: 1,
         initialValue:
-            MyoroCarouselConfiguration.autoplayIntervalDurationDefaultValue.inSeconds.toDouble(),
+            MyoroCarouselConfiguration
+                .autoplayIntervalDurationDefaultValue
+                .inSeconds
+                .toDouble(),
         maxValue: 5,
         onChanged: (double value) {
           context.resolveBloc<MyoroCarouselWidgetShowcaseBloc>().add(

@@ -7,7 +7,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroGroupRadioItems = Map<String, bool>;
 
 /// Function executed when any of the radio's values are changed.
-typedef MyoroGroupRadioOnChanged = void Function(String keyChanged, MyoroGroupRadioItems items);
+typedef MyoroGroupRadioOnChanged =
+    void Function(String keyChanged, MyoroGroupRadioItems items);
 
 /// Configuration of [MyoroGroupRadio].
 class MyoroGroupRadioConfiguration extends Equatable {
@@ -47,7 +48,9 @@ class MyoroGroupRadioConfiguration extends Equatable {
          'pass [radios] within its constructor and remove [radios] here.',
        ),
        assert(
-         notifier == null ? MyoroGroupRadioNotifier.radiosAreValid(radios!) : true,
+         notifier == null
+             ? MyoroGroupRadioNotifier.radiosAreValid(radios!)
+             : true,
          '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioNotifier.radiosAreValid].',
        );
 
@@ -62,9 +65,15 @@ class MyoroGroupRadioConfiguration extends Equatable {
 
     return MyoroGroupRadioConfiguration(
       notifier: notifierProvided ? MyoroGroupRadioNotifier(radios) : null,
-      direction: Axis.values[faker.randomGenerator.integer(Axis.values.length)],
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
+      direction: myoroFake<Axis>(),
+      spacing:
+          faker.randomGenerator.boolean()
+              ? faker.randomGenerator.decimal(scale: 10)
+              : null,
+      runSpacing:
+          faker.randomGenerator.boolean()
+              ? faker.randomGenerator.decimal(scale: 10)
+              : null,
       onChanged: faker.randomGenerator.boolean() ? ((_, __) {}) : null,
       radios: notifierProvided ? null : radios,
     );

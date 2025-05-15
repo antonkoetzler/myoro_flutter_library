@@ -3,12 +3,14 @@
 ## 2.0.0
 
 1. feature: Added `MyoroFontSizeEnum.extraLarge`
+1. feature: `myoroFake`
 1. refactor: `MyoroDropdown` using `OverlayPortal`/`CompositedTransformTarget`/`CompositedTransformFollower`
 1. refactor: `MyoroTable`
 1. refactor: Make every `Widget` have a configuration file instead of arguments in the `Widget`
 1. refactor: Rename `MyoroMaterialApp` to `MyoroApp`
 1. improvement: `MyoroMenu`
 1. improvement: Input formatters
+1. improvement: Make `ThemeExtension`s and (configuration) models `part` of `Widget`s
 1. improvement: Kill `MyoroDecorationHelper`, `MyoroColorDesignSystem.primary`, `MyoroColorDesignSystem.onPrimary` to encourage good Flutter styling standards
 1. improvement: Kill `MyoroCrudService`
 1. improvement: Set the line length to 100

@@ -24,7 +24,6 @@ void main() {
       borderRadius: themeExtension2.borderRadius,
       border: themeExtension2.border,
       padding: themeExtension2.padding,
-      constraints: themeExtension2.constraints,
       spacing: themeExtension2.spacing,
       titleTextStyle: themeExtension2.titleTextStyle,
       closeButtonIcon: themeExtension2.closeButtonIcon,
@@ -37,11 +36,19 @@ void main() {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
         lerpedThemeExtension.primaryColor,
-        Color.lerp(themeExtension1.primaryColor, themeExtension2.primaryColor, i),
+        Color.lerp(
+          themeExtension1.primaryColor,
+          themeExtension2.primaryColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.borderRadius,
-        BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
+        BorderRadius.lerp(
+          themeExtension1.borderRadius,
+          themeExtension2.borderRadius,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.border,
@@ -52,21 +59,41 @@ void main() {
         EdgeInsets.lerp(themeExtension1.padding, themeExtension2.padding, i),
       );
       expect(
-        lerpedThemeExtension.constraints,
-        BoxConstraints.lerp(themeExtension1.constraints, themeExtension2.constraints, i),
-      );
-      expect(
         lerpedThemeExtension.spacing,
         lerpDouble(themeExtension1.spacing, themeExtension2.spacing, i),
       );
       expect(
         lerpedThemeExtension.titleTextStyle,
-        TextStyle.lerp(themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),
+        TextStyle.lerp(
+          themeExtension1.titleTextStyle,
+          themeExtension2.titleTextStyle,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.closeButtonIcon,
-        myoroLerp(themeExtension1.closeButtonIcon, themeExtension2.closeButtonIcon, i),
+        myoroLerp(
+          themeExtension1.closeButtonIcon,
+          themeExtension2.closeButtonIcon,
+          i,
+        ),
       );
     }
+  });
+
+  test('MyoroModalThemeExtension.toString', () {
+    expect(
+      themeExtension1.toString(),
+      'MyoroModalThemeExtension(\n'
+      '  primaryColor: ${themeExtension1.primaryColor},\n'
+      '  borderRadius: ${themeExtension1.borderRadius},\n'
+      '  border: ${themeExtension1.border},\n'
+      '  padding: ${themeExtension1.padding},\n'
+      '  spacing: ${themeExtension1.spacing},\n'
+      '  titleTextStyle: ${themeExtension1.titleTextStyle},\n'
+      '  closeButtonIcon: ${themeExtension1.closeButtonIcon},\n'
+      '  closeButtonIconSize: ${themeExtension1.closeButtonIconSize},\n'
+      ');',
+    );
   });
 }

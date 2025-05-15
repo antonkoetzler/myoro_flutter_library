@@ -1,12 +1,9 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/radios/myoro_radio.dart';
 
 /// [ThemeExtension] for [MyoroRadio].
 @immutable
-class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> {
+class MyoroRadioThemeExtension
+    extends ThemeExtension<MyoroRadioThemeExtension> {
   /// Color of the radio itself.
   final Color activeColor;
 
@@ -38,8 +35,8 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
       splashRadius = 15;
 
   MyoroRadioThemeExtension.fake()
-    : activeColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      hoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : activeColor = myoroFake<Color>(),
+      hoverColor = myoroFake<Color>(),
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal(),
       splashRadius = faker.randomGenerator.decimal();
@@ -89,7 +86,13 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
 
   @override
   int get hashCode {
-    return Object.hash(activeColor, hoverColor, labelTextStyle, spacing, splashRadius);
+    return Object.hash(
+      activeColor,
+      hoverColor,
+      labelTextStyle,
+      spacing,
+      splashRadius,
+    );
   }
 
   @override

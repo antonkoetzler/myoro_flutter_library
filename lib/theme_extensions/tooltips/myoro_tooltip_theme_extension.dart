@@ -1,16 +1,15 @@
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/tooltips/myoro_tooltip.dart';
 
 /// [ThemeExtension] for [MyoroTooltip].
 @immutable
-class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension> {
+class MyoroTooltipThemeExtension
+    extends ThemeExtension<MyoroTooltipThemeExtension> {
   /// [Tooltip.margin].
   final EdgeInsets margin;
 
   const MyoroTooltipThemeExtension({required this.margin});
 
-  MyoroTooltipThemeExtension.fake() : margin = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50));
+  MyoroTooltipThemeExtension.fake() : margin = myoroFake<EdgeInsets>();
 
   const MyoroTooltipThemeExtension.builder() : margin = EdgeInsets.zero;
 
@@ -20,14 +19,19 @@ class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtensi
   }
 
   @override
-  MyoroTooltipThemeExtension lerp(covariant ThemeExtension<MyoroTooltipThemeExtension>? other, double t) {
+  MyoroTooltipThemeExtension lerp(
+    covariant ThemeExtension<MyoroTooltipThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroTooltipThemeExtension) return this;
     return copyWith(margin: EdgeInsets.lerp(margin, other.margin, t));
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroTooltipThemeExtension && other.runtimeType == runtimeType && other.margin == margin;
+    return other is MyoroTooltipThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.margin == margin;
   }
 
   @override

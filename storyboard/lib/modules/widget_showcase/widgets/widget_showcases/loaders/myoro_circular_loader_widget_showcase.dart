@@ -13,10 +13,14 @@ final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create: (_) {
         return MyoroCircularLoaderWidgetShowcaseBloc(
-          size: context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>().size,
+          size:
+              context
+                  .resolveThemeExtension<MyoroCircularLoaderThemeExtension>()
+                  .size,
         );
       },
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroCircularLoaderTitle,
         widget: _Widget(),
         widgetOptions: [_ColorOption(), _SizeOption()],
       ),
@@ -35,7 +39,10 @@ final class _Widget extends StatelessWidget {
     >(
       builder: (_, MyoroCircularLoaderWidgetShowcaseState state) {
         return MyoroCircularLoader(
-          configuration: MyoroCircularLoaderConfiguration(color: state.color, size: state.size),
+          configuration: MyoroCircularLoaderConfiguration(
+            color: state.color,
+            size: state.size,
+          ),
         );
       },
     );
@@ -46,12 +53,16 @@ final class _ColorOption extends StatelessWidget {
   const _ColorOption();
 
   void _onChanged(BuildContext context, Color? color) {
-    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(SetColorEvent(color));
+    context.resolveBloc<MyoroCircularLoaderWidgetShowcaseBloc>().add(
+      SetColorEvent(color),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return ColorWidgetShowcaseOption(onChanged: (Color? color) => _onChanged(context, color));
+    return ColorWidgetShowcaseOption(
+      onChanged: (Color? color) => _onChanged(context, color),
+    );
   }
 }
 

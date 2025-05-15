@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/drawers/myoro_drawer_theme_extension.dart';
+
 /// Base drawer.
 class MyoroDrawer extends StatelessWidget {
   /// Configuration.
@@ -17,11 +19,14 @@ class MyoroDrawer extends StatelessWidget {
       children: [
         _Barrier(configuration),
         Row(
-          mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
+          mainAxisAlignment:
+              !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
           children: [
-            if (configuration.showCloseButton && isEndDrawer) _CloseButton(isEndDrawer),
+            if (configuration.showCloseButton && isEndDrawer)
+              _CloseButton(isEndDrawer),
             _Drawer(configuration),
-            if (configuration.showCloseButton && !isEndDrawer) _CloseButton(isEndDrawer),
+            if (configuration.showCloseButton && !isEndDrawer)
+              _CloseButton(isEndDrawer),
           ],
         ),
       ],
@@ -37,7 +42,10 @@ final class _Barrier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _configuration.barrierDismissable ? () => context.closeDrawer() : null,
+      onTap:
+          _configuration.barrierDismissable
+              ? () => context.closeDrawer()
+              : null,
       child: Container(color: MyoroColorDesignSystem.transparent),
     );
   }
@@ -50,7 +58,8 @@ final class _Drawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return Padding(
       padding: themeExtension.drawerPadding,
@@ -85,7 +94,8 @@ final class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return Text(
       _configuration.title!,
@@ -101,7 +111,8 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(

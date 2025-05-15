@@ -5,8 +5,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Widget test of [MyoroGroupCheckbox].
 void main() {
-  final Axis direction = Axis.values[faker.randomGenerator.integer(Axis.values.length)];
-  final double? spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+  final Axis direction = myoroFake<Axis>();
+  final double? spacing =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final double? runSpacing =
       faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   final MyoroGroupCheckboxItems checkboxes = {
@@ -21,7 +22,9 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
+            themeExtension =
+                context
+                    .resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
             return MyoroGroupCheckbox(
               configuration: MyoroGroupCheckboxConfiguration(
@@ -40,7 +43,10 @@ void main() {
     expect(find.byType(MyoroGroupCheckbox), findsOneWidget);
 
     // Wrapper
-    expect(find.byType(ValueListenableBuilder<MyoroGroupCheckboxItems>), findsOneWidget);
+    expect(
+      find.byType(ValueListenableBuilder<MyoroGroupCheckboxItems>),
+      findsOneWidget,
+    );
     expect(
       find.byWidgetPredicate(
         (Widget w) =>

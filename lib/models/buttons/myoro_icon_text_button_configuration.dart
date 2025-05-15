@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Color] builder of the icon and text.
-typedef MyoroIconTextButtonConfigurationContentColorBuilder = Color Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroIconTextButtonConfigurationContentColorBuilder =
+    Color Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Configuration model of [MyoroIconTextButton].
 class MyoroIconTextButtonConfiguration extends Equatable {
@@ -26,7 +27,8 @@ class MyoroIconTextButtonConfiguration extends Equatable {
   final EdgeInsets padding;
 
   /// [Color] builder of the icon and text.
-  final MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder;
+  final MyoroIconTextButtonConfigurationContentColorBuilder?
+  contentColorBuilder;
 
   /// Icon configuration of the [MyoroIconTextButton].
   final MyoroIconTextButtonIconConfiguration? iconConfiguration;
@@ -49,23 +51,27 @@ class MyoroIconTextButtonConfiguration extends Equatable {
        );
 
   factory MyoroIconTextButtonConfiguration.fake() {
-    final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
+    final mandatorilyProvidedConfiguration =
+        faker.randomGenerator.boolean() ? 'icon' : 'text';
 
     return MyoroIconTextButtonConfiguration(
-      buttonConfiguration: faker.randomGenerator.boolean() ? MyoroButtonConfiguration.fake() : null,
+      buttonConfiguration:
+          faker.randomGenerator.boolean()
+              ? MyoroButtonConfiguration.fake()
+              : null,
       invert: faker.randomGenerator.boolean(),
       spacing: faker.randomGenerator.decimal(scale: 20),
-      padding: EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
+      padding: myoroFake<EdgeInsets>(),
       contentColorBuilder:
-          faker.randomGenerator.boolean()
-              ? ((_) => kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)])
-              : null,
+          faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
       iconConfiguration:
-          (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'icon')
+          (faker.randomGenerator.boolean() ||
+                  mandatorilyProvidedConfiguration == 'icon')
               ? MyoroIconTextButtonIconConfiguration.fake()
               : null,
       textConfiguration:
-          (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'text')
+          (faker.randomGenerator.boolean() ||
+                  mandatorilyProvidedConfiguration == 'text')
               ? MyoroIconTextButtonTextConfiguration.fake()
               : null,
     );
@@ -85,19 +91,39 @@ class MyoroIconTextButtonConfiguration extends Equatable {
     bool textConfigurationProvided = true,
   }) {
     return MyoroIconTextButtonConfiguration(
-      buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? this.buttonConfiguration) : null,
+      buttonConfiguration:
+          buttonConfigurationProvided
+              ? (buttonConfiguration ?? this.buttonConfiguration)
+              : null,
       invert: invert ?? this.invert,
       spacing: spacing ?? this.spacing,
       padding: padding ?? this.padding,
-      contentColorBuilder: contentColorBuilderProvided ? (contentColorBuilder ?? this.contentColorBuilder) : null,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
+      contentColorBuilder:
+          contentColorBuilderProvided
+              ? (contentColorBuilder ?? this.contentColorBuilder)
+              : null,
+      iconConfiguration:
+          iconConfigurationProvided
+              ? (iconConfiguration ?? this.iconConfiguration)
+              : null,
+      textConfiguration:
+          textConfigurationProvided
+              ? (textConfiguration ?? this.textConfiguration)
+              : null,
     );
   }
 
   @override
   List<Object?> get props {
-    return [buttonConfiguration, invert, spacing, padding, contentColorBuilder, iconConfiguration, textConfiguration];
+    return [
+      buttonConfiguration,
+      invert,
+      spacing,
+      padding,
+      contentColorBuilder,
+      iconConfiguration,
+      textConfiguration,
+    ];
   }
 
   @override

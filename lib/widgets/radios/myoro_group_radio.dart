@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/radios/myoro_group_radio_theme_extension.dart';
 
 /// A group of [MyoroRadio]s.
 class MyoroGroupRadio extends StatefulWidget {
@@ -29,7 +34,8 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
 
     return ValueListenableBuilder(
       valueListenable: _notifier,
@@ -46,7 +52,10 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
                     initialValue: entry.value,
                     onChanged: (_) {
                       _notifier.enable(entry.key);
-                      _configuration.onChanged?.call(entry.key, _notifier.radios);
+                      _configuration.onChanged?.call(
+                        entry.key,
+                        _notifier.radios,
+                      );
                     },
                   ),
                 );

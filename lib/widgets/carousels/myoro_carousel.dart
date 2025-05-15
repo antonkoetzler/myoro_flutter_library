@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/carousels/myoro_carousel_theme_extension.dart';
+
 /// Slider carousel.
 class MyoroCarousel extends StatefulWidget {
   /// Configuration.
@@ -20,7 +22,8 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCarouselThemeExtension>();
 
     return Stack(
       alignment: Alignment.center,
@@ -86,7 +89,9 @@ final class _TraversalButton extends StatelessWidget {
               borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
               onTapUp: (_) => _onTapUp(),
             ),
-            iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: _icon),
+            iconConfiguration: MyoroIconTextButtonIconConfiguration(
+              icon: _icon,
+            ),
           ),
         ),
       ),

@@ -6,8 +6,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget test of [MyoroCircularLoader].
 void main() {
   final Color? color =
-      faker.randomGenerator.boolean() ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] : null;
-  final double? size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+      faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
+  final double? size =
+      faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
 
   testWidgets('MyoroCircularLoader', (WidgetTester tester) async {
     late final MyoroCircularLoaderThemeExtension themeExtension;
@@ -17,10 +18,17 @@ void main() {
       MyoroWidgetTester(
         child: Builder(
           builder: (BuildContext context) {
-            themeExtension = context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
+            themeExtension =
+                context
+                    .resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
             chosenSize = size ?? themeExtension.size;
 
-            return MyoroCircularLoader(configuration: MyoroCircularLoaderConfiguration(color: color, size: size));
+            return MyoroCircularLoader(
+              configuration: MyoroCircularLoaderConfiguration(
+                color: color,
+                size: size,
+              ),
+            );
           },
         ),
       ),
@@ -35,7 +43,8 @@ void main() {
             w.width == chosenSize &&
             w.height == chosenSize &&
             w.child is CircularProgressIndicator &&
-            (w.child as CircularProgressIndicator).color == (color ?? themeExtension.color),
+            (w.child as CircularProgressIndicator).color ==
+                (color ?? themeExtension.color),
       ),
       findsOneWidget,
     );

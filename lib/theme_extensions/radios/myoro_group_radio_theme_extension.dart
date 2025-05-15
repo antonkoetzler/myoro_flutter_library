@@ -1,19 +1,19 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/radios/myoro_group_radio.dart';
 
 /// [ThemeExtension] for [MyoroGroupRadio].
 @immutable
-class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension> {
+class MyoroGroupRadioThemeExtension
+    extends ThemeExtension<MyoroGroupRadioThemeExtension> {
   /// Main axis spacing in between each checkbox.
   final double spacing;
 
   /// Cross axis spacing in between each checkbox.
   final double runSpacing;
 
-  const MyoroGroupRadioThemeExtension({required this.spacing, required this.runSpacing});
+  const MyoroGroupRadioThemeExtension({
+    required this.spacing,
+    required this.runSpacing,
+  });
 
   const MyoroGroupRadioThemeExtension.builder() : spacing = 5, runSpacing = 5;
 
@@ -22,7 +22,10 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
       runSpacing = faker.randomGenerator.decimal();
 
   @override
-  MyoroGroupRadioThemeExtension copyWith({double? spacing, double? runSpacing}) {
+  MyoroGroupRadioThemeExtension copyWith({
+    double? spacing,
+    double? runSpacing,
+  }) {
     return MyoroGroupRadioThemeExtension(
       spacing: spacing ?? this.spacing,
       runSpacing: runSpacing ?? this.runSpacing,

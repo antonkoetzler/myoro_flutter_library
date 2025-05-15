@@ -13,7 +13,11 @@ final class MyoroSearchInputWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroSearchInputWidgetShowcaseBloc(),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_RequestWhenChangedOption()]),
+      child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroSearchInputTitle,
+        widget: _Widget(),
+        widgetOptions: [_RequestWhenChangedOption()],
+      ),
     );
   }
 }
@@ -23,7 +27,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroSearchInputWidgetShowcaseBloc, MyoroSearchInputWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroSearchInputWidgetShowcaseBloc,
+      MyoroSearchInputWidgetShowcaseState
+    >(
       builder: (_, MyoroSearchInputWidgetShowcaseState state) {
         return MyoroSearchInput<String>(
           configuration: MyoroSearchInputConfiguration(

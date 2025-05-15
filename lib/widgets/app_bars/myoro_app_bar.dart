@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/app_bars/myoro_app_bar_theme_extension.dart';
+
 /// Library's [AppBar] widget.
 ///
 /// Example of using the widget with [MyoroScreen]:
@@ -27,7 +29,8 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -41,7 +44,9 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         if (configuration.bordered)
           const MyoroBasicDivider(
-            configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal),
+            configuration: MyoroBasicDividerConfiguration(
+              direction: Axis.horizontal,
+            ),
           ),
       ],
     );

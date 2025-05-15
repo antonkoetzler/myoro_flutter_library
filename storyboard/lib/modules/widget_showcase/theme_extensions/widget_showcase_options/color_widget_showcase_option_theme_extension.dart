@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [ColorWidgetShowcaseOption].
@@ -24,7 +25,7 @@ final class ColorWidgetShowcaseOptionThemeExtension
   });
 
   ColorWidgetShowcaseOptionThemeExtension.fake()
-    : itemPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
+    : itemPadding = myoroFake<EdgeInsets>(),
       itemSpacing = faker.randomGenerator.decimal(scale: 50),
       itemColorSize = faker.randomGenerator.decimal(scale: 100);
 

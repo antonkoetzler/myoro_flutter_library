@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/blocs/myoro_resolver_bloc/myoro_resolver_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/resolvers/myoro_resolver_theme_extension.dart';
+
 /// Widget used to make any kind of asyncronous request with having to create a BloC.
 class MyoroResolver<T> extends StatefulWidget {
   /// Configuration.
@@ -19,7 +21,8 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
 
   MyoroResolverController? _localController;
   MyoroResolverController get _controller {
-    return _configuration.controller ?? (_localController ??= MyoroResolverController());
+    return _configuration.controller ??
+        (_localController ??= MyoroResolverController());
   }
 
   late final MyoroResolverBloc<T> _bloc;
@@ -40,7 +43,8 @@ final class _MyoroResolverState<T> extends State<MyoroResolver<T>> {
   @override
   void initState() {
     super.initState();
-    _bloc = MyoroResolverBloc(_configuration.request)..add(const ExecuteRequestEvent());
+    _bloc = MyoroResolverBloc(_configuration.request)
+      ..add(const ExecuteRequestEvent());
     _supplyController();
   }
 

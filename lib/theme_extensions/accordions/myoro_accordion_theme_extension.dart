@@ -1,12 +1,9 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/accordions/myoro_accordion.dart';
 
 /// [ThemeExtension] of [MyoroAccordion].
 @immutable
-class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExtension> {
+class MyoroAccordionThemeExtension
+    extends ThemeExtension<MyoroAccordionThemeExtension> {
   /// [Duration] of the animation of [_ItemContent].
   final Duration itemContentAnimationDuration;
 
@@ -59,22 +56,27 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
   });
 
   MyoroAccordionThemeExtension.fake()
-    : itemContentAnimationDuration = Duration(milliseconds: faker.randomGenerator.integer(200)),
-      itemContentAnimationCurve = kMyoroTestCurves[faker.randomGenerator.integer(kMyoroTestCurves.length)],
-      itemTitleButtonBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal(scale: 50)),
-      itemTitleButtonContentPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50)),
+    : itemContentAnimationDuration = myoroFake<Duration>(),
+      itemContentAnimationCurve = myoroFake<Curve>(),
+      itemTitleButtonBorderRadius = myoroFake<BorderRadius>(),
+      itemTitleButtonContentPadding = myoroFake<EdgeInsets>(),
       itemTitleButtonSpacing = faker.randomGenerator.decimal(scale: 50),
-      itemTitleButtonTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-
+      itemTitleButtonTitleTextStyle =
+          MyoroTypographyDesignSystem.instance.randomTextStyle,
       itemTitleButtonArrowIcon = myoroFake<IconData>(),
-      itemTitleButtonArrowIconSize = faker.randomGenerator.decimal(scale: 50, min: 10),
-      itemTitleButtonArrowIconColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      itemTitleButtonArrowBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal(scale: 50)),
-      itemTitleButtonArrowAnimationDuration = Duration(milliseconds: faker.randomGenerator.integer(200)),
-      itemTitleButtonArrowAnimationCurve = kMyoroTestCurves[faker.randomGenerator.integer(kMyoroTestCurves.length)];
+      itemTitleButtonArrowIconSize = faker.randomGenerator.decimal(
+        scale: 50,
+        min: 10,
+      ),
+      itemTitleButtonArrowIconColor = myoroFake<Color>(),
+      itemTitleButtonArrowBorderRadius = myoroFake<BorderRadius>(),
+      itemTitleButtonArrowAnimationDuration = myoroFake<Duration>(),
+      itemTitleButtonArrowAnimationCurve = myoroFake<Curve>();
 
-  MyoroAccordionThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : itemContentAnimationDuration = const Duration(milliseconds: 200),
+  MyoroAccordionThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : itemContentAnimationDuration = const Duration(milliseconds: 200),
       itemContentAnimationCurve = Curves.easeInOut,
       itemTitleButtonBorderRadius = BorderRadius.zero,
       itemTitleButtonContentPadding = const EdgeInsets.all(10),
@@ -83,7 +85,9 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonArrowIcon = Icons.keyboard_arrow_down,
       itemTitleButtonArrowIconSize = 25,
       itemTitleButtonArrowIconColor = colorScheme.onPrimary,
-      itemTitleButtonArrowBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      itemTitleButtonArrowBorderRadius = BorderRadius.circular(
+        kMyoroBorderRadiusLength,
+      ),
       itemTitleButtonArrowAnimationDuration = const Duration(milliseconds: 250),
       itemTitleButtonArrowAnimationCurve = Curves.easeInOut;
 
@@ -103,43 +107,88 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     Curve? itemTitleButtonArrowAnimationCurve,
   }) {
     return MyoroAccordionThemeExtension(
-      itemContentAnimationDuration: itemContentAnimationDuration ?? this.itemContentAnimationDuration,
-      itemContentAnimationCurve: itemContentAnimationCurve ?? this.itemContentAnimationCurve,
-      itemTitleButtonBorderRadius: itemTitleButtonBorderRadius ?? this.itemTitleButtonBorderRadius,
-      itemTitleButtonContentPadding: itemTitleButtonContentPadding ?? this.itemTitleButtonContentPadding,
-      itemTitleButtonSpacing: itemTitleButtonSpacing ?? this.itemTitleButtonSpacing,
-      itemTitleButtonTitleTextStyle: itemTitleButtonTitleTextStyle ?? this.itemTitleButtonTitleTextStyle,
-      itemTitleButtonArrowIcon: itemTitleButtonArrowIcon ?? this.itemTitleButtonArrowIcon,
-      itemTitleButtonArrowIconSize: itemTitleButtonArrowIconSize ?? this.itemTitleButtonArrowIconSize,
-      itemTitleButtonArrowIconColor: itemTitleButtonArrowIconColor ?? this.itemTitleButtonArrowIconColor,
-      itemTitleButtonArrowBorderRadius: itemTitleButtonArrowBorderRadius ?? this.itemTitleButtonArrowBorderRadius,
+      itemContentAnimationDuration:
+          itemContentAnimationDuration ?? this.itemContentAnimationDuration,
+      itemContentAnimationCurve:
+          itemContentAnimationCurve ?? this.itemContentAnimationCurve,
+      itemTitleButtonBorderRadius:
+          itemTitleButtonBorderRadius ?? this.itemTitleButtonBorderRadius,
+      itemTitleButtonContentPadding:
+          itemTitleButtonContentPadding ?? this.itemTitleButtonContentPadding,
+      itemTitleButtonSpacing:
+          itemTitleButtonSpacing ?? this.itemTitleButtonSpacing,
+      itemTitleButtonTitleTextStyle:
+          itemTitleButtonTitleTextStyle ?? this.itemTitleButtonTitleTextStyle,
+      itemTitleButtonArrowIcon:
+          itemTitleButtonArrowIcon ?? this.itemTitleButtonArrowIcon,
+      itemTitleButtonArrowIconSize:
+          itemTitleButtonArrowIconSize ?? this.itemTitleButtonArrowIconSize,
+      itemTitleButtonArrowIconColor:
+          itemTitleButtonArrowIconColor ?? this.itemTitleButtonArrowIconColor,
+      itemTitleButtonArrowBorderRadius:
+          itemTitleButtonArrowBorderRadius ??
+          this.itemTitleButtonArrowBorderRadius,
       itemTitleButtonArrowAnimationDuration:
-          itemTitleButtonArrowAnimationDuration ?? this.itemTitleButtonArrowAnimationDuration,
-      itemTitleButtonArrowAnimationCurve: itemTitleButtonArrowAnimationCurve ?? this.itemTitleButtonArrowAnimationCurve,
+          itemTitleButtonArrowAnimationDuration ??
+          this.itemTitleButtonArrowAnimationDuration,
+      itemTitleButtonArrowAnimationCurve:
+          itemTitleButtonArrowAnimationCurve ??
+          this.itemTitleButtonArrowAnimationCurve,
     );
   }
 
   @override
-  MyoroAccordionThemeExtension lerp(covariant ThemeExtension<MyoroAccordionThemeExtension>? other, double t) {
+  MyoroAccordionThemeExtension lerp(
+    covariant ThemeExtension<MyoroAccordionThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroAccordionThemeExtension) return this;
     return copyWith(
-      itemContentAnimationDuration: myoroLerp(itemContentAnimationDuration, other.itemContentAnimationDuration, t),
-      itemContentAnimationCurve: myoroLerp(itemContentAnimationCurve, other.itemContentAnimationCurve, t),
-      itemTitleButtonBorderRadius: BorderRadius.lerp(itemTitleButtonBorderRadius, other.itemTitleButtonBorderRadius, t),
+      itemContentAnimationDuration: myoroLerp(
+        itemContentAnimationDuration,
+        other.itemContentAnimationDuration,
+        t,
+      ),
+      itemContentAnimationCurve: myoroLerp(
+        itemContentAnimationCurve,
+        other.itemContentAnimationCurve,
+        t,
+      ),
+      itemTitleButtonBorderRadius: BorderRadius.lerp(
+        itemTitleButtonBorderRadius,
+        other.itemTitleButtonBorderRadius,
+        t,
+      ),
       itemTitleButtonContentPadding: EdgeInsets.lerp(
         itemTitleButtonContentPadding,
         other.itemTitleButtonContentPadding,
         t,
       ),
-      itemTitleButtonSpacing: lerpDouble(itemTitleButtonSpacing, other.itemTitleButtonSpacing, t),
+      itemTitleButtonSpacing: lerpDouble(
+        itemTitleButtonSpacing,
+        other.itemTitleButtonSpacing,
+        t,
+      ),
       itemTitleButtonTitleTextStyle: TextStyle.lerp(
         itemTitleButtonTitleTextStyle,
         other.itemTitleButtonTitleTextStyle,
         t,
       ),
-      itemTitleButtonArrowIcon: myoroLerp(itemTitleButtonArrowIcon, other.itemTitleButtonArrowIcon, t),
-      itemTitleButtonArrowIconSize: lerpDouble(itemTitleButtonArrowIconSize, other.itemTitleButtonArrowIconSize, t),
-      itemTitleButtonArrowIconColor: Color.lerp(itemTitleButtonArrowIconColor, other.itemTitleButtonArrowIconColor, t),
+      itemTitleButtonArrowIcon: myoroLerp(
+        itemTitleButtonArrowIcon,
+        other.itemTitleButtonArrowIcon,
+        t,
+      ),
+      itemTitleButtonArrowIconSize: lerpDouble(
+        itemTitleButtonArrowIconSize,
+        other.itemTitleButtonArrowIconSize,
+        t,
+      ),
+      itemTitleButtonArrowIconColor: Color.lerp(
+        itemTitleButtonArrowIconColor,
+        other.itemTitleButtonArrowIconColor,
+        t,
+      ),
       itemTitleButtonArrowBorderRadius: BorderRadius.lerp(
         itemTitleButtonArrowBorderRadius,
         other.itemTitleButtonArrowBorderRadius,
@@ -171,9 +220,12 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
         other.itemTitleButtonArrowIcon == itemTitleButtonArrowIcon &&
         other.itemTitleButtonArrowIconSize == itemTitleButtonArrowIconSize &&
         other.itemTitleButtonArrowIconColor == itemTitleButtonArrowIconColor &&
-        other.itemTitleButtonArrowBorderRadius == itemTitleButtonArrowBorderRadius &&
-        other.itemTitleButtonArrowAnimationDuration == itemTitleButtonArrowAnimationDuration &&
-        other.itemTitleButtonArrowAnimationCurve == itemTitleButtonArrowAnimationCurve;
+        other.itemTitleButtonArrowBorderRadius ==
+            itemTitleButtonArrowBorderRadius &&
+        other.itemTitleButtonArrowAnimationDuration ==
+            itemTitleButtonArrowAnimationDuration &&
+        other.itemTitleButtonArrowAnimationCurve ==
+            itemTitleButtonArrowAnimationCurve;
   }
 
   @override

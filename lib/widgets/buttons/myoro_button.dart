@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/buttons/myoro_button_theme_extension.dart';
+
 /// [Widget] builder of the [MyoroButton].
-typedef MyoroButtonBuilder = Widget Function(BuildContext context, MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonBuilder =
+    Widget Function(BuildContext context, MyoroTapStatusEnum tapStatusEnum);
 
 /// Generic button of MFL.
 ///
@@ -26,7 +29,9 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   MouseCursor get _cursor =>
       widget.configuration?.cursor ??
-      (widget.configuration?.onTapProvided == true ? SystemMouseCursors.click : SystemMouseCursors.basic);
+      (widget.configuration?.onTapProvided == true
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.basic);
 
   /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
   final _tapStatusNotifier = ValueNotifier(MyoroTapStatusEnum.idle);
@@ -47,7 +52,10 @@ final class _MyoroButtonState extends State<MyoroButton> {
         onTapDown: _onTapDown,
         onTapUp: _onTapUp,
         onTapCancel: _onTapCancel,
-        child: ValueListenableBuilder(valueListenable: _tapStatusNotifier, builder: _builder),
+        child: ValueListenableBuilder(
+          valueListenable: _tapStatusNotifier,
+          builder: _builder,
+        ),
       ),
     );
   }
@@ -98,15 +106,18 @@ final class _Button extends StatelessWidget {
     );
 
     if (_configuration?.tooltipConfiguration != null) {
-      return MyoroTooltip(configuration: _configuration!.tooltipConfiguration!, child: child);
+      return MyoroTooltip(
+        configuration: _configuration!.tooltipConfiguration!,
+        child: child,
+      );
     }
 
     return child;
   }
 
   Color _getBackgroundColor(BuildContext context) {
-    final MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder =
-        _configuration?.backgroundColorBuilder;
+    final MyoroButtonConfigurationBackgroundColorBuilder?
+    backgroundColorBuilder = _configuration?.backgroundColorBuilder;
     if (backgroundColorBuilder != null) {
       return backgroundColorBuilder(_tapStatusEnum);
     }
@@ -118,7 +129,8 @@ final class _Button extends StatelessWidget {
   }
 
   BorderRadius _getBorderRadius(BuildContext context) {
-    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final buttonThemeExtension =
+        context.resolveThemeExtension<MyoroButtonThemeExtension>();
     return _configuration?.borderRadius ?? buttonThemeExtension.borderRadius;
   }
 

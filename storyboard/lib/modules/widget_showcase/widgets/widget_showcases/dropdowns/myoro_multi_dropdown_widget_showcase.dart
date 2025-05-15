@@ -20,6 +20,7 @@ final class MyoroMultiDropdownWidgetShowcase extends StatelessWidget {
       create: (_) => MyoroDropdownWidgetShowcaseBloc(),
       child: WidgetShowcase(
         key: widgetShowcaseKey,
+        widgetName: StoryboardWidgetListingEnum.myoroMultiDropdownTitle,
         widget: const _Widget(),
         widgetOptions: const [
           MyoroDropdownWidgetShowcaseLabelOption(),
@@ -37,16 +38,23 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroDropdownWidgetShowcaseBloc, MyoroDropdownWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroDropdownWidgetShowcaseBloc,
+      MyoroDropdownWidgetShowcaseState
+    >(
       builder: (_, MyoroDropdownWidgetShowcaseState state) {
         return MyoroMultiDropdown(
           configuration: MyoroMultiDropdownConfiguration<String>(
             label: state.label,
             enabled: state.enabled,
             allowItemClearing: state.allowItemClearing,
-            menuConfiguration: MyoroMenuConfiguration(request: _request, itemBuilder: _itemBuilder),
+            menuConfiguration: MyoroMenuConfiguration(
+              request: _request,
+              itemBuilder: _itemBuilder,
+            ),
             selectedItemBuilder: _selectedItemBuilder,
-            checkboxOnChanged: state.checkboxOnChangedEnabled ? ((_, __) {}) : null,
+            checkboxOnChanged:
+                state.checkboxOnChangedEnabled ? ((_, __) {}) : null,
           ),
         );
       },

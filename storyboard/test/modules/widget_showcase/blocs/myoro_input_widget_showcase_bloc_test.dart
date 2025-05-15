@@ -8,14 +8,15 @@ import 'package:storyboard/storyboard.dart';
 
 /// Unit test of [MyoroInputWidgetShowcaseBloc].
 void main() {
-  final MyoroInputWidgetShowcaseEnum formatterEnum = MyoroInputWidgetShowcaseEnum.fake();
+  final MyoroInputWidgetShowcaseEnum formatterEnum =
+      MyoroInputWidgetShowcaseEnum.fake();
   final MyoroInputStyleEnum inputStyle = MyoroInputStyleEnum.fake();
   final TextAlign? textAlign =
-      faker.randomGenerator.boolean()
-          ? TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)]
-          : null;
-  final String? label = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
-  final String? placeholder = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+      faker.randomGenerator.boolean() ? myoroFake<TextAlign>() : null;
+  final String? label =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? placeholder =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
   final bool suffixProvided = faker.randomGenerator.boolean();
   final bool enabled = faker.randomGenerator.boolean();
   final bool readOnly = faker.randomGenerator.boolean();
@@ -52,14 +53,20 @@ void main() {
     'MyoroInputWidgetShowcaseBloc.SetTextAlignEvent',
     build: () => MyoroInputWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTextAlignEvent(textAlign)),
-    expect: () => [MyoroInputWidgetShowcaseState(textAlign: textAlign ?? TextAlign.start)],
+    expect:
+        () => [
+          MyoroInputWidgetShowcaseState(
+            textAlign: textAlign ?? TextAlign.start,
+          ),
+        ],
   );
 
   blocTest(
     'MyoroInputWidgetShowcaseBloc.SetInputTextStyleEvent',
     build: () => MyoroInputWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetInputTextStyleEvent(inputTextStyle)),
-    expect: () => [MyoroInputWidgetShowcaseState(inputTextStyle: inputTextStyle)],
+    expect:
+        () => [MyoroInputWidgetShowcaseState(inputTextStyle: inputTextStyle)],
   );
 
   blocTest(
@@ -80,14 +87,16 @@ void main() {
     'MyoroInputWidgetShowcaseBloc.SetLabelTextStyleEvent',
     build: () => MyoroInputWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetLabelTextStyleEvent(labelTextStyle)),
-    expect: () => [MyoroInputWidgetShowcaseState(labelTextStyle: labelTextStyle)],
+    expect:
+        () => [MyoroInputWidgetShowcaseState(labelTextStyle: labelTextStyle)],
   );
 
   blocTest(
     'MyoroInputWidgetShowcaseBloc.SetSuffixEnabledEvent',
     build: () => MyoroInputWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetSuffixEnabledEvent(suffixProvided)),
-    expect: () => [MyoroInputWidgetShowcaseState(suffixProvided: suffixProvided)],
+    expect:
+        () => [MyoroInputWidgetShowcaseState(suffixProvided: suffixProvided)],
   );
 
   blocTest(
@@ -108,7 +117,12 @@ void main() {
     'MyoroInputWidgetShowcaseBloc.SetShowClearTextButtonEvent',
     build: () => MyoroInputWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetShowClearTextButtonEvent(showClearTextButton)),
-    expect: () => [MyoroInputWidgetShowcaseState(showClearTextButton: showClearTextButton)],
+    expect:
+        () => [
+          MyoroInputWidgetShowcaseState(
+            showClearTextButton: showClearTextButton,
+          ),
+        ],
   );
 
   blocTest(

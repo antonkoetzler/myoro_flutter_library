@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/checkboxes/myoro_checkbox_theme_extension.dart';
 
 /// Function that is executed when the checkbox is changed.
 typedef MyoroCheckboxOnChanged = void Function(bool value);
@@ -20,7 +25,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   MyoroCheckboxNotifier? _localNotifier;
   MyoroCheckboxNotifier get _notifier {
-    return _configuration.notifier ?? (_localNotifier ??= MyoroCheckboxNotifier(_configuration.initialValue));
+    return _configuration.notifier ??
+        (_localNotifier ??= MyoroCheckboxNotifier(_configuration.initialValue));
   }
 
   @override
@@ -38,7 +44,8 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -74,7 +81,9 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
               _configuration.label!,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
+              style:
+                  _configuration.labelTextStyle ??
+                  themeExtension.labelTextStyle,
             ),
           ),
         ],

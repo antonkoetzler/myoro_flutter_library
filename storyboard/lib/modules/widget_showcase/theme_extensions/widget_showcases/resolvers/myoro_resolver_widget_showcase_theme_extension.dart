@@ -26,7 +26,7 @@ final class MyoroResolverWidgetShowcaseThemeExtension
 
   MyoroResolverWidgetShowcaseThemeExtension.fake()
     : buttonBordered = faker.randomGenerator.boolean(),
-      buttonTextAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+      buttonTextAlign = myoroFake<TextAlign>(),
       spacing = faker.randomGenerator.decimal();
 
   const MyoroResolverWidgetShowcaseThemeExtension.builder()

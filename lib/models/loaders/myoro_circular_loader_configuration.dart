@@ -15,11 +15,11 @@ class MyoroCircularLoaderConfiguration extends Equatable {
   const MyoroCircularLoaderConfiguration({this.color, this.size});
 
   MyoroCircularLoaderConfiguration.fake()
-    : color =
+    : color = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      size =
           faker.randomGenerator.boolean()
-              ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]
-              : null,
-      size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null;
+              ? faker.randomGenerator.decimal(scale: 100)
+              : null;
 
   MyoroCircularLoaderConfiguration copyWith({
     Color? color,

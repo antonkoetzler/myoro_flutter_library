@@ -1,12 +1,9 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/checkboxes/myoro_checkbox.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox]
 @immutable
-class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension> {
+class MyoroCheckboxThemeExtension
+    extends ThemeExtension<MyoroCheckboxThemeExtension> {
   /// Background color of the checkbox when selected.
   final Color activeColor;
 
@@ -38,8 +35,10 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
     required this.spacing,
   });
 
-  MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : activeColor = colorScheme.onPrimary,
+  MyoroCheckboxThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : activeColor = colorScheme.onPrimary,
       checkColor = colorScheme.primary,
       hoverColor = MyoroColorDesignSystem.transparent,
       focusColor = MyoroColorDesignSystem.transparent,
@@ -48,10 +47,10 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       spacing = 5;
 
   MyoroCheckboxThemeExtension.fake()
-    : activeColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      checkColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      hoverColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      focusColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : activeColor = myoroFake<Color>(),
+      checkColor = myoroFake<Color>(),
+      hoverColor = myoroFake<Color>(),
+      focusColor = myoroFake<Color>(),
       splashRadius = faker.randomGenerator.decimal(),
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal();

@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/snack_bars/myoro_snack_bar_theme_extension.dart';
 
 /// A snack bar [Widget].
 ///
@@ -15,7 +20,8 @@ class MyoroSnackBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     final String message = configuration.message;
     final Widget? child = configuration.child;
@@ -54,7 +60,10 @@ final class _Message extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _message,
-      style: context.resolveThemeExtension<MyoroSnackBarThemeExtension>().messageTextStyle,
+      style:
+          context
+              .resolveThemeExtension<MyoroSnackBarThemeExtension>()
+              .messageTextStyle,
     );
   }
 }
@@ -64,11 +73,14 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => context.hideSnackBar()),
+        buttonConfiguration: MyoroButtonConfiguration(
+          onTapUp: (_) => context.hideSnackBar(),
+        ),
         iconConfiguration: MyoroIconTextButtonIconConfiguration(
           icon: themeExtension.closeButtonIcon,
           size: themeExtension.closeButtonIconSize,

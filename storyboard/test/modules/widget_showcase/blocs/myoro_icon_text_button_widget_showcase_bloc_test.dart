@@ -7,14 +7,14 @@ import 'package:storyboard/modules/widget_showcase/blocs/myoro_icon_text_button_
 
 void main() {
   final double spacing = faker.randomGenerator.decimal(scale: 50);
-  final EdgeInsets padding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50));
-  final Color color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)];
+  final EdgeInsets padding = myoroFake<EdgeInsets>();
+  final Color color = myoroFake<Color>();
   final IconData icon = myoroFake<IconData>();
   final double iconSize = faker.randomGenerator.decimal(scale: 200);
   final String text = faker.lorem.word();
   final int maxLines = faker.randomGenerator.integer(10);
-  final TextOverflow textOverflow = TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)];
-  final TextAlign textAlign = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)];
+  final TextOverflow textOverflow = myoroFake<TextOverflow>();
+  final TextAlign textAlign = myoroFake<TextAlign>();
   late final TextStyle textStyle;
 
   setUpAll(() {
@@ -27,13 +27,25 @@ void main() {
     build: () => MyoroIconTextButtonWidgetShowcaseBloc(),
     act: (bloc) {
       bloc
-        ..add(const SetInvertEvent(!MyoroIconTextButtonConfiguration.invertDefaultValue))
-        ..add(const SetInvertEvent(MyoroIconTextButtonConfiguration.invertDefaultValue));
+        ..add(
+          const SetInvertEvent(
+            !MyoroIconTextButtonConfiguration.invertDefaultValue,
+          ),
+        )
+        ..add(
+          const SetInvertEvent(
+            MyoroIconTextButtonConfiguration.invertDefaultValue,
+          ),
+        );
     },
     expect: () {
       return const [
-        MyoroIconTextButtonWidgetShowcaseState(invert: !MyoroIconTextButtonConfiguration.invertDefaultValue),
-        MyoroIconTextButtonWidgetShowcaseState(invert: MyoroIconTextButtonConfiguration.invertDefaultValue),
+        MyoroIconTextButtonWidgetShowcaseState(
+          invert: !MyoroIconTextButtonConfiguration.invertDefaultValue,
+        ),
+        MyoroIconTextButtonWidgetShowcaseState(
+          invert: MyoroIconTextButtonConfiguration.invertDefaultValue,
+        ),
       ];
     },
   );
@@ -44,12 +56,18 @@ void main() {
     act: (bloc) {
       bloc
         ..add(SetSpacingEvent(spacing))
-        ..add(const SetSpacingEvent(MyoroIconTextButtonConfiguration.spacingDefaultValue));
+        ..add(
+          const SetSpacingEvent(
+            MyoroIconTextButtonConfiguration.spacingDefaultValue,
+          ),
+        );
     },
     expect: () {
       return [
         MyoroIconTextButtonWidgetShowcaseState(spacing: spacing),
-        const MyoroIconTextButtonWidgetShowcaseState(spacing: MyoroIconTextButtonConfiguration.spacingDefaultValue),
+        const MyoroIconTextButtonWidgetShowcaseState(
+          spacing: MyoroIconTextButtonConfiguration.spacingDefaultValue,
+        ),
       ];
     },
   );
@@ -58,7 +76,14 @@ void main() {
     'MyoroIconTextButtonWidgetShowcaseBloc.SetPaddingEvent',
     build: () => MyoroIconTextButtonWidgetShowcaseBloc(),
     act: (bloc) {
-      bloc.add(SetPaddingEvent(top: padding.top, bottom: padding.bottom, left: padding.left, right: padding.right));
+      bloc.add(
+        SetPaddingEvent(
+          top: padding.top,
+          bottom: padding.bottom,
+          left: padding.left,
+          right: padding.right,
+        ),
+      );
     },
     expect: () {
       return [MyoroIconTextButtonWidgetShowcaseState(padding: padding)];
@@ -72,22 +97,28 @@ void main() {
       bloc
         ..add(
           const SetContentColorBuilderEnabledEvent(
-            !MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
+            !MyoroIconTextButtonWidgetShowcaseState
+                .contentColorBuilderEnabledDefaultValue,
           ),
         )
         ..add(
           const SetContentColorBuilderEnabledEvent(
-            MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
+            MyoroIconTextButtonWidgetShowcaseState
+                .contentColorBuilderEnabledDefaultValue,
           ),
         );
     },
     expect: () {
       return const [
         MyoroIconTextButtonWidgetShowcaseState(
-          contentColorBuilderEnabled: !MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
+          contentColorBuilderEnabled:
+              !MyoroIconTextButtonWidgetShowcaseState
+                  .contentColorBuilderEnabledDefaultValue,
         ),
         MyoroIconTextButtonWidgetShowcaseState(
-          contentColorBuilderEnabled: MyoroIconTextButtonWidgetShowcaseState.contentColorBuilderEnabledDefaultValue,
+          contentColorBuilderEnabled:
+              MyoroIconTextButtonWidgetShowcaseState
+                  .contentColorBuilderEnabledDefaultValue,
         ),
       ];
     },
@@ -150,7 +181,10 @@ void main() {
         ..add(const SetIconEvent());
     },
     expect: () {
-      return [MyoroIconTextButtonWidgetShowcaseState(icon: icon), const MyoroIconTextButtonWidgetShowcaseState()];
+      return [
+        MyoroIconTextButtonWidgetShowcaseState(icon: icon),
+        const MyoroIconTextButtonWidgetShowcaseState(),
+      ];
     },
   );
 
@@ -195,7 +229,9 @@ void main() {
     build: () => MyoroIconTextButtonWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetTextOverflowEvent(textOverflow)),
     expect: () {
-      return [MyoroIconTextButtonWidgetShowcaseState(textOverflow: textOverflow)];
+      return [
+        MyoroIconTextButtonWidgetShowcaseState(textOverflow: textOverflow),
+      ];
     },
   );
 

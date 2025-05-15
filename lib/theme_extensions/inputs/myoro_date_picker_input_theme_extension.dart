@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/inputs/myoro_date_picker_input.dart';
 
 /// [ThemeExtension] of [MyoroDatePickerInput].
 @immutable
@@ -22,7 +21,8 @@ class MyoroDatePickerInputThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDatePickerInputThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroDatePickerInputThemeExtension &&
+        other.runtimeType == runtimeType;
   }
 
   @override

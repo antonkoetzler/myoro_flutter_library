@@ -1,28 +1,33 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/checkboxes/myoro_group_checkbox.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox].
 @immutable
-class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckboxThemeExtension> {
+class MyoroGroupCheckboxThemeExtension
+    extends ThemeExtension<MyoroGroupCheckboxThemeExtension> {
   /// Main axis spacing in between each checkbox.
   final double spacing;
 
   /// Cross axis spacing in between each checkbox.
   final double runSpacing;
 
-  const MyoroGroupCheckboxThemeExtension({required this.spacing, required this.runSpacing});
+  const MyoroGroupCheckboxThemeExtension({
+    required this.spacing,
+    required this.runSpacing,
+  });
 
-  const MyoroGroupCheckboxThemeExtension.builder() : spacing = 5, runSpacing = 5;
+  const MyoroGroupCheckboxThemeExtension.builder()
+    : spacing = 5,
+      runSpacing = 5;
 
   MyoroGroupCheckboxThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(),
       runSpacing = faker.randomGenerator.decimal();
 
   @override
-  MyoroGroupCheckboxThemeExtension copyWith({double? spacing, double? runSpacing}) {
+  MyoroGroupCheckboxThemeExtension copyWith({
+    double? spacing,
+    double? runSpacing,
+  }) {
     return MyoroGroupCheckboxThemeExtension(
       spacing: spacing ?? this.spacing,
       runSpacing: runSpacing ?? this.runSpacing,

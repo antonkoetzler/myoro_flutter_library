@@ -18,11 +18,15 @@ class MyoroTooltipConfiguration extends Equatable {
   /// Text of the tooltip.
   final String text;
 
-  const MyoroTooltipConfiguration({this.margin, this.waitDuration = waitDurationDefaultValue, required this.text});
+  const MyoroTooltipConfiguration({
+    this.margin,
+    this.waitDuration = waitDurationDefaultValue,
+    required this.text,
+  });
 
   MyoroTooltipConfiguration.fake()
-    : margin = faker.randomGenerator.boolean() ? EdgeInsets.all(faker.randomGenerator.decimal()) : null,
-      waitDuration = Duration(milliseconds: faker.randomGenerator.integer(100)),
+    : margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      waitDuration = myoroFake<Duration>(),
       text = faker.lorem.word();
 
   MyoroTooltipConfiguration copyWith({

@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -19,11 +18,12 @@ final class MyoroResizeDividerWidgetShowcaseThemeExtension
   });
 
   MyoroResizeDividerWidgetShowcaseThemeExtension.fake()
-    : containerColor = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-      areYouSillyPadding = EdgeInsets.all(faker.randomGenerator.decimal());
+    : containerColor = myoroFake<Color>(),
+      areYouSillyPadding = myoroFake<EdgeInsets>();
 
-  MyoroResizeDividerWidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
-    : containerColor = colorScheme.onPrimary,
+  MyoroResizeDividerWidgetShowcaseThemeExtension.builder(
+    ColorScheme colorScheme,
+  ) : containerColor = colorScheme.onPrimary,
       areYouSillyPadding = const EdgeInsets.all(50);
 
   @override
@@ -39,13 +39,18 @@ final class MyoroResizeDividerWidgetShowcaseThemeExtension
 
   @override
   MyoroResizeDividerWidgetShowcaseThemeExtension lerp(
-    covariant ThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>? other,
+    covariant ThemeExtension<MyoroResizeDividerWidgetShowcaseThemeExtension>?
+    other,
     double t,
   ) {
     if (other is! MyoroResizeDividerWidgetShowcaseThemeExtension) return this;
     return copyWith(
       containerColor: Color.lerp(containerColor, other.containerColor, t),
-      areYouSillyPadding: EdgeInsets.lerp(areYouSillyPadding, other.areYouSillyPadding, t),
+      areYouSillyPadding: EdgeInsets.lerp(
+        areYouSillyPadding,
+        other.areYouSillyPadding,
+        t,
+      ),
     );
   }
 

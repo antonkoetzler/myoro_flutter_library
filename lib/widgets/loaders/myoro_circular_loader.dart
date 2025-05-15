@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/loaders/myoro_circular_loader_theme_extension.dart';
 
 /// A simple circular loading widget.
 class MyoroCircularLoader extends StatelessWidget {
@@ -10,13 +15,16 @@ class MyoroCircularLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
     final chosenSize = configuration?.size ?? themeExtension.size;
 
     return SizedBox(
       width: chosenSize,
       height: chosenSize,
-      child: CircularProgressIndicator(color: configuration?.color ?? themeExtension.color),
+      child: CircularProgressIndicator(
+        color: configuration?.color ?? themeExtension.color,
+      ),
     );
   }
 }

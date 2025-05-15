@@ -13,9 +13,13 @@ final class MyoroPieGraphWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroPieGraphWidgetShowcaseBloc(),
-      child: BlocBuilder<MyoroPieGraphWidgetShowcaseBloc, MyoroPieGraphWidgetShowcaseState>(
+      child: BlocBuilder<
+        MyoroPieGraphWidgetShowcaseBloc,
+        MyoroPieGraphWidgetShowcaseState
+      >(
         builder: (_, MyoroPieGraphWidgetShowcaseState state) {
           return WidgetShowcase(
+            widgetName: StoryboardWidgetListingEnum.myoroPieGraphTitle,
             widget: const _Widget(),
             widgetOptions: [
               const _TypeEnumOption(),
@@ -33,18 +37,22 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroPieGraphWidgetShowcaseBloc, MyoroPieGraphWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroPieGraphWidgetShowcaseBloc,
+      MyoroPieGraphWidgetShowcaseState
+    >(
       builder: (_, MyoroPieGraphWidgetShowcaseState state) {
         return MyoroPieGraph(
           configuration: MyoroPieGraphConfiguration(
             typeEnum: state.typeEnum,
-            centerWidget: state.centerWidgetEnabled ? const _CenterWidget() : null,
+            centerWidget:
+                state.centerWidgetEnabled ? const _CenterWidget() : null,
             items: List.generate(
               faker.randomGenerator.integer(10),
               (_) => MyoroPieGraphItem(
                 value: faker.randomGenerator.decimal(),
                 radius: faker.randomGenerator.integer(100).toDouble(),
-                color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+                color: myoroFake<Color>(),
               ),
             ),
           ),
@@ -60,7 +68,8 @@ final class _CenterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context.resolveThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>();
+        context
+            .resolveThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>();
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
@@ -98,7 +107,9 @@ final class _TypeEnumOption extends StatelessWidget {
 
   MyoroMenuItem _itemBuilder(MyoroPieGraphEnum typeEnum) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: typeEnum.name),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: typeEnum.name,
+      ),
     );
   }
 
@@ -106,7 +117,10 @@ final class _TypeEnumOption extends StatelessWidget {
     return typeEnum.name;
   }
 
-  void _onChanged(MyoroPieGraphWidgetShowcaseBloc bloc, MyoroPieGraphEnum? typeEnum) {
+  void _onChanged(
+    MyoroPieGraphWidgetShowcaseBloc bloc,
+    MyoroPieGraphEnum? typeEnum,
+  ) {
     bloc.add(SetTypeEnumEvent(typeEnum!));
   }
 }

@@ -40,7 +40,8 @@ void main() {
 
 MyoroResolverConfiguration<String> get _configuration {
   return MyoroResolverConfiguration(
-    controller: faker.randomGenerator.boolean() ? MyoroResolverController() : null,
+    controller:
+        faker.randomGenerator.boolean() ? MyoroResolverController() : null,
     onSuccess: faker.randomGenerator.boolean() ? ((_) {}) : null,
     onError: faker.randomGenerator.boolean() ? ((_) {}) : null,
     request: (() => faker.lorem.word()),

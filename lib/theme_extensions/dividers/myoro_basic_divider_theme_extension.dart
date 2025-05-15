@@ -1,12 +1,9 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/dividers/myoro_basic_divider.dart';
 
 /// [ThemeExtension] for [MyoroBasicDivider].
 @immutable
-class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerThemeExtension> {
+class MyoroBasicDividerThemeExtension
+    extends ThemeExtension<MyoroBasicDividerThemeExtension> {
   /// [MyoroColorDesignSystem.secondary] by default.
   final Color color;
 
@@ -28,12 +25,16 @@ class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerTh
       longValue = double.infinity;
 
   MyoroBasicDividerThemeExtension.fake()
-    : color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : color = myoroFake<Color>(),
       shortValue = faker.randomGenerator.decimal(),
       longValue = faker.randomGenerator.decimal();
 
   @override
-  MyoroBasicDividerThemeExtension copyWith({Color? color, double? shortValue, double? longValue}) {
+  MyoroBasicDividerThemeExtension copyWith({
+    Color? color,
+    double? shortValue,
+    double? longValue,
+  }) {
     return MyoroBasicDividerThemeExtension(
       color: color ?? this.color,
       shortValue: shortValue ?? this.shortValue,

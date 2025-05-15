@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
+part '../../theme_extensions/screens/myoro_screen_theme_extension.dart';
+
 /// Root widget of any screen widget.
 class MyoroScreen extends StatefulWidget {
   /// Configuration.
@@ -18,7 +20,8 @@ final class _MyoroScreenState extends State<MyoroScreen> {
 
   MyoroDrawerController? _localDrawerController;
   MyoroDrawerController get _drawerController {
-    return _configuration.drawerController ?? (_localDrawerController ??= MyoroDrawerController());
+    return _configuration.drawerController ??
+        (_localDrawerController ??= MyoroDrawerController());
   }
 
   @override

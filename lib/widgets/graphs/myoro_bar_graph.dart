@@ -1,6 +1,11 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/graphs/myoro_bar_graph_theme_extension.dart';
 
 /// A bar graph.
 class MyoroBarGraph extends StatelessWidget {
@@ -11,7 +16,8 @@ class MyoroBarGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
     final List<BarChartGroupData> formattedItems =
         configuration.items
@@ -27,8 +33,14 @@ class MyoroBarGraph extends StatelessWidget {
                         rodStackItems:
                             bar.barSections.isEmpty
                                 ? null
-                                : bar.barSections.map<BarChartRodStackItem>((MyoroBarGraphBarSection barSection) {
-                                  return BarChartRodStackItem(barSection.fromY, barSection.toY, barSection.color);
+                                : bar.barSections.map<BarChartRodStackItem>((
+                                  MyoroBarGraphBarSection barSection,
+                                ) {
+                                  return BarChartRodStackItem(
+                                    barSection.fromY,
+                                    barSection.toY,
+                                    barSection.color,
+                                  );
                                 }).toList(),
                       );
                     }).toList(),
@@ -41,7 +53,10 @@ class MyoroBarGraph extends StatelessWidget {
     const gridData = FlGridData(show: false);
     const disabledTitle = AxisTitles(sideTitles: SideTitles());
     final enabledTitle = AxisTitles(
-      sideTitles: SideTitles(showTitles: true, interval: themeExtension.sideTitleInterval),
+      sideTitles: SideTitles(
+        showTitles: true,
+        interval: themeExtension.sideTitleInterval,
+      ),
     );
 
     return Padding(
@@ -63,7 +78,8 @@ class MyoroBarGraph extends StatelessWidget {
             bottomTitles: enabledTitle.copyWith(
               sideTitles: enabledTitle.sideTitles.copyWith(
                 reservedSize: themeExtension.horizontalSideTitleReversedSize,
-                getTitlesWidget: (value, _) => _SideTitle(value, Axis.horizontal),
+                getTitlesWidget:
+                    (value, _) => _SideTitle(value, Axis.horizontal),
               ),
             ),
             leftTitles: enabledTitle.copyWith(
@@ -93,7 +109,10 @@ final class _SideTitle extends StatelessWidget {
       child: Text(
         _value.toStringAsFixed(_value == 0 || _value == _value.toInt() ? 0 : 2),
         textAlign: TextAlign.right,
-        style: context.resolveThemeExtension<MyoroBarGraphThemeExtension>().sideTitleTextStyle,
+        style:
+            context
+                .resolveThemeExtension<MyoroBarGraphThemeExtension>()
+                .sideTitleTextStyle,
       ),
     );
   }

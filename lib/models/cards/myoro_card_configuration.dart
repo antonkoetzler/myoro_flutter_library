@@ -45,12 +45,17 @@ class MyoroCardConfiguration extends Equatable {
               ? MyoroTypographyDesignSystem.instance.randomTextStyle
               : null,
       padding =
+          faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      width =
           faker.randomGenerator.boolean()
-              ? EdgeInsets.all(faker.randomGenerator.decimal(scale: 10))
+              ? faker.randomGenerator.decimal(scale: 100)
               : null,
-      width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null,
-      height = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null,
-      constraints = faker.randomGenerator.boolean() ? const BoxConstraints() : null,
+      height =
+          faker.randomGenerator.boolean()
+              ? faker.randomGenerator.decimal(scale: 100)
+              : null,
+      constraints =
+          faker.randomGenerator.boolean() ? const BoxConstraints() : null,
       child = const SizedBox.shrink();
 
   MyoroCardConfiguration copyWith({
@@ -69,11 +74,15 @@ class MyoroCardConfiguration extends Equatable {
   }) {
     return MyoroCardConfiguration(
       title: title ?? this.title,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
+      titleTextStyle:
+          titleTextStyleProvided
+              ? (titleTextStyle ?? this.titleTextStyle)
+              : null,
       padding: paddingProvided ? (padding ?? this.padding) : null,
       width: widthProvided ? (width ?? this.width) : null,
       height: heightProvided ? (height ?? this.height) : null,
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
+      constraints:
+          constraintsProvided ? (constraints ?? this.constraints) : null,
       child: child ?? this.child,
     );
   }

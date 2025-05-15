@@ -1,12 +1,9 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/inputs/myoro_search_input.dart';
 
 /// [ThemeExtension] for [MyoroSearchInput].
 @immutable
-class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThemeExtension> {
+class MyoroSearchInputThemeExtension
+    extends ThemeExtension<MyoroSearchInputThemeExtension> {
   /// Spacing in between the [MyoroInput] & [_SearchSection].
   final double spacing;
 
@@ -41,17 +38,25 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
     return MyoroSearchInputThemeExtension(
       spacing: spacing ?? this.spacing,
       searchButtonIcon: searchButtonIcon ?? this.searchButtonIcon,
-      searchButtonLoadingSize: searchButtonLoadingSize ?? this.searchButtonLoadingSize,
+      searchButtonLoadingSize:
+          searchButtonLoadingSize ?? this.searchButtonLoadingSize,
     );
   }
 
   @override
-  MyoroSearchInputThemeExtension lerp(covariant ThemeExtension<MyoroSearchInputThemeExtension>? other, double t) {
+  MyoroSearchInputThemeExtension lerp(
+    covariant ThemeExtension<MyoroSearchInputThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroSearchInputThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       searchButtonIcon: myoroLerp(searchButtonIcon, other.searchButtonIcon, t),
-      searchButtonLoadingSize: lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
+      searchButtonLoadingSize: lerpDouble(
+        searchButtonLoadingSize,
+        other.searchButtonLoadingSize,
+        t,
+      ),
     );
   }
 

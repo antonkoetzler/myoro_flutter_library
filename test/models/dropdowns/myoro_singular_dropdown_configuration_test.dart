@@ -5,8 +5,10 @@ import 'package:myoro_flutter_library/blocs/myoro_dropdown_bloc/myoro_dropdown_b
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final MyoroSingularDropdownConfiguration<String> configuration1 = _createConfiguration();
-  final MyoroSingularDropdownConfiguration<String> configuration2 = _createConfiguration();
+  final MyoroSingularDropdownConfiguration<String> configuration1 =
+      _createConfiguration();
+  final MyoroSingularDropdownConfiguration<String> configuration2 =
+      _createConfiguration();
 
   test('MyoroSingularDropdownConfiguration.copyWith', () {
     expect(configuration1.copyWith(), configuration1);
@@ -18,19 +20,23 @@ void main() {
         menuConfiguration: configuration2.menuConfiguration,
         selectedItemBuilder: configuration2.selectedItemBuilder,
         initiallySelectedItem: configuration2.initiallySelectedItem,
-        initiallySelectedItemProvided: configuration2.initiallySelectedItem != null,
+        initiallySelectedItemProvided:
+            configuration2.initiallySelectedItem != null,
         onChanged: configuration2.onChanged,
         onChangedProvided: configuration2.onChanged != null,
         checkboxOnChanged: configuration2.checkboxOnChanged,
         checkboxOnChangedProvided: configuration2.checkboxOnChanged != null,
-        controller: configuration2.controller as MyoroSingularDropdownController<String>,
+        controller:
+            configuration2.controller
+                as MyoroSingularDropdownController<String>,
       ),
       configuration2,
     );
   });
 
   test('MyoroSingularDropdownConfiguration.setInitiallySelectedItems', () {
-    final MyoroSingularDropdownConfiguration<String> configuration = _createConfiguration();
+    final MyoroSingularDropdownConfiguration<String> configuration =
+        _createConfiguration();
     final bool enabled = faker.randomGenerator.boolean();
     configuration.controller.bloc = MyoroDropdownBloc<String>(enabled: enabled);
     configuration.setInitiallySelectedItems();
@@ -59,13 +65,18 @@ void main() {
   test('MyoroSingularDropdownConfiguration.handleCheckboxOnChanged', () {
     bool checkboxOnChangedExecuted = false;
     _createConfiguration()
-        .copyWith(checkboxOnChanged: (_, __) => checkboxOnChangedExecuted = true)
+        .copyWith(
+          checkboxOnChanged: (_, __) => checkboxOnChangedExecuted = true,
+        )
         .handleCheckboxOnChanged(faker.randomGenerator.boolean(), const {});
     expect(checkboxOnChangedExecuted, isTrue);
   });
 
   test('MyoroSingularDropdownConfiguration.checkboxOnChangedNotNull', () {
-    expect(configuration1.checkboxOnChangedNotNull, configuration1.checkboxOnChanged != null);
+    expect(
+      configuration1.checkboxOnChangedNotNull,
+      configuration1.checkboxOnChanged != null,
+    );
   });
 
   test('MyoroSingularDropdownConfiguration.toString', () {
@@ -88,9 +99,6 @@ void main() {
 }
 
 MyoroSingularDropdownConfiguration<String> _createConfiguration() {
-  final minWidth = faker.randomGenerator.decimal(scale: 50);
-  final minHeight = faker.randomGenerator.decimal(scale: 50);
-
   final items =
       List.generate(
         faker.randomGenerator.integer(9999),
@@ -102,15 +110,12 @@ MyoroSingularDropdownConfiguration<String> _createConfiguration() {
     enabled: faker.randomGenerator.boolean(),
     allowItemClearing: faker.randomGenerator.boolean(),
     menuConfiguration: MyoroMenuConfiguration(
-      controller: faker.randomGenerator.boolean() ? MyoroMenuController() : null,
-      constraints: BoxConstraints(
-        minWidth: minWidth,
-        maxWidth: faker.randomGenerator.decimal(scale: 100, min: minWidth),
-        minHeight: minHeight,
-        maxHeight: faker.randomGenerator.decimal(scale: 100, min: minHeight),
-      ),
+      controller:
+          faker.randomGenerator.boolean() ? MyoroMenuController() : null,
+      constraints: myoroFake<BoxConstraints>(),
       request: () => items,
-      onEndReachedRequest: faker.randomGenerator.boolean() ? (_) => items : null,
+      onEndReachedRequest:
+          faker.randomGenerator.boolean() ? (_) => items : null,
       searchCallback: faker.randomGenerator.boolean() ? (_, __) => items : null,
       itemBuilder:
           (String item) => MyoroMenuItem.fake().copyWith(

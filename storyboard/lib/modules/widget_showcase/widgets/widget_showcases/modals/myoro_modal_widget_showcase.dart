@@ -13,6 +13,7 @@ final class MyoroModalWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create: (_) => MyoroModalWidgetShowcaseBloc(),
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroModalTitle,
         widget: _Widget(),
         widgetOptions: [
           _BarrierDismissableOption(),
@@ -31,9 +32,10 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntrinsicWidth(
-      child: BlocBuilder<MyoroModalWidgetShowcaseBloc, MyoroModalWidgetShowcaseState>(
-        builder: _builder,
-      ),
+      child: BlocBuilder<
+        MyoroModalWidgetShowcaseBloc,
+        MyoroModalWidgetShowcaseState
+      >(builder: _builder),
     );
   }
 
@@ -67,7 +69,9 @@ final class _Widget extends StatelessWidget {
         onClosed:
             () => context.showSnackBar(
               snackBar: const MyoroSnackBar(
-                configuration: MyoroSnackBarConfiguration(message: 'Modal closed!'),
+                configuration: MyoroSnackBarConfiguration(
+                  message: 'Modal closed!',
+                ),
               ),
             ),
         title: state.title,
@@ -100,7 +104,8 @@ final class _ConstraintsOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>();
     final spacing = themeExtension.spacing;
     final bloc = context.resolveBloc<MyoroModalWidgetShowcaseBloc>();
 
@@ -171,11 +176,16 @@ final class _TitleOption extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: 'Title',
         inputStyle:
-            context.resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>().inputStyle,
-        onChanged: (String text) => bloc.add(SetTitleEvent(text.isNotEmpty ? text : null)),
+            context
+                .resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>()
+                .inputStyle,
+        onChanged:
+            (String text) =>
+                bloc.add(SetTitleEvent(text.isNotEmpty ? text : null)),
         checkboxOnChanged:
-            (bool enabled, String text) =>
-                bloc.add(SetTitleEvent((enabled && text.isNotEmpty) ? text : null)),
+            (bool enabled, String text) => bloc.add(
+              SetTitleEvent((enabled && text.isNotEmpty) ? text : null),
+            ),
       ),
     );
   }
@@ -199,11 +209,14 @@ final class _NumberInput extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: label,
         inputStyle:
-            context.resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>().inputStyle,
+            context
+                .resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>()
+                .inputStyle,
         enabled: false,
         onChanged: (String text) => onChanged.call(double.parse(text)),
         checkboxOnChanged:
-            (bool enabled, String text) => checkboxOnChanged.call(enabled, double.parse(text)),
+            (bool enabled, String text) =>
+                checkboxOnChanged.call(enabled, double.parse(text)),
       ),
     );
   }

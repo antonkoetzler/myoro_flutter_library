@@ -13,7 +13,11 @@ final class MyoroBarGraphWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroBarGraphWidgetShowcaseBloc(),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_SortedOption()]),
+      child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroBarGraphTitle,
+        widget: _Widget(),
+        widgetOptions: [_SortedOption()],
+      ),
     );
   }
 }
@@ -23,7 +27,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroBarGraphWidgetShowcaseBloc, MyoroBarGraphWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroBarGraphWidgetShowcaseBloc,
+      MyoroBarGraphWidgetShowcaseState
+    >(
       builder: (_, MyoroBarGraphWidgetShowcaseState state) {
         return MyoroBarGraph(
           configuration: MyoroBarGraphConfiguration(
@@ -36,8 +43,7 @@ final class _Widget extends StatelessWidget {
                   faker.randomGenerator.integer(5),
                   (_) => MyoroBarGraphBar(
                     y: faker.randomGenerator.decimal(),
-                    color:
-                        [Colors.red, Colors.green, Colors.blue][faker.randomGenerator.integer(3)],
+                    color: myoroFake<Color>(),
                   ),
                 ),
               ),

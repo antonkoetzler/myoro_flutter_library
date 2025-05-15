@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -7,7 +9,8 @@ import 'package:storyboard/storyboard.dart';
 ///
 /// TODO: Test needs to be rewritten.
 @immutable
-final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseThemeExtension> {
+final class WidgetShowcaseThemeExtension
+    extends ThemeExtension<WidgetShowcaseThemeExtension> {
   /// [BoxDecoration] of [_Wrapper].
   final BoxDecoration wrapperDecoration;
 
@@ -32,6 +35,9 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// [EdgeInsets] of [MyoroModalConfiguration.closeButtonPadding] of [_WidgetOptions].
   final EdgeInsets widgetOptionsCloseButtonPadding;
 
+  /// Size of [_WidgetOptions]'s [MyoroModal].
+  final double widgetOptionsModalDesktopWidth;
+
   const WidgetShowcaseThemeExtension({
     required this.wrapperDecoration,
     required this.wrapperPadding,
@@ -41,40 +47,29 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     required this.widgetOptionsButtonTooltipMargin,
     required this.widgetOptionsItemPadding,
     required this.widgetOptionsCloseButtonPadding,
+    required this.widgetOptionsModalDesktopWidth,
   });
 
   WidgetShowcaseThemeExtension.fake()
-    : wrapperDecoration = BoxDecoration(
-        color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        border: Border.all(
-          width: faker.randomGenerator.decimal(),
-          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        ),
-        borderRadius: BorderRadius.circular(faker.randomGenerator.decimal()),
-      ),
-      wrapperPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
-      wrapperContentPadding = EdgeInsets.all(faker.randomGenerator.decimal()),
+    : wrapperDecoration = myoroFake<BoxDecoration>(),
+      wrapperPadding = myoroFake<EdgeInsets>(),
+      wrapperContentPadding = myoroFake<EdgeInsets>(),
       widgetOptionsButtonIcon = myoroFake<IconData>(),
-      wrapperAlignment =
-          [
-            Alignment.center,
-            Alignment.topLeft,
-            Alignment.topRight,
-            Alignment.topCenter,
-            Alignment.centerLeft,
-            Alignment.bottomLeft,
-            Alignment.centerRight,
-            Alignment.bottomRight,
-            Alignment.bottomCenter,
-          ][faker.randomGenerator.integer(9)],
-      widgetOptionsButtonTooltipMargin = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
-      widgetOptionsItemPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
-      widgetOptionsCloseButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20));
+      wrapperAlignment = myoroFake<Alignment>(),
+      widgetOptionsButtonTooltipMargin = myoroFake<EdgeInsets>(),
+      widgetOptionsItemPadding = myoroFake<EdgeInsets>(),
+      widgetOptionsCloseButtonPadding = myoroFake<EdgeInsets>(),
+      widgetOptionsModalDesktopWidth = faker.randomGenerator.decimal(
+        scale: 500,
+      );
 
   WidgetShowcaseThemeExtension.builder(ColorScheme colorScheme)
     : wrapperDecoration = BoxDecoration(
         color: MyoroColorDesignSystem.attention.withValues(alpha: 0.1),
-        border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
+        border: Border.all(
+          width: kMyoroBorderLength,
+          color: MyoroColorDesignSystem.attention,
+        ),
 
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       ),
@@ -82,9 +77,13 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       wrapperContentPadding = const EdgeInsets.all(20),
       wrapperAlignment = Alignment.center,
       widgetOptionsButtonIcon = Icons.menu,
-      widgetOptionsButtonTooltipMargin = const EdgeInsets.only(bottom: 10, right: 31),
+      widgetOptionsButtonTooltipMargin = const EdgeInsets.only(
+        bottom: 10,
+        right: 31,
+      ),
       widgetOptionsItemPadding = const EdgeInsets.all(10),
-      widgetOptionsCloseButtonPadding = const EdgeInsets.all(5);
+      widgetOptionsCloseButtonPadding = const EdgeInsets.all(5),
+      widgetOptionsModalDesktopWidth = 400;
 
   @override
   WidgetShowcaseThemeExtension copyWith({
@@ -96,37 +95,75 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     EdgeInsets? widgetOptionsButtonTooltipMargin,
     EdgeInsets? widgetOptionsItemPadding,
     EdgeInsets? widgetOptionsCloseButtonPadding,
+    double? widgetOptionsModalDesktopWidth,
   }) {
     return WidgetShowcaseThemeExtension(
       wrapperDecoration: wrapperDecoration ?? this.wrapperDecoration,
       wrapperPadding: wrapperPadding ?? this.wrapperPadding,
-      wrapperContentPadding: wrapperContentPadding ?? this.wrapperContentPadding,
+      wrapperContentPadding:
+          wrapperContentPadding ?? this.wrapperContentPadding,
       wrapperAlignment: wrapperAlignment ?? this.wrapperAlignment,
-      widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
-      widgetOptionsButtonTooltipMargin: widgetOptionsButtonTooltipMargin ?? this.widgetOptionsButtonTooltipMargin,
-      widgetOptionsItemPadding: widgetOptionsItemPadding ?? this.widgetOptionsItemPadding,
-      widgetOptionsCloseButtonPadding: widgetOptionsCloseButtonPadding ?? this.widgetOptionsCloseButtonPadding,
+      widgetOptionsButtonIcon:
+          widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
+      widgetOptionsButtonTooltipMargin:
+          widgetOptionsButtonTooltipMargin ??
+          this.widgetOptionsButtonTooltipMargin,
+      widgetOptionsItemPadding:
+          widgetOptionsItemPadding ?? this.widgetOptionsItemPadding,
+      widgetOptionsCloseButtonPadding:
+          widgetOptionsCloseButtonPadding ??
+          this.widgetOptionsCloseButtonPadding,
+      widgetOptionsModalDesktopWidth:
+          widgetOptionsModalDesktopWidth ?? this.widgetOptionsModalDesktopWidth,
     );
   }
 
   @override
-  WidgetShowcaseThemeExtension lerp(covariant ThemeExtension<WidgetShowcaseThemeExtension>? other, double t) {
+  WidgetShowcaseThemeExtension lerp(
+    covariant ThemeExtension<WidgetShowcaseThemeExtension>? other,
+    double t,
+  ) {
     if (other is! WidgetShowcaseThemeExtension) return this;
     return copyWith(
-      wrapperDecoration: BoxDecoration.lerp(wrapperDecoration, other.wrapperDecoration, t),
+      wrapperDecoration: BoxDecoration.lerp(
+        wrapperDecoration,
+        other.wrapperDecoration,
+        t,
+      ),
       wrapperPadding: EdgeInsets.lerp(wrapperPadding, other.wrapperPadding, t),
-      wrapperContentPadding: EdgeInsets.lerp(wrapperContentPadding, other.wrapperContentPadding, t),
-      wrapperAlignment: Alignment.lerp(wrapperAlignment, other.wrapperAlignment, t),
-      widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
+      wrapperContentPadding: EdgeInsets.lerp(
+        wrapperContentPadding,
+        other.wrapperContentPadding,
+        t,
+      ),
+      wrapperAlignment: Alignment.lerp(
+        wrapperAlignment,
+        other.wrapperAlignment,
+        t,
+      ),
+      widgetOptionsButtonIcon: myoroLerp(
+        widgetOptionsButtonIcon,
+        other.widgetOptionsButtonIcon,
+        t,
+      ),
       widgetOptionsButtonTooltipMargin: EdgeInsets.lerp(
         widgetOptionsButtonTooltipMargin,
         other.widgetOptionsButtonTooltipMargin,
         t,
       ),
-      widgetOptionsItemPadding: EdgeInsets.lerp(widgetOptionsItemPadding, other.widgetOptionsItemPadding, t),
+      widgetOptionsItemPadding: EdgeInsets.lerp(
+        widgetOptionsItemPadding,
+        other.widgetOptionsItemPadding,
+        t,
+      ),
       widgetOptionsCloseButtonPadding: EdgeInsets.lerp(
         widgetOptionsCloseButtonPadding,
         other.widgetOptionsCloseButtonPadding,
+        t,
+      ),
+      widgetOptionsModalDesktopWidth: lerpDouble(
+        widgetOptionsModalDesktopWidth,
+        other.widgetOptionsModalDesktopWidth,
         t,
       ),
     );
@@ -141,9 +178,12 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         other.wrapperContentPadding == wrapperContentPadding &&
         other.wrapperAlignment == wrapperAlignment &&
         other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
-        other.widgetOptionsButtonTooltipMargin == widgetOptionsButtonTooltipMargin &&
+        other.widgetOptionsButtonTooltipMargin ==
+            widgetOptionsButtonTooltipMargin &&
         other.widgetOptionsItemPadding == widgetOptionsItemPadding &&
-        other.widgetOptionsCloseButtonPadding == widgetOptionsCloseButtonPadding;
+        other.widgetOptionsCloseButtonPadding ==
+            widgetOptionsCloseButtonPadding &&
+        other.widgetOptionsModalDesktopWidth == widgetOptionsModalDesktopWidth;
   }
 
   @override
@@ -157,6 +197,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       widgetOptionsButtonTooltipMargin,
       widgetOptionsItemPadding,
       widgetOptionsCloseButtonPadding,
+      widgetOptionsModalDesktopWidth,
     );
   }
 
@@ -171,5 +212,6 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       '  widgetOptionsButtonTooltipMargin: $widgetOptionsButtonTooltipMargin,\n'
       '  widgetOptionsItemPadding: $widgetOptionsItemPadding,\n'
       '  widgetOptionsCloseButtonPadding: $widgetOptionsCloseButtonPadding,\n'
+      '  widgetOptionsModalDesktopWidth: $widgetOptionsModalDesktopWidth,\n'
       ');';
 }

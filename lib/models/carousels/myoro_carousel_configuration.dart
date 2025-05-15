@@ -36,7 +36,10 @@ class MyoroCarouselConfiguration extends Equatable {
     this.autoplay = autoplayDefaultValue,
     this.autoplayIntervalDuration = autoplayIntervalDurationDefaultValue,
     required this.items,
-  }) : assert(items.length > 0, '[MyoroCarouselConfiguration]: [items] cannot be empty.');
+  }) : assert(
+         items.length > 0,
+         '[MyoroCarouselConfiguration]: [items] cannot be empty.',
+       );
 
   factory MyoroCarouselConfiguration.fake() {
     final List<Widget> items = List.generate(
@@ -45,11 +48,11 @@ class MyoroCarouselConfiguration extends Equatable {
     );
 
     return MyoroCarouselConfiguration(
-      direction: Axis.values[faker.randomGenerator.integer(Axis.values.length)],
+      direction: myoroFake<Axis>(),
       displayTraversalButtons: faker.randomGenerator.boolean(),
       initialItem: faker.randomGenerator.integer(items.length),
       autoplay: faker.randomGenerator.boolean(),
-      autoplayIntervalDuration: Duration(milliseconds: faker.randomGenerator.integer(100)),
+      autoplayIntervalDuration: myoroFake<Duration>(),
       items: items,
     );
   }
@@ -64,10 +67,12 @@ class MyoroCarouselConfiguration extends Equatable {
   }) {
     return MyoroCarouselConfiguration(
       direction: direction ?? this.direction,
-      displayTraversalButtons: displayTraversalButtons ?? this.displayTraversalButtons,
+      displayTraversalButtons:
+          displayTraversalButtons ?? this.displayTraversalButtons,
       initialItem: initialItem ?? this.initialItem,
       autoplay: autoplay ?? this.autoplay,
-      autoplayIntervalDuration: autoplayIntervalDuration ?? this.autoplayIntervalDuration,
+      autoplayIntervalDuration:
+          autoplayIntervalDuration ?? this.autoplayIntervalDuration,
       items: items ?? this.items,
     );
   }

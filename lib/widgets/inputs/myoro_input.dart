@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/inputs/myoro_input_theme_extension.dart';
 
 /// Generic input widget.
 ///
@@ -29,7 +34,11 @@ class MyoroInput extends StatefulWidget {
     Key? key,
     MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
   }) {
-    return MyoroInput(key: key, configuration: configuration, formatter: MyoroDateInputFormatter());
+    return MyoroInput(
+      key: key,
+      configuration: configuration,
+      formatter: MyoroDateInputFormatter(),
+    );
   }
 
   /// An input that only accepts numbers (integers or decimal).
@@ -43,7 +52,11 @@ class MyoroInput extends StatefulWidget {
     return MyoroInput(
       key: key,
       configuration: configuration,
-      formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces),
+      formatter: MyoroNumberInputFormatter(
+        min: min,
+        max: max,
+        decimalPlaces: decimalPlaces,
+      ),
     );
   }
 
@@ -70,11 +83,13 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   TextEditingController? _localController;
   TextEditingController get _controller {
-    return _configuration.controller ?? (_localController ??= TextEditingController());
+    return _configuration.controller ??
+        (_localController ??= TextEditingController());
   }
 
   bool get _showClearTextButton =>
-      _configuration.showClearTextButton != false && _controller.text.isNotEmpty;
+      _configuration.showClearTextButton != false &&
+      _controller.text.isNotEmpty;
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
@@ -114,7 +129,8 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return Row(
       children: [
@@ -157,7 +173,10 @@ final class _Checkbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(initialValue: enabled, onChanged: onChanged),
+      configuration: MyoroCheckboxConfiguration(
+        initialValue: enabled,
+        onChanged: onChanged,
+      ),
     );
   }
 }
@@ -179,9 +198,11 @@ final class _TextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
     final border = _configuration.getBorder(context);
-    final textStyle = _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
+    final textStyle =
+        _configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
     return Container(
       decoration: BoxDecoration(
@@ -198,23 +219,32 @@ final class _TextFormField extends StatelessWidget {
             readOnly: _configuration.readOnly ?? false,
             autofocus: _configuration.autofocus ?? false,
             style: textStyle.withColor(
-              textStyle.color!.withValues(alpha: _enabled ? 1 : themeExtension.disabledOpacity),
+              textStyle.color!.withValues(
+                alpha: _enabled ? 1 : themeExtension.disabledOpacity,
+              ),
             ),
             decoration: InputDecoration(
               floatingLabelBehavior: themeExtension.labelBehavior,
-              label: _configuration.label != null ? _Label(_configuration) : null,
+              label:
+                  _configuration.label != null ? _Label(_configuration) : null,
               hintText: _configuration.placeholder,
               hintStyle: textStyle.withColor(
-                textStyle.color!.withValues(alpha: themeExtension.disabledOpacity),
+                textStyle.color!.withValues(
+                  alpha: themeExtension.disabledOpacity,
+                ),
               ),
               enabledBorder: border,
               focusedBorder: border,
               errorBorder: border.copyWith(
-                borderSide: border.borderSide.copyWith(color: themeExtension.errorBorderColor),
+                borderSide: border.borderSide.copyWith(
+                  color: themeExtension.errorBorderColor,
+                ),
               ),
               disabledBorder: border.copyWith(
                 borderSide: border.borderSide.copyWith(
-                  color: border.borderSide.color.withValues(alpha: themeExtension.disabledOpacity),
+                  color: border.borderSide.color.withValues(
+                    alpha: themeExtension.disabledOpacity,
+                  ),
                 ),
               ),
               isDense: themeExtension.isDense,
@@ -261,7 +291,9 @@ final class _Label extends StatelessWidget {
         configuration.label!,
         style:
             configuration.labelTextStyle ??
-            context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+            context
+                .resolveThemeExtension<MyoroInputThemeExtension>()
+                .labelTextStyle,
       ),
     );
   }
@@ -274,14 +306,17 @@ final class _ClearTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return IntrinsicWidth(
       child: Padding(
         padding: themeExtension.clearTextButtonPadding,
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
-            buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp()),
+            buttonConfiguration: MyoroButtonConfiguration(
+              onTapUp: (_) => _onTapUp(),
+            ),
             iconConfiguration: MyoroIconTextButtonIconConfiguration(
               icon: themeExtension.clearTextButtonIcon,
             ),

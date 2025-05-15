@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/blocs/myoro_form_bloc/myoro_form_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/forms/myoro_form_theme_extension.dart';
+
 /// Base form widget. Should always be used for any type of form content.
 class MyoroForm<T> extends StatefulWidget {
   /// Configuration.
@@ -19,7 +21,8 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
 
   MyoroFormController? _localController;
   MyoroFormController get _controller {
-    return _configuration.controller ?? (_localController ??= MyoroFormController());
+    return _configuration.controller ??
+        (_localController ??= MyoroFormController());
   }
 
   final _key = GlobalKey<FormState>();
@@ -37,7 +40,11 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
   @override
   void initState() {
     super.initState();
-    _bloc = MyoroFormBloc(_key, _configuration.validation, _configuration.request);
+    _bloc = MyoroFormBloc(
+      _key,
+      _configuration.validation,
+      _configuration.request,
+    );
     _controller.bloc = _bloc;
   }
 
@@ -54,7 +61,14 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
       child: BlocConsumer<MyoroFormBloc, MyoroFormState>(
         listener: (_, MyoroFormState state) => _blocListener(state),
         builder: (_, MyoroFormState state) {
-          return Form(key: _key, child: _configuration.builder.call(state.result, state.status, _controller));
+          return Form(
+            key: _key,
+            child: _configuration.builder.call(
+              state.result,
+              state.status,
+              _controller,
+            ),
+          );
         },
       ),
     );

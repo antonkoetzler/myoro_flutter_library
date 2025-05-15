@@ -7,7 +7,8 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [StoryboardScreen].
 @immutable
-final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScreenThemeExtension> {
+final class StoryboardScreenThemeExtension
+    extends ThemeExtension<StoryboardScreenThemeExtension> {
   /// Spacing of [Widget]s.
   final double spacing;
 
@@ -34,7 +35,7 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
   StoryboardScreenThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 50),
       previousPageButtonIcon = myoroFake<IconData>(),
-      buttonPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)),
+      buttonPadding = myoroFake<EdgeInsets>(),
       titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       toggleThemeButtonIcon = myoroFake<IconData>();
 
@@ -55,22 +56,35 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
   }) {
     return StoryboardScreenThemeExtension(
       spacing: spacing ?? this.spacing,
-      previousPageButtonIcon: previousPageButtonIcon ?? this.previousPageButtonIcon,
+      previousPageButtonIcon:
+          previousPageButtonIcon ?? this.previousPageButtonIcon,
       buttonPadding: buttonPadding ?? this.buttonPadding,
       titleTextStyle: titleTextStyle ?? this.titleTextStyle,
-      toggleThemeButtonIcon: toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
+      toggleThemeButtonIcon:
+          toggleThemeButtonIcon ?? this.toggleThemeButtonIcon,
     );
   }
 
   @override
-  StoryboardScreenThemeExtension lerp(covariant ThemeExtension<StoryboardScreenThemeExtension>? other, double t) {
+  StoryboardScreenThemeExtension lerp(
+    covariant ThemeExtension<StoryboardScreenThemeExtension>? other,
+    double t,
+  ) {
     if (other is! StoryboardScreenThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
-      previousPageButtonIcon: myoroLerp(previousPageButtonIcon, other.previousPageButtonIcon, t),
+      previousPageButtonIcon: myoroLerp(
+        previousPageButtonIcon,
+        other.previousPageButtonIcon,
+        t,
+      ),
       buttonPadding: EdgeInsets.lerp(buttonPadding, other.buttonPadding, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      toggleThemeButtonIcon: myoroLerp(toggleThemeButtonIcon, other.toggleThemeButtonIcon, t),
+      toggleThemeButtonIcon: myoroLerp(
+        toggleThemeButtonIcon,
+        other.toggleThemeButtonIcon,
+        t,
+      ),
     );
   }
 
@@ -87,7 +101,13 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
 
   @override
   int get hashCode {
-    return Object.hash(spacing, previousPageButtonIcon, buttonPadding, titleTextStyle, toggleThemeButtonIcon);
+    return Object.hash(
+      spacing,
+      previousPageButtonIcon,
+      buttonPadding,
+      titleTextStyle,
+      toggleThemeButtonIcon,
+    );
   }
 
   @override

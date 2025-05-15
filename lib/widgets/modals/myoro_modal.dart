@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/modals/myoro_modal_theme_extension.dart';
 
 /// Base modal. Every modal should be implementing [MyoroModal] like so.
 ///
@@ -41,7 +46,8 @@ class MyoroModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     return Center(
       child: Material(
@@ -50,12 +56,16 @@ class MyoroModal extends StatelessWidget {
         child: Container(
           constraints: configuration.constraints,
           padding: configuration.padding ?? themeExtension.padding,
-          decoration: BoxDecoration(borderRadius: themeExtension.borderRadius, border: themeExtension.border),
+          decoration: BoxDecoration(
+            borderRadius: themeExtension.borderRadius,
+            border: themeExtension.border,
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             spacing: themeExtension.spacing,
             children: [
-              if (configuration.title != null || configuration.showCloseButton) _Header(configuration),
+              if (configuration.title != null || configuration.showCloseButton)
+                _Header(configuration),
               Flexible(child: child),
             ],
           ),
@@ -76,7 +86,10 @@ final class _Header extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (_configuration.title != null) _Title(_configuration.title!),
-        if (_configuration.showCloseButton == true) ...[const Spacer(), _CloseButton(_configuration)],
+        if (_configuration.showCloseButton == true) ...[
+          const Spacer(),
+          _CloseButton(_configuration),
+        ],
       ],
     );
   }
@@ -94,7 +107,13 @@ final class _Title extends StatelessWidget {
         // Used to align [_Title] with [_CloseButton] visually.
         left: 8,
       ),
-      child: Text(_title, style: context.resolveThemeExtension<MyoroModalThemeExtension>().titleTextStyle),
+      child: Text(
+        _title,
+        style:
+            context
+                .resolveThemeExtension<MyoroModalThemeExtension>()
+                .titleTextStyle,
+      ),
     );
   }
 }
@@ -106,13 +125,16 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     return Padding(
       padding: _configuration.closeButtonPadding ?? EdgeInsets.zero,
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
-          buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => context.navigator.pop()),
+          buttonConfiguration: MyoroButtonConfiguration(
+            onTapUp: (_) => context.navigator.pop(),
+          ),
           iconConfiguration: MyoroIconTextButtonIconConfiguration(
             icon: themeExtension.closeButtonIcon,
             size: themeExtension.closeButtonIconSize,

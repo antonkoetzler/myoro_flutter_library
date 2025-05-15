@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/modals/myoro_dialog_modal_theme_extension.dart';
 
 /// A simple yes/no dialog modal.
 class MyoroDialogModal extends StatelessWidget {
@@ -10,7 +15,8 @@ class MyoroDialogModal extends StatelessWidget {
 
   static Future<void> show(
     BuildContext context, {
-    MyoroModalConfiguration modalConfiguration = const MyoroModalConfiguration(),
+    MyoroModalConfiguration modalConfiguration =
+        const MyoroModalConfiguration(),
     required MyoroDialogModalConfiguration dialogModalConfiguration,
   }) async {
     await MyoroModal.show(
@@ -22,11 +28,15 @@ class MyoroDialogModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     return Column(
       spacing: themeExtension.spacing,
-      children: [Expanded(child: _Message(configuration)), _FooterButtons(configuration)],
+      children: [
+        Expanded(child: _Message(configuration)),
+        _FooterButtons(configuration),
+      ],
     );
   }
 }
@@ -38,10 +48,14 @@ final class _Message extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     if (_configuration.text.isNotEmpty) {
-      return Text(_configuration.text, style: _configuration.textStyle ?? themeExtension.textStyle);
+      return Text(
+        _configuration.text,
+        style: _configuration.textStyle ?? themeExtension.textStyle,
+      );
     }
 
     if (_configuration.child != null) {
@@ -61,7 +75,8 @@ final class _FooterButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     final confirmButton = _ConfirmButton(_configuration);
     final cancelButton = _CancelButton(_configuration);
@@ -73,8 +88,14 @@ final class _FooterButtons extends StatelessWidget {
           spacing: themeExtension.footerButtonsSpacing,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Flexible(child: !_configuration.invertButtons ? confirmButton : cancelButton),
-            Flexible(child: !_configuration.invertButtons ? cancelButton : confirmButton),
+            Flexible(
+              child:
+                  !_configuration.invertButtons ? confirmButton : cancelButton,
+            ),
+            Flexible(
+              child:
+                  !_configuration.invertButtons ? cancelButton : confirmButton,
+            ),
           ],
         ),
       ),
@@ -111,7 +132,9 @@ final class _CancelButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
+        buttonConfiguration: MyoroButtonConfiguration(
+          onTapUp: (_) => _onTapUp(context),
+        ),
         textConfiguration: MyoroIconTextButtonTextConfiguration(
           text: _configuration.cancelButtonText ?? 'Cancel',
         ),

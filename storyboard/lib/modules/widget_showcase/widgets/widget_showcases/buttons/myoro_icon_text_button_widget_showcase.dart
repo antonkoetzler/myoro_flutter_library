@@ -18,6 +18,7 @@ final class MyoroIconTextButtonWidgetShowcase extends StatelessWidget {
         BlocProvider(create: (_) => MyoroIconTextButtonWidgetShowcaseBloc()),
       ],
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroIconTextButtonTitle,
         widget: _Widget(),
         widgetOptions: [
           MyoroButtonWidgetShowcaseCursorOption(),
@@ -48,18 +49,29 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroButtonWidgetShowcaseBloc, MyoroButtonWidgetShowcaseState>(
-      builder: _buttonWidgetShowcaseBlocBuilder,
-    );
+    return BlocBuilder<
+      MyoroButtonWidgetShowcaseBloc,
+      MyoroButtonWidgetShowcaseState
+    >(builder: _buttonWidgetShowcaseBlocBuilder);
   }
 
-  Widget _buttonWidgetShowcaseBlocBuilder(BuildContext context, MyoroButtonWidgetShowcaseState buttonState) {
-    return BlocConsumer<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
+  Widget _buttonWidgetShowcaseBlocBuilder(
+    BuildContext context,
+    MyoroButtonWidgetShowcaseState buttonState,
+  ) {
+    return BlocConsumer<
+      MyoroIconTextButtonWidgetShowcaseBloc,
+      MyoroIconTextButtonWidgetShowcaseState
+    >(
       listener: (_, iconTextButtonState) {
         _iconTextButtonWidgetShowcaseBlocListener(context, iconTextButtonState);
       },
       builder: (_, iconTextButtonState) {
-        return _iconTextButtonWidgetShowcaseBlocBuilder(context, buttonState, iconTextButtonState);
+        return _iconTextButtonWidgetShowcaseBlocBuilder(
+          context,
+          buttonState,
+          iconTextButtonState,
+        );
       },
     );
   }
@@ -68,7 +80,8 @@ final class _Widget extends StatelessWidget {
     BuildContext context,
     MyoroIconTextButtonWidgetShowcaseState iconTextButtonState,
   ) {
-    if (iconTextButtonState.icon != null || iconTextButtonState.text.isNotEmpty) {
+    if (iconTextButtonState.icon != null ||
+        iconTextButtonState.text.isNotEmpty) {
       return;
     }
 
@@ -78,7 +91,11 @@ final class _Widget extends StatelessWidget {
     if (faker.randomGenerator.boolean()) {
       bloc.add(SetIconEvent(myoroFake<IconData>()));
     } else {
-      bloc.add(const SetTextEvent(MyoroIconTextButtonWidgetShowcaseState.textDefaultValue));
+      bloc.add(
+        const SetTextEvent(
+          MyoroIconTextButtonWidgetShowcaseState.textDefaultValue,
+        ),
+      );
     }
   }
 
@@ -91,21 +108,37 @@ final class _Widget extends StatelessWidget {
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(
           cursor: buttonState.cursor ?? SystemMouseCursors.click,
-          borderRadius: buttonState.borderRadius != null ? BorderRadius.circular(buttonState.borderRadius!) : null,
+          borderRadius:
+              buttonState.borderRadius != null
+                  ? BorderRadius.circular(buttonState.borderRadius!)
+                  : null,
           backgroundColorBuilder:
               buttonState.backgroundColorBuilderEnabled
                   ? (MyoroTapStatusEnum tapStatusEnum) {
-                    return MyoroButtonWidgetShowcaseBloc.backgroundColorBuilder(tapStatusEnum, buttonState);
+                    return MyoroButtonWidgetShowcaseBloc.backgroundColorBuilder(
+                      tapStatusEnum,
+                      buttonState,
+                    );
                   }
                   : null,
           borderBuilder:
               buttonState.borderBuilderEnabled
                   ? (MyoroTapStatusEnum tapStatusEnum) {
-                    return MyoroButtonWidgetShowcaseBloc.borderBuilder(context, tapStatusEnum, buttonState);
+                    return MyoroButtonWidgetShowcaseBloc.borderBuilder(
+                      context,
+                      tapStatusEnum,
+                      buttonState,
+                    );
                   }
                   : null,
-          onTapDown: buttonState.onTapDownEnabled ? (_) => MyoroButtonWidgetShowcaseBloc.onTapDown(context) : null,
-          onTapUp: buttonState.onTapUpEnabled ? (_) => MyoroButtonWidgetShowcaseBloc.onTapUp(context) : null,
+          onTapDown:
+              buttonState.onTapDownEnabled
+                  ? (_) => MyoroButtonWidgetShowcaseBloc.onTapDown(context)
+                  : null,
+          onTapUp:
+              buttonState.onTapUpEnabled
+                  ? (_) => MyoroButtonWidgetShowcaseBloc.onTapUp(context)
+                  : null,
         ),
         invert: iconTextButtonState.invert,
         spacing: iconTextButtonState.spacing,
@@ -113,7 +146,10 @@ final class _Widget extends StatelessWidget {
         contentColorBuilder:
             iconTextButtonState.contentColorBuilderEnabled
                 ? (MyoroTapStatusEnum tapStatusEnum) {
-                  return _contentColorBuilder(tapStatusEnum, iconTextButtonState);
+                  return _contentColorBuilder(
+                    tapStatusEnum,
+                    iconTextButtonState,
+                  );
                 }
                 : null,
         iconConfiguration:
@@ -144,9 +180,12 @@ final class _Widget extends StatelessWidget {
     const Color transparent = MyoroColorDesignSystem.transparent;
 
     return switch (tapStatusEnum) {
-      MyoroTapStatusEnum.idle => iconTextButtonState.idleContentColor ?? transparent,
-      MyoroTapStatusEnum.hover => iconTextButtonState.hoverContentColor ?? transparent,
-      MyoroTapStatusEnum.tap => iconTextButtonState.tapContentColor ?? transparent,
+      MyoroTapStatusEnum.idle =>
+        iconTextButtonState.idleContentColor ?? transparent,
+      MyoroTapStatusEnum.hover =>
+        iconTextButtonState.hoverContentColor ?? transparent,
+      MyoroTapStatusEnum.tap =>
+        iconTextButtonState.tapContentColor ?? transparent,
     };
   }
 }
@@ -179,7 +218,9 @@ final class _SpacingOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
     return WidgetShowcaseOption(
-      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Spacing between icon and text.'),
+      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+        label: 'Spacing between icon and text.',
+      ),
       child: MyoroSlider(
         configuration: MyoroSliderConfiguration(
           onChanged: (double value) => _onChanged(bloc, value),
@@ -221,15 +262,24 @@ final class _PaddingOption extends StatelessWidget {
     bloc.add(SetPaddingEvent(top: value));
   }
 
-  void _bottomOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, double value) {
+  void _bottomOnChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    double value,
+  ) {
     bloc.add(SetPaddingEvent(bottom: value));
   }
 
-  void _leftOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, double value) {
+  void _leftOnChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    double value,
+  ) {
     bloc.add(SetPaddingEvent(left: value));
   }
 
-  void _rightOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, double value) {
+  void _rightOnChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    double value,
+  ) {
     bloc.add(SetPaddingEvent(right: value));
   }
 }
@@ -241,17 +291,24 @@ final class _ContentColorBuilderOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
-    return BlocBuilder<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
-      buildWhen: _buildWhen,
-      builder: (_, state) => _builder(bloc, state),
-    );
+    return BlocBuilder<
+      MyoroIconTextButtonWidgetShowcaseBloc,
+      MyoroIconTextButtonWidgetShowcaseState
+    >(buildWhen: _buildWhen, builder: (_, state) => _builder(bloc, state));
   }
 
-  bool _buildWhen(MyoroIconTextButtonWidgetShowcaseState previous, MyoroIconTextButtonWidgetShowcaseState current) {
-    return previous.contentColorBuilderEnabled != current.contentColorBuilderEnabled;
+  bool _buildWhen(
+    MyoroIconTextButtonWidgetShowcaseState previous,
+    MyoroIconTextButtonWidgetShowcaseState current,
+  ) {
+    return previous.contentColorBuilderEnabled !=
+        current.contentColorBuilderEnabled;
   }
 
-  Widget _builder(MyoroIconTextButtonWidgetShowcaseBloc bloc, MyoroIconTextButtonWidgetShowcaseState state) {
+  Widget _builder(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    MyoroIconTextButtonWidgetShowcaseState state,
+  ) {
     return MyoroTapStatusEnumWidgetShowcaseOption(
       configuration: MyoroTapStatusEnumWidgetShowcaseOptionConfiguration(
         labelConfiguration: WidgetShowcaseOptionLabelConfiguration(
@@ -260,25 +317,38 @@ final class _ContentColorBuilderOption extends StatelessWidget {
           onChanged: (bool enabled) => _checkboxOnChanged(bloc, enabled),
         ),
         idleColorOnChanged: (Color? color) => _idleColorOnChanged(bloc, color),
-        hoverColorOnChanged: (Color? color) => _hoverColorOnChanged(bloc, color),
+        hoverColorOnChanged:
+            (Color? color) => _hoverColorOnChanged(bloc, color),
         tapColorOnChanged: (Color? color) => _tapColorOnChanged(bloc, color),
       ),
     );
   }
 
-  void _checkboxOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, bool enabled) {
+  void _checkboxOnChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    bool enabled,
+  ) {
     bloc.add(SetContentColorBuilderEnabledEvent(enabled));
   }
 
-  void _idleColorOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, Color? color) {
+  void _idleColorOnChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    Color? color,
+  ) {
     bloc.add(SetIdleContentColorEvent(color));
   }
 
-  void _hoverColorOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, Color? color) {
+  void _hoverColorOnChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    Color? color,
+  ) {
     bloc.add(SetHoverContentColorEvent(color));
   }
 
-  void _tapColorOnChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, Color? color) {
+  void _tapColorOnChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    Color? color,
+  ) {
     bloc.add(SetHoverContentColorEvent(color));
   }
 }
@@ -290,7 +360,9 @@ final class _IconOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
-    return IconWidgetShowcaseOption(onChanged: (IconData? icon) => _onChanged(bloc, icon));
+    return IconWidgetShowcaseOption(
+      onChanged: (IconData? icon) => _onChanged(bloc, icon),
+    );
   }
 
   void _onChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, IconData? icon) {
@@ -324,13 +396,16 @@ final class _IconSizeOptionState extends State<_IconSizeOption> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
-      buildWhen: _buildWhen,
-      builder: _builder,
-    );
+    return BlocBuilder<
+      MyoroIconTextButtonWidgetShowcaseBloc,
+      MyoroIconTextButtonWidgetShowcaseState
+    >(buildWhen: _buildWhen, builder: _builder);
   }
 
-  bool _buildWhen(MyoroIconTextButtonWidgetShowcaseState previous, MyoroIconTextButtonWidgetShowcaseState current) {
+  bool _buildWhen(
+    MyoroIconTextButtonWidgetShowcaseState previous,
+    MyoroIconTextButtonWidgetShowcaseState current,
+  ) {
     return previous.iconSize != current.iconSize;
   }
 
@@ -365,8 +440,14 @@ final class _TextOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
     return WidgetShowcaseOption(
-      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Text'),
-      child: MyoroInput(configuration: MyoroInputConfiguration(onChanged: (String text) => _onChanged(bloc, text))),
+      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+        label: 'Text',
+      ),
+      child: MyoroInput(
+        configuration: MyoroInputConfiguration(
+          onChanged: (String text) => _onChanged(bloc, text),
+        ),
+      ),
     );
   }
 
@@ -383,11 +464,15 @@ final class _TextMaxLinesOption extends StatelessWidget {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
     return WidgetShowcaseOption(
-      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Text max lines'),
+      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+        label: 'Text max lines',
+      ),
       child: MyoroInput.number(
         min: 1,
         max: 10,
-        configuration: MyoroInputConfiguration(onChanged: (String text) => _onChanged(bloc, text)),
+        configuration: MyoroInputConfiguration(
+          onChanged: (String text) => _onChanged(bloc, text),
+        ),
       ),
     );
   }
@@ -406,14 +491,18 @@ final class _TextOverflowOption extends StatelessWidget {
 
     return TextOverflowWidgetShowcaseOption(
       dropdownConfiguration: WidgetShowcaseOptionDropdownConfiguration(
-        initiallySelectedItem: MyoroIconTextButtonTextConfiguration.overflowDefaultValue,
+        initiallySelectedItem:
+            MyoroIconTextButtonTextConfiguration.overflowDefaultValue,
         allowItemClearing: false,
         onChanged: (TextOverflow? overflow) => _onChanged(bloc, overflow!),
       ),
     );
   }
 
-  void _onChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, TextOverflow overflow) {
+  void _onChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    TextOverflow overflow,
+  ) {
     bloc.add(SetTextOverflowEvent(overflow));
   }
 }
@@ -425,14 +514,20 @@ final class _TextAlignmentOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroIconTextButtonWidgetShowcaseBloc>();
 
-    return BlocBuilder<MyoroIconTextButtonWidgetShowcaseBloc, MyoroIconTextButtonWidgetShowcaseState>(
-      builder: (_, state) => _builder(bloc, state),
-    );
+    return BlocBuilder<
+      MyoroIconTextButtonWidgetShowcaseBloc,
+      MyoroIconTextButtonWidgetShowcaseState
+    >(builder: (_, state) => _builder(bloc, state));
   }
 
-  Widget _builder(MyoroIconTextButtonWidgetShowcaseBloc bloc, MyoroIconTextButtonWidgetShowcaseState state) {
+  Widget _builder(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    MyoroIconTextButtonWidgetShowcaseState state,
+  ) {
     return TextAlignWidgetShowcaseOption(
-      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(label: 'Text alignment'),
+      labelConfiguration: const WidgetShowcaseOptionLabelConfiguration(
+        label: 'Text alignment',
+      ),
       dropdownConfiguration: WidgetShowcaseOptionDropdownConfiguration(
         initiallySelectedItem: state.textAlignment,
         allowItemClearing: false,
@@ -441,7 +536,10 @@ final class _TextAlignmentOption extends StatelessWidget {
     );
   }
 
-  void _onChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, TextAlign textAlign) {
+  void _onChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    TextAlign textAlign,
+  ) {
     bloc.add(SetTextAlignmentEvent(textAlign));
   }
 }
@@ -460,7 +558,10 @@ final class _TextStyleOption extends StatelessWidget {
     );
   }
 
-  void _onChanged(MyoroIconTextButtonWidgetShowcaseBloc bloc, TextStyle? textStyle) {
+  void _onChanged(
+    MyoroIconTextButtonWidgetShowcaseBloc bloc,
+    TextStyle? textStyle,
+  ) {
     bloc.add(SetTextStyleEvent(textStyle));
   }
 }

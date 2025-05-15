@@ -16,7 +16,11 @@ class MyoroBarGraphBarSection extends Equatable {
   /// Color of the bar section.
   final Color color;
 
-  const MyoroBarGraphBarSection({required this.fromY, required this.toY, required this.color});
+  const MyoroBarGraphBarSection({
+    required this.fromY,
+    required this.toY,
+    required this.color,
+  });
 
   MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
     return MyoroBarGraphBarSection(
@@ -31,7 +35,7 @@ class MyoroBarGraphBarSection extends Equatable {
     return MyoroBarGraphBarSection(
       fromY: fromY,
       toY: faker.randomGenerator.decimal(min: fromY),
-      color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+      color: myoroFake<Color>(),
     );
   }
 

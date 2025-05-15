@@ -30,13 +30,16 @@ class MyoroIconTextButtonTextConfiguration extends Equatable {
     this.overflow = overflowDefaultValue,
     this.alignment = alignmentDefaultValue,
     this.style,
-  }) : assert(text.length != 0, '[MyoroIconTextButtonTextConfiguration]: [text] cannot be empty.');
+  }) : assert(
+         text.length != 0,
+         '[MyoroIconTextButtonTextConfiguration]: [text] cannot be empty.',
+       );
 
   MyoroIconTextButtonTextConfiguration.fake()
     : text = faker.lorem.word(),
       maxLines = faker.randomGenerator.integer(10, min: 1),
-      overflow = TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)],
-      alignment = TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)],
+      overflow = myoroFake<TextOverflow>(),
+      alignment = myoroFake<TextAlign>(),
       style =
           faker.randomGenerator.boolean()
               ? MyoroTypographyDesignSystem.instance.randomTextStyle

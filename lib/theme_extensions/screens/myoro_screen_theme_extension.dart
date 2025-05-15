@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/screens/myoro_screen.dart';
 
 /// [ThemeExtension] for [MyoroScreen].
 @immutable
-class MyoroScreenThemeExtension extends ThemeExtension<MyoroScreenThemeExtension> {
+class MyoroScreenThemeExtension
+    extends ThemeExtension<MyoroScreenThemeExtension> {
   const MyoroScreenThemeExtension();
 
   const MyoroScreenThemeExtension.builder();
@@ -19,7 +19,8 @@ class MyoroScreenThemeExtension extends ThemeExtension<MyoroScreenThemeExtension
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroScreenThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroScreenThemeExtension &&
+        other.runtimeType == runtimeType;
   }
 
   @override

@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/forms/myoro_form.dart';
 
 /// [ThemeExtension] for [MyoroForm].
 @immutable

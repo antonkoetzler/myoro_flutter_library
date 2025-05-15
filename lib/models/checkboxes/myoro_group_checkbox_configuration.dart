@@ -54,10 +54,17 @@ class MyoroGroupCheckboxConfiguration extends Equatable {
     };
 
     return MyoroGroupCheckboxConfiguration(
-      notifier: notifierProvided ? MyoroGroupCheckboxNotifier(checkboxes) : null,
-      direction: Axis.values[faker.randomGenerator.integer(Axis.values.length)],
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
+      notifier:
+          notifierProvided ? MyoroGroupCheckboxNotifier(checkboxes) : null,
+      direction: myoroFake<Axis>(),
+      spacing:
+          faker.randomGenerator.boolean()
+              ? faker.randomGenerator.decimal(scale: 10)
+              : null,
+      runSpacing:
+          faker.randomGenerator.boolean()
+              ? faker.randomGenerator.decimal(scale: 10)
+              : null,
       onChanged: faker.randomGenerator.boolean() ? ((_, __) {}) : null,
       checkboxes: notifierProvided ? null : checkboxes,
     );

@@ -1,24 +1,24 @@
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/buttons/myoro_button.dart';
 
 /// [ThemeExtension] of [MyoroButton].
 @immutable
-class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension> {
+class MyoroButtonThemeExtension
+    extends ThemeExtension<MyoroButtonThemeExtension> {
   /// Border radius.
   final BorderRadius borderRadius;
 
   const MyoroButtonThemeExtension({required this.borderRadius});
 
-  MyoroButtonThemeExtension.fake()
-    : borderRadius = BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1));
+  MyoroButtonThemeExtension.fake() : borderRadius = myoroFake<BorderRadius>();
 
   MyoroButtonThemeExtension.builder()
     : borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
 
   @override
   MyoroButtonThemeExtension copyWith({BorderRadius? borderRadius}) {
-    return MyoroButtonThemeExtension(borderRadius: borderRadius ?? this.borderRadius);
+    return MyoroButtonThemeExtension(
+      borderRadius: borderRadius ?? this.borderRadius,
+    );
   }
 
   @override
@@ -27,7 +27,9 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     double t,
   ) {
     if (other is! MyoroButtonThemeExtension) return this;
-    return copyWith(borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t));
+    return copyWith(
+      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
+    );
   }
 
   @override

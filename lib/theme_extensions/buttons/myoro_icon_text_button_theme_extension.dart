@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/buttons/myoro_icon_text_button.dart';
 
 /// [ThemeExtension] of [MyoroIconTextButton].
 @immutable
-class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButtonThemeExtension> {
+class MyoroIconTextButtonThemeExtension
+    extends ThemeExtension<MyoroIconTextButtonThemeExtension> {
   /// [TextStyle] of [_Text].
   final TextStyle textStyle;
 
@@ -17,7 +17,9 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
 
   @override
   MyoroIconTextButtonThemeExtension copyWith({TextStyle? textStyle}) {
-    return MyoroIconTextButtonThemeExtension(textStyle: textStyle ?? this.textStyle);
+    return MyoroIconTextButtonThemeExtension(
+      textStyle: textStyle ?? this.textStyle,
+    );
   }
 
   @override

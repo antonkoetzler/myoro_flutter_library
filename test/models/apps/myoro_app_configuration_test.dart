@@ -25,9 +25,11 @@ void main() {
         textThemeBuilder: otherModel.textThemeBuilder,
         textThemeBuilderProvided: otherModel.textThemeBuilder != null,
         themeExtensionsBuilder: otherModel.themeExtensionsBuilder,
-        themeExtensionsBuilderProvided: otherModel.themeExtensionsBuilder != null,
+        themeExtensionsBuilderProvided:
+            otherModel.themeExtensionsBuilder != null,
         localizationsDelegates: otherModel.localizationsDelegates,
-        localizationsDelegatesProvided: otherModel.localizationsDelegates != null,
+        localizationsDelegatesProvided:
+            otherModel.localizationsDelegates != null,
         supportedLocales: otherModel.supportedLocales,
         supportedLocalesProvided: otherModel.supportedLocales != null,
         router: otherModel.router,
@@ -69,14 +71,15 @@ MyoroAppConfiguration get _configuration {
 
   return MyoroAppConfiguration(
     title: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
-    themeMode:
-        faker.randomGenerator.boolean()
-            ? ThemeMode.values[faker.randomGenerator.integer(ThemeMode.values.length)]
-            : null,
-    colorSchemeBuilder: faker.randomGenerator.boolean() ? ((_) => colorScheme) : null,
-    textThemeBuilder: faker.randomGenerator.boolean() ? ((_) => textTheme) : null,
+    themeMode: faker.randomGenerator.boolean() ? myoroFake<ThemeMode>() : null,
+    colorSchemeBuilder:
+        faker.randomGenerator.boolean() ? ((_) => colorScheme) : null,
+    textThemeBuilder:
+        faker.randomGenerator.boolean() ? ((_) => textTheme) : null,
     themeExtensionsBuilder:
-        faker.randomGenerator.boolean() ? ((_, __, ___) => themeExtensions) : null,
+        faker.randomGenerator.boolean()
+            ? ((_, __, ___) => themeExtensions)
+            : null,
     home: const SizedBox.shrink(),
   );
 }

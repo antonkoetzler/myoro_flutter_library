@@ -9,7 +9,10 @@ final class MyoroAccordionWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WidgetShowcase(widget: _Widget());
+    return const WidgetShowcase(
+      widgetName: StoryboardWidgetListingEnum.myoroAccordionTitle,
+      widget: _Widget(),
+    );
   }
 }
 
@@ -27,7 +30,9 @@ final class _Widget extends StatelessWidget {
               return Text(faker.lorem.word());
             },
             contentBuilder: (_) {
-              return const Text('This is where the content of the accordion goes');
+              return const Text(
+                'This is where the content of the accordion goes',
+              );
             },
           ),
         ),

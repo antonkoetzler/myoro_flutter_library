@@ -1,9 +1,13 @@
 import 'dart:async';
+import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/blocs/myoro_table_bloc/myoro_table_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/tables/myoro_table_theme_extension.dart';
 
 /// Table of MFL.
 ///
@@ -30,7 +34,8 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   MyoroTableController<T>? _localController;
   MyoroTableController<T> get _controller {
-    final MyoroTableController<T> controller = widget.controller ?? (_localController ??= MyoroTableController());
+    final MyoroTableController<T> controller =
+        widget.controller ?? (_localController ??= MyoroTableController());
     controller.bloc = _bloc;
     return controller;
   }
@@ -58,7 +63,8 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return BlocProvider.value(
       value: _bloc,
@@ -82,10 +88,13 @@ final class _Columns<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final basicDividerThemeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
+    final tableThemeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final basicDividerThemeExtension =
+        context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
-    final decorationBorderRadius = tableThemeExtension.decoration.borderRadius as BorderRadius;
+    final decorationBorderRadius =
+        tableThemeExtension.decoration.borderRadius as BorderRadius;
 
     // Empty [MyoroLayoutBuilder] to rebuild [_Columns] everytime the screen is resized.
     return MyoroLayoutBuilder(
@@ -98,7 +107,9 @@ final class _Columns<T> extends StatelessWidget {
           ),
           child: Row(
             // Equation to omit spacing of inserted [_Divider] [Widget]s in [_buildColumns].
-            spacing: (tableThemeExtension.columnSpacing / 2) - (basicDividerThemeExtension.shortValue / 2),
+            spacing:
+                (tableThemeExtension.columnSpacing / 2) -
+                (basicDividerThemeExtension.shortValue / 2),
             children: _buildColumns(context),
           ),
         );
@@ -110,7 +121,8 @@ final class _Columns<T> extends StatelessWidget {
     final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
     final List<MyoroTableColumn> columns = bloc.configuration.columns;
     final List<GlobalKey> titleColumnKeys = bloc.titleColumnKeys;
-    final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier = bloc.titleColumnKeyWidthsNotifier;
+    final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier =
+        bloc.titleColumnKeyWidthsNotifier;
 
     assert(
       columns.length == titleColumnKeys.length,
@@ -133,7 +145,8 @@ final class _Columns<T> extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       titleColumnKeyWidthsNotifier.value =
           titleColumnKeys.map<double>((GlobalKey titleColumnKey) {
-            final renderBox = titleColumnKey.currentContext!.findRenderObject() as RenderBox;
+            final renderBox =
+                titleColumnKey.currentContext!.findRenderObject() as RenderBox;
             return renderBox.size.width;
           }).toList();
     });
@@ -150,14 +163,17 @@ final class _Column extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     final Widget child = DefaultTextStyle(
       style: themeExtension.columnTextStyle,
       child:
           _column.tooltipMessage != null
               ? MyoroTooltip(
-                configuration: MyoroTooltipConfiguration(text: _column.tooltipMessage!),
+                configuration: MyoroTooltipConfiguration(
+                  text: _column.tooltipMessage!,
+                ),
                 child: _column.child,
               )
               : _column.child,
@@ -170,7 +186,9 @@ final class _Column extends StatelessWidget {
 
     return switch (_column.widthConfiguration.typeEnum) {
       MyoroTableColumnWidthConfigurationEnum.expanded => Expanded(child: child),
-      MyoroTableColumnWidthConfigurationEnum.intrinsic => IntrinsicWidth(child: child),
+      MyoroTableColumnWidthConfigurationEnum.intrinsic => IntrinsicWidth(
+        child: child,
+      ),
       MyoroTableColumnWidthConfigurationEnum.fixed => SizedBox(
         width: _column.widthConfiguration.fixedWidth,
         child: child,
@@ -184,7 +202,10 @@ final class _RowsSection<T> extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return BlocBuilder<MyoroTableBloc<T>, MyoroTableState<T>>(buildWhen: _buildWhen, builder: _builder);
+    return BlocBuilder<MyoroTableBloc<T>, MyoroTableState<T>>(
+      buildWhen: _buildWhen,
+      builder: _builder,
+    );
   }
 
   bool _buildWhen(MyoroTableState<T> previous, MyoroTableState<T> current) {
@@ -206,9 +227,13 @@ final class _Loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    return Padding(padding: themeExtension.loaderEmptyMessageErrorMessagePadding, child: const MyoroCircularLoader());
+    return Padding(
+      padding: themeExtension.loaderEmptyMessageErrorMessagePadding,
+      child: const MyoroCircularLoader(),
+    );
   }
 }
 
@@ -223,10 +248,12 @@ final class _Rows<T> extends StatelessWidget {
       return const _EmptyMessage();
     }
 
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
-    final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier = bloc.titleColumnKeyWidthsNotifier;
+    final ValueNotifier<List<double>> titleColumnKeyWidthsNotifier =
+        bloc.titleColumnKeyWidthsNotifier;
 
     return ValueListenableBuilder(
       valueListenable: titleColumnKeyWidthsNotifier,
@@ -236,13 +263,17 @@ final class _Rows<T> extends StatelessWidget {
     );
   }
 
-  Widget _builder(MyoroTableThemeExtension themeExtension, List<double> titleColumnKeyWidths) {
+  Widget _builder(
+    MyoroTableThemeExtension themeExtension,
+    List<double> titleColumnKeyWidths,
+  ) {
     // Empty case as there cannot be 0 [MyoroTableColumn]s in a [MyoroTable].
     if (titleColumnKeyWidths.isEmpty) {
       return const _Loader();
     }
 
-    final decorationBorderRadius = themeExtension.decoration.borderRadius as BorderRadius;
+    final decorationBorderRadius =
+        themeExtension.decoration.borderRadius as BorderRadius;
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,
@@ -268,11 +299,13 @@ final class _Row<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     final MyoroTableBloc<T> bloc = context.resolveBloc<MyoroTableBloc<T>>();
     final MyoroTableConfiguration<T> configuration = bloc.configuration;
-    final MyoroTableConfigurationRowBuilder<T> rowBuilder = configuration.rowBuilder;
+    final MyoroTableConfigurationRowBuilder<T> rowBuilder =
+        configuration.rowBuilder;
 
     final MyoroTableRow<T> row = rowBuilder(_item);
     final MyoroTableRowTapEvent<T>? onTapDown = row.onTapDown;
@@ -299,7 +332,10 @@ final class _Row<T> extends StatelessWidget {
               for (int i = 0; i < cells.length; i++) ...[
                 (i == cells.length - 1)
                     ? Expanded(child: cells[i])
-                    : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
+                    : SizedBox(
+                      width: _titleColumnKeyWidths[i],
+                      child: cells[i],
+                    ),
               ],
             ],
           );
@@ -314,9 +350,13 @@ final class _EmptyMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    return Text('No items were found!', style: themeExtension.emptyMessageTextStyle);
+    return Text(
+      'No items were found!',
+      style: themeExtension.emptyMessageTextStyle,
+    );
   }
 }
 
@@ -327,7 +367,8 @@ final class _ErrorMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return Text(_errorMessage, style: themeExtension.errorMessageTextStyle);
   }

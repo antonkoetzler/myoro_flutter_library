@@ -5,13 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of [MyoroButton]'s background color.
-typedef MyoroButtonConfigurationBackgroundColorBuilder = Color Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonConfigurationBackgroundColorBuilder =
+    Color Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Builder of the [MyoroButton]'s border.
-typedef MyoroButtonConfigurationBorderBuilder = BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonConfigurationBorderBuilder =
+    BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Function executed when the [MyoroButton] is tapped.
-typedef MyoroButtonConfigurationOnTapDown = void Function(TapDownDetails details);
+typedef MyoroButtonConfigurationOnTapDown =
+    void Function(TapDownDetails details);
 
 /// Function executed when the [MyoroButton] is released being tapped.
 ///
@@ -58,24 +61,27 @@ class MyoroButtonConfiguration extends Equatable {
   });
 
   MyoroButtonConfiguration.fake()
-    : tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
+    : tooltipConfiguration =
+          faker.randomGenerator.boolean()
+              ? MyoroTooltipConfiguration.fake()
+              : null,
       cursor =
           faker.randomGenerator.boolean()
-              ? kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)]
+              ? myoroFake<SystemMouseCursor>()
               : null,
       borderRadius =
           faker.randomGenerator.boolean()
-              ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
+              ? BorderRadius.circular(
+                faker.randomGenerator.decimal(scale: 50, min: 1),
+              )
               : null,
       backgroundColorBuilder =
-          faker.randomGenerator.boolean()
-              ? ((_) => kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)])
-              : null,
+          faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
       borderBuilder =
           faker.randomGenerator.boolean()
               ? ((_) => Border.all(
                 width: faker.randomGenerator.decimal(scale: 10),
-                color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+                color: myoroFake<Color>(),
               ))
               : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
@@ -98,12 +104,19 @@ class MyoroButtonConfiguration extends Equatable {
     bool onTapUpProvided = true,
   }) {
     return MyoroButtonConfiguration(
-      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
+      tooltipConfiguration:
+          tooltipConfigurationProvided
+              ? (tooltipConfiguration ?? this.tooltipConfiguration)
+              : null,
       cursor: cursorProvided ? (cursor ?? this.cursor) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      borderRadius:
+          borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       backgroundColorBuilder:
-          backgroundColorBuilderProvided ? (backgroundColorBuilder ?? this.backgroundColorBuilder) : null,
-      borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
+          backgroundColorBuilderProvided
+              ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
+              : null,
+      borderBuilder:
+          borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
     );
@@ -111,7 +124,15 @@ class MyoroButtonConfiguration extends Equatable {
 
   @override
   List<Object?> get props {
-    return [tooltipConfiguration, cursor, borderRadius, backgroundColorBuilder, borderBuilder, onTapDown, onTapUp];
+    return [
+      tooltipConfiguration,
+      cursor,
+      borderRadius,
+      backgroundColorBuilder,
+      borderBuilder,
+      onTapDown,
+      onTapUp,
+    ];
   }
 
   @override

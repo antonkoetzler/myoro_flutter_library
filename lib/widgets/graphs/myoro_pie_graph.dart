@@ -1,6 +1,11 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/graphs/myoro_pie_graph_theme_extension.dart';
 
 /// A pie (or donut if specified) chart.
 class MyoroPieGraph extends StatelessWidget {
@@ -13,7 +18,10 @@ class MyoroPieGraph extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
-      children: [_PieGraph(configuration), if (configuration.centerWidget != null) configuration.centerWidget!],
+      children: [
+        _PieGraph(configuration),
+        if (configuration.centerWidget != null) configuration.centerWidget!,
+      ],
     );
   }
 }
@@ -25,13 +33,16 @@ final class _PieGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
 
     return PieChart(
       PieChartData(
         centerSpaceRadius: _configuration.typeEnum.isPie ? 0 : 100,
         sections:
-            _configuration.items.map<PieChartSectionData>((MyoroPieGraphItem item) {
+            _configuration.items.map<PieChartSectionData>((
+              MyoroPieGraphItem item,
+            ) {
               return PieChartSectionData(
                 showTitle: false,
                 value: item.value,

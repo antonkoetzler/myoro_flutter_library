@@ -13,7 +13,6 @@ void main() {
         marginProvided: otherModel.margin != null,
         waitDuration: otherModel.waitDuration,
         text: otherModel.text,
-        child: otherModel.child,
       ),
       otherModel,
     );
@@ -26,7 +25,6 @@ void main() {
       '  margin: ${model.margin},\n'
       '  waitDuration: ${model.waitDuration},\n'
       '  text: ${model.text},\n'
-      '  child: ${model.child},\n'
       ');',
     );
   });

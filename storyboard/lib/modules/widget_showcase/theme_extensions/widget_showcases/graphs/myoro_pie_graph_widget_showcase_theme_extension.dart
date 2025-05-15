@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/constants.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroPieGraphWidgetShowcase].
@@ -21,11 +21,13 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension
   });
 
   MyoroPieGraphWidgetShowcaseThemeExtension.fake()
-    : centerWidgetBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
+    : centerWidgetBorderRadius = myoroFake<BorderRadius>(),
       centerWidgetSize = faker.randomGenerator.decimal();
 
   MyoroPieGraphWidgetShowcaseThemeExtension.builder()
-    : centerWidgetBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+    : centerWidgetBorderRadius = BorderRadius.circular(
+        kMyoroBorderRadiusLength,
+      ),
       centerWidgetSize = 125;
 
   @override
@@ -34,7 +36,8 @@ final class MyoroPieGraphWidgetShowcaseThemeExtension
     double? centerWidgetSize,
   }) {
     return MyoroPieGraphWidgetShowcaseThemeExtension(
-      centerWidgetBorderRadius: centerWidgetBorderRadius ?? this.centerWidgetBorderRadius,
+      centerWidgetBorderRadius:
+          centerWidgetBorderRadius ?? this.centerWidgetBorderRadius,
       centerWidgetSize: centerWidgetSize ?? this.centerWidgetSize,
     );
   }

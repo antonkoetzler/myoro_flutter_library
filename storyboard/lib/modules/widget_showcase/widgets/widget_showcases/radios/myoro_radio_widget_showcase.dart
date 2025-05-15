@@ -13,6 +13,7 @@ final class MyoroRadioWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create: (_) => MyoroRadioWidgetShowcaseBloc(),
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroRadioTitle,
         widget: _Widget(),
         widgetOptions: [_LabelOption(), _LabelTextStyleOption()],
       ),
@@ -27,7 +28,10 @@ final class _Widget extends StatelessWidget {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
         configuration: MyoroSnackBarConfiguration(
-          snackBarType: value ? MyoroSnackBarTypeEnum.success : MyoroSnackBarTypeEnum.error,
+          snackBarType:
+              value
+                  ? MyoroSnackBarTypeEnum.success
+                  : MyoroSnackBarTypeEnum.error,
           message: 'Radio ${value ? 'enabled' : 'disabled'}!',
         ),
       ),
@@ -36,7 +40,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroRadioWidgetShowcaseBloc, MyoroRadioWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroRadioWidgetShowcaseBloc,
+      MyoroRadioWidgetShowcaseState
+    >(
       builder: (_, MyoroRadioWidgetShowcaseState state) {
         return MyoroRadio(
           configuration: MyoroRadioConfiguration(
@@ -65,7 +72,9 @@ final class _LabelOption extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: '[MyoroRadio.label]',
         inputStyle:
-            context.resolveThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>().inputStyle,
+            context
+                .resolveThemeExtension<MyoroRadioWidgetShowcaseThemeExtension>()
+                .inputStyle,
         onChanged: (String text) => _onChanged(context, text),
       ),
     );
@@ -83,7 +92,8 @@ final class _LabelTextStyleOption extends StatelessWidget {
         label: '[MyoroRadio.labelTextStyle]',
         menuConfiguration: MyoroMenuConfiguration(
           request: typography.allTextStyles.toSet,
-          itemBuilder: (TextStyle textStyle) => _itemBuilder(typography, textStyle),
+          itemBuilder:
+              (TextStyle textStyle) => _itemBuilder(typography, textStyle),
         ),
         selectedItemBuilder: typography.getTextStyleName,
         onChanged: (TextStyle? textStyle) => _onChanged(context, textStyle),
@@ -91,7 +101,10 @@ final class _LabelTextStyleOption extends StatelessWidget {
     );
   }
 
-  MyoroMenuItem _itemBuilder(MyoroTypographyDesignSystem typography, TextStyle textStyle) {
+  MyoroMenuItem _itemBuilder(
+    MyoroTypographyDesignSystem typography,
+    TextStyle textStyle,
+  ) {
     return MyoroMenuItem(
       textConfiguration: MyoroIconTextButtonTextConfiguration(
         text: typography.getTextStyleName(textStyle),
@@ -100,6 +113,8 @@ final class _LabelTextStyleOption extends StatelessWidget {
   }
 
   void _onChanged(BuildContext context, TextStyle? textStyle) {
-    context.resolveBloc<MyoroRadioWidgetShowcaseBloc>().add(SetLabelTextStyleEvent(textStyle));
+    context.resolveBloc<MyoroRadioWidgetShowcaseBloc>().add(
+      SetLabelTextStyleEvent(textStyle),
+    );
   }
 }

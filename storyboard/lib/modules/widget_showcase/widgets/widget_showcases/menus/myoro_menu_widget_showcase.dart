@@ -15,7 +15,11 @@ final class MyoroMenuWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroMenuWidgetShowcaseBloc(),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_ConstraintsOption(), _SearchCallbackOption()]),
+      child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroMenuTitle,
+        widget: _Widget(),
+        widgetOptions: [_ConstraintsOption(), _SearchCallbackOption()],
+      ),
     );
   }
 }
@@ -25,7 +29,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroMenuWidgetShowcaseBloc, MyoroMenuWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroMenuWidgetShowcaseBloc,
+      MyoroMenuWidgetShowcaseState
+    >(
       builder: (_, MyoroMenuWidgetShowcaseState state) {
         return MyoroMenu<_Item>(
           configuration: MyoroMenuConfiguration(
@@ -35,7 +42,8 @@ final class _Widget extends StatelessWidget {
               minHeight: state.minHeight ?? 0,
               maxHeight: state.maxHeight ?? double.infinity,
             ),
-            searchCallback: state.searchCallbackEnabled ? _searchCallback : null,
+            searchCallback:
+                state.searchCallbackEnabled ? _searchCallback : null,
             request: _request,
             itemBuilder: _itemBuilder,
           ),
@@ -71,7 +79,8 @@ final class _ConstraintsOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.resolveBloc<MyoroMenuWidgetShowcaseBloc>();
-    final themeExtension = context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>();
     final spacing = themeExtension.constraintsOptionSpacing;
 
     return Column(
@@ -85,17 +94,25 @@ final class _ConstraintsOption extends StatelessWidget {
             Expanded(
               child: _NumberInput(
                 label: 'Min width',
-                onChanged: (String text) => bloc.add(SetMinWidthEvent(double.parse(text))),
+                onChanged:
+                    (String text) =>
+                        bloc.add(SetMinWidthEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) => bloc.add(SetMinWidthEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(
+                      SetMinWidthEvent(enabled ? double.parse(text) : null),
+                    ),
               ),
             ),
             Expanded(
               child: _NumberInput(
                 label: 'Max width',
-                onChanged: (String text) => bloc.add(SetMaxWidthEvent(double.parse(text))),
+                onChanged:
+                    (String text) =>
+                        bloc.add(SetMaxWidthEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) => bloc.add(SetMaxWidthEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(
+                      SetMaxWidthEvent(enabled ? double.parse(text) : null),
+                    ),
               ),
             ),
           ],
@@ -106,17 +123,25 @@ final class _ConstraintsOption extends StatelessWidget {
             Expanded(
               child: _NumberInput(
                 label: 'Min height',
-                onChanged: (String text) => bloc.add(SetMinHeightEvent(double.parse(text))),
+                onChanged:
+                    (String text) =>
+                        bloc.add(SetMinHeightEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) => bloc.add(SetMinHeightEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(
+                      SetMinHeightEvent(enabled ? double.parse(text) : null),
+                    ),
               ),
             ),
             Expanded(
               child: _NumberInput(
                 label: 'Max height',
-                onChanged: (String text) => bloc.add(SetMaxHeightEvent(double.parse(text))),
+                onChanged:
+                    (String text) =>
+                        bloc.add(SetMaxHeightEvent(double.parse(text))),
                 checkboxOnChanged:
-                    (bool enabled, String text) => bloc.add(SetMaxHeightEvent(enabled ? double.parse(text) : null)),
+                    (bool enabled, String text) => bloc.add(
+                      SetMaxHeightEvent(enabled ? double.parse(text) : null),
+                    ),
               ),
             ),
           ],
@@ -137,7 +162,8 @@ final class _SearchCallbackOption extends StatelessWidget {
       configuration: MyoroCheckboxConfiguration(
         label: '[MyoroMenu.searchCallback] not null?',
         initialValue: bloc.state.searchCallbackEnabled,
-        onChanged: (bool value) => bloc.add(SetSearchCallbackEnabledEvent(value)),
+        onChanged:
+            (bool value) => bloc.add(SetSearchCallbackEnabledEvent(value)),
       ),
     );
   }
@@ -148,7 +174,11 @@ final class _NumberInput extends StatelessWidget {
   final MyoroInputOnChanged? onChanged;
   final MyoroInputCheckboxOnChanged? checkboxOnChanged;
 
-  const _NumberInput({required this.label, this.onChanged, this.checkboxOnChanged});
+  const _NumberInput({
+    required this.label,
+    this.onChanged,
+    this.checkboxOnChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +187,10 @@ final class _NumberInput extends StatelessWidget {
       configuration: MyoroInputConfiguration(
         label: label,
         enabled: false,
-        inputStyle: context.resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>().inputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroMenuWidgetShowcaseThemeExtension>()
+                .inputStyle,
         onChanged: onChanged,
         checkboxOnChanged: checkboxOnChanged,
       ),

@@ -7,7 +7,8 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MyoroScreenWidgetShowcase].
 @immutable
-final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<MyoroScreenWidgetShowcaseThemeExtension> {
+final class MyoroScreenWidgetShowcaseThemeExtension
+    extends ThemeExtension<MyoroScreenWidgetShowcaseThemeExtension> {
   /// [TextStyle] of [_AppBar]'s title text.
   final TextStyle appBarTitleTextStyle;
 
@@ -39,14 +40,19 @@ final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
     required this.bodySpacing,
   });
 
-  MyoroScreenWidgetShowcaseThemeExtension.fake()
-    : appBarTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      appBarSubtitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      appBarMenuButtonIcon = myoroFake<IconData>(),
-      bodyImageBorderRadius = BorderRadius.circular(faker.randomGenerator.decimal()),
-      bodyImageSize = faker.randomGenerator.decimal(),
-      bodyTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
-      bodySpacing = faker.randomGenerator.decimal();
+  factory MyoroScreenWidgetShowcaseThemeExtension.fake() {
+    final typography = MyoroTypographyDesignSystem.instance;
+
+    return MyoroScreenWidgetShowcaseThemeExtension(
+      appBarTitleTextStyle: typography.randomTextStyle,
+      appBarSubtitleTextStyle: typography.randomTextStyle,
+      appBarMenuButtonIcon: myoroFake<IconData>(),
+      bodyImageBorderRadius: myoroFake<BorderRadius>(),
+      bodyImageSize: faker.randomGenerator.decimal(),
+      bodyTextStyle: MyoroTypographyDesignSystem.instance.randomTextStyle,
+      bodySpacing: faker.randomGenerator.decimal(),
+    );
+  }
 
   MyoroScreenWidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : appBarTitleTextStyle = textTheme.titleMedium!.copyWith(height: 1.1),
@@ -69,9 +75,11 @@ final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   }) {
     return MyoroScreenWidgetShowcaseThemeExtension(
       appBarTitleTextStyle: appBarTitleTextStyle ?? this.appBarTitleTextStyle,
-      appBarSubtitleTextStyle: appBarSubtitleTextStyle ?? this.appBarSubtitleTextStyle,
+      appBarSubtitleTextStyle:
+          appBarSubtitleTextStyle ?? this.appBarSubtitleTextStyle,
       appBarMenuButtonIcon: appBarMenuButtonIcon ?? this.appBarMenuButtonIcon,
-      bodyImageBorderRadius: bodyImageBorderRadius ?? this.bodyImageBorderRadius,
+      bodyImageBorderRadius:
+          bodyImageBorderRadius ?? this.bodyImageBorderRadius,
       bodyImageSize: bodyImageSize ?? this.bodyImageSize,
       bodyTextStyle: bodyTextStyle ?? this.bodyTextStyle,
       bodySpacing: bodySpacing ?? this.bodySpacing,
@@ -85,10 +93,26 @@ final class MyoroScreenWidgetShowcaseThemeExtension extends ThemeExtension<Myoro
   ) {
     if (other is! MyoroScreenWidgetShowcaseThemeExtension) return this;
     return copyWith(
-      appBarTitleTextStyle: TextStyle.lerp(appBarTitleTextStyle, other.appBarTitleTextStyle, t),
-      appBarSubtitleTextStyle: TextStyle.lerp(appBarSubtitleTextStyle, other.appBarSubtitleTextStyle, t),
-      appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t),
-      bodyImageBorderRadius: BorderRadius.lerp(bodyImageBorderRadius, other.bodyImageBorderRadius, t),
+      appBarTitleTextStyle: TextStyle.lerp(
+        appBarTitleTextStyle,
+        other.appBarTitleTextStyle,
+        t,
+      ),
+      appBarSubtitleTextStyle: TextStyle.lerp(
+        appBarSubtitleTextStyle,
+        other.appBarSubtitleTextStyle,
+        t,
+      ),
+      appBarMenuButtonIcon: myoroLerp(
+        appBarMenuButtonIcon,
+        other.appBarMenuButtonIcon,
+        t,
+      ),
+      bodyImageBorderRadius: BorderRadius.lerp(
+        bodyImageBorderRadius,
+        other.bodyImageBorderRadius,
+        t,
+      ),
       bodyImageSize: lerpDouble(bodyImageSize, other.bodyImageSize, t),
       bodyTextStyle: TextStyle.lerp(bodyTextStyle, other.bodyTextStyle, t),
       bodySpacing: lerpDouble(bodySpacing, other.bodySpacing, t),

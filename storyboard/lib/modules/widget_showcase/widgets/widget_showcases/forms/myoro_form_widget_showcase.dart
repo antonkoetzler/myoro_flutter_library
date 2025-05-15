@@ -21,7 +21,10 @@ final class MyoroFormWidgetShowcase extends StatelessWidget {
   const MyoroFormWidgetShowcase({super.key});
 
   @override
-  Widget build(BuildContext context) => const WidgetShowcase(widget: _Widget());
+  Widget build(BuildContext context) => const WidgetShowcase(
+    widgetName: StoryboardWidgetListingEnum.myoroFormTitle,
+    widget: _Widget(),
+  );
 }
 
 final class _Widget extends StatefulWidget {
@@ -44,17 +47,25 @@ class _WidgetState extends State<_Widget> {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
 
     return MyoroForm<_FormResult>(
       configuration: MyoroFormConfiguration(
         validation: () => _validation(_controller),
-        request: () => ('Form finish successfully!', themeExtension.successColor),
-        onSuccess: (_FormResult? result) => _formResultTextNotifier.value = result,
-        onError: (String errorMessage) => _formResultTextNotifier.value = (errorMessage, themeExtension.errorColor),
+        request:
+            () => ('Form finish successfully!', themeExtension.successColor),
+        onSuccess:
+            (_FormResult? result) => _formResultTextNotifier.value = result,
+        onError:
+            (String errorMessage) =>
+                _formResultTextNotifier.value = (
+                  errorMessage,
+                  themeExtension.errorColor,
+                ),
         builder: (result, status, controller) {
           return Column(
-            mainAxisAlignment: themeExtension.widgetMainAxisAlignment,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _Input(_controller),
               SizedBox(height: themeExtension.widgetSpacing),
@@ -66,7 +77,10 @@ class _WidgetState extends State<_Widget> {
 
                   return Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [SizedBox(height: themeExtension.widgetSpacing), _ResultText(formResult)],
+                    children: [
+                      SizedBox(height: themeExtension.widgetSpacing),
+                      _ResultText(formResult),
+                    ],
                   );
                 },
               ),
@@ -88,7 +102,10 @@ final class _Input extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         controller: controller,
-        inputStyle: context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().widgetInputStyle,
+        inputStyle:
+            context
+                .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
+                .widgetInputStyle,
         placeholder: 'Type "$_errorText" in the input to display an error.',
         validation: (_) => _validation(controller),
       ),
@@ -109,7 +126,9 @@ final class _SubmitButton extends StatelessWidget {
           borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
           onTapUp: (_) => _onTapUp(),
         ),
-        textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Click me!'),
+        textConfiguration: const MyoroIconTextButtonTextConfiguration(
+          text: 'Click me!',
+        ),
       ),
     );
   }
@@ -124,9 +143,10 @@ final class _ResultText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       formResult.$1,
-      style: context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>().resultTextStyle.withColor(
-        formResult.$2,
-      ),
+      style: context
+          .resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>()
+          .resultTextStyle
+          .withColor(formResult.$2),
     );
   }
 }

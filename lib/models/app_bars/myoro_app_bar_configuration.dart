@@ -25,9 +25,7 @@ class MyoroAppBarConfiguration extends Equatable {
   MyoroAppBarConfiguration.fake()
     : bordered = faker.randomGenerator.boolean(),
       backgroundColor =
-          faker.randomGenerator.boolean()
-              ? kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]
-              : null,
+          faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       child = const SizedBox.shrink();
 
   MyoroAppBarConfiguration copyWith({
@@ -38,7 +36,10 @@ class MyoroAppBarConfiguration extends Equatable {
   }) {
     return MyoroAppBarConfiguration(
       bordered: bordered ?? this.bordered,
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
+      backgroundColor:
+          backgroundColorProvided
+              ? (backgroundColor ?? this.backgroundColor)
+              : null,
       child: child ?? this.child,
     );
   }

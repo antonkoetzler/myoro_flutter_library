@@ -14,8 +14,13 @@ final class MyoroGroupCheckboxWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create: (_) => MyoroGroupCheckboxWidgetShowcaseBloc(),
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroGroupCheckboxTitle,
         widget: _Widget(),
-        widgetOptions: [_DirectionOption(), _SpacingOption(), _RunSpacingOption()],
+        widgetOptions: [
+          _DirectionOption(),
+          _SpacingOption(),
+          _RunSpacingOption(),
+        ],
       ),
     );
   }
@@ -26,7 +31,10 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroGroupCheckboxWidgetShowcaseBloc, MyoroGroupCheckboxWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroGroupCheckboxWidgetShowcaseBloc,
+      MyoroGroupCheckboxWidgetShowcaseState
+    >(
       builder: (_, MyoroGroupCheckboxWidgetShowcaseState state) {
         return MyoroGroupCheckbox(
           configuration: MyoroGroupCheckboxConfiguration(
@@ -34,7 +42,8 @@ final class _Widget extends StatelessWidget {
             spacing: state.spacing,
             runSpacing: state.runSpacing,
             checkboxes: {
-              for (int i = 0; i < 5; i++) faker.person.name(): faker.randomGenerator.boolean(),
+              for (int i = 0; i < 5; i++)
+                faker.person.name(): faker.randomGenerator.boolean(),
             },
           ),
         );
@@ -51,7 +60,8 @@ final class _DirectionOption extends StatefulWidget {
 }
 
 final class _DirectionOptionState extends State<_DirectionOption> {
-  late final _bloc = context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
+  late final _bloc =
+      context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
   final _controller = MyoroSingularDropdownController<Axis>();
 
   @override
@@ -65,7 +75,8 @@ final class _DirectionOptionState extends State<_DirectionOption> {
         ),
         selectedItemBuilder: _directionName,
         initiallySelectedItem: _bloc.state.direction,
-        onChanged: (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
+        onChanged:
+            (Axis? direction) => _bloc.add(SetDirectionEvent(direction!)),
         controller: _controller,
       ),
     );
@@ -77,7 +88,9 @@ final class _DirectionOptionState extends State<_DirectionOption> {
 
   MyoroMenuItem _itemBuilder(Axis direction) {
     return MyoroMenuItem(
-      textConfiguration: MyoroIconTextButtonTextConfiguration(text: _directionName(direction)),
+      textConfiguration: MyoroIconTextButtonTextConfiguration(
+        text: _directionName(direction),
+      ),
     );
   }
 }
@@ -90,8 +103,11 @@ final class _SpacingOption extends StatefulWidget {
 }
 
 final class _SpacingOptionState extends State<_SpacingOption> {
-  late final _bloc = context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
-  late final _controller = TextEditingController(text: _bloc.state.spacing.toString());
+  late final _bloc =
+      context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
+  late final _controller = TextEditingController(
+    text: _bloc.state.spacing.toString(),
+  );
 
   @override
   void dispose() {
@@ -106,7 +122,8 @@ final class _SpacingOptionState extends State<_SpacingOption> {
       configuration: MyoroInputConfiguration(
         label: '[MyoroGroupCheckbox.spacing]',
         controller: _controller,
-        onChanged: (_) => _bloc.add(SetSpacingEvent(double.parse(_controller.text))),
+        onChanged:
+            (_) => _bloc.add(SetSpacingEvent(double.parse(_controller.text))),
       ),
     );
   }
@@ -120,8 +137,11 @@ final class _RunSpacingOption extends StatefulWidget {
 }
 
 final class _RunSpacingOptionState extends State<_RunSpacingOption> {
-  late final _bloc = context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
-  late final _controller = TextEditingController(text: _bloc.state.spacing.toString());
+  late final _bloc =
+      context.resolveBloc<MyoroGroupCheckboxWidgetShowcaseBloc>();
+  late final _controller = TextEditingController(
+    text: _bloc.state.spacing.toString(),
+  );
 
   @override
   void dispose() {
@@ -136,7 +156,9 @@ final class _RunSpacingOptionState extends State<_RunSpacingOption> {
       configuration: MyoroInputConfiguration(
         label: '[MyoroGroupCheckbox.runSpacing]',
         controller: _controller,
-        onChanged: (_) => _bloc.add(SetRunSpacingEvent(double.parse(_controller.text))),
+        onChanged:
+            (_) =>
+                _bloc.add(SetRunSpacingEvent(double.parse(_controller.text))),
       ),
     );
   }

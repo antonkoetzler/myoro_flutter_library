@@ -1,22 +1,22 @@
-import 'dart:ui';
-
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of '../../widgets/loaders/myoro_circular_loader.dart';
 
 /// [ThemeExtension] for [MyoroCircularLoader].
 @immutable
-class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension> {
+class MyoroCircularLoaderThemeExtension
+    extends ThemeExtension<MyoroCircularLoaderThemeExtension> {
   /// Color of the [MyoroCircularLoader].
   final Color color;
 
   /// Default size of the [MyoroCircularLoader].
   final double size;
 
-  const MyoroCircularLoaderThemeExtension({required this.color, required this.size});
+  const MyoroCircularLoaderThemeExtension({
+    required this.color,
+    required this.size,
+  });
 
   MyoroCircularLoaderThemeExtension.fake()
-    : color = kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+    : color = myoroFake<Color>(),
       size = faker.randomGenerator.decimal();
 
   MyoroCircularLoaderThemeExtension.builder(ColorScheme colorScheme)
@@ -25,7 +25,10 @@ class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoad
 
   @override
   MyoroCircularLoaderThemeExtension copyWith({Color? color, double? size}) {
-    return MyoroCircularLoaderThemeExtension(color: color ?? this.color, size: size ?? this.size);
+    return MyoroCircularLoaderThemeExtension(
+      color: color ?? this.color,
+      size: size ?? this.size,
+    );
   }
 
   @override

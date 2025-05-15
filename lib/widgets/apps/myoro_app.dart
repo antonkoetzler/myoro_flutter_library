@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part '../../theme_extensions/apps/myoro_app_theme_extension.dart';
+
 /// Root widget of your [App] widget in main.dart.
 class MyoroApp extends StatelessWidget {
   final MyoroAppConfiguration configuration;

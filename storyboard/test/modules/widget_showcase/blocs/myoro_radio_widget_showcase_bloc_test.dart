@@ -7,7 +7,8 @@ import 'package:storyboard/modules/widget_showcase/blocs/myoro_radio_widget_show
 
 /// Unit test of [MyoroRadioWidgetShowcaseBloc].
 void main() {
-  final String? label = faker.randomGenerator.boolean() ? faker.lorem.word() : null;
+  final String? label =
+      faker.randomGenerator.boolean() ? faker.lorem.word() : null;
   late final TextStyle? labelTextStyle;
 
   setUpAll(() {
@@ -29,6 +30,7 @@ void main() {
     'MyoroRadioWidgetShowcaseBloc.SetLabelTextStyleEvent',
     build: () => MyoroRadioWidgetShowcaseBloc(),
     act: (bloc) => bloc.add(SetLabelTextStyleEvent(labelTextStyle)),
-    expect: () => [MyoroRadioWidgetShowcaseState(labelTextStyle: labelTextStyle)],
+    expect:
+        () => [MyoroRadioWidgetShowcaseState(labelTextStyle: labelTextStyle)],
   );
 }

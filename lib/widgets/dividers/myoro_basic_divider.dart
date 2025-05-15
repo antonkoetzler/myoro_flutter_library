@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/dividers/myoro_basic_divider_theme_extension.dart';
 
 /// A simple divider.
 class MyoroBasicDivider extends StatelessWidget {
@@ -10,7 +15,8 @@ class MyoroBasicDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
     final isHorizontal = configuration.direction.isHorizontal;
     final setShortValue = configuration.shortValue ?? themeExtension.shortValue;
 

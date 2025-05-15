@@ -13,6 +13,7 @@ final class MyoroSnackBarWidgetShowcase extends StatelessWidget {
     return BlocProvider(
       create: (_) => MyoroSnackBarWidgetShowcaseBloc(),
       child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroSnackBarTitle,
         widget: _Widget(),
         widgetOptions: [
           _SnackBarTypeOption(),
@@ -67,7 +68,8 @@ final class _Child extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension =
-        context.resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>();
+        context
+            .resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>();
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(
@@ -76,8 +78,12 @@ final class _Child extends StatelessWidget {
             borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
             onTapUp: (_) {},
           ),
-          iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.childIcon),
-          textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Buttonception O_O'),
+          iconConfiguration: MyoroIconTextButtonIconConfiguration(
+            icon: themeExtension.childIcon,
+          ),
+          textConfiguration: const MyoroIconTextButtonTextConfiguration(
+            text: 'Buttonception O_O',
+          ),
         ),
       ),
     );
@@ -113,7 +119,8 @@ final class _SnackBarTypeOptionState extends State<_SnackBarTypeOption> {
         selectedItemBuilder: _getSnackbarTypeName,
         allowItemClearing: false,
         initiallySelectedItem: _bloc.state.snackBarType,
-        onChanged: (MyoroSnackBarTypeEnum? selectedItem) => _onChanged(selectedItem!),
+        onChanged:
+            (MyoroSnackBarTypeEnum? selectedItem) => _onChanged(selectedItem!),
         controller: _controller,
       ),
     );
@@ -191,13 +198,20 @@ final class _MessageOptionState extends State<_MessageOption> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<MyoroSnackBarWidgetShowcaseBloc, MyoroSnackBarWidgetShowcaseState>(
+    return BlocListener<
+      MyoroSnackBarWidgetShowcaseBloc,
+      MyoroSnackBarWidgetShowcaseState
+    >(
       listener: _listener,
       child: MyoroInput(
         configuration: MyoroInputConfiguration(
           label: '[MyoroSnackBar.message]',
           inputStyle:
-              context.resolveThemeExtension<MyoroSnackBarWidgetShowcaseThemeExtension>().inputStyle,
+              context
+                  .resolveThemeExtension<
+                    MyoroSnackBarWidgetShowcaseThemeExtension
+                  >()
+                  .inputStyle,
           controller: _controller,
           onChanged: _onChanged,
         ),
@@ -210,12 +224,17 @@ final class _ChildOption extends StatelessWidget {
   const _ChildOption();
 
   void _onChanged(BuildContext context, bool value) {
-    context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>().add(SetChildEnabledEvent(value));
+    context.resolveBloc<MyoroSnackBarWidgetShowcaseBloc>().add(
+      SetChildEnabledEvent(value),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroSnackBarWidgetShowcaseBloc, MyoroSnackBarWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroSnackBarWidgetShowcaseBloc,
+      MyoroSnackBarWidgetShowcaseState
+    >(
       builder: (_, MyoroSnackBarWidgetShowcaseState state) {
         return MyoroCheckbox(
           configuration: MyoroCheckboxConfiguration(

@@ -1,5 +1,10 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part '../../theme_extensions/cards/myoro_card_theme_extension.dart';
 
 /// Base card.
 class MyoroCard extends StatelessWidget {
@@ -10,7 +15,8 @@ class MyoroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCardThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -46,7 +52,8 @@ final class _Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroCardThemeExtension>();
 
     return Container(
       width: _configuration.width,

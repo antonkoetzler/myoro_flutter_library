@@ -1,31 +1,44 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MainScreen].
 @immutable
-final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExtension> {
+final class MainScreenThemeExtension
+    extends ThemeExtension<MainScreenThemeExtension> {
   /// [EdgeInsets] of [_WidgetCategoryDropdownButton].
   final EdgeInsets widgetCategoryDropdownButtonPadding;
 
-  const MainScreenThemeExtension({required this.widgetCategoryDropdownButtonPadding});
+  const MainScreenThemeExtension({
+    required this.widgetCategoryDropdownButtonPadding,
+  });
 
   MainScreenThemeExtension.fake()
-    : widgetCategoryDropdownButtonPadding = EdgeInsets.all(faker.randomGenerator.decimal(scale: 50));
+    : widgetCategoryDropdownButtonPadding = myoroFake<EdgeInsets>();
 
   const MainScreenThemeExtension.builder()
-    : widgetCategoryDropdownButtonPadding = const EdgeInsets.only(left: 10, right: 10, bottom: 10);
+    : widgetCategoryDropdownButtonPadding = const EdgeInsets.only(
+        left: 10,
+        right: 10,
+        bottom: 10,
+      );
 
   @override
-  MainScreenThemeExtension copyWith({EdgeInsets? widgetCategoryDropdownButtonPadding}) {
+  MainScreenThemeExtension copyWith({
+    EdgeInsets? widgetCategoryDropdownButtonPadding,
+  }) {
     return MainScreenThemeExtension(
       widgetCategoryDropdownButtonPadding:
-          widgetCategoryDropdownButtonPadding ?? this.widgetCategoryDropdownButtonPadding,
+          widgetCategoryDropdownButtonPadding ??
+          this.widgetCategoryDropdownButtonPadding,
     );
   }
 
   @override
-  MainScreenThemeExtension lerp(covariant ThemeExtension<MainScreenThemeExtension>? other, double t) {
+  MainScreenThemeExtension lerp(
+    covariant ThemeExtension<MainScreenThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MainScreenThemeExtension) return this;
     return copyWith(
       widgetCategoryDropdownButtonPadding: EdgeInsets.lerp(
@@ -40,7 +53,8 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
   bool operator ==(Object other) {
     return other is MainScreenThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.widgetCategoryDropdownButtonPadding == widgetCategoryDropdownButtonPadding;
+        other.widgetCategoryDropdownButtonPadding ==
+            widgetCategoryDropdownButtonPadding;
   }
 
   @override

@@ -12,7 +12,11 @@ final class MyoroTooltipWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => MyoroTooltipWidgetShowcaseBloc(),
-      child: const WidgetShowcase(widget: _Widget(), widgetOptions: [_MarginOption(), _TextOption()]),
+      child: const WidgetShowcase(
+        widgetName: StoryboardWidgetListingEnum.myoroTooltipTitle,
+        widget: _Widget(),
+        widgetOptions: [_MarginOption(), _TextOption()],
+      ),
     );
   }
 }
@@ -22,10 +26,16 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MyoroTooltipWidgetShowcaseBloc, MyoroTooltipWidgetShowcaseState>(
+    return BlocBuilder<
+      MyoroTooltipWidgetShowcaseBloc,
+      MyoroTooltipWidgetShowcaseState
+    >(
       builder: (_, MyoroTooltipWidgetShowcaseState state) {
         return MyoroTooltip(
-          configuration: MyoroTooltipConfiguration(margin: EdgeInsets.all(state.margin), text: state.text),
+          configuration: MyoroTooltipConfiguration(
+            margin: EdgeInsets.all(state.margin),
+            text: state.text,
+          ),
           child: const _Child(),
         );
       },
@@ -38,7 +48,9 @@ final class _Child extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>();
+    final themeExtension =
+        context
+            .resolveThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>();
     final size = themeExtension.childSize;
     final decoration = themeExtension.childDecoration;
     final textStyle = themeExtension.childTextStyle;
@@ -55,11 +67,15 @@ final class _Child extends StatelessWidget {
 final class _MarginOption extends StatelessWidget {
   const _MarginOption();
 
-  String _currentValueIndicatorTextBuilder(double value) => value.toStringAsFixed(2);
-  String _maxValueIndicatorTextBuilder(double maxValue) => maxValue.toStringAsFixed(2);
+  String _currentValueIndicatorTextBuilder(double value) =>
+      value.toStringAsFixed(2);
+  String _maxValueIndicatorTextBuilder(double maxValue) =>
+      maxValue.toStringAsFixed(2);
 
   void _onChanged(BuildContext context, double value) {
-    context.resolveBloc<MyoroTooltipWidgetShowcaseBloc>().add(SetMarginEvent(value));
+    context.resolveBloc<MyoroTooltipWidgetShowcaseBloc>().add(
+      SetMarginEvent(value),
+    );
   }
 
   @override
@@ -84,8 +100,16 @@ final class _TextOption extends StatelessWidget {
     return MyoroInput(
       configuration: MyoroInputConfiguration(
         label: '[MyoroTooltip.text]',
-        inputStyle: context.resolveThemeExtension<MyoroTooltipWidgetShowcaseThemeExtension>().inputStyle,
-        onChanged: (String text) => context.resolveBloc<MyoroTooltipWidgetShowcaseBloc>().add(SetTextEvent(text)),
+        inputStyle:
+            context
+                .resolveThemeExtension<
+                  MyoroTooltipWidgetShowcaseThemeExtension
+                >()
+                .inputStyle,
+        onChanged:
+            (String text) => context
+                .resolveBloc<MyoroTooltipWidgetShowcaseBloc>()
+                .add(SetTextEvent(text)),
       ),
     );
   }
