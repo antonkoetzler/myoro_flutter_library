@@ -43,4 +43,4 @@
 1. feature: Changelog
 1. improvement: Remove the `core` and `commons` directories placing all of their contents in `lib`
 1. improvement: Set the line length to 80
-1. test: Implement all tests (MyoroLocalDatabase wasn't created yet)
+1. test: Implement all tests (test of `MyoroLocalDatabase` wasn't created yet)
