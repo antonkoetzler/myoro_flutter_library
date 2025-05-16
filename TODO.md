@@ -2,7 +2,7 @@
 
 1. refactor: app architecture revamp
 
-- Kill `blocs` in favor of view models + sensible controllers exposing widget APIs
+- Kill `Bloc`s in favor of view models
 - DDD folder structure
 
 1. Make private `Widget`s separated by file and use `part`/`part of`
