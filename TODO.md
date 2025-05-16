@@ -1,8 +1,8 @@
 # TODO
 
-1. refactor: app architecture revamp
+1. refactor: Official Flutter app architecture revamp
 
-- Completely separate `controllers` from `Bloc`s and make controllers classes that provide public state
+- Official state management solution: Every `Widget` has a view model. All controllers are now public, external APIs that expose the state of view models. Furthermore, every controller has a private variable to the view model for easy future exposure.
 - DDD folder structure
 
 1. Make private `Widget`s separated by file and use `part`/`part of`
