@@ -2,7 +2,7 @@
 
 1. refactor: app architecture revamp
 
-- Kill `Bloc`s in favor of view models
+- Completely separate `controllers` from `Bloc`s and make controllers classes that provide public state
 - DDD folder structure
 
 1. Make private `Widget`s separated by file and use `part`/`part of`
