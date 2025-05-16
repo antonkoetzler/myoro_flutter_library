@@ -1,5 +1,11 @@
 # TODO
 
+1. refactor: app architecture revamp
+
+- `notifiers` --> `cubits`
+- Kill `controllers` in favor of `blocs`
+- DDD folder structure
+
 1. Make private `Widget`s separated by file and use `part`/`part of`
 1. improvement: Make only `myoro_flutter_library.dart` exportable
 
