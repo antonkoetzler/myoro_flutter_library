@@ -187,36 +187,41 @@ final class _InputState<T> extends State<_Input<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return OverlayPortal(
-      controller: _configuration.controller.overlayPortalController,
-      overlayChildBuilder: _overlayChildBuilder,
-      child: Stack(
-        children: [
-          // Empty [MyoroLayoutBuilder] to always update [_inputSizeNotifier].
-          MyoroLayoutBuilder(
-            builder: (_, __) {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                final renderBox =
-                    _inputKey.currentContext!.findRenderObject() as RenderBox;
-                _inputSizeNotifier.value = renderBox.size;
-              });
+    return switch (_configuration.menuTypeEnum) {
+      MyoroDropdownMenuTypeEnum.overlay => OverlayPortal(
+        controller: _configuration.controller.overlayPortalController,
+        overlayChildBuilder: _overlayChildBuilder,
+        child: Stack(
+          children: [
+            // Empty [MyoroLayoutBuilder] to always update [_inputSizeNotifier].
+            MyoroLayoutBuilder(
+              builder: (_, __) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  final renderBox =
+                      _inputKey.currentContext!.findRenderObject() as RenderBox;
+                  _inputSizeNotifier.value = renderBox.size;
+                });
 
-              return BlocConsumer<MyoroDropdownBloc<T>, MyoroDropdownState<T>>(
-                listenWhen: _listenWhen,
-                listener: _listener,
-                buildWhen: _buildWhen,
-                builder: _builder,
-              );
-            },
-          ),
-          _InputTriggerArea<T>(
-            _configuration,
-            _inputSizeNotifier,
-            _tapRegionGroupId,
-          ),
-        ],
+                return BlocConsumer<
+                  MyoroDropdownBloc<T>,
+                  MyoroDropdownState<T>
+                >(
+                  listenWhen: _listenWhen,
+                  listener: _listener,
+                  buildWhen: _buildWhen,
+                  builder: _builder,
+                );
+              },
+            ),
+            _InputTriggerArea<T>(
+              _configuration,
+              _inputSizeNotifier,
+              _tapRegionGroupId,
+            ),
+          ],
+        ),
       ),
-    );
+    };
   }
 
   Widget _overlayChildBuilder(_) {
