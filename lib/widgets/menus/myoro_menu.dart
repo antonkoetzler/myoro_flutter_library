@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/blocs/myoro_menu_bloc/myoro_menu_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:myoro_flutter_library/theme_extensions/buttons/myoro_button_variant_theme_extension.dart';
 
 part '../../theme_extensions/menus/myoro_menu_theme_extension.dart';
 

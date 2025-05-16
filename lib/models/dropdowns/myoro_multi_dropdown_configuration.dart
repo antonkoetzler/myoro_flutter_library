@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function executed when the selected item changes.
-typedef MyoroMultiDropdownConfigurationOnChanged<T> = void Function(Set<T>? selectedItems);
+typedef MyoroMultiDropdownConfigurationOnChanged<T> =
+    void Function(Set<T>? selectedItems);
 
 /// Function executed when the enabled/disabled checkbox is pressed.
 typedef MyoroMultiDropdownConfigurationCheckboxOnChanged<T> =
@@ -23,6 +24,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
 
   const MyoroMultiDropdownConfiguration._({
     required super.label,
+    required super.menuTypeEnum,
     required super.enabled,
     required super.allowItemClearing,
     required super.selectedItemTextAlign,
@@ -36,11 +38,16 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
 
   factory MyoroMultiDropdownConfiguration({
     String label = '',
+    MyoroDropdownMenuTypeEnum menuTypeEnum =
+        MyoroDropdownConfiguration.menuTypeEnumDefaultValue,
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
-    bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-    TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
+    bool allowItemClearing =
+        MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    TextAlign selectedItemTextAlign =
+        MyoroInputConfiguration.textAlignDefaultValue,
     required MyoroMenuConfiguration<T> menuConfiguration,
-    required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
+    required MyoroDropdownConfigurationSelectedItemBuilder<T>
+    selectedItemBuilder,
     Set<T>? initiallySelectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
@@ -48,6 +55,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   }) {
     return MyoroMultiDropdownConfiguration._(
       label: label,
+      menuTypeEnum: menuTypeEnum,
       enabled: enabled,
       allowItemClearing: allowItemClearing,
       selectedItemTextAlign: selectedItemTextAlign,
@@ -63,6 +71,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   @override
   MyoroMultiDropdownConfiguration<T> copyWith({
     String? label,
+    MyoroDropdownMenuTypeEnum? menuTypeEnum,
     bool? enabled,
     bool? allowItemClearing,
     TextAlign? selectedItemTextAlign,
@@ -77,15 +86,20 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   }) {
     return MyoroMultiDropdownConfiguration(
       label: label ?? this.label,
+      menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
       enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
+      selectedItemTextAlign:
+          selectedItemTextAlign ?? this.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? this.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      initiallySelectedItems: initiallySelectedItems ?? this.initiallySelectedItems,
+      initiallySelectedItems:
+          initiallySelectedItems ?? this.initiallySelectedItems,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
       checkboxOnChanged:
-          checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              : null,
       controller: this.controller as MyoroMultiDropdownController<T>?,
     );
   }
@@ -93,7 +107,9 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   @override
   void setInitiallySelectedItems() {
     if (initiallySelectedItems.isEmpty) return;
-    (controller as MyoroMultiDropdownController<T>?)?.selectItems(initiallySelectedItems);
+    (controller as MyoroMultiDropdownController<T>?)?.selectItems(
+      initiallySelectedItems,
+    );
   }
 
   @override
@@ -113,6 +129,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   List<Object?> get props {
     return [
       label,
+      menuTypeEnum,
       enabled,
       allowItemClearing,
       selectedItemTextAlign,
@@ -130,6 +147,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   String toString() =>
       'MyoroMultiDropdownConfiguration<$T>(\n'
       '  label: $label,\n'
+      '  menuTypeEnum: $menuTypeEnum,\n'
       '  enabled: $enabled,\n'
       '  allowItemClearing: $allowItemClearing,\n'
       '  selectedItemTextAlign: $selectedItemTextAlign,\n'

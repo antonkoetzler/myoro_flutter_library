@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Builder of the [String] displayed when a [T] item is selected.
-typedef MyoroDropdownConfigurationSelectedItemBuilder<T> = String Function(T item);
+typedef MyoroDropdownConfigurationSelectedItemBuilder<T> =
+    String Function(T item);
 
 /// Abstract model that encapsulates options for [MyoroDropdown].
 ///
 /// [MyoroSingularDropdown] and [MyoroMultiDropdown] have their separation
 /// configuration classes extending [MyoroDropdownConfiguration] for specific args.
 abstract class MyoroDropdownConfiguration<T> extends Equatable {
+  static const menuTypeEnumDefaultValue = MyoroDropdownMenuTypeEnum.expanding;
   static const enabledDefaultValue = true;
   static const allowItemClearingDefaultValue = true;
   static const menuMaxHeightDefaultValue = double.infinity;
@@ -18,6 +20,9 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
   ///
   /// [MyoroInputConfiguration.label] of [_Input].
   final String label;
+
+  /// [_Menu]s [Widget] composition.
+  final MyoroDropdownMenuTypeEnum menuTypeEnum;
 
   /// If the dropdown is enabled/usable.
   ///
@@ -42,6 +47,7 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
 
   const MyoroDropdownConfiguration({
     this.label = '',
+    this.menuTypeEnum = menuTypeEnumDefaultValue,
     this.enabled = enabledDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
     this.selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,

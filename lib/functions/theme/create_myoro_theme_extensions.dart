@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:myoro_flutter_library/theme_extensions/buttons/myoro_button_variant_theme_extension.dart';
 
 /// Function to create the [List] of [ThemeExtension]s for [createMyoroThemeData]'s [ThemeData].
 List<ThemeExtension> createMyoroThemeExtensions(
