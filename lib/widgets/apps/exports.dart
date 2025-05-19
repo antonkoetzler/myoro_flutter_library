@@ -1,1 +1,1 @@
-export 'myoro_app.dart';
+export 'app/myoro_app.dart';

@@ -9,6 +9,8 @@ part 'myoro_dropdown_event.dart';
 typedef _Emitter<T> = Emitter<MyoroDropdownState<T>>;
 
 /// [Bloc] which manages the logic of [MyoroSingularDropdown] and [MyoroMultiDropdown].
+///
+/// TODO: Delete.
 final class MyoroDropdownBloc<T> extends Bloc<MyoroDropdownEvent<T>, MyoroDropdownState<T>> {
   MyoroDropdownBloc({required bool enabled}) : super(MyoroDropdownState<T>(enabled: enabled)) {
     on<ToggleItemEvent<T>>(_toggleItemEvent);
@@ -25,9 +27,7 @@ final class MyoroDropdownBloc<T> extends Bloc<MyoroDropdownEvent<T>, MyoroDropdo
     emit(
       state.copyWith(
         selectedItems:
-            selectedItems.contains(event.item)
-                ? (selectedItems..remove(event.item))
-                : (selectedItems..add(event.item)),
+            selectedItems.contains(event.item) ? (selectedItems..remove(event.item)) : (selectedItems..add(event.item)),
       ),
     );
   }

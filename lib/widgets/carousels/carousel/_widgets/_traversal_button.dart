@@ -1,0 +1,28 @@
+part of '../myoro_carousel.dart';
+
+/// Traversal button of a [MyoroCarousel].
+final class _TraversalButton extends StatelessWidget {
+  final Alignment _alignment;
+  final IconData _icon;
+  final VoidCallback _onTapUp;
+
+  const _TraversalButton(this._alignment, this._icon, this._onTapUp);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: _alignment,
+      child: IntrinsicWidth(
+        child: MyoroIconTextButton(
+          configuration: MyoroIconTextButtonConfiguration(
+            buttonConfiguration: MyoroButtonConfiguration(
+              borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+              onTapUp: (_) => _onTapUp(),
+            ),
+            iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: _icon),
+          ),
+        ),
+      ),
+    );
+  }
+}

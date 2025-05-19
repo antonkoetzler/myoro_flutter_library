@@ -4,22 +4,22 @@
 1. (**IN PROGRESS**) refactor: DDD architecture and more universal coding standards
 
 - Official state management solution:
-  - Every `Widget` with state (not just a visual `Widget` like `MyoroCard`), it uses `Bloc` for state management;
-  - Every `Widget` with a controller is only a class to provide public APIs for state management and control and listeners
+  - Every `Widget` with state (not just a visual `Widget` like `MyoroCard`) has a controller
+    - Every controller has an abstract class and an implementation class; C++ style
 - DDD folder structure
 
 TODO
 
-- accordions
-- app_bars
-- apps
-- buttons
-- cards
-- carousels
-- checkboxes
-- dividers
-- drawers
-- dropdowns
+- (**DONE**) accordions
+- (**DONE**) app_bars
+- (**DONE**) apps
+- (**DONE**) buttons
+- (**DONE**) cards
+- (**DONE**) carousels
+- (**DONE**) checkboxes
+- (**DONE**) dividers
+- (**DONE**) drawers
+- (**DONE**) dropdowns
 - forms
 - graphs
 - inputs
@@ -36,6 +36,8 @@ TODO
 - testing
 - tooltips
 - Storyboard
+- Delete bloc packages everywhere
+- Make configuration passable to controller or widget, this avoids the didUpdateWidget problem
 
 1. improvement: Make only `myoro_flutter_library.dart` exportable
 

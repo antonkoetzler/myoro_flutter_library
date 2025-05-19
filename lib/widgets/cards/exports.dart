@@ -1,1 +1,1 @@
-export 'myoro_card.dart';
+export 'card/myoro_card.dart';
