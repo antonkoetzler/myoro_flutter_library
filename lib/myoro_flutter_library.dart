@@ -7,7 +7,6 @@ export 'extensions/exports.dart';
 export 'functions/exports.dart';
 export 'helpers/exports.dart';
 export 'formatters/exports.dart';
-export 'mocks/exports.dart';
 export 'models/exports.dart';
 export 'notifiers/exports.dart';
 export 'widgets/exports.dart';

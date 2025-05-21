@@ -22,7 +22,6 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createMenuThemeExtensions(colorScheme, textTheme),
     ..._createModalThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
-    ..._createResolverThemeExtensions(),
     ..._createScreenThemeExtensions(),
     ..._createSliderThemeExtensions(textTheme),
     ..._createSnackBarThemeExtensions(colorScheme, textTheme),
@@ -114,10 +113,6 @@ List<ThemeExtension> _createModalThemeExtensions(ColorScheme colorScheme, TextTh
 
 List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [MyoroRadioThemeExtension.builder(colorScheme, textTheme), const MyoroGroupRadioThemeExtension.builder()];
-}
-
-List<ThemeExtension> _createResolverThemeExtensions() {
-  return const [MyoroResolverThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createScreenThemeExtensions() {

@@ -1,1 +1,1 @@
-export 'myoro_screen.dart';
+export 'screen/exports.dart';

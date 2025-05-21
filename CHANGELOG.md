@@ -15,6 +15,7 @@
 1. improvement: Kill `MyoroCrudService`
 1. improvement: Set the line length to 100
 1. improvement: Organize various folders like `models` into subdirectories based on the `Widget` associated
+1. feature: Kill `MyoroResolver` and create `MyoroRequest` and `MyoroRequestController`
 1. chore: Remove `finder` functions
 1. chore: `_Enabled` --> `_Provided` in `copyWith` functions
 1. chore: Remove `final` from various classes to allow extensions

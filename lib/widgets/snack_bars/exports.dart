@@ -1,2 +1,2 @@
-export 'myoro_snack_bar_container.dart';
-export 'myoro_snack_bar.dart';
+export 'snack_bar/exports.dart';
+export 'snack_bar_container/exports.dart';

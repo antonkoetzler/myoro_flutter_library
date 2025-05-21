@@ -1,1 +1,1 @@
-export 'myoro_slider.dart';
+export 'slider/exports.dart';
