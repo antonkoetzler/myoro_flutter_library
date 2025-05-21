@@ -10,19 +10,19 @@
 
 TODO
 
-- (**DONE, NEED TO VIEWMODELIZE**) accordions
-- (**DONE, NEED TO VIEWMODELIZE**) app_bars
-- (**DONE, NEED TO VIEWMODELIZE**) apps
-- (**DONE, NEED TO VIEWMODELIZE**) buttons
-- (**DONE, NEED TO VIEWMODELIZE**) cards
-- (**DONE, NEED TO VIEWMODELIZE**) carousels
-- (**DONE, NEED TO VIEWMODELIZE**) checkboxes
-- (**DONE, NEED TO VIEWMODELIZE**) dividers
-- (**DONE, NEED TO VIEWMODELIZE**) drawers
-- (**DONE, NEED TO VIEWMODELIZE**) dropdowns
-- forms
-- (**DONE, NEED TO VIEWMODELIZE**) graphs
-- (**DONE, NEED TO VIEWMODELIZE**) inputs
+- (**DONE, NEED TO CONTROLLERIZE**) accordions
+- (**DONE, NEED TO CONTROLLERIZE**) app_bars
+- (**DONE, NEED TO CONTROLLERIZE**) apps
+- (**DONE, NEED TO CONTROLLERIZE**) buttons
+- (**DONE, NEED TO CONTROLLERIZE**) cards
+- (**DONE, NEED TO CONTROLLERIZE**) carousels
+- (**DONE, NEED TO CONTROLLERIZE**) checkboxes
+- (**DONE, NEED TO CONTROLLERIZE**) dividers
+- (**DONE, NEED TO CONTROLLERIZE**) drawers
+- (**DONE, NEED TO CONTROLLERIZE**) dropdowns
+- (**DONE**) forms
+- (**DONE, NEED TO CONTROLLERIZE**) graphs
+- (**DONE, NEED TO CONTROLLERIZE**) inputs
 - (**DONE**) layout_builders
 - (**DONE**) loaders
 - (**DONE, THIS IS THE GOLD STANDARD**) menus
@@ -31,7 +31,7 @@ TODO
 - (**DONE**) screens
 - (**DONE**) sliders
 - (**DONE**) snack_bars
-- tables
+- (**DONE**) tables
 - testing
 - tooltips
 - Storyboard

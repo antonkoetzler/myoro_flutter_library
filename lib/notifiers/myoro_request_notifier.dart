@@ -8,17 +8,16 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 typedef MyoroRequestNotifierRequest<T> = FutureOr<T> Function();
 
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.
-class MyoroRequestNotifier<T> extends ValueNotifier<MyoroRequestState<T>> {
-  MyoroRequestNotifier() : super(MyoroRequestState<T>());
+class MyoroRequestNotifier<T> extends ValueNotifier<MyoroRequest<T>> {
+  MyoroRequestNotifier() : super(MyoroRequest<T>());
 
   /// Executes [request].
-  Future<void> fetch(MyoroRequestNotifierRequest<T> request) async {
+  Future<void> fetch([MyoroRequestNotifierRequest<T>? requestCallback]) async {
     String? errorMessage;
 
     try {
-      value = state.createLoadingState();
-      final data = await request.call();
-      value = state.createSuccessState(data);
+      value = request.createLoadingState();
+      value = request.createSuccessState(await requestCallback?.call());
     } on HttpException catch (httpError) {
       errorMessage = httpError.message;
       if (kDebugMode) {
@@ -34,9 +33,11 @@ class MyoroRequestNotifier<T> extends ValueNotifier<MyoroRequestState<T>> {
 
     if (errorMessage == null) return;
 
-    value = state.createErrorState(errorMessage);
+    value = request.createErrorState(errorMessage);
   }
 
-  /// Alias of [value].
-  MyoroRequestState<T> get state => value;
+  MyoroRequest<T> get request => value;
+  MyoroRequestEnum get status => request.status;
+  String? get errorMessage => request.errorMessage;
+  T? get data => request.data;
 }

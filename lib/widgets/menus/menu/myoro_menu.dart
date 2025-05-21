@@ -60,7 +60,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     );
   }
 
-  Widget _builder(_, MyoroRequestState<Set<T>> state, __) {
+  Widget _builder(_, MyoroRequest<Set<T>> state, __) {
     // Jump to the last position of the list before
     // calling [MyoroMenuConfiguration.onEndReachedRequest].
     if (state.status.isSuccess && _onEndReachedPosition != null) {

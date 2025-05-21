@@ -1,8 +1,11 @@
-part of '../../widgets/tables/myoro_table.dart';
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] of [MyoroTable].
-class MyoroTableThemeExtension
-    extends ThemeExtension<MyoroTableThemeExtension> {
+class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> {
   /// [Container.decoration] of [_MyoroTableState].
   final BoxDecoration decoration;
 
@@ -51,10 +54,7 @@ class MyoroTableThemeExtension
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : decoration = BoxDecoration(
         color: colorScheme.primary,
-        border: Border.all(
-          width: kMyoroBorderLength,
-          color: colorScheme.onPrimary,
-        ),
+        border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       ),
       columnTextStyle = textTheme.titleMedium!,
@@ -62,9 +62,7 @@ class MyoroTableThemeExtension
       rowTextStyle = textTheme.bodyMedium!,
       loaderEmptyMessageErrorMessagePadding = const EdgeInsets.all(10),
       emptyMessageTextStyle = textTheme.headlineMedium!,
-      errorMessageTextStyle = textTheme.headlineMedium!.withColor(
-        colorScheme.error,
-      );
+      errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
 
   @override
   MyoroTableThemeExtension copyWith({
@@ -82,28 +80,18 @@ class MyoroTableThemeExtension
       columnSpacing: columnSpacing ?? this.columnSpacing,
       rowTextStyle: rowTextStyle ?? this.rowTextStyle,
       loaderEmptyMessageErrorMessagePadding:
-          loaderEmptyMessageErrorMessagePadding ??
-          this.loaderEmptyMessageErrorMessagePadding,
-      emptyMessageTextStyle:
-          emptyMessageTextStyle ?? this.emptyMessageTextStyle,
-      errorMessageTextStyle:
-          errorMessageTextStyle ?? this.errorMessageTextStyle,
+          loaderEmptyMessageErrorMessagePadding ?? this.loaderEmptyMessageErrorMessagePadding,
+      emptyMessageTextStyle: emptyMessageTextStyle ?? this.emptyMessageTextStyle,
+      errorMessageTextStyle: errorMessageTextStyle ?? this.errorMessageTextStyle,
     );
   }
 
   @override
-  MyoroTableThemeExtension lerp(
-    covariant ThemeExtension<MyoroTableThemeExtension>? other,
-    double t,
-  ) {
+  MyoroTableThemeExtension lerp(covariant ThemeExtension<MyoroTableThemeExtension>? other, double t) {
     if (other is! MyoroTableThemeExtension) return this;
     return copyWith(
       decoration: BoxDecoration.lerp(decoration, other.decoration, t),
-      columnTextStyle: TextStyle.lerp(
-        columnTextStyle,
-        other.columnTextStyle,
-        t,
-      ),
+      columnTextStyle: TextStyle.lerp(columnTextStyle, other.columnTextStyle, t),
       columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
       rowTextStyle: TextStyle.lerp(rowTextStyle, other.rowTextStyle, t),
       loaderEmptyMessageErrorMessagePadding: EdgeInsets.lerp(
@@ -111,16 +99,8 @@ class MyoroTableThemeExtension
         other.loaderEmptyMessageErrorMessagePadding,
         t,
       ),
-      emptyMessageTextStyle: TextStyle.lerp(
-        emptyMessageTextStyle,
-        other.emptyMessageTextStyle,
-        t,
-      ),
-      errorMessageTextStyle: TextStyle.lerp(
-        errorMessageTextStyle,
-        other.errorMessageTextStyle,
-        t,
-      ),
+      emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
+      errorMessageTextStyle: TextStyle.lerp(errorMessageTextStyle, other.errorMessageTextStyle, t),
     );
   }
 
@@ -132,8 +112,7 @@ class MyoroTableThemeExtension
         other.columnTextStyle == columnTextStyle &&
         other.columnSpacing == columnSpacing &&
         other.rowTextStyle == rowTextStyle &&
-        other.loaderEmptyMessageErrorMessagePadding ==
-            loaderEmptyMessageErrorMessagePadding &&
+        other.loaderEmptyMessageErrorMessagePadding == loaderEmptyMessageErrorMessagePadding &&
         other.emptyMessageTextStyle == emptyMessageTextStyle &&
         other.errorMessageTextStyle == errorMessageTextStyle;
   }

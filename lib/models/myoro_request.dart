@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model representing a state where data being fetched via [FutureOr] function.
-class MyoroRequestState<T> extends Equatable {
+class MyoroRequest<T> extends Equatable {
   static const statusDefaultValue = MyoroRequestEnum.idle;
 
   /// Status of the request.
@@ -16,39 +16,39 @@ class MyoroRequestState<T> extends Equatable {
   /// Data generated from
   final T? data;
 
-  const MyoroRequestState({this.status = statusDefaultValue, this.errorMessage, this.data})
+  const MyoroRequest({this.status = statusDefaultValue, this.errorMessage, this.data})
     : assert(
         !(status == MyoroRequestEnum.error && errorMessage == null),
         '[MyoroRequest<T>]: [status] cannot be [MyoroRequestEnum] when [errorMessage] is null.',
       );
 
-  MyoroRequestState<T> copyWith({
+  MyoroRequest<T> copyWith({
     MyoroRequestEnum? status,
     String? errorMessage,
     bool errorMessageProvided = true,
     T? data,
     bool dataProvided = true,
   }) {
-    return MyoroRequestState(
+    return MyoroRequest(
       status: status ?? this.status,
       errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
       data: dataProvided ? (data ?? this.data) : null,
     );
   }
 
-  MyoroRequestState<T> createIdleState() {
+  MyoroRequest<T> createIdleState() {
     return copyWith(status: MyoroRequestEnum.idle);
   }
 
-  MyoroRequestState<T> createLoadingState() {
+  MyoroRequest<T> createLoadingState() {
     return copyWith(status: MyoroRequestEnum.loading);
   }
 
-  MyoroRequestState<T> createSuccessState(T? data) {
+  MyoroRequest<T> createSuccessState(T? data) {
     return copyWith(status: MyoroRequestEnum.success, data: data);
   }
 
-  MyoroRequestState<T> createErrorState(String errorMessage) {
+  MyoroRequest<T> createErrorState(String errorMessage) {
     return copyWith(status: MyoroRequestEnum.error, errorMessage: errorMessage);
   }
 

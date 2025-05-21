@@ -1,1 +1,1 @@
-export 'myoro_table.dart';
+export 'table/exports.dart';

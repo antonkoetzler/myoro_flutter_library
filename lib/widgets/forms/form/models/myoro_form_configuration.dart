@@ -1,14 +1,10 @@
-part of '../myoro_form.dart';
-
-/// Builder of the content within the form.
-///
-/// Contains controller so you don't need to create one & the status of the form execution.
-typedef MyoroFormBuilder<T> = Function(T? result, MyoroRequestEnum status, MyoroFormController controller);
+import 'package:equatable/equatable.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration of [MyoroForm].
 class MyoroFormConfiguration<T> extends Equatable {
   /// Controller in the case that the controller needs to be used outside of [builder]'s scope.
-  final MyoroFormController? controller;
+  final MyoroFormController<T>? controller;
 
   /// Validation function of [MyoroForm].
   ///
@@ -37,7 +33,7 @@ class MyoroFormConfiguration<T> extends Equatable {
   });
 
   MyoroFormConfiguration<T> copyWith({
-    MyoroFormController? controller,
+    MyoroFormController<T>? controller,
     bool controllerProvided = true,
     MyoroFormValidation? validation,
     bool validationProvided = true,
