@@ -5,7 +5,7 @@ final class _TextFormField extends StatelessWidget {
   final MyoroInputViewModel _viewModel;
   TextEditingController get _controller => _viewModel._controller;
   MyoroInputConfiguration get _configuration => _viewModel._configuration;
-  MyoroInputFormatter? get _formatter => _viewModel._formatter;
+  MyoroInputFormatter? get _formatter => _viewModel._state._formatter;
   bool get _enabled => _viewModel._enabledNotifier.value;
   ValueNotifier<bool> get _showClearTextButtonNotifier => _viewModel._showClearTextButtonNotifier;
 

@@ -31,9 +31,7 @@ final class MyoroMenuBloc<T> extends Bloc<MyoroMenuEvent<T>, MyoroMenuState<T>> 
         items = await _configuration.request();
       }
 
-      emit(
-        state.copyWith(status: MyoroRequestEnum.success, items: items, initialRequestMade: true),
-      );
+      emit(state.copyWith(status: MyoroRequestEnum.success, items: items, initialRequestMade: true));
     });
   }
 
@@ -46,11 +44,7 @@ final class MyoroMenuBloc<T> extends Bloc<MyoroMenuEvent<T>, MyoroMenuState<T>> 
     final String query = event.query;
     final Set<T> items = state.items;
 
-    emit(
-      state.copyWith(
-        queriedItems: query.isEmpty ? items : _configuration.searchCallback!(query, items),
-      ),
-    );
+    emit(state.copyWith(queriedItems: query.isEmpty ? items : _configuration.searchCallback!(query, items)));
   }
 
   Future<void> _treatRequest(MyoroMenuEvent<T> event, _Emitter<T> emit, Function() function) async {

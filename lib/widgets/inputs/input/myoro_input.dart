@@ -13,6 +13,7 @@ part '_widgets/_text_form_field.dart';
 part '_widgets/_wrapper.dart';
 part 'models/myoro_input_configuration.dart';
 part 'view_model/myoro_input_view_model.dart';
+part 'view_model/myoro_input_view_model_state.dart';
 part 'myoro_input_theme_extension.dart';
 part 'myoro_input_types.dart';
 
@@ -82,8 +83,8 @@ final class _MyoroInputState extends State<MyoroInput> {
   @override
   void didUpdateWidget(covariant MyoroInput oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _viewModel._configuration = _configuration;
-    _viewModel._formatter = _formatter;
+    _viewModel._state._configuration = _configuration;
+    _viewModel._state._formatter = _formatter;
   }
 
   @override

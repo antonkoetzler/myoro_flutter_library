@@ -2,33 +2,15 @@ part of '../myoro_input.dart';
 
 /// View model of [MyoroInput].
 class MyoroInputViewModel {
-  /// Configuration.
-  late MyoroInputConfiguration _configuration;
+  late final MyoroInputViewModelState _state;
+  MyoroInputConfiguration get _configuration => _state._configuration;
+  TextEditingController get _controller => _state._controller;
+  ValueNotifier<bool> get _enabledNotifier => _state._enabledNotifier;
+  ValueNotifier<bool> get _showClearTextButtonNotifier => _state._showClearTextButtonNotifier;
 
-  /// Formatter.
-  MyoroInputFormatter? _formatter;
-
-  /// Input controller of the [MyoroInput].
-  TextEditingController? _localController;
-  TextEditingController get _controller {
-    return _configuration.controller ?? (_localController ??= TextEditingController());
-  }
-
-  /// [bool] to keep track of whether the input is
-  /// enabled or not if the checkbox is enabled.
-  late final ValueNotifier<bool> _enabledNotifier;
-
-  /// [ValueNotifier] to keep track of whether or not to show
-  /// [_ClearTextButton] in [TextFormField.decoration.suffix].
-  late final ValueNotifier<bool> _showClearTextButtonNotifier;
-
-  MyoroInputViewModel(this._configuration, [this._formatter]) {
+  MyoroInputViewModel(MyoroInputConfiguration configuration, [MyoroInputFormatter? formatter]) {
+    _state = MyoroInputViewModelState(configuration, formatter);
     _controller.addListener(_controllerListener);
-    _enabledNotifier = ValueNotifier(_configuration.enabled);
-    _showClearTextButtonNotifier = ValueNotifier<bool>(_showClearTextButton);
-    if (_formatter != null && _controller.text.isEmpty) {
-      _controller.text = _formatter!.initialText;
-    }
   }
 
   /// Dispose function.
@@ -40,16 +22,12 @@ class MyoroInputViewModel {
 
   /// [_controller]'s listener.
   void _controllerListener() {
-    _showClearTextButtonNotifier.value = _showClearTextButton;
+    _showClearTextButtonNotifier.value = _state._showClearTextButton;
   }
 
   /// [MyoroCheckboxConfiguration.onChanged] of [_Checkbox].
   void _checkboxOnChanged(bool value) {
     _configuration.checkboxOnChanged!.call(value, _controller.text);
     _enabledNotifier.value = value;
-  }
-
-  bool get _showClearTextButton {
-    return _configuration.showClearTextButton != false && _controller.text.isNotEmpty;
   }
 }

@@ -1,1 +1,1 @@
-export 'myoro_resolver.dart';
+export 'resolver/exports.dart';

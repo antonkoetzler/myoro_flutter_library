@@ -20,15 +20,15 @@ TODO
 - (**DONE, NEED TO VIEWMODELIZE**) dividers
 - (**DONE, NEED TO VIEWMODELIZE**) drawers
 - (**DONE, NEED TO VIEWMODELIZE**) dropdowns
-- (**DONE, NEED TO VIEWMODELIZE**) forms
+- forms
 - (**DONE, NEED TO VIEWMODELIZE**) graphs
-- (**DONE**) inputs
+- (**DONE, NEED TO VIEWMODELIZE**) inputs
 - (**DONE**) layout_builders
-- loaders
-- menus
-- modals
-- radios
-- resolvers
+- (**DONE**) loaders
+- (**DONE, THIS IS THE GOLD STANDARD**) menus
+- (**DONE**) modals
+- (**DONE**) radios
+- (**DONE**) resolvers
 - screens
 - sliders
 - snack_bars
