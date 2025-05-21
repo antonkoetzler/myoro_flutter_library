@@ -13,7 +13,8 @@ class MyoroMenuController<T> extends MyoroMenuControllerBase<T> {
 
   @override
   void fetch() {
-    unawaited(itemsNotifier.fetch(configuration.request));
+    itemsRequestController.requestCallback = configuration.request;
+    unawaited(itemsRequestController.fetch());
   }
 
   @override
@@ -26,7 +27,8 @@ class MyoroMenuController<T> extends MyoroMenuControllerBase<T> {
       '[_configuration.onEndReachedRequest] cannot be null.',
     );
 
-    unawaited(itemsNotifier.fetch(() async => await onEndReachedRequest!(items)));
+    itemsRequestController.requestCallback = () async => await onEndReachedRequest!(items);
+    unawaited(itemsRequestController.fetch());
   }
 
   @override

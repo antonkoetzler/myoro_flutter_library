@@ -1,4 +1,6 @@
-part of '../myoro_accordion.dart';
+import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration model of a [MyoroAccordion].
 class MyoroAccordionConfiguration extends Equatable {

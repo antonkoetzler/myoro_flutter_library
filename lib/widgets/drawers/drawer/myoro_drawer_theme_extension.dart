@@ -1,4 +1,5 @@
-part of 'myoro_drawer.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroDrawer].
 @immutable

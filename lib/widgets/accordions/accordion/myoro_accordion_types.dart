@@ -1,4 +1,4 @@
-part of 'myoro_accordion.dart';
+import 'package:flutter/material.dart';
 
 /// Builder of the title of the item.
 typedef MyoroAccordionItemTitleBuilder = Widget Function(BuildContext context);

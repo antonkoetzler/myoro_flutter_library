@@ -1,10 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-
-part 'models/myoro_app_configuration.dart';
-part 'myoro_app_theme_extension.dart';
 
 /// Root widget of your [App] widget in main.dart.
 class MyoroApp extends StatelessWidget {

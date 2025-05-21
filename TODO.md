@@ -10,30 +10,30 @@
 
 TODO
 
-- (**DONE, NEED TO CONTROLLERIZE**) accordions
-- (**DONE, NEED TO CONTROLLERIZE**) app_bars
-- (**DONE, NEED TO CONTROLLERIZE**) apps
-- (**DONE, NEED TO CONTROLLERIZE**) buttons
-- (**DONE, NEED TO CONTROLLERIZE**) cards
-- (**DONE, NEED TO CONTROLLERIZE**) carousels
-- (**DONE, NEED TO CONTROLLERIZE**) checkboxes
-- (**DONE, NEED TO CONTROLLERIZE**) dividers
-- (**DONE, NEED TO CONTROLLERIZE**) drawers
-- (**DONE, NEED TO CONTROLLERIZE**) dropdowns
-- (**DONE**) forms
-- (**DONE, NEED TO CONTROLLERIZE**) graphs
-- (**DONE, NEED TO CONTROLLERIZE**) inputs
-- (**DONE**) layout_builders
-- (**DONE**) loaders
-- (**DONE, THIS IS THE GOLD STANDARD**) menus
-- (**DONE**) modals
-- (**DONE**) radios
-- (**DONE**) screens
-- (**DONE**) sliders
-- (**DONE**) snack_bars
-- (**DONE**) tables
-- testing
-- tooltips
+- (**DONE**) accordions
+- (**DONE**) app_bars
+- (**DONE**) apps
+- (**REVISE**) buttons
+- (**REVISE**) cards
+- (**REVISE**) carousels
+- (**REVISE**) checkboxes
+- (**REVISE**) dividers
+- (**REVISE**) drawers
+- (**REVISE**) dropdowns
+- (**REVISE**) forms
+- (**REVISE**) graphs
+- (**REVISE**) inputs
+- (**REVISE**) layout_builders
+- (**REVISE**) loaders
+- (**REVISE**) menus
+- (**REVISE**) modals
+- (**REVISE**) radios
+- (**REVISE**) screens
+- (**REVISE**) sliders
+- (**REVISE**) snack_bars
+- (**REVISE**) tables
+- (**REVISE**) testing
+- (**REVISE**) tooltips
 - Storyboard
 - Delete bloc packages everywhere
 - Make configuration passable to controller or widget, this avoids the didUpdateWidget problem
@@ -48,5 +48,6 @@ TODO
 - Make it so that `_Menu` in `MyoroDropdown` can use `CompositedTransformTarget` + `OverlayPortal` or a non-`Overlay`
 - Make `MyoroSnackBar` width 100% on mobile
 
+1. improvement: Constructors at the top of classes
 1. feature: 100% code coverage
 1. feature: Publish to pub.dev

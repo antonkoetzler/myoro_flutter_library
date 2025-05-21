@@ -17,4 +17,4 @@ typedef MyoroFormOnError = Function(String errorMessage);
 /// Builder of the content within the form.
 ///
 /// Contains controller so you don't need to create one & the status of the form execution.
-typedef MyoroFormBuilder<T> = Function(MyoroRequest<T> request, MyoroFormController controller);
+typedef MyoroFormBuilder<T> = Function(MyoroRequest<T> request, MyoroFormController<T> controller);

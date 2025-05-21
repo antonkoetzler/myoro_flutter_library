@@ -1,4 +1,6 @@
-part of '../myoro_accordion.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Item of a [MyoroAccordion].
 class MyoroAccordionItem extends Equatable {

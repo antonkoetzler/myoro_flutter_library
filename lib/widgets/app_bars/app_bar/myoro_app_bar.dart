@@ -1,10 +1,5 @@
-import 'package:equatable/equatable.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-
-part 'models/myoro_app_bar_configuration.dart';
-part 'myoro_app_bar_theme_extension.dart';
 
 /// Library's [AppBar] widget.
 ///

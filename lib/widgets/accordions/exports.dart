@@ -1,1 +1,1 @@
-export 'accordion/myoro_accordion.dart';
+export 'accordion/exports.dart';

@@ -1,4 +1,8 @@
-part of 'myoro_search_input.dart';
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroSearchInput].
 @immutable

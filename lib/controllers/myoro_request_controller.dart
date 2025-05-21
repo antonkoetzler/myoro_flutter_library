@@ -5,14 +5,16 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function that requests the data to be retrieved.
-typedef MyoroRequestNotifierRequest<T> = FutureOr<T> Function();
+typedef MyoroRequestControllerRequest<T> = FutureOr<T> Function();
 
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.
-class MyoroRequestNotifier<T> extends ValueNotifier<MyoroRequest<T>> {
-  MyoroRequestNotifier() : super(MyoroRequest<T>());
+class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
+  MyoroRequestControllerRequest<T>? requestCallback;
+
+  MyoroRequestController({this.requestCallback}) : super(MyoroRequest<T>());
 
   /// Executes [request].
-  Future<void> fetch([MyoroRequestNotifierRequest<T>? requestCallback]) async {
+  Future<void> fetch() async {
     String? errorMessage;
 
     try {
@@ -21,12 +23,12 @@ class MyoroRequestNotifier<T> extends ValueNotifier<MyoroRequest<T>> {
     } on HttpException catch (httpError) {
       errorMessage = httpError.message;
       if (kDebugMode) {
-        print('[MyoroRequestNotifier<$T>.fetch]: HTTP error: "$errorMessage".');
+        print('[MyoroRequestController<$T>.fetch]: HTTP error: "$errorMessage".');
       }
     } catch (genericError, stackTrace) {
       errorMessage = genericError.toString();
       if (kDebugMode) {
-        print('[MyoroRequestNotifier<$T>.fetch]: Generic error: "$errorMessage".');
+        print('[MyoroRequestController<$T>.fetch]: Generic error: "$errorMessage".');
         print('Stack trace:\n$stackTrace');
       }
     }

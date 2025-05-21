@@ -1,7 +1,3 @@
-import 'dart:ui';
-
-import 'package:equatable/equatable.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -10,12 +6,6 @@ part '_widgets/_item.dart';
 part '_widgets/_item_content.dart';
 part '_widgets/_item_title_button.dart';
 part '_widgets/_item_title_button_arrow.dart';
-part 'controller/myoro_accordion_controller.dart';
-part 'controller/myoro_accordion_controller_impl.dart';
-part 'models/myoro_accordion_configuration.dart';
-part 'models/myoro_accordion_item.dart';
-part 'myoro_accordion_theme_extension.dart';
-part 'myoro_accordion_types.dart';
 
 /// Accordion of MFL.
 class MyoroAccordion extends StatefulWidget {
@@ -37,10 +27,10 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   MyoroAccordionController? _localController;
   MyoroAccordionController get _controller {
-    return widget.controller ?? (_localController ??= MyoroAccordionControllerImpl());
+    return widget.controller ?? (_localController ??= MyoroAccordionController());
   }
 
-  ScrollController get _scrollController => _controller._scrollController;
+  ScrollController get _scrollController => _controller.scrollController;
 
   @override
   void dispose() {

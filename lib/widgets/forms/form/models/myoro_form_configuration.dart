@@ -3,9 +3,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration of [MyoroForm].
 class MyoroFormConfiguration<T> extends Equatable {
-  /// Controller in the case that the controller needs to be used outside of [builder]'s scope.
-  final MyoroFormController<T>? controller;
-
   /// Validation function of [MyoroForm].
   ///
   /// If unsuccessful, a [String] of the error message is returned. If successful, returns [null].
@@ -23,18 +20,9 @@ class MyoroFormConfiguration<T> extends Equatable {
   /// Builder of the content within the form.
   final MyoroFormBuilder<T> builder;
 
-  const MyoroFormConfiguration({
-    this.controller,
-    this.validation,
-    this.request,
-    this.onSuccess,
-    this.onError,
-    required this.builder,
-  });
+  const MyoroFormConfiguration({this.validation, this.request, this.onSuccess, this.onError, required this.builder});
 
   MyoroFormConfiguration<T> copyWith({
-    MyoroFormController<T>? controller,
-    bool controllerProvided = true,
     MyoroFormValidation? validation,
     bool validationProvided = true,
     MyoroFormRequest<T>? request,
@@ -46,7 +34,6 @@ class MyoroFormConfiguration<T> extends Equatable {
     MyoroFormBuilder<T>? builder,
   }) {
     return MyoroFormConfiguration(
-      controller: controllerProvided ? (controller ?? this.controller) : null,
       validation: validationProvided ? (validation ?? this.validation) : null,
       request: requestProvided ? (request ?? this.request) : null,
       onSuccess: onSuccessProvided ? (onSuccess ?? this.onSuccess) : null,
@@ -57,13 +44,12 @@ class MyoroFormConfiguration<T> extends Equatable {
 
   @override
   List<Object?> get props {
-    return [controller, validation, request, onSuccess, onError, builder];
+    return [validation, request, onSuccess, onError, builder];
   }
 
   @override
   String toString() =>
       'MyoroFormConfiguration<$T>(\n'
-      '  controller: $controller,\n'
       '  validation: $validation,\n'
       '  request: $request,\n'
       '  onSuccess: $onSuccess,\n'

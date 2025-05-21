@@ -155,7 +155,7 @@ final class _Column extends StatelessWidget {
 
 final class _RowsSection<T> extends StatelessWidget {
   final MyoroTableController<T> _controller;
-  MyoroRequestNotifier<Set<T>> get _itemsRequestNotifier => _controller.itemsRequestNotifier;
+  MyoroRequestController<Set<T>> get _itemsRequestController => _controller.itemsRequestController;
   MyoroRequest<Set<T>> get _itemsRequest => _controller.itemsRequest;
 
   const _RowsSection(this._controller);
@@ -163,7 +163,7 @@ final class _RowsSection<T> extends StatelessWidget {
   @override
   Widget build(_) {
     // return BlocBuilder<MyoroTableBloc<T>, MyoroTableState<T>>(buildWhen: _buildWhen, builder: _builder);
-    return ValueListenableBuilder(valueListenable: _itemsRequestNotifier, builder: (_, __, ___) => _builder());
+    return ValueListenableBuilder(valueListenable: _itemsRequestController, builder: (_, __, ___) => _builder());
   }
 
   Widget _builder() {

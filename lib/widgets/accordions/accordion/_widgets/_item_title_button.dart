@@ -12,7 +12,7 @@ final class _ItemTitleButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: _controller._expandedItemNotifier,
+      valueListenable: _controller.expandedItemNotifier,
       builder: (_, MyoroAccordionItem? expandedItem, __) {
         return _valueListenableBuilder(context, themeExtension, expandedItem);
       },
@@ -42,7 +42,7 @@ final class _ItemTitleButton extends StatelessWidget {
   }
 
   void _onTapUp(_) {
-    _controller._expandedItemNotifier.value != _item ? _controller.expandItem(_item) : _controller.reset();
+    _controller.expandedItemNotifier.value != _item ? _controller.expandItem(_item) : _controller.reset();
   }
 
   Widget _buttonBuilder(

@@ -55,8 +55,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
         borderRadius: themeExtension.borderRadius,
       ),
       constraints: _configuration.constraints,
-      // child: BlocBuilder<MyoroMenuBloc<T>, MyoroMenuState<T>>(buildWhen: _buildWhen, builder: _builder),
-      child: ValueListenableBuilder(valueListenable: _controller.itemsNotifier, builder: _builder),
+      child: ValueListenableBuilder(valueListenable: _controller.itemsRequestController, builder: _builder),
     );
   }
 

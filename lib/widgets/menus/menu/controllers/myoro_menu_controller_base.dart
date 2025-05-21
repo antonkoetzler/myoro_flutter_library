@@ -7,8 +7,9 @@ abstract class MyoroMenuControllerBase<T> {
   MyoroMenuConfiguration<T> configuration;
 
   /// Loaded items in the [MyoroMenu].
-  final itemsNotifier = MyoroRequestNotifier<Set<T>>();
-  Set<T> get items => itemsNotifier.value.data ?? <T>{};
+  final _itemsRequestController = MyoroRequestController<Set<T>>();
+  MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
+  Set<T> get items => itemsRequestController.value.data ?? <T>{};
 
   /// Querired items in the [MyoroMenu].
   final queriedItemsNotifier = ValueNotifier<Set<T>?>(null);
@@ -23,11 +24,13 @@ abstract class MyoroMenuControllerBase<T> {
   /// To call [MyoroMenuConfiguration.onEndReachedRequest].
   final scrollController = ScrollController();
 
-  MyoroMenuControllerBase(this.configuration);
+  MyoroMenuControllerBase(this.configuration) {
+    _itemsRequestController.requestCallback = configuration.request;
+  }
 
   /// Dispose function.
   void dispose() {
-    itemsNotifier.dispose();
+    _itemsRequestController.dispose();
     queriedItemsNotifier.dispose();
     scrollController.dispose();
   }

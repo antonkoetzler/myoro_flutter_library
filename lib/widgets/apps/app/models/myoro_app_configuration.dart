@@ -1,14 +1,6 @@
-part of '../myoro_app.dart';
-
-/// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
-typedef MyoroAppColorSchemeBuilder = ColorScheme Function(ColorScheme myoroColorScheme);
-
-/// Builder to create a custom [TextTheme] instead of using [createMyoroColorScheme].
-typedef MyoroAppTextThemeBuilder = TextTheme Function(TextTheme myoroTextTheme);
-
-/// To be able to grab the [ColorScheme] & [TextTheme] to build your [ThemeExtension]s correctly.
-typedef MyoroAppThemeExtensionsBuilder =
-    List<ThemeExtension> Function(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme);
+import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration of [MyoroApp].
 class MyoroAppConfiguration extends Equatable {

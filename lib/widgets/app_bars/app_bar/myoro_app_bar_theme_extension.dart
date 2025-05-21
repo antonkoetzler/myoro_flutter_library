@@ -1,4 +1,5 @@
-part of 'myoro_app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ThemeExtension] for [MyoroAppBar].
 @immutable

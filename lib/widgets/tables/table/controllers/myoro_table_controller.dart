@@ -14,9 +14,9 @@ class MyoroTableController<T> {
   }
 
   /// [ValueNotifier] of the items/rows of the [MyoroTable].
-  final _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>();
-  MyoroRequestNotifier<Set<T>> get itemsRequestNotifier => _itemsRequestNotifier;
-  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestNotifier.value;
+  final _itemsRequestController = MyoroRequestController<Set<T>>();
+  MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
+  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestController.value;
 
   /// [List] of [GlobalKey]s attributed to every [MyoroTableColumn].
   final List<GlobalKey> _titleColumnKeys = [];
@@ -27,17 +27,19 @@ class MyoroTableController<T> {
   ValueNotifier<List<double>> get titleColumnKeyWidthsNotifier => _titleColumnKeyWidthsNotifier;
   List<double> get titleColumnKeyWidths => _titleColumnKeyWidthsNotifier.value;
 
-  MyoroTableController(this._configuration);
+  MyoroTableController(this._configuration) {
+    _itemsRequestController.requestCallback = _configuration.request;
+  }
 
   /// Dispose function.
   void dispose() {
-    _itemsRequestNotifier.dispose();
+    _itemsRequestController.dispose();
     _titleColumnKeyWidthsNotifier.dispose();
   }
 
   /// Fetches the items of the [MyoroTable].
   void fetch() {
-    _itemsRequestNotifier.fetch(_configuration.request);
+    _itemsRequestController.fetch();
   }
 
   /// Populdates [_titleColumnKeyWidthsNotifier].
