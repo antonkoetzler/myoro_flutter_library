@@ -28,7 +28,7 @@ TODO
 - (**DONE, THIS IS THE GOLD STANDARD**) menus
 - (**DONE**) modals
 - (**DONE**) radios
-- (**DONE**) resolvers
+- (**IN PROGRESS, DELETE BLOC**) resolvers
 - screens
 - sliders
 - snack_bars
