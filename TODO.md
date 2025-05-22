@@ -13,8 +13,8 @@ TODO
 - (**DONE**) accordions
 - (**DONE**) app_bars
 - (**DONE**) apps
-- (**REVISE**) buttons
-- (**REVISE**) cards
+- (**DONE**) buttons
+- (**DONE**) cards
 - (**REVISE**) carousels
 - (**REVISE**) checkboxes
 - (**REVISE**) dividers

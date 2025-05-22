@@ -1,4 +1,5 @@
-part of 'myoro_button.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Widget] builder of the [MyoroButton].
 typedef MyoroButtonBuilder = Widget Function(BuildContext context, MyoroTapStatusEnum tapStatusEnum);

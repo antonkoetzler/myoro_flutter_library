@@ -1,8 +1,10 @@
-part of '../myoro_button.dart';
+import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration model of [MyoroButton].
-///
-/// TODO: Test needs to be rewritten.
 class MyoroButtonConfiguration extends Equatable {
   /// [MyoroTooltip] of the [MyoroButton].
   final MyoroTooltipConfiguration? tooltipConfiguration;

@@ -15,7 +15,7 @@ final class _Icon extends StatelessWidget {
       size: _iconConfiguration.size,
       color:
           _contentColorBuilder?.call(_tapStatusEnum) ??
-          MyoroButtonVariantEnum.primary.contentColorBuilder(context, _tapStatusEnum),
+          MyoroButtonStyleEnum.primary.contentColorBuilder(context, _tapStatusEnum),
     );
   }
 }

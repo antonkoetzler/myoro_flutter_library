@@ -32,7 +32,7 @@ final class _Button extends StatelessWidget {
     if (backgroundColorBuilder != null) {
       return backgroundColorBuilder(_tapStatusEnum);
     }
-    return MyoroButtonVariantEnum.primary.backgroundColorBuilder(
+    return MyoroButtonStyleEnum.primary.backgroundColorBuilder(
       context,
       _tapStatusEnum,
       onTapProvided: _configuration?.onTapProvided == true,

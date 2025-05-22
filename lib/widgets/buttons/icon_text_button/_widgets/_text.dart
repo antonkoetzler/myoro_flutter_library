@@ -20,7 +20,7 @@ final class _Text extends StatelessWidget {
         textAlign: _textConfiguration.alignment,
         style: (_textConfiguration.style ?? themeExtension.textStyle).withColor(
           _contentColorBuilder?.call(_tapStatusEnum) ??
-              MyoroButtonVariantEnum.primary.contentColorBuilder(context, _tapStatusEnum),
+              MyoroButtonStyleEnum.primary.contentColorBuilder(context, _tapStatusEnum),
         ),
       ),
     );

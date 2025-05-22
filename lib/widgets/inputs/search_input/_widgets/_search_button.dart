@@ -13,7 +13,7 @@ final class _SearchButton<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
-        borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+        borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
         onTapUp: _onTapUp,
       ),
       builder: _builder,

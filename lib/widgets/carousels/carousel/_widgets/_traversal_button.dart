@@ -16,7 +16,7 @@ final class _TraversalButton extends StatelessWidget {
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
             buttonConfiguration: MyoroButtonConfiguration(
-              borderBuilder: (_) => MyoroButtonVariantEnum.border(context),
+              borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
               onTapUp: (_) => _onTapUp(),
             ),
             iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: _icon),

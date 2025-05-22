@@ -1,14 +1,16 @@
-part of '../myoro_button.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum centralizing all default button variants provided.
-enum MyoroButtonVariantEnum {
+enum MyoroButtonStyleEnum {
   /// No idle background [Color] and normal coloring of content.
   primary,
 
   /// Background [Color] and "inverse" coloring of content.
   secondary;
 
-  factory MyoroButtonVariantEnum.fake() {
+  factory MyoroButtonStyleEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
 
