@@ -1,5 +1,4 @@
 export 'constants.dart';
-export 'lerp/exports.dart';
 export 'databases/exports.dart';
 export 'debouncing/exports.dart';
 export 'design_system/exports.dart';
@@ -8,6 +7,7 @@ export 'fakes/exports.dart';
 export 'formatters/exports.dart';
 export 'gestures/exports.dart';
 export 'helpers/exports.dart';
+export 'lerp/exports.dart';
 export 'links/exports.dart';
 export 'requests/exports.dart';
 export 'throttling/exports.dart';
