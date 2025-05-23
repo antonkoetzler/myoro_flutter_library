@@ -7,25 +7,31 @@ part '_widgets/_traversal_button.dart';
 
 /// Slider carousel.
 class MyoroCarousel extends StatefulWidget {
-  /// Configuration.
-  final MyoroCarouselConfiguration configuration;
+  final MyoroCarouselController? controller;
+  final MyoroCarouselConfiguration? configuration;
 
-  const MyoroCarousel({super.key, required this.configuration});
+  const MyoroCarousel({super.key, this.controller, this.configuration})
+    : assert(
+        (controller != null) ^ (configuration != null),
+        '[MyoroCarousel]: [controller] (x)or configuration must be provided.',
+      );
 
   @override
   State<MyoroCarousel> createState() => _MyoroCarouselState();
 }
 
 final class _MyoroCarouselState extends State<MyoroCarousel> {
-  MyoroCarouselConfiguration get _configuration => widget.configuration;
-
-  late final _controller = MyoroCarouselController(_configuration);
-  CarouselSliderController get _carouselSliderController => _controller.carouselSliderController;
+  MyoroCarouselController? _localController;
+  MyoroCarouselController get _controller {
+    return widget.controller ?? (_localController ??= MyoroCarouselController(configuration: widget.configuration!));
+  }
 
   @override
   void didUpdateWidget(covariant MyoroCarousel oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _controller.configuration;
+    if (widget.configuration != oldWidget.configuration) {
+      _controller.state.configuration = widget.configuration!;
+    }
   }
 
   @override
@@ -36,20 +42,16 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
       alignment: Alignment.center,
       children: [
         _Carousel(_controller),
-        if (_configuration.displayTraversalButtons) ...[
+        if (_controller.state.configuration.displayTraversalButtons) ...[
           Positioned(
             child: _TraversalButton(
               Alignment.centerLeft,
               themeExtension.previousItemButtonIcon,
-              _carouselSliderController.previousPage,
+              _controller.previousPage,
             ),
           ),
           Positioned(
-            child: _TraversalButton(
-              Alignment.centerRight,
-              themeExtension.nextItemButtonIcon,
-              _carouselSliderController.nextPage,
-            ),
+            child: _TraversalButton(Alignment.centerRight, themeExtension.nextItemButtonIcon, _controller.nextPage),
           ),
         ],
       ],

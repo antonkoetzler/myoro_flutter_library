@@ -1,14 +1,19 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroCarousel].
-class MyoroCarouselController {
-  MyoroCarouselController(this.configuration);
+class MyoroCarouselController implements MyoroCarouselInterface {
+  MyoroCarouselController({required MyoroCarouselConfiguration configuration}) {
+    state = MyoroCarouselState(configuration);
+  }
 
-  /// Configuration.
-  MyoroCarouselConfiguration configuration;
+  late final MyoroCarouselState state;
 
-  /// [CarouselSlider] controller.
-  final _carouselSliderController = CarouselSliderController();
-  CarouselSliderController get carouselSliderController => _carouselSliderController;
+  @override
+  void changePage(int pageNumber) => state.carouselSliderController.jumpToPage(pageNumber);
+
+  @override
+  void previousPage() => state.carouselSliderController.previousPage();
+
+  @override
+  void nextPage() => state.carouselSliderController.nextPage();
 }

@@ -15,11 +15,11 @@ TODO
 - (**DONE**) apps
 - (**DONE**) buttons
 - (**DONE**) cards
-- (**REVISE**) carousels
-- (**REVISE**) checkboxes
+- (**DONE**) carousels
+- (**DONE**) checkboxes
 - (**REVISE**) dividers
 - (**REVISE**) drawers
-- (**IN PROGRESS, THIS IS THE FLIPPING GOLD STANDARD**) dropdowns
+- (**DONE**) dropdowns
 - (**REVISE**) forms
 - (**REVISE**) graphs
 - (**REVISE**) inputs

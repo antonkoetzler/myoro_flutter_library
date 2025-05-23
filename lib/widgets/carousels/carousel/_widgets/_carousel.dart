@@ -5,8 +5,8 @@ final class _Carousel extends StatelessWidget {
   const _Carousel(this._controller);
 
   final MyoroCarouselController _controller;
-  MyoroCarouselConfiguration get _configuration => _controller.configuration;
-  CarouselSliderController get _carouselSliderController => _controller.carouselSliderController;
+  MyoroCarouselConfiguration get _configuration => _controller.state.configuration;
+  CarouselSliderController get _carouselSliderController => _controller.state.carouselSliderController;
 
   @override
   Widget build(BuildContext context) {

@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroGroupCheckbox].
-class MyoroGroupCheckboxController extends ValueNotifier<MyoroGroupCheckboxItems> {
-  /// Configuration.
-  late MyoroGroupCheckboxConfiguration configuration;
+class MyoroGroupCheckboxController extends ValueNotifier<MyoroGroupCheckboxItems>
+    implements MyoroGroupCheckboxInterface {
+  MyoroGroupCheckboxController({required MyoroGroupCheckboxConfiguration configuration})
+    : super(configuration.checkboxes) {
+    state = MyoroGroupCheckboxState(configuration);
+  }
 
-  MyoroGroupCheckboxController(this.configuration) : super(configuration.checkboxes);
+  late final MyoroGroupCheckboxState state;
 
-  /// Method to toggle a checkbox in the group.
+  @override
   void toggle(String key, [bool? enabled]) {
     value = Map.from(checkboxes)..update(key, (bool keyChanged) => enabled ?? !keyChanged);
   }
 
-  /// Sets all of the checkboxes to a value.
+  @override
   void changeAll([bool enabled = false]) {
     value = {for (final MapEntry<String, bool> entry in checkboxes.entries) entry.key: enabled};
   }
 
-  /// Alias of [value].
   MyoroGroupCheckboxItems get checkboxes => value;
 }

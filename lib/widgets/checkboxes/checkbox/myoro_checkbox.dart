@@ -7,28 +7,32 @@ class MyoroCheckbox extends StatefulWidget {
   final MyoroCheckboxController? controller;
 
   /// Configuration.
-  final MyoroCheckboxConfiguration configuration;
+  final MyoroCheckboxConfiguration? configuration;
 
-  const MyoroCheckbox({super.key, this.controller, required this.configuration});
+  const MyoroCheckbox({super.key, this.controller, this.configuration})
+    : assert(
+        (controller != null) ^ (configuration != null),
+        '[MyoroCheckbox]: [controller] (x)or [configuration] must be provided.',
+      );
 
   @override
   State<MyoroCheckbox> createState() => _MyoroCheckboxState();
 }
 
 final class _MyoroCheckboxState extends State<MyoroCheckbox> {
-  MyoroCheckboxConfiguration get _configuration => widget.configuration;
-
   MyoroCheckboxController? _localController;
   MyoroCheckboxController get _controller {
-    return widget.controller ?? (_localController ??= MyoroCheckboxController(_configuration));
+    return widget.controller ?? (_localController ??= MyoroCheckboxController(configuration: widget.configuration!));
   }
+
+  MyoroCheckboxConfiguration get _configuration => _controller.state.configuration;
 
   @override
   void didUpdateWidget(covariant MyoroCheckbox oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.controller != null) return;
-    _controller.configuration = _configuration;
-    _controller.value = _configuration.initialValue;
+    if (widget.configuration != oldWidget.configuration) {
+      _controller.state.configuration = widget.configuration!;
+    }
   }
 
   @override
