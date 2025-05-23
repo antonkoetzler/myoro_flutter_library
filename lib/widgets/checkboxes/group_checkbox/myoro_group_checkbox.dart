@@ -1,15 +1,5 @@
-import 'dart:ui';
-
-import 'package:equatable/equatable.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-
-part 'controller/myoro_group_checkbox_controller.dart';
-part 'controller/myoro_group_checkbox_controller_impl.dart';
-part 'models/myoro_group_checkbox_configuration.dart';
-part 'myoro_group_checkbox_theme_extension.dart';
-part 'myoro_group_checkbox_types.dart';
 
 /// A group of [MyoroCheckbox]s.
 class MyoroGroupCheckbox extends StatefulWidget {
@@ -30,10 +20,14 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
 
   MyoroGroupCheckboxController? _localController;
   MyoroGroupCheckboxController get _controller {
-    return widget.controller ?? (_localController ??= MyoroGroupCheckboxControllerImpl(_configuration));
+    return widget.controller ?? (_localController ??= MyoroGroupCheckboxController(_configuration));
   }
 
-  ValueNotifier<MyoroGroupCheckboxItems> get _checkboxesNotifier => _controller._checkboxesNotifier;
+  @override
+  void didUpdateWidget(covariant MyoroGroupCheckbox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _controller.configuration = _configuration;
+  }
 
   @override
   void dispose() {
@@ -46,7 +40,7 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
     final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: _checkboxesNotifier,
+      valueListenable: _controller,
       builder: (_, MyoroGroupCheckboxItems checkboxes, __) {
         return Wrap(
           direction: _configuration.direction,
@@ -60,7 +54,7 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
                     initialValue: entry.value,
                     onChanged: (bool value) {
                       _controller.toggle(entry.key, value);
-                      _configuration.onChanged?.call(entry.key, _checkboxesNotifier.value);
+                      _configuration.onChanged?.call(entry.key, checkboxes);
                     },
                   ),
                 );

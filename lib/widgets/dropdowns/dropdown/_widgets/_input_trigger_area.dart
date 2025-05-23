@@ -1,24 +1,24 @@
 part of '../myoro_dropdown.dart';
 
 /// [Widget] responsible for opening the dropdown when [_Input] is pressed.
-final class _InputTriggerArea<T> extends StatelessWidget {
-  final MyoroDropdownController<T> _controller;
-  MyoroDropdownConfiguration<T> get _configuration => _controller._configuration;
-  ValueNotifier<bool> get _enabledNotifier => _controller.enabledNotifier;
-  bool get _enabled => _controller.enabled;
-  ValueNotifier<Set<T>> get _selectedItemsNotifier => _controller.selectedItemsNotifier;
-  Set<T> get _selectedItems => _selectedItemsNotifier.value;
-  String get _tapRegionGroupId => _controller._state._tapRegionGroupId;
-  ValueNotifier<Size?> get _inputSizeNotifier => _controller._state._inputSizeNotifier;
+final class _InputTriggerArea<T, C extends MyoroDropdownConfiguration<T>> extends StatelessWidget {
+  final MyoroDropdownController<T, C> _controller;
+  MyoroDropdownConfiguration<T> get _configuration => _controller.state.configuration;
+  ValueNotifier<bool> get _enabledController => _controller.state.enabledController;
+  bool get _enabled => _controller.state.enabled;
+  ValueNotifier<Set<T>> get _selectedItemsController => _controller.state.selectedItemsController;
+  Set<T> get _selectedItems => _selectedItemsController.value;
+  String get _tapRegionGroupId => _controller.state.tapRegionGroupId;
+  ValueNotifier<Size?> get _inputSizeController => _controller.state.inputSizeController;
 
   const _InputTriggerArea(this._controller);
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(valueListenable: _inputSizeNotifier, builder: _inputSizeNotifierBuilder);
+    return ValueListenableBuilder(valueListenable: _inputSizeController, builder: _inputSizeControllerBuilder);
   }
 
-  Widget _inputSizeNotifierBuilder(BuildContext context, Size? inputSize, __) {
+  Widget _inputSizeControllerBuilder(BuildContext context, Size? inputSize, __) {
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return ClipRRect(
@@ -26,19 +26,19 @@ final class _InputTriggerArea<T> extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: SizedBox(
         height: inputSize?.height,
-        child: ValueListenableBuilder(valueListenable: _enabledNotifier, builder: _enabledNotifierBuilder),
+        child: ValueListenableBuilder(valueListenable: _enabledController, builder: _enabledControllerBuilder),
       ),
     );
   }
 
-  Widget _enabledNotifierBuilder(BuildContext context, bool enabled, _) {
+  Widget _enabledControllerBuilder(BuildContext context, bool enabled, _) {
     return ValueListenableBuilder(
-      valueListenable: _selectedItemsNotifier,
-      builder: (_, __, ___) => _selectedItemsNotifierBuilder(context),
+      valueListenable: _selectedItemsController,
+      builder: (_, __, ___) => _selectedItemsControllerBuilder(context),
     );
   }
 
-  Widget _selectedItemsNotifierBuilder(BuildContext context) {
+  Widget _selectedItemsControllerBuilder(BuildContext context) {
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final EdgeInsets clearTextButtonPadding = inputThemeExtension.clearTextButtonPadding;
     final onTapUp = _enabled ? _controller.toggleMenu : null;

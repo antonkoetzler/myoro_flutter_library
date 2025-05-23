@@ -10,10 +10,7 @@ final class MyoroDropdownState<T> extends Equatable {
   const MyoroDropdownState({required this.enabled, this.selectedItems = const {}});
 
   MyoroDropdownState<T> copyWith({bool? enabled, Set<T>? selectedItems}) {
-    return MyoroDropdownState(
-      enabled: enabled ?? this.enabled,
-      selectedItems: selectedItems ?? this.selectedItems,
-    );
+    return MyoroDropdownState(enabled: enabled ?? this.enabled, selectedItems: selectedItems ?? this.selectedItems);
   }
 
   @override

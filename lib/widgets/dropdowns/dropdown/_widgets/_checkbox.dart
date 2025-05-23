@@ -1,15 +1,15 @@
 part of '../myoro_dropdown.dart';
 
 /// [MyoroCheckbox] that enables/disables the dropdown.
-final class _Checkbox<T> extends StatelessWidget {
-  final MyoroDropdownController<T> _controller;
+final class _Checkbox<T, C extends MyoroDropdownConfiguration<T>> extends StatelessWidget {
+  final MyoroDropdownController<T, C> _controller;
 
   const _Checkbox(this._controller);
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _controller.enabledNotifier,
+      valueListenable: _controller.state.enabledController,
       builder: (_, bool enabled, __) => _builder(enabled),
     );
   }

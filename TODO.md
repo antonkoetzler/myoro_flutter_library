@@ -19,7 +19,7 @@ TODO
 - (**REVISE**) checkboxes
 - (**REVISE**) dividers
 - (**REVISE**) drawers
-- (**REVISE**) dropdowns
+- (**IN PROGRESS, THIS IS THE FLIPPING GOLD STANDARD**) dropdowns
 - (**REVISE**) forms
 - (**REVISE**) graphs
 - (**REVISE**) inputs
@@ -38,15 +38,16 @@ TODO
 - Delete bloc packages everywhere
 - Make configuration passable to controller or widget, this avoids the didUpdateWidget problem
 
-1. improvement: Make only `myoro_flutter_library.dart` exportable
-
-- <https://dart.dev/tools/pub/create-packages>: Putting all the code in `src` makes it so projects using MFL cannot export via `exports.dart` files
-
+1. improvement: Style configuration models
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
 - Make it so that `_Menu` in `MyoroDropdown` can use `CompositedTransformTarget` + `OverlayPortal` or a non-`Overlay`
 - Make `MyoroSnackBar` width 100% on mobile
+
+1. improvement: Make only `myoro_flutter_library.dart` exportable
+
+- <https://dart.dev/tools/pub/create-packages>: Putting all the code in `src` makes it so projects using MFL cannot export via `exports.dart` files
 
 1. improvement: Constructors at the top of classes
 1. feature: 100% code coverage

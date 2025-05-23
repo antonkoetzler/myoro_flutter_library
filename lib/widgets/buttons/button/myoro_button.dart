@@ -23,13 +23,13 @@ class MyoroButton extends StatefulWidget {
 final class _MyoroButtonState extends State<MyoroButton> {
   MyoroButtonConfiguration? get _configuration => widget.configuration;
 
-  late final _controller = MyoroButtonController(_configuration);
-  ValueNotifier<MyoroTapStatusEnum> get _tapStatusController => _controller.tapStatusController;
+  late final _controller = MyoroButtonController(configuration: _configuration);
+  ValueNotifier<MyoroTapStatusEnum> get _tapStatusController => _controller.state.tapStatusController;
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _controller.configuration = _configuration;
+    _controller.state.configuration = _configuration;
   }
 
   @override

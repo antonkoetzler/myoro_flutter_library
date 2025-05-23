@@ -1,36 +1,36 @@
 part of '../myoro_dropdown.dart';
 
 /// [MyoroInput] that displays selected items and provides functionality such as the clear selected items button.
-final class _Input<T> extends StatefulWidget {
-  final MyoroDropdownController<T> _controller;
+final class _Input<T, C extends MyoroDropdownConfiguration<T>> extends StatefulWidget {
+  final MyoroDropdownController<T, C> _controller;
 
   const _Input(this._controller);
 
   @override
-  State<_Input<T>> createState() => _InputState<T>();
+  State<_Input<T, C>> createState() => _InputState<T, C>();
 }
 
-final class _InputState<T> extends State<_Input<T>> {
-  MyoroDropdownController<T> get _controller => widget._controller;
-  MyoroDropdownConfiguration<T> get _configuration => _controller._configuration;
-  ValueNotifier<bool> get _enabledNotifier => _controller.enabledNotifier;
-  TextEditingController get _inputController => _controller._inputController;
-  GlobalKey get _inputKey => _controller._state._inputKey;
-  ValueNotifier<Size?> get _inputSizeNotifier => _controller._state._inputSizeNotifier;
-  LayerLink get _link => _controller._state._link;
+final class _InputState<T, C extends MyoroDropdownConfiguration<T>> extends State<_Input<T, C>> {
+  MyoroDropdownController<T, C> get _controller => widget._controller;
+  MyoroDropdownConfiguration<T> get _configuration => _controller.state.configuration;
+  ValueNotifier<bool> get _enabledController => _controller.state.enabledController;
+  TextEditingController get _inputController => _controller.state.inputController;
+  GlobalKey get _inputKey => _controller.state.inputKey;
+  ValueNotifier<Size?> get _inputSizeController => _controller.state.inputSizeController;
+  LayerLink get _link => _controller.state.link;
 
   @override
   Widget build(BuildContext context) {
     // TODO
     // return switch (_configuration.menuTypeEnum) {
     return OverlayPortal(
-      controller: _controller._overlayPortalController,
+      controller: _controller.state.overlayPortalController,
       overlayChildBuilder: _overlayChildBuilder,
       child: Stack(
         children: [
-          // Empty [MyoroLayoutBuilder] to always update [_inputSizeNotifier].
+          // Empty [MyoroLayoutBuilder] to always update [_inputSizeController].
           MyoroLayoutBuilder(builder: _layoutBuilder),
-          _InputTriggerArea<T>(_controller),
+          _InputTriggerArea(_controller),
         ],
       ),
     );
@@ -39,7 +39,7 @@ final class _InputState<T> extends State<_Input<T>> {
   Widget _overlayChildBuilder(_) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
     return ValueListenableBuilder(
-      valueListenable: _inputSizeNotifier,
+      valueListenable: _inputSizeController,
       builder: (_, Size? inputSize, __) {
         return Positioned(
           width: inputSize?.width,
@@ -56,13 +56,13 @@ final class _InputState<T> extends State<_Input<T>> {
   Widget _layoutBuilder(_, __) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final renderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
-      _inputSizeNotifier.value = renderBox.size;
+      _inputSizeController.value = renderBox.size;
     });
 
-    return ValueListenableBuilder(valueListenable: _enabledNotifier, builder: _enabledNotifierBuilder);
+    return ValueListenableBuilder(valueListenable: _enabledController, builder: _enabledControllerBuilder);
   }
 
-  Widget _enabledNotifierBuilder(_, bool enabled, __) {
+  Widget _enabledControllerBuilder(_, bool enabled, __) {
     return CompositedTransformTarget(
       link: _link,
       child: MyoroInput(

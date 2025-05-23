@@ -2,50 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroButton].
-class MyoroButtonController {
-  MyoroButtonController(this.configuration);
+class MyoroButtonController implements MyoroButtonInterface {
+  late final MyoroButtonState state;
 
-  /// Configuration.
-  MyoroButtonConfiguration? configuration;
+  MyoroButtonController({MyoroButtonConfiguration? configuration}) {
+    state = MyoroButtonState(configuration);
+  }
 
-  /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
-  final _tapStatusController = ValueNotifier(MyoroTapStatusEnum.idle);
-  ValueNotifier<MyoroTapStatusEnum> get tapStatusController => _tapStatusController;
-
-  /// Dispose function.
+  @override
   void dispose() {
-    _tapStatusController.dispose();
+    state.dispose();
   }
 
-  /// Callback executed when the [MyoroButton] is hovered over.
+  @override
   void onEnter(_) {
-    _tapStatusController.value = MyoroTapStatusEnum.hover;
+    state.tapStatusController.value = MyoroTapStatusEnum.hover;
   }
 
-  /// Callback executed when the [MyoroButton] is hovered then exited.
+  @override
   void onExit(_) {
-    _tapStatusController.value = MyoroTapStatusEnum.idle;
+    state.tapStatusController.value = MyoroTapStatusEnum.idle;
   }
 
-  /// Callback executed when the [MyoroButton] is tapped.
+  @override
   void onTapDown(TapDownDetails details) {
-    _tapStatusController.value = MyoroTapStatusEnum.tap;
-    configuration?.onTapDown?.call(details);
+    state.tapStatusController.value = MyoroTapStatusEnum.tap;
+    state.configuration?.onTapDown?.call(details);
   }
 
-  /// Callback executed when the [MyoroButton] is tapped then released.
+  @override
   void onTapUp(TapUpDetails details) {
-    _tapStatusController.value = MyoroTapStatusEnum.idle;
-    configuration?.onTapUp?.call(details);
+    state.tapStatusController.value = MyoroTapStatusEnum.idle;
+    state.configuration?.onTapUp?.call(details);
   }
 
-  /// Callback executed when a [MyoroButton] is tapped then cancelled.
+  @override
   void onTapCancel() {
-    _tapStatusController.value = MyoroTapStatusEnum.idle;
+    state.tapStatusController.value = MyoroTapStatusEnum.idle;
   }
 
   MouseCursor get cursor {
-    return configuration?.cursor ??
-        (configuration?.onTapProvided == true ? SystemMouseCursors.click : SystemMouseCursors.basic);
+    return state.configuration?.cursor ??
+        (state.configuration?.onTapProvided == true ? SystemMouseCursors.click : SystemMouseCursors.basic);
   }
 }

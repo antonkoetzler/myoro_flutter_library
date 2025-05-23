@@ -1,2 +1,2 @@
-export 'basic_divider/myoro_basic_divider.dart';
-export 'resize_divider/myoro_resize_divider.dart';
+export 'basic_divider/exports.dart';
+export 'resize_divider/exports.dart';

@@ -1,10 +1,5 @@
-part of '../myoro_dropdown.dart';
-
-/// Function executed when the selected item changes.
-typedef MyoroMultiDropdownConfigurationOnChanged<T> = void Function(Set<T>? selectedItems);
-
-/// Function executed when the enabled/disabled checkbox is pressed.
-typedef MyoroMultiDropdownConfigurationCheckboxOnChanged<T> = void Function(bool enabled, Set<T>? selectedItems);
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration model of [MyoroMultiDropdown].
 class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
@@ -38,7 +33,6 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
     Set<T>? initiallySelectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
-    MyoroMultiDropdownController<T>? controller,
   }) {
     return MyoroMultiDropdownConfiguration._(
       label: label,

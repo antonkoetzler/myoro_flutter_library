@@ -1,29 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroAccordion].
-class MyoroAccordionController {
-  /// [ValueNotifier] controlling which [MyoroAccordionItem].
-  final _expandedItemNotifier = ValueNotifier<MyoroAccordionItem?>(null);
-  ValueNotifier<MyoroAccordionItem?> get expandedItemNotifier => _expandedItemNotifier;
+class MyoroAccordionController implements MyoroAccordionInterface {
+  final state = MyoroAccordionState();
 
-  /// [ScrollController] of the [MyoroAccordion]'s [ListView].
-  final _scrollController = ScrollController();
-  ScrollController get scrollController => _scrollController;
-
-  /// Dispose function
+  @override
   void dispose() {
-    _expandedItemNotifier.dispose();
-    _scrollController.dispose();
+    state.dispose();
   }
 
-  /// Expands a [MyoroAccordionItem].
+  @override
   void expandItem(MyoroAccordionItem item) {
-    _expandedItemNotifier.value = item;
+    state.expandedItemController.value = item;
   }
 
-  /// Expanded [expandedItemNotifier]'s value if it is not null.
+  @override
   void reset() {
-    _expandedItemNotifier.value = null;
+    state.expandedItemController.value = null;
   }
 }

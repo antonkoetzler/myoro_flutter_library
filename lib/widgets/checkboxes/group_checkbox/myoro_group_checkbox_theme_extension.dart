@@ -1,4 +1,7 @@
-part of 'myoro_group_checkbox.dart';
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
 
 /// [ThemeExtension] for [MyoroCheckbox].
 @immutable

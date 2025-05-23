@@ -30,7 +30,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
     return widget.controller ?? (_localController ??= MyoroAccordionController());
   }
 
-  ScrollController get _scrollController => _controller.scrollController;
+  ScrollController get _scrollController => _controller.state.scrollController;
 
   @override
   void dispose() {

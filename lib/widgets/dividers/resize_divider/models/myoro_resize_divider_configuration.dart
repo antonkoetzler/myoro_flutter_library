@@ -1,4 +1,5 @@
-part of '../myoro_resize_divider.dart';
+import 'package:equatable/equatable.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration of [MyoroResizeDivider].
 class MyoroResizeDividerConfiguration extends Equatable {
