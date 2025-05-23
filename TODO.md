@@ -1,6 +1,5 @@
 # TODO
 
-1. (**IN PROGRESS, DONT ADD TO CHANGELOG**) Redesigning the folder structure of files that aren't related to `Widget`s
 1. (**IN PROGRESS**) feature: Retest everything 100% code coverage
 1. improvement: Style configuration models
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
