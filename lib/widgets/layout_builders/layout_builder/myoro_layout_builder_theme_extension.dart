@@ -1,4 +1,4 @@
-part of 'myoro_layout_builder.dart';
+import 'package:flutter/material.dart';
 
 /// [ThemeExtension] for [MyoroLayoutBuilder].
 @immutable

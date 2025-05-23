@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Widget] builder of the [MyoroButton].
-typedef MyoroButtonBuilder = Widget Function(BuildContext context, MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonBuilder = Widget Function(BuildContext context, MyoroGestureStatusEnum tapStatusEnum);
 
 /// Builder of [MyoroButton]'s background color.
-typedef MyoroButtonConfigurationBackgroundColorBuilder = Color Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonConfigurationBackgroundColorBuilder = Color Function(MyoroGestureStatusEnum tapStatusEnum);
 
 /// Builder of the [MyoroButton]'s border.
-typedef MyoroButtonConfigurationBorderBuilder = BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonConfigurationBorderBuilder = BoxBorder Function(MyoroGestureStatusEnum tapStatusEnum);
 
 /// Function executed when the [MyoroButton] is tapped.
 typedef MyoroButtonConfigurationOnTapDown = void Function(TapDownDetails details);

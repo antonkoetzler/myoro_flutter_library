@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_layout_builder_theme_extension.dart';
-part 'myoro_layout_builder_types.dart';
+part '_widgets/_render_proxy_box.dart';
+part '_widgets/_single_child_render_object_widget.dart';
 
 /// [Widget] used as an improved [LayoutBuilder].
 ///
@@ -39,7 +40,7 @@ final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return _MyoroLayoutBuilder(
+    return _SingleChildRenderObjectWidget(
       constraintsCallback: (constraints) {
         if (mounted && _constraintsNotifier.value != constraints) {
           _constraintsNotifier.value = constraints;
@@ -52,52 +53,5 @@ final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
         },
       ),
     );
-  }
-}
-
-final class _MyoroLayoutBuilder extends SingleChildRenderObjectWidget {
-  final MyoroLayoutBuilderConstraintsCallback constraintsCallback;
-
-  const _MyoroLayoutBuilder({Key? key, required this.constraintsCallback, required Widget child})
-    : super(key: key, child: child);
-
-  @override
-  RenderObject createRenderObject(BuildContext context) {
-    return _RenderMyoroLayoutBuilder(constraintsCallback);
-  }
-
-  @override
-  void updateRenderObject(BuildContext context, _RenderMyoroLayoutBuilder renderObject) {
-    renderObject.constraintsCallback = constraintsCallback;
-  }
-}
-
-final class _RenderMyoroLayoutBuilder extends RenderProxyBox {
-  _RenderMyoroLayoutBuilder(this._constraintsCallback);
-
-  MyoroLayoutBuilderConstraintsCallback _constraintsCallback;
-  MyoroLayoutBuilderConstraintsCallback get constraintsCallback => _constraintsCallback;
-  set constraintsCallback(MyoroLayoutBuilderConstraintsCallback value) {
-    if (_constraintsCallback == value) return;
-
-    _constraintsCallback = value;
-    markNeedsLayout();
-    markNeedsSemanticsUpdate();
-  }
-
-  BoxConstraints? _oldConstraints;
-
-  @override
-  void performLayout() {
-    if (_oldConstraints != constraints) {
-      _oldConstraints = constraints;
-
-      SchedulerBinding.instance.scheduleFrameCallback((_) {
-        if (!attached) return;
-        _constraintsCallback(constraints);
-      });
-    }
-
-    super.performLayout();
   }
 }

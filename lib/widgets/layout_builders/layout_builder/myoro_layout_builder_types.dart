@@ -1,4 +1,4 @@
-part of 'myoro_layout_builder.dart';
+import 'package:flutter/material.dart';
 
 /// Callback to pass the current [BoxConstraints] of the [MyoroLayoutBuilder].
 typedef MyoroLayoutBuilderConstraintsCallback = void Function(BoxConstraints constraints);

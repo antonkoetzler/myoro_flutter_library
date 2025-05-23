@@ -8,7 +8,7 @@ final class _Body<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final itemsRequestStatus = _controller.itemsRequest.status;
+    final itemsRequestStatus = _controller.state.itemsRequest.status;
 
     return Column(
       mainAxisSize: MainAxisSize.min,

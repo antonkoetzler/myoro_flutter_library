@@ -1,3 +1,3 @@
-export 'date_picker_input/myoro_date_picker_input.dart';
-export 'input/myoro_input.dart';
+export 'date_picker_input/exports.dart';
+export 'input/exports.dart';
 export 'search_input/exports.dart';

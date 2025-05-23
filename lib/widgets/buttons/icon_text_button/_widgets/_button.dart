@@ -2,7 +2,7 @@ part of '../myoro_icon_text_button.dart';
 
 /// UI of the [MyoroIconTextButton].
 final class _Button extends StatelessWidget {
-  final MyoroTapStatusEnum _tapStatusEnum;
+  final MyoroGestureStatusEnum _tapStatusEnum;
   final MyoroIconTextButtonConfiguration _configuration;
 
   const _Button(this._tapStatusEnum, this._configuration);

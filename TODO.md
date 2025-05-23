@@ -1,43 +1,7 @@
 # TODO
 
-1. (**IN PROGRESS**) Make private `Widget`s separated by file and use `part`/`part of`
-1. (**IN PROGRESS**) refactor: DDD architecture and more universal coding standards
-
-- Official state management solution:
-  - Every `Widget` with state (not just a visual `Widget` like `MyoroCard`) has a controller
-    - Every controller has an abstract class and an implementation class; C++ style
-- DDD folder structure
-
-TODO
-
-- (**DONE**) accordions
-- (**DONE**) app_bars
-- (**DONE**) apps
-- (**DONE**) buttons
-- (**DONE**) cards
-- (**DONE**) carousels
-- (**DONE**) checkboxes
-- (**DONE**) dividers
-- (**DONE**) drawers
-- (**DONE**) dropdowns
-- (**DONE**) forms
-- (**DONE**) graphs
-- (**REVISE**) inputs
-- (**REVISE**) layout_builders
-- (**REVISE**) loaders
-- (**REVISE**) menus
-- (**REVISE**) modals
-- (**REVISE**) radios
-- (**REVISE**) screens
-- (**REVISE**) sliders
-- (**REVISE**) snack_bars
-- (**REVISE**) tables
-- (**REVISE**) testing
-- (**REVISE**) tooltips
-- Storyboard
-- Delete bloc packages everywhere
-- Make configuration passable to controller or widget, this avoids the didUpdateWidget problem
-
+1. (**IN PROGRESS, DONT ADD TO CHANGELOG**) Redesigning the folder structure of files that aren't related to `Widget`s
+1. (**IN PROGRESS**) feature: Retest everything 100% code coverage
 1. improvement: Style configuration models
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
@@ -51,5 +15,4 @@ TODO
 - <https://dart.dev/tools/pub/create-packages>: Putting all the code in `src` makes it so projects using MFL cannot export via `exports.dart` files
 
 1. improvement: Constructors at the top of classes
-1. feature: Retest everything 100% code coverage
 1. feature: Publish to pub.dev

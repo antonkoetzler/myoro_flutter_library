@@ -3,7 +3,6 @@ part of '../myoro_menu.dart';
 /// List of the items of the [MyoroMenu].
 final class _Items<T> extends StatelessWidget {
   final MyoroMenuController<T> _controller;
-  MyoroMenuConfiguration<T> get _configuration => _controller.configuration;
 
   const _Items(this._controller);
 
@@ -22,9 +21,9 @@ final class _Items<T> extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (_configuration.searchCallback != null) _SearchBar(_controller),
+          if (_controller.state.configuration.searchCallback != null) _SearchBar(_controller),
           ValueListenableBuilder(
-            valueListenable: _controller.queriedItemsNotifier,
+            valueListenable: _controller.state.queriedItemsController,
             builder: (_, __, ___) => _builder(),
           ),
         ],
@@ -33,8 +32,9 @@ final class _Items<T> extends StatelessWidget {
   }
 
   Widget _builder() {
-    final items = _controller.queriedItems ?? _controller.items;
-    final itemWidgets = items.map<Widget>((T item) => _Item(_configuration.itemBuilder(item))).toList();
+    final items = _controller.state.queriedItems ?? _controller.state.items;
+    final itemWidgets =
+        items.map<Widget>((T item) => _Item(_controller.state.configuration.itemBuilder(item))).toList();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -42,7 +42,7 @@ final class _Items<T> extends StatelessWidget {
         if (items.isNotEmpty) ...[
           Flexible(
             child: ListView.builder(
-              controller: _controller.scrollController,
+              controller: _controller.state.scrollController,
               shrinkWrap: true,
               itemCount: itemWidgets.length,
               itemBuilder: (_, int index) => itemWidgets[index],

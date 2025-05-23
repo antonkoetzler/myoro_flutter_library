@@ -1,8 +1,3 @@
-import 'dart:async';
-import 'dart:ui';
-
-import 'package:equatable/equatable.dart';
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -11,11 +6,6 @@ part '_widgets/_clear_text_button.dart';
 part '_widgets/_label.dart';
 part '_widgets/_text_form_field.dart';
 part '_widgets/_wrapper.dart';
-part 'models/myoro_input_configuration.dart';
-part 'view_model/myoro_input_view_model.dart';
-part 'view_model/myoro_input_view_model_state.dart';
-part 'myoro_input_theme_extension.dart';
-part 'myoro_input_types.dart';
 
 /// Generic input widget.
 ///
@@ -77,24 +67,17 @@ final class _MyoroInputState extends State<MyoroInput> {
   MyoroInputConfiguration get _configuration => widget.configuration;
   MyoroInputFormatter? get _formatter => widget.formatter;
 
-  late final _viewModel = MyoroInputViewModel(_configuration, _formatter);
-  ValueNotifier<bool> get _enabledNotifier => _viewModel._enabledNotifier;
-
-  @override
-  void didUpdateWidget(covariant MyoroInput oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _viewModel._state._configuration = _configuration;
-    _viewModel._state._formatter = _formatter;
-  }
+  late final _controller = MyoroInputController(_configuration, _formatter);
+  ValueNotifier<bool> get _enabledController => _controller.state.enabledController;
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(valueListenable: _enabledNotifier, builder: (_, __, ___) => _Wrapper(_viewModel));
+    return ValueListenableBuilder(valueListenable: _enabledController, builder: (_, __, ___) => _Wrapper(_controller));
   }
 }

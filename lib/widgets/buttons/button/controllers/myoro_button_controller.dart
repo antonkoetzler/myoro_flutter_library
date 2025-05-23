@@ -16,29 +16,29 @@ class MyoroButtonController implements MyoroButtonInterface {
 
   @override
   void onEnter(_) {
-    state.tapStatusController.value = MyoroTapStatusEnum.hover;
+    state.tapStatusController.value = MyoroGestureStatusEnum.hover;
   }
 
   @override
   void onExit(_) {
-    state.tapStatusController.value = MyoroTapStatusEnum.idle;
+    state.tapStatusController.value = MyoroGestureStatusEnum.idle;
   }
 
   @override
   void onTapDown(TapDownDetails details) {
-    state.tapStatusController.value = MyoroTapStatusEnum.tap;
+    state.tapStatusController.value = MyoroGestureStatusEnum.tap;
     state.configuration?.onTapDown?.call(details);
   }
 
   @override
   void onTapUp(TapUpDetails details) {
-    state.tapStatusController.value = MyoroTapStatusEnum.idle;
+    state.tapStatusController.value = MyoroGestureStatusEnum.idle;
     state.configuration?.onTapUp?.call(details);
   }
 
   @override
   void onTapCancel() {
-    state.tapStatusController.value = MyoroTapStatusEnum.idle;
+    state.tapStatusController.value = MyoroGestureStatusEnum.idle;
   }
 
   MouseCursor get cursor {

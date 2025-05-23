@@ -2,12 +2,12 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] to manage the value of a [MyoroRadio].
-class MyoroRadioController extends ValueNotifier<bool> {
+class MyoroRadioController extends ValueNotifier<bool> implements MyoroRadioInterface {
   MyoroRadioController([bool? enabled]) : super(enabled ?? false);
 
-  /// Toggles the [MyoroRadio].
+  @override
   void toggle([bool? enabled]) => value = enabled ?? !value;
 
-  /// Alias for [ValueNotifier.value].
+  @override
   bool get enabled => value;
 }

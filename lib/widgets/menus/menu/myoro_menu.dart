@@ -20,22 +20,12 @@ class MyoroMenu<T> extends StatefulWidget {
 }
 
 final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
-  MyoroMenuConfiguration<T> get _configuration => widget.configuration;
-
-  late final _controller = MyoroMenuController<T>(_configuration);
-  double? get _onEndReachedPosition => _controller.onEndReachedPosition;
-  ScrollController get _scrollController => _controller.scrollController;
+  late final _controller = MyoroMenuController<T>(configuration: widget.configuration);
 
   @override
   void initState() {
     super.initState();
     _controller.fetch();
-  }
-
-  @override
-  void didUpdateWidget(covariant MyoroMenu<T> oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _controller.configuration = _configuration;
   }
 
   @override
@@ -54,20 +44,13 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
         border: themeExtension.border,
         borderRadius: themeExtension.borderRadius,
       ),
-      constraints: _configuration.constraints,
-      child: ValueListenableBuilder(valueListenable: _controller.itemsRequestController, builder: _builder),
+      constraints: _controller.state.configuration.constraints,
+      child: ValueListenableBuilder(valueListenable: _controller.state.itemsRequestController, builder: _builder),
     );
   }
 
   Widget _builder(_, MyoroRequest<Set<T>> state, __) {
-    // Jump to the last position of the list before
-    // calling [MyoroMenuConfiguration.onEndReachedRequest].
-    if (state.status.isSuccess && _onEndReachedPosition != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _scrollController.jumpTo(_onEndReachedPosition!);
-      });
-    }
-
+    _controller.jumpToBottomPreviousPosition();
     return switch (state.status) {
       MyoroRequestEnum.idle => const _Loader(),
       MyoroRequestEnum.loading => const _Loader(),

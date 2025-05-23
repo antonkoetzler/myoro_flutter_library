@@ -18,16 +18,7 @@ class MyoroSearchInput<T> extends StatefulWidget {
 }
 
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
-  MyoroSearchInputConfiguration<T> get _configuration => widget.configuration;
-
-  late final _controller = MyoroSearchInputController(_configuration);
-  MyoroRequestController<Set<T>> get _itemsRequestController => _controller.itemsRequestController;
-
-  @override
-  void didUpdateWidget(covariant MyoroSearchInput<T> oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _controller.configuration = _configuration;
-  }
+  late final _controller = MyoroSearchInputController(configuration: widget.configuration);
 
   @override
   void dispose() {
@@ -38,7 +29,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _itemsRequestController,
+      valueListenable: _controller.state.itemsRequestController,
       builder: (_, __, ___) => _Body(_controller),
     );
   }

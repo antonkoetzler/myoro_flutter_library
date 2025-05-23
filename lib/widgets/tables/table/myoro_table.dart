@@ -6,21 +6,26 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Fairly simple implementation as tables are usually very business logic specific.
 /// Thus, extensibility is more important than being feature rich in this senario.
 class MyoroTable<T> extends StatefulWidget {
-  /// Configuration.
-  final MyoroTableConfiguration<T> configuration;
+  /// Controller of the [MyoroTable].
+  final MyoroTableController<T>? controller;
 
-  const MyoroTable({super.key, required this.configuration});
+  /// Configuration.
+  final MyoroTableConfiguration<T>? configuration;
+
+  const MyoroTable({super.key, this.controller, this.configuration})
+    : assert(
+        (controller != null) ^ (configuration != null),
+        '[MyoroTable<$T>]: [controller] (x)or [configuration] must be provided.',
+      );
 
   @override
   State<MyoroTable<T>> createState() => _MyoroTableState<T>();
 }
 
 final class _MyoroTableState<T> extends State<MyoroTable<T>> {
-  MyoroTableConfiguration<T> get _configuration => widget.configuration;
-
   MyoroTableController<T>? _localController;
   MyoroTableController<T> get _controller {
-    return _configuration.controller ?? (_localController ??= MyoroTableController(_configuration));
+    return widget.controller ?? (_localController ??= MyoroTableController(configuration: widget.configuration!));
   }
 
   @override
@@ -32,7 +37,9 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   @override
   void didUpdateWidget(covariant MyoroTable<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _controller.configuration = _configuration;
+    if (widget.configuration != null) {
+      _controller.state.configuration = widget.configuration!;
+    }
   }
 
   @override
@@ -61,9 +68,9 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
 final class _Columns<T> extends StatelessWidget {
   final MyoroTableController<T> _controller;
-  MyoroTableConfiguration<T> get _configuration => _controller.configuration;
+  MyoroTableConfiguration<T> get _configuration => _controller.state.configuration;
   List<MyoroTableColumn> get _columns => _configuration.columns;
-  List<GlobalKey> get _titleColumnKeys => _controller.titleColumnKeys;
+  List<GlobalKey> get _titleColumnKeys => _controller.state.titleColumnKeys;
 
   const _Columns(this._controller);
 
@@ -155,8 +162,8 @@ final class _Column extends StatelessWidget {
 
 final class _RowsSection<T> extends StatelessWidget {
   final MyoroTableController<T> _controller;
-  MyoroRequestController<Set<T>> get _itemsRequestController => _controller.itemsRequestController;
-  MyoroRequest<Set<T>> get _itemsRequest => _controller.itemsRequest;
+  MyoroRequestController<Set<T>> get _itemsRequestController => _controller.state.itemsRequestController;
+  MyoroRequest<Set<T>> get _itemsRequest => _controller.state.itemsRequest;
 
   const _RowsSection(this._controller);
 
@@ -189,9 +196,9 @@ final class _Loader extends StatelessWidget {
 
 final class _Rows<T> extends StatelessWidget {
   final MyoroTableController<T> _controller;
-  Set<T> get _items => _controller.itemsRequest.data!;
-  ValueNotifier<List<double>> get _titleColumnKeyWidthsNotifier => _controller.titleColumnKeyWidthsNotifier;
-  List<double> get _titleColumnKeyWidths => _controller.titleColumnKeyWidths;
+  Set<T> get _items => _controller.state.itemsRequest.data!;
+  ValueNotifier<List<double>> get _titleColumnKeyWidthsController => _controller.state.titleColumnKeyWidthsController;
+  List<double> get _titleColumnKeyWidths => _controller.state.titleColumnKeyWidths;
 
   const _Rows(this._controller);
 
@@ -204,7 +211,7 @@ final class _Rows<T> extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: _titleColumnKeyWidthsNotifier,
+      valueListenable: _titleColumnKeyWidthsController,
       builder: (_, __, ___) => _builder(themeExtension),
     );
   }
@@ -234,9 +241,9 @@ final class _Rows<T> extends StatelessWidget {
 final class _Row<T> extends StatelessWidget {
   final T _item;
   final MyoroTableController<T> _controller;
-  MyoroTableConfiguration<T> get _configuration => _controller.configuration;
+  MyoroTableConfiguration<T> get _configuration => _controller.state.configuration;
   MyoroTableConfigurationRowBuilder<T> get _rowBuilder => _configuration.rowBuilder;
-  List<double> get _titleColumnKeyWidths => _controller.titleColumnKeyWidths;
+  List<double> get _titleColumnKeyWidths => _controller.state.titleColumnKeyWidths;
 
   const _Row(this._item, this._controller);
 
@@ -262,7 +269,7 @@ final class _Row<T> extends StatelessWidget {
           onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
           onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
         ),
-        builder: (_, MyoroTapStatusEnum tapStatusEnum) {
+        builder: (_, MyoroGestureStatusEnum tapStatusEnum) {
           return Row(
             spacing: themeExtension.columnSpacing,
             children: [

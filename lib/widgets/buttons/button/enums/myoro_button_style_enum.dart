@@ -21,43 +21,47 @@ enum MyoroButtonStyleEnum {
   }
 
   /// [MyoroButtonConfiguration.backgroundColorBuilder].
-  Color backgroundColorBuilder(BuildContext context, MyoroTapStatusEnum tapStatusEnum, {bool onTapProvided = true}) {
+  Color backgroundColorBuilder(
+    BuildContext context,
+    MyoroGestureStatusEnum tapStatusEnum, {
+    bool onTapProvided = true,
+  }) {
     final themeExtension = _getThemeExtension(context);
 
     return switch (this) {
       primary =>
         onTapProvided
             ? switch (tapStatusEnum) {
-              MyoroTapStatusEnum.idle => themeExtension.primaryIdleBackgroundColor,
-              MyoroTapStatusEnum.hover => themeExtension.primaryHoverBackgroundColor,
-              MyoroTapStatusEnum.tap => themeExtension.primaryTapBackgroundColor,
+              MyoroGestureStatusEnum.idle => themeExtension.primaryIdleBackgroundColor,
+              MyoroGestureStatusEnum.hover => themeExtension.primaryHoverBackgroundColor,
+              MyoroGestureStatusEnum.tap => themeExtension.primaryTapBackgroundColor,
             }
             : themeExtension.primaryIdleBackgroundColor,
       secondary =>
         onTapProvided
             ? switch (tapStatusEnum) {
-              MyoroTapStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
-              MyoroTapStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
-              MyoroTapStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
+              MyoroGestureStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
+              MyoroGestureStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
+              MyoroGestureStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
             }
             : themeExtension.secondaryIdleBackgroundColor,
     };
   }
 
   /// [MyoroIconTextButtonConfiguration.contentColorBuilder].
-  Color contentColorBuilder(BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
+  Color contentColorBuilder(BuildContext context, MyoroGestureStatusEnum tapStatusEnum) {
     final themeExtension = _getThemeExtension(context);
 
     return switch (this) {
       primary => switch (tapStatusEnum) {
-        MyoroTapStatusEnum.idle => themeExtension.primaryIdleContentColor,
-        MyoroTapStatusEnum.hover => themeExtension.primaryHoverContentColor,
-        MyoroTapStatusEnum.tap => themeExtension.primaryTapContentColor,
+        MyoroGestureStatusEnum.idle => themeExtension.primaryIdleContentColor,
+        MyoroGestureStatusEnum.hover => themeExtension.primaryHoverContentColor,
+        MyoroGestureStatusEnum.tap => themeExtension.primaryTapContentColor,
       },
       secondary => switch (tapStatusEnum) {
-        MyoroTapStatusEnum.idle => themeExtension.secondaryIdleContentColor,
-        MyoroTapStatusEnum.hover => themeExtension.secondaryHoverContentColor,
-        MyoroTapStatusEnum.tap => themeExtension.secondaryTapContentColor,
+        MyoroGestureStatusEnum.idle => themeExtension.secondaryIdleContentColor,
+        MyoroGestureStatusEnum.hover => themeExtension.secondaryHoverContentColor,
+        MyoroGestureStatusEnum.tap => themeExtension.secondaryTapContentColor,
       },
     };
   }

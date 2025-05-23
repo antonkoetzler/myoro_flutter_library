@@ -6,8 +6,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model to store the configuration members of [MyoroModal] that
 /// may be altered within other modals to not repeat the members.
-///
-/// TODO: Test needs to be rewritten.
 class MyoroModalConfiguration extends Equatable {
   static const barrierDismissableDefaultValue = true;
   static const useRootNavigatorDefaultValue = true;
@@ -85,10 +83,8 @@ class MyoroModalConfiguration extends Equatable {
       onClosed = null,
       title = faker.lorem.word(),
       showCloseButton = faker.randomGenerator.boolean(),
-      padding =
-          faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      closeButtonPadding =
-          faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
 
   MyoroModalConfiguration copyWith({
     bool? barrierDismissable,
@@ -108,16 +104,12 @@ class MyoroModalConfiguration extends Equatable {
     return MyoroModalConfiguration(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
       useRootNavigator: useRootNavigator ?? this.useRootNavigator,
-      constraints:
-          constraintsProvided ? (constraints ?? this.constraints) : null,
+      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: titleProvided ? (title ?? this.title) : null,
       showCloseButton: showCloseButton ?? this.showCloseButton,
       padding: paddingProvided ? (padding ?? this.padding) : null,
-      closeButtonPadding:
-          closeButtonPaddingProvided
-              ? (closeButtonPadding ?? this.closeButtonPadding)
-              : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
     );
   }
 

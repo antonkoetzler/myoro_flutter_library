@@ -8,8 +8,8 @@ final class _SearchSection<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final itemBuilder = _controller.configuration.itemBuilder;
-    final items = _controller.itemsRequest.data;
+    final itemBuilder = _controller.state.configuration.itemBuilder;
+    final items = _controller.state.itemsRequest.data;
 
     return MyoroMenu(configuration: MyoroMenuConfiguration(itemBuilder: itemBuilder, request: () => items!));
   }

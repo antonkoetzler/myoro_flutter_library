@@ -3,8 +3,8 @@ part of '../myoro_search_input.dart';
 /// Suffix search button of the [MyoroSearchInput].
 final class _SearchButton<T> extends StatelessWidget {
   final MyoroSearchInputController<T> _controller;
-  MyoroRequestController<Set<T>> get _itemsRequestController => _controller.itemsRequestController;
-  MyoroRequest<Set<T>> get _itemsRequest => _controller.itemsRequest;
+  MyoroRequestController<Set<T>> get _itemsRequestController => _controller.state.itemsRequestController;
+  MyoroRequest<Set<T>> get _itemsRequest => _controller.state.itemsRequest;
   MyoroRequestEnum get _itemsRequestStatus => _itemsRequest.status;
 
   const _SearchButton(this._controller);

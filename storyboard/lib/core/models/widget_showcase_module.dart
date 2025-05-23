@@ -28,10 +28,7 @@ final class WidgetShowcaseModule implements Module {
     ];
   }
 
-  List<ThemeExtension> _createWidgetShowcaseThemeExtensions(
-    ColorScheme colorScheme,
-    TextTheme textTheme,
-  ) {
+  List<ThemeExtension> _createWidgetShowcaseThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
     return [
       // Accordions
       const MyoroAccordionWidgetShowcaseThemeExtension.builder(),

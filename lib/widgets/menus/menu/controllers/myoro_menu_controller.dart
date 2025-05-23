@@ -4,22 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// View model of [MyoroMenu].
-class MyoroMenuController<T> extends MyoroMenuControllerBase<T> {
-  MyoroMenuController(super.configuration) {
+class MyoroMenuController<T> implements MyoroMenuInterface {
+  MyoroMenuController({required MyoroMenuConfiguration<T> configuration}) {
+    state = MyoroMenuState(configuration);
     if (configuration.onEndReachedRequest != null) {
-      scrollController.addListener(scrollControllerListener);
+      state.scrollController.addListener(scrollControllerListener);
     }
+  }
+
+  late final MyoroMenuState<T> state;
+
+  @override
+  void dispose() {
+    state.dispose();
   }
 
   @override
   void fetch() {
-    itemsRequestController.requestCallback = configuration.request;
-    unawaited(itemsRequestController.fetch());
+    state.itemsRequestController.requestCallback = state.configuration.request;
+    unawaited(state.itemsRequestController.fetch());
   }
 
   @override
   void fetchExtra() {
-    final onEndReachedRequest = configuration.onEndReachedRequest;
+    final onEndReachedRequest = state.configuration.onEndReachedRequest;
 
     assert(
       onEndReachedRequest != null,
@@ -27,25 +35,34 @@ class MyoroMenuController<T> extends MyoroMenuControllerBase<T> {
       '[_configuration.onEndReachedRequest] cannot be null.',
     );
 
-    itemsRequestController.requestCallback = () async => await onEndReachedRequest!(items);
-    unawaited(itemsRequestController.fetch());
+    state.itemsRequestController.requestCallback = () async => await onEndReachedRequest!(state.items);
+    unawaited(state.itemsRequestController.fetch());
   }
 
   @override
   void search(String query) {
     assert(
-      configuration.searchCallback != null,
+      state.configuration.searchCallback != null,
       '[MyoroMenuBloc<$T>.SearchEvent]: [_configuration.searchCallback] cannot be null.',
     );
-    queriedItemsNotifier.value = query.isEmpty ? null : configuration.searchCallback!(query, items);
+    state.queriedItemsController.value = query.isEmpty ? null : state.configuration.searchCallback!(query, state.items);
   }
 
   @override
   void scrollControllerListener() {
-    final ScrollPosition position = scrollController.position;
+    final ScrollPosition position = state.scrollController.position;
     final double pixels = position.pixels;
     final double maxScrollExtent = position.maxScrollExtent;
     if (pixels != maxScrollExtent) return;
     fetchExtra();
+  }
+
+  @override
+  void jumpToBottomPreviousPosition() {
+    if (state.itemsRequest.status.isSuccess && state.onEndReachedPosition != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        state.scrollController.jumpTo(state.onEndReachedPosition!);
+      });
+    }
   }
 }

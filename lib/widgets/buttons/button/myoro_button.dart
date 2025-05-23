@@ -24,7 +24,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
   MyoroButtonConfiguration? get _configuration => widget.configuration;
 
   late final _controller = MyoroButtonController(configuration: _configuration);
-  ValueNotifier<MyoroTapStatusEnum> get _tapStatusController => _controller.state.tapStatusController;
+  ValueNotifier<MyoroGestureStatusEnum> get _tapStatusController => _controller.state.tapStatusController;
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
@@ -53,7 +53,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
     );
   }
 
-  Widget _builder(_, MyoroTapStatusEnum tapStatusEnum, _) {
+  Widget _builder(_, MyoroGestureStatusEnum tapStatusEnum, _) {
     return _Button(tapStatusEnum, _configuration, widget.builder);
   }
 }

@@ -2,21 +2,22 @@ part of '../myoro_input.dart';
 
 /// Wrapper for the [ValueListenableBuilder] in [_MyoroInputState].
 final class _Wrapper extends StatelessWidget {
-  final MyoroInputViewModel _viewModel;
-  MyoroInputConfiguration get _configuration => _viewModel._configuration;
+  final MyoroInputController _controller;
 
-  const _Wrapper(this._viewModel);
+  const _Wrapper(this._controller);
 
   @override
   Widget build(BuildContext context) {
+    final configuration = _controller.configuration;
+
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return Row(
       spacing: themeExtension.spacing,
       children: [
-        if (_configuration.checkboxOnChanged != null) _Checkbox(_viewModel),
-        Expanded(child: _TextFormField(_viewModel)),
-        if (_configuration.suffix != null) _configuration.suffix!,
+        if (configuration.checkboxOnChanged != null) _Checkbox(_controller),
+        Expanded(child: _TextFormField(_controller)),
+        if (configuration.suffix != null) configuration.suffix!,
       ],
     );
   }

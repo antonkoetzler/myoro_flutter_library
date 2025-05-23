@@ -1,4 +1,7 @@
-part of '../myoro_input.dart';
+import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Model to load all of the configurable arguments of [MyoroInput].
 class MyoroInputConfiguration extends Equatable {

@@ -2,7 +2,7 @@ part of '../myoro_button.dart';
 
 /// UI of [MyoroButton].
 final class _Button extends StatelessWidget {
-  final MyoroTapStatusEnum _tapStatusEnum;
+  final MyoroGestureStatusEnum _tapStatusEnum;
   final MyoroButtonConfiguration? _configuration;
   final MyoroButtonBuilder _builder;
 

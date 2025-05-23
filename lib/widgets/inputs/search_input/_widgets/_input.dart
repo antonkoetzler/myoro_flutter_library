@@ -8,9 +8,10 @@ final class _Input<T> extends StatelessWidget {
 
   @override
   Widget build(_) {
-    final configuration = _controller.configuration;
-    final searchInputController = _controller.searchInputController;
-    final itemsRequestController = _controller.itemsRequestController;
+    final state = _controller.state;
+    final configuration = state.configuration;
+    final searchInputController = state.inputController;
+    final itemsRequestController = state.itemsRequestController;
 
     return MyoroInput(
       configuration: configuration.inputConfiguration.copyWith(

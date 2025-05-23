@@ -50,9 +50,7 @@ extension MyoroBuildContextExtension on BuildContext {
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
-    throw Exception(
-      '[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.',
-    );
+    throw Exception('[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.');
   }
 
   /// Resolvers a [Bloc] or [Cubit] and thorws an [Exception]
@@ -78,11 +76,19 @@ extension MyoroBuildContextExtension on BuildContext {
 
   /// Opens a snack bar.
   void showSnackBar({Duration? duration, required MyoroSnackBar snackBar}) {
-    MyoroSnackBarHelper.showSnackBar(this, duration: duration, snackBar: snackBar);
+    ScaffoldMessenger.of(this)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        MyoroSnackBarContainer(
+          themeExtension: resolveThemeExtension<MyoroSnackBarContainerThemeExtension>(),
+          duration: duration,
+          snackBar: snackBar,
+        ),
+      );
   }
 
   /// Hides a snack bar.
   void hideSnackBar() {
-    MyoroSnackBarHelper.hideSnackBar(this);
+    ScaffoldMessenger.of(this).hideCurrentSnackBar();
   }
 }

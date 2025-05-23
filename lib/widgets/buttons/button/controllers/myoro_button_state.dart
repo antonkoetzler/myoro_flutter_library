@@ -8,8 +8,8 @@ class MyoroButtonState {
   /// Configuration.
   MyoroButtonConfiguration? configuration;
 
-  /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
-  final tapStatusController = ValueNotifier(MyoroTapStatusEnum.idle);
+  /// [ValueNotifier] managing the [MyoroGestureStatusEnum] of the [MyoroButton].
+  final tapStatusController = ValueNotifier(MyoroGestureStatusEnum.idle);
 
   /// Dispose function.
   void dispose() {

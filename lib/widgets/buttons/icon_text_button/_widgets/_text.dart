@@ -2,7 +2,7 @@ part of '../myoro_icon_text_button.dart';
 
 /// Text of the [MyoroIconTextButton].
 final class _Text extends StatelessWidget {
-  final MyoroTapStatusEnum _tapStatusEnum;
+  final MyoroGestureStatusEnum _tapStatusEnum;
   final MyoroIconTextButtonConfigurationContentColorBuilder? _contentColorBuilder;
   final MyoroIconTextButtonTextConfiguration _textConfiguration;
 
