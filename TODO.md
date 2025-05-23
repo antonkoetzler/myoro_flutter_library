@@ -43,6 +43,7 @@ TODO
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
 - Make it so that `_Menu` in `MyoroDropdown` can use `CompositedTransformTarget` + `OverlayPortal` or a non-`Overlay`
+    - Do the same thing with `MyoroInput`
 - Make `MyoroSnackBar` width 100% on mobile
 
 1. improvement: Make only `myoro_flutter_library.dart` exportable
@@ -50,5 +51,5 @@ TODO
 - <https://dart.dev/tools/pub/create-packages>: Putting all the code in `src` makes it so projects using MFL cannot export via `exports.dart` files
 
 1. improvement: Constructors at the top of classes
-1. feature: 100% code coverage
+1. feature: Retest everything 100% code coverage
 1. feature: Publish to pub.dev
