@@ -1,18 +1,8 @@
-import 'dart:ui';
-
-import 'package:equatable/equatable.dart';
-import 'package:faker/faker.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part '_widgets/_side_title.dart';
-part 'controllers/myoro_bar_graph_controller.dart';
-part 'models/myoro_bar_graph_bar.dart';
-part 'models/myoro_bar_graph_bar_section.dart';
-part 'models/myoro_bar_graph_configuration.dart';
-part 'models/myoro_bar_graph_group.dart';
-part 'myoro_bar_graph_theme_extension.dart';
 
 /// A bar graph.
 class MyoroBarGraph extends StatelessWidget {
@@ -23,7 +13,7 @@ class MyoroBarGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = MyoroBarGraphController(configuration);
+    final controller = MyoroBarGraphController(configuration: configuration);
 
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 

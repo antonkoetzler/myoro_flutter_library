@@ -9,32 +9,22 @@ class MyoroForm<T> extends StatefulWidget {
   final MyoroFormController<T>? controller;
 
   /// Configuration.
-  final MyoroFormConfiguration<T> configuration;
+  final MyoroFormConfiguration<T>? configuration;
 
-  const MyoroForm({super.key, this.controller, required this.configuration});
+  const MyoroForm({super.key, this.controller, required this.configuration})
+    : assert(
+        (controller != null) ^ (configuration != null),
+        '[MyoroForm<$T>]: [controller] (x)or [configuration] must be provided.',
+      );
 
   @override
   State<MyoroForm<T>> createState() => _MyoroFormState<T>();
 }
 
 final class _MyoroFormState<T> extends State<MyoroForm<T>> {
-  MyoroFormConfiguration<T> get _configuration => widget.configuration;
-
   MyoroFormController<T>? _localController;
   MyoroFormController<T> get _controller {
-    return widget.controller ?? (_localController ??= MyoroFormController());
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.configuration = _configuration;
-  }
-
-  @override
-  void didUpdateWidget(covariant MyoroForm<T> oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _controller.configuration = _configuration;
+    return widget.controller ?? (_localController ??= MyoroFormController(configuration: widget.configuration!));
   }
 
   @override

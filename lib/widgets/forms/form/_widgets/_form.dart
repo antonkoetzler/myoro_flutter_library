@@ -4,9 +4,9 @@ part of '../myoro_form.dart';
 class _Form<T> extends StatelessWidget {
   final MyoroFormController<T> _controller;
   MyoroRequest<T> get _request => _controller.request;
-  MyoroFormConfiguration<T> get _configuration => _controller.configuration;
+  MyoroFormConfiguration<T> get _configuration => _controller.state.configuration;
   MyoroFormBuilder<T> get _builder => _configuration.builder;
-  GlobalKey<FormState> get _formKey => _controller.formKey;
+  GlobalKey<FormState> get _formKey => _controller.state.formKey;
 
   const _Form(this._controller);
 

@@ -17,11 +17,11 @@ TODO
 - (**DONE**) cards
 - (**DONE**) carousels
 - (**DONE**) checkboxes
-- (**REVISE**) dividers
-- (**REVISE**) drawers
+- (**DONE**) dividers
+- (**DONE**) drawers
 - (**DONE**) dropdowns
-- (**REVISE**) forms
-- (**REVISE**) graphs
+- (**DONE**) forms
+- (**DONE**) graphs
 - (**REVISE**) inputs
 - (**REVISE**) layout_builders
 - (**REVISE**) loaders

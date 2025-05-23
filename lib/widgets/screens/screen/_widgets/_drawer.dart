@@ -6,5 +6,5 @@ final class _Drawer extends StatelessWidget {
   const _Drawer(this._drawerController);
 
   @override
-  Widget build(BuildContext context) => _drawerController.drawer!;
+  Widget build(BuildContext context) => _drawerController.state.drawer!;
 }

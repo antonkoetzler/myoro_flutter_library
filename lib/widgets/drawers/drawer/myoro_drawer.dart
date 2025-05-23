@@ -16,7 +16,7 @@ class MyoroDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isEndDrawer = context.read<MyoroDrawerController>().isEndDrawer;
+    final bool isEndDrawer = context.read<MyoroDrawerController>().state.isEndDrawer;
 
     return Stack(
       children: [

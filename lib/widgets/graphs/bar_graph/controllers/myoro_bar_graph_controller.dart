@@ -1,15 +1,20 @@
-part of '../myoro_bar_graph.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroBarGraph].
-class MyoroBarGraphController {
-  final MyoroBarGraphConfiguration _configuration;
+class MyoroBarGraphController implements MyoroBarGraphInterface {
+  MyoroBarGraphController({required MyoroBarGraphConfiguration configuration}) {
+    state = MyoroBarGraphState(configuration);
+  }
 
-  const MyoroBarGraphController(this._configuration);
+  late final MyoroBarGraphState state;
 
+  @override
   List<BarChartGroupData> getFormattedItems(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
-    return _configuration.items
+    return state.configuration.items
         .map<BarChartGroupData>(
           (MyoroBarGraphGroup group) => BarChartGroupData(
             x: group.x,
@@ -30,6 +35,6 @@ class MyoroBarGraphController {
           ),
         )
         .toList()
-      ..sort((a, b) => !_configuration.sorted ? a.x : a.x.compareTo(b.x));
+      ..sort((a, b) => !state.configuration.sorted ? a.x : a.x.compareTo(b.x));
   }
 }

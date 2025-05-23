@@ -1,4 +1,7 @@
-part of '../myoro_bar_graph.dart';
+import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// For a [MyoroBarGraphBar] with a non-empty [MyoroBarGraphBar.barSections],
 /// [MyoroBarGraphBarSection] will occupy a specified piece of a [MyoroBarGraph].

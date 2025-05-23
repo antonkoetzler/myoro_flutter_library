@@ -45,7 +45,7 @@ final class _MyoroScreenState extends State<MyoroScreen> {
       value: _drawerController,
       child: SafeArea(
         child: Scaffold(
-          key: _drawerController.scaffoldKey,
+          key: _drawerController.state.scaffoldKey,
           appBar: _configuration.appBar,
           body: _configuration.body,
           drawer: drawer,
