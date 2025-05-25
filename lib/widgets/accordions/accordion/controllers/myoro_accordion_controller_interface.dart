@@ -1,4 +1,4 @@
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_accordion_controller.dart';
 
 /// Inferface of [MyoroAccordionController].
 abstract interface class MyoroAccordionControllerInterface {

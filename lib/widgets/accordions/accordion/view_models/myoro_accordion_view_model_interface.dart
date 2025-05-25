@@ -1,4 +1,4 @@
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_accordion_view_model.dart';
 
 /// Interface of [MyoroAccordion].
 abstract interface class MyoroAccordionViewModelInterface {

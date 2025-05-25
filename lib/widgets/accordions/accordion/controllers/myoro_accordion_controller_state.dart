@@ -1,5 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_accordion_controller.dart';
 
 /// State of [MyoroAccordionController].
 class MyoroAccordionControllerState {
