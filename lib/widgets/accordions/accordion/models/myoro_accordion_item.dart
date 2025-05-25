@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -13,8 +14,8 @@ class MyoroAccordionItem extends Equatable {
   const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
 
   MyoroAccordionItem.fake()
-    : titleBuilder = ((_) => const SizedBox.shrink()),
-      contentBuilder = ((_) => const SizedBox.shrink());
+    : titleBuilder = ((_) => Text(faker.lorem.word())),
+      contentBuilder = ((_) => Text(faker.lorem.word()));
 
   MyoroAccordionItem copyWith({
     MyoroAccordionItemTitleBuilder? titleBuilder,

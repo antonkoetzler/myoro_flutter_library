@@ -10,32 +10,21 @@ part '_widgets/_item_title_button_arrow.dart';
 /// Accordion of MFL.
 class MyoroAccordion extends StatefulWidget {
   /// View model.
-  final MyoroAccordionController? controller;
+  final MyoroAccordionController controller;
 
-  /// Items of the [MyoroAccordion].
-  final List<MyoroAccordionItem> items;
-
-  const MyoroAccordion({super.key, this.controller, this.items = const []})
-    : assert(
-        (controller != null) ^ (items.length > 0),
-        '[MyoroAccordion]: [controller] (x)or [items] that is non-empty must be provided.',
-      );
+  const MyoroAccordion({super.key, required this.controller});
 
   @override
   State<MyoroAccordion> createState() => _MyoroAccordionState();
 }
 
 final class _MyoroAccordionState extends State<MyoroAccordion> {
-  MyoroAccordionController? _localController;
-  MyoroAccordionController get _controller {
-    return widget.controller ?? (_localController ??= MyoroAccordionController(items: widget.items));
-  }
+  MyoroAccordionController get _controller => widget.controller;
 
   late final _viewModel = MyoroAccordionViewModel(_controller);
 
   @override
   void dispose() {
-    _localController?.dispose();
     _viewModel.dispose();
     super.dispose();
   }

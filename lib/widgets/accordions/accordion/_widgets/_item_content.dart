@@ -14,8 +14,9 @@ final class _ItemContent extends StatelessWidget {
     return AnimatedSize(
       duration: themeExtension.itemContentAnimationDuration,
       curve: themeExtension.itemContentAnimationCurve,
-      child: SizedBox(
+      child: Container(
         width: double.infinity,
+        color: context.resolveThemeExtension<MyoroButtonThemeExtension>().primaryIdleBackgroundColor,
         child: (_item == _expandedItem) ? _item.contentBuilder(context) : const SizedBox.shrink(),
       ),
     );

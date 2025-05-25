@@ -16,6 +16,15 @@ class WidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
-    return Container(decoration: themeExtension.decoration, padding: themeExtension.contentPadding, child: widget);
+    return Padding(
+      padding: themeExtension.padding,
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: themeExtension.decoration,
+        padding: themeExtension.contentPadding,
+        child: Center(child: widget),
+      ),
+    );
   }
 }

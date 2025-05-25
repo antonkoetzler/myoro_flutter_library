@@ -4,7 +4,8 @@ import 'package:storyboard/storyboard.dart';
 
 /// Enum that stores all widgets of MFL.
 enum MyoroWidgetListEnum {
-  accordions('Accordions', {myoroAccordionTitle});
+  accordions('Accordions', {myoroAccordionTitle}),
+  appBars('App bars', {myoroAppBarTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -21,10 +22,17 @@ enum MyoroWidgetListEnum {
   // Accordions
   static const myoroAccordionTitle = 'MyoroAccordion';
 
-  static WidgetShowcase getWidgetShowcase(String widgetName) {
+  // App bars
+  static const myoroAppBarTitle = 'MyoroAppBar';
+
+  static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
       myoroAccordionTitle => const MyoroAccordionWidgetShowcase(),
+
+      // App bars
+      myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }

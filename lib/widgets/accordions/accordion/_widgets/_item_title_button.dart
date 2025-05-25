@@ -28,7 +28,7 @@ final class _ItemTitleButton extends StatelessWidget {
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
         borderRadius: themeExtension.itemTitleButtonBorderRadius,
-        backgroundColorBuilder: isExpanded ? _backgroundColorBuilder : null,
+        backgroundColorBuilder: isExpanded ? (_) => _backgroundColorBuilder(context) : null,
         onTapUp: _onTapUp,
       ),
       builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
@@ -37,8 +37,8 @@ final class _ItemTitleButton extends StatelessWidget {
     );
   }
 
-  Color _backgroundColorBuilder(_) {
-    return MyoroColorDesignSystem.transparent;
+  Color _backgroundColorBuilder(BuildContext context) {
+    return context.resolveThemeExtension<MyoroButtonThemeExtension>().primaryIdleBackgroundColor;
   }
 
   void _onTapUp(_) {
