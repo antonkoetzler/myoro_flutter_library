@@ -28,7 +28,7 @@ class MyoroButtonViewModel implements MyoroButtonViewModelInterface {
 
   @override
   void onTapUp(TapUpDetails details) {
-    state.tapStatusController.value = MyoroTapStatusEnum.idle;
+    state.tapStatusController.value = MyoroTapStatusEnum.hover;
     state.configuration?.onTapUp?.call(details);
   }
 

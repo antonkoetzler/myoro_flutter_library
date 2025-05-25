@@ -1,1 +1,1 @@
-export 'widget_showcase_screen.dart';
+export 'widget_showcase/exports.dart';

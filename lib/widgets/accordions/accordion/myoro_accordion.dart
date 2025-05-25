@@ -12,21 +12,23 @@ class MyoroAccordion extends StatefulWidget {
   /// View model.
   final MyoroAccordionController? controller;
 
-  /// Configuration.
-  final MyoroAccordionConfiguration configuration;
+  /// Items of the [MyoroAccordion].
+  final List<MyoroAccordionItem> items;
 
-  const MyoroAccordion({super.key, this.controller, required this.configuration});
+  const MyoroAccordion({super.key, this.controller, this.items = const []})
+    : assert(
+        (controller != null) ^ (items.length > 0),
+        '[MyoroAccordion]: [controller] (x)or [items] that is non-empty must be provided.',
+      );
 
   @override
   State<MyoroAccordion> createState() => _MyoroAccordionState();
 }
 
 final class _MyoroAccordionState extends State<MyoroAccordion> {
-  MyoroAccordionConfiguration get _configuration => widget.configuration;
-
   MyoroAccordionController? _localController;
   MyoroAccordionController get _controller {
-    return widget.controller ?? (_localController ??= MyoroAccordionController());
+    return widget.controller ?? (_localController ??= MyoroAccordionController(items: widget.items));
   }
 
   late final _viewModel = MyoroAccordionViewModel(_controller);
@@ -46,14 +48,14 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
       controller: scrollController,
       child: ListView.builder(
         controller: scrollController,
-        itemCount: _configuration.items.length,
+        itemCount: _controller.state.items.length,
         itemBuilder: _itemBuilder,
       ),
     );
   }
 
   Widget _itemBuilder(_, int index) {
-    final items = _configuration.items;
+    final items = _controller.state.items;
     return _Item(_controller, item: items[index], isLastItem: index == items.length - 1);
   }
 }

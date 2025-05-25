@@ -1,2 +1,2 @@
 export 'screens/exports.dart';
-export 'theme_extensions/exports.dart';
+export 'main_module.dart';

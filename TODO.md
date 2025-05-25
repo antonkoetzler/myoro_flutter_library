@@ -10,7 +10,7 @@
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
 - Make it so that `_Menu` in `MyoroDropdown` can use `CompositedTransformTarget` + `OverlayPortal` or a non-`Overlay`
-  - Do the same thing with `MyoroInput`
+  - Do the same thing with `MyoroSearchInput`
 - Make `MyoroSnackBar` width 100% on mobile
 
 1. improvement: Make only `myoro_flutter_library.dart` exportable

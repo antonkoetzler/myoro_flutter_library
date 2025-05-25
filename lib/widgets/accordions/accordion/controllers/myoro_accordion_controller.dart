@@ -2,7 +2,11 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroAccordion].
 class MyoroAccordionController implements MyoroAccordionControllerInterface {
-  final state = MyoroAccordionControllerState();
+  MyoroAccordionController({required List<MyoroAccordionItem> items})
+    : assert(items.isNotEmpty, '[MyoroAccordionController]: [items] cannot be empty.'),
+      state = MyoroAccordionControllerState(items);
+
+  final MyoroAccordionControllerState state;
 
   @override
   void dispose() {

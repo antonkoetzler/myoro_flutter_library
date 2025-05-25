@@ -1,1 +1,1 @@
-export 'main_screen.dart';
+export 'main/exports.dart';
