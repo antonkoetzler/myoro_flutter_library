@@ -3,16 +3,16 @@ part of '../myoro_accordion.dart';
 /// Button of an [_Item].
 final class _ItemTitleButton extends StatelessWidget {
   final MyoroAccordionItem _item;
-  final MyoroAccordionController _controller;
 
-  const _ItemTitleButton(this._item, this._controller);
+  const _ItemTitleButton(this._item);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final viewModel = context.read<MyoroAccordionViewModel>();
 
     return ValueListenableBuilder(
-      valueListenable: _controller.state.expandedItemController,
+      valueListenable: viewModel.controller.state.expandedItemController,
       builder: (_, MyoroAccordionItem? expandedItem, __) {
         return _valueListenableBuilder(context, themeExtension, expandedItem);
       },
@@ -29,7 +29,7 @@ final class _ItemTitleButton extends StatelessWidget {
       configuration: MyoroButtonConfiguration(
         borderRadius: themeExtension.itemTitleButtonBorderRadius,
         backgroundColorBuilder: isExpanded ? (_) => _backgroundColorBuilder(context) : null,
-        onTapUp: _onTapUp,
+        onTapUp: (_) => _onTapUp(context),
       ),
       builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
         return _buttonBuilder(context, themeExtension, tapStatusEnum);
@@ -41,8 +41,11 @@ final class _ItemTitleButton extends StatelessWidget {
     return context.resolveThemeExtension<MyoroButtonThemeExtension>().primaryIdleBackgroundColor;
   }
 
-  void _onTapUp(_) {
-    _controller.state.expandedItemController.value != _item ? _controller.expandItem(_item) : _controller.reset();
+  void _onTapUp(BuildContext context) {
+    final viewModel = context.read<MyoroAccordionViewModel>();
+    viewModel.controller.state.expandedItemController.value != _item
+        ? viewModel.controller.expandItem(_item)
+        : viewModel.controller.reset();
   }
 
   Widget _buttonBuilder(
@@ -61,7 +64,7 @@ final class _ItemTitleButton extends StatelessWidget {
               child: _item.titleBuilder(context),
             ),
           ),
-          _ItemTitleButtonArrow(_item, _controller, tapStatusEnum),
+          _ItemTitleButtonArrow(_item, tapStatusEnum),
         ],
       ),
     );

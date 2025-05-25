@@ -2,19 +2,20 @@ part of '../myoro_accordion.dart';
 
 /// Item within a [MyoroAccordion].
 final class _Item extends StatelessWidget {
-  final MyoroAccordionController _controller;
   final MyoroAccordionItem item;
   final bool isLastItem;
 
-  const _Item(this._controller, {required this.item, required this.isLastItem});
+  const _Item({required this.item, required this.isLastItem});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroAccordionViewModel>();
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _ItemTitleButton(item, _controller),
-        ValueListenableBuilder(valueListenable: _controller.state.expandedItemController, builder: _builder),
+        _ItemTitleButton(item),
+        ValueListenableBuilder(valueListenable: viewModel.controller.state.expandedItemController, builder: _builder),
         if (!isLastItem) const _Divider(),
       ],
     );

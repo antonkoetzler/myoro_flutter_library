@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widgets/_divider.dart';
 part '_widgets/_item.dart';
@@ -33,18 +34,21 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   Widget build(BuildContext context) {
     final scrollController = _viewModel.state.scrollController;
 
-    return Scrollbar(
-      controller: scrollController,
-      child: ListView.builder(
+    return Provider.value(
+      value: _viewModel,
+      child: Scrollbar(
         controller: scrollController,
-        itemCount: _controller.state.items.length,
-        itemBuilder: _itemBuilder,
+        child: ListView.builder(
+          controller: scrollController,
+          itemCount: _controller.state.items.length,
+          itemBuilder: _itemBuilder,
+        ),
       ),
     );
   }
 
   Widget _itemBuilder(_, int index) {
-    final items = _controller.state.items;
-    return _Item(_controller, item: items[index], isLastItem: index == items.length - 1);
+    final items = _viewModel.controller.state.items;
+    return _Item(item: items[index], isLastItem: index == items.length - 1);
   }
 }

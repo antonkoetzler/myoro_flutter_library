@@ -3,18 +3,19 @@ part of '../myoro_accordion.dart';
 /// Arrow of an [_Item].
 final class _ItemTitleButtonArrow extends StatelessWidget {
   final MyoroAccordionItem _item;
-  final MyoroAccordionController _controller;
   final MyoroTapStatusEnum _tapStatusEnum;
 
-  const _ItemTitleButtonArrow(this._item, this._controller, this._tapStatusEnum);
+  const _ItemTitleButtonArrow(this._item, this._tapStatusEnum);
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroAccordionViewModel>();
+
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final buttonVariantThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: _controller.state.expandedItemController,
+      valueListenable: viewModel.controller.state.expandedItemController,
       builder: (_, MyoroAccordionItem? expandedItem, __) {
         final bool isExpanded = (_item == expandedItem);
 
