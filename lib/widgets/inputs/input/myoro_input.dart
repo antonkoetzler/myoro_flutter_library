@@ -67,7 +67,7 @@ final class _MyoroInputState extends State<MyoroInput> {
   MyoroInputConfiguration get _configuration => widget.configuration;
   MyoroInputFormatter? get _formatter => widget.formatter;
 
-  late final _controller = MyoroInputController(_configuration, _formatter);
+  late final _controller = MyoroInputViewModel(_configuration, _formatter);
   ValueNotifier<bool> get _enabledController => _controller.state.enabledController;
 
   @override

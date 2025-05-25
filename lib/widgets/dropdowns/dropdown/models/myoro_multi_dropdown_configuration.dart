@@ -11,9 +11,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
 
   const MyoroMultiDropdownConfiguration._({
     required super.label,
-    required super.initiallySelectedItems,
     required super.menuTypeEnum,
-    required super.enabled,
     required super.allowItemClearing,
     required super.selectedItemTextAlign,
     required super.menuConfiguration,
@@ -25,24 +23,20 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   factory MyoroMultiDropdownConfiguration({
     String label = '',
     MyoroDropdownMenuTypeEnum menuTypeEnum = MyoroDropdownConfiguration.menuTypeEnumDefaultValue,
-    bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
     required MyoroMenuConfiguration<T> menuConfiguration,
     required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
-    Set<T>? initiallySelectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
   }) {
     return MyoroMultiDropdownConfiguration._(
       label: label,
       menuTypeEnum: menuTypeEnum,
-      enabled: enabled,
       allowItemClearing: allowItemClearing,
       selectedItemTextAlign: selectedItemTextAlign,
       menuConfiguration: menuConfiguration,
       selectedItemBuilder: selectedItemBuilder,
-      initiallySelectedItems: initiallySelectedItems ?? const {},
       onChanged: onChanged,
       checkboxOnChanged: checkboxOnChanged,
     );
@@ -51,7 +45,6 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   @override
   MyoroMultiDropdownConfiguration<T> copyWith({
     String? label,
-    Set<T>? initiallySelectedItems,
     MyoroDropdownMenuTypeEnum? menuTypeEnum,
     bool? enabled,
     bool? allowItemClearing,
@@ -65,9 +58,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   }) {
     return MyoroMultiDropdownConfiguration(
       label: label ?? this.label,
-      initiallySelectedItems: initiallySelectedItems ?? this.initiallySelectedItems,
       menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
-      enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
       selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? this.menuConfiguration,
@@ -84,9 +75,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   List<Object?> get props {
     return [
       label,
-      initiallySelectedItems,
       menuTypeEnum,
-      enabled,
       allowItemClearing,
       selectedItemTextAlign,
       menuConfiguration,
@@ -100,9 +89,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T> {
   String toString() =>
       'MyoroMultiDropdownConfiguration<$T>(\n'
       '  label: $label,\n'
-      '  initiallySelectedItems: $initiallySelectedItems,\n'
       '  menuTypeEnum: $menuTypeEnum,\n'
-      '  enabled: $enabled,\n'
       '  allowItemClearing: $allowItemClearing,\n'
       '  selectedItemTextAlign: $selectedItemTextAlign,\n'
       '  menuConfiguration: $menuConfiguration,\n'

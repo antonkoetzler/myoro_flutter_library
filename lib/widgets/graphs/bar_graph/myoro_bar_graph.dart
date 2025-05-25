@@ -13,7 +13,7 @@ class MyoroBarGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = MyoroBarGraphController(configuration: configuration);
+    final viewModel = MyoroBarGraphViewModel(configuration: configuration);
 
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
@@ -29,7 +29,7 @@ class MyoroBarGraph extends StatelessWidget {
       child: BarChart(
         BarChartData(
           // Items of the graph.
-          barGroups: controller.getFormattedItems(context),
+          barGroups: viewModel.getFormattedItems(context),
 
           // Border of the graph.
           borderData: borderData,

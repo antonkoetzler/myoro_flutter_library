@@ -11,9 +11,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
 
   const MyoroSingularDropdownConfiguration._({
     required super.label,
-    required super.initiallySelectedItems,
     required super.menuTypeEnum,
-    required super.enabled,
     required super.allowItemClearing,
     required super.selectedItemTextAlign,
     required super.menuConfiguration,
@@ -24,9 +22,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
 
   factory MyoroSingularDropdownConfiguration({
     String label = '',
-    T? initiallySelectedItem,
     MyoroDropdownMenuTypeEnum menuTypeEnum = MyoroDropdownConfiguration.menuTypeEnumDefaultValue,
-    bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
     required MyoroMenuConfiguration<T> menuConfiguration,
@@ -36,9 +32,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
   }) {
     return MyoroSingularDropdownConfiguration._(
       label: label,
-      initiallySelectedItems: {if (initiallySelectedItem != null) initiallySelectedItem},
       menuTypeEnum: menuTypeEnum,
-      enabled: enabled,
       allowItemClearing: allowItemClearing,
       selectedItemTextAlign: selectedItemTextAlign,
       menuConfiguration: menuConfiguration,
@@ -51,8 +45,6 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
   @override
   MyoroSingularDropdownConfiguration<T> copyWith({
     String? label,
-    T? initiallySelectedItem,
-    bool initiallySelectedItemProvided = true,
     MyoroDropdownMenuTypeEnum? menuTypeEnum,
     bool? enabled,
     bool? allowItemClearing,
@@ -66,10 +58,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
   }) {
     return MyoroSingularDropdownConfiguration(
       label: label ?? this.label,
-      initiallySelectedItem:
-          initiallySelectedItemProvided ? (initiallySelectedItem ?? initiallySelectedItems.first) : null,
       menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
-      enabled: enabled ?? this.enabled,
       allowItemClearing: allowItemClearing ?? this.allowItemClearing,
       selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? this.menuConfiguration,
@@ -86,9 +75,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
   List<Object?> get props {
     return [
       label,
-      initiallySelectedItems,
       menuTypeEnum,
-      enabled,
       allowItemClearing,
       selectedItemTextAlign,
       menuConfiguration,
@@ -102,9 +89,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
   String toString() =>
       'MyoroSingularDropdownConfiguration<$T>(\n'
       '  label: $label,\n'
-      '  initiallySelectedItems: $initiallySelectedItems,\n'
       '  menuTypeEnum: $menuTypeEnum,\n'
-      '  enabled: $enabled,\n'
       '  allowItemClearing: $allowItemClearing,\n'
       '  selectedItemTextAlign: $selectedItemTextAlign,\n'
       '  menuConfiguration: $menuConfiguration,\n'

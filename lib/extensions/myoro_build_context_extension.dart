@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// Extension for [BuildContext].
 extension MyoroBuildContextExtension on BuildContext {
@@ -51,17 +51,6 @@ extension MyoroBuildContextExtension on BuildContext {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
     throw Exception('[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.');
-  }
-
-  /// Resolvers a [Bloc] or [Cubit] and thorws an [Exception]
-  /// if the [Bloc]/[Cubit] isn't apart of the [BuildContext].
-  T resolveBloc<T extends BlocBase>() {
-    try {
-      final bloc = BlocProvider.of<T>(this);
-      return bloc;
-    } catch (_) {
-      throw Exception('[BuildContextExtension.resolveBloc]: [Bloc] does not exist.');
-    }
   }
 
   /// Opens the drawer of the [BuildContext]'s [MyoroScreen].

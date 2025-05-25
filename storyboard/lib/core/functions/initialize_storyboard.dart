@@ -10,8 +10,8 @@ final _kiwiContainer = KiwiContainer();
 /// Function to initialize Storyboard.
 Future<void> initializeStoryboard() async {
   _initializeWindowManager();
-  await _initializeKiwi();
   await _initializeSharedPreferences();
+  await _initializeKiwi();
 }
 
 /// Initilize [windowManager].
@@ -22,18 +22,21 @@ void _initializeWindowManager() {
   }
 }
 
+/// Initializes [SharedPreferences].
+Future<void> _initializeSharedPreferences() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  if (sharedPreferences.getBool(kSharedPreferencesDarkModeEnabledJsonKey) == null) {
+    await sharedPreferences.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true);
+  }
+}
+
 /// Adds all containers to [_kiwiContainer].
 Future<void> _initializeKiwi() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   _kiwiContainer
     ..registerSingleton<SharedPreferences>((_) => sharedPreferences)
-    ..registerSingleton<ModulesController>((_) => ModulesController());
-}
-
-/// Initializes [SharedPreferences].
-Future<void> _initializeSharedPreferences() async {
-  final sharedPreferences = _kiwiContainer.resolve<SharedPreferences>();
-  if (sharedPreferences.getBool(kSharedPreferencesDarkModeEnabledJsonKey) == null) {
-    await sharedPreferences.setBool(kSharedPreferencesDarkModeEnabledJsonKey, true);
-  }
+    ..registerSingleton<ModulesController>((_) => ModulesController())
+    ..registerSingleton<ThemeModeController>(
+      (_) => ThemeModeController(sharedPreferences.getBool(kSharedPreferencesDarkModeEnabledJsonKey)!),
+    );
 }

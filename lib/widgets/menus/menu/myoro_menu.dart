@@ -20,17 +20,17 @@ class MyoroMenu<T> extends StatefulWidget {
 }
 
 final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
-  late final _controller = MyoroMenuController<T>(configuration: widget.configuration);
+  late final _viewModel = MyoroMenuViewModel<T>(configuration: widget.configuration);
 
   @override
   void initState() {
     super.initState();
-    _controller.fetch();
+    _viewModel.fetch();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
@@ -44,17 +44,17 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
         border: themeExtension.border,
         borderRadius: themeExtension.borderRadius,
       ),
-      constraints: _controller.state.configuration.constraints,
-      child: ValueListenableBuilder(valueListenable: _controller.state.itemsRequestController, builder: _builder),
+      constraints: _viewModel.state.configuration.constraints,
+      child: ValueListenableBuilder(valueListenable: _viewModel.state.itemsRequestController, builder: _builder),
     );
   }
 
   Widget _builder(_, MyoroRequest<Set<T>> state, __) {
-    _controller.jumpToBottomPreviousPosition();
+    _viewModel.jumpToBottomPreviousPosition();
     return switch (state.status) {
       MyoroRequestEnum.idle => const _Loader(),
       MyoroRequestEnum.loading => const _Loader(),
-      MyoroRequestEnum.success => _Items(_controller),
+      MyoroRequestEnum.success => _Items(_viewModel),
       MyoroRequestEnum.error => const _DialogText('Error getting items.'),
     };
   }

@@ -269,7 +269,7 @@ final class _Row<T> extends StatelessWidget {
           onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
           onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
         ),
-        builder: (_, MyoroGestureStatusEnum tapStatusEnum) {
+        builder: (_, MyoroTapStatusEnum tapStatusEnum) {
           return Row(
             spacing: themeExtension.columnSpacing,
             children: [

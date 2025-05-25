@@ -2,63 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A group of [MyoroCheckbox]s.
-class MyoroGroupCheckbox extends StatefulWidget {
+class MyoroGroupCheckbox extends StatelessWidget {
   /// Controller.
-  final MyoroGroupCheckboxController? controller;
+  final MyoroGroupCheckboxController controller;
 
   /// Configuration.
-  final MyoroGroupCheckboxConfiguration? configuration;
+  final MyoroGroupCheckboxConfiguration configuration;
 
-  const MyoroGroupCheckbox({super.key, this.controller, this.configuration})
-    : assert((controller != null) ^ (configuration != null));
-
-  @override
-  State<MyoroGroupCheckbox> createState() => _MyoroGroupCheckboxState();
-}
-
-final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
-  MyoroGroupCheckboxController? _localController;
-  MyoroGroupCheckboxController get _controller {
-    return widget.controller ??
-        (_localController ??= MyoroGroupCheckboxController(configuration: widget.configuration!));
-  }
-
-  MyoroGroupCheckboxConfiguration get _configuration => _controller.state.configuration;
-
-  @override
-  void didUpdateWidget(covariant MyoroGroupCheckbox oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.configuration != oldWidget.configuration) {
-      _controller.state.configuration = widget.configuration!;
-    }
-  }
-
-  @override
-  void dispose() {
-    _localController?.dispose();
-    super.dispose();
-  }
+  const MyoroGroupCheckbox({super.key, required this.controller, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: _controller,
+      valueListenable: controller,
       builder: (_, MyoroGroupCheckboxItems checkboxes, __) {
         return Wrap(
-          direction: _configuration.direction,
-          spacing: _configuration.spacing ?? themeExtension.spacing,
-          runSpacing: _configuration.runSpacing ?? themeExtension.runSpacing,
+          direction: configuration.direction,
+          spacing: configuration.spacing ?? themeExtension.spacing,
+          runSpacing: configuration.runSpacing ?? themeExtension.runSpacing,
           children:
               checkboxes.entries.map<Widget>((MapEntry<String, bool> entry) {
                 return MyoroCheckbox(
                   configuration: MyoroCheckboxConfiguration(
                     label: entry.key,
-                    initialValue: entry.value,
+                    value: entry.value,
                     onChanged: (bool value) {
-                      _controller.toggle(entry.key, value);
-                      _configuration.onChanged?.call(entry.key, checkboxes);
+                      controller.toggle(entry.key, value);
+                      configuration.onChanged?.call(entry.key, checkboxes);
                     },
                   ),
                 );

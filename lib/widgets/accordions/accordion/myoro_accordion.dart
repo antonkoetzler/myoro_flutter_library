@@ -9,7 +9,7 @@ part '_widgets/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
 class MyoroAccordion extends StatefulWidget {
-  /// Controller.
+  /// View model.
   final MyoroAccordionController? controller;
 
   /// Configuration.
@@ -23,30 +23,37 @@ class MyoroAccordion extends StatefulWidget {
 
 final class _MyoroAccordionState extends State<MyoroAccordion> {
   MyoroAccordionConfiguration get _configuration => widget.configuration;
-  List<MyoroAccordionItem> get _items => _configuration.items;
 
   MyoroAccordionController? _localController;
   MyoroAccordionController get _controller {
     return widget.controller ?? (_localController ??= MyoroAccordionController());
   }
 
-  ScrollController get _scrollController => _controller.state.scrollController;
+  late final _viewModel = MyoroAccordionViewModel(_controller);
 
   @override
   void dispose() {
     _localController?.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = _viewModel.state.scrollController;
+
     return Scrollbar(
-      controller: _scrollController,
-      child: ListView.builder(controller: _scrollController, itemCount: _items.length, itemBuilder: _itemBuilder),
+      controller: scrollController,
+      child: ListView.builder(
+        controller: scrollController,
+        itemCount: _configuration.items.length,
+        itemBuilder: _itemBuilder,
+      ),
     );
   }
 
   Widget _itemBuilder(_, int index) {
-    return _Item(_controller, item: _items[index], isLastItem: index == _items.length - 1);
+    final items = _configuration.items;
+    return _Item(_controller, item: items[index], isLastItem: index == items.length - 1);
   }
 }

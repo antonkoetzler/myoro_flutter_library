@@ -21,39 +21,39 @@ class MyoroButton extends StatefulWidget {
 }
 
 final class _MyoroButtonState extends State<MyoroButton> {
-  MyoroButtonConfiguration? get _configuration => widget.configuration;
-
-  late final _controller = MyoroButtonController(configuration: _configuration);
-  ValueNotifier<MyoroGestureStatusEnum> get _tapStatusController => _controller.state.tapStatusController;
+  late final _viewModel = MyoroButtonViewModel()..state.configuration = widget.configuration;
+  ValueNotifier<MyoroTapStatusEnum> get _tapStatusController => _viewModel.state.tapStatusController;
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _controller.state.configuration = _configuration;
+    if (widget.configuration != oldWidget.configuration) {
+      _viewModel.state.configuration = widget.configuration;
+    }
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      cursor: _controller.cursor,
-      onEnter: _controller.onEnter,
-      onExit: _controller.onExit,
+      cursor: _viewModel.cursor,
+      onEnter: _viewModel.onEnter,
+      onExit: _viewModel.onExit,
       child: GestureDetector(
-        onTapDown: _controller.onTapDown,
-        onTapUp: _controller.onTapUp,
-        onTapCancel: _controller.onTapCancel,
+        onTapDown: _viewModel.onTapDown,
+        onTapUp: _viewModel.onTapUp,
+        onTapCancel: _viewModel.onTapCancel,
         child: ValueListenableBuilder(valueListenable: _tapStatusController, builder: _builder),
       ),
     );
   }
 
-  Widget _builder(_, MyoroGestureStatusEnum tapStatusEnum, _) {
-    return _Button(tapStatusEnum, _configuration, widget.builder);
+  Widget _builder(_, MyoroTapStatusEnum tapStatusEnum, _) {
+    return _Button(tapStatusEnum, _viewModel, widget.builder);
   }
 }

@@ -31,7 +31,7 @@ final class _ItemTitleButton extends StatelessWidget {
         backgroundColorBuilder: isExpanded ? _backgroundColorBuilder : null,
         onTapUp: _onTapUp,
       ),
-      builder: (BuildContext context, MyoroGestureStatusEnum tapStatusEnum) {
+      builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
         return _buttonBuilder(context, themeExtension, tapStatusEnum);
       },
     );
@@ -48,7 +48,7 @@ final class _ItemTitleButton extends StatelessWidget {
   Widget _buttonBuilder(
     BuildContext context,
     MyoroAccordionThemeExtension themeExtension,
-    MyoroGestureStatusEnum tapStatusEnum,
+    MyoroTapStatusEnum tapStatusEnum,
   ) {
     return Padding(
       padding: themeExtension.itemTitleButtonContentPadding,

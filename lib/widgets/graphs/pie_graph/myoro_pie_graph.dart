@@ -13,11 +13,11 @@ class MyoroPieGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = MyoroPieGraphController(configuration: configuration);
+    final viewModel = MyoroPieGraphViewModel(configuration: configuration);
 
     return Stack(
       alignment: Alignment.center,
-      children: [_PieGraph(controller), if (configuration.centerWidget != null) configuration.centerWidget!],
+      children: [_PieGraph(viewModel), if (configuration.centerWidget != null) configuration.centerWidget!],
     );
   }
 }

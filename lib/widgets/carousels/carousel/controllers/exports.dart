@@ -1,3 +1,3 @@
 export 'myoro_carousel_controller.dart';
-export 'myoro_carousel_interface.dart';
-export 'myoro_carousel_state.dart';
+export 'myoro_carousel_controller_interface.dart';
+export 'myoro_carousel_controller_state.dart';

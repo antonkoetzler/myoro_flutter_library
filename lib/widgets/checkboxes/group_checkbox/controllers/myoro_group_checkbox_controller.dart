@@ -4,12 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Controller of [MyoroGroupCheckbox].
 class MyoroGroupCheckboxController extends ValueNotifier<MyoroGroupCheckboxItems>
     implements MyoroGroupCheckboxInterface {
-  MyoroGroupCheckboxController({required MyoroGroupCheckboxConfiguration configuration})
-    : super(configuration.checkboxes) {
-    state = MyoroGroupCheckboxState(configuration);
-  }
-
-  late final MyoroGroupCheckboxState state;
+  MyoroGroupCheckboxController({required MyoroGroupCheckboxItems checkboxes}) : super(checkboxes);
 
   @override
   void toggle(String key, [bool? enabled]) {

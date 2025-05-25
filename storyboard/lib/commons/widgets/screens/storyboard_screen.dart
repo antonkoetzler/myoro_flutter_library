@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiwi/kiwi.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -17,9 +18,7 @@ final class StoryboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MyoroScreen(
-      configuration: MyoroScreenConfiguration(appBar: _AppBar(onPrevious, title), body: body),
-    );
+    return MyoroScreen(configuration: MyoroScreenConfiguration(appBar: _AppBar(onPrevious, title), body: body));
   }
 }
 
@@ -103,8 +102,7 @@ final class _ToggleThemeButton extends StatelessWidget {
   }
 
   void _onTapUp(BuildContext context) {
-    final themeModeCubit = context.resolveBloc<ThemeModeCubit>();
-    themeModeCubit.toggle();
+    KiwiContainer().resolve<ThemeModeController>().toggle();
   }
 }
 

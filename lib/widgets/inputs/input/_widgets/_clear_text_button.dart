@@ -2,9 +2,9 @@ part of '../myoro_input.dart';
 
 /// Button that clears all text of the [MyoroInput].
 final class _ClearTextButton extends StatelessWidget {
-  final MyoroInputController _controller;
+  final MyoroInputViewModel _viewModel;
 
-  const _ClearTextButton(this._controller);
+  const _ClearTextButton(this._viewModel);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ final class _ClearTextButton extends StatelessWidget {
         padding: themeExtension.clearTextButtonPadding,
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
-            buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _controller.clearText()),
+            buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _viewModel.clearText()),
             iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.clearTextButtonIcon),
           ),
         ),

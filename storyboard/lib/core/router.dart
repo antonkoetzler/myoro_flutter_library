@@ -11,9 +11,7 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: _mainScreenBuilder,
-      routes: [
-        GoRoute(path: 'widget_showcase/:$_widgetNameKey', builder: _widgetShowcaseScreenBuilder),
-      ],
+      routes: [GoRoute(path: 'widget_showcase/:$_widgetNameKey', builder: _widgetShowcaseScreenBuilder)],
     ),
   ],
 );
@@ -22,15 +20,16 @@ Widget _mainScreenBuilder(_, __) {
   return const MainScreen();
 }
 
+// TODO
 Widget _widgetShowcaseScreenBuilder(_, GoRouterState state) {
-  final String widgetName = state.pathParameters[_widgetNameKey]!;
-  final StoryboardWidgetListingEnum? widgetListingEnum = StoryboardWidgetListingEnum.values
-      .firstWhereOrNull(
-        (StoryboardWidgetListingEnum value) => value.widgetNames.contains(widgetName),
-      );
-  assert(
-    widgetListingEnum != null,
-    '[router]: $_widgetNameKey provided does not exist in [WidgetListingEnum].',
-  );
-  return WidgetShowcaseScreen(widgetName);
+  // final String widgetName = state.pathParameters[_widgetNameKey]!;
+  // final StoryboardWidgetListingEnum? widgetListingEnum = StoryboardWidgetListingEnum.values
+  //     .firstWhereOrNull(
+  //       (StoryboardWidgetListingEnum value) => value.widgetNames.contains(widgetName),
+  //     );
+  // assert(
+  //   widgetListingEnum != null,
+  //   '[router]: $_widgetNameKey provided does not exist in [WidgetListingEnum].',
+  // );
+  return WidgetShowcaseScreen('qwe');
 }

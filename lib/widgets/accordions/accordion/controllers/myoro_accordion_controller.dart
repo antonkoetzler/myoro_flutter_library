@@ -1,8 +1,8 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroAccordion].
-class MyoroAccordionController implements MyoroAccordionInterface {
-  final state = MyoroAccordionState();
+class MyoroAccordionController implements MyoroAccordionControllerInterface {
+  final state = MyoroAccordionControllerState();
 
   @override
   void dispose() {

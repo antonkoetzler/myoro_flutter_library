@@ -93,9 +93,6 @@ final class WidgetShowcaseModule implements Module {
       const MyoroGroupRadioWidgetShowcaseThemeExtension.builder(),
       const MyoroRadioWidgetShowcaseThemeExtension.builder(),
 
-      // Resolvers
-      const MyoroResolverWidgetShowcaseThemeExtension.builder(),
-
       // Screens
       MyoroScreenWidgetShowcaseThemeExtension.builder(textTheme),
 

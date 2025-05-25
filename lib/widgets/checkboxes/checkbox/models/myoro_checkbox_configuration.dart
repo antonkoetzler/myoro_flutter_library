@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration of [MyoroCheckbox].
 class MyoroCheckboxConfiguration extends Equatable {
-  static const initialValueDefaultValue = false;
+  static const valueDefaultValue = false;
 
   /// Label at the right of the checkbox.
   final String? label;
@@ -13,24 +13,19 @@ class MyoroCheckboxConfiguration extends Equatable {
   /// Text style of [label].
   final TextStyle? labelTextStyle;
 
-  /// Initial value of the checkbox.
-  final bool initialValue;
+  /// Value of the [MyoroCheckbox].
+  final bool value;
 
   /// Function that is executed when the checkbox is changed.
   final MyoroCheckboxOnChanged? onChanged;
 
-  const MyoroCheckboxConfiguration({
-    this.label,
-    this.labelTextStyle,
-    this.initialValue = initialValueDefaultValue,
-    this.onChanged,
-  });
+  const MyoroCheckboxConfiguration({this.label, this.labelTextStyle, this.value = valueDefaultValue, this.onChanged});
 
   factory MyoroCheckboxConfiguration.fake() {
     return MyoroCheckboxConfiguration(
       label: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
       labelTextStyle: faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
-      initialValue: faker.randomGenerator.boolean(),
+      value: faker.randomGenerator.boolean(),
       onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
     );
   }
@@ -40,21 +35,21 @@ class MyoroCheckboxConfiguration extends Equatable {
     bool labelProvided = true,
     TextStyle? labelTextStyle,
     bool labelTextStyleProvided = true,
-    bool? initialValue,
+    bool? value,
     MyoroCheckboxOnChanged? onChanged,
     bool onChangedProvided = true,
   }) {
     return MyoroCheckboxConfiguration(
       label: labelProvided ? (label ?? this.label) : null,
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
-      initialValue: initialValue ?? this.initialValue,
+      value: value ?? this.value,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
     );
   }
 
   @override
   List<Object?> get props {
-    return [label, labelTextStyle, initialValue, onChanged];
+    return [label, labelTextStyle, value, onChanged];
   }
 
   @override
@@ -62,7 +57,7 @@ class MyoroCheckboxConfiguration extends Equatable {
       'MyoroCheckboxConfiguration(\n'
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'
-      '  initialValue: $initialValue,\n'
+      '  value: $value,\n'
       '  onChanged: $onChanged,\n'
       ');';
 }

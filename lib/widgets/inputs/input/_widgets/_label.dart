@@ -2,13 +2,13 @@ part of '../myoro_input.dart';
 
 /// Label [Widget] of [MyoroInput].
 final class _Label extends StatelessWidget {
-  final MyoroInputController _controller;
+  final MyoroInputViewModel _viewModel;
 
-  const _Label(this._controller);
+  const _Label(this._viewModel);
 
   @override
   Widget build(BuildContext context) {
-    final configuration = _controller.configuration;
+    final configuration = _viewModel.configuration;
 
     return Padding(
       padding: const EdgeInsets.only(

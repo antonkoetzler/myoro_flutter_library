@@ -1,17 +1,9 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// [MyoroMultiDropdown] controller implementation if [MyoroDropdownController].
-final class MyoroMultiDropdownController<T> extends MyoroDropdownController<T, MyoroMultiDropdownConfiguration<T>> {
-  MyoroMultiDropdownController({required MyoroMultiDropdownConfiguration<T> configuration}) : super(configuration);
+/// [MyoroMultiDropdown] implementation of [MyoroDropdownController].
+class MyoroMultiDropdownController<T> extends MyoroDropdownController<T> {
+  MyoroMultiDropdownController({super.enabled, required});
 
-  @override
-  void enabledNotifierListener() {
-    state.configuration.checkboxOnChanged?.call(state.enabled, state.selectedItems);
-  }
-
-  @override
-  void selectedItemsControllerListener() {
-    super.selectedItemsControllerListener();
-    state.configuration.onChanged?.call(state.selectedItems);
-  }
+  /// Selected items.
+  Set<T> get selectedItems => state.selectedItems;
 }

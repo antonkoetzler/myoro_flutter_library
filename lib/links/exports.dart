@@ -1,1 +1,1 @@
-export 'functions/exports.dart';
+export 'myoro_launch_url.dart';

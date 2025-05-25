@@ -22,17 +22,8 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
   /// [MyoroInputConfiguration.label] of [_Input].
   final String label;
 
-  /// Initially selected items of the [_Dropdown].
-  final Set<T> initiallySelectedItems;
-
   /// [_Menu]s [Widget] composition.
   final MyoroDropdownMenuTypeEnum menuTypeEnum;
-
-  /// If the dropdown is enabled/usable.
-  ///
-  /// Updates if you update the value of [enabled]
-  /// within the same dropdown [Widget] lifespan.
-  final bool enabled;
 
   /// If the clear button of [_Input]'s [MyoroInput] will be displayed.
   final bool allowItemClearing;
@@ -48,9 +39,7 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
 
   const MyoroDropdownConfiguration({
     required this.label,
-    required this.initiallySelectedItems,
     required this.menuTypeEnum,
-    required this.enabled,
     required this.allowItemClearing,
     required this.selectedItemTextAlign,
     required this.menuConfiguration,

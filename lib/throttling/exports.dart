@@ -1,1 +1,1 @@
-export 'controllers/exports.dart';
+export 'myoro_throttle_controller.dart';

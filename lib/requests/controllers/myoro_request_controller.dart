@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function that requests the data to be retrieved.
+///
+/// TODO: Needs to be tested.
 typedef MyoroRequestControllerRequest<T> = FutureOr<T> Function();
 
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.

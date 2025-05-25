@@ -8,30 +8,20 @@ part '_widgets/_traversal_button.dart';
 /// Slider carousel.
 class MyoroCarousel extends StatefulWidget {
   final MyoroCarouselController? controller;
-  final MyoroCarouselConfiguration? configuration;
+  final MyoroCarouselConfiguration configuration;
 
-  const MyoroCarousel({super.key, this.controller, this.configuration})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroCarousel]: [controller] (x)or configuration must be provided.',
-      );
+  const MyoroCarousel({super.key, this.controller, required this.configuration});
 
   @override
   State<MyoroCarousel> createState() => _MyoroCarouselState();
 }
 
 final class _MyoroCarouselState extends State<MyoroCarousel> {
+  MyoroCarouselConfiguration get _configuration => widget.configuration;
+
   MyoroCarouselController? _localController;
   MyoroCarouselController get _controller {
-    return widget.controller ?? (_localController ??= MyoroCarouselController(configuration: widget.configuration!));
-  }
-
-  @override
-  void didUpdateWidget(covariant MyoroCarousel oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.configuration != oldWidget.configuration) {
-      _controller.state.configuration = widget.configuration!;
-    }
+    return widget.controller ?? (_localController ??= MyoroCarouselController());
   }
 
   @override
@@ -41,8 +31,8 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        _Carousel(_controller),
-        if (_controller.state.configuration.displayTraversalButtons) ...[
+        _Carousel(_configuration, _controller),
+        if (_configuration.displayTraversalButtons) ...[
           Positioned(
             child: _TraversalButton(
               Alignment.centerLeft,

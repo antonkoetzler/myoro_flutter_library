@@ -3,41 +3,29 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A checkbox that can have a label on the right side of it.
 class MyoroCheckbox extends StatefulWidget {
-  /// Controller.
-  final MyoroCheckboxController? controller;
-
   /// Configuration.
-  final MyoroCheckboxConfiguration? configuration;
+  final MyoroCheckboxConfiguration configuration;
 
-  const MyoroCheckbox({super.key, this.controller, this.configuration})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroCheckbox]: [controller] (x)or [configuration] must be provided.',
-      );
+  const MyoroCheckbox({super.key, required this.configuration});
 
   @override
   State<MyoroCheckbox> createState() => _MyoroCheckboxState();
 }
 
 final class _MyoroCheckboxState extends State<MyoroCheckbox> {
-  MyoroCheckboxController? _localController;
-  MyoroCheckboxController get _controller {
-    return widget.controller ?? (_localController ??= MyoroCheckboxController(configuration: widget.configuration!));
-  }
-
-  MyoroCheckboxConfiguration get _configuration => _controller.state.configuration;
+  late final _viewModel = MyoroCheckboxViewModel()..state.configuration = widget.configuration;
 
   @override
   void didUpdateWidget(covariant MyoroCheckbox oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.configuration != oldWidget.configuration) {
-      _controller.state.configuration = widget.configuration!;
+      _viewModel.state.configuration = widget.configuration;
     }
   }
 
   @override
   void dispose() {
-    _localController?.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
@@ -52,7 +40,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
       spacing: themeExtension.spacing,
       children: [
         ValueListenableBuilder(
-          valueListenable: _controller,
+          valueListenable: _viewModel.state.enabledController,
           builder: (_, bool enabled, __) {
             // This [SizedBox] removes the default margin in [Checkbox].
             return SizedBox(
@@ -66,20 +54,20 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
                 focusColor: themeExtension.focusColor,
                 splashRadius: themeExtension.splashRadius,
                 onChanged: (_) {
-                  _configuration.onChanged?.call(!enabled);
-                  _controller.toggle(enabled);
+                  _viewModel.state.configuration.onChanged?.call(!enabled);
+                  _viewModel.toggle(enabled);
                 },
               ),
             );
           },
         ),
-        if (_configuration.label?.isNotEmpty == true) ...[
+        if (_viewModel.state.configuration.label?.isNotEmpty == true) ...[
           Flexible(
             child: Text(
-              _configuration.label!,
+              _viewModel.state.configuration.label!,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle,
+              style: _viewModel.state.configuration.labelTextStyle ?? themeExtension.labelTextStyle,
             ),
           ),
         ],

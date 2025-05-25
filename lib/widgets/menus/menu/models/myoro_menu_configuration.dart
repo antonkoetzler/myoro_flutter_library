@@ -4,9 +4,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration model of [MyoroMenu].
 class MyoroMenuConfiguration<T> extends Equatable {
-  /// Controller of the menu.
-  final MyoroMenuController<T>? controller;
-
   /// Constraints of the menu.
   final BoxConstraints constraints;
 
@@ -25,7 +22,6 @@ class MyoroMenuConfiguration<T> extends Equatable {
   final MyoroMenuItemBuilder<T> itemBuilder;
 
   const MyoroMenuConfiguration({
-    this.controller,
     this.constraints = const BoxConstraints(),
     required this.request,
     this.onEndReachedRequest,
@@ -34,8 +30,6 @@ class MyoroMenuConfiguration<T> extends Equatable {
   });
 
   MyoroMenuConfiguration<T> copyWith({
-    MyoroMenuController<T>? controller,
-    bool controllerProvided = true,
     BoxConstraints? constraints,
     MyoroMenuRequest<T>? request,
     MyoroMenuOnEndReachedRequest<T>? onEndReachedRequest,
@@ -45,7 +39,6 @@ class MyoroMenuConfiguration<T> extends Equatable {
     MyoroMenuItemBuilder<T>? itemBuilder,
   }) {
     return MyoroMenuConfiguration(
-      controller: controllerProvided ? (controller ?? this.controller) : null,
       constraints: constraints ?? this.constraints,
       request: request ?? this.request,
       onEndReachedRequest: onEndReachedRequestProvided ? (onEndReachedRequest ?? this.onEndReachedRequest) : null,
@@ -56,13 +49,12 @@ class MyoroMenuConfiguration<T> extends Equatable {
 
   @override
   List<Object?> get props {
-    return [controller, constraints, request, onEndReachedRequest, searchCallback, itemBuilder];
+    return [constraints, request, onEndReachedRequest, searchCallback, itemBuilder];
   }
 
   @override
   String toString() =>
       'MyoroMenuConfiguration<$T>(\n'
-      '  controller: $controller,\n'
       '  constraints: $constraints,\n'
       '  request: $request,\n'
       '  onEndReachedRequest: $onEndReachedRequest,\n'

@@ -1,17 +1,17 @@
 part of '../myoro_dropdown.dart';
 
 /// [Widget] responsible for opening the dropdown when [_Input] is pressed.
-final class _InputTriggerArea<T, C extends MyoroDropdownConfiguration<T>> extends StatelessWidget {
-  final MyoroDropdownController<T, C> _controller;
-  MyoroDropdownConfiguration<T> get _configuration => _controller.state.configuration;
-  ValueNotifier<bool> get _enabledController => _controller.state.enabledController;
-  bool get _enabled => _controller.state.enabled;
-  ValueNotifier<Set<T>> get _selectedItemsController => _controller.state.selectedItemsController;
+final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
+  final MyoroDropdownViewModel<T, C> _viewModel;
+  MyoroDropdownConfiguration<T> get _configuration => _viewModel.state.configuration;
+  ValueNotifier<bool> get _enabledController => _viewModel.controller.state.enabledController;
+  bool get _enabled => _viewModel.controller.state.enabled;
+  ValueNotifier<Set<T>> get _selectedItemsController => _viewModel.controller.state.selectedItemsController;
   Set<T> get _selectedItems => _selectedItemsController.value;
-  String get _tapRegionGroupId => _controller.state.tapRegionGroupId;
-  ValueNotifier<Size?> get _inputSizeController => _controller.state.inputSizeController;
+  String get _tapRegionGroupId => _viewModel.state.tapRegionGroupId;
+  ValueNotifier<Size?> get _inputSizeController => _viewModel.state.inputSizeController;
 
-  const _InputTriggerArea(this._controller);
+  const _InputTriggerArea(this._viewModel);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ final class _InputTriggerArea<T, C extends MyoroDropdownConfiguration<T>> extend
   Widget _selectedItemsControllerBuilder(BuildContext context) {
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final EdgeInsets clearTextButtonPadding = inputThemeExtension.clearTextButtonPadding;
-    final onTapUp = _enabled ? _controller.toggleMenu : null;
+    final onTapUp = _enabled ? _viewModel.toggleMenu : null;
 
     return Row(
       children: [

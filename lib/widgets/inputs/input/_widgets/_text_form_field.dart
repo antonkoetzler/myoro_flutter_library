@@ -2,17 +2,17 @@ part of '../myoro_input.dart';
 
 /// Core input of [MyoroInput].
 final class _TextFormField extends StatelessWidget {
-  final MyoroInputController _controller;
+  final MyoroInputViewModel _viewModel;
 
-  const _TextFormField(this._controller);
+  const _TextFormField(this._viewModel);
 
   @override
   Widget build(BuildContext context) {
-    final configuration = _controller.configuration;
-    final formatter = _controller.formatter;
-    final inputController = _controller.inputController;
-    final enabled = _controller.enabled;
-    final showClearTextButtonController = _controller.showClearTextButtonController;
+    final configuration = _viewModel.configuration;
+    final formatter = _viewModel.formatter;
+    final inputController = _viewModel.inputController;
+    final enabled = _viewModel.enabled;
+    final showClearTextButtonController = _viewModel.showClearTextButtonController;
 
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final border = configuration.getBorder(context);
@@ -34,7 +34,7 @@ final class _TextFormField extends StatelessWidget {
             ),
             decoration: InputDecoration(
               floatingLabelBehavior: themeExtension.labelBehavior,
-              label: configuration.label != null ? _Label(_controller) : null,
+              label: configuration.label != null ? _Label(_viewModel) : null,
               hintText: configuration.placeholder,
               hintStyle: textStyle.withColor(textStyle.color!.withValues(alpha: themeExtension.disabledOpacity)),
               enabledBorder: border,
@@ -49,7 +49,7 @@ final class _TextFormField extends StatelessWidget {
               ),
               isDense: themeExtension.isDense,
               contentPadding: configuration.contentPadding,
-              suffixIcon: showClearTextButton ? _ClearTextButton(_controller) : null,
+              suffixIcon: showClearTextButton ? _ClearTextButton(_viewModel) : null,
             ),
             textAlign: configuration.textAlign,
             cursorHeight: themeExtension.cursorHeight,

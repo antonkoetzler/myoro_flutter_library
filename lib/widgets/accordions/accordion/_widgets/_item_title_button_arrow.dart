@@ -4,7 +4,7 @@ part of '../myoro_accordion.dart';
 final class _ItemTitleButtonArrow extends StatelessWidget {
   final MyoroAccordionItem _item;
   final MyoroAccordionController _controller;
-  final MyoroGestureStatusEnum _tapStatusEnum;
+  final MyoroTapStatusEnum _tapStatusEnum;
 
   const _ItemTitleButtonArrow(this._item, this._controller, this._tapStatusEnum);
 
@@ -40,8 +40,8 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
 
   Color _getBackgroundColor(MyoroButtonThemeExtension buttonVariantThemeExtension) {
     return switch (_tapStatusEnum) {
-      MyoroGestureStatusEnum.hover => buttonVariantThemeExtension.primaryHoverBackgroundColor,
-      MyoroGestureStatusEnum.tap => buttonVariantThemeExtension.primaryTapBackgroundColor,
+      MyoroTapStatusEnum.hover => buttonVariantThemeExtension.primaryHoverBackgroundColor,
+      MyoroTapStatusEnum.tap => buttonVariantThemeExtension.primaryTapBackgroundColor,
       _ => Colors.transparent,
     };
   }

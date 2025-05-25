@@ -1,13 +1,13 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroForm].
-class MyoroFormController<T> extends MyoroRequestController<T> implements MyoroFormInterface {
-  MyoroFormController({required MyoroFormConfiguration<T> configuration}) {
-    state = MyoroFormState(configuration);
+class MyoroFormController<T> extends MyoroRequestController<T> implements MyoroFormControllerInterface {
+  MyoroFormController({required MyoroFormConfiguration<T> configuration})
+    : state = MyoroFormControllerState(configuration) {
     addListener(listener);
   }
 
-  late final MyoroFormState<T> state;
+  final MyoroFormControllerState<T> state;
 
   /// Starts the form process.
   @override
