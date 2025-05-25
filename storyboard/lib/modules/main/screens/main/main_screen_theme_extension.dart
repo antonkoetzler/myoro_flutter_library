@@ -4,46 +4,30 @@ import 'package:storyboard/storyboard.dart';
 
 /// [ThemeExtension] of [MainScreen].
 @immutable
-final class MainScreenThemeExtension
-    extends ThemeExtension<MainScreenThemeExtension> {
-  /// [EdgeInsets] of [_WidgetCategoryDropdownButton].
-  final EdgeInsets widgetCategoryDropdownButtonPadding;
+final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExtension> {
+  /// Padding of [_WidgetListingAccordionItemContent].
+  final EdgeInsets widgetListingAccordionItemContent;
 
-  const MainScreenThemeExtension({
-    required this.widgetCategoryDropdownButtonPadding,
-  });
+  const MainScreenThemeExtension({required this.widgetListingAccordionItemContent});
 
-  MainScreenThemeExtension.fake()
-    : widgetCategoryDropdownButtonPadding = myoroFake<EdgeInsets>();
+  MainScreenThemeExtension.fake() : widgetListingAccordionItemContent = myoroFake<EdgeInsets>();
 
-  const MainScreenThemeExtension.builder()
-    : widgetCategoryDropdownButtonPadding = const EdgeInsets.only(
-        left: 10,
-        right: 10,
-        bottom: 10,
-      );
+  const MainScreenThemeExtension.builder() : widgetListingAccordionItemContent = const EdgeInsets.all(10);
 
   @override
-  MainScreenThemeExtension copyWith({
-    EdgeInsets? widgetCategoryDropdownButtonPadding,
-  }) {
+  MainScreenThemeExtension copyWith({EdgeInsets? widgetListingAccordionItemContent}) {
     return MainScreenThemeExtension(
-      widgetCategoryDropdownButtonPadding:
-          widgetCategoryDropdownButtonPadding ??
-          this.widgetCategoryDropdownButtonPadding,
+      widgetListingAccordionItemContent: widgetListingAccordionItemContent ?? this.widgetListingAccordionItemContent,
     );
   }
 
   @override
-  MainScreenThemeExtension lerp(
-    covariant ThemeExtension<MainScreenThemeExtension>? other,
-    double t,
-  ) {
+  MainScreenThemeExtension lerp(covariant ThemeExtension<MainScreenThemeExtension>? other, double t) {
     if (other is! MainScreenThemeExtension) return this;
     return copyWith(
-      widgetCategoryDropdownButtonPadding: EdgeInsets.lerp(
-        widgetCategoryDropdownButtonPadding,
-        other.widgetCategoryDropdownButtonPadding,
+      widgetListingAccordionItemContent: EdgeInsets.lerp(
+        widgetListingAccordionItemContent,
+        other.widgetListingAccordionItemContent,
         t,
       ),
     );
@@ -53,18 +37,17 @@ final class MainScreenThemeExtension
   bool operator ==(Object other) {
     return other is MainScreenThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.widgetCategoryDropdownButtonPadding ==
-            widgetCategoryDropdownButtonPadding;
+        other.widgetListingAccordionItemContent == widgetListingAccordionItemContent;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll([widgetCategoryDropdownButtonPadding]);
+    return Object.hashAll([widgetListingAccordionItemContent]);
   }
 
   @override
   String toString() =>
       'MainScreenThemeExtension(\n'
-      '  widgetCategoryDropdownButtonPadding: $widgetCategoryDropdownButtonPadding,\n'
+      '  widgetListingAccordionItemContent: $widgetListingAccordionItemContent,\n'
       ');';
 }

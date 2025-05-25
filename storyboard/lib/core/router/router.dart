@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:storyboard/storyboard.dart';
@@ -19,16 +20,11 @@ Widget _mainScreenBuilder(_, __) {
   return const MainScreen();
 }
 
-// TODO
 Widget _widgetShowcaseScreenBuilder(_, GoRouterState state) {
-  // final String widgetName = state.pathParameters[_widgetNameKey]!;
-  // final StoryboardWidgetListingEnum? widgetListingEnum = StoryboardWidgetListingEnum.values
-  //     .firstWhereOrNull(
-  //       (StoryboardWidgetListingEnum value) => value.widgetNames.contains(widgetName),
-  //     );
-  // assert(
-  //   widgetListingEnum != null,
-  //   '[router]: $_widgetNameKey provided does not exist in [WidgetListingEnum].',
-  // );
-  return const WidgetShowcaseScreen('qwe');
+  final String widgetName = state.pathParameters[_widgetNameKey]!;
+  final MyoroWidgetListEnum? widgetListingEnum = MyoroWidgetListEnum.values.firstWhereOrNull(
+    (MyoroWidgetListEnum value) => value.widgetNames.contains(widgetName),
+  );
+  assert(widgetListingEnum != null, '[router]: $_widgetNameKey provided does not exist in [WidgetListingEnum].');
+  return WidgetShowcaseScreen(widgetName);
 }

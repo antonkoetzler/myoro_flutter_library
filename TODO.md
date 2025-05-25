@@ -18,6 +18,7 @@
 - <https://dart.dev/tools/pub/create-packages>: Putting all the code in `src` makes it so projects using MFL cannot export via `exports.dart` files
 
 1. improvement: Constructors at the top of classes
+1. improvement: Add view model of a `Widget` to provider scope to not have to pass by argument
 1. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`controller` pattern

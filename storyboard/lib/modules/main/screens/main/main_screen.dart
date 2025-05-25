@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 import 'package:storyboard/storyboard.dart';
 
-part '_widgets/_body.dart';
+part '_widgets/_widget_listing_accordion.dart';
+part '_widgets/_widget_listing_accordion_item_content.dart';
+part '_widgets/_widget_listing_accordion_item_content_button.dart';
+part '_widgets/_widget_listing_accordion_item_title.dart';
 
 /// Main screen of Storyboard.
 final class MainScreen extends StatelessWidget {
@@ -10,6 +14,9 @@ final class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const StoryboardScreen(title: 'MFL Storyboard', body: _Body());
+    return StoryboardScreen(
+      title: 'MFL Storyboard',
+      body: Provider(create: (_) => MainScreenViewModel(), child: const _WidgetListingAccordion()),
+    );
   }
 }
