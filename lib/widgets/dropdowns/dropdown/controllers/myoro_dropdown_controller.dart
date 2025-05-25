@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 abstract class MyoroDropdownController<T> implements MyoroDropdownControllerInterface<T> {
   static const enabledDefaultValue = true;
 
-  MyoroDropdownController({bool enabled = enabledDefaultValue, Set<T> initiallySelectedItems = const {}})
+  MyoroDropdownController({bool enabled = enabledDefaultValue, Set<T>? initiallySelectedItems})
     : state = MyoroDropdownControllerState(enabled, initiallySelectedItems);
 
   final MyoroDropdownControllerState<T> state;
@@ -21,7 +21,7 @@ abstract class MyoroDropdownController<T> implements MyoroDropdownControllerInte
 
   @override
   void toggleItem(T item) {
-    final selectedItems = state.selectedItemsController.value;
+    final selectedItems = state.selectedItems;
     selectedItems.contains(item) ? selectedItems.remove(item) : selectedItems.add(item);
     state.selectedItemsController.value = selectedItems;
   }

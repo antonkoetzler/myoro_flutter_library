@@ -10,7 +10,6 @@ final class _Dropdown<T, C extends _C<T>> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-
     return RepaintBoundary(
       child: Row(
         spacing: themeExtension.spacing,

@@ -13,6 +13,7 @@ final class MyoroSingularDropdownViewModel<T> extends MyoroDropdownViewModel<T, 
   void selectedItemsControllerListener() {
     super.selectedItemsControllerListener();
     state.configuration.onChanged?.call(selectedItem);
+    if (controller.state.selectedItems.isNotEmpty) toggleMenu();
   }
 
   T? get selectedItem {

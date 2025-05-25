@@ -22,16 +22,14 @@ final class _Menu<T, C extends _C<T>> extends StatelessWidget {
           onTapOutside: (_) => _viewModel.toggleMenu(),
           child: ValueListenableBuilder(
             valueListenable: _selectedItemsController,
-            builder: (_, __, ___) => _selectedItemsControllerBuilder(context),
+            builder: (_, __, ___) {
+              return MyoroMenu(
+                configuration: _menuConfiguration.copyWith(itemBuilder: (T item) => _menuItemBuilder(context, item)),
+              );
+            },
           ),
         ),
       ),
-    );
-  }
-
-  Widget _selectedItemsControllerBuilder(BuildContext context) {
-    return MyoroMenu(
-      configuration: _menuConfiguration.copyWith(itemBuilder: (T item) => _menuItemBuilder(context, item)),
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
@@ -23,6 +24,7 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   }
 
   @override
+  @mustCallSuper
   void selectedItemsControllerListener() {
     _formatSelectedItems();
   }

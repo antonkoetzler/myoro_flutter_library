@@ -16,13 +16,11 @@ final class ColorDropdownWidgetShowcaseOption extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return MyoroSingularDropdown(
+    return MyoroSingularDropdown<Color>(
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         menuConfiguration: MyoroMenuConfiguration(
-          request: () {
-            return kMyoroTestColors.toSet();
-          },
+          request: () => kMyoroTestColors.toSet(),
           itemBuilder: (color) {
             return MyoroMenuItem(
               textConfiguration: MyoroIconTextButtonTextConfiguration(text: color.hexadecimalFormat),

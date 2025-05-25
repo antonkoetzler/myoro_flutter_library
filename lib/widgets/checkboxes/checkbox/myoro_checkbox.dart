@@ -58,7 +58,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
                   splashRadius: themeExtension.splashRadius,
                   onChanged: (_) {
                     _viewModel.state.configuration.onChanged?.call(!enabled);
-                    _viewModel.toggle(enabled);
+                    _viewModel.toggle(!enabled);
                   },
                 ),
               );
