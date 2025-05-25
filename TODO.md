@@ -1,10 +1,5 @@
 # TODO
 
-1. (**IN PROGRESS**) improvement: Style configuration models
-
-- Turn controllers into view models
-- Make controllers separate and independent from needing a configuration
-
 1. feature: Retest everything 100% code coverage
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 

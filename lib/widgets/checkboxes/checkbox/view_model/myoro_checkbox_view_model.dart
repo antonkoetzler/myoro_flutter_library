@@ -2,7 +2,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroCheckbox].
 class MyoroCheckboxViewModel implements MyoroCheckboxViewModelInterface {
-  final state = MyoroCheckboxViewModelState();
+  MyoroCheckboxViewModel(MyoroCheckboxConfiguration configuration) : state = MyoroCheckboxViewModelState(configuration);
+
+  final MyoroCheckboxViewModelState state;
 
   @override
   void dispose() {

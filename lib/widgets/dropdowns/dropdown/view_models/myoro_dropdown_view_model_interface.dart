@@ -15,5 +15,6 @@ abstract interface class MyoroDropdownViewModelInterface<T> {
 
   /// Handles the callback of when [MyoroDropdownState.selectedItemsController] has changed.
   @protected
+  @mustCallSuper
   void selectedItemsControllerListener();
 }

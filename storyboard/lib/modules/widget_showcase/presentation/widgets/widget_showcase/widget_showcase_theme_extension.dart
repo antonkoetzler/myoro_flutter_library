@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -13,12 +16,26 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// Content padding of [WidgetShowcase].
   final EdgeInsets contentPadding;
 
-  const WidgetShowcaseThemeExtension({required this.padding, required this.decoration, required this.contentPadding});
+  /// [IconData] of the [WidgetShowcase.widgetOptions] button.
+  final IconData widgetOptionsButtonIcon;
+
+  /// Padding of a widget option in the [WidgetShowcase.widgetOptions] modal.
+  final EdgeInsets widgetOptionPadding;
+
+  const WidgetShowcaseThemeExtension({
+    required this.padding,
+    required this.decoration,
+    required this.contentPadding,
+    required this.widgetOptionsButtonIcon,
+    required this.widgetOptionPadding,
+  });
 
   WidgetShowcaseThemeExtension.fake()
     : padding = myoroFake<EdgeInsets>(),
       decoration = myoroFake<BoxDecoration>(),
-      contentPadding = myoroFake<EdgeInsets>();
+      contentPadding = myoroFake<EdgeInsets>(),
+      widgetOptionsButtonIcon = myoroFake<IconData>(),
+      widgetOptionPadding = myoroFake<EdgeInsets>();
 
   WidgetShowcaseThemeExtension.builder()
     : padding = const EdgeInsets.all(10),
@@ -27,14 +44,24 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       ),
-      contentPadding = const EdgeInsets.all(10);
+      contentPadding = const EdgeInsets.all(10),
+      widgetOptionsButtonIcon = Icons.menu,
+      widgetOptionPadding = const EdgeInsets.all(10);
 
   @override
-  WidgetShowcaseThemeExtension copyWith({EdgeInsets? padding, BoxDecoration? decoration, EdgeInsets? contentPadding}) {
+  WidgetShowcaseThemeExtension copyWith({
+    EdgeInsets? padding,
+    BoxDecoration? decoration,
+    EdgeInsets? contentPadding,
+    IconData? widgetOptionsButtonIcon,
+    EdgeInsets? widgetOptionPadding,
+  }) {
     return WidgetShowcaseThemeExtension(
       padding: padding ?? this.padding,
       decoration: decoration ?? this.decoration,
       contentPadding: contentPadding ?? this.contentPadding,
+      widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
+      widgetOptionPadding: widgetOptionPadding ?? this.widgetOptionPadding,
     );
   }
 
@@ -45,6 +72,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       padding: EdgeInsets.lerp(padding, other.padding, t),
       decoration: BoxDecoration.lerp(decoration, other.decoration, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
+      widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
+      widgetOptionPadding: EdgeInsets.lerp(widgetOptionPadding, other.widgetOptionPadding, t),
     );
   }
 
@@ -54,12 +83,14 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         other.runtimeType == runtimeType &&
         other.padding == padding &&
         other.decoration == decoration &&
-        other.contentPadding == contentPadding;
+        other.contentPadding == contentPadding &&
+        other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
+        other.widgetOptionPadding == widgetOptionPadding;
   }
 
   @override
   int get hashCode {
-    return Object.hash(padding, decoration, contentPadding);
+    return Object.hash(padding, decoration, contentPadding, widgetOptionsButtonIcon, widgetOptionPadding);
   }
 
   @override
@@ -68,5 +99,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       '  padding: $padding,\n'
       '  decoration: $decoration,\n'
       '  contentPadding: $contentPadding,\n'
+      '  widgetOptionsButtonIcon: $widgetOptionsButtonIcon,\n'
+      '  widgetOptionPadding: $widgetOptionPadding,\n'
       ');';
 }

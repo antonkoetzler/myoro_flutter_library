@@ -7,17 +7,17 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Used for types MFL cannot create factories in.
 ///
 /// Not the greatest way to implement fakes given that there are no
-/// arguments to pass, but it feels damn good using this function U_U
+/// arguments to pass, but it feels damn good using th== function U_U
 T myoroFake<T>() {
-  if (T is Alignment) {
+  if (T == Alignment) {
     return kMyoroTestAlignments[faker.randomGenerator.integer(kMyoroTestAlignments.length)] as T;
   }
 
-  if (T is Axis) {
+  if (T == Axis) {
     return Axis.values[faker.randomGenerator.integer(Axis.values.length)] as T;
   }
 
-  if (T is Border) {
+  if (T == Border) {
     return Border.all(
           width: faker.randomGenerator.decimal(),
           color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
@@ -25,11 +25,11 @@ T myoroFake<T>() {
         as T;
   }
 
-  if (T is BorderStyle) {
+  if (T == BorderStyle) {
     return BorderStyle.values[faker.randomGenerator.integer(BorderStyle.values.length)] as T;
   }
 
-  if (T is BorderSide) {
+  if (T == BorderSide) {
     return BorderSide(
           color: myoroFake<Color>(),
           width: faker.randomGenerator.decimal(scale: 20),
@@ -39,11 +39,11 @@ T myoroFake<T>() {
         as T;
   }
 
-  if (T is BorderRadius) {
+  if (T == BorderRadius) {
     return BorderRadius.circular(faker.randomGenerator.decimal(scale: 50)) as T;
   }
 
-  if (T is BoxConstraints) {
+  if (T == BoxConstraints) {
     final maxWidth = faker.randomGenerator.decimal(scale: 500);
     final maxHeight = faker.randomGenerator.decimal(scale: 500);
     return BoxConstraints(
@@ -55,7 +55,7 @@ T myoroFake<T>() {
         as T;
   }
 
-  if (T is BoxDecoration) {
+  if (T == BoxDecoration) {
     return BoxDecoration(
           color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
           border: myoroFake<Border>(),
@@ -64,63 +64,63 @@ T myoroFake<T>() {
         as T;
   }
 
-  if (T is Color) {
+  if (T == Color) {
     return kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] as T;
   }
 
-  if (T is Curves) {
+  if (T == Curves) {
     return kMyoroTestCurves[faker.randomGenerator.integer(kMyoroTestCurves.length)] as T;
   }
 
-  if (T is DismissDirection) {
+  if (T == DismissDirection) {
     return DismissDirection.values[faker.randomGenerator.integer(DismissDirection.values.length)] as T;
   }
 
-  if (T is Duration) {
+  if (T == Duration) {
     return Duration(seconds: faker.randomGenerator.integer(2)) as T;
   }
 
-  if (T is EdgeInsets) {
+  if (T == EdgeInsets) {
     return EdgeInsets.all(faker.randomGenerator.decimal(scale: 20)) as T;
   }
 
-  if (T is FloatingLabelBehavior) {
+  if (T == FloatingLabelBehavior) {
     return FloatingLabelBehavior.values[faker.randomGenerator.integer(FloatingLabelBehavior.values.length)] as T;
   }
 
-  if (T is IconData) {
+  if (T == IconData) {
     return kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)] as T;
   }
 
-  if (T is OutlineInputBorder) {
+  if (T == OutlineInputBorder) {
     return OutlineInputBorder(borderRadius: myoroFake<BorderRadius>(), borderSide: myoroFake<BorderSide>()) as T;
   }
 
-  if (T is RoundedRectangleBorder) {
+  if (T == RoundedRectangleBorder) {
     return RoundedRectangleBorder(side: myoroFake<BorderSide>()) as T;
   }
 
-  if (T is SnackBarBehavior) {
+  if (T == SnackBarBehavior) {
     return SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)] as T;
   }
 
-  if (T is SystemMouseCursors) {
+  if (T == SystemMouseCursors) {
     return kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)] as T;
   }
 
-  if (T is TextAlign) {
+  if (T == TextAlign) {
     return TextAlign.values[faker.randomGenerator.integer(TextAlign.values.length)] as T;
   }
 
-  if (T is TextOverflow) {
+  if (T == TextOverflow) {
     return TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)] as T;
   }
 
-  if (T is ThemeMode) {
+  if (T == ThemeMode) {
     return ThemeMode.values[faker.randomGenerator.integer(ThemeMode.values.length)] as T;
   }
 
-  if (T is UnderlineInputBorder) {
+  if (T == UnderlineInputBorder) {
     return UnderlineInputBorder(
           borderSide: BorderSide(width: faker.randomGenerator.decimal(), color: myoroFake<Color>()),
         )

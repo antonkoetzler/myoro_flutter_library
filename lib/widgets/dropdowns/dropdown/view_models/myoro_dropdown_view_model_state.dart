@@ -16,7 +16,7 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
     assert(
       configuration.menuTypeEnum.isOverlay,
       '[MyoroDropdownViewModelState<$T>]: Cannot use [overlayPortalController] if '
-      '[configuration.menuType] is [MyoroDropdownMenuTypeEnum.overlay].',
+      '[configuration.menuType] isn\'t [MyoroDropdownMenuTypeEnum.overlay].',
     );
     return _overlayPortalController ??= OverlayPortalController();
   }
