@@ -5,7 +5,9 @@ import 'package:storyboard/storyboard.dart';
 /// Enum that stores all widgets of MFL.
 enum MyoroWidgetListEnum {
   accordions('Accordions', {myoroAccordionTitle}),
-  appBars('App bars', {myoroAppBarTitle});
+  appBars('App bars', {myoroAppBarTitle}),
+  apps('Apps', {myoroAppTitle}),
+  buttons('Buttons', {myoroButtonTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -25,6 +27,12 @@ enum MyoroWidgetListEnum {
   // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';
 
+  // Apps
+  static const myoroAppTitle = 'MyoroApp';
+
+  // Buttons
+  static const myoroButtonTitle = 'MyoroButton';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -33,9 +41,18 @@ enum MyoroWidgetListEnum {
       // App bars
       myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
 
+      // Apps
+      myoroAppTitle => const MyoroAppWidgetShowcase(),
+
+      // Buttons
+      myoroButtonTitle => const MyoroButtonWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }
 
   bool get isAccordions => (this == accordions);
+  bool get isAppBars => (this == appBars);
+  bool get isApps => (this == apps);
+  bool get isButtons => (this == buttons);
 }

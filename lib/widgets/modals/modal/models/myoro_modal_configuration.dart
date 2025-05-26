@@ -8,7 +8,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 class MyoroModalConfiguration extends Equatable {
   static const barrierDismissableDefaultValue = true;
   static const useRootNavigatorDefaultValue = true;
-  static const showCloseButtonDefaultValue = false;
+  static const showCloseButtonDefaultValue = true;
 
   /// If you click everywhere but the modal, it closes
   final bool barrierDismissable;

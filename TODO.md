@@ -1,6 +1,6 @@
 # TODO
 
-1. feature: Retest everything 100% code coverage
+1. (**DONE**) feature: Retest everything 100% code coverage
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
@@ -16,7 +16,8 @@
 1. improvement: Add view model of a `Widget` to provider scope to not have to pass by argument
 1. chore: Documentation
 
-- Methodology of creating a `Widget` and the `configuration`/`controller` pattern
+- Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern
 - Standards of state management
+- Manipulating the UI of widgets via `ThemeExtension` overloading
 
 1. feature: Publish to pub.dev

@@ -20,11 +20,7 @@ abstract class MyoroDropdownController<T> implements MyoroDropdownControllerInte
   }
 
   @override
-  void toggleItem(T item) {
-    final selectedItems = state.selectedItems;
-    selectedItems.contains(item) ? selectedItems.remove(item) : selectedItems.add(item);
-    state.selectedItemsController.value = selectedItems;
-  }
+  void toggleItem(T item);
 
   @override
   void clear() {

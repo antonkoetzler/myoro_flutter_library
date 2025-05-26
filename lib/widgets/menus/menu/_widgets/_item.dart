@@ -41,6 +41,6 @@ final class _Item extends StatelessWidget {
 
   Color _backgroundColorBuilder(BuildContext context) {
     final buttonVariantThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
-    return buttonVariantThemeExtension.primaryHoverContentColor;
+    return buttonVariantThemeExtension.primaryHoverBackgroundColor;
   }
 }

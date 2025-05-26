@@ -33,7 +33,7 @@ class MyoroAppConfiguration extends Equatable {
   /// Router to support packages such as go_router.
   final RouterConfig<Object>? router;
 
-  /// Entry point for the application when a [MyoroApp.router] is not being used.
+  /// Entry point for the application when a [MyoroAppConfiguration.router] is not being used.
   final Widget? home;
 
   const MyoroAppConfiguration({

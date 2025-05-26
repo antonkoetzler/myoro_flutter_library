@@ -34,7 +34,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   Widget build(BuildContext context) {
     final scrollController = _viewModel.state.scrollController;
 
-    return Provider.value(
+    return InheritedProvider.value(
       value: _viewModel,
       child: Scrollbar(
         controller: scrollController,

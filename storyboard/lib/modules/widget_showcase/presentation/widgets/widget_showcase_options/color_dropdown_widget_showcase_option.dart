@@ -20,7 +20,7 @@ final class ColorDropdownWidgetShowcaseOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         menuConfiguration: MyoroMenuConfiguration(
-          request: () => kMyoroTestColors.toSet(),
+          request: kMyoroTestColors.toSet,
           itemBuilder: (color) {
             return MyoroMenuItem(
               textConfiguration: MyoroIconTextButtonTextConfiguration(text: color.hexadecimalFormat),

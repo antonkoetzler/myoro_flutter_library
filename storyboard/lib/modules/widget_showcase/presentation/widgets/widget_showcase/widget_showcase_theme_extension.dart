@@ -19,15 +19,23 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   /// [IconData] of the [WidgetShowcase.widgetOptions] button.
   final IconData widgetOptionsButtonIcon;
 
-  /// Padding of a widget option in the [WidgetShowcase.widgetOptions] modal.
-  final EdgeInsets widgetOptionPadding;
+  /// [Column.spacing] of the widget options in the [WidgetShowcase.widgetOptions] modal.
+  final double widgetOptionsModalSpacing;
+
+  /// [MyoroModalConfiguration.padding] of the [WidgetShowcase.widgetOptions] modal.
+  final EdgeInsets widgetOptionsModalPadding;
+
+  /// Padding of each widget option in the [WidgetShowcase.widgetOptions] modal.
+  final EdgeInsets widgetOptionsModalItemPadding;
 
   const WidgetShowcaseThemeExtension({
     required this.padding,
     required this.decoration,
     required this.contentPadding,
     required this.widgetOptionsButtonIcon,
-    required this.widgetOptionPadding,
+    required this.widgetOptionsModalSpacing,
+    required this.widgetOptionsModalPadding,
+    required this.widgetOptionsModalItemPadding,
   });
 
   WidgetShowcaseThemeExtension.fake()
@@ -35,7 +43,9 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       decoration = myoroFake<BoxDecoration>(),
       contentPadding = myoroFake<EdgeInsets>(),
       widgetOptionsButtonIcon = myoroFake<IconData>(),
-      widgetOptionPadding = myoroFake<EdgeInsets>();
+      widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: 20),
+      widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
+      widgetOptionsModalItemPadding = myoroFake<EdgeInsets>();
 
   WidgetShowcaseThemeExtension.builder()
     : padding = const EdgeInsets.all(10),
@@ -46,7 +56,9 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       ),
       contentPadding = const EdgeInsets.all(10),
       widgetOptionsButtonIcon = Icons.menu,
-      widgetOptionPadding = const EdgeInsets.all(10);
+      widgetOptionsModalSpacing = 10,
+      widgetOptionsModalPadding = const EdgeInsets.only(top: 5, bottom: 10),
+      widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: 10);
 
   @override
   WidgetShowcaseThemeExtension copyWith({
@@ -54,14 +66,18 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     BoxDecoration? decoration,
     EdgeInsets? contentPadding,
     IconData? widgetOptionsButtonIcon,
-    EdgeInsets? widgetOptionPadding,
+    double? widgetOptionsModalSpacing,
+    EdgeInsets? widgetOptionsModalPadding,
+    EdgeInsets? widgetOptionsModalItemPadding,
   }) {
     return WidgetShowcaseThemeExtension(
       padding: padding ?? this.padding,
       decoration: decoration ?? this.decoration,
       contentPadding: contentPadding ?? this.contentPadding,
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? this.widgetOptionsButtonIcon,
-      widgetOptionPadding: widgetOptionPadding ?? this.widgetOptionPadding,
+      widgetOptionsModalSpacing: widgetOptionsModalSpacing ?? this.widgetOptionsModalSpacing,
+      widgetOptionsModalPadding: widgetOptionsModalPadding ?? this.widgetOptionsModalPadding,
+      widgetOptionsModalItemPadding: widgetOptionsModalItemPadding ?? this.widgetOptionsModalItemPadding,
     );
   }
 
@@ -73,7 +89,13 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       decoration: BoxDecoration.lerp(decoration, other.decoration, t),
       contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
-      widgetOptionPadding: EdgeInsets.lerp(widgetOptionPadding, other.widgetOptionPadding, t),
+      widgetOptionsModalSpacing: lerpDouble(widgetOptionsModalSpacing, other.widgetOptionsModalSpacing, t),
+      widgetOptionsModalPadding: EdgeInsets.lerp(widgetOptionsModalPadding, other.widgetOptionsModalPadding, t),
+      widgetOptionsModalItemPadding: EdgeInsets.lerp(
+        widgetOptionsModalItemPadding,
+        other.widgetOptionsModalItemPadding,
+        t,
+      ),
     );
   }
 
@@ -85,12 +107,22 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
         other.decoration == decoration &&
         other.contentPadding == contentPadding &&
         other.widgetOptionsButtonIcon == widgetOptionsButtonIcon &&
-        other.widgetOptionPadding == widgetOptionPadding;
+        other.widgetOptionsModalSpacing == widgetOptionsModalSpacing &&
+        other.widgetOptionsModalPadding == widgetOptionsModalPadding &&
+        other.widgetOptionsModalItemPadding == widgetOptionsModalItemPadding;
   }
 
   @override
   int get hashCode {
-    return Object.hash(padding, decoration, contentPadding, widgetOptionsButtonIcon, widgetOptionPadding);
+    return Object.hash(
+      padding,
+      decoration,
+      contentPadding,
+      widgetOptionsButtonIcon,
+      widgetOptionsModalSpacing,
+      widgetOptionsModalPadding,
+      widgetOptionsModalItemPadding,
+    );
   }
 
   @override
@@ -100,6 +132,8 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
       '  decoration: $decoration,\n'
       '  contentPadding: $contentPadding,\n'
       '  widgetOptionsButtonIcon: $widgetOptionsButtonIcon,\n'
-      '  widgetOptionPadding: $widgetOptionPadding,\n'
+      '  widgetOptionsModalSpacing: $widgetOptionsModalSpacing,\n'
+      '  widgetOptionsModalPadding: $widgetOptionsModalPadding,\n'
+      '  widgetOptionsModalItemPadding: $widgetOptionsModalItemPadding,\n'
       ');';
 }

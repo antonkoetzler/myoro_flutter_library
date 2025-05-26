@@ -7,6 +7,7 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   MyoroDropdownViewModel(C configuration, this.controller) : state = MyoroDropdownViewModelState(configuration) {
     controller.state.enabledController.addListener(enabledNotifierListener);
     controller.state.selectedItemsController.addListener(selectedItemsControllerListener);
+    if (controller.state.selectedItems.isNotEmpty) _formatSelectedItems();
   }
 
   final MyoroDropdownViewModelState<T, C> state;
