@@ -16,10 +16,12 @@ final class MyoroAppWidgetShowcase extends StatelessWidget {
   Widget build(BuildContext context) {
     return InheritedProvider(
       create: (_) => MyoroAppWidgetShowcaseViewModel(KiwiContainer().resolve<ThemeModeController>().themeMode),
-      child: const WidgetShowcase(
-        widgetName: MyoroWidgetListEnum.myoroAppTitle,
-        widget: _Widget(),
-        widgetOptions: [_ThemeModeOption()],
+      child: const WidgetShowcaseScreen(
+        configuration: WidgetShowcaseScreenConfiguration(
+          widgetName: MyoroWidgetListEnum.myoroAppTitle,
+          widget: _Widget(),
+          widgetOptions: [_ThemeModeOption()],
+        ),
       ),
     );
   }

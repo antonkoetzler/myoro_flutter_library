@@ -11,22 +11,34 @@ final class StoryboardScreen extends StatelessWidget {
   /// Text of [_Title].
   final String title;
 
+  /// Extra [Widget]s rendered next to [_ToggleThemeButton].
+  final List<Widget> actionIcons;
+
   /// [MyoroScreen.body].
   final Widget body;
 
-  const StoryboardScreen({super.key, this.onPrevious, required this.title, required this.body});
+  const StoryboardScreen({
+    super.key,
+    this.onPrevious,
+    required this.title,
+    this.actionIcons = const [],
+    required this.body,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MyoroScreen(configuration: MyoroScreenConfiguration(appBar: _AppBar(onPrevious, title), body: body));
+    return MyoroScreen(
+      configuration: MyoroScreenConfiguration(appBar: _AppBar(onPrevious, title, actionIcons), body: body),
+    );
   }
 }
 
 final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? _onPrevious;
   final String _title;
+  final List<Widget> _actionIcons;
 
-  const _AppBar(this._onPrevious, this._title);
+  const _AppBar(this._onPrevious, this._title, this._actionIcons);
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
@@ -47,7 +59,11 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
               spacing: themeExtension.spacing / 2,
               children: [if (_onPrevious != null) _PreviousPageButton(_onPrevious), _Title(_title)],
             ),
-            const _ToggleThemeButton(),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: themeExtension.spacing,
+              children: [..._actionIcons, const _ToggleThemeButton()],
+            ),
           ],
         ),
       ),

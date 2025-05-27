@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/storyboard.dart';
 
-/// [MouseCursor] [MyoroSingularDropdown] [WidgetShowcase] option.
+/// Widget showcase option for a [MyoroSingularDropdown]'s [MouseCursor].
 final class MouseCursorDropdownWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Mouse cursor';
 

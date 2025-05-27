@@ -16,10 +16,12 @@ final class MyoroAppBarWidgetShowcase extends StatelessWidget {
   Widget build(_) {
     return InheritedProvider(
       create: (_) => MyoroAppBarWidgetShowcaseViewModel(),
-      child: const WidgetShowcase(
-        widgetName: MyoroWidgetListEnum.myoroAppBarTitle,
-        widget: _Widget(),
-        widgetOptions: [_BorderedOption(), _BackgroundColorOption()],
+      child: const WidgetShowcaseScreen(
+        configuration: WidgetShowcaseScreenConfiguration(
+          widgetName: MyoroWidgetListEnum.myoroAppBarTitle,
+          widget: _Widget(),
+          widgetOptions: [_BorderedOption(), _BackgroundColorOption()],
+        ),
       ),
     );
   }

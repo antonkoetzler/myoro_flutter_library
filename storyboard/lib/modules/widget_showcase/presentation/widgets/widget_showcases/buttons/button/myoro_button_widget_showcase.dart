@@ -20,17 +20,19 @@ final class MyoroButtonWidgetShowcase extends StatelessWidget {
   Widget build(_) {
     return InheritedProvider(
       create: (_) => MyoroButtonWidgetShowcaseViewModel(),
-      child: const WidgetShowcase(
-        widgetName: MyoroWidgetListEnum.myoroButtonTitle,
-        widget: _Widget(),
-        widgetOptions: [
-          _TooltipEnabledOption(),
-          _CursorOption(),
-          _BackgroundColorBuilderOption(),
-          _BorderBuilderOption(),
-          _OnTapDownEnabledOption(),
-          _OnTapUpEnabledOption(),
-        ],
+      child: const WidgetShowcaseScreen(
+        configuration: WidgetShowcaseScreenConfiguration(
+          widgetName: MyoroWidgetListEnum.myoroButtonTitle,
+          widget: _Widget(),
+          widgetOptions: [
+            _TooltipEnabledOption(),
+            _CursorOption(),
+            _BackgroundColorBuilderOption(),
+            _BorderBuilderOption(),
+            _OnTapDownEnabledOption(),
+            _OnTapUpEnabledOption(),
+          ],
+        ),
       ),
     );
   }

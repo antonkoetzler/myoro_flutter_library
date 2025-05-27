@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/storyboard.dart';
 
-/// [WidgetShowcase] option to choose a [Color] from a [MyoroSingularDropdown].
+/// Widget showcase option to choose a [Color] from a [MyoroSingularDropdown].
 final class ColorDropdownWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Color';
   static const enabledDefaultValue = true;

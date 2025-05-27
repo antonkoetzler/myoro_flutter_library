@@ -11,6 +11,11 @@ final class MyoroAccordionWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return const WidgetShowcase(widgetName: MyoroWidgetListEnum.myoroAccordionTitle, widget: _Widget());
+    return const WidgetShowcaseScreen(
+      configuration: WidgetShowcaseScreenConfiguration(
+        widgetName: MyoroWidgetListEnum.myoroAccordionTitle,
+        widget: _Widget(),
+      ),
+    );
   }
 }

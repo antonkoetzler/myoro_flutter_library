@@ -1,9 +1,9 @@
-part of '../widget_showcase.dart';
+part of '../widget_showcase_screen.dart';
 
 /// Modal of [WidgetShowcase.widgetOptions].
 final class _WidgetOptionsModal extends StatelessWidget {
   static Future<void> _show(BuildContext context, String widgetName, List<Widget> widgetOptions) async {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
     await MyoroModal.show(
       context,
@@ -26,7 +26,7 @@ final class _WidgetOptionsModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
