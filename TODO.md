@@ -14,10 +14,12 @@
 
 1. improvement: Constructors at the top of classes
 1. improvement: Add view model of a `Widget` to provider scope to not have to pass by argument
+1. improvement: Remove stylistic arguments from configuration models and force `ThemeExtension` overriding
 1. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern
 - Standards of state management
 - Manipulating the UI of widgets via `ThemeExtension` overloading
+- `ThemeExtension` overriding
 
 1. feature: Publish to pub.dev
