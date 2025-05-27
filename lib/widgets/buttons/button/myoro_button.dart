@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widgets/_button.dart';
 
@@ -40,15 +41,18 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: _viewModel.cursor,
-      onEnter: _viewModel.onEnter,
-      onExit: _viewModel.onExit,
-      child: GestureDetector(
-        onTapDown: _viewModel.onTapDown,
-        onTapUp: _viewModel.onTapUp,
-        onTapCancel: _viewModel.onTapCancel,
-        child: ValueListenableBuilder(valueListenable: _tapStatusController, builder: _builder),
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: MouseRegion(
+        cursor: _viewModel.cursor,
+        onEnter: _viewModel.onEnter,
+        onExit: _viewModel.onExit,
+        child: GestureDetector(
+          onTapDown: _viewModel.onTapDown,
+          onTapUp: _viewModel.onTapUp,
+          onTapCancel: _viewModel.onTapCancel,
+          child: ValueListenableBuilder(valueListenable: _tapStatusController, builder: _builder),
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 import 'package:storyboard/storyboard.dart';
 
+part '_widgets/_button_content.dart';
 part '_widgets/_widget.dart';
 
 /// [WidgetShowcase] of [MyoroButton].
