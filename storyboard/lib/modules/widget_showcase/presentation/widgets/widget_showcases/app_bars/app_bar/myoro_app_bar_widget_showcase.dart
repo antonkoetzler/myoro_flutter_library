@@ -8,8 +8,10 @@ part '_widgets/_background_color_option.dart';
 part '_widgets/_bordered_option.dart';
 part '_widgets/_widget.dart';
 
-/// [WidgetShowase] of [MyoroAppBar].
+/// Widget showcase of [MyoroAppBar].
 final class MyoroAppBarWidgetShowcase extends StatelessWidget {
+  static const widgetOptions = [_BorderedOption(), _BackgroundColorOption()];
+
   const MyoroAppBarWidgetShowcase({super.key});
 
   @override
@@ -20,7 +22,7 @@ final class MyoroAppBarWidgetShowcase extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroAppBarTitle,
           widget: _Widget(),
-          widgetOptions: [_BorderedOption(), _BackgroundColorOption()],
+          widgetOptions: widgetOptions,
         ),
       ),
     );

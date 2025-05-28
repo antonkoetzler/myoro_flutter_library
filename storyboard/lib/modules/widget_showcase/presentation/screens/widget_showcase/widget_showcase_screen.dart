@@ -11,28 +11,17 @@ part '_widgets/_widget_showcase.dart';
 final class WidgetShowcaseScreen extends StatefulWidget {
   static const widgetOptionsDefaultValue = <Widget>[];
 
-  /// Name of the [Widget].
-  final String widgetName;
+  const WidgetShowcaseScreen({super.key, required this.configuration});
 
-  /// [WidgetShowcase.widget]
-  final Widget widget;
-
-  /// [WidgetShowcase.widgetOptions]
-  final List<Widget> widgetOptions;
-
-  const WidgetShowcaseScreen({
-    super.key,
-    required this.widgetName,
-    required this.widget,
-    this.widgetOptions = widgetOptionsDefaultValue,
-  });
+  /// Configuration.
+  final WidgetShowcaseScreenConfiguration configuration;
 
   @override
   State<WidgetShowcaseScreen> createState() => _WidgetShowcaseScreenState();
 }
 
 final class _WidgetShowcaseScreenState extends State<WidgetShowcaseScreen> {
-  late final _viewModel = WidgetShowcaseScreenViewModel(widget.widgetName, widget.widget, widget.widgetOptions);
+  late final _viewModel = WidgetShowcaseScreenViewModel(widget.configuration);
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +33,14 @@ final class _WidgetShowcaseScreenState extends State<WidgetShowcaseScreen> {
           return MaterialPageRoute(
             builder: (_) {
               return StoryboardScreen(
-                onPrevious: context.navigator.pop,
-                title: _viewModel.widgetName,
-                actionIcons: [if (_viewModel.widgetOptions.isNotEmpty) _WidgetOptionsButton()],
-                body: _WidgetShowcase(),
+                configuration: StoryboardScreenConfiguration(
+                  onPrevious: context.navigator.pop,
+                  title: _viewModel.configuration.widgetName,
+                  extraActionWidgets: [
+                    if (_viewModel.configuration.widgetOptions.isNotEmpty) const _WidgetOptionsButton(),
+                  ],
+                  body: const _WidgetShowcase(),
+                ),
               );
             },
           );

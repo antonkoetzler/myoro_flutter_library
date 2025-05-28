@@ -7,7 +7,6 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroAppBarWidgetShowcaseViewModel>();
-
     return ListenableBuilder(
       listenable: viewModel,
       builder: (_, __) {

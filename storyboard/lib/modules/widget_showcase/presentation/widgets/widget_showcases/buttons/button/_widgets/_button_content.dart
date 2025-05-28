@@ -23,7 +23,7 @@ final class _ButtonContent extends StatelessWidget {
     );
 
     return Padding(
-      padding: MyoroIconTextButtonConfiguration.paddingDefaultValue,
+      padding: iconTextButtonThemeExtension.contentPadding,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

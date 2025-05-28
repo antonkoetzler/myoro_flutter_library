@@ -6,8 +6,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Configuration model of [MyoroIconTextButton].
 class MyoroIconTextButtonConfiguration extends Equatable {
   static const invertDefaultValue = false;
-  static const spacingDefaultValue = 10.0;
-  static const paddingDefaultValue = EdgeInsets.all(5);
 
   /// [MyoroButtonConfiguration]
   final MyoroButtonConfiguration? buttonConfiguration;
@@ -17,10 +15,10 @@ class MyoroIconTextButtonConfiguration extends Equatable {
   final bool invert;
 
   /// Spacing between the icon and text.
-  final double spacing;
+  final double? spacing;
 
   /// Content padding.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// [Color] builder of the icon and text.
   final MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder;
@@ -34,8 +32,8 @@ class MyoroIconTextButtonConfiguration extends Equatable {
   const MyoroIconTextButtonConfiguration({
     this.buttonConfiguration,
     this.invert = invertDefaultValue,
-    this.spacing = spacingDefaultValue,
-    this.padding = paddingDefaultValue,
+    this.spacing,
+    this.padding,
     this.contentColorBuilder,
     this.iconConfiguration,
     this.textConfiguration,
@@ -51,8 +49,8 @@ class MyoroIconTextButtonConfiguration extends Equatable {
     return MyoroIconTextButtonConfiguration(
       buttonConfiguration: faker.randomGenerator.boolean() ? MyoroButtonConfiguration.fake() : null,
       invert: faker.randomGenerator.boolean(),
-      spacing: faker.randomGenerator.decimal(scale: 20),
-      padding: myoroFake<EdgeInsets>(),
+      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       contentColorBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
       iconConfiguration:
           (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'icon')
@@ -70,7 +68,9 @@ class MyoroIconTextButtonConfiguration extends Equatable {
     bool buttonConfigurationProvided = true,
     bool? invert,
     double? spacing,
+    bool spacingProvided = true,
     EdgeInsets? padding,
+    bool paddingProvided = true,
     MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder,
     bool contentColorBuilderProvided = true,
     MyoroIconTextButtonIconConfiguration? iconConfiguration,
@@ -81,8 +81,8 @@ class MyoroIconTextButtonConfiguration extends Equatable {
     return MyoroIconTextButtonConfiguration(
       buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? this.buttonConfiguration) : null,
       invert: invert ?? this.invert,
-      spacing: spacing ?? this.spacing,
-      padding: padding ?? this.padding,
+      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
       contentColorBuilder: contentColorBuilderProvided ? (contentColorBuilder ?? this.contentColorBuilder) : null,
       iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
       textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,

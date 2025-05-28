@@ -8,25 +8,22 @@ final class _WidgetOptionsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<WidgetShowcaseScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
+    final screenThemeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      child: MyoroIconTextButton(
-        configuration: MyoroIconTextButtonConfiguration(
-          buttonConfiguration: MyoroButtonConfiguration(
-            borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
-            onTapUp: (_) {
-              _WidgetOptionsModal._show(
-                viewModel.navigatorKey.currentContext!,
-                viewModel.widgetName,
-                viewModel.widgetOptions,
-              );
-            },
-          ),
-          iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
-        ),
+    return MyoroIconTextButton(
+      configuration: MyoroIconTextButtonConfiguration(
+        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(viewModel)),
+        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
+        padding: screenThemeExtension.buttonPadding,
       ),
+    );
+  }
+
+  void _onTapUp(WidgetShowcaseScreenViewModel viewModel) {
+    _WidgetOptionsModal._show(
+      viewModel.navigatorKey.currentContext!,
+      viewModel.configuration.widgetName,
+      viewModel.configuration.widgetOptions,
     );
   }
 }

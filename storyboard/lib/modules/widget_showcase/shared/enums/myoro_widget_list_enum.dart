@@ -32,6 +32,7 @@ enum MyoroWidgetListEnum {
 
   // Buttons
   static const myoroButtonTitle = 'MyoroButton';
+  static const myoroIconTextButtonTitle = 'MyoroIconTextButton';
 
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
@@ -46,6 +47,7 @@ enum MyoroWidgetListEnum {
 
       // Buttons
       myoroButtonTitle => const MyoroButtonWidgetShowcase(),
+      myoroIconTextButtonTitle => const MyoroIconTextButtonWidgetShowcase(),
 
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };

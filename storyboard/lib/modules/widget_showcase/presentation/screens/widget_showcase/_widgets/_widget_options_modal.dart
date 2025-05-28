@@ -4,16 +4,18 @@ part of '../widget_showcase_screen.dart';
 final class _WidgetOptionsModal extends StatelessWidget {
   static Future<void> _show(BuildContext context, String widgetName, List<Widget> widgetOptions) async {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
+    final screenSize = MediaQuery.of(context).size;
 
     await MyoroModal.show(
       context,
       configuration: MyoroModalConfiguration(
         title: 'Options of $widgetName',
         useRootNavigator: false,
-        padding: themeExtension.widgetOptionsModalPadding,
+        padding: EdgeInsets.zero,
         closeButtonPadding: EdgeInsets.only(right: themeExtension.widgetOptionsModalItemPadding.left / 2),
         constraints: BoxConstraints(
-          maxWidth: MyoroPlatformHelper.isMobile ? MediaQuery.of(context).size.width * 0.9 : 400,
+          maxWidth: MyoroPlatformHelper.isMobile ? screenSize.width * 0.9 : 400,
+          maxHeight: screenSize.height * 0.6,
         ),
       ),
       child: _WidgetOptionsModal(widgetOptions),
@@ -28,19 +30,23 @@ final class _WidgetOptionsModal extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      spacing: themeExtension.widgetOptionsModalSpacing,
-      children: [
-        for (int i = 0; i < _widgetOptions.length; i++) ...[
-          Padding(padding: themeExtension.widgetOptionsModalItemPadding, child: _widgetOptions[i]),
-          if (i != (_widgetOptions.length - 1)) ...[
-            const MyoroBasicDivider(
-              configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal, padding: EdgeInsets.zero),
-            ),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: themeExtension.widgetOptionsModalSpacing,
+        children: [
+          for (int i = 0; i < _widgetOptions.length; i++) ...[
+            Padding(padding: themeExtension.widgetOptionsModalItemPadding, child: _widgetOptions[i]),
+            if (i != (_widgetOptions.length - 1)) ...[
+              const MyoroBasicDivider(
+                configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal, padding: EdgeInsets.zero),
+              ),
+            ] else ...[
+              const SizedBox(height: 5),
+            ],
           ],
         ],
-      ],
+      ),
     );
   }
 }

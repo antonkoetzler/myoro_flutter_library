@@ -7,7 +7,6 @@ final class _BorderedOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroAppBarWidgetShowcaseViewModel>();
-
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Bordered?',

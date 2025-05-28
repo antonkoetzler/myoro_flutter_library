@@ -39,6 +39,7 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOption extends Stateless
 
     return Column(
       mainAxisSize: MainAxisSize.min,
+      spacing: 10,
       children: [
         if (title != null) Text(title!, style: checkboxThemeExtension.labelTextStyle),
         if (checkboxConfiguration != null) MyoroCheckbox(configuration: checkboxConfiguration!),

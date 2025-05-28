@@ -15,8 +15,10 @@ final class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoryboardScreen(
-      title: 'MFL Storyboard',
-      body: Provider(create: (_) => MainScreenViewModel(), child: const _WidgetListingAccordion()),
+      configuration: StoryboardScreenConfiguration(
+        title: 'MFL Storyboard',
+        body: Provider(create: (_) => MainScreenViewModel(), child: const _WidgetListingAccordion()),
+      ),
     );
   }
 }

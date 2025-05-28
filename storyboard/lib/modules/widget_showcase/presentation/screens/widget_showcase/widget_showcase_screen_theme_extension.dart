@@ -57,7 +57,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
       contentPadding = const EdgeInsets.all(10),
       widgetOptionsButtonIcon = Icons.menu,
       widgetOptionsModalSpacing = 10,
-      widgetOptionsModalPadding = const EdgeInsets.only(top: 5, bottom: 10),
+      widgetOptionsModalPadding = const EdgeInsets.only(top: 5),
       widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: 10);
 
   @override
