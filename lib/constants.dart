@@ -1,6 +1,6 @@
+// Debounce.
 import 'package:flutter/material.dart';
 
-// Debounce.
 const kMyoroDebounceDuration = Duration(milliseconds: 200);
 
 // Throttling.
@@ -11,30 +11,20 @@ const kMyoroBorderLength = 2.0;
 const kMyoroInputBorderLength = 10.0;
 const kMyoroBorderRadiusLength = 10.0;
 
-// Carousels.
-const kMyoroCarouselAutoplayIntervalDuration = Duration(seconds: 3);
-
-// Data configuration.
-const kMyoroDataConfigurationItemsPerPageOptions = [5, 10, 15, 20, 25, 50, 100];
-
-// Graphs.
-const kMyoroGraphSideTitleInterval = 0.2;
-const kMyoroGraphVerticalSideTitleReversedSize = 48.0;
-const kMyoroGraphHorizontalSideTitleReversedSize = 22.0;
-
-// Tooltips.
-const kMyoroTooltipWaitDuration = Duration(milliseconds: 200);
-
-// Icons for testing.
-const kMyoroTestIcons = [
-  Icons.abc,
-  Icons.ac_unit,
-  Icons.access_alarm,
-  Icons.access_time,
-  Icons.accessibility,
+/// [Alignment]s for testing.
+final kMyoroTestAlignments = [
+  Alignment.center,
+  Alignment.topLeft,
+  Alignment.topRight,
+  Alignment.topCenter,
+  Alignment.centerLeft,
+  Alignment.bottomLeft,
+  Alignment.centerRight,
+  Alignment.bottomRight,
+  Alignment.bottomCenter,
 ];
 
-/// Colors for testing.
+/// [Color]s for testing.
 const kMyoroTestColors = [
   Colors.red,
   Colors.green,
@@ -46,4 +36,35 @@ const kMyoroTestColors = [
   Colors.lightBlue,
   Colors.blueGrey,
   Colors.orange,
+];
+
+/// [Curve]s for testing.
+const kMyoroTestCurves = [
+  Curves.ease,
+  Curves.easeIn,
+  Curves.easeOut,
+  Curves.linear,
+  Curves.bounceIn,
+  Curves.bounceOut,
+  Curves.bounceInOut,
+];
+
+/// [SystemMouseCursor]s for testing.
+const kMyoroTestCursors = [
+  SystemMouseCursors.basic,
+  SystemMouseCursors.click,
+  SystemMouseCursors.help,
+  SystemMouseCursors.resizeRow,
+  SystemMouseCursors.resizeColumn,
+  SystemMouseCursors.zoomIn,
+  SystemMouseCursors.zoomOut,
+];
+
+/// [IconData]s for testing.
+const kMyoroTestIcons = [
+  Icons.abc,
+  Icons.ac_unit,
+  Icons.access_alarm,
+  Icons.access_time,
+  Icons.accessibility,
 ];

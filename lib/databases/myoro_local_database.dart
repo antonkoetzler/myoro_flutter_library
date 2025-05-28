@@ -8,7 +8,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 /// A note on [where] & [whereArgs] arguments.
 /// - [where]: SQL syntax placeholders of the condition you are creating, i.e. 'foo = ?', 'foo = ? AND bar = ? OR baz = ?';
 /// - [whereArgs]: List of the values of the placeholders, i.e. ['foo'], ['foo', true, 5];
-final class MyoroLocalDatabase {
+class MyoroLocalDatabase {
   /// Instance of [MyoroLocalDatabase] so we don't recreate a
   /// [MyoroLocalDatabase] object everytime [instance] is called.
   static final _instance = MyoroLocalDatabase();
@@ -68,10 +68,7 @@ final class MyoroLocalDatabase {
   }
 
   /// INSERT operation. Returns the ID of the newly created row or throws if unsuccessful.
-  Future<int> insert(
-    String tableName, {
-    required Map<String, dynamic> data,
-  }) async {
+  Future<int> insert(String tableName, {required Map<String, dynamic> data}) async {
     return await _database!.insert(tableName, data);
   }
 
@@ -81,11 +78,7 @@ final class MyoroLocalDatabase {
     String? where,
     List<Object?>? whereArgs,
   }) async {
-    return await _database!.query(
-      tableName,
-      where: where,
-      whereArgs: whereArgs,
-    );
+    return await _database!.query(tableName, where: where, whereArgs: whereArgs);
   }
 
   /// Get operation. Selects the first row of a [select] operation or null if the result of the [select] call is empty.
@@ -107,27 +100,14 @@ final class MyoroLocalDatabase {
     String? where,
     List<Object?>? whereArgs,
   }) async {
-    return await _database!.update(
-      tableName,
-      data,
-      where: where,
-      whereArgs: whereArgs,
-    );
+    return await _database!.update(tableName, data, where: where, whereArgs: whereArgs);
   }
 
   /// DELETE operation.
   ///
   /// Returns the number of rows affected.
-  Future<int> delete(
-    String tableName, {
-    String? where,
-    List<Object?>? whereArgs,
-  }) async {
-    return await _database!.delete(
-      tableName,
-      where: where,
-      whereArgs: whereArgs,
-    );
+  Future<int> delete(String tableName, {String? where, List<Object?>? whereArgs}) async {
+    return await _database!.delete(tableName, where: where, whereArgs: whereArgs);
   }
 
   /// Function to execute raw SQL.

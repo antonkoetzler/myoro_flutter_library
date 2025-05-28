@@ -1,2 +1,2 @@
-export 'myoro_group_radio.dart';
-export 'myoro_radio.dart';
+export 'group_radio/exports.dart';
+export 'radio/exports.dart';

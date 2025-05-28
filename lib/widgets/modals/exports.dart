@@ -1,2 +1,2 @@
-export 'myoro_dialog_modal.dart';
-export 'myoro_modal.dart';
+export 'dialog_modal/exports.dart';
+export 'modal/exports.dart';

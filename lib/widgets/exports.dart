@@ -1,4 +1,6 @@
+export 'accordions/exports.dart';
 export 'app_bars/exports.dart';
+export 'apps/exports.dart';
 export 'buttons/exports.dart';
 export 'cards/exports.dart';
 export 'carousels/exports.dart';
@@ -11,11 +13,9 @@ export 'graphs/exports.dart';
 export 'inputs/exports.dart';
 export 'layout_builders/exports.dart';
 export 'loaders/exports.dart';
-export 'material_apps/exports.dart';
 export 'menus/exports.dart';
 export 'modals/exports.dart';
 export 'radios/exports.dart';
-export 'resolvers/exports.dart';
 export 'screens/exports.dart';
 export 'sliders/exports.dart';
 export 'snack_bars/exports.dart';

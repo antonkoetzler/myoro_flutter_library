@@ -1,2 +1,2 @@
-export 'myoro_bar_graph.dart';
-export 'myoro_pie_graph.dart';
+export 'bar_graph/exports.dart';
+export 'pie_graph/exports.dart';

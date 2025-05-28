@@ -3,16 +3,12 @@
 import 'dart:io';
 
 void main() async {
-  const lineLength = 80;
+  const lineLength = 100;
 
   stdout.write('Formatting and fixing files...');
 
   // Run dart format
-  final formatResult = await Process.run('dart', [
-    'format',
-    '.',
-    '--line-length=$lineLength',
-  ]);
+  final formatResult = await Process.run('dart', ['format', '.', '--line-length=$lineLength']);
   stdout.write(formatResult.stdout);
   stderr.write(formatResult.stderr);
 

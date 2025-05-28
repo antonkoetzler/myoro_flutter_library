@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Widget] that must be created when creating new widget tests.
-final class MyoroWidgetTester extends StatelessWidget {
+class MyoroWidgetTester extends StatelessWidget {
   /// [ThemeMode] of the test.
   final ThemeMode themeMode;
 
   /// [ThemeExtension]s you'd like to include.
-  final MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder;
+  final MyoroAppThemeExtensionsBuilder? themeExtensionsBuilder;
 
   /// The [Widget].
   final Widget child;
@@ -20,46 +19,38 @@ final class MyoroWidgetTester extends StatelessWidget {
     required this.child,
   });
 
-  static Finder finder({
-    ThemeMode? themeMode,
-    bool themeModeEnabled = false,
-    MyoroMaterialAppThemeExtensionsBuilder? themeExtensionsBuilder,
-    bool themeExtensionsBuilderEnabled = false,
-    Widget? child,
-    bool childEnabled = false,
-  }) {
-    return find.byWidgetPredicate(
-      (Widget w) =>
-          w is MyoroWidgetTester &&
-          (themeModeEnabled ? w.themeMode == themeMode : true) &&
-          (themeExtensionsBuilderEnabled
-              ? w.themeExtensionsBuilder == themeExtensionsBuilder
-              : true) &&
-          (childEnabled ? w.child == child : true),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (child is MyoroMaterialApp) {
+    if (child is MyoroApp) {
       return child;
     } else if (child is MyoroScreen) {
-      return MyoroMaterialApp(
-        themeMode: themeMode,
-        themeExtensionsBuilder: themeExtensionsBuilder,
-        home: child as MyoroScreen,
+      return MyoroApp(
+        configuration: MyoroAppConfiguration(
+          themeMode: themeMode,
+          themeExtensionsBuilder: themeExtensionsBuilder,
+          home: child as MyoroScreen,
+        ),
       );
     } else if (child is MyoroAppBar) {
-      return MyoroMaterialApp(
-        themeMode: themeMode,
-        themeExtensionsBuilder: themeExtensionsBuilder,
-        home: MyoroScreen(appBar: child as MyoroAppBar),
+      return MyoroApp(
+        configuration: MyoroAppConfiguration(
+          themeMode: themeMode,
+          themeExtensionsBuilder: themeExtensionsBuilder,
+          home: MyoroScreen(
+            configuration: MyoroScreenConfiguration(
+              appBar: child as MyoroAppBar,
+              body: const SizedBox.shrink(),
+            ),
+          ),
+        ),
       );
     } else {
-      return MyoroMaterialApp(
-        themeMode: themeMode,
-        themeExtensionsBuilder: themeExtensionsBuilder,
-        home: MyoroScreen(body: child),
+      return MyoroApp(
+        configuration: MyoroAppConfiguration(
+          themeMode: themeMode,
+          themeExtensionsBuilder: themeExtensionsBuilder,
+          home: MyoroScreen(configuration: MyoroScreenConfiguration(body: child)),
+        ),
       );
     }
   }

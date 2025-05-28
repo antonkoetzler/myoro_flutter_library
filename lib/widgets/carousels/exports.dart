@@ -1,1 +1,1 @@
-export 'myoro_carousel.dart';
+export 'carousel/exports.dart';

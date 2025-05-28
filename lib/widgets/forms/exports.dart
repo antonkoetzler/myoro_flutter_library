@@ -1,1 +1,1 @@
-export 'myoro_form.dart';
+export 'form/exports.dart';

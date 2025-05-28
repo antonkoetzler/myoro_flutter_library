@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// Extension for [BuildContext].
 extension MyoroBuildContextExtension on BuildContext {
@@ -25,6 +25,11 @@ extension MyoroBuildContextExtension on BuildContext {
     return TextTheme.of(this);
   }
 
+  /// [NavigatorState] getter.
+  NavigatorState get navigator {
+    return Navigator.of(this);
+  }
+
   /// Getter for an [OverlayState] of an [Overlay]
   OverlayState get overlay {
     return Overlay.of(this);
@@ -45,31 +50,12 @@ extension MyoroBuildContextExtension on BuildContext {
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
-    throw Exception(
-      '[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.',
-    );
-  }
-
-  /// Resolvers a [Bloc] or [Cubit] and thorws an [Exception]
-  /// if the [Bloc]/[Cubit] isn't apart of the [BuildContext].
-  T resolveBloc<T extends BlocBase>() {
-    try {
-      final bloc = BlocProvider.of<T>(this);
-      return bloc;
-    } catch (_) {
-      throw Exception(
-        '[BuildContextExtension.resolveBloc]: [Bloc] does not exist.',
-      );
-    }
+    throw Exception('[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.');
   }
 
   /// Opens the drawer of the [BuildContext]'s [MyoroScreen].
   void openDrawer({bool isEndDrawer = false, required MyoroDrawer drawer}) {
-    read<MyoroDrawerController>().openDrawer(
-      this,
-      isEndDrawer: isEndDrawer,
-      drawer: drawer,
-    );
+    read<MyoroDrawerController>().openDrawer(this, isEndDrawer: isEndDrawer, drawer: drawer);
   }
 
   /// Closes the drawer of the [BuildContext]'s [MyoroScreen].
@@ -79,15 +65,19 @@ extension MyoroBuildContextExtension on BuildContext {
 
   /// Opens a snack bar.
   void showSnackBar({Duration? duration, required MyoroSnackBar snackBar}) {
-    MyoroSnackBarHelper.showSnackBar(
-      this,
-      duration: duration,
-      snackBar: snackBar,
-    );
+    ScaffoldMessenger.of(this)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        MyoroSnackBarContainer(
+          themeExtension: resolveThemeExtension<MyoroSnackBarContainerThemeExtension>(),
+          duration: duration,
+          snackBar: snackBar,
+        ),
+      );
   }
 
   /// Hides a snack bar.
   void hideSnackBar() {
-    MyoroSnackBarHelper.hideSnackBar(this);
+    ScaffoldMessenger.of(this).hideCurrentSnackBar();
   }
 }

@@ -1,1 +1,1 @@
-export 'myoro_tooltip.dart';
+export 'tooltip/exports.dart';

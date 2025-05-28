@@ -43,9 +43,7 @@ void main() {
 
       final List<Map<String, dynamic>> rows = List.generate(
         faker.randomGenerator.integer(10, min: 1),
-        (int index) => {
-          _dummyTableFooAttribute: '$index: ${faker.lorem.word()}',
-        },
+        (int index) => {_dummyTableFooAttribute: '$index: ${faker.lorem.word()}'},
       );
       for (final row in rows) {
         await _insert(row);
@@ -53,9 +51,7 @@ void main() {
 
       expect((await _select()).length, rows.length);
       final filteredRows = await _select('$_dummyTableFooAttribute = ?', [
-        rows[faker.randomGenerator.integer(
-          rows.length,
-        )][_dummyTableFooAttribute],
+        rows[faker.randomGenerator.integer(rows.length)][_dummyTableFooAttribute],
       ]);
       expect(filteredRows.length, 1);
     });
@@ -66,17 +62,10 @@ void main() {
       await _insert(row);
       expect(await _get(), isNotNull);
       expect(
-        await _get('$_dummyTableFooAttribute = ?', [
-          faker.randomGenerator.string(100),
-        ]),
+        await _get('$_dummyTableFooAttribute = ?', [faker.randomGenerator.string(100)]),
         isNull,
       );
-      expect(
-        await _get('$_dummyTableFooAttribute = ?', [
-          row[_dummyTableFooAttribute],
-        ]),
-        isNotNull,
-      );
+      expect(await _get('$_dummyTableFooAttribute = ?', [row[_dummyTableFooAttribute]]), isNotNull);
     });
 
     test('[MyoroLocalDatabase.update]', () async {
@@ -130,45 +119,18 @@ Future<int> _insert([Map<String, dynamic>? row]) async {
   return await _instance.insert(_dummyTableName, data: row ?? _row);
 }
 
-Future<Map<String, dynamic>?> _get([
-  String? where,
-  List<Object?>? whereArgs,
-]) async {
-  return await _instance.get(
-    _dummyTableName,
-    where: where,
-    whereArgs: whereArgs,
-  );
+Future<Map<String, dynamic>?> _get([String? where, List<Object?>? whereArgs]) async {
+  return await _instance.get(_dummyTableName, where: where, whereArgs: whereArgs);
 }
 
-Future<List<Map<String, dynamic>>> _select([
-  String? where,
-  List<Object?>? whereArgs,
-]) async {
-  return await _instance.select(
-    _dummyTableName,
-    where: where,
-    whereArgs: whereArgs,
-  );
+Future<List<Map<String, dynamic>>> _select([String? where, List<Object?>? whereArgs]) async {
+  return await _instance.select(_dummyTableName, where: where, whereArgs: whereArgs);
 }
 
-Future<int> _update(
-  Map<String, dynamic> data, [
-  String? where,
-  List<Object?>? whereArgs,
-]) async {
-  return await _instance.update(
-    _dummyTableName,
-    data: data,
-    where: where,
-    whereArgs: whereArgs,
-  );
+Future<int> _update(Map<String, dynamic> data, [String? where, List<Object?>? whereArgs]) async {
+  return await _instance.update(_dummyTableName, data: data, where: where, whereArgs: whereArgs);
 }
 
 Future<int> _delete(String? where, List<Object?> whereArgs) async {
-  return await _instance.delete(
-    _dummyTableName,
-    where: where,
-    whereArgs: whereArgs,
-  );
+  return await _instance.delete(_dummyTableName, where: where, whereArgs: whereArgs);
 }
