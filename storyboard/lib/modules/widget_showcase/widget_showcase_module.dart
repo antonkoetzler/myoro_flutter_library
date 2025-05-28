@@ -7,6 +7,12 @@ final class WidgetShowcaseModule implements Module {
 
   @override
   List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
-    return [WidgetShowcaseScreenThemeExtension.builder()];
+    return [
+      // Screens
+      WidgetShowcaseScreenThemeExtension.builder(),
+
+      // Widget showcase options
+      const PaddingWidgetShowcaseOptionThemeExtension.builder(),
+    ];
   }
 }
