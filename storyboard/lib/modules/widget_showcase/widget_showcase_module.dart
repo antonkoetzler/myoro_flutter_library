@@ -12,7 +12,12 @@ final class WidgetShowcaseModule implements Module {
       WidgetShowcaseScreenThemeExtension.builder(),
 
       // Widget showcase options
+      const ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),
       const PaddingWidgetShowcaseOptionThemeExtension.builder(),
+      const SliderWidgetShowcaseOptionThemeExtension.builder(),
+      const ThemeModeWidgetShowcaseOptionThemeExtension.builder(),
     ];
   }
 }

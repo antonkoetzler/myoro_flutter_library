@@ -4,28 +4,39 @@ import 'package:storyboard/storyboard.dart';
 
 /// Configuration model of [PaddingWidgetShowcaseOption].
 final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
-  const PaddingWidgetShowcaseOptionConfiguration({required this.label, this.checkboxOnChanged});
+  static const labelDefaultValue = 'Padding';
+
+  const PaddingWidgetShowcaseOptionConfiguration({
+    this.label = labelDefaultValue,
+    this.checkboxOnChanged,
+    required this.paddingOnChanged,
+  });
 
   /// Label of the [PaddingWidgetShowcaseOption].
   final String label;
 
   /// [MyoroCheckbox] on changed.
-  final MyoroCheckboxOnChanged? checkboxOnChanged;
+  final PaddingWidgetShowcaseOptionTitleCheckboxOnChanged? checkboxOnChanged;
+
+  /// [PaddingWidgetShowcaseOptionEnum.all] callback.
+  final PaddingWidgetShowcaseOptionSelectionOnChanged paddingOnChanged;
 
   PaddingWidgetShowcaseOptionConfiguration copyWith({
     String? label,
-    MyoroCheckboxOnChanged? checkboxOnChanged,
+    PaddingWidgetShowcaseOptionTitleCheckboxOnChanged? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
+    PaddingWidgetShowcaseOptionSelectionOnChanged? paddingOnChanged,
   }) {
     return PaddingWidgetShowcaseOptionConfiguration(
       label: label ?? this.label,
       checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+      paddingOnChanged: paddingOnChanged ?? this.paddingOnChanged,
     );
   }
 
   @override
   List<Object?> get props {
-    return [label, checkboxOnChanged];
+    return [label, checkboxOnChanged, paddingOnChanged];
   }
 
   @override
@@ -33,5 +44,6 @@ final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
       'PaddingWidgetShowcaseOptionConfiguration(\n'
       '  label: $label,\n'
       '  checkboxOnChanged: $checkboxOnChanged,\n'
+      '  paddingOnChanged: $paddingOnChanged,\n'
       ');';
 }

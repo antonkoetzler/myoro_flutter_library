@@ -1,6 +1,6 @@
 # TODO
 
-1. (**IN PROGRESS**) feature: Retest everything 100% code coverage
+1. feature: Retest everything 100% code coverage
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
@@ -14,6 +14,7 @@
 
 1. improvement: Add view model of a `Widget` to provider scope to not have to pass by argument
 1. improvement: Remove stylistic arguments from configuration models and force `ThemeExtension` overriding
+1. feature: Code generation for boilerplate
 1. chore: Constructors at the top of the class
 1. chore: Documentation
 

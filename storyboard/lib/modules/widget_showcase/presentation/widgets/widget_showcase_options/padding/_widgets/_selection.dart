@@ -11,9 +11,9 @@ final class _Selection extends StatelessWidget {
       valueListenable: viewModel.modeEnumController,
       builder: (_, PaddingWidgetShowcaseOptionEnum modeEnum, __) {
         return switch (modeEnum) {
-          PaddingWidgetShowcaseOptionEnum.all => _AllSelection(),
-          PaddingWidgetShowcaseOptionEnum.symmetric => _SymmetricSelection(),
-          PaddingWidgetShowcaseOptionEnum.only => _OnlySelection(),
+          PaddingWidgetShowcaseOptionEnum.all => const _AllSelection(),
+          PaddingWidgetShowcaseOptionEnum.symmetric => const _SymmetricSelection(),
+          PaddingWidgetShowcaseOptionEnum.only => const _OnlySelection(),
         };
       },
     );

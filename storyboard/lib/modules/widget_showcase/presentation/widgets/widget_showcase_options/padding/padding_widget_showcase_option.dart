@@ -6,6 +6,9 @@ import 'package:storyboard/storyboard.dart';
 part '_widgets/_all_selection.dart';
 part '_widgets/_only_selection.dart';
 part '_widgets/_selection.dart';
+part '_widgets/_selection_input.dart';
+part '_widgets/_selection_input_pair.dart';
+part '_widgets/_selection_switcher.dart';
 part '_widgets/_symmetric_selection.dart';
 part '_widgets/_title.dart';
 
@@ -19,10 +22,16 @@ final class PaddingWidgetShowcaseOption extends StatelessWidget {
   final PaddingWidgetShowcaseOptionConfiguration configuration;
 
   @override
-  Widget build(_) {
+  Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
+
     return InheritedProvider(
       create: (_) => PaddingWidgetShowcaseOptionViewModel(configuration),
-      child: const Column(mainAxisSize: MainAxisSize.min, children: [_Title(), _Selection()]),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: themeExtension.spacing,
+        children: const [_Title(), _Selection(), _SelectionSwitcher()],
+      ),
     );
   }
 }
