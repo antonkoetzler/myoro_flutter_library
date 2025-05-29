@@ -7,7 +7,7 @@ enum MyoroWidgetListEnum {
   accordions('Accordions', {myoroAccordionTitle}),
   appBars('App bars', {myoroAppBarTitle}),
   apps('Apps', {myoroAppTitle}),
-  buttons('Buttons', {myoroButtonTitle});
+  buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 

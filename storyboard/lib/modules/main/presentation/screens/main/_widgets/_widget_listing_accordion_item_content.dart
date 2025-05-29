@@ -14,6 +14,7 @@ final class _WidgetListingAccordionItemContent extends StatelessWidget {
       padding: themeExtension.widgetListingAccordionItemContent,
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        spacing: themeExtension.spacing,
         children: _widgetCategory.widgetNames.map(_WidgetListingAccordionItemContentButton.new).toList(),
       ),
     );

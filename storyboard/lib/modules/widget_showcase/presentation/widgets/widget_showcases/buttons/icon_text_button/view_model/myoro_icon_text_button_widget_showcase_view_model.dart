@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -61,7 +62,7 @@ final class MyoroIconTextButtonWidgetShowcaseViewModel extends ChangeNotifier {
   }
 
   /// [MyoroIconTextButtonIconConfiguration.icon]
-  IconData? _icon;
+  IconData? _icon = myoroFake<IconData>();
   IconData? get icon => _icon;
   set icon(IconData? icon) {
     _icon = icon;
@@ -77,7 +78,7 @@ final class MyoroIconTextButtonWidgetShowcaseViewModel extends ChangeNotifier {
   }
 
   /// [MyoroIconTextButtonTextConfiguration.text]
-  String _text = '';
+  String _text = faker.lorem.word();
   String get text => _text;
   set text(String text) {
     _text = text;

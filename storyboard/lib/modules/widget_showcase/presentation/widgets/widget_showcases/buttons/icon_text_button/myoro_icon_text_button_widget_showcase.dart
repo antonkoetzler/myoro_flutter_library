@@ -32,6 +32,7 @@ final class MyoroIconTextButtonWidgetShowcase extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroIconTextButtonTitle,
           widget: _Widget(),
+          widgetOptions: options,
         ),
       ),
     );
