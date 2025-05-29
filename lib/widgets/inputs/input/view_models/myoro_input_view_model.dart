@@ -4,7 +4,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of [MyoroInput].
 class MyoroInputViewModel implements MyoroInputViewModelInterface {
   MyoroInputViewModel(MyoroInputConfiguration configuration, [MyoroInputFormatter? formatter]) {
-    state = MyoroInputViewModelState(configuration, formatter, controllerListener);
+    state = MyoroInputViewModelState(configuration, formatter);
+    inputController.addListener(inputControllerListener);
   }
 
   late final MyoroInputViewModelState state;
@@ -18,13 +19,15 @@ class MyoroInputViewModel implements MyoroInputViewModelInterface {
 
   @override
   void dispose() {
-    (configuration.controller != null) ? inputController.removeListener(controllerListener) : inputController.dispose();
+    (configuration.controller != null)
+        ? inputController.removeListener(inputControllerListener)
+        : inputController.dispose();
     enabledController.dispose();
     showClearTextButtonController.dispose();
   }
 
   @override
-  void controllerListener() {
+  void inputControllerListener() {
     showClearTextButtonController.value = showClearTextButton;
   }
 

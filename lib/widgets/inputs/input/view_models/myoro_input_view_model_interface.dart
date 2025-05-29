@@ -6,7 +6,7 @@ abstract interface class MyoroInputViewModelInterface {
   void dispose();
 
   /// [_controller]'s listener.
-  void controllerListener();
+  void inputControllerListener();
 
   /// [MyoroCheckboxConfiguration.onChanged] of [_Checkbox].
   void checkboxOnChanged(bool value);

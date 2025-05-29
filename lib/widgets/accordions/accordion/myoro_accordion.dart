@@ -40,7 +40,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
         controller: scrollController,
         child: ListView.builder(
           controller: scrollController,
-          itemCount: _controller.state.items.length,
+          itemCount: _controller.items.length,
           itemBuilder: _itemBuilder,
         ),
       ),
@@ -48,7 +48,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   }
 
   Widget _itemBuilder(_, int index) {
-    final items = _viewModel.controller.state.items;
+    final items = _viewModel.controller.items;
     return _Item(item: items[index], isLastItem: index == items.length - 1);
   }
 }

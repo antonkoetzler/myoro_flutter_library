@@ -12,7 +12,7 @@ final class _ItemTitleButton extends StatelessWidget {
     final viewModel = context.read<MyoroAccordionViewModel>();
 
     return ValueListenableBuilder(
-      valueListenable: viewModel.controller.state.expandedItemController,
+      valueListenable: viewModel.controller,
       builder: (_, MyoroAccordionItem? expandedItem, __) {
         return _valueListenableBuilder(context, themeExtension, expandedItem);
       },
@@ -43,9 +43,7 @@ final class _ItemTitleButton extends StatelessWidget {
 
   void _onTapUp(BuildContext context) {
     final viewModel = context.read<MyoroAccordionViewModel>();
-    viewModel.controller.state.expandedItemController.value != _item
-        ? viewModel.controller.expandItem(_item)
-        : viewModel.controller.reset();
+    viewModel.controller.expandedItem != _item ? viewModel.controller.expandItem(_item) : viewModel.controller.reset();
   }
 
   Widget _buttonBuilder(

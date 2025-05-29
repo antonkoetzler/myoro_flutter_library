@@ -15,7 +15,7 @@ final class _Item extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         _ItemTitleButton(item),
-        ValueListenableBuilder(valueListenable: viewModel.controller.state.expandedItemController, builder: _builder),
+        ValueListenableBuilder(valueListenable: viewModel.controller, builder: _builder),
         if (!isLastItem) const _Divider(),
       ],
     );

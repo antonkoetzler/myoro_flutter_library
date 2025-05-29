@@ -5,10 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration of [MyoroSlider].
 class MyoroSliderConfiguration extends Equatable {
-  static const minValueDefaultValue = 0.0;
-  static const maxValueDefaultValue = 1.0;
-  static const initialValueDefaultValue = minValueDefaultValue;
-
   /// Label of the slider.
   final String label;
 
@@ -17,15 +13,6 @@ class MyoroSliderConfiguration extends Equatable {
 
   /// [MyoroSlider]'s fixed width.
   final double? width;
-
-  /// Minimum value of the slider.
-  final double minValue;
-
-  /// Maximum value of the slider.
-  final double maxValue;
-
-  /// Initial value of the slider.
-  final double initialValue;
 
   /// Text builder for the left of the slider.
   final MyoroSliderIndicatorTextBuilder? currentValueIndicatorTextBuilder;
@@ -43,33 +30,20 @@ class MyoroSliderConfiguration extends Equatable {
     this.label = '',
     this.labelTextStyle,
     this.width,
-    this.minValue = minValueDefaultValue,
-    this.maxValue = maxValueDefaultValue,
-    this.initialValue = initialValueDefaultValue,
     this.currentValueIndicatorTextBuilder,
     this.maxValueIndicatorTextBuilder,
     this.footerIndicatorTextBuilder,
     required this.onChanged,
   });
 
-  factory MyoroSliderConfiguration.fake() {
-    final double minValue = faker.randomGenerator.decimal(scale: 10);
-    final double maxValue = faker.randomGenerator.decimal(scale: 50, min: minValue);
-    final double initialValue = faker.randomGenerator.decimal(scale: maxValue, min: minValue);
-
-    return MyoroSliderConfiguration(
-      label: faker.lorem.word(),
-      labelTextStyle: faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
-      width: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      minValue: minValue,
-      maxValue: maxValue,
-      initialValue: initialValue,
-      currentValueIndicatorTextBuilder: faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
-      maxValueIndicatorTextBuilder: faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
-      footerIndicatorTextBuilder: faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
-      onChanged: ((_) {}),
-    );
-  }
+  MyoroSliderConfiguration.fake()
+    : label = faker.lorem.word(),
+      labelTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
+      width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
+      currentValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
+      maxValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
+      footerIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
+      onChanged = ((_) {});
 
   MyoroSliderConfiguration copyWith({
     String? label,
@@ -77,9 +51,6 @@ class MyoroSliderConfiguration extends Equatable {
     bool labelTextStyleProvided = true,
     double? width,
     bool widthProvided = true,
-    double? minValue,
-    double? maxValue,
-    double? initialValue,
     MyoroSliderIndicatorTextBuilder? currentValueIndicatorTextBuilder,
     bool currentValueIndicatorTextBuilderProvided = true,
     MyoroSliderIndicatorTextBuilder? maxValueIndicatorTextBuilder,
@@ -92,9 +63,6 @@ class MyoroSliderConfiguration extends Equatable {
       label: label ?? this.label,
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       width: widthProvided ? (width ?? this.width) : null,
-      minValue: minValue ?? this.minValue,
-      maxValue: maxValue ?? this.maxValue,
-      initialValue: initialValue ?? this.initialValue,
       currentValueIndicatorTextBuilder:
           currentValueIndicatorTextBuilderProvided
               ? (currentValueIndicatorTextBuilder ?? this.currentValueIndicatorTextBuilder)
@@ -115,9 +83,6 @@ class MyoroSliderConfiguration extends Equatable {
       label,
       labelTextStyle,
       width,
-      minValue,
-      maxValue,
-      initialValue,
       currentValueIndicatorTextBuilder,
       maxValueIndicatorTextBuilder,
       footerIndicatorTextBuilder,
@@ -131,9 +96,6 @@ class MyoroSliderConfiguration extends Equatable {
       '  label: $label,\n'
       '  labelTextStyle: $labelTextStyle,\n'
       '  width: $width,\n'
-      '  minValue: $minValue,\n'
-      '  maxValue: $maxValue,\n'
-      '  initialValue: $initialValue,\n'
       '  currentValueIndicatorTextBuilder: $currentValueIndicatorTextBuilder,\n'
       '  maxValueIndicatorTextBuilder: $maxValueIndicatorTextBuilder,\n'
       '  footerIndicatorTextBuilder: $footerIndicatorTextBuilder,\n'

@@ -3,8 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroInputController].
 class MyoroInputViewModelState {
-  MyoroInputViewModelState(this.configuration, this.formatter, VoidCallback inputControllerListener) {
-    inputController.addListener(inputControllerListener);
+  MyoroInputViewModelState(this.configuration, this.formatter) {
     enabledController = ValueNotifier(configuration.enabled);
     showClearTextButtonController = ValueNotifier<bool>(showClearTextButton);
     if (formatter != null && inputController.text.isEmpty) {
