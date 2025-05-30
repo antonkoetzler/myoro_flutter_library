@@ -16,6 +16,7 @@
 1. improvement: Remove stylistic arguments from configuration models and force `ThemeExtension` overriding
 1. (**IN PROGRESS**) feature: Code generation for boilerplate
 
+- https://medium.com/@michael_dark/annotation-based-code-generation-in-dart-694b9fba2fa9
 - <https://medium.com/@yamen.abd98/code-generator-using-flutter-source-gen-build-runner-9cc1fe0e2ff2>
 - <https://www.kodeco.com/22180993-flutter-code-generation-getting-started>
 
