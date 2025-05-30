@@ -113,4 +113,45 @@ final class MyoroButtonWidgetShowcaseViewModel extends ChangeNotifier {
     _onTapUpEnabled = onTapUpEnabled;
     notifyListeners();
   }
+
+  Color backgroundColorBuilder(MyoroButtonWidgetShowcaseViewModel viewModel, MyoroTapStatusEnum tapStatusEnum) {
+    return switch (tapStatusEnum) {
+      MyoroTapStatusEnum.idle => viewModel.idleBackgroundColor,
+      MyoroTapStatusEnum.hover => viewModel.hoverBackgroundColor,
+      MyoroTapStatusEnum.tap => viewModel.tapBackgroundColor,
+    };
+  }
+
+  BoxBorder borderBuilder(MyoroButtonWidgetShowcaseViewModel viewModel, MyoroTapStatusEnum tapStatusEnum) {
+    return Border.all(
+      width: kMyoroBorderLength,
+      color: switch (tapStatusEnum) {
+        MyoroTapStatusEnum.idle => viewModel.idleBorderColor,
+        MyoroTapStatusEnum.hover => viewModel.hoverBorderColor,
+        MyoroTapStatusEnum.tap => viewModel.tapBorderColor,
+      },
+    );
+  }
+
+  void onTapDown(BuildContext context) {
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(
+          snackBarType: MyoroSnackBarTypeEnum.attention,
+          message: 'Tap down activated.',
+        ),
+      ),
+    );
+  }
+
+  void onTapUp(BuildContext context) {
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(
+          snackBarType: MyoroSnackBarTypeEnum.attention,
+          message: 'Tap up activated.',
+        ),
+      ),
+    );
+  }
 }

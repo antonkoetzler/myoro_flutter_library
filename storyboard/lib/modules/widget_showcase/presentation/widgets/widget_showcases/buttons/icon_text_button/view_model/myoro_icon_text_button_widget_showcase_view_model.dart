@@ -116,4 +116,16 @@ final class MyoroIconTextButtonWidgetShowcaseViewModel extends ChangeNotifier {
     _style = style;
     notifyListeners();
   }
+
+  /// [MyoroIconTextButtonConfiguration.contentColorBuilder] of [_Widget].
+  Color contentColorBuilder(
+    MyoroIconTextButtonWidgetShowcaseViewModel iconTextButtonViewModel,
+    MyoroTapStatusEnum tapStatusEnum,
+  ) {
+    return switch (tapStatusEnum) {
+      MyoroTapStatusEnum.idle => iconTextButtonViewModel.idleContentColor,
+      MyoroTapStatusEnum.hover => iconTextButtonViewModel.hoverContentColor,
+      MyoroTapStatusEnum.tap => iconTextButtonViewModel.tapContentColor,
+    };
+  }
 }

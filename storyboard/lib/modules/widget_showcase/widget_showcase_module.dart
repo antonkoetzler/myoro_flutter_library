@@ -8,11 +8,13 @@ final class WidgetShowcaseModule implements Module {
   @override
   List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
-      // Screens
+      // ########## Screens ##########
       WidgetShowcaseScreenThemeExtension.builder(),
+      // #############################
 
-      // Widget showcase options
+      // ########## Widget showcase options ##########
       const ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      const ConstraintsWidgetShowcaseOptionThemeExtension.builder(),
       const IconWidgetShowcaseOptionThemeExtension.builder(),
       const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),
@@ -20,6 +22,13 @@ final class WidgetShowcaseModule implements Module {
       const SliderWidgetShowcaseOptionThemeExtension.builder(),
       const TextWidgetShowcaseOptionThemeExtension.builder(),
       const ThemeModeWidgetShowcaseOptionThemeExtension.builder(),
+      // #############################################
+
+      // TODO: Make sure all widget showcases have a [ThemeExtension].
+      // ########## Widget showcases ##########
+      // Cards
+      MyoroCardWidgetShowcaseThemeExtension.builder(textTheme),
+      // ######################################
     ];
   }
 }

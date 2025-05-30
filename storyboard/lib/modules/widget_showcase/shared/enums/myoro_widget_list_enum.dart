@@ -7,7 +7,8 @@ enum MyoroWidgetListEnum {
   accordions('Accordions', {myoroAccordionTitle}),
   appBars('App bars', {myoroAppBarTitle}),
   apps('Apps', {myoroAppTitle}),
-  buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle});
+  buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle}),
+  cards('Cards', {myoroCardTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -34,6 +35,9 @@ enum MyoroWidgetListEnum {
   static const myoroButtonTitle = 'MyoroButton';
   static const myoroIconTextButtonTitle = 'MyoroIconTextButton';
 
+  // Cards
+  static const myoroCardTitle = 'MyoroCard';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -49,12 +53,16 @@ enum MyoroWidgetListEnum {
       myoroButtonTitle => const MyoroButtonWidgetShowcase(),
       myoroIconTextButtonTitle => const MyoroIconTextButtonWidgetShowcase(),
 
+      // Cards
+      myoroCardTitle => const MyoroCardWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }
 
-  bool get isAccordions => (this == accordions);
-  bool get isAppBars => (this == appBars);
-  bool get isApps => (this == apps);
-  bool get isButtons => (this == buttons);
+  bool get isAccordions => this == accordions;
+  bool get isAppBars => this == appBars;
+  bool get isApps => this == apps;
+  bool get isButtons => this == buttons;
+  bool get isCards => this == cards;
 }

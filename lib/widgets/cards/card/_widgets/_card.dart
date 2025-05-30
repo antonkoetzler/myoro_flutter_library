@@ -11,8 +11,6 @@ final class _Card extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
 
     return Container(
-      width: _configuration.width,
-      height: _configuration.height,
       constraints: _configuration.constraints,
       padding: _configuration.padding ?? themeExtension.padding,
       decoration: BoxDecoration(

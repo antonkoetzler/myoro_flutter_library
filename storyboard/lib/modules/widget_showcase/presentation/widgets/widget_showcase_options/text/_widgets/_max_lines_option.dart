@@ -11,6 +11,7 @@ final class _MaxLinesOption extends StatelessWidget {
     return MyoroSingularDropdown<int>(
       controller: MyoroSingularDropdownController(initiallySelectedItem: 1),
       configuration: MyoroSingularDropdownConfiguration(
+        label: 'Max lines',
         allowItemClearing: false,
         checkboxOnChanged: (enabled, value) => viewModel.maxLines = enabled ? value : null,
         selectedItemBuilder: (value) => value.toString(),

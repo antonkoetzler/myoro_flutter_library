@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroSlider].
-class MyoroSliderController extends ValueNotifier<double> implements MyoroSliderInterface {
+class MyoroSliderController extends ValueNotifier<double> {
   static const minValueDefaultValue = 0.0;
   static const maxValueDefaultValue = 1.0;
   static const initialValueDefaultValue = minValueDefaultValue;
@@ -11,9 +11,7 @@ class MyoroSliderController extends ValueNotifier<double> implements MyoroSlider
     this.minValue = minValueDefaultValue,
     this.maxValue = maxValueDefaultValue,
     double initialValue = initialValueDefaultValue,
-  }) : super(initialValue) {
-    addListener(listener);
-  }
+  }) : super(initialValue);
 
   /// Minimum value of the slider.
   final double minValue;
@@ -22,15 +20,8 @@ class MyoroSliderController extends ValueNotifier<double> implements MyoroSlider
   final double maxValue;
 
   /// Sets the new value of the [MyoroSlider].
-  @override
   void setValue(double value) {
     if (minValue > value || maxValue < value) return;
     this.value = value;
-  }
-
-  /// Listener of the controller.
-  @override
-  void listener() {
-    configuration.onChanged.call(value);
   }
 }

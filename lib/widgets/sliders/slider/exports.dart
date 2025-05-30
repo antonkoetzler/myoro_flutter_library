@@ -1,4 +1,4 @@
-export 'controllers/exports.dart';
+export 'controllers/myoro_slider_controller.dart';
 export 'models/exports.dart';
 export 'view_model/myoro_slider_view_model.dart';
 export 'myoro_slider.dart';

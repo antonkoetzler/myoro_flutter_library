@@ -2,16 +2,18 @@ part of '../myoro_slider.dart';
 
 /// Label of the [MyoroSlider].
 final class _Label extends StatelessWidget {
-  final String _label;
-  final TextStyle? _labelTextStyle;
-
-  const _Label(this._label, this._labelTextStyle);
+  const _Label();
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroSliderViewModel>();
+    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+
+    assert(viewModel.configuration?.label != null);
+
     return Text(
-      _label,
-      style: _labelTextStyle ?? context.resolveThemeExtension<MyoroSliderThemeExtension>().labelTextStyle,
+      viewModel.configuration!.label,
+      style: viewModel.configuration?.labelTextStyle ?? themeExtension.labelTextStyle,
     );
   }
 }

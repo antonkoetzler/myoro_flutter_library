@@ -6,45 +6,59 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseViewModel>();
+    final buttonViewModel = context.read<MyoroButtonWidgetShowcaseViewModel>();
+    final iconTextButtonViewModel = context.read<MyoroIconTextButtonWidgetShowcaseViewModel>();
 
     return ListenableBuilder(
-      listenable: viewModel,
+      listenable: iconTextButtonViewModel,
       builder: (_, __) {
-        return MyoroIconTextButton(
-          configuration: MyoroIconTextButtonConfiguration(
-            invert: viewModel.invert,
-            spacing: viewModel.spacing,
-            padding: viewModel.padding,
-            contentColorBuilder:
-                viewModel.enableContentColorBuilder
-                    ? (MyoroTapStatusEnum tapStatusEnum) => _contentColorBuilder(viewModel, tapStatusEnum)
-                    : null,
-            iconConfiguration:
-                viewModel.icon != null
-                    ? MyoroIconTextButtonIconConfiguration(icon: viewModel.icon!, size: viewModel.iconSize)
-                    : null,
-            textConfiguration:
-                viewModel.text.isNotEmpty
-                    ? MyoroIconTextButtonTextConfiguration(
-                      text: viewModel.text,
-                      maxLines: viewModel.maxLines,
-                      overflow: viewModel.overflow,
-                      alignment: viewModel.alignment,
-                      style: viewModel.style,
-                    )
-                    : null,
+        return IntrinsicWidth(
+          child: MyoroIconTextButton(
+            configuration: MyoroIconTextButtonConfiguration(
+              buttonConfiguration: MyoroButtonConfiguration(
+                tooltipConfiguration: buttonViewModel.tooltipEnabled ? MyoroTooltipConfiguration.fake() : null,
+                cursor: buttonViewModel.cursor,
+                borderRadius: buttonViewModel.borderRadius,
+                backgroundColorBuilder:
+                    buttonViewModel.backgroundColorBuilderEnabled
+                        ? (tapStatusEnum) => buttonViewModel.backgroundColorBuilder(buttonViewModel, tapStatusEnum)
+                        : null,
+                borderBuilder:
+                    buttonViewModel.borderBuilderEnabled
+                        ? (tapStatusEnum) => buttonViewModel.borderBuilder(buttonViewModel, tapStatusEnum)
+                        : null,
+                onTapDown: buttonViewModel.onTapDownEnabled ? (_) => buttonViewModel.onTapDown(context) : null,
+                onTapUp: buttonViewModel.onTapUpEnabled ? (_) => buttonViewModel.onTapUp(context) : null,
+              ),
+              invert: iconTextButtonViewModel.invert,
+              spacing: iconTextButtonViewModel.spacing,
+              padding: iconTextButtonViewModel.padding,
+              contentColorBuilder:
+                  iconTextButtonViewModel.enableContentColorBuilder
+                      ? (tapStatusEnum) =>
+                          iconTextButtonViewModel.contentColorBuilder(iconTextButtonViewModel, tapStatusEnum)
+                      : null,
+              iconConfiguration:
+                  iconTextButtonViewModel.icon != null
+                      ? MyoroIconTextButtonIconConfiguration(
+                        icon: iconTextButtonViewModel.icon!,
+                        size: iconTextButtonViewModel.iconSize,
+                      )
+                      : null,
+              textConfiguration:
+                  iconTextButtonViewModel.text.isNotEmpty
+                      ? MyoroIconTextButtonTextConfiguration(
+                        text: iconTextButtonViewModel.text,
+                        maxLines: iconTextButtonViewModel.maxLines,
+                        overflow: iconTextButtonViewModel.overflow,
+                        alignment: iconTextButtonViewModel.alignment,
+                        style: iconTextButtonViewModel.style,
+                      )
+                      : null,
+            ),
           ),
         );
       },
     );
-  }
-
-  Color _contentColorBuilder(MyoroIconTextButtonWidgetShowcaseViewModel viewModel, MyoroTapStatusEnum tapStatusEnum) {
-    return switch (tapStatusEnum) {
-      MyoroTapStatusEnum.idle => viewModel.idleContentColor,
-      MyoroTapStatusEnum.hover => viewModel.hoverContentColor,
-      MyoroTapStatusEnum.tap => viewModel.tapContentColor,
-    };
   }
 }

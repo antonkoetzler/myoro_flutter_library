@@ -9,9 +9,7 @@ final class SliderWidgetShowcaseOptionViewModel {
   final SliderWidgetShowcaseOptionConfiguration configuration;
 
   /// Controller of the [MyoroSlider].
-  late final sliderController = MyoroSliderController(
-    MyoroSliderConfiguration(minValue: 0, maxValue: 50, initialValue: 25, onChanged: configuration.sliderOnChanged),
-  );
+  late final sliderController = MyoroSliderController(minValue: 0, maxValue: 50, initialValue: 25);
 
   /// Dispose function.
   void dispose() {

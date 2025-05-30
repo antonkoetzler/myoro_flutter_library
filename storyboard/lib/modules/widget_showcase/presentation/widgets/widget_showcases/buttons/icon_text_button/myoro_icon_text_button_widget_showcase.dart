@@ -26,13 +26,16 @@ final class MyoroIconTextButtonWidgetShowcase extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return InheritedProvider(
-      create: (_) => MyoroIconTextButtonWidgetShowcaseViewModel(),
+    return MultiProvider(
+      providers: [
+        InheritedProvider(create: (_) => MyoroButtonWidgetShowcaseViewModel()),
+        InheritedProvider(create: (_) => MyoroIconTextButtonWidgetShowcaseViewModel()),
+      ],
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroIconTextButtonTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          widgetOptions: [...MyoroButtonWidgetShowcase.options, ...options],
         ),
       ),
     );
