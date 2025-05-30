@@ -1,6 +1,6 @@
-// Debounce.
 import 'package:flutter/material.dart';
 
+// Debounce.
 const kMyoroDebounceDuration = Duration(milliseconds: 200);
 
 // Throttling.
@@ -61,10 +61,4 @@ const kMyoroTestCursors = [
 ];
 
 /// [IconData]s for testing.
-const kMyoroTestIcons = [
-  Icons.abc,
-  Icons.ac_unit,
-  Icons.access_alarm,
-  Icons.access_time,
-  Icons.accessibility,
-];
+const kMyoroTestIcons = [Icons.abc, Icons.ac_unit, Icons.access_alarm, Icons.access_time, Icons.accessibility];

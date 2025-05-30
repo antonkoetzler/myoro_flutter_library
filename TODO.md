@@ -14,8 +14,9 @@
 
 1. improvement: Add view model of a `Widget` to provider scope to not have to pass by argument
 1. improvement: Remove stylistic arguments from configuration models and force `ThemeExtension` overriding
-1. feature: Code generation for boilerplate
+1. (**IN PROGRESS**) feature: Code generation for boilerplate (<https://medium.com/@yamen.abd98/code-generator-using-flutter-source-gen-build-runner-9cc1fe0e2ff2>)
 1. chore: Constructors at the top of the class
+1. chore: Learn about using `library`
 1. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern
