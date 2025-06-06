@@ -11,7 +11,7 @@ part '_widgets/_widget.dart';
 
 /// Widget showcase of [MyoroCard].
 final class MyoroCardWidgetShowcase extends StatelessWidget {
-  static const options = [_TitleOption(), _TitleTextStyleOption(), _PaddingOption(), _ConstraintsOption()];
+  static const options = [_TitleOption(), _PaddingOption(), _ConstraintsOption()];
 
   const MyoroCardWidgetShowcase({super.key});
 
@@ -19,7 +19,7 @@ final class MyoroCardWidgetShowcase extends StatelessWidget {
   Widget build(_) {
     return InheritedProvider(
       create: (_) => MyoroCardWidgetShowcaseViewModel(),
-      child: WidgetShowcaseScreen(
+      child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroCardTitle,
           widget: _Widget(),

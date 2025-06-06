@@ -8,13 +8,17 @@ final class WidgetShowcaseModule implements Module {
   @override
   List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
+      // ########## Shared ##########
+      WidgetShowcaseOptionThemeExtension.builder(textTheme),
+      // ############################
+
       // ########## Screens ##########
       WidgetShowcaseScreenThemeExtension.builder(),
       // #############################
 
       // ########## Widget showcase options ##########
+      const BoxConstraintsWidgetShowcaseOptionThemeExtension.builder(),
       const ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
-      const ConstraintsWidgetShowcaseOptionThemeExtension.builder(),
       const IconWidgetShowcaseOptionThemeExtension.builder(),
       const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),
