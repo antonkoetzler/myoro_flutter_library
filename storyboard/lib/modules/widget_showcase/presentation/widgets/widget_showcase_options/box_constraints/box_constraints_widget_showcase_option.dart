@@ -21,12 +21,6 @@ final class _BoxConstraintsWidgetShowcaseOptionState extends State<BoxConstraint
   late final _viewModel = BoxConstraintsWidgetShowcaseOptionViewModel(widget.configuration);
 
   @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
 
@@ -45,7 +39,7 @@ final class _BoxConstraintsWidgetShowcaseOptionState extends State<BoxConstraint
             ),
             rightConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
               label: 'Max Height',
-              checkboxOnChanged: _viewModel.onMaxHeightCheckboxOnChanged,
+              checkboxOnChanged: (enabled) => _viewModel.onMaxHeightCheckboxOnChanged,
               onChanged: _viewModel.onMaxHeightOnChanged,
             ),
           ),
