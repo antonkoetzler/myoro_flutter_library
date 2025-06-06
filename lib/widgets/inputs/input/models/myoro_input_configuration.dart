@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_input_configuration.g.dart';
+
 /// Model to load all of the configurable arguments of [MyoroInput].
-class MyoroInputConfiguration extends Equatable {
+@myoroModel
+class MyoroInputConfiguration with $MyoroInputConfigurationMixin {
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
   static const textAlignDefaultValue = TextAlign.start;
   static const contentPaddingDefaultValue = EdgeInsets.only(top: 10, bottom: 10, left: 8, right: 5);
@@ -120,119 +123,6 @@ class MyoroInputConfiguration extends Equatable {
       onCleared = null,
       focusNode = null,
       controller = null;
-
-  MyoroInputConfiguration copyWith({
-    MyoroInputStyleEnum? inputStyle,
-    TextAlign? textAlign,
-    TextStyle? inputTextStyle,
-    bool inputTextStyleProvided = true,
-    String? label,
-    bool labelProvided = true,
-    String? placeholder,
-    bool placeholderProvided = true,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    EdgeInsets? contentPadding,
-    InputBorder? border,
-    bool borderProvided = true,
-    Widget? suffix,
-    bool suffixProvided = true,
-    bool? enabled,
-    bool? readOnly,
-    bool readOnlyProvided = true,
-    bool? autofocus,
-    bool autofocusProvided = true,
-    bool? showClearTextButton,
-    bool showClearTextButtonProvided = true,
-    MyoroInputCheckboxOnChanged? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    MyoroInputValidation? validation,
-    bool validationProvided = true,
-    MyoroInputOnFieldSubmitted? onFieldSubmitted,
-    bool onFieldSubmittedProvided = true,
-    MyoroInputOnChanged? onChanged,
-    bool onChangedProvided = true,
-    VoidCallback? onCleared,
-    bool onClearedProvided = true,
-    FocusNode? focusNode,
-    bool focusNodeProvided = true,
-    TextEditingController? controller,
-    bool controllerProvided = true,
-  }) {
-    return MyoroInputConfiguration(
-      inputStyle: inputStyle ?? this.inputStyle,
-      textAlign: textAlign ?? this.textAlign,
-      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? this.inputTextStyle) : null,
-      label: labelProvided ? (label ?? this.label) : null,
-      placeholder: placeholderProvided ? (placeholder ?? this.placeholder) : null,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
-      contentPadding: contentPadding ?? this.contentPadding,
-      border: borderProvided ? (border ?? this.border) : null,
-      suffix: suffixProvided ? (suffix ?? this.suffix) : null,
-      enabled: enabled ?? this.enabled,
-      readOnly: readOnlyProvided ? (readOnly ?? this.readOnly) : null,
-      autofocus: autofocusProvided ? (autofocus ?? this.autofocus) : null,
-      showClearTextButton: showClearTextButtonProvided ? (showClearTextButton ?? this.showClearTextButton) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
-      validation: validationProvided ? (validation ?? this.validation) : null,
-      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? this.onFieldSubmitted) : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-      onCleared: onClearedProvided ? (onCleared ?? this.onCleared) : null,
-      focusNode: focusNodeProvided ? (focusNode ?? this.focusNode) : null,
-      controller: controllerProvided ? (controller ?? this.controller) : null,
-    );
-  }
-
-  @override
-  String toString() =>
-      'MyoroInputConfiguration(\n'
-      '  inputStyle: $inputStyle,\n'
-      '  textAlign: $textAlign,\n'
-      '  inputTextStyle: $inputTextStyle,\n'
-      '  label: $label,\n'
-      '  placeholder: $placeholder,\n'
-      '  labelTextStyle: $labelTextStyle,\n'
-      '  contentPadding: $contentPadding,\n'
-      '  border: $border,\n'
-      '  suffix: $suffix,\n'
-      '  enabled: $enabled,\n'
-      '  readOnly: $readOnly,\n'
-      '  autofocus: $autofocus,\n'
-      '  showClearTextButton: $showClearTextButton,\n'
-      '  checkboxOnChanged: $checkboxOnChanged,\n'
-      '  validation: $validation,\n'
-      '  onFieldSubmitted: $onFieldSubmitted,\n'
-      '  onChanged: $onChanged,\n'
-      '  onCleared: $onCleared,\n'
-      '  focusNode: $focusNode,\n'
-      '  controller: $controller,\n'
-      ');';
-
-  @override
-  List<Object?> get props {
-    return [
-      inputStyle,
-      textAlign,
-      inputTextStyle,
-      label,
-      placeholder,
-      labelTextStyle,
-      contentPadding,
-      border,
-      // suffix, ~ [Widget]s aren't great for comparison.
-      enabled,
-      readOnly,
-      autofocus,
-      showClearTextButton,
-      checkboxOnChanged,
-      validation,
-      onFieldSubmitted,
-      onChanged,
-      onCleared,
-      focusNode,
-      controller,
-    ];
-  }
 
   InputBorder getBorder(BuildContext context) {
     return border ?? inputStyle.getBorder(context);

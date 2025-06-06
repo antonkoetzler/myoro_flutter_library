@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_pie_graph_configuration.g.dart';
+
 /// Configuration of [MyoroPieGraph].
-class MyoroPieGraphConfiguration extends Equatable {
+@myoroModel
+class MyoroPieGraphConfiguration with $MyoroPieGraphConfigurationMixin {
   /// Pie/donut enum.
   final MyoroPieGraphEnum typeEnum;
 
@@ -30,30 +33,4 @@ class MyoroPieGraphConfiguration extends Equatable {
       items: List.generate(faker.randomGenerator.integer(10), (_) => MyoroPieGraphItem.fake()),
     );
   }
-
-  MyoroPieGraphConfiguration copyWith({
-    MyoroPieGraphEnum? typeEnum,
-    Widget? centerWidget,
-    bool centerWidgetProvided = true,
-    List<MyoroPieGraphItem>? items,
-  }) {
-    return MyoroPieGraphConfiguration(
-      typeEnum: typeEnum ?? this.typeEnum,
-      centerWidget: centerWidgetProvided ? (centerWidget ?? this.centerWidget) : null,
-      items: items ?? this.items,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [typeEnum, centerWidget, items];
-  }
-
-  @override
-  String toString() =>
-      'MyoroPieGraphConfiguration(\n'
-      '  typeEnum: $typeEnum,\n'
-      '  centerWidget: $centerWidget,\n'
-      '  items: $items,\n'
-      ');';
 }

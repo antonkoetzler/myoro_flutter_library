@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_snack_bar_configuration.g.dart';
+
 /// Configuration model of [MyoroSnackBar].
-class MyoroSnackBarConfiguration extends Equatable {
+@myoroModel
+class MyoroSnackBarConfiguration with $MyoroSnackBarConfigurationMixin {
   static const snackBarTypeDefaultValue = MyoroSnackBarTypeEnum.standard;
   static const showCloseButtonDefaultValue = true;
   static const messageDefaultValue = '';
@@ -26,10 +29,7 @@ class MyoroSnackBarConfiguration extends Equatable {
     this.showCloseButton = showCloseButtonDefaultValue,
     this.message = messageDefaultValue,
     this.child,
-  }) : assert(
-         (message.length > 0) ^ (child != null),
-         '[MyoroSnackBar]: [message] (x)or [child] must be provided.',
-       );
+  }) : assert((message.length > 0) ^ (child != null), '[MyoroSnackBar]: [message] (x)or [child] must be provided.');
 
   factory MyoroSnackBarConfiguration.fake() {
     final bool messageProvided = faker.randomGenerator.boolean();
@@ -41,33 +41,4 @@ class MyoroSnackBarConfiguration extends Equatable {
       child: messageProvided ? null : const SizedBox.shrink(),
     );
   }
-
-  MyoroSnackBarConfiguration copyWith({
-    MyoroSnackBarTypeEnum? snackBarType,
-    bool? showCloseButton,
-    String? message,
-    Widget? child,
-    bool childProvided = true,
-  }) {
-    return MyoroSnackBarConfiguration(
-      snackBarType: snackBarType ?? this.snackBarType,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      message: message ?? this.message,
-      child: childProvided ? (child ?? this.child) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [snackBarType, showCloseButton, message, child];
-  }
-
-  @override
-  String toString() =>
-      'MyoroSnackBarConfiguration(\n'
-      '  snackBarType: $snackBarType,\n'
-      '  showCloseButton: $showCloseButton,\n'
-      '  message: $message,\n'
-      '  child: $child,\n'
-      ');';
 }

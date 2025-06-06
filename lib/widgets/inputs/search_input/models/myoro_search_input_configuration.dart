@@ -1,9 +1,14 @@
-import 'package:equatable/equatable.dart';
+import 'dart:async';
+
 import 'package:faker/faker.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_search_input_configuration.g.dart';
+
 /// Configuration of [MyoroSearchInput].
-class MyoroSearchInputConfiguration<T> extends Equatable {
+@myoroModel
+class MyoroSearchInputConfiguration<T> with $MyoroSearchInputConfigurationMixin {
   static const requestWhenChangedDefaultValue = false;
 
   /// [MyoroInput] configuration.
@@ -30,32 +35,4 @@ class MyoroSearchInputConfiguration<T> extends Equatable {
       requestWhenChanged = faker.randomGenerator.boolean(),
       request = ((_) => {}),
       itemBuilder = ((_) => MyoroMenuItem.fake());
-
-  MyoroSearchInputConfiguration<T> copyWith({
-    MyoroInputConfiguration? inputConfiguration,
-    bool? requestWhenChanged,
-    MyoroSearchInputRequest<T>? request,
-    MyoroMenuItemBuilder<T>? itemBuilder,
-  }) {
-    return MyoroSearchInputConfiguration(
-      inputConfiguration: inputConfiguration ?? this.inputConfiguration,
-      requestWhenChanged: requestWhenChanged ?? this.requestWhenChanged,
-      request: request ?? this.request,
-      itemBuilder: itemBuilder ?? this.itemBuilder,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [inputConfiguration, requestWhenChanged, request, itemBuilder];
-  }
-
-  @override
-  String toString() =>
-      'MyoroSearchInputConfiguration(\n'
-      '  inputConfiguration: $inputConfiguration,\n'
-      '  requestWhenChanged: $requestWhenChanged,\n'
-      '  request: $request,\n'
-      '  itemBuilder: $itemBuilder,\n'
-      ');';
 }

@@ -43,7 +43,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
       children: [
         ValueListenableBuilder(
           valueListenable: _notifier,
-          builder: (_, bool enabled, __) {
+          builder: (_, bool enabled, _) {
             return Radio(
               value: true,
               groupValue: enabled,

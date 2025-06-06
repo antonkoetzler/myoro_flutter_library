@@ -1,11 +1,14 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/foundation.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_table_column_width_configuration.g.dart';
 
 /// Width configuration of a [MyoroTable].
 @immutable
-class MyoroTableColumnWidthConfiguration extends Equatable {
+@myoroModel
+class MyoroTableColumnWidthConfiguration with $MyoroTableColumnWidthConfigurationMixin {
   /// Width configuration enum.
   final MyoroTableColumnWidthConfigurationEnum typeEnum;
 
@@ -14,9 +17,7 @@ class MyoroTableColumnWidthConfiguration extends Equatable {
 
   const MyoroTableColumnWidthConfiguration({required this.typeEnum, this.fixedWidth})
     : assert(
-        (typeEnum == MyoroTableColumnWidthConfigurationEnum.fixed)
-            ? (fixedWidth != null)
-            : (fixedWidth == null),
+        (typeEnum == MyoroTableColumnWidthConfigurationEnum.fixed) ? (fixedWidth != null) : (fixedWidth == null),
         '[MyoroTableColumnWidthConfiguration]: If [typeEnum] is [MyoroTableColumnWidthConfigurationEnum.fixed], '
         '[fixedWidth] cannot be null. Vice versa, [fixedWidth] must be null if [typeEnum] is any other value.',
       );
@@ -29,27 +30,4 @@ class MyoroTableColumnWidthConfiguration extends Equatable {
       fixedWidth: typeEnum.isFixed ? faker.randomGenerator.decimal(scale: 50) : null,
     );
   }
-
-  MyoroTableColumnWidthConfiguration copyWith({
-    MyoroTableColumnWidthConfigurationEnum? typeEnum,
-    double? fixedWidth,
-    bool fixedWidthProvided = true,
-  }) {
-    return MyoroTableColumnWidthConfiguration(
-      typeEnum: typeEnum ?? this.typeEnum,
-      fixedWidth: fixedWidthProvided ? (fixedWidth ?? this.fixedWidth) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [typeEnum, fixedWidth];
-  }
-
-  @override
-  String toString() =>
-      'MyoroTableColumnWidthConfiguration(\n'
-      '  typeEnum: $typeEnum,\n'
-      '  fixedWidth: $fixedWidth,\n'
-      ');';
 }

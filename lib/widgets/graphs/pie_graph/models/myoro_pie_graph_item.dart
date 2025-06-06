@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_pie_graph_item.g.dart';
+
 /// Item/section in a [MyoroPieGraph].
-class MyoroPieGraphItem extends Equatable {
+@myoroModel
+class MyoroPieGraphItem with $MyoroPieGraphItemMixin {
   /// Value of the item.
   final double value;
 
@@ -20,31 +23,4 @@ class MyoroPieGraphItem extends Equatable {
     : value = faker.randomGenerator.decimal(),
       color = myoroFake<Color>(),
       radius = faker.randomGenerator.decimal(min: 0);
-
-  MyoroPieGraphItem copyWith({
-    double? value,
-    Color? color,
-    bool colorProvided = true,
-    double? radius,
-    bool radiusProvided = true,
-  }) {
-    return MyoroPieGraphItem(
-      value: value ?? this.value,
-      color: colorProvided ? (color ?? this.color) : null,
-      radius: radiusProvided ? (radius ?? this.radius) : null,
-    );
-  }
-
-  @override
-  String toString() =>
-      'MyoroPieGraphItem(\n'
-      '  value: $value,\n'
-      '  color: $color,\n'
-      '  radius: $radius,\n'
-      ');';
-
-  @override
-  List<Object?> get props {
-    return [value, color, radius];
-  }
 }

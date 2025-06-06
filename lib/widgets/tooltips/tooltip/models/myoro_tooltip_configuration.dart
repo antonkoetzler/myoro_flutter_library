@@ -1,12 +1,14 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_tooltip_configuration.g.dart';
+
 /// Configuration model of [MyoroTooltip].
-///
-/// TODO: Test needs to be rewritten.
-class MyoroTooltipConfiguration extends Equatable {
+@immutable
+@myoroModel
+class MyoroTooltipConfiguration with $MyoroTooltipConfigurationMixin {
   static const waitDurationDefaultValue = Duration(milliseconds: 200);
 
   /// Margin [EdgeInsets] of the tooltip.
@@ -18,40 +20,10 @@ class MyoroTooltipConfiguration extends Equatable {
   /// Text of the tooltip.
   final String text;
 
-  const MyoroTooltipConfiguration({
-    this.margin,
-    this.waitDuration = waitDurationDefaultValue,
-    required this.text,
-  });
+  const MyoroTooltipConfiguration({this.margin, this.waitDuration = waitDurationDefaultValue, required this.text});
 
   MyoroTooltipConfiguration.fake()
     : margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       waitDuration = myoroFake<Duration>(),
       text = faker.lorem.word();
-
-  MyoroTooltipConfiguration copyWith({
-    EdgeInsets? margin,
-    bool marginProvided = true,
-    Duration? waitDuration,
-    String? text,
-  }) {
-    return MyoroTooltipConfiguration(
-      margin: marginProvided ? (margin ?? this.margin) : null,
-      waitDuration: waitDuration ?? this.waitDuration,
-      text: text ?? this.text,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [margin, waitDuration, text];
-  }
-
-  @override
-  String toString() =>
-      'MyoroTooltipConfiguration(\n'
-      '  margin: $margin,\n'
-      '  waitDuration: $waitDuration,\n'
-      '  text: $text,\n'
-      ');';
 }

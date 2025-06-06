@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_carousel_configuration.g.dart';
+
 /// Configuration of [MyoroCarousel].
-class MyoroCarouselConfiguration extends Equatable {
+@myoroModel
+class MyoroCarouselConfiguration with $MyoroCarouselConfigurationMixin {
   static const directionDefaultValue = Axis.horizontal;
   static const displayTraversalButtonsDefaultValue = false;
   static const initialItemDefaultValue = 0;
@@ -50,38 +53,4 @@ class MyoroCarouselConfiguration extends Equatable {
       items: items,
     );
   }
-
-  MyoroCarouselConfiguration copyWith({
-    Axis? direction,
-    bool? displayTraversalButtons,
-    int? initialItem,
-    bool? autoplay,
-    Duration? autoplayIntervalDuration,
-    List<Widget>? items,
-  }) {
-    return MyoroCarouselConfiguration(
-      direction: direction ?? this.direction,
-      displayTraversalButtons: displayTraversalButtons ?? this.displayTraversalButtons,
-      initialItem: initialItem ?? this.initialItem,
-      autoplay: autoplay ?? this.autoplay,
-      autoplayIntervalDuration: autoplayIntervalDuration ?? this.autoplayIntervalDuration,
-      items: items ?? this.items,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [direction, displayTraversalButtons, initialItem, autoplay, autoplayIntervalDuration, items];
-  }
-
-  @override
-  String toString() =>
-      'MyoroCarouselConfiguration(\n'
-      '  direction: $direction,\n'
-      '  displayTraversalButtons: $displayTraversalButtons,\n'
-      '  initialItem: $initialItem,\n'
-      '  autoplay: $autoplay,\n'
-      '  autoplayIntervalDuration: $autoplayIntervalDuration,\n'
-      '  items: $items,\n'
-      ');';
 }

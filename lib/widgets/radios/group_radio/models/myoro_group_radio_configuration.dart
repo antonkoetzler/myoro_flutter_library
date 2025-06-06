@@ -1,16 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Radios of the group. Provided as a map for speed and ease of navigation.
-typedef MyoroGroupRadioItems = Map<String, bool>;
-
-/// Function executed when any of the radio's values are changed.
-typedef MyoroGroupRadioOnChanged = void Function(String keyChanged, MyoroGroupRadioItems items);
+part 'myoro_group_radio_configuration.g.dart';
 
 /// Configuration of [MyoroGroupRadio].
-class MyoroGroupRadioConfiguration extends Equatable {
+@myoroModel
+class MyoroGroupRadioConfiguration with $MyoroGroupRadioConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;
 
   /// [ValueNotifier] of the [MyoroGroupRadio] for more complex scope situations.
@@ -63,47 +60,8 @@ class MyoroGroupRadioConfiguration extends Equatable {
       direction: myoroFake<Axis>(),
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
       runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      onChanged: faker.randomGenerator.boolean() ? ((_, __) {}) : null,
+      onChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
       radios: notifierProvided ? null : radios,
     );
   }
-
-  MyoroGroupRadioConfiguration copyWith({
-    MyoroGroupRadioController? notifier,
-    bool notifierProvided = true,
-    Axis? direction,
-    double? spacing,
-    bool spacingProvided = true,
-    double? runSpacing,
-    bool runSpacingProvided = true,
-    MyoroGroupRadioOnChanged? onChanged,
-    bool onChangedProvided = true,
-    MyoroGroupRadioItems? radios,
-    bool radiosProvided = true,
-  }) {
-    return MyoroGroupRadioConfiguration(
-      notifier: notifierProvided ? (notifier ?? this.notifier) : null,
-      direction: direction ?? this.direction,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-      radios: radiosProvided ? (radios ?? this.radios) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [notifier, direction, spacing, runSpacing, onChanged, radios];
-  }
-
-  @override
-  String toString() =>
-      'MyoroGroupRadioConfiguration(\n'
-      '  notifier: $notifier,\n'
-      '  direction: $direction,\n'
-      '  spacing: $spacing,\n'
-      '  runSpacing: $runSpacing,\n'
-      '  onChanged: $onChanged,\n'
-      '  radios: $radios,\n'
-      ');';
 }

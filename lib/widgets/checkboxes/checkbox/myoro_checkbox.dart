@@ -44,7 +44,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
         children: [
           ValueListenableBuilder(
             valueListenable: _viewModel.state.enabledController,
-            builder: (_, bool enabled, __) {
+            builder: (_, bool enabled, _) {
               // This [SizedBox] removes the default margin in [Checkbox].
               return SizedBox(
                 width: 20,

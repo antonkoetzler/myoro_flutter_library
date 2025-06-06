@@ -1,10 +1,14 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
+part 'text_widget_showcase_option_configuration.g.dart';
+
 /// Configuration model of [TextWidgetShowcaseOption].
-final class TextWidgetShowcaseOptionConfiguration extends Equatable {
+@immutable
+@myoroModel
+final class TextWidgetShowcaseOptionConfiguration with $TextWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Text';
 
   const TextWidgetShowcaseOptionConfiguration({
@@ -33,42 +37,4 @@ final class TextWidgetShowcaseOptionConfiguration extends Equatable {
 
   /// [Text.style] on-changed.
   final TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged;
-
-  TextWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    MyoroInputOnChanged? textOnChanged,
-    TextWidgetShowcaseOptionMaxLinesOnChanged? maxLinesOnChanged,
-    bool maxLinesOnChangedProvided = true,
-    TextWidgetShowcaseOptionOverflowOnChanged? overflowOnChanged,
-    bool overflowOnChangedProvided = true,
-    TextWidgetShowcaseOptionAlignmentOnChanged? alignmentOnChanged,
-    bool alignmentOnChangedProvided = true,
-    TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged,
-    bool styleOnChangedProvided = true,
-  }) {
-    return TextWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
-      textOnChanged: textOnChanged ?? this.textOnChanged,
-      maxLinesOnChanged: maxLinesOnChangedProvided ? (maxLinesOnChanged ?? this.maxLinesOnChanged) : null,
-      overflowOnChanged: overflowOnChangedProvided ? (overflowOnChanged ?? this.overflowOnChanged) : null,
-      alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? this.alignmentOnChanged) : null,
-      styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? this.styleOnChanged) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [label, textOnChanged, maxLinesOnChanged, overflowOnChanged, alignmentOnChanged, styleOnChanged];
-  }
-
-  @override
-  String toString() =>
-      'TextWidgetShowcaseOptionConfiguration(\n'
-      '  label: $label,\n'
-      '  textOnChanged: $textOnChanged,\n'
-      '  maxLinesOnChanged: $maxLinesOnChanged,\n'
-      '  overflowOnChanged: $overflowOnChanged,\n'
-      '  alignmentOnChanged: $alignmentOnChanged,\n'
-      '  styleOnChanged: $styleOnChanged,\n'
-      ');';
 }

@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:storyboard/storyboard.dart';
 
+part 'widget_showcase_screen_configuration.g.dart';
+
 /// Configuration model of [StoryboardScreen].
-final class WidgetShowcaseScreenConfiguration extends Equatable {
+@myoroModel
+final class WidgetShowcaseScreenConfiguration with $WidgetShowcaseScreenConfigurationMixin {
   static const widgetOptionsDefaultValue = <Widget>[];
 
   /// Name of the [Widget].
@@ -26,25 +29,4 @@ final class WidgetShowcaseScreenConfiguration extends Equatable {
     : widgetName = faker.lorem.word(),
       widget = Text(faker.lorem.word()),
       widgetOptions = List.generate(faker.randomGenerator.integer(10), (_) => Text(faker.lorem.word()));
-
-  WidgetShowcaseScreenConfiguration copyWith({String? widgetName, Widget? widget, List<Widget>? widgetOptions}) {
-    return WidgetShowcaseScreenConfiguration(
-      widgetName: widgetName ?? this.widgetName,
-      widget: widget ?? this.widget,
-      widgetOptions: widgetOptions ?? this.widgetOptions,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [widgetName, widget, widgetOptions];
-  }
-
-  @override
-  String toString() =>
-      'WidgetShowcaseScreenConfiguration(\n'
-      '  widgetName: $widgetName,\n'
-      '  widget: $widget,\n'
-      '  widgetOptions: $widgetOptions,\n'
-      ');';
 }

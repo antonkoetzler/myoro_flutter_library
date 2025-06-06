@@ -24,7 +24,7 @@ final class _SearchButton<T> extends StatelessWidget {
     if (!_itemsRequestStatus.isLoading) _itemsRequestController.fetch();
   }
 
-  Widget _builder(BuildContext context, __) {
+  Widget _builder(BuildContext context, _) {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
     return _itemsRequestStatus.isLoading

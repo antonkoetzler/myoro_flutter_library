@@ -13,7 +13,6 @@ dependencies:
     sdk: flutter
   # Latest conflicts with the Flutter's material library like [Color].
   faker: 2.1.0
-  equatable: ^2.0.5
   sqlite3: ^2.4.7
   sqflite_common_ffi: ^2.3.4
   sqlite3_flutter_libs: ^0.5.26
@@ -28,6 +27,9 @@ dependencies:
   intl: any
   url_launcher: ^6.3.1
   mocktail: ^1.0.4
+  # TODO: Change to pub.dev way
+  myoro_flutter_annotations:
+    path: ../myoro_flutter_annotations
 
 dev_dependencies:
   flutter_test:

@@ -1,9 +1,12 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_radio_configuration.g.dart';
+
 /// Configuration of [MyoroRadio].
-class MyoroRadioConfiguration extends Equatable {
+@myoroModel
+class MyoroRadioConfiguration with $MyoroRadioConfigurationMixin {
   static const initialValueDefaultValue = false;
 
   /// [ValueNotifier] to manage state externally.
@@ -36,39 +39,4 @@ class MyoroRadioConfiguration extends Equatable {
          '[MyoroRadio]: If [notifier] is provided, set the initial '
          'value within the [MyoroRadioController]\'s constructor.',
        );
-
-  MyoroRadioConfiguration copyWith({
-    MyoroRadioController? notifier,
-    bool notifierProvided = true,
-    bool? initialValue,
-    String? label,
-    bool labelProvided = true,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    MyoroRadioOnChanged? onChanged,
-    bool onChangedProvided = true,
-  }) {
-    return MyoroRadioConfiguration(
-      notifier: notifierProvided ? (notifier ?? this.notifier) : null,
-      initialValue: initialValue ?? this.initialValue,
-      label: labelProvided ? (label ?? this.label) : null,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [notifier, initialValue, label, labelTextStyle, onChanged];
-  }
-
-  @override
-  String toString() =>
-      'MyoroRadioConfiguration(\n'
-      '  notifier: $notifier,\n'
-      '  initialValue: $initialValue,\n'
-      '  label: $label,\n'
-      '  labelTextStyle: $labelTextStyle,\n'
-      '  onChanged: $onChanged,\n'
-      ');';
 }

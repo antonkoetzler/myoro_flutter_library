@@ -43,12 +43,12 @@ final class _MyoroSliderState extends State<MyoroSlider> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (_configuration?.label != null && _configuration?.label.isNotEmpty == true) _Label(),
+            if (_configuration?.label != null && _configuration?.label.isNotEmpty == true) const _Label(),
             Padding(
               padding: sliderPadding,
               child: ValueListenableBuilder(
                 valueListenable: _controller,
-                builder: (_, double value, __) {
+                builder: (_, double value, _) {
                   return Column(
                     children: [
                       Row(

@@ -22,7 +22,7 @@ final class _TextFormField extends StatelessWidget {
       decoration: BoxDecoration(color: themeExtension.primaryColor, borderRadius: themeExtension.borderRadius),
       child: ValueListenableBuilder(
         valueListenable: showClearTextButtonController,
-        builder: (_, bool showClearTextButton, __) {
+        builder: (_, bool showClearTextButton, _) {
           return TextFormField(
             // So the checkbox prefix may be clicked
             ignorePointers: false,

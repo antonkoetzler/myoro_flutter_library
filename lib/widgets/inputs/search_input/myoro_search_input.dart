@@ -30,7 +30,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: _controller.state.itemsRequestController,
-      builder: (_, __, ___) => _Body(_controller),
+      builder: (_, _, _) => _Body(_controller),
     );
   }
 }

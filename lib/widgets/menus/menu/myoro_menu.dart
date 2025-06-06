@@ -49,7 +49,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     );
   }
 
-  Widget _builder(_, MyoroRequest<Set<T>> state, __) {
+  Widget _builder(_, MyoroRequest<Set<T>> state, _) {
     _viewModel.jumpToBottomPreviousPosition();
     return switch (state.status) {
       MyoroRequestEnum.idle => const _Loader(),

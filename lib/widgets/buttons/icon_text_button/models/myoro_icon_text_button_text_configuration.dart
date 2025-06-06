@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_icon_text_button_text_configuration.g.dart';
+
 /// Text configuration of [MyoroIconTextButton].
-class MyoroIconTextButtonTextConfiguration extends Equatable {
+@myoroModel
+class MyoroIconTextButtonTextConfiguration with $MyoroIconTextButtonTextConfigurationMixin {
   static const maxLinesDefaultValue = 1;
   static const overflowDefaultValue = TextOverflow.ellipsis;
   static const alignmentDefaultValue = TextAlign.center;
@@ -38,36 +41,4 @@ class MyoroIconTextButtonTextConfiguration extends Equatable {
       overflow = myoroFake<TextOverflow>(),
       alignment = myoroFake<TextAlign>(),
       style = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null;
-
-  MyoroIconTextButtonTextConfiguration copyWith({
-    String? text,
-    int? maxLines,
-    TextOverflow? overflow,
-    TextAlign? alignment,
-    TextStyle? style,
-    bool styleProvided = true,
-  }) {
-    return MyoroIconTextButtonTextConfiguration(
-      text: text ?? this.text,
-      maxLines: maxLines ?? this.maxLines,
-      overflow: overflow ?? this.overflow,
-      alignment: alignment ?? this.alignment,
-      style: styleProvided ? (style ?? this.style) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [text, maxLines, overflow, alignment, style];
-  }
-
-  @override
-  String toString() =>
-      'MyoroIconTextButtonTextConfiguration(\n'
-      '  text: $text,\n'
-      '  maxLines: $maxLines,\n'
-      '  overflow: $overflow,\n'
-      '  alignment: $alignment,\n'
-      '  style: $style,\n'
-      ');';
 }

@@ -18,7 +18,7 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
     return ValueListenableBuilder(valueListenable: _inputSizeController, builder: _inputSizeControllerBuilder);
   }
 
-  Widget _inputSizeControllerBuilder(BuildContext context, Size? inputSize, __) {
+  Widget _inputSizeControllerBuilder(BuildContext context, Size? inputSize, _) {
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return ClipRRect(
@@ -34,7 +34,7 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
   Widget _enabledControllerBuilder(BuildContext context, bool enabled, _) {
     return ValueListenableBuilder(
       valueListenable: _selectedItemsController,
-      builder: (_, __, ___) => _selectedItemsControllerBuilder(context),
+      builder: (_, _, _) => _selectedItemsControllerBuilder(context),
     );
   }
 

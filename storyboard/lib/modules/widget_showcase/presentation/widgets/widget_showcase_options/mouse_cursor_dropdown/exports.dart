@@ -1,2 +1,2 @@
 export 'mouse_cursor_dropdown_widget_showcase_option.dart';
-export 'mouse_cursor_dropdown_widget_showcase_option_theme_extension.dart';
+export 'theme_extensions/mouse_cursor_dropdown_widget_showcase_option_theme_extension.dart';

@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:storyboard/storyboard.dart';
 
+part 'storyboard_screen_configuration.g.dart';
+
 /// Configuration of [StoryboardScreen].
-final class StoryboardScreenConfiguration extends Equatable {
+@myoroModel
+final class StoryboardScreenConfiguration with $StoryboardScreenConfigurationMixin {
   static const extraActionWidgetsDefaultValue = <Widget>[];
 
   /// Callback that builds [_PreviousPageButton].
@@ -31,24 +34,4 @@ final class StoryboardScreenConfiguration extends Equatable {
       title = faker.lorem.word(),
       extraActionWidgets = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word())),
       body = Text(faker.lorem.word());
-
-  StoryboardScreenConfiguration copyWith({
-    VoidCallback? onPrevious,
-    bool onPreviousProvided = true,
-    String? title,
-    List<Widget>? extraActionWidgets,
-    Widget? body,
-  }) {
-    return StoryboardScreenConfiguration(
-      onPrevious: onPreviousProvided ? (onPrevious ?? this.onPrevious) : null,
-      title: title ?? this.title,
-      extraActionWidgets: extraActionWidgets ?? this.extraActionWidgets,
-      body: body ?? this.body,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [onPrevious, title, extraActionWidgets, body];
-  }
 }

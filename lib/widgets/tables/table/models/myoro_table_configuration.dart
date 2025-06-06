@@ -1,10 +1,15 @@
-import 'package:equatable/equatable.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_table_configuration.g.dart';
 
 /// Configuration model of [MyoroTable].
 @immutable
-class MyoroTableConfiguration<T> extends Equatable {
+@myoroModel
+class MyoroTableConfiguration<T> with $MyoroTableConfigurationMixin<T> {
   /// Request of the items of the [MyoroTable].
   final MyoroTableConfigurationRequest<T> request;
 
@@ -16,29 +21,4 @@ class MyoroTableConfiguration<T> extends Equatable {
 
   const MyoroTableConfiguration({required this.request, required this.columns, required this.rowBuilder})
     : assert(columns.length != 0, '[MyoroTableConfiguration<$T>]: [columns] cannot be empty.');
-
-  MyoroTableConfiguration<T> copyWith({
-    MyoroTableConfigurationRequest<T>? request,
-    List<MyoroTableColumn>? columns,
-    MyoroTableConfigurationRowBuilder<T>? rowBuilder,
-  }) {
-    return MyoroTableConfiguration(
-      request: request ?? this.request,
-      columns: columns ?? this.columns,
-      rowBuilder: rowBuilder ?? this.rowBuilder,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [request, columns, rowBuilder];
-  }
-
-  @override
-  String toString() =>
-      'MyoroTableConfiguration<$T>(\n'
-      '  request: $request,\n'
-      '  columns: $columns,\n'
-      '  rowBuilder: $rowBuilder,\n'
-      ');';
 }

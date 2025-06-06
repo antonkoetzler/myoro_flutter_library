@@ -32,7 +32,7 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
 
     return ValueListenableBuilder(
       valueListenable: _notifier,
-      builder: (_, MyoroGroupRadioItems radios, __) {
+      builder: (_, MyoroGroupRadioItems radios, _) {
         return Wrap(
           direction: _configuration.direction,
           spacing: _configuration.spacing ?? themeExtension.spacing,

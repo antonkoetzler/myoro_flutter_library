@@ -10,7 +10,7 @@ final class _Checkbox<T, C extends _C<T>> extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: _viewModel.controller.state.enabledController,
-      builder: (_, bool enabled, __) => _builder(enabled),
+      builder: (_, bool enabled, _) => _builder(enabled),
     );
   }
 

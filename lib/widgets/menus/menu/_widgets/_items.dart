@@ -24,7 +24,7 @@ final class _Items<T> extends StatelessWidget {
           if (_viewModel.state.configuration.searchCallback != null) _SearchBar(_viewModel),
           ValueListenableBuilder(
             valueListenable: _viewModel.state.queriedItemsController,
-            builder: (_, __, ___) => _builder(),
+            builder: (_, _, _) => _builder(),
           ),
         ],
       ),

@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_dialog_modal_configuration.g.dart';
+
 /// Configuration of [MyoroDialogModal].
-class MyoroDialogModalConfiguration extends Equatable {
+@myoroModel
+class MyoroDialogModalConfiguration with $MyoroDialogModalConfigurationMixin {
   static const invertButtonsDefaultValue = false;
   static const textDefaultValue = '';
 
@@ -41,10 +44,7 @@ class MyoroDialogModalConfiguration extends Equatable {
     this.text = textDefaultValue,
     this.textStyle,
     this.child,
-  }) : assert(
-         (text.length > 0) ^ (child != null),
-         '[MyoroDialogModal]: [text] (x)or [child] must be provided.',
-       );
+  }) : assert((text.length > 0) ^ (child != null), '[MyoroDialogModal]: [text] (x)or [child] must be provided.');
 
   factory MyoroDialogModalConfiguration.fake() {
     final bool textProvided = faker.randomGenerator.boolean();
@@ -56,68 +56,8 @@ class MyoroDialogModalConfiguration extends Equatable {
       onConfirm: faker.randomGenerator.boolean() ? (() {}) : null,
       onCancel: faker.randomGenerator.boolean() ? (() {}) : null,
       text: textProvided ? faker.lorem.word() : '',
-      textStyle:
-          faker.randomGenerator.boolean()
-              ? MyoroTypographyDesignSystem.instance.randomTextStyle
-              : null,
+      textStyle: faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
       child: textProvided ? null : const SizedBox.shrink(),
     );
   }
-
-  MyoroDialogModalConfiguration copyWith({
-    bool? invertButtons,
-    String? confirmButtonText,
-    bool confirmButtonTextProvided = true,
-    String? cancelButtonText,
-    bool cancelButtonTextProvided = true,
-    VoidCallback? onConfirm,
-    bool onConfirmProvided = true,
-    VoidCallback? onCancel,
-    bool onCancelProvided = true,
-    String? text,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
-    Widget? child,
-    bool childProvided = true,
-  }) {
-    return MyoroDialogModalConfiguration(
-      invertButtons: invertButtons ?? this.invertButtons,
-      confirmButtonText:
-          confirmButtonTextProvided ? (confirmButtonText ?? this.confirmButtonText) : null,
-      cancelButtonText:
-          cancelButtonTextProvided ? (cancelButtonText ?? this.cancelButtonText) : null,
-      onConfirm: onConfirmProvided ? (onConfirm ?? this.onConfirm) : null,
-      onCancel: onCancelProvided ? (onCancel ?? this.onCancel) : null,
-      text: text ?? this.text,
-      textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
-      child: childProvided ? (child ?? this.child) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [
-      invertButtons,
-      confirmButtonText,
-      cancelButtonText,
-      onConfirm,
-      onCancel,
-      text,
-      textStyle,
-      child,
-    ];
-  }
-
-  @override
-  String toString() =>
-      'MyoroDialogModalConfiguration(\n'
-      '  invertButtons: $invertButtons,\n'
-      '  confirmButtonText: $confirmButtonText,\n'
-      '  cancelButtonText: $cancelButtonText,\n'
-      '  onConfirm: $onConfirm,\n'
-      '  onCancel: $onCancel,\n'
-      '  text: $text,\n'
-      '  textStyle: $textStyle,\n'
-      '  child: $child,\n'
-      ');';
 }

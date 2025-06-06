@@ -17,7 +17,7 @@ class MyoroGroupCheckbox extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: controller,
-      builder: (_, MyoroGroupCheckboxItems checkboxes, __) {
+      builder: (_, MyoroGroupCheckboxItems checkboxes, _) {
         return Wrap(
           direction: configuration.direction,
           spacing: configuration.spacing ?? themeExtension.spacing,

@@ -40,7 +40,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
     return ValueListenableBuilder(
       valueListenable: _inputSizeController,
-      builder: (_, Size? inputSize, __) {
+      builder: (_, Size? inputSize, _) {
         return Positioned(
           width: inputSize?.width,
           child: CompositedTransformFollower(

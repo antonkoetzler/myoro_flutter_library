@@ -83,7 +83,7 @@ final class _Columns<T> extends StatelessWidget {
 
     // Empty [MyoroLayoutBuilder] to rebuild [_Columns] everytime the screen is resized.
     return MyoroLayoutBuilder(
-      builder: (_, __) {
+      builder: (_, _) {
         return ClipRRect(
           clipBehavior: Clip.hardEdge,
           borderRadius: BorderRadius.only(
@@ -170,7 +170,7 @@ final class _RowsSection<T> extends StatelessWidget {
   @override
   Widget build(_) {
     // return BlocBuilder<MyoroTableBloc<T>, MyoroTableState<T>>(buildWhen: _buildWhen, builder: _builder);
-    return ValueListenableBuilder(valueListenable: _itemsRequestController, builder: (_, __, ___) => _builder());
+    return ValueListenableBuilder(valueListenable: _itemsRequestController, builder: (_, _, _) => _builder());
   }
 
   Widget _builder() {
@@ -212,7 +212,7 @@ final class _Rows<T> extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: _titleColumnKeyWidthsController,
-      builder: (_, __, ___) => _builder(themeExtension),
+      builder: (_, _, _) => _builder(themeExtension),
     );
   }
 

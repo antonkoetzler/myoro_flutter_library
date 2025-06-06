@@ -13,7 +13,7 @@ final class _ItemTitleButton extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: viewModel.controller,
-      builder: (_, MyoroAccordionItem? expandedItem, __) {
+      builder: (_, MyoroAccordionItem? expandedItem, _) {
         return _valueListenableBuilder(context, themeExtension, expandedItem);
       },
     );

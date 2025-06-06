@@ -1,11 +1,14 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_modal_configuration.g.dart';
 
 /// Model to store the configuration members of [MyoroModal] that
 /// may be altered within other modals to not repeat the members.
-class MyoroModalConfiguration extends Equatable {
+@myoroModel
+class MyoroModalConfiguration with $MyoroModalConfigurationMixin {
   static const barrierDismissableDefaultValue = true;
   static const useRootNavigatorDefaultValue = true;
   static const showCloseButtonDefaultValue = true;
@@ -84,58 +87,4 @@ class MyoroModalConfiguration extends Equatable {
       showCloseButton = faker.randomGenerator.boolean(),
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
-
-  MyoroModalConfiguration copyWith({
-    bool? barrierDismissable,
-    bool? useRootNavigator,
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
-    VoidCallback? onClosed,
-    bool onClosedProvided = true,
-    String? title,
-    bool titleProvided = true,
-    bool? showCloseButton,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    EdgeInsets? closeButtonPadding,
-    bool closeButtonPaddingProvided = true,
-  }) {
-    return MyoroModalConfiguration(
-      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
-      useRootNavigator: useRootNavigator ?? this.useRootNavigator,
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
-      onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
-      title: titleProvided ? (title ?? this.title) : null,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [
-      barrierDismissable,
-      useRootNavigator,
-      constraints,
-      onClosed,
-      title,
-      showCloseButton,
-      padding,
-      closeButtonPadding,
-    ];
-  }
-
-  @override
-  String toString() =>
-      'MyoroModalConfiguration(\n'
-      '  barrierDismissable: $barrierDismissable,\n'
-      '  useRootNavigator: $useRootNavigator,\n'
-      '  constraints: $constraints,\n'
-      '  onClosed: $onClosed,\n'
-      '  title: $title,\n'
-      '  showCloseButton: $showCloseButton,\n'
-      '  padding: $padding,\n'
-      '  closeButtonPadding: $closeButtonPadding,\n'
-      ');';
 }

@@ -21,7 +21,7 @@ final class _Item extends StatelessWidget {
     );
   }
 
-  Widget _builder(BuildContext context, MyoroAccordionItem? expandedItem, __) {
+  Widget _builder(BuildContext context, MyoroAccordionItem? expandedItem, _) {
     return _ItemContent(item, expandedItem);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase option for [BoxConstraints].
 final class ConstraintsWidgetShowcaseOption extends StatelessWidget {
@@ -8,5 +9,7 @@ final class ConstraintsWidgetShowcaseOption extends StatelessWidget {
   final ConstraintsWidgetShowcaseOptionConfiguration configuration;
 
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return const Text('Here');
+  }
 }

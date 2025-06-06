@@ -1,9 +1,12 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_app_configuration.g.dart';
+
 /// Configuration of [MyoroApp].
-class MyoroAppConfiguration extends Equatable {
+@myoroModel
+class MyoroAppConfiguration with $MyoroAppConfigurationMixin {
   /// Title of the application.
   ///
   /// However, a plugin like [window_manager] needs to be used
@@ -47,68 +50,4 @@ class MyoroAppConfiguration extends Equatable {
     this.router,
     this.home,
   }) : assert((router != null) ^ (home != null), '[MyoroApp]: [router] (x)or [home] must be provided.');
-
-  MyoroAppConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    ThemeMode? themeMode,
-    bool themeModeProvided = true,
-    MyoroAppColorSchemeBuilder? colorSchemeBuilder,
-    bool colorSchemeBuilderProvided = true,
-    MyoroAppTextThemeBuilder? textThemeBuilder,
-    bool textThemeBuilderProvided = true,
-    MyoroAppThemeExtensionsBuilder? themeExtensionsBuilder,
-    bool themeExtensionsBuilderProvided = true,
-    Iterable<LocalizationsDelegate>? localizationsDelegates,
-    bool localizationsDelegatesProvided = true,
-    Iterable<Locale>? supportedLocales,
-    bool supportedLocalesProvided = true,
-    RouterConfig<Object>? router,
-    bool routerProvided = true,
-    Widget? home,
-    bool homeProvided = true,
-  }) {
-    return MyoroAppConfiguration(
-      title: titleProvided ? (title ?? this.title) : null,
-      themeMode: themeModeProvided ? (themeMode ?? this.themeMode) : null,
-      colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? this.colorSchemeBuilder) : null,
-      textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? this.textThemeBuilder) : null,
-      themeExtensionsBuilder:
-          themeExtensionsBuilderProvided ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder) : null,
-      localizationsDelegates:
-          localizationsDelegatesProvided ? (localizationsDelegates ?? this.localizationsDelegates) : null,
-      supportedLocales: supportedLocalesProvided ? (supportedLocales ?? this.supportedLocales) : null,
-      router: routerProvided ? (router ?? this.router) : null,
-      home: homeProvided ? (home ?? this.home) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [
-      title,
-      themeMode,
-      colorSchemeBuilder,
-      textThemeBuilder,
-      themeExtensionsBuilder,
-      localizationsDelegates,
-      supportedLocales,
-      router,
-      home,
-    ];
-  }
-
-  @override
-  String toString() =>
-      'MyoroAppConfiguration(\n'
-      '  title: $title,\n'
-      '  themeMode: $themeMode,\n'
-      '  colorSchemeBuilder: $colorSchemeBuilder,\n'
-      '  textThemeBuilder: $textThemeBuilder,\n'
-      '  themeExtensionsBuilder: $themeExtensionsBuilder,\n'
-      '  localizationsDelegates: $localizationsDelegates,\n'
-      '  supportedLocales: $supportedLocales,\n'
-      '  router: $router,\n'
-      '  home: $home,\n'
-      ');';
 }

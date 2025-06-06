@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_icon_text_button_configuration.g.dart';
+
 /// Configuration model of [MyoroIconTextButton].
-class MyoroIconTextButtonConfiguration extends Equatable {
+@myoroModel
+class MyoroIconTextButtonConfiguration with $MyoroIconTextButtonConfigurationMixin {
   static const invertDefaultValue = false;
 
   /// [MyoroButtonConfiguration]
@@ -62,47 +65,4 @@ class MyoroIconTextButtonConfiguration extends Equatable {
               : null,
     );
   }
-
-  MyoroIconTextButtonConfiguration copyWith({
-    MyoroButtonConfiguration? buttonConfiguration,
-    bool buttonConfigurationProvided = true,
-    bool? invert,
-    double? spacing,
-    bool spacingProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder,
-    bool contentColorBuilderProvided = true,
-    MyoroIconTextButtonIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroIconTextButtonTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
-  }) {
-    return MyoroIconTextButtonConfiguration(
-      buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? this.buttonConfiguration) : null,
-      invert: invert ?? this.invert,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      contentColorBuilder: contentColorBuilderProvided ? (contentColorBuilder ?? this.contentColorBuilder) : null,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [buttonConfiguration, invert, spacing, padding, contentColorBuilder, iconConfiguration, textConfiguration];
-  }
-
-  @override
-  String toString() =>
-      'MyoroIconTextButtonConfiguration(\n'
-      '  buttonConfiguration: $buttonConfiguration,\n'
-      '  invert: $invert,\n'
-      '  spacing: $spacing,\n'
-      '  padding: $padding,\n'
-      '  contentColorBuilder: $contentColorBuilder,\n'
-      '  iconConfiguration: $iconConfiguration,\n'
-      '  textConfiguration: $textConfiguration,\n'
-      ');';
 }

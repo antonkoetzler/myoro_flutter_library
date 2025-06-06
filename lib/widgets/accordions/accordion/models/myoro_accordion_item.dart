@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_accordion_item.g.dart';
+
 /// Item of a [MyoroAccordion].
-class MyoroAccordionItem extends Equatable {
+@myoroModel
+class MyoroAccordionItem with $MyoroAccordionItemMixin {
   /// Builder of the title of the item.
   final MyoroAccordionItemTitleBuilder titleBuilder;
 
@@ -16,26 +19,4 @@ class MyoroAccordionItem extends Equatable {
   MyoroAccordionItem.fake()
     : titleBuilder = ((_) => Text(faker.lorem.word())),
       contentBuilder = ((_) => Text(faker.lorem.word()));
-
-  MyoroAccordionItem copyWith({
-    MyoroAccordionItemTitleBuilder? titleBuilder,
-    MyoroAccordionItemContentBuilder? contentBuilder,
-  }) {
-    return MyoroAccordionItem(
-      titleBuilder: titleBuilder ?? this.titleBuilder,
-      contentBuilder: contentBuilder ?? this.contentBuilder,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [titleBuilder, contentBuilder];
-  }
-
-  @override
-  String toString() =>
-      'MyoroAccordionItem(\n'
-      '  titleBuilder: $titleBuilder,\n'
-      '  contentBuilder: $contentBuilder,\n'
-      ');';
 }

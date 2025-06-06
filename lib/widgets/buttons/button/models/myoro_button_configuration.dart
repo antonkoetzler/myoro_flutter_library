@@ -1,11 +1,14 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_button_configuration.g.dart';
+
 /// Configuration model of [MyoroButton].
-class MyoroButtonConfiguration extends Equatable {
+@myoroModel
+class MyoroButtonConfiguration with $MyoroButtonConfigurationMixin {
   /// [MyoroTooltip] of the [MyoroButton].
   final MyoroTooltipConfiguration? tooltipConfiguration;
 
@@ -54,51 +57,6 @@ class MyoroButtonConfiguration extends Equatable {
               : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null;
-
-  MyoroButtonConfiguration copyWith({
-    MyoroTooltipConfiguration? tooltipConfiguration,
-    bool tooltipConfigurationProvided = true,
-    MouseCursor? cursor,
-    bool cursorProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder,
-    bool backgroundColorBuilderProvided = true,
-    MyoroButtonConfigurationBorderBuilder? borderBuilder,
-    bool borderBuilderProvided = true,
-    MyoroButtonConfigurationOnTapDown? onTapDown,
-    bool onTapDownProvided = true,
-    MyoroButtonConfigurationOnTapUp? onTapUp,
-    bool onTapUpProvided = true,
-  }) {
-    return MyoroButtonConfiguration(
-      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
-      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
-      backgroundColorBuilder:
-          backgroundColorBuilderProvided ? (backgroundColorBuilder ?? this.backgroundColorBuilder) : null,
-      borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [tooltipConfiguration, cursor, borderRadius, backgroundColorBuilder, borderBuilder, onTapDown, onTapUp];
-  }
-
-  @override
-  String toString() =>
-      'MyoroButtonConfiguration(\n'
-      '  tooltipConfiguration: $tooltipConfiguration,\n'
-      '  cursor: $cursor,\n'
-      '  borderRadius: $borderRadius,\n'
-      '  backgroundColorBuilder: $backgroundColorBuilder,\n'
-      '  borderBuilder: $borderBuilder,\n'
-      '  onTapDown: $onTapDown,\n'
-      '  onTapUp: $onTapUp,\n'
-      ');';
 
   /// Returns if [onTapUp] or [onTapDown] was provided.
   bool get onTapProvided => (onTapUp != null) || (onTapDown != null);

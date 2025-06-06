@@ -1,8 +1,12 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_resize_divider_configuration.g.dart';
+
 /// Configuration of [MyoroResizeDivider].
-class MyoroResizeDividerConfiguration extends Equatable {
+@myoroModel
+class MyoroResizeDividerConfiguration with $MyoroResizeDividerConfigurationMixin {
   /// Configuration model with all configurable options of [MyoroBasicDivider].
   final MyoroBasicDividerConfiguration basicDividerConfiguration;
 
@@ -10,27 +14,4 @@ class MyoroResizeDividerConfiguration extends Equatable {
   final MyoroResizeDividerDragCallback? dragCallback;
 
   const MyoroResizeDividerConfiguration({required this.basicDividerConfiguration, this.dragCallback});
-
-  MyoroResizeDividerConfiguration copyWith({
-    MyoroBasicDividerConfiguration? basicDividerConfiguration,
-    MyoroResizeDividerDragCallback? dragCallback,
-    bool dragCallbackProvided = true,
-  }) {
-    return MyoroResizeDividerConfiguration(
-      basicDividerConfiguration: basicDividerConfiguration ?? this.basicDividerConfiguration,
-      dragCallback: dragCallbackProvided ? (dragCallback ?? this.dragCallback) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [basicDividerConfiguration, dragCallback];
-  }
-
-  @override
-  String toString() =>
-      'MyoroResizeDividerConfiguration(\n'
-      '  basicDividerConfiguration: $basicDividerConfiguration,\n'
-      '  dragCallback: $dragCallback,\n'
-      ');';
 }

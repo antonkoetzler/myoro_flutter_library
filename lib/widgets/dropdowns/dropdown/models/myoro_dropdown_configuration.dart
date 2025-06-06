@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -9,7 +8,7 @@ typedef MyoroDropdownConfigurationSelectedItemBuilder<T> = String Function(T ite
 ///
 /// [MyoroSingularDropdown] and [MyoroMultiDropdown] have their separation
 /// configuration classes extending [MyoroDropdownConfiguration] for specific args.
-abstract class MyoroDropdownConfiguration<T> extends Equatable {
+abstract class MyoroDropdownConfiguration<T> {
   static const labelDefaultValue = '';
   static const menuTypeEnumDefaultValue = MyoroDropdownMenuTypeEnum.overlay;
   static const enabledDefaultValue = true;
@@ -45,9 +44,6 @@ abstract class MyoroDropdownConfiguration<T> extends Equatable {
     required this.menuConfiguration,
     required this.selectedItemBuilder,
   });
-
-  /// Standard [copyWith] implementation.
-  MyoroDropdownConfiguration<T> copyWith();
 
   /// Returns if the checkbox callback is provided.
   bool get checkboxOnChangedNotNull;

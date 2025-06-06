@@ -1,9 +1,14 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
+part 'padding_widget_showcase_option_configuration.g.dart';
+
 /// Configuration model of [PaddingWidgetShowcaseOption].
-final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
+@immutable
+@myoroModel
+final class PaddingWidgetShowcaseOptionConfiguration with $PaddingWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Padding';
 
   const PaddingWidgetShowcaseOptionConfiguration({
@@ -20,30 +25,4 @@ final class PaddingWidgetShowcaseOptionConfiguration extends Equatable {
 
   /// [PaddingWidgetShowcaseOptionEnum.all] callback.
   final PaddingWidgetShowcaseOptionSelectionOnChanged paddingOnChanged;
-
-  PaddingWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    PaddingWidgetShowcaseOptionTitleCheckboxOnChanged? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    PaddingWidgetShowcaseOptionSelectionOnChanged? paddingOnChanged,
-  }) {
-    return PaddingWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
-      paddingOnChanged: paddingOnChanged ?? this.paddingOnChanged,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [label, checkboxOnChanged, paddingOnChanged];
-  }
-
-  @override
-  String toString() =>
-      'PaddingWidgetShowcaseOptionConfiguration(\n'
-      '  label: $label,\n'
-      '  checkboxOnChanged: $checkboxOnChanged,\n'
-      '  paddingOnChanged: $paddingOnChanged,\n'
-      ');';
 }

@@ -16,7 +16,7 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: viewModel.controller,
-      builder: (_, MyoroAccordionItem? expandedItem, __) {
+      builder: (_, MyoroAccordionItem? expandedItem, _) {
         final bool isExpanded = (_item == expandedItem);
 
         return AnimatedRotation(

@@ -1,7 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_menu_item.g.dart';
 
 /// A model that loads an item in [MyoroMenu], but also can
 /// be seen as a general model to load items into a menu.
@@ -9,7 +11,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// 2 "modes":
 /// 1. [icon] and/or [text] is provided; a simple [MyoroMenuItem];
 /// 2. [builder] provided for a custom [MyoroMenuItem] widget.
-class MyoroMenuItem extends Equatable {
+@myoroModel
+class MyoroMenuItem with $MyoroMenuItemMixin {
   /// If the item is selected (a.k.a hovered) or not.
   final bool isSelected;
 
@@ -62,48 +65,9 @@ class MyoroMenuItem extends Equatable {
               : ((!requiredIconConfiguration || faker.randomGenerator.boolean())
                   ? MyoroIconTextButtonTextConfiguration.fake()
                   : null),
-      builder: builderProvided ? ((_, __) => const SizedBox.shrink()) : null,
+      builder: builderProvided ? ((_, _) => const SizedBox.shrink()) : null,
       onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
     );
   }
-
-  MyoroMenuItem copyWith({
-    bool? isSelected,
-    MyoroIconTextButtonIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroIconTextButtonTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
-    MyoroButtonBuilder? builder,
-    bool builderProvided = true,
-    MyoroButtonConfigurationOnTapDown? onTapDown,
-    bool onTapDownProvided = true,
-    MyoroButtonConfigurationOnTapUp? onTapUp,
-    bool onTapUpProvided = true,
-  }) {
-    return MyoroMenuItem(
-      isSelected: isSelected ?? this.isSelected,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
-      builder: builderProvided ? (builder ?? this.builder) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [isSelected, iconConfiguration, textConfiguration, builder, onTapDown, onTapUp];
-  }
-
-  @override
-  String toString() =>
-      'MyoroMenuItem(\n'
-      '  isSelected: $isSelected,\n'
-      '  iconConfiguration: $iconConfiguration,\n'
-      '  textConfiguration: $textConfiguration,\n'
-      '  builder: $builder,\n'
-      '  onTapDown: $onTapDown,\n'
-      '  onTapUp: $onTapUp,\n'
-      ');';
 }

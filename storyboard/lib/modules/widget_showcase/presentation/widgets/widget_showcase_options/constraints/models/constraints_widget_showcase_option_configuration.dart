@@ -1,8 +1,13 @@
-import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:storyboard/storyboard.dart';
 
+part 'constraints_widget_showcase_option_configuration.g.dart';
+
 /// Configuration model of [ConstraintsWidgetShowcase].
-final class ConstraintsWidgetShowcaseOptionConfiguration extends Equatable {
+@immutable
+@myoroModel
+final class ConstraintsWidgetShowcaseOptionConfiguration with $ConstraintsWidgetShowcaseOptionConfigurationMixin {
   const ConstraintsWidgetShowcaseOptionConfiguration({
     required this.minHeightOnChanged,
     required this.maxHeightOnChanged,
@@ -21,23 +26,4 @@ final class ConstraintsWidgetShowcaseOptionConfiguration extends Equatable {
 
   /// [BoxConstraints.maxWidget] on-changed.
   final ConstraintsWidgetShowcaseOptionOnChanged maxWidthOnChanged;
-
-  ConstraintsWidgetShowcaseOptionConfiguration copyWith({
-    ConstraintsWidgetShowcaseOptionOnChanged? minHeightOnChanged,
-    ConstraintsWidgetShowcaseOptionOnChanged? maxHeightOnChanged,
-    ConstraintsWidgetShowcaseOptionOnChanged? minWidthOnChanged,
-    ConstraintsWidgetShowcaseOptionOnChanged? maxWidthOnChanged,
-  }) {
-    return ConstraintsWidgetShowcaseOptionConfiguration(
-      minHeightOnChanged: minHeightOnChanged ?? this.minHeightOnChanged,
-      maxHeightOnChanged: maxHeightOnChanged ?? this.maxHeightOnChanged,
-      minWidthOnChanged: minWidthOnChanged ?? this.minWidthOnChanged,
-      maxWidthOnChanged: maxWidthOnChanged ?? this.maxWidthOnChanged,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [minHeightOnChanged, maxHeightOnChanged, minWidthOnChanged, maxWidthOnChanged];
-  }
 }

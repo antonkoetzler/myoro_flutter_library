@@ -1,8 +1,13 @@
-import 'package:equatable/equatable.dart';
+import 'dart:async';
+
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_form_configuration.g.dart';
+
 /// Configuration of [MyoroForm].
-class MyoroFormConfiguration<T> extends Equatable {
+@myoroModel
+class MyoroFormConfiguration<T> with $MyoroFormConfigurationMixin<T> {
   /// Validation function of [MyoroForm].
   ///
   /// If unsuccessful, a [String] of the error message is returned. If successful, returns [null].
@@ -21,39 +26,4 @@ class MyoroFormConfiguration<T> extends Equatable {
   final MyoroFormBuilder<T> builder;
 
   const MyoroFormConfiguration({this.validation, this.request, this.onSuccess, this.onError, required this.builder});
-
-  MyoroFormConfiguration<T> copyWith({
-    MyoroFormValidation? validation,
-    bool validationProvided = true,
-    MyoroFormRequest<T>? request,
-    bool requestProvided = true,
-    MyoroFormOnSuccess<T>? onSuccess,
-    bool onSuccessProvided = true,
-    MyoroFormOnError? onError,
-    bool onErrorProvided = true,
-    MyoroFormBuilder<T>? builder,
-  }) {
-    return MyoroFormConfiguration(
-      validation: validationProvided ? (validation ?? this.validation) : null,
-      request: requestProvided ? (request ?? this.request) : null,
-      onSuccess: onSuccessProvided ? (onSuccess ?? this.onSuccess) : null,
-      onError: onErrorProvided ? (onError ?? this.onError) : null,
-      builder: builder ?? this.builder,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [validation, request, onSuccess, onError, builder];
-  }
-
-  @override
-  String toString() =>
-      'MyoroFormConfiguration<$T>(\n'
-      '  validation: $validation,\n'
-      '  request: $request,\n'
-      '  onSuccess: $onSuccess,\n'
-      '  onError: $onError,\n'
-      '  builder: $builder,\n'
-      ');';
 }

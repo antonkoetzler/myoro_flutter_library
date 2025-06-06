@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_drawer_configuration.g.dart';
+
 /// Configuration of [MyoroDrawer].
-class MyoroDrawerConfiguration extends Equatable {
+@myoroModel
+class MyoroDrawerConfiguration with $MyoroDrawerConfigurationMixin {
   static const showCloseButtonDefaultValue = true;
   static const barrierDismissableDefaultValue = true;
 
@@ -37,37 +40,4 @@ class MyoroDrawerConfiguration extends Equatable {
       showCloseButton = faker.randomGenerator.boolean(),
       barrierDismissable = faker.randomGenerator.boolean(),
       child = const SizedBox.shrink();
-
-  MyoroDrawerConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    bool? showCloseButton,
-    bool? barrierDismissable,
-    Widget? child,
-  }) {
-    return MyoroDrawerConfiguration(
-      title: titleProvided ? (title ?? this.title) : null,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
-      child: child ?? this.child,
-    );
-  }
-
-  @override
-  List<Object?> get props {
-    return [title, titleTextStyle, showCloseButton, barrierDismissable, child];
-  }
-
-  @override
-  String toString() =>
-      'MyoroDrawerConfiguration(\n'
-      '  title: $title,\n'
-      '  titleTextStyle: $titleTextStyle,\n'
-      '  showCloseButton: $showCloseButton,\n'
-      '  barrierDismissable: $barrierDismissable,\n'
-      '  child: $child,\n'
-      ');';
 }
