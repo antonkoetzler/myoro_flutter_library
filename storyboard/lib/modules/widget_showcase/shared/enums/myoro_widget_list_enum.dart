@@ -8,7 +8,8 @@ enum MyoroWidgetListEnum {
   appBars('App bars', {myoroAppBarTitle}),
   apps('Apps', {myoroAppTitle}),
   buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle}),
-  cards('Cards', {myoroCardTitle});
+  cards('Cards', {myoroCardTitle}),
+  carousels('Carousels', {myoroCarouselTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -38,6 +39,9 @@ enum MyoroWidgetListEnum {
   // Cards
   static const myoroCardTitle = 'MyoroCard';
 
+  // Carousels
+  static const myoroCarouselTitle = 'MyoroCarousel';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -56,6 +60,9 @@ enum MyoroWidgetListEnum {
       // Cards
       myoroCardTitle => const MyoroCardWidgetShowcase(),
 
+      // Carousels
+      myoroCarouselTitle => const MyoroCarouselWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }
@@ -65,4 +72,5 @@ enum MyoroWidgetListEnum {
   bool get isApps => this == apps;
   bool get isButtons => this == buttons;
   bool get isCards => this == cards;
+  bool get isCarousels => this == carousels;
 }

@@ -3,3 +3,4 @@ export 'app_bars/exports.dart';
 export 'apps/exports.dart';
 export 'buttons/exports.dart';
 export 'cards/exports.dart';
+export 'carousels/exports.dart';

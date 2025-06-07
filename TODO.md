@@ -1,6 +1,7 @@
 # TODO
 
 1. feature: Retest everything 100% code coverage
+1. feature: Bottom sheets
 1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
