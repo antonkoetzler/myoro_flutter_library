@@ -7,5 +7,9 @@ final class _ConstraintsOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroCardWidgetShowcaseViewModel>();
+
+    return BoxConstraintsWidgetShowcaseOption(
+      configuration: BoxConstraintsWidgetShowcaseOptionConfiguration(onChanged: (constraints) => viewModel.constraints = constraints),
+    );
   }
 }

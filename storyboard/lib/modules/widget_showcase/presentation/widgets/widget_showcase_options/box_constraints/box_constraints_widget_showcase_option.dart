@@ -32,28 +32,12 @@ final class _BoxConstraintsWidgetShowcaseOptionState extends State<BoxConstraint
         children: [
           Text(_viewModel.configuration.label, style: widgetShowcaseThemeExtension.labelTextStyle),
           _SelectorRow(
-            leftConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Min Height',
-              checkboxOnChanged: _viewModel.onMinHeightCheckboxOnChanged,
-              onChanged: _viewModel.onMinHeightOnChanged,
-            ),
-            rightConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Max Height',
-              checkboxOnChanged: (enabled) => _viewModel.onMaxHeightCheckboxOnChanged,
-              onChanged: _viewModel.onMaxHeightOnChanged,
-            ),
+            leftConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(label: 'Min Height', controller: _viewModel.minHeightController),
+            rightConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(label: 'Max Height', controller: _viewModel.maxHeightController),
           ),
           _SelectorRow(
-            leftConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Min Width',
-              checkboxOnChanged: _viewModel.onMinWidthCheckboxOnChanged,
-              onChanged: _viewModel.onMinWidthOnChanged,
-            ),
-            rightConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Max Width',
-              checkboxOnChanged: _viewModel.onMaxWidthCheckboxOnChanged,
-              onChanged: _viewModel.onMaxWidthOnChanged,
-            ),
+            leftConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(label: 'Min Width', controller: _viewModel.minWidthController),
+            rightConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(label: 'Max Width', controller: _viewModel.maxWidthController),
           ),
         ],
       ),

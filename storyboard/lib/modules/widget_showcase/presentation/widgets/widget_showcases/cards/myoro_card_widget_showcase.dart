@@ -6,7 +6,6 @@ import 'package:storyboard/storyboard.dart';
 part '_widgets/_constraints_option.dart';
 part '_widgets/_padding_option.dart';
 part '_widgets/_title_option.dart';
-part '_widgets/_title_text_style_option.dart';
 part '_widgets/_widget.dart';
 
 /// Widget showcase of [MyoroCard].
@@ -20,11 +19,7 @@ final class MyoroCardWidgetShowcase extends StatelessWidget {
     return InheritedProvider(
       create: (_) => MyoroCardWidgetShowcaseViewModel(),
       child: const WidgetShowcaseScreen(
-        configuration: WidgetShowcaseScreenConfiguration(
-          widgetName: MyoroWidgetListEnum.myoroCardTitle,
-          widget: _Widget(),
-          widgetOptions: options,
-        ),
+        configuration: WidgetShowcaseScreenConfiguration(widgetName: MyoroWidgetListEnum.myoroCardTitle, widget: _Widget(), widgetOptions: options),
       ),
     );
   }

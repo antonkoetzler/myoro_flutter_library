@@ -14,10 +14,10 @@ final class _Selector extends StatelessWidget {
     return Row(
       spacing: widgetShowcaseOptionThemeExtension.spacing,
       children: [
-        MyoroCheckbox(configuration: MyoroCheckboxConfiguration(onChanged: _configuration.checkboxOnChanged)),
+        MyoroCheckbox(configuration: MyoroCheckboxConfiguration(onChanged: (enabled) => _configuration.controller.enabled = enabled)),
         Expanded(
           child: MyoroSlider(
-            configuration: MyoroSliderConfiguration(label: _configuration.label, onChanged: _configuration.onChanged),
+            configuration: MyoroSliderConfiguration(label: _configuration.label, onChanged: (value) => _configuration.controller.value = value),
           ),
         ),
       ],
