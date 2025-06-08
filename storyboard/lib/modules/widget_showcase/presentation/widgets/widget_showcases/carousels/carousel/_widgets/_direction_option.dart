@@ -8,6 +8,9 @@ final class _DirectionOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseViewModel>();
 
-    return DirectionWidgetShowcaseOption();
+    return AxisWidgetShowcaseOption(
+      initialDirection: viewModel.direction,
+      onChanged: (direction) => viewModel.direction = direction!,
+    );
   }
 }
