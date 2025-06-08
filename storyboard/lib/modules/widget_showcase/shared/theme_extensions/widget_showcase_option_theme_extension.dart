@@ -13,7 +13,7 @@ part 'widget_showcase_option_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class WidgetShowcaseOptionThemeExtension extends ThemeExtension<WidgetShowcaseOptionThemeExtension>
-    with $WidgetShowcaseOptionThemeExtensionMixin {
+    with _$WidgetShowcaseOptionThemeExtensionMixin {
   const WidgetShowcaseOptionThemeExtension({required this.spacing, required this.labelTextStyle});
 
   WidgetShowcaseOptionThemeExtension.fake()

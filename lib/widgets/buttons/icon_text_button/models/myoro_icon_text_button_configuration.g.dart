@@ -6,8 +6,15 @@ part of 'myoro_icon_text_button_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroIconTextButtonConfigurationExtension
-    on MyoroIconTextButtonConfiguration {
+/// Apply this mixin to [MyoroIconTextButtonConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroIconTextButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {}
+/// ```
+mixin _$MyoroIconTextButtonConfigurationMixin {
+  MyoroIconTextButtonConfiguration get self =>
+      this as MyoroIconTextButtonConfiguration;
+
   MyoroIconTextButtonConfiguration copyWith({
     MyoroButtonConfiguration? buttonConfiguration,
     bool buttonConfigurationProvided = true,
@@ -26,35 +33,25 @@ extension $MyoroIconTextButtonConfigurationExtension
     return MyoroIconTextButtonConfiguration(
       buttonConfiguration:
           buttonConfigurationProvided
-              ? (buttonConfiguration ?? this.buttonConfiguration)
+              ? (buttonConfiguration ?? self.buttonConfiguration)
               : null,
-      invert: invert ?? this.invert,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
+      invert: invert ?? self.invert,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
       contentColorBuilder:
           contentColorBuilderProvided
-              ? (contentColorBuilder ?? this.contentColorBuilder)
+              ? (contentColorBuilder ?? self.contentColorBuilder)
               : null,
       iconConfiguration:
           iconConfigurationProvided
-              ? (iconConfiguration ?? this.iconConfiguration)
+              ? (iconConfiguration ?? self.iconConfiguration)
               : null,
       textConfiguration:
           textConfigurationProvided
-              ? (textConfiguration ?? this.textConfiguration)
+              ? (textConfiguration ?? self.textConfiguration)
               : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroIconTextButtonConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroIconTextButtonConfiguration with $MyoroIconTextButtonConfigurationMixin {}
-/// ```
-mixin $MyoroIconTextButtonConfigurationMixin {
-  MyoroIconTextButtonConfiguration get self =>
-      this as MyoroIconTextButtonConfiguration;
 
   @override
   bool operator ==(Object other) {

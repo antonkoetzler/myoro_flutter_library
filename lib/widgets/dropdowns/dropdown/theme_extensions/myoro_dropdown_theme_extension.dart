@@ -10,7 +10,7 @@ part 'myoro_dropdown_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension>
-    with $MyoroDropdownThemeExtensionMixin {
+    with _$MyoroDropdownThemeExtensionMixin {
   /// Standard spacing between items.
   final double spacing;
 

@@ -11,7 +11,7 @@ part 'padding_widget_showcase_option_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class PaddingWidgetShowcaseOptionThemeExtension extends ThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>
-    with $PaddingWidgetShowcaseOptionThemeExtensionMixin {
+    with _$PaddingWidgetShowcaseOptionThemeExtensionMixin {
   /// General spacing of [Widget]s.
   final double spacing;
 

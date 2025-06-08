@@ -6,7 +6,7 @@ part 'myoro_bar_graph_configuration.g.dart';
 
 /// Configuration of [MyoroBarGraph].
 @myoroModel
-class MyoroBarGraphConfiguration with $MyoroBarGraphConfigurationMixin {
+class MyoroBarGraphConfiguration with _$MyoroBarGraphConfigurationMixin {
   static const sortedDefaultValue = true;
 
   /// If the items of the graph should be sorted.

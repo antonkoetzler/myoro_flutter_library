@@ -6,7 +6,14 @@ part of 'myoro_screen_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroScreenConfigurationExtension on MyoroScreenConfiguration {
+/// Apply this mixin to [MyoroScreenConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroScreenConfiguration with _$MyoroScreenConfigurationMixin {}
+/// ```
+mixin _$MyoroScreenConfigurationMixin {
+  MyoroScreenConfiguration get self => this as MyoroScreenConfiguration;
+
   MyoroScreenConfiguration copyWith({
     MyoroDrawerController? drawerController,
     bool drawerControllerProvided = true,
@@ -17,21 +24,12 @@ extension $MyoroScreenConfigurationExtension on MyoroScreenConfiguration {
     return MyoroScreenConfiguration(
       drawerController:
           drawerControllerProvided
-              ? (drawerController ?? this.drawerController)
+              ? (drawerController ?? self.drawerController)
               : null,
-      appBar: appBarProvided ? (appBar ?? this.appBar) : null,
-      body: body ?? this.body,
+      appBar: appBarProvided ? (appBar ?? self.appBar) : null,
+      body: body ?? self.body,
     );
   }
-}
-
-/// Apply this mixin to [MyoroScreenConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroScreenConfiguration with $MyoroScreenConfigurationMixin {}
-/// ```
-mixin $MyoroScreenConfigurationMixin {
-  MyoroScreenConfiguration get self => this as MyoroScreenConfiguration;
 
   @override
   bool operator ==(Object other) {

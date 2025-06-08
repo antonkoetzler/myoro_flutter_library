@@ -7,7 +7,7 @@ part 'myoro_singular_dropdown_configuration.g.dart';
 /// Configuration model of [MyoroSingularDropdown].
 @myoroModel
 class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
-    with $MyoroSingularDropdownConfigurationMixin<T> {
+    with _$MyoroSingularDropdownConfigurationMixin<T> {
   /// Function executed when the selected item changes.hurricanes
   final MyoroSingularDropdownConfigurationOnChanged<T>? onChanged;
 

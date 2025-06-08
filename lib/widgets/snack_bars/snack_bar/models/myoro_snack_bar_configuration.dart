@@ -7,7 +7,7 @@ part 'myoro_snack_bar_configuration.g.dart';
 
 /// Configuration model of [MyoroSnackBar].
 @myoroModel
-class MyoroSnackBarConfiguration with $MyoroSnackBarConfigurationMixin {
+class MyoroSnackBarConfiguration with _$MyoroSnackBarConfigurationMixin {
   static const snackBarTypeDefaultValue = MyoroSnackBarTypeEnum.standard;
   static const showCloseButtonDefaultValue = true;
   static const messageDefaultValue = '';

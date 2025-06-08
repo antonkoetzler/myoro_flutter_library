@@ -9,9 +9,9 @@ part of 'theme_mode_widget_showcase_option_theme_extension.dart';
 /// Apply this mixin to [ThemeModeWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class ThemeModeWidgetShowcaseOptionThemeExtension with $ThemeModeWidgetShowcaseOptionThemeExtensionMixin {}
+/// class ThemeModeWidgetShowcaseOptionThemeExtension with _$ThemeModeWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $ThemeModeWidgetShowcaseOptionThemeExtensionMixin
+mixin _$ThemeModeWidgetShowcaseOptionThemeExtensionMixin
     on ThemeExtension<ThemeModeWidgetShowcaseOptionThemeExtension> {
   ThemeModeWidgetShowcaseOptionThemeExtension get self =>
       this as ThemeModeWidgetShowcaseOptionThemeExtension;

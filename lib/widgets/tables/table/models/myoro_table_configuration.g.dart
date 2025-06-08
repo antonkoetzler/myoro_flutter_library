@@ -6,27 +6,25 @@ part of 'myoro_table_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroTableConfigurationExtension<T> on MyoroTableConfiguration<T> {
+/// Apply this mixin to [MyoroTableConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroTableConfiguration<T> with _$MyoroTableConfigurationMixin<T> {}
+/// ```
+mixin _$MyoroTableConfigurationMixin<T> {
+  MyoroTableConfiguration<T> get self => this as MyoroTableConfiguration<T>;
+
   MyoroTableConfiguration<T> copyWith({
     FutureOr<Set<T>> Function()? request,
     List<MyoroTableColumn>? columns,
     MyoroTableRow<T> Function(T)? rowBuilder,
   }) {
     return MyoroTableConfiguration(
-      request: request ?? this.request,
-      columns: columns ?? this.columns,
-      rowBuilder: rowBuilder ?? this.rowBuilder,
+      request: request ?? self.request,
+      columns: columns ?? self.columns,
+      rowBuilder: rowBuilder ?? self.rowBuilder,
     );
   }
-}
-
-/// Apply this mixin to [MyoroTableConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroTableConfiguration<T> with $MyoroTableConfigurationMixin<T> {}
-/// ```
-mixin $MyoroTableConfigurationMixin<T> {
-  MyoroTableConfiguration<T> get self => this as MyoroTableConfiguration<T>;
 
   @override
   bool operator ==(Object other) {

@@ -7,7 +7,7 @@ part 'myoro_screen_configuration.g.dart';
 
 /// Configuration of [MyoroScreen].
 @myoroModel
-class MyoroScreenConfiguration with $MyoroScreenConfigurationMixin {
+class MyoroScreenConfiguration with _$MyoroScreenConfigurationMixin {
   /// [MyoroDrawerController] if it needs to be controlled externally.
   final MyoroDrawerController? drawerController;
 

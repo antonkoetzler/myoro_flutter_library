@@ -6,8 +6,15 @@ part of 'icon_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $IconWidgetShowcaseOptionConfigurationExtension
-    on IconWidgetShowcaseOptionConfiguration {
+/// Apply this mixin to [IconWidgetShowcaseOptionConfiguration] once the code is generated.
+///
+/// ```dart
+/// class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptionConfigurationMixin {}
+/// ```
+mixin _$IconWidgetShowcaseOptionConfigurationMixin {
+  IconWidgetShowcaseOptionConfiguration get self =>
+      this as IconWidgetShowcaseOptionConfiguration;
+
   IconWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     void Function(bool, IconData, double?)? checkboxOnChanged,
@@ -17,28 +24,18 @@ extension $IconWidgetShowcaseOptionConfigurationExtension
     bool iconSizeOnChangedProvided = true,
   }) {
     return IconWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
+      label: label ?? self.label,
       checkboxOnChanged:
           checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
               : null,
-      iconOnChanged: iconOnChanged ?? this.iconOnChanged,
+      iconOnChanged: iconOnChanged ?? self.iconOnChanged,
       iconSizeOnChanged:
           iconSizeOnChangedProvided
-              ? (iconSizeOnChanged ?? this.iconSizeOnChanged)
+              ? (iconSizeOnChanged ?? self.iconSizeOnChanged)
               : null,
     );
   }
-}
-
-/// Apply this mixin to [IconWidgetShowcaseOptionConfiguration] once the code is generated.
-///
-/// ```dart
-/// class IconWidgetShowcaseOptionConfiguration with $IconWidgetShowcaseOptionConfigurationMixin {}
-/// ```
-mixin $IconWidgetShowcaseOptionConfigurationMixin {
-  IconWidgetShowcaseOptionConfiguration get self =>
-      this as IconWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {

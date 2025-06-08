@@ -7,7 +7,7 @@ part 'myoro_icon_text_button_configuration.g.dart';
 
 /// Configuration model of [MyoroIconTextButton].
 @myoroModel
-class MyoroIconTextButtonConfiguration with $MyoroIconTextButtonConfigurationMixin {
+class MyoroIconTextButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {
   static const invertDefaultValue = false;
 
   /// [MyoroButtonConfiguration]

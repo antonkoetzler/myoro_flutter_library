@@ -7,7 +7,7 @@ part 'myoro_icon_text_button_text_configuration.g.dart';
 
 /// Text configuration of [MyoroIconTextButton].
 @myoroModel
-class MyoroIconTextButtonTextConfiguration with $MyoroIconTextButtonTextConfigurationMixin {
+class MyoroIconTextButtonTextConfiguration with _$MyoroIconTextButtonTextConfigurationMixin {
   static const maxLinesDefaultValue = 1;
   static const overflowDefaultValue = TextOverflow.ellipsis;
   static const alignmentDefaultValue = TextAlign.center;

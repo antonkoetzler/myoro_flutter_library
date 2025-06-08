@@ -9,9 +9,9 @@ part of 'myoro_search_input_theme_extension.dart';
 /// Apply this mixin to [MyoroSearchInputThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroSearchInputThemeExtension with $MyoroSearchInputThemeExtensionMixin {}
+/// class MyoroSearchInputThemeExtension with _$MyoroSearchInputThemeExtensionMixin {}
 /// ```
-mixin $MyoroSearchInputThemeExtensionMixin
+mixin _$MyoroSearchInputThemeExtensionMixin
     on ThemeExtension<MyoroSearchInputThemeExtension> {
   MyoroSearchInputThemeExtension get self =>
       this as MyoroSearchInputThemeExtension;

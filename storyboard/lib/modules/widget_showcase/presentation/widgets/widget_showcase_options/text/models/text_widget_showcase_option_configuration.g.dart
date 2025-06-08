@@ -6,8 +6,15 @@ part of 'text_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $TextWidgetShowcaseOptionConfigurationExtension
-    on TextWidgetShowcaseOptionConfiguration {
+/// Apply this mixin to [TextWidgetShowcaseOptionConfiguration] once the code is generated.
+///
+/// ```dart
+/// class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {}
+/// ```
+mixin _$TextWidgetShowcaseOptionConfigurationMixin {
+  TextWidgetShowcaseOptionConfiguration get self =>
+      this as TextWidgetShowcaseOptionConfiguration;
+
   TextWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     void Function(String)? textOnChanged,
@@ -21,36 +28,26 @@ extension $TextWidgetShowcaseOptionConfigurationExtension
     bool styleOnChangedProvided = true,
   }) {
     return TextWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
-      textOnChanged: textOnChanged ?? this.textOnChanged,
+      label: label ?? self.label,
+      textOnChanged: textOnChanged ?? self.textOnChanged,
       maxLinesOnChanged:
           maxLinesOnChangedProvided
-              ? (maxLinesOnChanged ?? this.maxLinesOnChanged)
+              ? (maxLinesOnChanged ?? self.maxLinesOnChanged)
               : null,
       overflowOnChanged:
           overflowOnChangedProvided
-              ? (overflowOnChanged ?? this.overflowOnChanged)
+              ? (overflowOnChanged ?? self.overflowOnChanged)
               : null,
       alignmentOnChanged:
           alignmentOnChangedProvided
-              ? (alignmentOnChanged ?? this.alignmentOnChanged)
+              ? (alignmentOnChanged ?? self.alignmentOnChanged)
               : null,
       styleOnChanged:
           styleOnChangedProvided
-              ? (styleOnChanged ?? this.styleOnChanged)
+              ? (styleOnChanged ?? self.styleOnChanged)
               : null,
     );
   }
-}
-
-/// Apply this mixin to [TextWidgetShowcaseOptionConfiguration] once the code is generated.
-///
-/// ```dart
-/// class TextWidgetShowcaseOptionConfiguration with $TextWidgetShowcaseOptionConfigurationMixin {}
-/// ```
-mixin $TextWidgetShowcaseOptionConfigurationMixin {
-  TextWidgetShowcaseOptionConfiguration get self =>
-      this as TextWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {

@@ -11,7 +11,7 @@ part 'text_widget_showcase_option_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class TextWidgetShowcaseOptionThemeExtension extends ThemeExtension<TextWidgetShowcaseOptionThemeExtension>
-    with $TextWidgetShowcaseOptionThemeExtensionMixin {
+    with _$TextWidgetShowcaseOptionThemeExtensionMixin {
   /// Generic spacing of [Widget]s.
   final double spacing;
 

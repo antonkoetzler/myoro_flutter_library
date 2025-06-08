@@ -11,7 +11,7 @@ part 'myoro_bar_graph_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension>
-    with $MyoroBarGraphThemeExtensionMixin {
+    with _$MyoroBarGraphThemeExtensionMixin {
   /// Border of the graph's content (the square holding the bars).
   final Border border;
 

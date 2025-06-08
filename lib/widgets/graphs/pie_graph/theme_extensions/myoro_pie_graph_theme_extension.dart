@@ -11,7 +11,7 @@ part 'myoro_pie_graph_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension>
-    with $MyoroPieGraphThemeExtensionMixin {
+    with _$MyoroPieGraphThemeExtensionMixin {
   /// Default color of an item.
   final Color itemColor;
 

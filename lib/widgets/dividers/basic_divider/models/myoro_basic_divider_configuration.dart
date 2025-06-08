@@ -7,7 +7,7 @@ part 'myoro_basic_divider_configuration.g.dart';
 
 /// Configuration model to store the class members of [MyoroBasicDivider].
 @myoroModel
-class MyoroBasicDividerConfiguration with $MyoroBasicDividerConfigurationMixin {
+class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin {
   /// Direction of the divider.
   final Axis direction;
 

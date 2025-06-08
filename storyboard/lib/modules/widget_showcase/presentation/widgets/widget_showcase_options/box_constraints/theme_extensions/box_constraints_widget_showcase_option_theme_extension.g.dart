@@ -9,9 +9,9 @@ part of 'box_constraints_widget_showcase_option_theme_extension.dart';
 /// Apply this mixin to [BoxConstraintsWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class BoxConstraintsWidgetShowcaseOptionThemeExtension with $BoxConstraintsWidgetShowcaseOptionThemeExtensionMixin {}
+/// class BoxConstraintsWidgetShowcaseOptionThemeExtension with _$BoxConstraintsWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $BoxConstraintsWidgetShowcaseOptionThemeExtensionMixin
+mixin _$BoxConstraintsWidgetShowcaseOptionThemeExtensionMixin
     on ThemeExtension<BoxConstraintsWidgetShowcaseOptionThemeExtension> {
   BoxConstraintsWidgetShowcaseOptionThemeExtension get self =>
       this as BoxConstraintsWidgetShowcaseOptionThemeExtension;

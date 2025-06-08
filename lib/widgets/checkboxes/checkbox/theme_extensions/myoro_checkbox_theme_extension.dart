@@ -11,7 +11,7 @@ part 'myoro_checkbox_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension>
-    with $MyoroCheckboxThemeExtensionMixin {
+    with _$MyoroCheckboxThemeExtensionMixin {
   /// Background color of the checkbox when selected.
   final Color activeColor;
 

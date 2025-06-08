@@ -6,7 +6,14 @@ part of 'myoro_radio_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroRadioConfigurationExtension on MyoroRadioConfiguration {
+/// Apply this mixin to [MyoroRadioConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {}
+/// ```
+mixin _$MyoroRadioConfigurationMixin {
+  MyoroRadioConfiguration get self => this as MyoroRadioConfiguration;
+
   MyoroRadioConfiguration copyWith({
     MyoroRadioController? notifier,
     bool notifierProvided = true,
@@ -20,26 +27,17 @@ extension $MyoroRadioConfigurationExtension on MyoroRadioConfiguration {
     bool onChangedProvided = true,
   }) {
     return MyoroRadioConfiguration(
-      notifier: notifierProvided ? (notifier ?? this.notifier) : null,
+      notifier: notifierProvided ? (notifier ?? self.notifier) : null,
       initialValue:
-          initialValueProvided ? (initialValue ?? this.initialValue) : null,
-      label: labelProvided ? (label ?? this.label) : null,
+          initialValueProvided ? (initialValue ?? self.initialValue) : null,
+      label: labelProvided ? (label ?? self.label) : null,
       labelTextStyle:
           labelTextStyleProvided
-              ? (labelTextStyle ?? this.labelTextStyle)
+              ? (labelTextStyle ?? self.labelTextStyle)
               : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroRadioConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroRadioConfiguration with $MyoroRadioConfigurationMixin {}
-/// ```
-mixin $MyoroRadioConfigurationMixin {
-  MyoroRadioConfiguration get self => this as MyoroRadioConfiguration;
 
   @override
   bool operator ==(Object other) {

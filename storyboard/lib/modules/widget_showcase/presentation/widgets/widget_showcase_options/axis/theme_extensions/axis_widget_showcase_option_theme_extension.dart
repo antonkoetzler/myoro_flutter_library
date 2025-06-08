@@ -7,7 +7,7 @@ part 'axis_widget_showcase_option_theme_extension.g.dart';
 /// [ThemeExtension] of [AxisWidgetShowcaseOption].
 @myoroThemeExtension
 final class AxisWidgetShowcaseOptionThemeExtension extends ThemeExtension<AxisWidgetShowcaseOptionThemeExtension>
-    with $AxisWidgetShowcaseOptionThemeExtensionMixin {
+    with _$AxisWidgetShowcaseOptionThemeExtensionMixin {
   const AxisWidgetShowcaseOptionThemeExtension();
 
   const AxisWidgetShowcaseOptionThemeExtension.fake();

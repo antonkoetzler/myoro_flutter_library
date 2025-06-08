@@ -7,7 +7,7 @@ part 'myoro_group_checkbox_configuration.g.dart';
 
 /// Configuration of [MyoroGroupCheckbox].
 @myoroModel
-class MyoroGroupCheckboxConfiguration with $MyoroGroupCheckboxConfigurationMixin {
+class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;
 
   /// Direction that the checkboxes will built in.

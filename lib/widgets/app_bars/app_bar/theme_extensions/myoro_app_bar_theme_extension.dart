@@ -7,7 +7,8 @@ part 'myoro_app_bar_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroAppBar].
 @immutable
 @myoroThemeExtension
-class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension> with $MyoroAppBarThemeExtensionMixin {
+class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension>
+    with _$MyoroAppBarThemeExtensionMixin {
   /// Background [Color] of the app bar.
   final Color primaryColor;
 

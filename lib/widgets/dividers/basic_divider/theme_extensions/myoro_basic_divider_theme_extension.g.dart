@@ -9,9 +9,9 @@ part of 'myoro_basic_divider_theme_extension.dart';
 /// Apply this mixin to [MyoroBasicDividerThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroBasicDividerThemeExtension with $MyoroBasicDividerThemeExtensionMixin {}
+/// class MyoroBasicDividerThemeExtension with _$MyoroBasicDividerThemeExtensionMixin {}
 /// ```
-mixin $MyoroBasicDividerThemeExtensionMixin
+mixin _$MyoroBasicDividerThemeExtensionMixin
     on ThemeExtension<MyoroBasicDividerThemeExtension> {
   MyoroBasicDividerThemeExtension get self =>
       this as MyoroBasicDividerThemeExtension;

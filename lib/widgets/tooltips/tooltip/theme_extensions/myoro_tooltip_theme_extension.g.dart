@@ -9,9 +9,9 @@ part of 'myoro_tooltip_theme_extension.dart';
 /// Apply this mixin to [MyoroTooltipThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroTooltipThemeExtension with $MyoroTooltipThemeExtensionMixin {}
+/// class MyoroTooltipThemeExtension with _$MyoroTooltipThemeExtensionMixin {}
 /// ```
-mixin $MyoroTooltipThemeExtensionMixin
+mixin _$MyoroTooltipThemeExtensionMixin
     on ThemeExtension<MyoroTooltipThemeExtension> {
   MyoroTooltipThemeExtension get self => this as MyoroTooltipThemeExtension;
 

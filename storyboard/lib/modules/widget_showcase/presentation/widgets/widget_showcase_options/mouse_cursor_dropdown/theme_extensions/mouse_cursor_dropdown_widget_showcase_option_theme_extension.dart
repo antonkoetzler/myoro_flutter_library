@@ -9,7 +9,7 @@ part 'mouse_cursor_dropdown_widget_showcase_option_theme_extension.g.dart';
 @myoroThemeExtension
 final class MouseCursorDropdownWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<MouseCursorDropdownWidgetShowcaseOptionThemeExtension>
-    with $MouseCursorDropdownWidgetShowcaseOptionThemeExtensionMixin {
+    with _$MouseCursorDropdownWidgetShowcaseOptionThemeExtensionMixin {
   const MouseCursorDropdownWidgetShowcaseOptionThemeExtension();
 
   const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.fake();

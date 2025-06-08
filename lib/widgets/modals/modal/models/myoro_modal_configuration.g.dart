@@ -6,7 +6,14 @@ part of 'myoro_modal_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroModalConfigurationExtension on MyoroModalConfiguration {
+/// Apply this mixin to [MyoroModalConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {}
+/// ```
+mixin _$MyoroModalConfigurationMixin {
+  MyoroModalConfiguration get self => this as MyoroModalConfiguration;
+
   MyoroModalConfiguration copyWith({
     bool? barrierDismissable,
     bool? useRootNavigator,
@@ -23,29 +30,20 @@ extension $MyoroModalConfigurationExtension on MyoroModalConfiguration {
     bool closeButtonPaddingProvided = true,
   }) {
     return MyoroModalConfiguration(
-      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
-      useRootNavigator: useRootNavigator ?? this.useRootNavigator,
+      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
+      useRootNavigator: useRootNavigator ?? self.useRootNavigator,
       constraints:
-          constraintsProvided ? (constraints ?? this.constraints) : null,
-      onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
-      title: titleProvided ? (title ?? this.title) : null,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
+          constraintsProvided ? (constraints ?? self.constraints) : null,
+      onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
+      title: titleProvided ? (title ?? self.title) : null,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
       closeButtonPadding:
           closeButtonPaddingProvided
-              ? (closeButtonPadding ?? this.closeButtonPadding)
+              ? (closeButtonPadding ?? self.closeButtonPadding)
               : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroModalConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroModalConfiguration with $MyoroModalConfigurationMixin {}
-/// ```
-mixin $MyoroModalConfigurationMixin {
-  MyoroModalConfiguration get self => this as MyoroModalConfiguration;
 
   @override
   bool operator ==(Object other) {

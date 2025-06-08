@@ -6,8 +6,15 @@ part of 'slider_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $SliderWidgetShowcaseOptionConfigurationExtension
-    on SliderWidgetShowcaseOptionConfiguration {
+/// Apply this mixin to [SliderWidgetShowcaseOptionConfiguration] once the code is generated.
+///
+/// ```dart
+/// class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {}
+/// ```
+mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
+  SliderWidgetShowcaseOptionConfiguration get self =>
+      this as SliderWidgetShowcaseOptionConfiguration;
+
   SliderWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     void Function(bool, double)? checkboxOnChanged,
@@ -15,24 +22,14 @@ extension $SliderWidgetShowcaseOptionConfigurationExtension
     void Function(double)? sliderOnChanged,
   }) {
     return SliderWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
+      label: label ?? self.label,
       checkboxOnChanged:
           checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
               : null,
-      sliderOnChanged: sliderOnChanged ?? this.sliderOnChanged,
+      sliderOnChanged: sliderOnChanged ?? self.sliderOnChanged,
     );
   }
-}
-
-/// Apply this mixin to [SliderWidgetShowcaseOptionConfiguration] once the code is generated.
-///
-/// ```dart
-/// class SliderWidgetShowcaseOptionConfiguration with $SliderWidgetShowcaseOptionConfigurationMixin {}
-/// ```
-mixin $SliderWidgetShowcaseOptionConfigurationMixin {
-  SliderWidgetShowcaseOptionConfiguration get self =>
-      this as SliderWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {

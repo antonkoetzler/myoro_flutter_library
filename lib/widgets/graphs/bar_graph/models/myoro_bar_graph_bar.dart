@@ -7,7 +7,7 @@ part 'myoro_bar_graph_bar.g.dart';
 
 /// Bar of a [MyoroBarGraphGroup].
 @myoroModel
-class MyoroBarGraphBar with $MyoroBarGraphBarMixin {
+class MyoroBarGraphBar with _$MyoroBarGraphBarMixin {
   /// Position of the bar on the y axis.
   final double y;
 

@@ -9,9 +9,10 @@ part of 'myoro_form_theme_extension.dart';
 /// Apply this mixin to [MyoroFormThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroFormThemeExtension with $MyoroFormThemeExtensionMixin {}
+/// class MyoroFormThemeExtension with _$MyoroFormThemeExtensionMixin {}
 /// ```
-mixin $MyoroFormThemeExtensionMixin on ThemeExtension<MyoroFormThemeExtension> {
+mixin _$MyoroFormThemeExtensionMixin
+    on ThemeExtension<MyoroFormThemeExtension> {
   MyoroFormThemeExtension get self => this as MyoroFormThemeExtension;
 
   @override

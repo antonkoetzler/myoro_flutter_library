@@ -6,23 +6,21 @@ part of 'myoro_bar_graph_bar_section.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroBarGraphBarSectionExtension on MyoroBarGraphBarSection {
-  MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
-    return MyoroBarGraphBarSection(
-      fromY: fromY ?? this.fromY,
-      toY: toY ?? this.toY,
-      color: color ?? this.color,
-    );
-  }
-}
-
 /// Apply this mixin to [MyoroBarGraphBarSection] once the code is generated.
 ///
 /// ```dart
-/// class MyoroBarGraphBarSection with $MyoroBarGraphBarSectionMixin {}
+/// class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {}
 /// ```
-mixin $MyoroBarGraphBarSectionMixin {
+mixin _$MyoroBarGraphBarSectionMixin {
   MyoroBarGraphBarSection get self => this as MyoroBarGraphBarSection;
+
+  MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
+    return MyoroBarGraphBarSection(
+      fromY: fromY ?? self.fromY,
+      toY: toY ?? self.toY,
+      color: color ?? self.color,
+    );
+  }
 
   @override
   bool operator ==(Object other) {

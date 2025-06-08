@@ -6,28 +6,25 @@ part of 'myoro_table_column_width_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroTableColumnWidthConfigurationExtension
-    on MyoroTableColumnWidthConfiguration {
+/// Apply this mixin to [MyoroTableColumnWidthConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurationMixin {}
+/// ```
+mixin _$MyoroTableColumnWidthConfigurationMixin {
+  MyoroTableColumnWidthConfiguration get self =>
+      this as MyoroTableColumnWidthConfiguration;
+
   MyoroTableColumnWidthConfiguration copyWith({
     MyoroTableColumnWidthConfigurationEnum? typeEnum,
     double? fixedWidth,
     bool fixedWidthProvided = true,
   }) {
     return MyoroTableColumnWidthConfiguration(
-      typeEnum: typeEnum ?? this.typeEnum,
-      fixedWidth: fixedWidthProvided ? (fixedWidth ?? this.fixedWidth) : null,
+      typeEnum: typeEnum ?? self.typeEnum,
+      fixedWidth: fixedWidthProvided ? (fixedWidth ?? self.fixedWidth) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroTableColumnWidthConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroTableColumnWidthConfiguration with $MyoroTableColumnWidthConfigurationMixin {}
-/// ```
-mixin $MyoroTableColumnWidthConfigurationMixin {
-  MyoroTableColumnWidthConfiguration get self =>
-      this as MyoroTableColumnWidthConfiguration;
 
   @override
   bool operator ==(Object other) {

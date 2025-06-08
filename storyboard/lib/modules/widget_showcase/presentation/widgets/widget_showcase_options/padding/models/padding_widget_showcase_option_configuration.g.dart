@@ -6,8 +6,15 @@ part of 'padding_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $PaddingWidgetShowcaseOptionConfigurationExtension
-    on PaddingWidgetShowcaseOptionConfiguration {
+/// Apply this mixin to [PaddingWidgetShowcaseOptionConfiguration] once the code is generated.
+///
+/// ```dart
+/// class PaddingWidgetShowcaseOptionConfiguration with _$PaddingWidgetShowcaseOptionConfigurationMixin {}
+/// ```
+mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
+  PaddingWidgetShowcaseOptionConfiguration get self =>
+      this as PaddingWidgetShowcaseOptionConfiguration;
+
   PaddingWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     void Function(bool, EdgeInsets)? checkboxOnChanged,
@@ -15,24 +22,14 @@ extension $PaddingWidgetShowcaseOptionConfigurationExtension
     void Function(EdgeInsets)? paddingOnChanged,
   }) {
     return PaddingWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
+      label: label ?? self.label,
       checkboxOnChanged:
           checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
               : null,
-      paddingOnChanged: paddingOnChanged ?? this.paddingOnChanged,
+      paddingOnChanged: paddingOnChanged ?? self.paddingOnChanged,
     );
   }
-}
-
-/// Apply this mixin to [PaddingWidgetShowcaseOptionConfiguration] once the code is generated.
-///
-/// ```dart
-/// class PaddingWidgetShowcaseOptionConfiguration with $PaddingWidgetShowcaseOptionConfigurationMixin {}
-/// ```
-mixin $PaddingWidgetShowcaseOptionConfigurationMixin {
-  PaddingWidgetShowcaseOptionConfiguration get self =>
-      this as PaddingWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {

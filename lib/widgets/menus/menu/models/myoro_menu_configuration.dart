@@ -8,7 +8,7 @@ part 'myoro_menu_configuration.g.dart';
 
 /// Configuration model of [MyoroMenu].
 @myoroModel
-class MyoroMenuConfiguration<T> with $MyoroMenuConfigurationMixin<T> {
+class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
   /// Constraints of the menu.
   final BoxConstraints constraints;
 

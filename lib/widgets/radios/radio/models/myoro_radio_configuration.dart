@@ -6,7 +6,7 @@ part 'myoro_radio_configuration.g.dart';
 
 /// Configuration of [MyoroRadio].
 @myoroModel
-class MyoroRadioConfiguration with $MyoroRadioConfigurationMixin {
+class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
   static const initialValueDefaultValue = false;
 
   /// [ValueNotifier] to manage state externally.

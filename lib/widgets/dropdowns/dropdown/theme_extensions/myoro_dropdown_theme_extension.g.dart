@@ -9,9 +9,9 @@ part of 'myoro_dropdown_theme_extension.dart';
 /// Apply this mixin to [MyoroDropdownThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroDropdownThemeExtension with $MyoroDropdownThemeExtensionMixin {}
+/// class MyoroDropdownThemeExtension with _$MyoroDropdownThemeExtensionMixin {}
 /// ```
-mixin $MyoroDropdownThemeExtensionMixin
+mixin _$MyoroDropdownThemeExtensionMixin
     on ThemeExtension<MyoroDropdownThemeExtension> {
   MyoroDropdownThemeExtension get self => this as MyoroDropdownThemeExtension;
 

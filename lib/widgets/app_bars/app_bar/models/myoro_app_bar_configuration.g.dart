@@ -6,7 +6,14 @@ part of 'myoro_app_bar_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroAppBarConfigurationExtension on MyoroAppBarConfiguration {
+/// Apply this mixin to [MyoroAppBarConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroAppBarConfiguration with _$MyoroAppBarConfigurationMixin {}
+/// ```
+mixin _$MyoroAppBarConfigurationMixin {
+  MyoroAppBarConfiguration get self => this as MyoroAppBarConfiguration;
+
   MyoroAppBarConfiguration copyWith({
     bool? bordered,
     Color? backgroundColor,
@@ -14,23 +21,14 @@ extension $MyoroAppBarConfigurationExtension on MyoroAppBarConfiguration {
     Widget? child,
   }) {
     return MyoroAppBarConfiguration(
-      bordered: bordered ?? this.bordered,
+      bordered: bordered ?? self.bordered,
       backgroundColor:
           backgroundColorProvided
-              ? (backgroundColor ?? this.backgroundColor)
+              ? (backgroundColor ?? self.backgroundColor)
               : null,
-      child: child ?? this.child,
+      child: child ?? self.child,
     );
   }
-}
-
-/// Apply this mixin to [MyoroAppBarConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroAppBarConfiguration with $MyoroAppBarConfigurationMixin {}
-/// ```
-mixin $MyoroAppBarConfigurationMixin {
-  MyoroAppBarConfiguration get self => this as MyoroAppBarConfiguration;
 
   @override
   bool operator ==(Object other) {

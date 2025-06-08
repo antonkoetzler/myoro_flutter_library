@@ -10,7 +10,7 @@ part 'myoro_group_checkbox_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckboxThemeExtension>
-    with $MyoroGroupCheckboxThemeExtensionMixin {
+    with _$MyoroGroupCheckboxThemeExtensionMixin {
   /// Main axis spacing in between each checkbox.
   final double spacing;
 

@@ -9,9 +9,9 @@ part of 'myoro_circular_loader_theme_extension.dart';
 /// Apply this mixin to [MyoroCircularLoaderThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroCircularLoaderThemeExtension with $MyoroCircularLoaderThemeExtensionMixin {}
+/// class MyoroCircularLoaderThemeExtension with _$MyoroCircularLoaderThemeExtensionMixin {}
 /// ```
-mixin $MyoroCircularLoaderThemeExtensionMixin
+mixin _$MyoroCircularLoaderThemeExtensionMixin
     on ThemeExtension<MyoroCircularLoaderThemeExtension> {
   MyoroCircularLoaderThemeExtension get self =>
       this as MyoroCircularLoaderThemeExtension;

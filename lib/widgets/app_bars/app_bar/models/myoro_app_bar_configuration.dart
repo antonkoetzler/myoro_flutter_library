@@ -7,7 +7,7 @@ part 'myoro_app_bar_configuration.g.dart';
 
 /// Configuration of [MyoroAppBar].
 @myoroModel
-class MyoroAppBarConfiguration with $MyoroAppBarConfigurationMixin {
+class MyoroAppBarConfiguration with _$MyoroAppBarConfigurationMixin {
   static const borderedDefaultValue = false;
 
   /// If the app bar contains a border at the bottom.

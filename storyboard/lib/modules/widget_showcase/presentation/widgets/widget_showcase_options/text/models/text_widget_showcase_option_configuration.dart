@@ -8,7 +8,7 @@ part 'text_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [TextWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class TextWidgetShowcaseOptionConfiguration with $TextWidgetShowcaseOptionConfigurationMixin {
+final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Text';
 
   const TextWidgetShowcaseOptionConfiguration({

@@ -9,7 +9,7 @@ part 'myoro_table_configuration.g.dart';
 /// Configuration model of [MyoroTable].
 @immutable
 @myoroModel
-class MyoroTableConfiguration<T> with $MyoroTableConfigurationMixin<T> {
+class MyoroTableConfiguration<T> with _$MyoroTableConfigurationMixin<T> {
   /// Request of the items of the [MyoroTable].
   final MyoroTableConfigurationRequest<T> request;
 

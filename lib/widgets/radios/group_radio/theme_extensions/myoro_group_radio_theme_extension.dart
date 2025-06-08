@@ -10,7 +10,7 @@ part 'myoro_group_radio_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension>
-    with $MyoroGroupRadioThemeExtensionMixin {
+    with _$MyoroGroupRadioThemeExtensionMixin {
   /// Main axis spacing in between each checkbox.
   final double spacing;
 

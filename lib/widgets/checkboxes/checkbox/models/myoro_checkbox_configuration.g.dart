@@ -6,10 +6,16 @@ part of 'myoro_checkbox_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroCheckboxConfigurationExtension on MyoroCheckboxConfiguration {
+/// Apply this mixin to [MyoroCheckboxConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {}
+/// ```
+mixin _$MyoroCheckboxConfigurationMixin {
+  MyoroCheckboxConfiguration get self => this as MyoroCheckboxConfiguration;
+
   MyoroCheckboxConfiguration copyWith({
     String? label,
-    bool labelProvided = true,
     TextStyle? labelTextStyle,
     bool labelTextStyleProvided = true,
     bool? value,
@@ -17,24 +23,15 @@ extension $MyoroCheckboxConfigurationExtension on MyoroCheckboxConfiguration {
     bool onChangedProvided = true,
   }) {
     return MyoroCheckboxConfiguration(
-      label: labelProvided ? (label ?? this.label) : null,
+      label: label ?? self.label,
       labelTextStyle:
           labelTextStyleProvided
-              ? (labelTextStyle ?? this.labelTextStyle)
+              ? (labelTextStyle ?? self.labelTextStyle)
               : null,
-      value: value ?? this.value,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      value: value ?? self.value,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroCheckboxConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroCheckboxConfiguration with $MyoroCheckboxConfigurationMixin {}
-/// ```
-mixin $MyoroCheckboxConfigurationMixin {
-  MyoroCheckboxConfiguration get self => this as MyoroCheckboxConfiguration;
 
   @override
   bool operator ==(Object other) {

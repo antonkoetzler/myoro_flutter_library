@@ -9,9 +9,9 @@ part of 'storyboard_screen_theme_extension.dart';
 /// Apply this mixin to [StoryboardScreenThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class StoryboardScreenThemeExtension with $StoryboardScreenThemeExtensionMixin {}
+/// class StoryboardScreenThemeExtension with _$StoryboardScreenThemeExtensionMixin {}
 /// ```
-mixin $StoryboardScreenThemeExtensionMixin
+mixin _$StoryboardScreenThemeExtensionMixin
     on ThemeExtension<StoryboardScreenThemeExtension> {
   StoryboardScreenThemeExtension get self =>
       this as StoryboardScreenThemeExtension;

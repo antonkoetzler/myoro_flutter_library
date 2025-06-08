@@ -7,7 +7,7 @@ part 'myoro_group_radio_configuration.g.dart';
 
 /// Configuration of [MyoroGroupRadio].
 @myoroModel
-class MyoroGroupRadioConfiguration with $MyoroGroupRadioConfigurationMixin {
+class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;
 
   /// [ValueNotifier] of the [MyoroGroupRadio] for more complex scope situations.

@@ -6,7 +6,7 @@ part 'myoro_resize_divider_configuration.g.dart';
 
 /// Configuration of [MyoroResizeDivider].
 @myoroModel
-class MyoroResizeDividerConfiguration with $MyoroResizeDividerConfigurationMixin {
+class MyoroResizeDividerConfiguration with _$MyoroResizeDividerConfigurationMixin {
   /// Configuration model with all configurable options of [MyoroBasicDivider].
   final MyoroBasicDividerConfiguration basicDividerConfiguration;
 

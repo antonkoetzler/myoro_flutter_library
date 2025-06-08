@@ -8,7 +8,7 @@ part 'slider_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [SliderWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class SliderWidgetShowcaseOptionConfiguration with $SliderWidgetShowcaseOptionConfigurationMixin {
+final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {
   const SliderWidgetShowcaseOptionConfiguration({
     required this.label,
     this.checkboxOnChanged,

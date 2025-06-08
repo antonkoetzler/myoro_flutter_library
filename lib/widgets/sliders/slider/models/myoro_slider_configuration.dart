@@ -7,7 +7,7 @@ part 'myoro_slider_configuration.g.dart';
 
 /// Configuration of [MyoroSlider].
 @myoroModel
-class MyoroSliderConfiguration with $MyoroSliderConfigurationMixin {
+class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
   /// Label of the slider.
   final String label;
 

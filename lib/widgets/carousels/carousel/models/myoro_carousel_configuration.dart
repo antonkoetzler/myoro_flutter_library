@@ -7,7 +7,7 @@ part 'myoro_carousel_configuration.g.dart';
 
 /// Configuration of [MyoroCarousel].
 @myoroModel
-class MyoroCarouselConfiguration with $MyoroCarouselConfigurationMixin {
+class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {
   static const directionDefaultValue = Axis.horizontal;
   static const displayTraversalButtonsDefaultValue = false;
   static const initialItemDefaultValue = 0;

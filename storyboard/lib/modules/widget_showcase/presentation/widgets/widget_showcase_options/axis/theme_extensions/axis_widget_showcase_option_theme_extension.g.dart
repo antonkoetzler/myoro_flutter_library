@@ -9,9 +9,9 @@ part of 'axis_widget_showcase_option_theme_extension.dart';
 /// Apply this mixin to [AxisWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class AxisWidgetShowcaseOptionThemeExtension with $AxisWidgetShowcaseOptionThemeExtensionMixin {}
+/// class AxisWidgetShowcaseOptionThemeExtension with _$AxisWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $AxisWidgetShowcaseOptionThemeExtensionMixin
+mixin _$AxisWidgetShowcaseOptionThemeExtensionMixin
     on ThemeExtension<AxisWidgetShowcaseOptionThemeExtension> {
   AxisWidgetShowcaseOptionThemeExtension get self =>
       this as AxisWidgetShowcaseOptionThemeExtension;

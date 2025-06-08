@@ -7,7 +7,7 @@ part 'myoro_input_configuration.g.dart';
 
 /// Model to load all of the configurable arguments of [MyoroInput].
 @myoroModel
-class MyoroInputConfiguration with $MyoroInputConfigurationMixin {
+class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
   static const textAlignDefaultValue = TextAlign.start;
   static const contentPaddingDefaultValue = EdgeInsets.only(top: 10, bottom: 10, left: 8, right: 5);

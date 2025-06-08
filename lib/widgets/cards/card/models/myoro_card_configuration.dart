@@ -7,7 +7,7 @@ part 'myoro_card_configuration.g.dart';
 
 /// Configuration of [MyoroCard].
 @myoroModel
-class MyoroCardConfiguration with $MyoroCardConfigurationMixin {
+class MyoroCardConfiguration with _$MyoroCardConfigurationMixin {
   static const titleDefaultValue = '';
   static const constraintsDefaultValue = BoxConstraints();
 

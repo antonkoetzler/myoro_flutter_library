@@ -6,7 +6,7 @@ part 'myoro_bar_graph_group.g.dart';
 
 /// Group of bars in a [MyoroBarGraph].
 @myoroModel
-class MyoroBarGraphGroup with $MyoroBarGraphGroupMixin {
+class MyoroBarGraphGroup with _$MyoroBarGraphGroupMixin {
   /// Position of the group in the x axis.
   final int x;
 

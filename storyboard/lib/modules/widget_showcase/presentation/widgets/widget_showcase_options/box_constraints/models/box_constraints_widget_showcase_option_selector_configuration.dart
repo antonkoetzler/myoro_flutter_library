@@ -8,7 +8,8 @@ part 'box_constraints_widget_showcase_option_selector_configuration.g.dart';
 /// Configuration model of a [_Selector].
 @immutable
 @myoroModel
-final class BoxConstraintsWidgetShowcaseOptionSelectorConfiguration with $BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {
+final class BoxConstraintsWidgetShowcaseOptionSelectorConfiguration
+    with _$BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {
   const BoxConstraintsWidgetShowcaseOptionSelectorConfiguration({required this.controller, required this.label});
 
   /// Controller.

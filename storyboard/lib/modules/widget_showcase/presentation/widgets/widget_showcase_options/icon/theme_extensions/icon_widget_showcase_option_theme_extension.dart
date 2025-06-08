@@ -11,7 +11,7 @@ part 'icon_widget_showcase_option_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class IconWidgetShowcaseOptionThemeExtension extends ThemeExtension<IconWidgetShowcaseOptionThemeExtension>
-    with $IconWidgetShowcaseOptionThemeExtensionMixin {
+    with _$IconWidgetShowcaseOptionThemeExtensionMixin {
   /// Generic spacing of [Widget]s.
   final double spacing;
 

@@ -12,7 +12,7 @@ part 'myoro_tap_status_enum_color_builder_widget_showcase_option_theme_extension
 @myoroThemeExtension
 final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension>
-    with $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtensionMixin {
+    with _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtensionMixin {
   /// General spacing of [Widget]s.
   final double spacing;
 

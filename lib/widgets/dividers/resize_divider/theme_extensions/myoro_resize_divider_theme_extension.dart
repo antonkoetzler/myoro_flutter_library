@@ -11,7 +11,7 @@ part 'myoro_resize_divider_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDividerThemeExtension>
-    with $MyoroResizeDividerThemeExtensionMixin {
+    with _$MyoroResizeDividerThemeExtensionMixin {
   /// [MyoroColorDesignSystem.secondary] by default.
   final Color secondary;
 

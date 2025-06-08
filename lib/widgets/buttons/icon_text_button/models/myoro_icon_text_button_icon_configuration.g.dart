@@ -6,28 +6,25 @@ part of 'myoro_icon_text_button_icon_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroIconTextButtonIconConfigurationExtension
-    on MyoroIconTextButtonIconConfiguration {
+/// Apply this mixin to [MyoroIconTextButtonIconConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroIconTextButtonIconConfiguration with _$MyoroIconTextButtonIconConfigurationMixin {}
+/// ```
+mixin _$MyoroIconTextButtonIconConfigurationMixin {
+  MyoroIconTextButtonIconConfiguration get self =>
+      this as MyoroIconTextButtonIconConfiguration;
+
   MyoroIconTextButtonIconConfiguration copyWith({
     IconData? icon,
     double? size,
     bool sizeProvided = true,
   }) {
     return MyoroIconTextButtonIconConfiguration(
-      icon: icon ?? this.icon,
-      size: sizeProvided ? (size ?? this.size) : null,
+      icon: icon ?? self.icon,
+      size: sizeProvided ? (size ?? self.size) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroIconTextButtonIconConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroIconTextButtonIconConfiguration with $MyoroIconTextButtonIconConfigurationMixin {}
-/// ```
-mixin $MyoroIconTextButtonIconConfigurationMixin {
-  MyoroIconTextButtonIconConfiguration get self =>
-      this as MyoroIconTextButtonIconConfiguration;
 
   @override
   bool operator ==(Object other) {

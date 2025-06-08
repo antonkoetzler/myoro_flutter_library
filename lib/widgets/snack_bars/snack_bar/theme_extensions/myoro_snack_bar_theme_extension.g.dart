@@ -9,9 +9,9 @@ part of 'myoro_snack_bar_theme_extension.dart';
 /// Apply this mixin to [MyoroSnackBarThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroSnackBarThemeExtension with $MyoroSnackBarThemeExtensionMixin {}
+/// class MyoroSnackBarThemeExtension with _$MyoroSnackBarThemeExtensionMixin {}
 /// ```
-mixin $MyoroSnackBarThemeExtensionMixin
+mixin _$MyoroSnackBarThemeExtensionMixin
     on ThemeExtension<MyoroSnackBarThemeExtension> {
   MyoroSnackBarThemeExtension get self => this as MyoroSnackBarThemeExtension;
 

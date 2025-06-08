@@ -9,9 +9,9 @@ part of 'myoro_date_picker_input_theme_extension.dart';
 /// Apply this mixin to [MyoroDatePickerInputThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroDatePickerInputThemeExtension with $MyoroDatePickerInputThemeExtensionMixin {}
+/// class MyoroDatePickerInputThemeExtension with _$MyoroDatePickerInputThemeExtensionMixin {}
 /// ```
-mixin $MyoroDatePickerInputThemeExtensionMixin
+mixin _$MyoroDatePickerInputThemeExtensionMixin
     on ThemeExtension<MyoroDatePickerInputThemeExtension> {
   MyoroDatePickerInputThemeExtension get self =>
       this as MyoroDatePickerInputThemeExtension;

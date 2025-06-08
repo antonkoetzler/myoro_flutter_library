@@ -7,7 +7,8 @@ part 'box_constraints_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [BoxConstraintsWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class BoxConstraintsWidgetShowcaseOptionConfiguration with $BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
+final class BoxConstraintsWidgetShowcaseOptionConfiguration
+    with _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Constraints';
 
   const BoxConstraintsWidgetShowcaseOptionConfiguration({this.label = labelDefaultValue, required this.onChanged});

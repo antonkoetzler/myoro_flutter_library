@@ -6,7 +6,8 @@ part 'myoro_screen_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroScreen].
 @immutable
 @myoroThemeExtension
-class MyoroScreenThemeExtension extends ThemeExtension<MyoroScreenThemeExtension> with $MyoroScreenThemeExtensionMixin {
+class MyoroScreenThemeExtension extends ThemeExtension<MyoroScreenThemeExtension>
+    with _$MyoroScreenThemeExtensionMixin {
   const MyoroScreenThemeExtension();
 
   const MyoroScreenThemeExtension.fake();

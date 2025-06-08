@@ -7,7 +7,7 @@ part 'widget_showcase_screen_configuration.g.dart';
 
 /// Configuration model of [StoryboardScreen].
 @myoroModel
-final class WidgetShowcaseScreenConfiguration with $WidgetShowcaseScreenConfigurationMixin {
+final class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigurationMixin {
   static const widgetOptionsDefaultValue = <Widget>[];
 
   /// Name of the [Widget].

@@ -9,9 +9,9 @@ part of 'myoro_accordion_theme_extension.dart';
 /// Apply this mixin to [MyoroAccordionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroAccordionThemeExtension with $MyoroAccordionThemeExtensionMixin {}
+/// class MyoroAccordionThemeExtension with _$MyoroAccordionThemeExtensionMixin {}
 /// ```
-mixin $MyoroAccordionThemeExtensionMixin
+mixin _$MyoroAccordionThemeExtensionMixin
     on ThemeExtension<MyoroAccordionThemeExtension> {
   MyoroAccordionThemeExtension get self => this as MyoroAccordionThemeExtension;
 

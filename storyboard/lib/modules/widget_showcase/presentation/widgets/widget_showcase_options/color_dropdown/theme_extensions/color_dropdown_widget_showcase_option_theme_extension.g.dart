@@ -9,9 +9,9 @@ part of 'color_dropdown_widget_showcase_option_theme_extension.dart';
 /// Apply this mixin to [ColorDropdownWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class ColorDropdownWidgetShowcaseOptionThemeExtension with $ColorDropdownWidgetShowcaseOptionThemeExtensionMixin {}
+/// class ColorDropdownWidgetShowcaseOptionThemeExtension with _$ColorDropdownWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $ColorDropdownWidgetShowcaseOptionThemeExtensionMixin
+mixin _$ColorDropdownWidgetShowcaseOptionThemeExtensionMixin
     on ThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension> {
   ColorDropdownWidgetShowcaseOptionThemeExtension get self =>
       this as ColorDropdownWidgetShowcaseOptionThemeExtension;

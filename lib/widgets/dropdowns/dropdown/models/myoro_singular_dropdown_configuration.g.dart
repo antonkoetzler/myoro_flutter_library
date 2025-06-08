@@ -6,8 +6,15 @@ part of 'myoro_singular_dropdown_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroSingularDropdownConfigurationExtension<T>
-    on MyoroSingularDropdownConfiguration<T> {
+/// Apply this mixin to [MyoroSingularDropdownConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroSingularDropdownConfiguration<T> with _$MyoroSingularDropdownConfigurationMixin<T> {}
+/// ```
+mixin _$MyoroSingularDropdownConfigurationMixin<T> {
+  MyoroSingularDropdownConfiguration<T> get self =>
+      this as MyoroSingularDropdownConfiguration<T>;
+
   MyoroSingularDropdownConfiguration<T> copyWith({
     void Function(T?)? onChanged,
     bool onChangedProvided = true,
@@ -21,30 +28,20 @@ extension $MyoroSingularDropdownConfigurationExtension<T>
     String Function(T)? selectedItemBuilder,
   }) {
     return MyoroSingularDropdownConfiguration(
-      label: label ?? this.label,
-      menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
-      allowItemClearing: allowItemClearing ?? this.allowItemClearing,
+      label: label ?? self.label,
+      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
+      allowItemClearing: allowItemClearing ?? self.allowItemClearing,
       selectedItemTextAlign:
-          selectedItemTextAlign ?? this.selectedItemTextAlign,
-      menuConfiguration: menuConfiguration ?? this.menuConfiguration,
-      selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+          selectedItemTextAlign ?? self.selectedItemTextAlign,
+      menuConfiguration: menuConfiguration ?? self.menuConfiguration,
+      selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       checkboxOnChanged:
           checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
               : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroSingularDropdownConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroSingularDropdownConfiguration<T> with $MyoroSingularDropdownConfigurationMixin<T> {}
-/// ```
-mixin $MyoroSingularDropdownConfigurationMixin<T> {
-  MyoroSingularDropdownConfiguration<T> get self =>
-      this as MyoroSingularDropdownConfiguration<T>;
 
   @override
   bool operator ==(Object other) {

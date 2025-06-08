@@ -7,7 +7,7 @@ part 'myoro_layout_builder_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroLayoutBuilderThemeExtension extends ThemeExtension<MyoroLayoutBuilderThemeExtension>
-    with $MyoroLayoutBuilderThemeExtensionMixin {
+    with _$MyoroLayoutBuilderThemeExtensionMixin {
   const MyoroLayoutBuilderThemeExtension();
 
   const MyoroLayoutBuilderThemeExtension.fake();

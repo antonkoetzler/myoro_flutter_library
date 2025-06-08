@@ -6,8 +6,15 @@ part of 'myoro_group_checkbox_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroGroupCheckboxConfigurationExtension
-    on MyoroGroupCheckboxConfiguration {
+/// Apply this mixin to [MyoroGroupCheckboxConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixin {}
+/// ```
+mixin _$MyoroGroupCheckboxConfigurationMixin {
+  MyoroGroupCheckboxConfiguration get self =>
+      this as MyoroGroupCheckboxConfiguration;
+
   MyoroGroupCheckboxConfiguration copyWith({
     Axis? direction,
     double? spacing,
@@ -18,22 +25,12 @@ extension $MyoroGroupCheckboxConfigurationExtension
     bool onChangedProvided = true,
   }) {
     return MyoroGroupCheckboxConfiguration(
-      direction: direction ?? this.direction,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      direction: direction ?? self.direction,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroGroupCheckboxConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroGroupCheckboxConfiguration with $MyoroGroupCheckboxConfigurationMixin {}
-/// ```
-mixin $MyoroGroupCheckboxConfigurationMixin {
-  MyoroGroupCheckboxConfiguration get self =>
-      this as MyoroGroupCheckboxConfiguration;
 
   @override
   bool operator ==(Object other) {

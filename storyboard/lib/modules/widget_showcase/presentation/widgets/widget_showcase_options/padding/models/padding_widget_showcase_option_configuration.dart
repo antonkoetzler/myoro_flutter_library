@@ -8,7 +8,7 @@ part 'padding_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [PaddingWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class PaddingWidgetShowcaseOptionConfiguration with $PaddingWidgetShowcaseOptionConfigurationMixin {
+final class PaddingWidgetShowcaseOptionConfiguration with _$PaddingWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Padding';
 
   const PaddingWidgetShowcaseOptionConfiguration({

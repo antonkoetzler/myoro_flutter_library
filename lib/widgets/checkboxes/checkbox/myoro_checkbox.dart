@@ -64,10 +64,10 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
               );
             },
           ),
-          if (_viewModel.state.configuration.label?.isNotEmpty == true) ...[
+          if (_viewModel.state.configuration.label.isNotEmpty) ...[
             Flexible(
               child: Text(
-                _viewModel.state.configuration.label!,
+                _viewModel.state.configuration.label,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: _viewModel.state.configuration.labelTextStyle ?? themeExtension.labelTextStyle,

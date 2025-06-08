@@ -8,7 +8,7 @@ part 'myoro_carousel_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension>
-    with $MyoroCarouselThemeExtensionMixin {
+    with _$MyoroCarouselThemeExtensionMixin {
   /// Icon of the previous item [_TraversalButton] in [_TraversalButtons].
   final IconData previousItemButtonIcon;
 

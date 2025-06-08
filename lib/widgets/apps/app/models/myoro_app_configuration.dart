@@ -6,7 +6,7 @@ part 'myoro_app_configuration.g.dart';
 
 /// Configuration of [MyoroApp].
 @myoroModel
-class MyoroAppConfiguration with $MyoroAppConfigurationMixin {
+class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
   /// Title of the application.
   ///
   /// However, a plugin like [window_manager] needs to be used

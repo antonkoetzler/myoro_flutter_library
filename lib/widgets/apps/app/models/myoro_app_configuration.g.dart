@@ -6,7 +6,14 @@ part of 'myoro_app_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroAppConfigurationExtension on MyoroAppConfiguration {
+/// Apply this mixin to [MyoroAppConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {}
+/// ```
+mixin _$MyoroAppConfigurationMixin {
+  MyoroAppConfiguration get self => this as MyoroAppConfiguration;
+
   MyoroAppConfiguration copyWith({
     String? title,
     bool titleProvided = true,
@@ -33,41 +40,32 @@ extension $MyoroAppConfigurationExtension on MyoroAppConfiguration {
     bool homeProvided = true,
   }) {
     return MyoroAppConfiguration(
-      title: titleProvided ? (title ?? this.title) : null,
-      themeMode: themeModeProvided ? (themeMode ?? this.themeMode) : null,
+      title: titleProvided ? (title ?? self.title) : null,
+      themeMode: themeModeProvided ? (themeMode ?? self.themeMode) : null,
       colorSchemeBuilder:
           colorSchemeBuilderProvided
-              ? (colorSchemeBuilder ?? this.colorSchemeBuilder)
+              ? (colorSchemeBuilder ?? self.colorSchemeBuilder)
               : null,
       textThemeBuilder:
           textThemeBuilderProvided
-              ? (textThemeBuilder ?? this.textThemeBuilder)
+              ? (textThemeBuilder ?? self.textThemeBuilder)
               : null,
       themeExtensionsBuilder:
           themeExtensionsBuilderProvided
-              ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder)
+              ? (themeExtensionsBuilder ?? self.themeExtensionsBuilder)
               : null,
       localizationsDelegates:
           localizationsDelegatesProvided
-              ? (localizationsDelegates ?? this.localizationsDelegates)
+              ? (localizationsDelegates ?? self.localizationsDelegates)
               : null,
       supportedLocales:
           supportedLocalesProvided
-              ? (supportedLocales ?? this.supportedLocales)
+              ? (supportedLocales ?? self.supportedLocales)
               : null,
-      router: routerProvided ? (router ?? this.router) : null,
-      home: homeProvided ? (home ?? this.home) : null,
+      router: routerProvided ? (router ?? self.router) : null,
+      home: homeProvided ? (home ?? self.home) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroAppConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroAppConfiguration with $MyoroAppConfigurationMixin {}
-/// ```
-mixin $MyoroAppConfigurationMixin {
-  MyoroAppConfiguration get self => this as MyoroAppConfiguration;
 
   @override
   bool operator ==(Object other) {

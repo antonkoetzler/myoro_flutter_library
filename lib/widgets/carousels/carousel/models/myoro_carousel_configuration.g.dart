@@ -6,7 +6,14 @@ part of 'myoro_carousel_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroCarouselConfigurationExtension on MyoroCarouselConfiguration {
+/// Apply this mixin to [MyoroCarouselConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {}
+/// ```
+mixin _$MyoroCarouselConfigurationMixin {
+  MyoroCarouselConfiguration get self => this as MyoroCarouselConfiguration;
+
   MyoroCarouselConfiguration copyWith({
     Axis? direction,
     bool? displayTraversalButtons,
@@ -16,25 +23,16 @@ extension $MyoroCarouselConfigurationExtension on MyoroCarouselConfiguration {
     List<Widget>? items,
   }) {
     return MyoroCarouselConfiguration(
-      direction: direction ?? this.direction,
+      direction: direction ?? self.direction,
       displayTraversalButtons:
-          displayTraversalButtons ?? this.displayTraversalButtons,
-      initialItem: initialItem ?? this.initialItem,
-      autoplay: autoplay ?? this.autoplay,
+          displayTraversalButtons ?? self.displayTraversalButtons,
+      initialItem: initialItem ?? self.initialItem,
+      autoplay: autoplay ?? self.autoplay,
       autoplayIntervalDuration:
-          autoplayIntervalDuration ?? this.autoplayIntervalDuration,
-      items: items ?? this.items,
+          autoplayIntervalDuration ?? self.autoplayIntervalDuration,
+      items: items ?? self.items,
     );
   }
-}
-
-/// Apply this mixin to [MyoroCarouselConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroCarouselConfiguration with $MyoroCarouselConfigurationMixin {}
-/// ```
-mixin $MyoroCarouselConfigurationMixin {
-  MyoroCarouselConfiguration get self => this as MyoroCarouselConfiguration;
 
   @override
   bool operator ==(Object other) {

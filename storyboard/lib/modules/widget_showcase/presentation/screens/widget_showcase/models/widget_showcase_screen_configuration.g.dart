@@ -6,29 +6,26 @@ part of 'widget_showcase_screen_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $WidgetShowcaseScreenConfigurationExtension
-    on WidgetShowcaseScreenConfiguration {
+/// Apply this mixin to [WidgetShowcaseScreenConfiguration] once the code is generated.
+///
+/// ```dart
+/// class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigurationMixin {}
+/// ```
+mixin _$WidgetShowcaseScreenConfigurationMixin {
+  WidgetShowcaseScreenConfiguration get self =>
+      this as WidgetShowcaseScreenConfiguration;
+
   WidgetShowcaseScreenConfiguration copyWith({
     String? widgetName,
     Widget? widget,
     List<Widget>? widgetOptions,
   }) {
     return WidgetShowcaseScreenConfiguration(
-      widgetName: widgetName ?? this.widgetName,
-      widget: widget ?? this.widget,
-      widgetOptions: widgetOptions ?? this.widgetOptions,
+      widgetName: widgetName ?? self.widgetName,
+      widget: widget ?? self.widget,
+      widgetOptions: widgetOptions ?? self.widgetOptions,
     );
   }
-}
-
-/// Apply this mixin to [WidgetShowcaseScreenConfiguration] once the code is generated.
-///
-/// ```dart
-/// class WidgetShowcaseScreenConfiguration with $WidgetShowcaseScreenConfigurationMixin {}
-/// ```
-mixin $WidgetShowcaseScreenConfigurationMixin {
-  WidgetShowcaseScreenConfiguration get self =>
-      this as WidgetShowcaseScreenConfiguration;
 
   @override
   bool operator ==(Object other) {

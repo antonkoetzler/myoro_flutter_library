@@ -9,9 +9,9 @@ part of 'myoro_tap_status_enum_color_builder_widget_showcase_option_theme_extens
 /// Apply this mixin to [MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension with $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtensionMixin {}
+/// class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension with _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtensionMixin
+mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtensionMixin
     on
         ThemeExtension<
           MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension

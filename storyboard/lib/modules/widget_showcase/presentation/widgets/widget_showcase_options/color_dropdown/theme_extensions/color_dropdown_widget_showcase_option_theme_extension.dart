@@ -9,7 +9,7 @@ part 'color_dropdown_widget_showcase_option_theme_extension.g.dart';
 @myoroThemeExtension
 final class ColorDropdownWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<ColorDropdownWidgetShowcaseOptionThemeExtension>
-    with $ColorDropdownWidgetShowcaseOptionThemeExtensionMixin {
+    with _$ColorDropdownWidgetShowcaseOptionThemeExtensionMixin {
   const ColorDropdownWidgetShowcaseOptionThemeExtension();
 
   const ColorDropdownWidgetShowcaseOptionThemeExtension.fake();

@@ -7,7 +7,7 @@ part 'myoro_drawer_configuration.g.dart';
 
 /// Configuration of [MyoroDrawer].
 @myoroModel
-class MyoroDrawerConfiguration with $MyoroDrawerConfigurationMixin {
+class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
   static const showCloseButtonDefaultValue = true;
   static const barrierDismissableDefaultValue = true;
 

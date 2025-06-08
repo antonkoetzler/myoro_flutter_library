@@ -11,7 +11,7 @@ part 'myoro_accordion_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExtension>
-    with $MyoroAccordionThemeExtensionMixin {
+    with _$MyoroAccordionThemeExtensionMixin {
   /// [Duration] of the animation of [_ItemContent].
   final Duration itemContentAnimationDuration;
 

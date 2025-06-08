@@ -7,7 +7,7 @@ part 'myoro_accordion_item.g.dart';
 
 /// Item of a [MyoroAccordion].
 @myoroModel
-class MyoroAccordionItem with $MyoroAccordionItemMixin {
+class MyoroAccordionItem with _$MyoroAccordionItemMixin {
   /// Builder of the title of the item.
   final MyoroAccordionItemTitleBuilder titleBuilder;
 

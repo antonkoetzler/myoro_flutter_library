@@ -9,7 +9,9 @@ enum MyoroWidgetListEnum {
   apps('Apps', {myoroAppTitle}),
   buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle}),
   cards('Cards', {myoroCardTitle}),
-  carousels('Carousels', {myoroCarouselTitle});
+  carousels('Carousels', {myoroCarouselTitle}),
+  checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
+  dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -42,6 +44,14 @@ enum MyoroWidgetListEnum {
   // Carousels
   static const myoroCarouselTitle = 'MyoroCarousel';
 
+  // Checkboxes
+  static const myoroCheckboxTitle = 'MyoroCheckbox';
+  static const myoroGroupCheckboxTitle = 'MyoroGroupCheckbox';
+
+  // Dividers
+  static const myoroBasicDividerTitle = 'MyoroBasicDivider';
+  static const myoroResizeDividerTitle = 'MyoroResizeDivider';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -63,6 +73,14 @@ enum MyoroWidgetListEnum {
       // Carousels
       myoroCarouselTitle => const MyoroCarouselWidgetShowcase(),
 
+      // Checkboxes
+      myoroCheckboxTitle => const MyoroCheckboxWidgetShowcase(),
+      myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
+
+      // Dividers
+      myoroBasicDividerTitle => const MyoroBasicDividerWidgetShowcase(),
+      myoroResizeDividerTitle => const MyoroResizeDividerWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }
@@ -73,4 +91,6 @@ enum MyoroWidgetListEnum {
   bool get isButtons => this == buttons;
   bool get isCards => this == cards;
   bool get isCarousels => this == carousels;
+  bool get isCheckboxes => this == checkboxes;
+  bool get isDivider => this == dividers;
 }

@@ -6,8 +6,15 @@ part of 'storyboard_screen_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $StoryboardScreenConfigurationExtension
-    on StoryboardScreenConfiguration {
+/// Apply this mixin to [StoryboardScreenConfiguration] once the code is generated.
+///
+/// ```dart
+/// class StoryboardScreenConfiguration with _$StoryboardScreenConfigurationMixin {}
+/// ```
+mixin _$StoryboardScreenConfigurationMixin {
+  StoryboardScreenConfiguration get self =>
+      this as StoryboardScreenConfiguration;
+
   StoryboardScreenConfiguration copyWith({
     void Function()? onPrevious,
     bool onPreviousProvided = true,
@@ -16,22 +23,12 @@ extension $StoryboardScreenConfigurationExtension
     Widget? body,
   }) {
     return StoryboardScreenConfiguration(
-      onPrevious: onPreviousProvided ? (onPrevious ?? this.onPrevious) : null,
-      title: title ?? this.title,
-      extraActionWidgets: extraActionWidgets ?? this.extraActionWidgets,
-      body: body ?? this.body,
+      onPrevious: onPreviousProvided ? (onPrevious ?? self.onPrevious) : null,
+      title: title ?? self.title,
+      extraActionWidgets: extraActionWidgets ?? self.extraActionWidgets,
+      body: body ?? self.body,
     );
   }
-}
-
-/// Apply this mixin to [StoryboardScreenConfiguration] once the code is generated.
-///
-/// ```dart
-/// class StoryboardScreenConfiguration with $StoryboardScreenConfigurationMixin {}
-/// ```
-mixin $StoryboardScreenConfigurationMixin {
-  StoryboardScreenConfiguration get self =>
-      this as StoryboardScreenConfiguration;
 
   @override
   bool operator ==(Object other) {

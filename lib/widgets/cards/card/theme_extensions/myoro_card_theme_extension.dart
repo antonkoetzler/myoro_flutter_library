@@ -10,7 +10,7 @@ part 'myoro_card_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroCard].
 @immutable
 @myoroThemeExtension
-class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> with $MyoroCardThemeExtensionMixin {
+class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> with _$MyoroCardThemeExtensionMixin {
   /// Background color of the card.
   final Color backgroundColor;
 

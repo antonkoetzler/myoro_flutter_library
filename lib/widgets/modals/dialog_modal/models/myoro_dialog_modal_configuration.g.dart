@@ -6,8 +6,15 @@ part of 'myoro_dialog_modal_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroDialogModalConfigurationExtension
-    on MyoroDialogModalConfiguration {
+/// Apply this mixin to [MyoroDialogModalConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {}
+/// ```
+mixin _$MyoroDialogModalConfigurationMixin {
+  MyoroDialogModalConfiguration get self =>
+      this as MyoroDialogModalConfiguration;
+
   MyoroDialogModalConfiguration copyWith({
     bool? invertButtons,
     String? confirmButtonText,
@@ -25,32 +32,22 @@ extension $MyoroDialogModalConfigurationExtension
     bool childProvided = true,
   }) {
     return MyoroDialogModalConfiguration(
-      invertButtons: invertButtons ?? this.invertButtons,
+      invertButtons: invertButtons ?? self.invertButtons,
       confirmButtonText:
           confirmButtonTextProvided
-              ? (confirmButtonText ?? this.confirmButtonText)
+              ? (confirmButtonText ?? self.confirmButtonText)
               : null,
       cancelButtonText:
           cancelButtonTextProvided
-              ? (cancelButtonText ?? this.cancelButtonText)
+              ? (cancelButtonText ?? self.cancelButtonText)
               : null,
-      onConfirm: onConfirmProvided ? (onConfirm ?? this.onConfirm) : null,
-      onCancel: onCancelProvided ? (onCancel ?? this.onCancel) : null,
-      text: text ?? this.text,
-      textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
-      child: childProvided ? (child ?? this.child) : null,
+      onConfirm: onConfirmProvided ? (onConfirm ?? self.onConfirm) : null,
+      onCancel: onCancelProvided ? (onCancel ?? self.onCancel) : null,
+      text: text ?? self.text,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      child: childProvided ? (child ?? self.child) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroDialogModalConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroDialogModalConfiguration with $MyoroDialogModalConfigurationMixin {}
-/// ```
-mixin $MyoroDialogModalConfigurationMixin {
-  MyoroDialogModalConfiguration get self =>
-      this as MyoroDialogModalConfiguration;
 
   @override
   bool operator ==(Object other) {

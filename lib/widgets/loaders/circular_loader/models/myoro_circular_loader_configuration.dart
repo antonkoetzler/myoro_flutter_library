@@ -7,7 +7,7 @@ part 'myoro_circular_loader_configuration.g.dart';
 
 /// Configuration of [MyoroCircularLoader].
 @myoroModel
-class MyoroCircularLoaderConfiguration with $MyoroCircularLoaderConfigurationMixin {
+class MyoroCircularLoaderConfiguration with _$MyoroCircularLoaderConfigurationMixin {
   /// Color of the [MyoroCircularLoader].
   final Color? color;
 

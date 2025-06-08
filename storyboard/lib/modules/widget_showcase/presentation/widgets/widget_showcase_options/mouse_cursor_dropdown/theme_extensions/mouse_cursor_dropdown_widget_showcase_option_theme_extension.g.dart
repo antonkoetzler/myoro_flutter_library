@@ -9,9 +9,9 @@ part of 'mouse_cursor_dropdown_widget_showcase_option_theme_extension.dart';
 /// Apply this mixin to [MouseCursorDropdownWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MouseCursorDropdownWidgetShowcaseOptionThemeExtension with $MouseCursorDropdownWidgetShowcaseOptionThemeExtensionMixin {}
+/// class MouseCursorDropdownWidgetShowcaseOptionThemeExtension with _$MouseCursorDropdownWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $MouseCursorDropdownWidgetShowcaseOptionThemeExtensionMixin
+mixin _$MouseCursorDropdownWidgetShowcaseOptionThemeExtensionMixin
     on ThemeExtension<MouseCursorDropdownWidgetShowcaseOptionThemeExtension> {
   MouseCursorDropdownWidgetShowcaseOptionThemeExtension get self =>
       this as MouseCursorDropdownWidgetShowcaseOptionThemeExtension;

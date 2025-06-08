@@ -6,8 +6,15 @@ part of 'myoro_basic_divider_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroBasicDividerConfigurationExtension
-    on MyoroBasicDividerConfiguration {
+/// Apply this mixin to [MyoroBasicDividerConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin {}
+/// ```
+mixin _$MyoroBasicDividerConfigurationMixin {
+  MyoroBasicDividerConfiguration get self =>
+      this as MyoroBasicDividerConfiguration;
+
   MyoroBasicDividerConfiguration copyWith({
     Axis? direction,
     double? shortValue,
@@ -16,21 +23,11 @@ extension $MyoroBasicDividerConfigurationExtension
     bool paddingProvided = true,
   }) {
     return MyoroBasicDividerConfiguration(
-      direction: direction ?? this.direction,
-      shortValue: shortValueProvided ? (shortValue ?? this.shortValue) : null,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
+      direction: direction ?? self.direction,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroBasicDividerConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroBasicDividerConfiguration with $MyoroBasicDividerConfigurationMixin {}
-/// ```
-mixin $MyoroBasicDividerConfigurationMixin {
-  MyoroBasicDividerConfiguration get self =>
-      this as MyoroBasicDividerConfiguration;
 
   @override
   bool operator ==(Object other) {

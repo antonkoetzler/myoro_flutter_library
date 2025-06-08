@@ -8,7 +8,7 @@ part 'myoro_button_configuration.g.dart';
 
 /// Configuration model of [MyoroButton].
 @myoroModel
-class MyoroButtonConfiguration with $MyoroButtonConfigurationMixin {
+class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
   /// [MyoroTooltip] of the [MyoroButton].
   final MyoroTooltipConfiguration? tooltipConfiguration;
 

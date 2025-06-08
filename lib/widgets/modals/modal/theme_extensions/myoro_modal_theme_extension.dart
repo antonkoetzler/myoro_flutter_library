@@ -10,7 +10,7 @@ part 'myoro_modal_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroModal].
 @immutable
 @myoroThemeExtension
-class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> with $MyoroModalThemeExtensionMixin {
+class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> with _$MyoroModalThemeExtensionMixin {
   /// Background color of the modal.
   final Color primaryColor;
 

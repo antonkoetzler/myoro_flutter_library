@@ -11,7 +11,7 @@ part 'myoro_search_input_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThemeExtension>
-    with $MyoroSearchInputThemeExtensionMixin {
+    with _$MyoroSearchInputThemeExtensionMixin {
   /// Spacing in between the [MyoroInput] & [_SearchSection].
   final double spacing;
 

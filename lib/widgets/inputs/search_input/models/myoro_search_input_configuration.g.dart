@@ -6,8 +6,15 @@ part of 'myoro_search_input_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroSearchInputConfigurationExtension<T>
-    on MyoroSearchInputConfiguration<T> {
+/// Apply this mixin to [MyoroSearchInputConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin<T> {}
+/// ```
+mixin _$MyoroSearchInputConfigurationMixin<T> {
+  MyoroSearchInputConfiguration<T> get self =>
+      this as MyoroSearchInputConfiguration<T>;
+
   MyoroSearchInputConfiguration<T> copyWith({
     MyoroInputConfiguration? inputConfiguration,
     bool? requestWhenChanged,
@@ -15,22 +22,12 @@ extension $MyoroSearchInputConfigurationExtension<T>
     MyoroMenuItem Function(T)? itemBuilder,
   }) {
     return MyoroSearchInputConfiguration(
-      inputConfiguration: inputConfiguration ?? this.inputConfiguration,
-      requestWhenChanged: requestWhenChanged ?? this.requestWhenChanged,
-      request: request ?? this.request,
-      itemBuilder: itemBuilder ?? this.itemBuilder,
+      inputConfiguration: inputConfiguration ?? self.inputConfiguration,
+      requestWhenChanged: requestWhenChanged ?? self.requestWhenChanged,
+      request: request ?? self.request,
+      itemBuilder: itemBuilder ?? self.itemBuilder,
     );
   }
-}
-
-/// Apply this mixin to [MyoroSearchInputConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroSearchInputConfiguration<T> with $MyoroSearchInputConfigurationMixin<T> {}
-/// ```
-mixin $MyoroSearchInputConfigurationMixin<T> {
-  MyoroSearchInputConfiguration<T> get self =>
-      this as MyoroSearchInputConfiguration<T>;
 
   @override
   bool operator ==(Object other) {

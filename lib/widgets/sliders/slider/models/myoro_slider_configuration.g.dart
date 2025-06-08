@@ -6,7 +6,14 @@ part of 'myoro_slider_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroSliderConfigurationExtension on MyoroSliderConfiguration {
+/// Apply this mixin to [MyoroSliderConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {}
+/// ```
+mixin _$MyoroSliderConfigurationMixin {
+  MyoroSliderConfiguration get self => this as MyoroSliderConfiguration;
+
   MyoroSliderConfiguration copyWith({
     String? label,
     TextStyle? labelTextStyle,
@@ -22,38 +29,29 @@ extension $MyoroSliderConfigurationExtension on MyoroSliderConfiguration {
     void Function(double)? onChanged,
   }) {
     return MyoroSliderConfiguration(
-      label: label ?? this.label,
+      label: label ?? self.label,
       labelTextStyle:
           labelTextStyleProvided
-              ? (labelTextStyle ?? this.labelTextStyle)
+              ? (labelTextStyle ?? self.labelTextStyle)
               : null,
-      width: widthProvided ? (width ?? this.width) : null,
+      width: widthProvided ? (width ?? self.width) : null,
       currentValueIndicatorTextBuilder:
           currentValueIndicatorTextBuilderProvided
               ? (currentValueIndicatorTextBuilder ??
-                  this.currentValueIndicatorTextBuilder)
+                  self.currentValueIndicatorTextBuilder)
               : null,
       maxValueIndicatorTextBuilder:
           maxValueIndicatorTextBuilderProvided
               ? (maxValueIndicatorTextBuilder ??
-                  this.maxValueIndicatorTextBuilder)
+                  self.maxValueIndicatorTextBuilder)
               : null,
       footerIndicatorTextBuilder:
           footerIndicatorTextBuilderProvided
-              ? (footerIndicatorTextBuilder ?? this.footerIndicatorTextBuilder)
+              ? (footerIndicatorTextBuilder ?? self.footerIndicatorTextBuilder)
               : null,
-      onChanged: onChanged ?? this.onChanged,
+      onChanged: onChanged ?? self.onChanged,
     );
   }
-}
-
-/// Apply this mixin to [MyoroSliderConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroSliderConfiguration with $MyoroSliderConfigurationMixin {}
-/// ```
-mixin $MyoroSliderConfigurationMixin {
-  MyoroSliderConfiguration get self => this as MyoroSliderConfiguration;
 
   @override
   bool operator ==(Object other) {

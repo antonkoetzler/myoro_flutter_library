@@ -6,8 +6,15 @@ part of 'myoro_resize_divider_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroResizeDividerConfigurationExtension
-    on MyoroResizeDividerConfiguration {
+/// Apply this mixin to [MyoroResizeDividerConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroResizeDividerConfiguration with _$MyoroResizeDividerConfigurationMixin {}
+/// ```
+mixin _$MyoroResizeDividerConfigurationMixin {
+  MyoroResizeDividerConfiguration get self =>
+      this as MyoroResizeDividerConfiguration;
+
   MyoroResizeDividerConfiguration copyWith({
     MyoroBasicDividerConfiguration? basicDividerConfiguration,
     void Function(DragUpdateDetails)? dragCallback,
@@ -15,21 +22,11 @@ extension $MyoroResizeDividerConfigurationExtension
   }) {
     return MyoroResizeDividerConfiguration(
       basicDividerConfiguration:
-          basicDividerConfiguration ?? this.basicDividerConfiguration,
+          basicDividerConfiguration ?? self.basicDividerConfiguration,
       dragCallback:
-          dragCallbackProvided ? (dragCallback ?? this.dragCallback) : null,
+          dragCallbackProvided ? (dragCallback ?? self.dragCallback) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroResizeDividerConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroResizeDividerConfiguration with $MyoroResizeDividerConfigurationMixin {}
-/// ```
-mixin $MyoroResizeDividerConfigurationMixin {
-  MyoroResizeDividerConfiguration get self =>
-      this as MyoroResizeDividerConfiguration;
 
   @override
   bool operator ==(Object other) {

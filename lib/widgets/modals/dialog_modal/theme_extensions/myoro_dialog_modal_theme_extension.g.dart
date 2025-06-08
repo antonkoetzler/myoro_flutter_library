@@ -9,9 +9,9 @@ part of 'myoro_dialog_modal_theme_extension.dart';
 /// Apply this mixin to [MyoroDialogModalThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroDialogModalThemeExtension with $MyoroDialogModalThemeExtensionMixin {}
+/// class MyoroDialogModalThemeExtension with _$MyoroDialogModalThemeExtensionMixin {}
 /// ```
-mixin $MyoroDialogModalThemeExtensionMixin
+mixin _$MyoroDialogModalThemeExtensionMixin
     on ThemeExtension<MyoroDialogModalThemeExtension> {
   MyoroDialogModalThemeExtension get self =>
       this as MyoroDialogModalThemeExtension;

@@ -9,9 +9,9 @@ part of 'myoro_icon_text_button_theme_extension.dart';
 /// Apply this mixin to [MyoroIconTextButtonThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroIconTextButtonThemeExtension with $MyoroIconTextButtonThemeExtensionMixin {}
+/// class MyoroIconTextButtonThemeExtension with _$MyoroIconTextButtonThemeExtensionMixin {}
 /// ```
-mixin $MyoroIconTextButtonThemeExtensionMixin
+mixin _$MyoroIconTextButtonThemeExtensionMixin
     on ThemeExtension<MyoroIconTextButtonThemeExtension> {
   MyoroIconTextButtonThemeExtension get self =>
       this as MyoroIconTextButtonThemeExtension;

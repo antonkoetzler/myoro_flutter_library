@@ -9,9 +9,9 @@ part of 'myoro_carousel_theme_extension.dart';
 /// Apply this mixin to [MyoroCarouselThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroCarouselThemeExtension with $MyoroCarouselThemeExtensionMixin {}
+/// class MyoroCarouselThemeExtension with _$MyoroCarouselThemeExtensionMixin {}
 /// ```
-mixin $MyoroCarouselThemeExtensionMixin
+mixin _$MyoroCarouselThemeExtensionMixin
     on ThemeExtension<MyoroCarouselThemeExtension> {
   MyoroCarouselThemeExtension get self => this as MyoroCarouselThemeExtension;
 

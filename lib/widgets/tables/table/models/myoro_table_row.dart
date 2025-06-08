@@ -8,7 +8,7 @@ part 'myoro_table_row.g.dart';
 /// Non-title row of a [MyoroTable].
 @immutable
 @myoroModel
-class MyoroTableRow<T> with $MyoroTableRowMixin<T> {
+class MyoroTableRow<T> with _$MyoroTableRowMixin<T> {
   /// Function executed when the [MyoroTableRow] is tapped.
   final MyoroTableRowTapEvent<T>? onTapDown;
 

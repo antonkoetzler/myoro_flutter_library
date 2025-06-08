@@ -7,7 +7,8 @@ part 'myoro_button_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroButton].
 @immutable
 @myoroThemeExtension
-class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension> with $MyoroButtonThemeExtensionMixin {
+class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension>
+    with _$MyoroButtonThemeExtensionMixin {
   /// Standard [BoxBorder].
   final BoxBorder border;
 

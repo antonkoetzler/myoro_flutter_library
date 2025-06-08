@@ -12,7 +12,7 @@ part 'myoro_menu_item.g.dart';
 /// 1. [icon] and/or [text] is provided; a simple [MyoroMenuItem];
 /// 2. [builder] provided for a custom [MyoroMenuItem] widget.
 @myoroModel
-class MyoroMenuItem with $MyoroMenuItemMixin {
+class MyoroMenuItem with _$MyoroMenuItemMixin {
   /// If the item is selected (a.k.a hovered) or not.
   final bool isSelected;
 

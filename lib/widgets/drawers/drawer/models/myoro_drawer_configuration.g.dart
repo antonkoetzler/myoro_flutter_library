@@ -6,7 +6,14 @@ part of 'myoro_drawer_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroDrawerConfigurationExtension on MyoroDrawerConfiguration {
+/// Apply this mixin to [MyoroDrawerConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {}
+/// ```
+mixin _$MyoroDrawerConfigurationMixin {
+  MyoroDrawerConfiguration get self => this as MyoroDrawerConfiguration;
+
   MyoroDrawerConfiguration copyWith({
     String? title,
     bool titleProvided = true,
@@ -17,25 +24,16 @@ extension $MyoroDrawerConfigurationExtension on MyoroDrawerConfiguration {
     Widget? child,
   }) {
     return MyoroDrawerConfiguration(
-      title: titleProvided ? (title ?? this.title) : null,
+      title: titleProvided ? (title ?? self.title) : null,
       titleTextStyle:
           titleTextStyleProvided
-              ? (titleTextStyle ?? this.titleTextStyle)
+              ? (titleTextStyle ?? self.titleTextStyle)
               : null,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
-      child: child ?? this.child,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
+      child: child ?? self.child,
     );
   }
-}
-
-/// Apply this mixin to [MyoroDrawerConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroDrawerConfiguration with $MyoroDrawerConfigurationMixin {}
-/// ```
-mixin $MyoroDrawerConfigurationMixin {
-  MyoroDrawerConfiguration get self => this as MyoroDrawerConfiguration;
 
   @override
   bool operator ==(Object other) {

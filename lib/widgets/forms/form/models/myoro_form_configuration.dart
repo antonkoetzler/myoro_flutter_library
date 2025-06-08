@@ -7,7 +7,7 @@ part 'myoro_form_configuration.g.dart';
 
 /// Configuration of [MyoroForm].
 @myoroModel
-class MyoroFormConfiguration<T> with $MyoroFormConfigurationMixin<T> {
+class MyoroFormConfiguration<T> with _$MyoroFormConfigurationMixin<T> {
   /// Validation function of [MyoroForm].
   ///
   /// If unsuccessful, a [String] of the error message is returned. If successful, returns [null].

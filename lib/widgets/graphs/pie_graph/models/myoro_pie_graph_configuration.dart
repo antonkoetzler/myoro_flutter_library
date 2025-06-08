@@ -7,7 +7,7 @@ part 'myoro_pie_graph_configuration.g.dart';
 
 /// Configuration of [MyoroPieGraph].
 @myoroModel
-class MyoroPieGraphConfiguration with $MyoroPieGraphConfigurationMixin {
+class MyoroPieGraphConfiguration with _$MyoroPieGraphConfigurationMixin {
   /// Pie/donut enum.
   final MyoroPieGraphEnum typeEnum;
 

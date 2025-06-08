@@ -6,7 +6,14 @@ part of 'myoro_snack_bar_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroSnackBarConfigurationExtension on MyoroSnackBarConfiguration {
+/// Apply this mixin to [MyoroSnackBarConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroSnackBarConfiguration with _$MyoroSnackBarConfigurationMixin {}
+/// ```
+mixin _$MyoroSnackBarConfigurationMixin {
+  MyoroSnackBarConfiguration get self => this as MyoroSnackBarConfiguration;
+
   MyoroSnackBarConfiguration copyWith({
     MyoroSnackBarTypeEnum? snackBarType,
     bool? showCloseButton,
@@ -15,21 +22,12 @@ extension $MyoroSnackBarConfigurationExtension on MyoroSnackBarConfiguration {
     bool childProvided = true,
   }) {
     return MyoroSnackBarConfiguration(
-      snackBarType: snackBarType ?? this.snackBarType,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      message: message ?? this.message,
-      child: childProvided ? (child ?? this.child) : null,
+      snackBarType: snackBarType ?? self.snackBarType,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+      message: message ?? self.message,
+      child: childProvided ? (child ?? self.child) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroSnackBarConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroSnackBarConfiguration with $MyoroSnackBarConfigurationMixin {}
-/// ```
-mixin $MyoroSnackBarConfigurationMixin {
-  MyoroSnackBarConfiguration get self => this as MyoroSnackBarConfiguration;
 
   @override
   bool operator ==(Object other) {

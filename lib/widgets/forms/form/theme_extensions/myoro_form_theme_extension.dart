@@ -7,7 +7,7 @@ part 'myoro_form_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroForm].
 @immutable
 @myoroThemeExtension
-class MyoroFormThemeExtension extends ThemeExtension<MyoroFormThemeExtension> with $MyoroFormThemeExtensionMixin {
+class MyoroFormThemeExtension extends ThemeExtension<MyoroFormThemeExtension> with _$MyoroFormThemeExtensionMixin {
   const MyoroFormThemeExtension();
 
   const MyoroFormThemeExtension.fake();

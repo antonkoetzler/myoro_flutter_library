@@ -6,7 +6,14 @@ part of 'myoro_form_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroFormConfigurationExtension<T> on MyoroFormConfiguration<T> {
+/// Apply this mixin to [MyoroFormConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroFormConfiguration<T> with _$MyoroFormConfigurationMixin<T> {}
+/// ```
+mixin _$MyoroFormConfigurationMixin<T> {
+  MyoroFormConfiguration<T> get self => this as MyoroFormConfiguration<T>;
+
   MyoroFormConfiguration<T> copyWith({
     String? Function()? validation,
     bool validationProvided = true,
@@ -19,22 +26,13 @@ extension $MyoroFormConfigurationExtension<T> on MyoroFormConfiguration<T> {
     dynamic Function(MyoroRequest<T>, MyoroFormController<T>)? builder,
   }) {
     return MyoroFormConfiguration(
-      validation: validationProvided ? (validation ?? this.validation) : null,
-      request: requestProvided ? (request ?? this.request) : null,
-      onSuccess: onSuccessProvided ? (onSuccess ?? this.onSuccess) : null,
-      onError: onErrorProvided ? (onError ?? this.onError) : null,
-      builder: builder ?? this.builder,
+      validation: validationProvided ? (validation ?? self.validation) : null,
+      request: requestProvided ? (request ?? self.request) : null,
+      onSuccess: onSuccessProvided ? (onSuccess ?? self.onSuccess) : null,
+      onError: onErrorProvided ? (onError ?? self.onError) : null,
+      builder: builder ?? self.builder,
     );
   }
-}
-
-/// Apply this mixin to [MyoroFormConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroFormConfiguration<T> with $MyoroFormConfigurationMixin<T> {}
-/// ```
-mixin $MyoroFormConfigurationMixin<T> {
-  MyoroFormConfiguration<T> get self => this as MyoroFormConfiguration<T>;
 
   @override
   bool operator ==(Object other) {

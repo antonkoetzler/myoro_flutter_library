@@ -6,7 +6,14 @@ part of 'myoro_tooltip_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroTooltipConfigurationExtension on MyoroTooltipConfiguration {
+/// Apply this mixin to [MyoroTooltipConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {}
+/// ```
+mixin _$MyoroTooltipConfigurationMixin {
+  MyoroTooltipConfiguration get self => this as MyoroTooltipConfiguration;
+
   MyoroTooltipConfiguration copyWith({
     EdgeInsets? margin,
     bool marginProvided = true,
@@ -14,20 +21,11 @@ extension $MyoroTooltipConfigurationExtension on MyoroTooltipConfiguration {
     String? text,
   }) {
     return MyoroTooltipConfiguration(
-      margin: marginProvided ? (margin ?? this.margin) : null,
-      waitDuration: waitDuration ?? this.waitDuration,
-      text: text ?? this.text,
+      margin: marginProvided ? (margin ?? self.margin) : null,
+      waitDuration: waitDuration ?? self.waitDuration,
+      text: text ?? self.text,
     );
   }
-}
-
-/// Apply this mixin to [MyoroTooltipConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroTooltipConfiguration with $MyoroTooltipConfigurationMixin {}
-/// ```
-mixin $MyoroTooltipConfigurationMixin {
-  MyoroTooltipConfiguration get self => this as MyoroTooltipConfiguration;
 
   @override
   bool operator ==(Object other) {

@@ -11,7 +11,7 @@ part 'myoro_basic_divider_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerThemeExtension>
-    with $MyoroBasicDividerThemeExtensionMixin {
+    with _$MyoroBasicDividerThemeExtensionMixin {
   /// [MyoroColorDesignSystem.secondary] by default.
   final Color color;
 

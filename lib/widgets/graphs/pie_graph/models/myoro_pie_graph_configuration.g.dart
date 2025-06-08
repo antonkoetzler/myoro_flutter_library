@@ -6,7 +6,14 @@ part of 'myoro_pie_graph_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroPieGraphConfigurationExtension on MyoroPieGraphConfiguration {
+/// Apply this mixin to [MyoroPieGraphConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroPieGraphConfiguration with _$MyoroPieGraphConfigurationMixin {}
+/// ```
+mixin _$MyoroPieGraphConfigurationMixin {
+  MyoroPieGraphConfiguration get self => this as MyoroPieGraphConfiguration;
+
   MyoroPieGraphConfiguration copyWith({
     MyoroPieGraphEnum? typeEnum,
     Widget? centerWidget,
@@ -14,21 +21,12 @@ extension $MyoroPieGraphConfigurationExtension on MyoroPieGraphConfiguration {
     List<MyoroPieGraphItem>? items,
   }) {
     return MyoroPieGraphConfiguration(
-      typeEnum: typeEnum ?? this.typeEnum,
+      typeEnum: typeEnum ?? self.typeEnum,
       centerWidget:
-          centerWidgetProvided ? (centerWidget ?? this.centerWidget) : null,
-      items: items ?? this.items,
+          centerWidgetProvided ? (centerWidget ?? self.centerWidget) : null,
+      items: items ?? self.items,
     );
   }
-}
-
-/// Apply this mixin to [MyoroPieGraphConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroPieGraphConfiguration with $MyoroPieGraphConfigurationMixin {}
-/// ```
-mixin $MyoroPieGraphConfigurationMixin {
-  MyoroPieGraphConfiguration get self => this as MyoroPieGraphConfiguration;
 
   @override
   bool operator ==(Object other) {

@@ -8,7 +8,7 @@ part 'myoro_modal_configuration.g.dart';
 /// Model to store the configuration members of [MyoroModal] that
 /// may be altered within other modals to not repeat the members.
 @myoroModel
-class MyoroModalConfiguration with $MyoroModalConfigurationMixin {
+class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
   static const barrierDismissableDefaultValue = true;
   static const useRootNavigatorDefaultValue = true;
   static const showCloseButtonDefaultValue = true;

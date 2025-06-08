@@ -8,7 +8,7 @@ part 'myoro_table_column.g.dart';
 /// Model of a column of a [MyoroTable].
 @immutable
 @myoroModel
-class MyoroTableColumn with $MyoroTableColumnMixin {
+class MyoroTableColumn with _$MyoroTableColumnMixin {
   /// [MyoroTooltip.text]
   final String? tooltipMessage;
 

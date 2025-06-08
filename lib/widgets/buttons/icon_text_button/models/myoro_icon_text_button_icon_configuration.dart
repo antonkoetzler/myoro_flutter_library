@@ -7,7 +7,7 @@ part 'myoro_icon_text_button_icon_configuration.g.dart';
 
 /// Icon configuration of a [MyoroIconTextButton].
 @myoroModel
-class MyoroIconTextButtonIconConfiguration with $MyoroIconTextButtonIconConfigurationMixin {
+class MyoroIconTextButtonIconConfiguration with _$MyoroIconTextButtonIconConfigurationMixin {
   /// [Icon.icon]
   final IconData icon;
 

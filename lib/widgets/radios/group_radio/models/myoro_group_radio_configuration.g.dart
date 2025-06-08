@@ -6,8 +6,14 @@ part of 'myoro_group_radio_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroGroupRadioConfigurationExtension
-    on MyoroGroupRadioConfiguration {
+/// Apply this mixin to [MyoroGroupRadioConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {}
+/// ```
+mixin _$MyoroGroupRadioConfigurationMixin {
+  MyoroGroupRadioConfiguration get self => this as MyoroGroupRadioConfiguration;
+
   MyoroGroupRadioConfiguration copyWith({
     MyoroGroupRadioController? notifier,
     bool notifierProvided = true,
@@ -22,23 +28,14 @@ extension $MyoroGroupRadioConfigurationExtension
     bool radiosProvided = true,
   }) {
     return MyoroGroupRadioConfiguration(
-      notifier: notifierProvided ? (notifier ?? this.notifier) : null,
-      direction: direction ?? this.direction,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-      radios: radiosProvided ? (radios ?? this.radios) : null,
+      notifier: notifierProvided ? (notifier ?? self.notifier) : null,
+      direction: direction ?? self.direction,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      radios: radiosProvided ? (radios ?? self.radios) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroGroupRadioConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroGroupRadioConfiguration with $MyoroGroupRadioConfigurationMixin {}
-/// ```
-mixin $MyoroGroupRadioConfigurationMixin {
-  MyoroGroupRadioConfiguration get self => this as MyoroGroupRadioConfiguration;
 
   @override
   bool operator ==(Object other) {

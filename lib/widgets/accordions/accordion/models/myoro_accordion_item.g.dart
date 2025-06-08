@@ -6,25 +6,23 @@ part of 'myoro_accordion_item.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroAccordionItemExtension on MyoroAccordionItem {
+/// Apply this mixin to [MyoroAccordionItem] once the code is generated.
+///
+/// ```dart
+/// class MyoroAccordionItem with _$MyoroAccordionItemMixin {}
+/// ```
+mixin _$MyoroAccordionItemMixin {
+  MyoroAccordionItem get self => this as MyoroAccordionItem;
+
   MyoroAccordionItem copyWith({
     Widget Function(BuildContext)? titleBuilder,
     Widget Function(BuildContext)? contentBuilder,
   }) {
     return MyoroAccordionItem(
-      titleBuilder: titleBuilder ?? this.titleBuilder,
-      contentBuilder: contentBuilder ?? this.contentBuilder,
+      titleBuilder: titleBuilder ?? self.titleBuilder,
+      contentBuilder: contentBuilder ?? self.contentBuilder,
     );
   }
-}
-
-/// Apply this mixin to [MyoroAccordionItem] once the code is generated.
-///
-/// ```dart
-/// class MyoroAccordionItem with $MyoroAccordionItemMixin {}
-/// ```
-mixin $MyoroAccordionItemMixin {
-  MyoroAccordionItem get self => this as MyoroAccordionItem;
 
   @override
   bool operator ==(Object other) {

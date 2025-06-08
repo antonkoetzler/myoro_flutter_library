@@ -10,7 +10,7 @@ part 'myoro_table_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroTable].
 @immutable
 @myoroThemeExtension
-class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with $MyoroTableThemeExtensionMixin {
+class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with _$MyoroTableThemeExtensionMixin {
   /// [Container.decoration] of [_MyoroTableState].
   final BoxDecoration decoration;
 

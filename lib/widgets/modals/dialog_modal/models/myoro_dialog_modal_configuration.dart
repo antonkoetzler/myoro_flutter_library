@@ -7,7 +7,7 @@ part 'myoro_dialog_modal_configuration.g.dart';
 
 /// Configuration of [MyoroDialogModal].
 @myoroModel
-class MyoroDialogModalConfiguration with $MyoroDialogModalConfigurationMixin {
+class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {
   static const invertButtonsDefaultValue = false;
   static const textDefaultValue = '';
 

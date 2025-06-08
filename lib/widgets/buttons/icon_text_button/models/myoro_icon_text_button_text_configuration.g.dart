@@ -6,8 +6,15 @@ part of 'myoro_icon_text_button_text_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroIconTextButtonTextConfigurationExtension
-    on MyoroIconTextButtonTextConfiguration {
+/// Apply this mixin to [MyoroIconTextButtonTextConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroIconTextButtonTextConfiguration with _$MyoroIconTextButtonTextConfigurationMixin {}
+/// ```
+mixin _$MyoroIconTextButtonTextConfigurationMixin {
+  MyoroIconTextButtonTextConfiguration get self =>
+      this as MyoroIconTextButtonTextConfiguration;
+
   MyoroIconTextButtonTextConfiguration copyWith({
     String? text,
     int? maxLines,
@@ -17,23 +24,13 @@ extension $MyoroIconTextButtonTextConfigurationExtension
     bool styleProvided = true,
   }) {
     return MyoroIconTextButtonTextConfiguration(
-      text: text ?? this.text,
-      maxLines: maxLines ?? this.maxLines,
-      overflow: overflow ?? this.overflow,
-      alignment: alignment ?? this.alignment,
-      style: styleProvided ? (style ?? this.style) : null,
+      text: text ?? self.text,
+      maxLines: maxLines ?? self.maxLines,
+      overflow: overflow ?? self.overflow,
+      alignment: alignment ?? self.alignment,
+      style: styleProvided ? (style ?? self.style) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroIconTextButtonTextConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroIconTextButtonTextConfiguration with $MyoroIconTextButtonTextConfigurationMixin {}
-/// ```
-mixin $MyoroIconTextButtonTextConfigurationMixin {
-  MyoroIconTextButtonTextConfiguration get self =>
-      this as MyoroIconTextButtonTextConfiguration;
 
   @override
   bool operator ==(Object other) {

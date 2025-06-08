@@ -8,7 +8,7 @@ part 'myoro_table_column_width_configuration.g.dart';
 /// Width configuration of a [MyoroTable].
 @immutable
 @myoroModel
-class MyoroTableColumnWidthConfiguration with $MyoroTableColumnWidthConfigurationMixin {
+class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurationMixin {
   /// Width configuration enum.
   final MyoroTableColumnWidthConfigurationEnum typeEnum;
 

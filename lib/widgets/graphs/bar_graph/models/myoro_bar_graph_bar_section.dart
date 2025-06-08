@@ -8,7 +8,7 @@ part 'myoro_bar_graph_bar_section.g.dart';
 /// For a [MyoroBarGraphBar] with a non-empty [MyoroBarGraphBar.barSections],
 /// [MyoroBarGraphBarSection] will occupy a specified piece of a [MyoroBarGraph].
 @myoroModel
-class MyoroBarGraphBarSection with $MyoroBarGraphBarSectionMixin {
+class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
   /// Starting position of the bar section.
   final double fromY;
 

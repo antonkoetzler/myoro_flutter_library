@@ -8,7 +8,7 @@ part 'myoro_tooltip_configuration.g.dart';
 /// Configuration model of [MyoroTooltip].
 @immutable
 @myoroModel
-class MyoroTooltipConfiguration with $MyoroTooltipConfigurationMixin {
+class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
   static const waitDurationDefaultValue = Duration(milliseconds: 200);
 
   /// Margin [EdgeInsets] of the tooltip.

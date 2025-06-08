@@ -6,27 +6,24 @@ part of 'box_constraints_widget_showcase_option_selector_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $BoxConstraintsWidgetShowcaseOptionSelectorConfigurationExtension
-    on BoxConstraintsWidgetShowcaseOptionSelectorConfiguration {
+/// Apply this mixin to [BoxConstraintsWidgetShowcaseOptionSelectorConfiguration] once the code is generated.
+///
+/// ```dart
+/// class BoxConstraintsWidgetShowcaseOptionSelectorConfiguration with _$BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {}
+/// ```
+mixin _$BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {
+  BoxConstraintsWidgetShowcaseOptionSelectorConfiguration get self =>
+      this as BoxConstraintsWidgetShowcaseOptionSelectorConfiguration;
+
   BoxConstraintsWidgetShowcaseOptionSelectorConfiguration copyWith({
     BoxConstraintsWidgetShowcaseOptionSelectorController? controller,
     String? label,
   }) {
     return BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-      controller: controller ?? this.controller,
-      label: label ?? this.label,
+      controller: controller ?? self.controller,
+      label: label ?? self.label,
     );
   }
-}
-
-/// Apply this mixin to [BoxConstraintsWidgetShowcaseOptionSelectorConfiguration] once the code is generated.
-///
-/// ```dart
-/// class BoxConstraintsWidgetShowcaseOptionSelectorConfiguration with $BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {}
-/// ```
-mixin $BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {
-  BoxConstraintsWidgetShowcaseOptionSelectorConfiguration get self =>
-      this as BoxConstraintsWidgetShowcaseOptionSelectorConfiguration;
 
   @override
   bool operator ==(Object other) {

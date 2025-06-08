@@ -9,9 +9,9 @@ part of 'icon_widget_showcase_option_theme_extension.dart';
 /// Apply this mixin to [IconWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class IconWidgetShowcaseOptionThemeExtension with $IconWidgetShowcaseOptionThemeExtensionMixin {}
+/// class IconWidgetShowcaseOptionThemeExtension with _$IconWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $IconWidgetShowcaseOptionThemeExtensionMixin
+mixin _$IconWidgetShowcaseOptionThemeExtensionMixin
     on ThemeExtension<IconWidgetShowcaseOptionThemeExtension> {
   IconWidgetShowcaseOptionThemeExtension get self =>
       this as IconWidgetShowcaseOptionThemeExtension;

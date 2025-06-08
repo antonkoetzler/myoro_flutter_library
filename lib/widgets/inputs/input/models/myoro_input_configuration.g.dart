@@ -6,7 +6,14 @@ part of 'myoro_input_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroInputConfigurationExtension on MyoroInputConfiguration {
+/// Apply this mixin to [MyoroInputConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {}
+/// ```
+mixin _$MyoroInputConfigurationMixin {
+  MyoroInputConfiguration get self => this as MyoroInputConfiguration;
+
   MyoroInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
@@ -46,53 +53,44 @@ extension $MyoroInputConfigurationExtension on MyoroInputConfiguration {
     bool controllerProvided = true,
   }) {
     return MyoroInputConfiguration(
-      inputStyle: inputStyle ?? this.inputStyle,
-      textAlign: textAlign ?? this.textAlign,
+      inputStyle: inputStyle ?? self.inputStyle,
+      textAlign: textAlign ?? self.textAlign,
       inputTextStyle:
           inputTextStyleProvided
-              ? (inputTextStyle ?? this.inputTextStyle)
+              ? (inputTextStyle ?? self.inputTextStyle)
               : null,
-      label: labelProvided ? (label ?? this.label) : null,
+      label: labelProvided ? (label ?? self.label) : null,
       placeholder:
-          placeholderProvided ? (placeholder ?? this.placeholder) : null,
+          placeholderProvided ? (placeholder ?? self.placeholder) : null,
       labelTextStyle:
           labelTextStyleProvided
-              ? (labelTextStyle ?? this.labelTextStyle)
+              ? (labelTextStyle ?? self.labelTextStyle)
               : null,
-      contentPadding: contentPadding ?? this.contentPadding,
-      border: borderProvided ? (border ?? this.border) : null,
-      suffix: suffixProvided ? (suffix ?? this.suffix) : null,
-      enabled: enabled ?? this.enabled,
-      readOnly: readOnlyProvided ? (readOnly ?? this.readOnly) : null,
-      autofocus: autofocusProvided ? (autofocus ?? this.autofocus) : null,
+      contentPadding: contentPadding ?? self.contentPadding,
+      border: borderProvided ? (border ?? self.border) : null,
+      suffix: suffixProvided ? (suffix ?? self.suffix) : null,
+      enabled: enabled ?? self.enabled,
+      readOnly: readOnlyProvided ? (readOnly ?? self.readOnly) : null,
+      autofocus: autofocusProvided ? (autofocus ?? self.autofocus) : null,
       showClearTextButton:
           showClearTextButtonProvided
-              ? (showClearTextButton ?? this.showClearTextButton)
+              ? (showClearTextButton ?? self.showClearTextButton)
               : null,
       checkboxOnChanged:
           checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? this.checkboxOnChanged)
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
               : null,
-      validation: validationProvided ? (validation ?? this.validation) : null,
+      validation: validationProvided ? (validation ?? self.validation) : null,
       onFieldSubmitted:
           onFieldSubmittedProvided
-              ? (onFieldSubmitted ?? this.onFieldSubmitted)
+              ? (onFieldSubmitted ?? self.onFieldSubmitted)
               : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-      onCleared: onClearedProvided ? (onCleared ?? this.onCleared) : null,
-      focusNode: focusNodeProvided ? (focusNode ?? this.focusNode) : null,
-      controller: controllerProvided ? (controller ?? this.controller) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
+      focusNode: focusNodeProvided ? (focusNode ?? self.focusNode) : null,
+      controller: controllerProvided ? (controller ?? self.controller) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroInputConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroInputConfiguration with $MyoroInputConfigurationMixin {}
-/// ```
-mixin $MyoroInputConfigurationMixin {
-  MyoroInputConfiguration get self => this as MyoroInputConfiguration;
 
   @override
   bool operator ==(Object other) {

@@ -7,7 +7,7 @@ part 'myoro_pie_graph_item.g.dart';
 
 /// Item/section in a [MyoroPieGraph].
 @myoroModel
-class MyoroPieGraphItem with $MyoroPieGraphItemMixin {
+class MyoroPieGraphItem with _$MyoroPieGraphItemMixin {
   /// Value of the item.
   final double value;
 

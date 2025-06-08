@@ -9,9 +9,9 @@ part of 'main_screen_theme_extension.dart';
 /// Apply this mixin to [MainScreenThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MainScreenThemeExtension with $MainScreenThemeExtensionMixin {}
+/// class MainScreenThemeExtension with _$MainScreenThemeExtensionMixin {}
 /// ```
-mixin $MainScreenThemeExtensionMixin
+mixin _$MainScreenThemeExtensionMixin
     on ThemeExtension<MainScreenThemeExtension> {
   MainScreenThemeExtension get self => this as MainScreenThemeExtension;
 

@@ -9,9 +9,9 @@ part of 'myoro_group_radio_theme_extension.dart';
 /// Apply this mixin to [MyoroGroupRadioThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroGroupRadioThemeExtension with $MyoroGroupRadioThemeExtensionMixin {}
+/// class MyoroGroupRadioThemeExtension with _$MyoroGroupRadioThemeExtensionMixin {}
 /// ```
-mixin $MyoroGroupRadioThemeExtensionMixin
+mixin _$MyoroGroupRadioThemeExtensionMixin
     on ThemeExtension<MyoroGroupRadioThemeExtension> {
   MyoroGroupRadioThemeExtension get self =>
       this as MyoroGroupRadioThemeExtension;

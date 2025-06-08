@@ -6,7 +6,14 @@ part of 'myoro_table_column.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroTableColumnExtension on MyoroTableColumn {
+/// Apply this mixin to [MyoroTableColumn] once the code is generated.
+///
+/// ```dart
+/// class MyoroTableColumn with _$MyoroTableColumnMixin {}
+/// ```
+mixin _$MyoroTableColumnMixin {
+  MyoroTableColumn get self => this as MyoroTableColumn;
+
   MyoroTableColumn copyWith({
     String? tooltipMessage,
     bool tooltipMessageProvided = true,
@@ -16,21 +23,12 @@ extension $MyoroTableColumnExtension on MyoroTableColumn {
     return MyoroTableColumn(
       tooltipMessage:
           tooltipMessageProvided
-              ? (tooltipMessage ?? this.tooltipMessage)
+              ? (tooltipMessage ?? self.tooltipMessage)
               : null,
-      widthConfiguration: widthConfiguration ?? this.widthConfiguration,
-      child: child ?? this.child,
+      widthConfiguration: widthConfiguration ?? self.widthConfiguration,
+      child: child ?? self.child,
     );
   }
-}
-
-/// Apply this mixin to [MyoroTableColumn] once the code is generated.
-///
-/// ```dart
-/// class MyoroTableColumn with $MyoroTableColumnMixin {}
-/// ```
-mixin $MyoroTableColumnMixin {
-  MyoroTableColumn get self => this as MyoroTableColumn;
 
   @override
   bool operator ==(Object other) {

@@ -11,7 +11,7 @@ part 'myoro_snack_bar_container_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension>
-    with $MyoroSnackBarContainerThemeExtensionMixin {
+    with _$MyoroSnackBarContainerThemeExtensionMixin {
   /// Background color of the container.
   final Color primaryColor;
 

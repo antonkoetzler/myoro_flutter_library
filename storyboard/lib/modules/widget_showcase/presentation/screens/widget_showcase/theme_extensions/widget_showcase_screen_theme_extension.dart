@@ -12,7 +12,7 @@ part 'widget_showcase_screen_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShowcaseScreenThemeExtension>
-    with $WidgetShowcaseScreenThemeExtensionMixin {
+    with _$WidgetShowcaseScreenThemeExtensionMixin {
   /// Padding of [_WidgetShowcase].
   final EdgeInsets padding;
 

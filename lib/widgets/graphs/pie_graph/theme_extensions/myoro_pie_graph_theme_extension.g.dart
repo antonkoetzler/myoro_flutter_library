@@ -9,9 +9,9 @@ part of 'myoro_pie_graph_theme_extension.dart';
 /// Apply this mixin to [MyoroPieGraphThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroPieGraphThemeExtension with $MyoroPieGraphThemeExtensionMixin {}
+/// class MyoroPieGraphThemeExtension with _$MyoroPieGraphThemeExtensionMixin {}
 /// ```
-mixin $MyoroPieGraphThemeExtensionMixin
+mixin _$MyoroPieGraphThemeExtensionMixin
     on ThemeExtension<MyoroPieGraphThemeExtension> {
   MyoroPieGraphThemeExtension get self => this as MyoroPieGraphThemeExtension;
 

@@ -6,19 +6,17 @@ part of 'myoro_bar_graph_group.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroBarGraphGroupExtension on MyoroBarGraphGroup {
-  MyoroBarGraphGroup copyWith({int? x, List<MyoroBarGraphBar>? bars}) {
-    return MyoroBarGraphGroup(x: x ?? this.x, bars: bars ?? this.bars);
-  }
-}
-
 /// Apply this mixin to [MyoroBarGraphGroup] once the code is generated.
 ///
 /// ```dart
-/// class MyoroBarGraphGroup with $MyoroBarGraphGroupMixin {}
+/// class MyoroBarGraphGroup with _$MyoroBarGraphGroupMixin {}
 /// ```
-mixin $MyoroBarGraphGroupMixin {
+mixin _$MyoroBarGraphGroupMixin {
   MyoroBarGraphGroup get self => this as MyoroBarGraphGroup;
+
+  MyoroBarGraphGroup copyWith({int? x, List<MyoroBarGraphBar>? bars}) {
+    return MyoroBarGraphGroup(x: x ?? self.x, bars: bars ?? self.bars);
+  }
 
   @override
   bool operator ==(Object other) {

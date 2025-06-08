@@ -6,27 +6,24 @@ part of 'box_constraints_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $BoxConstraintsWidgetShowcaseOptionConfigurationExtension
-    on BoxConstraintsWidgetShowcaseOptionConfiguration {
+/// Apply this mixin to [BoxConstraintsWidgetShowcaseOptionConfiguration] once the code is generated.
+///
+/// ```dart
+/// class BoxConstraintsWidgetShowcaseOptionConfiguration with _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {}
+/// ```
+mixin _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
+  BoxConstraintsWidgetShowcaseOptionConfiguration get self =>
+      this as BoxConstraintsWidgetShowcaseOptionConfiguration;
+
   BoxConstraintsWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     void Function(BoxConstraints)? onChanged,
   }) {
     return BoxConstraintsWidgetShowcaseOptionConfiguration(
-      label: label ?? this.label,
-      onChanged: onChanged ?? this.onChanged,
+      label: label ?? self.label,
+      onChanged: onChanged ?? self.onChanged,
     );
   }
-}
-
-/// Apply this mixin to [BoxConstraintsWidgetShowcaseOptionConfiguration] once the code is generated.
-///
-/// ```dart
-/// class BoxConstraintsWidgetShowcaseOptionConfiguration with $BoxConstraintsWidgetShowcaseOptionConfigurationMixin {}
-/// ```
-mixin $BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
-  BoxConstraintsWidgetShowcaseOptionConfiguration get self =>
-      this as BoxConstraintsWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {

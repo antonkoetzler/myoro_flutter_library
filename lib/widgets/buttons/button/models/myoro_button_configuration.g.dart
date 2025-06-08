@@ -6,7 +6,14 @@ part of 'myoro_button_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroButtonConfigurationExtension on MyoroButtonConfiguration {
+/// Apply this mixin to [MyoroButtonConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {}
+/// ```
+mixin _$MyoroButtonConfigurationMixin {
+  MyoroButtonConfiguration get self => this as MyoroButtonConfiguration;
+
   MyoroButtonConfiguration copyWith({
     MyoroTooltipConfiguration? tooltipConfiguration,
     bool tooltipConfigurationProvided = true,
@@ -26,30 +33,21 @@ extension $MyoroButtonConfigurationExtension on MyoroButtonConfiguration {
     return MyoroButtonConfiguration(
       tooltipConfiguration:
           tooltipConfigurationProvided
-              ? (tooltipConfiguration ?? this.tooltipConfiguration)
+              ? (tooltipConfiguration ?? self.tooltipConfiguration)
               : null,
-      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
       borderRadius:
-          borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+          borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       backgroundColorBuilder:
           backgroundColorBuilderProvided
-              ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
+              ? (backgroundColorBuilder ?? self.backgroundColorBuilder)
               : null,
       borderBuilder:
-          borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
+          borderBuilderProvided ? (borderBuilder ?? self.borderBuilder) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroButtonConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroButtonConfiguration with $MyoroButtonConfigurationMixin {}
-/// ```
-mixin $MyoroButtonConfigurationMixin {
-  MyoroButtonConfiguration get self => this as MyoroButtonConfiguration;
 
   @override
   bool operator ==(Object other) {

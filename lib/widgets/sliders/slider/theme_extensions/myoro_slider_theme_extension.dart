@@ -7,7 +7,8 @@ part 'myoro_slider_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroSlider].
 @immutable
 @myoroThemeExtension
-class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension> with $MyoroSliderThemeExtensionMixin {
+class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension>
+    with _$MyoroSliderThemeExtensionMixin {
   /// Default [TextStyle] of [MyoroSlider.label].
   final TextStyle labelTextStyle;
 

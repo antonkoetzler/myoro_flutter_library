@@ -6,7 +6,14 @@ part of 'myoro_pie_graph_item.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroPieGraphItemExtension on MyoroPieGraphItem {
+/// Apply this mixin to [MyoroPieGraphItem] once the code is generated.
+///
+/// ```dart
+/// class MyoroPieGraphItem with _$MyoroPieGraphItemMixin {}
+/// ```
+mixin _$MyoroPieGraphItemMixin {
+  MyoroPieGraphItem get self => this as MyoroPieGraphItem;
+
   MyoroPieGraphItem copyWith({
     double? value,
     Color? color,
@@ -15,20 +22,11 @@ extension $MyoroPieGraphItemExtension on MyoroPieGraphItem {
     bool radiusProvided = true,
   }) {
     return MyoroPieGraphItem(
-      value: value ?? this.value,
-      color: colorProvided ? (color ?? this.color) : null,
-      radius: radiusProvided ? (radius ?? this.radius) : null,
+      value: value ?? self.value,
+      color: colorProvided ? (color ?? self.color) : null,
+      radius: radiusProvided ? (radius ?? self.radius) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroPieGraphItem] once the code is generated.
-///
-/// ```dart
-/// class MyoroPieGraphItem with $MyoroPieGraphItemMixin {}
-/// ```
-mixin $MyoroPieGraphItemMixin {
-  MyoroPieGraphItem get self => this as MyoroPieGraphItem;
 
   @override
   bool operator ==(Object other) {

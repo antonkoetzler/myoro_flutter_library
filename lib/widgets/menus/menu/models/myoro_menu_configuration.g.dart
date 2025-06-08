@@ -6,7 +6,14 @@ part of 'myoro_menu_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroMenuConfigurationExtension<T> on MyoroMenuConfiguration<T> {
+/// Apply this mixin to [MyoroMenuConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {}
+/// ```
+mixin _$MyoroMenuConfigurationMixin<T> {
+  MyoroMenuConfiguration<T> get self => this as MyoroMenuConfiguration<T>;
+
   MyoroMenuConfiguration<T> copyWith({
     BoxConstraints? constraints,
     FutureOr<Set<T>> Function()? request,
@@ -17,28 +24,19 @@ extension $MyoroMenuConfigurationExtension<T> on MyoroMenuConfiguration<T> {
     MyoroMenuItem Function(T)? itemBuilder,
   }) {
     return MyoroMenuConfiguration(
-      constraints: constraints ?? this.constraints,
-      request: request ?? this.request,
+      constraints: constraints ?? self.constraints,
+      request: request ?? self.request,
       onEndReachedRequest:
           onEndReachedRequestProvided
-              ? (onEndReachedRequest ?? this.onEndReachedRequest)
+              ? (onEndReachedRequest ?? self.onEndReachedRequest)
               : null,
       searchCallback:
           searchCallbackProvided
-              ? (searchCallback ?? this.searchCallback)
+              ? (searchCallback ?? self.searchCallback)
               : null,
-      itemBuilder: itemBuilder ?? this.itemBuilder,
+      itemBuilder: itemBuilder ?? self.itemBuilder,
     );
   }
-}
-
-/// Apply this mixin to [MyoroMenuConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroMenuConfiguration<T> with $MyoroMenuConfigurationMixin<T> {}
-/// ```
-mixin $MyoroMenuConfigurationMixin<T> {
-  MyoroMenuConfiguration<T> get self => this as MyoroMenuConfiguration<T>;
 
   @override
   bool operator ==(Object other) {

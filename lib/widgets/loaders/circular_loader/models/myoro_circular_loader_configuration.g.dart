@@ -6,8 +6,15 @@ part of 'myoro_circular_loader_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroCircularLoaderConfigurationExtension
-    on MyoroCircularLoaderConfiguration {
+/// Apply this mixin to [MyoroCircularLoaderConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroCircularLoaderConfiguration with _$MyoroCircularLoaderConfigurationMixin {}
+/// ```
+mixin _$MyoroCircularLoaderConfigurationMixin {
+  MyoroCircularLoaderConfiguration get self =>
+      this as MyoroCircularLoaderConfiguration;
+
   MyoroCircularLoaderConfiguration copyWith({
     Color? color,
     bool colorProvided = true,
@@ -15,20 +22,10 @@ extension $MyoroCircularLoaderConfigurationExtension
     bool sizeProvided = true,
   }) {
     return MyoroCircularLoaderConfiguration(
-      color: colorProvided ? (color ?? this.color) : null,
-      size: sizeProvided ? (size ?? this.size) : null,
+      color: colorProvided ? (color ?? self.color) : null,
+      size: sizeProvided ? (size ?? self.size) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroCircularLoaderConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroCircularLoaderConfiguration with $MyoroCircularLoaderConfigurationMixin {}
-/// ```
-mixin $MyoroCircularLoaderConfigurationMixin {
-  MyoroCircularLoaderConfiguration get self =>
-      this as MyoroCircularLoaderConfiguration;
 
   @override
   bool operator ==(Object other) {

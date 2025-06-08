@@ -11,7 +11,7 @@ part 'myoro_icon_text_button_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButtonThemeExtension>
-    with $MyoroIconTextButtonThemeExtensionMixin {
+    with _$MyoroIconTextButtonThemeExtensionMixin {
   /// Content padding.
   final EdgeInsets contentPadding;
 

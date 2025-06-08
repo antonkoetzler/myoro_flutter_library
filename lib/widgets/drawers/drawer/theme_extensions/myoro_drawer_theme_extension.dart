@@ -7,7 +7,8 @@ part 'myoro_drawer_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroDrawer].
 @immutable
 @myoroThemeExtension
-class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension> with $MyoroDrawerThemeExtensionMixin {
+class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension>
+    with _$MyoroDrawerThemeExtensionMixin {
   /// Padding of [_Drawer].
   final EdgeInsets drawerPadding;
 

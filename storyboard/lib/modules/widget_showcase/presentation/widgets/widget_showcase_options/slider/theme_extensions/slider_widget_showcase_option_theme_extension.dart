@@ -8,7 +8,7 @@ part 'slider_widget_showcase_option_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class SliderWidgetShowcaseOptionThemeExtension extends ThemeExtension<SliderWidgetShowcaseOptionThemeExtension>
-    with $SliderWidgetShowcaseOptionThemeExtensionMixin {
+    with _$SliderWidgetShowcaseOptionThemeExtensionMixin {
   const SliderWidgetShowcaseOptionThemeExtension();
 
   const SliderWidgetShowcaseOptionThemeExtension.fake();

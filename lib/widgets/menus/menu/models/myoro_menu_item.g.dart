@@ -6,7 +6,14 @@ part of 'myoro_menu_item.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroMenuItemExtension on MyoroMenuItem {
+/// Apply this mixin to [MyoroMenuItem] once the code is generated.
+///
+/// ```dart
+/// class MyoroMenuItem with _$MyoroMenuItemMixin {}
+/// ```
+mixin _$MyoroMenuItemMixin {
+  MyoroMenuItem get self => this as MyoroMenuItem;
+
   MyoroMenuItem copyWith({
     bool? isSelected,
     MyoroIconTextButtonIconConfiguration? iconConfiguration,
@@ -21,29 +28,20 @@ extension $MyoroMenuItemExtension on MyoroMenuItem {
     bool onTapUpProvided = true,
   }) {
     return MyoroMenuItem(
-      isSelected: isSelected ?? this.isSelected,
+      isSelected: isSelected ?? self.isSelected,
       iconConfiguration:
           iconConfigurationProvided
-              ? (iconConfiguration ?? this.iconConfiguration)
+              ? (iconConfiguration ?? self.iconConfiguration)
               : null,
       textConfiguration:
           textConfigurationProvided
-              ? (textConfiguration ?? this.textConfiguration)
+              ? (textConfiguration ?? self.textConfiguration)
               : null,
-      builder: builderProvided ? (builder ?? this.builder) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
+      builder: builderProvided ? (builder ?? self.builder) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
     );
   }
-}
-
-/// Apply this mixin to [MyoroMenuItem] once the code is generated.
-///
-/// ```dart
-/// class MyoroMenuItem with $MyoroMenuItemMixin {}
-/// ```
-mixin $MyoroMenuItemMixin {
-  MyoroMenuItem get self => this as MyoroMenuItem;
 
   @override
   bool operator ==(Object other) {

@@ -6,25 +6,23 @@ part of 'myoro_bar_graph_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroBarGraphConfigurationExtension on MyoroBarGraphConfiguration {
+/// Apply this mixin to [MyoroBarGraphConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroBarGraphConfiguration with _$MyoroBarGraphConfigurationMixin {}
+/// ```
+mixin _$MyoroBarGraphConfigurationMixin {
+  MyoroBarGraphConfiguration get self => this as MyoroBarGraphConfiguration;
+
   MyoroBarGraphConfiguration copyWith({
     bool? sorted,
     List<MyoroBarGraphGroup>? items,
   }) {
     return MyoroBarGraphConfiguration(
-      sorted: sorted ?? this.sorted,
-      items: items ?? this.items,
+      sorted: sorted ?? self.sorted,
+      items: items ?? self.items,
     );
   }
-}
-
-/// Apply this mixin to [MyoroBarGraphConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroBarGraphConfiguration with $MyoroBarGraphConfigurationMixin {}
-/// ```
-mixin $MyoroBarGraphConfigurationMixin {
-  MyoroBarGraphConfiguration get self => this as MyoroBarGraphConfiguration;
 
   @override
   bool operator ==(Object other) {

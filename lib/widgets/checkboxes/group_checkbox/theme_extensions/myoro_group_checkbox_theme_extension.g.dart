@@ -9,9 +9,9 @@ part of 'myoro_group_checkbox_theme_extension.dart';
 /// Apply this mixin to [MyoroGroupCheckboxThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroGroupCheckboxThemeExtension with $MyoroGroupCheckboxThemeExtensionMixin {}
+/// class MyoroGroupCheckboxThemeExtension with _$MyoroGroupCheckboxThemeExtensionMixin {}
 /// ```
-mixin $MyoroGroupCheckboxThemeExtensionMixin
+mixin _$MyoroGroupCheckboxThemeExtensionMixin
     on ThemeExtension<MyoroGroupCheckboxThemeExtension> {
   MyoroGroupCheckboxThemeExtension get self =>
       this as MyoroGroupCheckboxThemeExtension;

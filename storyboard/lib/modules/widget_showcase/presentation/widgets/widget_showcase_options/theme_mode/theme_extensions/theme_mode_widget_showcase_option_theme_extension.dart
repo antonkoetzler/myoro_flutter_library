@@ -9,7 +9,7 @@ part 'theme_mode_widget_showcase_option_theme_extension.g.dart';
 @myoroThemeExtension
 final class ThemeModeWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<ThemeModeWidgetShowcaseOptionThemeExtension>
-    with $ThemeModeWidgetShowcaseOptionThemeExtensionMixin {
+    with _$ThemeModeWidgetShowcaseOptionThemeExtensionMixin {
   const ThemeModeWidgetShowcaseOptionThemeExtension();
 
   const ThemeModeWidgetShowcaseOptionThemeExtension.fake();

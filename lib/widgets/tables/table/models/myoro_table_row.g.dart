@@ -6,7 +6,14 @@ part of 'myoro_table_row.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroTableRowExtension<T> on MyoroTableRow<T> {
+/// Apply this mixin to [MyoroTableRow] once the code is generated.
+///
+/// ```dart
+/// class MyoroTableRow<T> with _$MyoroTableRowMixin<T> {}
+/// ```
+mixin _$MyoroTableRowMixin<T> {
+  MyoroTableRow<T> get self => this as MyoroTableRow<T>;
+
   MyoroTableRow<T> copyWith({
     void Function(T)? onTapDown,
     bool onTapDownProvided = true,
@@ -15,20 +22,11 @@ extension $MyoroTableRowExtension<T> on MyoroTableRow<T> {
     List<Widget>? cells,
   }) {
     return MyoroTableRow(
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
-      cells: cells ?? this.cells,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      cells: cells ?? self.cells,
     );
   }
-}
-
-/// Apply this mixin to [MyoroTableRow] once the code is generated.
-///
-/// ```dart
-/// class MyoroTableRow<T> with $MyoroTableRowMixin<T> {}
-/// ```
-mixin $MyoroTableRowMixin<T> {
-  MyoroTableRow<T> get self => this as MyoroTableRow<T>;
 
   @override
   bool operator ==(Object other) {

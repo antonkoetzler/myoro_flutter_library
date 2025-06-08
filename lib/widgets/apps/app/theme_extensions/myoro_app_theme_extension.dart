@@ -7,7 +7,7 @@ part 'myoro_app_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroApp].
 @immutable
 @myoroThemeExtension
-class MyoroAppThemeExtension extends ThemeExtension<MyoroAppThemeExtension> with $MyoroAppThemeExtensionMixin {
+class MyoroAppThemeExtension extends ThemeExtension<MyoroAppThemeExtension> with _$MyoroAppThemeExtensionMixin {
   const MyoroAppThemeExtension();
 
   const MyoroAppThemeExtension.builder();

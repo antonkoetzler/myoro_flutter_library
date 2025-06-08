@@ -11,7 +11,7 @@ part 'myoro_dialog_modal_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThemeExtension>
-    with $MyoroDialogModalThemeExtensionMixin {
+    with _$MyoroDialogModalThemeExtensionMixin {
   /// Text style of the simple text option in [_Message].
   final TextStyle textStyle;
 

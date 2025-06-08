@@ -6,8 +6,9 @@ part 'box_constraints_widget_showcase_option_theme_extension.g.dart';
 
 /// [ThemeExtension] of [BoxConstraintsWidgetShowcaseOption].
 @myoroThemeExtension
-final class BoxConstraintsWidgetShowcaseOptionThemeExtension extends ThemeExtension<BoxConstraintsWidgetShowcaseOptionThemeExtension>
-    with $BoxConstraintsWidgetShowcaseOptionThemeExtensionMixin {
+final class BoxConstraintsWidgetShowcaseOptionThemeExtension
+    extends ThemeExtension<BoxConstraintsWidgetShowcaseOptionThemeExtension>
+    with _$BoxConstraintsWidgetShowcaseOptionThemeExtensionMixin {
   const BoxConstraintsWidgetShowcaseOptionThemeExtension();
 
   const BoxConstraintsWidgetShowcaseOptionThemeExtension.fake();

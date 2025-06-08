@@ -8,7 +8,7 @@ part 'icon_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [IconWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class IconWidgetShowcaseOptionConfiguration with $IconWidgetShowcaseOptionConfigurationMixin {
+final class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Icon';
 
   const IconWidgetShowcaseOptionConfiguration({

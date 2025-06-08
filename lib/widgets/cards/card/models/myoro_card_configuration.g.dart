@@ -6,7 +6,14 @@ part of 'myoro_card_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
-extension $MyoroCardConfigurationExtension on MyoroCardConfiguration {
+/// Apply this mixin to [MyoroCardConfiguration] once the code is generated.
+///
+/// ```dart
+/// class MyoroCardConfiguration with _$MyoroCardConfigurationMixin {}
+/// ```
+mixin _$MyoroCardConfigurationMixin {
+  MyoroCardConfiguration get self => this as MyoroCardConfiguration;
+
   MyoroCardConfiguration copyWith({
     String? title,
     TextStyle? titleTextStyle,
@@ -17,25 +24,16 @@ extension $MyoroCardConfigurationExtension on MyoroCardConfiguration {
     Widget? child,
   }) {
     return MyoroCardConfiguration(
-      title: title ?? this.title,
+      title: title ?? self.title,
       titleTextStyle:
           titleTextStyleProvided
-              ? (titleTextStyle ?? this.titleTextStyle)
+              ? (titleTextStyle ?? self.titleTextStyle)
               : null,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      constraints: constraints ?? this.constraints,
-      child: child ?? this.child,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      constraints: constraints ?? self.constraints,
+      child: child ?? self.child,
     );
   }
-}
-
-/// Apply this mixin to [MyoroCardConfiguration] once the code is generated.
-///
-/// ```dart
-/// class MyoroCardConfiguration with $MyoroCardConfigurationMixin {}
-/// ```
-mixin $MyoroCardConfigurationMixin {
-  MyoroCardConfiguration get self => this as MyoroCardConfiguration;
 
   @override
   bool operator ==(Object other) {

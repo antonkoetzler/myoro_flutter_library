@@ -9,9 +9,9 @@ part of 'padding_widget_showcase_option_theme_extension.dart';
 /// Apply this mixin to [PaddingWidgetShowcaseOptionThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class PaddingWidgetShowcaseOptionThemeExtension with $PaddingWidgetShowcaseOptionThemeExtensionMixin {}
+/// class PaddingWidgetShowcaseOptionThemeExtension with _$PaddingWidgetShowcaseOptionThemeExtensionMixin {}
 /// ```
-mixin $PaddingWidgetShowcaseOptionThemeExtensionMixin
+mixin _$PaddingWidgetShowcaseOptionThemeExtensionMixin
     on ThemeExtension<PaddingWidgetShowcaseOptionThemeExtension> {
   PaddingWidgetShowcaseOptionThemeExtension get self =>
       this as PaddingWidgetShowcaseOptionThemeExtension;

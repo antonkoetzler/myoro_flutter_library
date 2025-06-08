@@ -10,7 +10,7 @@ part 'myoro_radio_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroRadio].
 @immutable
 @myoroThemeExtension
-class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> with $MyoroRadioThemeExtensionMixin {
+class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> with _$MyoroRadioThemeExtensionMixin {
   /// Color of the radio itself.
   final Color activeColor;
 

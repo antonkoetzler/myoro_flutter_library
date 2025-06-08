@@ -7,7 +7,7 @@ part 'myoro_date_picker_input_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroDatePickerInputThemeExtension extends ThemeExtension<MyoroDatePickerInputThemeExtension>
-    with $MyoroDatePickerInputThemeExtensionMixin {
+    with _$MyoroDatePickerInputThemeExtensionMixin {
   const MyoroDatePickerInputThemeExtension();
 
   const MyoroDatePickerInputThemeExtension.fake();

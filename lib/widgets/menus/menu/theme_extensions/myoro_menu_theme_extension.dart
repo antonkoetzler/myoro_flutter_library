@@ -7,7 +7,7 @@ part 'myoro_menu_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroMenu].
 @immutable
 @myoroThemeExtension
-class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with $MyoroMenuThemeExtensionMixin {
+class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with _$MyoroMenuThemeExtensionMixin {
   /// Background color of the menu.
   final Color primaryColor;
 

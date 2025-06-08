@@ -10,7 +10,7 @@ part 'myoro_input_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroInput].
 @immutable
 @myoroThemeExtension
-class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> with $MyoroInputThemeExtensionMixin {
+class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> with _$MyoroInputThemeExtensionMixin {
   /// Border for [MyoroInputStyleEnum.underlined].
   final InputBorder underlinedBorder;
 
