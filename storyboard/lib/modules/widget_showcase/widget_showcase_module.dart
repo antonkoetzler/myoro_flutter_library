@@ -26,6 +26,10 @@ final class WidgetShowcaseModule implements Module {
       const PaddingWidgetShowcaseOptionThemeExtension.builder(),
       const SliderWidgetShowcaseOptionThemeExtension.builder(),
       const TextWidgetShowcaseOptionThemeExtension.builder(),
+      const TextAlignWidgetShowcaseOptionThemeExtension.builder(),
+      const TextMaxLinesWidgetShowcaseOptionThemeExtension.builder(),
+      const TextOverflowWidgetShowcaseOptionThemeExtension.builder(),
+      const TextStyleWidgetShowcaseOptionThemeExtension.builder(),
       const ThemeModeWidgetShowcaseOptionThemeExtension.builder(),
       // #############################################
 

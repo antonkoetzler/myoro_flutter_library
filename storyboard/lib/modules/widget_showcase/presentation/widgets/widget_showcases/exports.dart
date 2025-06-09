@@ -7,3 +7,4 @@ export 'carousels/exports.dart';
 export 'checkboxes/exports.dart';
 export 'dividers/exports.dart';
 export 'drawers/exports.dart';
+export 'dropdowns/exports.dart';

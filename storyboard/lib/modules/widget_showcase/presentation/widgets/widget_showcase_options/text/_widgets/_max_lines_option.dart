@@ -8,20 +8,9 @@ final class _MaxLinesOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
 
-    return MyoroSingularDropdown<int>(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: 1),
-      configuration: MyoroSingularDropdownConfiguration(
-        label: 'Max lines',
-        allowItemClearing: false,
-        checkboxOnChanged: (enabled, value) => viewModel.maxLines = enabled ? value : null,
-        selectedItemBuilder: (value) => value.toString(),
-        menuConfiguration: MyoroMenuConfiguration(
-          request: () => List.generate(10, (int index) => index + 1).toSet(),
-          itemBuilder: (value) {
-            return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: value.toString()));
-          },
-        ),
-      ),
+    return TextMaxLinesWidgetShowcaseOption(
+      onChanged: (value) => viewModel.maxLines = value,
+      checkboxOnChanged: (enabled, value) => viewModel.maxLines = enabled ? value : null,
     );
   }
 }

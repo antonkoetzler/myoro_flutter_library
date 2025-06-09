@@ -7,4 +7,8 @@ export 'myoro_tap_status_enum_color_builder/exports.dart';
 export 'padding/exports.dart';
 export 'slider/exports.dart';
 export 'text/exports.dart';
+export 'text_align/exports.dart';
+export 'text_max_lines/exports.dart';
+export 'text_overflow/exports.dart';
+export 'text_style/exports.dart';
 export 'theme_mode/exports.dart';

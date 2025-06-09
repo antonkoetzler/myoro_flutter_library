@@ -12,7 +12,8 @@ enum MyoroWidgetListEnum {
   carousels('Carousels', {myoroCarouselTitle}),
   checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
   dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle}),
-  drawers('Drawers', {myoroDrawerTitle});
+  drawers('Drawers', {myoroDrawerTitle}),
+  dropdowns('Dropdowns', {myoroDropdownsTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -56,6 +57,9 @@ enum MyoroWidgetListEnum {
   // Drawers
   static const myoroDrawerTitle = 'MyoroDrawer';
 
+  // Dropdowns
+  static const myoroDropdownsTitle = 'MyoroSingularDropdown/MyoroMultiDropdown';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -87,6 +91,9 @@ enum MyoroWidgetListEnum {
 
       // Drawers
       myoroDrawerTitle => const MyoroDrawerWidgetShowcase(),
+
+      // Dropdowns
+      myoroDropdownsTitle => const MyoroDropdownWidgetShowcase(),
 
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
