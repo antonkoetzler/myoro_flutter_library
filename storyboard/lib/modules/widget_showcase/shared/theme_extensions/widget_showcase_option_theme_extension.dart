@@ -10,6 +10,8 @@ part 'widget_showcase_option_theme_extension.g.dart';
 /// [ThemeExtension] to store common values of widget showcase options (spacings, [TextStyle]s, etc).
 ///
 /// TODO: Make sure that all widget showcase options are utilizing these options.
+///
+/// TODO: Rename to widget showcase module theme extension or some shit.
 @immutable
 @myoroThemeExtension
 final class WidgetShowcaseOptionThemeExtension extends ThemeExtension<WidgetShowcaseOptionThemeExtension>
