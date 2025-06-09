@@ -12,7 +12,7 @@ part 'storyboard_screen_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScreenThemeExtension>
-    with $StoryboardScreenThemeExtensionMixin {
+    with _$StoryboardScreenThemeExtensionMixin {
   /// Spacing of [Widget]s.
   final double spacing;
 

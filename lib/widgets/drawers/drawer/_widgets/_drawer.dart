@@ -18,7 +18,7 @@ final class _Drawer extends StatelessWidget {
           padding: themeExtension.drawerContentPadding,
           child: Column(
             children: [
-              if (_configuration.title != null) ...[
+              if (_configuration.title.isNotEmpty) ...[
                 _Title(_configuration),
                 MyoroBasicDivider(
                   configuration: MyoroBasicDividerConfiguration(

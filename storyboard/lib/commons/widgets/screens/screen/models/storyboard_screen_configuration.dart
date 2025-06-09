@@ -7,7 +7,7 @@ part 'storyboard_screen_configuration.g.dart';
 
 /// Configuration of [StoryboardScreen].
 @myoroModel
-final class StoryboardScreenConfiguration with $StoryboardScreenConfigurationMixin {
+final class StoryboardScreenConfiguration with _$StoryboardScreenConfigurationMixin {
   static const extraActionWidgetsDefaultValue = <Widget>[];
 
   /// Callback that builds [_PreviousPageButton].

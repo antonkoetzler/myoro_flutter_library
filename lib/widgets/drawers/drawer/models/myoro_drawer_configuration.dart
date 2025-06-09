@@ -8,11 +8,12 @@ part 'myoro_drawer_configuration.g.dart';
 /// Configuration of [MyoroDrawer].
 @myoroModel
 class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
+  static const titleDefaultValue = '';
   static const showCloseButtonDefaultValue = true;
   static const barrierDismissableDefaultValue = true;
 
   /// Title of the drawer.
-  final String? title;
+  final String title;
 
   /// [TextStyle] of the text in [_Header].
   final TextStyle? titleTextStyle;
@@ -27,7 +28,7 @@ class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
   final Widget child;
 
   const MyoroDrawerConfiguration({
-    this.title,
+    this.title = titleDefaultValue,
     this.titleTextStyle,
     this.showCloseButton = showCloseButtonDefaultValue,
     this.barrierDismissable = barrierDismissableDefaultValue,
@@ -35,7 +36,7 @@ class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
   });
 
   MyoroDrawerConfiguration.fake()
-    : title = faker.randomGenerator.boolean() ? faker.lorem.word() : null,
+    : title = faker.randomGenerator.boolean() ? faker.lorem.word() : '',
       titleTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
       showCloseButton = faker.randomGenerator.boolean(),
       barrierDismissable = faker.randomGenerator.boolean(),

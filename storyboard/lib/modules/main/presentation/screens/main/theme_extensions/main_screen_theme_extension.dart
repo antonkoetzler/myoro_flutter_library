@@ -12,7 +12,7 @@ part 'main_screen_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExtension>
-    with $MainScreenThemeExtensionMixin {
+    with _$MainScreenThemeExtensionMixin {
   /// General spacing of [Widget]s.
   final double spacing;
 
