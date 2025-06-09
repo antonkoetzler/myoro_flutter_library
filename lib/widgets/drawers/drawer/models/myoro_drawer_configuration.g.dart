@@ -16,7 +16,6 @@ mixin _$MyoroDrawerConfigurationMixin {
 
   MyoroDrawerConfiguration copyWith({
     String? title,
-    bool titleProvided = true,
     TextStyle? titleTextStyle,
     bool titleTextStyleProvided = true,
     bool? showCloseButton,
@@ -24,7 +23,7 @@ mixin _$MyoroDrawerConfigurationMixin {
     Widget? child,
   }) {
     return MyoroDrawerConfiguration(
-      title: titleProvided ? (title ?? self.title) : null,
+      title: title ?? self.title,
       titleTextStyle:
           titleTextStyleProvided
               ? (titleTextStyle ?? self.titleTextStyle)

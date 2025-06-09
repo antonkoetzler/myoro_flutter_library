@@ -10,6 +10,6 @@ final class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
-    return Text(_configuration.title!, style: _configuration.titleTextStyle ?? themeExtension.titleTextStyle);
+    return Text(_configuration.title, style: _configuration.titleTextStyle ?? themeExtension.titleTextStyle);
   }
 }
