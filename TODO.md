@@ -23,4 +23,5 @@
 - Manipulating the UI of widgets via `ThemeExtension` overloading
 - `ThemeExtension` overriding
 
+1. feature: Make myoro themes and add an ios26 theme
 1. feature: Publish to pub.dev
