@@ -11,7 +11,7 @@ class MyoroForm<T> extends StatefulWidget {
   /// Configuration.
   final MyoroFormConfiguration<T>? configuration;
 
-  const MyoroForm({super.key, this.controller, required this.configuration})
+  const MyoroForm({super.key, this.controller, this.configuration})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroForm<$T>]: [controller] (x)or [configuration] must be provided.',

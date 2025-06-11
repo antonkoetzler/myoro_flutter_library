@@ -1,10 +1,11 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroForm].
-class MyoroFormController<T> extends MyoroRequestController<T> implements MyoroFormControllerInterface {
+class MyoroFormController<T> extends MyoroRequestController<T> {
   MyoroFormController({required MyoroFormConfiguration<T> configuration})
-    : state = MyoroFormControllerState(configuration) {
-    addListener(listener);
+    : state = MyoroFormControllerState(configuration),
+      super(requestCallback: configuration.request) {
+    addListener(_listener);
   }
 
   final MyoroFormControllerState<T> state;
@@ -30,8 +31,7 @@ class MyoroFormController<T> extends MyoroRequestController<T> implements MyoroF
   }
 
   /// [MyoroFormController] listener.
-  @override
-  void listener() {
+  void _listener() {
     if (status.isSuccess) {
       state.configuration.onSuccess?.call(data);
     }

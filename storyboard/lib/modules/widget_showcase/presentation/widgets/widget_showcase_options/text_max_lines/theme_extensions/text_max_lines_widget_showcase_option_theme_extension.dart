@@ -9,7 +9,7 @@ part 'text_max_lines_widget_showcase_option_theme_extension.g.dart';
 @myoroThemeExtension
 final class TextMaxLinesWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<TextMaxLinesWidgetShowcaseOptionThemeExtension>
-    with _$TextMaxLinesWidgetShowcaseOptionThemeExtension {
+    with _$TextMaxLinesWidgetShowcaseOptionThemeExtensionMixin {
   const TextMaxLinesWidgetShowcaseOptionThemeExtension();
 
   const TextMaxLinesWidgetShowcaseOptionThemeExtension.fake();

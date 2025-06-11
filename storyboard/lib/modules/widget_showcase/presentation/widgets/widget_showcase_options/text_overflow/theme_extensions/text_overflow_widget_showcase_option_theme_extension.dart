@@ -9,7 +9,7 @@ part 'text_overflow_widget_showcase_option_theme_extension.g.dart';
 @myoroThemeExtension
 final class TextOverflowWidgetShowcaseOptionThemeExtension
     extends ThemeExtension<TextOverflowWidgetShowcaseOptionThemeExtension>
-    with _$TextOverflowWidgetShowcaseOptionThemeExtension {
+    with _$TextOverflowWidgetShowcaseOptionThemeExtensionMixin {
   const TextOverflowWidgetShowcaseOptionThemeExtension();
 
   const TextOverflowWidgetShowcaseOptionThemeExtension.fake();

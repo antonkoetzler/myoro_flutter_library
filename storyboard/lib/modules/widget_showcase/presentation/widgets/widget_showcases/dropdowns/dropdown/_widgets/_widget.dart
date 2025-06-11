@@ -6,17 +6,28 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroDropdownWidgetShowcaseViewModel>();
     final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      spacing: widgetShowcaseOptionThemeExtension.spacing,
-      children: [
-        const _Title('Singular Dropdown'),
-        const Flexible(child: _SingularDropdown()),
-        const _Title('Multi Dropdown'),
-        Flexible(child: _MultiDropdown()),
-      ],
+    return ListenableBuilder(
+      listenable: viewModel.state,
+      builder: (_, __) {
+        return ListenableBuilder(
+          listenable: viewModel.menuViewModel.state,
+          builder: (_, __) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: widgetShowcaseOptionThemeExtension.spacing,
+              children: const [
+                _Title('Singular Dropdown'),
+                Flexible(child: _SingularDropdown()),
+                _Title('Multi Dropdown'),
+                Flexible(child: _MultiDropdown()),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 }

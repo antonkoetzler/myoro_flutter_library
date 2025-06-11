@@ -37,6 +37,13 @@ final class WidgetShowcaseModule implements Module {
       // ########## Widget showcases ##########
       // Cards
       MyoroCardWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Forms
+      MyoroFormWidgetShowcaseThemeExtension.builder(),
+
+      // Graphs
+      MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
+      MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
       // ######################################
     ];
   }

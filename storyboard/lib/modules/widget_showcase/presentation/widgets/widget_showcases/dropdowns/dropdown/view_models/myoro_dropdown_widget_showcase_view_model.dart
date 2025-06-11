@@ -2,37 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
+part 'myoro_dropdown_widget_showcase_repository.dart';
+part 'myoro_dropdown_widget_showcase_state.dart';
+
 /// View model of [MyoroDropdownWidgetShowcase].
-final class MyoroDropdownWidgetShowcaseViewModel extends ChangeNotifier {
-  /// [MyoroDropdownConfiguration.label]
-  String _label = MyoroDropdownConfiguration.labelDefaultValue;
-  String get label => _label;
-  set label(String label) {
-    _label = label;
-    notifyListeners();
+final class MyoroDropdownWidgetShowcaseViewModel {
+  final _repository = MyoroDropdownWidgetShowcaseRepository();
+
+  final _state = MyoroDropdownWidgetShowcaseState();
+  MyoroDropdownWidgetShowcaseState get state => _state;
+
+  final _menuViewModel = MyoroMenuWidgetShowcaseViewModel();
+  MyoroMenuWidgetShowcaseViewModel get menuViewModel => _menuViewModel;
+
+  /// Dispose function.
+  void dispose() {
+    _state.dispose();
+    _menuViewModel.dispose();
   }
 
-  /// [MyoroDropdownConfiguration.menuTypeEnum]
-  MyoroDropdownMenuTypeEnum _menuTypeEnum = MyoroDropdownConfiguration.menuTypeEnumDefaultValue;
-  MyoroDropdownMenuTypeEnum get menuTypeEnum => _menuTypeEnum;
-  set menuTypeEnum(MyoroDropdownMenuTypeEnum menuTypeEnum) {
-    _menuTypeEnum = menuTypeEnum;
-    notifyListeners();
+  /// Constructs a [MyoroSingularDropdownConfiguration].
+  MyoroSingularDropdownConfiguration<String> buildSingularDropdownConfiguration(BuildContext context) {
+    return _repository.buildSingularDropdownConfiguration(context, _state, _menuViewModel);
   }
 
-  /// [MyoroDropdownConfiguration.allowItemClearing]
-  bool _allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue;
-  bool get allowItemClearing => _allowItemClearing;
-  set allowItemClearing(bool allowItemClearing) {
-    _allowItemClearing = allowItemClearing;
-    notifyListeners();
-  }
-
-  /// [MyoroDropdownConfiguration.selectedItemTextAlign]
-  TextAlign _selectedItemTextAlign = MyoroDropdownConfiguration.selectedItemTextAlignDefaultValue;
-  TextAlign get selectedItemTextAlign => _selectedItemTextAlign;
-  set selectedItemTextAlign(TextAlign selectedItemTextAlign) {
-    _selectedItemTextAlign = selectedItemTextAlign;
-    notifyListeners();
+  /// Constructs a [MyoroMultiDropdownConfiguration].
+  MyoroMultiDropdownConfiguration<String> buildMultiDropdownConfiguration(BuildContext context) {
+    return _repository.buildMultiDropdownConfiguration(context, _state, _menuViewModel);
   }
 }

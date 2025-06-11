@@ -13,7 +13,10 @@ enum MyoroWidgetListEnum {
   checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
   dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle}),
   drawers('Drawers', {myoroDrawerTitle}),
-  dropdowns('Dropdowns', {myoroDropdownsTitle});
+  dropdowns('Dropdowns', {myoroDropdownsTitle}),
+  forms('Forms', {myoroFormTitle}),
+  graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
+  menus('Menus', {myoroMenuTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -60,6 +63,16 @@ enum MyoroWidgetListEnum {
   // Dropdowns
   static const myoroDropdownsTitle = 'MyoroSingularDropdown/MyoroMultiDropdown';
 
+  // Forms
+  static const myoroFormTitle = 'MyoroForm';
+
+  // Graphs
+  static const myoroBarGraphTitle = 'MyoroBarGraph';
+  static const myoroPieGraphTitle = 'MyoroPieGraph';
+
+  // Menus
+  static const myoroMenuTitle = 'MyoroMenu';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -95,6 +108,16 @@ enum MyoroWidgetListEnum {
       // Dropdowns
       myoroDropdownsTitle => const MyoroDropdownWidgetShowcase(),
 
+      // Forms
+      myoroFormTitle => const MyoroFormWidgetShowcase(),
+
+      // Graphs
+      myoroBarGraphTitle => const MyoroBarGraphWidgetShowcase(),
+      myoroPieGraphTitle => const MyoroPieGraphWidgetShowcase(),
+
+      // Menus
+      myoroMenuTitle => const MyoroMenuWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }
@@ -108,4 +131,7 @@ enum MyoroWidgetListEnum {
   bool get isCheckboxes => this == checkboxes;
   bool get isDividers => this == dividers;
   bool get isDrawers => this == drawers;
+  bool get isForms => this == forms;
+  bool get isGraphs => this == graphs;
+  bool get isMenus => this == menus;
 }

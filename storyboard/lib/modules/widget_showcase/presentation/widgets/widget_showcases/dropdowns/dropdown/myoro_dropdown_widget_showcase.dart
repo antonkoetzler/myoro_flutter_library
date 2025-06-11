@@ -13,25 +13,42 @@ part '_widgets/_title.dart';
 part '_widgets/_widget.dart';
 
 /// Widget showcase of [MyoroSingularDropdown] and [MyoroMultiDropdown].
-final class MyoroDropdownWidgetShowcase extends StatelessWidget {
+final class MyoroDropdownWidgetShowcase extends StatefulWidget {
   static const options = [
     _LabelOption(),
     _MenuTypeEnumOption(),
     _AllowItemClearingOption(),
     _SelectedItemTextAlignOption(),
+    ...MyoroMenuWidgetShowcase.options,
   ];
 
   const MyoroDropdownWidgetShowcase({super.key});
 
   @override
+  State<MyoroDropdownWidgetShowcase> createState() => _MyoroDropdownWidgetShowcaseState();
+}
+
+final class _MyoroDropdownWidgetShowcaseState extends State<MyoroDropdownWidgetShowcase> {
+  final _dropdownViewModel = MyoroDropdownWidgetShowcaseViewModel();
+
+  @override
+  void dispose() {
+    _dropdownViewModel.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(_) {
-    return InheritedProvider(
-      create: (_) => MyoroDropdownWidgetShowcaseViewModel(),
+    return MultiProvider(
+      providers: [
+        InheritedProvider(create: (_) => MyoroDropdownWidgetShowcaseViewModel()),
+        InheritedProvider.value(value: (_) => _dropdownViewModel.menuViewModel),
+      ],
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDropdownsTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          widgetOptions: MyoroDropdownWidgetShowcase.options,
         ),
       ),
     );

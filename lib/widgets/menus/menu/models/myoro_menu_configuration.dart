@@ -9,6 +9,8 @@ part 'myoro_menu_configuration.g.dart';
 /// Configuration model of [MyoroMenu].
 @myoroModel
 class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
+  static const constraintsDefaultValue = BoxConstraints();
+
   /// Constraints of the menu.
   final BoxConstraints constraints;
 
@@ -27,7 +29,7 @@ class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
   final MyoroMenuItemBuilder<T> itemBuilder;
 
   const MyoroMenuConfiguration({
-    this.constraints = const BoxConstraints(),
+    this.constraints = constraintsDefaultValue,
     required this.request,
     this.onEndReachedRequest,
     this.searchCallback,

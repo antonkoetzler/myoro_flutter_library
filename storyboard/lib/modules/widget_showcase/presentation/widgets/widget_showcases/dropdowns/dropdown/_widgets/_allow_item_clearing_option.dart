@@ -11,8 +11,8 @@ final class _AllowItemClearingOption extends StatelessWidget {
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Allow item clearing?',
-        value: viewModel.allowItemClearing,
-        onChanged: (value) => viewModel.allowItemClearing = value,
+        value: viewModel.state.allowItemClearing,
+        onChanged: (value) => viewModel.state.allowItemClearing = value,
       ),
     );
   }

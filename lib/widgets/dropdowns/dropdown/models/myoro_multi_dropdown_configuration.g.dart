@@ -16,9 +16,9 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
       this as MyoroMultiDropdownConfiguration<T>;
 
   MyoroMultiDropdownConfiguration<T> copyWith({
-    void Function(Set<T>?)? onChanged,
+    void Function(Set<T>)? onChanged,
     bool onChangedProvided = true,
-    void Function(bool, Set<T>?)? checkboxOnChanged,
+    void Function(bool, Set<T>)? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     String? label,
     MyoroDropdownMenuTypeEnum? menuTypeEnum,

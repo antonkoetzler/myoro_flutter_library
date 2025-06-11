@@ -17,13 +17,13 @@ mixin _$MyoroFormConfigurationMixin<T> {
   MyoroFormConfiguration<T> copyWith({
     String? Function()? validation,
     bool validationProvided = true,
-    FutureOr<T> Function()? request,
+    FutureOr<T?> Function()? request,
     bool requestProvided = true,
-    dynamic Function(T?)? onSuccess,
+    void Function(T?)? onSuccess,
     bool onSuccessProvided = true,
-    dynamic Function(String)? onError,
+    void Function(String)? onError,
     bool onErrorProvided = true,
-    dynamic Function(MyoroRequest<T>, MyoroFormController<T>)? builder,
+    Widget Function(MyoroRequest<T>, MyoroFormController<T>)? builder,
   }) {
     return MyoroFormConfiguration(
       validation: validationProvided ? (validation ?? self.validation) : null,
@@ -47,13 +47,7 @@ mixin _$MyoroFormConfigurationMixin<T> {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.validation,
-      self.request,
-      self.onSuccess,
-      self.onError,
-      self.builder,
-    );
+    return Object.hash(self.validation, self.request, self.onSuccess, self.onError, self.builder);
   }
 
   @override

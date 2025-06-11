@@ -9,7 +9,7 @@ final class _LabelOption extends StatelessWidget {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseViewModel>();
 
     return MyoroInput(
-      configuration: MyoroInputConfiguration(label: 'Label', onChanged: (text) => viewModel.label = text),
+      configuration: MyoroInputConfiguration(label: 'Label', onChanged: (text) => viewModel.state.label = text),
     );
   }
 }

@@ -9,9 +9,9 @@ final class _SelectedItemTextAlignOption extends StatelessWidget {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseViewModel>();
 
     return TextAlignWidgetShowcaseOption(
-      initiallySelectedTextAlign: viewModel.selectedItemTextAlign,
+      initiallySelectedTextAlign: viewModel.state.selectedItemTextAlign,
       allowItemClearing: false,
-      onChanged: (textAlign) => viewModel.selectedItemTextAlign = textAlign!,
+      onChanged: (textAlign) => viewModel.state.selectedItemTextAlign = textAlign!,
     );
   }
 }

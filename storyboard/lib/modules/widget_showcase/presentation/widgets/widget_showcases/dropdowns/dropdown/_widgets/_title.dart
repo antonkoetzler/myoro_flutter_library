@@ -10,7 +10,6 @@ final class _Title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
-
-    return Text(_title, style: widgetShowcaseOptionThemeExtension.labelTextStyle);
+    return Text(_text, style: widgetShowcaseOptionThemeExtension.labelTextStyle);
   }
 }
