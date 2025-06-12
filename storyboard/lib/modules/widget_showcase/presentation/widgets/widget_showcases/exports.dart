@@ -10,4 +10,5 @@ export 'drawers/exports.dart';
 export 'dropdowns/exports.dart';
 export 'forms/exports.dart';
 export 'graphs/exports.dart';
+export 'inputs/exports.dart';
 export 'menus/exports.dart';

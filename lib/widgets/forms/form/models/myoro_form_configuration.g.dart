@@ -23,14 +23,12 @@ mixin _$MyoroFormConfigurationMixin<T> {
     bool onSuccessProvided = true,
     void Function(String)? onError,
     bool onErrorProvided = true,
-    Widget Function(MyoroRequest<T>, MyoroFormController<T>)? builder,
   }) {
     return MyoroFormConfiguration(
       validation: validationProvided ? (validation ?? self.validation) : null,
       request: requestProvided ? (request ?? self.request) : null,
       onSuccess: onSuccessProvided ? (onSuccess ?? self.onSuccess) : null,
       onError: onErrorProvided ? (onError ?? self.onError) : null,
-      builder: builder ?? self.builder,
     );
   }
 
@@ -41,13 +39,17 @@ mixin _$MyoroFormConfigurationMixin<T> {
         other.validation == self.validation &&
         other.request == self.request &&
         other.onSuccess == self.onSuccess &&
-        other.onError == self.onError &&
-        other.builder == self.builder;
+        other.onError == self.onError;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.validation, self.request, self.onSuccess, self.onError, self.builder);
+    return Object.hash(
+      self.validation,
+      self.request,
+      self.onSuccess,
+      self.onError,
+    );
   }
 
   @override
@@ -57,6 +59,5 @@ mixin _$MyoroFormConfigurationMixin<T> {
       '  request: ${self.request},\n'
       '  onSuccess: ${self.onSuccess},\n'
       '  onError: ${self.onError},\n'
-      '  builder: ${self.builder},\n'
       ');';
 }

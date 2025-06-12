@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -23,8 +22,5 @@ class MyoroFormConfiguration<T> with _$MyoroFormConfigurationMixin<T> {
   /// Executed when the form is completed unsuccessfully.
   final MyoroFormOnError? onError;
 
-  /// Builder of the content within the form.
-  final MyoroFormBuilder<T> builder;
-
-  const MyoroFormConfiguration({this.validation, this.request, this.onSuccess, this.onError, required this.builder});
+  const MyoroFormConfiguration({this.validation, this.request, this.onSuccess, this.onError});
 }

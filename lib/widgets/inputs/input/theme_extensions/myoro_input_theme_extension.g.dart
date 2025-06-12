@@ -22,8 +22,8 @@ mixin _$MyoroInputThemeExtensionMixin
     Color? primaryColor,
     Color? errorBorderColor,
     BorderRadius? borderRadius,
-    bool? isDense,
     double? cursorHeight,
+    EdgeInsets? contentPadding,
     double? disabledOpacity,
     TextStyle? inputTextStyle,
     double? spacing,
@@ -38,8 +38,8 @@ mixin _$MyoroInputThemeExtensionMixin
       primaryColor: primaryColor ?? self.primaryColor,
       errorBorderColor: errorBorderColor ?? self.errorBorderColor,
       borderRadius: borderRadius ?? self.borderRadius,
-      isDense: isDense ?? self.isDense,
       cursorHeight: cursorHeight ?? self.cursorHeight,
+      contentPadding: contentPadding ?? self.contentPadding,
       disabledOpacity: disabledOpacity ?? self.disabledOpacity,
       inputTextStyle: inputTextStyle ?? self.inputTextStyle,
       spacing: spacing ?? self.spacing,
@@ -60,8 +60,8 @@ mixin _$MyoroInputThemeExtensionMixin
         other.primaryColor == self.primaryColor &&
         other.errorBorderColor == self.errorBorderColor &&
         other.borderRadius == self.borderRadius &&
-        other.isDense == self.isDense &&
         other.cursorHeight == self.cursorHeight &&
+        other.contentPadding == self.contentPadding &&
         other.disabledOpacity == self.disabledOpacity &&
         other.inputTextStyle == self.inputTextStyle &&
         other.spacing == self.spacing &&
@@ -79,8 +79,8 @@ mixin _$MyoroInputThemeExtensionMixin
       self.primaryColor,
       self.errorBorderColor,
       self.borderRadius,
-      self.isDense,
       self.cursorHeight,
+      self.contentPadding,
       self.disabledOpacity,
       self.inputTextStyle,
       self.spacing,
@@ -99,8 +99,8 @@ mixin _$MyoroInputThemeExtensionMixin
       '  primaryColor: ${self.primaryColor},\n'
       '  errorBorderColor: ${self.errorBorderColor},\n'
       '  borderRadius: ${self.borderRadius},\n'
-      '  isDense: ${self.isDense},\n'
       '  cursorHeight: ${self.cursorHeight},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       '  disabledOpacity: ${self.disabledOpacity},\n'
       '  inputTextStyle: ${self.inputTextStyle},\n'
       '  spacing: ${self.spacing},\n'

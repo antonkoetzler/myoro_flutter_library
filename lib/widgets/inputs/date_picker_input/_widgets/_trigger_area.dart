@@ -27,7 +27,7 @@ final class _TriggerArea extends StatelessWidget {
       builder: (_, _) {
         return Padding(
           padding: EdgeInsets.only(
-            right: configuration.controller!.text.isNotEmpty && (configuration.showClearTextButton ?? true) ? 40 : 0,
+            right: configuration.controller!.text.isNotEmpty && (configuration.showClearTextButton) ? 40 : 0,
           ),
           child: InkWell(
             focusColor: MyoroColorDesignSystem.transparent,

@@ -20,23 +20,19 @@ mixin _$MyoroInputConfigurationMixin {
     TextStyle? inputTextStyle,
     bool inputTextStyleProvided = true,
     String? label,
-    bool labelProvided = true,
-    String? placeholder,
-    bool placeholderProvided = true,
     TextStyle? labelTextStyle,
     bool labelTextStyleProvided = true,
+    String? placeholder,
     EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
     InputBorder? border,
     bool borderProvided = true,
     Widget? suffix,
     bool suffixProvided = true,
     bool? enabled,
     bool? readOnly,
-    bool readOnlyProvided = true,
     bool? autofocus,
-    bool autofocusProvided = true,
     bool? showClearTextButton,
-    bool showClearTextButtonProvided = true,
     void Function(bool, String)? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     String? Function(String)? validation,
@@ -59,23 +55,22 @@ mixin _$MyoroInputConfigurationMixin {
           inputTextStyleProvided
               ? (inputTextStyle ?? self.inputTextStyle)
               : null,
-      label: labelProvided ? (label ?? self.label) : null,
-      placeholder:
-          placeholderProvided ? (placeholder ?? self.placeholder) : null,
+      label: label ?? self.label,
       labelTextStyle:
           labelTextStyleProvided
               ? (labelTextStyle ?? self.labelTextStyle)
               : null,
-      contentPadding: contentPadding ?? self.contentPadding,
+      placeholder: placeholder ?? self.placeholder,
+      contentPadding:
+          contentPaddingProvided
+              ? (contentPadding ?? self.contentPadding)
+              : null,
       border: borderProvided ? (border ?? self.border) : null,
       suffix: suffixProvided ? (suffix ?? self.suffix) : null,
       enabled: enabled ?? self.enabled,
-      readOnly: readOnlyProvided ? (readOnly ?? self.readOnly) : null,
-      autofocus: autofocusProvided ? (autofocus ?? self.autofocus) : null,
-      showClearTextButton:
-          showClearTextButtonProvided
-              ? (showClearTextButton ?? self.showClearTextButton)
-              : null,
+      readOnly: readOnly ?? self.readOnly,
+      autofocus: autofocus ?? self.autofocus,
+      showClearTextButton: showClearTextButton ?? self.showClearTextButton,
       checkboxOnChanged:
           checkboxOnChangedProvided
               ? (checkboxOnChanged ?? self.checkboxOnChanged)
@@ -100,8 +95,8 @@ mixin _$MyoroInputConfigurationMixin {
         other.textAlign == self.textAlign &&
         other.inputTextStyle == self.inputTextStyle &&
         other.label == self.label &&
-        other.placeholder == self.placeholder &&
         other.labelTextStyle == self.labelTextStyle &&
+        other.placeholder == self.placeholder &&
         other.contentPadding == self.contentPadding &&
         other.border == self.border &&
         other.suffix == self.suffix &&
@@ -125,8 +120,8 @@ mixin _$MyoroInputConfigurationMixin {
       self.textAlign,
       self.inputTextStyle,
       self.label,
-      self.placeholder,
       self.labelTextStyle,
+      self.placeholder,
       self.contentPadding,
       self.border,
       self.suffix,
@@ -151,8 +146,8 @@ mixin _$MyoroInputConfigurationMixin {
       '  textAlign: ${self.textAlign},\n'
       '  inputTextStyle: ${self.inputTextStyle},\n'
       '  label: ${self.label},\n'
-      '  placeholder: ${self.placeholder},\n'
       '  labelTextStyle: ${self.labelTextStyle},\n'
+      '  placeholder: ${self.placeholder},\n'
       '  contentPadding: ${self.contentPadding},\n'
       '  border: ${self.border},\n'
       '  suffix: ${self.suffix},\n'

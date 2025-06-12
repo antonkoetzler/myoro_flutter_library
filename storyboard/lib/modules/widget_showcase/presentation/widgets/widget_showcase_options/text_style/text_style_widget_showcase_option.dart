@@ -10,6 +10,7 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
     super.key,
     this.label = labelDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
+    this.initiallySelectedTextStyle,
     required this.onChanged,
     this.checkboxOnChanged,
   });
@@ -19,6 +20,9 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
 
   /// [MyoroDropdownConfiguration.allowItemClearing]
   final bool allowItemClearing;
+
+  /// Initially selected [TextStyle].
+  final TextStyle? initiallySelectedTextStyle;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<TextStyle> onChanged;
@@ -31,8 +35,12 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
     final typography = MyoroTypographyDesignSystem.instance;
 
     return MyoroSingularDropdown<TextStyle>(
+      controller:
+          initiallySelectedTextStyle != null
+              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedTextStyle)
+              : null,
       configuration: MyoroSingularDropdownConfiguration(
-        label: 'Text style',
+        label: label,
         allowItemClearing: allowItemClearing,
         onChanged: onChanged,
         checkboxOnChanged: checkboxOnChanged,

@@ -16,6 +16,7 @@ enum MyoroWidgetListEnum {
   dropdowns('Dropdowns', {myoroDropdownsTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
+  inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
   menus('Menus', {myoroMenuTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
@@ -70,6 +71,11 @@ enum MyoroWidgetListEnum {
   static const myoroBarGraphTitle = 'MyoroBarGraph';
   static const myoroPieGraphTitle = 'MyoroPieGraph';
 
+  // Inputs
+  static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
+  static const myoroInputTitle = 'MyoroInput';
+  static const myoroSearchInputTitle = 'MyoroSearchInput';
+
   // Menus
   static const myoroMenuTitle = 'MyoroMenu';
 
@@ -115,6 +121,11 @@ enum MyoroWidgetListEnum {
       myoroBarGraphTitle => const MyoroBarGraphWidgetShowcase(),
       myoroPieGraphTitle => const MyoroPieGraphWidgetShowcase(),
 
+      // Inputs
+      myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcase(),
+      myoroInputTitle => const MyoroInputWidgetShowcase(),
+      myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
+
       // Menus
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
 
@@ -133,5 +144,6 @@ enum MyoroWidgetListEnum {
   bool get isDrawers => this == drawers;
   bool get isForms => this == forms;
   bool get isGraphs => this == graphs;
+  bool get isInputs => this == inputs;
   bool get isMenus => this == menus;
 }

@@ -92,6 +92,14 @@ T myoroFake<T>() {
     return kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)] as T;
   }
 
+  if (T == InputBorder) {
+    final borders = [
+      UnderlineInputBorder(borderSide: BorderSide(width: faker.randomGenerator.decimal(), color: myoroFake<Color>())),
+      OutlineInputBorder(borderRadius: myoroFake<BorderRadius>(), borderSide: myoroFake<BorderSide>()),
+    ];
+    return borders[faker.randomGenerator.integer(borders.length)] as T;
+  }
+
   if (T == OutlineInputBorder) {
     return OutlineInputBorder(borderRadius: myoroFake<BorderRadius>(), borderSide: myoroFake<BorderSide>()) as T;
   }

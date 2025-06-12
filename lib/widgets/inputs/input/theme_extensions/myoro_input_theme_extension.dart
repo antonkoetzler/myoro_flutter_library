@@ -26,11 +26,11 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
   /// Border radius of the [Container] storing the background color.
   final BorderRadius borderRadius;
 
-  /// If [TextFormField.decoration.isDense] is enabled.
-  final bool isDense;
-
   /// Height of the selection cursor.
   final double cursorHeight;
+
+  /// [InputDecoration.contentPadding]
+  final EdgeInsets contentPadding;
 
   /// Opacity applied when the input is disabled.
   final double disabledOpacity;
@@ -59,8 +59,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
     required this.primaryColor,
     required this.errorBorderColor,
     required this.borderRadius,
-    required this.isDense,
     required this.cursorHeight,
+    required this.contentPadding,
     required this.disabledOpacity,
     required this.inputTextStyle,
     required this.spacing,
@@ -76,8 +76,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       primaryColor = myoroFake<Color>(),
       errorBorderColor = myoroFake<Color>(),
       borderRadius = myoroFake<BorderRadius>(),
-      isDense = faker.randomGenerator.boolean(),
       cursorHeight = faker.randomGenerator.decimal(),
+      contentPadding = myoroFake<EdgeInsets>(),
       disabledOpacity = faker.randomGenerator.decimal(),
       inputTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal(),
@@ -97,8 +97,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       primaryColor = colorScheme.primary,
       errorBorderColor = colorScheme.error,
       borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
-      isDense = true,
       cursorHeight = 20,
+      contentPadding = const EdgeInsets.only(top: 10, bottom: 10, left: 8, right: 5),
       disabledOpacity = 0.5,
       inputTextStyle = textTheme.bodyMedium!,
       labelTextStyle = textTheme.headlineSmall!,
@@ -116,8 +116,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
       errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      isDense: myoroLerp(isDense, other.isDense, t),
       cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
+      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
       disabledOpacity: lerpDouble(disabledOpacity, other.disabledOpacity, t),
       inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
       spacing: lerpDouble(spacing, other.spacing, t),

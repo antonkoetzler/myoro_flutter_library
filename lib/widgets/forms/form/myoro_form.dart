@@ -11,7 +11,10 @@ class MyoroForm<T> extends StatefulWidget {
   /// Configuration.
   final MyoroFormConfiguration<T>? configuration;
 
-  const MyoroForm({super.key, this.controller, this.configuration})
+  /// Builder of the content within the form.
+  final MyoroFormBuilder<T> builder;
+
+  const MyoroForm({super.key, this.controller, this.configuration, required this.builder})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroForm<$T>]: [controller] (x)or [configuration] must be provided.',
@@ -22,6 +25,8 @@ class MyoroForm<T> extends StatefulWidget {
 }
 
 final class _MyoroFormState<T> extends State<MyoroForm<T>> {
+  MyoroFormBuilder<T> get _builder => widget.builder;
+
   MyoroFormController<T>? _localController;
   MyoroFormController<T> get _controller {
     return widget.controller ?? (_localController ??= MyoroFormController(configuration: widget.configuration!));
@@ -35,6 +40,6 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(valueListenable: _controller, builder: (_, _, _) => _Form(_controller));
+    return ValueListenableBuilder(valueListenable: _controller, builder: (_, _, _) => _Form(_controller, _builder));
   }
 }

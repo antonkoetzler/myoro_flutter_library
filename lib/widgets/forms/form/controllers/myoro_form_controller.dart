@@ -2,9 +2,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroForm].
 class MyoroFormController<T> extends MyoroRequestController<T> {
-  MyoroFormController({required MyoroFormConfiguration<T> configuration})
+  MyoroFormController({MyoroFormConfiguration<T>? configuration})
     : state = MyoroFormControllerState(configuration),
-      super(requestCallback: configuration.request) {
+      super(requestCallback: configuration?.request) {
     addListener(_listener);
   }
 
@@ -16,7 +16,7 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
     value = request.createLoadingState();
 
     // Validation function passed in [MyoroForm].
-    final String? validationErrorMessage = state.configuration.validation?.call();
+    final String? validationErrorMessage = state.configuration?.validation?.call();
 
     // Flutter's [Form] validation call, this will check validation functions
     // in, for example, a [MyoroInput] with [MyoroInput.validation] provided.
@@ -33,10 +33,10 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
   /// [MyoroFormController] listener.
   void _listener() {
     if (status.isSuccess) {
-      state.configuration.onSuccess?.call(data);
+      state.configuration?.onSuccess?.call(data);
     }
     if (status.isError) {
-      state.configuration.onError?.call(errorMessage!);
+      state.configuration?.onError?.call(errorMessage!);
     }
   }
 }

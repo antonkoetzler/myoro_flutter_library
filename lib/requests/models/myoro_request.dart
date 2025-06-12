@@ -1,10 +1,15 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_request.g.dart';
+
 /// Model representing a state where data being fetched via [FutureOr] function.
-class MyoroRequest<T> extends Equatable {
+@immutable
+@myoroModel
+class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   static const statusDefaultValue = MyoroRequestEnum.idle;
 
   /// Status of the request.
@@ -22,20 +27,6 @@ class MyoroRequest<T> extends Equatable {
         '[MyoroRequest<T>]: [status] cannot be [MyoroRequestEnum] when [errorMessage] is null.',
       );
 
-  MyoroRequest<T> copyWith({
-    MyoroRequestEnum? status,
-    String? errorMessage,
-    bool errorMessageProvided = true,
-    T? data,
-    bool dataProvided = true,
-  }) {
-    return MyoroRequest(
-      status: status ?? this.status,
-      errorMessage: errorMessageProvided ? (errorMessage ?? this.errorMessage) : null,
-      data: dataProvided ? (data ?? this.data) : null,
-    );
-  }
-
   MyoroRequest<T> createIdleState() {
     return copyWith(status: MyoroRequestEnum.idle);
   }
@@ -51,17 +42,4 @@ class MyoroRequest<T> extends Equatable {
   MyoroRequest<T> createErrorState(String errorMessage) {
     return copyWith(status: MyoroRequestEnum.error, errorMessage: errorMessage);
   }
-
-  @override
-  List<Object?> get props {
-    return [status, errorMessage, data];
-  }
-
-  @override
-  String toString() =>
-      'MyoroRequest<$T>(\n'
-      '  status: $status,\n'
-      '  errorMessage: $errorMessage,\n'
-      '  data: $data,\n'
-      ');';
 }

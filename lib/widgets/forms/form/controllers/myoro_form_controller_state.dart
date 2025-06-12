@@ -6,7 +6,7 @@ class MyoroFormControllerState<T> extends MyoroRequestController<T> {
   MyoroFormControllerState(this.configuration);
 
   /// Configuration.
-  final MyoroFormConfiguration<T> configuration;
+  final MyoroFormConfiguration<T>? configuration;
 
   /// [GlobalKey] of the [Form].
   final formKey = GlobalKey<FormState>();

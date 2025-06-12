@@ -53,7 +53,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     );
   }
 
-  Widget _layoutBuilder(_, __) {
+  Widget _layoutBuilder(_, _) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final renderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
       _inputSizeController.value = renderBox.size;
@@ -62,14 +62,14 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     return ValueListenableBuilder(valueListenable: _enabledController, builder: _enabledControllerBuilder);
   }
 
-  Widget _enabledControllerBuilder(_, bool enabled, __) {
+  Widget _enabledControllerBuilder(_, bool enabled, _) {
     return CompositedTransformTarget(
       link: _link,
       child: MyoroInput(
         key: _inputKey,
         configuration: MyoroInputConfiguration(
           textAlign: _configuration.selectedItemTextAlign,
-          label: _configuration.label.isNotEmpty ? _configuration.label : null,
+          label: _configuration.label,
           enabled: enabled,
           readOnly: true,
           showClearTextButton: _configuration.allowItemClearing,

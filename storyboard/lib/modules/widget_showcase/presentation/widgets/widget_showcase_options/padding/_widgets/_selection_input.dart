@@ -15,7 +15,10 @@ final class _SelectionInput extends StatelessWidget {
     return MyoroInput.number(
       min: 0,
       max: 50,
-      configuration: MyoroInputConfiguration(label: label, onChanged: (String text) => onChanged(double.parse(text))),
+      configuration: MyoroInputConfiguration(
+        label: label ?? MyoroInputConfiguration.labelDefaultValue,
+        onChanged: (String text) => onChanged(double.parse(text)),
+      ),
     );
   }
 }

@@ -2,9 +2,10 @@
 
 ## 2.0.0
 
-1. refactor: Adopt official Flutter MVVM/DDD architecture (and the Vloc pattern)
 1. feature: Added `MyoroFontSizeEnum.extraLarge`
 1. feature: `myoroFake`
+1. feature: `MyoroStringExtension`
+1. refactor: Adopt official Flutter MVVM/DDD architecture (and the Vloc pattern)
 1. refactor: `MyoroDropdown` using `OverlayPortal`/`CompositedTransformTarget`/`CompositedTransformFollower`
 1. refactor: `MyoroTable`
 1. refactor: Make every `Widget` have a configuration file instead of arguments in the `Widget`

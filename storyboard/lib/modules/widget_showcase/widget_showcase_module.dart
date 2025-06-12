@@ -22,6 +22,7 @@ final class WidgetShowcaseModule implements Module {
       const ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
       const IconWidgetShowcaseOptionThemeExtension.builder(),
       const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      const MyoroInputStyleEnumWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),
       const PaddingWidgetShowcaseOptionThemeExtension.builder(),
       const SliderWidgetShowcaseOptionThemeExtension.builder(),
@@ -44,6 +45,11 @@ final class WidgetShowcaseModule implements Module {
       // Graphs
       MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
       MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
+
+      // Inputs
+      const MyoroDatePickerInputWidgetShowcaseThemeExtension.builder(),
+      MyoroInputWidgetShowcaseThemeExtension.builder(),
+      const MyoroSearchInputWidgetShowcaseThemeExtension.builder(),
       // ######################################
     ];
   }

@@ -16,7 +16,7 @@ final class _Label extends StatelessWidget {
         bottom: 5,
       ),
       child: Text(
-        configuration.label!,
+        configuration.label,
         style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
       ),
     );
