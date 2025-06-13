@@ -9,16 +9,18 @@ part 'myoro_dialog_modal_configuration.g.dart';
 @myoroModel
 class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {
   static const invertButtonsDefaultValue = false;
+  static const confirmButtonTextDefaultValue = '';
+  static const cancelButtonTextDefaultValue = '';
   static const textDefaultValue = '';
 
   /// Whether or not to invert the buttons in [_FooterButtons].
   final bool invertButtons;
 
   /// Text of [_ConfirmButton].
-  final String? confirmButtonText;
+  final String confirmButtonText;
 
   /// Text of [_CancelButton].
-  final String? cancelButtonText;
+  final String cancelButtonText;
 
   /// Function executed when [_ConfirmButton] is pressed.
   final VoidCallback? onConfirm;
@@ -37,8 +39,8 @@ class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {
 
   const MyoroDialogModalConfiguration({
     this.invertButtons = invertButtonsDefaultValue,
-    this.confirmButtonText,
-    this.cancelButtonText,
+    this.confirmButtonText = confirmButtonTextDefaultValue,
+    this.cancelButtonText = cancelButtonTextDefaultValue,
     this.onConfirm,
     this.onCancel,
     this.text = textDefaultValue,
@@ -51,8 +53,8 @@ class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {
 
     return MyoroDialogModalConfiguration(
       invertButtons: faker.randomGenerator.boolean(),
-      confirmButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
-      cancelButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
+      confirmButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : confirmButtonTextDefaultValue,
+      cancelButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : cancelButtonTextDefaultValue,
       onConfirm: faker.randomGenerator.boolean() ? (() {}) : null,
       onCancel: faker.randomGenerator.boolean() ? (() {}) : null,
       text: textProvided ? faker.lorem.word() : '',
