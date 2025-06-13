@@ -2,6 +2,10 @@ part of 'myoro_modal_widget_showcase_view_model.dart';
 
 /// State of [MyoroModalWidgetShowcaseViewModel].
 final class MyoroModalWidgetShowcaseState extends ChangeNotifier {
+  /// [GlobalKey] to use when [_useRootNavigator] is true.
+  final _navigatorKey = GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
+
   /// [MyoroModalConfiguration.barrierDismissable]
   bool _barrierDismissable = MyoroModalConfiguration.barrierDismissableDefaultValue;
   bool get barrierDismissable => _barrierDismissable;

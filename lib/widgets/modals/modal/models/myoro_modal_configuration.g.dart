@@ -22,7 +22,6 @@ mixin _$MyoroModalConfigurationMixin {
     void Function()? onClosed,
     bool onClosedProvided = true,
     String? title,
-    bool titleProvided = true,
     bool? showCloseButton,
     EdgeInsets? padding,
     bool paddingProvided = true,
@@ -35,7 +34,7 @@ mixin _$MyoroModalConfigurationMixin {
       constraints:
           constraintsProvided ? (constraints ?? self.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
-      title: titleProvided ? (title ?? self.title) : null,
+      title: title ?? self.title,
       showCloseButton: showCloseButton ?? self.showCloseButton,
       padding: paddingProvided ? (padding ?? self.padding) : null,
       closeButtonPadding:

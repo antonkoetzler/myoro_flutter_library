@@ -9,8 +9,19 @@ final class MyoroModalWidgetShowcaseViewModel {
   /// State
   final state = MyoroModalWidgetShowcaseState();
 
+  /// Opens the [MyoroModal].
+  void showModal(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroModalWidgetShowcaseThemeExtension>();
+
+    MyoroModal.show(
+      context,
+      configuration: _configuration(context),
+      child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
+    );
+  }
+
   /// [MyoroModalConfiguration] of the [MyoroModal].
-  MyoroModalConfiguration configuration(BuildContext context) {
+  MyoroModalConfiguration _configuration(BuildContext context) {
     // [MyoroModalConfiguration.onClosed]
     void onClosed(BuildContext context) {
       context.showSnackBar(
