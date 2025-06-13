@@ -50,6 +50,12 @@ final class WidgetShowcaseModule implements Module {
       const MyoroDatePickerInputWidgetShowcaseThemeExtension.builder(),
       MyoroInputWidgetShowcaseThemeExtension.builder(),
       const MyoroSearchInputWidgetShowcaseThemeExtension.builder(),
+
+      // Layout builders
+      const MyoroLayoutBuilderWidgetShowcaseThemeExtension.builder(),
+
+      // Loaders
+      const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
       // ######################################
     ];
   }

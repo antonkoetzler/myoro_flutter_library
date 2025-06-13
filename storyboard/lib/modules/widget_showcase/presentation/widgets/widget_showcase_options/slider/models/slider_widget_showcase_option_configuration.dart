@@ -9,14 +9,20 @@ part 'slider_widget_showcase_option_configuration.g.dart';
 @immutable
 @myoroModel
 final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {
+  static const initiallyEnabledDefaultValue = true;
+
   const SliderWidgetShowcaseOptionConfiguration({
     required this.label,
+    this.initiallyEnabled = initiallyEnabledDefaultValue,
     this.checkboxOnChanged,
     required this.sliderOnChanged,
   });
 
   /// [MyoroCheckboxConfiguration.label]
   final String label;
+
+  /// [MyoroCheckboxConfiguration.value]
+  final bool initiallyEnabled;
 
   /// [MyoroCheckboxConfiguration.onChanged]
   final SliderWidgetShowcaseOptionCheckboxOnChanged? checkboxOnChanged;

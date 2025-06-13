@@ -14,3 +14,4 @@ export 'inputs/exports.dart';
 export 'layout_builders/exports.dart';
 export 'loaders/exports.dart';
 export 'menus/exports.dart';
+export 'modals/exports.dart';

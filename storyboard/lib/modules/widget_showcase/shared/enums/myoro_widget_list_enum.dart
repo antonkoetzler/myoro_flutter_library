@@ -18,6 +18,7 @@ enum MyoroWidgetListEnum {
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
   inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
+  loaders('Loaders', {myoroCircularLoaderTitle}),
   menus('Menus', {myoroMenuTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
@@ -77,6 +78,9 @@ enum MyoroWidgetListEnum {
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
 
+  // Loaders
+  static const myoroCircularLoaderTitle = 'MyoroCircularLoader';
+
   // Layout builders
   static const myoroLayoutBuilderTitle = 'MyoroLayoutBuilder';
 
@@ -133,6 +137,9 @@ enum MyoroWidgetListEnum {
       // Layout builders
       myoroLayoutBuilderTitle => const MyoroLayoutBuilderWidgetShowcase(),
 
+      // Loaders
+      myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),
+
       // Menus
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
 
@@ -153,5 +160,6 @@ enum MyoroWidgetListEnum {
   bool get isGraphs => this == graphs;
   bool get isInputs => this == inputs;
   bool get isLayoutBuilders => this == layoutBuilders;
+  bool get isLoaders => this == loaders;
   bool get isMenus => this == menus;
 }
