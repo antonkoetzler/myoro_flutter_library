@@ -59,7 +59,7 @@ class MyoroModal extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: themeExtension.spacing,
             children: [
-              if (configuration.title != null || configuration.showCloseButton) _Header(configuration),
+              if (configuration.title.isNotEmpty || configuration.showCloseButton) _Header(configuration),
               Flexible(child: child),
             ],
           ),

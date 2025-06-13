@@ -18,6 +18,7 @@
 1. chore: Add `ThemeExtension`s to all widget showcases
 1. chore: Constructors at the top of the class
 1. feature: Make myoro themes and add an ios26 theme
+1. chore: Redo deploying and GitHub Actions
 1. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern

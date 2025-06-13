@@ -11,6 +11,7 @@ part 'myoro_modal_configuration.g.dart';
 class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
   static const barrierDismissableDefaultValue = true;
   static const useRootNavigatorDefaultValue = true;
+  static const titleDefaultValue = '';
   static const showCloseButtonDefaultValue = true;
 
   /// If you click everywhere but the modal, it closes
@@ -56,7 +57,7 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
   final VoidCallback? onClosed;
 
   /// Title of the modal.
-  final String? title;
+  final String title;
 
   /// If [_CloseButton] will be shown.
   final bool showCloseButton;
@@ -72,7 +73,7 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
     this.useRootNavigator = useRootNavigatorDefaultValue,
     this.constraints,
     this.onClosed,
-    this.title,
+    this.title = titleDefaultValue,
     this.showCloseButton = showCloseButtonDefaultValue,
     this.padding,
     this.closeButtonPadding,
@@ -81,9 +82,9 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
   MyoroModalConfiguration.fake()
     : barrierDismissable = faker.randomGenerator.boolean(),
       useRootNavigator = faker.randomGenerator.boolean(),
-      constraints = null,
-      onClosed = null,
-      title = faker.lorem.word(),
+      constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      onClosed = faker.randomGenerator.boolean() ? (() {}) : null,
+      title = faker.randomGenerator.boolean() ? faker.lorem.word() : titleDefaultValue,
       showCloseButton = faker.randomGenerator.boolean(),
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;

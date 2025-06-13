@@ -10,7 +10,7 @@ part 'myoro_circular_loader_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroCircularLoader].
 @immutable
 @myoroThemeExtension
-class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension>
+final class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension>
     with _$MyoroCircularLoaderThemeExtensionMixin {
   /// Color of the [MyoroCircularLoader].
   final Color color;

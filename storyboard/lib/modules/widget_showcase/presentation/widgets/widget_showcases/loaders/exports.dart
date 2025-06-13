@@ -1,1 +1,1 @@
-export 'circular_loader/myoro_circular_loader_widget_showcase.dart';
+export 'circular_loader/exports.dart';

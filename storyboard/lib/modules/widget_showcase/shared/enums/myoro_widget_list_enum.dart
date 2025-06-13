@@ -19,7 +19,8 @@ enum MyoroWidgetListEnum {
   inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
-  menus('Menus', {myoroMenuTitle});
+  menus('Menus', {myoroMenuTitle}),
+  modals('Modals', {myoroDialogModalTitle, myoroModalTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -87,6 +88,10 @@ enum MyoroWidgetListEnum {
   // Menus
   static const myoroMenuTitle = 'MyoroMenu';
 
+  // Modals
+  static const myoroDialogModalTitle = 'MyoroDialogModal';
+  static const myoroModalTitle = 'MyoroModal';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -143,6 +148,10 @@ enum MyoroWidgetListEnum {
       // Menus
       myoroMenuTitle => const MyoroMenuWidgetShowcase(),
 
+      // Modals
+      myoroDialogModalTitle => const MyoroDialogModalWidgetShowcase(),
+      myoroModalTitle => const MyoroModalWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }
@@ -162,4 +171,5 @@ enum MyoroWidgetListEnum {
   bool get isLayoutBuilders => this == layoutBuilders;
   bool get isLoaders => this == loaders;
   bool get isMenus => this == menus;
+  bool get isModals => this == modals;
 }

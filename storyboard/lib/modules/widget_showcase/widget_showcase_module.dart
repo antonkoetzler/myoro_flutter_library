@@ -56,6 +56,10 @@ final class WidgetShowcaseModule implements Module {
 
       // Loaders
       const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
+
+      // Modals
+      const MyoroDialogModalWidgetShowcaseThemeExtension.builder(),
+      const MyoroModalWidgetShowcaseThemeExtension.builder(),
       // ######################################
     ];
   }

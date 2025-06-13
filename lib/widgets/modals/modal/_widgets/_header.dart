@@ -11,7 +11,7 @@ final class _Header extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        if (_configuration.title != null) _Title(_configuration.title!),
+        if (_configuration.title.isNotEmpty) _Title(_configuration.title!),
         if (_configuration.showCloseButton == true) ...[const Spacer(), _CloseButton(_configuration)],
       ],
     );
