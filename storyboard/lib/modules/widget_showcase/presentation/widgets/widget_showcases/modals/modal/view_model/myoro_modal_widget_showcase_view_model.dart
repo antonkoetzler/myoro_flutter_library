@@ -15,13 +15,13 @@ final class MyoroModalWidgetShowcaseViewModel {
 
     MyoroModal.show(
       context,
-      configuration: _configuration(context),
+      configuration: configuration(context),
       child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
     );
   }
 
   /// [MyoroModalConfiguration] of the [MyoroModal].
-  MyoroModalConfiguration _configuration(BuildContext context) {
+  MyoroModalConfiguration configuration(BuildContext context) {
     // [MyoroModalConfiguration.onClosed]
     void onClosed(BuildContext context) {
       context.showSnackBar(

@@ -1,2 +1,3 @@
 export 'theme_extension/myoro_dialog_modal_widget_showcase_theme_extension.dart';
+export 'view_model/myoro_dialog_modal_widget_showcase_view_modal.dart';
 export 'myoro_dialog_modal_widget_showcase.dart';

@@ -20,7 +20,6 @@ mixin _$MyoroRadioConfigurationMixin {
     bool? initialValue,
     bool initialValueProvided = true,
     String? label,
-    bool labelProvided = true,
     TextStyle? labelTextStyle,
     bool labelTextStyleProvided = true,
     void Function(bool)? onChanged,
@@ -30,7 +29,7 @@ mixin _$MyoroRadioConfigurationMixin {
       notifier: notifierProvided ? (notifier ?? self.notifier) : null,
       initialValue:
           initialValueProvided ? (initialValue ?? self.initialValue) : null,
-      label: labelProvided ? (label ?? self.label) : null,
+      label: label ?? self.label,
       labelTextStyle:
           labelTextStyleProvided
               ? (labelTextStyle ?? self.labelTextStyle)

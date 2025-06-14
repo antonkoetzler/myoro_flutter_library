@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:storyboard/storyboard.dart';
 
-part 'myoro_circular_widget_showcase_theme_extension.g.dart';
+part 'myoro_circular_loader_widget_showcase_theme_extension.g.dart';
 
 /// [ThemeExtension] of [MyoroCircularLoaderWidgetShowcase].
 @immutable

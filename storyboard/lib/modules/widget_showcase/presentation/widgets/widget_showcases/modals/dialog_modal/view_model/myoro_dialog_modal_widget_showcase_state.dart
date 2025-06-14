@@ -2,6 +2,12 @@ part of 'myoro_dialog_modal_widget_showcase_view_modal.dart';
 
 /// State of [MyoroDialogModalWidgetShowcaseViewModel].
 final class MyoroDialogModalWidgetShowcaseState extends ChangeNotifier {
+  static const _textDefaultValue = 'Hello, World!';
+
+  /// View model of [MyoroModalWidgetShowcase].
+  final _modalViewModel = MyoroModalWidgetShowcaseViewModel();
+  MyoroModalWidgetShowcaseViewModel get modalViewModel => _modalViewModel;
+
   /// [MyoroDialogModalConfiguration.invertButtons]
   bool _invertButtons = MyoroDialogModalConfiguration.invertButtonsDefaultValue;
   bool get invertButtons => _invertButtons;
@@ -43,7 +49,7 @@ final class MyoroDialogModalWidgetShowcaseState extends ChangeNotifier {
   }
 
   /// [MyoroDialogModalConfiguration.text]
-  String _text = MyoroDialogModalConfiguration.textDefaultValue;
+  String _text = _textDefaultValue;
   String get text => _text;
   set text(String text) {
     _text = text;

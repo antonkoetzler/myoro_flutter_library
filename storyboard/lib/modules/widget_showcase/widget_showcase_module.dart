@@ -58,8 +58,12 @@ final class WidgetShowcaseModule implements Module {
       const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
 
       // Modals
-      const MyoroDialogModalWidgetShowcaseThemeExtension.builder(),
+      MyoroDialogModalWidgetShowcaseThemeExtension.builder(),
       const MyoroModalWidgetShowcaseThemeExtension.builder(),
+
+      // Radios
+      const MyoroGroupRadioWidgetShowcaseThemeExtension.builder(),
+      const MyoroRadioWidgetShowcaseThemeExtension.builder(),
       // ######################################
     ];
   }

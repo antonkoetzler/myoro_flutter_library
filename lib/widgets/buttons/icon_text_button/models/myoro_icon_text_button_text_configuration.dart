@@ -6,6 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_icon_text_button_text_configuration.g.dart';
 
 /// Text configuration of [MyoroIconTextButton].
+///
+/// TODO: Make a generic model for test options, not connected to [MyoroIconTextButton].
 @myoroModel
 class MyoroIconTextButtonTextConfiguration with _$MyoroIconTextButtonTextConfigurationMixin {
   static const maxLinesDefaultValue = 1;

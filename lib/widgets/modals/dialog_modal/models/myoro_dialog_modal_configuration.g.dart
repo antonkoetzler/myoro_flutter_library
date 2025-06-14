@@ -18,9 +18,7 @@ mixin _$MyoroDialogModalConfigurationMixin {
   MyoroDialogModalConfiguration copyWith({
     bool? invertButtons,
     String? confirmButtonText,
-    bool confirmButtonTextProvided = true,
     String? cancelButtonText,
-    bool cancelButtonTextProvided = true,
     void Function()? onConfirm,
     bool onConfirmProvided = true,
     void Function()? onCancel,
@@ -33,14 +31,8 @@ mixin _$MyoroDialogModalConfigurationMixin {
   }) {
     return MyoroDialogModalConfiguration(
       invertButtons: invertButtons ?? self.invertButtons,
-      confirmButtonText:
-          confirmButtonTextProvided
-              ? (confirmButtonText ?? self.confirmButtonText)
-              : null,
-      cancelButtonText:
-          cancelButtonTextProvided
-              ? (cancelButtonText ?? self.cancelButtonText)
-              : null,
+      confirmButtonText: confirmButtonText ?? self.confirmButtonText,
+      cancelButtonText: cancelButtonText ?? self.cancelButtonText,
       onConfirm: onConfirmProvided ? (onConfirm ?? self.onConfirm) : null,
       onCancel: onCancelProvided ? (onCancel ?? self.onCancel) : null,
       text: text ?? self.text,

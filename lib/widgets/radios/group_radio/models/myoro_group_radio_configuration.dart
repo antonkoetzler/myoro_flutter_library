@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_group_radio_configuration.g.dart';
 
 /// Configuration of [MyoroGroupRadio].
+@immutable
 @myoroModel
 class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;

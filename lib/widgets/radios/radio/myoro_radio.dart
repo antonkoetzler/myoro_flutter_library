@@ -58,9 +58,9 @@ final class _MyoroRadioState extends State<MyoroRadio> {
             );
           },
         ),
-        if (_configuration.label != null) ...[
+        if (_configuration.label.isNotEmpty) ...[
           Flexible(
-            child: Text(_configuration.label!, style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle),
+            child: Text(_configuration.label, style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle),
           ),
         ],
       ],

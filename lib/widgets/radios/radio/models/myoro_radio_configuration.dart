@@ -8,6 +8,7 @@ part 'myoro_radio_configuration.g.dart';
 @myoroModel
 class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
   static const initialValueDefaultValue = false;
+  static const labelDefaultValue = '';
 
   /// [ValueNotifier] to manage state externally.
   final MyoroRadioController? notifier;
@@ -20,7 +21,7 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
   final bool? initialValue;
 
   /// Label to the right of the radio.
-  final String? label;
+  final String label;
 
   /// [TextStyle] of [label].
   final TextStyle? labelTextStyle;
@@ -31,7 +32,7 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
   const MyoroRadioConfiguration({
     this.notifier,
     this.initialValue = initialValueDefaultValue,
-    this.label,
+    this.label = labelDefaultValue,
     this.labelTextStyle,
     this.onChanged,
   }) : assert(

@@ -5,6 +5,7 @@ import 'package:storyboard/storyboard.dart';
 
 part '_widgets/_cancel_button_text_option.dart';
 part '_widgets/_child_option.dart';
+part '_widgets/_child_widget.dart';
 part '_widgets/_confirm_button_text_option.dart';
 part '_widgets/_invert_buttons_option.dart';
 part '_widgets/_on_cancel_option.dart';
@@ -40,7 +41,7 @@ final class _MyoroDialogModalWidgetShowcaseState extends State<MyoroDialogModalW
     return MultiProvider(
       providers: [
         InheritedProvider.value(value: _viewModel),
-        InheritedProvider.value(value: _viewModel.state.modalViewModal),
+        InheritedProvider.value(value: _viewModel.state.modalViewModel),
       ],
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
