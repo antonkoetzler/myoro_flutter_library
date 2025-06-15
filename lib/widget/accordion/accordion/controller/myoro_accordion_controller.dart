@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_accordion_controller_interface.dart';
-
 /// Controller of [MyoroAccordion].
-class MyoroAccordionController extends ValueNotifier<MyoroAccordionItem?> implements MyoroAccordionControllerInterface {
+class MyoroAccordionController extends ValueNotifier<MyoroAccordionItem?> {
   MyoroAccordionController({MyoroAccordionItem? initiallyExpandedItem, required this.items})
     : assert(items.isNotEmpty, '[MyoroAccordionController]: [items] cannot be empty.'),
       super(initiallyExpandedItem);
@@ -12,12 +10,12 @@ class MyoroAccordionController extends ValueNotifier<MyoroAccordionItem?> implem
   /// [MyoroAccordionItem]s of the [MyoroAccordion].
   final List<MyoroAccordionItem> items;
 
-  @override
+  /// Expands a [MyoroAccordionItem].
   void expandItem(MyoroAccordionItem item) {
     value = item;
   }
 
-  @override
+  /// Expanded [expandedItemController]'s value if it is not null.
   void reset() {
     value = null;
   }

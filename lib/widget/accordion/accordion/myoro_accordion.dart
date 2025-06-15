@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
-part '_widgets/_divider.dart';
-part '_widgets/_item.dart';
-part '_widgets/_item_content.dart';
-part '_widgets/_item_title_button.dart';
-part '_widgets/_item_title_button_arrow.dart';
+part '_widget/_divider.dart';
+part '_widget/_item.dart';
+part '_widget/_item_content.dart';
+part '_widget/_item_title_button.dart';
+part '_widget/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
 class MyoroAccordion extends StatefulWidget {
-  /// View model.
-  final MyoroAccordionController controller;
-
   const MyoroAccordion({super.key, required this.controller});
+
+  /// Controller
+  final MyoroAccordionController controller;
 
   @override
   State<MyoroAccordion> createState() => _MyoroAccordionState();
