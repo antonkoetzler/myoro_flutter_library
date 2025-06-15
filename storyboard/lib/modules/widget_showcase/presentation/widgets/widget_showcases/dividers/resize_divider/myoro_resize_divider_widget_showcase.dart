@@ -7,8 +7,6 @@ part '_widgets/_widget.dart';
 
 /// Widget showcase of [MyoroResizeDivider].
 final class MyoroResizeDividerWidgetShowcase extends StatelessWidget {
-  static const options = MyoroBasicDividerWidgetShowcase.options;
-
   const MyoroResizeDividerWidgetShowcase({super.key});
 
   @override
@@ -19,7 +17,7 @@ final class MyoroResizeDividerWidgetShowcase extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroResizeDividerTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          widgetOptions: MyoroBasicDividerWidgetShowcase.options,
         ),
       ),
     );

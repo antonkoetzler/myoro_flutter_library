@@ -19,7 +19,6 @@ final class MyoroDropdownWidgetShowcase extends StatefulWidget {
     _MenuTypeEnumOption(),
     _AllowItemClearingOption(),
     _SelectedItemTextAlignOption(),
-    ...MyoroMenuWidgetShowcase.options,
   ];
 
   const MyoroDropdownWidgetShowcase({super.key});
@@ -48,7 +47,10 @@ final class _MyoroDropdownWidgetShowcaseState extends State<MyoroDropdownWidgetS
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDropdownsTitle,
           widget: _Widget(),
-          widgetOptions: MyoroDropdownWidgetShowcase.options,
+          widgetOptions: [
+            ...MyoroDropdownWidgetShowcase.options,
+            ...MyoroMenuWidgetShowcase.options,
+          ],
         ),
       ),
     );

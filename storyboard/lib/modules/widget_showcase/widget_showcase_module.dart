@@ -35,10 +35,39 @@ final class WidgetShowcaseModule implements Module {
       const ThemeModeWidgetShowcaseOptionThemeExtension.builder(),
       // #############################################
 
-      // TODO: Make sure all widget showcases have a [ThemeExtension].
       // ########## Widget showcases ##########
+      // Accordions
+      const MyoroAccordionWidgetShowcaseThemeExtension.builder(),
+
+      // App bars
+      const MyoroAppBarWidgetShowcaseThemeExtension.builder(),
+
+      // Apps
+      const MyoroAppWidgetShowcaseThemeExtension.builder(),
+
+      // Buttons
+      const MyoroButtonWidgetShowcaseThemeExtension.builder(),
+      const MyoroIconTextButtonWidgetShowcaseThemeExtension.builder(),
+
       // Cards
       MyoroCardWidgetShowcaseThemeExtension.builder(textTheme),
+
+      // Carousels
+      const MyoroCarouselWidgetShowcaseThemeExtension.builder(),
+
+      // Checkboxes
+      const MyoroCheckboxWidgetShowcaseThemeExtension.builder(),
+      const MyoroGroupCheckboxWidgetShowcaseThemeExtension.builder(),
+
+      // Dividers
+      const MyoroBasicDividerWidgetShowcaseThemeExtension.builder(),
+      const MyoroResizeDividerWidgetShowcaseThemeExtension.builder(),
+
+      // Drawers
+      const MyoroDrawerWidgetShowcaseThemeExtension.builder(),
+
+      // Dropdowns
+      const MyoroDropdownWidgetShowcaseThemeExtension.builder(),
 
       // Forms
       MyoroFormWidgetShowcaseThemeExtension.builder(),
@@ -57,6 +86,9 @@ final class WidgetShowcaseModule implements Module {
 
       // Loaders
       const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
+
+      // Menus
+      const MyoroMenuWidgetShowcaseThemeExtension.builder(),
 
       // Modals
       MyoroDialogModalWidgetShowcaseThemeExtension.builder(),

@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_carousel_configuration.g.dart';
 
 /// Configuration of [MyoroCarousel].
+@immutable
 @myoroModel
 class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {
   static const directionDefaultValue = Axis.horizontal;
@@ -13,24 +14,6 @@ class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {
   static const initialItemDefaultValue = 0;
   static const autoplayDefaultValue = false;
   static const autoplayIntervalDurationDefaultValue = Duration(seconds: 3);
-
-  /// Direction that the carousel is sliding in.
-  final Axis direction;
-
-  /// Display buttons to traverse [items].
-  final bool displayTraversalButtons;
-
-  /// Initial item from [slides] starting in the carousel.
-  final int initialItem;
-
-  /// If the carousel autoslides [items].
-  final bool autoplay;
-
-  /// [autoplay] interval duration.
-  final Duration autoplayIntervalDuration;
-
-  /// Slides of the carousel.
-  final List<Widget> items;
 
   const MyoroCarouselConfiguration({
     this.direction = directionDefaultValue,
@@ -53,4 +36,22 @@ class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {
       items: items,
     );
   }
+
+  /// Direction that the carousel is sliding in.
+  final Axis direction;
+
+  /// Display buttons to traverse [items].
+  final bool displayTraversalButtons;
+
+  /// Initial item from [slides] starting in the carousel.
+  final int initialItem;
+
+  /// If the carousel autoslides [items].
+  final bool autoplay;
+
+  /// [autoplay] interval duration.
+  final Duration autoplayIntervalDuration;
+
+  /// Slides of the carousel.
+  final List<Widget> items;
 }

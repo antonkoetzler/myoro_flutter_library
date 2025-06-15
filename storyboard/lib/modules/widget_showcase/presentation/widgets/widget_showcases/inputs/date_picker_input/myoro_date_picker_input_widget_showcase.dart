@@ -7,8 +7,6 @@ part '_widgets/_widget.dart';
 
 /// Widget showcase of [MyoroDatePickerInput].
 final class MyoroDatePickerInputWidgetShowcase extends StatelessWidget {
-  static const options = MyoroInputWidgetShowcase.options;
-
   const MyoroDatePickerInputWidgetShowcase({super.key});
 
   @override
@@ -19,7 +17,7 @@ final class MyoroDatePickerInputWidgetShowcase extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDatePickerInputTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          widgetOptions: MyoroInputWidgetShowcase.options,
         ),
       ),
     );

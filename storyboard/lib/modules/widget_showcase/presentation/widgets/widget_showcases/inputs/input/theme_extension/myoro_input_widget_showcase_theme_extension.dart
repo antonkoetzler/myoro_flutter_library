@@ -13,12 +13,6 @@ part 'myoro_input_widget_showcase_theme_extension.g.dart';
 @myoroThemeExtension
 final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroInputWidgetShowcaseThemeExtension>
     with _$MyoroInputWidgetShowcaseThemeExtensionMixin {
-  /// [BorderRadius] of [_Suffix].
-  final BorderRadius suffixBorderRadius;
-
-  /// Size of [_Suffix]'s [Image].
-  final double suffixSize;
-
   const MyoroInputWidgetShowcaseThemeExtension({required this.suffixBorderRadius, required this.suffixSize});
 
   MyoroInputWidgetShowcaseThemeExtension.fake()
@@ -28,6 +22,12 @@ final class MyoroInputWidgetShowcaseThemeExtension extends ThemeExtension<MyoroI
   MyoroInputWidgetShowcaseThemeExtension.builder()
     : suffixBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
       suffixSize = 30;
+
+  /// [BorderRadius] of [_Suffix].
+  final BorderRadius suffixBorderRadius;
+
+  /// Size of [_Suffix]'s [Image].
+  final double suffixSize;
 
   @override
   MyoroInputWidgetShowcaseThemeExtension lerp(

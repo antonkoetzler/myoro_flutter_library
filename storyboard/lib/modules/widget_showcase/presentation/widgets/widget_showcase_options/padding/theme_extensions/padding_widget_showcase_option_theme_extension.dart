@@ -12,14 +12,14 @@ part 'padding_widget_showcase_option_theme_extension.g.dart';
 @myoroThemeExtension
 final class PaddingWidgetShowcaseOptionThemeExtension extends ThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>
     with _$PaddingWidgetShowcaseOptionThemeExtensionMixin {
-  /// General spacing of [Widget]s.
-  final double spacing;
-
   const PaddingWidgetShowcaseOptionThemeExtension({required this.spacing});
 
   PaddingWidgetShowcaseOptionThemeExtension.fake() : spacing = faker.randomGenerator.decimal(scale: 20);
 
   const PaddingWidgetShowcaseOptionThemeExtension.builder() : spacing = 10;
+
+  /// General spacing of [Widget]s.
+  final double spacing;
 
   @override
   PaddingWidgetShowcaseOptionThemeExtension lerp(
