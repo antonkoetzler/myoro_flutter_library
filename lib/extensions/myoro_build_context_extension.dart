@@ -64,7 +64,10 @@ extension MyoroBuildContextExtension on BuildContext {
   }
 
   /// Opens a snack bar.
-  void showSnackBar({Duration? duration, required MyoroSnackBar snackBar}) {
+  void showSnackBar({
+    Duration duration = MyoroSnackBarContainer.durationDefaultValue,
+    required MyoroSnackBar snackBar,
+  }) {
     ScaffoldMessenger.of(this)
       ..hideCurrentSnackBar()
       ..showSnackBar(

@@ -24,7 +24,6 @@ mixin _$MyoroSnackBarContainerThemeExtensionMixin
     EdgeInsets? padding,
     double? elevation,
     DismissDirection? dismissDirection,
-    Duration? duration,
   }) {
     return MyoroSnackBarContainerThemeExtension(
       primaryColor: primaryColor ?? self.primaryColor,
@@ -33,7 +32,6 @@ mixin _$MyoroSnackBarContainerThemeExtensionMixin
       padding: padding ?? self.padding,
       elevation: elevation ?? self.elevation,
       dismissDirection: dismissDirection ?? self.dismissDirection,
-      duration: duration ?? self.duration,
     );
   }
 
@@ -46,8 +44,7 @@ mixin _$MyoroSnackBarContainerThemeExtensionMixin
         other.margin == self.margin &&
         other.padding == self.padding &&
         other.elevation == self.elevation &&
-        other.dismissDirection == self.dismissDirection &&
-        other.duration == self.duration;
+        other.dismissDirection == self.dismissDirection;
   }
 
   @override
@@ -59,7 +56,6 @@ mixin _$MyoroSnackBarContainerThemeExtensionMixin
       self.padding,
       self.elevation,
       self.dismissDirection,
-      self.duration,
     );
   }
 
@@ -72,6 +68,5 @@ mixin _$MyoroSnackBarContainerThemeExtensionMixin
       '  padding: ${self.padding},\n'
       '  elevation: ${self.elevation},\n'
       '  dismissDirection: ${self.dismissDirection},\n'
-      '  duration: ${self.duration},\n'
       ');';
 }

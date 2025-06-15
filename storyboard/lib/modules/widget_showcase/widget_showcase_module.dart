@@ -23,7 +23,7 @@ final class WidgetShowcaseModule implements Module {
       const IconWidgetShowcaseOptionThemeExtension.builder(),
       const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroInputStyleEnumWidgetShowcaseOptionThemeExtension.builder(),
-      const MyoroSnackBarTypeEnumWidgetShowcaseOptionThemeExtension.builder(),
+      const MyoroSnackBarTypeWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),
       const PaddingWidgetShowcaseOptionThemeExtension.builder(),
       const SliderWidgetShowcaseOptionThemeExtension.builder(),
@@ -75,6 +75,12 @@ final class WidgetShowcaseModule implements Module {
       // Snack bars
       const MyoroSnackBarWidgetShowcaseThemeExtension.builder(),
       const MyoroSnackBarContainerWidgetShowcaseThemeExtension.builder(),
+
+      // Tables
+      const MyoroTableWidgetShowcaseThemeExtension.builder(),
+
+      // Tooltips
+      const MyoroTooltipWidgetShowcaseThemeExtension.builder(),
       // ######################################
     ];
   }

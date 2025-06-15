@@ -10,6 +10,7 @@ part 'myoro_tooltip_configuration.g.dart';
 @myoroModel
 class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
   static const waitDurationDefaultValue = Duration(milliseconds: 200);
+  static const textDefaultValue = '';
 
   /// Margin [EdgeInsets] of the tooltip.
   final EdgeInsets? margin;
@@ -20,7 +21,11 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
   /// Text of the tooltip.
   final String text;
 
-  const MyoroTooltipConfiguration({this.margin, this.waitDuration = waitDurationDefaultValue, required this.text});
+  const MyoroTooltipConfiguration({
+    this.margin,
+    this.waitDuration = waitDurationDefaultValue,
+    this.text = textDefaultValue,
+  });
 
   MyoroTooltipConfiguration.fake()
     : margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,

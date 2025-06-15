@@ -27,6 +27,7 @@ mixin _$MyoroSliderConfigurationMixin {
     String Function(double)? footerIndicatorTextBuilder,
     bool footerIndicatorTextBuilderProvided = true,
     void Function(double)? onChanged,
+    bool onChangedProvided = true,
   }) {
     return MyoroSliderConfiguration(
       label: label ?? self.label,
@@ -49,7 +50,7 @@ mixin _$MyoroSliderConfigurationMixin {
           footerIndicatorTextBuilderProvided
               ? (footerIndicatorTextBuilder ?? self.footerIndicatorTextBuilder)
               : null,
-      onChanged: onChanged ?? self.onChanged,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
     );
   }
 
