@@ -30,9 +30,6 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
   /// [DismissDirection] of the container.
   final DismissDirection dismissDirection;
 
-  /// Duration that the snack bar will be shown for.
-  final Duration duration;
-
   const MyoroSnackBarContainerThemeExtension({
     required this.primaryColor,
     required this.behavior,
@@ -40,7 +37,6 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
     required this.padding,
     required this.elevation,
     required this.dismissDirection,
-    required this.duration,
   });
 
   MyoroSnackBarContainerThemeExtension.fake()
@@ -49,8 +45,7 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
       margin = myoroFake<EdgeInsets>(),
       padding = myoroFake<EdgeInsets>(),
       elevation = faker.randomGenerator.decimal(),
-      dismissDirection = myoroFake<DismissDirection>(),
-      duration = myoroFake<Duration>();
+      dismissDirection = myoroFake<DismissDirection>();
 
   const MyoroSnackBarContainerThemeExtension.builder()
     : primaryColor = MyoroColorDesignSystem.transparent,
@@ -58,8 +53,7 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
       margin = const EdgeInsets.all(10),
       padding = EdgeInsets.zero,
       elevation = 0,
-      dismissDirection = DismissDirection.none,
-      duration = const Duration(seconds: 3);
+      dismissDirection = DismissDirection.none;
 
   @override
   MyoroSnackBarContainerThemeExtension lerp(
@@ -74,7 +68,6 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
       padding: EdgeInsets.lerp(padding, other.padding, t),
       elevation: lerpDouble(elevation, other.elevation, t),
       dismissDirection: myoroLerp(dismissDirection, other.dismissDirection, t),
-      duration: myoroLerp(duration, other.duration, t),
     );
   }
 }

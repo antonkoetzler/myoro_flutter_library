@@ -8,6 +8,8 @@ part 'myoro_slider_configuration.g.dart';
 /// Configuration of [MyoroSlider].
 @myoroModel
 class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
+  static const labelDefaultValue = '';
+
   /// Label of the slider.
   final String label;
 
@@ -27,16 +29,16 @@ class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
   final MyoroSliderIndicatorTextBuilder? footerIndicatorTextBuilder;
 
   /// Function executed whenever the value of the slider changes.
-  final MyoroSliderOnChanged onChanged;
+  final MyoroSliderOnChanged? onChanged;
 
   const MyoroSliderConfiguration({
-    this.label = '',
+    this.label = labelDefaultValue,
     this.labelTextStyle,
     this.width,
     this.currentValueIndicatorTextBuilder,
     this.maxValueIndicatorTextBuilder,
     this.footerIndicatorTextBuilder,
-    required this.onChanged,
+    this.onChanged,
   });
 
   MyoroSliderConfiguration.fake()
@@ -46,5 +48,5 @@ class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
       currentValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
       maxValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
       footerIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
-      onChanged = ((_) {});
+      onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
 }

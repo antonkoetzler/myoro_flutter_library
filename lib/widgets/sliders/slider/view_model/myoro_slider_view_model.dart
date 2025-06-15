@@ -14,6 +14,6 @@ final class MyoroSliderViewModel {
 
   /// Listener of [controller].
   void _controllerListener() {
-    configuration?.onChanged.call(controller.value);
+    configuration?.onChanged?.call(controller.value);
   }
 }

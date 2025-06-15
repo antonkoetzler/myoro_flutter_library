@@ -3,9 +3,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base snack bar class extending [SnackBar] that serves as a container for
 /// the [MyoroSnackBar] that will be shown within the [MyoroSnackBarContainer].
-///
-/// NOTE: No widget showcase in the storyboard for [MyoroSnackBarContainer]
-/// as it is used in [MyoroSnackBar]'s widget showcase.
 class MyoroSnackBarContainer extends SnackBar {
   MyoroSnackBarContainer({
     // Key for whatever purpose.
@@ -15,7 +12,7 @@ class MyoroSnackBarContainer extends SnackBar {
     required MyoroSnackBarContainerThemeExtension themeExtension,
 
     // Duration that the snack bar will be shown for.
-    Duration? duration,
+    Duration duration = const Duration(seconds: 3),
 
     // Snack bar widget to be displayed.
     required MyoroSnackBar snackBar,
@@ -27,7 +24,7 @@ class MyoroSnackBarContainer extends SnackBar {
          padding: themeExtension.padding,
          elevation: themeExtension.elevation,
          dismissDirection: themeExtension.dismissDirection,
-         duration: themeExtension.duration,
+         duration: duration,
          content: _SnackBar(snackBar),
        );
 }

@@ -23,6 +23,7 @@ final class WidgetShowcaseModule implements Module {
       const IconWidgetShowcaseOptionThemeExtension.builder(),
       const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroInputStyleEnumWidgetShowcaseOptionThemeExtension.builder(),
+      const MyoroSnackBarTypeEnumWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),
       const PaddingWidgetShowcaseOptionThemeExtension.builder(),
       const SliderWidgetShowcaseOptionThemeExtension.builder(),
@@ -64,6 +65,16 @@ final class WidgetShowcaseModule implements Module {
       // Radios
       const MyoroGroupRadioWidgetShowcaseThemeExtension.builder(),
       const MyoroRadioWidgetShowcaseThemeExtension.builder(),
+
+      // Screens
+      const MyoroScreenWidgetShowcaseThemeExtension.builder(),
+
+      // Sliders
+      const MyoroSliderWidgetShowcaseThemeExtension.builder(),
+
+      // Snack bars
+      const MyoroSnackBarWidgetShowcaseThemeExtension.builder(),
+      const MyoroSnackBarContainerWidgetShowcaseThemeExtension.builder(),
       // ######################################
     ];
   }

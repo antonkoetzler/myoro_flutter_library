@@ -21,7 +21,10 @@ enum MyoroWidgetListEnum {
   loaders('Loaders', {myoroCircularLoaderTitle}),
   menus('Menus', {myoroMenuTitle}),
   modals('Modals', {myoroModalTitle, myoroDialogModalTitle}),
-  radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle});
+  radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle}),
+  screens('Screens', {myoroScreenTitle}),
+  sliders('Sliders', {myoroSliderTitle}),
+  snackBars('Snack Bars', {myoroSnackBarTitle, myoroSnackBarContainerTitle});
 
   const MyoroWidgetListEnum(this.categoryName, this.widgetNames);
 
@@ -97,6 +100,16 @@ enum MyoroWidgetListEnum {
   static const myoroGroupRadioTitle = 'MyoroGroupRadio';
   static const myoroRadioTitle = 'MyoroRadio';
 
+  // Screens
+  static const myoroScreenTitle = 'MyoroScreen';
+
+  // Sliders
+  static const myoroSliderTitle = 'MyoroSlider';
+
+  // Snack bars
+  static const myoroSnackBarTitle = 'MyoroSnackBar';
+  static const myoroSnackBarContainerTitle = 'MyoroSnackBarContainer';
+
   static Widget getWidgetShowcase(String widgetName) {
     return switch (widgetName) {
       // Accordions
@@ -161,6 +174,16 @@ enum MyoroWidgetListEnum {
       myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcase(),
       myoroRadioTitle => const MyoroRadioWidgetShowcase(),
 
+      // Screens
+      myoroScreenTitle => const MyoroScreenWidgetShowcase(),
+
+      // Sliders
+      myoroSliderTitle => const MyoroSliderWidgetShowcase(),
+
+      // Snack bars
+      myoroSnackBarTitle => const MyoroSnackBarWidgetShowcase(),
+      myoroSnackBarContainerTitle => const MyoroSnackBarContainerWidgetShowcase(),
+
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
     };
   }
@@ -182,4 +205,7 @@ enum MyoroWidgetListEnum {
   bool get isMenus => this == menus;
   bool get isModals => this == modals;
   bool get isRadios => this == radios;
+  bool get isScreens => this == screens;
+  bool get isSliders => this == sliders;
+  bool get isSnackBars => this == snackBars;
 }
