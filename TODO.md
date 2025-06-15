@@ -8,10 +8,6 @@
 - Make `MyoroSnackBar` width 100% on every platform (#FlutterMoment)
 
 1. feature: Bottom sheets
-1. improvement: Make only `myoro_flutter_library.dart` exportable
-
-- <https://dart.dev/tools/pub/create-packages>: Putting all the code in `src` makes it so projects using MFL cannot export via `exports.dart` files
-
 1. improvement: Add view model of a `Widget` to provider scope to not have to pass by argument
 1. chore: Documentation
 
