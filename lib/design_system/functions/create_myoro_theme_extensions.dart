@@ -5,8 +5,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
   return [
     ..._createAccordionThemeExtensions(colorScheme, textTheme),
-    ..._createAppBarThemeExtensions(colorScheme),
     ..._createAppThemeExtensions(),
+    ..._createAppBarThemeExtensions(colorScheme),
     ..._createButtonThemeExtensions(isDarkMode, colorScheme, textTheme),
     ..._createCardThemeExtensions(colorScheme, textTheme),
     ..._createCarouselThemeExtensions(),
@@ -34,12 +34,12 @@ List<ThemeExtension> _createAccordionThemeExtensions(ColorScheme colorScheme, Te
   return [MyoroAccordionThemeExtension.builder(colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
-  return [MyoroAppBarThemeExtension.builder(colorScheme)];
-}
-
 List<ThemeExtension> _createAppThemeExtensions() {
   return const [MyoroAppThemeExtension.builder()];
+}
+
+List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
+  return [MyoroAppBarThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createButtonThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {

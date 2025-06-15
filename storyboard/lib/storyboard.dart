@@ -1,4 +1,4 @@
-export 'commons/exports.dart';
+export 'common/exports.dart';
 export 'core/exports.dart';
-export 'modules/exports.dart';
+export 'module/exports.dart';
 export 'main.dart';
