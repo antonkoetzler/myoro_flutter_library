@@ -2,81 +2,83 @@ part of '../myoro_dropdown.dart';
 
 /// [MyoroInput] that displays selected items and provides functionality such as the clear selected items button.
 final class _Input<T, C extends _C<T>> extends StatefulWidget {
-  final MyoroDropdownViewModel<T, C> _viewModel;
-
-  const _Input(this._viewModel);
+  const _Input();
 
   @override
   State<_Input<T, C>> createState() => _InputState<T, C>();
 }
 
 final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
-  MyoroDropdownViewModel<T, C> get _viewModel => widget._viewModel;
-  MyoroDropdownConfiguration<T> get _configuration => _viewModel.state.configuration;
-  ValueNotifier<bool> get _enabledController => _viewModel.controller.enabledController;
-  TextEditingController get _inputController => _viewModel.state.inputController;
-  GlobalKey get _inputKey => _viewModel.state.inputKey;
-  ValueNotifier<Size?> get _inputSizeController => _viewModel.state.inputSizeController;
-  LayerLink get _link => _viewModel.state.link;
-
   @override
   Widget build(BuildContext context) {
-    // TODO
-    // return switch (_configuration.menuTypeEnum) {
-    return OverlayPortal(
-      controller: _viewModel.state.overlayPortalController,
-      overlayChildBuilder: _overlayChildBuilder,
-      child: Stack(
-        children: [
-          // Empty [MyoroLayoutBuilder] to always update [_inputSizeController].
-          MyoroLayoutBuilder(builder: _layoutBuilder),
-          _InputTriggerArea(_viewModel),
-        ],
-      ),
+    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final link = viewModel.state.link;
+    final inputKey = viewModel.state.inputKey;
+    final configuration = viewModel.state.configuration;
+    final enabledController = viewModel.controller.enabledController;
+    final inputController = viewModel.state.inputController;
+
+    final child = Stack(
+      children: [
+        // Empty [MyoroLayoutBuilder] to always update [_inputSizeController].
+        MyoroLayoutBuilder(
+          builder: (_, _) {
+            viewModel.supplyInputSizeController();
+            return ValueListenableBuilder(
+              valueListenable: enabledController,
+              builder: (_, bool enabled, _) {
+                return CompositedTransformTarget(
+                  link: link,
+                  child: MyoroInput(
+                    key: inputKey,
+                    configuration: MyoroInputConfiguration(
+                      textAlign: configuration.selectedItemTextAlign,
+                      label: configuration.label,
+                      enabled: enabled,
+                      readOnly: true,
+                      showClearTextButton: configuration.allowItemClearing,
+                      onCleared: viewModel.controller.clear,
+                      controller: inputController,
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        _InputTriggerArea<T, C>(),
+      ],
     );
+
+    return switch (viewModel.state.configuration.menuTypeEnum) {
+      MyoroDropdownMenuTypeEnum.overlay => OverlayPortal(
+        controller: viewModel.state.overlayMenuController,
+        overlayChildBuilder: _overlayChildBuilder,
+        child: child,
+      ),
+      MyoroDropdownMenuTypeEnum.expanding => child,
+      MyoroDropdownMenuTypeEnum.modal => child,
+    };
   }
 
-  Widget _overlayChildBuilder(_) {
+  Widget _overlayChildBuilder(BuildContext context) {
+    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final inputSizeController = viewModel.state.inputSizeController;
+    final link = viewModel.state.link;
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+
     return ValueListenableBuilder(
-      valueListenable: _inputSizeController,
+      valueListenable: inputSizeController,
       builder: (_, Size? inputSize, _) {
         return Positioned(
           width: inputSize?.width,
           child: CompositedTransformFollower(
-            link: _link,
+            link: link,
             offset: Offset(0, (inputSize?.height ?? 0) + themeExtension.spacing),
-            child: _Menu(_viewModel),
+            child: _Menu<T, C>(),
           ),
         );
       },
-    );
-  }
-
-  Widget _layoutBuilder(_, _) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final renderBox = _inputKey.currentContext!.findRenderObject() as RenderBox;
-      _inputSizeController.value = renderBox.size;
-    });
-
-    return ValueListenableBuilder(valueListenable: _enabledController, builder: _enabledControllerBuilder);
-  }
-
-  Widget _enabledControllerBuilder(_, bool enabled, _) {
-    return CompositedTransformTarget(
-      link: _link,
-      child: MyoroInput(
-        key: _inputKey,
-        configuration: MyoroInputConfiguration(
-          textAlign: _configuration.selectedItemTextAlign,
-          label: _configuration.label,
-          enabled: enabled,
-          readOnly: true,
-          showClearTextButton: _configuration.allowItemClearing,
-          onCleared: _viewModel.controller.clear,
-          controller: _inputController,
-        ),
-      ),
     );
   }
 }

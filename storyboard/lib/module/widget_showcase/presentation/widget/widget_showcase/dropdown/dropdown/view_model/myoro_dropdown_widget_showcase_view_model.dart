@@ -4,25 +4,25 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroDropdownWidgetShowcase].
 final class MyoroDropdownWidgetShowcaseViewModel {
-  final _state = MyoroDropdownWidgetShowcaseState();
-  MyoroDropdownWidgetShowcaseState get state => _state;
+  /// State.
+  final state = MyoroDropdownWidgetShowcaseState();
 
-  final _menuViewModel = MyoroMenuWidgetShowcaseViewModel();
-  MyoroMenuWidgetShowcaseViewModel get menuViewModel => _menuViewModel;
+  /// View model of [MyoroMenuWidgetShowcase].
+  final menuViewModel = MyoroMenuWidgetShowcaseViewModel();
 
   /// Dispose function.
   void dispose() {
-    _state.dispose();
-    _menuViewModel.dispose();
+    state.dispose();
+    menuViewModel.dispose();
   }
 
   /// Constructs a [MyoroSingularDropdownConfiguration].
   MyoroSingularDropdownConfiguration<String> buildSingularDropdownConfiguration(BuildContext context) {
     return MyoroSingularDropdownConfiguration(
-      label: _state.label,
-      menuTypeEnum: _state.menuTypeEnum,
-      allowItemClearing: _state.allowItemClearing,
-      selectedItemTextAlign: _state.selectedItemTextAlign,
+      label: state.label,
+      menuTypeEnum: state.menuTypeEnum,
+      allowItemClearing: state.allowItemClearing,
+      selectedItemTextAlign: state.selectedItemTextAlign,
       menuConfiguration: menuViewModel.configuration,
       selectedItemBuilder: _selectedItemBuilder,
       onChanged: (item) => _singularDropdownOnChanged(context, item),
@@ -33,10 +33,10 @@ final class MyoroDropdownWidgetShowcaseViewModel {
   /// Constructs a [MyoroMultiDropdownConfiguration].
   MyoroMultiDropdownConfiguration<String> buildMultiDropdownConfiguration(BuildContext context) {
     return MyoroMultiDropdownConfiguration(
-      label: _state.label,
-      menuTypeEnum: _state.menuTypeEnum,
-      allowItemClearing: _state.allowItemClearing,
-      selectedItemTextAlign: _state.selectedItemTextAlign,
+      label: state.label,
+      menuTypeEnum: state.menuTypeEnum,
+      allowItemClearing: state.allowItemClearing,
+      selectedItemTextAlign: state.selectedItemTextAlign,
       menuConfiguration: menuViewModel.configuration,
       selectedItemBuilder: _selectedItemBuilder,
       onChanged: (items) => _multiDropdownOnChanged(context, items),

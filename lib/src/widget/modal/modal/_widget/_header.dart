@@ -9,10 +9,10 @@ final class _Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        if (_configuration.title.isNotEmpty) _Title(_configuration.title),
-        if (_configuration.showCloseButton == true) ...[const Spacer(), _CloseButton(_configuration)],
+        if (_configuration.title.isNotEmpty) Expanded(child: _Title(_configuration.title)),
+        if (_configuration.showCloseButton == true) _CloseButton(_configuration),
       ],
     );
   }

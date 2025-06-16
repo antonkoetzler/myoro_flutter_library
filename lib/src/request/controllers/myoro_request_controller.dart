@@ -9,17 +9,34 @@ typedef MyoroRequestControllerRequest<T> = FutureOr<T?> Function();
 
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.
 class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
+  MyoroRequestController({this.requestCallback}) : super(MyoroRequest<T>());
+
+  bool _isDisposed = false;
   MyoroRequestControllerRequest<T>? requestCallback;
 
-  MyoroRequestController({this.requestCallback}) : super(MyoroRequest<T>());
+  /// Dispose function.
+  @override
+  void dispose() {
+    _isDisposed = true;
+    super.dispose();
+  }
 
   /// Executes [request].
   Future<void> fetch() async {
     String? errorMessage;
 
     try {
-      value = request.createLoadingState();
-      value = request.createSuccessState(await requestCallback?.call());
+      // Check if disposed before setting loading state
+      if (!_isDisposed) {
+        value = request.createLoadingState();
+      }
+
+      final result = await requestCallback?.call();
+
+      // Check if disposed before setting success state
+      if (!_isDisposed) {
+        value = request.createSuccessState(result);
+      }
     } on HttpException catch (httpError) {
       errorMessage = httpError.message;
       if (kDebugMode) {
@@ -35,9 +52,13 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
 
     if (errorMessage == null) return;
 
-    value = request.createErrorState(errorMessage);
+    // Check if disposed before setting error state
+    if (!_isDisposed) {
+      value = request.createErrorState(errorMessage);
+    }
   }
 
+  // Getters remain the same
   MyoroRequest<T> get request => value;
   MyoroRequestEnum get status => request.status;
   String? get errorMessage => request.errorMessage;

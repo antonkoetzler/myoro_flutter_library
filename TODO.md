@@ -1,13 +1,12 @@
 # TODO
 
-1. improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
+1. (**IN PROGRESS**) improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
 - Open modal instead of compsitioned layer thing with `MyoroDropdown`
 - Make it so that `_Menu` in `MyoroDropdown` can use `CompositedTransformTarget` + `OverlayPortal` or a non-`Overlay`
   - Do the same thing with `MyoroSearchInput`
 - Make `MyoroSnackBar` width 100% on every platform (#FlutterMoment)
 
-1. feature: Bottom sheets
 1. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern

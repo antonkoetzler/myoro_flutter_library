@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
@@ -19,8 +19,18 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
 
   /// Toggles [_Menu].
   void toggleMenu() {
-    final overlayPortalController = state.overlayPortalController;
-    overlayPortalController.isShowing ? overlayPortalController.hide() : overlayPortalController.show();
+    void toggleOverlayMenu() {
+      final overlayMenuController = state.overlayMenuController;
+      overlayMenuController.isShowing ? overlayMenuController.hide() : overlayMenuController.show();
+    }
+
+    return switch (state.configuration.menuTypeEnum) {
+      MyoroDropdownMenuTypeEnum.overlay => toggleOverlayMenu(),
+      // TODO
+      MyoroDropdownMenuTypeEnum.expanding => throw UnimplementedError(),
+      // TODO
+      MyoroDropdownMenuTypeEnum.modal => throw UnimplementedError(),
+    };
   }
 
   @protected
@@ -32,6 +42,15 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   @mustCallSuper
   void selectedItemsControllerListener() {
     _formatSelectedItems();
+  }
+
+  /// Provides the size of [_Input].
+  @mustCallSuper
+  void supplyInputSizeController() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final renderBox = state.inputKey.currentContext!.findRenderObject() as RenderBox;
+      state.inputSizeController.value = renderBox.size;
+    });
   }
 
   /// Formats items in [_selectedItemsController] to display in [_Input].

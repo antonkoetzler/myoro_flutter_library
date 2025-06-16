@@ -2,24 +2,22 @@ part of '../myoro_dropdown.dart';
 
 /// [MyoroCheckbox] that enables/disables the dropdown.
 final class _Checkbox<T, C extends _C<T>> extends StatelessWidget {
-  final MyoroDropdownViewModel<T, C> _viewModel;
-
-  const _Checkbox(this._viewModel);
+  const _Checkbox();
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: _viewModel.controller.enabledController,
-      builder: (_, bool enabled, _) => _builder(enabled),
-    );
-  }
+    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
 
-  Widget _builder(bool enabled) {
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        value: enabled,
-        onChanged: (bool enabled) => _viewModel.controller.toggleEnabled(enabled),
-      ),
+    return ValueListenableBuilder(
+      valueListenable: viewModel.controller.enabledController,
+      builder: (_, bool enabled, _) {
+        return MyoroCheckbox(
+          configuration: MyoroCheckboxConfiguration(
+            value: enabled,
+            onChanged: (bool enabled) => viewModel.controller.toggleEnabled(enabled),
+          ),
+        );
+      },
     );
   }
 }

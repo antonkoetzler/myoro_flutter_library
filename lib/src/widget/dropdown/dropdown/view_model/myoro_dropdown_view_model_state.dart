@@ -11,14 +11,27 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
   /// [OverlayPortal] controller.
   ///
   /// Used when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.overlay].
-  OverlayPortalController? _overlayPortalController;
-  OverlayPortalController get overlayPortalController {
+  OverlayPortalController? _overlayMenuController;
+  OverlayPortalController get overlayMenuController {
     assert(
       configuration.menuTypeEnum.isOverlay,
-      '[MyoroDropdownViewModelState<$T>]: Cannot use [overlayPortalController] if '
+      '[MyoroDropdownViewModelState<$T>]: Cannot use [overlayMenuController] if '
       '[configuration.menuType] isn\'t [MyoroDropdownMenuTypeEnum.overlay].',
     );
-    return _overlayPortalController ??= OverlayPortalController();
+    return _overlayMenuController ??= OverlayPortalController();
+  }
+
+  /// [ValueNotifier] controlling whether or not the menu of the dropdown is showing when
+  /// [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.expanding].
+  ValueNotifier<bool>? _expandingMenuController;
+  bool get expandingMenu => expandingMenuController.value;
+  ValueNotifier<bool> get expandingMenuController {
+    assert(
+      configuration.menuTypeEnum.isExpanding,
+      '[MyoroDropdownViewModelState<$T>]: Cannot use [expandingMenuController] if '
+      '[configuration.menuType] isn\'t [MyoroDropdownMenuTypeEnum.expanding].',
+    );
+    return _expandingMenuController ??= ValueNotifier(false);
   }
 
   /// [TapRegion.groupId] of [_InputTriggerArea] and [_Menu] so [TapRegion.onTapOutside]
