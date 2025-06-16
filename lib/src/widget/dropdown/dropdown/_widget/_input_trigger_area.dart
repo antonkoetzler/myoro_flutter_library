@@ -40,9 +40,9 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
                           SizedBox(
                             width: 29,
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 _InputTriggerAreaRegion<T, C>(enabled, height: clearTextButtonPadding.top + 2),
-                                const Spacer(),
                                 _InputTriggerAreaRegion<T, C>(enabled, height: clearTextButtonPadding.bottom + 2),
                               ],
                             ),

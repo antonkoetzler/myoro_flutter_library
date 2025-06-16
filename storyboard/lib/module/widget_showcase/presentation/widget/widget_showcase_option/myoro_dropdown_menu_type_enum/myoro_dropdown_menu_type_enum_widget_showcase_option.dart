@@ -23,6 +23,7 @@ final class MyoroDropdownMenuTypeEnumWidgetShowcaseOption extends StatelessWidge
     return MyoroSingularDropdown(
       controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem),
       configuration: MyoroSingularDropdownConfiguration(
+        label: 'Menu render type.',
         selectedItemBuilder: viewModel.selectedItemBuilder,
         onChanged: (item) => onChanged(item!),
         menuConfiguration: MyoroMenuConfiguration(
