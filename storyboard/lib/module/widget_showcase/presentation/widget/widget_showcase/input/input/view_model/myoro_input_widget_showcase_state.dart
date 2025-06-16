@@ -1,4 +1,5 @@
-part of '../myoro_input_widget_showcase.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 final class MyoroInputWidgetShowcaseState extends ChangeNotifier {
   /// [MyoroFormController] of the [MyoroForm] used for [_ValidationOption].

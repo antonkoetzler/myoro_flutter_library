@@ -1,4 +1,5 @@
-part of 'myoro_snack_bar_widget_showcase_view_model.dart';
+import 'package:flutter/foundation.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroSnackBarWidgetShowcase].
 final class MyoroSnackBarWidgetShowcaseState extends ChangeNotifier {

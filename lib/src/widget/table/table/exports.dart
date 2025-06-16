@@ -1,6 +1,6 @@
-export 'controllers/exports.dart';
-export 'enums/exports.dart';
-export 'models/exports.dart';
+export 'controller/exports.dart';
+export 'enum/exports.dart';
+export 'model/exports.dart';
 export 'myoro_table.dart';
-export 'theme_extensions/myoro_table_theme_extension.dart';
-export 'types/myoro_table_types.dart';
+export 'theme_extension/exports.dart';
+export 'type/exports.dart';

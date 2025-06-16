@@ -7,6 +7,6 @@ final class _CursorOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseViewModel>();
-    return MouseCursorDropdownWidgetShowcaseOption(onChanged: (cursor) => viewModel.cursor = cursor);
+    return MouseCursorWidgetShowcaseOption(onChanged: (cursor) => viewModel.cursor = cursor);
   }
 }

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-part 'myoro_group_radio_widget_showcase_state.dart';
-
 /// View model of [MyoroGroupRadioWidgetShowcase].
 final class MyoroGroupRadioWidgetShowcaseViewModel {
   /// State.

@@ -1,13 +1,11 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 import 'package:storyboard/storyboard.dart';
 
 part '_widget/_request_when_changed_option.dart';
+part '_widget/_suffix.dart';
 part '_widget/_widget.dart';
-part 'view_model/myoro_search_input_widget_showcase_state.dart';
-part 'view_model/myoro_search_input_widget_showcase_view_model.dart';
 
 /// Widget showcase of [MyoroSearchInput].
 final class MyoroSearchInputWidgetShowcase extends StatefulWidget {

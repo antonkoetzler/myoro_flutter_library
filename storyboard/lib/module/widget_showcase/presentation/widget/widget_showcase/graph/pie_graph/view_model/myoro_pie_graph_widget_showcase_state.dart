@@ -1,4 +1,5 @@
-part of 'myoro_pie_graph_widget_showcase_view_model.dart';
+import 'package:flutter/foundation.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroPieGraphWidgetShowcaseViewModel].
 final class MyoroPieGraphWidgetShowcaseState extends ChangeNotifier {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_body.dart';
-part '_widgets/_input.dart';
-part '_widgets/_search_button.dart';
-part '_widgets/_search_section.dart';
+part '_widget/_body.dart';
+part '_widget/_input.dart';
+part '_widget/_search_button.dart';
+part '_widget/_search_section.dart';
 
 /// Search input. Shows a dropdown after making a search request.
 class MyoroSearchInput<T> extends StatefulWidget {
@@ -29,7 +29,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _controller.state.itemsRequestController,
+      valueListenable: _controller.itemsRequestController,
       builder: (_, _, _) => _Body(_controller),
     );
   }

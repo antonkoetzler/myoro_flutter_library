@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +25,6 @@ part '_widget/_text_align_option.dart';
 part '_widget/_validation_option.dart';
 part '_widget/_validation_option_message.dart';
 part '_widget/_widget.dart';
-part 'view_model/myoro_input_widget_showcase_state.dart';
-part 'view_model/myoro_input_widget_showcase_view_model.dart';
 
 /// Widget showcase of [MyoroInput].
 final class MyoroInputWidgetShowcase extends StatelessWidget {

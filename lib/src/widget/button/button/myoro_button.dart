@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
-part '_widgets/_button.dart';
+part '_widget/_button.dart';
 
 /// Generic button of MFL.
 ///

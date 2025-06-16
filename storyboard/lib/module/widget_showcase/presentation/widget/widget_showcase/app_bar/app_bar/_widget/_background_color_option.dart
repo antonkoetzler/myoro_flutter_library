@@ -7,6 +7,6 @@ final class _BackgroundColorOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroAppBarWidgetShowcaseViewModel>();
-    return ColorDropdownWidgetShowcaseOption(onChanged: (color) => viewModel.backgroundColor = color);
+    return ColorWidgetShowcaseOption(onChanged: (color) => viewModel.backgroundColor = color);
   }
 }

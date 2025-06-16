@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
-part '_widgets/_indicator_text.dart';
-part '_widgets/_label.dart';
+part '_widget/_indicator_text.dart';
+part '_widget/_label.dart';
 
 /// A horizontal slider.
 class MyoroSlider extends StatefulWidget {

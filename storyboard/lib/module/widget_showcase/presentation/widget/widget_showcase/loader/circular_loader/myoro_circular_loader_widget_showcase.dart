@@ -6,8 +6,6 @@ import 'package:storyboard/storyboard.dart';
 part '_widget/_color_option.dart';
 part '_widget/_size_option.dart';
 part '_widget/_widget.dart';
-part 'view_model/myoro_circular_loader_widget_showcase_state.dart';
-part 'view_model/myoro_circular_loader_widget_showcase_view_model.dart';
 
 /// Widget showcase of [MyoroCircularLoader].
 final class MyoroCircularLoaderWidgetShowcase extends StatelessWidget {

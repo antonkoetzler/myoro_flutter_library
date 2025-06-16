@@ -1,4 +1,6 @@
-part of '../myoro_search_input_widget_showcase.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroSearchInputWidgetShowcase].
 final class MyoroSearchInputWidgetShowcaseViewModel {
@@ -9,9 +11,9 @@ final class MyoroSearchInputWidgetShowcaseViewModel {
   final inputViewModel = MyoroInputWidgetShowcaseViewModel();
 
   /// Configuration of the [MyoroSearchInput] given the options set.
-  MyoroSearchInputConfiguration<String> configuration(BuildContext context) {
+  MyoroSearchInputConfiguration<String> configuration(BuildContext context, Widget suffix) {
     return MyoroSearchInputConfiguration(
-      inputConfiguration: inputViewModel.configuration(context),
+      inputConfiguration: inputViewModel.configuration(context, suffix),
       requestWhenChanged: state.requestWhenChanged,
       request: _request,
       itemBuilder: _itemBuilder,

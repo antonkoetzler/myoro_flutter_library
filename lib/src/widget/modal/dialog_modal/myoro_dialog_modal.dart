@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_cancel_button.dart';
-part '_widgets/_confirm_button.dart';
-part '_widgets/_footer_buttons.dart';
-part '_widgets/_message.dart';
+part '_widget/_cancel_button.dart';
+part '_widget/_confirm_button.dart';
+part '_widget/_footer_buttons.dart';
+part '_widget/_message.dart';
 
 /// A simple yes/no dialog modal.
 class MyoroDialogModal extends StatelessWidget {

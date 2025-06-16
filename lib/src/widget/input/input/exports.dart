@@ -1,7 +1,7 @@
-export 'abstracts/exports.dart';
-export 'enums/exports.dart';
-export 'models/exports.dart';
+export 'abstract/exports.dart';
+export 'enum/exports.dart';
+export 'model/exports.dart';
 export 'myoro_input.dart';
-export 'theme_extensions/myoro_input_theme_extension.dart';
-export 'types/myoro_input_types.dart';
-export 'view_models/exports.dart';
+export 'theme_extension/myoro_input_theme_extension.dart';
+export 'type/myoro_input_types.dart';
+export 'view_model/exports.dart';

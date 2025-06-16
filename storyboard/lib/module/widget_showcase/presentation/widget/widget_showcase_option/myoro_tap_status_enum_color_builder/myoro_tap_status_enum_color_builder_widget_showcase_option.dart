@@ -45,9 +45,9 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOption extends Stateless
       children: [
         if (title != null) Text(title!, style: checkboxThemeExtension.labelTextStyle),
         if (checkboxConfiguration != null) MyoroCheckbox(configuration: checkboxConfiguration!),
-        ColorDropdownWidgetShowcaseOption(label: 'Idle color', onChanged: idleOnChanged),
-        ColorDropdownWidgetShowcaseOption(label: 'Hover color', onChanged: hoverOnChanged),
-        ColorDropdownWidgetShowcaseOption(label: 'Tap color', onChanged: tapOnChanged),
+        ColorWidgetShowcaseOption(label: 'Idle color', onChanged: idleOnChanged),
+        ColorWidgetShowcaseOption(label: 'Hover color', onChanged: hoverOnChanged),
+        ColorWidgetShowcaseOption(label: 'Tap color', onChanged: tapOnChanged),
       ],
     );
   }

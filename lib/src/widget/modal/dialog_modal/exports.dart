@@ -1,3 +1,3 @@
-export 'models/exports.dart';
+export 'model/exports.dart';
 export 'myoro_dialog_modal.dart';
-export 'theme_extensions/myoro_dialog_modal_theme_extension.dart';
+export 'theme_extension/exports.dart';

@@ -1,4 +1,6 @@
-part of 'myoro_bar_graph_widget_showcase_view_model.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/foundation.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroBarGraphWidgetShowcaseViewModel].
 final class MyoroBarGraphWidgetShowcaseState extends ChangeNotifier {

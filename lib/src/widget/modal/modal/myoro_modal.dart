@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_close_button.dart';
-part '_widgets/_header.dart';
-part '_widgets/_title.dart';
+part '_widget/_close_button.dart';
+part '_widget/_header.dart';
+part '_widget/_title.dart';
 
 /// Base modal. Every modal should be implementing [MyoroModal] like so.
 ///

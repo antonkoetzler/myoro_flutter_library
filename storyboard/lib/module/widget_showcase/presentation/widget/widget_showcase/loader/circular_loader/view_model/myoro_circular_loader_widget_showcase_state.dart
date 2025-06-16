@@ -1,4 +1,4 @@
-part of '../myoro_circular_loader_widget_showcase.dart';
+import 'package:flutter/material.dart';
 
 final class MyoroCircularLoaderWidgetShowcaseState extends ChangeNotifier {
   /// [MyoroCircularLoaderConfiguration.color]

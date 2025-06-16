@@ -7,6 +7,6 @@ final class _ColorOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroCircularLoaderWidgetShowcaseViewModel>();
-    return ColorDropdownWidgetShowcaseOption(onChanged: (color) => viewModel.state.color = color);
+    return ColorWidgetShowcaseOption(onChanged: (color) => viewModel.state.color = color);
   }
 }

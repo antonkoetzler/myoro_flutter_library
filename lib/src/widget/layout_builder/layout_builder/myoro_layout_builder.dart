@@ -3,8 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_render_proxy_box.dart';
-part '_widgets/_single_child_render_object_widget.dart';
+part '_widget/_render_proxy_box.dart';
+part '_widget/_single_child_render_object_widget.dart';
 
 /// [Widget] used as an improved [LayoutBuilder].
 ///

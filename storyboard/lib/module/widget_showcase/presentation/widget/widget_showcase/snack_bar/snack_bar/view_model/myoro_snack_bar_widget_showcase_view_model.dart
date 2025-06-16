@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-part 'myoro_snack_bar_widget_showcase_state.dart';
-
 /// View model of [MyoroSnackBarWidgetShowcase].
 final class MyoroSnackBarWidgetShowcaseViewModel {
   /// State.

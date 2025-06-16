@@ -1,4 +1,4 @@
-part of 'myoro_form_widget_showcase_view_model.dart';
+import 'package:flutter/material.dart';
 
 /// State of [MyoroFormWidgetShowcaseViewModel].
 final class MyoroFormWidgetShowcaseState {

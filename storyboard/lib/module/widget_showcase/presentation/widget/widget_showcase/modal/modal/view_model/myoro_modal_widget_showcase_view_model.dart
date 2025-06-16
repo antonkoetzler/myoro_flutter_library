@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-part 'myoro_modal_widget_showcase_state.dart';
-
 /// View model of [MyoroModalWidgetShowcase].
 final class MyoroModalWidgetShowcaseViewModel {
   /// State

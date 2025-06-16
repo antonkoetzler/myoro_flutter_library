@@ -1,5 +1,5 @@
-export 'view_models/exports.dart';
-export 'models/exports.dart';
+export 'view_model/exports.dart';
+export 'model/exports.dart';
 export 'myoro_menu.dart';
-export 'theme_extensions/myoro_menu_theme_extension.dart';
-export 'types/myoro_menu_types.dart';
+export 'theme_extension/exports.dart';
+export 'type/exports.dart';

@@ -1,4 +1,4 @@
-export 'controllers/exports.dart';
-export 'models/exports.dart';
+export 'controller/exports.dart';
+export 'model/exports.dart';
 export 'myoro_drawer.dart';
-export 'theme_extensions/myoro_drawer_theme_extension.dart';
+export 'theme_extension/exports.dart';

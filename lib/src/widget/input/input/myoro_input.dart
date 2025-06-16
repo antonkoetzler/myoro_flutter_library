@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_checkbox.dart';
-part '_widgets/_clear_text_button.dart';
-part '_widgets/_label.dart';
-part '_widgets/_text_form_field.dart';
-part '_widgets/_wrapper.dart';
+part '_widget/_checkbox.dart';
+part '_widget/_clear_text_button.dart';
+part '_widget/_label.dart';
+part '_widget/_text_form_field.dart';
+part '_widget/_wrapper.dart';
 
 /// Generic input widget.
 ///

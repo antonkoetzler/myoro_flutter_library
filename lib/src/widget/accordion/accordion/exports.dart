@@ -1,6 +1,6 @@
-export 'controller/myoro_accordion_controller.dart';
+export 'controller/exports.dart';
 export 'model/exports.dart';
 export 'myoro_accordion.dart';
-export 'theme_extension/myoro_accordion_theme_extension.dart';
-export 'type/myoro_accordion_types.dart';
+export 'theme_extension/exports.dart';
+export 'type/exports.dart';
 export 'view_model/exports.dart';

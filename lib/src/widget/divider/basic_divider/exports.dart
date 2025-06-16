@@ -1,3 +1,3 @@
-export 'models/exports.dart';
+export 'model/exports.dart';
 export 'myoro_basic_divider.dart';
-export 'theme_extensions/myoro_basic_divider_theme_extension.dart';
+export 'theme_extension/exports.dart';

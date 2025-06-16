@@ -1,6 +1,6 @@
-export 'enums/exports.dart';
-export 'models/exports.dart';
+export 'enum/exports.dart';
+export 'model/exports.dart';
 export 'myoro_button.dart';
-export 'theme_extensions/myoro_button_theme_extension.dart';
-export 'types/myoro_button_types.dart';
-export 'view_models/exports.dart';
+export 'theme_extension/exports.dart';
+export 'type/exports.dart';
+export 'view_model/exports.dart';

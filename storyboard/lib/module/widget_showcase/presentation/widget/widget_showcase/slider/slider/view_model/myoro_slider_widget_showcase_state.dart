@@ -1,4 +1,5 @@
-part of 'myoro_slider_widget_showcase_view_model.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroSliderWidgetShowcaseViewModel].
 final class MyoroSliderWidgetShowcaseState extends ChangeNotifier {

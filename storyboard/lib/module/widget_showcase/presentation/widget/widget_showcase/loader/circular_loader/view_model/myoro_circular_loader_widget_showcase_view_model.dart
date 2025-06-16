@@ -1,6 +1,7 @@
-part of '../myoro_circular_loader_widget_showcase.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
 
-final class MyoroCircularLoaderWidgetShowcaseViewModel extends ChangeNotifier {
+final class MyoroCircularLoaderWidgetShowcaseViewModel {
   /// State
   final state = MyoroCircularLoaderWidgetShowcaseState();
 

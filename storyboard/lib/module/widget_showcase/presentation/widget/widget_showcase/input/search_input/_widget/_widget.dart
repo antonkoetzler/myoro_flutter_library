@@ -7,6 +7,6 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroSearchInputWidgetShowcaseViewModel>();
-    return MyoroSearchInput<String>(configuration: viewModel.configuration(context));
+    return MyoroSearchInput<String>(configuration: viewModel.configuration(context, const _Suffix()));
   }
 }

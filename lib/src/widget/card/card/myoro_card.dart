@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_card.dart';
-part '_widgets/_title.dart';
+part '_widget/_card.dart';
+part '_widget/_title.dart';
 
 /// Base card.
 class MyoroCard extends StatelessWidget {

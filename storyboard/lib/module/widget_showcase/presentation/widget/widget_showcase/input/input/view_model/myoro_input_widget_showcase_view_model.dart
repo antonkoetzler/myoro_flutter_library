@@ -1,4 +1,7 @@
-part of '../myoro_input_widget_showcase.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroInputWidgetShowcaseViewModel].
 final class MyoroInputWidgetShowcaseViewModel {
@@ -6,7 +9,7 @@ final class MyoroInputWidgetShowcaseViewModel {
   final state = MyoroInputWidgetShowcaseState();
 
   /// Constructors the [MyoroInputConfiguration] of [_Widget].
-  MyoroInputConfiguration configuration(BuildContext context) {
+  MyoroInputConfiguration configuration(BuildContext context, Widget suffix) {
     return MyoroInputConfiguration(
       inputStyle: state.inputStyle,
       textAlign: state.textAlign,
@@ -16,7 +19,7 @@ final class MyoroInputWidgetShowcaseViewModel {
       placeholder: state.placeholder,
       contentPadding: state.contentPadding,
       border: state.borderEnabled ? _border : null,
-      suffix: state.suffixEnabled ? const _Suffix() : null,
+      suffix: state.suffixEnabled ? suffix : null,
       enabled: state.enabled,
       readOnly: state.readOnly,
       autofocus: true,

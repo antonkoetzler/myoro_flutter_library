@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_close_button.dart';
-part '_widgets/_message.dart';
+part '_widget/_close_button.dart';
+part '_widget/_message.dart';
 
 /// A snack bar [Widget].
 ///

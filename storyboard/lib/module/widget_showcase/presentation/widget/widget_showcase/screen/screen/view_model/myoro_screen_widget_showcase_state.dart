@@ -1,4 +1,4 @@
-part of 'myoro_screen_widget_showcase_view_model.dart';
+import 'package:flutter/foundation.dart';
 
 /// State of [MyoroScreenWidgetShowcaseViewModel].
 final class MyoroScreenWidgetShowcaseState extends ChangeNotifier {

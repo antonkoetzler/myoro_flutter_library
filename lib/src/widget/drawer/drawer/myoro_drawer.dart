@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
-part '_widgets/_barrier.dart';
-part '_widgets/_close_button.dart';
-part '_widgets/_drawer.dart';
-part '_widgets/_title.dart';
+part '_widget/_barrier.dart';
+part '_widget/_close_button.dart';
+part '_widget/_drawer.dart';
+part '_widget/_title.dart';
 
 /// Base drawer.
 class MyoroDrawer extends StatelessWidget {
@@ -16,7 +16,7 @@ class MyoroDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isEndDrawer = context.read<MyoroDrawerController>().state.isEndDrawer;
+    final bool isEndDrawer = context.read<MyoroDrawerController>().isEndDrawer;
 
     return Stack(
       children: [

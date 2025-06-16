@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
-part '_widgets/_drawer.dart';
+part '_widget/_drawer.dart';
 
 /// Root widget of any screen widget.
 class MyoroScreen extends StatefulWidget {
@@ -45,7 +45,7 @@ final class _MyoroScreenState extends State<MyoroScreen> {
       value: _drawerController,
       child: SafeArea(
         child: Scaffold(
-          key: _drawerController.state.scaffoldKey,
+          key: _drawerController.scaffoldKey,
           appBar: _configuration.appBar,
           body: _configuration.body,
           drawer: drawer,

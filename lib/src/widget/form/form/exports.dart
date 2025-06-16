@@ -1,5 +1,5 @@
-export 'controllers/exports.dart';
-export 'models/exports.dart';
+export 'controller/exports.dart';
+export 'model/exports.dart';
 export 'myoro_form.dart';
-export 'theme_extensions/myoro_form_theme_extension.dart';
-export 'types/myoro_form_types.dart';
+export 'theme_extension/exports.dart';
+export 'type/exports.dart';

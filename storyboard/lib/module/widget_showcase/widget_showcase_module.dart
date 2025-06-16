@@ -19,9 +19,9 @@ final class WidgetShowcaseModule implements Module {
       // ########## Widget showcase options ##########
       const AxisWidgetShowcaseOptionThemeExtension.builder(),
       const BoxConstraintsWidgetShowcaseOptionThemeExtension.builder(),
-      const ColorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      const ColorWidgetShowcaseOptionThemeExtension.builder(),
       const IconWidgetShowcaseOptionThemeExtension.builder(),
-      const MouseCursorDropdownWidgetShowcaseOptionThemeExtension.builder(),
+      const MouseCursorWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroInputStyleEnumWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroSnackBarTypeWidgetShowcaseOptionThemeExtension.builder(),
       const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),

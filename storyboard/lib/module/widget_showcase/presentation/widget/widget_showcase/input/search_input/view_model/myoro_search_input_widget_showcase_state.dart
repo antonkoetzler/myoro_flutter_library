@@ -1,4 +1,5 @@
-part of '../myoro_search_input_widget_showcase.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/foundation.dart';
 
 /// State of [MyoroSearchInputWidgetShowcase].
 final class MyoroSearchInputWidgetShowcaseState extends ChangeNotifier {

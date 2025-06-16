@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_side_title.dart';
+part '_widget/_side_title.dart';
 
 /// A bar graph.
 class MyoroBarGraph extends StatelessWidget {

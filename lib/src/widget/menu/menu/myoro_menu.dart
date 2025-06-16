@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_dialog_text.dart';
-part '_widgets/_item.dart';
-part '_widgets/_items.dart';
-part '_widgets/_loader.dart';
-part '_widgets/_search_bar.dart';
+part '_widget/_dialog_text.dart';
+part '_widget/_item.dart';
+part '_widget/_items.dart';
+part '_widget/_loader.dart';
+part '_widget/_search_bar.dart';
 
 /// A menu widget that should not be used in production code, it is used
 /// within [_MyoroDropdown] & [MyoroInput] similar to the software dmenu.
