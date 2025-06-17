@@ -9,8 +9,6 @@ part '_widget/_widget_showcase.dart';
 
 /// Screen to display a MFL [Widget] and it's options.
 final class WidgetShowcaseScreen extends StatefulWidget {
-  static const widgetOptionsDefaultValue = <Widget>[];
-
   const WidgetShowcaseScreen({super.key, required this.configuration});
 
   /// Configuration.

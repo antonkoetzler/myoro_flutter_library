@@ -80,4 +80,11 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       closeButtonIconSize: lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),
     );
   }
+
+  /// Default [BoxConstraints] of the modal.
+  BoxConstraints constraints(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    return BoxConstraints(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8);
+  }
 }

@@ -6,7 +6,7 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
   MyoroDropdownViewModelState(this.configuration);
 
   /// Configuration.
-  final C configuration;
+  C configuration;
 
   /// [OverlayPortal] controller.
   ///

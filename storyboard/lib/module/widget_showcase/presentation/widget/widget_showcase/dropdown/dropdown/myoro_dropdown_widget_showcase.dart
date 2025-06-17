@@ -41,7 +41,7 @@ final class _MyoroDropdownWidgetShowcaseState extends State<MyoroDropdownWidgetS
     return MultiProvider(
       providers: [
         InheritedProvider(create: (_) => _dropdownViewModel),
-        InheritedProvider.value(value: (_) => _dropdownViewModel.menuViewModel),
+        InheritedProvider.value(value: _dropdownViewModel.menuViewModel),
       ],
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(

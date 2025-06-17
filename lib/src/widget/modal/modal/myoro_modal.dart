@@ -52,7 +52,7 @@ class MyoroModal extends StatelessWidget {
         color: themeExtension.primaryColor,
         borderRadius: themeExtension.borderRadius,
         child: Container(
-          constraints: configuration.constraints,
+          constraints: configuration.constraints ?? themeExtension.constraints(context),
           padding: configuration.padding ?? themeExtension.padding,
           decoration: BoxDecoration(borderRadius: themeExtension.borderRadius, border: themeExtension.border),
           child: Column(

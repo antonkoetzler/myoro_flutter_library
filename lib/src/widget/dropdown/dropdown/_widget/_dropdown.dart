@@ -17,12 +17,21 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
   @override
   void initState() {
     super.initState();
+    _setupModalShowBasicMenuControllerListener();
+  }
+
+  @override
+  void didUpdateWidget(covariant _Dropdown<T, C> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _setupModalShowBasicMenuControllerListener();
+  }
+
+  @override
+  void dispose() {
     if (_viewModel.state.configuration.menuTypeEnum.isModal) {
-      _viewModel.state.showBasicMenuController.addListener(() {
-        if (!mounted) return;
-        _viewModel.state.showBasicMenu ? _Menu.showModal(context) : context.navigator.pop();
-      });
+      _removeShowBasicMenuControllerListener();
     }
+    super.dispose();
   }
 
   @override
@@ -51,5 +60,21 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
         ),
       ),
     );
+  }
+
+  void _setupModalShowBasicMenuControllerListener() {
+    if (_viewModel.state.configuration.menuTypeEnum.isModal) {
+      _removeShowBasicMenuControllerListener();
+      _viewModel.state.showBasicMenuController.addListener(_showBasicMenuControllerListener);
+    }
+  }
+
+  void _removeShowBasicMenuControllerListener() {
+    _viewModel.state.showBasicMenuController.removeListener(_showBasicMenuControllerListener);
+  }
+
+  void _showBasicMenuControllerListener() {
+    if (!mounted) return;
+    _viewModel.state.showBasicMenu ? _Menu.showModal(context, _viewModel) : context.navigator.pop();
   }
 }

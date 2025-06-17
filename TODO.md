@@ -1,8 +1,9 @@
 # TODO
 
+1. refactor: Configuration and style models
 1. (**IN PROGRESS**) improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
-- Open modal instead of compsitioned layer thing with `MyoroDropdown`
+- (**IN PROGRESS**) Myoro dropdown menu types
 - Do the same thing with `MyoroSearchInput`
 - Make `MyoroSnackBar` width 100% on every platform (#FlutterMoment)
 

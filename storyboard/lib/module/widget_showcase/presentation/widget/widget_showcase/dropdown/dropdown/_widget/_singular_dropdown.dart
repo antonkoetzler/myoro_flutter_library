@@ -7,6 +7,17 @@ final class _SingularDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseViewModel>();
-    return MyoroSingularDropdown(configuration: viewModel.buildSingularDropdownConfiguration(context));
+
+    return ListenableBuilder(
+      listenable: viewModel.state,
+      builder: (_, __) {
+        return ListenableBuilder(
+          listenable: viewModel.menuViewModel.state,
+          builder: (_, __) {
+            return MyoroSingularDropdown(configuration: viewModel.buildSingularDropdownConfiguration(context));
+          },
+        );
+      },
+    );
   }
 }
