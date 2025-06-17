@@ -22,16 +22,16 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
   }
 
   /// [ValueNotifier] controlling whether or not the menu of the dropdown is showing when
-  /// [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.expanding].
-  ValueNotifier<bool>? _expandingMenuController;
-  bool get expandingMenu => expandingMenuController.value;
-  ValueNotifier<bool> get expandingMenuController {
+  /// [MyoroDropdownConfiguration.menuTypeEnum] is not [MyoroDropdownMenuTypeEnum.overlay].
+  ValueNotifier<bool>? _showBasicMenuController;
+  bool get showBasicMenu => showBasicMenuController.value;
+  ValueNotifier<bool> get showBasicMenuController {
     assert(
-      configuration.menuTypeEnum.isExpanding,
-      '[MyoroDropdownViewModelState<$T>]: Cannot use [expandingMenuController] if '
-      '[configuration.menuType] isn\'t [MyoroDropdownMenuTypeEnum.expanding].',
+      !configuration.menuTypeEnum.isOverlay,
+      '[MyoroDropdownViewModelState<$T>]: Cannot use [showBasicMenuController] '
+      'if [configuration.menuType] is [MyoroDropdownMenuTypeEnum.overlat].',
     );
-    return _expandingMenuController ??= ValueNotifier(false);
+    return _showBasicMenuController ??= ValueNotifier(false);
   }
 
   /// [TapRegion.groupId] of [_InputTriggerArea] and [_Menu] so [TapRegion.onTapOutside]

@@ -6,7 +6,9 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   MyoroDropdownViewModel(C configuration, this.controller) : state = MyoroDropdownViewModelState(configuration) {
     controller.enabledController.addListener(enabledNotifierListener);
     controller.selectedItemsController.addListener(selectedItemsControllerListener);
-    if (controller.selectedItems.isNotEmpty) _formatSelectedItems();
+    if (controller.selectedItems.isNotEmpty) {
+      _formatSelectedItems();
+    }
   }
 
   final MyoroDropdownViewModelState<T, C> state;
@@ -24,12 +26,14 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
       overlayMenuController.isShowing ? overlayMenuController.hide() : overlayMenuController.show();
     }
 
+    void toggleBasicMenu() {
+      state.showBasicMenuController.value = !state.showBasicMenuController.value;
+    }
+
     return switch (state.configuration.menuTypeEnum) {
       MyoroDropdownMenuTypeEnum.overlay => toggleOverlayMenu(),
-      // TODO
-      MyoroDropdownMenuTypeEnum.expanding => throw UnimplementedError(),
-      // TODO
-      MyoroDropdownMenuTypeEnum.modal => throw UnimplementedError(),
+      MyoroDropdownMenuTypeEnum.expanding => toggleBasicMenu(),
+      MyoroDropdownMenuTypeEnum.modal => toggleBasicMenu(),
     };
   }
 

@@ -2,6 +2,11 @@ part of '../myoro_dropdown.dart';
 
 /// [MyoroMenu] responsible for acting as the dropdown menu.
 final class _Menu<T, C extends _C<T>> extends StatelessWidget {
+  /// Shows a [MyoroModel] when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.modal].
+  static void showModal<T, C extends _C<T>>(BuildContext context) {
+    MyoroModal.show(context, child: _Menu<T, C>());
+  }
+
   const _Menu();
 
   @override
