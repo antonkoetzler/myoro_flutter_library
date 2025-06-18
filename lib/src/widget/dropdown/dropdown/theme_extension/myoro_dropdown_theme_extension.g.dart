@@ -16,25 +16,37 @@ mixin _$MyoroDropdownThemeExtensionMixin
   MyoroDropdownThemeExtension get self => this as MyoroDropdownThemeExtension;
 
   @override
-  MyoroDropdownThemeExtension copyWith({double? spacing}) {
-    return MyoroDropdownThemeExtension(spacing: spacing ?? self.spacing);
+  MyoroDropdownThemeExtension copyWith({
+    double? spacing,
+    BoxBorder? menuBorder,
+    BorderRadius? menuBorderRadius,
+  }) {
+    return MyoroDropdownThemeExtension(
+      spacing: spacing ?? self.spacing,
+      menuBorder: menuBorder ?? self.menuBorder,
+      menuBorderRadius: menuBorderRadius ?? self.menuBorderRadius,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return other is MyoroDropdownThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.spacing == self.spacing;
+        other.spacing == self.spacing &&
+        other.menuBorder == self.menuBorder &&
+        other.menuBorderRadius == self.menuBorderRadius;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll([self.spacing]);
+    return Object.hash(self.spacing, self.menuBorder, self.menuBorderRadius);
   }
 
   @override
   String toString() =>
       'MyoroDropdownThemeExtension(\n'
       '  spacing: ${self.spacing},\n'
+      '  menuBorder: ${self.menuBorder},\n'
+      '  menuBorderRadius: ${self.menuBorderRadius},\n'
       ');';
 }

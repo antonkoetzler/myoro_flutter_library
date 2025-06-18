@@ -4,8 +4,7 @@ import 'package:storyboard/storyboard.dart';
 /// View model of [MyoroMenuWidgetShowcase].
 final class MyoroMenuWidgetShowcaseViewModel {
   /// State
-  final _state = MyoroMenuWidgetShowcaseState();
-  MyoroMenuWidgetShowcaseState get state => _state;
+  final state = MyoroMenuWidgetShowcaseState();
 
   /// Dispose function.
   void dispose() {
@@ -38,6 +37,9 @@ final class MyoroMenuWidgetShowcaseViewModel {
   MyoroMenuConfiguration<String> get configuration {
     return MyoroMenuConfiguration(
       constraints: state.constraints,
+      backgroundColor: state.backgroundColor,
+      border: state.border,
+      borderRadius: state.borderRadius,
       request: request,
       onEndReachedRequest: state.onEndReachedRequestEnabled ? _onEndReachedRequest : null,
       searchCallback: state.searchCallbackEnabled ? _searchCallback : null,

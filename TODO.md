@@ -1,6 +1,5 @@
 # TODO
 
-1. refactor: Configuration and style models
 1. (**IN PROGRESS**) improvement: Improve various `Widget`s and especially improve said `Widget`s on mobile
 
 - (**IN PROGRESS**) Myoro dropdown menu types

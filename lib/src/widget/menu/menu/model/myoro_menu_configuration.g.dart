@@ -16,6 +16,12 @@ mixin _$MyoroMenuConfigurationMixin<T> {
 
   MyoroMenuConfiguration<T> copyWith({
     BoxConstraints? constraints,
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
+    BoxBorder? border,
+    bool borderProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
     FutureOr<Set<T>> Function()? request,
     FutureOr<Set<T>> Function(Set<T>)? onEndReachedRequest,
     bool onEndReachedRequestProvided = true,
@@ -25,6 +31,13 @@ mixin _$MyoroMenuConfigurationMixin<T> {
   }) {
     return MyoroMenuConfiguration(
       constraints: constraints ?? self.constraints,
+      backgroundColor:
+          backgroundColorProvided
+              ? (backgroundColor ?? self.backgroundColor)
+              : null,
+      border: borderProvided ? (border ?? self.border) : null,
+      borderRadius:
+          borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       request: request ?? self.request,
       onEndReachedRequest:
           onEndReachedRequestProvided
@@ -43,6 +56,9 @@ mixin _$MyoroMenuConfigurationMixin<T> {
     return other is MyoroMenuConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.constraints == self.constraints &&
+        other.backgroundColor == self.backgroundColor &&
+        other.border == self.border &&
+        other.borderRadius == self.borderRadius &&
         other.request == self.request &&
         other.onEndReachedRequest == self.onEndReachedRequest &&
         other.searchCallback == self.searchCallback &&
@@ -53,6 +69,9 @@ mixin _$MyoroMenuConfigurationMixin<T> {
   int get hashCode {
     return Object.hash(
       self.constraints,
+      self.backgroundColor,
+      self.border,
+      self.borderRadius,
       self.request,
       self.onEndReachedRequest,
       self.searchCallback,
@@ -64,6 +83,9 @@ mixin _$MyoroMenuConfigurationMixin<T> {
   String toString() =>
       'MyoroMenuConfiguration<T>(\n'
       '  constraints: ${self.constraints},\n'
+      '  backgroundColor: ${self.backgroundColor},\n'
+      '  border: ${self.border},\n'
+      '  borderRadius: ${self.borderRadius},\n'
       '  request: ${self.request},\n'
       '  onEndReachedRequest: ${self.onEndReachedRequest},\n'
       '  searchCallback: ${self.searchCallback},\n'

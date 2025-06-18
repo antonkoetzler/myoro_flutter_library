@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_dialog_text.dart';
 part '_widget/_item.dart';
-part '_widget/_items.dart';
+part '_widget/_items_section.dart';
 part '_widget/_loader.dart';
+part '_widget/_menu.dart';
 part '_widget/_search_bar.dart';
 
 /// A menu widget that should not be used in production code, it is used
-/// within [_MyoroDropdown] & [MyoroInput] similar to the software dmenu.
+/// within [MyoroSingularDropdown], [MyoroMultiDropdown] & [MyoroInput].
 class MyoroMenu<T> extends StatefulWidget {
   /// Configuration options.
   final MyoroMenuConfiguration<T> configuration;
@@ -21,6 +23,7 @@ class MyoroMenu<T> extends StatefulWidget {
 
 final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
   late final _viewModel = MyoroMenuViewModel<T>(configuration: widget.configuration);
+  MyoroMenuConfiguration<T> get _configuration => _viewModel.state.configuration;
 
   @override
   void initState() {
@@ -38,24 +41,28 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
-    return Container(
-      decoration: BoxDecoration(
-        color: themeExtension.primaryColor,
-        border: themeExtension.border,
-        borderRadius: themeExtension.borderRadius,
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: Container(
+        decoration: BoxDecoration(
+          color: _configuration.backgroundColor ?? themeExtension.backgroundColor,
+          border: _configuration.border,
+          borderRadius: _configuration.borderRadius ?? themeExtension.borderRadius,
+        ),
+        constraints: _viewModel.state.configuration.constraints,
+        child: ValueListenableBuilder(
+          valueListenable: _viewModel.state.itemsRequestController,
+          builder: (_, MyoroRequest<Set<T>> state, _) {
+            _viewModel.jumpToBottomPreviousPosition();
+            return switch (state.status) {
+              MyoroRequestEnum.idle => const _Loader(),
+              MyoroRequestEnum.loading => const _Loader(),
+              MyoroRequestEnum.success => _Menu<T>(),
+              MyoroRequestEnum.error => const _DialogText('Error getting items.'),
+            };
+          },
+        ),
       ),
-      constraints: _viewModel.state.configuration.constraints,
-      child: ValueListenableBuilder(valueListenable: _viewModel.state.itemsRequestController, builder: _builder),
     );
-  }
-
-  Widget _builder(_, MyoroRequest<Set<T>> state, _) {
-    _viewModel.jumpToBottomPreviousPosition();
-    return switch (state.status) {
-      MyoroRequestEnum.idle => const _Loader(),
-      MyoroRequestEnum.loading => const _Loader(),
-      MyoroRequestEnum.success => _Items(_viewModel),
-      MyoroRequestEnum.error => const _DialogText('Error getting items.'),
-    };
   }
 }

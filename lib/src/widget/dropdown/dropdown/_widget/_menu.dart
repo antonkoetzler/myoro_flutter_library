@@ -11,6 +11,7 @@ final class _Menu<T, C extends _C<T>> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
     final configuration = viewModel.state.configuration;
     final menuConfiguration = configuration.menuConfiguration;
@@ -28,7 +29,11 @@ final class _Menu<T, C extends _C<T>> extends StatelessWidget {
             valueListenable: selectedItemsController,
             builder: (_, _, _) {
               return MyoroMenu(
-                configuration: menuConfiguration.copyWith(itemBuilder: (T item) => _menuItemBuilder(context, item)),
+                configuration: menuConfiguration.copyWith(
+                  itemBuilder: (T item) => _menuItemBuilder(context, item),
+                  border: themeExtension.menuBorder,
+                  borderRadius: themeExtension.menuBorderRadius,
+                ),
               );
             },
           ),

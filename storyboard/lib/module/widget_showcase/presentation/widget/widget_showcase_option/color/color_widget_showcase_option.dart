@@ -10,7 +10,9 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
     super.key,
     this.label = labelDefaultValue,
     this.enabled = enabledDefaultValue,
+    this.initiallySelectedColor,
     required this.onChanged,
+    this.checkboxOnChanged,
   });
 
   /// [MyoroDropdownConfiguration.label]
@@ -19,13 +21,19 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroDropdownControllerState.enabled]
   final bool enabled;
 
+  /// Initial [Color].
+  final Color? initiallySelectedColor;
+
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<Color> onChanged;
+
+  /// [MyoroSingularDropdownConfiguration.checkboxOnChanged].
+  final MyoroSingularDropdownConfigurationCheckboxOnChanged<Color>? checkboxOnChanged;
 
   @override
   Widget build(_) {
     return MyoroSingularDropdown<Color>(
-      controller: MyoroSingularDropdownController(enabled: enabled),
+      controller: MyoroSingularDropdownController(enabled: enabled, initiallySelectedItem: initiallySelectedColor),
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         menuConfiguration: MyoroMenuConfiguration(
@@ -38,6 +46,7 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
         ),
         selectedItemBuilder: (color) => color.hexadecimalFormat,
         onChanged: onChanged,
+        checkboxOnChanged: checkboxOnChanged,
       ),
     );
   }

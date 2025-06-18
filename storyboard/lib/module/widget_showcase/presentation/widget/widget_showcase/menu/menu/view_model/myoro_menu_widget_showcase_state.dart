@@ -11,6 +11,30 @@ final class MyoroMenuWidgetShowcaseState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// [MyoroMenuConfiguration.backgroundColor]
+  Color? _backgroundColor;
+  Color? get backgroundColor => _backgroundColor;
+  set backgroundColor(Color? backgroundColor) {
+    _backgroundColor = backgroundColor;
+    notifyListeners();
+  }
+
+  /// [MyoroMenuConfiguration.border]
+  BoxBorder? _border;
+  BoxBorder? get border => _border;
+  set border(BoxBorder? border) {
+    _border = border;
+    notifyListeners();
+  }
+
+  /// [MyoroMenuConfiguration.borderRadius]
+  BorderRadius? _borderRadius;
+  BorderRadius? get borderRadius => _borderRadius;
+  set borderRadius(BorderRadius? borderRadius) {
+    _borderRadius = borderRadius;
+    notifyListeners();
+  }
+
   /// [MyoroMenuConfiguration.onEndReachedRequest]
   bool _onEndReachedRequestEnabled = false;
   bool get onEndReachedRequestEnabled => _onEndReachedRequestEnabled;

@@ -17,8 +17,7 @@ mixin _$MyoroMenuThemeExtensionMixin
 
   @override
   MyoroMenuThemeExtension copyWith({
-    Color? primaryColor,
-    Border? border,
+    Color? backgroundColor,
     BorderRadius? borderRadius,
     EdgeInsets? searchBarPadding,
     MyoroInputStyleEnum? searchBarInputStyle,
@@ -27,8 +26,7 @@ mixin _$MyoroMenuThemeExtensionMixin
     EdgeInsets? dialogTextLoaderPadding,
   }) {
     return MyoroMenuThemeExtension(
-      primaryColor: primaryColor ?? self.primaryColor,
-      border: border ?? self.border,
+      backgroundColor: backgroundColor ?? self.backgroundColor,
       borderRadius: borderRadius ?? self.borderRadius,
       searchBarPadding: searchBarPadding ?? self.searchBarPadding,
       searchBarInputStyle: searchBarInputStyle ?? self.searchBarInputStyle,
@@ -43,8 +41,7 @@ mixin _$MyoroMenuThemeExtensionMixin
   bool operator ==(Object other) {
     return other is MyoroMenuThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.primaryColor == self.primaryColor &&
-        other.border == self.border &&
+        other.backgroundColor == self.backgroundColor &&
         other.borderRadius == self.borderRadius &&
         other.searchBarPadding == self.searchBarPadding &&
         other.searchBarInputStyle == self.searchBarInputStyle &&
@@ -56,8 +53,7 @@ mixin _$MyoroMenuThemeExtensionMixin
   @override
   int get hashCode {
     return Object.hash(
-      self.primaryColor,
-      self.border,
+      self.backgroundColor,
       self.borderRadius,
       self.searchBarPadding,
       self.searchBarInputStyle,
@@ -70,8 +66,7 @@ mixin _$MyoroMenuThemeExtensionMixin
   @override
   String toString() =>
       'MyoroMenuThemeExtension(\n'
-      '  primaryColor: ${self.primaryColor},\n'
-      '  border: ${self.border},\n'
+      '  backgroundColor: ${self.backgroundColor},\n'
       '  borderRadius: ${self.borderRadius},\n'
       '  searchBarPadding: ${self.searchBarPadding},\n'
       '  searchBarInputStyle: ${self.searchBarInputStyle},\n'

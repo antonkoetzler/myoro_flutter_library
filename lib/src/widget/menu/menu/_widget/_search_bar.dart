@@ -2,13 +2,12 @@ part of '../myoro_menu.dart';
 
 /// Search [MyoroInput] of the [MyoroMenu].
 final class _SearchBar<T> extends StatelessWidget {
-  final MyoroMenuViewModel<T> _viewModel;
-
-  const _SearchBar(this._viewModel);
+  const _SearchBar();
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final viewModel = context.read<MyoroMenuViewModel<T>>();
 
     return Padding(
       padding: themeExtension.searchBarPadding,
@@ -16,7 +15,7 @@ final class _SearchBar<T> extends StatelessWidget {
         configuration: MyoroInputConfiguration(
           inputStyle: themeExtension.searchBarInputStyle,
           autofocus: true,
-          onChanged: _viewModel.search,
+          onChanged: viewModel.search,
         ),
       ),
     );

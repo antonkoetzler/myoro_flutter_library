@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_dropdown_theme_extension.g.dart';
 
@@ -14,15 +15,31 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   /// Standard spacing between items.
   final double spacing;
 
-  const MyoroDropdownThemeExtension({required this.spacing});
+  /// [Border] of the [MyoroMenu].
+  final BoxBorder menuBorder;
 
-  const MyoroDropdownThemeExtension.builder() : spacing = 10;
+  /// [BorderRadius] of the [MyoroMenu].
+  final BorderRadius menuBorderRadius;
 
-  MyoroDropdownThemeExtension.fake() : spacing = faker.randomGenerator.decimal(scale: 50);
+  const MyoroDropdownThemeExtension({required this.spacing, required this.menuBorder, required this.menuBorderRadius});
+
+  MyoroDropdownThemeExtension.fake()
+    : spacing = faker.randomGenerator.decimal(scale: 50),
+      menuBorder = myoroFake<BoxBorder>(),
+      menuBorderRadius = myoroFake<BorderRadius>();
+
+  MyoroDropdownThemeExtension.builder(ColorScheme colorScheme)
+    : spacing = 10,
+      menuBorder = BoxBorder.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+      menuBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
 
   @override
   MyoroDropdownThemeExtension lerp(covariant ThemeExtension<MyoroDropdownThemeExtension>? other, double t) {
     if (other is! MyoroDropdownThemeExtension) return this;
-    return copyWith(spacing: lerpDouble(spacing, other.spacing, t));
+    return copyWith(
+      spacing: lerpDouble(spacing, other.spacing, t),
+      menuBorder: BoxBorder.lerp(menuBorder, other.menuBorder, t),
+      menuBorderRadius: BorderRadius.lerp(menuBorderRadius, other.menuBorderRadius, t),
+    );
   }
 }

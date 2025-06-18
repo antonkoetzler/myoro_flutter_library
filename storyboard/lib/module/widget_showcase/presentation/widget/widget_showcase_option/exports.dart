@@ -1,4 +1,5 @@
 export 'axis/exports.dart';
+export 'box_border/exports.dart';
 export 'box_constraints/exports.dart';
 export 'color/exports.dart';
 export 'icon/exports.dart';

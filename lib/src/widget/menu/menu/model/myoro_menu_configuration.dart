@@ -14,6 +14,15 @@ class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
   /// Constraints of the menu.
   final BoxConstraints constraints;
 
+  /// Background [Color].
+  final Color? backgroundColor;
+
+  /// [BoxBorder]
+  final BoxBorder? border;
+
+  /// [BorderRadius]
+  final BorderRadius? borderRadius;
+
   /// Request that returns the [MyoroPagination] of the [MyoroMenu].
   final MyoroMenuRequest<T> request;
 
@@ -30,6 +39,9 @@ class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
 
   const MyoroMenuConfiguration({
     this.constraints = constraintsDefaultValue,
+    this.backgroundColor,
+    this.border,
+    this.borderRadius,
     required this.request,
     this.onEndReachedRequest,
     this.searchCallback,

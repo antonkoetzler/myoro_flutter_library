@@ -18,6 +18,7 @@ final class WidgetShowcaseModule implements Module {
 
       // ########## Widget showcase options ##########
       const AxisWidgetShowcaseOptionThemeExtension.builder(),
+      const BoxBorderWidgetShowcaseOptionThemeExtension.builder(),
       const BoxConstraintsWidgetShowcaseOptionThemeExtension.builder(),
       const ColorWidgetShowcaseOptionThemeExtension.builder(),
       const IconWidgetShowcaseOptionThemeExtension.builder(),
