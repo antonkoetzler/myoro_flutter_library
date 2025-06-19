@@ -15,7 +15,7 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
     final buttonVariantThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: viewModel.controller,
+      valueListenable: viewModel.state.controller,
       builder: (_, MyoroAccordionItem? expandedItem, _) {
         final bool isExpanded = (_item == expandedItem);
 

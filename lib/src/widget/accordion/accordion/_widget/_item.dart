@@ -10,18 +10,18 @@ final class _Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroAccordionViewModel>();
+    final controller = viewModel.state.controller;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         _ItemTitleButton(item),
-        ValueListenableBuilder(valueListenable: viewModel.controller, builder: _builder),
+        ValueListenableBuilder(
+          valueListenable: controller,
+          builder: (_, MyoroAccordionItem? expandedItem, _) => _ItemContent(item, expandedItem),
+        ),
         if (!isLastItem) const _Divider(),
       ],
     );
-  }
-
-  Widget _builder(BuildContext context, MyoroAccordionItem? expandedItem, _) {
-    return _ItemContent(item, expandedItem);
   }
 }

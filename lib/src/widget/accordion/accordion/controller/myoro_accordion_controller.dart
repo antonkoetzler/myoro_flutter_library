@@ -8,7 +8,7 @@ class MyoroAccordionController extends ValueNotifier<MyoroAccordionItem?> {
       super(initiallyExpandedItem);
 
   /// [MyoroAccordionItem]s of the [MyoroAccordion].
-  final List<MyoroAccordionItem> items;
+  final Set<MyoroAccordionItem> items;
 
   /// Expands a [MyoroAccordionItem].
   void expandItem(MyoroAccordionItem item) {
@@ -22,4 +22,17 @@ class MyoroAccordionController extends ValueNotifier<MyoroAccordionItem?> {
 
   /// Alias of [value].
   MyoroAccordionItem? get expandedItem => value;
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroAccordionController &&
+        other.runtimeType == runtimeType &&
+        other.value == value &&
+        other.items == items;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(value, items);
+  }
 }

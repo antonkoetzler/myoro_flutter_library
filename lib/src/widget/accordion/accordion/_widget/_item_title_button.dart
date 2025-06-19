@@ -9,62 +9,42 @@ final class _ItemTitleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+
     final viewModel = context.read<MyoroAccordionViewModel>();
+    final controller = viewModel.state.controller;
 
     return ValueListenableBuilder(
-      valueListenable: viewModel.controller,
+      valueListenable: controller,
       builder: (_, MyoroAccordionItem? expandedItem, _) {
-        return _valueListenableBuilder(context, themeExtension, expandedItem);
-      },
-    );
-  }
-
-  Widget _valueListenableBuilder(
-    BuildContext context,
-    MyoroAccordionThemeExtension themeExtension,
-    MyoroAccordionItem? expandedItem,
-  ) {
-    final bool isExpanded = (_item == expandedItem);
-    return MyoroButton(
-      configuration: MyoroButtonConfiguration(
-        borderRadius: themeExtension.itemTitleButtonBorderRadius,
-        backgroundColorBuilder: isExpanded ? (_) => _backgroundColorBuilder(context) : null,
-        onTapUp: (_) => _onTapUp(context),
-      ),
-      builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
-        return _buttonBuilder(context, themeExtension, tapStatusEnum);
-      },
-    );
-  }
-
-  Color _backgroundColorBuilder(BuildContext context) {
-    return context.resolveThemeExtension<MyoroButtonThemeExtension>().primaryIdleBackgroundColor;
-  }
-
-  void _onTapUp(BuildContext context) {
-    final viewModel = context.read<MyoroAccordionViewModel>();
-    viewModel.controller.expandedItem != _item ? viewModel.controller.expandItem(_item) : viewModel.controller.reset();
-  }
-
-  Widget _buttonBuilder(
-    BuildContext context,
-    MyoroAccordionThemeExtension themeExtension,
-    MyoroTapStatusEnum tapStatusEnum,
-  ) {
-    return Padding(
-      padding: themeExtension.itemTitleButtonContentPadding,
-      child: Row(
-        spacing: themeExtension.itemTitleButtonSpacing,
-        children: [
-          Expanded(
-            child: DefaultTextStyle(
-              style: themeExtension.itemTitleButtonTitleTextStyle,
-              child: _item.titleBuilder(context),
-            ),
+        return MyoroButton(
+          configuration: MyoroButtonConfiguration(
+            borderRadius: themeExtension.itemTitleButtonBorderRadius,
+            backgroundColorBuilder:
+                _item == expandedItem
+                    ? (_) => viewModel.itemTitleButtonBackgroundColorBuilder(buttonThemeExtension)
+                    : null,
+            onTapUp: (_) => viewModel.itemTitleButtonOnTapUp(_item),
           ),
-          _ItemTitleButtonArrow(_item, tapStatusEnum),
-        ],
-      ),
+          builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
+            return Padding(
+              padding: themeExtension.itemTitleButtonContentPadding,
+              child: Row(
+                spacing: themeExtension.itemTitleButtonSpacing,
+                children: [
+                  Expanded(
+                    child: DefaultTextStyle(
+                      style: themeExtension.itemTitleButtonTitleTextStyle,
+                      child: _item.titleBuilder(context),
+                    ),
+                  ),
+                  _ItemTitleButtonArrow(_item, tapStatusEnum),
+                ],
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

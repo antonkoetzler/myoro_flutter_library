@@ -16,7 +16,7 @@ class MyoroAccordionItem with _$MyoroAccordionItemMixin {
 
   const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
 
-  MyoroAccordionItem.fake()
-    : titleBuilder = ((_) => Text(faker.lorem.word())),
-      contentBuilder = ((_) => Text(faker.lorem.word()));
+  MyoroAccordionItem.fake({Widget? title, Widget? content})
+    : titleBuilder = ((_) => title ?? Text(faker.lorem.word())),
+      contentBuilder = ((_) => content ?? Text(faker.lorem.word()));
 }

@@ -25,6 +25,12 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   late final _viewModel = MyoroAccordionViewModel(_controller);
 
   @override
+  void didUpdateWidget(covariant MyoroAccordion oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _viewModel.state.controller = _controller;
+  }
+
+  @override
   void dispose() {
     _viewModel.dispose();
     super.dispose();
@@ -32,23 +38,28 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   @override
   Widget build(BuildContext context) {
+    final state = _viewModel.state;
+    final controller = state.controller;
     final scrollController = _viewModel.state.scrollController;
 
     return InheritedProvider.value(
       value: _viewModel,
-      child: Scrollbar(
-        controller: scrollController,
-        child: ListView.builder(
-          controller: scrollController,
-          itemCount: _controller.items.length,
-          itemBuilder: _itemBuilder,
-        ),
+      child: ListenableBuilder(
+        listenable: state,
+        builder: (_, _) {
+          return Scrollbar(
+            controller: scrollController,
+            child: ListView.builder(
+              controller: scrollController,
+              itemCount: controller.items.length,
+              itemBuilder: (_, index) {
+                final items = controller.items;
+                return _Item(item: items.elementAt(index), isLastItem: index == items.length - 1);
+              },
+            ),
+          );
+        },
       ),
     );
-  }
-
-  Widget _itemBuilder(_, int index) {
-    final items = _viewModel.controller.items;
-    return _Item(item: items[index], isLastItem: index == items.length - 1);
   }
 }

@@ -10,14 +10,19 @@ final class _ItemContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
 
-    return AnimatedSize(
-      duration: themeExtension.itemContentAnimationDuration,
-      curve: themeExtension.itemContentAnimationCurve,
-      child: Container(
-        width: double.infinity,
-        color: context.resolveThemeExtension<MyoroButtonThemeExtension>().primaryIdleBackgroundColor,
-        child: (_item == _expandedItem) ? _item.contentBuilder(context) : const SizedBox.shrink(),
+    return Container(
+      width: double.infinity,
+      color: buttonThemeExtension.primaryIdleBackgroundColor,
+      child: AnimatedSize(
+        duration: themeExtension.itemContentAnimationDuration,
+        curve: themeExtension.itemContentAnimationCurve,
+        clipBehavior: Clip.hardEdge,
+        child: SizedBox(
+          width: double.infinity,
+          child: (_item == _expandedItem) ? _item.contentBuilder(context) : const SizedBox(height: 0),
+        ),
       ),
     );
   }
