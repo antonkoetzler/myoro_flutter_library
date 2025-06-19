@@ -3,9 +3,8 @@
 1. chore: Resolve all TODOs
 1. chore: Go through every widget showcase looking for bugs
 
-- accordion
-  - (**IN PROGRESS**) Create `MyoroAccordionConfiguration` with the fields `border` and `borderRadius`
 - app
+  - (**IN PROGRESS**) MAKE VIEW MODEL STANDARD
 - app_bar
 - button
 - card

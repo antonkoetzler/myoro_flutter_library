@@ -3,9 +3,9 @@ import 'package:kiwi/kiwi.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// View model of [MyoroAppWidgetShowcase].
-final class MyoroAppWidgetShowcaseViewModel extends ChangeNotifier {
-  MyoroAppWidgetShowcaseViewModel();
+/// View model of [MyoroAppWidgetShowcaseScreen].
+final class MyoroAppWidgetShowcaseScreenViewModel extends ChangeNotifier {
+  MyoroAppWidgetShowcaseScreenViewModel();
 
   /// [MyoroAppConfiguration.themeMode]
   ThemeMode _themeMode = KiwiContainer().resolve<ThemeModeController>().themeMode;

@@ -1,4 +1,4 @@
-part of '../myoro_app_widget_showcase.dart';
+part of '../myoro_app_widget_showcase_screen.dart';
 
 /// [MyoroAppConfiguration.themeMode] option.
 final class _ThemeModeOption extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _ThemeModeOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroAppWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroAppWidgetShowcaseScreenViewModel>();
 
     return ThemeModeWidgetShowcaseOption(onChanged: (themeMode) => viewModel.themeMode = themeMode!);
   }

@@ -1,12 +1,12 @@
-part of '../myoro_app_widget_showcase.dart';
+part of '../myoro_app_widget_showcase_screen.dart';
 
-/// [WidgetShowcase.widget] of [MyoroAppWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroAppWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroAppWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroAppWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
       listenable: viewModel,

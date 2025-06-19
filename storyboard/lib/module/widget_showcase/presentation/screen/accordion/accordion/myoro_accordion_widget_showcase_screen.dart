@@ -5,14 +5,14 @@ import 'package:storyboard/storyboard.dart';
 
 part '_widget/_widget.dart';
 
-/// [WidgetShowcase] of [MyoroAccordion].
-final class MyoroAccordionWidgetShowcase extends StatelessWidget {
-  const MyoroAccordionWidgetShowcase({super.key});
+/// [WidgetShowcaseScreen] of [MyoroAccordion].
+final class MyoroAccordionWidgetShowcaseScreen extends StatelessWidget {
+  const MyoroAccordionWidgetShowcaseScreen({super.key});
 
   @override
   Widget build(_) {
     return InheritedProvider(
-      create: (_) => MyoroAccordionWidgetShowcaseViewModel(),
+      create: (_) => MyoroAccordionWidgetShowcaseScreenViewModel(),
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroAccordionTitle,

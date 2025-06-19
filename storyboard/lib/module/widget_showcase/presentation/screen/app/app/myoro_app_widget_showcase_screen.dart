@@ -7,16 +7,16 @@ import 'package:storyboard/storyboard.dart';
 part '_widget/_theme_mode_option.dart';
 part '_widget/_widget.dart';
 
-/// [WidgetShowcase] of [MyoroAppBar].
-final class MyoroAppWidgetShowcase extends StatelessWidget {
+/// [WidgetShowcaseScreen] of [MyoroAppBar].
+final class MyoroAppWidgetShowcaseScreen extends StatelessWidget {
   static const options = [_ThemeModeOption()];
 
-  const MyoroAppWidgetShowcase({super.key});
+  const MyoroAppWidgetShowcaseScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return InheritedProvider(
-      create: (_) => MyoroAppWidgetShowcaseViewModel(),
+      create: (_) => MyoroAppWidgetShowcaseScreenViewModel(),
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroAppTitle,
