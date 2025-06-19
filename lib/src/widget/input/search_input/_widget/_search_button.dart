@@ -2,32 +2,29 @@ part of '../myoro_search_input.dart';
 
 /// Suffix search button of the [MyoroSearchInput].
 final class _SearchButton<T> extends StatelessWidget {
-  final MyoroSearchInputController<T> _controller;
-  MyoroRequestController<Set<T>> get _itemsRequestController => _controller.itemsRequestController;
-  MyoroRequest<Set<T>> get _itemsRequest => _controller.itemsRequest;
-  MyoroRequestEnum get _itemsRequestStatus => _itemsRequest.status;
-
-  const _SearchButton(this._controller);
+  const _SearchButton();
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroSearchInputViewModel>();
+
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
         borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
-        onTapUp: _onTapUp,
+        onTapUp: (_) => _onTapUp(viewModel),
       ),
-      builder: _builder,
+      builder: (_, _) => _builder(context, viewModel),
     );
   }
 
-  void _onTapUp(_) {
-    if (!_itemsRequestStatus.isLoading) _itemsRequestController.fetch();
+  void _onTapUp(MyoroSearchInputViewModel viewModel) {
+    if (!viewModel.itemsRequest.status.isLoading) viewModel.itemsRequestController.fetch();
   }
 
-  Widget _builder(BuildContext context, _) {
+  Widget _builder(BuildContext context, MyoroSearchInputViewModel viewModel) {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
-    return _itemsRequestStatus.isLoading
+    return viewModel.itemsRequest.status.isLoading
         ? MyoroCircularLoader(
           configuration: MyoroCircularLoaderConfiguration(size: themeExtension.searchButtonLoadingSize),
         )

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroSearchInput].
-class MyoroSearchInputController<T> {
-  MyoroSearchInputController({required this.configuration});
+class MyoroSearchInputViewModel<T> {
+  MyoroSearchInputViewModel({required this.configuration});
 
   /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;

@@ -1,12 +1,13 @@
 <h1 align='center'>Mental checklist when developing</h1>
 
-## What files does every widget have?
+## What files does every MFL `Widget` need?
 
-1. `Widget`: `foo.dart` & `foo_test.dart`;
-1. `ThemeExtension`: `foo_theme_extension.dart` & `foo_theme_extension_test.dart`;
-1. Widget showcase in storyboard: `foo_widget_showcase.dart` & `foo_widget_showcase_test.dart`;
-1. `ThemeExtension` of widget showcase: `foo_widget_showcase_theme_extension.dart` & `foo_widget_showcase_theme_extension_test`;
+- `Widget`: `foo.dart` ~~& `foo_test.dart`~~
+- `ThemeExtension`: `foo_theme_extension.dart` ~~& `foo_theme_extension_test.dart`~~
+- Widget showcase in storyboard: `foo_widget_showcase.dart` ~~& `foo_widget_showcase_test.dart`~~
+- `ThemeExtension` of widget showcase: `foo_widget_showcase_theme_extension.dart` ~~& `foo_widget_showcase_theme_extension_test.dart`~~
 
-## What do I need to make sure is set when creating widgets?
+## What do I need to make sure of when I create a new `Widget`?
 
-1. Make sure said widget is added to `widget_listing_enum.dart` so it is able to be views in the storyboard.
+- `ThemeExtension` of the `Widget` is added to `create_myoro_theme_extensions.dart`
+- `Widget`'s widget showcase is added to `myoro_widget_list_enum.dart` so it is able to be views in the storyboard

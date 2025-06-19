@@ -34,14 +34,12 @@ class MyoroSnackBar extends StatelessWidget {
         borderRadius: themeExtension.borderRadius,
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        spacing: themeExtension.spacing,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (message.isNotEmpty) Flexible(child: _Message(message)),
           if (child != null) Flexible(child: child),
-          if (configuration.showCloseButton) ...[
-            SizedBox(width: themeExtension.contentCloseButtonSpacing),
-            const _CloseButton(),
-          ],
+          if (configuration.showCloseButton) const _CloseButton(),
         ],
       ),
     );

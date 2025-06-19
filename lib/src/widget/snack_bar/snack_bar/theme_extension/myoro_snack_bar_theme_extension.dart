@@ -37,7 +37,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
   final EdgeInsets padding;
 
   /// Spacing between [_Message]/[MyoroSnackBar.child] & [_CloseButton].
-  final double contentCloseButtonSpacing;
+  final double spacing;
 
   /// Text style of [_Message].
   final TextStyle messageTextStyle;
@@ -57,7 +57,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
     required this.borderWidth,
     required this.borderRadius,
     required this.padding,
-    required this.contentCloseButtonSpacing,
+    required this.spacing,
     required this.messageTextStyle,
     required this.closeButtonIcon,
     required this.closeButtonIconSize,
@@ -72,7 +72,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       borderWidth = faker.randomGenerator.decimal(),
       borderRadius = myoroFake<BorderRadius>(),
       padding = myoroFake<EdgeInsets>(),
-      contentCloseButtonSpacing = faker.randomGenerator.decimal(),
+      spacing = faker.randomGenerator.decimal(),
       messageTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       closeButtonIcon = myoroFake<IconData>(),
       closeButtonIconSize = faker.randomGenerator.decimal();
@@ -86,7 +86,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       borderWidth = 2,
       borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
       padding = const EdgeInsets.all(10),
-      contentCloseButtonSpacing = 10,
+      spacing = 10,
       messageTextStyle = textTheme.bodySmall!,
       closeButtonIcon = Icons.close,
       closeButtonIconSize = 15;
@@ -103,7 +103,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       borderWidth: lerpDouble(borderWidth, other.borderWidth, t),
       borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
-      contentCloseButtonSpacing: lerpDouble(contentCloseButtonSpacing, other.contentCloseButtonSpacing, t),
+      spacing: lerpDouble(spacing, other.spacing, t),
       messageTextStyle: TextStyle.lerp(messageTextStyle, other.messageTextStyle, t),
       closeButtonIcon: myoroLerp(closeButtonIcon, other.closeButtonIcon, t),
       closeButtonIconSize: lerpDouble(closeButtonIconSize, other.closeButtonIconSize, t),

@@ -75,6 +75,6 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
 
   void _showBasicMenuControllerListener() {
     if (!mounted) return;
-    _viewModel.state.showBasicMenu ? _Menu.showModal(context, _viewModel) : context.navigator.pop();
+    if (_viewModel.state.showBasicMenu) _Menu.showModal(context, _viewModel);
   }
 }

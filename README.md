@@ -1,4 +1,4 @@
-<h1 align='center'>🚧🚧🚧 NOT PRODUCTION READY 🚧🚧🚧</h1>
+<h1 align='center'>🚧 NOT PRODUCTION READY 🚧</h1>
 
 <h1 align='center'>MyoroFlutterLibrary</h1>
 
@@ -6,18 +6,17 @@
   <img src='https://github.com/user-attachments/assets/8e930798-e0f9-4fb1-b9d0-e80376710705' alt='MFL Logo' />
 </p>
 
-<h3 align='center'>A library to reduce your boilerplate and accelerate your development</h3>
+<h3 align='center'>A library with everything you need to build a Flutter application.</h3>
 
 ## MFL provides
 
-1. Enhancements for Flutter development;
-1. A fully customizable design system;
-1. Any widget your application may need;
-1. Premade implementations for specific requirements (formatters, databases, etc).
+1. Syntax improvements;
+1. A fully customizable design system with every widget you could need;
+1. Implementation for various features you could need during development.
 
 ## How do I get started?
 
-1. Add MFL as a depdendency in your <code>pubspec.yaml</code> like so:
+1. Add MFL as a dependency in your <code>pubspec.yaml</code> with one of the 3 ways listed:
 
 ``` yaml
 ...
@@ -25,6 +24,11 @@
 dependencies:
   ...
 
+  # Grabbing from disk
+  myoro_flutter_library:
+    path: path/to/mfl
+
+  # Grabbing from GitHub
   myoro_flutter_library:
     git:
       url: git@github.com:antonkoetzler/myoro_flutter_library
@@ -32,11 +36,11 @@ dependencies:
 ...
 ```
 
-1. Make sure your `MyoroApp` is your root widget:
+2. Make sure your `MyoroApp` is your root widget:
 
 - See `storyboard/lib/main.dart` for reference.
 
-1. Enjoy!
+3. Enjoy!
 
 ## Wiki chapters
 

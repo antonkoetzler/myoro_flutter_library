@@ -27,18 +27,6 @@ class MyoroSnackBarContainer extends SnackBar {
          elevation: themeExtension.elevation,
          dismissDirection: themeExtension.dismissDirection,
          duration: duration,
-         content: _SnackBar(snackBar),
+         content: snackBar,
        );
-}
-
-final class _SnackBar extends StatelessWidget {
-  final MyoroSnackBar _snackBar;
-
-  const _SnackBar(this._snackBar);
-
-  @override
-  Widget build(BuildContext context) {
-    // [Row] added to prevent the snack bar from stretching horizontally.
-    return Row(mainAxisSize: MainAxisSize.min, children: [Flexible(child: _snackBar)]);
-  }
 }

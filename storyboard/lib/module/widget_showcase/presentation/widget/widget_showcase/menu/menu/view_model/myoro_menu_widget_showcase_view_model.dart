@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -34,11 +35,11 @@ final class MyoroMenuWidgetShowcaseViewModel {
   }
 
   /// Configuration given [state].
-  MyoroMenuConfiguration<String> get configuration {
+  MyoroMenuConfiguration<String> configuration(BuildContext context) {
     return MyoroMenuConfiguration(
       constraints: state.constraints,
       backgroundColor: state.backgroundColor,
-      border: state.border,
+      border: state.borderEnabled ? MyoroButtonStyleEnum.border(context) : null,
       borderRadius: state.borderRadius,
       request: request,
       onEndReachedRequest: state.onEndReachedRequestEnabled ? _onEndReachedRequest : null,

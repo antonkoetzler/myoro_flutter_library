@@ -25,7 +25,7 @@ mixin _$MyoroSnackBarThemeExtensionMixin
     double? borderWidth,
     BorderRadius? borderRadius,
     EdgeInsets? padding,
-    double? contentCloseButtonSpacing,
+    double? spacing,
     TextStyle? messageTextStyle,
     IconData? closeButtonIcon,
     double? closeButtonIconSize,
@@ -39,8 +39,7 @@ mixin _$MyoroSnackBarThemeExtensionMixin
       borderWidth: borderWidth ?? self.borderWidth,
       borderRadius: borderRadius ?? self.borderRadius,
       padding: padding ?? self.padding,
-      contentCloseButtonSpacing:
-          contentCloseButtonSpacing ?? self.contentCloseButtonSpacing,
+      spacing: spacing ?? self.spacing,
       messageTextStyle: messageTextStyle ?? self.messageTextStyle,
       closeButtonIcon: closeButtonIcon ?? self.closeButtonIcon,
       closeButtonIconSize: closeButtonIconSize ?? self.closeButtonIconSize,
@@ -59,7 +58,7 @@ mixin _$MyoroSnackBarThemeExtensionMixin
         other.borderWidth == self.borderWidth &&
         other.borderRadius == self.borderRadius &&
         other.padding == self.padding &&
-        other.contentCloseButtonSpacing == self.contentCloseButtonSpacing &&
+        other.spacing == self.spacing &&
         other.messageTextStyle == self.messageTextStyle &&
         other.closeButtonIcon == self.closeButtonIcon &&
         other.closeButtonIconSize == self.closeButtonIconSize;
@@ -76,7 +75,7 @@ mixin _$MyoroSnackBarThemeExtensionMixin
       self.borderWidth,
       self.borderRadius,
       self.padding,
-      self.contentCloseButtonSpacing,
+      self.spacing,
       self.messageTextStyle,
       self.closeButtonIcon,
       self.closeButtonIconSize,
@@ -94,7 +93,7 @@ mixin _$MyoroSnackBarThemeExtensionMixin
       '  borderWidth: ${self.borderWidth},\n'
       '  borderRadius: ${self.borderRadius},\n'
       '  padding: ${self.padding},\n'
-      '  contentCloseButtonSpacing: ${self.contentCloseButtonSpacing},\n'
+      '  spacing: ${self.spacing},\n'
       '  messageTextStyle: ${self.messageTextStyle},\n'
       '  closeButtonIcon: ${self.closeButtonIcon},\n'
       '  closeButtonIconSize: ${self.closeButtonIconSize},\n'

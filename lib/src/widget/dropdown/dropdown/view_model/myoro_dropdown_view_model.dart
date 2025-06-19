@@ -68,4 +68,21 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
     }
     state.inputController.text = stringBuffer.toString();
   }
+
+  /// Creates the [MyoroMenuItem] of an item in the [MyoroMenu].
+  @mustCallSuper
+  MyoroMenuItem menuItemBuilder(BuildContext context, T item) {
+    final menuConfiguration = state.configuration.menuConfiguration;
+    final selectedItemsController = controller.selectedItemsController;
+    final selectedItems = selectedItemsController.value;
+
+    final MyoroMenuItem menuItem = menuConfiguration.itemBuilder(item);
+    return menuItem.copyWith(
+      isSelected: selectedItems.contains(item),
+      onTapUp: (TapUpDetails details) {
+        menuItem.onTapUp?.call(details);
+        controller.toggleItem(item);
+      },
+    );
+  }
 }

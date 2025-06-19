@@ -20,10 +20,10 @@ final class MyoroMenuWidgetShowcaseState extends ChangeNotifier {
   }
 
   /// [MyoroMenuConfiguration.border]
-  BoxBorder? _border;
-  BoxBorder? get border => _border;
-  set border(BoxBorder? border) {
-    _border = border;
+  bool _borderEnabled = false;
+  bool get borderEnabled => _borderEnabled;
+  set borderEnabled(bool borderEnabled) {
+    _borderEnabled = borderEnabled;
     notifyListeners();
   }
 

@@ -11,7 +11,7 @@ final class _Widget extends StatelessWidget {
     return ListenableBuilder(
       listenable: viewModel.state,
       builder: (_, __) {
-        return MyoroMenu<String>(configuration: viewModel.configuration);
+        return MyoroMenu<String>(configuration: viewModel.configuration(context));
       },
     );
   }

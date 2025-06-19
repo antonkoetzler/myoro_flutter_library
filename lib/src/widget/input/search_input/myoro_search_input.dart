@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_body.dart';
 part '_widget/_input.dart';
@@ -18,19 +19,22 @@ class MyoroSearchInput<T> extends StatefulWidget {
 }
 
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
-  late final _controller = MyoroSearchInputController(configuration: widget.configuration);
+  late final _viewModel = MyoroSearchInputViewModel(configuration: widget.configuration);
 
   @override
   void dispose() {
-    _controller.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: _controller.itemsRequestController,
-      builder: (_, _, _) => _Body(_controller),
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: ValueListenableBuilder(
+        valueListenable: _viewModel.itemsRequestController,
+        builder: (_, _, _) => const _Body(),
+      ),
     );
   }
 }
