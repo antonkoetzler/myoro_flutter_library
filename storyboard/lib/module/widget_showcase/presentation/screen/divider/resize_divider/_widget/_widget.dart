@@ -1,26 +1,16 @@
-part of '../myoro_resize_divider_widget_showcase.dart';
+part of '../myoro_resize_divider_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroResizeDividerWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroResizeDividerWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
-  Widget build(BuildContext context) {
-    final basicDividerViewModel = context.read<MyoroBasicDividerWidgetShowcaseViewModel>();
-
-    return ListenableBuilder(
-      listenable: basicDividerViewModel,
-      builder: (_, __) {
-        return MyoroResizeDivider(
-          configuration: MyoroResizeDividerConfiguration(
-            basicDividerConfiguration: MyoroBasicDividerConfiguration(
-              direction: basicDividerViewModel.direction,
-              shortValue: basicDividerViewModel.shortValue,
-              padding: basicDividerViewModel.padding,
-            ),
-          ),
-        );
-      },
+  Widget build(_) {
+    return const Stack(
+      children: [
+        _Kitty(),
+        Row(children: [_Cover(), _Divider()]),
+      ],
     );
   }
 }

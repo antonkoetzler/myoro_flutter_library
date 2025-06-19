@@ -1,24 +1,22 @@
-part of '../myoro_carousel_widget_showcase.dart';
+part of '../myoro_carousel_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreen.widget] of [MyoroCarouselWidgetShowcase].
+/// [WidgetShowcaseScreenScreen.widget] of [MyoroCarouselWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroCarouselWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
-      listenable: viewModel,
+      listenable: viewModel.state,
       builder: (_, __) {
         return MyoroCarousel(
-          configuration: MyoroCarouselConfiguration(
-            direction: viewModel.direction,
-            displayTraversalButtons: viewModel.displayTraversalButtons,
-            autoplay: viewModel.autoplay,
-            autoplayIntervalDuration: viewModel.autoplayIntervalDuration,
-            items: const [_CarouselItem(kAreYouSillyCat), _CarouselItem(kHappyCat), _CarouselItem(kSnazzyCat)],
-          ),
+          configuration: viewModel.configuration(const [
+            _CarouselItem(kAreYouSillyCat),
+            _CarouselItem(kHappyCat),
+            _CarouselItem(kSnazzyCat),
+          ]),
         );
       },
     );

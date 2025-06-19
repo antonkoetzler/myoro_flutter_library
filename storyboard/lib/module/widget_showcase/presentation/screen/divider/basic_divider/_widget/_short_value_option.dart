@@ -1,18 +1,18 @@
-part of '../myoro_basic_divider_widget_showcase.dart';
+part of '../myoro_basic_divider_widget_showcase_screen.dart';
 
-/// [MyoroBasicDividerConfiguration.shortValue] option of [MyoroBasicDividerWidgetShowcase].
+/// [MyoroBasicDividerConfiguration.shortValue] option of [MyoroBasicDividerWidgetShowcaseScreen].
 final class _ShortValueOption extends StatelessWidget {
   const _ShortValueOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroBasicDividerWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroBasicDividerWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Short value',
-        checkboxOnChanged: (enabled, value) => viewModel.shortValue = enabled ? value : null,
-        sliderOnChanged: (value) => viewModel.shortValue = value,
+        checkboxOnChanged: (enabled, value) => viewModel.state.shortValue = enabled ? value : null,
+        sliderOnChanged: (value) => viewModel.state.shortValue = value,
       ),
     );
   }

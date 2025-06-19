@@ -1,16 +1,16 @@
-part of '../myoro_carousel_widget_showcase.dart';
+part of '../myoro_carousel_widget_showcase_screen.dart';
 
-/// [MyoroCarouselConfiguration.direction] option of [MyoroCarouselWidgetShowcase].
+/// [MyoroCarouselConfiguration.direction] option of [MyoroCarouselWidgetShowcaseScreen].
 final class _DirectionOption extends StatelessWidget {
   const _DirectionOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroCarouselWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
 
     return AxisWidgetShowcaseOption(
-      initialDirection: viewModel.direction,
-      onChanged: (direction) => viewModel.direction = direction!,
+      initialDirection: viewModel.state.direction,
+      onChanged: (direction) => viewModel.state.direction = direction!,
     );
   }
 }

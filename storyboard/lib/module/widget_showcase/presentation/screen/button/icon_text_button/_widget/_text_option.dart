@@ -1,27 +1,27 @@
-part of '../myoro_icon_text_button_widget_showcase.dart';
+part of '../myoro_icon_text_button_widget_showcase_screen.dart';
 
-/// [MyoroIconTextButtonConfiguration.textConfiguration] option of [MyoroIconTextButtonWidgetShowcase].
+/// [MyoroIconTextButtonConfiguration.textConfiguration] option of [MyoroIconTextButtonWidgetShowcaseScreen].
 final class _TextOption extends StatelessWidget {
   const _TextOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(
-        textOnChanged: (text) => viewModel.text = text,
+        textOnChanged: (text) => viewModel.state.text = text,
         maxLinesOnChanged: (maxLines) {
-          viewModel.maxLines = maxLines ?? MyoroIconTextButtonTextConfiguration.maxLinesDefaultValue;
+          viewModel.state.maxLines = maxLines ?? MyoroIconTextButtonTextConfiguration.maxLinesDefaultValue;
         },
         overflowOnChanged: (overflow) {
-          viewModel.overflow = overflow ?? MyoroIconTextButtonTextConfiguration.overflowDefaultValue;
+          viewModel.state.overflow = overflow ?? MyoroIconTextButtonTextConfiguration.overflowDefaultValue;
         },
         alignmentOnChanged: (alignment) {
-          viewModel.alignment = alignment ?? MyoroIconTextButtonTextConfiguration.alignmentDefaultValue;
+          viewModel.state.alignment = alignment ?? MyoroIconTextButtonTextConfiguration.alignmentDefaultValue;
         },
         styleOnChanged: (style) {
-          viewModel.style = style;
+          viewModel.state.style = style;
         },
       ),
     );

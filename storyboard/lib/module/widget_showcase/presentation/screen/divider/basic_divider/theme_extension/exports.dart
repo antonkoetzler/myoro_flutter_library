@@ -1,1 +1,1 @@
-export 'myoro_basic_divider_widget_showcase_theme_extension.dart';
+export 'myoro_basic_divider_widget_showcase_screen_theme_extension.dart';

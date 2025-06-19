@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:kiwi/kiwi.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroAppWidgetShowcaseScreen].
-final class MyoroAppWidgetShowcaseScreenViewModel extends ChangeNotifier {
-  MyoroAppWidgetShowcaseScreenViewModel();
+final class MyoroAppWidgetShowcaseScreenViewModel {
+  /// State
+  final _state = MyoroAppWidgetShowcaseScreenState();
+  MyoroAppWidgetShowcaseScreenState get state => _state;
 
-  /// [MyoroAppConfiguration.themeMode]
-  ThemeMode _themeMode = KiwiContainer().resolve<ThemeModeController>().themeMode;
-  ThemeMode get themeMode => _themeMode;
-  set themeMode(ThemeMode themeMode) {
-    _themeMode = themeMode;
-    notifyListeners();
+  /// Dispose function.
+  void dispose() {
+    _state.dispose();
+  }
+
+  /// [MyoroAppConfiguration] of the [MyoroApp].
+  MyoroAppConfiguration configuration(Widget home) {
+    return MyoroAppConfiguration(themeMode: _state.themeMode, home: home);
   }
 }

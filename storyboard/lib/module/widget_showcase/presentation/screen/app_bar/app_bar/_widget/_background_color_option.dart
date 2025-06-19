@@ -1,4 +1,4 @@
-part of '../myoro_app_bar_widget_showcase.dart';
+part of '../myoro_app_bar_widget_showcase_screen.dart';
 
 /// [MyoroAppBarConfiguration.backgroundColor] option.
 final class _BackgroundColorOption extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _BackgroundColorOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroAppBarWidgetShowcaseViewModel>();
-    return ColorWidgetShowcaseOption(onChanged: (color) => viewModel.backgroundColor = color);
+    final viewModel = context.read<MyoroAppBarWidgetShowcaseScreenViewModel>();
+    return ColorWidgetShowcaseOption(onChanged: (color) => viewModel.state.backgroundColor = color);
   }
 }

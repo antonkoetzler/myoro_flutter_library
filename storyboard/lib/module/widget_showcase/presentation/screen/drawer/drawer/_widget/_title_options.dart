@@ -1,4 +1,4 @@
-part of '../myoro_drawer_widget_showcase.dart';
+part of '../myoro_drawer_widget_showcase_screen.dart';
 
 /// Options for [MyoroDrawerConfiguration.title] and [MyoroDrawerConfiguration.titleTextStyle].
 final class _TitleOptions extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _TitleOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDrawerWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(

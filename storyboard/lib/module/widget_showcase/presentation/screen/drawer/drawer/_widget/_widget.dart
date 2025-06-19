@@ -1,12 +1,12 @@
-part of '../myoro_drawer_widget_showcase.dart';
+part of '../myoro_drawer_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroDrawerWidgetShowcase].
+/// [WidgetShowcaseScreenScreenConfiguration.widget] of [MyoroDrawerWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDrawerWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(

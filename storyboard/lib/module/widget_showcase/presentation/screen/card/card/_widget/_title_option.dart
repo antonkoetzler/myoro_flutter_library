@@ -1,17 +1,17 @@
-part of '../myoro_card_widget_showcase.dart';
+part of '../myoro_card_widget_showcase_screen.dart';
 
-/// [MyoroCardConfiguration.title] & [MyoroCardConfiguration.titleTextStyle] option of [MyoroCardWidgetShowcase].
+/// [MyoroCardConfiguration.title] & [MyoroCardConfiguration.titleTextStyle] option of [MyoroCardWidgetShowcaseScreen].
 final class _TitleOption extends StatelessWidget {
   const _TitleOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroCardWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroCardWidgetShowcaseScreenViewModel>();
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(
-        textOnChanged: (title) => viewModel.title = title,
-        styleOnChanged: (titleTextStyle) => viewModel.titleTextStyle = titleTextStyle,
+        textOnChanged: (title) => viewModel.state.title = title,
+        styleOnChanged: (titleTextStyle) => viewModel.state.titleTextStyle = titleTextStyle,
       ),
     );
   }

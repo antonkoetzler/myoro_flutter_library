@@ -1,16 +1,16 @@
-part of '../myoro_group_checkbox_widget_showcase.dart';
+part of '../myoro_group_checkbox_widget_showcase_screen.dart';
 
-/// [MyoroGroupCheckboxConfiguration.direction] option of [MyoroGroupCheckboxWidgetShowcase].
+/// [MyoroGroupCheckboxConfiguration.direction] option of [MyoroGroupCheckboxWidgetShowcaseScreen].
 final class _DirectionOption extends StatelessWidget {
   const _DirectionOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseScreenViewModel>();
 
     return AxisWidgetShowcaseOption(
-      initialDirection: viewModel.direction,
-      onChanged: (direction) => viewModel.direction = direction!,
+      initialDirection: viewModel.state.direction,
+      onChanged: (direction) => viewModel.state.direction = direction!,
     );
   }
 }

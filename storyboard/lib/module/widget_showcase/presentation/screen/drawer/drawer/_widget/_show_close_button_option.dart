@@ -1,12 +1,12 @@
-part of '../myoro_drawer_widget_showcase.dart';
+part of '../myoro_drawer_widget_showcase_screen.dart';
 
-/// [MyoroDrawerConfiguration.showCloseButton] option in [MyoroDrawerWidgetShowcase].
+/// [MyoroDrawerConfiguration.showCloseButton] option in [MyoroDrawerWidgetShowcaseScreen].
 final class _ShowCloseButtonOption extends StatelessWidget {
   const _ShowCloseButtonOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDrawerWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

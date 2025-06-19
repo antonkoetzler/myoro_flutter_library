@@ -1,4 +1,4 @@
-part of '../myoro_carousel_widget_showcase.dart';
+part of '../myoro_carousel_widget_showcase_screen.dart';
 
 /// Item of the [MyoroCarousel] in [_Widget].
 final class _CarouselItem extends StatelessWidget {

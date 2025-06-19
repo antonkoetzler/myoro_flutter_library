@@ -1,17 +1,17 @@
-part of '../myoro_button_widget_showcase.dart';
+part of '../myoro_button_widget_showcase_screen.dart';
 
-/// [MyoroButtonConfiguration.onTapDown] option of [MyoroButtonWidgetShowcase].
+/// [MyoroButtonConfiguration.onTapDown] option of [MyoroButtonWidgetShowcaseScreen].
 final class _OnTapDownEnabledOption extends StatelessWidget {
   const _OnTapDownEnabledOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroButtonWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Tap down enabled?',
-        onChanged: (value) => viewModel.onTapDownEnabled = value,
+        onChanged: (value) => viewModel.state.onTapDownEnabled = value,
       ),
     );
   }

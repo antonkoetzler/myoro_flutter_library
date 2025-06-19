@@ -8,6 +8,6 @@ final class _ThemeModeOption extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroAppWidgetShowcaseScreenViewModel>();
 
-    return ThemeModeWidgetShowcaseOption(onChanged: (themeMode) => viewModel.themeMode = themeMode!);
+    return ThemeModeWidgetShowcaseOption(onChanged: (themeMode) => viewModel.state.themeMode = themeMode!);
   }
 }

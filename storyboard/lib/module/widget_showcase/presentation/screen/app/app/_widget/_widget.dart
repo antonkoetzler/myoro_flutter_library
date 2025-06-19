@@ -9,12 +9,11 @@ final class _Widget extends StatelessWidget {
     final viewModel = context.read<MyoroAppWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
-      listenable: viewModel,
+      listenable: viewModel.state,
       builder: (_, __) {
         return MyoroApp(
-          configuration: MyoroAppConfiguration(
-            themeMode: viewModel.themeMode,
-            home: MyoroScreen(
+          configuration: viewModel.configuration(
+            MyoroScreen(
               configuration: MyoroScreenConfiguration(
                 appBar: MyoroAppBar(
                   configuration: MyoroAppBarConfiguration(

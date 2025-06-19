@@ -1,1 +1,1 @@
-export 'myoro_drawer_widget_showcase_view_model.dart';
+export 'myoro_drawer_widget_showcase_screen_view_model.dart';

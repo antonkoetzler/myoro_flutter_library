@@ -1,24 +1,16 @@
-part of '../myoro_basic_divider_widget_showcase.dart';
+part of '../myoro_basic_divider_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroBasicDividerWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroBasicDividerWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroBasicDividerWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroBasicDividerWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
-      listenable: viewModel,
-      builder: (_, __) {
-        return MyoroBasicDivider(
-          configuration: MyoroBasicDividerConfiguration(
-            direction: viewModel.direction,
-            shortValue: viewModel.shortValue,
-            padding: viewModel.padding,
-          ),
-        );
-      },
+      listenable: viewModel.state,
+      builder: (_, __) => MyoroBasicDivider(configuration: viewModel.configuration),
     );
   }
 }

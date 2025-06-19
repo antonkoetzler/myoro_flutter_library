@@ -1,24 +1,20 @@
-part of '../myoro_card_widget_showcase.dart';
+part of '../myoro_card_widget_showcase_screen.dart';
 
-/// [MyoroCard] of [MyoroCardWidgetShowcase].
+/// [MyoroCard] of [MyoroCardWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroCardWidgetShowcaseViewModel>();
-    final themeExtension = context.read<MyoroCardWidgetShowcaseThemeExtension>();
+    final viewModel = context.read<MyoroCardWidgetShowcaseScreenViewModel>();
+    final themeExtension = context.read<MyoroCardWidgetShowcaseScreenThemeExtension>();
 
     return ListenableBuilder(
-      listenable: viewModel,
+      listenable: viewModel.state,
       builder: (_, __) {
         return MyoroCard(
-          configuration: MyoroCardConfiguration(
-            title: viewModel.title,
-            titleTextStyle: viewModel.titleTextStyle,
-            padding: viewModel.padding,
-            constraints: viewModel.constraints,
-            child: Center(child: Text('This is a MyoroCard!', style: themeExtension.textStyle)),
+          configuration: viewModel.configuration(
+            Center(child: Text('This is a MyoroCard!', style: themeExtension.textStyle)),
           ),
         );
       },

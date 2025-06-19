@@ -1,15 +1,15 @@
-part of '../myoro_group_checkbox_widget_showcase.dart';
+part of '../myoro_group_checkbox_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroGroupCheckboxWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroGroupCheckboxWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
-      listenable: viewModel,
+      listenable: viewModel.state,
       builder: (_, __) {
         return MyoroGroupCheckbox(
           controller: MyoroGroupCheckboxController(
@@ -19,12 +19,7 @@ final class _Widget extends StatelessWidget {
               },
             },
           ),
-          configuration: MyoroGroupCheckboxConfiguration(
-            direction: viewModel.direction,
-            spacing: viewModel.spacing,
-            runSpacing: viewModel.runSpacing,
-            onChanged: (key, checkboxes) => viewModel.onChanged(context, key, checkboxes),
-          ),
+          configuration: viewModel.configuration(context),
         );
       },
     );

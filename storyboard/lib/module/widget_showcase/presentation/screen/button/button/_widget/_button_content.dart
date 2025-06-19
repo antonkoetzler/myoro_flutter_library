@@ -1,6 +1,6 @@
-part of '../myoro_button_widget_showcase.dart';
+part of '../myoro_button_widget_showcase_screen.dart';
 
-/// Content of the [MyoroButton] of [MyoroButtonWidgetShowcase].
+/// Content of the [MyoroButton] of [MyoroButtonWidgetShowcaseScreen].
 final class _ButtonContent extends StatelessWidget {
   final MyoroTapStatusEnum _tapStatusEnum;
 

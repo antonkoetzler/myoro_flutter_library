@@ -1,10 +1,9 @@
 # TODO
 
 1. chore: Resolve all TODOs
-1. chore: Go through every widget showcase looking for bugs
+2. chore: Go through every widget showcase looking for bugs
 
 - app
-  - (**IN PROGRESS**) MAKE VIEW MODEL STANDARD
 - app_bar
 - button
 - card
@@ -28,8 +27,7 @@
 - testing
 - tooltip
 
-2. chore: Implement tests once everything seems stable
-3. chore: Redo deploying and GitHub Actions
+3. chore: Implement tests once everything seems stable
 4. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern
@@ -38,4 +36,5 @@
 - Manipulating the UI of widgets via `ThemeExtension` overloading
 - `ThemeExtension` overriding
 
-5. feature: Publish to pub.dev
+5. chore: Redo deploying and GitHub Actions
+6. feature: Publish to pub.dev
