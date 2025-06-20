@@ -16,17 +16,17 @@ final class IconWidgetShowcaseOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<IconWidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return InheritedProvider(
       create: (_) => IconWidgetShowcaseOptionViewModel(configuration),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: themeExtension.spacing,
+        spacing: widgetShowcaseThemeExtension.spacing,
         children: [
           const _Title(),
           Row(
-            spacing: themeExtension.spacing,
+            spacing: widgetShowcaseThemeExtension.spacing,
             children: const [Expanded(child: _IconDropdown()), Expanded(child: _IconSizeInput())],
           ),
         ],

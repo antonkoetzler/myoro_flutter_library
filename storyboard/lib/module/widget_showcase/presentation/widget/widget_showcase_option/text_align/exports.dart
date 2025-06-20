@@ -1,2 +1,1 @@
-export 'theme_extension/exports.dart';
 export 'text_align_widget_showcase_option.dart';

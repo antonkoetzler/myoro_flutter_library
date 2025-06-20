@@ -81,7 +81,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
     notifyListeners();
   }
 
-  /// [MyoroIconTextButtonTextConfiguration.text]
+  /// [MyoroTextConfiguration.text]
   String _text = faker.lorem.word();
   String get text => _text;
   set text(String text) {
@@ -89,31 +89,31 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
     notifyListeners();
   }
 
-  /// [MyoroIconTextButtonTextConfiguration.maxLines]
-  int _maxLines = MyoroIconTextButtonTextConfiguration.maxLinesDefaultValue;
+  /// [MyoroTextConfiguration.maxLines]
+  int _maxLines = MyoroTextConfiguration.maxLinesDefaultValue;
   int get maxLines => _maxLines;
   set maxLines(int maxLines) {
     _maxLines = maxLines;
     notifyListeners();
   }
 
-  /// [MyoroIconTextButtonTextConfiguration.overflow]
-  TextOverflow _overflow = MyoroIconTextButtonTextConfiguration.overflowDefaultValue;
+  /// [MyoroTextConfiguration.overflow]
+  TextOverflow _overflow = MyoroTextConfiguration.overflowDefaultValue;
   TextOverflow get overflow => _overflow;
   set overflow(TextOverflow overflow) {
     _overflow = overflow;
     notifyListeners();
   }
 
-  /// [MyoroIconTextButtonTextConfiguration.alignment]
-  TextAlign _alignment = MyoroIconTextButtonTextConfiguration.alignmentDefaultValue;
+  /// [MyoroTextConfiguration.alignment]
+  TextAlign _alignment = MyoroTextConfiguration.alignmentDefaultValue;
   TextAlign get alignment => _alignment;
   set alignment(TextAlign alignment) {
     _alignment = alignment;
     notifyListeners();
   }
 
-  /// [MyoroIconTextButtonTextConfiguration.style]
+  /// [MyoroTextConfiguration.style]
   TextStyle? _style;
   TextStyle? get style => _style;
   set style(TextStyle? style) {

@@ -8,33 +8,9 @@ final class WidgetShowcaseModule implements Module {
   @override
   List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
-      // ########## Shared ##########
-      WidgetShowcaseOptionThemeExtension.builder(textTheme),
-      // ############################
-
       // ########## Screens ##########
       WidgetShowcaseScreenThemeExtension.builder(),
       // #############################
-
-      // ########## Widget showcase options ##########
-      const AxisWidgetShowcaseOptionThemeExtension.builder(),
-      const BoxConstraintsWidgetShowcaseOptionThemeExtension.builder(),
-      const ColorWidgetShowcaseOptionThemeExtension.builder(),
-      const IconWidgetShowcaseOptionThemeExtension.builder(),
-      const MouseCursorWidgetShowcaseOptionThemeExtension.builder(),
-      const MyoroDropdownMenuTypeEnumWidgetShowcaseOptionThemeExtension.builder(),
-      const MyoroInputStyleEnumWidgetShowcaseOptionThemeExtension.builder(),
-      const MyoroSnackBarTypeWidgetShowcaseOptionThemeExtension.builder(),
-      const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension.builder(),
-      const PaddingWidgetShowcaseOptionThemeExtension.builder(),
-      const SliderWidgetShowcaseOptionThemeExtension.builder(),
-      const TextWidgetShowcaseOptionThemeExtension.builder(),
-      const TextAlignWidgetShowcaseOptionThemeExtension.builder(),
-      const TextMaxLinesWidgetShowcaseOptionThemeExtension.builder(),
-      const TextOverflowWidgetShowcaseOptionThemeExtension.builder(),
-      const TextStyleWidgetShowcaseOptionThemeExtension.builder(),
-      const ThemeModeWidgetShowcaseOptionThemeExtension.builder(),
-      // #############################################
 
       // ########## Widget showcases ##########
       // Accordions

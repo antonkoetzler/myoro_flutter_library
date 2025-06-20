@@ -6,7 +6,7 @@ final class _AppBarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
-    return Text(faker.lorem.word(), style: widgetShowcaseOptionThemeExtension.labelTextStyle);
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    return Text(faker.lorem.word(), style: widgetShowcaseThemeExtension.labelTextStyle);
   }
 }

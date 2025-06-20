@@ -39,9 +39,7 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
         menuConfiguration: MyoroMenuConfiguration(
           request: kMyoroTestColors.toSet,
           itemBuilder: (color) {
-            return MyoroMenuItem(
-              textConfiguration: MyoroIconTextButtonTextConfiguration(text: color.hexadecimalFormat),
-            );
+            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: color.hexadecimalFormat));
           },
         ),
         selectedItemBuilder: (color) => color.hexadecimalFormat,

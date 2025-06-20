@@ -15,7 +15,7 @@ final class _SubmitButton extends StatelessWidget {
           borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
           onTapUp: (_) => _formController.fetch(),
         ),
-        textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Submit'),
+        textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
       ),
     );
   }

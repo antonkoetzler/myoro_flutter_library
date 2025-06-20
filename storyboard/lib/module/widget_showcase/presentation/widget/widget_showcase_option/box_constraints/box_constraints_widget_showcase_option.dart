@@ -22,7 +22,7 @@ final class _BoxConstraintsWidgetShowcaseOptionState extends State<BoxConstraint
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return InheritedProvider.value(
       value: _viewModel,

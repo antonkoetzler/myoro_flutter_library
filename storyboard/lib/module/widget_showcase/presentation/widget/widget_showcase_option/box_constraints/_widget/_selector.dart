@@ -9,15 +9,22 @@ final class _Selector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Row(
-      spacing: widgetShowcaseOptionThemeExtension.spacing,
+      spacing: widgetShowcaseThemeExtension.spacing,
       children: [
-        MyoroCheckbox(configuration: MyoroCheckboxConfiguration(onChanged: (enabled) => _configuration.controller.enabled = enabled)),
+        MyoroCheckbox(
+          configuration: MyoroCheckboxConfiguration(
+            onChanged: (enabled) => _configuration.controller.enabled = enabled,
+          ),
+        ),
         Expanded(
           child: MyoroSlider(
-            configuration: MyoroSliderConfiguration(label: _configuration.label, onChanged: (value) => _configuration.controller.value = value),
+            configuration: MyoroSliderConfiguration(
+              label: _configuration.label,
+              onChanged: (value) => _configuration.controller.value = value,
+            ),
           ),
         ),
       ],

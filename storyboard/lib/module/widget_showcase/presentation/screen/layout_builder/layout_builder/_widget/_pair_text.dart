@@ -8,8 +8,8 @@ final class _PairText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
-    return Text(_text, style: widgetShowcaseOptionThemeExtension.labelTextStyle);
+    return Text(_text, style: widgetShowcaseThemeExtension.labelTextStyle);
   }
 }

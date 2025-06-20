@@ -9,12 +9,12 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return MyoroAppBar(
       configuration: MyoroAppBarConfiguration(
         child: Row(
-          spacing: widgetShowcaseOptionThemeExtension.spacing,
+          spacing: widgetShowcaseThemeExtension.spacing,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [_AppBarTitle(), _AppBarMenuButton()],
         ),

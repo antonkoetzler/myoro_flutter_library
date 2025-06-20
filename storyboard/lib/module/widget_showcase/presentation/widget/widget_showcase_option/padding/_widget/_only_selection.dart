@@ -6,12 +6,12 @@ final class _OnlySelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      spacing: themeExtension.spacing,
+      spacing: widgetShowcaseThemeExtension.spacing,
       children: [
         _SelectionInputPair(
           leftLabel: 'Top',

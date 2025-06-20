@@ -9,10 +9,10 @@ final class _SelectorRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Row(
-      spacing: widgetShowcaseOptionThemeExtension.spacing,
+      spacing: widgetShowcaseThemeExtension.spacing,
       children: [Expanded(child: _Selector(leftConfiguration)), Expanded(child: _Selector(rightConfiguration))],
     );
   }

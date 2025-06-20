@@ -22,11 +22,10 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
       padding: _state.padding,
       contentColorBuilder:
           _state.enableContentColorBuilder ? (tapStatusEnum) => _contentColorBuilder(tapStatusEnum) : null,
-      iconConfiguration:
-          _state.icon != null ? MyoroIconTextButtonIconConfiguration(icon: _state.icon!, size: _state.iconSize) : null,
+      iconConfiguration: _state.icon != null ? MyoroIconConfiguration(icon: _state.icon!, size: _state.iconSize) : null,
       textConfiguration:
           _state.text.isNotEmpty
-              ? MyoroIconTextButtonTextConfiguration(
+              ? MyoroTextConfiguration(
                 text: _state.text,
                 maxLines: _state.maxLines,
                 overflow: _state.overflow,

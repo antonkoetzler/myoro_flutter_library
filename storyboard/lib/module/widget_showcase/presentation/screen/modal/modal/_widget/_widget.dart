@@ -16,7 +16,7 @@ final class _Widget extends StatelessWidget {
             return MyoroIconTextButton(
               configuration: MyoroIconTextButtonConfiguration(
                 buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => viewModel.showModal(context)),
-                textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Click to show the modal!'),
+                textConfiguration: const MyoroTextConfiguration(text: 'Click to show the modal!'),
               ),
             );
           },

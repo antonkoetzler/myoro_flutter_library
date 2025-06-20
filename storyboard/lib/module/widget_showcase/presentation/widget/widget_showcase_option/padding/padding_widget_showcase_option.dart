@@ -23,13 +23,13 @@ final class PaddingWidgetShowcaseOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return InheritedProvider(
       create: (_) => PaddingWidgetShowcaseOptionViewModel(configuration),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: themeExtension.spacing,
+        spacing: widgetShowcaseThemeExtension.spacing,
         children: const [_Title(), _Selection(), _SelectionSwitcher()],
       ),
     );

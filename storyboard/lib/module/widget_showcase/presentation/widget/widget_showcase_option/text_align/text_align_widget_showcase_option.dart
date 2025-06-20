@@ -46,7 +46,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
         menuConfiguration: MyoroMenuConfiguration(
           request: TextAlign.values.toSet,
           itemBuilder: (value) {
-            return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: value.toString()));
+            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
           },
         ),
       ),

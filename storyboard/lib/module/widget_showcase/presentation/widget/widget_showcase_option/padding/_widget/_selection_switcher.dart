@@ -18,7 +18,7 @@ final class _SelectionSwitcher extends StatelessWidget {
         menuConfiguration: MyoroMenuConfiguration(
           request: PaddingWidgetShowcaseOptionEnum.values.toSet,
           itemBuilder: (value) {
-            return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: _formattedName(value)));
+            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _formattedName(value)));
           },
         ),
       ),

@@ -10,6 +10,6 @@ final class MyoroSnackBarTypeWidgetShowcaseOptionViewModel {
 
   /// [MyoroMenuConfiguration.itemBuilder]
   MyoroMenuItem itemBuilder(MyoroSnackBarTypeEnum item) {
-    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: item.name.capitalized));
+    return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item.name.capitalized));
   }
 }

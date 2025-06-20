@@ -27,6 +27,6 @@ final class MyoroSearchInputWidgetShowcaseScreenViewModel {
 
   /// [MyoroSearchInputConfiguration.itemBuilder]
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: item));
+    return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item));
   }
 }

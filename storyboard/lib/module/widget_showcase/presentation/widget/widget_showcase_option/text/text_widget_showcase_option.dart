@@ -19,22 +19,22 @@ final class TextWidgetShowcaseOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<TextWidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return InheritedProvider(
       create: (_) => TextWidgetShowcaseOptionViewModel(configuration),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: themeExtension.spacing,
+        spacing: widgetShowcaseThemeExtension.spacing,
         children: [
           const _Title(),
           const _TextOption(),
           Row(
-            spacing: themeExtension.spacing,
+            spacing: widgetShowcaseThemeExtension.spacing,
             children: const [Expanded(child: _MaxLinesOption()), Expanded(child: _OverflowOption())],
           ),
           Row(
-            spacing: themeExtension.spacing,
+            spacing: widgetShowcaseThemeExtension.spacing,
             children: const [Expanded(child: _TextAlignOption()), Expanded(child: _StyleOption())],
           ),
         ],

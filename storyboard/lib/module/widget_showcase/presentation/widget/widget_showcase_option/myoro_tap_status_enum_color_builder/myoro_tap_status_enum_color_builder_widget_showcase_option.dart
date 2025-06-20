@@ -35,13 +35,12 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOption extends Stateless
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      spacing: themeExtension.spacing,
+      spacing: widgetShowcaseThemeExtension.spacing,
       children: [
         if (title != null) Text(title!, style: checkboxThemeExtension.labelTextStyle),
         if (checkboxConfiguration != null) MyoroCheckbox(configuration: checkboxConfiguration!),

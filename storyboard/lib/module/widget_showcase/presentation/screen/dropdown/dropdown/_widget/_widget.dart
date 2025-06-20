@@ -6,11 +6,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      spacing: widgetShowcaseOptionThemeExtension.spacing,
+      spacing: widgetShowcaseThemeExtension.spacing,
       children: const [
         _Title('MyoroSingularDropdown'),
         Flexible(child: _SingularDropdown()),

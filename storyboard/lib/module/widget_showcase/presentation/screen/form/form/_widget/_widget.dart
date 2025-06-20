@@ -7,7 +7,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroFormWidgetShowcaseScreenViewModel>();
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return MyoroForm<String>(
       configuration: MyoroFormConfiguration(
@@ -19,18 +19,18 @@ final class _Widget extends StatelessWidget {
       builder: (request, formController) {
         return Column(
           mainAxisSize: MainAxisSize.min,
-          spacing: widgetShowcaseOptionThemeExtension.spacing,
+          spacing: widgetShowcaseThemeExtension.spacing,
           children: [
             Text(
               'Type "Kitty" to successfully complete the form.',
               textAlign: TextAlign.center,
-              style: widgetShowcaseOptionThemeExtension.labelTextStyle,
+              style: widgetShowcaseThemeExtension.labelTextStyle,
             ),
             Flexible(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: widgetShowcaseOptionThemeExtension.spacing,
+                spacing: widgetShowcaseThemeExtension.spacing,
                 children: [const Flexible(child: _Input()), IntrinsicWidth(child: _SubmitButton(formController))],
               ),
             ),

@@ -10,7 +10,7 @@ final class _AppBarMenuButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.appBarMenuButtonIcon),
+        iconConfiguration: MyoroIconConfiguration(icon: themeExtension.appBarMenuButtonIcon),
       ),
     );
   }

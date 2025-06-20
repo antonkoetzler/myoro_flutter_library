@@ -12,7 +12,7 @@ final class _SubmitButton extends StatelessWidget {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => formController.fetch()),
-        textConfiguration: const MyoroIconTextButtonTextConfiguration(text: 'Submit'),
+        textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
       ),
     );
   }

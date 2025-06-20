@@ -13,7 +13,7 @@ final class _WidgetOptionsButton extends StatelessWidget {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(viewModel)),
-        iconConfiguration: MyoroIconTextButtonIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
+        iconConfiguration: MyoroIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
         padding: screenThemeExtension.buttonPadding,
       ),
     );

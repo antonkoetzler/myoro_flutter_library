@@ -6,10 +6,10 @@ final class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Center(
-      child: Text('This is the body of a MyoroScreen!', style: widgetShowcaseOptionThemeExtension.labelTextStyle),
+      child: Text('This is the body of a MyoroScreen!', style: widgetShowcaseThemeExtension.labelTextStyle),
     );
   }
 }

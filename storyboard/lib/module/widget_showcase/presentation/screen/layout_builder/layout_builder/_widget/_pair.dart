@@ -9,11 +9,11 @@ final class _Pair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      spacing: widgetShowcaseOptionThemeExtension.spacing,
+      spacing: widgetShowcaseThemeExtension.spacing,
       children: [Flexible(child: _PairText(minString)), Flexible(child: _PairText(maxString))],
     );
   }

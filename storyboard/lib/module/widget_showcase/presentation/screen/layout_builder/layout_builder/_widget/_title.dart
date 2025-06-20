@@ -6,11 +6,11 @@ final class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Text(
       'Constraints of the [MyoroLayoutBuilder]. Resize the window to update it\'s values.',
-      style: widgetShowcaseOptionThemeExtension.labelTextStyle,
+      style: widgetShowcaseThemeExtension.labelTextStyle,
     );
   }
 }

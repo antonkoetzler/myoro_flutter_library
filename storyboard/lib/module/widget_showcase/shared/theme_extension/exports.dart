@@ -1,1 +1,1 @@
-export 'widget_showcase_option_theme_extension.dart';
+export 'widget_showcase_theme_extension.dart';

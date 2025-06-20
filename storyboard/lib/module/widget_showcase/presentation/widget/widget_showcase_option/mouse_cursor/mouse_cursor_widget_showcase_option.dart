@@ -23,7 +23,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
         menuConfiguration: MyoroMenuConfiguration(
           request: kMyoroTestCursors.toSet,
           itemBuilder: (cursor) {
-            return MyoroMenuItem(textConfiguration: MyoroIconTextButtonTextConfiguration(text: _getCursorName(cursor)));
+            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _getCursorName(cursor)));
           },
         ),
       ),

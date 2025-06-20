@@ -23,10 +23,10 @@ final class _SelectionInputPair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<PaddingWidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Row(
-      spacing: themeExtension.spacing,
+      spacing: widgetShowcaseThemeExtension.spacing,
       children: [
         Expanded(child: _SelectionInput(label: leftLabel, onChanged: leftOnChanged)),
         Expanded(child: _SelectionInput(label: rightLabel, onChanged: rightOnChanged)),

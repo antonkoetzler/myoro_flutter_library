@@ -6,11 +6,8 @@ final class _ValidationOptionMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final widgetShowcaseOptionThemeExtension = context.read<WidgetShowcaseOptionThemeExtension>();
+    final widgetShowcaseThemeExtension = context.read<WidgetShowcaseThemeExtension>();
 
-    return Text(
-      'Submit text "123" to see a validation message',
-      style: widgetShowcaseOptionThemeExtension.labelTextStyle,
-    );
+    return Text('Submit text "123" to see a validation message', style: widgetShowcaseThemeExtension.labelTextStyle);
   }
 }
