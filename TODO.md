@@ -34,7 +34,7 @@
   - How to handle `StatefulWidget`s and setting fields of a view model dependent on the `StatefulWidget`s fields (See `MyoroAccordionState.configuration`)
 - Standards of state management
 - Manipulating the UI of widgets via `ThemeExtension` overloading
-- `ThemeExtension` overriding
+- `ThemeExtension` overriding and in general the styling of widgets
 
 5. chore: Redo deploying and GitHub Actions
 6. feature: Publish to pub.dev
