@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// [MyoroInputConfiguration.validation] option of [MyoroInputWidgetShowcase].
+/// [MyoroInputConfiguration.validation] option of [MyoroInputWidgetShowcaseScreen].
 final class _ValidationOption extends StatelessWidget {
   const _ValidationOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

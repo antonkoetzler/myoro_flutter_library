@@ -1,12 +1,12 @@
-part of '../myoro_dialog_modal_widget_showcase.dart';
+part of '../myoro_dialog_modal_widget_showcase_screen.dart';
 
-/// [MyoroDialogModalConfiguration.confirmButtonText] option of [MyoroDialogModalWidgetShowcase].
+/// [MyoroDialogModalConfiguration.confirmButtonText] option of [MyoroDialogModalWidgetShowcaseScreen].
 final class _ConfirmButtonTextOption extends StatelessWidget {
   const _ConfirmButtonTextOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDialogModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(
       configuration: MyoroInputConfiguration(

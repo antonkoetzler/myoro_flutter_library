@@ -1,12 +1,12 @@
-part of '../myoro_tooltip_widget_showcase.dart';
+part of '../myoro_tooltip_widget_showcase_screen.dart';
 
-/// [MyoroTooltipConfiguration.margin] option of [MyoroTooltipWidgetShowcase].
+/// [MyoroTooltipConfiguration.margin] option of [MyoroTooltipWidgetShowcaseScreen].
 final class _MarginOption extends StatelessWidget {
   const _MarginOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroTooltipWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
 
     return PaddingWidgetShowcaseOption(
       configuration: PaddingWidgetShowcaseOptionConfiguration(

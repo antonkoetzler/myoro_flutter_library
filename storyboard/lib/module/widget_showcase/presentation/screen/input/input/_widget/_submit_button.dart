@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// Submission button when [MyoroInputWidgetShowcaseState.validationEnabled] is true.
+/// Submission button when [MyoroInputWidgetShowcaseScreenState.validationEnabled] is true.
 final class _SubmitButton extends StatelessWidget {
   const _SubmitButton();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
     final formController = viewModel.state.formController;
 
     return MyoroIconTextButton(

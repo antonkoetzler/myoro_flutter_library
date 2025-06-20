@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// Actual [MyoroInput] of [MyoroInputWidgetShowcase].
+/// Actual [MyoroInput] of [MyoroInputWidgetShowcaseScreen].
 final class _Input extends StatelessWidget {
   const _Input();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
     return MyoroInput(configuration: viewModel.configuration(context, const _Suffix()));
   }
 }

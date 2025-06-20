@@ -1,4 +1,4 @@
-part of '../myoro_layout_builder_widget_showcase.dart';
+part of '../myoro_layout_builder_widget_showcase_screen.dart';
 
 /// Pair of [BoxConstraints] values, a pair between either the min/max constraints of the width or height.
 final class _Pair extends StatelessWidget {

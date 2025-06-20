@@ -38,82 +38,82 @@ final class WidgetShowcaseModule implements Module {
 
       // ########## Widget showcases ##########
       // Accordions
-      const MyoroAccordionWidgetShowcaseThemeExtension.builder(),
+      const MyoroAccordionWidgetShowcaseScreenThemeExtension.builder(),
 
       // Apps
-      const MyoroAppWidgetShowcaseThemeExtension.builder(),
+      const MyoroAppWidgetShowcaseScreenThemeExtension.builder(),
 
       // App bars
-      const MyoroAppBarWidgetShowcaseThemeExtension.builder(),
+      const MyoroAppBarWidgetShowcaseScreenThemeExtension.builder(),
 
       // Buttons
-      const MyoroButtonWidgetShowcaseThemeExtension.builder(),
-      const MyoroIconTextButtonWidgetShowcaseThemeExtension.builder(),
+      const MyoroButtonWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroIconTextButtonWidgetShowcaseScreenThemeExtension.builder(),
 
       // Cards
-      MyoroCardWidgetShowcaseThemeExtension.builder(textTheme),
+      MyoroCardWidgetShowcaseScreenThemeExtension.builder(textTheme),
 
       // Carousels
-      const MyoroCarouselWidgetShowcaseThemeExtension.builder(),
+      const MyoroCarouselWidgetShowcaseScreenThemeExtension.builder(),
 
       // Checkboxes
-      const MyoroCheckboxWidgetShowcaseThemeExtension.builder(),
-      const MyoroGroupCheckboxWidgetShowcaseThemeExtension.builder(),
+      const MyoroCheckboxWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension.builder(),
 
       // Dividers
-      const MyoroBasicDividerWidgetShowcaseThemeExtension.builder(),
-      const MyoroResizeDividerWidgetShowcaseThemeExtension.builder(),
+      const MyoroBasicDividerWidgetShowcaseScreenThemeExtension.builder(),
+      MyoroResizeDividerWidgetShowcaseScreenThemeExtension.builder(colorScheme),
 
       // Drawers
-      const MyoroDrawerWidgetShowcaseThemeExtension.builder(),
+      const MyoroDrawerWidgetShowcaseScreenThemeExtension.builder(),
 
       // Dropdowns
-      const MyoroDropdownWidgetShowcaseThemeExtension.builder(),
+      const MyoroDropdownWidgetShowcaseScreenThemeExtension.builder(),
 
       // Forms
-      MyoroFormWidgetShowcaseThemeExtension.builder(),
+      MyoroFormWidgetShowcaseScreenThemeExtension.builder(),
 
       // Graphs
-      MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
-      MyoroPieGraphWidgetShowcaseThemeExtension.builder(),
+      MyoroPieGraphWidgetShowcaseScreenThemeExtension.builder(),
+      MyoroPieGraphWidgetShowcaseScreenThemeExtension.builder(),
 
       // Inputs
-      const MyoroDatePickerInputWidgetShowcaseThemeExtension.builder(),
-      MyoroInputWidgetShowcaseThemeExtension.builder(),
-      const MyoroSearchInputWidgetShowcaseThemeExtension.builder(),
+      const MyoroDatePickerInputWidgetShowcaseScreenThemeExtension.builder(),
+      MyoroInputWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroSearchInputWidgetShowcaseScreenThemeExtension.builder(),
 
       // Layout builders
-      const MyoroLayoutBuilderWidgetShowcaseThemeExtension.builder(),
+      const MyoroLayoutBuilderWidgetShowcaseScreenThemeExtension.builder(),
 
       // Loaders
-      const MyoroCircularLoaderWidgetShowcaseThemeExtension.builder(),
+      const MyoroCircularLoaderWidgetShowcaseScreenThemeExtension.builder(),
 
       // Menus
-      const MyoroMenuWidgetShowcaseThemeExtension.builder(),
+      const MyoroMenuWidgetShowcaseScreenThemeExtension.builder(),
 
       // Modals
-      MyoroDialogModalWidgetShowcaseThemeExtension.builder(),
-      const MyoroModalWidgetShowcaseThemeExtension.builder(),
+      MyoroDialogModalWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroModalWidgetShowcaseScreenThemeExtension.builder(),
 
       // Radios
-      const MyoroGroupRadioWidgetShowcaseThemeExtension.builder(),
-      const MyoroRadioWidgetShowcaseThemeExtension.builder(),
+      const MyoroGroupRadioWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroRadioWidgetShowcaseScreenThemeExtension.builder(),
 
       // Screens
-      const MyoroScreenWidgetShowcaseThemeExtension.builder(),
+      const MyoroScreenWidgetShowcaseScreenThemeExtension.builder(),
 
       // Sliders
-      const MyoroSliderWidgetShowcaseThemeExtension.builder(),
+      const MyoroSliderWidgetShowcaseScreenThemeExtension.builder(),
 
       // Snack bars
-      const MyoroSnackBarWidgetShowcaseThemeExtension.builder(),
-      const MyoroSnackBarContainerWidgetShowcaseThemeExtension.builder(),
+      const MyoroSnackBarWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension.builder(),
 
       // Tables
-      const MyoroTableWidgetShowcaseThemeExtension.builder(),
+      const MyoroTableWidgetShowcaseScreenThemeExtension.builder(),
 
       // Tooltips
-      const MyoroTooltipWidgetShowcaseThemeExtension.builder(),
+      const MyoroTooltipWidgetShowcaseScreenThemeExtension.builder(),
       // ######################################
     ];
   }

@@ -1,12 +1,12 @@
-part of '../myoro_circular_loader_widget_showcase.dart';
+part of '../myoro_circular_loader_widget_showcase_screen.dart';
 
-/// [MyoroCircularLoaderConfiguration.size] option of [MyoroCircularLoaderWidgetShowcase].
+/// [MyoroCircularLoaderConfiguration.size] option of [MyoroCircularLoaderWidgetShowcaseScreen].
 final class _SizeOption extends StatelessWidget {
   const _SizeOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroCircularLoaderWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroCircularLoaderWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(

@@ -17,23 +17,37 @@ mixin _$MyoroResizeDividerWidgetShowcaseScreenThemeExtensionMixin
       this as MyoroResizeDividerWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroResizeDividerWidgetShowcaseScreenThemeExtension copyWith() {
-    return self;
+  MyoroResizeDividerWidgetShowcaseScreenThemeExtension copyWith({
+    double? kittySize,
+    BorderRadius? kittyBorderRadius,
+    Color? coverColor,
+  }) {
+    return MyoroResizeDividerWidgetShowcaseScreenThemeExtension(
+      kittySize: kittySize ?? self.kittySize,
+      kittyBorderRadius: kittyBorderRadius ?? self.kittyBorderRadius,
+      coverColor: coverColor ?? self.coverColor,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return other is MyoroResizeDividerWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+        other.runtimeType == runtimeType &&
+        other.kittySize == self.kittySize &&
+        other.kittyBorderRadius == self.kittyBorderRadius &&
+        other.coverColor == self.coverColor;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll(const []);
+    return Object.hash(self.kittySize, self.kittyBorderRadius, self.coverColor);
   }
 
   @override
   String toString() =>
       'MyoroResizeDividerWidgetShowcaseScreenThemeExtension(\n'
+      '  kittySize: ${self.kittySize},\n'
+      '  kittyBorderRadius: ${self.kittyBorderRadius},\n'
+      '  coverColor: ${self.coverColor},\n'
       ');';
 }

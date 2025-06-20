@@ -1,1 +1,1 @@
-export 'myoro_snack_bar_widget_showcase_theme_extension.dart';
+export 'myoro_snack_bar_widget_showcase_screen_theme_extension.dart';

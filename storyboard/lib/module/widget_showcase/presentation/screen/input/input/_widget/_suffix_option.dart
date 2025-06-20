@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// [MyoroInputConfiguration.suffix] option of [MyoroInputWidgetShowcase].
+/// [MyoroInputConfiguration.suffix] option of [MyoroInputWidgetShowcaseScreen].
 final class _SuffixOption extends StatelessWidget {
   const _SuffixOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

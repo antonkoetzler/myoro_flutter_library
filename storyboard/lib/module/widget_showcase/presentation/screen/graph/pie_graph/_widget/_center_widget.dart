@@ -1,4 +1,4 @@
-part of '../myoro_pie_graph_widget_showcase.dart';
+part of '../myoro_pie_graph_widget_showcase_screen.dart';
 
 /// [MyoroPieGraphConfiguration.centerWidget] of [_Widget].
 final class _CenterWidget extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _CenterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroPieGraphWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroPieGraphWidgetShowcaseScreenThemeExtension>();
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,

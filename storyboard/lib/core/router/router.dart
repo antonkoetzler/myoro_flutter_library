@@ -26,5 +26,5 @@ Widget _widgetShowcaseScreenBuilder(_, GoRouterState state) {
     (MyoroWidgetListEnum value) => value.widgetNames.contains(widgetName),
   );
   assert(widgetListingEnum != null, '[router]: $_widgetNameKey provided does not exist in [WidgetListingEnum].');
-  return MyoroWidgetListEnum.getWidgetShowcase(widgetName);
+  return MyoroWidgetListEnum.getWidgetShowcaseScreen(widgetName);
 }

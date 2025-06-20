@@ -1,12 +1,12 @@
-part of '../myoro_dialog_modal_widget_showcase.dart';
+part of '../myoro_dialog_modal_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroDialogModalWidgetShowcase].
+/// [WidgetShowcaseScreenScreenConfiguration.widget] of [MyoroDialogModalWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDialogModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(

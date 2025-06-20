@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// [MyoroInputConfiguration.showClearTextButton] of [MyoroInputWidgetShowcase].
+/// [MyoroInputConfiguration.showClearTextButton] of [MyoroInputWidgetShowcaseScreen].
 final class _ShowClearTextButtonOption extends StatelessWidget {
   const _ShowClearTextButtonOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

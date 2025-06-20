@@ -1,12 +1,12 @@
-part of '../myoro_tooltip_widget_showcase.dart';
+part of '../myoro_tooltip_widget_showcase_screen.dart';
 
-/// [MyoroTooltipConfiguration.text] option of [MyoroTooltipWidgetShowcase].
+/// [MyoroTooltipConfiguration.text] option of [MyoroTooltipWidgetShowcaseScreen].
 final class _TextOption extends StatelessWidget {
   const _TextOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroTooltipWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(
       configuration: MyoroInputConfiguration(

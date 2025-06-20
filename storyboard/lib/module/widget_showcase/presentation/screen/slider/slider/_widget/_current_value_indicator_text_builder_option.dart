@@ -1,12 +1,12 @@
-part of '../myoro_slider_widget_showcase.dart';
+part of '../myoro_slider_widget_showcase_screen.dart';
 
-/// [MyoroSliderConfiguration.currentValueIndicatorTextBuilder] of [MyoroSliderWidgetShowcase].
+/// [MyoroSliderConfiguration.currentValueIndicatorTextBuilder] of [MyoroSliderWidgetShowcaseScreen].
 final class _CurrentValueIndicatorTextBuilderOption extends StatelessWidget {
   const _CurrentValueIndicatorTextBuilderOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroSliderWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

@@ -1,12 +1,12 @@
-part of '../myoro_modal_widget_showcase.dart';
+part of '../myoro_modal_widget_showcase_screen.dart';
 
-/// [MyoroModalConfiguration.constraints] option of [MyoroModalWidgetShowcase].
+/// [MyoroModalConfiguration.constraints] option of [MyoroModalWidgetShowcaseScreen].
 final class _ConstraintsOption extends StatelessWidget {
   const _ConstraintsOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return BoxConstraintsWidgetShowcaseOption(
       configuration: BoxConstraintsWidgetShowcaseOptionConfiguration(

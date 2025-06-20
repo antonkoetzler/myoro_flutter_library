@@ -1,12 +1,12 @@
-part of '../myoro_modal_widget_showcase.dart';
+part of '../myoro_modal_widget_showcase_screen.dart';
 
-/// [MyoroModalConfiguration.closeButtonPadding] option of [MyoroModalWidgetShowcase].
+/// [MyoroModalConfiguration.closeButtonPadding] option of [MyoroModalWidgetShowcaseScreen].
 final class _CloseButtonPaddingOption extends StatelessWidget {
   const _CloseButtonPaddingOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return PaddingWidgetShowcaseOption(
       configuration: PaddingWidgetShowcaseOptionConfiguration(

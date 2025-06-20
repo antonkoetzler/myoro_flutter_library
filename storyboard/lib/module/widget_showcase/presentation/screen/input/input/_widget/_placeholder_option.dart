@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// [MyoroInputConfiguration.placeholder] option of [MyoroInputWidgetShowcase].
+/// [MyoroInputConfiguration.placeholder] option of [MyoroInputWidgetShowcaseScreen].
 final class _PlaceholderOption extends StatelessWidget {
   const _PlaceholderOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(
       configuration: MyoroInputConfiguration(

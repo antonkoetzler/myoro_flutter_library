@@ -1,12 +1,12 @@
-part of '../myoro_dialog_modal_widget_showcase.dart';
+part of '../myoro_dialog_modal_widget_showcase_screen.dart';
 
-/// [MyoroDialogModalConfiguration.onConfirm] option of [MyoroDialogModalWidgetShowcase].
+/// [MyoroDialogModalConfiguration.onConfirm] option of [MyoroDialogModalWidgetShowcaseScreen].
 final class _OnConfirmOption extends StatelessWidget {
   const _OnConfirmOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDialogModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

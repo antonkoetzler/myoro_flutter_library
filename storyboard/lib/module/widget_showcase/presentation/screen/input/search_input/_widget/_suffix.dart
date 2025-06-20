@@ -1,4 +1,4 @@
-part of '../myoro_search_input_widget_showcase.dart';
+part of '../myoro_search_input_widget_showcase_screen.dart';
 
 /// [MyoroInputConfiguration.suffix]'s [Widget] of [_Widget].
 final class _Suffix extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _Suffix extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroInputWidgetShowcaseScreenThemeExtension>();
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,

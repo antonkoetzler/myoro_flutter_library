@@ -1,4 +1,4 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
 /// [MyoroInputConfiguration.validation] message to inform the user how to use [_ValidationOption].
 final class _ValidationOptionMessage extends StatelessWidget {

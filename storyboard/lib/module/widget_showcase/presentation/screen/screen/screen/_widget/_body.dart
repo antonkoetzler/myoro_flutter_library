@@ -1,4 +1,4 @@
-part of '../myoro_screen_widget_showcase.dart';
+part of '../myoro_screen_widget_showcase_screen.dart';
 
 /// [MyoroScreenConfiguration.body] of [_Widget].
 final class _Body extends StatelessWidget {

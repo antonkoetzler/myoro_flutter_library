@@ -1,12 +1,12 @@
-part of '../myoro_menu_widget_showcase.dart';
+part of '../myoro_menu_widget_showcase_screen.dart';
 
-/// [MyoroMenuConfiguration.onEndReachedRequest] option of [MyoroMenuWidgetShowcase].
+/// [MyoroMenuConfiguration.onEndReachedRequest] option of [MyoroMenuWidgetShowcaseScreen].
 final class _OnEndReachedRequestOption extends StatelessWidget {
   const _OnEndReachedRequestOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroMenuWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

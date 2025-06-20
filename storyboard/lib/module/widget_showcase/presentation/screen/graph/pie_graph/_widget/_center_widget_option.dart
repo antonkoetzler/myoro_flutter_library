@@ -1,12 +1,12 @@
-part of '../myoro_pie_graph_widget_showcase.dart';
+part of '../myoro_pie_graph_widget_showcase_screen.dart';
 
-/// [MyoroPieGraphConfiguration.centerWidget] option of [MyoroPieGraphWidgetShowcase].
+/// [MyoroPieGraphConfiguration.centerWidget] option of [MyoroPieGraphWidgetShowcaseScreen].
 final class _CenterWidgetOption extends StatelessWidget {
   const _CenterWidgetOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroPieGraphWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroPieGraphWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

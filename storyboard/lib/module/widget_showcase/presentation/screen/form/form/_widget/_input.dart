@@ -1,4 +1,4 @@
-part of '../myoro_form_widget_showcase.dart';
+part of '../myoro_form_widget_showcase_screen.dart';
 
 /// [MyoroInput] within the [MyoroForm] in [_Widget].
 final class _Input extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _Input extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroFormWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroFormWidgetShowcaseScreenViewModel>();
     return MyoroInput(configuration: MyoroInputConfiguration(controller: viewModel.state.inputController));
   }
 }

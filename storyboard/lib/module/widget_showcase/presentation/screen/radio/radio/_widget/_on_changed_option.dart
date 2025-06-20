@@ -1,12 +1,12 @@
-part of '../myoro_radio_widget_showcase.dart';
+part of '../myoro_radio_widget_showcase_screen.dart';
 
-/// [MyoroDialogModalConfiguration.onChanged] option of [MyoroDialogModalWidgetShowcase].
+/// [MyoroDialogModalConfiguration.onChanged] option of [MyoroDialogModalWidgetShowcaseScreen].
 final class _OnChangedOption extends StatelessWidget {
   const _OnChangedOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroRadioWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroRadioWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// [MyoroInputConfiguration.inputStyle] option of [MyoroInputWidgetShowcase].
+/// [MyoroInputConfiguration.inputStyle] option of [MyoroInputWidgetShowcaseScreen].
 final class _InputStyleOption extends StatelessWidget {
   const _InputStyleOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroInputStyleEnumWidgetShowcaseOption(
       initiallySelectedStyle: viewModel.state.inputStyle,

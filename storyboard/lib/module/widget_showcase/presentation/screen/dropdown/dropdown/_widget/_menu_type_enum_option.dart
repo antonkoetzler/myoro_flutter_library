@@ -1,12 +1,12 @@
-part of '../myoro_dropdown_widget_showcase.dart';
+part of '../myoro_dropdown_widget_showcase_screen.dart';
 
-/// [MyoroDropdownConfiguration.menuTypeEnum] of [MyoroDropdownWidgetShowcase].
+/// [MyoroDropdownConfiguration.menuTypeEnum] of [MyoroDropdownWidgetShowcaseScreen].
 final class _MenuTypeEnumOption extends StatelessWidget {
   const _MenuTypeEnumOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDropdownWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return MyoroDropdownMenuTypeEnumWidgetShowcaseOption(
       initiallySelectedItem: viewModel.state.menuTypeEnum,

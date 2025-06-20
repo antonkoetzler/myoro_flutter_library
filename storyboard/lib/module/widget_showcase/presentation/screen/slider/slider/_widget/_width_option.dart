@@ -1,12 +1,12 @@
-part of '../myoro_slider_widget_showcase.dart';
+part of '../myoro_slider_widget_showcase_screen.dart';
 
-/// [MyoroSliderConfiguration.width] option of [MyoroSliderWidgetShowcase].
+/// [MyoroSliderConfiguration.width] option of [MyoroSliderWidgetShowcaseScreen].
 final class _WidthOption extends StatelessWidget {
   const _WidthOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroSliderWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(

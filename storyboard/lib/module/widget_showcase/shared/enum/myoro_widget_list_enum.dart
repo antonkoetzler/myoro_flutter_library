@@ -118,87 +118,87 @@ enum MyoroWidgetListEnum {
   // Tooltips
   static const myoroTooltipTitle = 'MyoroTooltip';
 
-  static Widget getWidgetShowcase(String widgetName) {
+  static Widget getWidgetShowcaseScreen(String widgetName) {
     return switch (widgetName) {
       // Accordions
-      myoroAccordionTitle => const MyoroAccordionWidgetShowcase(),
+      myoroAccordionTitle => const MyoroAccordionWidgetShowcaseScreen(),
 
       // App bars
-      myoroAppBarTitle => const MyoroAppBarWidgetShowcase(),
+      myoroAppBarTitle => const MyoroAppBarWidgetShowcaseScreen(),
 
       // Apps
-      myoroAppTitle => const MyoroAppWidgetShowcase(),
+      myoroAppTitle => const MyoroAppWidgetShowcaseScreen(),
 
       // Buttons
-      myoroButtonTitle => const MyoroButtonWidgetShowcase(),
-      myoroIconTextButtonTitle => const MyoroIconTextButtonWidgetShowcase(),
+      myoroButtonTitle => const MyoroButtonWidgetShowcaseScreen(),
+      myoroIconTextButtonTitle => const MyoroIconTextButtonWidgetShowcaseScreen(),
 
       // Cards
-      myoroCardTitle => const MyoroCardWidgetShowcase(),
+      myoroCardTitle => const MyoroCardWidgetShowcaseScreen(),
 
       // Carousels
-      myoroCarouselTitle => const MyoroCarouselWidgetShowcase(),
+      myoroCarouselTitle => const MyoroCarouselWidgetShowcaseScreen(),
 
       // Checkboxes
-      myoroCheckboxTitle => const MyoroCheckboxWidgetShowcase(),
-      myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcase(),
+      myoroCheckboxTitle => const MyoroCheckboxWidgetShowcaseScreen(),
+      myoroGroupCheckboxTitle => const MyoroGroupCheckboxWidgetShowcaseScreen(),
 
       // Dividers
-      myoroBasicDividerTitle => const MyoroBasicDividerWidgetShowcase(),
-      myoroResizeDividerTitle => const MyoroResizeDividerWidgetShowcase(),
+      myoroBasicDividerTitle => const MyoroBasicDividerWidgetShowcaseScreen(),
+      myoroResizeDividerTitle => const MyoroResizeDividerWidgetShowcaseScreen(),
 
       // Drawers
-      myoroDrawerTitle => const MyoroDrawerWidgetShowcase(),
+      myoroDrawerTitle => const MyoroDrawerWidgetShowcaseScreen(),
 
       // Dropdowns
-      myoroDropdownsTitle => const MyoroDropdownWidgetShowcase(),
+      myoroDropdownsTitle => const MyoroDropdownWidgetShowcaseScreen(),
 
       // Forms
-      myoroFormTitle => const MyoroFormWidgetShowcase(),
+      myoroFormTitle => const MyoroFormWidgetShowcaseScreen(),
 
       // Graphs
-      myoroBarGraphTitle => const MyoroBarGraphWidgetShowcase(),
-      myoroPieGraphTitle => const MyoroPieGraphWidgetShowcase(),
+      myoroBarGraphTitle => const MyoroBarGraphWidgetShowcaseScreen(),
+      myoroPieGraphTitle => const MyoroPieGraphWidgetShowcaseScreen(),
 
       // Inputs
-      myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcase(),
-      myoroInputTitle => const MyoroInputWidgetShowcase(),
-      myoroSearchInputTitle => const MyoroSearchInputWidgetShowcase(),
+      myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcaseScreen(),
+      myoroInputTitle => const MyoroInputWidgetShowcaseScreen(),
+      myoroSearchInputTitle => const MyoroSearchInputWidgetShowcaseScreen(),
 
       // Layout builders
-      myoroLayoutBuilderTitle => const MyoroLayoutBuilderWidgetShowcase(),
+      myoroLayoutBuilderTitle => const MyoroLayoutBuilderWidgetShowcaseScreen(),
 
       // Loaders
-      myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcase(),
+      myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcaseScreen(),
 
       // Menus
-      myoroMenuTitle => const MyoroMenuWidgetShowcase(),
+      myoroMenuTitle => const MyoroMenuWidgetShowcaseScreen(),
 
       // Modals
-      myoroDialogModalTitle => const MyoroDialogModalWidgetShowcase(),
-      myoroModalTitle => const MyoroModalWidgetShowcase(),
+      myoroDialogModalTitle => const MyoroDialogModalWidgetShowcaseScreen(),
+      myoroModalTitle => const MyoroModalWidgetShowcaseScreen(),
 
       // Radios
-      myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcase(),
-      myoroRadioTitle => const MyoroRadioWidgetShowcase(),
+      myoroGroupRadioTitle => const MyoroGroupRadioWidgetShowcaseScreen(),
+      myoroRadioTitle => const MyoroRadioWidgetShowcaseScreen(),
 
       // Screens
-      myoroScreenTitle => const MyoroScreenWidgetShowcase(),
+      myoroScreenTitle => const MyoroScreenWidgetShowcaseScreen(),
 
       // Sliders
-      myoroSliderTitle => const MyoroSliderWidgetShowcase(),
+      myoroSliderTitle => const MyoroSliderWidgetShowcaseScreen(),
 
       // Snack bars
-      myoroSnackBarTitle => const MyoroSnackBarWidgetShowcase(),
-      myoroSnackBarContainerTitle => const MyoroSnackBarContainerWidgetShowcase(),
+      myoroSnackBarTitle => const MyoroSnackBarWidgetShowcaseScreen(),
+      myoroSnackBarContainerTitle => const MyoroSnackBarContainerWidgetShowcaseScreen(),
 
       // Tables
-      myoroTableTitle => const MyoroTableWidgetShowcase(),
+      myoroTableTitle => const MyoroTableWidgetShowcaseScreen(),
 
       // Tooltips
-      myoroTooltipTitle => const MyoroTooltipWidgetShowcase(),
+      myoroTooltipTitle => const MyoroTooltipWidgetShowcaseScreen(),
 
-      _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcase]: [Widget] does not exist.'),
+      _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcaseScreen]: [Widget] does not exist.'),
     };
   }
 

@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// [MyoroInputConfiguration.checkboxOnChanged] option of [MyoroInputWidgetShowcase].
+/// [MyoroInputConfiguration.checkboxOnChanged] option of [MyoroInputWidgetShowcaseScreen].
 final class _CheckboxOnChangedOption extends StatelessWidget {
   const _CheckboxOnChangedOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

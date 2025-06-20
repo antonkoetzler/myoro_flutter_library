@@ -1,12 +1,12 @@
-part of '../myoro_snack_bar_widget_showcase.dart';
+part of '../myoro_snack_bar_widget_showcase_screen.dart';
 
-/// [MyoroSnackBarConfiguration.child] option of [MyoroSnackBarWidgetShowcase].
+/// [MyoroSnackBarConfiguration.child] option of [MyoroSnackBarWidgetShowcaseScreen].
 final class _ChildOption extends StatelessWidget {
   const _ChildOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroSnackBarWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

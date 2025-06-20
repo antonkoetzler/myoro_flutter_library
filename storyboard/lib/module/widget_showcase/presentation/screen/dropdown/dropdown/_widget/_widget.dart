@@ -1,6 +1,6 @@
-part of '../myoro_dropdown_widget_showcase.dart';
+part of '../myoro_dropdown_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroDropdownWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroDropdownWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 

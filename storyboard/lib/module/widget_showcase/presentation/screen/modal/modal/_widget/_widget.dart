@@ -1,12 +1,12 @@
-part of '../myoro_modal_widget_showcase.dart';
+part of '../myoro_modal_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroModalWidgetShowcase].
+/// [WidgetShowcaseScreenScreenConfiguration.widget] of [MyoroModalWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return Navigator(
       key: viewModel.state.navigatorKey,

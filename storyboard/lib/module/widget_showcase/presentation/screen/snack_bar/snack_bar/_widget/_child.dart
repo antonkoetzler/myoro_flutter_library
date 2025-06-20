@@ -1,4 +1,4 @@
-part of '../myoro_snack_bar_widget_showcase.dart';
+part of '../myoro_snack_bar_widget_showcase_screen.dart';
 
 /// [MyoroSnackBarConfiguration.child] of [_Widget].
 final class _Child extends StatelessWidget {

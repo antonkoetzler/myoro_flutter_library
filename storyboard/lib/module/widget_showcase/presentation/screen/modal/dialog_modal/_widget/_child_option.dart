@@ -1,12 +1,12 @@
-part of '../myoro_dialog_modal_widget_showcase.dart';
+part of '../myoro_dialog_modal_widget_showcase_screen.dart';
 
-/// [MyoroDialogModalConfiguration.child] option of [MyoroDialogModalWidgetShowcase].
+/// [MyoroDialogModalConfiguration.child] option of [MyoroDialogModalWidgetShowcaseScreen].
 final class _ChildOption extends StatelessWidget {
   const _ChildOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDialogModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

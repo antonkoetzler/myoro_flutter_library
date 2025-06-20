@@ -1,12 +1,12 @@
-part of '../myoro_modal_widget_showcase.dart';
+part of '../myoro_modal_widget_showcase_screen.dart';
 
-/// [MyoroModalConfiguration.barrierDismissable] option of [MyoroModalWidgetShowcase].
+/// [MyoroModalConfiguration.barrierDismissable] option of [MyoroModalWidgetShowcaseScreen].
 final class _BarrierDismissableOption extends StatelessWidget {
   const _BarrierDismissableOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroModalWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

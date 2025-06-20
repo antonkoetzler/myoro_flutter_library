@@ -1,12 +1,12 @@
-part of '../myoro_group_radio_widget_showcase.dart';
+part of '../myoro_group_radio_widget_showcase_screen.dart';
 
-/// [MyoroGroupRadioConfiguration.runRunSpacing] option of [MyoroGroupRadioWidgetShowcase].
+/// [MyoroGroupRadioConfiguration.runRunSpacing] option of [MyoroGroupRadioWidgetShowcaseScreen].
 final class _RunSpacingOption extends StatelessWidget {
   const _RunSpacingOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroGroupRadioWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroGroupRadioWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(

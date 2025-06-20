@@ -1,13 +1,12 @@
-part of '../myoro_modal_widget_showcase.dart';
+part of '../myoro_modal_widget_showcase_screen.dart';
 
-/// [MyoroModalConfiguration.title] option of [MyoroModalWidgetShowcase].
+/// [MyoroModalConfiguration.title] option of [MyoroModalWidgetShowcaseScreen].
 final class _TitleOption extends StatelessWidget {
   const _TitleOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroModalWidgetShowcaseViewModel>();
-
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
     return MyoroInput(configuration: MyoroInputConfiguration(onChanged: (text) => viewModel.state.title = text));
   }
 }

@@ -1,12 +1,12 @@
-part of '../myoro_form_widget_showcase.dart';
+part of '../myoro_form_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroFormWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroFormWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroFormWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroFormWidgetShowcaseScreenViewModel>();
     final widgetShowcaseOptionThemeExtension = context.resolveThemeExtension<WidgetShowcaseOptionThemeExtension>();
 
     return MyoroForm<String>(

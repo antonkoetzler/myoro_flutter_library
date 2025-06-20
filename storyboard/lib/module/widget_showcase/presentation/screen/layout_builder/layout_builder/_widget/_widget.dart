@@ -1,6 +1,6 @@
-part of '../myoro_layout_builder_widget_showcase.dart';
+part of '../myoro_layout_builder_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroLayoutBuilderWidgetShowcase].
+/// [WidgetShowcaseScreenScreenConfiguration.widget] of [MyoroLayoutBuilderWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 

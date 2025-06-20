@@ -1,4 +1,4 @@
-part of '../myoro_form_widget_showcase.dart';
+part of '../myoro_form_widget_showcase_screen.dart';
 
 /// Kitty that is shown when the form is completed successfully.
 final class _Kitty extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _Kitty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseScreenThemeExtension>();
     final borderRadius = themeExtension.kittyBorderRadius;
     final size = themeExtension.kittySize;
 

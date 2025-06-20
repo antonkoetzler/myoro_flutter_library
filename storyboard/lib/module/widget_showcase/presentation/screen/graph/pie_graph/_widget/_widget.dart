@@ -1,24 +1,16 @@
-part of '../myoro_pie_graph_widget_showcase.dart';
+part of '../myoro_pie_graph_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroPieGraphWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroPieGraphWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroPieGraphWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroPieGraphWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
       listenable: viewModel.state,
-      builder: (_, __) {
-        return MyoroPieGraph(
-          configuration: MyoroPieGraphConfiguration(
-            typeEnum: viewModel.state.typeEnum,
-            centerWidget: viewModel.state.centerWidgetEnabled ? _CenterWidget() : null,
-            items: List.generate(faker.randomGenerator.integer(5), (_) => MyoroPieGraphItem.fake()),
-          ),
-        );
-      },
+      builder: (_, __) => MyoroPieGraph(configuration: viewModel.configuration(const _CenterWidget())),
     );
   }
 }

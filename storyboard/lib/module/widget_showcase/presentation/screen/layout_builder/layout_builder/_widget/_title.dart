@@ -1,4 +1,4 @@
-part of '../myoro_layout_builder_widget_showcase.dart';
+part of '../myoro_layout_builder_widget_showcase_screen.dart';
 
 /// Title of [MyoroLayoutBuilderWidgetShowcase].
 final class _Title extends StatelessWidget {

@@ -1,12 +1,12 @@
-part of '../myoro_snack_bar_widget_showcase.dart';
+part of '../myoro_snack_bar_widget_showcase_screen.dart';
 
-/// [MyoroSnackBarConfiguration.message] of [MyoroSnackBarWidgetShowcase].
+/// [MyoroSnackBarConfiguration.message] of [MyoroSnackBarWidgetShowcaseScreen].
 final class _MessageOption extends StatelessWidget {
   const _MessageOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroSnackBarWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(
       configuration: MyoroInputConfiguration(

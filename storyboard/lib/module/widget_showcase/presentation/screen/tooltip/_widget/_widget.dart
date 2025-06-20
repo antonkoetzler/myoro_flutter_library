@@ -1,12 +1,12 @@
-part of '../myoro_tooltip_widget_showcase.dart';
+part of '../myoro_tooltip_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseConfiguration.widget] of [MyoroTooltipWidgetShowcase].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroTooltipWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroTooltipWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
 
     return MyoroTooltip(
       configuration: viewModel.configuration,

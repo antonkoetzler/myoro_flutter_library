@@ -1,6 +1,6 @@
-part of '../myoro_form_widget_showcase.dart';
+part of '../myoro_form_widget_showcase_screen.dart';
 
-/// Button to submit the [MyoroForm] in [MyoroFormWidgetShowcase].
+/// Button to submit the [MyoroForm] in [MyoroFormWidgetShowcaseScreen].
 final class _SubmitButton extends StatelessWidget {
   final MyoroFormController<String> _formController;
 

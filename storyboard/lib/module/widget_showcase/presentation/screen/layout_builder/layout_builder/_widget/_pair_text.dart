@@ -1,4 +1,4 @@
-part of '../myoro_layout_builder_widget_showcase.dart';
+part of '../myoro_layout_builder_widget_showcase_screen.dart';
 
 /// [Text] of a [_Pair].
 final class _PairText extends StatelessWidget {

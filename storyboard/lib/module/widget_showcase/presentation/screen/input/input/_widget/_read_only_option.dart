@@ -1,12 +1,12 @@
-part of '../myoro_input_widget_showcase.dart';
+part of '../myoro_input_widget_showcase_screen.dart';
 
-/// [MyoroInputConfiguration.readOnly] option of [MyoroInputWidgetShowcase].
+/// [MyoroInputConfiguration.readOnly] option of [MyoroInputWidgetShowcaseScreen].
 final class _ReadOnlyOption extends StatelessWidget {
   const _ReadOnlyOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroInputWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

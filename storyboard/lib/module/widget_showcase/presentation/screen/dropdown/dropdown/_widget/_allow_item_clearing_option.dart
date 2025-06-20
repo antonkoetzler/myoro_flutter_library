@@ -1,12 +1,12 @@
-part of '../myoro_dropdown_widget_showcase.dart';
+part of '../myoro_dropdown_widget_showcase_screen.dart';
 
-/// [MyoroDropdownConfiguration.allowItemClearing] option of [MyoroDropdownWidgetShowcase].
+/// [MyoroDropdownConfiguration.allowItemClearing] option of [MyoroDropdownWidgetShowcaseScreen].
 final class _AllowItemClearingOption extends StatelessWidget {
   const _AllowItemClearingOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroDropdownWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

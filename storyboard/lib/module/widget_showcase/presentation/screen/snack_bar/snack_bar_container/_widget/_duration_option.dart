@@ -1,12 +1,12 @@
-part of '../myoro_snack_bar_container_widget_showcase.dart';
+part of '../myoro_snack_bar_container_widget_showcase_screen.dart';
 
-/// [Duration] option of [MyoroSnackBarContainerWidgetShowcase].
+/// [Duration] option of [MyoroSnackBarContainerWidgetShowcaseScreen].
 final class _DurationOption extends StatelessWidget {
   const _DurationOption();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroSnackBarContainerWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroSnackBarContainerWidgetShowcaseScreenViewModel>();
 
     return MyoroInput.number(
       configuration: MyoroInputConfiguration(
