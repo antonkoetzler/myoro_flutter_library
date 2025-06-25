@@ -42,7 +42,7 @@ final class _WidgetOptionsModal extends StatelessWidget {
                 configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal, padding: EdgeInsets.zero),
               ),
             ] else ...[
-              const SizedBox(height: 5),
+              SizedBox(height: themeExtension.widgetOptionsModalSpacing / 3),
             ],
           ],
         ],

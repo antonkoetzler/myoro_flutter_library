@@ -8,6 +8,10 @@ final class WidgetShowcaseModule implements Module {
   @override
   List<ThemeExtension> themeExtensionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
     return [
+      // ########## Shared ##########
+      WidgetShowcaseThemeExtension.builder(textTheme),
+      // ############################
+
       // ########## Screens ##########
       WidgetShowcaseScreenThemeExtension.builder(),
       // #############################

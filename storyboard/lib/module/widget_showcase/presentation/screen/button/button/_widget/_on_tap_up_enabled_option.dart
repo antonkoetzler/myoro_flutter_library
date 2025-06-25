@@ -11,6 +11,7 @@ final class _OnTapUpEnabledOption extends StatelessWidget {
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Tap up enabled?',
+        value: viewModel.state.onTapUpEnabled,
         onChanged: (value) => viewModel.state.onTapUpEnabled = value,
       ),
     );

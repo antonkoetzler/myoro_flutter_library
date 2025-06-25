@@ -43,15 +43,6 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
     required this.spacing,
   });
 
-  MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : activeColor = colorScheme.onPrimary,
-      checkColor = colorScheme.primary,
-      hoverColor = MyoroColorDesignSystem.transparent,
-      focusColor = MyoroColorDesignSystem.transparent,
-      splashRadius = 0,
-      labelTextStyle = textTheme.headlineSmall!,
-      spacing = 5;
-
   MyoroCheckboxThemeExtension.fake()
     : activeColor = myoroFake<Color>(),
       checkColor = myoroFake<Color>(),
@@ -60,6 +51,15 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       splashRadius = faker.randomGenerator.decimal(),
       labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
       spacing = faker.randomGenerator.decimal();
+
+  MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : activeColor = colorScheme.onPrimary,
+      checkColor = colorScheme.primary,
+      hoverColor = MyoroColorDesignSystem.transparent,
+      focusColor = MyoroColorDesignSystem.transparent,
+      splashRadius = 0,
+      labelTextStyle = textTheme.bodySmall!,
+      spacing = 5;
 
   @override
   MyoroCheckboxThemeExtension lerp(covariant ThemeExtension<MyoroCheckboxThemeExtension>? other, double t) {

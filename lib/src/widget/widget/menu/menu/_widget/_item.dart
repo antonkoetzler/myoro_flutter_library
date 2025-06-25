@@ -2,9 +2,9 @@ part of '../myoro_menu.dart';
 
 /// Item in the [MyoroMenu].
 final class _Item extends StatelessWidget {
-  final MyoroMenuItem _item;
-
   const _Item(this._item);
+
+  final MyoroMenuItem _item;
 
   @override
   Widget build(BuildContext context) {

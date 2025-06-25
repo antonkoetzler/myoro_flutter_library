@@ -9,7 +9,7 @@ final class _Widget extends StatelessWidget {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
-      listenable: viewModel,
+      listenable: viewModel.state,
       builder: (_, __) {
         return MyoroButton(
           configuration: viewModel.configuration(context),

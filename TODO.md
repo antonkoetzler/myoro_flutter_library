@@ -2,9 +2,7 @@
 
 1. chore: Go through every widget showcase looking for bugs
 
-- app
-- app_bar
-- button
+- (**IN PROGRESS**) button
 - card
 - carousel
 - checkbox
@@ -35,5 +33,6 @@
 - Manipulating the UI of widgets via `ThemeExtension` overloading
 - `ThemeExtension` overriding and in general the styling of widgets
 
-4. chore: Redo deploying and GitHub Actions
-5. feature: Publish to pub.dev
+4. chore: Fix pubspec.yaml todo with myoro_flutter_annotations in both pubspecs
+5. chore: Redo deploying and GitHub Actions
+6. feature: Publish to pub.dev

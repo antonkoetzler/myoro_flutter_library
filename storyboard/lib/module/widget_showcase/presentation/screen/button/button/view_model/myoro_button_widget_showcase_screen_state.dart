@@ -39,12 +39,17 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   bool get backgroundColorBuilderEnabled => _backgroundColorBuilderEnabled;
   set backgroundColorBuilderEnabled(bool backgroundColorBuilderEnabled) {
     _backgroundColorBuilderEnabled = backgroundColorBuilderEnabled;
+    if (!_backgroundColorBuilderEnabled) {
+      _idleBackgroundColor = null;
+      _hoverBackgroundColor = null;
+      _tapBackgroundColor = null;
+    }
     notifyListeners();
   }
 
   /// [MyoroButtonConfiguration.backgroundColorBuilder]'s [Color] for [MyoroTapStatusEnum.idle].
   Color? _idleBackgroundColor;
-  Color get idleBackgroundColor => _idleBackgroundColor ?? MyoroColorDesignSystem.transparent;
+  Color? get idleBackgroundColor => _idleBackgroundColor;
   set idleBackgroundColor(Color? idleBackgroundColor) {
     _idleBackgroundColor = idleBackgroundColor;
     notifyListeners();
@@ -52,7 +57,7 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [MyoroButtonConfiguration.backgroundColorBuilder]'s [Color] for [MyoroTapStatusEnum.hover].
   Color? _hoverBackgroundColor;
-  Color get hoverBackgroundColor => _hoverBackgroundColor ?? MyoroColorDesignSystem.transparent;
+  Color? get hoverBackgroundColor => _hoverBackgroundColor;
   set hoverBackgroundColor(Color? hoverBackgroundColor) {
     _hoverBackgroundColor = hoverBackgroundColor;
     notifyListeners();
@@ -60,7 +65,7 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [MyoroButtonConfiguration.backgroundColorBuilder]'s [Color] for [MyoroTapStatusEnum.tap].
   Color? _tapBackgroundColor;
-  Color get tapBackgroundColor => _tapBackgroundColor ?? MyoroColorDesignSystem.transparent;
+  Color? get tapBackgroundColor => _tapBackgroundColor;
   set tapBackgroundColor(Color? tapBackgroundColor) {
     _tapBackgroundColor = tapBackgroundColor;
     notifyListeners();
@@ -71,12 +76,17 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   bool get borderBuilderEnabled => _borderBuilderEnabled;
   set borderBuilderEnabled(bool borderBuilderEnabled) {
     _borderBuilderEnabled = borderBuilderEnabled;
+    if (!_borderBuilderEnabled) {
+      _idleBorderColor = null;
+      _hoverBorderColor = null;
+      _tapBackgroundColor = null;
+    }
     notifyListeners();
   }
 
   /// [MyoroButtonConfiguration.borderBuilder]'s [Color] for [MyoroTapStatusEnum.idle].
   Color? _idleBorderColor;
-  Color get idleBorderColor => _idleBorderColor ?? MyoroColorDesignSystem.transparent;
+  Color? get idleBorderColor => _idleBorderColor;
   set idleBorderColor(Color? idleBorderColor) {
     _idleBorderColor = idleBorderColor;
     notifyListeners();
@@ -84,7 +94,7 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [MyoroButtonConfiguration.borderBuilder]'s [Color] for [MyoroTapStatusEnum.hover].
   Color? _hoverBorderColor;
-  Color get hoverBorderColor => _hoverBorderColor ?? MyoroColorDesignSystem.transparent;
+  Color? get hoverBorderColor => _hoverBorderColor;
   set hoverBorderColor(Color? hoverBorderColor) {
     _hoverBorderColor = hoverBorderColor;
     notifyListeners();
@@ -92,7 +102,7 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [MyoroButtonConfiguration.borderBuilder]'s [Color] for [MyoroTapStatusEnum.tap].
   Color? _tapBorderColor;
-  Color get tapBorderColor => _tapBorderColor ?? MyoroColorDesignSystem.transparent;
+  Color? get tapBorderColor => _tapBorderColor;
   set tapBorderColor(Color? tapBorderColor) {
     _tapBorderColor = tapBorderColor;
     notifyListeners();

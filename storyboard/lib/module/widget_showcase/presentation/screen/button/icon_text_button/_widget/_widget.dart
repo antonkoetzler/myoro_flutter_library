@@ -9,7 +9,7 @@ final class _Widget extends StatelessWidget {
     final iconTextButtonViewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(
-      listenable: iconTextButtonViewModel.state.buttonViewModel,
+      listenable: iconTextButtonViewModel.state.buttonViewModel.state,
       builder: (_, _) {
         return ListenableBuilder(
           listenable: iconTextButtonViewModel.state,

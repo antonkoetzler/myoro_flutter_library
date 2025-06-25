@@ -5,17 +5,29 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Mouse cursor';
 
-  const MouseCursorWidgetShowcaseOption({super.key, this.label = labelDefaultValue, required this.onChanged});
+  const MouseCursorWidgetShowcaseOption({
+    super.key,
+    this.label = labelDefaultValue,
+    this.initiallySelectedCursor,
+    required this.onChanged,
+  });
 
   /// [MyoroSingularDropdownConfiguration.label]
   final String label;
+
+  /// Initially selected [MouseCursor].
+  final MouseCursor? initiallySelectedCursor;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<MouseCursor> onChanged;
 
   @override
   Widget build(_) {
-    return MyoroSingularDropdown(
+    return MyoroSingularDropdown<MouseCursor>(
+      controller:
+          initiallySelectedCursor != null
+              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedCursor)
+              : null,
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         selectedItemBuilder: _getCursorName,
@@ -31,6 +43,13 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   }
 
   String _getCursorName(MouseCursor cursor) {
-    return cursor.runtimeType.toString();
+    if (cursor == SystemMouseCursors.basic) return 'Basic';
+    if (cursor == SystemMouseCursors.click) return 'Click';
+    if (cursor == SystemMouseCursors.help) return 'Help';
+    if (cursor == SystemMouseCursors.resizeRow) return 'Resize (Row)';
+    if (cursor == SystemMouseCursors.resizeColumn) return 'Resize (Column)';
+    if (cursor == SystemMouseCursors.zoomIn) return 'Zoom In';
+    if (cursor == SystemMouseCursors.zoomOut) return 'Zoom Out';
+    throw AssertionError('[MouseCursorWidgetShowcaseOption._getCursorName]: Unknown [SystemMouseCursors].');
   }
 }

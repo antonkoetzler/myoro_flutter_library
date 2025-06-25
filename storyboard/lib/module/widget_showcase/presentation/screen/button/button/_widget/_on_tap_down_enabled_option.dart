@@ -11,6 +11,7 @@ final class _OnTapDownEnabledOption extends StatelessWidget {
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Tap down enabled?',
+        value: viewModel.state.onTapDownEnabled,
         onChanged: (value) => viewModel.state.onTapDownEnabled = value,
       ),
     );

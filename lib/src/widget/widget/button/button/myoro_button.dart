@@ -22,15 +22,15 @@ class MyoroButton extends StatefulWidget {
 }
 
 final class _MyoroButtonState extends State<MyoroButton> {
+  MyoroButtonBuilder get _builder => widget.builder;
+
   late final _viewModel = MyoroButtonViewModel()..state.configuration = widget.configuration;
   ValueNotifier<MyoroTapStatusEnum> get _tapStatusController => _viewModel.state.tapStatusController;
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.configuration != oldWidget.configuration) {
-      _viewModel.state.configuration = widget.configuration;
-    }
+    _viewModel.state.configuration = widget.configuration;
   }
 
   @override
@@ -51,13 +51,12 @@ final class _MyoroButtonState extends State<MyoroButton> {
           onTapDown: _viewModel.onTapDown,
           onTapUp: _viewModel.onTapUp,
           onTapCancel: _viewModel.onTapCancel,
-          child: ValueListenableBuilder(valueListenable: _tapStatusController, builder: _builder),
+          child: ValueListenableBuilder(
+            valueListenable: _tapStatusController,
+            builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
+          ),
         ),
       ),
     );
-  }
-
-  Widget _builder(_, MyoroTapStatusEnum tapStatusEnum, _) {
-    return _Button(tapStatusEnum, _viewModel, widget.builder);
   }
 }

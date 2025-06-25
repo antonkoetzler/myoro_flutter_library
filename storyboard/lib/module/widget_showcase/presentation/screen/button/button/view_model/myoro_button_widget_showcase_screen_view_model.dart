@@ -3,10 +3,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroButtonWidgetShowcaseScreen].
-final class MyoroButtonWidgetShowcaseScreenViewModel extends ChangeNotifier {
+final class MyoroButtonWidgetShowcaseScreenViewModel {
   /// State
   final _state = MyoroButtonWidgetShowcaseScreenState();
   MyoroButtonWidgetShowcaseScreenState get state => _state;
+
+  /// Dispose function.
+  void dispose() {
+    _state.dispose();
+  }
 
   /// [MyoroButtonConfiguration] of the [MyoroButton].
   MyoroButtonConfiguration configuration(BuildContext context) {
@@ -27,9 +32,9 @@ final class MyoroButtonWidgetShowcaseScreenViewModel extends ChangeNotifier {
 
   Color _backgroundColorBuilder(MyoroTapStatusEnum tapStatusEnum) {
     return switch (tapStatusEnum) {
-      MyoroTapStatusEnum.idle => state.idleBackgroundColor,
-      MyoroTapStatusEnum.hover => state.hoverBackgroundColor,
-      MyoroTapStatusEnum.tap => state.tapBackgroundColor,
+      MyoroTapStatusEnum.idle => state.idleBackgroundColor ?? MyoroColorDesignSystem.transparent,
+      MyoroTapStatusEnum.hover => state.hoverBackgroundColor ?? MyoroColorDesignSystem.transparent,
+      MyoroTapStatusEnum.tap => state.tapBackgroundColor ?? MyoroColorDesignSystem.transparent,
     };
   }
 
@@ -37,9 +42,9 @@ final class MyoroButtonWidgetShowcaseScreenViewModel extends ChangeNotifier {
     return Border.all(
       width: kMyoroBorderLength,
       color: switch (tapStatusEnum) {
-        MyoroTapStatusEnum.idle => state.idleBorderColor,
-        MyoroTapStatusEnum.hover => state.hoverBorderColor,
-        MyoroTapStatusEnum.tap => state.tapBorderColor,
+        MyoroTapStatusEnum.idle => state.idleBorderColor ?? MyoroColorDesignSystem.transparent,
+        MyoroTapStatusEnum.hover => state.hoverBorderColor ?? MyoroColorDesignSystem.transparent,
+        MyoroTapStatusEnum.tap => state.tapBorderColor ?? MyoroColorDesignSystem.transparent,
       },
     );
   }

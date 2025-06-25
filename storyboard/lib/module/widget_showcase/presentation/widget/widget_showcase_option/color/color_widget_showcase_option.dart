@@ -31,7 +31,7 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
   final MyoroSingularDropdownConfigurationCheckboxOnChanged<Color>? checkboxOnChanged;
 
   @override
-  Widget build(_) {
+  Widget build(BuildContext context) {
     return MyoroSingularDropdown<Color>(
       controller: MyoroSingularDropdownController(enabled: enabled, initiallySelectedItem: initiallySelectedColor),
       configuration: MyoroSingularDropdownConfiguration(
@@ -39,7 +39,27 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
         menuConfiguration: MyoroMenuConfiguration(
           request: kMyoroTestColors.toSet,
           itemBuilder: (color) {
-            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: color.hexadecimalFormat));
+            return MyoroMenuItem(
+              builder: (_, _) {
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    spacing: 8,
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+                          color: color,
+                        ),
+                      ),
+                      Expanded(child: Text(color.hexadecimalFormat)),
+                    ],
+                  ),
+                );
+              },
+            );
           },
         ),
         selectedItemBuilder: (color) => color.hexadecimalFormat,
