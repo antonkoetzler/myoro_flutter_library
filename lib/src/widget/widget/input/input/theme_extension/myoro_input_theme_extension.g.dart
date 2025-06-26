@@ -17,11 +17,11 @@ mixin _$MyoroInputThemeExtensionMixin
 
   @override
   MyoroInputThemeExtension copyWith({
-    InputBorder? underlinedBorder,
-    InputBorder? outlinedBorder,
+    UnderlineInputBorder? underlinedBorder,
+    OutlineInputBorder? outlinedBorder,
+    InputBorder? noneBorder,
     Color? primaryColor,
     Color? errorBorderColor,
-    BorderRadius? borderRadius,
     double? cursorHeight,
     EdgeInsets? contentPadding,
     double? disabledOpacity,
@@ -35,9 +35,9 @@ mixin _$MyoroInputThemeExtensionMixin
     return MyoroInputThemeExtension(
       underlinedBorder: underlinedBorder ?? self.underlinedBorder,
       outlinedBorder: outlinedBorder ?? self.outlinedBorder,
+      noneBorder: noneBorder ?? self.noneBorder,
       primaryColor: primaryColor ?? self.primaryColor,
       errorBorderColor: errorBorderColor ?? self.errorBorderColor,
-      borderRadius: borderRadius ?? self.borderRadius,
       cursorHeight: cursorHeight ?? self.cursorHeight,
       contentPadding: contentPadding ?? self.contentPadding,
       disabledOpacity: disabledOpacity ?? self.disabledOpacity,
@@ -57,9 +57,9 @@ mixin _$MyoroInputThemeExtensionMixin
         other.runtimeType == runtimeType &&
         other.underlinedBorder == self.underlinedBorder &&
         other.outlinedBorder == self.outlinedBorder &&
+        other.noneBorder == self.noneBorder &&
         other.primaryColor == self.primaryColor &&
         other.errorBorderColor == self.errorBorderColor &&
-        other.borderRadius == self.borderRadius &&
         other.cursorHeight == self.cursorHeight &&
         other.contentPadding == self.contentPadding &&
         other.disabledOpacity == self.disabledOpacity &&
@@ -76,9 +76,9 @@ mixin _$MyoroInputThemeExtensionMixin
     return Object.hash(
       self.underlinedBorder,
       self.outlinedBorder,
+      self.noneBorder,
       self.primaryColor,
       self.errorBorderColor,
-      self.borderRadius,
       self.cursorHeight,
       self.contentPadding,
       self.disabledOpacity,
@@ -96,9 +96,9 @@ mixin _$MyoroInputThemeExtensionMixin
       'MyoroInputThemeExtension(\n'
       '  underlinedBorder: ${self.underlinedBorder},\n'
       '  outlinedBorder: ${self.outlinedBorder},\n'
+      '  noneBorder: ${self.noneBorder},\n'
       '  primaryColor: ${self.primaryColor},\n'
       '  errorBorderColor: ${self.errorBorderColor},\n'
-      '  borderRadius: ${self.borderRadius},\n'
       '  cursorHeight: ${self.cursorHeight},\n'
       '  contentPadding: ${self.contentPadding},\n'
       '  disabledOpacity: ${self.disabledOpacity},\n'

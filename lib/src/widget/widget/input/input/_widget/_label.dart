@@ -8,7 +8,7 @@ final class _Label extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final configuration = _viewModel.configuration;
+    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return Padding(
       padding: const EdgeInsets.only(
@@ -16,8 +16,8 @@ final class _Label extends StatelessWidget {
         bottom: 5,
       ),
       child: Text(
-        configuration.label,
-        style: configuration.labelTextStyle ?? context.resolveThemeExtension<MyoroInputThemeExtension>().labelTextStyle,
+        _viewModel.state.configuration.label,
+        style: _viewModel.state.configuration.labelTextStyle ?? themeExtension.labelTextStyle,
       ),
     );
   }

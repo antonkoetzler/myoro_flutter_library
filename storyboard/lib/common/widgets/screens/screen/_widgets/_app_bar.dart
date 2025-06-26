@@ -17,12 +17,13 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
         bordered: true,
         child: Row(
           spacing: themeExtension.spacing,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              spacing: themeExtension.spacing / 2,
-              children: [if (viewModel.configuration.onPrevious != null) const _PreviousPageButton(), const _Title()],
+            Expanded(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                spacing: themeExtension.spacing / 2,
+                children: [if (viewModel.configuration.onPrevious != null) const _PreviousPageButton(), const _Title()],
+              ),
             ),
             Row(
               mainAxisSize: MainAxisSize.min,

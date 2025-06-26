@@ -115,7 +115,7 @@ mixin _$MyoroInputConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hashAll([
+    return Object.hash(
       self.inputStyle,
       self.textAlign,
       self.inputTextStyle,
@@ -136,7 +136,7 @@ mixin _$MyoroInputConfigurationMixin {
       self.onCleared,
       self.focusNode,
       self.controller,
-    ]);
+    );
   }
 
   @override

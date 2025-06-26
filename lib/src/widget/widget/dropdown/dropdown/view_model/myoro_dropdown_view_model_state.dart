@@ -11,14 +11,14 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
   /// [OverlayPortal] controller.
   ///
   /// Used when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.overlay].
-  OverlayPortalController? _overlayMenuController;
-  OverlayPortalController get overlayMenuController {
+  MyoroOverlayPortalController? _overlayMenuController;
+  MyoroOverlayPortalController get overlayMenuController {
     assert(
       configuration.menuTypeEnum.isOverlay,
       '[MyoroDropdownViewModelState<$T>]: Cannot use [overlayMenuController] if '
       '[configuration.menuType] isn\'t [MyoroDropdownMenuTypeEnum.overlay].',
     );
-    return _overlayMenuController ??= OverlayPortalController();
+    return _overlayMenuController ??= MyoroOverlayPortalController();
   }
 
   /// [ValueNotifier] controlling whether or not the menu of the dropdown is showing when
@@ -34,19 +34,27 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
     return _showBasicMenuController ??= ValueNotifier(false);
   }
 
+  /// [ScrollController] of [_Menu].
+  final _menuScrollController = ScrollController();
+  ScrollController get menuScrollController => _menuScrollController;
+
   /// [TapRegion.groupId] of [_InputTriggerArea] and [_Menu] so [TapRegion.onTapOutside]
   /// (which closes the menu) only activates when [_InputTriggerArea]/[_Menu] is not pressed.
-  late final String tapRegionGroupId = 'MyoroDropdown#$hashCode';
+  late final _tapRegionGroupId = 'MyoroDropdown#$hashCode';
+  String get tapRegionGroupId => _tapRegionGroupId;
 
   /// [TextEditingController] of [_Input].
-  final inputController = TextEditingController();
+  final _inputController = TextEditingController();
+  TextEditingController get inputController => _inputController;
 
   /// [GlobalKey] of [_Input] to pass it's [Size] to [inputSizeController].
-  final inputKey = GlobalKey();
+  final _inputKey = GlobalKey();
+  GlobalKey get inputKey => _inputKey;
 
   /// [ValueNotifier] that stores the [Size] of [_Input].
-  final inputSizeController = ValueNotifier<Size?>(null);
-  Size? get inputSize => inputSizeController.value;
+  final _inputSizeController = ValueNotifier<Size?>(null);
+  ValueNotifier<Size?> get inputSizeController => _inputSizeController;
+  Size? get inputSize => _inputSizeController.value;
 
   /// [LayerLink] of [CompositedTransformTarget] so we may position the
   /// [OverlayPortal] relative to the position of [_DropdownState] in [_Input].
@@ -54,7 +62,8 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
 
   /// Dispose function.
   void dispose() {
-    inputController.dispose();
-    inputSizeController.dispose();
+    _menuScrollController.dispose();
+    _inputController.dispose();
+    _inputSizeController.dispose();
   }
 }

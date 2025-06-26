@@ -37,25 +37,40 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-    final displayExpandingMenu =
-        widget._viewModel.state.configuration.menuTypeEnum.isExpanding && widget._viewModel.state.showBasicMenu;
 
     return Provider.value(
-      value: widget._viewModel,
+      value: _viewModel,
       child: RepaintBoundary(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Row(
+          spacing: themeExtension.spacing,
           children: [
-            Flexible(
-              child: Row(
-                spacing: themeExtension.spacing,
+            if (_viewModel.state.configuration.checkboxOnChangedNotNull) _Checkbox<T, C>(),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (widget._viewModel.state.configuration.checkboxOnChangedNotNull) _Checkbox<T, C>(),
-                  Expanded(child: _Input<T, C>()),
+                  Flexible(child: _Input<T, C>()),
+                  if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
+                    ValueListenableBuilder(
+                      valueListenable: _viewModel.state.showBasicMenuController,
+                      builder: (_, bool showBasicMenu, _) {
+                        return !showBasicMenu
+                            ? const SizedBox.shrink()
+                            : Flexible(
+                              child: Scrollbar(
+                                controller: _viewModel.state.menuScrollController,
+                                child: SingleChildScrollView(
+                                  controller: _viewModel.state.menuScrollController,
+                                  child: _Menu<T, C>(),
+                                ),
+                              ),
+                            );
+                      },
+                    ),
+                  ],
                 ],
               ),
             ),
-            if (displayExpandingMenu) _Menu<T, C>(),
           ],
         ),
       ),

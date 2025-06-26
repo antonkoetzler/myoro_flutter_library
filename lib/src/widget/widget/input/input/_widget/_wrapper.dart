@@ -8,16 +8,14 @@ final class _Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final configuration = _viewModel.configuration;
-
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return Row(
       spacing: themeExtension.spacing,
       children: [
-        if (configuration.checkboxOnChanged != null) _Checkbox(_viewModel),
+        if (_viewModel.state.configuration.checkboxOnChanged != null) _Checkbox(_viewModel),
         Expanded(child: _TextFormField(_viewModel)),
-        if (configuration.suffix != null) configuration.suffix!,
+        if (_viewModel.state.configuration.suffix != null) _viewModel.state.configuration.suffix!,
       ],
     );
   }

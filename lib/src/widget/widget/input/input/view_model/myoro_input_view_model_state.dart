@@ -12,7 +12,7 @@ class MyoroInputViewModelState {
   }
 
   /// Configuration.
-  final MyoroInputConfiguration configuration;
+  MyoroInputConfiguration configuration;
 
   /// Formatter.
   MyoroInputFormatter? formatter;

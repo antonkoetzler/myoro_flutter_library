@@ -8,7 +8,10 @@ enum MyoroInputStyleEnum {
   underlined,
 
   /// Outlined input.
-  outlined;
+  outlined,
+
+  /// No border..
+  none;
 
   factory MyoroInputStyleEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
@@ -21,6 +24,7 @@ enum MyoroInputStyleEnum {
     return switch (this) {
       underlined => themeExtension.underlinedBorder,
       outlined => themeExtension.outlinedBorder,
+      none => themeExtension.noneBorder,
     };
   }
 

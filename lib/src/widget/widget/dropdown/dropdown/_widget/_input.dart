@@ -12,11 +12,10 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
-    final link = viewModel.state.link;
-    final inputKey = viewModel.state.inputKey;
-    final configuration = viewModel.state.configuration;
+    final state = viewModel.state;
+    final link = state.link;
+    final configuration = state.configuration;
     final enabledController = viewModel.controller.enabledController;
-    final inputController = viewModel.state.inputController;
 
     final child = Stack(
       children: [
@@ -27,21 +26,15 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
             return ValueListenableBuilder(
               valueListenable: enabledController,
               builder: (_, bool enabled, _) {
-                return CompositedTransformTarget(
-                  link: link,
-                  child: MyoroInput(
-                    key: inputKey,
-                    configuration: MyoroInputConfiguration(
-                      textAlign: configuration.selectedItemTextAlign,
-                      label: configuration.label,
-                      enabled: enabled,
-                      readOnly: true,
-                      showClearTextButton: configuration.allowItemClearing,
-                      onCleared: viewModel.controller.clear,
-                      controller: inputController,
-                    ),
-                  ),
-                );
+                return configuration.menuTypeEnum.isOverlay
+                    ? CompositedTransformTarget(
+                      link: link,
+                      child: ListenableBuilder(
+                        listenable: state.overlayMenuController,
+                        builder: (_, _) => _createInputWidget(context),
+                      ),
+                    )
+                    : _createInputWidget(context);
               },
             );
           },
@@ -61,20 +54,53 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     };
   }
 
+  Widget _createInputWidget(BuildContext context) {
+    const zeroRadius = Radius.zero;
+
+    final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final outlinedBorder = inputThemeExtension.outlinedBorder;
+    final menuActiveInputBorder = outlinedBorder.copyWith(
+      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: zeroRadius, bottomRight: zeroRadius),
+    );
+
+    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final menuTypeEnum = configuration.menuTypeEnum;
+    final inputKey = state.inputKey;
+    final inputController = state.inputController;
+    final controller = viewModel.controller;
+    final enabled = controller.enabled;
+
+    return MyoroInput(
+      key: inputKey,
+      configuration: MyoroInputConfiguration(
+        textAlign: configuration.selectedItemTextAlign,
+        label: configuration.label,
+        enabled: enabled,
+        readOnly: true,
+        showClearTextButton: configuration.allowItemClearing,
+        onCleared: viewModel.controller.clear,
+        border:
+            menuTypeEnum.isOverlay
+                ? (viewModel.state.overlayMenuController.isShowing ? menuActiveInputBorder : null)
+                : null,
+        controller: inputController,
+      ),
+    );
+  }
+
   Widget _overlayChildBuilder(BuildContext context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
-    final inputSizeController = viewModel.state.inputSizeController;
-    final link = viewModel.state.link;
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: inputSizeController,
+      valueListenable: viewModel.state.inputSizeController,
       builder: (_, Size? inputSize, _) {
         return Positioned(
           width: inputSize?.width,
           child: CompositedTransformFollower(
-            link: link,
-            offset: Offset(0, (inputSize?.height ?? 0) + themeExtension.spacing),
+            link: viewModel.state.link,
+            offset: Offset(0, inputSize?.height ?? 0),
             child: _Menu<T, C>(),
           ),
         );

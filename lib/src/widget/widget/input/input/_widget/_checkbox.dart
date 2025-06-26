@@ -8,10 +8,11 @@ final class _Checkbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final enabled = _viewModel.enabled;
-
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(value: enabled, onChanged: _viewModel.checkboxOnChanged),
+      configuration: MyoroCheckboxConfiguration(
+        value: _viewModel.state.enabled,
+        onChanged: _viewModel.checkboxOnChanged,
+      ),
     );
   }
 }

@@ -28,10 +28,16 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       menuBorder = myoroFake<BoxBorder>(),
       menuBorderRadius = myoroFake<BorderRadius>();
 
-  MyoroDropdownThemeExtension.builder(ColorScheme colorScheme)
-    : spacing = 10,
-      menuBorder = BoxBorder.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
-      menuBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
+  factory MyoroDropdownThemeExtension.builder(ColorScheme colorScheme) {
+    final borderSide = BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary);
+    const radius = Radius.circular(kMyoroBorderRadiusLength);
+
+    return MyoroDropdownThemeExtension(
+      spacing: 10,
+      menuBorder: BoxBorder.fromLTRB(bottom: borderSide, left: borderSide, right: borderSide),
+      menuBorderRadius: const BorderRadius.only(bottomLeft: radius, bottomRight: radius),
+    );
+  }
 
   @override
   MyoroDropdownThemeExtension lerp(covariant ThemeExtension<MyoroDropdownThemeExtension>? other, double t) {

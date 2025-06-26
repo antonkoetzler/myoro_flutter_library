@@ -81,6 +81,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
   /// Default [BoxConstraints] of the modal.
   BoxConstraints constraints(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    return BoxConstraints(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.8);
+    return BoxConstraints(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.5);
   }
 }

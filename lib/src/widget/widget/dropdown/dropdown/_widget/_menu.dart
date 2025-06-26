@@ -9,7 +9,13 @@ final class _Menu<T, C extends _C<T>> extends StatefulWidget {
       configuration: const MyoroModalConfiguration(barrierDismissable: false),
       child: InheritedProvider.value(
         value: viewModel,
-        child: CustomScrollView(slivers: [SliverToBoxAdapter(child: _Menu<T, C>())]),
+        child: Center(
+          child: Scrollbar(
+            controller: viewModel.state.menuScrollController,
+            thumbVisibility: true,
+            child: SingleChildScrollView(controller: viewModel.state.menuScrollController, child: _Menu<T, C>()),
+          ),
+        ),
       ),
     );
   }
@@ -42,26 +48,23 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-    final configuration = _viewModel.state.configuration;
-    final menuConfiguration = configuration.menuConfiguration;
-    final selectedItemsController = _viewModel.controller.selectedItemsController;
-    final tapRegionGroupId = _viewModel.state.tapRegionGroupId;
 
     return CallbackShortcuts(
       bindings: {const SingleActivator(LogicalKeyboardKey.escape): _viewModel.toggleMenu},
       child: Focus(
         autofocus: true,
         child: TapRegion(
-          groupId: tapRegionGroupId,
+          groupId: _viewModel.state.tapRegionGroupId,
           onTapOutside: (_) => _viewModel.toggleMenu(),
           child: ValueListenableBuilder(
-            valueListenable: selectedItemsController,
+            valueListenable: _viewModel.controller.selectedItemsController,
             builder: (_, _, _) {
               return MyoroMenu(
-                configuration: menuConfiguration.copyWith(
+                configuration: _viewModel.state.configuration.menuConfiguration.copyWith(
                   itemBuilder: (T item) => _viewModel.menuItemBuilder(context, item),
                   border: _viewModel.state.configuration.menuTypeEnum.isModal ? null : themeExtension.menuBorder,
-                  borderRadius: themeExtension.menuBorderRadius,
+                  borderRadius:
+                      _viewModel.state.configuration.menuTypeEnum.isModal ? null : themeExtension.menuBorderRadius,
                 ),
               );
             },

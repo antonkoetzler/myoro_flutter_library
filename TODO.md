@@ -9,7 +9,9 @@
 - divider
 - drawer
 - dropdown
-  - Make it so that the `MyoroInput` and `MyoroMenu` attach and are not apart
+  - (**IN PROGRESS**) Make it so that the `MyoroInput` and `MyoroMenu` attach and are not apart
+    - Stop not done `MyoroDropdownMenuTypeEnum.expanding`, not QA tested
+  - Research issue of setting the `MyoroInput` border and it has that stupid ass lerp effect (use using `ClipRRect` instead of `InputBorder`)
 - form
 - graph
 - input

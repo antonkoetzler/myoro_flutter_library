@@ -68,7 +68,12 @@ final class _MyoroInputState extends State<MyoroInput> {
   MyoroInputFormatter? get _formatter => widget.formatter;
 
   late final _viewModel = MyoroInputViewModel(_configuration, _formatter);
-  ValueNotifier<bool> get _enabledController => _viewModel.enabledController;
+
+  @override
+  void didUpdateWidget(covariant MyoroInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _viewModel.state.configuration = _configuration;
+  }
 
   @override
   void dispose() {
@@ -78,6 +83,9 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(valueListenable: _enabledController, builder: (_, _, _) => _Wrapper(_viewModel));
+    return ValueListenableBuilder(
+      valueListenable: _viewModel.state.enabledController,
+      builder: (_, _, _) => _Wrapper(_viewModel),
+    );
   }
 }

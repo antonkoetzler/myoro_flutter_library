@@ -23,6 +23,7 @@ final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
     return MyoroSingularDropdown<MyoroInputStyleEnum>(
       controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedStyle),
       configuration: MyoroSingularDropdownConfiguration(
+        label: 'MyoroInputStyleEnum',
         allowItemClearing: false,
         onChanged: (item) => onChanged(item!),
         selectedItemBuilder: viewModel.selectedItemBuilder,

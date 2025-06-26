@@ -17,6 +17,56 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   static const autofocusDefaultValue = false;
   static const showClearTextButtonDefaultValue = true;
 
+  const MyoroInputConfiguration({
+    this.inputStyle = inputStyleDefaultValue,
+    this.textAlign = textAlignDefaultValue,
+    this.inputTextStyle,
+    this.label = '',
+    this.labelTextStyle,
+    this.placeholder = placeholderDefaultValue,
+    this.contentPadding,
+    this.border,
+    this.suffix,
+    this.enabled = enabledDefaultValue,
+    this.readOnly = readOnlyDefaultValue,
+    this.autofocus = autofocusDefaultValue,
+    this.showClearTextButton = showClearTextButtonDefaultValue,
+    this.checkboxOnChanged,
+    this.validation,
+    this.onFieldSubmitted,
+    this.onChanged,
+    this.onCleared,
+    this.focusNode,
+    this.controller,
+  });
+
+  factory MyoroInputConfiguration.fake() {
+    final typography = MyoroTypographyDesignSystem.instance;
+
+    return MyoroInputConfiguration(
+      inputStyle: MyoroInputStyleEnum.fake(),
+      textAlign: myoroFake<TextAlign>(),
+      inputTextStyle: faker.randomGenerator.boolean() ? typography.randomTextStyle : null,
+      label: faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
+      labelTextStyle: faker.randomGenerator.boolean() ? typography.randomTextStyle : null,
+      placeholder: faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
+      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      border: myoroFake<InputBorder>(),
+      suffix: faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
+      enabled: faker.randomGenerator.boolean(),
+      readOnly: faker.randomGenerator.boolean(),
+      autofocus: faker.randomGenerator.boolean(),
+      showClearTextButton: faker.randomGenerator.boolean(),
+      checkboxOnChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
+      validation: faker.randomGenerator.boolean() ? ((_) => faker.randomGenerator.boolean() ? null : '') : null,
+      onFieldSubmitted: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onCleared: faker.randomGenerator.boolean() ? (() {}) : null,
+      focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
+      controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
+    );
+  }
+
   /// Type of input.
   final MyoroInputStyleEnum inputStyle;
 
@@ -82,56 +132,6 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
 
   /// Controller of the input.
   final TextEditingController? controller;
-
-  const MyoroInputConfiguration({
-    this.inputStyle = inputStyleDefaultValue,
-    this.textAlign = textAlignDefaultValue,
-    this.inputTextStyle,
-    this.label = '',
-    this.labelTextStyle,
-    this.placeholder = placeholderDefaultValue,
-    this.contentPadding,
-    this.border,
-    this.suffix,
-    this.enabled = enabledDefaultValue,
-    this.readOnly = readOnlyDefaultValue,
-    this.autofocus = autofocusDefaultValue,
-    this.showClearTextButton = showClearTextButtonDefaultValue,
-    this.checkboxOnChanged,
-    this.validation,
-    this.onFieldSubmitted,
-    this.onChanged,
-    this.onCleared,
-    this.focusNode,
-    this.controller,
-  });
-
-  factory MyoroInputConfiguration.fake() {
-    final typography = MyoroTypographyDesignSystem.instance;
-
-    return MyoroInputConfiguration(
-      inputStyle: MyoroInputStyleEnum.fake(),
-      textAlign: myoroFake<TextAlign>(),
-      inputTextStyle: faker.randomGenerator.boolean() ? typography.randomTextStyle : null,
-      label: faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? typography.randomTextStyle : null,
-      placeholder: faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
-      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      border: myoroFake<InputBorder>(),
-      suffix: faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
-      enabled: faker.randomGenerator.boolean(),
-      readOnly: faker.randomGenerator.boolean(),
-      autofocus: faker.randomGenerator.boolean(),
-      showClearTextButton: faker.randomGenerator.boolean(),
-      checkboxOnChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
-      validation: faker.randomGenerator.boolean() ? ((_) => faker.randomGenerator.boolean() ? null : '') : null,
-      onFieldSubmitted: faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onCleared: faker.randomGenerator.boolean() ? (() {}) : null,
-      focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
-      controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
-    );
-  }
 
   InputBorder getBorder(BuildContext context) {
     return border ?? inputStyle.getBorder(context);
