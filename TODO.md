@@ -9,9 +9,11 @@
 - divider
 - drawer
 - dropdown
+  - Make it so that the `MyoroInput` and `MyoroMenu` attach and are not apart
 - form
 - graph
 - input
+  - Make it so that no `InputBorder` is used anymore. Make it a `Container` to bypass `InputBorder`s
 - layout_builder
 - loader
 - menu
