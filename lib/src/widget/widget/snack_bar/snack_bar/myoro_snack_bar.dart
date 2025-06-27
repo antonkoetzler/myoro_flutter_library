@@ -27,17 +27,14 @@ class MyoroSnackBar extends StatelessWidget {
       padding: themeExtension.padding,
       decoration: BoxDecoration(
         color: themeExtension.primaryColor,
-        border: Border.all(
-          width: themeExtension.borderWidth,
-          color: configuration.snackBarType.getBorderColor(context),
-        ),
+        border: Border.all(width: themeExtension.borderWidth, color: configuration.snackBarType.getColor(context)),
         borderRadius: themeExtension.borderRadius,
       ),
       child: Row(
         spacing: themeExtension.spacing,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (message.isNotEmpty) Flexible(child: _Message(message)),
+          if (message.isNotEmpty) Flexible(child: _Message(configuration.snackBarType, message)),
           if (child != null) Flexible(child: child),
           if (configuration.showCloseButton) const _CloseButton(),
         ],

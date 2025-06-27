@@ -32,16 +32,12 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
   @override
   void initState() {
     super.initState();
-    if (_viewModel.state.configuration.menuTypeEnum.isModal) {
-      _viewModel.state.showBasicMenuController.addListener(_showBasicMenuControllerListener);
-    }
+    _addShowingMenuControllerListener();
   }
 
   @override
   void dispose() {
-    if (_viewModel.state.configuration.menuTypeEnum.isModal) {
-      _viewModel.state.showBasicMenuController.removeListener(_showBasicMenuControllerListener);
-    }
+    _removeShowingMenuControllerListener();
     super.dispose();
   }
 
@@ -74,7 +70,19 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
     );
   }
 
-  void _showBasicMenuControllerListener() {
-    if (!_viewModel.state.showBasicMenu) context.navigator.pop();
+  void _addShowingMenuControllerListener() {
+    if (_viewModel.state.configuration.menuTypeEnum.isModal) {
+      _viewModel.state.showingMenuController.addListener(_showingMenuControllerListener);
+    }
+  }
+
+  void _removeShowingMenuControllerListener() {
+    if (_viewModel.state.configuration.menuTypeEnum.isModal) {
+      _viewModel.state.showingMenuController.removeListener(_showingMenuControllerListener);
+    }
+  }
+
+  void _showingMenuControllerListener() {
+    if (!_viewModel.state.showingMenu) context.navigator.pop();
   }
 }

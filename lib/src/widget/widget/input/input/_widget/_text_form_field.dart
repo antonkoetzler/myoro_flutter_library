@@ -16,6 +16,7 @@ final class _TextFormField extends StatelessWidget {
     return ColoredBox(
       color: themeExtension.primaryColor,
       child: ValueListenableBuilder(
+        key: ValueKey(border),
         valueListenable: _viewModel.state.showClearTextButtonController,
         builder: (_, bool showClearTextButton, _) {
           return TextFormField(

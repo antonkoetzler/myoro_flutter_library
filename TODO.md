@@ -3,19 +3,17 @@
 1. chore: Go through every widget showcase looking for bugs
 
 - (**IN PROGRESS**) button
+  - (**DONE**) `MyoroButtonWidgetShowcaseScreen`
+  - (**IN PROGRESS**) `MyoroIconTextButtonWidgetShowcaseScreen`
 - card
 - carousel
 - checkbox
 - divider
 - drawer
 - dropdown
-  - (**IN PROGRESS**) Make it so that the `MyoroInput` and `MyoroMenu` attach and are not apart
-    - Stop not done `MyoroDropdownMenuTypeEnum.expanding`, not QA tested
-  - Research issue of setting the `MyoroInput` border and it has that stupid ass lerp effect (use using `ClipRRect` instead of `InputBorder`)
 - form
 - graph
 - input
-  - Make it so that no `InputBorder` is used anymore. Make it a `Container` to bypass `InputBorder`s
 - layout_builder
 - loader
 - menu
@@ -28,8 +26,7 @@
 - testing
 - tooltip
 
-2. chore: Implement tests once everything seems stable
-3. chore: Documentation
+2. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern
   - How to handle `StatefulWidget`s and setting fields of a view model dependent on the `StatefulWidget`s fields (See `MyoroAccordionState.configuration`)
@@ -37,6 +34,7 @@
 - Manipulating the UI of widgets via `ThemeExtension` overloading
 - `ThemeExtension` overriding and in general the styling of widgets
 
+3. chore: Implement tests
 4. chore: Fix pubspec.yaml todo with myoro_flutter_annotations in both pubspecs
 5. chore: Redo deploying and GitHub Actions
 6. feature: Publish to pub.dev

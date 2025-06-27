@@ -17,20 +17,18 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
   @override
   void initState() {
     super.initState();
-    _setupModalShowBasicMenuControllerListener();
+    _addShowingMenuControllerListener();
   }
 
   @override
   void didUpdateWidget(covariant _Dropdown<T, C> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _setupModalShowBasicMenuControllerListener();
+    _addShowingMenuControllerListener();
   }
 
   @override
   void dispose() {
-    if (_viewModel.state.configuration.menuTypeEnum.isModal) {
-      _removeShowBasicMenuControllerListener();
-    }
+    _removeShowingMenuControllerListener();
     super.dispose();
   }
 
@@ -41,55 +39,53 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
     return Provider.value(
       value: _viewModel,
       child: RepaintBoundary(
-        child: Row(
-          spacing: themeExtension.spacing,
-          children: [
-            if (_viewModel.state.configuration.checkboxOnChangedNotNull) _Checkbox<T, C>(),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(child: _Input<T, C>()),
-                  if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
-                    ValueListenableBuilder(
-                      valueListenable: _viewModel.state.showBasicMenuController,
-                      builder: (_, bool showBasicMenu, _) {
-                        return !showBasicMenu
-                            ? const SizedBox.shrink()
-                            : Flexible(
-                              child: Scrollbar(
-                                controller: _viewModel.state.menuScrollController,
-                                child: SingleChildScrollView(
-                                  controller: _viewModel.state.menuScrollController,
-                                  child: _Menu<T, C>(),
-                                ),
-                              ),
-                            );
-                      },
-                    ),
-                  ],
+        child: ValueListenableBuilder(
+          valueListenable: _viewModel.state.inputSizeController,
+          builder: (_, Size? inputSize, _) {
+            return Row(
+              spacing: themeExtension.spacing,
+              crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+              children: [
+                if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
+                  SizedBox(height: inputSize?.height, child: _Checkbox<T, C>()),
                 ],
-              ),
-            ),
-          ],
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(child: _Input<T, C>()),
+                      if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
+                        ValueListenableBuilder(
+                          valueListenable: _viewModel.state.showingMenuController,
+                          builder: (_, bool showBasicMenu, _) {
+                            return !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, C>());
+                          },
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
   }
 
-  void _setupModalShowBasicMenuControllerListener() {
-    if (_viewModel.state.configuration.menuTypeEnum.isModal) {
-      _removeShowBasicMenuControllerListener();
-      _viewModel.state.showBasicMenuController.addListener(_showBasicMenuControllerListener);
-    }
+  void _addShowingMenuControllerListener() {
+    if (!_viewModel.state.configuration.menuTypeEnum.isModal) return;
+    _removeShowingMenuControllerListener();
+    _viewModel.state.showingMenuController.addListener(_showingMenuControllerListener);
   }
 
-  void _removeShowBasicMenuControllerListener() {
-    _viewModel.state.showBasicMenuController.removeListener(_showBasicMenuControllerListener);
+  void _removeShowingMenuControllerListener() {
+    if (!_viewModel.state.configuration.menuTypeEnum.isModal) return;
+    _viewModel.state.showingMenuController.removeListener(_showingMenuControllerListener);
   }
 
-  void _showBasicMenuControllerListener() {
+  void _showingMenuControllerListener() {
     if (!mounted) return;
-    if (_viewModel.state.showBasicMenu) _Menu.showModal(context, _viewModel);
+    if (_viewModel.state.showingMenu) _Menu.showModal(context, _viewModel);
   }
 }

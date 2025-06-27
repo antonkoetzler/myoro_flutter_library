@@ -3,16 +3,18 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
 abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>> {
-  MyoroDropdownViewModel(C configuration, this.controller) : state = MyoroDropdownViewModelState(configuration) {
+  MyoroDropdownViewModel(C configuration, this._controller) : _state = MyoroDropdownViewModelState(configuration) {
+    if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
     controller.enabledController.addListener(enabledNotifierListener);
     controller.selectedItemsController.addListener(selectedItemsControllerListener);
-    if (controller.selectedItems.isNotEmpty) {
-      _formatSelectedItems();
-    }
+    if (controller.selectedItems.isNotEmpty) _formatSelectedItems();
   }
 
-  final MyoroDropdownViewModelState<T, C> state;
-  final MyoroDropdownController<T> controller;
+  final MyoroDropdownViewModelState<T, C> _state;
+  MyoroDropdownViewModelState<T, C> get state => _state;
+
+  final MyoroDropdownController<T> _controller;
+  MyoroDropdownController<T> get controller => _controller;
 
   /// Dispose function.
   void dispose() {
@@ -26,14 +28,10 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
       overlayMenuController.isShowing ? overlayMenuController.hide() : overlayMenuController.show();
     }
 
-    void toggleBasicMenu() {
-      state.showBasicMenuController.value = !state.showBasicMenuController.value;
-    }
-
     return switch (state.configuration.menuTypeEnum) {
       MyoroDropdownMenuTypeEnum.overlay => toggleOverlayMenu(),
-      MyoroDropdownMenuTypeEnum.expanding => toggleBasicMenu(),
-      MyoroDropdownMenuTypeEnum.modal => toggleBasicMenu(),
+      MyoroDropdownMenuTypeEnum.expanding => _state.showingMenu = !_state.showingMenu,
+      MyoroDropdownMenuTypeEnum.modal => _state.showingMenu = !_state.showingMenu,
     };
   }
 
@@ -53,20 +51,8 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   void supplyInputSizeController() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final renderBox = state.inputKey.currentContext!.findRenderObject() as RenderBox;
-      state.inputSizeController.value = renderBox.size;
+      state.inputSize = renderBox.size;
     });
-  }
-
-  /// Formats items in [_selectedItemsController] to display in [_Input].
-  void _formatSelectedItems() {
-    final Set<T> selectedItems = controller.selectedItemsController.value;
-    final stringBuffer = StringBuffer();
-    for (int i = 0; i < selectedItems.length; i++) {
-      final T item = selectedItems.elementAt(i);
-      stringBuffer.write(state.configuration.selectedItemBuilder(item));
-      if (i != selectedItems.length - 1) stringBuffer.write(', ');
-    }
-    state.inputController.text = stringBuffer.toString();
   }
 
   /// Creates the [MyoroMenuItem] of an item in the [MyoroMenu].
@@ -84,5 +70,22 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
         controller.toggleItem(item);
       },
     );
+  }
+
+  /// Formats items in [_selectedItemsController] to display in [_Input].
+  void _formatSelectedItems() {
+    final Set<T> selectedItems = controller.selectedItemsController.value;
+    final stringBuffer = StringBuffer();
+    for (int i = 0; i < selectedItems.length; i++) {
+      final T item = selectedItems.elementAt(i);
+      stringBuffer.write(state.configuration.selectedItemBuilder(item));
+      if (i != selectedItems.length - 1) stringBuffer.write(', ');
+    }
+    state.inputController.text = stringBuffer.toString();
+  }
+
+  /// Listener of [MyoroDropdownViewModelState.overlayMenuController].
+  void _overlayMenuControllerListener() {
+    _state.showingMenu = _state.overlayMenuController.isShowing;
   }
 }

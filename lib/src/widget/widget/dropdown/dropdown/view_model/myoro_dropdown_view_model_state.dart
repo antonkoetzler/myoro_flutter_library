@@ -8,8 +8,6 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
   /// Configuration.
   C configuration;
 
-  /// [OverlayPortal] controller.
-  ///
   /// Used when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.overlay].
   MyoroOverlayPortalController? _overlayMenuController;
   MyoroOverlayPortalController get overlayMenuController {
@@ -21,18 +19,13 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
     return _overlayMenuController ??= MyoroOverlayPortalController();
   }
 
-  /// [ValueNotifier] controlling whether or not the menu of the dropdown is showing when
-  /// [MyoroDropdownConfiguration.menuTypeEnum] is not [MyoroDropdownMenuTypeEnum.overlay].
-  ValueNotifier<bool>? _showBasicMenuController;
-  bool get showBasicMenu => showBasicMenuController.value;
-  ValueNotifier<bool> get showBasicMenuController {
-    assert(
-      !configuration.menuTypeEnum.isOverlay,
-      '[MyoroDropdownViewModelState<$T>]: Cannot use [showBasicMenuController] '
-      'if [configuration.menuType] is [MyoroDropdownMenuTypeEnum.overlat].',
-    );
-    return _showBasicMenuController ??= ValueNotifier(false);
-  }
+  /// [ValueNotifier] used to store the [bool] of whether or not the menu is active or not.
+  /// When calling [MyoroOverlayPortalController.hide] or [MyoroOverlayPortalController.show],
+  /// The value of [_showingMenuController] is automatically synced with [_overlayMenuController].
+  final _showingMenuController = ValueNotifier<bool>(false);
+  ValueNotifier<bool> get showingMenuController => _showingMenuController;
+  bool get showingMenu => _showingMenuController.value;
+  set showingMenu(bool showingMenu) => _showingMenuController.value = showingMenu;
 
   /// [ScrollController] of [_Menu].
   final _menuScrollController = ScrollController();
@@ -55,6 +48,7 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
   final _inputSizeController = ValueNotifier<Size?>(null);
   ValueNotifier<Size?> get inputSizeController => _inputSizeController;
   Size? get inputSize => _inputSizeController.value;
+  set inputSize(Size? inputSize) => _inputSizeController.value = inputSize;
 
   /// [LayerLink] of [CompositedTransformTarget] so we may position the
   /// [OverlayPortal] relative to the position of [_DropdownState] in [_Input].
@@ -62,6 +56,7 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
 
   /// Dispose function.
   void dispose() {
+    _showingMenuController.dispose();
     _menuScrollController.dispose();
     _inputController.dispose();
     _inputSizeController.dispose();

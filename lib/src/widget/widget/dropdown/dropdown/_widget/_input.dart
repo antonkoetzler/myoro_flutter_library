@@ -15,7 +15,9 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     final state = viewModel.state;
     final link = state.link;
     final configuration = state.configuration;
-    final enabledController = viewModel.controller.enabledController;
+    final controller = viewModel.controller;
+    final enabledController = controller.enabledController;
+    final showingMenuController = state.showingMenuController;
 
     final child = Stack(
       children: [
@@ -26,15 +28,17 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
             return ValueListenableBuilder(
               valueListenable: enabledController,
               builder: (_, bool enabled, _) {
-                return configuration.menuTypeEnum.isOverlay
-                    ? CompositedTransformTarget(
-                      link: link,
-                      child: ListenableBuilder(
-                        listenable: state.overlayMenuController,
-                        builder: (_, _) => _createInputWidget(context),
-                      ),
-                    )
-                    : _createInputWidget(context);
+                return ValueListenableBuilder(
+                  valueListenable: showingMenuController,
+                  builder: (_, bool showingMenu, _) {
+                    return configuration.menuTypeEnum.isOverlay
+                        ? CompositedTransformTarget(
+                          link: link,
+                          child: _createInputWidget(context, enabled, showingMenu),
+                        )
+                        : _createInputWidget(context, enabled, showingMenu);
+                  },
+                );
               },
             );
           },
@@ -54,37 +58,38 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     };
   }
 
-  Widget _createInputWidget(BuildContext context) {
-    const zeroRadius = Radius.zero;
-
-    final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final outlinedBorder = inputThemeExtension.outlinedBorder;
-    final menuActiveInputBorder = outlinedBorder.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: zeroRadius, bottomRight: zeroRadius),
+  Widget _createInputWidget(BuildContext context, bool enabled, bool showingMenu) {
+    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final outlinedBorder = themeExtension.outlinedBorder;
+    final menuActiveInputBorderRadius = outlinedBorder.copyWith(
+      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
     );
 
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final controller = viewModel.controller;
     final state = viewModel.state;
     final configuration = state.configuration;
     final menuTypeEnum = configuration.menuTypeEnum;
     final inputKey = state.inputKey;
     final inputController = state.inputController;
-    final controller = viewModel.controller;
-    final enabled = controller.enabled;
+    final selectedItemTextAlign = configuration.selectedItemTextAlign;
+    final label = configuration.label;
+    final allowItemClearing = configuration.allowItemClearing;
 
     return MyoroInput(
       key: inputKey,
       configuration: MyoroInputConfiguration(
-        textAlign: configuration.selectedItemTextAlign,
-        label: configuration.label,
+        textAlign: selectedItemTextAlign,
+        label: label,
         enabled: enabled,
         readOnly: true,
-        showClearTextButton: configuration.allowItemClearing,
-        onCleared: viewModel.controller.clear,
-        border:
-            menuTypeEnum.isOverlay
-                ? (viewModel.state.overlayMenuController.isShowing ? menuActiveInputBorder : null)
-                : null,
+        showClearTextButton: allowItemClearing,
+        onCleared: controller.clear,
+        border: switch (menuTypeEnum) {
+          MyoroDropdownMenuTypeEnum.overlay => showingMenu ? menuActiveInputBorderRadius : null,
+          MyoroDropdownMenuTypeEnum.expanding => showingMenu ? menuActiveInputBorderRadius : null,
+          MyoroDropdownMenuTypeEnum.modal => null,
+        },
         controller: inputController,
       ),
     );

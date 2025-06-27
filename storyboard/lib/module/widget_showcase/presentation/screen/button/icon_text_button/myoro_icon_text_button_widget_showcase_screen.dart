@@ -49,8 +49,8 @@ final class _MyoroIconTextButtonWidgetShowcaseScreenState extends State<MyoroIco
           widgetName: MyoroWidgetListEnum.myoroIconTextButtonTitle,
           widget: _Widget(),
           widgetOptions: [
-            ...MyoroButtonWidgetShowcaseScreen.options,
             ...MyoroIconTextButtonWidgetShowcaseScreen.options,
+            ...MyoroButtonWidgetShowcaseScreen.options,
           ],
         ),
       ),

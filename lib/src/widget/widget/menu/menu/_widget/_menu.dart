@@ -22,9 +22,11 @@ final class _Menu<T> extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (viewModel.state.configuration.searchCallback != null) _SearchBar<T>(),
-          ValueListenableBuilder(
-            valueListenable: viewModel.state.queriedItemsController,
-            builder: (_, _, _) => _ItemsSection<T>(),
+          Flexible(
+            child: ValueListenableBuilder(
+              valueListenable: viewModel.state.queriedItemsController,
+              builder: (_, _, _) => _ItemsSection<T>(),
+            ),
           ),
         ],
       ),

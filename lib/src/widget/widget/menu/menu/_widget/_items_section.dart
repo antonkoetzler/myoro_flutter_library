@@ -15,11 +15,15 @@ final class _ItemsSection<T> extends StatelessWidget {
       children: [
         if (items.isNotEmpty) ...[
           Flexible(
-            child: ListView.builder(
+            child: Scrollbar(
               controller: viewModel.state.scrollController,
-              shrinkWrap: true,
-              itemCount: itemWidgets.length,
-              itemBuilder: (_, int index) => itemWidgets[index],
+              thumbVisibility: true,
+              child: ListView.builder(
+                controller: viewModel.state.scrollController,
+                shrinkWrap: true,
+                itemCount: itemWidgets.length,
+                itemBuilder: (_, int index) => itemWidgets[index],
+              ),
             ),
           ),
         ] else ...[
