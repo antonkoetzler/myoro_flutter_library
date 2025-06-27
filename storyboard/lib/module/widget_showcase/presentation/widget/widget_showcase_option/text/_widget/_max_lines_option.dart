@@ -7,10 +7,15 @@ final class _MaxLinesOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
+    final configuration = viewModel.configuration;
+    final maxLinesInitialValue = configuration.maxLinesInitialValue;
+    final maxLinesOnChanged = configuration.maxLinesOnChanged;
+    final maxLinesCheckboxOnChanged = configuration.maxLinesCheckboxOnChanged;
 
     return TextMaxLinesWidgetShowcaseOption(
-      onChanged: (value) => viewModel.maxLines = value,
-      checkboxOnChanged: (enabled, value) => viewModel.maxLines = enabled ? value : null,
+      initiallySelectedItem: maxLinesInitialValue,
+      onChanged: maxLinesOnChanged!,
+      checkboxOnChanged: maxLinesCheckboxOnChanged,
     );
   }
 }

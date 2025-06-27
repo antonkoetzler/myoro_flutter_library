@@ -7,11 +7,14 @@ final class _InvertOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final invert = state.invert;
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Icon and text inverted?',
-        onChanged: (value) => viewModel.state.invert = value,
+        value: invert,
+        onChanged: (value) => state.invert = value,
       ),
     );
   }

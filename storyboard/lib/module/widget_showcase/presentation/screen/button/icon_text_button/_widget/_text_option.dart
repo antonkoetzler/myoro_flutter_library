@@ -7,22 +7,23 @@ final class _TextOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final maxLines = state.maxLines;
+    final overflow = state.overflow;
+    final alignment = state.alignment;
+    final style = state.style;
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(
-        textOnChanged: (text) => viewModel.state.text = text,
-        maxLinesOnChanged: (maxLines) {
-          viewModel.state.maxLines = maxLines ?? MyoroTextConfiguration.maxLinesDefaultValue;
-        },
-        overflowOnChanged: (overflow) {
-          viewModel.state.overflow = overflow ?? MyoroTextConfiguration.overflowDefaultValue;
-        },
-        alignmentOnChanged: (alignment) {
-          viewModel.state.alignment = alignment ?? MyoroTextConfiguration.alignmentDefaultValue;
-        },
-        styleOnChanged: (style) {
-          viewModel.state.style = style;
-        },
+        textOnChanged: (text) => state.text = text,
+        maxLinesInitialValue: maxLines,
+        maxLinesOnChanged: (maxLines) => state.maxLines = maxLines ?? MyoroTextConfiguration.maxLinesDefaultValue,
+        overflowInitialValue: overflow,
+        overflowOnChanged: (overflow) => state.overflow = overflow ?? MyoroTextConfiguration.overflowDefaultValue,
+        alignmentInitialValue: alignment,
+        alignmentOnChanged: (alignment) => state.alignment = alignment ?? MyoroTextConfiguration.alignmentDefaultValue,
+        styleInitialValue: style,
+        styleOnChanged: (style) => state.style = style,
       ),
     );
   }

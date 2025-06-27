@@ -9,7 +9,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   const TextAlignWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
-    this.initiallySelectedTextAlign,
+    this.initiallySelectedValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
     required this.onChanged,
     this.checkboxOnChanged,
@@ -19,7 +19,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   final String label;
 
   /// Initially selected [TextAlign].
-  final TextAlign? initiallySelectedTextAlign;
+  final TextAlign? initiallySelectedValue;
 
   /// [MyoroDropdownConfiguration.allowItemClearing]
   final bool allowItemClearing;
@@ -34,8 +34,8 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyoroSingularDropdown(
       controller:
-          initiallySelectedTextAlign != null
-              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedTextAlign)
+          initiallySelectedValue != null
+              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedValue)
               : null,
       configuration: MyoroSingularDropdownConfiguration(
         label: label,

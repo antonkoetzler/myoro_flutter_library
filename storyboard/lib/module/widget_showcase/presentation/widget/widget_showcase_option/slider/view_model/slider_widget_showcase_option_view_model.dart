@@ -3,16 +3,19 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [SliderWidgetShowcaseOption].
 final class SliderWidgetShowcaseOptionViewModel {
-  SliderWidgetShowcaseOptionViewModel(this.configuration);
+  SliderWidgetShowcaseOptionViewModel(this._configuration)
+    : _sliderController = MyoroSliderController(minValue: 0, maxValue: 50, initialValue: _configuration.initialValue);
 
   /// Configuration.
-  final SliderWidgetShowcaseOptionConfiguration configuration;
+  final SliderWidgetShowcaseOptionConfiguration _configuration;
+  SliderWidgetShowcaseOptionConfiguration get configuration => _configuration;
 
   /// Controller of the [MyoroSlider].
-  late final sliderController = MyoroSliderController(minValue: 0, maxValue: 50, initialValue: 25);
+  late final MyoroSliderController _sliderController;
+  MyoroSliderController get sliderController => _sliderController;
 
   /// Dispose function.
   void dispose() {
-    sliderController.dispose();
+    _sliderController.dispose();
   }
 }

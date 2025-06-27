@@ -7,10 +7,15 @@ final class _OverflowOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
+    final configuration = viewModel.configuration;
+    final overflowInitialValue = configuration.overflowInitialValue;
+    final overflowOnChanged = configuration.overflowOnChanged;
+    final overflowCheckboxOnChanged = configuration.overflowCheckboxOnChanged;
 
     return TextOverflowWidgetShowcaseOption(
-      onChanged: (value) => viewModel.overflow = value,
-      checkboxOnChanged: (enabled, value) => viewModel.overflow = enabled ? value : null,
+      initiallySelectedItem: overflowInitialValue,
+      onChanged: overflowOnChanged!,
+      checkboxOnChanged: overflowCheckboxOnChanged,
     );
   }
 }

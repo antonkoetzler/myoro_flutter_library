@@ -7,11 +7,15 @@ final class _SpacingOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final spacing = state.spacing;
+
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Spacing',
-        checkboxOnChanged: (enabled, value) => viewModel.state.spacing = enabled ? value : null,
-        sliderOnChanged: (value) => viewModel.state.spacing = value,
+        initialValue: spacing ?? SliderWidgetShowcaseOptionConfiguration.initialValueDefaultValue,
+        sliderOnChanged: (value) => state.spacing = value,
+        checkboxOnChanged: (enabled, value) => state.spacing = enabled ? value : null,
       ),
     );
   }

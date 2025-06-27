@@ -4,13 +4,16 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget showcase option to choose a [Text.maxLines] via [MyoroSingularDropdown].
 final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Max lines';
+  static const allowItemClearingDefaultValue = MyoroDropdownConfiguration.allowItemClearingDefaultValue;
+  static const initiallySelectedItemDefaultValue = 1;
 
   const TextMaxLinesWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
-    this.allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
+    this.allowItemClearing = allowItemClearingDefaultValue,
+    this.initiallySelectedItem = initiallySelectedItemDefaultValue,
     required this.onChanged,
-    required this.checkboxOnChanged,
+    this.checkboxOnChanged,
   });
 
   /// [MyoroSingularDropdownConfiguration.label]
@@ -19,16 +22,19 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroSingularDropdownConfiguration.allowItemClearing]
   final bool allowItemClearing;
 
+  /// Initially selected item of the [MyoroSingularDropdown].
+  final int initiallySelectedItem;
+
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<int> onChanged;
 
   /// [MyoroSingularDropdownConfiguration.checkboxOnChanged]
-  final MyoroSingularDropdownConfigurationCheckboxOnChanged<int> checkboxOnChanged;
+  final MyoroSingularDropdownConfigurationCheckboxOnChanged<int>? checkboxOnChanged;
 
   @override
   Widget build(BuildContext context) {
     return MyoroSingularDropdown<int>(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: 1),
+      controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem),
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         allowItemClearing: allowItemClearing,

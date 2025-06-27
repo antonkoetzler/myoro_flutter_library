@@ -7,10 +7,15 @@ final class _StyleOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
+    final configuration = viewModel.configuration;
+    final styleInitialValue = configuration.styleInitialValue;
+    final styleOnChanged = configuration.styleOnChanged;
+    final styleCheckboxOnChanged = configuration.styleCheckboxOnChanged;
 
     return TextStyleWidgetShowcaseOption(
-      onChanged: (value) => viewModel.style = value,
-      checkboxOnChanged: (enabled, value) => viewModel.style = enabled ? value : null,
+      initiallySelectedItem: styleInitialValue,
+      onChanged: styleOnChanged!,
+      checkboxOnChanged: styleCheckboxOnChanged,
     );
   }
 }

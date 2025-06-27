@@ -10,31 +10,51 @@ part 'text_widget_showcase_option_configuration.g.dart';
 @myoroModel
 final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Text';
+  static const textInitialValueDefaultValue = '';
+  static const maxLinesInitialValueDefaultValue = TextMaxLinesWidgetShowcaseOption.initiallySelectedItemDefaultValue;
 
   const TextWidgetShowcaseOptionConfiguration({
     this.label = labelDefaultValue,
+    this.textInitialValue = textInitialValueDefaultValue,
     required this.textOnChanged,
+    this.maxLinesInitialValue = maxLinesInitialValueDefaultValue,
     this.maxLinesOnChanged,
+    this.maxLinesCheckboxOnChanged,
+    this.overflowInitialValue,
     this.overflowOnChanged,
+    this.overflowCheckboxOnChanged,
+    this.alignmentInitialValue,
     this.alignmentOnChanged,
+    this.alignmentCheckboxOnChanged,
+    this.styleInitialValue,
     this.styleOnChanged,
+    this.styleCheckboxOnChanged,
   });
 
   /// Label of the [TextWidgetShowcaseOption].
   final String label;
 
-  /// [Text.data] on-changed.
+  /// [Text.data]
+  final String textInitialValue;
   final MyoroInputOnChanged textOnChanged;
 
-  /// [Text.maxLines] on-changed.
+  /// [Text.maxLines]
+  final int maxLinesInitialValue;
   final TextWidgetShowcaseOptionMaxLinesOnChanged? maxLinesOnChanged;
+  final TextWidgetShowcaseOptionMaxLinesCheckboxOnChanged? maxLinesCheckboxOnChanged;
 
-  /// [Text.overflow] on-changed.
+  /// [Text.overflow]
+  final TextOverflow? overflowInitialValue;
   final TextWidgetShowcaseOptionOverflowOnChanged? overflowOnChanged;
+  final TextWidgetShowcaseOptionOverflowCheckboxOnChanged? overflowCheckboxOnChanged;
 
-  /// [Text.textAlign] on-changed.
+  /// [Text.textAlign]
+  final TextAlign? alignmentInitialValue;
   final TextWidgetShowcaseOptionAlignmentOnChanged? alignmentOnChanged;
+  final TextWidgetShowcaseOptionAlignmentCheckboxOnChanged? alignmentCheckboxOnChanged;
 
-  /// [Text.style] on-changed.
+  /// [Text.style]
+  final TextStyle? styleInitialValue;
   final TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged;
+  final TextWidgetShowcaseOptionTextStyleCheckboxOnChanged? styleCheckboxOnChanged;
 }

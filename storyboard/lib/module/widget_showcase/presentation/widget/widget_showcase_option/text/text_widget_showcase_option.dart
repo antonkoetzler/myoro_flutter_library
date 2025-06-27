@@ -31,11 +31,17 @@ final class TextWidgetShowcaseOption extends StatelessWidget {
           const _TextOption(),
           Row(
             spacing: widgetShowcaseThemeExtension.spacing,
-            children: const [Expanded(child: _MaxLinesOption()), Expanded(child: _OverflowOption())],
+            children: [
+              if (configuration.maxLinesOnChanged != null) const Expanded(child: _MaxLinesOption()),
+              if (configuration.overflowOnChanged != null) const Expanded(child: _OverflowOption()),
+            ],
           ),
           Row(
             spacing: widgetShowcaseThemeExtension.spacing,
-            children: const [Expanded(child: _TextAlignOption()), Expanded(child: _StyleOption())],
+            children: [
+              if (configuration.alignmentOnChanged != null) const Expanded(child: _TextAlignOption()),
+              if (configuration.styleOnChanged != null) const Expanded(child: _StyleOption()),
+            ],
           ),
         ],
       ),

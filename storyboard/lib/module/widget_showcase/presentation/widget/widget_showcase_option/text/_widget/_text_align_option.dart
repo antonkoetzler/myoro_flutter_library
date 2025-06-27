@@ -7,10 +7,15 @@ final class _TextAlignOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
+    final configuration = viewModel.configuration;
+    final alignmentInitialValue = configuration.alignmentInitialValue;
+    final alignmentOnChanged = configuration.alignmentOnChanged;
+    final alignmentCheckboxOnChanged = configuration.alignmentCheckboxOnChanged;
 
     return TextAlignWidgetShowcaseOption(
-      onChanged: (value) => viewModel.textAlign = value,
-      checkboxOnChanged: (enabled, value) => viewModel.textAlign = enabled ? value : null,
+      initiallySelectedValue: alignmentInitialValue,
+      onChanged: alignmentOnChanged!,
+      checkboxOnChanged: alignmentCheckboxOnChanged,
     );
   }
 }

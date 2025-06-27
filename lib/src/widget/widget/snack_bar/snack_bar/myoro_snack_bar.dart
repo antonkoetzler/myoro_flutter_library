@@ -36,7 +36,7 @@ class MyoroSnackBar extends StatelessWidget {
         children: [
           if (message.isNotEmpty) Flexible(child: _Message(configuration.snackBarType, message)),
           if (child != null) Flexible(child: child),
-          if (configuration.showCloseButton) const _CloseButton(),
+          if (configuration.showCloseButton) _CloseButton(configuration.snackBarType),
         ],
       ),
     );

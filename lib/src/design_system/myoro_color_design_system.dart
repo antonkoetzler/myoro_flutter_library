@@ -11,7 +11,7 @@ final class MyoroColorDesignSystem {
   static const Color error = Colors.red;
   static const Color onError = Colors.white;
   static const Color transparent = Colors.transparent;
-  static const Color attention = Colors.cyan;
+  static const Color attention = Colors.lightBlue;
 }
 
 final class MyoroDarkModeColorDesignSystem {

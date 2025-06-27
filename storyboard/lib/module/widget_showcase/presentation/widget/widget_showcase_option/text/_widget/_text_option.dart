@@ -9,7 +9,11 @@ final class _TextOption extends StatelessWidget {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
 
     return MyoroInput(
-      configuration: MyoroInputConfiguration(placeholder: 'Enter text...', onChanged: (text) => viewModel.text = text),
+      configuration: MyoroInputConfiguration(
+        placeholder: 'Enter text...',
+        controller: viewModel.textController,
+        onChanged: (text) => viewModel.configuration.textOnChanged(text),
+      ),
     );
   }
 }
