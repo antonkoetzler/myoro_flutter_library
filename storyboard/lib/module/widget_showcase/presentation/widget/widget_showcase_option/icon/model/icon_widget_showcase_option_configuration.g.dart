@@ -17,22 +17,44 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
 
   IconWidgetShowcaseOptionConfiguration copyWith({
     String? label,
-    void Function(bool, IconData, double?)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    void Function(IconData)? iconOnChanged,
-    void Function(double)? iconSizeOnChanged,
+    IconData? initiallySelectedIcon,
+    bool initiallySelectedIconProvided = true,
+    void Function(IconData?)? iconOnChanged,
+    double? initiallySelectedIconSize,
+    bool initiallySelectedIconSizeProvided = true,
+    void Function(double?)? iconSizeOnChanged,
     bool iconSizeOnChangedProvided = true,
+    void Function(bool, double?)? iconSizeCheckboxOnChanged,
+    bool iconSizeCheckboxOnChangedProvided = true,
+    bool? enabled,
+    bool enabledProvided = true,
+    void Function(bool, IconData?, double?)? enableOptionCheckboxOnChanged,
+    bool enableOptionCheckboxOnChangedProvided = true,
   }) {
     return IconWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
-      checkboxOnChanged:
-          checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+      initiallySelectedIcon:
+          initiallySelectedIconProvided
+              ? (initiallySelectedIcon ?? self.initiallySelectedIcon)
               : null,
       iconOnChanged: iconOnChanged ?? self.iconOnChanged,
+      initiallySelectedIconSize:
+          initiallySelectedIconSizeProvided
+              ? (initiallySelectedIconSize ?? self.initiallySelectedIconSize)
+              : null,
       iconSizeOnChanged:
           iconSizeOnChangedProvided
               ? (iconSizeOnChanged ?? self.iconSizeOnChanged)
+              : null,
+      iconSizeCheckboxOnChanged:
+          iconSizeCheckboxOnChangedProvided
+              ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged)
+              : null,
+      enabled: enabledProvided ? (enabled ?? self.enabled) : null,
+      enableOptionCheckboxOnChanged:
+          enableOptionCheckboxOnChangedProvided
+              ? (enableOptionCheckboxOnChanged ??
+                  self.enableOptionCheckboxOnChanged)
               : null,
     );
   }
@@ -42,18 +64,27 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
     return other is IconWidgetShowcaseOptionConfiguration &&
         other.runtimeType == runtimeType &&
         other.label == self.label &&
-        other.checkboxOnChanged == self.checkboxOnChanged &&
+        other.initiallySelectedIcon == self.initiallySelectedIcon &&
         other.iconOnChanged == self.iconOnChanged &&
-        other.iconSizeOnChanged == self.iconSizeOnChanged;
+        other.initiallySelectedIconSize == self.initiallySelectedIconSize &&
+        other.iconSizeOnChanged == self.iconSizeOnChanged &&
+        other.iconSizeCheckboxOnChanged == self.iconSizeCheckboxOnChanged &&
+        other.enabled == self.enabled &&
+        other.enableOptionCheckboxOnChanged ==
+            self.enableOptionCheckboxOnChanged;
   }
 
   @override
   int get hashCode {
     return Object.hash(
       self.label,
-      self.checkboxOnChanged,
+      self.initiallySelectedIcon,
       self.iconOnChanged,
+      self.initiallySelectedIconSize,
       self.iconSizeOnChanged,
+      self.iconSizeCheckboxOnChanged,
+      self.enabled,
+      self.enableOptionCheckboxOnChanged,
     );
   }
 
@@ -61,8 +92,12 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
   String toString() =>
       'IconWidgetShowcaseOptionConfiguration(\n'
       '  label: ${self.label},\n'
-      '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
+      '  initiallySelectedIcon: ${self.initiallySelectedIcon},\n'
       '  iconOnChanged: ${self.iconOnChanged},\n'
+      '  initiallySelectedIconSize: ${self.initiallySelectedIconSize},\n'
       '  iconSizeOnChanged: ${self.iconSizeOnChanged},\n'
+      '  iconSizeCheckboxOnChanged: ${self.iconSizeCheckboxOnChanged},\n'
+      '  enabled: ${self.enabled},\n'
+      '  enableOptionCheckboxOnChanged: ${self.enableOptionCheckboxOnChanged},\n'
       ');';
 }

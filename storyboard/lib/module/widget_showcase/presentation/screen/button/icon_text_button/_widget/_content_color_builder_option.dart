@@ -7,15 +7,23 @@ final class _ContentColorBuilderOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final enableContentColorBuilder = state.enableContentColorBuilder;
+    final idleContentColor = state.idleContentColor;
+    final hoverContentColor = state.hoverContentColor;
+    final tapContentColor = state.tapContentColor;
 
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOption(
       configuration: MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
         label: 'Content color',
-        enabled: viewModel.state.enableContentColorBuilder,
-        checkboxOnChanged: (value) => viewModel.state.enableContentColorBuilder = value,
-        idleOnChanged: (color) => viewModel.state.idleContentColor = color,
-        hoverOnChanged: (color) => viewModel.state.hoverContentColor = color,
-        tapOnChanged: (color) => viewModel.state.tapContentColor = color,
+        enabled: enableContentColorBuilder,
+        checkboxOnChanged: (value) => state.enableContentColorBuilder = value,
+        initiallySelectedIdleColor: idleContentColor,
+        idleOnChanged: (color) => state.idleContentColor = color,
+        initiallySelectedHoverColor: hoverContentColor,
+        hoverOnChanged: (color) => state.hoverContentColor = color,
+        initiallySelectedTapColor: tapContentColor,
+        tapOnChanged: (color) => state.tapContentColor = color,
       ),
     );
   }

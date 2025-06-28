@@ -21,6 +21,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   double? _spacing;
   double? get spacing => _spacing;
   set spacing(double? spacing) {
+    if (_spacing == spacing) return;
     _spacing = spacing;
     notifyListeners();
   }
@@ -29,6 +30,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   EdgeInsets? _padding;
   EdgeInsets? get padding => _padding;
   set padding(EdgeInsets? padding) {
+    if (_padding == padding) return;
     _padding = padding;
     notifyListeners();
   }
@@ -37,30 +39,34 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   bool _enableContentColorBuilder = false;
   bool get enableContentColorBuilder => _enableContentColorBuilder;
   set enableContentColorBuilder(bool enableContentColorBuilder) {
+    if (_enableContentColorBuilder == enableContentColorBuilder) return;
     _enableContentColorBuilder = enableContentColorBuilder;
     notifyListeners();
   }
 
   /// [MyoroIconTextButtonConfiguration.contentColorBuilder]'s [Color] of [MyoroTapStatusEnum.idle].
   Color? _idleContentColor;
-  Color get idleContentColor => _idleContentColor ?? MyoroColorDesignSystem.transparent;
+  Color? get idleContentColor => _idleContentColor;
   set idleContentColor(Color? idleContentColor) {
+    if (_idleContentColor == idleContentColor) return;
     _idleContentColor = idleContentColor;
     notifyListeners;
   }
 
   /// [MyoroIconTextButtonConfiguration.contentColorBuilder]'s [Color] of [MyoroTapStatusEnum.hover].
   Color? _hoverContentColor;
-  Color get hoverContentColor => _hoverContentColor ?? MyoroColorDesignSystem.transparent;
+  Color? get hoverContentColor => _hoverContentColor;
   set hoverContentColor(Color? hoverContentColor) {
+    if (_hoverContentColor == hoverContentColor) return;
     _hoverContentColor = hoverContentColor;
     notifyListeners();
   }
 
   /// [MyoroIconTextButtonConfiguration.contentColorBuilder]'s [Color] of [MyoroTapStatusEnum.tap].
   Color? _tapContentColor;
-  Color get tapContentColor => _tapContentColor ?? MyoroColorDesignSystem.transparent;
+  Color? get tapContentColor => _tapContentColor;
   set tapContentColor(Color? tapContentColor) {
+    if (_tapContentColor == tapContentColor) return;
     _tapContentColor = tapContentColor;
     notifyListeners();
   }
@@ -69,6 +75,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   IconData? _icon = myoroFake<IconData>();
   IconData? get icon => _icon;
   set icon(IconData? icon) {
+    if (_icon == icon) return;
     _icon = icon;
     notifyListeners();
   }
@@ -77,6 +84,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   double? _iconSize;
   double? get iconSize => _iconSize;
   set iconSize(double? iconSize) {
+    if (_iconSize == iconSize) return;
     _iconSize = iconSize;
     notifyListeners();
   }
@@ -85,6 +93,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   String _text = faker.lorem.word();
   String get text => _text;
   set text(String text) {
+    if (_text == text) return;
     _text = text;
     notifyListeners();
   }
@@ -93,6 +102,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   int _maxLines = MyoroTextConfiguration.maxLinesDefaultValue;
   int get maxLines => _maxLines;
   set maxLines(int maxLines) {
+    if (_maxLines == maxLines) return;
     _maxLines = maxLines;
     notifyListeners();
   }
@@ -101,6 +111,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   TextOverflow _overflow = MyoroTextConfiguration.overflowDefaultValue;
   TextOverflow get overflow => _overflow;
   set overflow(TextOverflow overflow) {
+    if (_overflow == overflow) return;
     _overflow = overflow;
     notifyListeners();
   }
@@ -109,6 +120,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   TextAlign _alignment = MyoroTextConfiguration.alignmentDefaultValue;
   TextAlign get alignment => _alignment;
   set alignment(TextAlign alignment) {
+    if (_alignment == alignment) return;
     _alignment = alignment;
     notifyListeners();
   }
@@ -117,6 +129,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   TextStyle? _style;
   TextStyle? get style => _style;
   set style(TextStyle? style) {
+    if (_style == style) return;
     _style = style;
     notifyListeners();
   }

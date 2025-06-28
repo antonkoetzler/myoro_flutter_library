@@ -25,6 +25,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin
     double? widgetOptionsModalSpacing,
     EdgeInsets? widgetOptionsModalPadding,
     EdgeInsets? widgetOptionsModalItemPadding,
+    EdgeInsets? widgetOptionsModalCloseButtonPadding,
   }) {
     return WidgetShowcaseScreenThemeExtension(
       padding: padding ?? self.padding,
@@ -38,6 +39,9 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin
           widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
       widgetOptionsModalItemPadding:
           widgetOptionsModalItemPadding ?? self.widgetOptionsModalItemPadding,
+      widgetOptionsModalCloseButtonPadding:
+          widgetOptionsModalCloseButtonPadding ??
+          self.widgetOptionsModalCloseButtonPadding,
     );
   }
 
@@ -52,7 +56,9 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin
         other.widgetOptionsModalSpacing == self.widgetOptionsModalSpacing &&
         other.widgetOptionsModalPadding == self.widgetOptionsModalPadding &&
         other.widgetOptionsModalItemPadding ==
-            self.widgetOptionsModalItemPadding;
+            self.widgetOptionsModalItemPadding &&
+        other.widgetOptionsModalCloseButtonPadding ==
+            self.widgetOptionsModalCloseButtonPadding;
   }
 
   @override
@@ -65,6 +71,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin
       self.widgetOptionsModalSpacing,
       self.widgetOptionsModalPadding,
       self.widgetOptionsModalItemPadding,
+      self.widgetOptionsModalCloseButtonPadding,
     );
   }
 
@@ -78,5 +85,6 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin
       '  widgetOptionsModalSpacing: ${self.widgetOptionsModalSpacing},\n'
       '  widgetOptionsModalPadding: ${self.widgetOptionsModalPadding},\n'
       '  widgetOptionsModalItemPadding: ${self.widgetOptionsModalItemPadding},\n'
+      '  widgetOptionsModalCloseButtonPadding: ${self.widgetOptionsModalCloseButtonPadding},\n'
       ');';
 }

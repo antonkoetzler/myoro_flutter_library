@@ -7,14 +7,22 @@ final class _Title extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+
     final viewModel = context.read<IconWidgetShowcaseOptionViewModel>();
-    return viewModel.configuration.checkboxOnChanged != null
+    final configuration = viewModel.configuration;
+    final label = configuration.label;
+    final enableOptionCheckboxOnChanged = configuration.enableOptionCheckboxOnChanged;
+    final icon = viewModel.icon;
+    final iconSize = viewModel.iconSize;
+
+    return enableOptionCheckboxOnChanged != null
         ? MyoroCheckbox(
           configuration: MyoroCheckboxConfiguration(
-            label: viewModel.configuration.label,
-            onChanged: (value) => viewModel.configuration.checkboxOnChanged!(value, viewModel.icon, viewModel.iconSize),
+            label: label,
+            value: viewModel.enabled,
+            onChanged: (value) => enableOptionCheckboxOnChanged(value, icon, iconSize),
           ),
         )
-        : Text(viewModel.configuration.label, style: checkboxThemeExtension.labelTextStyle);
+        : Text(label, style: checkboxThemeExtension.labelTextStyle);
   }
 }

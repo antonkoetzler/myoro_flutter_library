@@ -3,19 +3,26 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroInputController].
 class MyoroInputViewModelState {
-  MyoroInputViewModelState(this.configuration, this.formatter) {
-    enabledController = ValueNotifier(configuration.enabled);
+  MyoroInputViewModelState(this._configuration, this._formatter) {
+    _enabledController = ValueNotifier(_configuration.enabled);
     showClearTextButtonController = ValueNotifier<bool>(showClearTextButton);
-    if (formatter != null && inputController.text.isEmpty) {
-      inputController.text = formatter!.initialText;
+    if (_formatter != null && inputController.text.isEmpty) {
+      inputController.text = _formatter.initialText;
     }
   }
 
   /// Configuration.
-  MyoroInputConfiguration configuration;
+  MyoroInputConfiguration _configuration;
+  MyoroInputConfiguration get configuration => _configuration;
+  set configuration(MyoroInputConfiguration configuration) {
+    if (_configuration == configuration) return;
+    _configuration = configuration;
+    _enabledController.value = configuration.enabled;
+  }
 
   /// Formatter.
-  MyoroInputFormatter? formatter;
+  final MyoroInputFormatter? _formatter;
+  MyoroInputFormatter? get formatter => _formatter;
 
   /// Input controller of the [MyoroInput].
   TextEditingController? _localInputController;
@@ -25,8 +32,9 @@ class MyoroInputViewModelState {
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
-  late final ValueNotifier<bool> enabledController;
-  bool get enabled => enabledController.value;
+  late final ValueNotifier<bool> _enabledController;
+  ValueNotifier<bool> get enabledController => _enabledController;
+  bool get enabled => _enabledController.value;
 
   /// [ValueNotifier] to keep track of whether or not to show
   /// [_ClearTextButton] in [TextFormField.decoration.suffix].

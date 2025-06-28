@@ -13,20 +13,40 @@ final class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptio
 
   const IconWidgetShowcaseOptionConfiguration({
     this.label = labelDefaultValue,
-    this.checkboxOnChanged,
+    this.initiallySelectedIcon,
     required this.iconOnChanged,
+    this.initiallySelectedIconSize,
     this.iconSizeOnChanged,
-  });
+    this.iconSizeCheckboxOnChanged,
+    this.enabled,
+    this.enableOptionCheckboxOnChanged,
+  }) : assert(
+         enabled != null ? enableOptionCheckboxOnChanged != null : true,
+         '[IconWidgetShowcaseOptionConfiguration]: If [enabled] is provided, '
+         '[enableOptionCheckboxOnChanged] must be provided.',
+       );
 
   /// Label of the [IconWidgetShowcaseOption].
   final String label;
 
-  /// On-changed of the [MyoroCheckbox] controlling if the [IconWidgetShowcaseOption] is enabled or not.
-  final IconWidgetShowcaseOptionCheckboxOnChanged? checkboxOnChanged;
+  /// Initial [IconData].
+  final IconData? initiallySelectedIcon;
 
   /// On-changed callback when the set [IconData] is changed.
-  final IconWidgetShowcaseOptionIconOnChanged iconOnChanged;
+  final MyoroSingularDropdownConfigurationOnChanged<IconData> iconOnChanged;
+
+  /// Initial icon size.
+  final double? initiallySelectedIconSize;
 
   /// On-changed callback when the set size of the [IconData] is changed.
   final IconWidgetShowcaseOptionIconSizeOnChanged? iconSizeOnChanged;
+
+  /// On-changed callback of the [MyoroCheckbox] next to the icon size selector.
+  final IconWidgetShowcaseOptionIconSizeCheckboxOnChanged? iconSizeCheckboxOnChanged;
+
+  /// [MyoroCheckboxConfiguration.value]
+  final bool? enabled;
+
+  /// On-changed of the [MyoroCheckbox] controlling if the [IconWidgetShowcaseOption] is enabled or not.
+  final IconWidgetShowcaseOptionCheckboxOnChanged? enableOptionCheckboxOnChanged;
 }

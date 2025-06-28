@@ -4,35 +4,64 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [IconWidgetShowcaseOptionViewModel].
 final class IconWidgetShowcaseOptionViewModel {
-  IconWidgetShowcaseOptionViewModel(this.configuration) {
-    iconController.addListener(_iconControllerListener);
-    iconSizeController.addListener(_iconSizeControllerListener);
+  IconWidgetShowcaseOptionViewModel(this._configuration) {
+    if (_configuration.enableOptionCheckboxOnChanged != null) {
+      _enabledController = ValueNotifier(_configuration.enabled ?? true)..addListener(_enabledControllerListener);
+    }
+    _iconController = MyoroSingularDropdownController(
+      enabled: enabled,
+      initiallySelectedItem: _configuration.initiallySelectedIcon,
+    );
   }
 
   /// Configuration.
-  final IconWidgetShowcaseOptionConfiguration configuration;
+  final IconWidgetShowcaseOptionConfiguration _configuration;
+  IconWidgetShowcaseOptionConfiguration get configuration => _configuration;
 
-  /// Controller of the [IconData].
-  final iconController = ValueNotifier(myoroFake<IconData>());
-  IconData get icon => iconController.value;
+  /// [ValueNotifier] of the [MyoroCheckbox] controlling if the option is enabled
+  /// if [IconWidgetShowcaseOptionConfiguration.enableOptionCheckboxOnChanged] is not null.
+  ValueNotifier<bool>? _enabledController;
+  bool get enabled => enabledController.value;
+  ValueNotifier<bool> get enabledController {
+    assert(
+      _configuration.enableOptionCheckboxOnChanged != null,
+      '[IconWidgetShowcaseOptionViewModel.enabledController]: '
+      '[_configuration.enableOptionCheckboxOnChanged] cannot be null.',
+    );
+    return _enabledController!;
+  }
 
-  /// Controller of the [IconData]'s size.
-  final iconSizeController = ValueNotifier(30.0);
-  double get iconSize => iconSizeController.value;
+  /// Icon size.
+  double? _iconSize;
+  double? get iconSize => _iconSize;
+  set iconSize(double? iconSize) {
+    if (_iconSize == iconSize) return;
+    _iconSize = iconSize;
+    _configuration.iconSizeOnChanged?.call(_iconSize);
+  }
+
+  /// [MyoroSingularDropdownController] of the [IconData] selector.
+  late final MyoroSingularDropdownController<IconData> _iconController;
+  MyoroSingularDropdownController<IconData> get iconController => _iconController;
+  IconData? get icon => _iconController.selectedItem;
 
   /// Dispose function.
   void dispose() {
-    iconController.dispose();
-    iconSizeController.dispose();
+    _enabledController?.dispose();
+    _iconController.dispose();
   }
 
-  /// Listener of [iconController].
-  void _iconControllerListener() {
-    configuration.iconOnChanged(icon);
+  /// [MyoroInputConfiguration.checkboxOnChanged] of the icon size selector.
+  void iconSizeInputCheckboxOnChanged(bool enabled, String inputText) {
+    assert(
+      configuration.iconSizeCheckboxOnChanged != null,
+      '[IconWidgetShowcaseOptionViewModel.iconSizeCheckboxOnChanged]: [configuration.iconSizeCheckboxOnChanged] cannot be null.',
+    );
+    configuration.iconSizeCheckboxOnChanged!(enabled, enabled ? double.parse(inputText) : null);
   }
 
-  /// Listener of [iconSizeController].
-  void _iconSizeControllerListener() {
-    configuration.iconSizeOnChanged?.call(iconSize);
+  /// Listener of [_enabledController].
+  void _enabledControllerListener() {
+    _iconController.toggleEnabled(enabled);
   }
 }

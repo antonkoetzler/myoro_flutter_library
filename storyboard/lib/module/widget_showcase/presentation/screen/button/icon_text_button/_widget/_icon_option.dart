@@ -10,7 +10,7 @@ final class _IconOption extends StatelessWidget {
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
-        checkboxOnChanged: (enabled, icon, iconSize) {
+        enableOptionCheckboxOnChanged: (enabled, icon, iconSize) {
           viewModel.state.icon = enabled ? icon : null;
           viewModel.state.iconSize = enabled ? iconSize : null;
         },

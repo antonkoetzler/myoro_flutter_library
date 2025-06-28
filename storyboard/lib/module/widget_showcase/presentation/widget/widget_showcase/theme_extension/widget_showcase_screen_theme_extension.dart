@@ -13,6 +13,41 @@ part 'widget_showcase_screen_theme_extension.g.dart';
 @myoroThemeExtension
 final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShowcaseScreenThemeExtension>
     with _$WidgetShowcaseScreenThemeExtensionMixin {
+  const WidgetShowcaseScreenThemeExtension({
+    required this.padding,
+    required this.decoration,
+    required this.contentPadding,
+    required this.widgetOptionsButtonIcon,
+    required this.widgetOptionsModalSpacing,
+    required this.widgetOptionsModalPadding,
+    required this.widgetOptionsModalItemPadding,
+    required this.widgetOptionsModalCloseButtonPadding,
+  });
+
+  WidgetShowcaseScreenThemeExtension.fake()
+    : padding = myoroFake<EdgeInsets>(),
+      decoration = myoroFake<BoxDecoration>(),
+      contentPadding = myoroFake<EdgeInsets>(),
+      widgetOptionsButtonIcon = myoroFake<IconData>(),
+      widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: 24),
+      widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
+      widgetOptionsModalItemPadding = myoroFake<EdgeInsets>(),
+      widgetOptionsModalCloseButtonPadding = myoroFake<EdgeInsets>();
+
+  WidgetShowcaseScreenThemeExtension.builder()
+    : padding = const EdgeInsets.all(10),
+      decoration = BoxDecoration(
+        color: MyoroColorDesignSystem.attention.withValues(alpha: 0.1),
+        border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+      ),
+      contentPadding = const EdgeInsets.all(10),
+      widgetOptionsButtonIcon = Icons.menu,
+      widgetOptionsModalSpacing = 10,
+      widgetOptionsModalPadding = const EdgeInsets.only(top: 4),
+      widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: 8),
+      widgetOptionsModalCloseButtonPadding = const EdgeInsets.only(top: 4, right: 4);
+
   /// Padding of [_WidgetShowcase].
   final EdgeInsets padding;
 
@@ -34,37 +69,8 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
   /// Padding of each widget option in the [_WidgetShowcase.widgetOptions] modal.
   final EdgeInsets widgetOptionsModalItemPadding;
 
-  const WidgetShowcaseScreenThemeExtension({
-    required this.padding,
-    required this.decoration,
-    required this.contentPadding,
-    required this.widgetOptionsButtonIcon,
-    required this.widgetOptionsModalSpacing,
-    required this.widgetOptionsModalPadding,
-    required this.widgetOptionsModalItemPadding,
-  });
-
-  WidgetShowcaseScreenThemeExtension.fake()
-    : padding = myoroFake<EdgeInsets>(),
-      decoration = myoroFake<BoxDecoration>(),
-      contentPadding = myoroFake<EdgeInsets>(),
-      widgetOptionsButtonIcon = myoroFake<IconData>(),
-      widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: 20),
-      widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
-      widgetOptionsModalItemPadding = myoroFake<EdgeInsets>();
-
-  WidgetShowcaseScreenThemeExtension.builder()
-    : padding = const EdgeInsets.all(10),
-      decoration = BoxDecoration(
-        color: MyoroColorDesignSystem.attention.withValues(alpha: 0.1),
-        border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
-        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-      ),
-      contentPadding = const EdgeInsets.all(10),
-      widgetOptionsButtonIcon = Icons.menu,
-      widgetOptionsModalSpacing = 10,
-      widgetOptionsModalPadding = const EdgeInsets.only(top: 5),
-      widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: 10);
+  /// [MyoroModalConfiguration.closeButtonPadding]
+  final EdgeInsets widgetOptionsModalCloseButtonPadding;
 
   @override
   WidgetShowcaseScreenThemeExtension lerp(
@@ -82,6 +88,11 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
       widgetOptionsModalItemPadding: EdgeInsets.lerp(
         widgetOptionsModalItemPadding,
         other.widgetOptionsModalItemPadding,
+        t,
+      ),
+      widgetOptionsModalCloseButtonPadding: EdgeInsets.lerp(
+        widgetOptionsModalCloseButtonPadding,
+        other.widgetOptionsModalCloseButtonPadding,
         t,
       ),
     );

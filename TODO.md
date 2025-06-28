@@ -2,9 +2,12 @@
 
 1. chore: Go through every widget showcase looking for bugs
 
+- (**IN PROGRESS**) Make a clear header for every widget showcase option
 - (**IN PROGRESS**) button
   - (**DONE**) `MyoroButtonWidgetShowcaseScreen`
   - (**IN PROGRESS**) `MyoroIconTextButtonWidgetShowcaseScreen`
+    - Make `MyoroIconTextButtonConfiguration` extend `MyoroButtonConfiguration`
+    - Do the same thing with `MyoroDialogModalConfiguration`
 - card
 - carousel
 - checkbox

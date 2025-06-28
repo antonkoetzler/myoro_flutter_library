@@ -13,28 +13,42 @@ final class _TextFormField extends StatelessWidget {
     final border = _viewModel.state.configuration.getBorder(context);
     final textStyle = _viewModel.state.configuration.inputTextStyle ?? themeExtension.inputTextStyle;
 
+    final state = _viewModel.state;
+    final configuration = state.configuration;
+    final readOnly = configuration.readOnly;
+    final autofocus = configuration.autofocus;
+    final placeholder = configuration.placeholder;
+    final label = configuration.label;
+    final contentPadding = configuration.contentPadding;
+    final textAlign = configuration.textAlign;
+    final validation = configuration.validation;
+    final onFieldSubmitted = configuration.onFieldSubmitted;
+    final onChanged = configuration.onChanged;
+    final focusNode = configuration.focusNode;
+    final inputController = state.inputController;
+    final formatter = state.formatter;
+    final enabled = state.enabled;
+
     return ColoredBox(
       color: themeExtension.primaryColor,
       child: ValueListenableBuilder(
-        key: ValueKey(border),
+        // Used to not apply the default animation when switching borders during rebuilds.
         valueListenable: _viewModel.state.showClearTextButtonController,
         builder: (_, bool showClearTextButton, _) {
           return TextFormField(
+            key: ValueKey(border),
             // So the checkbox prefix may be clicked
             ignorePointers: false,
-            enabled: _viewModel.state.enabled,
-            readOnly: _viewModel.state.configuration.readOnly,
-            autofocus: _viewModel.state.configuration.autofocus,
+            enabled: enabled,
+            readOnly: readOnly,
+            autofocus: autofocus,
             style: textStyle.withColor(
               textStyle.color!.withValues(alpha: _viewModel.state.enabled ? 1 : themeExtension.disabledOpacity),
             ),
             decoration: InputDecoration(
               floatingLabelBehavior: themeExtension.labelBehavior,
-              label: _viewModel.state.configuration.label.isNotEmpty ? _Label(_viewModel) : null,
-              hintText:
-                  _viewModel.state.configuration.placeholder.isNotEmpty
-                      ? _viewModel.state.configuration.placeholder
-                      : null,
+              label: label.isNotEmpty ? _Label(_viewModel) : null,
+              hintText: placeholder.isNotEmpty ? placeholder : null,
               hintStyle: textStyle.withColor(textStyle.color!.withValues(alpha: themeExtension.disabledOpacity)),
               enabledBorder: border,
               focusedBorder: border,
@@ -47,17 +61,17 @@ final class _TextFormField extends StatelessWidget {
                 ),
               ),
               isDense: true,
-              contentPadding: _viewModel.state.configuration.contentPadding ?? themeExtension.contentPadding,
+              contentPadding: contentPadding ?? themeExtension.contentPadding,
               suffixIcon: showClearTextButton ? _ClearTextButton(_viewModel) : null,
             ),
-            textAlign: _viewModel.state.configuration.textAlign,
+            textAlign: textAlign,
             cursorHeight: themeExtension.cursorHeight,
-            validator: (_) => _viewModel.state.configuration.validation?.call(_viewModel.state.inputController.text),
-            inputFormatters: _viewModel.state.formatter != null ? [_viewModel.state.formatter!] : null,
-            onFieldSubmitted: _viewModel.state.configuration.onFieldSubmitted,
-            onChanged: _viewModel.state.configuration.onChanged,
-            focusNode: _viewModel.state.configuration.focusNode,
-            controller: _viewModel.state.inputController,
+            validator: (_) => validation?.call(inputController.text),
+            inputFormatters: formatter != null ? [_viewModel.state.formatter!] : null,
+            onFieldSubmitted: onFieldSubmitted,
+            onChanged: onChanged,
+            focusNode: focusNode,
+            controller: inputController,
           );
         },
       ),

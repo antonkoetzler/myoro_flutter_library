@@ -39,9 +39,10 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
   /// [MyoroIconTextButtonConfiguration.contentColorBuilder] of [_Widget].
   Color _contentColorBuilder(MyoroTapStatusEnum tapStatusEnum) {
     return switch (tapStatusEnum) {
-      MyoroTapStatusEnum.idle => state.idleContentColor,
-      MyoroTapStatusEnum.hover => state.hoverContentColor,
-      MyoroTapStatusEnum.tap => state.tapContentColor,
-    };
+          MyoroTapStatusEnum.idle => state.idleContentColor,
+          MyoroTapStatusEnum.hover => state.hoverContentColor,
+          MyoroTapStatusEnum.tap => state.tapContentColor,
+        } ??
+        MyoroColorDesignSystem.transparent;
   }
 }

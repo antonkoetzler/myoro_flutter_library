@@ -4,6 +4,7 @@ part of '../widget_showcase_screen.dart';
 final class _WidgetOptionsModal extends StatelessWidget {
   static Future<void> _show(BuildContext context, String widgetName, List<Widget> widgetOptions) async {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
+
     final screenSize = MediaQuery.of(context).size;
 
     await MyoroModal.show(
@@ -12,7 +13,7 @@ final class _WidgetOptionsModal extends StatelessWidget {
         title: 'Options of $widgetName',
         useRootNavigator: false,
         padding: EdgeInsets.zero,
-        closeButtonPadding: EdgeInsets.only(right: themeExtension.widgetOptionsModalItemPadding.left / 2),
+        closeButtonPadding: themeExtension.widgetOptionsModalCloseButtonPadding,
         constraints: BoxConstraints(
           maxWidth: MyoroPlatformHelper.isMobile ? screenSize.width * 0.9 : 400,
           maxHeight: screenSize.height * 0.6,
