@@ -12,6 +12,7 @@ final class _Title extends StatelessWidget {
         ? MyoroCheckbox(
           configuration: MyoroCheckboxConfiguration(
             label: viewModel.configuration.label,
+            value: viewModel.enabled,
             onChanged: (enabled) => viewModel.configuration.checkboxOnChanged!(enabled, viewModel.padding),
           ),
         )

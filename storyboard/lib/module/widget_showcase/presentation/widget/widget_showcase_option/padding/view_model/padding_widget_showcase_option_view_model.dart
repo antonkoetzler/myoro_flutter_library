@@ -4,62 +4,71 @@ import 'package:storyboard/storyboard.dart';
 /// View model of [PaddingWidgetShowcaseOption].
 final class PaddingWidgetShowcaseOptionViewModel {
   PaddingWidgetShowcaseOptionViewModel(this.configuration) {
-    paddingController.addListener(_paddingControllerListener);
+    _enabledController = ValueNotifier(configuration.enabled);
+    _paddingController.addListener(_paddingControllerListener);
   }
 
   /// Configuration.
   final PaddingWidgetShowcaseOptionConfiguration configuration;
 
   /// [ValueNotifier] of the [PaddingWidgetShowcaseOptionEnum] loaded.
-  final modeEnumController = ValueNotifier(PaddingWidgetShowcaseOptionEnum.symmetric);
-  PaddingWidgetShowcaseOptionEnum get modeEnum => modeEnumController.value;
+  final _modeEnumController = ValueNotifier(PaddingWidgetShowcaseOptionEnum.symmetric);
+  ValueNotifier<PaddingWidgetShowcaseOptionEnum> get modeEnumController => _modeEnumController;
+  PaddingWidgetShowcaseOptionEnum get modeEnum => _modeEnumController.value;
+
+  /// [ValueNotifier] controlling if the option is enabled.
+  late final ValueNotifier<bool> _enabledController;
+  ValueNotifier<bool> get enabledController => _enabledController;
+  bool get enabled => _enabledController.value;
 
   /// Generated [EdgeInsets].
-  final paddingController = ValueNotifier(EdgeInsets.zero);
-  EdgeInsets get padding => paddingController.value;
+  final _paddingController = ValueNotifier(EdgeInsets.zero);
+  ValueNotifier<EdgeInsets> get paddingController => _paddingController;
+  EdgeInsets get padding => _paddingController.value;
 
   /// Dispose function.
   void dispose() {
-    modeEnumController.dispose();
-    paddingController.dispose();
+    _modeEnumController.dispose();
+    _enabledController.dispose();
+    _paddingController.dispose();
   }
 
   /// [EdgeInsets.all] on-changed.
   void allOnChanged(double value) {
-    paddingController.value = EdgeInsets.all(value);
+    _paddingController.value = EdgeInsets.all(value);
   }
 
   /// [EdgeInsets.symmetric]'s vertical on-changed.
   void verticalOnChanged(double value) {
-    paddingController.value = padding.copyWith(top: value, bottom: value);
+    _paddingController.value = padding.copyWith(top: value, bottom: value);
   }
 
   /// [EdgeInsets.symmetric]'s horizontal on-changed.
   void horizontalOnChanged(double value) {
-    paddingController.value = padding.copyWith(left: value, right: value);
+    _paddingController.value = padding.copyWith(left: value, right: value);
   }
 
   /// [EdgeInsets.only]'s top on-changed.
   void topOnChanged(double value) {
-    paddingController.value = padding.copyWith(top: value);
+    _paddingController.value = padding.copyWith(top: value);
   }
 
   /// [EdgeInsets.only]'s bottom on-changed.
   void bottomOnChanged(double value) {
-    paddingController.value = padding.copyWith(bottom: value);
+    _paddingController.value = padding.copyWith(bottom: value);
   }
 
   /// [EdgeInsets.only]'s left on-changed.
   void leftOnChanged(double value) {
-    paddingController.value = padding.copyWith(left: value);
+    _paddingController.value = padding.copyWith(left: value);
   }
 
   /// [EdgeInsets.only]'s right on-changed.
   void rightOnChanged(double value) {
-    paddingController.value = padding.copyWith(right: value);
+    _paddingController.value = padding.copyWith(right: value);
   }
 
-  /// Listener of [paddingController].
+  /// Listener of [_paddingController].
   void _paddingControllerListener() {
     configuration.paddingOnChanged(padding);
   }

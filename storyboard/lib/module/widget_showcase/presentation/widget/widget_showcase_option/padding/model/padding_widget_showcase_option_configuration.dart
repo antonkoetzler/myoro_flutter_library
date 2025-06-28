@@ -10,15 +10,20 @@ part 'padding_widget_showcase_option_configuration.g.dart';
 @myoroModel
 final class PaddingWidgetShowcaseOptionConfiguration with _$PaddingWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Padding';
+  static const enabledDefaultValue = false;
 
   const PaddingWidgetShowcaseOptionConfiguration({
     this.label = labelDefaultValue,
+    this.enabled = enabledDefaultValue,
     this.checkboxOnChanged,
     required this.paddingOnChanged,
   });
 
   /// Label of the [PaddingWidgetShowcaseOption].
   final String label;
+
+  /// [MyoroCheckboxConfiguration.value]
+  final bool enabled;
 
   /// [MyoroCheckbox] on changed.
   final PaddingWidgetShowcaseOptionTitleCheckboxOnChanged? checkboxOnChanged;

@@ -10,7 +10,7 @@ typedef MyoroDropdownConfigurationSelectedItemBuilder<T> = String Function(T ite
 /// configuration classes extending [MyoroDropdownConfiguration] for specific args.
 abstract class MyoroDropdownConfiguration<T> {
   static const labelDefaultValue = '';
-  static const menuTypeEnumDefaultValue = MyoroDropdownMenuTypeEnum.overlay;
+  static const menuTypeEnumDefaultValue = MyoroDropdownMenuTypeEnum.expanding;
   static const enabledDefaultValue = true;
   static const allowItemClearingDefaultValue = true;
   static const selectedItemTextAlignDefaultValue = MyoroInputConfiguration.textAlignDefaultValue;

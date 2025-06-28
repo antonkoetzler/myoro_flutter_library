@@ -10,6 +10,7 @@ final class _PaddingOption extends StatelessWidget {
 
     return PaddingWidgetShowcaseOption(
       configuration: PaddingWidgetShowcaseOptionConfiguration(
+        enabled: viewModel.state.padding != null,
         checkboxOnChanged: (enabled, padding) => viewModel.state.padding = enabled ? padding : null,
         paddingOnChanged: (padding) => viewModel.state.padding = padding,
       ),
