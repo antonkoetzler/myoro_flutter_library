@@ -17,12 +17,14 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
 
   PaddingWidgetShowcaseOptionConfiguration copyWith({
     String? label,
+    bool? enabled,
     void Function(bool, EdgeInsets)? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     void Function(EdgeInsets)? paddingOnChanged,
   }) {
     return PaddingWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
+      enabled: enabled ?? self.enabled,
       checkboxOnChanged:
           checkboxOnChangedProvided
               ? (checkboxOnChanged ?? self.checkboxOnChanged)
@@ -36,6 +38,7 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
     return other is PaddingWidgetShowcaseOptionConfiguration &&
         other.runtimeType == runtimeType &&
         other.label == self.label &&
+        other.enabled == self.enabled &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.paddingOnChanged == self.paddingOnChanged;
   }
@@ -44,6 +47,7 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
   int get hashCode {
     return Object.hash(
       self.label,
+      self.enabled,
       self.checkboxOnChanged,
       self.paddingOnChanged,
     );
@@ -53,6 +57,7 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
   String toString() =>
       'PaddingWidgetShowcaseOptionConfiguration(\n'
       '  label: ${self.label},\n'
+      '  enabled: ${self.enabled},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  paddingOnChanged: ${self.paddingOnChanged},\n'
       ');';

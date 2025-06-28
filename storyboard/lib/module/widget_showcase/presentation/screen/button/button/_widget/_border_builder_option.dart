@@ -9,17 +9,17 @@ final class _BorderBuilderOption extends StatelessWidget {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOption(
-      checkboxConfiguration: MyoroCheckboxConfiguration(
+      configuration: MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
         label: 'Border builder',
-        value: viewModel.state.borderBuilderEnabled,
-        onChanged: (value) => viewModel.state.borderBuilderEnabled = value,
+        enabled: viewModel.state.borderBuilderEnabled,
+        checkboxOnChanged: (value) => viewModel.state.borderBuilderEnabled = value,
+        initiallySelectedIdleColor: viewModel.state.idleBorderColor,
+        idleOnChanged: (color) => viewModel.state.idleBorderColor = color,
+        initiallySelectedHoverColor: viewModel.state.hoverBorderColor,
+        hoverOnChanged: (color) => viewModel.state.hoverBorderColor = color,
+        initiallySelectedTapColor: viewModel.state.tapBorderColor,
+        tapOnChanged: (color) => viewModel.state.tapBorderColor = color,
       ),
-      initiallySelectedIdleColor: viewModel.state.idleBorderColor,
-      idleOnChanged: (color) => viewModel.state.idleBorderColor = color,
-      initiallySelectedHoverColor: viewModel.state.hoverBorderColor,
-      hoverOnChanged: (color) => viewModel.state.hoverBorderColor = color,
-      initiallySelectedTapColor: viewModel.state.tapBorderColor,
-      tapOnChanged: (color) => viewModel.state.tapBorderColor = color,
     );
   }
 }

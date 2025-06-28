@@ -9,17 +9,17 @@ final class _BackgroundColorBuilderOption extends StatelessWidget {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOption(
-      checkboxConfiguration: MyoroCheckboxConfiguration(
+      configuration: MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
         label: 'Background color builder',
-        value: viewModel.state.backgroundColorBuilderEnabled,
-        onChanged: (value) => viewModel.state.backgroundColorBuilderEnabled = value,
+        enabled: viewModel.state.backgroundColorBuilderEnabled,
+        checkboxOnChanged: (value) => viewModel.state.backgroundColorBuilderEnabled = value,
+        initiallySelectedIdleColor: viewModel.state.idleBackgroundColor,
+        idleOnChanged: (color) => viewModel.state.idleBackgroundColor = color,
+        initiallySelectedHoverColor: viewModel.state.hoverBackgroundColor,
+        hoverOnChanged: (color) => viewModel.state.hoverBackgroundColor = color,
+        initiallySelectedTapColor: viewModel.state.tapBackgroundColor,
+        tapOnChanged: (color) => viewModel.state.tapBackgroundColor = color,
       ),
-      initiallySelectedIdleColor: viewModel.state.idleBackgroundColor,
-      idleOnChanged: (color) => viewModel.state.idleBackgroundColor = color,
-      initiallySelectedHoverColor: viewModel.state.hoverBackgroundColor,
-      hoverOnChanged: (color) => viewModel.state.hoverBackgroundColor = color,
-      initiallySelectedTapColor: viewModel.state.tapBackgroundColor,
-      tapOnChanged: (color) => viewModel.state.tapBackgroundColor = color,
     );
   }
 }

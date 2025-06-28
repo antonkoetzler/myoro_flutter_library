@@ -3,10 +3,15 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroTapStatusEnumColorBuilderWidgetShowcaseOption].
 final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionViewModel {
-  const MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionViewModel(this.configuration);
+  MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionViewModel(this._configuration)
+    : _enabledController = ValueNotifier(_configuration.enabled);
+
+  /// Configuration.
+  final MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration _configuration;
+  MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration get configuration => _configuration;
 
   /// [ValueNotifier] of the [MyoroCheckbox] controlling if the option is enabled.
-  late final ValueNotifier<bool> _enabledController;
+  final ValueNotifier<bool> _enabledController;
   ValueNotifier<bool> get enabledController => _enabledController;
   bool get enabled => _enabledController.value;
 

@@ -13,7 +13,10 @@ final class _Title extends StatelessWidget {
           configuration: MyoroCheckboxConfiguration(
             label: viewModel.configuration.label,
             value: viewModel.enabled,
-            onChanged: (enabled) => viewModel.configuration.checkboxOnChanged!(enabled, viewModel.padding),
+            onChanged: (enabled) {
+              viewModel.configuration.checkboxOnChanged!(enabled, viewModel.padding);
+              viewModel.enabledController.value = enabled;
+            },
           ),
         )
         : Text(viewModel.configuration.label, style: checkboxThemeExtension.labelTextStyle);

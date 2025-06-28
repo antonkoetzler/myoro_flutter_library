@@ -18,6 +18,7 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
   SliderWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     bool? initiallyEnabled,
+    double? initialValue,
     void Function(bool, double)? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     void Function(double)? sliderOnChanged,
@@ -25,6 +26,7 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
     return SliderWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
       initiallyEnabled: initiallyEnabled ?? self.initiallyEnabled,
+      initialValue: initialValue ?? self.initialValue,
       checkboxOnChanged:
           checkboxOnChangedProvided
               ? (checkboxOnChanged ?? self.checkboxOnChanged)
@@ -39,6 +41,7 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
         other.runtimeType == runtimeType &&
         other.label == self.label &&
         other.initiallyEnabled == self.initiallyEnabled &&
+        other.initialValue == self.initialValue &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.sliderOnChanged == self.sliderOnChanged;
   }
@@ -48,6 +51,7 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
     return Object.hash(
       self.label,
       self.initiallyEnabled,
+      self.initialValue,
       self.checkboxOnChanged,
       self.sliderOnChanged,
     );
@@ -58,6 +62,7 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
       'SliderWidgetShowcaseOptionConfiguration(\n'
       '  label: ${self.label},\n'
       '  initiallyEnabled: ${self.initiallyEnabled},\n'
+      '  initialValue: ${self.initialValue},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  sliderOnChanged: ${self.sliderOnChanged},\n'
       ');';
