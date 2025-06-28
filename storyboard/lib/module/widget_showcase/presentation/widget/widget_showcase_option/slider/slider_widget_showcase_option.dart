@@ -41,7 +41,10 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
                   (value) => _viewModel.configuration.checkboxOnChanged!(value, _viewModel.sliderController.value),
             ),
           ),
-        MyoroSlider(controller: _viewModel.sliderController),
+        MyoroSlider(
+          controller: _viewModel.sliderController,
+          configuration: MyoroSliderConfiguration(onChanged: _viewModel.configuration.sliderOnChanged),
+        ),
       ],
     );
   }
