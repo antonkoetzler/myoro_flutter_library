@@ -8,16 +8,23 @@ final class _IconSizeInput extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<IconWidgetShowcaseOptionViewModel>();
     final configuration = viewModel.configuration;
+    final enabledController = viewModel.enabledController;
 
-    return MyoroInput.number(
-      min: 5,
-      max: 200,
-      configuration: MyoroInputConfiguration(
-        label: 'Icon size',
-        onChanged: (text) => viewModel.iconSize = double.parse(text),
-        checkboxOnChanged:
-            configuration.iconSizeCheckboxOnChanged != null ? viewModel.iconSizeInputCheckboxOnChanged : null,
-      ),
+    return ValueListenableBuilder(
+      valueListenable: enabledController,
+      builder: (_, bool enabled, _) {
+        return MyoroInput.number(
+          min: 5,
+          max: 200,
+          configuration: MyoroInputConfiguration(
+            label: 'Icon size',
+            enabled: enabled,
+            onChanged: (text) => viewModel.iconSize = double.parse(text),
+            checkboxOnChanged:
+                configuration.iconSizeCheckboxOnChanged != null ? viewModel.iconSizeInputCheckboxOnChanged : null,
+          ),
+        );
+      },
     );
   }
 }

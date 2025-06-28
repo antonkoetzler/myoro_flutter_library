@@ -12,15 +12,13 @@ final class _Title extends StatelessWidget {
     final configuration = viewModel.configuration;
     final label = configuration.label;
     final enableOptionCheckboxOnChanged = configuration.enableOptionCheckboxOnChanged;
-    final icon = viewModel.icon;
-    final iconSize = viewModel.iconSize;
 
     return enableOptionCheckboxOnChanged != null
         ? MyoroCheckbox(
           configuration: MyoroCheckboxConfiguration(
             label: label,
             value: viewModel.enabled,
-            onChanged: (value) => enableOptionCheckboxOnChanged(value, icon, iconSize),
+            onChanged: (value) => viewModel.enabledController.value = value,
           ),
         )
         : Text(label, style: checkboxThemeExtension.labelTextStyle);

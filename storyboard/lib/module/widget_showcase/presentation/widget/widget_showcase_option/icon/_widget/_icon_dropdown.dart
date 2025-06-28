@@ -16,12 +16,12 @@ final class _IconDropdown extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Icon',
         allowItemClearing: false,
-        selectedItemBuilder: (icon) => icon.toString(),
+        selectedItemBuilder: (icon) => icon.name!.capitalized,
         onChanged: iconOnChanged,
         menuConfiguration: MyoroMenuConfiguration(
           request: kMyoroTestIcons.toSet,
           itemBuilder: (icon) {
-            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: icon.toString()));
+            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized));
           },
         ),
       ),

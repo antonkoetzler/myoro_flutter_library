@@ -7,15 +7,20 @@ final class _IconOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final icon = state.icon;
+    final iconSize = state.iconSize;
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
+        initiallySelectedIcon: icon,
+        enabled: icon != null || iconSize != null,
         enableOptionCheckboxOnChanged: (enabled, icon, iconSize) {
-          viewModel.state.icon = enabled ? icon : null;
-          viewModel.state.iconSize = enabled ? iconSize : null;
+          state.icon = enabled ? icon : null;
+          state.iconSize = enabled ? iconSize : null;
         },
-        iconOnChanged: (icon) => viewModel.state.icon = icon,
-        iconSizeOnChanged: (iconSize) => viewModel.state.iconSize = iconSize,
+        iconOnChanged: (icon) => state.icon = icon,
+        iconSizeOnChanged: (iconSize) => state.iconSize = iconSize,
       ),
     );
   }

@@ -12,6 +12,7 @@ final class IconWidgetShowcaseOptionViewModel {
       enabled: enabled,
       initiallySelectedItem: _configuration.initiallySelectedIcon,
     );
+    _iconSize = _configuration.initiallySelectedIconSize;
   }
 
   /// Configuration.
@@ -62,6 +63,7 @@ final class IconWidgetShowcaseOptionViewModel {
 
   /// Listener of [_enabledController].
   void _enabledControllerListener() {
+    _configuration.enableOptionCheckboxOnChanged?.call(enabled, icon, iconSize);
     _iconController.toggleEnabled(enabled);
   }
 }
