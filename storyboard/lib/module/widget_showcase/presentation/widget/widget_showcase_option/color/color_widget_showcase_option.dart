@@ -46,14 +46,7 @@ final class ColorWidgetShowcaseOption extends StatelessWidget {
                   child: Row(
                     spacing: 8,
                     children: [
-                      Container(
-                        width: 20,
-                        height: 20,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-                          color: color,
-                        ),
-                      ),
+                      Container(width: 20, height: 20, decoration: BoxDecoration(borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength), color: color)),
                       Expanded(child: Text(color.hexadecimalFormat)),
                     ],
                   ),

@@ -20,25 +20,6 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOption extends Stateless
          '[MyoroTapStatusEnumColorBuilderWidgetShowcaseOption]: [title] (x)or [checkboxConfiguration] must be provided.',
        );
 
-  /// Title of the [WidgetShowcase] option].
-  final String? title;
-
-  /// [MyoroCheckboxConfiguration] to provide a checkbox if the builder is
-  /// enabled/provided or not. Used frequently as these builders are often null.
-  final MyoroCheckboxConfiguration? checkboxConfiguration;
-
-  /// [MyoroTapStatusEnum.idle]
-  final Color? initiallySelectedIdleColor;
-  final MyoroSingularDropdownConfigurationOnChanged<Color> idleOnChanged;
-
-  /// [MyoroTapStatusEnum.hover]
-  final Color? initiallySelectedHoverColor;
-  final MyoroSingularDropdownConfigurationOnChanged<Color> hoverOnChanged;
-
-  /// [MyoroTapStatusEnum.tap]
-  final Color? initiallySelectedTapColor;
-  final MyoroSingularDropdownConfigurationOnChanged<Color> tapOnChanged;
-
   @override
   Widget build(BuildContext context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
@@ -50,21 +31,9 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOption extends Stateless
       children: [
         if (title != null) Text(title!, style: checkboxThemeExtension.labelTextStyle),
         if (checkboxConfiguration != null) MyoroCheckbox(configuration: checkboxConfiguration!),
-        ColorWidgetShowcaseOption(
-          label: 'Idle color',
-          initiallySelectedColor: initiallySelectedIdleColor,
-          onChanged: idleOnChanged,
-        ),
-        ColorWidgetShowcaseOption(
-          label: 'Hover color',
-          initiallySelectedColor: initiallySelectedHoverColor,
-          onChanged: hoverOnChanged,
-        ),
-        ColorWidgetShowcaseOption(
-          label: 'Tap color',
-          initiallySelectedColor: initiallySelectedTapColor,
-          onChanged: tapOnChanged,
-        ),
+        ColorWidgetShowcaseOption(label: 'Idle color', initiallySelectedColor: initiallySelectedIdleColor, onChanged: idleOnChanged),
+        ColorWidgetShowcaseOption(label: 'Hover color', initiallySelectedColor: initiallySelectedHoverColor, onChanged: hoverOnChanged),
+        ColorWidgetShowcaseOption(label: 'Tap color', initiallySelectedColor: initiallySelectedTapColor, onChanged: tapOnChanged),
       ],
     );
   }

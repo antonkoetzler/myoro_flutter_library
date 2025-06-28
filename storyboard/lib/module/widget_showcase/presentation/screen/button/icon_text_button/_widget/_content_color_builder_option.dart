@@ -11,6 +11,7 @@ final class _ContentColorBuilderOption extends StatelessWidget {
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOption(
       checkboxConfiguration: MyoroCheckboxConfiguration(
         label: 'Content color',
+        value: viewModel.state.enableContentColorBuilder,
         onChanged: (value) => viewModel.state.enableContentColorBuilder = value,
       ),
       idleOnChanged: (color) => viewModel.state.idleContentColor = color,
