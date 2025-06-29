@@ -2,6 +2,8 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+// TODO: Categorize categories
+
 /// Singleton class used to grab [TextStyle]s created in [createMyoroThemeData].
 ///
 /// This singleton is automatically initialized within [MyoroMaterialApp] so you don't need to worry about that.
