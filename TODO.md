@@ -1,5 +1,7 @@
 # TODO
 
+1. Extract spacing values and hard-coded numbers to `constants.dart|
+`
 1. chore: Documentation
 
 - Methodology of creating a `Widget` and the `configuration`/`view_model`/`controller` pattern
