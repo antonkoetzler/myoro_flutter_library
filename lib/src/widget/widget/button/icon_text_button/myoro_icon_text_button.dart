@@ -15,7 +15,7 @@ class MyoroIconTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyoroButton(
-      configuration: configuration.buttonConfiguration,
+      configuration: configuration,
       builder: (_, tapStatusEnum) => _Button(tapStatusEnum, configuration),
     );
   }

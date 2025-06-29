@@ -14,7 +14,7 @@ final class _CloseButton extends StatelessWidget {
       padding: _configuration.closeButtonPadding ?? EdgeInsets.zero,
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
-          buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => context.navigator.pop()),
+          onTapUp: (_) => context.navigator.pop(),
           iconConfiguration: themeExtension.closeButtonIconConfiguration,
         ),
       ),

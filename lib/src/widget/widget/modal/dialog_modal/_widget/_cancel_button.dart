@@ -12,7 +12,7 @@ final class _CancelButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(context)),
+        onTapUp: (_) => _onTapUp(context),
         textConfiguration: MyoroTextConfiguration(text: cancelButtonText.isNotEmpty ? cancelButtonText : 'Cancel'),
       ),
     );

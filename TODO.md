@@ -6,8 +6,6 @@
 - (**IN PROGRESS**) button
   - (**DONE**) `MyoroButtonWidgetShowcaseScreen`
   - (**IN PROGRESS**) `MyoroIconTextButtonWidgetShowcaseScreen`
-    - Make `MyoroIconTextButtonConfiguration` extend `MyoroButtonConfiguration`
-    - Do the same thing with `MyoroDialogModalConfiguration`
 - card
 - carousel
 - checkbox

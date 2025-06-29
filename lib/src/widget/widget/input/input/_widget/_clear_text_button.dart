@@ -15,7 +15,7 @@ final class _ClearTextButton extends StatelessWidget {
         padding: themeExtension.clearTextButtonPadding,
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
-            buttonConfiguration: MyoroButtonConfiguration(onTapUp: (_) => _viewModel.clearText()),
+            onTapUp: (_) => _viewModel.clearText(),
             iconConfiguration: MyoroIconConfiguration(icon: themeExtension.clearTextButtonIcon),
           ),
         ),

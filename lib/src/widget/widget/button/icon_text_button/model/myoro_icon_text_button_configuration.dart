@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -7,11 +8,8 @@ part 'myoro_icon_text_button_configuration.g.dart';
 
 /// Configuration model of [MyoroIconTextButton].
 @myoroModel
-class MyoroIconTextButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {
+class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {
   static const invertDefaultValue = false;
-
-  /// [MyoroButtonConfiguration]
-  final MyoroButtonConfiguration? buttonConfiguration;
 
   /// By default, the icon is displays on the left, and
   /// the text on the right, this is to invert the order.
@@ -33,7 +31,13 @@ class MyoroIconTextButtonConfiguration with _$MyoroIconTextButtonConfigurationMi
   final MyoroTextConfiguration? textConfiguration;
 
   const MyoroIconTextButtonConfiguration({
-    this.buttonConfiguration,
+    super.tooltipConfiguration,
+    super.cursor,
+    super.borderRadius,
+    super.backgroundColorBuilder,
+    super.borderBuilder,
+    super.onTapDown,
+    super.onTapUp,
     this.invert = invertDefaultValue,
     this.spacing,
     this.padding,
@@ -50,7 +54,19 @@ class MyoroIconTextButtonConfiguration with _$MyoroIconTextButtonConfigurationMi
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
 
     return MyoroIconTextButtonConfiguration(
-      buttonConfiguration: faker.randomGenerator.boolean() ? MyoroButtonConfiguration.fake() : null,
+      tooltipConfiguration: faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
+      cursor: faker.randomGenerator.boolean() ? myoroFake<SystemMouseCursor>() : null,
+      borderRadius:
+          faker.randomGenerator.boolean()
+              ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
+              : null,
+      backgroundColorBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
+      borderBuilder:
+          faker.randomGenerator.boolean()
+              ? ((_) => Border.all(width: faker.randomGenerator.decimal(scale: 10), color: myoroFake<Color>()))
+              : null,
+      onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
       invert: faker.randomGenerator.boolean(),
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,

@@ -15,8 +15,16 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
 
   /// [MyoroIconTextButtonConfiguration] of the [MyoroIconTextButton].
   MyoroIconTextButtonConfiguration configuration(BuildContext context) {
+    final buttonConfiguration = _state.buttonViewModel.configuration(context);
+
     return MyoroIconTextButtonConfiguration(
-      buttonConfiguration: _state.buttonViewModel.configuration(context),
+      tooltipConfiguration: buttonConfiguration.tooltipConfiguration,
+      cursor: buttonConfiguration.cursor,
+      borderRadius: buttonConfiguration.borderRadius,
+      backgroundColorBuilder: buttonConfiguration.backgroundColorBuilder,
+      borderBuilder: buttonConfiguration.borderBuilder,
+      onTapDown: buttonConfiguration.onTapDown,
+      onTapUp: buttonConfiguration.onTapUp,
       invert: _state.invert,
       spacing: _state.spacing,
       padding: _state.padding,

@@ -8,21 +8,8 @@ part '_widget/_message.dart';
 
 /// A simple yes/no dialog modal.
 class MyoroDialogModal extends StatelessWidget {
-  /// Configuration.
-  final MyoroDialogModalConfiguration configuration;
-
-  const MyoroDialogModal._(this.configuration);
-
-  static Future<void> show(
-    BuildContext context, {
-    MyoroModalConfiguration modalConfiguration = const MyoroModalConfiguration(),
-    required MyoroDialogModalConfiguration dialogModalConfiguration,
-  }) async {
-    await MyoroModal.show(
-      context,
-      configuration: modalConfiguration,
-      child: MyoroDialogModal._(dialogModalConfiguration),
-    );
+  static Future<void> show(BuildContext context, {required MyoroDialogModalConfiguration configuration}) async {
+    await MyoroModal.show(context, configuration: configuration, child: MyoroDialogModal._(configuration));
   }
 
   @override
@@ -34,4 +21,9 @@ class MyoroDialogModal extends StatelessWidget {
       children: [Expanded(child: _Message(configuration)), _FooterButtons(configuration)],
     );
   }
+
+  const MyoroDialogModal._(this.configuration);
+
+  /// Configuration.
+  final MyoroDialogModalConfiguration configuration;
 }

@@ -27,12 +27,10 @@ final class _Item extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        buttonConfiguration: MyoroButtonConfiguration(
-          borderRadius: itemBorderRadius,
-          backgroundColorBuilder: backgroundColorBuilder,
-          onTapDown: _item.onTapDown,
-          onTapUp: _item.onTapUp,
-        ),
+        borderRadius: itemBorderRadius,
+        backgroundColorBuilder: backgroundColorBuilder,
+        onTapDown: _item.onTapDown,
+        onTapUp: _item.onTapUp,
         iconConfiguration: _item.iconConfiguration,
         textConfiguration: _item.textConfiguration,
       ),

@@ -7,37 +7,21 @@ part 'myoro_dialog_modal_configuration.g.dart';
 
 /// Configuration of [MyoroDialogModal].
 @myoroModel
-class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {
+class MyoroDialogModalConfiguration extends MyoroModalConfiguration with _$MyoroDialogModalConfigurationMixin {
   static const invertButtonsDefaultValue = false;
   static const confirmButtonTextDefaultValue = '';
   static const cancelButtonTextDefaultValue = '';
   static const textDefaultValue = '';
 
-  /// Whether or not to invert the buttons in [_FooterButtons].
-  final bool invertButtons;
-
-  /// Text of [_ConfirmButton].
-  final String confirmButtonText;
-
-  /// Text of [_CancelButton].
-  final String cancelButtonText;
-
-  /// Function executed when [_ConfirmButton] is pressed.
-  final VoidCallback? onConfirm;
-
-  /// Function executed when [_CancelButton] is pressed.
-  final VoidCallback? onCancel;
-
-  /// Simple text option of the [MyoroDialogModal].
-  final String text;
-
-  /// Text style of [text].
-  final TextStyle? textStyle;
-
-  /// Custom [Widget] option of the [MyoroDialogModal].
-  final Widget? child;
-
   const MyoroDialogModalConfiguration({
+    super.barrierDismissable,
+    super.useRootNavigator,
+    super.constraints,
+    super.onClosed,
+    super.title,
+    super.showCloseButton,
+    super.padding,
+    super.closeButtonPadding,
     this.invertButtons = invertButtonsDefaultValue,
     this.confirmButtonText = confirmButtonTextDefaultValue,
     this.cancelButtonText = cancelButtonTextDefaultValue,
@@ -62,4 +46,28 @@ class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {
       child: textProvided ? null : const SizedBox.shrink(),
     );
   }
+
+  /// Whether or not to invert the buttons in [_FooterButtons].
+  final bool invertButtons;
+
+  /// Text of [_ConfirmButton].
+  final String confirmButtonText;
+
+  /// Text of [_CancelButton].
+  final String cancelButtonText;
+
+  /// Function executed when [_ConfirmButton] is pressed.
+  final VoidCallback? onConfirm;
+
+  /// Function executed when [_CancelButton] is pressed.
+  final VoidCallback? onCancel;
+
+  /// Simple text option of the [MyoroDialogModal].
+  final String text;
+
+  /// Text style of [text].
+  final TextStyle? textStyle;
+
+  /// Custom [Widget] option of the [MyoroDialogModal].
+  final Widget? child;
 }

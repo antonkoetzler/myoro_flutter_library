@@ -14,6 +14,27 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
   static const titleDefaultValue = '';
   static const showCloseButtonDefaultValue = true;
 
+  const MyoroModalConfiguration({
+    this.barrierDismissable = barrierDismissableDefaultValue,
+    this.useRootNavigator = useRootNavigatorDefaultValue,
+    this.constraints,
+    this.onClosed,
+    this.title = titleDefaultValue,
+    this.showCloseButton = showCloseButtonDefaultValue,
+    this.padding,
+    this.closeButtonPadding,
+  });
+
+  MyoroModalConfiguration.fake()
+    : barrierDismissable = faker.randomGenerator.boolean(),
+      useRootNavigator = faker.randomGenerator.boolean(),
+      constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      onClosed = faker.randomGenerator.boolean() ? (() {}) : null,
+      title = faker.randomGenerator.boolean() ? faker.lorem.word() : titleDefaultValue,
+      showCloseButton = faker.randomGenerator.boolean(),
+      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+
   /// If you click everywhere but the modal, it closes
   final bool barrierDismissable;
 
@@ -67,25 +88,4 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
 
   /// Padding around [_CloseButton].
   final EdgeInsets? closeButtonPadding;
-
-  const MyoroModalConfiguration({
-    this.barrierDismissable = barrierDismissableDefaultValue,
-    this.useRootNavigator = useRootNavigatorDefaultValue,
-    this.constraints,
-    this.onClosed,
-    this.title = titleDefaultValue,
-    this.showCloseButton = showCloseButtonDefaultValue,
-    this.padding,
-    this.closeButtonPadding,
-  });
-
-  MyoroModalConfiguration.fake()
-    : barrierDismissable = faker.randomGenerator.boolean(),
-      useRootNavigator = faker.randomGenerator.boolean(),
-      constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      onClosed = faker.randomGenerator.boolean() ? (() {}) : null,
-      title = faker.randomGenerator.boolean() ? faker.lorem.word() : titleDefaultValue,
-      showCloseButton = faker.randomGenerator.boolean(),
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
 }
