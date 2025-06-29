@@ -76,6 +76,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   IconData? get icon => _icon;
   set icon(IconData? icon) {
     if (_icon == icon) return;
+    if (_icon == null && _text.isEmpty) _text = faker.lorem.word();
     _icon = icon;
     notifyListeners();
   }
@@ -94,6 +95,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   String get text => _text;
   set text(String text) {
     if (_text == text) return;
+    if (_icon == null && _text.isEmpty) _icon = myoroFake<IconData>();
     _text = text;
     notifyListeners();
   }

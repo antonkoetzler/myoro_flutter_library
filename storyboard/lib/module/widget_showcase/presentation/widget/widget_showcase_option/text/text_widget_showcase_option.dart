@@ -31,6 +31,7 @@ final class TextWidgetShowcaseOption extends StatelessWidget {
           const _TextOption(),
           Row(
             spacing: widgetShowcaseThemeExtension.spacing,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (configuration.maxLinesOnChanged != null) const Expanded(child: _MaxLinesOption()),
               if (configuration.overflowOnChanged != null) const Expanded(child: _OverflowOption()),
@@ -38,6 +39,7 @@ final class TextWidgetShowcaseOption extends StatelessWidget {
           ),
           Row(
             spacing: widgetShowcaseThemeExtension.spacing,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (configuration.alignmentOnChanged != null) const Expanded(child: _TextAlignOption()),
               if (configuration.styleOnChanged != null) const Expanded(child: _StyleOption()),

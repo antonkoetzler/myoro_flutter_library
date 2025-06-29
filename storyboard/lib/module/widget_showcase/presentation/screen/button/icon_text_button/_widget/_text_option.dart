@@ -12,9 +12,11 @@ final class _TextOption extends StatelessWidget {
     final overflow = state.overflow;
     final alignment = state.alignment;
     final style = state.style;
+    final text = state.text;
 
     return TextWidgetShowcaseOption(
       configuration: TextWidgetShowcaseOptionConfiguration(
+        textInitialValue: text,
         textOnChanged: (text) => state.text = text,
         maxLinesInitialValue: maxLines,
         maxLinesOnChanged: (maxLines) => state.maxLines = maxLines ?? MyoroTextConfiguration.maxLinesDefaultValue,

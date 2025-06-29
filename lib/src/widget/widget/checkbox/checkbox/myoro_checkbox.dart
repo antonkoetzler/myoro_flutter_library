@@ -36,45 +36,48 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
     return InheritedProvider.value(
       value: _viewModel,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: themeExtension.spacing,
-        children: [
-          ValueListenableBuilder(
-            valueListenable: _viewModel.state.enabledController,
-            builder: (_, bool enabled, _) {
-              // This [SizedBox] removes the default margin in [Checkbox].
-              return SizedBox(
-                width: 20,
-                height: 20,
-                child: Checkbox(
-                  value: enabled,
-                  activeColor: themeExtension.activeColor,
-                  checkColor: themeExtension.checkColor,
-                  hoverColor: themeExtension.hoverColor,
-                  focusColor: themeExtension.focusColor,
-                  splashRadius: themeExtension.splashRadius,
-                  onChanged: (_) {
-                    _viewModel.state.configuration.onChanged?.call(!enabled);
-                    _viewModel.toggle(!enabled);
-                  },
-                ),
-              );
-            },
-          ),
-          if (_viewModel.state.configuration.label.isNotEmpty) ...[
-            Flexible(
-              child: Text(
-                _viewModel.state.configuration.label,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: _viewModel.state.configuration.labelTextStyle ?? themeExtension.labelTextStyle,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTapUp: _viewModel.onTapUp,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: themeExtension.spacing,
+            children: [
+              ValueListenableBuilder(
+                valueListenable: _viewModel.state.enabledController,
+                builder: (_, bool enabled, _) {
+                  // This [SizedBox] removes the default margin in [Checkbox].
+                  return SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: Checkbox(
+                      value: enabled,
+                      activeColor: themeExtension.activeColor,
+                      checkColor: themeExtension.checkColor,
+                      hoverColor: themeExtension.hoverColor,
+                      focusColor: themeExtension.focusColor,
+                      splashRadius: themeExtension.splashRadius,
+                      onChanged: _viewModel.onTapUp,
+                    ),
+                  );
+                },
               ),
-            ),
-          ],
-        ],
+              if (_viewModel.state.configuration.label.isNotEmpty) ...[
+                Flexible(
+                  child: Text(
+                    _viewModel.state.configuration.label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: _viewModel.state.configuration.labelTextStyle ?? themeExtension.labelTextStyle,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }
