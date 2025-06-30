@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+// TODO: Delete get instance and pass instance in callback
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
