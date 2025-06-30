@@ -45,10 +45,7 @@ class MyoroLocalDatabase {
     final formattedPath = join(path ?? (await getApplicationSupportDirectory()).path, '$fileName.db');
 
     // Opening database at [formattedPath] or creating a new database there.
-    if (cleanRun) {
-      await _database?.close();
-      deleteDatabase(formattedPath);
-    }
+    if (cleanRun) deleteDatabase(formattedPath);
     _database = await openDatabase(formattedPath);
 
     // Table initialization
@@ -58,8 +55,8 @@ class MyoroLocalDatabase {
   }
 
   /// Closes the database.
-  void close() {
-    _database?.close();
+  Future<void> close() async {
+    await _database?.close();
     _database = null;
   }
 
@@ -101,5 +98,10 @@ class MyoroLocalDatabase {
   /// Function to execute raw SQL.
   Future<void> executeSql(String sql) async {
     return await _database!.execute(sql);
+  }
+
+  /// Function to execute a raw query and return the result of the query.
+  Future<List<Map<String, Object?>>> rawSqlQuery(String sql, [List<Object?>? arguments]) async {
+    return await _database!.rawQuery(sql, arguments);
   }
 }
