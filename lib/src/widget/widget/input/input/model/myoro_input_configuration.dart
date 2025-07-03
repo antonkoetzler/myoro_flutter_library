@@ -41,14 +41,12 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   });
 
   factory MyoroInputConfiguration.fake() {
-    final typography = MyoroTypographyDesignSystem.instance;
-
     return MyoroInputConfiguration(
       inputStyle: MyoroInputStyleEnum.fake(),
       textAlign: myoroFake<TextAlign>(),
-      inputTextStyle: faker.randomGenerator.boolean() ? typography.randomTextStyle : null,
+      inputTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       label: faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? typography.randomTextStyle : null,
+      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       placeholder: faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
       contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       border: myoroFake<InputBorder>(),

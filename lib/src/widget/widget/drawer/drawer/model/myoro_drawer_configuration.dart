@@ -37,7 +37,7 @@ class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
 
   MyoroDrawerConfiguration.fake()
     : title = faker.randomGenerator.boolean() ? faker.lorem.word() : '',
-      titleTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
+      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       showCloseButton = faker.randomGenerator.boolean(),
       barrierDismissable = faker.randomGenerator.boolean(),
       child = const SizedBox.shrink();

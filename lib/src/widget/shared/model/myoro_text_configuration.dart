@@ -44,7 +44,7 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
       maxLines = faker.randomGenerator.integer(10, min: 1),
       overflow = myoroFake<TextOverflow>(),
       alignment = myoroFake<TextAlign>(),
-      style = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null;
+      style = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
 
   /// [Text.data]
   final String text;

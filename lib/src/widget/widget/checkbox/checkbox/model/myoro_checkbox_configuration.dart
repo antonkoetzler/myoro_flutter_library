@@ -33,7 +33,7 @@ class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
   factory MyoroCheckboxConfiguration.fake() {
     return MyoroCheckboxConfiguration(
       label: faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
+      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       value: faker.randomGenerator.boolean(),
       onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
     );

@@ -48,7 +48,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       border = myoroFake<Border>(),
       padding = myoroFake<EdgeInsets>(),
       spacing = faker.randomGenerator.decimal(),
-      titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      titleTextStyle = myoroFake<TextStyle>(),
       closeButtonIconConfiguration = MyoroIconConfiguration.fake();
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)

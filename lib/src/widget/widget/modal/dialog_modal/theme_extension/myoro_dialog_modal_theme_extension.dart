@@ -21,7 +21,7 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
   const MyoroDialogModalThemeExtension({required this.textStyle, required this.footerButtonsSpacing});
 
   MyoroDialogModalThemeExtension.fake()
-    : textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+    : textStyle = myoroFake<TextStyle>(),
       footerButtonsSpacing = faker.randomGenerator.decimal();
 
   MyoroDialogModalThemeExtension.builder(TextTheme textTheme)

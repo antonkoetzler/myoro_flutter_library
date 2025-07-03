@@ -44,7 +44,7 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
   MyoroRadioThemeExtension.fake()
     : activeColor = myoroFake<Color>(),
       hoverColor = myoroFake<Color>(),
-      labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      labelTextStyle = myoroFake<TextStyle>(),
       spacing = faker.randomGenerator.decimal(),
       splashRadius = faker.randomGenerator.decimal();
 

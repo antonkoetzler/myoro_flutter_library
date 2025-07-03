@@ -42,7 +42,7 @@ class MyoroDialogModalConfiguration extends MyoroModalConfiguration with _$Myoro
       onConfirm: faker.randomGenerator.boolean() ? (() {}) : null,
       onCancel: faker.randomGenerator.boolean() ? (() {}) : null,
       text: textProvided ? faker.lorem.word() : '',
-      textStyle: faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
+      textStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       child: textProvided ? null : const SizedBox.shrink(),
     );
   }

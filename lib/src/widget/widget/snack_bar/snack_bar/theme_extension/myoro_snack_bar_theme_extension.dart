@@ -69,7 +69,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       borderRadius = myoroFake<BorderRadius>(),
       padding = myoroFake<EdgeInsets>(),
       spacing = faker.randomGenerator.decimal(),
-      messageTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      messageTextStyle = myoroFake<TextStyle>(),
       closeButtonIconConfiguration = MyoroIconConfiguration.fake();
 
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)

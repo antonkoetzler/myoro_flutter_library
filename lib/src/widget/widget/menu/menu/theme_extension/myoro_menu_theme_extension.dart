@@ -45,7 +45,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
       searchBarPadding = myoroFake<EdgeInsets>(),
       searchBarInputStyle = MyoroInputStyleEnum.fake(),
       itemBorderRadius = myoroFake<BorderRadius>(),
-      dialogTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      dialogTextStyle = myoroFake<TextStyle>(),
       dialogTextLoaderPadding = myoroFake<EdgeInsets>();
 
   MyoroMenuThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)

@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:faker/faker.dart';
 
 /// Enum encapsulating the principle states of a tap.

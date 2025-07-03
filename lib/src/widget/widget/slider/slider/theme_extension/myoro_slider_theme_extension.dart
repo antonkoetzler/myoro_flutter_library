@@ -29,9 +29,9 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
   });
 
   MyoroSliderThemeExtension.fake()
-    : labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+    : labelTextStyle = myoroFake<TextStyle>(),
       sliderPadding = myoroFake<EdgeInsets>(),
-      indicatorTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      indicatorTextStyle = myoroFake<TextStyle>(),
       indicatorTextAlignment = myoroFake<TextAlign>();
 
   MyoroSliderThemeExtension.builder(TextTheme textTheme)

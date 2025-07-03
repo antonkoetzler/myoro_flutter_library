@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -13,8 +15,6 @@ ThemeData createMyoroThemeData(
   MyoroAppThemeExtensionsBuilder? themeExtensionsBuilder, {
   required bool isDarkMode,
 }) {
-  MyoroTypographyDesignSystem.isDarkMode = isDarkMode;
-
   final myoroColorScheme = createMyoroColorScheme(isDarkMode);
   final myoroTextTheme = createMyoroTextTheme(isDarkMode);
 

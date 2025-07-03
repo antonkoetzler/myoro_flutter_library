@@ -31,8 +31,8 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   final MyoroSingularDropdownConfigurationCheckboxOnChanged<TextStyle>? checkboxOnChanged;
 
   @override
-  Widget build(_) {
-    final typography = MyoroTypographyDesignSystem.instance;
+  Widget build(BuildContext context) {
+    final typography = MyoroTypography(context.isDarkMode);
 
     return MyoroSingularDropdown<TextStyle>(
       controller:

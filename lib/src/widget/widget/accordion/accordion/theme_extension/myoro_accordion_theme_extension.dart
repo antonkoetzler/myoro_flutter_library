@@ -69,7 +69,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonBorderRadius = myoroFake<BorderRadius>(),
       itemTitleButtonContentPadding = myoroFake<EdgeInsets>(),
       itemTitleButtonSpacing = faker.randomGenerator.decimal(scale: 50),
-      itemTitleButtonTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      itemTitleButtonTitleTextStyle = myoroFake<TextStyle>(),
       itemTitleButtonArrowIcon = myoroFake<IconData>(),
       itemTitleButtonArrowIconSize = faker.randomGenerator.decimal(scale: 50, min: 10),
       itemTitleButtonArrowIconColor = myoroFake<Color>(),

@@ -16,7 +16,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
 
   WidgetShowcaseThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
-      labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
+      labelTextStyle = myoroFake<TextStyle>();
 
   WidgetShowcaseThemeExtension.builder(TextTheme textTheme) : spacing = 10, labelTextStyle = textTheme.titleLarge!;
 

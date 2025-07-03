@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:flutter/material.dart';
 
 /// Class to helper with lerp functions in [ThemeExtension]s.

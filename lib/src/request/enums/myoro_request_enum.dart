@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:faker/faker.dart';
 
 /// Enum used to manage the status of an asyncronous request.

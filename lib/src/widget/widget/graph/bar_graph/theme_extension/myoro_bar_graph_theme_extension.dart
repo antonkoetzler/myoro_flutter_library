@@ -47,7 +47,7 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
     : border = myoroFake<Border>(),
       barColor = myoroFake<Color>(),
       barBorderRadius = myoroFake<BorderRadius>(),
-      sideTitleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      sideTitleTextStyle = myoroFake<TextStyle>(),
       sideTitleInterval = faker.randomGenerator.decimal(),
       verticalSideTitleReversedSize = faker.randomGenerator.decimal(),
       horizontalSideTitleReversedSize = faker.randomGenerator.decimal();

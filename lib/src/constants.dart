@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// TODO: Move into lib/src
-
 // Debounce.
 const kMyoroDebounceDuration = Duration(milliseconds: 200);
 

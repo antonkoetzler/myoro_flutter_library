@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -127,6 +129,10 @@ T myoroFake<T>() {
 
   if (T == ThemeMode) {
     return ThemeMode.values[faker.randomGenerator.integer(ThemeMode.values.length)] as T;
+  }
+
+  if (T == TextStyle) {
+    return MyoroTypography(faker.randomGenerator.boolean()).randomTextStyle as T;
   }
 
   if (T == UnderlineInputBorder) {

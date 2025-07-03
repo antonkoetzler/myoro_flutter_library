@@ -49,7 +49,7 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       hoverColor = myoroFake<Color>(),
       focusColor = myoroFake<Color>(),
       splashRadius = faker.randomGenerator.decimal(),
-      labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      labelTextStyle = myoroFake<TextStyle>(),
       spacing = faker.randomGenerator.decimal();
 
   MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)

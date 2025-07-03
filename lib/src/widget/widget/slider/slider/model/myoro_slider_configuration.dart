@@ -43,7 +43,7 @@ class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
 
   MyoroSliderConfiguration.fake()
     : label = faker.lorem.word(),
-      labelTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
+      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
       currentValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
       maxValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,

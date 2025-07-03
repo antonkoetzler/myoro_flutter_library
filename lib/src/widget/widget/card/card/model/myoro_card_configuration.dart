@@ -36,7 +36,7 @@ class MyoroCardConfiguration with _$MyoroCardConfigurationMixin {
 
   MyoroCardConfiguration.fake()
     : title = faker.randomGenerator.boolean() ? faker.lorem.word() : '',
-      titleTextStyle = faker.randomGenerator.boolean() ? MyoroTypographyDesignSystem.instance.randomTextStyle : null,
+      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       constraints = myoroFake<BoxConstraints>(),
       child = const SizedBox.shrink();

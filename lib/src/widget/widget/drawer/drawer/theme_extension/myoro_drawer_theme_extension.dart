@@ -45,7 +45,7 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
       drawerContentPadding = myoroFake<EdgeInsets>(),
       drawerShape = myoroFake<RoundedRectangleBorder>(),
       titleContentDividerPadding = myoroFake<EdgeInsets>(),
-      titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      titleTextStyle = myoroFake<TextStyle>(),
       closeButtonDrawerIcon = myoroFake<IconData>(),
       closeButtonEndDrawerIcon = myoroFake<IconData>();
 

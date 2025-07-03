@@ -19,7 +19,9 @@ class MyoroApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ];
     final Iterable<Locale> supportedLocalesInUse = configuration.supportedLocales ?? const [Locale('en', 'US')];
-    final ThemeMode themeModeInUse = configuration.themeMode ?? ThemeMode.dark;
+    final ThemeMode themeModeInUse =
+        configuration.themeMode ??
+        (MediaQuery.of(context).platformBrightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
     final ThemeData lightTheme = createMyoroThemeData(
       configuration.colorSchemeBuilder,
       configuration.textThemeBuilder,

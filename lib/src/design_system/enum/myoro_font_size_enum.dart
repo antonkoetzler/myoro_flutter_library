@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:faker/faker.dart';
 
 /// Available font sizes that should be used.

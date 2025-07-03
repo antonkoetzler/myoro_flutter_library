@@ -30,7 +30,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
   MyoroIconTextButtonThemeExtension.fake()
     : contentPadding = myoroFake<EdgeInsets>(),
       spacing = faker.randomGenerator.decimal(scale: 20),
-      textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
+      textStyle = myoroFake<TextStyle>();
 
   MyoroIconTextButtonThemeExtension.builder(TextTheme textTheme)
     : contentPadding = const EdgeInsets.all(5),

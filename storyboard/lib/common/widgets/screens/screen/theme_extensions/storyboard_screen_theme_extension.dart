@@ -40,7 +40,7 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
     : spacing = faker.randomGenerator.decimal(scale: 50),
       previousPageButtonIcon = myoroFake<IconData>(),
       buttonPadding = myoroFake<EdgeInsets>(),
-      titleTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      titleTextStyle = myoroFake<TextStyle>(),
       toggleThemeButtonIcon = myoroFake<IconData>();
 
   StoryboardScreenThemeExtension.builder(TextTheme textTheme)

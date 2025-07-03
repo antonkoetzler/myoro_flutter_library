@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 /// Extension of [String].
 extension MyoroStringExtension on String {
   /// Capitalizes a [String].

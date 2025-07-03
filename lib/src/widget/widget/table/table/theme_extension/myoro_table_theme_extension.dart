@@ -43,16 +43,14 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   });
 
   factory MyoroTableThemeExtension.fake() {
-    final typography = MyoroTypographyDesignSystem.instance;
-
     return MyoroTableThemeExtension(
       decoration: myoroFake<BoxDecoration>(),
-      columnTextStyle: typography.randomTextStyle,
+      columnTextStyle: myoroFake<TextStyle>(),
       columnSpacing: faker.randomGenerator.decimal(scale: 20),
-      rowTextStyle: typography.randomTextStyle,
+      rowTextStyle: myoroFake<TextStyle>(),
       loaderEmptyMessageErrorMessagePadding: myoroFake<EdgeInsets>(),
-      emptyMessageTextStyle: typography.randomTextStyle,
-      errorMessageTextStyle: typography.randomTextStyle,
+      emptyMessageTextStyle: myoroFake<TextStyle>(),
+      errorMessageTextStyle: myoroFake<TextStyle>(),
     );
   }
 

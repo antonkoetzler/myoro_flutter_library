@@ -37,9 +37,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       cursorHeight = faker.randomGenerator.decimal(),
       contentPadding = myoroFake<EdgeInsets>(),
       disabledOpacity = faker.randomGenerator.decimal(),
-      inputTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      inputTextStyle = myoroFake<TextStyle>(),
       spacing = faker.randomGenerator.decimal(),
-      labelTextStyle = MyoroTypographyDesignSystem.instance.randomTextStyle,
+      labelTextStyle = myoroFake<TextStyle>(),
       labelBehavior = myoroFake<FloatingLabelBehavior>(),
       clearTextButtonPadding = myoroFake<EdgeInsets>(),
       clearTextButtonIcon = myoroFake<IconData>();

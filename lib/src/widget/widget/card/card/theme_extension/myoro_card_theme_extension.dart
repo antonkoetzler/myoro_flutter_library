@@ -52,7 +52,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       borderRadius = myoroFake<BorderRadius>(),
       padding = myoroFake<EdgeInsets>(),
       titleCardSpacing = faker.randomGenerator.decimal(),
-      textStyle = MyoroTypographyDesignSystem.instance.randomTextStyle;
+      textStyle = myoroFake<TextStyle>();
 
   @override
   MyoroCardThemeExtension lerp(covariant ThemeExtension<MyoroCardThemeExtension>? other, double t) {
