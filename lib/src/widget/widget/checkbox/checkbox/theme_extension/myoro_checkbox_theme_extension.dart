@@ -55,8 +55,8 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
   MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : activeColor = colorScheme.onPrimary,
       checkColor = colorScheme.primary,
-      hoverColor = MyoroColorDesignSystem.transparent,
-      focusColor = MyoroColorDesignSystem.transparent,
+      hoverColor = MyoroColors.transparent,
+      focusColor = MyoroColors.transparent,
       splashRadius = 0,
       labelTextStyle = textTheme.bodySmall!,
       spacing = 5;

@@ -51,6 +51,6 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
           MyoroTapStatusEnum.hover => state.hoverContentColor,
           MyoroTapStatusEnum.tap => state.tapContentColor,
         } ??
-        MyoroColorDesignSystem.transparent;
+        MyoroColors.transparent;
   }
 }

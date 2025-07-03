@@ -48,7 +48,7 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
       dismissDirection = myoroFake<DismissDirection>();
 
   const MyoroSnackBarContainerThemeExtension.builder()
-    : primaryColor = MyoroColorDesignSystem.transparent,
+    : primaryColor = MyoroColors.transparent,
       behavior = SnackBarBehavior.floating,
       margin = const EdgeInsets.all(10),
       padding = EdgeInsets.zero,

@@ -37,8 +37,8 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
   WidgetShowcaseScreenThemeExtension.builder()
     : padding = const EdgeInsets.all(10),
       decoration = BoxDecoration(
-        color: MyoroColorDesignSystem.attention.withValues(alpha: 0.1),
-        border: Border.all(width: kMyoroBorderLength, color: MyoroColorDesignSystem.attention),
+        color: MyoroColors.blue1.withValues(alpha: 0.1),
+        border: Border.all(width: kMyoroBorderLength, color: MyoroColors.blue1),
         borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       ),
       contentPadding = const EdgeInsets.all(10),

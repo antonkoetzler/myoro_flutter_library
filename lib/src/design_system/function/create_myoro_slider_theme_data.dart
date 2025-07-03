@@ -7,6 +7,6 @@ SliderThemeData createMyoroSliderThemeData(ColorScheme colorScheme) {
     activeTrackColor: colorScheme.onPrimary,
     inactiveTrackColor: colorScheme.onPrimary.withValues(alpha: 0.5),
     thumbColor: colorScheme.onPrimary,
-    overlayColor: MyoroColorDesignSystem.transparent,
+    overlayColor: MyoroColors.transparent,
   );
 }

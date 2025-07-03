@@ -32,9 +32,9 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
 
   Color _backgroundColorBuilder(MyoroTapStatusEnum tapStatusEnum) {
     return switch (tapStatusEnum) {
-      MyoroTapStatusEnum.idle => state.idleBackgroundColor ?? MyoroColorDesignSystem.transparent,
-      MyoroTapStatusEnum.hover => state.hoverBackgroundColor ?? MyoroColorDesignSystem.transparent,
-      MyoroTapStatusEnum.tap => state.tapBackgroundColor ?? MyoroColorDesignSystem.transparent,
+      MyoroTapStatusEnum.idle => state.idleBackgroundColor ?? MyoroColors.transparent,
+      MyoroTapStatusEnum.hover => state.hoverBackgroundColor ?? MyoroColors.transparent,
+      MyoroTapStatusEnum.tap => state.tapBackgroundColor ?? MyoroColors.transparent,
     };
   }
 
@@ -42,9 +42,9 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
     return Border.all(
       width: kMyoroBorderLength,
       color: switch (tapStatusEnum) {
-        MyoroTapStatusEnum.idle => state.idleBorderColor ?? MyoroColorDesignSystem.transparent,
-        MyoroTapStatusEnum.hover => state.hoverBorderColor ?? MyoroColorDesignSystem.transparent,
-        MyoroTapStatusEnum.tap => state.tapBorderColor ?? MyoroColorDesignSystem.transparent,
+        MyoroTapStatusEnum.idle => state.idleBorderColor ?? MyoroColors.transparent,
+        MyoroTapStatusEnum.hover => state.hoverBorderColor ?? MyoroColors.transparent,
+        MyoroTapStatusEnum.tap => state.tapBorderColor ?? MyoroColors.transparent,
       },
     );
   }

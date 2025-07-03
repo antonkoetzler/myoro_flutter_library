@@ -30,10 +30,10 @@ final class _TriggerArea extends StatelessWidget {
             right: configuration.controller!.text.isNotEmpty && (configuration.showClearTextButton) ? 40 : 0,
           ),
           child: InkWell(
-            focusColor: MyoroColorDesignSystem.transparent,
-            hoverColor: MyoroColorDesignSystem.transparent,
-            splashColor: MyoroColorDesignSystem.transparent,
-            highlightColor: MyoroColorDesignSystem.transparent,
+            focusColor: MyoroColors.transparent,
+            hoverColor: MyoroColors.transparent,
+            splashColor: MyoroColors.transparent,
+            highlightColor: MyoroColors.transparent,
             onTap: () => _openDatePicker(context),
             child: MyoroLayoutBuilder(
               builder: (_, BoxConstraints constraints) {

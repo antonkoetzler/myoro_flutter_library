@@ -75,9 +75,9 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,
       standardBorderColor = colorScheme.onPrimary,
-      attentionBorderColor = MyoroColorDesignSystem.attention,
-      successBorderColor = MyoroColorDesignSystem.success,
-      errorBorderColor = MyoroColorDesignSystem.error,
+      attentionBorderColor = MyoroColors.blue1,
+      successBorderColor = MyoroColors.green1,
+      errorBorderColor = MyoroColors.red1,
       borderWidth = 2,
       borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
       padding = const EdgeInsets.all(10),

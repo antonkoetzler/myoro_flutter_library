@@ -63,4 +63,15 @@ const kMyoroTestCursors = [
 ];
 
 /// [IconData]s for testing.
-const kMyoroTestIcons = [Icons.abc, Icons.ac_unit, Icons.access_alarm, Icons.access_time, Icons.accessibility];
+const kMyoroTestIcons = [
+  Icons.abc,
+  Icons.ac_unit,
+  Icons.access_alarm,
+  Icons.access_time,
+  Icons.accessibility,
+  Icons.bolt,
+  Icons.block,
+  Icons.crop_free,
+  Icons.adb_sharp,
+  Icons.youtube_searched_for,
+];

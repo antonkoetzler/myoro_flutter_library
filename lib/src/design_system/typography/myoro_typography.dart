@@ -289,10 +289,7 @@ final class MyoroTypographyDesignSystem {
   }) {
     return TextStyle(
       fontFamily: 'Nunito',
-      color:
-          _isDarkMode!
-              ? MyoroDarkModeColorDesignSystem.secondary
-              : MyoroLightModeColorDesignSystem.secondary,
+      color: _isDarkMode! ? MyoroColors.gray2 : MyoroColors.gray1,
       fontSize: fontSize.size,
       fontWeight: fontWeight,
       fontStyle: fontStyle,

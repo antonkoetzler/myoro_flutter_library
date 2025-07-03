@@ -1,4 +1,4 @@
-export 'enums/exports.dart';
-export 'functions/exports.dart';
-export 'myoro_color_design_system.dart';
-export 'myoro_typography_design_system.dart';
+export 'color/exports.dart';
+export 'enum/exports.dart';
+export 'function/exports.dart';
+export 'typography/exports.dart';

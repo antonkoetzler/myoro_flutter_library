@@ -10,7 +10,7 @@ final class _Barrier extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _configuration.barrierDismissable ? () => context.closeDrawer() : null,
-      child: Container(color: MyoroColorDesignSystem.transparent),
+      child: Container(color: MyoroColors.transparent),
     );
   }
 }
