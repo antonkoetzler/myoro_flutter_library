@@ -10,7 +10,13 @@
 - Manipulating the UI of widgets via `ThemeExtension` overloading
 - `ThemeExtension` overriding and in general the styling of widgets
 
-2. chore: Implement tests
+2. (**IN PROGRESS**) chore: Implement tests
+
+- What needs to be tested
+  - Input formatters
+  - Throttling
+  - Widgets
+
 3. chore: Fix pubspec.yaml todo with myoro_flutter_annotations in both pubspecs
 4. chore: Redo deploying and GitHub Actions
 5. feature: Publish to pub.dev
