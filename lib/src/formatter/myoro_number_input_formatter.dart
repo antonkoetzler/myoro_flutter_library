@@ -2,12 +2,17 @@ import 'package:flutter/services.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [TextInputFormatter] to only accept numbers (integer/double) and only allow a range of numbers.
-final class MyoroNumberInputFormatter extends TextInputFormatter implements MyoroInputFormatter {
-  final double min;
-  final double? max;
-  final int decimalPlaces;
-
+class MyoroNumberInputFormatter extends TextInputFormatter implements MyoroInputFormatter {
   MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0});
+
+  /// Min number accepted.
+  final double min;
+
+  /// Max number accepted.
+  final double? max;
+
+  /// # of decimal places.
+  final int decimalPlaces;
 
   String _formatResult(double formattedResult) => formattedResult.toStringAsFixed(decimalPlaces);
 
@@ -44,17 +49,13 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
           formattedResult = _formatResult(_isGreaterThenMax(temp) ? max! : temp);
         } else {
           // If it's only integers, we don't have to do anyting.
-          formattedResult = _formatResult(
-            _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble,
-          );
+          formattedResult = _formatResult(_isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
         }
         selection = formattedResult.length;
       }
       // Case where the cursor is not at the last index.
       else {
-        formattedResult = _formatResult(
-          _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble,
-        );
+        formattedResult = _formatResult(_isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
         selection = newValue.selection.baseOffset;
       }
     }
@@ -70,9 +71,7 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
           formattedResult = _formatResult(_isLessThenMin(temp) ? min : temp);
         } else {
           // If it's only integers, we don't have to do anything.
-          formattedResult = _formatResult(
-            _isLessThenMin(newValueAsDouble) ? min : newValueAsDouble,
-          );
+          formattedResult = _formatResult(_isLessThenMin(newValueAsDouble) ? min : newValueAsDouble);
         }
         selection = formattedResult.toString().length;
       }

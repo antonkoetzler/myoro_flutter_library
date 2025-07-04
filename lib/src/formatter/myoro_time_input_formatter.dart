@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Input formatter to create a time.
 ///
 /// TODO: Redo to format to seconds and stuff, delete maxk_text_input_formatter.
-final class MyoroTimeInputFormatter extends MaskTextInputFormatter implements MyoroInputFormatter {
+class MyoroTimeInputFormatter extends MaskTextInputFormatter implements MyoroInputFormatter {
   final MyoroTimeInputFormatterEnum formatType;
 
   MyoroTimeInputFormatter({this.formatType = MyoroTimeInputFormatterEnum.hhMmSs})
