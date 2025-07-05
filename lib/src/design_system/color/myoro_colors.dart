@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 import 'package:flutter/material.dart';
 
 /// Colors of MFL's design system.
