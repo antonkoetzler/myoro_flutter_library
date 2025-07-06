@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+final class _FooThemeExtension extends ThemeExtension<_FooThemeExtension> {
+  const _FooThemeExtension();
+
+  @override
+  _FooThemeExtension lerp(covariant ThemeExtension<_FooThemeExtension>? other, double t) => this;
+
+  @override
+  _FooThemeExtension copyWith() => this;
+}
+
 void main() {
   final isDarkMode = faker.randomGenerator.boolean();
   final colorScheme = createMyoroColorScheme(isDarkMode);
@@ -21,7 +31,7 @@ void main() {
   });
 
   test('createMyoroThemeData with all arguments provided', () {
-    final extensions = [MyoroAccordionThemeExtension.builder(colorScheme, textTheme)];
+    const extensions = [_FooThemeExtension()];
     final themeData = createMyoroThemeData(
       (_) => colorScheme,
       (_) => textTheme,
