@@ -27,17 +27,43 @@ class MyoroTypographyStyle {
       extraLarge = _textStyleBuilder(MyoroFontSizeEnum.extraLarge, isDarkMode, fontWeight, fontStyle);
 
   /// [MyoroFontSizeEnum.tiny]
-  late TextStyle tiny;
+  late final TextStyle tiny;
 
   /// [MyoroFontSizeEnum.small]
-  late TextStyle small;
+  late final TextStyle small;
 
   /// [MyoroFontSizeEnum.medium]
-  late TextStyle medium;
+  late final TextStyle medium;
 
   /// [MyoroFontSizeEnum.large]
-  late TextStyle large;
+  late final TextStyle large;
 
   /// [MyoroFontSizeEnum.extraLarge]
-  late TextStyle extraLarge;
+  late final TextStyle extraLarge;
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroTypographyStyle &&
+        other.runtimeType == runtimeType &&
+        other.tiny == tiny &&
+        other.small == small &&
+        other.medium == medium &&
+        other.large == large &&
+        other.extraLarge == extraLarge;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(tiny, small, medium, large, extraLarge);
+  }
+
+  @override
+  String toString() =>
+      'MyoroTypographyStyle(\n'
+      '  tiny: $tiny,\n'
+      '  small: $small,\n'
+      '  medium: $medium,\n'
+      '  large: $large,\n'
+      '  extraLarge: $extraLarge,\n'
+      ');';
 }

@@ -35,7 +35,7 @@ final class MyoroTypography {
   /// Returns all available [TextStyle]s in each [MyoroTypographyStyle].
   List<TextStyle> get allTextStyles {
     final allStyles = [regular, italic, semiBold, bold, boldItalic, extraBold];
-    return allStyles.expand((style) => [regular.small, regular.medium, regular.large, regular.extraLarge]).toList();
+    return allStyles.expand((style) => [style.tiny, style.small, style.medium, style.large, style.extraLarge]).toList();
   }
 
   /// Retrieves a random text style.
