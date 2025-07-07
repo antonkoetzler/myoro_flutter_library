@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -7,7 +9,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Used for types MFL cannot create factories in.
 ///
 /// Not the greatest way to implement fakes given that there are no
-/// arguments to pass, but it feels damn good using th== function U_U
+/// arguments to pass, but it feels damn good using this function U_U
 T myoroFake<T>() {
   if (T == Alignment) {
     return kMyoroTestAlignments[faker.randomGenerator.integer(kMyoroTestAlignments.length)] as T;

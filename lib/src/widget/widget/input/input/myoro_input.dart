@@ -27,8 +27,12 @@ class MyoroInput extends StatefulWidget {
   const MyoroInput({super.key, this.configuration = const MyoroInputConfiguration(), this.formatter});
 
   /// An input that auto formats a date.
-  factory MyoroInput.date({Key? key, MyoroInputConfiguration configuration = const MyoroInputConfiguration()}) {
-    return MyoroInput(key: key, configuration: configuration, formatter: MyoroDateInputFormatter());
+  factory MyoroInput.date({
+    Key? key,
+    required MyoroDateFormatEnum format,
+    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
+  }) {
+    return MyoroInput(key: key, configuration: configuration, formatter: MyoroDateInputFormatter(format: format));
   }
 
   /// An input that only accepts numbers (integers or decimal).
