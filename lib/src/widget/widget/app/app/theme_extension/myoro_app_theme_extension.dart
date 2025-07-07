@@ -10,6 +10,8 @@ part 'myoro_app_theme_extension.g.dart';
 class MyoroAppThemeExtension extends ThemeExtension<MyoroAppThemeExtension> with _$MyoroAppThemeExtensionMixin {
   const MyoroAppThemeExtension();
 
+  const MyoroAppThemeExtension.fake();
+
   const MyoroAppThemeExtension.builder();
 
   @override

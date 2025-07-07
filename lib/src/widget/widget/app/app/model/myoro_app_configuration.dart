@@ -5,8 +5,21 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_app_configuration.g.dart';
 
 /// Configuration of [MyoroApp].
+@immutable
 @myoroModel
 class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
+  const MyoroAppConfiguration({
+    this.title,
+    this.themeMode,
+    this.colorSchemeBuilder,
+    this.textThemeBuilder,
+    this.themeExtensionsBuilder,
+    this.localizationsDelegates,
+    this.supportedLocales,
+    this.router,
+    this.home,
+  }) : assert((router != null) ^ (home != null), '[MyoroApp]: [router] (x)or [home] must be provided.');
+
   /// Title of the application.
   ///
   /// However, a plugin like [window_manager] needs to be used
@@ -38,16 +51,4 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
 
   /// Entry point for the application when a [MyoroAppConfiguration.router] is not being used.
   final Widget? home;
-
-  const MyoroAppConfiguration({
-    this.title,
-    this.themeMode,
-    this.colorSchemeBuilder,
-    this.textThemeBuilder,
-    this.themeExtensionsBuilder,
-    this.localizationsDelegates,
-    this.supportedLocales,
-    this.router,
-    this.home,
-  }) : assert((router != null) ^ (home != null), '[MyoroApp]: [router] (x)or [home] must be provided.');
 }

@@ -18,7 +18,7 @@ void main() {
     );
     final controller2 = MyoroAccordionController(
       initiallyExpandedItem: items.last,
-      items: items.whereIndexed((index, _) => index > items.length / 2).toSet(),
+      items: items.whereIndexed((index, _) => index >= items.length / 2).toSet(),
     );
     final controllerNotifier = ValueNotifier(controller1);
 
