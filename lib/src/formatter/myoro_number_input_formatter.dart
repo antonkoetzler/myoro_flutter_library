@@ -13,23 +13,25 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     final decimalPlacesNotZero = decimalPlaces > 0;
 
-    // Assert that only numbers are ever provided.
-    if (!RegExp(r'^[0-9]+$').hasMatch(newValue.text)) {
-      return oldValue;
-    }
-
-    // Input empty case
+    // Empty case.
     if (newValue.text.isEmpty) {
-      return TextEditingValue(text: min.toStringAsFixed(decimalPlaces));
+      return TextEditingValue(text: min.toStringAsFixed(decimalPlaces), selection: oldValue.selection);
     }
 
     String formattedResult = '';
     int selection = 0;
     final bool cursorOnLastCharacter = newValue.selection.baseOffset == newValue.text.length;
-    final double newValueAsDouble = double.parse(newValue.text);
 
     // Character added case.
     if (newValue.text.length > oldValue.text.length) {
+      // Assert that only numbers are ever provided.
+      final newCharacter = newValue.text.substring(oldValue.selection.baseOffset, newValue.selection.baseOffset);
+      if (!RegExp(r'^[0-9]+$').hasMatch(newCharacter)) {
+        return oldValue;
+      }
+
+      final double newValueAsDouble = double.parse(newValue.text);
+
       // Auto-inserting the number if it was added on the last character.
       //
       // i.e. 0.00 --> 0.01 --> 0.11 --> 1.11 --> etc
@@ -54,6 +56,8 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
     }
     // Character removed case.
     else {
+      final double newValueAsDouble = double.parse(newValue.text);
+
       // Auto-removing the number if it was added on the last character.
       //
       // i.e. 1.11 --> 0.11 --> 0.01 --> 0.00

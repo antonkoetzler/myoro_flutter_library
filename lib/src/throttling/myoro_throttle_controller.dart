@@ -17,7 +17,7 @@ class MyoroThrottleController {
 
   MyoroThrottleController({this.duration = kMyoroThrottleDuration});
 
-  Future<void> run(Function callback) async {
+  Future<void> throttle(Function callback) async {
     if (_isThrottled) return;
     _isThrottled = true;
     await callback();

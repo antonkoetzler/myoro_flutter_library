@@ -1,5 +1,8 @@
 #!/bin/bash
 #
-# Script to format and fix the files.
+# Script to format and fix the files, excluding generated .g.dart files.
 flutter test --coverage
-genhtml coverage/lcov.info -o coverage/html
+# Remove all .g.dart entries from the lcov report
+lcov --remove coverage/lcov.info '**/*.g.dart' -o coverage/lcov.filtered.info
+# Generate HTML from the filtered report
+genhtml coverage/lcov.filtered.info -o coverage/html

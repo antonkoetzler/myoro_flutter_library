@@ -4,9 +4,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Function that requests the data to be retrieved.
-typedef MyoroRequestControllerRequest<T> = FutureOr<T?> Function();
-
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.
 class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
   MyoroRequestController({this.requestCallback}) : super(MyoroRequest<T>());
@@ -54,7 +51,6 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
     }
   }
 
-  // Getters remain the same
   MyoroRequest<T> get request => value;
   MyoroRequestEnum get status => request.status;
   String? get errorMessage => request.errorMessage;
