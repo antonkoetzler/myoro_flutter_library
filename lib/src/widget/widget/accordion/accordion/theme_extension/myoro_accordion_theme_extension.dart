@@ -12,6 +12,21 @@ part 'myoro_accordion_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExtension>
     with _$MyoroAccordionThemeExtensionMixin {
+  const MyoroAccordionThemeExtension({
+    required this.itemContentAnimationDuration,
+    required this.itemContentAnimationCurve,
+    required this.itemTitleButtonBorderRadius,
+    required this.itemTitleButtonContentPadding,
+    required this.itemTitleButtonSpacing,
+    required this.itemTitleButtonTitleTextStyle,
+    required this.itemTitleButtonArrowIcon,
+    required this.itemTitleButtonArrowIconSize,
+    required this.itemTitleButtonArrowIconColor,
+    required this.itemTitleButtonArrowBorderRadius,
+    required this.itemTitleButtonArrowAnimationDuration,
+    required this.itemTitleButtonArrowAnimationCurve,
+  });
+
   /// [Duration] of the animation of [_ItemContent].
   final Duration itemContentAnimationDuration;
 
@@ -47,21 +62,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
 
   /// [Curve] of the rotation animation of [_ItemTitleButtonArrow].
   final Curve itemTitleButtonArrowAnimationCurve;
-
-  const MyoroAccordionThemeExtension({
-    required this.itemContentAnimationDuration,
-    required this.itemContentAnimationCurve,
-    required this.itemTitleButtonBorderRadius,
-    required this.itemTitleButtonContentPadding,
-    required this.itemTitleButtonSpacing,
-    required this.itemTitleButtonTitleTextStyle,
-    required this.itemTitleButtonArrowIcon,
-    required this.itemTitleButtonArrowIconSize,
-    required this.itemTitleButtonArrowIconColor,
-    required this.itemTitleButtonArrowBorderRadius,
-    required this.itemTitleButtonArrowAnimationDuration,
-    required this.itemTitleButtonArrowAnimationCurve,
-  });
 
   MyoroAccordionThemeExtension.fake()
     : itemContentAnimationDuration = myoroFake<Duration>(),

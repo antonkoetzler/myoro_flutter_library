@@ -70,7 +70,7 @@ T myoroFake<T>() {
     return kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] as T;
   }
 
-  if (T == Curves) {
+  if (T == Curve) {
     return kMyoroTestCurves[faker.randomGenerator.integer(kMyoroTestCurves.length)] as T;
   }
 

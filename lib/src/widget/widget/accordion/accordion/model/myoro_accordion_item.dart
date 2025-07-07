@@ -8,13 +8,13 @@ part 'myoro_accordion_item.g.dart';
 /// Item of a [MyoroAccordion].
 @myoroModel
 class MyoroAccordionItem with _$MyoroAccordionItemMixin {
+  const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
+
   /// Builder of the title of the item.
   final MyoroAccordionItemTitleBuilder titleBuilder;
 
   /// Builder of the content of the [MyoroAccordionItem].
   final MyoroAccordionItemContentBuilder contentBuilder;
-
-  const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
 
   MyoroAccordionItem.fake({Widget? title, Widget? content})
     : titleBuilder = ((_) => title ?? Text(faker.lorem.word())),

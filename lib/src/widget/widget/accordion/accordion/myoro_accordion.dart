@@ -49,6 +49,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
         builder: (_, _) {
           return Scrollbar(
             controller: scrollController,
+            thumbVisibility: true,
             child: ListView.builder(
               controller: scrollController,
               itemCount: controller.items.length,

@@ -20,9 +20,6 @@ class MyoroAccordionController extends ValueNotifier<MyoroAccordionItem?> {
     value = null;
   }
 
-  /// Alias of [value].
-  MyoroAccordionItem? get expandedItem => value;
-
   @override
   bool operator ==(Object other) {
     return other is MyoroAccordionController &&
@@ -35,4 +32,14 @@ class MyoroAccordionController extends ValueNotifier<MyoroAccordionItem?> {
   int get hashCode {
     return Object.hash(value, items);
   }
+
+  @override
+  String toString() =>
+      'MyoroAccordionController(\n'
+      '  value: $value,\n'
+      '  items: $items,\n'
+      ');';
+
+  /// Alias of [value].
+  MyoroAccordionItem? get expandedItem => value;
 }
