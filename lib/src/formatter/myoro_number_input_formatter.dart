@@ -9,8 +9,6 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
 
   MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0});
 
-  String _formatResult(double formattedResult) => formattedResult.toStringAsFixed(decimalPlaces);
-
   @override
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     final decimalPlacesNotZero = decimalPlaces > 0;
@@ -44,17 +42,13 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
           formattedResult = _formatResult(_isGreaterThenMax(temp) ? max! : temp);
         } else {
           // If it's only integers, we don't have to do anyting.
-          formattedResult = _formatResult(
-            _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble,
-          );
+          formattedResult = _formatResult(_isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
         }
         selection = formattedResult.length;
       }
       // Case where the cursor is not at the last index.
       else {
-        formattedResult = _formatResult(
-          _isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble,
-        );
+        formattedResult = _formatResult(_isGreaterThenMax(newValueAsDouble) ? max! : newValueAsDouble);
         selection = newValue.selection.baseOffset;
       }
     }
@@ -70,9 +64,7 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
           formattedResult = _formatResult(_isLessThenMin(temp) ? min : temp);
         } else {
           // If it's only integers, we don't have to do anything.
-          formattedResult = _formatResult(
-            _isLessThenMin(newValueAsDouble) ? min : newValueAsDouble,
-          );
+          formattedResult = _formatResult(_isLessThenMin(newValueAsDouble) ? min : newValueAsDouble);
         }
         selection = formattedResult.toString().length;
       }
@@ -87,6 +79,10 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
       text: formattedResult,
       selection: TextSelection(baseOffset: selection, extentOffset: selection),
     );
+  }
+
+  String _formatResult(double formattedResult) {
+    return formattedResult.toStringAsFixed(decimalPlaces);
   }
 
   bool _isGreaterThenMax(double number) {

@@ -26,15 +26,6 @@ class MyoroInput extends StatefulWidget {
   /// The named constructors of [MyoroInput] provide pre-inserted formatters.
   const MyoroInput({super.key, this.configuration = const MyoroInputConfiguration(), this.formatter});
 
-  /// An input that auto formats a date.
-  factory MyoroInput.date({
-    Key? key,
-    required MyoroDateFormatEnum format,
-    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
-  }) {
-    return MyoroInput(key: key, configuration: configuration, formatter: MyoroDateInputFormatter(format: format));
-  }
-
   /// An input that only accepts numbers (integers or decimal).
   factory MyoroInput.number({
     Key? key,
@@ -47,19 +38,6 @@ class MyoroInput extends StatefulWidget {
       key: key,
       configuration: configuration,
       formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces),
-    );
-  }
-
-  /// An input that formats a time in MM:SS or HH:MM:SS.
-  factory MyoroInput.time({
-    Key? key,
-    MyoroTimeInputFormatterEnum formatType = MyoroTimeInputFormatterEnum.mmSs,
-    MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
-  }) {
-    return MyoroInput(
-      key: key,
-      configuration: configuration,
-      formatter: MyoroTimeInputFormatter(formatType: formatType),
     );
   }
 

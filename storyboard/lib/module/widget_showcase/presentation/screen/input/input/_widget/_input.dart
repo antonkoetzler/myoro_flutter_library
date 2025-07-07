@@ -7,10 +7,6 @@ final class _Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-    return MyoroInput(
-      configuration: viewModel.configuration(context, const _Suffix()),
-      formatter: MyoroDateInputFormatter(format: MyoroDateFormatEnum.ddMm),
-      HERE HERE YOU ARE HERE
-    );
+    return MyoroInput(configuration: viewModel.configuration(context, const _Suffix()));
   }
 }
