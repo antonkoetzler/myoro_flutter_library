@@ -12,7 +12,7 @@ final class _CloseButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => context.hideSnackBar(),
+        onTapUp: (_) => context.closeSnackBar(),
         iconConfiguration: themeExtension.closeButtonIconConfiguration,
         contentColorBuilder: (_) => _snackBarType.getColor(context),
       ),

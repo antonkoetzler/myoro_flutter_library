@@ -1,5 +1,9 @@
 /// Extension of [String].
 extension MyoroStringExtension on String {
   /// Capitalizes a [String].
-  String get capitalized => isEmpty ? this : '${this[0].toUpperCase()}${substring(1)}';
+  String get capitalized {
+    if (isEmpty) this;
+    final words = split(' ');
+    return words.map((word) => '${word[0].toUpperCase()}${word.substring(1)}').join(' ');
+  }
 }

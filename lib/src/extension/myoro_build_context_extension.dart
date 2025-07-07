@@ -80,7 +80,7 @@ extension MyoroBuildContextExtension on BuildContext {
   }
 
   /// Hides a snack bar.
-  void hideSnackBar() {
+  void closeSnackBar() {
     ScaffoldMessenger.of(this).hideCurrentSnackBar();
   }
 }

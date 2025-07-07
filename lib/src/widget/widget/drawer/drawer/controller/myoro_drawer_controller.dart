@@ -17,10 +17,10 @@ class MyoroDrawerController extends ChangeNotifier {
 
   /// Opens the drawer.
   void openDrawer(BuildContext context, {bool isEndDrawer = false, required MyoroDrawer drawer}) {
-    if (drawer == drawer) return;
-    drawer = drawer;
+    if (this.drawer == drawer) return;
+    this.drawer = drawer;
     isEndDrawer = isEndDrawer;
-    !isEndDrawer ? scaffoldKey.currentState?.openDrawer() : scaffoldKey.currentState?.openEndDrawer();
+    isEndDrawer ? scaffoldKey.currentState?.openEndDrawer() : scaffoldKey.currentState?.openDrawer();
   }
 
   /// Closes the drawer.
