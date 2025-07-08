@@ -9,12 +9,6 @@ part 'myoro_app_bar_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension>
     with _$MyoroAppBarThemeExtensionMixin {
-  /// Background [Color] of the app bar.
-  final Color primaryColor;
-
-  /// [EdgeInsets] of the contents of the [MyoroAppBar], not it's bottom border.
-  final EdgeInsets contentPadding;
-
   const MyoroAppBarThemeExtension({required this.primaryColor, required this.contentPadding});
 
   MyoroAppBarThemeExtension.fake() : primaryColor = myoroFake<Color>(), contentPadding = myoroFake<EdgeInsets>();
@@ -22,6 +16,12 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
   MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
     : primaryColor = colorScheme.primary,
       contentPadding = const EdgeInsets.all(10);
+
+  /// Background [Color] of the app bar.
+  final Color primaryColor;
+
+  /// [EdgeInsets] of the contents of the [MyoroAppBar], not it's bottom border.
+  final EdgeInsets contentPadding;
 
   @override
   MyoroAppBarThemeExtension lerp(covariant ThemeExtension<MyoroAppBarThemeExtension>? other, double t) {

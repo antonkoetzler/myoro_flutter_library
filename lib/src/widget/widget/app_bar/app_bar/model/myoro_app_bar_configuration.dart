@@ -10,6 +10,13 @@ part 'myoro_app_bar_configuration.g.dart';
 class MyoroAppBarConfiguration with _$MyoroAppBarConfigurationMixin {
   static const borderedDefaultValue = false;
 
+  const MyoroAppBarConfiguration({this.bordered = borderedDefaultValue, this.backgroundColor, required this.child});
+
+  MyoroAppBarConfiguration.fake()
+    : bordered = faker.randomGenerator.boolean(),
+      backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      child = const SizedBox.shrink();
+
   /// If the app bar contains a border at the bottom.
   final bool bordered;
 
@@ -18,11 +25,4 @@ class MyoroAppBarConfiguration with _$MyoroAppBarConfigurationMixin {
 
   /// Content of the app bar.
   final Widget child;
-
-  const MyoroAppBarConfiguration({this.bordered = borderedDefaultValue, this.backgroundColor, required this.child});
-
-  MyoroAppBarConfiguration.fake()
-    : bordered = faker.randomGenerator.boolean(),
-      backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      child = const SizedBox.shrink();
 }
