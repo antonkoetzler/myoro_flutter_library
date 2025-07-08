@@ -9,32 +9,6 @@ part 'myoro_button_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension>
     with _$MyoroButtonThemeExtensionMixin {
-  /// Standard [BoxBorder].
-  final BoxBorder border;
-
-  /// Border radius.
-  final BorderRadius borderRadius;
-
-  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.primary].
-  final Color primaryIdleBackgroundColor;
-  final Color primaryHoverBackgroundColor;
-  final Color primaryTapBackgroundColor;
-
-  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.primary].
-  final Color primaryIdleContentColor;
-  final Color primaryHoverContentColor;
-  final Color primaryTapContentColor;
-
-  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.secondary].
-  final Color secondaryIdleBackgroundColor;
-  final Color secondaryHoverBackgroundColor;
-  final Color secondaryTapBackgroundColor;
-
-  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.secondary].
-  final Color secondaryIdleContentColor;
-  final Color secondaryHoverContentColor;
-  final Color secondaryTapContentColor;
-
   const MyoroButtonThemeExtension({
     required this.border,
     required this.borderRadius,
@@ -51,6 +25,48 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     required this.secondaryHoverContentColor,
     required this.secondaryTapContentColor,
   });
+
+  /// Standard [BoxBorder].
+  final BoxBorder border;
+
+  /// Border radius.
+  final BorderRadius borderRadius;
+
+  /// [MyoroTapStatusEnum.idle]'s [Color] in [MyoroButtonStyleEnum.backgroundColorBuilder] for [MyoroButtonStyleEnum.primary].
+  final Color primaryIdleBackgroundColor;
+
+  /// [MyoroTapStatusEnum.hover]'s [Color] in [MyoroButtonStyleEnum.backgroundColorBuilder] for [MyoroButtonStyleEnum.primary].
+  final Color primaryHoverBackgroundColor;
+
+  /// [MyoroTapStatusEnum.tap]'s [Color] in [MyoroButtonStyleEnum.backgroundColorBuilder] for [MyoroButtonStyleEnum.primary].
+  final Color primaryTapBackgroundColor;
+
+  /// [MyoroTapStatusEnum.idle]'s [Color] in [MyoroButtonStyleEnum.contentColorBuilder] for [MyoroButtonStyleEnum.primary].
+  final Color primaryIdleContentColor;
+
+  /// [MyoroTapStatusEnum.hover]'s [Color] in [MyoroButtonStyleEnum.contentColorBuilder] for [MyoroButtonStyleEnum.primary].
+  final Color primaryHoverContentColor;
+
+  /// [MyoroTapStatusEnum.tap]'s [Color] in [MyoroButtonStyleEnum.contentColorBuilder] for [MyoroButtonStyleEnum.primary].
+  final Color primaryTapContentColor;
+
+  /// [MyoroTapStatusEnum.idle]'s [Color] in [MyoroButtonStyleEnum.backgroundColorBuilder] for [MyoroButtonStyleEnum.secondary].
+  final Color secondaryIdleBackgroundColor;
+
+  /// [MyoroTapStatusEnum.hover]'s [Color] in [MyoroButtonStyleEnum.backgroundColorBuilder] for [MyoroButtonStyleEnum.secondary].
+  final Color secondaryHoverBackgroundColor;
+
+  /// [MyoroTapStatusEnum.tap]'s [Color] in [MyoroButtonStyleEnum.backgroundColorBuilder] for [MyoroButtonStyleEnum.secondary].
+  final Color secondaryTapBackgroundColor;
+
+  /// [MyoroTapStatusEnum.idle]'s [Color] in [MyoroButtonStyleEnum.contentColorBuilder] for [MyoroButtonStyleEnum.secondary].
+  final Color secondaryIdleContentColor;
+
+  /// [MyoroTapStatusEnum.hover]'s [Color] in [MyoroButtonStyleEnum.contentColorBuilder] for [MyoroButtonStyleEnum.secondary].
+  final Color secondaryHoverContentColor;
+
+  /// [MyoroTapStatusEnum.tap]'s [Color] in [MyoroButtonStyleEnum.contentColorBuilder] for [MyoroButtonStyleEnum.secondary].
+  final Color secondaryTapContentColor;
 
   MyoroButtonThemeExtension.fake()
     : border = myoroFake<Border>(),

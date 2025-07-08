@@ -103,6 +103,10 @@ T myoroFake<T>() {
     return borders[faker.randomGenerator.integer(borders.length)] as T;
   }
 
+  if (T == MouseCursor) {
+    return kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)] as T;
+  }
+
   if (T == OutlineInputBorder) {
     return OutlineInputBorder(borderRadius: myoroFake<BorderRadius>(), borderSide: myoroFake<BorderSide>()) as T;
   }
@@ -113,10 +117,6 @@ T myoroFake<T>() {
 
   if (T == SnackBarBehavior) {
     return SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)] as T;
-  }
-
-  if (T == SystemMouseCursors) {
-    return kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)] as T;
   }
 
   if (T == TextAlign) {

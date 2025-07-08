@@ -7,8 +7,19 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_button_configuration.g.dart';
 
 /// Configuration model of [MyoroButton].
+@immutable
 @myoroModel
 class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
+  const MyoroButtonConfiguration({
+    this.tooltipConfiguration,
+    this.cursor,
+    this.borderRadius,
+    this.backgroundColorBuilder,
+    this.borderBuilder,
+    this.onTapDown,
+    this.onTapUp,
+  });
+
   /// [MyoroTooltip] of the [MyoroButton].
   final MyoroTooltipConfiguration? tooltipConfiguration;
 
@@ -33,19 +44,9 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
   /// Function executed when the [MyoroButton] is released being tapped.
   final MyoroButtonConfigurationOnTapUp? onTapUp;
 
-  const MyoroButtonConfiguration({
-    this.tooltipConfiguration,
-    this.cursor,
-    this.borderRadius,
-    this.backgroundColorBuilder,
-    this.borderBuilder,
-    this.onTapDown,
-    this.onTapUp,
-  });
-
   MyoroButtonConfiguration.fake()
     : tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
-      cursor = faker.randomGenerator.boolean() ? myoroFake<SystemMouseCursor>() : null,
+      cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
       borderRadius =
           faker.randomGenerator.boolean()
               ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
