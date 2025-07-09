@@ -9,32 +9,6 @@ part 'myoro_button_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension>
     with _$MyoroButtonThemeExtensionMixin {
-  /// Standard [BoxBorder].
-  final BoxBorder border;
-
-  /// Border radius.
-  final BorderRadius borderRadius;
-
-  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.primary].
-  final Color primaryIdleBackgroundColor;
-  final Color primaryHoverBackgroundColor;
-  final Color primaryTapBackgroundColor;
-
-  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.primary].
-  final Color primaryIdleContentColor;
-  final Color primaryHoverContentColor;
-  final Color primaryTapContentColor;
-
-  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.secondary].
-  final Color secondaryIdleBackgroundColor;
-  final Color secondaryHoverBackgroundColor;
-  final Color secondaryTapBackgroundColor;
-
-  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.secondary].
-  final Color secondaryIdleContentColor;
-  final Color secondaryHoverContentColor;
-  final Color secondaryTapContentColor;
-
   const MyoroButtonThemeExtension({
     required this.border,
     required this.borderRadius,
@@ -105,6 +79,32 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       secondaryTapContentColor: colorScheme.primary,
     );
   }
+
+  /// Standard [BoxBorder].
+  final BoxBorder border;
+
+  /// Border radius.
+  final BorderRadius borderRadius;
+
+  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.primary].
+  final Color primaryIdleBackgroundColor;
+  final Color primaryHoverBackgroundColor;
+  final Color primaryTapBackgroundColor;
+
+  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.primary].
+  final Color primaryIdleContentColor;
+  final Color primaryHoverContentColor;
+  final Color primaryTapContentColor;
+
+  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.secondary].
+  final Color secondaryIdleBackgroundColor;
+  final Color secondaryHoverBackgroundColor;
+  final Color secondaryTapBackgroundColor;
+
+  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.secondary].
+  final Color secondaryIdleContentColor;
+  final Color secondaryHoverContentColor;
+  final Color secondaryTapContentColor;
 
   @override
   MyoroButtonThemeExtension lerp(covariant ThemeExtension<MyoroButtonThemeExtension>? other, double t) {

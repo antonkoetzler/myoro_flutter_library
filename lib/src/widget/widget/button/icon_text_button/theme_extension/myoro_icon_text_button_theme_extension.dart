@@ -12,15 +12,6 @@ part 'myoro_icon_text_button_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButtonThemeExtension>
     with _$MyoroIconTextButtonThemeExtensionMixin {
-  /// Content padding.
-  final EdgeInsets contentPadding;
-
-  /// Spacing between text and icon.
-  final double spacing;
-
-  /// [TextStyle] of text.
-  final TextStyle textStyle;
-
   const MyoroIconTextButtonThemeExtension({
     required this.contentPadding,
     required this.spacing,
@@ -36,6 +27,15 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
     : contentPadding = const EdgeInsets.all(5),
       spacing = 10,
       textStyle = textTheme.bodyMedium!;
+
+  /// Content padding.
+  final EdgeInsets contentPadding;
+
+  /// Spacing between text and icon.
+  final double spacing;
+
+  /// [TextStyle] of text.
+  final TextStyle textStyle;
 
   @override
   MyoroIconTextButtonThemeExtension lerp(covariant ThemeExtension<MyoroIconTextButtonThemeExtension>? other, double t) {

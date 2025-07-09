@@ -90,6 +90,10 @@ T myoroFake<T>() {
     return FloatingLabelBehavior.values[faker.randomGenerator.integer(FloatingLabelBehavior.values.length)] as T;
   }
 
+  if (T == MouseCursor) {
+    return kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)] as T;
+  }
+
   if (T == IconData) {
     return kMyoroTestIcons[faker.randomGenerator.integer(kMyoroTestIcons.length)] as T;
   }
@@ -113,10 +117,6 @@ T myoroFake<T>() {
 
   if (T == SnackBarBehavior) {
     return SnackBarBehavior.values[faker.randomGenerator.integer(SnackBarBehavior.values.length)] as T;
-  }
-
-  if (T == SystemMouseCursors) {
-    return kMyoroTestCursors[faker.randomGenerator.integer(kMyoroTestCursors.length)] as T;
   }
 
   if (T == TextAlign) {

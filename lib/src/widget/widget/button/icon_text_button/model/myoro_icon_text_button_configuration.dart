@@ -11,25 +11,6 @@ part 'myoro_icon_text_button_configuration.g.dart';
 class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {
   static const invertDefaultValue = false;
 
-  /// By default, the icon is displays on the left, and
-  /// the text on the right, this is to invert the order.
-  final bool invert;
-
-  /// Spacing between the icon and text.
-  final double? spacing;
-
-  /// Content padding.
-  final EdgeInsets? padding;
-
-  /// [Color] builder of the icon and text.
-  final MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder;
-
-  /// Icon configuration of the [MyoroIconTextButton].
-  final MyoroIconConfiguration? iconConfiguration;
-
-  /// Text configuration of the [MyoroIconTextButton].
-  final MyoroTextConfiguration? textConfiguration;
-
   const MyoroIconTextButtonConfiguration({
     super.tooltipConfiguration,
     super.cursor,
@@ -55,7 +36,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
 
     return MyoroIconTextButtonConfiguration(
       tooltipConfiguration: faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
-      cursor: faker.randomGenerator.boolean() ? myoroFake<SystemMouseCursor>() : null,
+      cursor: faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
       borderRadius:
           faker.randomGenerator.boolean()
               ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
@@ -81,4 +62,23 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
               : null,
     );
   }
+
+  /// By default, the icon is displays on the left, and
+  /// the text on the right, this is to invert the order.
+  final bool invert;
+
+  /// Spacing between the icon and text.
+  final double? spacing;
+
+  /// Content padding.
+  final EdgeInsets? padding;
+
+  /// [Color] builder of the icon and text.
+  final MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder;
+
+  /// Icon configuration of the [MyoroIconTextButton].
+  final MyoroIconConfiguration? iconConfiguration;
+
+  /// Text configuration of the [MyoroIconTextButton].
+  final MyoroTextConfiguration? textConfiguration;
 }

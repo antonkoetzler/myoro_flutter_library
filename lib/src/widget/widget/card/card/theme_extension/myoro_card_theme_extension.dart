@@ -11,24 +11,6 @@ part 'myoro_card_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> with _$MyoroCardThemeExtensionMixin {
-  /// Background color of the card.
-  final Color backgroundColor;
-
-  /// Border of the card.
-  final Border border;
-
-  /// Border radius of the card.
-  final BorderRadius borderRadius;
-
-  /// Padding of [MyoroCard.child].
-  final EdgeInsets padding;
-
-  /// Spacing in between [_Title] & [_Card].
-  final double titleCardSpacing;
-
-  /// Text style of [MyoroCard.title].
-  final TextStyle textStyle;
-
   const MyoroCardThemeExtension({
     required this.backgroundColor,
     required this.border,
@@ -53,6 +35,24 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       padding = myoroFake<EdgeInsets>(),
       titleCardSpacing = faker.randomGenerator.decimal(),
       textStyle = myoroFake<TextStyle>();
+
+  /// Background color of the card.
+  final Color backgroundColor;
+
+  /// Border of the card.
+  final Border border;
+
+  /// Border radius of the card.
+  final BorderRadius borderRadius;
+
+  /// Padding of [MyoroCard.child].
+  final EdgeInsets padding;
+
+  /// Spacing in between [_Title] & [_Card].
+  final double titleCardSpacing;
+
+  /// Text style of [MyoroCard.title].
+  final TextStyle textStyle;
 
   @override
   MyoroCardThemeExtension lerp(covariant ThemeExtension<MyoroCardThemeExtension>? other, double t) {

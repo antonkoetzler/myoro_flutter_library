@@ -9,12 +9,6 @@ part 'myoro_carousel_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension>
     with _$MyoroCarouselThemeExtensionMixin {
-  /// Icon of the previous item [_TraversalButton] in [_TraversalButtons].
-  final IconData previousItemButtonIcon;
-
-  /// Icon of the next item button in [_TraversalButtons].
-  final IconData nextItemButtonIcon;
-
   const MyoroCarouselThemeExtension({required this.previousItemButtonIcon, required this.nextItemButtonIcon});
 
   MyoroCarouselThemeExtension.fake()
@@ -24,6 +18,12 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
   const MyoroCarouselThemeExtension.builder()
     : previousItemButtonIcon = Icons.keyboard_arrow_left,
       nextItemButtonIcon = Icons.keyboard_arrow_right;
+
+  /// Icon of the previous item [_TraversalButton] in [_TraversalButtons].
+  final IconData previousItemButtonIcon;
+
+  /// Icon of the next item button in [_TraversalButtons].
+  final IconData nextItemButtonIcon;
 
   @override
   MyoroCarouselThemeExtension lerp(covariant ThemeExtension<MyoroCarouselThemeExtension>? other, double t) {

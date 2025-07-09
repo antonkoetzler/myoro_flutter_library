@@ -9,7 +9,7 @@ part '_widget/_traversal_button.dart';
 class MyoroCarousel extends StatefulWidget {
   const MyoroCarousel({super.key, this.controller, required this.configuration});
 
-  final MyoroCarouselController? controller;
+  final CarouselSliderController? controller;
   final MyoroCarouselConfiguration configuration;
 
   @override
@@ -19,9 +19,9 @@ class MyoroCarousel extends StatefulWidget {
 final class _MyoroCarouselState extends State<MyoroCarousel> {
   MyoroCarouselConfiguration get _configuration => widget.configuration;
 
-  MyoroCarouselController? _localController;
-  MyoroCarouselController get _controller {
-    return widget.controller ?? (_localController ??= MyoroCarouselController());
+  CarouselSliderController? _localController;
+  CarouselSliderController get _controller {
+    return widget.controller ?? (_localController ??= CarouselSliderController());
   }
 
   @override

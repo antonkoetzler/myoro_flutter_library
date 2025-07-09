@@ -9,30 +9,6 @@ part 'myoro_button_configuration.g.dart';
 /// Configuration model of [MyoroButton].
 @myoroModel
 class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
-  /// [MyoroTooltip] of the [MyoroButton].
-  final MyoroTooltipConfiguration? tooltipConfiguration;
-
-  /// [MouseCursor] when the [MyoroButton] is hovered over.
-  ///
-  /// If [onTapDown] or [onTapUp] is provided, [cursor] defaults to
-  /// [SystemMouseCursor.click]. Other, the default is [SystemMouseCursor.basic].
-  final MouseCursor? cursor;
-
-  /// [BorderRadius] of the [MyoroButton].
-  final BorderRadius? borderRadius;
-
-  /// Builder of the [MyoroButton]'s background color.
-  final MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder;
-
-  /// Builder of the [MyoroButton]'s border.
-  final MyoroButtonConfigurationBorderBuilder? borderBuilder;
-
-  /// Function executed when the [MyoroButton] is tapped.
-  final MyoroButtonConfigurationOnTapDown? onTapDown;
-
-  /// Function executed when the [MyoroButton] is released being tapped.
-  final MyoroButtonConfigurationOnTapUp? onTapUp;
-
   const MyoroButtonConfiguration({
     this.tooltipConfiguration,
     this.cursor,
@@ -57,6 +33,30 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
               : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null;
+
+  /// [MyoroTooltip] of the [MyoroButton].
+  final MyoroTooltipConfiguration? tooltipConfiguration;
+
+  /// [MouseCursor] when the [MyoroButton] is hovered over.
+  ///
+  /// If [onTapDown] or [onTapUp] is provided, [cursor] defaults to
+  /// [SystemMouseCursor.click]. Other, the default is [SystemMouseCursor.basic].
+  final MouseCursor? cursor;
+
+  /// [BorderRadius] of the [MyoroButton].
+  final BorderRadius? borderRadius;
+
+  /// Builder of the [MyoroButton]'s background color.
+  final MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder;
+
+  /// Builder of the [MyoroButton]'s border.
+  final MyoroButtonConfigurationBorderBuilder? borderBuilder;
+
+  /// Function executed when the [MyoroButton] is tapped.
+  final MyoroButtonConfigurationOnTapDown? onTapDown;
+
+  /// Function executed when the [MyoroButton] is released being tapped.
+  final MyoroButtonConfigurationOnTapUp? onTapUp;
 
   /// Returns if [onTapUp] or [onTapDown] was provided.
   bool get onTapProvided => (onTapUp != null) || (onTapDown != null);
