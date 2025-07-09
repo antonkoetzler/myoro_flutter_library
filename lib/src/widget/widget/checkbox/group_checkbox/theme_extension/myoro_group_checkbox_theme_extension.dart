@@ -11,19 +11,19 @@ part 'myoro_group_checkbox_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckboxThemeExtension>
     with _$MyoroGroupCheckboxThemeExtensionMixin {
+  const MyoroGroupCheckboxThemeExtension({required this.spacing, required this.runSpacing});
+
+  MyoroGroupCheckboxThemeExtension.fake()
+    : spacing = faker.randomGenerator.decimal(),
+      runSpacing = faker.randomGenerator.decimal();
+
+  const MyoroGroupCheckboxThemeExtension.builder() : spacing = 5, runSpacing = 5;
+
   /// Main axis spacing in between each checkbox.
   final double spacing;
 
   /// Cross axis spacing in between each checkbox.
   final double runSpacing;
-
-  const MyoroGroupCheckboxThemeExtension({required this.spacing, required this.runSpacing});
-
-  const MyoroGroupCheckboxThemeExtension.builder() : spacing = 5, runSpacing = 5;
-
-  MyoroGroupCheckboxThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(),
-      runSpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroGroupCheckboxThemeExtension lerp(covariant ThemeExtension<MyoroGroupCheckboxThemeExtension>? other, double t) {

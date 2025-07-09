@@ -6,10 +6,24 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_checkbox_configuration.g.dart';
 
 /// Configuration of [MyoroCheckbox].
+@immutable
 @myoroModel
 class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
   static const labelDefaultValue = '';
   static const valueDefaultValue = false;
+
+  const MyoroCheckboxConfiguration({
+    this.label = labelDefaultValue,
+    this.labelTextStyle,
+    this.value = valueDefaultValue,
+    this.onChanged,
+  });
+
+  MyoroCheckboxConfiguration.fake()
+    : label = faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
+      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      value = faker.randomGenerator.boolean(),
+      onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
 
   /// Label at the right of the checkbox.
   final String label;
@@ -22,20 +36,4 @@ class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
 
   /// Function that is executed when the checkbox is changed.
   final MyoroCheckboxOnChanged? onChanged;
-
-  const MyoroCheckboxConfiguration({
-    this.label = labelDefaultValue,
-    this.labelTextStyle,
-    this.value = valueDefaultValue,
-    this.onChanged,
-  });
-
-  factory MyoroCheckboxConfiguration.fake() {
-    return MyoroCheckboxConfiguration(
-      label: faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      value: faker.randomGenerator.boolean(),
-      onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
-    );
-  }
 }

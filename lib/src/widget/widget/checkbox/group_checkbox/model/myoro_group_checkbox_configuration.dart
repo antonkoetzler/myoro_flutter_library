@@ -6,21 +6,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_group_checkbox_configuration.g.dart';
 
 /// Configuration of [MyoroGroupCheckbox].
+@immutable
 @myoroModel
 class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;
-
-  /// Direction that the checkboxes will built in.
-  final Axis direction;
-
-  /// Spacing in between the checkboxes.
-  final double? spacing;
-
-  /// Spacing in between the checkboxes when the checkboxes are wrapping (cross axis spacing).
-  final double? runSpacing;
-
-  /// Function executed when any of the checkbox's values are changed.
-  final MyoroGroupCheckboxOnChanged? onChanged;
 
   const MyoroGroupCheckboxConfiguration({
     this.direction = directionDefaultValue,
@@ -34,4 +23,16 @@ class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixi
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
       runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
       onChanged = faker.randomGenerator.boolean() ? ((_, _) {}) : null;
+
+  /// Direction that the checkboxes will built in.
+  final Axis direction;
+
+  /// Spacing in between the checkboxes.
+  final double? spacing;
+
+  /// Spacing in between the checkboxes when the checkboxes are wrapping (cross axis spacing).
+  final double? runSpacing;
+
+  /// Function executed when any of the checkbox's values are changed.
+  final MyoroGroupCheckboxOnChanged? onChanged;
 }

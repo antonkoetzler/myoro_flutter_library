@@ -12,18 +12,6 @@ part 'myoro_resize_divider_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDividerThemeExtension>
     with _$MyoroResizeDividerThemeExtensionMixin {
-  /// [MyoroColorDesignSystem.secondary] by default.
-  final Color secondary;
-
-  /// Width of the resize button. 10 by default.
-  final double resizeButtonShortValue;
-
-  /// Height of the resize button. 30 by default.
-  final double resizeButtonLongValue;
-
-  /// Border radius of the resize button. [kMyoroBorderRadius] by default.
-  final BorderRadius resizeButtonBorderRadius;
-
   const MyoroResizeDividerThemeExtension({
     required this.secondary,
     required this.resizeButtonShortValue,
@@ -42,6 +30,18 @@ class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDivider
       resizeButtonShortValue = 8,
       resizeButtonLongValue = 8,
       resizeButtonBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
+
+  /// [MyoroColorDesignSystem.secondary] by default.
+  final Color secondary;
+
+  /// Width of the resize button. 10 by default.
+  final double resizeButtonShortValue;
+
+  /// Height of the resize button. 30 by default.
+  final double resizeButtonLongValue;
+
+  /// Border radius of the resize button. [kMyoroBorderRadius] by default.
+  final BorderRadius resizeButtonBorderRadius;
 
   @override
   MyoroResizeDividerThemeExtension lerp(covariant ThemeExtension<MyoroResizeDividerThemeExtension>? other, double t) {

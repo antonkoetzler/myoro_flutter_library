@@ -12,27 +12,6 @@ part 'myoro_checkbox_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension>
     with _$MyoroCheckboxThemeExtensionMixin {
-  /// Background color of the checkbox when selected.
-  final Color activeColor;
-
-  /// Color of the checkmark.
-  final Color checkColor;
-
-  /// Hover color of the [Checkbox].
-  final Color hoverColor;
-
-  /// Focus color of the [Checkbox].
-  final Color focusColor;
-
-  /// Splash radius when the [Checkbox] is hovered.
-  final double splashRadius;
-
-  /// Text style of the label.
-  final TextStyle labelTextStyle;
-
-  /// Spacing between the checkbox and the label.
-  final double spacing;
-
   const MyoroCheckboxThemeExtension({
     required this.activeColor,
     required this.checkColor,
@@ -60,6 +39,27 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       splashRadius = 0,
       labelTextStyle = textTheme.bodySmall!,
       spacing = 5;
+
+  /// Background color of the checkbox when selected.
+  final Color activeColor;
+
+  /// Color of the checkmark.
+  final Color checkColor;
+
+  /// Hover color of the [Checkbox].
+  final Color hoverColor;
+
+  /// Focus color of the [Checkbox].
+  final Color focusColor;
+
+  /// Splash radius when the [Checkbox] is hovered.
+  final double splashRadius;
+
+  /// Text style of the label.
+  final TextStyle labelTextStyle;
+
+  /// Spacing between the checkbox and the label.
+  final double spacing;
 
   @override
   MyoroCheckboxThemeExtension lerp(covariant ThemeExtension<MyoroCheckboxThemeExtension>? other, double t) {

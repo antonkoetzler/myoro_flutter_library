@@ -12,7 +12,9 @@ class MyoroCheckboxViewModel {
   }
 
   /// Toggles the checkbox value.
-  void toggle([bool? enabled]) {}
+  void toggle([bool? enabled]) {
+    state.enabledController.value = enabled ?? !state.enabled;
+  }
 
   /// On tap up to toggle the [Checkbox],.
   void onTapUp(_) {

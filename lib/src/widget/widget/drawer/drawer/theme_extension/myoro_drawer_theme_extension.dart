@@ -9,27 +9,6 @@ part 'myoro_drawer_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension>
     with _$MyoroDrawerThemeExtensionMixin {
-  /// Padding of [_Drawer].
-  final EdgeInsets drawerPadding;
-
-  /// Padding of the content in [_Drawer].
-  final EdgeInsets drawerContentPadding;
-
-  /// [Drawer.shape] of the drawer.
-  final ShapeBorder drawerShape;
-
-  /// Padding of the [MyoroBasicDivider] in between [_Title] and [MyoroDrawer.child].
-  final EdgeInsets titleContentDividerPadding;
-
-  /// Text style of text in [_Title].
-  final TextStyle titleTextStyle;
-
-  /// Icon of the drawer on the left for [_CloseButton].
-  final IconData closeButtonDrawerIcon;
-
-  /// Icon of the drawer on the right for [_CloseButton].
-  final IconData closeButtonEndDrawerIcon;
-
   const MyoroDrawerThemeExtension({
     required this.drawerContentPadding,
     required this.drawerPadding,
@@ -60,6 +39,27 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
       titleTextStyle = textTheme.titleLarge!,
       closeButtonDrawerIcon = Icons.keyboard_arrow_left,
       closeButtonEndDrawerIcon = Icons.keyboard_arrow_right;
+
+  /// Padding of [_Drawer].
+  final EdgeInsets drawerPadding;
+
+  /// Padding of the content in [_Drawer].
+  final EdgeInsets drawerContentPadding;
+
+  /// [Drawer.shape] of the drawer.
+  final ShapeBorder drawerShape;
+
+  /// Padding of the [MyoroBasicDivider] in between [_Title] and [MyoroDrawer.child].
+  final EdgeInsets titleContentDividerPadding;
+
+  /// Text style of text in [_Title].
+  final TextStyle titleTextStyle;
+
+  /// Icon of the drawer on the left for [_CloseButton].
+  final IconData closeButtonDrawerIcon;
+
+  /// Icon of the drawer on the right for [_CloseButton].
+  final IconData closeButtonEndDrawerIcon;
 
   @override
   MyoroDrawerThemeExtension lerp(covariant ThemeExtension<MyoroDrawerThemeExtension>? other, double t) {

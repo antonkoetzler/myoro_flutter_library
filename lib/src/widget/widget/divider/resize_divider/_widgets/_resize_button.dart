@@ -11,7 +11,7 @@ final class _ResizeButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroResizeDividerThemeExtension>();
     final shortValue = themeExtension.resizeButtonShortValue;
     final longValue = themeExtension.resizeButtonLongValue;
-    final isHorizontal = _configuration.basicDividerConfiguration.direction.isHorizontal;
+    final isHorizontal = _configuration.direction.isHorizontal;
 
     return MouseRegion(
       cursor: isHorizontal ? SystemMouseCursors.resizeRow : SystemMouseCursors.resizeColumn,

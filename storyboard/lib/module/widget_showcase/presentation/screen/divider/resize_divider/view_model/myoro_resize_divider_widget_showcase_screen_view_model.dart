@@ -14,8 +14,11 @@ final class MyoroResizeDividerWidgetShowcaseScreenViewModel {
 
   /// [MyoroResizeDividerConfiguration] of the [MyoroResizeDivider].
   MyoroResizeDividerConfiguration get configuration {
+    final basicDividerConfiguration = _state.basicDividerViewModel.configuration;
     return MyoroResizeDividerConfiguration(
-      basicDividerConfiguration: _state.basicDividerViewModel.configuration,
+      direction: basicDividerConfiguration.direction,
+      shortValue: basicDividerConfiguration.shortValue,
+      padding: basicDividerConfiguration.padding,
       dragCallback: _dragCallback,
     );
   }

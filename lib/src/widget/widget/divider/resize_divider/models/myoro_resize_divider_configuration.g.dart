@@ -16,13 +16,18 @@ mixin _$MyoroResizeDividerConfigurationMixin {
       this as MyoroResizeDividerConfiguration;
 
   MyoroResizeDividerConfiguration copyWith({
-    MyoroBasicDividerConfiguration? basicDividerConfiguration,
     void Function(DragUpdateDetails)? dragCallback,
     bool dragCallbackProvided = true,
+    Axis? direction,
+    double? shortValue,
+    bool shortValueProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
   }) {
     return MyoroResizeDividerConfiguration(
-      basicDividerConfiguration:
-          basicDividerConfiguration ?? self.basicDividerConfiguration,
+      direction: direction ?? self.direction,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
       dragCallback:
           dragCallbackProvided ? (dragCallback ?? self.dragCallback) : null,
     );
@@ -32,19 +37,28 @@ mixin _$MyoroResizeDividerConfigurationMixin {
   bool operator ==(Object other) {
     return other is MyoroResizeDividerConfiguration &&
         other.runtimeType == runtimeType &&
-        other.basicDividerConfiguration == self.basicDividerConfiguration &&
-        other.dragCallback == self.dragCallback;
+        other.dragCallback == self.dragCallback &&
+        other.direction == self.direction &&
+        other.shortValue == self.shortValue &&
+        other.padding == self.padding;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.basicDividerConfiguration, self.dragCallback);
+    return Object.hash(
+      self.dragCallback,
+      self.direction,
+      self.shortValue,
+      self.padding,
+    );
   }
 
   @override
   String toString() =>
       'MyoroResizeDividerConfiguration(\n'
-      '  basicDividerConfiguration: ${self.basicDividerConfiguration},\n'
       '  dragCallback: ${self.dragCallback},\n'
+      '  direction: ${self.direction},\n'
+      '  shortValue: ${self.shortValue},\n'
+      '  padding: ${self.padding},\n'
       ');';
 }

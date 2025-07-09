@@ -6,8 +6,16 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_basic_divider_configuration.g.dart';
 
 /// Configuration model to store the class members of [MyoroBasicDivider].
+@immutable
 @myoroModel
 class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin {
+  const MyoroBasicDividerConfiguration({required this.direction, this.shortValue, this.padding});
+
+  MyoroBasicDividerConfiguration.fake()
+    : direction = myoroFake<Axis>(),
+      shortValue = faker.randomGenerator.decimal(scale: 20),
+      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+
   /// Direction of the divider.
   final Axis direction;
 
@@ -16,11 +24,4 @@ class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin 
 
   /// Padding of the divider.
   final EdgeInsets? padding;
-
-  const MyoroBasicDividerConfiguration({required this.direction, this.shortValue, this.padding});
-
-  MyoroBasicDividerConfiguration.fake()
-    : direction = myoroFake<Axis>(),
-      shortValue = faker.randomGenerator.decimal(),
-      padding = null;
 }

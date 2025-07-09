@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 /// Checkboxes of the group. Provided as a map for speed and ease of navigation.
 typedef MyoroGroupCheckboxItems = Map<String, bool>;
 
