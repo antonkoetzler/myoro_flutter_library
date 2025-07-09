@@ -26,6 +26,22 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     required this.secondaryTapContentColor,
   });
 
+  MyoroButtonThemeExtension.fake()
+    : border = myoroFake<Border>(),
+      borderRadius = myoroFake<BorderRadius>(),
+      primaryIdleBackgroundColor = myoroFake<Color>(),
+      primaryHoverBackgroundColor = myoroFake<Color>(),
+      primaryTapBackgroundColor = myoroFake<Color>(),
+      primaryIdleContentColor = myoroFake<Color>(),
+      primaryHoverContentColor = myoroFake<Color>(),
+      primaryTapContentColor = myoroFake<Color>(),
+      secondaryIdleBackgroundColor = myoroFake<Color>(),
+      secondaryHoverBackgroundColor = myoroFake<Color>(),
+      secondaryTapBackgroundColor = myoroFake<Color>(),
+      secondaryIdleContentColor = myoroFake<Color>(),
+      secondaryHoverContentColor = myoroFake<Color>(),
+      secondaryTapContentColor = myoroFake<Color>();
+
   /// Standard [BoxBorder].
   final BoxBorder border;
 
@@ -68,22 +84,6 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
   /// [MyoroTapStatusEnum.tap]'s [Color] in [MyoroButtonStyleEnum.contentColorBuilder] for [MyoroButtonStyleEnum.secondary].
   final Color secondaryTapContentColor;
 
-  MyoroButtonThemeExtension.fake()
-    : border = myoroFake<Border>(),
-      borderRadius = myoroFake<BorderRadius>(),
-      primaryIdleBackgroundColor = myoroFake<Color>(),
-      primaryHoverBackgroundColor = myoroFake<Color>(),
-      primaryTapBackgroundColor = myoroFake<Color>(),
-      primaryIdleContentColor = myoroFake<Color>(),
-      primaryHoverContentColor = myoroFake<Color>(),
-      primaryTapContentColor = myoroFake<Color>(),
-      secondaryIdleBackgroundColor = myoroFake<Color>(),
-      secondaryHoverBackgroundColor = myoroFake<Color>(),
-      secondaryTapBackgroundColor = myoroFake<Color>(),
-      secondaryIdleContentColor = myoroFake<Color>(),
-      secondaryHoverContentColor = myoroFake<Color>(),
-      secondaryTapContentColor = myoroFake<Color>();
-
   factory MyoroButtonThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
     const primaryHoverBackgroundColorFactor = 0.7;
     const primaryTapBackgroundColorFactor = 0.5;
@@ -121,32 +121,6 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       secondaryTapContentColor: colorScheme.primary,
     );
   }
-
-  /// Standard [BoxBorder].
-  final BoxBorder border;
-
-  /// Border radius.
-  final BorderRadius borderRadius;
-
-  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.primary].
-  final Color primaryIdleBackgroundColor;
-  final Color primaryHoverBackgroundColor;
-  final Color primaryTapBackgroundColor;
-
-  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.primary].
-  final Color primaryIdleContentColor;
-  final Color primaryHoverContentColor;
-  final Color primaryTapContentColor;
-
-  /// [MyoroButtonVariantEnum.backgroundColorBuilder] of [MyoroButtonVariantEnum.secondary].
-  final Color secondaryIdleBackgroundColor;
-  final Color secondaryHoverBackgroundColor;
-  final Color secondaryTapBackgroundColor;
-
-  /// [MyoroButtonVariantEnum.contentColorBuilder] of [MyoroButtonVariantEnum.secondary].
-  final Color secondaryIdleContentColor;
-  final Color secondaryHoverContentColor;
-  final Color secondaryTapContentColor;
 
   @override
   MyoroButtonThemeExtension lerp(covariant ThemeExtension<MyoroButtonThemeExtension>? other, double t) {
