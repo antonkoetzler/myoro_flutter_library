@@ -7,6 +7,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_button_configuration.g.dart';
 
 /// Configuration model of [MyoroButton].
+@immutable
 @myoroModel
 class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
   const MyoroButtonConfiguration({
@@ -21,7 +22,7 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
 
   MyoroButtonConfiguration.fake()
     : tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
-      cursor = faker.randomGenerator.boolean() ? myoroFake<SystemMouseCursor>() : null,
+      cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
       borderRadius =
           faker.randomGenerator.boolean()
               ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))

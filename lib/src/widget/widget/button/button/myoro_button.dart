@@ -22,10 +22,10 @@ class MyoroButton extends StatefulWidget {
 }
 
 final class _MyoroButtonState extends State<MyoroButton> {
+  MyoroButtonConfiguration? get _configuration => widget.configuration;
   MyoroButtonBuilder get _builder => widget.builder;
 
-  late final _viewModel = MyoroButtonViewModel()..state.configuration = widget.configuration;
-  ValueNotifier<MyoroTapStatusEnum> get _tapStatusController => _viewModel.state.tapStatusController;
+  late final _viewModel = MyoroButtonViewModel(_configuration);
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
@@ -41,6 +41,8 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   @override
   Widget build(BuildContext context) {
+    final tapStatusController = _viewModel.state.tapStatusController;
+
     return InheritedProvider.value(
       value: _viewModel,
       child: MouseRegion(
@@ -52,7 +54,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
           onTapUp: _viewModel.onTapUp,
           onTapCancel: _viewModel.onTapCancel,
           child: ValueListenableBuilder(
-            valueListenable: _tapStatusController,
+            valueListenable: tapStatusController,
             builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
           ),
         ),
