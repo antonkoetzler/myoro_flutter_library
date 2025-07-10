@@ -6,20 +6,22 @@ part '_widget/_indicator_text.dart';
 part '_widget/_label.dart';
 
 /// A horizontal slider.
-class MyoroSlider extends MyoroStatefulWidget<MyoroSliderViewModel> {
+class MyoroSlider extends MyoroStatefulWidget {
   /// Controller.
   final MyoroSliderController? controller;
 
   /// Configuration.
   final MyoroSliderConfiguration? configuration;
 
-  const MyoroSlider({super.key, this.controller, this.configuration});
+  const MyoroSlider({super.key, super.createViewModel, this.controller, this.configuration});
 
   @override
   State<MyoroSlider> createState() => _MyoroSliderState();
 }
 
 final class _MyoroSliderState extends State<MyoroSlider> {
+  bool get _createViewModel => widget.createViewModel;
+
   MyoroSliderController? _localController;
   MyoroSliderController get _controller {
     return widget.controller ?? (_localController ??= MyoroSliderController());
@@ -27,7 +29,9 @@ final class _MyoroSliderState extends State<MyoroSlider> {
 
   MyoroSliderViewModel? _localViewModel;
   MyoroSliderViewModel get _viewModel {
-    return widget.injectedViewModel ?? (_localViewModel ??= MyoroSliderViewModel(widget.configuration, _controller));
+    return _createViewModel
+        ? (_localViewModel ??= MyoroSliderViewModel(widget.configuration, _controller))
+        : context.read<MyoroSliderViewModel>();
   }
 
   @override
@@ -42,51 +46,50 @@ final class _MyoroSliderState extends State<MyoroSlider> {
     final sliderPadding = themeExtension.sliderPadding;
     final configuration = _viewModel.configuration;
 
-    return InheritedProvider.value(
-      value: _viewModel,
-      child: SizedBox(
-        width: configuration?.width,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (configuration?.label != null && configuration?.label.isNotEmpty == true) const _Label(),
-            Padding(
-              padding: sliderPadding,
-              child: ValueListenableBuilder(
-                valueListenable: _controller,
-                builder: (_, double value, _) {
-                  return Column(
-                    children: [
-                      Row(
-                        children: [
-                          if (configuration?.currentValueIndicatorTextBuilder != null) ...[
-                            _IndicatorText(configuration!.currentValueIndicatorTextBuilder!(value)),
-                          ],
-                          Expanded(
-                            child: Slider(
-                              value: value,
-                              min: _controller.minValue,
-                              max: _controller.maxValue,
-                              onChanged: _controller.setValue,
-                            ),
-                          ),
-                          if (configuration?.maxValueIndicatorTextBuilder != null) ...[
-                            _IndicatorText(configuration!.maxValueIndicatorTextBuilder!.call(value)),
-                          ],
+    final child = SizedBox(
+      width: configuration?.width,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (configuration?.label != null && configuration?.label.isNotEmpty == true) const _Label(),
+          Padding(
+            padding: sliderPadding,
+            child: ValueListenableBuilder(
+              valueListenable: _controller,
+              builder: (_, double value, _) {
+                return Column(
+                  children: [
+                    Row(
+                      children: [
+                        if (configuration?.currentValueIndicatorTextBuilder != null) ...[
+                          _IndicatorText(configuration!.currentValueIndicatorTextBuilder!(value)),
                         ],
-                      ),
-                      if (configuration?.footerIndicatorTextBuilder != null) ...[
-                        _IndicatorText(configuration!.footerIndicatorTextBuilder!.call(value), isFooter: true),
+                        Expanded(
+                          child: Slider(
+                            value: value,
+                            min: _controller.minValue,
+                            max: _controller.maxValue,
+                            onChanged: _controller.setValue,
+                          ),
+                        ),
+                        if (configuration?.maxValueIndicatorTextBuilder != null) ...[
+                          _IndicatorText(configuration!.maxValueIndicatorTextBuilder!.call(value)),
+                        ],
                       ],
+                    ),
+                    if (configuration?.footerIndicatorTextBuilder != null) ...[
+                      _IndicatorText(configuration!.footerIndicatorTextBuilder!.call(value), isFooter: true),
                     ],
-                  );
-                },
-              ),
+                  ],
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+
+    return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

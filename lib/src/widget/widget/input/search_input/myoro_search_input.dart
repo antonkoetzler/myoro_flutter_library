@@ -8,7 +8,7 @@ part '_widget/_search_button.dart';
 part '_widget/_search_section.dart';
 
 /// Search input. Shows a dropdown after making a search request.
-class MyoroSearchInput<T> extends MyoroStatefulWidget<MyoroSearchInputViewModel> {
+class MyoroSearchInput<T> extends MyoroStatefulWidget {
   /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;
 
@@ -19,9 +19,13 @@ class MyoroSearchInput<T> extends MyoroStatefulWidget<MyoroSearchInputViewModel>
 }
 
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
+  bool get _createViewModel => widget.createViewModel;
+
   MyoroSearchInputViewModel? _localViewModel;
   MyoroSearchInputViewModel get _viewModel {
-    return widget.injectedViewModel ?? (_localViewModel ??= MyoroSearchInputViewModel(widget.configuration));
+    return _createViewModel
+        ? (_localViewModel ??= MyoroSearchInputViewModel(widget.configuration))
+        : context.read<MyoroSearchInputViewModel>();
   }
 
   @override
@@ -32,12 +36,11 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return InheritedProvider.value(
-      value: _viewModel,
-      child: ValueListenableBuilder(
-        valueListenable: _viewModel.itemsRequestController,
-        builder: (_, _, _) => const _Body(),
-      ),
+    final child = ValueListenableBuilder(
+      valueListenable: _viewModel.itemsRequestController,
+      builder: (_, _, _) => const _Body(),
     );
+
+    return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

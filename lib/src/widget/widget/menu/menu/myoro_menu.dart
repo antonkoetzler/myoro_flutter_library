@@ -11,20 +11,24 @@ part '_widget/_search_bar.dart';
 
 /// A menu widget that should not be used in production code, it is used
 /// within [MyoroSingularDropdown], [MyoroMultiDropdown] & [MyoroInput].
-class MyoroMenu<T> extends MyoroStatefulWidget<MyoroMenuViewModel<T>> {
+class MyoroMenu<T> extends MyoroStatefulWidget {
   /// Configuration options.
   final MyoroMenuConfiguration<T> configuration;
 
-  const MyoroMenu({super.key, required this.configuration});
+  const MyoroMenu({super.key, super.createViewModel, required this.configuration});
 
   @override
   State<MyoroMenu<T>> createState() => _MyoroMenuState<T>();
 }
 
 final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
+  bool get _createViewModel => widget.createViewModel;
+
   MyoroMenuViewModel<T>? _localViewModel;
   MyoroMenuViewModel<T> get _viewModel {
-    return widget.injectedViewModel ?? (_localViewModel ??= MyoroMenuViewModel<T>(widget.configuration));
+    return _createViewModel
+        ? (_localViewModel ??= MyoroMenuViewModel<T>(widget.configuration))
+        : context.read<MyoroMenuViewModel<T>>();
   }
 
   @override
@@ -35,7 +39,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 
@@ -44,28 +48,27 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final configuration = _viewModel.state.configuration;
 
-    return InheritedProvider.value(
-      value: _viewModel,
-      child: Container(
-        decoration: BoxDecoration(
-          color: configuration.backgroundColor ?? themeExtension.backgroundColor,
-          border: configuration.border,
-          borderRadius: configuration.borderRadius ?? themeExtension.borderRadius,
-        ),
-        constraints: _viewModel.state.configuration.constraints,
-        child: ValueListenableBuilder(
-          valueListenable: _viewModel.state.itemsRequestController,
-          builder: (_, MyoroRequest<Set<T>> state, _) {
-            _viewModel.jumpToBottomPreviousPosition();
-            return switch (state.status) {
-              MyoroRequestEnum.idle => const _Loader(),
-              MyoroRequestEnum.loading => const _Loader(),
-              MyoroRequestEnum.success => _Menu<T>(),
-              MyoroRequestEnum.error => const _DialogText('Error getting items.'),
-            };
-          },
-        ),
+    final child = Container(
+      decoration: BoxDecoration(
+        color: configuration.backgroundColor ?? themeExtension.backgroundColor,
+        border: configuration.border,
+        borderRadius: configuration.borderRadius ?? themeExtension.borderRadius,
+      ),
+      constraints: _viewModel.state.configuration.constraints,
+      child: ValueListenableBuilder(
+        valueListenable: _viewModel.state.itemsRequestController,
+        builder: (_, MyoroRequest<Set<T>> state, _) {
+          _viewModel.jumpToBottomPreviousPosition();
+          return switch (state.status) {
+            MyoroRequestEnum.idle => const _Loader(),
+            MyoroRequestEnum.loading => const _Loader(),
+            MyoroRequestEnum.success => _Menu<T>(),
+            MyoroRequestEnum.error => const _DialogText('Error getting items.'),
+          };
+        },
       ),
     );
+
+    return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

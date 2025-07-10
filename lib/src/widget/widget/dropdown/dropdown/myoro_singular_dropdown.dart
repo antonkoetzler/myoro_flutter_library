@@ -1,8 +1,8 @@
 part of 'myoro_dropdown.dart';
 
 /// Singular item dropdown.
-class MyoroSingularDropdown<T> extends MyoroStatefulWidget<MyoroSingularDropdownViewModel<T>> {
-  const MyoroSingularDropdown({super.key, super.injectedViewModel, this.controller, required this.configuration});
+class MyoroSingularDropdown<T> extends MyoroStatefulWidget {
+  const MyoroSingularDropdown({super.key, super.createViewModel, this.controller, required this.configuration});
 
   /// Controller.
   final MyoroSingularDropdownController<T>? controller;
@@ -15,15 +15,18 @@ class MyoroSingularDropdown<T> extends MyoroStatefulWidget<MyoroSingularDropdown
 }
 
 final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T>> {
+  bool get _createViewModel => widget.createViewModel;
+
   MyoroSingularDropdownController<T>? _localController;
   MyoroSingularDropdownController<T> get _controller {
     return widget.controller ?? (_localController ??= MyoroSingularDropdownController());
   }
 
-  MyoroSingularDropdownViewModel? _localViewModel;
-  MyoroSingularDropdownViewModel get _viewModel {
-    return widget.injectedViewModel ??
-        (_localViewModel ??= MyoroSingularDropdownViewModel(widget.configuration, _controller));
+  MyoroSingularDropdownViewModel<T>? _localViewModel;
+  MyoroSingularDropdownViewModel<T> get _viewModel {
+    return _createViewModel
+        ? (_localViewModel ??= MyoroSingularDropdownViewModel(widget.configuration, _controller))
+        : context.read<MyoroSingularDropdownViewModel<T>>();
   }
 
   @override
@@ -42,5 +45,5 @@ final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T
   }
 
   @override
-  Widget build(BuildContext context) => _Dropdown(_viewModel);
+  Widget build(BuildContext context) => _Dropdown(_createViewModel, _viewModel);
 }

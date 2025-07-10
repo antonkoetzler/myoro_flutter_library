@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_checkbox.dart';
 part '_widget/_clear_text_button.dart';
@@ -12,7 +13,7 @@ part '_widget/_wrapper.dart';
 /// [MyoroInput] also serves as a base input for creating other inputs in the commons folder.
 /// A [MyoroInputConfiguration] is passed to every other input [Widget] in the commons folder.
 /// This means that [MyoroInput] should always be completely compatible with the other inputs.
-class MyoroInput extends MyoroStatefulWidget<MyoroInputViewModel> {
+class MyoroInput extends MyoroStatefulWidget {
   /// Configuration of the input.
   final MyoroInputConfiguration configuration;
 
@@ -24,7 +25,12 @@ class MyoroInput extends MyoroStatefulWidget<MyoroInputViewModel> {
   /// Constructor for a generic input in which you may load any type of formatter or have no formatters.
   ///
   /// The named constructors of [MyoroInput] provide pre-inserted formatters.
-  const MyoroInput({super.key, this.configuration = const MyoroInputConfiguration(), this.formatter});
+  const MyoroInput({
+    super.key,
+    super.createViewModel,
+    this.configuration = const MyoroInputConfiguration(),
+    this.formatter,
+  });
 
   /// An input that only accepts numbers (integers or decimal).
   factory MyoroInput.number({
@@ -46,10 +52,13 @@ class MyoroInput extends MyoroStatefulWidget<MyoroInputViewModel> {
 }
 
 final class _MyoroInputState extends State<MyoroInput> {
+  bool get _createViewModel => widget.createViewModel;
+
   MyoroInputViewModel? _localViewModel;
   MyoroInputViewModel get _viewModel {
-    return widget.injectedViewModel ??
-        (_localViewModel ??= (MyoroInputViewModel(widget.configuration, widget.formatter)));
+    return _createViewModel
+        ? (_localViewModel ??= (MyoroInputViewModel(widget.configuration, widget.formatter)))
+        : context.read<MyoroInputViewModel>();
   }
 
   @override

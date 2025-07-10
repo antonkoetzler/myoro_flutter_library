@@ -9,8 +9,8 @@ part '_widget/_item_title_button.dart';
 part '_widget/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
-class MyoroAccordion extends MyoroStatefulWidget<MyoroAccordionViewModel> {
-  const MyoroAccordion({super.key, super.injectedViewModel, required this.controller});
+class MyoroAccordion extends MyoroStatefulWidget {
+  const MyoroAccordion({super.key, super.createViewModel, required this.controller});
 
   /// Controller
   final MyoroAccordionController controller;
@@ -20,9 +20,13 @@ class MyoroAccordion extends MyoroStatefulWidget<MyoroAccordionViewModel> {
 }
 
 final class _MyoroAccordionState extends State<MyoroAccordion> {
+  bool get _createViewModel => widget.createViewModel;
+
   MyoroAccordionViewModel? _localViewModel;
   MyoroAccordionViewModel get _viewModel {
-    return widget.injectedViewModel ?? (_localViewModel ??= MyoroAccordionViewModel(widget.controller));
+    return _createViewModel
+        ? (_localViewModel ??= MyoroAccordionViewModel(widget.controller))
+        : context.read<MyoroAccordionViewModel>();
   }
 
   @override
@@ -43,25 +47,24 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
     final controller = state.controller;
     final scrollController = _viewModel.state.scrollController;
 
-    return InheritedProvider.value(
-      value: _viewModel,
-      child: ListenableBuilder(
-        listenable: state,
-        builder: (_, _) {
-          return Scrollbar(
+    final child = ListenableBuilder(
+      listenable: state,
+      builder: (_, _) {
+        return Scrollbar(
+          controller: scrollController,
+          thumbVisibility: true,
+          child: ListView.builder(
             controller: scrollController,
-            thumbVisibility: true,
-            child: ListView.builder(
-              controller: scrollController,
-              itemCount: controller.items.length,
-              itemBuilder: (_, index) {
-                final items = controller.items;
-                return _Item(item: items.elementAt(index), isLastItem: index == items.length - 1);
-              },
-            ),
-          );
-        },
-      ),
+            itemCount: controller.items.length,
+            itemBuilder: (_, index) {
+              final items = controller.items;
+              return _Item(item: items.elementAt(index), isLastItem: index == items.length - 1);
+            },
+          ),
+        );
+      },
     );
+
+    return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

@@ -1,19 +1,21 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_side_title.dart';
 
 /// A bar graph.
-class MyoroBarGraph extends MyoroStatelessWidget<MyoroBarGraphViewModel> {
+class MyoroBarGraph extends MyoroStatelessWidget {
   /// Configuration.
   final MyoroBarGraphConfiguration configuration;
 
-  const MyoroBarGraph({super.key, super.injectedViewModel, required this.configuration});
+  const MyoroBarGraph({super.key, super.createViewModel, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = injectedViewModel ?? MyoroBarGraphViewModel(configuration: configuration);
+    final viewModel =
+        createViewModel ? MyoroBarGraphViewModel(configuration: configuration) : context.read<MyoroBarGraphViewModel>();
 
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
