@@ -10,7 +10,7 @@ part '_widget/_message.dart';
 /// snack bar that will be displayed within a [MyoroSnackBarContainer].
 ///
 /// Two main "modes": Providing a [Widget] or a simple [String] message for the content.
-class MyoroSnackBar extends StatelessWidget {
+class MyoroSnackBar extends MyoroStatelessWidget {
   /// Configuration.
   final MyoroSnackBarConfiguration configuration;
 

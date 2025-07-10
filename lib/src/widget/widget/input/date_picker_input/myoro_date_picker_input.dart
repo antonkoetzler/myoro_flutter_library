@@ -7,7 +7,7 @@ part '_widget/_input.dart';
 part '_widget/_trigger_area.dart';
 
 /// Date picker input (click date, no typy typy).
-class MyoroDatePickerInput extends StatefulWidget {
+class MyoroDatePickerInput extends MyoroStatefulWidget {
   /// [MyoroInput] configuration.
   final MyoroInputConfiguration configuration;
 

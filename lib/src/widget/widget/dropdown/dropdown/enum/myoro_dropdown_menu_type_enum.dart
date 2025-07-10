@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 /// Enum encapsulating all available [Widget] composition types of
@@ -11,6 +12,10 @@ enum MyoroDropdownMenuTypeEnum {
 
   /// Displays a modal of the options.
   modal;
+
+  factory MyoroDropdownMenuTypeEnum.fake() {
+    return values[faker.randomGenerator.integer(values.length)];
+  }
 
   bool get isOverlay => (this == overlay);
   bool get isExpanding => (this == expanding);

@@ -11,7 +11,7 @@ part '_widget/_search_bar.dart';
 
 /// A menu widget that should not be used in production code, it is used
 /// within [MyoroSingularDropdown], [MyoroMultiDropdown] & [MyoroInput].
-class MyoroMenu<T> extends StatefulWidget {
+class MyoroMenu<T> extends MyoroStatefulWidget<MyoroMenuViewModel<T>> {
   /// Configuration options.
   final MyoroMenuConfiguration<T> configuration;
 
@@ -22,8 +22,10 @@ class MyoroMenu<T> extends StatefulWidget {
 }
 
 final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
-  late final _viewModel = MyoroMenuViewModel<T>(configuration: widget.configuration);
-  MyoroMenuConfiguration<T> get _configuration => _viewModel.state.configuration;
+  MyoroMenuViewModel<T>? _localViewModel;
+  MyoroMenuViewModel<T> get _viewModel {
+    return widget.injectedViewModel ?? (_localViewModel ??= MyoroMenuViewModel<T>(widget.configuration));
+  }
 
   @override
   void initState() {
@@ -40,14 +42,15 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final configuration = _viewModel.state.configuration;
 
     return InheritedProvider.value(
       value: _viewModel,
       child: Container(
         decoration: BoxDecoration(
-          color: _configuration.backgroundColor ?? themeExtension.backgroundColor,
-          border: _configuration.border,
-          borderRadius: _configuration.borderRadius ?? themeExtension.borderRadius,
+          color: configuration.backgroundColor ?? themeExtension.backgroundColor,
+          border: configuration.border,
+          borderRadius: configuration.borderRadius ?? themeExtension.borderRadius,
         ),
         constraints: _viewModel.state.configuration.constraints,
         child: ValueListenableBuilder(

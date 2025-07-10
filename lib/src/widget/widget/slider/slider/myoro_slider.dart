@@ -6,7 +6,7 @@ part '_widget/_indicator_text.dart';
 part '_widget/_label.dart';
 
 /// A horizontal slider.
-class MyoroSlider extends StatefulWidget {
+class MyoroSlider extends MyoroStatefulWidget<MyoroSliderViewModel> {
   /// Controller.
   final MyoroSliderController? controller;
 
@@ -20,13 +20,19 @@ class MyoroSlider extends StatefulWidget {
 }
 
 final class _MyoroSliderState extends State<MyoroSlider> {
-  late final _viewModel = MyoroSliderViewModel(widget.configuration, widget.controller ?? MyoroSliderController());
-  MyoroSliderConfiguration? get _configuration => _viewModel.configuration;
-  MyoroSliderController get _controller => _viewModel.controller;
+  MyoroSliderController? _localController;
+  MyoroSliderController get _controller {
+    return widget.controller ?? (_localController ??= MyoroSliderController());
+  }
+
+  MyoroSliderViewModel? _localViewModel;
+  MyoroSliderViewModel get _viewModel {
+    return widget.injectedViewModel ?? (_localViewModel ??= MyoroSliderViewModel(widget.configuration, _controller));
+  }
 
   @override
   void dispose() {
-    if (widget.controller == null) _viewModel.controller.dispose();
+    _localController?.dispose();
     super.dispose();
   }
 
@@ -34,16 +40,17 @@ final class _MyoroSliderState extends State<MyoroSlider> {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
     final sliderPadding = themeExtension.sliderPadding;
+    final configuration = _viewModel.configuration;
 
     return InheritedProvider.value(
       value: _viewModel,
       child: SizedBox(
-        width: _configuration?.width,
+        width: configuration?.width,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (_configuration?.label != null && _configuration?.label.isNotEmpty == true) const _Label(),
+            if (configuration?.label != null && configuration?.label.isNotEmpty == true) const _Label(),
             Padding(
               padding: sliderPadding,
               child: ValueListenableBuilder(
@@ -53,8 +60,8 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                     children: [
                       Row(
                         children: [
-                          if (_configuration?.currentValueIndicatorTextBuilder != null) ...[
-                            _IndicatorText(_configuration!.currentValueIndicatorTextBuilder!(value)),
+                          if (configuration?.currentValueIndicatorTextBuilder != null) ...[
+                            _IndicatorText(configuration!.currentValueIndicatorTextBuilder!(value)),
                           ],
                           Expanded(
                             child: Slider(
@@ -64,13 +71,13 @@ final class _MyoroSliderState extends State<MyoroSlider> {
                               onChanged: _controller.setValue,
                             ),
                           ),
-                          if (_configuration?.maxValueIndicatorTextBuilder != null) ...[
-                            _IndicatorText(_configuration!.maxValueIndicatorTextBuilder!.call(value)),
+                          if (configuration?.maxValueIndicatorTextBuilder != null) ...[
+                            _IndicatorText(configuration!.maxValueIndicatorTextBuilder!.call(value)),
                           ],
                         ],
                       ),
-                      if (_configuration?.footerIndicatorTextBuilder != null) ...[
-                        _IndicatorText(_configuration!.footerIndicatorTextBuilder!.call(value), isFooter: true),
+                      if (configuration?.footerIndicatorTextBuilder != null) ...[
+                        _IndicatorText(configuration!.footerIndicatorTextBuilder!.call(value), isFooter: true),
                       ],
                     ],
                   );

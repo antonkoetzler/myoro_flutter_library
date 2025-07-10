@@ -1,4 +1,4 @@
-export 'models/exports.dart';
+export 'model/exports.dart';
 export 'myoro_resize_divider.dart';
-export 'theme_extensions/exports.dart';
-export 'types/exports.dart';
+export 'theme_extension/exports.dart';
+export 'type/exports.dart';

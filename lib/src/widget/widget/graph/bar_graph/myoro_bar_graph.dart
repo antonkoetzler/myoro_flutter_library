@@ -5,15 +5,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part '_widget/_side_title.dart';
 
 /// A bar graph.
-class MyoroBarGraph extends StatelessWidget {
+class MyoroBarGraph extends MyoroStatelessWidget<MyoroBarGraphViewModel> {
   /// Configuration.
   final MyoroBarGraphConfiguration configuration;
 
-  const MyoroBarGraph({super.key, required this.configuration});
+  const MyoroBarGraph({super.key, super.injectedViewModel, required this.configuration});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = MyoroBarGraphViewModel(configuration: configuration);
+    final viewModel = injectedViewModel ?? MyoroBarGraphViewModel(configuration: configuration);
 
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 

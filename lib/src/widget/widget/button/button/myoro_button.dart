@@ -8,24 +8,26 @@ part '_widget/_button.dart';
 ///
 /// Used when a very custom button is needed, otherwise MFL
 /// provides other buttons that are built with [MyoroButton].
-class MyoroButton extends StatefulWidget {
+class MyoroButton extends MyoroStatefulWidget<MyoroButtonViewModel> {
   /// Configuration of the [MyoroButton].
   final MyoroButtonConfiguration? configuration;
 
   /// [Widget] builder of the [MyoroButton].
   final MyoroButtonBuilder builder;
 
-  const MyoroButton({super.key, this.configuration, required this.builder});
+  const MyoroButton({super.key, super.injectedViewModel, this.configuration, required this.builder});
 
   @override
   State<MyoroButton> createState() => _MyoroButtonState();
 }
 
 final class _MyoroButtonState extends State<MyoroButton> {
-  MyoroButtonConfiguration? get _configuration => widget.configuration;
   MyoroButtonBuilder get _builder => widget.builder;
 
-  late final _viewModel = MyoroButtonViewModel(_configuration);
+  MyoroButtonViewModel? _localViewModel;
+  MyoroButtonViewModel get _viewModel {
+    return widget.injectedViewModel ?? (_localViewModel ??= MyoroButtonViewModel(widget.configuration));
+  }
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
@@ -35,7 +37,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 

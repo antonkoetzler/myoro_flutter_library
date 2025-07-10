@@ -3,7 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroSearchInput].
 class MyoroSearchInputViewModel<T> {
-  MyoroSearchInputViewModel({required this.configuration});
+  MyoroSearchInputViewModel(this.configuration);
 
   /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;

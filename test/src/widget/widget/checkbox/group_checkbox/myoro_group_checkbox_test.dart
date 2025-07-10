@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   final checkboxes = {
-    for (int i = 0; i < faker.randomGenerator.integer(10); i++) i.toString(): faker.randomGenerator.boolean(),
+    for (int i = 0; i < faker.randomGenerator.integer(10, min: 1); i++) i.toString(): faker.randomGenerator.boolean(),
   };
   final controller = MyoroGroupCheckboxController(checkboxes: checkboxes);
 

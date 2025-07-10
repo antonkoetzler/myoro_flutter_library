@@ -5,7 +5,7 @@ part '_widget/_card.dart';
 part '_widget/_title.dart';
 
 /// Base card.
-class MyoroCard extends StatelessWidget {
+class MyoroCard extends MyoroStatelessWidget {
   /// Configuration.
   final MyoroCardConfiguration configuration;
 

@@ -45,6 +45,16 @@ T myoroFake<T>() {
     return BorderRadius.circular(faker.randomGenerator.decimal(scale: 50)) as T;
   }
 
+  if (T == BoxBorder) {
+    return BoxBorder.all(
+          color: myoroFake<Color>(),
+          width: faker.randomGenerator.decimal(scale: 10),
+          style: myoroFake<BorderStyle>(),
+          strokeAlign: faker.randomGenerator.decimal(scale: 5),
+        )
+        as T;
+  }
+
   if (T == BoxConstraints) {
     final maxWidth = faker.randomGenerator.decimal(scale: 500);
     final maxHeight = faker.randomGenerator.decimal(scale: 500);

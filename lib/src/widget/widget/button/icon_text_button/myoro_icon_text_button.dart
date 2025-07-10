@@ -6,7 +6,7 @@ part '_widget/_icon.dart';
 part '_widget/_text.dart';
 
 /// Button that holds an icon and/or text.
-class MyoroIconTextButton extends StatelessWidget {
+class MyoroIconTextButton extends MyoroStatelessWidget {
   /// Configuration of the [MyoroIconTextButton].
   final MyoroIconTextButtonConfiguration configuration;
 

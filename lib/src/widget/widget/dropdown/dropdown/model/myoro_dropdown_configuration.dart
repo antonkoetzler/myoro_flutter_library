@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Builder of the [String] displayed when a [T] item is selected.
-typedef MyoroDropdownConfigurationSelectedItemBuilder<T> = String Function(T item);
-
 /// Abstract model that encapsulates options for [MyoroDropdown].
 ///
 /// [MyoroSingularDropdown] and [MyoroMultiDropdown] have their separation
@@ -15,6 +12,15 @@ abstract class MyoroDropdownConfiguration<T> {
   static const allowItemClearingDefaultValue = true;
   static const selectedItemTextAlignDefaultValue = MyoroInputConfiguration.textAlignDefaultValue;
   static const menuMaxHeightDefaultValue = double.infinity;
+
+  const MyoroDropdownConfiguration({
+    required this.label,
+    required this.menuTypeEnum,
+    required this.allowItemClearing,
+    required this.selectedItemTextAlign,
+    required this.menuConfiguration,
+    required this.selectedItemBuilder,
+  });
 
   /// Label of the dropdown.
   ///
@@ -35,15 +41,6 @@ abstract class MyoroDropdownConfiguration<T> {
 
   /// Builder of the [String] displayed when a [T] item is selected.
   final MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder;
-
-  const MyoroDropdownConfiguration({
-    required this.label,
-    required this.menuTypeEnum,
-    required this.allowItemClearing,
-    required this.selectedItemTextAlign,
-    required this.menuConfiguration,
-    required this.selectedItemBuilder,
-  });
 
   /// Returns if the checkbox callback is provided.
   bool get checkboxOnChangedNotNull;

@@ -19,7 +19,7 @@ part '_widget/_title.dart';
 ///   }
 /// }
 /// ```
-class MyoroModal extends StatelessWidget {
+class MyoroModal extends MyoroStatelessWidget {
   /// Configuration of the modal.
   final MyoroModalConfiguration configuration;
 

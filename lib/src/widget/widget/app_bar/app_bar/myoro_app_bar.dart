@@ -16,7 +16,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///   }
 /// }
 /// ```
-class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MyoroAppBar extends MyoroStatelessWidget implements PreferredSizeWidget {
   /// Configuration.
   final MyoroAppBarConfiguration configuration;
 

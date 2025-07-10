@@ -7,7 +7,7 @@ part '_widget/_footer_buttons.dart';
 part '_widget/_message.dart';
 
 /// A simple yes/no dialog modal.
-class MyoroDialogModal extends StatelessWidget {
+class MyoroDialogModal extends MyoroStatelessWidget {
   static Future<void> show(BuildContext context, {required MyoroDialogModalConfiguration configuration}) async {
     await MyoroModal.show(context, configuration: configuration, child: MyoroDialogModal._(configuration));
   }

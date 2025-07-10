@@ -12,15 +12,6 @@ part 'myoro_dropdown_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension>
     with _$MyoroDropdownThemeExtensionMixin {
-  /// Standard spacing between items.
-  final double spacing;
-
-  /// [Border] of the [MyoroMenu].
-  final BoxBorder menuBorder;
-
-  /// [BorderRadius] of the [MyoroMenu].
-  final BorderRadius menuBorderRadius;
-
   const MyoroDropdownThemeExtension({required this.spacing, required this.menuBorder, required this.menuBorderRadius});
 
   MyoroDropdownThemeExtension.fake()
@@ -38,6 +29,15 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
       menuBorderRadius: const BorderRadius.only(bottomLeft: radius, bottomRight: radius),
     );
   }
+
+  /// Standard spacing between items.
+  final double spacing;
+
+  /// [Border] of the [MyoroMenu].
+  final BoxBorder menuBorder;
+
+  /// [BorderRadius] of the [MyoroMenu].
+  final BorderRadius menuBorderRadius;
 
   @override
   MyoroDropdownThemeExtension lerp(covariant ThemeExtension<MyoroDropdownThemeExtension>? other, double t) {

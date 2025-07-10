@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// View model of [MyoroMenu].
 class MyoroMenuViewModel<T> {
-  MyoroMenuViewModel({required MyoroMenuConfiguration<T> configuration}) {
+  MyoroMenuViewModel(MyoroMenuConfiguration<T> configuration) {
     state = MyoroMenuViewModelState(configuration);
     if (configuration.onEndReachedRequest != null) {
       state.scrollController.addListener(scrollControllerListener);

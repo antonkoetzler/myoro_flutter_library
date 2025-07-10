@@ -6,7 +6,7 @@ part '_widget/_carousel.dart';
 part '_widget/_traversal_button.dart';
 
 /// Slider carousel.
-class MyoroCarousel extends StatefulWidget {
+class MyoroCarousel extends MyoroStatefulWidget {
   const MyoroCarousel({super.key, this.controller, required this.configuration});
 
   final CarouselSliderController? controller;

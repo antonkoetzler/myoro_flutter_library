@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part '_widgets/_resize_button.dart';
+part '_widget/_resize_button.dart';
 
 /// A divider with a click/tap + drag resize functionality.
-class MyoroResizeDivider extends StatelessWidget {
+class MyoroResizeDivider extends MyoroStatelessWidget {
   /// Configuration.
   final MyoroResizeDividerConfiguration configuration;
 

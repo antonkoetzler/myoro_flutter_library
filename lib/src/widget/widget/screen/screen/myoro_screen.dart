@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 part '_widget/_drawer.dart';
 
 /// Root widget of any screen widget.
-class MyoroScreen extends StatefulWidget {
+class MyoroScreen extends MyoroStatefulWidget {
   /// Configuration.
   final MyoroScreenConfiguration configuration;
 

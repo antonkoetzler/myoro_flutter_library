@@ -3,18 +3,21 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 /// A checkbox that can have a label on the right side of it.
-class MyoroCheckbox extends StatefulWidget {
+class MyoroCheckbox extends MyoroStatefulWidget<MyoroCheckboxViewModel> {
+  const MyoroCheckbox({super.key, super.injectedViewModel, required this.configuration});
+
   /// Configuration.
   final MyoroCheckboxConfiguration configuration;
-
-  const MyoroCheckbox({super.key, required this.configuration});
 
   @override
   State<MyoroCheckbox> createState() => _MyoroCheckboxState();
 }
 
 final class _MyoroCheckboxState extends State<MyoroCheckbox> {
-  late final _viewModel = MyoroCheckboxViewModel(widget.configuration);
+  MyoroCheckboxViewModel? _localViewModel;
+  MyoroCheckboxViewModel get _viewModel {
+    return widget.injectedViewModel ?? (_localViewModel ??= MyoroCheckboxViewModel(widget.configuration));
+  }
 
   @override
   void didUpdateWidget(covariant MyoroCheckbox oldWidget) {
@@ -26,7 +29,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A group of [MyoroRadio]s.
-class MyoroGroupRadio extends StatefulWidget {
+class MyoroGroupRadio extends MyoroStatefulWidget {
   /// Configuration.
   final MyoroGroupRadioConfiguration configuration;
 

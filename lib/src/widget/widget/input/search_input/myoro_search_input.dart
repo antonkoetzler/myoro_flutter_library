@@ -8,7 +8,7 @@ part '_widget/_search_button.dart';
 part '_widget/_search_section.dart';
 
 /// Search input. Shows a dropdown after making a search request.
-class MyoroSearchInput<T> extends StatefulWidget {
+class MyoroSearchInput<T> extends MyoroStatefulWidget<MyoroSearchInputViewModel> {
   /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;
 
@@ -19,7 +19,10 @@ class MyoroSearchInput<T> extends StatefulWidget {
 }
 
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
-  late final _viewModel = MyoroSearchInputViewModel(configuration: widget.configuration);
+  MyoroSearchInputViewModel? _localViewModel;
+  MyoroSearchInputViewModel get _viewModel {
+    return widget.injectedViewModel ?? (_localViewModel ??= MyoroSearchInputViewModel(widget.configuration));
+  }
 
   @override
   void dispose() {

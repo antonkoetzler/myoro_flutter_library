@@ -2,12 +2,11 @@ part of '../myoro_drawer.dart';
 
 /// Close button of [MyoroDrawer].
 final class _CloseButton extends StatelessWidget {
-  final bool _isEndDrawer;
-
-  const _CloseButton(this._isEndDrawer);
+  const _CloseButton();
 
   @override
   Widget build(BuildContext context) {
+    final drawerController = context.read<MyoroDrawerController>();
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return MyoroIconTextButton(
@@ -15,7 +14,10 @@ final class _CloseButton extends StatelessWidget {
         borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
         onTapUp: (_) => context.closeDrawer(),
         iconConfiguration: MyoroIconConfiguration(
-          icon: !_isEndDrawer ? themeExtension.closeButtonDrawerIcon : themeExtension.closeButtonEndDrawerIcon,
+          icon:
+              !drawerController.isEndDrawer
+                  ? themeExtension.closeButtonDrawerIcon
+                  : themeExtension.closeButtonEndDrawerIcon,
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A group of [MyoroCheckbox]s.
-class MyoroGroupCheckbox extends StatelessWidget {
+class MyoroGroupCheckbox extends MyoroStatelessWidget {
   /// Controller.
   final MyoroGroupCheckboxController controller;
 

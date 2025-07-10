@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part '_widget/_pie_graph.dart';
 
 /// A pie (or donut if specified) chart.
-class MyoroPieGraph extends StatelessWidget {
+class MyoroPieGraph extends MyoroStatelessWidget<MyoroPieGraphViewModel> {
   /// Configuration.
   final MyoroPieGraphConfiguration configuration;
 
@@ -13,7 +13,7 @@ class MyoroPieGraph extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = MyoroPieGraphViewModel(configuration: configuration);
+    final viewModel = injectedViewModel ?? MyoroPieGraphViewModel(configuration: configuration);
 
     return Stack(
       alignment: Alignment.center,

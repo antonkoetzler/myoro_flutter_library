@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Root widget of your [App] widget in main.dart.
-class MyoroApp extends StatelessWidget {
+class MyoroApp extends MyoroStatelessWidget {
   final MyoroAppConfiguration configuration;
 
   const MyoroApp({super.key, required this.configuration});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Singular radio(box) [Widget].
-class MyoroRadio extends StatefulWidget {
+class MyoroRadio extends MyoroStatefulWidget {
   /// Configuration.
   final MyoroRadioConfiguration configuration;
 

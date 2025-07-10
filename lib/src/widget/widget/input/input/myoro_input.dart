@@ -12,7 +12,7 @@ part '_widget/_wrapper.dart';
 /// [MyoroInput] also serves as a base input for creating other inputs in the commons folder.
 /// A [MyoroInputConfiguration] is passed to every other input [Widget] in the commons folder.
 /// This means that [MyoroInput] should always be completely compatible with the other inputs.
-class MyoroInput extends StatefulWidget {
+class MyoroInput extends MyoroStatefulWidget<MyoroInputViewModel> {
   /// Configuration of the input.
   final MyoroInputConfiguration configuration;
 
@@ -46,20 +46,21 @@ class MyoroInput extends StatefulWidget {
 }
 
 final class _MyoroInputState extends State<MyoroInput> {
-  MyoroInputConfiguration get _configuration => widget.configuration;
-  MyoroInputFormatter? get _formatter => widget.formatter;
-
-  late final _viewModel = MyoroInputViewModel(_configuration, _formatter);
+  MyoroInputViewModel? _localViewModel;
+  MyoroInputViewModel get _viewModel {
+    return widget.injectedViewModel ??
+        (_localViewModel ??= (MyoroInputViewModel(widget.configuration, widget.formatter)));
+  }
 
   @override
   void didUpdateWidget(covariant MyoroInput oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _viewModel.state.configuration = _configuration;
+    _viewModel.state.configuration = widget.configuration;
   }
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 

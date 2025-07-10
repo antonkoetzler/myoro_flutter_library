@@ -8,12 +8,6 @@ part 'myoro_multi_dropdown_configuration.g.dart';
 @myoroModel
 class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
     with _$MyoroMultiDropdownConfigurationMixin<T> {
-  /// Function executed when the selected item changes.
-  final MyoroMultiDropdownConfigurationOnChanged<T>? onChanged;
-
-  /// Function executed when the enabled/disabled checkbox is pressed.
-  final MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
-
   const MyoroMultiDropdownConfiguration._({
     required super.label,
     required super.menuTypeEnum,
@@ -46,6 +40,12 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
       checkboxOnChanged: checkboxOnChanged,
     );
   }
+
+  /// Function executed when the selected item changes.
+  final MyoroMultiDropdownConfigurationOnChanged<T>? onChanged;
+
+  /// Function executed when the enabled/disabled checkbox is pressed.
+  final MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
 
   @override
   bool get checkboxOnChangedNotNull => checkboxOnChanged != null;

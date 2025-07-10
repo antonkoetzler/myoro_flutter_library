@@ -9,8 +9,8 @@ part '_widget/_item_title_button.dart';
 part '_widget/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
-class MyoroAccordion extends StatefulWidget {
-  const MyoroAccordion({super.key, required this.controller});
+class MyoroAccordion extends MyoroStatefulWidget<MyoroAccordionViewModel> {
+  const MyoroAccordion({super.key, super.injectedViewModel, required this.controller});
 
   /// Controller
   final MyoroAccordionController controller;
@@ -20,19 +20,20 @@ class MyoroAccordion extends StatefulWidget {
 }
 
 final class _MyoroAccordionState extends State<MyoroAccordion> {
-  MyoroAccordionController get _controller => widget.controller;
-
-  late final _viewModel = MyoroAccordionViewModel(_controller);
+  MyoroAccordionViewModel? _localViewModel;
+  MyoroAccordionViewModel get _viewModel {
+    return widget.injectedViewModel ?? (_localViewModel ??= MyoroAccordionViewModel(widget.controller));
+  }
 
   @override
   void didUpdateWidget(covariant MyoroAccordion oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _viewModel.state.controller = _controller;
+    _viewModel.state.controller = widget.controller;
   }
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 

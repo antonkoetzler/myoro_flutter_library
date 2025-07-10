@@ -1,14 +1,14 @@
 part of 'myoro_dropdown.dart';
 
 /// Multi item dropdown.
-final class MyoroMultiDropdown<T> extends StatefulWidget {
+final class MyoroMultiDropdown<T> extends MyoroStatefulWidget<MyoroMultiDropdownViewModel<T>> {
+  const MyoroMultiDropdown({super.key, super.injectedViewModel, this.controller, required this.configuration});
+
   /// Controller.
   final MyoroMultiDropdownController<T>? controller;
 
   /// Configuration.
   final MyoroMultiDropdownConfiguration<T> configuration;
-
-  const MyoroMultiDropdown({super.key, this.controller, required this.configuration});
 
   @override
   State<MyoroMultiDropdown<T>> createState() => _MyoroMultiDropdownState<T>();
@@ -20,22 +20,25 @@ final class _MyoroMultiDropdownState<T> extends State<MyoroMultiDropdown<T>> {
     return widget.controller ?? (_localController ??= MyoroMultiDropdownController());
   }
 
-  MyoroMultiDropdownConfiguration<T> get _configuration => widget.configuration;
-
-  late final _viewModel = MyoroMultiDropdownViewModel(_configuration, _controller);
+  // late final _viewModel = MyoroMultiDropdownViewModel(_configuration, _controller);
+  MyoroMultiDropdownViewModel? _localViewModel;
+  MyoroMultiDropdownViewModel get _viewModel {
+    return widget.injectedViewModel ??
+        (_localViewModel ??= MyoroMultiDropdownViewModel(widget.configuration, _controller));
+  }
 
   @override
   void didUpdateWidget(covariant MyoroMultiDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (_configuration != _viewModel.state.configuration) {
-      _viewModel.state.configuration = _configuration;
+    if (widget.configuration != _viewModel.state.configuration) {
+      _viewModel.state.configuration = widget.configuration;
     }
   }
 
   @override
   void dispose() {
     _localController?.dispose();
-    _viewModel.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 

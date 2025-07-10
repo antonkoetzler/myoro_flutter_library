@@ -15,7 +15,7 @@ part '_widget/_rows_section.dart';
 ///
 /// Fairly simple implementation as tables are usually very business logic specific.
 /// Thus, extensibility is more important than being feature rich in this senario.
-class MyoroTable<T> extends StatefulWidget {
+class MyoroTable<T> extends MyoroStatefulWidget {
   /// Controller of the [MyoroTable].
   final MyoroTableController<T>? controller;
 

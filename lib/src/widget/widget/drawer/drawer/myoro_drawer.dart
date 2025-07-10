@@ -8,7 +8,7 @@ part '_widget/_drawer.dart';
 part '_widget/_title.dart';
 
 /// Base drawer.
-class MyoroDrawer extends StatelessWidget {
+class MyoroDrawer extends MyoroStatelessWidget {
   /// Configuration.
   final MyoroDrawerConfiguration configuration;
 
@@ -24,9 +24,9 @@ class MyoroDrawer extends StatelessWidget {
         Row(
           mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
           children: [
-            if (configuration.showCloseButton && isEndDrawer) _CloseButton(isEndDrawer),
+            if (configuration.showCloseButton && isEndDrawer) const _CloseButton(),
             _Drawer(configuration),
-            if (configuration.showCloseButton && !isEndDrawer) _CloseButton(isEndDrawer),
+            if (configuration.showCloseButton && !isEndDrawer) const _CloseButton(),
           ],
         ),
       ],

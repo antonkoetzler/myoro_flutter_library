@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part '_widget/_form.dart';
 
 /// Base form widget. Should always be used for any type of form content.
-class MyoroForm<T> extends StatefulWidget {
+class MyoroForm<T> extends MyoroStatefulWidget {
   /// Controller in the case that the controller needs to be used outside of [builder]'s scope.
   final MyoroFormController<T>? controller;
 
