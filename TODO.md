@@ -11,3 +11,4 @@
 2. (**IN PROGRESS**) chore: Implement tests and reach 100% code coverage
 3. chore: Redo deploying and GitHub Actions
 4. feature: Publish to pub.dev
+5. Make states of view model part directives of a view model
