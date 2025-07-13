@@ -56,9 +56,9 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   MyoroInputViewModel? _localViewModel;
   MyoroInputViewModel get _viewModel {
-    return _createViewModel
-        ? (_localViewModel ??= (MyoroInputViewModel(widget.configuration, widget.formatter)))
-        : context.read<MyoroInputViewModel>();
+    final viewModel =
+        _createViewModel ? (_localViewModel ??= (MyoroInputViewModel())) : context.read<MyoroInputViewModel>();
+    return viewModel..initialize(widget.configuration, widget.formatter);
   }
 
   @override

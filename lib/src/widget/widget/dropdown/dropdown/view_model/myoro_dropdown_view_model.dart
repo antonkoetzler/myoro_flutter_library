@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_dropdown_view_model_state.dart';
+
 /// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
 abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>> {
-  MyoroDropdownViewModel(C configuration, this._controller) : _state = MyoroDropdownViewModelState(configuration) {
+  void initialize(C configuration, MyoroDropdownController<T> controller) {
+    _state ??= MyoroDropdownState(configuration);
+    _controller = controller;
     if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
     controller.enabledController.addListener(enabledNotifierListener);
     controller.selectedItemsController.addListener(selectedItemsControllerListener);
     if (controller.selectedItems.isNotEmpty) _formatSelectedItems();
   }
 
-  final MyoroDropdownViewModelState<T, C> _state;
-  MyoroDropdownViewModelState<T, C> get state => _state;
+  /// State.
+  MyoroDropdownState<T, C>? _state;
 
-  final MyoroDropdownController<T> _controller;
-  MyoroDropdownController<T> get controller => _controller;
+  /// [_state] getter.
+  MyoroDropdownState<T, C> get state {
+    assert(_state != null, '[MyoroDropdownState<$T, $C>.state]: [_state] has not been set yet.');
+    return _state!;
+  }
+
+  /// Controller.
+  MyoroDropdownController<T>? _controller;
+
+  /// [_controller] getter.
+  MyoroDropdownController<T> get controller {
+    assert(_controller != null, '[MyoroDropdownController<$T, $C>.controller]: [_controller] has not been set yet.');
+    return _controller!;
+  }
+
+  /// [_controller] setter.
+  set controller(MyoroDropdownController<T> controller) {
+    _controller = controller;
+  }
 
   /// Dispose function.
   void dispose() {
@@ -30,8 +51,8 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
 
     return switch (state.configuration.menuTypeEnum) {
       MyoroDropdownMenuTypeEnum.overlay => toggleOverlayMenu(),
-      MyoroDropdownMenuTypeEnum.expanding => _state.showingMenu = !_state.showingMenu,
-      MyoroDropdownMenuTypeEnum.modal => _state.showingMenu = !_state.showingMenu,
+      MyoroDropdownMenuTypeEnum.expanding => state.showingMenu = !state.showingMenu,
+      MyoroDropdownMenuTypeEnum.modal => state.showingMenu = !state.showingMenu,
     };
   }
 
@@ -84,8 +105,8 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
     state.inputController.text = stringBuffer.toString();
   }
 
-  /// Listener of [MyoroDropdownViewModelState.overlayMenuController].
+  /// Listener of [MyoroDropdownState.overlayMenuController].
   void _overlayMenuControllerListener() {
-    _state.showingMenu = _state.overlayMenuController.isShowing;
+    state.showingMenu = state.overlayMenuController.isShowing;
   }
 }

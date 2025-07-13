@@ -1,10 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_checkbox_state.dart';
 
 /// Controller of [MyoroCheckbox].
 class MyoroCheckboxViewModel {
-  MyoroCheckboxViewModel(MyoroCheckboxConfiguration configuration) : state = MyoroCheckboxViewModelState(configuration);
+  /// State.
+  final _state = MyoroCheckboxState();
 
-  final MyoroCheckboxViewModelState state;
+  /// [_state] getter.
+  MyoroCheckboxState get state => _state;
 
   /// Dispose function.
   void dispose() {

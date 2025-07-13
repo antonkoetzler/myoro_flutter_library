@@ -24,9 +24,11 @@ final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T
 
   MyoroSingularDropdownViewModel<T>? _localViewModel;
   MyoroSingularDropdownViewModel<T> get _viewModel {
-    return _createViewModel
-        ? (_localViewModel ??= MyoroSingularDropdownViewModel(widget.configuration, _controller))
-        : context.read<MyoroSingularDropdownViewModel<T>>();
+    final viewModel =
+        _createViewModel
+            ? (_localViewModel ??= MyoroSingularDropdownViewModel())
+            : context.read<MyoroSingularDropdownViewModel<T>>();
+    return viewModel..initialize(widget.configuration, _controller);
   }
 
   @override

@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_button_view_model.dart';
 
 /// State of [MyoroButtonController].
 class MyoroButtonState {
-  MyoroButtonState(this._configuration);
-
   /// Configuration.
   MyoroButtonConfiguration? _configuration;
+
+  /// [_configuration] getter.
   MyoroButtonConfiguration? get configuration => _configuration;
+
+  /// [_configuration] setter.
   set configuration(MyoroButtonConfiguration? configuration) {
     if (_configuration == configuration) return;
     _configuration = configuration;
@@ -15,7 +16,11 @@ class MyoroButtonState {
 
   /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
   final _tapStatusController = ValueNotifier(MyoroTapStatusEnum.idle);
+
+  /// [_tapStatusController] getter.
   ValueNotifier<MyoroTapStatusEnum> get tapStatusController => _tapStatusController;
+
+  /// [_tapStatusController]'s [MyoroTapStatusEnum] getter.
   MyoroTapStatusEnum get tapStatus => _tapStatusController.value;
 
   /// Dispose function.

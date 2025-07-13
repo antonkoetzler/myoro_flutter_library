@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_button_state.dart';
+
 /// View model of [MyoroButton].
 class MyoroButtonViewModel {
-  MyoroButtonViewModel(MyoroButtonConfiguration? configuration) : _state = MyoroButtonState(configuration);
+  /// State.
+  final _state = MyoroButtonState();
 
-  final MyoroButtonState _state;
+  /// [_state] getter.
   MyoroButtonState get state => _state;
 
   /// Dispose function.

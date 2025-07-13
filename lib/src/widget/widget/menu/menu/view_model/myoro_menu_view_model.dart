@@ -3,16 +3,26 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_menu_state.dart';
+
 /// View model of [MyoroMenu].
 class MyoroMenuViewModel<T> {
-  MyoroMenuViewModel(MyoroMenuConfiguration<T> configuration) {
-    state = MyoroMenuViewModelState(configuration);
+  /// State.
+  MyoroMenuState<T>? _state;
+
+  /// [_state] getter.
+  MyoroMenuState<T> get state {
+    assert(_state != null, '[MyoroMenuState<$T>.state]: [_state] has not been set yet.');
+    return _state!;
+  }
+
+  /// Initialization function.
+  void initialize(MyoroMenuConfiguration<T> configuration) {
+    _state = MyoroMenuState(configuration);
     if (configuration.onEndReachedRequest != null) {
       state.scrollController.addListener(scrollControllerListener);
     }
   }
-
-  late final MyoroMenuViewModelState<T> state;
 
   /// Dispose function.
   void dispose() {

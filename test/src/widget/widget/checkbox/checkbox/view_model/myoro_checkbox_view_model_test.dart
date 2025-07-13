@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   bool onChangedExecuted = false;
   final configuration = MyoroCheckboxConfiguration.fake().copyWith(onChanged: (_) => onChangedExecuted = true);
-  final viewModel = MyoroCheckboxViewModel(configuration);
+  final viewModel = MyoroCheckboxViewModel()..state.configuration = configuration;
 
   tearDownAll(viewModel.dispose);
 

@@ -12,10 +12,10 @@ part '_widget/_search_bar.dart';
 /// A menu widget that should not be used in production code, it is used
 /// within [MyoroSingularDropdown], [MyoroMultiDropdown] & [MyoroInput].
 class MyoroMenu<T> extends MyoroStatefulWidget {
+  const MyoroMenu({super.key, super.createViewModel, required this.configuration});
+
   /// Configuration options.
   final MyoroMenuConfiguration<T> configuration;
-
-  const MyoroMenu({super.key, super.createViewModel, required this.configuration});
 
   @override
   State<MyoroMenu<T>> createState() => _MyoroMenuState<T>();
@@ -26,9 +26,9 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
 
   MyoroMenuViewModel<T>? _localViewModel;
   MyoroMenuViewModel<T> get _viewModel {
-    return _createViewModel
-        ? (_localViewModel ??= MyoroMenuViewModel<T>(widget.configuration))
-        : context.read<MyoroMenuViewModel<T>>();
+    final viewModel =
+        _createViewModel ? (_localViewModel ??= MyoroMenuViewModel<T>()) : context.read<MyoroMenuViewModel<T>>();
+    return viewModel..initialize(widget.configuration);
   }
 
   @override

@@ -18,9 +18,9 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   MyoroCheckboxViewModel? _localViewModel;
   MyoroCheckboxViewModel get _viewModel {
-    return _createViewModel
-        ? (_localViewModel ??= MyoroCheckboxViewModel(widget.configuration))
-        : context.read<MyoroCheckboxViewModel>();
+    final viewModel =
+        _createViewModel ? (_localViewModel ??= MyoroCheckboxViewModel()) : context.read<MyoroCheckboxViewModel>();
+    return viewModel..state.configuration = widget.configuration;
   }
 
   @override

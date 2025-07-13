@@ -1,7 +1,7 @@
 part of 'myoro_dropdown.dart';
 
 /// Multi item dropdown.
-final class MyoroMultiDropdown<T> extends MyoroStatefulWidget {
+class MyoroMultiDropdown<T> extends MyoroStatefulWidget {
   const MyoroMultiDropdown({super.key, super.createViewModel, this.controller, required this.configuration});
 
   /// Controller.
@@ -24,9 +24,11 @@ final class _MyoroMultiDropdownState<T> extends State<MyoroMultiDropdown<T>> {
 
   MyoroMultiDropdownViewModel<T>? _localViewModel;
   MyoroMultiDropdownViewModel<T> get _viewModel {
-    return _createViewModel
-        ? (_localViewModel ??= MyoroMultiDropdownViewModel(widget.configuration, _controller))
-        : context.read<MyoroMultiDropdownViewModel<T>>();
+    final viewModel =
+        _createViewModel
+            ? (_localViewModel ??= MyoroMultiDropdownViewModel())
+            : context.read<MyoroMultiDropdownViewModel<T>>();
+    return viewModel..initialize(widget.configuration, _controller);
   }
 
   @override

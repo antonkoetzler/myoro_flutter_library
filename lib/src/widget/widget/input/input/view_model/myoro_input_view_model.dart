@@ -1,13 +1,24 @@
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_input_state.dart';
 
 /// View model of [MyoroInput].
 class MyoroInputViewModel {
-  MyoroInputViewModel(MyoroInputConfiguration configuration, [MyoroInputFormatter? formatter]) {
-    state = MyoroInputViewModelState(configuration, formatter);
-    state.inputController.addListener(inputControllerListener);
+  /// State.
+  MyoroInputState? _state;
+
+  /// [_state] getter.
+  MyoroInputState get state {
+    assert(_state != null, '[MyoroInputState.state]: [_state] has not been set yet.');
+    return _state!;
   }
 
-  late final MyoroInputViewModelState state;
+  /// Initialization function.
+  void initialize(MyoroInputConfiguration configuration, [MyoroInputFormatter? formatter]) {
+    _state = MyoroInputState(configuration, formatter);
+    state.inputController.addListener(inputControllerListener);
+  }
 
   /// Dispose function.
   void dispose() {

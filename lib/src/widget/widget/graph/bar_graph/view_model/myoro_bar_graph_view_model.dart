@@ -4,16 +4,28 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroBarGraph].
 class MyoroBarGraphViewModel {
-  MyoroBarGraphViewModel({required MyoroBarGraphConfiguration configuration})
-    : state = MyoroBarGraphViewModelState(configuration);
+  /// Configuration.
+  MyoroBarGraphConfiguration? _configuration;
 
-  final MyoroBarGraphViewModelState state;
+  /// [_configuration] getter.
+  MyoroBarGraphConfiguration get configuration {
+    assert(
+      _configuration != null,
+      '[MyoroBarGraphConfiguration.configuration]: [_configuration] has not been set yet.',
+    );
+    return _configuration!;
+  }
+
+  /// [_configuration] setter.
+  set configuration(MyoroBarGraphConfiguration configuration) {
+    _configuration = configuration;
+  }
 
   /// Builds the bar rods.
   List<BarChartGroupData> getFormattedItems(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
-    return state.configuration.items
+    return configuration.items
         .map<BarChartGroupData>(
           (MyoroBarGraphGroup group) => BarChartGroupData(
             x: group.x,
@@ -34,6 +46,6 @@ class MyoroBarGraphViewModel {
           ),
         )
         .toList()
-      ..sort((a, b) => !state.configuration.sorted ? a.x : a.x.compareTo(b.x));
+      ..sort((a, b) => !configuration.sorted ? a.x : a.x.compareTo(b.x));
   }
 }

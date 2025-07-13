@@ -1,13 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_accordion_view_model.dart';
 
 /// State of [MyoroAccordionViewModel].
 class MyoroAccordionState extends ChangeNotifier {
-  MyoroAccordionState(this._controller);
-
   /// Controller
-  MyoroAccordionController _controller;
-  MyoroAccordionController get controller => _controller;
+  MyoroAccordionController? _controller;
+
+  /// [_controller] getter.
+  MyoroAccordionController get controller {
+    assert(_controller != null, '[MyoroAccordionController.controller]: [controller] hasen\'t been set yet.');
+    return _controller!;
+  }
+
+  /// [_controller] setter.
   set controller(MyoroAccordionController controller) {
     if (_controller == controller) return;
     _controller = controller;
@@ -16,6 +20,8 @@ class MyoroAccordionState extends ChangeNotifier {
 
   /// [ScrollController] of the [MyoroAccordion]'s [ListView].
   final _scrollController = ScrollController();
+
+  /// [_scrollController] getter.
   ScrollController get scrollController => _scrollController;
 
   /// Dispose function

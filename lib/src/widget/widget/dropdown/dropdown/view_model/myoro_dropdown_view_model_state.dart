@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_dropdown_view_model.dart';
 
 /// State class of [MyoroDropdownViewModel].
-class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
-  MyoroDropdownViewModelState(this.configuration);
+class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
+  MyoroDropdownState(this.configuration);
 
   /// Configuration.
   C configuration;
@@ -13,7 +12,7 @@ class MyoroDropdownViewModelState<T, C extends MyoroDropdownConfiguration<T>> {
   MyoroOverlayPortalController get overlayMenuController {
     assert(
       configuration.menuTypeEnum.isOverlay,
-      '[MyoroDropdownViewModelState<$T>]: Cannot use [overlayMenuController] if '
+      '[MyoroDropdownState<$T>]: Cannot use [overlayMenuController] if '
       '[configuration.menuType] isn\'t [MyoroDropdownMenuTypeEnum.overlay].',
     );
     return _overlayMenuController ??= MyoroOverlayPortalController();
