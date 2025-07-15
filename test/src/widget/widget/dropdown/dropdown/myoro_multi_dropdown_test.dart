@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
-YOU ARE HERE.
+YOU ARE HERE. TEST IS PASSING, NEED TO DO LINE COVEREAGE.
 
 void main() {
   final controller = MyoroMultiDropdownController<String>();
@@ -13,7 +13,7 @@ void main() {
   testWidgets('MyoroMultiDropdown', (tester) async {
     await tester.pumpWidget(
       MyoroWidgetTester(
-        child: InheritedProvider(
+        child: Provider(
           create: (_) => MyoroMultiDropdownViewModel<String>(),
           child: MyoroMultiDropdown<String>(
             createViewModel: false,

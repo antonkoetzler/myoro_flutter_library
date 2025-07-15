@@ -2,10 +2,7 @@ part of '../myoro_dropdown.dart';
 
 /// Merge point for both dropdowns where the shared logic begins.
 final class _Dropdown<T, C extends _C<T>> extends StatefulWidget {
-  const _Dropdown(this._createViewModel, this._viewModel);
-
-  /// If the view model was created locally.
-  final bool _createViewModel;
+  const _Dropdown(this._viewModel);
 
   /// View model.
   final MyoroDropdownViewModel<T, C> _viewModel;
@@ -15,7 +12,6 @@ final class _Dropdown<T, C extends _C<T>> extends StatefulWidget {
 }
 
 final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
-  bool get _createViewModel => widget._createViewModel;
   MyoroDropdownViewModel<T, C> get _viewModel => widget._viewModel;
 
   @override
@@ -40,40 +36,41 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
-    final child = RepaintBoundary(
-      child: ValueListenableBuilder(
-        valueListenable: _viewModel.state.inputSizeController,
-        builder: (_, Size? inputSize, _) {
-          return Row(
-            spacing: themeExtension.spacing,
-            crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
-            children: [
-              if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
-                SizedBox(height: inputSize?.height, child: _Checkbox<T, C>()),
-              ],
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Flexible(child: _Input<T, C>()),
-                    if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
-                      ValueListenableBuilder(
-                        valueListenable: _viewModel.state.showingMenuController,
-                        builder: (_, bool showBasicMenu, _) {
-                          return !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, C>());
-                        },
-                      ),
+    return Provider.value(
+      value: _viewModel,
+      child: RepaintBoundary(
+        child: ValueListenableBuilder(
+          valueListenable: _viewModel.state.inputSizeController,
+          builder: (_, Size? inputSize, _) {
+            return Row(
+              spacing: themeExtension.spacing,
+              crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+              children: [
+                if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
+                  SizedBox(height: inputSize?.height, child: _Checkbox<T, C>()),
+                ],
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(child: _Input<T, C>()),
+                      if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
+                        ValueListenableBuilder(
+                          valueListenable: _viewModel.state.showingMenuController,
+                          builder: (_, bool showBasicMenu, _) {
+                            return !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, C>());
+                          },
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
+              ],
+            );
+          },
+        ),
       ),
     );
-
-    return _createViewModel ? Provider.value(value: _viewModel, child: child) : child;
   }
 
   void _addShowingMenuControllerListener() {

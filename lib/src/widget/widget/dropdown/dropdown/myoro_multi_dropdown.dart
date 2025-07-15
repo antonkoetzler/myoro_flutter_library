@@ -47,5 +47,5 @@ final class _MyoroMultiDropdownState<T> extends State<MyoroMultiDropdown<T>> {
   }
 
   @override
-  Widget build(BuildContext context) => _Dropdown(_createViewModel, _viewModel);
+  Widget build(_) => _Dropdown(_viewModel);
 }
