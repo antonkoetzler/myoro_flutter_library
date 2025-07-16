@@ -11,7 +11,8 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
   final MyoroFormConfiguration<T>? configuration;
 
   /// [GlobalKey] of the [Form].
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> get formKey => _formKey;
 
   /// Starts the form process.
   @override

@@ -3,16 +3,17 @@ part of 'myoro_menu_view_model.dart';
 /// State of [MyoroMenuController].
 class MyoroMenuState<T> {
   MyoroMenuState(this.configuration) {
-    itemsRequestController.requestCallback = configuration.request;
+    _itemsRequestController.requestCallback = configuration.request;
   }
 
   /// Configuration.
   final MyoroMenuConfiguration<T> configuration;
 
   /// Loaded items in the [MyoroMenu].
-  final itemsRequestController = MyoroRequestController<Set<T>>();
-  MyoroRequest<Set<T>> get itemsRequest => itemsRequestController.value;
-  Set<T> get items => itemsRequestController.value.data ?? <T>{};
+  final _itemsRequestController = MyoroRequestController<Set<T>>();
+  MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
+  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestController.value;
+  Set<T> get items => _itemsRequestController.value.data ?? <T>{};
 
   /// Querired items in the [MyoroMenu].
   final queriedItemsController = ValueNotifier<Set<T>?>(null);
@@ -22,12 +23,13 @@ class MyoroMenuState<T> {
   double? onEndReachedPosition;
 
   /// To call [MyoroMenuConfiguration.onEndReachedRequest].
-  final scrollController = ScrollController();
+  final _scrollController = ScrollController();
+  ScrollController get scrollController => _scrollController;
 
   /// Dispose function.
   void dispose() {
-    itemsRequestController.dispose();
+    _itemsRequestController.dispose();
     queriedItemsController.dispose();
-    scrollController.dispose();
+    _scrollController.dispose();
   }
 }

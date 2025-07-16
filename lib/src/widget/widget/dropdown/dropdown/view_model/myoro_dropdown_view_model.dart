@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_dropdown_view_model_state.dart';
+part 'myoro_dropdown_state.dart';
 
 /// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
 abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>> {
   void initialize(C configuration, MyoroDropdownController<T> controller) {
-    _state ??= MyoroDropdownState(configuration);
+    final isInitialized = _state != null;
+    if (isInitialized) return;
+    _state = MyoroDropdownState(configuration);
     _controller = controller;
     if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
     controller.enabledController.addListener(enabledNotifierListener);

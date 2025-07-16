@@ -51,7 +51,8 @@ class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
 
   /// [LayerLink] of [CompositedTransformTarget] so we may position the
   /// [OverlayPortal] relative to the position of [_DropdownState] in [_Input].
-  final link = LayerLink();
+  final _link = LayerLink();
+  LayerLink get link => _link;
 
   /// Dispose function.
   void dispose() {

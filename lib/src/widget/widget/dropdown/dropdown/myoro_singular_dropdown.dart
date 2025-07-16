@@ -34,6 +34,11 @@ final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T
   @override
   void didUpdateWidget(covariant MyoroSingularDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (widget.controller != null) {
+      _localController?.dispose();
+      _localController = null;
+    }
+    _viewModel.controller = _controller;
     if (widget.configuration != _viewModel.state.configuration) {
       _viewModel.state.configuration = widget.configuration;
     }

@@ -18,6 +18,8 @@ class MyoroMenuViewModel<T> {
 
   /// Initialization function.
   void initialize(MyoroMenuConfiguration<T> configuration) {
+    final isInitialized = _state != null;
+    if (isInitialized) return;
     _state = MyoroMenuState(configuration);
     if (configuration.onEndReachedRequest != null) {
       state.scrollController.addListener(scrollControllerListener);

@@ -5,33 +5,35 @@ abstract class MyoroDropdownController<T> {
   static const enabledDefaultValue = true;
 
   MyoroDropdownController({bool enabled = enabledDefaultValue, Set<T>? initiallySelectedItems})
-    : enabledController = ValueNotifier(enabled),
-      selectedItemsController = ValueNotifier(initiallySelectedItems ?? <T>{});
+    : _enabledController = ValueNotifier(enabled),
+      _selectedItemsController = ValueNotifier(initiallySelectedItems ?? <T>{});
 
   /// [ValueNotifier] controlling if the [_Dropdown] is enabled or not.
-  final ValueNotifier<bool> enabledController;
-  bool get enabled => enabledController.value;
+  final ValueNotifier<bool> _enabledController;
+  ValueNotifier<bool> get enabledController => _enabledController;
+  bool get enabled => _enabledController.value;
 
   /// [ValueNotifier] controlling the selected items of the [_Dropdown].
-  final ValueNotifier<Set<T>> selectedItemsController;
-  Set<T> get selectedItems => Set.from(selectedItemsController.value);
+  final ValueNotifier<Set<T>> _selectedItemsController;
+  ValueNotifier<Set<T>> get selectedItemsController => _selectedItemsController;
+  Set<T> get selectedItems => Set.from(_selectedItemsController.value);
 
   /// Dispose function.
   void dispose() {
-    enabledController.dispose();
-    selectedItemsController.dispose();
+    _enabledController.dispose();
+    _selectedItemsController.dispose();
   }
 
   /// Toggles [_enabledNotifier].
   void toggleEnabled([bool? enabled]) {
-    enabledController.value = enabled ?? !this.enabled;
+    _enabledController.value = enabled ?? !this.enabled;
   }
 
   /// Selects/deselects an item.
   void toggleItem(T item);
 
-  /// Clears all items in [MyoroDropdownState.selectedItemsController].
+  /// Clears all items in [MyoroDropdownState._selectedItemsController].
   void clear() {
-    selectedItemsController.value = const {};
+    _selectedItemsController.value = const {};
   }
 }

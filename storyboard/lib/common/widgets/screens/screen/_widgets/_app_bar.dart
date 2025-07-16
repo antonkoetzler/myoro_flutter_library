@@ -22,7 +22,10 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 spacing: themeExtension.spacing / 2,
-                children: [if (viewModel.configuration.onPrevious != null) const _PreviousPageButton(), const _Title()],
+                children: [
+                  if (viewModel.configuration.onPrevious != null) const _PreviousPageButton(),
+                  const Expanded(child: _Title()),
+                ],
               ),
             ),
             Row(

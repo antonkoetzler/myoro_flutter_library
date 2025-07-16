@@ -12,7 +12,6 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
     final configuration = viewModel.state.configuration;
     final enabledController = viewModel.controller.enabledController;
     final selectedItemsController = viewModel.controller.selectedItemsController;
-    final selectedItems = selectedItemsController.value;
     final inputSizeController = viewModel.state.inputSizeController;
 
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
@@ -28,7 +27,7 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
             builder: (_, bool enabled, _) {
               return ValueListenableBuilder(
                 valueListenable: selectedItemsController,
-                builder: (_, _, _) {
+                builder: (_, selectedItems, _) {
                   return Row(
                     children: [
                       Expanded(child: _InputTriggerAreaRegion<T, C>(enabled)),

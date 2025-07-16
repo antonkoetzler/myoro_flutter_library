@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   final items = List.generate(faker.randomGenerator.integer(10, min: 1), (int index) => 'Item #$index').toSet();
-  final configuration = MyoroMultiDropdownConfiguration(
+  final configuration = MyoroSingularDropdownConfiguration(
     menuConfiguration: MyoroMenuConfiguration(
       request: () => items,
       itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
@@ -16,27 +16,27 @@ void main() {
 
   Future<void> testCase(
     WidgetTester tester,
-    MyoroMultiDropdownConfiguration<String> Function() configurationBuilder,
-    Function(MyoroMultiDropdownViewModel<String>) callback,
+    MyoroSingularDropdownConfiguration<String> Function() configurationBuilder,
+    Function(MyoroSingularDropdownViewModel<String>) callback,
   ) async {
-    final viewModel = MyoroMultiDropdownViewModel<String>();
+    final viewModel = MyoroSingularDropdownViewModel<String>();
 
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: Provider.value(
           value: viewModel,
-          child: MyoroMultiDropdown<String>(createViewModel: false, configuration: configurationBuilder()),
+          child: MyoroSingularDropdown<String>(createViewModel: false, configuration: configurationBuilder()),
         ),
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.byType(MyoroMultiDropdown<String>), findsOneWidget);
+    expect(find.byType(MyoroSingularDropdown<String>), findsOneWidget);
     await callback(viewModel);
 
     viewModel.dispose();
   }
 
-  testWidgets('Selecting an item in the MyoroMultiDropdown', (tester) async {
+  testWidgets('Selecting an item in the MyoroSingularDropdown', (tester) async {
     await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
       viewModel,
     ) async {
@@ -53,7 +53,7 @@ void main() {
     });
   });
 
-  testWidgets('MyoroMultiDropdown with [MyoroDropdownConfiguration.checkboxOnChanged] provided', (tester) async {
+  testWidgets('MyoroSingularDropdown with [MyoroDropdownConfiguration.checkboxOnChanged] provided', (tester) async {
     var onChangedExecutedQuantity = 0;
 
     await testCase(tester, () => configuration.copyWith(checkboxOnChanged: (_, _) => onChangedExecutedQuantity += 1), (
@@ -73,7 +73,7 @@ void main() {
   });
 
   testWidgets(
-    'MyoroMultiDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.overlay]',
+    'MyoroSingularDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.overlay]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.overlay), (
         viewModel,
@@ -86,7 +86,7 @@ void main() {
   );
 
   testWidgets(
-    'MyoroMultiDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.expanding]',
+    'MyoroSingularDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.expanding]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
         viewModel,
@@ -99,7 +99,7 @@ void main() {
   );
 
   testWidgets(
-    'MyoroMultiDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.modal]',
+    'MyoroSingularDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.modal]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.modal), (
         viewModel,
@@ -125,7 +125,7 @@ void main() {
     },
   );
 
-  testWidgets('MyoroMultiDrodpown with [MyoroDropdownConfiguration.allowItemClearing] as true', (tester) async {
+  testWidgets('MyoroSingularDrodpown with [MyoroDropdownConfiguration.allowItemClearing] as true', (tester) async {
     final items = List.generate(faker.randomGenerator.integer(10, min: 1), (index) => 'Item #$index').toSet();
 
     await testCase(
@@ -144,7 +144,9 @@ void main() {
     );
   });
 
-  testWidgets('Opening MyoroMultiDropdown menu, then closing it via _Menu\'s TapRegion.onTapOutside', (tester) async {
+  testWidgets('Opening MyoroSingularDropdown menu, then closing it via _Menu\'s TapRegion.onTapOutside', (
+    tester,
+  ) async {
     await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
       viewModel,
     ) async {
@@ -169,8 +171,8 @@ void main() {
     });
   });
 
-  testWidgets('MyoroMultiDropdown _Dropdowm.didUpdateWidget', (tester) async {
-    final controllerNotifier = ValueNotifier<MyoroMultiDropdownController<String>?>(null);
+  testWidgets('MyoroSingularDropdown _Dropdowm.didUpdateWidget', (tester) async {
+    final controllerNotifier = ValueNotifier<MyoroSingularDropdownController<String>?>(null);
     final configurationNotifier = ValueNotifier(configuration);
 
     await tester.pumpWidget(
@@ -181,7 +183,7 @@ void main() {
             return ValueListenableBuilder(
               valueListenable: configurationNotifier,
               builder: (_, configuration, _) {
-                return MyoroMultiDropdown<String>(controller: controller, configuration: configuration);
+                return MyoroSingularDropdown<String>(controller: controller, configuration: configuration);
               },
             );
           },
@@ -189,10 +191,10 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.byType(MyoroMultiDropdown<String>), findsOneWidget);
+    expect(find.byType(MyoroSingularDropdown<String>), findsOneWidget);
     final differentMenuTypeEnums = List.from(MyoroDropdownMenuTypeEnum.values)
       ..remove(configurationNotifier.value.menuTypeEnum);
-    controllerNotifier.value = MyoroMultiDropdownController<String>();
+    controllerNotifier.value = MyoroSingularDropdownController<String>();
     configurationNotifier.value = configurationNotifier.value.copyWith(
       menuTypeEnum: differentMenuTypeEnums[faker.randomGenerator.integer(differentMenuTypeEnums.length)],
     );
