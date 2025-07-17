@@ -2,39 +2,27 @@ part of '../myoro_date_picker_input.dart';
 
 /// Clickable area to launch the date picker modal.
 final class _TriggerArea extends StatelessWidget {
-  const _TriggerArea(this._controller);
-
-  final MyoroDatePickerInputController _controller;
-
-  void _openDatePicker(BuildContext context) async {
-    final DateTime? date = await showDatePicker(
-      context: context,
-      firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(const Duration(days: 500)),
-      builder: (_, Widget? child) => _DatePicker(child!),
-    );
-    if (date == null) return;
-    _controller.inputController.text = DateFormat('dd/MM/yyyy').format(date);
-  }
+  const _TriggerArea();
 
   @override
   Widget build(BuildContext context) {
-    final configuration = _controller.configuration;
-    final inputController = _controller.inputController;
+    final viewModel = context.read<MyoroDatePickerInputViewModel>();
+    final configuration = viewModel.state.configuration;
+    final inputController = viewModel.state.inputController;
 
     return ListenableBuilder(
       listenable: inputController,
       builder: (_, _) {
         return Padding(
           padding: EdgeInsets.only(
-            right: configuration.controller!.text.isNotEmpty && (configuration.showClearTextButton) ? 40 : 0,
+            right: (configuration.controller?.text.isNotEmpty ?? false) && (configuration.showClearTextButton) ? 40 : 0,
           ),
           child: InkWell(
             focusColor: MyoroColors.transparent,
             hoverColor: MyoroColors.transparent,
             splashColor: MyoroColors.transparent,
             highlightColor: MyoroColors.transparent,
-            onTap: () => _openDatePicker(context),
+            onTap: () => viewModel.openDatePicker(context, (child) => _DatePicker(child!)),
             child: MyoroLayoutBuilder(
               builder: (_, BoxConstraints constraints) {
                 return SizedBox(

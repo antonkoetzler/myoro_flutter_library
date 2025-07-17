@@ -4,11 +4,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// View model of [MyoroPieGraph].
 class MyoroPieGraphViewModel {
-  MyoroPieGraphViewModel({required MyoroPieGraphConfiguration configuration}) {
-    state = MyoroPieGraphViewModelState(configuration);
-  }
+  MyoroPieGraphViewModel({required MyoroPieGraphConfiguration configuration})
+    : state = MyoroPieGraphViewModelState(configuration);
 
-  late final MyoroPieGraphViewModelState state;
+  final MyoroPieGraphViewModelState state;
 
   /// Creates the sections of the [MyoroPieGraph].
   List<PieChartSectionData> createSections(BuildContext context) {

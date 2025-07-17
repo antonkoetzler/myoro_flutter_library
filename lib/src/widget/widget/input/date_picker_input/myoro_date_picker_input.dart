@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_date_picker.dart';
 part '_widget/_input.dart';
@@ -11,23 +11,31 @@ class MyoroDatePickerInput extends MyoroStatefulWidget {
   /// [MyoroInput] configuration.
   final MyoroInputConfiguration configuration;
 
-  const MyoroDatePickerInput({super.key, required this.configuration});
+  const MyoroDatePickerInput({super.key, super.createViewModel, required this.configuration});
 
   @override
   State<MyoroDatePickerInput> createState() => _MyoroDatePickerInputState();
 }
 
 final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
-  late final _controller = MyoroDatePickerInputController(configuration: widget.configuration);
+  bool get _createViewModel => widget.createViewModel;
+
+  MyoroDatePickerInputViewModel? _localViewModel;
+  MyoroDatePickerInputViewModel get _viewModel {
+    return _createViewModel
+        ? MyoroDatePickerInputViewModel(widget.configuration)
+        : context.read<MyoroDatePickerInputViewModel>();
+  }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [_Input(_controller), Positioned(child: _TriggerArea(_controller))]);
+    const child = Stack(children: [_Input(), Positioned(child: _TriggerArea())]);
+    return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

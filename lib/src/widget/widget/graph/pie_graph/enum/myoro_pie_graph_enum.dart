@@ -7,15 +7,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Donut = Space in the middle of the chart to place a title.
 enum MyoroPieGraphEnum {
   /// Pie graph.
-  pie('Pie'),
+  pie,
 
   /// Donut.
-  donut('Donut');
-
-  /// Name of the type of graph.
-  final String name;
-
-  const MyoroPieGraphEnum(this.name);
+  donut;
 
   factory MyoroPieGraphEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];

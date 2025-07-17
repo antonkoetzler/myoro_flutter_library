@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_date_picker_view_model.dart';
 
 /// State of [MyoroDatePickerInputController].
 class MyoroDatePickerInputState {

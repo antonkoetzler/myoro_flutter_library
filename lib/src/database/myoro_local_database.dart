@@ -45,13 +45,11 @@ class MyoroLocalDatabase {
     final formattedPath = join(path ?? (await getApplicationSupportDirectory()).path, '$fileName.db');
 
     // Opening database at [formattedPath] or creating a new database there.
-    if (cleanRun) deleteDatabase(formattedPath);
+    if (cleanRun) await deleteDatabase(formattedPath);
     _database = await openDatabase(formattedPath);
 
     // Table initialization
-    if (sql != null) {
-      _database!.execute(sql);
-    }
+    if (sql != null) await _database!.execute(sql);
   }
 
   /// Closes the database.

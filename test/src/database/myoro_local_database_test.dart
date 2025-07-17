@@ -255,7 +255,7 @@ void main() {
       await runTest(
         cleanRun: true,
         callback: (instance) async {
-          instance.executeSql(createDummyTableSql);
+          await instance.executeSql(createDummyTableSql);
           expect((await instance.rawSqlQuery(selectDummyTableQuery)).isEmpty, isFalse);
         },
       );

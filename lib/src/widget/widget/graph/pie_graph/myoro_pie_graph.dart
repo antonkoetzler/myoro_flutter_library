@@ -7,10 +7,10 @@ part '_widget/_pie_graph.dart';
 
 /// A pie (or donut if specified) chart.
 class MyoroPieGraph extends MyoroStatelessWidget {
+  const MyoroPieGraph({super.key, super.createViewModel, required this.configuration});
+
   /// Configuration.
   final MyoroPieGraphConfiguration configuration;
-
-  const MyoroPieGraph({super.key, super.createViewModel, required this.configuration});
 
   @override
   Widget build(BuildContext context) {

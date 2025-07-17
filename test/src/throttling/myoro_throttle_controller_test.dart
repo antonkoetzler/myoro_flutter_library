@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -9,16 +11,16 @@ void main() {
     void callback() => callCount++;
 
     // Should run.
-    throttle.throttle(callback);
+    unawaited(throttle.throttle(callback));
     expect(callCount, 1);
 
     // Shouldn't run, throttle duration still running.
-    throttle.throttle(callback);
+    unawaited(throttle.throttle(callback));
     expect(callCount, 1);
 
     // Should run after the duration is over.
     await Future.delayed(const Duration(milliseconds: 200));
-    throttle.throttle(callback);
+    unawaited(throttle.throttle(callback));
     expect(callCount, 2);
   });
 }

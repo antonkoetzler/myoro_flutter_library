@@ -12,17 +12,17 @@ part 'myoro_pie_graph_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension>
     with _$MyoroPieGraphThemeExtensionMixin {
-  /// Default color of an item.
-  final Color itemColor;
-
-  /// Default itemRadius (aka height) of an item.
-  final double itemRadius;
-
   const MyoroPieGraphThemeExtension({required this.itemColor, required this.itemRadius});
 
   MyoroPieGraphThemeExtension.fake() : itemColor = myoroFake<Color>(), itemRadius = faker.randomGenerator.decimal();
 
   MyoroPieGraphThemeExtension.builder(ColorScheme colorScheme) : itemColor = colorScheme.onPrimary, itemRadius = 200;
+
+  /// Default color of an item.
+  final Color itemColor;
+
+  /// Default itemRadius (aka height) of an item.
+  final double itemRadius;
 
   @override
   MyoroPieGraphThemeExtension lerp(covariant ThemeExtension<MyoroPieGraphThemeExtension>? other, double t) {

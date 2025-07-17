@@ -8,16 +8,6 @@ part 'myoro_pie_graph_configuration.g.dart';
 /// Configuration of [MyoroPieGraph].
 @myoroModel
 class MyoroPieGraphConfiguration with _$MyoroPieGraphConfigurationMixin {
-  /// Pie/donut enum.
-  final MyoroPieGraphEnum typeEnum;
-
-  /// If [typeEnum] is [MyoroPieGraphEnum.donut],
-  /// this will place a [Widget] inside of the graph.
-  final Widget? centerWidget;
-
-  /// Items of the graph.
-  final List<MyoroPieGraphItem> items;
-
   const MyoroPieGraphConfiguration({required this.typeEnum, this.centerWidget, required this.items})
     : assert(
         (typeEnum == MyoroPieGraphEnum.pie) ? centerWidget == null : true,
@@ -33,4 +23,14 @@ class MyoroPieGraphConfiguration with _$MyoroPieGraphConfigurationMixin {
       items: List.generate(faker.randomGenerator.integer(10), (_) => MyoroPieGraphItem.fake()),
     );
   }
+
+  /// Pie/donut enum.
+  final MyoroPieGraphEnum typeEnum;
+
+  /// If [typeEnum] is [MyoroPieGraphEnum.donut],
+  /// this will place a [Widget] inside of the graph.
+  final Widget? centerWidget;
+
+  /// Items of the graph.
+  final List<MyoroPieGraphItem> items;
 }

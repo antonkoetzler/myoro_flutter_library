@@ -7,10 +7,10 @@ part '_widget/_side_title.dart';
 
 /// A bar graph.
 class MyoroBarGraph extends MyoroStatelessWidget {
+  const MyoroBarGraph({super.key, super.createViewModel, required this.configuration});
+
   /// Configuration.
   final MyoroBarGraphConfiguration configuration;
-
-  const MyoroBarGraph({super.key, super.createViewModel, required this.configuration});
 
   @override
   Widget build(BuildContext context) {

@@ -27,7 +27,7 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
     final bool formKeyValidation = formKey.currentState?.validate() ?? true;
 
     if (validationErrorMessage != null || !formKeyValidation) {
-      value = request.createErrorState(!formKeyValidation ? 'Form not completed.' : validationErrorMessage!);
+      value = request.createErrorState(!formKeyValidation ? '' : validationErrorMessage!);
       return;
     }
 

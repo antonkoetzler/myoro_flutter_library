@@ -12,27 +12,6 @@ part 'myoro_bar_graph_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension>
     with _$MyoroBarGraphThemeExtensionMixin {
-  /// Border of the graph's content (the square holding the bars).
-  final Border border;
-
-  /// Default color of a bar.
-  final Color barColor;
-
-  /// Border radius of a bar.
-  final BorderRadius barBorderRadius;
-
-  /// Text style of [_SideTitle].
-  final TextStyle sideTitleTextStyle;
-
-  /// Interval of the [_SideTitle]s on an axis.
-  final double sideTitleInterval;
-
-  /// Width of a vertical (y axis) [_SideTitle].
-  final double verticalSideTitleReversedSize;
-
-  /// Height of a horizontal (x axis) [_SideTitle].
-  final double horizontalSideTitleReversedSize;
-
   const MyoroBarGraphThemeExtension({
     required this.border,
     required this.barColor,
@@ -60,6 +39,27 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
       sideTitleInterval = 0.2,
       verticalSideTitleReversedSize = 48,
       horizontalSideTitleReversedSize = 22;
+
+  /// Border of the graph's content (the square holding the bars).
+  final Border border;
+
+  /// Default color of a bar.
+  final Color barColor;
+
+  /// Border radius of a bar.
+  final BorderRadius barBorderRadius;
+
+  /// Text style of [_SideTitle].
+  final TextStyle sideTitleTextStyle;
+
+  /// Interval of the [_SideTitle]s on an axis.
+  final double sideTitleInterval;
+
+  /// Width of a vertical (y axis) [_SideTitle].
+  final double verticalSideTitleReversedSize;
+
+  /// Height of a horizontal (x axis) [_SideTitle].
+  final double horizontalSideTitleReversedSize;
 
   @override
   MyoroBarGraphThemeExtension lerp(covariant ThemeExtension<MyoroBarGraphThemeExtension>? other, double t) {
