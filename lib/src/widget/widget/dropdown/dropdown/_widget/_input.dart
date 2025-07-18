@@ -76,22 +76,26 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     final label = configuration.label;
     final allowItemClearing = configuration.allowItemClearing;
 
+    final inputConfiguration = MyoroInputConfiguration(
+      textAlign: selectedItemTextAlign,
+      label: label,
+      enabled: enabled,
+      readOnly: true,
+      showClearTextButton: allowItemClearing,
+      onCleared: controller.clear,
+      border: switch (menuTypeEnum) {
+        MyoroDropdownMenuTypeEnum.overlay => showingMenu ? menuActiveInputBorderRadius : null,
+        MyoroDropdownMenuTypeEnum.expanding => showingMenu ? menuActiveInputBorderRadius : null,
+        MyoroDropdownMenuTypeEnum.modal => null,
+      },
+      controller: inputController,
+    );
+
     return MyoroInput(
       key: inputKey,
-      configuration: MyoroInputConfiguration(
-        textAlign: selectedItemTextAlign,
-        label: label,
-        enabled: enabled,
-        readOnly: true,
-        showClearTextButton: allowItemClearing,
-        onCleared: controller.clear,
-        border: switch (menuTypeEnum) {
-          MyoroDropdownMenuTypeEnum.overlay => showingMenu ? menuActiveInputBorderRadius : null,
-          MyoroDropdownMenuTypeEnum.expanding => showingMenu ? menuActiveInputBorderRadius : null,
-          MyoroDropdownMenuTypeEnum.modal => null,
-        },
-        controller: inputController,
-      ),
+      // This copyWith is to disable the [BoxBorder] lerp animation when we need to alter the bottom corners of
+      // this [MyoroInput] when the dropdown is opened when menuTypeEnum is [MyoroDropdownMenuTypeEnum.expanding].
+      configuration: inputConfiguration.copyWith(inputKey: ValueKey(inputConfiguration.border)),
     );
   }
 

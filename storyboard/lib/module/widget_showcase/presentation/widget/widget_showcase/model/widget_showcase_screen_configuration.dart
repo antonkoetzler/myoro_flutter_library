@@ -6,6 +6,7 @@ import 'package:storyboard/storyboard.dart';
 part 'widget_showcase_screen_configuration.g.dart';
 
 /// Configuration model of [StoryboardScreen].
+@immutable
 @myoroModel
 final class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigurationMixin {
   static const widgetOptionsDefaultValue = <Widget>[];

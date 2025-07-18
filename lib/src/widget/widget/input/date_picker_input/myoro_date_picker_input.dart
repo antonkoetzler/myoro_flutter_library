@@ -8,10 +8,10 @@ part '_widget/_trigger_area.dart';
 
 /// Date picker input (click date, no typy typy).
 class MyoroDatePickerInput extends MyoroStatefulWidget {
-  /// [MyoroInput] configuration.
-  final MyoroInputConfiguration configuration;
-
   const MyoroDatePickerInput({super.key, super.createViewModel, required this.configuration});
+
+  /// Configuration.
+  final MyoroDatePickerInputConfiguration configuration;
 
   @override
   State<MyoroDatePickerInput> createState() => _MyoroDatePickerInputState();
@@ -35,7 +35,20 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
 
   @override
   Widget build(BuildContext context) {
-    const child = Stack(children: [_Input(), Positioned(child: _TriggerArea())]);
+    final state = _viewModel.state;
+    final configuration = state.configuration;
+    final checkboxOnChangedNotNull = configuration.checkboxOnChanged != null;
+    final suffixNotNull = configuration.suffix != null;
+    final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
+    final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
+
+    final child = Stack(
+      alignment:
+          checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
+              ? Alignment.center
+              : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
+      children: const [_Input(), Positioned(child: _TriggerArea())],
+    );
     return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

@@ -2,9 +2,9 @@ part of '../myoro_input.dart';
 
 /// Core input of [MyoroInput].
 final class _TextFormField extends StatelessWidget {
-  final MyoroInputViewModel _viewModel;
-
   const _TextFormField(this._viewModel);
+
+  final MyoroInputViewModel _viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ final class _TextFormField extends StatelessWidget {
     final inputController = state.inputController;
     final formatter = state.formatter;
     final enabled = state.enabled;
+    final inputKey = configuration.inputKey;
 
     return ColoredBox(
       color: themeExtension.primaryColor,
@@ -36,7 +37,7 @@ final class _TextFormField extends StatelessWidget {
         valueListenable: _viewModel.state.showClearTextButtonController,
         builder: (_, bool showClearTextButton, _) {
           return TextFormField(
-            key: ValueKey(border),
+            key: inputKey,
             // So the checkbox prefix may be clicked
             ignorePointers: false,
             enabled: enabled,

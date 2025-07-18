@@ -1,20 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'myoro_input_configuration.dart';
+part of 'myoro_date_picker_input_configuration.dart';
 
 // **************************************************************************
 // MyoroModelGenerator
 // **************************************************************************
 
-/// Apply this mixin to [MyoroInputConfiguration] once the code is generated.
+/// Apply this mixin to [MyoroDatePickerInputConfiguration] once the code is generated.
 ///
 /// ```dart
-/// class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {}
+/// class MyoroDatePickerInputConfiguration with _$MyoroDatePickerInputConfigurationMixin {}
 /// ```
-mixin _$MyoroInputConfigurationMixin {
-  MyoroInputConfiguration get self => this as MyoroInputConfiguration;
+mixin _$MyoroDatePickerInputConfigurationMixin {
+  MyoroDatePickerInputConfiguration get self =>
+      this as MyoroDatePickerInputConfiguration;
 
-  MyoroInputConfiguration copyWith({
+  MyoroDatePickerInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
     TextStyle? inputTextStyle,
@@ -52,7 +53,7 @@ mixin _$MyoroInputConfigurationMixin {
     TextEditingController? controller,
     bool controllerProvided = true,
   }) {
-    return MyoroInputConfiguration(
+    return MyoroDatePickerInputConfiguration(
       inputStyle: inputStyle ?? self.inputStyle,
       textAlign: textAlign ?? self.textAlign,
       inputTextStyle:
@@ -64,7 +65,6 @@ mixin _$MyoroInputConfigurationMixin {
           labelTextStyleProvided
               ? (labelTextStyle ?? self.labelTextStyle)
               : null,
-      placeholder: placeholder ?? self.placeholder,
       contentPadding:
           contentPaddingProvided
               ? (contentPadding ?? self.contentPadding)
@@ -72,8 +72,6 @@ mixin _$MyoroInputConfigurationMixin {
       border: borderProvided ? (border ?? self.border) : null,
       suffix: suffixProvided ? (suffix ?? self.suffix) : null,
       enabled: enabled ?? self.enabled,
-      readOnly: readOnly ?? self.readOnly,
-      autofocus: autofocus ?? self.autofocus,
       showClearTextButton: showClearTextButton ?? self.showClearTextButton,
       checkboxOnChanged:
           checkboxOnChangedProvided
@@ -86,17 +84,13 @@ mixin _$MyoroInputConfigurationMixin {
               : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
-      inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
-      checkboxKey:
-          checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
-      focusNode: focusNodeProvided ? (focusNode ?? self.focusNode) : null,
       controller: controllerProvided ? (controller ?? self.controller) : null,
     );
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroInputConfiguration &&
+    return other is MyoroDatePickerInputConfiguration &&
         other.runtimeType == runtimeType &&
         other.inputStyle == self.inputStyle &&
         other.textAlign == self.textAlign &&
@@ -152,7 +146,7 @@ mixin _$MyoroInputConfigurationMixin {
 
   @override
   String toString() =>
-      'MyoroInputConfiguration(\n'
+      'MyoroDatePickerInputConfiguration(\n'
       '  inputStyle: ${self.inputStyle},\n'
       '  textAlign: ${self.textAlign},\n'
       '  inputTextStyle: ${self.inputTextStyle},\n'

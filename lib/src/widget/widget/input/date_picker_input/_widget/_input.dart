@@ -7,6 +7,10 @@ final class _Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroDatePickerInputViewModel>();
-    return MyoroInput(configuration: viewModel.state.configuration);
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final inputKey = state.inputKey;
+    viewModel.getInputSize();
+    return MyoroInput(configuration: configuration.copyWith(inputKey: inputKey));
   }
 }

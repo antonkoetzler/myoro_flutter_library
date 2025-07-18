@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_input_configuration.g.dart';
 
 /// Model to load all of the configurable arguments of [MyoroInput].
+@immutable
 @myoroModel
 class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
@@ -36,34 +37,35 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.onFieldSubmitted,
     this.onChanged,
     this.onCleared,
+    this.inputKey,
+    this.checkboxKey,
     this.focusNode,
     this.controller,
   });
 
-  factory MyoroInputConfiguration.fake() {
-    return MyoroInputConfiguration(
-      inputStyle: MyoroInputStyleEnum.fake(),
-      textAlign: myoroFake<TextAlign>(),
-      inputTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      label: faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      placeholder: faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
-      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      border: myoroFake<InputBorder>(),
-      suffix: faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
-      enabled: faker.randomGenerator.boolean(),
-      readOnly: faker.randomGenerator.boolean(),
-      autofocus: faker.randomGenerator.boolean(),
-      showClearTextButton: faker.randomGenerator.boolean(),
-      checkboxOnChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
-      validation: faker.randomGenerator.boolean() ? ((_) => faker.randomGenerator.boolean() ? null : '') : null,
-      onFieldSubmitted: faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onCleared: faker.randomGenerator.boolean() ? (() {}) : null,
-      focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
-      controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
-    );
-  }
+  MyoroInputConfiguration.fake()
+    : inputStyle = MyoroInputStyleEnum.fake(),
+      textAlign = myoroFake<TextAlign>(),
+      inputTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      label = faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
+      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      placeholder = faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
+      contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      border = myoroFake<InputBorder>(),
+      suffix = faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
+      enabled = faker.randomGenerator.boolean(),
+      readOnly = faker.randomGenerator.boolean(),
+      autofocus = faker.randomGenerator.boolean(),
+      showClearTextButton = faker.randomGenerator.boolean(),
+      checkboxOnChanged = faker.randomGenerator.boolean() ? ((_, _) {}) : null,
+      validation = faker.randomGenerator.boolean() ? ((_) => faker.randomGenerator.boolean() ? null : '') : null,
+      onFieldSubmitted = faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onCleared = faker.randomGenerator.boolean() ? (() {}) : null,
+      inputKey = faker.randomGenerator.boolean() ? GlobalKey() : null,
+      checkboxKey = faker.randomGenerator.boolean() ? GlobalKey() : null,
+      focusNode = faker.randomGenerator.boolean() ? FocusNode() : null,
+      controller = faker.randomGenerator.boolean() ? TextEditingController() : null;
 
   /// Type of input.
   final MyoroInputStyleEnum inputStyle;
@@ -124,6 +126,12 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
 
   /// Function executed when [_ClearTextButton] is pressed.
   final VoidCallback? onCleared;
+
+  /// [Key] of the [TextFormField] for specific cases.
+  final Key? inputKey;
+
+  /// [Key] of the [MyoroCheckbox] for specific cases.
+  final Key? checkboxKey;
 
   /// [FocusNode] of the input to programmatically focus on it.
   final FocusNode? focusNode;
