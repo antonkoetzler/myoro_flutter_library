@@ -16,6 +16,8 @@ class MyoroInputViewModel {
 
   /// Initialization function.
   void initialize(MyoroInputConfiguration configuration, [MyoroInputFormatter? formatter]) {
+    final isInitialized = _state != null;
+    if (isInitialized) return;
     _state = MyoroInputState(configuration, formatter);
     state.inputController.addListener(inputControllerListener);
   }

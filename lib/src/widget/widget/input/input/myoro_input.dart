@@ -35,6 +35,7 @@ class MyoroInput extends MyoroStatefulWidget {
   /// An input that only accepts numbers (integers or decimal).
   factory MyoroInput.number({
     Key? key,
+    bool createViewModel = false,
     double min = 0,
     double? max,
     int decimalPlaces = 0,

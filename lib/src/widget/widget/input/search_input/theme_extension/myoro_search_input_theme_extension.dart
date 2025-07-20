@@ -12,15 +12,6 @@ part 'myoro_search_input_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThemeExtension>
     with _$MyoroSearchInputThemeExtensionMixin {
-  /// Spacing in between the [MyoroInput] & [_SearchSection].
-  final double spacing;
-
-  /// Icon of [_SearchButton].
-  final IconData searchButtonIcon;
-
-  /// Size of the [MyoroCircularLoader] in [_SearchButton].
-  final double searchButtonLoadingSize;
-
   const MyoroSearchInputThemeExtension({
     required this.spacing,
     required this.searchButtonIcon,
@@ -33,9 +24,19 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
       searchButtonLoadingSize = faker.randomGenerator.decimal();
 
   const MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
+    // TODO: Make these numbers constants
     : spacing = 10,
       searchButtonIcon = Icons.search,
       searchButtonLoadingSize = 20;
+
+  /// Spacing in between the [MyoroInput] & [_SearchSection].
+  final double spacing;
+
+  /// Icon of [_SearchButton].
+  final IconData searchButtonIcon;
+
+  /// Size of the [MyoroCircularLoader] in [_SearchButton].
+  final double searchButtonLoadingSize;
 
   @override
   MyoroSearchInputThemeExtension lerp(covariant ThemeExtension<MyoroSearchInputThemeExtension>? other, double t) {

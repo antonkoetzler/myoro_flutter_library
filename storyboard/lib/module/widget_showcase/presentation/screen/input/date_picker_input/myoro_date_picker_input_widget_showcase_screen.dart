@@ -13,12 +13,20 @@ final class MyoroDatePickerInputWidgetShowcaseScreen extends StatelessWidget {
   @override
   Widget build(_) {
     return InheritedProvider(
-      create: (_) => MyoroInputWidgetShowcaseScreenViewModel(),
-      child: const WidgetShowcaseScreen(
+      create: (_) => MyoroDatePickerInputWidgetShowcaseViewModel(),
+      child: WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDatePickerInputTitle,
-          widget: _Widget(),
-          widgetOptions: MyoroInputWidgetShowcaseScreen.options,
+          widget: const _Widget(),
+          widgetOptions:
+              MyoroInputWidgetShowcaseScreen.options.entries
+                  .where(
+                    (e) =>
+                        e.key != MyoroInputWidgetShowcaseScreen.placeholderOptionKey &&
+                        e.key != MyoroInputWidgetShowcaseScreen.readOnlyOptionKey,
+                  )
+                  .map((e) => e.value)
+                  .toList(),
         ),
       ),
     );

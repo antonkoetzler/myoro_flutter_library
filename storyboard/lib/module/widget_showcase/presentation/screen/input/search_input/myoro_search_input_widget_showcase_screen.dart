@@ -27,11 +27,14 @@ final class _MyoroSearchInputWidgetShowcaseScreenState extends State<MyoroSearch
         InheritedProvider(create: (_) => _viewModel),
         InheritedProvider(create: (_) => _viewModel.inputViewModel),
       ],
-      child: const WidgetShowcaseScreen(
+      child: WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroSearchInputTitle,
-          widget: _Widget(),
-          widgetOptions: [...MyoroSearchInputWidgetShowcaseScreen.options, ...MyoroInputWidgetShowcaseScreen.options],
+          widget: const _Widget(),
+          widgetOptions: [
+            ...MyoroSearchInputWidgetShowcaseScreen.options,
+            ...MyoroInputWidgetShowcaseScreen.options.values,
+          ],
         ),
       ),
     );

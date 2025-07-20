@@ -10,7 +10,7 @@ part 'myoro_date_picker_input_configuration.g.dart';
 @myoroModel
 final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     with _$MyoroDatePickerInputConfigurationMixin {
-  MyoroDatePickerInputConfiguration({
+  const MyoroDatePickerInputConfiguration({
     super.inputStyle,
     super.textAlign,
     super.inputTextStyle,
@@ -26,12 +26,10 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     super.onFieldSubmitted,
     super.onChanged,
     super.onCleared,
+    super.inputKey,
+    super.checkboxKey,
     super.controller,
-  }) : super(
-         placeholder: MyoroInputConfiguration.placeholderDefaultValue,
-         readOnly: MyoroInputConfiguration.readOnlyDefaultValue,
-         autofocus: MyoroInputConfiguration.autofocusDefaultValue,
-       );
+  }) : super(placeholder: MyoroInputConfiguration.placeholderDefaultValue, readOnly: true, autofocus: false);
 
   factory MyoroDatePickerInputConfiguration.fake() {
     return MyoroDatePickerInputConfiguration(

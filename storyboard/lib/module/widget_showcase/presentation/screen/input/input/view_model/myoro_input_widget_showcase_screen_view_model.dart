@@ -4,32 +4,33 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroInputWidgetShowcaseScreenViewModel].
-final class MyoroInputWidgetShowcaseScreenViewModel {
+class MyoroInputWidgetShowcaseScreenViewModel {
   /// State
-  final state = MyoroInputWidgetShowcaseScreenState();
+  final _state = MyoroInputWidgetShowcaseScreenState();
+  MyoroInputWidgetShowcaseScreenState get state => _state;
 
   /// Constructors the [MyoroInputConfiguration] of [_Widget].
   MyoroInputConfiguration configuration(BuildContext context, Widget suffix) {
     return MyoroInputConfiguration(
-      inputStyle: state.inputStyle,
-      textAlign: state.textAlign,
-      inputTextStyle: state.inputTextStyle,
-      label: state.label,
-      labelTextStyle: state.labelTextStyle,
-      placeholder: state.placeholder,
-      contentPadding: state.contentPadding,
-      border: state.borderEnabled ? _border : null,
-      suffix: state.suffixEnabled ? suffix : null,
-      enabled: state.enabled,
-      readOnly: state.readOnly,
+      inputStyle: _state.inputStyle,
+      textAlign: _state.textAlign,
+      inputTextStyle: _state.inputTextStyle,
+      label: _state.label,
+      labelTextStyle: _state.labelTextStyle,
+      placeholder: _state.placeholder,
+      contentPadding: _state.contentPadding,
+      border: _state.borderEnabled ? _border : null,
+      suffix: _state.suffixEnabled ? suffix : null,
+      enabled: _state.enabled,
+      readOnly: _state.readOnly,
       autofocus: true,
-      showClearTextButton: state.showClearTextButton,
+      showClearTextButton: _state.showClearTextButton,
       checkboxOnChanged:
-          state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
-      validation: state.validationEnabled ? _validation : null,
+          _state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
+      validation: _state.validationEnabled ? _validation : null,
       onFieldSubmitted: (text) => _onFieldSubmitted(context, text),
-      onChanged: state.onChangedEnabled ? (text) => _onChanged(context, text) : null,
-      onCleared: state.onClearedEnabled ? () => _onCleared(context) : null,
+      onChanged: _state.onChangedEnabled ? (text) => _onChanged(context, text) : null,
+      onCleared: _state.onClearedEnabled ? () => _onCleared(context) : null,
     );
   }
 
@@ -52,10 +53,10 @@ final class MyoroInputWidgetShowcaseScreenViewModel {
 
   /// [MyoroInputConfiguration.onFieldSubmitted]
   void _onFieldSubmitted(BuildContext context, String? text) {
-    if (state.validationEnabled) {
-      state.formController.fetch();
+    if (_state.validationEnabled) {
+      _state.formController.fetch();
     }
-    if (state.onFieldSubmittedEnabled) {
+    if (_state.onFieldSubmittedEnabled) {
       _showSnackBar(context, 'Enter key pressed! Text is $text.');
     }
   }

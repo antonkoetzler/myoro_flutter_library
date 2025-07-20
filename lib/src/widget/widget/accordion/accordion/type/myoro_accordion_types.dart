@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 import 'package:flutter/material.dart';
 
 /// Builder of the title of the item.

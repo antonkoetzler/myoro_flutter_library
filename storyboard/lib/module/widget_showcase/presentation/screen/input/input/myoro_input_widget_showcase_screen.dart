@@ -28,25 +28,43 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroInput].
 final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
-    _InputStyleOption(),
-    _TextAlignOption(),
-    _InputTextStyleOption(),
-    _LabelOption(),
-    _LabelTextStyleOption(),
-    _PlaceholderOption(),
-    _ContentPaddingOption(),
-    _BorderOption(),
-    _SuffixOption(),
-    _EnabledOption(),
-    _ReadOnlyOption(),
-    _ShowClearTextButtonOption(),
-    _CheckboxOnChangedOption(),
-    _ValidationOption(),
-    _OnFieldSubmittedOption(),
-    _OnChangedOption(),
-    _OnClearedOption(),
-  ];
+  static const inputStyleOptionKey = 'inputStyleOption';
+  static const textAlignOptionKey = 'textAlignOption';
+  static const inputTextStyleOptionKey = 'inputTextStyleOption';
+  static const labelOptionKey = 'labelOption';
+  static const labelTextStyleOptionKey = 'labelTextStyleOption';
+  static const placeholderOptionKey = 'placeholderOption';
+  static const contentPaddingOptionKey = 'contentPaddingOption';
+  static const borderOptionKey = 'borderOption';
+  static const suffixOptionKey = 'suffixOption';
+  static const enabledOptionKey = 'enabledOption';
+  static const readOnlyOptionKey = 'readOnlyOption';
+  static const showClearTextButtonOptionKey = 'showClearTextButtonOption';
+  static const checkboxOnChangedOptionKey = 'checkboxOnChangedOption';
+  static const validationOptionKey = 'validationOption';
+  static const onFieldSubmittedOptionKey = 'onFieldSubmittedOption';
+  static const onChangedOptionKey = 'onChangedOption';
+  static const onClearedOptionKey = 'onClearedOption';
+
+  static const options = {
+    inputStyleOptionKey: _InputStyleOption(),
+    textAlignOptionKey: _TextAlignOption(),
+    inputTextStyleOptionKey: _InputTextStyleOption(),
+    labelOptionKey: _LabelOption(),
+    labelTextStyleOptionKey: _LabelTextStyleOption(),
+    placeholderOptionKey: _PlaceholderOption(),
+    contentPaddingOptionKey: _ContentPaddingOption(),
+    borderOptionKey: _BorderOption(),
+    suffixOptionKey: _SuffixOption(),
+    enabledOptionKey: _EnabledOption(),
+    readOnlyOptionKey: _ReadOnlyOption(),
+    showClearTextButtonOptionKey: _ShowClearTextButtonOption(),
+    checkboxOnChangedOptionKey: _CheckboxOnChangedOption(),
+    validationOptionKey: _ValidationOption(),
+    onFieldSubmittedOptionKey: _OnFieldSubmittedOption(),
+    onChangedOptionKey: _OnChangedOption(),
+    onClearedOptionKey: _OnClearedOption(),
+  };
 
   const MyoroInputWidgetShowcaseScreen({super.key});
 
@@ -54,11 +72,11 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
   Widget build(_) {
     return InheritedProvider(
       create: (_) => MyoroInputWidgetShowcaseScreenViewModel(),
-      child: const WidgetShowcaseScreen(
+      child: WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroInputTitle,
-          widget: _Widget(),
-          widgetOptions: options,
+          widget: const _Widget(),
+          widgetOptions: options.values.toList(),
         ),
       ),
     );

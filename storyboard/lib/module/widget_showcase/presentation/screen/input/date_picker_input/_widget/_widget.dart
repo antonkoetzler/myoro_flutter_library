@@ -6,7 +6,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inputViewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-    return MyoroDatePickerInput(configuration: inputViewModel.configuration(context, const _Suffix()));
+    final viewModel = context.read<MyoroDatePickerInputWidgetShowcaseViewModel>();
+    return MyoroDatePickerInput(configuration: viewModel.configuration(context, const _Suffix()));
   }
 }

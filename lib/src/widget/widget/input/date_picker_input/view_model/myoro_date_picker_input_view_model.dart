@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_date_picker_state.dart';
+part 'myoro_date_picker_input_state.dart';
 
 /// View model of [MyoroDatePickerInput].
 class MyoroDatePickerInputViewModel {

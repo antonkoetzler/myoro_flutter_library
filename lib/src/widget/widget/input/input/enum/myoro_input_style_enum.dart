@@ -30,4 +30,5 @@ enum MyoroInputStyleEnum {
 
   bool get isUnderlined => this == underlined;
   bool get isOutlined => this == outlined;
+  bool get isNone => this == none;
 }

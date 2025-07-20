@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 /// Function executed when the selected item changes.
 typedef MyoroSingularDropdownConfigurationOnChanged<T> = void Function(T? selectedItem);
 

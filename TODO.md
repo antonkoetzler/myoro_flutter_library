@@ -8,6 +8,8 @@
 - Standards of state management
 - Manipulating the UI of widgets via `ThemeExtension` overloading
 - `ThemeExtension` overriding and in general the styling of widgets
+- How to submit pull requests
+- How the CD/Ci works
 
 2. (**IN PROGRESS**) chore: Implement tests and reach 100% code coverage
 3. chore: Redo deploying and GitHub Actions

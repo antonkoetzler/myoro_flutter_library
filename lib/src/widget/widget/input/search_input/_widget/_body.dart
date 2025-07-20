@@ -2,17 +2,18 @@ part of '../myoro_search_input.dart';
 
 /// UI of the [MyoroSearchInput].
 final class _Body<T> extends StatelessWidget {
-  const _Body();
+  const _Body(this._itemsRequest);
+
+  final MyoroRequest<Set<T>> _itemsRequest;
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
-    final viewModel = context.read<MyoroSearchInputViewModel>();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: themeExtension.spacing,
-      children: [const _Input(), if (viewModel.itemsRequest.status.isSuccess) const Flexible(child: _SearchSection())],
+      children: [_Input<T>(_itemsRequest), if (_itemsRequest.status.isSuccess) Flexible(child: _SearchSection<T>())],
     );
   }
 }

@@ -18,6 +18,7 @@ class MyoroSearchInputViewModel<T> {
   /// [_configuration] setter.
   set configuration(MyoroSearchInputConfiguration<T> configuration) {
     _configuration = configuration;
+    _itemsRequestController.requestCallback = () => _configuration?.request(inputController.text) ?? const {};
   }
 
   /// [TextEditingController] of the [MyoroInput].
@@ -27,12 +28,13 @@ class MyoroSearchInputViewModel<T> {
   }
 
   /// Items of the [MyoroSearchInput].
-  final itemsRequestController = MyoroRequestController<Set<T>>();
-  MyoroRequest<Set<T>> get itemsRequest => itemsRequestController.value;
+  final _itemsRequestController = MyoroRequestController<Set<T>>();
+  MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
+  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestController.value;
 
   /// Dispose function.
   void dispose() {
     _localInputController?.dispose();
-    itemsRequestController.dispose();
+    _itemsRequestController.dispose();
   }
 }

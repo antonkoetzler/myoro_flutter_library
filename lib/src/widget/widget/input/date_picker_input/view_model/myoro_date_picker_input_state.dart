@@ -1,4 +1,4 @@
-part of 'myoro_date_picker_view_model.dart';
+part of 'myoro_date_picker_input_view_model.dart';
 
 /// State of [MyoroDatePickerInputViewModel].
 class MyoroDatePickerInputState {

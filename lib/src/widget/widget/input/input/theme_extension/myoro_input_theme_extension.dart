@@ -65,27 +65,6 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       clearTextButtonPadding = const EdgeInsets.fromLTRB(5, 5, 6.5, 5),
       clearTextButtonIcon = Icons.close;
 
-  @override
-  MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
-    if (other is! MyoroInputThemeExtension) return this;
-    return copyWith(
-      underlinedBorder: myoroLerp(underlinedBorder, other.underlinedBorder, t),
-      outlinedBorder: myoroLerp(outlinedBorder, other.outlinedBorder, t),
-      noneBorder: myoroLerp(noneBorder, other.noneBorder, t),
-      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
-      errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
-      cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
-      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
-      disabledOpacity: lerpDouble(disabledOpacity, other.disabledOpacity, t),
-      inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
-      spacing: lerpDouble(spacing, other.spacing, t),
-      labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
-      labelBehavior: myoroLerp(labelBehavior, other.labelBehavior, t),
-      clearTextButtonPadding: EdgeInsets.lerp(clearTextButtonPadding, other.clearTextButtonPadding, t),
-      clearTextButtonIcon: myoroLerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
-    );
-  }
-
   /// Border for [MyoroInputStyleEnum.underlined].
   final UnderlineInputBorder underlinedBorder;
 
@@ -127,4 +106,25 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
 
   /// [IconData] of [_ClearTextButton].
   final IconData clearTextButtonIcon;
+
+  @override
+  MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
+    if (other is! MyoroInputThemeExtension) return this;
+    return copyWith(
+      underlinedBorder: myoroLerp(underlinedBorder, other.underlinedBorder, t),
+      outlinedBorder: myoroLerp(outlinedBorder, other.outlinedBorder, t),
+      noneBorder: myoroLerp(noneBorder, other.noneBorder, t),
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
+      errorBorderColor: Color.lerp(errorBorderColor, other.errorBorderColor, t),
+      cursorHeight: lerpDouble(cursorHeight, other.cursorHeight, t),
+      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
+      disabledOpacity: lerpDouble(disabledOpacity, other.disabledOpacity, t),
+      inputTextStyle: TextStyle.lerp(inputTextStyle, other.inputTextStyle, t),
+      spacing: lerpDouble(spacing, other.spacing, t),
+      labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
+      labelBehavior: myoroLerp(labelBehavior, other.labelBehavior, t),
+      clearTextButtonPadding: EdgeInsets.lerp(clearTextButtonPadding, other.clearTextButtonPadding, t),
+      clearTextButtonIcon: myoroLerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
+    );
+  }
 }

@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 import 'package:flutter/material.dart';
 
 /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].

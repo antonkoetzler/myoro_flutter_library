@@ -84,6 +84,9 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
               : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
+      inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
+      checkboxKey:
+          checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
       controller: controllerProvided ? (controller ?? self.controller) : null,
     );
   }
