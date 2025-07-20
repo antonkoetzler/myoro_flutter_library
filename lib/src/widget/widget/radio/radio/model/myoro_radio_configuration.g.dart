@@ -15,8 +15,8 @@ mixin _$MyoroRadioConfigurationMixin {
   MyoroRadioConfiguration get self => this as MyoroRadioConfiguration;
 
   MyoroRadioConfiguration copyWith({
-    MyoroRadioController? notifier,
-    bool notifierProvided = true,
+    MyoroRadioController? controller,
+    bool controllerProvided = true,
     bool? initialValue,
     bool initialValueProvided = true,
     String? label,
@@ -26,7 +26,7 @@ mixin _$MyoroRadioConfigurationMixin {
     bool onChangedProvided = true,
   }) {
     return MyoroRadioConfiguration(
-      notifier: notifierProvided ? (notifier ?? self.notifier) : null,
+      controller: controllerProvided ? (controller ?? self.controller) : null,
       initialValue:
           initialValueProvided ? (initialValue ?? self.initialValue) : null,
       label: label ?? self.label,
@@ -42,7 +42,7 @@ mixin _$MyoroRadioConfigurationMixin {
   bool operator ==(Object other) {
     return other is MyoroRadioConfiguration &&
         other.runtimeType == runtimeType &&
-        other.notifier == self.notifier &&
+        other.controller == self.controller &&
         other.initialValue == self.initialValue &&
         other.label == self.label &&
         other.labelTextStyle == self.labelTextStyle &&
@@ -52,7 +52,7 @@ mixin _$MyoroRadioConfigurationMixin {
   @override
   int get hashCode {
     return Object.hash(
-      self.notifier,
+      self.controller,
       self.initialValue,
       self.label,
       self.labelTextStyle,
@@ -63,7 +63,7 @@ mixin _$MyoroRadioConfigurationMixin {
   @override
   String toString() =>
       'MyoroRadioConfiguration(\n'
-      '  notifier: ${self.notifier},\n'
+      '  controller: ${self.controller},\n'
       '  initialValue: ${self.initialValue},\n'
       '  label: ${self.label},\n'
       '  labelTextStyle: ${self.labelTextStyle},\n'

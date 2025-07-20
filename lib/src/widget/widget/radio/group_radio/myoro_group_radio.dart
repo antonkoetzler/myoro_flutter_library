@@ -15,14 +15,14 @@ class MyoroGroupRadio extends MyoroStatefulWidget {
 final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
   MyoroGroupRadioConfiguration get _configuration => widget.configuration;
 
-  MyoroGroupRadioController? _localNotifier;
-  MyoroGroupRadioController get _notifier {
-    return _configuration.notifier ?? (_localNotifier ??= MyoroGroupRadioController(_configuration.radios!));
+  MyoroGroupRadioController? _localController;
+  MyoroGroupRadioController get _controller {
+    return _configuration.controller ?? (_localController ??= MyoroGroupRadioController(_configuration.radios!));
   }
 
   @override
   void dispose() {
-    _localNotifier?.dispose();
+    _localController?.dispose();
     super.dispose();
   }
 
@@ -31,7 +31,7 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
     final themeExtension = context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: _notifier,
+      valueListenable: _controller,
       builder: (_, MyoroGroupRadioItems radios, _) {
         return Wrap(
           direction: _configuration.direction,
@@ -44,8 +44,8 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
                     label: entry.key,
                     initialValue: entry.value,
                     onChanged: (_) {
-                      _notifier.enable(entry.key);
-                      _configuration.onChanged?.call(entry.key, _notifier.radios);
+                      _controller.enable(entry.key);
+                      _configuration.onChanged?.call(entry.key, _controller.radios);
                     },
                   ),
                 );

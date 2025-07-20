@@ -11,8 +11,42 @@ part 'myoro_group_radio_configuration.g.dart';
 class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;
 
+  MyoroGroupRadioConfiguration({
+    this.controller,
+    this.direction = directionDefaultValue,
+    this.spacing,
+    this.runSpacing,
+    this.onChanged,
+    this.radios,
+  }) : assert(
+         !(controller != null && radios != null),
+         '[MyoroGroupRadio]: If you are providing [controller], you must '
+         'pass [radios] within its constructor and remove [radios] here.',
+       ),
+       assert(
+         controller == null ? MyoroGroupRadioController.radiosAreValid(radios!) : true,
+         '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioController.radiosAreValid].',
+       );
+
+  factory MyoroGroupRadioConfiguration.fake() {
+    final bool controllerProvided = faker.randomGenerator.boolean();
+
+    final radios = {
+      for (int i = 0; i < faker.randomGenerator.integer(10, min: 1); i++) ...{'$i) ${faker.lorem.word()}': i == 0},
+    };
+
+    return MyoroGroupRadioConfiguration(
+      controller: controllerProvided ? MyoroGroupRadioController(radios) : null,
+      direction: myoroFake<Axis>(),
+      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
+      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
+      onChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
+      radios: controllerProvided ? null : radios,
+    );
+  }
+
   /// [ValueNotifier] of the [MyoroGroupRadio] for more complex scope situations.
-  final MyoroGroupRadioController? notifier;
+  final MyoroGroupRadioController? controller;
 
   /// Direction that the radios will built in.
   final Axis direction;
@@ -31,38 +65,4 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
   /// The [Map]'s key is the label of the radio, which is never null
   /// or empty. The [Map]'s value is the initial value of the checkbox.
   final MyoroGroupRadioItems? radios;
-
-  MyoroGroupRadioConfiguration({
-    this.notifier,
-    this.direction = directionDefaultValue,
-    this.spacing,
-    this.runSpacing,
-    this.onChanged,
-    this.radios,
-  }) : assert(
-         !(notifier != null && radios != null),
-         '[MyoroGroupRadio]: If you are providing [notifier], you must '
-         'pass [radios] within its constructor and remove [radios] here.',
-       ),
-       assert(
-         notifier == null ? MyoroGroupRadioController.radiosAreValid(radios!) : true,
-         '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioController.radiosAreValid].',
-       );
-
-  factory MyoroGroupRadioConfiguration.fake() {
-    final bool notifierProvided = faker.randomGenerator.boolean();
-
-    final radios = {
-      for (int i = 0; i < faker.randomGenerator.integer(10, min: 1); i++) ...{'$i) ${faker.lorem.word()}': i == 0},
-    };
-
-    return MyoroGroupRadioConfiguration(
-      notifier: notifierProvided ? MyoroGroupRadioController(radios) : null,
-      direction: myoroFake<Axis>(),
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      onChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
-      radios: notifierProvided ? null : radios,
-    );
-  }
 }

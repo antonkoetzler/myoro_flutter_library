@@ -31,8 +31,6 @@ final class MyoroGroupRadioWidgetShowcaseScreenViewModel {
 
   /// [MyoroGroupRadioConfiguration.radios
   MyoroGroupRadioItems get _radios {
-    return {
-      for (int i = 0; i < faker.randomGenerator.integer(10, min: 1); i++) ...{'$i) ${faker.lorem.word()}': i == 0},
-    };
+    return {for (int i = 0; i < faker.randomGenerator.integer(10, min: 1); i++) 'Item #$i': false};
   }
 }

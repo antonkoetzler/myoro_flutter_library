@@ -22,7 +22,9 @@ void main() {
               onTapDown: (_) async {
                 return await MyoroModal.show(
                   context,
-                  configuration: configurationBuilder?.call(configuration) ?? configuration,
+                  configuration: (configurationBuilder?.call(configuration) ?? configuration).copyWith(
+                    constraints: const BoxConstraints(maxWidth: 500, maxHeight: 500),
+                  ),
                   child: const SizedBox.shrink(),
                 );
               },

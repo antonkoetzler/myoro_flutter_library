@@ -15,21 +15,21 @@ class MyoroRadio extends MyoroStatefulWidget {
 final class _MyoroRadioState extends State<MyoroRadio> {
   MyoroRadioConfiguration get _configuration => widget.configuration;
 
-  MyoroRadioController? _localNotifier;
-  MyoroRadioController get _notifier {
-    return _configuration.notifier ?? (_localNotifier ??= MyoroRadioController(_configuration.initialValue));
+  MyoroRadioController? _localController;
+  MyoroRadioController get _controller {
+    return _configuration.controller ?? (_localController ??= MyoroRadioController(_configuration.initialValue));
   }
 
   @override
   void didUpdateWidget(covariant MyoroRadio oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (_configuration.notifier != null) return;
-    _notifier.value = _configuration.initialValue ?? MyoroRadioConfiguration.initialValueDefaultValue;
+    if (_configuration.controller != null) return;
+    _controller.value = _configuration.initialValue ?? false;
   }
 
   @override
   void dispose() {
-    _localNotifier?.dispose();
+    _localController?.dispose();
     super.dispose();
   }
 
@@ -42,7 +42,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
       spacing: themeExtension.spacing,
       children: [
         ValueListenableBuilder(
-          valueListenable: _notifier,
+          valueListenable: _controller,
           builder: (_, bool enabled, _) {
             return Radio(
               value: true,
@@ -52,8 +52,8 @@ final class _MyoroRadioState extends State<MyoroRadio> {
               hoverColor: themeExtension.hoverColor,
               splashRadius: themeExtension.splashRadius,
               onChanged: (_) {
-                _notifier.value = !enabled;
-                _configuration.onChanged?.call(_notifier.value);
+                _controller.value = !enabled;
+                _configuration.onChanged?.call(_controller.value);
               },
             );
           },

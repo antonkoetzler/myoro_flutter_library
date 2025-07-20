@@ -11,19 +11,19 @@ part 'myoro_group_radio_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension>
     with _$MyoroGroupRadioThemeExtensionMixin {
+  const MyoroGroupRadioThemeExtension({required this.spacing, required this.runSpacing});
+
+  MyoroGroupRadioThemeExtension.fake()
+    : spacing = faker.randomGenerator.decimal(),
+      runSpacing = faker.randomGenerator.decimal();
+
+  const MyoroGroupRadioThemeExtension.builder() : spacing = 5, runSpacing = 5;
+
   /// Main axis spacing in between each checkbox.
   final double spacing;
 
   /// Cross axis spacing in between each checkbox.
   final double runSpacing;
-
-  const MyoroGroupRadioThemeExtension({required this.spacing, required this.runSpacing});
-
-  const MyoroGroupRadioThemeExtension.builder() : spacing = 5, runSpacing = 5;
-
-  MyoroGroupRadioThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(),
-      runSpacing = faker.randomGenerator.decimal();
 
   @override
   MyoroGroupRadioThemeExtension lerp(covariant ThemeExtension<MyoroGroupRadioThemeExtension>? other, double t) {

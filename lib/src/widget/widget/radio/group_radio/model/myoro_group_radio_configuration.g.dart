@@ -15,8 +15,8 @@ mixin _$MyoroGroupRadioConfigurationMixin {
   MyoroGroupRadioConfiguration get self => this as MyoroGroupRadioConfiguration;
 
   MyoroGroupRadioConfiguration copyWith({
-    MyoroGroupRadioController? notifier,
-    bool notifierProvided = true,
+    MyoroGroupRadioController? controller,
+    bool controllerProvided = true,
     Axis? direction,
     double? spacing,
     bool spacingProvided = true,
@@ -28,7 +28,7 @@ mixin _$MyoroGroupRadioConfigurationMixin {
     bool radiosProvided = true,
   }) {
     return MyoroGroupRadioConfiguration(
-      notifier: notifierProvided ? (notifier ?? self.notifier) : null,
+      controller: controllerProvided ? (controller ?? self.controller) : null,
       direction: direction ?? self.direction,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
@@ -41,7 +41,7 @@ mixin _$MyoroGroupRadioConfigurationMixin {
   bool operator ==(Object other) {
     return other is MyoroGroupRadioConfiguration &&
         other.runtimeType == runtimeType &&
-        other.notifier == self.notifier &&
+        other.controller == self.controller &&
         other.direction == self.direction &&
         other.spacing == self.spacing &&
         other.runSpacing == self.runSpacing &&
@@ -52,7 +52,7 @@ mixin _$MyoroGroupRadioConfigurationMixin {
   @override
   int get hashCode {
     return Object.hash(
-      self.notifier,
+      self.controller,
       self.direction,
       self.spacing,
       self.runSpacing,
@@ -64,7 +64,7 @@ mixin _$MyoroGroupRadioConfigurationMixin {
   @override
   String toString() =>
       'MyoroGroupRadioConfiguration(\n'
-      '  notifier: ${self.notifier},\n'
+      '  controller: ${self.controller},\n'
       '  direction: ${self.direction},\n'
       '  spacing: ${self.spacing},\n'
       '  runSpacing: ${self.runSpacing},\n'

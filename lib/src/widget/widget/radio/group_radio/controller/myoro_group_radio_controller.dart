@@ -7,9 +7,10 @@ class MyoroGroupRadioController extends ValueNotifier<MyoroGroupRadioItems> {
   /// 1. Radios cannot be empty;
   /// 2. Only one of the radios may be true.
   static bool radiosAreValid(MyoroGroupRadioItems radios) {
+    if (radios.isEmpty) return false;
     int counter = 0;
     radios.forEach((_, bool value) => counter += value ? 1 : 0);
-    return counter == 1;
+    return counter < 2;
   }
 
   MyoroGroupRadioController(super._value) : assert(radiosAreValid(_value));
@@ -17,6 +18,11 @@ class MyoroGroupRadioController extends ValueNotifier<MyoroGroupRadioItems> {
   /// Toggles one of the radios and manages the state of the other radios afterwards.
   void enable(String key) {
     value = disabledItems..update(key, (bool value) => true);
+  }
+
+  /// Function that disables the selected radio if there is one selected.
+  void clear() {
+    value = disabledItems;
   }
 
   /// Returns the map with all of the radios disabled ([false]).

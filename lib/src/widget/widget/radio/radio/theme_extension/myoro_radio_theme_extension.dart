@@ -11,6 +11,28 @@ part 'myoro_radio_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> with _$MyoroRadioThemeExtensionMixin {
+  const MyoroRadioThemeExtension({
+    required this.activeColor,
+    required this.hoverColor,
+    required this.labelTextStyle,
+    required this.spacing,
+    required this.splashRadius,
+  });
+
+  MyoroRadioThemeExtension.fake()
+    : activeColor = myoroFake<Color>(),
+      hoverColor = myoroFake<Color>(),
+      labelTextStyle = myoroFake<TextStyle>(),
+      spacing = faker.randomGenerator.decimal(),
+      splashRadius = faker.randomGenerator.decimal();
+
+  MyoroRadioThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
+    : activeColor = colorScheme.onPrimary,
+      hoverColor = colorScheme.onPrimary.withValues(alpha: 0.3),
+      labelTextStyle = textTheme.headlineSmall!,
+      spacing = 5,
+      splashRadius = 15;
+
   /// Color of the radio itself.
   final Color activeColor;
 
@@ -25,28 +47,6 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
 
   /// Background (splash) color size.
   final double splashRadius;
-
-  const MyoroRadioThemeExtension({
-    required this.activeColor,
-    required this.hoverColor,
-    required this.labelTextStyle,
-    required this.spacing,
-    required this.splashRadius,
-  });
-
-  MyoroRadioThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : activeColor = colorScheme.onPrimary,
-      hoverColor = colorScheme.onPrimary.withValues(alpha: 0.3),
-      labelTextStyle = textTheme.headlineSmall!,
-      spacing = 5,
-      splashRadius = 15;
-
-  MyoroRadioThemeExtension.fake()
-    : activeColor = myoroFake<Color>(),
-      hoverColor = myoroFake<Color>(),
-      labelTextStyle = myoroFake<TextStyle>(),
-      spacing = faker.randomGenerator.decimal(),
-      splashRadius = faker.randomGenerator.decimal();
 
   @override
   MyoroRadioThemeExtension lerp(covariant ThemeExtension<MyoroRadioThemeExtension>? other, double t) {
