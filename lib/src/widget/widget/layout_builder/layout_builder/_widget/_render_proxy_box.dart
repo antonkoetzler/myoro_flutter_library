@@ -4,7 +4,6 @@ final class _RenderProxyBox extends RenderProxyBox {
   _RenderProxyBox(this._constraintsCallback);
 
   MyoroLayoutBuilderConstraintsCallback _constraintsCallback;
-  MyoroLayoutBuilderConstraintsCallback get constraintsCallback => _constraintsCallback;
   set constraintsCallback(MyoroLayoutBuilderConstraintsCallback value) {
     if (_constraintsCallback == value) return;
 

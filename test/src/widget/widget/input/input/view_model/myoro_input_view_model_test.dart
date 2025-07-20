@@ -69,7 +69,6 @@ void main() {
 
     test('MyoroInputViewModel.clearText without formatter', () {
       viewModelWithFormatter.clearText();
-      print(viewModelWithoutFormatter.state.inputController.text);
       expect(viewModelWithoutFormatter.state.inputController.text.isEmpty, isTrue);
     });
   });
