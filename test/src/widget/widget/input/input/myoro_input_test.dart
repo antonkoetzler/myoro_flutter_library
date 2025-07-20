@@ -10,7 +10,7 @@ void main() {
           configuration: (faker.randomGenerator.boolean()
                   ? const MyoroInputConfiguration()
                   : MyoroInputConfiguration.fake())
-              .copyWith(label: faker.lorem.word()),
+              .copyWith(label: faker.lorem.word(), checkboxOnChanged: (_, _) {}),
           formatter: faker.randomGenerator.boolean() ? null : MyoroNumberInputFormatter(),
         ),
       ),

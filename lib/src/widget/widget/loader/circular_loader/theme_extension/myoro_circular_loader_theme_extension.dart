@@ -10,19 +10,19 @@ part 'myoro_circular_loader_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroCircularLoader].
 @immutable
 @myoroThemeExtension
-final class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension>
+class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension>
     with _$MyoroCircularLoaderThemeExtensionMixin {
-  /// Color of the [MyoroCircularLoader].
-  final Color color;
-
-  /// Default size of the [MyoroCircularLoader].
-  final double size;
-
   const MyoroCircularLoaderThemeExtension({required this.color, required this.size});
 
   MyoroCircularLoaderThemeExtension.fake() : color = myoroFake<Color>(), size = faker.randomGenerator.decimal();
 
   MyoroCircularLoaderThemeExtension.builder(ColorScheme colorScheme) : color = colorScheme.onPrimary, size = 25;
+
+  /// Color of the [MyoroCircularLoader].
+  final Color color;
+
+  /// Default size of the [MyoroCircularLoader].
+  final double size;
 
   @override
   MyoroCircularLoaderThemeExtension lerp(covariant ThemeExtension<MyoroCircularLoaderThemeExtension>? other, double t) {
