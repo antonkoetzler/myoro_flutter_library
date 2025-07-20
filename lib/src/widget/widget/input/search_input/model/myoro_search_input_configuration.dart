@@ -10,7 +10,7 @@ part 'myoro_search_input_configuration.g.dart';
 /// Configuration of [MyoroSearchInput].
 @immutable
 @myoroModel
-class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin {
+class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin<T> {
   static const requestWhenChangedDefaultValue = false;
 
   /// [MyoroInput] configuration.
