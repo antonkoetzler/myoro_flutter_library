@@ -12,12 +12,8 @@ final class _Message extends StatelessWidget {
 
     if (_configuration.text.isNotEmpty) {
       return Text(_configuration.text, style: _configuration.textStyle ?? themeExtension.textStyle);
-    }
-
-    if (_configuration.child != null) {
+    } else {
       return _configuration.child!;
     }
-
-    throw AssertionError('[MyoroDialogModal._Message.build]: [_text] (x)or [_child] must always not be null');
   }
 }

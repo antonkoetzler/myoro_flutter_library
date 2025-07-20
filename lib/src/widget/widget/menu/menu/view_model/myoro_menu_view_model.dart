@@ -76,7 +76,7 @@ class MyoroMenuViewModel<T> {
   void jumpToBottomPreviousPosition() {
     if (state.itemsRequest.status.isSuccess && state.onEndReachedPosition != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        state.scrollController.jumpTo(state.onEndReachedPosition!);
+        if (state.scrollController.hasClients) state.scrollController.jumpTo(state.onEndReachedPosition!);
       });
     }
   }

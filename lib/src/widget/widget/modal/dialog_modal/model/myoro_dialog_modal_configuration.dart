@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_dialog_modal_configuration.g.dart';
 
 /// Configuration of [MyoroDialogModal].
+@immutable
 @myoroModel
 class MyoroDialogModalConfiguration extends MyoroModalConfiguration with _$MyoroDialogModalConfigurationMixin {
   static const invertButtonsDefaultValue = false;

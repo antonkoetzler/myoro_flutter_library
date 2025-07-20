@@ -11,27 +11,6 @@ part 'myoro_modal_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> with _$MyoroModalThemeExtensionMixin {
-  /// Background color of the modal.
-  final Color primaryColor;
-
-  /// Border radius of the modal.
-  final BorderRadius borderRadius;
-
-  /// Border of the modal.
-  final Border border;
-
-  /// Padding of everything in the modal.
-  final EdgeInsets padding;
-
-  /// Spacing between the [_Header] and the contents of the modal.
-  final double spacing;
-
-  /// Text style of [_Title].
-  final TextStyle titleTextStyle;
-
-  /// [MyoroIconConfiguration] of [_CloseButton].
-  final MyoroIconConfiguration closeButtonIconConfiguration;
-
   const MyoroModalThemeExtension({
     required this.primaryColor,
     required this.borderRadius,
@@ -59,6 +38,27 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
       closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: 20);
+
+  /// Background color of the modal.
+  final Color primaryColor;
+
+  /// Border radius of the modal.
+  final BorderRadius borderRadius;
+
+  /// Border of the modal.
+  final Border border;
+
+  /// Padding of everything in the modal.
+  final EdgeInsets padding;
+
+  /// Spacing between the [_Header] and the contents of the modal.
+  final double spacing;
+
+  /// Text style of [_Title].
+  final TextStyle titleTextStyle;
+
+  /// [MyoroIconConfiguration] of [_CloseButton].
+  final MyoroIconConfiguration closeButtonIconConfiguration;
 
   @override
   MyoroModalThemeExtension lerp(covariant ThemeExtension<MyoroModalThemeExtension>? other, double t) {

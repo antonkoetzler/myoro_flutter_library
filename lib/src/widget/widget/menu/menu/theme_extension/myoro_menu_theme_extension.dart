@@ -8,27 +8,6 @@ part 'myoro_menu_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with _$MyoroMenuThemeExtensionMixin {
-  /// Background color of the menu.
-  final Color backgroundColor;
-
-  /// Border radius of the menu.
-  final BorderRadius borderRadius;
-
-  /// Padding of [_SearchBar].
-  final EdgeInsets searchBarPadding;
-
-  /// [MyoroInputStyleEnum] of [_SearchBar].
-  final MyoroInputStyleEnum searchBarInputStyle;
-
-  /// [BorderRadius] of [_Item].
-  final BorderRadius itemBorderRadius;
-
-  /// Text style of [_EmptyMenuDialog].
-  final TextStyle dialogTextStyle;
-
-  /// [EdgeInsets] of [_DialogText] & [_Loader].
-  final EdgeInsets dialogTextLoaderPadding;
-
   const MyoroMenuThemeExtension({
     required this.backgroundColor,
     required this.borderRadius,
@@ -56,6 +35,27 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
       itemBorderRadius = BorderRadius.zero,
       dialogTextStyle = textTheme.bodyMedium!,
       dialogTextLoaderPadding = const EdgeInsets.all(15);
+
+  /// Background color of the menu.
+  final Color backgroundColor;
+
+  /// Border radius of the menu.
+  final BorderRadius borderRadius;
+
+  /// Padding of [_SearchBar].
+  final EdgeInsets searchBarPadding;
+
+  /// [MyoroInputStyleEnum] of [_SearchBar].
+  final MyoroInputStyleEnum searchBarInputStyle;
+
+  /// [BorderRadius] of [_Item].
+  final BorderRadius itemBorderRadius;
+
+  /// Text style of [_EmptyMenuDialog].
+  final TextStyle dialogTextStyle;
+
+  /// [EdgeInsets] of [_DialogText] & [_Loader].
+  final EdgeInsets dialogTextLoaderPadding;
 
   @override
   MyoroMenuThemeExtension lerp(covariant ThemeExtension<MyoroMenuThemeExtension>? other, double t) {

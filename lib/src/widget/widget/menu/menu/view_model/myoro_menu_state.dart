@@ -7,7 +7,7 @@ class MyoroMenuState<T> {
   }
 
   /// Configuration.
-  final MyoroMenuConfiguration<T> configuration;
+  MyoroMenuConfiguration<T> configuration;
 
   /// Loaded items in the [MyoroMenu].
   final _itemsRequestController = MyoroRequestController<Set<T>>();
@@ -16,8 +16,9 @@ class MyoroMenuState<T> {
   Set<T> get items => _itemsRequestController.value.data ?? <T>{};
 
   /// Querired items in the [MyoroMenu].
-  final queriedItemsController = ValueNotifier<Set<T>?>(null);
-  Set<T>? get queriedItems => queriedItemsController.value;
+  final _queriedItemsController = ValueNotifier<Set<T>?>(null);
+  ValueNotifier<Set<T>?> get queriedItemsController => _queriedItemsController;
+  Set<T>? get queriedItems => _queriedItemsController.value;
 
   /// Position of [_scrollController] before [MyoroMenu] was refreshed.
   double? onEndReachedPosition;
@@ -29,7 +30,7 @@ class MyoroMenuState<T> {
   /// Dispose function.
   void dispose() {
     _itemsRequestController.dispose();
-    queriedItemsController.dispose();
+    _queriedItemsController.dispose();
     _scrollController.dispose();
   }
 }

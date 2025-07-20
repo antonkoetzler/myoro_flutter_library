@@ -11,26 +11,9 @@ part 'myoro_menu_item.g.dart';
 /// 2 "modes":
 /// 1. [icon] and/or [text] is provided; a simple [MyoroMenuItem];
 /// 2. [builder] provided for a custom [MyoroMenuItem] widget.
+@immutable
 @myoroModel
 class MyoroMenuItem with _$MyoroMenuItemMixin {
-  /// If the item is selected (a.k.a hovered) or not.
-  final bool isSelected;
-
-  /// [MyoroIconConfiguration] of the item.
-  final MyoroIconConfiguration? iconConfiguration;
-
-  /// [MyoroTextConfiguration] of the item.
-  final MyoroTextConfiguration? textConfiguration;
-
-  /// [MyoroButton.builder] for a custom [Widget] rather than just with an icon and/or text.
-  final MyoroButtonBuilder? builder;
-
-  /// On tap down.
-  final MyoroButtonConfigurationOnTapDown? onTapDown;
-
-  /// On tap up.
-  final MyoroButtonConfigurationOnTapUp? onTapUp;
-
   const MyoroMenuItem({
     this.isSelected = false,
     this.iconConfiguration,
@@ -68,4 +51,22 @@ class MyoroMenuItem with _$MyoroMenuItemMixin {
       onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
     );
   }
+
+  /// If the item is selected (a.k.a hovered) or not.
+  final bool isSelected;
+
+  /// [MyoroIconConfiguration] of the item.
+  final MyoroIconConfiguration? iconConfiguration;
+
+  /// [MyoroTextConfiguration] of the item.
+  final MyoroTextConfiguration? textConfiguration;
+
+  /// [MyoroButton.builder] for a custom [Widget] rather than just with an icon and/or text.
+  final MyoroButtonBuilder? builder;
+
+  /// On tap down.
+  final MyoroButtonConfigurationOnTapDown? onTapDown;
+
+  /// On tap up.
+  final MyoroButtonConfigurationOnTapUp? onTapUp;
 }

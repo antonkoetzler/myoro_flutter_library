@@ -7,9 +7,21 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_menu_configuration.g.dart';
 
 /// Configuration model of [MyoroMenu].
+@immutable
 @myoroModel
 class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
   static const constraintsDefaultValue = BoxConstraints();
+
+  const MyoroMenuConfiguration({
+    this.constraints = constraintsDefaultValue,
+    this.backgroundColor,
+    this.border,
+    this.borderRadius,
+    required this.request,
+    this.onEndReachedRequest,
+    this.searchCallback,
+    required this.itemBuilder,
+  });
 
   /// Constraints of the menu.
   final BoxConstraints constraints;
@@ -36,15 +48,4 @@ class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
 
   /// Menu item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;
-
-  const MyoroMenuConfiguration({
-    this.constraints = constraintsDefaultValue,
-    this.backgroundColor,
-    this.border,
-    this.borderRadius,
-    required this.request,
-    this.onEndReachedRequest,
-    this.searchCallback,
-    required this.itemBuilder,
-  });
 }

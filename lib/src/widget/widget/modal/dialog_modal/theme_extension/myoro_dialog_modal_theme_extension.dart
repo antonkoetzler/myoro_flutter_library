@@ -12,12 +12,6 @@ part 'myoro_dialog_modal_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThemeExtension>
     with _$MyoroDialogModalThemeExtensionMixin {
-  /// Text style of the simple text option in [_Message].
-  final TextStyle textStyle;
-
-  /// Spacing in between the buttons in [_FooterButtons].
-  final double footerButtonsSpacing;
-
   const MyoroDialogModalThemeExtension({required this.textStyle, required this.footerButtonsSpacing});
 
   MyoroDialogModalThemeExtension.fake()
@@ -27,6 +21,12 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
   MyoroDialogModalThemeExtension.builder(TextTheme textTheme)
     : textStyle = textTheme.bodyMedium!,
       footerButtonsSpacing = 10;
+
+  /// Text style of the simple text option in [_Message].
+  final TextStyle textStyle;
+
+  /// Spacing in between the buttons in [_FooterButtons].
+  final double footerButtonsSpacing;
 
   @override
   MyoroDialogModalThemeExtension lerp(covariant ThemeExtension<MyoroDialogModalThemeExtension>? other, double t) {

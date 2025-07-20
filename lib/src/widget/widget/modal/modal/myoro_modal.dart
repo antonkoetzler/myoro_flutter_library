@@ -20,15 +20,6 @@ part '_widget/_title.dart';
 /// }
 /// ```
 class MyoroModal extends MyoroStatelessWidget {
-  /// Configuration of the modal.
-  final MyoroModalConfiguration configuration;
-
-  /// Contents of the modal.
-  final Widget child;
-
-  /// Private constructor to force [show] to be used.
-  const MyoroModal._(this.configuration, this.child);
-
   /// Function that opens the modal.
   static Future<void> show(
     BuildContext context, {
@@ -42,6 +33,14 @@ class MyoroModal extends MyoroStatelessWidget {
       builder: (_) => MyoroModal._(configuration, child),
     ).then((_) => configuration.onClosed?.call());
   }
+
+  const MyoroModal._(this.configuration, this.child);
+
+  /// Configuration of the modal.
+  final MyoroModalConfiguration configuration;
+
+  /// Contents of the modal.
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
