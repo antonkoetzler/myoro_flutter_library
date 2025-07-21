@@ -8,7 +8,7 @@ final class _SideTitle extends StatelessWidget {
   const _SideTitle(this._value, this._axis);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Padding(
       padding: EdgeInsets.only(right: _axis.isVertical ? 5 : 0),
       child: Text(

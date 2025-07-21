@@ -5,7 +5,7 @@ final class _BorderBuilderOption extends StatelessWidget {
   const _BorderBuilderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOption(

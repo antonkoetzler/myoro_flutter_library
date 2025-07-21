@@ -5,7 +5,7 @@ final class _Cover extends StatelessWidget {
   const _Cover();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroResizeDividerWidgetShowcaseScreenThemeExtension>();
     final viewModel = context.read<MyoroResizeDividerWidgetShowcaseScreenViewModel>();
 

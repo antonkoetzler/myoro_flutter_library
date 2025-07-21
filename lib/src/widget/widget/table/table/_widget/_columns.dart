@@ -2,15 +2,10 @@ part of '../myoro_table.dart';
 
 /// Columns (a.k.a titles) section of [MyoroTable].
 final class _Columns<T> extends StatelessWidget {
-  final MyoroTableController<T> _controller;
-  MyoroTableConfiguration<T> get _configuration => _controller.configuration;
-  List<MyoroTableColumn> get _columns => _configuration.columns;
-  List<GlobalKey> get _titleColumnKeys => _controller.titleColumnKeys;
-
-  const _Columns(this._controller);
+  const _Columns();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     final basicDividerThemeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
@@ -36,23 +31,29 @@ final class _Columns<T> extends StatelessWidget {
   }
 
   List<Widget> _buildColumns(BuildContext context) {
+    final viewModel = context.read<MyoroTableViewModel<T>>();
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final columns = configuration.columns;
+    final titleColumnKeys = state.titleColumnKeys;
+
     assert(
-      _columns.length == _titleColumnKeys.length,
+      columns.length == titleColumnKeys.length,
       '[MyoroTable<$T>._buildColumns]: Length of [columns] must be equal to the length of [titleColumnKeys]',
     );
 
     final List<Widget> widgets = [];
-    for (int i = 0; i < _columns.length; i++) {
-      final GlobalKey titleColumnKey = _titleColumnKeys[i];
-      final MyoroTableColumn column = _columns[i];
-      final bool isLastColumn = (i == _columns.length - 1);
+    for (int i = 0; i < columns.length; i++) {
+      final GlobalKey titleColumnKey = titleColumnKeys[i];
+      final MyoroTableColumn column = columns[i];
+      final bool isLastColumn = (i == columns.length - 1);
       widgets.add(_Column(titleColumnKey, column, isLastColumn));
       if (!isLastColumn) {
         widgets.add(const _Divider(Axis.vertical));
       }
     }
 
-    _controller.getTitleColumnKeyWidths();
+    viewModel.getTitleColumnKeyWidths();
 
     return widgets;
   }

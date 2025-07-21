@@ -7,7 +7,7 @@ final class _DialogText extends StatelessWidget {
   const _DialogText(this._text);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     return Center(
       child: Padding(

@@ -33,7 +33,7 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     return Provider.value(

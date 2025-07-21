@@ -5,7 +5,7 @@ final class _AppBarMenuButton extends StatelessWidget {
   const _AppBarMenuButton();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroScreenWidgetShowcaseScreenThemeExtension>();
 
     return MyoroIconTextButton(

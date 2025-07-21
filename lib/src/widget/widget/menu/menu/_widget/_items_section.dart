@@ -5,7 +5,7 @@ final class _ItemsSection<T> extends StatelessWidget {
   const _ItemsSection();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroMenuViewModel<T>>();
     final items = viewModel.state.queriedItems ?? viewModel.state.items;
     final itemWidgets = items.map<Widget>((T item) => _Item(viewModel.state.configuration.itemBuilder(item))).toList();

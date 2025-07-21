@@ -5,7 +5,7 @@ final class _EnabledOption extends StatelessWidget {
   const _EnabledOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

@@ -5,7 +5,7 @@ final class _TooltipEnabledOption extends StatelessWidget {
   const _TooltipEnabledOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

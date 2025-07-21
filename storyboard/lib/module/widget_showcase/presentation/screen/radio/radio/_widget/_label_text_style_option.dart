@@ -5,7 +5,7 @@ final class _LabelTextStyleOption extends StatelessWidget {
   const _LabelTextStyleOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroRadioWidgetShowcaseScreenViewModel>();
 
     return TextStyleWidgetShowcaseOption(

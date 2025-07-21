@@ -5,7 +5,7 @@ final class _SearchCallbackOption extends StatelessWidget {
   const _SearchCallbackOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

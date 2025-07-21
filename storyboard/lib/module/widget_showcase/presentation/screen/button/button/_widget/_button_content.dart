@@ -7,7 +7,7 @@ final class _ButtonContent extends StatelessWidget {
   const _ButtonContent(this._tapStatusEnum);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
     final tapStatusEnumName = '${_tapStatusEnum.name[1].toUpperCase()}${_tapStatusEnum.name.substring(1)}';
 

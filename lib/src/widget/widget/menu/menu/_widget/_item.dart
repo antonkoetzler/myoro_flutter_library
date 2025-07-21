@@ -7,7 +7,7 @@ final class _Item extends StatelessWidget {
   final MyoroMenuItem _item;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final BorderRadius itemBorderRadius = themeExtension.itemBorderRadius;
     final MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder =

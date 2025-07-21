@@ -5,7 +5,7 @@ final class _Title extends StatelessWidget {
   const _Title();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
     final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
     return viewModel.configuration.checkboxOnChanged != null

@@ -9,7 +9,7 @@ final class _Text extends StatelessWidget {
   const _Text(this._tapStatusEnum, this._contentColorBuilder, this._textConfiguration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
 
     return Expanded(

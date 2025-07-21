@@ -5,7 +5,7 @@ final class _OnChangedOption extends StatelessWidget {
   const _OnChangedOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

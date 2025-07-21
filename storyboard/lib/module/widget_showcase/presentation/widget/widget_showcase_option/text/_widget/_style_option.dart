@@ -5,7 +5,7 @@ final class _StyleOption extends StatelessWidget {
   const _StyleOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
     final configuration = viewModel.configuration;
     final styleInitialValue = configuration.styleInitialValue;

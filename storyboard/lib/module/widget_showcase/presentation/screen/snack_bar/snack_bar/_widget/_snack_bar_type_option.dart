@@ -5,7 +5,7 @@ final class _SnackBarTypeOption extends StatelessWidget {
   const _SnackBarTypeOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
 
     return MyoroSnackBarTypeWidgetShowcaseOption(

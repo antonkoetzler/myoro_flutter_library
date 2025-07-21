@@ -5,7 +5,7 @@ final class _SearchSection<T> extends StatelessWidget {
   const _SearchSection();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
     final itemBuilder = viewModel.configuration.itemBuilder;
     final items = viewModel.itemsRequest.data;

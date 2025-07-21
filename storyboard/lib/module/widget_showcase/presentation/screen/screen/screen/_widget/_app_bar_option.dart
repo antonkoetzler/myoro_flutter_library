@@ -5,7 +5,7 @@ final class _AppBarOption extends StatelessWidget {
   const _AppBarOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroScreenWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

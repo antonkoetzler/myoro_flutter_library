@@ -17,7 +17,7 @@ class MyoroSnackBar extends MyoroStatelessWidget {
   const MyoroSnackBar({super.key, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     final String message = configuration.message;

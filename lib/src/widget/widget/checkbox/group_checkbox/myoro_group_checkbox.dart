@@ -12,7 +12,7 @@ class MyoroGroupCheckbox extends MyoroStatelessWidget {
   const MyoroGroupCheckbox({super.key, required this.controller, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
     return ValueListenableBuilder(

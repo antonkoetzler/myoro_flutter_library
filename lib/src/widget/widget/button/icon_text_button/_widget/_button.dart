@@ -8,7 +8,7 @@ final class _Button extends StatelessWidget {
   const _Button(this._tapStatusEnum, this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
 
     final bool invert = _configuration.invert;

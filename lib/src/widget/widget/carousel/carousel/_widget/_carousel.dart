@@ -8,7 +8,7 @@ final class _Carousel extends StatelessWidget {
   final CarouselSliderController _controller;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return CarouselSlider(
       carouselController: _controller,
       items: _configuration.items,

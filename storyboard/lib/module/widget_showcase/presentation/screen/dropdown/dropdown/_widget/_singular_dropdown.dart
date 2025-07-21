@@ -5,7 +5,7 @@ final class _SingularDropdown extends StatelessWidget {
   const _SingularDropdown();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(

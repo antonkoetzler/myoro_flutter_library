@@ -5,7 +5,7 @@ final class _ShowClearTextButtonOption extends StatelessWidget {
   const _ShowClearTextButtonOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

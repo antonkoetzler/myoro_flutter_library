@@ -5,7 +5,7 @@ final class _DurationOption extends StatelessWidget {
   const _DurationOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSnackBarContainerWidgetShowcaseScreenViewModel>();
 
     return MyoroInput.number(

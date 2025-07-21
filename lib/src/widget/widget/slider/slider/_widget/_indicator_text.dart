@@ -8,7 +8,7 @@ final class _IndicatorText extends StatelessWidget {
   const _IndicatorText(this._text, {this.isFooter = false});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
     return Text(

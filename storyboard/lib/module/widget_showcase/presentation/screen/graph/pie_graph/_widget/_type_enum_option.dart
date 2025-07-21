@@ -5,7 +5,7 @@ final class _TypeEnumOption extends StatelessWidget {
   const _TypeEnumOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroPieGraphWidgetShowcaseScreenViewModel>();
 
     return MyoroSingularDropdown<MyoroPieGraphEnum>(

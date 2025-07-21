@@ -9,7 +9,7 @@ final class _Icon extends StatelessWidget {
   const _Icon(this._tapStatusEnum, this._contentColorBuilder, this._iconConfiguration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Icon(
       _iconConfiguration.icon,
       size: _iconConfiguration.size,

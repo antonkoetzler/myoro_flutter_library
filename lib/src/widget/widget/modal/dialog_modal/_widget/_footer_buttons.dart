@@ -7,7 +7,7 @@ final class _FooterButtons extends StatelessWidget {
   const _FooterButtons(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     final confirmButton = _ConfirmButton(_configuration);

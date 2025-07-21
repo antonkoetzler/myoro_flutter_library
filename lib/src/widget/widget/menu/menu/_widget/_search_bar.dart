@@ -5,7 +5,7 @@ final class _SearchBar<T> extends StatelessWidget {
   const _SearchBar();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final viewModel = context.read<MyoroMenuViewModel<T>>();
 

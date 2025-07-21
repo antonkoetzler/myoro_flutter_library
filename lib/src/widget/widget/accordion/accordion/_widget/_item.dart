@@ -8,7 +8,7 @@ final class _Item extends StatelessWidget {
   const _Item({required this.item, required this.isLastItem});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroAccordionViewModel>();
     final controller = viewModel.state.controller;
 

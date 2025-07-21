@@ -5,7 +5,7 @@ final class _SymmetricSelection extends StatelessWidget {
   const _SymmetricSelection();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
 
     return _SelectionInputPair(

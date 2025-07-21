@@ -7,7 +7,7 @@ final class _PairText extends StatelessWidget {
   final String _text;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Text(_text, style: widgetShowcaseThemeExtension.labelTextStyle);

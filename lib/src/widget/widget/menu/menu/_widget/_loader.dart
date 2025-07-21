@@ -5,7 +5,7 @@ final class _Loader extends StatelessWidget {
   const _Loader();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     return Center(child: Padding(padding: themeExtension.dialogTextLoaderPadding, child: const MyoroCircularLoader()));
   }

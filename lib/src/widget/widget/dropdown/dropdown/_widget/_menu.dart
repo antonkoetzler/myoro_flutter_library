@@ -42,7 +42,7 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     return CallbackShortcuts(

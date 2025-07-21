@@ -7,7 +7,7 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
   const _InputTriggerArea();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
     final configuration = viewModel.state.configuration;
     final enabledController = viewModel.controller.enabledController;

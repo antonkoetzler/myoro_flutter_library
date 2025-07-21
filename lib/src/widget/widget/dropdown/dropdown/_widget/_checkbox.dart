@@ -5,7 +5,7 @@ final class _Checkbox<T, C extends _C<T>> extends StatelessWidget {
   const _Checkbox();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
 
     return ValueListenableBuilder(

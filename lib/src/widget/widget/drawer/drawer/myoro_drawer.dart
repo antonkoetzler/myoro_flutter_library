@@ -15,7 +15,7 @@ class MyoroDrawer extends MyoroStatelessWidget {
   const MyoroDrawer({super.key, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final bool isEndDrawer = context.read<MyoroDrawerController>().isEndDrawer;
 
     return Stack(

@@ -5,7 +5,7 @@ final class _ReadOnlyOption extends StatelessWidget {
   const _ReadOnlyOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

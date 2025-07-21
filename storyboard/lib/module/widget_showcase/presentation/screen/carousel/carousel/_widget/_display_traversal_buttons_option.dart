@@ -5,7 +5,7 @@ final class _DisplayTraversalButtonsOption extends StatelessWidget {
   const _DisplayTraversalButtonsOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

@@ -7,7 +7,7 @@ final class _Card extends StatelessWidget {
   const _Card(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
 
     return Container(

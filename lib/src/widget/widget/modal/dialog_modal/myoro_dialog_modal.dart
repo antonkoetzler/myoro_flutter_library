@@ -13,7 +13,7 @@ class MyoroDialogModal extends MyoroStatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     return Column(

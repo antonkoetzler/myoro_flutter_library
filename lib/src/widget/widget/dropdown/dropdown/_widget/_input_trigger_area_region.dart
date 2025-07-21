@@ -12,7 +12,7 @@ final class _InputTriggerAreaRegion<T, C extends _C<T>> extends StatelessWidget 
   const _InputTriggerAreaRegion(this._enabled, {this.width, this.height});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
 
     return SizedBox(

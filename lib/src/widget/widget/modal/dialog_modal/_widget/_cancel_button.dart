@@ -7,7 +7,7 @@ final class _CancelButton extends StatelessWidget {
   const _CancelButton(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final cancelButtonText = _configuration.cancelButtonText;
 
     return MyoroIconTextButton(

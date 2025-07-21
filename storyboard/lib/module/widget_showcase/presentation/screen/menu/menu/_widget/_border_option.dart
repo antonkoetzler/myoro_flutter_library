@@ -5,7 +5,7 @@ final class _BorderOption extends StatelessWidget {
   const _BorderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

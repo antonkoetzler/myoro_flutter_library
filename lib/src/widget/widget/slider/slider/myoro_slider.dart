@@ -44,7 +44,7 @@ final class _MyoroSliderState extends State<MyoroSlider> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
     final sliderPadding = themeExtension.sliderPadding;
     final configuration = _viewModel.configuration;

@@ -7,7 +7,7 @@ final class _WidgetListingAccordionItemContentButton extends StatelessWidget {
   final String _widgetName;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MainScreenViewModel>();
 
     return MyoroIconTextButton(

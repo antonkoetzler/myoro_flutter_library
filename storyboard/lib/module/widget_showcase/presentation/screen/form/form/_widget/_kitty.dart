@@ -5,7 +5,7 @@ final class _Kitty extends StatelessWidget {
   const _Kitty();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFormWidgetShowcaseScreenThemeExtension>();
     final borderRadius = themeExtension.kittyBorderRadius;
     final size = themeExtension.kittySize;

@@ -32,7 +32,7 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   final MyoroSingularDropdownConfigurationCheckboxOnChanged<int>? checkboxOnChanged;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return MyoroSingularDropdown<int>(
       controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem),
       configuration: MyoroSingularDropdownConfiguration(

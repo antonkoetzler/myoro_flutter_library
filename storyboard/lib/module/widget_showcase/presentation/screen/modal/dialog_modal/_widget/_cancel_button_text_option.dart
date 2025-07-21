@@ -5,7 +5,7 @@ final class _CancelButtonTextOption extends StatelessWidget {
   const _CancelButtonTextOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(

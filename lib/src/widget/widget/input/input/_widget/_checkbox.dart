@@ -7,7 +7,7 @@ final class _Checkbox extends StatelessWidget {
   final MyoroInputViewModel _viewModel;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final state = _viewModel.state;
     final configuration = state.configuration;
     final enabled = state.enabled;

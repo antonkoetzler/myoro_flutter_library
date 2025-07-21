@@ -3,21 +3,23 @@ part of '../myoro_table.dart';
 /// Row of a [MyoroTable].
 final class _Row<T> extends StatelessWidget {
   final T _item;
-  final MyoroTableController<T> _controller;
-  MyoroTableConfiguration<T> get _configuration => _controller.configuration;
-  MyoroTableConfigurationRowBuilder<T> get _rowBuilder => _configuration.rowBuilder;
-  List<double> get _titleColumnKeyWidths => _controller.titleColumnKeyWidths;
+  final List<double> _titleColumnKeyWidths;
 
-  const _Row(this._item, this._controller);
+  const _Row(this._item, this._titleColumnKeyWidths);
 
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    final MyoroTableRow<T> row = _rowBuilder(_item);
-    final MyoroTableRowTapEvent<T>? onTapDown = row.onTapDown;
-    final MyoroTableRowTapEvent<T>? onTapUp = row.onTapUp;
-    final List<Widget> cells = row.cells;
+    final viewModel = context.read<MyoroTableViewModel<T>>();
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final rowBuilder = configuration.rowBuilder;
+
+    final row = rowBuilder(_item);
+    final onTapDown = row.onTapDown;
+    final onTapUp = row.onTapUp;
+    final cells = row.cells;
 
     assert(
       _titleColumnKeyWidths.length == cells.length,

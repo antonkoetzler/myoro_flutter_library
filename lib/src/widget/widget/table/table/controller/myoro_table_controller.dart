@@ -3,50 +3,39 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroTable].
 class MyoroTableController<T> {
-  MyoroTableController({required MyoroTableConfiguration<T> configuration}) : _configuration = configuration {
-    itemsRequestController.requestCallback = _configuration.request;
+  MyoroTableController({required MyoroTableConfiguration<T> configuration})
+    : _viewModel = MyoroTableViewModel(configuration);
+
+  /// View model.
+  MyoroTableViewModel<T>? _viewModel;
+
+  /// [_viewModel] getter.
+  @protected
+  MyoroTableViewModel<T> get viewModel {
+    assert(_viewModel != null, '[MyoroTableViewModel<T>.viewModel]: [_viewModel] has not been initialized yet.');
+    return _viewModel!;
   }
 
-  /// Configuration.
-  late MyoroTableConfiguration<T> _configuration;
-  MyoroTableConfiguration<T> get configuration => _configuration;
-  set configuration(MyoroTableConfiguration<T> configuration) {
-    _configuration = configuration;
-    titleColumnKeys
-      ..clear()
-      ..addAll(configuration.columns.map<GlobalKey>((_) => GlobalKey()));
+  /// [_viewModel]'s [MyoroTableViewModel.state] getter.
+  MyoroTableState<T> get _state => viewModel.state;
+
+  /// [_viewModel]'s [MyoroTableState.itemsRequestController] getter.
+  MyoroRequestController<Set<T>> get itemsRequestController => _state.itemsRequestController;
+
+  /// [_viewModel] setter.
+  set viewModel(MyoroTableViewModel<T> viewModel) {
+    if (_viewModel == viewModel) return;
+    _viewModel = viewModel;
   }
-
-  /// [ValueNotifier] of the items/rows of the [MyoroTable].
-  final itemsRequestController = MyoroRequestController<Set<T>>();
-  MyoroRequest<Set<T>> get itemsRequest => itemsRequestController.value;
-
-  /// [List] of [GlobalKey]s attributed to every [MyoroTableColumn].
-  final List<GlobalKey> titleColumnKeys = [];
-
-  /// [ValueNotifier] responsible for gathering the widths of each [GlobalKey] of [_titleColumnKeys].
-  final titleColumnKeyWidthsController = ValueNotifier<List<double>>(const []);
-  List<double> get titleColumnKeyWidths => titleColumnKeyWidthsController.value;
 
   /// Dispose function.
   void dispose() {
-    itemsRequestController.dispose();
-    titleColumnKeyWidthsController.dispose();
+    _state.itemsRequestController.dispose();
+    _state.titleColumnKeyWidthsController.dispose();
   }
 
   /// Fetches the items of the [MyoroTable].
   void fetch() {
-    itemsRequestController.fetch();
-  }
-
-  /// Populdates [_titleColumnKeyWidthsController].
-  void getTitleColumnKeyWidths() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      titleColumnKeyWidthsController.value =
-          titleColumnKeys.map<double>((GlobalKey titleColumnKey) {
-            final renderBox = titleColumnKey.currentContext!.findRenderObject() as RenderBox;
-            return renderBox.size.width;
-          }).toList();
-    });
+    _state.itemsRequestController.fetch();
   }
 }

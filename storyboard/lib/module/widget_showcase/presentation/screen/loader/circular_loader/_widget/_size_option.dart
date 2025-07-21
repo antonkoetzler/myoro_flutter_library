@@ -5,7 +5,7 @@ final class _SizeOption extends StatelessWidget {
   const _SizeOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroCircularLoaderWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(

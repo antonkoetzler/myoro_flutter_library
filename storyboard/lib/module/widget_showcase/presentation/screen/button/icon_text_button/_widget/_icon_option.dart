@@ -5,7 +5,7 @@ final class _IconOption extends StatelessWidget {
   const _IconOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     final icon = state.icon;

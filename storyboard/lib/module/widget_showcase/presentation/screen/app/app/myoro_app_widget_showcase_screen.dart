@@ -14,7 +14,7 @@ final class MyoroAppWidgetShowcaseScreen extends StatelessWidget {
   const MyoroAppWidgetShowcaseScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return InheritedProvider(
       create: (_) => MyoroAppWidgetShowcaseScreenViewModel(),
       child: const WidgetShowcaseScreen(

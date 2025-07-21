@@ -5,7 +5,7 @@ final class _Selection extends StatelessWidget {
   const _Selection();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
     return ValueListenableBuilder(
       valueListenable: viewModel.modeEnumController,

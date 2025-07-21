@@ -5,7 +5,7 @@ final class _WidgetShowcase extends StatelessWidget {
   const _WidgetShowcase();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<WidgetShowcaseScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 

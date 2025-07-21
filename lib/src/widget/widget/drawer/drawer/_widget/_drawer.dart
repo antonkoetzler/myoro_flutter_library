@@ -7,7 +7,7 @@ final class _Drawer extends StatelessWidget {
   const _Drawer(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return Padding(

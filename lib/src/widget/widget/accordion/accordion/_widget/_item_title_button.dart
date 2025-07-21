@@ -26,7 +26,7 @@ final class _ItemTitleButton extends StatelessWidget {
                     : null,
             onTapUp: (_) => viewModel.itemTitleButtonOnTapUp(_item),
           ),
-          builder: (BuildContext context, MyoroTapStatusEnum tapStatusEnum) {
+          builder: (context, tapStatusEnum) {
             return Padding(
               padding: themeExtension.itemTitleButtonContentPadding,
               child: Row(

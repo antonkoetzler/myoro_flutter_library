@@ -5,7 +5,7 @@ final class _CloseButtonPaddingOption extends StatelessWidget {
   const _CloseButtonPaddingOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return PaddingWidgetShowcaseOption(

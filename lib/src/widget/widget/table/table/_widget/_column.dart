@@ -8,7 +8,7 @@ final class _Column extends StatelessWidget {
   const _Column(Key? key, this._column, this._isLastColumn) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     final Widget child = DefaultTextStyle(

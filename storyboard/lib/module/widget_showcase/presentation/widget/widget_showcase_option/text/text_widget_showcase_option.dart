@@ -18,7 +18,7 @@ final class TextWidgetShowcaseOption extends StatelessWidget {
   final TextWidgetShowcaseOptionConfiguration configuration;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return InheritedProvider(

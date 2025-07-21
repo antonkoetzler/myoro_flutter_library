@@ -5,7 +5,7 @@ final class _WidgetOptionsButton extends StatelessWidget {
   const _WidgetOptionsButton();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<WidgetShowcaseScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
     final screenThemeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();

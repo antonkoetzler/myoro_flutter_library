@@ -7,7 +7,7 @@ final class _SubmitButton extends StatelessWidget {
   const _SubmitButton(this._formController);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return MyoroIconTextButton(
       /// [MyoroInputConfiguration.validation] of [_Input].
       configuration: MyoroIconTextButtonConfiguration(

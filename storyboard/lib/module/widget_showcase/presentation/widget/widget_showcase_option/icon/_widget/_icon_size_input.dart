@@ -5,7 +5,7 @@ final class _IconSizeInput extends StatelessWidget {
   const _IconSizeInput();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<IconWidgetShowcaseOptionViewModel>();
     final configuration = viewModel.configuration;
     final enabledController = viewModel.enabledController;

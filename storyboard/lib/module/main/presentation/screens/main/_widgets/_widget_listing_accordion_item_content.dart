@@ -7,7 +7,7 @@ final class _WidgetListingAccordionItemContent extends StatelessWidget {
   final MyoroWidgetListEnum _widgetCategory;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MainScreenThemeExtension>();
 
     return Padding(

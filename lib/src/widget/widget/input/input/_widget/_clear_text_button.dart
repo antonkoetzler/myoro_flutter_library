@@ -7,7 +7,7 @@ final class _ClearTextButton extends StatelessWidget {
   const _ClearTextButton(this._viewModel);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return IntrinsicWidth(

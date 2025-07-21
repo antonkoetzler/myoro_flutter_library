@@ -5,7 +5,7 @@ final class _TitleOptions extends StatelessWidget {
   const _TitleOptions();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
 
     return TextWidgetShowcaseOption(

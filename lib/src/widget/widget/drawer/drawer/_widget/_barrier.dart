@@ -7,7 +7,7 @@ final class _Barrier extends StatelessWidget {
   const _Barrier(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return GestureDetector(
       onTap: _configuration.barrierDismissable ? () => context.closeDrawer() : null,
       child: Container(color: MyoroColors.transparent),

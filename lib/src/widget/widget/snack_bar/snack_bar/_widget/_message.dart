@@ -8,7 +8,7 @@ final class _Message extends StatelessWidget {
   const _Message(this._snackBarType, this._message);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
     return Text(_message, style: themeExtension.messageTextStyle.withColor(_snackBarType.getColor(context)));
   }

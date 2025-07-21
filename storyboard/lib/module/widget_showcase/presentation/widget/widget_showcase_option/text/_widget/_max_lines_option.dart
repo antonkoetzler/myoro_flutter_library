@@ -5,7 +5,7 @@ final class _MaxLinesOption extends StatelessWidget {
   const _MaxLinesOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
     final configuration = viewModel.configuration;
     final maxLinesInitialValue = configuration.maxLinesInitialValue;

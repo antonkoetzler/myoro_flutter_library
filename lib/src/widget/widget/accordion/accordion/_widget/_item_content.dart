@@ -8,7 +8,7 @@ final class _ItemContent extends StatelessWidget {
   const _ItemContent(this._item, this._expandedItem);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
 

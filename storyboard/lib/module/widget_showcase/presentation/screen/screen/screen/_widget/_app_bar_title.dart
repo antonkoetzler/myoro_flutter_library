@@ -5,7 +5,7 @@ final class _AppBarTitle extends StatelessWidget {
   const _AppBarTitle();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     return Text(faker.lorem.word(), style: widgetShowcaseThemeExtension.labelTextStyle);
   }

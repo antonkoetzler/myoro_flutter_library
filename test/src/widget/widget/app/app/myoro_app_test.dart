@@ -7,7 +7,7 @@ class _FakeRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, Po
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
-  Widget build(BuildContext context) => const Text('Fake Router Content');
+  Widget build(context) => const Text('Fake Router Content');
 
   @override
   Future<void> setNewRoutePath(Object configuration) async {}

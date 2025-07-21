@@ -7,7 +7,7 @@ final class _Message extends StatelessWidget {
   const _Message(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     if (_configuration.text.isNotEmpty) {

@@ -8,7 +8,7 @@ final class _Button extends StatelessWidget {
   const _Button(this._icon, this._onTapUp);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 
     return MyoroIconTextButton(

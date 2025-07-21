@@ -5,7 +5,7 @@ final class _SortedOption extends StatelessWidget {
   const _SortedOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroBarGraphWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

@@ -7,7 +7,7 @@ final class _Title extends StatelessWidget {
   const _Title(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Text(
       _configuration.title,
       style: _configuration.titleTextStyle ?? context.resolveThemeExtension<MyoroCardThemeExtension>().textStyle,

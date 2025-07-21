@@ -5,7 +5,7 @@ final class _BorderRadiusOption extends StatelessWidget {
   const _BorderRadiusOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(

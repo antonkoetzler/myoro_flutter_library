@@ -8,7 +8,7 @@ final class _CarouselItem extends StatelessWidget {
   final String _imagePath;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Image.asset(_imagePath, width: 300, fit: BoxFit.contain);
   }
 }

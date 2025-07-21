@@ -7,7 +7,7 @@ final class _Title extends StatelessWidget {
   const _Title(this._title);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     return Padding(

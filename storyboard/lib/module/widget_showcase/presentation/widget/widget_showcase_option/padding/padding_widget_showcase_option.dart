@@ -22,7 +22,7 @@ final class PaddingWidgetShowcaseOption extends StatelessWidget {
   final PaddingWidgetShowcaseOptionConfiguration configuration;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return InheritedProvider(

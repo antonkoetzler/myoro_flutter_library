@@ -7,7 +7,7 @@ final class _Body<T> extends StatelessWidget {
   final MyoroRequest<Set<T>> _itemsRequest;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
 
     return Column(

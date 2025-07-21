@@ -7,7 +7,7 @@ final class _PieGraph extends StatelessWidget {
   const _PieGraph(this._viewModel);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return PieChart(
       PieChartData(
         centerSpaceRadius: _viewModel.state.configuration.typeEnum.isPie ? 0 : 100,

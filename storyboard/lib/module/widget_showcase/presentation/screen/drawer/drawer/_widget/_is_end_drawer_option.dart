@@ -5,7 +5,7 @@ final class _IsEndDrawerOption extends StatelessWidget {
   const _IsEndDrawerOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

@@ -25,7 +25,7 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
 
     return Stack(

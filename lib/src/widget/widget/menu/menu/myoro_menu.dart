@@ -44,7 +44,7 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final configuration = _viewModel.state.configuration;
 

@@ -5,7 +5,7 @@ final class _AutoplayEnabledOption extends StatelessWidget {
   const _AutoplayEnabledOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

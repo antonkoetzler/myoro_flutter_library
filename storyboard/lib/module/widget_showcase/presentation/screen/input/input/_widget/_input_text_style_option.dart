@@ -5,7 +5,7 @@ final class _InputTextStyleOption extends StatelessWidget {
   const _InputTextStyleOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return TextStyleWidgetShowcaseOption(

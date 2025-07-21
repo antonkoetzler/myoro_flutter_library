@@ -5,7 +5,7 @@ final class _CloseButton extends StatelessWidget {
   const _CloseButton();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final drawerController = context.read<MyoroDrawerController>();
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 

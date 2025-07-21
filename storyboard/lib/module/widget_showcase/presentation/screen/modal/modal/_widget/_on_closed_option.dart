@@ -5,7 +5,7 @@ final class _OnClosedOption extends StatelessWidget {
   const _OnClosedOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

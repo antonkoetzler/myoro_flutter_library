@@ -20,7 +20,7 @@ class MyoroWidgetTester extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     if (child is MyoroApp) {
       return child;
     } else if (child is MyoroScreen) {
@@ -37,10 +37,7 @@ class MyoroWidgetTester extends StatelessWidget {
           themeMode: themeMode,
           themeExtensionsBuilder: themeExtensionsBuilder,
           home: MyoroScreen(
-            configuration: MyoroScreenConfiguration(
-              appBar: child as MyoroAppBar,
-              body: const SizedBox.shrink(),
-            ),
+            configuration: MyoroScreenConfiguration(appBar: child as MyoroAppBar, body: const SizedBox.shrink()),
           ),
         ),
       );

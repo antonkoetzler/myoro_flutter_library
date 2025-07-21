@@ -5,7 +5,7 @@ final class _PreviousPageButton extends StatelessWidget {
   const _PreviousPageButton();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<StoryboardScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 

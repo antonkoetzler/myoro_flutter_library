@@ -5,7 +5,7 @@ final class _MultiDropdown extends StatelessWidget {
   const _MultiDropdown();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(

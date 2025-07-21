@@ -5,7 +5,7 @@ final class _ShowCloseButtonOption extends StatelessWidget {
   const _ShowCloseButtonOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

@@ -5,7 +5,7 @@ final class _MenuTypeEnumOption extends StatelessWidget {
   const _MenuTypeEnumOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return MyoroDropdownMenuTypeEnumWidgetShowcaseOption(

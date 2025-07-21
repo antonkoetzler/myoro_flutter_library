@@ -27,7 +27,7 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
 
     return ValueListenableBuilder(

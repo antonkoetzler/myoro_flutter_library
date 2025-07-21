@@ -26,10 +26,7 @@ final class _StoryboardWidgetTesterState extends State<StoryboardWidgetTester> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MyoroWidgetTester(
-      themeExtensionsBuilder: createStoryboardThemeExtensions,
-      child: _child,
-    );
+  Widget build(context) {
+    return MyoroWidgetTester(themeExtensionsBuilder: createStoryboardThemeExtensions, child: _child);
   }
 }

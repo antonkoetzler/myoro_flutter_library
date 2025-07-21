@@ -9,7 +9,7 @@ final class _TraversalButton extends StatelessWidget {
   final VoidCallback _onTapUp;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Align(
       alignment: _alignment,
       child: IntrinsicWidth(

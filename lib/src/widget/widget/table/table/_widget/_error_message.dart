@@ -7,7 +7,7 @@ final class _ErrorMessage extends StatelessWidget {
   const _ErrorMessage(this._errorMessage);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return Text(_errorMessage, style: themeExtension.errorMessageTextStyle);

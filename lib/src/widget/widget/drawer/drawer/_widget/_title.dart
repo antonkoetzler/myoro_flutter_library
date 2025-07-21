@@ -7,7 +7,7 @@ final class _Title extends StatelessWidget {
   const _Title(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
 
     return Text(_configuration.title, style: _configuration.titleTextStyle ?? themeExtension.titleTextStyle);

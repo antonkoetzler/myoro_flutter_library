@@ -5,7 +5,7 @@ final class _Label extends StatelessWidget {
   const _Label();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSliderViewModel>();
     final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
 

@@ -22,7 +22,7 @@ final class _WidgetShowcaseScreenState extends State<WidgetShowcaseScreen> {
   late final _viewModel = WidgetShowcaseScreenViewModel(widget.configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return InheritedProvider.value(
       value: _viewModel,
       child: Navigator(

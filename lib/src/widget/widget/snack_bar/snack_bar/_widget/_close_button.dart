@@ -7,7 +7,7 @@ final class _CloseButton extends StatelessWidget {
   final MyoroSnackBarTypeEnum _snackBarType;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     return MyoroIconTextButton(

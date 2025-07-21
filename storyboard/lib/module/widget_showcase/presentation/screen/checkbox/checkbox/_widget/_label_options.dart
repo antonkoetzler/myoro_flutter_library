@@ -5,7 +5,7 @@ final class _LabelOptions extends StatelessWidget {
   const _LabelOptions();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroCheckboxWidgetShowcaseScreenViewModel>();
 
     return TextWidgetShowcaseOption(

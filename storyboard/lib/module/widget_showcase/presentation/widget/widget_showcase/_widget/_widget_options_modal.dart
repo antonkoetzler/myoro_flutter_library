@@ -2,7 +2,7 @@ part of '../widget_showcase_screen.dart';
 
 /// Modal of [WidgetShowcase.widgetOptions].
 final class _WidgetOptionsModal extends StatelessWidget {
-  static Future<void> _show(BuildContext context, String widgetName, List<Widget> widgetOptions) async {
+  static Future<void> _show(context, String widgetName, List<Widget> widgetOptions) async {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
     final screenSize = MediaQuery.of(context).size;

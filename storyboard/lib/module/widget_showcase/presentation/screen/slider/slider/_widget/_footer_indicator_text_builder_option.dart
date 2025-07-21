@@ -5,7 +5,7 @@ final class _FooterIndicatorTextBuilderOption extends StatelessWidget {
   const _FooterIndicatorTextBuilderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

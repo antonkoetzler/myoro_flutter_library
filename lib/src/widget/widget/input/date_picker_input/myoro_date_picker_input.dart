@@ -34,7 +34,7 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final state = _viewModel.state;
     final configuration = state.configuration;
     final checkboxOnChangedNotNull = configuration.checkboxOnChanged != null;

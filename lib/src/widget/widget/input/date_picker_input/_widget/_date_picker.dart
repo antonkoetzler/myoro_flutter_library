@@ -8,7 +8,7 @@ final class _DatePicker extends StatelessWidget {
   final Widget _child;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeData = context.themeData;
     final colorScheme = context.colorScheme;
 

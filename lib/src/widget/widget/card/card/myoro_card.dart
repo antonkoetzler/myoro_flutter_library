@@ -12,7 +12,7 @@ class MyoroCard extends MyoroStatelessWidget {
   const MyoroCard({super.key, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
 
     return Column(

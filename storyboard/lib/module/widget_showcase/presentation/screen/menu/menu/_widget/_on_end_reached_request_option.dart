@@ -5,7 +5,7 @@ final class _OnEndReachedRequestOption extends StatelessWidget {
   const _OnEndReachedRequestOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

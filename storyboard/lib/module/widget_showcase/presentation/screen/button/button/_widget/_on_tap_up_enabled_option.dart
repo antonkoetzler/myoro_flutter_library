@@ -5,7 +5,7 @@ final class _OnTapUpEnabledOption extends StatelessWidget {
   const _OnTapUpEnabledOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

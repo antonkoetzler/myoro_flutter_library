@@ -5,7 +5,7 @@ final class _ContentColorBuilderOption extends StatelessWidget {
   const _ContentColorBuilderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     final enableContentColorBuilder = state.enableContentColorBuilder;

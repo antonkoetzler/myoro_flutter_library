@@ -5,7 +5,7 @@ final class _PlaceholderOption extends StatelessWidget {
   const _PlaceholderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(

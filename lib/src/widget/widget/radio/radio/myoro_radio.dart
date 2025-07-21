@@ -34,7 +34,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroRadioThemeExtension>();
 
     return Row(

@@ -5,7 +5,7 @@ final class _CenterWidgetOption extends StatelessWidget {
   const _CenterWidgetOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroPieGraphWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

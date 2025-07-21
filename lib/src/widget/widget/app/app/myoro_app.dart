@@ -9,7 +9,7 @@ class MyoroApp extends MyoroStatelessWidget {
   const MyoroApp({super.key, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     const bool debugShowCheckedModeBanner = false;
     final Iterable<LocalizationsDelegate> localizationsDelegatesInUse =
         configuration.localizationsDelegates ??

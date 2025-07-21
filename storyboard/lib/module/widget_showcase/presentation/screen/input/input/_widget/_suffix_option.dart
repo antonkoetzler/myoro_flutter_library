@@ -5,7 +5,7 @@ final class _SuffixOption extends StatelessWidget {
   const _SuffixOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

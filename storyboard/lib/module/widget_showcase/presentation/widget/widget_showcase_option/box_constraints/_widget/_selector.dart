@@ -8,7 +8,7 @@ final class _Selector extends StatelessWidget {
   final BoxConstraintsWidgetShowcaseOptionSelectorConfiguration _configuration;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Row(

@@ -5,7 +5,7 @@ final class _OnConfirmOption extends StatelessWidget {
   const _OnConfirmOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

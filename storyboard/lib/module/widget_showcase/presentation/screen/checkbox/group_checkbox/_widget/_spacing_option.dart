@@ -5,7 +5,7 @@ final class _SpacingOption extends StatelessWidget {
   const _SpacingOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseScreenViewModel>();
 
     return MyoroSlider(

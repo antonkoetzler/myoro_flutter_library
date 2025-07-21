@@ -5,7 +5,7 @@ final class _ValidationOptionMessage extends StatelessWidget {
   const _ValidationOptionMessage();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.read<WidgetShowcaseThemeExtension>();
 
     return Text('Submit text "123" to see a validation message', style: widgetShowcaseThemeExtension.labelTextStyle);

@@ -5,7 +5,7 @@ final class _Suffix extends StatelessWidget {
   const _Suffix();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputWidgetShowcaseScreenThemeExtension>();
 
     return ClipRRect(

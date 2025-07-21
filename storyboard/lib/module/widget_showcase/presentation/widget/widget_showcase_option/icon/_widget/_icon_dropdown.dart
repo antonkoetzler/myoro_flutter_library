@@ -5,7 +5,7 @@ final class _IconDropdown extends StatelessWidget {
   const _IconDropdown();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<IconWidgetShowcaseOptionViewModel>();
     final configuration = viewModel.configuration;
     final iconOnChanged = configuration.iconOnChanged;

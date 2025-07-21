@@ -7,7 +7,7 @@ final class _TextFormField extends StatelessWidget {
   final MyoroInputViewModel _viewModel;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     final border = _viewModel.state.configuration.getBorder(context);

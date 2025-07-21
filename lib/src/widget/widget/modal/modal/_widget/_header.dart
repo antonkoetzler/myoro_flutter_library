@@ -7,7 +7,7 @@ final class _Header extends StatelessWidget {
   const _Header(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [

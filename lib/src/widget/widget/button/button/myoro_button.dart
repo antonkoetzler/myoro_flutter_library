@@ -46,7 +46,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final tapStatusController = _viewModel.state.tapStatusController;
 
     final child = MouseRegion(

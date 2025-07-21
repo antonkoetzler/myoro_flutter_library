@@ -38,7 +38,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
     final child = MouseRegion(

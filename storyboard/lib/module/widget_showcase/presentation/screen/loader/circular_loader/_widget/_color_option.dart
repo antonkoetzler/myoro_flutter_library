@@ -5,7 +5,7 @@ final class _ColorOption extends StatelessWidget {
   const _ColorOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroCircularLoaderWidgetShowcaseScreenViewModel>();
     return ColorWidgetShowcaseOption(onChanged: (color) => viewModel.state.color = color);
   }

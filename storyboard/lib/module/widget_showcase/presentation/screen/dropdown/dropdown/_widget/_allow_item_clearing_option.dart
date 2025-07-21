@@ -5,7 +5,7 @@ final class _AllowItemClearingOption extends StatelessWidget {
   const _AllowItemClearingOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

@@ -5,7 +5,7 @@ final class _SelectedItemTextAlignOption extends StatelessWidget {
   const _SelectedItemTextAlignOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return TextAlignWidgetShowcaseOption(

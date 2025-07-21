@@ -5,7 +5,7 @@ final class _MessageOption extends StatelessWidget {
   const _MessageOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(

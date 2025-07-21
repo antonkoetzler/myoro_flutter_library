@@ -5,7 +5,7 @@ final class _WidthOption extends StatelessWidget {
   const _WidthOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(

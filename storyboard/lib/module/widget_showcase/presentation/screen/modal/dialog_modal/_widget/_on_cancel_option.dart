@@ -5,7 +5,7 @@ final class _OnCancelOption extends StatelessWidget {
   const _OnCancelOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

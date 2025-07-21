@@ -5,7 +5,7 @@ final class _WidgetListingAccordion extends StatelessWidget {
   const _WidgetListingAccordion();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return MyoroAccordion(
       controller: MyoroAccordionController(items: MyoroWidgetListEnum.values.map(_buildAccordionItem).toSet()),
     );

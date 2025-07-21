@@ -13,7 +13,7 @@ class MyoroPieGraph extends MyoroStatelessWidget {
   final MyoroPieGraphConfiguration configuration;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel =
         createViewModel ? MyoroPieGraphViewModel(configuration: configuration) : context.read<MyoroPieGraphViewModel>();
 

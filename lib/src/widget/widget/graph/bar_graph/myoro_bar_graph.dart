@@ -13,7 +13,7 @@ class MyoroBarGraph extends MyoroStatelessWidget {
   final MyoroBarGraphConfiguration configuration;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel =
         (createViewModel ? MyoroBarGraphViewModel() : context.read<MyoroBarGraphViewModel>())
           ..configuration = configuration;

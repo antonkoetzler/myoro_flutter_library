@@ -5,7 +5,7 @@ final class _CurrentValueIndicatorTextBuilderOption extends StatelessWidget {
   const _CurrentValueIndicatorTextBuilderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

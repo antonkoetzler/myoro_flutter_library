@@ -17,7 +17,7 @@ final class StoryboardScreen extends StatelessWidget {
   const StoryboardScreen({super.key, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return InheritedProvider.value(
       value: StoryboardScreenViewModel(configuration),
       child: MyoroScreen(configuration: MyoroScreenConfiguration(appBar: const _AppBar(), body: configuration.body)),

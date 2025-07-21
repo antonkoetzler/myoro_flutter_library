@@ -5,7 +5,7 @@ final class _TextStyleOption extends StatelessWidget {
   const _TextStyleOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return TextStyleWidgetShowcaseOption(

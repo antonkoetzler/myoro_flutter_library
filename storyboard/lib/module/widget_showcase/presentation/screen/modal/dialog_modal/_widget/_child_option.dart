@@ -5,7 +5,7 @@ final class _ChildOption extends StatelessWidget {
   const _ChildOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

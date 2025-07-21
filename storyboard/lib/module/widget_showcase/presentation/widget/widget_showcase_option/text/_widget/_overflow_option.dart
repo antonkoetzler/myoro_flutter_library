@@ -5,7 +5,7 @@ final class _OverflowOption extends StatelessWidget {
   const _OverflowOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<TextWidgetShowcaseOptionViewModel>();
     final configuration = viewModel.configuration;
     final overflowInitialValue = configuration.overflowInitialValue;

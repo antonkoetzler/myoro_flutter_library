@@ -8,7 +8,7 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
   const _ItemTitleButtonArrow(this._item, this._tapStatusEnum);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroAccordionViewModel>();
 
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();

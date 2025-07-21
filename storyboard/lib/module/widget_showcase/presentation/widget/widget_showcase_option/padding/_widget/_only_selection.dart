@@ -5,7 +5,7 @@ final class _OnlySelection extends StatelessWidget {
   const _OnlySelection();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
 

@@ -5,7 +5,7 @@ final class _MaxValueIndicatorTextBuilderOption extends StatelessWidget {
   const _MaxValueIndicatorTextBuilderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

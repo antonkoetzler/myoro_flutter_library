@@ -5,7 +5,7 @@ final class _Title extends StatelessWidget {
   const _Title();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<StoryboardScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     return Text(

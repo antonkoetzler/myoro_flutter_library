@@ -10,7 +10,7 @@ final class _Input<T, C extends _C<T>> extends StatefulWidget {
 
 final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
     final state = viewModel.state;
     final link = state.link;

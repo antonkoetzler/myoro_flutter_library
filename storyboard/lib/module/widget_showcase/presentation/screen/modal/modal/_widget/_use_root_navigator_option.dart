@@ -5,7 +5,7 @@ final class _UseRootNavigatorOption extends StatelessWidget {
   const _UseRootNavigatorOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

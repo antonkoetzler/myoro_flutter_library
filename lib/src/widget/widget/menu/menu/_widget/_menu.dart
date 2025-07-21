@@ -5,7 +5,7 @@ final class _Menu<T> extends StatelessWidget {
   const _Menu();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final viewModel = context.read<MyoroMenuViewModel<T>>();
     final borderRadius = viewModel.state.configuration.borderRadius ?? themeExtension.borderRadius;

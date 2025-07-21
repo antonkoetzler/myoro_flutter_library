@@ -5,7 +5,7 @@ final class _InvertButtonsOption extends StatelessWidget {
   const _InvertButtonsOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

@@ -5,7 +5,7 @@ final class _SubmitButton extends StatelessWidget {
   const _SubmitButton();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
     final formController = viewModel.state.formController;
 

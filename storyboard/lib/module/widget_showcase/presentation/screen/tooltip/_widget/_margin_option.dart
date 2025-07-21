@@ -5,7 +5,7 @@ final class _MarginOption extends StatelessWidget {
   const _MarginOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
 
     return PaddingWidgetShowcaseOption(

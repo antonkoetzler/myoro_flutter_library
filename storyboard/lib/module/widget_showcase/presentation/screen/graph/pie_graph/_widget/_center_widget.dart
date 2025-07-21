@@ -5,7 +5,7 @@ final class _CenterWidget extends StatelessWidget {
   const _CenterWidget();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroPieGraphWidgetShowcaseScreenThemeExtension>();
 
     return ClipRRect(

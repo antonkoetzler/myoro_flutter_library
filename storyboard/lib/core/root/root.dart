@@ -8,7 +8,7 @@ final class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeModeController = KiwiContainer().resolve<ThemeModeController>();
 
     return ValueListenableBuilder(

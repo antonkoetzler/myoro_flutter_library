@@ -5,7 +5,7 @@ final class _ShortValueOption extends StatelessWidget {
   const _ShortValueOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroBasicDividerWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(

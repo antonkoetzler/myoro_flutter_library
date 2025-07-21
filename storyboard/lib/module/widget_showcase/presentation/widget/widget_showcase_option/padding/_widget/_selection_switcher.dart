@@ -5,7 +5,7 @@ final class _SelectionSwitcher extends StatelessWidget {
   const _SelectionSwitcher();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
 
     return MyoroSingularDropdown<PaddingWidgetShowcaseOptionEnum>(

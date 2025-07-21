@@ -66,7 +66,7 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return MyoroSingularDropdown<Color>(
       controller: _controller,
       configuration: MyoroSingularDropdownConfiguration(

@@ -5,7 +5,7 @@ final class _DirectionOption extends StatelessWidget {
   const _DirectionOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroGroupRadioWidgetShowcaseScreenViewModel>();
 
     return AxisWidgetShowcaseOption(

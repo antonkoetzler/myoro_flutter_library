@@ -24,7 +24,7 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
     return Column(

@@ -22,7 +22,7 @@ final class _SelectionInputPair extends StatelessWidget {
   final PaddingWidgetShowcaseOptionSelectionInputOnChanged rightOnChanged;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Row(

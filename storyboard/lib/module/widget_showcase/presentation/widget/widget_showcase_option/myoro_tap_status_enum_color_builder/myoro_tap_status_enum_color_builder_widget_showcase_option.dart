@@ -27,7 +27,7 @@ final class _MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionState
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final enabledController = _viewModel.enabledController;
 
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();

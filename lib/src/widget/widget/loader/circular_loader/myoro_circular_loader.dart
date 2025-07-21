@@ -9,7 +9,7 @@ class MyoroCircularLoader extends MyoroStatelessWidget {
   const MyoroCircularLoader({super.key, this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
     final chosenSize = configuration?.size ?? themeExtension.size;
 

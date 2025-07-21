@@ -11,7 +11,7 @@ final class _SelectionInput extends StatelessWidget {
   final PaddingWidgetShowcaseOptionSelectionInputOnChanged onChanged;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
 
     return ValueListenableBuilder(

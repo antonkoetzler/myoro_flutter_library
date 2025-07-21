@@ -5,7 +5,7 @@ final class _ValidationOption extends StatelessWidget {
   const _ValidationOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

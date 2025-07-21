@@ -7,7 +7,7 @@ final class _ConfirmButton extends StatelessWidget {
   const _ConfirmButton(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final confirmButtonText = _configuration.confirmButtonText;
 
     return MyoroIconTextButton(

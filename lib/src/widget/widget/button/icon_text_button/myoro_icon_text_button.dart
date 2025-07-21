@@ -13,7 +13,7 @@ class MyoroIconTextButton extends MyoroStatelessWidget {
   const MyoroIconTextButton({super.key, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return MyoroButton(
       configuration: configuration,
       builder: (_, tapStatusEnum) => _Button(tapStatusEnum, configuration),

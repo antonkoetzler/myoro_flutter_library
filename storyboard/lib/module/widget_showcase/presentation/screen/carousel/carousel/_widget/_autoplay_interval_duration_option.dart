@@ -5,7 +5,7 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
   const _AutoplayIntervalDurationOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
 
     return MyoroInput.number(

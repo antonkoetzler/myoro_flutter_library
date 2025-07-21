@@ -7,7 +7,7 @@ final class _Input<T> extends StatelessWidget {
   final MyoroRequest<Set<T>> _itemsRequest;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
     final configuration = viewModel.configuration;
     final searchInputController = viewModel.inputController;

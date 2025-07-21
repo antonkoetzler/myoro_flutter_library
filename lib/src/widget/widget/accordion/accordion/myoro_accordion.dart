@@ -42,7 +42,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final state = _viewModel.state;
     final controller = state.controller;
     final scrollController = _viewModel.state.scrollController;

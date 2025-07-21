@@ -8,7 +8,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<StoryboardScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 

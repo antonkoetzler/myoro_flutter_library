@@ -75,7 +75,7 @@ final class _MyoroInputState extends State<MyoroInput> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return ValueListenableBuilder(
       valueListenable: _viewModel.state.enabledController,
       builder: (_, _, _) => _Wrapper(_viewModel),

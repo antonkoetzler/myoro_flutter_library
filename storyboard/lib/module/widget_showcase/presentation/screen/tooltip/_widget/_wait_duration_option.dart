@@ -5,7 +5,7 @@ final class _WaitDurationOption extends StatelessWidget {
   const _WaitDurationOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
 
     return MyoroInput.number(

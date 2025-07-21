@@ -9,7 +9,7 @@ class MyoroBasicDivider extends MyoroStatelessWidget {
   const MyoroBasicDivider({super.key, required this.configuration});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
     final isHorizontal = configuration.direction.isHorizontal;
     final setShortValue = configuration.shortValue ?? themeExtension.shortValue;

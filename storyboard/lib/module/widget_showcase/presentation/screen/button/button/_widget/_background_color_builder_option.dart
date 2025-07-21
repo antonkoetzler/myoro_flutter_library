@@ -5,7 +5,7 @@ final class _BackgroundColorBuilderOption extends StatelessWidget {
   const _BackgroundColorBuilderOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
 
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOption(

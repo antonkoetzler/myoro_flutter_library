@@ -39,7 +39,7 @@ final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return _SingleChildRenderObjectWidget(
       constraintsCallback: (constraints) {
         if (mounted && _constraintsNotifier.value != constraints) {

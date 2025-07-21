@@ -7,7 +7,7 @@ final class _ResizeButton extends StatelessWidget {
   const _ResizeButton(this._configuration);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroResizeDividerThemeExtension>();
     final shortValue = themeExtension.resizeButtonShortValue;
     final longValue = themeExtension.resizeButtonLongValue;

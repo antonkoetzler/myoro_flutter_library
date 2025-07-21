@@ -31,7 +31,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   final MyoroSingularDropdownConfigurationCheckboxOnChanged<TextAlign>? checkboxOnChanged;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return MyoroSingularDropdown(
       controller:
           initiallySelectedValue != null

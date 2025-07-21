@@ -5,7 +5,7 @@ final class _ConfirmButtonTextOption extends StatelessWidget {
   const _ConfirmButtonTextOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroInput(

@@ -5,7 +5,7 @@ final class _BorderedOption extends StatelessWidget {
   const _BorderedOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroAppBarWidgetShowcaseScreenViewModel>();
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

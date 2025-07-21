@@ -43,7 +43,7 @@ class MyoroModal extends MyoroStatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     return Center(

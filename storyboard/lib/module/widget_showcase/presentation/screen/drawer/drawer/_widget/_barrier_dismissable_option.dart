@@ -5,7 +5,7 @@ final class _BarrierDismissableOption extends StatelessWidget {
   const _BarrierDismissableOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(

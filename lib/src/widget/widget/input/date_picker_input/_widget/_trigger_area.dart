@@ -5,7 +5,7 @@ final class _TriggerArea extends StatelessWidget {
   const _TriggerArea();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroDatePickerInputViewModel>();
     final state = viewModel.state;
     final inputSizeController = state.inputSizeController;

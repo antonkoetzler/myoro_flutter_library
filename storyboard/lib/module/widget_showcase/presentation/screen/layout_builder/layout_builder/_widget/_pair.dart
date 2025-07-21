@@ -8,7 +8,7 @@ final class _Pair extends StatelessWidget {
   final String maxString;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return Column(

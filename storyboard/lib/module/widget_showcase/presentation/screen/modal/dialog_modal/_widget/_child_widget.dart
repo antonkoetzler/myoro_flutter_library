@@ -5,7 +5,7 @@ final class _ChildWidget extends StatelessWidget {
   const _ChildWidget();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.read<MyoroDialogModalWidgetShowcaseScreenThemeExtension>();
 
     return ClipRRect(

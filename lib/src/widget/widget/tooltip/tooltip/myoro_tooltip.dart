@@ -12,7 +12,7 @@ class MyoroTooltip extends MyoroStatelessWidget {
   const MyoroTooltip({super.key, required this.configuration, required this.child});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTooltipThemeExtension>();
     return Tooltip(
       message: configuration.text,

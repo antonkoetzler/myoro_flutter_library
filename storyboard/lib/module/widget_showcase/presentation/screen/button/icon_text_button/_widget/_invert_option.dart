@@ -5,7 +5,7 @@ final class _InvertOption extends StatelessWidget {
   const _InvertOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroIconTextButtonWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     final invert = state.invert;

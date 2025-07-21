@@ -5,7 +5,7 @@ final class _PaddingOption extends StatelessWidget {
   const _PaddingOption();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
 
     return PaddingWidgetShowcaseOption(

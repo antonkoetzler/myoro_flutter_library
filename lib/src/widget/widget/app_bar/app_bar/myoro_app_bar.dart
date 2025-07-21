@@ -11,7 +11,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 ///
 ///   @override
-///   Widget build(BuildContext context) {
+///   Widget build(context) {
 ///     return MyoroAppBar(...);
 ///   }
 /// }

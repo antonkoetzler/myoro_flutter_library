@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_column.dart';
 part '_widget/_columns.dart';
@@ -38,6 +39,9 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
     return widget.controller ?? (_localController ??= MyoroTableController(configuration: widget.configuration!));
   }
 
+  // ignore: invalid_use_of_protected_member
+  MyoroTableViewModel<T> get _viewModel => _controller.viewModel;
+
   @override
   void initState() {
     super.initState();
@@ -47,9 +51,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   @override
   void didUpdateWidget(covariant MyoroTable<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.configuration != null) {
-      _controller.configuration = widget.configuration!;
-    }
+    _viewModel.state.configuration = widget.configuration!;
   }
 
   @override
@@ -62,15 +64,18 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
-    return Container(
-      decoration: themeExtension.decoration,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IntrinsicHeight(child: _Columns(_controller)),
-          const _Divider(Axis.horizontal),
-          Flexible(child: _RowsSection(_controller)),
-        ],
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: Container(
+        decoration: themeExtension.decoration,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IntrinsicHeight(child: _Columns<T>()),
+            const _Divider(Axis.horizontal),
+            Flexible(child: _RowsSection<T>()),
+          ],
+        ),
       ),
     );
   }
