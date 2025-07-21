@@ -12,39 +12,6 @@ part 'myoro_snack_bar_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension>
     with _$MyoroSnackBarThemeExtensionMixin {
-  /// Background color of the snack bar.
-  final Color primaryColor;
-
-  /// [MyoroSnackBarTypeEnum.standard].
-  final Color standardBorderColor;
-
-  /// [MyoroSnackBarTypeEnum.attention].
-  final Color attentionBorderColor;
-
-  /// [MyoroSnackBarTypeEnum.success].
-  final Color successBorderColor;
-
-  /// [MyoroSnackBarTypeEnum.error].
-  final Color errorBorderColor;
-
-  /// Border of the snack bar.
-  final double borderWidth;
-
-  /// Border radius of the snack bar.
-  final BorderRadius borderRadius;
-
-  /// Padding of the content of the snack bar.
-  final EdgeInsets padding;
-
-  /// Spacing between [_Message]/[MyoroSnackBar.child] & [_CloseButton].
-  final double spacing;
-
-  /// Text style of [_Message].
-  final TextStyle messageTextStyle;
-
-  /// [MyoroIconConfiguration] of [_CloseButton].
-  final MyoroIconConfiguration closeButtonIconConfiguration;
-
   const MyoroSnackBarThemeExtension({
     required this.primaryColor,
     required this.standardBorderColor,
@@ -84,6 +51,39 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       spacing = 10,
       messageTextStyle = textTheme.bodySmall!,
       closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: 15);
+
+  /// Background color of the snack bar.
+  final Color primaryColor;
+
+  /// [MyoroSnackBarTypeEnum.standard].
+  final Color standardBorderColor;
+
+  /// [MyoroSnackBarTypeEnum.attention].
+  final Color attentionBorderColor;
+
+  /// [MyoroSnackBarTypeEnum.success].
+  final Color successBorderColor;
+
+  /// [MyoroSnackBarTypeEnum.error].
+  final Color errorBorderColor;
+
+  /// Border of the snack bar.
+  final double borderWidth;
+
+  /// Border radius of the snack bar.
+  final BorderRadius borderRadius;
+
+  /// Padding of the content of the snack bar.
+  final EdgeInsets padding;
+
+  /// Spacing between [_Message]/[MyoroSnackBar.child] & [_CloseButton].
+  final double spacing;
+
+  /// Text style of [_Message].
+  final TextStyle messageTextStyle;
+
+  /// [MyoroIconConfiguration] of [_CloseButton].
+  final MyoroIconConfiguration closeButtonIconConfiguration;
 
   @override
   MyoroSnackBarThemeExtension lerp(covariant ThemeExtension<MyoroSnackBarThemeExtension>? other, double t) {

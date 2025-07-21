@@ -6,9 +6,28 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_slider_configuration.g.dart';
 
 /// Configuration of [MyoroSlider].
+@immutable
 @myoroModel
 class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
   static const labelDefaultValue = '';
+  const MyoroSliderConfiguration({
+    this.label = labelDefaultValue,
+    this.labelTextStyle,
+    this.width,
+    this.currentValueIndicatorTextBuilder,
+    this.maxValueIndicatorTextBuilder,
+    this.footerIndicatorTextBuilder,
+    this.onChanged,
+  });
+
+  MyoroSliderConfiguration.fake()
+    : label = faker.lorem.word(),
+      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
+      currentValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
+      maxValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
+      footerIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
+      onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
 
   /// Label of the slider.
   final String label;
@@ -30,23 +49,4 @@ class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
 
   /// Function executed whenever the value of the slider changes.
   final MyoroSliderOnChanged? onChanged;
-
-  const MyoroSliderConfiguration({
-    this.label = labelDefaultValue,
-    this.labelTextStyle,
-    this.width,
-    this.currentValueIndicatorTextBuilder,
-    this.maxValueIndicatorTextBuilder,
-    this.footerIndicatorTextBuilder,
-    this.onChanged,
-  });
-
-  MyoroSliderConfiguration.fake()
-    : label = faker.lorem.word(),
-      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      width = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      currentValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
-      maxValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
-      footerIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
-      onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
 }

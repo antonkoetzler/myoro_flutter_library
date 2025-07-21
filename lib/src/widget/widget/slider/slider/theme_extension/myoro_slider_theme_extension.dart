@@ -9,18 +9,6 @@ part 'myoro_slider_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension>
     with _$MyoroSliderThemeExtensionMixin {
-  /// Default [TextStyle] of [MyoroSlider.label].
-  final TextStyle labelTextStyle;
-
-  /// [EdgeInsets] of the [Slider].
-  final EdgeInsets sliderPadding;
-
-  /// Text style of indicators on the left, right, & bottom of the slider (i.e. [MyoroSlider.footerIndicatorTextBuilder]) .
-  final TextStyle indicatorTextStyle;
-
-  /// [TextAlign] of [_IndicatorText].
-  final TextAlign indicatorTextAlignment;
-
   const MyoroSliderThemeExtension({
     required this.labelTextStyle,
     required this.sliderPadding,
@@ -39,6 +27,18 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
       sliderPadding = EdgeInsets.zero,
       indicatorTextStyle = textTheme.bodySmall!,
       indicatorTextAlignment = TextAlign.center;
+
+  /// Default [TextStyle] of [MyoroSlider.label].
+  final TextStyle labelTextStyle;
+
+  /// [EdgeInsets] of the [Slider].
+  final EdgeInsets sliderPadding;
+
+  /// Text style of indicators on the left, right, & bottom of the slider (i.e. [MyoroSlider.footerIndicatorTextBuilder]) .
+  final TextStyle indicatorTextStyle;
+
+  /// [TextAlign] of [_IndicatorText].
+  final TextAlign indicatorTextAlignment;
 
   @override
   MyoroSliderThemeExtension lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {

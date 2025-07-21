@@ -21,7 +21,10 @@ class MyoroSliderController extends ValueNotifier<double> {
 
   /// Sets the new value of the [MyoroSlider].
   void setValue(double value) {
-    if (minValue > value || maxValue < value) return;
+    assert(
+      value >= minValue && value <= maxValue,
+      '[MyoroSliderController.setValue]: [value] must be greater to or equal to [minValue] and greater than or equal to [maxValue].',
+    );
     this.value = value;
   }
 }

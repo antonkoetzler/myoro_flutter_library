@@ -12,24 +12,6 @@ part 'myoro_snack_bar_container_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension>
     with _$MyoroSnackBarContainerThemeExtensionMixin {
-  /// Background color of the container.
-  final Color primaryColor;
-
-  /// [SnackBarBehavior] of the container.
-  final SnackBarBehavior behavior;
-
-  /// Margin [EdgeInsets] of the container.
-  final EdgeInsets margin;
-
-  /// Padding [EdgeInsets] of the container.
-  final EdgeInsets padding;
-
-  /// Elevation of the container.
-  final double elevation;
-
-  /// [DismissDirection] of the container.
-  final DismissDirection dismissDirection;
-
   const MyoroSnackBarContainerThemeExtension({
     required this.primaryColor,
     required this.behavior,
@@ -54,6 +36,24 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
       padding = EdgeInsets.zero,
       elevation = 0,
       dismissDirection = DismissDirection.none;
+
+  /// Background color of the container.
+  final Color primaryColor;
+
+  /// [SnackBarBehavior] of the container.
+  final SnackBarBehavior behavior;
+
+  /// Margin [EdgeInsets] of the container.
+  final EdgeInsets margin;
+
+  /// Padding [EdgeInsets] of the container.
+  final EdgeInsets padding;
+
+  /// Elevation of the container.
+  final double elevation;
+
+  /// [DismissDirection] of the container.
+  final DismissDirection dismissDirection;
 
   @override
   MyoroSnackBarContainerThemeExtension lerp(
