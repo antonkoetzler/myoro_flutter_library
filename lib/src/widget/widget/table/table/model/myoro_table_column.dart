@@ -9,15 +9,6 @@ part 'myoro_table_column.g.dart';
 @immutable
 @myoroModel
 class MyoroTableColumn with _$MyoroTableColumnMixin {
-  /// [MyoroTooltip.text]
-  final String? tooltipMessage;
-
-  /// Width configuration of the [MyoroTableColumn].
-  final MyoroTableColumnWidthConfiguration widthConfiguration;
-
-  /// [Widget] of the column.
-  final Widget child;
-
   const MyoroTableColumn({
     this.tooltipMessage,
     this.widthConfiguration = const MyoroTableColumnWidthConfiguration(
@@ -30,4 +21,13 @@ class MyoroTableColumn with _$MyoroTableColumnMixin {
     : tooltipMessage = faker.randomGenerator.boolean() ? faker.lorem.word() : null,
       widthConfiguration = MyoroTableColumnWidthConfiguration.fake(),
       child = const SizedBox.shrink();
+
+  /// [MyoroTooltip.text]
+  final String? tooltipMessage;
+
+  /// Width configuration of the [MyoroTableColumn].
+  final MyoroTableColumnWidthConfiguration widthConfiguration;
+
+  /// [Widget] of the column.
+  final Widget child;
 }

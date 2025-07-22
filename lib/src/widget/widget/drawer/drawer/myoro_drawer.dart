@@ -16,18 +16,23 @@ class MyoroDrawer extends MyoroStatelessWidget {
 
   @override
   Widget build(context) {
-    final bool isEndDrawer = context.read<MyoroDrawerController>().isEndDrawer;
+    final isEndDrawerNotifier = context.read<MyoroDrawerController>().isEndDrawerNotifier;
 
     return Stack(
       children: [
         _Barrier(configuration),
-        Row(
-          mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
-          children: [
-            if (configuration.showCloseButton && isEndDrawer) const _CloseButton(),
-            _Drawer(configuration),
-            if (configuration.showCloseButton && !isEndDrawer) const _CloseButton(),
-          ],
+        ValueListenableBuilder(
+          valueListenable: isEndDrawerNotifier,
+          builder: (_, isEndDrawer, _) {
+            return Row(
+              mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
+              children: [
+                if (configuration.showCloseButton && isEndDrawer) const _CloseButton(),
+                _Drawer(configuration),
+                if (configuration.showCloseButton && !isEndDrawer) const _CloseButton(),
+              ],
+            );
+          },
         ),
       ],
     );

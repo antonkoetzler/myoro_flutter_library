@@ -21,9 +21,7 @@ class MyoroWidgetTester extends StatelessWidget {
 
   @override
   Widget build(context) {
-    if (child is MyoroApp) {
-      return child;
-    } else if (child is MyoroScreen) {
+    if (child is MyoroScreen) {
       return MyoroApp(
         configuration: MyoroAppConfiguration(
           themeMode: themeMode,

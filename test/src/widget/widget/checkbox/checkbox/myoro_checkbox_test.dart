@@ -24,7 +24,10 @@ void main() {
       findsOneWidget,
     );
 
-    configurationNotifier.value = configurationNotifier.value.copyWith(value: !configurationNotifier.value.value);
+    configurationNotifier.value = configurationNotifier.value.copyWith(
+      value: !configurationNotifier.value.value,
+      label: faker.randomGenerator.string(10),
+    );
     await tester.pumpAndSettle();
     expect(
       find.byWidgetPredicate((w) => w is Checkbox && w.value == configurationNotifier.value.value),

@@ -12,6 +12,17 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
   static const waitDurationDefaultValue = Duration(milliseconds: 200);
   static const textDefaultValue = '';
 
+  const MyoroTooltipConfiguration({
+    this.margin,
+    this.waitDuration = waitDurationDefaultValue,
+    this.text = textDefaultValue,
+  });
+
+  MyoroTooltipConfiguration.fake({bool? borderBuilderProvided})
+    : margin = borderBuilderProvided ?? faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      waitDuration = myoroFake<Duration>(),
+      text = faker.lorem.word();
+
   /// Margin [EdgeInsets] of the tooltip.
   final EdgeInsets? margin;
 
@@ -20,15 +31,4 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
 
   /// Text of the tooltip.
   final String text;
-
-  const MyoroTooltipConfiguration({
-    this.margin,
-    this.waitDuration = waitDurationDefaultValue,
-    this.text = textDefaultValue,
-  });
-
-  MyoroTooltipConfiguration.fake()
-    : margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      waitDuration = myoroFake<Duration>(),
-      text = faker.lorem.word();
 }

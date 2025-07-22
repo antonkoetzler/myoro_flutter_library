@@ -7,7 +7,6 @@ final class _EmptyMessage extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
     return Text('No items were found!', style: themeExtension.emptyMessageTextStyle);
   }
 }

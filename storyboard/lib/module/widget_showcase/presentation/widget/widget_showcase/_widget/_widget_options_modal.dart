@@ -2,13 +2,18 @@ part of '../widget_showcase_screen.dart';
 
 /// Modal of [WidgetShowcase.widgetOptions].
 final class _WidgetOptionsModal extends StatelessWidget {
-  static Future<void> _show(context, String widgetName, List<Widget> widgetOptions) async {
+  static Future<void> _show(
+    BuildContext context,
+    BuildContext navigatorContext,
+    String widgetName,
+    List<Widget> widgetOptions,
+  ) async {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
-    final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.of(navigatorContext).size;
 
     await MyoroModal.show(
-      context,
+      navigatorContext,
       configuration: MyoroModalConfiguration(
         title: 'Options of $widgetName',
         useRootNavigator: false,

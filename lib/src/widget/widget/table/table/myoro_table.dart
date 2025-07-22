@@ -17,17 +17,17 @@ part '_widget/_rows_section.dart';
 /// Fairly simple implementation as tables are usually very business logic specific.
 /// Thus, extensibility is more important than being feature rich in this senario.
 class MyoroTable<T> extends MyoroStatefulWidget {
+  const MyoroTable({super.key, super.createViewModel, this.controller, this.configuration})
+    : assert(
+        (controller != null) ^ (configuration != null),
+        '[MyoroTable<$T>]: [controller] (x)or [configuration] must be provided.',
+      );
+
   /// Controller of the [MyoroTable].
   final MyoroTableController<T>? controller;
 
   /// Configuration.
   final MyoroTableConfiguration<T>? configuration;
-
-  const MyoroTable({super.key, this.controller, this.configuration})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroTable<$T>]: [controller] (x)or [configuration] must be provided.',
-      );
 
   @override
   State<MyoroTable<T>> createState() => _MyoroTableState<T>();
@@ -36,9 +36,14 @@ class MyoroTable<T> extends MyoroStatefulWidget {
 final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   MyoroTableController<T>? _localController;
   MyoroTableController<T> get _controller {
-    return widget.controller ?? (_localController ??= MyoroTableController(configuration: widget.configuration!));
+    return widget.controller ??
+        (_localController ??= MyoroTableController(
+          configuration: widget.configuration!,
+          viewModel: widget.createViewModel ? null : (_localViewModel ??= context.read<MyoroTableViewModel<T>>()),
+        ));
   }
 
+  MyoroTableViewModel<T>? _localViewModel;
   // ignore: invalid_use_of_protected_member
   MyoroTableViewModel<T> get _viewModel => _controller.viewModel;
 

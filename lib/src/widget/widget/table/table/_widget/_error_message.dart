@@ -9,7 +9,6 @@ final class _ErrorMessage extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
     return Text(_errorMessage, style: themeExtension.errorMessageTextStyle);
   }
 }

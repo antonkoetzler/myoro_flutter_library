@@ -23,8 +23,8 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
          'value within the [MyoroRadioController]\'s constructor.',
        );
 
-  factory MyoroRadioConfiguration.fake() {
-    final controller = faker.randomGenerator.boolean() ? MyoroRadioController() : null;
+  factory MyoroRadioConfiguration.fake({bool? controllerProvided}) {
+    final controller = controllerProvided ?? faker.randomGenerator.boolean() ? MyoroRadioController() : null;
     return MyoroRadioConfiguration(
       controller: controller,
       initialValue: controller == null ? faker.randomGenerator.boolean() : null,

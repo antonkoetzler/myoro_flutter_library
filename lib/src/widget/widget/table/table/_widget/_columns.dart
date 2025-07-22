@@ -37,11 +37,6 @@ final class _Columns<T> extends StatelessWidget {
     final columns = configuration.columns;
     final titleColumnKeys = state.titleColumnKeys;
 
-    assert(
-      columns.length == titleColumnKeys.length,
-      '[MyoroTable<$T>._buildColumns]: Length of [columns] must be equal to the length of [titleColumnKeys]',
-    );
-
     final List<Widget> widgets = [];
     for (int i = 0; i < columns.length; i++) {
       final GlobalKey titleColumnKey = titleColumnKeys[i];

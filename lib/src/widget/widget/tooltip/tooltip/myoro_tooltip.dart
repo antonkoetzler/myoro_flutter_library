@@ -3,13 +3,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Simple tooltip.
 class MyoroTooltip extends MyoroStatelessWidget {
+  const MyoroTooltip({super.key, required this.configuration, required this.child});
+
   /// Configuration.
   final MyoroTooltipConfiguration configuration;
 
   /// [Widget] utilizing the [MyoroTooltip].
   final Widget child;
-
-  const MyoroTooltip({super.key, required this.configuration, required this.child});
 
   @override
   Widget build(context) {

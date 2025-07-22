@@ -9,12 +9,6 @@ part 'myoro_table_column_width_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurationMixin {
-  /// Width configuration enum.
-  final MyoroTableColumnWidthConfigurationEnum typeEnum;
-
-  /// Fixed width when [typeEnum] is [MyoroTableColumnWidthConfigurationEnum.fixed].
-  final double? fixedWidth;
-
   const MyoroTableColumnWidthConfiguration({required this.typeEnum, this.fixedWidth})
     : assert(
         (typeEnum == MyoroTableColumnWidthConfigurationEnum.fixed) ? (fixedWidth != null) : (fixedWidth == null),
@@ -30,4 +24,10 @@ class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurati
       fixedWidth: typeEnum.isFixed ? faker.randomGenerator.decimal(scale: 50) : null,
     );
   }
+
+  /// Width configuration enum.
+  final MyoroTableColumnWidthConfigurationEnum typeEnum;
+
+  /// Fixed width when [typeEnum] is [MyoroTableColumnWidthConfigurationEnum.fixed].
+  final double? fixedWidth;
 }

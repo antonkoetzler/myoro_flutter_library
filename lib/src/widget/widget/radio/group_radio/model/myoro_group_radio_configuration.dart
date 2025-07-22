@@ -28,8 +28,8 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
          '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioController.radiosAreValid].',
        );
 
-  factory MyoroGroupRadioConfiguration.fake() {
-    final bool controllerProvided = faker.randomGenerator.boolean();
+  factory MyoroGroupRadioConfiguration.fake({bool? controllerProvided}) {
+    controllerProvided = controllerProvided ?? faker.randomGenerator.boolean();
 
     final radios = {
       for (int i = 0; i < faker.randomGenerator.integer(10, min: 1); i++) ...{'$i) ${faker.lorem.word()}': i == 0},

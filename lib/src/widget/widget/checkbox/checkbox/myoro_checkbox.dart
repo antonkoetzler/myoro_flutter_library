@@ -26,9 +26,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
   @override
   void didUpdateWidget(covariant MyoroCheckbox oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.configuration != _viewModel.state.configuration) {
-      _viewModel.state.configuration = widget.configuration;
-    }
+    _viewModel.state.configuration = widget.configuration;
   }
 
   @override

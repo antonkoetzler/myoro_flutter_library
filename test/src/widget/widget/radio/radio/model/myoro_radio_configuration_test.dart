@@ -8,5 +8,6 @@ void main() {
 
   test('MyoroRadioConfiguration.fake', () {
     MyoroRadioConfiguration.fake().copyWith(initialValueProvided: false, controller: controller);
+    MyoroRadioConfiguration.fake(controllerProvided: true).controller;
   });
 }

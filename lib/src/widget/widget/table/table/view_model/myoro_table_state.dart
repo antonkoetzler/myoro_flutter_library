@@ -28,7 +28,6 @@ final class MyoroTableState<T> {
   /// [ValueNotifier] responsible for gathering the widths of each [GlobalKey] of [__titleColumnKeys].
   final _titleColumnKeyWidthsController = ValueNotifier<List<double>>(const []);
   ValueNotifier<List<double>> get titleColumnKeyWidthsController => _titleColumnKeyWidthsController;
-  List<double> get titleColumnKeyWidths => _titleColumnKeyWidthsController.value;
 
   /// Helper function to populate [_titleColumnKeys].
   void _createTitleColumnKeys() {

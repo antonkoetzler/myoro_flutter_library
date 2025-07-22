@@ -13,6 +13,7 @@ class MyoroCheckboxState {
 
   /// [_configuration] setter.
   set configuration(MyoroCheckboxConfiguration configuration) {
+    if (_configuration == configuration) return;
     _configuration = configuration;
     _enabledController ??= ValueNotifier(this.configuration.value);
     enabledController.value = configuration.value;

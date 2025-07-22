@@ -30,19 +30,19 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
          'and/or [textConfiguration] must be provided.',
        );
 
-  factory MyoroIconTextButtonConfiguration.fake() {
+  factory MyoroIconTextButtonConfiguration.fake({bool? borderRadiusProvided, bool? borderBuilderProvided}) {
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
 
     return MyoroIconTextButtonConfiguration(
       tooltipConfiguration: faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       cursor: faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
       borderRadius:
-          faker.randomGenerator.boolean()
+          borderRadiusProvided ?? faker.randomGenerator.boolean()
               ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
               : null,
       backgroundColorBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
       borderBuilder:
-          faker.randomGenerator.boolean()
+          borderBuilderProvided ?? faker.randomGenerator.boolean()
               ? ((_) => Border.all(width: faker.randomGenerator.decimal(scale: 10), color: myoroFake<Color>()))
               : null,
       onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,

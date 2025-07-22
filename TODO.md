@@ -11,7 +11,6 @@
 - How to submit pull requests
 - How the CD/Ci works
 
-2. (**IN PROGRESS**) chore: Implement tests and reach 100% code coverage
-3. chore: Go through the view model initialization one more time to make sure everything is gucci
-4. chore: Redo deploying and GitHub Actions
-5. feature: Publish to pub.dev
+2. chore: Go through the view model initialization one more time to make sure everything is gucci
+3. chore: Redo deploying and GitHub Actions
+4. feature: Publish to pub.dev

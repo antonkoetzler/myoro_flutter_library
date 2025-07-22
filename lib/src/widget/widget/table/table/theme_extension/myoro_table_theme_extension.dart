@@ -11,27 +11,6 @@ part 'myoro_table_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with _$MyoroTableThemeExtensionMixin {
-  /// [Container.decoration] of [_MyoroTableState].
-  final BoxDecoration decoration;
-
-  /// Default [TextStyle] of [_Column].
-  final TextStyle columnTextStyle;
-
-  /// Spacing between columns.
-  final double columnSpacing;
-
-  /// Default [TextStyle] of [_Row].
-  final TextStyle rowTextStyle;
-
-  /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
-  final EdgeInsets loaderEmptyMessageErrorMessagePadding;
-
-  /// [TextStyle] of [_EmptyMessage].
-  final TextStyle emptyMessageTextStyle;
-
-  /// [TextStyle] of [_ErrorMessage].
-  final TextStyle errorMessageTextStyle;
-
   const MyoroTableThemeExtension({
     required this.decoration,
     required this.columnTextStyle,
@@ -66,6 +45,27 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       loaderEmptyMessageErrorMessagePadding = const EdgeInsets.all(10),
       emptyMessageTextStyle = textTheme.headlineMedium!,
       errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
+
+  /// [Container.decoration] of [_MyoroTableState].
+  final BoxDecoration decoration;
+
+  /// Default [TextStyle] of [_Column].
+  final TextStyle columnTextStyle;
+
+  /// Spacing between columns.
+  final double columnSpacing;
+
+  /// Default [TextStyle] of [_Row].
+  final TextStyle rowTextStyle;
+
+  /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
+  final EdgeInsets loaderEmptyMessageErrorMessagePadding;
+
+  /// [TextStyle] of [_EmptyMessage].
+  final TextStyle emptyMessageTextStyle;
+
+  /// [TextStyle] of [_ErrorMessage].
+  final TextStyle errorMessageTextStyle;
 
   @override
   MyoroTableThemeExtension lerp(covariant ThemeExtension<MyoroTableThemeExtension>? other, double t) {

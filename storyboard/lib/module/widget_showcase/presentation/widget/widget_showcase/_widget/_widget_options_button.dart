@@ -12,15 +12,20 @@ final class _WidgetOptionsButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => _onTapUp(viewModel),
+        onTapUp: (_) => _onTapUp(context, viewModel, themeExtension),
         iconConfiguration: MyoroIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
         padding: screenThemeExtension.buttonPadding,
       ),
     );
   }
 
-  void _onTapUp(WidgetShowcaseScreenViewModel viewModel) {
+  void _onTapUp(
+    BuildContext context,
+    WidgetShowcaseScreenViewModel viewModel,
+    WidgetShowcaseScreenThemeExtension themeExtension,
+  ) {
     _WidgetOptionsModal._show(
+      context,
       viewModel.navigatorKey.currentContext!,
       viewModel.configuration.widgetName,
       viewModel.configuration.widgetOptions,

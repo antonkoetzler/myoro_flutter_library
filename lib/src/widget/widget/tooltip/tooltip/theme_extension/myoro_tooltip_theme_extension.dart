@@ -9,14 +9,14 @@ part 'myoro_tooltip_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension>
     with _$MyoroTooltipThemeExtensionMixin {
-  /// [Tooltip.margin].
-  final EdgeInsets margin;
-
   const MyoroTooltipThemeExtension({required this.margin});
 
   MyoroTooltipThemeExtension.fake() : margin = myoroFake<EdgeInsets>();
 
   const MyoroTooltipThemeExtension.builder() : margin = EdgeInsets.zero;
+
+  /// [Tooltip.margin].
+  final EdgeInsets margin;
 
   @override
   MyoroTooltipThemeExtension lerp(covariant ThemeExtension<MyoroTooltipThemeExtension>? other, double t) {

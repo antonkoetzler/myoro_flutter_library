@@ -23,8 +23,18 @@ void main() {
   testWidgets('MyoroButton with MyoroButtonConfiguration.tooltipConfiugration provided', (tester) async {
     await testCase(
       tester,
-      configuration: MyoroButtonConfiguration(tooltipConfiguration: MyoroTooltipConfiguration.fake()),
+      configuration: MyoroButtonConfiguration.fake().copyWith(tooltipConfiguration: MyoroTooltipConfiguration.fake()),
       callback: () => expect(find.byType(MyoroTooltip), findsOneWidget),
+    );
+  });
+
+  testWidgets('MyoroButton with MyoroButtonConfiguration.tooltipConfiugration provided', (tester) async {
+    await testCase(
+      tester,
+      configuration: MyoroButtonConfiguration.fake().copyWith(
+        tooltipConfiguration: MyoroTooltipConfiguration.fake(borderBuilderProvided: true),
+      ),
+      callback: () => expect(find.byType(MyoroButton), findsOneWidget),
     );
   });
 }
