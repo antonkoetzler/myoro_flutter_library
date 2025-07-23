@@ -13,12 +13,6 @@ part 'main_screen_theme_extension.g.dart';
 @myoroThemeExtension
 final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExtension>
     with _$MainScreenThemeExtensionMixin {
-  /// General spacing of [Widget]s.
-  final double spacing;
-
-  /// Padding of [_WidgetListingAccordionItemContent].
-  final EdgeInsets widgetListingAccordionItemContent;
-
   const MainScreenThemeExtension({required this.spacing, required this.widgetListingAccordionItemContent});
 
   // coverage:ignore-start
@@ -27,7 +21,14 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
       widgetListingAccordionItemContent = myoroFake<EdgeInsets>();
   // coverage:ignore-end
 
+  // TODO: Constant numbers need to be moved to a common variable.
   const MainScreenThemeExtension.builder() : spacing = 10, widgetListingAccordionItemContent = const EdgeInsets.all(10);
+
+  /// General spacing of [Widget]s.
+  final double spacing;
+
+  /// Padding of [_WidgetListingAccordionItemContent].
+  final EdgeInsets widgetListingAccordionItemContent;
 
   @override
   MainScreenThemeExtension lerp(covariant ThemeExtension<MainScreenThemeExtension>? other, double t) {
