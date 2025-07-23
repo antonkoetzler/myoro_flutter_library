@@ -5,12 +5,14 @@ import 'package:storyboard/storyboard.dart';
 
 /// Controller providing the current [ThemeMode] of the application.
 class ThemeModeController extends ValueNotifier<ThemeMode> {
-  final sharedPreferences = KiwiContainer().resolve<SharedPreferences>();
+  final SharedPreferences sharedPreferences;
 
-  ThemeModeController(bool isDarkMode) : super(isDarkMode ? ThemeMode.dark : ThemeMode.light);
+  ThemeModeController(bool isDarkMode, [SharedPreferences? sharedPreferences])
+    : sharedPreferences = sharedPreferences ?? KiwiContainer().resolve<SharedPreferences>(),
+      super(isDarkMode ? ThemeMode.dark : ThemeMode.light);
 
   /// Changes the [ThemeMode].
-  void toggle() async {
+  Future<void> toggle() async {
     await sharedPreferences.setBool(
       kSharedPreferencesDarkModeEnabledJsonKey,
       themeMode == ThemeMode.dark ? false : true,

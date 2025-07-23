@@ -10,6 +10,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<StoryboardScreenViewModel>();
+    final configuration = viewModel.configuration;
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 
     return MyoroAppBar(
@@ -23,7 +24,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
                 mainAxisSize: MainAxisSize.min,
                 spacing: themeExtension.spacing / 2,
                 children: [
-                  if (viewModel.configuration.onPrevious != null) const _PreviousPageButton(),
+                  if (configuration.onPrevious != null) const _PreviousPageButton(),
                   const Expanded(child: _Title()),
                 ],
               ),
@@ -31,7 +32,7 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               spacing: themeExtension.spacing / 2,
-              children: [...viewModel.configuration.extraActionWidgets, const _ToggleThemeButton()],
+              children: [...configuration.extraActionWidgets, const _ToggleThemeButton()],
             ),
           ],
         ),

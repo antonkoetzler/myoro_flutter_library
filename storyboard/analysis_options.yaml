@@ -107,6 +107,7 @@ linter:
     prefer_final_locals: true
     prefer_const_constructors_in_immutables: true
     sort_child_properties_last: true
+    unawaited_futures: true
 
 analyzer:
 

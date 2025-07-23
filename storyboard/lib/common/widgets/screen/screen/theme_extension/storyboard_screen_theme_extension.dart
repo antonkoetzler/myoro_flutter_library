@@ -13,21 +13,6 @@ part 'storyboard_screen_theme_extension.g.dart';
 @myoroThemeExtension
 final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScreenThemeExtension>
     with _$StoryboardScreenThemeExtensionMixin {
-  /// Spacing of [Widget]s.
-  final double spacing;
-
-  /// [IconData] of [_PreviousPageButton].
-  final IconData previousPageButtonIcon;
-
-  /// [MyoroIconTextButtonConfiguration.padding] of [_Button].
-  final EdgeInsets buttonPadding;
-
-  /// [TextStyle] of [_HeaderTitleText].
-  final TextStyle titleTextStyle;
-
-  /// [IconData] of [_ToggleThemeButton].
-  final IconData toggleThemeButtonIcon;
-
   const StoryboardScreenThemeExtension({
     required this.spacing,
     required this.previousPageButtonIcon,
@@ -51,6 +36,21 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
       buttonPadding = const EdgeInsets.all(3),
       titleTextStyle = textTheme.titleLarge!,
       toggleThemeButtonIcon = Icons.sunny;
+
+  /// Spacing of [Widget]s.
+  final double spacing;
+
+  /// [IconData] of [_PreviousPageButton].
+  final IconData previousPageButtonIcon;
+
+  /// [MyoroIconTextButtonConfiguration.padding] of [_Button].
+  final EdgeInsets buttonPadding;
+
+  /// [TextStyle] of [_HeaderTitleText].
+  final TextStyle titleTextStyle;
+
+  /// [IconData] of [_ToggleThemeButton].
+  final IconData toggleThemeButtonIcon;
 
   @override
   StoryboardScreenThemeExtension lerp(covariant ThemeExtension<StoryboardScreenThemeExtension>? other, double t) {

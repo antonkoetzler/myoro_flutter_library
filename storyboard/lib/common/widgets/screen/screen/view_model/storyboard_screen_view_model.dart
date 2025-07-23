@@ -12,7 +12,7 @@ final class StoryboardScreenViewModel {
   final StoryboardScreenConfiguration configuration;
 
   /// On tap up action of the button that toggles the [ThemeMode] of the app in [StoryboardScreen].
-  void toggleThemeButtonOnTapUp() {
-    _themeModeController.toggle();
+  Future<void> toggleThemeButtonOnTapUp() async {
+    await _themeModeController.toggle();
   }
 }
