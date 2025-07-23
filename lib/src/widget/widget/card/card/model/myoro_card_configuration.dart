@@ -20,12 +20,14 @@ class MyoroCardConfiguration with _$MyoroCardConfigurationMixin {
     required this.child,
   });
 
+  // coverage:ignore-start
   MyoroCardConfiguration.fake()
     : title = faker.randomGenerator.boolean() ? faker.lorem.word() : titleDefaultValue,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       constraints = myoroFake<BoxConstraints>(),
       child = const SizedBox.shrink();
+  // coverage:ignore-end
 
   /// Title of the card.
   final String title;

@@ -12,10 +12,12 @@ class MyoroAppBarConfiguration with _$MyoroAppBarConfigurationMixin {
 
   const MyoroAppBarConfiguration({this.bordered = borderedDefaultValue, this.backgroundColor, required this.child});
 
+  // coverage:ignore-start
   MyoroAppBarConfiguration.fake()
     : bordered = faker.randomGenerator.boolean(),
       backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       child = const SizedBox.shrink();
+  // coverage:ignore-end
 
   /// If the app bar contains a border at the bottom.
   final bool bordered;

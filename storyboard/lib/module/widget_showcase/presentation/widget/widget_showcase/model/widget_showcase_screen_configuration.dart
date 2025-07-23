@@ -26,8 +26,10 @@ final class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigu
     this.widgetOptions = widgetOptionsDefaultValue,
   });
 
+  // coverage:ignore-start
   WidgetShowcaseScreenConfiguration.fake()
     : widgetName = faker.lorem.word(),
       widget = Text(faker.lorem.word()),
       widgetOptions = List.generate(faker.randomGenerator.integer(10), (_) => Text(faker.lorem.word()));
+  // coverage:ignore-end
 }

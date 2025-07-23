@@ -13,9 +13,11 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
     with _$MyoroGroupCheckboxThemeExtensionMixin {
   const MyoroGroupCheckboxThemeExtension({required this.spacing, required this.runSpacing});
 
+  // coverage:ignore-start
   MyoroGroupCheckboxThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(),
       runSpacing = faker.randomGenerator.decimal();
+  // coverage:ignore-end
 
   const MyoroGroupCheckboxThemeExtension.builder() : spacing = 5, runSpacing = 5;
 

@@ -27,6 +27,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     required this.itemTitleButtonArrowAnimationCurve,
   });
 
+  // coverage:ignore-start
   MyoroAccordionThemeExtension.fake()
     : itemContentAnimationDuration = myoroFake<Duration>(),
       itemContentAnimationCurve = myoroFake<Curve>(),
@@ -40,6 +41,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonArrowBorderRadius = myoroFake<BorderRadius>(),
       itemTitleButtonArrowAnimationDuration = myoroFake<Duration>(),
       itemTitleButtonArrowAnimationCurve = myoroFake<Curve>();
+  // coverage:ignore-end
 
   MyoroAccordionThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : itemContentAnimationDuration = const Duration(milliseconds: 200),

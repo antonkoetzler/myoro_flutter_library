@@ -10,10 +10,12 @@ part 'myoro_pie_graph_item.g.dart';
 class MyoroPieGraphItem with _$MyoroPieGraphItemMixin {
   const MyoroPieGraphItem({required this.value, this.color, this.radius});
 
+  // coverage:ignore-start
   MyoroPieGraphItem.fake()
     : value = faker.randomGenerator.decimal(),
       color = myoroFake<Color>(),
       radius = faker.randomGenerator.decimal(min: 0);
+  // coverage:ignore-end
 
   /// Value of the item.
   final double value;

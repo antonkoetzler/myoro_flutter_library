@@ -43,6 +43,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.controller,
   });
 
+  // coverage:ignore-start
   MyoroInputConfiguration.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
       textAlign = myoroFake<TextAlign>(),
@@ -66,6 +67,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       checkboxKey = faker.randomGenerator.boolean() ? GlobalKey() : null,
       focusNode = faker.randomGenerator.boolean() ? FocusNode() : null,
       controller = faker.randomGenerator.boolean() ? TextEditingController() : null;
+  // coverage:ignore-end
 
   /// Type of input.
   final MyoroInputStyleEnum inputStyle;

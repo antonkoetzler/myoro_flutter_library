@@ -25,9 +25,11 @@ final class MyoroPieGraphWidgetShowcaseScreenThemeExtension
     required this.centerWidgetSize,
   });
 
+  // coverage:ignore-start
   MyoroPieGraphWidgetShowcaseScreenThemeExtension.fake()
     : centerWidgetBorderRadius = myoroFake<BorderRadius>(),
       centerWidgetSize = faker.randomGenerator.decimal(scale: 50);
+  // coverage:ignore-end
 
   MyoroPieGraphWidgetShowcaseScreenThemeExtension.builder()
     : centerWidgetBorderRadius = BorderRadius.circular(kMyoroBorderLength),

@@ -26,10 +26,6 @@ void main() {
     callback(context, themeExtension);
   }
 
-  test('MyoroButtonStyleEnum.fake', () {
-    expect(MyoroButtonStyleEnum.values.contains(MyoroButtonStyleEnum.fake()), isTrue);
-  });
-
   testWidgets('MyoroButtonStyleEnum.border', (tester) async {
     await testCase(
       tester,

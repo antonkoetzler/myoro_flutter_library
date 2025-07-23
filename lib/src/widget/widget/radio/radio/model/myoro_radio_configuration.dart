@@ -23,6 +23,7 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
          'value within the [MyoroRadioController]\'s constructor.',
        );
 
+  // coverage:ignore-start
   factory MyoroRadioConfiguration.fake({bool? controllerProvided}) {
     final controller = controllerProvided ?? faker.randomGenerator.boolean() ? MyoroRadioController() : null;
     return MyoroRadioConfiguration(
@@ -33,6 +34,7 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
       onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
     );
   }
+  // coverage:ignore-end
 
   /// [ValueNotifier] to manage state externally.
   final MyoroRadioController? controller;

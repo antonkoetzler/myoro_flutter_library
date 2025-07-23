@@ -12,7 +12,9 @@ final class MyoroBasicDividerWidgetShowcaseScreenThemeExtension
     with _$MyoroBasicDividerWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroBasicDividerWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroBasicDividerWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroBasicDividerWidgetShowcaseScreenThemeExtension.builder();
 

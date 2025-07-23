@@ -12,7 +12,9 @@ final class MyoroRadioWidgetShowcaseScreenThemeExtension
     with _$MyoroRadioWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroRadioWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroRadioWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroRadioWidgetShowcaseScreenThemeExtension.builder();
 

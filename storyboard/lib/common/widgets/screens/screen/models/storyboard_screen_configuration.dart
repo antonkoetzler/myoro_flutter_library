@@ -10,6 +10,21 @@ part 'storyboard_screen_configuration.g.dart';
 final class StoryboardScreenConfiguration with _$StoryboardScreenConfigurationMixin {
   static const extraActionWidgetsDefaultValue = <Widget>[];
 
+  const StoryboardScreenConfiguration({
+    this.onPrevious,
+    required this.title,
+    this.extraActionWidgets = extraActionWidgetsDefaultValue,
+    required this.body,
+  }) : assert(title.length > 0, '[StoryboardScreenConfiguration]: [title] cannot be empty.');
+
+  // coverage:ignore-start
+  StoryboardScreenConfiguration.fake()
+    : onPrevious = faker.randomGenerator.boolean() ? (() {}) : null,
+      title = faker.lorem.word(),
+      extraActionWidgets = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word())),
+      body = Text(faker.lorem.word());
+  // coverage:ignore-end
+
   /// Callback that builds [_PreviousPageButton].
   final VoidCallback? onPrevious;
 
@@ -21,17 +36,4 @@ final class StoryboardScreenConfiguration with _$StoryboardScreenConfigurationMi
 
   /// [MyoroScreen.body].
   final Widget body;
-
-  const StoryboardScreenConfiguration({
-    this.onPrevious,
-    required this.title,
-    this.extraActionWidgets = extraActionWidgetsDefaultValue,
-    required this.body,
-  }) : assert(title.length > 0, '[StoryboardScreenConfiguration]: [title] cannot be empty.');
-
-  StoryboardScreenConfiguration.fake()
-    : onPrevious = faker.randomGenerator.boolean() ? (() {}) : null,
-      title = faker.lorem.word(),
-      extraActionWidgets = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word())),
-      body = Text(faker.lorem.word());
 }

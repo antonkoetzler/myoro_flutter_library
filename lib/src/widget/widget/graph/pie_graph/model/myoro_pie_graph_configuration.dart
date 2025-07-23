@@ -14,15 +14,16 @@ class MyoroPieGraphConfiguration with _$MyoroPieGraphConfigurationMixin {
         '[MyoroPieGraph]: If [typeEnum.isPie] is [true], [centerWidget] cannot be provided.',
       );
 
+  // coverage:ignore-start
   factory MyoroPieGraphConfiguration.fake() {
     final typeEnum = MyoroPieGraphEnum.fake();
-
     return MyoroPieGraphConfiguration(
       typeEnum: typeEnum,
       centerWidget: typeEnum.isPie ? null : const SizedBox.shrink(),
       items: List.generate(faker.randomGenerator.integer(10), (_) => MyoroPieGraphItem.fake()),
     );
   }
+  // coverage:ignore-end
 
   /// Pie/donut enum.
   final MyoroPieGraphEnum typeEnum;

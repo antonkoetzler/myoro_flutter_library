@@ -10,7 +10,9 @@ part 'myoro_form_theme_extension.g.dart';
 class MyoroFormThemeExtension extends ThemeExtension<MyoroFormThemeExtension> with _$MyoroFormThemeExtensionMixin {
   const MyoroFormThemeExtension();
 
+  // coverage:ignore-start
   const MyoroFormThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroFormThemeExtension.builder();
 

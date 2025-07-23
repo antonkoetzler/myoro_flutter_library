@@ -24,6 +24,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     required this.widgetOptionsModalCloseButtonPadding,
   });
 
+  // coverage:ignore-start
   WidgetShowcaseScreenThemeExtension.fake()
     : padding = myoroFake<EdgeInsets>(),
       decoration = myoroFake<BoxDecoration>(),
@@ -33,6 +34,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
       widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
       widgetOptionsModalItemPadding = myoroFake<EdgeInsets>(),
       widgetOptionsModalCloseButtonPadding = myoroFake<EdgeInsets>();
+  // coverage:ignore-end
 
   WidgetShowcaseScreenThemeExtension.builder()
     : padding = const EdgeInsets.all(10),

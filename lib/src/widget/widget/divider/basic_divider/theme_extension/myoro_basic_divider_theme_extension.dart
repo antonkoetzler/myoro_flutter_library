@@ -12,15 +12,6 @@ part 'myoro_basic_divider_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerThemeExtension>
     with _$MyoroBasicDividerThemeExtensionMixin {
-  /// [MyoroColorDesignSystem.secondary] by default.
-  final Color color;
-
-  /// Width of the divider. 2 by default.
-  final double shortValue;
-
-  /// Height of the divider. [double.infinity] by default.
-  final double longValue;
-
   const MyoroBasicDividerThemeExtension({required this.color, required this.shortValue, required this.longValue});
 
   MyoroBasicDividerThemeExtension.builder(ColorScheme colorScheme)
@@ -28,10 +19,12 @@ class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerTh
       shortValue = kMyoroBorderLength,
       longValue = double.infinity;
 
+  // coverage:ignore-start
   MyoroBasicDividerThemeExtension.fake()
     : color = myoroFake<Color>(),
       shortValue = faker.randomGenerator.decimal(),
       longValue = faker.randomGenerator.decimal();
+  // coverage:ignore-end
 
   @override
   MyoroBasicDividerThemeExtension lerp(covariant ThemeExtension<MyoroBasicDividerThemeExtension>? other, double t) {
@@ -42,4 +35,13 @@ class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerTh
       longValue: lerpDouble(longValue, other.longValue, t),
     );
   }
+
+  /// [MyoroColorDesignSystem.secondary] by default.
+  final Color color;
+
+  /// Width of the divider. 2 by default.
+  final double shortValue;
+
+  /// Height of the divider. [double.infinity] by default.
+  final double longValue;
 }

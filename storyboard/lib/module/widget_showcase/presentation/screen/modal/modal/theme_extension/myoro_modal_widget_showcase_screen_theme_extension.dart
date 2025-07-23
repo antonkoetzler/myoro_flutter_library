@@ -18,8 +18,10 @@ final class MyoroModalWidgetShowcaseScreenThemeExtension
 
   const MyoroModalWidgetShowcaseScreenThemeExtension({required this.modalContentImageSize});
 
+  // coverage:ignore-start
   MyoroModalWidgetShowcaseScreenThemeExtension.fake()
     : modalContentImageSize = faker.randomGenerator.decimal(scale: 100, min: 10);
+  // coverage:ignore-end
 
   const MyoroModalWidgetShowcaseScreenThemeExtension.builder() : modalContentImageSize = 100;
 

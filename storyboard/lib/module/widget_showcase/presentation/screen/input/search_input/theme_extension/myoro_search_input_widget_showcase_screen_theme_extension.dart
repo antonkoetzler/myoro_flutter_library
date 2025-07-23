@@ -12,7 +12,9 @@ final class MyoroSearchInputWidgetShowcaseScreenThemeExtension
     with _$MyoroSearchInputWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroSearchInputWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroSearchInputWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroSearchInputWidgetShowcaseScreenThemeExtension.builder();
 

@@ -12,7 +12,9 @@ final class MyoroBarGraphWidgetShowcaseScreenThemeExtension
     with _$MyoroBarGraphWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroBarGraphWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroBarGraphWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroBarGraphWidgetShowcaseScreenThemeExtension.builder();
 

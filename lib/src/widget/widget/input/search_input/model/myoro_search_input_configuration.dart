@@ -32,9 +32,11 @@ class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin
     required this.itemBuilder,
   });
 
+  // coverage:ignore-start
   MyoroSearchInputConfiguration.fake()
     : inputConfiguration = MyoroInputConfiguration.fake(),
       requestWhenChanged = faker.randomGenerator.boolean(),
       request = ((_) => {}),
       itemBuilder = ((_) => MyoroMenuItem.fake());
+  // coverage:ignore-end
 }

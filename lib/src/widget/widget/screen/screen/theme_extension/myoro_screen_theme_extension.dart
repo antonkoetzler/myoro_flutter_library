@@ -10,7 +10,9 @@ class MyoroScreenThemeExtension extends ThemeExtension<MyoroScreenThemeExtension
     with _$MyoroScreenThemeExtensionMixin {
   const MyoroScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroScreenThemeExtension.builder();
 

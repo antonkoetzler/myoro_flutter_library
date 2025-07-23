@@ -16,6 +16,7 @@ class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurati
         '[fixedWidth] cannot be null. Vice versa, [fixedWidth] must be null if [typeEnum] is any other value.',
       );
 
+  // coverage:ignore-start
   factory MyoroTableColumnWidthConfiguration.fake() {
     final typeEnum = MyoroTableColumnWidthConfigurationEnum.fake();
 
@@ -24,6 +25,7 @@ class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurati
       fixedWidth: typeEnum.isFixed ? faker.randomGenerator.decimal(scale: 50) : null,
     );
   }
+  // coverage:ignore-end
 
   /// Width configuration enum.
   final MyoroTableColumnWidthConfigurationEnum typeEnum;

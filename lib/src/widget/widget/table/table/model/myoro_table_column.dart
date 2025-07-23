@@ -17,10 +17,12 @@ class MyoroTableColumn with _$MyoroTableColumnMixin {
     required this.child,
   });
 
+  // coverage:ignore-start
   MyoroTableColumn.fake()
     : tooltipMessage = faker.randomGenerator.boolean() ? faker.lorem.word() : null,
       widthConfiguration = MyoroTableColumnWidthConfiguration.fake(),
       child = const SizedBox.shrink();
+  // coverage:ignore-end
 
   /// [MyoroTooltip.text]
   final String? tooltipMessage;

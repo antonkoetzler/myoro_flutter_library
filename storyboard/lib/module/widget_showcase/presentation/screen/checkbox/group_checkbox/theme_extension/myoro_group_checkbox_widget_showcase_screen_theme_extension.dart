@@ -12,7 +12,9 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension
     with _$MyoroGroupCheckboxWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension.builder();
 

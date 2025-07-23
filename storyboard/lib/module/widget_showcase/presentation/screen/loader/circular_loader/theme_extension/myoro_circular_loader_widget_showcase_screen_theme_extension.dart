@@ -12,7 +12,9 @@ final class MyoroCircularLoaderWidgetShowcaseScreenThemeExtension
     with _$MyoroCircularLoaderWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroCircularLoaderWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroCircularLoaderWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroCircularLoaderWidgetShowcaseScreenThemeExtension.builder();
 

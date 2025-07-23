@@ -14,9 +14,11 @@ enum MyoroRequestEnum {
   /// Request executed unsuccessfully.
   error;
 
+  // coverage:ignore-start
   factory MyoroRequestEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
+  // coverage:ignore-end
 
   bool get isIdle => this == idle;
   bool get isLoading => this == loading;

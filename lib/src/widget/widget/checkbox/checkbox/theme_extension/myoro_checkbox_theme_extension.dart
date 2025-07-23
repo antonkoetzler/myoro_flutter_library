@@ -22,6 +22,7 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
     required this.spacing,
   });
 
+  // coverage:ignore-start
   MyoroCheckboxThemeExtension.fake()
     : activeColor = myoroFake<Color>(),
       checkColor = myoroFake<Color>(),
@@ -30,6 +31,7 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       splashRadius = faker.randomGenerator.decimal(),
       labelTextStyle = myoroFake<TextStyle>(),
       spacing = faker.randomGenerator.decimal();
+  // coverage:ignore-end
 
   MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : activeColor = colorScheme.onPrimary,

@@ -13,7 +13,9 @@ final class MyoroScreenWidgetShowcaseScreenThemeExtension
     with _$MyoroScreenWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroScreenWidgetShowcaseScreenThemeExtension({required this.appBarMenuButtonIcon});
 
+  // coverage:ignore-start
   MyoroScreenWidgetShowcaseScreenThemeExtension.fake() : appBarMenuButtonIcon = myoroFake<IconData>();
+  // coverage:ignore-end
 
   const MyoroScreenWidgetShowcaseScreenThemeExtension.builder() : appBarMenuButtonIcon = Icons.menu;
 

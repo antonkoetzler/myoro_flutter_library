@@ -11,10 +11,12 @@ part 'myoro_basic_divider_configuration.g.dart';
 class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin {
   const MyoroBasicDividerConfiguration({required this.direction, this.shortValue, this.padding});
 
+  // coverage:ignore-start
   MyoroBasicDividerConfiguration.fake()
     : direction = myoroFake<Axis>(),
       shortValue = faker.randomGenerator.decimal(scale: 20),
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+  // coverage:ignore-end
 
   /// Direction of the divider.
   final Axis direction;

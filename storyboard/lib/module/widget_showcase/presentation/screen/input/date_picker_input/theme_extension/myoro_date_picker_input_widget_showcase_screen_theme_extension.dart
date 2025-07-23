@@ -12,7 +12,9 @@ final class MyoroDatePickerInputWidgetShowcaseScreenThemeExtension
     with _$MyoroDatePickerInputWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroDatePickerInputWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroDatePickerInputWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroDatePickerInputWidgetShowcaseScreenThemeExtension.builder();
 

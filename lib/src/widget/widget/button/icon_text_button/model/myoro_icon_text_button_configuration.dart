@@ -30,6 +30,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
          'and/or [textConfiguration] must be provided.',
        );
 
+  // coverage:ignore-start
   factory MyoroIconTextButtonConfiguration.fake({bool? borderRadiusProvided, bool? borderBuilderProvided}) {
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
 
@@ -61,6 +62,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
               : null,
     );
   }
+  // coverage:ignore-end
 
   /// By default, the icon is displays on the left, and
   /// the text on the right, this is to invert the order.

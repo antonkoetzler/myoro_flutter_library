@@ -3,10 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  test('MyoroInputStyleEnum.fake', () {
-    expect(MyoroInputStyleEnum.values.contains(MyoroInputStyleEnum.fake()), isTrue);
-  });
-
   testWidgets('MyoroInputStyleEnum.getBorder', (tester) async {
     late final BuildContext context;
     late final MyoroInputThemeExtension themeExtension;

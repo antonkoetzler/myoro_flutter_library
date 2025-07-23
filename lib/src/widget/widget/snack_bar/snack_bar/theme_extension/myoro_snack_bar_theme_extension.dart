@@ -26,6 +26,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
     required this.closeButtonIconConfiguration,
   });
 
+  // coverage:ignore-start
   MyoroSnackBarThemeExtension.fake()
     : primaryColor = myoroFake<Color>(),
       standardBorderColor = myoroFake<Color>(),
@@ -38,6 +39,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       spacing = faker.randomGenerator.decimal(),
       messageTextStyle = myoroFake<TextStyle>(),
       closeButtonIconConfiguration = MyoroIconConfiguration.fake();
+  // coverage:ignore-end
 
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,

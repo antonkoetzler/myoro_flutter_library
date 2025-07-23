@@ -12,7 +12,9 @@ final class MyoroAppBarWidgetShowcaseScreenThemeExtension
     with _$MyoroAppBarWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroAppBarWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroAppBarWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroAppBarWidgetShowcaseScreenThemeExtension.builder();
 

@@ -31,6 +31,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     super.controller,
   }) : super(placeholder: MyoroInputConfiguration.placeholderDefaultValue, readOnly: true, autofocus: false);
 
+  // coverage:ignore-start
   factory MyoroDatePickerInputConfiguration.fake() {
     return MyoroDatePickerInputConfiguration(
       inputStyle: MyoroInputStyleEnum.fake(),
@@ -51,4 +52,5 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
       controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
     );
   }
+  // coverage:ignore-end
 }

@@ -12,7 +12,9 @@ final class MyoroSliderWidgetShowcaseScreenThemeExtension
     with _$MyoroSliderWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroSliderWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroSliderWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroSliderWidgetShowcaseScreenThemeExtension.builder();
 

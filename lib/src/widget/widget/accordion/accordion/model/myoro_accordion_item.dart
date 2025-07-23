@@ -10,9 +10,11 @@ part 'myoro_accordion_item.g.dart';
 class MyoroAccordionItem with _$MyoroAccordionItemMixin {
   const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
 
+  // coverage:ignore-start
   MyoroAccordionItem.fake({Widget? title, Widget? content})
     : titleBuilder = ((_) => title ?? Text(faker.lorem.word())),
       contentBuilder = ((_) => content ?? Text(faker.lorem.word()));
+  // coverage:ignore-end
 
   /// Builder of the title of the item.
   final MyoroAccordionItemTitleBuilder titleBuilder;

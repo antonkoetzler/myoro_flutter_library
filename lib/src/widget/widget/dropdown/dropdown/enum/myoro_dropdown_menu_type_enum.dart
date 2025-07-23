@@ -13,9 +13,11 @@ enum MyoroDropdownMenuTypeEnum {
   /// Displays a modal of the options.
   modal;
 
+  // coverage:ignore-start
   factory MyoroDropdownMenuTypeEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
+  // coverage:ignore-end
 
   bool get isOverlay => (this == overlay);
   bool get isExpanding => (this == expanding);

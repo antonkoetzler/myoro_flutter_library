@@ -28,6 +28,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
     required this.clearTextButtonIcon,
   });
 
+  // coverage:ignore-start
   MyoroInputThemeExtension.fake()
     : underlinedBorder = myoroFake<UnderlineInputBorder>(),
       outlinedBorder = myoroFake<OutlineInputBorder>(),
@@ -43,6 +44,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       labelBehavior = myoroFake<FloatingLabelBehavior>(),
       clearTextButtonPadding = myoroFake<EdgeInsets>(),
       clearTextButtonIcon = myoroFake<IconData>();
+  // coverage:ignore-end
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : underlinedBorder = UnderlineInputBorder(

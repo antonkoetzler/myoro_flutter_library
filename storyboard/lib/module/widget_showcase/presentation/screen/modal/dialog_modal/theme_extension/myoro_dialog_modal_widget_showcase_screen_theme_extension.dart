@@ -25,9 +25,11 @@ final class MyoroDialogModalWidgetShowcaseScreenThemeExtension
     required this.childWidgetSize,
   });
 
+  // coverage:ignore-start
   MyoroDialogModalWidgetShowcaseScreenThemeExtension.fake()
     : childWidgetBorderRadius = myoroFake<BorderRadius>(),
       childWidgetSize = faker.randomGenerator.decimal(scale: 100, min: 20);
+  // coverage:ignore-end
 
   MyoroDialogModalWidgetShowcaseScreenThemeExtension.builder()
     : childWidgetBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),

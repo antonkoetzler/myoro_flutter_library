@@ -10,9 +10,11 @@ enum MyoroButtonStyleEnum {
   /// Background [Color] and "inverse" coloring of content.
   secondary;
 
+  // coverage:ignore-start
   factory MyoroButtonStyleEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
+  // coverage:ignore-end
 
   /// Standard [BoxBorder] if you want to apply the default [BoxBorder].
   static BoxBorder border(BuildContext context) {

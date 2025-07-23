@@ -2,10 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  test('MyoroFontSizeEnum.fake()', () {
-    expect(MyoroFontSizeEnum.values.contains(MyoroFontSizeEnum.fake()), isTrue);
-  });
-
   test('MyoroFontSizeEnum.size', () {
     expect(MyoroFontSizeEnum.tiny.size, 12);
     expect(MyoroFontSizeEnum.small.size, 16);

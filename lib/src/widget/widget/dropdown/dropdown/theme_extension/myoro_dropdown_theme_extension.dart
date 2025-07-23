@@ -14,10 +14,12 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     with _$MyoroDropdownThemeExtensionMixin {
   const MyoroDropdownThemeExtension({required this.spacing, required this.menuBorder, required this.menuBorderRadius});
 
+  // coverage:ignore-start
   MyoroDropdownThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 50),
       menuBorder = myoroFake<BoxBorder>(),
       menuBorderRadius = myoroFake<BorderRadius>();
+  // coverage:ignore-end
 
   factory MyoroDropdownThemeExtension.builder(ColorScheme colorScheme) {
     final borderSide = BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary);

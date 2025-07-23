@@ -12,7 +12,9 @@ final class MyoroIconTextButtonWidgetShowcaseScreenThemeExtension
     with _$MyoroIconTextButtonWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroIconTextButtonWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroIconTextButtonWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroIconTextButtonWidgetShowcaseScreenThemeExtension.builder();
 

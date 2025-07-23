@@ -11,10 +11,12 @@ part 'myoro_table_row.g.dart';
 class MyoroTableRow<T> with _$MyoroTableRowMixin<T> {
   const MyoroTableRow({this.onTapDown, this.onTapUp, required this.cells});
 
+  // coverage:ignore-start
   MyoroTableRow.fake({int? cellQuantity})
     : onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null,
       cells = List.generate(cellQuantity ?? faker.randomGenerator.integer(10), (int index) => Text('Cell #$index'));
+  // coverage:ignore-end
 
   /// Function executed when the [MyoroTableRow] is tapped.
   final MyoroTableRowTapEvent<T>? onTapDown;

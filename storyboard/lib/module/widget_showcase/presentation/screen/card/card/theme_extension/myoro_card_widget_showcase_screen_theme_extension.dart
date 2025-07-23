@@ -13,7 +13,9 @@ final class MyoroCardWidgetShowcaseScreenThemeExtension
     with _$MyoroCardWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroCardWidgetShowcaseScreenThemeExtension({required this.textStyle});
 
+  // coverage:ignore-start
   MyoroCardWidgetShowcaseScreenThemeExtension.fake() : textStyle = myoroFake<TextStyle>();
+  // coverage:ignore-end
 
   MyoroCardWidgetShowcaseScreenThemeExtension.builder(TextTheme textTheme) : textStyle = textTheme.displayLarge!;
 

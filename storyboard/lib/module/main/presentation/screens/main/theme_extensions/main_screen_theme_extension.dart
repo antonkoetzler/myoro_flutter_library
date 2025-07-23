@@ -21,9 +21,11 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
 
   const MainScreenThemeExtension({required this.spacing, required this.widgetListingAccordionItemContent});
 
+  // coverage:ignore-start
   MainScreenThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
       widgetListingAccordionItemContent = myoroFake<EdgeInsets>();
+  // coverage:ignore-end
 
   const MainScreenThemeExtension.builder() : spacing = 10, widgetListingAccordionItemContent = const EdgeInsets.all(10);
 

@@ -39,12 +39,14 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
     this.style,
   }) : assert(text.length != 0, '[MyoroTextConfiguration]: [text] cannot be empty.');
 
+  // coverage:ignore-start
   MyoroTextConfiguration.fake()
     : text = faker.lorem.word(),
       maxLines = faker.randomGenerator.integer(10, min: 1),
       overflow = myoroFake<TextOverflow>(),
       alignment = myoroFake<TextAlign>(),
       style = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
+  // coverage:ignore-end
 
   /// [Text.data]
   final String text;

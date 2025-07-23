@@ -16,11 +16,13 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
     required this.indicatorTextAlignment,
   });
 
+  // coverage:ignore-start
   MyoroSliderThemeExtension.fake()
     : labelTextStyle = myoroFake<TextStyle>(),
       sliderPadding = myoroFake<EdgeInsets>(),
       indicatorTextStyle = myoroFake<TextStyle>(),
       indicatorTextAlignment = myoroFake<TextAlign>();
+  // coverage:ignore-end
 
   MyoroSliderThemeExtension.builder(TextTheme textTheme)
     : labelTextStyle = textTheme.headlineSmall!,

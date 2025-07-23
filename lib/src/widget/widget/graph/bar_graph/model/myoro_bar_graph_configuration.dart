@@ -18,7 +18,9 @@ class MyoroBarGraphConfiguration with _$MyoroBarGraphConfigurationMixin {
   const MyoroBarGraphConfiguration({this.sorted = sortedDefaultValue, required this.items})
     : assert(items.length != 0, '[MyoroBarGraphConfiguration]: [items] must not be empty.');
 
+  // coverage:ignore-start
   MyoroBarGraphConfiguration.fake()
     : sorted = faker.randomGenerator.boolean(),
       items = List.generate(faker.randomGenerator.integer(10, min: 1), (_) => MyoroBarGraphGroup.fake());
+  // coverage:ignore-end
 }

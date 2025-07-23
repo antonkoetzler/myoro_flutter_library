@@ -18,10 +18,12 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
     this.text = textDefaultValue,
   });
 
+  // coverage:ignore-start
   MyoroTooltipConfiguration.fake({bool? borderBuilderProvided})
     : margin = borderBuilderProvided ?? faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       waitDuration = myoroFake<Duration>(),
       text = faker.lorem.word();
+  // coverage:ignore-end
 
   /// Margin [EdgeInsets] of the tooltip.
   final EdgeInsets? margin;

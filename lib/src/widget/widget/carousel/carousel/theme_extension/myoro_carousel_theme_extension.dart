@@ -11,9 +11,11 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
     with _$MyoroCarouselThemeExtensionMixin {
   const MyoroCarouselThemeExtension({required this.previousItemButtonIcon, required this.nextItemButtonIcon});
 
+  // coverage:ignore-start
   MyoroCarouselThemeExtension.fake()
     : previousItemButtonIcon = myoroFake<IconData>(),
       nextItemButtonIcon = myoroFake<IconData>();
+  // coverage:ignore-end
 
   const MyoroCarouselThemeExtension.builder()
     : previousItemButtonIcon = Icons.keyboard_arrow_left,

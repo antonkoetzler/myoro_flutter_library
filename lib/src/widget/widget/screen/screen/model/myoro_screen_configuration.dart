@@ -11,10 +11,12 @@ part 'myoro_screen_configuration.g.dart';
 class MyoroScreenConfiguration with _$MyoroScreenConfigurationMixin {
   const MyoroScreenConfiguration({this.drawerController, this.appBar, required this.body});
 
+  // coverage:ignore-start
   MyoroScreenConfiguration.fake()
     : drawerController = faker.randomGenerator.boolean() ? MyoroDrawerController() : null,
       appBar = faker.randomGenerator.boolean() ? MyoroAppBar(configuration: MyoroAppBarConfiguration.fake()) : null,
       body = const SizedBox.shrink();
+  // coverage:ignore-end
 
   /// [MyoroDrawerController] if it needs to be controlled externally.
   final MyoroDrawerController? drawerController;

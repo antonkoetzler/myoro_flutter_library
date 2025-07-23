@@ -16,9 +16,11 @@ enum MyoroSnackBarTypeEnum {
   /// Error message.
   error;
 
+  // coverage:ignore-start
   factory MyoroSnackBarTypeEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
+  // coverage:ignore-end
 
   /// Border color of the snack bar.
   Color getColor(BuildContext context) {

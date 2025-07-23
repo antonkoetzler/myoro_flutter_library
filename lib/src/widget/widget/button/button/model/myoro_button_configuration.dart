@@ -20,6 +20,7 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
     this.onTapUp,
   });
 
+  // coverage:ignore-start
   MyoroButtonConfiguration.fake()
     : tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
@@ -34,6 +35,7 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
               : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null;
+  // coverage:ignore-end
 
   /// [MyoroTooltip] of the [MyoroButton].
   final MyoroTooltipConfiguration? tooltipConfiguration;

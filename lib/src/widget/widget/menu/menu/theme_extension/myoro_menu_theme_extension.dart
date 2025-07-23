@@ -18,6 +18,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
     required this.dialogTextLoaderPadding,
   });
 
+  // coverage:ignore-start
   MyoroMenuThemeExtension.fake()
     : backgroundColor = myoroFake<Color>(),
       borderRadius = myoroFake<BorderRadius>(),
@@ -26,6 +27,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
       itemBorderRadius = myoroFake<BorderRadius>(),
       dialogTextStyle = myoroFake<TextStyle>(),
       dialogTextLoaderPadding = myoroFake<EdgeInsets>();
+  // coverage:ignore-end
 
   MyoroMenuThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.primary,

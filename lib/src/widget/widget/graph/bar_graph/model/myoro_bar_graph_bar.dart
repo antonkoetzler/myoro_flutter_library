@@ -8,6 +8,15 @@ part 'myoro_bar_graph_bar.g.dart';
 /// Bar of a [MyoroBarGraphGroup].
 @myoroModel
 class MyoroBarGraphBar with _$MyoroBarGraphBarMixin {
+  const MyoroBarGraphBar({required this.y, this.color, this.barSections = const []});
+
+  // coverage:ignore-start
+  MyoroBarGraphBar.fake()
+    : y = faker.randomGenerator.decimal(),
+      color = myoroFake<Color>(),
+      barSections = List.generate(faker.randomGenerator.integer(5), (_) => MyoroBarGraphBarSection.fake());
+  // coverage:ignore-end
+
   /// Position of the bar on the y axis.
   final double y;
 
@@ -18,11 +27,4 @@ class MyoroBarGraphBar with _$MyoroBarGraphBarMixin {
   ///
   /// Overlaps [color] as the bars will have their own colors.
   final List<MyoroBarGraphBarSection> barSections;
-
-  const MyoroBarGraphBar({required this.y, this.color, this.barSections = const []});
-
-  MyoroBarGraphBar.fake()
-    : y = faker.randomGenerator.decimal(),
-      color = myoroFake<Color>(),
-      barSections = List.generate(faker.randomGenerator.integer(5), (_) => MyoroBarGraphBarSection.fake());
 }

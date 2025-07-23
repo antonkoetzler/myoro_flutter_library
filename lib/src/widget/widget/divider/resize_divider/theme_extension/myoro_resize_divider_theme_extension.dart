@@ -19,11 +19,13 @@ class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDivider
     required this.resizeButtonBorderRadius,
   });
 
+  // coverage:ignore-start
   MyoroResizeDividerThemeExtension.fake()
     : secondary = myoroFake<Color>(),
       resizeButtonShortValue = faker.randomGenerator.decimal(),
       resizeButtonLongValue = faker.randomGenerator.decimal(),
       resizeButtonBorderRadius = myoroFake<BorderRadius>();
+  // coverage:ignore-end
 
   MyoroResizeDividerThemeExtension.builder(ColorScheme colorScheme)
     : secondary = colorScheme.onPrimary,

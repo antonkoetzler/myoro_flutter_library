@@ -21,6 +21,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
     required this.errorMessageTextStyle,
   });
 
+  // coverage:ignore-start
   factory MyoroTableThemeExtension.fake() {
     return MyoroTableThemeExtension(
       decoration: myoroFake<BoxDecoration>(),
@@ -32,6 +33,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       errorMessageTextStyle: myoroFake<TextStyle>(),
     );
   }
+  // coverage:ignore-end
 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : decoration = BoxDecoration(

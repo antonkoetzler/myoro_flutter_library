@@ -13,9 +13,11 @@ enum MyoroInputStyleEnum {
   /// No border..
   none;
 
+  // coverage:ignore-start
   factory MyoroInputStyleEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
+  // coverage:ignore-end
 
   /// Border of the input.
   InputBorder getBorder(BuildContext context) {

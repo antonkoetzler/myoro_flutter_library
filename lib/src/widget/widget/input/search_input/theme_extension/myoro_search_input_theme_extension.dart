@@ -18,10 +18,12 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
     required this.searchButtonLoadingSize,
   });
 
+  // coverage:ignore-start
   MyoroSearchInputThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(),
       searchButtonIcon = myoroFake<IconData>(),
       searchButtonLoadingSize = faker.randomGenerator.decimal();
+  // coverage:ignore-end
 
   const MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
     // TODO: Make these numbers constants

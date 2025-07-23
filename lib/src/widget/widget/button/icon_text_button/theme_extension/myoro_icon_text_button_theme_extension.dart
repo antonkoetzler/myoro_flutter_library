@@ -18,10 +18,12 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
     required this.textStyle,
   });
 
+  // coverage:ignore-start
   MyoroIconTextButtonThemeExtension.fake()
     : contentPadding = myoroFake<EdgeInsets>(),
       spacing = faker.randomGenerator.decimal(scale: 20),
       textStyle = myoroFake<TextStyle>();
+  // coverage:ignore-end
 
   MyoroIconTextButtonThemeExtension.builder(TextTheme textTheme)
     : contentPadding = const EdgeInsets.all(5),

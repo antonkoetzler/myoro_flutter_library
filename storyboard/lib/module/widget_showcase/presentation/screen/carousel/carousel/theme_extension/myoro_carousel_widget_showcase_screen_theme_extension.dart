@@ -12,7 +12,9 @@ final class MyoroCarouselWidgetShowcaseScreenThemeExtension
     with _$MyoroCarouselWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroCarouselWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroCarouselWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroCarouselWidgetShowcaseScreenThemeExtension.builder();
 

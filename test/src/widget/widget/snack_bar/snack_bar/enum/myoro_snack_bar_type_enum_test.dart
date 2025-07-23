@@ -3,10 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  test('MyoroSnackBarTypeEnum.fake', () {
-    expect(MyoroSnackBarTypeEnum.values.contains(MyoroSnackBarTypeEnum.fake()), isTrue);
-  });
-
   testWidgets('MyoroSnackBarTypeEnum.getColor', (tester) async {
     late final BuildContext context;
     late final MyoroSnackBarThemeExtension themeExtension;

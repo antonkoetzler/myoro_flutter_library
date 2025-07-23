@@ -12,6 +12,7 @@ class MyoroResizeDividerConfiguration extends MyoroBasicDividerConfiguration
     with _$MyoroResizeDividerConfigurationMixin {
   const MyoroResizeDividerConfiguration({required super.direction, super.shortValue, super.padding, this.dragCallback});
 
+  // coverage:ignore-start
   factory MyoroResizeDividerConfiguration.fake() {
     return MyoroResizeDividerConfiguration(
       direction: myoroFake<Axis>(),
@@ -19,6 +20,7 @@ class MyoroResizeDividerConfiguration extends MyoroBasicDividerConfiguration
       padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
     );
   }
+  // coverage:ignore-end
 
   /// Resize activated callback.
   final MyoroResizeDividerDragCallback? dragCallback;

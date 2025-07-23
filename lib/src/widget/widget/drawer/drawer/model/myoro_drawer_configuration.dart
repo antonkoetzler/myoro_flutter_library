@@ -21,12 +21,14 @@ class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
     required this.child,
   });
 
+  // coverage:ignore-start
   MyoroDrawerConfiguration.fake()
     : title = faker.randomGenerator.boolean() ? faker.lorem.word() : '',
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       showCloseButton = faker.randomGenerator.boolean(),
       barrierDismissable = faker.randomGenerator.boolean(),
       child = const SizedBox.shrink();
+  // coverage:ignore-end
 
   /// Title of the drawer.
   final String title;

@@ -26,6 +26,7 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
     this.closeButtonPadding,
   });
 
+  // coverage:ignore-start
   MyoroModalConfiguration.fake()
     : barrierDismissable = faker.randomGenerator.boolean(),
       useRootNavigator = faker.randomGenerator.boolean(),
@@ -35,6 +36,7 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
       showCloseButton = faker.randomGenerator.boolean(),
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+  // coverage:ignore-end
 
   /// If you click everywhere but the modal, it closes
   final bool barrierDismissable;

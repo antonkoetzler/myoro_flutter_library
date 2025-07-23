@@ -11,9 +11,11 @@ part 'myoro_circular_loader_configuration.g.dart';
 class MyoroCircularLoaderConfiguration with _$MyoroCircularLoaderConfigurationMixin {
   const MyoroCircularLoaderConfiguration({this.color, this.size});
 
+  // coverage:ignore-start
   MyoroCircularLoaderConfiguration.fake()
     : color = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null;
+  // coverage:ignore-end
 
   /// Color of the [MyoroCircularLoader].
   final Color? color;

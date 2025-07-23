@@ -12,7 +12,9 @@ final class MyoroSnackBarWidgetShowcaseScreenThemeExtension
     with _$MyoroSnackBarWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroSnackBarWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroSnackBarWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroSnackBarWidgetShowcaseScreenThemeExtension.builder();
 

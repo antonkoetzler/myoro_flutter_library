@@ -19,6 +19,7 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
     required this.closeButtonEndDrawerIcon,
   });
 
+  // coverage:ignore-start
   MyoroDrawerThemeExtension.fake()
     : drawerPadding = myoroFake<EdgeInsets>(),
       drawerContentPadding = myoroFake<EdgeInsets>(),
@@ -27,6 +28,7 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
       titleTextStyle = myoroFake<TextStyle>(),
       closeButtonDrawerIcon = myoroFake<IconData>(),
       closeButtonEndDrawerIcon = myoroFake<IconData>();
+  // coverage:ignore-end
 
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : drawerPadding = const EdgeInsets.all(20),

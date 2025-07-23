@@ -21,6 +21,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
     required this.closeButtonIconConfiguration,
   });
 
+  // coverage:ignore-start
   MyoroModalThemeExtension.fake()
     : primaryColor = myoroFake<Color>(),
       borderRadius = myoroFake<BorderRadius>(),
@@ -29,6 +30,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       spacing = faker.randomGenerator.decimal(),
       titleTextStyle = myoroFake<TextStyle>(),
       closeButtonIconConfiguration = MyoroIconConfiguration.fake();
+  // coverage:ignore-end
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,

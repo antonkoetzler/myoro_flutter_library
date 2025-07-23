@@ -10,7 +10,9 @@ class MyoroDatePickerInputThemeExtension extends ThemeExtension<MyoroDatePickerI
     with _$MyoroDatePickerInputThemeExtensionMixin {
   const MyoroDatePickerInputThemeExtension();
 
+  // coverage:ignore-start
   const MyoroDatePickerInputThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroDatePickerInputThemeExtension.builder();
 

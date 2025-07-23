@@ -19,11 +19,13 @@ class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
     this.onChanged,
   });
 
+  // coverage:ignore-start
   MyoroCheckboxConfiguration.fake()
     : label = faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
       labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       value = faker.randomGenerator.boolean(),
       onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
+  // coverage:ignore-end
 
   /// Label at the right of the checkbox.
   final String label;

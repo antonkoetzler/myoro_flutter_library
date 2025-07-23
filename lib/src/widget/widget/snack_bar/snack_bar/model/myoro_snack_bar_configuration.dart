@@ -20,6 +20,7 @@ class MyoroSnackBarConfiguration with _$MyoroSnackBarConfigurationMixin {
     this.child,
   }) : assert((message.length > 0) ^ (child != null), '[MyoroSnackBar]: [message] (x)or [child] must be provided.');
 
+  // coverage:ignore-start
   factory MyoroSnackBarConfiguration.fake({bool? messageProvided}) {
     messageProvided = messageProvided ?? faker.randomGenerator.boolean();
 
@@ -30,6 +31,7 @@ class MyoroSnackBarConfiguration with _$MyoroSnackBarConfigurationMixin {
       child: messageProvided ? null : const SizedBox.shrink(),
     );
   }
+  // coverage:ignore-end
 
   /// Type of snack bar dialog.
   final MyoroSnackBarTypeEnum snackBarType;

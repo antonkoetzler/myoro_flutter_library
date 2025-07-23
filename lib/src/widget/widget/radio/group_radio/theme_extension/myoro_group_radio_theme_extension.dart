@@ -13,9 +13,11 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
     with _$MyoroGroupRadioThemeExtensionMixin {
   const MyoroGroupRadioThemeExtension({required this.spacing, required this.runSpacing});
 
+  // coverage:ignore-start
   MyoroGroupRadioThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(),
       runSpacing = faker.randomGenerator.decimal();
+  // coverage:ignore-end
 
   const MyoroGroupRadioThemeExtension.builder() : spacing = 5, runSpacing = 5;
 

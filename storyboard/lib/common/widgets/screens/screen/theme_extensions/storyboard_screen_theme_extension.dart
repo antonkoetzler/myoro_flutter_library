@@ -36,12 +36,14 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
     required this.toggleThemeButtonIcon,
   });
 
+  // coverage:ignore-start
   StoryboardScreenThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 50),
       previousPageButtonIcon = myoroFake<IconData>(),
       buttonPadding = myoroFake<EdgeInsets>(),
       titleTextStyle = myoroFake<TextStyle>(),
       toggleThemeButtonIcon = myoroFake<IconData>();
+  // coverage:ignore-end
 
   StoryboardScreenThemeExtension.builder(TextTheme textTheme)
     : spacing = 20,

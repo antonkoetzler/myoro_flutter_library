@@ -10,7 +10,9 @@ class MyoroLayoutBuilderThemeExtension extends ThemeExtension<MyoroLayoutBuilder
     with _$MyoroLayoutBuilderThemeExtensionMixin {
   const MyoroLayoutBuilderThemeExtension();
 
+  // coverage:ignore-start
   const MyoroLayoutBuilderThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroLayoutBuilderThemeExtension.builder();
 

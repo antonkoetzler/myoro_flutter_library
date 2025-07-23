@@ -19,12 +19,14 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
     required this.splashRadius,
   });
 
+  // coverage:ignore-start
   MyoroRadioThemeExtension.fake()
     : activeColor = myoroFake<Color>(),
       hoverColor = myoroFake<Color>(),
       labelTextStyle = myoroFake<TextStyle>(),
       spacing = faker.randomGenerator.decimal(),
       splashRadius = faker.randomGenerator.decimal();
+  // coverage:ignore-end
 
   MyoroRadioThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : activeColor = colorScheme.onPrimary,

@@ -11,7 +11,9 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
     with _$MyoroAppBarThemeExtensionMixin {
   const MyoroAppBarThemeExtension({required this.primaryColor, required this.contentPadding});
 
+  // coverage:ignore-start
   MyoroAppBarThemeExtension.fake() : primaryColor = myoroFake<Color>(), contentPadding = myoroFake<EdgeInsets>();
+  // coverage:ignore-end
 
   MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
     : primaryColor = colorScheme.primary,

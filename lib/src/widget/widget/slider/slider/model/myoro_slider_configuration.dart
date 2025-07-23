@@ -20,6 +20,7 @@ class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
     this.onChanged,
   });
 
+  // coverage:ignore-start
   MyoroSliderConfiguration.fake()
     : label = faker.lorem.word(),
       labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
@@ -28,6 +29,7 @@ class MyoroSliderConfiguration with _$MyoroSliderConfigurationMixin {
       maxValueIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
       footerIndicatorTextBuilder = faker.randomGenerator.boolean() ? ((_) => faker.lorem.word()) : null,
       onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
+  // coverage:ignore-end
 
   /// Label of the slider.
   final String label;

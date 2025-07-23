@@ -28,6 +28,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       titleCardSpacing = 10,
       textStyle = textTheme.titleMedium!;
 
+  // coverage:ignore-start
   MyoroCardThemeExtension.fake()
     : backgroundColor = myoroFake<Color>(),
       border = myoroFake<Border>(),
@@ -35,6 +36,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       padding = myoroFake<EdgeInsets>(),
       titleCardSpacing = faker.randomGenerator.decimal(),
       textStyle = myoroFake<TextStyle>();
+  // coverage:ignore-end
 
   /// Background color of the card.
   final Color backgroundColor;

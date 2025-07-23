@@ -9,17 +9,9 @@ part 'myoro_bar_graph_bar_section.g.dart';
 /// [MyoroBarGraphBarSection] will occupy a specified piece of a [MyoroBarGraph].
 @myoroModel
 class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
-  /// Starting position of the bar section.
-  final double fromY;
-
-  /// Ending position of the bar section
-  final double toY;
-
-  /// Color of the bar section.
-  final Color color;
-
   const MyoroBarGraphBarSection({required this.fromY, required this.toY, required this.color});
 
+  // coverage:ignore-start
   factory MyoroBarGraphBarSection.fake() {
     final fromY = faker.randomGenerator.decimal();
     return MyoroBarGraphBarSection(
@@ -28,4 +20,14 @@ class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
       color: myoroFake<Color>(),
     );
   }
+  // coverage:ignore-end
+
+  /// Starting position of the bar section.
+  final double fromY;
+
+  /// Ending position of the bar section
+  final double toY;
+
+  /// Color of the bar section.
+  final Color color;
 }

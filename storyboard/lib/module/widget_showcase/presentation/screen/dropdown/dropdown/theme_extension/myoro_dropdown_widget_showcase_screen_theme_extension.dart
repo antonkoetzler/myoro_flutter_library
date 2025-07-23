@@ -12,7 +12,9 @@ final class MyoroDropdownWidgetShowcaseScreenThemeExtension
     with _$MyoroDropdownWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroDropdownWidgetShowcaseScreenThemeExtension();
 
+  // coverage:ignore-start
   const MyoroDropdownWidgetShowcaseScreenThemeExtension.fake();
+  // coverage:ignore-end
 
   const MyoroDropdownWidgetShowcaseScreenThemeExtension.builder();
 

@@ -29,6 +29,7 @@ class MyoroMenuItem with _$MyoroMenuItemMixin {
          'null. If [builder] is null, [iconConfiguration] and/or [textConfiguration] must not be null.',
        );
 
+  // coverage:ignore-start
   factory MyoroMenuItem.fake({bool? builderProvided}) {
     builderProvided = builderProvided ?? faker.randomGenerator.boolean();
     // Prevent assertion errors.
@@ -51,6 +52,7 @@ class MyoroMenuItem with _$MyoroMenuItemMixin {
       onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
     );
   }
+  // coverage:ignore-end
 
   /// If the item is selected (a.k.a hovered) or not.
   final bool isSelected;

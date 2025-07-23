@@ -26,6 +26,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     required this.secondaryTapContentColor,
   });
 
+  // coverage:ignore-start
   MyoroButtonThemeExtension.fake()
     : border = myoroFake<Border>(),
       borderRadius = myoroFake<BorderRadius>(),
@@ -41,6 +42,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       secondaryIdleContentColor = myoroFake<Color>(),
       secondaryHoverContentColor = myoroFake<Color>(),
       secondaryTapContentColor = myoroFake<Color>();
+  // coverage:ignore-end
 
   /// Standard [BoxBorder].
   final BoxBorder border;
