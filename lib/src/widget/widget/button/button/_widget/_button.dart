@@ -11,14 +11,23 @@ final class _Button extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<MyoroButtonViewModel>();
     final configuration = viewModel.state.configuration;
+    final borderRadius = _getBorderRadius(context, configuration);
 
     final child = Container(
       decoration: BoxDecoration(
         color: _getBackgroundColor(context, configuration),
         border: _border(configuration),
-        borderRadius: _getBorderRadius(context, configuration),
+        borderRadius: borderRadius,
       ),
-      child: _builder(context, _tapStatusEnum),
+      child: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular((borderRadius.topLeft.x - 2).clamp(0.0, double.infinity)),
+          topRight: Radius.circular((borderRadius.topRight.x - 2).clamp(0.0, double.infinity)),
+          bottomLeft: Radius.circular((borderRadius.bottomLeft.x - 2).clamp(0.0, double.infinity)),
+          bottomRight: Radius.circular((borderRadius.bottomRight.x - 2).clamp(0.0, double.infinity)),
+        ),
+        child: _builder(context, _tapStatusEnum),
+      ),
     );
 
     if (configuration?.tooltipConfiguration != null) {
