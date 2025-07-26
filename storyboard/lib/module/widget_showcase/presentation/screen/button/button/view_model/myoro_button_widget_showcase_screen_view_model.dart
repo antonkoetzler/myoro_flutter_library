@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
+part 'myoro_button_widget_showcase_screen_state.dart';
+
 /// View model of [MyoroButtonWidgetShowcaseScreen].
 final class MyoroButtonWidgetShowcaseScreenViewModel {
   /// State

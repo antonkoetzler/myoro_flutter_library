@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/storyboard.dart';
+part of 'myoro_button_widget_showcase_screen_view_model.dart';
 
 /// State of [MyoroButtonWidgetShowcaseScreenViewModel].
 final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
