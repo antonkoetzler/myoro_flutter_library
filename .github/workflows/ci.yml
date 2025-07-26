@@ -38,7 +38,7 @@ jobs:
 
       - name: Check coverage threshold for MFL (Must be 100%)
         run: |
-          COVERAGE=$(lcov --summary coverage/lcov.info | grep lines | awk '{print $2}' | sed 's/%//')
+          COVERAGE=$(lcov --summary coverage/lcov.filtered.info | grep lines | awk '{print $2}' | sed 's/%//')
           echo "Coverage: $COVERAGE%"
           if (( $(echo "$COVERAGE != 100" | bc -l) )); then
             echo "Code coverage is not exactly 100%."
