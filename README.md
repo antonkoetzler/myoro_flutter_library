@@ -42,12 +42,6 @@ dependencies:
 
 3. Enjoy!
 
-## Wiki chapters
-
-1. [Coding practices & habits](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/docs/Coding_practices_%26_habits.md);
-1. [Nomenclature](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/docs/Nomenclature.md);
-1. [Mental checklist when developing](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/docs/Mental_checklist_when_developing.md).
-
 ## Want to stay updated on what changes in new versions?
 
 Check out the [change log](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/CHANGELOG.md)!
