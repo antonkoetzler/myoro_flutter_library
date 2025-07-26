@@ -34,10 +34,10 @@ new_version="${major}.${minor}.${patch}"
 sed -i.bak "s/^version: .*/version: $new_version/" pubspec.yaml
 rm pubspec.yaml.bak
 
-# Extract lines from STAGING_NOTES.md starting from line 3
-staging_notes=$(tail -n +3 STAGING_NOTES.md)
+# Extract lines from STAGELOG.md starting from line 3
+staging_notes=$(tail -n +3 STAGELOG.md)
 
-# No notes in STAGING_NOTES.md case
+# No notes in STAGELOG.md case
 if [[ -z "$staging_notes" ]]; then
   echo "No staging notes to add. Aborting."
   exit 1
@@ -59,8 +59,8 @@ BEGIN { inserted = 0 }
 }
 ' CHANGELOG.md > CHANGELOG.tmp && mv CHANGELOG.tmp CHANGELOG.md
 
-# Preserve first two lines of STAGING_NOTES.md
-head -n 1 STAGING_NOTES.md > STAGING_NOTES.tmp && mv STAGING_NOTES.tmp STAGING_NOTES.md
+# Preserve first two lines of STAGELOG.md
+head -n 1 STAGELOG.md > STAGELOG.tmp && mv STAGELOG.tmp STAGELOG.md
 
 # Format code before pushing
 bash tool/format_and_fix.sh

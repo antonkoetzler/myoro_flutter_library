@@ -11,7 +11,7 @@
 ## MFL provides
 
 1. Syntax improvements;
-1. A fully customizable design system with every widget you could need;
+1. A fully customizable design system with every `Widget` you could need;
 1. Implementation for various features you could need during development.
 
 ## How do I get started?
@@ -24,26 +24,32 @@
 dependencies:
   ...
 
-  # Grabbing from disk
+  # Resolving from disk
   myoro_flutter_library:
     path: path/to/mfl
 
-  # Grabbing from GitHub
+  # Resolving from GitHub
   myoro_flutter_library:
     git:
       url: git@github.com:antonkoetzler/myoro_flutter_library
+
+  # Resolving from https://pub.dev/
+  myoro_flutter_library: any
 
 ...
 ```
 
 2. Make sure your `MyoroApp` is your root widget:
 
-- See `storyboard/lib/main.dart` for reference.
-
 3. Enjoy!
 
-## Want to stay updated on what changes in new versions?
+## Resources
 
-Check out the [change log](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/CHANGELOG.md)!
+1. `CHANGELOG.md`: Documentation of changes in every feature;
+1. `STAGELOG.md`: When `dev` has not been merged yet, this is the coming set of changes;
+1. `Standards.md`: Code standards;
+1. `Tools.md`: The `tool` folder;
+1. `Issues.md`: About creating issues;
+1. `Pull Requests.md`: About creating pull requests;
 
 <p>&nbsp;</p>
