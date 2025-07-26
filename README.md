@@ -45,11 +45,11 @@ dependencies:
 
 ## Resources
 
-1. `CHANGELOG.md`: Documentation of changes in every feature;
-1. `STAGELOG.md`: When `dev` has not been merged yet, this is the coming set of changes;
-1. `Standards.md`: Code standards;
-1. `Tools.md`: The `tool` folder;
-1. `Issues.md`: About creating issues;
-1. `Pull Requests.md`: About creating pull requests;
+1. [`CHANGELOG.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/CHANGELOG.md): Documentation of changes in every feature;
+1. [`STAGELOG.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/STAGELOG.md): When `dev` has not been merged yet, this is the coming set of changes;
+1. [`Standards.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Standards.md): Code standards;
+1. [`Tools.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Tools.md): The `tool` folder;
+1. [`Issues.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Issues.md): About creating issues;
+1. [`Pull Requests.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Pull%20Requests.md): About creating pull requests;
 
 <p>&nbsp;</p>
