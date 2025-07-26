@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kiwi/kiwi.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
+
+part 'myoro_app_widget_showcase_screen_state.dart';
 
 /// View model of [MyoroAppWidgetShowcaseScreen].
 final class MyoroAppWidgetShowcaseScreenViewModel {

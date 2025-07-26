@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:kiwi/kiwi.dart';
-import 'package:storyboard/storyboard.dart';
+part of 'myoro_app_widget_showcase_screen_view_model.dart';
 
 /// State of [MyoroAppWidgetShowcaseScreenViewModel].
 final class MyoroAppWidgetShowcaseScreenState extends ChangeNotifier {
