@@ -1,5 +1,3 @@
-<h1 align='center'>🚧 NOT PRODUCTION READY 🚧</h1>
-
 <h1 align='center'>MyoroFlutterLibrary</h1>
 
 <p align='center'>
