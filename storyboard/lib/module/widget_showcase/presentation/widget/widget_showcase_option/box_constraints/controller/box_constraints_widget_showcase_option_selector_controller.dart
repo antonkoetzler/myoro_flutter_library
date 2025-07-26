@@ -5,7 +5,9 @@ import 'package:storyboard/storyboard.dart';
 final class BoxConstraintsWidgetShowcaseOptionSelectorController extends ChangeNotifier {
   static const enabledDefaultValue = true;
 
-  BoxConstraintsWidgetShowcaseOptionSelectorController({bool enabled = enabledDefaultValue, required double value}) : _enabled = enabled, _value = value;
+  BoxConstraintsWidgetShowcaseOptionSelectorController({bool enabled = enabledDefaultValue, required double value})
+    : _enabled = enabled,
+      _value = value;
 
   /// Whether or not the field is being used to construct the [BoxConstraints].
   bool _enabled;

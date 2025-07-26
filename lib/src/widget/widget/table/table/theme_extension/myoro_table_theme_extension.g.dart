@@ -11,8 +11,7 @@ part of 'myoro_table_theme_extension.dart';
 /// ```dart
 /// class MyoroTableThemeExtension with _$MyoroTableThemeExtensionMixin {}
 /// ```
-mixin _$MyoroTableThemeExtensionMixin
-    on ThemeExtension<MyoroTableThemeExtension> {
+mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension> {
   MyoroTableThemeExtension get self => this as MyoroTableThemeExtension;
 
   @override
@@ -31,12 +30,9 @@ mixin _$MyoroTableThemeExtensionMixin
       columnSpacing: columnSpacing ?? self.columnSpacing,
       rowTextStyle: rowTextStyle ?? self.rowTextStyle,
       loaderEmptyMessageErrorMessagePadding:
-          loaderEmptyMessageErrorMessagePadding ??
-          self.loaderEmptyMessageErrorMessagePadding,
-      emptyMessageTextStyle:
-          emptyMessageTextStyle ?? self.emptyMessageTextStyle,
-      errorMessageTextStyle:
-          errorMessageTextStyle ?? self.errorMessageTextStyle,
+          loaderEmptyMessageErrorMessagePadding ?? self.loaderEmptyMessageErrorMessagePadding,
+      emptyMessageTextStyle: emptyMessageTextStyle ?? self.emptyMessageTextStyle,
+      errorMessageTextStyle: errorMessageTextStyle ?? self.errorMessageTextStyle,
     );
   }
 
@@ -48,8 +44,7 @@ mixin _$MyoroTableThemeExtensionMixin
         other.columnTextStyle == self.columnTextStyle &&
         other.columnSpacing == self.columnSpacing &&
         other.rowTextStyle == self.rowTextStyle &&
-        other.loaderEmptyMessageErrorMessagePadding ==
-            self.loaderEmptyMessageErrorMessagePadding &&
+        other.loaderEmptyMessageErrorMessagePadding == self.loaderEmptyMessageErrorMessagePadding &&
         other.emptyMessageTextStyle == self.emptyMessageTextStyle &&
         other.errorMessageTextStyle == self.errorMessageTextStyle;
   }

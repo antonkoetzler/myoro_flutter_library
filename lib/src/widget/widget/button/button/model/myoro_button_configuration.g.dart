@@ -31,19 +31,12 @@ mixin _$MyoroButtonConfigurationMixin {
     bool onTapUpProvided = true,
   }) {
     return MyoroButtonConfiguration(
-      tooltipConfiguration:
-          tooltipConfigurationProvided
-              ? (tooltipConfiguration ?? self.tooltipConfiguration)
-              : null,
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
-      borderRadius:
-          borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       backgroundColorBuilder:
-          backgroundColorBuilderProvided
-              ? (backgroundColorBuilder ?? self.backgroundColorBuilder)
-              : null,
-      borderBuilder:
-          borderBuilderProvided ? (borderBuilder ?? self.borderBuilder) : null,
+          backgroundColorBuilderProvided ? (backgroundColorBuilder ?? self.backgroundColorBuilder) : null,
+      borderBuilder: borderBuilderProvided ? (borderBuilder ?? self.borderBuilder) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
     );

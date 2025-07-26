@@ -31,22 +31,12 @@ mixin _$MyoroMenuConfigurationMixin<T> {
   }) {
     return MyoroMenuConfiguration(
       constraints: constraints ?? self.constraints,
-      backgroundColor:
-          backgroundColorProvided
-              ? (backgroundColor ?? self.backgroundColor)
-              : null,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       border: borderProvided ? (border ?? self.border) : null,
-      borderRadius:
-          borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       request: request ?? self.request,
-      onEndReachedRequest:
-          onEndReachedRequestProvided
-              ? (onEndReachedRequest ?? self.onEndReachedRequest)
-              : null,
-      searchCallback:
-          searchCallbackProvided
-              ? (searchCallback ?? self.searchCallback)
-              : null,
+      onEndReachedRequest: onEndReachedRequestProvided ? (onEndReachedRequest ?? self.onEndReachedRequest) : null,
+      searchCallback: searchCallbackProvided ? (searchCallback ?? self.searchCallback) : null,
       itemBuilder: itemBuilder ?? self.itemBuilder,
     );
   }

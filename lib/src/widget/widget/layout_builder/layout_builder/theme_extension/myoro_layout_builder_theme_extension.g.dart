@@ -11,10 +11,8 @@ part of 'myoro_layout_builder_theme_extension.dart';
 /// ```dart
 /// class MyoroLayoutBuilderThemeExtension with _$MyoroLayoutBuilderThemeExtensionMixin {}
 /// ```
-mixin _$MyoroLayoutBuilderThemeExtensionMixin
-    on ThemeExtension<MyoroLayoutBuilderThemeExtension> {
-  MyoroLayoutBuilderThemeExtension get self =>
-      this as MyoroLayoutBuilderThemeExtension;
+mixin _$MyoroLayoutBuilderThemeExtensionMixin on ThemeExtension<MyoroLayoutBuilderThemeExtension> {
+  MyoroLayoutBuilderThemeExtension get self => this as MyoroLayoutBuilderThemeExtension;
 
   @override
   MyoroLayoutBuilderThemeExtension copyWith() {
@@ -23,8 +21,7 @@ mixin _$MyoroLayoutBuilderThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroLayoutBuilderThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroLayoutBuilderThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

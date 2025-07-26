@@ -12,8 +12,7 @@ part of 'storyboard_screen_configuration.dart';
 /// class StoryboardScreenConfiguration with _$StoryboardScreenConfigurationMixin {}
 /// ```
 mixin _$StoryboardScreenConfigurationMixin {
-  StoryboardScreenConfiguration get self =>
-      this as StoryboardScreenConfiguration;
+  StoryboardScreenConfiguration get self => this as StoryboardScreenConfiguration;
 
   StoryboardScreenConfiguration copyWith({
     void Function()? onPrevious,
@@ -42,12 +41,7 @@ mixin _$StoryboardScreenConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.onPrevious,
-      self.title,
-      self.extraActionWidgets,
-      self.body,
-    );
+    return Object.hash(self.onPrevious, self.title, self.extraActionWidgets, self.body);
   }
 
   @override

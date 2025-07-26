@@ -23,8 +23,7 @@ mixin _$MyoroCircularLoaderWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroCircularLoaderWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroCircularLoaderWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

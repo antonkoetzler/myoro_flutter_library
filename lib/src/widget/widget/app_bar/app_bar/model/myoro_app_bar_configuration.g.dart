@@ -22,10 +22,7 @@ mixin _$MyoroAppBarConfigurationMixin {
   }) {
     return MyoroAppBarConfiguration(
       bordered: bordered ?? self.bordered,
-      backgroundColor:
-          backgroundColorProvided
-              ? (backgroundColor ?? self.backgroundColor)
-              : null,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       child: child ?? self.child,
     );
   }

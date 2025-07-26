@@ -12,8 +12,7 @@ part of 'text_widget_showcase_option_configuration.dart';
 /// class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$TextWidgetShowcaseOptionConfigurationMixin {
-  TextWidgetShowcaseOptionConfiguration get self =>
-      this as TextWidgetShowcaseOptionConfiguration;
+  TextWidgetShowcaseOptionConfiguration get self => this as TextWidgetShowcaseOptionConfiguration;
 
   TextWidgetShowcaseOptionConfiguration copyWith({
     String? label,
@@ -48,50 +47,22 @@ mixin _$TextWidgetShowcaseOptionConfigurationMixin {
       textInitialValue: textInitialValue ?? self.textInitialValue,
       textOnChanged: textOnChanged ?? self.textOnChanged,
       maxLinesInitialValue: maxLinesInitialValue ?? self.maxLinesInitialValue,
-      maxLinesOnChanged:
-          maxLinesOnChangedProvided
-              ? (maxLinesOnChanged ?? self.maxLinesOnChanged)
-              : null,
+      maxLinesOnChanged: maxLinesOnChangedProvided ? (maxLinesOnChanged ?? self.maxLinesOnChanged) : null,
       maxLinesCheckboxOnChanged:
-          maxLinesCheckboxOnChangedProvided
-              ? (maxLinesCheckboxOnChanged ?? self.maxLinesCheckboxOnChanged)
-              : null,
-      overflowInitialValue:
-          overflowInitialValueProvided
-              ? (overflowInitialValue ?? self.overflowInitialValue)
-              : null,
-      overflowOnChanged:
-          overflowOnChangedProvided
-              ? (overflowOnChanged ?? self.overflowOnChanged)
-              : null,
+          maxLinesCheckboxOnChangedProvided ? (maxLinesCheckboxOnChanged ?? self.maxLinesCheckboxOnChanged) : null,
+      overflowInitialValue: overflowInitialValueProvided ? (overflowInitialValue ?? self.overflowInitialValue) : null,
+      overflowOnChanged: overflowOnChangedProvided ? (overflowOnChanged ?? self.overflowOnChanged) : null,
       overflowCheckboxOnChanged:
-          overflowCheckboxOnChangedProvided
-              ? (overflowCheckboxOnChanged ?? self.overflowCheckboxOnChanged)
-              : null,
+          overflowCheckboxOnChangedProvided ? (overflowCheckboxOnChanged ?? self.overflowCheckboxOnChanged) : null,
       alignmentInitialValue:
-          alignmentInitialValueProvided
-              ? (alignmentInitialValue ?? self.alignmentInitialValue)
-              : null,
-      alignmentOnChanged:
-          alignmentOnChangedProvided
-              ? (alignmentOnChanged ?? self.alignmentOnChanged)
-              : null,
+          alignmentInitialValueProvided ? (alignmentInitialValue ?? self.alignmentInitialValue) : null,
+      alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? self.alignmentOnChanged) : null,
       alignmentCheckboxOnChanged:
-          alignmentCheckboxOnChangedProvided
-              ? (alignmentCheckboxOnChanged ?? self.alignmentCheckboxOnChanged)
-              : null,
-      styleInitialValue:
-          styleInitialValueProvided
-              ? (styleInitialValue ?? self.styleInitialValue)
-              : null,
-      styleOnChanged:
-          styleOnChangedProvided
-              ? (styleOnChanged ?? self.styleOnChanged)
-              : null,
+          alignmentCheckboxOnChangedProvided ? (alignmentCheckboxOnChanged ?? self.alignmentCheckboxOnChanged) : null,
+      styleInitialValue: styleInitialValueProvided ? (styleInitialValue ?? self.styleInitialValue) : null,
+      styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? self.styleOnChanged) : null,
       styleCheckboxOnChanged:
-          styleCheckboxOnChangedProvided
-              ? (styleCheckboxOnChanged ?? self.styleCheckboxOnChanged)
-              : null,
+          styleCheckboxOnChangedProvided ? (styleCheckboxOnChanged ?? self.styleCheckboxOnChanged) : null,
     );
   }
 

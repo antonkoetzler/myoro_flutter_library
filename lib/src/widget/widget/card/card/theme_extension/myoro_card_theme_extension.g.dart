@@ -11,8 +11,7 @@ part of 'myoro_card_theme_extension.dart';
 /// ```dart
 /// class MyoroCardThemeExtension with _$MyoroCardThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCardThemeExtensionMixin
-    on ThemeExtension<MyoroCardThemeExtension> {
+mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> {
   MyoroCardThemeExtension get self => this as MyoroCardThemeExtension;
 
   @override

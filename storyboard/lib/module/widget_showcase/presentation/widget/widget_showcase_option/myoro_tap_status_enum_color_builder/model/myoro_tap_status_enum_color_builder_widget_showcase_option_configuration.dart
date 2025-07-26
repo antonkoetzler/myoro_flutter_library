@@ -49,4 +49,3 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration
   final Color? initiallySelectedTapColor;
   final MyoroSingularDropdownConfigurationOnChanged<Color> tapOnChanged;
 }
-
