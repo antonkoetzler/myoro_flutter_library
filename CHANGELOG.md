@@ -1,5 +1,9 @@
 # Changelog (of major and minor versions)
 
+## 1.3.1
+
+- Small changes before 2.0.0
+
 ## 1.3.0
 
 - fix: Selected Widget button was not hovered when selected in storyboard
