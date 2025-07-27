@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.2
+
+- Fix `MyoroTapStatusEnum.idle` case in `MyoroButton`
+
 ## 2.0.1
 
 - feature: `MyoroAppConfiguration.builder`
