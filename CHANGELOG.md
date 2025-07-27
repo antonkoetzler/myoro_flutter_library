@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.3
+
+- fix: `MyoroButtonViewModel` test
+
 ## 2.0.2
 
 - Fix `MyoroTapStatusEnum.idle` case in `MyoroButton`
