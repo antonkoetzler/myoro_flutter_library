@@ -34,7 +34,7 @@ class MyoroButtonViewModel {
 
   /// Callback executed when the [MyoroButton] is tapped then released.
   void onTapUp(TapUpDetails details) {
-    _state.tapStatusController.value = MyoroTapStatusEnum.hover;
+    _state.tapStatusController.value = MyoroTapStatusEnum.idle;
     _state.configuration?.onTapUp?.call(details);
   }
 
