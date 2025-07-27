@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.1
+
+- feature: `MyoroAppConfiguration.builder`
+
 ## 2.0.0
 
 - feature: Added `MyoroFontSizeEnum.extraLarge`

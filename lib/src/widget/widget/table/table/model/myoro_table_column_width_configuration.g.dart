@@ -12,8 +12,7 @@ part of 'myoro_table_column_width_configuration.dart';
 /// class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurationMixin {}
 /// ```
 mixin _$MyoroTableColumnWidthConfigurationMixin {
-  MyoroTableColumnWidthConfiguration get self =>
-      this as MyoroTableColumnWidthConfiguration;
+  MyoroTableColumnWidthConfiguration get self => this as MyoroTableColumnWidthConfiguration;
 
   MyoroTableColumnWidthConfiguration copyWith({
     MyoroTableColumnWidthConfigurationEnum? typeEnum,

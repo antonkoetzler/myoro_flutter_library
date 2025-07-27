@@ -31,16 +31,12 @@ mixin _$MyoroModalConfigurationMixin {
     return MyoroModalConfiguration(
       barrierDismissable: barrierDismissable ?? self.barrierDismissable,
       useRootNavigator: useRootNavigator ?? self.useRootNavigator,
-      constraints:
-          constraintsProvided ? (constraints ?? self.constraints) : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
       title: title ?? self.title,
       showCloseButton: showCloseButton ?? self.showCloseButton,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding:
-          closeButtonPaddingProvided
-              ? (closeButtonPadding ?? self.closeButtonPadding)
-              : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
     );
   }
 

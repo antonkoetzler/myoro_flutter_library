@@ -11,10 +11,8 @@ part of 'myoro_search_input_theme_extension.dart';
 /// ```dart
 /// class MyoroSearchInputThemeExtension with _$MyoroSearchInputThemeExtensionMixin {}
 /// ```
-mixin _$MyoroSearchInputThemeExtensionMixin
-    on ThemeExtension<MyoroSearchInputThemeExtension> {
-  MyoroSearchInputThemeExtension get self =>
-      this as MyoroSearchInputThemeExtension;
+mixin _$MyoroSearchInputThemeExtensionMixin on ThemeExtension<MyoroSearchInputThemeExtension> {
+  MyoroSearchInputThemeExtension get self => this as MyoroSearchInputThemeExtension;
 
   @override
   MyoroSearchInputThemeExtension copyWith({
@@ -25,8 +23,7 @@ mixin _$MyoroSearchInputThemeExtensionMixin
     return MyoroSearchInputThemeExtension(
       spacing: spacing ?? self.spacing,
       searchButtonIcon: searchButtonIcon ?? self.searchButtonIcon,
-      searchButtonLoadingSize:
-          searchButtonLoadingSize ?? self.searchButtonLoadingSize,
+      searchButtonLoadingSize: searchButtonLoadingSize ?? self.searchButtonLoadingSize,
     );
   }
 
@@ -41,11 +38,7 @@ mixin _$MyoroSearchInputThemeExtensionMixin
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.spacing,
-      self.searchButtonIcon,
-      self.searchButtonLoadingSize,
-    );
+    return Object.hash(self.spacing, self.searchButtonIcon, self.searchButtonLoadingSize);
   }
 
   @override

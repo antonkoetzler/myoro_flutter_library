@@ -21,10 +21,7 @@ mixin _$MyoroTableColumnMixin {
     Widget? child,
   }) {
     return MyoroTableColumn(
-      tooltipMessage:
-          tooltipMessageProvided
-              ? (tooltipMessage ?? self.tooltipMessage)
-              : null,
+      tooltipMessage: tooltipMessageProvided ? (tooltipMessage ?? self.tooltipMessage) : null,
       widthConfiguration: widthConfiguration ?? self.widthConfiguration,
       child: child ?? self.child,
     );
@@ -41,11 +38,7 @@ mixin _$MyoroTableColumnMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.tooltipMessage,
-      self.widthConfiguration,
-      self.child,
-    );
+    return Object.hash(self.tooltipMessage, self.widthConfiguration, self.child);
   }
 
   @override

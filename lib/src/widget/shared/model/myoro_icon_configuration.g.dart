@@ -14,15 +14,8 @@ part of 'myoro_icon_configuration.dart';
 mixin _$MyoroIconConfigurationMixin {
   MyoroIconConfiguration get self => this as MyoroIconConfiguration;
 
-  MyoroIconConfiguration copyWith({
-    IconData? icon,
-    double? size,
-    bool sizeProvided = true,
-  }) {
-    return MyoroIconConfiguration(
-      icon: icon ?? self.icon,
-      size: sizeProvided ? (size ?? self.size) : null,
-    );
+  MyoroIconConfiguration copyWith({IconData? icon, double? size, bool sizeProvided = true}) {
+    return MyoroIconConfiguration(icon: icon ?? self.icon, size: sizeProvided ? (size ?? self.size) : null);
   }
 
   @override
