@@ -12,7 +12,8 @@ part of 'myoro_group_checkbox_configuration.dart';
 /// class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixin {}
 /// ```
 mixin _$MyoroGroupCheckboxConfigurationMixin {
-  MyoroGroupCheckboxConfiguration get self => this as MyoroGroupCheckboxConfiguration;
+  MyoroGroupCheckboxConfiguration get self =>
+      this as MyoroGroupCheckboxConfiguration;
 
   MyoroGroupCheckboxConfiguration copyWith({
     Axis? direction,
@@ -43,7 +44,12 @@ mixin _$MyoroGroupCheckboxConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.direction, self.spacing, self.runSpacing, self.onChanged);
+    return Object.hash(
+      self.direction,
+      self.spacing,
+      self.runSpacing,
+      self.onChanged,
+    );
   }
 
   @override

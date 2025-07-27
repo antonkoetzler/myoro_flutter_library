@@ -14,8 +14,14 @@ part of 'myoro_bar_graph_configuration.dart';
 mixin _$MyoroBarGraphConfigurationMixin {
   MyoroBarGraphConfiguration get self => this as MyoroBarGraphConfiguration;
 
-  MyoroBarGraphConfiguration copyWith({bool? sorted, List<MyoroBarGraphGroup>? items}) {
-    return MyoroBarGraphConfiguration(sorted: sorted ?? self.sorted, items: items ?? self.items);
+  MyoroBarGraphConfiguration copyWith({
+    bool? sorted,
+    List<MyoroBarGraphGroup>? items,
+  }) {
+    return MyoroBarGraphConfiguration(
+      sorted: sorted ?? self.sorted,
+      items: items ?? self.items,
+    );
   }
 
   @override

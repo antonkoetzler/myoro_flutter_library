@@ -11,7 +11,8 @@ part of 'myoro_snack_bar_theme_extension.dart';
 /// ```dart
 /// class MyoroSnackBarThemeExtension with _$MyoroSnackBarThemeExtensionMixin {}
 /// ```
-mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExtension> {
+mixin _$MyoroSnackBarThemeExtensionMixin
+    on ThemeExtension<MyoroSnackBarThemeExtension> {
   MyoroSnackBarThemeExtension get self => this as MyoroSnackBarThemeExtension;
 
   @override
@@ -39,7 +40,8 @@ mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExt
       padding: padding ?? self.padding,
       spacing: spacing ?? self.spacing,
       messageTextStyle: messageTextStyle ?? self.messageTextStyle,
-      closeButtonIconConfiguration: closeButtonIconConfiguration ?? self.closeButtonIconConfiguration,
+      closeButtonIconConfiguration:
+          closeButtonIconConfiguration ?? self.closeButtonIconConfiguration,
     );
   }
 

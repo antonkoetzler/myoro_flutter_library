@@ -11,11 +11,16 @@ part of 'myoro_dropdown_theme_extension.dart';
 /// ```dart
 /// class MyoroDropdownThemeExtension with _$MyoroDropdownThemeExtensionMixin {}
 /// ```
-mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExtension> {
+mixin _$MyoroDropdownThemeExtensionMixin
+    on ThemeExtension<MyoroDropdownThemeExtension> {
   MyoroDropdownThemeExtension get self => this as MyoroDropdownThemeExtension;
 
   @override
-  MyoroDropdownThemeExtension copyWith({double? spacing, BoxBorder? menuBorder, BorderRadius? menuBorderRadius}) {
+  MyoroDropdownThemeExtension copyWith({
+    double? spacing,
+    BoxBorder? menuBorder,
+    BorderRadius? menuBorderRadius,
+  }) {
     return MyoroDropdownThemeExtension(
       spacing: spacing ?? self.spacing,
       menuBorder: menuBorder ?? self.menuBorder,

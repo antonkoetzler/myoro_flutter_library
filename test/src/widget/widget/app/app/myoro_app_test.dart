@@ -37,8 +37,8 @@ void main() {
               initialRouteInformation: RouteInformation(uri: Uri.parse('/')),
             ),
           ),
-
           title: 'Router Test App',
+          builder: (_, _) => const SizedBox(),
         ),
       ),
     );

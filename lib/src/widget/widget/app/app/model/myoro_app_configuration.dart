@@ -18,6 +18,7 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
     this.supportedLocales,
     this.router,
     this.home,
+    this.builder,
   }) : assert((router != null) ^ (home != null), '[MyoroApp]: [router] (x)or [home] must be provided.');
 
   /// Title of the application.
@@ -51,4 +52,7 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
 
   /// Entry point for the application when a [MyoroAppConfiguration.router] is not being used.
   final Widget? home;
+
+  /// [MaterialApp.builder]. Used to insert [Widget]s at the top level of the [Widget] tree.
+  final MyoroAppBuilder? builder;
 }

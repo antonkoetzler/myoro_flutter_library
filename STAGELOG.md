@@ -1,1 +1,3 @@
 # STAGELOG
+
+- feature: `MyoroAppConfiguration.builder`

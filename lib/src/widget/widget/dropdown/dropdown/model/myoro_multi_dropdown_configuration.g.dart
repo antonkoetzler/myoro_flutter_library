@@ -12,7 +12,8 @@ part of 'myoro_multi_dropdown_configuration.dart';
 /// class MyoroMultiDropdownConfiguration<T> with _$MyoroMultiDropdownConfigurationMixin<T> {}
 /// ```
 mixin _$MyoroMultiDropdownConfigurationMixin<T> {
-  MyoroMultiDropdownConfiguration<T> get self => this as MyoroMultiDropdownConfiguration<T>;
+  MyoroMultiDropdownConfiguration<T> get self =>
+      this as MyoroMultiDropdownConfiguration<T>;
 
   MyoroMultiDropdownConfiguration<T> copyWith({
     void Function(Set<T>)? onChanged,
@@ -30,11 +31,15 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
       label: label ?? self.label,
       menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
       allowItemClearing: allowItemClearing ?? self.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
+      selectedItemTextAlign:
+          selectedItemTextAlign ?? self.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? self.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
     );
   }
 

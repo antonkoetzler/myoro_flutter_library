@@ -45,6 +45,7 @@ class MyoroApp extends MyoroStatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         home: configuration.home,
+        builder: configuration.builder,
       );
     }
 
@@ -57,6 +58,7 @@ class MyoroApp extends MyoroStatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       routerConfig: configuration.router,
+      builder: configuration.builder,
     );
   }
 }
