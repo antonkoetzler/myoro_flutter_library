@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.5
+
+- chore: Upgrade `myoro_flutter_annotations` to 1.2.4
+
 ## 2.0.3
 
 - fix: `MyoroButtonViewModel` test
