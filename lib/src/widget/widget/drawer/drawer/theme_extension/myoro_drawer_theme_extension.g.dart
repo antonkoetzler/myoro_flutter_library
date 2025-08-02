@@ -11,13 +11,14 @@ part of 'myoro_drawer_theme_extension.dart';
 /// ```dart
 /// class MyoroDrawerThemeExtension with _$MyoroDrawerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtension> {
+mixin _$MyoroDrawerThemeExtensionMixin
+    on ThemeExtension<MyoroDrawerThemeExtension> {
   MyoroDrawerThemeExtension get self => this as MyoroDrawerThemeExtension;
 
   @override
   MyoroDrawerThemeExtension copyWith({
-    EdgeInsets? drawerPadding,
     EdgeInsets? drawerContentPadding,
+    EdgeInsets? drawerPadding,
     ShapeBorder? drawerShape,
     EdgeInsets? titleContentDividerPadding,
     TextStyle? titleTextStyle,
@@ -28,10 +29,13 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
       drawerContentPadding: drawerContentPadding ?? self.drawerContentPadding,
       drawerPadding: drawerPadding ?? self.drawerPadding,
       drawerShape: drawerShape ?? self.drawerShape,
-      titleContentDividerPadding: titleContentDividerPadding ?? self.titleContentDividerPadding,
+      titleContentDividerPadding:
+          titleContentDividerPadding ?? self.titleContentDividerPadding,
       titleTextStyle: titleTextStyle ?? self.titleTextStyle,
-      closeButtonDrawerIcon: closeButtonDrawerIcon ?? self.closeButtonDrawerIcon,
-      closeButtonEndDrawerIcon: closeButtonEndDrawerIcon ?? self.closeButtonEndDrawerIcon,
+      closeButtonDrawerIcon:
+          closeButtonDrawerIcon ?? self.closeButtonDrawerIcon,
+      closeButtonEndDrawerIcon:
+          closeButtonEndDrawerIcon ?? self.closeButtonEndDrawerIcon,
     );
   }
 

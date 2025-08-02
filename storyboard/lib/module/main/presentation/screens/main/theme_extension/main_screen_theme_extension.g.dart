@@ -11,14 +11,20 @@ part of 'main_screen_theme_extension.dart';
 /// ```dart
 /// class MainScreenThemeExtension with _$MainScreenThemeExtensionMixin {}
 /// ```
-mixin _$MainScreenThemeExtensionMixin on ThemeExtension<MainScreenThemeExtension> {
+mixin _$MainScreenThemeExtensionMixin
+    on ThemeExtension<MainScreenThemeExtension> {
   MainScreenThemeExtension get self => this as MainScreenThemeExtension;
 
   @override
-  MainScreenThemeExtension copyWith({double? spacing, EdgeInsets? widgetListingAccordionItemContent}) {
+  MainScreenThemeExtension copyWith({
+    double? spacing,
+    EdgeInsets? widgetListingAccordionItemContent,
+  }) {
     return MainScreenThemeExtension(
       spacing: spacing ?? self.spacing,
-      widgetListingAccordionItemContent: widgetListingAccordionItemContent ?? self.widgetListingAccordionItemContent,
+      widgetListingAccordionItemContent:
+          widgetListingAccordionItemContent ??
+          self.widgetListingAccordionItemContent,
     );
   }
 
@@ -27,7 +33,8 @@ mixin _$MainScreenThemeExtensionMixin on ThemeExtension<MainScreenThemeExtension
     return other is MainScreenThemeExtension &&
         other.runtimeType == runtimeType &&
         other.spacing == self.spacing &&
-        other.widgetListingAccordionItemContent == self.widgetListingAccordionItemContent;
+        other.widgetListingAccordionItemContent ==
+            self.widgetListingAccordionItemContent;
   }
 
   @override

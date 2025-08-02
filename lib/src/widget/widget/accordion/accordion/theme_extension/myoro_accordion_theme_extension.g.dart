@@ -11,7 +11,8 @@ part of 'myoro_accordion_theme_extension.dart';
 /// ```dart
 /// class MyoroAccordionThemeExtension with _$MyoroAccordionThemeExtensionMixin {}
 /// ```
-mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeExtension> {
+mixin _$MyoroAccordionThemeExtensionMixin
+    on ThemeExtension<MyoroAccordionThemeExtension> {
   MyoroAccordionThemeExtension get self => this as MyoroAccordionThemeExtension;
 
   @override
@@ -30,19 +31,33 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
     Curve? itemTitleButtonArrowAnimationCurve,
   }) {
     return MyoroAccordionThemeExtension(
-      itemContentAnimationDuration: itemContentAnimationDuration ?? self.itemContentAnimationDuration,
-      itemContentAnimationCurve: itemContentAnimationCurve ?? self.itemContentAnimationCurve,
-      itemTitleButtonBorderRadius: itemTitleButtonBorderRadius ?? self.itemTitleButtonBorderRadius,
-      itemTitleButtonContentPadding: itemTitleButtonContentPadding ?? self.itemTitleButtonContentPadding,
-      itemTitleButtonSpacing: itemTitleButtonSpacing ?? self.itemTitleButtonSpacing,
-      itemTitleButtonTitleTextStyle: itemTitleButtonTitleTextStyle ?? self.itemTitleButtonTitleTextStyle,
-      itemTitleButtonArrowIcon: itemTitleButtonArrowIcon ?? self.itemTitleButtonArrowIcon,
-      itemTitleButtonArrowIconSize: itemTitleButtonArrowIconSize ?? self.itemTitleButtonArrowIconSize,
-      itemTitleButtonArrowIconColor: itemTitleButtonArrowIconColor ?? self.itemTitleButtonArrowIconColor,
-      itemTitleButtonArrowBorderRadius: itemTitleButtonArrowBorderRadius ?? self.itemTitleButtonArrowBorderRadius,
+      itemContentAnimationDuration:
+          itemContentAnimationDuration ?? self.itemContentAnimationDuration,
+      itemContentAnimationCurve:
+          itemContentAnimationCurve ?? self.itemContentAnimationCurve,
+      itemTitleButtonBorderRadius:
+          itemTitleButtonBorderRadius ?? self.itemTitleButtonBorderRadius,
+      itemTitleButtonContentPadding:
+          itemTitleButtonContentPadding ?? self.itemTitleButtonContentPadding,
+      itemTitleButtonSpacing:
+          itemTitleButtonSpacing ?? self.itemTitleButtonSpacing,
+      itemTitleButtonTitleTextStyle:
+          itemTitleButtonTitleTextStyle ?? self.itemTitleButtonTitleTextStyle,
+      itemTitleButtonArrowIcon:
+          itemTitleButtonArrowIcon ?? self.itemTitleButtonArrowIcon,
+      itemTitleButtonArrowIconSize:
+          itemTitleButtonArrowIconSize ?? self.itemTitleButtonArrowIconSize,
+      itemTitleButtonArrowIconColor:
+          itemTitleButtonArrowIconColor ?? self.itemTitleButtonArrowIconColor,
+      itemTitleButtonArrowBorderRadius:
+          itemTitleButtonArrowBorderRadius ??
+          self.itemTitleButtonArrowBorderRadius,
       itemTitleButtonArrowAnimationDuration:
-          itemTitleButtonArrowAnimationDuration ?? self.itemTitleButtonArrowAnimationDuration,
-      itemTitleButtonArrowAnimationCurve: itemTitleButtonArrowAnimationCurve ?? self.itemTitleButtonArrowAnimationCurve,
+          itemTitleButtonArrowAnimationDuration ??
+          self.itemTitleButtonArrowAnimationDuration,
+      itemTitleButtonArrowAnimationCurve:
+          itemTitleButtonArrowAnimationCurve ??
+          self.itemTitleButtonArrowAnimationCurve,
     );
   }
 
@@ -50,18 +65,26 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
   bool operator ==(Object other) {
     return other is MyoroAccordionThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.itemContentAnimationDuration == self.itemContentAnimationDuration &&
+        other.itemContentAnimationDuration ==
+            self.itemContentAnimationDuration &&
         other.itemContentAnimationCurve == self.itemContentAnimationCurve &&
         other.itemTitleButtonBorderRadius == self.itemTitleButtonBorderRadius &&
-        other.itemTitleButtonContentPadding == self.itemTitleButtonContentPadding &&
+        other.itemTitleButtonContentPadding ==
+            self.itemTitleButtonContentPadding &&
         other.itemTitleButtonSpacing == self.itemTitleButtonSpacing &&
-        other.itemTitleButtonTitleTextStyle == self.itemTitleButtonTitleTextStyle &&
+        other.itemTitleButtonTitleTextStyle ==
+            self.itemTitleButtonTitleTextStyle &&
         other.itemTitleButtonArrowIcon == self.itemTitleButtonArrowIcon &&
-        other.itemTitleButtonArrowIconSize == self.itemTitleButtonArrowIconSize &&
-        other.itemTitleButtonArrowIconColor == self.itemTitleButtonArrowIconColor &&
-        other.itemTitleButtonArrowBorderRadius == self.itemTitleButtonArrowBorderRadius &&
-        other.itemTitleButtonArrowAnimationDuration == self.itemTitleButtonArrowAnimationDuration &&
-        other.itemTitleButtonArrowAnimationCurve == self.itemTitleButtonArrowAnimationCurve;
+        other.itemTitleButtonArrowIconSize ==
+            self.itemTitleButtonArrowIconSize &&
+        other.itemTitleButtonArrowIconColor ==
+            self.itemTitleButtonArrowIconColor &&
+        other.itemTitleButtonArrowBorderRadius ==
+            self.itemTitleButtonArrowBorderRadius &&
+        other.itemTitleButtonArrowAnimationDuration ==
+            self.itemTitleButtonArrowAnimationDuration &&
+        other.itemTitleButtonArrowAnimationCurve ==
+            self.itemTitleButtonArrowAnimationCurve;
   }
 
   @override

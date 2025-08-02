@@ -13,7 +13,6 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
     this.allowItemClearing = allowItemClearingDefaultValue,
     this.initiallySelectedItem = initiallySelectedItemDefaultValue,
     required this.onChanged,
-    this.checkboxOnChanged,
   });
 
   /// [MyoroSingularDropdownConfiguration.label]
@@ -28,9 +27,6 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<int> onChanged;
 
-  /// [MyoroSingularDropdownConfiguration.checkboxOnChanged]
-  final MyoroSingularDropdownConfigurationCheckboxOnChanged<int>? checkboxOnChanged;
-
   @override
   Widget build(context) {
     return MyoroSingularDropdown<int>(
@@ -39,7 +35,6 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
         label: label,
         allowItemClearing: allowItemClearing,
         onChanged: onChanged,
-        checkboxOnChanged: checkboxOnChanged,
         selectedItemBuilder: (value) => value.toString(),
         menuConfiguration: MyoroMenuConfiguration(
           request: () => List.generate(10, (int index) => index + 1).toSet(),

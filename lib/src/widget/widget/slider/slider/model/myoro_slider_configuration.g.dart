@@ -31,18 +31,25 @@ mixin _$MyoroSliderConfigurationMixin {
   }) {
     return MyoroSliderConfiguration(
       label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelTextStyle:
+          labelTextStyleProvided
+              ? (labelTextStyle ?? self.labelTextStyle)
+              : null,
       width: widthProvided ? (width ?? self.width) : null,
       currentValueIndicatorTextBuilder:
           currentValueIndicatorTextBuilderProvided
-              ? (currentValueIndicatorTextBuilder ?? self.currentValueIndicatorTextBuilder)
+              ? (currentValueIndicatorTextBuilder ??
+                  self.currentValueIndicatorTextBuilder)
               : null,
       maxValueIndicatorTextBuilder:
           maxValueIndicatorTextBuilderProvided
-              ? (maxValueIndicatorTextBuilder ?? self.maxValueIndicatorTextBuilder)
+              ? (maxValueIndicatorTextBuilder ??
+                  self.maxValueIndicatorTextBuilder)
               : null,
       footerIndicatorTextBuilder:
-          footerIndicatorTextBuilderProvided ? (footerIndicatorTextBuilder ?? self.footerIndicatorTextBuilder) : null,
+          footerIndicatorTextBuilderProvided
+              ? (footerIndicatorTextBuilder ?? self.footerIndicatorTextBuilder)
+              : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
     );
   }
@@ -54,8 +61,10 @@ mixin _$MyoroSliderConfigurationMixin {
         other.label == self.label &&
         other.labelTextStyle == self.labelTextStyle &&
         other.width == self.width &&
-        other.currentValueIndicatorTextBuilder == self.currentValueIndicatorTextBuilder &&
-        other.maxValueIndicatorTextBuilder == self.maxValueIndicatorTextBuilder &&
+        other.currentValueIndicatorTextBuilder ==
+            self.currentValueIndicatorTextBuilder &&
+        other.maxValueIndicatorTextBuilder ==
+            self.maxValueIndicatorTextBuilder &&
         other.footerIndicatorTextBuilder == self.footerIndicatorTextBuilder &&
         other.onChanged == self.onChanged;
   }

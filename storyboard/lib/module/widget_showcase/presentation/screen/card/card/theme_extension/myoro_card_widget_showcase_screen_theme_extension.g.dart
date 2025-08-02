@@ -13,11 +13,14 @@ part of 'myoro_card_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroCardWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroCardWidgetShowcaseScreenThemeExtension> {
-  MyoroCardWidgetShowcaseScreenThemeExtension get self => this as MyoroCardWidgetShowcaseScreenThemeExtension;
+  MyoroCardWidgetShowcaseScreenThemeExtension get self =>
+      this as MyoroCardWidgetShowcaseScreenThemeExtension;
 
   @override
   MyoroCardWidgetShowcaseScreenThemeExtension copyWith({TextStyle? textStyle}) {
-    return MyoroCardWidgetShowcaseScreenThemeExtension(textStyle: textStyle ?? self.textStyle);
+    return MyoroCardWidgetShowcaseScreenThemeExtension(
+      textStyle: textStyle ?? self.textStyle,
+    );
   }
 
   @override

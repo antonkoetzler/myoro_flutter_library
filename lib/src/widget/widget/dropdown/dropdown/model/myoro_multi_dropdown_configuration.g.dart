@@ -12,29 +12,34 @@ part of 'myoro_multi_dropdown_configuration.dart';
 /// class MyoroMultiDropdownConfiguration<T> with _$MyoroMultiDropdownConfigurationMixin<T> {}
 /// ```
 mixin _$MyoroMultiDropdownConfigurationMixin<T> {
-  MyoroMultiDropdownConfiguration<T> get self => this as MyoroMultiDropdownConfiguration<T>;
+  MyoroMultiDropdownConfiguration<T> get self =>
+      this as MyoroMultiDropdownConfiguration<T>;
 
   MyoroMultiDropdownConfiguration<T> copyWith({
-    void Function(Set<T>)? onChanged,
-    bool onChangedProvided = true,
-    void Function(bool, Set<T>)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
     String? label,
     MyoroDropdownMenuTypeEnum? menuTypeEnum,
     bool? allowItemClearing,
     TextAlign? selectedItemTextAlign,
     MyoroMenuConfiguration<T>? menuConfiguration,
     String Function(T)? selectedItemBuilder,
+    void Function(Set<T>)? onChanged,
+    bool onChangedProvided = true,
+    void Function(bool, Set<T>)? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
   }) {
     return MyoroMultiDropdownConfiguration(
       label: label ?? self.label,
       menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
       allowItemClearing: allowItemClearing ?? self.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
+      selectedItemTextAlign:
+          selectedItemTextAlign ?? self.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? self.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
     );
   }
 

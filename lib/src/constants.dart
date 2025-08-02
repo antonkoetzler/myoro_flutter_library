@@ -2,16 +2,20 @@
 
 import 'package:flutter/material.dart';
 
-// Debounce.
+/// Multiplier for all stylistic values.
+const kMyoroMultiplier = 4;
+
+/// Debounce.
 const kMyoroDebounceDuration = Duration(milliseconds: 200);
 
-// Throttling.
+/// Throttling.
 const kMyoroThrottleDuration = Duration(milliseconds: 500);
 
-// Borders.
-const kMyoroBorderLength = 2.0;
-const kMyoroInputBorderLength = 8.0;
-const kMyoroBorderRadiusLength = 8.0;
+/// Border length.
+const kMyoroBorderLength = kMyoroMultiplier / 2;
+
+/// [BorderRadius] length.
+const kMyoroBorderRadiusLength = kMyoroMultiplier * 2.0;
 
 /// [Alignment]s for testing.
 final kMyoroTestAlignments = [

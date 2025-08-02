@@ -13,10 +13,14 @@ part of 'myoro_input_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroInputWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroInputWidgetShowcaseScreenThemeExtension> {
-  MyoroInputWidgetShowcaseScreenThemeExtension get self => this as MyoroInputWidgetShowcaseScreenThemeExtension;
+  MyoroInputWidgetShowcaseScreenThemeExtension get self =>
+      this as MyoroInputWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroInputWidgetShowcaseScreenThemeExtension copyWith({BorderRadius? suffixBorderRadius, double? suffixSize}) {
+  MyoroInputWidgetShowcaseScreenThemeExtension copyWith({
+    BorderRadius? suffixBorderRadius,
+    double? suffixSize,
+  }) {
     return MyoroInputWidgetShowcaseScreenThemeExtension(
       suffixBorderRadius: suffixBorderRadius ?? self.suffixBorderRadius,
       suffixSize: suffixSize ?? self.suffixSize,

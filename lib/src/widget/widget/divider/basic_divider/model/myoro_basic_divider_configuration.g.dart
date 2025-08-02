@@ -12,7 +12,8 @@ part of 'myoro_basic_divider_configuration.dart';
 /// class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin {}
 /// ```
 mixin _$MyoroBasicDividerConfigurationMixin {
-  MyoroBasicDividerConfiguration get self => this as MyoroBasicDividerConfiguration;
+  MyoroBasicDividerConfiguration get self =>
+      this as MyoroBasicDividerConfiguration;
 
   MyoroBasicDividerConfiguration copyWith({
     Axis? direction,

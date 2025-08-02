@@ -12,7 +12,8 @@ part of 'myoro_circular_loader_configuration.dart';
 /// class MyoroCircularLoaderConfiguration with _$MyoroCircularLoaderConfigurationMixin {}
 /// ```
 mixin _$MyoroCircularLoaderConfigurationMixin {
-  MyoroCircularLoaderConfiguration get self => this as MyoroCircularLoaderConfiguration;
+  MyoroCircularLoaderConfiguration get self =>
+      this as MyoroCircularLoaderConfiguration;
 
   MyoroCircularLoaderConfiguration copyWith({
     Color? color,

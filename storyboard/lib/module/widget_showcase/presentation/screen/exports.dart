@@ -8,6 +8,7 @@ export 'checkbox/exports.dart';
 export 'divider/exports.dart';
 export 'drawer/exports.dart';
 export 'dropdown/exports.dart';
+export 'feedback/exports.dart';
 export 'form/exports.dart';
 export 'graph/exports.dart';
 export 'input/exports.dart';

@@ -12,7 +12,6 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
     this.initiallySelectedValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
     required this.onChanged,
-    this.checkboxOnChanged,
   });
 
   /// [MyoroSingularDropdownConfiguration.label]
@@ -27,9 +26,6 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<TextAlign> onChanged;
 
-  /// [MyoroSingularDropdownConfiguration.checkboxOnChanged]
-  final MyoroSingularDropdownConfigurationCheckboxOnChanged<TextAlign>? checkboxOnChanged;
-
   @override
   Widget build(context) {
     return MyoroSingularDropdown(
@@ -40,7 +36,6 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         onChanged: onChanged,
-        checkboxOnChanged: checkboxOnChanged,
         allowItemClearing: allowItemClearing,
         selectedItemBuilder: (value) => value.toString(),
         menuConfiguration: MyoroMenuConfiguration(

@@ -10,12 +10,7 @@ final class _TextAlignOption extends StatelessWidget {
     final configuration = viewModel.configuration;
     final alignmentInitialValue = configuration.alignmentInitialValue;
     final alignmentOnChanged = configuration.alignmentOnChanged;
-    final alignmentCheckboxOnChanged = configuration.alignmentCheckboxOnChanged;
 
-    return TextAlignWidgetShowcaseOption(
-      initiallySelectedValue: alignmentInitialValue,
-      onChanged: alignmentOnChanged!,
-      checkboxOnChanged: alignmentCheckboxOnChanged,
-    );
+    return TextAlignWidgetShowcaseOption(initiallySelectedValue: alignmentInitialValue, onChanged: alignmentOnChanged!);
   }
 }

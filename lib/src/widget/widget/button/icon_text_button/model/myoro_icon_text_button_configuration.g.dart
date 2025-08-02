@@ -12,20 +12,10 @@ part of 'myoro_icon_text_button_configuration.dart';
 /// class MyoroIconTextButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {}
 /// ```
 mixin _$MyoroIconTextButtonConfigurationMixin {
-  MyoroIconTextButtonConfiguration get self => this as MyoroIconTextButtonConfiguration;
+  MyoroIconTextButtonConfiguration get self =>
+      this as MyoroIconTextButtonConfiguration;
 
   MyoroIconTextButtonConfiguration copyWith({
-    bool? invert,
-    double? spacing,
-    bool spacingProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    Color Function(MyoroTapStatusEnum)? contentColorBuilder,
-    bool contentColorBuilderProvided = true,
-    MyoroIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
     MyoroTooltipConfiguration? tooltipConfiguration,
     bool tooltipConfigurationProvided = true,
     MouseCursor? cursor,
@@ -40,22 +30,49 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
     bool onTapDownProvided = true,
     void Function(TapUpDetails)? onTapUp,
     bool onTapUpProvided = true,
+    bool? invert,
+    double? spacing,
+    bool spacingProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    Color Function(MyoroTapStatusEnum)? contentColorBuilder,
+    bool contentColorBuilderProvided = true,
+    MyoroIconConfiguration? iconConfiguration,
+    bool iconConfigurationProvided = true,
+    MyoroTextConfiguration? textConfiguration,
+    bool textConfigurationProvided = true,
   }) {
     return MyoroIconTextButtonConfiguration(
-      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      tooltipConfiguration:
+          tooltipConfigurationProvided
+              ? (tooltipConfiguration ?? self.tooltipConfiguration)
+              : null,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      borderRadius:
+          borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       backgroundColorBuilder:
-          backgroundColorBuilderProvided ? (backgroundColorBuilder ?? self.backgroundColorBuilder) : null,
-      borderBuilder: borderBuilderProvided ? (borderBuilder ?? self.borderBuilder) : null,
+          backgroundColorBuilderProvided
+              ? (backgroundColorBuilder ?? self.backgroundColorBuilder)
+              : null,
+      borderBuilder:
+          borderBuilderProvided ? (borderBuilder ?? self.borderBuilder) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
       invert: invert ?? self.invert,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      contentColorBuilder: contentColorBuilderProvided ? (contentColorBuilder ?? self.contentColorBuilder) : null,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      contentColorBuilder:
+          contentColorBuilderProvided
+              ? (contentColorBuilder ?? self.contentColorBuilder)
+              : null,
+      iconConfiguration:
+          iconConfigurationProvided
+              ? (iconConfiguration ?? self.iconConfiguration)
+              : null,
+      textConfiguration:
+          textConfigurationProvided
+              ? (textConfiguration ?? self.textConfiguration)
+              : null,
     );
   }
 

@@ -14,6 +14,7 @@ enum MyoroWidgetListEnum {
   dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle}),
   drawers('Drawers', {myoroDrawerTitle}),
   dropdowns('Dropdowns', {myoroDropdownsTitle}),
+  feedbacks('Feedbacks', {myoroFeedbackTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
   inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
@@ -74,6 +75,9 @@ enum MyoroWidgetListEnum {
 
   // Dropdowns
   static const myoroDropdownsTitle = 'MyoroSingularDropdown & MyoroMultiDropdown';
+
+  // Feedbacks
+  static const myoroFeedbackTitle = 'MyoroFeedback';
 
   // Forms
   static const myoroFormTitle = 'MyoroForm';
@@ -155,6 +159,9 @@ enum MyoroWidgetListEnum {
       // Dropdowns
       myoroDropdownsTitle => const MyoroDropdownWidgetShowcaseScreen(),
 
+      // Feedbacks
+      myoroFeedbackTitle => const MyoroFeedbackWidgetShowcaseScreen(),
+
       // Forms
       myoroFormTitle => const MyoroFormWidgetShowcaseScreen(),
 
@@ -203,27 +210,4 @@ enum MyoroWidgetListEnum {
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcaseScreen]: [Widget] does not exist.'),
     };
   }
-
-  bool get isAccordions => this == accordions;
-  bool get isAppBars => this == appBars;
-  bool get isApps => this == apps;
-  bool get isButtons => this == buttons;
-  bool get isCards => this == cards;
-  bool get isCarousels => this == carousels;
-  bool get isCheckboxes => this == checkboxes;
-  bool get isDividers => this == dividers;
-  bool get isDrawers => this == drawers;
-  bool get isForms => this == forms;
-  bool get isGraphs => this == graphs;
-  bool get isInputs => this == inputs;
-  bool get isLayoutBuilders => this == layoutBuilders;
-  bool get isLoaders => this == loaders;
-  bool get isMenus => this == menus;
-  bool get isModals => this == modals;
-  bool get isRadios => this == radios;
-  bool get isScreens => this == screens;
-  bool get isSliders => this == sliders;
-  bool get isSnackBars => this == snackBars;
-  bool get isTables => this == tables;
-  bool get isTooltips => this == tooltips;
 }

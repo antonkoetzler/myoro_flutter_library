@@ -11,7 +11,9 @@ part 'text_widget_showcase_option_configuration.g.dart';
 final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Text';
   static const textInitialValueDefaultValue = '';
-  static const maxLinesInitialValueDefaultValue = TextMaxLinesWidgetShowcaseOption.initiallySelectedItemDefaultValue;
+  static const maxLinesInitialValueDefaultValue = MyoroTextConfiguration.maxLinesDefaultValue;
+  static const overflowInitialValueDefaultValue = MyoroTextConfiguration.overflowDefaultValue;
+  static const alignmentInitialValueDefaultValue = MyoroTextConfiguration.alignmentDefaultValue;
 
   const TextWidgetShowcaseOptionConfiguration({
     this.label = labelDefaultValue,
@@ -19,13 +21,10 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
     required this.textOnChanged,
     this.maxLinesInitialValue = maxLinesInitialValueDefaultValue,
     this.maxLinesOnChanged,
-    this.maxLinesCheckboxOnChanged,
-    this.overflowInitialValue,
+    this.overflowInitialValue = overflowInitialValueDefaultValue,
     this.overflowOnChanged,
-    this.overflowCheckboxOnChanged,
-    this.alignmentInitialValue,
+    this.alignmentInitialValue = alignmentInitialValueDefaultValue,
     this.alignmentOnChanged,
-    this.alignmentCheckboxOnChanged,
     this.styleInitialValue,
     this.styleOnChanged,
     this.styleCheckboxOnChanged,
@@ -41,17 +40,14 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
   /// [Text.maxLines]
   final int maxLinesInitialValue;
   final TextWidgetShowcaseOptionMaxLinesOnChanged? maxLinesOnChanged;
-  final TextWidgetShowcaseOptionMaxLinesCheckboxOnChanged? maxLinesCheckboxOnChanged;
 
   /// [Text.overflow]
-  final TextOverflow? overflowInitialValue;
+  final TextOverflow overflowInitialValue;
   final TextWidgetShowcaseOptionOverflowOnChanged? overflowOnChanged;
-  final TextWidgetShowcaseOptionOverflowCheckboxOnChanged? overflowCheckboxOnChanged;
 
   /// [Text.textAlign]
-  final TextAlign? alignmentInitialValue;
+  final TextAlign alignmentInitialValue;
   final TextWidgetShowcaseOptionAlignmentOnChanged? alignmentOnChanged;
-  final TextWidgetShowcaseOptionAlignmentCheckboxOnChanged? alignmentCheckboxOnChanged;
 
   /// [Text.style]
   final TextStyle? styleInitialValue;

@@ -10,12 +10,7 @@ final class _MaxLinesOption extends StatelessWidget {
     final configuration = viewModel.configuration;
     final maxLinesInitialValue = configuration.maxLinesInitialValue;
     final maxLinesOnChanged = configuration.maxLinesOnChanged;
-    final maxLinesCheckboxOnChanged = configuration.maxLinesCheckboxOnChanged;
 
-    return TextMaxLinesWidgetShowcaseOption(
-      initiallySelectedItem: maxLinesInitialValue,
-      onChanged: maxLinesOnChanged!,
-      checkboxOnChanged: maxLinesCheckboxOnChanged,
-    );
+    return TextMaxLinesWidgetShowcaseOption(initiallySelectedItem: maxLinesInitialValue, onChanged: maxLinesOnChanged!);
   }
 }

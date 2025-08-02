@@ -12,9 +12,14 @@ part of 'widget_showcase_screen_configuration.dart';
 /// class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigurationMixin {}
 /// ```
 mixin _$WidgetShowcaseScreenConfigurationMixin {
-  WidgetShowcaseScreenConfiguration get self => this as WidgetShowcaseScreenConfiguration;
+  WidgetShowcaseScreenConfiguration get self =>
+      this as WidgetShowcaseScreenConfiguration;
 
-  WidgetShowcaseScreenConfiguration copyWith({String? widgetName, Widget? widget, List<Widget>? widgetOptions}) {
+  WidgetShowcaseScreenConfiguration copyWith({
+    String? widgetName,
+    Widget? widget,
+    List<Widget>? widgetOptions,
+  }) {
     return WidgetShowcaseScreenConfiguration(
       widgetName: widgetName ?? self.widgetName,
       widget: widget ?? self.widget,

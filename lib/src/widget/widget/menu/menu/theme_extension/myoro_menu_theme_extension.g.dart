@@ -11,7 +11,8 @@ part of 'myoro_menu_theme_extension.dart';
 /// ```dart
 /// class MyoroMenuThemeExtension with _$MyoroMenuThemeExtensionMixin {}
 /// ```
-mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> {
+mixin _$MyoroMenuThemeExtensionMixin
+    on ThemeExtension<MyoroMenuThemeExtension> {
   MyoroMenuThemeExtension get self => this as MyoroMenuThemeExtension;
 
   @override
@@ -31,7 +32,8 @@ mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> 
       searchBarInputStyle: searchBarInputStyle ?? self.searchBarInputStyle,
       itemBorderRadius: itemBorderRadius ?? self.itemBorderRadius,
       dialogTextStyle: dialogTextStyle ?? self.dialogTextStyle,
-      dialogTextLoaderPadding: dialogTextLoaderPadding ?? self.dialogTextLoaderPadding,
+      dialogTextLoaderPadding:
+          dialogTextLoaderPadding ?? self.dialogTextLoaderPadding,
     );
   }
 

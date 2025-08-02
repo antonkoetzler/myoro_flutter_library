@@ -12,21 +12,10 @@ part of 'myoro_dialog_modal_configuration.dart';
 /// class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {}
 /// ```
 mixin _$MyoroDialogModalConfigurationMixin {
-  MyoroDialogModalConfiguration get self => this as MyoroDialogModalConfiguration;
+  MyoroDialogModalConfiguration get self =>
+      this as MyoroDialogModalConfiguration;
 
   MyoroDialogModalConfiguration copyWith({
-    bool? invertButtons,
-    String? confirmButtonText,
-    String? cancelButtonText,
-    void Function()? onConfirm,
-    bool onConfirmProvided = true,
-    void Function()? onCancel,
-    bool onCancelProvided = true,
-    String? text,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
-    Widget? child,
-    bool childProvided = true,
     bool? barrierDismissable,
     bool? useRootNavigator,
     BoxConstraints? constraints,
@@ -39,16 +28,32 @@ mixin _$MyoroDialogModalConfigurationMixin {
     bool paddingProvided = true,
     EdgeInsets? closeButtonPadding,
     bool closeButtonPaddingProvided = true,
+    bool? invertButtons,
+    String? confirmButtonText,
+    String? cancelButtonText,
+    void Function()? onConfirm,
+    bool onConfirmProvided = true,
+    void Function()? onCancel,
+    bool onCancelProvided = true,
+    String? text,
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
+    Widget? child,
+    bool childProvided = true,
   }) {
     return MyoroDialogModalConfiguration(
       barrierDismissable: barrierDismissable ?? self.barrierDismissable,
       useRootNavigator: useRootNavigator ?? self.useRootNavigator,
-      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
+      constraints:
+          constraintsProvided ? (constraints ?? self.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
       title: title ?? self.title,
       showCloseButton: showCloseButton ?? self.showCloseButton,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
+      closeButtonPadding:
+          closeButtonPaddingProvided
+              ? (closeButtonPadding ?? self.closeButtonPadding)
+              : null,
       invertButtons: invertButtons ?? self.invertButtons,
       confirmButtonText: confirmButtonText ?? self.confirmButtonText,
       cancelButtonText: cancelButtonText ?? self.cancelButtonText,

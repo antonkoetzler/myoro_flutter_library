@@ -24,10 +24,12 @@ mixin _$MyoroCarouselConfigurationMixin {
   }) {
     return MyoroCarouselConfiguration(
       direction: direction ?? self.direction,
-      displayTraversalButtons: displayTraversalButtons ?? self.displayTraversalButtons,
+      displayTraversalButtons:
+          displayTraversalButtons ?? self.displayTraversalButtons,
       initialItem: initialItem ?? self.initialItem,
       autoplay: autoplay ?? self.autoplay,
-      autoplayIntervalDuration: autoplayIntervalDuration ?? self.autoplayIntervalDuration,
+      autoplayIntervalDuration:
+          autoplayIntervalDuration ?? self.autoplayIntervalDuration,
       items: items ?? self.items,
     );
   }

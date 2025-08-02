@@ -10,12 +10,7 @@ final class _OverflowOption extends StatelessWidget {
     final configuration = viewModel.configuration;
     final overflowInitialValue = configuration.overflowInitialValue;
     final overflowOnChanged = configuration.overflowOnChanged;
-    final overflowCheckboxOnChanged = configuration.overflowCheckboxOnChanged;
 
-    return TextOverflowWidgetShowcaseOption(
-      initiallySelectedItem: overflowInitialValue,
-      onChanged: overflowOnChanged!,
-      checkboxOnChanged: overflowCheckboxOnChanged,
-    );
+    return TextOverflowWidgetShowcaseOption(initiallySelectedItem: overflowInitialValue, onChanged: overflowOnChanged!);
   }
 }

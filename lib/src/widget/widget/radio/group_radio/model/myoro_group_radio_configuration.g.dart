@@ -51,7 +51,14 @@ mixin _$MyoroGroupRadioConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.controller, self.direction, self.spacing, self.runSpacing, self.onChanged, self.radios);
+    return Object.hash(
+      self.controller,
+      self.direction,
+      self.spacing,
+      self.runSpacing,
+      self.onChanged,
+      self.radios,
+    );
   }
 
   @override

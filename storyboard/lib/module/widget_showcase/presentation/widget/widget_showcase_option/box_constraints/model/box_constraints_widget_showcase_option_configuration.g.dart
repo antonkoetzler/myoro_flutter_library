@@ -12,9 +12,13 @@ part of 'box_constraints_widget_showcase_option_configuration.dart';
 /// class BoxConstraintsWidgetShowcaseOptionConfiguration with _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
-  BoxConstraintsWidgetShowcaseOptionConfiguration get self => this as BoxConstraintsWidgetShowcaseOptionConfiguration;
+  BoxConstraintsWidgetShowcaseOptionConfiguration get self =>
+      this as BoxConstraintsWidgetShowcaseOptionConfiguration;
 
-  BoxConstraintsWidgetShowcaseOptionConfiguration copyWith({String? label, void Function(BoxConstraints)? onChanged}) {
+  BoxConstraintsWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    void Function(BoxConstraints)? onChanged,
+  }) {
     return BoxConstraintsWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
       onChanged: onChanged ?? self.onChanged,
