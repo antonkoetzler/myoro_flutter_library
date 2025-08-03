@@ -11,8 +11,7 @@ part of 'myoro_bar_graph_theme_extension.dart';
 /// ```dart
 /// class MyoroBarGraphThemeExtension with _$MyoroBarGraphThemeExtensionMixin {}
 /// ```
-mixin _$MyoroBarGraphThemeExtensionMixin
-    on ThemeExtension<MyoroBarGraphThemeExtension> {
+mixin _$MyoroBarGraphThemeExtensionMixin on ThemeExtension<MyoroBarGraphThemeExtension> {
   MyoroBarGraphThemeExtension get self => this as MyoroBarGraphThemeExtension;
 
   @override
@@ -31,11 +30,8 @@ mixin _$MyoroBarGraphThemeExtensionMixin
       barBorderRadius: barBorderRadius ?? self.barBorderRadius,
       sideTitleTextStyle: sideTitleTextStyle ?? self.sideTitleTextStyle,
       sideTitleInterval: sideTitleInterval ?? self.sideTitleInterval,
-      verticalSideTitleReversedSize:
-          verticalSideTitleReversedSize ?? self.verticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize:
-          horizontalSideTitleReversedSize ??
-          self.horizontalSideTitleReversedSize,
+      verticalSideTitleReversedSize: verticalSideTitleReversedSize ?? self.verticalSideTitleReversedSize,
+      horizontalSideTitleReversedSize: horizontalSideTitleReversedSize ?? self.horizontalSideTitleReversedSize,
     );
   }
 
@@ -48,10 +44,8 @@ mixin _$MyoroBarGraphThemeExtensionMixin
         other.barBorderRadius == self.barBorderRadius &&
         other.sideTitleTextStyle == self.sideTitleTextStyle &&
         other.sideTitleInterval == self.sideTitleInterval &&
-        other.verticalSideTitleReversedSize ==
-            self.verticalSideTitleReversedSize &&
-        other.horizontalSideTitleReversedSize ==
-            self.horizontalSideTitleReversedSize;
+        other.verticalSideTitleReversedSize == self.verticalSideTitleReversedSize &&
+        other.horizontalSideTitleReversedSize == self.horizontalSideTitleReversedSize;
   }
 
   @override

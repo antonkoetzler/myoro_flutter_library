@@ -37,14 +37,7 @@ mixin _$MyoroIconConfigurationMixin {
 
 /// Extension class for @myoroModel to place the copyWith function.
 extension $MyoroIconConfigurationExtension on MyoroIconConfiguration {
-  MyoroIconConfiguration copyWith({
-    IconData? icon,
-    double? size,
-    bool sizeProvided = true,
-  }) {
-    return MyoroIconConfiguration(
-      icon: icon ?? self.icon,
-      size: sizeProvided ? (size ?? self.size) : null,
-    );
+  MyoroIconConfiguration copyWith({IconData? icon, double? size, bool sizeProvided = true}) {
+    return MyoroIconConfiguration(icon: icon ?? self.icon, size: sizeProvided ? (size ?? self.size) : null);
   }
 }

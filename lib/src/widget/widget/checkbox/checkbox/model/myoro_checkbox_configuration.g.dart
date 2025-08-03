@@ -26,12 +26,7 @@ mixin _$MyoroCheckboxConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.label,
-      self.labelTextStyle,
-      self.value,
-      self.onChanged,
-    );
+    return Object.hash(self.label, self.labelTextStyle, self.value, self.onChanged);
   }
 
   @override
@@ -56,10 +51,7 @@ extension $MyoroCheckboxConfigurationExtension on MyoroCheckboxConfiguration {
   }) {
     return MyoroCheckboxConfiguration(
       label: label ?? self.label,
-      labelTextStyle:
-          labelTextStyleProvided
-              ? (labelTextStyle ?? self.labelTextStyle)
-              : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       value: value ?? self.value,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
     );

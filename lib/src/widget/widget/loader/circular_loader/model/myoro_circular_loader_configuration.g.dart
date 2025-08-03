@@ -12,8 +12,7 @@ part of 'myoro_circular_loader_configuration.dart';
 /// class MyoroCircularLoaderConfiguration with _$MyoroCircularLoaderConfigurationMixin {}
 /// ```
 mixin _$MyoroCircularLoaderConfigurationMixin {
-  MyoroCircularLoaderConfiguration get self =>
-      this as MyoroCircularLoaderConfiguration;
+  MyoroCircularLoaderConfiguration get self => this as MyoroCircularLoaderConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -37,8 +36,7 @@ mixin _$MyoroCircularLoaderConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroCircularLoaderConfigurationExtension
-    on MyoroCircularLoaderConfiguration {
+extension $MyoroCircularLoaderConfigurationExtension on MyoroCircularLoaderConfiguration {
   MyoroCircularLoaderConfiguration copyWith({
     Color? color,
     bool colorProvided = true,

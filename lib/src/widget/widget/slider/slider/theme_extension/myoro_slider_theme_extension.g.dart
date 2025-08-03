@@ -11,8 +11,7 @@ part of 'myoro_slider_theme_extension.dart';
 /// ```dart
 /// class MyoroSliderThemeExtension with _$MyoroSliderThemeExtensionMixin {}
 /// ```
-mixin _$MyoroSliderThemeExtensionMixin
-    on ThemeExtension<MyoroSliderThemeExtension> {
+mixin _$MyoroSliderThemeExtensionMixin on ThemeExtension<MyoroSliderThemeExtension> {
   MyoroSliderThemeExtension get self => this as MyoroSliderThemeExtension;
 
   @override
@@ -26,8 +25,7 @@ mixin _$MyoroSliderThemeExtensionMixin
       labelTextStyle: labelTextStyle ?? self.labelTextStyle,
       sliderPadding: sliderPadding ?? self.sliderPadding,
       indicatorTextStyle: indicatorTextStyle ?? self.indicatorTextStyle,
-      indicatorTextAlignment:
-          indicatorTextAlignment ?? self.indicatorTextAlignment,
+      indicatorTextAlignment: indicatorTextAlignment ?? self.indicatorTextAlignment,
     );
   }
 
@@ -43,12 +41,7 @@ mixin _$MyoroSliderThemeExtensionMixin
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.labelTextStyle,
-      self.sliderPadding,
-      self.indicatorTextStyle,
-      self.indicatorTextAlignment,
-    );
+    return Object.hash(self.labelTextStyle, self.sliderPadding, self.indicatorTextStyle, self.indicatorTextAlignment);
   }
 
   @override

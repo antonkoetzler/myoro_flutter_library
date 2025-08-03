@@ -11,16 +11,11 @@ part of 'myoro_dialog_modal_theme_extension.dart';
 /// ```dart
 /// class MyoroDialogModalThemeExtension with _$MyoroDialogModalThemeExtensionMixin {}
 /// ```
-mixin _$MyoroDialogModalThemeExtensionMixin
-    on ThemeExtension<MyoroDialogModalThemeExtension> {
-  MyoroDialogModalThemeExtension get self =>
-      this as MyoroDialogModalThemeExtension;
+mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalThemeExtension> {
+  MyoroDialogModalThemeExtension get self => this as MyoroDialogModalThemeExtension;
 
   @override
-  MyoroDialogModalThemeExtension copyWith({
-    TextStyle? textStyle,
-    double? footerButtonsSpacing,
-  }) {
+  MyoroDialogModalThemeExtension copyWith({TextStyle? textStyle, double? footerButtonsSpacing}) {
     return MyoroDialogModalThemeExtension(
       textStyle: textStyle ?? self.textStyle,
       footerButtonsSpacing: footerButtonsSpacing ?? self.footerButtonsSpacing,

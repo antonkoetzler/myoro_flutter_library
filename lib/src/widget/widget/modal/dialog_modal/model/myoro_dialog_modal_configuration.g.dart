@@ -12,8 +12,7 @@ part of 'myoro_dialog_modal_configuration.dart';
 /// class MyoroDialogModalConfiguration<T> with _$MyoroDialogModalConfigurationMixin<T> {}
 /// ```
 mixin _$MyoroDialogModalConfigurationMixin<T> {
-  MyoroDialogModalConfiguration<T> get self =>
-      this as MyoroDialogModalConfiguration<T>;
+  MyoroDialogModalConfiguration<T> get self => this as MyoroDialogModalConfiguration<T>;
 
   @override
   bool operator ==(Object other) {
@@ -82,8 +81,7 @@ mixin _$MyoroDialogModalConfigurationMixin<T> {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroDialogModalConfigurationExtension<T>
-    on MyoroDialogModalConfiguration<T> {
+extension $MyoroDialogModalConfigurationExtension<T> on MyoroDialogModalConfiguration<T> {
   MyoroDialogModalConfiguration<T> copyWith({
     bool? barrierDismissable,
     bool? useRootNavigator,
@@ -113,16 +111,12 @@ extension $MyoroDialogModalConfigurationExtension<T>
     return MyoroDialogModalConfiguration(
       barrierDismissable: barrierDismissable ?? self.barrierDismissable,
       useRootNavigator: useRootNavigator ?? self.useRootNavigator,
-      constraints:
-          constraintsProvided ? (constraints ?? self.constraints) : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
       title: title ?? self.title,
       showCloseButton: showCloseButton ?? self.showCloseButton,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding:
-          closeButtonPaddingProvided
-              ? (closeButtonPadding ?? self.closeButtonPadding)
-              : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
       invertButtons: invertButtons ?? self.invertButtons,
       confirmButtonText: confirmButtonText ?? self.confirmButtonText,
       cancelButtonText: cancelButtonText ?? self.cancelButtonText,

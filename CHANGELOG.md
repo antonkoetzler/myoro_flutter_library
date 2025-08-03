@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2.0.6
+
+- feature: MyoroFeedback
+- feature: `MyoroModal.showBottomSheet`
+- improvement: `MyoroModal.show` renamed to `MyoroModal.showModal`
+- improvement: Add the `kMyoroMultiplier` constant to centralize design system's values
+- improvement: Brighten the color of `MyoroColors.gray1`
+
 ## 2.0.5
 
 - chore: Upgrade `myoro_flutter_annotations` to 1.2.4

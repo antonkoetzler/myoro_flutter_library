@@ -11,8 +11,7 @@ part of 'myoro_screen_theme_extension.dart';
 /// ```dart
 /// class MyoroScreenThemeExtension with _$MyoroScreenThemeExtensionMixin {}
 /// ```
-mixin _$MyoroScreenThemeExtensionMixin
-    on ThemeExtension<MyoroScreenThemeExtension> {
+mixin _$MyoroScreenThemeExtensionMixin on ThemeExtension<MyoroScreenThemeExtension> {
   MyoroScreenThemeExtension get self => this as MyoroScreenThemeExtension;
 
   @override
@@ -22,8 +21,7 @@ mixin _$MyoroScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override
