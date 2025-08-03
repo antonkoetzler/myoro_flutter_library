@@ -15,34 +15,6 @@ mixin _$MyoroSingularDropdownConfigurationMixin<T> {
   MyoroSingularDropdownConfiguration<T> get self =>
       this as MyoroSingularDropdownConfiguration<T>;
 
-  MyoroSingularDropdownConfiguration<T> copyWith({
-    String? label,
-    MyoroDropdownMenuTypeEnum? menuTypeEnum,
-    bool? allowItemClearing,
-    TextAlign? selectedItemTextAlign,
-    MyoroMenuConfiguration<T>? menuConfiguration,
-    String Function(T)? selectedItemBuilder,
-    void Function(T?)? onChanged,
-    bool onChangedProvided = true,
-    void Function(bool, T?)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-  }) {
-    return MyoroSingularDropdownConfiguration(
-      label: label ?? self.label,
-      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
-      allowItemClearing: allowItemClearing ?? self.allowItemClearing,
-      selectedItemTextAlign:
-          selectedItemTextAlign ?? self.selectedItemTextAlign,
-      menuConfiguration: menuConfiguration ?? self.menuConfiguration,
-      selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      checkboxOnChanged:
-          checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? self.checkboxOnChanged)
-              : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroSingularDropdownConfiguration<T> &&
@@ -83,4 +55,36 @@ mixin _$MyoroSingularDropdownConfigurationMixin<T> {
       '  menuConfiguration: ${self.menuConfiguration},\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroSingularDropdownConfigurationExtension<T>
+    on MyoroSingularDropdownConfiguration<T> {
+  MyoroSingularDropdownConfiguration<T> copyWith({
+    String? label,
+    MyoroDropdownMenuTypeEnum? menuTypeEnum,
+    bool? allowItemClearing,
+    TextAlign? selectedItemTextAlign,
+    MyoroMenuConfiguration<T>? menuConfiguration,
+    String Function(T)? selectedItemBuilder,
+    void Function(T?)? onChanged,
+    bool onChangedProvided = true,
+    void Function(bool, T?)? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+  }) {
+    return MyoroSingularDropdownConfiguration(
+      label: label ?? self.label,
+      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
+      allowItemClearing: allowItemClearing ?? self.allowItemClearing,
+      selectedItemTextAlign:
+          selectedItemTextAlign ?? self.selectedItemTextAlign,
+      menuConfiguration: menuConfiguration ?? self.menuConfiguration,
+      selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
+    );
+  }
 }

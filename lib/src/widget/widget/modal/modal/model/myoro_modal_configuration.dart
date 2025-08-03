@@ -9,7 +9,7 @@ part 'myoro_modal_configuration.g.dart';
 /// may be altered within other modals to not repeat the members.
 @immutable
 @myoroModel
-class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
+class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
   static const barrierDismissableDefaultValue = true;
   static const useRootNavigatorDefaultValue = true;
   static const titleDefaultValue = '';
@@ -31,7 +31,7 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
     : barrierDismissable = faker.randomGenerator.boolean(),
       useRootNavigator = faker.randomGenerator.boolean(),
       constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
-      onClosed = faker.randomGenerator.boolean() ? (() {}) : null,
+      onClosed = faker.randomGenerator.boolean() ? ((_) {}) : null,
       title = faker.randomGenerator.boolean() ? faker.lorem.word() : titleDefaultValue,
       showCloseButton = faker.randomGenerator.boolean(),
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
@@ -78,7 +78,7 @@ class MyoroModalConfiguration with _$MyoroModalConfigurationMixin {
   final BoxConstraints? constraints;
 
   /// Function executed when the modal is closed.
-  final VoidCallback? onClosed;
+  final MyoroModalOnClosed<T>? onClosed;
 
   /// Title of the modal.
   final String title;

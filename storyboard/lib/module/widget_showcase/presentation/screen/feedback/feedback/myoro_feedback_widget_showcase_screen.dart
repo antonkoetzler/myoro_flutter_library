@@ -11,7 +11,7 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroFeedback].
 final class MyoroFeedbackWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
+  static const options = <Widget>[
     _IconConfigurationOption(),
     _TitleConfigurationOption(),
     _SubtitleConfigurationOption(),

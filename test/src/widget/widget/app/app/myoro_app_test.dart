@@ -1,13 +1,16 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+final _text = faker.lorem.word();
 
 class _FakeRouterDelegate extends RouterDelegate<Object> with ChangeNotifier, PopNavigatorRouterDelegateMixin<Object> {
   @override
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
-  Widget build(context) => const Text('Fake Router Content');
+  Widget build(context) => Text(_text);
 
   @override
   Future<void> setNewRoutePath(Object configuration) async {}
@@ -37,13 +40,12 @@ void main() {
               initialRouteInformation: RouteInformation(uri: Uri.parse('/')),
             ),
           ),
-          title: 'Router Test App',
-          builder: (_, _) => const SizedBox(),
+          builder: (_, _) => Text(_text),
         ),
       ),
     );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroApp), findsOneWidget);
-    expect(find.text('Fake Router Content'), findsOneWidget);
+    expect(find.text(_text), findsOneWidget);
   });
 }

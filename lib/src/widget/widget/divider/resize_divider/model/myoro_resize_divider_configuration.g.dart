@@ -15,24 +15,6 @@ mixin _$MyoroResizeDividerConfigurationMixin {
   MyoroResizeDividerConfiguration get self =>
       this as MyoroResizeDividerConfiguration;
 
-  MyoroResizeDividerConfiguration copyWith({
-    Axis? direction,
-    double? shortValue,
-    bool shortValueProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    void Function(DragUpdateDetails)? dragCallback,
-    bool dragCallbackProvided = true,
-  }) {
-    return MyoroResizeDividerConfiguration(
-      direction: direction ?? self.direction,
-      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-      dragCallback:
-          dragCallbackProvided ? (dragCallback ?? self.dragCallback) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroResizeDividerConfiguration &&
@@ -61,4 +43,26 @@ mixin _$MyoroResizeDividerConfigurationMixin {
       '  shortValue: ${self.shortValue},\n'
       '  padding: ${self.padding},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroResizeDividerConfigurationExtension
+    on MyoroResizeDividerConfiguration {
+  MyoroResizeDividerConfiguration copyWith({
+    Axis? direction,
+    double? shortValue,
+    bool shortValueProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    void Function(DragUpdateDetails)? dragCallback,
+    bool dragCallbackProvided = true,
+  }) {
+    return MyoroResizeDividerConfiguration(
+      direction: direction ?? self.direction,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      dragCallback:
+          dragCallbackProvided ? (dragCallback ?? self.dragCallback) : null,
+    );
+  }
 }

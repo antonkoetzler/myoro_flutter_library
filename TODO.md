@@ -1,7 +1,5 @@
 # TODO
 
-- (**IN PROGRESS**) MyoroFeedback, MyoroErrorFeedback, MyoroEmptyFeedback
-- MyoroBottomSheet
 - MyoroDropdown
   - Add field in configurations to set the initial values when the clear text button is pressed
   - Fix `MyoroSingularDropdownController` such that it wont show selectedItemsController as a field

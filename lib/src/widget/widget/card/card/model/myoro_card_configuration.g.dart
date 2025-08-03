@@ -14,27 +14,6 @@ part of 'myoro_card_configuration.dart';
 mixin _$MyoroCardConfigurationMixin {
   MyoroCardConfiguration get self => this as MyoroCardConfiguration;
 
-  MyoroCardConfiguration copyWith({
-    String? title,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    BoxConstraints? constraints,
-    Widget? child,
-  }) {
-    return MyoroCardConfiguration(
-      title: title ?? self.title,
-      titleTextStyle:
-          titleTextStyleProvided
-              ? (titleTextStyle ?? self.titleTextStyle)
-              : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-      constraints: constraints ?? self.constraints,
-      child: child ?? self.child,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroCardConfiguration &&
@@ -66,4 +45,28 @@ mixin _$MyoroCardConfigurationMixin {
       '  constraints: ${self.constraints},\n'
       '  child: ${self.child},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroCardConfigurationExtension on MyoroCardConfiguration {
+  MyoroCardConfiguration copyWith({
+    String? title,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    BoxConstraints? constraints,
+    Widget? child,
+  }) {
+    return MyoroCardConfiguration(
+      title: title ?? self.title,
+      titleTextStyle:
+          titleTextStyleProvided
+              ? (titleTextStyle ?? self.titleTextStyle)
+              : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      constraints: constraints ?? self.constraints,
+      child: child ?? self.child,
+    );
+  }
 }

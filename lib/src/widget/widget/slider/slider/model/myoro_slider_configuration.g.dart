@@ -14,46 +14,6 @@ part of 'myoro_slider_configuration.dart';
 mixin _$MyoroSliderConfigurationMixin {
   MyoroSliderConfiguration get self => this as MyoroSliderConfiguration;
 
-  MyoroSliderConfiguration copyWith({
-    String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    double? width,
-    bool widthProvided = true,
-    String Function(double)? currentValueIndicatorTextBuilder,
-    bool currentValueIndicatorTextBuilderProvided = true,
-    String Function(double)? maxValueIndicatorTextBuilder,
-    bool maxValueIndicatorTextBuilderProvided = true,
-    String Function(double)? footerIndicatorTextBuilder,
-    bool footerIndicatorTextBuilderProvided = true,
-    void Function(double)? onChanged,
-    bool onChangedProvided = true,
-  }) {
-    return MyoroSliderConfiguration(
-      label: label ?? self.label,
-      labelTextStyle:
-          labelTextStyleProvided
-              ? (labelTextStyle ?? self.labelTextStyle)
-              : null,
-      width: widthProvided ? (width ?? self.width) : null,
-      currentValueIndicatorTextBuilder:
-          currentValueIndicatorTextBuilderProvided
-              ? (currentValueIndicatorTextBuilder ??
-                  self.currentValueIndicatorTextBuilder)
-              : null,
-      maxValueIndicatorTextBuilder:
-          maxValueIndicatorTextBuilderProvided
-              ? (maxValueIndicatorTextBuilder ??
-                  self.maxValueIndicatorTextBuilder)
-              : null,
-      footerIndicatorTextBuilder:
-          footerIndicatorTextBuilderProvided
-              ? (footerIndicatorTextBuilder ?? self.footerIndicatorTextBuilder)
-              : null,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroSliderConfiguration &&
@@ -93,4 +53,47 @@ mixin _$MyoroSliderConfigurationMixin {
       '  footerIndicatorTextBuilder: ${self.footerIndicatorTextBuilder},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroSliderConfigurationExtension on MyoroSliderConfiguration {
+  MyoroSliderConfiguration copyWith({
+    String? label,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    double? width,
+    bool widthProvided = true,
+    String Function(double)? currentValueIndicatorTextBuilder,
+    bool currentValueIndicatorTextBuilderProvided = true,
+    String Function(double)? maxValueIndicatorTextBuilder,
+    bool maxValueIndicatorTextBuilderProvided = true,
+    String Function(double)? footerIndicatorTextBuilder,
+    bool footerIndicatorTextBuilderProvided = true,
+    void Function(double)? onChanged,
+    bool onChangedProvided = true,
+  }) {
+    return MyoroSliderConfiguration(
+      label: label ?? self.label,
+      labelTextStyle:
+          labelTextStyleProvided
+              ? (labelTextStyle ?? self.labelTextStyle)
+              : null,
+      width: widthProvided ? (width ?? self.width) : null,
+      currentValueIndicatorTextBuilder:
+          currentValueIndicatorTextBuilderProvided
+              ? (currentValueIndicatorTextBuilder ??
+                  self.currentValueIndicatorTextBuilder)
+              : null,
+      maxValueIndicatorTextBuilder:
+          maxValueIndicatorTextBuilderProvided
+              ? (maxValueIndicatorTextBuilder ??
+                  self.maxValueIndicatorTextBuilder)
+              : null,
+      footerIndicatorTextBuilder:
+          footerIndicatorTextBuilderProvided
+              ? (footerIndicatorTextBuilder ?? self.footerIndicatorTextBuilder)
+              : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+    );
+  }
 }

@@ -14,20 +14,6 @@ part of 'myoro_table_row.dart';
 mixin _$MyoroTableRowMixin<T> {
   MyoroTableRow<T> get self => this as MyoroTableRow<T>;
 
-  MyoroTableRow<T> copyWith({
-    void Function(T)? onTapDown,
-    bool onTapDownProvided = true,
-    void Function(T)? onTapUp,
-    bool onTapUpProvided = true,
-    List<Widget>? cells,
-  }) {
-    return MyoroTableRow(
-      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
-      cells: cells ?? self.cells,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroTableRow<T> &&
@@ -49,4 +35,21 @@ mixin _$MyoroTableRowMixin<T> {
       '  onTapUp: ${self.onTapUp},\n'
       '  cells: ${self.cells},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroTableRowExtension<T> on MyoroTableRow<T> {
+  MyoroTableRow<T> copyWith({
+    void Function(T)? onTapDown,
+    bool onTapDownProvided = true,
+    void Function(T)? onTapUp,
+    bool onTapUpProvided = true,
+    List<Widget>? cells,
+  }) {
+    return MyoroTableRow(
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      cells: cells ?? self.cells,
+    );
+  }
 }

@@ -15,20 +15,6 @@ mixin _$MyoroBasicDividerConfigurationMixin {
   MyoroBasicDividerConfiguration get self =>
       this as MyoroBasicDividerConfiguration;
 
-  MyoroBasicDividerConfiguration copyWith({
-    Axis? direction,
-    double? shortValue,
-    bool shortValueProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-  }) {
-    return MyoroBasicDividerConfiguration(
-      direction: direction ?? self.direction,
-      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroBasicDividerConfiguration &&
@@ -50,4 +36,22 @@ mixin _$MyoroBasicDividerConfigurationMixin {
       '  shortValue: ${self.shortValue},\n'
       '  padding: ${self.padding},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroBasicDividerConfigurationExtension
+    on MyoroBasicDividerConfiguration {
+  MyoroBasicDividerConfiguration copyWith({
+    Axis? direction,
+    double? shortValue,
+    bool shortValueProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+  }) {
+    return MyoroBasicDividerConfiguration(
+      direction: direction ?? self.direction,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+    );
+  }
 }

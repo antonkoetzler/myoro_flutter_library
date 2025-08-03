@@ -15,16 +15,6 @@ mixin _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
   BoxConstraintsWidgetShowcaseOptionConfiguration get self =>
       this as BoxConstraintsWidgetShowcaseOptionConfiguration;
 
-  BoxConstraintsWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    void Function(BoxConstraints)? onChanged,
-  }) {
-    return BoxConstraintsWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      onChanged: onChanged ?? self.onChanged,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is BoxConstraintsWidgetShowcaseOptionConfiguration &&
@@ -44,4 +34,18 @@ mixin _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
       '  label: ${self.label},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $BoxConstraintsWidgetShowcaseOptionConfigurationExtension
+    on BoxConstraintsWidgetShowcaseOptionConfiguration {
+  BoxConstraintsWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    void Function(BoxConstraints)? onChanged,
+  }) {
+    return BoxConstraintsWidgetShowcaseOptionConfiguration(
+      label: label ?? self.label,
+      onChanged: onChanged ?? self.onChanged,
+    );
+  }
 }

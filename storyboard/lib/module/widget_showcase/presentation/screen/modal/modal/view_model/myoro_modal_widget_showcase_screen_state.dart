@@ -7,6 +7,14 @@ final class MyoroModalWidgetShowcaseScreenState extends ChangeNotifier {
   final _navigatorKey = GlobalKey<NavigatorState>();
   GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
+  /// [MyoroModalConfiguration.isBottomSheet]
+  bool _isBottomSheet = false;
+  bool get isBottomSheet => _isBottomSheet;
+  set isBottomSheet(bool isBottomSheet) {
+    _isBottomSheet = isBottomSheet;
+    notifyListeners();
+  }
+
   /// [MyoroModalConfiguration.barrierDismissable]
   bool _barrierDismissable = MyoroModalConfiguration.barrierDismissableDefaultValue;
   bool get barrierDismissable => _barrierDismissable;

@@ -8,7 +8,7 @@ void main() {
     expect(MyoroColors.transparent, Colors.transparent);
 
     // Grays
-    expect(MyoroColors.gray1, const Color(0xFF181818));
+    expect(MyoroColors.gray1, const Color(0xFF202020));
     expect(MyoroColors.gray2, const Color(0xFFEFEFEF));
     expect(MyoroColors.gray3, Colors.white);
 

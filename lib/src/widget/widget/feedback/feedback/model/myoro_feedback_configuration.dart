@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -7,13 +8,21 @@ part 'myoro_feedback_configuration.g.dart';
 /// Configuration model of [MyoroFeedback].
 @immutable
 @myoroModel
-final class MyoroFeedbackConfiguration with _$MyoroFeedbackConfigurationMixin {
+class MyoroFeedbackConfiguration with _$MyoroFeedbackConfigurationMixin {
   const MyoroFeedbackConfiguration({
     required this.iconConfiguration,
     required this.titleConfiguration,
     this.subtitleConfiguration,
     this.actionButtonConfiguration,
   });
+
+  // coverage:ignore-start
+  MyoroFeedbackConfiguration.fake()
+    : iconConfiguration = MyoroIconConfiguration.fake(),
+      titleConfiguration = MyoroTextConfiguration.fake(),
+      subtitleConfiguration = faker.randomGenerator.boolean() ? MyoroTextConfiguration.fake() : null,
+      actionButtonConfiguration = faker.randomGenerator.boolean() ? MyoroIconTextButtonConfiguration.fake() : null;
+  // coverage:ignore-end
 
   /// [IconData] of the [MyoroFeedback].
   final MyoroIconConfiguration iconConfiguration;

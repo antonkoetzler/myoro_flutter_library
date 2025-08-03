@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// View model of [IconWidgetShowcaseOptionViewModel].
+/// View model of [IconWidgetShowcaseOption].
 final class IconWidgetShowcaseOptionViewModel {
   IconWidgetShowcaseOptionViewModel(this._configuration) {
-    if (_configuration.enableOptionCheckboxOnChanged != null) {
-      _enabledController = ValueNotifier(_configuration.enabled ?? true)..addListener(_enabledControllerListener);
-    }
+    _enabledController = ValueNotifier(_configuration.enabled ?? true)..addListener(_enabledControllerListener);
     _iconController = MyoroSingularDropdownController(
-      enabled: enabled,
+      enabled: _configuration.enableOptionCheckboxOnChanged != null ? enabled : true,
       initiallySelectedItem: _configuration.initiallySelectedIcon,
     );
     _iconSize = _configuration.initiallySelectedIconSize;
@@ -21,16 +19,9 @@ final class IconWidgetShowcaseOptionViewModel {
 
   /// [ValueNotifier] of the [MyoroCheckbox] controlling if the option is enabled
   /// if [IconWidgetShowcaseOptionConfiguration.enableOptionCheckboxOnChanged] is not null.
-  ValueNotifier<bool>? _enabledController;
+  late final ValueNotifier<bool> _enabledController;
+  ValueNotifier<bool> get enabledController => _enabledController;
   bool get enabled => enabledController.value;
-  ValueNotifier<bool> get enabledController {
-    assert(
-      _configuration.enableOptionCheckboxOnChanged != null,
-      '[IconWidgetShowcaseOptionViewModel.enabledController]: '
-      '[_configuration.enableOptionCheckboxOnChanged] cannot be null.',
-    );
-    return _enabledController!;
-  }
 
   /// Icon size.
   double? _iconSize;
@@ -48,7 +39,7 @@ final class IconWidgetShowcaseOptionViewModel {
 
   /// Dispose function.
   void dispose() {
-    _enabledController?.dispose();
+    _enabledController.dispose();
     _iconController.dispose();
   }
 

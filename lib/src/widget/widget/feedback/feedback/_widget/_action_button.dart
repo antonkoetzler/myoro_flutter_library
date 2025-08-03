@@ -7,6 +7,6 @@ final class _ActionButton extends StatelessWidget {
   @override
   Widget build(context) {
     final configuration = context.read<MyoroFeedbackConfiguration>();
-    return MyoroIconTextButton(configuration: configuration.actionButtonConfiguration!);
+    return IntrinsicWidth(child: MyoroIconTextButton(configuration: configuration.actionButtonConfiguration!));
   }
 }

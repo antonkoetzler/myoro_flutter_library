@@ -12,7 +12,7 @@ final class _WidgetOptionsModal extends StatelessWidget {
 
     final screenSize = MediaQuery.of(navigatorContext).size;
 
-    await MyoroModal.show(
+    await MyoroModal.showModal(
       navigatorContext,
       configuration: MyoroModalConfiguration(
         title: 'Options of $widgetName',

@@ -4,7 +4,7 @@ part of '../myoro_dropdown.dart';
 final class _Menu<T, C extends _C<T>> extends StatefulWidget {
   /// Shows a [MyoroModel] when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.modal].
   static void showModal<T, C extends _C<T>>(BuildContext context, MyoroDropdownViewModel<T, C> viewModel) {
-    MyoroModal.show(
+    MyoroModal.showModal(
       context,
       configuration: const MyoroModalConfiguration(barrierDismissable: false),
       child: InheritedProvider.value(

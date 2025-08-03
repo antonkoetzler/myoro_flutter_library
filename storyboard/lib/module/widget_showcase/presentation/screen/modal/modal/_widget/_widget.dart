@@ -1,6 +1,6 @@
 part of '../myoro_modal_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenScreenConfiguration.widget] of [MyoroModalWidgetShowcaseScreen].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroModalWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 

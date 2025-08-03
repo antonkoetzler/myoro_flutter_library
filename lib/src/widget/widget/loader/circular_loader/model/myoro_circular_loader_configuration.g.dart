@@ -15,18 +15,6 @@ mixin _$MyoroCircularLoaderConfigurationMixin {
   MyoroCircularLoaderConfiguration get self =>
       this as MyoroCircularLoaderConfiguration;
 
-  MyoroCircularLoaderConfiguration copyWith({
-    Color? color,
-    bool colorProvided = true,
-    double? size,
-    bool sizeProvided = true,
-  }) {
-    return MyoroCircularLoaderConfiguration(
-      color: colorProvided ? (color ?? self.color) : null,
-      size: sizeProvided ? (size ?? self.size) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroCircularLoaderConfiguration &&
@@ -46,4 +34,20 @@ mixin _$MyoroCircularLoaderConfigurationMixin {
       '  color: ${self.color},\n'
       '  size: ${self.size},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroCircularLoaderConfigurationExtension
+    on MyoroCircularLoaderConfiguration {
+  MyoroCircularLoaderConfiguration copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? size,
+    bool sizeProvided = true,
+  }) {
+    return MyoroCircularLoaderConfiguration(
+      color: colorProvided ? (color ?? self.color) : null,
+      size: sizeProvided ? (size ?? self.size) : null,
+    );
+  }
 }

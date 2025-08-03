@@ -14,19 +14,6 @@ part of 'myoro_bar_graph_bar.dart';
 mixin _$MyoroBarGraphBarMixin {
   MyoroBarGraphBar get self => this as MyoroBarGraphBar;
 
-  MyoroBarGraphBar copyWith({
-    double? y,
-    Color? color,
-    bool colorProvided = true,
-    List<MyoroBarGraphBarSection>? barSections,
-  }) {
-    return MyoroBarGraphBar(
-      y: y ?? self.y,
-      color: colorProvided ? (color ?? self.color) : null,
-      barSections: barSections ?? self.barSections,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroBarGraphBar &&
@@ -48,4 +35,20 @@ mixin _$MyoroBarGraphBarMixin {
       '  color: ${self.color},\n'
       '  barSections: ${self.barSections},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroBarGraphBarExtension on MyoroBarGraphBar {
+  MyoroBarGraphBar copyWith({
+    double? y,
+    Color? color,
+    bool colorProvided = true,
+    List<MyoroBarGraphBarSection>? barSections,
+  }) {
+    return MyoroBarGraphBar(
+      y: y ?? self.y,
+      color: colorProvided ? (color ?? self.color) : null,
+      barSections: barSections ?? self.barSections,
+    );
+  }
 }

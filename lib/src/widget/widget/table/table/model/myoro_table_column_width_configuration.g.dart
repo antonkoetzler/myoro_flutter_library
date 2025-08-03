@@ -15,17 +15,6 @@ mixin _$MyoroTableColumnWidthConfigurationMixin {
   MyoroTableColumnWidthConfiguration get self =>
       this as MyoroTableColumnWidthConfiguration;
 
-  MyoroTableColumnWidthConfiguration copyWith({
-    MyoroTableColumnWidthConfigurationEnum? typeEnum,
-    double? fixedWidth,
-    bool fixedWidthProvided = true,
-  }) {
-    return MyoroTableColumnWidthConfiguration(
-      typeEnum: typeEnum ?? self.typeEnum,
-      fixedWidth: fixedWidthProvided ? (fixedWidth ?? self.fixedWidth) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroTableColumnWidthConfiguration &&
@@ -45,4 +34,19 @@ mixin _$MyoroTableColumnWidthConfigurationMixin {
       '  typeEnum: ${self.typeEnum},\n'
       '  fixedWidth: ${self.fixedWidth},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroTableColumnWidthConfigurationExtension
+    on MyoroTableColumnWidthConfiguration {
+  MyoroTableColumnWidthConfiguration copyWith({
+    MyoroTableColumnWidthConfigurationEnum? typeEnum,
+    double? fixedWidth,
+    bool fixedWidthProvided = true,
+  }) {
+    return MyoroTableColumnWidthConfiguration(
+      typeEnum: typeEnum ?? self.typeEnum,
+      fixedWidth: fixedWidthProvided ? (fixedWidth ?? self.fixedWidth) : null,
+    );
+  }
 }

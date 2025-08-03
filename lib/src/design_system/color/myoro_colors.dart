@@ -6,7 +6,7 @@ final class MyoroColors {
   static const transparent = Colors.transparent;
 
   /// Grays
-  static const gray1 = Color(0xFF181818);
+  static const gray1 = Color(0xFF202020);
   static const gray2 = Color(0xFFEFEFEF);
   static const gray3 = Colors.white;
 

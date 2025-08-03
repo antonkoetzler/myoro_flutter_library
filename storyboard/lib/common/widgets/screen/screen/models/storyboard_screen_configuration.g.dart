@@ -15,21 +15,6 @@ mixin _$StoryboardScreenConfigurationMixin {
   StoryboardScreenConfiguration get self =>
       this as StoryboardScreenConfiguration;
 
-  StoryboardScreenConfiguration copyWith({
-    void Function()? onPrevious,
-    bool onPreviousProvided = true,
-    String? title,
-    List<Widget>? extraActionWidgets,
-    Widget? body,
-  }) {
-    return StoryboardScreenConfiguration(
-      onPrevious: onPreviousProvided ? (onPrevious ?? self.onPrevious) : null,
-      title: title ?? self.title,
-      extraActionWidgets: extraActionWidgets ?? self.extraActionWidgets,
-      body: body ?? self.body,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is StoryboardScreenConfiguration &&
@@ -58,4 +43,23 @@ mixin _$StoryboardScreenConfigurationMixin {
       '  extraActionWidgets: ${self.extraActionWidgets},\n'
       '  body: ${self.body},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $StoryboardScreenConfigurationExtension
+    on StoryboardScreenConfiguration {
+  StoryboardScreenConfiguration copyWith({
+    void Function()? onPrevious,
+    bool onPreviousProvided = true,
+    String? title,
+    List<Widget>? extraActionWidgets,
+    Widget? body,
+  }) {
+    return StoryboardScreenConfiguration(
+      onPrevious: onPreviousProvided ? (onPrevious ?? self.onPrevious) : null,
+      title: title ?? self.title,
+      extraActionWidgets: extraActionWidgets ?? self.extraActionWidgets,
+      body: body ?? self.body,
+    );
+  }
 }

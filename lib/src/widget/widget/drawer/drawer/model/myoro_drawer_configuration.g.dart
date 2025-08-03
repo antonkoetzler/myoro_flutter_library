@@ -14,26 +14,6 @@ part of 'myoro_drawer_configuration.dart';
 mixin _$MyoroDrawerConfigurationMixin {
   MyoroDrawerConfiguration get self => this as MyoroDrawerConfiguration;
 
-  MyoroDrawerConfiguration copyWith({
-    String? title,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    bool? showCloseButton,
-    bool? barrierDismissable,
-    Widget? child,
-  }) {
-    return MyoroDrawerConfiguration(
-      title: title ?? self.title,
-      titleTextStyle:
-          titleTextStyleProvided
-              ? (titleTextStyle ?? self.titleTextStyle)
-              : null,
-      showCloseButton: showCloseButton ?? self.showCloseButton,
-      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
-      child: child ?? self.child,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroDrawerConfiguration &&
@@ -65,4 +45,27 @@ mixin _$MyoroDrawerConfigurationMixin {
       '  barrierDismissable: ${self.barrierDismissable},\n'
       '  child: ${self.child},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroDrawerConfigurationExtension on MyoroDrawerConfiguration {
+  MyoroDrawerConfiguration copyWith({
+    String? title,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+    bool? showCloseButton,
+    bool? barrierDismissable,
+    Widget? child,
+  }) {
+    return MyoroDrawerConfiguration(
+      title: title ?? self.title,
+      titleTextStyle:
+          titleTextStyleProvided
+              ? (titleTextStyle ?? self.titleTextStyle)
+              : null,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
+      child: child ?? self.child,
+    );
+  }
 }

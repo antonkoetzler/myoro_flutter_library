@@ -14,17 +14,6 @@ part of 'myoro_icon_configuration.dart';
 mixin _$MyoroIconConfigurationMixin {
   MyoroIconConfiguration get self => this as MyoroIconConfiguration;
 
-  MyoroIconConfiguration copyWith({
-    IconData? icon,
-    double? size,
-    bool sizeProvided = true,
-  }) {
-    return MyoroIconConfiguration(
-      icon: icon ?? self.icon,
-      size: sizeProvided ? (size ?? self.size) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroIconConfiguration &&
@@ -44,4 +33,18 @@ mixin _$MyoroIconConfigurationMixin {
       '  icon: ${self.icon},\n'
       '  size: ${self.size},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroIconConfigurationExtension on MyoroIconConfiguration {
+  MyoroIconConfiguration copyWith({
+    IconData? icon,
+    double? size,
+    bool sizeProvided = true,
+  }) {
+    return MyoroIconConfiguration(
+      icon: icon ?? self.icon,
+      size: sizeProvided ? (size ?? self.size) : null,
+    );
+  }
 }

@@ -14,10 +14,6 @@ part of 'myoro_bar_graph_group.dart';
 mixin _$MyoroBarGraphGroupMixin {
   MyoroBarGraphGroup get self => this as MyoroBarGraphGroup;
 
-  MyoroBarGraphGroup copyWith({int? x, List<MyoroBarGraphBar>? bars}) {
-    return MyoroBarGraphGroup(x: x ?? self.x, bars: bars ?? self.bars);
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroBarGraphGroup &&
@@ -37,4 +33,11 @@ mixin _$MyoroBarGraphGroupMixin {
       '  x: ${self.x},\n'
       '  bars: ${self.bars},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroBarGraphGroupExtension on MyoroBarGraphGroup {
+  MyoroBarGraphGroup copyWith({int? x, List<MyoroBarGraphBar>? bars}) {
+    return MyoroBarGraphGroup(x: x ?? self.x, bars: bars ?? self.bars);
+  }
 }

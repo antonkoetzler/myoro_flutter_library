@@ -5,12 +5,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   Future<void> testCase(
-    WidgetTester tester,
-    Function(MyoroModalThemeExtension) callback, [
-    MyoroModalConfiguration Function(MyoroModalConfiguration)? configurationBuilder,
-  ]) async {
+    WidgetTester tester, {
+    required bool isBottomSheet,
+    MyoroModalConfiguration Function()? configurationBuilder,
+    Function(MyoroModalThemeExtension)? callback,
+  }) async {
     final gestureDetectorKey = GlobalKey();
-    final configuration = MyoroModalConfiguration.fake();
     late final MyoroModalThemeExtension themeExtension;
     await tester.pumpWidget(
       MyoroWidgetTester(
@@ -20,13 +20,17 @@ void main() {
             return GestureDetector(
               key: gestureDetectorKey,
               onTapDown: (_) async {
-                return await MyoroModal.show(
-                  context,
-                  configuration: (configurationBuilder?.call(configuration) ?? configuration).copyWith(
-                    constraints: const BoxConstraints(maxWidth: 500, maxHeight: 500),
-                  ),
-                  child: const SizedBox.shrink(),
+                final configuration = (configurationBuilder?.call() ?? MyoroModalConfiguration.fake()).copyWith(
+                  constraints: const BoxConstraints(maxWidth: 500, maxHeight: 500),
                 );
+
+                return isBottomSheet
+                    ? await MyoroModal.showModal(context, configuration: configuration, child: const SizedBox.shrink())
+                    : await MyoroModal.showBottomSheet(
+                      context,
+                      configuration: configuration,
+                      child: const SizedBox.shrink(),
+                    );
               },
             );
           },
@@ -37,23 +41,33 @@ void main() {
     await tester.tap(find.byKey(gestureDetectorKey));
     await tester.pumpAndSettle();
     expect(find.byType(MyoroModal), findsOneWidget);
-    await callback(themeExtension);
+    await callback?.call(themeExtension);
   }
 
   testWidgets('MyoroModal close button functionality', (tester) async {
-    await testCase(tester, (themeExtension) async {
-      await tester.tap(find.byIcon(themeExtension.closeButtonIconConfiguration.icon));
-      await tester.pumpAndSettle();
-      expect(find.byType(MyoroModal), findsNothing);
-    }, (configuration) => configuration.copyWith(title: '', showCloseButton: true));
+    await testCase(
+      tester,
+      isBottomSheet: false,
+      configurationBuilder: () => MyoroModalConfiguration.fake().copyWith(title: '', showCloseButton: true),
+      callback: (themeExtension) async {
+        await tester.tap(find.byIcon(themeExtension.closeButtonIconConfiguration.icon));
+        await tester.pumpAndSettle();
+        expect(find.byType(MyoroModal), findsNothing);
+      },
+    );
   });
 
   testWidgets('MyoroModal title', (tester) async {
     final title = faker.lorem.word();
     await testCase(
       tester,
-      (_) => expect(find.text(title), findsOneWidget),
-      (configuration) => configuration.copyWith(title: title),
+      isBottomSheet: false,
+      configurationBuilder: () => MyoroModalConfiguration.fake().copyWith(title: title),
+      callback: (_) => expect(find.text(title), findsOneWidget),
     );
+  });
+
+  testWidgets('MyoroModal.showBotomSheet', (tester) async {
+    await testCase(tester, isBottomSheet: true);
   });
 }

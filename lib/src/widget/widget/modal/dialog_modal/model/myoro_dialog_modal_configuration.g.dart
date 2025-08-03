@@ -9,65 +9,15 @@ part of 'myoro_dialog_modal_configuration.dart';
 /// Apply this mixin to [MyoroDialogModalConfiguration] once the code is generated.
 ///
 /// ```dart
-/// class MyoroDialogModalConfiguration with _$MyoroDialogModalConfigurationMixin {}
+/// class MyoroDialogModalConfiguration<T> with _$MyoroDialogModalConfigurationMixin<T> {}
 /// ```
-mixin _$MyoroDialogModalConfigurationMixin {
-  MyoroDialogModalConfiguration get self =>
-      this as MyoroDialogModalConfiguration;
-
-  MyoroDialogModalConfiguration copyWith({
-    bool? barrierDismissable,
-    bool? useRootNavigator,
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
-    void Function()? onClosed,
-    bool onClosedProvided = true,
-    String? title,
-    bool? showCloseButton,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    EdgeInsets? closeButtonPadding,
-    bool closeButtonPaddingProvided = true,
-    bool? invertButtons,
-    String? confirmButtonText,
-    String? cancelButtonText,
-    void Function()? onConfirm,
-    bool onConfirmProvided = true,
-    void Function()? onCancel,
-    bool onCancelProvided = true,
-    String? text,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
-    Widget? child,
-    bool childProvided = true,
-  }) {
-    return MyoroDialogModalConfiguration(
-      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
-      useRootNavigator: useRootNavigator ?? self.useRootNavigator,
-      constraints:
-          constraintsProvided ? (constraints ?? self.constraints) : null,
-      onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
-      title: title ?? self.title,
-      showCloseButton: showCloseButton ?? self.showCloseButton,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding:
-          closeButtonPaddingProvided
-              ? (closeButtonPadding ?? self.closeButtonPadding)
-              : null,
-      invertButtons: invertButtons ?? self.invertButtons,
-      confirmButtonText: confirmButtonText ?? self.confirmButtonText,
-      cancelButtonText: cancelButtonText ?? self.cancelButtonText,
-      onConfirm: onConfirmProvided ? (onConfirm ?? self.onConfirm) : null,
-      onCancel: onCancelProvided ? (onCancel ?? self.onCancel) : null,
-      text: text ?? self.text,
-      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
-      child: childProvided ? (child ?? self.child) : null,
-    );
-  }
+mixin _$MyoroDialogModalConfigurationMixin<T> {
+  MyoroDialogModalConfiguration<T> get self =>
+      this as MyoroDialogModalConfiguration<T>;
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDialogModalConfiguration &&
+    return other is MyoroDialogModalConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.invertButtons == self.invertButtons &&
         other.confirmButtonText == self.confirmButtonText &&
@@ -111,7 +61,7 @@ mixin _$MyoroDialogModalConfigurationMixin {
 
   @override
   String toString() =>
-      'MyoroDialogModalConfiguration(\n'
+      'MyoroDialogModalConfiguration<T>(\n'
       '  invertButtons: ${self.invertButtons},\n'
       '  confirmButtonText: ${self.confirmButtonText},\n'
       '  cancelButtonText: ${self.cancelButtonText},\n'
@@ -129,4 +79,58 @@ mixin _$MyoroDialogModalConfigurationMixin {
       '  padding: ${self.padding},\n'
       '  closeButtonPadding: ${self.closeButtonPadding},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroDialogModalConfigurationExtension<T>
+    on MyoroDialogModalConfiguration<T> {
+  MyoroDialogModalConfiguration<T> copyWith({
+    bool? barrierDismissable,
+    bool? useRootNavigator,
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
+    void Function(T?)? onClosed,
+    bool onClosedProvided = true,
+    String? title,
+    bool? showCloseButton,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    EdgeInsets? closeButtonPadding,
+    bool closeButtonPaddingProvided = true,
+    bool? invertButtons,
+    String? confirmButtonText,
+    String? cancelButtonText,
+    void Function()? onConfirm,
+    bool onConfirmProvided = true,
+    void Function()? onCancel,
+    bool onCancelProvided = true,
+    String? text,
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
+    Widget? child,
+    bool childProvided = true,
+  }) {
+    return MyoroDialogModalConfiguration(
+      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
+      useRootNavigator: useRootNavigator ?? self.useRootNavigator,
+      constraints:
+          constraintsProvided ? (constraints ?? self.constraints) : null,
+      onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
+      title: title ?? self.title,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      closeButtonPadding:
+          closeButtonPaddingProvided
+              ? (closeButtonPadding ?? self.closeButtonPadding)
+              : null,
+      invertButtons: invertButtons ?? self.invertButtons,
+      confirmButtonText: confirmButtonText ?? self.confirmButtonText,
+      cancelButtonText: cancelButtonText ?? self.cancelButtonText,
+      onConfirm: onConfirmProvided ? (onConfirm ?? self.onConfirm) : null,
+      onCancel: onCancelProvided ? (onCancel ?? self.onCancel) : null,
+      text: text ?? self.text,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      child: childProvided ? (child ?? self.child) : null,
+    );
+  }
 }

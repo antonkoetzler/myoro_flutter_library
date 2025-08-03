@@ -15,46 +15,6 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
   MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration get self =>
       this as MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration;
 
-  MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    bool? enabled,
-    String? label,
-    void Function(bool)? checkboxOnChanged,
-    Color? initiallySelectedIdleColor,
-    bool initiallySelectedIdleColorProvided = true,
-    void Function(Color?)? idleOnChanged,
-    Color? initiallySelectedHoverColor,
-    bool initiallySelectedHoverColorProvided = true,
-    void Function(Color?)? hoverOnChanged,
-    Color? initiallySelectedTapColor,
-    bool initiallySelectedTapColorProvided = true,
-    void Function(Color?)? tapOnChanged,
-  }) {
-    return MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
-      title: titleProvided ? (title ?? self.title) : null,
-      enabled: enabled ?? self.enabled,
-      label: label ?? self.label,
-      checkboxOnChanged: checkboxOnChanged ?? self.checkboxOnChanged,
-      initiallySelectedIdleColor:
-          initiallySelectedIdleColorProvided
-              ? (initiallySelectedIdleColor ?? self.initiallySelectedIdleColor)
-              : null,
-      idleOnChanged: idleOnChanged ?? self.idleOnChanged,
-      initiallySelectedHoverColor:
-          initiallySelectedHoverColorProvided
-              ? (initiallySelectedHoverColor ??
-                  self.initiallySelectedHoverColor)
-              : null,
-      hoverOnChanged: hoverOnChanged ?? self.hoverOnChanged,
-      initiallySelectedTapColor:
-          initiallySelectedTapColorProvided
-              ? (initiallySelectedTapColor ?? self.initiallySelectedTapColor)
-              : null,
-      tapOnChanged: tapOnChanged ?? self.tapOnChanged,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other
@@ -102,4 +62,48 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
       '  initiallySelectedTapColor: ${self.initiallySelectedTapColor},\n'
       '  tapOnChanged: ${self.tapOnChanged},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationExtension
+    on MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration {
+  MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration copyWith({
+    String? title,
+    bool titleProvided = true,
+    bool? enabled,
+    String? label,
+    void Function(bool)? checkboxOnChanged,
+    Color? initiallySelectedIdleColor,
+    bool initiallySelectedIdleColorProvided = true,
+    void Function(Color?)? idleOnChanged,
+    Color? initiallySelectedHoverColor,
+    bool initiallySelectedHoverColorProvided = true,
+    void Function(Color?)? hoverOnChanged,
+    Color? initiallySelectedTapColor,
+    bool initiallySelectedTapColorProvided = true,
+    void Function(Color?)? tapOnChanged,
+  }) {
+    return MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
+      title: titleProvided ? (title ?? self.title) : null,
+      enabled: enabled ?? self.enabled,
+      label: label ?? self.label,
+      checkboxOnChanged: checkboxOnChanged ?? self.checkboxOnChanged,
+      initiallySelectedIdleColor:
+          initiallySelectedIdleColorProvided
+              ? (initiallySelectedIdleColor ?? self.initiallySelectedIdleColor)
+              : null,
+      idleOnChanged: idleOnChanged ?? self.idleOnChanged,
+      initiallySelectedHoverColor:
+          initiallySelectedHoverColorProvided
+              ? (initiallySelectedHoverColor ??
+                  self.initiallySelectedHoverColor)
+              : null,
+      hoverOnChanged: hoverOnChanged ?? self.hoverOnChanged,
+      initiallySelectedTapColor:
+          initiallySelectedTapColorProvided
+              ? (initiallySelectedTapColor ?? self.initiallySelectedTapColor)
+              : null,
+      tapOnChanged: tapOnChanged ?? self.tapOnChanged,
+    );
+  }
 }

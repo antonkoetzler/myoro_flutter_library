@@ -9,10 +9,11 @@ part 'myoro_feedback_theme_extension.g.dart';
 
 /// [ThemeExtension] of [MyoroFeedback].
 @immutable
-@myoroModel
-final class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
+@myoroThemeExtension
+class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
     with _$MyoroFeedbackThemeExtensionMixin {
   const MyoroFeedbackThemeExtension({
+    required this.spacing,
     required this.iconSize,
     required this.titleTextStyle,
     required this.subtitleTextStyle,
@@ -20,15 +21,20 @@ final class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThem
 
   // coverage:ignore-start
   MyoroFeedbackThemeExtension.fake()
-    : iconSize = faker.randomGenerator.decimal(scale: 20),
+    : spacing = faker.randomGenerator.decimal(scale: 20),
+      iconSize = faker.randomGenerator.decimal(scale: 20),
       titleTextStyle = myoroFake<TextStyle>(),
       subtitleTextStyle = myoroFake<TextStyle>();
   // coverage:ignore-end
 
   MyoroFeedbackThemeExtension.builder(TextTheme textTheme)
-    : iconSize = kMyoroMultiplier * 50,
+    : spacing = kMyoroMultiplier * 2,
+      iconSize = kMyoroMultiplier * 30,
       titleTextStyle = textTheme.titleLarge!,
       subtitleTextStyle = textTheme.bodyMedium!;
+
+  /// Spacing between the icon/title/subtitle and the action button.
+  final double spacing;
 
   /// Size of the icon.
   final double iconSize;
@@ -43,6 +49,7 @@ final class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThem
   MyoroFeedbackThemeExtension lerp(covariant ThemeExtension<MyoroFeedbackThemeExtension>? other, double t) {
     if (other is! MyoroFeedbackThemeExtension) return this;
     return copyWith(
+      spacing: lerpDouble(spacing, other.spacing, t),
       iconSize: lerpDouble(iconSize, other.iconSize, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
       subtitleTextStyle: TextStyle.lerp(subtitleTextStyle, other.subtitleTextStyle, t),

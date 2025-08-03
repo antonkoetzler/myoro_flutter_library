@@ -8,6 +8,8 @@ part '_widget/_subtitle.dart';
 part '_widget/_title.dart';
 
 /// An a generic feedback [Widget].
+///
+/// TODO: Needs to be tested.
 final class MyoroFeedback extends StatelessWidget {
   const MyoroFeedback({super.key, required this.configuration});
 
@@ -15,7 +17,9 @@ final class MyoroFeedback extends StatelessWidget {
   final MyoroFeedbackConfiguration configuration;
 
   @override
-  Widget build(_) {
+  Widget build(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
+
     return InheritedProvider.value(
       value: configuration,
       child: Column(
@@ -23,11 +27,19 @@ final class MyoroFeedback extends StatelessWidget {
         children: [
           Flexible(
             child: Column(
+              spacing: themeExtension.spacing,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const _Icon(),
-                const _Title(),
-                if (configuration.subtitleConfiguration != null) const _Subtitle(),
+                Flexible(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const _Icon(),
+                      const _Title(),
+                      if (configuration.subtitleConfiguration != null) const _Subtitle(),
+                    ],
+                  ),
+                ),
                 if (configuration.actionButtonConfiguration != null) const _ActionButton(),
               ],
             ),

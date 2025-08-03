@@ -8,7 +8,7 @@ part 'myoro_dialog_modal_configuration.g.dart';
 /// Configuration of [MyoroDialogModal].
 @immutable
 @myoroModel
-class MyoroDialogModalConfiguration extends MyoroModalConfiguration with _$MyoroDialogModalConfigurationMixin {
+class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _$MyoroDialogModalConfigurationMixin<T> {
   static const invertButtonsDefaultValue = false;
   static const confirmButtonTextDefaultValue = '';
   static const cancelButtonTextDefaultValue = '';
@@ -38,6 +38,14 @@ class MyoroDialogModalConfiguration extends MyoroModalConfiguration with _$Myoro
     final bool textProvided = faker.randomGenerator.boolean();
 
     return MyoroDialogModalConfiguration(
+      barrierDismissable: faker.randomGenerator.boolean(),
+      useRootNavigator: faker.randomGenerator.boolean(),
+      constraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      onClosed: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      title: faker.randomGenerator.boolean() ? faker.lorem.word() : MyoroModalConfiguration.titleDefaultValue,
+      showCloseButton: faker.randomGenerator.boolean(),
+      padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      closeButtonPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       invertButtons: faker.randomGenerator.boolean(),
       confirmButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : confirmButtonTextDefaultValue,
       cancelButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : cancelButtonTextDefaultValue,

@@ -15,26 +15,6 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
   SliderWidgetShowcaseOptionConfiguration get self =>
       this as SliderWidgetShowcaseOptionConfiguration;
 
-  SliderWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    bool? initiallyEnabled,
-    double? initialValue,
-    void Function(bool, double)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    void Function(double)? sliderOnChanged,
-  }) {
-    return SliderWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      initiallyEnabled: initiallyEnabled ?? self.initiallyEnabled,
-      initialValue: initialValue ?? self.initialValue,
-      checkboxOnChanged:
-          checkboxOnChangedProvided
-              ? (checkboxOnChanged ?? self.checkboxOnChanged)
-              : null,
-      sliderOnChanged: sliderOnChanged ?? self.sliderOnChanged,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is SliderWidgetShowcaseOptionConfiguration &&
@@ -66,4 +46,28 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  sliderOnChanged: ${self.sliderOnChanged},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $SliderWidgetShowcaseOptionConfigurationExtension
+    on SliderWidgetShowcaseOptionConfiguration {
+  SliderWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    bool? initiallyEnabled,
+    double? initialValue,
+    void Function(bool, double)? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    void Function(double)? sliderOnChanged,
+  }) {
+    return SliderWidgetShowcaseOptionConfiguration(
+      label: label ?? self.label,
+      initiallyEnabled: initiallyEnabled ?? self.initiallyEnabled,
+      initialValue: initialValue ?? self.initialValue,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
+      sliderOnChanged: sliderOnChanged ?? self.sliderOnChanged,
+    );
+  }
 }

@@ -14,24 +14,6 @@ part of 'myoro_form_configuration.dart';
 mixin _$MyoroFormConfigurationMixin<T> {
   MyoroFormConfiguration<T> get self => this as MyoroFormConfiguration<T>;
 
-  MyoroFormConfiguration<T> copyWith({
-    String? Function()? validation,
-    bool validationProvided = true,
-    FutureOr<T?> Function()? request,
-    bool requestProvided = true,
-    void Function(T?)? onSuccess,
-    bool onSuccessProvided = true,
-    void Function(String)? onError,
-    bool onErrorProvided = true,
-  }) {
-    return MyoroFormConfiguration(
-      validation: validationProvided ? (validation ?? self.validation) : null,
-      request: requestProvided ? (request ?? self.request) : null,
-      onSuccess: onSuccessProvided ? (onSuccess ?? self.onSuccess) : null,
-      onError: onErrorProvided ? (onError ?? self.onError) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroFormConfiguration<T> &&
@@ -60,4 +42,25 @@ mixin _$MyoroFormConfigurationMixin<T> {
       '  onSuccess: ${self.onSuccess},\n'
       '  onError: ${self.onError},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroFormConfigurationExtension<T> on MyoroFormConfiguration<T> {
+  MyoroFormConfiguration<T> copyWith({
+    String? Function()? validation,
+    bool validationProvided = true,
+    FutureOr<T?> Function()? request,
+    bool requestProvided = true,
+    void Function(T?)? onSuccess,
+    bool onSuccessProvided = true,
+    void Function(String)? onError,
+    bool onErrorProvided = true,
+  }) {
+    return MyoroFormConfiguration(
+      validation: validationProvided ? (validation ?? self.validation) : null,
+      request: requestProvided ? (request ?? self.request) : null,
+      onSuccess: onSuccessProvided ? (onSuccess ?? self.onSuccess) : null,
+      onError: onErrorProvided ? (onError ?? self.onError) : null,
+    );
+  }
 }

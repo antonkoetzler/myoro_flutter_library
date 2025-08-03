@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -24,7 +25,9 @@ void main() {
     await tester.pumpAndSettle();
     context.openDrawer(
       isEndDrawer: isEndDrawer,
-      drawer: MyoroDrawer(configuration: MyoroDrawerConfiguration.fake().copyWith(showCloseButton: true)),
+      drawer: MyoroDrawer(
+        configuration: MyoroDrawerConfiguration.fake().copyWith(title: faker.lorem.word(), showCloseButton: true),
+      ),
     );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDrawer), findsOneWidget);

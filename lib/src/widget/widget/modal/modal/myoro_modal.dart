@@ -5,7 +5,7 @@ part '_widget/_close_button.dart';
 part '_widget/_header.dart';
 part '_widget/_title.dart';
 
-/// Base modal. Every modal should be implementing [MyoroModal] like so.
+/// Modal of MFL. Every modal should be implementing [MyoroModal] like so.
 ///
 /// ``` dart
 /// class FooModal extends StatelessWidget {
@@ -20,50 +20,77 @@ part '_widget/_title.dart';
 /// }
 /// ```
 class MyoroModal extends MyoroStatelessWidget {
-  /// Function that opens the modal.
-  static Future<void> show(
+  /// Function that opens a normal modal.
+  static Future<T?> showModal<T>(
     BuildContext context, {
     MyoroModalConfiguration configuration = const MyoroModalConfiguration(),
     required Widget child,
   }) async {
-    return await showDialog(
+    final result = await showDialog(
       context: context,
       useRootNavigator: configuration.useRootNavigator,
       barrierDismissible: configuration.barrierDismissable,
-      builder: (_) => MyoroModal._(configuration, child),
-    ).then((_) => configuration.onClosed?.call());
+      builder: (_) => MyoroModal._(configuration, child, isBottomSheet: false),
+    );
+    configuration.onClosed?.call(result);
+    return result;
   }
 
-  const MyoroModal._(this.configuration, this.child);
+  /// Function that opens a bottom sheet modal.
+  static Future<T?> showBottomSheet<T>(
+    BuildContext context, {
+    MyoroModalConfiguration configuration = const MyoroModalConfiguration(),
+    required Widget child,
+  }) async {
+    final result = await showModalBottomSheet(
+      context: context,
+      builder: (_) => MyoroModal._(configuration, child, isBottomSheet: true),
+    );
+    configuration.onClosed?.call(result);
+    return result;
+  }
+
+  const MyoroModal._(this._configuration, this._child, {required this.isBottomSheet});
 
   /// Configuration of the modal.
-  final MyoroModalConfiguration configuration;
+  final MyoroModalConfiguration _configuration;
 
   /// Contents of the modal.
-  final Widget child;
+  final Widget _child;
+
+  /// If [MyoroModal.showModal] or [MyoroModal.showBottomSheet] is called.
+  final bool isBottomSheet;
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
 
-    return Center(
-      child: Material(
-        color: themeExtension.primaryColor,
-        borderRadius: themeExtension.borderRadius,
-        child: Container(
-          constraints: configuration.constraints ?? themeExtension.constraints(context),
-          padding: configuration.padding ?? themeExtension.padding,
-          decoration: BoxDecoration(borderRadius: themeExtension.borderRadius, border: themeExtension.border),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: themeExtension.spacing,
-            children: [
-              if (configuration.title.isNotEmpty || configuration.showCloseButton) _Header(configuration),
-              Flexible(child: child),
-            ],
-          ),
+    final titleIsNotEmpty = _configuration.title.isNotEmpty;
+    final showCloseButton = _configuration.showCloseButton;
+    final showHeader = titleIsNotEmpty || showCloseButton;
+
+    final primaryColor = themeExtension.primaryColor;
+    final borderRadius = !isBottomSheet ? themeExtension.borderRadius : themeExtension.bottomSheetBorderRadius;
+    final constraints = _configuration.constraints ?? themeExtension.constraints(context);
+    final padding = _configuration.padding ?? themeExtension.padding;
+    final border = !isBottomSheet ? themeExtension.border : themeExtension.bottomSheetBorder;
+    final spacing = themeExtension.spacing;
+
+    final content = Material(
+      color: primaryColor,
+      borderRadius: borderRadius,
+      child: Container(
+        constraints: constraints,
+        padding: padding,
+        decoration: BoxDecoration(borderRadius: borderRadius, border: border),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: spacing,
+          children: [if (showHeader) _Header(_configuration), Flexible(child: _child)],
         ),
       ),
     );
+
+    return !isBottomSheet ? Center(child: content) : content;
   }
 }

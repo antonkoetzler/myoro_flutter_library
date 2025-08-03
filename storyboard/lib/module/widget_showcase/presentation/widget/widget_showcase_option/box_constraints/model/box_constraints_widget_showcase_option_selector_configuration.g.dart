@@ -15,16 +15,6 @@ mixin _$BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {
   BoxConstraintsWidgetShowcaseOptionSelectorConfiguration get self =>
       this as BoxConstraintsWidgetShowcaseOptionSelectorConfiguration;
 
-  BoxConstraintsWidgetShowcaseOptionSelectorConfiguration copyWith({
-    BoxConstraintsWidgetShowcaseOptionSelectorController? controller,
-    String? label,
-  }) {
-    return BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-      controller: controller ?? self.controller,
-      label: label ?? self.label,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is BoxConstraintsWidgetShowcaseOptionSelectorConfiguration &&
@@ -44,4 +34,18 @@ mixin _$BoxConstraintsWidgetShowcaseOptionSelectorConfigurationMixin {
       '  controller: ${self.controller},\n'
       '  label: ${self.label},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $BoxConstraintsWidgetShowcaseOptionSelectorConfigurationExtension
+    on BoxConstraintsWidgetShowcaseOptionSelectorConfiguration {
+  BoxConstraintsWidgetShowcaseOptionSelectorConfiguration copyWith({
+    BoxConstraintsWidgetShowcaseOptionSelectorController? controller,
+    String? label,
+  }) {
+    return BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
+      controller: controller ?? self.controller,
+      label: label ?? self.label,
+    );
+  }
 }

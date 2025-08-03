@@ -23,7 +23,12 @@ final class MyoroFeedbackWidgetShowcaseScreenViewModel {
       titleConfiguration: _state.titleConfiguration,
       subtitleConfiguration: _state.subtitleConfiguration,
       actionButtonConfiguration:
-          _state.actionButtonConfigurationEnabled ? MyoroIconTextButtonConfiguration.fake() : null,
+          _state.actionButtonConfigurationEnabled
+              ? MyoroIconTextButtonConfiguration(
+                textConfiguration: const MyoroTextConfiguration(text: 'Action button'),
+                onTapUp: (_) {},
+              )
+              : null,
     );
   }
 

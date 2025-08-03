@@ -14,26 +14,6 @@ part of 'myoro_carousel_configuration.dart';
 mixin _$MyoroCarouselConfigurationMixin {
   MyoroCarouselConfiguration get self => this as MyoroCarouselConfiguration;
 
-  MyoroCarouselConfiguration copyWith({
-    Axis? direction,
-    bool? displayTraversalButtons,
-    int? initialItem,
-    bool? autoplay,
-    Duration? autoplayIntervalDuration,
-    List<Widget>? items,
-  }) {
-    return MyoroCarouselConfiguration(
-      direction: direction ?? self.direction,
-      displayTraversalButtons:
-          displayTraversalButtons ?? self.displayTraversalButtons,
-      initialItem: initialItem ?? self.initialItem,
-      autoplay: autoplay ?? self.autoplay,
-      autoplayIntervalDuration:
-          autoplayIntervalDuration ?? self.autoplayIntervalDuration,
-      items: items ?? self.items,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroCarouselConfiguration &&
@@ -68,4 +48,27 @@ mixin _$MyoroCarouselConfigurationMixin {
       '  autoplayIntervalDuration: ${self.autoplayIntervalDuration},\n'
       '  items: ${self.items},\n'
       ');';
+}
+
+/// Extension class for @myoroModel to place the copyWith function.
+extension $MyoroCarouselConfigurationExtension on MyoroCarouselConfiguration {
+  MyoroCarouselConfiguration copyWith({
+    Axis? direction,
+    bool? displayTraversalButtons,
+    int? initialItem,
+    bool? autoplay,
+    Duration? autoplayIntervalDuration,
+    List<Widget>? items,
+  }) {
+    return MyoroCarouselConfiguration(
+      direction: direction ?? self.direction,
+      displayTraversalButtons:
+          displayTraversalButtons ?? self.displayTraversalButtons,
+      initialItem: initialItem ?? self.initialItem,
+      autoplay: autoplay ?? self.autoplay,
+      autoplayIntervalDuration:
+          autoplayIntervalDuration ?? self.autoplayIntervalDuration,
+      items: items ?? self.items,
+    );
+  }
 }
