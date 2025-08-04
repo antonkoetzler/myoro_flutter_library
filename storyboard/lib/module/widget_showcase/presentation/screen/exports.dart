@@ -20,5 +20,6 @@ export 'radio/exports.dart';
 export 'screen/exports.dart';
 export 'slider/exports.dart';
 export 'snack_bar/exports.dart';
+export 'tab_view/exports.dart';
 export 'table/exports.dart';
 export 'tooltip/exports.dart';

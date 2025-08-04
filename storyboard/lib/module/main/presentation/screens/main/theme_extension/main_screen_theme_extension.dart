@@ -21,8 +21,9 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
       widgetListingAccordionItemContent = myoroFake<EdgeInsets>();
   // coverage:ignore-end
 
-  // TODO: Constant numbers need to be moved to a common variable.
-  const MainScreenThemeExtension.builder() : spacing = 10, widgetListingAccordionItemContent = const EdgeInsets.all(10);
+  const MainScreenThemeExtension.builder()
+    : spacing = kMyoroMultiplier * 2,
+      widgetListingAccordionItemContent = const EdgeInsets.all(10);
 
   /// General spacing of [Widget]s.
   final double spacing;

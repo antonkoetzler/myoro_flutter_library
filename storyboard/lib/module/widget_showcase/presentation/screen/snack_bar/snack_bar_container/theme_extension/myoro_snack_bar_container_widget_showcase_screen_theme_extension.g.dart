@@ -12,10 +12,7 @@ part of 'myoro_snack_bar_container_widget_showcase_screen_theme_extension.dart';
 /// class MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension with _$MyoroSnackBarContainerWidgetShowcaseScreenThemeExtensionMixin {}
 /// ```
 mixin _$MyoroSnackBarContainerWidgetShowcaseScreenThemeExtensionMixin
-    on
-        ThemeExtension<
-          MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension
-        > {
+    on ThemeExtension<MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension> {
   MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension get self =>
       this as MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension;
 
@@ -26,8 +23,7 @@ mixin _$MyoroSnackBarContainerWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroSnackBarContainerWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

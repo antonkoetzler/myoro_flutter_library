@@ -19,7 +19,9 @@ void main() {
               onTapDown:
                   (_) => MyoroDialogModal.show(
                     context,
-                    configuration: configurationBuilder(MyoroDialogModalConfiguration.fake()),
+                    configuration: configurationBuilder(
+                      MyoroDialogModalConfiguration.fake(),
+                    ).copyWith(constraints: const BoxConstraints(minWidth: 800, minHeight: 800)),
                   ),
             );
           },

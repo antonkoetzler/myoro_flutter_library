@@ -26,6 +26,7 @@ enum MyoroWidgetListEnum {
   screens('Screens', {myoroScreenTitle}),
   sliders('Sliders', {myoroSliderTitle}),
   snackBars('Snack Bars', {myoroSnackBarTitle, myoroSnackBarContainerTitle}),
+  tabView('Tab views', {myoroTabViewTitle}),
   tables('Tables', {myoroTableTitle}),
   tooltips('Tooltips', {myoroTooltipTitle});
 
@@ -118,6 +119,9 @@ enum MyoroWidgetListEnum {
   static const myoroSnackBarTitle = 'MyoroSnackBar';
   static const myoroSnackBarContainerTitle = 'MyoroSnackBarContainer';
 
+  // Tab views.
+  static const myoroTabViewTitle = 'MyoroTabView';
+
   // Tables
   static const myoroTableTitle = 'MyoroTable';
 
@@ -200,6 +204,9 @@ enum MyoroWidgetListEnum {
       // Snack bars
       myoroSnackBarTitle => const MyoroSnackBarWidgetShowcaseScreen(),
       myoroSnackBarContainerTitle => const MyoroSnackBarContainerWidgetShowcaseScreen(),
+
+      // Tab views.
+      myoroTabViewTitle => const MyoroTabViewWidgetShowcaseScreen(),
 
       // Tables
       myoroTableTitle => const MyoroTableWidgetShowcaseScreen(),

@@ -8,9 +8,7 @@ part '_widget/_subtitle.dart';
 part '_widget/_title.dart';
 
 /// An a generic feedback [Widget].
-///
-/// TODO: Needs to be tested.
-final class MyoroFeedback extends StatelessWidget {
+final class MyoroFeedback extends MyoroStatelessWidget {
   const MyoroFeedback({super.key, required this.configuration});
 
   /// Configuration.

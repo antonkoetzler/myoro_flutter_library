@@ -1,6 +1,5 @@
 # TODO
 
-- Add format script to deploy script
 - MyoroDropdown
   - Add field in configurations to set the initial values when the clear text button is pressed
   - Fix `MyoroSingularDropdownController` such that it wont show selectedItemsController as a field

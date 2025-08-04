@@ -26,6 +26,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createScreenThemeExtensions(),
     ..._createSliderThemeExtensions(textTheme),
     ..._createSnackBarThemeExtensions(colorScheme, textTheme),
+    ..._createTabViewThemeExtensions(colorScheme, textTheme),
     ..._createTableThemeExtensions(colorScheme, textTheme),
     ..._createTooltipThemeExtensions(),
   ];
@@ -133,6 +134,10 @@ List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, Tex
     const MyoroSnackBarContainerThemeExtension.builder(),
     MyoroSnackBarThemeExtension.builder(colorScheme, textTheme),
   ];
+}
+
+List<ThemeExtension> _createTabViewThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [MyoroTabViewThemeExtension.builder(colorScheme, textTheme)];
 }
 
 List<ThemeExtension> _createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

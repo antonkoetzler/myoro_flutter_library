@@ -17,8 +17,7 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
 
   @override
   bool operator ==(Object other) {
-    return other
-            is MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration &&
+    return other is MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration &&
         other.runtimeType == runtimeType &&
         other.title == self.title &&
         other.enabled == self.enabled &&
@@ -89,20 +88,15 @@ extension $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationExtens
       label: label ?? self.label,
       checkboxOnChanged: checkboxOnChanged ?? self.checkboxOnChanged,
       initiallySelectedIdleColor:
-          initiallySelectedIdleColorProvided
-              ? (initiallySelectedIdleColor ?? self.initiallySelectedIdleColor)
-              : null,
+          initiallySelectedIdleColorProvided ? (initiallySelectedIdleColor ?? self.initiallySelectedIdleColor) : null,
       idleOnChanged: idleOnChanged ?? self.idleOnChanged,
       initiallySelectedHoverColor:
           initiallySelectedHoverColorProvided
-              ? (initiallySelectedHoverColor ??
-                  self.initiallySelectedHoverColor)
+              ? (initiallySelectedHoverColor ?? self.initiallySelectedHoverColor)
               : null,
       hoverOnChanged: hoverOnChanged ?? self.hoverOnChanged,
       initiallySelectedTapColor:
-          initiallySelectedTapColorProvided
-              ? (initiallySelectedTapColor ?? self.initiallySelectedTapColor)
-              : null,
+          initiallySelectedTapColorProvided ? (initiallySelectedTapColor ?? self.initiallySelectedTapColor) : null,
       tapOnChanged: tapOnChanged ?? self.tapOnChanged,
     );
   }

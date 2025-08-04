@@ -13,8 +13,7 @@ part of 'myoro_radio_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroRadioWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroRadioWidgetShowcaseScreenThemeExtension> {
-  MyoroRadioWidgetShowcaseScreenThemeExtension get self =>
-      this as MyoroRadioWidgetShowcaseScreenThemeExtension;
+  MyoroRadioWidgetShowcaseScreenThemeExtension get self => this as MyoroRadioWidgetShowcaseScreenThemeExtension;
 
   @override
   MyoroRadioWidgetShowcaseScreenThemeExtension copyWith() {
@@ -23,8 +22,7 @@ mixin _$MyoroRadioWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroRadioWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroRadioWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override
