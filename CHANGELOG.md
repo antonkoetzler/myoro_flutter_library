@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.1.0
+
+- feature: `MyoroTabView`
+
 ## 2.0.6
 
 - feature: MyoroFeedback
