@@ -4,6 +4,7 @@
   - Add field in configurations to set the initial values when the clear text button is pressed
   - Fix `MyoroSingularDropdownController` such that it wont show selectedItemsController as a field
   - Make another abstraction for dropdowns that can be empty and dropdowns that don't need to be empty, better DX
+- 100% pub.dev score
 
 ## Technical debt that should be gradually resolved
 
