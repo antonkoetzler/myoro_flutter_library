@@ -10,7 +10,7 @@ part '_widget/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
 class MyoroAccordion extends MyoroStatefulWidget {
-  const MyoroAccordion({super.key, super.createViewModel, required this.controller});
+  const MyoroAccordion({super.key, required this.controller});
 
   /// Controller
   final MyoroAccordionController controller;
@@ -24,9 +24,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   MyoroAccordionViewModel? _localViewModel;
   MyoroAccordionViewModel get _viewModel {
-    final viewModel = _createViewModel
-        ? (_localViewModel ??= MyoroAccordionViewModel())
-        : context.read<MyoroAccordionViewModel>();
+    final viewModel = _localViewModel ??= MyoroAccordionViewModel();
     return viewModel..state.controller = widget.controller;
   }
 

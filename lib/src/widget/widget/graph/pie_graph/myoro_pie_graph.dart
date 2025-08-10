@@ -7,20 +7,19 @@ part '_widget/_pie_graph.dart';
 
 /// A pie (or donut if specified) chart.
 class MyoroPieGraph extends MyoroStatelessWidget {
-  const MyoroPieGraph({super.key, super.createViewModel, required this.configuration});
+  const MyoroPieGraph({super.key, required this.configuration});
 
   /// Configuration.
   final MyoroPieGraphConfiguration configuration;
 
   @override
   Widget build(context) {
-    final viewModel = createViewModel
-        ? MyoroPieGraphViewModel(configuration: configuration)
-        : context.read<MyoroPieGraphViewModel>();
-
-    return Stack(
-      alignment: Alignment.center,
-      children: [_PieGraph(viewModel), if (configuration.centerWidget != null) configuration.centerWidget!],
+    return InheritedProvider(
+      create: (_) => MyoroPieGraphViewModel(configuration: configuration),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [const _PieGraph(), if (configuration.centerWidget != null) configuration.centerWidget!],
+      ),
     );
   }
 }

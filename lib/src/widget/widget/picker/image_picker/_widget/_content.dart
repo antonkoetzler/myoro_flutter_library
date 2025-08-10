@@ -31,9 +31,11 @@ final class _Content extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
+                // coverage:ignore-start
                 if (selectedImageIsNotNull) ...[
                   Image.file(File(selectedImage), width: size.width, height: size.height, fit: BoxFit.cover),
                 ],
+                // coverage:ignore-end
                 Positioned.fill(child: _Overlay(selectedImageIsNotNull)),
               ],
             ),

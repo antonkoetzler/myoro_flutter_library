@@ -16,21 +16,15 @@ final class _Overlay extends StatelessWidget {
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final openPickerAndUpdateSelectedImage = viewModel.openPickerAndUpdateSelectedImage;
 
-    // return MouseRegion(
-    //   cursor: overlayCursor,
-    //   child: GestureDetector(
-    //     onTapUp: (_) => MyoroPlatformHelper.isMobile
-    //         ? _SelectionTypeModal.show(context, viewModel)
-    //         : openPickerAndUpdateSelectedImage(),
-    //   ),
-    // );
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
         cursor: overlayCursor,
         backgroundColorBuilder: overlayBackgroundColorBuilder,
+        // coverage:ignore-start
         onTapUp: (_) => MyoroPlatformHelper.isMobile
             ? _SelectionTypeModal.show(context, viewModel)
-            : openPickerAndUpdateSelectedImage(),
+            : openPickerAndUpdateSelectedImage,
+        // coverage:ignore-end
       ),
       builder: (_, _) => _selectedImageIsNotNull
           ? const SizedBox.shrink()

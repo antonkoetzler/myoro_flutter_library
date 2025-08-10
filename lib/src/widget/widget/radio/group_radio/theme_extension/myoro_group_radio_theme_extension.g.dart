@@ -11,20 +11,12 @@ part of 'myoro_group_radio_theme_extension.dart';
 /// ```dart
 /// class MyoroGroupRadioThemeExtension with _$MyoroGroupRadioThemeExtensionMixin {}
 /// ```
-mixin _$MyoroGroupRadioThemeExtensionMixin
-    on ThemeExtension<MyoroGroupRadioThemeExtension> {
-  MyoroGroupRadioThemeExtension get self =>
-      this as MyoroGroupRadioThemeExtension;
+mixin _$MyoroGroupRadioThemeExtensionMixin on ThemeExtension<MyoroGroupRadioThemeExtension> {
+  MyoroGroupRadioThemeExtension get self => this as MyoroGroupRadioThemeExtension;
 
   @override
-  MyoroGroupRadioThemeExtension copyWith({
-    double? spacing,
-    double? runSpacing,
-  }) {
-    return MyoroGroupRadioThemeExtension(
-      spacing: spacing ?? self.spacing,
-      runSpacing: runSpacing ?? self.runSpacing,
-    );
+  MyoroGroupRadioThemeExtension copyWith({double? spacing, double? runSpacing}) {
+    return MyoroGroupRadioThemeExtension(spacing: spacing ?? self.spacing, runSpacing: runSpacing ?? self.runSpacing);
   }
 
   @override

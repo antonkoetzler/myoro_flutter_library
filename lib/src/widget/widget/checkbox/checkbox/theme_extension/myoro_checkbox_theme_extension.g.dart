@@ -11,8 +11,7 @@ part of 'myoro_checkbox_theme_extension.dart';
 /// ```dart
 /// class MyoroCheckboxThemeExtension with _$MyoroCheckboxThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCheckboxThemeExtensionMixin
-    on ThemeExtension<MyoroCheckboxThemeExtension> {
+mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExtension> {
   MyoroCheckboxThemeExtension get self => this as MyoroCheckboxThemeExtension;
 
   @override

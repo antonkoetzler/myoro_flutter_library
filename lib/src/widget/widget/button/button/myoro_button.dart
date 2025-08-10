@@ -15,7 +15,7 @@ class MyoroButton extends MyoroStatefulWidget {
   /// [Widget] builder of the [MyoroButton].
   final MyoroButtonBuilder builder;
 
-  const MyoroButton({super.key, super.createViewModel, this.configuration, required this.builder});
+  const MyoroButton({super.key, this.configuration, required this.builder});
 
   @override
   State<MyoroButton> createState() => _MyoroButtonState();
@@ -28,9 +28,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   MyoroButtonViewModel? _localViewModel;
   MyoroButtonViewModel get _viewModel {
-    final viewModel = _createViewModel
-        ? (_localViewModel ??= MyoroButtonViewModel())
-        : context.read<MyoroButtonViewModel>();
+    final viewModel = _localViewModel ??= MyoroButtonViewModel();
     return viewModel..state.configuration = widget.configuration;
   }
 

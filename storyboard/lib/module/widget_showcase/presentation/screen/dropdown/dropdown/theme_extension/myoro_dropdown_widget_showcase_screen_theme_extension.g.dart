@@ -13,8 +13,7 @@ part of 'myoro_dropdown_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroDropdownWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroDropdownWidgetShowcaseScreenThemeExtension> {
-  MyoroDropdownWidgetShowcaseScreenThemeExtension get self =>
-      this as MyoroDropdownWidgetShowcaseScreenThemeExtension;
+  MyoroDropdownWidgetShowcaseScreenThemeExtension get self => this as MyoroDropdownWidgetShowcaseScreenThemeExtension;
 
   @override
   MyoroDropdownWidgetShowcaseScreenThemeExtension copyWith() {
@@ -23,8 +22,7 @@ mixin _$MyoroDropdownWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDropdownWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroDropdownWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

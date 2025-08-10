@@ -23,8 +23,7 @@ mixin _$MyoroIconTextButtonWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroIconTextButtonWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroIconTextButtonWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

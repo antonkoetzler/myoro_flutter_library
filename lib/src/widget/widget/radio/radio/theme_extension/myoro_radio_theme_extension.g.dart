@@ -11,8 +11,7 @@ part of 'myoro_radio_theme_extension.dart';
 /// ```dart
 /// class MyoroRadioThemeExtension with _$MyoroRadioThemeExtensionMixin {}
 /// ```
-mixin _$MyoroRadioThemeExtensionMixin
-    on ThemeExtension<MyoroRadioThemeExtension> {
+mixin _$MyoroRadioThemeExtensionMixin on ThemeExtension<MyoroRadioThemeExtension> {
   MyoroRadioThemeExtension get self => this as MyoroRadioThemeExtension;
 
   @override
@@ -45,13 +44,7 @@ mixin _$MyoroRadioThemeExtensionMixin
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.activeColor,
-      self.hoverColor,
-      self.labelTextStyle,
-      self.spacing,
-      self.splashRadius,
-    );
+    return Object.hash(self.activeColor, self.hoverColor, self.labelTextStyle, self.spacing, self.splashRadius);
   }
 
   @override

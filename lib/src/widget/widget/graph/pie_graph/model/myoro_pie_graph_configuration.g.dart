@@ -47,9 +47,7 @@ extension $MyoroPieGraphConfigurationExtension on MyoroPieGraphConfiguration {
   }) {
     return MyoroPieGraphConfiguration(
       typeEnum: typeEnum ?? self.typeEnum,
-      centerWidget: centerWidgetProvided
-          ? (centerWidget ?? self.centerWidget)
-          : null,
+      centerWidget: centerWidgetProvided ? (centerWidget ?? self.centerWidget) : null,
       items: items ?? self.items,
     );
   }

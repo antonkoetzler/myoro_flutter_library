@@ -12,8 +12,7 @@ part of 'storyboard_screen_configuration.dart';
 /// class StoryboardScreenConfiguration with _$StoryboardScreenConfigurationMixin {}
 /// ```
 mixin _$StoryboardScreenConfigurationMixin {
-  StoryboardScreenConfiguration get self =>
-      this as StoryboardScreenConfiguration;
+  StoryboardScreenConfiguration get self => this as StoryboardScreenConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -27,12 +26,7 @@ mixin _$StoryboardScreenConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.onPrevious,
-      self.title,
-      self.extraActionWidgets,
-      self.body,
-    );
+    return Object.hash(self.onPrevious, self.title, self.extraActionWidgets, self.body);
   }
 
   @override
@@ -46,8 +40,7 @@ mixin _$StoryboardScreenConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $StoryboardScreenConfigurationExtension
-    on StoryboardScreenConfiguration {
+extension $StoryboardScreenConfigurationExtension on StoryboardScreenConfiguration {
   StoryboardScreenConfiguration copyWith({
     void Function()? onPrevious,
     bool onPreviousProvided = true,

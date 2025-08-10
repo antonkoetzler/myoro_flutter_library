@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 /// A checkbox that can have a label on the right side of it.
 class MyoroCheckbox extends MyoroStatefulWidget {
-  const MyoroCheckbox({super.key, super.createViewModel, required this.configuration});
+  const MyoroCheckbox({super.key, required this.configuration});
 
   /// Configuration.
   final MyoroCheckboxConfiguration configuration;
@@ -18,9 +18,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   MyoroCheckboxViewModel? _localViewModel;
   MyoroCheckboxViewModel get _viewModel {
-    final viewModel = _createViewModel
-        ? (_localViewModel ??= MyoroCheckboxViewModel())
-        : context.read<MyoroCheckboxViewModel>();
+    final viewModel = _localViewModel ??= MyoroCheckboxViewModel();
     return viewModel..state.configuration = widget.configuration;
   }
 

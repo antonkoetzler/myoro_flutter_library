@@ -11,8 +11,7 @@ part of 'myoro_pie_graph_theme_extension.dart';
 /// ```dart
 /// class MyoroPieGraphThemeExtension with _$MyoroPieGraphThemeExtensionMixin {}
 /// ```
-mixin _$MyoroPieGraphThemeExtensionMixin
-    on ThemeExtension<MyoroPieGraphThemeExtension> {
+mixin _$MyoroPieGraphThemeExtensionMixin on ThemeExtension<MyoroPieGraphThemeExtension> {
   MyoroPieGraphThemeExtension get self => this as MyoroPieGraphThemeExtension;
 
   @override

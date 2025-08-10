@@ -12,8 +12,7 @@ part of 'box_constraints_widget_showcase_option_configuration.dart';
 /// class BoxConstraintsWidgetShowcaseOptionConfiguration with _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
-  BoxConstraintsWidgetShowcaseOptionConfiguration get self =>
-      this as BoxConstraintsWidgetShowcaseOptionConfiguration;
+  BoxConstraintsWidgetShowcaseOptionConfiguration get self => this as BoxConstraintsWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -37,12 +36,8 @@ mixin _$BoxConstraintsWidgetShowcaseOptionConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $BoxConstraintsWidgetShowcaseOptionConfigurationExtension
-    on BoxConstraintsWidgetShowcaseOptionConfiguration {
-  BoxConstraintsWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    void Function(BoxConstraints)? onChanged,
-  }) {
+extension $BoxConstraintsWidgetShowcaseOptionConfigurationExtension on BoxConstraintsWidgetShowcaseOptionConfiguration {
+  BoxConstraintsWidgetShowcaseOptionConfiguration copyWith({String? label, void Function(BoxConstraints)? onChanged}) {
     return BoxConstraintsWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
       onChanged: onChanged ?? self.onChanged,

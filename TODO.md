@@ -1,12 +1,11 @@
 # TODO
 
-- MyoroImagePicker
 - MyoroFilePicker
 - Double thumb slider of MyoroSlider
 - Documentation for all widgets available
-- Location dropdown
-- fix `MyoroStatelessWidget` and `MyoroStatefulWidget`, the logic sucks with widgets containing controllers
+- Location dropdown input
 - Document theme extension overwritting
+- Document how to use `MyoroStatelessWidget` and `MyoroStatefulWidget`
 - Localization
 - Change app icon of storyboard
 - 100% pub.dev score

@@ -12,8 +12,7 @@ part of 'myoro_image_picker_configuration.dart';
 /// class MyoroImagePickerConfiguration with _$MyoroImagePickerConfigurationMixin {}
 /// ```
 mixin _$MyoroImagePickerConfigurationMixin {
-  MyoroImagePickerConfiguration get self =>
-      this as MyoroImagePickerConfiguration;
+  MyoroImagePickerConfiguration get self => this as MyoroImagePickerConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -39,8 +38,7 @@ mixin _$MyoroImagePickerConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroImagePickerConfigurationExtension
-    on MyoroImagePickerConfiguration {
+extension $MyoroImagePickerConfigurationExtension on MyoroImagePickerConfiguration {
   MyoroImagePickerConfiguration copyWith({
     String? selectedImage,
     bool selectedImageProvided = true,
@@ -48,9 +46,7 @@ extension $MyoroImagePickerConfigurationExtension
     void Function(String?)? onChanged,
   }) {
     return MyoroImagePickerConfiguration(
-      selectedImage: selectedImageProvided
-          ? (selectedImage ?? self.selectedImage)
-          : null,
+      selectedImage: selectedImageProvided ? (selectedImage ?? self.selectedImage) : null,
       size: size ?? self.size,
       onChanged: onChanged ?? self.onChanged,
     );

@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   final viewModel = MyoroDatePickerInputViewModel(MyoroDatePickerInputConfiguration.fake());
 
   tearDownAll(viewModel.dispose);
 
-  testWidgets('MyoroDatePickerInputViewModel.openDatePicker', (tester) async {
+  testWidgets('MyoroDatePickerInputViewModel', (tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(
-        child: InheritedProvider.value(
-          value: viewModel,
-          child: MyoroDatePickerInput(createViewModel: false, configuration: viewModel.state.configuration),
-        ),
-      ),
+      MyoroWidgetTester(child: MyoroDatePickerInput(configuration: viewModel.state.configuration)),
     );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDatePickerInput), findsOneWidget);

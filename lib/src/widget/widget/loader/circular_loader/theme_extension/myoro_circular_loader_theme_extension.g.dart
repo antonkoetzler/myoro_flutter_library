@@ -11,17 +11,12 @@ part of 'myoro_circular_loader_theme_extension.dart';
 /// ```dart
 /// class MyoroCircularLoaderThemeExtension with _$MyoroCircularLoaderThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCircularLoaderThemeExtensionMixin
-    on ThemeExtension<MyoroCircularLoaderThemeExtension> {
-  MyoroCircularLoaderThemeExtension get self =>
-      this as MyoroCircularLoaderThemeExtension;
+mixin _$MyoroCircularLoaderThemeExtensionMixin on ThemeExtension<MyoroCircularLoaderThemeExtension> {
+  MyoroCircularLoaderThemeExtension get self => this as MyoroCircularLoaderThemeExtension;
 
   @override
   MyoroCircularLoaderThemeExtension copyWith({Color? color, double? size}) {
-    return MyoroCircularLoaderThemeExtension(
-      color: color ?? self.color,
-      size: size ?? self.size,
-    );
+    return MyoroCircularLoaderThemeExtension(color: color ?? self.color, size: size ?? self.size);
   }
 
   @override

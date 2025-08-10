@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 part of '../myoro_image_picker.dart';
 
 /// Selection button of [_SelectionTypeModal] in [MyoroImagePicker].

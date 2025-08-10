@@ -7,13 +7,13 @@ part '_widget/_label.dart';
 
 /// A horizontal slider.
 class MyoroSlider extends MyoroStatefulWidget {
+  const MyoroSlider({super.key, this.controller, this.configuration});
+
   /// Controller.
   final MyoroSliderController? controller;
 
   /// Configuration.
   final MyoroSliderConfiguration? configuration;
-
-  const MyoroSlider({super.key, super.createViewModel, this.controller, this.configuration});
 
   @override
   State<MyoroSlider> createState() => _MyoroSliderState();
@@ -29,10 +29,7 @@ final class _MyoroSliderState extends State<MyoroSlider> {
 
   MyoroSliderViewModel? _localViewModel;
   MyoroSliderViewModel get _viewModel {
-    final viewModel = _createViewModel
-        ? (_localViewModel ??= MyoroSliderViewModel())
-        : context.read<MyoroSliderViewModel>();
-
+    final viewModel = _localViewModel ??= MyoroSliderViewModel();
     return viewModel
       ..configuration = widget.configuration
       ..controller = _controller;

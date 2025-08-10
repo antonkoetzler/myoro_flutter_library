@@ -14,7 +14,7 @@ part '_widget/_search_bar.dart';
 class MyoroMenu<T> extends MyoroStatefulWidget {
   const MyoroMenu({super.key, super.createViewModel, required this.configuration});
 
-  /// Configuration options.
+  /// Configuration.
   final MyoroMenuConfiguration<T> configuration;
 
   @override

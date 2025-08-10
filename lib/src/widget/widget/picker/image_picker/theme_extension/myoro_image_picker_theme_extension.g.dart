@@ -11,10 +11,8 @@ part of 'myoro_image_picker_theme_extension.dart';
 /// ```dart
 /// class MyoroImagePickerThemeExtension with _$MyoroImagePickerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroImagePickerThemeExtensionMixin
-    on ThemeExtension<MyoroImagePickerThemeExtension> {
-  MyoroImagePickerThemeExtension get self =>
-      this as MyoroImagePickerThemeExtension;
+mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerThemeExtension> {
+  MyoroImagePickerThemeExtension get self => this as MyoroImagePickerThemeExtension;
 
   @override
   MyoroImagePickerThemeExtension copyWith({
@@ -32,25 +30,16 @@ mixin _$MyoroImagePickerThemeExtensionMixin
     return MyoroImagePickerThemeExtension(
       borderRadius: borderRadius ?? self.borderRadius,
       overlayCursor: overlayCursor ?? self.overlayCursor,
-      overlayIdleBackgroundColor:
-          overlayIdleBackgroundColor ?? self.overlayIdleBackgroundColor,
-      overlayHoverBackgroundColor:
-          overlayHoverBackgroundColor ?? self.overlayHoverBackgroundColor,
-      overlayTapBackgroundColor:
-          overlayTapBackgroundColor ?? self.overlayTapBackgroundColor,
+      overlayIdleBackgroundColor: overlayIdleBackgroundColor ?? self.overlayIdleBackgroundColor,
+      overlayHoverBackgroundColor: overlayHoverBackgroundColor ?? self.overlayHoverBackgroundColor,
+      overlayTapBackgroundColor: overlayTapBackgroundColor ?? self.overlayTapBackgroundColor,
       overlayUnselectedImageStateIconConfiguration:
-          overlayUnselectedImageStateIconConfiguration ??
-          self.overlayUnselectedImageStateIconConfiguration,
-      selectionTypeModalConstraints:
-          selectionTypeModalConstraints ?? self.selectionTypeModalConstraints,
-      selectionTypeModalSpacing:
-          selectionTypeModalSpacing ?? self.selectionTypeModalSpacing,
-      selectionTypeModalButtonCameraIcon:
-          selectionTypeModalButtonCameraIcon ??
-          self.selectionTypeModalButtonCameraIcon,
+          overlayUnselectedImageStateIconConfiguration ?? self.overlayUnselectedImageStateIconConfiguration,
+      selectionTypeModalConstraints: selectionTypeModalConstraints ?? self.selectionTypeModalConstraints,
+      selectionTypeModalSpacing: selectionTypeModalSpacing ?? self.selectionTypeModalSpacing,
+      selectionTypeModalButtonCameraIcon: selectionTypeModalButtonCameraIcon ?? self.selectionTypeModalButtonCameraIcon,
       selectionTypeModalButtonGalleryIcon:
-          selectionTypeModalButtonGalleryIcon ??
-          self.selectionTypeModalButtonGalleryIcon,
+          selectionTypeModalButtonGalleryIcon ?? self.selectionTypeModalButtonGalleryIcon,
     );
   }
 
@@ -63,15 +52,11 @@ mixin _$MyoroImagePickerThemeExtensionMixin
         other.overlayIdleBackgroundColor == self.overlayIdleBackgroundColor &&
         other.overlayHoverBackgroundColor == self.overlayHoverBackgroundColor &&
         other.overlayTapBackgroundColor == self.overlayTapBackgroundColor &&
-        other.overlayUnselectedImageStateIconConfiguration ==
-            self.overlayUnselectedImageStateIconConfiguration &&
-        other.selectionTypeModalConstraints ==
-            self.selectionTypeModalConstraints &&
+        other.overlayUnselectedImageStateIconConfiguration == self.overlayUnselectedImageStateIconConfiguration &&
+        other.selectionTypeModalConstraints == self.selectionTypeModalConstraints &&
         other.selectionTypeModalSpacing == self.selectionTypeModalSpacing &&
-        other.selectionTypeModalButtonCameraIcon ==
-            self.selectionTypeModalButtonCameraIcon &&
-        other.selectionTypeModalButtonGalleryIcon ==
-            self.selectionTypeModalButtonGalleryIcon;
+        other.selectionTypeModalButtonCameraIcon == self.selectionTypeModalButtonCameraIcon &&
+        other.selectionTypeModalButtonGalleryIcon == self.selectionTypeModalButtonGalleryIcon;
   }
 
   @override

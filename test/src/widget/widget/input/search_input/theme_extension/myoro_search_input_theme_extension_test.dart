@@ -9,9 +9,9 @@ void main() {
   test('MyoroSearchInputThemeExtension.builder', () {
     final colorScheme = createMyoroColorScheme(faker.randomGenerator.boolean());
     final themeExtension = MyoroSearchInputThemeExtension.builder(colorScheme);
-    expect(themeExtension.spacing, 10);
+    expect(themeExtension.spacing, kMyoroMultiplier * 2);
     expect(themeExtension.searchButtonIcon, Icons.search);
-    expect(themeExtension.searchButtonLoadingSize, 20);
+    expect(themeExtension.searchButtonLoadingSize, kMyoroMultiplier * 4);
   });
 
   test('MyoroSearchInputThemeExtension.lerp', () {

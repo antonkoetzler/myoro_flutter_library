@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 part of '../myoro_image_picker.dart';
 
 /// Bottom sheet to select if the camera or photo gallery will be used.

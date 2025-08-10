@@ -23,8 +23,7 @@ mixin _$MyoroDatePickerInputWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDatePickerInputWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroDatePickerInputWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override
