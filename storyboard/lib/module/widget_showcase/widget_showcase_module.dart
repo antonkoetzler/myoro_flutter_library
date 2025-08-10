@@ -78,6 +78,9 @@ final class WidgetShowcaseModule implements Module {
       MyoroDialogModalWidgetShowcaseScreenThemeExtension.builder(),
       const MyoroModalWidgetShowcaseScreenThemeExtension.builder(),
 
+      // Pickers
+      const MyoroImagePickerWidgetShowcaseScreenThemeExtension.builder(),
+
       // Radios
       const MyoroGroupRadioWidgetShowcaseScreenThemeExtension.builder(),
       const MyoroRadioWidgetShowcaseScreenThemeExtension.builder(),

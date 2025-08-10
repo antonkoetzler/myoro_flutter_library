@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 /// Multiplier for all stylistic values.
-const kMyoroMultiplier = 4;
+const kMyoroMultiplier = 4.0;
 
 /// Debounce.
 const kMyoroDebounceDuration = Duration(milliseconds: 200);

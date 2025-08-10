@@ -26,10 +26,9 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
   // coverage:ignore-end
 
   const MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
-    // TODO: Make these numbers constants
-    : spacing = 10,
+    : spacing = kMyoroMultiplier * 2,
       searchButtonIcon = Icons.search,
-      searchButtonLoadingSize = 20;
+      searchButtonLoadingSize = kMyoroMultiplier * 4;
 
   /// Spacing in between the [MyoroInput] & [_SearchSection].
   final double spacing;

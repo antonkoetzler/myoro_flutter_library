@@ -16,6 +16,7 @@ export 'layout_builder/exports.dart';
 export 'loader/exports.dart';
 export 'menu/exports.dart';
 export 'modal/exports.dart';
+export 'picker/exports.dart';
 export 'radio/exports.dart';
 export 'screen/exports.dart';
 export 'slider/exports.dart';
