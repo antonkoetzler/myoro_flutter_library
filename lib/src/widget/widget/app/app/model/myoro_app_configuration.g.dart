@@ -73,7 +73,12 @@ extension $MyoroAppConfigurationExtension on MyoroAppConfiguration {
     bool colorSchemeBuilderProvided = true,
     TextTheme Function(TextTheme)? textThemeBuilder,
     bool textThemeBuilderProvided = true,
-    List<ThemeExtension<ThemeExtension<dynamic>>> Function(bool, ColorScheme, TextTheme)? themeExtensionsBuilder,
+    List<ThemeExtension<ThemeExtension<dynamic>>> Function(
+      bool,
+      ColorScheme,
+      TextTheme,
+    )?
+    themeExtensionsBuilder,
     bool themeExtensionsBuilderProvided = true,
     Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
     bool localizationsDelegatesProvided = true,
@@ -89,13 +94,21 @@ extension $MyoroAppConfigurationExtension on MyoroAppConfiguration {
     return MyoroAppConfiguration(
       title: titleProvided ? (title ?? self.title) : null,
       themeMode: themeModeProvided ? (themeMode ?? self.themeMode) : null,
-      colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? self.colorSchemeBuilder) : null,
-      textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? self.textThemeBuilder) : null,
-      themeExtensionsBuilder:
-          themeExtensionsBuilderProvided ? (themeExtensionsBuilder ?? self.themeExtensionsBuilder) : null,
-      localizationsDelegates:
-          localizationsDelegatesProvided ? (localizationsDelegates ?? self.localizationsDelegates) : null,
-      supportedLocales: supportedLocalesProvided ? (supportedLocales ?? self.supportedLocales) : null,
+      colorSchemeBuilder: colorSchemeBuilderProvided
+          ? (colorSchemeBuilder ?? self.colorSchemeBuilder)
+          : null,
+      textThemeBuilder: textThemeBuilderProvided
+          ? (textThemeBuilder ?? self.textThemeBuilder)
+          : null,
+      themeExtensionsBuilder: themeExtensionsBuilderProvided
+          ? (themeExtensionsBuilder ?? self.themeExtensionsBuilder)
+          : null,
+      localizationsDelegates: localizationsDelegatesProvided
+          ? (localizationsDelegates ?? self.localizationsDelegates)
+          : null,
+      supportedLocales: supportedLocalesProvided
+          ? (supportedLocales ?? self.supportedLocales)
+          : null,
       router: routerProvided ? (router ?? self.router) : null,
       home: homeProvided ? (home ?? self.home) : null,
       builder: builderProvided ? (builder ?? self.builder) : null,

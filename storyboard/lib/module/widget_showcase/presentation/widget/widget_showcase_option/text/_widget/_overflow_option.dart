@@ -11,6 +11,6 @@ final class _OverflowOption extends StatelessWidget {
     final overflowInitialValue = configuration.overflowInitialValue;
     final overflowOnChanged = configuration.overflowOnChanged;
 
-    return TextOverflowWidgetShowcaseOption(initiallySelectedItem: overflowInitialValue, onChanged: overflowOnChanged!);
+    return TextOverflowWidgetShowcaseOption(selectedItem: overflowInitialValue, onChanged: overflowOnChanged!);
   }
 }

@@ -10,8 +10,8 @@ final class _IconConfigurationOption extends StatelessWidget {
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
-        initiallySelectedIcon: viewModel.state.iconConfiguration.icon,
-        initiallySelectedIconSize: viewModel.state.iconConfiguration.size,
+        selectedIcon: viewModel.state.iconConfiguration.icon,
+        selectedIconSize: viewModel.state.iconConfiguration.size,
         iconOnChanged: viewModel.iconConfigurationIconOnChanged,
         iconSizeOnChanged: viewModel.iconConfigurationSizeOnChanged,
         iconSizeCheckboxOnChanged: viewModel.iconConfigurationSizeCheckboxOnChanged,

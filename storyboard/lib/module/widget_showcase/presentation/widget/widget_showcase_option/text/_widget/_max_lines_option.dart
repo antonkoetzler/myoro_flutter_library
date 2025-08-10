@@ -11,6 +11,6 @@ final class _MaxLinesOption extends StatelessWidget {
     final maxLinesInitialValue = configuration.maxLinesInitialValue;
     final maxLinesOnChanged = configuration.maxLinesOnChanged;
 
-    return TextMaxLinesWidgetShowcaseOption(initiallySelectedItem: maxLinesInitialValue, onChanged: maxLinesOnChanged!);
+    return TextMaxLinesWidgetShowcaseOption(selectedItem: maxLinesInitialValue, onChanged: maxLinesOnChanged!);
   }
 }

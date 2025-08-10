@@ -1,39 +1,36 @@
 import 'package:flutter/foundation.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of a dropdown.
-abstract class MyoroDropdownController<T> {
-  static const enabledDefaultValue = true;
+abstract class MyoroDropdownController<T, C extends MyoroDropdownViewModel<T, MyoroDropdownConfiguration<T>>> {
+  MyoroDropdownController(this._viewModel);
 
-  MyoroDropdownController({bool enabled = enabledDefaultValue, Set<T>? initiallySelectedItems})
-    : _enabledController = ValueNotifier(enabled),
-      _selectedItemsController = ValueNotifier(initiallySelectedItems ?? <T>{});
+  /// View model of the controller.
+  final C _viewModel;
 
-  /// [ValueNotifier] controlling if the [_Dropdown] is enabled or not.
-  final ValueNotifier<bool> _enabledController;
-  ValueNotifier<bool> get enabledController => _enabledController;
-  bool get enabled => _enabledController.value;
+  /// [_viewModel] getter.
+  @protected
+  C get viewModel => _viewModel;
 
-  /// [ValueNotifier] controlling the selected items of the [_Dropdown].
-  final ValueNotifier<Set<T>> _selectedItemsController;
-  ValueNotifier<Set<T>> get selectedItemsController => _selectedItemsController;
-  Set<T> get selectedItems => Set.from(_selectedItemsController.value);
+  /// [ValueNotifier] controlling if the dropdown is selected or not.
+  ValueNotifier<bool> get enabledNotifier => _viewModel.state.enabledNotifier;
+
+  /// Returns whether or not the dropdown is enabled or not.
+  bool get enabled => _viewModel.state.enabled;
 
   /// Dispose function.
-  void dispose() {
-    _enabledController.dispose();
-    _selectedItemsController.dispose();
-  }
+  @mustCallSuper
+  void dispose() => _viewModel.dispose();
 
-  /// Toggles [_enabledNotifier].
-  void toggleEnabled([bool? enabled]) {
-    _enabledController.value = enabled ?? !this.enabled;
-  }
+  /// Toggles an item.
+  void toggleItem(T item) => _viewModel.toggleItem(item);
 
-  /// Selects/deselects an item.
-  void toggleItem(T item);
+  /// Toggles if the dropdown is enabled.
+  void toggleEnabled([bool? enabled]) => _viewModel.toggleEnabled(enabled);
 
-  /// Clears all items in [MyoroDropdownState._selectedItemsController].
-  void clear() {
-    _selectedItemsController.value = const {};
-  }
+  /// Toggles if the menu is enabled.
+  void toggleMenu() => _viewModel.toggleMenu();
+
+  /// Clears the selected item(s).
+  void clear() => _viewModel.clear();
 }

@@ -12,7 +12,8 @@ part of 'myoro_group_checkbox_configuration.dart';
 /// class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixin {}
 /// ```
 mixin _$MyoroGroupCheckboxConfigurationMixin {
-  MyoroGroupCheckboxConfiguration get self => this as MyoroGroupCheckboxConfiguration;
+  MyoroGroupCheckboxConfiguration get self =>
+      this as MyoroGroupCheckboxConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -26,7 +27,12 @@ mixin _$MyoroGroupCheckboxConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.direction, self.spacing, self.runSpacing, self.onChanged);
+    return Object.hash(
+      self.direction,
+      self.spacing,
+      self.runSpacing,
+      self.onChanged,
+    );
   }
 
   @override
@@ -40,7 +46,8 @@ mixin _$MyoroGroupCheckboxConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroGroupCheckboxConfigurationExtension on MyoroGroupCheckboxConfiguration {
+extension $MyoroGroupCheckboxConfigurationExtension
+    on MyoroGroupCheckboxConfiguration {
   MyoroGroupCheckboxConfiguration copyWith({
     Axis? direction,
     double? spacing,

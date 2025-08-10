@@ -4,14 +4,10 @@ import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase option for choosing a [MyoroInputStyleEnum].
 final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
-  const MyoroInputStyleEnumWidgetShowcaseOption({
-    super.key,
-    required this.initiallySelectedStyle,
-    required this.onChanged,
-  });
+  const MyoroInputStyleEnumWidgetShowcaseOption({super.key, required this.selectedStyle, required this.onChanged});
 
   /// Initially selected [MyoroInputStyleEnum].
-  final MyoroInputStyleEnum initiallySelectedStyle;
+  final MyoroInputStyleEnum selectedStyle;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroInputStyleEnumWidgetShowcaseOptionOnChanged onChanged;
@@ -21,7 +17,6 @@ final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
     final viewModel = MyoroInputStyleEnumWidgetShowcaseOptionViewModel();
 
     return MyoroSingularDropdown<MyoroInputStyleEnum>(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedStyle),
       configuration: MyoroSingularDropdownConfiguration(
         label: 'MyoroInputStyleEnum',
         allowItemClearing: false,
@@ -31,6 +26,7 @@ final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
           request: MyoroInputStyleEnum.values.toSet,
           itemBuilder: viewModel.itemBuilder,
         ),
+        selectedItem: selectedStyle,
       ),
     );
   }

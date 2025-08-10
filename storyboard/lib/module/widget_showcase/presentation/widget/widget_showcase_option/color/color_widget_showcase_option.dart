@@ -10,7 +10,7 @@ final class ColorWidgetShowcaseOption extends StatefulWidget {
     super.key,
     this.label = labelDefaultValue,
     this.enabled = enabledDefaultValue,
-    this.initiallySelectedColor,
+    this.selectedColor,
     required this.onChanged,
     this.checkboxOnChanged,
   });
@@ -22,7 +22,7 @@ final class ColorWidgetShowcaseOption extends StatefulWidget {
   final bool enabled;
 
   /// Initial [Color].
-  final Color? initiallySelectedColor;
+  final Color? selectedColor;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<Color> onChanged;
@@ -37,7 +37,7 @@ final class ColorWidgetShowcaseOption extends StatefulWidget {
 final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOption> {
   String get _label => widget.label;
   bool get _enabled => widget.enabled;
-  Color? get _initiallySelectedColor => widget.initiallySelectedColor;
+  Color? get _selectedColor => widget.selectedColor;
   MyoroSingularDropdownConfigurationOnChanged<Color> get _onChanged => widget.onChanged;
   MyoroSingularDropdownConfigurationCheckboxOnChanged<Color>? get _checkboxOnChanged => widget.checkboxOnChanged;
 
@@ -46,29 +46,7 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
   @override
   void initState() {
     super.initState();
-    _controller = MyoroSingularDropdownController(enabled: _enabled, initiallySelectedItem: _initiallySelectedColor);
-  }
-
-  @override
-  void didUpdateWidget(covariant ColorWidgetShowcaseOption oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (_enabled != _controller.enabled) _controller.toggleEnabled(_enabled);
-    if (_initiallySelectedColor != _controller.selectedItem) {
-      _controller.clear();
-      if (_initiallySelectedColor != null) _controller.toggleItem(_initiallySelectedColor!);
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(context) {
-    return MyoroSingularDropdown<Color>(
-      controller: _controller,
+    _controller = MyoroSingularDropdownController(
       configuration: MyoroSingularDropdownConfiguration(
         label: _label,
         menuConfiguration: MyoroMenuConfiguration(
@@ -100,7 +78,28 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
         selectedItemBuilder: (color) => color.hexadecimalFormat,
         onChanged: _onChanged,
         checkboxOnChanged: _checkboxOnChanged,
+        enabled: _enabled,
+        selectedItem: _selectedColor,
       ),
     );
   }
+
+  @override
+  void didUpdateWidget(covariant ColorWidgetShowcaseOption oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (_enabled != _controller.enabled) _controller.toggleEnabled(_enabled);
+    if (_selectedColor != _controller.selectedItem) {
+      _controller.clear();
+      if (_selectedColor != null) _controller.toggleItem(_selectedColor!);
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(context) => MyoroSingularDropdown<Color>(controller: _controller);
 }

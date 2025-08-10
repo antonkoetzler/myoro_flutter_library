@@ -57,10 +57,12 @@ extension $MyoroFeedbackConfigurationExtension on MyoroFeedbackConfiguration {
     return MyoroFeedbackConfiguration(
       iconConfiguration: iconConfiguration ?? self.iconConfiguration,
       titleConfiguration: titleConfiguration ?? self.titleConfiguration,
-      subtitleConfiguration:
-          subtitleConfigurationProvided ? (subtitleConfiguration ?? self.subtitleConfiguration) : null,
-      actionButtonConfiguration:
-          actionButtonConfigurationProvided ? (actionButtonConfiguration ?? self.actionButtonConfiguration) : null,
+      subtitleConfiguration: subtitleConfigurationProvided
+          ? (subtitleConfiguration ?? self.subtitleConfiguration)
+          : null,
+      actionButtonConfiguration: actionButtonConfigurationProvided
+          ? (actionButtonConfiguration ?? self.actionButtonConfiguration)
+          : null,
     );
   }
 }

@@ -11,11 +11,15 @@ part of 'myoro_app_bar_theme_extension.dart';
 /// ```dart
 /// class MyoroAppBarThemeExtension with _$MyoroAppBarThemeExtensionMixin {}
 /// ```
-mixin _$MyoroAppBarThemeExtensionMixin on ThemeExtension<MyoroAppBarThemeExtension> {
+mixin _$MyoroAppBarThemeExtensionMixin
+    on ThemeExtension<MyoroAppBarThemeExtension> {
   MyoroAppBarThemeExtension get self => this as MyoroAppBarThemeExtension;
 
   @override
-  MyoroAppBarThemeExtension copyWith({Color? primaryColor, EdgeInsets? contentPadding}) {
+  MyoroAppBarThemeExtension copyWith({
+    Color? primaryColor,
+    EdgeInsets? contentPadding,
+  }) {
     return MyoroAppBarThemeExtension(
       primaryColor: primaryColor ?? self.primaryColor,
       contentPadding: contentPadding ?? self.contentPadding,

@@ -45,6 +45,9 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
+    final state = _viewModel.state;
+    final selectedItemsNotifier = state.selectedItemsNotifier;
+
     return CallbackShortcuts(
       bindings: {const SingleActivator(LogicalKeyboardKey.escape): _viewModel.toggleMenu},
       child: Focus(
@@ -53,14 +56,15 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
           groupId: _viewModel.state.tapRegionGroupId,
           onTapOutside: (_) => _viewModel.toggleMenu(),
           child: ValueListenableBuilder(
-            valueListenable: _viewModel.controller.selectedItemsController,
+            valueListenable: selectedItemsNotifier,
             builder: (_, _, _) {
               return MyoroMenu(
                 configuration: _viewModel.state.configuration.menuConfiguration.copyWith(
                   itemBuilder: (T item) => _viewModel.menuItemBuilder(context, item),
                   border: _viewModel.state.configuration.menuTypeEnum.isModal ? null : themeExtension.menuBorder,
-                  borderRadius:
-                      _viewModel.state.configuration.menuTypeEnum.isModal ? null : themeExtension.menuBorderRadius,
+                  borderRadius: _viewModel.state.configuration.menuTypeEnum.isModal
+                      ? null
+                      : themeExtension.menuBorderRadius,
                 ),
               );
             },
@@ -72,17 +76,17 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
 
   void _addShowingMenuControllerListener() {
     if (_viewModel.state.configuration.menuTypeEnum.isModal) {
-      _viewModel.state.showingMenuController.addListener(_showingMenuControllerListener);
+      _viewModel.state.showingMenuNotifier.addListener(_showingMenuNotifierListener);
     }
   }
 
   void _removeShowingMenuControllerListener() {
     if (_viewModel.state.configuration.menuTypeEnum.isModal) {
-      _viewModel.state.showingMenuController.removeListener(_showingMenuControllerListener);
+      _viewModel.state.showingMenuNotifier.removeListener(_showingMenuNotifierListener);
     }
   }
 
-  void _showingMenuControllerListener() {
+  void _showingMenuNotifierListener() {
     if (!_viewModel.state.showingMenu) context.navigator.pop();
   }
 }

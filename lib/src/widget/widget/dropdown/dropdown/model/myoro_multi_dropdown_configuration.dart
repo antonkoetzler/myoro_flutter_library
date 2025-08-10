@@ -5,41 +5,51 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_multi_dropdown_configuration.g.dart';
 
 /// Configuration model of [MyoroMultiDropdown].
+@immutable
 @myoroModel
 class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
     with _$MyoroMultiDropdownConfigurationMixin<T> {
-  const MyoroMultiDropdownConfiguration._({
-    required super.label,
-    required super.menuTypeEnum,
-    required super.allowItemClearing,
-    required super.selectedItemTextAlign,
-    required super.menuConfiguration,
-    required super.selectedItemBuilder,
-    required this.onChanged,
-    required this.checkboxOnChanged,
-  });
-
   factory MyoroMultiDropdownConfiguration({
-    String label = '',
+    String label = MyoroDropdownConfiguration.labelDefaultValue,
     MyoroDropdownMenuTypeEnum menuTypeEnum = MyoroDropdownConfiguration.menuTypeEnumDefaultValue,
+    bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
     required MyoroMenuConfiguration<T> menuConfiguration,
     required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
+    Set<T> selectedItems = const {},
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
   }) {
     return MyoroMultiDropdownConfiguration._(
-      label: label,
-      menuTypeEnum: menuTypeEnum,
-      allowItemClearing: allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign,
-      menuConfiguration: menuConfiguration,
-      selectedItemBuilder: selectedItemBuilder,
-      onChanged: onChanged,
-      checkboxOnChanged: checkboxOnChanged,
+      label,
+      menuTypeEnum,
+      enabled,
+      allowItemClearing,
+      selectedItemTextAlign,
+      menuConfiguration,
+      selectedItemBuilder,
+      selectedItems,
+      onChanged,
+      checkboxOnChanged,
     );
   }
+
+  const MyoroMultiDropdownConfiguration._(
+    super.label,
+    super.menuTypeEnum,
+    super.enabled,
+    super.allowItemClearing,
+    super.selectedItemTextAlign,
+    super.menuConfiguration,
+    super.selectedItemBuilder,
+    this.selectedItems,
+    this.onChanged,
+    this.checkboxOnChanged,
+  );
+
+  /// Initially selected items.
+  final Set<T> selectedItems;
 
   /// Function executed when the selected item changes.
   final MyoroMultiDropdownConfigurationOnChanged<T>? onChanged;

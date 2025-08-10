@@ -6,30 +6,27 @@ void main() {
   bool onChangedExecuted = false;
   bool checkboxOnChangedExecuted = false;
   final item = faker.lorem.word();
-  final configuration = MyoroMultiDropdownConfiguration<String>(
-    menuConfiguration: MyoroMenuConfiguration(
-      request: () => {item},
-      itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+  final viewModel = MyoroMultiDropdownViewModel(
+    MyoroMultiDropdownConfiguration<String>(
+      menuConfiguration: MyoroMenuConfiguration(
+        request: () => {item},
+        itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+      ),
+      selectedItemBuilder: (item) => item,
+      onChanged: (_) => onChangedExecuted = true,
+      checkboxOnChanged: (_, _) => checkboxOnChangedExecuted = true,
     ),
-    selectedItemBuilder: (item) => item,
-    onChanged: (_) => onChangedExecuted = true,
-    checkboxOnChanged: (_, _) => checkboxOnChangedExecuted = true,
   );
-  final controller = MyoroMultiDropdownController<String>();
-  final viewModel = MyoroMultiDropdownViewModel<String>()..initialize(configuration, controller);
 
-  tearDownAll(() {
-    controller.dispose();
-    viewModel.dispose();
-  });
+  tearDownAll(viewModel.dispose);
 
   test('MyoroMultiDropdownViewModel.enabledNotifierListener', () {
-    controller.toggleEnabled();
+    viewModel.toggleEnabled();
     expect(checkboxOnChangedExecuted, isTrue);
   });
 
   test('MyoroMultiDropdownViewModel.selectedItemsControllerListener', () {
-    controller.toggleItem(item);
+    viewModel.toggleItem(item);
     expect(onChangedExecuted, isTrue);
   });
 }

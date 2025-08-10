@@ -40,7 +40,7 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
       value: _viewModel,
       child: RepaintBoundary(
         child: ValueListenableBuilder(
-          valueListenable: _viewModel.state.inputSizeController,
+          valueListenable: _viewModel.state.inputSizeNotifier,
           builder: (_, Size? inputSize, _) {
             return Row(
               spacing: themeExtension.spacing,
@@ -56,7 +56,7 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
                       Flexible(child: _Input<T, C>()),
                       if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
                         ValueListenableBuilder(
-                          valueListenable: _viewModel.state.showingMenuController,
+                          valueListenable: _viewModel.state.showingMenuNotifier,
                           builder: (_, bool showBasicMenu, _) {
                             return !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, C>());
                           },
@@ -76,15 +76,15 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
   void _addShowingMenuControllerListener() {
     if (!_viewModel.state.configuration.menuTypeEnum.isModal) return;
     _removeShowingMenuControllerListener();
-    _viewModel.state.showingMenuController.addListener(_showingMenuControllerListener);
+    _viewModel.state.showingMenuNotifier.addListener(_showingMenuNotifierListener);
   }
 
   void _removeShowingMenuControllerListener() {
     if (!_viewModel.state.configuration.menuTypeEnum.isModal) return;
-    _viewModel.state.showingMenuController.removeListener(_showingMenuControllerListener);
+    _viewModel.state.showingMenuNotifier.removeListener(_showingMenuNotifierListener);
   }
 
-  void _showingMenuControllerListener() {
+  void _showingMenuNotifierListener() {
     if (!mounted) return;
     if (_viewModel.state.showingMenu) _Menu.showModal(context, _viewModel);
   }

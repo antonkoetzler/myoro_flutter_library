@@ -11,13 +11,18 @@ part of 'myoro_carousel_theme_extension.dart';
 /// ```dart
 /// class MyoroCarouselThemeExtension with _$MyoroCarouselThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCarouselThemeExtensionMixin on ThemeExtension<MyoroCarouselThemeExtension> {
+mixin _$MyoroCarouselThemeExtensionMixin
+    on ThemeExtension<MyoroCarouselThemeExtension> {
   MyoroCarouselThemeExtension get self => this as MyoroCarouselThemeExtension;
 
   @override
-  MyoroCarouselThemeExtension copyWith({IconData? previousItemButtonIcon, IconData? nextItemButtonIcon}) {
+  MyoroCarouselThemeExtension copyWith({
+    IconData? previousItemButtonIcon,
+    IconData? nextItemButtonIcon,
+  }) {
     return MyoroCarouselThemeExtension(
-      previousItemButtonIcon: previousItemButtonIcon ?? self.previousItemButtonIcon,
+      previousItemButtonIcon:
+          previousItemButtonIcon ?? self.previousItemButtonIcon,
       nextItemButtonIcon: nextItemButtonIcon ?? self.nextItemButtonIcon,
     );
   }

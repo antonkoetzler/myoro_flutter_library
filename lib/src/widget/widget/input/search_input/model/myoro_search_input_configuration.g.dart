@@ -12,7 +12,8 @@ part of 'myoro_search_input_configuration.dart';
 /// class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin<T> {}
 /// ```
 mixin _$MyoroSearchInputConfigurationMixin<T> {
-  MyoroSearchInputConfiguration<T> get self => this as MyoroSearchInputConfiguration<T>;
+  MyoroSearchInputConfiguration<T> get self =>
+      this as MyoroSearchInputConfiguration<T>;
 
   @override
   bool operator ==(Object other) {
@@ -26,7 +27,12 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
 
   @override
   int get hashCode {
-    return Object.hash(self.inputConfiguration, self.requestWhenChanged, self.request, self.itemBuilder);
+    return Object.hash(
+      self.inputConfiguration,
+      self.requestWhenChanged,
+      self.request,
+      self.itemBuilder,
+    );
   }
 
   @override
@@ -40,7 +46,8 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroSearchInputConfigurationExtension<T> on MyoroSearchInputConfiguration<T> {
+extension $MyoroSearchInputConfigurationExtension<T>
+    on MyoroSearchInputConfiguration<T> {
   MyoroSearchInputConfiguration<T> copyWith({
     MyoroInputConfiguration? inputConfiguration,
     bool? requestWhenChanged,

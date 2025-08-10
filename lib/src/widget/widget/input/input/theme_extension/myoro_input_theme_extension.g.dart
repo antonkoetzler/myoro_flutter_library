@@ -11,7 +11,8 @@ part of 'myoro_input_theme_extension.dart';
 /// ```dart
 /// class MyoroInputThemeExtension with _$MyoroInputThemeExtensionMixin {}
 /// ```
-mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension> {
+mixin _$MyoroInputThemeExtensionMixin
+    on ThemeExtension<MyoroInputThemeExtension> {
   MyoroInputThemeExtension get self => this as MyoroInputThemeExtension;
 
   @override
@@ -44,7 +45,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       spacing: spacing ?? self.spacing,
       labelTextStyle: labelTextStyle ?? self.labelTextStyle,
       labelBehavior: labelBehavior ?? self.labelBehavior,
-      clearTextButtonPadding: clearTextButtonPadding ?? self.clearTextButtonPadding,
+      clearTextButtonPadding:
+          clearTextButtonPadding ?? self.clearTextButtonPadding,
       clearTextButtonIcon: clearTextButtonIcon ?? self.clearTextButtonIcon,
     );
   }

@@ -2,10 +2,22 @@ part of 'myoro_dropdown_view_model.dart';
 
 /// State class of [MyoroDropdownViewModel].
 class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
-  MyoroDropdownState(this.configuration);
+  MyoroDropdownState(this.configuration, Set<T> initiallySelectedItems)
+    : _enabledNotifier = ValueNotifier(configuration.enabled),
+      _selectedItemsNotifier = ValueNotifier(initiallySelectedItems);
 
   /// Configuration.
   C configuration;
+
+  /// [ValueNotifier] controlling if the [_Dropdown] is enabled or not.
+  final ValueNotifier<bool> _enabledNotifier;
+  ValueNotifier<bool> get enabledNotifier => _enabledNotifier;
+  bool get enabled => _enabledNotifier.value;
+
+  /// [ValueNotifier] controlling the selected items of the [_Dropdown].
+  final ValueNotifier<Set<T>> _selectedItemsNotifier;
+  ValueNotifier<Set<T>> get selectedItemsNotifier => _selectedItemsNotifier;
+  Set<T> get selectedItems => Set.from(_selectedItemsNotifier.value);
 
   /// Used when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.overlay].
   MyoroOverlayPortalController? _overlayMenuController;
@@ -20,11 +32,11 @@ class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
 
   /// [ValueNotifier] used to store the [bool] of whether or not the menu is active or not.
   /// When calling [MyoroOverlayPortalController.hide] or [MyoroOverlayPortalController.show],
-  /// The value of [_showingMenuController] is automatically synced with [_overlayMenuController].
-  final _showingMenuController = ValueNotifier<bool>(false);
-  ValueNotifier<bool> get showingMenuController => _showingMenuController;
-  bool get showingMenu => _showingMenuController.value;
-  set showingMenu(bool showingMenu) => _showingMenuController.value = showingMenu;
+  /// The value of [_showingMenuNotifier] is automatically synced with [_overlayMenuController].
+  final _showingMenuNotifier = ValueNotifier<bool>(false);
+  ValueNotifier<bool> get showingMenuNotifier => _showingMenuNotifier;
+  bool get showingMenu => _showingMenuNotifier.value;
+  set showingMenu(bool showingMenu) => _showingMenuNotifier.value = showingMenu;
 
   /// [ScrollController] of [_Menu].
   final _menuScrollController = ScrollController();
@@ -39,15 +51,15 @@ class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
   final _inputController = TextEditingController();
   TextEditingController get inputController => _inputController;
 
-  /// [GlobalKey] of [_Input] to pass it's [Size] to [inputSizeController].
+  /// [GlobalKey] of [_Input] to pass it's [Size] to [_inputSizeNotifier].
   final _inputKey = GlobalKey();
   GlobalKey get inputKey => _inputKey;
 
   /// [ValueNotifier] that stores the [Size] of [_Input].
-  final _inputSizeController = ValueNotifier<Size?>(null);
-  ValueNotifier<Size?> get inputSizeController => _inputSizeController;
-  Size? get inputSize => _inputSizeController.value;
-  set inputSize(Size? inputSize) => _inputSizeController.value = inputSize;
+  final _inputSizeNotifier = ValueNotifier<Size?>(null);
+  ValueNotifier<Size?> get inputSizeNotifier => _inputSizeNotifier;
+  Size? get inputSize => _inputSizeNotifier.value;
+  set inputSize(Size? inputSize) => _inputSizeNotifier.value = inputSize;
 
   /// [LayerLink] of [CompositedTransformTarget] so we may position the
   /// [OverlayPortal] relative to the position of [_DropdownState] in [_Input].
@@ -56,9 +68,11 @@ class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
 
   /// Dispose function.
   void dispose() {
-    _showingMenuController.dispose();
+    _enabledNotifier.dispose();
+    _selectedItemsNotifier.dispose();
+    _showingMenuNotifier.dispose();
     _menuScrollController.dispose();
     _inputController.dispose();
-    _inputSizeController.dispose();
+    _inputSizeNotifier.dispose();
   }
 }

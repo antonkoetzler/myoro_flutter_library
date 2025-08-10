@@ -12,7 +12,8 @@ part of 'padding_widget_showcase_option_configuration.dart';
 /// class PaddingWidgetShowcaseOptionConfiguration with _$PaddingWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
-  PaddingWidgetShowcaseOptionConfiguration get self => this as PaddingWidgetShowcaseOptionConfiguration;
+  PaddingWidgetShowcaseOptionConfiguration get self =>
+      this as PaddingWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -26,7 +27,12 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.label, self.enabled, self.checkboxOnChanged, self.paddingOnChanged);
+    return Object.hash(
+      self.label,
+      self.enabled,
+      self.checkboxOnChanged,
+      self.paddingOnChanged,
+    );
   }
 
   @override
@@ -40,7 +46,8 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $PaddingWidgetShowcaseOptionConfigurationExtension on PaddingWidgetShowcaseOptionConfiguration {
+extension $PaddingWidgetShowcaseOptionConfigurationExtension
+    on PaddingWidgetShowcaseOptionConfiguration {
   PaddingWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     bool? enabled,
@@ -51,7 +58,10 @@ extension $PaddingWidgetShowcaseOptionConfigurationExtension on PaddingWidgetSho
     return PaddingWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
       enabled: enabled ?? self.enabled,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
       paddingOnChanged: paddingOnChanged ?? self.paddingOnChanged,
     );
   }

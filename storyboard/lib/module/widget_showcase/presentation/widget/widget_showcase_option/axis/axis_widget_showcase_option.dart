@@ -29,7 +29,6 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
   @override
   Widget build(_) {
     return MyoroSingularDropdown<Axis>(
-      controller: MyoroSingularDropdownController(enabled: enabled, initiallySelectedItem: initialDirection),
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         selectedItemBuilder: _axisName,
@@ -40,6 +39,8 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
             return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _axisName(axis)));
           },
         ),
+        enabled: enabled,
+        selectedItem: initialDirection,
       ),
     );
   }

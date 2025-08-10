@@ -20,7 +20,6 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
     final themeModeController = KiwiContainer().resolve<ThemeModeController>();
 
     return MyoroSingularDropdown<ThemeMode>(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: themeModeController.themeMode),
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         allowItemClearing: false,
@@ -32,6 +31,7 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
         ),
         selectedItemBuilder: _formattedName,
         onChanged: onChanged,
+        selectedItem: themeModeController.themeMode,
       ),
     );
   }

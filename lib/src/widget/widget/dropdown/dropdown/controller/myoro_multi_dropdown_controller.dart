@@ -1,13 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [MyoroMultiDropdown] implementation of [MyoroDropdownController].
-class MyoroMultiDropdownController<T> extends MyoroDropdownController<T> {
-  MyoroMultiDropdownController({super.enabled, super.initiallySelectedItems});
+class MyoroMultiDropdownController<T> extends MyoroDropdownController<T, MyoroMultiDropdownViewModel<T>> {
+  MyoroMultiDropdownController({required MyoroMultiDropdownConfiguration<T> configuration})
+    : super(MyoroMultiDropdownViewModel(configuration));
 
-  @override
-  void toggleItem(T item) {
-    final selectedItems = super.selectedItems;
-    selectedItems.contains(item) ? selectedItems.remove(item) : selectedItems.add(item);
-    super.selectedItemsController.value = selectedItems;
-  }
+  /// [ValueNotifier] controlling which items are selected.
+  ValueNotifier<Set<T>> get selectedItemsNotifier => viewModel.state.selectedItemsNotifier;
+
+  /// Returns the selected items.
+  Set<T> get selectedItems => viewModel.state.selectedItems;
 }

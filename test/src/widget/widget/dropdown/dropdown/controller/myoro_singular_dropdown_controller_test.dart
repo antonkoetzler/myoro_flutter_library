@@ -3,9 +3,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final controller = MyoroSingularDropdownController<String>();
+  final controller = MyoroSingularDropdownController<String>(
+    configuration: MyoroSingularDropdownConfiguration(
+      menuConfiguration: MyoroMenuConfiguration(
+        request: List.generate(faker.randomGenerator.integer(10), (i) => 'Item #$i').toSet,
+        itemBuilder: (v) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: v)),
+      ),
+      selectedItemBuilder: (v) => v,
+    ),
+  );
 
-  tearDown(controller.dispose);
+  tearDownAll(controller.dispose);
 
   test('MyoroSingularDropdownController', () {
     final item = faker.lorem.word();
@@ -13,5 +21,11 @@ void main() {
     expect(controller.selectedItem, item);
     controller.clear();
     expect(controller.selectedItem, isNull);
+  });
+
+  test('MyoroSingularDropdownController.toggleEnabled', () {
+    final enabled = controller.enabled;
+    controller.toggleEnabled(!enabled);
+    expect(controller.enabledNotifier.value, !enabled);
   });
 }

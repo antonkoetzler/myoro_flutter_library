@@ -4,14 +4,10 @@ import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase option to select a [MyoroDropdownMenuTypeEnum] via [MyoroSingularDropdown].
 final class MyoroDropdownMenuTypeEnumWidgetShowcaseOption extends StatelessWidget {
-  const MyoroDropdownMenuTypeEnumWidgetShowcaseOption({
-    super.key,
-    required this.initiallySelectedItem,
-    required this.onChanged,
-  });
+  const MyoroDropdownMenuTypeEnumWidgetShowcaseOption({super.key, required this.selectedItem, required this.onChanged});
 
   /// Initially selected [MyoroDropdownMenuTypeEnum].
-  final MyoroDropdownMenuTypeEnum initiallySelectedItem;
+  final MyoroDropdownMenuTypeEnum selectedItem;
 
   /// [MyoroSingularDropdown.onChanged]
   final MyoroDropdownMenuTypeEnumWidgetShowcaseOptionOnChanged onChanged;
@@ -21,7 +17,6 @@ final class MyoroDropdownMenuTypeEnumWidgetShowcaseOption extends StatelessWidge
     final viewModel = MyoroDropdownMenuTypeEnumWidgetShowcaseOptiomViewModel();
 
     return MyoroSingularDropdown(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem),
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Menu render type.',
         selectedItemBuilder: viewModel.selectedItemBuilder,
@@ -30,6 +25,7 @@ final class MyoroDropdownMenuTypeEnumWidgetShowcaseOption extends StatelessWidge
           request: MyoroDropdownMenuTypeEnum.values.toSet,
           itemBuilder: viewModel.itemBuilder,
         ),
+        selectedItem: selectedItem,
       ),
     );
   }

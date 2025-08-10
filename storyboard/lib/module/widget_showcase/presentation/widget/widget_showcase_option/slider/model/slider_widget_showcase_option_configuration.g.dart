@@ -12,7 +12,8 @@ part of 'slider_widget_showcase_option_configuration.dart';
 /// class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
-  SliderWidgetShowcaseOptionConfiguration get self => this as SliderWidgetShowcaseOptionConfiguration;
+  SliderWidgetShowcaseOptionConfiguration get self =>
+      this as SliderWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -48,7 +49,8 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $SliderWidgetShowcaseOptionConfigurationExtension on SliderWidgetShowcaseOptionConfiguration {
+extension $SliderWidgetShowcaseOptionConfigurationExtension
+    on SliderWidgetShowcaseOptionConfiguration {
   SliderWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     bool? initiallyEnabled,
@@ -61,7 +63,10 @@ extension $SliderWidgetShowcaseOptionConfigurationExtension on SliderWidgetShowc
       label: label ?? self.label,
       initiallyEnabled: initiallyEnabled ?? self.initiallyEnabled,
       initialValue: initialValue ?? self.initialValue,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
       sliderOnChanged: sliderOnChanged ?? self.sliderOnChanged,
     );
   }

@@ -27,7 +27,13 @@ mixin _$MyoroRadioConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.controller, self.initialValue, self.label, self.labelTextStyle, self.onChanged);
+    return Object.hash(
+      self.controller,
+      self.initialValue,
+      self.label,
+      self.labelTextStyle,
+      self.onChanged,
+    );
   }
 
   @override
@@ -56,9 +62,13 @@ extension $MyoroRadioConfigurationExtension on MyoroRadioConfiguration {
   }) {
     return MyoroRadioConfiguration(
       controller: controllerProvided ? (controller ?? self.controller) : null,
-      initialValue: initialValueProvided ? (initialValue ?? self.initialValue) : null,
+      initialValue: initialValueProvided
+          ? (initialValue ?? self.initialValue)
+          : null,
       label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelTextStyle: labelTextStyleProvided
+          ? (labelTextStyle ?? self.labelTextStyle)
+          : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
     );
   }

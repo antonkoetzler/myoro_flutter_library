@@ -9,7 +9,7 @@ final class _BackgroundColorOption extends StatelessWidget {
     final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
 
     return ColorWidgetShowcaseOption(
-      initiallySelectedColor: viewModel.state.backgroundColor,
+      selectedColor: viewModel.state.backgroundColor,
       onChanged: (color) => viewModel.state.backgroundColor = color,
       checkboxOnChanged: (enabled, color) => viewModel.state.backgroundColor = enabled ? color : null,
     );

@@ -10,9 +10,9 @@ void main() {
           configuration: MyoroSliderConfiguration.fake().copyWith(
             width: 300,
             label: faker.lorem.word(),
-            currentValueIndicatorTextBuilder: (_) => faker.lorem.word(),
-            footerIndicatorTextBuilder: (_) => faker.lorem.word(),
-            maxValueIndicatorTextBuilder: (_) => faker.lorem.word(),
+            currentValueIndicatorTextBuilder: (_) => 'qwe',
+            footerIndicatorTextBuilder: (_) => 'qwe',
+            maxValueIndicatorTextBuilder: (_) => 'qwe',
           ),
         ),
       ),

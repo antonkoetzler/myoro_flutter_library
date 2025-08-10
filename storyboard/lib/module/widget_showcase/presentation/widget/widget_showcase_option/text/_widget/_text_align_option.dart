@@ -11,6 +11,6 @@ final class _TextAlignOption extends StatelessWidget {
     final alignmentInitialValue = configuration.alignmentInitialValue;
     final alignmentOnChanged = configuration.alignmentOnChanged;
 
-    return TextAlignWidgetShowcaseOption(initiallySelectedValue: alignmentInitialValue, onChanged: alignmentOnChanged!);
+    return TextAlignWidgetShowcaseOption(selectedValue: alignmentInitialValue, onChanged: alignmentOnChanged!);
   }
 }

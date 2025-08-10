@@ -4,16 +4,16 @@ import 'package:storyboard/storyboard.dart';
 
 /// Widget showcase option to select a [MyoroSnackBarType] via [MyoroSingularDropdown].
 final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
-  static const initiallySelectedItemDefaultValue = MyoroSnackBarTypeEnum.attention;
+  static const selectedItemDefaultValue = MyoroSnackBarTypeEnum.attention;
 
   const MyoroSnackBarTypeWidgetShowcaseOption({
     super.key,
-    this.initiallySelectedItem = initiallySelectedItemDefaultValue,
+    this.selectedItem = selectedItemDefaultValue,
     required this.onChanged,
   });
 
   /// Initial item of [MyoroSingularDropdownConfiguration].
-  final MyoroSnackBarTypeEnum initiallySelectedItem;
+  final MyoroSnackBarTypeEnum selectedItem;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<MyoroSnackBarTypeEnum> onChanged;
@@ -23,7 +23,6 @@ final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
     final viewModel = MyoroSnackBarTypeWidgetShowcaseOptionViewModel();
 
     return MyoroSingularDropdown<MyoroSnackBarTypeEnum>(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem),
       configuration: MyoroSingularDropdownConfiguration(
         onChanged: onChanged,
         selectedItemBuilder: viewModel.selectedItemBuilder,
@@ -31,6 +30,7 @@ final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
           request: MyoroSnackBarTypeEnum.values.toSet,
           itemBuilder: viewModel.itemBuilder,
         ),
+        selectedItem: selectedItem,
       ),
     );
   }

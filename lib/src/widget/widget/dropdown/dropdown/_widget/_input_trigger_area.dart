@@ -9,24 +9,25 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
-    final configuration = viewModel.state.configuration;
-    final enabledController = viewModel.controller.enabledController;
-    final selectedItemsController = viewModel.controller.selectedItemsController;
-    final inputSizeController = viewModel.state.inputSizeController;
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final enabledNotifier = state.enabledNotifier;
+    final selectedItemsNotifier = state.selectedItemsNotifier;
+    final inputSizeNotifier = state.inputSizeNotifier;
 
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final clearTextButtonPadding = inputThemeExtension.clearTextButtonPadding;
 
     return ValueListenableBuilder(
-      valueListenable: inputSizeController,
+      valueListenable: inputSizeNotifier,
       builder: (_, Size? inputSize, _) {
         return SizedBox(
           height: inputSize?.height,
           child: ValueListenableBuilder(
-            valueListenable: enabledController,
+            valueListenable: enabledNotifier,
             builder: (_, bool enabled, _) {
               return ValueListenableBuilder(
-                valueListenable: selectedItemsController,
+                valueListenable: selectedItemsNotifier,
                 builder: (_, selectedItems, _) {
                   return Row(
                     children: [

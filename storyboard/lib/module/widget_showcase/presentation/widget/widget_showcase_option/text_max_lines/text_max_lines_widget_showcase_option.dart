@@ -5,13 +5,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Max lines';
   static const allowItemClearingDefaultValue = MyoroDropdownConfiguration.allowItemClearingDefaultValue;
-  static const initiallySelectedItemDefaultValue = 1;
+  static const selectedItemDefaultValue = 1;
 
   const TextMaxLinesWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
-    this.initiallySelectedItem = initiallySelectedItemDefaultValue,
+    this.selectedItem = selectedItemDefaultValue,
     required this.onChanged,
   });
 
@@ -22,7 +22,7 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   final bool allowItemClearing;
 
   /// Initially selected item of the [MyoroSingularDropdown].
-  final int initiallySelectedItem;
+  final int selectedItem;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<int> onChanged;
@@ -30,7 +30,6 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   @override
   Widget build(context) {
     return MyoroSingularDropdown<int>(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem),
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         allowItemClearing: allowItemClearing,
@@ -42,6 +41,7 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
             return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
           },
         ),
+        selectedItem: selectedItem,
       ),
     );
   }

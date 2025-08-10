@@ -9,7 +9,7 @@ final class _MenuTypeEnumOption extends StatelessWidget {
     final viewModel = context.read<MyoroDropdownWidgetShowcaseScreenViewModel>();
 
     return MyoroDropdownMenuTypeEnumWidgetShowcaseOption(
-      initiallySelectedItem: viewModel.state.menuTypeEnum,
+      selectedItem: viewModel.state.menuTypeEnum,
       onChanged: (item) => viewModel.state.menuTypeEnum = item,
     );
   }

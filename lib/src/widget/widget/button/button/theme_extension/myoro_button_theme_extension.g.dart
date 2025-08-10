@@ -11,7 +11,8 @@ part of 'myoro_button_theme_extension.dart';
 /// ```dart
 /// class MyoroButtonThemeExtension with _$MyoroButtonThemeExtensionMixin {}
 /// ```
-mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtension> {
+mixin _$MyoroButtonThemeExtensionMixin
+    on ThemeExtension<MyoroButtonThemeExtension> {
   MyoroButtonThemeExtension get self => this as MyoroButtonThemeExtension;
 
   @override
@@ -34,18 +35,30 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
     return MyoroButtonThemeExtension(
       border: border ?? self.border,
       borderRadius: borderRadius ?? self.borderRadius,
-      primaryIdleBackgroundColor: primaryIdleBackgroundColor ?? self.primaryIdleBackgroundColor,
-      primaryHoverBackgroundColor: primaryHoverBackgroundColor ?? self.primaryHoverBackgroundColor,
-      primaryTapBackgroundColor: primaryTapBackgroundColor ?? self.primaryTapBackgroundColor,
-      primaryIdleContentColor: primaryIdleContentColor ?? self.primaryIdleContentColor,
-      primaryHoverContentColor: primaryHoverContentColor ?? self.primaryHoverContentColor,
-      primaryTapContentColor: primaryTapContentColor ?? self.primaryTapContentColor,
-      secondaryIdleBackgroundColor: secondaryIdleBackgroundColor ?? self.secondaryIdleBackgroundColor,
-      secondaryHoverBackgroundColor: secondaryHoverBackgroundColor ?? self.secondaryHoverBackgroundColor,
-      secondaryTapBackgroundColor: secondaryTapBackgroundColor ?? self.secondaryTapBackgroundColor,
-      secondaryIdleContentColor: secondaryIdleContentColor ?? self.secondaryIdleContentColor,
-      secondaryHoverContentColor: secondaryHoverContentColor ?? self.secondaryHoverContentColor,
-      secondaryTapContentColor: secondaryTapContentColor ?? self.secondaryTapContentColor,
+      primaryIdleBackgroundColor:
+          primaryIdleBackgroundColor ?? self.primaryIdleBackgroundColor,
+      primaryHoverBackgroundColor:
+          primaryHoverBackgroundColor ?? self.primaryHoverBackgroundColor,
+      primaryTapBackgroundColor:
+          primaryTapBackgroundColor ?? self.primaryTapBackgroundColor,
+      primaryIdleContentColor:
+          primaryIdleContentColor ?? self.primaryIdleContentColor,
+      primaryHoverContentColor:
+          primaryHoverContentColor ?? self.primaryHoverContentColor,
+      primaryTapContentColor:
+          primaryTapContentColor ?? self.primaryTapContentColor,
+      secondaryIdleBackgroundColor:
+          secondaryIdleBackgroundColor ?? self.secondaryIdleBackgroundColor,
+      secondaryHoverBackgroundColor:
+          secondaryHoverBackgroundColor ?? self.secondaryHoverBackgroundColor,
+      secondaryTapBackgroundColor:
+          secondaryTapBackgroundColor ?? self.secondaryTapBackgroundColor,
+      secondaryIdleContentColor:
+          secondaryIdleContentColor ?? self.secondaryIdleContentColor,
+      secondaryHoverContentColor:
+          secondaryHoverContentColor ?? self.secondaryHoverContentColor,
+      secondaryTapContentColor:
+          secondaryTapContentColor ?? self.secondaryTapContentColor,
     );
   }
 
@@ -61,8 +74,10 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
         other.primaryIdleContentColor == self.primaryIdleContentColor &&
         other.primaryHoverContentColor == self.primaryHoverContentColor &&
         other.primaryTapContentColor == self.primaryTapContentColor &&
-        other.secondaryIdleBackgroundColor == self.secondaryIdleBackgroundColor &&
-        other.secondaryHoverBackgroundColor == self.secondaryHoverBackgroundColor &&
+        other.secondaryIdleBackgroundColor ==
+            self.secondaryIdleBackgroundColor &&
+        other.secondaryHoverBackgroundColor ==
+            self.secondaryHoverBackgroundColor &&
         other.secondaryTapBackgroundColor == self.secondaryTapBackgroundColor &&
         other.secondaryIdleContentColor == self.secondaryIdleContentColor &&
         other.secondaryHoverContentColor == self.secondaryHoverContentColor &&

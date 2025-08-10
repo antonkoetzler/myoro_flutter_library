@@ -12,29 +12,31 @@ part of 'icon_widget_showcase_option_configuration.dart';
 /// class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$IconWidgetShowcaseOptionConfigurationMixin {
-  IconWidgetShowcaseOptionConfiguration get self => this as IconWidgetShowcaseOptionConfiguration;
+  IconWidgetShowcaseOptionConfiguration get self =>
+      this as IconWidgetShowcaseOptionConfiguration;
 
   @override
   bool operator ==(Object other) {
     return other is IconWidgetShowcaseOptionConfiguration &&
         other.runtimeType == runtimeType &&
         other.label == self.label &&
-        other.initiallySelectedIcon == self.initiallySelectedIcon &&
+        other.selectedIcon == self.selectedIcon &&
         other.iconOnChanged == self.iconOnChanged &&
-        other.initiallySelectedIconSize == self.initiallySelectedIconSize &&
+        other.selectedIconSize == self.selectedIconSize &&
         other.iconSizeOnChanged == self.iconSizeOnChanged &&
         other.iconSizeCheckboxOnChanged == self.iconSizeCheckboxOnChanged &&
         other.enabled == self.enabled &&
-        other.enableOptionCheckboxOnChanged == self.enableOptionCheckboxOnChanged;
+        other.enableOptionCheckboxOnChanged ==
+            self.enableOptionCheckboxOnChanged;
   }
 
   @override
   int get hashCode {
     return Object.hash(
       self.label,
-      self.initiallySelectedIcon,
+      self.selectedIcon,
       self.iconOnChanged,
-      self.initiallySelectedIconSize,
+      self.selectedIconSize,
       self.iconSizeOnChanged,
       self.iconSizeCheckboxOnChanged,
       self.enabled,
@@ -46,9 +48,9 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
   String toString() =>
       'IconWidgetShowcaseOptionConfiguration(\n'
       '  label: ${self.label},\n'
-      '  initiallySelectedIcon: ${self.initiallySelectedIcon},\n'
+      '  selectedIcon: ${self.selectedIcon},\n'
       '  iconOnChanged: ${self.iconOnChanged},\n'
-      '  initiallySelectedIconSize: ${self.initiallySelectedIconSize},\n'
+      '  selectedIconSize: ${self.selectedIconSize},\n'
       '  iconSizeOnChanged: ${self.iconSizeOnChanged},\n'
       '  iconSizeCheckboxOnChanged: ${self.iconSizeCheckboxOnChanged},\n'
       '  enabled: ${self.enabled},\n'
@@ -57,14 +59,15 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $IconWidgetShowcaseOptionConfigurationExtension on IconWidgetShowcaseOptionConfiguration {
+extension $IconWidgetShowcaseOptionConfigurationExtension
+    on IconWidgetShowcaseOptionConfiguration {
   IconWidgetShowcaseOptionConfiguration copyWith({
     String? label,
-    IconData? initiallySelectedIcon,
-    bool initiallySelectedIconProvided = true,
+    IconData? selectedIcon,
+    bool selectedIconProvided = true,
     void Function(IconData?)? iconOnChanged,
-    double? initiallySelectedIconSize,
-    bool initiallySelectedIconSizeProvided = true,
+    double? selectedIconSize,
+    bool selectedIconSizeProvided = true,
     void Function(double?)? iconSizeOnChanged,
     bool iconSizeOnChangedProvided = true,
     void Function(bool, double?)? iconSizeCheckboxOnChanged,
@@ -76,18 +79,26 @@ extension $IconWidgetShowcaseOptionConfigurationExtension on IconWidgetShowcaseO
   }) {
     return IconWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
-      initiallySelectedIcon:
-          initiallySelectedIconProvided ? (initiallySelectedIcon ?? self.initiallySelectedIcon) : null,
+      selectedIcon:
+          selectedIconProvided ? (selectedIcon ?? self.selectedIcon) : null,
       iconOnChanged: iconOnChanged ?? self.iconOnChanged,
-      initiallySelectedIconSize:
-          initiallySelectedIconSizeProvided ? (initiallySelectedIconSize ?? self.initiallySelectedIconSize) : null,
-      iconSizeOnChanged: iconSizeOnChangedProvided ? (iconSizeOnChanged ?? self.iconSizeOnChanged) : null,
+      selectedIconSize:
+          selectedIconSizeProvided
+              ? (selectedIconSize ?? self.selectedIconSize)
+              : null,
+      iconSizeOnChanged:
+          iconSizeOnChangedProvided
+              ? (iconSizeOnChanged ?? self.iconSizeOnChanged)
+              : null,
       iconSizeCheckboxOnChanged:
-          iconSizeCheckboxOnChangedProvided ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged) : null,
+          iconSizeCheckboxOnChangedProvided
+              ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged)
+              : null,
       enabled: enabledProvided ? (enabled ?? self.enabled) : null,
       enableOptionCheckboxOnChanged:
           enableOptionCheckboxOnChangedProvided
-              ? (enableOptionCheckboxOnChanged ?? self.enableOptionCheckboxOnChanged)
+              ? (enableOptionCheckboxOnChanged ??
+                  self.enableOptionCheckboxOnChanged)
               : null,
     );
   }

@@ -13,7 +13,7 @@ final class _StyleOption extends StatelessWidget {
     final styleCheckboxOnChanged = configuration.styleCheckboxOnChanged;
 
     return TextStyleWidgetShowcaseOption(
-      initiallySelectedItem: styleInitialValue,
+      selectedItem: styleInitialValue,
       onChanged: styleOnChanged!,
       checkboxOnChanged: styleCheckboxOnChanged,
     );

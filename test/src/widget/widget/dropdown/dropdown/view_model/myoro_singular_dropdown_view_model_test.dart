@@ -6,30 +6,28 @@ void main() {
   bool onChangedExecuted = false;
   bool checkboxOnChangedExecuted = false;
   final item = faker.lorem.word();
-  final configuration = MyoroSingularDropdownConfiguration<String>(
-    menuConfiguration: MyoroMenuConfiguration(
-      request: () => {item},
-      itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+  final viewModel = MyoroSingularDropdownViewModel<String>(
+    MyoroSingularDropdownConfiguration<String>(
+      menuConfiguration: MyoroMenuConfiguration(
+        request: () => {item},
+        itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+      ),
+      selectedItemBuilder: (item) => item,
+      onChanged: (_) => onChangedExecuted = true,
+      checkboxOnChanged: (_, _) => checkboxOnChangedExecuted = true,
     ),
-    selectedItemBuilder: (item) => item,
-    onChanged: (_) => onChangedExecuted = true,
-    checkboxOnChanged: (_, _) => checkboxOnChangedExecuted = true,
   );
-  final controller = MyoroSingularDropdownController<String>();
-  final viewModel = MyoroSingularDropdownViewModel<String>()..initialize(configuration, controller);
 
-  tearDownAll(() {
-    controller.dispose();
-    viewModel.dispose();
-  });
+  tearDownAll(viewModel.dispose);
 
   test('MyoroSingularDropdownViewModel.enabledNotifierListener', () {
-    controller.toggleEnabled();
+    viewModel.toggleEnabled();
     expect(checkboxOnChangedExecuted, isTrue);
   });
 
   test('MyoroSingularDropdownViewModel.selectedItemsControllerListener', () {
-    controller.toggleItem(item);
+    viewModel.toggleItem(item);
+    expect(viewModel.state.selectedItems, {item});
     expect(onChangedExecuted, isTrue);
   });
 }

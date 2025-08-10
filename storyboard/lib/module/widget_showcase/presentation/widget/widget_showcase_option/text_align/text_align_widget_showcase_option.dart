@@ -9,7 +9,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   const TextAlignWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
-    this.initiallySelectedValue,
+    this.selectedValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
     required this.onChanged,
   });
@@ -18,7 +18,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   final String label;
 
   /// Initially selected [TextAlign].
-  final TextAlign? initiallySelectedValue;
+  final TextAlign? selectedValue;
 
   /// [MyoroDropdownConfiguration.allowItemClearing]
   final bool allowItemClearing;
@@ -29,10 +29,6 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   @override
   Widget build(context) {
     return MyoroSingularDropdown(
-      controller:
-          initiallySelectedValue != null
-              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedValue)
-              : null,
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         onChanged: onChanged,
@@ -44,6 +40,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
             return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
           },
         ),
+        selectedItem: selectedValue,
       ),
     );
   }

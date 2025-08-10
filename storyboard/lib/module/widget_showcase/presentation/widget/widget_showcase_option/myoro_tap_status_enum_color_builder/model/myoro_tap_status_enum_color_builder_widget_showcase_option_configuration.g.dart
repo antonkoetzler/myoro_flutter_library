@@ -17,17 +17,18 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration &&
+    return other
+            is MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration &&
         other.runtimeType == runtimeType &&
         other.title == self.title &&
         other.enabled == self.enabled &&
         other.label == self.label &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
-        other.initiallySelectedIdleColor == self.initiallySelectedIdleColor &&
+        other.selectedIdleColor == self.selectedIdleColor &&
         other.idleOnChanged == self.idleOnChanged &&
-        other.initiallySelectedHoverColor == self.initiallySelectedHoverColor &&
+        other.selectedHoverColor == self.selectedHoverColor &&
         other.hoverOnChanged == self.hoverOnChanged &&
-        other.initiallySelectedTapColor == self.initiallySelectedTapColor &&
+        other.selectedTapColor == self.selectedTapColor &&
         other.tapOnChanged == self.tapOnChanged;
   }
 
@@ -38,11 +39,11 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
       self.enabled,
       self.label,
       self.checkboxOnChanged,
-      self.initiallySelectedIdleColor,
+      self.selectedIdleColor,
       self.idleOnChanged,
-      self.initiallySelectedHoverColor,
+      self.selectedHoverColor,
       self.hoverOnChanged,
-      self.initiallySelectedTapColor,
+      self.selectedTapColor,
       self.tapOnChanged,
     );
   }
@@ -54,11 +55,11 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
       '  enabled: ${self.enabled},\n'
       '  label: ${self.label},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
-      '  initiallySelectedIdleColor: ${self.initiallySelectedIdleColor},\n'
+      '  selectedIdleColor: ${self.selectedIdleColor},\n'
       '  idleOnChanged: ${self.idleOnChanged},\n'
-      '  initiallySelectedHoverColor: ${self.initiallySelectedHoverColor},\n'
+      '  selectedHoverColor: ${self.selectedHoverColor},\n'
       '  hoverOnChanged: ${self.hoverOnChanged},\n'
-      '  initiallySelectedTapColor: ${self.initiallySelectedTapColor},\n'
+      '  selectedTapColor: ${self.selectedTapColor},\n'
       '  tapOnChanged: ${self.tapOnChanged},\n'
       ');';
 }
@@ -72,14 +73,14 @@ extension $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationExtens
     bool? enabled,
     String? label,
     void Function(bool)? checkboxOnChanged,
-    Color? initiallySelectedIdleColor,
-    bool initiallySelectedIdleColorProvided = true,
+    Color? selectedIdleColor,
+    bool selectedIdleColorProvided = true,
     void Function(Color?)? idleOnChanged,
-    Color? initiallySelectedHoverColor,
-    bool initiallySelectedHoverColorProvided = true,
+    Color? selectedHoverColor,
+    bool selectedHoverColorProvided = true,
     void Function(Color?)? hoverOnChanged,
-    Color? initiallySelectedTapColor,
-    bool initiallySelectedTapColorProvided = true,
+    Color? selectedTapColor,
+    bool selectedTapColorProvided = true,
     void Function(Color?)? tapOnChanged,
   }) {
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
@@ -87,16 +88,20 @@ extension $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationExtens
       enabled: enabled ?? self.enabled,
       label: label ?? self.label,
       checkboxOnChanged: checkboxOnChanged ?? self.checkboxOnChanged,
-      initiallySelectedIdleColor:
-          initiallySelectedIdleColorProvided ? (initiallySelectedIdleColor ?? self.initiallySelectedIdleColor) : null,
+      selectedIdleColor:
+          selectedIdleColorProvided
+              ? (selectedIdleColor ?? self.selectedIdleColor)
+              : null,
       idleOnChanged: idleOnChanged ?? self.idleOnChanged,
-      initiallySelectedHoverColor:
-          initiallySelectedHoverColorProvided
-              ? (initiallySelectedHoverColor ?? self.initiallySelectedHoverColor)
+      selectedHoverColor:
+          selectedHoverColorProvided
+              ? (selectedHoverColor ?? self.selectedHoverColor)
               : null,
       hoverOnChanged: hoverOnChanged ?? self.hoverOnChanged,
-      initiallySelectedTapColor:
-          initiallySelectedTapColorProvided ? (initiallySelectedTapColor ?? self.initiallySelectedTapColor) : null,
+      selectedTapColor:
+          selectedTapColorProvided
+              ? (selectedTapColor ?? self.selectedTapColor)
+              : null,
       tapOnChanged: tapOnChanged ?? self.tapOnChanged,
     );
   }

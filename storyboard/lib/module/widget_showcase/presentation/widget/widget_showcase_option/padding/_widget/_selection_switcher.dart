@@ -9,7 +9,6 @@ final class _SelectionSwitcher extends StatelessWidget {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
 
     return MyoroSingularDropdown<PaddingWidgetShowcaseOptionEnum>(
-      controller: MyoroSingularDropdownController(initiallySelectedItem: viewModel.modeEnum),
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Selection type',
         allowItemClearing: false,
@@ -21,6 +20,7 @@ final class _SelectionSwitcher extends StatelessWidget {
             return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _formattedName(value)));
           },
         ),
+        selectedItem: viewModel.modeEnum,
       ),
     );
   }

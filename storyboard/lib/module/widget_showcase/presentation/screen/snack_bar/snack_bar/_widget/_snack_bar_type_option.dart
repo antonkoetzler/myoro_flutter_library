@@ -9,7 +9,7 @@ final class _SnackBarTypeOption extends StatelessWidget {
     final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
 
     return MyoroSnackBarTypeWidgetShowcaseOption(
-      initiallySelectedItem: viewModel.state.snackBarType,
+      selectedItem: viewModel.state.snackBarType,
       onChanged: (snackBarType) => viewModel.state.snackBarType = snackBarType!,
     );
   }

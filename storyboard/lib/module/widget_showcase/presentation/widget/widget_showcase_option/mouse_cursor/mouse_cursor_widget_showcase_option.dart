@@ -8,7 +8,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   const MouseCursorWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
-    this.initiallySelectedCursor,
+    this.selectedCursor,
     required this.onChanged,
   });
 
@@ -16,7 +16,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   final String label;
 
   /// Initially selected [MouseCursor].
-  final MouseCursor? initiallySelectedCursor;
+  final MouseCursor? selectedCursor;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<MouseCursor> onChanged;
@@ -24,10 +24,6 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   @override
   Widget build(_) {
     return MyoroSingularDropdown<MouseCursor>(
-      controller:
-          initiallySelectedCursor != null
-              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedCursor)
-              : null,
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         selectedItemBuilder: _getCursorName,
@@ -38,6 +34,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
             return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _getCursorName(cursor)));
           },
         ),
+        selectedItem: selectedCursor,
       ),
     );
   }

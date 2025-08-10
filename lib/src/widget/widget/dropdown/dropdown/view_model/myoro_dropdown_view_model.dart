@@ -5,43 +5,40 @@ part 'myoro_dropdown_state.dart';
 
 /// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
 abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>> {
-  void initialize(C configuration, MyoroDropdownController<T> controller) {
-    final isInitialized = _state != null;
-    if (isInitialized) return;
-    _state = MyoroDropdownState(configuration);
-    _controller = controller;
+  MyoroDropdownViewModel(C configuration, Set<T> selectedItems)
+    : _state = MyoroDropdownState(configuration, selectedItems) {
     if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
-    controller.enabledController.addListener(enabledNotifierListener);
-    controller.selectedItemsController.addListener(selectedItemsControllerListener);
-    if (controller.selectedItems.isNotEmpty) _formatSelectedItems();
+    state.enabledNotifier.addListener(enabledNotifierListener);
+    state.selectedItemsNotifier.addListener(selectedItemsNotifierListener);
+    if (state.selectedItems.isNotEmpty) _formatSelectedItems();
   }
 
   /// State.
-  MyoroDropdownState<T, C>? _state;
+  final MyoroDropdownState<T, C> _state;
 
   /// [_state] getter.
-  MyoroDropdownState<T, C> get state {
-    assert(_state != null, '[MyoroDropdownState<$T, $C>.state]: [_state] has not been set yet.');
-    return _state!;
-  }
+  MyoroDropdownState<T, C> get state => _state;
 
-  /// Controller.
-  MyoroDropdownController<T>? _controller;
+  /// Selects/deselects an item.
+  void toggleItem(T item);
 
-  /// [_controller] getter.
-  MyoroDropdownController<T> get controller {
-    assert(_controller != null, '[MyoroDropdownController<$T, $C>.controller]: [_controller] has not been set yet.');
-    return _controller!;
-  }
-
-  /// [_controller] setter.
-  set controller(MyoroDropdownController<T> controller) {
-    _controller = controller;
-  }
+  /// Handles the callback of a dropdown's checkbox on changed argument.
+  @protected
+  void enabledNotifierListener();
 
   /// Dispose function.
   void dispose() {
     state.dispose();
+  }
+
+  /// Toggles [_enabledNotifier].
+  void toggleEnabled([bool? enabled]) {
+    state.enabledNotifier.value = enabled ?? !state.enabled;
+  }
+
+  /// Clears all items in [MyoroDropdownState._selectedItemsNotifier].
+  void clear() {
+    state.selectedItemsNotifier.value = const {};
   }
 
   /// Toggles [_Menu].
@@ -58,14 +55,10 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
     };
   }
 
-  @protected
-  /// Handles the callback of a dropdown's checkbox on changed argument.
-  void enabledNotifierListener();
-
-  /// Handles the callback of when [MyoroDropdownState.selectedItemsController] has changed.
+  /// Handles the callback of when [MyoroDropdownState.selectedItemsNotifier] has changed.
   @protected
   @mustCallSuper
-  void selectedItemsControllerListener() {
+  void selectedItemsNotifierListener() {
     _formatSelectedItems();
   }
 
@@ -82,22 +75,22 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   @mustCallSuper
   MyoroMenuItem menuItemBuilder(BuildContext context, T item) {
     final menuConfiguration = state.configuration.menuConfiguration;
-    final selectedItemsController = controller.selectedItemsController;
-    final selectedItems = selectedItemsController.value;
+    final selectedItemsNotifier = state.selectedItemsNotifier;
+    final selectedItems = selectedItemsNotifier.value;
 
     final MyoroMenuItem menuItem = menuConfiguration.itemBuilder(item);
     return menuItem.copyWith(
       isSelected: selectedItems.contains(item),
       onTapUp: (TapUpDetails details) {
         menuItem.onTapUp?.call(details);
-        controller.toggleItem(item);
+        toggleItem(item);
       },
     );
   }
 
-  /// Formats items in [_selectedItemsController] to display in [_Input].
+  /// Formats items in [_selectedItemsNotifier] to display in [_Input].
   void _formatSelectedItems() {
-    final Set<T> selectedItems = controller.selectedItemsController.value;
+    final Set<T> selectedItems = state.selectedItemsNotifier.value;
     final stringBuffer = StringBuffer();
     for (int i = 0; i < selectedItems.length; i++) {
       final T item = selectedItems.elementAt(i);

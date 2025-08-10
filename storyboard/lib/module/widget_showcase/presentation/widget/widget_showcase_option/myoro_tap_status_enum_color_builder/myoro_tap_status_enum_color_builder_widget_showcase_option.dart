@@ -7,6 +7,7 @@ import 'package:storyboard/storyboard.dart';
 final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOption extends StatefulWidget {
   const MyoroTapStatusEnumColorBuilderWidgetShowcaseOption({super.key, required this.configuration});
 
+  /// Configuration.
   final MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration configuration;
 
   @override
@@ -34,11 +35,11 @@ final class _MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionState
     final label = _configuration.label;
     final enabled = _configuration.enabled;
     final checkboxOnChanged = _configuration.checkboxOnChanged;
-    final initiallySelectedIdleColor = _configuration.initiallySelectedIdleColor;
+    final selectedIdleColor = _configuration.selectedIdleColor;
     final idleOnChanged = _configuration.idleOnChanged;
-    final initiallySelectedHoverColor = _configuration.initiallySelectedHoverColor;
+    final selectedHoverColor = _configuration.selectedHoverColor;
     final hoverOnChanged = _configuration.hoverOnChanged;
-    final initiallySelectedTapColor = _configuration.initiallySelectedTapColor;
+    final selectedTapColor = _configuration.selectedTapColor;
     final tapOnChanged = _configuration.tapOnChanged;
 
     return Column(
@@ -64,19 +65,19 @@ final class _MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionState
               children: [
                 ColorWidgetShowcaseOption(
                   label: 'Idle color',
-                  initiallySelectedColor: initiallySelectedIdleColor,
+                  selectedColor: selectedIdleColor,
                   enabled: enabled,
                   onChanged: idleOnChanged,
                 ),
                 ColorWidgetShowcaseOption(
                   label: 'Hover color',
-                  initiallySelectedColor: initiallySelectedHoverColor,
+                  selectedColor: selectedHoverColor,
                   enabled: enabled,
                   onChanged: hoverOnChanged,
                 ),
                 ColorWidgetShowcaseOption(
                   label: 'Tap color',
-                  initiallySelectedColor: initiallySelectedTapColor,
+                  selectedColor: selectedTapColor,
                   enabled: enabled,
                   onChanged: tapOnChanged,
                 ),

@@ -9,7 +9,7 @@ final class _InputStyleOption extends StatelessWidget {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
     return MyoroInputStyleEnumWidgetShowcaseOption(
-      initiallySelectedStyle: viewModel.state.inputStyle,
+      selectedStyle: viewModel.state.inputStyle,
       onChanged: (item) => viewModel.state.inputStyle = item,
     );
   }

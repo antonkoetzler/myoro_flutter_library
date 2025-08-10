@@ -7,17 +7,15 @@ final class _Checkbox<T, C extends _C<T>> extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final state = viewModel.state;
+    final enabledNotifier = state.enabledNotifier;
+    final toggleEnabled = viewModel.toggleEnabled;
 
     return ValueListenableBuilder(
-      valueListenable: viewModel.controller.enabledController,
-      builder: (_, bool enabled, _) {
-        return MyoroCheckbox(
-          configuration: MyoroCheckboxConfiguration(
-            value: enabled,
-            onChanged: (bool enabled) => viewModel.controller.toggleEnabled(enabled),
-          ),
-        );
-      },
+      valueListenable: enabledNotifier,
+      builder: (_, bool enabled, _) => MyoroCheckbox(
+        configuration: MyoroCheckboxConfiguration(value: enabled, onChanged: toggleEnabled),
+      ),
     );
   }
 }

@@ -11,16 +11,16 @@ abstract class MyoroDropdownConfiguration<T> {
   static const enabledDefaultValue = true;
   static const allowItemClearingDefaultValue = true;
   static const selectedItemTextAlignDefaultValue = MyoroInputConfiguration.textAlignDefaultValue;
-  static const menuMaxHeightDefaultValue = double.infinity;
 
-  const MyoroDropdownConfiguration({
-    required this.label,
-    required this.menuTypeEnum,
-    required this.allowItemClearing,
-    required this.selectedItemTextAlign,
-    required this.menuConfiguration,
-    required this.selectedItemBuilder,
-  });
+  const MyoroDropdownConfiguration(
+    this.label,
+    this.menuTypeEnum,
+    this.enabled,
+    this.allowItemClearing,
+    this.selectedItemTextAlign,
+    this.menuConfiguration,
+    this.selectedItemBuilder,
+  );
 
   /// Label of the dropdown.
   ///
@@ -29,6 +29,9 @@ abstract class MyoroDropdownConfiguration<T> {
 
   /// [_Menu]s [Widget] composition.
   final MyoroDropdownMenuTypeEnum menuTypeEnum;
+
+  /// If the dropdown is enabled.
+  final bool enabled;
 
   /// If the clear button of [_Input]'s [MyoroInput] will be displayed.
   final bool allowItemClearing;

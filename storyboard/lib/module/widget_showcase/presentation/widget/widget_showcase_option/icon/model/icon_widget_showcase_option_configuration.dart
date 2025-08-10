@@ -13,9 +13,9 @@ final class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptio
 
   const IconWidgetShowcaseOptionConfiguration({
     this.label = labelDefaultValue,
-    this.initiallySelectedIcon,
+    this.selectedIcon,
     required this.iconOnChanged,
-    this.initiallySelectedIconSize,
+    this.selectedIconSize,
     this.iconSizeOnChanged,
     this.iconSizeCheckboxOnChanged,
     this.enabled,
@@ -30,13 +30,13 @@ final class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptio
   final String label;
 
   /// Initial [IconData].
-  final IconData? initiallySelectedIcon;
+  final IconData? selectedIcon;
 
   /// On-changed callback when the set [IconData] is changed.
   final MyoroSingularDropdownConfigurationOnChanged<IconData> iconOnChanged;
 
   /// Initial icon size.
-  final double? initiallySelectedIconSize;
+  final double? selectedIconSize;
 
   /// On-changed callback when the set size of the [IconData] is changed.
   final IconWidgetShowcaseOptionIconSizeOnChanged? iconSizeOnChanged;

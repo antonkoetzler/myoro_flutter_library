@@ -23,7 +23,8 @@ mixin _$MyoroLayoutBuilderWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroLayoutBuilderWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroLayoutBuilderWidgetShowcaseScreenThemeExtension &&
+        other.runtimeType == runtimeType;
   }
 
   @override

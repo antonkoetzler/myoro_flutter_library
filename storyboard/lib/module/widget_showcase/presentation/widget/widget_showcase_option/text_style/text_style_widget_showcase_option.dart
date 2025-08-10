@@ -10,7 +10,7 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
     super.key,
     this.label = labelDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
-    this.initiallySelectedItem,
+    this.selectedItem,
     required this.onChanged,
     this.checkboxOnChanged,
   });
@@ -22,7 +22,7 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   final bool allowItemClearing;
 
   /// Initially selected [TextStyle].
-  final TextStyle? initiallySelectedItem;
+  final TextStyle? selectedItem;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<TextStyle> onChanged;
@@ -35,10 +35,6 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
     final typography = MyoroTypography(context.isDarkMode);
 
     return MyoroSingularDropdown<TextStyle>(
-      controller:
-          initiallySelectedItem != null
-              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem)
-              : null,
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         allowItemClearing: allowItemClearing,
@@ -51,6 +47,7 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
             return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: typography.getTextStyleName(value)));
           },
         ),
+        selectedItem: selectedItem,
       ),
     );
   }

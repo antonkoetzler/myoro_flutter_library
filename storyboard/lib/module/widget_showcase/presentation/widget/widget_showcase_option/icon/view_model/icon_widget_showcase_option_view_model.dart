@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icon_data_parser/icon_data_parser.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -7,10 +8,22 @@ final class IconWidgetShowcaseOptionViewModel {
   IconWidgetShowcaseOptionViewModel(this._configuration) {
     _enabledController = ValueNotifier(_configuration.enabled ?? true)..addListener(_enabledControllerListener);
     _iconController = MyoroSingularDropdownController(
-      enabled: _configuration.enableOptionCheckboxOnChanged != null ? enabled : true,
-      initiallySelectedItem: _configuration.initiallySelectedIcon,
+      configuration: MyoroSingularDropdownConfiguration(
+        label: 'Icon',
+        allowItemClearing: false,
+        selectedItemBuilder: (icon) => icon.name!.capitalized,
+        onChanged: _configuration.iconOnChanged,
+        menuConfiguration: MyoroMenuConfiguration(
+          request: kMyoroTestIcons.toSet,
+          itemBuilder: (icon) {
+            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized));
+          },
+        ),
+        enabled: _configuration.enableOptionCheckboxOnChanged != null ? enabled : true,
+        selectedItem: _configuration.selectedIcon,
+      ),
     );
-    _iconSize = _configuration.initiallySelectedIconSize;
+    _iconSize = _configuration.selectedIconSize;
   }
 
   /// Configuration.

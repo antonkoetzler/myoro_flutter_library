@@ -11,8 +11,10 @@ part of 'myoro_date_picker_input_theme_extension.dart';
 /// ```dart
 /// class MyoroDatePickerInputThemeExtension with _$MyoroDatePickerInputThemeExtensionMixin {}
 /// ```
-mixin _$MyoroDatePickerInputThemeExtensionMixin on ThemeExtension<MyoroDatePickerInputThemeExtension> {
-  MyoroDatePickerInputThemeExtension get self => this as MyoroDatePickerInputThemeExtension;
+mixin _$MyoroDatePickerInputThemeExtensionMixin
+    on ThemeExtension<MyoroDatePickerInputThemeExtension> {
+  MyoroDatePickerInputThemeExtension get self =>
+      this as MyoroDatePickerInputThemeExtension;
 
   @override
   MyoroDatePickerInputThemeExtension copyWith() {
@@ -21,7 +23,8 @@ mixin _$MyoroDatePickerInputThemeExtensionMixin on ThemeExtension<MyoroDatePicke
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDatePickerInputThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroDatePickerInputThemeExtension &&
+        other.runtimeType == runtimeType;
   }
 
   @override

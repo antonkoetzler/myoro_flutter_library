@@ -13,10 +13,13 @@ part of 'myoro_screen_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroScreenWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroScreenWidgetShowcaseScreenThemeExtension> {
-  MyoroScreenWidgetShowcaseScreenThemeExtension get self => this as MyoroScreenWidgetShowcaseScreenThemeExtension;
+  MyoroScreenWidgetShowcaseScreenThemeExtension get self =>
+      this as MyoroScreenWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroScreenWidgetShowcaseScreenThemeExtension copyWith({IconData? appBarMenuButtonIcon}) {
+  MyoroScreenWidgetShowcaseScreenThemeExtension copyWith({
+    IconData? appBarMenuButtonIcon,
+  }) {
     return MyoroScreenWidgetShowcaseScreenThemeExtension(
       appBarMenuButtonIcon: appBarMenuButtonIcon ?? self.appBarMenuButtonIcon,
     );

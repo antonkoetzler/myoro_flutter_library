@@ -17,11 +17,11 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration
     this.enabled = enabledDefaultValue,
     required this.label,
     required this.checkboxOnChanged,
-    this.initiallySelectedIdleColor,
+    this.selectedIdleColor,
     required this.idleOnChanged,
-    this.initiallySelectedHoverColor,
+    this.selectedHoverColor,
     required this.hoverOnChanged,
-    this.initiallySelectedTapColor,
+    this.selectedTapColor,
     required this.tapOnChanged,
   });
 
@@ -38,14 +38,14 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration
   final MyoroCheckboxOnChanged checkboxOnChanged;
 
   /// [MyoroTapStatusEnum.idle]
-  final Color? initiallySelectedIdleColor;
+  final Color? selectedIdleColor;
   final MyoroSingularDropdownConfigurationOnChanged<Color> idleOnChanged;
 
   /// [MyoroTapStatusEnum.hover]
-  final Color? initiallySelectedHoverColor;
+  final Color? selectedHoverColor;
   final MyoroSingularDropdownConfigurationOnChanged<Color> hoverOnChanged;
 
   /// [MyoroTapStatusEnum.tap]
-  final Color? initiallySelectedTapColor;
+  final Color? selectedTapColor;
   final MyoroSingularDropdownConfigurationOnChanged<Color> tapOnChanged;
 }

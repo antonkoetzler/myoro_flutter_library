@@ -13,7 +13,7 @@ final class _IconOption extends StatelessWidget {
 
     return IconWidgetShowcaseOption(
       configuration: IconWidgetShowcaseOptionConfiguration(
-        initiallySelectedIcon: icon,
+        selectedIcon: icon,
         enabled: icon != null || iconSize != null,
         enableOptionCheckboxOnChanged: (enabled, icon, iconSize) {
           state.icon = enabled ? icon : null;

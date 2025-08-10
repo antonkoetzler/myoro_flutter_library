@@ -11,11 +11,17 @@ part of 'myoro_icon_text_button_theme_extension.dart';
 /// ```dart
 /// class MyoroIconTextButtonThemeExtension with _$MyoroIconTextButtonThemeExtensionMixin {}
 /// ```
-mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextButtonThemeExtension> {
-  MyoroIconTextButtonThemeExtension get self => this as MyoroIconTextButtonThemeExtension;
+mixin _$MyoroIconTextButtonThemeExtensionMixin
+    on ThemeExtension<MyoroIconTextButtonThemeExtension> {
+  MyoroIconTextButtonThemeExtension get self =>
+      this as MyoroIconTextButtonThemeExtension;
 
   @override
-  MyoroIconTextButtonThemeExtension copyWith({EdgeInsets? contentPadding, double? spacing, TextStyle? textStyle}) {
+  MyoroIconTextButtonThemeExtension copyWith({
+    EdgeInsets? contentPadding,
+    double? spacing,
+    TextStyle? textStyle,
+  }) {
     return MyoroIconTextButtonThemeExtension(
       contentPadding: contentPadding ?? self.contentPadding,
       spacing: spacing ?? self.spacing,

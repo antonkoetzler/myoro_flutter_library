@@ -12,7 +12,8 @@ part of 'myoro_table_column_width_configuration.dart';
 /// class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurationMixin {}
 /// ```
 mixin _$MyoroTableColumnWidthConfigurationMixin {
-  MyoroTableColumnWidthConfiguration get self => this as MyoroTableColumnWidthConfiguration;
+  MyoroTableColumnWidthConfiguration get self =>
+      this as MyoroTableColumnWidthConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -36,7 +37,8 @@ mixin _$MyoroTableColumnWidthConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTableColumnWidthConfigurationExtension on MyoroTableColumnWidthConfiguration {
+extension $MyoroTableColumnWidthConfigurationExtension
+    on MyoroTableColumnWidthConfiguration {
   MyoroTableColumnWidthConfiguration copyWith({
     MyoroTableColumnWidthConfigurationEnum? typeEnum,
     double? fixedWidth,

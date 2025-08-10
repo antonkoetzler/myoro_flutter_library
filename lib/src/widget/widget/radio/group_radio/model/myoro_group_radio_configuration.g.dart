@@ -28,7 +28,14 @@ mixin _$MyoroGroupRadioConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.controller, self.direction, self.spacing, self.runSpacing, self.onChanged, self.radios);
+    return Object.hash(
+      self.controller,
+      self.direction,
+      self.spacing,
+      self.runSpacing,
+      self.onChanged,
+      self.radios,
+    );
   }
 
   @override
@@ -44,7 +51,8 @@ mixin _$MyoroGroupRadioConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroGroupRadioConfigurationExtension on MyoroGroupRadioConfiguration {
+extension $MyoroGroupRadioConfigurationExtension
+    on MyoroGroupRadioConfiguration {
   MyoroGroupRadioConfiguration copyWith({
     MyoroGroupRadioController? controller,
     bool controllerProvided = true,

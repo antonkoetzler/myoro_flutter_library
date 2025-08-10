@@ -15,27 +15,26 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     final state = viewModel.state;
     final link = state.link;
     final configuration = state.configuration;
-    final controller = viewModel.controller;
-    final enabledController = controller.enabledController;
-    final showingMenuController = state.showingMenuController;
+    final enabledNotifier = state.enabledNotifier;
+    final showingMenuNotifier = state.showingMenuNotifier;
 
     final child = Stack(
       children: [
-        // Empty [MyoroLayoutBuilder] to always update [_inputSizeController].
+        // Empty [MyoroLayoutBuilder] to always update [_inputSizeNotifier].
         MyoroLayoutBuilder(
           builder: (_, _) {
             viewModel.supplyInputSizeController();
             return ValueListenableBuilder(
-              valueListenable: enabledController,
+              valueListenable: enabledNotifier,
               builder: (_, bool enabled, _) {
                 return ValueListenableBuilder(
-                  valueListenable: showingMenuController,
+                  valueListenable: showingMenuNotifier,
                   builder: (_, bool showingMenu, _) {
                     return configuration.menuTypeEnum.isOverlay
                         ? CompositedTransformTarget(
-                          link: link,
-                          child: _createInputWidget(context, enabled, showingMenu),
-                        )
+                            link: link,
+                            child: _createInputWidget(context, enabled, showingMenu),
+                          )
                         : _createInputWidget(context, enabled, showingMenu);
                   },
                 );
@@ -66,7 +65,6 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     );
 
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
-    final controller = viewModel.controller;
     final state = viewModel.state;
     final configuration = state.configuration;
     final menuTypeEnum = configuration.menuTypeEnum;
@@ -75,6 +73,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     final selectedItemTextAlign = configuration.selectedItemTextAlign;
     final label = configuration.label;
     final allowItemClearing = configuration.allowItemClearing;
+    final clear = viewModel.clear;
 
     final inputConfiguration = MyoroInputConfiguration(
       textAlign: selectedItemTextAlign,
@@ -82,7 +81,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
       enabled: enabled,
       readOnly: true,
       showClearTextButton: allowItemClearing,
-      onCleared: controller.clear,
+      onCleared: clear,
       border: switch (menuTypeEnum) {
         MyoroDropdownMenuTypeEnum.overlay => showingMenu ? menuActiveInputBorderRadius : null,
         MyoroDropdownMenuTypeEnum.expanding => showingMenu ? menuActiveInputBorderRadius : null,
@@ -103,7 +102,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
 
     return ValueListenableBuilder(
-      valueListenable: viewModel.state.inputSizeController,
+      valueListenable: viewModel.state.inputSizeNotifier,
       builder: (_, Size? inputSize, _) {
         return Positioned(
           width: inputSize?.width,

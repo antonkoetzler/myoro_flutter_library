@@ -11,7 +11,8 @@ part of 'myoro_tab_view_theme_extension.dart';
 /// ```dart
 /// class MyoroTabViewThemeExtension with _$MyoroTabViewThemeExtensionMixin {}
 /// ```
-mixin _$MyoroTabViewThemeExtensionMixin on ThemeExtension<MyoroTabViewThemeExtension> {
+mixin _$MyoroTabViewThemeExtensionMixin
+    on ThemeExtension<MyoroTabViewThemeExtension> {
   MyoroTabViewThemeExtension get self => this as MyoroTabViewThemeExtension;
 
   @override
@@ -24,7 +25,8 @@ mixin _$MyoroTabViewThemeExtensionMixin on ThemeExtension<MyoroTabViewThemeExten
     TextStyle? tabButtonTextStyle,
   }) {
     return MyoroTabViewThemeExtension(
-      tabButtonBorderRadius: tabButtonBorderRadius ?? self.tabButtonBorderRadius,
+      tabButtonBorderRadius:
+          tabButtonBorderRadius ?? self.tabButtonBorderRadius,
       tabButtonIdleColor: tabButtonIdleColor ?? self.tabButtonIdleColor,
       tabButtonHoverColor: tabButtonHoverColor ?? self.tabButtonHoverColor,
       tabButtonTapColor: tabButtonTapColor ?? self.tabButtonTapColor,

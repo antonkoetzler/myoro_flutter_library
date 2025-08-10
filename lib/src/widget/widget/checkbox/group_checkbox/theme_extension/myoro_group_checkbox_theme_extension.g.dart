@@ -11,11 +11,16 @@ part of 'myoro_group_checkbox_theme_extension.dart';
 /// ```dart
 /// class MyoroGroupCheckboxThemeExtension with _$MyoroGroupCheckboxThemeExtensionMixin {}
 /// ```
-mixin _$MyoroGroupCheckboxThemeExtensionMixin on ThemeExtension<MyoroGroupCheckboxThemeExtension> {
-  MyoroGroupCheckboxThemeExtension get self => this as MyoroGroupCheckboxThemeExtension;
+mixin _$MyoroGroupCheckboxThemeExtensionMixin
+    on ThemeExtension<MyoroGroupCheckboxThemeExtension> {
+  MyoroGroupCheckboxThemeExtension get self =>
+      this as MyoroGroupCheckboxThemeExtension;
 
   @override
-  MyoroGroupCheckboxThemeExtension copyWith({double? spacing, double? runSpacing}) {
+  MyoroGroupCheckboxThemeExtension copyWith({
+    double? spacing,
+    double? runSpacing,
+  }) {
     return MyoroGroupCheckboxThemeExtension(
       spacing: spacing ?? self.spacing,
       runSpacing: runSpacing ?? self.runSpacing,

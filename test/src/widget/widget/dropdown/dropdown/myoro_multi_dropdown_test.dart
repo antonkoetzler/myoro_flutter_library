@@ -2,7 +2,6 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   final items = List.generate(faker.randomGenerator.integer(10, min: 1), (int index) => 'Item #$index').toSet();
@@ -17,39 +16,25 @@ void main() {
   Future<void> testCase(
     WidgetTester tester,
     MyoroMultiDropdownConfiguration<String> Function() configurationBuilder,
-    Function(MyoroMultiDropdownViewModel<String>) callback,
+    Function(MyoroMultiDropdownController<String> controller) callback,
   ) async {
-    final viewModel = MyoroMultiDropdownViewModel<String>();
-
-    await tester.pumpWidget(
-      MyoroWidgetTester(
-        child: Provider.value(
-          value: viewModel,
-          child: MyoroMultiDropdown<String>(createViewModel: false, configuration: configurationBuilder()),
-        ),
-      ),
-    );
+    final controller = MyoroMultiDropdownController(configuration: configurationBuilder());
+    await tester.pumpWidget(MyoroWidgetTester(child: MyoroMultiDropdown<String>(controller: controller)));
     await tester.pumpAndSettle();
     expect(find.byType(MyoroMultiDropdown<String>), findsOneWidget);
-    await callback(viewModel);
-
-    viewModel.dispose();
+    await callback(controller);
+    controller.dispose();
   }
 
   testWidgets('Selecting an item in the MyoroMultiDropdown', (tester) async {
     await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
-      viewModel,
+      controller,
     ) async {
-      // Line coverage ignore this lul.
-      //
-      // It's because there are no instances of the getter being used but it's good to have.
-      viewModel.state.inputSize;
-
-      viewModel.toggleMenu();
+      controller.toggleMenu();
       await tester.pumpAndSettle();
       await tester.tap(find.text(items.first));
       await tester.pumpAndSettle();
-      expect(viewModel.controller.selectedItems, {items.first});
+      expect(controller.selectedItems, {items.first});
     });
   });
 
@@ -57,17 +42,17 @@ void main() {
     var onChangedExecutedQuantity = 0;
 
     await testCase(tester, () => configuration.copyWith(checkboxOnChanged: (_, _) => onChangedExecutedQuantity += 1), (
-      viewModel,
+      controller,
     ) async {
       final checkboxFinder = find.byType(MyoroCheckbox);
       expect(checkboxFinder, findsOneWidget);
       await tester.tap(checkboxFinder);
       await tester.pumpAndSettle();
-      expect(viewModel.controller.enabled, isFalse);
+      expect(controller.enabled, isFalse);
       expect(onChangedExecutedQuantity, 1);
       await tester.tap(checkboxFinder);
       await tester.pumpAndSettle();
-      expect(viewModel.controller.enabled, isTrue);
+      expect(controller.enabled, isTrue);
       expect(onChangedExecutedQuantity, 2);
     });
   });
@@ -76,9 +61,9 @@ void main() {
     'MyoroMultiDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.overlay]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.overlay), (
-        viewModel,
+        controller,
       ) async {
-        viewModel.toggleMenu();
+        controller.toggleMenu();
         await tester.pumpAndSettle();
         expect(find.byType(MyoroMenu<String>), findsOneWidget);
       });
@@ -89,9 +74,9 @@ void main() {
     'MyoroMultiDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.expanding]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
-        viewModel,
+        controller,
       ) async {
-        viewModel.toggleMenu();
+        controller.toggleMenu();
         await tester.pumpAndSettle();
         expect(find.byType(MyoroMenu<String>), findsOneWidget);
       });
@@ -102,9 +87,9 @@ void main() {
     'MyoroMultiDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.modal]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.modal), (
-        viewModel,
+        controller,
       ) async {
-        viewModel.toggleMenu();
+        controller.toggleMenu();
         await tester.pumpAndSettle();
         expect(find.byType(MyoroModal), findsOneWidget);
         expect(find.byType(MyoroMenu<String>), findsOneWidget);
@@ -134,8 +119,8 @@ void main() {
         allowItemClearing: true,
         menuConfiguration: configuration.menuConfiguration.copyWith(request: () => items),
       ),
-      (viewModel) async {
-        viewModel.controller.toggleItem(items.first);
+      (controller) async {
+        controller.toggleItem(items.first);
         await tester.pumpAndSettle();
         // [MyoroInput]'s close button to clear the selected items.
         await tester.tap(find.byIcon(Icons.close), warnIfMissed: false);
@@ -146,9 +131,9 @@ void main() {
 
   testWidgets('Opening MyoroMultiDropdown menu, then closing it via _Menu\'s TapRegion.onTapOutside', (tester) async {
     await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
-      viewModel,
+      controller,
     ) async {
-      viewModel.toggleMenu();
+      controller.toggleMenu();
       await tester.pumpAndSettle();
       expect(find.byType(MyoroMenu<String>), findsOneWidget);
 
@@ -169,37 +154,34 @@ void main() {
     });
   });
 
-  testWidgets('MyoroMultiDropdown _Dropdowm.didUpdateWidget', (tester) async {
-    final controllerNotifier = ValueNotifier<MyoroMultiDropdownController<String>?>(null);
+  testWidgets('MyoroMultiDropdown without MyoroMultiDropdown.configuration provided and it\'s didUpdateWidget', (
+    tester,
+  ) async {
     final configurationNotifier = ValueNotifier(configuration);
-
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: ValueListenableBuilder(
-          valueListenable: controllerNotifier,
-          builder: (_, controller, _) {
-            return ValueListenableBuilder(
-              valueListenable: configurationNotifier,
-              builder: (_, configuration, _) {
-                return MyoroMultiDropdown<String>(controller: controller, configuration: configuration);
-              },
-            );
-          },
+          valueListenable: configurationNotifier,
+          builder: (_, configuration, _) => MyoroMultiDropdown<String>(configuration: configuration),
         ),
       ),
     );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroMultiDropdown<String>), findsOneWidget);
-    final differentMenuTypeEnums = List.from(MyoroDropdownMenuTypeEnum.values)
-      ..remove(configurationNotifier.value.menuTypeEnum);
-    controllerNotifier.value = MyoroMultiDropdownController<String>();
     configurationNotifier.value = configurationNotifier.value.copyWith(
-      menuTypeEnum: differentMenuTypeEnums[faker.randomGenerator.integer(differentMenuTypeEnums.length)],
+      allowItemClearing: !configurationNotifier.value.allowItemClearing,
     );
     await tester.pumpAndSettle();
-
-    controllerNotifier.value?.dispose();
-    controllerNotifier.dispose();
     configurationNotifier.dispose();
+  });
+
+  testWidgets('MyoroMultiDropdown assertion case', (tester) async {
+    expect(
+      () => MyoroMultiDropdown<String>(
+        controller: MyoroMultiDropdownController(configuration: configuration),
+        configuration: configuration,
+      ),
+      throwsAssertionError,
+    );
   });
 }

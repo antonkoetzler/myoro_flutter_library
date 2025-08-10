@@ -10,7 +10,7 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
     super.key,
     this.label = labelDefaultValue,
     this.allowItemClearing = allowItemClearingDefaultValue,
-    this.initiallySelectedItem,
+    this.selectedItem,
     required this.onChanged,
   });
 
@@ -21,7 +21,7 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   final bool allowItemClearing;
 
   /// Initially selected item of the [MyoroSingularDropdown].
-  final TextOverflow? initiallySelectedItem;
+  final TextOverflow? selectedItem;
 
   /// [MyoroSingularDropdownConfiguration.onChanged]
   final MyoroSingularDropdownConfigurationOnChanged<TextOverflow> onChanged;
@@ -29,10 +29,6 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   @override
   Widget build(_) {
     return MyoroSingularDropdown<TextOverflow>(
-      controller:
-          initiallySelectedItem != null
-              ? MyoroSingularDropdownController(initiallySelectedItem: initiallySelectedItem)
-              : null,
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         allowItemClearing: allowItemClearing,
@@ -44,6 +40,7 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
             return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
           },
         ),
+        selectedItem: selectedItem,
       ),
     );
   }
