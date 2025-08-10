@@ -30,7 +30,7 @@ final class _SelectionTypeModalButton extends StatelessWidget {
             ImageSource.gallery => 'Browse gallery',
           },
         ),
-        onTapUp: (_) => onTapSelectionTypeModalButton(_value),
+        onTapUp: (_) => onTapSelectionTypeModalButton(context, _value),
       ),
     );
   }

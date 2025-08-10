@@ -12,38 +12,46 @@ part of 'myoro_image_picker_configuration.dart';
 /// class MyoroImagePickerConfiguration with _$MyoroImagePickerConfigurationMixin {}
 /// ```
 mixin _$MyoroImagePickerConfigurationMixin {
-  MyoroImagePickerConfiguration get self => this as MyoroImagePickerConfiguration;
+  MyoroImagePickerConfiguration get self =>
+      this as MyoroImagePickerConfiguration;
 
   @override
   bool operator ==(Object other) {
     return other is MyoroImagePickerConfiguration &&
         other.runtimeType == runtimeType &&
         other.selectedImage == self.selectedImage &&
+        other.size == self.size &&
         other.onChanged == self.onChanged;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.selectedImage, self.onChanged);
+    return Object.hash(self.selectedImage, self.size, self.onChanged);
   }
 
   @override
   String toString() =>
       'MyoroImagePickerConfiguration(\n'
       '  selectedImage: ${self.selectedImage},\n'
+      '  size: ${self.size},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroImagePickerConfigurationExtension on MyoroImagePickerConfiguration {
+extension $MyoroImagePickerConfigurationExtension
+    on MyoroImagePickerConfiguration {
   MyoroImagePickerConfiguration copyWith({
     String? selectedImage,
     bool selectedImageProvided = true,
+    Size? size,
     void Function(String?)? onChanged,
   }) {
     return MyoroImagePickerConfiguration(
-      selectedImage: selectedImageProvided ? (selectedImage ?? self.selectedImage) : null,
+      selectedImage: selectedImageProvided
+          ? (selectedImage ?? self.selectedImage)
+          : null,
+      size: size ?? self.size,
       onChanged: onChanged ?? self.onChanged,
     );
   }

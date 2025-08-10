@@ -27,7 +27,13 @@ mixin _$MyoroDrawerConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.title, self.titleTextStyle, self.showCloseButton, self.barrierDismissable, self.child);
+    return Object.hash(
+      self.title,
+      self.titleTextStyle,
+      self.showCloseButton,
+      self.barrierDismissable,
+      self.child,
+    );
   }
 
   @override
@@ -53,7 +59,9 @@ extension $MyoroDrawerConfigurationExtension on MyoroDrawerConfiguration {
   }) {
     return MyoroDrawerConfiguration(
       title: title ?? self.title,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      titleTextStyle: titleTextStyleProvided
+          ? (titleTextStyle ?? self.titleTextStyle)
+          : null,
       showCloseButton: showCloseButton ?? self.showCloseButton,
       barrierDismissable: barrierDismissable ?? self.barrierDismissable,
       child: child ?? self.child,

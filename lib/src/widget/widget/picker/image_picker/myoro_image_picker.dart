@@ -9,7 +9,6 @@ part '_widget/_content.dart';
 part '_widget/_overlay.dart';
 part '_widget/_selection_type_modal.dart';
 part '_widget/_selection_type_modal_button.dart';
-part '_widget/_unselected_image_state.dart';
 
 /// Image picker of MFL.
 final class MyoroImagePicker extends StatelessWidget {

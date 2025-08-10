@@ -40,6 +40,10 @@ mixin _$MyoroBarGraphBarSectionMixin {
 /// Extension class for @myoroModel to place the copyWith function.
 extension $MyoroBarGraphBarSectionExtension on MyoroBarGraphBarSection {
   MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
-    return MyoroBarGraphBarSection(fromY: fromY ?? self.fromY, toY: toY ?? self.toY, color: color ?? self.color);
+    return MyoroBarGraphBarSection(
+      fromY: fromY ?? self.fromY,
+      toY: toY ?? self.toY,
+      color: color ?? self.color,
+    );
   }
 }

@@ -6,17 +6,15 @@ final class _SelectionTypeModal extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
     final selectionTypeModalConstraints = themeExtension.selectionTypeModalConstraints;
 
-    final configuration = MyoroModalConfiguration(
-      // TODO: Localization.
-      title: 'Select image source',
-      constraints: selectionTypeModalConstraints,
+    MyoroModal.showBottomSheet(
+      context,
+      configuration: MyoroModalConfiguration(
+        // TODO: Localization.
+        title: 'Select image source',
+        constraints: selectionTypeModalConstraints,
+      ),
+      child: _SelectionTypeModal(viewModel),
     );
-
-    if (MyoroPlatformHelper.isMobile) {
-      MyoroModal.showBottomSheet(context, configuration: configuration, child: _SelectionTypeModal(viewModel));
-    } else {
-      MyoroModal.showModal(context, configuration: configuration, child: _SelectionTypeModal(viewModel));
-    }
   }
 
   const _SelectionTypeModal(this._viewModel);

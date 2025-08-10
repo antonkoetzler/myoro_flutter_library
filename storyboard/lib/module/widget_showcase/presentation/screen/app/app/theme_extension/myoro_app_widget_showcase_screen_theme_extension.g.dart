@@ -11,8 +11,10 @@ part of 'myoro_app_widget_showcase_screen_theme_extension.dart';
 /// ```dart
 /// class MyoroAppWidgetShowcaseScreenThemeExtension with _$MyoroAppWidgetShowcaseScreenThemeExtensionMixin {}
 /// ```
-mixin _$MyoroAppWidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<MyoroAppWidgetShowcaseScreenThemeExtension> {
-  MyoroAppWidgetShowcaseScreenThemeExtension get self => this as MyoroAppWidgetShowcaseScreenThemeExtension;
+mixin _$MyoroAppWidgetShowcaseScreenThemeExtensionMixin
+    on ThemeExtension<MyoroAppWidgetShowcaseScreenThemeExtension> {
+  MyoroAppWidgetShowcaseScreenThemeExtension get self =>
+      this as MyoroAppWidgetShowcaseScreenThemeExtension;
 
   @override
   MyoroAppWidgetShowcaseScreenThemeExtension copyWith() {
@@ -21,7 +23,8 @@ mixin _$MyoroAppWidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<MyoroA
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroAppWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroAppWidgetShowcaseScreenThemeExtension &&
+        other.runtimeType == runtimeType;
   }
 
   @override

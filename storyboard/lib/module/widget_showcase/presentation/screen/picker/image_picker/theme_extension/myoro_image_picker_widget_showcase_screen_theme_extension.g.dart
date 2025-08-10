@@ -17,22 +17,27 @@ mixin _$MyoroImagePickerWidgetShowcaseScreenThemeExtensionMixin
       this as MyoroImagePickerWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroImagePickerWidgetShowcaseScreenThemeExtension copyWith() {
-    return self;
+  MyoroImagePickerWidgetShowcaseScreenThemeExtension copyWith({Size? size}) {
+    return MyoroImagePickerWidgetShowcaseScreenThemeExtension(
+      size: size ?? self.size,
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroImagePickerWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroImagePickerWidgetShowcaseScreenThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.size == self.size;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll(const []);
+    return Object.hashAll([self.size]);
   }
 
   @override
   String toString() =>
       'MyoroImagePickerWidgetShowcaseScreenThemeExtension(\n'
+      '  size: ${self.size},\n'
       ');';
 }

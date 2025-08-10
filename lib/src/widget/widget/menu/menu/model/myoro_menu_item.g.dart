@@ -67,8 +67,12 @@ extension $MyoroMenuItemExtension on MyoroMenuItem {
   }) {
     return MyoroMenuItem(
       isSelected: isSelected ?? self.isSelected,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      iconConfiguration: iconConfigurationProvided
+          ? (iconConfiguration ?? self.iconConfiguration)
+          : null,
+      textConfiguration: textConfigurationProvided
+          ? (textConfiguration ?? self.textConfiguration)
+          : null,
       builder: builderProvided ? (builder ?? self.builder) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,

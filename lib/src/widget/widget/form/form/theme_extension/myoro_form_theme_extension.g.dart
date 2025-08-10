@@ -11,7 +11,8 @@ part of 'myoro_form_theme_extension.dart';
 /// ```dart
 /// class MyoroFormThemeExtension with _$MyoroFormThemeExtensionMixin {}
 /// ```
-mixin _$MyoroFormThemeExtensionMixin on ThemeExtension<MyoroFormThemeExtension> {
+mixin _$MyoroFormThemeExtensionMixin
+    on ThemeExtension<MyoroFormThemeExtension> {
   MyoroFormThemeExtension get self => this as MyoroFormThemeExtension;
 
   @override

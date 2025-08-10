@@ -13,12 +13,16 @@ part of 'myoro_modal_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroModalWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroModalWidgetShowcaseScreenThemeExtension> {
-  MyoroModalWidgetShowcaseScreenThemeExtension get self => this as MyoroModalWidgetShowcaseScreenThemeExtension;
+  MyoroModalWidgetShowcaseScreenThemeExtension get self =>
+      this as MyoroModalWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroModalWidgetShowcaseScreenThemeExtension copyWith({double? modalContentImageSize}) {
+  MyoroModalWidgetShowcaseScreenThemeExtension copyWith({
+    double? modalContentImageSize,
+  }) {
     return MyoroModalWidgetShowcaseScreenThemeExtension(
-      modalContentImageSize: modalContentImageSize ?? self.modalContentImageSize,
+      modalContentImageSize:
+          modalContentImageSize ?? self.modalContentImageSize,
     );
   }
 

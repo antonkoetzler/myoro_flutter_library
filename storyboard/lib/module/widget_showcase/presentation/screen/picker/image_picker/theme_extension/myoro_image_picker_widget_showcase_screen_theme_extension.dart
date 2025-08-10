@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 part 'myoro_image_picker_widget_showcase_screen_theme_extension.g.dart';
@@ -10,17 +11,22 @@ part 'myoro_image_picker_widget_showcase_screen_theme_extension.g.dart';
 final class MyoroImagePickerWidgetShowcaseScreenThemeExtension
     extends ThemeExtension<MyoroImagePickerWidgetShowcaseScreenThemeExtension>
     with _$MyoroImagePickerWidgetShowcaseScreenThemeExtensionMixin {
-  const MyoroImagePickerWidgetShowcaseScreenThemeExtension();
+  const MyoroImagePickerWidgetShowcaseScreenThemeExtension({required this.size});
 
-  const MyoroImagePickerWidgetShowcaseScreenThemeExtension.fake();
+  MyoroImagePickerWidgetShowcaseScreenThemeExtension.fake() : size = myoroFake<Size>();
 
-  const MyoroImagePickerWidgetShowcaseScreenThemeExtension.builder();
+  const MyoroImagePickerWidgetShowcaseScreenThemeExtension.builder()
+    : size = const Size(kMyoroMultiplier * 100, kMyoroMultiplier * 100);
+
+  /// [MyoroImagePickerConfiguration.size]
+  final Size size;
 
   @override
   MyoroImagePickerWidgetShowcaseScreenThemeExtension lerp(
     covariant ThemeExtension<MyoroImagePickerWidgetShowcaseScreenThemeExtension>? other,
     double t,
   ) {
-    return this;
+    if (other is! MyoroImagePickerWidgetShowcaseScreenThemeExtension) return this;
+    return copyWith(size: Size.lerp(size, other.size, t));
   }
 }

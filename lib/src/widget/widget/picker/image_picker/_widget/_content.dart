@@ -8,20 +8,38 @@ final class _Content extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
+    final borderRadius = themeExtension.borderRadius;
+
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final state = viewModel.state;
     final selectedImageNotifier = state.selectedImageNotifier;
+    final configuration = state.configuration;
+    final size = configuration.size;
 
-    return Stack(
-      children: [
-        ValueListenableBuilder(
-          valueListenable: selectedImageNotifier,
-          builder: (_, selectedImage, _) {
-            return selectedImage != null ? Image.file(File(selectedImage)) : const _UnselectedImageState();
-          },
-        ),
-        const Positioned.fill(child: _Overlay()),
-      ],
+    return SizedBox(
+      width: size.width,
+      height: size.height,
+      child: ValueListenableBuilder(
+        valueListenable: selectedImageNotifier,
+        builder: (_, selectedImage, _) {
+          final selectedImageIsNotNull = selectedImage != null;
+
+          return ClipRRect(
+            clipBehavior: Clip.hardEdge,
+            borderRadius: borderRadius,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                if (selectedImageIsNotNull) ...[
+                  Image.file(File(selectedImage), width: size.width, height: size.height, fit: BoxFit.cover),
+                ],
+                Positioned.fill(child: _Overlay(selectedImageIsNotNull)),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

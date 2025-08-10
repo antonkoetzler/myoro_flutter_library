@@ -6,11 +6,16 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroImagePickerWidgetShowcaseScreenThemeExtension>();
+    final size = themeExtension.size;
+
     final viewModel = context.read<MyoroImagePickerWidgetShowcaseScreenViewModel>();
+    final onChangedSnackBar = viewModel.onChangedSnackBar;
 
     return MyoroImagePicker(
       configuration: MyoroImagePickerConfiguration(
-        onChanged: (selectedImage) => viewModel.onChangedSnackBar(context, selectedImage),
+        size: size,
+        onChanged: (selectedImage) => onChangedSnackBar(context, selectedImage),
       ),
     );
   }

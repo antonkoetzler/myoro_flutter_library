@@ -8,6 +8,7 @@
 - fix `MyoroStatelessWidget` and `MyoroStatefulWidget`, the logic sucks with widgets containing controllers
 - Document theme extension overwritting
 - Localization
+- Change app icon of storyboard
 - 100% pub.dev score
 
 ## Technical debt that should be gradually resolved

@@ -76,6 +76,10 @@ T myoroFake<T>() {
         as T;
   }
 
+  if (T == Clip) {
+    return Clip.values[faker.randomGenerator.integer(Clip.values.length)] as T;
+  }
+
   if (T == Color) {
     return kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] as T;
   }
@@ -129,6 +133,14 @@ T myoroFake<T>() {
 
   if (T == RoundedRectangleBorder) {
     return RoundedRectangleBorder(side: myoroFake<BorderSide>()) as T;
+  }
+
+  if (T == Size) {
+    return Size(
+          faker.randomGenerator.decimal(scale: 500, min: 100),
+          faker.randomGenerator.decimal(scale: 500, min: 100),
+        )
+        as T;
   }
 
   if (T == SnackBarBehavior) {

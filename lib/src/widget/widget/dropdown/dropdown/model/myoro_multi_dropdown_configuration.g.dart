@@ -12,7 +12,8 @@ part of 'myoro_multi_dropdown_configuration.dart';
 /// class MyoroMultiDropdownConfiguration<T> with _$MyoroMultiDropdownConfigurationMixin<T> {}
 /// ```
 mixin _$MyoroMultiDropdownConfigurationMixin<T> {
-  MyoroMultiDropdownConfiguration<T> get self => this as MyoroMultiDropdownConfiguration<T>;
+  MyoroMultiDropdownConfiguration<T> get self =>
+      this as MyoroMultiDropdownConfiguration<T>;
 
   @override
   bool operator ==(Object other) {
@@ -63,7 +64,8 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroMultiDropdownConfigurationExtension<T> on MyoroMultiDropdownConfiguration<T> {
+extension $MyoroMultiDropdownConfigurationExtension<T>
+    on MyoroMultiDropdownConfiguration<T> {
   MyoroMultiDropdownConfiguration<T> copyWith({
     String? label,
     MyoroDropdownMenuTypeEnum? menuTypeEnum,
@@ -83,12 +85,15 @@ extension $MyoroMultiDropdownConfigurationExtension<T> on MyoroMultiDropdownConf
       menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
       enabled: enabled ?? self.enabled,
       allowItemClearing: allowItemClearing ?? self.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
+      selectedItemTextAlign:
+          selectedItemTextAlign ?? self.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? self.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
       selectedItems: selectedItems ?? self.selectedItems,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged: checkboxOnChangedProvided
+          ? (checkboxOnChanged ?? self.checkboxOnChanged)
+          : null,
     );
   }
 }

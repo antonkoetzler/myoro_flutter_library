@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -24,7 +24,15 @@ final class MyoroImagePickerViewModel {
   }
 
   /// Opens the picker depending on the method given.
-  void onTapSelectionTypeModalButton(ImageSource selectionMethod) {
-    _picker.pickImage(source: selectionMethod);
+  void onTapSelectionTypeModalButton(BuildContext context, ImageSource selectionMethod) async {
+    context.navigator.pop();
+    openPickerAndUpdateSelectedImage(selectionMethod);
+  }
+
+  /// Helper function to open the picker and update [MyoroImagePickerState.selectedImageNotifier].
+  void openPickerAndUpdateSelectedImage([ImageSource selectionMethod = ImageSource.gallery]) async {
+    final result = await _picker.pickImage(source: selectionMethod);
+    if (result == null) return;
+    _state.selectedImage = result.path;
   }
 }

@@ -11,8 +11,10 @@ part of 'widget_showcase_screen_theme_extension.dart';
 /// ```dart
 /// class WidgetShowcaseScreenThemeExtension with _$WidgetShowcaseScreenThemeExtensionMixin {}
 /// ```
-mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcaseScreenThemeExtension> {
-  WidgetShowcaseScreenThemeExtension get self => this as WidgetShowcaseScreenThemeExtension;
+mixin _$WidgetShowcaseScreenThemeExtensionMixin
+    on ThemeExtension<WidgetShowcaseScreenThemeExtension> {
+  WidgetShowcaseScreenThemeExtension get self =>
+      this as WidgetShowcaseScreenThemeExtension;
 
   @override
   WidgetShowcaseScreenThemeExtension copyWith({
@@ -29,12 +31,17 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
       padding: padding ?? self.padding,
       decoration: decoration ?? self.decoration,
       contentPadding: contentPadding ?? self.contentPadding,
-      widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? self.widgetOptionsButtonIcon,
-      widgetOptionsModalSpacing: widgetOptionsModalSpacing ?? self.widgetOptionsModalSpacing,
-      widgetOptionsModalPadding: widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
-      widgetOptionsModalItemPadding: widgetOptionsModalItemPadding ?? self.widgetOptionsModalItemPadding,
+      widgetOptionsButtonIcon:
+          widgetOptionsButtonIcon ?? self.widgetOptionsButtonIcon,
+      widgetOptionsModalSpacing:
+          widgetOptionsModalSpacing ?? self.widgetOptionsModalSpacing,
+      widgetOptionsModalPadding:
+          widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
+      widgetOptionsModalItemPadding:
+          widgetOptionsModalItemPadding ?? self.widgetOptionsModalItemPadding,
       widgetOptionsModalCloseButtonPadding:
-          widgetOptionsModalCloseButtonPadding ?? self.widgetOptionsModalCloseButtonPadding,
+          widgetOptionsModalCloseButtonPadding ??
+          self.widgetOptionsModalCloseButtonPadding,
     );
   }
 
@@ -48,8 +55,10 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
         other.widgetOptionsButtonIcon == self.widgetOptionsButtonIcon &&
         other.widgetOptionsModalSpacing == self.widgetOptionsModalSpacing &&
         other.widgetOptionsModalPadding == self.widgetOptionsModalPadding &&
-        other.widgetOptionsModalItemPadding == self.widgetOptionsModalItemPadding &&
-        other.widgetOptionsModalCloseButtonPadding == self.widgetOptionsModalCloseButtonPadding;
+        other.widgetOptionsModalItemPadding ==
+            self.widgetOptionsModalItemPadding &&
+        other.widgetOptionsModalCloseButtonPadding ==
+            self.widgetOptionsModalCloseButtonPadding;
   }
 
   @override

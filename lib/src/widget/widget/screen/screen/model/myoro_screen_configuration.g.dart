@@ -47,7 +47,9 @@ extension $MyoroScreenConfigurationExtension on MyoroScreenConfiguration {
     Widget? body,
   }) {
     return MyoroScreenConfiguration(
-      drawerController: drawerControllerProvided ? (drawerController ?? self.drawerController) : null,
+      drawerController: drawerControllerProvided
+          ? (drawerController ?? self.drawerController)
+          : null,
       appBar: appBarProvided ? (appBar ?? self.appBar) : null,
       body: body ?? self.body,
     );

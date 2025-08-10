@@ -48,7 +48,9 @@ extension $MyoroRequestExtension<T> on MyoroRequest<T> {
   }) {
     return MyoroRequest(
       status: status ?? self.status,
-      errorMessage: errorMessageProvided ? (errorMessage ?? self.errorMessage) : null,
+      errorMessage: errorMessageProvided
+          ? (errorMessage ?? self.errorMessage)
+          : null,
       data: dataProvided ? (data ?? self.data) : null,
     );
   }

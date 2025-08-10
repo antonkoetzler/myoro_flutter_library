@@ -12,7 +12,8 @@ part of 'myoro_resize_divider_configuration.dart';
 /// class MyoroResizeDividerConfiguration with _$MyoroResizeDividerConfigurationMixin {}
 /// ```
 mixin _$MyoroResizeDividerConfigurationMixin {
-  MyoroResizeDividerConfiguration get self => this as MyoroResizeDividerConfiguration;
+  MyoroResizeDividerConfiguration get self =>
+      this as MyoroResizeDividerConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -26,7 +27,12 @@ mixin _$MyoroResizeDividerConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.dragCallback, self.direction, self.shortValue, self.padding);
+    return Object.hash(
+      self.dragCallback,
+      self.direction,
+      self.shortValue,
+      self.padding,
+    );
   }
 
   @override
@@ -40,7 +46,8 @@ mixin _$MyoroResizeDividerConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroResizeDividerConfigurationExtension on MyoroResizeDividerConfiguration {
+extension $MyoroResizeDividerConfigurationExtension
+    on MyoroResizeDividerConfiguration {
   MyoroResizeDividerConfiguration copyWith({
     Axis? direction,
     double? shortValue,
@@ -54,7 +61,9 @@ extension $MyoroResizeDividerConfigurationExtension on MyoroResizeDividerConfigu
       direction: direction ?? self.direction,
       shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      dragCallback: dragCallbackProvided ? (dragCallback ?? self.dragCallback) : null,
+      dragCallback: dragCallbackProvided
+          ? (dragCallback ?? self.dragCallback)
+          : null,
     );
   }
 }

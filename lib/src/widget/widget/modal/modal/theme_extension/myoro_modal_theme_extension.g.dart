@@ -11,7 +11,8 @@ part of 'myoro_modal_theme_extension.dart';
 /// ```dart
 /// class MyoroModalThemeExtension with _$MyoroModalThemeExtensionMixin {}
 /// ```
-mixin _$MyoroModalThemeExtensionMixin on ThemeExtension<MyoroModalThemeExtension> {
+mixin _$MyoroModalThemeExtensionMixin
+    on ThemeExtension<MyoroModalThemeExtension> {
   MyoroModalThemeExtension get self => this as MyoroModalThemeExtension;
 
   @override
@@ -29,13 +30,15 @@ mixin _$MyoroModalThemeExtensionMixin on ThemeExtension<MyoroModalThemeExtension
     return MyoroModalThemeExtension(
       primaryColor: primaryColor ?? self.primaryColor,
       borderRadius: borderRadius ?? self.borderRadius,
-      bottomSheetBorderRadius: bottomSheetBorderRadius ?? self.bottomSheetBorderRadius,
+      bottomSheetBorderRadius:
+          bottomSheetBorderRadius ?? self.bottomSheetBorderRadius,
       border: border ?? self.border,
       bottomSheetBorder: bottomSheetBorder ?? self.bottomSheetBorder,
       padding: padding ?? self.padding,
       spacing: spacing ?? self.spacing,
       titleTextStyle: titleTextStyle ?? self.titleTextStyle,
-      closeButtonIconConfiguration: closeButtonIconConfiguration ?? self.closeButtonIconConfiguration,
+      closeButtonIconConfiguration:
+          closeButtonIconConfiguration ?? self.closeButtonIconConfiguration,
     );
   }
 

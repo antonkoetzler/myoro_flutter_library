@@ -12,7 +12,8 @@ part of 'myoro_date_picker_input_configuration.dart';
 /// class MyoroDatePickerInputConfiguration with _$MyoroDatePickerInputConfigurationMixin {}
 /// ```
 mixin _$MyoroDatePickerInputConfigurationMixin {
-  MyoroDatePickerInputConfiguration get self => this as MyoroDatePickerInputConfiguration;
+  MyoroDatePickerInputConfiguration get self =>
+      this as MyoroDatePickerInputConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -99,7 +100,8 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroDatePickerInputConfigurationExtension on MyoroDatePickerInputConfiguration {
+extension $MyoroDatePickerInputConfigurationExtension
+    on MyoroDatePickerInputConfiguration {
   MyoroDatePickerInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
@@ -136,21 +138,33 @@ extension $MyoroDatePickerInputConfigurationExtension on MyoroDatePickerInputCon
     return MyoroDatePickerInputConfiguration(
       inputStyle: inputStyle ?? self.inputStyle,
       textAlign: textAlign ?? self.textAlign,
-      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
+      inputTextStyle: inputTextStyleProvided
+          ? (inputTextStyle ?? self.inputTextStyle)
+          : null,
       label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      labelTextStyle: labelTextStyleProvided
+          ? (labelTextStyle ?? self.labelTextStyle)
+          : null,
+      contentPadding: contentPaddingProvided
+          ? (contentPadding ?? self.contentPadding)
+          : null,
       border: borderProvided ? (border ?? self.border) : null,
       suffix: suffixProvided ? (suffix ?? self.suffix) : null,
       enabled: enabled ?? self.enabled,
       showClearTextButton: showClearTextButton ?? self.showClearTextButton,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged: checkboxOnChangedProvided
+          ? (checkboxOnChanged ?? self.checkboxOnChanged)
+          : null,
       validation: validationProvided ? (validation ?? self.validation) : null,
-      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
+      onFieldSubmitted: onFieldSubmittedProvided
+          ? (onFieldSubmitted ?? self.onFieldSubmitted)
+          : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
       inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
-      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
+      checkboxKey: checkboxKeyProvided
+          ? (checkboxKey ?? self.checkboxKey)
+          : null,
       controller: controllerProvided ? (controller ?? self.controller) : null,
     );
   }
