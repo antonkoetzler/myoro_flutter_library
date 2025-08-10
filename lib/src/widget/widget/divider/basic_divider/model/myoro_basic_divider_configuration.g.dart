@@ -12,8 +12,7 @@ part of 'myoro_basic_divider_configuration.dart';
 /// class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin {}
 /// ```
 mixin _$MyoroBasicDividerConfigurationMixin {
-  MyoroBasicDividerConfiguration get self =>
-      this as MyoroBasicDividerConfiguration;
+  MyoroBasicDividerConfiguration get self => this as MyoroBasicDividerConfiguration;
 
   @override
   bool operator ==(Object other) {
@@ -39,8 +38,7 @@ mixin _$MyoroBasicDividerConfigurationMixin {
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroBasicDividerConfigurationExtension
-    on MyoroBasicDividerConfiguration {
+extension $MyoroBasicDividerConfigurationExtension on MyoroBasicDividerConfiguration {
   MyoroBasicDividerConfiguration copyWith({
     Axis? direction,
     double? shortValue,

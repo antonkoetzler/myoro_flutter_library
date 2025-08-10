@@ -11,10 +11,8 @@ part of 'storyboard_screen_theme_extension.dart';
 /// ```dart
 /// class StoryboardScreenThemeExtension with _$StoryboardScreenThemeExtensionMixin {}
 /// ```
-mixin _$StoryboardScreenThemeExtensionMixin
-    on ThemeExtension<StoryboardScreenThemeExtension> {
-  StoryboardScreenThemeExtension get self =>
-      this as StoryboardScreenThemeExtension;
+mixin _$StoryboardScreenThemeExtensionMixin on ThemeExtension<StoryboardScreenThemeExtension> {
+  StoryboardScreenThemeExtension get self => this as StoryboardScreenThemeExtension;
 
   @override
   StoryboardScreenThemeExtension copyWith({
@@ -26,12 +24,10 @@ mixin _$StoryboardScreenThemeExtensionMixin
   }) {
     return StoryboardScreenThemeExtension(
       spacing: spacing ?? self.spacing,
-      previousPageButtonIcon:
-          previousPageButtonIcon ?? self.previousPageButtonIcon,
+      previousPageButtonIcon: previousPageButtonIcon ?? self.previousPageButtonIcon,
       buttonPadding: buttonPadding ?? self.buttonPadding,
       titleTextStyle: titleTextStyle ?? self.titleTextStyle,
-      toggleThemeButtonIcon:
-          toggleThemeButtonIcon ?? self.toggleThemeButtonIcon,
+      toggleThemeButtonIcon: toggleThemeButtonIcon ?? self.toggleThemeButtonIcon,
     );
   }
 

@@ -64,7 +64,9 @@ void main() {
     expect(() => context.resolveThemeExtension<_FooThemeExtension>(), throwsException);
 
     // [MyoroBuildContextExtension.openDrawer] and [MyoroBuildContextExtension.closeDrawer]
-    context.openDrawer(drawer: const MyoroDrawer(configuration: MyoroDrawerConfiguration(child: SizedBox.shrink())));
+    context.openDrawer(
+      drawer: const MyoroDrawer(configuration: MyoroDrawerConfiguration(child: SizedBox.shrink())),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroDrawer), findsOneWidget);
     context.closeDrawer();

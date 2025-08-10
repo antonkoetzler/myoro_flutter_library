@@ -22,12 +22,12 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
 
     return text != null
         ? MyoroTextConfiguration(
-          text: text,
-          maxLines: maxLines,
-          overflow: overflow ?? overflowDefaultValue,
-          alignment: alignment ?? alignmentDefaultValue,
-          style: style,
-        )
+            text: text,
+            maxLines: maxLines,
+            overflow: overflow ?? overflowDefaultValue,
+            alignment: alignment ?? alignmentDefaultValue,
+            style: style,
+          )
         : null;
   }
 

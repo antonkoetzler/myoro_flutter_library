@@ -28,8 +28,8 @@ final class _SearchButton<T> extends StatelessWidget {
 
     return _itemsRequest.status.isLoading
         ? MyoroCircularLoader(
-          configuration: MyoroCircularLoaderConfiguration(size: themeExtension.searchButtonLoadingSize),
-        )
+            configuration: MyoroCircularLoaderConfiguration(size: themeExtension.searchButtonLoadingSize),
+          )
         : Icon(themeExtension.searchButtonIcon);
   }
 }

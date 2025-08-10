@@ -26,12 +26,7 @@ mixin _$MyoroFormConfigurationMixin<T> {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.validation,
-      self.request,
-      self.onSuccess,
-      self.onError,
-    );
+    return Object.hash(self.validation, self.request, self.onSuccess, self.onError);
   }
 
   @override

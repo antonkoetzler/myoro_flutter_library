@@ -16,13 +16,12 @@ void main() {
           builder: (context) {
             return GestureDetector(
               key: gestureDetectorKey,
-              onTapDown:
-                  (_) => MyoroDialogModal.show(
-                    context,
-                    configuration: configurationBuilder(
-                      MyoroDialogModalConfiguration.fake(),
-                    ).copyWith(constraints: const BoxConstraints(minWidth: 800, minHeight: 800)),
-                  ),
+              onTapDown: (_) => MyoroDialogModal.show(
+                context,
+                configuration: configurationBuilder(
+                  MyoroDialogModalConfiguration.fake(),
+                ).copyWith(constraints: const BoxConstraints(minWidth: 800, minHeight: 800)),
+              ),
             );
           },
         ),

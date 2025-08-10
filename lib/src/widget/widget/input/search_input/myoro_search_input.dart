@@ -23,10 +23,9 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   MyoroSearchInputViewModel<T>? _localViewModel;
   MyoroSearchInputViewModel<T> get _viewModel {
-    final viewModel =
-        _createViewModel
-            ? (_localViewModel ??= MyoroSearchInputViewModel())
-            : context.read<MyoroSearchInputViewModel<T>>();
+    final viewModel = _createViewModel
+        ? (_localViewModel ??= MyoroSearchInputViewModel())
+        : context.read<MyoroSearchInputViewModel<T>>();
     return viewModel..configuration = widget.configuration;
   }
 

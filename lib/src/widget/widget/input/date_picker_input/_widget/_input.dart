@@ -12,6 +12,8 @@ final class _Input extends StatelessWidget {
     final inputKey = state.inputKey;
     final inputController = state.inputController;
     viewModel.getInputSize();
-    return MyoroInput(configuration: configuration.copyWith(inputKey: inputKey, controller: inputController));
+    return MyoroInput(
+      configuration: configuration.copyWith(inputKey: inputKey, controller: inputController),
+    );
   }
 }

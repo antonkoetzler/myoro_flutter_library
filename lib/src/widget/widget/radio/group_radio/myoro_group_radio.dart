@@ -37,19 +37,18 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
           direction: _configuration.direction,
           spacing: _configuration.spacing ?? themeExtension.spacing,
           runSpacing: _configuration.runSpacing ?? themeExtension.runSpacing,
-          children:
-              radios.entries.map<Widget>((MapEntry<String, bool> entry) {
-                return MyoroRadio(
-                  configuration: MyoroRadioConfiguration(
-                    label: entry.key,
-                    initialValue: entry.value,
-                    onChanged: (_) {
-                      _controller.enable(entry.key);
-                      _configuration.onChanged?.call(entry.key, _controller.radios);
-                    },
-                  ),
-                );
-              }).toList(),
+          children: radios.entries.map<Widget>((MapEntry<String, bool> entry) {
+            return MyoroRadio(
+              configuration: MyoroRadioConfiguration(
+                label: entry.key,
+                initialValue: entry.value,
+                onChanged: (_) {
+                  _controller.enable(entry.key);
+                  _configuration.onChanged?.call(entry.key, _controller.radios);
+                },
+              ),
+            );
+          }).toList(),
         );
       },
     );

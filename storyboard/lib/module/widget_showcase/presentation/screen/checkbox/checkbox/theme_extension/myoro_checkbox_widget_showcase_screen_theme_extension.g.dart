@@ -13,8 +13,7 @@ part of 'myoro_checkbox_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroCheckboxWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroCheckboxWidgetShowcaseScreenThemeExtension> {
-  MyoroCheckboxWidgetShowcaseScreenThemeExtension get self =>
-      this as MyoroCheckboxWidgetShowcaseScreenThemeExtension;
+  MyoroCheckboxWidgetShowcaseScreenThemeExtension get self => this as MyoroCheckboxWidgetShowcaseScreenThemeExtension;
 
   @override
   MyoroCheckboxWidgetShowcaseScreenThemeExtension copyWith() {
@@ -23,8 +22,7 @@ mixin _$MyoroCheckboxWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroCheckboxWidgetShowcaseScreenThemeExtension &&
-        other.runtimeType == runtimeType;
+    return other is MyoroCheckboxWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
   }
 
   @override

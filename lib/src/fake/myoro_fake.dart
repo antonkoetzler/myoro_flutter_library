@@ -110,7 +110,9 @@ T myoroFake<T>() {
 
   if (T == InputBorder) {
     final borders = [
-      UnderlineInputBorder(borderSide: BorderSide(width: faker.randomGenerator.decimal(), color: myoroFake<Color>())),
+      UnderlineInputBorder(
+        borderSide: BorderSide(width: faker.randomGenerator.decimal(), color: myoroFake<Color>()),
+      ),
       OutlineInputBorder(borderRadius: myoroFake<BorderRadius>(), borderSide: myoroFake<BorderSide>()),
       InputBorder.none,
     ];

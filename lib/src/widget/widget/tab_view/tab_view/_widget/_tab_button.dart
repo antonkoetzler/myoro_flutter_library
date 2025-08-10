@@ -17,20 +17,18 @@ final class _TabButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        iconConfiguration:
-            _tab.icon != null
-                ? MyoroIconConfiguration(
-                  icon: _tab.icon!,
-                  size: configuration.tabButtonIconSize ?? themeExtension.tabButtonIconSize,
-                )
-                : null,
-        textConfiguration:
-            _tab.text != null
-                ? MyoroTextConfiguration(
-                  text: _tab.text!,
-                  style: configuration.tabButtonTextStyle ?? themeExtension.tabButtonTextStyle,
-                )
-                : null,
+        iconConfiguration: _tab.icon != null
+            ? MyoroIconConfiguration(
+                icon: _tab.icon!,
+                size: configuration.tabButtonIconSize ?? themeExtension.tabButtonIconSize,
+              )
+            : null,
+        textConfiguration: _tab.text != null
+            ? MyoroTextConfiguration(
+                text: _tab.text!,
+                style: configuration.tabButtonTextStyle ?? themeExtension.tabButtonTextStyle,
+              )
+            : null,
         backgroundColorBuilder: _selectedTab == _tab ? themeExtension.selectedTabButtonBackgroundColorBuilder : null,
         borderRadius: themeExtension.tabButtonBorderRadius,
         onTapUp: (_) => viewModel.selectTab(_tab),

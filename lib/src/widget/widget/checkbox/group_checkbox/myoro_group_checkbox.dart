@@ -22,19 +22,18 @@ class MyoroGroupCheckbox extends MyoroStatelessWidget {
           direction: configuration.direction,
           spacing: configuration.spacing ?? themeExtension.spacing,
           runSpacing: configuration.runSpacing ?? themeExtension.runSpacing,
-          children:
-              checkboxes.entries.map<Widget>((MapEntry<String, bool> entry) {
-                return MyoroCheckbox(
-                  configuration: MyoroCheckboxConfiguration(
-                    label: entry.key,
-                    value: entry.value,
-                    onChanged: (bool value) {
-                      controller.toggle(entry.key, value);
-                      configuration.onChanged?.call(entry.key, checkboxes);
-                    },
-                  ),
-                );
-              }).toList(),
+          children: checkboxes.entries.map<Widget>((MapEntry<String, bool> entry) {
+            return MyoroCheckbox(
+              configuration: MyoroCheckboxConfiguration(
+                label: entry.key,
+                value: entry.value,
+                onChanged: (bool value) {
+                  controller.toggle(entry.key, value);
+                  configuration.onChanged?.call(entry.key, checkboxes);
+                },
+              ),
+            );
+          }).toList(),
         );
       },
     );

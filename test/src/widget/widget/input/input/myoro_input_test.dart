@@ -7,10 +7,9 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroInput(
-          configuration: (faker.randomGenerator.boolean()
-                  ? const MyoroInputConfiguration()
-                  : MyoroInputConfiguration.fake())
-              .copyWith(label: faker.lorem.word(), checkboxOnChanged: (_, _) {}),
+          configuration:
+              (faker.randomGenerator.boolean() ? const MyoroInputConfiguration() : MyoroInputConfiguration.fake())
+                  .copyWith(label: faker.lorem.word(), checkboxOnChanged: (_, _) {}),
           formatter: faker.randomGenerator.boolean() ? null : MyoroNumberInputFormatter(),
         ),
       ),
@@ -30,8 +29,9 @@ void main() {
           min: min,
           max: max,
           decimalPlaces: decimalPlaces,
-          configuration:
-              faker.randomGenerator.boolean() ? const MyoroInputConfiguration() : MyoroInputConfiguration.fake(),
+          configuration: faker.randomGenerator.boolean()
+              ? const MyoroInputConfiguration()
+              : MyoroInputConfiguration.fake(),
         ),
       ),
     );

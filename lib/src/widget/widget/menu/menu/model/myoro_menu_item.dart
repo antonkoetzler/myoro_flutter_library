@@ -37,16 +37,12 @@ class MyoroMenuItem with _$MyoroMenuItemMixin {
 
     return MyoroMenuItem(
       isSelected: faker.randomGenerator.boolean(),
-      iconConfiguration:
-          builderProvided
-              ? null
-              : ((requiredIconConfiguration || faker.randomGenerator.boolean()) ? MyoroIconConfiguration.fake() : null),
-      textConfiguration:
-          builderProvided
-              ? null
-              : ((!requiredIconConfiguration || faker.randomGenerator.boolean())
-                  ? MyoroTextConfiguration.fake()
-                  : null),
+      iconConfiguration: builderProvided
+          ? null
+          : ((requiredIconConfiguration || faker.randomGenerator.boolean()) ? MyoroIconConfiguration.fake() : null),
+      textConfiguration: builderProvided
+          ? null
+          : ((!requiredIconConfiguration || faker.randomGenerator.boolean()) ? MyoroTextConfiguration.fake() : null),
       builder: builderProvided ? ((_, _) => const SizedBox.shrink()) : null,
       onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,

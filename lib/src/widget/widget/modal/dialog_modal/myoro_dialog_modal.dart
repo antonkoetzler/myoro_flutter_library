@@ -23,7 +23,10 @@ class MyoroDialogModal extends MyoroStatelessWidget {
 
     return Column(
       spacing: themeExtension.spacing,
-      children: [Expanded(child: _Message(configuration)), _FooterButtons(configuration)],
+      children: [
+        Expanded(child: _Message(configuration)),
+        _FooterButtons(configuration),
+      ],
     );
   }
 }

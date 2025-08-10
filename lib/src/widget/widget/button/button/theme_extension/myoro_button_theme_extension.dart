@@ -98,26 +98,22 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       border: Border.all(width: kMyoroBorderLength, color: onPrimary),
       borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
       primaryIdleBackgroundColor: colorScheme.primary,
-      primaryHoverBackgroundColor:
-          isDarkMode
-              ? onPrimary.darken(primaryHoverBackgroundColorFactor)
-              : onPrimary.brighten(primaryHoverBackgroundColorFactor),
-      primaryTapBackgroundColor:
-          isDarkMode
-              ? onPrimary.darken(primaryTapBackgroundColorFactor)
-              : onPrimary.brighten(primaryTapBackgroundColorFactor),
+      primaryHoverBackgroundColor: isDarkMode
+          ? onPrimary.darken(primaryHoverBackgroundColorFactor)
+          : onPrimary.brighten(primaryHoverBackgroundColorFactor),
+      primaryTapBackgroundColor: isDarkMode
+          ? onPrimary.darken(primaryTapBackgroundColorFactor)
+          : onPrimary.brighten(primaryTapBackgroundColorFactor),
       primaryIdleContentColor: onPrimary,
       primaryHoverContentColor: onPrimary,
       primaryTapContentColor: onPrimary,
       secondaryIdleBackgroundColor: onPrimary,
-      secondaryHoverBackgroundColor:
-          isDarkMode
-              ? onPrimary.darken(secondaryHoverBackgroundColorFactor)
-              : onPrimary.brighten(secondaryHoverBackgroundColorFactor),
-      secondaryTapBackgroundColor:
-          isDarkMode
-              ? onPrimary.darken(secondaryTapBackgroundColorFactor)
-              : onPrimary.brighten(secondaryTapBackgroundColorFactor),
+      secondaryHoverBackgroundColor: isDarkMode
+          ? onPrimary.darken(secondaryHoverBackgroundColorFactor)
+          : onPrimary.brighten(secondaryHoverBackgroundColorFactor),
+      secondaryTapBackgroundColor: isDarkMode
+          ? onPrimary.darken(secondaryTapBackgroundColorFactor)
+          : onPrimary.brighten(secondaryTapBackgroundColorFactor),
       secondaryIdleContentColor: colorScheme.primary,
       secondaryHoverContentColor: colorScheme.primary,
       secondaryTapContentColor: colorScheme.primary,

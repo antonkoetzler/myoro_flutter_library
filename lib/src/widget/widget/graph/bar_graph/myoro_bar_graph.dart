@@ -14,9 +14,8 @@ class MyoroBarGraph extends MyoroStatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel =
-        (createViewModel ? MyoroBarGraphViewModel() : context.read<MyoroBarGraphViewModel>())
-          ..configuration = configuration;
+    final viewModel = (createViewModel ? MyoroBarGraphViewModel() : context.read<MyoroBarGraphViewModel>())
+      ..configuration = configuration;
 
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 

@@ -141,36 +141,24 @@ extension $MyoroInputConfigurationExtension on MyoroInputConfiguration {
     return MyoroInputConfiguration(
       inputStyle: inputStyle ?? self.inputStyle,
       textAlign: textAlign ?? self.textAlign,
-      inputTextStyle: inputTextStyleProvided
-          ? (inputTextStyle ?? self.inputTextStyle)
-          : null,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
       label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided
-          ? (labelTextStyle ?? self.labelTextStyle)
-          : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       placeholder: placeholder ?? self.placeholder,
-      contentPadding: contentPaddingProvided
-          ? (contentPadding ?? self.contentPadding)
-          : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       border: borderProvided ? (border ?? self.border) : null,
       suffix: suffixProvided ? (suffix ?? self.suffix) : null,
       enabled: enabled ?? self.enabled,
       readOnly: readOnly ?? self.readOnly,
       autofocus: autofocus ?? self.autofocus,
       showClearTextButton: showClearTextButton ?? self.showClearTextButton,
-      checkboxOnChanged: checkboxOnChangedProvided
-          ? (checkboxOnChanged ?? self.checkboxOnChanged)
-          : null,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
       validation: validationProvided ? (validation ?? self.validation) : null,
-      onFieldSubmitted: onFieldSubmittedProvided
-          ? (onFieldSubmitted ?? self.onFieldSubmitted)
-          : null,
+      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
       inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
-      checkboxKey: checkboxKeyProvided
-          ? (checkboxKey ?? self.checkboxKey)
-          : null,
+      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
       focusNode: focusNodeProvided ? (focusNode ?? self.focusNode) : null,
       controller: controllerProvided ? (controller ?? self.controller) : null,
     );

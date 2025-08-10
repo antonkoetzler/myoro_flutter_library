@@ -11,10 +11,8 @@ part of 'myoro_snack_bar_container_theme_extension.dart';
 /// ```dart
 /// class MyoroSnackBarContainerThemeExtension with _$MyoroSnackBarContainerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroSnackBarContainerThemeExtensionMixin
-    on ThemeExtension<MyoroSnackBarContainerThemeExtension> {
-  MyoroSnackBarContainerThemeExtension get self =>
-      this as MyoroSnackBarContainerThemeExtension;
+mixin _$MyoroSnackBarContainerThemeExtensionMixin on ThemeExtension<MyoroSnackBarContainerThemeExtension> {
+  MyoroSnackBarContainerThemeExtension get self => this as MyoroSnackBarContainerThemeExtension;
 
   @override
   MyoroSnackBarContainerThemeExtension copyWith({

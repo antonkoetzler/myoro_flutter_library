@@ -13,14 +13,10 @@ part of 'myoro_form_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroFormWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroFormWidgetShowcaseScreenThemeExtension> {
-  MyoroFormWidgetShowcaseScreenThemeExtension get self =>
-      this as MyoroFormWidgetShowcaseScreenThemeExtension;
+  MyoroFormWidgetShowcaseScreenThemeExtension get self => this as MyoroFormWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroFormWidgetShowcaseScreenThemeExtension copyWith({
-    BorderRadius? kittyBorderRadius,
-    double? kittySize,
-  }) {
+  MyoroFormWidgetShowcaseScreenThemeExtension copyWith({BorderRadius? kittyBorderRadius, double? kittySize}) {
     return MyoroFormWidgetShowcaseScreenThemeExtension(
       kittyBorderRadius: kittyBorderRadius ?? self.kittyBorderRadius,
       kittySize: kittySize ?? self.kittySize,

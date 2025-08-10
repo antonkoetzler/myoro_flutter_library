@@ -28,8 +28,9 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   MyoroButtonViewModel? _localViewModel;
   MyoroButtonViewModel get _viewModel {
-    final viewModel =
-        _createViewModel ? (_localViewModel ??= MyoroButtonViewModel()) : context.read<MyoroButtonViewModel>();
+    final viewModel = _createViewModel
+        ? (_localViewModel ??= MyoroButtonViewModel())
+        : context.read<MyoroButtonViewModel>();
     return viewModel..state.configuration = widget.configuration;
   }
 

@@ -13,13 +13,12 @@ final class _Column extends StatelessWidget {
 
     final Widget child = DefaultTextStyle(
       style: themeExtension.columnTextStyle,
-      child:
-          _column.tooltipMessage != null
-              ? MyoroTooltip(
-                configuration: MyoroTooltipConfiguration(text: _column.tooltipMessage!),
-                child: _column.child,
-              )
-              : _column.child,
+      child: _column.tooltipMessage != null
+          ? MyoroTooltip(
+              configuration: MyoroTooltipConfiguration(text: _column.tooltipMessage!),
+              child: _column.child,
+            )
+          : _column.child,
     );
 
     // Last [MyoroTableColumn] must always be expanded.

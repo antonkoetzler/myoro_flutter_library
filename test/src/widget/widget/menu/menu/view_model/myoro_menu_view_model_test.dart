@@ -32,16 +32,16 @@ void main() {
   group('MyoroMenuViewModel.fetch', () {
     var requestExecuted = false;
 
-    final viewModel =
-        MyoroMenuViewModel<String>()..initialize(
-          MyoroMenuConfiguration(
-            request: () {
-              requestExecuted = true;
-              return {};
-            },
-            itemBuilder: (item) => MyoroMenuItem.fake(),
-          ),
-        );
+    final viewModel = MyoroMenuViewModel<String>()
+      ..initialize(
+        MyoroMenuConfiguration(
+          request: () {
+            requestExecuted = true;
+            return {};
+          },
+          itemBuilder: (item) => MyoroMenuItem.fake(),
+        ),
+      );
 
     tearDown(viewModel.dispose);
 
@@ -54,9 +54,8 @@ void main() {
   });
 
   group('MyoroMenuViewModel.fetchExtra', () {
-    final viewModel =
-        MyoroMenuViewModel<String>()
-          ..initialize(MyoroMenuConfiguration(request: () => {}, itemBuilder: (item) => MyoroMenuItem.fake()));
+    final viewModel = MyoroMenuViewModel<String>()
+      ..initialize(MyoroMenuConfiguration(request: () => {}, itemBuilder: (item) => MyoroMenuItem.fake()));
 
     tearDownAll(viewModel.dispose);
 
@@ -84,9 +83,8 @@ void main() {
   });
 
   group('MyoroMenuViewModel.search', () {
-    final viewModel =
-        MyoroMenuViewModel<String>()
-          ..initialize(MyoroMenuConfiguration(request: () => {}, itemBuilder: (item) => MyoroMenuItem.fake()));
+    final viewModel = MyoroMenuViewModel<String>()
+      ..initialize(MyoroMenuConfiguration(request: () => {}, itemBuilder: (item) => MyoroMenuItem.fake()));
 
     tearDownAll(viewModel.dispose);
 
@@ -112,14 +110,14 @@ void main() {
   });
 
   group('MyoroMenuViewModel.scrollControllerListener', () {
-    final viewModel =
-        MyoroMenuViewModel<String>()..initialize(
-          MyoroMenuConfiguration(
-            request: () => {faker.lorem.word()},
-            itemBuilder: (item) => MyoroMenuItem.fake(),
-            onEndReachedRequest: (_) => {},
-          ),
-        );
+    final viewModel = MyoroMenuViewModel<String>()
+      ..initialize(
+        MyoroMenuConfiguration(
+          request: () => {faker.lorem.word()},
+          itemBuilder: (item) => MyoroMenuItem.fake(),
+          onEndReachedRequest: (_) => {},
+        ),
+      );
 
     tearDown(viewModel.dispose);
 
@@ -144,14 +142,14 @@ void main() {
   });
 
   group('MyoroMenuViewModel.jumpToBottomPreviousPosition', () {
-    final viewModel =
-        MyoroMenuViewModel<String>()..initialize(
-          MyoroMenuConfiguration(
-            request: () => List.generate(100, (index) => 'Item #$index').toSet(),
-            itemBuilder: (item) => MyoroMenuItem.fake(),
-            onEndReachedRequest: (_) => List.generate(100, (index) => 'Item #$index').toSet(),
-          ),
-        );
+    final viewModel = MyoroMenuViewModel<String>()
+      ..initialize(
+        MyoroMenuConfiguration(
+          request: () => List.generate(100, (index) => 'Item #$index').toSet(),
+          itemBuilder: (item) => MyoroMenuItem.fake(),
+          onEndReachedRequest: (_) => List.generate(100, (index) => 'Item #$index').toSet(),
+        ),
+      );
 
     tearDown(viewModel.dispose);
 

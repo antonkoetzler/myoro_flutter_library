@@ -22,7 +22,10 @@ final class _InputTriggerAreaRegion<T, C extends _C<T>> extends StatelessWidget 
         cursor: _enabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
         child: GestureDetector(
           onTapUp: _enabled ? (_) => viewModel.toggleMenu() : null,
-          child: TapRegion(groupId: viewModel.state.tapRegionGroupId, child: Container(color: Colors.transparent)),
+          child: TapRegion(
+            groupId: viewModel.state.tapRegionGroupId,
+            child: Container(color: Colors.transparent),
+          ),
         ),
       ),
     );

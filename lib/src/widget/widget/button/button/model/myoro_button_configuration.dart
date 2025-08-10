@@ -24,15 +24,13 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
   MyoroButtonConfiguration.fake()
     : tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
-      borderRadius =
-          faker.randomGenerator.boolean()
-              ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
-              : null,
+      borderRadius = faker.randomGenerator.boolean()
+          ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
+          : null,
       backgroundColorBuilder = faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
-      borderBuilder =
-          faker.randomGenerator.boolean()
-              ? ((_) => Border.all(width: faker.randomGenerator.decimal(scale: 10), color: myoroFake<Color>()))
-              : null,
+      borderBuilder = faker.randomGenerator.boolean()
+          ? ((_) => Border.all(width: faker.randomGenerator.decimal(scale: 10), color: myoroFake<Color>()))
+          : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null;
   // coverage:ignore-end

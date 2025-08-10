@@ -27,10 +27,10 @@ void main() {
                 return isBottomSheet
                     ? await MyoroModal.showModal(context, configuration: configuration, child: const SizedBox.shrink())
                     : await MyoroModal.showBottomSheet(
-                      context,
-                      configuration: configuration,
-                      child: const SizedBox.shrink(),
-                    );
+                        context,
+                        configuration: configuration,
+                        child: const SizedBox.shrink(),
+                      );
               },
             );
           },

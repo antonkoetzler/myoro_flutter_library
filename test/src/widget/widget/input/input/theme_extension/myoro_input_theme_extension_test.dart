@@ -13,7 +13,9 @@ void main() {
     final themeExtension = MyoroInputThemeExtension.builder(colorScheme, textTheme);
     expect(
       themeExtension.underlinedBorder,
-      UnderlineInputBorder(borderSide: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary)),
+      UnderlineInputBorder(
+        borderSide: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+      ),
     );
     expect(
       themeExtension.outlinedBorder,

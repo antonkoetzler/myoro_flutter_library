@@ -14,11 +14,10 @@ final class MyoroTableViewModel<T> {
   /// Populdates [__titleColumnKeyWidthsController].
   void getTitleColumnKeyWidths() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _state.titleColumnKeyWidthsController.value =
-          _state.titleColumnKeys.map<double>((GlobalKey titleColumnKey) {
-            final renderBox = titleColumnKey.currentContext!.findRenderObject() as RenderBox;
-            return renderBox.size.width;
-          }).toList();
+      _state.titleColumnKeyWidthsController.value = _state.titleColumnKeys.map<double>((GlobalKey titleColumnKey) {
+        final renderBox = titleColumnKey.currentContext!.findRenderObject() as RenderBox;
+        return renderBox.size.width;
+      }).toList();
     });
   }
 }

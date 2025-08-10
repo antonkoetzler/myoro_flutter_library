@@ -26,8 +26,9 @@ final class _MyoroMenuState<T> extends State<MyoroMenu<T>> {
 
   MyoroMenuViewModel<T>? _localViewModel;
   MyoroMenuViewModel<T> get _viewModel {
-    final viewModel =
-        _createViewModel ? (_localViewModel ??= MyoroMenuViewModel<T>()) : context.read<MyoroMenuViewModel<T>>();
+    final viewModel = _createViewModel
+        ? (_localViewModel ??= MyoroMenuViewModel<T>())
+        : context.read<MyoroMenuViewModel<T>>();
     return viewModel..initialize(widget.configuration);
   }
 

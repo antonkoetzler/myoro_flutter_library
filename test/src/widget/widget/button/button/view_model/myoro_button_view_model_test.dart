@@ -8,13 +8,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   bool onTapDownExecuted = false;
   bool onTapUpExecuted = false;
-  final viewModel =
-      MyoroButtonViewModel()
-        ..state.configuration = MyoroButtonConfiguration.fake().copyWith(
-          cursorProvided: false,
-          onTapDown: (_) => onTapDownExecuted = true,
-          onTapUp: (_) => onTapUpExecuted = true,
-        );
+  final viewModel = MyoroButtonViewModel()
+    ..state.configuration = MyoroButtonConfiguration.fake().copyWith(
+      cursorProvided: false,
+      onTapDown: (_) => onTapDownExecuted = true,
+      onTapUp: (_) => onTapUpExecuted = true,
+    );
 
   tearDownAll(viewModel.dispose);
 

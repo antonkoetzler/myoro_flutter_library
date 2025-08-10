@@ -27,13 +27,7 @@ mixin _$MyoroCardConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.title,
-      self.titleTextStyle,
-      self.padding,
-      self.constraints,
-      self.child,
-    );
+    return Object.hash(self.title, self.titleTextStyle, self.padding, self.constraints, self.child);
   }
 
   @override
@@ -60,9 +54,7 @@ extension $MyoroCardConfigurationExtension on MyoroCardConfiguration {
   }) {
     return MyoroCardConfiguration(
       title: title ?? self.title,
-      titleTextStyle: titleTextStyleProvided
-          ? (titleTextStyle ?? self.titleTextStyle)
-          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
       constraints: constraints ?? self.constraints,
       child: child ?? self.child,

@@ -41,7 +41,11 @@ final class _MyoroTabViewState extends State<MyoroTabView> {
         valueListenable: _viewModel.state.selectedTabNotifier,
         builder: (_, selectedTab, _) {
           return Column(
-            children: [_Tabs(selectedTab), const _Divider(Axis.horizontal), Expanded(child: selectedTab.content)],
+            children: [
+              _Tabs(selectedTab),
+              const _Divider(Axis.horizontal),
+              Expanded(child: selectedTab.content),
+            ],
           );
         },
       ),

@@ -26,7 +26,10 @@ void main() {
             ),
           ],
         ),
-        MyoroBarGraphGroup(x: 1, bars: [MyoroBarGraphBar(y: 8, color: myoroFake<Color>(), barSections: [])]),
+        MyoroBarGraphGroup(
+          x: 1,
+          bars: [MyoroBarGraphBar(y: 8, color: myoroFake<Color>(), barSections: [])],
+        ),
       ],
     );
 

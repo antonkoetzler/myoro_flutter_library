@@ -89,10 +89,9 @@ final class MyoroTypography {
       29 => 'Extra bold extra large',
 
       // Should never get here
-      _ =>
-        throw AssertionError(
-          '[MyoroTypographyDesignSystem.getTextStyleName]: [textStyle] is not apart of [MyoroTypographyDesignSystem.getAllTextStyles].',
-        ),
+      _ => throw AssertionError(
+        '[MyoroTypographyDesignSystem.getTextStyleName]: [textStyle] is not apart of [MyoroTypographyDesignSystem.getAllTextStyles].',
+      ),
     };
   }
 }

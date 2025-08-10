@@ -37,29 +37,25 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
     return MyoroIconTextButtonConfiguration(
       tooltipConfiguration: faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       cursor: faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
-      borderRadius:
-          borderRadiusProvided ?? faker.randomGenerator.boolean()
-              ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
-              : null,
+      borderRadius: borderRadiusProvided ?? faker.randomGenerator.boolean()
+          ? BorderRadius.circular(faker.randomGenerator.decimal(scale: 50, min: 1))
+          : null,
       backgroundColorBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
-      borderBuilder:
-          borderBuilderProvided ?? faker.randomGenerator.boolean()
-              ? ((_) => Border.all(width: faker.randomGenerator.decimal(scale: 10), color: myoroFake<Color>()))
-              : null,
+      borderBuilder: borderBuilderProvided ?? faker.randomGenerator.boolean()
+          ? ((_) => Border.all(width: faker.randomGenerator.decimal(scale: 10), color: myoroFake<Color>()))
+          : null,
       onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
       invert: faker.randomGenerator.boolean(),
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       contentColorBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<Color>()) : null,
-      iconConfiguration:
-          (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'icon')
-              ? MyoroIconConfiguration.fake()
-              : null,
-      textConfiguration:
-          (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'text')
-              ? MyoroTextConfiguration.fake()
-              : null,
+      iconConfiguration: (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'icon')
+          ? MyoroIconConfiguration.fake()
+          : null,
+      textConfiguration: (faker.randomGenerator.boolean() || mandatorilyProvidedConfiguration == 'text')
+          ? MyoroTextConfiguration.fake()
+          : null,
     );
   }
   // coverage:ignore-end

@@ -37,13 +37,7 @@ mixin _$MyoroBarGraphConfigurationMixin {
 
 /// Extension class for @myoroModel to place the copyWith function.
 extension $MyoroBarGraphConfigurationExtension on MyoroBarGraphConfiguration {
-  MyoroBarGraphConfiguration copyWith({
-    bool? sorted,
-    List<MyoroBarGraphGroup>? items,
-  }) {
-    return MyoroBarGraphConfiguration(
-      sorted: sorted ?? self.sorted,
-      items: items ?? self.items,
-    );
+  MyoroBarGraphConfiguration copyWith({bool? sorted, List<MyoroBarGraphGroup>? items}) {
+    return MyoroBarGraphConfiguration(sorted: sorted ?? self.sorted, items: items ?? self.items);
   }
 }

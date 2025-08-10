@@ -86,7 +86,10 @@ class MyoroModal extends MyoroStatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           spacing: spacing,
-          children: [if (showHeader) _Header(_configuration), Flexible(child: _child)],
+          children: [
+            if (showHeader) _Header(_configuration),
+            Flexible(child: _child),
+          ],
         ),
       ),
     );

@@ -19,11 +19,11 @@ void main() {
   });
 
   group('MyoroInputViewModel.inputControllerListener', () {
-    final viewModel =
-        MyoroInputViewModel()..initialize(
-          MyoroInputConfiguration.fake(),
-          faker.randomGenerator.boolean() ? MyoroNumberInputFormatter() : null,
-        );
+    final viewModel = MyoroInputViewModel()
+      ..initialize(
+        MyoroInputConfiguration.fake(),
+        faker.randomGenerator.boolean() ? MyoroNumberInputFormatter() : null,
+      );
 
     tearDown(viewModel.dispose);
 
@@ -36,11 +36,11 @@ void main() {
   group('MyoroInputViewModel.checkboxOnChanged', () {
     var checkboxOnChangedExecuted = false;
 
-    final viewModel =
-        MyoroInputViewModel()..initialize(
-          MyoroInputConfiguration.fake().copyWith(checkboxOnChanged: (_, _) => checkboxOnChangedExecuted = true),
-          faker.randomGenerator.boolean() ? MyoroNumberInputFormatter() : null,
-        );
+    final viewModel = MyoroInputViewModel()
+      ..initialize(
+        MyoroInputConfiguration.fake().copyWith(checkboxOnChanged: (_, _) => checkboxOnChangedExecuted = true),
+        faker.randomGenerator.boolean() ? MyoroNumberInputFormatter() : null,
+      );
 
     tearDown(viewModel.dispose);
 
@@ -53,8 +53,8 @@ void main() {
   });
 
   group('MyoroInputViewModel.clearText', () {
-    final viewModelWithFormatter =
-        MyoroInputViewModel()..initialize(MyoroInputConfiguration.fake(), MyoroNumberInputFormatter());
+    final viewModelWithFormatter = MyoroInputViewModel()
+      ..initialize(MyoroInputConfiguration.fake(), MyoroNumberInputFormatter());
     final viewModelWithoutFormatter = MyoroInputViewModel()..initialize(MyoroInputConfiguration.fake(), null);
 
     tearDownAll(() {

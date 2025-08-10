@@ -17,10 +17,9 @@ final class MyoroSliderViewModel {
   /// [_controller] setter.
   set controller(MyoroSliderController controller) {
     if (_controller == controller) return;
-    _controller =
-        controller
-          ..removeListener(_controllerListener)
-          ..addListener(_controllerListener);
+    _controller = controller
+      ..removeListener(_controllerListener)
+      ..addListener(_controllerListener);
   }
 
   /// Listener of [controller].

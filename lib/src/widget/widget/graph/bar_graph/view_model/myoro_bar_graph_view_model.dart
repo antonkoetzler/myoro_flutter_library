@@ -29,20 +29,18 @@ class MyoroBarGraphViewModel {
         .map<BarChartGroupData>(
           (MyoroBarGraphGroup group) => BarChartGroupData(
             x: group.x,
-            barRods:
-                group.bars.map<BarChartRodData>((MyoroBarGraphBar bar) {
-                  return BarChartRodData(
-                    toY: bar.y,
-                    color: bar.color ?? themeExtension.barColor,
-                    borderRadius: themeExtension.barBorderRadius,
-                    rodStackItems:
-                        bar.barSections.isEmpty
-                            ? null
-                            : bar.barSections.map<BarChartRodStackItem>((MyoroBarGraphBarSection barSection) {
-                              return BarChartRodStackItem(barSection.fromY, barSection.toY, barSection.color);
-                            }).toList(),
-                  );
-                }).toList(),
+            barRods: group.bars.map<BarChartRodData>((MyoroBarGraphBar bar) {
+              return BarChartRodData(
+                toY: bar.y,
+                color: bar.color ?? themeExtension.barColor,
+                borderRadius: themeExtension.barBorderRadius,
+                rodStackItems: bar.barSections.isEmpty
+                    ? null
+                    : bar.barSections.map<BarChartRodStackItem>((MyoroBarGraphBarSection barSection) {
+                        return BarChartRodStackItem(barSection.fromY, barSection.toY, barSection.color);
+                      }).toList(),
+              );
+            }).toList(),
           ),
         )
         .toList()

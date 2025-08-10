@@ -18,7 +18,10 @@ class MyoroCard extends MyoroStatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: themeExtension.titleCardSpacing,
-      children: [if (configuration.title.isNotEmpty) _Title(configuration), Flexible(child: _Card(configuration))],
+      children: [
+        if (configuration.title.isNotEmpty) _Title(configuration),
+        Flexible(child: _Card(configuration)),
+      ],
     );
   }
 }

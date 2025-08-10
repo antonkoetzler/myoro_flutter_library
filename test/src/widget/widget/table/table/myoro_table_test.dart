@@ -96,7 +96,9 @@ void main() {
 
   testWidgets('MyoroTable no rows case', (tester) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(child: MyoroTable<String>(configuration: createConfiguration().copyWith(request: () => {}))),
+      MyoroWidgetTester(
+        child: MyoroTable<String>(configuration: createConfiguration().copyWith(request: () => {})),
+      ),
     );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroTable<String>), findsOneWidget);

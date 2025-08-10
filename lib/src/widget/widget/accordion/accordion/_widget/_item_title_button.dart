@@ -20,10 +20,9 @@ final class _ItemTitleButton extends StatelessWidget {
         return MyoroButton(
           configuration: MyoroButtonConfiguration(
             borderRadius: themeExtension.itemTitleButtonBorderRadius,
-            backgroundColorBuilder:
-                _item == expandedItem
-                    ? (_) => viewModel.itemTitleButtonBackgroundColorBuilder(buttonThemeExtension)
-                    : null,
+            backgroundColorBuilder: _item == expandedItem
+                ? (_) => viewModel.itemTitleButtonBackgroundColorBuilder(buttonThemeExtension)
+                : null,
             onTapUp: (_) => viewModel.itemTitleButtonOnTapUp(_item),
           ),
           builder: (context, tapStatusEnum) {

@@ -14,7 +14,10 @@ class MyoroResizeDivider extends MyoroStatelessWidget {
   Widget build(context) {
     return Stack(
       alignment: Alignment.center,
-      children: [MyoroBasicDivider(configuration: configuration), _ResizeButton(configuration)],
+      children: [
+        MyoroBasicDivider(configuration: configuration),
+        _ResizeButton(configuration),
+      ],
     );
   }
 }

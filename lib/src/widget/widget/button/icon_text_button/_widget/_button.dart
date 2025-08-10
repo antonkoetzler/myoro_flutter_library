@@ -28,10 +28,9 @@ final class _Button extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         spacing: _configuration.spacing ?? themeExtension.spacing,
-        children:
-            iconConfigurationAndTextConfigurationNotNull
-                ? [!invert ? iconWidget! : textWidget!, !invert ? textWidget! : iconWidget!]
-                : [if (iconConfigurationNotNull) iconWidget!, if (textConfigurationNotNull) textWidget!],
+        children: iconConfigurationAndTextConfigurationNotNull
+            ? [!invert ? iconWidget! : textWidget!, !invert ? textWidget! : iconWidget!]
+            : [if (iconConfigurationNotNull) iconWidget!, if (textConfigurationNotNull) textWidget!],
       ),
     );
   }

@@ -8,11 +8,10 @@ void main() {
     return MyoroAccordionItem(titleBuilder: (_) => Text(text), contentBuilder: (_) => Text('$text\'s content'));
   }
 
-  final items =
-      List.generate(
-        faker.randomGenerator.integer(50, min: 1),
-        (int index) => buildAccordionItem('Item #$index'),
-      ).toSet();
+  final items = List.generate(
+    faker.randomGenerator.integer(50, min: 1),
+    (int index) => buildAccordionItem('Item #$index'),
+  ).toSet();
 
   Future<void> testCase(Function(MyoroAccordionController) callback) async {
     final controller = MyoroAccordionController(items: items);

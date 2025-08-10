@@ -5,11 +5,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final items =
-      List.generate(faker.randomGenerator.integer(10, min: 2), (index) {
-        final text = 'Item #${index + 1}';
-        return MyoroAccordionItem(titleBuilder: (_) => Text(text), contentBuilder: (_) => Text('$text\'s content'));
-      }).toSet();
+  final items = List.generate(faker.randomGenerator.integer(10, min: 2), (index) {
+    final text = 'Item #${index + 1}';
+    return MyoroAccordionItem(titleBuilder: (_) => Text(text), contentBuilder: (_) => Text('$text\'s content'));
+  }).toSet();
 
   testWidgets('MyoroAccordion.didUpdateWidget', (tester) async {
     final controller1 = MyoroAccordionController(

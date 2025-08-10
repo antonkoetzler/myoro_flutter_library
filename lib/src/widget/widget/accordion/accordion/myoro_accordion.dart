@@ -24,8 +24,9 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   MyoroAccordionViewModel? _localViewModel;
   MyoroAccordionViewModel get _viewModel {
-    final viewModel =
-        _createViewModel ? (_localViewModel ??= MyoroAccordionViewModel()) : context.read<MyoroAccordionViewModel>();
+    final viewModel = _createViewModel
+        ? (_localViewModel ??= MyoroAccordionViewModel())
+        : context.read<MyoroAccordionViewModel>();
     return viewModel..state.controller = widget.controller;
   }
 

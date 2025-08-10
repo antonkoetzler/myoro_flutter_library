@@ -30,18 +30,18 @@ enum MyoroButtonStyleEnum {
       primary =>
         onTapProvided
             ? switch (tapStatusEnum) {
-              MyoroTapStatusEnum.idle => themeExtension.primaryIdleBackgroundColor,
-              MyoroTapStatusEnum.hover => themeExtension.primaryHoverBackgroundColor,
-              MyoroTapStatusEnum.tap => themeExtension.primaryTapBackgroundColor,
-            }
+                MyoroTapStatusEnum.idle => themeExtension.primaryIdleBackgroundColor,
+                MyoroTapStatusEnum.hover => themeExtension.primaryHoverBackgroundColor,
+                MyoroTapStatusEnum.tap => themeExtension.primaryTapBackgroundColor,
+              }
             : themeExtension.primaryIdleBackgroundColor,
       secondary =>
         onTapProvided
             ? switch (tapStatusEnum) {
-              MyoroTapStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
-              MyoroTapStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
-              MyoroTapStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
-            }
+                MyoroTapStatusEnum.idle => themeExtension.secondaryIdleBackgroundColor,
+                MyoroTapStatusEnum.hover => themeExtension.secondaryHoverBackgroundColor,
+                MyoroTapStatusEnum.tap => themeExtension.secondaryTapBackgroundColor,
+              }
             : themeExtension.secondaryIdleBackgroundColor,
     };
   }

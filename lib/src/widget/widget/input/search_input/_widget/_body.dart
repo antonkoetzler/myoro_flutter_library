@@ -13,7 +13,10 @@ final class _Body<T> extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: themeExtension.spacing,
-      children: [_Input<T>(_itemsRequest), if (_itemsRequest.status.isSuccess) Flexible(child: _SearchSection<T>())],
+      children: [
+        _Input<T>(_itemsRequest),
+        if (_itemsRequest.status.isSuccess) Flexible(child: _SearchSection<T>()),
+      ],
     );
   }
 }

@@ -26,12 +26,7 @@ mixin _$MyoroSnackBarConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.snackBarType,
-      self.showCloseButton,
-      self.message,
-      self.child,
-    );
+    return Object.hash(self.snackBarType, self.showCloseButton, self.message, self.child);
   }
 
   @override

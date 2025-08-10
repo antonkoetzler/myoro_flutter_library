@@ -29,8 +29,9 @@ final class _MyoroSliderState extends State<MyoroSlider> {
 
   MyoroSliderViewModel? _localViewModel;
   MyoroSliderViewModel get _viewModel {
-    final viewModel =
-        _createViewModel ? (_localViewModel ??= MyoroSliderViewModel()) : context.read<MyoroSliderViewModel>();
+    final viewModel = _createViewModel
+        ? (_localViewModel ??= MyoroSliderViewModel())
+        : context.read<MyoroSliderViewModel>();
 
     return viewModel
       ..configuration = widget.configuration

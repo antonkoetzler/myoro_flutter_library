@@ -4,12 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  final items =
-      List.generate(faker.randomGenerator.integer(50, min: 1), (index) {
-        final text = 'Item #$index';
+  final items = List.generate(faker.randomGenerator.integer(50, min: 1), (index) {
+    final text = 'Item #$index';
 
-        return MyoroAccordionItem(titleBuilder: (_) => Text(text), contentBuilder: (_) => Text('$text\'s content'));
-      }).toSet();
+    return MyoroAccordionItem(titleBuilder: (_) => Text(text), contentBuilder: (_) => Text('$text\'s content'));
+  }).toSet();
   final controller = MyoroAccordionController(items: items);
   final viewModel = MyoroAccordionViewModel()..state.controller = controller;
 

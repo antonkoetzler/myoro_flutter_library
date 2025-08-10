@@ -17,8 +17,7 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
 
   @override
   bool operator ==(Object other) {
-    return other
-            is MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration &&
+    return other is MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration &&
         other.runtimeType == runtimeType &&
         other.title == self.title &&
         other.enabled == self.enabled &&
@@ -88,20 +87,11 @@ extension $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationExtens
       enabled: enabled ?? self.enabled,
       label: label ?? self.label,
       checkboxOnChanged: checkboxOnChanged ?? self.checkboxOnChanged,
-      selectedIdleColor:
-          selectedIdleColorProvided
-              ? (selectedIdleColor ?? self.selectedIdleColor)
-              : null,
+      selectedIdleColor: selectedIdleColorProvided ? (selectedIdleColor ?? self.selectedIdleColor) : null,
       idleOnChanged: idleOnChanged ?? self.idleOnChanged,
-      selectedHoverColor:
-          selectedHoverColorProvided
-              ? (selectedHoverColor ?? self.selectedHoverColor)
-              : null,
+      selectedHoverColor: selectedHoverColorProvided ? (selectedHoverColor ?? self.selectedHoverColor) : null,
       hoverOnChanged: hoverOnChanged ?? self.hoverOnChanged,
-      selectedTapColor:
-          selectedTapColorProvided
-              ? (selectedTapColor ?? self.selectedTapColor)
-              : null,
+      selectedTapColor: selectedTapColorProvided ? (selectedTapColor ?? self.selectedTapColor) : null,
       tapOnChanged: tapOnChanged ?? self.tapOnChanged,
     );
   }

@@ -9,7 +9,9 @@ void main() {
     required VoidCallback callback,
   }) async {
     await tester.pumpWidget(
-      MyoroWidgetTester(child: MyoroButton(configuration: configuration, builder: (_, _) => const SizedBox.shrink())),
+      MyoroWidgetTester(
+        child: MyoroButton(configuration: configuration, builder: (_, _) => const SizedBox.shrink()),
+      ),
     );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroButton), findsOneWidget);

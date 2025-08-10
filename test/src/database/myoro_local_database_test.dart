@@ -10,7 +10,8 @@ void main() {
   const path = './';
   const dummyTableName = 'dummy';
   const dummyTableFooAttribute = 'foo';
-  const createDummyTableSql = '''
+  const createDummyTableSql =
+      '''
     CREATE TABLE $dummyTableName (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       $dummyTableFooAttribute INTEGER

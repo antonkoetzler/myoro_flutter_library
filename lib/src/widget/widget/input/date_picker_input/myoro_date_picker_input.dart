@@ -43,11 +43,13 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
     final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
 
     final child = Stack(
-      alignment:
-          checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
-              ? Alignment.center
-              : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-      children: const [_Input(), Positioned(child: _TriggerArea())],
+      alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
+          ? Alignment.center
+          : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
+      children: const [
+        _Input(),
+        Positioned(child: _TriggerArea()),
+      ],
     );
     return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }

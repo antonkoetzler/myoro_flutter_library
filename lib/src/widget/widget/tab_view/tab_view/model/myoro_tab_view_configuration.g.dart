@@ -26,12 +26,7 @@ mixin _$MyoroTabViewConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.initiallySelectedTabIndex,
-      self.tabButtonIconSize,
-      self.tabButtonTextStyle,
-      self.tabs,
-    );
+    return Object.hash(self.initiallySelectedTabIndex, self.tabButtonIconSize, self.tabButtonTextStyle, self.tabs);
   }
 
   @override
@@ -55,14 +50,9 @@ extension $MyoroTabViewConfigurationExtension on MyoroTabViewConfiguration {
     List<MyoroTabViewTab>? tabs,
   }) {
     return MyoroTabViewConfiguration(
-      initiallySelectedTabIndex:
-          initiallySelectedTabIndex ?? self.initiallySelectedTabIndex,
-      tabButtonIconSize: tabButtonIconSizeProvided
-          ? (tabButtonIconSize ?? self.tabButtonIconSize)
-          : null,
-      tabButtonTextStyle: tabButtonTextStyleProvided
-          ? (tabButtonTextStyle ?? self.tabButtonTextStyle)
-          : null,
+      initiallySelectedTabIndex: initiallySelectedTabIndex ?? self.initiallySelectedTabIndex,
+      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? self.tabButtonIconSize) : null,
+      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? self.tabButtonTextStyle) : null,
       tabs: tabs ?? self.tabs,
     );
   }
