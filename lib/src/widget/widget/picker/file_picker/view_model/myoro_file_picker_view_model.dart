@@ -8,8 +8,7 @@ part 'myoro_file_picker_state.dart';
 
 /// View model of [MyoroFilePicker].
 final class MyoroFilePickerViewModel {
-  MyoroFilePickerViewModel(MyoroFilePickerConfiguration configuration)
-    : _state = MyoroFilePickerState(configuration) {
+  MyoroFilePickerViewModel(MyoroFilePickerConfiguration configuration) : _state = MyoroFilePickerState(configuration) {
     _state.selectedFileNotifier.addListener(() => configuration.onChanged(_state.selectedFile));
   }
 

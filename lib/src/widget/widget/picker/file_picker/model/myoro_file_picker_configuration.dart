@@ -1,5 +1,4 @@
 import 'package:faker/faker.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -16,9 +15,7 @@ final class MyoroFilePickerConfiguration with _$MyoroFilePickerConfigurationMixi
     this.allowedExtensions = const [],
     required this.onChanged,
   }) : assert(
-         fileType == MyoroFilePickerFileTypeEnum.custom
-             ? allowedExtensions.length > 0
-             : allowedExtensions.length == 0,
+         fileType == MyoroFilePickerFileTypeEnum.custom ? allowedExtensions.length > 0 : allowedExtensions.length == 0,
          '[MyoroFilePickerConfiguration]: If [fileType] is [MyoroFilePickerFileTypeEnum.custom], [allowedExtensions] '
          'cannot be empty. If [fileType] is not [MyoroFilePickerFileTypeEnum.custom], [allowedExtensions] must be empty.',
        );

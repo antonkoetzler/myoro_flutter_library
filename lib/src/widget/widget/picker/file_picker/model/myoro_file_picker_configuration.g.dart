@@ -46,7 +46,7 @@ extension $MyoroFilePickerConfigurationExtension on MyoroFilePickerConfiguration
     bool titleProvided = true,
     MyoroFilePickerFileTypeEnum? fileType,
     List<String>? allowedExtensions,
-    void Function(PlatformFile?)? onChanged,
+    void Function(MyoroFilePickerPlatformFile?)? onChanged,
   }) {
     return MyoroFilePickerConfiguration(
       title: titleProvided ? (title ?? self.title) : null,

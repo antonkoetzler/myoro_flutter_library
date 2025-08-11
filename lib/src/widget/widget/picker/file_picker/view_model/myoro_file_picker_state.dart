@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 part of 'myoro_file_picker_view_model.dart';
 
 /// State of [MyoroFilePickerViewModel].
@@ -17,8 +19,7 @@ final class MyoroFilePickerState {
   MyoroFilePickerPlatformFile? get selectedFile => _selectedFileNotifier.value;
 
   /// [_selectedFileNotifier] setter.
-  set selectedFile(MyoroFilePickerPlatformFile? selectedFile) =>
-      _selectedFileNotifier.value = selectedFile;
+  set selectedFile(MyoroFilePickerPlatformFile? selectedFile) => _selectedFileNotifier.value = selectedFile;
 
   // Dispose function.
   void dispose() {

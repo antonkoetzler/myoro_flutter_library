@@ -18,14 +18,8 @@ void main() {
     final themeExtension2 = MyoroFilePickerThemeExtension.fake();
     for (double i = 0; i < 1; i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
-      expect(
-        lerpedThemeExtension.spacing,
-        lerpDouble(themeExtension1.spacing, themeExtension2.spacing, i),
-      );
-      expect(
-        lerpedThemeExtension.textStyle,
-        TextStyle.lerp(themeExtension1.textStyle, themeExtension2.textStyle, i),
-      );
+      expect(lerpedThemeExtension.spacing, lerpDouble(themeExtension1.spacing, themeExtension2.spacing, i));
+      expect(lerpedThemeExtension.textStyle, TextStyle.lerp(themeExtension1.textStyle, themeExtension2.textStyle, i));
     }
   });
 }

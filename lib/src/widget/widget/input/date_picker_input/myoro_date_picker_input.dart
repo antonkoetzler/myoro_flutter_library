@@ -8,7 +8,7 @@ part '_widget/_trigger_area.dart';
 
 /// Date picker input (click date, no typy typy).
 class MyoroDatePickerInput extends MyoroStatefulWidget {
-  const MyoroDatePickerInput({super.key, super.createViewModel, required this.configuration});
+  const MyoroDatePickerInput({super.key, required this.configuration});
 
   /// Configuration.
   final MyoroDatePickerInputConfiguration configuration;
@@ -18,18 +18,17 @@ class MyoroDatePickerInput extends MyoroStatefulWidget {
 }
 
 final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
-  bool get _createViewModel => widget.createViewModel;
+  late final MyoroDatePickerInputViewModel _viewModel;
 
-  MyoroDatePickerInputViewModel? _localViewModel;
-  MyoroDatePickerInputViewModel get _viewModel {
-    return _createViewModel
-        ? MyoroDatePickerInputViewModel(widget.configuration)
-        : context.read<MyoroDatePickerInputViewModel>();
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = MyoroDatePickerInputViewModel(widget.configuration);
   }
 
   @override
   void dispose() {
-    _localViewModel?.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
@@ -42,15 +41,17 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
     final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
     final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
 
-    final child = Stack(
-      alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
-          ? Alignment.center
-          : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-      children: const [
-        _Input(),
-        Positioned(child: _TriggerArea()),
-      ],
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: Stack(
+        alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
+            ? Alignment.center
+            : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
+        children: const [
+          _Input(),
+          Positioned(child: _TriggerArea()),
+        ],
+      ),
     );
-    return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

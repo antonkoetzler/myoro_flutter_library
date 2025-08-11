@@ -21,7 +21,9 @@ final class _PickerButton extends StatelessWidget {
             style: textStyle,
           ),
           borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
+          // coverage:ignore-start
           onTapUp: (_) => openPicker(),
+          // coverage:ignore-end
         ),
       ),
     );

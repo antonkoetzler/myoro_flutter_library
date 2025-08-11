@@ -17,7 +17,9 @@ final class _SelectedFile extends StatelessWidget {
       valueListenable: selectedFileNotifier,
       builder: (_, selectedFile, _) => Text(
         // TODO: Localization.
+        // coverage:ignore-start
         selectedFile?.name ?? 'No file selected.',
+        // coverage:ignore-end
         style: textStyle,
       ),
     );

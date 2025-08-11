@@ -1,6 +1,5 @@
 # TODO
 
-- MyoroFilePicker
 - Double thumb slider of MyoroSlider
 - Documentation for all widgets available
 - Location dropdown input
