@@ -79,6 +79,7 @@ final class WidgetShowcaseModule implements Module {
       const MyoroModalWidgetShowcaseScreenThemeExtension.builder(),
 
       // Pickers
+      const MyoroFilePickerWidgetShowcaseScreenThemeExtension.builder(),
       const MyoroImagePickerWidgetShowcaseScreenThemeExtension.builder(),
 
       // Radios

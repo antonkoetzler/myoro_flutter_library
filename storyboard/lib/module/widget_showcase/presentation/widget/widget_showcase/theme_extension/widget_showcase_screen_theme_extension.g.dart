@@ -16,9 +16,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
 
   @override
   WidgetShowcaseScreenThemeExtension copyWith({
-    EdgeInsets? padding,
-    BoxDecoration? decoration,
-    EdgeInsets? contentPadding,
+    Color? color,
     IconData? widgetOptionsButtonIcon,
     double? widgetOptionsModalSpacing,
     EdgeInsets? widgetOptionsModalPadding,
@@ -26,9 +24,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
     EdgeInsets? widgetOptionsModalCloseButtonPadding,
   }) {
     return WidgetShowcaseScreenThemeExtension(
-      padding: padding ?? self.padding,
-      decoration: decoration ?? self.decoration,
-      contentPadding: contentPadding ?? self.contentPadding,
+      color: color ?? self.color,
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? self.widgetOptionsButtonIcon,
       widgetOptionsModalSpacing: widgetOptionsModalSpacing ?? self.widgetOptionsModalSpacing,
       widgetOptionsModalPadding: widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
@@ -42,9 +38,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   bool operator ==(Object other) {
     return other is WidgetShowcaseScreenThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.padding == self.padding &&
-        other.decoration == self.decoration &&
-        other.contentPadding == self.contentPadding &&
+        other.color == self.color &&
         other.widgetOptionsButtonIcon == self.widgetOptionsButtonIcon &&
         other.widgetOptionsModalSpacing == self.widgetOptionsModalSpacing &&
         other.widgetOptionsModalPadding == self.widgetOptionsModalPadding &&
@@ -55,9 +49,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   @override
   int get hashCode {
     return Object.hash(
-      self.padding,
-      self.decoration,
-      self.contentPadding,
+      self.color,
       self.widgetOptionsButtonIcon,
       self.widgetOptionsModalSpacing,
       self.widgetOptionsModalPadding,
@@ -69,9 +61,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   @override
   String toString() =>
       'WidgetShowcaseScreenThemeExtension(\n'
-      '  padding: ${self.padding},\n'
-      '  decoration: ${self.decoration},\n'
-      '  contentPadding: ${self.contentPadding},\n'
+      '  color: ${self.color},\n'
       '  widgetOptionsButtonIcon: ${self.widgetOptionsButtonIcon},\n'
       '  widgetOptionsModalSpacing: ${self.widgetOptionsModalSpacing},\n'
       '  widgetOptionsModalPadding: ${self.widgetOptionsModalPadding},\n'

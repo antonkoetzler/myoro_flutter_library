@@ -11,12 +11,11 @@ part 'widget_showcase_screen_theme_extension.g.dart';
 /// [ThemeExtension] of [WidgetShowcaseScreen].
 @immutable
 @myoroThemeExtension
-final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShowcaseScreenThemeExtension>
+final class WidgetShowcaseScreenThemeExtension
+    extends ThemeExtension<WidgetShowcaseScreenThemeExtension>
     with _$WidgetShowcaseScreenThemeExtensionMixin {
   const WidgetShowcaseScreenThemeExtension({
-    required this.padding,
-    required this.decoration,
-    required this.contentPadding,
+    required this.color,
     required this.widgetOptionsButtonIcon,
     required this.widgetOptionsModalSpacing,
     required this.widgetOptionsModalPadding,
@@ -26,9 +25,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
 
   // coverage:ignore-start
   WidgetShowcaseScreenThemeExtension.fake()
-    : padding = myoroFake<EdgeInsets>(),
-      decoration = myoroFake<BoxDecoration>(),
-      contentPadding = myoroFake<EdgeInsets>(),
+    : color = myoroFake<Color>(),
       widgetOptionsButtonIcon = myoroFake<IconData>(),
       widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: 24),
       widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
@@ -37,27 +34,18 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
   // coverage:ignore-end
 
   WidgetShowcaseScreenThemeExtension.builder()
-    : padding = const EdgeInsets.all(10),
-      decoration = BoxDecoration(
-        color: MyoroColors.blue1.withValues(alpha: 0.1),
-        border: Border.all(width: kMyoroBorderLength, color: MyoroColors.blue1),
-        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-      ),
-      contentPadding = const EdgeInsets.all(10),
+    : color = MyoroColors.blue1.withValues(alpha: kMyoroMultiplier * 5 / 100),
       widgetOptionsButtonIcon = Icons.menu,
       widgetOptionsModalSpacing = 10,
       widgetOptionsModalPadding = const EdgeInsets.only(top: 4),
-      widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: 8),
-      widgetOptionsModalCloseButtonPadding = const EdgeInsets.only(top: 4, right: 4);
+      widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: kMyoroMultiplier * 2),
+      widgetOptionsModalCloseButtonPadding = const EdgeInsets.only(
+        top: kMyoroMultiplier,
+        right: kMyoroMultiplier,
+      );
 
-  /// Padding of [_WidgetShowcase].
-  final EdgeInsets padding;
-
-  /// [BoxDecoration] of [_WidgetShowcase].
-  final BoxDecoration decoration;
-
-  /// Content padding of [_WidgetShowcase].
-  final EdgeInsets contentPadding;
+  /// [Color] of [_WidgetShowcase].
+  final Color color;
 
   /// [IconData] of the [_WidgetShowcase.widgetOptions] button.
   final IconData widgetOptionsButtonIcon;
@@ -81,12 +69,18 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
   ) {
     if (other is! WidgetShowcaseScreenThemeExtension) return this;
     return copyWith(
-      padding: EdgeInsets.lerp(padding, other.padding, t),
-      decoration: BoxDecoration.lerp(decoration, other.decoration, t),
-      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
+      color: Color.lerp(color, other.color, t),
       widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
-      widgetOptionsModalSpacing: lerpDouble(widgetOptionsModalSpacing, other.widgetOptionsModalSpacing, t),
-      widgetOptionsModalPadding: EdgeInsets.lerp(widgetOptionsModalPadding, other.widgetOptionsModalPadding, t),
+      widgetOptionsModalSpacing: lerpDouble(
+        widgetOptionsModalSpacing,
+        other.widgetOptionsModalSpacing,
+        t,
+      ),
+      widgetOptionsModalPadding: EdgeInsets.lerp(
+        widgetOptionsModalPadding,
+        other.widgetOptionsModalPadding,
+        t,
+      ),
       widgetOptionsModalItemPadding: EdgeInsets.lerp(
         widgetOptionsModalItemPadding,
         other.widgetOptionsModalItemPadding,

@@ -22,7 +22,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createLoaderThemeExtensions(colorScheme),
     ..._createMenuThemeExtensions(colorScheme, textTheme),
     ..._createModalThemeExtensions(colorScheme, textTheme),
-    ..._createPickerThemeExtensions(colorScheme),
+    ..._createPickerThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
     ..._createScreenThemeExtensions(),
     ..._createSliderThemeExtensions(textTheme),
@@ -118,8 +118,8 @@ List<ThemeExtension> _createModalThemeExtensions(ColorScheme colorScheme, TextTh
   return [MyoroModalThemeExtension.builder(colorScheme, textTheme), MyoroDialogModalThemeExtension.builder(textTheme)];
 }
 
-List<ThemeExtension> _createPickerThemeExtensions(ColorScheme colorScheme) {
-  return [const MyoroFilePickerThemeExtension.builder(), MyoroImagePickerThemeExtension.builder(colorScheme)];
+List<ThemeExtension> _createPickerThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [MyoroFilePickerThemeExtension.builder(textTheme), MyoroImagePickerThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

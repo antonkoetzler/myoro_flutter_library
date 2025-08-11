@@ -16,23 +16,43 @@ mixin _$MyoroFilePickerConfigurationMixin {
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroFilePickerConfiguration && other.runtimeType == runtimeType;
+    return other is MyoroFilePickerConfiguration &&
+        other.runtimeType == runtimeType &&
+        other.title == self.title &&
+        other.fileType == self.fileType &&
+        other.allowedExtensions == self.allowedExtensions &&
+        other.onChanged == self.onChanged;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll(const []);
+    return Object.hash(self.title, self.fileType, self.allowedExtensions, self.onChanged);
   }
 
   @override
   String toString() =>
       'MyoroFilePickerConfiguration(\n'
+      '  title: ${self.title},\n'
+      '  fileType: ${self.fileType},\n'
+      '  allowedExtensions: ${self.allowedExtensions},\n'
+      '  onChanged: ${self.onChanged},\n'
       ');';
 }
 
 /// Extension class for @myoroModel to place the copyWith function.
 extension $MyoroFilePickerConfigurationExtension on MyoroFilePickerConfiguration {
-  MyoroFilePickerConfiguration copyWith() {
-    return self;
+  MyoroFilePickerConfiguration copyWith({
+    String? title,
+    bool titleProvided = true,
+    MyoroFilePickerFileTypeEnum? fileType,
+    List<String>? allowedExtensions,
+    void Function(PlatformFile?)? onChanged,
+  }) {
+    return MyoroFilePickerConfiguration(
+      title: titleProvided ? (title ?? self.title) : null,
+      fileType: fileType ?? self.fileType,
+      allowedExtensions: allowedExtensions ?? self.allowedExtensions,
+      onChanged: onChanged ?? self.onChanged,
+    );
   }
 }

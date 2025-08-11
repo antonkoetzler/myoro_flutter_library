@@ -15,22 +15,27 @@ mixin _$MyoroFilePickerThemeExtensionMixin on ThemeExtension<MyoroFilePickerThem
   MyoroFilePickerThemeExtension get self => this as MyoroFilePickerThemeExtension;
 
   @override
-  MyoroFilePickerThemeExtension copyWith() {
-    return self;
+  MyoroFilePickerThemeExtension copyWith({double? spacing, TextStyle? textStyle}) {
+    return MyoroFilePickerThemeExtension(spacing: spacing ?? self.spacing, textStyle: textStyle ?? self.textStyle);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroFilePickerThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroFilePickerThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.spacing == self.spacing &&
+        other.textStyle == self.textStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll(const []);
+    return Object.hash(self.spacing, self.textStyle);
   }
 
   @override
   String toString() =>
       'MyoroFilePickerThemeExtension(\n'
+      '  spacing: ${self.spacing},\n'
+      '  textStyle: ${self.textStyle},\n'
       ');';
 }

@@ -7,10 +7,14 @@ final class _Content extends StatelessWidget {
   const _Content();
 
   @override
-  Widget build(_) {
-    return const Row(
+  Widget build(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
+    final spacing = themeExtension.spacing;
+
+    return Row(
+      spacing: spacing,
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: const [
         Flexible(child: _SelectedFile()),
         _PickerButton(),
       ],

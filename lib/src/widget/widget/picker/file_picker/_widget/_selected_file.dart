@@ -1,13 +1,13 @@
 part of '../myoro_file_picker.dart';
 
-/// Text displaying the selected file.
+/// Text displaying the selected file in [MyoroFilePicker].
 final class _SelectedFile extends StatelessWidget {
   const _SelectedFile();
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
-    final selectedFileTextStyle = themeExtension.selectedFileTextStyle;
+    final textStyle = themeExtension.textStyle;
 
     final viewModel = context.read<MyoroFilePickerViewModel>();
     final state = viewModel.state;
@@ -17,8 +17,8 @@ final class _SelectedFile extends StatelessWidget {
       valueListenable: selectedFileNotifier,
       builder: (_, selectedFile, _) => Text(
         // TODO: Localization.
-        selectedFile ?? 'No file selected.',
-        style: selectedFileTextStyle,
+        selectedFile?.name ?? 'No file selected.',
+        style: textStyle,
       ),
     );
   }
