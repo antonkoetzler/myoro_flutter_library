@@ -131,7 +131,7 @@ List<ThemeExtension> _createScreenThemeExtensions() {
 }
 
 List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {
-  return [MyoroSliderThemeExtension.builder(textTheme)];
+  return [const MyoroRangeSliderThemeExtension.builder(), MyoroSliderThemeExtension.builder(textTheme)];
 }
 
 List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

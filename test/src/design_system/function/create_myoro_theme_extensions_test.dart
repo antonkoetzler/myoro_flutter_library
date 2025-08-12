@@ -90,6 +90,7 @@ void main() {
     expectThemeExtensionExists(MyoroScreenThemeExtension);
 
     // Sliders
+    expectThemeExtensionExists(MyoroRangeSliderThemeExtension);
     expectThemeExtensionExists(MyoroSliderThemeExtension);
 
     // Snack bars

@@ -90,6 +90,7 @@ final class WidgetShowcaseModule implements Module {
       const MyoroScreenWidgetShowcaseScreenThemeExtension.builder(),
 
       // Sliders
+      const MyoroRangeSliderWidgetShowcaseScreenThemeExtension.builder(),
       const MyoroSliderWidgetShowcaseScreenThemeExtension.builder(),
 
       // Snack bars
