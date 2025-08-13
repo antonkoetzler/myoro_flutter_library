@@ -27,29 +27,27 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
   Widget build(context) {
     final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
 
+    final state = _viewModel.state;
+    final configuration = state.configuration;
+    final sliderValueNotifier = state.sliderValueNotifier;
+    final sliderConfiguration = state.sliderConfiguration;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (_viewModel.configuration.checkboxOnChanged != null)
-          Text(_viewModel.configuration.label, style: checkboxThemeExtension.labelTextStyle)
+        if (configuration.checkboxOnChanged != null)
+          Text(configuration.label, style: checkboxThemeExtension.labelTextStyle)
         else
           MyoroCheckbox(
             configuration: MyoroCheckboxConfiguration(
-              label: _viewModel.configuration.label,
-              value: _viewModel.configuration.initiallyEnabled,
+              label: configuration.label,
+              value: configuration.initiallyEnabled,
               onChanged: _viewModel.checkboxOnChanged,
             ),
           ),
         ValueListenableBuilder(
-          valueListenable: _viewModel.sliderValueNotifier,
-          builder: (_, sliderValue, _) {
-            return MyoroSlider(
-              configuration: MyoroSliderConfiguration(
-                value: sliderValue,
-                onChanged: _viewModel.configuration.sliderOnChanged,
-              ),
-            );
-          },
+          valueListenable: sliderValueNotifier,
+          builder: (_, sliderValue, _) => MyoroSlider(configuration: sliderConfiguration),
         ),
       ],
     );

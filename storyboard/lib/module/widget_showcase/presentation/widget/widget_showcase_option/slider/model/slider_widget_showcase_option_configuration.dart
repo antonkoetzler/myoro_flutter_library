@@ -10,7 +10,7 @@ part 'slider_widget_showcase_option_configuration.g.dart';
 @myoroModel
 final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {
   static const initiallyEnabledDefaultValue = true;
-  static const initialValueDefaultValue = MyoroSliderController.initialValueDefaultValue;
+  static const initialValueDefaultValue = 0.0;
 
   const SliderWidgetShowcaseOptionConfiguration({
     required this.label,

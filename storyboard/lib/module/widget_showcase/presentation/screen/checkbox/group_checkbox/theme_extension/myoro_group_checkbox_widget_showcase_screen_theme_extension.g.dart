@@ -17,22 +17,33 @@ mixin _$MyoroGroupCheckboxWidgetShowcaseScreenThemeExtensionMixin
       this as MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension copyWith() {
-    return self;
+  MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension copyWith({
+    double? spacingOptionsMinValue,
+    double? spacingOptionsMaxValue,
+  }) {
+    return MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension(
+      spacingOptionsMinValue: spacingOptionsMinValue ?? self.spacingOptionsMinValue,
+      spacingOptionsMaxValue: spacingOptionsMaxValue ?? self.spacingOptionsMaxValue,
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension && other.runtimeType == runtimeType;
+    return other is MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.spacingOptionsMinValue == self.spacingOptionsMinValue &&
+        other.spacingOptionsMaxValue == self.spacingOptionsMaxValue;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll(const []);
+    return Object.hash(self.spacingOptionsMinValue, self.spacingOptionsMaxValue);
   }
 
   @override
   String toString() =>
       'MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension(\n'
+      '  spacingOptionsMinValue: ${self.spacingOptionsMinValue},\n'
+      '  spacingOptionsMaxValue: ${self.spacingOptionsMaxValue},\n'
       ');';
 }

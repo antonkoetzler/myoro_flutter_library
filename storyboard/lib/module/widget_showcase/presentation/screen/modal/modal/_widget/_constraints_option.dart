@@ -7,11 +7,7 @@ final class _ConstraintsOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
-
-    return BoxConstraintsWidgetShowcaseOption(
-      configuration: BoxConstraintsWidgetShowcaseOptionConfiguration(
-        onChanged: (constraints) => viewModel.state.constraints = constraints,
-      ),
-    );
+    final state = viewModel.state;
+    return BoxConstraintsWidgetShowcaseOption(onChanged: (constraints) => state.constraints = constraints);
   }
 }
