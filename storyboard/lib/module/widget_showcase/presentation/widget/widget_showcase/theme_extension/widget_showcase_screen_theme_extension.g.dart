@@ -17,6 +17,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   @override
   WidgetShowcaseScreenThemeExtension copyWith({
     Color? color,
+    EdgeInsets? padding,
     IconData? widgetOptionsButtonIcon,
     double? widgetOptionsModalSpacing,
     EdgeInsets? widgetOptionsModalPadding,
@@ -25,6 +26,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   }) {
     return WidgetShowcaseScreenThemeExtension(
       color: color ?? self.color,
+      padding: padding ?? self.padding,
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? self.widgetOptionsButtonIcon,
       widgetOptionsModalSpacing: widgetOptionsModalSpacing ?? self.widgetOptionsModalSpacing,
       widgetOptionsModalPadding: widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
@@ -39,6 +41,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
     return other is WidgetShowcaseScreenThemeExtension &&
         other.runtimeType == runtimeType &&
         other.color == self.color &&
+        other.padding == self.padding &&
         other.widgetOptionsButtonIcon == self.widgetOptionsButtonIcon &&
         other.widgetOptionsModalSpacing == self.widgetOptionsModalSpacing &&
         other.widgetOptionsModalPadding == self.widgetOptionsModalPadding &&
@@ -50,6 +53,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   int get hashCode {
     return Object.hash(
       self.color,
+      self.padding,
       self.widgetOptionsButtonIcon,
       self.widgetOptionsModalSpacing,
       self.widgetOptionsModalPadding,
@@ -62,6 +66,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   String toString() =>
       'WidgetShowcaseScreenThemeExtension(\n'
       '  color: ${self.color},\n'
+      '  padding: ${self.padding},\n'
       '  widgetOptionsButtonIcon: ${self.widgetOptionsButtonIcon},\n'
       '  widgetOptionsModalSpacing: ${self.widgetOptionsModalSpacing},\n'
       '  widgetOptionsModalPadding: ${self.widgetOptionsModalPadding},\n'

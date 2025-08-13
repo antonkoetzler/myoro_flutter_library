@@ -1,38 +1,33 @@
-import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroSliderWidgetShowcaseScreen].
 final class MyoroSliderWidgetShowcaseScreenViewModel {
   /// State.
-  final state = MyoroSliderWidgetShowcaseScreenState();
+  final _state = MyoroSliderWidgetShowcaseScreenState();
+
+  /// [_state] getter.
+  MyoroSliderWidgetShowcaseScreenState get state => _state;
 
   /// [MyoroSliderConfiguration] of the [MyoroSlider].
-  MyoroSliderConfiguration configuration(BuildContext context) {
+  MyoroSliderConfiguration get configuration {
     return MyoroSliderConfiguration(
       label: state.label,
       labelTextStyle: state.labelTextStyle,
-      width: state.width,
-      currentValueIndicatorTextBuilder: state.currentValueIndicatorTextBuilderEnabled ? _formattedValue : null,
-      maxValueIndicatorTextBuilder: state.maxValueIndicatorTextBuilderEnabled ? _formattedValue : null,
-      footerIndicatorTextBuilder: state.footerIndicatorTextBuilderEnabled ? _footerIndicatorTextBuilder : null,
-      onChanged: state.onChangedEnabled ? (value) => _onChanged(context, value) : null,
+      value: state.value,
+      currentValueText:
+          state.currentValueTextEnabled ? _formattedValue : MyoroSliderConfiguration.currentValueTextDefaultValue,
+      maxValueText: state.maxValueTextEnabled ? _formattedValue : MyoroSliderConfiguration.maxValueTextDefaultValue,
+      footerText: state.footerTextEnabled ? _footerText : MyoroSliderConfiguration.footerTextDefaultValue,
+      onChanged: (value) => state.value = value,
     );
   }
 
-  String _footerIndicatorTextBuilder(double value) {
-    return 'Footer info! Value is ${_formattedValue(value)}.';
+  String get _footerText {
+    return 'Footer info! Value is $_formattedValue.';
   }
 
-  void _onChanged(BuildContext context, double value) {
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(message: 'Value changed! Value is ${_formattedValue(value)}.'),
-      ),
-    );
-  }
-
-  String _formattedValue(double value) {
-    return value.toStringAsFixed(2);
+  String get _formattedValue {
+    return state.value.toStringAsFixed(2);
   }
 }

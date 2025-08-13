@@ -1,8 +1,8 @@
 part of '../myoro_slider_widget_showcase_screen.dart';
 
-/// [MyoroSliderConfiguration.maxValueIndicatorTextBuilder] option of [MyoroSliderWidgetShowcaseScreen].
-final class _MaxValueIndicatorTextBuilderOption extends StatelessWidget {
-  const _MaxValueIndicatorTextBuilderOption();
+/// [MyoroSliderConfiguration.maxValueText] option of [MyoroSliderWidgetShowcaseScreen].
+final class _MaxValueTextOption extends StatelessWidget {
+  const _MaxValueTextOption();
 
   @override
   Widget build(context) {
@@ -11,7 +11,7 @@ final class _MaxValueIndicatorTextBuilderOption extends StatelessWidget {
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Show max value of slider on the right?',
-        onChanged: (value) => viewModel.state.maxValueIndicatorTextBuilderEnabled = value,
+        onChanged: (value) => viewModel.state.maxValueTextEnabled = value,
       ),
     );
   }

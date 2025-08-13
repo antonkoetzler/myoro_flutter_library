@@ -2,10 +2,10 @@ part of '../box_constraints_widget_showcase_option.dart';
 
 /// [MyoroSlider] to select the desired [BoxConstraints] value in [BoxConstraintsWidgetShowcaseOption].
 final class _Selector extends StatelessWidget {
-  const _Selector(this._configuration);
+  const _Selector(this._label, this._controller);
 
-  /// Configuration.
-  final BoxConstraintsWidgetShowcaseOptionSelectorConfiguration _configuration;
+  final String _label;
+  final BoxConstraintsWidgetShowcaseOptionSelectorController _controller;
 
   @override
   Widget build(context) {
@@ -14,16 +14,13 @@ final class _Selector extends StatelessWidget {
     return Row(
       spacing: widgetShowcaseThemeExtension.spacing,
       children: [
-        MyoroCheckbox(
-          configuration: MyoroCheckboxConfiguration(
-            onChanged: (enabled) => _configuration.controller.enabled = enabled,
-          ),
-        ),
+        MyoroCheckbox(configuration: MyoroCheckboxConfiguration(onChanged: (enabled) => _controller.enabled = enabled)),
         Expanded(
           child: MyoroSlider(
             configuration: MyoroSliderConfiguration(
-              label: _configuration.label,
-              onChanged: (value) => _configuration.controller.value = value,
+              label: _label,
+              value: _controller.value,
+              onChanged: (value) => _controller.value = value,
             ),
           ),
         ),

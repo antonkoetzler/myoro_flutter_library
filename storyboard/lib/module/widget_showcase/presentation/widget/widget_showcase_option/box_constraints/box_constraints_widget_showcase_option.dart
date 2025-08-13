@@ -8,17 +8,30 @@ part '_widget/_selector_row.dart';
 
 /// Widget showcase option to select a [BoxConstraints].
 final class BoxConstraintsWidgetShowcaseOption extends StatefulWidget {
-  const BoxConstraintsWidgetShowcaseOption({super.key, required this.configuration});
+  static const labelDefaultValue = 'Constraints';
 
-  /// Configuration.
-  final BoxConstraintsWidgetShowcaseOptionConfiguration configuration;
+  const BoxConstraintsWidgetShowcaseOption({super.key, this.label = labelDefaultValue, required this.onChanged});
+
+  /// Label of the [BoxConstraintsWidgetShowcaseOption].
+  final String label;
+
+  /// Function executed when the generated [BoxConstraints] change.
+  final BoxConstraintsWidgetShowcaseOptionOnChanged onChanged;
 
   @override
   State<BoxConstraintsWidgetShowcaseOption> createState() => _BoxConstraintsWidgetShowcaseOptionState();
 }
 
 final class _BoxConstraintsWidgetShowcaseOptionState extends State<BoxConstraintsWidgetShowcaseOption> {
-  late final _viewModel = BoxConstraintsWidgetShowcaseOptionViewModel(widget.configuration);
+  String get _label => widget.label;
+
+  late final _viewModel = BoxConstraintsWidgetShowcaseOptionViewModel(widget.onChanged);
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(context) {
@@ -30,26 +43,18 @@ final class _BoxConstraintsWidgetShowcaseOptionState extends State<BoxConstraint
         mainAxisSize: MainAxisSize.min,
         spacing: widgetShowcaseThemeExtension.spacing,
         children: [
-          Text(_viewModel.configuration.label, style: widgetShowcaseThemeExtension.labelTextStyle),
+          Text(_label, style: widgetShowcaseThemeExtension.labelTextStyle),
           _SelectorRow(
-            leftConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Min Height',
-              controller: _viewModel.minHeightController,
-            ),
-            rightConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Max Height',
-              controller: _viewModel.maxHeightController,
-            ),
+            leftLabel: 'Min Height',
+            leftController: _viewModel.minHeightController,
+            rightLabel: 'Max Height',
+            rightController: _viewModel.maxHeightController,
           ),
           _SelectorRow(
-            leftConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Min Width',
-              controller: _viewModel.minWidthController,
-            ),
-            rightConfiguration: BoxConstraintsWidgetShowcaseOptionSelectorConfiguration(
-              label: 'Max Width',
-              controller: _viewModel.maxWidthController,
-            ),
+            leftLabel: 'Min Width',
+            leftController: _viewModel.minWidthController,
+            rightLabel: 'Max Width',
+            rightController: _viewModel.maxWidthController,
           ),
         ],
       ),

@@ -3,15 +3,15 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [BoxConstraintsWidgetShowcaseOption].
 final class BoxConstraintsWidgetShowcaseOptionViewModel {
-  BoxConstraintsWidgetShowcaseOptionViewModel(this.configuration) {
+  BoxConstraintsWidgetShowcaseOptionViewModel(this._onChanged) {
     minHeightController.addListener(_updateConstraintsAndNotify);
     maxHeightController.addListener(_updateConstraintsAndNotify);
     minWidthController.addListener(_updateConstraintsAndNotify);
     maxWidthController.addListener(_updateConstraintsAndNotify);
   }
 
-  /// Configuration.
-  final BoxConstraintsWidgetShowcaseOptionConfiguration configuration;
+  /// [BoxConstraintsWidgetShowcaseOption.onChanged]
+  final BoxConstraintsWidgetShowcaseOptionOnChanged _onChanged;
 
   /// [BoxConstraints] field controllers.
   final minHeightController = BoxConstraintsWidgetShowcaseOptionSelectorController(value: 0);
@@ -29,7 +29,7 @@ final class BoxConstraintsWidgetShowcaseOptionViewModel {
 
   /// Calculates and calls [BoxConstraintsWidgetShowcaseOptionConfiguration.onChanged].
   void _updateConstraintsAndNotify() {
-    configuration.onChanged(
+    _onChanged(
       BoxConstraints(
         minHeight: minHeightController.enabled ? minHeightController.value : 0,
         maxHeight: maxHeightController.enabled ? maxHeightController.value : double.infinity,

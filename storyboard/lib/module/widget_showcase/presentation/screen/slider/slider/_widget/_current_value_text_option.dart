@@ -1,8 +1,8 @@
 part of '../myoro_slider_widget_showcase_screen.dart';
 
-/// [MyoroSliderConfiguration.currentValueIndicatorTextBuilder] of [MyoroSliderWidgetShowcaseScreen].
-final class _CurrentValueIndicatorTextBuilderOption extends StatelessWidget {
-  const _CurrentValueIndicatorTextBuilderOption();
+/// [MyoroSliderConfiguration.currentValueText] of [MyoroSliderWidgetShowcaseScreen].
+final class _CurrentValueTextOption extends StatelessWidget {
+  const _CurrentValueTextOption();
 
   @override
   Widget build(context) {
@@ -11,7 +11,7 @@ final class _CurrentValueIndicatorTextBuilderOption extends StatelessWidget {
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Show current value of slider on the left?',
-        onChanged: (value) => viewModel.state.currentValueIndicatorTextBuilderEnabled = value,
+        onChanged: (value) => viewModel.state.currentValueTextEnabled = value,
       ),
     );
   }

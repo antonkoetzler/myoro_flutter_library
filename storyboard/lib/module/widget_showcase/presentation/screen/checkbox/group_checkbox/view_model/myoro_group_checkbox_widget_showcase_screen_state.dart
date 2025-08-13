@@ -4,6 +4,8 @@ import 'package:storyboard/storyboard.dart';
 
 /// State of [MyoroGroupCheckboxWidgetShowcaseScreenViewModel].
 final class MyoroGroupCheckboxWidgetShowcaseScreenState extends ChangeNotifier {
+  MyoroGroupCheckboxWidgetShowcaseScreenState(this._spacing, this._runSpacing);
+
   /// [MyoroGroupCheckboxConfiguration.direction]
   Axis _direction = MyoroGroupCheckboxConfiguration.directionDefaultValue;
   Axis get direction => _direction;
@@ -13,17 +15,17 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroGroupCheckboxConfiguration.spacing]
-  double? _spacing;
-  double? get spacing => _spacing;
-  set spacing(double? spacing) {
+  double _spacing;
+  double get spacing => _spacing;
+  set spacing(double spacing) {
     _spacing = spacing;
     notifyListeners();
   }
 
   /// [MyoroGroupCheckboxConfiguration.runSpacing]
-  double? _runSpacing;
-  double? get runSpacing => _runSpacing;
-  set runSpacing(double? runSpacing) {
+  double _runSpacing;
+  double get runSpacing => _runSpacing;
+  set runSpacing(double runSpacing) {
     _runSpacing = runSpacing;
     notifyListeners();
   }

@@ -15,6 +15,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     with _$WidgetShowcaseScreenThemeExtensionMixin {
   const WidgetShowcaseScreenThemeExtension({
     required this.color,
+    required this.padding,
     required this.widgetOptionsButtonIcon,
     required this.widgetOptionsModalSpacing,
     required this.widgetOptionsModalPadding,
@@ -25,8 +26,9 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
   // coverage:ignore-start
   WidgetShowcaseScreenThemeExtension.fake()
     : color = myoroFake<Color>(),
+      padding = myoroFake<EdgeInsets>(),
       widgetOptionsButtonIcon = myoroFake<IconData>(),
-      widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: 24),
+      widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: kMyoroMultiplier * 4),
       widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
       widgetOptionsModalItemPadding = myoroFake<EdgeInsets>(),
       widgetOptionsModalCloseButtonPadding = myoroFake<EdgeInsets>();
@@ -34,6 +36,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
 
   WidgetShowcaseScreenThemeExtension.builder()
     : color = MyoroColors.blue1.withValues(alpha: kMyoroMultiplier * 5 / 100),
+      padding = const EdgeInsets.all(kMyoroMultiplier * 4),
       widgetOptionsButtonIcon = Icons.menu,
       widgetOptionsModalSpacing = 10,
       widgetOptionsModalPadding = const EdgeInsets.only(top: 4),
@@ -42,6 +45,9 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
 
   /// [Color] of [_WidgetShowcase].
   final Color color;
+
+  /// Padding of the [MyoroScreenConfiguration.body].
+  final EdgeInsets padding;
 
   /// [IconData] of the [_WidgetShowcase.widgetOptions] button.
   final IconData widgetOptionsButtonIcon;
@@ -66,6 +72,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     if (other is! WidgetShowcaseScreenThemeExtension) return this;
     return copyWith(
       color: Color.lerp(color, other.color, t),
+      padding: EdgeInsets.lerp(padding, other.padding, t),
       widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
       widgetOptionsModalSpacing: lerpDouble(widgetOptionsModalSpacing, other.widgetOptionsModalSpacing, t),
       widgetOptionsModalPadding: EdgeInsets.lerp(widgetOptionsModalPadding, other.widgetOptionsModalPadding, t),

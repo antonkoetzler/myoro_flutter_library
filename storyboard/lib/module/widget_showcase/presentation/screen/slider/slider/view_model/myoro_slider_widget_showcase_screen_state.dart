@@ -3,6 +3,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroSliderWidgetShowcaseScreenViewModel].
 final class MyoroSliderWidgetShowcaseScreenState extends ChangeNotifier {
+  /// [MyoroSliderConfiguration.value]
+  double _value = 0.0;
+  double get value => _value;
+  set value(double value) {
+    if (_value == value) return;
+    _value = value;
+    notifyListeners();
+  }
+
   /// [MyoroSliderConfiguration.label]
   String _label = MyoroSliderConfiguration.labelDefaultValue;
   String get label => _label;
@@ -19,43 +28,27 @@ final class MyoroSliderWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroSliderConfiguration.width]
-  double? _width;
-  double? get width => _width;
-  set width(double? width) {
-    _width = width;
+  /// [MyoroSliderConfiguration.currentValueText]
+  bool _currentValueTextEnabled = false;
+  bool get currentValueTextEnabled => _currentValueTextEnabled;
+  set currentValueTextEnabled(bool currentValueTextEnabled) {
+    _currentValueTextEnabled = currentValueTextEnabled;
     notifyListeners();
   }
 
-  /// [MyoroSliderConfiguration.currentValueIndicatorTextBuilder]
-  bool _currentValueIndicatorTextBuilderEnabled = false;
-  bool get currentValueIndicatorTextBuilderEnabled => _currentValueIndicatorTextBuilderEnabled;
-  set currentValueIndicatorTextBuilderEnabled(bool currentValueIndicatorTextBuilderEnabled) {
-    _currentValueIndicatorTextBuilderEnabled = currentValueIndicatorTextBuilderEnabled;
+  /// [MyoroSliderConfiguration.maxValueText]
+  bool _maxValueTextEnabled = false;
+  bool get maxValueTextEnabled => _maxValueTextEnabled;
+  set maxValueTextEnabled(bool maxValueTextEnabled) {
+    _maxValueTextEnabled = maxValueTextEnabled;
     notifyListeners();
   }
 
-  /// [MyoroSliderConfiguration.maxValueIndicatorTextBuilder]
-  bool _maxValueIndicatorTextBuilderEnabled = false;
-  bool get maxValueIndicatorTextBuilderEnabled => _maxValueIndicatorTextBuilderEnabled;
-  set maxValueIndicatorTextBuilderEnabled(bool maxValueIndicatorTextBuilderEnabled) {
-    _maxValueIndicatorTextBuilderEnabled = maxValueIndicatorTextBuilderEnabled;
-    notifyListeners();
-  }
-
-  /// [MyoroSliderConfiguration.footerIndicatorTextBuilder]
-  bool _footerIndicatorTextBuilderEnabled = false;
-  bool get footerIndicatorTextBuilderEnabled => _footerIndicatorTextBuilderEnabled;
-  set footerIndicatorTextBuilderEnabled(bool footerIndicatorTextBuilderEnabled) {
-    _footerIndicatorTextBuilderEnabled = footerIndicatorTextBuilderEnabled;
-    notifyListeners();
-  }
-
-  /// [MyoroSliderConfiguration.onChanged]
-  bool _onChangedEnabled = false;
-  bool get onChangedEnabled => _onChangedEnabled;
-  set onChangedEnabled(bool onChangedEnabled) {
-    _onChangedEnabled = onChangedEnabled;
+  /// [MyoroSliderConfiguration.footerText]
+  bool _footerTextEnabled = false;
+  bool get footerTextEnabled => _footerTextEnabled;
+  set footerTextEnabled(bool footerTextEnabled) {
+    _footerTextEnabled = footerTextEnabled;
     notifyListeners();
   }
 }

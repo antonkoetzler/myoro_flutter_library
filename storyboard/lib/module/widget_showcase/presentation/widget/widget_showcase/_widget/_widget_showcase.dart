@@ -13,6 +13,7 @@ final class _WidgetShowcase extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: themeExtension.color,
+      padding: themeExtension.padding,
       child: Center(child: viewModel.configuration.widget),
     );
   }

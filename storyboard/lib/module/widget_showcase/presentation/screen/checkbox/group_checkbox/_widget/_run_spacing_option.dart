@@ -7,10 +7,13 @@ final class _RunSpacingOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final runSpacing = state.runSpacing;
 
     return MyoroSlider(
       configuration: MyoroSliderConfiguration(
         label: 'Run spacing',
+        value: runSpacing,
         onChanged: (value) => viewModel.state.runSpacing = value,
       ),
     );

@@ -3,10 +3,11 @@ import 'dart:ui';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_group_checkbox_theme_extension.g.dart';
 
-/// [ThemeExtension] for [MyoroCheckbox].
+/// [ThemeExtension] for [MyoroGroupCheckbox].
 @immutable
 @myoroThemeExtension
 class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckboxThemeExtension>
@@ -19,7 +20,7 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
       runSpacing = faker.randomGenerator.decimal();
   // coverage:ignore-end
 
-  const MyoroGroupCheckboxThemeExtension.builder() : spacing = 5, runSpacing = 5;
+  const MyoroGroupCheckboxThemeExtension.builder() : spacing = kMyoroMultiplier, runSpacing = kMyoroMultiplier;
 
   /// Main axis spacing in between each checkbox.
   final double spacing;

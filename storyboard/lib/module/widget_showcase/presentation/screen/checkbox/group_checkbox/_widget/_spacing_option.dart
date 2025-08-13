@@ -7,9 +7,15 @@ final class _SpacingOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final spacing = state.spacing;
 
     return MyoroSlider(
-      configuration: MyoroSliderConfiguration(label: 'Spacing', onChanged: (value) => viewModel.state.spacing = value),
+      configuration: MyoroSliderConfiguration(
+        label: 'Spacing',
+        value: spacing,
+        onChanged: (value) => viewModel.state.spacing = value,
+      ),
     );
   }
 }

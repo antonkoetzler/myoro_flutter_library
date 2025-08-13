@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:storyboard/storyboard.dart';
 
 /// Controller of a [_Slider] in [BoxConstraintsWidgetShowcaseOption].

@@ -1,8 +1,8 @@
 part of '../myoro_slider_widget_showcase_screen.dart';
 
-/// [MyoroSliderConfiguration.footerIndicatorTextBuilder] option of [MyoroSliderWidgetShowcaseScreen].
-final class _FooterIndicatorTextBuilderOption extends StatelessWidget {
-  const _FooterIndicatorTextBuilderOption();
+/// [MyoroSliderConfiguration.footerText] option of [MyoroSliderWidgetShowcaseScreen].
+final class _FooterTextOption extends StatelessWidget {
+  const _FooterTextOption();
 
   @override
   Widget build(context) {
@@ -11,7 +11,7 @@ final class _FooterIndicatorTextBuilderOption extends StatelessWidget {
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
         label: 'Show text below the slider?',
-        onChanged: (value) => viewModel.state.footerIndicatorTextBuilderEnabled = value,
+        onChanged: (value) => viewModel.state.footerTextEnabled = value,
       ),
     );
   }

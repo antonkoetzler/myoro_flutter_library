@@ -6,6 +6,6 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(_) {
-    return const MyoroRangeSlider(configuration: MyoroRangeSliderConfiguration());
+    return MyoroRangeSlider(configuration: MyoroRangeSliderConfiguration(onChanged: (_) {}));
   }
 }

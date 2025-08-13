@@ -7,6 +7,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
-    return MyoroSlider(configuration: viewModel.configuration(context));
+    final state = viewModel.state;
+    return ListenableBuilder(listenable: state, builder: (_, _) => MyoroSlider(configuration: viewModel.configuration));
   }
 }

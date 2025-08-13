@@ -10,21 +10,39 @@ part '_widget/_spacing_option.dart';
 part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroGroupCheckbox].
-final class MyoroGroupCheckboxWidgetShowcaseScreen extends StatelessWidget {
+final class MyoroGroupCheckboxWidgetShowcaseScreen extends StatefulWidget {
   static const options = [_DirectionOption(), _SpacingOption(), _RunSpacingOption()];
 
   const MyoroGroupCheckboxWidgetShowcaseScreen({super.key});
 
   @override
+  State<MyoroGroupCheckboxWidgetShowcaseScreen> createState() => _MyoroGroupCheckboxWidgetShowcaseScreenState();
+}
+
+class _MyoroGroupCheckboxWidgetShowcaseScreenState extends State<MyoroGroupCheckboxWidgetShowcaseScreen> {
+  late final _viewModel = MyoroGroupCheckboxWidgetShowcaseScreenViewModel(context);
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(_) {
-    return InheritedProvider(
-      create: (_) => MyoroGroupCheckboxWidgetShowcaseScreenViewModel(),
-      child: const WidgetShowcaseScreen(
-        configuration: WidgetShowcaseScreenConfiguration(
-          widgetName: MyoroWidgetListEnum.myoroGroupCheckboxTitle,
-          widget: _Widget(),
-          widgetOptions: options,
-        ),
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: ListenableBuilder(
+        listenable: _viewModel.state,
+        builder: (_, _) {
+          return const WidgetShowcaseScreen(
+            configuration: WidgetShowcaseScreenConfiguration(
+              widgetName: MyoroWidgetListEnum.myoroGroupCheckboxTitle,
+              widget: _Widget(),
+              widgetOptions: MyoroGroupCheckboxWidgetShowcaseScreen.options,
+            ),
+          );
+        },
       ),
     );
   }

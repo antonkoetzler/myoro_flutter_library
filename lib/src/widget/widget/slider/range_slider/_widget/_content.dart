@@ -7,8 +7,15 @@ final class _Content extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroRangeSliderViewModel>();
+    final state = viewModel.state;
+    final valueNotifier = state.valueNotifier;
     final onChanged = viewModel.onChanged;
 
-    return RangeSlider(values: const RangeValues(0, 0), onChanged: onChanged);
+    return ValueListenableBuilder(
+      valueListenable: valueNotifier,
+      builder: (_, values, _) {
+        return RangeSlider(values: values, onChanged: onChanged);
+      },
+    );
   }
 }
