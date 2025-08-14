@@ -1,4 +1,4 @@
-part of '../myoro_dropdown_widget_showcase_screen.dart';
+part of '../myoro_dropdowns_widget_showcase_screen.dart';
 
 /// Title of either [MyoroMultiDropdown] or [MyoroSingularDropdown].
 final class _Title extends StatelessWidget {

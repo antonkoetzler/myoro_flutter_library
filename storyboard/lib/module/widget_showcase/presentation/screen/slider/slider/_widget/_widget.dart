@@ -1,13 +1,30 @@
-part of '../myoro_slider_widget_showcase_screen.dart';
+part of '../myoro_sliders_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroSliderWidgetShowcaseScreen].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroSlidersWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
+    final themeExtension = context.resolveThemeExtension<MyoroSlidersWidgetShowcaseScreenThemeExtension>();
+    final spacing = themeExtension.spacing;
+
+    final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
-    return ListenableBuilder(listenable: state, builder: (_, _) => MyoroSlider(configuration: viewModel.configuration));
+
+    return ListenableBuilder(
+      listenable: state,
+      builder: (_, _) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: spacing,
+          children: [
+            MyoroSlider(configuration: viewModel.sliderConfiguration),
+            MyoroRangeSlider(configuration: viewModel.rangeSliderConfiguration),
+          ],
+        );
+      },
+    );
   }
 }

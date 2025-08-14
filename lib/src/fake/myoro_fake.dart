@@ -131,6 +131,11 @@ T myoroFake<T>() {
     return OutlineInputBorder(borderRadius: myoroFake<BorderRadius>(), borderSide: myoroFake<BorderSide>()) as T;
   }
 
+  if (T == RangeValues) {
+    final min = faker.randomGenerator.decimal(scale: 20);
+    return RangeValues(min, faker.randomGenerator.decimal(scale: 200, min: min)) as T;
+  }
+
   if (T == RoundedRectangleBorder) {
     return RoundedRectangleBorder(side: myoroFake<BorderSide>()) as T;
   }

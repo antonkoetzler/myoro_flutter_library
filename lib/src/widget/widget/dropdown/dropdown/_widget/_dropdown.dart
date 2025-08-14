@@ -1,4 +1,4 @@
-part of '../myoro_dropdown.dart';
+part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// Merge point for both dropdowns where the shared logic begins.
 final class _Dropdown<T, C extends _C<T>> extends StatefulWidget {
@@ -34,7 +34,7 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownsThemeExtension>();
 
     return Provider.value(
       value: _viewModel,

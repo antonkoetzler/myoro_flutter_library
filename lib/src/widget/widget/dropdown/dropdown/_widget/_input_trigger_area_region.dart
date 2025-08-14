@@ -1,4 +1,4 @@
-part of '../myoro_dropdown.dart';
+part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// Clickable area of [_InputTriggerArea].
 ///

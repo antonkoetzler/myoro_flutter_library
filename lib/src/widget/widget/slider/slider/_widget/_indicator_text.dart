@@ -1,4 +1,4 @@
-part of '../myoro_slider.dart';
+part of '../bundle/myoro_slider_bundle.dart';
 
 /// Indicator text at the edges of a [MyoroSlider].
 final class _IndicatorText extends StatelessWidget {
@@ -9,7 +9,7 @@ final class _IndicatorText extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSlidersThemeExtension>();
 
     return Text(
       _text,

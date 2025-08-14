@@ -1,4 +1,4 @@
-part of '../myoro_dropdown.dart';
+part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// [MyoroCheckbox] that enables/disables the dropdown.
 final class _Checkbox<T, C extends _C<T>> extends StatelessWidget {

@@ -1,4 +1,4 @@
-part of '../myoro_dropdown.dart';
+part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// [Widget] responsible for opening the dropdown when [_Input] is pressed.
 final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {

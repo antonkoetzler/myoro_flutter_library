@@ -48,7 +48,7 @@ final class WidgetShowcaseModule implements Module {
       const MyoroDrawerWidgetShowcaseScreenThemeExtension.builder(),
 
       // Dropdowns
-      const MyoroDropdownWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroDropdownsWidgetShowcaseScreenThemeExtension.builder(),
 
       // Feedbacks
       const MyoroFeedbackWidgetShowcaseScreenThemeExtension.builder(),
@@ -90,8 +90,7 @@ final class WidgetShowcaseModule implements Module {
       const MyoroScreenWidgetShowcaseScreenThemeExtension.builder(),
 
       // Sliders
-      const MyoroRangeSliderWidgetShowcaseScreenThemeExtension.builder(),
-      const MyoroSliderWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroSlidersWidgetShowcaseScreenThemeExtension.builder(),
 
       // Snack bars
       const MyoroSnackBarWidgetShowcaseScreenThemeExtension.builder(),

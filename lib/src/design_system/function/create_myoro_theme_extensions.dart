@@ -76,7 +76,7 @@ List<ThemeExtension> _createDrawerThemeExtension(ColorScheme colorScheme, TextTh
 }
 
 List<ThemeExtension> _createDropdownThemeExtensions(ColorScheme colorScheme) {
-  return [MyoroDropdownThemeExtension.builder(colorScheme)];
+  return [MyoroDropdownsThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createFeedbackThemeExtensions(TextTheme textTheme) {
@@ -131,7 +131,7 @@ List<ThemeExtension> _createScreenThemeExtensions() {
 }
 
 List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {
-  return [const MyoroRangeSliderThemeExtension.builder(), MyoroSliderThemeExtension.builder(textTheme)];
+  return [MyoroSlidersThemeExtension.builder(textTheme)];
 }
 
 List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

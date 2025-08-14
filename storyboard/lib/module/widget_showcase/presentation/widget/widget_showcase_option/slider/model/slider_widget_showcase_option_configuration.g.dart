@@ -55,7 +55,7 @@ extension $SliderWidgetShowcaseOptionConfigurationExtension on SliderWidgetShowc
     double? initialValue,
     void Function(bool, double)? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
-    void Function(double)? sliderOnChanged,
+    void Function(dynamic)? sliderOnChanged,
   }) {
     return SliderWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,

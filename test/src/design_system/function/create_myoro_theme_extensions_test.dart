@@ -48,7 +48,7 @@ void main() {
     expectThemeExtensionExists(MyoroDrawerThemeExtension);
 
     // Dropdowns
-    expectThemeExtensionExists(MyoroDropdownThemeExtension);
+    expectThemeExtensionExists(MyoroDropdownsThemeExtension);
 
     // Feedbacks
     expectThemeExtensionExists(MyoroFeedbackThemeExtension);
@@ -90,8 +90,7 @@ void main() {
     expectThemeExtensionExists(MyoroScreenThemeExtension);
 
     // Sliders
-    expectThemeExtensionExists(MyoroRangeSliderThemeExtension);
-    expectThemeExtensionExists(MyoroSliderThemeExtension);
+    expectThemeExtensionExists(MyoroSlidersThemeExtension);
 
     // Snack bars
     expectThemeExtensionExists(MyoroSnackBarContainerThemeExtension);

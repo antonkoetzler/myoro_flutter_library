@@ -1,4 +1,4 @@
-part of '../myoro_dropdown.dart';
+part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// [MyoroInput] that displays selected items and provides functionality such as the clear selected items button.
 final class _Input<T, C extends _C<T>> extends StatefulWidget {

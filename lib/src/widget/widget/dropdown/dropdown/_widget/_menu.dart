@@ -1,4 +1,4 @@
-part of '../myoro_dropdown.dart';
+part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// [MyoroMenu] responsible for acting as the dropdown menu.
 final class _Menu<T, C extends _C<T>> extends StatefulWidget {
@@ -43,7 +43,7 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownsThemeExtension>();
 
     final state = _viewModel.state;
     final selectedItemsNotifier = state.selectedItemsNotifier;

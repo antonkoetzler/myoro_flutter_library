@@ -1,12 +1,12 @@
-part of '../myoro_slider_widget_showcase_screen.dart';
+part of '../myoro_sliders_widget_showcase_screen.dart';
 
-/// [MyoroSliderConfiguration.footerText] option of [MyoroSliderWidgetShowcaseScreen].
+/// [MyoroSliderConfiguration.footerText] option of [MyoroSlidersWidgetShowcaseScreen].
 final class _FooterTextOption extends StatelessWidget {
   const _FooterTextOption();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroSliderWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(

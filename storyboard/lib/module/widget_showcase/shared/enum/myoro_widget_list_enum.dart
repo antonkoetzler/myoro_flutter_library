@@ -25,7 +25,7 @@ enum MyoroWidgetListEnum {
   pickers('Pickers', {myoroFilePickerTitle, myoroImagePickerTitle}),
   radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle}),
   screens('Screens', {myoroScreenTitle}),
-  sliders('Sliders', {myoroRangeSliderTitle, myoroSliderTitle}),
+  sliders('Sliders', {myoroSlidersTitle}),
   snackBars('Snack Bars', {myoroSnackBarTitle, myoroSnackBarContainerTitle}),
   tabView('Tab views', {myoroTabViewTitle}),
   tables('Tables', {myoroTableTitle}),
@@ -118,8 +118,7 @@ enum MyoroWidgetListEnum {
   static const myoroScreenTitle = 'MyoroScreen';
 
   // Sliders
-  static const myoroRangeSliderTitle = 'MyoroRangeSlider';
-  static const myoroSliderTitle = 'MyoroSlider';
+  static const myoroSlidersTitle = 'MyoroSlider & MyoroRangeSlider';
 
   // Snack bars
   static const myoroSnackBarTitle = 'MyoroSnackBar';
@@ -167,7 +166,7 @@ enum MyoroWidgetListEnum {
       myoroDrawerTitle => const MyoroDrawerWidgetShowcaseScreen(),
 
       // Dropdowns
-      myoroDropdownsTitle => const MyoroDropdownWidgetShowcaseScreen(),
+      myoroDropdownsTitle => const MyoroDropdownsWidgetShowcaseScreen(),
 
       // Feedbacks
       myoroFeedbackTitle => const MyoroFeedbackWidgetShowcaseScreen(),
@@ -209,8 +208,7 @@ enum MyoroWidgetListEnum {
       myoroScreenTitle => const MyoroScreenWidgetShowcaseScreen(),
 
       // Sliders
-      myoroRangeSliderTitle => const MyoroRangeSliderWidgetShowcaseScreen(),
-      myoroSliderTitle => const MyoroSliderWidgetShowcaseScreen(),
+      myoroSlidersTitle => const MyoroSlidersWidgetShowcaseScreen(),
 
       // Snack bars
       myoroSnackBarTitle => const MyoroSnackBarWidgetShowcaseScreen(),
