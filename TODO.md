@@ -3,7 +3,6 @@
 - Documentation
   - All widgets available
   - Theme extension overwritting
-- (**IN PROGRESS**) Double thumb slider of MyoroSlider
 - Location dropdown input
 - Localization (of MFL and storyboard)
 - Change app icon of storyboard

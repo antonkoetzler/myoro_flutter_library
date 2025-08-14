@@ -2,7 +2,6 @@
 
 - feature: `MyoroImagePicker`
 - feature: `MyoroFilePicker`
-- feature: `MyoroSlider`
-- refactor: Correctly apply MVVM-C logic in dropdowns
-- improvement: `MyoroSlider`'s MVVM-C application
+- feature: `MyoroSlider` (V2) and `MyoroRangeSlider`
+- refactor: Correctly apply MVVM-C logic and nomenclature in dropdowns
 - fix: Various improvements and bug fixes to the storyboard
