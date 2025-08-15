@@ -1,4 +1,4 @@
-# Code Standards
+# Code standards
 
 ## Flutter version
 
@@ -14,7 +14,7 @@ MFL uses [Myoro Flutter Annotations](https://github.com/antonkoetzler/myoro_flut
 
 ## Documenting your changes
 
-Use `STAGELOG.md` to add what you did in your pull request. This will then be added to `CHANGELOG.md`. Here is the format (always in - format and there must be a space between the title and notes:
+1. Use `STAGELOG.md` to add what you did in your pull request. This will then be added to `CHANGELOG.md`. Here is the format (always in - format and there must be a space between the title and notes:
 
 ```markdown
 # STAGLOG
@@ -22,14 +22,16 @@ Use `STAGELOG.md` to add what you did in your pull request. This will then be ad
 - Bla bla bla
 ```
 
+2. If you're creating a new `Widget`, add it to [`Widgets.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Widgets.md).
+
 ## MVVM-C: MFL `Widget` architecture pattern
 
 This idea is what I deem is the best for creating generic `Widget`s. It is a mix of MVVM and MVC. MVVM-C standards for (**M**odel **V**iew **V**iew **M**odel **C**ontroller). A `Widget` consists of:
 
 1. The model: To encapsulate data;
-2. The view: The `Widget`;
-3. The view model: To store the logic of the `Widget`;
-4. The controller: To provide public APIs to the user of the `Widget`. Within the MVVM-C pattern, controllers, when created, are responsible for creating the `Widget`s view model. This is due to the nature of the controller being naturally detached from the `Widget` until it is built.
+1. The view: The `Widget`;
+1. The view model: To store the logic of the `Widget`;
+1. The controller: To provide public APIs to the user of the `Widget`. Within the MVVM-C pattern, controllers, when created, are responsible for creating the `Widget`s view model. This is due to the nature of the controller being naturally detached from the `Widget` until it is built.
 
 ## Dependencies of a MFL `Widget`
 
@@ -52,15 +54,15 @@ Since MFL uses standard Flutter architectural design, the folder structure is DD
 
 1. Top-level folders should be features: When creating a feature that offers many tools, such as the `lib/src/widget` folder, which offers `Widget`s, we priortize top-level folders to be features. Within these features folder, we place all of our generic folders that it utilizes (`_widget`, `controller`, `model`, `function`, etc).
 
-### `lib/src`
+### `lib/src/features`
 
-Every folder within the `src` folder is a feature that MFL offers. Everything is within `lib/src` so MFL may only be imported like so:
+Every folder within this folder is a feature that MFL offers. Everything is within `lib/src/features` so MFL may only be imported like so:
 
 ```dart
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ```
 
-### `lib/src/widget`
+### `lib/src/features/widget`
 
 Every folder in `lib/src/widget` is a `Widget` category. Every folder within a widget category folder is a `Widget`. Within `Widget` folders, you will create all of the generic folders that are used within the `Widget`'s implementation.
 

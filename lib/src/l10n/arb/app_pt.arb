@@ -1,0 +1,8 @@
+{
+  "myoroFilePickerPickerButtonText": "Procurar",
+  "myoroFilePickerSelectedFileUnselectedText": "Nenhum arquivo selecionado.",
+
+  "myoroImagePickerSelectionTypeModalText": "Selecionar origem da imagem",
+  "myoroImagePickerSelectionTypeModalButtonCameraText": "Abrir câmera",
+  "myoroImagePickerSelectionTypeModalButtonGalleryText": "Procurar na galeria"
+}

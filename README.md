@@ -43,11 +43,13 @@ dependencies:
 
 ## Resources
 
+1. [`Widgets.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Widgets.md): List of all `Widget`s provided;
+1. [`Widget customization.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Widget%20customization.md): Customizing `Widget`s.
 1. [`CHANGELOG.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/CHANGELOG.md): Documentation of changes in every feature;
 1. [`STAGELOG.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/STAGELOG.md): When `dev` has not been merged yet, this is the coming set of changes;
 1. [`Standards.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Standards.md): Code standards;
 1. [`Tools.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Tools.md): The `tool` folder;
 1. [`Issues.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Issues.md): About creating issues;
-1. [`Pull Requests.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Pull%20Requests.md): About creating pull requests;
+1. [`Pull requests.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Pull%20requests.md): About creating pull requests.
 
 <p>&nbsp;</p>
