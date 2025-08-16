@@ -25,7 +25,11 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          flutter pub get
+          cd storyboard
+          flutter pub get
+          cd ..
 
       - name: Dart fix check (fails if fixes exist)
         run: dart fix --dry-run .
