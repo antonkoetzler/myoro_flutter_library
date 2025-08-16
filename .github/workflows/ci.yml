@@ -25,7 +25,10 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          flutter pub cache clean --force
+          flutter clean
+          flutter pub get
 
       - name: Dart fix check (fails if fixes exist)
         run: dart fix --dry-run .
