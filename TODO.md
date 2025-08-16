@@ -1,11 +1,10 @@
 # TODO
 
-- Localization for storyboard
 - Change app icon of storyboard
 - 100% pub.dev score
 - Delete `MyoroStatelessWidget` and `MyoroStatefulWidget` and use getIt and require the initialization function
   - The initialization function is especially important for localization, this isn't just for DI (it needs to be done)
-- Delete kiwi container from storyboard and use get it
+- Delete kiwi container
 - Make every `ThemeExtension` nullable to allow more customizability for `ThemeExtension` overriding
 
 ## Technical debt that should be gradually resolved
