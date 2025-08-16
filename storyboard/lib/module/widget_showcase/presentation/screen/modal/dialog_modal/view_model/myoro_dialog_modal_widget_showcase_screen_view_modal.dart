@@ -49,8 +49,6 @@ final class MyoroDialogModalWidgetShowcaseScreenViewModel {
 
   /// Generic function to show a snackbar.
   void _showSnackBar(BuildContext context, String message) {
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message)),
-    );
+    context.showSnackBar(snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message)));
   }
 }

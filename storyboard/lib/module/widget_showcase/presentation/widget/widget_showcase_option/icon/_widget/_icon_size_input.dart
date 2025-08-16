@@ -20,9 +20,8 @@ final class _IconSizeInput extends StatelessWidget {
             label: 'Icon size',
             enabled: enabled,
             onChanged: (text) => viewModel.iconSize = double.parse(text),
-            checkboxOnChanged: configuration.iconSizeCheckboxOnChanged != null
-                ? viewModel.iconSizeInputCheckboxOnChanged
-                : null,
+            checkboxOnChanged:
+                configuration.iconSizeCheckboxOnChanged != null ? viewModel.iconSizeInputCheckboxOnChanged : null,
           ),
         );
       },

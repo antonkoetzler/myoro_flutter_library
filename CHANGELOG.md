@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.2.1
+
+- fix: GitHub action to ignore localization files (as they are incorrectly formatted after running `flutter pub get`)
+- fix: `MyoroRangeSlider` test
+
 ## 2.2.0
 
 - feature: `MyoroImagePicker`

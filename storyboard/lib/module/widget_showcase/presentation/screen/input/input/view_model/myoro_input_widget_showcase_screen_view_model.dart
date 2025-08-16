@@ -25,9 +25,8 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       readOnly: _state.readOnly,
       autofocus: true,
       showClearTextButton: _state.showClearTextButton,
-      checkboxOnChanged: _state.checkboxOnChangedEnabled
-          ? (enabled, text) => _checkboxOnChanged(context, enabled, text)
-          : null,
+      checkboxOnChanged:
+          _state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
       validation: _state.validationEnabled ? _validation : null,
       onFieldSubmitted: (text) => _onFieldSubmitted(context, text),
       onChanged: _state.onChangedEnabled ? (text) => _onChanged(context, text) : null,

@@ -10,15 +10,15 @@ final class _Title extends StatelessWidget {
     final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
     return viewModel.configuration.checkboxOnChanged != null
         ? MyoroCheckbox(
-            configuration: MyoroCheckboxConfiguration(
-              label: viewModel.configuration.label,
-              value: viewModel.enabled,
-              onChanged: (enabled) {
-                viewModel.configuration.checkboxOnChanged!(enabled, viewModel.padding);
-                viewModel.enabledController.value = enabled;
-              },
-            ),
-          )
+          configuration: MyoroCheckboxConfiguration(
+            label: viewModel.configuration.label,
+            value: viewModel.enabled,
+            onChanged: (enabled) {
+              viewModel.configuration.checkboxOnChanged!(enabled, viewModel.padding);
+              viewModel.enabledController.value = enabled;
+            },
+          ),
+        )
         : Text(viewModel.configuration.label, style: checkboxThemeExtension.labelTextStyle);
   }
 }

@@ -21,12 +21,12 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
       tooltipConfiguration: state.tooltipEnabled ? MyoroTooltipConfiguration.fake() : null,
       cursor: state.cursor,
       borderRadius: state.borderRadius,
-      backgroundColorBuilder: state.backgroundColorBuilderEnabled
-          ? (MyoroTapStatusEnum tapStatusEnum) => _backgroundColorBuilder(tapStatusEnum)
-          : null,
-      borderBuilder: state.borderBuilderEnabled
-          ? (MyoroTapStatusEnum tapStatusEnum) => _borderBuilder(tapStatusEnum)
-          : null,
+      backgroundColorBuilder:
+          state.backgroundColorBuilderEnabled
+              ? (MyoroTapStatusEnum tapStatusEnum) => _backgroundColorBuilder(tapStatusEnum)
+              : null,
+      borderBuilder:
+          state.borderBuilderEnabled ? (MyoroTapStatusEnum tapStatusEnum) => _borderBuilder(tapStatusEnum) : null,
       onTapDown: state.onTapDownEnabled ? (_) => _onTapDown(context) : null,
       onTapUp: state.onTapUpEnabled ? (_) => _onTapUp(context) : null,
     );

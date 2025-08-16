@@ -18,14 +18,15 @@ final class MyoroDatePickerInputWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDatePickerInputTitle,
           widget: const _Widget(),
-          widgetOptions: MyoroInputWidgetShowcaseScreen.options.entries
-              .where(
-                (e) =>
-                    e.key != MyoroInputWidgetShowcaseScreen.placeholderOptionKey &&
-                    e.key != MyoroInputWidgetShowcaseScreen.readOnlyOptionKey,
-              )
-              .map((e) => e.value)
-              .toList(),
+          widgetOptions:
+              MyoroInputWidgetShowcaseScreen.options.entries
+                  .where(
+                    (e) =>
+                        e.key != MyoroInputWidgetShowcaseScreen.placeholderOptionKey &&
+                        e.key != MyoroInputWidgetShowcaseScreen.readOnlyOptionKey,
+                  )
+                  .map((e) => e.value)
+                  .toList(),
         ),
       ),
     );
