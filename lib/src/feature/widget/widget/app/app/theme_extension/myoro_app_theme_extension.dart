@@ -8,7 +8,9 @@ part 'myoro_app_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroAppThemeExtension extends ThemeExtension<MyoroAppThemeExtension> with _$MyoroAppThemeExtensionMixin {
+  // coverage:ignore-start
   const MyoroAppThemeExtension();
+  // coverage:ignore-end
 
   // coverage:ignore-start
   const MyoroAppThemeExtension.fake();

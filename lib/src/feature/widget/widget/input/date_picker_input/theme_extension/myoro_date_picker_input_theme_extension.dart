@@ -8,7 +8,9 @@ part 'myoro_date_picker_input_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroDatePickerInputThemeExtension extends ThemeExtension<MyoroDatePickerInputThemeExtension>
     with _$MyoroDatePickerInputThemeExtensionMixin {
+  // coverage:ignore-start
   const MyoroDatePickerInputThemeExtension();
+  // coverage:ignore-end
 
   // coverage:ignore-start
   const MyoroDatePickerInputThemeExtension.fake();

@@ -8,7 +8,9 @@ part 'myoro_screen_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroScreenThemeExtension extends ThemeExtension<MyoroScreenThemeExtension>
     with _$MyoroScreenThemeExtensionMixin {
+  // coverage:ignore-start
   const MyoroScreenThemeExtension();
+  // coverage:ignore-end
 
   // coverage:ignore-start
   const MyoroScreenThemeExtension.fake();

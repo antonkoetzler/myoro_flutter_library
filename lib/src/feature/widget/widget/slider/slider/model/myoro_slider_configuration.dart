@@ -26,7 +26,7 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
   // coverage:ignore-start
   factory MyoroSliderConfiguration.fake() {
     final min = faker.randomGenerator.integer(20).toDouble();
-    final max = faker.randomGenerator.integer(100, min: min.toInt()).toDouble();
+    final max = faker.randomGenerator.integer(100, min: min.toInt() + 1).toDouble();
 
     return MyoroSliderConfiguration(
       label: faker.lorem.word(),
@@ -42,7 +42,7 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
           : MyoroSliderBaseConfiguration.footerTextDefaultValue,
       min: min,
       max: max,
-      value: faker.randomGenerator.decimal(scale: max, min: min),
+      value: faker.randomGenerator.decimal(scale: max - min, min: 0) + min,
       onChanged: ((_) {}),
     );
   }

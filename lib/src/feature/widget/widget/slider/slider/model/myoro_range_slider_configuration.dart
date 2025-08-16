@@ -16,8 +16,8 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
     super.currentValueText,
     super.maxValueText,
     super.footerText,
-    required super.min,
-    required super.max,
+    super.min,
+    super.max,
     required this.values,
     required this.onChanged,
   }) : assert(

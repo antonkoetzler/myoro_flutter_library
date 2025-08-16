@@ -18,10 +18,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get myoroImagePickerSelectionTypeModalText => 'Select image source';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
-      'Open camera';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'Open camera';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
-      'Browse gallery';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Browse gallery';
 }

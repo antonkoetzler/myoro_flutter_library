@@ -8,7 +8,9 @@ part 'myoro_layout_builder_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroLayoutBuilderThemeExtension extends ThemeExtension<MyoroLayoutBuilderThemeExtension>
     with _$MyoroLayoutBuilderThemeExtensionMixin {
+  // coverage:ignore-start
   const MyoroLayoutBuilderThemeExtension();
+  // coverage:ignore-end
 
   // coverage:ignore-start
   const MyoroLayoutBuilderThemeExtension.fake();

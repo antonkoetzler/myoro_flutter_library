@@ -12,18 +12,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get myoroFilePickerPickerButtonText => 'Examinar';
 
   @override
-  String get myoroFilePickerSelectedFileUnselectedText =>
-      'Ningún archivo seleccionado.';
+  String get myoroFilePickerSelectedFileUnselectedText => 'Ningún archivo seleccionado.';
 
   @override
-  String get myoroImagePickerSelectionTypeModalText =>
-      'Seleccionar fuente de la imagen';
+  String get myoroImagePickerSelectionTypeModalText => 'Seleccionar fuente de la imagen';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonCameraText =>
-      'Abrir cámara';
+  String get myoroImagePickerSelectionTypeModalButtonCameraText => 'Abrir cámara';
 
   @override
-  String get myoroImagePickerSelectionTypeModalButtonGalleryText =>
-      'Explorar galería';
+  String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Explorar galería';
 }
