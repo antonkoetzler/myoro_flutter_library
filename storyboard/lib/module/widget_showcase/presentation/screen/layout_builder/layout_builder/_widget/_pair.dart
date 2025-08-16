@@ -14,7 +14,10 @@ final class _Pair extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       spacing: widgetShowcaseThemeExtension.spacing,
-      children: [Flexible(child: _PairText(minString)), Flexible(child: _PairText(maxString))],
+      children: [
+        Flexible(child: _PairText(minString)),
+        Flexible(child: _PairText(maxString)),
+      ],
     );
   }
 }

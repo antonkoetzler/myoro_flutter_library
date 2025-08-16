@@ -21,8 +21,9 @@ final class MyoroSlidersWidgetShowcaseScreenViewModel {
       label: state.label,
       labelTextStyle: state.labelTextStyle,
       value: state.sliderValue,
-      currentValueText:
-          state.currentValueTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,
+      currentValueText: state.currentValueTextEnabled
+          ? formattedValue
+          : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,
       maxValueText: state.maxValueTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.maxValueTextDefaultValue,
       footerText: state.footerTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.footerTextDefaultValue,
       onChanged: (value) => state.sliderValue = value,
@@ -38,8 +39,9 @@ final class MyoroSlidersWidgetShowcaseScreenViewModel {
       label: state.label,
       labelTextStyle: state.labelTextStyle,
       values: state.rangeSliderValues,
-      currentValueText:
-          state.currentValueTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,
+      currentValueText: state.currentValueTextEnabled
+          ? formattedValue
+          : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,
       maxValueText: state.maxValueTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.maxValueTextDefaultValue,
       footerText: state.footerTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.footerTextDefaultValue,
       onChanged: (value) => state.rangeSliderValues = value,

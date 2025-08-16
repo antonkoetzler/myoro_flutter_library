@@ -102,8 +102,9 @@ extension $TextWidgetShowcaseOptionConfigurationExtension on TextWidgetShowcaseO
       alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? self.alignmentOnChanged) : null,
       styleInitialValue: styleInitialValueProvided ? (styleInitialValue ?? self.styleInitialValue) : null,
       styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? self.styleOnChanged) : null,
-      styleCheckboxOnChanged:
-          styleCheckboxOnChangedProvided ? (styleCheckboxOnChanged ?? self.styleCheckboxOnChanged) : null,
+      styleCheckboxOnChanged: styleCheckboxOnChangedProvided
+          ? (styleCheckboxOnChanged ?? self.styleCheckboxOnChanged)
+          : null,
     );
   }
 }

@@ -28,19 +28,19 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
       invert: _state.invert,
       spacing: _state.spacing,
       padding: _state.padding,
-      contentColorBuilder:
-          _state.enableContentColorBuilder ? (tapStatusEnum) => _contentColorBuilder(tapStatusEnum) : null,
+      contentColorBuilder: _state.enableContentColorBuilder
+          ? (tapStatusEnum) => _contentColorBuilder(tapStatusEnum)
+          : null,
       iconConfiguration: _state.icon != null ? MyoroIconConfiguration(icon: _state.icon!, size: _state.iconSize) : null,
-      textConfiguration:
-          _state.text.isNotEmpty
-              ? MyoroTextConfiguration(
-                text: _state.text,
-                maxLines: _state.maxLines,
-                overflow: _state.overflow,
-                alignment: _state.alignment,
-                style: _state.style,
-              )
-              : null,
+      textConfiguration: _state.text.isNotEmpty
+          ? MyoroTextConfiguration(
+              text: _state.text,
+              maxLines: _state.maxLines,
+              overflow: _state.overflow,
+              alignment: _state.alignment,
+              style: _state.style,
+            )
+          : null,
     );
   }
 

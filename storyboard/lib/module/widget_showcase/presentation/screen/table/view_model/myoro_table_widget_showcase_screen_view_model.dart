@@ -8,19 +8,18 @@ final class MyoroTableWidgetShowcaseScreenViewModel {
   MyoroTableConfiguration<String> configuration(BuildContext context) {
     final request = List.generate(faker.randomGenerator.integer(50), (int index) => 'Item #index').toSet;
 
-    final columns =
-        MyoroTableColumnWidthConfigurationEnum.values.map((value) {
-          final name = value.name.capitalized;
+    final columns = MyoroTableColumnWidthConfigurationEnum.values.map((value) {
+      final name = value.name.capitalized;
 
-          return MyoroTableColumn(
-            tooltipMessage: 'Tooltip of the $name column.',
-            widthConfiguration: MyoroTableColumnWidthConfiguration(
-              typeEnum: value,
-              fixedWidth: value.isFixed ? faker.randomGenerator.decimal(scale: 200, min: 50) : null,
-            ),
-            child: Text(name),
-          );
-        }).toList();
+      return MyoroTableColumn(
+        tooltipMessage: 'Tooltip of the $name column.',
+        widthConfiguration: MyoroTableColumnWidthConfiguration(
+          typeEnum: value,
+          fixedWidth: value.isFixed ? faker.randomGenerator.decimal(scale: 200, min: 50) : null,
+        ),
+        child: Text(name),
+      );
+    }).toList();
 
     MyoroTableRow<String> rowBuilder(String item) {
       void onTapDown(BuildContext context, String item) {
@@ -34,10 +33,9 @@ final class MyoroTableWidgetShowcaseScreenViewModel {
       return MyoroTableRow(
         onTapDown: (_) => onTapDown(context, item),
         onTapUp: (_) => onTapUp(context, item),
-        cells:
-            MyoroTableColumnWidthConfigurationEnum.values.map((value) {
-              return Text('$item\'s value.name.capitalized cell.');
-            }).toList(),
+        cells: MyoroTableColumnWidthConfigurationEnum.values.map((value) {
+          return Text('$item\'s value.name.capitalized cell.');
+        }).toList(),
       );
     }
 
@@ -46,6 +44,8 @@ final class MyoroTableWidgetShowcaseScreenViewModel {
 
   /// Generic function to display a [MyoroSnackBar].
   void _showSnackBar(BuildContext context, String message) {
-    context.showSnackBar(snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message)));
+    context.showSnackBar(
+      snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: message)),
+    );
   }
 }
