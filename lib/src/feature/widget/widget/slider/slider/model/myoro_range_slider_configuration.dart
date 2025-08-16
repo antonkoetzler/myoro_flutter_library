@@ -53,7 +53,7 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
           : MyoroSliderBaseConfiguration.footerTextDefaultValue,
       min: min,
       max: max.toDouble(),
-      values: RangeValues(minValue, faker.randomGenerator.decimal(scale: max, min: min)),
+      values: RangeValues(minValue, faker.randomGenerator.decimal(scale: max, min: minValue)),
       onChanged: ((_) {}),
     );
   }
