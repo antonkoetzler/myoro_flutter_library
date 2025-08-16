@@ -16,8 +16,8 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
     super.currentValueText,
     super.maxValueText,
     super.footerText,
-    super.min,
-    super.max,
+    required super.min,
+    required super.max,
     required this.values,
     required this.onChanged,
   }) : assert(
@@ -25,19 +25,19 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
          '[MyoroSliderConfiguration]: [value] must be greater than or equal to [min] and less than or equal to [max].',
        ),
        assert(
-         values.start >= min && values.start <= max,
-         '[MyoroSliderConfiguration]: [value] must be greater than or equal to [min] and less than or equal to [max].',
-       ),
-       assert(
          values.end >= min && values.end <= max,
          '[MyoroSliderConfiguration]: [value] must be greater than or equal to [min] and less than or equal to [max].',
-       );
+       ),
+       assert(values.start <= values.end, '[MyoroSliderConfiguration]: [start] must be less than or equal to [end].');
 
   // coverage:ignore-start
   factory MyoroRangeSliderConfiguration.fake() {
     final min = faker.randomGenerator.integer(20).toDouble();
     final max = faker.randomGenerator.integer(100, min: min.toInt()).toDouble();
-    final minValue = faker.randomGenerator.integer(max.toInt(), min: min.toInt()).toDouble();
+
+    final range = max - min;
+    final start = range == 0 ? min : faker.randomGenerator.decimal(scale: range, min: min);
+    final end = (max - start) == 0 ? start : faker.randomGenerator.decimal(scale: max - start, min: start);
 
     return MyoroRangeSliderConfiguration(
       label: faker.lorem.word(),
@@ -52,8 +52,8 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
           ? faker.lorem.word()
           : MyoroSliderBaseConfiguration.footerTextDefaultValue,
       min: min,
-      max: max.toDouble(),
-      values: RangeValues(minValue, faker.randomGenerator.decimal(scale: max, min: minValue)),
+      max: max,
+      values: RangeValues(start, end),
       onChanged: ((_) {}),
     );
   }

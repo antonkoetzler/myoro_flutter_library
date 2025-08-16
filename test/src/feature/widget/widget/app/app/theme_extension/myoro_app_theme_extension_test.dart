@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   const MyoroAppThemeExtension();
+  const MyoroAppThemeExtension();
   const fake = MyoroAppThemeExtension.fake();
   const builder = MyoroAppThemeExtension.builder();
 
