@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.2.2
+
+- fix: Fix 100% coverage after upgrading Flutter
+
 ## 2.2.1
 
 - fix: GitHub action to ignore localization files (as they are incorrectly formatted after running `flutter pub get`)
