@@ -10,7 +10,7 @@ void main() {
     final textTheme = createMyoroTextTheme(isDarkMode);
     final extensions = createMyoroThemeExtensions(isDarkMode, colorScheme, textTheme);
 
-    expect(extensions.length, 36);
+    expect(extensions.length, 37);
 
     void expectThemeExtensionExists(Type type) {
       final exists = extensions.firstWhereOrNull((themeExtension) => themeExtension.runtimeType == type) != null;
@@ -64,6 +64,7 @@ void main() {
     expectThemeExtensionExists(MyoroDatePickerInputThemeExtension);
     expectThemeExtensionExists(MyoroInputThemeExtension);
     expectThemeExtensionExists(MyoroSearchInputThemeExtension);
+    expectThemeExtensionExists(MyoroTimePickerInputThemeExtension);
 
     // Layout buildes
     expectThemeExtensionExists(MyoroLayoutBuilderThemeExtension);

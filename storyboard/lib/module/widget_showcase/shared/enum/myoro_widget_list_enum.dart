@@ -17,7 +17,7 @@ enum MyoroWidgetListEnum {
   feedbacks('Feedbacks', {myoroFeedbackTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
-  inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle}),
+  inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle, myoroTimePickerInputTitle}),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
   menus('Menus', {myoroMenuTitle}),
@@ -92,6 +92,7 @@ enum MyoroWidgetListEnum {
   static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
+  static const myoroTimePickerInputTitle = 'MyoroTimePickerInput';
 
   // Loaders
   static const myoroCircularLoaderTitle = 'MyoroCircularLoader';
@@ -182,6 +183,7 @@ enum MyoroWidgetListEnum {
       myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcaseScreen(),
       myoroInputTitle => const MyoroInputWidgetShowcaseScreen(),
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcaseScreen(),
+      myoroTimePickerInputTitle => const MyoroTimePickerInputWidgetShowcaseScreen(),
 
       // Layout builders
       myoroLayoutBuilderTitle => const MyoroLayoutBuilderWidgetShowcaseScreen(),

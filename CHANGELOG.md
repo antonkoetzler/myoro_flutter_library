@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.3.0
+
+- feature: `MyoroTimePickerInput`
+
 ## 2.2.2
 
 - fix: Fix 100% coverage after upgrading Flutter

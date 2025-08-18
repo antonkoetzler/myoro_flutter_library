@@ -99,6 +99,7 @@ List<ThemeExtension> _createInputThemeExtensions(ColorScheme colorScheme, TextTh
     const MyoroDatePickerInputThemeExtension.builder(),
     MyoroInputThemeExtension.builder(colorScheme, textTheme),
     MyoroSearchInputThemeExtension.builder(colorScheme),
+    const MyoroTimePickerInputThemeExtension.builder(),
   ];
 }
 

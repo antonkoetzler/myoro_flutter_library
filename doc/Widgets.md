@@ -62,6 +62,7 @@
 - `MyoroDatePickerInput`
 - `MyoroInput`
 - `MyoroSearchInput`
+- `MyoroTimePickerInput`
 
 ## Layout builders
 
