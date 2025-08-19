@@ -6,6 +6,8 @@ part of 'myoro_pie_graph_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroPieGraphConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -35,20 +37,4 @@ mixin _$MyoroPieGraphConfigurationMixin {
       '  centerWidget: ${self.centerWidget},\n'
       '  items: ${self.items},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroPieGraphConfigurationExtension on MyoroPieGraphConfiguration {
-  MyoroPieGraphConfiguration copyWith({
-    MyoroPieGraphEnum? typeEnum,
-    Widget? centerWidget,
-    bool centerWidgetProvided = true,
-    List<MyoroPieGraphItem>? items,
-  }) {
-    return MyoroPieGraphConfiguration(
-      typeEnum: typeEnum ?? self.typeEnum,
-      centerWidget: centerWidgetProvided ? (centerWidget ?? self.centerWidget) : null,
-      items: items ?? self.items,
-    );
-  }
 }

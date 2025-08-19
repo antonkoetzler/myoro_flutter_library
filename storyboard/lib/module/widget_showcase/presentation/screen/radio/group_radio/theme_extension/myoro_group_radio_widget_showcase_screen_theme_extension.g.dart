@@ -6,6 +6,8 @@ part of 'myoro_group_radio_widget_showcase_screen_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroGroupRadioWidgetShowcaseScreenThemeExtension] once the code is generated.
 ///
 /// ```dart

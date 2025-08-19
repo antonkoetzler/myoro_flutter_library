@@ -6,6 +6,8 @@ part of 'myoro_circular_loader_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroCircularLoaderThemeExtension] once the code is generated.
 ///
 /// ```dart

@@ -6,6 +6,8 @@ part of 'padding_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [PaddingWidgetShowcaseOptionConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,22 +39,4 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  paddingOnChanged: ${self.paddingOnChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $PaddingWidgetShowcaseOptionConfigurationExtension on PaddingWidgetShowcaseOptionConfiguration {
-  PaddingWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    bool? enabled,
-    void Function(bool, EdgeInsets)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    void Function(EdgeInsets)? paddingOnChanged,
-  }) {
-    return PaddingWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      enabled: enabled ?? self.enabled,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
-      paddingOnChanged: paddingOnChanged ?? self.paddingOnChanged,
-    );
-  }
 }

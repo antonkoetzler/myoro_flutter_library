@@ -6,6 +6,8 @@ part of 'myoro_group_checkbox_widget_showcase_screen_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension] once the code is generated.
 ///
 /// ```dart

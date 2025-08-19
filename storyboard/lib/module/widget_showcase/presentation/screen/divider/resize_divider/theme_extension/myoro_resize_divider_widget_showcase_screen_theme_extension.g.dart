@@ -6,6 +6,8 @@ part of 'myoro_resize_divider_widget_showcase_screen_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroResizeDividerWidgetShowcaseScreenThemeExtension] once the code is generated.
 ///
 /// ```dart

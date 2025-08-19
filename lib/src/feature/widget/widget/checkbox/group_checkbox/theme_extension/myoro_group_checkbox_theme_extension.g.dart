@@ -6,6 +6,8 @@ part of 'myoro_group_checkbox_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroGroupCheckboxThemeExtension] once the code is generated.
 ///
 /// ```dart

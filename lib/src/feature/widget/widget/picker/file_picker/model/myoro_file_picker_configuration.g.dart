@@ -6,6 +6,8 @@ part of 'myoro_file_picker_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroFilePickerConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,22 +39,4 @@ mixin _$MyoroFilePickerConfigurationMixin {
       '  allowedExtensions: ${self.allowedExtensions},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroFilePickerConfigurationExtension on MyoroFilePickerConfiguration {
-  MyoroFilePickerConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    MyoroFilePickerFileTypeEnum? fileType,
-    List<String>? allowedExtensions,
-    void Function(MyoroFilePickerPlatformFile?)? onChanged,
-  }) {
-    return MyoroFilePickerConfiguration(
-      title: titleProvided ? (title ?? self.title) : null,
-      fileType: fileType ?? self.fileType,
-      allowedExtensions: allowedExtensions ?? self.allowedExtensions,
-      onChanged: onChanged ?? self.onChanged,
-    );
-  }
 }

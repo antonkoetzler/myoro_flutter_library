@@ -6,6 +6,8 @@ part of 'myoro_sliders_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroSlidersThemeExtension] once the code is generated.
 ///
 /// ```dart

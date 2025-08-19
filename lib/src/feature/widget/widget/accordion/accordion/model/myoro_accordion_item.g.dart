@@ -6,6 +6,8 @@ part of 'myoro_accordion_item.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroAccordionItem] once the code is generated.
 ///
 /// ```dart
@@ -33,17 +35,4 @@ mixin _$MyoroAccordionItemMixin {
       '  titleBuilder: ${self.titleBuilder},\n'
       '  contentBuilder: ${self.contentBuilder},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroAccordionItemExtension on MyoroAccordionItem {
-  MyoroAccordionItem copyWith({
-    Widget Function(BuildContext)? titleBuilder,
-    Widget Function(BuildContext)? contentBuilder,
-  }) {
-    return MyoroAccordionItem(
-      titleBuilder: titleBuilder ?? self.titleBuilder,
-      contentBuilder: contentBuilder ?? self.contentBuilder,
-    );
-  }
 }

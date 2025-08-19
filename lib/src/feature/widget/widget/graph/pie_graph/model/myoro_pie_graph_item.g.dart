@@ -6,6 +6,8 @@ part of 'myoro_pie_graph_item.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroPieGraphItem] once the code is generated.
 ///
 /// ```dart
@@ -35,21 +37,4 @@ mixin _$MyoroPieGraphItemMixin {
       '  color: ${self.color},\n'
       '  radius: ${self.radius},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroPieGraphItemExtension on MyoroPieGraphItem {
-  MyoroPieGraphItem copyWith({
-    double? value,
-    Color? color,
-    bool colorProvided = true,
-    double? radius,
-    bool radiusProvided = true,
-  }) {
-    return MyoroPieGraphItem(
-      value: value ?? self.value,
-      color: colorProvided ? (color ?? self.color) : null,
-      radius: radiusProvided ? (radius ?? self.radius) : null,
-    );
-  }
 }

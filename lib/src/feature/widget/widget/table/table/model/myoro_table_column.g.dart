@@ -6,6 +6,8 @@ part of 'myoro_table_column.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTableColumn] once the code is generated.
 ///
 /// ```dart
@@ -35,20 +37,4 @@ mixin _$MyoroTableColumnMixin {
       '  widthConfiguration: ${self.widthConfiguration},\n'
       '  child: ${self.child},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTableColumnExtension on MyoroTableColumn {
-  MyoroTableColumn copyWith({
-    String? tooltipMessage,
-    bool tooltipMessageProvided = true,
-    MyoroTableColumnWidthConfiguration? widthConfiguration,
-    Widget? child,
-  }) {
-    return MyoroTableColumn(
-      tooltipMessage: tooltipMessageProvided ? (tooltipMessage ?? self.tooltipMessage) : null,
-      widthConfiguration: widthConfiguration ?? self.widthConfiguration,
-      child: child ?? self.child,
-    );
-  }
 }

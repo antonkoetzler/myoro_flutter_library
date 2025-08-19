@@ -6,6 +6,8 @@ part of 'myoro_app_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroAppConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -60,47 +62,4 @@ mixin _$MyoroAppConfigurationMixin {
       '  home: ${self.home},\n'
       '  builder: ${self.builder},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroAppConfigurationExtension on MyoroAppConfiguration {
-  MyoroAppConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    ThemeMode? themeMode,
-    bool themeModeProvided = true,
-    ColorScheme Function(ColorScheme)? colorSchemeBuilder,
-    bool colorSchemeBuilderProvided = true,
-    TextTheme Function(TextTheme)? textThemeBuilder,
-    bool textThemeBuilderProvided = true,
-    List<ThemeExtension<ThemeExtension<dynamic>>> Function(bool, ColorScheme, TextTheme)? themeExtensionsBuilder,
-    bool themeExtensionsBuilderProvided = true,
-    Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
-    bool localizationsDelegatesProvided = true,
-    Iterable<Locale>? supportedLocales,
-    bool supportedLocalesProvided = true,
-    RouterConfig<Object>? router,
-    bool routerProvided = true,
-    Widget? home,
-    bool homeProvided = true,
-    Widget Function(BuildContext, Widget?)? builder,
-    bool builderProvided = true,
-  }) {
-    return MyoroAppConfiguration(
-      title: titleProvided ? (title ?? self.title) : null,
-      themeMode: themeModeProvided ? (themeMode ?? self.themeMode) : null,
-      colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? self.colorSchemeBuilder) : null,
-      textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? self.textThemeBuilder) : null,
-      themeExtensionsBuilder: themeExtensionsBuilderProvided
-          ? (themeExtensionsBuilder ?? self.themeExtensionsBuilder)
-          : null,
-      localizationsDelegates: localizationsDelegatesProvided
-          ? (localizationsDelegates ?? self.localizationsDelegates)
-          : null,
-      supportedLocales: supportedLocalesProvided ? (supportedLocales ?? self.supportedLocales) : null,
-      router: routerProvided ? (router ?? self.router) : null,
-      home: homeProvided ? (home ?? self.home) : null,
-      builder: builderProvided ? (builder ?? self.builder) : null,
-    );
-  }
 }

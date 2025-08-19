@@ -6,6 +6,8 @@ part of 'myoro_search_input_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroSearchInputConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,21 +39,4 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
       '  request: ${self.request},\n'
       '  itemBuilder: ${self.itemBuilder},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroSearchInputConfigurationExtension<T> on MyoroSearchInputConfiguration<T> {
-  MyoroSearchInputConfiguration<T> copyWith({
-    MyoroInputConfiguration? inputConfiguration,
-    bool? requestWhenChanged,
-    FutureOr<Set<T>> Function(String)? request,
-    MyoroMenuItem Function(T)? itemBuilder,
-  }) {
-    return MyoroSearchInputConfiguration(
-      inputConfiguration: inputConfiguration ?? self.inputConfiguration,
-      requestWhenChanged: requestWhenChanged ?? self.requestWhenChanged,
-      request: request ?? self.request,
-      itemBuilder: itemBuilder ?? self.itemBuilder,
-    );
-  }
 }

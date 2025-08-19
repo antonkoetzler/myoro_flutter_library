@@ -6,6 +6,8 @@ part of 'text_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [TextWidgetShowcaseOptionConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -66,44 +68,4 @@ mixin _$TextWidgetShowcaseOptionConfigurationMixin {
       '  styleOnChanged: ${self.styleOnChanged},\n'
       '  styleCheckboxOnChanged: ${self.styleCheckboxOnChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $TextWidgetShowcaseOptionConfigurationExtension on TextWidgetShowcaseOptionConfiguration {
-  TextWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    String? textInitialValue,
-    void Function(String)? textOnChanged,
-    int? maxLinesInitialValue,
-    void Function(int?)? maxLinesOnChanged,
-    bool maxLinesOnChangedProvided = true,
-    TextOverflow? overflowInitialValue,
-    void Function(TextOverflow?)? overflowOnChanged,
-    bool overflowOnChangedProvided = true,
-    TextAlign? alignmentInitialValue,
-    void Function(TextAlign?)? alignmentOnChanged,
-    bool alignmentOnChangedProvided = true,
-    TextStyle? styleInitialValue,
-    bool styleInitialValueProvided = true,
-    void Function(TextStyle?)? styleOnChanged,
-    bool styleOnChangedProvided = true,
-    void Function(bool, TextStyle?)? styleCheckboxOnChanged,
-    bool styleCheckboxOnChangedProvided = true,
-  }) {
-    return TextWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      textInitialValue: textInitialValue ?? self.textInitialValue,
-      textOnChanged: textOnChanged ?? self.textOnChanged,
-      maxLinesInitialValue: maxLinesInitialValue ?? self.maxLinesInitialValue,
-      maxLinesOnChanged: maxLinesOnChangedProvided ? (maxLinesOnChanged ?? self.maxLinesOnChanged) : null,
-      overflowInitialValue: overflowInitialValue ?? self.overflowInitialValue,
-      overflowOnChanged: overflowOnChangedProvided ? (overflowOnChanged ?? self.overflowOnChanged) : null,
-      alignmentInitialValue: alignmentInitialValue ?? self.alignmentInitialValue,
-      alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? self.alignmentOnChanged) : null,
-      styleInitialValue: styleInitialValueProvided ? (styleInitialValue ?? self.styleInitialValue) : null,
-      styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? self.styleOnChanged) : null,
-      styleCheckboxOnChanged:
-          styleCheckboxOnChangedProvided ? (styleCheckboxOnChanged ?? self.styleCheckboxOnChanged) : null,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_modal_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroModalThemeExtension] once the code is generated.
 ///
 /// ```dart

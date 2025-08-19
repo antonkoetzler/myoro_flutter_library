@@ -6,6 +6,8 @@ part of 'myoro_bar_graph_widget_showcase_screen_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroBarGraphWidgetShowcaseScreenThemeExtension] once the code is generated.
 ///
 /// ```dart

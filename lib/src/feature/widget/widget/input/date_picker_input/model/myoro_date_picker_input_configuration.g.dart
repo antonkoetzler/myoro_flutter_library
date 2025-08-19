@@ -6,6 +6,8 @@ part of 'myoro_date_picker_input_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroDatePickerInputConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -96,62 +98,4 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       '  focusNode: ${self.focusNode},\n'
       '  controller: ${self.controller},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroDatePickerInputConfigurationExtension on MyoroDatePickerInputConfiguration {
-  MyoroDatePickerInputConfiguration copyWith({
-    MyoroInputStyleEnum? inputStyle,
-    TextAlign? textAlign,
-    TextStyle? inputTextStyle,
-    bool inputTextStyleProvided = true,
-    String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    EdgeInsets? contentPadding,
-    bool contentPaddingProvided = true,
-    InputBorder? border,
-    bool borderProvided = true,
-    Widget? suffix,
-    bool suffixProvided = true,
-    bool? enabled,
-    bool? showClearTextButton,
-    void Function(bool, String)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    String? Function(String)? validation,
-    bool validationProvided = true,
-    void Function(String)? onFieldSubmitted,
-    bool onFieldSubmittedProvided = true,
-    void Function(String)? onChanged,
-    bool onChangedProvided = true,
-    void Function()? onCleared,
-    bool onClearedProvided = true,
-    Key? inputKey,
-    bool inputKeyProvided = true,
-    Key? checkboxKey,
-    bool checkboxKeyProvided = true,
-    TextEditingController? controller,
-    bool controllerProvided = true,
-  }) {
-    return MyoroDatePickerInputConfiguration(
-      inputStyle: inputStyle ?? self.inputStyle,
-      textAlign: textAlign ?? self.textAlign,
-      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
-      label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
-      border: borderProvided ? (border ?? self.border) : null,
-      suffix: suffixProvided ? (suffix ?? self.suffix) : null,
-      enabled: enabled ?? self.enabled,
-      showClearTextButton: showClearTextButton ?? self.showClearTextButton,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
-      validation: validationProvided ? (validation ?? self.validation) : null,
-      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
-      inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
-      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
-      controller: controllerProvided ? (controller ?? self.controller) : null,
-    );
-  }
 }

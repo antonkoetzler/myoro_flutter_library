@@ -6,6 +6,8 @@ part of 'myoro_drawer_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroDrawerConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -39,24 +41,4 @@ mixin _$MyoroDrawerConfigurationMixin {
       '  barrierDismissable: ${self.barrierDismissable},\n'
       '  child: ${self.child},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroDrawerConfigurationExtension on MyoroDrawerConfiguration {
-  MyoroDrawerConfiguration copyWith({
-    String? title,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    bool? showCloseButton,
-    bool? barrierDismissable,
-    Widget? child,
-  }) {
-    return MyoroDrawerConfiguration(
-      title: title ?? self.title,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
-      showCloseButton: showCloseButton ?? self.showCloseButton,
-      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
-      child: child ?? self.child,
-    );
-  }
 }

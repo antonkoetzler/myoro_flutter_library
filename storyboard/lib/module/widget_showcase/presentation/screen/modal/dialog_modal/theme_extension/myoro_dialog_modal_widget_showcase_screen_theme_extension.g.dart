@@ -6,6 +6,8 @@ part of 'myoro_dialog_modal_widget_showcase_screen_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroDialogModalWidgetShowcaseScreenThemeExtension] once the code is generated.
 ///
 /// ```dart

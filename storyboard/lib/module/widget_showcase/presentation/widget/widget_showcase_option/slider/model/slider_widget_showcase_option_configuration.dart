@@ -8,7 +8,8 @@ part 'slider_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [SliderWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {
+final class SliderWidgetShowcaseOptionConfiguration
+    with _$SliderWidgetShowcaseOptionConfigurationMixin {
   static const initiallyEnabledDefaultValue = true;
   static const initialValueDefaultValue = 0.0;
 
@@ -34,4 +35,22 @@ final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseO
 
   /// [MyoroSliderConfiguration.onChanged]
   final MyoroSliderOnChanged sliderOnChanged;
+
+  SliderWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    bool? initiallyEnabled,
+    double? initialValue,
+    SliderWidgetShowcaseOptionCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    MyoroSliderOnChanged? sliderOnChanged,
+  }) {
+    return SliderWidgetShowcaseOptionConfiguration(
+      label: label ?? this.label,
+      initiallyEnabled: initiallyEnabled ?? this.initiallyEnabled,
+      initialValue: initialValue ?? this.initialValue,
+      checkboxOnChanged:
+          checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+      sliderOnChanged: sliderOnChanged ?? this.sliderOnChanged,
+    );
+  }
 }

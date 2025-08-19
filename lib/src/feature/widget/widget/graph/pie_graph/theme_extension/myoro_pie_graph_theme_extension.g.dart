@@ -6,6 +6,8 @@ part of 'myoro_pie_graph_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroPieGraphThemeExtension] once the code is generated.
 ///
 /// ```dart

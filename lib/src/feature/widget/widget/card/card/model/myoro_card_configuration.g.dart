@@ -6,6 +6,8 @@ part of 'myoro_card_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroCardConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -39,25 +41,4 @@ mixin _$MyoroCardConfigurationMixin {
       '  constraints: ${self.constraints},\n'
       '  child: ${self.child},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroCardConfigurationExtension on MyoroCardConfiguration {
-  MyoroCardConfiguration copyWith({
-    String? title,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    BoxConstraints? constraints,
-    Widget? child,
-  }) {
-    return MyoroCardConfiguration(
-      title: title ?? self.title,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-      constraints: constraints ?? self.constraints,
-      child: child ?? self.child,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_slider_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroSliderConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -57,32 +59,4 @@ mixin _$MyoroSliderConfigurationMixin {
       '  min: ${self.min},\n'
       '  max: ${self.max},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroSliderConfigurationExtension on MyoroSliderConfiguration {
-  MyoroSliderConfiguration copyWith({
-    String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    String? currentValueText,
-    String? maxValueText,
-    String? footerText,
-    double? min,
-    double? max,
-    double? value,
-    void Function(double)? onChanged,
-  }) {
-    return MyoroSliderConfiguration(
-      label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      currentValueText: currentValueText ?? self.currentValueText,
-      maxValueText: maxValueText ?? self.maxValueText,
-      footerText: footerText ?? self.footerText,
-      min: min ?? self.min,
-      max: max ?? self.max,
-      value: value ?? self.value,
-      onChanged: onChanged ?? self.onChanged,
-    );
-  }
 }

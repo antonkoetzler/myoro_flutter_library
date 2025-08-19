@@ -6,6 +6,8 @@ part of 'widget_showcase_screen_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [WidgetShowcaseScreenConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -35,15 +37,4 @@ mixin _$WidgetShowcaseScreenConfigurationMixin {
       '  widget: ${self.widget},\n'
       '  widgetOptions: ${self.widgetOptions},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $WidgetShowcaseScreenConfigurationExtension on WidgetShowcaseScreenConfiguration {
-  WidgetShowcaseScreenConfiguration copyWith({String? widgetName, Widget? widget, List<Widget>? widgetOptions}) {
-    return WidgetShowcaseScreenConfiguration(
-      widgetName: widgetName ?? self.widgetName,
-      widget: widget ?? self.widget,
-      widgetOptions: widgetOptions ?? self.widgetOptions,
-    );
-  }
 }

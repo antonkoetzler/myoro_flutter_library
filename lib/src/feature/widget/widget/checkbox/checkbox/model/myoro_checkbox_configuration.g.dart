@@ -6,6 +6,8 @@ part of 'myoro_checkbox_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroCheckboxConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,23 +39,4 @@ mixin _$MyoroCheckboxConfigurationMixin {
       '  value: ${self.value},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroCheckboxConfigurationExtension on MyoroCheckboxConfiguration {
-  MyoroCheckboxConfiguration copyWith({
-    String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    bool? value,
-    void Function(bool)? onChanged,
-    bool onChangedProvided = true,
-  }) {
-    return MyoroCheckboxConfiguration(
-      label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      value: value ?? self.value,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-    );
-  }
 }

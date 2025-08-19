@@ -6,6 +6,8 @@ part of 'myoro_form_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroFormThemeExtension] once the code is generated.
 ///
 /// ```dart

@@ -6,6 +6,8 @@ part of 'myoro_screen_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroScreenConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -35,21 +37,4 @@ mixin _$MyoroScreenConfigurationMixin {
       '  appBar: ${self.appBar},\n'
       '  body: ${self.body},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroScreenConfigurationExtension on MyoroScreenConfiguration {
-  MyoroScreenConfiguration copyWith({
-    MyoroDrawerController? drawerController,
-    bool drawerControllerProvided = true,
-    PreferredSizeWidget? appBar,
-    bool appBarProvided = true,
-    Widget? body,
-  }) {
-    return MyoroScreenConfiguration(
-      drawerController: drawerControllerProvided ? (drawerController ?? self.drawerController) : null,
-      appBar: appBarProvided ? (appBar ?? self.appBar) : null,
-      body: body ?? self.body,
-    );
-  }
 }

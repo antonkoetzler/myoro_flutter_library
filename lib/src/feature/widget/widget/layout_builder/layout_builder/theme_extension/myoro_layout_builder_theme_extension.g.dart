@@ -6,6 +6,8 @@ part of 'myoro_layout_builder_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroLayoutBuilderThemeExtension] once the code is generated.
 ///
 /// ```dart

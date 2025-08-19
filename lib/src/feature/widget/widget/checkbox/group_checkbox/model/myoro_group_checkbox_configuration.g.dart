@@ -6,6 +6,8 @@ part of 'myoro_group_checkbox_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroGroupCheckboxConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,24 +39,4 @@ mixin _$MyoroGroupCheckboxConfigurationMixin {
       '  runSpacing: ${self.runSpacing},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroGroupCheckboxConfigurationExtension on MyoroGroupCheckboxConfiguration {
-  MyoroGroupCheckboxConfiguration copyWith({
-    Axis? direction,
-    double? spacing,
-    bool spacingProvided = true,
-    double? runSpacing,
-    bool runSpacingProvided = true,
-    void Function(String, Map<String, bool>)? onChanged,
-    bool onChangedProvided = true,
-  }) {
-    return MyoroGroupCheckboxConfiguration(
-      direction: direction ?? self.direction,
-      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_time_picker_input_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTimePickerInputThemeExtension] once the code is generated.
 ///
 /// ```dart

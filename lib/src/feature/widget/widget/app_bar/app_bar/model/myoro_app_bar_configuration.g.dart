@@ -6,6 +6,8 @@ part of 'myoro_app_bar_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroAppBarConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -35,20 +37,4 @@ mixin _$MyoroAppBarConfigurationMixin {
       '  backgroundColor: ${self.backgroundColor},\n'
       '  child: ${self.child},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroAppBarConfigurationExtension on MyoroAppBarConfiguration {
-  MyoroAppBarConfiguration copyWith({
-    bool? bordered,
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    Widget? child,
-  }) {
-    return MyoroAppBarConfiguration(
-      bordered: bordered ?? self.bordered,
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
-      child: child ?? self.child,
-    );
-  }
 }

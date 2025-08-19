@@ -8,7 +8,8 @@ part 'text_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [TextWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {
+final class TextWidgetShowcaseOptionConfiguration
+    with _$TextWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Text';
   static const textInitialValueDefaultValue = '';
   static const maxLinesInitialValueDefaultValue = MyoroTextConfiguration.maxLinesDefaultValue;
@@ -53,4 +54,47 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
   final TextStyle? styleInitialValue;
   final TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged;
   final TextWidgetShowcaseOptionTextStyleCheckboxOnChanged? styleCheckboxOnChanged;
+
+  TextWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    String? textInitialValue,
+    MyoroInputOnChanged? textOnChanged,
+    int? maxLinesInitialValue,
+    TextWidgetShowcaseOptionMaxLinesOnChanged? maxLinesOnChanged,
+    bool maxLinesOnChangedProvided = true,
+    TextOverflow? overflowInitialValue,
+    TextWidgetShowcaseOptionOverflowOnChanged? overflowOnChanged,
+    bool overflowOnChangedProvided = true,
+    TextAlign? alignmentInitialValue,
+    TextWidgetShowcaseOptionAlignmentOnChanged? alignmentOnChanged,
+    bool alignmentOnChangedProvided = true,
+    TextStyle? styleInitialValue,
+    bool styleInitialValueProvided = true,
+    TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged,
+    bool styleOnChangedProvided = true,
+    TextWidgetShowcaseOptionTextStyleCheckboxOnChanged? styleCheckboxOnChanged,
+    bool styleCheckboxOnChangedProvided = true,
+  }) {
+    return TextWidgetShowcaseOptionConfiguration(
+      label: label ?? this.label,
+      textInitialValue: textInitialValue ?? this.textInitialValue,
+      textOnChanged: textOnChanged ?? this.textOnChanged,
+      maxLinesInitialValue: maxLinesInitialValue ?? this.maxLinesInitialValue,
+      maxLinesOnChanged:
+          maxLinesOnChangedProvided ? (maxLinesOnChanged ?? this.maxLinesOnChanged) : null,
+      overflowInitialValue: overflowInitialValue ?? this.overflowInitialValue,
+      overflowOnChanged:
+          overflowOnChangedProvided ? (overflowOnChanged ?? this.overflowOnChanged) : null,
+      alignmentInitialValue: alignmentInitialValue ?? this.alignmentInitialValue,
+      alignmentOnChanged:
+          alignmentOnChangedProvided ? (alignmentOnChanged ?? this.alignmentOnChanged) : null,
+      styleInitialValue:
+          styleInitialValueProvided ? (styleInitialValue ?? this.styleInitialValue) : null,
+      styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? this.styleOnChanged) : null,
+      styleCheckboxOnChanged:
+          styleCheckboxOnChangedProvided
+              ? (styleCheckboxOnChanged ?? this.styleCheckboxOnChanged)
+              : null,
+    );
+  }
 }

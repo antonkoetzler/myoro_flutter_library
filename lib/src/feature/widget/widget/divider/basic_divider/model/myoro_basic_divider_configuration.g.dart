@@ -6,6 +6,8 @@ part of 'myoro_basic_divider_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroBasicDividerConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -35,21 +37,4 @@ mixin _$MyoroBasicDividerConfigurationMixin {
       '  shortValue: ${self.shortValue},\n'
       '  padding: ${self.padding},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroBasicDividerConfigurationExtension on MyoroBasicDividerConfiguration {
-  MyoroBasicDividerConfiguration copyWith({
-    Axis? direction,
-    double? shortValue,
-    bool shortValueProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-  }) {
-    return MyoroBasicDividerConfiguration(
-      direction: direction ?? self.direction,
-      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-    );
-  }
 }

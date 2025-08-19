@@ -6,6 +6,8 @@ part of 'myoro_bar_graph_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroBarGraphConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -33,11 +35,4 @@ mixin _$MyoroBarGraphConfigurationMixin {
       '  sorted: ${self.sorted},\n'
       '  items: ${self.items},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroBarGraphConfigurationExtension on MyoroBarGraphConfiguration {
-  MyoroBarGraphConfiguration copyWith({bool? sorted, List<MyoroBarGraphGroup>? items}) {
-    return MyoroBarGraphConfiguration(sorted: sorted ?? self.sorted, items: items ?? self.items);
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_app_bar_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroAppBarThemeExtension] once the code is generated.
 ///
 /// ```dart

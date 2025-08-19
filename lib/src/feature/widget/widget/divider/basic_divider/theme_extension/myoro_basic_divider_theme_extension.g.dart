@@ -6,6 +6,8 @@ part of 'myoro_basic_divider_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroBasicDividerThemeExtension] once the code is generated.
 ///
 /// ```dart

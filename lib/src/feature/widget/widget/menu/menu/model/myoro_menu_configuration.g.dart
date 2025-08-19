@@ -6,6 +6,8 @@ part of 'myoro_menu_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroMenuConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -54,34 +56,4 @@ mixin _$MyoroMenuConfigurationMixin<T> {
       '  searchCallback: ${self.searchCallback},\n'
       '  itemBuilder: ${self.itemBuilder},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroMenuConfigurationExtension<T> on MyoroMenuConfiguration<T> {
-  MyoroMenuConfiguration<T> copyWith({
-    BoxConstraints? constraints,
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    BoxBorder? border,
-    bool borderProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    FutureOr<Set<T>> Function()? request,
-    FutureOr<Set<T>> Function(Set<T>)? onEndReachedRequest,
-    bool onEndReachedRequestProvided = true,
-    Set<T> Function(String, Set<T>)? searchCallback,
-    bool searchCallbackProvided = true,
-    MyoroMenuItem Function(T)? itemBuilder,
-  }) {
-    return MyoroMenuConfiguration(
-      constraints: constraints ?? self.constraints,
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
-      border: borderProvided ? (border ?? self.border) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
-      request: request ?? self.request,
-      onEndReachedRequest: onEndReachedRequestProvided ? (onEndReachedRequest ?? self.onEndReachedRequest) : null,
-      searchCallback: searchCallbackProvided ? (searchCallback ?? self.searchCallback) : null,
-      itemBuilder: itemBuilder ?? self.itemBuilder,
-    );
-  }
 }

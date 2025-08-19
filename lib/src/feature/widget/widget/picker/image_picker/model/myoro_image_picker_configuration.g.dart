@@ -6,6 +6,8 @@ part of 'myoro_image_picker_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroImagePickerConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -35,20 +37,4 @@ mixin _$MyoroImagePickerConfigurationMixin {
       '  size: ${self.size},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroImagePickerConfigurationExtension on MyoroImagePickerConfiguration {
-  MyoroImagePickerConfiguration copyWith({
-    String? selectedImage,
-    bool selectedImageProvided = true,
-    Size? size,
-    void Function(String?)? onChanged,
-  }) {
-    return MyoroImagePickerConfiguration(
-      selectedImage: selectedImageProvided ? (selectedImage ?? self.selectedImage) : null,
-      size: size ?? self.size,
-      onChanged: onChanged ?? self.onChanged,
-    );
-  }
 }

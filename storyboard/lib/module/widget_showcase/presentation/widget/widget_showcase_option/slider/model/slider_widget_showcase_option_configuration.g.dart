@@ -6,6 +6,8 @@ part of 'slider_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [SliderWidgetShowcaseOptionConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -45,24 +47,4 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  sliderOnChanged: ${self.sliderOnChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $SliderWidgetShowcaseOptionConfigurationExtension on SliderWidgetShowcaseOptionConfiguration {
-  SliderWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    bool? initiallyEnabled,
-    double? initialValue,
-    void Function(bool, double)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    void Function(dynamic)? sliderOnChanged,
-  }) {
-    return SliderWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      initiallyEnabled: initiallyEnabled ?? self.initiallyEnabled,
-      initialValue: initialValue ?? self.initialValue,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
-      sliderOnChanged: sliderOnChanged ?? self.sliderOnChanged,
-    );
-  }
 }

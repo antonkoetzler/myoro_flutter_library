@@ -6,6 +6,8 @@ part of 'myoro_icon_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroIconConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -33,11 +35,4 @@ mixin _$MyoroIconConfigurationMixin {
       '  icon: ${self.icon},\n'
       '  size: ${self.size},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroIconConfigurationExtension on MyoroIconConfiguration {
-  MyoroIconConfiguration copyWith({IconData? icon, double? size, bool sizeProvided = true}) {
-    return MyoroIconConfiguration(icon: icon ?? self.icon, size: sizeProvided ? (size ?? self.size) : null);
-  }
 }

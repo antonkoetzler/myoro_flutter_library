@@ -6,6 +6,8 @@ part of 'myoro_table_column_width_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTableColumnWidthConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -33,18 +35,4 @@ mixin _$MyoroTableColumnWidthConfigurationMixin {
       '  typeEnum: ${self.typeEnum},\n'
       '  fixedWidth: ${self.fixedWidth},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTableColumnWidthConfigurationExtension on MyoroTableColumnWidthConfiguration {
-  MyoroTableColumnWidthConfiguration copyWith({
-    MyoroTableColumnWidthConfigurationEnum? typeEnum,
-    double? fixedWidth,
-    bool fixedWidthProvided = true,
-  }) {
-    return MyoroTableColumnWidthConfiguration(
-      typeEnum: typeEnum ?? self.typeEnum,
-      fixedWidth: fixedWidthProvided ? (fixedWidth ?? self.fixedWidth) : null,
-    );
-  }
 }

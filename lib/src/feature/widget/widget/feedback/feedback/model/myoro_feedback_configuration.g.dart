@@ -6,6 +6,8 @@ part of 'myoro_feedback_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroFeedbackConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -42,27 +44,4 @@ mixin _$MyoroFeedbackConfigurationMixin {
       '  subtitleConfiguration: ${self.subtitleConfiguration},\n'
       '  actionButtonConfiguration: ${self.actionButtonConfiguration},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroFeedbackConfigurationExtension on MyoroFeedbackConfiguration {
-  MyoroFeedbackConfiguration copyWith({
-    MyoroIconConfiguration? iconConfiguration,
-    MyoroTextConfiguration? titleConfiguration,
-    MyoroTextConfiguration? subtitleConfiguration,
-    bool subtitleConfigurationProvided = true,
-    MyoroIconTextButtonConfiguration? actionButtonConfiguration,
-    bool actionButtonConfigurationProvided = true,
-  }) {
-    return MyoroFeedbackConfiguration(
-      iconConfiguration: iconConfiguration ?? self.iconConfiguration,
-      titleConfiguration: titleConfiguration ?? self.titleConfiguration,
-      subtitleConfiguration: subtitleConfigurationProvided
-          ? (subtitleConfiguration ?? self.subtitleConfiguration)
-          : null,
-      actionButtonConfiguration: actionButtonConfigurationProvided
-          ? (actionButtonConfiguration ?? self.actionButtonConfiguration)
-          : null,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_feedback_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroFeedbackThemeExtension] once the code is generated.
 ///
 /// ```dart

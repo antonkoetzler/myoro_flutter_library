@@ -6,6 +6,8 @@ part of 'myoro_tab_view_tab.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTabViewTab] once the code is generated.
 ///
 /// ```dart
@@ -35,21 +37,4 @@ mixin _$MyoroTabViewTabMixin {
       '  text: ${self.text},\n'
       '  content: ${self.content},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTabViewTabExtension on MyoroTabViewTab {
-  MyoroTabViewTab copyWith({
-    IconData? icon,
-    bool iconProvided = true,
-    String? text,
-    bool textProvided = true,
-    Widget? content,
-  }) {
-    return MyoroTabViewTab(
-      icon: iconProvided ? (icon ?? self.icon) : null,
-      text: textProvided ? (text ?? self.text) : null,
-      content: content ?? self.content,
-    );
-  }
 }

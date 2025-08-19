@@ -6,6 +6,8 @@ part of 'myoro_group_radio_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroGroupRadioConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -41,30 +43,4 @@ mixin _$MyoroGroupRadioConfigurationMixin {
       '  onChanged: ${self.onChanged},\n'
       '  radios: ${self.radios},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroGroupRadioConfigurationExtension on MyoroGroupRadioConfiguration {
-  MyoroGroupRadioConfiguration copyWith({
-    MyoroGroupRadioController? controller,
-    bool controllerProvided = true,
-    Axis? direction,
-    double? spacing,
-    bool spacingProvided = true,
-    double? runSpacing,
-    bool runSpacingProvided = true,
-    void Function(String, Map<String, bool>)? onChanged,
-    bool onChangedProvided = true,
-    Map<String, bool>? radios,
-    bool radiosProvided = true,
-  }) {
-    return MyoroGroupRadioConfiguration(
-      controller: controllerProvided ? (controller ?? self.controller) : null,
-      direction: direction ?? self.direction,
-      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      radios: radiosProvided ? (radios ?? self.radios) : null,
-    );
-  }
 }

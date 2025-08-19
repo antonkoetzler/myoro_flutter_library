@@ -6,6 +6,8 @@ part of 'myoro_snack_bar_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroSnackBarThemeExtension] once the code is generated.
 ///
 /// ```dart

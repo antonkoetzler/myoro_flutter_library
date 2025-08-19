@@ -6,6 +6,8 @@ part of 'myoro_text_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTextConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -39,24 +41,4 @@ mixin _$MyoroTextConfigurationMixin {
       '  alignment: ${self.alignment},\n'
       '  style: ${self.style},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTextConfigurationExtension on MyoroTextConfiguration {
-  MyoroTextConfiguration copyWith({
-    String? text,
-    int? maxLines,
-    TextOverflow? overflow,
-    TextAlign? alignment,
-    TextStyle? style,
-    bool styleProvided = true,
-  }) {
-    return MyoroTextConfiguration(
-      text: text ?? self.text,
-      maxLines: maxLines ?? self.maxLines,
-      overflow: overflow ?? self.overflow,
-      alignment: alignment ?? self.alignment,
-      style: styleProvided ? (style ?? self.style) : null,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_tap_status_enum_color_builder_widget_showcase_option_configuratio
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -61,38 +63,4 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
       '  selectedTapColor: ${self.selectedTapColor},\n'
       '  tapOnChanged: ${self.tapOnChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationExtension
-    on MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration {
-  MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    bool? enabled,
-    String? label,
-    void Function(bool)? checkboxOnChanged,
-    Color? selectedIdleColor,
-    bool selectedIdleColorProvided = true,
-    void Function(Color?)? idleOnChanged,
-    Color? selectedHoverColor,
-    bool selectedHoverColorProvided = true,
-    void Function(Color?)? hoverOnChanged,
-    Color? selectedTapColor,
-    bool selectedTapColorProvided = true,
-    void Function(Color?)? tapOnChanged,
-  }) {
-    return MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
-      title: titleProvided ? (title ?? self.title) : null,
-      enabled: enabled ?? self.enabled,
-      label: label ?? self.label,
-      checkboxOnChanged: checkboxOnChanged ?? self.checkboxOnChanged,
-      selectedIdleColor: selectedIdleColorProvided ? (selectedIdleColor ?? self.selectedIdleColor) : null,
-      idleOnChanged: idleOnChanged ?? self.idleOnChanged,
-      selectedHoverColor: selectedHoverColorProvided ? (selectedHoverColor ?? self.selectedHoverColor) : null,
-      hoverOnChanged: hoverOnChanged ?? self.hoverOnChanged,
-      selectedTapColor: selectedTapColorProvided ? (selectedTapColor ?? self.selectedTapColor) : null,
-      tapOnChanged: tapOnChanged ?? self.tapOnChanged,
-    );
-  }
 }

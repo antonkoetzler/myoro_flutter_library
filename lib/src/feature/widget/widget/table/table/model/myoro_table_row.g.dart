@@ -6,6 +6,8 @@ part of 'myoro_table_row.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTableRow] once the code is generated.
 ///
 /// ```dart
@@ -35,21 +37,4 @@ mixin _$MyoroTableRowMixin<T> {
       '  onTapUp: ${self.onTapUp},\n'
       '  cells: ${self.cells},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTableRowExtension<T> on MyoroTableRow<T> {
-  MyoroTableRow<T> copyWith({
-    void Function(T)? onTapDown,
-    bool onTapDownProvided = true,
-    void Function(T)? onTapUp,
-    bool onTapUpProvided = true,
-    List<Widget>? cells,
-  }) {
-    return MyoroTableRow(
-      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
-      cells: cells ?? self.cells,
-    );
-  }
 }

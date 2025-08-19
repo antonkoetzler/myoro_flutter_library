@@ -6,6 +6,8 @@ part of 'myoro_icon_text_button_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroIconTextButtonThemeExtension] once the code is generated.
 ///
 /// ```dart

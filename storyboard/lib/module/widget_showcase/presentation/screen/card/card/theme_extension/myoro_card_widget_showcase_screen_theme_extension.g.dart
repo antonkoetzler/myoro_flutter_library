@@ -6,6 +6,8 @@ part of 'myoro_card_widget_showcase_screen_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroCardWidgetShowcaseScreenThemeExtension] once the code is generated.
 ///
 /// ```dart

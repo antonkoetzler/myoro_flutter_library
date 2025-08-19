@@ -6,6 +6,8 @@ part of 'myoro_menu_item.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroMenuItem] once the code is generated.
 ///
 /// ```dart
@@ -48,30 +50,4 @@ mixin _$MyoroMenuItemMixin {
       '  onTapDown: ${self.onTapDown},\n'
       '  onTapUp: ${self.onTapUp},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroMenuItemExtension on MyoroMenuItem {
-  MyoroMenuItem copyWith({
-    bool? isSelected,
-    MyoroIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
-    Widget Function(BuildContext, MyoroTapStatusEnum)? builder,
-    bool builderProvided = true,
-    void Function(TapDownDetails)? onTapDown,
-    bool onTapDownProvided = true,
-    void Function(TapUpDetails)? onTapUp,
-    bool onTapUpProvided = true,
-  }) {
-    return MyoroMenuItem(
-      isSelected: isSelected ?? self.isSelected,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
-      builder: builderProvided ? (builder ?? self.builder) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'icon_widget_showcase_option_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [IconWidgetShowcaseOptionConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -54,39 +56,4 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
       '  enabled: ${self.enabled},\n'
       '  enableOptionCheckboxOnChanged: ${self.enableOptionCheckboxOnChanged},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $IconWidgetShowcaseOptionConfigurationExtension on IconWidgetShowcaseOptionConfiguration {
-  IconWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    IconData? selectedIcon,
-    bool selectedIconProvided = true,
-    void Function(IconData?)? iconOnChanged,
-    double? selectedIconSize,
-    bool selectedIconSizeProvided = true,
-    void Function(double?)? iconSizeOnChanged,
-    bool iconSizeOnChangedProvided = true,
-    void Function(bool, double?)? iconSizeCheckboxOnChanged,
-    bool iconSizeCheckboxOnChangedProvided = true,
-    bool? enabled,
-    bool enabledProvided = true,
-    void Function(bool, IconData?, double?)? enableOptionCheckboxOnChanged,
-    bool enableOptionCheckboxOnChangedProvided = true,
-  }) {
-    return IconWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      selectedIcon: selectedIconProvided ? (selectedIcon ?? self.selectedIcon) : null,
-      iconOnChanged: iconOnChanged ?? self.iconOnChanged,
-      selectedIconSize: selectedIconSizeProvided ? (selectedIconSize ?? self.selectedIconSize) : null,
-      iconSizeOnChanged: iconSizeOnChangedProvided ? (iconSizeOnChanged ?? self.iconSizeOnChanged) : null,
-      iconSizeCheckboxOnChanged:
-          iconSizeCheckboxOnChangedProvided ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged) : null,
-      enabled: enabledProvided ? (enabled ?? self.enabled) : null,
-      enableOptionCheckboxOnChanged:
-          enableOptionCheckboxOnChangedProvided
-              ? (enableOptionCheckboxOnChanged ?? self.enableOptionCheckboxOnChanged)
-              : null,
-    );
-  }
 }

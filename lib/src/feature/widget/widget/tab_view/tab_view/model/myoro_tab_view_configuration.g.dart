@@ -6,6 +6,8 @@ part of 'myoro_tab_view_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTabViewConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,23 +39,4 @@ mixin _$MyoroTabViewConfigurationMixin {
       '  tabButtonTextStyle: ${self.tabButtonTextStyle},\n'
       '  tabs: ${self.tabs},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTabViewConfigurationExtension on MyoroTabViewConfiguration {
-  MyoroTabViewConfiguration copyWith({
-    int? initiallySelectedTabIndex,
-    double? tabButtonIconSize,
-    bool tabButtonIconSizeProvided = true,
-    TextStyle? tabButtonTextStyle,
-    bool tabButtonTextStyleProvided = true,
-    List<MyoroTabViewTab>? tabs,
-  }) {
-    return MyoroTabViewConfiguration(
-      initiallySelectedTabIndex: initiallySelectedTabIndex ?? self.initiallySelectedTabIndex,
-      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? self.tabButtonIconSize) : null,
-      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? self.tabButtonTextStyle) : null,
-      tabs: tabs ?? self.tabs,
-    );
-  }
 }

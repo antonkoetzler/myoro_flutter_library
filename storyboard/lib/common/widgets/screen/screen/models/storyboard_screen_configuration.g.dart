@@ -6,6 +6,8 @@ part of 'storyboard_screen_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [StoryboardScreenConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,22 +39,4 @@ mixin _$StoryboardScreenConfigurationMixin {
       '  extraActionWidgets: ${self.extraActionWidgets},\n'
       '  body: ${self.body},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $StoryboardScreenConfigurationExtension on StoryboardScreenConfiguration {
-  StoryboardScreenConfiguration copyWith({
-    void Function()? onPrevious,
-    bool onPreviousProvided = true,
-    String? title,
-    List<Widget>? extraActionWidgets,
-    Widget? body,
-  }) {
-    return StoryboardScreenConfiguration(
-      onPrevious: onPreviousProvided ? (onPrevious ?? self.onPrevious) : null,
-      title: title ?? self.title,
-      extraActionWidgets: extraActionWidgets ?? self.extraActionWidgets,
-      body: body ?? self.body,
-    );
-  }
 }

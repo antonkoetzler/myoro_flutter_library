@@ -6,6 +6,8 @@ part of 'myoro_multi_dropdown_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroMultiDropdownConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -60,35 +62,4 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
       '  menuConfiguration: ${self.menuConfiguration},\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroMultiDropdownConfigurationExtension<T> on MyoroMultiDropdownConfiguration<T> {
-  MyoroMultiDropdownConfiguration<T> copyWith({
-    String? label,
-    MyoroDropdownMenuTypeEnum? menuTypeEnum,
-    bool? enabled,
-    bool? allowItemClearing,
-    TextAlign? selectedItemTextAlign,
-    MyoroMenuConfiguration<T>? menuConfiguration,
-    String Function(T)? selectedItemBuilder,
-    Set<T>? selectedItems,
-    void Function(Set<T>)? onChanged,
-    bool onChangedProvided = true,
-    void Function(bool, Set<T>)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-  }) {
-    return MyoroMultiDropdownConfiguration(
-      label: label ?? self.label,
-      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
-      enabled: enabled ?? self.enabled,
-      allowItemClearing: allowItemClearing ?? self.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
-      menuConfiguration: menuConfiguration ?? self.menuConfiguration,
-      selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
-      selectedItems: selectedItems ?? self.selectedItems,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_table_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTableConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -35,19 +37,4 @@ mixin _$MyoroTableConfigurationMixin<T> {
       '  columns: ${self.columns},\n'
       '  rowBuilder: ${self.rowBuilder},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroTableConfigurationExtension<T> on MyoroTableConfiguration<T> {
-  MyoroTableConfiguration<T> copyWith({
-    FutureOr<Set<T>> Function()? request,
-    List<MyoroTableColumn>? columns,
-    MyoroTableRow<T> Function(T)? rowBuilder,
-  }) {
-    return MyoroTableConfiguration(
-      request: request ?? self.request,
-      columns: columns ?? self.columns,
-      rowBuilder: rowBuilder ?? self.rowBuilder,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_tooltip_theme_extension.dart';
 // MyoroThemeExtensionGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroTooltipThemeExtension] once the code is generated.
 ///
 /// ```dart

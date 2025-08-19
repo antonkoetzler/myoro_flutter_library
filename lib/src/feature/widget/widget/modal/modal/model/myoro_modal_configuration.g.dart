@@ -6,6 +6,8 @@ part of 'myoro_modal_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroModalConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -54,33 +56,4 @@ mixin _$MyoroModalConfigurationMixin<T> {
       '  padding: ${self.padding},\n'
       '  closeButtonPadding: ${self.closeButtonPadding},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroModalConfigurationExtension<T> on MyoroModalConfiguration<T> {
-  MyoroModalConfiguration<T> copyWith({
-    bool? barrierDismissable,
-    bool? useRootNavigator,
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
-    void Function(T?)? onClosed,
-    bool onClosedProvided = true,
-    String? title,
-    bool? showCloseButton,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    EdgeInsets? closeButtonPadding,
-    bool closeButtonPaddingProvided = true,
-  }) {
-    return MyoroModalConfiguration(
-      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
-      useRootNavigator: useRootNavigator ?? self.useRootNavigator,
-      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
-      onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
-      title: title ?? self.title,
-      showCloseButton: showCloseButton ?? self.showCloseButton,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
-    );
-  }
 }

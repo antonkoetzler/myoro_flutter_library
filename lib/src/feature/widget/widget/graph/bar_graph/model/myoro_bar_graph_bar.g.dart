@@ -6,6 +6,8 @@ part of 'myoro_bar_graph_bar.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroBarGraphBar] once the code is generated.
 ///
 /// ```dart
@@ -35,20 +37,4 @@ mixin _$MyoroBarGraphBarMixin {
       '  color: ${self.color},\n'
       '  barSections: ${self.barSections},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroBarGraphBarExtension on MyoroBarGraphBar {
-  MyoroBarGraphBar copyWith({
-    double? y,
-    Color? color,
-    bool colorProvided = true,
-    List<MyoroBarGraphBarSection>? barSections,
-  }) {
-    return MyoroBarGraphBar(
-      y: y ?? self.y,
-      color: colorProvided ? (color ?? self.color) : null,
-      barSections: barSections ?? self.barSections,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_range_slider_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroRangeSliderConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -57,32 +59,4 @@ mixin _$MyoroRangeSliderConfigurationMixin {
       '  min: ${self.min},\n'
       '  max: ${self.max},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroRangeSliderConfigurationExtension on MyoroRangeSliderConfiguration {
-  MyoroRangeSliderConfiguration copyWith({
-    String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    String? currentValueText,
-    String? maxValueText,
-    String? footerText,
-    double? min,
-    double? max,
-    RangeValues? values,
-    void Function(RangeValues)? onChanged,
-  }) {
-    return MyoroRangeSliderConfiguration(
-      label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      currentValueText: currentValueText ?? self.currentValueText,
-      maxValueText: maxValueText ?? self.maxValueText,
-      footerText: footerText ?? self.footerText,
-      min: min ?? self.min,
-      max: max ?? self.max,
-      values: values ?? self.values,
-      onChanged: onChanged ?? self.onChanged,
-    );
-  }
 }

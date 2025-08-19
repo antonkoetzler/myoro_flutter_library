@@ -6,6 +6,8 @@ part of 'myoro_resize_divider_configuration.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroResizeDividerConfiguration] once the code is generated.
 ///
 /// ```dart
@@ -37,24 +39,4 @@ mixin _$MyoroResizeDividerConfigurationMixin {
       '  shortValue: ${self.shortValue},\n'
       '  padding: ${self.padding},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroResizeDividerConfigurationExtension on MyoroResizeDividerConfiguration {
-  MyoroResizeDividerConfiguration copyWith({
-    Axis? direction,
-    double? shortValue,
-    bool shortValueProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    void Function(DragUpdateDetails)? dragCallback,
-    bool dragCallbackProvided = true,
-  }) {
-    return MyoroResizeDividerConfiguration(
-      direction: direction ?? self.direction,
-      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-      dragCallback: dragCallbackProvided ? (dragCallback ?? self.dragCallback) : null,
-    );
-  }
 }

@@ -6,6 +6,8 @@ part of 'myoro_bar_graph_group.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroBarGraphGroup] once the code is generated.
 ///
 /// ```dart
@@ -33,11 +35,4 @@ mixin _$MyoroBarGraphGroupMixin {
       '  x: ${self.x},\n'
       '  bars: ${self.bars},\n'
       ');';
-}
-
-/// Extension class for @myoroModel to place the copyWith function.
-extension $MyoroBarGraphGroupExtension on MyoroBarGraphGroup {
-  MyoroBarGraphGroup copyWith({int? x, List<MyoroBarGraphBar>? bars}) {
-    return MyoroBarGraphGroup(x: x ?? self.x, bars: bars ?? self.bars);
-  }
 }
