@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.3.1
+
+- chore: Upgrade `myoro_flutter_annotations` to 1.4.1
+
 ## 2.3.0
 
 - feature: `MyoroTimePickerInput`
