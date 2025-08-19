@@ -29,11 +29,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     super.inputKey,
     super.checkboxKey,
     super.controller,
-  }) : super(
-         placeholder: MyoroInputConfiguration.placeholderDefaultValue,
-         readOnly: true,
-         autofocus: false,
-       );
+  }) : super(placeholder: MyoroInputConfiguration.placeholderDefaultValue, readOnly: true, autofocus: false);
 
   // coverage:ignore-start
   factory MyoroDatePickerInputConfiguration.fake() {
@@ -41,9 +37,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
       inputStyle: MyoroInputStyleEnum.fake(),
       textAlign: myoroFake<TextAlign>(),
       inputTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      label: faker.randomGenerator.boolean()
-          ? faker.lorem.word()
-          : MyoroInputConfiguration.labelDefaultValue,
+      label: faker.randomGenerator.boolean() ? faker.lorem.word() : MyoroInputConfiguration.labelDefaultValue,
       labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       border: myoroFake<InputBorder>(),
@@ -51,9 +45,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
       enabled: faker.randomGenerator.boolean(),
       showClearTextButton: faker.randomGenerator.boolean(),
       checkboxOnChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
-      validation: faker.randomGenerator.boolean()
-          ? ((_) => faker.randomGenerator.boolean() ? null : '')
-          : null,
+      validation: faker.randomGenerator.boolean() ? ((_) => faker.randomGenerator.boolean() ? null : '') : null,
       onFieldSubmitted: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onCleared: faker.randomGenerator.boolean() ? (() {}) : null,
@@ -63,6 +55,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
   // coverage:ignore-end
 
   // coverage:ignore-start
+  @override
   MyoroDatePickerInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
@@ -114,9 +107,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
       showClearTextButton: showClearTextButton ?? this.showClearTextButton,
       checkboxOnChanged: checkboxOnChanged ?? this.checkboxOnChanged,
       validation: validationProvided ? (validation ?? this.validation) : null,
-      onFieldSubmitted: onFieldSubmittedProvided
-          ? (onFieldSubmitted ?? this.onFieldSubmitted)
-          : null,
+      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? this.onFieldSubmitted) : null,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
       onCleared: onClearedProvided ? (onCleared ?? this.onCleared) : null,
       inputKey: inputKeyProvided ? (inputKey ?? this.inputKey) : null,

@@ -8,8 +8,7 @@ part 'text_widget_showcase_option_configuration.g.dart';
 /// Configuration model of [TextWidgetShowcaseOption].
 @immutable
 @myoroModel
-final class TextWidgetShowcaseOptionConfiguration
-    with _$TextWidgetShowcaseOptionConfigurationMixin {
+final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptionConfigurationMixin {
   static const labelDefaultValue = 'Text';
   static const textInitialValueDefaultValue = '';
   static const maxLinesInitialValueDefaultValue = MyoroTextConfiguration.maxLinesDefaultValue;
@@ -55,6 +54,7 @@ final class TextWidgetShowcaseOptionConfiguration
   final TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged;
   final TextWidgetShowcaseOptionTextStyleCheckboxOnChanged? styleCheckboxOnChanged;
 
+  @override
   TextWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     String? textInitialValue,
@@ -80,21 +80,15 @@ final class TextWidgetShowcaseOptionConfiguration
       textInitialValue: textInitialValue ?? this.textInitialValue,
       textOnChanged: textOnChanged ?? this.textOnChanged,
       maxLinesInitialValue: maxLinesInitialValue ?? this.maxLinesInitialValue,
-      maxLinesOnChanged:
-          maxLinesOnChangedProvided ? (maxLinesOnChanged ?? this.maxLinesOnChanged) : null,
+      maxLinesOnChanged: maxLinesOnChangedProvided ? (maxLinesOnChanged ?? this.maxLinesOnChanged) : null,
       overflowInitialValue: overflowInitialValue ?? this.overflowInitialValue,
-      overflowOnChanged:
-          overflowOnChangedProvided ? (overflowOnChanged ?? this.overflowOnChanged) : null,
+      overflowOnChanged: overflowOnChangedProvided ? (overflowOnChanged ?? this.overflowOnChanged) : null,
       alignmentInitialValue: alignmentInitialValue ?? this.alignmentInitialValue,
-      alignmentOnChanged:
-          alignmentOnChangedProvided ? (alignmentOnChanged ?? this.alignmentOnChanged) : null,
-      styleInitialValue:
-          styleInitialValueProvided ? (styleInitialValue ?? this.styleInitialValue) : null,
+      alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? this.alignmentOnChanged) : null,
+      styleInitialValue: styleInitialValueProvided ? (styleInitialValue ?? this.styleInitialValue) : null,
       styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? this.styleOnChanged) : null,
       styleCheckboxOnChanged:
-          styleCheckboxOnChangedProvided
-              ? (styleCheckboxOnChanged ?? this.styleCheckboxOnChanged)
-              : null,
+          styleCheckboxOnChangedProvided ? (styleCheckboxOnChanged ?? this.styleCheckboxOnChanged) : null,
     );
   }
 }

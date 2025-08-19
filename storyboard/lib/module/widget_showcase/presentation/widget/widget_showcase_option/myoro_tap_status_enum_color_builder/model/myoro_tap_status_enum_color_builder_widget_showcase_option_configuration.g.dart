@@ -17,6 +17,36 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
   MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration get self =>
       this as MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration;
 
+  MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration copyWith({
+    String? title,
+    bool titleProvided = true,
+    bool? enabled,
+    String? label,
+    void Function(bool)? checkboxOnChanged,
+    Color? selectedIdleColor,
+    bool selectedIdleColorProvided = true,
+    void Function(Color?)? idleOnChanged,
+    Color? selectedHoverColor,
+    bool selectedHoverColorProvided = true,
+    void Function(Color?)? hoverOnChanged,
+    Color? selectedTapColor,
+    bool selectedTapColorProvided = true,
+    void Function(Color?)? tapOnChanged,
+  }) {
+    return MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
+      title: titleProvided ? (title ?? self.title) : null,
+      enabled: enabled ?? self.enabled,
+      label: label ?? self.label,
+      checkboxOnChanged: checkboxOnChanged ?? self.checkboxOnChanged,
+      selectedIdleColor: selectedIdleColorProvided ? (selectedIdleColor ?? self.selectedIdleColor) : null,
+      idleOnChanged: idleOnChanged ?? self.idleOnChanged,
+      selectedHoverColor: selectedHoverColorProvided ? (selectedHoverColor ?? self.selectedHoverColor) : null,
+      hoverOnChanged: hoverOnChanged ?? self.hoverOnChanged,
+      selectedTapColor: selectedTapColorProvided ? (selectedTapColor ?? self.selectedTapColor) : null,
+      tapOnChanged: tapOnChanged ?? self.tapOnChanged,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration &&

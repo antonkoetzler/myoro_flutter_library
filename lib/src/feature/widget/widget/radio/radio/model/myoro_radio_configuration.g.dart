@@ -16,6 +16,26 @@ part of 'myoro_radio_configuration.dart';
 mixin _$MyoroRadioConfigurationMixin {
   MyoroRadioConfiguration get self => this as MyoroRadioConfiguration;
 
+  MyoroRadioConfiguration copyWith({
+    MyoroRadioController? controller,
+    bool controllerProvided = true,
+    bool? initialValue,
+    bool initialValueProvided = true,
+    String? label,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    void Function(bool)? onChanged,
+    bool onChangedProvided = true,
+  }) {
+    return MyoroRadioConfiguration(
+      controller: controllerProvided ? (controller ?? self.controller) : null,
+      initialValue: initialValueProvided ? (initialValue ?? self.initialValue) : null,
+      label: label ?? self.label,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroRadioConfiguration &&

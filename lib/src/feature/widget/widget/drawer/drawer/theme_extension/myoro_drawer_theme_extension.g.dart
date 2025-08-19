@@ -18,8 +18,8 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
 
   @override
   MyoroDrawerThemeExtension copyWith({
-    EdgeInsets? drawerContentPadding,
     EdgeInsets? drawerPadding,
+    EdgeInsets? drawerContentPadding,
     ShapeBorder? drawerShape,
     EdgeInsets? titleContentDividerPadding,
     TextStyle? titleTextStyle,
@@ -27,8 +27,8 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
     IconData? closeButtonEndDrawerIcon,
   }) {
     return MyoroDrawerThemeExtension(
-      drawerContentPadding: drawerContentPadding ?? self.drawerContentPadding,
       drawerPadding: drawerPadding ?? self.drawerPadding,
+      drawerContentPadding: drawerContentPadding ?? self.drawerContentPadding,
       drawerShape: drawerShape ?? self.drawerShape,
       titleContentDividerPadding: titleContentDividerPadding ?? self.titleContentDividerPadding,
       titleTextStyle: titleTextStyle ?? self.titleTextStyle,

@@ -16,6 +16,21 @@ part of 'myoro_snack_bar_configuration.dart';
 mixin _$MyoroSnackBarConfigurationMixin {
   MyoroSnackBarConfiguration get self => this as MyoroSnackBarConfiguration;
 
+  MyoroSnackBarConfiguration copyWith({
+    MyoroSnackBarTypeEnum? snackBarType,
+    bool? showCloseButton,
+    String? message,
+    Widget? child,
+    bool childProvided = true,
+  }) {
+    return MyoroSnackBarConfiguration(
+      snackBarType: snackBarType ?? self.snackBarType,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+      message: message ?? self.message,
+      child: childProvided ? (child ?? self.child) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroSnackBarConfiguration &&

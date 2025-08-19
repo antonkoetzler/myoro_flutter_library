@@ -1,3 +1,4 @@
+import 'dart:async';
 
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';

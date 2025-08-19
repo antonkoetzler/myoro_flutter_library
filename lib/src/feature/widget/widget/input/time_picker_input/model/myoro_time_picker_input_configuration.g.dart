@@ -16,6 +16,66 @@ part of 'myoro_time_picker_input_configuration.dart';
 mixin _$MyoroTimePickerInputConfigurationMixin {
   MyoroTimePickerInputConfiguration get self => this as MyoroTimePickerInputConfiguration;
 
+  MyoroTimePickerInputConfiguration copyWith({
+    MyoroInputStyleEnum? inputStyle,
+    TextAlign? textAlign,
+    TextStyle? inputTextStyle,
+    bool inputTextStyleProvided = true,
+    String? label,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    String? placeholder,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
+    InputBorder? border,
+    bool borderProvided = true,
+    Widget? suffix,
+    bool suffixProvided = true,
+    bool? enabled,
+    bool? readOnly,
+    bool? autofocus,
+    bool? showClearTextButton,
+    void Function(bool, String)? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    String? Function(String)? validation,
+    bool validationProvided = true,
+    void Function(String)? onFieldSubmitted,
+    bool onFieldSubmittedProvided = true,
+    void Function(String)? onChanged,
+    bool onChangedProvided = true,
+    void Function()? onCleared,
+    bool onClearedProvided = true,
+    Key? inputKey,
+    bool inputKeyProvided = true,
+    Key? checkboxKey,
+    bool checkboxKeyProvided = true,
+    FocusNode? focusNode,
+    bool focusNodeProvided = true,
+    TextEditingController? controller,
+    bool controllerProvided = true,
+  }) {
+    return MyoroTimePickerInputConfiguration(
+      inputStyle: inputStyle ?? self.inputStyle,
+      textAlign: textAlign ?? self.textAlign,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
+      label: label ?? self.label,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      border: borderProvided ? (border ?? self.border) : null,
+      suffix: suffixProvided ? (suffix ?? self.suffix) : null,
+      enabled: enabled ?? self.enabled,
+      showClearTextButton: showClearTextButton ?? self.showClearTextButton,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      validation: validationProvided ? (validation ?? self.validation) : null,
+      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
+      inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
+      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
+      controller: controllerProvided ? (controller ?? self.controller) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTimePickerInputConfiguration &&

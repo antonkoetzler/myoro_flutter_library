@@ -16,6 +16,52 @@ part of 'myoro_icon_text_button_configuration.dart';
 mixin _$MyoroIconTextButtonConfigurationMixin {
   MyoroIconTextButtonConfiguration get self => this as MyoroIconTextButtonConfiguration;
 
+  MyoroIconTextButtonConfiguration copyWith({
+    bool? invert,
+    double? spacing,
+    bool spacingProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    Color Function(MyoroTapStatusEnum)? contentColorBuilder,
+    bool contentColorBuilderProvided = true,
+    MyoroIconConfiguration? iconConfiguration,
+    bool iconConfigurationProvided = true,
+    MyoroTextConfiguration? textConfiguration,
+    bool textConfigurationProvided = true,
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    Color Function(MyoroTapStatusEnum)? backgroundColorBuilder,
+    bool backgroundColorBuilderProvided = true,
+    BoxBorder Function(MyoroTapStatusEnum)? borderBuilder,
+    bool borderBuilderProvided = true,
+    void Function(TapDownDetails)? onTapDown,
+    bool onTapDownProvided = true,
+    void Function(TapUpDetails)? onTapUp,
+    bool onTapUpProvided = true,
+  }) {
+    return MyoroIconTextButtonConfiguration(
+      invert: invert ?? self.invert,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      contentColorBuilder: contentColorBuilderProvided ? (contentColorBuilder ?? self.contentColorBuilder) : null,
+      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
+      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      backgroundColorBuilder: backgroundColorBuilderProvided
+          ? (backgroundColorBuilder ?? self.backgroundColorBuilder)
+          : null,
+      borderBuilder: borderBuilderProvided ? (borderBuilder ?? self.borderBuilder) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroIconTextButtonConfiguration &&

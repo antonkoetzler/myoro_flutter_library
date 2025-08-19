@@ -16,6 +16,23 @@ part of 'myoro_resize_divider_configuration.dart';
 mixin _$MyoroResizeDividerConfigurationMixin {
   MyoroResizeDividerConfiguration get self => this as MyoroResizeDividerConfiguration;
 
+  MyoroResizeDividerConfiguration copyWith({
+    void Function(DragUpdateDetails)? dragCallback,
+    bool dragCallbackProvided = true,
+    Axis? direction,
+    double? shortValue,
+    bool shortValueProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+  }) {
+    return MyoroResizeDividerConfiguration(
+      dragCallback: dragCallbackProvided ? (dragCallback ?? self.dragCallback) : null,
+      direction: direction ?? self.direction,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroResizeDividerConfiguration &&

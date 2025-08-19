@@ -16,6 +16,19 @@ part of 'myoro_tooltip_configuration.dart';
 mixin _$MyoroTooltipConfigurationMixin {
   MyoroTooltipConfiguration get self => this as MyoroTooltipConfiguration;
 
+  MyoroTooltipConfiguration copyWith({
+    EdgeInsets? margin,
+    bool marginProvided = true,
+    Duration? waitDuration,
+    String? text,
+  }) {
+    return MyoroTooltipConfiguration(
+      margin: marginProvided ? (margin ?? self.margin) : null,
+      waitDuration: waitDuration ?? self.waitDuration,
+      text: text ?? self.text,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTooltipConfiguration &&

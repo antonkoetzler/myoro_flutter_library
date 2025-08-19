@@ -16,6 +16,34 @@ part of 'myoro_multi_dropdown_configuration.dart';
 mixin _$MyoroMultiDropdownConfigurationMixin<T> {
   MyoroMultiDropdownConfiguration<T> get self => this as MyoroMultiDropdownConfiguration<T>;
 
+  MyoroMultiDropdownConfiguration<T> copyWith({
+    Set<T>? selectedItems,
+    void Function(Set<T>)? onChanged,
+    bool onChangedProvided = true,
+    void Function(bool, Set<T>)? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    String? label,
+    MyoroDropdownMenuTypeEnum? menuTypeEnum,
+    bool? enabled,
+    bool? allowItemClearing,
+    TextAlign? selectedItemTextAlign,
+    MyoroMenuConfiguration<T>? menuConfiguration,
+    String Function(T)? selectedItemBuilder,
+  }) {
+    return MyoroMultiDropdownConfiguration(
+      selectedItems: selectedItems ?? self.selectedItems,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      label: label ?? self.label,
+      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
+      enabled: enabled ?? self.enabled,
+      allowItemClearing: allowItemClearing ?? self.allowItemClearing,
+      selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
+      menuConfiguration: menuConfiguration ?? self.menuConfiguration,
+      selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroMultiDropdownConfiguration<T> &&

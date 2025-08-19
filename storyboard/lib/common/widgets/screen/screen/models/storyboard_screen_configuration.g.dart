@@ -16,6 +16,21 @@ part of 'storyboard_screen_configuration.dart';
 mixin _$StoryboardScreenConfigurationMixin {
   StoryboardScreenConfiguration get self => this as StoryboardScreenConfiguration;
 
+  StoryboardScreenConfiguration copyWith({
+    void Function()? onPrevious,
+    bool onPreviousProvided = true,
+    String? title,
+    List<Widget>? extraActionWidgets,
+    Widget? body,
+  }) {
+    return StoryboardScreenConfiguration(
+      onPrevious: onPreviousProvided ? (onPrevious ?? self.onPrevious) : null,
+      title: title ?? self.title,
+      extraActionWidgets: extraActionWidgets ?? self.extraActionWidgets,
+      body: body ?? self.body,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is StoryboardScreenConfiguration &&

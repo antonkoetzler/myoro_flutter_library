@@ -16,6 +16,18 @@ part of 'myoro_circular_loader_configuration.dart';
 mixin _$MyoroCircularLoaderConfigurationMixin {
   MyoroCircularLoaderConfiguration get self => this as MyoroCircularLoaderConfiguration;
 
+  MyoroCircularLoaderConfiguration copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? size,
+    bool sizeProvided = true,
+  }) {
+    return MyoroCircularLoaderConfiguration(
+      color: colorProvided ? (color ?? self.color) : null,
+      size: sizeProvided ? (size ?? self.size) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroCircularLoaderConfiguration &&
