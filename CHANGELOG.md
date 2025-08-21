@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.3.2
+
+- chore: Update `myoro_flutter_annotations` to 1.4.4
+
 ## 2.3.1
 
 - chore: Upgrade `myoro_flutter_annotations` to 1.4.1
