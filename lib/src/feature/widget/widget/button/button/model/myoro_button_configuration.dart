@@ -54,10 +54,39 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
   final MyoroButtonConfigurationBorderBuilder? borderBuilder;
 
   /// Function executed when the [MyoroButton] is tapped.
-  final MyoroButtonConfigurationOnTapDown? onTapDown;
+  final MyoroButtonOnTapDown? onTapDown;
 
   /// Function executed when the [MyoroButton] is released being tapped.
-  final MyoroButtonConfigurationOnTapUp? onTapUp;
+  final MyoroButtonOnTapUp? onTapUp;
+
+  MyoroButtonConfiguration copyWith({
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder,
+    bool backgroundColorBuilderProvided = true,
+    MyoroButtonConfigurationBorderBuilder? borderBuilder,
+    bool borderBuilderProvided = true,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+  }) {
+    return MyoroButtonConfiguration(
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
+      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      backgroundColorBuilder: backgroundColorBuilderProvided
+          ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
+          : null,
+      borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
+    );
+  }
 
   /// Returns if [onTapUp] or [onTapDown] was provided.
   bool get onTapProvided => (onTapUp != null) || (onTapDown != null);

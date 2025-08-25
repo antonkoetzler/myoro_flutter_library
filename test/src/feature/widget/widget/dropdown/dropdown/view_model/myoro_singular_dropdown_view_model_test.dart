@@ -8,9 +8,13 @@ void main() {
   final item = faker.lorem.word();
   final viewModel = MyoroSingularDropdownViewModel<String>(
     MyoroSingularDropdownConfiguration<String>(
-      menuConfiguration: MyoroMenuConfiguration(
+      menuConfiguration: MyoroSingularMenuConfiguration(
         request: () => {item},
-        itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+        itemBuilder: (item) => MyoroMenuItem(
+          iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+            textConfiguration: MyoroTextConfiguration(text: item),
+          ),
+        ),
       ),
       selectedItemBuilder: (item) => item,
       onChanged: (_) => onChangedExecuted = true,
@@ -26,8 +30,8 @@ void main() {
   });
 
   test('MyoroSingularDropdownViewModel.selectedItemsControllerListener', () {
-    viewModel.toggleItem(item);
-    expect(viewModel.state.selectedItems, {item});
+    viewModel.state.menuController.toggleItem(item);
+    expect(viewModel.state.menuController.selectedItem, item);
     expect(onChangedExecuted, isTrue);
   });
 }

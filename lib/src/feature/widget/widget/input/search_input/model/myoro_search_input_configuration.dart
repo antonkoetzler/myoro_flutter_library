@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -39,4 +37,18 @@ class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin
       request = ((_) => {}),
       itemBuilder = ((_) => MyoroMenuItem.fake());
   // coverage:ignore-end
+
+  MyoroSearchInputConfiguration<T> copyWith({
+    MyoroInputConfiguration? inputConfiguration,
+    bool? requestWhenChanged,
+    MyoroSearchInputRequest<T>? request,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+  }) {
+    return MyoroSearchInputConfiguration(
+      inputConfiguration: inputConfiguration ?? this.inputConfiguration,
+      requestWhenChanged: requestWhenChanged ?? this.requestWhenChanged,
+      request: request ?? this.request,
+      itemBuilder: itemBuilder ?? this.itemBuilder,
+    );
+  }
 }

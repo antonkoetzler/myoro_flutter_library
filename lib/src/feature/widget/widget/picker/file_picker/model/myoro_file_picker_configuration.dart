@@ -8,7 +8,7 @@ part 'myoro_file_picker_configuration.g.dart';
 /// Configuration model of [MyoroFilePicker].
 @immutable
 @myoroModel
-final class MyoroFilePickerConfiguration with _$MyoroFilePickerConfigurationMixin {
+class MyoroFilePickerConfiguration with _$MyoroFilePickerConfigurationMixin {
   const MyoroFilePickerConfiguration({
     this.title,
     required this.fileType,
@@ -43,4 +43,19 @@ final class MyoroFilePickerConfiguration with _$MyoroFilePickerConfigurationMixi
 
   /// Callback executed when the selected file changes
   final MyoroFilePickerOnChanged onChanged;
+
+  MyoroFilePickerConfiguration copyWith({
+    String? title,
+    bool titleProvided = true,
+    MyoroFilePickerFileTypeEnum? fileType,
+    List<String>? allowedExtensions,
+    MyoroFilePickerOnChanged? onChanged,
+  }) {
+    return MyoroFilePickerConfiguration(
+      title: titleProvided ? (title ?? this.title) : null,
+      fileType: fileType ?? this.fileType,
+      allowedExtensions: allowedExtensions ?? this.allowedExtensions,
+      onChanged: onChanged ?? this.onChanged,
+    );
+  }
 }

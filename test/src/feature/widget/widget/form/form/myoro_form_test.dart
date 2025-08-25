@@ -40,10 +40,10 @@ void main() {
     onSuccess: onSuccess,
     onError: onError,
   );
-  final formController = MyoroFormController<String>(configuration: formConfiguration);
+  final formNotifier = MyoroFormNotifier<String>(configuration: formConfiguration);
 
   tearDownAll(() {
-    formController.dispose();
+    formNotifier.dispose();
     inputController.dispose();
   });
 
@@ -54,7 +54,7 @@ void main() {
   testWidgets('MyoroForm formConfiguration and controller provided assertion case', (tester) async {
     expect(
       () => MyoroForm(
-        controller: formController,
+        controller: formNotifier,
         configuration: formConfiguration,
         builder: (_, _) => const SizedBox.shrink(),
       ),
@@ -66,7 +66,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroForm(
-          controller: formController,
+          controller: formNotifier,
           builder: (_, _) {
             return MyoroInput(
               configuration: MyoroInputConfiguration(validation: inputValidation, controller: inputController),
@@ -78,29 +78,29 @@ void main() {
     await tester.pumpAndSettle();
 
     // [MyoroFormConfiguration.validation] error case.
-    await formController.fetch();
+    await formNotifier.fetch();
     await tester.pumpAndSettle();
     expect(onErrorExecuted, isTrue);
-    expect(formController.request.status.isError, isTrue);
-    expect(formController.request.errorMessage, formValidationErrorText);
+    expect(formNotifier.request.status.isError, isTrue);
+    expect(formNotifier.request.errorMessage, formValidationErrorText);
     onErrorExecuted = false;
 
     // [MyoroInputConfiguration.validation] error case.
     inputController.text = inputValidationErrorText;
-    await formController.fetch();
+    await formNotifier.fetch();
     await tester.pumpAndSettle();
     expect(onErrorExecuted, isTrue);
-    expect(formController.request.status.isError, isTrue);
-    expect(formController.request.errorMessage?.isEmpty, isTrue);
+    expect(formNotifier.request.status.isError, isTrue);
+    expect(formNotifier.request.errorMessage?.isEmpty, isTrue);
     onErrorExecuted = false;
 
     // Success case.
     inputController.text = '';
-    await formController.fetch();
+    await formNotifier.fetch();
     await tester.pumpAndSettle();
     expect(onSuccessExecuted, isTrue);
-    expect(formController.request.status.isSuccess, isTrue);
-    expect(formController.request.data, successData);
+    expect(formNotifier.request.status.isSuccess, isTrue);
+    expect(formNotifier.request.data, successData);
     onSuccessExecuted = false;
   });
 }

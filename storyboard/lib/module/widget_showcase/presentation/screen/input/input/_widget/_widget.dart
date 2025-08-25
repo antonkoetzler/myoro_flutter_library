@@ -12,7 +12,7 @@ final class _Widget extends StatelessWidget {
       listenable: viewModel.state,
       builder: (_, __) {
         return MyoroForm(
-          controller: viewModel.state.formController,
+          controller: viewModel.state.formNotifier,
           builder: (_, formController) {
             return Column(
               mainAxisSize: MainAxisSize.min,

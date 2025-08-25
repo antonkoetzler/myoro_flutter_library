@@ -26,7 +26,7 @@ final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         onChanged: onChanged,
         selectedItemBuilder: viewModel.selectedItemBuilder,
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: MyoroSnackBarTypeEnum.values.toSet,
           itemBuilder: viewModel.itemBuilder,
         ),

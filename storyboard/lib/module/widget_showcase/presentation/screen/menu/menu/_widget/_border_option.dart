@@ -1,17 +1,17 @@
-part of '../myoro_menu_widget_showcase_screen.dart';
+part of '../myoro_menus_widget_showcase_screen.dart';
 
-/// [MyoroMenuConfiguration.border] option of [MyoroMenuWidgetShowcaseScreen].
+/// [MyoroMenuConfiguration.border] option of [MyoroMenusWidgetShowcaseScreen].
 final class _BorderOption extends StatelessWidget {
   const _BorderOption();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
-
+    final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
-        label: 'Border enabled?',
-        onChanged: (value) => viewModel.state.borderEnabled = value,
+        label: 'Bordered?',
+        onChanged: (borderEnabled) => state.borderEnabled = borderEnabled,
       ),
     );
   }

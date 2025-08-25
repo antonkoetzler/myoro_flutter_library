@@ -3,7 +3,7 @@ part of 'myoro_table_view_model.dart';
 /// State of [MyoroTableViewModel].
 final class MyoroTableState<T> {
   MyoroTableState(MyoroTableConfiguration<T> configuration) : _configuration = configuration {
-    _itemsRequestController.requestCallback = _configuration.request;
+    _itemsRequestNotifier.requestCallback = _configuration.request;
     _createTitleColumnKeys();
   }
 
@@ -17,17 +17,17 @@ final class MyoroTableState<T> {
   }
 
   /// [ValueNotifier] of the items/rows of the [MyoroTable].
-  final _itemsRequestController = MyoroRequestController<Set<T>>();
-  MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
-  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestController.value;
+  final _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>();
+  MyoroRequestNotifier<Set<T>> get itemsRequestNotifier => _itemsRequestNotifier;
+  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestNotifier.value;
 
   /// [List] of [GlobalKey]s attributed to every [MyoroTableColumn].
   final List<GlobalKey> _titleColumnKeys = [];
   List<GlobalKey> get titleColumnKeys => _titleColumnKeys;
 
   /// [ValueNotifier] responsible for gathering the widths of each [GlobalKey] of [__titleColumnKeys].
-  final _titleColumnKeyWidthsController = ValueNotifier<List<double>>(const []);
-  ValueNotifier<List<double>> get titleColumnKeyWidthsController => _titleColumnKeyWidthsController;
+  final _titleColumnKeyWidthsNotifier = ValueNotifier<List<double>>(const []);
+  ValueNotifier<List<double>> get titleColumnKeyWidthsNotifier => _titleColumnKeyWidthsNotifier;
 
   /// Helper function to populate [_titleColumnKeys].
   void _createTitleColumnKeys() {

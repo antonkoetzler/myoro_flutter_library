@@ -16,20 +16,6 @@ part of 'myoro_tab_view_tab.dart';
 mixin _$MyoroTabViewTabMixin {
   MyoroTabViewTab get self => this as MyoroTabViewTab;
 
-  MyoroTabViewTab copyWith({
-    IconData? icon,
-    bool iconProvided = true,
-    String? text,
-    bool textProvided = true,
-    Widget? content,
-  }) {
-    return MyoroTabViewTab(
-      icon: iconProvided ? (icon ?? self.icon) : null,
-      text: textProvided ? (text ?? self.text) : null,
-      content: content ?? self.content,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroTabViewTab &&

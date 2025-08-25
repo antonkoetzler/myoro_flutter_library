@@ -6,6 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_pie_graph_item.g.dart';
 
 /// Item/section in a [MyoroPieGraph].
+@immutable
 @myoroModel
 class MyoroPieGraphItem with _$MyoroPieGraphItemMixin {
   const MyoroPieGraphItem({required this.value, this.color, this.radius});
@@ -25,4 +26,18 @@ class MyoroPieGraphItem with _$MyoroPieGraphItemMixin {
 
   /// Radius aka height of the item.
   final double? radius;
+
+  MyoroPieGraphItem copyWith({
+    double? value,
+    Color? color,
+    bool colorProvided = true,
+    double? radius,
+    bool radiusProvided = true,
+  }) {
+    return MyoroPieGraphItem(
+      value: value ?? this.value,
+      color: colorProvided ? (color ?? this.color) : null,
+      radius: radiusProvided ? (radius ?? this.radius) : null,
+    );
+  }
 }

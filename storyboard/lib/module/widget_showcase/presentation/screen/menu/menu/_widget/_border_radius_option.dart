@@ -1,22 +1,17 @@
-part of '../myoro_menu_widget_showcase_screen.dart';
+part of '../myoro_menus_widget_showcase_screen.dart';
 
-/// [MyoroMenuConfiguration.borderRadius] option of [MyoroMenuWidgetShowcaseScreen].
+/// [MyoroMenuConfiguration.borderRadius] option of [MyoroMenusWidgetShowcaseScreen].
 final class _BorderRadiusOption extends StatelessWidget {
   const _BorderRadiusOption();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
-
+    final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
-        label: 'Border radius.',
-        sliderOnChanged: (value) {
-          viewModel.state.borderRadius = BorderRadius.circular(value);
-        },
-        checkboxOnChanged: (enabled, value) {
-          viewModel.state.borderRadius = BorderRadius.circular(enabled ? value : 0);
-        },
+        label: 'Border radius',
+        sliderOnChanged: (borderRadius) => state.borderRadius = borderRadius,
       ),
     );
   }

@@ -14,57 +14,51 @@ part 'myoro_menu_item.g.dart';
 @immutable
 @myoroModel
 class MyoroMenuItem with _$MyoroMenuItemMixin {
-  const MyoroMenuItem({
-    this.isSelected = false,
-    this.iconConfiguration,
-    this.textConfiguration,
-    this.builder,
-    this.onTapDown,
-    this.onTapUp,
-  }) : assert(
-         (builder != null)
-             ? (iconConfiguration == null && textConfiguration == null)
-             : !(iconConfiguration == null && textConfiguration == null),
-         '[MyoroMenuItem]: If [builder] is not null, [iconConfiguration] and [textConfiguration] must be '
-         'null. If [builder] is null, [iconConfiguration] and/or [textConfiguration] must not be null.',
-       );
+  const MyoroMenuItem({this.buttonConfiguration, this.buttonBuilder, this.iconTextButtonConfiguration})
+    : assert(
+        (iconTextButtonConfiguration == null && buttonBuilder != null) ^
+            (iconTextButtonConfiguration != null && buttonConfiguration == null && buttonBuilder == null),
+        '[MyoroMenuItem]: If [buttonBuilder] is not null, [iconTextButtonConfiguration] must be null]. '
+        'If [iconTextButtonConfiguration] is not null, [buttonConfiguration] and [buttonBuilder] must be null.',
+      );
 
   // coverage:ignore-start
-  factory MyoroMenuItem.fake({bool? builderProvided}) {
-    builderProvided = builderProvided ?? faker.randomGenerator.boolean();
-    // Prevent assertion errors.
-    final bool requiredIconConfiguration = faker.randomGenerator.boolean();
-
+  factory MyoroMenuItem.fake({bool? buttonConfigurationProvided}) {
+    buttonConfigurationProvided = buttonConfigurationProvided ?? faker.randomGenerator.boolean();
     return MyoroMenuItem(
-      isSelected: faker.randomGenerator.boolean(),
-      iconConfiguration: builderProvided
-          ? null
-          : ((requiredIconConfiguration || faker.randomGenerator.boolean()) ? MyoroIconConfiguration.fake() : null),
-      textConfiguration: builderProvided
-          ? null
-          : ((!requiredIconConfiguration || faker.randomGenerator.boolean()) ? MyoroTextConfiguration.fake() : null),
-      builder: builderProvided ? ((_, _) => const SizedBox.shrink()) : null,
-      onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      buttonConfiguration: buttonConfigurationProvided ? MyoroButtonConfiguration.fake() : null,
+      buttonBuilder: buttonConfigurationProvided ? (_, _) => const SizedBox.shrink() : null,
+      iconTextButtonConfiguration: buttonConfigurationProvided ? null : MyoroIconTextButtonConfiguration.fake(),
     );
   }
   // coverage:ignore-end
 
-  /// If the item is selected (a.k.a hovered) or not.
-  final bool isSelected;
+  /// [MyoroButtonConfiguration] for more specific menu items.
+  final MyoroButtonConfiguration? buttonConfiguration;
 
-  /// [MyoroIconConfiguration] of the item.
-  final MyoroIconConfiguration? iconConfiguration;
+  /// [MyoroButton.builder] of [buttonConfiguration]'s [MyoroButton].
+  final MyoroButtonBuilder? buttonBuilder;
 
-  /// [MyoroTextConfiguration] of the item.
-  final MyoroTextConfiguration? textConfiguration;
+  /// [MyoroIconTextButtonConfiguration] for simpler menu items.
+  final MyoroIconTextButtonConfiguration? iconTextButtonConfiguration;
 
-  /// [MyoroButton.builder] for a custom [Widget] rather than just with an icon and/or text.
-  final MyoroButtonBuilder? builder;
+  MyoroMenuItem copyWith({
+    MyoroButtonConfiguration? buttonConfiguration,
+    bool buttonConfigurationProvided = true,
+    MyoroButtonBuilder? buttonBuilder,
+    bool buttonBuilderProvided = true,
+    MyoroIconTextButtonConfiguration? iconTextButtonConfiguration,
+    bool iconTextButtonConfigurationProvided = true,
+  }) {
+    return MyoroMenuItem(
+      buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? this.buttonConfiguration) : null,
+      buttonBuilder: buttonBuilderProvided ? (buttonBuilder ?? this.buttonBuilder) : null,
+      iconTextButtonConfiguration: iconTextButtonConfigurationProvided
+          ? (iconTextButtonConfiguration ?? this.iconTextButtonConfiguration)
+          : null,
+    );
+  }
 
-  /// On tap down.
-  final MyoroButtonConfigurationOnTapDown? onTapDown;
-
-  /// On tap up.
-  final MyoroButtonConfigurationOnTapUp? onTapUp;
+  /// Alias of the effective [MyoroButtonConfiguration.onTapUp].
+  MyoroButtonOnTapUp? get onTapUp => buttonConfiguration?.onTapUp ?? iconTextButtonConfiguration?.onTapUp;
 }

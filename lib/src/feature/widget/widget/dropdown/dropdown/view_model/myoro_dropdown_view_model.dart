@@ -4,23 +4,22 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_dropdown_state.dart';
 
 /// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
-abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>> {
-  MyoroDropdownViewModel(C configuration, Set<T> selectedItems)
-    : _state = MyoroDropdownState(configuration, selectedItems) {
+abstract class MyoroDropdownViewModel<
+  T,
+  CONFIGURATION extends MyoroDropdownConfiguration<T, MENU_CONFIGURATION>,
+  MENU_CONFIGURATION extends MyoroMenuConfiguration<T>,
+  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MENU_CONFIGURATION>>
+> {
+  MyoroDropdownViewModel(CONFIGURATION configuration) : _state = MyoroDropdownState(configuration) {
     if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
     state.enabledNotifier.addListener(enabledNotifierListener);
-    state.selectedItemsNotifier.addListener(selectedItemsNotifierListener);
-    if (state.selectedItems.isNotEmpty) _formatSelectedItems();
   }
 
   /// State.
-  final MyoroDropdownState<T, C> _state;
+  final MyoroDropdownState<T, CONFIGURATION, MENU_CONTROLLER> _state;
 
   /// [_state] getter.
-  MyoroDropdownState<T, C> get state => _state;
-
-  /// Selects/deselects an item.
-  void toggleItem(T item);
+  MyoroDropdownState<T, CONFIGURATION, MENU_CONTROLLER> get state => _state;
 
   /// Handles the callback of a dropdown's checkbox on changed argument.
   @protected
@@ -34,11 +33,6 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   /// Toggles [_enabledNotifier].
   void toggleEnabled([bool? enabled]) {
     state.enabledNotifier.value = enabled ?? !state.enabled;
-  }
-
-  /// Clears all items in [MyoroDropdownState._selectedItemsNotifier].
-  void clear() {
-    state.selectedItemsNotifier.value = const {};
   }
 
   /// Toggles [_Menu].
@@ -59,7 +53,7 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
   @protected
   @mustCallSuper
   void selectedItemsNotifierListener() {
-    _formatSelectedItems();
+    formatSelectedItems();
   }
 
   /// Provides the size of [_Input].
@@ -71,37 +65,18 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T>
     });
   }
 
-  /// Creates the [MyoroMenuItem] of an item in the [MyoroMenu].
-  @mustCallSuper
-  MyoroMenuItem menuItemBuilder(BuildContext context, T item) {
-    final menuConfiguration = state.configuration.menuConfiguration;
-    final selectedItemsNotifier = state.selectedItemsNotifier;
-    final selectedItems = selectedItemsNotifier.value;
-
-    final MyoroMenuItem menuItem = menuConfiguration.itemBuilder(item);
-    return menuItem.copyWith(
-      isSelected: selectedItems.contains(item),
-      onTapUp: (TapUpDetails details) {
-        menuItem.onTapUp?.call(details);
-        toggleItem(item);
-      },
-    );
-  }
-
   /// Formats items in [_selectedItemsNotifier] to display in [_Input].
-  void _formatSelectedItems() {
-    final Set<T> selectedItems = state.selectedItemsNotifier.value;
-    final stringBuffer = StringBuffer();
-    for (int i = 0; i < selectedItems.length; i++) {
-      final T item = selectedItems.elementAt(i);
-      stringBuffer.write(state.configuration.selectedItemBuilder(item));
-      if (i != selectedItems.length - 1) stringBuffer.write(', ');
-    }
-    state.inputController.text = stringBuffer.toString();
-  }
+  @protected
+  void formatSelectedItems();
 
   /// Listener of [MyoroDropdownState.overlayMenuController].
   void _overlayMenuControllerListener() {
     state.showingMenu = state.overlayMenuController.isShowing;
   }
+
+  /// Initializes [MyoroDropdownState.menuController].
+  void initializeMenuController(BuildContext context);
+
+  /// Builds the menu [Widget].
+  Widget get menuWidget;
 }

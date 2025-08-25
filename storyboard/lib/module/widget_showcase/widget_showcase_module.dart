@@ -72,7 +72,7 @@ final class WidgetShowcaseModule implements Module {
       const MyoroCircularLoaderWidgetShowcaseScreenThemeExtension.builder(),
 
       // Menus
-      const MyoroMenuWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroMenusWidgetShowcaseScreenThemeExtension.builder(),
 
       // Modals
       MyoroDialogModalWidgetShowcaseScreenThemeExtension.builder(),

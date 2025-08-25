@@ -55,6 +55,32 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
   final MyoroSliderOnChanged<double> onChanged;
 
   @override
+  MyoroSliderConfiguration copyWith({
+    String? label,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    String? currentValueText,
+    String? maxValueText,
+    String? footerText,
+    double? min,
+    double? max,
+    double? value,
+    MyoroSliderOnChanged<double>? onChanged,
+  }) {
+    return MyoroSliderConfiguration(
+      label: label ?? this.label,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
+      currentValueText: currentValueText ?? this.currentValueText,
+      maxValueText: maxValueText ?? this.maxValueText,
+      footerText: footerText ?? this.footerText,
+      min: min ?? this.min,
+      max: max ?? this.max,
+      value: value ?? this.value,
+      onChanged: onChanged ?? this.onChanged,
+    );
+  }
+
+  @override
   Widget get widget {
     return Slider(value: value, min: min, max: max, onChanged: onChanged);
   }

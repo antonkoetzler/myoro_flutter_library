@@ -16,19 +16,6 @@ part of 'myoro_image_picker_configuration.dart';
 mixin _$MyoroImagePickerConfigurationMixin {
   MyoroImagePickerConfiguration get self => this as MyoroImagePickerConfiguration;
 
-  MyoroImagePickerConfiguration copyWith({
-    String? selectedImage,
-    bool selectedImageProvided = true,
-    Size? size,
-    void Function(String?)? onChanged,
-  }) {
-    return MyoroImagePickerConfiguration(
-      selectedImage: selectedImageProvided ? (selectedImage ?? self.selectedImage) : null,
-      size: size ?? self.size,
-      onChanged: onChanged ?? self.onChanged,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroImagePickerConfiguration &&

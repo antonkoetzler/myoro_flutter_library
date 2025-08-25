@@ -2,9 +2,9 @@ part of '../myoro_form_widget_showcase_screen.dart';
 
 /// Button to submit the [MyoroForm] in [MyoroFormWidgetShowcaseScreen].
 final class _SubmitButton extends StatelessWidget {
-  final MyoroFormController<String> _formController;
+  final MyoroFormNotifier<String> _formNotifier;
 
-  const _SubmitButton(this._formController);
+  const _SubmitButton(this._formNotifier);
 
   @override
   Widget build(context) {
@@ -12,7 +12,7 @@ final class _SubmitButton extends StatelessWidget {
       /// [MyoroInputConfiguration.validation] of [_Input].
       configuration: MyoroIconTextButtonConfiguration(
         borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
-        onTapUp: (_) => _formController.fetch(),
+        onTapUp: (_) => _formNotifier.fetch(),
         textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
       ),
     );

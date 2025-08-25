@@ -20,7 +20,7 @@ final class _SearchButton<T> extends StatelessWidget {
   }
 
   void _onTapUp(MyoroSearchInputViewModel viewModel) {
-    if (!viewModel.itemsRequest.status.isLoading) viewModel.itemsRequestController.fetch();
+    if (!viewModel.itemsRequest.status.isLoading) viewModel.itemsRequestNotifier.fetch();
   }
 
   Widget _builder(BuildContext context, MyoroSearchInputViewModel viewModel) {

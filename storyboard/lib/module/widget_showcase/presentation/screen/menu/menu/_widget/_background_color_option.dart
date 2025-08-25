@@ -1,17 +1,13 @@
-part of '../myoro_menu_widget_showcase_screen.dart';
+part of '../myoro_menus_widget_showcase_screen.dart';
 
-/// [MyoroMenuConfiguration.backgroundColor] option of [MyoroMenuWidgetShowcaseScreen].
+/// [MyoroMenuConfiguration.backgroundColorOption] of [MyoroMenusWidgetShowcaseScreen].
 final class _BackgroundColorOption extends StatelessWidget {
   const _BackgroundColorOption();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
-
-    return ColorWidgetShowcaseOption(
-      selectedColor: viewModel.state.backgroundColor,
-      onChanged: (color) => viewModel.state.backgroundColor = color,
-      checkboxOnChanged: (enabled, color) => viewModel.state.backgroundColor = enabled ? color : null,
-    );
+    final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    return ColorWidgetShowcaseOption(onChanged: (backgroundColor) => state.backgroundColor = backgroundColor);
   }
 }

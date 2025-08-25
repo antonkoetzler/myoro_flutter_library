@@ -2,11 +2,6 @@ part of '../myoro_table.dart';
 
 /// Rows of a [MyoroTable].
 final class _Rows<T> extends StatelessWidget {
-  // final MyoroTableController<T> _controller;
-  // Set<T> get _items => _controller.itemsRequest.data!;
-  // ValueNotifier<List<double>> get _titleColumnKeyWidthsController => _controller.titleColumnKeyWidthsController;
-  // List<double> get _titleColumnKeyWidths => _controller.titleColumnKeyWidths;
-
   const _Rows(this._items);
 
   /// Successfully loaded items.
@@ -16,7 +11,7 @@ final class _Rows<T> extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroTableViewModel<T>>();
     final state = viewModel.state;
-    final titleColumnKeyWidthsController = state.titleColumnKeyWidthsController;
+    final titleColumnKeyWidthsNotifier = state.titleColumnKeyWidthsNotifier;
 
     if (_items.isEmpty) {
       return const _EmptyMessage();
@@ -25,7 +20,7 @@ final class _Rows<T> extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
 
     return ValueListenableBuilder(
-      valueListenable: titleColumnKeyWidthsController,
+      valueListenable: titleColumnKeyWidthsNotifier,
       builder: (_, titleColumnKeyWidths, _) {
         // Empty case as there cannot be 0 [MyoroTableColumn]s in a [MyoroTable].
         if (titleColumnKeyWidths.isEmpty) {

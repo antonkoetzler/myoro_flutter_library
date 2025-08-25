@@ -6,9 +6,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   final items = List.generate(faker.randomGenerator.integer(10, min: 1), (int index) => 'Item #$index').toSet();
   final configuration = MyoroSingularDropdownConfiguration(
-    menuConfiguration: MyoroMenuConfiguration(
+    menuConfiguration: MyoroSingularMenuConfiguration(
       request: () => items,
-      itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+      itemBuilder: (item) => MyoroMenuItem(
+        iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+          textConfiguration: MyoroTextConfiguration(text: item),
+        ),
+      ),
     ),
     selectedItemBuilder: (item) => item,
   );
@@ -65,7 +69,7 @@ void main() {
       ) async {
         controller.toggleMenu();
         await tester.pumpAndSettle();
-        expect(find.byType(MyoroMenu<String>), findsOneWidget);
+        expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
       });
     },
   );
@@ -78,7 +82,7 @@ void main() {
       ) async {
         controller.toggleMenu();
         await tester.pumpAndSettle();
-        expect(find.byType(MyoroMenu<String>), findsOneWidget);
+        expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
       });
     },
   );
@@ -92,7 +96,7 @@ void main() {
         controller.toggleMenu();
         await tester.pumpAndSettle();
         expect(find.byType(MyoroModal), findsOneWidget);
-        expect(find.byType(MyoroMenu<String>), findsOneWidget);
+        expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
 
         // Get the connected (via [TapRegion.groupId]) [TapRegion]s of the dropdown.
         final allTapRegions = find.byType(TapRegion);
@@ -137,7 +141,7 @@ void main() {
     ) async {
       controller.toggleMenu();
       await tester.pumpAndSettle();
-      expect(find.byType(MyoroMenu<String>), findsOneWidget);
+      expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
 
       // Get the connected (via [TapRegion.groupId]) [TapRegion]s of the dropdown.
       final allTapRegions = find.byType(TapRegion);
@@ -152,7 +156,7 @@ void main() {
       await tester.tapAt(Offset(allRects.first.center.dx, maxBottom + 10));
       await tester.pumpAndSettle();
 
-      expect(find.byType(MyoroMenu<String>), findsNothing);
+      expect(find.byType(MyoroSingularMenu<String>), findsNothing);
     });
   });
 

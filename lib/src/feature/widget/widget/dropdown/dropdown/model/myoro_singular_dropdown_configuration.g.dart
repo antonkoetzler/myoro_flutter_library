@@ -16,35 +16,6 @@ part of 'myoro_singular_dropdown_configuration.dart';
 mixin _$MyoroSingularDropdownConfigurationMixin<T> {
   MyoroSingularDropdownConfiguration<T> get self => this as MyoroSingularDropdownConfiguration<T>;
 
-  MyoroSingularDropdownConfiguration<T> copyWith({
-    T? selectedItem,
-    bool selectedItemProvided = true,
-    void Function(T?)? onChanged,
-    bool onChangedProvided = true,
-    void Function(bool, T?)? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    String? label,
-    MyoroDropdownMenuTypeEnum? menuTypeEnum,
-    bool? enabled,
-    bool? allowItemClearing,
-    TextAlign? selectedItemTextAlign,
-    MyoroMenuConfiguration<T>? menuConfiguration,
-    String Function(T)? selectedItemBuilder,
-  }) {
-    return MyoroSingularDropdownConfiguration(
-      selectedItem: selectedItemProvided ? (selectedItem ?? self.selectedItem) : null,
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
-      label: label ?? self.label,
-      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
-      enabled: enabled ?? self.enabled,
-      allowItemClearing: allowItemClearing ?? self.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
-      menuConfiguration: menuConfiguration ?? self.menuConfiguration,
-      selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroSingularDropdownConfiguration<T> &&

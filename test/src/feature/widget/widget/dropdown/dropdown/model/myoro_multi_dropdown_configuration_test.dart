@@ -5,9 +5,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   test('MyoroMultiDropdownConfiguration', () {
     final configuration = MyoroMultiDropdownConfiguration<String>(
-      menuConfiguration: MyoroMenuConfiguration(
+      menuConfiguration: MyoroMultiMenuConfiguration(
         request: () => {faker.lorem.word()},
-        itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+        itemBuilder: (item) => MyoroMenuItem(
+          iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+            textConfiguration: MyoroTextConfiguration(text: item),
+          ),
+        ),
       ),
       selectedItemBuilder: (item) => item,
     );

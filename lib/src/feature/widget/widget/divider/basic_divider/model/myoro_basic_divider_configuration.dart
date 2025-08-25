@@ -26,4 +26,18 @@ class MyoroBasicDividerConfiguration with _$MyoroBasicDividerConfigurationMixin 
 
   /// Padding of the divider.
   final EdgeInsets? padding;
+
+  MyoroBasicDividerConfiguration copyWith({
+    Axis? direction,
+    double? shortValue,
+    bool shortValueProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+  }) {
+    return MyoroBasicDividerConfiguration(
+      direction: direction ?? this.direction,
+      shortValue: shortValueProvided ? (shortValue ?? this.shortValue) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
+    );
+  }
 }

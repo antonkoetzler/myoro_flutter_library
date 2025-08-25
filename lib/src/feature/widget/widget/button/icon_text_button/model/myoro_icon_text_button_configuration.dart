@@ -78,4 +78,51 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
 
   /// Text configuration of the [MyoroIconTextButton].
   final MyoroTextConfiguration? textConfiguration;
+
+  @override
+  MyoroIconTextButtonConfiguration copyWith({
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    MyoroButtonConfigurationBackgroundColorBuilder? backgroundColorBuilder,
+    bool backgroundColorBuilderProvided = true,
+    MyoroButtonConfigurationBorderBuilder? borderBuilder,
+    bool borderBuilderProvided = true,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+    bool? invert,
+    double? spacing,
+    bool spacingProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    MyoroIconTextButtonConfigurationContentColorBuilder? contentColorBuilder,
+    bool contentColorBuilderProvided = true,
+    MyoroIconConfiguration? iconConfiguration,
+    bool iconConfigurationProvided = true,
+    MyoroTextConfiguration? textConfiguration,
+    bool textConfigurationProvided = true,
+  }) {
+    return MyoroIconTextButtonConfiguration(
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
+      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
+      backgroundColorBuilder: backgroundColorBuilderProvided
+          ? (backgroundColorBuilder ?? this.backgroundColorBuilder)
+          : null,
+      borderBuilder: borderBuilderProvided ? (borderBuilder ?? this.borderBuilder) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
+      invert: invert ?? this.invert,
+      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
+      contentColorBuilder: contentColorBuilderProvided ? (contentColorBuilder ?? this.contentColorBuilder) : null,
+      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
+      textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
+    );
+  }
 }

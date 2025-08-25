@@ -20,7 +20,7 @@ enum MyoroWidgetListEnum {
   inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle, myoroTimePickerInputTitle}),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
-  menus('Menus', {myoroMenuTitle}),
+  menus('Menus', {myoroMenusTitle}),
   modals('Modals', {myoroModalTitle, myoroDialogModalTitle}),
   pickers('Pickers', {myoroFilePickerTitle, myoroImagePickerTitle}),
   radios('Radios', {myoroRadioTitle, myoroGroupRadioTitle}),
@@ -101,7 +101,7 @@ enum MyoroWidgetListEnum {
   static const myoroLayoutBuilderTitle = 'MyoroLayoutBuilder';
 
   // Menus
-  static const myoroMenuTitle = 'MyoroMenu';
+  static const myoroMenusTitle = 'MyoroSingularMenu & MyoroMultiMenu';
 
   // Modals
   static const myoroDialogModalTitle = 'MyoroDialogModal';
@@ -192,7 +192,7 @@ enum MyoroWidgetListEnum {
       myoroCircularLoaderTitle => const MyoroCircularLoaderWidgetShowcaseScreen(),
 
       // Menus
-      myoroMenuTitle => const MyoroMenuWidgetShowcaseScreen(),
+      myoroMenusTitle => const MyoroMenusWidgetShowcaseScreen(),
 
       // Modals
       myoroDialogModalTitle => const MyoroDialogModalWidgetShowcaseScreen(),

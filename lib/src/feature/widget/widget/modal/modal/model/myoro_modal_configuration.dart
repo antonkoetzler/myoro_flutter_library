@@ -91,4 +91,30 @@ class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
 
   /// Padding around [_CloseButton].
   final EdgeInsets? closeButtonPadding;
+
+  MyoroModalConfiguration<T> copyWith({
+    bool? barrierDismissable,
+    bool? useRootNavigator,
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
+    MyoroModalOnClosed<T>? onClosed,
+    bool onClosedProvided = true,
+    String? title,
+    bool? showCloseButton,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    EdgeInsets? closeButtonPadding,
+    bool closeButtonPaddingProvided = true,
+  }) {
+    return MyoroModalConfiguration(
+      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
+      useRootNavigator: useRootNavigator ?? this.useRootNavigator,
+      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
+      onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
+      title: title ?? this.title,
+      showCloseButton: showCloseButton ?? this.showCloseButton,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
+    );
+  }
 }

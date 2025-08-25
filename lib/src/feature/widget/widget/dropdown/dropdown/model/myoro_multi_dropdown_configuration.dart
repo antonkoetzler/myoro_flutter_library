@@ -7,7 +7,7 @@ part 'myoro_multi_dropdown_configuration.g.dart';
 /// Configuration model of [MyoroMultiDropdown].
 @immutable
 @myoroModel
-class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
+class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroMultiMenuConfiguration<T>>
     with _$MyoroMultiDropdownConfigurationMixin<T> {
   factory MyoroMultiDropdownConfiguration({
     String label = MyoroDropdownConfiguration.labelDefaultValue,
@@ -15,7 +15,7 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
-    required MyoroMenuConfiguration<T> menuConfiguration,
+    required MyoroMultiMenuConfiguration<T> menuConfiguration,
     required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
     Set<T> selectedItems = const {},
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
@@ -56,6 +56,35 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
 
   /// Function executed when the enabled/disabled checkbox is pressed.
   final MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
+
+  @override
+  MyoroMultiDropdownConfiguration<T> copyWith({
+    String? label,
+    MyoroDropdownMenuTypeEnum? menuTypeEnum,
+    bool? enabled,
+    bool? allowItemClearing,
+    TextAlign? selectedItemTextAlign,
+    MyoroMultiMenuConfiguration<T>? menuConfiguration,
+    MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
+    Set<T>? selectedItems,
+    MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
+    bool onChangedProvided = true,
+    MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+  }) {
+    return MyoroMultiDropdownConfiguration(
+      label: label ?? this.label,
+      menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
+      enabled: enabled ?? this.enabled,
+      allowItemClearing: allowItemClearing ?? this.allowItemClearing,
+      selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
+      menuConfiguration: menuConfiguration ?? this.menuConfiguration,
+      selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
+      selectedItems: selectedItems ?? this.selectedItems,
+      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+    );
+  }
 
   @override
   bool get checkboxOnChangedNotNull => checkboxOnChanged != null;

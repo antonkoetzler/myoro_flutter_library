@@ -66,6 +66,32 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
   final MyoroSliderOnChanged<RangeValues> onChanged;
 
   @override
+  MyoroRangeSliderConfiguration copyWith({
+    String? label,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    String? currentValueText,
+    String? maxValueText,
+    String? footerText,
+    double? min,
+    double? max,
+    RangeValues? values,
+    MyoroSliderOnChanged<RangeValues>? onChanged,
+  }) {
+    return MyoroRangeSliderConfiguration(
+      label: label ?? this.label,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
+      currentValueText: currentValueText ?? this.currentValueText,
+      maxValueText: maxValueText ?? this.maxValueText,
+      footerText: footerText ?? this.footerText,
+      min: min ?? this.min,
+      max: max ?? this.max,
+      values: values ?? this.values,
+      onChanged: onChanged ?? this.onChanged,
+    );
+  }
+
+  @override
   Widget get widget {
     return RangeSlider(values: values, min: min, max: max, onChanged: onChanged);
   }

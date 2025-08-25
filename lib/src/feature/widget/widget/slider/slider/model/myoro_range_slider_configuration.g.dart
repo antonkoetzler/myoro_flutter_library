@@ -16,31 +16,6 @@ part of 'myoro_range_slider_configuration.dart';
 mixin _$MyoroRangeSliderConfigurationMixin {
   MyoroRangeSliderConfiguration get self => this as MyoroRangeSliderConfiguration;
 
-  MyoroRangeSliderConfiguration copyWith({
-    RangeValues? values,
-    void Function(RangeValues)? onChanged,
-    String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    String? currentValueText,
-    String? maxValueText,
-    String? footerText,
-    double? min,
-    double? max,
-  }) {
-    return MyoroRangeSliderConfiguration(
-      values: values ?? self.values,
-      onChanged: onChanged ?? self.onChanged,
-      label: label ?? self.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      currentValueText: currentValueText ?? self.currentValueText,
-      maxValueText: maxValueText ?? self.maxValueText,
-      footerText: footerText ?? self.footerText,
-      min: min ?? self.min,
-      max: max ?? self.max,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroRangeSliderConfiguration &&

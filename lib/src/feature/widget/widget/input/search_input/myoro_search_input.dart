@@ -38,7 +38,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   @override
   Widget build(context) {
     final child = ValueListenableBuilder(
-      valueListenable: _viewModel.itemsRequestController,
+      valueListenable: _viewModel.itemsRequestNotifier,
       builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
     );
 

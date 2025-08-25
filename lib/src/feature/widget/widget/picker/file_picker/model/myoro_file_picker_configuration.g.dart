@@ -16,21 +16,6 @@ part of 'myoro_file_picker_configuration.dart';
 mixin _$MyoroFilePickerConfigurationMixin {
   MyoroFilePickerConfiguration get self => this as MyoroFilePickerConfiguration;
 
-  MyoroFilePickerConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    MyoroFilePickerFileTypeEnum? fileType,
-    List<String>? allowedExtensions,
-    void Function(MyoroFilePickerPlatformFile?)? onChanged,
-  }) {
-    return MyoroFilePickerConfiguration(
-      title: titleProvided ? (title ?? self.title) : null,
-      fileType: fileType ?? self.fileType,
-      allowedExtensions: allowedExtensions ?? self.allowedExtensions,
-      onChanged: onChanged ?? self.onChanged,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroFilePickerConfiguration &&

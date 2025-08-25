@@ -13,10 +13,14 @@ final class IconWidgetShowcaseOptionViewModel {
         allowItemClearing: false,
         selectedItemBuilder: (icon) => icon.name!.capitalized,
         onChanged: _configuration.iconOnChanged,
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: kMyoroTestIcons.toSet,
           itemBuilder: (icon) {
-            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized));
+            return MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized),
+              ),
+            );
           },
         ),
         enabled: _configuration.enableOptionCheckboxOnChanged != null ? enabled : true,

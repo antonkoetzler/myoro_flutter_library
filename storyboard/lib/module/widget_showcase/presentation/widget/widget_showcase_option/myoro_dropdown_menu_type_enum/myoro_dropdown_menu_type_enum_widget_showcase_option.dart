@@ -21,7 +21,7 @@ final class MyoroDropdownMenuTypeEnumWidgetShowcaseOption extends StatelessWidge
         label: 'Menu render type.',
         selectedItemBuilder: viewModel.selectedItemBuilder,
         onChanged: (item) => onChanged(item!),
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: MyoroDropdownMenuTypeEnum.values.toSet,
           itemBuilder: viewModel.itemBuilder,
         ),

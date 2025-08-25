@@ -17,5 +17,10 @@ part '../_widget/_menu.dart';
 part '../myoro_multi_dropdown.dart';
 part '../myoro_singular_dropdown.dart';
 
-/// Alias of the C generic in various classes so typing [Widget]s isn't so annoying.
-typedef _C<T> = MyoroDropdownConfiguration<T>;
+typedef _ViewModelType<T> =
+    MyoroDropdownViewModel<
+      T,
+      MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+      MyoroMenuConfiguration<T>,
+      MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+    >;

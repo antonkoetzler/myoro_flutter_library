@@ -1,21 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [MyoroSingularDropdown] controller implementation if [MyoroDropdownViewModel].
-final class MyoroSingularDropdownViewModel<T> extends MyoroDropdownViewModel<T, MyoroSingularDropdownConfiguration<T>> {
-  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration)
-    : super(configuration, {?configuration.selectedItem});
-
-  @override
-  void toggleItem(T item) {
-    final selectedItemsNotifier = state.selectedItemsNotifier;
-    final selectedItems = state.selectedItems;
-    selectedItemsNotifier.value = selectedItems.contains(item) ? {} : {item};
-  }
+final class MyoroSingularDropdownViewModel<T>
+    extends
+        MyoroDropdownViewModel<
+          T,
+          MyoroSingularDropdownConfiguration<T>,
+          MyoroSingularMenuConfiguration<T>,
+          MyoroSingularMenuController<T>
+        > {
+  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration) : super(configuration);
 
   @override
   void enabledNotifierListener() {
     final configuration = state.configuration;
     final enabled = state.enabled;
+    final menuController = state.menuController;
+    final selectedItem = menuController.selectedItem;
     configuration.checkboxOnChanged?.call(enabled, selectedItem);
   }
 
@@ -23,13 +25,42 @@ final class MyoroSingularDropdownViewModel<T> extends MyoroDropdownViewModel<T, 
   void selectedItemsNotifierListener() {
     super.selectedItemsNotifierListener();
     final configuration = state.configuration;
-    final selectedItems = state.selectedItems;
-    configuration.onChanged?.call(selectedItem);
-    if (selectedItems.isNotEmpty) toggleMenu();
+    final onChanged = configuration.onChanged;
+    final menuController = state.menuController;
+    final selectedItem = menuController.selectedItem;
+    onChanged?.call(selectedItem);
+    if (selectedItem != null) toggleMenu();
   }
 
-  T? get selectedItem {
-    final selectedItems = state.selectedItems;
-    return selectedItems.isEmpty ? null : selectedItems.first;
+  @override
+  void formatSelectedItems() {
+    final menuController = state.menuController;
+    final selectedItem = menuController.selectedItem;
+    final configuration = state.configuration;
+    final selectedItemBuilder = configuration.selectedItemBuilder;
+    state.inputController.text = selectedItem == null ? '' : selectedItemBuilder(selectedItem);
+  }
+
+  @override
+  void initializeMenuController(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownsThemeExtension>();
+    final menuBorder = themeExtension.menuBorder;
+    final menuBorderRadius = themeExtension.menuBorderRadius;
+
+    final configuration = state.configuration;
+    final menuConfiguration = configuration.menuConfiguration;
+
+    state.menuController = MyoroSingularMenuController(
+      configuration: menuConfiguration.copyWith(border: menuBorder, borderRadius: menuBorderRadius),
+    );
+
+    state.menuController.selectedItemNotifier.addListener(selectedItemsNotifierListener);
+    if (state.menuController.selectedItem == null) formatSelectedItems();
+  }
+
+  @override
+  Widget get menuWidget {
+    final menuController = state.menuController;
+    return MyoroSingularMenu<T>(controller: menuController);
   }
 }

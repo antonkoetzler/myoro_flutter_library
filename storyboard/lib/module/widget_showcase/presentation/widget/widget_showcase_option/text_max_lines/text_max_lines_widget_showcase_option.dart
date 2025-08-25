@@ -35,10 +35,14 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
         allowItemClearing: allowItemClearing,
         onChanged: onChanged,
         selectedItemBuilder: (value) => value.toString(),
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: () => List.generate(10, (int index) => index + 1).toSet(),
           itemBuilder: (value) {
-            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
+            return MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: value.toString()),
+              ),
+            );
           },
         ),
         selectedItem: selectedItem,

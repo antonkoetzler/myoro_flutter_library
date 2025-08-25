@@ -14,10 +14,14 @@ final class _SelectionSwitcher extends StatelessWidget {
         allowItemClearing: false,
         onChanged: (value) => viewModel.modeEnumController.value = value!,
         selectedItemBuilder: _formattedName,
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: PaddingWidgetShowcaseOptionEnum.values.toSet,
           itemBuilder: (value) {
-            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _formattedName(value)));
+            return MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: _formattedName(value)),
+              ),
+            );
           },
         ),
         selectedItem: viewModel.modeEnum,

@@ -3,8 +3,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// State of [MyoroInputWidgetShowcaseScreenViewModel].
 final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
-  /// [MyoroFormController] of the [MyoroForm] used for [_ValidationOption].
-  final formController = MyoroFormController();
+  /// [MyoroFormNotifier] of the [MyoroForm] used for [_ValidationOption].
+  final formNotifier = MyoroFormNotifier();
 
   /// [MyoroInputConfiguration.inputStyle]
   MyoroInputStyleEnum _inputStyle = MyoroInputConfiguration.inputStyleDefaultValue;

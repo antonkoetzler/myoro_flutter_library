@@ -16,61 +16,25 @@ part of 'myoro_menu_item.dart';
 mixin _$MyoroMenuItemMixin {
   MyoroMenuItem get self => this as MyoroMenuItem;
 
-  MyoroMenuItem copyWith({
-    bool? isSelected,
-    MyoroIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
-    Widget Function(BuildContext, MyoroTapStatusEnum)? builder,
-    bool builderProvided = true,
-    void Function(TapDownDetails)? onTapDown,
-    bool onTapDownProvided = true,
-    void Function(TapUpDetails)? onTapUp,
-    bool onTapUpProvided = true,
-  }) {
-    return MyoroMenuItem(
-      isSelected: isSelected ?? self.isSelected,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
-      builder: builderProvided ? (builder ?? self.builder) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroMenuItem &&
         other.runtimeType == runtimeType &&
-        other.isSelected == self.isSelected &&
-        other.iconConfiguration == self.iconConfiguration &&
-        other.textConfiguration == self.textConfiguration &&
-        other.builder == self.builder &&
-        other.onTapDown == self.onTapDown &&
-        other.onTapUp == self.onTapUp;
+        other.buttonConfiguration == self.buttonConfiguration &&
+        other.buttonBuilder == self.buttonBuilder &&
+        other.iconTextButtonConfiguration == self.iconTextButtonConfiguration;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.isSelected,
-      self.iconConfiguration,
-      self.textConfiguration,
-      self.builder,
-      self.onTapDown,
-      self.onTapUp,
-    );
+    return Object.hash(self.buttonConfiguration, self.buttonBuilder, self.iconTextButtonConfiguration);
   }
 
   @override
   String toString() =>
       'MyoroMenuItem(\n'
-      '  isSelected: ${self.isSelected},\n'
-      '  iconConfiguration: ${self.iconConfiguration},\n'
-      '  textConfiguration: ${self.textConfiguration},\n'
-      '  builder: ${self.builder},\n'
-      '  onTapDown: ${self.onTapDown},\n'
-      '  onTapUp: ${self.onTapUp},\n'
+      '  buttonConfiguration: ${self.buttonConfiguration},\n'
+      '  buttonBuilder: ${self.buttonBuilder},\n'
+      '  iconTextButtonConfiguration: ${self.iconTextButtonConfiguration},\n'
       ');';
 }

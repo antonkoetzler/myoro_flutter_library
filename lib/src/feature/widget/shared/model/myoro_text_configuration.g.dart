@@ -16,23 +16,6 @@ part of 'myoro_text_configuration.dart';
 mixin _$MyoroTextConfigurationMixin {
   MyoroTextConfiguration get self => this as MyoroTextConfiguration;
 
-  MyoroTextConfiguration copyWith({
-    String? text,
-    int? maxLines,
-    TextOverflow? overflow,
-    TextAlign? alignment,
-    TextStyle? style,
-    bool styleProvided = true,
-  }) {
-    return MyoroTextConfiguration(
-      text: text ?? self.text,
-      maxLines: maxLines ?? self.maxLines,
-      overflow: overflow ?? self.overflow,
-      alignment: alignment ?? self.alignment,
-      style: styleProvided ? (style ?? self.style) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroTextConfiguration &&

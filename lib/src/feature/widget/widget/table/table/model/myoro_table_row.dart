@@ -29,4 +29,18 @@ class MyoroTableRow<T> with _$MyoroTableRowMixin<T> {
   /// Number of [Widget]s in [cells] must be equal to the length of
   /// [MyoroTableConfiguration.columns] of the respective [MyoroTable].
   final List<Widget> cells;
+
+  MyoroTableRow<T> copyWith({
+    MyoroTableRowTapEvent<T>? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroTableRowTapEvent<T>? onTapUp,
+    bool onTapUpProvided = true,
+    List<Widget>? cells,
+  }) {
+    return MyoroTableRow(
+      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
+      cells: cells ?? this.cells,
+    );
+  }
 }

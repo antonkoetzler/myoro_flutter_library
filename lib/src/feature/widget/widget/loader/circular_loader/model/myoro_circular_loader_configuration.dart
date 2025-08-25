@@ -22,4 +22,16 @@ class MyoroCircularLoaderConfiguration with _$MyoroCircularLoaderConfigurationMi
 
   /// Size of the [MyoroCircularLoader].
   final double? size;
+
+  MyoroCircularLoaderConfiguration copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? size,
+    bool sizeProvided = true,
+  }) {
+    return MyoroCircularLoaderConfiguration(
+      color: colorProvided ? (color ?? this.color) : null,
+      size: sizeProvided ? (size ?? this.size) : null,
+    );
+  }
 }

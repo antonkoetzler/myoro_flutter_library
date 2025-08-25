@@ -16,38 +16,6 @@ part of 'icon_widget_showcase_option_configuration.dart';
 mixin _$IconWidgetShowcaseOptionConfigurationMixin {
   IconWidgetShowcaseOptionConfiguration get self => this as IconWidgetShowcaseOptionConfiguration;
 
-  IconWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    IconData? selectedIcon,
-    bool selectedIconProvided = true,
-    void Function(IconData?)? iconOnChanged,
-    double? selectedIconSize,
-    bool selectedIconSizeProvided = true,
-    void Function(double?)? iconSizeOnChanged,
-    bool iconSizeOnChangedProvided = true,
-    void Function(bool, double?)? iconSizeCheckboxOnChanged,
-    bool iconSizeCheckboxOnChangedProvided = true,
-    bool? enabled,
-    bool enabledProvided = true,
-    void Function(bool, IconData?, double?)? enableOptionCheckboxOnChanged,
-    bool enableOptionCheckboxOnChangedProvided = true,
-  }) {
-    return IconWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      selectedIcon: selectedIconProvided ? (selectedIcon ?? self.selectedIcon) : null,
-      iconOnChanged: iconOnChanged ?? self.iconOnChanged,
-      selectedIconSize: selectedIconSizeProvided ? (selectedIconSize ?? self.selectedIconSize) : null,
-      iconSizeOnChanged: iconSizeOnChangedProvided ? (iconSizeOnChanged ?? self.iconSizeOnChanged) : null,
-      iconSizeCheckboxOnChanged:
-          iconSizeCheckboxOnChangedProvided ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged) : null,
-      enabled: enabledProvided ? (enabled ?? self.enabled) : null,
-      enableOptionCheckboxOnChanged:
-          enableOptionCheckboxOnChangedProvided
-              ? (enableOptionCheckboxOnChanged ?? self.enableOptionCheckboxOnChanged)
-              : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is IconWidgetShowcaseOptionConfiguration &&

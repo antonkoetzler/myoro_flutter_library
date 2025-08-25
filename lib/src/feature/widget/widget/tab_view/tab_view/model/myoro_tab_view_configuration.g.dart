@@ -16,22 +16,6 @@ part of 'myoro_tab_view_configuration.dart';
 mixin _$MyoroTabViewConfigurationMixin {
   MyoroTabViewConfiguration get self => this as MyoroTabViewConfiguration;
 
-  MyoroTabViewConfiguration copyWith({
-    int? initiallySelectedTabIndex,
-    double? tabButtonIconSize,
-    bool tabButtonIconSizeProvided = true,
-    TextStyle? tabButtonTextStyle,
-    bool tabButtonTextStyleProvided = true,
-    List<MyoroTabViewTab>? tabs,
-  }) {
-    return MyoroTabViewConfiguration(
-      initiallySelectedTabIndex: initiallySelectedTabIndex ?? self.initiallySelectedTabIndex,
-      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? self.tabButtonIconSize) : null,
-      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? self.tabButtonTextStyle) : null,
-      tabs: tabs ?? self.tabs,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroTabViewConfiguration &&

@@ -1,17 +1,17 @@
 part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// [MyoroInput] that displays selected items and provides functionality such as the clear selected items button.
-final class _Input<T, C extends _C<T>> extends StatefulWidget {
+final class _Input<T, V extends _ViewModelType<T>> extends StatefulWidget {
   const _Input();
 
   @override
-  State<_Input<T, C>> createState() => _InputState<T, C>();
+  State<_Input<T, V>> createState() => _InputState<T, V>();
 }
 
-final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
+final class _InputState<T, V extends _ViewModelType<T>> extends State<_Input<T, V>> {
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final viewModel = context.read<V>();
     final state = viewModel.state;
     final link = state.link;
     final configuration = state.configuration;
@@ -42,7 +42,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
             );
           },
         ),
-        _InputTriggerArea<T, C>(),
+        _InputTriggerArea<T, V>(),
       ],
     );
 
@@ -64,7 +64,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
       borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
     );
 
-    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final viewModel = context.read<V>();
     final state = viewModel.state;
     final configuration = state.configuration;
     final menuTypeEnum = configuration.menuTypeEnum;
@@ -73,7 +73,8 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
     final selectedItemTextAlign = configuration.selectedItemTextAlign;
     final label = configuration.label;
     final allowItemClearing = configuration.allowItemClearing;
-    final clear = viewModel.clear;
+    final menuController = state.menuController;
+    final clear = menuController.clear;
 
     final inputConfiguration = MyoroInputConfiguration(
       textAlign: selectedItemTextAlign,
@@ -99,7 +100,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
   }
 
   Widget _overlayChildBuilder(BuildContext context) {
-    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final viewModel = context.read<V>();
 
     return ValueListenableBuilder(
       valueListenable: viewModel.state.inputSizeNotifier,
@@ -109,7 +110,7 @@ final class _InputState<T, C extends _C<T>> extends State<_Input<T, C>> {
           child: CompositedTransformFollower(
             link: viewModel.state.link,
             offset: Offset(0, inputSize?.height ?? 0),
-            child: _Menu<T, C>(),
+            child: _Menu<T, V>(),
           ),
         );
       },

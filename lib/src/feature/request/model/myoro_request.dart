@@ -12,6 +12,12 @@ part 'myoro_request.g.dart';
 class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   static const statusDefaultValue = MyoroRequestEnum.idle;
 
+  const MyoroRequest({this.status = statusDefaultValue, this.errorMessage, this.data})
+    : assert(
+        !(status == MyoroRequestEnum.error && errorMessage == null),
+        '[MyoroRequest<T>]: [status] cannot be [MyoroRequestEnum] when [errorMessage] is null.',
+      );
+
   /// Status of the request.
   final MyoroRequestEnum status;
 
@@ -21,11 +27,19 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   /// Data generated from
   final T? data;
 
-  const MyoroRequest({this.status = statusDefaultValue, this.errorMessage, this.data})
-    : assert(
-        !(status == MyoroRequestEnum.error && errorMessage == null),
-        '[MyoroRequest<T>]: [status] cannot be [MyoroRequestEnum] when [errorMessage] is null.',
-      );
+  MyoroRequest<T> copyWith({
+    MyoroRequestEnum? status,
+    String? errorMessage,
+    bool errorMessageProvided = true,
+    T? data,
+    bool dataProvided = true,
+  }) {
+    return MyoroRequest(
+      status: status ?? this.status,
+      errorMessage: errorMessage ?? this.errorMessage,
+      data: data ?? this.data,
+    );
+  }
 
   MyoroRequest<T> createIdleState() {
     return copyWith(status: MyoroRequestEnum.idle);
@@ -36,7 +50,7 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   }
 
   MyoroRequest<T> createSuccessState(T? data) {
-    return copyWith(status: MyoroRequestEnum.success, data: data);
+    return copyWith(status: MyoroRequestEnum.success, data: data, dataProvided: data != null);
   }
 
   MyoroRequest<T> createErrorState(String errorMessage) {

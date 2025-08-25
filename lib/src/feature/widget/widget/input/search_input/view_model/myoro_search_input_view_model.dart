@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Controller of [MyoroSearchInput].
+/// Notifier of [MyoroSearchInput].
 class MyoroSearchInputViewModel<T> {
   /// Configuration.
   MyoroSearchInputConfiguration<T>? _configuration;
@@ -18,7 +18,7 @@ class MyoroSearchInputViewModel<T> {
   /// [_configuration] setter.
   set configuration(MyoroSearchInputConfiguration<T> configuration) {
     _configuration = configuration;
-    _itemsRequestController.requestCallback = () => _configuration?.request(inputController.text) ?? const {};
+    _itemsRequestNotifier.requestCallback = () => _configuration?.request(inputController.text) ?? const {};
   }
 
   /// [TextEditingController] of the [MyoroInput].
@@ -28,13 +28,13 @@ class MyoroSearchInputViewModel<T> {
   }
 
   /// Items of the [MyoroSearchInput].
-  final _itemsRequestController = MyoroRequestController<Set<T>>();
-  MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
-  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestController.value;
+  final _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>();
+  MyoroRequestNotifier<Set<T>> get itemsRequestNotifier => _itemsRequestNotifier;
+  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestNotifier.value;
 
   /// Dispose function.
   void dispose() {
     _localInputController?.dispose();
-    _itemsRequestController.dispose();
+    _itemsRequestNotifier.dispose();
   }
 }

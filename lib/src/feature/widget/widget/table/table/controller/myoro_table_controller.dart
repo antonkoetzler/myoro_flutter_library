@@ -21,12 +21,12 @@ class MyoroTableController<T> {
 
   /// Dispose function.
   void dispose() {
-    _state.itemsRequestController.dispose();
-    _state.titleColumnKeyWidthsController.dispose();
+    _state.itemsRequestNotifier.dispose();
+    _state.titleColumnKeyWidthsNotifier.dispose();
   }
 
   /// Fetches the items of the [MyoroTable].
   void fetch() {
-    _state.itemsRequestController.fetch();
+    _state.itemsRequestNotifier.fetch();
   }
 }

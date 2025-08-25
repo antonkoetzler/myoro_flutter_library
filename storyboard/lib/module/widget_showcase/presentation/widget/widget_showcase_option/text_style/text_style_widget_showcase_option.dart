@@ -41,10 +41,14 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
         onChanged: onChanged,
         checkboxOnChanged: checkboxOnChanged,
         selectedItemBuilder: typography.getTextStyleName,
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: typography.allTextStyles.toSet,
           itemBuilder: (value) {
-            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: typography.getTextStyleName(value)));
+            return MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: typography.getTextStyleName(value)),
+              ),
+            );
           },
         ),
         selectedItem: selectedItem,

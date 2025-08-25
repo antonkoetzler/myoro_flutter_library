@@ -30,7 +30,11 @@ final class MyoroPieGraphWidgetShowcaseScreenViewModel {
 
   /// [MyoroMenuConfiguration.itemBuilder] of [_TypeEnumOption].
   MyoroMenuItem typeEnumOptionItemBuilder(MyoroPieGraphEnum item) {
-    return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _formattedTypeEnumName(item)));
+    return MyoroMenuItem(
+      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroTextConfiguration(text: _formattedTypeEnumName(item)),
+      ),
+    );
   }
 
   /// Formatted name of a [MyoroPieGraphEnum].

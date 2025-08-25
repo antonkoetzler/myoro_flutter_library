@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Controller of [MyoroForm].
-class MyoroFormController<T> extends MyoroRequestController<T> {
-  MyoroFormController({this.configuration}) : super(requestCallback: configuration?.request) {
+/// Notifier of [MyoroForm].
+class MyoroFormNotifier<T> extends MyoroRequestNotifier<T> {
+  MyoroFormNotifier({this.configuration}) : super(requestCallback: configuration?.request) {
     addListener(_listener);
   }
 
@@ -34,7 +34,7 @@ class MyoroFormController<T> extends MyoroRequestController<T> {
     await super.fetch();
   }
 
-  /// [MyoroFormController] listener.
+  /// [MyoroFormNotifier] listener.
   void _listener() {
     if (status.isSuccess) {
       configuration?.onSuccess?.call(data);

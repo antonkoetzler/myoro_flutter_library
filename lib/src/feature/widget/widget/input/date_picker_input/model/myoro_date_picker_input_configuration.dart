@@ -54,7 +54,6 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
   }
   // coverage:ignore-end
 
-  // coverage:ignore-start
   @override
   MyoroDatePickerInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
@@ -115,6 +114,4 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
       controller: controllerProvided ? (controller ?? this.controller) : null,
     );
   }
-
-  // coverage:ignore-end
 }

@@ -27,4 +27,17 @@ class MyoroBarGraphBar with _$MyoroBarGraphBarMixin {
   ///
   /// Overlaps [color] as the bars will have their own colors.
   final List<MyoroBarGraphBarSection> barSections;
+
+  MyoroBarGraphBar copyWith({
+    double? y,
+    Color? color,
+    bool colorProvided = true,
+    List<MyoroBarGraphBarSection>? barSections,
+  }) {
+    return MyoroBarGraphBar(
+      y: y ?? this.y,
+      color: colorProvided ? (color ?? this.color) : null,
+      barSections: barSections ?? this.barSections,
+    );
+  }
 }

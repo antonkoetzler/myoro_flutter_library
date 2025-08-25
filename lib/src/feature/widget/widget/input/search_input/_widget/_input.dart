@@ -11,7 +11,7 @@ final class _Input<T> extends StatelessWidget {
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
     final configuration = viewModel.configuration;
     final searchInputController = viewModel.inputController;
-    final itemsRequestController = viewModel.itemsRequestController;
+    final itemsRequestController = viewModel.itemsRequestNotifier;
 
     return MyoroInput(
       configuration: configuration.inputConfiguration.copyWith(

@@ -7,8 +7,8 @@ class MyoroMultiDropdownController<T> extends MyoroDropdownController<T, MyoroMu
     : super(MyoroMultiDropdownViewModel(configuration));
 
   /// [ValueNotifier] controlling which items are selected.
-  ValueNotifier<Set<T>> get selectedItemsNotifier => viewModel.state.selectedItemsNotifier;
+  ValueNotifier<Set<T>> get selectedItemsNotifier => viewModel.state.menuController.selectedItemsNotifier;
 
   /// Returns the selected items.
-  Set<T> get selectedItems => viewModel.state.selectedItems;
+  Set<T> get selectedItems => viewModel.state.menuController.selectedItems;
 }

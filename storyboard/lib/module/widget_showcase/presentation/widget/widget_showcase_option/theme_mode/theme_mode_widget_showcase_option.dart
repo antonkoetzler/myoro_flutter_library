@@ -23,10 +23,14 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: label,
         allowItemClearing: false,
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: ThemeMode.values.toSet,
           itemBuilder: (themeMode) {
-            return MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: _formattedName(themeMode)));
+            return MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: _formattedName(themeMode)),
+              ),
+            );
           },
         ),
         selectedItemBuilder: _formattedName,

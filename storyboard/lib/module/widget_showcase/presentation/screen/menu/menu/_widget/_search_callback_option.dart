@@ -1,17 +1,17 @@
-part of '../myoro_menu_widget_showcase_screen.dart';
+part of '../myoro_menus_widget_showcase_screen.dart';
 
-/// [MyoroMenuConfiguration.searchCallback] option of [MyoroMenuWidgetShowcaseScreen].
+/// [MyoroMenuConfiguration.searchCallback] option of [MyoroMenusWidgetShowcaseScreen].
 final class _SearchCallbackOption extends StatelessWidget {
   const _SearchCallbackOption();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroMenuWidgetShowcaseScreenViewModel>();
-
+    final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
     return MyoroCheckbox(
       configuration: MyoroCheckboxConfiguration(
-        label: 'Searching enabled?',
-        onChanged: (value) => viewModel.state.searchCallbackEnabled = value,
+        label: 'Enable search?',
+        onChanged: (searchCallbackEnabled) => state.searchCallbackEnabled = searchCallbackEnabled,
       ),
     );
   }

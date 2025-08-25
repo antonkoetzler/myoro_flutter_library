@@ -27,4 +27,17 @@ class MyoroAppBarConfiguration with _$MyoroAppBarConfigurationMixin {
 
   /// Content of the app bar.
   final Widget child;
+
+  MyoroAppBarConfiguration copyWith({
+    bool? bordered,
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
+    Widget? child,
+  }) {
+    return MyoroAppBarConfiguration(
+      bordered: bordered ?? this.bordered,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
+      child: child ?? this.child,
+    );
+  }
 }

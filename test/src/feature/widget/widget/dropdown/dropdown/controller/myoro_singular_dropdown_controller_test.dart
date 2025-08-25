@@ -5,9 +5,13 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   final controller = MyoroSingularDropdownController<String>(
     configuration: MyoroSingularDropdownConfiguration(
-      menuConfiguration: MyoroMenuConfiguration(
+      menuConfiguration: MyoroSingularMenuConfiguration(
         request: List.generate(faker.randomGenerator.integer(10), (i) => 'Item #$i').toSet,
-        itemBuilder: (v) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: v)),
+        itemBuilder: (v) => MyoroMenuItem(
+          iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+            textConfiguration: MyoroTextConfiguration(text: v),
+          ),
+        ),
       ),
       selectedItemBuilder: (v) => v,
     ),

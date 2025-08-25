@@ -1,4 +1,4 @@
-part of '../myoro_menu.dart';
+part of '../bundle/myoro_menu_bundle.dart';
 
 /// [MyoroCircularLoader] of the [MyoroMenu].
 final class _Loader extends StatelessWidget {

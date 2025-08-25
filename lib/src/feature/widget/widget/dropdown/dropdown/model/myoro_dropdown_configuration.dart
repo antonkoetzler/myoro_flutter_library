@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 ///
 /// [MyoroSingularDropdown] and [MyoroMultiDropdown] have their separation
 /// configuration classes extending [MyoroDropdownConfiguration] for specific args.
-abstract class MyoroDropdownConfiguration<T> {
+abstract class MyoroDropdownConfiguration<T, C extends MyoroMenuConfiguration<T>> {
   static const labelDefaultValue = '';
   static const menuTypeEnumDefaultValue = MyoroDropdownMenuTypeEnum.expanding;
   static const enabledDefaultValue = true;
@@ -40,10 +40,20 @@ abstract class MyoroDropdownConfiguration<T> {
   final TextAlign selectedItemTextAlign;
 
   /// [MyoroMenuConfiguration] of the [_Menu]'s [MyoroMenu].
-  final MyoroMenuConfiguration<T> menuConfiguration;
+  final C menuConfiguration;
 
   /// Builder of the [String] displayed when a [T] item is selected.
   final MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder;
+
+  MyoroDropdownConfiguration copyWith({
+    String? label,
+    MyoroDropdownMenuTypeEnum? menuTypeEnum,
+    bool? enabled,
+    bool? allowItemClearing,
+    TextAlign? selectedItemTextAlign,
+    C? menuConfiguration,
+    MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
+  });
 
   /// Returns if the checkbox callback is provided.
   bool get checkboxOnChangedNotNull;

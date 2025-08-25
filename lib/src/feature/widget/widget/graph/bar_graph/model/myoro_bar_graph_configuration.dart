@@ -9,12 +9,6 @@ part 'myoro_bar_graph_configuration.g.dart';
 class MyoroBarGraphConfiguration with _$MyoroBarGraphConfigurationMixin {
   static const sortedDefaultValue = true;
 
-  /// If the items of the graph should be sorted.
-  final bool sorted;
-
-  /// Items of the graph.
-  final List<MyoroBarGraphGroup> items;
-
   const MyoroBarGraphConfiguration({this.sorted = sortedDefaultValue, required this.items})
     : assert(items.length != 0, '[MyoroBarGraphConfiguration]: [items] must not be empty.');
 
@@ -23,4 +17,14 @@ class MyoroBarGraphConfiguration with _$MyoroBarGraphConfigurationMixin {
     : sorted = faker.randomGenerator.boolean(),
       items = List.generate(faker.randomGenerator.integer(10, min: 1), (_) => MyoroBarGraphGroup.fake());
   // coverage:ignore-end
+
+  /// If the items of the graph should be sorted.
+  final bool sorted;
+
+  /// Items of the graph.
+  final List<MyoroBarGraphGroup> items;
+
+  MyoroBarGraphConfiguration copyWith({bool? sorted, List<MyoroBarGraphGroup>? items}) {
+    return MyoroBarGraphConfiguration(sorted: sorted ?? this.sorted, items: items ?? this.items);
+  }
 }

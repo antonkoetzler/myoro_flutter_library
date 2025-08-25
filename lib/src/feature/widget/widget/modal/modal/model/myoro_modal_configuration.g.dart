@@ -16,32 +16,6 @@ part of 'myoro_modal_configuration.dart';
 mixin _$MyoroModalConfigurationMixin<T> {
   MyoroModalConfiguration<T> get self => this as MyoroModalConfiguration<T>;
 
-  MyoroModalConfiguration<T> copyWith({
-    bool? barrierDismissable,
-    bool? useRootNavigator,
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
-    void Function(T?)? onClosed,
-    bool onClosedProvided = true,
-    String? title,
-    bool? showCloseButton,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    EdgeInsets? closeButtonPadding,
-    bool closeButtonPaddingProvided = true,
-  }) {
-    return MyoroModalConfiguration(
-      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
-      useRootNavigator: useRootNavigator ?? self.useRootNavigator,
-      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
-      onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
-      title: title ?? self.title,
-      showCloseButton: showCloseButton ?? self.showCloseButton,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroModalConfiguration<T> &&

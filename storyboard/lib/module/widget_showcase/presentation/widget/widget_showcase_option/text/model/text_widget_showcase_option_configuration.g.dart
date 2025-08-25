@@ -16,43 +16,6 @@ part of 'text_widget_showcase_option_configuration.dart';
 mixin _$TextWidgetShowcaseOptionConfigurationMixin {
   TextWidgetShowcaseOptionConfiguration get self => this as TextWidgetShowcaseOptionConfiguration;
 
-  TextWidgetShowcaseOptionConfiguration copyWith({
-    String? label,
-    String? textInitialValue,
-    void Function(String)? textOnChanged,
-    int? maxLinesInitialValue,
-    void Function(int?)? maxLinesOnChanged,
-    bool maxLinesOnChangedProvided = true,
-    TextOverflow? overflowInitialValue,
-    void Function(TextOverflow?)? overflowOnChanged,
-    bool overflowOnChangedProvided = true,
-    TextAlign? alignmentInitialValue,
-    void Function(TextAlign?)? alignmentOnChanged,
-    bool alignmentOnChangedProvided = true,
-    TextStyle? styleInitialValue,
-    bool styleInitialValueProvided = true,
-    void Function(TextStyle?)? styleOnChanged,
-    bool styleOnChangedProvided = true,
-    void Function(bool, TextStyle?)? styleCheckboxOnChanged,
-    bool styleCheckboxOnChangedProvided = true,
-  }) {
-    return TextWidgetShowcaseOptionConfiguration(
-      label: label ?? self.label,
-      textInitialValue: textInitialValue ?? self.textInitialValue,
-      textOnChanged: textOnChanged ?? self.textOnChanged,
-      maxLinesInitialValue: maxLinesInitialValue ?? self.maxLinesInitialValue,
-      maxLinesOnChanged: maxLinesOnChangedProvided ? (maxLinesOnChanged ?? self.maxLinesOnChanged) : null,
-      overflowInitialValue: overflowInitialValue ?? self.overflowInitialValue,
-      overflowOnChanged: overflowOnChangedProvided ? (overflowOnChanged ?? self.overflowOnChanged) : null,
-      alignmentInitialValue: alignmentInitialValue ?? self.alignmentInitialValue,
-      alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? self.alignmentOnChanged) : null,
-      styleInitialValue: styleInitialValueProvided ? (styleInitialValue ?? self.styleInitialValue) : null,
-      styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? self.styleOnChanged) : null,
-      styleCheckboxOnChanged:
-          styleCheckboxOnChangedProvided ? (styleCheckboxOnChanged ?? self.styleCheckboxOnChanged) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is TextWidgetShowcaseOptionConfiguration &&

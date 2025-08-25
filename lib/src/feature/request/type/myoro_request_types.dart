@@ -1,4 +1,4 @@
 import 'dart:async';
 
 /// Function that requests the data to be retrieved.
-typedef MyoroRequestControllerRequest<T> = FutureOr<T?> Function();
+typedef MyoroRequestNotifierRequest<T> = FutureOr<T?> Function();

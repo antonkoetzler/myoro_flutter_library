@@ -7,7 +7,7 @@ part 'myoro_singular_dropdown_configuration.g.dart';
 /// Configuration model of [MyoroSingularDropdown].
 @immutable
 @myoroModel
-class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T>
+class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroSingularMenuConfiguration<T>>
     with _$MyoroSingularDropdownConfigurationMixin<T> {
   factory MyoroSingularDropdownConfiguration({
     String label = MyoroDropdownConfiguration.labelDefaultValue,
@@ -15,7 +15,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
-    required MyoroMenuConfiguration<T> menuConfiguration,
+    required MyoroSingularMenuConfiguration<T> menuConfiguration,
     required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
     T? selectedItem,
     MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
@@ -56,6 +56,36 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
 
   /// Function executed when the enabled/disabled checkbox is pressed.
   final MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
+
+  @override
+  MyoroSingularDropdownConfiguration<T> copyWith({
+    String? label,
+    MyoroDropdownMenuTypeEnum? menuTypeEnum,
+    bool? enabled,
+    bool? allowItemClearing,
+    TextAlign? selectedItemTextAlign,
+    MyoroSingularMenuConfiguration<T>? menuConfiguration,
+    MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
+    T? selectedItem,
+    bool selectedItemProvided = true,
+    MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
+    bool onChangedProvided = true,
+    MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+  }) {
+    return MyoroSingularDropdownConfiguration(
+      label: label ?? this.label,
+      menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
+      enabled: enabled ?? this.enabled,
+      allowItemClearing: allowItemClearing ?? this.allowItemClearing,
+      selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
+      menuConfiguration: menuConfiguration ?? this.menuConfiguration,
+      selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
+      selectedItem: selectedItemProvided ? (selectedItem ?? this.selectedItem) : null,
+      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
+    );
+  }
 
   @override
   bool get checkboxOnChangedNotNull => checkboxOnChanged != null;

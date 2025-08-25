@@ -8,10 +8,10 @@ final class _RowsSection<T> extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroTableViewModel<T>>();
     final state = viewModel.state;
-    final itemsRequestController = state.itemsRequestController;
+    final itemsRequestNotifier = state.itemsRequestNotifier;
 
     return ValueListenableBuilder(
-      valueListenable: itemsRequestController,
+      valueListenable: itemsRequestNotifier,
       builder: (_, MyoroRequest<Set<T>> itemsRequest, _) {
         return switch (itemsRequest.status) {
           MyoroRequestEnum.idle => const _Loader(),

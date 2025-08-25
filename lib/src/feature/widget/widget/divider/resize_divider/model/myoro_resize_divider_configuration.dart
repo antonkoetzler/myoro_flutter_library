@@ -24,4 +24,22 @@ class MyoroResizeDividerConfiguration extends MyoroBasicDividerConfiguration
 
   /// Resize activated callback.
   final MyoroResizeDividerDragCallback? dragCallback;
+
+  @override
+  MyoroResizeDividerConfiguration copyWith({
+    Axis? direction,
+    double? shortValue,
+    bool shortValueProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    MyoroResizeDividerDragCallback? dragCallback,
+    bool dragCallbackProvided = true,
+  }) {
+    return MyoroResizeDividerConfiguration(
+      direction: direction ?? this.direction,
+      shortValue: shortValueProvided ? (shortValue ?? this.shortValue) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
+      dragCallback: dragCallbackProvided ? (dragCallback ?? this.dragCallback) : null,
+    );
+  }
 }

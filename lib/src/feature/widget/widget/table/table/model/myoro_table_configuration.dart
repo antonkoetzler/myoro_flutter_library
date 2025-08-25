@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -21,4 +19,16 @@ class MyoroTableConfiguration<T> with _$MyoroTableConfigurationMixin<T> {
 
   /// Builder of the cells of the row.
   final MyoroTableConfigurationRowBuilder<T> rowBuilder;
+
+  MyoroTableConfiguration<T> copyWith({
+    MyoroTableConfigurationRequest<T>? request,
+    List<MyoroTableColumn>? columns,
+    MyoroTableConfigurationRowBuilder<T>? rowBuilder,
+  }) {
+    return MyoroTableConfiguration(
+      request: request ?? this.request,
+      columns: columns ?? this.columns,
+      rowBuilder: rowBuilder ?? this.rowBuilder,
+    );
+  }
 }

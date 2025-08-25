@@ -1,18 +1,15 @@
 part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// [Widget] responsible for opening the dropdown when [_Input] is pressed.
-final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
-  // final MyoroDropdownViewModel<T, C> _viewModel;
-
+final class _InputTriggerArea<T, V extends _ViewModelType<T>> extends StatelessWidget {
   const _InputTriggerArea();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroDropdownViewModel<T, C>>();
+    final viewModel = context.read<V>();
     final state = viewModel.state;
     final configuration = state.configuration;
     final enabledNotifier = state.enabledNotifier;
-    final selectedItemsNotifier = state.selectedItemsNotifier;
     final inputSizeNotifier = state.inputSizeNotifier;
 
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
@@ -26,29 +23,24 @@ final class _InputTriggerArea<T, C extends _C<T>> extends StatelessWidget {
           child: ValueListenableBuilder(
             valueListenable: enabledNotifier,
             builder: (_, bool enabled, _) {
-              return ValueListenableBuilder(
-                valueListenable: selectedItemsNotifier,
-                builder: (_, selectedItems, _) {
-                  return Row(
-                    children: [
-                      Expanded(child: _InputTriggerAreaRegion<T, C>(enabled)),
-                      // Allows [MyoroInput._ClearTextButton] to be pressed.
-                      if (configuration.allowItemClearing && selectedItems.isNotEmpty) ...[
-                        SizedBox(
-                          width: 29,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              _InputTriggerAreaRegion<T, C>(enabled, height: clearTextButtonPadding.top + 2),
-                              _InputTriggerAreaRegion<T, C>(enabled, height: clearTextButtonPadding.bottom + 2),
-                            ],
-                          ),
-                        ),
-                        _InputTriggerAreaRegion<T, C>(enabled, width: clearTextButtonPadding.right),
-                      ],
-                    ],
-                  );
-                },
+              return Row(
+                children: [
+                  Expanded(child: _InputTriggerAreaRegion<T, V>(enabled)),
+                  // Allows [MyoroInput._ClearTextButton] to be pressed.
+                  if (configuration.allowItemClearing) ...[
+                    SizedBox(
+                      width: 29,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _InputTriggerAreaRegion<T, V>(enabled, height: clearTextButtonPadding.top + 2),
+                          _InputTriggerAreaRegion<T, V>(enabled, height: clearTextButtonPadding.bottom + 2),
+                        ],
+                      ),
+                    ),
+                    _InputTriggerAreaRegion<T, V>(enabled, width: clearTextButtonPadding.right),
+                  ],
+                ],
               );
             },
           ),

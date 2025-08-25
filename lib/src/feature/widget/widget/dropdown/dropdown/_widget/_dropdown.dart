@@ -1,18 +1,18 @@
 part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// Merge point for both dropdowns where the shared logic begins.
-final class _Dropdown<T, C extends _C<T>> extends StatefulWidget {
+final class _Dropdown<T, V extends _ViewModelType<T>> extends StatefulWidget {
   const _Dropdown(this._viewModel);
 
   /// View model.
-  final MyoroDropdownViewModel<T, C> _viewModel;
+  final V _viewModel;
 
   @override
-  State<_Dropdown<T, C>> createState() => _DropdownState<T, C>();
+  State<_Dropdown<T, V>> createState() => _DropdownState<T, V>();
 }
 
-final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
-  MyoroDropdownViewModel<T, C> get _viewModel => widget._viewModel;
+final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdown<T, V>> {
+  V get _viewModel => widget._viewModel;
 
   @override
   void initState() {
@@ -21,7 +21,13 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
   }
 
   @override
-  void didUpdateWidget(covariant _Dropdown<T, C> oldWidget) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _viewModel.initializeMenuController(context);
+  }
+
+  @override
+  void didUpdateWidget(covariant _Dropdown<T, V> oldWidget) {
     super.didUpdateWidget(oldWidget);
     _addShowingMenuControllerListener();
   }
@@ -41,33 +47,30 @@ final class _DropdownState<T, C extends _C<T>> extends State<_Dropdown<T, C>> {
       child: RepaintBoundary(
         child: ValueListenableBuilder(
           valueListenable: _viewModel.state.inputSizeNotifier,
-          builder: (_, Size? inputSize, _) {
-            return Row(
-              spacing: themeExtension.spacing,
-              crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
-              children: [
-                if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
-                  SizedBox(height: inputSize?.height, child: _Checkbox<T, C>()),
-                ],
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Flexible(child: _Input<T, C>()),
-                      if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
-                        ValueListenableBuilder(
-                          valueListenable: _viewModel.state.showingMenuNotifier,
-                          builder: (_, bool showBasicMenu, _) {
-                            return !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, C>());
-                          },
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
+          builder: (_, Size? inputSize, _) => Row(
+            spacing: themeExtension.spacing,
+            crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+            children: [
+              if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
+                SizedBox(height: inputSize?.height, child: _Checkbox<T, V>()),
               ],
-            );
-          },
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(child: _Input<T, V>()),
+                    if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
+                      ValueListenableBuilder(
+                        valueListenable: _viewModel.state.showingMenuNotifier,
+                        builder: (_, bool showBasicMenu, _) =>
+                            !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, V>()),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

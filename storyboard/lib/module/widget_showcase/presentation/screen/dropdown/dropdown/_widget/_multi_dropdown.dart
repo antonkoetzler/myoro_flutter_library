@@ -13,9 +13,7 @@ final class _MultiDropdown extends StatelessWidget {
       builder: (_, __) {
         return ListenableBuilder(
           listenable: viewModel.state.menuViewModel.state,
-          builder: (_, __) {
-            return MyoroMultiDropdown(configuration: viewModel.buildMultiDropdownConfiguration(context));
-          },
+          builder: (_, _) => MyoroMultiDropdown(configuration: viewModel.buildMultiDropdownConfiguration(context)),
         );
       },
     );

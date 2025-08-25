@@ -21,4 +21,14 @@ class MyoroAccordionItem with _$MyoroAccordionItemMixin {
 
   /// Builder of the content of the [MyoroAccordionItem].
   final MyoroAccordionItemContentBuilder contentBuilder;
+
+  MyoroAccordionItem copyWith({
+    MyoroAccordionItemTitleBuilder? titleBuilder,
+    MyoroAccordionItemContentBuilder? contentBuilder,
+  }) {
+    return MyoroAccordionItem(
+      titleBuilder: titleBuilder ?? this.titleBuilder,
+      contentBuilder: contentBuilder ?? this.contentBuilder,
+    );
+  }
 }

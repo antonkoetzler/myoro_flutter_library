@@ -1,15 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_menu_configuration.g.dart';
-
-/// Configuration model of [MyoroMenu].
-@immutable
-@myoroModel
-class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
+/// Abstract configuration model of a menu.
+abstract class MyoroMenuConfiguration<T> {
   static const constraintsDefaultValue = BoxConstraints();
 
   const MyoroMenuConfiguration({
@@ -48,4 +41,19 @@ class MyoroMenuConfiguration<T> with _$MyoroMenuConfigurationMixin<T> {
 
   /// Menu item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;
+
+  MyoroMenuConfiguration<T> copyWith({
+    BoxConstraints? constraints,
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
+    BoxBorder? border,
+    bool borderProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    MyoroMenuRequest<T>? request,
+    bool onEndReachedRequestProvided = true,
+    MyoroMenuSearchCallback<T>? searchCallback,
+    bool searchCallbackProvided = true,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+  });
 }

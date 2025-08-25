@@ -43,4 +43,22 @@ class MyoroCardConfiguration with _$MyoroCardConfigurationMixin {
 
   /// Content of the card.
   final Widget child;
+
+  MyoroCardConfiguration copyWith({
+    String? title,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    BoxConstraints? constraints,
+    Widget? child,
+  }) {
+    return MyoroCardConfiguration(
+      title: title ?? this.title,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
+      constraints: constraints ?? this.constraints,
+      child: child ?? this.child,
+    );
+  }
 }

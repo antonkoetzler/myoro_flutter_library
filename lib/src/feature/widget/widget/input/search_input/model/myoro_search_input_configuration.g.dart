@@ -16,20 +16,6 @@ part of 'myoro_search_input_configuration.dart';
 mixin _$MyoroSearchInputConfigurationMixin<T> {
   MyoroSearchInputConfiguration<T> get self => this as MyoroSearchInputConfiguration<T>;
 
-  MyoroSearchInputConfiguration<T> copyWith({
-    MyoroInputConfiguration? inputConfiguration,
-    bool? requestWhenChanged,
-    FutureOr<Set<T>> Function(String)? request,
-    MyoroMenuItem Function(T)? itemBuilder,
-  }) {
-    return MyoroSearchInputConfiguration(
-      inputConfiguration: inputConfiguration ?? self.inputConfiguration,
-      requestWhenChanged: requestWhenChanged ?? self.requestWhenChanged,
-      request: request ?? self.request,
-      itemBuilder: itemBuilder ?? self.itemBuilder,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroSearchInputConfiguration<T> &&

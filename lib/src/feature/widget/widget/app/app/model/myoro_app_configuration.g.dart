@@ -16,46 +16,6 @@ part of 'myoro_app_configuration.dart';
 mixin _$MyoroAppConfigurationMixin {
   MyoroAppConfiguration get self => this as MyoroAppConfiguration;
 
-  MyoroAppConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    ThemeMode? themeMode,
-    bool themeModeProvided = true,
-    ColorScheme Function(ColorScheme)? colorSchemeBuilder,
-    bool colorSchemeBuilderProvided = true,
-    TextTheme Function(TextTheme)? textThemeBuilder,
-    bool textThemeBuilderProvided = true,
-    List<ThemeExtension<ThemeExtension<dynamic>>> Function(bool, ColorScheme, TextTheme)? themeExtensionsBuilder,
-    bool themeExtensionsBuilderProvided = true,
-    Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
-    bool localizationsDelegatesProvided = true,
-    Iterable<Locale>? supportedLocales,
-    bool supportedLocalesProvided = true,
-    RouterConfig<Object>? router,
-    bool routerProvided = true,
-    Widget? home,
-    bool homeProvided = true,
-    Widget Function(BuildContext, Widget?)? builder,
-    bool builderProvided = true,
-  }) {
-    return MyoroAppConfiguration(
-      title: titleProvided ? (title ?? self.title) : null,
-      themeMode: themeModeProvided ? (themeMode ?? self.themeMode) : null,
-      colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? self.colorSchemeBuilder) : null,
-      textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? self.textThemeBuilder) : null,
-      themeExtensionsBuilder: themeExtensionsBuilderProvided
-          ? (themeExtensionsBuilder ?? self.themeExtensionsBuilder)
-          : null,
-      localizationsDelegates: localizationsDelegatesProvided
-          ? (localizationsDelegates ?? self.localizationsDelegates)
-          : null,
-      supportedLocales: supportedLocalesProvided ? (supportedLocales ?? self.supportedLocales) : null,
-      router: routerProvided ? (router ?? self.router) : null,
-      home: homeProvided ? (home ?? self.home) : null,
-      builder: builderProvided ? (builder ?? self.builder) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroAppConfiguration &&

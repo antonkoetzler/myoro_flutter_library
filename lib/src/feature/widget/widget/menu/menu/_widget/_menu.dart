@@ -1,34 +1,52 @@
-part of '../myoro_menu.dart';
+part of '../bundle/myoro_menu_bundle.dart';
 
-/// [Widget] displayed when [MyoroMenuConfiguration.request] is successful.
-final class _Menu<T> extends StatelessWidget {
-  const _Menu();
+/// A menu widget that should not be used in production code, it is used
+/// within [MyoroSingularDropdown], [MyoroMultiDropdown] & [MyoroInput].
+class _Menu<T, C extends _C<T>> extends StatefulWidget {
+  const _Menu(this._viewModel);
+
+  /// View model.
+  final MyoroMenuViewModel<T, C> _viewModel;
+
+  @override
+  State<_Menu<T, C>> createState() => _MenuState<T, C>();
+}
+
+final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
+  MyoroMenuViewModel<T, C> get _viewModel => widget._viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel.fetch();
+  }
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final viewModel = context.read<MyoroMenuViewModel<T>>();
-    final borderRadius = viewModel.state.configuration.borderRadius ?? themeExtension.borderRadius;
+    final configuration = _viewModel.state.configuration;
 
-    return ClipRRect(
-      clipBehavior: Clip.hardEdge,
-      borderRadius: borderRadius.copyWith(
-        topLeft: themeExtension.createMenuContentRadius(borderRadius.topLeft),
-        topRight: themeExtension.createMenuContentRadius(borderRadius.topRight),
-        bottomLeft: themeExtension.createMenuContentRadius(borderRadius.bottomLeft),
-        bottomRight: themeExtension.createMenuContentRadius(borderRadius.bottomRight),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (viewModel.state.configuration.searchCallback != null) _SearchBar<T>(),
-          Flexible(
-            child: ValueListenableBuilder(
-              valueListenable: viewModel.state.queriedItemsController,
-              builder: (_, _, _) => _ItemsSection<T>(),
-            ),
-          ),
-        ],
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: Container(
+        decoration: BoxDecoration(
+          color: configuration.backgroundColor ?? themeExtension.backgroundColor,
+          border: configuration.border,
+          borderRadius: configuration.borderRadius ?? themeExtension.borderRadius,
+        ),
+        constraints: _viewModel.state.configuration.constraints,
+        child: ValueListenableBuilder(
+          valueListenable: _viewModel.state.itemsRequestNotifier,
+          builder: (_, MyoroRequest<Set<T>> state, _) {
+            _viewModel.jumpToBottomPreviousPosition();
+            return switch (state.status) {
+              MyoroRequestEnum.idle => const _Loader(),
+              MyoroRequestEnum.loading => const _Loader(),
+              MyoroRequestEnum.success => _SuccessContent<T, C>(),
+              MyoroRequestEnum.error => const _DialogText('Error getting items.'),
+            };
+          },
+        ),
       ),
     );
   }

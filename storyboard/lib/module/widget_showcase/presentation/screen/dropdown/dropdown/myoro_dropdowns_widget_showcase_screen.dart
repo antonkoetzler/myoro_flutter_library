@@ -47,7 +47,7 @@ final class _MyoroDropdownsWidgetShowcaseScreenState extends State<MyoroDropdown
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDropdownsTitle,
           widget: _Widget(),
-          widgetOptions: [...MyoroDropdownsWidgetShowcaseScreen.options, ...MyoroMenuWidgetShowcaseScreen.options],
+          widgetOptions: [...MyoroDropdownsWidgetShowcaseScreen.options, ...MyoroMenusWidgetShowcaseScreen.options],
         ),
       ),
     );

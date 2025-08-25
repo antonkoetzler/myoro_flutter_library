@@ -37,4 +37,21 @@ class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixi
 
   /// Function executed when any of the checkbox's values are changed.
   final MyoroGroupCheckboxOnChanged? onChanged;
+
+  MyoroGroupCheckboxConfiguration copyWith({
+    Axis? direction,
+    double? spacing,
+    bool spacingProvided = true,
+    double? runSpacing,
+    bool runSpacingProvided = true,
+    MyoroGroupCheckboxOnChanged? onChanged,
+    bool onChangedProvided = true,
+  }) {
+    return MyoroGroupCheckboxConfiguration(
+      direction: direction ?? this.direction,
+      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
+      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+    );
+  }
 }

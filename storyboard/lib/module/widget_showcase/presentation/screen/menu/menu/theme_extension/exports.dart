@@ -1,1 +1,1 @@
-export 'myoro_menu_widget_showcase_screen_theme_extension.dart';
+export 'myoro_menus_widget_showcase_screen_theme_extension.dart';

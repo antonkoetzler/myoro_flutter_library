@@ -33,4 +33,17 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
 
   /// Text of the tooltip.
   final String text;
+
+  MyoroTooltipConfiguration copyWith({
+    EdgeInsets? margin,
+    bool marginProvided = true,
+    Duration? waitDuration,
+    String? text,
+  }) {
+    return MyoroTooltipConfiguration(
+      margin: marginProvided ? (margin ?? this.margin) : null,
+      waitDuration: waitDuration ?? this.waitDuration,
+      text: text ?? this.text,
+    );
+  }
 }

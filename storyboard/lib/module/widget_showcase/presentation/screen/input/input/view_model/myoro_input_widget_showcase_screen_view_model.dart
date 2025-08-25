@@ -54,7 +54,7 @@ class MyoroInputWidgetShowcaseScreenViewModel {
   /// [MyoroInputConfiguration.onFieldSubmitted]
   void _onFieldSubmitted(BuildContext context, String? text) {
     if (_state.validationEnabled) {
-      _state.formController.fetch();
+      _state.formNotifier.fetch();
     }
     if (_state.onFieldSubmittedEnabled) {
       _showSnackBar(context, 'Enter key pressed! Text is $text.');

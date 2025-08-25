@@ -16,20 +16,6 @@ part of 'myoro_basic_divider_configuration.dart';
 mixin _$MyoroBasicDividerConfigurationMixin {
   MyoroBasicDividerConfiguration get self => this as MyoroBasicDividerConfiguration;
 
-  MyoroBasicDividerConfiguration copyWith({
-    Axis? direction,
-    double? shortValue,
-    bool shortValueProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-  }) {
-    return MyoroBasicDividerConfiguration(
-      direction: direction ?? self.direction,
-      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
-      padding: paddingProvided ? (padding ?? self.padding) : null,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroBasicDividerConfiguration &&

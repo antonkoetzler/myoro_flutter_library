@@ -81,4 +81,52 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
 
   /// Custom [Widget] option of the [MyoroDialogModal].
   final Widget? child;
+
+  @override
+  MyoroDialogModalConfiguration<T> copyWith({
+    bool? barrierDismissable,
+    bool? useRootNavigator,
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
+    MyoroModalOnClosed<T>? onClosed,
+    bool onClosedProvided = true,
+    String? title,
+    bool? showCloseButton,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    EdgeInsets? closeButtonPadding,
+    bool closeButtonPaddingProvided = true,
+
+    bool? invertButtons,
+    String? confirmButtonText,
+    String? cancelButtonText,
+    VoidCallback? onConfirm,
+    bool onConfirmProvided = true,
+    VoidCallback? onCancel,
+    bool onCancelProvided = true,
+    String? text,
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
+    Widget? child,
+    bool childProvided = true,
+  }) {
+    return MyoroDialogModalConfiguration(
+      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
+      useRootNavigator: useRootNavigator ?? this.useRootNavigator,
+      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
+      onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
+      title: title ?? this.title,
+      showCloseButton: showCloseButton ?? this.showCloseButton,
+      padding: paddingProvided ? (padding ?? this.padding) : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
+      invertButtons: invertButtons ?? this.invertButtons,
+      confirmButtonText: confirmButtonText ?? this.confirmButtonText,
+      cancelButtonText: cancelButtonText ?? this.cancelButtonText,
+      onConfirm: onConfirmProvided ? (onConfirm ?? this.onConfirm) : null,
+      onCancel: onCancelProvided ? (onCancel ?? this.onCancel) : null,
+      text: text ?? this.text,
+      textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
+      child: childProvided ? (child ?? this.child) : null,
+    );
+  }
 }

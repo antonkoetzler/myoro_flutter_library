@@ -40,6 +40,17 @@ abstract class MyoroSliderBaseConfiguration {
   /// Maximum value of the slider.
   final double max;
 
+  MyoroSliderBaseConfiguration copyWith({
+    String? label,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    String? currentValueText,
+    String? maxValueText,
+    String? footerText,
+    double? min,
+    double? max,
+  });
+
   /// [Widget] builder.
   Widget get widget;
 }

@@ -3,8 +3,8 @@ part of 'myoro_dropdowns_widget_showcase_screen_view_model.dart';
 /// State of [MyoroDropdownsWidgetShowcaseScreenViewModel].
 final class MyoroDropdownsWidgetShowcaseScreenState extends ChangeNotifier {
   /// View model of [MyoroMenuWidgetShowcaseScreen].
-  final _menuViewModel = MyoroMenuWidgetShowcaseScreenViewModel();
-  MyoroMenuWidgetShowcaseScreenViewModel get menuViewModel => _menuViewModel;
+  final _menuViewModel = MyoroMenusWidgetShowcaseScreenViewModel();
+  MyoroMenusWidgetShowcaseScreenViewModel get menuViewModel => _menuViewModel;
 
   /// [MyoroDropdownConfiguration.label]
   String _label = MyoroDropdownConfiguration.labelDefaultValue;

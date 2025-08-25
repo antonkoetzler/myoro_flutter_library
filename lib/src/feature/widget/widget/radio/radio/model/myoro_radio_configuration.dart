@@ -54,4 +54,24 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
 
   /// Function executed when the [MyoroRadio] is clicked.
   final MyoroRadioOnChanged? onChanged;
+
+  MyoroRadioConfiguration copyWith({
+    MyoroRadioController? controller,
+    bool controllerProvided = true,
+    bool? initialValue,
+    bool initialValueProvided = true,
+    String? label,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    MyoroRadioOnChanged? onChanged,
+    bool onChangedProvided = true,
+  }) {
+    return MyoroRadioConfiguration(
+      controller: controllerProvided ? (controller ?? this.controller) : null,
+      initialValue: initialValueProvided ? (initialValue ?? this.initialValue) : null,
+      label: label ?? this.label,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
+      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+    );
+  }
 }

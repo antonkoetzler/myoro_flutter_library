@@ -16,19 +16,6 @@ part of 'myoro_pie_graph_configuration.dart';
 mixin _$MyoroPieGraphConfigurationMixin {
   MyoroPieGraphConfiguration get self => this as MyoroPieGraphConfiguration;
 
-  MyoroPieGraphConfiguration copyWith({
-    MyoroPieGraphEnum? typeEnum,
-    Widget? centerWidget,
-    bool centerWidgetProvided = true,
-    List<MyoroPieGraphItem>? items,
-  }) {
-    return MyoroPieGraphConfiguration(
-      typeEnum: typeEnum ?? self.typeEnum,
-      centerWidget: centerWidgetProvided ? (centerWidget ?? self.centerWidget) : null,
-      items: items ?? self.items,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is MyoroPieGraphConfiguration &&

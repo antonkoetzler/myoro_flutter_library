@@ -1,26 +1,50 @@
 part of 'myoro_dropdown_view_model.dart';
 
 /// State class of [MyoroDropdownViewModel].
-class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
-  MyoroDropdownState(this.configuration, Set<T> initiallySelectedItems)
-    : _enabledNotifier = ValueNotifier(configuration.enabled),
-      _selectedItemsNotifier = ValueNotifier(initiallySelectedItems);
+class MyoroDropdownState<
+  T,
+  CONFIGURATION extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+> {
+  MyoroDropdownState(this.configuration) : _enabledNotifier = ValueNotifier(configuration.enabled);
 
   /// Configuration.
-  C configuration;
+  CONFIGURATION configuration;
+
+  /// [MyoroMenuController]. This is the source of truth for the selected items of the dropdown.
+  MENU_CONTROLLER? _menuController;
+
+  /// [_menuController] getter.
+  MENU_CONTROLLER get menuController {
+    assert(
+      _menuController != null,
+      '[MyoroDropdownState<$T>.menuController]: [_menuController] has not been initialized yet.',
+    );
+    return _menuController!;
+  }
+
+  /// [_menuController] setter.
+  set menuController(MENU_CONTROLLER menuController) {
+    _menuController = menuController;
+  }
 
   /// [ValueNotifier] controlling if the [_Dropdown] is enabled or not.
   final ValueNotifier<bool> _enabledNotifier;
-  ValueNotifier<bool> get enabledNotifier => _enabledNotifier;
-  bool get enabled => _enabledNotifier.value;
 
-  /// [ValueNotifier] controlling the selected items of the [_Dropdown].
-  final ValueNotifier<Set<T>> _selectedItemsNotifier;
-  ValueNotifier<Set<T>> get selectedItemsNotifier => _selectedItemsNotifier;
-  Set<T> get selectedItems => Set.from(_selectedItemsNotifier.value);
+  /// [_enabledNotifier] getter.
+  ValueNotifier<bool> get enabledNotifier {
+    return _enabledNotifier;
+  }
+
+  /// Getter of [_enabledNotifier]'s value.
+  bool get enabled {
+    return _enabledNotifier.value;
+  }
 
   /// Used when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.overlay].
   MyoroOverlayPortalController? _overlayMenuController;
+
+  /// [_overlayMenuController] getter.
   MyoroOverlayPortalController get overlayMenuController {
     assert(
       configuration.menuTypeEnum.isOverlay,
@@ -34,42 +58,86 @@ class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T>> {
   /// When calling [MyoroOverlayPortalController.hide] or [MyoroOverlayPortalController.show],
   /// The value of [_showingMenuNotifier] is automatically synced with [_overlayMenuController].
   final _showingMenuNotifier = ValueNotifier<bool>(false);
-  ValueNotifier<bool> get showingMenuNotifier => _showingMenuNotifier;
-  bool get showingMenu => _showingMenuNotifier.value;
-  set showingMenu(bool showingMenu) => _showingMenuNotifier.value = showingMenu;
+
+  /// [_showingMenuNotifier] getter.
+  ValueNotifier<bool> get showingMenuNotifier {
+    return _showingMenuNotifier;
+  }
+
+  /// Getter of [_showingMenuNotifier]'s value.
+  bool get showingMenu {
+    return _showingMenuNotifier.value;
+  }
+
+  /// [_showingMenuNotifier] setter.
+  set showingMenu(bool showingMenu) {
+    _showingMenuNotifier.value = showingMenu;
+  }
 
   /// [ScrollController] of [_Menu].
   final _menuScrollController = ScrollController();
-  ScrollController get menuScrollController => _menuScrollController;
+
+  /// [_menuScrollController] getter.
+  ScrollController get menuScrollController {
+    return _menuScrollController;
+  }
 
   /// [TapRegion.groupId] of [_InputTriggerArea] and [_Menu] so [TapRegion.onTapOutside]
   /// (which closes the menu) only activates when [_InputTriggerArea]/[_Menu] is not pressed.
   late final _tapRegionGroupId = 'MyoroDropdown#$hashCode';
-  String get tapRegionGroupId => _tapRegionGroupId;
+
+  /// [_tapRegionGroupId] getter.
+  String get tapRegionGroupId {
+    return _tapRegionGroupId;
+  }
 
   /// [TextEditingController] of [_Input].
   final _inputController = TextEditingController();
-  TextEditingController get inputController => _inputController;
+
+  /// [_inputController] getter.
+  TextEditingController get inputController {
+    return _inputController;
+  }
 
   /// [GlobalKey] of [_Input] to pass it's [Size] to [_inputSizeNotifier].
   final _inputKey = GlobalKey();
-  GlobalKey get inputKey => _inputKey;
+
+  /// [_inputKey] getter.
+  GlobalKey get inputKey {
+    return _inputKey;
+  }
 
   /// [ValueNotifier] that stores the [Size] of [_Input].
   final _inputSizeNotifier = ValueNotifier<Size?>(null);
-  ValueNotifier<Size?> get inputSizeNotifier => _inputSizeNotifier;
-  Size? get inputSize => _inputSizeNotifier.value;
-  set inputSize(Size? inputSize) => _inputSizeNotifier.value = inputSize;
+
+  /// [_inputSizeNotifier] getter.
+  ValueNotifier<Size?> get inputSizeNotifier {
+    return _inputSizeNotifier;
+  }
+
+  /// Getter of [_inputSizeNotifier]'s value.
+  Size? get inputSize {
+    return _inputSizeNotifier.value;
+  }
+
+  /// [_inputSizeNotifier] setter.
+  set inputSize(Size? inputSize) {
+    _inputSizeNotifier.value = inputSize;
+  }
 
   /// [LayerLink] of [CompositedTransformTarget] so we may position the
   /// [OverlayPortal] relative to the position of [_DropdownState] in [_Input].
   final _link = LayerLink();
-  LayerLink get link => _link;
+
+  /// [_link] getter.
+  LayerLink get link {
+    return _link;
+  }
 
   /// Dispose function.
   void dispose() {
+    _menuController?.dispose();
     _enabledNotifier.dispose();
-    _selectedItemsNotifier.dispose();
     _showingMenuNotifier.dispose();
     _menuScrollController.dispose();
     _inputController.dispose();

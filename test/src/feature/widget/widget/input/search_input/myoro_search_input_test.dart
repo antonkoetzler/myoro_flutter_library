@@ -14,7 +14,11 @@ void main() {
               await Future.delayed(const Duration(milliseconds: 500));
               return {};
             },
-            itemBuilder: (item) => MyoroMenuItem(textConfiguration: MyoroTextConfiguration(text: item)),
+            itemBuilder: (item) => MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: item),
+              ),
+            ),
           ),
         ),
       ),
@@ -30,7 +34,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
-      expect(find.byType(MyoroMenu<String>), findsOneWidget);
+      expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
     });
   });
 
@@ -38,7 +42,7 @@ void main() {
     await testCase(tester, () async {
       await tester.tap(find.byType(MyoroButton));
       await tester.pumpAndSettle();
-      expect(find.byType(MyoroMenu<String>), findsOneWidget);
+      expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
     });
   });
 

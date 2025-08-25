@@ -8,7 +8,7 @@ part 'myoro_tab_view_configuration.g.dart';
 /// Configuration model of [MyoroTabView].
 @immutable
 @myoroModel
-final class MyoroTabViewConfiguration with _$MyoroTabViewConfigurationMixin {
+class MyoroTabViewConfiguration with _$MyoroTabViewConfigurationMixin {
   static const initiallySelectedTabIndexDefaultValue = 0;
 
   const MyoroTabViewConfiguration({
@@ -36,4 +36,20 @@ final class MyoroTabViewConfiguration with _$MyoroTabViewConfigurationMixin {
 
   /// Tabs of the [MyoroTabView].
   final List<MyoroTabViewTab> tabs;
+
+  MyoroTabViewConfiguration copyWith({
+    int? initiallySelectedTabIndex,
+    double? tabButtonIconSize,
+    bool tabButtonIconSizeProvided = true,
+    TextStyle? tabButtonTextStyle,
+    bool tabButtonTextStyleProvided = true,
+    List<MyoroTabViewTab>? tabs,
+  }) {
+    return MyoroTabViewConfiguration(
+      initiallySelectedTabIndex: initiallySelectedTabIndex ?? this.initiallySelectedTabIndex,
+      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? this.tabButtonIconSize) : null,
+      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? this.tabButtonTextStyle) : null,
+      tabs: tabs ?? this.tabs,
+    );
+  }
 }

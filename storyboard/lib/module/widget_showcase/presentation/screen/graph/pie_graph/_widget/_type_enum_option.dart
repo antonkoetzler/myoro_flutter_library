@@ -11,7 +11,7 @@ final class _TypeEnumOption extends StatelessWidget {
     return MyoroSingularDropdown<MyoroPieGraphEnum>(
       configuration: MyoroSingularDropdownConfiguration(
         selectedItemBuilder: viewModel.typeEnumOptionSelectedItemBuilder,
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: MyoroPieGraphEnum.values.toSet,
           itemBuilder: viewModel.typeEnumOptionItemBuilder,
         ),

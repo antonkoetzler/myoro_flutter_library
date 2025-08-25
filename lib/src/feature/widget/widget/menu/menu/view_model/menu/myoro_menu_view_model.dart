@@ -6,25 +6,19 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_menu_state.dart';
 
 /// View model of [MyoroMenu].
-class MyoroMenuViewModel<T> {
-  /// State.
-  MyoroMenuState<T>? _state;
-
-  /// [_state] getter.
-  MyoroMenuState<T> get state {
-    assert(_state != null, '[MyoroMenuState<$T>.state]: [_state] has not been set yet.');
-    return _state!;
-  }
-
-  /// Initialization function.
-  void initialize(MyoroMenuConfiguration<T> configuration) {
-    final isInitialized = _state != null;
-    if (isInitialized) return;
-    _state = MyoroMenuState(configuration);
+abstract class MyoroMenuViewModel<T, C extends MyoroMenuConfiguration<T>> {
+  MyoroMenuViewModel(C configuration, Set<T> initiallySelectedItems)
+    : _state = MyoroMenuState(configuration, initiallySelectedItems) {
     if (configuration.onEndReachedRequest != null) {
       state.scrollController.addListener(scrollControllerListener);
     }
   }
+
+  /// State.
+  final MyoroMenuState<T, C> _state;
+
+  /// [_state] getter.
+  MyoroMenuState<T, C> get state => _state;
 
   /// Dispose function.
   void dispose() {
@@ -33,23 +27,20 @@ class MyoroMenuViewModel<T> {
 
   /// Fetches the items of the [MyoroMenu].
   void fetch() {
-    state.itemsRequestController.requestCallback = state.configuration.request;
-    unawaited(state.itemsRequestController.fetch());
+    state.itemsRequestNotifier.requestCallback = state.configuration.request;
+    unawaited(state.itemsRequestNotifier.fetch());
   }
 
   /// Fetches extra items ([MyoroMenuConfiguration.onEndReachedRequest]).
   @protected
   void fetchExtra() {
     final onEndReachedRequest = state.configuration.onEndReachedRequest;
-
     assert(
       onEndReachedRequest != null,
-      '[MyoroMenuViewModel<T>._fetchExtra]: '
-      '[_configuration.onEndReachedRequest] cannot be null.',
+      '[MyoroMenuViewModel<T>._fetchExtra]: [_configuration.onEndReachedRequest] cannot be null.',
     );
-
-    state.itemsRequestController.requestCallback = () async => await onEndReachedRequest!(state.items);
-    unawaited(state.itemsRequestController.fetch());
+    state.itemsRequestNotifier.requestCallback = () async => await onEndReachedRequest!(state.items);
+    unawaited(state.itemsRequestNotifier.fetch());
   }
 
   /// Searches in [_items] given [query].
@@ -58,8 +49,11 @@ class MyoroMenuViewModel<T> {
       state.configuration.searchCallback != null,
       '[MyoroMenuBloc<$T>.SearchEvent]: [_configuration.searchCallback] cannot be null.',
     );
-    state.queriedItemsController.value = query.isEmpty ? null : state.configuration.searchCallback!(query, state.items);
+    state.queriedItemsNotifier.value = query.isEmpty ? null : state.configuration.searchCallback!(query, state.items);
   }
+
+  /// Selects an item.
+  void toggleItem(T item);
 
   /// Listener of [_scrollController].
   @protected

@@ -67,4 +67,27 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
   /// The [Map]'s key is the label of the radio, which is never null
   /// or empty. The [Map]'s value is the initial value of the checkbox.
   final MyoroGroupRadioItems? radios;
+
+  MyoroGroupRadioConfiguration copyWith({
+    MyoroGroupRadioController? controller,
+    bool controllerProvided = true,
+    Axis? direction,
+    double? spacing,
+    bool spacingProvided = true,
+    double? runSpacing,
+    bool runSpacingProvided = true,
+    MyoroGroupRadioOnChanged? onChanged,
+    bool onChangedProvided = true,
+    MyoroGroupRadioItems? radios,
+    bool radiosProvided = true,
+  }) {
+    return MyoroGroupRadioConfiguration(
+      controller: controllerProvided ? (controller ?? this.controller) : null,
+      direction: direction ?? this.direction,
+      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
+      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
+      radios: radiosProvided ? (radios ?? this.radios) : null,
+    );
+  }
 }

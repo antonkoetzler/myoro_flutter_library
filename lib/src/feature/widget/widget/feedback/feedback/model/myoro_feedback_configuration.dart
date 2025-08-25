@@ -35,4 +35,24 @@ class MyoroFeedbackConfiguration with _$MyoroFeedbackConfigurationMixin {
 
   /// Action button configuration.
   final MyoroIconTextButtonConfiguration? actionButtonConfiguration;
+
+  MyoroFeedbackConfiguration copyWith({
+    MyoroIconConfiguration? iconConfiguration,
+    MyoroTextConfiguration? titleConfiguration,
+    MyoroTextConfiguration? subtitleConfiguration,
+    bool subtitleConfigurationProvided = true,
+    MyoroIconTextButtonConfiguration? actionButtonConfiguration,
+    bool actionButtonConfigurationProvided = true,
+  }) {
+    return MyoroFeedbackConfiguration(
+      iconConfiguration: iconConfiguration ?? this.iconConfiguration,
+      titleConfiguration: titleConfiguration ?? this.titleConfiguration,
+      subtitleConfiguration: subtitleConfigurationProvided
+          ? (subtitleConfiguration ?? this.subtitleConfiguration)
+          : null,
+      actionButtonConfiguration: actionButtonConfigurationProvided
+          ? (actionButtonConfiguration ?? this.actionButtonConfiguration)
+          : null,
+    );
+  }
 }

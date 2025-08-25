@@ -5,11 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.
-class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
-  MyoroRequestController({this.requestCallback}) : super(MyoroRequest<T>());
+class MyoroRequestNotifier<T> extends ValueNotifier<MyoroRequest<T>> {
+  MyoroRequestNotifier({this.requestCallback}) : super(MyoroRequest<T>());
 
   bool _isDisposed = false;
-  MyoroRequestControllerRequest<T>? requestCallback;
+  MyoroRequestNotifierRequest<T>? requestCallback;
 
   /// Dispose function.
   @override
@@ -33,12 +33,12 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
     } on HttpException catch (httpError) {
       errorMessage = httpError.message;
       if (kDebugMode) {
-        print('[MyoroRequestController<$T>.fetch]: HTTP error: "$errorMessage".');
+        print('[MyoroRequestNotifier<$T>.fetch]: HTTP error: "$errorMessage".');
       }
     } catch (genericError, stackTrace) {
       errorMessage = genericError.toString();
       if (kDebugMode) {
-        print('[MyoroRequestController<$T>.fetch]: Generic error: "$errorMessage".');
+        print('[MyoroRequestNotifier<$T>.fetch]: Generic error: "$errorMessage".');
         print('Stack trace:\n$stackTrace');
       }
     }

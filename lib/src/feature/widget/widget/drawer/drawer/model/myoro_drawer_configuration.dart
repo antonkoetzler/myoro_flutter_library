@@ -44,4 +44,21 @@ class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
 
   /// Content of the drawer.
   final Widget child;
+
+  MyoroDrawerConfiguration copyWith({
+    String? title,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+    bool? showCloseButton,
+    bool? barrierDismissable,
+    Widget? child,
+  }) {
+    return MyoroDrawerConfiguration(
+      title: title ?? this.title,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
+      showCloseButton: showCloseButton ?? this.showCloseButton,
+      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
+      child: child ?? this.child,
+    );
+  }
 }

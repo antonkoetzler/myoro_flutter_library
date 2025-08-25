@@ -49,11 +49,11 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
     _controller = MyoroSingularDropdownController(
       configuration: MyoroSingularDropdownConfiguration(
         label: _label,
-        menuConfiguration: MyoroMenuConfiguration(
+        menuConfiguration: MyoroSingularMenuConfiguration(
           request: kMyoroTestColors.toSet,
           itemBuilder: (color) {
             return MyoroMenuItem(
-              builder: (_, _) {
+              buttonBuilder: (_, _) {
                 return Padding(
                   padding: const EdgeInsets.all(10),
                   child: Row(

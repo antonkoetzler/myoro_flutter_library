@@ -8,7 +8,7 @@ part 'myoro_tab_view_tab.g.dart';
 /// Model of a singular tab apart of a [MyoroTabView].
 @immutable
 @myoroModel
-final class MyoroTabViewTab with _$MyoroTabViewTabMixin {
+class MyoroTabViewTab with _$MyoroTabViewTabMixin {
   const MyoroTabViewTab({this.icon, this.text, required this.content})
     : assert(icon != null || text != null, '[MyoroTabViewTab]: [icon] and/or [text] must be provided.');
 
@@ -32,4 +32,18 @@ final class MyoroTabViewTab with _$MyoroTabViewTabMixin {
 
   /// Content of the [MyoroTabViewTab].
   final Widget content;
+
+  MyoroTabViewTab copyWith({
+    IconData? icon,
+    bool iconProvided = true,
+    String? text,
+    bool textProvided = true,
+    Widget? content,
+  }) {
+    return MyoroTabViewTab(
+      icon: iconProvided ? (icon ?? this.icon) : null,
+      text: textProvided ? (text ?? this.text) : null,
+      content: content ?? this.content,
+    );
+  }
 }
