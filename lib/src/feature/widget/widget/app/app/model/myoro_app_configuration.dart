@@ -1,6 +1,7 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:myoro_flutter_library/src/exports.dart';
 
 part 'myoro_app_configuration.g.dart';
 
@@ -20,6 +21,24 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
     this.home,
     this.builder,
   }) : assert((router != null) ^ (home != null), '[MyoroApp]: [router] (x)or [home] must be provided.');
+
+  // coverage:ignore-start
+  factory MyoroAppConfiguration.fake() {
+    final routerProvided = faker.randomGenerator.boolean();
+    return MyoroAppConfiguration(
+      title: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
+      themeMode: faker.randomGenerator.boolean() ? myoroFake<ThemeMode>() : null,
+      colorSchemeBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<ColorScheme>()) : null,
+      textThemeBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<TextTheme>()) : null,
+      themeExtensionsBuilder: faker.randomGenerator.boolean() ? ((_, _, _) => []) : null,
+      localizationsDelegates: faker.randomGenerator.boolean() ? const {} : null,
+      supportedLocales: faker.randomGenerator.boolean() ? const {} : null,
+      router: routerProvided ? MockRouterConfig() : null,
+      home: routerProvided ? null : const SizedBox.shrink(),
+      builder: faker.randomGenerator.boolean() ? ((_, _) => const SizedBox.shrink()) : null,
+    );
+  }
+  // coverage:ignore-end
 
   /// Title of the application.
   ///
@@ -83,12 +102,8 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
       themeMode: themeModeProvided ? (themeMode ?? this.themeMode) : null,
       colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? this.colorSchemeBuilder) : null,
       textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? this.textThemeBuilder) : null,
-      themeExtensionsBuilder: themeExtensionsBuilderProvided
-          ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder)
-          : null,
-      localizationsDelegates: localizationsDelegatesProvided
-          ? (localizationsDelegates ?? this.localizationsDelegates)
-          : null,
+      themeExtensionsBuilder: themeExtensionsBuilderProvided ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder) : null,
+      localizationsDelegates: localizationsDelegatesProvided ? (localizationsDelegates ?? this.localizationsDelegates) : null,
       supportedLocales: supportedLocalesProvided ? (supportedLocales ?? this.supportedLocales) : null,
       router: routerProvided ? (router ?? this.router) : null,
       home: homeProvided ? (home ?? this.home) : null,

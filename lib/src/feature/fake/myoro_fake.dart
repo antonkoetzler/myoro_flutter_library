@@ -20,11 +20,7 @@ T myoroFake<T>() {
   }
 
   if (T == Border) {
-    return Border.all(
-          width: faker.randomGenerator.decimal(),
-          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
-        )
-        as T;
+    return Border.all(width: faker.randomGenerator.decimal(), color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]) as T;
   }
 
   if (T == BorderStyle) {
@@ -76,12 +72,69 @@ T myoroFake<T>() {
         as T;
   }
 
+  if (T == Brightness) {
+    return Brightness.values[faker.randomGenerator.integer(Brightness.values.length)] as T;
+  }
+
   if (T == Clip) {
     return Clip.values[faker.randomGenerator.integer(Clip.values.length)] as T;
   }
 
   if (T == Color) {
     return kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)] as T;
+  }
+
+  if (T == ColorScheme) {
+    return ColorScheme(
+          brightness: myoroFake<Brightness>(),
+          primary: myoroFake<Color>(),
+          onPrimary: myoroFake<Color>(),
+          primaryContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onPrimaryContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          primaryFixed: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          primaryFixedDim: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onPrimaryFixed: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onPrimaryFixedVariant: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          secondary: myoroFake<Color>(),
+          onSecondary: myoroFake<Color>(),
+          secondaryContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onSecondaryContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          secondaryFixed: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          secondaryFixedDim: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onSecondaryFixed: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onSecondaryFixedVariant: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          tertiary: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onTertiary: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          tertiaryContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onTertiaryContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          tertiaryFixed: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          tertiaryFixedDim: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onTertiaryFixed: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onTertiaryFixedVariant: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          error: myoroFake<Color>(),
+          onError: myoroFake<Color>(),
+          errorContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onErrorContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surface: myoroFake<Color>(),
+          onSurface: myoroFake<Color>(),
+          surfaceDim: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surfaceBright: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surfaceContainerLowest: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surfaceContainerLow: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surfaceContainer: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surfaceContainerHigh: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surfaceContainerHighest: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onSurfaceVariant: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          outline: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          outlineVariant: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          shadow: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          scrim: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          inverseSurface: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          onInverseSurface: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          inversePrimary: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+          surfaceTint: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+        )
+        as T;
   }
 
   if (T == Curve) {
@@ -141,11 +194,7 @@ T myoroFake<T>() {
   }
 
   if (T == Size) {
-    return Size(
-          faker.randomGenerator.decimal(scale: 500, min: 100),
-          faker.randomGenerator.decimal(scale: 500, min: 100),
-        )
-        as T;
+    return Size(faker.randomGenerator.decimal(scale: 500, min: 100), faker.randomGenerator.decimal(scale: 500, min: 100)) as T;
   }
 
   if (T == SnackBarBehavior) {
@@ -158,6 +207,27 @@ T myoroFake<T>() {
 
   if (T == TextOverflow) {
     return TextOverflow.values[faker.randomGenerator.integer(TextOverflow.values.length)] as T;
+  }
+
+  if (T == TextTheme) {
+    return TextTheme(
+          displayLarge: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          displayMedium: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          displaySmall: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          headlineLarge: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          headlineMedium: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          headlineSmall: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          titleLarge: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          titleMedium: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          titleSmall: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          bodyLarge: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          bodyMedium: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          bodySmall: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          labelLarge: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          labelMedium: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+          labelSmall: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+        )
+        as T;
   }
 
   if (T == ThemeMode) {

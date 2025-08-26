@@ -37,6 +37,7 @@ dependencies:
     path: ../myoro_flutter_annotations
   image_picker: ^1.1.2
   file_picker: ^10.2.4
+  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_test:

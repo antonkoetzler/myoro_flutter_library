@@ -25,7 +25,7 @@ void main() {
       MyoroWidgetTester(
         child: ValueListenableBuilder(
           valueListenable: controllerNotifier,
-          builder: (_, controller, _) => MyoroAccordion(controller: controller),
+          builder: (_, controller, __) => MyoroAccordion(controller: controller),
         ),
       ),
     );

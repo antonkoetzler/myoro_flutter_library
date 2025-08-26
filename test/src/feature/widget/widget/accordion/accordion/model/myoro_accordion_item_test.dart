@@ -44,5 +44,16 @@ void main() {
 
       expect(find.byType(Text), findsNWidgets(2));
     });
+
+    test('MyoroAccordionItem.copyWith', () {
+      var firstConfiguration = MyoroAccordionItem.fake();
+      expect(firstConfiguration.copyWith(), firstConfiguration);
+      final secondConfiguration = MyoroAccordionItem.fake();
+      firstConfiguration = firstConfiguration.copyWith(
+        titleBuilder: secondConfiguration.titleBuilder,
+        contentBuilder: secondConfiguration.contentBuilder,
+      );
+      expect(firstConfiguration, secondConfiguration);
+    });
   });
 }

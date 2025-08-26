@@ -40,4 +40,16 @@ void main() {
       expect(result.size, closeTo(30, 0.001));
     });
   });
+
+  test('MyoroIconConfiguration.copyWith', () {
+    var firstConfiguration = MyoroIconConfiguration.fake();
+    expect(firstConfiguration.copyWith(), firstConfiguration);
+    final secondConfiguration = MyoroIconConfiguration.fake();
+    firstConfiguration = firstConfiguration.copyWith(
+      icon: secondConfiguration.icon,
+      size: secondConfiguration.size,
+      sizeProvided: secondConfiguration.size != null,
+    );
+    expect(firstConfiguration, secondConfiguration);
+  });
 }
