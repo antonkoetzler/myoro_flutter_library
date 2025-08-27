@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 /// Multiplier for all stylistic values.
 const kMyoroMultiplier = 4.0;
 
+/// Empty string.
+const kMyoroEmptyString = '';
+
 /// Debounce.
 const kMyoroDebounceDuration = Duration(milliseconds: 200);
 
@@ -45,15 +48,7 @@ const kMyoroTestColors = [
 ];
 
 /// [Curve]s for testing.
-const kMyoroTestCurves = [
-  Curves.ease,
-  Curves.easeIn,
-  Curves.easeOut,
-  Curves.linear,
-  Curves.bounceIn,
-  Curves.bounceOut,
-  Curves.bounceInOut,
-];
+const kMyoroTestCurves = [Curves.ease, Curves.easeIn, Curves.easeOut, Curves.linear, Curves.bounceIn, Curves.bounceOut, Curves.bounceInOut];
 
 /// [SystemMouseCursor]s for testing.
 const kMyoroTestCursors = [

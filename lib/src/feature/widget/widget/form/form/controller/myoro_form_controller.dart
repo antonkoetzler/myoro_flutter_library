@@ -12,6 +12,8 @@ class MyoroFormNotifier<T> extends MyoroRequestNotifier<T> {
 
   /// [GlobalKey] of the [Form].
   final _formKey = GlobalKey<FormState>();
+
+  /// [_formKey] getter.
   GlobalKey<FormState> get formKey => _formKey;
 
   /// Starts the form process.
@@ -20,14 +22,14 @@ class MyoroFormNotifier<T> extends MyoroRequestNotifier<T> {
     value = request.createLoadingState();
 
     // Validation function passed in [MyoroForm].
-    final String? validationErrorMessage = configuration?.validation?.call();
+    final String validationErrorMessage = configuration?.validation?.call() ?? kMyoroEmptyString;
 
     // Flutter's [Form] validation call, this will check validation functions
     // in, for example, a [MyoroInput] with [MyoroInput.validation] provided.
     final bool formKeyValidation = formKey.currentState?.validate() ?? true;
 
-    if (validationErrorMessage != null || !formKeyValidation) {
-      value = request.createErrorState(!formKeyValidation ? '' : validationErrorMessage!);
+    if (validationErrorMessage.isNotEmpty || !formKeyValidation) {
+      value = request.createErrorState(!formKeyValidation ? kMyoroEmptyString : validationErrorMessage);
       return;
     }
 

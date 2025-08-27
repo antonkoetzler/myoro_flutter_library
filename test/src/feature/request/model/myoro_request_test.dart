@@ -24,4 +24,19 @@ void main() {
     expect(request.status.isError, isTrue);
     expect(request.errorMessage, errorMessage);
   });
+
+  test('MyoroRequest.copyWith', () {
+    final firstConfiguration = MyoroRequest.fake(data: faker.randomGenerator.boolean() ? faker.lorem.word() : null);
+    expect(firstConfiguration.copyWith(), firstConfiguration);
+    final secondConfiguration = MyoroRequest.fake(data: faker.randomGenerator.boolean() ? faker.lorem.word() : null);
+    expect(
+      firstConfiguration.copyWith(
+        status: secondConfiguration.status,
+        errorMessage: secondConfiguration.errorMessage,
+        data: secondConfiguration.data,
+        dataProvided: secondConfiguration.data != null,
+      ),
+      secondConfiguration,
+    );
+  });
 }
