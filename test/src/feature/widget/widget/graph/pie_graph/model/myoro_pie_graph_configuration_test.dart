@@ -17,4 +17,19 @@ void main() {
       throwsAssertionError,
     );
   });
+
+  test('MyoroPieGraphConfiguration.copyWith', () {
+    final firstConfiguration = MyoroPieGraphConfiguration.fake();
+    expect(firstConfiguration.copyWith(), firstConfiguration);
+    final secondConfiguration = MyoroPieGraphConfiguration.fake();
+    expect(
+      firstConfiguration.copyWith(
+        typeEnum: secondConfiguration.typeEnum,
+        centerWidget: secondConfiguration.centerWidget,
+        centerWidgetProvided: secondConfiguration.centerWidget != null,
+        items: secondConfiguration.items,
+      ),
+      secondConfiguration,
+    );
+  });
 }

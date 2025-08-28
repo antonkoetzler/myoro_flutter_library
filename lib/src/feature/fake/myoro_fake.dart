@@ -20,7 +20,11 @@ T myoroFake<T>() {
   }
 
   if (T == Border) {
-    return Border.all(width: faker.randomGenerator.decimal(), color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)]) as T;
+    return Border.all(
+          width: faker.randomGenerator.decimal(),
+          color: kMyoroTestColors[faker.randomGenerator.integer(kMyoroTestColors.length)],
+        )
+        as T;
   }
 
   if (T == BorderStyle) {
@@ -194,7 +198,11 @@ T myoroFake<T>() {
   }
 
   if (T == Size) {
-    return Size(faker.randomGenerator.decimal(scale: 500, min: 100), faker.randomGenerator.decimal(scale: 500, min: 100)) as T;
+    return Size(
+          faker.randomGenerator.decimal(scale: 500, min: 100),
+          faker.randomGenerator.decimal(scale: 500, min: 100),
+        )
+        as T;
   }
 
   if (T == SnackBarBehavior) {

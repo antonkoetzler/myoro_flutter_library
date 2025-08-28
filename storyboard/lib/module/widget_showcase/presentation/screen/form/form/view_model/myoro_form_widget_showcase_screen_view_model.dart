@@ -20,11 +20,11 @@ final class MyoroFormWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroInputConfiguration.validation] of [_Input].
-  String? validation() {
+  String validation() {
     final text = state.inputController.text;
     if (text.isEmpty) 'Text cannot be empty.';
     if (text != 'Kitty') return 'Text is not "Kitty"';
-    return null;
+    return kMyoroEmptyString;
   }
 
   /// [MyoroFormConfiguration.onSuccess] of [_Widget].

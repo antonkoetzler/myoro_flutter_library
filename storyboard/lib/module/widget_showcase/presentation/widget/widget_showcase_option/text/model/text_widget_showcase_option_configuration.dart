@@ -54,7 +54,6 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
   final TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged;
   final TextWidgetShowcaseOptionTextStyleCheckboxOnChanged? styleCheckboxOnChanged;
 
-  @override
   TextWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     String? textInitialValue,

@@ -11,4 +11,19 @@ void main() {
       child: const SizedBox.shrink(),
     );
   });
+
+  test('MyoroTableColumn.copyWith', () {
+    final firstConfiguration = MyoroTableColumn.fake();
+    expect(firstConfiguration.copyWith(), firstConfiguration);
+    final secondConfiguration = MyoroTableColumn.fake();
+    expect(
+      firstConfiguration.copyWith(
+        tooltipMessage: secondConfiguration.tooltipMessage,
+        tooltipMessageProvided: secondConfiguration.tooltipMessage != null,
+        widthConfiguration: secondConfiguration.widthConfiguration,
+        child: secondConfiguration.child,
+      ),
+      secondConfiguration,
+    );
+  });
 }

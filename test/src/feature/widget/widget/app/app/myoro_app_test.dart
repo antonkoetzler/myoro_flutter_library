@@ -20,7 +20,9 @@ void main() {
           router: RouterConfig<Object>(
             routerDelegate: MockRouterDelegate(),
             routeInformationParser: MockRouteInformationParser(),
-            routeInformationProvider: PlatformRouteInformationProvider(initialRouteInformation: RouteInformation(uri: Uri.parse('/'))),
+            routeInformationProvider: PlatformRouteInformationProvider(
+              initialRouteInformation: RouteInformation(uri: Uri.parse('/')),
+            ),
           ),
           builder: (_, _) => Text(_text),
         ),

@@ -10,8 +10,8 @@ part 'myoro_input_configuration.g.dart';
 @myoroModel
 class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
-  static const labelDefaultValue = '';
-  static const placeholderDefaultValue = '';
+  static const labelDefaultValue = kMyoroEmptyString;
+  static const placeholderDefaultValue = kMyoroEmptyString;
   static const textAlignDefaultValue = TextAlign.start;
   static const enabledDefaultValue = true;
   static const readOnlyDefaultValue = false;
@@ -22,7 +22,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.inputStyle = inputStyleDefaultValue,
     this.textAlign = textAlignDefaultValue,
     this.inputTextStyle,
-    this.label = '',
+    this.label = labelDefaultValue,
     this.labelTextStyle,
     this.placeholder = placeholderDefaultValue,
     this.contentPadding,

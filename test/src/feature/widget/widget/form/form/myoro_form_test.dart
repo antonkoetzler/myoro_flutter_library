@@ -14,8 +14,8 @@ void main() {
 
   final inputController = TextEditingController(text: formValidationErrorText);
 
-  String? validation() {
-    return inputController.text == formValidationErrorText ? formValidationErrorText : null;
+  String validation() {
+    return inputController.text == formValidationErrorText ? formValidationErrorText : kMyoroEmptyString;
   }
 
   String? inputValidation(String text) {
@@ -91,7 +91,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(onErrorExecuted, isTrue);
     expect(formNotifier.request.status.isError, isTrue);
-    expect(formNotifier.request.errorMessage?.isEmpty, isTrue);
+    expect(formNotifier.request.errorMessage.isEmpty, isTrue);
     onErrorExecuted = false;
 
     // Success case.

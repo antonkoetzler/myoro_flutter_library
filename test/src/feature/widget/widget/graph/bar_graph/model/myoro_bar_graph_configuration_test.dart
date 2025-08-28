@@ -6,6 +6,9 @@ void main() {
     final firstConfiguration = MyoroBarGraphConfiguration.fake();
     expect(firstConfiguration.copyWith(), firstConfiguration);
     final secondConfiguration = MyoroBarGraphConfiguration.fake();
-    expect(firstConfiguration.copyWith(sorted: secondConfiguration.sorted, items: secondConfiguration.items), secondConfiguration);
+    expect(
+      firstConfiguration.copyWith(sorted: secondConfiguration.sorted, items: secondConfiguration.items),
+      secondConfiguration,
+    );
   });
 }

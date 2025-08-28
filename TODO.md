@@ -1,6 +1,6 @@
 # TODO
 
-- Create style models
+- (**IN PROGRESS**) Create style models
 - Change app icon of storyboard
 - 100% pub.dev score
 - Delete `MyoroStatelessWidget` and `MyoroStatefulWidget` and use getIt and require the initialization function

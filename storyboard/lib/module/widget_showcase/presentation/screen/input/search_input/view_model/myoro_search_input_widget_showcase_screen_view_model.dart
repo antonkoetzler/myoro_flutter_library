@@ -12,8 +12,26 @@ final class MyoroSearchInputWidgetShowcaseScreenViewModel {
 
   /// Configuration of the [MyoroSearchInput] given the options set.
   MyoroSearchInputConfiguration<String> configuration(BuildContext context, Widget suffix) {
+    final inputConfiguration = inputViewModel.configuration(context, suffix);
     return MyoroSearchInputConfiguration(
-      inputConfiguration: inputViewModel.configuration(context, suffix),
+      inputStyle: inputConfiguration.inputStyle,
+      textAlign: inputConfiguration.textAlign,
+      inputTextStyle: inputConfiguration.inputTextStyle,
+      label: inputConfiguration.label,
+      labelTextStyle: inputConfiguration.labelTextStyle,
+      placeholder: inputConfiguration.placeholder,
+      contentPadding: inputConfiguration.contentPadding,
+      border: inputConfiguration.border,
+      suffix: inputConfiguration.suffix,
+      enabled: inputConfiguration.enabled,
+      readOnly: inputConfiguration.readOnly,
+      autofocus: inputConfiguration.autofocus,
+      showClearTextButton: inputConfiguration.showClearTextButton,
+      checkboxOnChanged: inputConfiguration.checkboxOnChanged,
+      validation: inputConfiguration.validation,
+      onFieldSubmitted: inputConfiguration.onFieldSubmitted,
+      onChanged: inputConfiguration.onChanged,
+      onCleared: inputConfiguration.onCleared,
       requestWhenChanged: state.requestWhenChanged,
       request: _request,
       itemBuilder: _itemBuilder,

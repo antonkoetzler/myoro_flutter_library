@@ -54,15 +54,22 @@ void main() {
             request: () => {item},
             columns: const [
               MyoroTableColumn(
-                widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed, fixedWidth: 100),
+                widthConfiguration: MyoroTableColumnWidthConfiguration(
+                  typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed,
+                  fixedWidth: 100,
+                ),
                 child: SizedBox.shrink(),
               ),
               MyoroTableColumn(
-                widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.intrinsic),
+                widthConfiguration: MyoroTableColumnWidthConfiguration(
+                  typeEnum: MyoroTableColumnWidthConfigurationEnum.intrinsic,
+                ),
                 child: SizedBox.shrink(),
               ),
               MyoroTableColumn(
-                widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.expanded),
+                widthConfiguration: MyoroTableColumnWidthConfiguration(
+                  typeEnum: MyoroTableColumnWidthConfigurationEnum.expanded,
+                ),
                 child: SizedBox.shrink(),
               ),
             ],
@@ -102,7 +109,9 @@ void main() {
     final errorMessage = faker.lorem.sentence();
     await tester.pumpWidget(
       MyoroWidgetTester(
-        child: MyoroTable<String>(configuration: createConfiguration().copyWith(request: () => throw Exception(errorMessage))),
+        child: MyoroTable<String>(
+          configuration: createConfiguration().copyWith(request: () => throw Exception(errorMessage)),
+        ),
       ),
     );
     await tester.pumpAndSettle();
@@ -114,7 +123,9 @@ void main() {
     final configuration = createConfiguration();
     await tester.pumpWidget(
       MyoroWidgetTester(
-        child: MyoroTable<String>(configuration: configuration.copyWith(columns: [...configuration.columns, MyoroTableColumn.fake()])),
+        child: MyoroTable<String>(
+          configuration: configuration.copyWith(columns: [...configuration.columns, MyoroTableColumn.fake()]),
+        ),
       ),
     );
     await tester.pumpAndSettle();

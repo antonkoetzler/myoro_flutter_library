@@ -102,8 +102,12 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
       themeMode: themeModeProvided ? (themeMode ?? this.themeMode) : null,
       colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? this.colorSchemeBuilder) : null,
       textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? this.textThemeBuilder) : null,
-      themeExtensionsBuilder: themeExtensionsBuilderProvided ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder) : null,
-      localizationsDelegates: localizationsDelegatesProvided ? (localizationsDelegates ?? this.localizationsDelegates) : null,
+      themeExtensionsBuilder: themeExtensionsBuilderProvided
+          ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder)
+          : null,
+      localizationsDelegates: localizationsDelegatesProvided
+          ? (localizationsDelegates ?? this.localizationsDelegates)
+          : null,
       supportedLocales: supportedLocalesProvided ? (supportedLocales ?? this.supportedLocales) : null,
       router: routerProvided ? (router ?? this.router) : null,
       home: homeProvided ? (home ?? this.home) : null,

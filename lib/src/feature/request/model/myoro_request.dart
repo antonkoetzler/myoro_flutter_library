@@ -25,7 +25,9 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
     final status = MyoroRequestEnum.fake();
     return MyoroRequest(
       status: status,
-      errorMessage: status.isError || faker.randomGenerator.boolean() ? faker.lorem.sentence() : errorMessageDefaultValue,
+      errorMessage: status.isError || faker.randomGenerator.boolean()
+          ? faker.lorem.sentence()
+          : errorMessageDefaultValue,
       data: data,
     );
   }
@@ -41,7 +43,11 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   final T? data;
 
   MyoroRequest<T> copyWith({MyoroRequestEnum? status, String? errorMessage, T? data, bool dataProvided = true}) {
-    return MyoroRequest(status: status ?? this.status, errorMessage: errorMessage ?? this.errorMessage, data: data ?? this.data);
+    return MyoroRequest(
+      status: status ?? this.status,
+      errorMessage: errorMessage ?? this.errorMessage,
+      data: data ?? this.data,
+    );
   }
 
   MyoroRequest<T> createIdleState() {

@@ -6,6 +6,13 @@ void main() {
     final firstConfiguration = MyoroBarGraphBarSection.fake();
     expect(firstConfiguration.copyWith(), firstConfiguration);
     final secondConfiguration = MyoroBarGraphBarSection.fake();
-    expect(firstConfiguration.copyWith(fromY: secondConfiguration.fromY, toY: secondConfiguration.toY, color: secondConfiguration.color), secondConfiguration);
+    expect(
+      firstConfiguration.copyWith(
+        fromY: secondConfiguration.fromY,
+        toY: secondConfiguration.toY,
+        color: secondConfiguration.color,
+      ),
+      secondConfiguration,
+    );
   });
 }

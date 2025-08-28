@@ -35,7 +35,6 @@ final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseO
   /// [MyoroSliderConfiguration.onChanged]
   final MyoroSliderOnChanged sliderOnChanged;
 
-  @override
   SliderWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     bool? initiallyEnabled,

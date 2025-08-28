@@ -25,7 +25,17 @@ void main() {
     );
   });
 
-  test('MyoroTableColumnWidthConfiguration.fake', () {
-    MyoroTableColumnWidthConfiguration.fake();
+  test('MyoroTableColumnWidthConfiguration.copyWith', () {
+    final firstConfiguration = MyoroTableColumnWidthConfiguration.fake();
+    expect(firstConfiguration.copyWith(), firstConfiguration);
+    final secondConfiguration = MyoroTableColumnWidthConfiguration.fake();
+    expect(
+      firstConfiguration.copyWith(
+        typeEnum: secondConfiguration.typeEnum,
+        fixedWidth: secondConfiguration.fixedWidth,
+        fixedWidthProvided: secondConfiguration.fixedWidth != null,
+      ),
+      secondConfiguration,
+    );
   });
 }

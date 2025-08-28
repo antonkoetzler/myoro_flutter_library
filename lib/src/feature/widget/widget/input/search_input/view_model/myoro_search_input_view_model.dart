@@ -24,7 +24,7 @@ class MyoroSearchInputViewModel<T> {
   /// [TextEditingController] of the [MyoroInput].
   TextEditingController? _localInputController;
   TextEditingController get inputController {
-    return configuration.inputConfiguration.controller ?? (_localInputController ??= TextEditingController());
+    return configuration.controller ?? (_localInputController ??= TextEditingController());
   }
 
   /// Items of the [MyoroSearchInput].

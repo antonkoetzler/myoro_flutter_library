@@ -14,7 +14,7 @@ final class _Input<T> extends StatelessWidget {
     final itemsRequestController = viewModel.itemsRequestNotifier;
 
     return MyoroInput(
-      configuration: configuration.inputConfiguration.copyWith(
+      configuration: configuration.copyWith(
         controller: searchInputController,
         suffix: _SearchButton<T>(_itemsRequest),
         onChanged: configuration.requestWhenChanged ? (_) => itemsRequestController.fetch() : null,

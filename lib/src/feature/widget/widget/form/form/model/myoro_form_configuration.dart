@@ -13,7 +13,9 @@ class MyoroFormConfiguration<T> with _$MyoroFormConfigurationMixin<T> {
 
   // coverage:ignore-start
   MyoroFormConfiguration.fake({T? data})
-    : validation = faker.randomGenerator.boolean() ? (() => faker.randomGenerator.boolean() ? faker.lorem.word() : kMyoroEmptyString) : null,
+    : validation = faker.randomGenerator.boolean()
+          ? (() => faker.randomGenerator.boolean() ? faker.lorem.word() : kMyoroEmptyString)
+          : null,
       request = faker.randomGenerator.boolean() ? (() => data) : null,
       onSuccess = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onError = faker.randomGenerator.boolean() ? ((_) {}) : null;
