@@ -1,6 +1,33 @@
 # TODO
 
 - (**IN PROGRESS**) Create style models
+    - (**IN PROGRESS**) accordion
+    - app
+    - app_bar
+    - button
+    - card
+    - carousel
+    - checkbox
+    - divider
+    - drawer
+    - dropdown
+    - feedback
+    - form
+    - graph
+    - input
+    - layout_builder
+    - loader
+    - menu
+    - modal
+    - picker
+    - radio
+    - screen
+    - slider
+    - snack_bar
+    - tab_view
+    - table
+    - testing
+    - tooltip
 - Change app icon of storyboard
 - 100% pub.dev score
 - Delete `MyoroStatelessWidget` and `MyoroStatefulWidget` and use getIt and require the initialization function
