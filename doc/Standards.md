@@ -37,6 +37,7 @@ This idea is what I deem is the best for creating generic `Widget`s. It is a mix
 
 1. `ThemeExtension`: Every `Widget` must have a `ThemeExtension`;
 1. Configuration model: Model to encapsulate every option that may to passed. Optional but often necessary;
+1. Style model: Model to provide certain styles that `ThemeExtension` overriding doesn't achieve. Optional, but necessary for more customizable `Widget`s;
 1. View models: If the `Widget` has logic (aka, not a simple `Widget` such as `MyoroCircularLoader`), a view model should be created;
 1. Controllers: If the `Widget` must provide public APIs to control the `Widget` externally, a controller must be created;
 1. Types: A separate file to place all `typedef`s created;

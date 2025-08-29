@@ -1,8 +1,8 @@
 # Customizing `Widget`s
 
-## Configuration models
+## Style models
 
-Configuration models of `Widget`s have various fields to customize the look of the `Widget`. However, these configuration models do not have complete customization capabilities.
+Style models of `Widget`s have various fields to customize the look of the `Widget`. However, these configuration models do not have complete customization capabilities.
 
 ## `ThemeExtension` overriding
 

@@ -12,8 +12,11 @@ part '_widget/_item_title_button_arrow.dart';
 class MyoroAccordion extends MyoroStatefulWidget {
   const MyoroAccordion({super.key, required this.controller});
 
-  /// Controller
+  /// Controller.
   final MyoroAccordionController controller;
+
+  /// Style.
+  final MyoroAccordionStyle
 
   @override
   State<MyoroAccordion> createState() => _MyoroAccordionState();

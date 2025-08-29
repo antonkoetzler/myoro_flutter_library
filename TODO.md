@@ -1,6 +1,6 @@
 # TODO
 
-- (**IN PROGRESS**) Create style models
+- (**IN PROGRESS**) Create style models (ADD TO CHANGELOG WHEN DONE)
     - (**IN PROGRESS**) accordion
     - app
     - app_bar
