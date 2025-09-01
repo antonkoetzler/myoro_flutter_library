@@ -1,2 +1,2 @@
-export 'myoro_stateful_widget.dart';
-export 'myoro_stateless_widget.dart';
+export 'myoro_overridable_theme_extension_stateless_widget.dart';
+export 'myoro_overridable_theme_extension_stateful_widget.dart';

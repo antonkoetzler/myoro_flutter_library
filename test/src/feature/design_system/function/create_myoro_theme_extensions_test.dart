@@ -10,7 +10,7 @@ void main() {
     final textTheme = createMyoroTextTheme(isDarkMode);
     final extensions = createMyoroThemeExtensions(isDarkMode, colorScheme, textTheme);
 
-    expect(extensions.length, 37);
+    expect(extensions.length, 38);
 
     void expectThemeExtensionExists(Type type) {
       final exists = extensions.firstWhereOrNull((themeExtension) => themeExtension.runtimeType == type) != null;
@@ -27,6 +27,7 @@ void main() {
     expectThemeExtensionExists(MyoroAppBarThemeExtension);
 
     // Buttons
+    expectThemeExtensionExists(MyoroButtonStyleVariantEnumThemeExtension);
     expectThemeExtensionExists(MyoroButtonThemeExtension);
     expectThemeExtensionExists(MyoroIconTextButtonThemeExtension);
 

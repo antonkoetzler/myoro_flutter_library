@@ -7,6 +7,6 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAccordionWidgetShowcaseScreenViewModel>();
-    return MyoroAccordion(controller: MyoroAccordionController(items: viewModel.items));
+    return MyoroAccordion(configuration: MyoroAccordionConfiguration(items: viewModel.items));
   }
 }

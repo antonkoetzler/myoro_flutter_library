@@ -1,1 +1,1 @@
-export 'myoro_widget_tester.dart';
+export 'widget/exports.dart';

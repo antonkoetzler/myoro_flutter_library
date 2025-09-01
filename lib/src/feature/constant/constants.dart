@@ -14,11 +14,11 @@ const kMyoroDebounceDuration = Duration(milliseconds: 200);
 /// Throttling.
 const kMyoroThrottleDuration = Duration(milliseconds: 500);
 
-/// Border length.
-const kMyoroBorderLength = kMyoroMultiplier / 2;
+/// Border width.
+const kMyoroBorderWidth = kMyoroMultiplier / 2;
 
 /// [BorderRadius] length.
-const kMyoroBorderRadiusLength = kMyoroMultiplier * 2.0;
+const kMyoroBorderRadiusWidth = kMyoroMultiplier * 2;
 
 /// [Alignment]s for testing.
 final kMyoroTestAlignments = [

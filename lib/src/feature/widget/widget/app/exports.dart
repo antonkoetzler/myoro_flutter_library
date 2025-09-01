@@ -1,1 +1,1 @@
-export 'app/exports.dart';
+export 'widget/exports.dart';

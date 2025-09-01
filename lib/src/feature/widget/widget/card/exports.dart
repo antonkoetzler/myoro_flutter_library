@@ -1,1 +1,1 @@
-export 'card/exports.dart';
+export 'widget/exports.dart';

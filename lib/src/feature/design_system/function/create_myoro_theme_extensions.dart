@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the [List] of [ThemeExtension]s for [createMyoroThemeData]'s [ThemeData].
-List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> createMyoroThemeExtensions(
+  bool isDarkMode,
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
   return [
     ..._createAccordionThemeExtensions(colorScheme, textTheme),
     ..._createAppThemeExtensions(),
@@ -45,9 +49,14 @@ List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
   return [MyoroAppBarThemeExtension.builder(colorScheme)];
 }
 
-List<ThemeExtension> _createButtonThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
+List<ThemeExtension> _createButtonThemeExtensions(
+  bool isDarkMode,
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+) {
   return [
-    MyoroButtonThemeExtension.builder(isDarkMode, colorScheme),
+    MyoroButtonStyleVariantEnumThemeExtension.builder(isDarkMode, colorScheme),
+    MyoroButtonThemeExtension.builder(),
     MyoroIconTextButtonThemeExtension.builder(textTheme),
   ];
 }
@@ -68,7 +77,10 @@ List<ThemeExtension> _createCheckboxThemeExtensions(ColorScheme colorScheme, Tex
 }
 
 List<ThemeExtension> _createDividerThemeExtensions(ColorScheme colorScheme) {
-  return [MyoroBasicDividerThemeExtension.builder(colorScheme), MyoroResizeDividerThemeExtension.builder(colorScheme)];
+  return [
+    MyoroBasicDividerThemeExtension.builder(colorScheme),
+    MyoroResizeDividerThemeExtension.builder(colorScheme),
+  ];
 }
 
 List<ThemeExtension> _createDrawerThemeExtension(ColorScheme colorScheme, TextTheme textTheme) {
@@ -116,15 +128,24 @@ List<ThemeExtension> _createMenuThemeExtensions(ColorScheme colorScheme, TextThe
 }
 
 List<ThemeExtension> _createModalThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [MyoroModalThemeExtension.builder(colorScheme, textTheme), MyoroDialogModalThemeExtension.builder(textTheme)];
+  return [
+    MyoroModalThemeExtension.builder(colorScheme, textTheme),
+    MyoroDialogModalThemeExtension.builder(textTheme),
+  ];
 }
 
 List<ThemeExtension> _createPickerThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [MyoroFilePickerThemeExtension.builder(textTheme), MyoroImagePickerThemeExtension.builder(colorScheme)];
+  return [
+    MyoroFilePickerThemeExtension.builder(textTheme),
+    MyoroImagePickerThemeExtension.builder(colorScheme),
+  ];
 }
 
 List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [MyoroRadioThemeExtension.builder(colorScheme, textTheme), const MyoroGroupRadioThemeExtension.builder()];
+  return [
+    MyoroRadioThemeExtension.builder(colorScheme, textTheme),
+    const MyoroGroupRadioThemeExtension.builder(),
+  ];
 }
 
 List<ThemeExtension> _createScreenThemeExtensions() {

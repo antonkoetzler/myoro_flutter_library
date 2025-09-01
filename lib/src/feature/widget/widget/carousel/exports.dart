@@ -1,1 +1,1 @@
-export 'carousel/exports.dart';
+export 'widget/exports.dart';

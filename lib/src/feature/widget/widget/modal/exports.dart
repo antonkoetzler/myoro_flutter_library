@@ -1,2 +1,1 @@
-export 'dialog_modal/exports.dart';
-export 'modal/exports.dart';
+export 'widget/exports.dart';
