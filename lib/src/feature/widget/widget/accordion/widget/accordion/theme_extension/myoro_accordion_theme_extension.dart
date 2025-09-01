@@ -21,6 +21,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     this.itemTitleButtonContentPadding,
     this.itemTitleButtonSpacing,
     this.itemTitleButtonTitleTextStyle,
+    this.itemTitleButtonArrowBackgroundColor,
     this.itemTitleButtonArrowIcon,
     this.itemTitleButtonArrowIconSize,
     this.itemTitleButtonArrowIconColor,
@@ -39,6 +40,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       itemTitleButtonSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
       itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      itemTitleButtonArrowBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemTitleButtonArrowIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       itemTitleButtonArrowIconSize = faker.randomGenerator.boolean()
           ? faker.randomGenerator.decimal(scale: 50, min: 10)
@@ -57,7 +59,8 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonBorderRadius = BorderRadius.zero,
       itemTitleButtonContentPadding = const EdgeInsets.all(10),
       itemTitleButtonSpacing = 10,
-      itemTitleButtonTitleTextStyle = textTheme.titleLarge!,
+      itemTitleButtonTitleTextStyle = textTheme.titleLarge,
+      itemTitleButtonArrowBackgroundColor = colorScheme.onPrimary.withValues(alpha: 0.3),
       itemTitleButtonArrowIcon = Icons.keyboard_arrow_down,
       itemTitleButtonArrowIconSize = 25,
       itemTitleButtonArrowIconColor = colorScheme.onPrimary,
@@ -88,6 +91,10 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
 
   /// Default [TextStyle] wrapped around the [MyoroAccordionItem.titleBuilder].
   final TextStyle? itemTitleButtonTitleTextStyle;
+
+  /// Background [Color] of an item title button's arrow when
+  /// it's being hovered over when said item is selected.
+  final Color? itemTitleButtonArrowBackgroundColor;
 
   /// [IconData] of [_ItemTitleButtonArrow].
   final IconData? itemTitleButtonArrowIcon;
@@ -135,6 +142,11 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       other.itemTitleButtonTitleTextStyle,
       t,
     );
+    final itemTitleButtonArrowBackgroundColor = Color.lerp(
+      this.itemTitleButtonArrowBackgroundColor,
+      other.itemTitleButtonArrowBackgroundColor,
+      t,
+    );
     final itemTitleButtonArrowIcon = myoroLerp(this.itemTitleButtonArrowIcon, other.itemTitleButtonArrowIcon, t);
     final itemTitleButtonArrowIconSize = lerpDouble(
       this.itemTitleButtonArrowIconSize,
@@ -179,6 +191,8 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonSpacingProvided: itemTitleButtonSpacing != null,
       itemTitleButtonTitleTextStyle: itemTitleButtonTitleTextStyle,
       itemTitleButtonTitleTextStyleProvided: itemTitleButtonTitleTextStyle != null,
+      itemTitleButtonArrowBackgroundColor: itemTitleButtonArrowBackgroundColor,
+      itemTitleButtonArrowBackgroundColorProvided: itemTitleButtonArrowBackgroundColor != null,
       itemTitleButtonArrowIcon: itemTitleButtonArrowIcon,
       itemTitleButtonArrowIconProvided: itemTitleButtonArrowIcon != null,
       itemTitleButtonArrowIconSize: itemTitleButtonArrowIconSize,

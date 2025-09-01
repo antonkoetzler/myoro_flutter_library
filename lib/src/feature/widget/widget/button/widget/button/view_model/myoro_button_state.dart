@@ -15,16 +15,16 @@ class MyoroButtonState {
   }
 
   /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
-  final _tapStatusController = ValueNotifier(MyoroTapStatusEnum.idle);
+  final _tapStatusNotifier = ValueNotifier(MyoroTapStatusEnum.idle);
 
-  /// [_tapStatusController] getter.
-  ValueNotifier<MyoroTapStatusEnum> get tapStatusController => _tapStatusController;
+  /// [_tapStatusNotifier] getter.
+  ValueNotifier<MyoroTapStatusEnum> get tapStatusNotifier => _tapStatusNotifier;
 
-  /// [_tapStatusController]'s [MyoroTapStatusEnum] getter.
-  MyoroTapStatusEnum get tapStatus => _tapStatusController.value;
+  /// [_tapStatusNotifier]'s [MyoroTapStatusEnum] getter.
+  MyoroTapStatusEnum get tapStatus => _tapStatusNotifier.value;
 
   /// Dispose function.
   void dispose() {
-    _tapStatusController.dispose();
+    _tapStatusNotifier.dispose();
   }
 }

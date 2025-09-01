@@ -9,10 +9,10 @@ final class _Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
-    final backgroundColorBuilder = buttonThemeExtension.backgroundColorBuilder;
-    final borderBuilder = buttonThemeExtension.borderBuilder;
-    final borderRadius = buttonThemeExtension.borderRadius;
+    final themeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final backgroundColorBuilder = themeExtension.backgroundColorBuilder;
+    final borderBuilder = themeExtension.borderBuilder;
+    final borderRadius = themeExtension.borderRadius;
 
     final viewModel = context.read<MyoroButtonViewModel>();
     final state = viewModel.state;

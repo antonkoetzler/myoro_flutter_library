@@ -14,12 +14,8 @@ final class _ItemTitleButton extends StatelessWidget {
     final itemTitleButtonBorderRadius = themeExtension.itemTitleButtonBorderRadius;
     final itemTitleButtonSpacing = themeExtension.itemTitleButtonSpacing;
     final itemTitleButtonTitleTextStyle = themeExtension.itemTitleButtonTitleTextStyle;
-
-    final style = context.read<MyoroAccordionStyle>();
-    final itemTitleButtonButtonStyle = style.itemTitleButtonButtonStyle;
-
     final itemTitleButtonContentPadding =
-        style.itemTitleButtonContentPadding ?? themeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
+        themeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
 
     final viewModel = context.read<MyoroAccordionViewModel>();
     final toggleItem = viewModel.toggleItem;
@@ -28,14 +24,12 @@ final class _ItemTitleButton extends StatelessWidget {
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => toggleItem(_item)),
-      style:
-          itemTitleButtonButtonStyle ??
-          MyoroButtonStyle(
-            borderRadius: itemTitleButtonBorderRadius,
-            backgroundColorBuilder: _item == _selectedItem && itemContentBackgroundColor != null
-                ? (_) => itemContentBackgroundColor
-                : null,
-          ),
+      themeExtensionBuilder: (themeExtension) => themeExtension.copyWith(
+        idleBackgroundColor: itemContentBackgroundColor,
+        hoverBackgroundColor: itemContentBackgroundColor,
+        tapBackgroundColor: itemContentBackgroundColor,
+        borderRadius: itemTitleButtonBorderRadius,
+      ),
       builder: (context, tapStatus) => Padding(
         padding: itemTitleButtonContentPadding,
         child: Row(

@@ -9,7 +9,7 @@ part '_widget/_item_title_button.dart';
 part '_widget/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
-class MyoroAccordion extends MyoroThemeExtensionInjectedStatefulWidget<MyoroAccordionThemeExtension> {
+class MyoroAccordion extends MyoroOverridableThemeExtensionStatefulWidget<MyoroAccordionThemeExtension> {
   const MyoroAccordion({super.key, super.themeExtension, this.controller, this.configuration})
     : assert(
         (controller != null) ^ (configuration != null),
@@ -65,25 +65,28 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
     final configuration = state.configuration;
     final items = configuration.items;
 
-    return InheritedProvider.value(
-      value: _viewModel,
-      child: ValueListenableBuilder(
-        valueListenable: selectedItemNotifier,
-        builder: (_, selectedItem, _) {
-          return Scrollbar(
-            controller: scrollController,
-            thumbVisibility: thumbVisibility,
-            child: ListView.builder(
+    return MyoroSingularThemeExtensionInjector(
+      themeExtension: themeExtension,
+      child: InheritedProvider.value(
+        value: _viewModel,
+        child: ValueListenableBuilder(
+          valueListenable: selectedItemNotifier,
+          builder: (_, selectedItem, _) {
+            return Scrollbar(
               controller: scrollController,
-              itemCount: items.length,
-              itemBuilder: (_, index) => _Item(
-                item: items.elementAt(index),
-                selectedItem: selectedItem,
-                isLastItem: index == items.length - 1,
+              thumbVisibility: thumbVisibility,
+              child: ListView.builder(
+                controller: scrollController,
+                itemCount: items.length,
+                itemBuilder: (_, index) => _Item(
+                  item: items.elementAt(index),
+                  selectedItem: selectedItem,
+                  isLastItem: index == items.length - 1,
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

@@ -34,6 +34,8 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
     bool itemTitleButtonSpacingProvided = true,
     TextStyle? itemTitleButtonTitleTextStyle,
     bool itemTitleButtonTitleTextStyleProvided = true,
+    Color? itemTitleButtonArrowBackgroundColor,
+    bool itemTitleButtonArrowBackgroundColorProvided = true,
     IconData? itemTitleButtonArrowIcon,
     bool itemTitleButtonArrowIconProvided = true,
     double? itemTitleButtonArrowIconSize,
@@ -70,6 +72,9 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
       itemTitleButtonTitleTextStyle: itemTitleButtonTitleTextStyleProvided
           ? (itemTitleButtonTitleTextStyle ?? self.itemTitleButtonTitleTextStyle)
           : null,
+      itemTitleButtonArrowBackgroundColor: itemTitleButtonArrowBackgroundColorProvided
+          ? (itemTitleButtonArrowBackgroundColor ?? self.itemTitleButtonArrowBackgroundColor)
+          : null,
       itemTitleButtonArrowIcon: itemTitleButtonArrowIconProvided
           ? (itemTitleButtonArrowIcon ?? self.itemTitleButtonArrowIcon)
           : null,
@@ -103,6 +108,7 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
         other.itemTitleButtonContentPadding == self.itemTitleButtonContentPadding &&
         other.itemTitleButtonSpacing == self.itemTitleButtonSpacing &&
         other.itemTitleButtonTitleTextStyle == self.itemTitleButtonTitleTextStyle &&
+        other.itemTitleButtonArrowBackgroundColor == self.itemTitleButtonArrowBackgroundColor &&
         other.itemTitleButtonArrowIcon == self.itemTitleButtonArrowIcon &&
         other.itemTitleButtonArrowIconSize == self.itemTitleButtonArrowIconSize &&
         other.itemTitleButtonArrowIconColor == self.itemTitleButtonArrowIconColor &&
@@ -122,6 +128,7 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
       self.itemTitleButtonContentPadding,
       self.itemTitleButtonSpacing,
       self.itemTitleButtonTitleTextStyle,
+      self.itemTitleButtonArrowBackgroundColor,
       self.itemTitleButtonArrowIcon,
       self.itemTitleButtonArrowIconSize,
       self.itemTitleButtonArrowIconColor,
@@ -142,6 +149,7 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
       '  itemTitleButtonContentPadding: ${self.itemTitleButtonContentPadding},\n'
       '  itemTitleButtonSpacing: ${self.itemTitleButtonSpacing},\n'
       '  itemTitleButtonTitleTextStyle: ${self.itemTitleButtonTitleTextStyle},\n'
+      '  itemTitleButtonArrowBackgroundColor: ${self.itemTitleButtonArrowBackgroundColor},\n'
       '  itemTitleButtonArrowIcon: ${self.itemTitleButtonArrowIcon},\n'
       '  itemTitleButtonArrowIconSize: ${self.itemTitleButtonArrowIconSize},\n'
       '  itemTitleButtonArrowIconColor: ${self.itemTitleButtonArrowIconColor},\n'

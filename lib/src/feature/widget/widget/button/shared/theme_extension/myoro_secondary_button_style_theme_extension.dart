@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_button_theme_extension.g.dart';
+part 'myoro_secondary_button_style_theme_extension.g.dart';
 
-/// [ThemeExtension] of [MyoroButton].
+/// [MyoroButton]'s  variant's [ThemeExtension].
 @immutable
 @myoroThemeExtension
-class MyoroButtonThemeExtension extends MyoroButtonStyleThemeExtension<MyoroButtonThemeExtension>
-    with _$MyoroButtonThemeExtensionMixin {
-  const MyoroButtonThemeExtension({
+final class MyoroSecondaryButtonStyleThemeExtension
+    extends MyoroButtonStyleThemeExtension<MyoroSecondaryButtonStyleThemeExtension>
+    with _$MyoroSecondaryButtonStyleThemeExtensionMixin {
+  const MyoroSecondaryButtonStyleThemeExtension({
     super.idleBackgroundColor,
     super.hoverBackgroundColor,
     super.tapBackgroundColor,
@@ -23,35 +24,60 @@ class MyoroButtonThemeExtension extends MyoroButtonStyleThemeExtension<MyoroButt
     super.hoverBorderColor,
     super.tapBorderColor,
     super.borderWidth,
-    this.borderRadius,
-    this.cursor,
   });
 
   // coverage:ignore-start
-  MyoroButtonThemeExtension.fake()
-    : borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null;
+  factory MyoroSecondaryButtonStyleThemeExtension.fake() {
+    return MyoroSecondaryButtonStyleThemeExtension(
+      idleBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      hoverBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      tapBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      idleContentColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      hoverContentColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      tapContentColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      idleBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      hoverBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      tapBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderWidth: faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 20)
+          : null,
+    );
+  }
   // coverage:ignore-end
 
-  MyoroButtonThemeExtension.builder()
-    : cursor = null,
-      borderRadius = BorderRadius.circular(kMyoroBorderRadiusWidth);
+  factory MyoroSecondaryButtonStyleThemeExtension.builder(
+    bool isDarkMode,
+    ColorScheme colorScheme,
+  ) {
+    const hoverBackgroundColorFactor = 0.7;
+    const tapBackgroundColorFactor = 0.5;
 
-  /// Border radius.
-  final BorderRadius? borderRadius;
+    final primary = colorScheme.primary;
+    final onPrimary = colorScheme.onPrimary;
 
-  /// [MouseCursor] when the [MyoroButton] is hovered over.
-  ///
-  /// If [MyoroButtonConfiguration.onTapDown] or [MyoroButtonConfiguration.onTapUp] is provided,
-  /// [cursor] defaults to [SystemMouseCursors.click]. Other, the default is [SystemMouseCursors.basic].
-  final MouseCursor? cursor;
+    return MyoroSecondaryButtonStyleThemeExtension(
+      idleBackgroundColor: primary,
+      hoverBackgroundColor: isDarkMode
+          ? onPrimary.darken(hoverBackgroundColorFactor)
+          : onPrimary.brighten(hoverBackgroundColorFactor),
+      tapBackgroundColor: isDarkMode
+          ? onPrimary.darken(tapBackgroundColorFactor)
+          : onPrimary.brighten(tapBackgroundColorFactor),
+      idleContentColor: onPrimary,
+      hoverContentColor: onPrimary,
+      tapContentColor: onPrimary,
+      idleBorderColor: onPrimary,
+      hoverBorderColor: onPrimary,
+      tapBorderColor: onPrimary,
+    );
+  }
 
   @override
-  MyoroButtonThemeExtension lerp(
-    covariant ThemeExtension<MyoroButtonThemeExtension>? other,
+  MyoroSecondaryButtonStyleThemeExtension lerp(
+    covariant ThemeExtension<MyoroSecondaryButtonStyleThemeExtension>? other,
     double t,
   ) {
-    if (other is! MyoroButtonThemeExtension) return this;
+    if (other is! MyoroSecondaryButtonStyleThemeExtension) return this;
 
     final idleBackgroundColor = Color.lerp(this.idleBackgroundColor, other.idleBackgroundColor, t);
     final hoverBackgroundColor = Color.lerp(
@@ -67,8 +93,6 @@ class MyoroButtonThemeExtension extends MyoroButtonStyleThemeExtension<MyoroButt
     final hoverBorderColor = Color.lerp(this.hoverBorderColor, other.hoverBorderColor, t);
     final tapBorderColor = Color.lerp(this.tapBorderColor, other.tapBorderColor, t);
     final borderWidth = lerpDouble(this.borderWidth, other.borderWidth, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final cursor = myoroLerp(this.cursor, other.cursor, t);
 
     return copyWith(
       idleBackgroundColor: idleBackgroundColor,
@@ -91,10 +115,6 @@ class MyoroButtonThemeExtension extends MyoroButtonStyleThemeExtension<MyoroButt
       tapBorderColorProvided: tapBorderColor != null,
       borderWidth: borderWidth,
       borderWidthProvided: borderWidth != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: borderRadius != null,
-      cursor: cursor,
-      cursorProvided: cursor != null,
     );
   }
 }
