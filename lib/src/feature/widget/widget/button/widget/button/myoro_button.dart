@@ -8,25 +8,24 @@ part '_widget/_button.dart';
 ///
 /// Used when a very custom button is needed, otherwise MFL
 /// provides other buttons that are built with [MyoroButton].
-class MyoroButton extends MyoroOverridableThemeExtensionStatefulWidget<MyoroButtonThemeExtension> {
+class MyoroButton extends StatefulWidget {
   /// Configuration of the [MyoroButton].
   final MyoroButtonConfiguration? configuration;
+
+  /// Style.
+  final MyoroButtonStyle style;
 
   /// [Widget] builder of the [MyoroButton].
   final MyoroButtonBuilder builder;
 
-  const MyoroButton({
-    super.key,
-    super.themeExtensionBuilder,
-    this.configuration,
-    required this.builder,
-  });
+  const MyoroButton({super.key, this.configuration, this.style = const MyoroButtonStyle(), required this.builder});
 
   @override
   State<MyoroButton> createState() => _MyoroButtonState();
 }
 
 final class _MyoroButtonState extends State<MyoroButton> {
+  MyoroButtonStyle get _style => widget.style;
   MyoroButtonBuilder get _builder => widget.builder;
 
   MyoroButtonViewModel? _localViewModel;
@@ -49,8 +48,6 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
   @override
   Widget build(context) {
-    final themeExtension = widget.getThemeExtension(context);
-
     final state = _viewModel.state;
     final tapStatusNotifier = state.tapStatusNotifier;
     final cursor = _viewModel.cursor;
@@ -60,22 +57,22 @@ final class _MyoroButtonState extends State<MyoroButton> {
     final onTapUp = _viewModel.onTapUp;
     final onTapCancel = _viewModel.onTapCancel;
 
-    return MyoroSingularThemeExtensionInjector(
-      themeExtension: themeExtension,
-      child: InheritedProvider.value(
-        value: _viewModel,
-        child: MouseRegion(
-          cursor: cursor,
-          onEnter: onEnter,
-          onExit: onExit,
-          child: GestureDetector(
-            onTapDown: onTapDown,
-            onTapUp: onTapUp,
-            onTapCancel: onTapCancel,
-            child: ValueListenableBuilder(
-              valueListenable: tapStatusNotifier,
-              builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
-            ),
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: _viewModel),
+        InheritedProvider.value(value: _style),
+      ],
+      child: MouseRegion(
+        cursor: cursor,
+        onEnter: onEnter,
+        onExit: onExit,
+        child: GestureDetector(
+          onTapDown: onTapDown,
+          onTapUp: onTapUp,
+          onTapCancel: onTapCancel,
+          child: ValueListenableBuilder(
+            valueListenable: tapStatusNotifier,
+            builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
           ),
         ),
       ),

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Abstract [ThemeExtension] of a [MyoroButton] variant.
-abstract class MyoroButtonStyleThemeExtension<T extends ThemeExtension<T>>
-    extends ThemeExtension<T> {
+abstract class MyoroButtonStyleThemeExtension<T extends ThemeExtension<T>> extends ThemeExtension<T> {
   const MyoroButtonStyleThemeExtension({
     this.idleBackgroundColor,
     this.hoverBackgroundColor,

@@ -9,8 +9,8 @@ part '_widget/_item_title_button.dart';
 part '_widget/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
-class MyoroAccordion extends MyoroOverridableThemeExtensionStatefulWidget<MyoroAccordionThemeExtension> {
-  const MyoroAccordion({super.key, super.themeExtension, this.controller, this.configuration})
+class MyoroAccordion extends StatefulWidget {
+  const MyoroAccordion({super.key, this.controller, this.configuration, this.style = const MyoroAccordionStyle()})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroAccordion]: [controller] (x)or [configuration] must be provided.',
@@ -22,6 +22,9 @@ class MyoroAccordion extends MyoroOverridableThemeExtensionStatefulWidget<MyoroA
   /// Configuration.
   final MyoroAccordionConfiguration? configuration;
 
+  /// Style.
+  final MyoroAccordionStyle style;
+
   @override
   State<MyoroAccordion> createState() => _MyoroAccordionState();
 }
@@ -29,6 +32,7 @@ class MyoroAccordion extends MyoroOverridableThemeExtensionStatefulWidget<MyoroA
 final class _MyoroAccordionState extends State<MyoroAccordion> {
   MyoroAccordionController? get _controller => widget.controller;
   MyoroAccordionConfiguration? get _configuration => widget.configuration;
+  MyoroAccordionStyle get _style => widget.style;
 
   MyoroAccordionViewModel? _localViewModel;
   MyoroAccordionViewModel get _viewModel {
@@ -56,37 +60,36 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   @override
   Widget build(context) {
-    final themeExtension = widget.getThemeExtension(context);
-    final thumbVisibility = themeExtension.thumbVisibility;
-
     final state = _viewModel.state;
     final selectedItemNotifier = state.selectedItemNotifier;
     final scrollController = state.scrollController;
     final configuration = state.configuration;
     final items = configuration.items;
 
-    return MyoroSingularThemeExtensionInjector(
-      themeExtension: themeExtension,
-      child: InheritedProvider.value(
-        value: _viewModel,
-        child: ValueListenableBuilder(
-          valueListenable: selectedItemNotifier,
-          builder: (_, selectedItem, _) {
-            return Scrollbar(
+    final thumbVisibility = _style.thumbVisibility;
+
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: _viewModel),
+        InheritedProvider.value(value: _style),
+      ],
+      child: ValueListenableBuilder(
+        valueListenable: selectedItemNotifier,
+        builder: (_, selectedItem, _) {
+          return Scrollbar(
+            controller: scrollController,
+            thumbVisibility: thumbVisibility,
+            child: ListView.builder(
               controller: scrollController,
-              thumbVisibility: thumbVisibility,
-              child: ListView.builder(
-                controller: scrollController,
-                itemCount: items.length,
-                itemBuilder: (_, index) => _Item(
-                  item: items.elementAt(index),
-                  selectedItem: selectedItem,
-                  isLastItem: index == items.length - 1,
-                ),
+              itemCount: items.length,
+              itemBuilder: (_, index) => _Item(
+                item: items.elementAt(index),
+                selectedItem: selectedItem,
+                isLastItem: index == items.length - 1,
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

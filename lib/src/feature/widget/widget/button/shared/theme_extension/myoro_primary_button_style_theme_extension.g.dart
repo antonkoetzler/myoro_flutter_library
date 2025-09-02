@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'myoro_button_theme_extension.dart';
+part of 'myoro_primary_button_style_theme_extension.dart';
 
 // **************************************************************************
 // MyoroThemeExtensionGenerator
@@ -8,20 +8,16 @@ part of 'myoro_button_theme_extension.dart';
 
 // coverage:ignore-file
 
-/// Apply this mixin to [MyoroButtonThemeExtension] once the code is generated.
+/// Apply this mixin to [MyoroPrimaryButtonStyleThemeExtension] once the code is generated.
 ///
 /// ```dart
-/// class MyoroButtonThemeExtension with _$MyoroButtonThemeExtensionMixin {}
+/// class MyoroPrimaryButtonStyleThemeExtension with _$MyoroPrimaryButtonStyleThemeExtensionMixin {}
 /// ```
-mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtension> {
-  MyoroButtonThemeExtension get self => this as MyoroButtonThemeExtension;
+mixin _$MyoroPrimaryButtonStyleThemeExtensionMixin on ThemeExtension<MyoroPrimaryButtonStyleThemeExtension> {
+  MyoroPrimaryButtonStyleThemeExtension get self => this as MyoroPrimaryButtonStyleThemeExtension;
 
   @override
-  MyoroButtonThemeExtension copyWith({
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    MouseCursor? cursor,
-    bool cursorProvided = true,
+  MyoroPrimaryButtonStyleThemeExtension copyWith({
     Color? idleBackgroundColor,
     bool idleBackgroundColorProvided = true,
     Color? hoverBackgroundColor,
@@ -43,9 +39,7 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
     double? borderWidth,
     bool borderWidthProvided = true,
   }) {
-    return MyoroButtonThemeExtension(
-      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
-      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+    return MyoroPrimaryButtonStyleThemeExtension(
       idleBackgroundColor: idleBackgroundColorProvided ? (idleBackgroundColor ?? self.idleBackgroundColor) : null,
       hoverBackgroundColor: hoverBackgroundColorProvided ? (hoverBackgroundColor ?? self.hoverBackgroundColor) : null,
       tapBackgroundColor: tapBackgroundColorProvided ? (tapBackgroundColor ?? self.tapBackgroundColor) : null,
@@ -61,10 +55,8 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroButtonThemeExtension &&
+    return other is MyoroPrimaryButtonStyleThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.borderRadius == self.borderRadius &&
-        other.cursor == self.cursor &&
         other.idleBackgroundColor == self.idleBackgroundColor &&
         other.hoverBackgroundColor == self.hoverBackgroundColor &&
         other.tapBackgroundColor == self.tapBackgroundColor &&
@@ -80,8 +72,6 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
   @override
   int get hashCode {
     return Object.hash(
-      self.borderRadius,
-      self.cursor,
       self.idleBackgroundColor,
       self.hoverBackgroundColor,
       self.tapBackgroundColor,
@@ -97,9 +87,7 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
 
   @override
   String toString() =>
-      'MyoroButtonThemeExtension(\n'
-      '  borderRadius: ${self.borderRadius},\n'
-      '  cursor: ${self.cursor},\n'
+      'MyoroPrimaryButtonStyleThemeExtension(\n'
       '  idleBackgroundColor: ${self.idleBackgroundColor},\n'
       '  hoverBackgroundColor: ${self.hoverBackgroundColor},\n'
       '  tapBackgroundColor: ${self.tapBackgroundColor},\n'

@@ -2,7 +2,6 @@
 
 - feature: `kMyoroEmptyString`
 - refactor: `MyoroMenu` --> `MyoroSingularMenu` and `MyoroMultiMenu`
-- refactor: `MyoroStatelessWidget` and `MyoroStatefulWidgets` are now `MyoroThemeExtensionInjectedStatelessWidget` and `MyoroThemeExtensionInjectedStatefulWidget`
 - improvement: Rename `ValueNotifier`s with the controller suffix to notifier (i.e. `MyoroFormController` --> `MyoroFormNotifier`)
 - improvement: Add `tool/initialize.sh`
 - improvement: Add tasks to `.vscode`

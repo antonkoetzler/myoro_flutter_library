@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A simple divider.
-class MyoroBasicDivider extends MyoroOverridableThemeExtensionStatelessWidget<MyoroBasicDividerThemeExtension> {
+class MyoroBasicDivider extends StatelessWidget {
   /// Configuration model with all configurable options of [MyoroBasicDivider].
   final MyoroBasicDividerConfiguration configuration;
 

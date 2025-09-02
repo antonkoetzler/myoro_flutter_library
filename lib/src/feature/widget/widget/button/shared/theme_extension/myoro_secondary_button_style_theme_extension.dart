@@ -38,17 +38,12 @@ final class MyoroSecondaryButtonStyleThemeExtension
       idleBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       hoverBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       tapBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
+      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
     );
   }
   // coverage:ignore-end
 
-  factory MyoroSecondaryButtonStyleThemeExtension.builder(
-    bool isDarkMode,
-    ColorScheme colorScheme,
-  ) {
+  factory MyoroSecondaryButtonStyleThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
     const hoverBackgroundColorFactor = 0.7;
     const tapBackgroundColorFactor = 0.5;
 
@@ -80,11 +75,7 @@ final class MyoroSecondaryButtonStyleThemeExtension
     if (other is! MyoroSecondaryButtonStyleThemeExtension) return this;
 
     final idleBackgroundColor = Color.lerp(this.idleBackgroundColor, other.idleBackgroundColor, t);
-    final hoverBackgroundColor = Color.lerp(
-      this.hoverBackgroundColor,
-      other.hoverBackgroundColor,
-      t,
-    );
+    final hoverBackgroundColor = Color.lerp(this.hoverBackgroundColor, other.hoverBackgroundColor, t);
     final tapBackgroundColor = Color.lerp(this.tapBackgroundColor, other.tapBackgroundColor, t);
     final idleContentColor = Color.lerp(this.idleContentColor, other.idleContentColor, t);
     final hoverContentColor = Color.lerp(this.hoverContentColor, other.hoverContentColor, t);

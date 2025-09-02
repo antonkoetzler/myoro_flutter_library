@@ -38,9 +38,7 @@ final class MyoroPrimaryButtonStyleThemeExtension
       idleBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       hoverBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       tapBorderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
+      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
     );
   }
   // coverage:ignore-end
@@ -74,11 +72,7 @@ final class MyoroPrimaryButtonStyleThemeExtension
     if (other is! MyoroPrimaryButtonStyleThemeExtension) return this;
 
     final idleBackgroundColor = Color.lerp(this.idleBackgroundColor, other.idleBackgroundColor, t);
-    final hoverBackgroundColor = Color.lerp(
-      this.hoverBackgroundColor,
-      other.hoverBackgroundColor,
-      t,
-    );
+    final hoverBackgroundColor = Color.lerp(this.hoverBackgroundColor, other.hoverBackgroundColor, t);
     final tapBackgroundColor = Color.lerp(this.tapBackgroundColor, other.tapBackgroundColor, t);
     final idleContentColor = Color.lerp(this.idleContentColor, other.idleContentColor, t);
     final hoverContentColor = Color.lerp(this.hoverContentColor, other.hoverContentColor, t);
