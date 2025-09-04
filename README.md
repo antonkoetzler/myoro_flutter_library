@@ -8,7 +8,7 @@
 
 ## MFL provides
 
-1. Syntax improvements;
+1. Syntactical improvements to Dart and Flutter;
 1. A fully customizable design system with every `Widget` you could need;
 1. Implementation for various features you could need during development.
 

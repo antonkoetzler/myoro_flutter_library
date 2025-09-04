@@ -21,22 +21,18 @@ mixin _$MyoroGroupCheckboxConfigurationMixin {
     return other is MyoroGroupCheckboxConfiguration &&
         other.runtimeType == runtimeType &&
         other.direction == self.direction &&
-        other.spacing == self.spacing &&
-        other.runSpacing == self.runSpacing &&
         other.onChanged == self.onChanged;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.direction, self.spacing, self.runSpacing, self.onChanged);
+    return Object.hash(self.direction, self.onChanged);
   }
 
   @override
   String toString() =>
       'MyoroGroupCheckboxConfiguration(\n'
       '  direction: ${self.direction},\n'
-      '  spacing: ${self.spacing},\n'
-      '  runSpacing: ${self.runSpacing},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
 }

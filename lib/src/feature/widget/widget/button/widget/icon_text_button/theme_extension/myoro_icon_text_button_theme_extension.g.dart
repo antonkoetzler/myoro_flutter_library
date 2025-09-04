@@ -24,11 +24,20 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
     bool spacingProvided = true,
     TextStyle? textStyle,
     bool textStyleProvided = true,
+    Color? contentIdleColor,
+    bool contentIdleColorProvided = true,
+    Color? contentHoverColor,
+    bool contentHoverColorProvided = true,
+    Color? contentTapColor,
+    bool contentTapColorProvided = true,
   }) {
     return MyoroIconTextButtonThemeExtension(
       contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      contentIdleColor: contentIdleColorProvided ? (contentIdleColor ?? self.contentIdleColor) : null,
+      contentHoverColor: contentHoverColorProvided ? (contentHoverColor ?? self.contentHoverColor) : null,
+      contentTapColor: contentTapColorProvided ? (contentTapColor ?? self.contentTapColor) : null,
     );
   }
 
@@ -38,12 +47,22 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
         other.runtimeType == runtimeType &&
         other.contentPadding == self.contentPadding &&
         other.spacing == self.spacing &&
-        other.textStyle == self.textStyle;
+        other.textStyle == self.textStyle &&
+        other.contentIdleColor == self.contentIdleColor &&
+        other.contentHoverColor == self.contentHoverColor &&
+        other.contentTapColor == self.contentTapColor;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.contentPadding, self.spacing, self.textStyle);
+    return Object.hash(
+      self.contentPadding,
+      self.spacing,
+      self.textStyle,
+      self.contentIdleColor,
+      self.contentHoverColor,
+      self.contentTapColor,
+    );
   }
 
   @override
@@ -52,5 +71,8 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       '  contentPadding: ${self.contentPadding},\n'
       '  spacing: ${self.spacing},\n'
       '  textStyle: ${self.textStyle},\n'
+      '  contentIdleColor: ${self.contentIdleColor},\n'
+      '  contentHoverColor: ${self.contentHoverColor},\n'
+      '  contentTapColor: ${self.contentTapColor},\n'
       ');';
 }

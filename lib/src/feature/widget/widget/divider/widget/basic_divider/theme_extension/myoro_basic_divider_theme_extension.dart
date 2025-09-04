@@ -36,10 +36,10 @@ class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerTh
     );
   }
 
-  /// [MyoroColorDesignSystem.secondary] by default.
+  /// [Color] of the [MyoroBasicDivider].
   final Color color;
 
-  /// Width of the divider. 2 by default.
+  /// Width of the divider. [kMyoroBorderWidth] by default.
   final double shortValue;
 
   /// Height of the divider. [double.infinity] by default.

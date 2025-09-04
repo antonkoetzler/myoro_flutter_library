@@ -1,1 +1,1 @@
-export 'myoro_basic_divider_configuration.dart';
+export 'myoro_basic_divider_style.dart';

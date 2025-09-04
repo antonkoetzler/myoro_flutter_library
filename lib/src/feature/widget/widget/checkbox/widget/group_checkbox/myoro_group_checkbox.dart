@@ -2,34 +2,74 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// A group of [MyoroCheckbox]s.
-class MyoroGroupCheckbox extends MyoroStatelessWidget {
+class MyoroGroupCheckbox extends StatefulWidget {
+  const MyoroGroupCheckbox({
+    super.key,
+    this.controller,
+    this.checkboxes,
+    this.configuration = const MyoroGroupCheckboxConfiguration(),
+    this.style = const MyoroGroupCheckboxStyle(),
+  }) : assert(
+         (controller != null) ^ (checkboxes != null),
+         '[MyoroGroupCheckbox]: [controller] (x)or [checkboxes] must be provided.',
+       );
+
   /// Controller.
-  final MyoroGroupCheckboxController controller;
+  final MyoroGroupCheckboxNotifier? controller;
+
+  /// Checkboxes of the [MyoroGroupCheckbox].
+  final MyoroGroupCheckboxItems? checkboxes;
 
   /// Configuration.
   final MyoroGroupCheckboxConfiguration configuration;
 
-  const MyoroGroupCheckbox({super.key, required this.controller, required this.configuration});
+  /// Style.
+  final MyoroGroupCheckboxStyle style;
+
+  @override
+  State<MyoroGroupCheckbox> createState() => _MyoroGroupCheckboxState();
+}
+
+final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
+  MyoroGroupCheckboxConfiguration get _configuration => widget.configuration;
+  MyoroGroupCheckboxStyle get _style => widget.style;
+
+  MyoroGroupCheckboxNotifier? _localController;
+  MyoroGroupCheckboxNotifier get _controller {
+    return widget.controller ?? (_localController ??= MyoroGroupCheckboxNotifier(checkboxes: widget.checkboxes!));
+  }
+
+  @override
+  void dispose() {
+    _localController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
 
+    final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
+    final runSpacing = _style.runSpacing ?? themeExtension.runSpacing ?? 0;
+
+    final direction = _configuration.direction;
+    final onChanged = _configuration.onChanged;
+
     return ValueListenableBuilder(
-      valueListenable: controller,
+      valueListenable: _controller,
       builder: (_, MyoroGroupCheckboxItems checkboxes, _) {
         return Wrap(
-          direction: configuration.direction,
-          spacing: configuration.spacing ?? themeExtension.spacing,
-          runSpacing: configuration.runSpacing ?? themeExtension.runSpacing,
-          children: checkboxes.entries.map<Widget>((MapEntry<String, bool> entry) {
+          direction: direction,
+          spacing: spacing,
+          runSpacing: runSpacing,
+          children: checkboxes.entries.map<Widget>((entry) {
             return MyoroCheckbox(
               configuration: MyoroCheckboxConfiguration(
                 label: entry.key,
                 value: entry.value,
                 onChanged: (bool value) {
-                  controller.toggle(entry.key, value);
-                  configuration.onChanged?.call(entry.key, checkboxes);
+                  _controller.toggle(entry.key, value);
+                  onChanged?.call(entry.key, checkboxes);
                 },
               ),
             );

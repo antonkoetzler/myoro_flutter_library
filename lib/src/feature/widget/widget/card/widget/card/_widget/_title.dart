@@ -2,15 +2,17 @@ part of '../myoro_card.dart';
 
 /// Title of the [MyoroCard].
 final class _Title extends StatelessWidget {
-  final MyoroCardConfiguration _configuration;
+  const _Title(this._style, this._title);
 
-  const _Title(this._configuration);
+  final MyoroCardStyle _style;
+  final String _title;
 
   @override
   Widget build(context) {
-    return Text(
-      _configuration.title,
-      style: _configuration.titleTextStyle ?? context.resolveThemeExtension<MyoroCardThemeExtension>().textStyle,
-    );
+    final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+
+    final titleTextStyle = _style.titleTextStyle ?? themeExtension.textStyle;
+
+    return Text(_title, style: titleTextStyle);
   }
 }

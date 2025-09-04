@@ -1,1 +1,1 @@
-export 'myoro_card_configuration.dart';
+export 'myoro_card_style.dart';

@@ -2,16 +2,16 @@ part of '../myoro_resize_divider.dart';
 
 /// Resize button of [MyoroResizeDivider].
 final class _ResizeButton extends StatelessWidget {
-  final MyoroResizeDividerConfiguration _configuration;
+  const _ResizeButton(this._direction);
 
-  const _ResizeButton(this._configuration);
+  final Axis _direction;
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroResizeDividerThemeExtension>();
     final shortValue = themeExtension.resizeButtonShortValue;
     final longValue = themeExtension.resizeButtonLongValue;
-    final isHorizontal = _configuration.direction.isHorizontal;
+    final isHorizontal = _direction.isHorizontal;
 
     return MouseRegion(
       cursor: isHorizontal ? SystemMouseCursors.resizeRow : SystemMouseCursors.resizeColumn,

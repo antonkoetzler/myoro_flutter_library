@@ -2,17 +2,10 @@ part of 'myoro_button_view_model.dart';
 
 /// State of [MyoroButtonController].
 class MyoroButtonState {
+  MyoroButtonState(this.configuration);
+
   /// Configuration.
-  MyoroButtonConfiguration? _configuration;
-
-  /// [_configuration] getter.
-  MyoroButtonConfiguration? get configuration => _configuration;
-
-  /// [_configuration] setter.
-  set configuration(MyoroButtonConfiguration? configuration) {
-    if (_configuration == configuration) return;
-    _configuration = configuration;
-  }
+  MyoroButtonConfiguration? configuration;
 
   /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
   final _tapStatusNotifier = ValueNotifier(MyoroTapStatusEnum.idle);

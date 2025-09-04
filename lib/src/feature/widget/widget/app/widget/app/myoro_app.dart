@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/src/exports.dart';
 
 /// Root widget of your [App] widget in main.dart.
-class MyoroApp extends MyoroThemeExtensionInjectedStatelessWidget<MyoroAppThemeExtension> {
-  final MyoroAppConfiguration configuration;
-
+class MyoroApp extends StatelessWidget {
   const MyoroApp({super.key, required this.configuration});
+
+  /// Configuration.
+  final MyoroAppConfiguration configuration;
 
   @override
   Widget build(context) {

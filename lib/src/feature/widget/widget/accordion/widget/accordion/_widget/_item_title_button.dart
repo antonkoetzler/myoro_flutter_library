@@ -23,7 +23,10 @@ final class _ItemTitleButton extends StatelessWidget {
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => toggleItem(_item)),
-      style: ,
+      style: MyoroButtonStyle(
+        backgroundColorBuilder: itemContentBackgroundColor != null ? (_) => itemContentBackgroundColor : null,
+        borderRadius: itemTitleButtonBorderRadius,
+      ),
       builder: (context, tapStatus) => Padding(
         padding: itemTitleButtonContentPadding,
         child: Row(
@@ -34,7 +37,7 @@ final class _ItemTitleButton extends StatelessWidget {
                   ? DefaultTextStyle(style: itemTitleButtonTitleTextStyle, child: title)
                   : title,
             ),
-            _ItemTitleButtonArrow(_item, _selectedItem, tapStatus),
+            _ItemTitleButtonArrow(_item, _selectedItem),
           ],
         ),
       ),

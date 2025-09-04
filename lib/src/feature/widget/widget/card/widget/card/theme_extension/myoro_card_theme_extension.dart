@@ -22,8 +22,8 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
 
   MyoroCardThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),
-      border = Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
-      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
+      borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       padding = const EdgeInsets.all(10),
       titleCardSpacing = 10,
       textStyle = textTheme.titleMedium!;

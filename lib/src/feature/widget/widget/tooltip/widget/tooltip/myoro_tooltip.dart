@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Simple tooltip.
-class MyoroTooltip extends MyoroStatelessWidget {
+class MyoroTooltip extends StatelessWidget {
   const MyoroTooltip({super.key, required this.configuration, required this.child});
 
   /// Configuration.

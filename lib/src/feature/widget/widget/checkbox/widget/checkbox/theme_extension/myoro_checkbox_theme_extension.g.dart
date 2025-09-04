@@ -18,22 +18,32 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
 
   @override
   MyoroCheckboxThemeExtension copyWith({
-    Color? activeColor,
-    Color? checkColor,
-    Color? hoverColor,
-    Color? focusColor,
-    double? splashRadius,
+    Color? checkboxActiveColor,
+    bool checkboxActiveColorProvided = true,
+    Color? checkboxCheckColor,
+    bool checkboxCheckColorProvided = true,
+    Color? checkboxHoverColor,
+    bool checkboxHoverColorProvided = true,
+    Color? checkboxFocusColor,
+    bool checkboxFocusColorProvided = true,
+    double? checkboxSplashRadius,
+    bool checkboxSplashRadiusProvided = true,
     TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    int? labelMaxLines,
+    bool labelMaxLinesProvided = true,
     double? spacing,
+    bool spacingProvided = true,
   }) {
     return MyoroCheckboxThemeExtension(
-      activeColor: activeColor ?? self.activeColor,
-      checkColor: checkColor ?? self.checkColor,
-      hoverColor: hoverColor ?? self.hoverColor,
-      focusColor: focusColor ?? self.focusColor,
-      splashRadius: splashRadius ?? self.splashRadius,
-      labelTextStyle: labelTextStyle ?? self.labelTextStyle,
-      spacing: spacing ?? self.spacing,
+      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? self.checkboxActiveColor) : null,
+      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? self.checkboxCheckColor) : null,
+      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? self.checkboxHoverColor) : null,
+      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? self.checkboxFocusColor) : null,
+      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? self.checkboxSplashRadius) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
     );
   }
 
@@ -41,24 +51,26 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
   bool operator ==(Object other) {
     return other is MyoroCheckboxThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.activeColor == self.activeColor &&
-        other.checkColor == self.checkColor &&
-        other.hoverColor == self.hoverColor &&
-        other.focusColor == self.focusColor &&
-        other.splashRadius == self.splashRadius &&
+        other.checkboxActiveColor == self.checkboxActiveColor &&
+        other.checkboxCheckColor == self.checkboxCheckColor &&
+        other.checkboxHoverColor == self.checkboxHoverColor &&
+        other.checkboxFocusColor == self.checkboxFocusColor &&
+        other.checkboxSplashRadius == self.checkboxSplashRadius &&
         other.labelTextStyle == self.labelTextStyle &&
+        other.labelMaxLines == self.labelMaxLines &&
         other.spacing == self.spacing;
   }
 
   @override
   int get hashCode {
     return Object.hash(
-      self.activeColor,
-      self.checkColor,
-      self.hoverColor,
-      self.focusColor,
-      self.splashRadius,
+      self.checkboxActiveColor,
+      self.checkboxCheckColor,
+      self.checkboxHoverColor,
+      self.checkboxFocusColor,
+      self.checkboxSplashRadius,
       self.labelTextStyle,
+      self.labelMaxLines,
       self.spacing,
     );
   }
@@ -66,12 +78,13 @@ mixin _$MyoroCheckboxThemeExtensionMixin on ThemeExtension<MyoroCheckboxThemeExt
   @override
   String toString() =>
       'MyoroCheckboxThemeExtension(\n'
-      '  activeColor: ${self.activeColor},\n'
-      '  checkColor: ${self.checkColor},\n'
-      '  hoverColor: ${self.hoverColor},\n'
-      '  focusColor: ${self.focusColor},\n'
-      '  splashRadius: ${self.splashRadius},\n'
+      '  checkboxActiveColor: ${self.checkboxActiveColor},\n'
+      '  checkboxCheckColor: ${self.checkboxCheckColor},\n'
+      '  checkboxHoverColor: ${self.checkboxHoverColor},\n'
+      '  checkboxFocusColor: ${self.checkboxFocusColor},\n'
+      '  checkboxSplashRadius: ${self.checkboxSplashRadius},\n'
       '  labelTextStyle: ${self.labelTextStyle},\n'
+      '  labelMaxLines: ${self.labelMaxLines},\n'
       '  spacing: ${self.spacing},\n'
       ');';
 }

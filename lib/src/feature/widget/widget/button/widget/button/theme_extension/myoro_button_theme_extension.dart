@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -10,88 +8,55 @@ part 'myoro_button_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroButton].
 @immutable
 @myoroThemeExtension
-class MyoroButtonThemeExtension extends MyoroButtonStyleThemeExtension<MyoroButtonThemeExtension>
+class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension>
     with _$MyoroButtonThemeExtensionMixin {
-  const MyoroButtonThemeExtension({
-    super.idleBackgroundColor,
-    super.hoverBackgroundColor,
-    super.tapBackgroundColor,
-    super.idleBorderColor,
-    super.hoverBorderColor,
-    super.tapBorderColor,
-    super.borderWidth,
-    this.borderRadius,
-    this.cursor,
-  });
+  const MyoroButtonThemeExtension({this.backgroundIdleColor, this.backgroundHoverColor, this.backgroundTapColor});
 
   // coverage:ignore-start
   MyoroButtonThemeExtension.fake()
-    : borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null;
+    : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
   // coverage:ignore-end
 
-  MyoroButtonThemeExtension.builder()
-    : cursor = null,
-      borderRadius = BorderRadius.circular(kMyoroBorderRadiusWidth);
+  MyoroButtonThemeExtension.builder(MyoroButtonVariantThemeExtension buttonVariantThemeExtension)
+    : backgroundIdleColor = buttonVariantThemeExtension.primaryBackgroundIdleColor,
+      backgroundHoverColor = buttonVariantThemeExtension.primaryBackgroundHoverColor,
+      backgroundTapColor = buttonVariantThemeExtension.primaryBackgroundTapColor;
 
-  /// Border radius.
-  final BorderRadius? borderRadius;
+  /// Background [Color] when the [MyoroTapStatusEnum] is [MyoroTapStatusEnum.idle].
+  final Color? backgroundIdleColor;
 
-  /// [MouseCursor] when the [MyoroButton] is hovered over.
-  ///
-  /// If [MyoroButtonConfiguration.onTapDown] or [MyoroButtonConfiguration.onTapUp] is provided,
-  /// [cursor] defaults to [SystemMouseCursors.click]. Other, the default is [SystemMouseCursors.basic].
-  final MouseCursor? cursor;
+  /// Background [Color] when the [MyoroTapStatusEnum] is [MyoroTapStatusEnum.hover].
+  final Color? backgroundHoverColor;
+
+  /// Background [Color] when the [MyoroTapStatusEnum] is [MyoroTapStatusEnum.tap].
+  final Color? backgroundTapColor;
 
   @override
-  MyoroButtonThemeExtension lerp(
-    covariant ThemeExtension<MyoroButtonThemeExtension>? other,
-    double t,
-  ) {
+  MyoroButtonThemeExtension lerp(covariant ThemeExtension<MyoroButtonThemeExtension>? other, double t) {
     if (other is! MyoroButtonThemeExtension) return this;
 
-    final idleBackgroundColor = Color.lerp(this.idleBackgroundColor, other.idleBackgroundColor, t);
-    final hoverBackgroundColor = Color.lerp(
-      this.hoverBackgroundColor,
-      other.hoverBackgroundColor,
-      t,
-    );
-    final tapBackgroundColor = Color.lerp(this.tapBackgroundColor, other.tapBackgroundColor, t);
-    final idleContentColor = Color.lerp(this.idleContentColor, other.idleContentColor, t);
-    final hoverContentColor = Color.lerp(this.hoverContentColor, other.hoverContentColor, t);
-    final tapContentColor = Color.lerp(this.tapContentColor, other.tapContentColor, t);
-    final idleBorderColor = Color.lerp(this.idleBorderColor, other.idleBorderColor, t);
-    final hoverBorderColor = Color.lerp(this.hoverBorderColor, other.hoverBorderColor, t);
-    final tapBorderColor = Color.lerp(this.tapBorderColor, other.tapBorderColor, t);
-    final borderWidth = lerpDouble(this.borderWidth, other.borderWidth, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final cursor = myoroLerp(this.cursor, other.cursor, t);
+    final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
+    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
+    final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
 
     return copyWith(
-      idleBackgroundColor: idleBackgroundColor,
-      idleBackgroundColorProvided: idleBackgroundColor != null,
-      hoverBackgroundColor: hoverBackgroundColor,
-      hoverBackgroundColorProvided: hoverBackgroundColor != null,
-      tapBackgroundColor: tapBackgroundColor,
-      tapBackgroundColorProvided: tapBackgroundColor != null,
-      idleContentColor: idleContentColor,
-      idleContentColorProvided: idleContentColor != null,
-      hoverContentColor: hoverContentColor,
-      hoverContentColorProvided: hoverContentColor != null,
-      tapContentColor: tapContentColor,
-      tapContentColorProvided: tapContentColor != null,
-      idleBorderColor: idleBorderColor,
-      idleBorderColorProvided: idleBorderColor != null,
-      hoverBorderColor: hoverBorderColor,
-      hoverBorderColorProvided: hoverBorderColor != null,
-      tapBorderColor: tapBorderColor,
-      tapBorderColorProvided: tapBorderColor != null,
-      borderWidth: borderWidth,
-      borderWidthProvided: borderWidth != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: borderRadius != null,
-      cursor: cursor,
-      cursorProvided: cursor != null,
+      backgroundIdleColor: backgroundIdleColor,
+      backgroundIdleColorProvided: backgroundIdleColor != null,
+      backgroundHoverColor: backgroundHoverColor,
+      backgroundHoverColorProvided: backgroundHoverColor != null,
+      backgroundTapColor: backgroundTapColor,
+      backgroundTapColorProvided: backgroundTapColor != null,
     );
+  }
+
+  /// Background [Color] builder.
+  Color? backgroundColorBuilder(MyoroTapStatusEnum tapStatus) {
+    return switch (tapStatus) {
+      MyoroTapStatusEnum.idle => backgroundIdleColor,
+      MyoroTapStatusEnum.hover => backgroundHoverColor,
+      MyoroTapStatusEnum.tap => backgroundTapColor,
+    };
   }
 }

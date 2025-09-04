@@ -10,22 +10,17 @@ part 'myoro_app_bar_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension>
     with _$MyoroAppBarThemeExtensionMixin {
-  const MyoroAppBarThemeExtension({this.bordered, this.backgroundColor, this.contentPadding});
+  const MyoroAppBarThemeExtension({this.backgroundColor, this.contentPadding});
 
   // coverage:ignore-start
   MyoroAppBarThemeExtension.fake()
-    : bordered = faker.randomGenerator.boolean() ? faker.randomGenerator.boolean() : null,
-      backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
   // coverage:ignore-end
 
   MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
-    : bordered = false,
-      backgroundColor = colorScheme.primary,
+    : backgroundColor = colorScheme.primary,
       contentPadding = const EdgeInsets.all(10);
-
-  /// If there is a border under the app bar.
-  final bool? bordered;
 
   /// Background [Color] of the app bar.
   final Color? backgroundColor;
@@ -37,13 +32,10 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
   MyoroAppBarThemeExtension lerp(covariant ThemeExtension<MyoroAppBarThemeExtension>? other, double t) {
     if (other is! MyoroAppBarThemeExtension) return this;
 
-    final bordered = myoroLerp(this.bordered, other.bordered, t);
     final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
     final contentPadding = EdgeInsets.lerp(this.contentPadding, other.contentPadding, t);
 
     return copyWith(
-      bordered: bordered ?? this.bordered,
-      borderedProvided: bordered != null,
       backgroundColor: backgroundColor,
       backgroundColorProvided: backgroundColor != null,
       contentPadding: contentPadding,

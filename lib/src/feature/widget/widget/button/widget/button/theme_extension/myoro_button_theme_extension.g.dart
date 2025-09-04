@@ -18,44 +18,17 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
 
   @override
   MyoroButtonThemeExtension copyWith({
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    MouseCursor? cursor,
-    bool cursorProvided = true,
-    Color? idleBackgroundColor,
-    bool idleBackgroundColorProvided = true,
-    Color? hoverBackgroundColor,
-    bool hoverBackgroundColorProvided = true,
-    Color? tapBackgroundColor,
-    bool tapBackgroundColorProvided = true,
-    Color? idleContentColor,
-    bool idleContentColorProvided = true,
-    Color? hoverContentColor,
-    bool hoverContentColorProvided = true,
-    Color? tapContentColor,
-    bool tapContentColorProvided = true,
-    Color? idleBorderColor,
-    bool idleBorderColorProvided = true,
-    Color? hoverBorderColor,
-    bool hoverBorderColorProvided = true,
-    Color? tapBorderColor,
-    bool tapBorderColorProvided = true,
-    double? borderWidth,
-    bool borderWidthProvided = true,
+    Color? backgroundIdleColor,
+    bool backgroundIdleColorProvided = true,
+    Color? backgroundHoverColor,
+    bool backgroundHoverColorProvided = true,
+    Color? backgroundTapColor,
+    bool backgroundTapColorProvided = true,
   }) {
     return MyoroButtonThemeExtension(
-      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
-      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
-      idleBackgroundColor: idleBackgroundColorProvided ? (idleBackgroundColor ?? self.idleBackgroundColor) : null,
-      hoverBackgroundColor: hoverBackgroundColorProvided ? (hoverBackgroundColor ?? self.hoverBackgroundColor) : null,
-      tapBackgroundColor: tapBackgroundColorProvided ? (tapBackgroundColor ?? self.tapBackgroundColor) : null,
-      idleContentColor: idleContentColorProvided ? (idleContentColor ?? self.idleContentColor) : null,
-      hoverContentColor: hoverContentColorProvided ? (hoverContentColor ?? self.hoverContentColor) : null,
-      tapContentColor: tapContentColorProvided ? (tapContentColor ?? self.tapContentColor) : null,
-      idleBorderColor: idleBorderColorProvided ? (idleBorderColor ?? self.idleBorderColor) : null,
-      hoverBorderColor: hoverBorderColorProvided ? (hoverBorderColor ?? self.hoverBorderColor) : null,
-      tapBorderColor: tapBorderColorProvided ? (tapBorderColor ?? self.tapBorderColor) : null,
-      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
+      backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
+      backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
     );
   }
 
@@ -63,52 +36,21 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
   bool operator ==(Object other) {
     return other is MyoroButtonThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.borderRadius == self.borderRadius &&
-        other.cursor == self.cursor &&
-        other.idleBackgroundColor == self.idleBackgroundColor &&
-        other.hoverBackgroundColor == self.hoverBackgroundColor &&
-        other.tapBackgroundColor == self.tapBackgroundColor &&
-        other.idleContentColor == self.idleContentColor &&
-        other.hoverContentColor == self.hoverContentColor &&
-        other.tapContentColor == self.tapContentColor &&
-        other.idleBorderColor == self.idleBorderColor &&
-        other.hoverBorderColor == self.hoverBorderColor &&
-        other.tapBorderColor == self.tapBorderColor &&
-        other.borderWidth == self.borderWidth;
+        other.backgroundIdleColor == self.backgroundIdleColor &&
+        other.backgroundHoverColor == self.backgroundHoverColor &&
+        other.backgroundTapColor == self.backgroundTapColor;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.borderRadius,
-      self.cursor,
-      self.idleBackgroundColor,
-      self.hoverBackgroundColor,
-      self.tapBackgroundColor,
-      self.idleContentColor,
-      self.hoverContentColor,
-      self.tapContentColor,
-      self.idleBorderColor,
-      self.hoverBorderColor,
-      self.tapBorderColor,
-      self.borderWidth,
-    );
+    return Object.hash(self.backgroundIdleColor, self.backgroundHoverColor, self.backgroundTapColor);
   }
 
   @override
   String toString() =>
       'MyoroButtonThemeExtension(\n'
-      '  borderRadius: ${self.borderRadius},\n'
-      '  cursor: ${self.cursor},\n'
-      '  idleBackgroundColor: ${self.idleBackgroundColor},\n'
-      '  hoverBackgroundColor: ${self.hoverBackgroundColor},\n'
-      '  tapBackgroundColor: ${self.tapBackgroundColor},\n'
-      '  idleContentColor: ${self.idleContentColor},\n'
-      '  hoverContentColor: ${self.hoverContentColor},\n'
-      '  tapContentColor: ${self.tapContentColor},\n'
-      '  idleBorderColor: ${self.idleBorderColor},\n'
-      '  hoverBorderColor: ${self.hoverBorderColor},\n'
-      '  tapBorderColor: ${self.tapBorderColor},\n'
-      '  borderWidth: ${self.borderWidth},\n'
+      '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
+      '  backgroundHoverColor: ${self.backgroundHoverColor},\n'
+      '  backgroundTapColor: ${self.backgroundTapColor},\n'
       ');';
 }

@@ -17,10 +17,15 @@ mixin _$MyoroGroupCheckboxThemeExtensionMixin on ThemeExtension<MyoroGroupCheckb
   MyoroGroupCheckboxThemeExtension get self => this as MyoroGroupCheckboxThemeExtension;
 
   @override
-  MyoroGroupCheckboxThemeExtension copyWith({double? spacing, double? runSpacing}) {
+  MyoroGroupCheckboxThemeExtension copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    double? runSpacing,
+    bool runSpacingProvided = true,
+  }) {
     return MyoroGroupCheckboxThemeExtension(
-      spacing: spacing ?? self.spacing,
-      runSpacing: runSpacing ?? self.runSpacing,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
     );
   }
 

@@ -12,28 +12,34 @@ part 'myoro_group_checkbox_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckboxThemeExtension>
     with _$MyoroGroupCheckboxThemeExtensionMixin {
-  const MyoroGroupCheckboxThemeExtension({required this.spacing, required this.runSpacing});
+  const MyoroGroupCheckboxThemeExtension({this.spacing, this.runSpacing});
 
   // coverage:ignore-start
   MyoroGroupCheckboxThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(),
-      runSpacing = faker.randomGenerator.decimal();
+    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   const MyoroGroupCheckboxThemeExtension.builder() : spacing = kMyoroMultiplier, runSpacing = kMyoroMultiplier;
 
   /// Main axis spacing in between each checkbox.
-  final double spacing;
+  final double? spacing;
 
   /// Cross axis spacing in between each checkbox.
-  final double runSpacing;
+  final double? runSpacing;
 
   @override
   MyoroGroupCheckboxThemeExtension lerp(covariant ThemeExtension<MyoroGroupCheckboxThemeExtension>? other, double t) {
     if (other is! MyoroGroupCheckboxThemeExtension) return this;
+
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+    final runSpacing = lerpDouble(this.runSpacing, other.runSpacing, t);
+
     return copyWith(
-      spacing: lerpDouble(spacing, other.spacing, t),
-      runSpacing: lerpDouble(runSpacing, other.runSpacing, t),
+      spacing: spacing,
+      spacingProvided: spacing != null,
+      runSpacing: runSpacing,
+      runSpacingProvided: runSpacing != null,
     );
   }
 }

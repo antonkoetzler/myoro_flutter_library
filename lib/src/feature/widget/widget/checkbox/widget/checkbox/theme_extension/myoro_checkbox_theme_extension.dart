@@ -13,67 +13,92 @@ part 'myoro_checkbox_theme_extension.g.dart';
 class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension>
     with _$MyoroCheckboxThemeExtensionMixin {
   const MyoroCheckboxThemeExtension({
-    required this.activeColor,
-    required this.checkColor,
-    required this.hoverColor,
-    required this.focusColor,
-    required this.splashRadius,
-    required this.labelTextStyle,
-    required this.spacing,
+    this.checkboxActiveColor,
+    this.checkboxCheckColor,
+    this.checkboxHoverColor,
+    this.checkboxFocusColor,
+    this.checkboxSplashRadius,
+    this.labelTextStyle,
+    this.labelMaxLines,
+    this.spacing,
   });
 
   // coverage:ignore-start
   MyoroCheckboxThemeExtension.fake()
-    : activeColor = myoroFake<Color>(),
-      checkColor = myoroFake<Color>(),
-      hoverColor = myoroFake<Color>(),
-      focusColor = myoroFake<Color>(),
-      splashRadius = faker.randomGenerator.decimal(),
-      labelTextStyle = myoroFake<TextStyle>(),
-      spacing = faker.randomGenerator.decimal();
+    : checkboxActiveColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      checkboxCheckColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      checkboxHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      checkboxFocusColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      checkboxSplashRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      labelMaxLines = faker.randomGenerator.boolean() ? faker.randomGenerator.integer(5) : null,
+      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : activeColor = colorScheme.onPrimary,
-      checkColor = colorScheme.primary,
-      hoverColor = MyoroColors.transparent,
-      focusColor = MyoroColors.transparent,
-      splashRadius = 0,
+    : checkboxActiveColor = colorScheme.onPrimary,
+      checkboxCheckColor = colorScheme.primary,
+      checkboxHoverColor = MyoroColors.transparent,
+      checkboxFocusColor = MyoroColors.transparent,
+      checkboxSplashRadius = 0,
       labelTextStyle = textTheme.bodySmall!,
-      spacing = 5;
+      labelMaxLines = 1,
+      spacing = kMyoroMultiplier;
 
   /// Background color of the checkbox when selected.
-  final Color activeColor;
+  final Color? checkboxActiveColor;
 
   /// Color of the checkmark.
-  final Color checkColor;
+  final Color? checkboxCheckColor;
 
   /// Hover color of the [Checkbox].
-  final Color hoverColor;
+  final Color? checkboxHoverColor;
 
   /// Focus color of the [Checkbox].
-  final Color focusColor;
+  final Color? checkboxFocusColor;
 
   /// Splash radius when the [Checkbox] is hovered.
-  final double splashRadius;
+  final double? checkboxSplashRadius;
 
   /// Text style of the label.
-  final TextStyle labelTextStyle;
+  final TextStyle? labelTextStyle;
+
+  /// [Text.maxLines] of the label.
+  final int? labelMaxLines;
 
   /// Spacing between the checkbox and the label.
-  final double spacing;
+  final double? spacing;
 
   @override
   MyoroCheckboxThemeExtension lerp(covariant ThemeExtension<MyoroCheckboxThemeExtension>? other, double t) {
     if (other is! MyoroCheckboxThemeExtension) return this;
+
+    final checkboxActiveColor = Color.lerp(this.checkboxActiveColor, other.checkboxActiveColor, t);
+    final checkboxCheckColor = Color.lerp(this.checkboxCheckColor, other.checkboxCheckColor, t);
+    final checkboxHoverColor = Color.lerp(this.checkboxHoverColor, other.checkboxHoverColor, t);
+    final checkboxFocusColor = Color.lerp(this.checkboxFocusColor, other.checkboxFocusColor, t);
+    final checkboxSplashRadius = lerpDouble(this.checkboxSplashRadius, other.checkboxSplashRadius, t);
+    final labelTextStyle = TextStyle.lerp(this.labelTextStyle, other.labelTextStyle, t);
+    final labelMaxLines = lerpDouble(this.labelMaxLines?.toDouble(), other.labelMaxLines?.toDouble(), t)?.toInt();
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+
     return copyWith(
-      activeColor: Color.lerp(activeColor, other.activeColor, t),
-      checkColor: Color.lerp(checkColor, other.checkColor, t),
-      hoverColor: Color.lerp(hoverColor, other.hoverColor, t),
-      focusColor: Color.lerp(focusColor, other.focusColor, t),
-      splashRadius: lerpDouble(splashRadius, other.splashRadius, t),
-      labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
-      spacing: lerpDouble(spacing, other.spacing, t),
+      checkboxActiveColor: checkboxActiveColor,
+      checkboxActiveColorProvided: checkboxActiveColor != null,
+      checkboxCheckColor: checkboxCheckColor,
+      checkboxCheckColorProvided: checkboxCheckColor != null,
+      checkboxHoverColor: checkboxHoverColor,
+      checkboxHoverColorProvided: checkboxHoverColor != null,
+      checkboxFocusColor: checkboxFocusColor,
+      checkboxFocusColorProvided: checkboxFocusColor != null,
+      checkboxSplashRadius: checkboxSplashRadius,
+      checkboxSplashRadiusProvided: checkboxSplashRadius != null,
+      labelTextStyle: labelTextStyle,
+      labelTextStyleProvided: labelTextStyle != null,
+      labelMaxLines: labelMaxLines,
+      labelMaxLinesProvided: labelMaxLines != null,
+      spacing: spacing,
+      spacingProvided: spacing != null,
     );
   }
 }

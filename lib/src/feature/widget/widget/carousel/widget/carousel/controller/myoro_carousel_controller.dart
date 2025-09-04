@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroCarousel].
@@ -7,17 +7,11 @@ class MyoroCarouselController {
   final carouselSliderController = CarouselSliderController();
 
   /// Goes to a specific page.
-  void changePage(int pageNumber) {
-    carouselSliderController.jumpToPage(pageNumber);
-  }
+  void changePage(int pageNumber) => carouselSliderController.jumpToPage(pageNumber);
 
   /// Goes to the previous page.
-  void previousPage() {
-    carouselSliderController.previousPage();
-  }
+  void previousPage() => carouselSliderController.previousPage();
 
   /// Goes to the next page.
-  void nextPage() {
-    carouselSliderController.nextPage();
-  }
+  void nextPage() => carouselSliderController.nextPage();
 }

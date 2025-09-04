@@ -27,17 +27,9 @@
   - table
   - testing
   - tooltip
+- Do one last code review on all `Widget`s to weed out any inefficienies and errors (including storyboard)
 - Change app icon of storyboard
-- 100% pub.dev score
-- Delete `MyoroStatelessWidget` and `MyoroStatefulWidget` and use getIt and require the initialization function
-  - The initialization function is especially important for localization, this isn't just for DI (it needs to be done)
-- Delete kiwi container
-- Make every `ThemeExtension` nullable to allow more customizability for `ThemeExtension` overriding
+- Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
 - Document VSCode goodies
-
-## Technical debt that should be gradually resolved
-
-1. Remove hard numbers in code and utilize `kMyoroMultiplier` variable for default multiplier
-2. Bugs of storyboard
-3. Scalability of widget showcase options in storyboard
-4. Localize all text
+- Update the `Widgets.md` with all of the new `Widget`s added
+- 100% pub.dev score

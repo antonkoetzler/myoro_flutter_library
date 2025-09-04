@@ -2,42 +2,43 @@ part of 'myoro_checkbox_view_model.dart';
 
 /// State of [MyoroCheckboxViewModel].
 class MyoroCheckboxState {
+  MyoroCheckboxState(this._configuration) : _enabledNotifier = ValueNotifier(_configuration.value);
+
   /// Configuration.
-  MyoroCheckboxConfiguration? _configuration;
+  MyoroCheckboxConfiguration _configuration;
 
   /// [_configuration] getter.
   MyoroCheckboxConfiguration get configuration {
-    assert(_configuration != null, '[MyoroCheckboxConfiguration.configuration]: [_configuration] has no been set yet.');
-    return _configuration!;
+    return _configuration;
   }
 
   /// [_configuration] setter.
   set configuration(MyoroCheckboxConfiguration configuration) {
     if (_configuration == configuration) return;
     _configuration = configuration;
-    _enabledController ??= ValueNotifier(this.configuration.value);
-    enabledController.value = configuration.value;
+    enabledNotifier.value = configuration.value;
   }
 
   /// [ValueNotifier] controlling if the checkbox is enabled.
-  ValueNotifier<bool>? _enabledController;
+  final ValueNotifier<bool> _enabledNotifier;
 
-  /// [_enabledController] getter.
-  ValueNotifier<bool> get enabledController {
-    assert(
-      _enabledController != null,
-      '[MyoroCheckboxState.enabledController]: [_enabledController] has not been set yet.',
-    );
-    return _enabledController!;
+  /// [_enabledNotifier] getter.
+  ValueNotifier<bool> get enabledNotifier {
+    return _enabledNotifier;
   }
 
-  /// [_enabledController]'s value getter.
+  /// [_enabledNotifier]'s value getter.
   bool get enabled {
-    return enabledController.value;
+    return enabledNotifier.value;
+  }
+
+  /// [_enabledNotifier]'s setter.
+  set enabled(bool enabled) {
+    _enabledNotifier.value = enabled;
   }
 
   /// Dispose function.
   void dispose() {
-    enabledController.dispose();
+    enabledNotifier.dispose();
   }
 }

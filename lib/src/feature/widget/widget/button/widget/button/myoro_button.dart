@@ -25,24 +25,34 @@ class MyoroButton extends StatefulWidget {
 }
 
 final class _MyoroButtonState extends State<MyoroButton> {
+  MyoroButtonConfiguration? get _configuration => widget.configuration;
   MyoroButtonStyle get _style => widget.style;
   MyoroButtonBuilder get _builder => widget.builder;
 
-  MyoroButtonViewModel? _localViewModel;
-  MyoroButtonViewModel get _viewModel {
-    final viewModel = _localViewModel ??= MyoroButtonViewModel();
-    return viewModel..state.configuration = widget.configuration;
+  late final MyoroButtonViewModel _viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = MyoroButtonViewModel(_configuration);
   }
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _viewModel.state.configuration = widget.configuration;
+    final state = _viewModel.state;
+    if (mounted && _configuration != oldWidget.configuration) {
+      state.configuration = _configuration;
+      setState(() {});
+    }
+    if (mounted && _style != oldWidget.style) {
+      setState(() {});
+    }
   }
 
   @override
   void dispose() {
-    _localViewModel?.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
@@ -50,12 +60,15 @@ final class _MyoroButtonState extends State<MyoroButton> {
   Widget build(context) {
     final state = _viewModel.state;
     final tapStatusNotifier = state.tapStatusNotifier;
-    final cursor = _viewModel.cursor;
     final onEnter = _viewModel.onEnter;
     final onExit = _viewModel.onExit;
     final onTapDown = _viewModel.onTapDown;
     final onTapUp = _viewModel.onTapUp;
     final onTapCancel = _viewModel.onTapCancel;
+    final configuration = state.configuration;
+    final onTapProvided = configuration?.onTapProvided == true;
+
+    final cursor = _style.cursor ?? (onTapProvided ? SystemMouseCursors.click : SystemMouseCursors.basic);
 
     return MultiProvider(
       providers: [

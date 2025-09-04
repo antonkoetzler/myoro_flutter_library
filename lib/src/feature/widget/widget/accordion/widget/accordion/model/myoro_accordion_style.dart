@@ -7,7 +7,7 @@ part 'myoro_accordion_style.g.dart';
 /// Style model of [MyoroAccordion].
 @immutable
 @myoroModel
-final class MyoroAccordionStyle with _$MyoroAccordionStyle {
+final class MyoroAccordionStyle with _$MyoroAccordionStyleMixin {
   static const thumbVisibilityDefaultValue = false;
 
   const MyoroAccordionStyle({this.thumbVisibility = thumbVisibilityDefaultValue});

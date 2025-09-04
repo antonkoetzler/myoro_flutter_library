@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroGroupCheckbox].
-class MyoroGroupCheckboxController extends ValueNotifier<MyoroGroupCheckboxItems> {
-  MyoroGroupCheckboxController({required MyoroGroupCheckboxItems checkboxes}) : super(checkboxes);
+class MyoroGroupCheckboxNotifier extends ValueNotifier<MyoroGroupCheckboxItems> {
+  MyoroGroupCheckboxNotifier({required MyoroGroupCheckboxItems checkboxes})
+    : assert(checkboxes.isNotEmpty, '[MyoroGroupCheckboxNotifier]: [checkboxes] cannot be empty.'),
+      super(checkboxes);
 
   /// Method to toggle a checkbox in the group.
   void toggle(String key, [bool? enabled]) {

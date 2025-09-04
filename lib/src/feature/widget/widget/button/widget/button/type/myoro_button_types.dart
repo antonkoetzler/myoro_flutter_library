@@ -8,7 +8,7 @@ typedef MyoroButtonBuilder = Widget Function(BuildContext context, MyoroTapStatu
 typedef MyoroButtonBackgroundColorBuilder = Color Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Builder of the [MyoroButton]'s border.
-typedef MyoroButtonBorderBuilder = BoxBorder Function(MyoroTapStatusEnum tapStatusEnum);
+typedef MyoroButtonBorderBuilder = Border? Function(MyoroTapStatusEnum tapStatusEnum);
 
 /// Function executed when the [MyoroButton] is tapped.
 typedef MyoroButtonOnTapDown = void Function(TapDownDetails details);

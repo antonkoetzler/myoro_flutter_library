@@ -5,11 +5,22 @@ part '_widget/_card.dart';
 part '_widget/_title.dart';
 
 /// Base card.
-class MyoroCard extends MyoroStatelessWidget {
-  /// Configuration.
-  final MyoroCardConfiguration configuration;
+class MyoroCard extends StatelessWidget {
+  const MyoroCard({
+    super.key,
+    this.title = kMyoroEmptyString,
+    this.style = const MyoroCardStyle(),
+    required this.child,
+  });
 
-  const MyoroCard({super.key, required this.configuration});
+  /// Title of the card.
+  final String title;
+
+  /// Style.
+  final MyoroCardStyle style;
+
+  /// Child.
+  final Widget child;
 
   @override
   Widget build(context) {
@@ -19,8 +30,8 @@ class MyoroCard extends MyoroStatelessWidget {
       mainAxisSize: MainAxisSize.min,
       spacing: themeExtension.titleCardSpacing,
       children: [
-        if (configuration.title.isNotEmpty) _Title(configuration),
-        Flexible(child: _Card(configuration)),
+        if (title.isNotEmpty) _Title(style, title),
+        Flexible(child: _Card(style, child)),
       ],
     );
   }

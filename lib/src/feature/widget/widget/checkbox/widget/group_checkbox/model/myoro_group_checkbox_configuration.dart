@@ -11,46 +11,27 @@ part 'myoro_group_checkbox_configuration.g.dart';
 class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;
 
-  const MyoroGroupCheckboxConfiguration({
-    this.direction = directionDefaultValue,
-    this.spacing,
-    this.runSpacing,
-    this.onChanged,
-  });
+  const MyoroGroupCheckboxConfiguration({this.direction = directionDefaultValue, this.onChanged});
 
   // coverage:ignore-start
   MyoroGroupCheckboxConfiguration.fake()
     : direction = myoroFake<Axis>(),
-      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
       onChanged = faker.randomGenerator.boolean() ? ((_, _) {}) : null;
   // coverage:ignore-end
 
   /// Direction that the checkboxes will built in.
   final Axis direction;
 
-  /// Spacing in between the checkboxes.
-  final double? spacing;
-
-  /// Spacing in between the checkboxes when the checkboxes are wrapping (cross axis spacing).
-  final double? runSpacing;
-
   /// Function executed when any of the checkbox's values are changed.
   final MyoroGroupCheckboxOnChanged? onChanged;
 
   MyoroGroupCheckboxConfiguration copyWith({
     Axis? direction,
-    double? spacing,
-    bool spacingProvided = true,
-    double? runSpacing,
-    bool runSpacingProvided = true,
     MyoroGroupCheckboxOnChanged? onChanged,
     bool onChangedProvided = true,
   }) {
     return MyoroGroupCheckboxConfiguration(
       direction: direction ?? this.direction,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
     );
   }

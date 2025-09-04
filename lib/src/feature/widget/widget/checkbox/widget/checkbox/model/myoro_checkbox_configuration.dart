@@ -12,26 +12,17 @@ class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
   static const labelDefaultValue = '';
   static const valueDefaultValue = false;
 
-  const MyoroCheckboxConfiguration({
-    this.label = labelDefaultValue,
-    this.labelTextStyle,
-    this.value = valueDefaultValue,
-    this.onChanged,
-  });
+  const MyoroCheckboxConfiguration({this.label = labelDefaultValue, this.value = valueDefaultValue, this.onChanged});
 
   // coverage:ignore-start
   MyoroCheckboxConfiguration.fake()
     : label = faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       value = faker.randomGenerator.boolean(),
       onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
   // coverage:ignore-end
 
   /// Label at the right of the checkbox.
   final String label;
-
-  /// Text style of [label].
-  final TextStyle? labelTextStyle;
 
   /// Value of the [MyoroCheckbox].
   final bool value;
@@ -41,15 +32,12 @@ class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
 
   MyoroCheckboxConfiguration copyWith({
     String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
     bool? value,
     MyoroCheckboxOnChanged? onChanged,
     bool onChangedProvided = true,
   }) {
     return MyoroCheckboxConfiguration(
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       value: value ?? this.value,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
     );

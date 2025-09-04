@@ -6,7 +6,7 @@ TooltipThemeData createMyoroTooltipThemeData(ColorScheme colorScheme, TextTheme 
   return TooltipThemeData(
     decoration: BoxDecoration(
       color: colorScheme.primary,
-      borderRadius: BorderRadius.circular(kMyoroBorderRadiusWidth),
+      borderRadius: BorderRadius.circular(kMyoroBorderRadius),
       border: Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
     ),
     textStyle: textTheme.bodySmall,

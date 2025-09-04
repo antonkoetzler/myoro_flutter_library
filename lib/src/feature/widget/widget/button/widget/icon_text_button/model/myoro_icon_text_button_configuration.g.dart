@@ -20,10 +20,6 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
   bool operator ==(Object other) {
     return other is MyoroIconTextButtonConfiguration &&
         other.runtimeType == runtimeType &&
-        other.invert == self.invert &&
-        other.spacing == self.spacing &&
-        other.padding == self.padding &&
-        other.contentColorBuilder == self.contentColorBuilder &&
         other.iconConfiguration == self.iconConfiguration &&
         other.textConfiguration == self.textConfiguration &&
         other.tooltipConfiguration == self.tooltipConfiguration &&
@@ -34,10 +30,6 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
   @override
   int get hashCode {
     return Object.hash(
-      self.invert,
-      self.spacing,
-      self.padding,
-      self.contentColorBuilder,
       self.iconConfiguration,
       self.textConfiguration,
       self.tooltipConfiguration,
@@ -49,10 +41,6 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
   @override
   String toString() =>
       'MyoroIconTextButtonConfiguration(\n'
-      '  invert: ${self.invert},\n'
-      '  spacing: ${self.spacing},\n'
-      '  padding: ${self.padding},\n'
-      '  contentColorBuilder: ${self.contentColorBuilder},\n'
       '  iconConfiguration: ${self.iconConfiguration},\n'
       '  textConfiguration: ${self.textConfiguration},\n'
       '  tooltipConfiguration: ${self.tooltipConfiguration},\n'

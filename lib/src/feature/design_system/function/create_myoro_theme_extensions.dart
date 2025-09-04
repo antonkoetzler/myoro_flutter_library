@@ -47,8 +47,8 @@ List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
 
 List<ThemeExtension> _createButtonThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
   return [
-    MyoroPrimaryButtonStyleThemeExtension.builder(isDarkMode, colorScheme),
-    MyoroSecondaryButtonStyleThemeExtension.builder(isDarkMode, colorScheme),
+    MyoroPrimaryButtonVariantThemeExtension.builder(isDarkMode, colorScheme),
+    MyoroSecondaryButtonVariantThemeExtension.builder(isDarkMode, colorScheme),
     MyoroButtonThemeExtension.builder(),
     MyoroIconTextButtonThemeExtension.builder(textTheme),
   ];
