@@ -1,4 +1,5 @@
 import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -7,12 +8,14 @@ part 'myoro_icon_text_button_configuration.g.dart';
 /// Configuration model of [MyoroIconTextButton].
 @myoroModel
 class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {
-  static const invertDefaultValue = false;
+  static const invertedDefaultValue = false;
 
   const MyoroIconTextButtonConfiguration({
+    super.cursor,
     super.tooltipConfiguration,
     super.onTapDown,
     super.onTapUp,
+    this.inverted = invertedDefaultValue,
     this.iconConfiguration,
     this.textConfiguration,
   }) : assert(
@@ -20,12 +23,13 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
          '[MyoroIconTextButtonConfiguration]: [iconConfiguration] '
          'and/or [textConfiguration] must be provided.',
        );
- YOU ARE HERE
+
   // coverage:ignore-start
-  factory MyoroIconTextButtonConfiguration.fake({bool? borderRadiusProvided, bool? borderBuilderProvided}) {
+  factory MyoroIconTextButtonConfiguration.fake() {
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
 
     return MyoroIconTextButtonConfiguration(
+      inverted: faker.randomGenerator.boolean(),
       tooltipConfiguration: faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
@@ -39,6 +43,11 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
   }
   // coverage:ignore-end
 
+  /// Whether or not to invert the icon and text.
+  ///
+  /// Only effective when both [iconConfiguration] and [textConfiguration] is provided.
+  final bool inverted;
+
   /// Icon configuration of the [MyoroIconTextButton].
   final MyoroIconConfiguration? iconConfiguration;
 
@@ -47,21 +56,26 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
 
   @override
   MyoroIconTextButtonConfiguration copyWith({
+    MouseCursor? cursor,
+    bool cursorProvided = true,
     MyoroTooltipConfiguration? tooltipConfiguration,
     bool tooltipConfigurationProvided = true,
     MyoroButtonOnTapDown? onTapDown,
     bool onTapDownProvided = true,
     MyoroButtonOnTapUp? onTapUp,
     bool onTapUpProvided = true,
+    bool? inverted,
     MyoroIconConfiguration? iconConfiguration,
     bool iconConfigurationProvided = true,
     MyoroTextConfiguration? textConfiguration,
     bool textConfigurationProvided = true,
   }) {
     return MyoroIconTextButtonConfiguration(
+      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
       tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
+      inverted: inverted ?? this.inverted,
       iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
       textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
     );

@@ -9,15 +9,9 @@ final class _Icon extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
-
-    final viewModel = context.read<MyoroIconTextButtonViewModel>();
-    final configuration = viewModel.configuration;
+    final configuration = context.read<MyoroIconTextButtonConfiguration>();
     final iconConfiguration = configuration.iconConfiguration;
-    final style = viewModel.style;
-
-    final contentColorBuilder = style.contentColorBuilder ?? themeExtension.contentColorBuilder;
-
-    assert(iconConfiguration != null, '[_Icon]: [iconConfiguration] cannot be null.');
+    final contentColorBuilder = themeExtension.contentColorBuilder;
 
     return Icon(iconConfiguration!.icon, size: iconConfiguration.size, color: contentColorBuilder(_tapStatusEnum));
   }

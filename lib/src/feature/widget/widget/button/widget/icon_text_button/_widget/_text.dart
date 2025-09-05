@@ -10,18 +10,14 @@ final class _Text extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
 
-    final viewModel = context.read<MyoroIconTextButtonViewModel>();
-    final configuration = viewModel.configuration;
-    final style = viewModel.style;
+    final configuration = context.read<MyoroIconTextButtonConfiguration>();
     final textConfiguration = configuration.textConfiguration!;
     final text = textConfiguration.text;
     final maxLines = textConfiguration.maxLines;
     final overflow = textConfiguration.overflow;
     final alignment = textConfiguration.alignment;
-
-    final textStyle = textConfiguration.style ?? themeExtension.textStyle;
-    final contentColor =
-        style.contentColorBuilder?.call(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
+    final textStyle = textConfiguration.style;
+    final contentColor = themeExtension.contentColorBuilder(_tapStatusEnum);
 
     return Expanded(
       child: Text(
