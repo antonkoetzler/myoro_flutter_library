@@ -1,15 +1,11 @@
 # TODO
 
+- (**IN PROGRESS**) STYLE PROPERTY CLASSES
 - (**IN PROGRESS**) Replace widgets with the injectable class now(ADD TO CHANGELOG WHEN DONE)
   - write that style models are supposed to have non-lerpable fields
     - update docs
     - update stagelog
-  - (**IN PROGRESS**) card
-  - carousel
-  - checkbox
-  - divider
-  - drawer
-  - dropdown
+  - (**IN PROGRESS**) dropdown
   - feedback
   - form
   - graph

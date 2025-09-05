@@ -19,21 +19,24 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
   @override
   MyoroDrawerThemeExtension copyWith({
     EdgeInsets? drawerPadding,
+    bool drawerPaddingProvided = true,
     EdgeInsets? drawerContentPadding,
+    bool drawerContentPaddingProvided = true,
     ShapeBorder? drawerShape,
+    bool drawerShapeProvided = true,
     EdgeInsets? titleContentDividerPadding,
+    bool titleContentDividerPaddingProvided = true,
     TextStyle? titleTextStyle,
-    IconData? closeButtonDrawerIcon,
-    IconData? closeButtonEndDrawerIcon,
+    bool titleTextStyleProvided = true,
   }) {
     return MyoroDrawerThemeExtension(
-      drawerPadding: drawerPadding ?? self.drawerPadding,
-      drawerContentPadding: drawerContentPadding ?? self.drawerContentPadding,
-      drawerShape: drawerShape ?? self.drawerShape,
-      titleContentDividerPadding: titleContentDividerPadding ?? self.titleContentDividerPadding,
-      titleTextStyle: titleTextStyle ?? self.titleTextStyle,
-      closeButtonDrawerIcon: closeButtonDrawerIcon ?? self.closeButtonDrawerIcon,
-      closeButtonEndDrawerIcon: closeButtonEndDrawerIcon ?? self.closeButtonEndDrawerIcon,
+      drawerPadding: drawerPaddingProvided ? (drawerPadding ?? self.drawerPadding) : null,
+      drawerContentPadding: drawerContentPaddingProvided ? (drawerContentPadding ?? self.drawerContentPadding) : null,
+      drawerShape: drawerShapeProvided ? (drawerShape ?? self.drawerShape) : null,
+      titleContentDividerPadding: titleContentDividerPaddingProvided
+          ? (titleContentDividerPadding ?? self.titleContentDividerPadding)
+          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
     );
   }
 
@@ -45,9 +48,7 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
         other.drawerContentPadding == self.drawerContentPadding &&
         other.drawerShape == self.drawerShape &&
         other.titleContentDividerPadding == self.titleContentDividerPadding &&
-        other.titleTextStyle == self.titleTextStyle &&
-        other.closeButtonDrawerIcon == self.closeButtonDrawerIcon &&
-        other.closeButtonEndDrawerIcon == self.closeButtonEndDrawerIcon;
+        other.titleTextStyle == self.titleTextStyle;
   }
 
   @override
@@ -58,8 +59,6 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
       self.drawerShape,
       self.titleContentDividerPadding,
       self.titleTextStyle,
-      self.closeButtonDrawerIcon,
-      self.closeButtonEndDrawerIcon,
     );
   }
 
@@ -71,7 +70,5 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
       '  drawerShape: ${self.drawerShape},\n'
       '  titleContentDividerPadding: ${self.titleContentDividerPadding},\n'
       '  titleTextStyle: ${self.titleTextStyle},\n'
-      '  closeButtonDrawerIcon: ${self.closeButtonDrawerIcon},\n'
-      '  closeButtonEndDrawerIcon: ${self.closeButtonEndDrawerIcon},\n'
       ');';
 }

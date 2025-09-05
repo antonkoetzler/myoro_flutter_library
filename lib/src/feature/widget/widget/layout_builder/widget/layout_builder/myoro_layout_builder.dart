@@ -18,7 +18,7 @@ part '_widget/_single_child_render_object_widget.dart';
 /// `LayoutBuilder does not support returning intrinsic dimensions.`
 /// `Calculating the intrinsic dimensions would require running the layout callback speculatively, which`
 /// `might mutate the live render object tree.`
-class MyoroLayoutBuilder extends MyoroStatefulWidget {
+class MyoroLayoutBuilder extends StatefulWidget {
   final MyoroLayoutBuilderChildCallback builder;
 
   const MyoroLayoutBuilder({super.key, required this.builder});

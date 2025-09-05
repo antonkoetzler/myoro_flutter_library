@@ -45,10 +45,10 @@ final class MyoroMultiDropdownViewModel<T>
   }
 
   @override
-  void initializeMenuController(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownsThemeExtension>();
-    final menuBorder = themeExtension.menuBorder;
-    final menuBorderRadius = themeExtension.menuBorderRadius;
+  void initializeMenuController(BuildContext context, MyoroDropdownStyle style) {
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final menuBorder = style.menuBorder ?? themeExtension.menuBorder;
+    final menuBorderRadius = style.menuBorderRadius ?? themeExtension.menuBorderRadius;
 
     final configuration = state.configuration;
     final menuConfiguration = configuration.menuConfiguration;

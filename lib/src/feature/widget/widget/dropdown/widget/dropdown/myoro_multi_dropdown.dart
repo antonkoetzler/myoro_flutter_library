@@ -1,8 +1,8 @@
 part of 'bundle/myoro_dropdown_bundle.dart';
 
 /// Multi item dropdown.
-class MyoroMultiDropdown<T> extends MyoroStatefulWidget {
-  const MyoroMultiDropdown({super.key, this.controller, this.configuration})
+class MyoroMultiDropdown<T> extends StatefulWidget {
+  const MyoroMultiDropdown({super.key, this.controller, this.configuration, this.style = const MyoroDropdownStyle()})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroMultiDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
@@ -14,11 +14,16 @@ class MyoroMultiDropdown<T> extends MyoroStatefulWidget {
   /// Configuration.
   final MyoroMultiDropdownConfiguration<T>? configuration;
 
+  /// Style.
+  final MyoroDropdownStyle style;
+
   @override
   State<MyoroMultiDropdown<T>> createState() => _MyoroMultiDropdownState<T>();
 }
 
 final class _MyoroMultiDropdownState<T> extends State<MyoroMultiDropdown<T>> {
+  MyoroDropdownStyle get _style => widget.style;
+
   MyoroMultiDropdownViewModel<T>? _localViewModel;
   MyoroMultiDropdownViewModel<T> get _viewModel {
     return widget.configuration != null
@@ -44,5 +49,5 @@ final class _MyoroMultiDropdownState<T> extends State<MyoroMultiDropdown<T>> {
   }
 
   @override
-  Widget build(_) => _Dropdown(_viewModel);
+  Widget build(_) => _Dropdown(_viewModel, _style);
 }

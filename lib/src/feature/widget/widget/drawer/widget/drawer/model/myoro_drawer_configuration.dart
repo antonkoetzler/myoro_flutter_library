@@ -15,26 +15,23 @@ class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
 
   const MyoroDrawerConfiguration({
     this.title = titleDefaultValue,
-    this.titleTextStyle,
     this.showCloseButton = showCloseButtonDefaultValue,
     this.barrierDismissable = barrierDismissableDefaultValue,
+    this.closeButtonIcon,
     required this.child,
   });
 
   // coverage:ignore-start
   MyoroDrawerConfiguration.fake()
     : title = faker.randomGenerator.boolean() ? faker.lorem.word() : '',
-      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       showCloseButton = faker.randomGenerator.boolean(),
       barrierDismissable = faker.randomGenerator.boolean(),
+      closeButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       child = const SizedBox.shrink();
   // coverage:ignore-end
 
   /// Title of the drawer.
   final String title;
-
-  /// [TextStyle] of the text in [_Header].
-  final TextStyle? titleTextStyle;
 
   /// Whether or not to show the close button.
   final bool showCloseButton;
@@ -42,22 +39,25 @@ class MyoroDrawerConfiguration with _$MyoroDrawerConfigurationMixin {
   /// Whether or not clicking anywhere but the drawer will close the drawer.
   final bool barrierDismissable;
 
+  /// [IconData] of the close button.
+  final IconData? closeButtonIcon;
+
   /// Content of the drawer.
   final Widget child;
 
   MyoroDrawerConfiguration copyWith({
     String? title,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
     bool? showCloseButton,
     bool? barrierDismissable,
+    IconData? closeButtonIcon,
+    bool closeButtonIconProvided = true,
     Widget? child,
   }) {
     return MyoroDrawerConfiguration(
       title: title ?? this.title,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
       showCloseButton: showCloseButton ?? this.showCloseButton,
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
+      closeButtonIcon: closeButtonIconProvided ? (closeButtonIcon ?? this.closeButtonIcon) : null,
       child: child ?? this.child,
     );
   }

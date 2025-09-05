@@ -11,7 +11,7 @@ part '_widget/_wrapper.dart';
 /// [MyoroInput] also serves as a base input for creating other inputs in the commons folder.
 /// A [MyoroInputConfiguration] is passed to every other input [Widget] in the commons folder.
 /// This means that [MyoroInput] should always be completely compatible with the other inputs.
-class MyoroInput extends MyoroStatefulWidget {
+class MyoroInput extends StatefulWidget {
   const MyoroInput({super.key, this.configuration = const MyoroInputConfiguration(), this.formatter});
 
   /// Configuration of the input.

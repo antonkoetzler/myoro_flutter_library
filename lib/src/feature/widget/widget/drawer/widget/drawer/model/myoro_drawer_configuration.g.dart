@@ -21,24 +21,24 @@ mixin _$MyoroDrawerConfigurationMixin {
     return other is MyoroDrawerConfiguration &&
         other.runtimeType == runtimeType &&
         other.title == self.title &&
-        other.titleTextStyle == self.titleTextStyle &&
         other.showCloseButton == self.showCloseButton &&
         other.barrierDismissable == self.barrierDismissable &&
+        other.closeButtonIcon == self.closeButtonIcon &&
         other.child == self.child;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.title, self.titleTextStyle, self.showCloseButton, self.barrierDismissable, self.child);
+    return Object.hash(self.title, self.showCloseButton, self.barrierDismissable, self.closeButtonIcon, self.child);
   }
 
   @override
   String toString() =>
       'MyoroDrawerConfiguration(\n'
       '  title: ${self.title},\n'
-      '  titleTextStyle: ${self.titleTextStyle},\n'
       '  showCloseButton: ${self.showCloseButton},\n'
       '  barrierDismissable: ${self.barrierDismissable},\n'
+      '  closeButtonIcon: ${self.closeButtonIcon},\n'
       '  child: ${self.child},\n'
       ');';
 }

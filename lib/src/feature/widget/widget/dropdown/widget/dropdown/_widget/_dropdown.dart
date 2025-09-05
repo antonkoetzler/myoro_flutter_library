@@ -2,10 +2,13 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 
 /// Merge point for both dropdowns where the shared logic begins.
 final class _Dropdown<T, V extends _ViewModelType<T>> extends StatefulWidget {
-  const _Dropdown(this._viewModel);
+  const _Dropdown(this._viewModel, this._style);
 
   /// View model.
   final V _viewModel;
+
+  /// Style.
+  final MyoroDropdownStyle _style;
 
   @override
   State<_Dropdown<T, V>> createState() => _DropdownState<T, V>();
@@ -13,6 +16,7 @@ final class _Dropdown<T, V extends _ViewModelType<T>> extends StatefulWidget {
 
 final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdown<T, V>> {
   V get _viewModel => widget._viewModel;
+  MyoroDropdownStyle get _style => widget._style;
 
   @override
   void initState() {
@@ -23,7 +27,7 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _viewModel.initializeMenuController(context);
+    _viewModel.initializeMenuController(context, _style);
   }
 
   @override
@@ -40,15 +44,19 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownsThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
 
-    return Provider.value(
-      value: _viewModel,
+    return MultiProvider(
+      providers: [
+        Provider.value(value: _viewModel),
+        Provider.value(value: _style),
+      ],
       child: RepaintBoundary(
         child: ValueListenableBuilder(
           valueListenable: _viewModel.state.inputSizeNotifier,
           builder: (_, Size? inputSize, _) => Row(
-            spacing: themeExtension.spacing,
+            spacing: spacing,
             crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
             children: [
               if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[

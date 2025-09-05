@@ -8,37 +8,43 @@ part '_widget/_subtitle.dart';
 part '_widget/_title.dart';
 
 /// An a generic feedback [Widget].
-final class MyoroFeedback extends MyoroStatelessWidget {
-  const MyoroFeedback({super.key, required this.configuration});
+final class MyoroFeedback extends StatelessWidget {
+  const MyoroFeedback({super.key, required this.configuration, this.style = const MyoroFeedbackStyle()});
 
   /// Configuration.
   final MyoroFeedbackConfiguration configuration;
 
+  /// Style.
+  final MyoroFeedbackStyle style;
+
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
+    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
-    return InheritedProvider.value(
-      value: configuration,
+    final subtitleConfiguration = configuration.subtitleConfiguration;
+    final actionButtonConfiguration = configuration.actionButtonConfiguration;
+
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: configuration),
+        InheritedProvider.value(value: style),
+      ],
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
             child: Column(
-              spacing: themeExtension.spacing,
+              spacing: spacing,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Flexible(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const _Icon(),
-                      const _Title(),
-                      if (configuration.subtitleConfiguration != null) const _Subtitle(),
-                    ],
+                    children: [const _Icon(), const _Title(), if (subtitleConfiguration != null) const _Subtitle()],
                   ),
                 ),
-                if (configuration.actionButtonConfiguration != null) const _ActionButton(),
+                if (actionButtonConfiguration != null) const _ActionButton(),
               ],
             ),
           ),

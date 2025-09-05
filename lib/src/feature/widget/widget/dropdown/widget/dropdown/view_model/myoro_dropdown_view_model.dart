@@ -75,7 +75,7 @@ abstract class MyoroDropdownViewModel<
   }
 
   /// Initializes [MyoroDropdownState.menuController].
-  void initializeMenuController(BuildContext context);
+  void initializeMenuController(BuildContext context, MyoroDropdownStyle style);
 
   /// Builds the menu [Widget].
   Widget get menuWidget;

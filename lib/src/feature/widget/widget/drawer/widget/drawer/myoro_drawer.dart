@@ -8,33 +8,42 @@ part '_widget/_drawer.dart';
 part '_widget/_title.dart';
 
 /// Base drawer.
-class MyoroDrawer extends MyoroStatelessWidget {
+class MyoroDrawer extends StatelessWidget {
+  const MyoroDrawer({super.key, required this.configuration, this.style = const MyoroDrawerStyle()});
+
   /// Configuration.
   final MyoroDrawerConfiguration configuration;
 
-  const MyoroDrawer({super.key, required this.configuration});
+  /// Style.
+  final MyoroDrawerStyle style;
 
   @override
   Widget build(context) {
     final isEndDrawerNotifier = context.read<MyoroDrawerController>().isEndDrawerNotifier;
 
-    return Stack(
-      children: [
-        _Barrier(configuration),
-        ValueListenableBuilder(
-          valueListenable: isEndDrawerNotifier,
-          builder: (_, isEndDrawer, _) {
-            return Row(
-              mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
-              children: [
-                if (configuration.showCloseButton && isEndDrawer) const _CloseButton(),
-                _Drawer(configuration),
-                if (configuration.showCloseButton && !isEndDrawer) const _CloseButton(),
-              ],
-            );
-          },
-        ),
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: configuration),
+        InheritedProvider.value(value: style),
       ],
+      child: Stack(
+        children: [
+          _Barrier(configuration),
+          ValueListenableBuilder(
+            valueListenable: isEndDrawerNotifier,
+            builder: (_, isEndDrawer, _) {
+              return Row(
+                mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
+                children: [
+                  if (configuration.showCloseButton && isEndDrawer) const _CloseButton(),
+                  const _Drawer(),
+                  if (configuration.showCloseButton && !isEndDrawer) const _CloseButton(),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

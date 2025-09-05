@@ -13,46 +13,60 @@ part 'myoro_resize_divider_theme_extension.g.dart';
 class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDividerThemeExtension>
     with _$MyoroResizeDividerThemeExtensionMixin {
   const MyoroResizeDividerThemeExtension({
-    required this.secondary,
-    required this.resizeButtonShortValue,
-    required this.resizeButtonLongValue,
-    required this.resizeButtonBorderRadius,
+    this.resizeButtonColor,
+    this.resizeButtonShortValue,
+    this.resizeButtonLongValue,
+    this.resizeButtonBorderRadius,
   });
 
   // coverage:ignore-start
   MyoroResizeDividerThemeExtension.fake()
-    : secondary = myoroFake<Color>(),
-      resizeButtonShortValue = faker.randomGenerator.decimal(),
-      resizeButtonLongValue = faker.randomGenerator.decimal(),
-      resizeButtonBorderRadius = myoroFake<BorderRadius>();
+    : resizeButtonColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      resizeButtonShortValue = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      resizeButtonLongValue = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      resizeButtonBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null;
   // coverage:ignore-end
 
   MyoroResizeDividerThemeExtension.builder(ColorScheme colorScheme)
-    : secondary = colorScheme.onPrimary,
+    : resizeButtonColor = colorScheme.onPrimary,
       resizeButtonShortValue = 8,
       resizeButtonLongValue = 8,
-      resizeButtonBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength);
+      resizeButtonBorderRadius = BorderRadius.circular(kMyoroBorderRadius);
 
-  /// [MyoroColorDesignSystem.secondary] by default.
-  final Color secondary;
+  /// [Color] of the resize button.
+  final Color? resizeButtonColor;
 
-  /// Width of the resize button. 10 by default.
-  final double resizeButtonShortValue;
+  /// Width of the resize button.
+  final double? resizeButtonShortValue;
 
-  /// Height of the resize button. 30 by default.
-  final double resizeButtonLongValue;
+  /// Height of the resize button.
+  final double? resizeButtonLongValue;
 
-  /// Border radius of the resize button. [kMyoroBorderRadius] by default.
-  final BorderRadius resizeButtonBorderRadius;
+  /// Border radius of the resize button.
+  final BorderRadius? resizeButtonBorderRadius;
 
   @override
   MyoroResizeDividerThemeExtension lerp(covariant ThemeExtension<MyoroResizeDividerThemeExtension>? other, double t) {
     if (other is! MyoroResizeDividerThemeExtension) return this;
+
+    final resizeButtonColor = Color.lerp(this.resizeButtonColor, other.resizeButtonColor, t);
+    final resizeButtonShortValue = lerpDouble(this.resizeButtonShortValue, other.resizeButtonShortValue, t);
+    final resizeButtonLongValue = lerpDouble(this.resizeButtonLongValue, other.resizeButtonLongValue, t);
+    final resizeButtonBorderRadius = BorderRadius.lerp(
+      this.resizeButtonBorderRadius,
+      other.resizeButtonBorderRadius,
+      t,
+    );
+
     return copyWith(
-      secondary: Color.lerp(secondary, other.secondary, t),
-      resizeButtonShortValue: lerpDouble(resizeButtonShortValue, other.resizeButtonShortValue, t),
-      resizeButtonLongValue: lerpDouble(resizeButtonLongValue, other.resizeButtonLongValue, t),
-      resizeButtonBorderRadius: BorderRadius.lerp(resizeButtonBorderRadius, other.resizeButtonBorderRadius, t),
+      resizeButtonColor: resizeButtonColor,
+      resizeButtonColorProvided: resizeButtonColor != null,
+      resizeButtonShortValue: resizeButtonShortValue,
+      resizeButtonShortValueProvided: resizeButtonShortValue != null,
+      resizeButtonLongValue: resizeButtonLongValue,
+      resizeButtonLongValueProvided: resizeButtonLongValue != null,
+      resizeButtonBorderRadius: resizeButtonBorderRadius,
+      resizeButtonBorderRadiusProvided: resizeButtonBorderRadius != null,
     );
   }
 }

@@ -19,15 +19,19 @@ mixin _$MyoroFeedbackThemeExtensionMixin on ThemeExtension<MyoroFeedbackThemeExt
   @override
   MyoroFeedbackThemeExtension copyWith({
     double? spacing,
+    bool spacingProvided = true,
     double? iconSize,
+    bool iconSizeProvided = true,
     TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
     TextStyle? subtitleTextStyle,
+    bool subtitleTextStyleProvided = true,
   }) {
     return MyoroFeedbackThemeExtension(
-      spacing: spacing ?? self.spacing,
-      iconSize: iconSize ?? self.iconSize,
-      titleTextStyle: titleTextStyle ?? self.titleTextStyle,
-      subtitleTextStyle: subtitleTextStyle ?? self.subtitleTextStyle,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      subtitleTextStyle: subtitleTextStyleProvided ? (subtitleTextStyle ?? self.subtitleTextStyle) : null,
     );
   }
 

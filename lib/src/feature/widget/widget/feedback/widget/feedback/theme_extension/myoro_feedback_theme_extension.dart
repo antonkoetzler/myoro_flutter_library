@@ -12,47 +12,52 @@ part 'myoro_feedback_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
     with _$MyoroFeedbackThemeExtensionMixin {
-  const MyoroFeedbackThemeExtension({
-    required this.spacing,
-    required this.iconSize,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
-  });
+  const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
   // coverage:ignore-start
   MyoroFeedbackThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(scale: 20),
-      iconSize = faker.randomGenerator.decimal(scale: 20),
-      titleTextStyle = myoroFake<TextStyle>(),
-      subtitleTextStyle = myoroFake<TextStyle>();
+    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      iconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      subtitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
 
   MyoroFeedbackThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,
       iconSize = kMyoroMultiplier * 30,
-      titleTextStyle = textTheme.titleLarge!,
-      subtitleTextStyle = textTheme.bodyMedium!;
+      titleTextStyle = textTheme.titleLarge,
+      subtitleTextStyle = textTheme.bodyMedium;
 
   /// Spacing between the icon/title/subtitle and the action button.
-  final double spacing;
+  final double? spacing;
 
   /// Size of the icon.
-  final double iconSize;
+  final double? iconSize;
 
   /// [TextStyle] of the title.
-  final TextStyle titleTextStyle;
+  final TextStyle? titleTextStyle;
 
   /// [TextStyle] of the subtitle.
-  final TextStyle subtitleTextStyle;
+  final TextStyle? subtitleTextStyle;
 
   @override
   MyoroFeedbackThemeExtension lerp(covariant ThemeExtension<MyoroFeedbackThemeExtension>? other, double t) {
     if (other is! MyoroFeedbackThemeExtension) return this;
+
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+    final iconSize = lerpDouble(this.iconSize, other.iconSize, t);
+    final titleTextStyle = TextStyle.lerp(this.titleTextStyle, other.titleTextStyle, t);
+    final subtitleTextStyle = TextStyle.lerp(this.subtitleTextStyle, other.subtitleTextStyle, t);
+
     return copyWith(
-      spacing: lerpDouble(spacing, other.spacing, t),
-      iconSize: lerpDouble(iconSize, other.iconSize, t),
-      titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      subtitleTextStyle: TextStyle.lerp(subtitleTextStyle, other.subtitleTextStyle, t),
+      spacing: spacing,
+      spacingProvided: spacing != null,
+      iconSize: iconSize,
+      iconSizeProvided: iconSize != null,
+      titleTextStyle: titleTextStyle,
+      titleTextStyleProvided: titleTextStyle != null,
+      subtitleTextStyle: subtitleTextStyle,
+      subtitleTextStyleProvided: subtitleTextStyle != null,
     );
   }
 }

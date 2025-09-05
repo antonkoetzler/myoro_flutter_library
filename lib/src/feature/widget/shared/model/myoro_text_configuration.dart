@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_text_configuration.g.dart';
 
-/// Text configuration of [MyoroIconTextButton].
+/// Generic text configuration.
 @immutable
 @myoroModel
 class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {

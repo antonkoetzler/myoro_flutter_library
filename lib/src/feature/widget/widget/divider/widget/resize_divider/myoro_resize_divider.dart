@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_resize_button.dart';
 
@@ -9,7 +10,7 @@ class MyoroResizeDivider extends StatelessWidget {
     this._direction, {
     super.key,
     this.dragCallback,
-    this.style = MyoroBasicDividerStyle(),
+    this.style = const MyoroResizeDividerStyle(),
   });
 
   /// [Axis]
@@ -19,16 +20,19 @@ class MyoroResizeDivider extends StatelessWidget {
   final MyoroResizeDividerDragCallback? dragCallback;
 
   /// Style.
-  final MyoroBasicDividerStyle style;
+  final MyoroResizeDividerStyle style;
 
   @override
   Widget build(context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        MyoroBasicDivider(_direction, style: style),
-        _ResizeButton(dragCallback),
-      ],
+    return InheritedProvider.value(
+      value: style,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          MyoroBasicDivider(_direction, style: style),
+          _ResizeButton(_direction, dragCallback),
+        ],
+      ),
     );
   }
 }

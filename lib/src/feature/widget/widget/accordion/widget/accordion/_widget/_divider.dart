@@ -6,6 +6,6 @@ final class _Divider extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return const MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal));
+    return const MyoroBasicDivider(Axis.horizontal);
   }
 }
