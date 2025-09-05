@@ -24,4 +24,5 @@ export 'snack_bar/exports.dart';
 export 'tab_view/exports.dart';
 export 'table/exports.dart';
 export 'testing/exports.dart';
+export 'theme_extension_wrapper/exports.dart';
 export 'tooltip/exports.dart';

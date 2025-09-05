@@ -10,7 +10,7 @@ part '_widget/_item_title_button_arrow.dart';
 
 /// Accordion of MFL.
 class MyoroAccordion extends StatefulWidget {
-  const MyoroAccordion({super.key, this.controller, this.configuration, this.style = const MyoroAccordionStyle()})
+  const MyoroAccordion({super.key, this.controller, this.configuration, this.themeExtension})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroAccordion]: [controller] (x)or [configuration] must be provided.',
@@ -23,7 +23,7 @@ class MyoroAccordion extends StatefulWidget {
   final MyoroAccordionConfiguration? configuration;
 
   /// Style.
-  final MyoroAccordionStyle style;
+  final MyoroAccordionThemeExtension? themeExtension;
 
   @override
   State<MyoroAccordion> createState() => _MyoroAccordionState();
@@ -32,7 +32,7 @@ class MyoroAccordion extends StatefulWidget {
 final class _MyoroAccordionState extends State<MyoroAccordion> {
   MyoroAccordionController? get _controller => widget.controller;
   MyoroAccordionConfiguration? get _configuration => widget.configuration;
-  MyoroAccordionStyle get _style => widget.style;
+  MyoroAccordionThemeExtension? get _themeExtension => widget.themeExtension;
 
   MyoroAccordionViewModel? _localViewModel;
   MyoroAccordionViewModel get _viewModel {
@@ -60,36 +60,37 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   @override
   Widget build(context) {
+    final themeExtension = _themeExtension ?? context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+
     final state = _viewModel.state;
     final selectedItemNotifier = state.selectedItemNotifier;
     final scrollController = state.scrollController;
     final configuration = state.configuration;
     final items = configuration.items;
+    final thumbVisibility = configuration.thumbVisibility;
 
-    final thumbVisibility = _style.thumbVisibility;
-
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: _viewModel),
-        InheritedProvider.value(value: _style),
-      ],
-      child: ValueListenableBuilder(
-        valueListenable: selectedItemNotifier,
-        builder: (_, selectedItem, _) {
-          return Scrollbar(
-            controller: scrollController,
-            thumbVisibility: thumbVisibility,
-            child: ListView.builder(
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: MyoroSingularThemeExtensionWrapper(
+        themeExtension: themeExtension,
+        child: ValueListenableBuilder(
+          valueListenable: selectedItemNotifier,
+          builder: (_, selectedItem, _) {
+            return Scrollbar(
               controller: scrollController,
-              itemCount: items.length,
-              itemBuilder: (_, index) => _Item(
-                item: items.elementAt(index),
-                selectedItem: selectedItem,
-                isLastItem: index == items.length - 1,
+              thumbVisibility: thumbVisibility,
+              child: ListView.builder(
+                controller: scrollController,
+                itemCount: items.length,
+                itemBuilder: (_, index) => _Item(
+                  item: items.elementAt(index),
+                  selectedItem: selectedItem,
+                  isLastItem: index == items.length - 1,
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

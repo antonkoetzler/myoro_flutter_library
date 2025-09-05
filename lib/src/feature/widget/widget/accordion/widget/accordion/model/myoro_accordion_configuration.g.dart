@@ -20,18 +20,20 @@ mixin _$MyoroAccordionConfigurationMixin {
   bool operator ==(Object other) {
     return other is MyoroAccordionConfiguration &&
         other.runtimeType == runtimeType &&
+        other.thumbVisibility == self.thumbVisibility &&
         other.selectedItem == self.selectedItem &&
         other.items == self.items;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.selectedItem, self.items);
+    return Object.hash(self.thumbVisibility, self.selectedItem, self.items);
   }
 
   @override
   String toString() =>
       'MyoroAccordionConfiguration(\n'
+      '  thumbVisibility: ${self.thumbVisibility},\n'
       '  selectedItem: ${self.selectedItem},\n'
       '  items: ${self.items},\n'
       ');';

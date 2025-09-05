@@ -10,12 +10,9 @@ final class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
-
-    final style = context.read<MyoroButtonStyle>();
-    final borderBuilder = style.borderBuilder;
-    final borderRadius = style.borderRadius;
-
-    final backgroundColorBuilder = style.backgroundColorBuilder ?? themeExtension.backgroundColorBuilder;
+    final borderBuilder = themeExtension.borderBuilder;
+    final borderRadius = themeExtension.borderRadius;
+    final backgroundColorBuilder = themeExtension.backgroundColorBuilder;
 
     final viewModel = context.read<MyoroButtonViewModel>();
     final state = viewModel.state;
@@ -24,7 +21,7 @@ final class _Button extends StatelessWidget {
     final child = Container(
       decoration: BoxDecoration(
         color: backgroundColorBuilder(_tapStatusEnum),
-        border: borderBuilder?.call(_tapStatusEnum),
+        border: borderBuilder.call(_tapStatusEnum),
         borderRadius: borderRadius,
       ),
       child: ClipRRect(

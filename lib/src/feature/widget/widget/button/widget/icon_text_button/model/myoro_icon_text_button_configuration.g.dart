@@ -22,6 +22,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
         other.runtimeType == runtimeType &&
         other.iconConfiguration == self.iconConfiguration &&
         other.textConfiguration == self.textConfiguration &&
+        other.cursor == self.cursor &&
         other.tooltipConfiguration == self.tooltipConfiguration &&
         other.onTapDown == self.onTapDown &&
         other.onTapUp == self.onTapUp;
@@ -32,6 +33,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
     return Object.hash(
       self.iconConfiguration,
       self.textConfiguration,
+      self.cursor,
       self.tooltipConfiguration,
       self.onTapDown,
       self.onTapUp,
@@ -43,6 +45,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
       'MyoroIconTextButtonConfiguration(\n'
       '  iconConfiguration: ${self.iconConfiguration},\n'
       '  textConfiguration: ${self.textConfiguration},\n'
+      '  cursor: ${self.cursor},\n'
       '  tooltipConfiguration: ${self.tooltipConfiguration},\n'
       '  onTapDown: ${self.onTapDown},\n'
       '  onTapUp: ${self.onTapUp},\n'

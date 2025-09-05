@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
-/// Library's [AppBar] widget.
-///
-/// Example of using the widget with [MyoroScreen]:
 /// ``` dart
 /// class FooAppBar extends StatelessWidget implements PreferredSizeWidget {
 ///   const FooAppBar({super.key});
@@ -18,34 +14,32 @@ import 'package:provider/provider.dart';
 /// }
 /// ```
 class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyoroAppBar({super.key, this.style = const MyoroAppBarStyle(), required this.child});
+  const MyoroAppBar({super.key, this.themeExtension, this.showBottomDivider = true, required this.child});
 
-  /// Style.
-  final MyoroAppBarStyle style;
+  /// [ThemeExtension]
+  final MyoroAppBarThemeExtension? themeExtension;
+
+  /// If there is a divider at the bottom of the app bar.
+  final bool showBottomDivider;
 
   /// [Widget] of the [MyoroAppBar].
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroAppBarThemeExtension>();
+    final backgroundColor = themeExtension.backgroundColor;
+    final contentPadding = themeExtension.contentPadding;
 
-    final bordered = style.bordered;
-
-    final backgroundColor = style.backgroundColor ?? themeExtension.backgroundColor;
-    final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
-
-    return InheritedProvider.value(
-      value: style,
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: themeExtension,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
             child: Container(color: backgroundColor, padding: contentPadding, child: child),
           ),
-          if (bordered) ...[
-            const MyoroBasicDivider(configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal)),
-          ],
+          if (showBottomDivider) const MyoroBasicDivider(Axis.horizontal),
         ],
       ),
     );

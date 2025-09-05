@@ -9,14 +9,21 @@ part 'myoro_button_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
-  const MyoroButtonConfiguration({this.tooltipConfiguration, this.onTapDown, this.onTapUp});
+  const MyoroButtonConfiguration({this.cursor, this.tooltipConfiguration, this.onTapDown, this.onTapUp});
 
   // coverage:ignore-start
   MyoroButtonConfiguration.fake()
-    : tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
+    : cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
+      tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null;
   // coverage:ignore-end
+
+  /// [MouseCursor] when the [MyoroButton] is hovered over.
+  ///
+  /// If [MyoroButtonConfiguration.onTapDown] or [MyoroButtonConfiguration.onTapUp] is provided,
+  /// [cursor] defaults to [SystemMouseCursors.click]. Other, the default is [SystemMouseCursors.basic].
+  final MouseCursor? cursor;
 
   /// [MyoroTooltip] of the [MyoroButton].
   final MyoroTooltipConfiguration? tooltipConfiguration;
@@ -28,6 +35,8 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
   final MyoroButtonOnTapUp? onTapUp;
 
   MyoroButtonConfiguration copyWith({
+    MouseCursor? cursor,
+    bool cursorProvided = true,
     MyoroTooltipConfiguration? tooltipConfiguration,
     bool tooltipConfigurationProvided = true,
     MyoroButtonOnTapDown? onTapDown,
@@ -36,6 +45,7 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
     bool onTapUpProvided = true,
   }) {
     return MyoroButtonConfiguration(
+      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
       tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,

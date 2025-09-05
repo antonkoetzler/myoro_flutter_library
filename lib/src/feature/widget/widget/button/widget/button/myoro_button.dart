@@ -12,13 +12,13 @@ class MyoroButton extends StatefulWidget {
   /// Configuration of the [MyoroButton].
   final MyoroButtonConfiguration? configuration;
 
-  /// Style.
-  final MyoroButtonStyle style;
+  /// Theme extension.
+  final MyoroButtonVariantThemeExtension? themeExtension;
 
   /// [Widget] builder of the [MyoroButton].
   final MyoroButtonBuilder builder;
 
-  const MyoroButton({super.key, this.configuration, this.style = const MyoroButtonStyle(), required this.builder});
+  const MyoroButton({super.key, this.configuration, this.themeExtension, required this.builder});
 
   @override
   State<MyoroButton> createState() => _MyoroButtonState();
@@ -26,8 +26,11 @@ class MyoroButton extends StatefulWidget {
 
 final class _MyoroButtonState extends State<MyoroButton> {
   MyoroButtonConfiguration? get _configuration => widget.configuration;
-  MyoroButtonStyle get _style => widget.style;
   MyoroButtonBuilder get _builder => widget.builder;
+
+  MyoroButtonVariantThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroButtonThemeExtension>();
+  }
 
   late final MyoroButtonViewModel _viewModel;
 
@@ -43,9 +46,6 @@ final class _MyoroButtonState extends State<MyoroButton> {
     final state = _viewModel.state;
     if (mounted && _configuration != oldWidget.configuration) {
       state.configuration = _configuration;
-      setState(() {});
-    }
-    if (mounted && _style != oldWidget.style) {
       setState(() {});
     }
   }
@@ -68,24 +68,24 @@ final class _MyoroButtonState extends State<MyoroButton> {
     final configuration = state.configuration;
     final onTapProvided = configuration?.onTapProvided == true;
 
-    final cursor = _style.cursor ?? (onTapProvided ? SystemMouseCursors.click : SystemMouseCursors.basic);
+    final cursor = configuration?.cursor ?? (onTapProvided ? SystemMouseCursors.click : SystemMouseCursors.basic);
 
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: _viewModel),
-        InheritedProvider.value(value: _style),
-      ],
-      child: MouseRegion(
-        cursor: cursor,
-        onEnter: onEnter,
-        onExit: onExit,
-        child: GestureDetector(
-          onTapDown: onTapDown,
-          onTapUp: onTapUp,
-          onTapCancel: onTapCancel,
-          child: ValueListenableBuilder(
-            valueListenable: tapStatusNotifier,
-            builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: MyoroSingularThemeExtensionWrapper(
+        themeExtension: _themeExtension,
+        child: MouseRegion(
+          cursor: cursor,
+          onEnter: onEnter,
+          onExit: onExit,
+          child: GestureDetector(
+            onTapDown: onTapDown,
+            onTapUp: onTapUp,
+            onTapCancel: onTapCancel,
+            child: ValueListenableBuilder(
+              valueListenable: tapStatusNotifier,
+              builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
+            ),
           ),
         ),
       ),

@@ -22,10 +22,10 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
     : backgroundColor = colorScheme.primary,
       contentPadding = const EdgeInsets.all(10);
 
-  /// Background [Color] of the app bar.
+  /// Background [Color].
   final Color? backgroundColor;
 
-  /// [EdgeInsets] of the contents of the [MyoroAppBar], not it's bottom border.
+  /// Content padding.
   final EdgeInsets? contentPadding;
 
   @override

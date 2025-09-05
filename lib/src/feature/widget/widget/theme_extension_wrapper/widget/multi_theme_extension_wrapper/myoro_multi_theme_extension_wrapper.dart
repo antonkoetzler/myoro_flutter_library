@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+/// [Widget] that adds multiple [ThemeExtension]s to the scope of [child].
+class MyoroMultiThemeExtensionWrapper extends StatelessWidget {
+  const MyoroMultiThemeExtensionWrapper({super.key, required this.themeExtensions, required this.child})
+    : assert(themeExtensions.length > 0, '[MyoroMultiThemeExtensionWrapper]: [themeExtensions] cannot be empty.');
+
+  /// [ThemeExtension]s to add.
+  final List<ThemeExtension> themeExtensions;
+
+  /// [Widget] whose scope will have [themeExtensions].
+  final Widget child;
+
+  @override
+  Widget build(context) {
+    return Theme(
+      data: context.themeData.copyWith(extensions: themeExtensions),
+      child: child,
+    );
+  }
+}

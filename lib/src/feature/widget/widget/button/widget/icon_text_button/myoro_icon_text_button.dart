@@ -11,18 +11,20 @@ class MyoroIconTextButton extends StatelessWidget {
   /// Configuration.
   final MyoroIconTextButtonConfiguration configuration;
 
-  /// Style.
-  final MyoroIconTextButtonStyle style;
+  /// [ThemeExtension]
+  final MyoroIconTextButtonThemeExtension? themeExtension;
 
-  const MyoroIconTextButton({super.key, required this.configuration, this.style = const MyoroIconTextButtonStyle()});
+  const MyoroIconTextButton({super.key, required this.configuration, this.themeExtension});
 
   @override
   Widget build(context) {
-    return InheritedProvider(
-      create: (_) => MyoroIconTextButtonViewModel(configuration, style),
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+
+    return InheritedProvider.value(
+      value: configuration,
       child: MyoroButton(
         configuration: configuration,
-        style: style,
+        themeExtension: themeExtension,
         builder: (_, tapStatusEnum) => _Button(tapStatusEnum),
       ),
     );

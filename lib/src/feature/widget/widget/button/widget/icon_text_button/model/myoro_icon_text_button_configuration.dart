@@ -20,7 +20,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
          '[MyoroIconTextButtonConfiguration]: [iconConfiguration] '
          'and/or [textConfiguration] must be provided.',
        );
-
+ YOU ARE HERE
   // coverage:ignore-start
   factory MyoroIconTextButtonConfiguration.fake({bool? borderRadiusProvided, bool? borderBuilderProvided}) {
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';

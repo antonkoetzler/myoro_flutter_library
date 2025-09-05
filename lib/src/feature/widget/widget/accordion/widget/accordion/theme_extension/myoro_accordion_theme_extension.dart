@@ -11,8 +11,7 @@ part 'myoro_accordion_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExtension>
-    with _$MyoroAccordionThemeExtensionMixin
-    implements MyoroAccordionStyleProperties {
+    with _$MyoroAccordionThemeExtensionMixin {
   const MyoroAccordionThemeExtension({
     this.thumbVisibility,
     this.itemContentBackgroundColor,
@@ -37,35 +36,19 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemContentAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
       itemContentAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null,
-      itemTitleButtonBorderRadius = faker.randomGenerator.boolean()
-          ? myoroFake<BorderRadius>()
-          : null,
-      itemTitleButtonContentPadding = faker.randomGenerator.boolean()
-          ? myoroFake<EdgeInsets>()
-          : null,
-      itemTitleButtonSpacing = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 50)
-          : null,
-      itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean()
-          ? myoroFake<TextStyle>()
-          : null,
-      itemTitleButtonArrowBackgroundColor = faker.randomGenerator.boolean()
-          ? myoroFake<Color>()
-          : null,
+      itemTitleButtonBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      itemTitleButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      itemTitleButtonSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+      itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      itemTitleButtonArrowBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemTitleButtonArrowIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       itemTitleButtonArrowIconSize = faker.randomGenerator.boolean()
           ? faker.randomGenerator.decimal(scale: 50, min: 10)
           : null,
       itemTitleButtonArrowIconColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      itemTitleButtonArrowBorderRadius = faker.randomGenerator.boolean()
-          ? myoroFake<BorderRadius>()
-          : null,
-      itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean()
-          ? myoroFake<Duration>()
-          : null,
-      itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean()
-          ? myoroFake<Curve>()
-          : null;
+      itemTitleButtonArrowBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
+      itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null;
   // coverage:ignore-end
 
   MyoroAccordionThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -85,74 +68,64 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonArrowAnimationDuration = const Duration(milliseconds: 250),
       itemTitleButtonArrowAnimationCurve = Curves.easeInOut;
 
-  @override
+  /// [Scrollbar.thumbVisibility] of the scrollable.
   final bool? thumbVisibility;
 
-  @override
+  /// Background color of of an item.
   final Color? itemContentBackgroundColor;
 
-  @override
+  /// [Duration] of the animation of [_ItemContent].
   final Duration? itemContentAnimationDuration;
 
-  @override
+  /// Animation [Curve] of the animation of [_ItemContent].
   final Curve? itemContentAnimationCurve;
 
-  @override
+  /// [BorderRadius] of [_ItemTitleButton].
   final BorderRadius? itemTitleButtonBorderRadius;
 
-  @override
+  /// [EdgeInsets] of [_ItemTitleButton].
   final EdgeInsets? itemTitleButtonContentPadding;
 
-  @override
+  /// [Row.spacing] of [_ItemTitleButton].
   final double? itemTitleButtonSpacing;
 
-  @override
+  /// Default [TextStyle] wrapped around the [MyoroAccordionItem.titleBuilder].
   final TextStyle? itemTitleButtonTitleTextStyle;
 
-  @override
+  /// Background [Color] of an item title button's arrow when
+  /// it's being hovered over when said item is selected.
   final Color? itemTitleButtonArrowBackgroundColor;
 
-  @override
+  /// [IconData] of [_ItemTitleButtonArrow].
   final IconData? itemTitleButtonArrowIcon;
 
-  @override
+  /// Size of [_ItemTitleButtonArrow].
   final double? itemTitleButtonArrowIconSize;
 
-  @override
+  /// [Color] of [_ItemTitleButtonArrow].
   final Color? itemTitleButtonArrowIconColor;
 
-  @override
+  /// [BorderRadius] of [_ItemTitleButtonArrow];
   final BorderRadius? itemTitleButtonArrowBorderRadius;
 
-  @override
+  /// [Duration] of the rotation animation of [_ItemTitleButtonArrow].
   final Duration? itemTitleButtonArrowAnimationDuration;
 
-  @override
+  /// [Curve] of the rotation animation of [_ItemTitleButtonArrow].
   final Curve? itemTitleButtonArrowAnimationCurve;
 
   @override
-  MyoroAccordionThemeExtension lerp(
-    covariant ThemeExtension<MyoroAccordionThemeExtension>? other,
-    double t,
-  ) {
+  MyoroAccordionThemeExtension lerp(covariant ThemeExtension<MyoroAccordionThemeExtension>? other, double t) {
     if (other is! MyoroAccordionThemeExtension) return this;
 
     final thumbVisibility = myoroLerp(this.thumbVisibility, other.thumbVisibility, t);
-    final itemContentBackgroundColor = Color.lerp(
-      this.itemContentBackgroundColor,
-      other.itemContentBackgroundColor,
-      t,
-    );
+    final itemContentBackgroundColor = Color.lerp(this.itemContentBackgroundColor, other.itemContentBackgroundColor, t);
     final itemContentAnimationDuration = myoroLerp(
       this.itemContentAnimationDuration,
       other.itemContentAnimationDuration,
       t,
     );
-    final itemContentAnimationCurve = myoroLerp(
-      this.itemContentAnimationCurve,
-      other.itemContentAnimationCurve,
-      t,
-    );
+    final itemContentAnimationCurve = myoroLerp(this.itemContentAnimationCurve, other.itemContentAnimationCurve, t);
     final itemTitleButtonBorderRadius = BorderRadius.lerp(
       this.itemTitleButtonBorderRadius,
       other.itemTitleButtonBorderRadius,
@@ -163,11 +136,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       other.itemTitleButtonContentPadding,
       t,
     );
-    final itemTitleButtonSpacing = lerpDouble(
-      this.itemTitleButtonSpacing,
-      other.itemTitleButtonSpacing,
-      t,
-    );
+    final itemTitleButtonSpacing = lerpDouble(this.itemTitleButtonSpacing, other.itemTitleButtonSpacing, t);
     final itemTitleButtonTitleTextStyle = TextStyle.lerp(
       this.itemTitleButtonTitleTextStyle,
       other.itemTitleButtonTitleTextStyle,
@@ -178,11 +147,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       other.itemTitleButtonArrowBackgroundColor,
       t,
     );
-    final itemTitleButtonArrowIcon = myoroLerp(
-      this.itemTitleButtonArrowIcon,
-      other.itemTitleButtonArrowIcon,
-      t,
-    );
+    final itemTitleButtonArrowIcon = myoroLerp(this.itemTitleButtonArrowIcon, other.itemTitleButtonArrowIcon, t);
     final itemTitleButtonArrowIconSize = lerpDouble(
       this.itemTitleButtonArrowIconSize,
       other.itemTitleButtonArrowIconSize,
@@ -246,9 +211,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
   /// [MyoroButtonStyle] of the item title button.
   MyoroButtonStyle get itemTitleButtonStyle {
     return MyoroButtonStyle(
-      backgroundColorBuilder: itemContentBackgroundColor != null
-          ? (_) => itemContentBackgroundColor!
-          : null,
+      backgroundColorBuilder: itemContentBackgroundColor != null ? (_) => itemContentBackgroundColor! : null,
     );
   }
 }
