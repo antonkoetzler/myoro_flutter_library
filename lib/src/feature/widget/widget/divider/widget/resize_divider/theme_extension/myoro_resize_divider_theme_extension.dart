@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -20,6 +21,35 @@ final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<
     this.resizeButtonShortValue,
     this.resizeButtonLongValue,
   });
+
+  // coverage:ignore-start
+  factory MyoroResizeDividerThemeExtension.fake() {
+    return MyoroResizeDividerThemeExtension(
+      color: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      shortValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+      longValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+      resizeButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      resizeButtonColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      resizeButtonShortValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+      resizeButtonLongValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+    );
+  }
+  // coverage:ignore-end
+
+  factory MyoroResizeDividerThemeExtension.builder(
+    MyoroBasicDividerThemeExtension themeExtension,
+    ColorScheme colorScheme,
+  ) {
+    return MyoroResizeDividerThemeExtension(
+      color: themeExtension.color,
+      shortValue: themeExtension.shortValue,
+      longValue: themeExtension.longValue,
+      resizeButtonBorderRadius: BorderRadius.circular(kMyoroBorderRadius),
+      resizeButtonColor: colorScheme.onPrimary,
+      resizeButtonShortValue: kMyoroBorderWidth,
+      resizeButtonLongValue: kMyoroBorderWidth,
+    );
+  }
 
   /// Border radius of the resize button.
   final BorderRadius? resizeButtonBorderRadius;

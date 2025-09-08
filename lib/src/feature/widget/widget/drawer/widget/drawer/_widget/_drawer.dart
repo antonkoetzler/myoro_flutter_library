@@ -27,10 +27,7 @@ final class _Drawer extends StatelessWidget {
             children: [
               if (title.isNotEmpty) ...[
                 _Title(configuration),
-                Padding(
-                  padding: titleContentDividerPadding,
-                  child: const MyoroBasicDivider(Axis.horizontal),
-                ),
+                Padding(padding: titleContentDividerPadding, child: const MyoroBasicDivider(Axis.horizontal)),
               ],
               Expanded(child: child),
             ],

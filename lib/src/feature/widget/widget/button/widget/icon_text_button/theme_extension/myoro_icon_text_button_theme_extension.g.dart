@@ -22,6 +22,8 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
     bool contentPaddingProvided = true,
     double? spacing,
     bool spacingProvided = true,
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
     Color? backgroundIdleColor,
     bool backgroundIdleColorProvided = true,
     Color? backgroundHoverColor,
@@ -68,6 +70,7 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
         other.runtimeType == runtimeType &&
         other.contentPadding == self.contentPadding &&
         other.spacing == self.spacing &&
+        other.backgroundColor == self.backgroundColor &&
         other.backgroundIdleColor == self.backgroundIdleColor &&
         other.backgroundHoverColor == self.backgroundHoverColor &&
         other.backgroundTapColor == self.backgroundTapColor &&
@@ -86,6 +89,7 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
     return Object.hash(
       self.contentPadding,
       self.spacing,
+      self.backgroundColor,
       self.backgroundIdleColor,
       self.backgroundHoverColor,
       self.backgroundTapColor,
@@ -105,6 +109,7 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       'MyoroIconTextButtonThemeExtension(\n'
       '  contentPadding: ${self.contentPadding},\n'
       '  spacing: ${self.spacing},\n'
+      '  backgroundColor: ${self.backgroundColor},\n'
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
       '  backgroundHoverColor: ${self.backgroundHoverColor},\n'
       '  backgroundTapColor: ${self.backgroundTapColor},\n'

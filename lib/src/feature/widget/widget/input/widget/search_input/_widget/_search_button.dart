@@ -8,28 +8,22 @@ final class _SearchButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final inputThemeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final secondaryButtonThemeExtension = context.resolveThemeExtension<MyoroButtonSecondaryVariantThemeExtension>();
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
 
     return MyoroButton(
-      configuration: MyoroButtonConfiguration(
-        borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
-        onTapUp: (_) => _onTapUp(viewModel),
-      ),
-      builder: (_, _) => _builder(context, viewModel),
+      configuration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(viewModel)),
+      themeExtension: MyoroButtonThemeExtension.fromVariant(secondaryButtonThemeExtension),
+      builder: (_, _) => _itemsRequest.status.isLoading
+          ? MyoroCircularLoader(
+              configuration: MyoroCircularLoaderConfiguration(size: inputThemeExtension.searchButtonLoadingSize),
+            )
+          : Icon(inputThemeExtension.searchButtonIcon),
     );
   }
 
   void _onTapUp(MyoroSearchInputViewModel viewModel) {
     if (!viewModel.itemsRequest.status.isLoading) viewModel.itemsRequestNotifier.fetch();
-  }
-
-  Widget _builder(BuildContext context, MyoroSearchInputViewModel viewModel) {
-    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
-
-    return _itemsRequest.status.isLoading
-        ? MyoroCircularLoader(
-            configuration: MyoroCircularLoaderConfiguration(size: themeExtension.searchButtonLoadingSize),
-          )
-        : Icon(themeExtension.searchButtonIcon);
   }
 }

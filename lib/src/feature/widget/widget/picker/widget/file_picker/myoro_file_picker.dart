@@ -8,13 +8,20 @@ part '_widget/_selected_file.dart';
 
 /// File picker of MFL.
 final class MyoroFilePicker extends StatelessWidget {
-  const MyoroFilePicker({super.key, required this.configuration});
+  const MyoroFilePicker({super.key, required this.configuration, this.themeExtension});
 
   /// Configuration.
   final MyoroFilePickerConfiguration configuration;
 
+  /// Theme extension.
+  final MyoroFilePickerThemeExtension? themeExtension;
+
   @override
-  Widget build(_) {
-    return InheritedProvider(create: (_) => MyoroFilePickerViewModel(configuration), child: const _Content());
+  Widget build(BuildContext context) {
+    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
+
+    final child = InheritedProvider(create: (_) => MyoroFilePickerViewModel(configuration), child: const _Content());
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: child);
   }
 }

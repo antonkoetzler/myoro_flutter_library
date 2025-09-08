@@ -19,21 +19,30 @@ mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> 
   @override
   MyoroMenuThemeExtension copyWith({
     Color? backgroundColor,
+    bool backgroundColorProvided = true,
     BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
     EdgeInsets? searchBarPadding,
+    bool searchBarPaddingProvided = true,
     MyoroInputStyleEnum? searchBarInputStyle,
+    bool searchBarInputStyleProvided = true,
     BorderRadius? itemBorderRadius,
+    bool itemBorderRadiusProvided = true,
     TextStyle? dialogTextStyle,
+    bool dialogTextStyleProvided = true,
     EdgeInsets? dialogTextLoaderPadding,
+    bool dialogTextLoaderPaddingProvided = true,
   }) {
     return MyoroMenuThemeExtension(
-      backgroundColor: backgroundColor ?? self.backgroundColor,
-      borderRadius: borderRadius ?? self.borderRadius,
-      searchBarPadding: searchBarPadding ?? self.searchBarPadding,
-      searchBarInputStyle: searchBarInputStyle ?? self.searchBarInputStyle,
-      itemBorderRadius: itemBorderRadius ?? self.itemBorderRadius,
-      dialogTextStyle: dialogTextStyle ?? self.dialogTextStyle,
-      dialogTextLoaderPadding: dialogTextLoaderPadding ?? self.dialogTextLoaderPadding,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      searchBarPadding: searchBarPaddingProvided ? (searchBarPadding ?? self.searchBarPadding) : null,
+      searchBarInputStyle: searchBarInputStyleProvided ? (searchBarInputStyle ?? self.searchBarInputStyle) : null,
+      itemBorderRadius: itemBorderRadiusProvided ? (itemBorderRadius ?? self.itemBorderRadius) : null,
+      dialogTextStyle: dialogTextStyleProvided ? (dialogTextStyle ?? self.dialogTextStyle) : null,
+      dialogTextLoaderPadding: dialogTextLoaderPaddingProvided
+          ? (dialogTextLoaderPadding ?? self.dialogTextLoaderPadding)
+          : null,
     );
   }
 

@@ -24,14 +24,8 @@ class MyoroBarGraphViewModel {
                 borderRadius: themeExtension.barBorderRadius,
                 rodStackItems: bar.barSections.isEmpty
                     ? null
-                    : bar.barSections.map<BarChartRodStackItem>((
-                        MyoroBarGraphBarSection barSection,
-                      ) {
-                        return BarChartRodStackItem(
-                          barSection.fromY,
-                          barSection.toY,
-                          barSection.color,
-                        );
+                    : bar.barSections.map<BarChartRodStackItem>((MyoroBarGraphBarSection barSection) {
+                        return BarChartRodStackItem(barSection.fromY, barSection.toY, barSection.color);
                       }).toList(),
               );
             }).toList(),

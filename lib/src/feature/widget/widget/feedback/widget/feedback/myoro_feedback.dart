@@ -19,8 +19,7 @@ final class MyoroFeedback extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension =
-        this.themeExtension ?? context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
     final spacing = themeExtension.spacing ?? themeExtension.spacing ?? 0;
 
     final subtitleConfiguration = configuration.subtitleConfiguration;
@@ -41,11 +40,7 @@ final class MyoroFeedback extends StatelessWidget {
                   Flexible(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const _Icon(),
-                        const _Title(),
-                        if (subtitleConfiguration != null) const _Subtitle(),
-                      ],
+                      children: [const _Icon(), const _Title(), if (subtitleConfiguration != null) const _Subtitle()],
                     ),
                   ),
                   if (actionButtonConfiguration != null) const _ActionButton(),

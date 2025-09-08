@@ -29,8 +29,7 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
 
   MyoroFormNotifier<T>? _localNotifier;
   MyoroFormNotifier<T> get _controller {
-    return widget.controller ??
-        (_localNotifier ??= MyoroFormNotifier(configuration: widget.configuration!));
+    return widget.controller ?? (_localNotifier ??= MyoroFormNotifier(configuration: widget.configuration!));
   }
 
   @override
@@ -41,9 +40,6 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
 
   @override
   Widget build(context) {
-    return ValueListenableBuilder(
-      valueListenable: _controller,
-      builder: (_, _, _) => _Form(_controller, _builder),
-    );
+    return ValueListenableBuilder(valueListenable: _controller, builder: (_, _, _) => _Form(_controller, _builder));
   }
 }

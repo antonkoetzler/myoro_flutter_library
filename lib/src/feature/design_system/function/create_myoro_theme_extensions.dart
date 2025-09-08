@@ -5,7 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
   return [
     ..._createAccordionThemeExtensions(colorScheme, textTheme),
-    ..._createAppThemeExtensions(),
     ..._createAppBarThemeExtensions(colorScheme),
     ..._createButtonThemeExtensions(isDarkMode, colorScheme, textTheme),
     ..._createCardThemeExtensions(colorScheme, textTheme),
@@ -15,7 +14,6 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createDrawerThemeExtension(colorScheme, textTheme),
     ..._createDropdownThemeExtensions(colorScheme),
     ..._createFeedbackThemeExtensions(textTheme),
-    ..._createFormThemeExtensions(),
     ..._createGraphThemeExtensions(colorScheme, textTheme),
     ..._createInputThemeExtensions(colorScheme, textTheme),
     ..._createLayoutBuilderThemeExtensions(),
@@ -37,20 +35,18 @@ List<ThemeExtension> _createAccordionThemeExtensions(ColorScheme colorScheme, Te
   return [MyoroAccordionThemeExtension.builder(colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createAppThemeExtensions() {
-  return const [MyoroAppThemeExtension.builder()];
-}
-
 List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
   return [MyoroAppBarThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createButtonThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
+  final primaryVariantThemeExtension = MyoroButtonPrimaryVariantThemeExtension.builder(isDarkMode, colorScheme);
+
   return [
-    MyoroPrimaryButtonVariantThemeExtension.builder(isDarkMode, colorScheme),
-    MyoroSecondaryButtonVariantThemeExtension.builder(isDarkMode, colorScheme),
-    MyoroButtonThemeExtension.builder(),
-    MyoroIconTextButtonThemeExtension.builder(textTheme),
+    primaryVariantThemeExtension,
+    MyoroButtonSecondaryVariantThemeExtension.builder(isDarkMode, colorScheme),
+    MyoroButtonThemeExtension.fromVariant(primaryVariantThemeExtension),
+    MyoroIconTextButtonThemeExtension.fromVariant(primaryVariantThemeExtension),
   ];
 }
 
@@ -70,7 +66,11 @@ List<ThemeExtension> _createCheckboxThemeExtensions(ColorScheme colorScheme, Tex
 }
 
 List<ThemeExtension> _createDividerThemeExtensions(ColorScheme colorScheme) {
-  return [MyoroBasicDividerThemeExtension.builder(colorScheme), MyoroResizeDividerThemeExtension.builder(colorScheme)];
+  final basicDividerThemeExtension = MyoroBasicDividerThemeExtension.builder(colorScheme);
+  return [
+    basicDividerThemeExtension,
+    MyoroResizeDividerThemeExtension.builder(basicDividerThemeExtension, colorScheme),
+  ];
 }
 
 List<ThemeExtension> _createDrawerThemeExtension(ColorScheme colorScheme, TextTheme textTheme) {
@@ -78,15 +78,11 @@ List<ThemeExtension> _createDrawerThemeExtension(ColorScheme colorScheme, TextTh
 }
 
 List<ThemeExtension> _createDropdownThemeExtensions(ColorScheme colorScheme) {
-  return [MyoroDropdownsThemeExtension.builder(colorScheme)];
+  return [MyoroDropdownThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createFeedbackThemeExtensions(TextTheme textTheme) {
   return [MyoroFeedbackThemeExtension.builder(textTheme)];
-}
-
-List<ThemeExtension> _createFormThemeExtensions() {
-  return const [MyoroFormThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createGraphThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
@@ -98,7 +94,6 @@ List<ThemeExtension> _createGraphThemeExtensions(ColorScheme colorScheme, TextTh
 
 List<ThemeExtension> _createInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [
-    const MyoroDatePickerInputThemeExtension.builder(),
     MyoroInputThemeExtension.builder(colorScheme, textTheme),
     MyoroSearchInputThemeExtension.builder(colorScheme),
     const MyoroTimePickerInputThemeExtension.builder(),

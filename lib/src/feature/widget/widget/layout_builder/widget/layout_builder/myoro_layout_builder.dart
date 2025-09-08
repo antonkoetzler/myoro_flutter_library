@@ -21,7 +21,10 @@ part '_widget/_single_child_render_object_widget.dart';
 class MyoroLayoutBuilder extends StatefulWidget {
   final MyoroLayoutBuilderChildCallback builder;
 
-  const MyoroLayoutBuilder({super.key, required this.builder});
+  const MyoroLayoutBuilder({super.key, required this.builder, this.themeExtension});
+
+  /// Theme extension.
+  final MyoroLayoutBuilderThemeExtension? themeExtension;
 
   @override
   State<MyoroLayoutBuilder> createState() => _MyoroLayoutBuilderState();
@@ -29,6 +32,10 @@ class MyoroLayoutBuilder extends StatefulWidget {
 
 final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
   MyoroLayoutBuilderChildCallback get _builder => widget.builder;
+
+  MyoroLayoutBuilderThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroLayoutBuilderThemeExtension>();
+  }
 
   final _constraintsNotifier = ValueNotifier<BoxConstraints>(const BoxConstraints());
 
@@ -40,7 +47,7 @@ final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
 
   @override
   Widget build(context) {
-    return _SingleChildRenderObjectWidget(
+    final child = _SingleChildRenderObjectWidget(
       constraintsCallback: (constraints) {
         if (mounted && _constraintsNotifier.value != constraints) {
           _constraintsNotifier.value = constraints;
@@ -53,5 +60,7 @@ final class _MyoroLayoutBuilderState extends State<MyoroLayoutBuilder> {
         },
       ),
     );
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

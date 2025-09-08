@@ -9,8 +9,8 @@ part '_widget/_tabs.dart';
 /// Tab view of MFL.
 ///
 /// Top bar with the list of tabs and below, the content of the selected tab.
-final class MyoroTabView extends MyoroStatefulWidget {
-  const MyoroTabView({super.key, this.controller, this.configuration})
+final class MyoroTabView extends StatefulWidget {
+  const MyoroTabView({super.key, this.controller, this.configuration, this.themeExtension})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroTabView]: [controller] (x)or [configuration] must be provided.',
@@ -22,11 +22,18 @@ final class MyoroTabView extends MyoroStatefulWidget {
   /// Configuration.
   final MyoroTabViewConfiguration? configuration;
 
+  /// Theme extension.
+  final MyoroTabViewThemeExtension? themeExtension;
+
   @override
   State<MyoroTabView> createState() => _MyoroTabViewState();
 }
 
 final class _MyoroTabViewState extends State<MyoroTabView> {
+  MyoroTabViewThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroTabViewThemeExtension>();
+  }
+
   MyoroTabViewViewModel? _localViewModel;
   MyoroTabViewViewModel get _viewModel {
     // ignore: invalid_use_of_protected_member
@@ -35,19 +42,22 @@ final class _MyoroTabViewState extends State<MyoroTabView> {
 
   @override
   Widget build(_) {
-    return InheritedProvider.value(
-      value: _viewModel,
-      child: ValueListenableBuilder(
-        valueListenable: _viewModel.state.selectedTabNotifier,
-        builder: (_, selectedTab, _) {
-          return Column(
-            children: [
-              _Tabs(selectedTab),
-              const _Divider(Axis.horizontal),
-              Expanded(child: selectedTab.content),
-            ],
-          );
-        },
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: _themeExtension,
+      child: InheritedProvider.value(
+        value: _viewModel,
+        child: ValueListenableBuilder(
+          valueListenable: _viewModel.state.selectedTabNotifier,
+          builder: (_, selectedTab, _) {
+            return Column(
+              children: [
+                _Tabs(selectedTab),
+                const _Divider(Axis.horizontal),
+                Expanded(child: selectedTab.content),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

@@ -10,9 +10,26 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final itemBorderRadius = themeExtension.itemBorderRadius;
-    final backgroundColorBuilder = _selectedItems.contains(_item) ? (_) => _backgroundColorBuilder(context) : null;
+    final isSelected = _selectedItems.contains(_item);
+
+    final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final itemBorderRadius = menuThemeExtension.itemBorderRadius;
+    final backgroundColor = menuThemeExtension.backgroundColor;
+
+    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>()
+      ..copyWith(
+        borderRadius: itemBorderRadius,
+        borderRadiusProvided: itemBorderRadius != null,
+        backgroundColor: backgroundColor,
+        backgroundColorProvided: backgroundColor != null && isSelected,
+      );
+    final iconTextButtonThemeExtension =
+        context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>()..copyWith(
+          borderRadius: itemBorderRadius,
+          borderRadiusProvided: itemBorderRadius != null,
+          backgroundColor: backgroundColor,
+          backgroundColorProvided: backgroundColor != null && isSelected,
+        );
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
     final toggleItem = viewModel.toggleItem;
@@ -23,26 +40,15 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
 
     if (buttonConfiguration != null) {
       return MyoroButton(
-        configuration: buttonConfiguration.copyWith(
-          borderRadius: itemBorderRadius,
-          backgroundColorBuilder: backgroundColorBuilder,
-          onTapUp: (details) => toggleItem(_item),
-        ),
+        configuration: buttonConfiguration.copyWith(onTapUp: (details) => toggleItem(_item)),
+        themeExtension: buttonThemeExtension,
         builder: buttonBuilder!,
       );
     }
 
     return MyoroIconTextButton(
-      configuration: iconTextButtonConfiguration!.copyWith(
-        borderRadius: itemBorderRadius,
-        backgroundColorBuilder: backgroundColorBuilder,
-        onTapUp: (details) => toggleItem(_item),
-      ),
+      configuration: iconTextButtonConfiguration!.copyWith(onTapUp: (details) => toggleItem(_item)),
+      themeExtension: iconTextButtonThemeExtension,
     );
-  }
-
-  Color _backgroundColorBuilder(BuildContext context) {
-    final buttonVariantThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
-    return buttonVariantThemeExtension.primaryTapBackgroundColor;
   }
 }

@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Singular radio(box) [Widget].
-class MyoroRadio extends MyoroStatefulWidget {
+class MyoroRadio extends StatefulWidget {
   /// Configuration.
   final MyoroRadioConfiguration configuration;
 
-  const MyoroRadio({super.key, this.configuration = const MyoroRadioConfiguration()});
+  /// Theme extension.
+  final MyoroRadioThemeExtension? themeExtension;
+
+  const MyoroRadio({super.key, this.configuration = const MyoroRadioConfiguration(), this.themeExtension});
 
   @override
   State<MyoroRadio> createState() => _MyoroRadioState();
@@ -14,6 +17,10 @@ class MyoroRadio extends MyoroStatefulWidget {
 
 final class _MyoroRadioState extends State<MyoroRadio> {
   MyoroRadioConfiguration get _configuration => widget.configuration;
+
+  MyoroRadioThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroRadioThemeExtension>();
+  }
 
   MyoroRadioController? _localController;
   MyoroRadioController get _controller {
@@ -35,11 +42,9 @@ final class _MyoroRadioState extends State<MyoroRadio> {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroRadioThemeExtension>();
-
-    return Row(
+    final child = Row(
       mainAxisSize: MainAxisSize.min,
-      spacing: themeExtension.spacing,
+      spacing: _themeExtension.spacing,
       children: [
         ValueListenableBuilder(
           valueListenable: _controller,
@@ -48,9 +53,9 @@ final class _MyoroRadioState extends State<MyoroRadio> {
               value: true,
               groupValue: enabled,
               toggleable: true,
-              activeColor: themeExtension.activeColor,
-              hoverColor: themeExtension.hoverColor,
-              splashRadius: themeExtension.splashRadius,
+              activeColor: _themeExtension.activeColor,
+              hoverColor: _themeExtension.hoverColor,
+              splashRadius: _themeExtension.splashRadius,
               onChanged: (_) {
                 _controller.value = !enabled;
                 _configuration.onChanged?.call(_controller.value);
@@ -60,10 +65,12 @@ final class _MyoroRadioState extends State<MyoroRadio> {
         ),
         if (_configuration.label.isNotEmpty) ...[
           Flexible(
-            child: Text(_configuration.label, style: _configuration.labelTextStyle ?? themeExtension.labelTextStyle),
+            child: Text(_configuration.label, style: _configuration.labelTextStyle ?? _themeExtension.labelTextStyle),
           ),
         ],
       ],
     );
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

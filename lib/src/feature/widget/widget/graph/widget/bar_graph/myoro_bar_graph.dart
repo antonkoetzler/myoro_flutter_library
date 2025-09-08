@@ -18,8 +18,7 @@ class MyoroBarGraph extends StatelessWidget {
   Widget build(context) {
     final viewModel = MyoroBarGraphViewModel(configuration);
 
-    final themeExtension =
-        this.themeExtension ?? context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
     final borderData = FlBorderData(border: themeExtension.border);
     const gridData = FlGridData(show: false);

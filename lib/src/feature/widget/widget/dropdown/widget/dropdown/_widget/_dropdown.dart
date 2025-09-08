@@ -58,9 +58,7 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
             valueListenable: _viewModel.state.inputSizeNotifier,
             builder: (_, Size? inputSize, _) => Row(
               spacing: spacing,
-              crossAxisAlignment: inputSize != null
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.center,
+              crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
               children: [
                 if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
                   SizedBox(height: inputSize?.height, child: _Checkbox<T, V>()),
@@ -73,9 +71,8 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
                       if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
                         ValueListenableBuilder(
                           valueListenable: _viewModel.state.showingMenuNotifier,
-                          builder: (_, bool showBasicMenu, _) => !showBasicMenu
-                              ? const SizedBox.shrink()
-                              : Flexible(child: _Menu<T, V>()),
+                          builder: (_, bool showBasicMenu, _) =>
+                              !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, V>()),
                         ),
                       ],
                     ],

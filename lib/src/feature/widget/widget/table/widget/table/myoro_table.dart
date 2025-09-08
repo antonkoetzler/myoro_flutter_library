@@ -16,8 +16,8 @@ part '_widget/_rows_section.dart';
 ///
 /// Fairly simple implementation as tables are usually very business logic specific.
 /// Thus, extensibility is more important than being feature rich in this senario.
-class MyoroTable<T> extends MyoroStatefulWidget {
-  const MyoroTable({super.key, super.createViewModel, this.controller, this.configuration})
+class MyoroTable<T> extends StatefulWidget {
+  const MyoroTable({super.key, this.controller, this.configuration, this.themeExtension})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroTable<$T>]: [controller] (x)or [configuration] must be provided.',
@@ -29,28 +29,29 @@ class MyoroTable<T> extends MyoroStatefulWidget {
   /// Configuration.
   final MyoroTableConfiguration<T>? configuration;
 
+  /// Theme extension.
+  final MyoroTableThemeExtension? themeExtension;
+
   @override
   State<MyoroTable<T>> createState() => _MyoroTableState<T>();
 }
 
 final class _MyoroTableState<T> extends State<MyoroTable<T>> {
-  MyoroTableController<T>? _localController;
-  MyoroTableController<T> get _controller {
-    return widget.controller ??
-        (_localController ??= MyoroTableController(
-          configuration: widget.configuration!,
-          viewModel: widget.createViewModel ? null : (_localViewModel ??= context.read<MyoroTableViewModel<T>>()),
-        ));
+  MyoroTableThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroTableThemeExtension>();
   }
 
   MyoroTableViewModel<T>? _localViewModel;
   // ignore: invalid_use_of_protected_member
-  MyoroTableViewModel<T> get _viewModel => _controller.viewModel;
+  MyoroTableViewModel<T> get _viewModel {
+    // ignore: invalid_use_of_protected_member
+    return widget.controller?.viewModel ?? (_localViewModel ??= context.read<MyoroTableViewModel<T>>());
+  }
 
   @override
   void initState() {
     super.initState();
-    _controller.fetch();
+    _viewModel.state.itemsRequestNotifier.fetch();
   }
 
   @override
@@ -61,18 +62,16 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   void dispose() {
-    _localController?.dispose();
+    _localViewModel?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
-    return InheritedProvider.value(
+    final child = InheritedProvider.value(
       value: _viewModel,
       child: Container(
-        decoration: themeExtension.decoration,
+        decoration: _themeExtension.decoration,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -83,5 +82,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
         ),
       ),
     );
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

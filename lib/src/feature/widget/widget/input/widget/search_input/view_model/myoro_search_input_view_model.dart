@@ -3,33 +3,26 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Notifier of [MyoroSearchInput].
 class MyoroSearchInputViewModel<T> {
+  MyoroSearchInputViewModel(this.configuration);
+
   /// Configuration.
-  MyoroSearchInputConfiguration<T>? _configuration;
-
-  /// [_configuration] getter.
-  MyoroSearchInputConfiguration<T> get configuration {
-    assert(
-      _configuration != null,
-      '[MyoroSearchInputConfiguration<$T>.configuration]: [_configuration] has not been set yet.',
-    );
-    return _configuration!;
-  }
-
-  /// [_configuration] setter.
-  set configuration(MyoroSearchInputConfiguration<T> configuration) {
-    _configuration = configuration;
-    _itemsRequestNotifier.requestCallback = () => _configuration?.request(inputController.text) ?? const {};
-  }
+  final MyoroSearchInputConfiguration<T> configuration;
 
   /// [TextEditingController] of the [MyoroInput].
   TextEditingController? _localInputController;
+
+  /// [TextEditingController] of the [MyoroInput].
   TextEditingController get inputController {
     return configuration.controller ?? (_localInputController ??= TextEditingController());
   }
 
   /// Items of the [MyoroSearchInput].
   final _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>();
+
+  /// Items of the [MyoroSearchInput].
   MyoroRequestNotifier<Set<T>> get itemsRequestNotifier => _itemsRequestNotifier;
+
+  /// Items of the [MyoroSearchInput].
   MyoroRequest<Set<T>> get itemsRequest => _itemsRequestNotifier.value;
 
   /// Dispose function.

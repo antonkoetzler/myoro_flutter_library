@@ -10,28 +10,34 @@ part '_widget/_message.dart';
 /// snack bar that will be displayed within a [MyoroSnackBarContainer].
 ///
 /// Two main "modes": Providing a [Widget] or a simple [String] message for the content.
-class MyoroSnackBar extends MyoroStatelessWidget {
+class MyoroSnackBar extends StatelessWidget {
   /// Configuration.
   final MyoroSnackBarConfiguration configuration;
 
-  const MyoroSnackBar({super.key, required this.configuration});
+  /// Theme extension.
+  final MyoroSnackBarThemeExtension? themeExtension;
+
+  const MyoroSnackBar({super.key, required this.configuration, this.themeExtension});
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     final String message = configuration.message;
     final Widget? child = configuration.child;
 
-    return Container(
-      padding: themeExtension.padding,
+    final snackBarChild = Container(
+      padding: resolvedThemeExtension.padding,
       decoration: BoxDecoration(
-        color: themeExtension.primaryColor,
-        border: Border.all(width: themeExtension.borderWidth, color: configuration.snackBarType.getColor(context)),
-        borderRadius: themeExtension.borderRadius,
+        color: resolvedThemeExtension.primaryColor,
+        border: Border.all(
+          width: resolvedThemeExtension.borderWidth,
+          color: configuration.snackBarType.getColor(context),
+        ),
+        borderRadius: resolvedThemeExtension.borderRadius,
       ),
       child: Row(
-        spacing: themeExtension.spacing,
+        spacing: resolvedThemeExtension.spacing,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (message.isNotEmpty) Flexible(child: _Message(configuration.snackBarType, message)),
@@ -40,5 +46,7 @@ class MyoroSnackBar extends MyoroStatelessWidget {
         ],
       ),
     );
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: snackBarChild);
   }
 }

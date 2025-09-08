@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -9,29 +10,29 @@ part 'myoro_menu_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with _$MyoroMenuThemeExtensionMixin {
   const MyoroMenuThemeExtension({
-    required this.backgroundColor,
-    required this.borderRadius,
-    required this.searchBarPadding,
-    required this.searchBarInputStyle,
-    required this.itemBorderRadius,
-    required this.dialogTextStyle,
-    required this.dialogTextLoaderPadding,
+    this.backgroundColor,
+    this.borderRadius,
+    this.searchBarPadding,
+    this.searchBarInputStyle,
+    this.itemBorderRadius,
+    this.dialogTextStyle,
+    this.dialogTextLoaderPadding,
   });
 
   // coverage:ignore-start
   MyoroMenuThemeExtension.fake()
-    : backgroundColor = myoroFake<Color>(),
-      borderRadius = myoroFake<BorderRadius>(),
-      searchBarPadding = myoroFake<EdgeInsets>(),
-      searchBarInputStyle = MyoroInputStyleEnum.fake(),
-      itemBorderRadius = myoroFake<BorderRadius>(),
-      dialogTextStyle = myoroFake<TextStyle>(),
-      dialogTextLoaderPadding = myoroFake<EdgeInsets>();
+    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      searchBarPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      searchBarInputStyle = faker.randomGenerator.boolean() ? MyoroInputStyleEnum.fake() : null,
+      itemBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      dialogTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      dialogTextLoaderPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
   // coverage:ignore-end
 
   MyoroMenuThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.primary,
-      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       searchBarPadding = const EdgeInsets.all(10),
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
       itemBorderRadius = BorderRadius.zero,
@@ -39,37 +40,53 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
       dialogTextLoaderPadding = const EdgeInsets.all(15);
 
   /// Background color of the menu.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Border radius of the menu.
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// Padding of [_SearchBar].
-  final EdgeInsets searchBarPadding;
+  final EdgeInsets? searchBarPadding;
 
   /// [MyoroInputStyleEnum] of [_SearchBar].
-  final MyoroInputStyleEnum searchBarInputStyle;
+  final MyoroInputStyleEnum? searchBarInputStyle;
 
   /// [BorderRadius] of [_Item].
-  final BorderRadius itemBorderRadius;
+  final BorderRadius? itemBorderRadius;
 
   /// Text style of [_EmptyMenuDialog].
-  final TextStyle dialogTextStyle;
+  final TextStyle? dialogTextStyle;
 
   /// [EdgeInsets] of [_DialogText] & [_Loader].
-  final EdgeInsets dialogTextLoaderPadding;
+  final EdgeInsets? dialogTextLoaderPadding;
 
   @override
   MyoroMenuThemeExtension lerp(covariant ThemeExtension<MyoroMenuThemeExtension>? other, double t) {
     if (other is! MyoroMenuThemeExtension) return this;
+
+    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
+    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
+    final searchBarPadding = EdgeInsets.lerp(this.searchBarPadding, other.searchBarPadding, t);
+    final searchBarInputStyle = myoroLerp(this.searchBarInputStyle, other.searchBarInputStyle, t);
+    final itemBorderRadius = BorderRadius.lerp(this.itemBorderRadius, other.itemBorderRadius, t);
+    final dialogTextStyle = TextStyle.lerp(this.dialogTextStyle, other.dialogTextStyle, t);
+    final dialogTextLoaderPadding = EdgeInsets.lerp(this.dialogTextLoaderPadding, other.dialogTextLoaderPadding, t);
+
     return copyWith(
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      searchBarPadding: EdgeInsets.lerp(searchBarPadding, other.searchBarPadding, t),
-      searchBarInputStyle: myoroLerp(searchBarInputStyle, other.searchBarInputStyle, t),
-      itemBorderRadius: BorderRadius.lerp(itemBorderRadius, other.itemBorderRadius, t),
-      dialogTextStyle: TextStyle.lerp(dialogTextStyle, other.dialogTextStyle, t),
-      dialogTextLoaderPadding: EdgeInsets.lerp(dialogTextLoaderPadding, other.dialogTextLoaderPadding, t),
+      backgroundColor: backgroundColor,
+      backgroundColorProvided: true,
+      borderRadius: borderRadius,
+      borderRadiusProvided: true,
+      searchBarPadding: searchBarPadding,
+      searchBarPaddingProvided: true,
+      searchBarInputStyle: searchBarInputStyle,
+      searchBarInputStyleProvided: true,
+      itemBorderRadius: itemBorderRadius,
+      itemBorderRadiusProvided: true,
+      dialogTextStyle: dialogTextStyle,
+      dialogTextStyleProvided: true,
+      dialogTextLoaderPadding: dialogTextLoaderPadding,
+      dialogTextLoaderPaddingProvided: true,
     );
   }
 
@@ -77,6 +94,9 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
   /// sure that the menu item's background color won't extension the
   /// border of the [MyoroMenu]'s [MyoroMenuConfiguration.border].
   Radius createMenuContentRadius(Radius radius) {
-    return Radius.elliptical((radius.x - 4).clamp(0, double.infinity), (radius.y - 4).clamp(0, double.infinity));
+    return Radius.elliptical(
+      (radius.x - kMyoroMultiplier).clamp(0, double.infinity),
+      (radius.y - kMyoroMultiplier).clamp(0, double.infinity),
+    );
   }
 }

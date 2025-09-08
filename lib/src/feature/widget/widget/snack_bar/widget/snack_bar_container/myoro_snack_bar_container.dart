@@ -7,16 +7,9 @@ class MyoroSnackBarContainer extends SnackBar {
   static const durationDefaultValue = Duration(seconds: 3);
 
   MyoroSnackBarContainer({
-    // Key for whatever purpose.
     Key? key,
-
-    // Theme extension that needs to be passed via caller's [BuildContext].
     required MyoroSnackBarContainerThemeExtension themeExtension,
-
-    // Duration that the snack bar will be shown for.
     Duration duration = durationDefaultValue,
-
-    // Snack bar widget to be displayed.
     required MyoroSnackBar snackBar,
   }) : super(
          key: key,

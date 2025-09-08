@@ -11,20 +11,26 @@ class MyoroButtonSecondaryVariantThemeExtension
     extends MyoroButtonVariantThemeExtension<MyoroButtonSecondaryVariantThemeExtension>
     with _$MyoroButtonSecondaryVariantThemeExtensionMixin {
   const MyoroButtonSecondaryVariantThemeExtension({
+    super.backgroundColor,
     super.backgroundIdleColor,
     super.backgroundHoverColor,
     super.backgroundTapColor,
+    super.contentColor,
     super.contentIdleColor,
     super.contentHoverColor,
     super.contentTapColor,
     super.borderWidth,
     super.borderRadius,
+    super.borderColor,
     super.borderIdleColor,
     super.borderHoverColor,
     super.borderTapColor,
   });
 
-  factory MyoroButtonSecondaryVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
+  factory MyoroButtonSecondaryVariantThemeExtension.builder(
+    bool isDarkMode,
+    ColorScheme colorScheme,
+  ) {
     const secondaryBackgroundHoverColorFactor = 0.7;
     const secondaryBackgroundTapColorFactor = 0.5;
 
@@ -39,14 +45,10 @@ class MyoroButtonSecondaryVariantThemeExtension
       backgroundTapColor: isDarkMode
           ? onPrimary.darken(secondaryBackgroundTapColorFactor)
           : onPrimary.brighten(secondaryBackgroundTapColorFactor),
-      contentIdleColor: onPrimary,
-      contentHoverColor: onPrimary,
-      contentTapColor: onPrimary,
+      contentColor: onPrimary,
       borderRadius: BorderRadius.circular(kMyoroBorderRadius),
       borderWidth: kMyoroBorderWidth,
-      borderIdleColor: onPrimary,
-      borderHoverColor: onPrimary,
-      borderTapColor: onPrimary,
+      borderColor: onPrimary,
     );
   }
 }

@@ -8,40 +8,53 @@ part '_widget/_search_button.dart';
 part '_widget/_search_section.dart';
 
 /// Search input. Shows a dropdown after making a search request.
-class MyoroSearchInput<T> extends MyoroStatefulWidget {
-  const MyoroSearchInput({super.key, super.createViewModel, required this.configuration});
+class MyoroSearchInput<T> extends StatefulWidget {
+  const MyoroSearchInput({super.key, required this.configuration, this.themeExtension});
 
   /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;
+
+  /// Theme extension.
+  final MyoroSearchInputThemeExtension? themeExtension;
 
   @override
   State<MyoroSearchInput<T>> createState() => _MyoroSearchInputState<T>();
 }
 
 final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
-  bool get _createViewModel => widget.createViewModel;
+  MyoroSearchInputConfiguration<T> get _configuration {
+    return widget.configuration;
+  }
 
-  MyoroSearchInputViewModel<T>? _localViewModel;
-  MyoroSearchInputViewModel<T> get _viewModel {
-    final viewModel = _createViewModel
-        ? (_localViewModel ??= MyoroSearchInputViewModel())
-        : context.read<MyoroSearchInputViewModel<T>>();
-    return viewModel..configuration = widget.configuration;
+  MyoroSearchInputThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+  }
+
+  late final MyoroSearchInputViewModel<T> _viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = MyoroSearchInputViewModel(_configuration);
   }
 
   @override
   void dispose() {
-    _localViewModel?.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(context) {
-    final child = ValueListenableBuilder(
-      valueListenable: _viewModel.itemsRequestNotifier,
-      builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: _themeExtension,
+      child: InheritedProvider.value(
+        value: _viewModel,
+        child: ValueListenableBuilder(
+          valueListenable: _viewModel.itemsRequestNotifier,
+          builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
+        ),
+      ),
     );
-
-    return _createViewModel ? InheritedProvider.value(value: _viewModel, child: child) : child;
   }
 }

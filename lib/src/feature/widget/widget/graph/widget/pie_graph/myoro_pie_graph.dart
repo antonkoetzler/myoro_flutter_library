@@ -25,10 +25,7 @@ class MyoroPieGraph extends StatelessWidget {
         create: (_) => MyoroPieGraphViewModel(configuration: configuration),
         child: Stack(
           alignment: Alignment.center,
-          children: [
-            const _PieGraph(),
-            if (configuration.centerWidget != null) configuration.centerWidget!,
-          ],
+          children: [const _PieGraph(), if (configuration.centerWidget != null) configuration.centerWidget!],
         ),
       ),
     );

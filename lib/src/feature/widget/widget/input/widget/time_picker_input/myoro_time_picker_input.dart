@@ -7,11 +7,14 @@ part '_widget/_input.dart';
 part '_widget/_trigger_area.dart';
 
 /// Date picker input (click date, no typy typy).
-class MyoroTimePickerInput extends MyoroStatefulWidget {
-  const MyoroTimePickerInput({super.key, required this.configuration});
+class MyoroTimePickerInput extends StatefulWidget {
+  const MyoroTimePickerInput({super.key, required this.configuration, this.themeExtension});
 
   /// Configuration.
   final MyoroTimePickerInputConfiguration configuration;
+
+  /// Theme extension.
+  final MyoroTimePickerInputThemeExtension? themeExtension;
 
   @override
   State<MyoroTimePickerInput> createState() => _MyoroTimePickerInputState();
@@ -19,6 +22,10 @@ class MyoroTimePickerInput extends MyoroStatefulWidget {
 
 final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
   late final MyoroTimePickerInputViewModel _viewModel;
+
+  MyoroTimePickerInputThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroTimePickerInputThemeExtension>();
+  }
 
   @override
   void initState() {
@@ -41,7 +48,7 @@ final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
     final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
     final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
 
-    return InheritedProvider.value(
+    final child = InheritedProvider.value(
       value: _viewModel,
       child: Stack(
         alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
@@ -53,5 +60,7 @@ final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
         ],
       ),
     );
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

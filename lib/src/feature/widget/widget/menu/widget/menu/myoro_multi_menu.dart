@@ -2,7 +2,7 @@ part of 'bundle/myoro_menu_bundle.dart';
 
 /// Singular selectable menu.
 final class MyoroMultiMenu<T> extends StatefulWidget {
-  const MyoroMultiMenu({super.key, this.controller, this.configuration})
+  const MyoroMultiMenu({super.key, this.controller, this.configuration, this.themeExtension})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroMultiMenu<$T>]: [controller] (x)or [configuration] must be provided.',
@@ -14,11 +14,18 @@ final class MyoroMultiMenu<T> extends StatefulWidget {
   /// Configuration.
   final MyoroMultiMenuConfiguration<T>? configuration;
 
+  /// Theme extension.
+  final MyoroMenuThemeExtension? themeExtension;
+
   @override
   State<MyoroMultiMenu<T>> createState() => _MyoroMultiMenuState<T>();
 }
 
 final class _MyoroMultiMenuState<T> extends State<MyoroMultiMenu<T>> {
+  MyoroMenuThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroMenuThemeExtension>();
+  }
+
   MyoroMultiMenuViewModel<T>? _localViewModel;
   MyoroMultiMenuViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
@@ -32,5 +39,7 @@ final class _MyoroMultiMenuState<T> extends State<MyoroMultiMenu<T>> {
   }
 
   @override
-  Widget build(_) => _Menu(_viewModel);
+  Widget build(_) {
+    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: _Menu(_viewModel));
+  }
 }

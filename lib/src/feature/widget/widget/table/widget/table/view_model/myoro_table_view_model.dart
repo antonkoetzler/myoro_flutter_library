@@ -9,9 +9,16 @@ final class MyoroTableViewModel<T> {
 
   /// State.
   final MyoroTableState<T> _state;
+
+  /// [_state] getter.
   MyoroTableState<T> get state => _state;
 
-  /// Populdates [__titleColumnKeyWidthsNotifier].
+  /// Dispose function.
+  void dispose() {
+    _state.dispose();
+  }
+
+  /// Populates [__titleColumnKeyWidthsNotifier].
   void getTitleColumnKeyWidths() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _state.titleColumnKeyWidthsNotifier.value = _state.titleColumnKeys.map<double>((GlobalKey titleColumnKey) {

@@ -10,8 +10,7 @@ final class MyoroSingularDropdownViewModel<T>
           MyoroSingularMenuConfiguration<T>,
           MyoroSingularMenuController<T>
         > {
-  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration)
-    : super(configuration);
+  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration) : super(configuration);
 
   @override
   void enabledNotifierListener() {

@@ -7,6 +7,7 @@ part 'myoro_bar_graph_bar_section.g.dart';
 
 /// For a [MyoroBarGraphBar] with a non-empty [MyoroBarGraphBar.barSections],
 /// [MyoroBarGraphBarSection] will occupy a specified piece of a [MyoroBarGraph].
+@immutable
 @myoroModel
 class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
   const MyoroBarGraphBarSection({required this.fromY, required this.toY, required this.color});
@@ -32,6 +33,10 @@ class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
   final Color color;
 
   MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
-    return MyoroBarGraphBarSection(fromY: fromY ?? this.fromY, toY: toY ?? this.toY, color: color ?? this.color);
+    return MyoroBarGraphBarSection(
+      fromY: fromY ?? this.fromY,
+      toY: toY ?? this.toY,
+      color: color ?? this.color,
+    );
   }
 }

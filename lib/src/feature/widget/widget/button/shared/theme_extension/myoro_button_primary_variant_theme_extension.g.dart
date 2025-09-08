@@ -18,6 +18,8 @@ mixin _$MyoroButtonPrimaryVariantThemeExtensionMixin on ThemeExtension<MyoroButt
 
   @override
   MyoroButtonPrimaryVariantThemeExtension copyWith({
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
     Color? backgroundIdleColor,
     bool backgroundIdleColorProvided = true,
     Color? backgroundHoverColor,
@@ -42,6 +44,7 @@ mixin _$MyoroButtonPrimaryVariantThemeExtensionMixin on ThemeExtension<MyoroButt
     bool borderTapColorProvided = true,
   }) {
     return MyoroButtonPrimaryVariantThemeExtension(
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
       backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
       backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
@@ -60,6 +63,7 @@ mixin _$MyoroButtonPrimaryVariantThemeExtensionMixin on ThemeExtension<MyoroButt
   bool operator ==(Object other) {
     return other is MyoroButtonPrimaryVariantThemeExtension &&
         other.runtimeType == runtimeType &&
+        other.backgroundColor == self.backgroundColor &&
         other.backgroundIdleColor == self.backgroundIdleColor &&
         other.backgroundHoverColor == self.backgroundHoverColor &&
         other.backgroundTapColor == self.backgroundTapColor &&
@@ -76,6 +80,7 @@ mixin _$MyoroButtonPrimaryVariantThemeExtensionMixin on ThemeExtension<MyoroButt
   @override
   int get hashCode {
     return Object.hash(
+      self.backgroundColor,
       self.backgroundIdleColor,
       self.backgroundHoverColor,
       self.backgroundTapColor,
@@ -93,6 +98,7 @@ mixin _$MyoroButtonPrimaryVariantThemeExtensionMixin on ThemeExtension<MyoroButt
   @override
   String toString() =>
       'MyoroButtonPrimaryVariantThemeExtension(\n'
+      '  backgroundColor: ${self.backgroundColor},\n'
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
       '  backgroundHoverColor: ${self.backgroundHoverColor},\n'
       '  backgroundTapColor: ${self.backgroundTapColor},\n'

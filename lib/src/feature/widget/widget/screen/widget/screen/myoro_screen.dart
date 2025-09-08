@@ -5,11 +5,14 @@ import 'package:provider/provider.dart';
 part '_widget/_drawer.dart';
 
 /// Root widget of any screen widget.
-class MyoroScreen extends MyoroStatefulWidget {
+class MyoroScreen extends StatefulWidget {
   /// Configuration.
   final MyoroScreenConfiguration configuration;
 
-  const MyoroScreen({super.key, required this.configuration});
+  /// Theme extension.
+  final MyoroScreenThemeExtension? themeExtension;
+
+  const MyoroScreen({super.key, required this.configuration, this.themeExtension});
 
   @override
   State<MyoroScreen> createState() => _MyoroScreenState();
@@ -17,6 +20,10 @@ class MyoroScreen extends MyoroStatefulWidget {
 
 final class _MyoroScreenState extends State<MyoroScreen> {
   MyoroScreenConfiguration get _configuration => widget.configuration;
+
+  MyoroScreenThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroScreenThemeExtension>();
+  }
 
   MyoroDrawerController? _localDrawerController;
   MyoroDrawerController get _drawerController {
@@ -41,7 +48,7 @@ final class _MyoroScreenState extends State<MyoroScreen> {
     // it is rebuilt when a [Scaffold] drawer is activated.
     final drawer = _Drawer(_drawerController);
 
-    return InheritedProvider.value(
+    final child = InheritedProvider.value(
       value: _drawerController,
       child: SafeArea(
         child: Scaffold(
@@ -53,5 +60,7 @@ final class _MyoroScreenState extends State<MyoroScreen> {
         ),
       ),
     );
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

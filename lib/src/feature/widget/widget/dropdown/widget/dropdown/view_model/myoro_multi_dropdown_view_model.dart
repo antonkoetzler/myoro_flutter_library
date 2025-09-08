@@ -10,8 +10,7 @@ final class MyoroMultiDropdownViewModel<T>
           MyoroMultiMenuConfiguration<T>,
           MyoroMultiMenuController<T>
         > {
-  MyoroMultiDropdownViewModel(MyoroMultiDropdownConfiguration<T> configuration)
-    : super(configuration);
+  MyoroMultiDropdownViewModel(MyoroMultiDropdownConfiguration<T> configuration) : super(configuration);
 
   @override
   void enabledNotifierListener() {

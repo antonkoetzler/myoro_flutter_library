@@ -15,17 +15,13 @@ final class _CloseButton extends StatelessWidget {
     final closeButtonIcon = configuration.closeButtonIcon;
 
     return MyoroIconTextButton(
-      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(
-        buttonSecondaryVariantThemeExtension,
-      ),
+      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(buttonSecondaryVariantThemeExtension),
       configuration: MyoroIconTextButtonConfiguration(
         onTapUp: (_) => context.closeDrawer(),
         iconConfiguration: MyoroIconConfiguration(
           icon:
               closeButtonIcon ??
-              (!drawerController.isEndDrawer
-                  ? Icons.keyboard_arrow_left
-                  : Icons.keyboard_arrow_right),
+              (!drawerController.isEndDrawer ? Icons.keyboard_arrow_left : Icons.keyboard_arrow_right),
         ),
       ),
     );

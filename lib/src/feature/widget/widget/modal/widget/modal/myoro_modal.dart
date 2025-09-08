@@ -19,18 +19,19 @@ part '_widget/_title.dart';
 ///   }
 /// }
 /// ```
-class MyoroModal extends MyoroStatelessWidget {
+class MyoroModal extends StatelessWidget {
   /// Function that opens a normal modal.
   static Future<T?> showModal<T>(
     BuildContext context, {
     MyoroModalConfiguration configuration = const MyoroModalConfiguration(),
     required Widget child,
+    MyoroModalThemeExtension? themeExtension,
   }) async {
     final result = await showDialog(
       context: context,
       useRootNavigator: configuration.useRootNavigator,
       barrierDismissible: configuration.barrierDismissable,
-      builder: (_) => MyoroModal._(configuration, child, isBottomSheet: false),
+      builder: (_) => MyoroModal._(configuration, child, themeExtension, isBottomSheet: false),
     );
     configuration.onClosed?.call(result);
     return result;
@@ -41,16 +42,17 @@ class MyoroModal extends MyoroStatelessWidget {
     BuildContext context, {
     MyoroModalConfiguration configuration = const MyoroModalConfiguration(),
     required Widget child,
+    MyoroModalThemeExtension? themeExtension,
   }) async {
     final result = await showModalBottomSheet(
       context: context,
-      builder: (_) => MyoroModal._(configuration, child, isBottomSheet: true),
+      builder: (_) => MyoroModal._(configuration, child, themeExtension, isBottomSheet: true),
     );
     configuration.onClosed?.call(result);
     return result;
   }
 
-  const MyoroModal._(this._configuration, this._child, {required this.isBottomSheet});
+  const MyoroModal._(this._configuration, this._child, this.themeExtension, {required this.isBottomSheet});
 
   /// Configuration of the modal.
   final MyoroModalConfiguration _configuration;
@@ -58,23 +60,28 @@ class MyoroModal extends MyoroStatelessWidget {
   /// Contents of the modal.
   final Widget _child;
 
+  /// Theme extension.
+  final MyoroModalThemeExtension? themeExtension;
+
   /// If [MyoroModal.showModal] or [MyoroModal.showBottomSheet] is called.
   final bool isBottomSheet;
 
   @override
-  Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+  Widget build(BuildContext context) {
+    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     final titleIsNotEmpty = _configuration.title.isNotEmpty;
     final showCloseButton = _configuration.showCloseButton;
     final showHeader = titleIsNotEmpty || showCloseButton;
 
-    final primaryColor = themeExtension.primaryColor;
-    final borderRadius = !isBottomSheet ? themeExtension.borderRadius : themeExtension.bottomSheetBorderRadius;
-    final constraints = _configuration.constraints ?? themeExtension.constraints(context);
-    final padding = _configuration.padding ?? themeExtension.padding;
-    final border = !isBottomSheet ? themeExtension.border : themeExtension.bottomSheetBorder;
-    final spacing = themeExtension.spacing;
+    final primaryColor = resolvedThemeExtension.primaryColor;
+    final borderRadius = !isBottomSheet
+        ? resolvedThemeExtension.borderRadius
+        : resolvedThemeExtension.bottomSheetBorderRadius;
+    final constraints = _configuration.constraints ?? resolvedThemeExtension.constraints(context);
+    final padding = _configuration.padding ?? resolvedThemeExtension.padding;
+    final border = !isBottomSheet ? resolvedThemeExtension.border : resolvedThemeExtension.bottomSheetBorder;
+    final spacing = resolvedThemeExtension.spacing;
 
     final content = Material(
       color: primaryColor,
@@ -94,6 +101,8 @@ class MyoroModal extends MyoroStatelessWidget {
       ),
     );
 
-    return !isBottomSheet ? Center(child: content) : content;
+    final wrappedContent = !isBottomSheet ? Center(child: content) : content;
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: wrappedContent);
   }
 }

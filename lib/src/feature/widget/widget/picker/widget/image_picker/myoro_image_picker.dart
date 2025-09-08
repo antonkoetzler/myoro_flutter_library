@@ -11,14 +11,21 @@ part '_widget/_selection_type_modal.dart';
 part '_widget/_selection_type_modal_button.dart';
 
 /// Image picker of MFL.
-final class MyoroImagePicker extends MyoroStatelessWidget {
-  const MyoroImagePicker({super.key, required this.configuration});
+final class MyoroImagePicker extends StatelessWidget {
+  const MyoroImagePicker({super.key, required this.configuration, this.themeExtension});
 
   /// Configuration.
   final MyoroImagePickerConfiguration configuration;
 
+  /// Theme extension.
+  final MyoroImagePickerThemeExtension? themeExtension;
+
   @override
   Widget build(context) {
-    return InheritedProvider(create: (_) => MyoroImagePickerViewModel(configuration), child: const _Content());
+    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
+
+    final child = InheritedProvider(create: (_) => MyoroImagePickerViewModel(configuration), child: const _Content());
+
+    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: child);
   }
 }

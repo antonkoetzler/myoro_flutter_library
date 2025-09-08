@@ -11,7 +11,7 @@ part 'myoro_date_picker_input_configuration.g.dart';
 final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     with _$MyoroDatePickerInputConfigurationMixin {
   const MyoroDatePickerInputConfiguration({
-    super.inputStyle,
+    super.inputStyle, <-- FUCK
     super.textAlign,
     super.inputTextStyle,
     super.label,
