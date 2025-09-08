@@ -24,6 +24,8 @@
   - table
   - testing
   - tooltip
+- Make all `ThemeExtension`s final classes and make an abstract `ThemeExtension` for every widget category
+- Add the logo i made to the readme
 - Remove empty `ThemeExtensions`
 - Potentially remove `widget/<>/widget/<>` logic if it's not being used
 - Change app icon of storyboard (**AND MAKE A STANDARIZED LOGO**)

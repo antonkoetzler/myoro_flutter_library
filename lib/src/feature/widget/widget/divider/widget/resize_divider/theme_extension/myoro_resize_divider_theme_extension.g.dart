@@ -18,16 +18,25 @@ mixin _$MyoroResizeDividerThemeExtensionMixin on ThemeExtension<MyoroResizeDivid
 
   @override
   MyoroResizeDividerThemeExtension copyWith({
+    BorderRadius? resizeButtonBorderRadius,
+    bool resizeButtonBorderRadiusProvided = true,
     Color? resizeButtonColor,
     bool resizeButtonColorProvided = true,
     double? resizeButtonShortValue,
     bool resizeButtonShortValueProvided = true,
     double? resizeButtonLongValue,
     bool resizeButtonLongValueProvided = true,
-    BorderRadius? resizeButtonBorderRadius,
-    bool resizeButtonBorderRadiusProvided = true,
+    Color? color,
+    bool colorProvided = true,
+    double? shortValue,
+    bool shortValueProvided = true,
+    double? longValue,
+    bool longValueProvided = true,
   }) {
     return MyoroResizeDividerThemeExtension(
+      resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
+          ? (resizeButtonBorderRadius ?? self.resizeButtonBorderRadius)
+          : null,
       resizeButtonColor: resizeButtonColorProvided ? (resizeButtonColor ?? self.resizeButtonColor) : null,
       resizeButtonShortValue: resizeButtonShortValueProvided
           ? (resizeButtonShortValue ?? self.resizeButtonShortValue)
@@ -35,9 +44,9 @@ mixin _$MyoroResizeDividerThemeExtensionMixin on ThemeExtension<MyoroResizeDivid
       resizeButtonLongValue: resizeButtonLongValueProvided
           ? (resizeButtonLongValue ?? self.resizeButtonLongValue)
           : null,
-      resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
-          ? (resizeButtonBorderRadius ?? self.resizeButtonBorderRadius)
-          : null,
+      color: colorProvided ? (color ?? self.color) : null,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      longValue: longValueProvided ? (longValue ?? self.longValue) : null,
     );
   }
 
@@ -45,28 +54,37 @@ mixin _$MyoroResizeDividerThemeExtensionMixin on ThemeExtension<MyoroResizeDivid
   bool operator ==(Object other) {
     return other is MyoroResizeDividerThemeExtension &&
         other.runtimeType == runtimeType &&
+        other.resizeButtonBorderRadius == self.resizeButtonBorderRadius &&
         other.resizeButtonColor == self.resizeButtonColor &&
         other.resizeButtonShortValue == self.resizeButtonShortValue &&
         other.resizeButtonLongValue == self.resizeButtonLongValue &&
-        other.resizeButtonBorderRadius == self.resizeButtonBorderRadius;
+        other.color == self.color &&
+        other.shortValue == self.shortValue &&
+        other.longValue == self.longValue;
   }
 
   @override
   int get hashCode {
     return Object.hash(
+      self.resizeButtonBorderRadius,
       self.resizeButtonColor,
       self.resizeButtonShortValue,
       self.resizeButtonLongValue,
-      self.resizeButtonBorderRadius,
+      self.color,
+      self.shortValue,
+      self.longValue,
     );
   }
 
   @override
   String toString() =>
       'MyoroResizeDividerThemeExtension(\n'
+      '  resizeButtonBorderRadius: ${self.resizeButtonBorderRadius},\n'
       '  resizeButtonColor: ${self.resizeButtonColor},\n'
       '  resizeButtonShortValue: ${self.resizeButtonShortValue},\n'
       '  resizeButtonLongValue: ${self.resizeButtonLongValue},\n'
-      '  resizeButtonBorderRadius: ${self.resizeButtonBorderRadius},\n'
+      '  color: ${self.color},\n'
+      '  shortValue: ${self.shortValue},\n'
+      '  longValue: ${self.longValue},\n'
       ');';
 }

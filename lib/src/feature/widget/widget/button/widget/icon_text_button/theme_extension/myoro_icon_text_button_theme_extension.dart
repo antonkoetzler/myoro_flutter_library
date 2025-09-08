@@ -10,7 +10,11 @@ part 'myoro_icon_text_button_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroIconTextButton].
 @immutable
 @myoroThemeExtension
-class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroIconTextButtonThemeExtension> {
+class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroIconTextButtonThemeExtension>
+    with _$MyoroIconTextButtonThemeExtensionMixin {
+  static const _contentPaddingDefaultValue = EdgeInsets.all(kMyoroMultiplier * 2);
+  static const _spacingDefaultValue = kMyoroMultiplier * 2;
+
   const MyoroIconTextButtonThemeExtension({
     super.backgroundIdleColor,
     super.backgroundHoverColor,
@@ -26,6 +30,24 @@ class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension
     this.contentPadding,
     this.spacing,
   });
+
+  factory MyoroIconTextButtonThemeExtension.fromVariant(MyoroButtonVariantThemeExtension themeExtension) {
+    return MyoroIconTextButtonThemeExtension(
+      backgroundIdleColor: themeExtension.backgroundIdleColor,
+      backgroundHoverColor: themeExtension.backgroundHoverColor,
+      backgroundTapColor: themeExtension.backgroundTapColor,
+      contentIdleColor: themeExtension.contentIdleColor,
+      contentHoverColor: themeExtension.contentHoverColor,
+      contentTapColor: themeExtension.contentTapColor,
+      borderWidth: themeExtension.borderWidth,
+      borderRadius: themeExtension.borderRadius,
+      borderIdleColor: themeExtension.borderIdleColor,
+      borderHoverColor: themeExtension.borderHoverColor,
+      borderTapColor: themeExtension.borderTapColor,
+      contentPadding: _contentPaddingDefaultValue,
+      spacing: _spacingDefaultValue,
+    );
+  }
 
   // coverage:ignore-start
   factory MyoroIconTextButtonThemeExtension.fake() {

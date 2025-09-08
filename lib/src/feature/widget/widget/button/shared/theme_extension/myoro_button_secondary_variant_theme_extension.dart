@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_button_secondary_variant_theme_extension.g.dart';
+
 /// Secondary button variant.
+@immutable
+@myoroThemeExtension
 class MyoroButtonSecondaryVariantThemeExtension
-    extends MyoroButtonVariantThemeExtension<MyoroButtonSecondaryVariantThemeExtension> {
+    extends MyoroButtonVariantThemeExtension<MyoroButtonSecondaryVariantThemeExtension>
+    with _$MyoroButtonSecondaryVariantThemeExtensionMixin {
   const MyoroButtonSecondaryVariantThemeExtension({
     super.backgroundIdleColor,
     super.backgroundHoverColor,

@@ -9,40 +9,41 @@ part '_widget/_title.dart';
 
 /// Base drawer.
 class MyoroDrawer extends StatelessWidget {
-  const MyoroDrawer({super.key, required this.configuration, this.style = const MyoroDrawerStyle()});
+  const MyoroDrawer({super.key, required this.configuration, this.themeExtension});
 
   /// Configuration.
   final MyoroDrawerConfiguration configuration;
 
   /// Style.
-  final MyoroDrawerStyle style;
+  final MyoroDrawerThemeExtension? themeExtension;
 
   @override
   Widget build(context) {
     final isEndDrawerNotifier = context.read<MyoroDrawerController>().isEndDrawerNotifier;
+    final themeExtension = this.themeExtension ?? context.read<MyoroDrawerThemeExtension>();
 
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: configuration),
-        InheritedProvider.value(value: style),
-      ],
-      child: Stack(
-        children: [
-          _Barrier(configuration),
-          ValueListenableBuilder(
-            valueListenable: isEndDrawerNotifier,
-            builder: (_, isEndDrawer, _) {
-              return Row(
-                mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
-                children: [
-                  if (configuration.showCloseButton && isEndDrawer) const _CloseButton(),
-                  const _Drawer(),
-                  if (configuration.showCloseButton && !isEndDrawer) const _CloseButton(),
-                ],
-              );
-            },
-          ),
-        ],
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: themeExtension,
+      child: InheritedProvider.value(
+        value: configuration,
+        child: Stack(
+          children: [
+            _Barrier(configuration),
+            ValueListenableBuilder(
+              valueListenable: isEndDrawerNotifier,
+              builder: (_, isEndDrawer, _) {
+                return Row(
+                  mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,
+                  children: [
+                    if (configuration.showCloseButton && isEndDrawer) const _CloseButton(),
+                    const _Drawer(),
+                    if (configuration.showCloseButton && !isEndDrawer) const _CloseButton(),
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

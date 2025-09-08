@@ -7,10 +7,7 @@ final class _Label extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
-
-    final style = context.read<MyoroCheckboxStyle>();
-
-    final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
+    final labelTextStyle = themeExtension.labelTextStyle;
 
     final viewModel = context.read<MyoroCheckboxViewModel>();
     final state = viewModel.state;

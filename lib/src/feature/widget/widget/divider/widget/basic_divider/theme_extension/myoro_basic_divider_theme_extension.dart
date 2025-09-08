@@ -10,38 +10,53 @@ part 'myoro_basic_divider_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroBasicDivider].
 @immutable
 @myoroThemeExtension
-class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerThemeExtension>
+final class MyoroBasicDividerThemeExtension extends MyoroDividerThemeExtension<MyoroBasicDividerThemeExtension>
     with _$MyoroBasicDividerThemeExtensionMixin {
-  const MyoroBasicDividerThemeExtension({required this.color, required this.shortValue, required this.longValue});
+  const MyoroBasicDividerThemeExtension({super.color, super.shortValue, super.longValue});
 
-  MyoroBasicDividerThemeExtension.builder(ColorScheme colorScheme)
-    : color = colorScheme.onPrimary,
-      shortValue = kMyoroBorderWidth,
-      longValue = double.infinity;
+  factory MyoroBasicDividerThemeExtension.builder(ColorScheme colorScheme) {
+    return MyoroBasicDividerThemeExtension(
+      color: faker.randomGenerator.boolean() ? colorScheme.onPrimary : null,
+      shortValue: faker.randomGenerator.boolean() ? kMyoroBorderWidth : null,
+      longValue: faker.randomGenerator.boolean() ? double.infinity : null,
+    );
+  }
+
+  factory MyoroBasicDividerThemeExtension.fromResizeDividerThemeExtension(
+    MyoroResizeDividerThemeExtension themeExtension,
+  ) {
+    return MyoroBasicDividerThemeExtension(
+      color: themeExtension.color,
+      shortValue: themeExtension.shortValue,
+      longValue: themeExtension.longValue,
+    );
+  }
 
   // coverage:ignore-start
-  MyoroBasicDividerThemeExtension.fake()
-    : color = myoroFake<Color>(),
-      shortValue = faker.randomGenerator.decimal(),
-      longValue = faker.randomGenerator.decimal();
+  factory MyoroBasicDividerThemeExtension.fake() {
+    return MyoroBasicDividerThemeExtension(
+      color: myoroFake<Color>(),
+      shortValue: faker.randomGenerator.decimal(),
+      longValue: faker.randomGenerator.decimal(),
+    );
+  }
   // coverage:ignore-end
 
   @override
   MyoroBasicDividerThemeExtension lerp(covariant ThemeExtension<MyoroBasicDividerThemeExtension>? other, double t) {
     if (other is! MyoroBasicDividerThemeExtension) return this;
+
+    final color = Color.lerp(this.color, other.color, t);
+    final shortValue = lerpDouble(this.shortValue, other.shortValue, t);
+    final longValue = lerpDouble(this.longValue, other.longValue, t);
+
     return copyWith(
-      color: Color.lerp(color, other.color, t),
-      shortValue: lerpDouble(shortValue, other.shortValue, t),
-      longValue: lerpDouble(longValue, other.longValue, t),
+      color: color,
+      colorProvided: color != null,
+      shortValue: shortValue,
+      shortValueProvided: shortValue != null,
+      longValue: longValue,
+      longValueProvided: longValue != null,
     );
   }
-
-  /// [Color] of the [MyoroBasicDivider].
-  final Color color;
-
-  /// Width of the divider. [kMyoroBorderWidth] by default.
-  final double shortValue;
-
-  /// Height of the divider. [double.infinity] by default.
-  final double longValue;
 }

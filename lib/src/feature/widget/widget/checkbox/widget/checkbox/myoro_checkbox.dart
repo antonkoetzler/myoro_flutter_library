@@ -7,13 +7,13 @@ part '_widget/_label.dart';
 
 /// A checkbox that can have a label on the right side of it.
 class MyoroCheckbox extends StatefulWidget {
-  const MyoroCheckbox({super.key, required this.configuration, this.style = const MyoroCheckboxStyle()});
+  const MyoroCheckbox({super.key, required this.configuration, this.themeExtension});
 
   /// Configuration.
   final MyoroCheckboxConfiguration configuration;
 
-  /// Style.
-  final MyoroCheckboxStyle style;
+  /// Theme extension.
+  final MyoroCheckboxThemeExtension? themeExtension;
 
   @override
   State<MyoroCheckbox> createState() => _MyoroCheckboxState();
@@ -21,7 +21,9 @@ class MyoroCheckbox extends StatefulWidget {
 
 final class _MyoroCheckboxState extends State<MyoroCheckbox> {
   MyoroCheckboxConfiguration get _configuration => widget.configuration;
-  MyoroCheckboxStyle get _style => widget.style;
+  MyoroCheckboxThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+  }
 
   late final MyoroCheckboxViewModel _viewModel;
 
@@ -45,32 +47,30 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
-
-    final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
+    final spacing = _themeExtension.spacing ?? 0;
 
     final state = _viewModel.state;
     final configuration = state.configuration;
     final label = configuration.label;
 
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: _viewModel),
-        InheritedProvider.value(value: _style),
-      ],
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTapUp: _viewModel.onTapUp,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: spacing,
-            children: [
-              const _Checkbox(),
-              if (label.isNotEmpty) const Flexible(child: _Label()),
-            ],
+    return InheritedProvider.value(
+      value: _viewModel,
+      child: MyoroSingularThemeExtensionWrapper(
+        themeExtension: _themeExtension,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTapUp: _viewModel.onTapUp,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: spacing,
+              children: [
+                const _Checkbox(),
+                if (label.isNotEmpty) const Flexible(child: _Label()),
+              ],
+            ),
           ),
         ),
       ),

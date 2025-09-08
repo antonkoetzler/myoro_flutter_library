@@ -2,7 +2,7 @@ part of 'bundle/myoro_dropdown_bundle.dart';
 
 /// Singular item dropdown.
 class MyoroSingularDropdown<T> extends StatefulWidget {
-  const MyoroSingularDropdown({super.key, this.controller, this.configuration, this.style = const MyoroDropdownStyle()})
+  const MyoroSingularDropdown({super.key, this.controller, this.configuration, this.themeExtension})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroSingularDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
@@ -15,14 +15,14 @@ class MyoroSingularDropdown<T> extends StatefulWidget {
   final MyoroSingularDropdownConfiguration<T>? configuration;
 
   /// Style.
-  final MyoroDropdownStyle style;
+  final MyoroDropdownThemeExtension? themeExtension;
 
   @override
   State<MyoroSingularDropdown<T>> createState() => _MyoroSingularDropdownState<T>();
 }
 
 final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T>> {
-  MyoroDropdownStyle get _style => widget.style;
+  MyoroDropdownThemeExtension? get _themeExtension => widget.themeExtension;
 
   MyoroSingularDropdownViewModel<T>? _localViewModel;
   MyoroSingularDropdownViewModel<T> get _viewModel {
@@ -49,5 +49,5 @@ final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T
   }
 
   @override
-  Widget build(_) => _Dropdown(_viewModel, _style);
+  Widget build(_) => _Dropdown(_viewModel, _themeExtension);
 }

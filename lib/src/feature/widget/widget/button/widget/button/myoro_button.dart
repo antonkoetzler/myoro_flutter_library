@@ -13,7 +13,7 @@ class MyoroButton extends StatefulWidget {
   final MyoroButtonConfiguration? configuration;
 
   /// Theme extension.
-  final MyoroButtonVariantThemeExtension? themeExtension;
+  final MyoroButtonThemeExtension? themeExtension;
 
   /// [Widget] builder of the [MyoroButton].
   final MyoroButtonBuilder builder;

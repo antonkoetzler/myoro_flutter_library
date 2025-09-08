@@ -33,8 +33,34 @@ abstract class MyoroButtonVariantThemeExtension<T extends MyoroButtonVariantThem
   final Color? borderTapColor;
 
   @override
-  T lerp(covariant ThemeExtension<T>? other, double t) {
-    if (other is! T) return this as T;
+  T copyWith({
+    Color? backgroundIdleColor,
+    bool backgroundIdleColorProvided = true,
+    Color? backgroundHoverColor,
+    bool backgroundHoverColorProvided = true,
+    Color? backgroundTapColor,
+    bool backgroundTapColorProvided = true,
+    Color? contentIdleColor,
+    bool contentIdleColorProvided = true,
+    Color? contentHoverColor,
+    bool contentHoverColorProvided = true,
+    Color? contentTapColor,
+    bool contentTapColorProvided = true,
+    double? borderWidth,
+    bool borderWidthProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    Color? borderIdleColor,
+    bool borderIdleColorProvided = true,
+    Color? borderHoverColor,
+    bool borderHoverColorProvided = true,
+    Color? borderTapColor,
+    bool borderTapColorProvided = true,
+  });
+
+  @override
+  T lerp(covariant T? other, double t) {
+    if (other == null) return this as T;
 
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
     final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
@@ -74,62 +100,6 @@ abstract class MyoroButtonVariantThemeExtension<T extends MyoroButtonVariantThem
     );
   }
 
-  @override
-  T copyWith({
-    Color? backgroundIdleColor,
-    bool backgroundIdleColorProvided = true,
-    Color? backgroundHoverColor,
-    bool backgroundHoverColorProvided = true,
-    Color? backgroundTapColor,
-    bool backgroundTapColorProvided = true,
-    Color? contentIdleColor,
-    bool contentIdleColorProvided = true,
-    Color? contentHoverColor,
-    bool contentHoverColorProvided = true,
-    Color? contentTapColor,
-    bool contentTapColorProvided = true,
-    double? borderWidth,
-    bool borderWidthProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    Color? borderIdleColor,
-    bool borderIdleColorProvided = true,
-    Color? borderHoverColor,
-    bool borderHoverColorProvided = true,
-    Color? borderTapColor,
-    bool borderTapColorProvided = true,
-  }) {
-    return _newInstance(
-      backgroundIdleColor: backgroundIdleColorProvided ? backgroundIdleColor : this.backgroundIdleColor,
-      backgroundHoverColor: backgroundHoverColorProvided ? backgroundHoverColor : this.backgroundHoverColor,
-      backgroundTapColor: backgroundTapColorProvided ? backgroundTapColor : this.backgroundTapColor,
-      contentIdleColor: contentIdleColorProvided ? contentIdleColor : this.contentIdleColor,
-      contentHoverColor: contentHoverColorProvided ? contentHoverColor : this.contentHoverColor,
-      contentTapColor: contentTapColorProvided ? contentTapColor : this.contentTapColor,
-      borderWidth: borderWidthProvided ? borderWidth : this.borderWidth,
-      borderRadius: borderRadiusProvided ? borderRadius : this.borderRadius,
-      borderIdleColor: borderIdleColorProvided ? borderIdleColor : this.borderIdleColor,
-      borderHoverColor: borderHoverColorProvided ? borderHoverColor : this.borderHoverColor,
-      borderTapColor: borderTapColorProvided ? borderTapColor : this.borderTapColor,
-    );
-  }
-
-  @override
-  String toString() =>
-      'MyoroButtonVariantThemeExtension(\n'
-      '  backgroundIdleColor: backgroundIdleColor,\n'
-      '  backgroundHoverColor: backgroundHoverColor,\n'
-      '  backgroundTapColor: backgroundTapColor,\n'
-      '  contentIdleColor: contentIdleColor,\n'
-      '  contentHoverColor: contentHoverColor,\n'
-      '  contentTapColor: contentTapColor,\n'
-      '  borderWidth: borderWidth,\n'
-      '  borderRadius: borderRadius,\n'
-      '  borderIdleColor: borderIdleColor,\n'
-      '  borderHoverColor: borderHoverColor,\n'
-      '  borderTapColor: borderTapColor,\n'
-      ');';
-
   /// Background [Color] builder.
   Color? backgroundColorBuilder(MyoroTapStatusEnum tapStatus) {
     return switch (tapStatus) {
@@ -162,19 +132,4 @@ abstract class MyoroButtonVariantThemeExtension<T extends MyoroButtonVariantThem
           MyoroColors.transparent,
     );
   }
-
-  /// Every concrete extension must implement this to return a new instance of itself.
-  T _newInstance({
-    Color? backgroundIdleColor,
-    Color? backgroundHoverColor,
-    Color? backgroundTapColor,
-    Color? contentIdleColor,
-    Color? contentHoverColor,
-    Color? contentTapColor,
-    double? borderWidth,
-    BorderRadius? borderRadius,
-    Color? borderIdleColor,
-    Color? borderHoverColor,
-    Color? borderTapColor,
-  });
 }

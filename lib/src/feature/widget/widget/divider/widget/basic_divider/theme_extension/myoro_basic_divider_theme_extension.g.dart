@@ -17,11 +17,18 @@ mixin _$MyoroBasicDividerThemeExtensionMixin on ThemeExtension<MyoroBasicDivider
   MyoroBasicDividerThemeExtension get self => this as MyoroBasicDividerThemeExtension;
 
   @override
-  MyoroBasicDividerThemeExtension copyWith({Color? color, double? shortValue, double? longValue}) {
+  MyoroBasicDividerThemeExtension copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? shortValue,
+    bool shortValueProvided = true,
+    double? longValue,
+    bool longValueProvided = true,
+  }) {
     return MyoroBasicDividerThemeExtension(
-      color: color ?? self.color,
-      shortValue: shortValue ?? self.shortValue,
-      longValue: longValue ?? self.longValue,
+      color: colorProvided ? (color ?? self.color) : null,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      longValue: longValueProvided ? (longValue ?? self.longValue) : null,
     );
   }
 

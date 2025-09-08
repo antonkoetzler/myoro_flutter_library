@@ -19,19 +19,28 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
   @override
   MyoroCardThemeExtension copyWith({
     Color? backgroundColor,
+    bool backgroundColorProvided = true,
     Border? border,
+    bool borderProvided = true,
     BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
     EdgeInsets? padding,
+    bool paddingProvided = true,
     double? titleCardSpacing,
+    bool titleCardSpacingProvided = true,
     TextStyle? textStyle,
+    bool textStyleProvided = true,
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
   }) {
     return MyoroCardThemeExtension(
-      backgroundColor: backgroundColor ?? self.backgroundColor,
-      border: border ?? self.border,
-      borderRadius: borderRadius ?? self.borderRadius,
-      padding: padding ?? self.padding,
-      titleCardSpacing: titleCardSpacing ?? self.titleCardSpacing,
-      textStyle: textStyle ?? self.textStyle,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      border: borderProvided ? (border ?? self.border) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      titleCardSpacing: titleCardSpacingProvided ? (titleCardSpacing ?? self.titleCardSpacing) : null,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
     );
   }
 
@@ -44,7 +53,8 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
         other.borderRadius == self.borderRadius &&
         other.padding == self.padding &&
         other.titleCardSpacing == self.titleCardSpacing &&
-        other.textStyle == self.textStyle;
+        other.textStyle == self.textStyle &&
+        other.constraints == self.constraints;
   }
 
   @override
@@ -56,6 +66,7 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
       self.padding,
       self.titleCardSpacing,
       self.textStyle,
+      self.constraints,
     );
   }
 
@@ -68,5 +79,6 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
       '  padding: ${self.padding},\n'
       '  titleCardSpacing: ${self.titleCardSpacing},\n'
       '  textStyle: ${self.textStyle},\n'
+      '  constraints: ${self.constraints},\n'
       ');';
 }

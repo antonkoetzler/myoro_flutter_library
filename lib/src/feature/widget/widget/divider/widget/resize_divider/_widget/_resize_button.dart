@@ -11,12 +11,10 @@ final class _ResizeButton extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroResizeDividerThemeExtension>();
 
-    final style = context.read<MyoroResizeDividerStyle>();
-
-    final resizeButtonShortValue = style.resizeButtonShortValue ?? themeExtension.resizeButtonShortValue;
-    final resizeButtonLongValue = style.resizeButtonLongValue ?? themeExtension.resizeButtonLongValue;
-    final resizeButtonColor = style.resizeButtonColor ?? themeExtension.resizeButtonColor;
-    final resizeButtonBorderRadius = style.resizeButtonBorderRadius ?? themeExtension.resizeButtonBorderRadius;
+    final resizeButtonShortValue = themeExtension.resizeButtonShortValue;
+    final resizeButtonLongValue = themeExtension.resizeButtonLongValue;
+    final resizeButtonColor = themeExtension.resizeButtonColor;
+    final resizeButtonBorderRadius = themeExtension.resizeButtonBorderRadius;
 
     final isHorizontal = _direction.isHorizontal;
 

@@ -12,13 +12,25 @@ part 'myoro_card_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> with _$MyoroCardThemeExtensionMixin {
   const MyoroCardThemeExtension({
-    required this.backgroundColor,
-    required this.border,
-    required this.borderRadius,
-    required this.padding,
-    required this.titleCardSpacing,
-    required this.textStyle,
+    this.backgroundColor,
+    this.border,
+    this.borderRadius,
+    this.padding,
+    this.titleCardSpacing,
+    this.textStyle,
+    this.constraints,
   });
+
+  // coverage:ignore-start
+  MyoroCardThemeExtension.fake()
+    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
+      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
+  // coverage:ignore-end
 
   MyoroCardThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),
@@ -26,46 +38,57 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       padding = const EdgeInsets.all(10),
       titleCardSpacing = 10,
-      textStyle = textTheme.titleMedium!;
-
-  // coverage:ignore-start
-  MyoroCardThemeExtension.fake()
-    : backgroundColor = myoroFake<Color>(),
-      border = myoroFake<Border>(),
-      borderRadius = myoroFake<BorderRadius>(),
-      padding = myoroFake<EdgeInsets>(),
-      titleCardSpacing = faker.randomGenerator.decimal(),
-      textStyle = myoroFake<TextStyle>();
-  // coverage:ignore-end
+      textStyle = textTheme.titleMedium!,
+      constraints = null;
 
   /// Background color of the card.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Border of the card.
-  final Border border;
+  final Border? border;
 
   /// Border radius of the card.
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// Padding of [MyoroCard.child].
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Spacing in between [_Title] & [_Card].
-  final double titleCardSpacing;
+  final double? titleCardSpacing;
 
   /// Text style of [MyoroCard.title].
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
+
+  /// [BoxConstraints]
+  final BoxConstraints? constraints;
 
   @override
   MyoroCardThemeExtension lerp(covariant ThemeExtension<MyoroCardThemeExtension>? other, double t) {
     if (other is! MyoroCardThemeExtension) return this;
+
+    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
+    final border = Border.lerp(this.border, other.border, t);
+    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
+    final padding = EdgeInsets.lerp(this.padding, other.padding, t);
+    final titleCardSpacing = lerpDouble(this.titleCardSpacing, other.titleCardSpacing, t);
+    final textStyle = TextStyle.lerp(this.textStyle, other.textStyle, t);
+    final constraints = BoxConstraints.lerp(this.constraints, other.constraints, t);
+
     return copyWith(
-      backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
-      border: Border.lerp(border, other.border, t),
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      padding: EdgeInsets.lerp(padding, other.padding, t),
-      titleCardSpacing: lerpDouble(titleCardSpacing, other.titleCardSpacing, t),
-      textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
+      backgroundColor: backgroundColor,
+      backgroundColorProvided: backgroundColor != null,
+      border: border,
+      borderProvided: border != null,
+      borderRadius: borderRadius,
+      borderRadiusProvided: borderRadius != null,
+      padding: padding,
+      paddingProvided: padding != null,
+      titleCardSpacing: titleCardSpacing,
+      titleCardSpacingProvided: titleCardSpacing != null,
+      textStyle: textStyle,
+      textStyleProvided: textStyle != null,
+      constraints: constraints,
+      constraintsProvided: constraints != null,
     );
   }
 }

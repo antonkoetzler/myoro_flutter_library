@@ -6,33 +6,32 @@ part '_widget/_title.dart';
 
 /// Base card.
 class MyoroCard extends StatelessWidget {
-  const MyoroCard({
-    super.key,
-    this.title = kMyoroEmptyString,
-    this.style = const MyoroCardStyle(),
-    required this.child,
-  });
+  const MyoroCard({super.key, this.title = kMyoroEmptyString, this.themeExtension, required this.child});
 
   /// Title of the card.
   final String title;
 
   /// Style.
-  final MyoroCardStyle style;
+  final MyoroCardThemeExtension? themeExtension;
 
   /// Child.
   final Widget child;
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroCardThemeExtension>();
+    final titleCardSpacing = themeExtension.titleCardSpacing ?? 0;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      spacing: themeExtension.titleCardSpacing,
-      children: [
-        if (title.isNotEmpty) _Title(style, title),
-        Flexible(child: _Card(style, child)),
-      ],
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: themeExtension,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        spacing: titleCardSpacing,
+        children: [
+          if (title.isNotEmpty) _Title(title),
+          Flexible(child: _Card(child)),
+        ],
+      ),
     );
   }
 }

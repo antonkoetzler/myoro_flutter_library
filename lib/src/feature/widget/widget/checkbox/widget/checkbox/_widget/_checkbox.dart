@@ -7,14 +7,11 @@ final class _Checkbox extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
-
-    final style = context.read<MyoroCheckboxStyle>();
-
-    final checkboxActiveColor = style.checkboxActiveColor ?? themeExtension.checkboxActiveColor;
-    final checkboxCheckColor = style.checkboxCheckColor ?? themeExtension.checkboxCheckColor;
-    final checkboxHoverColor = style.checkboxHoverColor ?? themeExtension.checkboxHoverColor;
-    final checkboxFocusColor = style.checkboxFocusColor ?? themeExtension.checkboxFocusColor;
-    final checkboxSplashRadius = style.checkboxSplashRadius ?? themeExtension.checkboxSplashRadius;
+    final checkboxActiveColor = themeExtension.checkboxActiveColor;
+    final checkboxCheckColor = themeExtension.checkboxCheckColor;
+    final checkboxHoverColor = themeExtension.checkboxHoverColor;
+    final checkboxFocusColor = themeExtension.checkboxFocusColor;
+    final checkboxSplashRadius = themeExtension.checkboxSplashRadius;
 
     final viewModel = context.read<MyoroCheckboxViewModel>();
     final state = viewModel.state;

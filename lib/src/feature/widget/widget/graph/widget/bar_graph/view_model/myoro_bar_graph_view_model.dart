@@ -4,22 +4,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroBarGraph].
 class MyoroBarGraphViewModel {
+  MyoroBarGraphViewModel(this.configuration);
+
   /// Configuration.
-  MyoroBarGraphConfiguration? _configuration;
-
-  /// [_configuration] getter.
-  MyoroBarGraphConfiguration get configuration {
-    assert(
-      _configuration != null,
-      '[MyoroBarGraphConfiguration.configuration]: [_configuration] has not been set yet.',
-    );
-    return _configuration!;
-  }
-
-  /// [_configuration] setter.
-  set configuration(MyoroBarGraphConfiguration configuration) {
-    _configuration = configuration;
-  }
+  final MyoroBarGraphConfiguration configuration;
 
   /// Builds the bar rods.
   List<BarChartGroupData> getFormattedItems(BuildContext context) {
@@ -36,8 +24,14 @@ class MyoroBarGraphViewModel {
                 borderRadius: themeExtension.barBorderRadius,
                 rodStackItems: bar.barSections.isEmpty
                     ? null
-                    : bar.barSections.map<BarChartRodStackItem>((MyoroBarGraphBarSection barSection) {
-                        return BarChartRodStackItem(barSection.fromY, barSection.toY, barSection.color);
+                    : bar.barSections.map<BarChartRodStackItem>((
+                        MyoroBarGraphBarSection barSection,
+                      ) {
+                        return BarChartRodStackItem(
+                          barSection.fromY,
+                          barSection.toY,
+                          barSection.color,
+                        );
                       }).toList(),
               );
             }).toList(),

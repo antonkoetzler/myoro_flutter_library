@@ -10,6 +10,8 @@ final class _TraversalButton extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final secondaryVariantThemeExtension = context.resolveThemeExtension<MyoroButtonSecondaryVariantThemeExtension>();
+
     return Align(
       alignment: _alignment,
       child: IntrinsicWidth(
@@ -18,9 +20,7 @@ final class _TraversalButton extends StatelessWidget {
             onTapUp: (_) => _onTapUp(),
             iconConfiguration: MyoroIconConfiguration(icon: _icon),
           ),
-          style: MyoroIconTextButtonStyle(
-            borderBuilder: (tapStatus) => MyoroButtonVariantEnum.borderBuilder(context, tapStatus),
-          ),
+          themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(secondaryVariantThemeExtension),
         ),
       ),
     );

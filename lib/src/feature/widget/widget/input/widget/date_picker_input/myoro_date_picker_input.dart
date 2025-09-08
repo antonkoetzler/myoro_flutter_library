@@ -7,23 +7,31 @@ part '_widget/_input.dart';
 part '_widget/_trigger_area.dart';
 
 /// Date picker input (click date, no typy typy).
-class MyoroDatePickerInput extends MyoroStatefulWidget {
-  const MyoroDatePickerInput({super.key, required this.configuration});
+class MyoroDatePickerInput extends StatefulWidget {
+  const MyoroDatePickerInput({super.key, required this.configuration, this.themeExtension});
 
   /// Configuration.
   final MyoroDatePickerInputConfiguration configuration;
+
+  /// Theme extension.
+  final MyoroInputThemeExtension? themeExtension;
 
   @override
   State<MyoroDatePickerInput> createState() => _MyoroDatePickerInputState();
 }
 
 final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
+  MyoroDatePickerInputConfiguration get _configuration => widget.configuration;
+  MyoroInputThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroInputThemeExtension>();
+  }
+
   late final MyoroDatePickerInputViewModel _viewModel;
 
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroDatePickerInputViewModel(widget.configuration);
+    _viewModel = MyoroDatePickerInputViewModel(_configuration);
   }
 
   @override
@@ -33,7 +41,7 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   }
 
   @override
-  Widget build(context) {
+  Widget build(_) {
     final state = _viewModel.state;
     final configuration = state.configuration;
     final checkboxOnChangedNotNull = configuration.checkboxOnChanged != null;
@@ -41,16 +49,19 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
     final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
     final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
 
-    return InheritedProvider.value(
-      value: _viewModel,
-      child: Stack(
-        alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
-            ? Alignment.center
-            : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-        children: const [
-          _Input(),
-          Positioned(child: _TriggerArea()),
-        ],
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: _themeExtension,
+      child: InheritedProvider.value(
+        value: _viewModel,
+        child: Stack(
+          alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
+              ? Alignment.center
+              : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
+          children: const [
+            _Input(),
+            Positioned(child: _TriggerArea()),
+          ],
+        ),
       ),
     );
   }

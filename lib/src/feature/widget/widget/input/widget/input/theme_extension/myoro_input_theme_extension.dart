@@ -10,7 +10,8 @@ part 'myoro_input_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroInput].
 @immutable
 @myoroThemeExtension
-class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> with _$MyoroInputThemeExtensionMixin {
+class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
+    with _$MyoroInputThemeExtensionMixin {
   const MyoroInputThemeExtension({
     required this.underlinedBorder,
     required this.outlinedBorder,
@@ -48,11 +49,11 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : underlinedBorder = UnderlineInputBorder(
-        borderSide: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+        borderSide: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       ),
       outlinedBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
-        borderSide: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadius),
+        borderSide: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       ),
       noneBorder = InputBorder.none,
       primaryColor = colorScheme.primary,
@@ -110,7 +111,10 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
   final IconData clearTextButtonIcon;
 
   @override
-  MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
+  MyoroInputThemeExtension lerp(
+    covariant ThemeExtension<MyoroInputThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroInputThemeExtension) return this;
     return copyWith(
       underlinedBorder: myoroLerp(underlinedBorder, other.underlinedBorder, t),
@@ -125,7 +129,11 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
       labelBehavior: myoroLerp(labelBehavior, other.labelBehavior, t),
-      clearTextButtonPadding: EdgeInsets.lerp(clearTextButtonPadding, other.clearTextButtonPadding, t),
+      clearTextButtonPadding: EdgeInsets.lerp(
+        clearTextButtonPadding,
+        other.clearTextButtonPadding,
+        t,
+      ),
       clearTextButtonIcon: myoroLerp(clearTextButtonIcon, other.clearTextButtonIcon, t),
     );
   }

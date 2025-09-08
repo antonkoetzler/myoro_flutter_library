@@ -9,8 +9,7 @@ final class _Title extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
-    final style = context.read<MyoroDrawerStyle>();
-    final titleTextStyle = style.titleTextStyle ?? themeExtension.titleTextStyle;
+    final titleTextStyle = themeExtension.titleTextStyle;
     return Text(_configuration.title, style: titleTextStyle);
   }
 }

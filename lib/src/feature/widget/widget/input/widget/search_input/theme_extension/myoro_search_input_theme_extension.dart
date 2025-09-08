@@ -7,6 +7,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_search_input_theme_extension.g.dart';
 
+YOU ARE HERE
+
 /// [ThemeExtension] for [MyoroSearchInput].
 @immutable
 @myoroThemeExtension

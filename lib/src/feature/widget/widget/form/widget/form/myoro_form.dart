@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part '_widget/_form.dart';
 
 /// Base form widget. Should always be used for any type of form content.
-class MyoroForm<T> extends MyoroStatefulWidget {
+class MyoroForm<T> extends StatefulWidget {
   /// Notifier in the case that the controller needs to be used outside of [builder]'s scope.
   final MyoroFormNotifier<T>? controller;
 
@@ -29,7 +29,8 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
 
   MyoroFormNotifier<T>? _localNotifier;
   MyoroFormNotifier<T> get _controller {
-    return widget.controller ?? (_localNotifier ??= MyoroFormNotifier(configuration: widget.configuration!));
+    return widget.controller ??
+        (_localNotifier ??= MyoroFormNotifier(configuration: widget.configuration!));
   }
 
   @override
@@ -40,6 +41,9 @@ final class _MyoroFormState<T> extends State<MyoroForm<T>> {
 
   @override
   Widget build(context) {
-    return ValueListenableBuilder(valueListenable: _controller, builder: (_, _, _) => _Form(_controller, _builder));
+    return ValueListenableBuilder(
+      valueListenable: _controller,
+      builder: (_, _, _) => _Form(_controller, _builder),
+    );
   }
 }

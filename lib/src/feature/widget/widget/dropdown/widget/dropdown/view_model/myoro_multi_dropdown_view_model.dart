@@ -10,7 +10,8 @@ final class MyoroMultiDropdownViewModel<T>
           MyoroMultiMenuConfiguration<T>,
           MyoroMultiMenuController<T>
         > {
-  MyoroMultiDropdownViewModel(MyoroMultiDropdownConfiguration<T> configuration) : super(configuration);
+  MyoroMultiDropdownViewModel(MyoroMultiDropdownConfiguration<T> configuration)
+    : super(configuration);
 
   @override
   void enabledNotifierListener() {
@@ -45,10 +46,10 @@ final class MyoroMultiDropdownViewModel<T>
   }
 
   @override
-  void initializeMenuController(BuildContext context, MyoroDropdownStyle style) {
+  void initializeMenuController(BuildContext context, MyoroDropdownThemeExtension themeExtension) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-    final menuBorder = style.menuBorder ?? themeExtension.menuBorder;
-    final menuBorderRadius = style.menuBorderRadius ?? themeExtension.menuBorderRadius;
+    final menuBorder = themeExtension.menuBorder ?? themeExtension.menuBorder;
+    final menuBorderRadius = themeExtension.menuBorderRadius ?? themeExtension.menuBorderRadius;
 
     final configuration = state.configuration;
     final menuConfiguration = configuration.menuConfiguration;

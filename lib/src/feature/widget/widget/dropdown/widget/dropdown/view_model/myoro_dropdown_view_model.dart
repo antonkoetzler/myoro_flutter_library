@@ -11,7 +11,8 @@ abstract class MyoroDropdownViewModel<
   MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MENU_CONFIGURATION>>
 > {
   MyoroDropdownViewModel(CONFIGURATION configuration) : _state = MyoroDropdownState(configuration) {
-    if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
+    if (configuration.menuTypeEnum.isOverlay)
+      state.overlayMenuController.addListener(_overlayMenuControllerListener);
     state.enabledNotifier.addListener(enabledNotifierListener);
   }
 
@@ -75,7 +76,7 @@ abstract class MyoroDropdownViewModel<
   }
 
   /// Initializes [MyoroDropdownState.menuController].
-  void initializeMenuController(BuildContext context, MyoroDropdownStyle style);
+  void initializeMenuController(BuildContext context, MyoroDropdownThemeExtension themeExtension);
 
   /// Builds the menu [Widget].
   Widget get menuWidget;

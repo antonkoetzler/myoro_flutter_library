@@ -10,7 +10,8 @@ final class MyoroSingularDropdownViewModel<T>
           MyoroSingularMenuConfiguration<T>,
           MyoroSingularMenuController<T>
         > {
-  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration) : super(configuration);
+  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration)
+    : super(configuration);
 
   @override
   void enabledNotifierListener() {
@@ -41,13 +42,12 @@ final class MyoroSingularDropdownViewModel<T>
     state.inputController.text = selectedItem == null ? '' : selectedItemBuilder(selectedItem);
   }
 
-  // TODO: I purposely fucked you over after the menu is refactored. dont pass style arg anymore
   @override
-  void initializeMenuController(BuildContext context, MyoroDropdownStyle style) {
+  void initializeMenuController(BuildContext context, MyoroDropdownThemeExtension themeExtension) {
     final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
-    final menuBorder = style.menuBorder ?? themeExtension.menuBorder;
-    final menuBorderRadius = style.menuBorderRadius ?? themeExtension.menuBorderRadius;
+    final menuBorder = themeExtension.menuBorder ?? themeExtension.menuBorder;
+    final menuBorderRadius = themeExtension.menuBorderRadius ?? themeExtension.menuBorderRadius;
 
     final configuration = state.configuration;
     final menuConfiguration = configuration.menuConfiguration;

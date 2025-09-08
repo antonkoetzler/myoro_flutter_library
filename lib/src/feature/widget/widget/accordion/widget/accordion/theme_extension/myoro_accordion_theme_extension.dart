@@ -207,11 +207,4 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonArrowAnimationCurveProvided: itemTitleButtonArrowAnimationCurve != null,
     );
   }
-
-  /// [MyoroButtonStyle] of the item title button.
-  MyoroButtonStyle get itemTitleButtonStyle {
-    return MyoroButtonStyle(
-      backgroundColorBuilder: itemContentBackgroundColor != null ? (_) => itemContentBackgroundColor! : null,
-    );
-  }
 }
