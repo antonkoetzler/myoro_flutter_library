@@ -27,10 +27,7 @@ class MyoroButtonPrimaryVariantThemeExtension
     super.borderTapColor,
   });
 
-  factory MyoroButtonPrimaryVariantThemeExtension.builder(
-    bool isDarkMode,
-    ColorScheme colorScheme,
-  ) {
+  factory MyoroButtonPrimaryVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
     const backgroundHoverColorFactor = 0.15;
     const backgroundTapColorFactor = 0.2;
 

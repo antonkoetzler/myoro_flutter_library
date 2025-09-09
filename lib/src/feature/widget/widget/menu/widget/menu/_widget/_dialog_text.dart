@@ -9,9 +9,11 @@ final class _DialogText extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final dialogTextLoaderPadding = themeExtension.dialogTextLoaderPadding ?? EdgeInsets.zero;
+
     return Center(
       child: Padding(
-        padding: themeExtension.dialogTextLoaderPadding,
+        padding: dialogTextLoaderPadding,
         child: Text(_text, style: context.resolveThemeExtension<MyoroMenuThemeExtension>().dialogTextStyle),
       ),
     );

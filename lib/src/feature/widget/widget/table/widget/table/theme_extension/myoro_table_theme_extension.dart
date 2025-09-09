@@ -38,8 +38,8 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : decoration = BoxDecoration(
         color: colorScheme.primary,
-        border: Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
-        borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+        border: Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
+        borderRadius: BorderRadius.circular(kMyoroBorderRadius),
       ),
       columnTextStyle = textTheme.titleMedium!,
       columnSpacing = 10,

@@ -23,13 +23,13 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
         backgroundColor: backgroundColor,
         backgroundColorProvided: backgroundColor != null && isSelected,
       );
-    final iconTextButtonThemeExtension =
-        context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>()..copyWith(
-          borderRadius: itemBorderRadius,
-          borderRadiusProvided: itemBorderRadius != null,
-          backgroundColor: backgroundColor,
-          backgroundColorProvided: backgroundColor != null && isSelected,
-        );
+    final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>()
+      ..copyWith(
+        borderRadius: itemBorderRadius,
+        borderRadiusProvided: itemBorderRadius != null,
+        backgroundColor: backgroundColor,
+        backgroundColorProvided: backgroundColor != null && isSelected,
+      );
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
     final toggleItem = viewModel.toggleItem;

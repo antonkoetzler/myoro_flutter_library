@@ -58,12 +58,6 @@ final class _InputState<T, V extends _ViewModelType<T>> extends State<_Input<T, 
   }
 
   Widget _createInputWidget(BuildContext context, bool enabled, bool showingMenu) {
-    final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final outlinedBorder = themeExtension.outlinedBorder;
-    final menuActiveInputBorderRadius = outlinedBorder.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
-    );
-
     final viewModel = context.read<V>();
     final state = viewModel.state;
     final configuration = state.configuration;
@@ -76,6 +70,19 @@ final class _InputState<T, V extends _ViewModelType<T>> extends State<_Input<T, 
     final menuController = state.menuController;
     final clear = menuController.clear;
 
+    var inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final outlinedBorder = inputThemeExtension.outlinedBorder;
+    final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
+      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
+    );
+    inputThemeExtension = inputThemeExtension.copyWith(
+      border: switch (menuTypeEnum) {
+        MyoroDropdownMenuTypeEnum.overlay => showingMenu ? menuActiveInputBorderRadius : null,
+        MyoroDropdownMenuTypeEnum.expanding => showingMenu ? menuActiveInputBorderRadius : null,
+        MyoroDropdownMenuTypeEnum.modal => null,
+      },
+    );
+
     final inputConfiguration = MyoroInputConfiguration(
       textAlign: selectedItemTextAlign,
       label: label,
@@ -83,11 +90,6 @@ final class _InputState<T, V extends _ViewModelType<T>> extends State<_Input<T, 
       readOnly: true,
       showClearTextButton: allowItemClearing,
       onCleared: clear,
-      border: switch (menuTypeEnum) {
-        MyoroDropdownMenuTypeEnum.overlay => showingMenu ? menuActiveInputBorderRadius : null,
-        MyoroDropdownMenuTypeEnum.expanding => showingMenu ? menuActiveInputBorderRadius : null,
-        MyoroDropdownMenuTypeEnum.modal => null,
-      },
       controller: inputController,
     );
 
@@ -95,7 +97,8 @@ final class _InputState<T, V extends _ViewModelType<T>> extends State<_Input<T, 
       key: inputKey,
       // This copyWith is to disable the [BoxBorder] lerp animation when we need to alter the bottom corners of
       // this [MyoroInput] when the dropdown is opened when menuTypeEnum is [MyoroDropdownMenuTypeEnum.expanding].
-      configuration: inputConfiguration.copyWith(inputKey: ValueKey(inputConfiguration.border)),
+      configuration: inputConfiguration.copyWith(inputKey: ValueKey(inputThemeExtension.border)),
+      themeExtension: inputThemeExtension,
     );
   }
 

@@ -13,22 +13,22 @@ part 'myoro_tab_view_theme_extension.g.dart';
 class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtension>
     with _$MyoroTabViewThemeExtensionMixin {
   const MyoroTabViewThemeExtension({
-    required this.tabButtonBorderRadius,
-    required this.tabButtonIdleColor,
-    required this.tabButtonHoverColor,
-    required this.tabButtonTapColor,
-    required this.tabButtonIconSize,
-    required this.tabButtonTextStyle,
+    this.tabButtonBorderRadius,
+    this.tabButtonIdleColor,
+    this.tabButtonHoverColor,
+    this.tabButtonTapColor,
+    this.tabButtonIconSize,
+    this.tabButtonTextStyle,
   });
 
   // coverage:ignore-start
   MyoroTabViewThemeExtension.fake()
-    : tabButtonBorderRadius = myoroFake<BorderRadius>(),
-      tabButtonIdleColor = myoroFake<Color>(),
-      tabButtonHoverColor = myoroFake<Color>(),
-      tabButtonTapColor = myoroFake<Color>(),
-      tabButtonIconSize = faker.randomGenerator.decimal(scale: 20),
-      tabButtonTextStyle = myoroFake<TextStyle>();
+    : tabButtonBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      tabButtonIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      tabButtonHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      tabButtonTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      tabButtonIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      tabButtonTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
 
   MyoroTabViewThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -40,44 +40,47 @@ class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtensi
       tabButtonTextStyle = textTheme.bodySmall!;
 
   /// [BorderRadius] of a tab traversal button.
-  final BorderRadius tabButtonBorderRadius;
+  final BorderRadius? tabButtonBorderRadius;
 
   /// [MyoroTapStatusEnum.idle]'s [Color] of the tab's traversal button when the tab is selected.
-  final Color tabButtonIdleColor;
+  final Color? tabButtonIdleColor;
 
   /// [MyoroTapStatusEnum.hover]'s [Color] of the tab's traversal button when the tab is selected.
-  final Color tabButtonHoverColor;
+  final Color? tabButtonHoverColor;
 
   /// [MyoroTapStatusEnum.tap]'s [Color] of the tab's traversal button when the tab is selected.
-  final Color tabButtonTapColor;
+  final Color? tabButtonTapColor;
 
   /// Icon size of a tab traversal button.
-  final double tabButtonIconSize;
+  final double? tabButtonIconSize;
 
   /// [TextStyle] of a tab traversal button.
-  final TextStyle tabButtonTextStyle;
+  final TextStyle? tabButtonTextStyle;
 
   @override
   MyoroTabViewThemeExtension lerp(covariant ThemeExtension<MyoroTabViewThemeExtension>? other, double t) {
     if (other is! MyoroTabViewThemeExtension) return this;
-    return copyWith(
-      tabButtonBorderRadius: BorderRadius.lerp(tabButtonBorderRadius, other.tabButtonBorderRadius, t),
-      tabButtonIdleColor: Color.lerp(tabButtonIdleColor, other.tabButtonIdleColor, t),
-      tabButtonHoverColor: Color.lerp(tabButtonHoverColor, other.tabButtonHoverColor, t),
-      tabButtonTapColor: Color.lerp(tabButtonTapColor, other.tabButtonTapColor, t),
-      tabButtonIconSize: lerpDouble(tabButtonIconSize, other.tabButtonIconSize, t),
-      tabButtonTextStyle: TextStyle.lerp(tabButtonTextStyle, other.tabButtonTextStyle, t),
-    );
-  }
 
-  /// [MyoroIconTextButtonConfiguration.backgroundColorBuilder] of a tab traversal button when it's selected.
-  Color selectedTabButtonBackgroundColorBuilder(MyoroTapStatusEnum tapStatus) {
-    return switch (tapStatus) {
-      MyoroTapStatusEnum.idle => tabButtonTapColor,
-      // coverage:ignore-start
-      MyoroTapStatusEnum.hover => tabButtonHoverColor,
-      MyoroTapStatusEnum.tap => tabButtonTapColor,
-      // coverage:ignore-end
-    };
+    final tabButtonBorderRadius = BorderRadius.lerp(this.tabButtonBorderRadius, other.tabButtonBorderRadius, t);
+    final tabButtonIdleColor = Color.lerp(this.tabButtonIdleColor, other.tabButtonIdleColor, t);
+    final tabButtonHoverColor = Color.lerp(this.tabButtonHoverColor, other.tabButtonHoverColor, t);
+    final tabButtonTapColor = Color.lerp(this.tabButtonTapColor, other.tabButtonTapColor, t);
+    final tabButtonIconSize = lerpDouble(this.tabButtonIconSize, other.tabButtonIconSize, t);
+    final tabButtonTextStyle = TextStyle.lerp(this.tabButtonTextStyle, other.tabButtonTextStyle, t);
+
+    return copyWith(
+      tabButtonBorderRadius: tabButtonBorderRadius,
+      tabButtonBorderRadiusProvided: tabButtonBorderRadius != null,
+      tabButtonIdleColor: tabButtonIdleColor,
+      tabButtonIdleColorProvided: tabButtonIdleColor != null,
+      tabButtonHoverColor: tabButtonHoverColor,
+      tabButtonHoverColorProvided: tabButtonHoverColor != null,
+      tabButtonTapColor: tabButtonTapColor,
+      tabButtonTapColorProvided: tabButtonTapColor != null,
+      tabButtonIconSize: tabButtonIconSize,
+      tabButtonIconSizeProvided: tabButtonIconSize != null,
+      tabButtonTextStyle: tabButtonTextStyle,
+      tabButtonTextStyleProvided: tabButtonTextStyle != null,
+    );
   }
 }

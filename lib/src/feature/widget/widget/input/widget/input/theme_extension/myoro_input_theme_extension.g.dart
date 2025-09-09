@@ -18,36 +18,55 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
 
   @override
   MyoroInputThemeExtension copyWith({
+    InputBorder? border,
+    bool borderProvided = true,
     UnderlineInputBorder? underlinedBorder,
+    bool underlinedBorderProvided = true,
     OutlineInputBorder? outlinedBorder,
+    bool outlinedBorderProvided = true,
     InputBorder? noneBorder,
+    bool noneBorderProvided = true,
     Color? primaryColor,
+    bool primaryColorProvided = true,
     Color? errorBorderColor,
+    bool errorBorderColorProvided = true,
     double? cursorHeight,
+    bool cursorHeightProvided = true,
     EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
     double? disabledOpacity,
+    bool disabledOpacityProvided = true,
     TextStyle? inputTextStyle,
+    bool inputTextStyleProvided = true,
     double? spacing,
+    bool spacingProvided = true,
     TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
     FloatingLabelBehavior? labelBehavior,
+    bool labelBehaviorProvided = true,
     EdgeInsets? clearTextButtonPadding,
+    bool clearTextButtonPaddingProvided = true,
     IconData? clearTextButtonIcon,
+    bool clearTextButtonIconProvided = true,
   }) {
     return MyoroInputThemeExtension(
-      underlinedBorder: underlinedBorder ?? self.underlinedBorder,
-      outlinedBorder: outlinedBorder ?? self.outlinedBorder,
-      noneBorder: noneBorder ?? self.noneBorder,
-      primaryColor: primaryColor ?? self.primaryColor,
-      errorBorderColor: errorBorderColor ?? self.errorBorderColor,
-      cursorHeight: cursorHeight ?? self.cursorHeight,
-      contentPadding: contentPadding ?? self.contentPadding,
-      disabledOpacity: disabledOpacity ?? self.disabledOpacity,
-      inputTextStyle: inputTextStyle ?? self.inputTextStyle,
-      spacing: spacing ?? self.spacing,
-      labelTextStyle: labelTextStyle ?? self.labelTextStyle,
-      labelBehavior: labelBehavior ?? self.labelBehavior,
-      clearTextButtonPadding: clearTextButtonPadding ?? self.clearTextButtonPadding,
-      clearTextButtonIcon: clearTextButtonIcon ?? self.clearTextButtonIcon,
+      border: borderProvided ? (border ?? self.border) : null,
+      underlinedBorder: underlinedBorderProvided ? (underlinedBorder ?? self.underlinedBorder) : null,
+      outlinedBorder: outlinedBorderProvided ? (outlinedBorder ?? self.outlinedBorder) : null,
+      noneBorder: noneBorderProvided ? (noneBorder ?? self.noneBorder) : null,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      errorBorderColor: errorBorderColorProvided ? (errorBorderColor ?? self.errorBorderColor) : null,
+      cursorHeight: cursorHeightProvided ? (cursorHeight ?? self.cursorHeight) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      disabledOpacity: disabledOpacityProvided ? (disabledOpacity ?? self.disabledOpacity) : null,
+      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? self.inputTextStyle) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelBehavior: labelBehaviorProvided ? (labelBehavior ?? self.labelBehavior) : null,
+      clearTextButtonPadding: clearTextButtonPaddingProvided
+          ? (clearTextButtonPadding ?? self.clearTextButtonPadding)
+          : null,
+      clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
     );
   }
 
@@ -55,6 +74,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
   bool operator ==(Object other) {
     return other is MyoroInputThemeExtension &&
         other.runtimeType == runtimeType &&
+        other.border == self.border &&
         other.underlinedBorder == self.underlinedBorder &&
         other.outlinedBorder == self.outlinedBorder &&
         other.noneBorder == self.noneBorder &&
@@ -74,6 +94,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
   @override
   int get hashCode {
     return Object.hash(
+      self.border,
       self.underlinedBorder,
       self.outlinedBorder,
       self.noneBorder,
@@ -94,6 +115,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
   @override
   String toString() =>
       'MyoroInputThemeExtension(\n'
+      '  border: ${self.border},\n'
       '  underlinedBorder: ${self.underlinedBorder},\n'
       '  outlinedBorder: ${self.outlinedBorder},\n'
       '  noneBorder: ${self.noneBorder},\n'

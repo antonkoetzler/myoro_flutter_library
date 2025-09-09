@@ -20,7 +20,7 @@ enum MyoroInputStyleEnum {
   // coverage:ignore-end
 
   /// Border of the input.
-  InputBorder getBorder(BuildContext context) {
+  InputBorder? getBorder(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return switch (this) {

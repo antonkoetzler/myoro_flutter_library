@@ -7,8 +7,5 @@ final class _Divider extends StatelessWidget {
   const _Divider(this._direction);
 
   @override
-  Widget build(_) {
-    final configuration = MyoroBasicDividerConfiguration(direction: _direction);
-    return MyoroBasicDivider(configuration: configuration);
-  }
+  Widget build(_) => MyoroBasicDivider(_direction);
 }

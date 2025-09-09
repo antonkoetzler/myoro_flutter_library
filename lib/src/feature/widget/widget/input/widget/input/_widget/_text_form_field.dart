@@ -9,9 +9,10 @@ final class _TextFormField extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-
-    final border = _viewModel.state.configuration.getBorder(context);
-    final textStyle = _viewModel.state.configuration.inputTextStyle ?? themeExtension.inputTextStyle;
+    final clearTextButtonIcon = themeExtension.clearTextButtonIcon;
+    final textStyle = themeExtension.inputTextStyle;
+    final contentPadding = themeExtension.contentPadding;
+    final primaryColor = themeExtension.primaryColor ?? MyoroColors.transparent;
 
     final state = _viewModel.state;
     final configuration = state.configuration;
@@ -19,7 +20,6 @@ final class _TextFormField extends StatelessWidget {
     final autofocus = configuration.autofocus;
     final placeholder = configuration.placeholder;
     final label = configuration.label;
-    final contentPadding = configuration.contentPadding;
     final textAlign = configuration.textAlign;
     final validation = configuration.validation;
     final onFieldSubmitted = configuration.onFieldSubmitted;
@@ -30,12 +30,16 @@ final class _TextFormField extends StatelessWidget {
     final enabled = state.enabled;
     final inputKey = configuration.inputKey;
 
+    final border = themeExtension.border ?? configuration.inputStyle.getBorder(context);
+
     return ColoredBox(
-      color: themeExtension.primaryColor,
+      color: primaryColor,
       child: ValueListenableBuilder(
         // Used to not apply the default animation when switching borders during rebuilds.
         valueListenable: _viewModel.state.showClearTextButtonController,
-        builder: (_, bool showClearTextButton, _) {
+        builder: (_, showClearTextButton, _) {
+          showClearTextButton = clearTextButtonIcon != null && showClearTextButton;
+
           return TextFormField(
             key: inputKey,
             // So the checkbox prefix may be clicked
@@ -43,20 +47,20 @@ final class _TextFormField extends StatelessWidget {
             enabled: enabled,
             readOnly: readOnly,
             autofocus: autofocus,
-            style: textStyle.withColor(
+            style: textStyle?.withColor(
               textStyle.color!.withValues(alpha: _viewModel.state.enabled ? 1 : themeExtension.disabledOpacity),
             ),
             decoration: InputDecoration(
               floatingLabelBehavior: themeExtension.labelBehavior,
               label: label.isNotEmpty ? _Label(_viewModel) : null,
               hintText: placeholder.isNotEmpty ? placeholder : null,
-              hintStyle: textStyle.withColor(textStyle.color!.withValues(alpha: themeExtension.disabledOpacity)),
+              hintStyle: textStyle?.withColor(textStyle.color!.withValues(alpha: themeExtension.disabledOpacity)),
               enabledBorder: border,
               focusedBorder: border,
-              errorBorder: border.copyWith(
+              errorBorder: border?.copyWith(
                 borderSide: border.borderSide.copyWith(color: themeExtension.errorBorderColor),
               ),
-              disabledBorder: border.copyWith(
+              disabledBorder: border?.copyWith(
                 borderSide: border.borderSide.copyWith(
                   color: border.borderSide.color.withValues(alpha: themeExtension.disabledOpacity),
                 ),

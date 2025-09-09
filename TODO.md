@@ -1,30 +1,10 @@
 # TODO
 
-- (**IN PROGRESS**) STYLE PROPERTY CLASSES
-- (**IN PROGRESS**) Replace widgets with the injectable class now(ADD TO CHANGELOG WHEN DONE)
-  - write that style models are supposed to have non-lerpable fields
-    - update docs
-    - update stagelog
-    - Write about what style property classes are supposed to be
-  - (**IN PROGRESS**) dropdown
-  - feedback
-  - form
-  - graph
-  - input
-  - layout_builder
-  - loader
-  - menu
-  - modal
-  - picker
-  - radio
-  - screen
-  - slider
-  - snack_bar
-  - tab_view
-  - table
-  - testing
-  - tooltip
-- Make all `ThemeExtension`s final classes and make an abstract `ThemeExtension` for every widget category
+- write that style models are supposed to have non-lerpable fields
+  - update docs
+  - update stagelog
+  - Write about what style property classes are supposed to be
+- Make all theme extensions nullable
 - Add the logo i made to the readme
 - Remove empty `ThemeExtensions`
 - Potentially remove `widget/<>/widget/<>` logic if it's not being used

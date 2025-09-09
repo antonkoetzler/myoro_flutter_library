@@ -9,9 +9,10 @@ final class _Wrapper extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final spacing = themeExtension.spacing ?? 0;
 
     return Row(
-      spacing: themeExtension.spacing,
+      spacing: spacing,
       children: [
         if (_viewModel.state.configuration.checkboxOnChanged != null) _Checkbox(_viewModel),
         Expanded(child: _TextFormField(_viewModel)),

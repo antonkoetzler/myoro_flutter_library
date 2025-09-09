@@ -11,13 +11,9 @@ part 'myoro_date_picker_input_configuration.g.dart';
 final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     with _$MyoroDatePickerInputConfigurationMixin {
   const MyoroDatePickerInputConfiguration({
-    super.inputStyle, <-- FUCK
+    super.inputStyle,
     super.textAlign,
-    super.inputTextStyle,
     super.label,
-    super.labelTextStyle,
-    super.contentPadding,
-    super.border,
     super.suffix,
     super.enabled,
     super.showClearTextButton,
@@ -36,11 +32,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     return MyoroDatePickerInputConfiguration(
       inputStyle: MyoroInputStyleEnum.fake(),
       textAlign: myoroFake<TextAlign>(),
-      inputTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       label: faker.randomGenerator.boolean() ? faker.lorem.word() : MyoroInputConfiguration.labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      border: myoroFake<InputBorder>(),
       suffix: faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
       enabled: faker.randomGenerator.boolean(),
       showClearTextButton: faker.randomGenerator.boolean(),
@@ -58,16 +50,8 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
   MyoroDatePickerInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
-    TextStyle? inputTextStyle,
-    bool inputTextStyleProvided = true,
     String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
     String? placeholder,
-    EdgeInsets? contentPadding,
-    bool contentPaddingProvided = true,
-    InputBorder? border,
-    bool borderProvided = true,
     Widget? suffix,
     bool suffixProvided = true,
     bool? enabled,
@@ -96,11 +80,7 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     return MyoroDatePickerInputConfiguration(
       inputStyle: inputStyle ?? this.inputStyle,
       textAlign: textAlign ?? this.textAlign,
-      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? this.inputTextStyle) : null,
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
-      contentPadding: contentPaddingProvided ? (contentPadding ?? this.contentPadding) : null,
-      border: borderProvided ? (border ?? this.border) : null,
       suffix: suffixProvided ? (suffix ?? this.suffix) : null,
       enabled: enabled ?? this.enabled,
       showClearTextButton: showClearTextButton ?? this.showClearTextButton,

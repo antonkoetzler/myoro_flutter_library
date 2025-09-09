@@ -21,12 +21,8 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   const MyoroInputConfiguration({
     this.inputStyle = inputStyleDefaultValue,
     this.textAlign = textAlignDefaultValue,
-    this.inputTextStyle,
     this.label = labelDefaultValue,
-    this.labelTextStyle,
     this.placeholder = placeholderDefaultValue,
-    this.contentPadding,
-    this.border,
     this.suffix,
     this.enabled = enabledDefaultValue,
     this.readOnly = readOnlyDefaultValue,
@@ -47,12 +43,8 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   MyoroInputConfiguration.fake()
     : inputStyle = MyoroInputStyleEnum.fake(),
       textAlign = myoroFake<TextAlign>(),
-      inputTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       label = faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       placeholder = faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
-      contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      border = myoroFake<InputBorder>(),
       suffix = faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
       enabled = faker.randomGenerator.boolean(),
       readOnly = faker.randomGenerator.boolean(),
@@ -75,23 +67,11 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   /// [TextAlign] of the input.
   final TextAlign textAlign;
 
-  /// Text style of the input.
-  final TextStyle? inputTextStyle;
-
   /// Label displayed at the top of the input.
   final String label;
 
-  /// Text style of the label.
-  final TextStyle? labelTextStyle;
-
   /// Placeholder of the input (hint text).
   final String placeholder;
-
-  /// [EdgeInsets] within the input.
-  final EdgeInsets? contentPadding;
-
-  /// [InputBorder] of the input.
-  final InputBorder? border;
 
   /// Suffix [Widget] (i.e. a search button).
   final Widget? suffix;
@@ -144,16 +124,8 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   MyoroInputConfiguration copyWith({
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
-    TextStyle? inputTextStyle,
-    bool inputTextStyleProvided = true,
     String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
     String? placeholder,
-    EdgeInsets? contentPadding,
-    bool contentPaddingProvided = true,
-    InputBorder? border,
-    bool borderProvided = true,
     Widget? suffix,
     bool suffixProvided = true,
     bool? enabled,
@@ -182,12 +154,8 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     return MyoroInputConfiguration(
       inputStyle: inputStyle ?? this.inputStyle,
       textAlign: textAlign ?? this.textAlign,
-      inputTextStyle: inputTextStyleProvided ? (inputTextStyle ?? this.inputTextStyle) : null,
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       placeholder: placeholder ?? this.placeholder,
-      contentPadding: contentPaddingProvided ? (contentPadding ?? this.contentPadding) : null,
-      border: borderProvided ? (border ?? this.border) : null,
       suffix: suffixProvided ? (suffix ?? this.suffix) : null,
       enabled: enabled ?? this.enabled,
       readOnly: readOnly ?? this.readOnly,
@@ -203,9 +171,5 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       focusNode: focusNodeProvided ? (focusNode ?? this.focusNode) : null,
       controller: controllerProvided ? (controller ?? this.controller) : null,
     );
-  }
-
-  InputBorder getBorder(BuildContext context) {
-    return border ?? inputStyle.getBorder(context);
   }
 }

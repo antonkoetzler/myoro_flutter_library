@@ -13,8 +13,6 @@ class MyoroTabViewConfiguration with _$MyoroTabViewConfigurationMixin {
 
   const MyoroTabViewConfiguration({
     this.initiallySelectedTabIndex = initiallySelectedTabIndexDefaultValue,
-    this.tabButtonIconSize,
-    this.tabButtonTextStyle,
     required this.tabs,
   }) : assert(tabs.length > 0, '[MyoroTabViewConfiguration]: [tabs] cannot be empty.');
 
@@ -28,27 +26,12 @@ class MyoroTabViewConfiguration with _$MyoroTabViewConfigurationMixin {
   /// Initially selected [MyoroTabViewTab].
   final int initiallySelectedTabIndex;
 
-  /// [IconData] size of the tabs.
-  final double? tabButtonIconSize;
-
-  /// [TextStyle] of the tabs.
-  final TextStyle? tabButtonTextStyle;
-
   /// Tabs of the [MyoroTabView].
   final List<MyoroTabViewTab> tabs;
 
-  MyoroTabViewConfiguration copyWith({
-    int? initiallySelectedTabIndex,
-    double? tabButtonIconSize,
-    bool tabButtonIconSizeProvided = true,
-    TextStyle? tabButtonTextStyle,
-    bool tabButtonTextStyleProvided = true,
-    List<MyoroTabViewTab>? tabs,
-  }) {
+  MyoroTabViewConfiguration copyWith({int? initiallySelectedTabIndex, List<MyoroTabViewTab>? tabs}) {
     return MyoroTabViewConfiguration(
       initiallySelectedTabIndex: initiallySelectedTabIndex ?? this.initiallySelectedTabIndex,
-      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? this.tabButtonIconSize) : null,
-      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? this.tabButtonTextStyle) : null,
       tabs: tabs ?? this.tabs,
     );
   }

@@ -6,8 +6,11 @@ final class _PickerButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
-    final textStyle = themeExtension.textStyle;
+    final filePickerThemeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
+    final textStyle = filePickerThemeExtension.textStyle;
+
+    final buttonSecondaryVariantThemeExtension = context
+        .resolveThemeExtension<MyoroButtonSecondaryVariantThemeExtension>();
 
     final viewModel = context.read<MyoroFilePickerViewModel>();
     final openPicker = viewModel.openPicker;
@@ -19,11 +22,11 @@ final class _PickerButton extends StatelessWidget {
             text: context.localization.myoroFilePickerPickerButtonText,
             style: textStyle,
           ),
-          borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
           // coverage:ignore-start
           onTapUp: (_) => openPicker(),
           // coverage:ignore-end
         ),
+        themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(buttonSecondaryVariantThemeExtension),
       ),
     );
   }

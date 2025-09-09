@@ -45,9 +45,7 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
     );
   }
 
-  factory MyoroButtonThemeExtension.fromIconTextButtonThemeExtension(
-    MyoroIconTextButtonThemeExtension themeExtension,
-  ) {
+  factory MyoroButtonThemeExtension.fromIconTextButtonThemeExtension(MyoroIconTextButtonThemeExtension themeExtension) {
     return MyoroButtonThemeExtension(
       backgroundColor: themeExtension.backgroundColor,
       backgroundIdleColor: themeExtension.backgroundIdleColor,

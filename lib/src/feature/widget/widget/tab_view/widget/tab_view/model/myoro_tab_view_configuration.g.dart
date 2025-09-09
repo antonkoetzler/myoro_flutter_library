@@ -21,22 +21,18 @@ mixin _$MyoroTabViewConfigurationMixin {
     return other is MyoroTabViewConfiguration &&
         other.runtimeType == runtimeType &&
         other.initiallySelectedTabIndex == self.initiallySelectedTabIndex &&
-        other.tabButtonIconSize == self.tabButtonIconSize &&
-        other.tabButtonTextStyle == self.tabButtonTextStyle &&
         other.tabs == self.tabs;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.initiallySelectedTabIndex, self.tabButtonIconSize, self.tabButtonTextStyle, self.tabs);
+    return Object.hash(self.initiallySelectedTabIndex, self.tabs);
   }
 
   @override
   String toString() =>
       'MyoroTabViewConfiguration(\n'
       '  initiallySelectedTabIndex: ${self.initiallySelectedTabIndex},\n'
-      '  tabButtonIconSize: ${self.tabButtonIconSize},\n'
-      '  tabButtonTextStyle: ${self.tabButtonTextStyle},\n'
       '  tabs: ${self.tabs},\n'
       ');';
 }

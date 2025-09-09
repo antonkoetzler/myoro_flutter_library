@@ -1,6 +1,7 @@
 # STAGELOG
 
 - feature: `kMyoroEmptyString`
+- feature: `ThemeExtension` overriding in `Widget`s and centralization of style with `ThemeExtension`s
 - refactor: `MyoroMenu` --> `MyoroSingularMenu` and `MyoroMultiMenu`
 - improvement: Rename `ValueNotifier`s with the controller suffix to notifier (i.e. `MyoroFormController` --> `MyoroFormNotifier`)
 - improvement: Add `tool/initialize.sh`

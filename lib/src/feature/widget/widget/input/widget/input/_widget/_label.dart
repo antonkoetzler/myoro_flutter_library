@@ -9,16 +9,14 @@ final class _Label extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final labelTextStyle = themeExtension.labelTextStyle;
 
     return Padding(
       padding: const EdgeInsets.only(
         // Needed to center the text of the label.
         bottom: 5,
       ),
-      child: Text(
-        _viewModel.state.configuration.label,
-        style: _viewModel.state.configuration.labelTextStyle ?? themeExtension.labelTextStyle,
-      ),
+      child: Text(_viewModel.state.configuration.label, style: labelTextStyle),
     );
   }
 }

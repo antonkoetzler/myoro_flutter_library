@@ -38,16 +38,16 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : primaryColor = colorScheme.primary,
-      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       bottomSheetBorderRadius = const BorderRadius.only(
-        topLeft: Radius.circular(kMyoroBorderRadiusLength),
-        topRight: Radius.circular(kMyoroBorderRadiusLength),
+        topLeft: Radius.circular(kMyoroBorderRadius),
+        topRight: Radius.circular(kMyoroBorderRadius),
       ),
-      border = Border.all(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+      border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       bottomSheetBorder = Border(
-        top: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary),
-        left: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary),
-        right: BorderSide(width: kMyoroBorderLength, color: colorScheme.onPrimary),
+        top: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
+        left: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
+        right: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       ),
       padding = const EdgeInsets.all(5),
       spacing = 10,

@@ -41,7 +41,7 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
   // coverage:ignore-end
 
   MyoroImagePickerThemeExtension.builder(ColorScheme colorScheme)
-    : borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+    : borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       overlayCursor = SystemMouseCursors.click,
       overlayIdleBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 2 / 100),
       overlayHoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 4 / 100),
@@ -119,14 +119,5 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
         t,
       ),
     );
-  }
-
-  /// [MyoroButtonConfiguration.backgroundColorBuilder] of the overlay button.
-  Color overlayBackgroundColorBuilder(MyoroTapStatusEnum tapStatus) {
-    return switch (tapStatus) {
-      MyoroTapStatusEnum.idle => overlayIdleBackgroundColor,
-      MyoroTapStatusEnum.hover => overlayHoverBackgroundColor,
-      MyoroTapStatusEnum.tap => overlayTapBackgroundColor,
-    };
   }
 }

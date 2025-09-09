@@ -48,7 +48,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       successBorderColor = MyoroColors.green1,
       errorBorderColor = MyoroColors.red1,
       borderWidth = 2,
-      borderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       padding = const EdgeInsets.all(10),
       spacing = 10,
       messageTextStyle = textTheme.bodySmall!,

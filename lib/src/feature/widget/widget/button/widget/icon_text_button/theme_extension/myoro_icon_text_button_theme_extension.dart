@@ -10,8 +10,7 @@ part 'myoro_icon_text_button_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroIconTextButton].
 @immutable
 @myoroThemeExtension
-class MyoroIconTextButtonThemeExtension
-    extends MyoroButtonVariantThemeExtension<MyoroIconTextButtonThemeExtension>
+class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroIconTextButtonThemeExtension>
     with _$MyoroIconTextButtonThemeExtensionMixin {
   static const _contentPaddingDefaultValue = EdgeInsets.all(kMyoroMultiplier * 2);
   static const _spacingDefaultValue = kMyoroMultiplier * 2;
@@ -35,9 +34,7 @@ class MyoroIconTextButtonThemeExtension
     this.spacing,
   });
 
-  factory MyoroIconTextButtonThemeExtension.fromVariant(
-    MyoroButtonVariantThemeExtension themeExtension,
-  ) {
+  factory MyoroIconTextButtonThemeExtension.fromVariant(MyoroButtonVariantThemeExtension themeExtension) {
     return MyoroIconTextButtonThemeExtension(
       backgroundColor: themeExtension.backgroundColor,
       backgroundIdleColor: themeExtension.backgroundIdleColor,
@@ -63,9 +60,7 @@ class MyoroIconTextButtonThemeExtension
     final contentColorProvided = faker.randomGenerator.boolean();
 
     return MyoroIconTextButtonThemeExtension(
-      backgroundColor: backgroundColorProvided
-          ? (faker.randomGenerator.boolean() ? myoroFake<Color>() : null)
-          : null,
+      backgroundColor: backgroundColorProvided ? (faker.randomGenerator.boolean() ? myoroFake<Color>() : null) : null,
       backgroundIdleColor: backgroundColorProvided
           ? null
           : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
@@ -75,21 +70,11 @@ class MyoroIconTextButtonThemeExtension
       backgroundTapColor: backgroundColorProvided
           ? null
           : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      contentColor: contentColorProvided
-          ? (faker.randomGenerator.boolean() ? myoroFake<Color>() : null)
-          : null,
-      contentIdleColor: contentColorProvided
-          ? null
-          : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      contentHoverColor: contentColorProvided
-          ? null
-          : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      contentTapColor: contentColorProvided
-          ? null
-          : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      borderWidth: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
+      contentColor: contentColorProvided ? (faker.randomGenerator.boolean() ? myoroFake<Color>() : null) : null,
+      contentIdleColor: contentColorProvided ? null : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
+      contentHoverColor: contentColorProvided ? null : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
+      contentTapColor: contentColorProvided ? null : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
+      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       borderIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -107,19 +92,12 @@ class MyoroIconTextButtonThemeExtension
   final double? spacing;
 
   @override
-  MyoroIconTextButtonThemeExtension lerp(
-    covariant ThemeExtension<MyoroIconTextButtonThemeExtension>? other,
-    double t,
-  ) {
+  MyoroIconTextButtonThemeExtension lerp(covariant ThemeExtension<MyoroIconTextButtonThemeExtension>? other, double t) {
     if (other is! MyoroIconTextButtonThemeExtension) return this;
 
     final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
-    final backgroundHoverColor = Color.lerp(
-      this.backgroundHoverColor,
-      other.backgroundHoverColor,
-      t,
-    );
+    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
     final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
     final contentIdleColor = Color.lerp(this.contentIdleColor, other.contentIdleColor, t);
     final contentHoverColor = Color.lerp(this.contentHoverColor, other.contentHoverColor, t);

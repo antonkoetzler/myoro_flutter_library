@@ -33,10 +33,6 @@ class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
   final Color color;
 
   MyoroBarGraphBarSection copyWith({double? fromY, double? toY, Color? color}) {
-    return MyoroBarGraphBarSection(
-      fromY: fromY ?? this.fromY,
-      toY: toY ?? this.toY,
-      color: color ?? this.color,
-    );
+    return MyoroBarGraphBarSection(fromY: fromY ?? this.fromY, toY: toY ?? this.toY, color: color ?? this.color);
   }
 }

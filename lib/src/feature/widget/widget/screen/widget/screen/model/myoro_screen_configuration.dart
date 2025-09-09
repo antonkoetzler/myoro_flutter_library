@@ -14,7 +14,7 @@ class MyoroScreenConfiguration with _$MyoroScreenConfigurationMixin {
   // coverage:ignore-start
   MyoroScreenConfiguration.fake()
     : drawerController = faker.randomGenerator.boolean() ? MyoroDrawerController() : null,
-      appBar = faker.randomGenerator.boolean() ? MyoroAppBar(configuration: MyoroAppBarConfiguration.fake()) : null,
+      appBar = faker.randomGenerator.boolean() ? const MyoroAppBar(child: SizedBox.shrink()) : null,
       body = const SizedBox.shrink();
   // coverage:ignore-end
 

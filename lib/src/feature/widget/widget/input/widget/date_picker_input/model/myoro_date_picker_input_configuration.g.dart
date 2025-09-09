@@ -22,12 +22,8 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
         other.runtimeType == runtimeType &&
         other.inputStyle == self.inputStyle &&
         other.textAlign == self.textAlign &&
-        other.inputTextStyle == self.inputTextStyle &&
         other.label == self.label &&
-        other.labelTextStyle == self.labelTextStyle &&
         other.placeholder == self.placeholder &&
-        other.contentPadding == self.contentPadding &&
-        other.border == self.border &&
         other.suffix == self.suffix &&
         other.enabled == self.enabled &&
         other.readOnly == self.readOnly &&
@@ -46,15 +42,11 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hashAll([
+    return Object.hash(
       self.inputStyle,
       self.textAlign,
-      self.inputTextStyle,
       self.label,
-      self.labelTextStyle,
       self.placeholder,
-      self.contentPadding,
-      self.border,
       self.suffix,
       self.enabled,
       self.readOnly,
@@ -69,7 +61,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       self.checkboxKey,
       self.focusNode,
       self.controller,
-    ]);
+    );
   }
 
   @override
@@ -77,12 +69,8 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       'MyoroDatePickerInputConfiguration(\n'
       '  inputStyle: ${self.inputStyle},\n'
       '  textAlign: ${self.textAlign},\n'
-      '  inputTextStyle: ${self.inputTextStyle},\n'
       '  label: ${self.label},\n'
-      '  labelTextStyle: ${self.labelTextStyle},\n'
       '  placeholder: ${self.placeholder},\n'
-      '  contentPadding: ${self.contentPadding},\n'
-      '  border: ${self.border},\n'
       '  suffix: ${self.suffix},\n'
       '  enabled: ${self.enabled},\n'
       '  readOnly: ${self.readOnly},\n'

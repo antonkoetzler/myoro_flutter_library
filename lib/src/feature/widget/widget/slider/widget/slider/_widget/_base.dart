@@ -2,7 +2,7 @@ part of '../bundle/myoro_slider_bundle.dart';
 
 /// Base [Widget] for slider implementations.
 class _Base extends StatelessWidget {
-  const _Base(this._configuration, this.themeExtension);
+  const _Base(Key? key, this._configuration, this.themeExtension) : super(key: key);
 
   final MyoroSliderBaseConfiguration _configuration;
   final MyoroSlidersThemeExtension? themeExtension;

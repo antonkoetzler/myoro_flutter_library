@@ -9,7 +9,11 @@ final class _Row<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final rowTextStyle = tableThemeExtension.rowTextStyle;
+    final columnSpacing = tableThemeExtension.columnSpacing;
+
+    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
 
     final viewModel = context.read<MyoroTableViewModel<T>>();
     final state = viewModel.state;
@@ -27,16 +31,16 @@ final class _Row<T> extends StatelessWidget {
     );
 
     return DefaultTextStyle(
-      style: themeExtension.rowTextStyle,
+      style: rowTextStyle,
       child: MyoroButton(
         configuration: MyoroButtonConfiguration(
-          borderRadius: BorderRadius.zero,
           onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
           onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
         ),
+        themeExtension: buttonThemeExtension.copyWith(borderRadius: BorderRadius.zero),
         builder: (_, MyoroTapStatusEnum tapStatusEnum) {
           return Row(
-            spacing: themeExtension.columnSpacing,
+            spacing: columnSpacing,
             children: [
               for (int i = 0; i < cells.length; i++) ...[
                 (i == cells.length - 1)

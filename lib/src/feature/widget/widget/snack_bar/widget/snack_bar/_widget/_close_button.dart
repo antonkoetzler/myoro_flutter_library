@@ -8,14 +8,19 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final snackBarThemeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final closeButtonIconConfiguration = snackBarThemeExtension.closeButtonIconConfiguration;
+
+    final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+
+    final getColor = _snackBarType.getColor;
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         onTapUp: (_) => context.closeSnackBar(),
-        iconConfiguration: themeExtension.closeButtonIconConfiguration,
-        contentColorBuilder: (_) => _snackBarType.getColor(context),
+        iconConfiguration: closeButtonIconConfiguration,
       ),
+      themeExtension: iconTextButtonThemeExtension.copyWith(backgroundColor: getColor(context)),
     );
   }
 }

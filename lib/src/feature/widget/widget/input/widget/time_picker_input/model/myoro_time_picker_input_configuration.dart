@@ -13,11 +13,7 @@ final class MyoroTimePickerInputConfiguration extends MyoroInputConfiguration
   const MyoroTimePickerInputConfiguration({
     super.inputStyle,
     super.textAlign,
-    super.inputTextStyle,
     super.label,
-    super.labelTextStyle,
-    super.contentPadding,
-    super.border,
     super.suffix,
     super.enabled,
     super.showClearTextButton,
@@ -36,11 +32,7 @@ final class MyoroTimePickerInputConfiguration extends MyoroInputConfiguration
     return MyoroTimePickerInputConfiguration(
       inputStyle: MyoroInputStyleEnum.fake(),
       textAlign: myoroFake<TextAlign>(),
-      inputTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       label: faker.randomGenerator.boolean() ? faker.lorem.word() : MyoroInputConfiguration.labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      border: myoroFake<InputBorder>(),
       suffix: faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
       enabled: faker.randomGenerator.boolean(),
       showClearTextButton: faker.randomGenerator.boolean(),

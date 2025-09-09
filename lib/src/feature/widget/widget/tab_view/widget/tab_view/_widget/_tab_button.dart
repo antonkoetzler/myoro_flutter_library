@@ -9,29 +9,38 @@ final class _TabButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroTabViewThemeExtension>();
+    final isSelected = _tab == _selectedTab;
+
+    final tabViewThemeExtension = context.resolveThemeExtension<MyoroTabViewThemeExtension>();
+    final tabButtonIconSize = tabViewThemeExtension.tabButtonIconSize;
+    final tabButtonTextStyle = tabViewThemeExtension.tabButtonTextStyle;
+    final tabButtonIdleColor = tabViewThemeExtension.tabButtonIdleColor;
+    final tabButtonHoverColor = tabViewThemeExtension.tabButtonHoverColor;
+    final tabButtonTapColor = tabViewThemeExtension.tabButtonTapColor;
+    final tabButtonBorderRadius = tabViewThemeExtension.tabButtonBorderRadius;
+
+    final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
 
     final viewModel = context.read<MyoroTabViewViewModel>();
-    final state = viewModel.state;
-    final configuration = state.configuration;
+    final selectTab = viewModel.selectTab;
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
-        iconConfiguration: _tab.icon != null
-            ? MyoroIconConfiguration(
-                icon: _tab.icon!,
-                size: configuration.tabButtonIconSize ?? themeExtension.tabButtonIconSize,
-              )
-            : null,
+        iconConfiguration: _tab.icon != null ? MyoroIconConfiguration(icon: _tab.icon!, size: tabButtonIconSize) : null,
         textConfiguration: _tab.text != null
-            ? MyoroTextConfiguration(
-                text: _tab.text!,
-                style: configuration.tabButtonTextStyle ?? themeExtension.tabButtonTextStyle,
-              )
+            ? MyoroTextConfiguration(text: _tab.text!, style: tabButtonTextStyle)
             : null,
-        backgroundColorBuilder: _selectedTab == _tab ? themeExtension.selectedTabButtonBackgroundColorBuilder : null,
-        borderRadius: themeExtension.tabButtonBorderRadius,
-        onTapUp: (_) => viewModel.selectTab(_tab),
+        onTapUp: (_) => selectTab(_tab),
+      ),
+      themeExtension: iconTextButtonThemeExtension.copyWith(
+        backgroundIdleColor: tabButtonIdleColor,
+        backgroundIdleColorProvided: tabButtonIdleColor != null && isSelected,
+        backgroundHoverColor: tabButtonHoverColor,
+        backgroundHoverColorProvided: tabButtonHoverColor != null && isSelected,
+        backgroundTapColor: tabButtonTapColor,
+        backgroundTapColorProvided: tabButtonTapColor != null && isSelected,
+        borderRadius: tabButtonBorderRadius,
+        borderRadiusProvided: tabButtonBorderRadius != null,
       ),
     );
   }

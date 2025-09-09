@@ -22,7 +22,7 @@ final class _Columns<T> extends StatelessWidget {
           ),
           child: Row(
             // Equation to omit spacing of inserted [_Divider] [Widget]s in [_buildColumns].
-            spacing: (tableThemeExtension.columnSpacing / 2) - (basicDividerThemeExtension.shortValue / 2),
+            spacing: (tableThemeExtension.columnSpacing / 2) - ((basicDividerThemeExtension.shortValue ?? 0) / 2),
             children: _buildColumns(context),
           ),
         );
