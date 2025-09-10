@@ -6,8 +6,8 @@ import 'package:storyboard/storyboard.dart';
 final class MyoroGroupCheckboxWidgetShowcaseScreenViewModel {
   MyoroGroupCheckboxWidgetShowcaseScreenViewModel(BuildContext context)
     : _state = MyoroGroupCheckboxWidgetShowcaseScreenState(
-        context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>().spacing,
-        context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>().runSpacing,
+        context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>().spacing ?? 0,
+        context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>().runSpacing ?? 0,
       );
 
   /// State.
@@ -21,8 +21,8 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// [MyoroGroupCheckboxConfiguration] of the [MyoroGroupCheckbox].
-  MyoroGroupCheckboxConfiguration configuration(BuildContext context) {
+  /// [MyoroGroupCheckboxConfiguration] builder.
+  MyoroGroupCheckboxConfiguration buildConfiguration(BuildContext context) {
     void onChanged(BuildContext context, String key, MyoroGroupCheckboxItems checkboxes) {
       context.showSnackBar(
         snackBar: MyoroSnackBar(
@@ -36,9 +36,13 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenViewModel {
 
     return MyoroGroupCheckboxConfiguration(
       direction: _state.direction,
-      spacing: _state.spacing,
-      runSpacing: _state.runSpacing,
       onChanged: (key, checkboxes) => onChanged(context, key, checkboxes),
     );
+  }
+
+  /// [MyoroGroupCheckboxThemeExtension] builder.
+  MyoroGroupCheckboxThemeExtension buildThemeExtension(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
+    return themeExtension.copyWith(spacing: _state.spacing, runSpacing: _state.runSpacing);
   }
 }

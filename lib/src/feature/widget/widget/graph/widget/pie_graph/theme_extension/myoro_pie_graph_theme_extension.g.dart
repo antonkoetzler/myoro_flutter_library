@@ -17,10 +17,15 @@ mixin _$MyoroPieGraphThemeExtensionMixin on ThemeExtension<MyoroPieGraphThemeExt
   MyoroPieGraphThemeExtension get self => this as MyoroPieGraphThemeExtension;
 
   @override
-  MyoroPieGraphThemeExtension copyWith({Color? itemColor, double? itemRadius}) {
+  MyoroPieGraphThemeExtension copyWith({
+    Color? itemColor,
+    bool itemColorProvided = true,
+    double? itemRadius,
+    bool itemRadiusProvided = true,
+  }) {
     return MyoroPieGraphThemeExtension(
-      itemColor: itemColor ?? self.itemColor,
-      itemRadius: itemRadius ?? self.itemRadius,
+      itemColor: itemColorProvided ? (itemColor ?? self.itemColor) : null,
+      itemRadius: itemRadiusProvided ? (itemRadius ?? self.itemRadius) : null,
     );
   }
 

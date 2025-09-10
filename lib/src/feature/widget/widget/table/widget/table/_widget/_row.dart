@@ -11,7 +11,7 @@ final class _Row<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     final rowTextStyle = tableThemeExtension.rowTextStyle;
-    final columnSpacing = tableThemeExtension.columnSpacing;
+    final columnSpacing = tableThemeExtension.columnSpacing ?? 0;
 
     final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
 
@@ -30,27 +30,26 @@ final class _Row<T> extends StatelessWidget {
       '[_Rows<$T>._itemBuilder]: Length of [columns] must be the same as the length of [cells].',
     );
 
-    return DefaultTextStyle(
-      style: rowTextStyle,
-      child: MyoroButton(
-        configuration: MyoroButtonConfiguration(
-          onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
-          onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
-        ),
-        themeExtension: buttonThemeExtension.copyWith(borderRadius: BorderRadius.zero),
-        builder: (_, MyoroTapStatusEnum tapStatusEnum) {
-          return Row(
-            spacing: columnSpacing,
-            children: [
-              for (int i = 0; i < cells.length; i++) ...[
-                (i == cells.length - 1)
-                    ? Expanded(child: cells[i])
-                    : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
-              ],
-            ],
-          );
-        },
+    final child = MyoroButton(
+      configuration: MyoroButtonConfiguration(
+        onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
+        onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
       ),
+      themeExtension: buttonThemeExtension.copyWith(borderRadius: BorderRadius.zero),
+      builder: (_, MyoroTapStatusEnum tapStatusEnum) {
+        return Row(
+          spacing: columnSpacing,
+          children: [
+            for (int i = 0; i < cells.length; i++) ...[
+              (i == cells.length - 1)
+                  ? Expanded(child: cells[i])
+                  : SizedBox(width: _titleColumnKeyWidths[i], child: cells[i]),
+            ],
+          ],
+        );
+      },
     );
+
+    return rowTextStyle != null ? DefaultTextStyle(style: rowTextStyle, child: child) : child;
   }
 }

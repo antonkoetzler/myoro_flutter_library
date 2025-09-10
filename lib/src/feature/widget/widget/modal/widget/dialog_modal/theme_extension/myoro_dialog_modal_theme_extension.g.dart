@@ -17,10 +17,15 @@ mixin _$MyoroDialogModalThemeExtensionMixin on ThemeExtension<MyoroDialogModalTh
   MyoroDialogModalThemeExtension get self => this as MyoroDialogModalThemeExtension;
 
   @override
-  MyoroDialogModalThemeExtension copyWith({TextStyle? textStyle, double? footerButtonsSpacing}) {
+  MyoroDialogModalThemeExtension copyWith({
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
+    double? footerButtonsSpacing,
+    bool footerButtonsSpacingProvided = true,
+  }) {
     return MyoroDialogModalThemeExtension(
-      textStyle: textStyle ?? self.textStyle,
-      footerButtonsSpacing: footerButtonsSpacing ?? self.footerButtonsSpacing,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      footerButtonsSpacing: footerButtonsSpacingProvided ? (footerButtonsSpacing ?? self.footerButtonsSpacing) : null,
     );
   }
 

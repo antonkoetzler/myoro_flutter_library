@@ -11,28 +11,34 @@ part 'myoro_group_radio_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension>
     with _$MyoroGroupRadioThemeExtensionMixin {
-  const MyoroGroupRadioThemeExtension({required this.spacing, required this.runSpacing});
+  const MyoroGroupRadioThemeExtension({this.spacing, this.runSpacing});
 
   // coverage:ignore-start
   MyoroGroupRadioThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(),
-      runSpacing = faker.randomGenerator.decimal();
+    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   const MyoroGroupRadioThemeExtension.builder() : spacing = 5, runSpacing = 5;
 
   /// Main axis spacing in between each checkbox.
-  final double spacing;
+  final double? spacing;
 
   /// Cross axis spacing in between each checkbox.
-  final double runSpacing;
+  final double? runSpacing;
 
   @override
   MyoroGroupRadioThemeExtension lerp(covariant ThemeExtension<MyoroGroupRadioThemeExtension>? other, double t) {
     if (other is! MyoroGroupRadioThemeExtension) return this;
+
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+    final runSpacing = lerpDouble(this.runSpacing, other.runSpacing, t);
+
     return copyWith(
-      spacing: lerpDouble(spacing, other.spacing, t),
-      runSpacing: lerpDouble(runSpacing, other.runSpacing, t),
+      spacing: spacing,
+      spacingProvided: spacing != null,
+      runSpacing: runSpacing,
+      runSpacingProvided: runSpacing != null,
     );
   }
 }

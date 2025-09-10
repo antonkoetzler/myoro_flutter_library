@@ -13,24 +13,24 @@ part 'myoro_bar_graph_theme_extension.g.dart';
 class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension>
     with _$MyoroBarGraphThemeExtensionMixin {
   const MyoroBarGraphThemeExtension({
-    required this.border,
-    required this.barColor,
-    required this.barBorderRadius,
-    required this.sideTitleTextStyle,
-    required this.sideTitleInterval,
-    required this.verticalSideTitleReversedSize,
-    required this.horizontalSideTitleReversedSize,
+    this.border,
+    this.barColor,
+    this.barBorderRadius,
+    this.sideTitleTextStyle,
+    this.sideTitleInterval,
+    this.verticalSideTitleReversedSize,
+    this.horizontalSideTitleReversedSize,
   });
 
   // coverage:ignore-start
   MyoroBarGraphThemeExtension.fake()
-    : border = myoroFake<Border>(),
-      barColor = myoroFake<Color>(),
-      barBorderRadius = myoroFake<BorderRadius>(),
-      sideTitleTextStyle = myoroFake<TextStyle>(),
-      sideTitleInterval = faker.randomGenerator.decimal(),
-      verticalSideTitleReversedSize = faker.randomGenerator.decimal(),
-      horizontalSideTitleReversedSize = faker.randomGenerator.decimal();
+    : border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
+      barColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      barBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      sideTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      sideTitleInterval = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      verticalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      horizontalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   MyoroBarGraphThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -43,41 +43,61 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
       horizontalSideTitleReversedSize = 22;
 
   /// Border of the graph's content (the square holding the bars).
-  final Border border;
+  final Border? border;
 
   /// Default color of a bar.
-  final Color barColor;
+  final Color? barColor;
 
   /// Border radius of a bar.
-  final BorderRadius barBorderRadius;
+  final BorderRadius? barBorderRadius;
 
   /// Text style of [_SideTitle].
-  final TextStyle sideTitleTextStyle;
+  final TextStyle? sideTitleTextStyle;
 
   /// Interval of the [_SideTitle]s on an axis.
-  final double sideTitleInterval;
+  final double? sideTitleInterval;
 
   /// Width of a vertical (y axis) [_SideTitle].
-  final double verticalSideTitleReversedSize;
+  final double? verticalSideTitleReversedSize;
 
   /// Height of a horizontal (x axis) [_SideTitle].
-  final double horizontalSideTitleReversedSize;
+  final double? horizontalSideTitleReversedSize;
 
   @override
   MyoroBarGraphThemeExtension lerp(covariant ThemeExtension<MyoroBarGraphThemeExtension>? other, double t) {
     if (other is! MyoroBarGraphThemeExtension) return this;
+
+    final border = Border.lerp(this.border, other.border, t);
+    final barColor = Color.lerp(this.barColor, other.barColor, t);
+    final barBorderRadius = BorderRadius.lerp(this.barBorderRadius, other.barBorderRadius, t);
+    final sideTitleTextStyle = TextStyle.lerp(this.sideTitleTextStyle, other.sideTitleTextStyle, t);
+    final sideTitleInterval = lerpDouble(this.sideTitleInterval, other.sideTitleInterval, t);
+    final verticalSideTitleReversedSize = lerpDouble(
+      this.verticalSideTitleReversedSize,
+      other.verticalSideTitleReversedSize,
+      t,
+    );
+    final horizontalSideTitleReversedSize = lerpDouble(
+      this.horizontalSideTitleReversedSize,
+      other.horizontalSideTitleReversedSize,
+      t,
+    );
+
     return copyWith(
-      border: Border.lerp(border, other.border, t),
-      barColor: Color.lerp(barColor, other.barColor, t),
-      barBorderRadius: BorderRadius.lerp(barBorderRadius, other.barBorderRadius, t),
-      sideTitleTextStyle: TextStyle.lerp(sideTitleTextStyle, other.sideTitleTextStyle, t),
-      sideTitleInterval: lerpDouble(sideTitleInterval, other.sideTitleInterval, t),
-      verticalSideTitleReversedSize: lerpDouble(verticalSideTitleReversedSize, other.verticalSideTitleReversedSize, t),
-      horizontalSideTitleReversedSize: lerpDouble(
-        horizontalSideTitleReversedSize,
-        other.horizontalSideTitleReversedSize,
-        t,
-      ),
+      border: border,
+      borderProvided: border != null,
+      barColor: barColor,
+      barColorProvided: barColor != null,
+      barBorderRadius: barBorderRadius,
+      barBorderRadiusProvided: barBorderRadius != null,
+      sideTitleTextStyle: sideTitleTextStyle,
+      sideTitleTextStyleProvided: sideTitleTextStyle != null,
+      sideTitleInterval: sideTitleInterval,
+      sideTitleIntervalProvided: sideTitleInterval != null,
+      verticalSideTitleReversedSize: verticalSideTitleReversedSize,
+      verticalSideTitleReversedSizeProvided: verticalSideTitleReversedSize != null,
+      horizontalSideTitleReversedSize: horizontalSideTitleReversedSize,
+      horizontalSideTitleReversedSizeProvided: horizontalSideTitleReversedSize != null,
     );
   }
 }

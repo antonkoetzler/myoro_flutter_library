@@ -19,13 +19,18 @@ mixin _$MyoroSearchInputThemeExtensionMixin on ThemeExtension<MyoroSearchInputTh
   @override
   MyoroSearchInputThemeExtension copyWith({
     double? spacing,
+    bool spacingProvided = true,
     IconData? searchButtonIcon,
+    bool searchButtonIconProvided = true,
     double? searchButtonLoadingSize,
+    bool searchButtonLoadingSizeProvided = true,
   }) {
     return MyoroSearchInputThemeExtension(
-      spacing: spacing ?? self.spacing,
-      searchButtonIcon: searchButtonIcon ?? self.searchButtonIcon,
-      searchButtonLoadingSize: searchButtonLoadingSize ?? self.searchButtonLoadingSize,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      searchButtonIcon: searchButtonIconProvided ? (searchButtonIcon ?? self.searchButtonIcon) : null,
+      searchButtonLoadingSize: searchButtonLoadingSizeProvided
+          ? (searchButtonLoadingSize ?? self.searchButtonLoadingSize)
+          : null,
     );
   }
 

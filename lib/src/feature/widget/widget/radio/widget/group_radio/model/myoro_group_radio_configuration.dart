@@ -11,22 +11,16 @@ part 'myoro_group_radio_configuration.g.dart';
 class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
   static const directionDefaultValue = Axis.vertical;
 
-  MyoroGroupRadioConfiguration({
-    this.controller,
-    this.direction = directionDefaultValue,
-    this.spacing,
-    this.runSpacing,
-    this.onChanged,
-    this.radios,
-  }) : assert(
-         !(controller != null && radios != null),
-         '[MyoroGroupRadio]: If you are providing [controller], you must '
-         'pass [radios] within its constructor and remove [radios] here.',
-       ),
-       assert(
-         controller == null ? MyoroGroupRadioController.radiosAreValid(radios!) : true,
-         '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioController.radiosAreValid].',
-       );
+  MyoroGroupRadioConfiguration({this.controller, this.direction = directionDefaultValue, this.onChanged, this.radios})
+    : assert(
+        !(controller != null && radios != null),
+        '[MyoroGroupRadio]: If you are providing [controller], you must '
+        'pass [radios] within its constructor and remove [radios] here.',
+      ),
+      assert(
+        controller == null ? MyoroGroupRadioController.radiosAreValid(radios!) : true,
+        '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioController.radiosAreValid].',
+      );
 
   // coverage:ignore-start
   factory MyoroGroupRadioConfiguration.fake({bool? controllerProvided}) {
@@ -39,8 +33,6 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
     return MyoroGroupRadioConfiguration(
       controller: controllerProvided ? MyoroGroupRadioController(radios) : null,
       direction: myoroFake<Axis>(),
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
-      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 10) : null,
       onChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
       radios: controllerProvided ? null : radios,
     );
@@ -52,12 +44,6 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
 
   /// Direction that the radios will built in.
   final Axis direction;
-
-  /// Spacing in between the radios.
-  final double? spacing;
-
-  /// Spacing in between the radios when the radios are wrapping (cross axis spacing).
-  final double? runSpacing;
 
   /// Function executed when any of the radio's values are changed.
   final MyoroGroupRadioOnChanged? onChanged;
@@ -72,10 +58,6 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
     MyoroGroupRadioController? controller,
     bool controllerProvided = true,
     Axis? direction,
-    double? spacing,
-    bool spacingProvided = true,
-    double? runSpacing,
-    bool runSpacingProvided = true,
     MyoroGroupRadioOnChanged? onChanged,
     bool onChangedProvided = true,
     MyoroGroupRadioItems? radios,
@@ -84,8 +66,6 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
     return MyoroGroupRadioConfiguration(
       controller: controllerProvided ? (controller ?? this.controller) : null,
       direction: direction ?? this.direction,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
       radios: radiosProvided ? (radios ?? this.radios) : null,
     );

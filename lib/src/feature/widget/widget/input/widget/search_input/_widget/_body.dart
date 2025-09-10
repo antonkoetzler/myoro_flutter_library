@@ -9,10 +9,11 @@ final class _Body<T> extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final spacing = themeExtension.spacing ?? 0;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
-      spacing: themeExtension.spacing,
+      spacing: spacing,
       children: [
         _Input<T>(_itemsRequest),
         if (_itemsRequest.status.isSuccess) Flexible(child: _SearchSection<T>()),

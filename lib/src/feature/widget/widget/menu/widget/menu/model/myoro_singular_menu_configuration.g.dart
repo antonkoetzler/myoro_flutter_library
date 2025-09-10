@@ -22,10 +22,6 @@ mixin _$MyoroSingularMenuConfigurationMixin<T> {
         other.runtimeType == runtimeType &&
         other.initiallySelectedItem == self.initiallySelectedItem &&
         other.onChanged == self.onChanged &&
-        other.constraints == self.constraints &&
-        other.backgroundColor == self.backgroundColor &&
-        other.border == self.border &&
-        other.borderRadius == self.borderRadius &&
         other.request == self.request &&
         other.onEndReachedRequest == self.onEndReachedRequest &&
         other.searchCallback == self.searchCallback &&
@@ -37,10 +33,6 @@ mixin _$MyoroSingularMenuConfigurationMixin<T> {
     return Object.hash(
       self.initiallySelectedItem,
       self.onChanged,
-      self.constraints,
-      self.backgroundColor,
-      self.border,
-      self.borderRadius,
       self.request,
       self.onEndReachedRequest,
       self.searchCallback,
@@ -53,10 +45,6 @@ mixin _$MyoroSingularMenuConfigurationMixin<T> {
       'MyoroSingularMenuConfiguration<T>(\n'
       '  initiallySelectedItem: ${self.initiallySelectedItem},\n'
       '  onChanged: ${self.onChanged},\n'
-      '  constraints: ${self.constraints},\n'
-      '  backgroundColor: ${self.backgroundColor},\n'
-      '  border: ${self.border},\n'
-      '  borderRadius: ${self.borderRadius},\n'
       '  request: ${self.request},\n'
       '  onEndReachedRequest: ${self.onEndReachedRequest},\n'
       '  searchCallback: ${self.searchCallback},\n'

@@ -16,13 +16,11 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createFeedbackThemeExtensions(textTheme),
     ..._createGraphThemeExtensions(colorScheme, textTheme),
     ..._createInputThemeExtensions(colorScheme, textTheme),
-    ..._createLayoutBuilderThemeExtensions(),
     ..._createLoaderThemeExtensions(colorScheme),
     ..._createMenuThemeExtensions(colorScheme, textTheme),
     ..._createModalThemeExtensions(colorScheme, textTheme),
     ..._createPickerThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
-    ..._createScreenThemeExtensions(),
     ..._createSliderThemeExtensions(textTheme),
     ..._createSnackBarThemeExtensions(colorScheme, textTheme),
     ..._createTabViewThemeExtensions(colorScheme, textTheme),
@@ -96,12 +94,7 @@ List<ThemeExtension> _createInputThemeExtensions(ColorScheme colorScheme, TextTh
   return [
     MyoroInputThemeExtension.builder(colorScheme, textTheme),
     MyoroSearchInputThemeExtension.builder(colorScheme),
-    const MyoroTimePickerInputThemeExtension.builder(),
   ];
-}
-
-List<ThemeExtension> _createLayoutBuilderThemeExtensions() {
-  return const [MyoroLayoutBuilderThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createLoaderThemeExtensions(ColorScheme colorScheme) {
@@ -124,12 +117,8 @@ List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTh
   return [MyoroRadioThemeExtension.builder(colorScheme, textTheme), const MyoroGroupRadioThemeExtension.builder()];
 }
 
-List<ThemeExtension> _createScreenThemeExtensions() {
-  return const [MyoroScreenThemeExtension.builder()];
-}
-
 List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {
-  return [MyoroSlidersThemeExtension.builder(textTheme)];
+  return [MyoroSliderThemeExtension.builder(textTheme)];
 }
 
 List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

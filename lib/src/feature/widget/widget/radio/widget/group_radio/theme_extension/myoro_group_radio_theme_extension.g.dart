@@ -17,8 +17,16 @@ mixin _$MyoroGroupRadioThemeExtensionMixin on ThemeExtension<MyoroGroupRadioThem
   MyoroGroupRadioThemeExtension get self => this as MyoroGroupRadioThemeExtension;
 
   @override
-  MyoroGroupRadioThemeExtension copyWith({double? spacing, double? runSpacing}) {
-    return MyoroGroupRadioThemeExtension(spacing: spacing ?? self.spacing, runSpacing: runSpacing ?? self.runSpacing);
+  MyoroGroupRadioThemeExtension copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    double? runSpacing,
+    bool runSpacingProvided = true,
+  }) {
+    return MyoroGroupRadioThemeExtension(
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
+    );
   }
 
   @override

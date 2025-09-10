@@ -6,6 +6,8 @@ import 'package:storyboard/storyboard.dart';
 final class MyoroCheckboxWidgetShowcaseScreenViewModel {
   /// State.
   final _state = MyoroCheckboxWidgetShowcaseScreenState();
+
+  /// [_state] getter.
   MyoroCheckboxWidgetShowcaseScreenState get state => _state;
 
   /// Dispose function.
@@ -13,12 +15,20 @@ final class MyoroCheckboxWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// [MyoroCheckboxConfiguration] of the [MyoroCheckbox].
-  MyoroCheckboxConfiguration configuration(BuildContext context) {
-    return MyoroCheckboxConfiguration(
-      label: _state.label,
-      labelTextStyle: _state.labelTextStyle,
-      onChanged: (value) => _onChanged(context, value),
+  /// [MyoroCheckboxConfiguration] builder.
+  MyoroCheckboxConfiguration buildConfiguration(BuildContext context) {
+    return MyoroCheckboxConfiguration(label: _state.label, onChanged: (value) => _onChanged(context, value));
+  }
+
+  /// [MyoroCheckboxThemeExtension] builder.
+  MyoroCheckboxThemeExtension buildThemeExtension(BuildContext context) {
+    final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+
+    final labelTextStyle = _state.labelTextStyle;
+
+    return checkboxThemeExtension.copyWith(
+      labelTextStyle: labelTextStyle,
+      labelTextStyleProvided: labelTextStyle != null,
     );
   }
 

@@ -17,19 +17,15 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
   const MyoroDialogModalConfiguration({
     super.barrierDismissable,
     super.useRootNavigator,
-    super.constraints,
     super.onClosed,
     super.title,
     super.showCloseButton,
-    super.padding,
-    super.closeButtonPadding,
     this.invertButtons = invertButtonsDefaultValue,
     this.confirmButtonText = confirmButtonTextDefaultValue,
     this.cancelButtonText = cancelButtonTextDefaultValue,
     this.onConfirm,
     this.onCancel,
     this.text = textDefaultValue,
-    this.textStyle,
     this.child,
   }) : assert((text.length > 0) ^ (child != null), '[MyoroDialogModal]: [text] (x)or [child] must be provided.');
 
@@ -40,19 +36,15 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
     return MyoroDialogModalConfiguration(
       barrierDismissable: faker.randomGenerator.boolean(),
       useRootNavigator: faker.randomGenerator.boolean(),
-      constraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       onClosed: faker.randomGenerator.boolean() ? ((_) {}) : null,
       title: faker.randomGenerator.boolean() ? faker.lorem.word() : MyoroModalConfiguration.titleDefaultValue,
       showCloseButton: faker.randomGenerator.boolean(),
-      padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      closeButtonPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       invertButtons: faker.randomGenerator.boolean(),
       confirmButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : confirmButtonTextDefaultValue,
       cancelButtonText: faker.randomGenerator.boolean() ? faker.lorem.word() : cancelButtonTextDefaultValue,
       onConfirm: faker.randomGenerator.boolean() ? (() {}) : null,
       onCancel: faker.randomGenerator.boolean() ? (() {}) : null,
       text: textProvided ? faker.lorem.word() : '',
-      textStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       child: textProvided ? null : const SizedBox.shrink(),
     );
   }
@@ -76,9 +68,6 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
   /// Simple text option of the [MyoroDialogModal].
   final String text;
 
-  /// Text style of [text].
-  final TextStyle? textStyle;
-
   /// Custom [Widget] option of the [MyoroDialogModal].
   final Widget? child;
 
@@ -86,17 +75,10 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
   MyoroDialogModalConfiguration<T> copyWith({
     bool? barrierDismissable,
     bool? useRootNavigator,
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
     MyoroModalOnClosed<T>? onClosed,
     bool onClosedProvided = true,
     String? title,
     bool? showCloseButton,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    EdgeInsets? closeButtonPadding,
-    bool closeButtonPaddingProvided = true,
-
     bool? invertButtons,
     String? confirmButtonText,
     String? cancelButtonText,
@@ -105,27 +87,21 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
     VoidCallback? onCancel,
     bool onCancelProvided = true,
     String? text,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
     Widget? child,
     bool childProvided = true,
   }) {
     return MyoroDialogModalConfiguration(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
       useRootNavigator: useRootNavigator ?? this.useRootNavigator,
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: title ?? this.title,
       showCloseButton: showCloseButton ?? this.showCloseButton,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
       invertButtons: invertButtons ?? this.invertButtons,
       confirmButtonText: confirmButtonText ?? this.confirmButtonText,
       cancelButtonText: cancelButtonText ?? this.cancelButtonText,
       onConfirm: onConfirmProvided ? (onConfirm ?? this.onConfirm) : null,
       onCancel: onCancelProvided ? (onCancel ?? this.onCancel) : null,
       text: text ?? this.text,
-      textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
       child: childProvided ? (child ?? this.child) : null,
     );
   }

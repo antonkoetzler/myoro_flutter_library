@@ -20,12 +20,4 @@ final class MyoroBasicDividerWidgetShowcaseScreenState extends ChangeNotifier {
     _shortValue = shortValue;
     notifyListeners();
   }
-
-  /// [MyoroBasicDividerConfiguration.padding]
-  EdgeInsets? _padding;
-  EdgeInsets? get padding => _padding;
-  set padding(EdgeInsets? padding) {
-    _padding = padding;
-    notifyListeners();
-  }
 }

@@ -7,13 +7,16 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
+    final buildConfiguration = viewModel.buildConfiguration;
+    final buildThemeExtension = viewModel.buildThemeExtension;
 
     return ListenableBuilder(
       listenable: viewModel.state,
-      builder: (_, __) {
+      builder: (_, _) {
         return MyoroButton(
-          configuration: viewModel.configuration(context),
-          builder: (_, MyoroTapStatusEnum tapStatusEnum) => _ButtonContent(tapStatusEnum),
+          configuration: buildConfiguration(context),
+          themeExtension: buildThemeExtension(context),
+          builder: (_, tapStatusEnum) => _ButtonContent(tapStatusEnum),
         );
       },
     );

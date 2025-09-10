@@ -16,12 +16,10 @@ final class _Widget extends StatelessWidget {
             MyoroScreen(
               configuration: MyoroScreenConfiguration(
                 appBar: MyoroAppBar(
-                  configuration: MyoroAppBarConfiguration(
-                    bordered: true,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],
-                    ),
+                  showBottomDivider: true,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],
                   ),
                 ),
                 body: Center(child: Text(faker.lorem.word())),

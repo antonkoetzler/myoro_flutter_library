@@ -6,27 +6,13 @@ class MyoroDropdownState<
   CONFIGURATION extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
   MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
 > {
-  MyoroDropdownState(this.configuration) : _enabledNotifier = ValueNotifier(configuration.enabled);
+  MyoroDropdownState(this.configuration, this.menuController) : _enabledNotifier = ValueNotifier(configuration.enabled);
 
   /// Configuration.
   CONFIGURATION configuration;
 
   /// [MyoroMenuController]. This is the source of truth for the selected items of the dropdown.
-  MENU_CONTROLLER? _menuController;
-
-  /// [_menuController] getter.
-  MENU_CONTROLLER get menuController {
-    assert(
-      _menuController != null,
-      '[MyoroDropdownState<$T>.menuController]: [_menuController] has not been initialized yet.',
-    );
-    return _menuController!;
-  }
-
-  /// [_menuController] setter.
-  set menuController(MENU_CONTROLLER menuController) {
-    _menuController = menuController;
-  }
+  final MENU_CONTROLLER menuController;
 
   /// [ValueNotifier] controlling if the [_Dropdown] is enabled or not.
   final ValueNotifier<bool> _enabledNotifier;
@@ -136,7 +122,7 @@ class MyoroDropdownState<
 
   /// Dispose function.
   void dispose() {
-    _menuController?.dispose();
+    menuController.dispose();
     _enabledNotifier.dispose();
     _showingMenuNotifier.dispose();
     _menuScrollController.dispose();

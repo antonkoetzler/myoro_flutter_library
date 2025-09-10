@@ -15,7 +15,7 @@ final class _Widget extends StatelessWidget {
           listenable: iconTextButtonViewModel.state,
           builder: (_, _) {
             return IntrinsicWidth(
-              child: MyoroIconTextButton(configuration: iconTextButtonViewModel.configuration(context)),
+              child: MyoroIconTextButton(configuration: iconTextButtonViewModel.buildConfiguration(context)),
             );
           },
         );

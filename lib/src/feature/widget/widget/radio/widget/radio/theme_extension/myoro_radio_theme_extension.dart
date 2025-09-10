@@ -12,20 +12,20 @@ part 'myoro_radio_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> with _$MyoroRadioThemeExtensionMixin {
   const MyoroRadioThemeExtension({
-    required this.activeColor,
-    required this.hoverColor,
-    required this.labelTextStyle,
-    required this.spacing,
-    required this.splashRadius,
+    this.activeColor,
+    this.hoverColor,
+    this.labelTextStyle,
+    this.spacing,
+    this.splashRadius,
   });
 
   // coverage:ignore-start
   MyoroRadioThemeExtension.fake()
-    : activeColor = myoroFake<Color>(),
-      hoverColor = myoroFake<Color>(),
-      labelTextStyle = myoroFake<TextStyle>(),
-      spacing = faker.randomGenerator.decimal(),
-      splashRadius = faker.randomGenerator.decimal();
+    : activeColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      hoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      splashRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   MyoroRadioThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -36,28 +36,39 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
       splashRadius = 15;
 
   /// Color of the radio itself.
-  final Color activeColor;
+  final Color? activeColor;
 
   /// Color of background when hovered.
-  final Color hoverColor;
+  final Color? hoverColor;
 
   /// [TextStyle] of [MyoroRadio.label].
-  final TextStyle labelTextStyle;
+  final TextStyle? labelTextStyle;
 
   /// Spacing in between the radio and [MyoroRadio.label].
-  final double spacing;
+  final double? spacing;
 
   /// Background (splash) color size.
-  final double splashRadius;
+  final double? splashRadius;
 
   @override
   MyoroRadioThemeExtension lerp(covariant ThemeExtension<MyoroRadioThemeExtension>? other, double t) {
     if (other is! MyoroRadioThemeExtension) return this;
+
+    final activeColor = Color.lerp(this.activeColor, other.activeColor, t);
+    final hoverColor = Color.lerp(this.hoverColor, other.hoverColor, t);
+    final labelTextStyle = TextStyle.lerp(this.labelTextStyle, other.labelTextStyle, t);
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+    final splashRadius = lerpDouble(this.splashRadius, other.splashRadius, t);
+
     return copyWith(
-      activeColor: Color.lerp(activeColor, other.activeColor, t),
-      hoverColor: Color.lerp(hoverColor, other.hoverColor, t),
-      labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
-      spacing: lerpDouble(spacing, other.spacing, t),
+      activeColor: activeColor,
+      activeColorProvided: activeColor != null,
+      hoverColor: hoverColor,
+      hoverColorProvided: hoverColor != null,
+      labelTextStyle: labelTextStyle,
+      labelTextStyleProvided: labelTextStyle != null,
+      spacing: spacing,
+      spacingProvided: spacing != null,
       splashRadius: lerpDouble(splashRadius, other.splashRadius, t),
     );
   }

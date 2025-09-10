@@ -14,7 +14,7 @@ class MyoroTimePickerInput extends StatefulWidget {
   final MyoroTimePickerInputConfiguration configuration;
 
   /// Theme extension.
-  final MyoroTimePickerInputThemeExtension? themeExtension;
+  final MyoroInputThemeExtension? themeExtension;
 
   @override
   State<MyoroTimePickerInput> createState() => _MyoroTimePickerInputState();
@@ -23,8 +23,8 @@ class MyoroTimePickerInput extends StatefulWidget {
 final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
   late final MyoroTimePickerInputViewModel _viewModel;
 
-  MyoroTimePickerInputThemeExtension get _themeExtension {
-    return widget.themeExtension ?? context.resolveThemeExtension<MyoroTimePickerInputThemeExtension>();
+  MyoroInputThemeExtension get _themeExtension {
+    return widget.themeExtension ?? context.resolveThemeExtension<MyoroInputThemeExtension>();
   }
 
   @override
@@ -54,9 +54,9 @@ final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
         alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
             ? Alignment.center
             : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-        children: const [
-          _Input(),
-          Positioned(child: _TriggerArea()),
+        children: [
+          _Input(_themeExtension),
+          const Positioned(child: _TriggerArea()),
         ],
       ),
     );

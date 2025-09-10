@@ -24,17 +24,16 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final configuration = _viewModel.state.configuration;
+    final backgroundColor = themeExtension.backgroundColor;
+    final border = themeExtension.border;
+    final borderRadius = themeExtension.borderRadius;
+    final constraints = themeExtension.constraints;
 
     return InheritedProvider.value(
       value: _viewModel,
       child: Container(
-        decoration: BoxDecoration(
-          color: configuration.backgroundColor ?? themeExtension.backgroundColor,
-          border: configuration.border,
-          borderRadius: configuration.borderRadius ?? themeExtension.borderRadius,
-        ),
-        constraints: _viewModel.state.configuration.constraints,
+        decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
+        constraints: constraints,
         child: ValueListenableBuilder(
           valueListenable: _viewModel.state.itemsRequestNotifier,
           builder: (_, MyoroRequest<Set<T>> state, _) {

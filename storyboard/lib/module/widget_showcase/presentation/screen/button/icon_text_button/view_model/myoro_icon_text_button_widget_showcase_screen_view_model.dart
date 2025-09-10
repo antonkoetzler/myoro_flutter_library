@@ -14,22 +14,16 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroIconTextButtonConfiguration] of the [MyoroIconTextButton].
-  MyoroIconTextButtonConfiguration configuration(context) {
-    final buttonConfiguration = _state.buttonViewModel.configuration(context);
+  MyoroIconTextButtonConfiguration buildConfiguration(BuildContext context) {
+    final buttonViewModel = _state.buttonViewModel;
+    final buttonConfiguration = buttonViewModel.buildConfiguration(context);
 
     return MyoroIconTextButtonConfiguration(
       tooltipConfiguration: buttonConfiguration.tooltipConfiguration,
       cursor: buttonConfiguration.cursor,
-      borderRadius: buttonConfiguration.borderRadius,
-      backgroundColorBuilder: buttonConfiguration.backgroundColorBuilder,
-      borderBuilder: buttonConfiguration.borderBuilder,
       onTapDown: buttonConfiguration.onTapDown,
       onTapUp: buttonConfiguration.onTapUp,
       invert: _state.invert,
-      spacing: _state.spacing,
-      padding: _state.padding,
-      contentColorBuilder:
-          _state.enableContentColorBuilder ? (tapStatusEnum) => _contentColorBuilder(tapStatusEnum) : null,
       iconConfiguration: _state.icon != null ? MyoroIconConfiguration(icon: _state.icon!, size: _state.iconSize) : null,
       textConfiguration:
           _state.text.isNotEmpty
@@ -44,13 +38,11 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
     );
   }
 
-  /// [MyoroIconTextButtonConfiguration.contentColorBuilder] of [_Widget].
-  Color _contentColorBuilder(MyoroTapStatusEnum tapStatusEnum) {
-    return switch (tapStatusEnum) {
-          MyoroTapStatusEnum.idle => state.idleContentColor,
-          MyoroTapStatusEnum.hover => state.hoverContentColor,
-          MyoroTapStatusEnum.tap => state.tapContentColor,
-        } ??
-        MyoroColors.transparent;
+  /// [MyoroIconTextButtonThemeExtension] builder.
+  MyoroIconTextButtonThemeExtension buildThemeExtension(BuildContext context) {
+    final buttonViewModel = _state.buttonViewModel;
+    final buildButtonThemeExtension = buttonViewModel.buildThemeExtension;
+    final buttonThemeExtension = buildButtonThemeExtension(context);
+    return MyoroIconTextButtonThemeExtension.fromVariant(buttonThemeExtension);
   }
 }

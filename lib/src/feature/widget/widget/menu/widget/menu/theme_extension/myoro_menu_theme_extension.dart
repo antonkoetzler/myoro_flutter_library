@@ -10,7 +10,9 @@ part 'myoro_menu_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with _$MyoroMenuThemeExtensionMixin {
   const MyoroMenuThemeExtension({
+    this.constraints,
     this.backgroundColor,
+    this.border,
     this.borderRadius,
     this.searchBarPadding,
     this.searchBarInputStyle,
@@ -21,7 +23,9 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
 
   // coverage:ignore-start
   MyoroMenuThemeExtension.fake()
-    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    : constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      border = faker.randomGenerator.boolean() ? myoroFake<BoxBorder>() : null,
+      backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       searchBarPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       searchBarInputStyle = faker.randomGenerator.boolean() ? MyoroInputStyleEnum.fake() : null,
@@ -31,7 +35,9 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
   // coverage:ignore-end
 
   MyoroMenuThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : backgroundColor = colorScheme.primary,
+    : constraints = const BoxConstraints(),
+      border = null,
+      backgroundColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       searchBarPadding = const EdgeInsets.all(10),
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
@@ -39,8 +45,14 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
       dialogTextStyle = textTheme.bodyMedium!,
       dialogTextLoaderPadding = const EdgeInsets.all(15);
 
+  /// Constraints of the menu.
+  final BoxConstraints? constraints;
+
   /// Background color of the menu.
   final Color? backgroundColor;
+
+  /// Border of the menu.
+  final BoxBorder? border;
 
   /// Border radius of the menu.
   final BorderRadius? borderRadius;
@@ -64,7 +76,9 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
   MyoroMenuThemeExtension lerp(covariant ThemeExtension<MyoroMenuThemeExtension>? other, double t) {
     if (other is! MyoroMenuThemeExtension) return this;
 
+    final constraints = BoxConstraints.lerp(this.constraints, other.constraints, t);
     final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
+    final border = BoxBorder.lerp(this.border, other.border, t);
     final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
     final searchBarPadding = EdgeInsets.lerp(this.searchBarPadding, other.searchBarPadding, t);
     final searchBarInputStyle = myoroLerp(this.searchBarInputStyle, other.searchBarInputStyle, t);
@@ -73,8 +87,12 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
     final dialogTextLoaderPadding = EdgeInsets.lerp(this.dialogTextLoaderPadding, other.dialogTextLoaderPadding, t);
 
     return copyWith(
+      constraints: constraints,
+      constraintsProvided: constraints != null,
       backgroundColor: backgroundColor,
       backgroundColorProvided: true,
+      border: border,
+      borderProvided: border != null,
       borderRadius: borderRadius,
       borderRadiusProvided: true,
       searchBarPadding: searchBarPadding,

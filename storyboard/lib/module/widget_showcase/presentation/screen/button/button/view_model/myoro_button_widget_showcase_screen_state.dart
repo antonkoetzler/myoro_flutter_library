@@ -8,9 +8,13 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   static const onTapDownEnabledDefaultValue = true;
   static const onTapUpEnabledDefaultValue = true;
 
-  /// Whether or not to provide [MyoroButtonConfiguration.tooltipConfiguration].
+  /// [MyoroButtonConfiguration.tooltipConfiguration]
   bool _tooltipEnabled = tooltipEnabledDefaultValue;
+
+  /// [_tooltipEnabled] getter.
   bool get tooltipEnabled => _tooltipEnabled;
+
+  /// [_tooltipEnabled] setter.
   set tooltipEnabled(bool tooltipEnabled) {
     _tooltipEnabled = tooltipEnabled;
     notifyListeners();
@@ -18,97 +22,107 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [MyoroButtonConfiguration.cursor]
   MouseCursor? _cursor;
+
+  /// [_cursor] getter.
   MouseCursor? get cursor => _cursor;
+
+  /// [_cursor] setter.
   set cursor(MouseCursor? cursor) {
     _cursor = cursor;
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.borderRadius]
+  /// [MyoroButtonThemeExtension.borderRadius]
   BorderRadius? _borderRadius;
+
+  /// [_borderRadius] getter.
   BorderRadius? get borderRadius => _borderRadius;
+
+  /// [_borderRadius] setter.
   set borderRadius(BorderRadius? borderRadius) {
     _borderRadius = borderRadius;
     notifyListeners();
   }
 
-  /// If [MyoroButtonConfiguration.backgroundColorBuilder] is provided.
-  bool _backgroundColorBuilderEnabled = backgroundColorBuilderEnabledDefaultValue;
-  bool get backgroundColorBuilderEnabled => _backgroundColorBuilderEnabled;
-  set backgroundColorBuilderEnabled(bool backgroundColorBuilderEnabled) {
-    _backgroundColorBuilderEnabled = backgroundColorBuilderEnabled;
-    if (!_backgroundColorBuilderEnabled) {
-      _idleBackgroundColor = null;
-      _hoverBackgroundColor = null;
-      _tapBackgroundColor = null;
-    }
+  /// [MyoroButtonThemeExtension.backgroundIdleColor]
+  Color? _backgroundIdleColor;
+
+  /// [_backgroundIdleColor] getter.
+  Color? get backgroundIdleColor => _backgroundIdleColor;
+
+  /// [_backgroundIdleColor] setter.
+  set backgroundIdleColor(Color? backgroundIdleColor) {
+    _backgroundIdleColor = backgroundIdleColor;
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.backgroundColorBuilder]'s [Color] for [MyoroTapStatusEnum.idle].
-  Color? _idleBackgroundColor;
-  Color? get idleBackgroundColor => _idleBackgroundColor;
-  set idleBackgroundColor(Color? idleBackgroundColor) {
-    _idleBackgroundColor = idleBackgroundColor;
+  /// [MyoroButtonThemeExtension.backgroundHoverColor]
+  Color? _backgroundHoverColor;
+
+  /// [_backgroundHoverColor] getter.
+  Color? get backgroundHoverColor => _backgroundHoverColor;
+
+  /// [_backgroundHoverColor] setter.
+  set backgroundHoverColor(Color? backgroundHoverColor) {
+    _backgroundHoverColor = backgroundHoverColor;
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.backgroundColorBuilder]'s [Color] for [MyoroTapStatusEnum.hover].
-  Color? _hoverBackgroundColor;
-  Color? get hoverBackgroundColor => _hoverBackgroundColor;
-  set hoverBackgroundColor(Color? hoverBackgroundColor) {
-    _hoverBackgroundColor = hoverBackgroundColor;
+  /// [MyoroButtonThemeExtension.backgroundTapColor]
+  Color? _backgroundTapColor;
+
+  /// [_backgroundTapColor] getter.
+  Color? get backgroundTapColor => _backgroundTapColor;
+
+  /// [_backgroundTapColor] setter.
+  set backgroundTapColor(Color? backgroundTapColor) {
+    _backgroundTapColor = backgroundTapColor;
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.backgroundColorBuilder]'s [Color] for [MyoroTapStatusEnum.tap].
-  Color? _tapBackgroundColor;
-  Color? get tapBackgroundColor => _tapBackgroundColor;
-  set tapBackgroundColor(Color? tapBackgroundColor) {
-    _tapBackgroundColor = tapBackgroundColor;
+  /// [MyoroButtonConfiguration.borderIdleColor]
+  Color? _borderIdleColor;
+
+  /// [_borderIdleColor] getter.
+  Color? get borderIdleColor => _borderIdleColor;
+
+  /// [_borderIdleColor] setter.
+  set borderIdleColor(Color? borderIdleColor) {
+    _borderIdleColor = borderIdleColor;
     notifyListeners();
   }
 
-  /// If [MyoroButtonConfiguration.borderBuilder] is provided.
-  bool _borderBuilderEnabled = borderBuilderEnabledDefaultValue;
-  bool get borderBuilderEnabled => _borderBuilderEnabled;
-  set borderBuilderEnabled(bool borderBuilderEnabled) {
-    _borderBuilderEnabled = borderBuilderEnabled;
-    if (!_borderBuilderEnabled) {
-      _idleBorderColor = null;
-      _hoverBorderColor = null;
-      _tapBackgroundColor = null;
-    }
+  /// [MyoroButtonConfiguration.borderHoverColor]
+  Color? _borderHoverColor;
+
+  /// [_borderHoverColor] getter.
+  Color? get borderHoverColor => _borderHoverColor;
+
+  /// [_borderHoverColor] setter.
+  set borderHoverColor(Color? borderHoverColor) {
+    _borderHoverColor = borderHoverColor;
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.borderBuilder]'s [Color] for [MyoroTapStatusEnum.idle].
-  Color? _idleBorderColor;
-  Color? get idleBorderColor => _idleBorderColor;
-  set idleBorderColor(Color? idleBorderColor) {
-    _idleBorderColor = idleBorderColor;
-    notifyListeners();
-  }
+  /// [MyoroButtonConfiguration.borderTapColor]
+  Color? _borderTapColor;
 
-  /// [MyoroButtonConfiguration.borderBuilder]'s [Color] for [MyoroTapStatusEnum.hover].
-  Color? _hoverBorderColor;
-  Color? get hoverBorderColor => _hoverBorderColor;
-  set hoverBorderColor(Color? hoverBorderColor) {
-    _hoverBorderColor = hoverBorderColor;
-    notifyListeners();
-  }
+  /// [_borderTapColor] getter.
+  Color? get borderTapColor => _borderTapColor;
 
-  /// [MyoroButtonConfiguration.borderBuilder]'s [Color] for [MyoroTapStatusEnum.tap].
-  Color? _tapBorderColor;
-  Color? get tapBorderColor => _tapBorderColor;
-  set tapBorderColor(Color? tapBorderColor) {
-    _tapBorderColor = tapBorderColor;
+  /// [_borderTapColor] setter.
+  set borderTapColor(Color? borderTapColor) {
+    _borderTapColor = borderTapColor;
     notifyListeners();
   }
 
   /// [MyoroButtonConfiguration.onTapDown]
   bool _onTapDownEnabled = onTapDownEnabledDefaultValue;
+
+  /// [_onTapDownEnabled] getter.
   bool get onTapDownEnabled => _onTapDownEnabled;
+
+  /// [_onTapDownEnabled] setter.
   set onTapDownEnabled(bool onTapDownEnabled) {
     _onTapDownEnabled = onTapDownEnabled;
     notifyListeners;
@@ -116,7 +130,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [MyoroButtonConfiguration.onTapUp]
   bool _onTapUpEnabled = onTapUpEnabledDefaultValue;
+
+  /// [_onTapUpEnabled] getter.
   bool get onTapUpEnabled => _onTapUpEnabled;
+
+  /// [_onTapUpEnabled] setter.
   set onTapUpEnabled(bool onTapUpEnabled) {
     _onTapUpEnabled = onTapUpEnabled;
     notifyListeners();

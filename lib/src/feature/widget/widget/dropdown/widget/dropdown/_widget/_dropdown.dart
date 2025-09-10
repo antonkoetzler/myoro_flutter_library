@@ -28,12 +28,6 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _viewModel.initializeMenuController(context, _themeExtension);
-  }
-
-  @override
   void didUpdateWidget(covariant _Dropdown<T, V> oldWidget) {
     super.didUpdateWidget(oldWidget);
     _addShowingMenuControllerListener();

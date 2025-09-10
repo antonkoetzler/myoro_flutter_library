@@ -19,19 +19,25 @@ mixin _$MyoroSnackBarContainerThemeExtensionMixin on ThemeExtension<MyoroSnackBa
   @override
   MyoroSnackBarContainerThemeExtension copyWith({
     Color? primaryColor,
+    bool primaryColorProvided = true,
     SnackBarBehavior? behavior,
+    bool behaviorProvided = true,
     EdgeInsets? margin,
+    bool marginProvided = true,
     EdgeInsets? padding,
+    bool paddingProvided = true,
     double? elevation,
+    bool elevationProvided = true,
     DismissDirection? dismissDirection,
+    bool dismissDirectionProvided = true,
   }) {
     return MyoroSnackBarContainerThemeExtension(
-      primaryColor: primaryColor ?? self.primaryColor,
-      behavior: behavior ?? self.behavior,
-      margin: margin ?? self.margin,
-      padding: padding ?? self.padding,
-      elevation: elevation ?? self.elevation,
-      dismissDirection: dismissDirection ?? self.dismissDirection,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      behavior: behaviorProvided ? (behavior ?? self.behavior) : null,
+      margin: marginProvided ? (margin ?? self.margin) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      elevation: elevationProvided ? (elevation ?? self.elevation) : null,
+      dismissDirection: dismissDirectionProvided ? (dismissDirection ?? self.dismissDirection) : null,
     );
   }
 

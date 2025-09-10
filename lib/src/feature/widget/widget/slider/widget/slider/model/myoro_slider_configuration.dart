@@ -10,7 +10,6 @@ part 'myoro_slider_configuration.g.dart';
 class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$MyoroSliderConfigurationMixin {
   const MyoroSliderConfiguration({
     super.label,
-    super.labelTextStyle,
     super.currentValueText,
     super.maxValueText,
     super.footerText,
@@ -30,7 +29,6 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
 
     return MyoroSliderConfiguration(
       label: faker.lorem.word(),
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       currentValueText: faker.randomGenerator.boolean()
           ? faker.lorem.word()
           : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,
@@ -57,8 +55,6 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
   @override
   MyoroSliderConfiguration copyWith({
     String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
     String? currentValueText,
     String? maxValueText,
     String? footerText,
@@ -69,7 +65,6 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
   }) {
     return MyoroSliderConfiguration(
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       currentValueText: currentValueText ?? this.currentValueText,
       maxValueText: maxValueText ?? this.maxValueText,
       footerText: footerText ?? this.footerText,

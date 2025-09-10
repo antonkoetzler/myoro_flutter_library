@@ -12,12 +12,12 @@ part 'myoro_file_picker_theme_extension.g.dart';
 @myoroThemeExtension
 final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePickerThemeExtension>
     with _$MyoroFilePickerThemeExtensionMixin {
-  const MyoroFilePickerThemeExtension({required this.spacing, required this.textStyle});
+  const MyoroFilePickerThemeExtension({this.spacing, this.textStyle});
 
   // coverage:ignore-start
   MyoroFilePickerThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(scale: 20),
-      textStyle = myoroFake<TextStyle>();
+    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
 
   MyoroFilePickerThemeExtension.builder(TextTheme textTheme)
@@ -25,17 +25,23 @@ final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePicker
       textStyle = textTheme.bodySmall!;
 
   /// Spacing between the selected file section text and the selection button.
-  final double spacing;
+  final double? spacing;
 
   /// [TextStyle] of the text of the [MyoroFilePicker].
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   @override
   MyoroFilePickerThemeExtension lerp(covariant ThemeExtension<MyoroFilePickerThemeExtension>? other, double t) {
     if (other is! MyoroFilePickerThemeExtension) return this;
+
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+    final textStyle = TextStyle.lerp(this.textStyle, other.textStyle, t);
+
     return copyWith(
-      spacing: lerpDouble(spacing, other.spacing, t),
-      textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
+      spacing: spacing,
+      spacingProvided: spacing != null,
+      textStyle: textStyle,
+      textStyleProvided: textStyle != null,
     );
   }
 }

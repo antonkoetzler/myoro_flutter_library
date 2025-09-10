@@ -8,14 +8,14 @@ part 'myoro_icon_text_button_configuration.g.dart';
 /// Configuration model of [MyoroIconTextButton].
 @myoroModel
 class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$MyoroIconTextButtonConfigurationMixin {
-  static const invertedDefaultValue = false;
+  static const invertDefaultValue = false;
 
   const MyoroIconTextButtonConfiguration({
     super.cursor,
     super.tooltipConfiguration,
     super.onTapDown,
     super.onTapUp,
-    this.inverted = invertedDefaultValue,
+    this.invert = invertDefaultValue,
     this.iconConfiguration,
     this.textConfiguration,
   }) : assert(
@@ -29,7 +29,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
 
     return MyoroIconTextButtonConfiguration(
-      inverted: faker.randomGenerator.boolean(),
+      invert: faker.randomGenerator.boolean(),
       tooltipConfiguration: faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       onTapDown: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onTapUp: faker.randomGenerator.boolean() ? ((_) {}) : null,
@@ -46,7 +46,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
   /// Whether or not to invert the icon and text.
   ///
   /// Only effective when both [iconConfiguration] and [textConfiguration] is provided.
-  final bool inverted;
+  final bool invert;
 
   /// Icon configuration of the [MyoroIconTextButton].
   final MyoroIconConfiguration? iconConfiguration;
@@ -64,7 +64,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
     bool onTapDownProvided = true,
     MyoroButtonOnTapUp? onTapUp,
     bool onTapUpProvided = true,
-    bool? inverted,
+    bool? invert,
     MyoroIconConfiguration? iconConfiguration,
     bool iconConfigurationProvided = true,
     MyoroTextConfiguration? textConfiguration,
@@ -75,7 +75,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
       tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
-      inverted: inverted ?? this.inverted,
+      invert: invert ?? this.invert,
       iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
       textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
     );

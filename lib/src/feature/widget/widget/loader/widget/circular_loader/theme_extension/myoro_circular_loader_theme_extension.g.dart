@@ -17,8 +17,16 @@ mixin _$MyoroCircularLoaderThemeExtensionMixin on ThemeExtension<MyoroCircularLo
   MyoroCircularLoaderThemeExtension get self => this as MyoroCircularLoaderThemeExtension;
 
   @override
-  MyoroCircularLoaderThemeExtension copyWith({Color? color, double? size}) {
-    return MyoroCircularLoaderThemeExtension(color: color ?? self.color, size: size ?? self.size);
+  MyoroCircularLoaderThemeExtension copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? size,
+    bool sizeProvided = true,
+  }) {
+    return MyoroCircularLoaderThemeExtension(
+      color: colorProvided ? (color ?? self.color) : null,
+      size: sizeProvided ? (size ?? self.size) : null,
+    );
   }
 
   @override

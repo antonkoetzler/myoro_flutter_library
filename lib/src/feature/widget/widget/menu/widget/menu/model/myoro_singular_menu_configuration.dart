@@ -9,10 +9,6 @@ part 'myoro_singular_menu_configuration.g.dart';
 @myoroModel
 class MyoroSingularMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _$MyoroSingularMenuConfigurationMixin {
   const MyoroSingularMenuConfiguration({
-    super.constraints,
-    super.backgroundColor,
-    super.border,
-    super.borderRadius,
     required super.request,
     super.onEndReachedRequest,
     super.searchCallback,
@@ -29,13 +25,6 @@ class MyoroSingularMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _
 
   @override
   MyoroSingularMenuConfiguration<T> copyWith({
-    BoxConstraints? constraints,
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    BoxBorder? border,
-    bool borderProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
     MyoroMenuRequest<T>? request,
     bool onEndReachedRequestProvided = true,
     MyoroMenuSearchCallback<T>? searchCallback,
@@ -47,10 +36,6 @@ class MyoroSingularMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _
     bool onChangedProvided = true,
   }) {
     return MyoroSingularMenuConfiguration(
-      constraints: constraints ?? this.constraints,
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
-      border: borderProvided ? (border ?? this.border) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       request: request ?? this.request,
       searchCallback: searchCallbackProvided ? (searchCallback ?? this.searchCallback) : null,
       itemBuilder: itemBuilder ?? this.itemBuilder,

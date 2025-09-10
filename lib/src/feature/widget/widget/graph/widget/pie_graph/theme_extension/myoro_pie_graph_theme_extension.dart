@@ -12,26 +12,34 @@ part 'myoro_pie_graph_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension>
     with _$MyoroPieGraphThemeExtensionMixin {
-  const MyoroPieGraphThemeExtension({required this.itemColor, required this.itemRadius});
+  const MyoroPieGraphThemeExtension({this.itemColor, this.itemRadius});
 
   // coverage:ignore-start
-  MyoroPieGraphThemeExtension.fake() : itemColor = myoroFake<Color>(), itemRadius = faker.randomGenerator.decimal();
+  MyoroPieGraphThemeExtension.fake()
+    : itemColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      itemRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   MyoroPieGraphThemeExtension.builder(ColorScheme colorScheme) : itemColor = colorScheme.onPrimary, itemRadius = 200;
 
   /// Default color of an item.
-  final Color itemColor;
+  final Color? itemColor;
 
   /// Default itemRadius (aka height) of an item.
-  final double itemRadius;
+  final double? itemRadius;
 
   @override
   MyoroPieGraphThemeExtension lerp(covariant ThemeExtension<MyoroPieGraphThemeExtension>? other, double t) {
     if (other is! MyoroPieGraphThemeExtension) return this;
+
+    final itemColor = Color.lerp(this.itemColor, other.itemColor, t);
+    final itemRadius = lerpDouble(this.itemRadius, other.itemRadius, t);
+
     return copyWith(
-      itemColor: Color.lerp(itemColor, other.itemColor, t),
-      itemRadius: lerpDouble(itemRadius, other.itemRadius, t),
+      itemColor: itemColor,
+      itemColorProvided: itemColor != null,
+      itemRadius: itemRadius,
+      itemRadiusProvided: itemRadius != null,
     );
   }
 }

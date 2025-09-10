@@ -22,10 +22,12 @@ final class _SelectionTypeModalButton extends StatelessWidget {
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         iconConfiguration: MyoroIconConfiguration(
-          icon: switch (_value) {
-            ImageSource.camera => selectionTypeModalButtonCameraIcon,
-            ImageSource.gallery => selectionTypeModalButtonGalleryIcon,
-          },
+          icon:
+              switch (_value) {
+                ImageSource.camera => selectionTypeModalButtonCameraIcon,
+                ImageSource.gallery => selectionTypeModalButtonGalleryIcon,
+              } ??
+              Icons.upload,
         ),
         textConfiguration: MyoroTextConfiguration(
           text: switch (_value) {

@@ -41,36 +41,37 @@ final class _MyoroRadioState extends State<MyoroRadio> {
   }
 
   @override
-  Widget build(context) {
-    final child = Row(
-      mainAxisSize: MainAxisSize.min,
-      spacing: _themeExtension.spacing,
-      children: [
-        ValueListenableBuilder(
-          valueListenable: _controller,
-          builder: (_, bool enabled, _) {
-            return Radio(
+  Widget build(_) {
+    final spacing = _themeExtension.spacing ?? 0;
+    final labelTextStyle = _themeExtension.labelTextStyle;
+    final activeColor = _themeExtension.activeColor;
+    final hoverColor = _themeExtension.hoverColor;
+    final splashRadius = _themeExtension.splashRadius;
+
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: _themeExtension,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        spacing: spacing,
+        children: [
+          ValueListenableBuilder(
+            valueListenable: _controller,
+            builder: (_, bool enabled, _) => Radio(
               value: true,
               groupValue: enabled,
               toggleable: true,
-              activeColor: _themeExtension.activeColor,
-              hoverColor: _themeExtension.hoverColor,
-              splashRadius: _themeExtension.splashRadius,
+              activeColor: activeColor,
+              hoverColor: hoverColor,
+              splashRadius: splashRadius,
               onChanged: (_) {
                 _controller.value = !enabled;
                 _configuration.onChanged?.call(_controller.value);
               },
-            );
-          },
-        ),
-        if (_configuration.label.isNotEmpty) ...[
-          Flexible(
-            child: Text(_configuration.label, style: _configuration.labelTextStyle ?? _themeExtension.labelTextStyle),
+            ),
           ),
+          if (_configuration.label.isNotEmpty) ...[Flexible(child: Text(_configuration.label, style: labelTextStyle))],
         ],
-      ],
+      ),
     );
-
-    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

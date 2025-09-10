@@ -20,7 +20,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
   bool operator ==(Object other) {
     return other is MyoroIconTextButtonConfiguration &&
         other.runtimeType == runtimeType &&
-        other.inverted == self.inverted &&
+        other.invert == self.invert &&
         other.iconConfiguration == self.iconConfiguration &&
         other.textConfiguration == self.textConfiguration &&
         other.cursor == self.cursor &&
@@ -32,7 +32,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
   @override
   int get hashCode {
     return Object.hash(
-      self.inverted,
+      self.invert,
       self.iconConfiguration,
       self.textConfiguration,
       self.cursor,
@@ -45,7 +45,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
   @override
   String toString() =>
       'MyoroIconTextButtonConfiguration(\n'
-      '  inverted: ${self.inverted},\n'
+      '  invert: ${self.invert},\n'
       '  iconConfiguration: ${self.iconConfiguration},\n'
       '  textConfiguration: ${self.textConfiguration},\n'
       '  cursor: ${self.cursor},\n'

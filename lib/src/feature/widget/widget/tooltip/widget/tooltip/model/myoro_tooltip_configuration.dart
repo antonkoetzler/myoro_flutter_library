@@ -12,21 +12,13 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
   static const waitDurationDefaultValue = Duration(milliseconds: 200);
   static const textDefaultValue = '';
 
-  const MyoroTooltipConfiguration({
-    this.margin,
-    this.waitDuration = waitDurationDefaultValue,
-    this.text = textDefaultValue,
-  });
+  const MyoroTooltipConfiguration({this.waitDuration = waitDurationDefaultValue, this.text = textDefaultValue});
 
   // coverage:ignore-start
   MyoroTooltipConfiguration.fake({bool? borderBuilderProvided})
-    : margin = borderBuilderProvided ?? faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      waitDuration = myoroFake<Duration>(),
+    : waitDuration = myoroFake<Duration>(),
       text = faker.lorem.word();
   // coverage:ignore-end
-
-  /// Margin [EdgeInsets] of the tooltip.
-  final EdgeInsets? margin;
 
   /// [Duration] before the tooltip message is shown.
   final Duration waitDuration;
@@ -34,16 +26,7 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
   /// Text of the tooltip.
   final String text;
 
-  MyoroTooltipConfiguration copyWith({
-    EdgeInsets? margin,
-    bool marginProvided = true,
-    Duration? waitDuration,
-    String? text,
-  }) {
-    return MyoroTooltipConfiguration(
-      margin: marginProvided ? (margin ?? this.margin) : null,
-      waitDuration: waitDuration ?? this.waitDuration,
-      text: text ?? this.text,
-    );
+  MyoroTooltipConfiguration copyWith({Duration? waitDuration, String? text}) {
+    return MyoroTooltipConfiguration(waitDuration: waitDuration ?? this.waitDuration, text: text ?? this.text);
   }
 }

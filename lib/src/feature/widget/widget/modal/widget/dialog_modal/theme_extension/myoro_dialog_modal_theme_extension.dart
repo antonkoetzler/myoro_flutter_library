@@ -12,12 +12,12 @@ part 'myoro_dialog_modal_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThemeExtension>
     with _$MyoroDialogModalThemeExtensionMixin {
-  const MyoroDialogModalThemeExtension({required this.textStyle, required this.footerButtonsSpacing});
+  const MyoroDialogModalThemeExtension({this.textStyle, this.footerButtonsSpacing});
 
   // coverage:ignore-start
   MyoroDialogModalThemeExtension.fake()
-    : textStyle = myoroFake<TextStyle>(),
-      footerButtonsSpacing = faker.randomGenerator.decimal();
+    : textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      footerButtonsSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   MyoroDialogModalThemeExtension.builder(TextTheme textTheme)
@@ -25,17 +25,23 @@ class MyoroDialogModalThemeExtension extends ThemeExtension<MyoroDialogModalThem
       footerButtonsSpacing = 10;
 
   /// Text style of the simple text option in [_Message].
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   /// Spacing in between the buttons in [_FooterButtons].
-  final double footerButtonsSpacing;
+  final double? footerButtonsSpacing;
 
   @override
   MyoroDialogModalThemeExtension lerp(covariant ThemeExtension<MyoroDialogModalThemeExtension>? other, double t) {
     if (other is! MyoroDialogModalThemeExtension) return this;
+
+    final textStyle = TextStyle.lerp(this.textStyle, other.textStyle, t);
+    final footerButtonsSpacing = lerpDouble(this.footerButtonsSpacing, other.footerButtonsSpacing, t);
+
     return copyWith(
-      textStyle: TextStyle.lerp(textStyle, other.textStyle, t),
-      footerButtonsSpacing: lerpDouble(footerButtonsSpacing, other.footerButtonsSpacing, t),
+      textStyle: textStyle,
+      textStyleProvided: textStyle != null,
+      footerButtonsSpacing: footerButtonsSpacing,
+      footerButtonsSpacingProvided: footerButtonsSpacing != null,
     );
   }
 }

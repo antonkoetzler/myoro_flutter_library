@@ -19,29 +19,42 @@ mixin _$MyoroSnackBarThemeExtensionMixin on ThemeExtension<MyoroSnackBarThemeExt
   @override
   MyoroSnackBarThemeExtension copyWith({
     Color? primaryColor,
+    bool primaryColorProvided = true,
     Color? standardBorderColor,
+    bool standardBorderColorProvided = true,
     Color? attentionBorderColor,
+    bool attentionBorderColorProvided = true,
     Color? successBorderColor,
+    bool successBorderColorProvided = true,
     Color? errorBorderColor,
+    bool errorBorderColorProvided = true,
     double? borderWidth,
+    bool borderWidthProvided = true,
     BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
     EdgeInsets? padding,
+    bool paddingProvided = true,
     double? spacing,
+    bool spacingProvided = true,
     TextStyle? messageTextStyle,
+    bool messageTextStyleProvided = true,
     MyoroIconConfiguration? closeButtonIconConfiguration,
+    bool closeButtonIconConfigurationProvided = true,
   }) {
     return MyoroSnackBarThemeExtension(
-      primaryColor: primaryColor ?? self.primaryColor,
-      standardBorderColor: standardBorderColor ?? self.standardBorderColor,
-      attentionBorderColor: attentionBorderColor ?? self.attentionBorderColor,
-      successBorderColor: successBorderColor ?? self.successBorderColor,
-      errorBorderColor: errorBorderColor ?? self.errorBorderColor,
-      borderWidth: borderWidth ?? self.borderWidth,
-      borderRadius: borderRadius ?? self.borderRadius,
-      padding: padding ?? self.padding,
-      spacing: spacing ?? self.spacing,
-      messageTextStyle: messageTextStyle ?? self.messageTextStyle,
-      closeButtonIconConfiguration: closeButtonIconConfiguration ?? self.closeButtonIconConfiguration,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      standardBorderColor: standardBorderColorProvided ? (standardBorderColor ?? self.standardBorderColor) : null,
+      attentionBorderColor: attentionBorderColorProvided ? (attentionBorderColor ?? self.attentionBorderColor) : null,
+      successBorderColor: successBorderColorProvided ? (successBorderColor ?? self.successBorderColor) : null,
+      errorBorderColor: errorBorderColorProvided ? (errorBorderColor ?? self.errorBorderColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
+      closeButtonIconConfiguration: closeButtonIconConfigurationProvided
+          ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
+          : null,
     );
   }
 

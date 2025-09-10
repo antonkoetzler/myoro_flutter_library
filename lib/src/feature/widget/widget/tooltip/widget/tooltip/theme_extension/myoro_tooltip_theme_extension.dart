@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -9,20 +10,23 @@ part 'myoro_tooltip_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension>
     with _$MyoroTooltipThemeExtensionMixin {
-  const MyoroTooltipThemeExtension({required this.margin});
+  const MyoroTooltipThemeExtension({this.margin});
 
   // coverage:ignore-start
-  MyoroTooltipThemeExtension.fake() : margin = myoroFake<EdgeInsets>();
+  MyoroTooltipThemeExtension.fake() : margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
   // coverage:ignore-end
 
   const MyoroTooltipThemeExtension.builder() : margin = EdgeInsets.zero;
 
   /// [Tooltip.margin].
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
 
   @override
   MyoroTooltipThemeExtension lerp(covariant ThemeExtension<MyoroTooltipThemeExtension>? other, double t) {
     if (other is! MyoroTooltipThemeExtension) return this;
-    return copyWith(margin: EdgeInsets.lerp(margin, other.margin, t));
+
+    final margin = EdgeInsets.lerp(this.margin, other.margin, t);
+
+    return copyWith(margin: margin, marginProvided: margin != null);
   }
 }

@@ -12,7 +12,6 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
     with _$MyoroRangeSliderConfigurationMixin {
   MyoroRangeSliderConfiguration({
     super.label,
-    super.labelTextStyle,
     super.currentValueText,
     super.maxValueText,
     super.footerText,
@@ -41,7 +40,6 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
 
     return MyoroRangeSliderConfiguration(
       label: faker.lorem.word(),
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       currentValueText: faker.randomGenerator.boolean()
           ? faker.lorem.word()
           : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,
@@ -68,8 +66,6 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
   @override
   MyoroRangeSliderConfiguration copyWith({
     String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
     String? currentValueText,
     String? maxValueText,
     String? footerText,
@@ -80,7 +76,6 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
   }) {
     return MyoroRangeSliderConfiguration(
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       currentValueText: currentValueText ?? this.currentValueText,
       maxValueText: maxValueText ?? this.maxValueText,
       footerText: footerText ?? this.footerText,

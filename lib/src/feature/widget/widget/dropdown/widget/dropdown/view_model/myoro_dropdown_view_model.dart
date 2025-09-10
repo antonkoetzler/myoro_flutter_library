@@ -10,7 +10,8 @@ abstract class MyoroDropdownViewModel<
   MENU_CONFIGURATION extends MyoroMenuConfiguration<T>,
   MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MENU_CONFIGURATION>>
 > {
-  MyoroDropdownViewModel(CONFIGURATION configuration) : _state = MyoroDropdownState(configuration) {
+  MyoroDropdownViewModel(CONFIGURATION configuration, MENU_CONTROLLER menuController)
+    : _state = MyoroDropdownState(configuration, menuController) {
     if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
     state.enabledNotifier.addListener(enabledNotifierListener);
   }
@@ -21,14 +22,13 @@ abstract class MyoroDropdownViewModel<
   /// [_state] getter.
   MyoroDropdownState<T, CONFIGURATION, MENU_CONTROLLER> get state => _state;
 
-  /// Handles the callback of a dropdown's checkbox on changed argument.
-  @protected
-  void enabledNotifierListener();
-
   /// Dispose function.
   void dispose() {
     state.dispose();
   }
+
+  /// Builds the menu [Widget].
+  Widget menuWidget(BuildContext context);
 
   /// Toggles [_enabledNotifier].
   void toggleEnabled([bool? enabled]) {
@@ -65,6 +65,10 @@ abstract class MyoroDropdownViewModel<
     });
   }
 
+  /// Handles the callback of a dropdown's checkbox on changed argument.
+  @protected
+  void enabledNotifierListener();
+
   /// Formats items in [_selectedItemsNotifier] to display in [_Input].
   @protected
   void formatSelectedItems();
@@ -73,10 +77,4 @@ abstract class MyoroDropdownViewModel<
   void _overlayMenuControllerListener() {
     state.showingMenu = state.overlayMenuController.isShowing;
   }
-
-  /// Initializes [MyoroDropdownState.menuController].
-  void initializeMenuController(BuildContext context, MyoroDropdownThemeExtension themeExtension);
-
-  /// Builds the menu [Widget].
-  Widget get menuWidget;
 }

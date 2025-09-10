@@ -27,21 +27,29 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+    final previousItemButtonIcon = themeExtension.previousItemButtonIcon;
+    final nextItemButtonIcon = themeExtension.nextItemButtonIcon;
+
+    final displayTraversalButtons = _configuration.displayTraversalButtons;
 
     return Stack(
       alignment: Alignment.center,
       children: [
         _Carousel(_configuration, _controller),
-        if (_configuration.displayTraversalButtons) ...[
+        if (displayTraversalButtons) ...[
           Positioned(
             child: _TraversalButton(
               Alignment.centerLeft,
-              themeExtension.previousItemButtonIcon,
+              previousItemButtonIcon ?? Icons.keyboard_arrow_left,
               _controller.previousPage,
             ),
           ),
           Positioned(
-            child: _TraversalButton(Alignment.centerRight, themeExtension.nextItemButtonIcon, _controller.nextPage),
+            child: _TraversalButton(
+              Alignment.centerRight,
+              nextItemButtonIcon ?? Icons.keyboard_arrow_right,
+              _controller.nextPage,
+            ),
           ),
         ],
       ],

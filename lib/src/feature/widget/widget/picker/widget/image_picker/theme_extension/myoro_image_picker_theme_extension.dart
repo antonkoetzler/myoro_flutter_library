@@ -14,34 +14,39 @@ part 'myoro_image_picker_theme_extension.g.dart';
 final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePickerThemeExtension>
     with _$MyoroImagePickerThemeExtensionMixin {
   const MyoroImagePickerThemeExtension({
-    required this.borderRadius,
-    required this.overlayCursor,
-    required this.overlayIdleBackgroundColor,
-    required this.overlayHoverBackgroundColor,
-    required this.overlayTapBackgroundColor,
-    required this.overlayUnselectedImageStateIconConfiguration,
-    required this.selectionTypeModalConstraints,
-    required this.selectionTypeModalSpacing,
-    required this.selectionTypeModalButtonCameraIcon,
-    required this.selectionTypeModalButtonGalleryIcon,
+    this.size,
+    this.borderRadius,
+    this.overlayCursor,
+    this.overlayIdleBackgroundColor,
+    this.overlayHoverBackgroundColor,
+    this.overlayTapBackgroundColor,
+    this.overlayUnselectedImageStateIconConfiguration,
+    this.selectionTypeModalConstraints,
+    this.selectionTypeModalSpacing,
+    this.selectionTypeModalButtonCameraIcon,
+    this.selectionTypeModalButtonGalleryIcon,
   });
 
   // coverage:ignore-start
   MyoroImagePickerThemeExtension.fake()
-    : borderRadius = myoroFake<BorderRadius>(),
-      overlayCursor = myoroFake<MouseCursor>(),
-      overlayIdleBackgroundColor = myoroFake<Color>(),
-      overlayHoverBackgroundColor = myoroFake<Color>(),
-      overlayTapBackgroundColor = myoroFake<Color>(),
-      overlayUnselectedImageStateIconConfiguration = MyoroIconConfiguration.fake(),
-      selectionTypeModalConstraints = myoroFake<BoxConstraints>(),
-      selectionTypeModalSpacing = faker.randomGenerator.decimal(scale: 20),
-      selectionTypeModalButtonCameraIcon = myoroFake<IconData>(),
-      selectionTypeModalButtonGalleryIcon = myoroFake<IconData>();
+    : size = faker.randomGenerator.boolean() ? myoroFake<Size>() : null,
+      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      overlayCursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
+      overlayIdleBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayHoverBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayTapBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayUnselectedImageStateIconConfiguration = faker.randomGenerator.boolean()
+          ? MyoroIconConfiguration.fake()
+          : null,
+      selectionTypeModalConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      selectionTypeModalSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      selectionTypeModalButtonCameraIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
+      selectionTypeModalButtonGalleryIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
   // coverage:ignore-end
 
   MyoroImagePickerThemeExtension.builder(ColorScheme colorScheme)
-    : borderRadius = BorderRadius.circular(kMyoroBorderRadius),
+    : size = null,
+      borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       overlayCursor = SystemMouseCursors.click,
       overlayIdleBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 2 / 100),
       overlayHoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 4 / 100),
@@ -58,66 +63,98 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       selectionTypeModalButtonCameraIcon = Icons.camera,
       selectionTypeModalButtonGalleryIcon = Icons.browse_gallery;
 
+  /// Size of the [MyoroImagePicker].
+  final Size? size;
+
   /// [BorderRadius] of the [MyoroImagePicker].
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// Cursor on the tappable overlay.
-  final MouseCursor overlayCursor;
+  final MouseCursor? overlayCursor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.idle] state.
-  final Color overlayIdleBackgroundColor;
+  final Color? overlayIdleBackgroundColor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.hover] state.
-  final Color overlayHoverBackgroundColor;
+  final Color? overlayHoverBackgroundColor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.tap] state.
-  final Color overlayTapBackgroundColor;
+  final Color? overlayTapBackgroundColor;
 
   /// [MyoroIconConfiguration] of the icon shown when there is no image selected.
-  final MyoroIconConfiguration overlayUnselectedImageStateIconConfiguration;
+  final MyoroIconConfiguration? overlayUnselectedImageStateIconConfiguration;
 
   /// Constraints of the selection modal.
-  final BoxConstraints selectionTypeModalConstraints;
+  final BoxConstraints? selectionTypeModalConstraints;
 
   /// Spacing between buttons in the selection sheet.
-  final double selectionTypeModalSpacing;
+  final double? selectionTypeModalSpacing;
 
   /// Icon of [ImageSource.camera]'s selection sheet button.
-  final IconData selectionTypeModalButtonCameraIcon;
+  final IconData? selectionTypeModalButtonCameraIcon;
 
   /// Icon of [ImageSource.gallery]'s selection sheet button.
-  final IconData selectionTypeModalButtonGalleryIcon;
+  final IconData? selectionTypeModalButtonGalleryIcon;
 
   @override
   MyoroImagePickerThemeExtension lerp(covariant ThemeExtension<MyoroImagePickerThemeExtension>? other, double t) {
     if (other is! MyoroImagePickerThemeExtension) return this;
+
+    final size = Size.lerp(this.size, other.size, t);
+    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
+    final overlayCursor = myoroLerp(this.overlayCursor, other.overlayCursor, t);
+    final overlayIdleBackgroundColor = Color.lerp(this.overlayIdleBackgroundColor, other.overlayIdleBackgroundColor, t);
+    final selectionTypeModalConstraints = BoxConstraints.lerp(
+      this.selectionTypeModalConstraints,
+      other.selectionTypeModalConstraints,
+      t,
+    );
+    final overlayHoverBackgroundColor = Color.lerp(
+      this.overlayHoverBackgroundColor,
+      other.overlayHoverBackgroundColor,
+      t,
+    );
+    final overlayTapBackgroundColor = Color.lerp(this.overlayTapBackgroundColor, other.overlayTapBackgroundColor, t);
+    final overlayUnselectedImageStateIconConfiguration = MyoroIconConfiguration.lerp(
+      this.overlayUnselectedImageStateIconConfiguration,
+      other.overlayUnselectedImageStateIconConfiguration,
+      t,
+    );
+    final selectionTypeModalSpacing = lerpDouble(this.selectionTypeModalSpacing, other.selectionTypeModalSpacing, t);
+    final selectionTypeModalButtonCameraIcon = myoroLerp(
+      this.selectionTypeModalButtonCameraIcon,
+      other.selectionTypeModalButtonCameraIcon,
+      t,
+    );
+    final selectionTypeModalButtonGalleryIcon = myoroLerp(
+      this.selectionTypeModalButtonGalleryIcon,
+      other.selectionTypeModalButtonGalleryIcon,
+      t,
+    );
+
     return copyWith(
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      overlayCursor: myoroLerp(overlayCursor, other.overlayCursor, t),
-      overlayIdleBackgroundColor: Color.lerp(overlayIdleBackgroundColor, other.overlayIdleBackgroundColor, t),
-      selectionTypeModalConstraints: BoxConstraints.lerp(
-        selectionTypeModalConstraints,
-        other.selectionTypeModalConstraints,
-        t,
-      ),
-      overlayHoverBackgroundColor: Color.lerp(overlayHoverBackgroundColor, other.overlayHoverBackgroundColor, t),
-      overlayTapBackgroundColor: Color.lerp(overlayTapBackgroundColor, other.overlayTapBackgroundColor, t),
-      overlayUnselectedImageStateIconConfiguration: MyoroIconConfiguration.lerp(
-        overlayUnselectedImageStateIconConfiguration,
-        other.overlayUnselectedImageStateIconConfiguration,
-        t,
-      ),
-      selectionTypeModalSpacing: lerpDouble(selectionTypeModalSpacing, other.selectionTypeModalSpacing, t),
-      selectionTypeModalButtonCameraIcon: myoroLerp(
-        selectionTypeModalButtonCameraIcon,
-        other.selectionTypeModalButtonCameraIcon,
-        t,
-      ),
-      selectionTypeModalButtonGalleryIcon: myoroLerp(
-        selectionTypeModalButtonGalleryIcon,
-        other.selectionTypeModalButtonGalleryIcon,
-        t,
-      ),
+      size: size,
+      sizeProvided: size != null,
+      borderRadius: borderRadius,
+      borderRadiusProvided: borderRadius != null,
+      overlayCursor: overlayCursor,
+      overlayCursorProvided: overlayCursor != null,
+      overlayIdleBackgroundColor: overlayIdleBackgroundColor,
+      overlayIdleBackgroundColorProvided: overlayIdleBackgroundColor != null,
+      selectionTypeModalConstraints: selectionTypeModalConstraints,
+      selectionTypeModalConstraintsProvided: selectionTypeModalConstraints != null,
+      overlayHoverBackgroundColor: overlayHoverBackgroundColor,
+      overlayHoverBackgroundColorProvided: overlayHoverBackgroundColor != null,
+      overlayTapBackgroundColor: overlayTapBackgroundColor,
+      overlayTapBackgroundColorProvided: overlayTapBackgroundColor != null,
+      overlayUnselectedImageStateIconConfiguration: overlayUnselectedImageStateIconConfiguration,
+      overlayUnselectedImageStateIconConfigurationProvided: overlayUnselectedImageStateIconConfiguration != null,
+      selectionTypeModalSpacing: selectionTypeModalSpacing,
+      selectionTypeModalSpacingProvided: selectionTypeModalSpacing != null,
+      selectionTypeModalButtonCameraIcon: selectionTypeModalButtonCameraIcon,
+      selectionTypeModalButtonCameraIconProvided: selectionTypeModalButtonCameraIcon != null,
+      selectionTypeModalButtonGalleryIcon: selectionTypeModalButtonGalleryIcon,
+      selectionTypeModalButtonGalleryIconProvided: selectionTypeModalButtonGalleryIcon != null,
     );
   }
 }

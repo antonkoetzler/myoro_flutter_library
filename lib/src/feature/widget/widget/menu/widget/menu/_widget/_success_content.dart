@@ -7,8 +7,7 @@ final class _SuccessContent<T, C extends _C<T>> extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final viewModel = context.read<MyoroMenuViewModel<T, C>>();
-    var borderRadius = (viewModel.state.configuration.borderRadius ?? themeExtension.borderRadius);
+    var borderRadius = themeExtension.borderRadius;
     borderRadius =
         borderRadius?.copyWith(
           topLeft: themeExtension.createMenuContentRadius(borderRadius.topLeft),
@@ -17,6 +16,8 @@ final class _SuccessContent<T, C extends _C<T>> extends StatelessWidget {
           bottomRight: themeExtension.createMenuContentRadius(borderRadius.bottomRight),
         ) ??
         BorderRadius.zero;
+
+    final viewModel = context.read<MyoroMenuViewModel<T, C>>();
 
     return ClipRRect(
       clipBehavior: Clip.hardEdge,

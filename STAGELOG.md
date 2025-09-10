@@ -1,11 +1,10 @@
 # STAGELOG
 
 - feature: `kMyoroEmptyString`
-- feature: `ThemeExtension` overriding in `Widget`s and centralization of style with `ThemeExtension`s
+- feature: `ThemeExtension` overriding integrated into MFL `Widget`s and centralization of styling by only passing style fields to `ThemeExtension`s
 - refactor: `MyoroMenu` --> `MyoroSingularMenu` and `MyoroMultiMenu`
 - improvement: Rename `ValueNotifier`s with the controller suffix to notifier (i.e. `MyoroFormController` --> `MyoroFormNotifier`)
-- improvement: Add `tool/initialize.sh`
-- improvement: Add tasks to `.vscode`
+- improvement: New tasks added to `tool` and `.vscode`
 - improvement: Make fields of all `ThemeExtension`s nullable to allow more customizability
-- improvement: Add another DD layer within a `lib/src/feature/widget/widget/_/widget` for shared implemented within a category of `Widget`s
+- improvement: Add another DDD layer within a `lib/src/feature/widget/widget/_/widget` for shared implemented within a category of `Widget`s
 - chore: Add `copyWith` to models as `myoro_flutter_annotations` does not generate it with `myoroModel`s

@@ -17,8 +17,16 @@ mixin _$MyoroFilePickerThemeExtensionMixin on ThemeExtension<MyoroFilePickerThem
   MyoroFilePickerThemeExtension get self => this as MyoroFilePickerThemeExtension;
 
   @override
-  MyoroFilePickerThemeExtension copyWith({double? spacing, TextStyle? textStyle}) {
-    return MyoroFilePickerThemeExtension(spacing: spacing ?? self.spacing, textStyle: textStyle ?? self.textStyle);
+  MyoroFilePickerThemeExtension copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
+  }) {
+    return MyoroFilePickerThemeExtension(
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+    );
   }
 
   @override

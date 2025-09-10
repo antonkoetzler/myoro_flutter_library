@@ -16,15 +16,17 @@ class MyoroTooltip extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroTooltipThemeExtension>();
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroTooltipThemeExtension>();
+    final margin = themeExtension.margin;
 
-    final tooltipChild = Tooltip(
-      message: configuration.text,
-      waitDuration: configuration.waitDuration,
-      margin: configuration.margin ?? resolvedThemeExtension.margin,
-      child: child,
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: themeExtension,
+      child: Tooltip(
+        message: configuration.text,
+        waitDuration: configuration.waitDuration,
+        margin: margin,
+        child: child,
+      ),
     );
-
-    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: tooltipChild);
   }
 }

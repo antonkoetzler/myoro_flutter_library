@@ -9,7 +9,7 @@ final class _Columns<T> extends StatelessWidget {
     final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     final basicDividerThemeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
-    final decorationBorderRadius = tableThemeExtension.decoration.borderRadius as BorderRadius;
+    final decorationBorderRadius = tableThemeExtension.decoration?.borderRadius as BorderRadius? ?? BorderRadius.zero;
 
     // Empty [MyoroLayoutBuilder] to rebuild [_Columns] everytime the screen is resized.
     return MyoroLayoutBuilder(
@@ -22,7 +22,7 @@ final class _Columns<T> extends StatelessWidget {
           ),
           child: Row(
             // Equation to omit spacing of inserted [_Divider] [Widget]s in [_buildColumns].
-            spacing: (tableThemeExtension.columnSpacing / 2) - ((basicDividerThemeExtension.shortValue ?? 0) / 2),
+            spacing: (tableThemeExtension.columnSpacing ?? 0 / 2) - ((basicDividerThemeExtension.shortValue ?? 0) / 2),
             children: _buildColumns(context),
           ),
         );

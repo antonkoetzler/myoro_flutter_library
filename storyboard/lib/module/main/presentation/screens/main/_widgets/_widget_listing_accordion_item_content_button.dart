@@ -10,12 +10,14 @@ final class _WidgetListingAccordionItemContentButton extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MainScreenViewModel>();
 
+    final buttonPrimaryVariantThemeExtension = context.resolveThemeExtension<MyoroButtonPrimaryVariantThemeExtension>();
+
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         onTapUp: (_) => viewModel.widgetListingAccordionItemContentButtonOnTapUp(context, _widgetName),
-        borderBuilder: (_) => MyoroButtonStyleEnum.border(context),
         textConfiguration: MyoroTextConfiguration(text: _widgetName),
       ),
+      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension),
     );
   }
 }

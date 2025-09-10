@@ -4,13 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:storyboard/storyboard.dart';
 
 part '_widget/_direction_option.dart';
-part '_widget/_padding_option.dart';
 part '_widget/_short_value_option.dart';
 part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroBasicDivider].
 final class MyoroBasicDividerWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_DirectionOption(), _ShortValueOption(), _PaddingOption()];
+  static const options = [_DirectionOption(), _ShortValueOption()];
 
   const MyoroBasicDividerWidgetShowcaseScreen({super.key});
 

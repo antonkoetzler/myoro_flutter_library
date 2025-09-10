@@ -1,1 +1,1 @@
-export 'myoro_sliders_theme_extension.dart';
+export 'myoro_slider_theme_extension.dart';

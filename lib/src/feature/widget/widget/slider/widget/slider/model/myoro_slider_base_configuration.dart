@@ -11,7 +11,6 @@ abstract class MyoroSliderBaseConfiguration {
 
   const MyoroSliderBaseConfiguration({
     this.label = labelDefaultValue,
-    this.labelTextStyle,
     this.currentValueText = currentValueTextDefaultValue,
     this.maxValueText = maxValueTextDefaultValue,
     this.footerText = footerTextDefaultValue,
@@ -21,9 +20,6 @@ abstract class MyoroSliderBaseConfiguration {
 
   /// Label of the slider.
   final String label;
-
-  /// [TextStyle] of the label.
-  final TextStyle? labelTextStyle;
 
   /// Text builder for the left of the slider.
   final String currentValueText;
@@ -42,8 +38,6 @@ abstract class MyoroSliderBaseConfiguration {
 
   MyoroSliderBaseConfiguration copyWith({
     String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
     String? currentValueText,
     String? maxValueText,
     String? footerText,

@@ -6,27 +6,11 @@ abstract class MyoroMenuConfiguration<T> {
   static const constraintsDefaultValue = BoxConstraints();
 
   const MyoroMenuConfiguration({
-    this.constraints = constraintsDefaultValue,
-    this.backgroundColor,
-    this.border,
-    this.borderRadius,
     required this.request,
     this.onEndReachedRequest,
     this.searchCallback,
     required this.itemBuilder,
   });
-
-  /// Constraints of the menu.
-  final BoxConstraints constraints;
-
-  /// Background [Color].
-  final Color? backgroundColor;
-
-  /// [BoxBorder]
-  final BoxBorder? border;
-
-  /// [BorderRadius]
-  final BorderRadius? borderRadius;
 
   /// Request that returns the [MyoroPagination] of the [MyoroMenu].
   final MyoroMenuRequest<T> request;
@@ -43,13 +27,6 @@ abstract class MyoroMenuConfiguration<T> {
   final MyoroMenuItemBuilder<T> itemBuilder;
 
   MyoroMenuConfiguration<T> copyWith({
-    BoxConstraints? constraints,
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    BoxBorder? border,
-    bool borderProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
     MyoroMenuRequest<T>? request,
     bool onEndReachedRequestProvided = true,
     MyoroMenuSearchCallback<T>? searchCallback,

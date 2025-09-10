@@ -9,14 +9,17 @@ final class _Button extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final screenThemeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    final buttonPadding = screenThemeExtension.buttonPadding;
+
+    final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         onTapUp: (_) => _onTapUp(),
         iconConfiguration: MyoroIconConfiguration(icon: _icon),
-        padding: themeExtension.buttonPadding,
       ),
+      themeExtension: iconTextButtonThemeExtension.copyWith(contentPadding: buttonPadding),
     );
   }
 }

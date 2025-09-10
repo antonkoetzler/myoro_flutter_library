@@ -38,8 +38,8 @@ final class _Overlay extends StatelessWidget {
       builder: (_, _) => _selectedImageIsNotNull
           ? const SizedBox.shrink()
           : Icon(
-              overlayUnselectedImageStateIconConfiguration.icon,
-              size: overlayUnselectedImageStateIconConfiguration.size,
+              overlayUnselectedImageStateIconConfiguration?.icon ?? Icons.upload,
+              size: overlayUnselectedImageStateIconConfiguration?.size ?? kMyoroMultiplier * 20,
             ),
     );
   }

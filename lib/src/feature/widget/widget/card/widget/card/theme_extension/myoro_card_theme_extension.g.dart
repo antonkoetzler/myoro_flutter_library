@@ -28,8 +28,8 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
     bool paddingProvided = true,
     double? titleCardSpacing,
     bool titleCardSpacingProvided = true,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
     BoxConstraints? constraints,
     bool constraintsProvided = true,
   }) {
@@ -39,7 +39,7 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
       titleCardSpacing: titleCardSpacingProvided ? (titleCardSpacing ?? self.titleCardSpacing) : null,
-      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
       constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
     );
   }
@@ -53,7 +53,7 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
         other.borderRadius == self.borderRadius &&
         other.padding == self.padding &&
         other.titleCardSpacing == self.titleCardSpacing &&
-        other.textStyle == self.textStyle &&
+        other.titleTextStyle == self.titleTextStyle &&
         other.constraints == self.constraints;
   }
 
@@ -65,7 +65,7 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
       self.borderRadius,
       self.padding,
       self.titleCardSpacing,
-      self.textStyle,
+      self.titleTextStyle,
       self.constraints,
     );
   }
@@ -78,7 +78,7 @@ mixin _$MyoroCardThemeExtensionMixin on ThemeExtension<MyoroCardThemeExtension> 
       '  borderRadius: ${self.borderRadius},\n'
       '  padding: ${self.padding},\n'
       '  titleCardSpacing: ${self.titleCardSpacing},\n'
-      '  textStyle: ${self.textStyle},\n'
+      '  titleTextStyle: ${self.titleTextStyle},\n'
       '  constraints: ${self.constraints},\n'
       ');';
 }

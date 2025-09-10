@@ -14,7 +14,14 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// }
 /// ```
 class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyoroAppBar({super.key, this.themeExtension, this.showBottomDivider = true, required this.child});
+  static const showBottomDividerDefaultValue = false;
+
+  const MyoroAppBar({
+    super.key,
+    this.themeExtension,
+    this.showBottomDivider = showBottomDividerDefaultValue,
+    required this.child,
+  });
 
   /// [ThemeExtension]
   final MyoroAppBarThemeExtension? themeExtension;

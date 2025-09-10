@@ -21,20 +21,18 @@ mixin _$MyoroImagePickerConfigurationMixin {
     return other is MyoroImagePickerConfiguration &&
         other.runtimeType == runtimeType &&
         other.selectedImage == self.selectedImage &&
-        other.size == self.size &&
         other.onChanged == self.onChanged;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.selectedImage, self.size, self.onChanged);
+    return Object.hash(self.selectedImage, self.onChanged);
   }
 
   @override
   String toString() =>
       'MyoroImagePickerConfiguration(\n'
       '  selectedImage: ${self.selectedImage},\n'
-      '  size: ${self.size},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
 }

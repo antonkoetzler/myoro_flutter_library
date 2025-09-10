@@ -21,32 +21,34 @@ class MyoroSnackBar extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final borderWidth = themeExtension.borderWidth;
+    final spacing = themeExtension.spacing ?? 0;
 
     final String message = configuration.message;
     final Widget? child = configuration.child;
 
-    final snackBarChild = Container(
-      padding: resolvedThemeExtension.padding,
-      decoration: BoxDecoration(
-        color: resolvedThemeExtension.primaryColor,
-        border: Border.all(
-          width: resolvedThemeExtension.borderWidth,
-          color: configuration.snackBarType.getColor(context),
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: themeExtension,
+      child: Container(
+        padding: themeExtension.padding,
+        decoration: BoxDecoration(
+          color: themeExtension.primaryColor,
+          border: borderWidth == null
+              ? null
+              : Border.all(width: borderWidth, color: configuration.snackBarType.getColor(context)),
+          borderRadius: themeExtension.borderRadius,
         ),
-        borderRadius: resolvedThemeExtension.borderRadius,
-      ),
-      child: Row(
-        spacing: resolvedThemeExtension.spacing,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          if (message.isNotEmpty) Flexible(child: _Message(configuration.snackBarType, message)),
-          if (child != null) Flexible(child: child),
-          if (configuration.showCloseButton) _CloseButton(configuration.snackBarType),
-        ],
+        child: Row(
+          spacing: spacing,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (message.isNotEmpty) Flexible(child: _Message(configuration.snackBarType, message)),
+            if (child != null) Flexible(child: child),
+            if (configuration.showCloseButton) _CloseButton(configuration.snackBarType),
+          ],
+        ),
       ),
     );
-
-    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: snackBarChild);
   }
 }

@@ -2,14 +2,14 @@ part of '../bundle/myoro_slider_bundle.dart';
 
 /// Base [Widget] for slider implementations.
 class _Base extends StatelessWidget {
-  const _Base(Key? key, this._configuration, this.themeExtension) : super(key: key);
+  const _Base(Key? key, this._configuration, this._themeExtension) : super(key: key);
 
   final MyoroSliderBaseConfiguration _configuration;
-  final MyoroSlidersThemeExtension? themeExtension;
+  final MyoroSliderThemeExtension? _themeExtension;
 
   @override
   Widget build(context) {
-    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroSlidersThemeExtension>();
+    final resolvedThemeExtension = _themeExtension ?? context.resolveThemeExtension<MyoroSliderThemeExtension>();
     final label = _configuration.label;
     final currentValueText = _configuration.currentValueText;
     final maxValueText = _configuration.maxValueText;

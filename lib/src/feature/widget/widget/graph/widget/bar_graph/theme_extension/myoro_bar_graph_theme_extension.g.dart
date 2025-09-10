@@ -19,21 +19,32 @@ mixin _$MyoroBarGraphThemeExtensionMixin on ThemeExtension<MyoroBarGraphThemeExt
   @override
   MyoroBarGraphThemeExtension copyWith({
     Border? border,
+    bool borderProvided = true,
     Color? barColor,
+    bool barColorProvided = true,
     BorderRadius? barBorderRadius,
+    bool barBorderRadiusProvided = true,
     TextStyle? sideTitleTextStyle,
+    bool sideTitleTextStyleProvided = true,
     double? sideTitleInterval,
+    bool sideTitleIntervalProvided = true,
     double? verticalSideTitleReversedSize,
+    bool verticalSideTitleReversedSizeProvided = true,
     double? horizontalSideTitleReversedSize,
+    bool horizontalSideTitleReversedSizeProvided = true,
   }) {
     return MyoroBarGraphThemeExtension(
-      border: border ?? self.border,
-      barColor: barColor ?? self.barColor,
-      barBorderRadius: barBorderRadius ?? self.barBorderRadius,
-      sideTitleTextStyle: sideTitleTextStyle ?? self.sideTitleTextStyle,
-      sideTitleInterval: sideTitleInterval ?? self.sideTitleInterval,
-      verticalSideTitleReversedSize: verticalSideTitleReversedSize ?? self.verticalSideTitleReversedSize,
-      horizontalSideTitleReversedSize: horizontalSideTitleReversedSize ?? self.horizontalSideTitleReversedSize,
+      border: borderProvided ? (border ?? self.border) : null,
+      barColor: barColorProvided ? (barColor ?? self.barColor) : null,
+      barBorderRadius: barBorderRadiusProvided ? (barBorderRadius ?? self.barBorderRadius) : null,
+      sideTitleTextStyle: sideTitleTextStyleProvided ? (sideTitleTextStyle ?? self.sideTitleTextStyle) : null,
+      sideTitleInterval: sideTitleIntervalProvided ? (sideTitleInterval ?? self.sideTitleInterval) : null,
+      verticalSideTitleReversedSize: verticalSideTitleReversedSizeProvided
+          ? (verticalSideTitleReversedSize ?? self.verticalSideTitleReversedSize)
+          : null,
+      horizontalSideTitleReversedSize: horizontalSideTitleReversedSizeProvided
+          ? (horizontalSideTitleReversedSize ?? self.horizontalSideTitleReversedSize)
+          : null,
     );
   }
 

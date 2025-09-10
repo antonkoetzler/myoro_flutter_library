@@ -9,10 +9,6 @@ part 'myoro_multi_menu_configuration.g.dart';
 @myoroModel
 class MyoroMultiMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _$MyoroMultiMenuConfigurationMixin {
   const MyoroMultiMenuConfiguration({
-    super.constraints,
-    super.backgroundColor,
-    super.border,
-    super.borderRadius,
     required super.request,
     super.onEndReachedRequest,
     super.searchCallback,
@@ -29,13 +25,6 @@ class MyoroMultiMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _$My
 
   @override
   MyoroMultiMenuConfiguration<T> copyWith({
-    BoxConstraints? constraints,
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    BoxBorder? border,
-    bool borderProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
     MyoroMenuRequest<T>? request,
     bool onEndReachedRequestProvided = true,
     MyoroMenuSearchCallback<T>? searchCallback,
@@ -46,10 +35,6 @@ class MyoroMultiMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _$My
     bool onChangedProvided = true,
   }) {
     return MyoroMultiMenuConfiguration(
-      constraints: constraints ?? this.constraints,
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
-      border: borderProvided ? (border ?? this.border) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
       request: request ?? this.request,
       searchCallback: searchCallbackProvided ? (searchCallback ?? this.searchCallback) : null,
       itemBuilder: itemBuilder ?? this.itemBuilder,

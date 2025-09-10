@@ -17,8 +17,8 @@ mixin _$MyoroTooltipThemeExtensionMixin on ThemeExtension<MyoroTooltipThemeExten
   MyoroTooltipThemeExtension get self => this as MyoroTooltipThemeExtension;
 
   @override
-  MyoroTooltipThemeExtension copyWith({EdgeInsets? margin}) {
-    return MyoroTooltipThemeExtension(margin: margin ?? self.margin);
+  MyoroTooltipThemeExtension copyWith({EdgeInsets? margin, bool marginProvided = true}) {
+    return MyoroTooltipThemeExtension(margin: marginProvided ? (margin ?? self.margin) : null);
   }
 
   @override

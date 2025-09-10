@@ -2,7 +2,9 @@ part of '../myoro_time_picker_input.dart';
 
 /// [MyoroInput] of the [MyoroTimePickerInput].
 final class _Input extends StatelessWidget {
-  const _Input();
+  const _Input(this._themeExtension);
+
+  final MyoroInputThemeExtension _themeExtension;
 
   @override
   Widget build(context) {
@@ -14,6 +16,7 @@ final class _Input extends StatelessWidget {
     viewModel.getInputSize();
     return MyoroInput(
       configuration: configuration.copyWith(inputKey: inputKey, controller: inputController),
+      themeExtension: _themeExtension,
     );
   }
 }

@@ -11,36 +11,40 @@ class MyoroDialogModal extends StatelessWidget {
   static Future<void> show(
     BuildContext context, {
     required MyoroDialogModalConfiguration configuration,
-    MyoroDialogModalThemeExtension? themeExtension,
+    MyoroDialogModalThemeExtension? dialogModalThemeExtension,
   }) async {
     await MyoroModal.showModal(
       context,
       configuration: configuration,
-      child: MyoroDialogModal._(configuration, themeExtension),
+      child: MyoroDialogModal._(configuration, dialogModalThemeExtension),
     );
   }
 
-  const MyoroDialogModal._(this.configuration, this.themeExtension);
+  const MyoroDialogModal._(this.configuration, this.dialogModalThemeExtension);
 
   /// Configuration.
   final MyoroDialogModalConfiguration configuration;
 
   /// Theme extension.
-  final MyoroDialogModalThemeExtension? themeExtension;
+  final MyoroDialogModalThemeExtension? dialogModalThemeExtension;
 
   @override
   Widget build(BuildContext context) {
-    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+    final dialogModalThemeExtension =
+        this.dialogModalThemeExtension ?? context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+
     final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final spacing = modalThemeExtension.spacing ?? 0;
 
-    final child = Column(
-      spacing: modalThemeExtension.spacing,
-      children: [
-        Expanded(child: _Message(configuration)),
-        _FooterButtons(configuration),
-      ],
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: dialogModalThemeExtension,
+      child: Column(
+        spacing: spacing,
+        children: [
+          Expanded(child: _Message(configuration)),
+          _FooterButtons(configuration),
+        ],
+      ),
     );
-
-    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: child);
   }
 }

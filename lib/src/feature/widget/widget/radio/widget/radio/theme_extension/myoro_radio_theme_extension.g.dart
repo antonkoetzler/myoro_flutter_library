@@ -19,17 +19,22 @@ mixin _$MyoroRadioThemeExtensionMixin on ThemeExtension<MyoroRadioThemeExtension
   @override
   MyoroRadioThemeExtension copyWith({
     Color? activeColor,
+    bool activeColorProvided = true,
     Color? hoverColor,
+    bool hoverColorProvided = true,
     TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
     double? spacing,
+    bool spacingProvided = true,
     double? splashRadius,
+    bool splashRadiusProvided = true,
   }) {
     return MyoroRadioThemeExtension(
-      activeColor: activeColor ?? self.activeColor,
-      hoverColor: hoverColor ?? self.hoverColor,
-      labelTextStyle: labelTextStyle ?? self.labelTextStyle,
-      spacing: spacing ?? self.spacing,
-      splashRadius: splashRadius ?? self.splashRadius,
+      activeColor: activeColorProvided ? (activeColor ?? self.activeColor) : null,
+      hoverColor: hoverColorProvided ? (hoverColor ?? self.hoverColor) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      splashRadius: splashRadiusProvided ? (splashRadius ?? self.splashRadius) : null,
     );
   }
 

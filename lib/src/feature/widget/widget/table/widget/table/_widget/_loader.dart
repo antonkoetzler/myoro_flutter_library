@@ -7,7 +7,8 @@ final class _Loader extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
-    return Padding(padding: themeExtension.loaderEmptyMessageErrorMessagePadding, child: const MyoroCircularLoader());
+    final loaderEmptyMessageErrorMessagePadding =
+        themeExtension.loaderEmptyMessageErrorMessagePadding ?? EdgeInsets.zero;
+    return Padding(padding: loaderEmptyMessageErrorMessagePadding, child: const MyoroCircularLoader());
   }
 }

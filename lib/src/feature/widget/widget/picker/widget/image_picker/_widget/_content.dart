@@ -9,17 +9,16 @@ final class _Content extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
-    final borderRadius = themeExtension.borderRadius;
+    final size = themeExtension.size;
+    final borderRadius = themeExtension.borderRadius ?? BorderRadius.zero;
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final state = viewModel.state;
     final selectedImageNotifier = state.selectedImageNotifier;
-    final configuration = state.configuration;
-    final size = configuration.size;
 
     return SizedBox(
-      width: size.width,
-      height: size.height,
+      width: size?.width,
+      height: size?.height,
       child: ValueListenableBuilder(
         valueListenable: selectedImageNotifier,
         builder: (_, selectedImage, _) {
@@ -33,7 +32,7 @@ final class _Content extends StatelessWidget {
               children: [
                 // coverage:ignore-start
                 if (selectedImageIsNotNull) ...[
-                  Image.file(File(selectedImage), width: size.width, height: size.height, fit: BoxFit.cover),
+                  Image.file(File(selectedImage), width: size?.width, height: size?.height, fit: BoxFit.cover),
                 ],
                 // coverage:ignore-end
                 Positioned.fill(child: _Overlay(selectedImageIsNotNull)),

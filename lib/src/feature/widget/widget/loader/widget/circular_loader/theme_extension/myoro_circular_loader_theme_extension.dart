@@ -12,23 +12,29 @@ part 'myoro_circular_loader_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension>
     with _$MyoroCircularLoaderThemeExtensionMixin {
-  const MyoroCircularLoaderThemeExtension({required this.color, required this.size});
+  const MyoroCircularLoaderThemeExtension({this.color, this.size});
 
   // coverage:ignore-start
-  MyoroCircularLoaderThemeExtension.fake() : color = myoroFake<Color>(), size = faker.randomGenerator.decimal();
+  MyoroCircularLoaderThemeExtension.fake()
+    : color = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   MyoroCircularLoaderThemeExtension.builder(ColorScheme colorScheme) : color = colorScheme.onPrimary, size = 25;
 
   /// Color of the [MyoroCircularLoader].
-  final Color color;
+  final Color? color;
 
   /// Default size of the [MyoroCircularLoader].
-  final double size;
+  final double? size;
 
   @override
   MyoroCircularLoaderThemeExtension lerp(covariant ThemeExtension<MyoroCircularLoaderThemeExtension>? other, double t) {
     if (other is! MyoroCircularLoaderThemeExtension) return this;
-    return copyWith(color: Color.lerp(color, other.color, t), size: lerpDouble(size, other.size, t));
+
+    final color = Color.lerp(this.color, other.color, t);
+    final size = lerpDouble(this.size, other.size, t);
+
+    return copyWith(color: color, colorProvided: color != null, size: size, sizeProvided: size != null);
   }
 }

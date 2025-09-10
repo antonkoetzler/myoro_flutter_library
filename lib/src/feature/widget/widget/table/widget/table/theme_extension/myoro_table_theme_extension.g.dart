@@ -19,22 +19,34 @@ mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension
   @override
   MyoroTableThemeExtension copyWith({
     BoxDecoration? decoration,
+    bool decorationProvided = true,
     TextStyle? columnTextStyle,
+    bool columnTextStyleProvided = true,
     double? columnSpacing,
+    bool columnSpacingProvided = true,
     TextStyle? rowTextStyle,
+    bool rowTextStyleProvided = true,
     EdgeInsets? loaderEmptyMessageErrorMessagePadding,
+    bool loaderEmptyMessageErrorMessagePaddingProvided = true,
     TextStyle? emptyMessageTextStyle,
+    bool emptyMessageTextStyleProvided = true,
     TextStyle? errorMessageTextStyle,
+    bool errorMessageTextStyleProvided = true,
   }) {
     return MyoroTableThemeExtension(
-      decoration: decoration ?? self.decoration,
-      columnTextStyle: columnTextStyle ?? self.columnTextStyle,
-      columnSpacing: columnSpacing ?? self.columnSpacing,
-      rowTextStyle: rowTextStyle ?? self.rowTextStyle,
-      loaderEmptyMessageErrorMessagePadding:
-          loaderEmptyMessageErrorMessagePadding ?? self.loaderEmptyMessageErrorMessagePadding,
-      emptyMessageTextStyle: emptyMessageTextStyle ?? self.emptyMessageTextStyle,
-      errorMessageTextStyle: errorMessageTextStyle ?? self.errorMessageTextStyle,
+      decoration: decorationProvided ? (decoration ?? self.decoration) : null,
+      columnTextStyle: columnTextStyleProvided ? (columnTextStyle ?? self.columnTextStyle) : null,
+      columnSpacing: columnSpacingProvided ? (columnSpacing ?? self.columnSpacing) : null,
+      rowTextStyle: rowTextStyleProvided ? (rowTextStyle ?? self.rowTextStyle) : null,
+      loaderEmptyMessageErrorMessagePadding: loaderEmptyMessageErrorMessagePaddingProvided
+          ? (loaderEmptyMessageErrorMessagePadding ?? self.loaderEmptyMessageErrorMessagePadding)
+          : null,
+      emptyMessageTextStyle: emptyMessageTextStyleProvided
+          ? (emptyMessageTextStyle ?? self.emptyMessageTextStyle)
+          : null,
+      errorMessageTextStyle: errorMessageTextStyleProvided
+          ? (errorMessageTextStyle ?? self.errorMessageTextStyle)
+          : null,
     );
   }
 

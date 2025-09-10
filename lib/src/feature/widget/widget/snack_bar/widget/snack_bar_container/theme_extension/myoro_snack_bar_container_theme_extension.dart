@@ -13,22 +13,22 @@ part 'myoro_snack_bar_container_theme_extension.g.dart';
 class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension>
     with _$MyoroSnackBarContainerThemeExtensionMixin {
   const MyoroSnackBarContainerThemeExtension({
-    required this.primaryColor,
-    required this.behavior,
-    required this.margin,
-    required this.padding,
-    required this.elevation,
-    required this.dismissDirection,
+    this.primaryColor,
+    this.behavior,
+    this.margin,
+    this.padding,
+    this.elevation,
+    this.dismissDirection,
   });
 
   // coverage:ignore-start
   MyoroSnackBarContainerThemeExtension.fake()
-    : primaryColor = myoroFake<Color>(),
-      behavior = myoroFake<SnackBarBehavior>(),
-      margin = myoroFake<EdgeInsets>(),
-      padding = myoroFake<EdgeInsets>(),
-      elevation = faker.randomGenerator.decimal(),
-      dismissDirection = myoroFake<DismissDirection>();
+    : primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      behavior = faker.randomGenerator.boolean() ? myoroFake<SnackBarBehavior>() : null,
+      margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      elevation = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      dismissDirection = faker.randomGenerator.boolean() ? myoroFake<DismissDirection>() : null;
   // coverage:ignore-end
 
   const MyoroSnackBarContainerThemeExtension.builder()
@@ -40,22 +40,22 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
       dismissDirection = DismissDirection.none;
 
   /// Background color of the container.
-  final Color primaryColor;
+  final Color? primaryColor;
 
   /// [SnackBarBehavior] of the container.
-  final SnackBarBehavior behavior;
+  final SnackBarBehavior? behavior;
 
   /// Margin [EdgeInsets] of the container.
-  final EdgeInsets margin;
+  final EdgeInsets? margin;
 
   /// Padding [EdgeInsets] of the container.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Elevation of the container.
-  final double elevation;
+  final double? elevation;
 
   /// [DismissDirection] of the container.
-  final DismissDirection dismissDirection;
+  final DismissDirection? dismissDirection;
 
   @override
   MyoroSnackBarContainerThemeExtension lerp(
@@ -63,13 +63,27 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
     double t,
   ) {
     if (other is! MyoroSnackBarContainerThemeExtension) return this;
+
+    final primaryColor = Color.lerp(this.primaryColor, other.primaryColor, t);
+    final behavior = myoroLerp(this.behavior, other.behavior, t);
+    final margin = EdgeInsets.lerp(this.margin, other.margin, t);
+    final padding = EdgeInsets.lerp(this.padding, other.padding, t);
+    final elevation = lerpDouble(this.elevation, other.elevation, t);
+    final dismissDirection = myoroLerp(this.dismissDirection, other.dismissDirection, t);
+
     return copyWith(
-      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
-      behavior: myoroLerp(behavior, other.behavior, t),
-      margin: EdgeInsets.lerp(margin, other.margin, t),
-      padding: EdgeInsets.lerp(padding, other.padding, t),
-      elevation: lerpDouble(elevation, other.elevation, t),
-      dismissDirection: myoroLerp(dismissDirection, other.dismissDirection, t),
+      primaryColor: primaryColor,
+      primaryColorProvided: primaryColor != null,
+      behavior: behavior,
+      behaviorProvided: behavior != null,
+      margin: margin,
+      marginProvided: margin != null,
+      padding: padding,
+      paddingProvided: padding != null,
+      elevation: elevation,
+      elevationProvided: elevation != null,
+      dismissDirection: dismissDirection,
+      dismissDirectionProvided: dismissDirection != null,
     );
   }
 }

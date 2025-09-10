@@ -10,6 +10,6 @@ final class _Message extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
-    return Text(_message, style: themeExtension.messageTextStyle.withColor(_snackBarType.getColor(context)));
+    return Text(_message, style: themeExtension.messageTextStyle?.withColor(_snackBarType.getColor(context)));
   }
 }

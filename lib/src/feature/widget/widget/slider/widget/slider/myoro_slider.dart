@@ -5,6 +5,6 @@ class MyoroSlider extends _Base {
   const MyoroSlider({
     Key? key,
     required MyoroSliderConfiguration configuration,
-    MyoroSlidersThemeExtension? themeExtension,
+    MyoroSliderThemeExtension? themeExtension,
   }) : super(key, configuration, themeExtension);
 }

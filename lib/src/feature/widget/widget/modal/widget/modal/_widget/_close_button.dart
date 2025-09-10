@@ -2,16 +2,15 @@ part of '../myoro_modal.dart';
 
 /// Close button of the [MyoroModal].
 final class _CloseButton extends StatelessWidget {
-  final MyoroModalConfiguration _configuration;
-
-  const _CloseButton(this._configuration);
+  const _CloseButton();
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final closeButtonPadding = themeExtension.closeButtonPadding ?? EdgeInsets.zero;
 
     return Padding(
-      padding: _configuration.closeButtonPadding ?? EdgeInsets.zero,
+      padding: closeButtonPadding,
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
           onTapUp: (_) => context.navigator.pop(),

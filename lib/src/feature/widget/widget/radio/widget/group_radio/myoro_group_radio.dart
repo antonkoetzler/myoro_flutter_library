@@ -34,30 +34,34 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
   }
 
   @override
-  Widget build(context) {
-    final child = ValueListenableBuilder(
-      valueListenable: _controller,
-      builder: (_, MyoroGroupRadioItems radios, _) {
-        return Wrap(
-          direction: _configuration.direction,
-          spacing: _configuration.spacing ?? _themeExtension.spacing,
-          runSpacing: _configuration.runSpacing ?? _themeExtension.runSpacing,
-          children: radios.entries.map<Widget>((MapEntry<String, bool> entry) {
-            return MyoroRadio(
-              configuration: MyoroRadioConfiguration(
-                label: entry.key,
-                initialValue: entry.value,
-                onChanged: (_) {
-                  _controller.enable(entry.key);
-                  _configuration.onChanged?.call(entry.key, _controller.radios);
-                },
-              ),
-            );
-          }).toList(),
-        );
-      },
-    );
+  Widget build(_) {
+    final spacing = _themeExtension.spacing ?? 0;
+    final runSpacing = _themeExtension.runSpacing ?? 0;
 
-    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: _themeExtension,
+      child: ValueListenableBuilder(
+        valueListenable: _controller,
+        builder: (_, MyoroGroupRadioItems radios, _) {
+          return Wrap(
+            direction: _configuration.direction,
+            spacing: spacing,
+            runSpacing: runSpacing,
+            children: radios.entries.map<Widget>((MapEntry<String, bool> entry) {
+              return MyoroRadio(
+                configuration: MyoroRadioConfiguration(
+                  label: entry.key,
+                  initialValue: entry.value,
+                  onChanged: (_) {
+                    _controller.enable(entry.key);
+                    _configuration.onChanged?.call(entry.key, _controller.radios);
+                  },
+                ),
+              );
+            }).toList(),
+          );
+        },
+      ),
+    );
   }
 }

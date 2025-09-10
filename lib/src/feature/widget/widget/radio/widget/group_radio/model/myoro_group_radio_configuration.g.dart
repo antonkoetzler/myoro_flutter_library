@@ -22,15 +22,13 @@ mixin _$MyoroGroupRadioConfigurationMixin {
         other.runtimeType == runtimeType &&
         other.controller == self.controller &&
         other.direction == self.direction &&
-        other.spacing == self.spacing &&
-        other.runSpacing == self.runSpacing &&
         other.onChanged == self.onChanged &&
         other.radios == self.radios;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.controller, self.direction, self.spacing, self.runSpacing, self.onChanged, self.radios);
+    return Object.hash(self.controller, self.direction, self.onChanged, self.radios);
   }
 
   @override
@@ -38,8 +36,6 @@ mixin _$MyoroGroupRadioConfigurationMixin {
       'MyoroGroupRadioConfiguration(\n'
       '  controller: ${self.controller},\n'
       '  direction: ${self.direction},\n'
-      '  spacing: ${self.spacing},\n'
-      '  runSpacing: ${self.runSpacing},\n'
       '  onChanged: ${self.onChanged},\n'
       '  radios: ${self.radios},\n'
       ');';

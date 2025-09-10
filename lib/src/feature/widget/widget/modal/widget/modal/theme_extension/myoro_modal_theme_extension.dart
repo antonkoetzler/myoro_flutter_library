@@ -12,32 +12,37 @@ part 'myoro_modal_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> with _$MyoroModalThemeExtensionMixin {
   const MyoroModalThemeExtension({
-    required this.primaryColor,
-    required this.borderRadius,
-    required this.bottomSheetBorderRadius,
-    required this.border,
-    required this.bottomSheetBorder,
-    required this.padding,
-    required this.spacing,
-    required this.titleTextStyle,
-    required this.closeButtonIconConfiguration,
+    this.constraints,
+    this.primaryColor,
+    this.borderRadius,
+    this.bottomSheetBorderRadius,
+    this.border,
+    this.bottomSheetBorder,
+    this.padding,
+    this.closeButtonPadding,
+    this.spacing,
+    this.titleTextStyle,
+    this.closeButtonIconConfiguration,
   });
 
   // coverage:ignore-start
   MyoroModalThemeExtension.fake()
-    : primaryColor = myoroFake<Color>(),
-      borderRadius = myoroFake<BorderRadius>(),
-      bottomSheetBorderRadius = myoroFake<BorderRadius>(),
-      border = myoroFake<Border>(),
-      bottomSheetBorder = myoroFake<Border>(),
-      padding = myoroFake<EdgeInsets>(),
-      spacing = faker.randomGenerator.decimal(),
-      titleTextStyle = myoroFake<TextStyle>(),
-      closeButtonIconConfiguration = MyoroIconConfiguration.fake();
+    : constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      bottomSheetBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
+      bottomSheetBorder = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
+      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
   // coverage:ignore-end
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : primaryColor = colorScheme.primary,
+    : constraints = null,
+      primaryColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       bottomSheetBorderRadius = const BorderRadius.only(
         topLeft: Radius.circular(kMyoroBorderRadius),
@@ -49,60 +54,93 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
         left: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
         right: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       ),
-      padding = const EdgeInsets.all(5),
+      padding = const EdgeInsets.all(kMyoroMultiplier),
+      closeButtonPadding = null,
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
       closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: 20);
 
+  /// Constraints of the modal.
+  final BoxConstraints? constraints;
+
   /// Background [Color] of the modal.
-  final Color primaryColor;
+  final Color? primaryColor;
 
   /// [BorderRadius] of the modal.
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// [BorderRadius] of the bottom sheet modal.
-  final BorderRadius bottomSheetBorderRadius;
+  final BorderRadius? bottomSheetBorderRadius;
 
   /// [Border] of the modal.
-  final Border border;
+  final Border? border;
 
   /// [Border] of the bottom sheet modal.
-  final Border bottomSheetBorder;
+  final Border? bottomSheetBorder;
 
   /// Padding of everything in the modal.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
+
+  /// Padding of the close button.
+  final EdgeInsets? closeButtonPadding;
 
   /// Spacing between the [_Header] and the contents of the modal.
-  final double spacing;
+  final double? spacing;
 
   /// Text style of [_Title].
-  final TextStyle titleTextStyle;
+  final TextStyle? titleTextStyle;
 
   /// [MyoroIconConfiguration] of [_CloseButton].
-  final MyoroIconConfiguration closeButtonIconConfiguration;
+  final MyoroIconConfiguration? closeButtonIconConfiguration;
 
   @override
   MyoroModalThemeExtension lerp(covariant ThemeExtension<MyoroModalThemeExtension>? other, double t) {
     if (other is! MyoroModalThemeExtension) return this;
+
+    final constraints = BoxConstraints.lerp(this.constraints, other.constraints, t);
+    final primaryColor = Color.lerp(this.primaryColor, other.primaryColor, t);
+    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
+    final bottomSheetBorderRadius = BorderRadius.lerp(this.bottomSheetBorderRadius, other.bottomSheetBorderRadius, t);
+    final border = Border.lerp(this.border, other.border, t);
+    final bottomSheetBorder = Border.lerp(this.bottomSheetBorder, other.bottomSheetBorder, t);
+    final padding = EdgeInsets.lerp(this.padding, other.padding, t);
+    final closeButtonPadding = EdgeInsets.lerp(this.closeButtonPadding, other.closeButtonPadding, t);
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+    final titleTextStyle = TextStyle.lerp(this.titleTextStyle, other.titleTextStyle, t);
+    final closeButtonIconConfiguration = MyoroIconConfiguration.lerp(
+      this.closeButtonIconConfiguration,
+      other.closeButtonIconConfiguration,
+      t,
+    );
+
     return copyWith(
-      primaryColor: Color.lerp(primaryColor, other.primaryColor, t),
-      borderRadius: BorderRadius.lerp(borderRadius, other.borderRadius, t),
-      bottomSheetBorderRadius: BorderRadius.lerp(bottomSheetBorderRadius, other.bottomSheetBorderRadius, t),
-      border: Border.lerp(border, other.border, t),
-      bottomSheetBorder: Border.lerp(bottomSheetBorder, other.bottomSheetBorder, t),
-      padding: EdgeInsets.lerp(padding, other.padding, t),
-      spacing: lerpDouble(spacing, other.spacing, t),
-      titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      closeButtonIconConfiguration: MyoroIconConfiguration.lerp(
-        closeButtonIconConfiguration,
-        other.closeButtonIconConfiguration,
-        t,
-      ),
+      constraints: constraints,
+      constraintsProvided: constraints != null,
+      primaryColor: primaryColor,
+      primaryColorProvided: primaryColor != null,
+      borderRadius: borderRadius,
+      borderRadiusProvided: borderRadius != null,
+      bottomSheetBorderRadius: bottomSheetBorderRadius,
+      bottomSheetBorderRadiusProvided: bottomSheetBorderRadius != null,
+      border: border,
+      borderProvided: border != null,
+      bottomSheetBorder: bottomSheetBorder,
+      bottomSheetBorderProvided: bottomSheetBorder != null,
+      padding: padding,
+      paddingProvided: padding != null,
+      closeButtonPadding: closeButtonPadding,
+      closeButtonPaddingProvided: closeButtonPadding != null,
+      spacing: spacing,
+      spacingProvided: spacing != null,
+      titleTextStyle: titleTextStyle,
+      titleTextStyleProvided: titleTextStyle != null,
+      closeButtonIconConfiguration: closeButtonIconConfiguration,
+      closeButtonIconConfigurationProvided: closeButtonIconConfiguration != null,
     );
   }
 
   /// Default [BoxConstraints] of the modal.
-  BoxConstraints constraints(BuildContext context) {
+  BoxConstraints getDefaultConstraints(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return BoxConstraints(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.5);
   }

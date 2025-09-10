@@ -23,7 +23,6 @@ mixin _$MyoroSliderConfigurationMixin {
         other.value == self.value &&
         other.onChanged == self.onChanged &&
         other.label == self.label &&
-        other.labelTextStyle == self.labelTextStyle &&
         other.currentValueText == self.currentValueText &&
         other.maxValueText == self.maxValueText &&
         other.footerText == self.footerText &&
@@ -37,7 +36,6 @@ mixin _$MyoroSliderConfigurationMixin {
       self.value,
       self.onChanged,
       self.label,
-      self.labelTextStyle,
       self.currentValueText,
       self.maxValueText,
       self.footerText,
@@ -52,7 +50,6 @@ mixin _$MyoroSliderConfigurationMixin {
       '  value: ${self.value},\n'
       '  onChanged: ${self.onChanged},\n'
       '  label: ${self.label},\n'
-      '  labelTextStyle: ${self.labelTextStyle},\n'
       '  currentValueText: ${self.currentValueText},\n'
       '  maxValueText: ${self.maxValueText},\n'
       '  footerText: ${self.footerText},\n'

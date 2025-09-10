@@ -5,12 +5,12 @@ import 'package:provider/provider.dart';
 import 'package:storyboard/storyboard.dart';
 
 part '_widget/_background_color_option.dart';
-part '_widget/_bordered_option.dart';
+part '_widget/_show_bottom_divider_option.dart';
 part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroAppBar].
 final class MyoroAppBarWidgetShowcaseScreen extends StatelessWidget {
-  static const widgetOptions = [_BorderedOption(), _BackgroundColorOption()];
+  static const widgetOptions = [_ShowBottomDividerOption(), _BackgroundColorOption()];
 
   const MyoroAppBarWidgetShowcaseScreen({super.key});
 

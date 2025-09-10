@@ -8,6 +8,8 @@ part 'myoro_button_widget_showcase_screen_state.dart';
 final class MyoroButtonWidgetShowcaseScreenViewModel {
   /// State
   final _state = MyoroButtonWidgetShowcaseScreenState();
+
+  /// [_state] getter.
   MyoroButtonWidgetShowcaseScreenState get state => _state;
 
   /// Dispose function.
@@ -16,60 +18,57 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroButtonConfiguration] of the [MyoroButton].
-  MyoroButtonConfiguration configuration(BuildContext context) {
+  MyoroButtonConfiguration buildConfiguration(BuildContext context) {
+    void onTapDown(BuildContext context) {
+      context.showSnackBar(
+        snackBar: const MyoroSnackBar(
+          configuration: MyoroSnackBarConfiguration(
+            snackBarType: MyoroSnackBarTypeEnum.attention,
+            message: 'Tap down activated.',
+          ),
+        ),
+      );
+    }
+
+    void onTapUp(BuildContext context) {
+      context.showSnackBar(
+        snackBar: const MyoroSnackBar(
+          configuration: MyoroSnackBarConfiguration(
+            snackBarType: MyoroSnackBarTypeEnum.attention,
+            message: 'Tap up activated.',
+          ),
+        ),
+      );
+    }
+
     return MyoroButtonConfiguration(
       tooltipConfiguration: state.tooltipEnabled ? MyoroTooltipConfiguration.fake() : null,
       cursor: state.cursor,
+      onTapDown: state.onTapDownEnabled ? (_) => onTapDown(context) : null,
+      onTapUp: state.onTapUpEnabled ? (_) => onTapUp(context) : null,
+    );
+  }
+
+  /// [MyoroButtonThemeExtension] of the [MyoroButton].
+  MyoroButtonThemeExtension buildThemeExtension(BuildContext context) {
+    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+
+    final backgroundIdleColor = state.backgroundIdleColor ?? MyoroColors.transparent;
+    final backgroundHoverColor = state.backgroundHoverColor ?? MyoroColors.transparent;
+    final backgroundTapColor = state.backgroundTapColor ?? MyoroColors.transparent;
+    final borderIdleColor = state.borderIdleColor ?? MyoroColors.transparent;
+    final borderHoverColor = state.borderHoverColor ?? MyoroColors.transparent;
+    final borderTapColor = state.borderTapColor ?? MyoroColors.transparent;
+
+    return buttonThemeExtension.copyWith(
       borderRadius: state.borderRadius,
-      backgroundColorBuilder:
-          state.backgroundColorBuilderEnabled
-              ? (MyoroTapStatusEnum tapStatusEnum) => _backgroundColorBuilder(tapStatusEnum)
-              : null,
-      borderBuilder:
-          state.borderBuilderEnabled ? (MyoroTapStatusEnum tapStatusEnum) => _borderBuilder(tapStatusEnum) : null,
-      onTapDown: state.onTapDownEnabled ? (_) => _onTapDown(context) : null,
-      onTapUp: state.onTapUpEnabled ? (_) => _onTapUp(context) : null,
-    );
-  }
-
-  Color _backgroundColorBuilder(MyoroTapStatusEnum tapStatusEnum) {
-    return switch (tapStatusEnum) {
-      MyoroTapStatusEnum.idle => state.idleBackgroundColor ?? MyoroColors.transparent,
-      MyoroTapStatusEnum.hover => state.hoverBackgroundColor ?? MyoroColors.transparent,
-      MyoroTapStatusEnum.tap => state.tapBackgroundColor ?? MyoroColors.transparent,
-    };
-  }
-
-  BoxBorder _borderBuilder(MyoroTapStatusEnum tapStatusEnum) {
-    return Border.all(
-      width: kMyoroBorderLength,
-      color: switch (tapStatusEnum) {
-        MyoroTapStatusEnum.idle => state.idleBorderColor ?? MyoroColors.transparent,
-        MyoroTapStatusEnum.hover => state.hoverBorderColor ?? MyoroColors.transparent,
-        MyoroTapStatusEnum.tap => state.tapBorderColor ?? MyoroColors.transparent,
-      },
-    );
-  }
-
-  void _onTapDown(BuildContext context) {
-    context.showSnackBar(
-      snackBar: const MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          snackBarType: MyoroSnackBarTypeEnum.attention,
-          message: 'Tap down activated.',
-        ),
-      ),
-    );
-  }
-
-  void _onTapUp(BuildContext context) {
-    context.showSnackBar(
-      snackBar: const MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          snackBarType: MyoroSnackBarTypeEnum.attention,
-          message: 'Tap up activated.',
-        ),
-      ),
+      backgroundIdleColor: backgroundIdleColor,
+      backgroundHoverColor: backgroundHoverColor,
+      backgroundTapColor: backgroundTapColor,
+      borderWidth: kMyoroBorderWidth,
+      borderIdleColor: borderIdleColor,
+      borderHoverColor: borderHoverColor,
+      borderTapColor: borderTapColor,
     );
   }
 }

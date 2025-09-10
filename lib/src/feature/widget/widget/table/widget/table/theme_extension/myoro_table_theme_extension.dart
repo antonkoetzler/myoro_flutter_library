@@ -12,27 +12,24 @@ part 'myoro_table_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with _$MyoroTableThemeExtensionMixin {
   const MyoroTableThemeExtension({
-    required this.decoration,
-    required this.columnTextStyle,
-    required this.columnSpacing,
-    required this.rowTextStyle,
-    required this.loaderEmptyMessageErrorMessagePadding,
-    required this.emptyMessageTextStyle,
-    required this.errorMessageTextStyle,
+    this.decoration,
+    this.columnTextStyle,
+    this.columnSpacing,
+    this.rowTextStyle,
+    this.loaderEmptyMessageErrorMessagePadding,
+    this.emptyMessageTextStyle,
+    this.errorMessageTextStyle,
   });
 
   // coverage:ignore-start
-  factory MyoroTableThemeExtension.fake() {
-    return MyoroTableThemeExtension(
-      decoration: myoroFake<BoxDecoration>(),
-      columnTextStyle: myoroFake<TextStyle>(),
-      columnSpacing: faker.randomGenerator.decimal(scale: 20),
-      rowTextStyle: myoroFake<TextStyle>(),
-      loaderEmptyMessageErrorMessagePadding: myoroFake<EdgeInsets>(),
-      emptyMessageTextStyle: myoroFake<TextStyle>(),
-      errorMessageTextStyle: myoroFake<TextStyle>(),
-    );
-  }
+  MyoroTableThemeExtension.fake()
+    : decoration = faker.randomGenerator.boolean() ? myoroFake<BoxDecoration>() : null,
+      columnTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      columnSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      rowTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      loaderEmptyMessageErrorMessagePadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      emptyMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      errorMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -49,41 +46,57 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
 
   /// [Container.decoration] of [_MyoroTableState].
-  final BoxDecoration decoration;
+  final BoxDecoration? decoration;
 
   /// Default [TextStyle] of [_Column].
-  final TextStyle columnTextStyle;
+  final TextStyle? columnTextStyle;
 
   /// Spacing between columns.
-  final double columnSpacing;
+  final double? columnSpacing;
 
   /// Default [TextStyle] of [_Row].
-  final TextStyle rowTextStyle;
+  final TextStyle? rowTextStyle;
 
   /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
-  final EdgeInsets loaderEmptyMessageErrorMessagePadding;
+  final EdgeInsets? loaderEmptyMessageErrorMessagePadding;
 
   /// [TextStyle] of [_EmptyMessage].
-  final TextStyle emptyMessageTextStyle;
+  final TextStyle? emptyMessageTextStyle;
 
   /// [TextStyle] of [_ErrorMessage].
-  final TextStyle errorMessageTextStyle;
+  final TextStyle? errorMessageTextStyle;
 
   @override
   MyoroTableThemeExtension lerp(covariant ThemeExtension<MyoroTableThemeExtension>? other, double t) {
     if (other is! MyoroTableThemeExtension) return this;
+
+    final decoration = BoxDecoration.lerp(this.decoration, other.decoration, t);
+    final columnTextStyle = TextStyle.lerp(this.columnTextStyle, other.columnTextStyle, t);
+    final columnSpacing = lerpDouble(this.columnSpacing, other.columnSpacing, t);
+    final rowTextStyle = TextStyle.lerp(this.rowTextStyle, other.rowTextStyle, t);
+    final loaderEmptyMessageErrorMessagePadding = EdgeInsets.lerp(
+      this.loaderEmptyMessageErrorMessagePadding,
+      other.loaderEmptyMessageErrorMessagePadding,
+      t,
+    );
+    final emptyMessageTextStyle = TextStyle.lerp(this.emptyMessageTextStyle, other.emptyMessageTextStyle, t);
+    final errorMessageTextStyle = TextStyle.lerp(this.errorMessageTextStyle, other.errorMessageTextStyle, t);
+
     return copyWith(
-      decoration: BoxDecoration.lerp(decoration, other.decoration, t),
-      columnTextStyle: TextStyle.lerp(columnTextStyle, other.columnTextStyle, t),
-      columnSpacing: lerpDouble(columnSpacing, other.columnSpacing, t),
-      rowTextStyle: TextStyle.lerp(rowTextStyle, other.rowTextStyle, t),
-      loaderEmptyMessageErrorMessagePadding: EdgeInsets.lerp(
-        loaderEmptyMessageErrorMessagePadding,
-        other.loaderEmptyMessageErrorMessagePadding,
-        t,
-      ),
-      emptyMessageTextStyle: TextStyle.lerp(emptyMessageTextStyle, other.emptyMessageTextStyle, t),
-      errorMessageTextStyle: TextStyle.lerp(errorMessageTextStyle, other.errorMessageTextStyle, t),
+      decoration: decoration,
+      decorationProvided: decoration != null,
+      columnTextStyle: columnTextStyle,
+      columnTextStyleProvided: columnTextStyle != null,
+      columnSpacing: columnSpacing,
+      columnSpacingProvided: columnSpacing != null,
+      rowTextStyle: rowTextStyle,
+      rowTextStyleProvided: rowTextStyle != null,
+      loaderEmptyMessageErrorMessagePadding: loaderEmptyMessageErrorMessagePadding,
+      loaderEmptyMessageErrorMessagePaddingProvided: loaderEmptyMessageErrorMessagePadding != null,
+      emptyMessageTextStyle: emptyMessageTextStyle,
+      emptyMessageTextStyleProvided: emptyMessageTextStyle != null,
+      errorMessageTextStyle: errorMessageTextStyle,
+      errorMessageTextStyleProvided: errorMessageTextStyle != null,
     );
   }
 }

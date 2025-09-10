@@ -26,16 +26,12 @@ mixin _$MyoroDialogModalConfigurationMixin<T> {
         other.onConfirm == self.onConfirm &&
         other.onCancel == self.onCancel &&
         other.text == self.text &&
-        other.textStyle == self.textStyle &&
         other.child == self.child &&
         other.barrierDismissable == self.barrierDismissable &&
         other.useRootNavigator == self.useRootNavigator &&
-        other.constraints == self.constraints &&
         other.onClosed == self.onClosed &&
         other.title == self.title &&
-        other.showCloseButton == self.showCloseButton &&
-        other.padding == self.padding &&
-        other.closeButtonPadding == self.closeButtonPadding;
+        other.showCloseButton == self.showCloseButton;
   }
 
   @override
@@ -47,16 +43,12 @@ mixin _$MyoroDialogModalConfigurationMixin<T> {
       self.onConfirm,
       self.onCancel,
       self.text,
-      self.textStyle,
       self.child,
       self.barrierDismissable,
       self.useRootNavigator,
-      self.constraints,
       self.onClosed,
       self.title,
       self.showCloseButton,
-      self.padding,
-      self.closeButtonPadding,
     );
   }
 
@@ -69,15 +61,11 @@ mixin _$MyoroDialogModalConfigurationMixin<T> {
       '  onConfirm: ${self.onConfirm},\n'
       '  onCancel: ${self.onCancel},\n'
       '  text: ${self.text},\n'
-      '  textStyle: ${self.textStyle},\n'
       '  child: ${self.child},\n'
       '  barrierDismissable: ${self.barrierDismissable},\n'
       '  useRootNavigator: ${self.useRootNavigator},\n'
-      '  constraints: ${self.constraints},\n'
       '  onClosed: ${self.onClosed},\n'
       '  title: ${self.title},\n'
       '  showCloseButton: ${self.showCloseButton},\n'
-      '  padding: ${self.padding},\n'
-      '  closeButtonPadding: ${self.closeButtonPadding},\n'
       ');';
 }

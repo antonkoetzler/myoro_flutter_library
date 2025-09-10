@@ -9,6 +9,7 @@ final class _FooterButtons extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+    final footerButtonsSpacing = themeExtension.footerButtonsSpacing ?? 0;
 
     final confirmButton = _ConfirmButton(_configuration);
     final cancelButton = _CancelButton(_configuration);
@@ -17,7 +18,7 @@ final class _FooterButtons extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: IntrinsicWidth(
         child: Row(
-          spacing: themeExtension.footerButtonsSpacing,
+          spacing: footerButtonsSpacing,
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(child: !_configuration.invertButtons ? confirmButton : cancelButton),

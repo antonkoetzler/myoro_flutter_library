@@ -9,11 +9,7 @@ final class _Message extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
-
-    if (_configuration.text.isNotEmpty) {
-      return Text(_configuration.text, style: _configuration.textStyle ?? themeExtension.textStyle);
-    } else {
-      return _configuration.child!;
-    }
+    final textStyle = themeExtension.textStyle;
+    return _configuration.text.isNotEmpty ? Text(_configuration.text, style: textStyle) : _configuration.child!;
   }
 }

@@ -11,7 +11,7 @@ final class _Button extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
 
     final configuration = context.read<MyoroIconTextButtonConfiguration>();
-    final inverted = configuration.inverted;
+    final invert = configuration.invert;
     final iconConfiguration = configuration.iconConfiguration;
     final textConfiguration = configuration.textConfiguration;
 
@@ -31,7 +31,7 @@ final class _Button extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: spacing,
         children: iconConfigurationAndTextConfigurationNotNull
-            ? [!inverted ? iconWidget! : textWidget!, !inverted ? textWidget! : iconWidget!]
+            ? [!invert ? iconWidget! : textWidget!, !invert ? textWidget! : iconWidget!]
             : [if (iconConfigurationNotNull) iconWidget!, if (textConfigurationNotNull) textWidget!],
       ),
     );

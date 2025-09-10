@@ -12,10 +12,12 @@ final class _Widget extends StatelessWidget {
     return ListenableBuilder(
       listenable: viewModel.state,
       builder: (_, __) {
+        final state = viewModel.state;
+        final title = state.title;
+
         return MyoroCard(
-          configuration: viewModel.configuration(
-            Center(child: Text('This is a MyoroCard!', style: themeExtension.textStyle)),
-          ),
+          title: title,
+          child: Center(child: Text('This is a MyoroCard!', style: themeExtension.textStyle)),
         );
       },
     );

@@ -12,7 +12,7 @@ final class _Header extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         if (_configuration.title.isNotEmpty) Expanded(child: _Title(_configuration.title)),
-        if (_configuration.showCloseButton == true) _CloseButton(_configuration),
+        if (_configuration.showCloseButton == true) const _CloseButton(),
       ],
     );
   }

@@ -68,20 +68,18 @@ class MyoroModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     final titleIsNotEmpty = _configuration.title.isNotEmpty;
     final showCloseButton = _configuration.showCloseButton;
     final showHeader = titleIsNotEmpty || showCloseButton;
 
-    final primaryColor = resolvedThemeExtension.primaryColor;
-    final borderRadius = !isBottomSheet
-        ? resolvedThemeExtension.borderRadius
-        : resolvedThemeExtension.bottomSheetBorderRadius;
-    final constraints = _configuration.constraints ?? resolvedThemeExtension.constraints(context);
-    final padding = _configuration.padding ?? resolvedThemeExtension.padding;
-    final border = !isBottomSheet ? resolvedThemeExtension.border : resolvedThemeExtension.bottomSheetBorder;
-    final spacing = resolvedThemeExtension.spacing;
+    final primaryColor = themeExtension.primaryColor;
+    final borderRadius = !isBottomSheet ? themeExtension.borderRadius : themeExtension.bottomSheetBorderRadius;
+    final constraints = themeExtension.constraints ?? themeExtension.getDefaultConstraints(context);
+    final padding = themeExtension.padding;
+    final border = !isBottomSheet ? themeExtension.border : themeExtension.bottomSheetBorder;
+    final spacing = themeExtension.spacing ?? 0;
 
     final content = Material(
       color: primaryColor,
@@ -103,6 +101,6 @@ class MyoroModal extends StatelessWidget {
 
     final wrappedContent = !isBottomSheet ? Center(child: content) : content;
 
-    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: wrappedContent);
+    return MyoroSingularThemeExtensionWrapper(themeExtension: themeExtension, child: wrappedContent);
   }
 }

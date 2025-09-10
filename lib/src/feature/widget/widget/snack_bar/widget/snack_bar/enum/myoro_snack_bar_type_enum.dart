@@ -27,11 +27,12 @@ enum MyoroSnackBarTypeEnum {
     final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
 
     return switch (this) {
-      standard => themeExtension.standardBorderColor,
-      attention => themeExtension.attentionBorderColor,
-      success => themeExtension.successBorderColor,
-      error => themeExtension.errorBorderColor,
-    };
+          standard => themeExtension.standardBorderColor,
+          attention => themeExtension.attentionBorderColor,
+          success => themeExtension.successBorderColor,
+          error => themeExtension.errorBorderColor,
+        } ??
+        MyoroColors.transparent;
   }
 
   bool get isStandard => this == standard;

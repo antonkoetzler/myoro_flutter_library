@@ -17,10 +17,17 @@ mixin _$MyoroCarouselThemeExtensionMixin on ThemeExtension<MyoroCarouselThemeExt
   MyoroCarouselThemeExtension get self => this as MyoroCarouselThemeExtension;
 
   @override
-  MyoroCarouselThemeExtension copyWith({IconData? previousItemButtonIcon, IconData? nextItemButtonIcon}) {
+  MyoroCarouselThemeExtension copyWith({
+    IconData? previousItemButtonIcon,
+    bool previousItemButtonIconProvided = true,
+    IconData? nextItemButtonIcon,
+    bool nextItemButtonIconProvided = true,
+  }) {
     return MyoroCarouselThemeExtension(
-      previousItemButtonIcon: previousItemButtonIcon ?? self.previousItemButtonIcon,
-      nextItemButtonIcon: nextItemButtonIcon ?? self.nextItemButtonIcon,
+      previousItemButtonIcon: previousItemButtonIconProvided
+          ? (previousItemButtonIcon ?? self.previousItemButtonIcon)
+          : null,
+      nextItemButtonIcon: nextItemButtonIconProvided ? (nextItemButtonIcon ?? self.nextItemButtonIcon) : null,
     );
   }
 

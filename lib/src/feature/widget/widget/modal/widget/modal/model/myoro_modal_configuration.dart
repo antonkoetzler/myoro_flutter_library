@@ -18,24 +18,18 @@ class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
   const MyoroModalConfiguration({
     this.barrierDismissable = barrierDismissableDefaultValue,
     this.useRootNavigator = useRootNavigatorDefaultValue,
-    this.constraints,
     this.onClosed,
     this.title = titleDefaultValue,
     this.showCloseButton = showCloseButtonDefaultValue,
-    this.padding,
-    this.closeButtonPadding,
   });
 
   // coverage:ignore-start
   MyoroModalConfiguration.fake()
     : barrierDismissable = faker.randomGenerator.boolean(),
       useRootNavigator = faker.randomGenerator.boolean(),
-      constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       onClosed = faker.randomGenerator.boolean() ? ((_) {}) : null,
       title = faker.randomGenerator.boolean() ? faker.lorem.word() : titleDefaultValue,
-      showCloseButton = faker.randomGenerator.boolean(),
-      padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+      showCloseButton = faker.randomGenerator.boolean();
   // coverage:ignore-end
 
   /// If you click everywhere but the modal, it closes
@@ -74,9 +68,6 @@ class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
   /// ```
   final bool useRootNavigator;
 
-  /// Constraints of the modal.
-  final BoxConstraints? constraints;
-
   /// Function executed when the modal is closed.
   final MyoroModalOnClosed<T>? onClosed;
 
@@ -86,35 +77,20 @@ class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
   /// If [_CloseButton] will be shown.
   final bool showCloseButton;
 
-  /// Content padding of the modal.
-  final EdgeInsets? padding;
-
-  /// Padding around [_CloseButton].
-  final EdgeInsets? closeButtonPadding;
-
   MyoroModalConfiguration<T> copyWith({
     bool? barrierDismissable,
     bool? useRootNavigator,
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
     MyoroModalOnClosed<T>? onClosed,
     bool onClosedProvided = true,
     String? title,
     bool? showCloseButton,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    EdgeInsets? closeButtonPadding,
-    bool closeButtonPaddingProvided = true,
   }) {
     return MyoroModalConfiguration(
       barrierDismissable: barrierDismissable ?? this.barrierDismissable,
       useRootNavigator: useRootNavigator ?? this.useRootNavigator,
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
       onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
       title: title ?? this.title,
       showCloseButton: showCloseButton ?? this.showCloseButton,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
     );
   }
 }

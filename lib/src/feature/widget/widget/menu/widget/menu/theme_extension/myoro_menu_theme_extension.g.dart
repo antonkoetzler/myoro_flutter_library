@@ -18,8 +18,12 @@ mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> 
 
   @override
   MyoroMenuThemeExtension copyWith({
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
     Color? backgroundColor,
     bool backgroundColorProvided = true,
+    BoxBorder? border,
+    bool borderProvided = true,
     BorderRadius? borderRadius,
     bool borderRadiusProvided = true,
     EdgeInsets? searchBarPadding,
@@ -34,7 +38,9 @@ mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> 
     bool dialogTextLoaderPaddingProvided = true,
   }) {
     return MyoroMenuThemeExtension(
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
       backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      border: borderProvided ? (border ?? self.border) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       searchBarPadding: searchBarPaddingProvided ? (searchBarPadding ?? self.searchBarPadding) : null,
       searchBarInputStyle: searchBarInputStyleProvided ? (searchBarInputStyle ?? self.searchBarInputStyle) : null,
@@ -50,7 +56,9 @@ mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> 
   bool operator ==(Object other) {
     return other is MyoroMenuThemeExtension &&
         other.runtimeType == runtimeType &&
+        other.constraints == self.constraints &&
         other.backgroundColor == self.backgroundColor &&
+        other.border == self.border &&
         other.borderRadius == self.borderRadius &&
         other.searchBarPadding == self.searchBarPadding &&
         other.searchBarInputStyle == self.searchBarInputStyle &&
@@ -62,7 +70,9 @@ mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> 
   @override
   int get hashCode {
     return Object.hash(
+      self.constraints,
       self.backgroundColor,
+      self.border,
       self.borderRadius,
       self.searchBarPadding,
       self.searchBarInputStyle,
@@ -75,7 +85,9 @@ mixin _$MyoroMenuThemeExtensionMixin on ThemeExtension<MyoroMenuThemeExtension> 
   @override
   String toString() =>
       'MyoroMenuThemeExtension(\n'
+      '  constraints: ${self.constraints},\n'
       '  backgroundColor: ${self.backgroundColor},\n'
+      '  border: ${self.border},\n'
       '  borderRadius: ${self.borderRadius},\n'
       '  searchBarPadding: ${self.searchBarPadding},\n'
       '  searchBarInputStyle: ${self.searchBarInputStyle},\n'

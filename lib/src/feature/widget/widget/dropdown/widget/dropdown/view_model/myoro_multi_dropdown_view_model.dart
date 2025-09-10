@@ -10,7 +10,8 @@ final class MyoroMultiDropdownViewModel<T>
           MyoroMultiMenuConfiguration<T>,
           MyoroMultiMenuController<T>
         > {
-  MyoroMultiDropdownViewModel(MyoroMultiDropdownConfiguration<T> configuration) : super(configuration);
+  MyoroMultiDropdownViewModel(MyoroMultiDropdownConfiguration<T> configuration)
+    : super(configuration, MyoroMultiMenuController(configuration: configuration.menuConfiguration));
 
   @override
   void enabledNotifierListener() {
@@ -45,25 +46,21 @@ final class MyoroMultiDropdownViewModel<T>
   }
 
   @override
-  void initializeMenuController(BuildContext context, MyoroDropdownThemeExtension themeExtension) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-    final menuBorder = themeExtension.menuBorder ?? themeExtension.menuBorder;
-    final menuBorderRadius = themeExtension.menuBorderRadius ?? themeExtension.menuBorderRadius;
+  Widget menuWidget(BuildContext context) {
+    final dropdownThemeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final menuBorder = dropdownThemeExtension.menuBorder;
+    final menuBorderRadius = dropdownThemeExtension.menuBorderRadius;
 
-    final configuration = state.configuration;
-    final menuConfiguration = configuration.menuConfiguration;
+    final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>()
+      ..copyWith(
+        border: menuBorder,
+        borderProvided: menuBorder != null,
+        borderRadius: menuBorderRadius,
+        borderRadiusProvided: menuBorderRadius != null,
+      );
 
-    state.menuController = MyoroMultiMenuController(
-      configuration: menuConfiguration.copyWith(border: menuBorder, borderRadius: menuBorderRadius),
-    );
-
-    state.menuController.selectedItemsNotifier.addListener(selectedItemsNotifierListener);
-    if (state.menuController.selectedItems.isNotEmpty) formatSelectedItems();
-  }
-
-  @override
-  Widget get menuWidget {
     final menuController = state.menuController;
-    return MyoroMultiMenu<T>(controller: menuController);
+
+    return MyoroMultiMenu<T>(controller: menuController, themeExtension: menuThemeExtension);
   }
 }

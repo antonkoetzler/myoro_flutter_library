@@ -12,17 +12,13 @@ part 'myoro_search_input_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThemeExtension>
     with _$MyoroSearchInputThemeExtensionMixin {
-  const MyoroSearchInputThemeExtension({
-    required this.spacing,
-    required this.searchButtonIcon,
-    required this.searchButtonLoadingSize,
-  });
+  const MyoroSearchInputThemeExtension({this.spacing, this.searchButtonIcon, this.searchButtonLoadingSize});
 
   // coverage:ignore-start
   MyoroSearchInputThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(),
-      searchButtonIcon = myoroFake<IconData>(),
-      searchButtonLoadingSize = faker.randomGenerator.decimal();
+    : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      searchButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
+      searchButtonLoadingSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   const MyoroSearchInputThemeExtension.builder(ColorScheme colorScheme)
@@ -31,21 +27,29 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
       searchButtonLoadingSize = kMyoroMultiplier * 4;
 
   /// Spacing in between the [MyoroInput] & [_SearchSection].
-  final double spacing;
+  final double? spacing;
 
   /// Icon of [_SearchButton].
-  final IconData searchButtonIcon;
+  final IconData? searchButtonIcon;
 
   /// Size of the [MyoroCircularLoader] in [_SearchButton].
-  final double searchButtonLoadingSize;
+  final double? searchButtonLoadingSize;
 
   @override
   MyoroSearchInputThemeExtension lerp(covariant ThemeExtension<MyoroSearchInputThemeExtension>? other, double t) {
     if (other is! MyoroSearchInputThemeExtension) return this;
+
+    final spacing = lerpDouble(this.spacing, other.spacing, t);
+    final searchButtonIcon = myoroLerp(this.searchButtonIcon, other.searchButtonIcon, t);
+    final searchButtonLoadingSize = lerpDouble(this.searchButtonLoadingSize, other.searchButtonLoadingSize, t);
+
     return copyWith(
-      spacing: lerpDouble(spacing, other.spacing, t),
-      searchButtonIcon: myoroLerp(searchButtonIcon, other.searchButtonIcon, t),
-      searchButtonLoadingSize: lerpDouble(searchButtonLoadingSize, other.searchButtonLoadingSize, t),
+      spacing: spacing,
+      spacingProvided: spacing != null,
+      searchButtonIcon: searchButtonIcon,
+      searchButtonIconProvided: searchButtonIcon != null,
+      searchButtonLoadingSize: searchButtonLoadingSize,
+      searchButtonLoadingSizeProvided: searchButtonLoadingSize != null,
     );
   }
 }

@@ -8,17 +8,14 @@ part 'myoro_image_picker_configuration.g.dart';
 @immutable
 @myoroModel
 final class MyoroImagePickerConfiguration with _$MyoroImagePickerConfigurationMixin {
-  const MyoroImagePickerConfiguration({this.selectedImage, required this.size, required this.onChanged});
+  const MyoroImagePickerConfiguration({this.selectedImage, required this.onChanged});
 
   // coverage:ignore-start
-  MyoroImagePickerConfiguration.fake() : selectedImage = null, size = myoroFake<Size>(), onChanged = ((_) {});
+  MyoroImagePickerConfiguration.fake() : selectedImage = null, onChanged = ((_) {});
   // coverage:ignore-end
 
   /// Selected image.
   final String? selectedImage;
-
-  /// Size of the [MyoroImagePicker].
-  final Size size;
 
   /// Callback executed when an image is selected or unselected.
   final MyoroImagePickerOnChanged onChanged;
@@ -26,12 +23,10 @@ final class MyoroImagePickerConfiguration with _$MyoroImagePickerConfigurationMi
   MyoroImagePickerConfiguration copyWith({
     String? selectedImage,
     bool selectedImageProvided = true,
-    Size? size,
     MyoroImagePickerOnChanged? onChanged,
   }) {
     return MyoroImagePickerConfiguration(
       selectedImage: selectedImageProvided ? (selectedImage ?? this.selectedImage) : null,
-      size: size ?? this.size,
       onChanged: onChanged ?? this.onChanged,
     );
   }

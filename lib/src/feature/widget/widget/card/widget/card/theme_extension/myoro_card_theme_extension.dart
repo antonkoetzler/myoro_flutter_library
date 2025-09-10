@@ -17,7 +17,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
     this.borderRadius,
     this.padding,
     this.titleCardSpacing,
-    this.textStyle,
+    this.titleTextStyle,
     this.constraints,
   });
 
@@ -28,7 +28,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
   // coverage:ignore-end
 
@@ -38,7 +38,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       padding = const EdgeInsets.all(10),
       titleCardSpacing = 10,
-      textStyle = textTheme.titleMedium!,
+      titleTextStyle = textTheme.titleMedium!,
       constraints = null;
 
   /// Background color of the card.
@@ -57,7 +57,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
   final double? titleCardSpacing;
 
   /// Text style of [MyoroCard.title].
-  final TextStyle? textStyle;
+  final TextStyle? titleTextStyle;
 
   /// [BoxConstraints]
   final BoxConstraints? constraints;
@@ -71,7 +71,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
     final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
     final padding = EdgeInsets.lerp(this.padding, other.padding, t);
     final titleCardSpacing = lerpDouble(this.titleCardSpacing, other.titleCardSpacing, t);
-    final textStyle = TextStyle.lerp(this.textStyle, other.textStyle, t);
+    final titleTextStyle = TextStyle.lerp(this.titleTextStyle, other.titleTextStyle, t);
     final constraints = BoxConstraints.lerp(this.constraints, other.constraints, t);
 
     return copyWith(
@@ -85,8 +85,8 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
       paddingProvided: padding != null,
       titleCardSpacing: titleCardSpacing,
       titleCardSpacingProvided: titleCardSpacing != null,
-      textStyle: textStyle,
-      textStyleProvided: textStyle != null,
+      titleTextStyle: titleTextStyle,
+      titleTextStyleProvided: titleTextStyle != null,
       constraints: constraints,
       constraintsProvided: constraints != null,
     );

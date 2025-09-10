@@ -23,13 +23,12 @@ mixin _$MyoroRadioConfigurationMixin {
         other.controller == self.controller &&
         other.initialValue == self.initialValue &&
         other.label == self.label &&
-        other.labelTextStyle == self.labelTextStyle &&
         other.onChanged == self.onChanged;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.controller, self.initialValue, self.label, self.labelTextStyle, self.onChanged);
+    return Object.hash(self.controller, self.initialValue, self.label, self.onChanged);
   }
 
   @override
@@ -38,7 +37,6 @@ mixin _$MyoroRadioConfigurationMixin {
       '  controller: ${self.controller},\n'
       '  initialValue: ${self.initialValue},\n'
       '  label: ${self.label},\n'
-      '  labelTextStyle: ${self.labelTextStyle},\n'
       '  onChanged: ${self.onChanged},\n'
       ');';
 }

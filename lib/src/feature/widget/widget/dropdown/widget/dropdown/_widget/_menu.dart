@@ -50,7 +50,7 @@ final class _MenuState<T, V extends _ViewModelType<T>> extends State<_Menu<T, V>
         child: TapRegion(
           groupId: _viewModel.state.tapRegionGroupId,
           onTapOutside: (_) => _viewModel.toggleMenu(),
-          child: _viewModel.menuWidget,
+          child: _viewModel.menuWidget(context),
         ),
       ),
     );

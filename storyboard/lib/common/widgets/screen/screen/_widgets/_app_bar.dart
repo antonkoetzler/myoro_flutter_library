@@ -14,28 +14,26 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
     final themeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 
     return MyoroAppBar(
-      configuration: MyoroAppBarConfiguration(
-        bordered: true,
-        child: Row(
-          spacing: themeExtension.spacing,
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                spacing: themeExtension.spacing / 2,
-                children: [
-                  if (configuration.onPrevious != null) const _PreviousPageButton(),
-                  const Expanded(child: _Title()),
-                ],
-              ),
-            ),
-            Row(
+      showBottomDivider: true,
+      child: Row(
+        spacing: themeExtension.spacing,
+        children: [
+          Expanded(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               spacing: themeExtension.spacing / 2,
-              children: [...configuration.extraActionWidgets, const _ToggleThemeButton()],
+              children: [
+                if (configuration.onPrevious != null) const _PreviousPageButton(),
+                const Expanded(child: _Title()),
+              ],
             ),
-          ],
-        ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: themeExtension.spacing / 2,
+            children: [...configuration.extraActionWidgets, const _ToggleThemeButton()],
+          ),
+        ],
       ),
     );
   }

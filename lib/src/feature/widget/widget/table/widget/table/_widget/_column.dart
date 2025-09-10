@@ -10,16 +10,15 @@ final class _Column extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
+    final columnTextStyle = themeExtension.columnTextStyle;
 
-    final Widget child = DefaultTextStyle(
-      style: themeExtension.columnTextStyle,
-      child: _column.tooltipMessage != null
-          ? MyoroTooltip(
-              configuration: MyoroTooltipConfiguration(text: _column.tooltipMessage!),
-              child: _column.child,
-            )
-          : _column.child,
-    );
+    var child = _column.tooltipMessage != null
+        ? MyoroTooltip(
+            configuration: MyoroTooltipConfiguration(text: _column.tooltipMessage!),
+            child: _column.child,
+          )
+        : _column.child;
+    child = columnTextStyle != null ? DefaultTextStyle(style: columnTextStyle, child: child) : child;
 
     // Last [MyoroTableColumn] must always be expanded.
     if (_isLastColumn) {

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
@@ -5,6 +6,8 @@ import 'package:storyboard/storyboard.dart';
 final class MyoroBasicDividerWidgetShowcaseScreenViewModel {
   /// State.
   final _state = MyoroBasicDividerWidgetShowcaseScreenState();
+
+  /// [_state] getter.
   MyoroBasicDividerWidgetShowcaseScreenState get state => _state;
 
   /// Dispose function.
@@ -12,12 +15,10 @@ final class MyoroBasicDividerWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// [MyoroBasicDividerConfiguration] of the [MyoroBasicDivider].
-  MyoroBasicDividerConfiguration get configuration {
-    return MyoroBasicDividerConfiguration(
-      direction: _state.direction,
-      shortValue: _state.shortValue,
-      padding: _state.padding,
-    );
+  /// [MyoroBasicDividerThemeExtension] builder.
+  MyoroBasicDividerThemeExtension buildThemeExtension(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
+    final shortValue = _state.shortValue;
+    return themeExtension.copyWith(shortValue: shortValue, shortValueProvided: shortValue != null);
   }
 }

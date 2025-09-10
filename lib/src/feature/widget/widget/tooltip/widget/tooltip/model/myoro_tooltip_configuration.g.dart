@@ -20,20 +20,18 @@ mixin _$MyoroTooltipConfigurationMixin {
   bool operator ==(Object other) {
     return other is MyoroTooltipConfiguration &&
         other.runtimeType == runtimeType &&
-        other.margin == self.margin &&
         other.waitDuration == self.waitDuration &&
         other.text == self.text;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.margin, self.waitDuration, self.text);
+    return Object.hash(self.waitDuration, self.text);
   }
 
   @override
   String toString() =>
       'MyoroTooltipConfiguration(\n'
-      '  margin: ${self.margin},\n'
       '  waitDuration: ${self.waitDuration},\n'
       '  text: ${self.text},\n'
       ');';

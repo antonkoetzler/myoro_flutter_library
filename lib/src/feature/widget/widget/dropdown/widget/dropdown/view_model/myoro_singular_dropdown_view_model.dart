@@ -10,7 +10,8 @@ final class MyoroSingularDropdownViewModel<T>
           MyoroSingularMenuConfiguration<T>,
           MyoroSingularMenuController<T>
         > {
-  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration) : super(configuration);
+  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration)
+    : super(configuration, MyoroSingularMenuController(configuration: configuration.menuConfiguration));
 
   @override
   void enabledNotifierListener() {
@@ -42,26 +43,21 @@ final class MyoroSingularDropdownViewModel<T>
   }
 
   @override
-  void initializeMenuController(BuildContext context, MyoroDropdownThemeExtension themeExtension) {
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+  Widget menuWidget(BuildContext context) {
+    final dropdownThemeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
+    final menuBorder = dropdownThemeExtension.menuBorder;
+    final menuBorderRadius = dropdownThemeExtension.menuBorderRadius;
 
-    final menuBorder = themeExtension.menuBorder ?? themeExtension.menuBorder;
-    final menuBorderRadius = themeExtension.menuBorderRadius ?? themeExtension.menuBorderRadius;
+    final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>()
+      ..copyWith(
+        border: menuBorder,
+        borderProvided: menuBorder != null,
+        borderRadius: menuBorderRadius,
+        borderRadiusProvided: menuBorderRadius != null,
+      );
 
-    final configuration = state.configuration;
-    final menuConfiguration = configuration.menuConfiguration;
-
-    state.menuController = MyoroSingularMenuController(
-      configuration: menuConfiguration.copyWith(border: menuBorder, borderRadius: menuBorderRadius),
-    );
-
-    state.menuController.selectedItemNotifier.addListener(selectedItemsNotifierListener);
-    if (state.menuController.selectedItem == null) formatSelectedItems();
-  }
-
-  @override
-  Widget get menuWidget {
     final menuController = state.menuController;
-    return MyoroSingularMenu<T>(controller: menuController);
+
+    return MyoroSingularMenu<T>(controller: menuController, themeExtension: menuThemeExtension);
   }
 }

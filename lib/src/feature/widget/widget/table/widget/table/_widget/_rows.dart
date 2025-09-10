@@ -27,14 +27,16 @@ final class _Rows<T> extends StatelessWidget {
           return const _Loader();
         }
 
-        final decorationBorderRadius = themeExtension.decoration.borderRadius as BorderRadius;
+        final decorationBorderRadius = themeExtension.decoration?.borderRadius as BorderRadius?;
 
         return ClipRRect(
           clipBehavior: Clip.hardEdge,
-          borderRadius: BorderRadius.only(
-            bottomLeft: decorationBorderRadius.bottomLeft,
-            bottomRight: decorationBorderRadius.bottomRight,
-          ),
+          borderRadius: decorationBorderRadius != null
+              ? BorderRadius.only(
+                  bottomLeft: decorationBorderRadius.bottomLeft,
+                  bottomRight: decorationBorderRadius.bottomRight,
+                )
+              : BorderRadius.zero,
           child: ListView.builder(
             itemCount: _items.length,
             itemBuilder: (_, int index) => _Row(_items.elementAt(index), titleColumnKeyWidths),

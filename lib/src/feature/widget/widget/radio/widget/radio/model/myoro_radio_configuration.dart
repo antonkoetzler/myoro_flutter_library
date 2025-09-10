@@ -11,17 +11,12 @@ part 'myoro_radio_configuration.g.dart';
 class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
   static const labelDefaultValue = '';
 
-  const MyoroRadioConfiguration({
-    this.controller,
-    this.initialValue,
-    this.label = labelDefaultValue,
-    this.labelTextStyle,
-    this.onChanged,
-  }) : assert(
-         !(controller != null && initialValue != null),
-         '[MyoroRadio]: If [controller] is provided, set the initial '
-         'value within the [MyoroRadioController]\'s constructor.',
-       );
+  const MyoroRadioConfiguration({this.controller, this.initialValue, this.label = labelDefaultValue, this.onChanged})
+    : assert(
+        !(controller != null && initialValue != null),
+        '[MyoroRadio]: If [controller] is provided, set the initial '
+        'value within the [MyoroRadioController]\'s constructor.',
+      );
 
   // coverage:ignore-start
   factory MyoroRadioConfiguration.fake({bool? controllerProvided}) {
@@ -30,7 +25,6 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
       controller: controller,
       initialValue: controller == null ? faker.randomGenerator.boolean() : null,
       label: faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
     );
   }
@@ -49,9 +43,6 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
   /// Label to the right of the radio.
   final String label;
 
-  /// [TextStyle] of [label].
-  final TextStyle? labelTextStyle;
-
   /// Function executed when the [MyoroRadio] is clicked.
   final MyoroRadioOnChanged? onChanged;
 
@@ -61,8 +52,6 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
     bool? initialValue,
     bool initialValueProvided = true,
     String? label,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
     MyoroRadioOnChanged? onChanged,
     bool onChangedProvided = true,
   }) {
@@ -70,7 +59,6 @@ class MyoroRadioConfiguration with _$MyoroRadioConfigurationMixin {
       controller: controllerProvided ? (controller ?? this.controller) : null,
       initialValue: initialValueProvided ? (initialValue ?? this.initialValue) : null,
       label: label ?? this.label,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
     );
   }

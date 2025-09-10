@@ -4,17 +4,25 @@ import 'package:storyboard/storyboard.dart';
 
 /// State of [MyoroAppBarWidgetShowcaseScreenViewModel].
 final class MyoroAppBarWidgetShowcaseScreenState extends ChangeNotifier {
-  /// [MyoroAppBarConfiguration.bordered] setter.
-  bool _bordered = MyoroAppBarConfiguration.borderedDefaultValue;
-  bool get bordered => _bordered;
-  set bordered(bool bordered) {
-    _bordered = bordered;
+  /// [MyoroAppBar.showBottomDivider]
+  bool _showBottomDivider = MyoroAppBar.showBottomDividerDefaultValue;
+
+  /// [_showBottomDivider] getter.
+  bool get showBottomDivider => _showBottomDivider;
+
+  /// [_showBottomDivider] setter.
+  set showBottomDivider(bool showBottomDivider) {
+    _showBottomDivider = showBottomDivider;
     notifyListeners();
   }
 
-  /// [MyoroAppBarConfiguration.backgroundColor] setter.
+  /// [MyoroAppBarThemeExtension.backgroundColor]
   Color? _backgroundColor;
+
+  /// [_backgroundColor] getter.
   Color? get backgroundColor => _backgroundColor;
+
+  /// [_backgroundColor] setter.
   set backgroundColor(Color? color) {
     _backgroundColor = backgroundColor;
     notifyListeners();
