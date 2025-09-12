@@ -8,7 +8,7 @@ final class MyoroScreenWidgetShowcaseScreenViewModel {
   final state = MyoroScreenWidgetShowcaseScreenState();
 
   /// [MyoroScreenConfiguration] of the [MyoroScreen].
-  MyoroScreenConfiguration configuration(PreferredSizeWidget appBar, Widget body) {
+  MyoroScreenConfiguration buildConfiguration(PreferredSizeWidget appBar, Widget body) {
     return MyoroScreenConfiguration(appBar: state.appBarEnabled ? appBar : null, body: body);
   }
 }

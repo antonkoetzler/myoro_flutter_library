@@ -7,21 +7,16 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAppBarWidgetShowcaseScreenViewModel>();
-    final appBarThemeExtension = context.resolveThemeExtension<MyoroAppBarThemeExtension>();
 
     return ListenableBuilder(
       listenable: viewModel.state,
       builder: (_, __) {
         final state = viewModel.state;
         final showBottomDivider = state.showBottomDivider;
-        final backgroundColor = state.backgroundColor;
 
         return MyoroAppBar(
           showBottomDivider: showBottomDivider,
-          themeExtension: appBarThemeExtension.copyWith(
-            backgroundColor: backgroundColor,
-            backgroundColorProvided: backgroundColor != null,
-          ),
+          themeExtension: viewModel.buildThemeExtension(context),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],

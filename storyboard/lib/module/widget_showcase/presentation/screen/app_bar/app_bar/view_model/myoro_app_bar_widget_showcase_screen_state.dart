@@ -24,7 +24,7 @@ final class MyoroAppBarWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [_backgroundColor] setter.
   set backgroundColor(Color? color) {
-    _backgroundColor = backgroundColor;
+    _backgroundColor = color;
     notifyListeners();
   }
 }

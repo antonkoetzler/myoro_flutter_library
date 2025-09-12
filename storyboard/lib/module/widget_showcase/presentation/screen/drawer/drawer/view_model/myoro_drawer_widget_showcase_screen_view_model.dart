@@ -26,7 +26,6 @@ final class MyoroDrawerWidgetShowcaseScreenViewModel {
       drawer: MyoroDrawer(
         configuration: MyoroDrawerConfiguration(
           title: title,
-          titleTextStyle: titleTextStyle,
           showCloseButton: showCloseButton,
           barrierDismissable: barrierDismissable,
           child: const SizedBox.shrink(),

@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -9,17 +8,13 @@ class MyoroInputWidgetShowcaseScreenViewModel {
   final _state = MyoroInputWidgetShowcaseScreenState();
   MyoroInputWidgetShowcaseScreenState get state => _state;
 
-  /// Constructors the [MyoroInputConfiguration] of [_Widget].
-  MyoroInputConfiguration configuration(BuildContext context, Widget suffix) {
+  /// Builds the [MyoroInputConfiguration] of [_Widget].
+  MyoroInputConfiguration buildConfiguration(BuildContext context, Widget suffix) {
     return MyoroInputConfiguration(
       inputStyle: _state.inputStyle,
       textAlign: _state.textAlign,
-      inputTextStyle: _state.inputTextStyle,
       label: _state.label,
-      labelTextStyle: _state.labelTextStyle,
       placeholder: _state.placeholder,
-      contentPadding: _state.contentPadding,
-      border: _state.borderEnabled ? _border : null,
       suffix: _state.suffixEnabled ? suffix : null,
       enabled: _state.enabled,
       readOnly: _state.readOnly,
@@ -31,13 +26,6 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       onFieldSubmitted: (text) => _onFieldSubmitted(context, text),
       onChanged: _state.onChangedEnabled ? (text) => _onChanged(context, text) : null,
       onCleared: _state.onClearedEnabled ? () => _onCleared(context) : null,
-    );
-  }
-
-  /// Custom [InputBorder].
-  InputBorder get _border {
-    return OutlineInputBorder(
-      borderSide: BorderSide(width: faker.randomGenerator.decimal(scale: 5, min: 0.5), color: myoroFake<Color>()),
     );
   }
 

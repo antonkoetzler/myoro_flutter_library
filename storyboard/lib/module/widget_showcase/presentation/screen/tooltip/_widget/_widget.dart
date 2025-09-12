@@ -6,11 +6,6 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
-
-    return MyoroTooltip(
-      configuration: viewModel.configuration,
-      child: const MyoroCard(configuration: MyoroCardConfiguration(child: Text('Hover over me to show the tooltip!'))),
-    );
+    return const MyoroTooltip(configuration: MyoroTooltipConfiguration(), child: SizedBox.shrink());
   }
 }

@@ -9,10 +9,9 @@ final class MyoroRadioWidgetShowcaseScreenViewModel {
   MyoroRadioWidgetShowcaseScreenState get state => _state;
 
   /// [MyoroRadioConfiguration] of the [MyoroRadio].
-  MyoroRadioConfiguration configuration(BuildContext context) {
+  MyoroRadioConfiguration buildConfiguration(BuildContext context) {
     return MyoroRadioConfiguration(
       label: state.label,
-      labelTextStyle: state.labelTextStyle,
       onChanged: state.onChangedEnabled ? (enabled) => _onChanged(context, enabled) : null,
     );
   }

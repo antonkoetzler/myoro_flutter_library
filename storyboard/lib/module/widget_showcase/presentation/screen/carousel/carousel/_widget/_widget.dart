@@ -12,7 +12,7 @@ final class _Widget extends StatelessWidget {
       listenable: viewModel.state,
       builder: (_, __) {
         return MyoroCarousel(
-          configuration: viewModel.configuration(const [
+          configuration: viewModel.buildConfiguration(const [
             _CarouselItem(kAreYouSillyCat),
             _CarouselItem(kHappyCat),
             _CarouselItem(kSnazzyCat),

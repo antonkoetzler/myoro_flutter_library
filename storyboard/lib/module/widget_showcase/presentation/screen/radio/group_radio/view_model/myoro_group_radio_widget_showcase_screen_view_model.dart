@@ -10,11 +10,9 @@ final class MyoroGroupRadioWidgetShowcaseScreenViewModel {
   MyoroGroupRadioWidgetShowcaseScreenState get state => _state;
 
   /// [MyoroGroupRadioConfiguration] of the [MyoroGroupRadio].
-  MyoroGroupRadioConfiguration configuration(BuildContext context) {
+  MyoroGroupRadioConfiguration buildConfiguration(BuildContext context) {
     return MyoroGroupRadioConfiguration(
       direction: _state.direction,
-      spacing: _state.spacing,
-      runSpacing: _state.runSpacing,
       onChanged: _state.onChangedEnabled ? (key, radios) => _onChanged(context, key, radios) : null,
       radios: _radios,
     );

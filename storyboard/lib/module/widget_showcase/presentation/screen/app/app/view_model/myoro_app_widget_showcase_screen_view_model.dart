@@ -17,7 +17,7 @@ final class MyoroAppWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroAppConfiguration] of the [MyoroApp].
-  MyoroAppConfiguration configuration(Widget home) {
+  MyoroAppConfiguration buildConfiguration(Widget home) {
     return MyoroAppConfiguration(themeMode: _state.themeMode, home: home);
   }
 }

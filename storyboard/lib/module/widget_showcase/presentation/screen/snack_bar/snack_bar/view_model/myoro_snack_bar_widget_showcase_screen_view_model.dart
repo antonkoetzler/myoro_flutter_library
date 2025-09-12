@@ -9,7 +9,7 @@ final class MyoroSnackBarWidgetShowcaseScreenViewModel {
   MyoroSnackBarWidgetShowcaseScreenState get state => _state;
 
   /// [MyoroSnackBarConfiguration] of the [MyoroSnackBar].
-  MyoroSnackBarConfiguration configuration(Widget child) {
+  MyoroSnackBarConfiguration buildConfiguration(Widget child) {
     return MyoroSnackBarConfiguration(
       snackBarType: state.snackBarType,
       showCloseButton: state.showCloseButton,

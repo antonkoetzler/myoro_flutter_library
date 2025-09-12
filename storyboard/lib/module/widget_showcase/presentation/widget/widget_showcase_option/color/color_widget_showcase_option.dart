@@ -63,7 +63,7 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
                         width: 20,
                         height: 20,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(kMyoroBorderRadiusLength),
+                          borderRadius: BorderRadius.circular(kMyoroBorderRadius),
                           color: color,
                         ),
                       ),

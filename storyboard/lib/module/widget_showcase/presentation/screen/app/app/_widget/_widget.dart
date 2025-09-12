@@ -12,7 +12,7 @@ final class _Widget extends StatelessWidget {
       listenable: viewModel.state,
       builder: (_, __) {
         return MyoroApp(
-          configuration: viewModel.configuration(
+          configuration: viewModel.buildConfiguration(
             MyoroScreen(
               configuration: MyoroScreenConfiguration(
                 appBar: MyoroAppBar(

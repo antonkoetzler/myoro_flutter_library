@@ -32,7 +32,7 @@ final class MyoroDialogModalWidgetShowcaseScreenThemeExtension
   // coverage:ignore-end
 
   MyoroDialogModalWidgetShowcaseScreenThemeExtension.builder()
-    : childWidgetBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+    : childWidgetBorderRadius = BorderRadius.circular(kMyoroBorderRadius),
       childWidgetSize = 100;
 
   @override

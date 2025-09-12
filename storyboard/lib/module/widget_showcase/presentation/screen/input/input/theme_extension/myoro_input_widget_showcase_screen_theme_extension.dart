@@ -23,7 +23,7 @@ final class MyoroInputWidgetShowcaseScreenThemeExtension
   // coverage:ignore-end
 
   MyoroInputWidgetShowcaseScreenThemeExtension.builder()
-    : suffixBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+    : suffixBorderRadius = BorderRadius.circular(kMyoroBorderRadius),
       suffixSize = 30;
 
   /// [BorderRadius] of [_Suffix].

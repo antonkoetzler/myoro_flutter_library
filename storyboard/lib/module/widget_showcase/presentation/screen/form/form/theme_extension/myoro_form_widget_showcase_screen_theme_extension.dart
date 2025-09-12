@@ -29,7 +29,7 @@ final class MyoroFormWidgetShowcaseScreenThemeExtension
   // coverage:ignore-end
 
   MyoroFormWidgetShowcaseScreenThemeExtension.builder()
-    : kittyBorderRadius = BorderRadius.circular(kMyoroBorderLength),
+    : kittyBorderRadius = BorderRadius.circular(kMyoroBorderRadius),
       kittySize = 50;
 
   @override

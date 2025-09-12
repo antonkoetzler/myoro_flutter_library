@@ -15,27 +15,24 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
     !state.isBottomSheet
         ? MyoroModal.showModal(
           context,
-          configuration: configuration(context),
+          configuration: buildConfiguration(context),
           child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         )
         : MyoroModal.showBottomSheet(
           context,
-          configuration: configuration(context),
+          configuration: buildConfiguration(context),
           child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         );
   }
 
   /// [MyoroModalConfiguration] of the [MyoroModal].
-  MyoroModalConfiguration configuration(BuildContext context) {
+  MyoroModalConfiguration buildConfiguration(BuildContext context) {
     return MyoroModalConfiguration(
       barrierDismissable: _state.barrierDismissable,
       useRootNavigator: _state.useRootNavigator,
-      constraints: _state.constraints,
       onClosed: _state.onClosedEnabled ? (_) => onClosed(context) : null,
       title: _state.title,
       showCloseButton: _state.showCloseButton,
-      padding: _state.padding,
-      closeButtonPadding: _state.closeButtonPadding,
     );
   }
 

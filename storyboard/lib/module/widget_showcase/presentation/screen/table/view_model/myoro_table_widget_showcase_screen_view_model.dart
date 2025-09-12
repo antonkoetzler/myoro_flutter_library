@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of [MyoroTableWidgetShowcaseScreen].
 final class MyoroTableWidgetShowcaseScreenViewModel {
   /// [MyoroTableConfiguration] of the [MyoroTable].
-  MyoroTableConfiguration<String> configuration(BuildContext context) {
+  MyoroTableConfiguration<String> buildConfiguration(BuildContext context) {
     final request = List.generate(faker.randomGenerator.integer(50), (int index) => 'Item #index').toSet;
 
     final columns =

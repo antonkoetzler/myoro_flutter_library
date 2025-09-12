@@ -8,21 +8,21 @@ final class _WidgetOptionsModal extends StatelessWidget {
     String widgetName,
     List<Widget> widgetOptions,
   ) async {
-    final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
+    // final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
-    final screenSize = MediaQuery.of(navigatorContext).size;
+    // final screenSize = MediaQuery.of(navigatorContext).size;
 
     await MyoroModal.showModal(
       navigatorContext,
       configuration: MyoroModalConfiguration(
         title: 'Options of $widgetName',
         useRootNavigator: false,
-        padding: EdgeInsets.zero,
-        closeButtonPadding: themeExtension.widgetOptionsModalCloseButtonPadding,
-        constraints: BoxConstraints(
-          maxWidth: MyoroPlatformHelper.isMobile ? screenSize.width * 0.9 : 400,
-          maxHeight: screenSize.height * 0.6,
-        ),
+        // padding: EdgeInsets.zero,
+        // closeButtonPadding: themeExtension.widgetOptionsModalCloseButtonPadding,
+        // constraints: BoxConstraints(
+        //   maxWidth: MyoroPlatformHelper.isMobile ? screenSize.width * 0.9 : 400,
+        //   maxHeight: screenSize.height * 0.6,
+        // ),
       ),
       child: _WidgetOptionsModal(widgetOptions),
     );
@@ -45,7 +45,11 @@ final class _WidgetOptionsModal extends StatelessWidget {
             Padding(padding: themeExtension.widgetOptionsModalItemPadding, child: _widgetOptions[i]),
             if (i != (_widgetOptions.length - 1)) ...[
               const MyoroBasicDivider(
-                configuration: MyoroBasicDividerConfiguration(direction: Axis.horizontal, padding: EdgeInsets.zero),
+                Axis.horizontal,
+                // configuration: MyoroBasicDividerConfiguration(
+                //   direction: Axis.horizontal,
+                //   padding: EdgeInsets.zero,
+                // ),
               ),
             ] else ...[
               SizedBox(height: themeExtension.widgetOptionsModalSpacing / 3),

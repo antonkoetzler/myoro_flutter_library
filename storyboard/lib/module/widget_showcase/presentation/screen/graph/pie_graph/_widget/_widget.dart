@@ -10,7 +10,7 @@ final class _Widget extends StatelessWidget {
 
     return ListenableBuilder(
       listenable: viewModel.state,
-      builder: (_, __) => MyoroPieGraph(configuration: viewModel.configuration(const _CenterWidget())),
+      builder: (_, __) => MyoroPieGraph(configuration: viewModel.buildConfiguration(const _CenterWidget())),
     );
   }
 }

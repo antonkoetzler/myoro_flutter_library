@@ -15,7 +15,7 @@ final class MyoroPieGraphWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroPieGraphConfiguration] of the [MyoroPieGraph].
-  MyoroPieGraphConfiguration configuration(Widget centerWidget) {
+  MyoroPieGraphConfiguration buildConfiguration(Widget centerWidget) {
     return MyoroPieGraphConfiguration(
       typeEnum: _state.typeEnum,
       centerWidget: _state.centerWidgetEnabled ? centerWidget : null,

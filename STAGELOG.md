@@ -2,6 +2,7 @@
 
 - feature: `kMyoroEmptyString`
 - feature: `ThemeExtension` overriding integrated into MFL `Widget`s and centralization of styling by only passing style fields to `ThemeExtension`s
+- feature: `.windsurf` rules
 - refactor: `MyoroMenu` --> `MyoroSingularMenu` and `MyoroMultiMenu`
 - improvement: Rename `ValueNotifier`s with the controller suffix to notifier (i.e. `MyoroFormController` --> `MyoroFormNotifier`)
 - improvement: New tasks added to `tool` and `.vscode`

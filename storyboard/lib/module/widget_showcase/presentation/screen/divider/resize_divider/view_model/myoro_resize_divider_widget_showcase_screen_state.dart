@@ -5,10 +5,14 @@ import 'package:storyboard/storyboard.dart';
 final class MyoroResizeDividerWidgetShowcaseScreenState {
   /// View model of [MyoroBasicDividerWidgetShowcaseScreen].
   final _basicDividerViewModel = MyoroBasicDividerWidgetShowcaseScreenViewModel();
+
+  /// [_basicDividerViewModel] getter.
   MyoroBasicDividerWidgetShowcaseScreenViewModel get basicDividerViewModel => _basicDividerViewModel;
 
   /// [ValueNotifier] controlling the width of [_Cover].
   final _coverWidthController = ValueNotifier<double>(double.infinity);
+
+  /// [_coverWidthController] getter.
   ValueNotifier<double> get coverWidthController => _coverWidthController;
 
   /// Dispose function.

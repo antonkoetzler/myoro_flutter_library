@@ -7,6 +7,6 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroTableWidgetShowcaseScreenViewModel>();
-    return MyoroTable<String>(configuration: viewModel.configuration(context));
+    return MyoroTable<String>(configuration: viewModel.buildConfiguration(context));
   }
 }

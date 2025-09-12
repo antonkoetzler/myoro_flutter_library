@@ -10,7 +10,8 @@ part 'myoro_resize_divider_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroResizeDivider].
 @immutable
 @myoroThemeExtension
-final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<MyoroResizeDividerThemeExtension>
+final class MyoroResizeDividerThemeExtension
+    extends MyoroDividerThemeExtension<MyoroResizeDividerThemeExtension>
     with _$MyoroResizeDividerThemeExtensionMixin {
   const MyoroResizeDividerThemeExtension({
     super.color,
@@ -30,8 +31,12 @@ final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<
       longValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
       resizeButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       resizeButtonColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      resizeButtonShortValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      resizeButtonLongValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+      resizeButtonShortValue: faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 50)
+          : null,
+      resizeButtonLongValue: faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 50)
+          : null,
     );
   }
   // coverage:ignore-end
@@ -87,7 +92,9 @@ final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<
       resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
           ? (resizeButtonBorderRadius ?? this.resizeButtonBorderRadius)
           : null,
-      resizeButtonColor: resizeButtonColorProvided ? (resizeButtonColor ?? this.resizeButtonColor) : null,
+      resizeButtonColor: resizeButtonColorProvided
+          ? (resizeButtonColor ?? this.resizeButtonColor)
+          : null,
       resizeButtonShortValue: resizeButtonShortValueProvided
           ? (resizeButtonShortValue ?? this.resizeButtonShortValue)
           : null,
@@ -96,7 +103,10 @@ final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<
   }
 
   @override
-  MyoroResizeDividerThemeExtension lerp(covariant MyoroResizeDividerThemeExtension? other, double t) {
+  MyoroResizeDividerThemeExtension lerp(
+    covariant MyoroResizeDividerThemeExtension? other,
+    double t,
+  ) {
     if (other is! MyoroResizeDividerThemeExtension) return this;
 
     return MyoroResizeDividerThemeExtension(

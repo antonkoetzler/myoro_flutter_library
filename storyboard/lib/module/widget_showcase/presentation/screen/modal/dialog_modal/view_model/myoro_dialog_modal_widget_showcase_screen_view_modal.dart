@@ -10,29 +10,25 @@ final class MyoroDialogModalWidgetShowcaseScreenViewModel {
 
   /// Function that displays the [MyoroDialogModal].
   void showModal(BuildContext context) {
-    MyoroDialogModal.show(context, configuration: configuration(context));
+    MyoroDialogModal.show(context, configuration: buildConfiguration(context));
   }
 
   /// [MyoroDialogModalConfiguration] of the [MyoroDialogModal].
-  MyoroDialogModalConfiguration configuration(BuildContext context) {
-    final modalConfiguration = _state.modalViewModel.configuration(context);
+  MyoroDialogModalConfiguration buildConfiguration(BuildContext context) {
+    final modalConfiguration = _state.modalViewModel.buildConfiguration(context);
 
     return MyoroDialogModalConfiguration(
       barrierDismissable: modalConfiguration.barrierDismissable,
       useRootNavigator: modalConfiguration.useRootNavigator,
-      constraints: modalConfiguration.constraints,
       onClosed: modalConfiguration.onClosed,
       title: modalConfiguration.title,
       showCloseButton: modalConfiguration.showCloseButton,
-      padding: modalConfiguration.padding,
-      closeButtonPadding: modalConfiguration.closeButtonPadding,
       invertButtons: state.invertButtons,
       confirmButtonText: state.confirmButtonText,
       cancelButtonText: state.cancelButtonText,
       onConfirm: state.onConfirmEnabled ? () => _onConfirm(context) : null,
       onCancel: state.onConfirmEnabled ? () => _onCancel(context) : null,
       text: state.text,
-      textStyle: state.textStyle,
       child: state.child,
     );
   }

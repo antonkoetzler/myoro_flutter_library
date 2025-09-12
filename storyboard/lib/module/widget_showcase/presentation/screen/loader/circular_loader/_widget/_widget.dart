@@ -6,7 +6,6 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroCircularLoaderWidgetShowcaseScreenViewModel>();
-    return MyoroCircularLoader(configuration: viewModel.configuration);
+    return const MyoroCircularLoader();
   }
 }

@@ -7,11 +7,16 @@ final class _Divider extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroResizeDividerWidgetShowcaseScreenViewModel>();
+    final dragCallback = viewModel.dragCallback;
 
     return ListenableBuilder(
       listenable: viewModel.state.basicDividerViewModel.state,
       builder: (_, __) {
-        return MyoroResizeDivider(configuration: viewModel.configuration);
+        final state = viewModel.state;
+        final basicDividerViewModel = state.basicDividerViewModel;
+        final basicDividerViewModelState = basicDividerViewModel.state;
+        final direction = basicDividerViewModelState.direction;
+        return MyoroResizeDivider(direction, dragCallback: dragCallback);
       },
     );
   }

@@ -32,7 +32,7 @@ final class MyoroPieGraphWidgetShowcaseScreenThemeExtension
   // coverage:ignore-end
 
   MyoroPieGraphWidgetShowcaseScreenThemeExtension.builder()
-    : centerWidgetBorderRadius = BorderRadius.circular(kMyoroBorderLength),
+    : centerWidgetBorderRadius = BorderRadius.circular(kMyoroBorderRadius),
       centerWidgetSize = 40;
 
   @override

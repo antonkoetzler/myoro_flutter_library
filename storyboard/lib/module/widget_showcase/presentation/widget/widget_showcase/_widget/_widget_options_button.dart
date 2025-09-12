@@ -8,13 +8,13 @@ final class _WidgetOptionsButton extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<WidgetShowcaseScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
-    final screenThemeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
+    // final screenThemeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
         onTapUp: (_) => _onTapUp(context, viewModel, themeExtension),
         iconConfiguration: MyoroIconConfiguration(icon: themeExtension.widgetOptionsButtonIcon),
-        padding: screenThemeExtension.buttonPadding,
+        // padding: screenThemeExtension.buttonPadding,
       ),
     );
   }

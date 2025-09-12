@@ -9,16 +9,6 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(context) {
-    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
-
-    return MyoroAppBar(
-      configuration: MyoroAppBarConfiguration(
-        child: Row(
-          spacing: widgetShowcaseThemeExtension.spacing,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [_AppBarTitle(), _AppBarMenuButton()],
-        ),
-      ),
-    );
+    return const MyoroAppBar(child: _AppBarTitle());
   }
 }

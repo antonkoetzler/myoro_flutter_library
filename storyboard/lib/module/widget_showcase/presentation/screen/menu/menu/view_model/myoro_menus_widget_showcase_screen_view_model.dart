@@ -21,10 +21,10 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
   /// Builds the [MyoroSingularMenuConfiguration].
   MyoroSingularMenuConfiguration<String> singluarMenuConfiguration(BuildContext context) {
     return MyoroSingularMenuConfiguration(
-      constraints: state.constraints,
-      backgroundColor: state.backgroundColor,
-      border: border(context),
-      borderRadius: BorderRadius.circular(state.borderRadius),
+      // constraints: state.constraints,
+      // backgroundColor: state.backgroundColor,
+      // border: border(context),
+      // borderRadius: BorderRadius.circular(state.borderRadius),
       request: _request,
       itemBuilder: _itemBuilder,
     );
@@ -33,18 +33,13 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
   /// Builds the [MyoroMultiMenuConfiguration].
   MyoroMultiMenuConfiguration<String> multiMenuConfiguration(BuildContext context) {
     return MyoroMultiMenuConfiguration(
-      constraints: state.constraints,
-      backgroundColor: state.backgroundColor,
-      border: border(context),
-      borderRadius: BorderRadius.circular(state.borderRadius),
+      // constraints: state.constraints,
+      // backgroundColor: state.backgroundColor,
+      // border: border(context),
+      // borderRadius: BorderRadius.circular(state.borderRadius),
       request: _request,
       itemBuilder: _itemBuilder,
     );
-  }
-
-  /// Getter of the [BoxBorder].
-  BoxBorder? border(BuildContext context) {
-    return state.borderEnabled ? MyoroButtonStyleEnum.border(context) : null;
   }
 
   /// [MyoroMenuConfiguration.request]

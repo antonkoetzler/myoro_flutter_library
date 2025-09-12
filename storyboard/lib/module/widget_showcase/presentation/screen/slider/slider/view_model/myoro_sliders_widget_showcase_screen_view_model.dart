@@ -19,7 +19,6 @@ final class MyoroSlidersWidgetShowcaseScreenViewModel {
 
     return MyoroSliderConfiguration(
       label: state.label,
-      labelTextStyle: state.labelTextStyle,
       value: state.sliderValue,
       currentValueText:
           state.currentValueTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,
@@ -36,7 +35,6 @@ final class MyoroSlidersWidgetShowcaseScreenViewModel {
 
     return MyoroRangeSliderConfiguration(
       label: state.label,
-      labelTextStyle: state.labelTextStyle,
       values: state.rangeSliderValues,
       currentValueText:
           state.currentValueTextEnabled ? formattedValue : MyoroSliderBaseConfiguration.currentValueTextDefaultValue,

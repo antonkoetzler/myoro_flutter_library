@@ -7,6 +7,6 @@ final class _Input extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-    return MyoroInput(configuration: viewModel.configuration(context, const _Suffix()));
+    return MyoroInput(configuration: viewModel.buildConfiguration(context, const _Suffix()));
   }
 }

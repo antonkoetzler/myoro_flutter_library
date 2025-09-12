@@ -7,6 +7,6 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroRadioWidgetShowcaseScreenViewModel>();
-    return MyoroRadio(configuration: viewModel.configuration(context));
+    return MyoroRadio(configuration: viewModel.buildConfiguration(context));
   }
 }

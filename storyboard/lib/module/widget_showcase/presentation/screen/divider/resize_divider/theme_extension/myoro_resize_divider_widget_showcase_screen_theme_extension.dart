@@ -38,7 +38,7 @@ final class MyoroResizeDividerWidgetShowcaseScreenThemeExtension
 
   MyoroResizeDividerWidgetShowcaseScreenThemeExtension.builder(ColorScheme colorScheme)
     : kittySize = 300,
-      kittyBorderRadius = BorderRadius.circular(kMyoroBorderRadiusLength),
+      kittyBorderRadius = BorderRadius.circular(kMyoroBorderRadius),
       coverColor = colorScheme.onPrimary;
 
   @override

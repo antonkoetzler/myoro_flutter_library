@@ -14,7 +14,7 @@ final class MyoroCarouselWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroCarouselConfiguration] of the [MyoroCarousel].
-  MyoroCarouselConfiguration configuration(List<Widget> items) {
+  MyoroCarouselConfiguration buildConfiguration(List<Widget> items) {
     return MyoroCarouselConfiguration(
       direction: state.direction,
       displayTraversalButtons: state.displayTraversalButtons,
