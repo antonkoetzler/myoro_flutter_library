@@ -11,8 +11,8 @@ final class _WidgetListingAccordion extends StatelessWidget {
         items:
             MyoroWidgetListEnum.values.map((value) {
               return MyoroAccordionItem(
-                titleBuilder: (_) => _WidgetListingAccordionItemTitle(value),
-                contentBuilder: (_) => _WidgetListingAccordionItemContent(value),
+                title: _WidgetListingAccordionItemTitle(value),
+                content: _WidgetListingAccordionItemContent(value),
               );
             }).toSet(),
       ),

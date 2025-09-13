@@ -73,7 +73,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     return copyWith(
       color: Color.lerp(color, other.color, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
-      widgetOptionsButtonIcon: myoroLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
+      widgetOptionsButtonIcon: myoroFallbackLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
       widgetOptionsModalSpacing: lerpDouble(widgetOptionsModalSpacing, other.widgetOptionsModalSpacing, t),
       widgetOptionsModalPadding: EdgeInsets.lerp(widgetOptionsModalPadding, other.widgetOptionsModalPadding, t),
       widgetOptionsModalItemPadding: EdgeInsets.lerp(

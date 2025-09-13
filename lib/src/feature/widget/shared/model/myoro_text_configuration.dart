@@ -14,10 +14,10 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
   static const alignmentDefaultValue = TextAlign.center;
 
   static MyoroTextConfiguration? lerp(MyoroTextConfiguration? primary, MyoroTextConfiguration? other, double t) {
-    final text = myoroLerp(primary?.text, other?.text, t);
+    final text = myoroFallbackLerp(primary?.text, other?.text, t);
     final maxLines = IntTween(begin: primary?.maxLines, end: other?.maxLines).lerp(t);
-    final overflow = myoroLerp(primary?.overflow, other?.overflow, t);
-    final alignment = myoroLerp(primary?.alignment, other?.alignment, t);
+    final overflow = myoroFallbackLerp(primary?.overflow, other?.overflow, t);
+    final alignment = myoroFallbackLerp(primary?.alignment, other?.alignment, t);
     final style = TextStyle.lerp(primary?.style, other?.style, t);
 
     return text != null

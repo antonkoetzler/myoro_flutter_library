@@ -81,7 +81,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
     final border = BoxBorder.lerp(this.border, other.border, t);
     final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
     final searchBarPadding = EdgeInsets.lerp(this.searchBarPadding, other.searchBarPadding, t);
-    final searchBarInputStyle = myoroLerp(this.searchBarInputStyle, other.searchBarInputStyle, t);
+    final searchBarInputStyle = myoroFallbackLerp(this.searchBarInputStyle, other.searchBarInputStyle, t);
     final itemBorderRadius = BorderRadius.lerp(this.itemBorderRadius, other.itemBorderRadius, t);
     final dialogTextStyle = TextStyle.lerp(this.dialogTextStyle, other.dialogTextStyle, t);
     final dialogTextLoaderPadding = EdgeInsets.lerp(this.dialogTextLoaderPadding, other.dialogTextLoaderPadding, t);

@@ -37,7 +37,7 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
   MyoroAccordionViewModel? _localViewModel;
   MyoroAccordionViewModel get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return _controller?.viewModel ?? (_localViewModel = MyoroAccordionViewModel(_configuration!));
+    return _controller?.viewModel ?? (_localViewModel ??= MyoroAccordionViewModel(_configuration!));
   }
 
   @override
@@ -75,21 +75,19 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
         themeExtension: themeExtension,
         child: ValueListenableBuilder(
           valueListenable: selectedItemNotifier,
-          builder: (_, selectedItem, _) {
-            return Scrollbar(
+          builder: (_, selectedItem, _) => Scrollbar(
+            controller: scrollController,
+            thumbVisibility: thumbVisibility,
+            child: ListView.builder(
               controller: scrollController,
-              thumbVisibility: thumbVisibility,
-              child: ListView.builder(
-                controller: scrollController,
-                itemCount: items.length,
-                itemBuilder: (_, index) => _Item(
-                  item: items.elementAt(index),
-                  selectedItem: selectedItem,
-                  isLastItem: index == items.length - 1,
-                ),
+              itemCount: items.length,
+              itemBuilder: (_, index) => _Item(
+                item: items.elementAt(index),
+                selectedItem: selectedItem,
+                isLastItem: index == items.length - 1,
               ),
-            );
-          },
+            ),
+          ),
         ),
       ),
     );

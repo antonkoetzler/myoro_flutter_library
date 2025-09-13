@@ -33,7 +33,7 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
     if (other is! MyoroSliderThemeExtension) return this;
 
     final indicatorTextStyle = TextStyle.lerp(this.indicatorTextStyle, other.indicatorTextStyle, t);
-    final indicatorTextAlignment = myoroLerp(this.indicatorTextAlignment, other.indicatorTextAlignment, t);
+    final indicatorTextAlignment = myoroFallbackLerp(this.indicatorTextAlignment, other.indicatorTextAlignment, t);
 
     return copyWith(
       indicatorTextStyle: indicatorTextStyle,

@@ -1,10 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 /// Abstract [ThemeExtension] class for dividers.
-abstract class MyoroDividerThemeExtension<T extends MyoroDividerThemeExtension<T>>
-    extends ThemeExtension<T> {
+abstract class MyoroDividerThemeExtension<T extends MyoroDividerThemeExtension<T>> extends ThemeExtension<T> {
   const MyoroDividerThemeExtension({this.color, this.shortValue, this.longValue});
 
   /// [Color] of the [MyoroDivider].

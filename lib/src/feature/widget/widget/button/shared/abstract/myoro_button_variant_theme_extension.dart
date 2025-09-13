@@ -19,24 +19,7 @@ abstract class MyoroButtonVariantThemeExtension<T extends MyoroButtonVariantThem
     this.borderIdleColor,
     this.borderHoverColor,
     this.borderTapColor,
-  }) : assert(
-         !(backgroundColor != null &&
-             (backgroundIdleColor != null || backgroundHoverColor != null || backgroundTapColor != null)),
-         '[MyoroButtonVariantThemeExtension]: If [backgroundColor] is provided, '
-         '[backgroundIdleColor] [backgroundHoverColor], and [backgroundTapColor] cannot be provided.',
-       ),
-       assert(
-         !(contentColor != null &&
-             (contentIdleColor != null || contentHoverColor != null || contentTapColor != null)),
-         '[MyoroButtonVariantThemeExtension]: If [contentColor] is provided, '
-         '[contentIdleColor] [contentHoverColor], and [contentTapColor] cannot be provided.',
-       ),
-       assert(
-         !(borderColor != null &&
-             (borderIdleColor != null || borderHoverColor != null || borderTapColor != null)),
-         '[MyoroButtonVariantThemeExtension]: If [borderColor] is provided, '
-         '[borderIdleColor] [borderHoverColor], and [borderTapColor] cannot be provided.',
-       );
+  });
 
   /// Background [Color] of the button.
   ///

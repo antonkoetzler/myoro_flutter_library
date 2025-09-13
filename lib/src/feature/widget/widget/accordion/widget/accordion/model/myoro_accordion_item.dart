@@ -8,27 +8,21 @@ part 'myoro_accordion_item.g.dart';
 /// Item of a [MyoroAccordion].
 @myoroModel
 class MyoroAccordionItem with _$MyoroAccordionItemMixin {
-  const MyoroAccordionItem({required this.titleBuilder, required this.contentBuilder});
+  const MyoroAccordionItem({required this.title, required this.content});
 
   // coverage:ignore-start
   MyoroAccordionItem.fake({Widget? title, Widget? content})
-    : titleBuilder = ((_) => title ?? Text(faker.lorem.word())),
-      contentBuilder = ((_) => content ?? Text(faker.lorem.word()));
+    : title = title ?? Text(faker.lorem.word()),
+      content = content ?? Text(faker.lorem.word());
   // coverage:ignore-end
 
-  /// Builder of the title of the item.
-  final MyoroAccordionItemTitleBuilder titleBuilder;
+  /// Title of the item.
+  final Widget title;
 
-  /// Builder of the content of the [MyoroAccordionItem].
-  final MyoroAccordionItemContentBuilder contentBuilder;
+  /// Content of the [MyoroAccordionItem].
+  final Widget content;
 
-  MyoroAccordionItem copyWith({
-    MyoroAccordionItemTitleBuilder? titleBuilder,
-    MyoroAccordionItemContentBuilder? contentBuilder,
-  }) {
-    return MyoroAccordionItem(
-      titleBuilder: titleBuilder ?? this.titleBuilder,
-      contentBuilder: contentBuilder ?? this.contentBuilder,
-    );
+  MyoroAccordionItem copyWith({Widget? title, Widget? content}) {
+    return MyoroAccordionItem(title: title ?? this.title, content: content ?? this.content);
   }
 }

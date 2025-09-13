@@ -29,10 +29,7 @@ class MyoroButtonSecondaryVariantThemeExtension
     super.borderTapColor,
   });
 
-  factory MyoroButtonSecondaryVariantThemeExtension.builder(
-    bool isDarkMode,
-    ColorScheme colorScheme,
-  ) {
+  factory MyoroButtonSecondaryVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
     const secondaryBackgroundHoverColorFactor = 0.7;
     const secondaryBackgroundTapColorFactor = 0.5;
 
@@ -62,11 +59,7 @@ class MyoroButtonSecondaryVariantThemeExtension
     if (other is! MyoroButtonSecondaryVariantThemeExtension) return this;
 
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
-    final backgroundHoverColor = Color.lerp(
-      this.backgroundHoverColor,
-      other.backgroundHoverColor,
-      t,
-    );
+    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
     final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
     final contentColor = Color.lerp(this.contentColor, other.contentColor, t);
     final contentIdleColor = Color.lerp(this.contentIdleColor, other.contentIdleColor, t);

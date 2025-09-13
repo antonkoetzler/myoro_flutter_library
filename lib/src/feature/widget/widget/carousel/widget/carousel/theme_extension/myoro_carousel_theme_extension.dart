@@ -32,8 +32,8 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
   MyoroCarouselThemeExtension lerp(covariant ThemeExtension<MyoroCarouselThemeExtension>? other, double t) {
     if (other is! MyoroCarouselThemeExtension) return this;
 
-    final previousItemButtonIcon = myoroLerp(this.previousItemButtonIcon, other.previousItemButtonIcon, t);
-    final nextItemButtonIcon = myoroLerp(this.nextItemButtonIcon, other.nextItemButtonIcon, t);
+    final previousItemButtonIcon = myoroFallbackLerp(this.previousItemButtonIcon, other.previousItemButtonIcon, t);
+    final nextItemButtonIcon = myoroFallbackLerp(this.nextItemButtonIcon, other.nextItemButtonIcon, t);
 
     return copyWith(
       previousItemButtonIcon: previousItemButtonIcon,

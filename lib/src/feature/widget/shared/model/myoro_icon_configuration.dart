@@ -12,7 +12,7 @@ part 'myoro_icon_configuration.g.dart';
 @myoroModel
 class MyoroIconConfiguration with _$MyoroIconConfigurationMixin {
   static MyoroIconConfiguration? lerp(MyoroIconConfiguration? primary, MyoroIconConfiguration? other, double t) {
-    final icon = myoroLerp(primary?.icon, other?.icon, t);
+    final icon = myoroFallbackLerp(primary?.icon, other?.icon, t);
     final size = lerpDouble(primary?.size, other?.size, t);
 
     return icon != null ? MyoroIconConfiguration(icon: icon, size: size) : null;

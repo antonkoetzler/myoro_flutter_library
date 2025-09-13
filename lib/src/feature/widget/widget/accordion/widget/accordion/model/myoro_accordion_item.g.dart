@@ -20,19 +20,19 @@ mixin _$MyoroAccordionItemMixin {
   bool operator ==(Object other) {
     return other is MyoroAccordionItem &&
         other.runtimeType == runtimeType &&
-        other.titleBuilder == self.titleBuilder &&
-        other.contentBuilder == self.contentBuilder;
+        other.title == self.title &&
+        other.content == self.content;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.titleBuilder, self.contentBuilder);
+    return Object.hash(self.title, self.content);
   }
 
   @override
   String toString() =>
       'MyoroAccordionItem(\n'
-      '  titleBuilder: ${self.titleBuilder},\n'
-      '  contentBuilder: ${self.contentBuilder},\n'
+      '  title: ${self.title},\n'
+      '  content: ${self.content},\n'
       ');';
 }

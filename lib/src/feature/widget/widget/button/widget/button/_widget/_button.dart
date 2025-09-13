@@ -18,7 +18,7 @@ final class _Button extends StatelessWidget {
     final state = viewModel.state;
     final configuration = state.configuration;
 
-    final child = Container(
+    final child = DecoratedBox(
       decoration: BoxDecoration(
         color: backgroundColorBuilder(_tapStatusEnum),
         border: borderBuilder.call(_tapStatusEnum),

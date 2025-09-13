@@ -14,8 +14,11 @@ class MyoroMultiThemeExtensionWrapper extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final themeData = context.themeData;
+    final themeDataThemeExtensions = themeData.extensions;
+
     return Theme(
-      data: context.themeData.copyWith(extensions: themeExtensions),
+      data: themeData.copyWith(extensions: [...themeDataThemeExtensions.values, ...themeExtensions]),
       child: child,
     );
   }

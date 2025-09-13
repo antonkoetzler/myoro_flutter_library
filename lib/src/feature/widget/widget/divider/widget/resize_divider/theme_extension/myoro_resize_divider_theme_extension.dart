@@ -10,8 +10,7 @@ part 'myoro_resize_divider_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroResizeDivider].
 @immutable
 @myoroThemeExtension
-final class MyoroResizeDividerThemeExtension
-    extends MyoroDividerThemeExtension<MyoroResizeDividerThemeExtension>
+final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<MyoroResizeDividerThemeExtension>
     with _$MyoroResizeDividerThemeExtensionMixin {
   const MyoroResizeDividerThemeExtension({
     super.color,
@@ -31,12 +30,8 @@ final class MyoroResizeDividerThemeExtension
       longValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
       resizeButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       resizeButtonColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      resizeButtonShortValue: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 50)
-          : null,
-      resizeButtonLongValue: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 50)
-          : null,
+      resizeButtonShortValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
+      resizeButtonLongValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
     );
   }
   // coverage:ignore-end
@@ -92,9 +87,7 @@ final class MyoroResizeDividerThemeExtension
       resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
           ? (resizeButtonBorderRadius ?? this.resizeButtonBorderRadius)
           : null,
-      resizeButtonColor: resizeButtonColorProvided
-          ? (resizeButtonColor ?? this.resizeButtonColor)
-          : null,
+      resizeButtonColor: resizeButtonColorProvided ? (resizeButtonColor ?? this.resizeButtonColor) : null,
       resizeButtonShortValue: resizeButtonShortValueProvided
           ? (resizeButtonShortValue ?? this.resizeButtonShortValue)
           : null,
@@ -103,20 +96,36 @@ final class MyoroResizeDividerThemeExtension
   }
 
   @override
-  MyoroResizeDividerThemeExtension lerp(
-    covariant MyoroResizeDividerThemeExtension? other,
-    double t,
-  ) {
+  MyoroResizeDividerThemeExtension lerp(covariant MyoroResizeDividerThemeExtension? other, double t) {
     if (other is! MyoroResizeDividerThemeExtension) return this;
 
-    return MyoroResizeDividerThemeExtension(
-      color: Color.lerp(color, other.color, t),
-      shortValue: lerpDouble(shortValue, other.shortValue, t),
-      longValue: lerpDouble(longValue, other.longValue, t),
+    final color = Color.lerp(this.color, other.color, t);
+    final shortValue = lerpDouble(this.shortValue, other.shortValue, t);
+    final longValue = myoroDoubleLerp(this.longValue, other.longValue, t);
+    final resizeButtonBorderRadius = BorderRadius.lerp(
+      this.resizeButtonBorderRadius,
+      other.resizeButtonBorderRadius,
+      t,
+    );
+    final resizeButtonColor = Color.lerp(this.resizeButtonColor, other.resizeButtonColor, t);
+    final resizeButtonShortValue = lerpDouble(this.resizeButtonShortValue, other.resizeButtonShortValue, t);
+    final resizeButtonLongValue = lerpDouble(this.resizeButtonLongValue, other.resizeButtonLongValue, t);
+
+    return copyWith(
+      color: color,
+      colorProvided: color != null,
+      shortValue: shortValue,
+      shortValueProvided: shortValue != null,
+      longValue: longValue,
+      longValueProvided: longValue != null,
       resizeButtonBorderRadius: resizeButtonBorderRadius,
-      resizeButtonColor: Color.lerp(resizeButtonColor, other.resizeButtonColor, t),
-      resizeButtonShortValue: lerpDouble(resizeButtonShortValue, other.resizeButtonShortValue, t),
-      resizeButtonLongValue: lerpDouble(resizeButtonLongValue, other.resizeButtonLongValue, t),
+      resizeButtonBorderRadiusProvided: resizeButtonBorderRadius != null,
+      resizeButtonColor: resizeButtonColor,
+      resizeButtonColorProvided: resizeButtonColor != null,
+      resizeButtonShortValue: resizeButtonShortValue,
+      resizeButtonShortValueProvided: resizeButtonShortValue != null,
+      resizeButtonLongValue: resizeButtonLongValue,
+      resizeButtonLongValueProvided: resizeButtonLongValue != null,
     );
   }
 }

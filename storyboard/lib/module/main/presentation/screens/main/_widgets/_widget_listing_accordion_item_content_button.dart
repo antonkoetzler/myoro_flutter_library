@@ -17,7 +17,9 @@ final class _WidgetListingAccordionItemContentButton extends StatelessWidget {
         onTapUp: (_) => viewModel.widgetListingAccordionItemContentButtonOnTapUp(context, _widgetName),
         textConfiguration: MyoroTextConfiguration(text: _widgetName),
       ),
-      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension),
+      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(
+        buttonPrimaryVariantThemeExtension.copyWith(borderRadiusProvided: false),
+      ),
     );
   }
 }

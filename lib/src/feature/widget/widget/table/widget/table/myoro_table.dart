@@ -68,19 +68,23 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final decoration = _themeExtension.decoration;
+
     final child = InheritedProvider.value(
       value: _viewModel,
-      child: Container(
-        decoration: _themeExtension.decoration,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IntrinsicHeight(child: _Columns<T>()),
-            const _Divider(Axis.horizontal),
-            Flexible(child: _RowsSection<T>()),
-          ],
-        ),
-      ),
+      child: decoration != null
+          ? DecoratedBox(
+              decoration: decoration,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IntrinsicHeight(child: _Columns<T>()),
+                  const _Divider(Axis.horizontal),
+                  Flexible(child: _RowsSection<T>()),
+                ],
+              ),
+            )
+          : null,
     );
 
     return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);

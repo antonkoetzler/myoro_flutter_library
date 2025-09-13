@@ -40,7 +40,7 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
     if (other is! MyoroSearchInputThemeExtension) return this;
 
     final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final searchButtonIcon = myoroLerp(this.searchButtonIcon, other.searchButtonIcon, t);
+    final searchButtonIcon = myoroFallbackLerp(this.searchButtonIcon, other.searchButtonIcon, t);
     final searchButtonLoadingSize = lerpDouble(this.searchButtonLoadingSize, other.searchButtonLoadingSize, t);
 
     return copyWith(

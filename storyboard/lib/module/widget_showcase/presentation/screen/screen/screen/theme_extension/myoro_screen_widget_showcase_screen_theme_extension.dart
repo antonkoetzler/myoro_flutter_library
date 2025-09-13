@@ -28,6 +28,6 @@ final class MyoroScreenWidgetShowcaseScreenThemeExtension
     double t,
   ) {
     if (other is! MyoroScreenWidgetShowcaseScreenThemeExtension) return this;
-    return copyWith(appBarMenuButtonIcon: myoroLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t));
+    return copyWith(appBarMenuButtonIcon: myoroFallbackLerp(appBarMenuButtonIcon, other.appBarMenuButtonIcon, t));
   }
 }

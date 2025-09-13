@@ -13,10 +13,11 @@ class MyoroBasicDivider extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
     final isHorizontal = _direction.isHorizontal;
-    final color = themeExtension?.color;
-    final shortValue = themeExtension?.shortValue;
-    final longValue = themeExtension?.longValue;
+    final color = themeExtension.color;
+    final shortValue = themeExtension.shortValue;
+    final longValue = themeExtension.longValue;
     return Container(
       color: color,
       width: isHorizontal ? longValue : shortValue,

@@ -106,6 +106,8 @@ linter:
     prefer_final_in_for_each: true
     prefer_final_locals: true
     prefer_const_constructors_in_immutables: true
+    use_colored_box: true
+    use_decorated_box: true
     sort_child_properties_last: true
     unawaited_futures: true
 

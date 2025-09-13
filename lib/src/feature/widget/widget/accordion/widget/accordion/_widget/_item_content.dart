@@ -16,7 +16,7 @@ final class _ItemContent extends StatelessWidget {
 
     final child = SizedBox(
       width: double.infinity,
-      child: (_item == _expandedItem) ? _item.contentBuilder(context) : const SizedBox(height: 0),
+      child: (_item == _expandedItem) ? _item.content : const SizedBox(height: 0),
     );
 
     return Container(

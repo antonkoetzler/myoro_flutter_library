@@ -10,13 +10,10 @@ final class _WidgetListingAccordionItemContent extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MainScreenThemeExtension>();
 
-    return Padding(
-      padding: themeExtension.widgetListingAccordionItemContent,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: themeExtension.spacing,
-        children: _widgetCategory.widgetNames.map(_WidgetListingAccordionItemContentButton.new).toList(),
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      spacing: themeExtension.spacing,
+      children: _widgetCategory.widgetNames.map(_WidgetListingAccordionItemContentButton.new).toList(),
     );
   }
 }

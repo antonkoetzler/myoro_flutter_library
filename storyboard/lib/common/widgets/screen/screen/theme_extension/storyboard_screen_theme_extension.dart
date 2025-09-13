@@ -57,10 +57,10 @@ final class StoryboardScreenThemeExtension extends ThemeExtension<StoryboardScre
     if (other is! StoryboardScreenThemeExtension) return this;
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
-      previousPageButtonIcon: myoroLerp(previousPageButtonIcon, other.previousPageButtonIcon, t),
+      previousPageButtonIcon: myoroFallbackLerp(previousPageButtonIcon, other.previousPageButtonIcon, t),
       buttonPadding: EdgeInsets.lerp(buttonPadding, other.buttonPadding, t),
       titleTextStyle: TextStyle.lerp(titleTextStyle, other.titleTextStyle, t),
-      toggleThemeButtonIcon: myoroLerp(toggleThemeButtonIcon, other.toggleThemeButtonIcon, t),
+      toggleThemeButtonIcon: myoroFallbackLerp(toggleThemeButtonIcon, other.toggleThemeButtonIcon, t),
     );
   }
 }

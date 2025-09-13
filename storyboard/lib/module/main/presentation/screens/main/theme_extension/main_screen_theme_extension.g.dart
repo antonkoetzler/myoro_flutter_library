@@ -17,30 +17,23 @@ mixin _$MainScreenThemeExtensionMixin on ThemeExtension<MainScreenThemeExtension
   MainScreenThemeExtension get self => this as MainScreenThemeExtension;
 
   @override
-  MainScreenThemeExtension copyWith({double? spacing, EdgeInsets? widgetListingAccordionItemContent}) {
-    return MainScreenThemeExtension(
-      spacing: spacing ?? self.spacing,
-      widgetListingAccordionItemContent: widgetListingAccordionItemContent ?? self.widgetListingAccordionItemContent,
-    );
+  MainScreenThemeExtension copyWith({double? spacing}) {
+    return MainScreenThemeExtension(spacing: spacing ?? self.spacing);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MainScreenThemeExtension &&
-        other.runtimeType == runtimeType &&
-        other.spacing == self.spacing &&
-        other.widgetListingAccordionItemContent == self.widgetListingAccordionItemContent;
+    return other is MainScreenThemeExtension && other.runtimeType == runtimeType && other.spacing == self.spacing;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.spacing, self.widgetListingAccordionItemContent);
+    return Object.hashAll([self.spacing]);
   }
 
   @override
   String toString() =>
       'MainScreenThemeExtension(\n'
       '  spacing: ${self.spacing},\n'
-      '  widgetListingAccordionItemContent: ${self.widgetListingAccordionItemContent},\n'
       ');';
 }

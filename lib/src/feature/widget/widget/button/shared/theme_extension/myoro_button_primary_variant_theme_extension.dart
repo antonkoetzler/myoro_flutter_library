@@ -12,6 +12,9 @@ part 'myoro_button_primary_variant_theme_extension.g.dart';
 class MyoroButtonPrimaryVariantThemeExtension
     extends MyoroButtonVariantThemeExtension<MyoroButtonPrimaryVariantThemeExtension>
     with _$MyoroButtonPrimaryVariantThemeExtensionMixin {
+  static const backgroundHoverColorFactor = 0.6;
+  static const backgroundTapColorFactor = 0.4;
+
   const MyoroButtonPrimaryVariantThemeExtension({
     super.backgroundColor,
     super.backgroundIdleColor,
@@ -29,25 +32,19 @@ class MyoroButtonPrimaryVariantThemeExtension
     super.borderTapColor,
   });
 
-  factory MyoroButtonPrimaryVariantThemeExtension.builder(
-    bool isDarkMode,
-    ColorScheme colorScheme,
-  ) {
-    const backgroundHoverColorFactor = 0.15;
-    const backgroundTapColorFactor = 0.2;
-
+  factory MyoroButtonPrimaryVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
     final primary = colorScheme.primary;
     final onPrimary = colorScheme.onPrimary;
 
     return MyoroButtonPrimaryVariantThemeExtension(
-      backgroundIdleColor: onPrimary,
+      backgroundIdleColor: primary,
       backgroundHoverColor: isDarkMode
           ? onPrimary.darken(backgroundHoverColorFactor)
           : onPrimary.brighten(backgroundHoverColorFactor),
       backgroundTapColor: isDarkMode
           ? onPrimary.darken(backgroundTapColorFactor)
           : onPrimary.brighten(backgroundTapColorFactor),
-      contentColor: primary,
+      contentColor: onPrimary,
       borderRadius: BorderRadius.circular(kMyoroBorderRadius),
     );
   }
@@ -60,11 +57,7 @@ class MyoroButtonPrimaryVariantThemeExtension
     if (other is! MyoroButtonPrimaryVariantThemeExtension) return this;
 
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
-    final backgroundHoverColor = Color.lerp(
-      this.backgroundHoverColor,
-      other.backgroundHoverColor,
-      t,
-    );
+    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
     final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
     final contentColor = Color.lerp(this.contentColor, other.contentColor, t);
     final contentIdleColor = Color.lerp(this.contentIdleColor, other.contentIdleColor, t);

@@ -102,7 +102,7 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
 
     final size = Size.lerp(this.size, other.size, t);
     final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final overlayCursor = myoroLerp(this.overlayCursor, other.overlayCursor, t);
+    final overlayCursor = myoroFallbackLerp(this.overlayCursor, other.overlayCursor, t);
     final overlayIdleBackgroundColor = Color.lerp(this.overlayIdleBackgroundColor, other.overlayIdleBackgroundColor, t);
     final selectionTypeModalConstraints = BoxConstraints.lerp(
       this.selectionTypeModalConstraints,
@@ -121,12 +121,12 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       t,
     );
     final selectionTypeModalSpacing = lerpDouble(this.selectionTypeModalSpacing, other.selectionTypeModalSpacing, t);
-    final selectionTypeModalButtonCameraIcon = myoroLerp(
+    final selectionTypeModalButtonCameraIcon = myoroFallbackLerp(
       this.selectionTypeModalButtonCameraIcon,
       other.selectionTypeModalButtonCameraIcon,
       t,
     );
-    final selectionTypeModalButtonGalleryIcon = myoroLerp(
+    final selectionTypeModalButtonGalleryIcon = myoroFallbackLerp(
       this.selectionTypeModalButtonGalleryIcon,
       other.selectionTypeModalButtonGalleryIcon,
       t,

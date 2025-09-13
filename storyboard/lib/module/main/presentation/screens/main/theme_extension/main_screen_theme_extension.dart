@@ -13,34 +13,20 @@ part 'main_screen_theme_extension.g.dart';
 @myoroThemeExtension
 final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExtension>
     with _$MainScreenThemeExtensionMixin {
-  const MainScreenThemeExtension({required this.spacing, required this.widgetListingAccordionItemContent});
+  const MainScreenThemeExtension({required this.spacing});
 
   // coverage:ignore-start
-  MainScreenThemeExtension.fake()
-    : spacing = faker.randomGenerator.decimal(scale: 20),
-      widgetListingAccordionItemContent = myoroFake<EdgeInsets>();
+  MainScreenThemeExtension.fake() : spacing = faker.randomGenerator.decimal(scale: 20);
   // coverage:ignore-end
 
-  const MainScreenThemeExtension.builder()
-    : spacing = kMyoroMultiplier * 2,
-      widgetListingAccordionItemContent = const EdgeInsets.all(10);
+  const MainScreenThemeExtension.builder() : spacing = kMyoroMultiplier * 2;
 
   /// General spacing of [Widget]s.
   final double spacing;
 
-  /// Padding of [_WidgetListingAccordionItemContent].
-  final EdgeInsets widgetListingAccordionItemContent;
-
   @override
   MainScreenThemeExtension lerp(covariant ThemeExtension<MainScreenThemeExtension>? other, double t) {
     if (other is! MainScreenThemeExtension) return this;
-    return copyWith(
-      spacing: lerpDouble(spacing, other.spacing, t),
-      widgetListingAccordionItemContent: EdgeInsets.lerp(
-        widgetListingAccordionItemContent,
-        other.widgetListingAccordionItemContent,
-        t,
-      ),
-    );
+    return copyWith(spacing: lerpDouble(spacing, other.spacing, t));
   }
 }

@@ -119,9 +119,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
   MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
     if (other is! MyoroInputThemeExtension) return this;
 
-    final underlinedBorder = myoroLerp(this.underlinedBorder, other.underlinedBorder, t);
-    final outlinedBorder = myoroLerp(this.outlinedBorder, other.outlinedBorder, t);
-    final noneBorder = myoroLerp(this.noneBorder, other.noneBorder, t);
+    final underlinedBorder = myoroFallbackLerp(this.underlinedBorder, other.underlinedBorder, t);
+    final outlinedBorder = myoroFallbackLerp(this.outlinedBorder, other.outlinedBorder, t);
+    final noneBorder = myoroFallbackLerp(this.noneBorder, other.noneBorder, t);
     final primaryColor = Color.lerp(this.primaryColor, other.primaryColor, t);
     final errorBorderColor = Color.lerp(this.errorBorderColor, other.errorBorderColor, t);
     final cursorHeight = lerpDouble(this.cursorHeight, other.cursorHeight, t);
@@ -130,9 +130,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
     final inputTextStyle = TextStyle.lerp(this.inputTextStyle, other.inputTextStyle, t);
     final spacing = lerpDouble(this.spacing, other.spacing, t);
     final labelTextStyle = TextStyle.lerp(this.labelTextStyle, other.labelTextStyle, t);
-    final labelBehavior = myoroLerp(this.labelBehavior, other.labelBehavior, t);
+    final labelBehavior = myoroFallbackLerp(this.labelBehavior, other.labelBehavior, t);
     final clearTextButtonPadding = EdgeInsets.lerp(this.clearTextButtonPadding, other.clearTextButtonPadding, t);
-    final clearTextButtonIcon = myoroLerp(this.clearTextButtonIcon, other.clearTextButtonIcon, t);
+    final clearTextButtonIcon = myoroFallbackLerp(this.clearTextButtonIcon, other.clearTextButtonIcon, t);
 
     return copyWith(
       underlinedBorder: underlinedBorder,

@@ -10,26 +10,26 @@ final class _ItemTitleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
-    final itemContentBackgroundColor = themeExtension.itemContentBackgroundColor;
-    final itemTitleButtonBorderRadius = themeExtension.itemTitleButtonBorderRadius;
     final itemTitleButtonSpacing = themeExtension.itemTitleButtonSpacing;
     final itemTitleButtonTitleTextStyle = themeExtension.itemTitleButtonTitleTextStyle;
-    final itemTitleButtonContentPadding = themeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
+    final itemTitleButtonContentPadding =
+        themeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
 
     final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final backgroundIdleColor = buttonThemeExtension.backgroundIdleColor;
+    final backgroundHoverColor = buttonThemeExtension.backgroundHoverColor;
 
     final viewModel = context.read<MyoroAccordionViewModel>();
     final toggleItem = viewModel.toggleItem;
 
-    final title = _item.titleBuilder(context);
+    final title = _item.title;
+    final isSelected = _item == _selectedItem;
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => toggleItem(_item)),
       themeExtension: buttonThemeExtension.copyWith(
-        backgroundIdleColor: itemContentBackgroundColor,
-        backgroundHoverColor: itemContentBackgroundColor,
-        backgroundTapColor: itemContentBackgroundColor,
-        borderRadius: itemTitleButtonBorderRadius,
+        backgroundIdleColor: isSelected ? backgroundHoverColor : backgroundIdleColor,
+        borderRadiusProvided: false,
       ),
       builder: (context, tapStatus) => Padding(
         padding: itemTitleButtonContentPadding,
