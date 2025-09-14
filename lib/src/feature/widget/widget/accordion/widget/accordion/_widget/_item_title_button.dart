@@ -9,15 +9,14 @@ final class _ItemTitleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
-    final itemTitleButtonSpacing = themeExtension.itemTitleButtonSpacing;
-    final itemTitleButtonTitleTextStyle = themeExtension.itemTitleButtonTitleTextStyle;
-    final itemTitleButtonContentPadding =
-        themeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
+    final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final itemTitleButtonSpacing = accordionThemeExtension.itemTitleButtonSpacing;
+    final itemTitleButtonTitleTextStyle = accordionThemeExtension.itemTitleButtonTitleTextStyle;
+    final itemTitleButtonContentPadding = accordionThemeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
+    final itemTitleButtonSelectedBackgroundColor = accordionThemeExtension.itemTitleButtonSelectedBackgroundColor;
 
     final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
     final backgroundIdleColor = buttonThemeExtension.backgroundIdleColor;
-    final backgroundHoverColor = buttonThemeExtension.backgroundHoverColor;
 
     final viewModel = context.read<MyoroAccordionViewModel>();
     final toggleItem = viewModel.toggleItem;
@@ -28,7 +27,7 @@ final class _ItemTitleButton extends StatelessWidget {
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => toggleItem(_item)),
       themeExtension: buttonThemeExtension.copyWith(
-        backgroundIdleColor: isSelected ? backgroundHoverColor : backgroundIdleColor,
+        backgroundIdleColor: isSelected ? itemTitleButtonSelectedBackgroundColor : backgroundIdleColor,
         borderRadiusProvided: false,
       ),
       builder: (context, tapStatus) => Padding(

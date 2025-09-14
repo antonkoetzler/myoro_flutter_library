@@ -17,6 +17,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     this.itemContentBackgroundColor,
     this.itemContentAnimationDuration,
     this.itemContentAnimationCurve,
+    this.itemTitleButtonSelectedBackgroundColor,
     this.itemTitleButtonContentPadding,
     this.itemTitleButtonSpacing,
     this.itemTitleButtonTitleTextStyle,
@@ -33,23 +34,42 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemContentAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
       itemContentAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null,
-      itemTitleButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      itemTitleButtonSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      itemTitleButtonSelectedBackgroundColor = faker.randomGenerator.boolean()
+          ? myoroFake<Color>()
+          : null,
+      itemTitleButtonContentPadding = faker.randomGenerator.boolean()
+          ? myoroFake<EdgeInsets>()
+          : null,
+      itemTitleButtonSpacing = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 50)
+          : null,
+      itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean()
+          ? myoroFake<TextStyle>()
+          : null,
       itemTitleButtonArrowIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       itemTitleButtonArrowIconColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemTitleButtonArrowIconSize = faker.randomGenerator.boolean()
           ? faker.randomGenerator.decimal(scale: 50, min: 10)
           : null,
-      itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
-      itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null;
+      itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean()
+          ? myoroFake<Duration>()
+          : null,
+      itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean()
+          ? myoroFake<Curve>()
+          : null;
   // coverage:ignore-end
 
-  MyoroAccordionThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme)
-    : thumbVisibility = false,
+  MyoroAccordionThemeExtension.builder(
+    bool isDarkMode,
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : thumbVisibility = false,
       itemContentBackgroundColor = colorScheme.primary,
       itemContentAnimationDuration = const Duration(milliseconds: 200),
       itemContentAnimationCurve = Curves.easeInOut,
+      itemTitleButtonSelectedBackgroundColor = isDarkMode
+          ? colorScheme.onPrimary.darken(0.7)
+          : colorScheme.onPrimary.brighten(0.75),
       itemTitleButtonContentPadding = const EdgeInsets.all(10),
       itemTitleButtonSpacing = 10,
       itemTitleButtonTitleTextStyle = textTheme.titleLarge,
@@ -70,6 +90,9 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
 
   /// Animation [Curve] of the animation of [_ItemContent].
   final Curve? itemContentAnimationCurve;
+
+  /// [Color] of [_ItemTitleButton] when it is selected.
+  final Color? itemTitleButtonSelectedBackgroundColor;
 
   /// [EdgeInsets] of [_ItemTitleButton].
   final EdgeInsets? itemTitleButtonContentPadding;
@@ -96,11 +119,18 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
   final Curve? itemTitleButtonArrowAnimationCurve;
 
   @override
-  MyoroAccordionThemeExtension lerp(covariant ThemeExtension<MyoroAccordionThemeExtension>? other, double t) {
+  MyoroAccordionThemeExtension lerp(
+    covariant ThemeExtension<MyoroAccordionThemeExtension>? other,
+    double t,
+  ) {
     if (other is! MyoroAccordionThemeExtension) return this;
 
     final thumbVisibility = myoroFallbackLerp(this.thumbVisibility, other.thumbVisibility, t);
-    final itemContentBackgroundColor = Color.lerp(this.itemContentBackgroundColor, other.itemContentBackgroundColor, t);
+    final itemContentBackgroundColor = Color.lerp(
+      this.itemContentBackgroundColor,
+      other.itemContentBackgroundColor,
+      t,
+    );
     final itemContentAnimationDuration = myoroFallbackLerp(
       this.itemContentAnimationDuration,
       other.itemContentAnimationDuration,
@@ -111,12 +141,21 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       other.itemContentAnimationCurve,
       t,
     );
+    final itemTitleButtonSelectedBackgroundColor = Color.lerp(
+      this.itemTitleButtonSelectedBackgroundColor,
+      other.itemTitleButtonSelectedBackgroundColor,
+      t,
+    );
     final itemTitleButtonContentPadding = EdgeInsets.lerp(
       this.itemTitleButtonContentPadding,
       other.itemTitleButtonContentPadding,
       t,
     );
-    final itemTitleButtonSpacing = lerpDouble(this.itemTitleButtonSpacing, other.itemTitleButtonSpacing, t);
+    final itemTitleButtonSpacing = lerpDouble(
+      this.itemTitleButtonSpacing,
+      other.itemTitleButtonSpacing,
+      t,
+    );
     final itemTitleButtonTitleTextStyle = TextStyle.lerp(
       this.itemTitleButtonTitleTextStyle,
       other.itemTitleButtonTitleTextStyle,
@@ -157,6 +196,9 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemContentAnimationDurationProvided: itemContentAnimationDuration != null,
       itemContentAnimationCurve: itemContentAnimationCurve,
       itemContentAnimationCurveProvided: itemContentAnimationCurve != null,
+      itemTitleButtonSelectedBackgroundColor: itemTitleButtonSelectedBackgroundColor,
+      itemTitleButtonSelectedBackgroundColorProvided:
+          itemTitleButtonSelectedBackgroundColor != null,
       itemTitleButtonContentPadding: itemTitleButtonContentPadding,
       itemTitleButtonContentPaddingProvided: itemTitleButtonContentPadding != null,
       itemTitleButtonSpacing: itemTitleButtonSpacing,
