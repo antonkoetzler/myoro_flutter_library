@@ -14,3 +14,4 @@
 - Update the `Widgets.md` with all of the new `Widget`s added
 - Bring back copyWith in MFA from the dead
 - 100% pub.dev score
+- Fix deep scope theme extensions collisions by creating builders in Kyoto wrapper
