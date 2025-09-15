@@ -53,7 +53,9 @@ extension MyoroBuildContextExtension on BuildContext {
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
-    throw Exception('[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.');
+    throw Exception(
+      '[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.',
+    );
   }
 
   /// Opens the drawer of the [BuildContext]'s [MyoroScreen].

@@ -10,8 +10,10 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
   @override
   Widget build(context) {
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
-    final itemTitleButtonArrowAnimationDuration = accordionThemeExtension.itemTitleButtonArrowAnimationDuration;
-    final itemTitleButtonArrowAnimationCurve = accordionThemeExtension.itemTitleButtonArrowAnimationCurve;
+    final itemTitleButtonArrowAnimationDuration =
+        accordionThemeExtension.itemTitleButtonArrowAnimationDuration;
+    final itemTitleButtonArrowAnimationCurve =
+        accordionThemeExtension.itemTitleButtonArrowAnimationCurve;
     final itemTitleButtonArrowIcon = accordionThemeExtension.itemTitleButtonArrowIcon;
     final itemTitleButtonArrowIconSize = accordionThemeExtension.itemTitleButtonArrowIconSize;
     final itemTitleButtonArrowIconColor = accordionThemeExtension.itemTitleButtonArrowIconColor;
@@ -24,7 +26,8 @@ final class _ItemTitleButtonArrow extends StatelessWidget {
       color: itemTitleButtonArrowIconColor,
     );
 
-    return itemTitleButtonArrowAnimationDuration != null && itemTitleButtonArrowAnimationCurve != null
+    return itemTitleButtonArrowAnimationDuration != null &&
+            itemTitleButtonArrowAnimationCurve != null
         ? AnimatedRotation(
             turns: isSelected ? 0.5 : 0,
             duration: itemTitleButtonArrowAnimationDuration,

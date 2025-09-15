@@ -31,13 +31,15 @@ final class MyoroTabView extends StatefulWidget {
 
 final class _MyoroTabViewState extends State<MyoroTabView> {
   MyoroTabViewThemeExtension get _themeExtension {
-    return widget.themeExtension ?? context.resolveThemeExtension<MyoroTabViewThemeExtension>();
+    return widget.themeExtension ??
+        Theme.of(context.read<BuildContext>()).extension<MyoroTabViewThemeExtension>()!;
   }
 
   MyoroTabViewViewModel? _localViewModel;
   MyoroTabViewViewModel get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return widget.controller?.viewModel ?? (_localViewModel ??= MyoroTabViewViewModel(widget.configuration!));
+    return widget.controller?.viewModel ??
+        (_localViewModel ??= MyoroTabViewViewModel(widget.configuration!));
   }
 
   @override

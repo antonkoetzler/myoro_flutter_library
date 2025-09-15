@@ -18,7 +18,9 @@ class MyoroIconTextButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final themeExtension =
+        this.themeExtension ??
+        Theme.of(context.read<BuildContext>()).extension<MyoroIconTextButtonThemeExtension>()!;
 
     return InheritedProvider.value(
       value: configuration,

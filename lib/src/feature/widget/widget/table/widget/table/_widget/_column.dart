@@ -18,7 +18,9 @@ final class _Column extends StatelessWidget {
             child: _column.child,
           )
         : _column.child;
-    child = columnTextStyle != null ? DefaultTextStyle(style: columnTextStyle, child: child) : child;
+    child = columnTextStyle != null
+        ? DefaultTextStyle(style: columnTextStyle, child: child)
+        : child;
 
     // Last [MyoroTableColumn] must always be expanded.
     if (_isLastColumn) {

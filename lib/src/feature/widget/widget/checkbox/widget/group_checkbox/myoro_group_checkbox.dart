@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// A group of [MyoroCheckbox]s.
 class MyoroGroupCheckbox extends StatefulWidget {
@@ -33,12 +34,14 @@ class MyoroGroupCheckbox extends StatefulWidget {
 final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
   MyoroGroupCheckboxConfiguration get _configuration => widget.configuration;
   MyoroGroupCheckboxThemeExtension get _themeExtension {
-    return widget.themeExtension ?? context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
+    return widget.themeExtension ??
+        Theme.of(context.read<BuildContext>()).extension<MyoroGroupCheckboxThemeExtension>()!;
   }
 
   MyoroGroupCheckboxNotifier? _localController;
   MyoroGroupCheckboxNotifier get _controller {
-    return widget.controller ?? (_localController ??= MyoroGroupCheckboxNotifier(checkboxes: widget.checkboxes!));
+    return widget.controller ??
+        (_localController ??= MyoroGroupCheckboxNotifier(checkboxes: widget.checkboxes!));
   }
 
   @override

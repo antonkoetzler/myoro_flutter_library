@@ -60,7 +60,9 @@ final class _MyoroAccordionState extends State<MyoroAccordion> {
 
   @override
   Widget build(context) {
-    final themeExtension = _themeExtension ?? context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final appContext = context.read<MyoroAppContext>();
+    final themeExtension =
+        _themeExtension ?? appContext.resolveThemeExtension<MyoroAccordionThemeExtension>();
 
     final state = _viewModel.state;
     final selectedItemNotifier = state.selectedItemNotifier;

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_card.dart';
 part '_widget/_title.dart';
 
 /// Base card.
 class MyoroCard extends StatelessWidget {
-  const MyoroCard({super.key, this.title = kMyoroEmptyString, this.themeExtension, required this.child});
+  const MyoroCard({
+    super.key,
+    this.title = kMyoroEmptyString,
+    this.themeExtension,
+    required this.child,
+  });
 
   /// Title of the card.
   final String title;
@@ -19,7 +25,9 @@ class MyoroCard extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroCardThemeExtension>();
+    final themeExtension =
+        this.themeExtension ??
+        Theme.of(context.read<BuildContext>()).extension<MyoroCardThemeExtension>()!;
     final titleCardSpacing = themeExtension.titleCardSpacing ?? 0;
 
     return MyoroSingularThemeExtensionWrapper(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// Singular radio(box) [Widget].
 class MyoroRadio extends StatefulWidget {
@@ -9,7 +10,11 @@ class MyoroRadio extends StatefulWidget {
   /// Theme extension.
   final MyoroRadioThemeExtension? themeExtension;
 
-  const MyoroRadio({super.key, this.configuration = const MyoroRadioConfiguration(), this.themeExtension});
+  const MyoroRadio({
+    super.key,
+    this.configuration = const MyoroRadioConfiguration(),
+    this.themeExtension,
+  });
 
   @override
   State<MyoroRadio> createState() => _MyoroRadioState();
@@ -19,12 +24,14 @@ final class _MyoroRadioState extends State<MyoroRadio> {
   MyoroRadioConfiguration get _configuration => widget.configuration;
 
   MyoroRadioThemeExtension get _themeExtension {
-    return widget.themeExtension ?? context.resolveThemeExtension<MyoroRadioThemeExtension>();
+    return widget.themeExtension ??
+        Theme.of(context.read<BuildContext>()).extension<MyoroRadioThemeExtension>()!;
   }
 
   MyoroRadioController? _localController;
   MyoroRadioController get _controller {
-    return _configuration.controller ?? (_localController ??= MyoroRadioController(_configuration.initialValue));
+    return _configuration.controller ??
+        (_localController ??= MyoroRadioController(_configuration.initialValue));
   }
 
   @override
@@ -69,7 +76,9 @@ final class _MyoroRadioState extends State<MyoroRadio> {
               },
             ),
           ),
-          if (_configuration.label.isNotEmpty) ...[Flexible(child: Text(_configuration.label, style: labelTextStyle))],
+          if (_configuration.label.isNotEmpty) ...[
+            Flexible(child: Text(_configuration.label, style: labelTextStyle)),
+          ],
         ],
       ),
     );

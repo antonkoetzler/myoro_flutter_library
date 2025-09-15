@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 part '_widget/_checkbox.dart';
 part '_widget/_clear_text_button.dart';
 part '_widget/_label.dart';
@@ -62,7 +63,8 @@ final class _MyoroInputState extends State<MyoroInput> {
   }
 
   MyoroInputThemeExtension get _themeExtension {
-    return widget.themeExtension ?? context.resolveThemeExtension<MyoroInputThemeExtension>();
+    final appContext = context.read<MyoroAppContext>();
+    return widget.themeExtension ?? appContext.resolveThemeExtension<MyoroInputThemeExtension>();
   }
 
   MyoroInputViewModel? _localViewModel;

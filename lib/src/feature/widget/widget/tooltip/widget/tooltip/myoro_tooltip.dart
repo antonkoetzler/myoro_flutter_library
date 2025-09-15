@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// Simple tooltip.
 class MyoroTooltip extends StatelessWidget {
-  const MyoroTooltip({super.key, required this.configuration, required this.child, this.themeExtension});
+  const MyoroTooltip({
+    super.key,
+    required this.configuration,
+    required this.child,
+    this.themeExtension,
+  });
 
   /// Configuration.
   final MyoroTooltipConfiguration configuration;
@@ -16,7 +22,9 @@ class MyoroTooltip extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = this.themeExtension ?? context.resolveThemeExtension<MyoroTooltipThemeExtension>();
+    final themeExtension =
+        this.themeExtension ??
+        Theme.of(context.read<BuildContext>()).extension<MyoroTooltipThemeExtension>()!;
     final margin = themeExtension.margin;
 
     return MyoroSingularThemeExtensionWrapper(

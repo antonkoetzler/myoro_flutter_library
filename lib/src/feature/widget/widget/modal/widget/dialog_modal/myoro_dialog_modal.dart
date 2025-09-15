@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_cancel_button.dart';
 part '_widget/_confirm_button.dart';
@@ -30,8 +31,10 @@ class MyoroDialogModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appContext = context.read<MyoroAppContext>();
     final dialogModalThemeExtension =
-        this.dialogModalThemeExtension ?? context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
+        this.dialogModalThemeExtension ??
+        appContext.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
     final spacing = modalThemeExtension.spacing ?? 0;

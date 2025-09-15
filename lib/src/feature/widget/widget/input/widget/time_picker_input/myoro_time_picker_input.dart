@@ -24,7 +24,8 @@ final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
   late final MyoroTimePickerInputViewModel _viewModel;
 
   MyoroInputThemeExtension get _themeExtension {
-    return widget.themeExtension ?? context.resolveThemeExtension<MyoroInputThemeExtension>();
+    return widget.themeExtension ??
+        Theme.of(context.read<BuildContext>()).extension<MyoroInputThemeExtension>()!;
   }
 
   @override

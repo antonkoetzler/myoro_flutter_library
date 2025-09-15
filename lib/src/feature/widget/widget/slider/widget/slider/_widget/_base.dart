@@ -9,7 +9,9 @@ class _Base extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final resolvedThemeExtension = _themeExtension ?? context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final appContext = context.read<MyoroAppContext>();
+    final resolvedThemeExtension =
+        _themeExtension ?? appContext.resolveThemeExtension<MyoroSliderThemeExtension>();
     final label = _configuration.label;
     final currentValueText = _configuration.currentValueText;
     final maxValueText = _configuration.maxValueText;

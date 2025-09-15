@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/src/exports.dart';
+import 'package:provider/provider.dart';
 
 /// Root widget of your [App] widget in main.dart.
 class MyoroApp extends StatelessWidget {
@@ -21,7 +22,9 @@ class MyoroApp extends StatelessWidget {
     ];
     final ThemeMode themeMode =
         configuration.themeMode ??
-        (MediaQuery.of(context).platformBrightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
+        (MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? ThemeMode.dark
+            : ThemeMode.light);
     final ThemeData lightTheme = createMyoroThemeData(
       configuration.colorSchemeBuilder,
       configuration.textThemeBuilder,
@@ -36,7 +39,25 @@ class MyoroApp extends StatelessWidget {
     );
 
     if (configuration.home != null) {
-      return MaterialApp(
+      return InheritedProvider<MyoroAppContext>(
+        create: (context) => MyoroAppContext(context),
+        child: MaterialApp(
+          title: configuration.title,
+          debugShowCheckedModeBanner: debugShowCheckedModeBanner,
+          localizationsDelegates: localizationsDelegates,
+          supportedLocales: supportedLocales,
+          themeMode: themeMode,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          home: configuration.home,
+          builder: configuration.builder,
+        ),
+      );
+    }
+
+    return InheritedProvider<MyoroAppContext>(
+      create: (context) => MyoroAppContext(context),
+      child: MaterialApp.router(
         title: configuration.title,
         debugShowCheckedModeBanner: debugShowCheckedModeBanner,
         localizationsDelegates: localizationsDelegates,
@@ -44,21 +65,9 @@ class MyoroApp extends StatelessWidget {
         themeMode: themeMode,
         theme: lightTheme,
         darkTheme: darkTheme,
-        home: configuration.home,
+        routerConfig: configuration.router,
         builder: configuration.builder,
-      );
-    }
-
-    return MaterialApp.router(
-      title: configuration.title,
-      debugShowCheckedModeBanner: debugShowCheckedModeBanner,
-      localizationsDelegates: localizationsDelegates,
-      supportedLocales: supportedLocales,
-      themeMode: themeMode,
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      routerConfig: configuration.router,
-      builder: configuration.builder,
+      ),
     );
   }
 }
