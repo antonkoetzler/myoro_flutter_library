@@ -14,7 +14,10 @@ final class _SingularDropdown extends StatelessWidget {
         return ListenableBuilder(
           listenable: viewModel.state.menuViewModel.state,
           builder: (_, __) {
-            return MyoroSingularDropdown(configuration: viewModel.buildSingularDropdownConfiguration(context));
+            return MyoroSingularDropdown(
+              configuration: viewModel.buildSingularDropdownConfiguration(context),
+              themeExtension: viewModel.buildThemeExtension(context),
+            );
           },
         );
       },

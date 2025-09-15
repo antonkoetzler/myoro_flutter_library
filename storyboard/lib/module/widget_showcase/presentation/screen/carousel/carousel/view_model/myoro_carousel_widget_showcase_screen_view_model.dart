@@ -18,9 +18,20 @@ final class MyoroCarouselWidgetShowcaseScreenViewModel {
     return MyoroCarouselConfiguration(
       direction: state.direction,
       displayTraversalButtons: state.displayTraversalButtons,
+      initialItem: state.initialItem,
       autoplay: state.autoplay,
       autoplayIntervalDuration: state.autoplayIntervalDuration,
       items: items,
+    );
+  }
+
+  /// [MyoroCarouselThemeExtension] of the [MyoroCarousel].
+  MyoroCarouselThemeExtension buildThemeExtension(BuildContext context) {
+    final carouselThemeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+
+    return carouselThemeExtension.copyWith(
+      previousItemButtonIcon: state.previousItemButtonIcon,
+      nextItemButtonIcon: state.nextItemButtonIcon,
     );
   }
 }

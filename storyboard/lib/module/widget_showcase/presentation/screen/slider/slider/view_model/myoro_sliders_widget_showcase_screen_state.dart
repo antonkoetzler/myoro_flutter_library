@@ -32,12 +32,21 @@ final class MyoroSlidersWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroSliderConfiguration.labelTextStyle]
-  TextStyle? _labelTextStyle;
-  TextStyle? get labelTextStyle => _labelTextStyle;
-  set labelTextStyle(TextStyle? labelTextStyle) {
-    if (_labelTextStyle == labelTextStyle) return;
-    _labelTextStyle = labelTextStyle;
+  /// [MyoroSliderConfiguration.min]
+  double _min = MyoroSliderBaseConfiguration.minDefaultValue;
+  double get min => _min;
+  set min(double min) {
+    if (_min == min) return;
+    _min = min;
+    notifyListeners();
+  }
+
+  /// [MyoroSliderConfiguration.max]
+  double _max = MyoroSliderBaseConfiguration.maxDefaultValue;
+  double get max => _max;
+  set max(double max) {
+    if (_max == max) return;
+    _max = max;
     notifyListeners();
   }
 
@@ -65,6 +74,26 @@ final class MyoroSlidersWidgetShowcaseScreenState extends ChangeNotifier {
   set footerTextEnabled(bool footerTextEnabled) {
     if (_footerTextEnabled == footerTextEnabled) return;
     _footerTextEnabled = footerTextEnabled;
+    notifyListeners();
+  }
+
+  // Theme Extension Properties
+
+  /// [MyoroSliderThemeExtension.indicatorTextStyle]
+  TextStyle? _indicatorTextStyle;
+  TextStyle? get indicatorTextStyle => _indicatorTextStyle;
+  set indicatorTextStyle(TextStyle? indicatorTextStyle) {
+    if (_indicatorTextStyle == indicatorTextStyle) return;
+    _indicatorTextStyle = indicatorTextStyle;
+    notifyListeners();
+  }
+
+  /// [MyoroSliderThemeExtension.indicatorTextAlignment]
+  TextAlign? _indicatorTextAlignment;
+  TextAlign? get indicatorTextAlignment => _indicatorTextAlignment;
+  set indicatorTextAlignment(TextAlign? indicatorTextAlignment) {
+    if (_indicatorTextAlignment == indicatorTextAlignment) return;
+    _indicatorTextAlignment = indicatorTextAlignment;
     notifyListeners();
   }
 }

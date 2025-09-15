@@ -1,0 +1,48 @@
+part of '../myoro_sliders_widget_showcase_screen.dart';
+
+/// [MyoroSliderThemeExtension.indicatorTextAlignment] option of [MyoroSlidersWidgetShowcaseScreen].
+final class _IndicatorTextAlignmentOption extends StatelessWidget {
+  const _IndicatorTextAlignmentOption();
+
+  static const _alignments = {
+    'left': TextAlign.left,
+    'right': TextAlign.right,
+    'center': TextAlign.center,
+    'justify': TextAlign.justify,
+    'start': TextAlign.start,
+    'end': TextAlign.end,
+  };
+
+  @override
+  Widget build(context) {
+    final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
+
+    return MyoroSingularDropdown<TextAlign>(
+      configuration: MyoroSingularDropdownConfiguration(
+        label: 'Indicator text alignment',
+        allowItemClearing: true,
+        selectedItem: viewModel.state.indicatorTextAlignment,
+        selectedItemBuilder:
+            (alignment) =>
+                _alignments.entries
+                    .firstWhere(
+                      (entry) => entry.value == alignment,
+                      orElse: () => const MapEntry('custom', TextAlign.center),
+                    )
+                    .key,
+        onChanged: (alignment) => viewModel.state.indicatorTextAlignment = alignment,
+        menuConfiguration: MyoroSingularMenuConfiguration(
+          request: () => _alignments.values.toSet(),
+          itemBuilder: (alignment) {
+            final name = _alignments.entries.firstWhere((entry) => entry.value == alignment).key;
+            return MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: name),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

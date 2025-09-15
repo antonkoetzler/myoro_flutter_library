@@ -7,6 +7,9 @@ part '_widget/_autoplay_enabled_option.dart';
 part '_widget/_carousel_item.dart';
 part '_widget/_direction_option.dart';
 part '_widget/_display_traversal_buttons_option.dart';
+part '_widget/_initial_item_option.dart';
+part '_widget/_previous_item_button_icon_option.dart';
+part '_widget/_next_item_button_icon_option.dart';
 part '_widget/_widget.dart';
 part '_widget/_autoplay_interval_duration_option.dart';
 
@@ -15,8 +18,11 @@ final class MyoroCarouselWidgetShowcaseScreen extends StatelessWidget {
   static const options = [
     _DirectionOption(),
     _DisplayTraversalButtonsOption(),
+    _InitialItemOption(),
     _AutoplayEnabledOption(),
     _AutoplayIntervalDurationOption(),
+    _PreviousItemButtonIconOption(),
+    _NextItemButtonIconOption(),
   ];
 
   const MyoroCarouselWidgetShowcaseScreen({super.key});

@@ -21,7 +21,9 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       autofocus: true,
       showClearTextButton: _state.showClearTextButton,
       checkboxOnChanged:
-          _state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
+          _state.checkboxOnChangedEnabled
+              ? (enabled, text) => _checkboxOnChanged(context, enabled, text)
+              : null,
       validation: _state.validationEnabled ? _validation : null,
       onFieldSubmitted: (text) => _onFieldSubmitted(context, text),
       onChanged: _state.onChangedEnabled ? (text) => _onChanged(context, text) : null,
@@ -59,11 +61,37 @@ class MyoroInputWidgetShowcaseScreenViewModel {
     _showSnackBar(context, 'Clear text button was pressed!');
   }
 
+  /// Builds the [MyoroInputThemeExtension] of [_Widget].
+  MyoroInputThemeExtension buildThemeExtension(BuildContext context) {
+    final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
+
+    return inputThemeExtension.copyWith(
+      border: _state.customBorder,
+      underlinedBorder: _state.underlinedBorder,
+      outlinedBorder: _state.outlinedBorder,
+      noneBorder: _state.noneBorder,
+      primaryColor: _state.primaryColor,
+      errorBorderColor: _state.errorBorderColor,
+      cursorHeight: _state.cursorHeight,
+      contentPadding: _state.contentPadding,
+      disabledOpacity: _state.disabledOpacity,
+      inputTextStyle: _state.inputTextStyle,
+      spacing: _state.spacing,
+      labelTextStyle: _state.labelTextStyle,
+      labelBehavior: _state.labelBehavior,
+      clearTextButtonPadding: _state.clearTextButtonPadding,
+      clearTextButtonIcon: _state.clearTextButtonIcon,
+    );
+  }
+
   /// Generic function to display a snack bar.
   void _showSnackBar(BuildContext context, String message) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.attention, message: message),
+        configuration: MyoroSnackBarConfiguration(
+          snackBarType: MyoroSnackBarTypeEnum.attention,
+          message: message,
+        ),
       ),
     );
   }

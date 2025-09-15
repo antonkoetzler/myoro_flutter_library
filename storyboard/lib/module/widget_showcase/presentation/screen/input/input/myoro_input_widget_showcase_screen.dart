@@ -25,6 +25,18 @@ part '_widget/_text_align_option.dart';
 part '_widget/_validation_option.dart';
 part '_widget/_validation_option_message.dart';
 part '_widget/_widget.dart';
+part '_widget/_custom_border_option.dart';
+part '_widget/_underlined_border_option.dart';
+part '_widget/_outlined_border_option.dart';
+part '_widget/_none_border_option.dart';
+part '_widget/_primary_color_option.dart';
+part '_widget/_error_border_color_option.dart';
+part '_widget/_cursor_height_option.dart';
+part '_widget/_disabled_opacity_option.dart';
+part '_widget/_spacing_option.dart';
+part '_widget/_label_behavior_option.dart';
+part '_widget/_clear_text_button_padding_option.dart';
+part '_widget/_clear_text_button_icon_option.dart';
 
 /// Widget showcase of [MyoroInput].
 final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
@@ -45,6 +57,18 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
   static const onFieldSubmittedOptionKey = 'onFieldSubmittedOption';
   static const onChangedOptionKey = 'onChangedOption';
   static const onClearedOptionKey = 'onClearedOption';
+  static const customBorderOptionKey = 'customBorderOption';
+  static const underlinedBorderOptionKey = 'underlinedBorderOption';
+  static const outlinedBorderOptionKey = 'outlinedBorderOption';
+  static const noneBorderOptionKey = 'noneBorderOption';
+  static const primaryColorOptionKey = 'primaryColorOption';
+  static const errorBorderColorOptionKey = 'errorBorderColorOption';
+  static const cursorHeightOptionKey = 'cursorHeightOption';
+  static const disabledOpacityOptionKey = 'disabledOpacityOption';
+  static const spacingOptionKey = 'spacingOption';
+  static const labelBehaviorOptionKey = 'labelBehaviorOption';
+  static const clearTextButtonPaddingOptionKey = 'clearTextButtonPaddingOption';
+  static const clearTextButtonIconOptionKey = 'clearTextButtonIconOption';
 
   static const options = {
     inputStyleOptionKey: _InputStyleOption(),
@@ -64,6 +88,18 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
     onFieldSubmittedOptionKey: _OnFieldSubmittedOption(),
     onChangedOptionKey: _OnChangedOption(),
     onClearedOptionKey: _OnClearedOption(),
+    customBorderOptionKey: _CustomBorderOption(),
+    underlinedBorderOptionKey: _UnderlinedBorderOption(),
+    outlinedBorderOptionKey: _OutlinedBorderOption(),
+    noneBorderOptionKey: _NoneBorderOption(),
+    primaryColorOptionKey: _PrimaryColorOption(),
+    errorBorderColorOptionKey: _ErrorBorderColorOption(),
+    cursorHeightOptionKey: _CursorHeightOption(),
+    disabledOpacityOptionKey: _DisabledOpacityOption(),
+    spacingOptionKey: _SpacingOption(),
+    labelBehaviorOptionKey: _LabelBehaviorOption(),
+    clearTextButtonPaddingOptionKey: _ClearTextButtonPaddingOption(),
+    clearTextButtonIconOptionKey: _ClearTextButtonIconOption(),
   };
 
   const MyoroInputWidgetShowcaseScreen({super.key});

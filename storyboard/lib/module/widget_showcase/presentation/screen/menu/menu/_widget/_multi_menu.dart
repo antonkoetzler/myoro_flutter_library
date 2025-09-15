@@ -7,7 +7,9 @@ final class _MultiMenu extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
-    final multiMenuConfiguration = viewModel.multiMenuConfiguration;
-    return MyoroMultiMenu<String>(configuration: multiMenuConfiguration(context));
+    return MyoroMultiMenu<String>(
+      configuration: viewModel.multiMenuConfiguration(context),
+      themeExtension: viewModel.buildThemeExtension(context),
+    );
   }
 }

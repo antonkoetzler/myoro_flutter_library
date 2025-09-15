@@ -87,4 +87,46 @@ final class MyoroMenusWidgetShowcaseScreenState extends ChangeNotifier {
     _searchCallbackEnabled = searchCallbackEnabled;
     notifyListeners();
   }
+
+  // Theme Extension Properties
+
+  /// [MyoroMenuThemeExtension.searchBarPadding]
+  EdgeInsets? _searchBarPadding;
+  EdgeInsets? get searchBarPadding => _searchBarPadding;
+  set searchBarPadding(EdgeInsets? searchBarPadding) {
+    _searchBarPadding = searchBarPadding;
+    notifyListeners();
+  }
+
+  /// [MyoroMenuThemeExtension.searchBarInputStyle]
+  MyoroInputStyleEnum? _searchBarInputStyle;
+  MyoroInputStyleEnum? get searchBarInputStyle => _searchBarInputStyle;
+  set searchBarInputStyle(MyoroInputStyleEnum? searchBarInputStyle) {
+    _searchBarInputStyle = searchBarInputStyle;
+    notifyListeners();
+  }
+
+  /// [MyoroMenuThemeExtension.itemBorderRadius]
+  BorderRadius? _itemBorderRadius;
+  BorderRadius? get itemBorderRadius => _itemBorderRadius;
+  set itemBorderRadius(BorderRadius? itemBorderRadius) {
+    _itemBorderRadius = itemBorderRadius;
+    notifyListeners();
+  }
+
+  /// [MyoroMenuThemeExtension.dialogTextStyle]
+  TextStyle? _dialogTextStyle;
+  TextStyle? get dialogTextStyle => _dialogTextStyle;
+  set dialogTextStyle(TextStyle? dialogTextStyle) {
+    _dialogTextStyle = dialogTextStyle;
+    notifyListeners();
+  }
+
+  /// [MyoroMenuThemeExtension.dialogTextLoaderPadding]
+  EdgeInsets? _dialogTextLoaderPadding;
+  EdgeInsets? get dialogTextLoaderPadding => _dialogTextLoaderPadding;
+  set dialogTextLoaderPadding(EdgeInsets? dialogTextLoaderPadding) {
+    _dialogTextLoaderPadding = dialogTextLoaderPadding;
+    notifyListeners();
+  }
 }

@@ -6,7 +6,8 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroSlidersWidgetShowcaseScreenThemeExtension>();
+    final themeExtension =
+        context.resolveThemeExtension<MyoroSlidersWidgetShowcaseScreenThemeExtension>();
     final spacing = themeExtension.spacing;
 
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
@@ -20,8 +21,14 @@ final class _Widget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: spacing,
           children: [
-            MyoroSlider(configuration: viewModel.sliderConfiguration),
-            MyoroRangeSlider(configuration: viewModel.rangeSliderConfiguration),
+            MyoroSlider(
+              configuration: viewModel.sliderConfiguration,
+              themeExtension: viewModel.buildThemeExtension(context),
+            ),
+            MyoroRangeSlider(
+              configuration: viewModel.rangeSliderConfiguration,
+              themeExtension: viewModel.buildThemeExtension(context),
+            ),
           ],
         );
       },

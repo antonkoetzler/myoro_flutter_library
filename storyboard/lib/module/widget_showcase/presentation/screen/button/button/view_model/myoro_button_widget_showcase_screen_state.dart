@@ -139,4 +139,88 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     _onTapUpEnabled = onTapUpEnabled;
     notifyListeners();
   }
+
+  /// [MyoroButtonThemeExtension.backgroundColor]
+  Color? _backgroundColor;
+
+  /// [_backgroundColor] getter.
+  Color? get backgroundColor => _backgroundColor;
+
+  /// [_backgroundColor] setter.
+  set backgroundColor(Color? backgroundColor) {
+    _backgroundColor = backgroundColor;
+    notifyListeners();
+  }
+
+  /// [MyoroButtonThemeExtension.contentColor]
+  Color? _contentColor;
+
+  /// [_contentColor] getter.
+  Color? get contentColor => _contentColor;
+
+  /// [_contentColor] setter.
+  set contentColor(Color? contentColor) {
+    _contentColor = contentColor;
+    notifyListeners();
+  }
+
+  /// [MyoroButtonThemeExtension.contentIdleColor]
+  Color? _contentIdleColor;
+
+  /// [_contentIdleColor] getter.
+  Color? get contentIdleColor => _contentIdleColor;
+
+  /// [_contentIdleColor] setter.
+  set contentIdleColor(Color? contentIdleColor) {
+    _contentIdleColor = contentIdleColor;
+    notifyListeners();
+  }
+
+  /// [MyoroButtonThemeExtension.contentHoverColor]
+  Color? _contentHoverColor;
+
+  /// [_contentHoverColor] getter.
+  Color? get contentHoverColor => _contentHoverColor;
+
+  /// [_contentHoverColor] setter.
+  set contentHoverColor(Color? contentHoverColor) {
+    _contentHoverColor = contentHoverColor;
+    notifyListeners();
+  }
+
+  /// [MyoroButtonThemeExtension.contentTapColor]
+  Color? _contentTapColor;
+
+  /// [_contentTapColor] getter.
+  Color? get contentTapColor => _contentTapColor;
+
+  /// [_contentTapColor] setter.
+  set contentTapColor(Color? contentTapColor) {
+    _contentTapColor = contentTapColor;
+    notifyListeners();
+  }
+
+  /// [MyoroButtonThemeExtension.borderWidth]
+  double? _borderWidth;
+
+  /// [_borderWidth] getter.
+  double? get borderWidth => _borderWidth;
+
+  /// [_borderWidth] setter.
+  set borderWidth(double? borderWidth) {
+    _borderWidth = borderWidth;
+    notifyListeners();
+  }
+
+  /// [MyoroButtonThemeExtension.borderColor]
+  Color? _borderColor;
+
+  /// [_borderColor] getter.
+  Color? get borderColor => _borderColor;
+
+  /// [_borderColor] setter.
+  set borderColor(Color? borderColor) {
+    _borderColor = borderColor;
+    notifyListeners();
+  }
 }

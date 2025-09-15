@@ -5,10 +5,13 @@ import 'package:storyboard/storyboard.dart';
 
 part '_widget/_allow_item_clearing_option.dart';
 part '_widget/_label_option.dart';
+part '_widget/_menu_border_option.dart';
+part '_widget/_menu_border_radius_option.dart';
 part '_widget/_menu_type_enum_option.dart';
 part '_widget/_multi_dropdown.dart';
 part '_widget/_selected_item_text_align_option.dart';
 part '_widget/_singular_dropdown.dart';
+part '_widget/_spacing_option.dart';
 part '_widget/_title.dart';
 part '_widget/_widget.dart';
 
@@ -19,15 +22,20 @@ final class MyoroDropdownsWidgetShowcaseScreen extends StatefulWidget {
     _MenuTypeEnumOption(),
     _AllowItemClearingOption(),
     _SelectedItemTextAlignOption(),
+    _SpacingOption(),
+    _MenuBorderOption(),
+    _MenuBorderRadiusOption(),
   ];
 
   const MyoroDropdownsWidgetShowcaseScreen({super.key});
 
   @override
-  State<MyoroDropdownsWidgetShowcaseScreen> createState() => _MyoroDropdownsWidgetShowcaseScreenState();
+  State<MyoroDropdownsWidgetShowcaseScreen> createState() =>
+      _MyoroDropdownsWidgetShowcaseScreenState();
 }
 
-final class _MyoroDropdownsWidgetShowcaseScreenState extends State<MyoroDropdownsWidgetShowcaseScreen> {
+final class _MyoroDropdownsWidgetShowcaseScreenState
+    extends State<MyoroDropdownsWidgetShowcaseScreen> {
   final _dropdownViewModel = MyoroDropdownsWidgetShowcaseScreenViewModel();
 
   @override
@@ -47,7 +55,10 @@ final class _MyoroDropdownsWidgetShowcaseScreenState extends State<MyoroDropdown
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDropdownsTitle,
           widget: _Widget(),
-          widgetOptions: [...MyoroDropdownsWidgetShowcaseScreen.options, ...MyoroMenusWidgetShowcaseScreen.options],
+          widgetOptions: [
+            ...MyoroDropdownsWidgetShowcaseScreen.options,
+            ...MyoroMenusWidgetShowcaseScreen.options,
+          ],
         ),
       ),
     );

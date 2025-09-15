@@ -7,8 +7,13 @@ part '_widget/_background_color_option.dart';
 part '_widget/_border_option.dart';
 part '_widget/_border_radius_option.dart';
 part '_widget/_constraints_option.dart';
+part '_widget/_dialog_text_loader_padding_option.dart';
+part '_widget/_dialog_text_style_option.dart';
+part '_widget/_item_border_radius_option.dart';
 part '_widget/_multi_menu.dart';
 part '_widget/_on_end_reached_request_option.dart';
+part '_widget/_search_bar_input_style_option.dart';
+part '_widget/_search_bar_padding_option.dart';
 part '_widget/_search_callback_option.dart';
 part '_widget/_singular_menu.dart';
 part '_widget/_widget.dart';
@@ -22,6 +27,11 @@ final class MyoroMenusWidgetShowcaseScreen extends StatelessWidget {
     _BorderRadiusOption(),
     _OnEndReachedRequestOption(),
     _SearchCallbackOption(),
+    _SearchBarPaddingOption(),
+    _SearchBarInputStyleOption(),
+    _ItemBorderRadiusOption(),
+    _DialogTextStyleOption(),
+    _DialogTextLoaderPaddingOption(),
   ];
 
   const MyoroMenusWidgetShowcaseScreen({super.key});

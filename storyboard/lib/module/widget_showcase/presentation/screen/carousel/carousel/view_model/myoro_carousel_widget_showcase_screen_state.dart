@@ -29,10 +29,37 @@ final class MyoroCarouselWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroCarouselConfiguration.autoplayIntervalDuration]
-  Duration _autoplayIntervalDuration = MyoroCarouselConfiguration.autoplayIntervalDurationDefaultValue;
+  Duration _autoplayIntervalDuration =
+      MyoroCarouselConfiguration.autoplayIntervalDurationDefaultValue;
   Duration get autoplayIntervalDuration => _autoplayIntervalDuration;
   set autoplayIntervalDuration(Duration autoplayIntervalDuration) {
     _autoplayIntervalDuration = autoplayIntervalDuration;
+    notifyListeners();
+  }
+
+  /// [MyoroCarouselConfiguration.initialItem]
+  int _initialItem = MyoroCarouselConfiguration.initialItemDefaultValue;
+  int get initialItem => _initialItem;
+  set initialItem(int initialItem) {
+    _initialItem = initialItem;
+    notifyListeners();
+  }
+
+  // Theme Extension Properties
+
+  /// [MyoroCarouselThemeExtension.previousItemButtonIcon]
+  IconData? _previousItemButtonIcon;
+  IconData? get previousItemButtonIcon => _previousItemButtonIcon;
+  set previousItemButtonIcon(IconData? previousItemButtonIcon) {
+    _previousItemButtonIcon = previousItemButtonIcon;
+    notifyListeners();
+  }
+
+  /// [MyoroCarouselThemeExtension.nextItemButtonIcon]
+  IconData? _nextItemButtonIcon;
+  IconData? get nextItemButtonIcon => _nextItemButtonIcon;
+  set nextItemButtonIcon(IconData? nextItemButtonIcon) {
+    _nextItemButtonIcon = nextItemButtonIcon;
     notifyListeners();
   }
 }

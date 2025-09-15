@@ -21,11 +21,9 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
   /// Builds the [MyoroSingularMenuConfiguration].
   MyoroSingularMenuConfiguration<String> singluarMenuConfiguration(BuildContext context) {
     return MyoroSingularMenuConfiguration(
-      // constraints: state.constraints,
-      // backgroundColor: state.backgroundColor,
-      // border: border(context),
-      // borderRadius: BorderRadius.circular(state.borderRadius),
       request: _request,
+      onEndReachedRequest: state.onEndReachedRequestEnabled ? _onEndReachedRequest : null,
+      searchCallback: state.searchCallbackEnabled ? _searchCallback : null,
       itemBuilder: _itemBuilder,
     );
   }
@@ -33,12 +31,27 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
   /// Builds the [MyoroMultiMenuConfiguration].
   MyoroMultiMenuConfiguration<String> multiMenuConfiguration(BuildContext context) {
     return MyoroMultiMenuConfiguration(
-      // constraints: state.constraints,
-      // backgroundColor: state.backgroundColor,
-      // border: border(context),
-      // borderRadius: BorderRadius.circular(state.borderRadius),
       request: _request,
+      onEndReachedRequest: state.onEndReachedRequestEnabled ? _onEndReachedRequest : null,
+      searchCallback: state.searchCallbackEnabled ? _searchCallback : null,
       itemBuilder: _itemBuilder,
+    );
+  }
+
+  /// [MyoroMenuThemeExtension] of the menus.
+  MyoroMenuThemeExtension buildThemeExtension(BuildContext context) {
+    final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+
+    return menuThemeExtension.copyWith(
+      constraints: state.constraints,
+      backgroundColor: state.backgroundColor,
+      border: state.borderEnabled ? Border.all() : null,
+      borderRadius: BorderRadius.circular(state.borderRadius),
+      searchBarPadding: state.searchBarPadding,
+      searchBarInputStyle: state.searchBarInputStyle,
+      itemBorderRadius: state.itemBorderRadius,
+      dialogTextStyle: state.dialogTextStyle,
+      dialogTextLoaderPadding: state.dialogTextLoaderPadding,
     );
   }
 
@@ -46,6 +59,17 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
   Future<Set<String>> _request() async {
     await Future.delayed(const Duration(milliseconds: 300));
     return List.generate(faker.randomGenerator.integer(10), (i) => 'Item #$i').toSet();
+  }
+
+  /// [MyoroMenuConfiguration.onEndReachedRequest]
+  Future<Set<String>> _onEndReachedRequest(Set<String> items) async {
+    await Future.delayed(const Duration(milliseconds: 300));
+    return List.generate(faker.randomGenerator.integer(5), (i) => 'More Item #$i').toSet();
+  }
+
+  /// [MyoroMenuConfiguration.searchCallback]
+  Set<String> _searchCallback(String query, Set<String> items) {
+    return items.where((item) => item.toLowerCase().contains(query.toLowerCase())).toSet();
   }
 
   /// [MyoroMenuConfiguration.itemBuilder]

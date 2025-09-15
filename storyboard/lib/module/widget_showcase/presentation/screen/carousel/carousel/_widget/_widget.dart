@@ -11,12 +11,15 @@ final class _Widget extends StatelessWidget {
     return ListenableBuilder(
       listenable: viewModel.state,
       builder: (_, __) {
-        return MyoroCarousel(
-          configuration: viewModel.buildConfiguration(const [
-            _CarouselItem(kAreYouSillyCat),
-            _CarouselItem(kHappyCat),
-            _CarouselItem(kSnazzyCat),
-          ]),
+        return MyoroSingularThemeExtensionWrapper(
+          themeExtension: viewModel.buildThemeExtension(context),
+          child: MyoroCarousel(
+            configuration: viewModel.buildConfiguration(const [
+              _CarouselItem(kAreYouSillyCat),
+              _CarouselItem(kHappyCat),
+              _CarouselItem(kSnazzyCat),
+            ]),
+          ),
         );
       },
     );

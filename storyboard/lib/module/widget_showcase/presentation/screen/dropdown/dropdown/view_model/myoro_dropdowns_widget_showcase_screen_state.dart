@@ -38,6 +38,32 @@ final class MyoroDropdownsWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Theme Extension Properties
+
+  /// [MyoroDropdownThemeExtension.spacing]
+  double? _spacing;
+  double? get spacing => _spacing;
+  set spacing(double? spacing) {
+    _spacing = spacing;
+    notifyListeners();
+  }
+
+  /// [MyoroDropdownThemeExtension.menuBorder]
+  BoxBorder? _menuBorder;
+  BoxBorder? get menuBorder => _menuBorder;
+  set menuBorder(BoxBorder? menuBorder) {
+    _menuBorder = menuBorder;
+    notifyListeners();
+  }
+
+  /// [MyoroDropdownThemeExtension.menuBorderRadius]
+  BorderRadius? _menuBorderRadius;
+  BorderRadius? get menuBorderRadius => _menuBorderRadius;
+  set menuBorderRadius(BorderRadius? menuBorderRadius) {
+    _menuBorderRadius = menuBorderRadius;
+    notifyListeners();
+  }
+
   /// Dispose function.
   @override
   void dispose() {

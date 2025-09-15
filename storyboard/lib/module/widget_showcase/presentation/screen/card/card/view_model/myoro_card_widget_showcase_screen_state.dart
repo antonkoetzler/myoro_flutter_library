@@ -41,14 +41,48 @@ final class MyoroCardWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroCardThemeExtension.constraints]
-  BoxConstraints _constraints = const BoxConstraints();
+  BoxConstraints? _constraints;
 
   /// [_constraints] getter.
-  BoxConstraints get constraints => _constraints;
+  BoxConstraints? get constraints => _constraints;
 
   /// [_constraints] setter.
-  set constraints(BoxConstraints constraints) {
+  set constraints(BoxConstraints? constraints) {
     _constraints = constraints;
+    notifyListeners();
+  }
+
+  // Missing Theme Extension Properties
+
+  /// [MyoroCardThemeExtension.backgroundColor]
+  Color? _backgroundColor;
+  Color? get backgroundColor => _backgroundColor;
+  set backgroundColor(Color? backgroundColor) {
+    _backgroundColor = backgroundColor;
+    notifyListeners();
+  }
+
+  /// [MyoroCardThemeExtension.border]
+  Border? _border;
+  Border? get border => _border;
+  set border(Border? border) {
+    _border = border;
+    notifyListeners();
+  }
+
+  /// [MyoroCardThemeExtension.borderRadius]
+  BorderRadius? _borderRadius;
+  BorderRadius? get borderRadius => _borderRadius;
+  set borderRadius(BorderRadius? borderRadius) {
+    _borderRadius = borderRadius;
+    notifyListeners();
+  }
+
+  /// [MyoroCardThemeExtension.titleCardSpacing]
+  double? _titleCardSpacing;
+  double? get titleCardSpacing => _titleCardSpacing;
+  set titleCardSpacing(double? titleCardSpacing) {
+    _titleCardSpacing = titleCardSpacing;
     notifyListeners();
   }
 }

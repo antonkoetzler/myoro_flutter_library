@@ -141,4 +141,102 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
     _onClearedEnabled = onClearedEnabled;
     notifyListeners();
   }
+
+  // Theme Extension Properties
+
+  /// [MyoroInputThemeExtension.border]
+  InputBorder? _customBorder;
+  InputBorder? get customBorder => _customBorder;
+  set customBorder(InputBorder? customBorder) {
+    _customBorder = customBorder;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.underlinedBorder]
+  UnderlineInputBorder? _underlinedBorder;
+  UnderlineInputBorder? get underlinedBorder => _underlinedBorder;
+  set underlinedBorder(UnderlineInputBorder? underlinedBorder) {
+    _underlinedBorder = underlinedBorder;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.outlinedBorder]
+  OutlineInputBorder? _outlinedBorder;
+  OutlineInputBorder? get outlinedBorder => _outlinedBorder;
+  set outlinedBorder(OutlineInputBorder? outlinedBorder) {
+    _outlinedBorder = outlinedBorder;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.noneBorder]
+  InputBorder? _noneBorder;
+  InputBorder? get noneBorder => _noneBorder;
+  set noneBorder(InputBorder? noneBorder) {
+    _noneBorder = noneBorder;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.primaryColor]
+  Color? _primaryColor;
+  Color? get primaryColor => _primaryColor;
+  set primaryColor(Color? primaryColor) {
+    _primaryColor = primaryColor;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.errorBorderColor]
+  Color? _errorBorderColor;
+  Color? get errorBorderColor => _errorBorderColor;
+  set errorBorderColor(Color? errorBorderColor) {
+    _errorBorderColor = errorBorderColor;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.cursorHeight]
+  double? _cursorHeight;
+  double? get cursorHeight => _cursorHeight;
+  set cursorHeight(double? cursorHeight) {
+    _cursorHeight = cursorHeight;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.disabledOpacity]
+  double? _disabledOpacity;
+  double? get disabledOpacity => _disabledOpacity;
+  set disabledOpacity(double? disabledOpacity) {
+    _disabledOpacity = disabledOpacity;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.spacing]
+  double? _spacing;
+  double? get spacing => _spacing;
+  set spacing(double? spacing) {
+    _spacing = spacing;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.labelBehavior]
+  FloatingLabelBehavior? _labelBehavior;
+  FloatingLabelBehavior? get labelBehavior => _labelBehavior;
+  set labelBehavior(FloatingLabelBehavior? labelBehavior) {
+    _labelBehavior = labelBehavior;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.clearTextButtonPadding]
+  EdgeInsets? _clearTextButtonPadding;
+  EdgeInsets? get clearTextButtonPadding => _clearTextButtonPadding;
+  set clearTextButtonPadding(EdgeInsets? clearTextButtonPadding) {
+    _clearTextButtonPadding = clearTextButtonPadding;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.clearTextButtonIcon]
+  IconData? _clearTextButtonIcon;
+  IconData? get clearTextButtonIcon => _clearTextButtonIcon;
+  set clearTextButtonIcon(IconData? clearTextButtonIcon) {
+    _clearTextButtonIcon = clearTextButtonIcon;
+    notifyListeners();
+  }
 }

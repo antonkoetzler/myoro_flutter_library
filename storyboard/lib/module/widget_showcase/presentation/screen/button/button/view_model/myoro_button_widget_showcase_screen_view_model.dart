@@ -53,22 +53,21 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
   MyoroButtonThemeExtension buildThemeExtension(BuildContext context) {
     final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
 
-    final backgroundIdleColor = state.backgroundIdleColor ?? MyoroColors.transparent;
-    final backgroundHoverColor = state.backgroundHoverColor ?? MyoroColors.transparent;
-    final backgroundTapColor = state.backgroundTapColor ?? MyoroColors.transparent;
-    final borderIdleColor = state.borderIdleColor ?? MyoroColors.transparent;
-    final borderHoverColor = state.borderHoverColor ?? MyoroColors.transparent;
-    final borderTapColor = state.borderTapColor ?? MyoroColors.transparent;
-
     return buttonThemeExtension.copyWith(
+      backgroundColor: state.backgroundColor,
+      backgroundIdleColor: state.backgroundIdleColor,
+      backgroundHoverColor: state.backgroundHoverColor,
+      backgroundTapColor: state.backgroundTapColor,
+      contentColor: state.contentColor,
+      contentIdleColor: state.contentIdleColor,
+      contentHoverColor: state.contentHoverColor,
+      contentTapColor: state.contentTapColor,
+      borderWidth: state.borderWidth,
       borderRadius: state.borderRadius,
-      backgroundIdleColor: backgroundIdleColor,
-      backgroundHoverColor: backgroundHoverColor,
-      backgroundTapColor: backgroundTapColor,
-      borderWidth: kMyoroBorderWidth,
-      borderIdleColor: borderIdleColor,
-      borderHoverColor: borderHoverColor,
-      borderTapColor: borderTapColor,
+      borderColor: state.borderColor,
+      borderIdleColor: state.borderIdleColor,
+      borderHoverColor: state.borderHoverColor,
+      borderTapColor: state.borderTapColor,
     );
   }
 }

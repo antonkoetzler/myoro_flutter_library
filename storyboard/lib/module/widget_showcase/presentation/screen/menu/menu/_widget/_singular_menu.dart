@@ -7,7 +7,9 @@ final class _SingularMenu extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
-    final singularMenuConfiguration = viewModel.singluarMenuConfiguration;
-    return MyoroSingularMenu<String>(configuration: singularMenuConfiguration(context));
+    return MyoroSingularMenu<String>(
+      configuration: viewModel.singluarMenuConfiguration(context),
+      themeExtension: viewModel.buildThemeExtension(context),
+    );
   }
 }
