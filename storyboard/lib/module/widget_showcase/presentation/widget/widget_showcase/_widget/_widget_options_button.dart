@@ -28,7 +28,8 @@ final class _WidgetOptionsButton extends StatelessWidget {
       context,
       viewModel.navigatorKey.currentContext!,
       viewModel.configuration.widgetName,
-      viewModel.configuration.widgetOptions,
+      viewModel.configuration.configurationOptions,
+      viewModel.configuration.stylingOptions,
     );
   }
 }

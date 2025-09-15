@@ -16,9 +16,7 @@ final class _ItemTitleButtonArrowAnimationDurationOption extends StatelessWidget
         onChanged: (text) {
           final milliseconds = int.tryParse(text);
           if (milliseconds != null) {
-            viewModel.state.itemTitleButtonArrowAnimationDuration = Duration(
-              milliseconds: milliseconds,
-            );
+            viewModel.state.itemTitleButtonArrowAnimationDuration = Duration(milliseconds: milliseconds);
           }
         },
       ),

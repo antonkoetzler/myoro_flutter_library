@@ -11,7 +11,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroGroupRadio].
 final class MyoroGroupRadioWidgetShowcaseScreen extends StatefulWidget {
-  static const options = [_DirectionOption(), _SpacingOption(), _RunSpacingOption(), _OnChangedOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_DirectionOption(), _OnChangedOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_SpacingOption(), _RunSpacingOption()];
 
   const MyoroGroupRadioWidgetShowcaseScreen({super.key});
 
@@ -33,7 +37,14 @@ final class _MyoroGroupRadioWidgetShowcaseScreenState extends State<MyoroGroupRa
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroGroupRadioTitle,
           widget: _Widget(),
-          widgetOptions: [...MyoroGroupRadioWidgetShowcaseScreen.options, ...MyoroRadioWidgetShowcaseScreen.options],
+          configurationOptions: [
+            ...MyoroGroupRadioWidgetShowcaseScreen.configurationOptions,
+            ...MyoroRadioWidgetShowcaseScreen.configurationOptions,
+          ],
+          stylingOptions: [
+            ...MyoroGroupRadioWidgetShowcaseScreen.stylingOptions,
+            ...MyoroRadioWidgetShowcaseScreen.stylingOptions,
+          ],
         ),
       ),
     );

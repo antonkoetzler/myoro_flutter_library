@@ -23,10 +23,7 @@ final class _BottomSheetBorderRadiusOption extends StatelessWidget {
             (enabled, value) =>
                 viewModel.state.bottomSheetBorderRadius =
                     enabled
-                        ? BorderRadius.only(
-                          topLeft: Radius.circular(value),
-                          topRight: Radius.circular(value),
-                        )
+                        ? BorderRadius.only(topLeft: Radius.circular(value), topRight: Radius.circular(value))
                         : null,
       ),
     );

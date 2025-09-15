@@ -20,8 +20,11 @@ part '_widget/_widget.dart';
 
 /// [WidgetShowcaseScreen] of [MyoroAccordion].
 final class MyoroAccordionWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
-    _ThumbVisibilityOption(),
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_ThumbVisibilityOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [
     _ItemContentBackgroundColorOption(),
     _ItemContentAnimationDurationOption(),
     _ItemContentAnimationCurveOption(),
@@ -46,7 +49,8 @@ final class MyoroAccordionWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroAccordionTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

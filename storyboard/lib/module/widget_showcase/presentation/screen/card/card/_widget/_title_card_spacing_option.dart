@@ -14,8 +14,7 @@ final class _TitleCardSpacingOption extends StatelessWidget {
         initiallyEnabled: viewModel.state.titleCardSpacing != null,
         initialValue: viewModel.state.titleCardSpacing ?? 10.0,
         sliderOnChanged: (value) => viewModel.state.titleCardSpacing = value,
-        checkboxOnChanged:
-            (enabled, value) => viewModel.state.titleCardSpacing = enabled ? value : null,
+        checkboxOnChanged: (enabled, value) => viewModel.state.titleCardSpacing = enabled ? value : null,
       ),
     );
   }

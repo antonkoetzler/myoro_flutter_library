@@ -10,7 +10,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroTooltip].
 final class MyoroTooltipWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_MarginOption(), _WaitDurationOption(), _TextOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_WaitDurationOption(), _TextOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_MarginOption()];
 
   const MyoroTooltipWidgetShowcaseScreen({super.key});
 
@@ -22,7 +26,8 @@ final class MyoroTooltipWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroTooltipTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

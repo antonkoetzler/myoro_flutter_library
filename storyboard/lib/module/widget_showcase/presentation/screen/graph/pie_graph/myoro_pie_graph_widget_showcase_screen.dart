@@ -10,7 +10,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroPieGraph].
 final class MyoroPieGraphWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_TypeEnumOption(), _CenterWidgetOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_TypeEnumOption(), _CenterWidgetOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroPieGraphWidgetShowcaseScreen({super.key});
 
@@ -22,7 +26,8 @@ final class MyoroPieGraphWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroPieGraphTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

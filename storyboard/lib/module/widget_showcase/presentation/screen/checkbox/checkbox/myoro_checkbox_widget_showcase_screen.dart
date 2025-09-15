@@ -8,7 +8,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroCheckbox].
 final class MyoroCheckboxWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_LabelOptions()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_LabelOptions()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroCheckboxWidgetShowcaseScreen({super.key});
 
@@ -20,6 +24,8 @@ final class MyoroCheckboxWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroCheckboxTitle,
           widget: _Widget(),
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

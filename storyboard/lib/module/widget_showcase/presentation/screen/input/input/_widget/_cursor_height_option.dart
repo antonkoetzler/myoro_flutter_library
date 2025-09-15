@@ -14,8 +14,7 @@ final class _CursorHeightOption extends StatelessWidget {
         initiallyEnabled: viewModel.state.cursorHeight != null,
         initialValue: viewModel.state.cursorHeight ?? 20.0,
         sliderOnChanged: (value) => viewModel.state.cursorHeight = value,
-        checkboxOnChanged:
-            (enabled, value) => viewModel.state.cursorHeight = enabled ? value : null,
+        checkboxOnChanged: (enabled, value) => viewModel.state.cursorHeight = enabled ? value : null,
       ),
     );
   }

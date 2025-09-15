@@ -6,6 +6,8 @@ import 'package:storyboard/storyboard.dart';
 part '_widget/_widget_options_button.dart';
 part '_widget/_widget_options_modal.dart';
 part '_widget/_widget_showcase.dart';
+part '_widget/_section_header.dart';
+part '_widget/_options_list.dart';
 
 /// Screen to display a MFL [Widget] and it's options.
 final class WidgetShowcaseScreen extends StatefulWidget {

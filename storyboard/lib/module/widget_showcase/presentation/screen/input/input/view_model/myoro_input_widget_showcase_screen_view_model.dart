@@ -21,9 +21,7 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       autofocus: true,
       showClearTextButton: _state.showClearTextButton,
       checkboxOnChanged:
-          _state.checkboxOnChangedEnabled
-              ? (enabled, text) => _checkboxOnChanged(context, enabled, text)
-              : null,
+          _state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
       validation: _state.validationEnabled ? _validation : null,
       onFieldSubmitted: (text) => _onFieldSubmitted(context, text),
       onChanged: _state.onChangedEnabled ? (text) => _onChanged(context, text) : null,
@@ -88,10 +86,7 @@ class MyoroInputWidgetShowcaseScreenViewModel {
   void _showSnackBar(BuildContext context, String message) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          snackBarType: MyoroSnackBarTypeEnum.attention,
-          message: message,
-        ),
+        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.attention, message: message),
       ),
     );
   }

@@ -14,8 +14,7 @@ final class _ItemTitleButtonSpacingOption extends StatelessWidget {
         initiallyEnabled: viewModel.state.itemTitleButtonSpacing != null,
         initialValue: viewModel.state.itemTitleButtonSpacing ?? 10.0,
         sliderOnChanged: (value) => viewModel.state.itemTitleButtonSpacing = value,
-        checkboxOnChanged:
-            (enabled, value) => viewModel.state.itemTitleButtonSpacing = enabled ? value : null,
+        checkboxOnChanged: (enabled, value) => viewModel.state.itemTitleButtonSpacing = enabled ? value : null,
       ),
     );
   }

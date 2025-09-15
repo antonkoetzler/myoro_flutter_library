@@ -8,7 +8,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroSnackBarContainer].
 final class MyoroSnackBarContainerWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_DurationOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_DurationOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroSnackBarContainerWidgetShowcaseScreen({super.key});
 
@@ -20,7 +24,8 @@ final class MyoroSnackBarContainerWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroSnackBarContainerTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

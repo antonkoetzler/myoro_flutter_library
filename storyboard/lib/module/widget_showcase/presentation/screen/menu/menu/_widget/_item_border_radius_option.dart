@@ -15,8 +15,7 @@ final class _ItemBorderRadiusOption extends StatelessWidget {
         initialValue: viewModel.state.itemBorderRadius?.topLeft.x ?? 0.0,
         sliderOnChanged: (value) => viewModel.state.itemBorderRadius = BorderRadius.circular(value),
         checkboxOnChanged:
-            (enabled, value) =>
-                viewModel.state.itemBorderRadius = enabled ? BorderRadius.circular(value) : null,
+            (enabled, value) => viewModel.state.itemBorderRadius = enabled ? BorderRadius.circular(value) : null,
       ),
     );
   }

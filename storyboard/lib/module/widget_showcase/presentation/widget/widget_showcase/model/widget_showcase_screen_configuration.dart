@@ -9,7 +9,8 @@ part 'widget_showcase_screen_configuration.g.dart';
 @immutable
 @myoroModel
 final class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigurationMixin {
-  static const widgetOptionsDefaultValue = <Widget>[];
+  static const configurationOptionsDefaultValue = <Widget>[];
+  static const stylingOptionsDefaultValue = <Widget>[];
 
   /// Name of the [Widget].
   final String widgetName;
@@ -17,19 +18,27 @@ final class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigu
   /// [WidgetShowcase.widget]
   final Widget widget;
 
-  /// [WidgetShowcase.widgetOptions]
-  final List<Widget> widgetOptions;
+  /// Configuration-related options (behavior, data, callbacks)
+  final List<Widget> configurationOptions;
+
+  /// Styling-related options (appearance, colors, spacing)
+  final List<Widget> stylingOptions;
 
   const WidgetShowcaseScreenConfiguration({
     required this.widgetName,
     required this.widget,
-    this.widgetOptions = widgetOptionsDefaultValue,
+    this.configurationOptions = configurationOptionsDefaultValue,
+    this.stylingOptions = stylingOptionsDefaultValue,
   });
 
   // coverage:ignore-start
   WidgetShowcaseScreenConfiguration.fake()
     : widgetName = faker.lorem.word(),
       widget = Text(faker.lorem.word()),
-      widgetOptions = List.generate(faker.randomGenerator.integer(10), (_) => Text(faker.lorem.word()));
+      configurationOptions = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word())),
+      stylingOptions = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word()));
   // coverage:ignore-end
+
+  /// Legacy support - combines both option lists for backwards compatibility
+  List<Widget> get widgetOptions => [...configurationOptions, ...stylingOptions];
 }

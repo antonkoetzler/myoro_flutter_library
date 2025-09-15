@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:storyboard/storyboard.dart';
 
 part '_widget/_app_bar.dart';
-part '_widget/_app_bar_menu_button.dart';
 part '_widget/_app_bar_option.dart';
 part '_widget/_app_bar_title.dart';
 part '_widget/_body.dart';
@@ -13,7 +12,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroScreen].
 final class MyoroScreenWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_AppBarOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_AppBarOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroScreenWidgetShowcaseScreen({super.key});
 
@@ -25,7 +28,8 @@ final class MyoroScreenWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroScreenTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

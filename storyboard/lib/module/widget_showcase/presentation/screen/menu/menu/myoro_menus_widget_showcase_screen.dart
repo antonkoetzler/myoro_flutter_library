@@ -20,13 +20,15 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroSingularMenu] & [MyoroMultiMenu].
 final class MyoroMenusWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_OnEndReachedRequestOption(), _SearchCallbackOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [
     _ConstraintsOption(),
     _BackgroundColorOption(),
     _BorderOption(),
     _BorderRadiusOption(),
-    _OnEndReachedRequestOption(),
-    _SearchCallbackOption(),
     _SearchBarPaddingOption(),
     _SearchBarInputStyleOption(),
     _ItemBorderRadiusOption(),
@@ -44,7 +46,8 @@ final class MyoroMenusWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroMenusTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

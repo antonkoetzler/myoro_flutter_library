@@ -1,36 +1,28 @@
 part of '../widget_showcase_screen.dart';
 
-/// Modal of [WidgetShowcase.widgetOptions].
+/// Modal of [WidgetShowcaseScreen] options.
 final class _WidgetOptionsModal extends StatelessWidget {
   static Future<void> _show(
     BuildContext context,
     BuildContext navigatorContext,
     String widgetName,
-    List<Widget> widgetOptions,
+    List<Widget> configurationOptions,
+    List<Widget> stylingOptions,
   ) async {
-    // final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
-
-    // final screenSize = MediaQuery.of(navigatorContext).size;
+    final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
 
     await MyoroModal.showModal(
       navigatorContext,
-      configuration: MyoroModalConfiguration(
-        title: 'Options of $widgetName',
-        useRootNavigator: false,
-        // padding: EdgeInsets.zero,
-        // closeButtonPadding: themeExtension.widgetOptionsModalCloseButtonPadding,
-        // constraints: BoxConstraints(
-        //   maxWidth: MyoroPlatformHelper.isMobile ? screenSize.width * 0.9 : 400,
-        //   maxHeight: screenSize.height * 0.6,
-        // ),
-      ),
-      child: _WidgetOptionsModal(widgetOptions),
+      configuration: MyoroModalConfiguration(title: 'Options of $widgetName', useRootNavigator: false),
+      themeExtension: modalThemeExtension.copyWith(padding: EdgeInsets.zero),
+      child: _WidgetOptionsModal(configurationOptions, stylingOptions),
     );
   }
 
-  const _WidgetOptionsModal(this._widgetOptions);
+  const _WidgetOptionsModal(this._configurationOptions, this._stylingOptions);
 
-  final List<Widget> _widgetOptions;
+  final List<Widget> _configurationOptions;
+  final List<Widget> _stylingOptions;
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +33,27 @@ final class _WidgetOptionsModal extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: themeExtension.widgetOptionsModalSpacing,
         children: [
-          for (int i = 0; i < _widgetOptions.length; i++) ...[
-            Padding(padding: themeExtension.widgetOptionsModalItemPadding, child: _widgetOptions[i]),
-            if (i != (_widgetOptions.length - 1)) ...[
-              const MyoroBasicDivider(
-                Axis.horizontal,
-                // configuration: MyoroBasicDividerConfiguration(
-                //   direction: Axis.horizontal,
-                //   padding: EdgeInsets.zero,
-                // ),
-              ),
-            ] else ...[
-              SizedBox(height: themeExtension.widgetOptionsModalSpacing / 3),
-            ],
+          // Configuration Options Section
+          if (_configurationOptions.isNotEmpty) ...[
+            const _SectionHeader(title: 'Configuration'),
+            _OptionsList(options: _configurationOptions),
           ],
+
+          // Section Separator
+          if (_configurationOptions.isNotEmpty && _stylingOptions.isNotEmpty) ...[
+            SizedBox(height: themeExtension.widgetOptionsModalSpacing),
+            const MyoroBasicDivider(Axis.horizontal),
+            SizedBox(height: themeExtension.widgetOptionsModalSpacing),
+          ],
+
+          // Styling Options Section
+          if (_stylingOptions.isNotEmpty) ...[
+            const _SectionHeader(title: 'Styling'),
+            _OptionsList(options: _stylingOptions),
+          ],
+
+          // Bottom spacing
+          SizedBox(height: themeExtension.widgetOptionsModalSpacing / 3),
         ],
       ),
     );

@@ -8,25 +8,30 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroTimePickerInput].
 final class MyoroTimePickerInputWidgetShowcaseScreen extends StatelessWidget {
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = <Widget>[];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
+
   const MyoroTimePickerInputWidgetShowcaseScreen({super.key});
 
   @override
   Widget build(_) {
     return InheritedProvider(
       create: (_) => MyoroTimePickerInputWidgetShowcaseViewModel(),
-      child: WidgetShowcaseScreen(
+      child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroTimePickerInputTitle,
-          widget: const _Widget(),
-          widgetOptions:
-              MyoroInputWidgetShowcaseScreen.options.entries
-                  .where(
-                    (e) =>
-                        e.key != MyoroInputWidgetShowcaseScreen.placeholderOptionKey &&
-                        e.key != MyoroInputWidgetShowcaseScreen.readOnlyOptionKey,
-                  )
-                  .map((e) => e.value)
-                  .toList(),
+          widget: _Widget(),
+          configurationOptions: [
+            ...MyoroTimePickerInputWidgetShowcaseScreen.configurationOptions,
+            ...MyoroInputWidgetShowcaseScreen.configurationOptions,
+          ],
+          stylingOptions: [
+            ...MyoroTimePickerInputWidgetShowcaseScreen.stylingOptions,
+            ...MyoroInputWidgetShowcaseScreen.stylingOptions,
+          ],
         ),
       ),
     );

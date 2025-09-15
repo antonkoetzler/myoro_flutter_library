@@ -9,7 +9,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroSearchInput].
 final class MyoroSearchInputWidgetShowcaseScreen extends StatefulWidget {
-  static const options = [_RequestWhenChangedOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_RequestWhenChangedOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroSearchInputWidgetShowcaseScreen({super.key});
 
@@ -27,13 +31,17 @@ final class _MyoroSearchInputWidgetShowcaseScreenState extends State<MyoroSearch
         InheritedProvider(create: (_) => _viewModel),
         InheritedProvider(create: (_) => _viewModel.inputViewModel),
       ],
-      child: WidgetShowcaseScreen(
+      child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroSearchInputTitle,
-          widget: const _Widget(),
-          widgetOptions: [
-            ...MyoroSearchInputWidgetShowcaseScreen.options,
-            ...MyoroInputWidgetShowcaseScreen.options.values,
+          widget: _Widget(),
+          configurationOptions: [
+            ...MyoroSearchInputWidgetShowcaseScreen.configurationOptions,
+            ...MyoroInputWidgetShowcaseScreen.configurationOptions,
+          ],
+          stylingOptions: [
+            ...MyoroSearchInputWidgetShowcaseScreen.stylingOptions,
+            ...MyoroInputWidgetShowcaseScreen.stylingOptions,
           ],
         ),
       ),

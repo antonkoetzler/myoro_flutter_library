@@ -10,29 +10,20 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
 
   /// Opens the [MyoroModal].
   void showModal(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroModalWidgetShowcaseScreenThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroModalWidgetShowcaseScreenThemeExtension>();
 
     !state.isBottomSheet
         ? MyoroModal.showModal(
           context,
           configuration: buildConfiguration(context),
           themeExtension: buildThemeExtension(context),
-          child: Image.asset(
-            kHappyCat,
-            width: themeExtension.modalContentImageSize,
-            fit: BoxFit.contain,
-          ),
+          child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         )
         : MyoroModal.showBottomSheet(
           context,
           configuration: buildConfiguration(context),
           themeExtension: buildThemeExtension(context),
-          child: Image.asset(
-            kHappyCat,
-            width: themeExtension.modalContentImageSize,
-            fit: BoxFit.contain,
-          ),
+          child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         );
   }
 

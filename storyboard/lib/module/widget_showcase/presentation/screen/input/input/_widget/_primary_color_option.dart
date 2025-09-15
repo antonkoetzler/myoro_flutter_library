@@ -12,9 +12,7 @@ final class _PrimaryColorOption extends StatelessWidget {
       label: 'Primary color',
       selectedColor: viewModel.state.primaryColor,
       onChanged: (color) => viewModel.state.primaryColor = color,
-      checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.primaryColor = enabled ? null : viewModel.state.primaryColor,
+      checkboxOnChanged: (enabled, _) => viewModel.state.primaryColor = enabled ? null : viewModel.state.primaryColor,
     );
   }
 }

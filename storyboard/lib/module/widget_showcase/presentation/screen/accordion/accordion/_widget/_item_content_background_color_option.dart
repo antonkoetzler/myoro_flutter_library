@@ -14,8 +14,7 @@ final class _ItemContentBackgroundColorOption extends StatelessWidget {
       onChanged: (color) => viewModel.state.itemContentBackgroundColor = color,
       checkboxOnChanged:
           (enabled, _) =>
-              viewModel.state.itemContentBackgroundColor =
-                  enabled ? null : viewModel.state.itemContentBackgroundColor,
+              viewModel.state.itemContentBackgroundColor = enabled ? null : viewModel.state.itemContentBackgroundColor,
     );
   }
 }

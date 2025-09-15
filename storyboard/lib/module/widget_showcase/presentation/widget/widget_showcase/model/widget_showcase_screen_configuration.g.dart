@@ -22,12 +22,13 @@ mixin _$WidgetShowcaseScreenConfigurationMixin {
         other.runtimeType == runtimeType &&
         other.widgetName == self.widgetName &&
         other.widget == self.widget &&
-        other.widgetOptions == self.widgetOptions;
+        other.configurationOptions == self.configurationOptions &&
+        other.stylingOptions == self.stylingOptions;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.widgetName, self.widget, self.widgetOptions);
+    return Object.hash(self.widgetName, self.widget, self.configurationOptions, self.stylingOptions);
   }
 
   @override
@@ -35,6 +36,7 @@ mixin _$WidgetShowcaseScreenConfigurationMixin {
       'WidgetShowcaseScreenConfiguration(\n'
       '  widgetName: ${self.widgetName},\n'
       '  widget: ${self.widget},\n'
-      '  widgetOptions: ${self.widgetOptions},\n'
+      '  configurationOptions: ${self.configurationOptions},\n'
+      '  stylingOptions: ${self.stylingOptions},\n'
       ');';
 }

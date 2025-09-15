@@ -23,10 +23,7 @@ final class _MenuBorderRadiusOption extends StatelessWidget {
             (enabled, value) =>
                 viewModel.state.menuBorderRadius =
                     enabled
-                        ? BorderRadius.only(
-                          bottomLeft: Radius.circular(value),
-                          bottomRight: Radius.circular(value),
-                        )
+                        ? BorderRadius.only(bottomLeft: Radius.circular(value), bottomRight: Radius.circular(value))
                         : null,
       ),
     );

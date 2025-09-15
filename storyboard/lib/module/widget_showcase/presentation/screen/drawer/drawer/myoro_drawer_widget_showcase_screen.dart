@@ -11,7 +11,16 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroDrawer].
 final class MyoroDrawerWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_TitleOptions(), _ShowCloseButtonOption(), _BarrierDismissableOption(), _IsEndDrawerOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [
+    _TitleOptions(),
+    _ShowCloseButtonOption(),
+    _BarrierDismissableOption(),
+    _IsEndDrawerOption(),
+  ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroDrawerWidgetShowcaseScreen({super.key});
 
@@ -23,7 +32,8 @@ final class MyoroDrawerWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDrawerTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

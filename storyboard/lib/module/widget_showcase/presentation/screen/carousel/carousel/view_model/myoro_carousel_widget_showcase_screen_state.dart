@@ -29,8 +29,7 @@ final class MyoroCarouselWidgetShowcaseScreenState extends ChangeNotifier {
   }
 
   /// [MyoroCarouselConfiguration.autoplayIntervalDuration]
-  Duration _autoplayIntervalDuration =
-      MyoroCarouselConfiguration.autoplayIntervalDurationDefaultValue;
+  Duration _autoplayIntervalDuration = MyoroCarouselConfiguration.autoplayIntervalDurationDefaultValue;
   Duration get autoplayIntervalDuration => _autoplayIntervalDuration;
   set autoplayIntervalDuration(Duration autoplayIntervalDuration) {
     _autoplayIntervalDuration = autoplayIntervalDuration;

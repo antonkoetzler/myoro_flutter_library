@@ -24,14 +24,19 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroModal].
 final class MyoroModalWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [
     _IsBottomSheetOption(),
     _BarrierDismissableOption(),
     _UseRootNavigatorOption(),
-    _ConstraintsOption(),
     _OnClosedOption(),
     _TitleOption(),
     _ShowCloseButtonOption(),
+  ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [
+    _ConstraintsOption(),
     _PrimaryColorOption(),
     _BorderRadiusOption(),
     _BottomSheetBorderRadiusOption(),
@@ -54,7 +59,8 @@ final class MyoroModalWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroModalTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

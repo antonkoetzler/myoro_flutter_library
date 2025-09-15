@@ -8,7 +8,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroBarGraphWidgetShowcaseScreen].
 final class MyoroBarGraphWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_SortedOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_SortedOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroBarGraphWidgetShowcaseScreen({super.key});
 
@@ -20,7 +24,8 @@ final class MyoroBarGraphWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroBarGraphTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

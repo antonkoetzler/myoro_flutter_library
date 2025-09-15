@@ -17,25 +17,24 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroSingularDropdown] and [MyoroMultiDropdown].
 final class MyoroDropdownsWidgetShowcaseScreen extends StatefulWidget {
-  static const options = [
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [
     _LabelOption(),
     _MenuTypeEnumOption(),
     _AllowItemClearingOption(),
     _SelectedItemTextAlignOption(),
-    _SpacingOption(),
-    _MenuBorderOption(),
-    _MenuBorderRadiusOption(),
   ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_SpacingOption(), _MenuBorderOption(), _MenuBorderRadiusOption()];
 
   const MyoroDropdownsWidgetShowcaseScreen({super.key});
 
   @override
-  State<MyoroDropdownsWidgetShowcaseScreen> createState() =>
-      _MyoroDropdownsWidgetShowcaseScreenState();
+  State<MyoroDropdownsWidgetShowcaseScreen> createState() => _MyoroDropdownsWidgetShowcaseScreenState();
 }
 
-final class _MyoroDropdownsWidgetShowcaseScreenState
-    extends State<MyoroDropdownsWidgetShowcaseScreen> {
+final class _MyoroDropdownsWidgetShowcaseScreenState extends State<MyoroDropdownsWidgetShowcaseScreen> {
   final _dropdownViewModel = MyoroDropdownsWidgetShowcaseScreenViewModel();
 
   @override
@@ -55,9 +54,13 @@ final class _MyoroDropdownsWidgetShowcaseScreenState
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDropdownsTitle,
           widget: _Widget(),
-          widgetOptions: [
-            ...MyoroDropdownsWidgetShowcaseScreen.options,
-            ...MyoroMenusWidgetShowcaseScreen.options,
+          configurationOptions: [
+            ...MyoroDropdownsWidgetShowcaseScreen.configurationOptions,
+            ...MyoroMenusWidgetShowcaseScreen.configurationOptions,
+          ],
+          stylingOptions: [
+            ...MyoroDropdownsWidgetShowcaseScreen.stylingOptions,
+            ...MyoroMenusWidgetShowcaseScreen.stylingOptions,
           ],
         ),
       ),

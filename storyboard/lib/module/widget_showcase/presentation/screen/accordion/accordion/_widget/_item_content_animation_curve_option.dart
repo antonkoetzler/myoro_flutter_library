@@ -29,10 +29,7 @@ final class _ItemContentAnimationCurveOption extends StatelessWidget {
         selectedItemBuilder:
             (curve) =>
                 _curves.entries
-                    .firstWhere(
-                      (entry) => entry.value == curve,
-                      orElse: () => const MapEntry('custom', Curves.linear),
-                    )
+                    .firstWhere((entry) => entry.value == curve, orElse: () => const MapEntry('custom', Curves.linear))
                     .key,
         onChanged: (curve) => viewModel.state.itemContentAnimationCurve = curve,
         menuConfiguration: MyoroSingularMenuConfiguration(

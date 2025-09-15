@@ -9,7 +9,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroCircularLoader].
 final class MyoroCircularLoaderWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_ColorOption(), _SizeOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = <Widget>[];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_ColorOption(), _SizeOption()];
 
   const MyoroCircularLoaderWidgetShowcaseScreen({super.key});
 
@@ -21,7 +25,8 @@ final class MyoroCircularLoaderWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroCircularLoaderTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

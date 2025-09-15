@@ -70,6 +70,44 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
   static const clearTextButtonPaddingOptionKey = 'clearTextButtonPaddingOption';
   static const clearTextButtonIconOptionKey = 'clearTextButtonIconOption';
 
+  // Configuration-related options (behavior, data, callbacks, structural properties)
+  static const configurationOptions = [
+    _LabelOption(),
+    _PlaceholderOption(),
+    _EnabledOption(),
+    _ReadOnlyOption(),
+    _ShowClearTextButtonOption(),
+    _CheckboxOnChangedOption(),
+    _ValidationOption(),
+    _OnFieldSubmittedOption(),
+    _OnChangedOption(),
+    _OnClearedOption(),
+    _SuffixOption(),
+  ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [
+    _InputStyleOption(),
+    _TextAlignOption(),
+    _InputTextStyleOption(),
+    _LabelTextStyleOption(),
+    _ContentPaddingOption(),
+    _BorderOption(),
+    _CustomBorderOption(),
+    _UnderlinedBorderOption(),
+    _OutlinedBorderOption(),
+    _NoneBorderOption(),
+    _PrimaryColorOption(),
+    _ErrorBorderColorOption(),
+    _CursorHeightOption(),
+    _DisabledOpacityOption(),
+    _SpacingOption(),
+    _LabelBehaviorOption(),
+    _ClearTextButtonPaddingOption(),
+    _ClearTextButtonIconOption(),
+  ];
+
+  /// Legacy support - maintains the original map structure for backwards compatibility
   static const options = {
     inputStyleOptionKey: _InputStyleOption(),
     textAlignOptionKey: _TextAlignOption(),
@@ -108,11 +146,12 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
   Widget build(_) {
     return InheritedProvider(
       create: (_) => MyoroInputWidgetShowcaseScreenViewModel(),
-      child: WidgetShowcaseScreen(
+      child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroInputTitle,
-          widget: const _Widget(),
-          widgetOptions: options.values.toList(),
+          widget: _Widget(),
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

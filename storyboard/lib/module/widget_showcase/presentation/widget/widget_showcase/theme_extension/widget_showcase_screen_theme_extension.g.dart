@@ -25,6 +25,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
     EdgeInsets? widgetOptionsModalPadding,
     EdgeInsets? widgetOptionsModalItemPadding,
     EdgeInsets? widgetOptionsModalCloseButtonPadding,
+    TextStyle? sectionHeaderTextStyle,
   }) {
     return WidgetShowcaseScreenThemeExtension(
       color: color ?? self.color,
@@ -35,6 +36,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
       widgetOptionsModalItemPadding: widgetOptionsModalItemPadding ?? self.widgetOptionsModalItemPadding,
       widgetOptionsModalCloseButtonPadding:
           widgetOptionsModalCloseButtonPadding ?? self.widgetOptionsModalCloseButtonPadding,
+      sectionHeaderTextStyle: sectionHeaderTextStyle ?? self.sectionHeaderTextStyle,
     );
   }
 
@@ -48,7 +50,8 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
         other.widgetOptionsModalSpacing == self.widgetOptionsModalSpacing &&
         other.widgetOptionsModalPadding == self.widgetOptionsModalPadding &&
         other.widgetOptionsModalItemPadding == self.widgetOptionsModalItemPadding &&
-        other.widgetOptionsModalCloseButtonPadding == self.widgetOptionsModalCloseButtonPadding;
+        other.widgetOptionsModalCloseButtonPadding == self.widgetOptionsModalCloseButtonPadding &&
+        other.sectionHeaderTextStyle == self.sectionHeaderTextStyle;
   }
 
   @override
@@ -61,6 +64,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
       self.widgetOptionsModalPadding,
       self.widgetOptionsModalItemPadding,
       self.widgetOptionsModalCloseButtonPadding,
+      self.sectionHeaderTextStyle,
     );
   }
 
@@ -74,5 +78,6 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
       '  widgetOptionsModalPadding: ${self.widgetOptionsModalPadding},\n'
       '  widgetOptionsModalItemPadding: ${self.widgetOptionsModalItemPadding},\n'
       '  widgetOptionsModalCloseButtonPadding: ${self.widgetOptionsModalCloseButtonPadding},\n'
+      '  sectionHeaderTextStyle: ${self.sectionHeaderTextStyle},\n'
       ');';
 }

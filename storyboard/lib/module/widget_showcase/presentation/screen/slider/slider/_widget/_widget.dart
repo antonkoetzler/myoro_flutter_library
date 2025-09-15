@@ -6,8 +6,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroSlidersWidgetShowcaseScreenThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroSlidersWidgetShowcaseScreenThemeExtension>();
     final spacing = themeExtension.spacing;
 
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();

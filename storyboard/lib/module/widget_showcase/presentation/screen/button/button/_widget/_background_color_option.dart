@@ -13,8 +13,7 @@ final class _BackgroundColorOption extends StatelessWidget {
       selectedColor: viewModel.state.backgroundColor,
       onChanged: (color) => viewModel.state.backgroundColor = color,
       checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.backgroundColor = enabled ? null : viewModel.state.backgroundColor,
+          (enabled, _) => viewModel.state.backgroundColor = enabled ? null : viewModel.state.backgroundColor,
     );
   }
 }

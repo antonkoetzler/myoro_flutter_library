@@ -6,8 +6,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroCardWidgetShowcaseScreenThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroCardWidgetShowcaseScreenThemeExtension>();
     final viewModel = context.read<MyoroCardWidgetShowcaseScreenViewModel>();
 
     return ListenableBuilder(

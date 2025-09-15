@@ -14,9 +14,7 @@ final class _ItemTitleButtonArrowIconSizeOption extends StatelessWidget {
         initiallyEnabled: viewModel.state.itemTitleButtonArrowIconSize != null,
         initialValue: viewModel.state.itemTitleButtonArrowIconSize ?? 25.0,
         sliderOnChanged: (value) => viewModel.state.itemTitleButtonArrowIconSize = value,
-        checkboxOnChanged:
-            (enabled, value) =>
-                viewModel.state.itemTitleButtonArrowIconSize = enabled ? value : null,
+        checkboxOnChanged: (enabled, value) => viewModel.state.itemTitleButtonArrowIconSize = enabled ? value : null,
       ),
     );
   }

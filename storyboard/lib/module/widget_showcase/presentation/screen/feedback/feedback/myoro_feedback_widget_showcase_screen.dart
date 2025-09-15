@@ -11,12 +11,16 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroFeedback].
 final class MyoroFeedbackWidgetShowcaseScreen extends StatelessWidget {
-  static const options = <Widget>[
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = <Widget>[
     _IconConfigurationOption(),
     _TitleConfigurationOption(),
     _SubtitleConfigurationOption(),
     _ActionButtonConfigurationOption(),
   ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroFeedbackWidgetShowcaseScreen({super.key});
 
@@ -28,7 +32,8 @@ final class MyoroFeedbackWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroFormTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

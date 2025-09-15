@@ -21,6 +21,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     required this.widgetOptionsModalPadding,
     required this.widgetOptionsModalItemPadding,
     required this.widgetOptionsModalCloseButtonPadding,
+    required this.sectionHeaderTextStyle,
   });
 
   // coverage:ignore-start
@@ -31,7 +32,8 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
       widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: kMyoroMultiplier * 4),
       widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
       widgetOptionsModalItemPadding = myoroFake<EdgeInsets>(),
-      widgetOptionsModalCloseButtonPadding = myoroFake<EdgeInsets>();
+      widgetOptionsModalCloseButtonPadding = myoroFake<EdgeInsets>(),
+      sectionHeaderTextStyle = myoroFake<TextStyle>();
   // coverage:ignore-end
 
   WidgetShowcaseScreenThemeExtension.builder()
@@ -41,7 +43,8 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
       widgetOptionsModalSpacing = 10,
       widgetOptionsModalPadding = const EdgeInsets.only(top: 4),
       widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: kMyoroMultiplier * 2),
-      widgetOptionsModalCloseButtonPadding = const EdgeInsets.only(top: kMyoroMultiplier, right: kMyoroMultiplier);
+      widgetOptionsModalCloseButtonPadding = const EdgeInsets.only(top: kMyoroMultiplier, right: kMyoroMultiplier),
+      sectionHeaderTextStyle = const TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
 
   /// [Color] of [_WidgetShowcase].
   final Color color;
@@ -63,6 +66,9 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
 
   /// [MyoroModalConfiguration.closeButtonPadding]
   final EdgeInsets widgetOptionsModalCloseButtonPadding;
+
+  /// [TextStyle] of the section headers in the widget options modal.
+  final TextStyle sectionHeaderTextStyle;
 
   @override
   WidgetShowcaseScreenThemeExtension lerp(
@@ -86,6 +92,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
         other.widgetOptionsModalCloseButtonPadding,
         t,
       ),
+      sectionHeaderTextStyle: TextStyle.lerp(sectionHeaderTextStyle, other.sectionHeaderTextStyle, t),
     );
   }
 }

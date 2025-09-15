@@ -22,8 +22,7 @@ final class MyoroAccordionWidgetShowcaseScreenViewModel {
   final _items =
       List.generate(
         faker.randomGenerator.integer(10, min: 5),
-        (int index) =>
-            MyoroAccordionItem.fake(title: Text('Item #$index'), content: Text(faker.lorem.word())),
+        (int index) => MyoroAccordionItem.fake(title: Text('Item #$index'), content: Text(faker.lorem.word())),
       ).toSet();
   Set<MyoroAccordionItem> get items => _items;
 

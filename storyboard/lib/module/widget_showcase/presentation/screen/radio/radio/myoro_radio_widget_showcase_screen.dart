@@ -10,7 +10,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroRadio].
 final class MyoroRadioWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_LabelOption(), _LabelTextStyleOption(), _OnChangedOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_LabelOption(), _OnChangedOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_LabelTextStyleOption()];
 
   const MyoroRadioWidgetShowcaseScreen({super.key});
 
@@ -22,7 +26,8 @@ final class MyoroRadioWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroRadioTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

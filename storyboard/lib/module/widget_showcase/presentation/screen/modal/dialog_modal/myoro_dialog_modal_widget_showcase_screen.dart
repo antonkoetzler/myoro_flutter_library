@@ -16,16 +16,19 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroDialogModal].
 final class MyoroDialogModalWidgetShowcaseScreen extends StatefulWidget {
-  static const options = [
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [
     _InvertButtonsOption(),
     _ConfirmButtonTextOption(),
     _CancelButtonTextOption(),
     _OnConfirmOption(),
     _OnCancelOption(),
     _TextOption(),
-    _TextStyleOption(),
     _ChildOption(),
   ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_TextStyleOption()];
 
   const MyoroDialogModalWidgetShowcaseScreen({super.key});
 
@@ -47,7 +50,14 @@ final class _MyoroDialogModalWidgetShowcaseScreenState extends State<MyoroDialog
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroDialogModalTitle,
           widget: _Widget(),
-          widgetOptions: [...MyoroDialogModalWidgetShowcaseScreen.options, ...MyoroModalWidgetShowcaseScreen.options],
+          configurationOptions: [
+            ...MyoroDialogModalWidgetShowcaseScreen.configurationOptions,
+            ...MyoroModalWidgetShowcaseScreen.configurationOptions,
+          ],
+          stylingOptions: [
+            ...MyoroDialogModalWidgetShowcaseScreen.stylingOptions,
+            ...MyoroModalWidgetShowcaseScreen.stylingOptions,
+          ],
         ),
       ),
     );

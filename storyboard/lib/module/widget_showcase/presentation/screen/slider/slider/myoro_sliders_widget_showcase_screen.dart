@@ -15,16 +15,18 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroSlider].
 final class MyoroSlidersWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [
     _LabelOption(),
     _MinOption(),
     _MaxOption(),
     _CurrentValueTextOption(),
     _MaxValueTextOption(),
     _FooterTextOption(),
-    _IndicatorTextStyleOption(),
-    _IndicatorTextAlignmentOption(),
   ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_IndicatorTextStyleOption(), _IndicatorTextAlignmentOption()];
 
   const MyoroSlidersWidgetShowcaseScreen({super.key});
 
@@ -36,7 +38,8 @@ final class MyoroSlidersWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroSlidersTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

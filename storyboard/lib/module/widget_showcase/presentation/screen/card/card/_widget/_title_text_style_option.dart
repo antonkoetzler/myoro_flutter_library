@@ -13,8 +13,7 @@ final class _TitleTextStyleOption extends StatelessWidget {
       selectedItem: viewModel.state.titleTextStyle,
       onChanged: (textStyle) => viewModel.state.titleTextStyle = textStyle,
       checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.titleTextStyle = enabled ? null : viewModel.state.titleTextStyle,
+          (enabled, _) => viewModel.state.titleTextStyle = enabled ? null : viewModel.state.titleTextStyle,
     );
   }
 }

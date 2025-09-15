@@ -11,7 +11,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroGroupCheckbox].
 final class MyoroGroupCheckboxWidgetShowcaseScreen extends StatefulWidget {
-  static const options = [_DirectionOption(), _SpacingOption(), _RunSpacingOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_DirectionOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_SpacingOption(), _RunSpacingOption()];
 
   const MyoroGroupCheckboxWidgetShowcaseScreen({super.key});
 
@@ -39,7 +43,8 @@ class _MyoroGroupCheckboxWidgetShowcaseScreenState extends State<MyoroGroupCheck
             configuration: WidgetShowcaseScreenConfiguration(
               widgetName: MyoroWidgetListEnum.myoroGroupCheckboxTitle,
               widget: _Widget(),
-              widgetOptions: MyoroGroupCheckboxWidgetShowcaseScreen.options,
+              configurationOptions: MyoroGroupCheckboxWidgetShowcaseScreen.configurationOptions,
+              stylingOptions: MyoroGroupCheckboxWidgetShowcaseScreen.stylingOptions,
             ),
           );
         },

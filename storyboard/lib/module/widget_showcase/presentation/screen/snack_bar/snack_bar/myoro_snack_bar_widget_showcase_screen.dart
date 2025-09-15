@@ -12,7 +12,16 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroSnackBar].
 final class MyoroSnackBarWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_SnackBarTypeOption(), _ShowCloseButtonOption(), _MessageOption(), _ChildOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [
+    _SnackBarTypeOption(),
+    _ShowCloseButtonOption(),
+    _MessageOption(),
+    _ChildOption(),
+  ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroSnackBarWidgetShowcaseScreen({super.key});
 
@@ -24,7 +33,8 @@ final class MyoroSnackBarWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroSnackBarTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

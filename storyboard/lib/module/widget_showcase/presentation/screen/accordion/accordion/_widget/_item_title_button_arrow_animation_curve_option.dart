@@ -29,10 +29,7 @@ final class _ItemTitleButtonArrowAnimationCurveOption extends StatelessWidget {
         selectedItemBuilder:
             (curve) =>
                 _curves.entries
-                    .firstWhere(
-                      (entry) => entry.value == curve,
-                      orElse: () => const MapEntry('custom', Curves.linear),
-                    )
+                    .firstWhere((entry) => entry.value == curve, orElse: () => const MapEntry('custom', Curves.linear))
                     .key,
         onChanged: (curve) => viewModel.state.itemTitleButtonArrowAnimationCurve = curve,
         menuConfiguration: MyoroSingularMenuConfiguration(

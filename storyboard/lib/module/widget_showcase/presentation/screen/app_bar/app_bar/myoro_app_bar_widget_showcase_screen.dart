@@ -10,7 +10,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroAppBar].
 final class MyoroAppBarWidgetShowcaseScreen extends StatelessWidget {
-  static const widgetOptions = [_ShowBottomDividerOption(), _BackgroundColorOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_ShowBottomDividerOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_BackgroundColorOption()];
 
   const MyoroAppBarWidgetShowcaseScreen({super.key});
 
@@ -22,7 +26,8 @@ final class MyoroAppBarWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroAppBarTitle,
           widget: _Widget(),
-          widgetOptions: widgetOptions,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

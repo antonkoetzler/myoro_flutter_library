@@ -13,8 +13,7 @@ final class _DialogTextStyleOption extends StatelessWidget {
       selectedItem: viewModel.state.dialogTextStyle,
       onChanged: (textStyle) => viewModel.state.dialogTextStyle = textStyle,
       checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.dialogTextStyle = enabled ? null : viewModel.state.dialogTextStyle,
+          (enabled, _) => viewModel.state.dialogTextStyle = enabled ? null : viewModel.state.dialogTextStyle,
     );
   }
 }

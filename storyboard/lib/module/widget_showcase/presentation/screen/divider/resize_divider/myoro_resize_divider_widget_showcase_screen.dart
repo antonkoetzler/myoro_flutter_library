@@ -10,6 +10,12 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroResizeDivider].
 final class MyoroResizeDividerWidgetShowcaseScreen extends StatefulWidget {
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = <Widget>[];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
+
   const MyoroResizeDividerWidgetShowcaseScreen({super.key});
 
   @override
@@ -36,7 +42,14 @@ final class _MyoroResizeDividerWidgetShowcaseScreenState extends State<MyoroResi
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroResizeDividerTitle,
           widget: _Widget(),
-          widgetOptions: MyoroBasicDividerWidgetShowcaseScreen.options,
+          configurationOptions: [
+            ...MyoroResizeDividerWidgetShowcaseScreen.configurationOptions,
+            ...MyoroBasicDividerWidgetShowcaseScreen.configurationOptions,
+          ],
+          stylingOptions: [
+            ...MyoroResizeDividerWidgetShowcaseScreen.stylingOptions,
+            ...MyoroBasicDividerWidgetShowcaseScreen.stylingOptions,
+          ],
         ),
       ),
     );

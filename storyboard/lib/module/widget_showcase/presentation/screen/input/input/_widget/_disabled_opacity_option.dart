@@ -14,8 +14,7 @@ final class _DisabledOpacityOption extends StatelessWidget {
         initiallyEnabled: viewModel.state.disabledOpacity != null,
         initialValue: viewModel.state.disabledOpacity ?? 0.5,
         sliderOnChanged: (value) => viewModel.state.disabledOpacity = value,
-        checkboxOnChanged:
-            (enabled, value) => viewModel.state.disabledOpacity = enabled ? value : null,
+        checkboxOnChanged: (enabled, value) => viewModel.state.disabledOpacity = enabled ? value : null,
       ),
     );
   }

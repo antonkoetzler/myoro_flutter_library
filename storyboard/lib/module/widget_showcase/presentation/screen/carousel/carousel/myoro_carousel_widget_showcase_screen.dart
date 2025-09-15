@@ -15,15 +15,17 @@ part '_widget/_autoplay_interval_duration_option.dart';
 
 /// Widget showcase of [MyoroCarousel].
 final class MyoroCarouselWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [
     _DirectionOption(),
     _DisplayTraversalButtonsOption(),
     _InitialItemOption(),
     _AutoplayEnabledOption(),
     _AutoplayIntervalDurationOption(),
-    _PreviousItemButtonIconOption(),
-    _NextItemButtonIconOption(),
   ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_PreviousItemButtonIconOption(), _NextItemButtonIconOption()];
 
   const MyoroCarouselWidgetShowcaseScreen({super.key});
 
@@ -35,7 +37,8 @@ final class MyoroCarouselWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroCarouselTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

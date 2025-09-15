@@ -16,9 +16,7 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
   }
 
   /// Constructs a [MyoroSingularDropdownConfiguration].
-  MyoroSingularDropdownConfiguration<String> buildSingularDropdownConfiguration(
-    BuildContext context,
-  ) {
+  MyoroSingularDropdownConfiguration<String> buildSingularDropdownConfiguration(BuildContext context) {
     return MyoroSingularDropdownConfiguration(
       label: _state.label,
       menuTypeEnum: _state.menuTypeEnum,
@@ -27,8 +25,7 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
       menuConfiguration: _state.menuViewModel.singluarMenuConfiguration(context),
       selectedItemBuilder: _selectedItemBuilder,
       onChanged: (item) => _singularDropdownOnChanged(context, item),
-      checkboxOnChanged:
-          (enabled, item) => _singularDropdownCheckboxOnChanged(context, enabled, item),
+      checkboxOnChanged: (enabled, item) => _singularDropdownCheckboxOnChanged(context, enabled, item),
     );
   }
 
@@ -42,8 +39,7 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
       menuConfiguration: _state.menuViewModel.multiMenuConfiguration(context),
       selectedItemBuilder: _selectedItemBuilder,
       onChanged: (items) => _multiDropdownOnChanged(context, items),
-      checkboxOnChanged:
-          (enabled, items) => _multiDropdownCheckboxOnChanged(context, enabled, items),
+      checkboxOnChanged: (enabled, items) => _multiDropdownCheckboxOnChanged(context, enabled, items),
     );
   }
 
@@ -93,10 +89,7 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
   void _showSnackBar(BuildContext context, String message) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          snackBarType: MyoroSnackBarTypeEnum.attention,
-          message: message,
-        ),
+        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.attention, message: message),
       ),
     );
   }

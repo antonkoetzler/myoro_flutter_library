@@ -22,9 +22,16 @@ part '_widget/_widget.dart';
 
 /// [WidgetShowcaseScreen] of [MyoroButton].
 final class MyoroButtonWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
+  // Configuration-related options (behavior, callbacks, structural properties)
+  static const configurationOptions = [
     _TooltipEnabledOption(),
     _CursorOption(),
+    _OnTapDownEnabledOption(),
+    _OnTapUpEnabledOption(),
+  ];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [
     _BackgroundColorOption(),
     _BackgroundColorBuilderOption(),
     _ContentColorOption(),
@@ -35,8 +42,6 @@ final class MyoroButtonWidgetShowcaseScreen extends StatelessWidget {
     _BorderRadiusOption(),
     _BorderColorOption(),
     _BorderBuilderOption(),
-    _OnTapDownEnabledOption(),
-    _OnTapUpEnabledOption(),
   ];
 
   const MyoroButtonWidgetShowcaseScreen({super.key});
@@ -49,7 +54,8 @@ final class MyoroButtonWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroButtonTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

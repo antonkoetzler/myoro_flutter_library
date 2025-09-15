@@ -9,7 +9,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroBasicDivider].
 final class MyoroBasicDividerWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [_DirectionOption(), _ShortValueOption()];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_DirectionOption(), _ShortValueOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = <Widget>[];
 
   const MyoroBasicDividerWidgetShowcaseScreen({super.key});
 
@@ -21,7 +25,8 @@ final class MyoroBasicDividerWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroBasicDividerTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

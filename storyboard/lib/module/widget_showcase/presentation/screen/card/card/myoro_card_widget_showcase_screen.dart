@@ -15,8 +15,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroCard].
 final class MyoroCardWidgetShowcaseScreen extends StatelessWidget {
-  static const options = [
-    _TitleOption(),
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_TitleOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [
     _BackgroundColorOption(),
     _BorderOption(),
     _BorderRadiusOption(),
@@ -36,7 +39,8 @@ final class MyoroCardWidgetShowcaseScreen extends StatelessWidget {
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroCardTitle,
           widget: _Widget(),
-          widgetOptions: options,
+          configurationOptions: configurationOptions,
+          stylingOptions: stylingOptions,
         ),
       ),
     );

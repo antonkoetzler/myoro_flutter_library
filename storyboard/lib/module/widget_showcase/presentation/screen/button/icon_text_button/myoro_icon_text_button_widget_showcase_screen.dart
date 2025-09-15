@@ -13,14 +13,11 @@ part '_widget/_widget.dart';
 
 /// Widget showcase of [MyoroIconTextButton].
 final class MyoroIconTextButtonWidgetShowcaseScreen extends StatefulWidget {
-  static const options = [
-    _InvertOption(),
-    _SpacingOption(),
-    _PaddingOption(),
-    _ContentColorBuilderOption(),
-    _IconOption(),
-    _TextOption(),
-  ];
+  // Configuration-related options (behavior, data, structural properties)
+  static const configurationOptions = [_InvertOption(), _IconOption(), _TextOption()];
+
+  // Styling-related options (appearance, colors, spacing, theme extension)
+  static const stylingOptions = [_SpacingOption(), _PaddingOption(), _ContentColorBuilderOption()];
 
   const MyoroIconTextButtonWidgetShowcaseScreen({super.key});
 
@@ -48,9 +45,13 @@ final class _MyoroIconTextButtonWidgetShowcaseScreenState extends State<MyoroIco
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: MyoroWidgetListEnum.myoroIconTextButtonTitle,
           widget: _Widget(),
-          widgetOptions: [
-            ...MyoroIconTextButtonWidgetShowcaseScreen.options,
-            ...MyoroButtonWidgetShowcaseScreen.options,
+          configurationOptions: [
+            ...MyoroIconTextButtonWidgetShowcaseScreen.configurationOptions,
+            ...MyoroButtonWidgetShowcaseScreen.configurationOptions,
+          ],
+          stylingOptions: [
+            ...MyoroIconTextButtonWidgetShowcaseScreen.stylingOptions,
+            ...MyoroButtonWidgetShowcaseScreen.stylingOptions,
           ],
         ),
       ),
