@@ -39,25 +39,7 @@ class MyoroApp extends StatelessWidget {
     );
 
     if (configuration.home != null) {
-      return InheritedProvider<MyoroAppContext>(
-        create: (context) => MyoroAppContext(context),
-        child: MaterialApp(
-          title: configuration.title,
-          debugShowCheckedModeBanner: debugShowCheckedModeBanner,
-          localizationsDelegates: localizationsDelegates,
-          supportedLocales: supportedLocales,
-          themeMode: themeMode,
-          theme: lightTheme,
-          darkTheme: darkTheme,
-          home: configuration.home,
-          builder: configuration.builder,
-        ),
-      );
-    }
-
-    return InheritedProvider<MyoroAppContext>(
-      create: (context) => MyoroAppContext(context),
-      child: MaterialApp.router(
+      return MaterialApp(
         title: configuration.title,
         debugShowCheckedModeBanner: debugShowCheckedModeBanner,
         localizationsDelegates: localizationsDelegates,
@@ -65,9 +47,31 @@ class MyoroApp extends StatelessWidget {
         themeMode: themeMode,
         theme: lightTheme,
         darkTheme: darkTheme,
-        routerConfig: configuration.router,
-        builder: configuration.builder,
-      ),
+        home: configuration.home,
+        builder: (context, child) {
+          return InheritedProvider<MyoroAppContext>(
+            create: (context) => MyoroAppContext(context),
+            child: configuration.builder?.call(context, child) ?? child!,
+          );
+        },
+      );
+    }
+
+    return MaterialApp.router(
+      title: configuration.title,
+      debugShowCheckedModeBanner: debugShowCheckedModeBanner,
+      localizationsDelegates: localizationsDelegates,
+      supportedLocales: supportedLocales,
+      themeMode: themeMode,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      routerConfig: configuration.router,
+      builder: (context, child) {
+        return InheritedProvider<MyoroAppContext>(
+          create: (context) => MyoroAppContext(context),
+          child: configuration.builder?.call(context, child) ?? child!,
+        );
+      },
     );
   }
 }

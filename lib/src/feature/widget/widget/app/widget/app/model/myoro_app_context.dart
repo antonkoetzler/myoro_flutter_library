@@ -12,6 +12,13 @@ class MyoroAppContext {
 
   /// Resolves a theme extension from the app context to avoid collisions.
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
-    return Theme.of(_context).extension<T>()!;
+    final extension = Theme.of(_context).extension<T>();
+    if (extension == null) {
+      throw StateError(
+        '[MyoroAppContext.resolveThemeExtension]: [ThemeExtension] of type [$T] is not registered in the theme.'
+        'Make sure the [ThemeExtension] is included in the theme extensions list when creating the [ThemeData].',
+      );
+    }
+    return extension;
   }
 }

@@ -48,13 +48,14 @@ extension MyoroBuildContextExtension on BuildContext {
     return Theme.of(this).extensions;
   }
 
-  /// Resolves a [ThemeExtension] and throws an [Exception]
+  /// Resolves a [ThemeExtension] and throws a [StateError]
   /// if the [ThemeExtension] isn't apart of the [BuildContext].
   T resolveThemeExtension<T extends ThemeExtension<T>>() {
     final themeExtension = Theme.of(this).extension<T>();
     if (themeExtension != null) return themeExtension;
-    throw Exception(
-      '[BuildContextExtension.resolveThemeExtension]: [ThemeExtension] does not exist.',
+    throw StateError(
+      '[MyoroBuildContextExtension.resolveThemeExtension]: [ThemeExtension] of type [$T] is not registered in the theme.'
+      'Make sure the [ThemeExtension] is included in the theme extensions list when creating the [ThemeData].',
     );
   }
 

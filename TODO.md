@@ -9,6 +9,7 @@
   - Make MFL logo the storyboard app icon
   - Localization
   - Tests
+- `MyoroInkWellButton`
 - Add the logo i made to the readme
 - Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
 - Update the `Widgets.md` with all of the new `Widget`s added
