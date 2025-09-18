@@ -49,16 +49,7 @@ final class _MyoroSingleAccordionState extends State<MyoroSingleAccordion> {
   @override
   void didUpdateWidget(covariant MyoroSingleAccordion oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    // Update configuration.
     _viewModel.state.configuration = _configuration!;
-
-    // Update the selected item whenever [MyoroSingleAccordion.configuration] is provided.
-    final state = _viewModel.state;
-    final selectedItem = state.selectedItems.isNotEmpty ? state.selectedItems.first : null;
-    if (mounted && _configuration != null && _configuration!.selectedItem != selectedItem) {
-      _viewModel.state.selectedItems = {?_configuration!.selectedItem};
-    }
   }
 
   @override

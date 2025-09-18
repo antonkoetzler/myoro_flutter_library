@@ -5,8 +5,10 @@ part 'myoro_accordion_state.dart';
 
 /// Base accordion view model.
 class MyoroAccordionViewModel {
-  MyoroAccordionViewModel(MyoroAccordionConfiguration configuration, Set<MyoroAccordionItem> selectedItems)
-    : _state = MyoroAccordionState(configuration, selectedItems);
+  MyoroAccordionViewModel(
+    MyoroAccordionConfiguration configuration,
+    Set<MyoroAccordionItem> selectedItems,
+  ) : _state = MyoroAccordionState(configuration, selectedItems);
 
   /// State
   final MyoroAccordionState _state;

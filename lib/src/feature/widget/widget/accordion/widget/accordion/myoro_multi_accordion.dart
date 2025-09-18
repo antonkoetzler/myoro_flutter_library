@@ -41,19 +41,16 @@ final class _MyoroMultiAccordionState extends State<MyoroMultiAccordion> {
   MyoroAccordionViewModel get _viewModel {
     // ignore: invalid_use_of_protected_member
     return _controller?.viewModel ??
-        (_localViewModel ??= MyoroAccordionViewModel(_configuration!, _configuration!.selectedItems));
+        (_localViewModel ??= MyoroAccordionViewModel(
+          _configuration!,
+          _configuration!.selectedItems,
+        ));
   }
 
   @override
   void didUpdateWidget(covariant MyoroMultiAccordion oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    // Update the selected item whenever [MyoroSingleAccordion.configuration] is provided.
-    final state = _viewModel.state;
-    final selectedItems = state.selectedItems;
-    if (mounted && _configuration != null && _configuration!.selectedItems != selectedItems) {
-      _viewModel.state.selectedItems = _configuration!.selectedItems;
-    }
+    _viewModel.state.configuration = _configuration!;
   }
 
   @override
