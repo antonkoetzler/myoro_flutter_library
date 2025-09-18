@@ -15,7 +15,8 @@ final class _Base extends StatelessWidget {
     final isDarkMode = context.isDarkMode;
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
-    final themeExtension = _themeExtension ?? MyoroAccordionThemeExtension.builder(isDarkMode, colorScheme, textTheme);
+    final themeExtension =
+        _themeExtension ?? MyoroAccordionThemeExtension.builder(isDarkMode, colorScheme, textTheme);
 
     final state = _viewModel.state;
     final selectedItemsNotifier = state.selectedItemsNotifier;

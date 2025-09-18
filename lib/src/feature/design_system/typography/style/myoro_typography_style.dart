@@ -12,7 +12,7 @@ class MyoroTypographyStyle {
   ) {
     return TextStyle(
       fontFamily: 'Nunito',
-      color: isDarkMode ? MyoroColors.gray2 : MyoroColors.gray1,
+      color: isDarkMode ? MyoroColors.gray3 : MyoroColors.gray1,
       fontSize: fontSize.size,
       fontWeight: fontWeight,
       fontStyle: fontStyle,
@@ -24,7 +24,12 @@ class MyoroTypographyStyle {
       small = _textStyleBuilder(MyoroFontSizeEnum.small, isDarkMode, fontWeight, fontStyle),
       medium = _textStyleBuilder(MyoroFontSizeEnum.medium, isDarkMode, fontWeight, fontStyle),
       large = _textStyleBuilder(MyoroFontSizeEnum.large, isDarkMode, fontWeight, fontStyle),
-      extraLarge = _textStyleBuilder(MyoroFontSizeEnum.extraLarge, isDarkMode, fontWeight, fontStyle);
+      extraLarge = _textStyleBuilder(
+        MyoroFontSizeEnum.extraLarge,
+        isDarkMode,
+        fontWeight,
+        fontStyle,
+      );
 
   /// [MyoroFontSizeEnum.tiny]
   late final TextStyle tiny;

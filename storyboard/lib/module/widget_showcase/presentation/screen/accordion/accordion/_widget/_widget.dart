@@ -7,9 +7,32 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
-    return MyoroSingleAccordion(
-      configuration: viewModel.buildSingleConfiguration(),
-      themeExtension: viewModel.buildThemeExtension(context),
+    final widgetShowcaseThemeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final spacing = widgetShowcaseThemeExtension.spacing;
+
+    return ListenableBuilder(
+      listenable: viewModel.state,
+      builder: (_, _) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: spacing,
+          children: [
+            Flexible(
+              child: MyoroSingleAccordion(
+                configuration: viewModel.singleConfiguration,
+                themeExtension: viewModel.buildThemeExtension(context),
+              ),
+            ),
+            Flexible(
+              child: MyoroMultiAccordion(
+                configuration: viewModel.multiConfiguration,
+                themeExtension: viewModel.buildThemeExtension(context),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

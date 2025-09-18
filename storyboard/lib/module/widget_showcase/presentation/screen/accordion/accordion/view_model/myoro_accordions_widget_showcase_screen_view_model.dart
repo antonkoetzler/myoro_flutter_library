@@ -21,19 +21,10 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
   /// [MyoroAccordionController.items]
   Set<MyoroAccordionItem> get _items {
     return List.generate(
-      faker.randomGenerator.integer(10, min: 5),
-      (int index) => MyoroAccordionItem.fake(title: Text('Item #$index'), content: Text(faker.lorem.word())),
+      faker.randomGenerator.integer(50, min: 20),
+      (int index) =>
+          MyoroAccordionItem.fake(title: Text('Item #$index'), content: Text(faker.lorem.word())),
     ).toSet();
-  }
-
-  /// [MyoroAccordionConfiguration] of the [MyoroSingleAccordion].
-  MyoroSingleAccordionConfiguration buildSingleConfiguration() {
-    return MyoroSingleAccordionConfiguration(thumbVisibility: state.thumbVisibility, items: _items);
-  }
-
-  /// [MyoroAccordionConfiguration] of the [MyoroMultiAccordion].
-  MyoroMultiAccordionConfiguration buildMultiConfiguration() {
-    return MyoroMultiAccordionConfiguration(thumbVisibility: state.thumbVisibility, items: _items);
   }
 
   /// [MyoroAccordionThemeExtension] of the [MyoroAccordion].
@@ -54,5 +45,15 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
       itemTitleButtonArrowAnimationDuration: state.itemTitleButtonArrowAnimationDuration,
       itemTitleButtonArrowAnimationCurve: state.itemTitleButtonArrowAnimationCurve,
     );
+  }
+
+  /// [MyoroAccordionConfiguration] of the [MyoroSingleAccordion].
+  MyoroSingleAccordionConfiguration get singleConfiguration {
+    return MyoroSingleAccordionConfiguration(thumbVisibility: state.thumbVisibility, items: _items);
+  }
+
+  /// [MyoroAccordionConfiguration] of the [MyoroMultiAccordion].
+  MyoroMultiAccordionConfiguration get multiConfiguration {
+    return MyoroMultiAccordionConfiguration(thumbVisibility: state.thumbVisibility, items: _items);
   }
 }

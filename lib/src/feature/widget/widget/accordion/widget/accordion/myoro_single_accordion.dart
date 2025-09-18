@@ -41,12 +41,17 @@ final class _MyoroSingleAccordionState extends State<MyoroSingleAccordion> {
   MyoroAccordionViewModel get _viewModel {
     // ignore: invalid_use_of_protected_member
     return _controller?.viewModel ??
-        (_localViewModel ??= MyoroAccordionViewModel(_configuration!, {?_configuration!.selectedItem}));
+        (_localViewModel ??= MyoroAccordionViewModel(_configuration!, {
+          ?_configuration!.selectedItem,
+        }));
   }
 
   @override
   void didUpdateWidget(covariant MyoroSingleAccordion oldWidget) {
     super.didUpdateWidget(oldWidget);
+
+    // Update configuration.
+    _viewModel.state.configuration = _configuration!;
 
     // Update the selected item whenever [MyoroSingleAccordion.configuration] is provided.
     final state = _viewModel.state;

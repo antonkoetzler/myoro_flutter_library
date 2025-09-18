@@ -14,7 +14,10 @@ final class _ItemContent extends StatelessWidget {
     final itemContentAnimationCurve = themeExtension.itemContentAnimationCurve;
     final itemContentBackgroundColor = themeExtension.itemContentBackgroundColor;
 
-    final child = SizedBox(width: double.infinity, child: _isSelected ? _item.content : const SizedBox(height: 0));
+    final child = SizedBox(
+      width: double.infinity,
+      child: _isSelected ? _item.content : const SizedBox(height: 0),
+    );
 
     return Container(
       width: double.infinity,

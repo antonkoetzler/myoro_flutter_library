@@ -10,8 +10,8 @@
   - Tests
   - Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
 - `<>Singular<>` --> `<>Single<>`
-- `MyoroInkWellButton`
 - `MyoroLocationInput`
+- `MyoroGradientScroll`
 - Add the logo i made to the readme
 - Update the `Widgets.md` with all of the new `Widget`s added
 - Bring back copyWith with `@myoroModel` in MFA from the dead

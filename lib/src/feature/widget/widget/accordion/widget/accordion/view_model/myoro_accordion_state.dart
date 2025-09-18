@@ -6,7 +6,7 @@ class MyoroAccordionState {
     : _selectedItemsNotifier = ValueNotifier(selectedItems.isEmpty ? {} : selectedItems);
 
   /// Configuration.
-  final MyoroAccordionConfiguration configuration;
+  MyoroAccordionConfiguration configuration;
 
   /// [ValueNotifier] controlling the selected [MyoroAccordionItem].
   final ValueNotifier<Set<MyoroAccordionItem>> _selectedItemsNotifier;

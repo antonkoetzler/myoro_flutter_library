@@ -9,8 +9,8 @@ void main() {
     final colorScheme = createMyoroColorScheme(isDarkMode);
     final brightness = isDarkMode ? Brightness.dark : Brightness.light;
 
-    final primary = isDarkMode ? MyoroColors.gray1 : MyoroColors.gray3;
-    final secondary = isDarkMode ? MyoroColors.gray3 : MyoroColors.gray1;
+    final primary = isDarkMode ? MyoroColors.gray1 : MyoroColors.gray2;
+    final secondary = isDarkMode ? MyoroColors.gray2 : MyoroColors.gray1;
 
     expect(colorScheme.brightness, brightness);
     expect(colorScheme.primary, primary);
