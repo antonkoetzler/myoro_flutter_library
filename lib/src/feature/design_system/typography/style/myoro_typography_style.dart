@@ -24,12 +24,7 @@ class MyoroTypographyStyle {
       small = _textStyleBuilder(MyoroFontSizeEnum.small, isDarkMode, fontWeight, fontStyle),
       medium = _textStyleBuilder(MyoroFontSizeEnum.medium, isDarkMode, fontWeight, fontStyle),
       large = _textStyleBuilder(MyoroFontSizeEnum.large, isDarkMode, fontWeight, fontStyle),
-      extraLarge = _textStyleBuilder(
-        MyoroFontSizeEnum.extraLarge,
-        isDarkMode,
-        fontWeight,
-        fontStyle,
-      );
+      extraLarge = _textStyleBuilder(MyoroFontSizeEnum.extraLarge, isDarkMode, fontWeight, fontStyle);
 
   /// [MyoroFontSizeEnum.tiny]
   late final TextStyle tiny;

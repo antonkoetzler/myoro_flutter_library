@@ -36,6 +36,7 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
         selectedItemBuilder: (value) => value.toString(),
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: TextAlign.values.toSet,
+          selectedItem: selectedValue,
           itemBuilder: (value) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -44,7 +45,6 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
             );
           },
         ),
-        selectedItem: selectedValue,
       ),
     );
   }

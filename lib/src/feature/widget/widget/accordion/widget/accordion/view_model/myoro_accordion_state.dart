@@ -1,28 +1,28 @@
 part of 'myoro_accordion_view_model.dart';
 
 /// State of [MyoroAccordionViewModel].
-class MyoroAccordionState {
-  MyoroAccordionState(this.configuration, Set<MyoroAccordionItem> selectedItems)
+class MyoroAccordionState<T> {
+  MyoroAccordionState(this.configuration, Set<T> selectedItems)
     : _selectedItemsNotifier = ValueNotifier(selectedItems.isEmpty ? {} : selectedItems);
 
   /// Configuration.
-  MyoroAccordionConfiguration configuration;
+  MyoroAccordionConfiguration<T> configuration;
 
-  /// [ValueNotifier] controlling the selected [MyoroAccordionItem].
-  final ValueNotifier<Set<MyoroAccordionItem>> _selectedItemsNotifier;
+  /// [ValueNotifier] controlling the selected item(s).
+  final ValueNotifier<Set<T>> _selectedItemsNotifier;
 
   /// [_selectedItemsNotifier] getter.
-  ValueNotifier<Set<MyoroAccordionItem>> get selectedItemsNotifier {
+  ValueNotifier<Set<T>> get selectedItemsNotifier {
     return _selectedItemsNotifier;
   }
 
   /// Getter of [_selectedItemsNotifier]'s value.
-  Set<MyoroAccordionItem> get selectedItems {
+  Set<T> get selectedItems {
     return _selectedItemsNotifier.value;
   }
 
   /// [_selectedItemsNotifier] setter.
-  set selectedItems(Set<MyoroAccordionItem> selectedItems) {
+  set selectedItems(Set<T> selectedItems) {
     _selectedItemsNotifier.value = selectedItems;
   }
 

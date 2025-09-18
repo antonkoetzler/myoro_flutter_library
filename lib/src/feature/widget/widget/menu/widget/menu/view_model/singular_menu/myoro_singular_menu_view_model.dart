@@ -3,7 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of [MyoroSingularMenu].
 final class MyoroSingularMenuViewModel<T> extends MyoroMenuViewModel<T, MyoroSingularMenuConfiguration<T>> {
   MyoroSingularMenuViewModel(MyoroSingularMenuConfiguration<T> configuration)
-    : super(configuration, {?configuration.initiallySelectedItem});
+    : super(configuration, {?configuration.selectedItem});
 
   @override
   void toggleItem(T item) {

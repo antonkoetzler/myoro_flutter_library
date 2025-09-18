@@ -1,11 +1,10 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Arrow of an [_Item].
-final class _ItemTitleButtonArrow extends StatelessWidget {
-  final MyoroAccordionItem _item;
-  final bool _isSelected;
+final class _ItemTitleButtonArrow<T> extends StatelessWidget {
+  const _ItemTitleButtonArrow(this._isSelected);
 
-  const _ItemTitleButtonArrow(this._item, this._isSelected);
+  final bool _isSelected;
 
   @override
   Widget build(context) {

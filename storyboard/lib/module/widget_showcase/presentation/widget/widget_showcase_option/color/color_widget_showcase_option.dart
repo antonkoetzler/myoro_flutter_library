@@ -51,6 +51,7 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
         label: _label,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: kMyoroTestColors.toSet,
+          selectedItem: _selectedColor,
           itemBuilder: (color) {
             return MyoroMenuItem(
               buttonBuilder: (_, _) {
@@ -79,7 +80,6 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
         onChanged: _onChanged,
         checkboxOnChanged: _checkboxOnChanged,
         enabled: _enabled,
-        selectedItem: _selectedColor,
       ),
     );
   }

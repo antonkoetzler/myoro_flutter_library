@@ -20,7 +20,7 @@ mixin _$MyoroMultiMenuConfigurationMixin<T> {
   bool operator ==(Object other) {
     return other is MyoroMultiMenuConfiguration<T> &&
         other.runtimeType == runtimeType &&
-        other.initiallySelectedItems == self.initiallySelectedItems &&
+        other.selectedItems == self.selectedItems &&
         other.onChanged == self.onChanged &&
         other.request == self.request &&
         other.onEndReachedRequest == self.onEndReachedRequest &&
@@ -31,7 +31,7 @@ mixin _$MyoroMultiMenuConfigurationMixin<T> {
   @override
   int get hashCode {
     return Object.hash(
-      self.initiallySelectedItems,
+      self.selectedItems,
       self.onChanged,
       self.request,
       self.onEndReachedRequest,
@@ -43,7 +43,7 @@ mixin _$MyoroMultiMenuConfigurationMixin<T> {
   @override
   String toString() =>
       'MyoroMultiMenuConfiguration<T>(\n'
-      '  initiallySelectedItems: ${self.initiallySelectedItems},\n'
+      '  selectedItems: ${self.selectedItems},\n'
       '  onChanged: ${self.onChanged},\n'
       '  request: ${self.request},\n'
       '  onEndReachedRequest: ${self.onEndReachedRequest},\n'

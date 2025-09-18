@@ -1,11 +1,11 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Content of an [_Item].
-final class _ItemContent extends StatelessWidget {
-  final MyoroAccordionItem _item;
-  final bool _isSelected;
-
+final class _ItemContent<T> extends StatelessWidget {
   const _ItemContent(this._item, this._isSelected);
+
+  final T _item;
+  final bool _isSelected;
 
   @override
   Widget build(context) {
@@ -14,9 +14,14 @@ final class _ItemContent extends StatelessWidget {
     final itemContentAnimationCurve = themeExtension.itemContentAnimationCurve;
     final itemContentBackgroundColor = themeExtension.itemContentBackgroundColor;
 
+    final viewModel = context.read<MyoroAccordionViewModel<T>>();
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final contentBuilder = configuration.contentBuilder;
+
     final child = SizedBox(
       width: double.infinity,
-      child: _isSelected ? _item.content : const SizedBox(height: 0),
+      child: _isSelected ? contentBuilder(_item, _isSelected) : const SizedBox(height: 0),
     );
 
     return Container(

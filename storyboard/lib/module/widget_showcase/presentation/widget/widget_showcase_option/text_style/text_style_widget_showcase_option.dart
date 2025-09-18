@@ -43,6 +43,7 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
         selectedItemBuilder: typography.getTextStyleName,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: typography.allTextStyles.toSet,
+          selectedItem: selectedItem,
           itemBuilder: (value) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -51,7 +52,6 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
             );
           },
         ),
-        selectedItem: selectedItem,
       ),
     );
   }

@@ -1,6 +1,6 @@
 part of '../main_screen.dart';
 
-/// [MyoroAccordionItem.contentBuilder] of a [MyoroAccordion] item in [_Accordion].
+/// Content of an accordion item in accordions.
 final class _WidgetListingAccordionItemContent extends StatelessWidget {
   const _WidgetListingAccordionItemContent(this._widgetCategory);
 

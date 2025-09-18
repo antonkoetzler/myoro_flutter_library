@@ -1,22 +1,77 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Base accordion [Widget].
-final class _Base extends StatelessWidget {
-  const _Base(this._themeExtension, this._viewModel);
+final class _Base<T> extends StatefulWidget {
+  const _Base(this._themeExtension, this._controller, this._configuration, this._selectedItems)
+    : assert(
+        (_controller != null) ^ (_configuration != null),
+        '[MyoroSingleAccordion]: [controller] (x)or [configuration] is required.',
+      );
 
-  /// Theme extension.
+  /// Style.
   final MyoroAccordionThemeExtension? _themeExtension;
 
-  /// View model.
-  final MyoroAccordionViewModel _viewModel;
+  /// Controller.
+  final MyoroAccordionController<T>? _controller;
+
+  /// Configuration.
+  final MyoroAccordionConfiguration<T>? _configuration;
+
+  /// Selected items.
+  final Set<T> _selectedItems;
+
+  @override
+  State<_Base<T>> createState() => _BaseState<T>();
+}
+
+final class _BaseState<T> extends State<_Base<T>> {
+  /// Style.
+  MyoroAccordionThemeExtension? get _themeExtension {
+    return widget._themeExtension;
+  }
+
+  /// Controller.
+  MyoroAccordionController<T>? get _controller {
+    return widget._controller;
+  }
+
+  /// Configuration.
+  MyoroAccordionConfiguration<T>? get _configuration {
+    return widget._configuration;
+  }
+
+  /// Selected items.
+  Set<T> get _selectedItems {
+    return widget._selectedItems;
+  }
+
+  /// Local view model.
+  MyoroAccordionViewModel<T>? _localViewModel;
+
+  /// [_localViewModel] getter.
+  MyoroAccordionViewModel<T> get _viewModel {
+    // ignore: invalid_use_of_protected_member
+    return _controller?.viewModel ?? (_localViewModel ??= MyoroAccordionViewModel(_configuration!, _selectedItems));
+  }
+
+  @override
+  void didUpdateWidget(covariant _Base<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (_configuration != null) _viewModel.state.configuration = _configuration!;
+  }
+
+  @override
+  void dispose() {
+    _localViewModel?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final isDarkMode = context.isDarkMode;
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
-    final themeExtension =
-        _themeExtension ?? MyoroAccordionThemeExtension.builder(isDarkMode, colorScheme, textTheme);
+    final themeExtension = _themeExtension ?? MyoroAccordionThemeExtension.builder(isDarkMode, colorScheme, textTheme);
 
     final state = _viewModel.state;
     final selectedItemsNotifier = state.selectedItemsNotifier;

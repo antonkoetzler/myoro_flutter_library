@@ -25,7 +25,6 @@ final class _ItemTitleButtonArrowAnimationCurveOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Arrow animation curve',
         allowItemClearing: true,
-        selectedItem: viewModel.state.itemTitleButtonArrowAnimationCurve,
         selectedItemBuilder:
             (curve) =>
                 _curves.entries
@@ -34,6 +33,7 @@ final class _ItemTitleButtonArrowAnimationCurveOption extends StatelessWidget {
         onChanged: (curve) => viewModel.state.itemTitleButtonArrowAnimationCurve = curve,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: () => _curves.values.toSet(),
+          selectedItem: viewModel.state.itemTitleButtonArrowAnimationCurve,
           itemBuilder: (curve) {
             final name = _curves.entries.firstWhere((entry) => entry.value == curve).key;
             return MyoroMenuItem(

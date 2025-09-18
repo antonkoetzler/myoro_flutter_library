@@ -7,10 +7,16 @@ part 'myoro_single_accordion_configuration.g.dart';
 /// [MyoroSingleAccordion] configuration.
 @immutable
 @myoroModel
-class MyoroSingleAccordionConfiguration extends MyoroAccordionConfiguration
+class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T>
     with _$MyoroSingleAccordionConfigurationMixin {
-  const MyoroSingleAccordionConfiguration({super.thumbVisibility, required super.items, this.selectedItem});
+  const MyoroSingleAccordionConfiguration({
+    super.thumbVisibility,
+    required super.titleBuilder,
+    required super.contentBuilder,
+    required super.items,
+    this.selectedItem,
+  });
 
-  /// Expanded item.
-  final MyoroAccordionItem? selectedItem;
+  /// Selected item.
+  final T? selectedItem;
 }

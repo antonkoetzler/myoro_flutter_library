@@ -25,7 +25,6 @@ final class _ItemContentAnimationCurveOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Item content animation curve',
         allowItemClearing: true,
-        selectedItem: viewModel.state.itemContentAnimationCurve,
         selectedItemBuilder:
             (curve) =>
                 _curves.entries
@@ -34,6 +33,7 @@ final class _ItemContentAnimationCurveOption extends StatelessWidget {
         onChanged: (curve) => viewModel.state.itemContentAnimationCurve = curve,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: () => _curves.values.toSet(),
+          selectedItem: viewModel.state.itemContentAnimationCurve,
           itemBuilder: (curve) {
             final name = _curves.entries.firstWhere((entry) => entry.value == curve).key;
             return MyoroMenuItem(

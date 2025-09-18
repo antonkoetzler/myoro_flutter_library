@@ -17,7 +17,6 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
     required MyoroMultiMenuConfiguration<T> menuConfiguration,
     required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
-    Set<T> selectedItems = const {},
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
   }) {
@@ -29,7 +28,6 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
       selectedItemTextAlign,
       menuConfiguration,
       selectedItemBuilder,
-      selectedItems,
       onChanged,
       checkboxOnChanged,
     );
@@ -43,13 +41,9 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
     super.selectedItemTextAlign,
     super.menuConfiguration,
     super.selectedItemBuilder,
-    this.selectedItems,
     this.onChanged,
     this.checkboxOnChanged,
   );
-
-  /// Initially selected items.
-  final Set<T> selectedItems;
 
   /// Function executed when the selected item changes.
   final MyoroMultiDropdownConfigurationOnChanged<T>? onChanged;
@@ -66,7 +60,6 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
     TextAlign? selectedItemTextAlign,
     MyoroMultiMenuConfiguration<T>? menuConfiguration,
     MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
-    Set<T>? selectedItems,
     MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
     bool onChangedProvided = true,
     MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
@@ -80,7 +73,6 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
       selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
       menuConfiguration: menuConfiguration ?? this.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      selectedItems: selectedItems ?? this.selectedItems,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
       checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
     );

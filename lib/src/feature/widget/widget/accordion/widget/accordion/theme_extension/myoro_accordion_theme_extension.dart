@@ -79,7 +79,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
   /// [Row.spacing] of [_ItemTitleButton].
   final double? itemTitleButtonSpacing;
 
-  /// Default [TextStyle] wrapped around the [MyoroAccordionItem.titleBuilder].
+  /// Default [TextStyle] wrapped around the title [Widget].
   final TextStyle? itemTitleButtonTitleTextStyle;
 
   /// [IconData] of [_ItemTitleButtonArrow].

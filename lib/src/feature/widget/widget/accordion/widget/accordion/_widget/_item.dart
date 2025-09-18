@@ -1,8 +1,8 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
-/// Item within a [MyoroAccordion].
-final class _Item extends StatelessWidget {
-  final MyoroAccordionItem item;
+/// Item within an accordion.
+final class _Item<T> extends StatelessWidget {
+  final T item;
   final bool isSelected;
   final bool isLastItem;
 

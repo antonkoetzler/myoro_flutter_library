@@ -7,10 +7,16 @@ part 'myoro_multi_accordion_configuration.g.dart';
 /// [MyoroMultiAccordion] configuration.
 @immutable
 @myoroModel
-class MyoroMultiAccordionConfiguration extends MyoroAccordionConfiguration
+class MyoroMultiAccordionConfiguration<T> extends MyoroAccordionConfiguration<T>
     with _$MyoroMultiAccordionConfigurationMixin {
-  const MyoroMultiAccordionConfiguration({super.thumbVisibility, required super.items, this.selectedItems = const {}});
+  const MyoroMultiAccordionConfiguration({
+    super.thumbVisibility,
+    required super.titleBuilder,
+    required super.contentBuilder,
+    required super.items,
+    this.selectedItems = const {},
+  });
 
   /// Selected items.
-  final Set<MyoroAccordionItem> selectedItems;
+  final Set<T> selectedItems;
 }

@@ -18,7 +18,6 @@ final class _LabelBehaviorOption extends StatelessWidget {
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Label behavior',
         allowItemClearing: true,
-        selectedItem: viewModel.state.labelBehavior,
         selectedItemBuilder:
             (behavior) =>
                 _behaviors.entries
@@ -30,6 +29,7 @@ final class _LabelBehaviorOption extends StatelessWidget {
         onChanged: (behavior) => viewModel.state.labelBehavior = behavior,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: () => _behaviors.values.toSet(),
+          selectedItem: viewModel.state.labelBehavior,
           itemBuilder: (behavior) {
             final name = _behaviors.entries.firstWhere((entry) => entry.value == behavior).key;
             return MyoroMenuItem(

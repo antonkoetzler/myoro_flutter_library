@@ -37,6 +37,7 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
         selectedItemBuilder: (value) => value.toString(),
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: () => List.generate(10, (int index) => index + 1).toSet(),
+          selectedItem: selectedItem,
           itemBuilder: (value) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -45,7 +46,6 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
             );
           },
         ),
-        selectedItem: selectedItem,
       ),
     );
   }

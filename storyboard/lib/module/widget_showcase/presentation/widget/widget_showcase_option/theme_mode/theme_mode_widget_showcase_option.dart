@@ -25,6 +25,7 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
         allowItemClearing: false,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: ThemeMode.values.toSet,
+          selectedItem: themeModeController.themeMode,
           itemBuilder: (themeMode) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -35,7 +36,6 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
         ),
         selectedItemBuilder: _formattedName,
         onChanged: onChanged,
-        selectedItem: themeModeController.themeMode,
       ),
     );
   }

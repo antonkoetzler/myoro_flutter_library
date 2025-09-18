@@ -36,6 +36,7 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
         selectedItemBuilder: (value) => value.toString(),
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: TextOverflow.values.toSet,
+          selectedItem: selectedItem,
           itemBuilder: (value) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -44,7 +45,6 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
             );
           },
         ),
-        selectedItem: selectedItem,
       ),
     );
   }

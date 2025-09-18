@@ -28,22 +28,10 @@ void main() {
     }
 
     expect(style.tiny, textStyleBuilder(MyoroFontSizeEnum.tiny, isDarkMode, fontWeight, fontStyle));
-    expect(
-      style.small,
-      textStyleBuilder(MyoroFontSizeEnum.small, isDarkMode, fontWeight, fontStyle),
-    );
-    expect(
-      style.medium,
-      textStyleBuilder(MyoroFontSizeEnum.medium, isDarkMode, fontWeight, fontStyle),
-    );
-    expect(
-      style.large,
-      textStyleBuilder(MyoroFontSizeEnum.large, isDarkMode, fontWeight, fontStyle),
-    );
-    expect(
-      style.extraLarge,
-      textStyleBuilder(MyoroFontSizeEnum.extraLarge, isDarkMode, fontWeight, fontStyle),
-    );
+    expect(style.small, textStyleBuilder(MyoroFontSizeEnum.small, isDarkMode, fontWeight, fontStyle));
+    expect(style.medium, textStyleBuilder(MyoroFontSizeEnum.medium, isDarkMode, fontWeight, fontStyle));
+    expect(style.large, textStyleBuilder(MyoroFontSizeEnum.large, isDarkMode, fontWeight, fontStyle));
+    expect(style.extraLarge, textStyleBuilder(MyoroFontSizeEnum.extraLarge, isDarkMode, fontWeight, fontStyle));
   });
 
   test('MyoroTypographyStyle == operator', () {

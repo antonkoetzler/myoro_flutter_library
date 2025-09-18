@@ -18,15 +18,6 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// [MyoroAccordionController.items]
-  Set<MyoroAccordionItem> get _items {
-    return List.generate(
-      faker.randomGenerator.integer(50, min: 20),
-      (int index) =>
-          MyoroAccordionItem.fake(title: Text('Item #$index'), content: Text(faker.lorem.word())),
-    ).toSet();
-  }
-
   /// [MyoroAccordionThemeExtension] of the [MyoroAccordion].
   MyoroAccordionThemeExtension buildThemeExtension(BuildContext context) {
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
@@ -47,13 +38,33 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
     );
   }
 
+  /// Builds a title or content [Widget].
+  Widget _buildTitleOrContentWidget(String item, _) {
+    return Text(item);
+  }
+
   /// [MyoroAccordionConfiguration] of the [MyoroSingleAccordion].
-  MyoroSingleAccordionConfiguration get singleConfiguration {
-    return MyoroSingleAccordionConfiguration(thumbVisibility: state.thumbVisibility, items: _items);
+  MyoroSingleAccordionConfiguration<String> get singleConfiguration {
+    return MyoroSingleAccordionConfiguration(
+      thumbVisibility: state.thumbVisibility,
+      titleBuilder: _buildTitleOrContentWidget,
+      contentBuilder: _buildTitleOrContentWidget,
+      items: _items,
+    );
   }
 
   /// [MyoroAccordionConfiguration] of the [MyoroMultiAccordion].
-  MyoroMultiAccordionConfiguration get multiConfiguration {
-    return MyoroMultiAccordionConfiguration(thumbVisibility: state.thumbVisibility, items: _items);
+  MyoroMultiAccordionConfiguration<String> get multiConfiguration {
+    return MyoroMultiAccordionConfiguration(
+      thumbVisibility: state.thumbVisibility,
+      titleBuilder: _buildTitleOrContentWidget,
+      contentBuilder: _buildTitleOrContentWidget,
+      items: _items,
+    );
+  }
+
+  /// [MyoroAccordionConfiguration.items]
+  Set<String> get _items {
+    return List.generate(faker.randomGenerator.integer(50, min: 20), (int index) => 'Item #$index').toSet();
   }
 }

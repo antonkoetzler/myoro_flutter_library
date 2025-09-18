@@ -23,9 +23,9 @@ final class MyoroDropdownMenuTypeEnumWidgetShowcaseOption extends StatelessWidge
         onChanged: (item) => onChanged(item!),
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: MyoroDropdownMenuTypeEnum.values.toSet,
+          selectedItem: selectedItem,
           itemBuilder: viewModel.itemBuilder,
         ),
-        selectedItem: selectedItem,
       ),
     );
   }

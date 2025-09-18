@@ -20,7 +20,6 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
   bool operator ==(Object other) {
     return other is MyoroMultiDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
-        other.selectedItems == self.selectedItems &&
         other.onChanged == self.onChanged &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.label == self.label &&
@@ -35,7 +34,6 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
   @override
   int get hashCode {
     return Object.hash(
-      self.selectedItems,
       self.onChanged,
       self.checkboxOnChanged,
       self.label,
@@ -51,7 +49,6 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
   @override
   String toString() =>
       'MyoroMultiDropdownConfiguration<T>(\n'
-      '  selectedItems: ${self.selectedItems},\n'
       '  onChanged: ${self.onChanged},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  label: ${self.label},\n'

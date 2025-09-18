@@ -4,7 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Controller of [MyoroSingularMenu].
 class MyoroSingularMenuController<T> extends MyoroMenuController<T, MyoroSingularMenuViewModel<T>> {
   MyoroSingularMenuController({required MyoroSingularMenuConfiguration<T> configuration})
-    : _selectedItemNotifier = ValueNotifier(configuration.initiallySelectedItem),
+    : _selectedItemNotifier = ValueNotifier(configuration.selectedItem),
       super(MyoroSingularMenuViewModel(configuration)) {
     viewModel.state.selectedItemsNotifier.addListener(_selectedItemsNotifierListener);
   }

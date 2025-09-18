@@ -13,12 +13,12 @@ class MyoroSingularMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _
     super.onEndReachedRequest,
     super.searchCallback,
     required super.itemBuilder,
-    this.initiallySelectedItem,
+    this.selectedItem,
     this.onChanged,
   });
 
   /// Initially selected item.
-  final T? initiallySelectedItem;
+  final T? selectedItem;
 
   /// Callback executed when the selected item is changed.
   final MyoroSingularMenuOnChanged<T>? onChanged;
@@ -31,17 +31,15 @@ class MyoroSingularMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _
     bool searchCallbackProvided = true,
     MyoroMenuItemBuilder<T>? itemBuilder,
     MyoroSingularMenuOnChanged<T>? onChanged,
-    T? initiallySelectedItem,
-    bool initiallySelectedItemProvided = true,
+    T? selectedItem,
+    bool selectedItemProvided = true,
     bool onChangedProvided = true,
   }) {
     return MyoroSingularMenuConfiguration(
       request: request ?? this.request,
       searchCallback: searchCallbackProvided ? (searchCallback ?? this.searchCallback) : null,
       itemBuilder: itemBuilder ?? this.itemBuilder,
-      initiallySelectedItem: initiallySelectedItemProvided
-          ? (initiallySelectedItem ?? this.initiallySelectedItem)
-          : null,
+      selectedItem: selectedItemProvided ? (selectedItem ?? this.selectedItem) : null,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
     );
   }

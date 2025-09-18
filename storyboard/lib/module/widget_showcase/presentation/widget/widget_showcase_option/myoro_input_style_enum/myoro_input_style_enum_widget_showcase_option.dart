@@ -24,9 +24,9 @@ final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
         selectedItemBuilder: viewModel.selectedItemBuilder,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: MyoroInputStyleEnum.values.toSet,
+          selectedItem: selectedStyle,
           itemBuilder: viewModel.itemBuilder,
         ),
-        selectedItem: selectedStyle,
       ),
     );
   }

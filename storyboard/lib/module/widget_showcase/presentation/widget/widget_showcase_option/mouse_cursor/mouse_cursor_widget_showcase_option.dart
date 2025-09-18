@@ -30,6 +30,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
         onChanged: onChanged,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: kMyoroTestCursors.toSet,
+          selectedItem: selectedCursor,
           itemBuilder: (cursor) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -38,7 +39,6 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
             );
           },
         ),
-        selectedItem: selectedCursor,
       ),
     );
   }

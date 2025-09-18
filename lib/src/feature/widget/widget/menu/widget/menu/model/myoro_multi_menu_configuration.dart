@@ -13,12 +13,12 @@ class MyoroMultiMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _$My
     super.onEndReachedRequest,
     super.searchCallback,
     required super.itemBuilder,
-    this.initiallySelectedItems = const {},
+    this.selectedItems = const {},
     this.onChanged,
   });
 
   /// Initially selected items.
-  final Set<T> initiallySelectedItems;
+  final Set<T> selectedItems;
 
   /// Callback executed when the selected item is changed.
   final MyoroMultiMenuOnChanged<T>? onChanged;
@@ -30,7 +30,7 @@ class MyoroMultiMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _$My
     MyoroMenuSearchCallback<T>? searchCallback,
     bool searchCallbackProvided = true,
     MyoroMenuItemBuilder<T>? itemBuilder,
-    Set<T>? initiallySelectedItems,
+    Set<T>? selectedItems,
     MyoroMultiMenuOnChanged<T>? onChanged,
     bool onChangedProvided = true,
   }) {
@@ -38,7 +38,7 @@ class MyoroMultiMenuConfiguration<T> extends MyoroMenuConfiguration<T> with _$My
       request: request ?? this.request,
       searchCallback: searchCallbackProvided ? (searchCallback ?? this.searchCallback) : null,
       itemBuilder: itemBuilder ?? this.itemBuilder,
-      initiallySelectedItems: initiallySelectedItems ?? this.initiallySelectedItems,
+      selectedItems: selectedItems ?? this.selectedItems,
       onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
     );
   }

@@ -28,9 +28,9 @@ final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
         selectedItemBuilder: viewModel.selectedItemBuilder,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: MyoroSnackBarTypeEnum.values.toSet,
+          selectedItem: selectedItem,
           itemBuilder: viewModel.itemBuilder,
         ),
-        selectedItem: selectedItem,
       ),
     );
   }

@@ -15,6 +15,7 @@ final class IconWidgetShowcaseOptionViewModel {
         onChanged: _configuration.iconOnChanged,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: kMyoroTestIcons.toSet,
+          selectedItem: _configuration.selectedIcon,
           itemBuilder: (icon) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -24,7 +25,6 @@ final class IconWidgetShowcaseOptionViewModel {
           },
         ),
         enabled: _configuration.enableOptionCheckboxOnChanged != null ? enabled : true,
-        selectedItem: _configuration.selectedIcon,
       ),
     );
     _iconSize = _configuration.selectedIconSize;

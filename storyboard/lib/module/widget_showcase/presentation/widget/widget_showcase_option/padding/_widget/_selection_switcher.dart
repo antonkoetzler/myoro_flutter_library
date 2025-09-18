@@ -16,6 +16,7 @@ final class _SelectionSwitcher extends StatelessWidget {
         selectedItemBuilder: _formattedName,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: PaddingWidgetShowcaseOptionEnum.values.toSet,
+          selectedItem: viewModel.modeEnum,
           itemBuilder: (value) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -24,7 +25,6 @@ final class _SelectionSwitcher extends StatelessWidget {
             );
           },
         ),
-        selectedItem: viewModel.modeEnum,
       ),
     );
   }

@@ -7,8 +7,7 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
-    final widgetShowcaseThemeExtension =
-        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
 
     return ListenableBuilder(

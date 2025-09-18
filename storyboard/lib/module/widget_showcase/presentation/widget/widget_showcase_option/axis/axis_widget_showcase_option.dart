@@ -35,6 +35,7 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
         allowItemClearing: false,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: Axis.values.toSet,
+          selectedItem: initialDirection,
           itemBuilder: (axis) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -44,7 +45,6 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
           },
         ),
         enabled: enabled,
-        selectedItem: initialDirection,
       ),
     );
   }

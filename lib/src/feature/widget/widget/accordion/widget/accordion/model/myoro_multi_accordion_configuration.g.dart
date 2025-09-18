@@ -11,30 +11,34 @@ part of 'myoro_multi_accordion_configuration.dart';
 /// Apply this mixin to [MyoroMultiAccordionConfiguration] once the code is generated.
 ///
 /// ```dart
-/// class MyoroMultiAccordionConfiguration with _$MyoroMultiAccordionConfigurationMixin {}
+/// class MyoroMultiAccordionConfiguration<T> with _$MyoroMultiAccordionConfigurationMixin<T> {}
 /// ```
-mixin _$MyoroMultiAccordionConfigurationMixin {
-  MyoroMultiAccordionConfiguration get self => this as MyoroMultiAccordionConfiguration;
+mixin _$MyoroMultiAccordionConfigurationMixin<T> {
+  MyoroMultiAccordionConfiguration<T> get self => this as MyoroMultiAccordionConfiguration<T>;
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroMultiAccordionConfiguration &&
+    return other is MyoroMultiAccordionConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.selectedItems == self.selectedItems &&
         other.thumbVisibility == self.thumbVisibility &&
+        other.titleBuilder == self.titleBuilder &&
+        other.contentBuilder == self.contentBuilder &&
         other.items == self.items;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.selectedItems, self.thumbVisibility, self.items);
+    return Object.hash(self.selectedItems, self.thumbVisibility, self.titleBuilder, self.contentBuilder, self.items);
   }
 
   @override
   String toString() =>
-      'MyoroMultiAccordionConfiguration(\n'
+      'MyoroMultiAccordionConfiguration<T>(\n'
       '  selectedItems: ${self.selectedItems},\n'
       '  thumbVisibility: ${self.thumbVisibility},\n'
+      '  titleBuilder: ${self.titleBuilder},\n'
+      '  contentBuilder: ${self.contentBuilder},\n'
       '  items: ${self.items},\n'
       ');';
 }

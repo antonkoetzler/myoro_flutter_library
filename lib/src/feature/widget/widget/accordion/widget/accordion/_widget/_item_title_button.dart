@@ -1,36 +1,35 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Button of an [_Item].
-final class _ItemTitleButton extends StatelessWidget {
-  final MyoroAccordionItem _item;
-  final bool _isSelected;
-
+final class _ItemTitleButton<T> extends StatelessWidget {
   const _ItemTitleButton(this._item, this._isSelected);
+
+  final T _item;
+  final bool _isSelected;
 
   @override
   Widget build(BuildContext context) {
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final itemTitleButtonSpacing = accordionThemeExtension.itemTitleButtonSpacing;
     final itemTitleButtonTitleTextStyle = accordionThemeExtension.itemTitleButtonTitleTextStyle;
-    final itemTitleButtonContentPadding =
-        accordionThemeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
-    final itemTitleButtonSelectedBackgroundColor =
-        accordionThemeExtension.itemTitleButtonSelectedBackgroundColor;
+    final itemTitleButtonContentPadding = accordionThemeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
+    final itemTitleButtonSelectedBackgroundColor = accordionThemeExtension.itemTitleButtonSelectedBackgroundColor;
 
     final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
     final backgroundIdleColor = buttonThemeExtension.backgroundIdleColor;
 
-    final viewModel = context.read<MyoroAccordionViewModel>();
+    final viewModel = context.read<MyoroAccordionViewModel<T>>();
     final toggleItem = viewModel.toggleItem;
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final titleBuilder = configuration.titleBuilder;
 
-    final title = _item.title;
+    final title = titleBuilder(_item, _isSelected);
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => toggleItem(_item)),
       themeExtension: buttonThemeExtension.copyWith(
-        backgroundIdleColor: _isSelected
-            ? itemTitleButtonSelectedBackgroundColor
-            : backgroundIdleColor,
+        backgroundIdleColor: _isSelected ? itemTitleButtonSelectedBackgroundColor : backgroundIdleColor,
         borderRadiusProvided: false,
       ),
       builder: (context, tapStatus) => Padding(
@@ -43,7 +42,7 @@ final class _ItemTitleButton extends StatelessWidget {
                   ? DefaultTextStyle(style: itemTitleButtonTitleTextStyle, child: title)
                   : title,
             ),
-            _ItemTitleButtonArrow(_item, _isSelected),
+            _ItemTitleButtonArrow(_isSelected),
           ],
         ),
       ),
