@@ -1,4 +1,4 @@
-part of '../myoro_accordion_widget_showcase_screen.dart';
+part of '../myoro_accordions_widget_showcase_screen.dart';
 
 /// [MyoroAccordionThemeExtension.itemContentAnimationCurve] option of [MyoroAccordionWidgetShowcaseScreen].
 final class _ItemContentAnimationCurveOption extends StatelessWidget {
@@ -19,7 +19,7 @@ final class _ItemContentAnimationCurveOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroAccordionWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
 
     return MyoroSingularDropdown<Curve>(
       configuration: MyoroSingularDropdownConfiguration(

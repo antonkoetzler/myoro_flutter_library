@@ -40,7 +40,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     : color = MyoroColors.blue1.withValues(alpha: kMyoroMultiplier * 5 / 100),
       padding = const EdgeInsets.all(kMyoroMultiplier * 4),
       widgetOptionsButtonIcon = Icons.menu,
-      widgetOptionsModalSpacing = 10,
+      widgetOptionsModalSpacing = kMyoroMultiplier * 4,
       widgetOptionsModalPadding = const EdgeInsets.only(top: 4),
       widgetOptionsModalItemPadding = const EdgeInsets.symmetric(horizontal: kMyoroMultiplier * 2),
       widgetOptionsModalCloseButtonPadding = const EdgeInsets.only(top: kMyoroMultiplier, right: kMyoroMultiplier),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 /// A simple divider.
 class MyoroBasicDivider extends StatelessWidget {
@@ -14,9 +13,8 @@ class MyoroBasicDivider extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final appContext = context.read<MyoroAppContext>();
-    final themeExtension =
-        this.themeExtension ?? appContext.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
+    final colorScheme = context.colorScheme;
+    final themeExtension = this.themeExtension ?? MyoroBasicDividerThemeExtension.builder(colorScheme);
     final isHorizontal = _direction.isHorizontal;
     final color = themeExtension.color;
     final shortValue = themeExtension.shortValue;

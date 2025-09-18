@@ -1,1 +1,1 @@
-export 'myoro_accordion_widget_showcase_screen_view_model.dart';
+export 'myoro_accordions_widget_showcase_screen_view_model.dart';

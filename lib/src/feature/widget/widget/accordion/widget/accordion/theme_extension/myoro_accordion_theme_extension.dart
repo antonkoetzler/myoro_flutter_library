@@ -13,7 +13,6 @@ part 'myoro_accordion_theme_extension.g.dart';
 class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExtension>
     with _$MyoroAccordionThemeExtensionMixin {
   const MyoroAccordionThemeExtension({
-    this.thumbVisibility,
     this.itemContentBackgroundColor,
     this.itemContentAnimationDuration,
     this.itemContentAnimationCurve,
@@ -30,8 +29,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
 
   // coverage:ignore-start
   MyoroAccordionThemeExtension.fake()
-    : thumbVisibility = faker.randomGenerator.boolean() ? faker.randomGenerator.boolean() : null,
-      itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    : itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemContentAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
       itemContentAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null,
       itemTitleButtonSelectedBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -48,8 +46,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
   // coverage:ignore-end
 
   MyoroAccordionThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme)
-    : thumbVisibility = false,
-      itemContentBackgroundColor = colorScheme.primary,
+    : itemContentBackgroundColor = colorScheme.primary,
       itemContentAnimationDuration = const Duration(milliseconds: 200),
       itemContentAnimationCurve = Curves.easeInOut,
       itemTitleButtonSelectedBackgroundColor = isDarkMode
@@ -63,9 +60,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonArrowIconSize = 25,
       itemTitleButtonArrowAnimationDuration = const Duration(milliseconds: 250),
       itemTitleButtonArrowAnimationCurve = Curves.easeInOut;
-
-  /// [Scrollbar.thumbVisibility] of the scrollable.
-  final bool? thumbVisibility;
 
   /// Backgorund [Color] of an item.
   final Color? itemContentBackgroundColor;
@@ -107,7 +101,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
   MyoroAccordionThemeExtension lerp(covariant ThemeExtension<MyoroAccordionThemeExtension>? other, double t) {
     if (other is! MyoroAccordionThemeExtension) return this;
 
-    final thumbVisibility = myoroFallbackLerp(this.thumbVisibility, other.thumbVisibility, t);
     final itemContentBackgroundColor = Color.lerp(this.itemContentBackgroundColor, other.itemContentBackgroundColor, t);
     final itemContentAnimationDuration = myoroFallbackLerp(
       this.itemContentAnimationDuration,
@@ -162,8 +155,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     );
 
     return copyWith(
-      thumbVisibility: thumbVisibility ?? this.thumbVisibility,
-      thumbVisibilityProvided: thumbVisibility != null,
       itemContentBackgroundColor: itemContentBackgroundColor,
       itemContentBackgroundColorProvided: itemContentBackgroundColor != null,
       itemContentAnimationDuration: itemContentAnimationDuration,

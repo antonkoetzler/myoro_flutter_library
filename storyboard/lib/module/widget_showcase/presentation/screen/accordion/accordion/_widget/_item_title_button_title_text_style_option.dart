@@ -1,4 +1,4 @@
-part of '../myoro_accordion_widget_showcase_screen.dart';
+part of '../myoro_accordions_widget_showcase_screen.dart';
 
 /// [MyoroAccordionThemeExtension.itemTitleButtonTitleTextStyle] option of [MyoroAccordionWidgetShowcaseScreen].
 final class _ItemTitleButtonTitleTextStyleOption extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _ItemTitleButtonTitleTextStyleOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroAccordionWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
 
     return TextStyleWidgetShowcaseOption(
       label: 'Title text style',

@@ -1,4 +1,4 @@
-part of '../myoro_accordion.dart';
+part of '../bundle/myoro_accordion_bundle.dart';
 
 /// [MyoroBasicDivider] of a [MyoroAccordion].
 final class _Divider extends StatelessWidget {

@@ -38,16 +38,16 @@ class MyoroTable<T> extends StatefulWidget {
 
 final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   MyoroTableThemeExtension get _themeExtension {
-    final appContext = context.read<MyoroAppContext>();
-    return widget.themeExtension ?? appContext.resolveThemeExtension<MyoroTableThemeExtension>();
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    return widget.themeExtension ?? MyoroTableThemeExtension.builder(colorScheme, textTheme);
   }
 
   MyoroTableViewModel<T>? _localViewModel;
   // ignore: invalid_use_of_protected_member
   MyoroTableViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return widget.controller?.viewModel ??
-        (_localViewModel ??= context.read<MyoroTableViewModel<T>>());
+    return widget.controller?.viewModel ?? (_localViewModel ??= context.read<MyoroTableViewModel<T>>());
   }
 
   @override

@@ -1,4 +1,4 @@
-part of '../myoro_accordion_widget_showcase_screen.dart';
+part of '../myoro_accordions_widget_showcase_screen.dart';
 
 /// [WidgetShowcaseScreenConfiguration.widget] of [MyoroAccordionWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
@@ -6,9 +6,9 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroAccordionWidgetShowcaseScreenViewModel>();
-    return MyoroAccordion(
-      configuration: viewModel.buildConfiguration(),
+    final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
+    return MyoroSingleAccordion(
+      configuration: viewModel.buildSingleConfiguration(),
       themeExtension: viewModel.buildThemeExtension(context),
     );
   }

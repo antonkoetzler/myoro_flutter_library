@@ -3,10 +3,13 @@ part of '../bundle/myoro_menu_bundle.dart';
 /// A menu widget that should not be used in production code, it is used
 /// within [MyoroSingularDropdown], [MyoroMultiDropdown] & [MyoroInput].
 class _Menu<T, C extends _C<T>> extends StatefulWidget {
-  const _Menu(this._viewModel);
+  const _Menu(this._viewModel, this._themeExtension);
 
   /// View model.
   final MyoroMenuViewModel<T, C> _viewModel;
+
+  /// Theme extension.
+  final MyoroMenuThemeExtension? _themeExtension;
 
   @override
   State<_Menu<T, C>> createState() => _MenuState<T, C>();
@@ -23,7 +26,9 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    final themeExtension = widget._themeExtension ?? MyoroMenuThemeExtension.builder(colorScheme, textTheme);
     final backgroundColor = themeExtension.backgroundColor;
     final border = themeExtension.border;
     final borderRadius = themeExtension.borderRadius;

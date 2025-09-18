@@ -64,7 +64,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       contentPadding = const EdgeInsets.only(top: 10, bottom: 10, left: 8, right: 5),
       disabledOpacity = 0.5,
       inputTextStyle = textTheme.bodyMedium!,
-      labelTextStyle = textTheme.headlineSmall!,
+      labelTextStyle = textTheme.headlineMedium!,
       labelBehavior = FloatingLabelBehavior.always,
       spacing = 10,
       clearTextButtonPadding = const EdgeInsets.fromLTRB(5, 5, 6.5, 5),

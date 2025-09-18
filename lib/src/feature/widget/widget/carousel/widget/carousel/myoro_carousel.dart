@@ -7,9 +7,15 @@ part '_widget/_traversal_button.dart';
 
 /// Slider carousel.
 class MyoroCarousel extends StatefulWidget {
-  const MyoroCarousel({super.key, this.controller, required this.configuration});
+  const MyoroCarousel({super.key, this.themeExtension, this.controller, required this.configuration});
 
+  /// [ThemeExtension]
+  final MyoroCarouselThemeExtension? themeExtension;
+
+  /// Controller.
   final CarouselSliderController? controller;
+
+  /// Configuration.
   final MyoroCarouselConfiguration configuration;
 
   @override
@@ -26,7 +32,7 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+    final themeExtension = widget.themeExtension ?? const MyoroCarouselThemeExtension.builder();
     final previousItemButtonIcon = themeExtension.previousItemButtonIcon;
     final nextItemButtonIcon = themeExtension.nextItemButtonIcon;
 

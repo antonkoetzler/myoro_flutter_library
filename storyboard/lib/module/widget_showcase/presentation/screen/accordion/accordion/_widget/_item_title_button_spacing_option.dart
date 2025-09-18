@@ -1,4 +1,4 @@
-part of '../myoro_accordion_widget_showcase_screen.dart';
+part of '../myoro_accordions_widget_showcase_screen.dart';
 
 /// [MyoroAccordionThemeExtension.itemTitleButtonSpacing] option of [MyoroAccordionWidgetShowcaseScreen].
 final class _ItemTitleButtonSpacingOption extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _ItemTitleButtonSpacingOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroAccordionWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
 
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(

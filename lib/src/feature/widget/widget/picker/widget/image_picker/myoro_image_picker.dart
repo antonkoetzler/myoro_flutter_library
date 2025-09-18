@@ -22,15 +22,12 @@ final class MyoroImagePicker extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final resolvedThemeExtension =
-        themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroImagePickerThemeExtension>()!;
+    final colorScheme = context.colorScheme;
+    final themeExtension = this.themeExtension ?? MyoroImagePickerThemeExtension.builder(colorScheme);
 
-    final child = InheritedProvider(
-      create: (_) => MyoroImagePickerViewModel(configuration),
-      child: const _Content(),
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: themeExtension,
+      child: InheritedProvider(create: (_) => MyoroImagePickerViewModel(configuration), child: const _Content()),
     );
-
-    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: child);
   }
 }

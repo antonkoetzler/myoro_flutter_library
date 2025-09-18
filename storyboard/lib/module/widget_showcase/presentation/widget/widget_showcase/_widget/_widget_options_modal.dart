@@ -31,22 +31,21 @@ final class _WidgetOptionsModal extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         spacing: themeExtension.widgetOptionsModalSpacing,
         children: [
-          // Configuration Options Section
+          // Configuration Options Section.
           if (_configurationOptions.isNotEmpty) ...[
             const _SectionHeader(title: 'Configuration'),
             _OptionsList(options: _configurationOptions),
           ],
 
-          // Section Separator
+          // Section Separator.
           if (_configurationOptions.isNotEmpty && _stylingOptions.isNotEmpty) ...[
-            SizedBox(height: themeExtension.widgetOptionsModalSpacing),
             const MyoroBasicDivider(Axis.horizontal),
-            SizedBox(height: themeExtension.widgetOptionsModalSpacing),
           ],
 
-          // Styling Options Section
+          // Styling Options Section.
           if (_stylingOptions.isNotEmpty) ...[
             const _SectionHeader(title: 'Styling'),
             _OptionsList(options: _stylingOptions),

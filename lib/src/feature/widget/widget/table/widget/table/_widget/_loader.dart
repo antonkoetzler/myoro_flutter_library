@@ -9,9 +9,6 @@ final class _Loader extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
     final loaderEmptyMessageErrorMessagePadding =
         themeExtension.loaderEmptyMessageErrorMessagePadding ?? EdgeInsets.zero;
-    return Padding(
-      padding: loaderEmptyMessageErrorMessagePadding,
-      child: const MyoroCircularLoader(),
-    );
+    return Padding(padding: loaderEmptyMessageErrorMessagePadding, child: const MyoroCircularLoader());
   }
 }

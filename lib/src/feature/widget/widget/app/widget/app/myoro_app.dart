@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/src/exports.dart';
-import 'package:provider/provider.dart';
 
 /// Root widget of your [App] widget in main.dart.
 class MyoroApp extends StatelessWidget {
@@ -22,9 +21,7 @@ class MyoroApp extends StatelessWidget {
     ];
     final ThemeMode themeMode =
         configuration.themeMode ??
-        (MediaQuery.of(context).platformBrightness == Brightness.dark
-            ? ThemeMode.dark
-            : ThemeMode.light);
+        (MediaQuery.of(context).platformBrightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
     final ThemeData lightTheme = createMyoroThemeData(
       configuration.colorSchemeBuilder,
       configuration.textThemeBuilder,
@@ -48,12 +45,7 @@ class MyoroApp extends StatelessWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         home: configuration.home,
-        builder: (context, child) {
-          return InheritedProvider<MyoroAppContext>(
-            create: (context) => MyoroAppContext(context),
-            child: configuration.builder?.call(context, child) ?? child!,
-          );
-        },
+        builder: configuration.builder,
       );
     }
 
@@ -66,12 +58,7 @@ class MyoroApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       routerConfig: configuration.router,
-      builder: (context, child) {
-        return InheritedProvider<MyoroAppContext>(
-          create: (context) => MyoroAppContext(context),
-          child: configuration.builder?.call(context, child) ?? child!,
-        );
-      },
+      builder: configuration.builder,
     );
   }
 }

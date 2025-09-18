@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 part '_widget/_resize_button.dart';
 
@@ -19,9 +18,10 @@ class MyoroResizeDivider extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final colorScheme = context.colorScheme;
+    final basicDividerThemeExtension = MyoroBasicDividerThemeExtension.builder(colorScheme);
     final themeExtension =
-        this.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroResizeDividerThemeExtension>()!;
+        this.themeExtension ?? MyoroResizeDividerThemeExtension.builder(basicDividerThemeExtension, colorScheme);
 
     return MyoroSingularThemeExtensionWrapper(
       themeExtension: themeExtension,
@@ -30,9 +30,7 @@ class MyoroResizeDivider extends StatelessWidget {
         children: [
           MyoroBasicDivider(
             _direction,
-            themeExtension: MyoroBasicDividerThemeExtension.fromResizeDividerThemeExtension(
-              themeExtension,
-            ),
+            themeExtension: MyoroBasicDividerThemeExtension.fromResizeDividerThemeExtension(themeExtension),
           ),
           _ResizeButton(_direction, dragCallback),
         ],

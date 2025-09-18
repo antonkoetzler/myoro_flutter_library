@@ -1,14 +1,14 @@
-part of 'myoro_accordion_widget_showcase_screen_view_model.dart';
+part of 'myoro_accordions_widget_showcase_screen_view_model.dart';
 
-/// State of [MyoroAccordionWidgetShowcaseScreenViewModel].
-final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
-  static const thumbVisibilityDefaultValue = false;
-
+/// State of [MyoroAccordionsWidgetShowcaseScreenViewModel].
+final class MyoroAccordionsWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroAccordionConfiguration.thumbVisibility]
-  bool _thumbVisibility = thumbVisibilityDefaultValue;
+  bool _thumbVisibility = MyoroAccordionConfiguration.thumbVisibilityDefaultValue;
 
   /// [_thumbVisibility] getter.
-  bool get thumbVisibility => _thumbVisibility;
+  bool get thumbVisibility {
+    return _thumbVisibility;
+  }
 
   /// [_thumbVisibility] setter.
   set thumbVisibility(bool thumbVisibility) {
@@ -20,7 +20,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   Color? _itemContentBackgroundColor;
 
   /// [_itemContentBackgroundColor] getter.
-  Color? get itemContentBackgroundColor => _itemContentBackgroundColor;
+  Color? get itemContentBackgroundColor {
+    return _itemContentBackgroundColor;
+  }
 
   /// [_itemContentBackgroundColor] setter.
   set itemContentBackgroundColor(Color? itemContentBackgroundColor) {
@@ -32,7 +34,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   Duration? _itemContentAnimationDuration;
 
   /// [_itemContentAnimationDuration] getter.
-  Duration? get itemContentAnimationDuration => _itemContentAnimationDuration;
+  Duration? get itemContentAnimationDuration {
+    return _itemContentAnimationDuration;
+  }
 
   /// [_itemContentAnimationDuration] setter.
   set itemContentAnimationDuration(Duration? itemContentAnimationDuration) {
@@ -44,7 +48,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   Curve? _itemContentAnimationCurve;
 
   /// [_itemContentAnimationCurve] getter.
-  Curve? get itemContentAnimationCurve => _itemContentAnimationCurve;
+  Curve? get itemContentAnimationCurve {
+    return _itemContentAnimationCurve;
+  }
 
   /// [_itemContentAnimationCurve] setter.
   set itemContentAnimationCurve(Curve? itemContentAnimationCurve) {
@@ -56,7 +62,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   Color? _itemTitleButtonSelectedBackgroundColor;
 
   /// [_itemTitleButtonSelectedBackgroundColor] getter.
-  Color? get itemTitleButtonSelectedBackgroundColor => _itemTitleButtonSelectedBackgroundColor;
+  Color? get itemTitleButtonSelectedBackgroundColor {
+    return _itemTitleButtonSelectedBackgroundColor;
+  }
 
   /// [_itemTitleButtonSelectedBackgroundColor] setter.
   set itemTitleButtonSelectedBackgroundColor(Color? itemTitleButtonSelectedBackgroundColor) {
@@ -68,7 +76,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   EdgeInsets? _itemTitleButtonContentPadding;
 
   /// [_itemTitleButtonContentPadding] getter.
-  EdgeInsets? get itemTitleButtonContentPadding => _itemTitleButtonContentPadding;
+  EdgeInsets? get itemTitleButtonContentPadding {
+    return _itemTitleButtonContentPadding;
+  }
 
   /// [_itemTitleButtonContentPadding] setter.
   set itemTitleButtonContentPadding(EdgeInsets? itemTitleButtonContentPadding) {
@@ -80,7 +90,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   double? _itemTitleButtonSpacing;
 
   /// [_itemTitleButtonSpacing] getter.
-  double? get itemTitleButtonSpacing => _itemTitleButtonSpacing;
+  double? get itemTitleButtonSpacing {
+    return _itemTitleButtonSpacing;
+  }
 
   /// [_itemTitleButtonSpacing] setter.
   set itemTitleButtonSpacing(double? itemTitleButtonSpacing) {
@@ -92,7 +104,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   TextStyle? _itemTitleButtonTitleTextStyle;
 
   /// [_itemTitleButtonTitleTextStyle] getter.
-  TextStyle? get itemTitleButtonTitleTextStyle => _itemTitleButtonTitleTextStyle;
+  TextStyle? get itemTitleButtonTitleTextStyle {
+    return _itemTitleButtonTitleTextStyle;
+  }
 
   /// [_itemTitleButtonTitleTextStyle] setter.
   set itemTitleButtonTitleTextStyle(TextStyle? itemTitleButtonTitleTextStyle) {
@@ -104,7 +118,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   IconData? _itemTitleButtonArrowIcon;
 
   /// [_itemTitleButtonArrowIcon] getter.
-  IconData? get itemTitleButtonArrowIcon => _itemTitleButtonArrowIcon;
+  IconData? get itemTitleButtonArrowIcon {
+    return _itemTitleButtonArrowIcon;
+  }
 
   /// [_itemTitleButtonArrowIcon] setter.
   set itemTitleButtonArrowIcon(IconData? itemTitleButtonArrowIcon) {
@@ -116,7 +132,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   Color? _itemTitleButtonArrowIconColor;
 
   /// [_itemTitleButtonArrowIconColor] getter.
-  Color? get itemTitleButtonArrowIconColor => _itemTitleButtonArrowIconColor;
+  Color? get itemTitleButtonArrowIconColor {
+    return _itemTitleButtonArrowIconColor;
+  }
 
   /// [_itemTitleButtonArrowIconColor] setter.
   set itemTitleButtonArrowIconColor(Color? itemTitleButtonArrowIconColor) {
@@ -128,7 +146,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   double? _itemTitleButtonArrowIconSize;
 
   /// [_itemTitleButtonArrowIconSize] getter.
-  double? get itemTitleButtonArrowIconSize => _itemTitleButtonArrowIconSize;
+  double? get itemTitleButtonArrowIconSize {
+    return _itemTitleButtonArrowIconSize;
+  }
 
   /// [_itemTitleButtonArrowIconSize] setter.
   set itemTitleButtonArrowIconSize(double? itemTitleButtonArrowIconSize) {
@@ -140,7 +160,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   Duration? _itemTitleButtonArrowAnimationDuration;
 
   /// [_itemTitleButtonArrowAnimationDuration] getter.
-  Duration? get itemTitleButtonArrowAnimationDuration => _itemTitleButtonArrowAnimationDuration;
+  Duration? get itemTitleButtonArrowAnimationDuration {
+    return _itemTitleButtonArrowAnimationDuration;
+  }
 
   /// [_itemTitleButtonArrowAnimationDuration] setter.
   set itemTitleButtonArrowAnimationDuration(Duration? itemTitleButtonArrowAnimationDuration) {
@@ -152,7 +174,9 @@ final class MyoroAccordionWidgetShowcaseScreenState extends ChangeNotifier {
   Curve? _itemTitleButtonArrowAnimationCurve;
 
   /// [_itemTitleButtonArrowAnimationCurve] getter.
-  Curve? get itemTitleButtonArrowAnimationCurve => _itemTitleButtonArrowAnimationCurve;
+  Curve? get itemTitleButtonArrowAnimationCurve {
+    return _itemTitleButtonArrowAnimationCurve;
+  }
 
   /// [_itemTitleButtonArrowAnimationCurve] setter.
   set itemTitleButtonArrowAnimationCurve(Curve? itemTitleButtonArrowAnimationCurve) {

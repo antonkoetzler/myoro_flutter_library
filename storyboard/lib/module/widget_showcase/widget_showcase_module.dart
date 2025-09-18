@@ -18,7 +18,7 @@ final class WidgetShowcaseModule implements Module {
 
       // ########## Widget showcases ##########
       // Accordions
-      const MyoroAccordionWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroAccordionsWidgetShowcaseScreenThemeExtension.builder(),
 
       // Apps
       const MyoroAppWidgetShowcaseScreenThemeExtension.builder(),

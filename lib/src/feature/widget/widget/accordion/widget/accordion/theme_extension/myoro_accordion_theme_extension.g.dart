@@ -18,8 +18,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
 
   @override
   MyoroAccordionThemeExtension copyWith({
-    bool? thumbVisibility,
-    bool thumbVisibilityProvided = true,
     Color? itemContentBackgroundColor,
     bool itemContentBackgroundColorProvided = true,
     Duration? itemContentAnimationDuration,
@@ -46,7 +44,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
     bool itemTitleButtonArrowAnimationCurveProvided = true,
   }) {
     return MyoroAccordionThemeExtension(
-      thumbVisibility: thumbVisibilityProvided ? (thumbVisibility ?? self.thumbVisibility) : null,
       itemContentBackgroundColor: itemContentBackgroundColorProvided
           ? (itemContentBackgroundColor ?? self.itemContentBackgroundColor)
           : null,
@@ -90,7 +87,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
   bool operator ==(Object other) {
     return other is MyoroAccordionThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.thumbVisibility == self.thumbVisibility &&
         other.itemContentBackgroundColor == self.itemContentBackgroundColor &&
         other.itemContentAnimationDuration == self.itemContentAnimationDuration &&
         other.itemContentAnimationCurve == self.itemContentAnimationCurve &&
@@ -108,7 +104,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
   @override
   int get hashCode {
     return Object.hash(
-      self.thumbVisibility,
       self.itemContentBackgroundColor,
       self.itemContentAnimationDuration,
       self.itemContentAnimationCurve,
@@ -127,7 +122,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
   @override
   String toString() =>
       'MyoroAccordionThemeExtension(\n'
-      '  thumbVisibility: ${self.thumbVisibility},\n'
       '  itemContentBackgroundColor: ${self.itemContentBackgroundColor},\n'
       '  itemContentAnimationDuration: ${self.itemContentAnimationDuration},\n'
       '  itemContentAnimationCurve: ${self.itemContentAnimationCurve},\n'

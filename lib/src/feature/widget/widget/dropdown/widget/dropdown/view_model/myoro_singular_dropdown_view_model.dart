@@ -11,7 +11,9 @@ final class MyoroSingularDropdownViewModel<T>
           MyoroSingularMenuController<T>
         > {
   MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration)
-    : super(configuration, MyoroSingularMenuController(configuration: configuration.menuConfiguration));
+    : super(configuration, MyoroSingularMenuController(configuration: configuration.menuConfiguration)) {
+    state.menuController.selectedItemNotifier.addListener(selectedItemsNotifierListener);
+  }
 
   @override
   void enabledNotifierListener() {
@@ -48,13 +50,12 @@ final class MyoroSingularDropdownViewModel<T>
     final menuBorder = dropdownThemeExtension.menuBorder;
     final menuBorderRadius = dropdownThemeExtension.menuBorderRadius;
 
-    final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>()
-      ..copyWith(
-        border: menuBorder,
-        borderProvided: menuBorder != null,
-        borderRadius: menuBorderRadius,
-        borderRadiusProvided: menuBorderRadius != null,
-      );
+    final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>().copyWith(
+      border: menuBorder,
+      borderProvided: menuBorder != null,
+      borderRadius: menuBorderRadius,
+      borderRadiusProvided: menuBorderRadius != null,
+    );
 
     final menuController = state.menuController;
 

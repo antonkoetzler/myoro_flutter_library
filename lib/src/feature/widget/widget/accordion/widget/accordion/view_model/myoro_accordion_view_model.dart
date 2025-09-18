@@ -3,9 +3,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_accordion_state.dart';
 
-/// View model of [MyoroAccordion].
+/// Base accordion view model.
 class MyoroAccordionViewModel {
-  MyoroAccordionViewModel(MyoroAccordionConfiguration configuration) : _state = MyoroAccordionState(configuration);
+  MyoroAccordionViewModel(MyoroAccordionConfiguration configuration, Set<MyoroAccordionItem> selectedItems)
+    : _state = MyoroAccordionState(configuration, selectedItems);
 
   /// State
   final MyoroAccordionState _state;
@@ -20,6 +21,13 @@ class MyoroAccordionViewModel {
 
   /// Toggles a [MyoroAccordionItem].
   void toggleItem(MyoroAccordionItem item) {
-    _state.selectedItem = item == _state.selectedItem ? null : item;
+    final selectedItems = Set<MyoroAccordionItem>.from(_state.selectedItems);
+    selectedItems.contains(item) ? selectedItems.remove(item) : selectedItems.add(item);
+    _state.selectedItems = selectedItems;
+  }
+
+  /// Resets all selected items.
+  void reset() {
+    _state.selectedItems = const {};
   }
 }

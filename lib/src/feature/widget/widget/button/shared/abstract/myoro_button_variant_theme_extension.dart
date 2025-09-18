@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Abstract [ThemeExtension] representing a variant of [MyoroButtonThemeExtension].
+///
+/// TODO: Do some research to see if we can delete this theme extension. Relying on abstractions for theme extensions is shaky
+///
+/// Flutter does such a terrible fucking job in this area holy shit
 abstract class MyoroButtonVariantThemeExtension<T extends MyoroButtonVariantThemeExtension<T>>
     extends ThemeExtension<T> {
   const MyoroButtonVariantThemeExtension({

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 /// A group of [MyoroRadio]s.
 class MyoroGroupRadio extends StatefulWidget {
@@ -20,14 +19,12 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
   MyoroGroupRadioConfiguration get _configuration => widget.configuration;
 
   MyoroGroupRadioThemeExtension get _themeExtension {
-    return widget.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroGroupRadioThemeExtension>()!;
+    return widget.themeExtension ?? const MyoroGroupRadioThemeExtension.builder();
   }
 
   MyoroGroupRadioController? _localController;
   MyoroGroupRadioController get _controller {
-    return _configuration.controller ??
-        (_localController ??= MyoroGroupRadioController(_configuration.radios!));
+    return _configuration.controller ?? (_localController ??= MyoroGroupRadioController(_configuration.radios!));
   }
 
   @override

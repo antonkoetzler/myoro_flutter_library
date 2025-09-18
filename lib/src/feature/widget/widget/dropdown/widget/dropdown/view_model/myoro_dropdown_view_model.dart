@@ -12,7 +12,9 @@ abstract class MyoroDropdownViewModel<
 > {
   MyoroDropdownViewModel(CONFIGURATION configuration, MENU_CONTROLLER menuController)
     : _state = MyoroDropdownState(configuration, menuController) {
-    if (configuration.menuTypeEnum.isOverlay) state.overlayMenuController.addListener(_overlayMenuControllerListener);
+    if (configuration.menuTypeEnum.isOverlay) {
+      state.overlayMenuController.addListener(_overlayMenuControllerListener);
+    }
     state.enabledNotifier.addListener(enabledNotifierListener);
   }
 

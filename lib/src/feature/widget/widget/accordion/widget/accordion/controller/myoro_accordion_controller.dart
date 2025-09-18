@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Controller of [MyoroAccordion].
-class MyoroAccordionController {
-  MyoroAccordionController({required MyoroAccordionConfiguration configuration})
-    : _viewModel = MyoroAccordionViewModel(configuration);
+/// Base accordion controller.
+abstract class MyoroAccordionController {
+  MyoroAccordionController({
+    required MyoroAccordionConfiguration configuration,
+    Set<MyoroAccordionItem> selectedItems = const {},
+  }) : _viewModel = MyoroAccordionViewModel(configuration, selectedItems);
 
   /// View model.
   final MyoroAccordionViewModel _viewModel;
@@ -16,9 +18,9 @@ class MyoroAccordionController {
   void toggleItem(MyoroAccordionItem item) => _viewModel.toggleItem(item);
 
   /// Resets the selected [MyoroAccordionItem].
-  void reset() => _viewModel.state.selectedItem = null;
+  void reset() => _viewModel.reset();
 
-  /// View model getter.
+  /// [_viewModel] getter.
   @protected
   MyoroAccordionViewModel get viewModel => _viewModel;
 
@@ -26,5 +28,5 @@ class MyoroAccordionController {
   MyoroAccordionConfiguration get configuration => _viewModel.state.configuration;
 
   /// Alias of [value].
-  MyoroAccordionItem? get selectedItem => _viewModel.state.selectedItem;
+  Set<MyoroAccordionItem> get selectedItems => _viewModel.state.selectedItems;
 }

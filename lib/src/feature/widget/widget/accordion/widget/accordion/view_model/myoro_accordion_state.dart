@@ -2,27 +2,28 @@ part of 'myoro_accordion_view_model.dart';
 
 /// State of [MyoroAccordionViewModel].
 class MyoroAccordionState {
-  MyoroAccordionState(this.configuration) : _selectedItemNotifier = ValueNotifier(configuration.selectedItem);
+  MyoroAccordionState(this.configuration, Set<MyoroAccordionItem> selectedItems)
+    : _selectedItemsNotifier = ValueNotifier(selectedItems.isEmpty ? {} : selectedItems);
 
   /// Configuration.
   final MyoroAccordionConfiguration configuration;
 
   /// [ValueNotifier] controlling the selected [MyoroAccordionItem].
-  final ValueNotifier<MyoroAccordionItem?> _selectedItemNotifier;
+  final ValueNotifier<Set<MyoroAccordionItem>> _selectedItemsNotifier;
 
-  /// [_selectedItemNotifier] getter.
-  ValueNotifier<MyoroAccordionItem?> get selectedItemNotifier {
-    return _selectedItemNotifier;
+  /// [_selectedItemsNotifier] getter.
+  ValueNotifier<Set<MyoroAccordionItem>> get selectedItemsNotifier {
+    return _selectedItemsNotifier;
   }
 
-  /// Getter of [_selectedItemNotifier]'s value.
-  MyoroAccordionItem? get selectedItem {
-    return _selectedItemNotifier.value;
+  /// Getter of [_selectedItemsNotifier]'s value.
+  Set<MyoroAccordionItem> get selectedItems {
+    return _selectedItemsNotifier.value;
   }
 
-  /// [_selectedItemNotifier] setter.
-  set selectedItem(MyoroAccordionItem? selectedItem) {
-    _selectedItemNotifier.value = selectedItem;
+  /// [_selectedItemsNotifier] setter.
+  set selectedItems(Set<MyoroAccordionItem> selectedItems) {
+    _selectedItemsNotifier.value = selectedItems;
   }
 
   /// [ScrollController] of the [MyoroAccordion]'s [ListView].
@@ -35,7 +36,7 @@ class MyoroAccordionState {
 
   /// Dispose function
   void dispose() {
-    _selectedItemNotifier.dispose();
+    _selectedItemsNotifier.dispose();
     _scrollController.dispose();
   }
 }

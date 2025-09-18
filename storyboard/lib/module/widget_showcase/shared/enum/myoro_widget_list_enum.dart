@@ -4,7 +4,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// Enum that stores all widgets of MFL.
 enum MyoroWidgetListEnum {
-  accordions('Accordions', {myoroAccordionTitle}),
+  accordions('Accordions', {myoroAccordionsTitle}),
   appBars('App bars', {myoroAppBarTitle}),
   apps('Apps', {myoroAppTitle}),
   buttons('Buttons', {myoroButtonTitle, myoroIconTextButtonTitle}),
@@ -46,7 +46,7 @@ enum MyoroWidgetListEnum {
   // coverage:ignore-end
 
   // Accordions
-  static const myoroAccordionTitle = 'MyoroAccordion';
+  static const myoroAccordionsTitle = 'MyoroSingleAccordion & MyoroMultiAccordion';
 
   // App bars
   static const myoroAppBarTitle = 'MyoroAppBar';
@@ -137,7 +137,7 @@ enum MyoroWidgetListEnum {
   static Widget getWidgetShowcaseScreen(String widgetName) {
     return switch (widgetName) {
       // Accordions
-      myoroAccordionTitle => const MyoroAccordionWidgetShowcaseScreen(),
+      myoroAccordionsTitle => const MyoroAccordionsWidgetShowcaseScreen(),
 
       // App bars
       myoroAppBarTitle => const MyoroAppBarWidgetShowcaseScreen(),

@@ -9,17 +9,11 @@ final class _OptionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
-    final List<Widget> widgets = [];
-
-    for (int i = 0; i < options.length; i++) {
-      widgets.add(Padding(padding: themeExtension.widgetOptionsModalItemPadding, child: options[i]));
-
-      // Add spacing between options (except for the last one)
-      if (i < options.length - 1) {
-        widgets.add(SizedBox(height: themeExtension.widgetOptionsModalSpacing / 2));
-      }
-    }
-
-    return Column(children: widgets);
+    final widgetOptionsModalSpacing = themeExtension.widgetOptionsModalSpacing;
+    final widgetOptionsModalItemPadding = themeExtension.widgetOptionsModalItemPadding;
+    return Column(
+      spacing: widgetOptionsModalSpacing,
+      children: options.map((o) => Padding(padding: widgetOptionsModalItemPadding, child: o)).toList(),
+    );
   }
 }

@@ -16,9 +16,9 @@ part 'myoro_menu_item.g.dart';
 class MyoroMenuItem with _$MyoroMenuItemMixin {
   const MyoroMenuItem({this.buttonConfiguration, this.buttonBuilder, this.iconTextButtonConfiguration})
     : assert(
-        (iconTextButtonConfiguration == null && buttonBuilder != null) ^
-            (iconTextButtonConfiguration != null && buttonConfiguration == null && buttonBuilder == null),
-        '[MyoroMenuItem]: If [buttonBuilder] is not null, [iconTextButtonConfiguration] must be null]. '
+        (buttonBuilder != null && iconTextButtonConfiguration == null) ^
+            (buttonBuilder == null && iconTextButtonConfiguration != null),
+        '[MyoroMenuItem]: If [buttonBuilder] is not null, [iconTextButtonConfiguration] must be null. '
         'If [iconTextButtonConfiguration] is not null, [buttonConfiguration] and [buttonBuilder] must be null.',
       );
 

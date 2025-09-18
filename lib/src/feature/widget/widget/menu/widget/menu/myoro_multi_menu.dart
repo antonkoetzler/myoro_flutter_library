@@ -22,16 +22,14 @@ final class MyoroMultiMenu<T> extends StatefulWidget {
 }
 
 final class _MyoroMultiMenuState<T> extends State<MyoroMultiMenu<T>> {
-  MyoroMenuThemeExtension get _themeExtension {
-    return widget.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroMenuThemeExtension>()!;
+  MyoroMenuThemeExtension? get _themeExtension {
+    return widget.themeExtension;
   }
 
   MyoroMultiMenuViewModel<T>? _localViewModel;
   MyoroMultiMenuViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return widget.controller?.viewModel ??
-        (_localViewModel ??= MyoroMultiMenuViewModel(widget.configuration!));
+    return widget.controller?.viewModel ?? (_localViewModel ??= MyoroMultiMenuViewModel(widget.configuration!));
   }
 
   @override
@@ -41,10 +39,5 @@ final class _MyoroMultiMenuState<T> extends State<MyoroMultiMenu<T>> {
   }
 
   @override
-  Widget build(_) {
-    return MyoroSingularThemeExtensionWrapper(
-      themeExtension: _themeExtension,
-      child: _Menu(_viewModel),
-    );
-  }
+  Widget build(_) => _Menu(_viewModel, _themeExtension);
 }

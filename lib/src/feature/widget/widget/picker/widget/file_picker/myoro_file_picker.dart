@@ -18,10 +18,12 @@ final class MyoroFilePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final resolvedThemeExtension = themeExtension ?? context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
+    final textTheme = context.textTheme;
+    final resolvedThemeExtension = themeExtension ?? MyoroFilePickerThemeExtension.builder(textTheme);
 
-    final child = InheritedProvider(create: (_) => MyoroFilePickerViewModel(configuration), child: const _Content());
-
-    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: child);
+    return MyoroSingularThemeExtensionWrapper(
+      themeExtension: resolvedThemeExtension,
+      child: InheritedProvider(create: (_) => MyoroFilePickerViewModel(configuration), child: const _Content()),
+    );
   }
 }

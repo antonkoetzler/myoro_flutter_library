@@ -1,4 +1,4 @@
-part of '../myoro_accordion_widget_showcase_screen.dart';
+part of '../myoro_accordions_widget_showcase_screen.dart';
 
 /// [MyoroAccordionThemeExtension.itemTitleButtonArrowAnimationDuration] option of [MyoroAccordionWidgetShowcaseScreen].
 final class _ItemTitleButtonArrowAnimationDurationOption extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _ItemTitleButtonArrowAnimationDurationOption extends StatelessWidget
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroAccordionWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
 
     return MyoroInput.number(
       max: 5000,

@@ -22,8 +22,9 @@ class MyoroCheckbox extends StatefulWidget {
 final class _MyoroCheckboxState extends State<MyoroCheckbox> {
   MyoroCheckboxConfiguration get _configuration => widget.configuration;
   MyoroCheckboxThemeExtension get _themeExtension {
-    final appContext = context.read<MyoroAppContext>();
-    return widget.themeExtension ?? appContext.resolveThemeExtension<MyoroCheckboxThemeExtension>();
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    return widget.themeExtension ?? MyoroCheckboxThemeExtension.builder(colorScheme, textTheme);
   }
 
   late final MyoroCheckboxViewModel _viewModel;

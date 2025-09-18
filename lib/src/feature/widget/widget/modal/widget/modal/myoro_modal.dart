@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 part '_widget/_close_button.dart';
 part '_widget/_header.dart';
@@ -53,12 +52,7 @@ class MyoroModal extends StatelessWidget {
     return result;
   }
 
-  const MyoroModal._(
-    this._configuration,
-    this._child,
-    this.themeExtension, {
-    required this.isBottomSheet,
-  });
+  const MyoroModal._(this._configuration, this._child, this.themeExtension, {required this.isBottomSheet});
 
   /// Configuration of the modal.
   final MyoroModalConfiguration _configuration;
@@ -74,18 +68,16 @@ class MyoroModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeExtension =
-        this.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroModalThemeExtension>()!;
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    final themeExtension = this.themeExtension ?? MyoroModalThemeExtension.builder(colorScheme, textTheme);
 
     final titleIsNotEmpty = _configuration.title.isNotEmpty;
     final showCloseButton = _configuration.showCloseButton;
     final showHeader = titleIsNotEmpty || showCloseButton;
 
     final primaryColor = themeExtension.primaryColor;
-    final borderRadius = !isBottomSheet
-        ? themeExtension.borderRadius
-        : themeExtension.bottomSheetBorderRadius;
+    final borderRadius = !isBottomSheet ? themeExtension.borderRadius : themeExtension.bottomSheetBorderRadius;
     final constraints = themeExtension.constraints ?? themeExtension.getDefaultConstraints(context);
     final padding = themeExtension.padding;
     final border = !isBottomSheet ? themeExtension.border : themeExtension.bottomSheetBorder;
@@ -111,9 +103,6 @@ class MyoroModal extends StatelessWidget {
 
     final wrappedContent = !isBottomSheet ? Center(child: content) : content;
 
-    return MyoroSingularThemeExtensionWrapper(
-      themeExtension: themeExtension,
-      child: wrappedContent,
-    );
+    return MyoroSingularThemeExtensionWrapper(themeExtension: themeExtension, child: wrappedContent);
   }
 }

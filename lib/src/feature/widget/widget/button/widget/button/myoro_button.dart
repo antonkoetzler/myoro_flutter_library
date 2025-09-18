@@ -29,8 +29,10 @@ final class _MyoroButtonState extends State<MyoroButton> {
   MyoroButtonBuilder get _builder => widget.builder;
 
   MyoroButtonVariantThemeExtension get _themeExtension {
-    final appContext = context.read<MyoroAppContext>();
-    return widget.themeExtension ?? appContext.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final isDarkMode = context.isDarkMode;
+    final colorScheme = context.colorScheme;
+    final buttonPrimaryVariantThemeExtension = MyoroButtonPrimaryVariantThemeExtension.builder(isDarkMode, colorScheme);
+    return widget.themeExtension ?? MyoroButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension);
   }
 
   late final MyoroButtonViewModel _viewModel;
@@ -69,9 +71,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
     final configuration = state.configuration;
     final onTapProvided = configuration?.onTapProvided == true;
 
-    final cursor =
-        configuration?.cursor ??
-        (onTapProvided ? SystemMouseCursors.click : SystemMouseCursors.basic);
+    final cursor = configuration?.cursor ?? (onTapProvided ? SystemMouseCursors.click : SystemMouseCursors.basic);
 
     return InheritedProvider.value(
       value: _viewModel,

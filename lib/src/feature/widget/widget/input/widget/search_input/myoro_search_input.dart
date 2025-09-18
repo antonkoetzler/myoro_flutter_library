@@ -27,8 +27,8 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
   }
 
   MyoroSearchInputThemeExtension get _themeExtension {
-    return widget.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroSearchInputThemeExtension>()!;
+    final colorScheme = context.colorScheme;
+    return widget.themeExtension ?? MyoroSearchInputThemeExtension.builder(colorScheme);
   }
 
   late final MyoroSearchInputViewModel<T> _viewModel;

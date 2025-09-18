@@ -20,7 +20,9 @@ class MyoroDrawer extends StatelessWidget {
   @override
   Widget build(context) {
     final isEndDrawerNotifier = context.read<MyoroDrawerController>().isEndDrawerNotifier;
-    final themeExtension = this.themeExtension ?? context.read<MyoroDrawerThemeExtension>();
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    final themeExtension = this.themeExtension ?? MyoroDrawerThemeExtension.builder(colorScheme, textTheme);
 
     return MyoroSingularThemeExtensionWrapper(
       themeExtension: themeExtension,

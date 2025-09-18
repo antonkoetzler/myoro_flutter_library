@@ -1,4 +1,4 @@
-part of '../myoro_accordion_widget_showcase_screen.dart';
+part of '../myoro_accordions_widget_showcase_screen.dart';
 
 /// [MyoroAccordionThemeExtension.itemTitleButtonSelectedBackgroundColor] option of [MyoroAccordionWidgetShowcaseScreen].
 final class _ItemTitleButtonSelectedBackgroundColorOption extends StatelessWidget {
@@ -6,7 +6,7 @@ final class _ItemTitleButtonSelectedBackgroundColorOption extends StatelessWidge
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroAccordionWidgetShowcaseScreenViewModel>();
+    final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
 
     return ColorWidgetShowcaseOption(
       label: 'Title button selected background color',

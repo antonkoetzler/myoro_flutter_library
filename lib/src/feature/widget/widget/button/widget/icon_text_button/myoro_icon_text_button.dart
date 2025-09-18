@@ -18,9 +18,11 @@ class MyoroIconTextButton extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final isDarkMode = context.isDarkMode;
+    final colorScheme = context.colorScheme;
+    final buttonPrimaryVariantThemeExtension = MyoroButtonPrimaryVariantThemeExtension.builder(isDarkMode, colorScheme);
     final themeExtension =
-        this.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroIconTextButtonThemeExtension>()!;
+        this.themeExtension ?? MyoroIconTextButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension);
 
     return InheritedProvider.value(
       value: configuration,

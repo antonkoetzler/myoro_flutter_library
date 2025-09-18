@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_group_radio_theme_extension.g.dart';
 
@@ -19,7 +20,7 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
       runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
-  const MyoroGroupRadioThemeExtension.builder() : spacing = 5, runSpacing = 5;
+  const MyoroGroupRadioThemeExtension.builder() : spacing = kMyoroMultiplier, runSpacing = kMyoroMultiplier;
 
   /// Main axis spacing in between each checkbox.
   final double? spacing;

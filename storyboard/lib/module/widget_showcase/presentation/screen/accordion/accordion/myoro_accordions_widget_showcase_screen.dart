@@ -19,11 +19,11 @@ part '_widget/_thumb_visibility_option.dart';
 part '_widget/_widget.dart';
 
 /// [WidgetShowcaseScreen] of [MyoroAccordion].
-final class MyoroAccordionWidgetShowcaseScreen extends StatelessWidget {
-  // Configuration-related options (behavior, data, structural properties)
+final class MyoroAccordionsWidgetShowcaseScreen extends StatelessWidget {
+  /// Configuration-related options (behavior, data, structural properties).
   static const configurationOptions = [_ThumbVisibilityOption()];
 
-  // Styling-related options (appearance, colors, spacing, theme extension)
+  /// Styling-related options (appearance, colors, spacing, theme extension).
   static const stylingOptions = [
     _ItemContentBackgroundColorOption(),
     _ItemContentAnimationDurationOption(),
@@ -39,15 +39,15 @@ final class MyoroAccordionWidgetShowcaseScreen extends StatelessWidget {
     _ItemTitleButtonArrowAnimationCurveOption(),
   ];
 
-  const MyoroAccordionWidgetShowcaseScreen({super.key});
+  const MyoroAccordionsWidgetShowcaseScreen({super.key});
 
   @override
   Widget build(_) {
     return InheritedProvider(
-      create: (_) => MyoroAccordionWidgetShowcaseScreenViewModel(),
+      create: (_) => MyoroAccordionsWidgetShowcaseScreenViewModel(),
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
-          widgetName: MyoroWidgetListEnum.myoroAccordionTitle,
+          widgetName: MyoroWidgetListEnum.myoroAccordionsTitle,
           widget: _Widget(),
           configurationOptions: configurationOptions,
           stylingOptions: stylingOptions,

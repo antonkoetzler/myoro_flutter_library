@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 part '_widget/_close_button.dart';
 part '_widget/_message.dart';
@@ -22,9 +21,9 @@ class MyoroSnackBar extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final appContext = context.read<MyoroAppContext>();
-    final themeExtension =
-        this.themeExtension ?? appContext.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    final themeExtension = this.themeExtension ?? MyoroSnackBarThemeExtension.builder(colorScheme, textTheme);
     final borderWidth = themeExtension.borderWidth;
     final spacing = themeExtension.spacing ?? 0;
 

@@ -9,9 +9,8 @@ class _Base extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final appContext = context.read<MyoroAppContext>();
-    final resolvedThemeExtension =
-        _themeExtension ?? appContext.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final textTheme = context.textTheme;
+    final themeExtension = _themeExtension ?? MyoroSliderThemeExtension.builder(textTheme);
     final label = _configuration.label;
     final currentValueText = _configuration.currentValueText;
     final maxValueText = _configuration.maxValueText;
@@ -32,6 +31,6 @@ class _Base extends StatelessWidget {
       ],
     );
 
-    return MyoroSingularThemeExtensionWrapper(themeExtension: resolvedThemeExtension, child: child);
+    return MyoroSingularThemeExtensionWrapper(themeExtension: themeExtension, child: child);
   }
 }

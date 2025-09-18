@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 /// ``` dart
 /// class FooAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -35,9 +34,8 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appContext = context.read<MyoroAppContext>();
-    final themeExtension =
-        this.themeExtension ?? appContext.resolveThemeExtension<MyoroAppBarThemeExtension>();
+    final colorScheme = context.colorScheme;
+    final themeExtension = this.themeExtension ?? MyoroAppBarThemeExtension.builder(colorScheme);
     final backgroundColor = themeExtension.backgroundColor;
     final contentPadding = themeExtension.contentPadding;
 

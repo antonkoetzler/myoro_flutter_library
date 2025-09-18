@@ -23,8 +23,9 @@ class MyoroDatePickerInput extends StatefulWidget {
 final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   MyoroDatePickerInputConfiguration get _configuration => widget.configuration;
   MyoroInputThemeExtension get _themeExtension {
-    return widget.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroInputThemeExtension>()!;
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    return widget.themeExtension ?? MyoroInputThemeExtension.builder(colorScheme, textTheme);
   }
 
   late final MyoroDatePickerInputViewModel _viewModel;

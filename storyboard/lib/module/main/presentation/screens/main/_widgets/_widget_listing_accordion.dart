@@ -6,8 +6,8 @@ final class _WidgetListingAccordion extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return MyoroAccordion(
-      configuration: MyoroAccordionConfiguration(
+    return MyoroSingleAccordion(
+      configuration: MyoroSingleAccordionConfiguration(
         items:
             MyoroWidgetListEnum.values.map((value) {
               return MyoroAccordionItem(

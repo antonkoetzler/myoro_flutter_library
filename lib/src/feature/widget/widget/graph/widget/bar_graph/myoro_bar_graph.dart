@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
 part '_widget/_side_title.dart';
 
@@ -19,9 +18,9 @@ class MyoroBarGraph extends StatelessWidget {
   Widget build(context) {
     final viewModel = MyoroBarGraphViewModel(configuration);
 
-    final themeExtension =
-        this.themeExtension ??
-        Theme.of(context.read<BuildContext>()).extension<MyoroBarGraphThemeExtension>()!;
+    final colorScheme = context.colorScheme;
+    final textTheme = context.textTheme;
+    final themeExtension = this.themeExtension ?? MyoroBarGraphThemeExtension.builder(colorScheme, textTheme);
 
     final borderData = FlBorderData(border: themeExtension.border);
     const gridData = FlGridData(show: false);
