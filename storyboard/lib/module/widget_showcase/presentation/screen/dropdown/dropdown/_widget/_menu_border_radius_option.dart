@@ -11,8 +11,8 @@ final class _MenuBorderRadiusOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Menu border radius',
-        initiallyEnabled: viewModel.state.menuBorderRadius != null,
-        initialValue: viewModel.state.menuBorderRadius?.topLeft.x ?? 8.0,
+        enabled: viewModel.state.menuBorderRadius != null,
+        value: viewModel.state.menuBorderRadius?.topLeft.x ?? 8.0,
         sliderOnChanged:
             (value) =>
                 viewModel.state.menuBorderRadius = BorderRadius.only(

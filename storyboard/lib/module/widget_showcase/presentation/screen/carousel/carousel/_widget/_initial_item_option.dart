@@ -11,8 +11,8 @@ final class _InitialItemOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Initial item',
-        initiallyEnabled: true,
-        initialValue: viewModel.state.initialItem.toDouble(),
+        enabled: true,
+        value: viewModel.state.initialItem.toDouble(),
         sliderOnChanged: (value) => viewModel.state.initialItem = value.toInt(),
       ),
     );

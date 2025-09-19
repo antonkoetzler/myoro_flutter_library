@@ -11,8 +11,8 @@ final class _MaxOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Max value',
-        initiallyEnabled: true,
-        initialValue: viewModel.state.max,
+        enabled: true,
+        value: viewModel.state.max,
         sliderOnChanged: (value) => viewModel.state.max = value,
       ),
     );

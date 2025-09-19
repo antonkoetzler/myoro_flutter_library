@@ -21,29 +21,23 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
     return other is SliderWidgetShowcaseOptionConfiguration &&
         other.runtimeType == runtimeType &&
         other.label == self.label &&
-        other.initiallyEnabled == self.initiallyEnabled &&
-        other.initialValue == self.initialValue &&
+        other.enabled == self.enabled &&
+        other.value == self.value &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.sliderOnChanged == self.sliderOnChanged;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.label,
-      self.initiallyEnabled,
-      self.initialValue,
-      self.checkboxOnChanged,
-      self.sliderOnChanged,
-    );
+    return Object.hash(self.label, self.enabled, self.value, self.checkboxOnChanged, self.sliderOnChanged);
   }
 
   @override
   String toString() =>
       'SliderWidgetShowcaseOptionConfiguration(\n'
       '  label: ${self.label},\n'
-      '  initiallyEnabled: ${self.initiallyEnabled},\n'
-      '  initialValue: ${self.initialValue},\n'
+      '  enabled: ${self.enabled},\n'
+      '  value: ${self.value},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  sliderOnChanged: ${self.sliderOnChanged},\n'
       ');';

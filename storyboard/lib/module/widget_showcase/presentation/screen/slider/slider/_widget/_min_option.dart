@@ -11,8 +11,8 @@ final class _MinOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Min value',
-        initiallyEnabled: true,
-        initialValue: viewModel.state.min,
+        enabled: true,
+        value: viewModel.state.min,
         sliderOnChanged: (value) => viewModel.state.min = value,
       ),
     );

@@ -11,8 +11,8 @@ final class _BorderWidthOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Border width',
-        initiallyEnabled: viewModel.state.borderWidth != null,
-        initialValue: viewModel.state.borderWidth ?? 1.0,
+        enabled: viewModel.state.borderWidth != null,
+        value: viewModel.state.borderWidth ?? 1.0,
         sliderOnChanged: (value) => viewModel.state.borderWidth = value,
         checkboxOnChanged: (enabled, value) => viewModel.state.borderWidth = enabled ? value : null,
       ),

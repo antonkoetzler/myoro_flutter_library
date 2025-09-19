@@ -9,13 +9,13 @@ part 'slider_widget_showcase_option_configuration.g.dart';
 @immutable
 @myoroModel
 final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {
-  static const initiallyEnabledDefaultValue = true;
-  static const initialValueDefaultValue = 0.0;
+  static const enabledDefaultValue = true;
+  static const valueDefaultValue = 0.0;
 
   const SliderWidgetShowcaseOptionConfiguration({
     required this.label,
-    this.initiallyEnabled = initiallyEnabledDefaultValue,
-    this.initialValue = initialValueDefaultValue,
+    this.enabled = enabledDefaultValue,
+    this.value = valueDefaultValue,
     this.checkboxOnChanged,
     required this.sliderOnChanged,
   });
@@ -24,10 +24,10 @@ final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseO
   final String label;
 
   /// [MyoroCheckboxConfiguration.value]
-  final bool initiallyEnabled;
+  final bool enabled;
 
   /// Initial [MyoroSliderController.value].
-  final double initialValue;
+  final double value;
 
   /// [MyoroCheckboxConfiguration.onChanged]
   final SliderWidgetShowcaseOptionCheckboxOnChanged? checkboxOnChanged;
@@ -37,16 +37,16 @@ final class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseO
 
   SliderWidgetShowcaseOptionConfiguration copyWith({
     String? label,
-    bool? initiallyEnabled,
-    double? initialValue,
+    bool? enabled,
+    double? value,
     SliderWidgetShowcaseOptionCheckboxOnChanged? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     MyoroSliderOnChanged? sliderOnChanged,
   }) {
     return SliderWidgetShowcaseOptionConfiguration(
       label: label ?? this.label,
-      initiallyEnabled: initiallyEnabled ?? this.initiallyEnabled,
-      initialValue: initialValue ?? this.initialValue,
+      enabled: enabled ?? this.enabled,
+      value: value ?? this.value,
       checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
       sliderOnChanged: sliderOnChanged ?? this.sliderOnChanged,
     );

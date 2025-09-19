@@ -11,8 +11,8 @@ final class _TitleCardSpacingOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Title card spacing',
-        initiallyEnabled: viewModel.state.titleCardSpacing != null,
-        initialValue: viewModel.state.titleCardSpacing ?? 10.0,
+        enabled: viewModel.state.titleCardSpacing != null,
+        value: viewModel.state.titleCardSpacing ?? 10.0,
         sliderOnChanged: (value) => viewModel.state.titleCardSpacing = value,
         checkboxOnChanged: (enabled, value) => viewModel.state.titleCardSpacing = enabled ? value : null,
       ),

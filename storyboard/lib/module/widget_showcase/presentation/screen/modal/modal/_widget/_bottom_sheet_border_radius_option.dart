@@ -11,8 +11,8 @@ final class _BottomSheetBorderRadiusOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Bottom sheet border radius',
-        initiallyEnabled: viewModel.state.bottomSheetBorderRadius != null,
-        initialValue: viewModel.state.bottomSheetBorderRadius?.topLeft.x ?? 8.0,
+        enabled: viewModel.state.bottomSheetBorderRadius != null,
+        value: viewModel.state.bottomSheetBorderRadius?.topLeft.x ?? 8.0,
         sliderOnChanged:
             (value) =>
                 viewModel.state.bottomSheetBorderRadius = BorderRadius.only(

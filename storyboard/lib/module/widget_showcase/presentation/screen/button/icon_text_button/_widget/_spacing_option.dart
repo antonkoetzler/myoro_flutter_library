@@ -13,7 +13,8 @@ final class _SpacingOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Spacing',
-        initialValue: spacing ?? SliderWidgetShowcaseOptionConfiguration.initialValueDefaultValue,
+        enabled: spacing != null,
+        value: spacing ?? SliderWidgetShowcaseOptionConfiguration.valueDefaultValue,
         sliderOnChanged: (value) => state.spacing = value,
         checkboxOnChanged: (enabled, value) => state.spacing = enabled ? value : null,
       ),

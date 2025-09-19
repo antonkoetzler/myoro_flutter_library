@@ -11,7 +11,7 @@ final class _SizeOption extends StatelessWidget {
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Size',
-        initiallyEnabled: viewModel.state.size != null,
+        enabled: viewModel.state.size != null,
         checkboxOnChanged: (enabled, size) => viewModel.state.size = enabled ? size : null,
         sliderOnChanged: (size) => viewModel.state.size = size,
       ),

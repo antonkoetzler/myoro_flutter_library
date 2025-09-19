@@ -7,14 +7,15 @@ final class _ItemContentBackgroundColorOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final itemContentBackgroundColor = state.itemContentBackgroundColor;
 
     return ColorWidgetShowcaseOption(
       label: 'Item content background color',
-      selectedColor: viewModel.state.itemContentBackgroundColor,
-      onChanged: (color) => viewModel.state.itemContentBackgroundColor = color,
-      checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.itemContentBackgroundColor = enabled ? null : viewModel.state.itemContentBackgroundColor,
+      enabled: itemContentBackgroundColor != null,
+      selectedColor: itemContentBackgroundColor,
+      onChanged: (color) => state.itemContentBackgroundColor = color,
+      checkboxOnChanged: (e, _) => state.itemContentBackgroundColor = e ? null : itemContentBackgroundColor,
     );
   }
 }
