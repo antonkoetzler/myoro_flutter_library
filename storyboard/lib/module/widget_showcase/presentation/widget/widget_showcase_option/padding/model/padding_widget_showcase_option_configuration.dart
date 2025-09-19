@@ -15,6 +15,7 @@ final class PaddingWidgetShowcaseOptionConfiguration with _$PaddingWidgetShowcas
   const PaddingWidgetShowcaseOptionConfiguration({
     this.label = labelDefaultValue,
     this.enabled = enabledDefaultValue,
+    this.padding,
     this.checkboxOnChanged,
     required this.paddingOnChanged,
   });
@@ -24,6 +25,9 @@ final class PaddingWidgetShowcaseOptionConfiguration with _$PaddingWidgetShowcas
 
   /// [MyoroCheckboxConfiguration.value]
   final bool enabled;
+
+  /// [EdgeInsets] of the [PaddingWidgetShowcaseOption].
+  final EdgeInsets? padding;
 
   /// [MyoroCheckbox] on changed.
   final PaddingWidgetShowcaseOptionTitleCheckboxOnChanged? checkboxOnChanged;

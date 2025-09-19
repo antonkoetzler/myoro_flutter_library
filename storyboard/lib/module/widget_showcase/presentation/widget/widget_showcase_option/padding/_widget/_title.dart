@@ -7,18 +7,27 @@ final class _Title extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final padding = state.padding;
+    final label = configuration.label;
+    final enabled = state.enabled;
+    final checkboxOnChanged = configuration.checkboxOnChanged;
+
     final checkboxThemeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
-    return viewModel.configuration.checkboxOnChanged != null
+    final labelTextStyle = checkboxThemeExtension.labelTextStyle;
+
+    return checkboxOnChanged != null
         ? MyoroCheckbox(
           configuration: MyoroCheckboxConfiguration(
-            label: viewModel.configuration.label,
-            value: viewModel.enabled,
+            label: label,
+            value: enabled,
             onChanged: (enabled) {
-              viewModel.configuration.checkboxOnChanged!(enabled, viewModel.padding);
-              viewModel.enabledController.value = enabled;
+              checkboxOnChanged(enabled, padding);
+              state.enabled = enabled;
             },
           ),
         )
-        : Text(viewModel.configuration.label, style: checkboxThemeExtension.labelTextStyle);
+        : Text(label, style: labelTextStyle);
   }
 }

@@ -7,29 +7,31 @@ final class _SelectionSwitcher extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
+    final state = viewModel.state;
+    final modeEnum = state.modeEnum;
+
+    String formattedName(PaddingWidgetShowcaseOptionEnum modeEnum) {
+      return 'EdgeInsets.${modeEnum.name}';
+    }
 
     return MyoroSingularDropdown<PaddingWidgetShowcaseOptionEnum>(
       configuration: MyoroSingularDropdownConfiguration(
         label: 'Selection type',
         allowItemClearing: false,
-        onChanged: (value) => viewModel.modeEnumController.value = value!,
-        selectedItemBuilder: _formattedName,
+        onChanged: (value) => state.modeEnum = value!,
+        selectedItemBuilder: formattedName,
         menuConfiguration: MyoroSingularMenuConfiguration(
           request: PaddingWidgetShowcaseOptionEnum.values.toSet,
-          selectedItem: viewModel.modeEnum,
+          selectedItem: modeEnum,
           itemBuilder: (value) {
             return MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                textConfiguration: MyoroTextConfiguration(text: _formattedName(value)),
+                textConfiguration: MyoroTextConfiguration(text: formattedName(value)),
               ),
             );
           },
         ),
       ),
     );
-  }
-
-  String _formattedName(PaddingWidgetShowcaseOptionEnum modeEnum) {
-    return 'EdgeInsets.${modeEnum.name}';
   }
 }

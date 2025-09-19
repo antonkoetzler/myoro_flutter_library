@@ -2,10 +2,13 @@ part of '../padding_widget_showcase_option.dart';
 
 /// Selection [MyoroInput] of [PaddingWidgetShowcaseOption].
 final class _SelectionInput extends StatelessWidget {
-  const _SelectionInput({this.label, required this.onChanged});
+  const _SelectionInput({this.label, required this.value, required this.onChanged});
 
   /// [MyoroInputConfiguration.label]
   final String? label;
+
+  /// [MyoroInputConfiguration.text]
+  final double value;
 
   /// [MyoroInputConfiguration.onChanged]
   final PaddingWidgetShowcaseOptionSelectionInputOnChanged onChanged;
@@ -13,9 +16,10 @@ final class _SelectionInput extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
+    final enabledNotifier = viewModel.state.enabledNotifier;
 
     return ValueListenableBuilder(
-      valueListenable: viewModel.enabledController,
+      valueListenable: enabledNotifier,
       builder: (_, bool enabled, _) {
         return MyoroInput.number(
           min: 0,
@@ -23,6 +27,7 @@ final class _SelectionInput extends StatelessWidget {
           configuration: MyoroInputConfiguration(
             label: label ?? MyoroInputConfiguration.labelDefaultValue,
             enabled: enabled,
+            text: value.toStringAsFixed(0),
             onChanged: (String text) => onChanged(double.parse(text)),
           ),
         );

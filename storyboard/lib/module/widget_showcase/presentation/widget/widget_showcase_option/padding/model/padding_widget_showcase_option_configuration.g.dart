@@ -22,13 +22,14 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
         other.runtimeType == runtimeType &&
         other.label == self.label &&
         other.enabled == self.enabled &&
+        other.padding == self.padding &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.paddingOnChanged == self.paddingOnChanged;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.label, self.enabled, self.checkboxOnChanged, self.paddingOnChanged);
+    return Object.hash(self.label, self.enabled, self.padding, self.checkboxOnChanged, self.paddingOnChanged);
   }
 
   @override
@@ -36,6 +37,7 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
       'PaddingWidgetShowcaseOptionConfiguration(\n'
       '  label: ${self.label},\n'
       '  enabled: ${self.enabled},\n'
+      '  padding: ${self.padding},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  paddingOnChanged: ${self.paddingOnChanged},\n'
       ');';

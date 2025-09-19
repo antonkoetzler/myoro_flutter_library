@@ -7,14 +7,16 @@ final class _ItemTitleButtonSpacingOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final itemTitleButtonSpacing = state.itemTitleButtonSpacing;
 
     return SliderWidgetShowcaseOption(
       configuration: SliderWidgetShowcaseOptionConfiguration(
         label: 'Title button spacing',
-        enabled: viewModel.state.itemTitleButtonSpacing != null,
-        value: viewModel.state.itemTitleButtonSpacing ?? 10.0,
-        sliderOnChanged: (value) => viewModel.state.itemTitleButtonSpacing = value,
-        checkboxOnChanged: (enabled, value) => viewModel.state.itemTitleButtonSpacing = enabled ? value : null,
+        enabled: itemTitleButtonSpacing != null,
+        value: itemTitleButtonSpacing ?? SliderWidgetShowcaseOptionConfiguration.valueDefaultValue,
+        sliderOnChanged: (value) => state.itemTitleButtonSpacing = value,
+        checkboxOnChanged: (enabled, value) => state.itemTitleButtonSpacing = enabled ? value : null,
       ),
     );
   }

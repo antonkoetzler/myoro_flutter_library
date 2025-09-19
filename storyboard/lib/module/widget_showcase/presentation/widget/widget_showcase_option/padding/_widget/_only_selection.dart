@@ -8,6 +8,8 @@ final class _OnlySelection extends StatelessWidget {
   Widget build(context) {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
+    final state = viewModel.state;
+    final padding = state.padding;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -16,14 +18,18 @@ final class _OnlySelection extends StatelessWidget {
         _SelectionInputPair(
           leftLabel: 'Top',
           leftOnChanged: viewModel.topOnChanged,
+          leftValue: padding.top,
           rightLabel: 'Left',
           rightOnChanged: viewModel.leftOnChanged,
+          rightValue: padding.left,
         ),
         _SelectionInputPair(
           leftLabel: 'Bottom',
           leftOnChanged: viewModel.bottomOnChanged,
+          leftValue: padding.bottom,
           rightLabel: 'Right',
           rightOnChanged: viewModel.rightOnChanged,
+          rightValue: padding.right,
         ),
       ],
     );

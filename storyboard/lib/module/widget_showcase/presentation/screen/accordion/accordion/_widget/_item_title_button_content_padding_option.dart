@@ -7,11 +7,16 @@ final class _ItemTitleButtonContentPaddingOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final itemTitleButtonContentPadding = state.itemTitleButtonContentPadding;
 
     return PaddingWidgetShowcaseOption(
       configuration: PaddingWidgetShowcaseOptionConfiguration(
         label: 'Title button content padding',
-        paddingOnChanged: (padding) => viewModel.state.itemTitleButtonContentPadding = padding,
+        enabled: itemTitleButtonContentPadding != null,
+        padding: itemTitleButtonContentPadding,
+        paddingOnChanged: (p) => viewModel.state.itemTitleButtonContentPadding = p,
+        checkboxOnChanged: (e, p) => state.itemTitleButtonContentPadding = e ? itemTitleButtonContentPadding : null,
       ),
     );
   }

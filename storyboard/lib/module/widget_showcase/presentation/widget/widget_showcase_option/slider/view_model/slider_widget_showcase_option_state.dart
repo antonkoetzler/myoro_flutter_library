@@ -26,6 +26,14 @@ final class SliderWidgetShowcaseOptionState {
 
   /// [MyoroSliderConfiguration] getter.
   MyoroSliderConfiguration get sliderConfiguration {
-    return MyoroSliderConfiguration(min: 0, max: 50, value: sliderValue, onChanged: configuration.sliderOnChanged);
+    return MyoroSliderConfiguration(
+      min: 0,
+      max: 50,
+      value: sliderValue,
+      onChanged: (v) {
+        configuration.sliderOnChanged(v);
+        sliderValue = v;
+      },
+    );
   }
 }

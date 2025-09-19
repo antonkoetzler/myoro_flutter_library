@@ -7,8 +7,10 @@ final class _Selection extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
+    final modeEnumNotifier = viewModel.state.modeEnumNotifier;
+
     return ValueListenableBuilder(
-      valueListenable: viewModel.modeEnumController,
+      valueListenable: modeEnumNotifier,
       builder: (_, PaddingWidgetShowcaseOptionEnum modeEnum, __) {
         return switch (modeEnum) {
           PaddingWidgetShowcaseOptionEnum.all => const _AllSelection(),

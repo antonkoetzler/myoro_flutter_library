@@ -12,6 +12,7 @@ final class _ItemContentAnimationDurationOption extends StatelessWidget {
       max: 5000,
       configuration: MyoroInputConfiguration(
         label: 'Item content animation duration (ms)',
+        text: viewModel.state.itemContentAnimationDuration?.inMilliseconds.toString() ?? kMyoroEmptyString,
         placeholder: 'Duration in milliseconds',
         onChanged: (text) {
           final milliseconds = int.tryParse(text);

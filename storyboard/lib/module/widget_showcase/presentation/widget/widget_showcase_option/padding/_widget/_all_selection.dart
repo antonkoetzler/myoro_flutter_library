@@ -7,6 +7,9 @@ final class _AllSelection extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
-    return _SelectionInput(onChanged: viewModel.allOnChanged);
+    final allOnChanged = viewModel.allOnChanged;
+    final state = viewModel.state;
+    final padding = state.padding;
+    return _SelectionInput(onChanged: allOnChanged, value: padding.top);
   }
 }

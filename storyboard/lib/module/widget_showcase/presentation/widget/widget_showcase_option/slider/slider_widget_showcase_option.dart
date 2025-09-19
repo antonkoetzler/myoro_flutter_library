@@ -30,7 +30,6 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
     final state = _viewModel.state;
     final configuration = state.configuration;
     final sliderValueNotifier = state.sliderValueNotifier;
-    final sliderConfiguration = state.sliderConfiguration;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -47,7 +46,7 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
           ),
         ValueListenableBuilder(
           valueListenable: sliderValueNotifier,
-          builder: (_, sliderValue, _) => MyoroSlider(configuration: sliderConfiguration),
+          builder: (_, foo, _) => MyoroSlider(configuration: state.sliderConfiguration),
         ),
       ],
     );
