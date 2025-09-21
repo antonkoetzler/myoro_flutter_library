@@ -6,10 +6,7 @@ final class _Title extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(
-      context.colorScheme,
-      context.textTheme,
-    );
+    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(context.colorScheme, context.textTheme);
 
     final viewModel = context.read<IconWidgetShowcaseOptionViewModel>();
     final configuration = viewModel.configuration;

@@ -12,8 +12,7 @@ final class _ButtonContent extends StatelessWidget {
       MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
     );
     final contentPadding = iconTextButtonThemeExtension.contentPadding ?? EdgeInsets.zero;
-    final tapStatusEnumName =
-        '${_tapStatusEnum.name[1].toUpperCase()}${_tapStatusEnum.name.substring(1)}';
+    final tapStatusEnumName = '${_tapStatusEnum.name[1].toUpperCase()}${_tapStatusEnum.name.substring(1)}';
 
     const iconSize = 50.0;
     final icon = Image.asset(
@@ -30,11 +29,7 @@ final class _ButtonContent extends StatelessWidget {
       padding: contentPadding,
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          icon,
-          Text(tapStatusEnumName, style: myoroFake<TextStyle>().withColor(myoroFake<Color>())),
-          icon,
-        ],
+        children: [icon, Text(tapStatusEnumName, style: myoroFake<TextStyle>().withColor(myoroFake<Color>())), icon],
       ),
     );
   }

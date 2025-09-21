@@ -10,29 +10,20 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
 
   /// Opens the [MyoroModal].
   void showModal(BuildContext context) {
-    final themeExtension =
-        context.resolveThemeExtension<MyoroModalWidgetShowcaseScreenThemeExtension>();
+    final themeExtension = context.resolveThemeExtension<MyoroModalWidgetShowcaseScreenThemeExtension>();
 
     !state.isBottomSheet
         ? MyoroModal.showModal(
           context,
           configuration: buildConfiguration(context),
           themeExtension: buildThemeExtension(context),
-          child: Image.asset(
-            kHappyCat,
-            width: themeExtension.modalContentImageSize,
-            fit: BoxFit.contain,
-          ),
+          child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         )
         : MyoroModal.showBottomSheet(
           context,
           configuration: buildConfiguration(context),
           themeExtension: buildThemeExtension(context),
-          child: Image.asset(
-            kHappyCat,
-            width: themeExtension.modalContentImageSize,
-            fit: BoxFit.contain,
-          ),
+          child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         );
   }
 
@@ -49,10 +40,7 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
 
   /// [MyoroModalThemeExtension] of the [MyoroModal].
   MyoroModalThemeExtension buildThemeExtension(BuildContext context) {
-    final modalThemeExtension = MyoroModalThemeExtension.builder(
-      context.colorScheme,
-      context.textTheme,
-    );
+    final modalThemeExtension = MyoroModalThemeExtension.builder(context.colorScheme, context.textTheme);
 
     return modalThemeExtension.copyWith(
       constraints: _state.constraints,

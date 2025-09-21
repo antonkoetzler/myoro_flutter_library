@@ -17,18 +17,12 @@ final class MyoroCheckboxWidgetShowcaseScreenViewModel {
 
   /// [MyoroCheckboxConfiguration] builder.
   MyoroCheckboxConfiguration buildConfiguration(BuildContext context) {
-    return MyoroCheckboxConfiguration(
-      label: _state.label,
-      onChanged: (value) => _onChanged(context, value),
-    );
+    return MyoroCheckboxConfiguration(label: _state.label, onChanged: (value) => _onChanged(context, value));
   }
 
   /// [MyoroCheckboxThemeExtension] builder.
   MyoroCheckboxThemeExtension buildThemeExtension(BuildContext context) {
-    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(
-      context.colorScheme,
-      context.textTheme,
-    );
+    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(context.colorScheme, context.textTheme);
 
     final labelTextStyle = _state.labelTextStyle;
 

@@ -70,16 +70,10 @@ final class _InputState<T, V extends _ViewModelType<T>> extends State<_Input<T, 
     final menuController = state.menuController;
     final clear = menuController.clear;
 
-    var inputThemeExtension = MyoroInputThemeExtension.builder(
-      context.colorScheme,
-      context.textTheme,
-    );
+    var inputThemeExtension = MyoroInputThemeExtension.builder(context.colorScheme, context.textTheme);
     final outlinedBorder = inputThemeExtension.outlinedBorder;
     final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(
-        bottomLeft: Radius.zero,
-        bottomRight: Radius.zero,
-      ),
+      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
     );
     inputThemeExtension = inputThemeExtension.copyWith(
       border: switch (menuTypeEnum) {

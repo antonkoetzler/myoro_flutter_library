@@ -39,10 +39,7 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
 
   @override
   Widget build(context) {
-    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(
-      context.colorScheme,
-      context.textTheme,
-    );
+    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(context.colorScheme, context.textTheme);
 
     final state = _viewModel.state;
     final configuration = state.configuration;

@@ -40,9 +40,7 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
       contentIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderWidth: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
+      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       borderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -71,9 +69,7 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
     );
   }
 
-  factory MyoroButtonThemeExtension.fromIconTextButtonThemeExtension(
-    MyoroIconTextButtonThemeExtension themeExtension,
-  ) {
+  factory MyoroButtonThemeExtension.fromIconTextButtonThemeExtension(MyoroIconTextButtonThemeExtension themeExtension) {
     return MyoroButtonThemeExtension(
       backgroundColor: themeExtension.backgroundColor,
       backgroundIdleColor: themeExtension.backgroundIdleColor,
@@ -97,11 +93,7 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
     if (other is! MyoroButtonThemeExtension) return this;
 
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
-    final backgroundHoverColor = Color.lerp(
-      this.backgroundHoverColor,
-      other.backgroundHoverColor,
-      t,
-    );
+    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
     final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
     final contentColor = Color.lerp(this.contentColor, other.contentColor, t);
     final contentIdleColor = Color.lerp(this.contentIdleColor, other.contentIdleColor, t);

@@ -15,10 +15,6 @@ final class _Icon extends StatelessWidget {
     final iconConfiguration = configuration.iconConfiguration;
     final contentColorBuilder = themeExtension.contentColorBuilder;
 
-    return Icon(
-      iconConfiguration!.icon,
-      size: iconConfiguration.size,
-      color: contentColorBuilder(_tapStatusEnum),
-    );
+    return Icon(iconConfiguration!.icon, size: iconConfiguration.size, color: contentColorBuilder(_tapStatusEnum));
   }
 }

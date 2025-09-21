@@ -69,9 +69,6 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
 
   /// [MyoroAccordionConfiguration.items]
   Set<String> get _items {
-    return List.generate(
-      faker.randomGenerator.integer(50, min: 20),
-      (int index) => 'Item #$index',
-    ).toSet();
+    return List.generate(faker.randomGenerator.integer(50, min: 20), (int index) => 'Item #$index').toSet();
   }
 }

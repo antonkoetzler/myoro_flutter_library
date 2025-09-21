@@ -14,10 +14,7 @@ final class _Title extends StatelessWidget {
     final enabled = state.enabled;
     final checkboxOnChanged = configuration.checkboxOnChanged;
 
-    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(
-      context.colorScheme,
-      context.textTheme,
-    );
+    final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(context.colorScheme, context.textTheme);
     final labelTextStyle = checkboxThemeExtension.labelTextStyle;
 
     return checkboxOnChanged != null
