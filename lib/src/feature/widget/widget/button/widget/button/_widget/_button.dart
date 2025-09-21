@@ -20,7 +20,11 @@ final class _Button extends StatelessWidget {
     final configuration = state.configuration;
 
     final child = DecoratedBox(
-      decoration: BoxDecoration(color: backgroundColorBuilder(_tapStatusEnum), border: borderBuilder.call(_tapStatusEnum), borderRadius: borderRadius),
+      decoration: BoxDecoration(
+        color: backgroundColorBuilder(_tapStatusEnum),
+        border: borderBuilder.call(_tapStatusEnum),
+        borderRadius: borderRadius,
+      ),
       child: Padding(
         padding: EdgeInsets.all(borderWidth ?? 0),
         child: ClipRRect(
@@ -28,8 +32,12 @@ final class _Button extends StatelessWidget {
               ? BorderRadius.only(
                   topLeft: Radius.circular((borderRadius.topLeft.x - (borderWidth ?? 0)).clamp(0.0, double.infinity)),
                   topRight: Radius.circular((borderRadius.topRight.x - (borderWidth ?? 0)).clamp(0.0, double.infinity)),
-                  bottomLeft: Radius.circular((borderRadius.bottomLeft.x - (borderWidth ?? 0)).clamp(0.0, double.infinity)),
-                  bottomRight: Radius.circular((borderRadius.bottomRight.x - (borderWidth ?? 0)).clamp(0.0, double.infinity)),
+                  bottomLeft: Radius.circular(
+                    (borderRadius.bottomLeft.x - (borderWidth ?? 0)).clamp(0.0, double.infinity),
+                  ),
+                  bottomRight: Radius.circular(
+                    (borderRadius.bottomRight.x - (borderWidth ?? 0)).clamp(0.0, double.infinity),
+                  ),
                 )
               : BorderRadius.zero,
           child: _builder(context, _tapStatusEnum),
@@ -37,6 +45,8 @@ final class _Button extends StatelessWidget {
       ),
     );
 
-    return configuration?.tooltipConfiguration != null ? MyoroTooltip(configuration: configuration!.tooltipConfiguration!, child: child) : child;
+    return configuration?.tooltipConfiguration != null
+        ? MyoroTooltip(configuration: configuration!.tooltipConfiguration!, child: child)
+        : child;
   }
 }

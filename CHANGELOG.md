@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.4.1
+
+- fix: `ClipRRect` in `MyoroButton`
+
 ## 2.4.0
 
 - feature: `kMyoroEmptyString`
