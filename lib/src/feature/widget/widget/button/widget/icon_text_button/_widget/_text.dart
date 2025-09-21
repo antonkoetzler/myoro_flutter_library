@@ -8,7 +8,9 @@ final class _Text extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final themeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
+      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
+    );
 
     final configuration = context.read<MyoroIconTextButtonConfiguration>();
     final textConfiguration = configuration.textConfiguration!;

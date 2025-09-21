@@ -27,7 +27,7 @@ final class MyoroCarouselWidgetShowcaseScreenViewModel {
 
   /// [MyoroCarouselThemeExtension] of the [MyoroCarousel].
   MyoroCarouselThemeExtension buildThemeExtension(BuildContext context) {
-    final carouselThemeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+    const carouselThemeExtension = MyoroCarouselThemeExtension.builder();
 
     return carouselThemeExtension.copyWith(
       previousItemButtonIcon: state.previousItemButtonIcon,

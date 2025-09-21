@@ -20,7 +20,11 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
 
   /// [MyoroAccordionThemeExtension] of the [MyoroAccordion].
   MyoroAccordionThemeExtension buildThemeExtension(BuildContext context) {
-    final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
+    final accordionThemeExtension = MyoroAccordionThemeExtension.builder(
+      context.isDarkMode,
+      context.colorScheme,
+      context.textTheme,
+    );
 
     return accordionThemeExtension.copyWith(
       itemContentBackgroundColor: state.itemContentBackgroundColor,
@@ -65,6 +69,9 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
 
   /// [MyoroAccordionConfiguration.items]
   Set<String> get _items {
-    return List.generate(faker.randomGenerator.integer(50, min: 20), (int index) => 'Item #$index').toSet();
+    return List.generate(
+      faker.randomGenerator.integer(50, min: 20),
+      (int index) => 'Item #$index',
+    ).toSet();
   }
 }

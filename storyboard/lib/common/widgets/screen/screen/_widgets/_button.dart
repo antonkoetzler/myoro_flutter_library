@@ -12,7 +12,9 @@ final class _Button extends StatelessWidget {
     final screenThemeExtension = context.resolveThemeExtension<StoryboardScreenThemeExtension>();
     final buttonPadding = screenThemeExtension.buttonPadding;
 
-    final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final iconTextButtonThemeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
+      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
+    );
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(

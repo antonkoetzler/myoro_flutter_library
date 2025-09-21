@@ -51,7 +51,9 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
 
   /// [MyoroButtonThemeExtension] of the [MyoroButton].
   MyoroButtonThemeExtension buildThemeExtension(BuildContext context) {
-    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final buttonThemeExtension = MyoroButtonThemeExtension.fromVariant(
+      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
+    );
 
     return buttonThemeExtension.copyWith(
       backgroundColor: state.backgroundColor,

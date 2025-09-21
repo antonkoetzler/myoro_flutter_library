@@ -5,7 +5,6 @@
   - Remove redundant `checkboxOnChanged` fields in widget showcase option `Widget`s
   - Make MFL logo the storyboard app icon
   - Localization
-  - Tests
   - Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
 - `MyoroLocationInput`
 - `MyoroGradientScroll`

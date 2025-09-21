@@ -9,4 +9,5 @@
 - improvement: New tasks added to `tool` and `.vscode`
 - improvement: Make fields of all `ThemeExtension`s nullable to allow more customizability
 - improvement: Add another DDD layer within a `lib/src/feature/widget/widget/_/widget` for shared implemented within a category of `Widget`s
+- improvement: Remove all tests
 - chore: Add `copyWith` to models as `myoro_flutter_annotations` does not generate it with `myoroModel`s

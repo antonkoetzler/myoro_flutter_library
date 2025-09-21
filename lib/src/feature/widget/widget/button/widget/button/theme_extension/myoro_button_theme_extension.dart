@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -28,6 +29,29 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
     super.borderTapColor,
   });
 
+  // coverage:ignore-start
+  factory MyoroButtonThemeExtension.fake() {
+    return MyoroButtonThemeExtension(
+      backgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderWidth: faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 20)
+          : null,
+      borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      borderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    );
+  }
+  // coverage:ignore-end
+
   factory MyoroButtonThemeExtension.fromVariant(MyoroButtonVariantThemeExtension themeExtension) {
     return MyoroButtonThemeExtension(
       backgroundColor: themeExtension.backgroundColor,
@@ -47,7 +71,9 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
     );
   }
 
-  factory MyoroButtonThemeExtension.fromIconTextButtonThemeExtension(MyoroIconTextButtonThemeExtension themeExtension) {
+  factory MyoroButtonThemeExtension.fromIconTextButtonThemeExtension(
+    MyoroIconTextButtonThemeExtension themeExtension,
+  ) {
     return MyoroButtonThemeExtension(
       backgroundColor: themeExtension.backgroundColor,
       backgroundIdleColor: themeExtension.backgroundIdleColor,
@@ -71,7 +97,11 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
     if (other is! MyoroButtonThemeExtension) return this;
 
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
-    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
+    final backgroundHoverColor = Color.lerp(
+      this.backgroundHoverColor,
+      other.backgroundHoverColor,
+      t,
+    );
     final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
     final contentColor = Color.lerp(this.contentColor, other.contentColor, t);
     final contentIdleColor = Color.lerp(this.contentIdleColor, other.contentIdleColor, t);

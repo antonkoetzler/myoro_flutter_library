@@ -44,17 +44,6 @@
         "reveal": "always",
         "panel": "shared"
       }
-    },
-    {
-      "label": "Run tests",
-      "type": "shell",
-      "command": "bash tool/test.sh",
-      "problemMatcher": [],
-      "group": "build",
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared"
-      }
     }
   ],
   "inputs": [

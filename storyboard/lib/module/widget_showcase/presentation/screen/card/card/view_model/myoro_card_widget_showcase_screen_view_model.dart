@@ -17,7 +17,10 @@ final class MyoroCardWidgetShowcaseScreenViewModel {
 
   /// [MyoroCardThemeExtension] of the [MyoroCard].
   MyoroCardThemeExtension buildThemeExtension(BuildContext context) {
-    final cardThemeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+    final cardThemeExtension = MyoroCardThemeExtension.builder(
+      context.colorScheme,
+      context.textTheme,
+    );
 
     return cardThemeExtension.copyWith(
       backgroundColor: state.backgroundColor,

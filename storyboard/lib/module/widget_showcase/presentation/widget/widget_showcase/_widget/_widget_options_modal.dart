@@ -9,8 +9,12 @@ final class _WidgetOptionsModal extends StatelessWidget {
     List<Widget> configurationOptions,
     List<Widget> stylingOptions,
   ) async {
-    final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
-    final widgetShowcaseScreenThemeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
+    final modalThemeExtension = MyoroModalThemeExtension.builder(
+      context.colorScheme,
+      context.textTheme,
+    );
+    final widgetShowcaseScreenThemeExtension =
+        context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
@@ -18,7 +22,10 @@ final class _WidgetOptionsModal extends StatelessWidget {
 
     await MyoroModal.showModal(
       navigatorContext,
-      configuration: MyoroModalConfiguration(title: 'Options of $widgetName', useRootNavigator: false),
+      configuration: MyoroModalConfiguration(
+        title: 'Options of $widgetName',
+        useRootNavigator: false,
+      ),
       themeExtension: modalThemeExtension.copyWith(
         padding: EdgeInsets.zero,
         constraints: BoxConstraints(maxHeight: screenHeight * 0.9, maxWidth: screenWidth * 0.75),

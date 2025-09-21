@@ -8,7 +8,9 @@ final class _Button extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final themeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
+      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
+    );
 
     final configuration = context.read<MyoroIconTextButtonConfiguration>();
     final invert = configuration.invert;
@@ -17,7 +19,8 @@ final class _Button extends StatelessWidget {
 
     final iconConfigurationNotNull = iconConfiguration != null;
     final textConfigurationNotNull = textConfiguration != null;
-    final iconConfigurationAndTextConfigurationNotNull = iconConfigurationNotNull && textConfigurationNotNull;
+    final iconConfigurationAndTextConfigurationNotNull =
+        iconConfigurationNotNull && textConfigurationNotNull;
 
     final iconWidget = iconConfigurationNotNull ? _Icon(_tapStatusEnum) : null;
     final textWidget = textConfigurationNotNull ? _Text(_tapStatusEnum) : null;
@@ -32,7 +35,10 @@ final class _Button extends StatelessWidget {
         spacing: spacing,
         children: iconConfigurationAndTextConfigurationNotNull
             ? [!invert ? iconWidget! : textWidget!, !invert ? textWidget! : iconWidget!]
-            : [if (iconConfigurationNotNull) iconWidget!, if (textConfigurationNotNull) textWidget!],
+            : [
+                if (iconConfigurationNotNull) iconWidget!,
+                if (textConfigurationNotNull) textWidget!,
+              ],
       ),
     );
   }
