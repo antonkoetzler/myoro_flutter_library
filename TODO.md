@@ -1,8 +1,5 @@
 # TODO
 
-- Documentation
-  - Principles of styling and the use of `ThemeExtension`s and avoidance of builders
-  - Document VSCode goodies
 - Storyboard
   - Fix all bugs
   - Remove redundant `checkboxOnChanged` fields in widget showcase option `Widget`s

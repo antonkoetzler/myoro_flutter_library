@@ -1,4 +1,6 @@
-# The `tool` Folder
+<h1 align='center'>Tools</h1>
+
+## The `tool` Folder
 
 Every tool that you need to use will be in the `tool` folder.
 
@@ -7,3 +9,13 @@ Every tool that you need to use will be in the `tool` folder.
 1. `generate_code.sh`: Runs `dart run build_runner build` to generate automatically generated code;
 1. `initialize.sh`: Install dependencies and run build_runner to be able to launch the Storyboard;
 1. `test.sh`: Tests all code and generates the code coverage LCOV html.
+
+## The `.vscode` folder
+
+### `.vscode/tasks.json`
+
+Every tool listed above is a task within `.vscode/tasks.json`.
+
+### `.vscode/launch.json`
+
+Launch configuration to open the storyboard.
