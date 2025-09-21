@@ -16,7 +16,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     this.itemContentBackgroundColor,
     this.itemContentAnimationDuration,
     this.itemContentAnimationCurve,
-    this.itemTitleButtonSelectedBackgroundColor,
     this.itemTitleButtonContentPadding,
     this.itemTitleButtonSpacing,
     this.itemTitleButtonTitleTextStyle,
@@ -32,7 +31,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     : itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemContentAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
       itemContentAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null,
-      itemTitleButtonSelectedBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemTitleButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       itemTitleButtonSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
       itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
@@ -49,9 +47,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     : itemContentBackgroundColor = colorScheme.primary,
       itemContentAnimationDuration = const Duration(milliseconds: 200),
       itemContentAnimationCurve = Curves.easeInOut,
-      itemTitleButtonSelectedBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(0.7)
-          : colorScheme.onPrimary.brighten(0.75),
       itemTitleButtonContentPadding = const EdgeInsets.all(10),
       itemTitleButtonSpacing = 10,
       itemTitleButtonTitleTextStyle = textTheme.titleLarge,
@@ -69,9 +64,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
 
   /// Animation [Curve] of the animation of [_ItemContent].
   final Curve? itemContentAnimationCurve;
-
-  /// [Color] of [_ItemTitleButton] when it is selected.
-  final Color? itemTitleButtonSelectedBackgroundColor;
 
   /// [EdgeInsets] of [_ItemTitleButton].
   final EdgeInsets? itemTitleButtonContentPadding;
@@ -110,11 +102,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     final itemContentAnimationCurve = myoroFallbackLerp(
       this.itemContentAnimationCurve,
       other.itemContentAnimationCurve,
-      t,
-    );
-    final itemTitleButtonSelectedBackgroundColor = Color.lerp(
-      this.itemTitleButtonSelectedBackgroundColor,
-      other.itemTitleButtonSelectedBackgroundColor,
       t,
     );
     final itemTitleButtonContentPadding = EdgeInsets.lerp(
@@ -161,8 +148,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemContentAnimationDurationProvided: itemContentAnimationDuration != null,
       itemContentAnimationCurve: itemContentAnimationCurve,
       itemContentAnimationCurveProvided: itemContentAnimationCurve != null,
-      itemTitleButtonSelectedBackgroundColor: itemTitleButtonSelectedBackgroundColor,
-      itemTitleButtonSelectedBackgroundColorProvided: itemTitleButtonSelectedBackgroundColor != null,
       itemTitleButtonContentPadding: itemTitleButtonContentPadding,
       itemTitleButtonContentPaddingProvided: itemTitleButtonContentPadding != null,
       itemTitleButtonSpacing: itemTitleButtonSpacing,

@@ -7,6 +7,8 @@
   - Localization
   - Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
 - `MyoroGradientScroll`
+- `MyoroLocationInput`
+- `MyoroButtonMenu`
 - Bring back copyWith with `@myoroModel` in MFA from the dead
 - GitHub pages
 - Rename storyboard to example

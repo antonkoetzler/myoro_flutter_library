@@ -12,7 +12,7 @@ part 'myoro_table_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with _$MyoroTableThemeExtensionMixin {
   const MyoroTableThemeExtension({
-    this.decoration,
+    this.backgroundColor,
     this.columnTextStyle,
     this.columnSpacing,
     this.rowTextStyle,
@@ -23,7 +23,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
 
   // coverage:ignore-start
   MyoroTableThemeExtension.fake()
-    : decoration = faker.randomGenerator.boolean() ? myoroFake<BoxDecoration>() : null,
+    : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       columnTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       columnSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       rowTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
@@ -33,11 +33,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   // coverage:ignore-end
 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : decoration = BoxDecoration(
-        color: colorScheme.primary,
-        border: Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
-        borderRadius: BorderRadius.circular(kMyoroBorderRadius),
-      ),
+    : backgroundColor = colorScheme.primary,
       columnTextStyle = textTheme.titleMedium!,
       columnSpacing = 10,
       rowTextStyle = textTheme.bodyMedium!,
@@ -45,8 +41,8 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       emptyMessageTextStyle = textTheme.headlineMedium!,
       errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
 
-  /// [Container.decoration] of [_MyoroTableState].
-  final BoxDecoration? decoration;
+  /// Background color of the table.
+  final Color? backgroundColor;
 
   /// Default [TextStyle] of [_Column].
   final TextStyle? columnTextStyle;
@@ -70,7 +66,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   MyoroTableThemeExtension lerp(covariant ThemeExtension<MyoroTableThemeExtension>? other, double t) {
     if (other is! MyoroTableThemeExtension) return this;
 
-    final decoration = BoxDecoration.lerp(this.decoration, other.decoration, t);
+    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
     final columnTextStyle = TextStyle.lerp(this.columnTextStyle, other.columnTextStyle, t);
     final columnSpacing = lerpDouble(this.columnSpacing, other.columnSpacing, t);
     final rowTextStyle = TextStyle.lerp(this.rowTextStyle, other.rowTextStyle, t);
@@ -83,8 +79,8 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
     final errorMessageTextStyle = TextStyle.lerp(this.errorMessageTextStyle, other.errorMessageTextStyle, t);
 
     return copyWith(
-      decoration: decoration,
-      decorationProvided: decoration != null,
+      backgroundColor: backgroundColor,
+      backgroundColorProvided: backgroundColor != null,
       columnTextStyle: columnTextStyle,
       columnTextStyleProvided: columnTextStyle != null,
       columnSpacing: columnSpacing,

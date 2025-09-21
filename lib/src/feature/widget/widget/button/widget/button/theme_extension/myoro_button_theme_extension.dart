@@ -92,6 +92,7 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
   MyoroButtonThemeExtension lerp(ThemeExtension<MyoroButtonThemeExtension>? other, double t) {
     if (other is! MyoroButtonThemeExtension) return this;
 
+    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
     final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
     final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
@@ -107,6 +108,8 @@ class MyoroButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroBu
     final borderTapColor = Color.lerp(this.borderTapColor, other.borderTapColor, t);
 
     return copyWith(
+      backgroundColor: backgroundColor,
+      backgroundColorProvided: backgroundColor != null,
       backgroundIdleColor: backgroundIdleColor,
       backgroundIdleColorProvided: backgroundIdleColor != null,
       backgroundHoverColor: backgroundHoverColor,

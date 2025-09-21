@@ -24,8 +24,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
     bool itemContentAnimationDurationProvided = true,
     Curve? itemContentAnimationCurve,
     bool itemContentAnimationCurveProvided = true,
-    Color? itemTitleButtonSelectedBackgroundColor,
-    bool itemTitleButtonSelectedBackgroundColorProvided = true,
     EdgeInsets? itemTitleButtonContentPadding,
     bool itemTitleButtonContentPaddingProvided = true,
     double? itemTitleButtonSpacing,
@@ -52,9 +50,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
           : null,
       itemContentAnimationCurve: itemContentAnimationCurveProvided
           ? (itemContentAnimationCurve ?? self.itemContentAnimationCurve)
-          : null,
-      itemTitleButtonSelectedBackgroundColor: itemTitleButtonSelectedBackgroundColorProvided
-          ? (itemTitleButtonSelectedBackgroundColor ?? self.itemTitleButtonSelectedBackgroundColor)
           : null,
       itemTitleButtonContentPadding: itemTitleButtonContentPaddingProvided
           ? (itemTitleButtonContentPadding ?? self.itemTitleButtonContentPadding)
@@ -90,7 +85,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
         other.itemContentBackgroundColor == self.itemContentBackgroundColor &&
         other.itemContentAnimationDuration == self.itemContentAnimationDuration &&
         other.itemContentAnimationCurve == self.itemContentAnimationCurve &&
-        other.itemTitleButtonSelectedBackgroundColor == self.itemTitleButtonSelectedBackgroundColor &&
         other.itemTitleButtonContentPadding == self.itemTitleButtonContentPadding &&
         other.itemTitleButtonSpacing == self.itemTitleButtonSpacing &&
         other.itemTitleButtonTitleTextStyle == self.itemTitleButtonTitleTextStyle &&
@@ -107,7 +101,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
       self.itemContentBackgroundColor,
       self.itemContentAnimationDuration,
       self.itemContentAnimationCurve,
-      self.itemTitleButtonSelectedBackgroundColor,
       self.itemTitleButtonContentPadding,
       self.itemTitleButtonSpacing,
       self.itemTitleButtonTitleTextStyle,
@@ -125,7 +118,6 @@ mixin _$MyoroAccordionThemeExtensionMixin on ThemeExtension<MyoroAccordionThemeE
       '  itemContentBackgroundColor: ${self.itemContentBackgroundColor},\n'
       '  itemContentAnimationDuration: ${self.itemContentAnimationDuration},\n'
       '  itemContentAnimationCurve: ${self.itemContentAnimationCurve},\n'
-      '  itemTitleButtonSelectedBackgroundColor: ${self.itemTitleButtonSelectedBackgroundColor},\n'
       '  itemTitleButtonContentPadding: ${self.itemTitleButtonContentPadding},\n'
       '  itemTitleButtonSpacing: ${self.itemTitleButtonSpacing},\n'
       '  itemTitleButtonTitleTextStyle: ${self.itemTitleButtonTitleTextStyle},\n'

@@ -19,7 +19,9 @@ final class _TabButton extends StatelessWidget {
     final tabButtonTapColor = tabViewThemeExtension.tabButtonTapColor;
     final tabButtonBorderRadius = tabViewThemeExtension.tabButtonBorderRadius;
 
-    final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final iconTextButtonThemeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
+      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
+    );
 
     final viewModel = context.read<MyoroTabViewViewModel>();
     final selectTab = viewModel.selectTab;

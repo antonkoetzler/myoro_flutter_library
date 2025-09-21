@@ -44,10 +44,9 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   }
 
   MyoroTableViewModel<T>? _localViewModel;
-  // ignore: invalid_use_of_protected_member
   MyoroTableViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return widget.controller?.viewModel ?? (_localViewModel ??= context.read<MyoroTableViewModel<T>>());
+    return widget.controller?.viewModel ?? (_localViewModel ??= MyoroTableViewModel(widget.configuration!));
   }
 
   @override
@@ -70,25 +69,23 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final decoration = _themeExtension.decoration;
+    final backgroundColor = _themeExtension.backgroundColor;
 
-    final child = InheritedProvider.value(
-      value: _viewModel,
-      child: decoration != null
-          ? DecoratedBox(
-              decoration: decoration,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IntrinsicHeight(child: _Columns<T>()),
-                  const _Divider(Axis.horizontal),
-                  Flexible(child: _RowsSection<T>()),
-                ],
-              ),
-            )
-          : null,
+    final child = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IntrinsicHeight(child: _Columns<T>()),
+        const _Divider(Axis.horizontal),
+        Expanded(child: _RowsSection<T>()),
+      ],
     );
 
-    return MyoroSingleThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
+    return MyoroSingleThemeExtensionWrapper(
+      themeExtension: _themeExtension,
+      child: InheritedProvider.value(
+        value: _viewModel,
+        child: backgroundColor != null ? ColoredBox(color: backgroundColor, child: child) : child,
+      ),
+    );
   }
 }

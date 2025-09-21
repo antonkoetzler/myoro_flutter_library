@@ -12,7 +12,6 @@ part '_widget/_item_title_button_arrow_icon_color_option.dart';
 part '_widget/_item_title_button_arrow_icon_option.dart';
 part '_widget/_item_title_button_arrow_icon_size_option.dart';
 part '_widget/_item_title_button_content_padding_option.dart';
-part '_widget/_item_title_button_selected_background_color_option.dart';
 part '_widget/_item_title_button_spacing_option.dart';
 part '_widget/_item_title_button_title_text_style_option.dart';
 part '_widget/_thumb_visibility_option.dart';
@@ -28,7 +27,6 @@ final class MyoroAccordionsWidgetShowcaseScreen extends StatelessWidget {
     _ItemContentBackgroundColorOption(),
     _ItemContentAnimationDurationOption(),
     _ItemContentAnimationCurveOption(),
-    _ItemTitleButtonSelectedBackgroundColorOption(),
     _ItemTitleButtonContentPaddingOption(),
     _ItemTitleButtonSpacingOption(),
     _ItemTitleButtonTitleTextStyleOption(),

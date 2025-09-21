@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 final class MyoroTableWidgetShowcaseScreenViewModel {
   /// [MyoroTableConfiguration] of the [MyoroTable].
   MyoroTableConfiguration<String> buildConfiguration(BuildContext context) {
-    final request = List.generate(faker.randomGenerator.integer(50), (int index) => 'Item #index').toSet;
+    final request = List.generate(faker.randomGenerator.integer(50), (int index) => 'Item #$index').toSet;
 
     final columns =
         MyoroTableColumnWidthConfigurationEnum.values.map((value) {
@@ -22,26 +22,30 @@ final class MyoroTableWidgetShowcaseScreenViewModel {
           );
         }).toList();
 
-    MyoroTableRow<String> rowBuilder(String item) {
-      void onTapDown(BuildContext context, String item) {
-        _showSnackBar(context, '$item tapped!');
-      }
+    return MyoroTableConfiguration(
+      request: request,
+      columns: columns,
+      rowBuilder: (item) => _rowBuilder(context, item),
+    );
+  }
 
-      void onTapUp(BuildContext context, String item) {
-        _showSnackBar(context, '$item tap released!');
-      }
-
-      return MyoroTableRow(
-        onTapDown: (_) => onTapDown(context, item),
-        onTapUp: (_) => onTapUp(context, item),
-        cells:
-            MyoroTableColumnWidthConfigurationEnum.values.map((value) {
-              return Text('$item\'s value.name.capitalized cell.');
-            }).toList(),
-      );
+  MyoroTableRow<String> _rowBuilder(BuildContext context, String item) {
+    void onTapDown(BuildContext context, String item) {
+      _showSnackBar(context, '$item tapped!');
     }
 
-    return MyoroTableConfiguration(request: request, columns: columns, rowBuilder: rowBuilder);
+    void onTapUp(BuildContext context, String item) {
+      _showSnackBar(context, '$item tap released!');
+    }
+
+    return MyoroTableRow(
+      onTapDown: (_) => onTapDown(context, item),
+      onTapUp: (_) => onTapUp(context, item),
+      cells:
+          MyoroTableColumnWidthConfigurationEnum.values.map((value) {
+            return Text('$item\'s value.name.capitalized cell.');
+          }).toList(),
+    );
   }
 
   /// Generic function to display a [MyoroSnackBar].

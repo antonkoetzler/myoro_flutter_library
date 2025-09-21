@@ -12,8 +12,8 @@ part 'myoro_icon_text_button_theme_extension.g.dart';
 @myoroThemeExtension
 class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroIconTextButtonThemeExtension>
     with _$MyoroIconTextButtonThemeExtensionMixin {
-  static const _contentPaddingDefaultValue = EdgeInsets.all(kMyoroMultiplier * 2);
-  static const _spacingDefaultValue = kMyoroMultiplier * 2;
+  static const contentPaddingDefaultValue = EdgeInsets.all(kMyoroMultiplier * 2);
+  static const spacingDefaultValue = kMyoroMultiplier * 2;
 
   const MyoroIconTextButtonThemeExtension({
     super.backgroundColor,
@@ -49,8 +49,8 @@ class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension
       borderIdleColor: themeExtension.borderIdleColor,
       borderHoverColor: themeExtension.borderHoverColor,
       borderTapColor: themeExtension.borderTapColor,
-      contentPadding: _contentPaddingDefaultValue,
-      spacing: _spacingDefaultValue,
+      contentPadding: contentPaddingDefaultValue,
+      spacing: spacingDefaultValue,
     );
   }
 

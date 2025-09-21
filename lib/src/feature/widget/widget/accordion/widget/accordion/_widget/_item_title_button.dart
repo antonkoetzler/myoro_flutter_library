@@ -9,20 +9,14 @@ final class _ItemTitleButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accordionThemeExtension = MyoroAccordionThemeExtension.builder(
-      context.isDarkMode,
-      context.colorScheme,
-      context.textTheme,
-    );
+    final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final itemTitleButtonSpacing = accordionThemeExtension.itemTitleButtonSpacing;
     final itemTitleButtonTitleTextStyle = accordionThemeExtension.itemTitleButtonTitleTextStyle;
     final itemTitleButtonContentPadding = accordionThemeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
-    final itemTitleButtonSelectedBackgroundColor = accordionThemeExtension.itemTitleButtonSelectedBackgroundColor;
 
     final buttonThemeExtension = MyoroButtonThemeExtension.fromVariant(
       MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
     );
-    final backgroundIdleColor = buttonThemeExtension.backgroundIdleColor;
 
     final viewModel = context.read<MyoroAccordionViewModel<T>>();
     final toggleItem = viewModel.toggleItem;
@@ -34,10 +28,7 @@ final class _ItemTitleButton<T> extends StatelessWidget {
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => toggleItem(_item)),
-      themeExtension: buttonThemeExtension.copyWith(
-        backgroundIdleColor: _isSelected ? itemTitleButtonSelectedBackgroundColor : backgroundIdleColor,
-        borderRadiusProvided: false,
-      ),
+      themeExtension: buttonThemeExtension.copyWith(borderRadiusProvided: false),
       builder: (context, tapStatus) => Padding(
         padding: itemTitleButtonContentPadding,
         child: Row(

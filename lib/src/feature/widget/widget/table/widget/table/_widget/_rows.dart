@@ -17,8 +17,6 @@ final class _Rows<T> extends StatelessWidget {
       return const _EmptyMessage();
     }
 
-    final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-
     return ValueListenableBuilder(
       valueListenable: titleColumnKeyWidthsNotifier,
       builder: (_, titleColumnKeyWidths, _) {
@@ -27,20 +25,9 @@ final class _Rows<T> extends StatelessWidget {
           return const _Loader();
         }
 
-        final decorationBorderRadius = themeExtension.decoration?.borderRadius as BorderRadius?;
-
-        return ClipRRect(
-          clipBehavior: Clip.hardEdge,
-          borderRadius: decorationBorderRadius != null
-              ? BorderRadius.only(
-                  bottomLeft: decorationBorderRadius.bottomLeft,
-                  bottomRight: decorationBorderRadius.bottomRight,
-                )
-              : BorderRadius.zero,
-          child: ListView.builder(
-            itemCount: _items.length,
-            itemBuilder: (_, int index) => _Row(_items.elementAt(index), titleColumnKeyWidths),
-          ),
+        return ListView.builder(
+          itemCount: _items.length,
+          itemBuilder: (_, int index) => _Row(_items.elementAt(index), titleColumnKeyWidths),
         );
       },
     );

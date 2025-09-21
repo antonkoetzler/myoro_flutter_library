@@ -30,7 +30,6 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
       itemContentBackgroundColor: state.itemContentBackgroundColor,
       itemContentAnimationDuration: state.itemContentAnimationDuration,
       itemContentAnimationCurve: state.itemContentAnimationCurve,
-      itemTitleButtonSelectedBackgroundColor: state.itemTitleButtonSelectedBackgroundColor,
       itemTitleButtonContentPadding: state.itemTitleButtonContentPadding,
       itemTitleButtonSpacing: state.itemTitleButtonSpacing,
       itemTitleButtonTitleTextStyle: state.itemTitleButtonTitleTextStyle,

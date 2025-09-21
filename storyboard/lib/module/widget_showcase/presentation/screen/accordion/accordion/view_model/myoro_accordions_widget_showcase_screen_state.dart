@@ -58,20 +58,6 @@ final class MyoroAccordionsWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroAccordionThemeExtension.itemTitleButtonSelectedBackgroundColor]
-  Color? _itemTitleButtonSelectedBackgroundColor;
-
-  /// [_itemTitleButtonSelectedBackgroundColor] getter.
-  Color? get itemTitleButtonSelectedBackgroundColor {
-    return _itemTitleButtonSelectedBackgroundColor;
-  }
-
-  /// [_itemTitleButtonSelectedBackgroundColor] setter.
-  set itemTitleButtonSelectedBackgroundColor(Color? itemTitleButtonSelectedBackgroundColor) {
-    _itemTitleButtonSelectedBackgroundColor = itemTitleButtonSelectedBackgroundColor;
-    notifyListeners();
-  }
-
   /// [MyoroAccordionThemeExtension.itemTitleButtonContentPadding]
   EdgeInsets? _itemTitleButtonContentPadding;
 

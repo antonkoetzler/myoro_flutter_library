@@ -13,7 +13,9 @@ final class _Row<T> extends StatelessWidget {
     final rowTextStyle = tableThemeExtension.rowTextStyle;
     final columnSpacing = tableThemeExtension.columnSpacing ?? 0;
 
-    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final buttonThemeExtension = MyoroButtonThemeExtension.fromVariant(
+      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
+    );
 
     final viewModel = context.read<MyoroTableViewModel<T>>();
     final state = viewModel.state;

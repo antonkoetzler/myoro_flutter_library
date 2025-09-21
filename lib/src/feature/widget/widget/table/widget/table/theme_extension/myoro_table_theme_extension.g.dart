@@ -18,8 +18,8 @@ mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension
 
   @override
   MyoroTableThemeExtension copyWith({
-    BoxDecoration? decoration,
-    bool decorationProvided = true,
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
     TextStyle? columnTextStyle,
     bool columnTextStyleProvided = true,
     double? columnSpacing,
@@ -34,7 +34,7 @@ mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension
     bool errorMessageTextStyleProvided = true,
   }) {
     return MyoroTableThemeExtension(
-      decoration: decorationProvided ? (decoration ?? self.decoration) : null,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
       columnTextStyle: columnTextStyleProvided ? (columnTextStyle ?? self.columnTextStyle) : null,
       columnSpacing: columnSpacingProvided ? (columnSpacing ?? self.columnSpacing) : null,
       rowTextStyle: rowTextStyleProvided ? (rowTextStyle ?? self.rowTextStyle) : null,
@@ -54,7 +54,7 @@ mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension
   bool operator ==(Object other) {
     return other is MyoroTableThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.decoration == self.decoration &&
+        other.backgroundColor == self.backgroundColor &&
         other.columnTextStyle == self.columnTextStyle &&
         other.columnSpacing == self.columnSpacing &&
         other.rowTextStyle == self.rowTextStyle &&
@@ -66,7 +66,7 @@ mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension
   @override
   int get hashCode {
     return Object.hash(
-      self.decoration,
+      self.backgroundColor,
       self.columnTextStyle,
       self.columnSpacing,
       self.rowTextStyle,
@@ -79,7 +79,7 @@ mixin _$MyoroTableThemeExtensionMixin on ThemeExtension<MyoroTableThemeExtension
   @override
   String toString() =>
       'MyoroTableThemeExtension(\n'
-      '  decoration: ${self.decoration},\n'
+      '  backgroundColor: ${self.backgroundColor},\n'
       '  columnTextStyle: ${self.columnTextStyle},\n'
       '  columnSpacing: ${self.columnSpacing},\n'
       '  rowTextStyle: ${self.rowTextStyle},\n'
