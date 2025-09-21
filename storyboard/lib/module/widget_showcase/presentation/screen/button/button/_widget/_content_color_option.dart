@@ -12,7 +12,6 @@ final class _ContentColorOption extends StatelessWidget {
       label: 'Content color',
       selectedColor: viewModel.state.contentColor,
       onChanged: (color) => viewModel.state.contentColor = color,
-      checkboxOnChanged: (enabled, _) => viewModel.state.contentColor = enabled ? null : viewModel.state.contentColor,
     );
   }
 }

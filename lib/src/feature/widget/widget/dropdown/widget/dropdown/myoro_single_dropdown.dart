@@ -1,39 +1,39 @@
 part of 'bundle/myoro_dropdown_bundle.dart';
 
-/// Singular item dropdown.
-class MyoroSingularDropdown<T> extends StatefulWidget {
-  const MyoroSingularDropdown({super.key, this.controller, this.configuration, this.themeExtension})
+/// Single item dropdown.
+class MyoroSingleDropdown<T> extends StatefulWidget {
+  const MyoroSingleDropdown({super.key, this.controller, this.configuration, this.themeExtension})
     : assert(
         (controller != null) ^ (configuration != null),
-        '[MyoroSingularDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
+        '[MyoroSingleDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
       );
 
   /// Controller.
-  final MyoroSingularDropdownController<T>? controller;
+  final MyoroSingleDropdownController<T>? controller;
 
   /// Configuration.
-  final MyoroSingularDropdownConfiguration<T>? configuration;
+  final MyoroSingleDropdownConfiguration<T>? configuration;
 
   /// Style.
   final MyoroDropdownThemeExtension? themeExtension;
 
   @override
-  State<MyoroSingularDropdown<T>> createState() => _MyoroSingularDropdownState<T>();
+  State<MyoroSingleDropdown<T>> createState() => _MyoroSingleDropdownState<T>();
 }
 
-final class _MyoroSingularDropdownState<T> extends State<MyoroSingularDropdown<T>> {
+final class _MyoroSingleDropdownState<T> extends State<MyoroSingleDropdown<T>> {
   MyoroDropdownThemeExtension? get _themeExtension => widget.themeExtension;
 
-  MyoroSingularDropdownViewModel<T>? _localViewModel;
-  MyoroSingularDropdownViewModel<T> get _viewModel {
+  MyoroSingleDropdownViewModel<T>? _localViewModel;
+  MyoroSingleDropdownViewModel<T> get _viewModel {
     return widget.configuration != null
-        ? (_localViewModel ??= MyoroSingularDropdownViewModel(widget.configuration!))
+        ? (_localViewModel ??= MyoroSingleDropdownViewModel(widget.configuration!))
         // ignore: invalid_use_of_protected_member
         : widget.controller!.viewModel;
   }
 
   @override
-  void didUpdateWidget(covariant MyoroSingularDropdown<T> oldWidget) {
+  void didUpdateWidget(covariant MyoroSingleDropdown<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.configuration != null) {
       if (widget.configuration != _viewModel.state.configuration) {

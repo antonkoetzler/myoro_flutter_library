@@ -67,10 +67,12 @@ final class _MyoroInputState extends State<MyoroInput> {
     return widget.themeExtension ?? MyoroInputThemeExtension.builder(colorScheme, textTheme);
   }
 
-  MyoroInputViewModel? _localViewModel;
-  MyoroInputViewModel get _viewModel {
-    final viewModel = _localViewModel ??= (MyoroInputViewModel());
-    return viewModel..initialize(_configuration, _formatter);
+  late final MyoroInputViewModel _viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = MyoroInputViewModel(_configuration, _formatter);
   }
 
   @override
@@ -81,13 +83,13 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   @override
   void dispose() {
-    _localViewModel?.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
   Widget build(_) {
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: ValueListenableBuilder(
         valueListenable: _viewModel.state.enabledController,

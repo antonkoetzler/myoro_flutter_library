@@ -23,6 +23,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
         other.inputStyle == self.inputStyle &&
         other.textAlign == self.textAlign &&
         other.label == self.label &&
+        other.text == self.text &&
         other.placeholder == self.placeholder &&
         other.suffix == self.suffix &&
         other.enabled == self.enabled &&
@@ -46,6 +47,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       self.inputStyle,
       self.textAlign,
       self.label,
+      self.text,
       self.placeholder,
       self.suffix,
       self.enabled,
@@ -70,6 +72,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       '  inputStyle: ${self.inputStyle},\n'
       '  textAlign: ${self.textAlign},\n'
       '  label: ${self.label},\n'
+      '  text: ${self.text},\n'
       '  placeholder: ${self.placeholder},\n'
       '  suffix: ${self.suffix},\n'
       '  enabled: ${self.enabled},\n'

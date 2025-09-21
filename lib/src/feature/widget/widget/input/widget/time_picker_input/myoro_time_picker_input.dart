@@ -63,6 +63,6 @@ final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
       ),
     );
 
-    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
+    return MyoroSingleThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

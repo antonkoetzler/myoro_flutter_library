@@ -19,7 +19,7 @@ class MyoroTooltip extends StatelessWidget {
     final themeExtension = this.themeExtension ?? const MyoroTooltipThemeExtension.builder();
     final margin = themeExtension.margin;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: Tooltip(
         message: configuration.text,

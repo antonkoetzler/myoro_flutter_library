@@ -44,7 +44,7 @@ final class _MyoroTabViewState extends State<MyoroTabView> {
 
   @override
   Widget build(_) {
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: InheritedProvider.value(
         value: _viewModel,

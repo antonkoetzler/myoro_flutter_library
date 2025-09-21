@@ -33,7 +33,7 @@ final class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptio
   final IconData? selectedIcon;
 
   /// On-changed callback when the set [IconData] is changed.
-  final MyoroSingularDropdownConfigurationOnChanged<IconData> iconOnChanged;
+  final MyoroSingleDropdownOnChanged<IconData> iconOnChanged;
 
   /// Initial icon size.
   final double? selectedIconSize;

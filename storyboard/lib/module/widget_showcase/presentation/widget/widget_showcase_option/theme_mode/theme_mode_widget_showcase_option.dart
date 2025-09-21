@@ -3,7 +3,7 @@ import 'package:kiwi/kiwi.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// [MyoroSingularDropdown] to choose a [ThemeMode].
+/// [MyoroSingleDropdown] to choose a [ThemeMode].
 final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'ThemeMode';
 
@@ -12,18 +12,18 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroDropdownConfiguration.label]
   final String label;
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
-  final MyoroSingularDropdownConfigurationOnChanged<ThemeMode> onChanged;
+  /// [MyoroSingleDropdownConfiguration.onChanged]
+  final MyoroSingleDropdownOnChanged<ThemeMode> onChanged;
 
   @override
   Widget build(_) {
     final themeModeController = KiwiContainer().resolve<ThemeModeController>();
 
-    return MyoroSingularDropdown<ThemeMode>(
-      configuration: MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdown<ThemeMode>(
+      configuration: MyoroSingleDropdownConfiguration(
         label: label,
         allowItemClearing: false,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: ThemeMode.values.toSet,
           selectedItem: themeModeController.themeMode,
           itemBuilder: (themeMode) {

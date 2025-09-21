@@ -51,7 +51,7 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
     final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
     final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: InheritedProvider.value(
         value: _viewModel,

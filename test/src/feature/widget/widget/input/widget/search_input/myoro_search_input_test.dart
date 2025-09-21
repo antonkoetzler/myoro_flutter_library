@@ -34,7 +34,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
-      expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
+      expect(find.byType(MyoroSingleMenu<String>), findsOneWidget);
     });
   });
 
@@ -42,7 +42,7 @@ void main() {
     await testCase(tester, () async {
       await tester.tap(find.byType(MyoroButton));
       await tester.pumpAndSettle();
-      expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
+      expect(find.byType(MyoroSingleMenu<String>), findsOneWidget);
     });
   });
 

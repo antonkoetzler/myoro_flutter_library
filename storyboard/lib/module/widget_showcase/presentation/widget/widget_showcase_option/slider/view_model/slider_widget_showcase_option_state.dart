@@ -2,13 +2,25 @@ part of 'slider_widget_showcase_option_view_model.dart';
 
 /// State of [SliderWidgetShowcaseOptionViewModel].
 final class SliderWidgetShowcaseOptionState {
-  SliderWidgetShowcaseOptionState(this.configuration);
+  SliderWidgetShowcaseOptionState(this._configuration) : _sliderValueNotifier = ValueNotifier(_configuration.value);
 
   /// Configuration.
-  final SliderWidgetShowcaseOptionConfiguration configuration;
+  SliderWidgetShowcaseOptionConfiguration _configuration;
+
+  /// [_configuration] getter.
+  SliderWidgetShowcaseOptionConfiguration get configuration {
+    return _configuration;
+  }
+
+  /// [_configuration] setter.
+  set configuration(SliderWidgetShowcaseOptionConfiguration configuration) {
+    if (_configuration == configuration) return;
+    _configuration = configuration;
+    sliderValue = configuration.value;
+  }
 
   /// [ValueNotifier] of the [MyoroSlider].
-  final _sliderValueNotifier = ValueNotifier(0.0);
+  final ValueNotifier<double> _sliderValueNotifier;
 
   /// [_sliderValueNotifier] getter.
   ValueNotifier<double> get sliderValueNotifier => _sliderValueNotifier;

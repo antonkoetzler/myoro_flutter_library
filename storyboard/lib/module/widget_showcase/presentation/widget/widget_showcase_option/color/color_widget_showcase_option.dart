@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Widget showcase option to choose a [Color] from a [MyoroSingularDropdown].
+/// Widget showcase option to choose a [Color] from a [MyoroSingleDropdown].
 final class ColorWidgetShowcaseOption extends StatefulWidget {
   static const labelDefaultValue = 'Color';
   static const enabledDefaultValue = true;
@@ -12,7 +12,6 @@ final class ColorWidgetShowcaseOption extends StatefulWidget {
     this.enabled = enabledDefaultValue,
     this.selectedColor,
     required this.onChanged,
-    this.checkboxOnChanged,
   });
 
   /// [MyoroDropdownConfiguration.label]
@@ -24,11 +23,8 @@ final class ColorWidgetShowcaseOption extends StatefulWidget {
   /// Initial [Color].
   final Color? selectedColor;
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
-  final MyoroSingularDropdownConfigurationOnChanged<Color> onChanged;
-
-  /// [MyoroSingularDropdownConfiguration.checkboxOnChanged].
-  final MyoroSingularDropdownConfigurationCheckboxOnChanged<Color>? checkboxOnChanged;
+  /// [MyoroSingleDropdownConfiguration.onChanged]
+  final MyoroSingleDropdownOnChanged<Color> onChanged;
 
   @override
   State<ColorWidgetShowcaseOption> createState() => _ColorWidgetShowcaseOptionState();
@@ -38,18 +34,17 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
   String get _label => widget.label;
   bool get _enabled => widget.enabled;
   Color? get _selectedColor => widget.selectedColor;
-  MyoroSingularDropdownConfigurationOnChanged<Color> get _onChanged => widget.onChanged;
-  MyoroSingularDropdownConfigurationCheckboxOnChanged<Color>? get _checkboxOnChanged => widget.checkboxOnChanged;
+  MyoroSingleDropdownOnChanged<Color> get _onChanged => widget.onChanged;
 
-  late final MyoroSingularDropdownController<Color> _controller;
+  late final MyoroSingleDropdownController<Color> _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = MyoroSingularDropdownController(
-      configuration: MyoroSingularDropdownConfiguration(
+    _controller = MyoroSingleDropdownController(
+      configuration: MyoroSingleDropdownConfiguration(
         label: _label,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: kMyoroTestColors.toSet,
           selectedItem: _selectedColor,
           itemBuilder: (color) {
@@ -78,7 +73,6 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
         ),
         selectedItemBuilder: (color) => color.hexadecimalFormat,
         onChanged: _onChanged,
-        checkboxOnChanged: _checkboxOnChanged,
         enabled: _enabled,
       ),
     );
@@ -101,5 +95,5 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
   }
 
   @override
-  Widget build(context) => MyoroSingularDropdown<Color>(controller: _controller);
+  Widget build(context) => MyoroSingleDropdown<Color>(controller: _controller);
 }

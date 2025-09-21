@@ -10,12 +10,12 @@ part '_widget/_menu_border_radius_option.dart';
 part '_widget/_menu_type_enum_option.dart';
 part '_widget/_multi_dropdown.dart';
 part '_widget/_selected_item_text_align_option.dart';
-part '_widget/_singular_dropdown.dart';
+part '_widget/_single_dropdown.dart';
 part '_widget/_spacing_option.dart';
 part '_widget/_title.dart';
 part '_widget/_widget.dart';
 
-/// Widget showcase of [MyoroSingularDropdown] and [MyoroMultiDropdown].
+/// Widget showcase of [MyoroSingleDropdown] and [MyoroMultiDropdown].
 final class MyoroDropdownsWidgetShowcaseScreen extends StatefulWidget {
   // Configuration-related options (behavior, data, structural properties)
   static const configurationOptions = [

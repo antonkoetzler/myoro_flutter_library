@@ -23,7 +23,7 @@ final class MyoroPieGraphWidgetShowcaseScreenViewModel {
     );
   }
 
-  /// [MyoroSingularDropdownConfiguration.selectedItemBuilder] of [_TypeEnumOption].
+  /// [MyoroSingleDropdownConfiguration.selectedItemBuilder] of [_TypeEnumOption].
   String typeEnumOptionSelectedItemBuilder(MyoroPieGraphEnum item) {
     return _formattedTypeEnumName(item);
   }

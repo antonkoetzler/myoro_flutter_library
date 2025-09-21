@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Controller of [MyoroSingularMenu].
-class MyoroSingularMenuController<T> extends MyoroMenuController<T, MyoroSingularMenuViewModel<T>> {
-  MyoroSingularMenuController({required MyoroSingularMenuConfiguration<T> configuration})
+/// Controller of [MyoroSingleMenu].
+class MyoroSingleMenuController<T> extends MyoroMenuController<T, MyoroSingleMenuViewModel<T>> {
+  MyoroSingleMenuController({required MyoroSingleMenuConfiguration<T> configuration})
     : _selectedItemNotifier = ValueNotifier(configuration.selectedItem),
-      super(MyoroSingularMenuViewModel(configuration)) {
+      super(MyoroSingleMenuViewModel(configuration)) {
     viewModel.state.selectedItemsNotifier.addListener(_selectedItemsNotifierListener);
   }
 

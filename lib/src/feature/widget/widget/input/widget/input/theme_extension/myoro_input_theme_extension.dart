@@ -27,6 +27,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
     this.labelBehavior,
     this.clearTextButtonPadding,
     this.clearTextButtonIcon,
+    this.clearTextButtonIconSize,
   });
 
   // coverage:ignore-start
@@ -45,7 +46,10 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       labelBehavior = faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
       clearTextButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      clearTextButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
+      clearTextButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
+      clearTextButtonIconSize = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 200, min: 20)
+          : null;
   // coverage:ignore-end
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -68,7 +72,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       labelBehavior = FloatingLabelBehavior.always,
       spacing = 10,
       clearTextButtonPadding = const EdgeInsets.fromLTRB(5, 5, 6.5, 5),
-      clearTextButtonIcon = Icons.close;
+      clearTextButtonIcon = Icons.close,
+      clearTextButtonIconSize = kMyoroMultiplier * 4;
 
   /// Custom border.
   final InputBorder? border;
@@ -115,6 +120,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
   /// [IconData] of [_ClearTextButton].
   final IconData? clearTextButtonIcon;
 
+  /// Size of [clearTextButtonIcon].
+  final double? clearTextButtonIconSize;
+
   @override
   MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
     if (other is! MyoroInputThemeExtension) return this;
@@ -133,6 +141,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
     final labelBehavior = myoroFallbackLerp(this.labelBehavior, other.labelBehavior, t);
     final clearTextButtonPadding = EdgeInsets.lerp(this.clearTextButtonPadding, other.clearTextButtonPadding, t);
     final clearTextButtonIcon = myoroFallbackLerp(this.clearTextButtonIcon, other.clearTextButtonIcon, t);
+    final clearTextButtonIconSize = lerpDouble(this.clearTextButtonIconSize, other.clearTextButtonIconSize, t);
 
     return copyWith(
       underlinedBorder: underlinedBorder,
@@ -163,6 +172,8 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       clearTextButtonPaddingProvided: clearTextButtonPadding != null,
       clearTextButtonIcon: clearTextButtonIcon,
       clearTextButtonIconProvided: clearTextButtonIcon != null,
+      clearTextButtonIconSize: clearTextButtonIconSize,
+      clearTextButtonIconSizeProvided: clearTextButtonIconSize != null,
     );
   }
 }

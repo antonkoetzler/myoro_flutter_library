@@ -12,7 +12,6 @@ final class _BorderColorOption extends StatelessWidget {
       label: 'Border color',
       selectedColor: viewModel.state.borderColor,
       onChanged: (color) => viewModel.state.borderColor = color,
-      checkboxOnChanged: (enabled, _) => viewModel.state.borderColor = enabled ? null : viewModel.state.borderColor,
     );
   }
 }

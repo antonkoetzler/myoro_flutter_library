@@ -3,7 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_dropdown_state.dart';
 
-/// Shared implementation that both [MyoroSingularDropdown] and [MyoroMultiDropdown] share.
+/// Shared implementation that both [MyoroSingleDropdown] and [MyoroMultiDropdown] share.
 abstract class MyoroDropdownViewModel<
   T,
   CONFIGURATION extends MyoroDropdownConfiguration<T, MENU_CONFIGURATION>,

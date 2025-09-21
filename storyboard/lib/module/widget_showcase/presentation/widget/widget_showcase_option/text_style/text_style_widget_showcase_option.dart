@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Widget showcase option to choose a [TextStyle] from a [MyoroSingularDropdown].
+/// Widget showcase option to choose a [TextStyle] from a [MyoroSingleDropdown].
 final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Text style';
   static const allowItemClearingDefaultValue = MyoroDropdownConfiguration.allowItemClearingDefaultValue;
@@ -12,10 +12,9 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
     this.allowItemClearing = allowItemClearingDefaultValue,
     this.selectedItem,
     required this.onChanged,
-    this.checkboxOnChanged,
   });
 
-  /// [MyoroSingularDropdownConfiguration.label]
+  /// [MyoroSingleDropdownConfiguration.label]
   final String label;
 
   /// [MyoroDropdownConfiguration.allowItemClearing]
@@ -24,24 +23,20 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   /// Initially selected [TextStyle].
   final TextStyle? selectedItem;
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
-  final MyoroSingularDropdownConfigurationOnChanged<TextStyle> onChanged;
-
-  /// [MyoroSingularDropdownConfiguration.checkboxOnChanged]
-  final MyoroSingularDropdownConfigurationCheckboxOnChanged<TextStyle>? checkboxOnChanged;
+  /// [MyoroSingleDropdownConfiguration.onChanged]
+  final MyoroSingleDropdownOnChanged<TextStyle> onChanged;
 
   @override
   Widget build(context) {
     final typography = MyoroTypography(context.isDarkMode);
 
-    return MyoroSingularDropdown<TextStyle>(
-      configuration: MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdown<TextStyle>(
+      configuration: MyoroSingleDropdownConfiguration(
         label: label,
         allowItemClearing: allowItemClearing,
         onChanged: onChanged,
-        checkboxOnChanged: checkboxOnChanged,
         selectedItemBuilder: typography.getTextStyleName,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: typography.allTextStyles.toSet,
           selectedItem: selectedItem,
           itemBuilder: (value) {

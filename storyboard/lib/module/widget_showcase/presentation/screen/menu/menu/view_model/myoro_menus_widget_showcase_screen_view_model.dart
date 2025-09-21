@@ -18,9 +18,9 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// Builds the [MyoroSingularMenuConfiguration].
-  MyoroSingularMenuConfiguration<String> singluarMenuConfiguration(BuildContext context) {
-    return MyoroSingularMenuConfiguration(
+  /// Builds the [MyoroSingleMenuConfiguration].
+  MyoroSingleMenuConfiguration<String> singleMenuConfiguration(BuildContext context) {
+    return MyoroSingleMenuConfiguration(
       request: _request,
       onEndReachedRequest: state.onEndReachedRequestEnabled ? _onEndReachedRequest : null,
       searchCallback: state.searchCallbackEnabled ? _searchCallback : null,

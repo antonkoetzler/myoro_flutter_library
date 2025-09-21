@@ -10,12 +10,7 @@ final class _StyleOption extends StatelessWidget {
     final configuration = viewModel.configuration;
     final styleInitialValue = configuration.styleInitialValue;
     final styleOnChanged = configuration.styleOnChanged;
-    final styleCheckboxOnChanged = configuration.styleCheckboxOnChanged;
 
-    return TextStyleWidgetShowcaseOption(
-      selectedItem: styleInitialValue,
-      onChanged: styleOnChanged!,
-      checkboxOnChanged: styleCheckboxOnChanged,
-    );
+    return TextStyleWidgetShowcaseOption(selectedItem: styleInitialValue, onChanged: styleOnChanged!);
   }
 }

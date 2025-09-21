@@ -15,7 +15,21 @@ final class SliderWidgetShowcaseOption extends StatefulWidget {
 }
 
 final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseOption> {
-  late final _viewModel = SliderWidgetShowcaseOptionViewModel(widget.configuration);
+  SliderWidgetShowcaseOptionConfiguration get _configuration => widget.configuration;
+
+  late final SliderWidgetShowcaseOptionViewModel _viewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    _viewModel = SliderWidgetShowcaseOptionViewModel(_configuration);
+  }
+
+  @override
+  void didUpdateWidget(covariant SliderWidgetShowcaseOption oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _viewModel.state.configuration = widget.configuration;
+  }
 
   @override
   void dispose() {
@@ -35,18 +49,18 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
       mainAxisSize: MainAxisSize.min,
       children: [
         if (configuration.checkboxOnChanged != null)
-          Text(configuration.label, style: checkboxThemeExtension.labelTextStyle)
-        else
           MyoroCheckbox(
             configuration: MyoroCheckboxConfiguration(
               label: configuration.label,
               value: configuration.enabled,
               onChanged: _viewModel.checkboxOnChanged,
             ),
-          ),
+          )
+        else
+          Text(configuration.label, style: checkboxThemeExtension.labelTextStyle),
         ValueListenableBuilder(
           valueListenable: sliderValueNotifier,
-          builder: (_, foo, _) => MyoroSlider(configuration: state.sliderConfiguration),
+          builder: (_, _, _) => MyoroSlider(configuration: state.sliderConfiguration),
         ),
       ],
     );

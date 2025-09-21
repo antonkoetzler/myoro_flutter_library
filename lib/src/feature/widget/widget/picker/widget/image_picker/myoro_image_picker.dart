@@ -25,7 +25,7 @@ final class MyoroImagePicker extends StatelessWidget {
     final colorScheme = context.colorScheme;
     final themeExtension = this.themeExtension ?? MyoroImagePickerThemeExtension.builder(colorScheme);
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: InheritedProvider(create: (_) => MyoroImagePickerViewModel(configuration), child: const _Content()),
     );

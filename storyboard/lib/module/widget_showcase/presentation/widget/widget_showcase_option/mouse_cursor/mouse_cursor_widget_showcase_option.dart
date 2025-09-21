@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Widget showcase option for a [MyoroSingularDropdown]'s [MouseCursor].
+/// Widget showcase option for a [MyoroSingleDropdown]'s [MouseCursor].
 final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Mouse cursor';
 
@@ -12,23 +12,23 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
     required this.onChanged,
   });
 
-  /// [MyoroSingularDropdownConfiguration.label]
+  /// [MyoroSingleDropdownConfiguration.label]
   final String label;
 
   /// Initially selected [MouseCursor].
   final MouseCursor? selectedCursor;
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
-  final MyoroSingularDropdownConfigurationOnChanged<MouseCursor> onChanged;
+  /// [MyoroSingleDropdownConfiguration.onChanged]
+  final MyoroSingleDropdownOnChanged<MouseCursor> onChanged;
 
   @override
   Widget build(_) {
-    return MyoroSingularDropdown<MouseCursor>(
-      configuration: MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdown<MouseCursor>(
+      configuration: MyoroSingleDropdownConfiguration(
         label: label,
         selectedItemBuilder: _getCursorName,
         onChanged: onChanged,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: kMyoroTestCursors.toSet,
           selectedItem: selectedCursor,
           itemBuilder: (cursor) {

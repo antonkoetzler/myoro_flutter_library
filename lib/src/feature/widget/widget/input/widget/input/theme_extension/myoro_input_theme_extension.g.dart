@@ -48,6 +48,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
     bool clearTextButtonPaddingProvided = true,
     IconData? clearTextButtonIcon,
     bool clearTextButtonIconProvided = true,
+    double? clearTextButtonIconSize,
+    bool clearTextButtonIconSizeProvided = true,
   }) {
     return MyoroInputThemeExtension(
       border: borderProvided ? (border ?? self.border) : null,
@@ -67,6 +69,9 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
           ? (clearTextButtonPadding ?? self.clearTextButtonPadding)
           : null,
       clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
+      clearTextButtonIconSize: clearTextButtonIconSizeProvided
+          ? (clearTextButtonIconSize ?? self.clearTextButtonIconSize)
+          : null,
     );
   }
 
@@ -88,7 +93,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
         other.labelTextStyle == self.labelTextStyle &&
         other.labelBehavior == self.labelBehavior &&
         other.clearTextButtonPadding == self.clearTextButtonPadding &&
-        other.clearTextButtonIcon == self.clearTextButtonIcon;
+        other.clearTextButtonIcon == self.clearTextButtonIcon &&
+        other.clearTextButtonIconSize == self.clearTextButtonIconSize;
   }
 
   @override
@@ -109,6 +115,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       self.labelBehavior,
       self.clearTextButtonPadding,
       self.clearTextButtonIcon,
+      self.clearTextButtonIconSize,
     );
   }
 
@@ -130,5 +137,6 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       '  labelBehavior: ${self.labelBehavior},\n'
       '  clearTextButtonPadding: ${self.clearTextButtonPadding},\n'
       '  clearTextButtonIcon: ${self.clearTextButtonIcon},\n'
+      '  clearTextButtonIconSize: ${self.clearTextButtonIconSize},\n'
       ');';
 }

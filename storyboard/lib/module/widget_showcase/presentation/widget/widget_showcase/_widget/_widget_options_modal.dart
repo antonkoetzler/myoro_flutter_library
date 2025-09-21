@@ -10,6 +10,7 @@ final class _WidgetOptionsModal extends StatelessWidget {
     List<Widget> stylingOptions,
   ) async {
     final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final widgetShowcaseScreenThemeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
 
     final screenSize = MediaQuery.of(context).size;
     final screenWidth = screenSize.width;
@@ -21,6 +22,7 @@ final class _WidgetOptionsModal extends StatelessWidget {
       themeExtension: modalThemeExtension.copyWith(
         padding: EdgeInsets.zero,
         constraints: BoxConstraints(maxHeight: screenHeight * 0.9, maxWidth: screenWidth * 0.75),
+        titleTextStyle: widgetShowcaseScreenThemeExtension.widgetOptionsModalTitleTextStyle,
       ),
       child: _WidgetOptionsModal(configurationOptions, stylingOptions),
     );
@@ -34,33 +36,34 @@ final class _WidgetOptionsModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
+    final widgetOptionsModalSpacing = themeExtension.widgetOptionsModalSpacing;
 
     return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: themeExtension.widgetOptionsModalSpacing,
-        children: [
-          // Configuration Options Section.
-          if (_configurationOptions.isNotEmpty) ...[
-            const _SectionHeader(title: 'Configuration'),
-            _OptionsList(options: _configurationOptions),
-          ],
+      child: Padding(
+        padding: EdgeInsets.only(bottom: widgetOptionsModalSpacing / 1.5),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: widgetOptionsModalSpacing,
+          children: [
+            // Configuration Options Section.
+            if (_configurationOptions.isNotEmpty) ...[
+              const _SectionHeader(title: 'Configuration'),
+              _OptionsList(options: _configurationOptions),
+            ],
 
-          // Section Separator.
-          if (_configurationOptions.isNotEmpty && _stylingOptions.isNotEmpty) ...[
-            const MyoroBasicDivider(Axis.horizontal),
-          ],
+            // Section Separator.
+            if (_configurationOptions.isNotEmpty && _stylingOptions.isNotEmpty) ...[
+              const MyoroBasicDivider(Axis.horizontal),
+            ],
 
-          // Styling Options Section.
-          if (_stylingOptions.isNotEmpty) ...[
-            const _SectionHeader(title: 'Styling'),
-            _OptionsList(options: _stylingOptions),
+            // Styling Options Section.
+            if (_stylingOptions.isNotEmpty) ...[
+              const _SectionHeader(title: 'Styling'),
+              _OptionsList(options: _stylingOptions),
+            ],
           ],
-
-          // Bottom spacing
-          SizedBox(height: themeExtension.widgetOptionsModalSpacing / 3),
-        ],
+        ),
       ),
     );
   }

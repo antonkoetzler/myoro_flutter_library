@@ -75,7 +75,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
 
     return InheritedProvider.value(
       value: _viewModel,
-      child: MyoroSingularThemeExtensionWrapper(
+      child: MyoroSingleThemeExtensionWrapper(
         themeExtension: _themeExtension,
         child: MouseRegion(
           cursor: cursor,

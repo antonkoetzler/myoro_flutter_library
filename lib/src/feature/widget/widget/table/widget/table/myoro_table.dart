@@ -89,6 +89,6 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
           : null,
     );
 
-    return MyoroSingularThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
+    return MyoroSingleThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

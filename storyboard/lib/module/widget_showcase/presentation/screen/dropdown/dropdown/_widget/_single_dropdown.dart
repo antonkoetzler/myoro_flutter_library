@@ -1,8 +1,8 @@
 part of '../myoro_dropdowns_widget_showcase_screen.dart';
 
-/// [MyoroSingularDropdown] of [MyoroDropdownsWidgetShowcaseScreen].
-final class _SingularDropdown extends StatelessWidget {
-  const _SingularDropdown();
+/// [MyoroSingleDropdown] of [MyoroDropdownsWidgetShowcaseScreen].
+final class _SingleDropdown extends StatelessWidget {
+  const _SingleDropdown();
 
   @override
   Widget build(context) {
@@ -14,8 +14,8 @@ final class _SingularDropdown extends StatelessWidget {
         return ListenableBuilder(
           listenable: viewModel.state.menuViewModel.state,
           builder: (_, __) {
-            return MyoroSingularDropdown(
-              configuration: viewModel.buildSingularDropdownConfiguration(context),
+            return MyoroSingleDropdown(
+              configuration: viewModel.buildSingleDropdownConfiguration(context),
               themeExtension: viewModel.buildThemeExtension(context),
             );
           },

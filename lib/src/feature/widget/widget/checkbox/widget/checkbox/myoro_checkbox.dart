@@ -57,7 +57,7 @@ final class _MyoroCheckboxState extends State<MyoroCheckbox> {
 
     return InheritedProvider.value(
       value: _viewModel,
-      child: MyoroSingularThemeExtensionWrapper(
+      child: MyoroSingleThemeExtensionWrapper(
         themeExtension: _themeExtension,
         child: MouseRegion(
           cursor: SystemMouseCursors.click,

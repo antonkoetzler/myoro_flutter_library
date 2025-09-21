@@ -26,7 +26,7 @@ final class MyoroFeedback extends StatelessWidget {
     final subtitleConfiguration = configuration.subtitleConfiguration;
     final actionButtonConfiguration = configuration.actionButtonConfiguration;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: InheritedProvider.value(
         value: configuration,

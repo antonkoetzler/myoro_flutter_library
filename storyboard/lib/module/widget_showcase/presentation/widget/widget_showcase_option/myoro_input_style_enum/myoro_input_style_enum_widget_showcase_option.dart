@@ -9,20 +9,20 @@ final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
   /// Initially selected [MyoroInputStyleEnum].
   final MyoroInputStyleEnum selectedStyle;
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
+  /// [MyoroSingleDropdownConfiguration.onChanged]
   final MyoroInputStyleEnumWidgetShowcaseOptionOnChanged onChanged;
 
   @override
   Widget build(_) {
     final viewModel = MyoroInputStyleEnumWidgetShowcaseOptionViewModel();
 
-    return MyoroSingularDropdown<MyoroInputStyleEnum>(
-      configuration: MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdown<MyoroInputStyleEnum>(
+      configuration: MyoroSingleDropdownConfiguration(
         label: 'MyoroInputStyleEnum',
         allowItemClearing: false,
         onChanged: (item) => onChanged(item!),
         selectedItemBuilder: viewModel.selectedItemBuilder,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: MyoroInputStyleEnum.values.toSet,
           selectedItem: selectedStyle,
           itemBuilder: viewModel.itemBuilder,

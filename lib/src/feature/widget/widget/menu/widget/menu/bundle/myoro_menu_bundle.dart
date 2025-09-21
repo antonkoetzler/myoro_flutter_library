@@ -11,7 +11,7 @@ part '../_widget/_loader.dart';
 part '../_widget/_success_content.dart';
 part '../_widget/_search_bar.dart';
 part '../_widget/_menu.dart';
-part '../myoro_singular_menu.dart';
+part '../myoro_single_menu.dart';
 part '../myoro_multi_menu.dart';
 
 typedef _C<T> = MyoroMenuConfiguration<T>;

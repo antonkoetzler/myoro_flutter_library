@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'myoro_singular_menu_configuration.dart';
+part of 'myoro_single_menu_configuration.dart';
 
 // **************************************************************************
 // MyoroModelGenerator
@@ -8,17 +8,17 @@ part of 'myoro_singular_menu_configuration.dart';
 
 // coverage:ignore-file
 
-/// Apply this mixin to [MyoroSingularMenuConfiguration] once the code is generated.
+/// Apply this mixin to [MyoroSingleMenuConfiguration] once the code is generated.
 ///
 /// ```dart
-/// class MyoroSingularMenuConfiguration<T> with _$MyoroSingularMenuConfigurationMixin<T> {}
+/// class MyoroSingleMenuConfiguration<T> with _$MyoroSingleMenuConfigurationMixin<T> {}
 /// ```
-mixin _$MyoroSingularMenuConfigurationMixin<T> {
-  MyoroSingularMenuConfiguration<T> get self => this as MyoroSingularMenuConfiguration<T>;
+mixin _$MyoroSingleMenuConfigurationMixin<T> {
+  MyoroSingleMenuConfiguration<T> get self => this as MyoroSingleMenuConfiguration<T>;
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroSingularMenuConfiguration<T> &&
+    return other is MyoroSingleMenuConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.selectedItem == self.selectedItem &&
         other.onChanged == self.onChanged &&
@@ -42,7 +42,7 @@ mixin _$MyoroSingularMenuConfigurationMixin<T> {
 
   @override
   String toString() =>
-      'MyoroSingularMenuConfiguration<T>(\n'
+      'MyoroSingleMenuConfiguration<T>(\n'
       '  selectedItem: ${self.selectedItem},\n'
       '  onChanged: ${self.onChanged},\n'
       '  request: ${self.request},\n'

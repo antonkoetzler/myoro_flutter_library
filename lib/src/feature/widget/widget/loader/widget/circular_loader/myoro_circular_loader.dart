@@ -15,7 +15,7 @@ class MyoroCircularLoader extends StatelessWidget {
     final size = themeExtension.size;
     final color = themeExtension.color;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: SizedBox(
         width: size,

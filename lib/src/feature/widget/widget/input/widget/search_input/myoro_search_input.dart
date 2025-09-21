@@ -47,7 +47,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   @override
   Widget build(context) {
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: InheritedProvider.value(
         value: _viewModel,

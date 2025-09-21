@@ -14,6 +14,7 @@ final class MyoroTimePickerInputConfiguration extends MyoroInputConfiguration
     super.inputStyle,
     super.textAlign,
     super.label,
+    super.text,
     super.suffix,
     super.enabled,
     super.showClearTextButton,

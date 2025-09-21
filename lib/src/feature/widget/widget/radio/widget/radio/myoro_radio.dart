@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Singular radio(box) [Widget].
+/// Single radio(box) [Widget].
 class MyoroRadio extends StatefulWidget {
   /// Configuration.
   final MyoroRadioConfiguration configuration;
@@ -50,7 +50,7 @@ final class _MyoroRadioState extends State<MyoroRadio> {
     final hoverColor = _themeExtension.hoverColor;
     final splashRadius = _themeExtension.splashRadius;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: Row(
         mainAxisSize: MainAxisSize.min,

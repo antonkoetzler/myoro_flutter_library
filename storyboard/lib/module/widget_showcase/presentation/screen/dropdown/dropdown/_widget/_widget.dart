@@ -12,8 +12,8 @@ final class _Widget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       spacing: widgetShowcaseThemeExtension.spacing,
       children: const [
-        _Title('MyoroSingularDropdown'),
-        Flexible(child: _SingularDropdown()),
+        _Title('MyoroSingleDropdown'),
+        Flexible(child: _SingleDropdown()),
         _Title('MyoroMultiDropdown'),
         Flexible(child: _MultiDropdown()),
       ],

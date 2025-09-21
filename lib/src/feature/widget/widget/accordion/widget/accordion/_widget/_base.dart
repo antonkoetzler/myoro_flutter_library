@@ -82,7 +82,7 @@ final class _BaseState<T> extends State<_Base<T>> {
 
     return InheritedProvider.value(
       value: _viewModel,
-      child: MyoroSingularThemeExtensionWrapper(
+      child: MyoroSingleThemeExtensionWrapper(
         themeExtension: themeExtension,
         child: ValueListenableBuilder(
           valueListenable: selectedItemsNotifier,

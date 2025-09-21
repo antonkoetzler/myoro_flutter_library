@@ -30,8 +30,7 @@ mixin _$TextWidgetShowcaseOptionConfigurationMixin {
         other.alignmentInitialValue == self.alignmentInitialValue &&
         other.alignmentOnChanged == self.alignmentOnChanged &&
         other.styleInitialValue == self.styleInitialValue &&
-        other.styleOnChanged == self.styleOnChanged &&
-        other.styleCheckboxOnChanged == self.styleCheckboxOnChanged;
+        other.styleOnChanged == self.styleOnChanged;
   }
 
   @override
@@ -48,7 +47,6 @@ mixin _$TextWidgetShowcaseOptionConfigurationMixin {
       self.alignmentOnChanged,
       self.styleInitialValue,
       self.styleOnChanged,
-      self.styleCheckboxOnChanged,
     );
   }
 
@@ -66,6 +64,5 @@ mixin _$TextWidgetShowcaseOptionConfigurationMixin {
       '  alignmentOnChanged: ${self.alignmentOnChanged},\n'
       '  styleInitialValue: ${self.styleInitialValue},\n'
       '  styleOnChanged: ${self.styleOnChanged},\n'
-      '  styleCheckboxOnChanged: ${self.styleCheckboxOnChanged},\n'
       ');';
 }

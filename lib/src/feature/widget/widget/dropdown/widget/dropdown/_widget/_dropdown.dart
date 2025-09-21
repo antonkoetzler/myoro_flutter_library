@@ -44,7 +44,7 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
   Widget build(context) {
     final spacing = _themeExtension.spacing ?? _themeExtension.spacing ?? 0;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: Provider.value(
         value: _viewModel,

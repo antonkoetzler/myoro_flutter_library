@@ -12,8 +12,6 @@ final class _ContentHoverColorOption extends StatelessWidget {
       label: 'Content hover color',
       selectedColor: viewModel.state.contentHoverColor,
       onChanged: (color) => viewModel.state.contentHoverColor = color,
-      checkboxOnChanged:
-          (enabled, _) => viewModel.state.contentHoverColor = enabled ? null : viewModel.state.contentHoverColor,
     );
   }
 }

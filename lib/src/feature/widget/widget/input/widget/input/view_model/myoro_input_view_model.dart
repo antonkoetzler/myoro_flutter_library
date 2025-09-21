@@ -5,40 +5,38 @@ part 'myoro_input_state.dart';
 
 /// View model of [MyoroInput].
 class MyoroInputViewModel {
+  MyoroInputViewModel(MyoroInputConfiguration configuration, MyoroInputFormatter? formatter)
+    : _state = MyoroInputState(configuration, formatter) {
+    state.controller.addListener(controllerListener);
+  }
+
   /// State.
-  MyoroInputState? _state;
+  final MyoroInputState _state;
 
   /// [_state] getter.
   MyoroInputState get state {
-    assert(_state != null, '[MyoroInputState.state]: [_state] has not been set yet.');
-    return _state!;
-  }
-
-  /// Initialization function.
-  void initialize(MyoroInputConfiguration configuration, [MyoroInputFormatter? formatter]) {
-    final isInitialized = _state != null;
-    if (isInitialized) return;
-    _state = MyoroInputState(configuration, formatter);
-    state.inputController.addListener(inputControllerListener);
+    return _state;
   }
 
   /// Dispose function.
   void dispose() {
     (state.configuration.controller != null)
-        ? state.inputController.removeListener(inputControllerListener)
-        : state.inputController.dispose();
+        ? state.controller.removeListener(controllerListener)
+        : state.controller.dispose();
     state.enabledController.dispose();
-    state.showClearTextButtonController.dispose();
+    if (state.configuration.showClearTextButton) state.showClearTextButtonNotifier.dispose();
   }
 
   /// [_controller]'s listener.
-  void inputControllerListener() {
-    state.showClearTextButtonController.value = state.showClearTextButton;
+  void controllerListener() {
+    if (state.configuration.showClearTextButton) {
+      state.showClearTextButtonNotifier.value = state.controller.text.isNotEmpty;
+    }
   }
 
   /// [MyoroCheckboxConfiguration.onChanged] of [_Checkbox].
   void checkboxOnChanged(bool value) {
-    state.configuration.checkboxOnChanged!.call(value, state.inputController.text);
+    state.configuration.checkboxOnChanged!.call(value, state.controller.text);
     state.enabledController.value = value;
   }
 
@@ -47,8 +45,8 @@ class MyoroInputViewModel {
   /// If [MyoroControllerState] is not null, it clears
   /// the text to it's [MyoroInputFormatter.initialText].
   void clearText() {
-    state.formatter == null ? state.inputController.clear() : state.inputController.text = state.formatter!.initialText;
-    state.configuration.onChanged?.call(state.inputController.text);
+    state.formatter == null ? state.controller.clear() : state.controller.text = state.formatter!.initialText;
+    state.configuration.onChanged?.call(state.controller.text);
     state.configuration.onCleared?.call();
   }
 }

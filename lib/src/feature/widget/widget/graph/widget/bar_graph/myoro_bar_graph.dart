@@ -29,7 +29,7 @@ class MyoroBarGraph extends StatelessWidget {
       sideTitles: SideTitles(showTitles: true, interval: themeExtension.sideTitleInterval),
     );
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: Padding(
         padding: const EdgeInsets.only(top: 22),

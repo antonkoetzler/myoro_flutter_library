@@ -15,10 +15,10 @@ part '_widget/_on_end_reached_request_option.dart';
 part '_widget/_search_bar_input_style_option.dart';
 part '_widget/_search_bar_padding_option.dart';
 part '_widget/_search_callback_option.dart';
-part '_widget/_singular_menu.dart';
+part '_widget/_single_menu.dart';
 part '_widget/_widget.dart';
 
-/// Widget showcase of [MyoroSingularMenu] & [MyoroMultiMenu].
+/// Widget showcase of [MyoroSingleMenu] & [MyoroMultiMenu].
 final class MyoroMenusWidgetShowcaseScreen extends StatelessWidget {
   // Configuration-related options (behavior, data, structural properties)
   static const configurationOptions = [_OnEndReachedRequestOption(), _SearchCallbackOption()];

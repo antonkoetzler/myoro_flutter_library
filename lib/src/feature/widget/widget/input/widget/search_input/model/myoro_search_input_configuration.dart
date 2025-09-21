@@ -15,6 +15,7 @@ class MyoroSearchInputConfiguration<T> extends MyoroInputConfiguration with _$My
     super.inputStyle,
     super.textAlign,
     super.label,
+    super.text,
     super.placeholder,
     super.suffix,
     super.enabled,
@@ -37,10 +38,15 @@ class MyoroSearchInputConfiguration<T> extends MyoroInputConfiguration with _$My
 
   // coverage:ignore-start
   factory MyoroSearchInputConfiguration.fake() {
+    final textProvided = faker.randomGenerator.boolean();
+
     return MyoroSearchInputConfiguration(
       inputStyle: MyoroInputStyleEnum.fake(),
       textAlign: myoroFake<TextAlign>(),
       label: faker.randomGenerator.boolean() ? faker.lorem.word() : MyoroInputConfiguration.labelDefaultValue,
+      text: textProvided && faker.randomGenerator.boolean()
+          ? faker.lorem.word()
+          : MyoroInputConfiguration.textDefaultValue,
       placeholder: faker.randomGenerator.boolean()
           ? faker.lorem.word()
           : MyoroInputConfiguration.placeholderDefaultValue,
@@ -57,7 +63,7 @@ class MyoroSearchInputConfiguration<T> extends MyoroInputConfiguration with _$My
       inputKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
       checkboxKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
       focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
-      controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
+      controller: !textProvided && faker.randomGenerator.boolean() ? TextEditingController() : null,
       requestWhenChanged: faker.randomGenerator.boolean(),
       request: ((_) => {}),
       itemBuilder: ((_) => MyoroMenuItem.fake()),
@@ -79,6 +85,7 @@ class MyoroSearchInputConfiguration<T> extends MyoroInputConfiguration with _$My
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
     String? label,
+    String? text,
     String? placeholder,
     Widget? suffix,
     bool suffixProvided = true,
@@ -112,6 +119,7 @@ class MyoroSearchInputConfiguration<T> extends MyoroInputConfiguration with _$My
       inputStyle: inputStyle ?? this.inputStyle,
       textAlign: textAlign ?? this.textAlign,
       label: label ?? this.label,
+      text: text ?? this.text,
       placeholder: placeholder ?? this.placeholder,
       suffix: suffixProvided ? (suffix ?? this.suffix) : null,
       enabled: enabled ?? this.enabled,

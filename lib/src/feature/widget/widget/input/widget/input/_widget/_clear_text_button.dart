@@ -11,6 +11,7 @@ final class _ClearTextButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final clearTextButtonPadding = themeExtension.clearTextButtonPadding ?? EdgeInsets.zero;
     final clearTextButtonIcon = themeExtension.clearTextButtonIcon!;
+    final clearTextButtonIconSize = themeExtension.clearTextButtonIconSize;
 
     return IntrinsicWidth(
       child: Padding(
@@ -18,7 +19,7 @@ final class _ClearTextButton extends StatelessWidget {
         child: MyoroIconTextButton(
           configuration: MyoroIconTextButtonConfiguration(
             onTapUp: (_) => _viewModel.clearText(),
-            iconConfiguration: MyoroIconConfiguration(icon: clearTextButtonIcon),
+            iconConfiguration: MyoroIconConfiguration(icon: clearTextButtonIcon, size: clearTextButtonIconSize),
           ),
         ),
       ),

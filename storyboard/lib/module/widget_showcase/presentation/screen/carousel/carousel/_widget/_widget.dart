@@ -1,6 +1,6 @@
 part of '../myoro_carousel_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenScreen.widget] of [MyoroCarouselWidgetShowcaseScreen].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroCarouselWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
@@ -11,7 +11,7 @@ final class _Widget extends StatelessWidget {
     return ListenableBuilder(
       listenable: viewModel.state,
       builder: (_, __) {
-        return MyoroSingularThemeExtensionWrapper(
+        return MyoroSingleThemeExtensionWrapper(
           themeExtension: viewModel.buildThemeExtension(context),
           child: MyoroCarousel(
             configuration: viewModel.buildConfiguration(const [

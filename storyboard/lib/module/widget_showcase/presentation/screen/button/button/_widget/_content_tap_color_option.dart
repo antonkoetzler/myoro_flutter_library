@@ -12,8 +12,6 @@ final class _ContentTapColorOption extends StatelessWidget {
       label: 'Content tap color',
       selectedColor: viewModel.state.contentTapColor,
       onChanged: (color) => viewModel.state.contentTapColor = color,
-      checkboxOnChanged:
-          (enabled, _) => viewModel.state.contentTapColor = enabled ? null : viewModel.state.contentTapColor,
     );
   }
 }

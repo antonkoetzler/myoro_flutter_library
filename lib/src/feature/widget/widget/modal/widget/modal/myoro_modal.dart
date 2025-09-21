@@ -103,6 +103,6 @@ class MyoroModal extends StatelessWidget {
 
     final wrappedContent = !isBottomSheet ? Center(child: content) : content;
 
-    return MyoroSingularThemeExtensionWrapper(themeExtension: themeExtension, child: wrappedContent);
+    return MyoroSingleThemeExtensionWrapper(themeExtension: themeExtension, child: wrappedContent);
   }
 }

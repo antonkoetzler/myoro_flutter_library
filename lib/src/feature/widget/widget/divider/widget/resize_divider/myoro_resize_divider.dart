@@ -23,7 +23,7 @@ class MyoroResizeDivider extends StatelessWidget {
     final themeExtension =
         this.themeExtension ?? MyoroResizeDividerThemeExtension.builder(basicDividerThemeExtension, colorScheme);
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: Stack(
         alignment: Alignment.center,

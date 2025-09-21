@@ -1,8 +1,8 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// View model of [MyoroSingularMenu].
-final class MyoroSingularMenuViewModel<T> extends MyoroMenuViewModel<T, MyoroSingularMenuConfiguration<T>> {
-  MyoroSingularMenuViewModel(MyoroSingularMenuConfiguration<T> configuration)
+/// View model of [MyoroSingleMenu].
+final class MyoroSingleMenuViewModel<T> extends MyoroMenuViewModel<T, MyoroSingleMenuConfiguration<T>> {
+  MyoroSingleMenuViewModel(MyoroSingleMenuConfiguration<T> configuration)
     : super(configuration, {?configuration.selectedItem});
 
   @override

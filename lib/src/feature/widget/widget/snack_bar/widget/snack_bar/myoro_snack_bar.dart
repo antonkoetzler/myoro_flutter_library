@@ -30,7 +30,7 @@ class MyoroSnackBar extends StatelessWidget {
     final String message = configuration.message;
     final Widget? child = configuration.child;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: Container(
         padding: themeExtension.padding,

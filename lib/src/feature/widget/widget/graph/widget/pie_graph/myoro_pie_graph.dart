@@ -19,7 +19,7 @@ class MyoroPieGraph extends StatelessWidget {
   Widget build(context) {
     final themeExtension = this.themeExtension ?? context.read<MyoroPieGraphThemeExtension>();
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: InheritedProvider(
         create: (_) => MyoroPieGraphViewModel(configuration: configuration),

@@ -10,13 +10,8 @@ final class _ItemTitleButtonSelectedBackgroundColorOption extends StatelessWidge
 
     return ColorWidgetShowcaseOption(
       label: 'Title button selected background color',
-      enabled: viewModel.state.itemTitleButtonSelectedBackgroundColor != null,
       selectedColor: viewModel.state.itemTitleButtonSelectedBackgroundColor,
       onChanged: (color) => viewModel.state.itemTitleButtonSelectedBackgroundColor = color,
-      checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.itemTitleButtonSelectedBackgroundColor =
-                  enabled ? null : viewModel.state.itemTitleButtonSelectedBackgroundColor,
     );
   }
 }

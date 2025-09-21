@@ -11,6 +11,7 @@ part 'myoro_input_configuration.g.dart';
 class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
   static const labelDefaultValue = kMyoroEmptyString;
+  static const textDefaultValue = kMyoroEmptyString;
   static const placeholderDefaultValue = kMyoroEmptyString;
   static const textAlignDefaultValue = TextAlign.start;
   static const enabledDefaultValue = true;
@@ -22,6 +23,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.inputStyle = inputStyleDefaultValue,
     this.textAlign = textAlignDefaultValue,
     this.label = labelDefaultValue,
+    this.text = textDefaultValue,
     this.placeholder = placeholderDefaultValue,
     this.suffix,
     this.enabled = enabledDefaultValue,
@@ -40,25 +42,30 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   });
 
   // coverage:ignore-start
-  MyoroInputConfiguration.fake()
-    : inputStyle = MyoroInputStyleEnum.fake(),
-      textAlign = myoroFake<TextAlign>(),
-      label = faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
-      placeholder = faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
-      suffix = faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
-      enabled = faker.randomGenerator.boolean(),
-      readOnly = faker.randomGenerator.boolean(),
-      autofocus = faker.randomGenerator.boolean(),
-      showClearTextButton = faker.randomGenerator.boolean(),
-      checkboxOnChanged = faker.randomGenerator.boolean() ? ((_, _) {}) : null,
-      validation = faker.randomGenerator.boolean() ? ((_) => faker.randomGenerator.boolean() ? null : '') : null,
-      onFieldSubmitted = faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onCleared = faker.randomGenerator.boolean() ? (() {}) : null,
-      inputKey = faker.randomGenerator.boolean() ? GlobalKey() : null,
-      checkboxKey = faker.randomGenerator.boolean() ? GlobalKey() : null,
-      focusNode = faker.randomGenerator.boolean() ? FocusNode() : null,
-      controller = faker.randomGenerator.boolean() ? TextEditingController() : null;
+  factory MyoroInputConfiguration.fake() {
+    final textProvided = faker.randomGenerator.boolean();
+    return MyoroInputConfiguration(
+      inputStyle: MyoroInputStyleEnum.fake(),
+      textAlign: myoroFake<TextAlign>(),
+      label: !textProvided && faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
+      text: textProvided && faker.randomGenerator.boolean() ? faker.lorem.word() : textDefaultValue,
+      placeholder: faker.randomGenerator.boolean() ? faker.lorem.word() : placeholderDefaultValue,
+      suffix: faker.randomGenerator.boolean() ? Text(faker.lorem.word()) : null,
+      enabled: faker.randomGenerator.boolean(),
+      readOnly: faker.randomGenerator.boolean(),
+      autofocus: faker.randomGenerator.boolean(),
+      showClearTextButton: faker.randomGenerator.boolean(),
+      checkboxOnChanged: faker.randomGenerator.boolean() ? ((_, _) {}) : null,
+      validation: faker.randomGenerator.boolean() ? ((_) => faker.randomGenerator.boolean() ? null : '') : null,
+      onFieldSubmitted: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
+      onCleared: faker.randomGenerator.boolean() ? (() {}) : null,
+      inputKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
+      checkboxKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
+      focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
+      controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
+    );
+  }
   // coverage:ignore-end
 
   /// Type of input.
@@ -69,6 +76,9 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
 
   /// Label displayed at the top of the input.
   final String label;
+
+  /// Text of the input if [controller] is not provided.
+  final String text;
 
   /// Placeholder of the input (hint text).
   final String placeholder;
@@ -125,6 +135,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     MyoroInputStyleEnum? inputStyle,
     TextAlign? textAlign,
     String? label,
+    String? text,
     String? placeholder,
     Widget? suffix,
     bool suffixProvided = true,
@@ -155,6 +166,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       inputStyle: inputStyle ?? this.inputStyle,
       textAlign: textAlign ?? this.textAlign,
       label: label ?? this.label,
+      text: text ?? this.text,
       placeholder: placeholder ?? this.placeholder,
       suffix: suffixProvided ? (suffix ?? this.suffix) : null,
       enabled: enabled ?? this.enabled,
@@ -171,5 +183,10 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       focusNode: focusNodeProvided ? (focusNode ?? this.focusNode) : null,
       controller: controllerProvided ? (controller ?? this.controller) : null,
     );
+  }
+
+  /// Returns if [text] was provided.
+  bool get textProvided {
+    return text != textDefaultValue && controller == null;
   }
 }

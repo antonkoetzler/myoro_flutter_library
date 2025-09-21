@@ -13,7 +13,7 @@ final class WidgetShowcaseModule implements Module {
       // ############################
 
       // ########## Screens ##########
-      WidgetShowcaseScreenThemeExtension.builder(),
+      WidgetShowcaseScreenThemeExtension.builder(textTheme),
       // #############################
 
       // ########## Widget showcases ##########

@@ -12,10 +12,6 @@ final class _ItemTitleButtonTitleTextStyleOption extends StatelessWidget {
       label: 'Title text style',
       selectedItem: viewModel.state.itemTitleButtonTitleTextStyle,
       onChanged: (textStyle) => viewModel.state.itemTitleButtonTitleTextStyle = textStyle,
-      checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.itemTitleButtonTitleTextStyle =
-                  enabled ? null : viewModel.state.itemTitleButtonTitleTextStyle,
     );
   }
 }

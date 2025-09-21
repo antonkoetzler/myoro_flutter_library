@@ -12,8 +12,6 @@ final class _DialogTextStyleOption extends StatelessWidget {
       label: 'Dialog text style',
       selectedItem: viewModel.state.dialogTextStyle,
       onChanged: (textStyle) => viewModel.state.dialogTextStyle = textStyle,
-      checkboxOnChanged:
-          (enabled, _) => viewModel.state.dialogTextStyle = enabled ? null : viewModel.state.dialogTextStyle,
     );
   }
 }

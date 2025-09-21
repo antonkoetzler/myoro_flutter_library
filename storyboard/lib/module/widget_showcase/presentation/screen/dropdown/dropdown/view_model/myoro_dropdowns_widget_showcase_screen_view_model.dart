@@ -15,17 +15,17 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// Constructs a [MyoroSingularDropdownConfiguration].
-  MyoroSingularDropdownConfiguration<String> buildSingularDropdownConfiguration(BuildContext context) {
-    return MyoroSingularDropdownConfiguration(
+  /// Constructs a [MyoroSingleDropdownConfiguration].
+  MyoroSingleDropdownConfiguration<String> buildSingleDropdownConfiguration(BuildContext context) {
+    return MyoroSingleDropdownConfiguration(
       label: _state.label,
       menuTypeEnum: _state.menuTypeEnum,
       allowItemClearing: _state.allowItemClearing,
       selectedItemTextAlign: _state.selectedItemTextAlign,
-      menuConfiguration: _state.menuViewModel.singluarMenuConfiguration(context),
+      menuConfiguration: _state.menuViewModel.singleMenuConfiguration(context),
       selectedItemBuilder: _selectedItemBuilder,
-      onChanged: (item) => _singularDropdownOnChanged(context, item),
-      checkboxOnChanged: (enabled, item) => _singularDropdownCheckboxOnChanged(context, enabled, item),
+      onChanged: (item) => _singleDropdownOnChanged(context, item),
+      checkboxOnChanged: (enabled, item) => _singleDropdownCheckboxOnChanged(context, enabled, item),
     );
   }
 
@@ -59,13 +59,13 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
     return item;
   }
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
-  void _singularDropdownOnChanged(BuildContext context, String? item) {
+  /// [MyoroSingleDropdownConfiguration.onChanged]
+  void _singleDropdownOnChanged(BuildContext context, String? item) {
     _showSnackBar(context, item != null ? '$item selected' : 'Item deselected');
   }
 
-  /// [MyoroSingularDropdownConfiguration.checkboxOnChanged]
-  void _singularDropdownCheckboxOnChanged(BuildContext context, bool enabled, String? item) {
+  /// [MyoroSingleDropdownConfiguration.checkboxOnChanged]
+  void _singleDropdownCheckboxOnChanged(BuildContext context, bool enabled, String? item) {
     _showSnackBar(
       context,
       'Dropdown ${enabled ? 'enabled' : 'disabled'}, ${item != null ? '$item selected' : 'No item selected'}',

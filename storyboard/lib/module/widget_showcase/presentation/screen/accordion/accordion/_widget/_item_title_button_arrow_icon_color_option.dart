@@ -12,10 +12,6 @@ final class _ItemTitleButtonArrowIconColorOption extends StatelessWidget {
       label: 'Arrow icon color',
       selectedColor: viewModel.state.itemTitleButtonArrowIconColor,
       onChanged: (color) => viewModel.state.itemTitleButtonArrowIconColor = color,
-      checkboxOnChanged:
-          (enabled, _) =>
-              viewModel.state.itemTitleButtonArrowIconColor =
-                  enabled ? null : viewModel.state.itemTitleButtonArrowIconColor,
     );
   }
 }

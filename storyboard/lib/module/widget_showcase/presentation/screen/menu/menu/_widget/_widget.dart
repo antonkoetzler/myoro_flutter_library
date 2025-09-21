@@ -19,7 +19,7 @@ final class _Widget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: spacing,
-          children: const [_SingularMenu(), _MultiMenu()],
+          children: const [_SingleMenu(), _MultiMenu()],
         );
       },
     );

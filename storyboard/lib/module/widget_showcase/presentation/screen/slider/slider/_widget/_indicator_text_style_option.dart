@@ -12,8 +12,6 @@ final class _IndicatorTextStyleOption extends StatelessWidget {
       label: 'Indicator text style',
       selectedItem: viewModel.state.indicatorTextStyle,
       onChanged: (textStyle) => viewModel.state.indicatorTextStyle = textStyle,
-      checkboxOnChanged:
-          (enabled, _) => viewModel.state.indicatorTextStyle = enabled ? null : viewModel.state.indicatorTextStyle,
     );
   }
 }

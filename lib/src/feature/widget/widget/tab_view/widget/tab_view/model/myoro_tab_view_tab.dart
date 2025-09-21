@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_tab_view_tab.g.dart';
 
-/// Model of a singular tab apart of a [MyoroTabView].
+/// Model of a single tab apart of a [MyoroTabView].
 @immutable
 @myoroModel
 class MyoroTabViewTab with _$MyoroTabViewTabMixin {

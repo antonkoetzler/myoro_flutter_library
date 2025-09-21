@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// [MyoroSingularDropdown] controller implementation if [MyoroDropdownViewModel].
-final class MyoroSingularDropdownViewModel<T>
+/// [MyoroSingleDropdown] controller implementation if [MyoroDropdownViewModel].
+final class MyoroSingleDropdownViewModel<T>
     extends
         MyoroDropdownViewModel<
           T,
-          MyoroSingularDropdownConfiguration<T>,
-          MyoroSingularMenuConfiguration<T>,
-          MyoroSingularMenuController<T>
+          MyoroSingleDropdownConfiguration<T>,
+          MyoroSingleMenuConfiguration<T>,
+          MyoroSingleMenuController<T>
         > {
-  MyoroSingularDropdownViewModel(MyoroSingularDropdownConfiguration<T> configuration)
-    : super(configuration, MyoroSingularMenuController(configuration: configuration.menuConfiguration)) {
+  MyoroSingleDropdownViewModel(MyoroSingleDropdownConfiguration<T> configuration)
+    : super(configuration, MyoroSingleMenuController(configuration: configuration.menuConfiguration)) {
     state.menuController.selectedItemNotifier.addListener(selectedItemsNotifierListener);
   }
 
@@ -59,6 +59,6 @@ final class MyoroSingularDropdownViewModel<T>
 
     final menuController = state.menuController;
 
-    return MyoroSingularMenu<T>(controller: menuController, themeExtension: menuThemeExtension);
+    return MyoroSingleMenu<T>(controller: menuController, themeExtension: menuThemeExtension);
   }
 }

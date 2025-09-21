@@ -76,7 +76,7 @@ enum MyoroWidgetListEnum {
   static const myoroDrawerTitle = 'MyoroDrawer';
 
   // Dropdowns
-  static const myoroDropdownsTitle = 'MyoroSingularDropdown & MyoroMultiDropdown';
+  static const myoroDropdownsTitle = 'MyoroSingleDropdown & MyoroMultiDropdown';
 
   // Feedbacks
   static const myoroFeedbackTitle = 'MyoroFeedback';
@@ -101,7 +101,7 @@ enum MyoroWidgetListEnum {
   static const myoroLayoutBuilderTitle = 'MyoroLayoutBuilder';
 
   // Menus
-  static const myoroMenusTitle = 'MyoroSingularMenu & MyoroMultiMenu';
+  static const myoroMenusTitle = 'MyoroSingleMenu & MyoroMultiMenu';
 
   // Modals
   static const myoroDialogModalTitle = 'MyoroDialogModal';

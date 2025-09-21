@@ -16,6 +16,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
   const WidgetShowcaseScreenThemeExtension({
     required this.color,
     required this.padding,
+    required this.widgetOptionsModalTitleTextStyle,
     required this.widgetOptionsButtonIcon,
     required this.widgetOptionsModalSpacing,
     required this.widgetOptionsModalPadding,
@@ -28,6 +29,7 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
   WidgetShowcaseScreenThemeExtension.fake()
     : color = myoroFake<Color>(),
       padding = myoroFake<EdgeInsets>(),
+      widgetOptionsModalTitleTextStyle = myoroFake<TextStyle>(),
       widgetOptionsButtonIcon = myoroFake<IconData>(),
       widgetOptionsModalSpacing = faker.randomGenerator.decimal(scale: kMyoroMultiplier * 4),
       widgetOptionsModalPadding = myoroFake<EdgeInsets>(),
@@ -36,9 +38,10 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
       sectionHeaderTextStyle = myoroFake<TextStyle>();
   // coverage:ignore-end
 
-  WidgetShowcaseScreenThemeExtension.builder()
+  WidgetShowcaseScreenThemeExtension.builder(TextTheme textTheme)
     : color = MyoroColors.blue1.withValues(alpha: kMyoroMultiplier * 5 / 100),
       padding = const EdgeInsets.all(kMyoroMultiplier * 4),
+      widgetOptionsModalTitleTextStyle = textTheme.titleMedium!,
       widgetOptionsButtonIcon = Icons.menu,
       widgetOptionsModalSpacing = kMyoroMultiplier * 4,
       widgetOptionsModalPadding = const EdgeInsets.only(top: 4),
@@ -51,6 +54,9 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
 
   /// Padding of the [MyoroScreenConfiguration.body].
   final EdgeInsets padding;
+
+  /// [TextStyle] of the widget option's modal [MyoroModalThemeExtension.titleTextStyle].
+  final TextStyle widgetOptionsModalTitleTextStyle;
 
   /// [IconData] of the [_WidgetShowcase.widgetOptions] button.
   final IconData widgetOptionsButtonIcon;
@@ -79,6 +85,11 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     return copyWith(
       color: Color.lerp(color, other.color, t),
       padding: EdgeInsets.lerp(padding, other.padding, t),
+      widgetOptionsModalTitleTextStyle: TextStyle.lerp(
+        widgetOptionsModalTitleTextStyle,
+        other.widgetOptionsModalTitleTextStyle,
+        t,
+      ),
       widgetOptionsButtonIcon: myoroFallbackLerp(widgetOptionsButtonIcon, other.widgetOptionsButtonIcon, t),
       widgetOptionsModalSpacing: lerpDouble(widgetOptionsModalSpacing, other.widgetOptionsModalSpacing, t),
       widgetOptionsModalPadding: EdgeInsets.lerp(widgetOptionsModalPadding, other.widgetOptionsModalPadding, t),

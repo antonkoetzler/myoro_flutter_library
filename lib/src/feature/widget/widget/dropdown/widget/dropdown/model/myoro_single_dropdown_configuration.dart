@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_singular_dropdown_configuration.g.dart';
+part 'myoro_single_dropdown_configuration.g.dart';
 
-/// Configuration model of [MyoroSingularDropdown].
+/// Configuration model of [MyoroSingleDropdown].
 @immutable
 @myoroModel
-class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroSingularMenuConfiguration<T>>
-    with _$MyoroSingularDropdownConfigurationMixin<T> {
-  factory MyoroSingularDropdownConfiguration({
+class MyoroSingleDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroSingleMenuConfiguration<T>>
+    with _$MyoroSingleDropdownConfigurationMixin<T> {
+  factory MyoroSingleDropdownConfiguration({
     String label = MyoroDropdownConfiguration.labelDefaultValue,
     MyoroDropdownMenuTypeEnum menuTypeEnum = MyoroDropdownConfiguration.menuTypeEnumDefaultValue,
     bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
-    required MyoroSingularMenuConfiguration<T> menuConfiguration,
-    required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
-    MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
-    MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    required MyoroSingleMenuConfiguration<T> menuConfiguration,
+    required MyoroDropdownSelectedItemBuilder<T> selectedItemBuilder,
+    MyoroSingleDropdownOnChanged<T>? onChanged,
+    MyoroSingleDropdownCheckboxOnChanged<T>? checkboxOnChanged,
   }) {
-    return MyoroSingularDropdownConfiguration._(
+    return MyoroSingleDropdownConfiguration._(
       label,
       menuTypeEnum,
       enabled,
@@ -33,7 +33,7 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
     );
   }
 
-  const MyoroSingularDropdownConfiguration._(
+  const MyoroSingleDropdownConfiguration._(
     super.label,
     super.menuTypeEnum,
     super.enabled,
@@ -45,27 +45,27 @@ class MyoroSingularDropdownConfiguration<T> extends MyoroDropdownConfiguration<T
     this.checkboxOnChanged,
   );
 
-  /// Function executed when the selected item changes.hurricanes
-  final MyoroSingularDropdownConfigurationOnChanged<T>? onChanged;
+  /// Function executed when the selected item changes.
+  final MyoroSingleDropdownOnChanged<T>? onChanged;
 
   /// Function executed when the enabled/disabled checkbox is pressed.
-  final MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
+  final MyoroSingleDropdownCheckboxOnChanged<T>? checkboxOnChanged;
 
   @override
-  MyoroSingularDropdownConfiguration<T> copyWith({
+  MyoroSingleDropdownConfiguration<T> copyWith({
     String? label,
     MyoroDropdownMenuTypeEnum? menuTypeEnum,
     bool? enabled,
     bool? allowItemClearing,
     TextAlign? selectedItemTextAlign,
-    MyoroSingularMenuConfiguration<T>? menuConfiguration,
-    MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
-    MyoroSingularDropdownConfigurationOnChanged<T>? onChanged,
+    MyoroSingleMenuConfiguration<T>? menuConfiguration,
+    MyoroDropdownSelectedItemBuilder<T>? selectedItemBuilder,
+    MyoroSingleDropdownOnChanged<T>? onChanged,
     bool onChangedProvided = true,
-    MyoroSingularDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    MyoroSingleDropdownCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
   }) {
-    return MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdownConfiguration(
       label: label ?? this.label,
       menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
       enabled: enabled ?? this.enabled,

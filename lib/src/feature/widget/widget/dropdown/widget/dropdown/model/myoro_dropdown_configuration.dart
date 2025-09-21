@@ -3,7 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Abstract model that encapsulates options for [MyoroDropdown].
 ///
-/// [MyoroSingularDropdown] and [MyoroMultiDropdown] have their separation
+/// [MyoroSingleDropdown] and [MyoroMultiDropdown] have their separation
 /// configuration classes extending [MyoroDropdownConfiguration] for specific args.
 abstract class MyoroDropdownConfiguration<T, C extends MyoroMenuConfiguration<T>> {
   static const labelDefaultValue = '';
@@ -43,7 +43,7 @@ abstract class MyoroDropdownConfiguration<T, C extends MyoroMenuConfiguration<T>
   final C menuConfiguration;
 
   /// Builder of the [String] displayed when a [T] item is selected.
-  final MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder;
+  final MyoroDropdownSelectedItemBuilder<T> selectedItemBuilder;
 
   MyoroDropdownConfiguration copyWith({
     String? label,
@@ -52,7 +52,7 @@ abstract class MyoroDropdownConfiguration<T, C extends MyoroMenuConfiguration<T>
     bool? allowItemClearing,
     TextAlign? selectedItemTextAlign,
     C? menuConfiguration,
-    MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
+    MyoroDropdownSelectedItemBuilder<T>? selectedItemBuilder,
   });
 
   /// Returns if the checkbox callback is provided.

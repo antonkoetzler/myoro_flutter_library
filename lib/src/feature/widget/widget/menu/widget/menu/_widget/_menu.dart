@@ -1,7 +1,7 @@
 part of '../bundle/myoro_menu_bundle.dart';
 
 /// A menu widget that should not be used in production code, it is used
-/// within [MyoroSingularDropdown], [MyoroMultiDropdown] & [MyoroInput].
+/// within [MyoroSingleDropdown], [MyoroMultiDropdown] & [MyoroInput].
 class _Menu<T, C extends _C<T>> extends StatefulWidget {
   const _Menu(this._viewModel, this._themeExtension);
 

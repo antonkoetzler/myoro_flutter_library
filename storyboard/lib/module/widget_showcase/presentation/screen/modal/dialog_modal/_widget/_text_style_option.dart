@@ -8,9 +8,6 @@ final class _TextStyleOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
-    return TextStyleWidgetShowcaseOption(
-      onChanged: (textStyle) => viewModel.state.textStyle = textStyle,
-      checkboxOnChanged: (enabled, textStyle) => viewModel.state.textStyle = enabled ? textStyle : null,
-    );
+    return TextStyleWidgetShowcaseOption(onChanged: (textStyle) => viewModel.state.textStyle = textStyle);
   }
 }

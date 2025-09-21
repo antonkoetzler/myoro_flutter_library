@@ -8,9 +8,6 @@ final class _LabelTextStyleOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroRadioWidgetShowcaseScreenViewModel>();
 
-    return TextStyleWidgetShowcaseOption(
-      onChanged: (style) => viewModel.state.labelTextStyle = style,
-      checkboxOnChanged: (enabled, style) => viewModel.state.labelTextStyle = enabled ? style : null,
-    );
+    return TextStyleWidgetShowcaseOption(onChanged: (style) => viewModel.state.labelTextStyle = style);
   }
 }

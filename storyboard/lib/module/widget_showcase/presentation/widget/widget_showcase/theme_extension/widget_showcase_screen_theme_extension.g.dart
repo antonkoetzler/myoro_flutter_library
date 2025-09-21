@@ -20,6 +20,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
   WidgetShowcaseScreenThemeExtension copyWith({
     Color? color,
     EdgeInsets? padding,
+    TextStyle? widgetOptionsModalTitleTextStyle,
     IconData? widgetOptionsButtonIcon,
     double? widgetOptionsModalSpacing,
     EdgeInsets? widgetOptionsModalPadding,
@@ -30,6 +31,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
     return WidgetShowcaseScreenThemeExtension(
       color: color ?? self.color,
       padding: padding ?? self.padding,
+      widgetOptionsModalTitleTextStyle: widgetOptionsModalTitleTextStyle ?? self.widgetOptionsModalTitleTextStyle,
       widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? self.widgetOptionsButtonIcon,
       widgetOptionsModalSpacing: widgetOptionsModalSpacing ?? self.widgetOptionsModalSpacing,
       widgetOptionsModalPadding: widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
@@ -46,6 +48,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
         other.runtimeType == runtimeType &&
         other.color == self.color &&
         other.padding == self.padding &&
+        other.widgetOptionsModalTitleTextStyle == self.widgetOptionsModalTitleTextStyle &&
         other.widgetOptionsButtonIcon == self.widgetOptionsButtonIcon &&
         other.widgetOptionsModalSpacing == self.widgetOptionsModalSpacing &&
         other.widgetOptionsModalPadding == self.widgetOptionsModalPadding &&
@@ -59,6 +62,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
     return Object.hash(
       self.color,
       self.padding,
+      self.widgetOptionsModalTitleTextStyle,
       self.widgetOptionsButtonIcon,
       self.widgetOptionsModalSpacing,
       self.widgetOptionsModalPadding,
@@ -73,6 +77,7 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
       'WidgetShowcaseScreenThemeExtension(\n'
       '  color: ${self.color},\n'
       '  padding: ${self.padding},\n'
+      '  widgetOptionsModalTitleTextStyle: ${self.widgetOptionsModalTitleTextStyle},\n'
       '  widgetOptionsButtonIcon: ${self.widgetOptionsButtonIcon},\n'
       '  widgetOptionsModalSpacing: ${self.widgetOptionsModalSpacing},\n'
       '  widgetOptionsModalPadding: ${self.widgetOptionsModalPadding},\n'

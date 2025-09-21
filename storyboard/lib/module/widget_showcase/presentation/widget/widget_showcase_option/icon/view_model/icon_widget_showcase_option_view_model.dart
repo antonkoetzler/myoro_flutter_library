@@ -7,13 +7,13 @@ import 'package:storyboard/storyboard.dart';
 final class IconWidgetShowcaseOptionViewModel {
   IconWidgetShowcaseOptionViewModel(this._configuration) {
     _enabledController = ValueNotifier(_configuration.enabled ?? true)..addListener(_enabledControllerListener);
-    _iconController = MyoroSingularDropdownController(
-      configuration: MyoroSingularDropdownConfiguration(
+    _iconController = MyoroSingleDropdownController(
+      configuration: MyoroSingleDropdownConfiguration(
         label: 'Icon',
         allowItemClearing: false,
         selectedItemBuilder: (icon) => icon.name!.capitalized,
         onChanged: _configuration.iconOnChanged,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: kMyoroTestIcons.toSet,
           selectedItem: _configuration.selectedIcon,
           itemBuilder: (icon) {
@@ -49,9 +49,9 @@ final class IconWidgetShowcaseOptionViewModel {
     _configuration.iconSizeOnChanged?.call(_iconSize);
   }
 
-  /// [MyoroSingularDropdownController] of the [IconData] selector.
-  late final MyoroSingularDropdownController<IconData> _iconController;
-  MyoroSingularDropdownController<IconData> get iconController => _iconController;
+  /// [MyoroSingleDropdownController] of the [IconData] selector.
+  late final MyoroSingleDropdownController<IconData> _iconController;
+  MyoroSingleDropdownController<IconData> get iconController => _iconController;
   IconData? get icon => _iconController.selectedItem;
 
   /// Dispose function.

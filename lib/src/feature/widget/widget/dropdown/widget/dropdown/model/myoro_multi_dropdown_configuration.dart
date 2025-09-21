@@ -16,9 +16,9 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
     bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
     required MyoroMultiMenuConfiguration<T> menuConfiguration,
-    required MyoroDropdownConfigurationSelectedItemBuilder<T> selectedItemBuilder,
-    MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
-    MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    required MyoroDropdownSelectedItemBuilder<T> selectedItemBuilder,
+    MyoroMultiDropdownOnChanged<T>? onChanged,
+    MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged,
   }) {
     return MyoroMultiDropdownConfiguration._(
       label,
@@ -46,10 +46,10 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
   );
 
   /// Function executed when the selected item changes.
-  final MyoroMultiDropdownConfigurationOnChanged<T>? onChanged;
+  final MyoroMultiDropdownOnChanged<T>? onChanged;
 
   /// Function executed when the enabled/disabled checkbox is pressed.
-  final MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged;
+  final MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged;
 
   @override
   MyoroMultiDropdownConfiguration<T> copyWith({
@@ -59,10 +59,10 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
     bool? allowItemClearing,
     TextAlign? selectedItemTextAlign,
     MyoroMultiMenuConfiguration<T>? menuConfiguration,
-    MyoroDropdownConfigurationSelectedItemBuilder<T>? selectedItemBuilder,
-    MyoroMultiDropdownConfigurationOnChanged<T>? onChanged,
+    MyoroDropdownSelectedItemBuilder<T>? selectedItemBuilder,
+    MyoroMultiDropdownOnChanged<T>? onChanged,
     bool onChangedProvided = true,
-    MyoroMultiDropdownConfigurationCheckboxOnChanged<T>? checkboxOnChanged,
+    MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
   }) {
     return MyoroMultiDropdownConfiguration(

@@ -24,7 +24,7 @@ class MyoroDrawer extends StatelessWidget {
     final textTheme = context.textTheme;
     final themeExtension = this.themeExtension ?? MyoroDrawerThemeExtension.builder(colorScheme, textTheme);
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: InheritedProvider.value(
         value: configuration,

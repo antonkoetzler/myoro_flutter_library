@@ -21,7 +21,7 @@ final class MyoroFilePicker extends StatelessWidget {
     final textTheme = context.textTheme;
     final resolvedThemeExtension = themeExtension ?? MyoroFilePickerThemeExtension.builder(textTheme);
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: resolvedThemeExtension,
       child: InheritedProvider(create: (_) => MyoroFilePickerViewModel(configuration), child: const _Content()),
     );

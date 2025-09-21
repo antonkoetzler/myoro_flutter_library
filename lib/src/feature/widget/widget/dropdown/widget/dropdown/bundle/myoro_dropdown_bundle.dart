@@ -1,7 +1,7 @@
 // Standard dropdown.
 //
 // Barrel file that holds the implement for both
-// [MyoroSingularDropdown] and [MyoroMultiDropdown].
+// [MyoroSingleDropdown] and [MyoroMultiDropdown].
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +15,7 @@ part '../_widget/_input_trigger_area.dart';
 part '../_widget/_input_trigger_area_region.dart';
 part '../_widget/_menu.dart';
 part '../myoro_multi_dropdown.dart';
-part '../myoro_singular_dropdown.dart';
+part '../myoro_single_dropdown.dart';
 
 typedef _ViewModelType<T> =
     MyoroDropdownViewModel<

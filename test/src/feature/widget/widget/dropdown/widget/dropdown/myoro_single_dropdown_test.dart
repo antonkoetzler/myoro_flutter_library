@@ -5,8 +5,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   final items = List.generate(faker.randomGenerator.integer(10, min: 1), (int index) => 'Item #$index').toSet();
-  final configuration = MyoroSingularDropdownConfiguration(
-    menuConfiguration: MyoroSingularMenuConfiguration(
+  final configuration = MyoroSingleDropdownConfiguration(
+    menuConfiguration: MyoroSingleMenuConfiguration(
       request: () => items,
       itemBuilder: (item) => MyoroMenuItem(
         iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
@@ -19,18 +19,18 @@ void main() {
 
   Future<void> testCase(
     WidgetTester tester,
-    MyoroSingularDropdownConfiguration<String> Function() configurationBuilder,
-    Function(MyoroSingularDropdownController<String> controller) callback,
+    MyoroSingleDropdownConfiguration<String> Function() configurationBuilder,
+    Function(MyoroSingleDropdownController<String> controller) callback,
   ) async {
-    final controller = MyoroSingularDropdownController<String>(configuration: configurationBuilder());
-    await tester.pumpWidget(MyoroWidgetTester(child: MyoroSingularDropdown<String>(controller: controller)));
+    final controller = MyoroSingleDropdownController<String>(configuration: configurationBuilder());
+    await tester.pumpWidget(MyoroWidgetTester(child: MyoroSingleDropdown<String>(controller: controller)));
     await tester.pumpAndSettle();
-    expect(find.byType(MyoroSingularDropdown<String>), findsOneWidget);
+    expect(find.byType(MyoroSingleDropdown<String>), findsOneWidget);
     await callback(controller);
     controller.dispose();
   }
 
-  testWidgets('Selecting an item in the MyoroSingularDropdown', (tester) async {
+  testWidgets('Selecting an item in the MyoroSingleDropdown', (tester) async {
     await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
       controller,
     ) async {
@@ -42,7 +42,7 @@ void main() {
     });
   });
 
-  testWidgets('MyoroSingularDropdown with [MyoroDropdownConfiguration.checkboxOnChanged] provided', (tester) async {
+  testWidgets('MyoroSingleDropdown with [MyoroDropdownConfiguration.checkboxOnChanged] provided', (tester) async {
     var onChangedExecutedQuantity = 0;
 
     await testCase(tester, () => configuration.copyWith(checkboxOnChanged: (_, _) => onChangedExecutedQuantity += 1), (
@@ -62,33 +62,33 @@ void main() {
   });
 
   testWidgets(
-    'MyoroSingularDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.overlay]',
+    'MyoroSingleDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.overlay]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.overlay), (
         controller,
       ) async {
         controller.toggleMenu();
         await tester.pumpAndSettle();
-        expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
+        expect(find.byType(MyoroSingleMenu<String>), findsOneWidget);
       });
     },
   );
 
   testWidgets(
-    'MyoroSingularDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.expanding]',
+    'MyoroSingleDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.expanding]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
         controller,
       ) async {
         controller.toggleMenu();
         await tester.pumpAndSettle();
-        expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
+        expect(find.byType(MyoroSingleMenu<String>), findsOneWidget);
       });
     },
   );
 
   testWidgets(
-    'MyoroSingularDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.modal]',
+    'MyoroSingleDropdown with [MyoroDropdownConfiguration.menuTypeEnum] as [MyoroDropdownMenuTypeEnum.modal]',
     (tester) async {
       await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.modal), (
         controller,
@@ -96,7 +96,7 @@ void main() {
         controller.toggleMenu();
         await tester.pumpAndSettle();
         expect(find.byType(MyoroModal), findsOneWidget);
-        expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
+        expect(find.byType(MyoroSingleMenu<String>), findsOneWidget);
 
         // Get the connected (via [TapRegion.groupId]) [TapRegion]s of the dropdown.
         final allTapRegions = find.byType(TapRegion);
@@ -114,7 +114,7 @@ void main() {
     },
   );
 
-  testWidgets('MyoroSingularDrodpown with [MyoroDropdownConfiguration.allowItemClearing] as true', (tester) async {
+  testWidgets('MyoroSingleDrodpown with [MyoroDropdownConfiguration.allowItemClearing] as true', (tester) async {
     final items = List.generate(faker.randomGenerator.integer(10, min: 1), (index) => 'Item #$index').toSet();
 
     await testCase(
@@ -133,15 +133,13 @@ void main() {
     );
   });
 
-  testWidgets('Opening MyoroSingularDropdown menu, then closing it via _Menu\'s TapRegion.onTapOutside', (
-    tester,
-  ) async {
+  testWidgets('Opening MyoroSingleDropdown menu, then closing it via _Menu\'s TapRegion.onTapOutside', (tester) async {
     await testCase(tester, () => configuration.copyWith(menuTypeEnum: MyoroDropdownMenuTypeEnum.expanding), (
       controller,
     ) async {
       controller.toggleMenu();
       await tester.pumpAndSettle();
-      expect(find.byType(MyoroSingularMenu<String>), findsOneWidget);
+      expect(find.byType(MyoroSingleMenu<String>), findsOneWidget);
 
       // Get the connected (via [TapRegion.groupId]) [TapRegion]s of the dropdown.
       final allTapRegions = find.byType(TapRegion);
@@ -156,11 +154,11 @@ void main() {
       await tester.tapAt(Offset(allRects.first.center.dx, maxBottom + 10));
       await tester.pumpAndSettle();
 
-      expect(find.byType(MyoroSingularMenu<String>), findsNothing);
+      expect(find.byType(MyoroSingleMenu<String>), findsNothing);
     });
   });
 
-  testWidgets('MyoroSingularDropdown without MyoroSingularDropdown.configuration provided and it\'s didUpdateWidget', (
+  testWidgets('MyoroSingleDropdown without MyoroSingleDropdown.configuration provided and it\'s didUpdateWidget', (
     tester,
   ) async {
     final configurationNotifier = ValueNotifier(configuration);
@@ -168,12 +166,12 @@ void main() {
       MyoroWidgetTester(
         child: ValueListenableBuilder(
           valueListenable: configurationNotifier,
-          builder: (_, configuration, _) => MyoroSingularDropdown<String>(configuration: configuration),
+          builder: (_, configuration, _) => MyoroSingleDropdown<String>(configuration: configuration),
         ),
       ),
     );
     await tester.pumpAndSettle();
-    expect(find.byType(MyoroSingularDropdown<String>), findsOneWidget);
+    expect(find.byType(MyoroSingleDropdown<String>), findsOneWidget);
     configurationNotifier.value = configurationNotifier.value.copyWith(
       allowItemClearing: !configurationNotifier.value.allowItemClearing,
     );
@@ -181,10 +179,10 @@ void main() {
     configurationNotifier.dispose();
   });
 
-  testWidgets('MyoroSingularDropdown assertion case', (tester) async {
+  testWidgets('MyoroSingleDropdown assertion case', (tester) async {
     expect(
-      () => MyoroSingularDropdown<String>(
-        controller: MyoroSingularDropdownController(configuration: configuration),
+      () => MyoroSingleDropdown<String>(
+        controller: MyoroSingleDropdownController(configuration: configuration),
         configuration: configuration,
       ),
       throwsAssertionError,

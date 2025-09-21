@@ -12,10 +12,8 @@ final class _ItemContentBackgroundColorOption extends StatelessWidget {
 
     return ColorWidgetShowcaseOption(
       label: 'Item content background color',
-      enabled: itemContentBackgroundColor != null,
       selectedColor: itemContentBackgroundColor,
       onChanged: (color) => state.itemContentBackgroundColor = color,
-      checkboxOnChanged: (e, _) => state.itemContentBackgroundColor = e ? null : itemContentBackgroundColor,
     );
   }
 }

@@ -27,7 +27,6 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
     this.alignmentOnChanged,
     this.styleInitialValue,
     this.styleOnChanged,
-    this.styleCheckboxOnChanged,
   });
 
   /// Label of the [TextWidgetShowcaseOption].
@@ -52,7 +51,6 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
   /// [Text.style]
   final TextStyle? styleInitialValue;
   final TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged;
-  final TextWidgetShowcaseOptionTextStyleCheckboxOnChanged? styleCheckboxOnChanged;
 
   TextWidgetShowcaseOptionConfiguration copyWith({
     String? label,
@@ -71,8 +69,6 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
     bool styleInitialValueProvided = true,
     TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged,
     bool styleOnChangedProvided = true,
-    TextWidgetShowcaseOptionTextStyleCheckboxOnChanged? styleCheckboxOnChanged,
-    bool styleCheckboxOnChangedProvided = true,
   }) {
     return TextWidgetShowcaseOptionConfiguration(
       label: label ?? this.label,
@@ -86,8 +82,6 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
       alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? this.alignmentOnChanged) : null,
       styleInitialValue: styleInitialValueProvided ? (styleInitialValue ?? this.styleInitialValue) : null,
       styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? this.styleOnChanged) : null,
-      styleCheckboxOnChanged:
-          styleCheckboxOnChangedProvided ? (styleCheckboxOnChanged ?? this.styleCheckboxOnChanged) : null,
     );
   }
 }

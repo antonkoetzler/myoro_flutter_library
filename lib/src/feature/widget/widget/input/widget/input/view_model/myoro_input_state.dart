@@ -2,12 +2,19 @@ part of 'myoro_input_view_model.dart';
 
 /// State of [MyoroInputController].
 class MyoroInputState {
-  MyoroInputState(this._configuration, this._formatter) {
-    _enabledController = ValueNotifier(_configuration.enabled);
-    showClearTextButtonController = ValueNotifier<bool>(showClearTextButton);
-    if (_formatter != null && inputController.text.isEmpty) {
-      inputController.text = _formatter.initialText;
-    }
+  MyoroInputState(this._configuration, this._formatter)
+    : _showClearTextButtonNotifier = _configuration.showClearTextButton
+          ? ValueNotifier(
+              _configuration.textProvided
+                  ? _configuration.text.isNotEmpty
+                  : _configuration.controller?.text.isNotEmpty ?? false,
+            )
+          : null,
+
+      _enabledController = ValueNotifier(_configuration.enabled) {
+    final textProvided = _configuration.textProvided;
+    if (_formatter != null && !textProvided) controller.text = _formatter.initialText;
+    if (textProvided) controller.text = _configuration.text;
   }
 
   /// Configuration.
@@ -17,6 +24,7 @@ class MyoroInputState {
     if (_configuration == configuration) return;
     _configuration = configuration;
     _enabledController.value = configuration.enabled;
+    if (configuration.textProvided) controller.text = configuration.text;
   }
 
   /// Formatter.
@@ -24,21 +32,52 @@ class MyoroInputState {
   MyoroInputFormatter? get formatter => _formatter;
 
   /// Input controller of the [MyoroInput].
-  TextEditingController? _localInputController;
-  TextEditingController get inputController {
-    return configuration.controller ?? (_localInputController ??= TextEditingController());
+  TextEditingController? _localController;
+
+  /// [_localController] getter.
+  TextEditingController get controller {
+    return configuration.controller ?? (_localController ??= TextEditingController());
   }
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
-  late final ValueNotifier<bool> _enabledController;
-  ValueNotifier<bool> get enabledController => _enabledController;
-  bool get enabled => _enabledController.value;
+  final ValueNotifier<bool> _enabledController;
+
+  /// [_enabledController] getter.
+  ValueNotifier<bool> get enabledController {
+    return _enabledController;
+  }
+
+  /// Getter of [_enabledController]'s value.
+  bool get enabled {
+    return _enabledController.value;
+  }
+
+  /// [_enabledController] setter.
+  set enabled(bool enabled) {
+    _enabledController.value = enabled;
+  }
 
   /// [ValueNotifier] to keep track of whether or not to show
-  /// [_ClearTextButton] in [TextFormField.decoration.suffix].
-  late final ValueNotifier<bool> showClearTextButtonController;
+  /// the clear text button in [TextFormField]'s [InputDecoration.suffix].
+  final ValueNotifier<bool>? _showClearTextButtonNotifier;
+
+  /// [_showClearTextButtonNotifier] getter.
+  ValueNotifier<bool> get showClearTextButtonNotifier {
+    assert(
+      _configuration.showClearTextButton,
+      '[MyoroInputState.showClearTextButtonNotifier]: [_configuration.showClearTextButton] must be true.',
+    );
+    return _showClearTextButtonNotifier!;
+  }
+
+  /// Getter of [_showClearTextButtonNotifier]'s value.
   bool get showClearTextButton {
-    return configuration.showClearTextButton != false && inputController.text.isNotEmpty;
+    return showClearTextButtonNotifier.value;
+  }
+
+  /// [_showClearTextButtonNotifier] setter.
+  set showClearTextButton(bool showClearTextButton) {
+    _showClearTextButtonNotifier?.value = showClearTextButton;
   }
 }

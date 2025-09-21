@@ -14,19 +14,16 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
 
     final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final itemBorderRadius = menuThemeExtension.itemBorderRadius;
-    final backgroundColor = menuThemeExtension.backgroundColor;
 
-    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>().copyWith(
-      borderRadius: itemBorderRadius,
-      borderRadiusProvided: itemBorderRadius != null,
-      backgroundColor: backgroundColor,
-      backgroundColorProvided: backgroundColor != null && isSelected,
+    var buttonPrimaryVariantThemeExtension = MyoroButtonPrimaryVariantThemeExtension.builder(
+      context.isDarkMode,
+      context.colorScheme,
     );
-    final iconTextButtonThemeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>().copyWith(
+    buttonPrimaryVariantThemeExtension = buttonPrimaryVariantThemeExtension.copyWith(
       borderRadius: itemBorderRadius,
       borderRadiusProvided: itemBorderRadius != null,
-      backgroundColor: backgroundColor,
-      backgroundColorProvided: backgroundColor != null && isSelected,
+      backgroundIdleColor: buttonPrimaryVariantThemeExtension.backgroundHoverColor,
+      backgroundIdleColorProvided: isSelected,
     );
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
@@ -41,14 +38,14 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
         configuration: (buttonConfiguration ?? const MyoroButtonConfiguration()).copyWith(
           onTapUp: (details) => toggleItem(_item),
         ),
-        themeExtension: buttonThemeExtension,
+        themeExtension: MyoroButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension),
         builder: buttonBuilder,
       );
     }
 
     return MyoroIconTextButton(
       configuration: iconTextButtonConfiguration!.copyWith(onTapUp: (details) => toggleItem(_item)),
-      themeExtension: iconTextButtonThemeExtension,
+      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension),
     );
   }
 }

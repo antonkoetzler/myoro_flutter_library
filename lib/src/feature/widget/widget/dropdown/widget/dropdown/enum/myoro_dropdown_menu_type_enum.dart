@@ -1,8 +1,9 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum encapsulating all available [Widget] composition types of
-/// the dropdown menu in [MyoroSingularDropdown]/[MyoroMultiDropdown].
+/// the dropdown menu in [MyoroSingleDropdown]/[MyoroMultiDropdown].
 enum MyoroDropdownMenuTypeEnum {
   /// Displays below the dropdown's input and is an [Overlay].
   overlay,

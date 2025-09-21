@@ -1,14 +1,14 @@
 part of '../myoro_menus_widget_showcase_screen.dart';
 
-/// [MyoroSingularMenu] of [MyoroMenusWidgetShowcaseScreen].
-final class _SingularMenu extends StatelessWidget {
-  const _SingularMenu();
+/// [MyoroSingleMenu] of [MyoroMenusWidgetShowcaseScreen].
+final class _SingleMenu extends StatelessWidget {
+  const _SingleMenu();
 
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
-    return MyoroSingularMenu<String>(
-      configuration: viewModel.singluarMenuConfiguration(context),
+    return MyoroSingleMenu<String>(
+      configuration: viewModel.singleMenuConfiguration(context),
       themeExtension: viewModel.buildThemeExtension(context),
     );
   }

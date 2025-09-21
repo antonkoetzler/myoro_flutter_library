@@ -37,7 +37,7 @@ class MyoroDialogModal extends StatelessWidget {
     final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
     final spacing = modalThemeExtension.spacing ?? 0;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: dialogModalThemeExtension,
       child: Column(
         spacing: spacing,

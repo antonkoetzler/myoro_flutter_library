@@ -12,8 +12,6 @@ final class _ErrorBorderColorOption extends StatelessWidget {
       label: 'Error border color',
       selectedColor: viewModel.state.errorBorderColor,
       onChanged: (color) => viewModel.state.errorBorderColor = color,
-      checkboxOnChanged:
-          (enabled, _) => viewModel.state.errorBorderColor = enabled ? null : viewModel.state.errorBorderColor,
     );
   }
 }

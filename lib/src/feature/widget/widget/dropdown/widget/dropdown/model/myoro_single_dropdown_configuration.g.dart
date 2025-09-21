@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'myoro_singular_dropdown_configuration.dart';
+part of 'myoro_single_dropdown_configuration.dart';
 
 // **************************************************************************
 // MyoroModelGenerator
@@ -8,17 +8,17 @@ part of 'myoro_singular_dropdown_configuration.dart';
 
 // coverage:ignore-file
 
-/// Apply this mixin to [MyoroSingularDropdownConfiguration] once the code is generated.
+/// Apply this mixin to [MyoroSingleDropdownConfiguration] once the code is generated.
 ///
 /// ```dart
-/// class MyoroSingularDropdownConfiguration<T> with _$MyoroSingularDropdownConfigurationMixin<T> {}
+/// class MyoroSingleDropdownConfiguration<T> with _$MyoroSingleDropdownConfigurationMixin<T> {}
 /// ```
-mixin _$MyoroSingularDropdownConfigurationMixin<T> {
-  MyoroSingularDropdownConfiguration<T> get self => this as MyoroSingularDropdownConfiguration<T>;
+mixin _$MyoroSingleDropdownConfigurationMixin<T> {
+  MyoroSingleDropdownConfiguration<T> get self => this as MyoroSingleDropdownConfiguration<T>;
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroSingularDropdownConfiguration<T> &&
+    return other is MyoroSingleDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.onChanged == self.onChanged &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
@@ -48,7 +48,7 @@ mixin _$MyoroSingularDropdownConfigurationMixin<T> {
 
   @override
   String toString() =>
-      'MyoroSingularDropdownConfiguration<T>(\n'
+      'MyoroSingleDropdownConfiguration<T>(\n'
       '  onChanged: ${self.onChanged},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  label: ${self.label},\n'

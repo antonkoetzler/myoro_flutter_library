@@ -1,6 +1,6 @@
 part of 'bundle/myoro_menu_bundle.dart';
 
-/// Singular selectable menu.
+/// Multi selectable menu.
 final class MyoroMultiMenu<T> extends StatefulWidget {
   const MyoroMultiMenu({super.key, this.controller, this.configuration, this.themeExtension})
     : assert(

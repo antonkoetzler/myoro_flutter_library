@@ -31,6 +31,6 @@ class _Base extends StatelessWidget {
       ],
     );
 
-    return MyoroSingularThemeExtensionWrapper(themeExtension: themeExtension, child: child);
+    return MyoroSingleThemeExtensionWrapper(themeExtension: themeExtension, child: child);
   }
 }

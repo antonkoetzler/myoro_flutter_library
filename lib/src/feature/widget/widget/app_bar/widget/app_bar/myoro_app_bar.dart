@@ -39,7 +39,7 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
     final backgroundColor = themeExtension.backgroundColor;
     final contentPadding = themeExtension.contentPadding;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: Column(
         mainAxisSize: MainAxisSize.min,

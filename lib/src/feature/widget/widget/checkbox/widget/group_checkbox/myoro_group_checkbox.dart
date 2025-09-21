@@ -55,7 +55,7 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
     final direction = _configuration.direction;
     final onChanged = _configuration.onChanged;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: ValueListenableBuilder(
         valueListenable: _controller,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Widget showcase option to select a [Axis] from a [MyoroSingularDropdown].
+/// Widget showcase option to select a [Axis] from a [MyoroSingleDropdown].
 final class AxisWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Direction';
   static const enabledDefaultValue = true;
@@ -20,20 +20,20 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroDropdownControllerState.enabled]
   final bool enabled;
 
-  /// Initially selected [Axis] of the [MyoroSingularDropdown].
+  /// Initially selected [Axis] of the [MyoroSingleDropdown].
   final Axis initialDirection;
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
-  final MyoroSingularDropdownConfigurationOnChanged<Axis> onChanged;
+  /// [MyoroSingleDropdownConfiguration.onChanged]
+  final MyoroSingleDropdownOnChanged<Axis> onChanged;
 
   @override
   Widget build(_) {
-    return MyoroSingularDropdown<Axis>(
-      configuration: MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdown<Axis>(
+      configuration: MyoroSingleDropdownConfiguration(
         label: label,
         selectedItemBuilder: _axisName,
         allowItemClearing: false,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: Axis.values.toSet,
           selectedItem: initialDirection,
           itemBuilder: (axis) {

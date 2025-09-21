@@ -24,7 +24,7 @@ class MyoroCard extends StatelessWidget {
     final themeExtension = this.themeExtension ?? MyoroCardThemeExtension.builder(colorScheme, textTheme);
     final titleCardSpacing = themeExtension.titleCardSpacing ?? 0;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,
       child: Column(
         mainAxisSize: MainAxisSize.min,

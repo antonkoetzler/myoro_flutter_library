@@ -17,8 +17,8 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
 
-    return MyoroSingularDropdown<TextAlign>(
-      configuration: MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdown<TextAlign>(
+      configuration: MyoroSingleDropdownConfiguration(
         label: 'Indicator text alignment',
         allowItemClearing: true,
         selectedItemBuilder:
@@ -30,7 +30,7 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
                     )
                     .key,
         onChanged: (alignment) => viewModel.state.indicatorTextAlignment = alignment,
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: () => _alignments.values.toSet(),
           selectedItem: viewModel.state.indicatorTextAlignment,
           itemBuilder: (alignment) {

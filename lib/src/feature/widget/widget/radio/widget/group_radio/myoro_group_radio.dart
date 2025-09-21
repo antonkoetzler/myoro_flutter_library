@@ -38,7 +38,7 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
     final spacing = _themeExtension.spacing ?? 0;
     final runSpacing = _themeExtension.runSpacing ?? 0;
 
-    return MyoroSingularThemeExtensionWrapper(
+    return MyoroSingleThemeExtensionWrapper(
       themeExtension: _themeExtension,
       child: ValueListenableBuilder(
         valueListenable: _controller,

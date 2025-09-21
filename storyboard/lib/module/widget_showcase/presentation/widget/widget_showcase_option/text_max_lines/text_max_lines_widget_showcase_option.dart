@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Widget showcase option to choose a [Text.maxLines] via [MyoroSingularDropdown].
+/// Widget showcase option to choose a [Text.maxLines] via [MyoroSingleDropdown].
 final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Max lines';
   static const allowItemClearingDefaultValue = MyoroDropdownConfiguration.allowItemClearingDefaultValue;
@@ -15,27 +15,27 @@ final class TextMaxLinesWidgetShowcaseOption extends StatelessWidget {
     required this.onChanged,
   });
 
-  /// [MyoroSingularDropdownConfiguration.label]
+  /// [MyoroSingleDropdownConfiguration.label]
   final String label;
 
-  /// [MyoroSingularDropdownConfiguration.allowItemClearing]
+  /// [MyoroSingleDropdownConfiguration.allowItemClearing]
   final bool allowItemClearing;
 
-  /// Initially selected item of the [MyoroSingularDropdown].
+  /// Initially selected item of the [MyoroSingleDropdown].
   final int selectedItem;
 
-  /// [MyoroSingularDropdownConfiguration.onChanged]
-  final MyoroSingularDropdownConfigurationOnChanged<int> onChanged;
+  /// [MyoroSingleDropdownConfiguration.onChanged]
+  final MyoroSingleDropdownOnChanged<int> onChanged;
 
   @override
   Widget build(context) {
-    return MyoroSingularDropdown<int>(
-      configuration: MyoroSingularDropdownConfiguration(
+    return MyoroSingleDropdown<int>(
+      configuration: MyoroSingleDropdownConfiguration(
         label: label,
         allowItemClearing: allowItemClearing,
         onChanged: onChanged,
         selectedItemBuilder: (value) => value.toString(),
-        menuConfiguration: MyoroSingularMenuConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
           request: () => List.generate(10, (int index) => index + 1).toSet(),
           selectedItem: selectedItem,
           itemBuilder: (value) {

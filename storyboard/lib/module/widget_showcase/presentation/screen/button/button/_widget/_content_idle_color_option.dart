@@ -12,8 +12,6 @@ final class _ContentIdleColorOption extends StatelessWidget {
       label: 'Content idle color',
       selectedColor: viewModel.state.contentIdleColor,
       onChanged: (color) => viewModel.state.contentIdleColor = color,
-      checkboxOnChanged:
-          (enabled, _) => viewModel.state.contentIdleColor = enabled ? null : viewModel.state.contentIdleColor,
     );
   }
 }
