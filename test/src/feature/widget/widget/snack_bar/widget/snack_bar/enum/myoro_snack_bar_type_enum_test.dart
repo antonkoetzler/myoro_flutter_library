@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -5,13 +6,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   testWidgets('MyoroSnackBarTypeEnum.getColor', (tester) async {
     late final BuildContext context;
-    late final MyoroSnackBarThemeExtension themeExtension;
+    final isDarkMode = faker.randomGenerator.boolean();
+    final colorScheme = createMyoroColorScheme(isDarkMode);
+    final textTheme = createMyoroTextTheme(isDarkMode);
+    final themeExtension = MyoroSnackBarThemeExtension.builder(colorScheme, textTheme);
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: Builder(
           builder: (buildContext) {
             context = buildContext;
-            themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
             return const SizedBox.shrink();
           },
         ),
