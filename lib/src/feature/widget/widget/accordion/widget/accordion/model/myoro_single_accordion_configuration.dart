@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
@@ -16,6 +17,35 @@ class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T
     required super.items,
     this.selectedItem,
   });
+
+  // coverage:ignore-start
+  factory MyoroSingleAccordionConfiguration.fake({required Set<T> items, T? selectedItem}) {
+    return MyoroSingleAccordionConfiguration(
+      thumbVisibility: faker.randomGenerator.boolean(),
+      titleBuilder: (_, _) => const SizedBox.shrink(),
+      contentBuilder: (_, _) => const SizedBox.shrink(),
+      items: items,
+      selectedItem: selectedItem,
+    );
+  }
+  // coverage:ignore-end
+
+  MyoroSingleAccordionConfiguration<T> copyWith({
+    bool? thumbVisibility,
+    MyoroAccordionBuilder<T>? titleBuilder,
+    MyoroAccordionBuilder<T>? contentBuilder,
+    Set<T>? items,
+    T? selectedItem,
+    bool selectedItemProvided = true,
+  }) {
+    return MyoroSingleAccordionConfiguration(
+      thumbVisibility: thumbVisibility ?? this.thumbVisibility,
+      titleBuilder: titleBuilder ?? this.titleBuilder,
+      contentBuilder: contentBuilder ?? this.contentBuilder,
+      items: items ?? this.items,
+      selectedItem: selectedItemProvided ? (selectedItem ?? this.selectedItem) : null,
+    );
+  }
 
   /// Selected item.
   final T? selectedItem;

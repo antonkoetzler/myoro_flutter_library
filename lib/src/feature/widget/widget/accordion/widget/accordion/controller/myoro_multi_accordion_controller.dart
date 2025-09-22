@@ -4,4 +4,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 class MyoroMultiAccordionController<T> extends MyoroAccordionController<T> {
   MyoroMultiAccordionController({required MyoroMultiAccordionConfiguration<T> configuration})
     : super(configuration: configuration, selectedItems: configuration.selectedItems);
+
+  /// Getter of the selected items.
+  Set<T> get selectedItems {
+    return viewModel.state.selectedItems;
+  }
 }
