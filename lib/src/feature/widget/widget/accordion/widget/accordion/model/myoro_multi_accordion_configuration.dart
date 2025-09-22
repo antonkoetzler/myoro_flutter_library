@@ -9,7 +9,7 @@ part 'myoro_multi_accordion_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroMultiAccordionConfiguration<T> extends MyoroAccordionConfiguration<T>
-    with _$MyoroMultiAccordionConfigurationMixin {
+    with _$MyoroMultiAccordionConfigurationMixin<T> {
   const MyoroMultiAccordionConfiguration({
     super.thumbVisibility,
     required super.titleBuilder,

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -12,6 +13,9 @@ part 'myoro_button_secondary_variant_theme_extension.g.dart';
 class MyoroButtonSecondaryVariantThemeExtension
     extends MyoroButtonVariantThemeExtension<MyoroButtonSecondaryVariantThemeExtension>
     with _$MyoroButtonSecondaryVariantThemeExtensionMixin {
+  static const secondaryBackgroundHoverColorFactor = 0.7;
+  static const secondaryBackgroundTapColorFactor = 0.5;
+
   const MyoroButtonSecondaryVariantThemeExtension({
     super.backgroundColor,
     super.backgroundIdleColor,
@@ -29,10 +33,28 @@ class MyoroButtonSecondaryVariantThemeExtension
     super.borderTapColor,
   });
 
-  factory MyoroButtonSecondaryVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
-    const secondaryBackgroundHoverColorFactor = 0.7;
-    const secondaryBackgroundTapColorFactor = 0.5;
+  // coverage:ignore-start
+  factory MyoroButtonSecondaryVariantThemeExtension.fake() {
+    return MyoroButtonSecondaryVariantThemeExtension(
+      backgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      borderColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    );
+  }
+  // coverage:ignore-end
 
+  factory MyoroButtonSecondaryVariantThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme) {
     final primary = colorScheme.primary;
     final onPrimary = colorScheme.onPrimary;
 

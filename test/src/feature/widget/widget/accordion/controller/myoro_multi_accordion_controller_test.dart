@@ -6,6 +6,7 @@ void main() {
   final items = List.generate(faker.randomGenerator.integer(10, min: 1), (index) => 'Item #$index').toSet();
 
   final controller = MyoroMultiAccordionController(configuration: MyoroMultiAccordionConfiguration.fake(items: items));
+  controller.configuration; // <-- Code coverage.
 
   tearDownAll(controller.dispose);
 

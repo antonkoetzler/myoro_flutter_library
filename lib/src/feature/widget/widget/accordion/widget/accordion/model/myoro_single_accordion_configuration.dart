@@ -9,7 +9,7 @@ part 'myoro_single_accordion_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T>
-    with _$MyoroSingleAccordionConfigurationMixin {
+    with _$MyoroSingleAccordionConfigurationMixin<T> {
   const MyoroSingleAccordionConfiguration({
     super.thumbVisibility,
     required super.titleBuilder,
@@ -22,8 +22,8 @@ class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T
   factory MyoroSingleAccordionConfiguration.fake({required Set<T> items, T? selectedItem}) {
     return MyoroSingleAccordionConfiguration(
       thumbVisibility: faker.randomGenerator.boolean(),
-      titleBuilder: (_, _) => const SizedBox.shrink(),
-      contentBuilder: (_, _) => const SizedBox.shrink(),
+      titleBuilder: (T item, _) => const SizedBox.shrink(),
+      contentBuilder: (T item, _) => const SizedBox.shrink(),
       items: items,
       selectedItem: selectedItem,
     );
