@@ -17,7 +17,7 @@ class MyoroPieGraph extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = this.themeExtension ?? context.read<MyoroPieGraphThemeExtension>();
+    final themeExtension = this.themeExtension ?? MyoroPieGraphThemeExtension.builder(context.colorScheme);
 
     return MyoroSingleThemeExtensionWrapper(
       themeExtension: themeExtension,

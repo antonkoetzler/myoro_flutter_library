@@ -37,7 +37,7 @@ void main() {
     viewModel.onTapUp(
       TapUpDetails(kind: PointerDeviceKind.values[faker.randomGenerator.integer(PointerDeviceKind.values.length)]),
     );
-    expect(viewModel.state.tapStatus.isIdle, isTrue);
+    expect(viewModel.state.tapStatus.isHover, isTrue);
     expect(onTapUpExecuted, isTrue);
   });
 

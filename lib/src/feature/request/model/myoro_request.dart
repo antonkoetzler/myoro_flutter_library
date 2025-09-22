@@ -12,22 +12,15 @@ part 'myoro_request.g.dart';
 @myoroModel
 class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   static const statusDefaultValue = MyoroRequestEnum.idle;
-  static const errorMessageDefaultValue = kMyoroEmptyString;
 
-  const MyoroRequest({this.status = statusDefaultValue, this.errorMessage = errorMessageDefaultValue, this.data})
-    : assert(
-        !(status == MyoroRequestEnum.error && errorMessage.length == 0),
-        '[MyoroRequest<T>]: [status] cannot be [MyoroRequestEnum] when [errorMessage] is null.',
-      );
+  const MyoroRequest({this.status = statusDefaultValue, this.errorMessage, this.data});
 
   // coverage:ignore-start
   factory MyoroRequest.fake({T? data}) {
     final status = MyoroRequestEnum.fake();
     return MyoroRequest(
       status: status,
-      errorMessage: status.isError || faker.randomGenerator.boolean()
-          ? faker.lorem.sentence()
-          : errorMessageDefaultValue,
+      errorMessage: status.isError || faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
       data: data,
     );
   }
@@ -37,7 +30,7 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   final MyoroRequestEnum status;
 
   /// Error message when [status] is [MyoroRequestEnum.error].
-  final String errorMessage;
+  final String? errorMessage;
 
   /// Data generated from
   final T? data;

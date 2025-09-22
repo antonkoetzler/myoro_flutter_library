@@ -17,6 +17,8 @@ final class _Dropdown<T, V extends _ViewModelType<T>> extends StatefulWidget {
 final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdown<T, V>> {
   V get _viewModel => widget._viewModel;
 
+  BuildContext? _context;
+
   MyoroDropdownThemeExtension get _themeExtension {
     final colorScheme = context.colorScheme;
     return widget._themeExtension ?? MyoroDropdownThemeExtension.builder(colorScheme);
@@ -44,38 +46,44 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
   Widget build(context) {
     final spacing = _themeExtension.spacing ?? _themeExtension.spacing ?? 0;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
-      child: Provider.value(
-        value: _viewModel,
-        child: RepaintBoundary(
-          child: ValueListenableBuilder(
-            valueListenable: _viewModel.state.inputSizeNotifier,
-            builder: (_, Size? inputSize, _) => Row(
-              spacing: spacing,
-              crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
-              children: [
-                if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
-                  SizedBox(height: inputSize?.height, child: _Checkbox<T, V>()),
-                ],
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Flexible(child: _Input<T, V>()),
-                      if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
-                        ValueListenableBuilder(
-                          valueListenable: _viewModel.state.showingMenuNotifier,
-                          builder: (_, bool showBasicMenu, _) =>
-                              !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, V>()),
-                        ),
-                      ],
+    return Provider.value(
+      value: _viewModel,
+      child: MyoroSingleThemeExtensionWrapper(
+        themeExtension: _themeExtension,
+        child: Builder(
+          builder: (context) {
+            _context = context;
+
+            return RepaintBoundary(
+              child: ValueListenableBuilder(
+                valueListenable: _viewModel.state.inputSizeNotifier,
+                builder: (_, Size? inputSize, _) => Row(
+                  spacing: spacing,
+                  crossAxisAlignment: inputSize != null ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+                  children: [
+                    if (_viewModel.state.configuration.checkboxOnChangedNotNull) ...[
+                      SizedBox(height: inputSize?.height, child: _Checkbox<T, V>()),
                     ],
-                  ),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(child: _Input<T, V>()),
+                          if (_viewModel.state.configuration.menuTypeEnum.isExpanding) ...[
+                            ValueListenableBuilder(
+                              valueListenable: _viewModel.state.showingMenuNotifier,
+                              builder: (_, bool showBasicMenu, _) =>
+                                  !showBasicMenu ? const SizedBox.shrink() : Flexible(child: _Menu<T, V>()),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -94,6 +102,6 @@ final class _DropdownState<T, V extends _ViewModelType<T>> extends State<_Dropdo
 
   void _showingMenuNotifierListener() {
     if (!mounted) return;
-    if (_viewModel.state.showingMenu) _Menu.showModal(context, _viewModel);
+    if (_viewModel.state.showingMenu) _Menu.showModal(_context!, _viewModel);
   }
 }

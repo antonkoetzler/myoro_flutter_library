@@ -6,8 +6,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   test('MyoroGroupRadioThemeExtension.builder', () {
     const themeExtension = MyoroGroupRadioThemeExtension.builder();
-    expect(themeExtension.spacing == 5, isTrue);
-    expect(themeExtension.runSpacing == 5, isTrue);
+    expect(themeExtension.spacing, kMyoroMultiplier);
+    expect(themeExtension.runSpacing, kMyoroMultiplier);
   });
 
   test('MyoroGroupRadioThemeExtension.lerp', () {

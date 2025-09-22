@@ -25,7 +25,9 @@ void main() {
             return GestureDetector(
               key: gestureDetectorKey,
               onTapUp: (_) {
-                context.showSnackBar(snackBar: MyoroSnackBar(configuration: configurationBuilder(MyoroSnackBarConfiguration.fake())));
+                context.showSnackBar(
+                  snackBar: MyoroSnackBar(configuration: configurationBuilder(MyoroSnackBarConfiguration.fake())),
+                );
               },
             );
           },
@@ -43,7 +45,10 @@ void main() {
   }
 
   testWidgets('MyoroSnackBar open and close functionalities', (tester) async {
-    await testCase(tester, (configuration) => configuration.copyWith(showCloseButton: true), (gestureDetectorKey, themeExtension) async {
+    await testCase(tester, (configuration) => configuration.copyWith(showCloseButton: true), (
+      gestureDetectorKey,
+      themeExtension,
+    ) async {
       // Open the snack bar.
       await openSnackBar(tester, gestureDetectorKey);
       expect(find.byType(MyoroSnackBar), findsOneWidget);
@@ -57,7 +62,10 @@ void main() {
 
   testWidgets('MyoroSnackBar with MyoroSnackBarConfiguration.message', (tester) async {
     final message = faker.lorem.word();
-    await testCase(tester, (configuration) => configuration.copyWith(message: message, childProvided: false), (gestureDetectorKey, themeExtension) async {
+    await testCase(tester, (configuration) => configuration.copyWith(message: message, childProvided: false), (
+      gestureDetectorKey,
+      themeExtension,
+    ) async {
       await openSnackBar(tester, gestureDetectorKey);
       expect(find.text(message), findsOneWidget);
     });
@@ -65,7 +73,10 @@ void main() {
 
   testWidgets('MyoroSnackBar with MyoroSnackBarConfiguration.child', (tester) async {
     final child = Text(faker.lorem.word());
-    await testCase(tester, (configuration) => configuration.copyWith(child: child, message: ''), (gestureDetectorKey, themeExtension) async {
+    await testCase(tester, (configuration) => configuration.copyWith(child: child, message: ''), (
+      gestureDetectorKey,
+      themeExtension,
+    ) async {
       await openSnackBar(tester, gestureDetectorKey);
       expect(find.byWidget(child), findsOneWidget);
     });

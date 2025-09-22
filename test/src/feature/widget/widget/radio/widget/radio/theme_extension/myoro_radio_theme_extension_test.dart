@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -29,10 +27,10 @@ void main() {
         lerpedThemeExtension.labelTextStyle,
         TextStyle.lerp(themeExtension1.labelTextStyle, themeExtension2.labelTextStyle, i),
       );
-      expect(lerpedThemeExtension.spacing, lerpDouble(themeExtension1.spacing, themeExtension2.spacing, i));
+      expect(lerpedThemeExtension.spacing, myoroDoubleLerp(themeExtension1.spacing, themeExtension2.spacing, i));
       expect(
         lerpedThemeExtension.splashRadius,
-        lerpDouble(themeExtension1.splashRadius, themeExtension2.splashRadius, i),
+        myoroDoubleLerp(themeExtension1.splashRadius, themeExtension2.splashRadius, i),
       );
     }
   });

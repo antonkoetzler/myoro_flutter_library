@@ -91,7 +91,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(onErrorExecuted, isTrue);
     expect(formNotifier.request.status.isError, isTrue);
-    expect(formNotifier.request.errorMessage.isEmpty, isTrue);
+    expect(formNotifier.request.errorMessage, kMyoroEmptyString);
     onErrorExecuted = false;
 
     // Success case.

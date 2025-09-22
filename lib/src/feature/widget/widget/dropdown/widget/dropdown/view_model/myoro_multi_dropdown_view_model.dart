@@ -53,7 +53,7 @@ final class MyoroMultiDropdownViewModel<T>
     final menuBorder = dropdownThemeExtension.menuBorder;
     final menuBorderRadius = dropdownThemeExtension.menuBorderRadius;
 
-    final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>().copyWith(
+    final menuThemeExtension = MyoroMenuThemeExtension.builder(context.colorScheme, context.textTheme).copyWith(
       border: menuBorder,
       borderProvided: menuBorder != null,
       borderRadius: menuBorderRadius,

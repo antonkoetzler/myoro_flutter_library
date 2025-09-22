@@ -53,10 +53,6 @@ void main() {
         Color.lerp(themeExtension1.backgroundTapColor, themeExtension2.backgroundTapColor, i),
       );
       expect(
-        lerpedThemeExtension.contentColor,
-        Color.lerp(themeExtension1.contentColor, themeExtension2.contentColor, i),
-      );
-      expect(
         lerpedThemeExtension.contentIdleColor,
         Color.lerp(themeExtension1.contentIdleColor, themeExtension2.contentIdleColor, i),
       );
@@ -73,7 +69,6 @@ void main() {
         lerpedThemeExtension.borderRadius,
         BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
-      expect(lerpedThemeExtension.borderColor, Color.lerp(themeExtension1.borderColor, themeExtension2.borderColor, i));
       expect(
         lerpedThemeExtension.borderIdleColor,
         Color.lerp(themeExtension1.borderIdleColor, themeExtension2.borderIdleColor, i),

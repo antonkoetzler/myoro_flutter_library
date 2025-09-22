@@ -11,6 +11,7 @@ void main() {
     final colorScheme = createMyoroColorScheme(isDarkMode);
     final textTheme = createMyoroTextTheme(isDarkMode);
     final themeExtension = MyoroInputThemeExtension.builder(colorScheme, textTheme);
+    expect(themeExtension.border, null);
     expect(
       themeExtension.underlinedBorder,
       UnderlineInputBorder(
@@ -28,14 +29,16 @@ void main() {
     expect(themeExtension.primaryColor, colorScheme.primary);
     expect(themeExtension.errorBorderColor, colorScheme.error);
     expect(themeExtension.cursorHeight, 20);
+    expect(themeExtension.cursorHeight, 20);
     expect(themeExtension.contentPadding, const EdgeInsets.only(top: 10, bottom: 10, left: 8, right: 5));
     expect(themeExtension.disabledOpacity, 0.5);
     expect(themeExtension.inputTextStyle, textTheme.bodyMedium!);
-    expect(themeExtension.labelTextStyle, textTheme.headlineSmall!);
+    expect(themeExtension.labelTextStyle, textTheme.headlineMedium!);
     expect(themeExtension.labelBehavior, FloatingLabelBehavior.always);
     expect(themeExtension.spacing, 10);
     expect(themeExtension.clearTextButtonPadding, const EdgeInsets.fromLTRB(5, 5, 6.5, 5));
     expect(themeExtension.clearTextButtonIcon, Icons.close);
+    expect(themeExtension.clearTextButtonIconSize, kMyoroMultiplier * 4);
   });
 
   test('MyoroInputThemeExtension.lerp', () {

@@ -12,6 +12,7 @@ void main() {
     final themeExtension = MyoroSnackBarThemeExtension.builder(colorScheme, textTheme);
     await tester.pumpWidget(
       MyoroWidgetTester(
+        themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
         child: Builder(
           builder: (buildContext) {
             context = buildContext;

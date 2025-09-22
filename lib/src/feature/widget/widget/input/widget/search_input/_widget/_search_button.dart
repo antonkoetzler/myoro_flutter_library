@@ -9,10 +9,13 @@ final class _SearchButton<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final inputThemeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
-    final secondaryButtonThemeExtension = context.resolveThemeExtension<MyoroButtonSecondaryVariantThemeExtension>();
+    final secondaryButtonThemeExtension = MyoroButtonSecondaryVariantThemeExtension.builder(
+      context.isDarkMode,
+      context.colorScheme,
+    );
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
 
-    final circularLoaderThemeExtension = context.resolveThemeExtension<MyoroCircularLoaderThemeExtension>();
+    final circularLoaderThemeExtension = MyoroCircularLoaderThemeExtension.builder(context.colorScheme);
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(viewModel)),

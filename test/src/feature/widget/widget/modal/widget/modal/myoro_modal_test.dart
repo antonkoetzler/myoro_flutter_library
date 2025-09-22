@@ -11,12 +11,14 @@ void main() {
     Function(MyoroModalThemeExtension)? callback,
   }) async {
     final gestureDetectorKey = GlobalKey();
-    late final MyoroModalThemeExtension themeExtension;
+    final isDarkMode = faker.randomGenerator.boolean();
+    final colorScheme = createMyoroColorScheme(isDarkMode);
+    final textTheme = createMyoroTextTheme(isDarkMode);
+    final themeExtension = MyoroModalThemeExtension.builder(colorScheme, textTheme);
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: Builder(
           builder: (context) {
-            themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
             return GestureDetector(
               key: gestureDetectorKey,
               onTapDown: (_) async {

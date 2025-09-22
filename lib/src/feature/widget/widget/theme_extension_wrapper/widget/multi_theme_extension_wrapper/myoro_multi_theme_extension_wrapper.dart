@@ -3,11 +3,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [Widget] that adds multiple [ThemeExtension]s to the scope of [child].
 class MyoroMultiThemeExtensionWrapper extends StatelessWidget {
-  const MyoroMultiThemeExtensionWrapper({super.key, required this.themeExtensions, required this.child})
-    : assert(themeExtensions.length > 0, '[MyoroMultiThemeExtensionWrapper]: [themeExtensions] cannot be empty.');
+  const MyoroMultiThemeExtensionWrapper({super.key, required this.themeExtensions, required this.child});
 
   /// [ThemeExtension]s to add.
-  final List<ThemeExtension> themeExtensions;
+  final List<ThemeExtension<dynamic>> themeExtensions;
 
   /// [Widget] whose scope will have [themeExtensions].
   final Widget child;

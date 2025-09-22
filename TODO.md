@@ -1,5 +1,6 @@
 # TODO
 
+- (**IN PROGRESS**) Fix all tests and get back 100% coverage
 - Storyboard
   - Fix all bugs
   - Remove redundant `checkboxOnChanged` fields in widget showcase option `Widget`s
@@ -9,7 +10,6 @@
 - `MyoroGradientScroll`
 - `MyoroLocationInput`
 - `MyoroButtonMenu`
-- Bring back copyWith with `@myoroModel` in MFA from the dead
 - GitHub pages
 - Rename storyboard to example
 - Create docs HTML script

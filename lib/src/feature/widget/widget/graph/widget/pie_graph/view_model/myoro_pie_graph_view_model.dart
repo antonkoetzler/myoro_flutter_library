@@ -11,7 +11,7 @@ class MyoroPieGraphViewModel {
 
   /// Creates the sections of the [MyoroPieGraph].
   List<PieChartSectionData> createSections(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
+    final themeExtension = MyoroPieGraphThemeExtension.builder(context.colorScheme);
     return state.configuration.items.map<PieChartSectionData>((MyoroPieGraphItem item) {
       return PieChartSectionData(
         showTitle: false,

@@ -14,7 +14,7 @@ void main() {
     expect(themeExtension.primaryColor, colorScheme.primary);
     expect(themeExtension.borderRadius, BorderRadius.circular(kMyoroBorderRadius));
     expect(themeExtension.border, Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary));
-    expect(themeExtension.padding, const EdgeInsets.all(5));
+    expect(themeExtension.padding, const EdgeInsets.all(kMyoroMultiplier));
     expect(themeExtension.spacing, 10);
     expect(themeExtension.titleTextStyle, textTheme.titleSmall!);
     expect(themeExtension.closeButtonIconConfiguration, const MyoroIconConfiguration(icon: Icons.close, size: 20));
@@ -53,13 +53,15 @@ void main() {
 
   testWidgets('MyoroModalThemeExtension.constraints', (tester) async {
     late final BuildContext context;
-    late final MyoroModalThemeExtension themeExtension;
+    final isDarkMode = faker.randomGenerator.boolean();
+    final colorScheme = createMyoroColorScheme(isDarkMode);
+    final textTheme = createMyoroTextTheme(isDarkMode);
+    final themeExtension = MyoroModalThemeExtension.builder(colorScheme, textTheme);
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: Builder(
           builder: (buildContext) {
             context = buildContext;
-            themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
             return const SizedBox.shrink();
           },
         ),
@@ -68,7 +70,7 @@ void main() {
     await tester.pumpAndSettle();
     final screenSize = MediaQuery.of(context).size;
     expect(
-      themeExtension.constraints,
+      themeExtension.getDefaultConstraints(context),
       BoxConstraints(maxWidth: screenSize.width * 0.8, maxHeight: screenSize.height * 0.5),
     );
   });

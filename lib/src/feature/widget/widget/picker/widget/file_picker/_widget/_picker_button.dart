@@ -9,8 +9,10 @@ final class _PickerButton extends StatelessWidget {
     final filePickerThemeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
     final textStyle = filePickerThemeExtension.textStyle;
 
-    final buttonSecondaryVariantThemeExtension = context
-        .resolveThemeExtension<MyoroButtonSecondaryVariantThemeExtension>();
+    final buttonSecondaryVariantThemeExtension = MyoroButtonSecondaryVariantThemeExtension.builder(
+      context.isDarkMode,
+      context.colorScheme,
+    );
 
     final viewModel = context.read<MyoroFilePickerViewModel>();
     final openPicker = viewModel.openPicker;

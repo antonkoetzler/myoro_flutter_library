@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -57,8 +55,8 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
     final activeColor = Color.lerp(this.activeColor, other.activeColor, t);
     final hoverColor = Color.lerp(this.hoverColor, other.hoverColor, t);
     final labelTextStyle = TextStyle.lerp(this.labelTextStyle, other.labelTextStyle, t);
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final splashRadius = lerpDouble(this.splashRadius, other.splashRadius, t);
+    final spacing = myoroDoubleLerp(this.spacing, other.spacing, t);
+    final splashRadius = myoroDoubleLerp(this.splashRadius, other.splashRadius, t);
 
     return copyWith(
       activeColor: activeColor,
@@ -69,7 +67,8 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
       labelTextStyleProvided: labelTextStyle != null,
       spacing: spacing,
       spacingProvided: spacing != null,
-      splashRadius: lerpDouble(splashRadius, other.splashRadius, t),
+      splashRadius: splashRadius,
+      splashRadiusProvided: splashRadius != null,
     );
   }
 }

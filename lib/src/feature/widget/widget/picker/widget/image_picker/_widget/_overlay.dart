@@ -16,7 +16,9 @@ final class _Overlay extends StatelessWidget {
     final overlayHoverBackgroundColor = imagePickerThemeExtension.overlayHoverBackgroundColor;
     final overlayTapBackgroundColor = imagePickerThemeExtension.overlayTapBackgroundColor;
 
-    final buttonThemeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
+    final buttonThemeExtension = MyoroButtonThemeExtension.fromVariant(
+      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
+    );
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final openPickerAndUpdateSelectedImage = viewModel.openPickerAndUpdateSelectedImage;

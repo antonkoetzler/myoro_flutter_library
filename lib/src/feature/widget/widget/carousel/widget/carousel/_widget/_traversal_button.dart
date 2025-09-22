@@ -10,7 +10,10 @@ final class _TraversalButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final secondaryVariantThemeExtension = context.resolveThemeExtension<MyoroButtonSecondaryVariantThemeExtension>();
+    final secondaryVariantThemeExtension = MyoroButtonSecondaryVariantThemeExtension.builder(
+      context.isDarkMode,
+      context.colorScheme,
+    );
 
     return Align(
       alignment: _alignment,

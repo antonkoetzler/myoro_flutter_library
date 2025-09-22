@@ -33,7 +33,7 @@ void main() {
   }
 
   testWidgets('MyoroDialogModal confirm button functionality', (tester) async {
-    final confirmButtonText = faker.lorem.word();
+    final confirmButtonText = faker.randomGenerator.string(40);
     var onConfirmExecuted = false;
     await testCase(
       tester,

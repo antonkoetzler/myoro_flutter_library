@@ -18,7 +18,7 @@ void main() {
     expect(colorScheme.secondary, primary);
     expect(colorScheme.onSecondary, secondary);
     expect(colorScheme.error, MyoroColors.red1);
-    expect(colorScheme.onError, MyoroColors.gray3);
+    expect(colorScheme.onError, MyoroColors.gray2);
     expect(colorScheme.surface, primary);
     expect(colorScheme.onSurface, secondary);
   });

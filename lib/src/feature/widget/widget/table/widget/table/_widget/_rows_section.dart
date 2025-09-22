@@ -17,7 +17,7 @@ final class _RowsSection<T> extends StatelessWidget {
           MyoroRequestEnum.idle => const _Loader(),
           MyoroRequestEnum.loading => const _Loader(),
           MyoroRequestEnum.success => _Rows(itemsRequest.data!),
-          MyoroRequestEnum.error => _ErrorMessage(itemsRequest.errorMessage),
+          MyoroRequestEnum.error => _ErrorMessage(itemsRequest.errorMessage!),
         };
       },
     );
