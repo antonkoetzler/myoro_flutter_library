@@ -10,25 +10,30 @@ class MyoroApp extends StatelessWidget {
 
   @override
   Widget build(context) {
-    const bool debugShowCheckedModeBanner = false;
-    final Iterable<LocalizationsDelegate> localizationsDelegates = [
+    final debugShowCheckedModeBanner = configuration.debugShowCheckedModeBanner;
+
+    final localizationsDelegates = [
       ...?configuration.localizationsDelegates,
       ...AppLocalizations.localizationsDelegates,
     ];
-    final Iterable<Locale> supportedLocales = [
+    final supportedLocales = [
       ...?configuration.supportedLocales,
       ...AppLocalizations.supportedLocales,
     ];
-    final ThemeMode themeMode =
+
+    final themeMode =
         configuration.themeMode ??
-        (MediaQuery.of(context).platformBrightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
-    final ThemeData lightTheme = createMyoroThemeData(
+        (MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? ThemeMode.dark
+            : ThemeMode.light);
+
+    final lightTheme = createMyoroThemeData(
       configuration.colorSchemeBuilder,
       configuration.textThemeBuilder,
       configuration.themeExtensionsBuilder,
       isDarkMode: false,
     );
-    final ThemeData darkTheme = createMyoroThemeData(
+    final darkTheme = createMyoroThemeData(
       configuration.colorSchemeBuilder,
       configuration.textThemeBuilder,
       configuration.themeExtensionsBuilder,

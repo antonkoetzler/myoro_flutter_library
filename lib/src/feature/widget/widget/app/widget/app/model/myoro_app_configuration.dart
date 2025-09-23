@@ -9,9 +9,12 @@ part 'myoro_app_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
+  static const debugShowCheckedModeBannerDefaultValue = false;
+
   const MyoroAppConfiguration({
     this.title,
     this.themeMode,
+    this.debugShowCheckedModeBanner = debugShowCheckedModeBannerDefaultValue,
     this.colorSchemeBuilder,
     this.textThemeBuilder,
     this.themeExtensionsBuilder,
@@ -20,7 +23,10 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
     this.router,
     this.home,
     this.builder,
-  }) : assert((router != null) ^ (home != null), '[MyoroApp]: [router] (x)or [home] must be provided.');
+  }) : assert(
+         (router != null) ^ (home != null),
+         '[MyoroApp]: [router] (x)or [home] must be provided.',
+       );
 
   // coverage:ignore-start
   factory MyoroAppConfiguration.fake() {
@@ -28,7 +34,9 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
     return MyoroAppConfiguration(
       title: faker.randomGenerator.boolean() ? faker.lorem.word() : null,
       themeMode: faker.randomGenerator.boolean() ? myoroFake<ThemeMode>() : null,
-      colorSchemeBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<ColorScheme>()) : null,
+      colorSchemeBuilder: faker.randomGenerator.boolean()
+          ? ((_) => myoroFake<ColorScheme>())
+          : null,
       textThemeBuilder: faker.randomGenerator.boolean() ? ((_) => myoroFake<TextTheme>()) : null,
       themeExtensionsBuilder: faker.randomGenerator.boolean() ? ((_, _, _) => []) : null,
       localizationsDelegates: faker.randomGenerator.boolean() ? const {} : null,
@@ -48,6 +56,9 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
 
   /// Default theme (dark or light mode) of the application.
   final ThemeMode? themeMode;
+
+  /// [MaterialApp.debugShowCheckedModeBanner]
+  final bool debugShowCheckedModeBanner;
 
   /// Builder to create a custom [ColorScheme] instead of using [createMyoroColorScheme].
   final MyoroAppColorSchemeBuilder? colorSchemeBuilder;
@@ -80,6 +91,7 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
     bool titleProvided = true,
     ThemeMode? themeMode,
     bool themeModeProvided = true,
+    bool? debugShowCheckedModeBanner,
     MyoroAppColorSchemeBuilder? colorSchemeBuilder,
     bool colorSchemeBuilderProvided = true,
     MyoroAppTextThemeBuilder? textThemeBuilder,
@@ -100,15 +112,22 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
     return MyoroAppConfiguration(
       title: titleProvided ? (title ?? this.title) : null,
       themeMode: themeModeProvided ? (themeMode ?? this.themeMode) : null,
-      colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? this.colorSchemeBuilder) : null,
-      textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? this.textThemeBuilder) : null,
+      debugShowCheckedModeBanner: debugShowCheckedModeBanner ?? this.debugShowCheckedModeBanner,
+      colorSchemeBuilder: colorSchemeBuilderProvided
+          ? (colorSchemeBuilder ?? this.colorSchemeBuilder)
+          : null,
+      textThemeBuilder: textThemeBuilderProvided
+          ? (textThemeBuilder ?? this.textThemeBuilder)
+          : null,
       themeExtensionsBuilder: themeExtensionsBuilderProvided
           ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder)
           : null,
       localizationsDelegates: localizationsDelegatesProvided
           ? (localizationsDelegates ?? this.localizationsDelegates)
           : null,
-      supportedLocales: supportedLocalesProvided ? (supportedLocales ?? this.supportedLocales) : null,
+      supportedLocales: supportedLocalesProvided
+          ? (supportedLocales ?? this.supportedLocales)
+          : null,
       router: routerProvided ? (router ?? this.router) : null,
       home: homeProvided ? (home ?? this.home) : null,
       builder: builderProvided ? (builder ?? this.builder) : null,
