@@ -1,2 +1,2 @@
-export 'shared/theme_extension/exports.dart';
-export 'widget/exports.dart';
+export 'basic_divider/exports.dart';
+export 'resize_divider/exports.dart';

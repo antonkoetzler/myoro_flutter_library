@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the default [ThemeExtension]s for [createMyoroThemeData]'s [ThemeData].
-List<ThemeExtension> createMyoroThemeExtensions(
-  bool isDarkMode,
-  ColorScheme colorScheme,
-  TextTheme textTheme,
-) {
+List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
   return [
     // App Bar
     MyoroAppBarThemeExtension.builder(colorScheme),
@@ -15,8 +11,8 @@ List<ThemeExtension> createMyoroThemeExtensions(
     MyoroAccordionThemeExtension.builder(isDarkMode, colorScheme, textTheme),
 
     // Buttons
-    MyoroButtonPrimaryVariantThemeExtension.builder(isDarkMode, colorScheme),
-    MyoroButtonSecondaryVariantThemeExtension.builder(isDarkMode, colorScheme),
+    MyoroButtonThemeExtension.builder(),
+    MyoroIconTextButtonThemeExtension.builder(),
 
     // Cards
     MyoroCardThemeExtension.builder(colorScheme, textTheme),
@@ -30,10 +26,7 @@ List<ThemeExtension> createMyoroThemeExtensions(
 
     // Dividers
     MyoroBasicDividerThemeExtension.builder(colorScheme),
-    MyoroResizeDividerThemeExtension.builder(
-      MyoroBasicDividerThemeExtension.builder(colorScheme),
-      colorScheme,
-    ),
+    MyoroResizeDividerThemeExtension.builder(MyoroBasicDividerThemeExtension.builder(colorScheme), colorScheme),
 
     // Drawer
     MyoroDrawerThemeExtension.builder(colorScheme, textTheme),

@@ -1,1 +1,1 @@
-export 'widget/exports.dart';
+export 'circular_loader/exports.dart';

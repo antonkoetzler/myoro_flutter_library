@@ -1,1 +1,1 @@
-export 'widget/exports.dart';
+export 'accordion/exports.dart';

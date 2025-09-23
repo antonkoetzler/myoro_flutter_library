@@ -1,1 +1,1 @@
-export 'widget/exports.dart';
+export 'tab_view/exports.dart';
