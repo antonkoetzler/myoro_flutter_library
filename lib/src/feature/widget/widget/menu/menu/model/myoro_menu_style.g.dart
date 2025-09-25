@@ -16,6 +16,41 @@ part of 'myoro_menu_style.dart';
 mixin _$MyoroMenuStyleMixin {
   MyoroMenuStyle get self => this as MyoroMenuStyle;
 
+  MyoroMenuStyle copyWith({
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
+    BoxBorder? border,
+    bool borderProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    EdgeInsets? searchBarPadding,
+    bool searchBarPaddingProvided = true,
+    MyoroInputStyleEnum? searchBarInputStyle,
+    bool searchBarInputStyleProvided = true,
+    BorderRadius? itemBorderRadius,
+    bool itemBorderRadiusProvided = true,
+    TextStyle? dialogTextStyle,
+    bool dialogTextStyleProvided = true,
+    EdgeInsets? dialogTextLoaderPadding,
+    bool dialogTextLoaderPaddingProvided = true,
+  }) {
+    return MyoroMenuStyle(
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      border: borderProvided ? (border ?? self.border) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      searchBarPadding: searchBarPaddingProvided ? (searchBarPadding ?? self.searchBarPadding) : null,
+      searchBarInputStyle: searchBarInputStyleProvided ? (searchBarInputStyle ?? self.searchBarInputStyle) : null,
+      itemBorderRadius: itemBorderRadiusProvided ? (itemBorderRadius ?? self.itemBorderRadius) : null,
+      dialogTextStyle: dialogTextStyleProvided ? (dialogTextStyle ?? self.dialogTextStyle) : null,
+      dialogTextLoaderPadding: dialogTextLoaderPaddingProvided
+          ? (dialogTextLoaderPadding ?? self.dialogTextLoaderPadding)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroMenuStyle &&

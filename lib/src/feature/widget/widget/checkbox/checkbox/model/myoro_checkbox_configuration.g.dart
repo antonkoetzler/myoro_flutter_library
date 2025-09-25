@@ -16,6 +16,19 @@ part of 'myoro_checkbox_configuration.dart';
 mixin _$MyoroCheckboxConfigurationMixin {
   MyoroCheckboxConfiguration get self => this as MyoroCheckboxConfiguration;
 
+  MyoroCheckboxConfiguration copyWith({
+    String? label,
+    bool? value,
+    MyoroCheckboxOnChanged? onChanged,
+    bool onChangedProvided = true,
+  }) {
+    return MyoroCheckboxConfiguration(
+      label: label ?? self.label,
+      value: value ?? self.value,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroCheckboxConfiguration &&

@@ -23,21 +23,21 @@ class MyoroInputViewModel {
     (state.configuration.controller != null)
         ? state.controller.removeListener(controllerListener)
         : state.controller.dispose();
-    state.enabledController.dispose();
+    state.enabledNotifier.dispose();
     if (state.configuration.showClearTextButton) state.showClearTextButtonNotifier.dispose();
   }
 
   /// [_controller]'s listener.
   void controllerListener() {
     if (state.configuration.showClearTextButton) {
-      state.showClearTextButtonNotifier.value = state.controller.text.isNotEmpty;
+      state.showClearTextButton = state.controller.text.isNotEmpty;
     }
   }
 
   /// [MyoroCheckboxConfiguration.onChanged] of [_Checkbox].
   void checkboxOnChanged(bool value) {
     state.configuration.checkboxOnChanged!.call(value, state.controller.text);
-    state.enabledController.value = value;
+    state.enabled = value;
   }
 
   /// Clears the [MyoroInput]'s text.

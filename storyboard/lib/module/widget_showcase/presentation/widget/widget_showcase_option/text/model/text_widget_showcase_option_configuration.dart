@@ -52,6 +52,7 @@ final class TextWidgetShowcaseOptionConfiguration with _$TextWidgetShowcaseOptio
   final TextStyle? styleInitialValue;
   final TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged;
 
+  @override
   TextWidgetShowcaseOptionConfiguration copyWith({
     String? label,
     String? textInitialValue,

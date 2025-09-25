@@ -28,11 +28,4 @@ class MyoroTabViewConfiguration with _$MyoroTabViewConfigurationMixin {
 
   /// Tabs of the [MyoroTabView].
   final List<MyoroTabViewTab> tabs;
-
-  MyoroTabViewConfiguration copyWith({int? initiallySelectedTabIndex, List<MyoroTabViewTab>? tabs}) {
-    return MyoroTabViewConfiguration(
-      initiallySelectedTabIndex: initiallySelectedTabIndex ?? this.initiallySelectedTabIndex,
-      tabs: tabs ?? this.tabs,
-    );
-  }
 }

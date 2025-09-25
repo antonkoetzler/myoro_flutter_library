@@ -24,15 +24,4 @@ class MyoroAppBarStyle with _$MyoroAppBarStyleMixin {
   final EdgeInsets? contentPadding;
 
   /// Copy with.
-  MyoroAppBarStyle copyWith({
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    EdgeInsets? contentPadding,
-    bool contentPaddingProvided = true,
-  }) {
-    return MyoroAppBarStyle(
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
-      contentPadding: contentPaddingProvided ? (contentPadding ?? this.contentPadding) : null,
-    );
-  }
 }

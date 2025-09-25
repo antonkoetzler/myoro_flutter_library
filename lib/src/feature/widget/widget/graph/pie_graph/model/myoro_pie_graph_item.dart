@@ -26,18 +26,4 @@ class MyoroPieGraphItem with _$MyoroPieGraphItemMixin {
 
   /// Radius aka height of the item.
   final double? radius;
-
-  MyoroPieGraphItem copyWith({
-    double? value,
-    Color? color,
-    bool colorProvided = true,
-    double? radius,
-    bool radiusProvided = true,
-  }) {
-    return MyoroPieGraphItem(
-      value: value ?? this.value,
-      color: colorProvided ? (color ?? this.color) : null,
-      radius: radiusProvided ? (radius ?? this.radius) : null,
-    );
-  }
 }

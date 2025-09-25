@@ -19,15 +19,4 @@ final class MyoroImagePickerConfiguration with _$MyoroImagePickerConfigurationMi
 
   /// Callback executed when an image is selected or unselected.
   final MyoroImagePickerOnChanged onChanged;
-
-  MyoroImagePickerConfiguration copyWith({
-    String? selectedImage,
-    bool selectedImageProvided = true,
-    MyoroImagePickerOnChanged? onChanged,
-  }) {
-    return MyoroImagePickerConfiguration(
-      selectedImage: selectedImageProvided ? (selectedImage ?? this.selectedImage) : null,
-      onChanged: onChanged ?? this.onChanged,
-    );
-  }
 }

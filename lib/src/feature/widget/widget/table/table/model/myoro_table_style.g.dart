@@ -16,6 +16,39 @@ part of 'myoro_table_style.dart';
 mixin _$MyoroTableStyleMixin {
   MyoroTableStyle get self => this as MyoroTableStyle;
 
+  MyoroTableStyle copyWith({
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
+    TextStyle? columnTextStyle,
+    bool columnTextStyleProvided = true,
+    double? columnSpacing,
+    bool columnSpacingProvided = true,
+    TextStyle? rowTextStyle,
+    bool rowTextStyleProvided = true,
+    EdgeInsets? loaderEmptyMessageErrorMessagePadding,
+    bool loaderEmptyMessageErrorMessagePaddingProvided = true,
+    TextStyle? emptyMessageTextStyle,
+    bool emptyMessageTextStyleProvided = true,
+    TextStyle? errorMessageTextStyle,
+    bool errorMessageTextStyleProvided = true,
+  }) {
+    return MyoroTableStyle(
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      columnTextStyle: columnTextStyleProvided ? (columnTextStyle ?? self.columnTextStyle) : null,
+      columnSpacing: columnSpacingProvided ? (columnSpacing ?? self.columnSpacing) : null,
+      rowTextStyle: rowTextStyleProvided ? (rowTextStyle ?? self.rowTextStyle) : null,
+      loaderEmptyMessageErrorMessagePadding: loaderEmptyMessageErrorMessagePaddingProvided
+          ? (loaderEmptyMessageErrorMessagePadding ?? self.loaderEmptyMessageErrorMessagePadding)
+          : null,
+      emptyMessageTextStyle: emptyMessageTextStyleProvided
+          ? (emptyMessageTextStyle ?? self.emptyMessageTextStyle)
+          : null,
+      errorMessageTextStyle: errorMessageTextStyleProvided
+          ? (errorMessageTextStyle ?? self.errorMessageTextStyle)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTableStyle &&

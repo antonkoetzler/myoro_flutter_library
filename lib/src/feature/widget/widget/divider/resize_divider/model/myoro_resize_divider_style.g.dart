@@ -16,6 +16,39 @@ part of 'myoro_resize_divider_style.dart';
 mixin _$MyoroResizeDividerStyleMixin {
   MyoroResizeDividerStyle get self => this as MyoroResizeDividerStyle;
 
+  MyoroResizeDividerStyle copyWith({
+    BorderRadius? resizeButtonBorderRadius,
+    bool resizeButtonBorderRadiusProvided = true,
+    Color? resizeButtonColor,
+    bool resizeButtonColorProvided = true,
+    double? resizeButtonShortValue,
+    bool resizeButtonShortValueProvided = true,
+    double? resizeButtonLongValue,
+    bool resizeButtonLongValueProvided = true,
+    Color? color,
+    bool colorProvided = true,
+    double? shortValue,
+    bool shortValueProvided = true,
+    double? longValue,
+    bool longValueProvided = true,
+  }) {
+    return MyoroResizeDividerStyle(
+      resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
+          ? (resizeButtonBorderRadius ?? self.resizeButtonBorderRadius)
+          : null,
+      resizeButtonColor: resizeButtonColorProvided ? (resizeButtonColor ?? self.resizeButtonColor) : null,
+      resizeButtonShortValue: resizeButtonShortValueProvided
+          ? (resizeButtonShortValue ?? self.resizeButtonShortValue)
+          : null,
+      resizeButtonLongValue: resizeButtonLongValueProvided
+          ? (resizeButtonLongValue ?? self.resizeButtonLongValue)
+          : null,
+      color: colorProvided ? (color ?? self.color) : null,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      longValue: longValueProvided ? (longValue ?? self.longValue) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroResizeDividerStyle &&

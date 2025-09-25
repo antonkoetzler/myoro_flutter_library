@@ -16,6 +16,45 @@ part of 'myoro_button_style.dart';
 mixin _$MyoroButtonStyleMixin {
   MyoroButtonStyle get self => this as MyoroButtonStyle;
 
+  MyoroButtonStyle copyWith({
+    Color? backgroundIdleColor,
+    bool backgroundIdleColorProvided = true,
+    Color? backgroundHoverColor,
+    bool backgroundHoverColorProvided = true,
+    Color? backgroundTapColor,
+    bool backgroundTapColorProvided = true,
+    Color? contentIdleColor,
+    bool contentIdleColorProvided = true,
+    Color? contentHoverColor,
+    bool contentHoverColorProvided = true,
+    Color? contentTapColor,
+    bool contentTapColorProvided = true,
+    double? borderWidth,
+    bool borderWidthProvided = true,
+    Color? borderIdleColor,
+    bool borderIdleColorProvided = true,
+    Color? borderHoverColor,
+    bool borderHoverColorProvided = true,
+    Color? borderTapColor,
+    bool borderTapColorProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+  }) {
+    return MyoroButtonStyle(
+      backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
+      backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
+      backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
+      contentIdleColor: contentIdleColorProvided ? (contentIdleColor ?? self.contentIdleColor) : null,
+      contentHoverColor: contentHoverColorProvided ? (contentHoverColor ?? self.contentHoverColor) : null,
+      contentTapColor: contentTapColorProvided ? (contentTapColor ?? self.contentTapColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderIdleColor: borderIdleColorProvided ? (borderIdleColor ?? self.borderIdleColor) : null,
+      borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? self.borderHoverColor) : null,
+      borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroButtonStyle &&

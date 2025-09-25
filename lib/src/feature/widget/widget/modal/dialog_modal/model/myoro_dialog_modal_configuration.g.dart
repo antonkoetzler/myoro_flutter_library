@@ -16,6 +16,40 @@ part of 'myoro_dialog_modal_configuration.dart';
 mixin _$MyoroDialogModalConfigurationMixin<T> {
   MyoroDialogModalConfiguration<T> get self => this as MyoroDialogModalConfiguration<T>;
 
+  MyoroDialogModalConfiguration<T> copyWith({
+    bool? invertButtons,
+    String? confirmButtonText,
+    String? cancelButtonText,
+    VoidCallback? onConfirm,
+    bool onConfirmProvided = true,
+    VoidCallback? onCancel,
+    bool onCancelProvided = true,
+    String? text,
+    Widget? child,
+    bool childProvided = true,
+    bool? barrierDismissable,
+    bool? useRootNavigator,
+    MyoroModalOnClosed<T>? onClosed,
+    bool onClosedProvided = true,
+    String? title,
+    bool? showCloseButton,
+  }) {
+    return MyoroDialogModalConfiguration(
+      invertButtons: invertButtons ?? self.invertButtons,
+      confirmButtonText: confirmButtonText ?? self.confirmButtonText,
+      cancelButtonText: cancelButtonText ?? self.cancelButtonText,
+      onConfirm: onConfirmProvided ? (onConfirm ?? self.onConfirm) : null,
+      onCancel: onCancelProvided ? (onCancel ?? self.onCancel) : null,
+      text: text ?? self.text,
+      child: childProvided ? (child ?? self.child) : null,
+      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
+      useRootNavigator: useRootNavigator ?? self.useRootNavigator,
+      onClosed: onClosedProvided ? (onClosed ?? self.onClosed) : null,
+      title: title ?? self.title,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroDialogModalConfiguration<T> &&

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base accordion configuration.
+@immutable
 abstract class MyoroAccordionConfiguration<T> {
   static const thumbVisibilityDefaultValue = false;
 

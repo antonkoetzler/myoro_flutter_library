@@ -131,60 +131,6 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   /// Controller of the input.
   final TextEditingController? controller;
 
-  MyoroInputConfiguration copyWith({
-    MyoroInputStyleEnum? inputStyle,
-    TextAlign? textAlign,
-    String? label,
-    String? text,
-    String? placeholder,
-    Widget? suffix,
-    bool suffixProvided = true,
-    bool? enabled,
-    bool? readOnly,
-    bool? autofocus,
-    bool? showClearTextButton,
-    MyoroInputCheckboxOnChanged? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    MyoroInputValidation? validation,
-    bool validationProvided = true,
-    MyoroInputOnFieldSubmitted? onFieldSubmitted,
-    bool onFieldSubmittedProvided = true,
-    MyoroInputOnChanged? onChanged,
-    bool onChangedProvided = true,
-    VoidCallback? onCleared,
-    bool onClearedProvided = true,
-    Key? inputKey,
-    bool inputKeyProvided = true,
-    Key? checkboxKey,
-    bool checkboxKeyProvided = true,
-    FocusNode? focusNode,
-    bool focusNodeProvided = true,
-    TextEditingController? controller,
-    bool controllerProvided = true,
-  }) {
-    return MyoroInputConfiguration(
-      inputStyle: inputStyle ?? this.inputStyle,
-      textAlign: textAlign ?? this.textAlign,
-      label: label ?? this.label,
-      text: text ?? this.text,
-      placeholder: placeholder ?? this.placeholder,
-      suffix: suffixProvided ? (suffix ?? this.suffix) : null,
-      enabled: enabled ?? this.enabled,
-      readOnly: readOnly ?? this.readOnly,
-      autofocus: autofocus ?? this.autofocus,
-      showClearTextButton: showClearTextButton ?? this.showClearTextButton,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
-      validation: validationProvided ? (validation ?? this.validation) : null,
-      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? this.onFieldSubmitted) : null,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-      onCleared: onClearedProvided ? (onCleared ?? this.onCleared) : null,
-      inputKey: inputKeyProvided ? (inputKey ?? this.inputKey) : null,
-      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? this.checkboxKey) : null,
-      focusNode: focusNodeProvided ? (focusNode ?? this.focusNode) : null,
-      controller: controllerProvided ? (controller ?? this.controller) : null,
-    );
-  }
-
   /// Returns if [text] was provided.
   bool get textProvided {
     return text != textDefaultValue && controller == null;

@@ -73,46 +73,4 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
 
   /// [MyoroIconConfiguration] of [_CloseButton].
   final MyoroIconConfiguration? closeButtonIconConfiguration;
-
-  /// Copy with.
-  MyoroSnackBarStyle copyWith({
-    Color? primaryColor,
-    bool primaryColorProvided = true,
-    Color? standardBorderColor,
-    bool standardBorderColorProvided = true,
-    Color? attentionBorderColor,
-    bool attentionBorderColorProvided = true,
-    Color? successBorderColor,
-    bool successBorderColorProvided = true,
-    Color? errorBorderColor,
-    bool errorBorderColorProvided = true,
-    double? borderWidth,
-    bool borderWidthProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    double? spacing,
-    bool spacingProvided = true,
-    TextStyle? messageTextStyle,
-    bool messageTextStyleProvided = true,
-    MyoroIconConfiguration? closeButtonIconConfiguration,
-    bool closeButtonIconConfigurationProvided = true,
-  }) {
-    return MyoroSnackBarStyle(
-      primaryColor: primaryColorProvided ? (primaryColor ?? this.primaryColor) : null,
-      standardBorderColor: standardBorderColorProvided ? (standardBorderColor ?? this.standardBorderColor) : null,
-      attentionBorderColor: attentionBorderColorProvided ? (attentionBorderColor ?? this.attentionBorderColor) : null,
-      successBorderColor: successBorderColorProvided ? (successBorderColor ?? this.successBorderColor) : null,
-      errorBorderColor: errorBorderColorProvided ? (errorBorderColor ?? this.errorBorderColor) : null,
-      borderWidth: borderWidthProvided ? (borderWidth ?? this.borderWidth) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? this.messageTextStyle) : null,
-      closeButtonIconConfiguration: closeButtonIconConfigurationProvided
-          ? (closeButtonIconConfiguration ?? this.closeButtonIconConfiguration)
-          : null,
-    );
-  }
 }

@@ -11,7 +11,8 @@ dependencies:
     sdk: flutter
   myoro_flutter_library:
     path: ../
-  myoro_flutter_annotations: ^1.4.5
+  myoro_flutter_annotations: # ^1.4.5
+    path: ../../myoro_flutter_annotations
   window_manager: ^0.4.3
   # Latest conflicts with the Flutter's material library like [Color].
   faker: 2.1.0

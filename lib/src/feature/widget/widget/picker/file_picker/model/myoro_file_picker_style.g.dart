@@ -16,6 +16,18 @@ part of 'myoro_file_picker_style.dart';
 mixin _$MyoroFilePickerStyleMixin {
   MyoroFilePickerStyle get self => this as MyoroFilePickerStyle;
 
+  MyoroFilePickerStyle copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
+  }) {
+    return MyoroFilePickerStyle(
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroFilePickerStyle &&

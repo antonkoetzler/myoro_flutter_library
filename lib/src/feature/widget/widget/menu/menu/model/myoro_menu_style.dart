@@ -63,40 +63,4 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
 
   /// [EdgeInsets] of [_DialogText] & [_Loader].
   final EdgeInsets? dialogTextLoaderPadding;
-
-  /// Copy with.
-  MyoroMenuStyle copyWith({
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    BoxBorder? border,
-    bool borderProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    EdgeInsets? searchBarPadding,
-    bool searchBarPaddingProvided = true,
-    MyoroInputStyleEnum? searchBarInputStyle,
-    bool searchBarInputStyleProvided = true,
-    BorderRadius? itemBorderRadius,
-    bool itemBorderRadiusProvided = true,
-    TextStyle? dialogTextStyle,
-    bool dialogTextStyleProvided = true,
-    EdgeInsets? dialogTextLoaderPadding,
-    bool dialogTextLoaderPaddingProvided = true,
-  }) {
-    return MyoroMenuStyle(
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
-      border: borderProvided ? (border ?? this.border) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
-      searchBarPadding: searchBarPaddingProvided ? (searchBarPadding ?? this.searchBarPadding) : null,
-      searchBarInputStyle: searchBarInputStyleProvided ? (searchBarInputStyle ?? this.searchBarInputStyle) : null,
-      itemBorderRadius: itemBorderRadiusProvided ? (itemBorderRadius ?? this.itemBorderRadius) : null,
-      dialogTextStyle: dialogTextStyleProvided ? (dialogTextStyle ?? this.dialogTextStyle) : null,
-      dialogTextLoaderPadding: dialogTextLoaderPaddingProvided
-          ? (dialogTextLoaderPadding ?? this.dialogTextLoaderPadding)
-          : null,
-    );
-  }
 }

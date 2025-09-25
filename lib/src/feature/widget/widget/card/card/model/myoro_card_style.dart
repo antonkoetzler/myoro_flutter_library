@@ -52,30 +52,4 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
   final BoxConstraints? constraints;
 
   /// Copy with.
-  MyoroCardStyle copyWith({
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    Border? border,
-    bool borderProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    double? titleCardSpacing,
-    bool titleCardSpacingProvided = true,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
-  }) {
-    return MyoroCardStyle(
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
-      border: borderProvided ? (border ?? this.border) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      titleCardSpacing: titleCardSpacingProvided ? (titleCardSpacing ?? this.titleCardSpacing) : null,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
-    );
-  }
 }

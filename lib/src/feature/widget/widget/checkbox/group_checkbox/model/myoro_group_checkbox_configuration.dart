@@ -24,15 +24,4 @@ class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixi
 
   /// Function executed when any of the checkbox's values are changed.
   final MyoroGroupCheckboxOnChanged? onChanged;
-
-  MyoroGroupCheckboxConfiguration copyWith({
-    Axis? direction,
-    MyoroGroupCheckboxOnChanged? onChanged,
-    bool onChangedProvided = true,
-  }) {
-    return MyoroGroupCheckboxConfiguration(
-      direction: direction ?? this.direction,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-    );
-  }
 }

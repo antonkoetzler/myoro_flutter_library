@@ -16,6 +16,67 @@ part of 'myoro_accordion_style.dart';
 mixin _$MyoroAccordionStyleMixin {
   MyoroAccordionStyle get self => this as MyoroAccordionStyle;
 
+  MyoroAccordionStyle copyWith({
+    Color? itemContentBackgroundColor,
+    bool itemContentBackgroundColorProvided = true,
+    Duration? itemContentAnimationDuration,
+    bool itemContentAnimationDurationProvided = true,
+    Curve? itemContentAnimationCurve,
+    bool itemContentAnimationCurveProvided = true,
+    EdgeInsets? itemTitleButtonContentPadding,
+    bool itemTitleButtonContentPaddingProvided = true,
+    double? itemTitleButtonSpacing,
+    bool itemTitleButtonSpacingProvided = true,
+    TextStyle? itemTitleButtonTitleTextStyle,
+    bool itemTitleButtonTitleTextStyleProvided = true,
+    IconData? itemTitleButtonArrowIcon,
+    bool itemTitleButtonArrowIconProvided = true,
+    Color? itemTitleButtonArrowIconColor,
+    bool itemTitleButtonArrowIconColorProvided = true,
+    double? itemTitleButtonArrowIconSize,
+    bool itemTitleButtonArrowIconSizeProvided = true,
+    Duration? itemTitleButtonArrowAnimationDuration,
+    bool itemTitleButtonArrowAnimationDurationProvided = true,
+    Curve? itemTitleButtonArrowAnimationCurve,
+    bool itemTitleButtonArrowAnimationCurveProvided = true,
+  }) {
+    return MyoroAccordionStyle(
+      itemContentBackgroundColor: itemContentBackgroundColorProvided
+          ? (itemContentBackgroundColor ?? self.itemContentBackgroundColor)
+          : null,
+      itemContentAnimationDuration: itemContentAnimationDurationProvided
+          ? (itemContentAnimationDuration ?? self.itemContentAnimationDuration)
+          : null,
+      itemContentAnimationCurve: itemContentAnimationCurveProvided
+          ? (itemContentAnimationCurve ?? self.itemContentAnimationCurve)
+          : null,
+      itemTitleButtonContentPadding: itemTitleButtonContentPaddingProvided
+          ? (itemTitleButtonContentPadding ?? self.itemTitleButtonContentPadding)
+          : null,
+      itemTitleButtonSpacing: itemTitleButtonSpacingProvided
+          ? (itemTitleButtonSpacing ?? self.itemTitleButtonSpacing)
+          : null,
+      itemTitleButtonTitleTextStyle: itemTitleButtonTitleTextStyleProvided
+          ? (itemTitleButtonTitleTextStyle ?? self.itemTitleButtonTitleTextStyle)
+          : null,
+      itemTitleButtonArrowIcon: itemTitleButtonArrowIconProvided
+          ? (itemTitleButtonArrowIcon ?? self.itemTitleButtonArrowIcon)
+          : null,
+      itemTitleButtonArrowIconColor: itemTitleButtonArrowIconColorProvided
+          ? (itemTitleButtonArrowIconColor ?? self.itemTitleButtonArrowIconColor)
+          : null,
+      itemTitleButtonArrowIconSize: itemTitleButtonArrowIconSizeProvided
+          ? (itemTitleButtonArrowIconSize ?? self.itemTitleButtonArrowIconSize)
+          : null,
+      itemTitleButtonArrowAnimationDuration: itemTitleButtonArrowAnimationDurationProvided
+          ? (itemTitleButtonArrowAnimationDuration ?? self.itemTitleButtonArrowAnimationDuration)
+          : null,
+      itemTitleButtonArrowAnimationCurve: itemTitleButtonArrowAnimationCurveProvided
+          ? (itemTitleButtonArrowAnimationCurve ?? self.itemTitleButtonArrowAnimationCurve)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroAccordionStyle &&

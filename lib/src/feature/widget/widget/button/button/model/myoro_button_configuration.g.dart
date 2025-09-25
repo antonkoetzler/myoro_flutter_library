@@ -16,6 +16,24 @@ part of 'myoro_button_configuration.dart';
 mixin _$MyoroButtonConfigurationMixin {
   MyoroButtonConfiguration get self => this as MyoroButtonConfiguration;
 
+  MyoroButtonConfiguration copyWith({
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+  }) {
+    return MyoroButtonConfiguration(
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroButtonConfiguration &&

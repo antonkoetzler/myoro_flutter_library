@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Abstract configuration model of a menu.
+@immutable
 abstract class MyoroMenuConfiguration<T> {
   static const constraintsDefaultValue = BoxConstraints();
 
@@ -25,12 +26,4 @@ abstract class MyoroMenuConfiguration<T> {
 
   /// Menu item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;
-
-  MyoroMenuConfiguration<T> copyWith({
-    MyoroMenuRequest<T>? request,
-    bool onEndReachedRequestProvided = true,
-    MyoroMenuSearchCallback<T>? searchCallback,
-    bool searchCallbackProvided = true,
-    MyoroMenuItemBuilder<T>? itemBuilder,
-  });
 }

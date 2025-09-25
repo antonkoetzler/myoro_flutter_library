@@ -16,6 +16,22 @@ part of 'myoro_multi_accordion_configuration.dart';
 mixin _$MyoroMultiAccordionConfigurationMixin<T> {
   MyoroMultiAccordionConfiguration<T> get self => this as MyoroMultiAccordionConfiguration<T>;
 
+  MyoroMultiAccordionConfiguration<T> copyWith({
+    Set<T>? selectedItems,
+    bool? thumbVisibility,
+    MyoroAccordionBuilder<T>? titleBuilder,
+    MyoroAccordionBuilder<T>? contentBuilder,
+    Set<T>? items,
+  }) {
+    return MyoroMultiAccordionConfiguration(
+      selectedItems: selectedItems ?? self.selectedItems,
+      thumbVisibility: thumbVisibility ?? self.thumbVisibility,
+      titleBuilder: titleBuilder ?? self.titleBuilder,
+      contentBuilder: contentBuilder ?? self.contentBuilder,
+      items: items ?? self.items,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroMultiAccordionConfiguration<T> &&

@@ -17,17 +17,4 @@ class MyoroCarouselStyle with _$MyoroCarouselStyleMixin {
   final IconData? nextItemButtonIcon;
 
   /// Copy with.
-  MyoroCarouselStyle copyWith({
-    IconData? previousItemButtonIcon,
-    bool previousItemButtonIconProvided = true,
-    IconData? nextItemButtonIcon,
-    bool nextItemButtonIconProvided = true,
-  }) {
-    return MyoroCarouselStyle(
-      previousItemButtonIcon: previousItemButtonIconProvided
-          ? (previousItemButtonIcon ?? this.previousItemButtonIcon)
-          : null,
-      nextItemButtonIcon: nextItemButtonIconProvided ? (nextItemButtonIcon ?? this.nextItemButtonIcon) : null,
-    );
-  }
 }

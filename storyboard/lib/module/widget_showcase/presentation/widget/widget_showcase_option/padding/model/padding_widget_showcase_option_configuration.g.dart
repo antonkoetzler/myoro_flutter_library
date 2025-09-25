@@ -16,6 +16,24 @@ part of 'padding_widget_showcase_option_configuration.dart';
 mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
   PaddingWidgetShowcaseOptionConfiguration get self => this as PaddingWidgetShowcaseOptionConfiguration;
 
+  PaddingWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    bool? enabled,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    PaddingWidgetShowcaseOptionTitleCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    PaddingWidgetShowcaseOptionSelectionOnChanged? paddingOnChanged,
+  }) {
+    return PaddingWidgetShowcaseOptionConfiguration(
+      label: label ?? self.label,
+      enabled: enabled ?? self.enabled,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      paddingOnChanged: paddingOnChanged ?? self.paddingOnChanged,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is PaddingWidgetShowcaseOptionConfiguration &&

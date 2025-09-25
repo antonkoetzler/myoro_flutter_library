@@ -70,39 +70,4 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
 
   /// Custom [Widget] option of the [MyoroDialogModal].
   final Widget? child;
-
-  @override
-  MyoroDialogModalConfiguration<T> copyWith({
-    bool? barrierDismissable,
-    bool? useRootNavigator,
-    MyoroModalOnClosed<T>? onClosed,
-    bool onClosedProvided = true,
-    String? title,
-    bool? showCloseButton,
-    bool? invertButtons,
-    String? confirmButtonText,
-    String? cancelButtonText,
-    VoidCallback? onConfirm,
-    bool onConfirmProvided = true,
-    VoidCallback? onCancel,
-    bool onCancelProvided = true,
-    String? text,
-    Widget? child,
-    bool childProvided = true,
-  }) {
-    return MyoroDialogModalConfiguration(
-      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
-      useRootNavigator: useRootNavigator ?? this.useRootNavigator,
-      onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
-      title: title ?? this.title,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      invertButtons: invertButtons ?? this.invertButtons,
-      confirmButtonText: confirmButtonText ?? this.confirmButtonText,
-      cancelButtonText: cancelButtonText ?? this.cancelButtonText,
-      onConfirm: onConfirmProvided ? (onConfirm ?? this.onConfirm) : null,
-      onCancel: onCancelProvided ? (onCancel ?? this.onCancel) : null,
-      text: text ?? this.text,
-      child: childProvided ? (child ?? this.child) : null,
-    );
-  }
 }

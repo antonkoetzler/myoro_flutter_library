@@ -16,6 +16,23 @@ part of 'myoro_drawer_configuration.dart';
 mixin _$MyoroDrawerConfigurationMixin {
   MyoroDrawerConfiguration get self => this as MyoroDrawerConfiguration;
 
+  MyoroDrawerConfiguration copyWith({
+    String? title,
+    bool? showCloseButton,
+    bool? barrierDismissable,
+    IconData? closeButtonIcon,
+    bool closeButtonIconProvided = true,
+    Widget? child,
+  }) {
+    return MyoroDrawerConfiguration(
+      title: title ?? self.title,
+      showCloseButton: showCloseButton ?? self.showCloseButton,
+      barrierDismissable: barrierDismissable ?? self.barrierDismissable,
+      closeButtonIcon: closeButtonIconProvided ? (closeButtonIcon ?? self.closeButtonIcon) : null,
+      child: child ?? self.child,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroDrawerConfiguration &&

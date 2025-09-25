@@ -34,24 +34,6 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
   /// Function executed when the [MyoroButton] is released being tapped.
   final MyoroButtonOnTapUp? onTapUp;
 
-  MyoroButtonConfiguration copyWith({
-    MouseCursor? cursor,
-    bool cursorProvided = true,
-    MyoroTooltipConfiguration? tooltipConfiguration,
-    bool tooltipConfigurationProvided = true,
-    MyoroButtonOnTapDown? onTapDown,
-    bool onTapDownProvided = true,
-    MyoroButtonOnTapUp? onTapUp,
-    bool onTapUpProvided = true,
-  }) {
-    return MyoroButtonConfiguration(
-      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
-      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
-    );
-  }
-
   /// Returns if [onTapUp] or [onTapDown] was provided.
   bool get onTapProvided => (onTapUp != null) || (onTapDown != null);
 }

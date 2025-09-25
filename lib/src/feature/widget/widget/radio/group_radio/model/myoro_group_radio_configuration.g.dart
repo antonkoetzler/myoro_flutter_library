@@ -16,6 +16,23 @@ part of 'myoro_group_radio_configuration.dart';
 mixin _$MyoroGroupRadioConfigurationMixin {
   MyoroGroupRadioConfiguration get self => this as MyoroGroupRadioConfiguration;
 
+  MyoroGroupRadioConfiguration copyWith({
+    MyoroGroupRadioController? controller,
+    bool controllerProvided = true,
+    Axis? direction,
+    MyoroGroupRadioOnChanged? onChanged,
+    bool onChangedProvided = true,
+    MyoroGroupRadioItems? radios,
+    bool radiosProvided = true,
+  }) {
+    return MyoroGroupRadioConfiguration(
+      controller: controllerProvided ? (controller ?? self.controller) : null,
+      direction: direction ?? self.direction,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      radios: radiosProvided ? (radios ?? self.radios) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroGroupRadioConfiguration &&

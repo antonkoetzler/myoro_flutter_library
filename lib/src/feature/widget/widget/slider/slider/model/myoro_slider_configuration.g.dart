@@ -16,6 +16,28 @@ part of 'myoro_slider_configuration.dart';
 mixin _$MyoroSliderConfigurationMixin {
   MyoroSliderConfiguration get self => this as MyoroSliderConfiguration;
 
+  MyoroSliderConfiguration copyWith({
+    double? value,
+    MyoroSliderOnChanged<double>? onChanged,
+    String? label,
+    String? currentValueText,
+    String? maxValueText,
+    String? footerText,
+    double? min,
+    double? max,
+  }) {
+    return MyoroSliderConfiguration(
+      value: value ?? self.value,
+      onChanged: onChanged ?? self.onChanged,
+      label: label ?? self.label,
+      currentValueText: currentValueText ?? self.currentValueText,
+      maxValueText: maxValueText ?? self.maxValueText,
+      footerText: footerText ?? self.footerText,
+      min: min ?? self.min,
+      max: max ?? self.max,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroSliderConfiguration &&

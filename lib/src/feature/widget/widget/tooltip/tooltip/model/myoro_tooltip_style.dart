@@ -21,7 +21,4 @@ class MyoroTooltipStyle with _$MyoroTooltipStyleMixin {
   final EdgeInsets? margin;
 
   /// Copy with.
-  MyoroTooltipStyle copyWith({EdgeInsets? margin, bool marginProvided = true}) {
-    return MyoroTooltipStyle(margin: marginProvided ? (margin ?? this.margin) : null);
-  }
 }

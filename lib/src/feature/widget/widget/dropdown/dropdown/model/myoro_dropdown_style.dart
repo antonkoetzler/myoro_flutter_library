@@ -31,18 +31,4 @@ class MyoroDropdownStyle with _$MyoroDropdownStyleMixin {
   final BorderRadius? menuBorderRadius;
 
   /// Copy with.
-  MyoroDropdownStyle copyWith({
-    double? spacing,
-    bool spacingProvided = true,
-    BoxBorder? menuBorder,
-    bool menuBorderProvided = true,
-    BorderRadius? menuBorderRadius,
-    bool menuBorderRadiusProvided = true,
-  }) {
-    return MyoroDropdownStyle(
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      menuBorder: menuBorderProvided ? (menuBorder ?? this.menuBorder) : null,
-      menuBorderRadius: menuBorderRadiusProvided ? (menuBorderRadius ?? this.menuBorderRadius) : null,
-    );
-  }
 }

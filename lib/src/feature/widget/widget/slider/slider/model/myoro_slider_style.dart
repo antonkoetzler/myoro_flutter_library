@@ -27,17 +27,4 @@ class MyoroSliderStyle with _$MyoroSliderStyleMixin {
   final TextAlign? indicatorTextAlignment;
 
   /// Copy with.
-  MyoroSliderStyle copyWith({
-    TextStyle? indicatorTextStyle,
-    bool indicatorTextStyleProvided = true,
-    TextAlign? indicatorTextAlignment,
-    bool indicatorTextAlignmentProvided = true,
-  }) {
-    return MyoroSliderStyle(
-      indicatorTextStyle: indicatorTextStyleProvided ? (indicatorTextStyle ?? this.indicatorTextStyle) : null,
-      indicatorTextAlignment: indicatorTextAlignmentProvided
-          ? (indicatorTextAlignment ?? this.indicatorTextAlignment)
-          : null,
-    );
-  }
 }

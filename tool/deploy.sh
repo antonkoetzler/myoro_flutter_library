@@ -35,16 +35,16 @@ sed -i.bak "s/^version: .*/version: $new_version/" pubspec.yaml
 rm pubspec.yaml.bak
 
 # Extract lines from STAGELOG.md starting from line 3
-staging_notes=$(tail -n +3 STAGELOG.md)
+stagelog=$(tail -n +3 STAGELOG.md)
 
 # No notes in STAGELOG.md case
-if [[ -z "$staging_notes" ]]; then
+if [[ -z "$stagelog" ]]; then
   echo "No staging notes to add. Aborting."
   exit 1
 fi
 
 # Insert into CHANGELOG.md two lines after # CHANGELOG
-awk -v ver="## ${new_version}" -v notes="$staging_notes" '
+awk -v ver="## ${new_version}" -v notes="$stagelog" '
 BEGIN { inserted = 0 }
 {
   print $0

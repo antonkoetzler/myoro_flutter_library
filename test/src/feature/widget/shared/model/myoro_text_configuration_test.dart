@@ -63,20 +63,5 @@ void main() {
       expect(result.alignment, TextAlign.right);
       expect(result.style?.fontSize, closeTo(15, 0.001));
     });
-
-    test('MyoroTextConfiguration.copyWith', () {
-      var firstConfiguration = MyoroTextConfiguration.fake();
-      expect(firstConfiguration.copyWith(), firstConfiguration);
-      final secondConfiguration = MyoroTextConfiguration.fake();
-      firstConfiguration = firstConfiguration.copyWith(
-        text: secondConfiguration.text,
-        maxLines: secondConfiguration.maxLines,
-        overflow: secondConfiguration.overflow,
-        alignment: secondConfiguration.alignment,
-        style: secondConfiguration.style,
-        styleProvided: secondConfiguration.style != null,
-      );
-      expect(firstConfiguration, secondConfiguration);
-    });
   });
 }

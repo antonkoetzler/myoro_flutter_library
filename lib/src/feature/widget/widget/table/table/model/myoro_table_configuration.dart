@@ -19,16 +19,4 @@ class MyoroTableConfiguration<T> with _$MyoroTableConfigurationMixin<T> {
 
   /// Builder of the cells of the row.
   final MyoroTableConfigurationRowBuilder<T> rowBuilder;
-
-  MyoroTableConfiguration<T> copyWith({
-    MyoroTableConfigurationRequest<T>? request,
-    List<MyoroTableColumn>? columns,
-    MyoroTableConfigurationRowBuilder<T>? rowBuilder,
-  }) {
-    return MyoroTableConfiguration(
-      request: request ?? this.request,
-      columns: columns ?? this.columns,
-      rowBuilder: rowBuilder ?? this.rowBuilder,
-    );
-  }
 }

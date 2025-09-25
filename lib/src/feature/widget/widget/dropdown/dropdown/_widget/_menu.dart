@@ -4,11 +4,16 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 final class _Menu<T, V extends _ViewModelType<T>> extends StatefulWidget {
   /// Shows a [MyoroModel] when [MyoroDropdownConfiguration.menuTypeEnum] is [MyoroDropdownMenuTypeEnum.modal].
   static void showModal<T, V extends _ViewModelType<T>>(BuildContext context, V viewModel) {
+    final style = context.read<MyoroDropdownStyle>();
+
     MyoroModal.showModal(
       context,
       configuration: const MyoroModalConfiguration(barrierDismissable: false),
-      child: InheritedProvider.value(
-        value: viewModel,
+      child: MultiProvider(
+        providers: [
+          InheritedProvider.value(value: viewModel),
+          InheritedProvider.value(value: style),
+        ],
         child: Center(
           child: Scrollbar(
             controller: viewModel.state.menuScrollController,

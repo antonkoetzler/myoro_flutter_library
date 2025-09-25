@@ -34,22 +34,4 @@ class MyoroFormConfiguration<T> with _$MyoroFormConfigurationMixin<T> {
 
   /// Executed when the form is completed unsuccessfully.
   final MyoroFormOnError? onError;
-
-  MyoroFormConfiguration<T> copyWith({
-    MyoroFormValidation? validation,
-    bool validationProvided = true,
-    MyoroFormRequest<T>? request,
-    bool requestProvided = true,
-    MyoroFormOnSuccess<T>? onSuccess,
-    bool onSuccessProvided = true,
-    MyoroFormOnError? onError,
-    bool onErrorProvided = true,
-  }) {
-    return MyoroFormConfiguration(
-      validation: validationProvided ? (validation ?? this.validation) : null,
-      request: requestProvided ? (request ?? this.request) : null,
-      onSuccess: onSuccessProvided ? (onSuccess ?? this.onSuccess) : null,
-      onError: onErrorProvided ? (onError ?? this.onError) : null,
-    );
-  }
 }

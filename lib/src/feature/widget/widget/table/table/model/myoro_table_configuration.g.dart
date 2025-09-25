@@ -16,6 +16,18 @@ part of 'myoro_table_configuration.dart';
 mixin _$MyoroTableConfigurationMixin<T> {
   MyoroTableConfiguration<T> get self => this as MyoroTableConfiguration<T>;
 
+  MyoroTableConfiguration<T> copyWith({
+    MyoroTableConfigurationRequest<T>? request,
+    List<MyoroTableColumn>? columns,
+    MyoroTableConfigurationRowBuilder<T>? rowBuilder,
+  }) {
+    return MyoroTableConfiguration(
+      request: request ?? self.request,
+      columns: columns ?? self.columns,
+      rowBuilder: rowBuilder ?? self.rowBuilder,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTableConfiguration<T> &&

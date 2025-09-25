@@ -76,21 +76,4 @@ class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
 
   /// If [_CloseButton] will be shown.
   final bool showCloseButton;
-
-  MyoroModalConfiguration<T> copyWith({
-    bool? barrierDismissable,
-    bool? useRootNavigator,
-    MyoroModalOnClosed<T>? onClosed,
-    bool onClosedProvided = true,
-    String? title,
-    bool? showCloseButton,
-  }) {
-    return MyoroModalConfiguration(
-      barrierDismissable: barrierDismissable ?? this.barrierDismissable,
-      useRootNavigator: useRootNavigator ?? this.useRootNavigator,
-      onClosed: onClosedProvided ? (onClosed ?? this.onClosed) : null,
-      title: title ?? this.title,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-    );
-  }
 }

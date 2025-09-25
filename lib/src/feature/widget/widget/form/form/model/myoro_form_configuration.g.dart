@@ -16,6 +16,24 @@ part of 'myoro_form_configuration.dart';
 mixin _$MyoroFormConfigurationMixin<T> {
   MyoroFormConfiguration<T> get self => this as MyoroFormConfiguration<T>;
 
+  MyoroFormConfiguration<T> copyWith({
+    MyoroFormValidation? validation,
+    bool validationProvided = true,
+    MyoroFormRequest<T>? request,
+    bool requestProvided = true,
+    MyoroFormOnSuccess<T>? onSuccess,
+    bool onSuccessProvided = true,
+    MyoroFormOnError? onError,
+    bool onErrorProvided = true,
+  }) {
+    return MyoroFormConfiguration(
+      validation: validationProvided ? (validation ?? self.validation) : null,
+      request: requestProvided ? (request ?? self.request) : null,
+      onSuccess: onSuccessProvided ? (onSuccess ?? self.onSuccess) : null,
+      onError: onErrorProvided ? (onError ?? self.onError) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroFormConfiguration<T> &&

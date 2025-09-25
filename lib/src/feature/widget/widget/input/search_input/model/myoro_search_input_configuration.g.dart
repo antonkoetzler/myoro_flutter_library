@@ -16,6 +16,66 @@ part of 'myoro_search_input_configuration.dart';
 mixin _$MyoroSearchInputConfigurationMixin<T> {
   MyoroSearchInputConfiguration<T> get self => this as MyoroSearchInputConfiguration<T>;
 
+  MyoroSearchInputConfiguration<T> copyWith({
+    bool? requestWhenChanged,
+    MyoroSearchInputRequest<T>? request,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+    MyoroInputStyleEnum? inputStyle,
+    TextAlign? textAlign,
+    String? label,
+    String? text,
+    String? placeholder,
+    Widget? suffix,
+    bool suffixProvided = true,
+    bool? enabled,
+    bool? readOnly,
+    bool? autofocus,
+    bool? showClearTextButton,
+    MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    MyoroInputValidation? validation,
+    bool validationProvided = true,
+    MyoroInputOnFieldSubmitted? onFieldSubmitted,
+    bool onFieldSubmittedProvided = true,
+    MyoroInputOnChanged? onChanged,
+    bool onChangedProvided = true,
+    VoidCallback? onCleared,
+    bool onClearedProvided = true,
+    Key? inputKey,
+    bool inputKeyProvided = true,
+    Key? checkboxKey,
+    bool checkboxKeyProvided = true,
+    FocusNode? focusNode,
+    bool focusNodeProvided = true,
+    TextEditingController? controller,
+    bool controllerProvided = true,
+  }) {
+    return MyoroSearchInputConfiguration(
+      requestWhenChanged: requestWhenChanged ?? self.requestWhenChanged,
+      request: request ?? self.request,
+      itemBuilder: itemBuilder ?? self.itemBuilder,
+      inputStyle: inputStyle ?? self.inputStyle,
+      textAlign: textAlign ?? self.textAlign,
+      label: label ?? self.label,
+      text: text ?? self.text,
+      placeholder: placeholder ?? self.placeholder,
+      suffix: suffixProvided ? (suffix ?? self.suffix) : null,
+      enabled: enabled ?? self.enabled,
+      readOnly: readOnly ?? self.readOnly,
+      autofocus: autofocus ?? self.autofocus,
+      showClearTextButton: showClearTextButton ?? self.showClearTextButton,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      validation: validationProvided ? (validation ?? self.validation) : null,
+      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
+      inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
+      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
+      focusNode: focusNodeProvided ? (focusNode ?? self.focusNode) : null,
+      controller: controllerProvided ? (controller ?? self.controller) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroSearchInputConfiguration<T> &&

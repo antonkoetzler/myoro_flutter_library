@@ -16,6 +16,18 @@ part of 'myoro_app_bar_style.dart';
 mixin _$MyoroAppBarStyleMixin {
   MyoroAppBarStyle get self => this as MyoroAppBarStyle;
 
+  MyoroAppBarStyle copyWith({
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
+  }) {
+    return MyoroAppBarStyle(
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroAppBarStyle &&

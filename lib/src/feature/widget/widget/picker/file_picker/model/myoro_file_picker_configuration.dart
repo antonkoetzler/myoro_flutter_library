@@ -43,19 +43,4 @@ class MyoroFilePickerConfiguration with _$MyoroFilePickerConfigurationMixin {
 
   /// Callback executed when the selected file changes
   final MyoroFilePickerOnChanged onChanged;
-
-  MyoroFilePickerConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    MyoroFilePickerFileTypeEnum? fileType,
-    List<String>? allowedExtensions,
-    MyoroFilePickerOnChanged? onChanged,
-  }) {
-    return MyoroFilePickerConfiguration(
-      title: titleProvided ? (title ?? this.title) : null,
-      fileType: fileType ?? this.fileType,
-      allowedExtensions: allowedExtensions ?? this.allowedExtensions,
-      onChanged: onChanged ?? this.onChanged,
-    );
-  }
 }

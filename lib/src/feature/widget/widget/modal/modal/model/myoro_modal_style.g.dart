@@ -16,6 +16,49 @@ part of 'myoro_modal_style.dart';
 mixin _$MyoroModalStyleMixin {
   MyoroModalStyle get self => this as MyoroModalStyle;
 
+  MyoroModalStyle copyWith({
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
+    Color? primaryColor,
+    bool primaryColorProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    BorderRadius? bottomSheetBorderRadius,
+    bool bottomSheetBorderRadiusProvided = true,
+    Border? border,
+    bool borderProvided = true,
+    Border? bottomSheetBorder,
+    bool bottomSheetBorderProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    EdgeInsets? closeButtonPadding,
+    bool closeButtonPaddingProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+    MyoroIconConfiguration? closeButtonIconConfiguration,
+    bool closeButtonIconConfigurationProvided = true,
+  }) {
+    return MyoroModalStyle(
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      bottomSheetBorderRadius: bottomSheetBorderRadiusProvided
+          ? (bottomSheetBorderRadius ?? self.bottomSheetBorderRadius)
+          : null,
+      border: borderProvided ? (border ?? self.border) : null,
+      bottomSheetBorder: bottomSheetBorderProvided ? (bottomSheetBorder ?? self.bottomSheetBorder) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? self.closeButtonPadding) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      closeButtonIconConfiguration: closeButtonIconConfigurationProvided
+          ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroModalStyle &&

@@ -70,44 +70,4 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
 
   /// Border radius.
   final BorderRadius? borderRadius;
-
-  /// Copy with.
-  MyoroButtonStyle copyWith({
-    Color? backgroundIdleColor,
-    bool backgroundIdleColorProvided = true,
-    Color? backgroundHoverColor,
-    bool backgroundHoverColorProvided = true,
-    Color? backgroundTapColor,
-    bool backgroundTapColorProvided = true,
-    Color? contentIdleColor,
-    bool contentIdleColorProvided = true,
-    Color? contentHoverColor,
-    bool contentHoverColorProvided = true,
-    Color? contentTapColor,
-    bool contentTapColorProvided = true,
-    double? borderWidth,
-    bool borderWidthProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    Color? borderIdleColor,
-    bool borderIdleColorProvided = true,
-    Color? borderHoverColor,
-    bool borderHoverColorProvided = true,
-    Color? borderTapColor,
-    bool borderTapColorProvided = true,
-  }) {
-    return MyoroButtonStyle(
-      backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? this.backgroundIdleColor) : null,
-      backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? this.backgroundHoverColor) : null,
-      backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? this.backgroundTapColor) : null,
-      contentIdleColor: contentIdleColorProvided ? (contentIdleColor ?? this.contentIdleColor) : null,
-      contentHoverColor: contentHoverColorProvided ? (contentHoverColor ?? this.contentHoverColor) : null,
-      contentTapColor: contentTapColorProvided ? (contentTapColor ?? this.contentTapColor) : null,
-      borderWidth: borderWidthProvided ? (borderWidth ?? this.borderWidth) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
-      borderIdleColor: borderIdleColorProvided ? (borderIdleColor ?? this.borderIdleColor) : null,
-      borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? this.borderHoverColor) : null,
-      borderTapColor: borderTapColorProvided ? (borderTapColor ?? this.borderTapColor) : null,
-    );
-  }
 }

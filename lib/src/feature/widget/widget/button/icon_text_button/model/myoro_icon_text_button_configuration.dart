@@ -53,31 +53,4 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
 
   /// Text configuration of the [MyoroIconTextButton].
   final MyoroTextConfiguration? textConfiguration;
-
-  @override
-  MyoroIconTextButtonConfiguration copyWith({
-    MouseCursor? cursor,
-    bool cursorProvided = true,
-    MyoroTooltipConfiguration? tooltipConfiguration,
-    bool tooltipConfigurationProvided = true,
-    MyoroButtonOnTapDown? onTapDown,
-    bool onTapDownProvided = true,
-    MyoroButtonOnTapUp? onTapUp,
-    bool onTapUpProvided = true,
-    bool? invert,
-    MyoroIconConfiguration? iconConfiguration,
-    bool iconConfigurationProvided = true,
-    MyoroTextConfiguration? textConfiguration,
-    bool textConfigurationProvided = true,
-  }) {
-    return MyoroIconTextButtonConfiguration(
-      cursor: cursorProvided ? (cursor ?? this.cursor) : null,
-      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? this.tooltipConfiguration) : null,
-      onTapDown: onTapDownProvided ? (onTapDown ?? this.onTapDown) : null,
-      onTapUp: onTapUpProvided ? (onTapUp ?? this.onTapUp) : null,
-      invert: invert ?? this.invert,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? this.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? this.textConfiguration) : null,
-    );
-  }
 }

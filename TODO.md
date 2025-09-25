@@ -1,6 +1,7 @@
 # TODO
 
 - (**IN PROGRESS**) Fix all tests and get back 100% coverage
+- (**IN PROGRESS**) Remove all `copyWith` implementations from all `@myoroModel`s when I deploy the version bringing back `copyWith` generation for `@myoroModel`
 - Storyboard
   - Fix all bugs
   - Remove redundant `checkboxOnChanged` fields in widget showcase option `Widget`s

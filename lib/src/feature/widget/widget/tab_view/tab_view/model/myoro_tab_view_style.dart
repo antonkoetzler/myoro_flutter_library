@@ -50,29 +50,4 @@ class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
   final TextStyle? tabButtonTextStyle;
 
   /// Copy with.
-  MyoroTabViewStyle copyWith({
-    BorderRadius? tabButtonBorderRadius,
-    bool tabButtonBorderRadiusProvided = true,
-    Color? tabButtonIdleColor,
-    bool tabButtonIdleColorProvided = true,
-    Color? tabButtonHoverColor,
-    bool tabButtonHoverColorProvided = true,
-    Color? tabButtonTapColor,
-    bool tabButtonTapColorProvided = true,
-    double? tabButtonIconSize,
-    bool tabButtonIconSizeProvided = true,
-    TextStyle? tabButtonTextStyle,
-    bool tabButtonTextStyleProvided = true,
-  }) {
-    return MyoroTabViewStyle(
-      tabButtonBorderRadius: tabButtonBorderRadiusProvided
-          ? (tabButtonBorderRadius ?? this.tabButtonBorderRadius)
-          : null,
-      tabButtonIdleColor: tabButtonIdleColorProvided ? (tabButtonIdleColor ?? this.tabButtonIdleColor) : null,
-      tabButtonHoverColor: tabButtonHoverColorProvided ? (tabButtonHoverColor ?? this.tabButtonHoverColor) : null,
-      tabButtonTapColor: tabButtonTapColorProvided ? (tabButtonTapColor ?? this.tabButtonTapColor) : null,
-      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? this.tabButtonIconSize) : null,
-      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? this.tabButtonTextStyle) : null,
-    );
-  }
 }

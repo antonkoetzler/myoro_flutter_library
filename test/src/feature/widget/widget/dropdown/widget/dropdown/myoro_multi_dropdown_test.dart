@@ -5,8 +5,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   final items = List.generate(faker.randomGenerator.integer(10, min: 1), (int index) => 'Item #$index').toSet();
-  final configuration = MyoroMultiDropdownConfiguration(
-    menuConfiguration: MyoroMultiMenuConfiguration(
+  final configuration = MyoroMultiDropdownConfiguration<String>(
+    menuConfiguration: MyoroMultiMenuConfiguration<String>(
       request: () => items,
       itemBuilder: (item) => MyoroMenuItem(
         iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(

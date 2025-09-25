@@ -35,27 +35,19 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   /// Data generated from
   final T? data;
 
-  MyoroRequest<T> copyWith({MyoroRequestEnum? status, String? errorMessage, T? data, bool dataProvided = true}) {
-    return MyoroRequest(
-      status: status ?? this.status,
-      errorMessage: errorMessage ?? this.errorMessage,
-      data: data ?? this.data,
-    );
-  }
-
   MyoroRequest<T> createIdleState() {
-    return copyWith(status: MyoroRequestEnum.idle);
+    return MyoroRequest(status: MyoroRequestEnum.idle, errorMessage: this.errorMessage, data: this.data);
   }
 
   MyoroRequest<T> createLoadingState() {
-    return copyWith(status: MyoroRequestEnum.loading);
+    return MyoroRequest(status: MyoroRequestEnum.loading, errorMessage: this.errorMessage, data: this.data);
   }
 
   MyoroRequest<T> createSuccessState(T? data) {
-    return copyWith(status: MyoroRequestEnum.success, data: data, dataProvided: data != null);
+    return MyoroRequest(status: MyoroRequestEnum.success, errorMessage: this.errorMessage, data: data);
   }
 
   MyoroRequest<T> createErrorState(String errorMessage) {
-    return copyWith(status: MyoroRequestEnum.error, errorMessage: errorMessage);
+    return MyoroRequest(status: MyoroRequestEnum.error, errorMessage: errorMessage, data: this.data);
   }
 }

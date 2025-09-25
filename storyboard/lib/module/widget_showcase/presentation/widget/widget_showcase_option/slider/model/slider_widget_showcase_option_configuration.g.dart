@@ -16,6 +16,23 @@ part of 'slider_widget_showcase_option_configuration.dart';
 mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
   SliderWidgetShowcaseOptionConfiguration get self => this as SliderWidgetShowcaseOptionConfiguration;
 
+  SliderWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    bool? enabled,
+    double? value,
+    SliderWidgetShowcaseOptionCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    MyoroSliderOnChanged<dynamic>? sliderOnChanged,
+  }) {
+    return SliderWidgetShowcaseOptionConfiguration(
+      label: label ?? self.label,
+      enabled: enabled ?? self.enabled,
+      value: value ?? self.value,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      sliderOnChanged: sliderOnChanged ?? self.sliderOnChanged,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is SliderWidgetShowcaseOptionConfiguration &&

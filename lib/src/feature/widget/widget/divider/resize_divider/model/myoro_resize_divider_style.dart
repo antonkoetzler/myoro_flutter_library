@@ -44,38 +44,4 @@ class MyoroResizeDividerStyle extends MyoroBasicDividerStyle with _$MyoroResizeD
 
   /// Height of the resize button.
   final double? resizeButtonLongValue;
-
-  @override
-  MyoroResizeDividerStyle copyWith({
-    Color? color,
-    bool colorProvided = true,
-    double? shortValue,
-    bool shortValueProvided = true,
-    double? longValue,
-    bool longValueProvided = true,
-    BorderRadius? resizeButtonBorderRadius,
-    bool resizeButtonBorderRadiusProvided = true,
-    Color? resizeButtonColor,
-    bool resizeButtonColorProvided = true,
-    double? resizeButtonShortValue,
-    bool resizeButtonShortValueProvided = true,
-    double? resizeButtonLongValue,
-    bool resizeButtonLongValueProvided = true,
-  }) {
-    return MyoroResizeDividerStyle(
-      color: colorProvided ? (color ?? this.color) : null,
-      shortValue: shortValueProvided ? (shortValue ?? this.shortValue) : null,
-      longValue: longValueProvided ? (longValue ?? this.longValue) : null,
-      resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
-          ? (resizeButtonBorderRadius ?? this.resizeButtonBorderRadius)
-          : null,
-      resizeButtonColor: resizeButtonColorProvided ? (resizeButtonColor ?? this.resizeButtonColor) : null,
-      resizeButtonShortValue: resizeButtonShortValueProvided
-          ? (resizeButtonShortValue ?? this.resizeButtonShortValue)
-          : null,
-      resizeButtonLongValue: resizeButtonLongValueProvided
-          ? (resizeButtonLongValue ?? this.resizeButtonLongValue)
-          : null,
-    );
-  }
 }

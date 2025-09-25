@@ -42,23 +42,6 @@ class MyoroMenuItem with _$MyoroMenuItemMixin {
   /// [MyoroIconTextButtonConfiguration] for simpler menu items.
   final MyoroIconTextButtonConfiguration? iconTextButtonConfiguration;
 
-  MyoroMenuItem copyWith({
-    MyoroButtonConfiguration? buttonConfiguration,
-    bool buttonConfigurationProvided = true,
-    MyoroButtonBuilder? buttonBuilder,
-    bool buttonBuilderProvided = true,
-    MyoroIconTextButtonConfiguration? iconTextButtonConfiguration,
-    bool iconTextButtonConfigurationProvided = true,
-  }) {
-    return MyoroMenuItem(
-      buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? this.buttonConfiguration) : null,
-      buttonBuilder: buttonBuilderProvided ? (buttonBuilder ?? this.buttonBuilder) : null,
-      iconTextButtonConfiguration: iconTextButtonConfigurationProvided
-          ? (iconTextButtonConfiguration ?? this.iconTextButtonConfiguration)
-          : null,
-    );
-  }
-
   /// Alias of the effective [MyoroButtonConfiguration.onTapUp].
   MyoroButtonOnTapUp? get onTapUp => buttonConfiguration?.onTapUp ?? iconTextButtonConfiguration?.onTapUp;
 }

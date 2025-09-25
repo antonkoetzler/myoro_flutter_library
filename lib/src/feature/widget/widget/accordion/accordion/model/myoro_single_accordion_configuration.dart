@@ -6,7 +6,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_single_accordion_configuration.g.dart';
 
 /// [MyoroSingleAccordion] configuration.
-@immutable
 @myoroModel
 class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T>
     with _$MyoroSingleAccordionConfigurationMixin<T> {
@@ -29,23 +28,6 @@ class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T
     );
   }
   // coverage:ignore-end
-
-  MyoroSingleAccordionConfiguration<T> copyWith({
-    bool? thumbVisibility,
-    MyoroAccordionBuilder<T>? titleBuilder,
-    MyoroAccordionBuilder<T>? contentBuilder,
-    Set<T>? items,
-    T? selectedItem,
-    bool selectedItemProvided = true,
-  }) {
-    return MyoroSingleAccordionConfiguration(
-      thumbVisibility: thumbVisibility ?? this.thumbVisibility,
-      titleBuilder: titleBuilder ?? this.titleBuilder,
-      contentBuilder: contentBuilder ?? this.contentBuilder,
-      items: items ?? this.items,
-      selectedItem: selectedItemProvided ? (selectedItem ?? this.selectedItem) : null,
-    );
-  }
 
   /// Selected item.
   final T? selectedItem;

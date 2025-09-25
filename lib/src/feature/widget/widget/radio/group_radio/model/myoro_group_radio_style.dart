@@ -27,15 +27,4 @@ class MyoroGroupRadioStyle with _$MyoroGroupRadioStyleMixin {
   final double? runSpacing;
 
   /// Copy with.
-  MyoroGroupRadioStyle copyWith({
-    double? spacing,
-    bool spacingProvided = true,
-    double? runSpacing,
-    bool runSpacingProvided = true,
-  }) {
-    return MyoroGroupRadioStyle(
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
-    );
-  }
 }

@@ -16,6 +16,27 @@ part of 'myoro_multi_menu_configuration.dart';
 mixin _$MyoroMultiMenuConfigurationMixin<T> {
   MyoroMultiMenuConfiguration<T> get self => this as MyoroMultiMenuConfiguration<T>;
 
+  MyoroMultiMenuConfiguration<T> copyWith({
+    Set<T>? selectedItems,
+    MyoroMultiMenuOnChanged<T>? onChanged,
+    bool onChangedProvided = true,
+    MyoroMenuRequest<T>? request,
+    MyoroMenuOnEndReachedRequest<T>? onEndReachedRequest,
+    bool onEndReachedRequestProvided = true,
+    MyoroMenuSearchCallback<T>? searchCallback,
+    bool searchCallbackProvided = true,
+    MyoroMenuItemBuilder<T>? itemBuilder,
+  }) {
+    return MyoroMultiMenuConfiguration(
+      selectedItems: selectedItems ?? self.selectedItems,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      request: request ?? self.request,
+      onEndReachedRequest: onEndReachedRequestProvided ? (onEndReachedRequest ?? self.onEndReachedRequest) : null,
+      searchCallback: searchCallbackProvided ? (searchCallback ?? self.searchCallback) : null,
+      itemBuilder: itemBuilder ?? self.itemBuilder,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroMultiMenuConfiguration<T> &&

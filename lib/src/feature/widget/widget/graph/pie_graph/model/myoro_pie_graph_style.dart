@@ -27,15 +27,4 @@ class MyoroPieGraphStyle with _$MyoroPieGraphStyleMixin {
   final double? itemRadius;
 
   /// Copy with.
-  MyoroPieGraphStyle copyWith({
-    Color? itemColor,
-    bool itemColorProvided = true,
-    double? itemRadius,
-    bool itemRadiusProvided = true,
-  }) {
-    return MyoroPieGraphStyle(
-      itemColor: itemColorProvided ? (itemColor ?? this.itemColor) : null,
-      itemRadius: itemRadiusProvided ? (itemRadius ?? this.itemRadius) : null,
-    );
-  }
 }

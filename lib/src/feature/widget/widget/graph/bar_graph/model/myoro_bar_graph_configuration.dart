@@ -23,8 +23,4 @@ class MyoroBarGraphConfiguration with _$MyoroBarGraphConfigurationMixin {
 
   /// Items of the graph.
   final List<MyoroBarGraphGroup> items;
-
-  MyoroBarGraphConfiguration copyWith({bool? sorted, List<MyoroBarGraphGroup>? items}) {
-    return MyoroBarGraphConfiguration(sorted: sorted ?? this.sorted, items: items ?? this.items);
-  }
 }

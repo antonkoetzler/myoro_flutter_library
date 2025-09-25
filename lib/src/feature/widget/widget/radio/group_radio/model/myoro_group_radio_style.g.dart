@@ -16,6 +16,18 @@ part of 'myoro_group_radio_style.dart';
 mixin _$MyoroGroupRadioStyleMixin {
   MyoroGroupRadioStyle get self => this as MyoroGroupRadioStyle;
 
+  MyoroGroupRadioStyle copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    double? runSpacing,
+    bool runSpacingProvided = true,
+  }) {
+    return MyoroGroupRadioStyle(
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroGroupRadioStyle &&

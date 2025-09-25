@@ -25,12 +25,4 @@ class MyoroCircularLoaderStyle with _$MyoroCircularLoaderStyleMixin {
 
   /// Default size of the [MyoroCircularLoader].
   final double? size;
-
-  /// Copy with.
-  MyoroCircularLoaderStyle copyWith({Color? color, bool colorProvided = true, double? size, bool sizeProvided = true}) {
-    return MyoroCircularLoaderStyle(
-      color: colorProvided ? (color ?? this.color) : null,
-      size: sizeProvided ? (size ?? this.size) : null,
-    );
-  }
 }

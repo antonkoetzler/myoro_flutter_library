@@ -16,6 +16,21 @@ part of 'myoro_basic_divider_style.dart';
 mixin _$MyoroBasicDividerStyleMixin {
   MyoroBasicDividerStyle get self => this as MyoroBasicDividerStyle;
 
+  MyoroBasicDividerStyle copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? shortValue,
+    bool shortValueProvided = true,
+    double? longValue,
+    bool longValueProvided = true,
+  }) {
+    return MyoroBasicDividerStyle(
+      color: colorProvided ? (color ?? self.color) : null,
+      shortValue: shortValueProvided ? (shortValue ?? self.shortValue) : null,
+      longValue: longValueProvided ? (longValue ?? self.longValue) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroBasicDividerStyle &&

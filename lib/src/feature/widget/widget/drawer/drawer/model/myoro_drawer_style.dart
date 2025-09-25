@@ -43,21 +43,4 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
 
   /// Text style of text in [_Title].
   final TextStyle? titleTextStyle;
-
-  /// Copy with.
-  MyoroDrawerStyle copyWith({
-    EdgeInsets? drawerPadding,
-    EdgeInsets? drawerContentPadding,
-    ShapeBorder? drawerShape,
-    EdgeInsets? titleContentDividerPadding,
-    TextStyle? titleTextStyle,
-  }) {
-    return MyoroDrawerStyle(
-      drawerPadding: drawerPadding ?? this.drawerPadding,
-      drawerContentPadding: drawerContentPadding ?? this.drawerContentPadding,
-      drawerShape: drawerShape ?? this.drawerShape,
-      titleContentDividerPadding: titleContentDividerPadding ?? this.titleContentDividerPadding,
-      titleTextStyle: titleTextStyle ?? this.titleTextStyle,
-    );
-  }
 }

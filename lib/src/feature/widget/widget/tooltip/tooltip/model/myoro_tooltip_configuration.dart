@@ -25,8 +25,4 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
 
   /// Text of the tooltip.
   final String text;
-
-  MyoroTooltipConfiguration copyWith({Duration? waitDuration, String? text}) {
-    return MyoroTooltipConfiguration(waitDuration: waitDuration ?? this.waitDuration, text: text ?? this.text);
-  }
 }

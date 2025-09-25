@@ -16,6 +16,51 @@ part of 'myoro_icon_text_button_style.dart';
 mixin _$MyoroIconTextButtonStyleMixin {
   MyoroIconTextButtonStyle get self => this as MyoroIconTextButtonStyle;
 
+  MyoroIconTextButtonStyle copyWith({
+    EdgeInsets? contentPadding,
+    bool contentPaddingProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
+    Color? backgroundIdleColor,
+    bool backgroundIdleColorProvided = true,
+    Color? backgroundHoverColor,
+    bool backgroundHoverColorProvided = true,
+    Color? backgroundTapColor,
+    bool backgroundTapColorProvided = true,
+    Color? contentIdleColor,
+    bool contentIdleColorProvided = true,
+    Color? contentHoverColor,
+    bool contentHoverColorProvided = true,
+    Color? contentTapColor,
+    bool contentTapColorProvided = true,
+    double? borderWidth,
+    bool borderWidthProvided = true,
+    Color? borderIdleColor,
+    bool borderIdleColorProvided = true,
+    Color? borderHoverColor,
+    bool borderHoverColorProvided = true,
+    Color? borderTapColor,
+    bool borderTapColorProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+  }) {
+    return MyoroIconTextButtonStyle(
+      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
+      backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
+      backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
+      contentIdleColor: contentIdleColorProvided ? (contentIdleColor ?? self.contentIdleColor) : null,
+      contentHoverColor: contentHoverColorProvided ? (contentHoverColor ?? self.contentHoverColor) : null,
+      contentTapColor: contentTapColorProvided ? (contentTapColor ?? self.contentTapColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderIdleColor: borderIdleColorProvided ? (borderIdleColor ?? self.borderIdleColor) : null,
+      borderHoverColor: borderHoverColorProvided ? (borderHoverColor ?? self.borderHoverColor) : null,
+      borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroIconTextButtonStyle &&

@@ -32,15 +32,4 @@ class MyoroTableColumnWidthConfiguration with _$MyoroTableColumnWidthConfigurati
 
   /// Fixed width when [typeEnum] is [MyoroTableColumnWidthConfigurationEnum.fixed].
   final double? fixedWidth;
-
-  MyoroTableColumnWidthConfiguration copyWith({
-    MyoroTableColumnWidthConfigurationEnum? typeEnum,
-    double? fixedWidth,
-    bool fixedWidthProvided = true,
-  }) {
-    return MyoroTableColumnWidthConfiguration(
-      typeEnum: typeEnum ?? this.typeEnum,
-      fixedWidth: fixedWidthProvided ? (fixedWidth ?? this.fixedWidth) : null,
-    );
-  }
 }

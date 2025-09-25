@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 void main() {
   group('MyoroNumberInputFormatter', () {
     test('adds digit to end with decimalPlaces = 2', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 0, max: 9.99);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 0, max: 9.99);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '0.00', selection: TextSelection.collapsed(offset: 4)),
@@ -16,7 +16,7 @@ void main() {
     });
 
     test('removes digit from end with decimalPlaces = 2', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 0);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 0);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '1.11', selection: TextSelection.collapsed(offset: 4)),
@@ -27,7 +27,7 @@ void main() {
     });
 
     test('disallows non-numeric input', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '1.11', selection: TextSelection.collapsed(offset: 4)),
@@ -38,7 +38,7 @@ void main() {
     });
 
     test('applies max limit', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2, max: 2.00);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2, max: 2.00);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '2.00', selection: TextSelection.collapsed(offset: 4)),
@@ -49,7 +49,7 @@ void main() {
     });
 
     test('resets to min on empty input', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 1.23);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 1.23);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '1.23', selection: TextSelection.collapsed(offset: 4)),
@@ -60,7 +60,7 @@ void main() {
     });
 
     test('adds digit at end with decimalPlaces = 0 (integer only)', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 0, min: 0, max: 9);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 0, min: 0, max: 9);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '1', selection: TextSelection.collapsed(offset: 1)),
@@ -71,7 +71,7 @@ void main() {
     });
 
     test('adds digit not at end', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '1.11', selection: TextSelection.collapsed(offset: 1)),
@@ -82,7 +82,7 @@ void main() {
     });
 
     test('removes digit at end below min (triggers _isLessThenMin with decimalPlaces = 0)', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 0, min: 5);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 0, min: 5);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '5', selection: TextSelection.collapsed(offset: 1)),
@@ -93,7 +93,7 @@ void main() {
     });
 
     test('removes digit not at end', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2);
 
       final result = formatter.formatEditUpdate(
         const TextEditingValue(text: '1.23', selection: TextSelection.collapsed(offset: 2)),
@@ -104,7 +104,7 @@ void main() {
     });
 
     test('initialText returns formatted min', () {
-      final formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 1.23);
+      const formatter = MyoroNumberInputFormatter(decimalPlaces: 2, min: 1.23);
       expect(formatter.initialText, '1.23');
     });
   });

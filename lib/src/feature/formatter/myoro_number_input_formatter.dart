@@ -7,7 +7,7 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
   final double? max;
   final int decimalPlaces;
 
-  MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0});
+  const MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0});
 
   @override
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {

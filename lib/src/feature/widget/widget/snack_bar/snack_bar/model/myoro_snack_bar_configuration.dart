@@ -44,19 +44,4 @@ class MyoroSnackBarConfiguration with _$MyoroSnackBarConfigurationMixin {
 
   /// [Widget] content mode of the snack bar.
   final Widget? child;
-
-  MyoroSnackBarConfiguration copyWith({
-    MyoroSnackBarTypeEnum? snackBarType,
-    bool? showCloseButton,
-    String? message,
-    Widget? child,
-    bool childProvided = true,
-  }) {
-    return MyoroSnackBarConfiguration(
-      snackBarType: snackBarType ?? this.snackBarType,
-      showCloseButton: showCloseButton ?? this.showCloseButton,
-      message: message ?? this.message,
-      child: childProvided ? (child ?? this.child) : null,
-    );
-  }
 }

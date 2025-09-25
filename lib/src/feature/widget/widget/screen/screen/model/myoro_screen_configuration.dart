@@ -26,18 +26,4 @@ class MyoroScreenConfiguration with _$MyoroScreenConfigurationMixin {
 
   /// Body of the screen.
   final Widget body;
-
-  MyoroScreenConfiguration copyWith({
-    MyoroDrawerController? drawerController,
-    bool drawerControllerProvided = true,
-    PreferredSizeWidget? appBar,
-    bool appBarProvided = true,
-    Widget? body,
-  }) {
-    return MyoroScreenConfiguration(
-      drawerController: drawerController ?? this.drawerController,
-      appBar: appBar ?? this.appBar,
-      body: body ?? this.body,
-    );
-  }
 }

@@ -16,6 +16,60 @@ part of 'myoro_input_configuration.dart';
 mixin _$MyoroInputConfigurationMixin {
   MyoroInputConfiguration get self => this as MyoroInputConfiguration;
 
+  MyoroInputConfiguration copyWith({
+    MyoroInputStyleEnum? inputStyle,
+    TextAlign? textAlign,
+    String? label,
+    String? text,
+    String? placeholder,
+    Widget? suffix,
+    bool suffixProvided = true,
+    bool? enabled,
+    bool? readOnly,
+    bool? autofocus,
+    bool? showClearTextButton,
+    MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
+    MyoroInputValidation? validation,
+    bool validationProvided = true,
+    MyoroInputOnFieldSubmitted? onFieldSubmitted,
+    bool onFieldSubmittedProvided = true,
+    MyoroInputOnChanged? onChanged,
+    bool onChangedProvided = true,
+    VoidCallback? onCleared,
+    bool onClearedProvided = true,
+    Key? inputKey,
+    bool inputKeyProvided = true,
+    Key? checkboxKey,
+    bool checkboxKeyProvided = true,
+    FocusNode? focusNode,
+    bool focusNodeProvided = true,
+    TextEditingController? controller,
+    bool controllerProvided = true,
+  }) {
+    return MyoroInputConfiguration(
+      inputStyle: inputStyle ?? self.inputStyle,
+      textAlign: textAlign ?? self.textAlign,
+      label: label ?? self.label,
+      text: text ?? self.text,
+      placeholder: placeholder ?? self.placeholder,
+      suffix: suffixProvided ? (suffix ?? self.suffix) : null,
+      enabled: enabled ?? self.enabled,
+      readOnly: readOnly ?? self.readOnly,
+      autofocus: autofocus ?? self.autofocus,
+      showClearTextButton: showClearTextButton ?? self.showClearTextButton,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      validation: validationProvided ? (validation ?? self.validation) : null,
+      onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
+      onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
+      inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
+      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
+      focusNode: focusNodeProvided ? (focusNode ?? self.focusNode) : null,
+      controller: controllerProvided ? (controller ?? self.controller) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroInputConfiguration &&

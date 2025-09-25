@@ -29,17 +29,4 @@ class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
 
   /// Function that is executed when the checkbox is changed.
   final MyoroCheckboxOnChanged? onChanged;
-
-  MyoroCheckboxConfiguration copyWith({
-    String? label,
-    bool? value,
-    MyoroCheckboxOnChanged? onChanged,
-    bool onChangedProvided = true,
-  }) {
-    return MyoroCheckboxConfiguration(
-      label: label ?? this.label,
-      value: value ?? this.value,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-    );
-  }
 }

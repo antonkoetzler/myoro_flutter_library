@@ -16,6 +16,36 @@ part of 'myoro_checkbox_style.dart';
 mixin _$MyoroCheckboxStyleMixin {
   MyoroCheckboxStyle get self => this as MyoroCheckboxStyle;
 
+  MyoroCheckboxStyle copyWith({
+    Color? checkboxActiveColor,
+    bool checkboxActiveColorProvided = true,
+    Color? checkboxCheckColor,
+    bool checkboxCheckColorProvided = true,
+    Color? checkboxHoverColor,
+    bool checkboxHoverColorProvided = true,
+    Color? checkboxFocusColor,
+    bool checkboxFocusColorProvided = true,
+    double? checkboxSplashRadius,
+    bool checkboxSplashRadiusProvided = true,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    int? labelMaxLines,
+    bool labelMaxLinesProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
+  }) {
+    return MyoroCheckboxStyle(
+      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? self.checkboxActiveColor) : null,
+      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? self.checkboxCheckColor) : null,
+      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? self.checkboxHoverColor) : null,
+      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? self.checkboxFocusColor) : null,
+      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? self.checkboxSplashRadius) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroCheckboxStyle &&

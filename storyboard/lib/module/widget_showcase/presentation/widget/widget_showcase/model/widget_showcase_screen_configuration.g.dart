@@ -16,6 +16,20 @@ part of 'widget_showcase_screen_configuration.dart';
 mixin _$WidgetShowcaseScreenConfigurationMixin {
   WidgetShowcaseScreenConfiguration get self => this as WidgetShowcaseScreenConfiguration;
 
+  WidgetShowcaseScreenConfiguration copyWith({
+    String? widgetName,
+    Widget? widget,
+    List<Widget>? configurationOptions,
+    List<Widget>? stylingOptions,
+  }) {
+    return WidgetShowcaseScreenConfiguration(
+      widgetName: widgetName ?? self.widgetName,
+      widget: widget ?? self.widget,
+      configurationOptions: configurationOptions ?? self.configurationOptions,
+      stylingOptions: stylingOptions ?? self.stylingOptions,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is WidgetShowcaseScreenConfiguration &&

@@ -16,6 +16,47 @@ part of 'myoro_snack_bar_style.dart';
 mixin _$MyoroSnackBarStyleMixin {
   MyoroSnackBarStyle get self => this as MyoroSnackBarStyle;
 
+  MyoroSnackBarStyle copyWith({
+    Color? primaryColor,
+    bool primaryColorProvided = true,
+    Color? standardBorderColor,
+    bool standardBorderColorProvided = true,
+    Color? attentionBorderColor,
+    bool attentionBorderColorProvided = true,
+    Color? successBorderColor,
+    bool successBorderColorProvided = true,
+    Color? errorBorderColor,
+    bool errorBorderColorProvided = true,
+    double? borderWidth,
+    bool borderWidthProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
+    TextStyle? messageTextStyle,
+    bool messageTextStyleProvided = true,
+    MyoroIconConfiguration? closeButtonIconConfiguration,
+    bool closeButtonIconConfigurationProvided = true,
+  }) {
+    return MyoroSnackBarStyle(
+      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      standardBorderColor: standardBorderColorProvided ? (standardBorderColor ?? self.standardBorderColor) : null,
+      attentionBorderColor: attentionBorderColorProvided ? (attentionBorderColor ?? self.attentionBorderColor) : null,
+      successBorderColor: successBorderColorProvided ? (successBorderColor ?? self.successBorderColor) : null,
+      errorBorderColor: errorBorderColorProvided ? (errorBorderColor ?? self.errorBorderColor) : null,
+      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      messageTextStyle: messageTextStyleProvided ? (messageTextStyle ?? self.messageTextStyle) : null,
+      closeButtonIconConfiguration: closeButtonIconConfigurationProvided
+          ? (closeButtonIconConfiguration ?? self.closeButtonIconConfiguration)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroSnackBarStyle &&

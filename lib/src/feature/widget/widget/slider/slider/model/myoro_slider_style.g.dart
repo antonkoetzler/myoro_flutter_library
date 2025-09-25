@@ -16,6 +16,20 @@ part of 'myoro_slider_style.dart';
 mixin _$MyoroSliderStyleMixin {
   MyoroSliderStyle get self => this as MyoroSliderStyle;
 
+  MyoroSliderStyle copyWith({
+    TextStyle? indicatorTextStyle,
+    bool indicatorTextStyleProvided = true,
+    TextAlign? indicatorTextAlignment,
+    bool indicatorTextAlignmentProvided = true,
+  }) {
+    return MyoroSliderStyle(
+      indicatorTextStyle: indicatorTextStyleProvided ? (indicatorTextStyle ?? self.indicatorTextStyle) : null,
+      indicatorTextAlignment: indicatorTextAlignmentProvided
+          ? (indicatorTextAlignment ?? self.indicatorTextAlignment)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroSliderStyle &&

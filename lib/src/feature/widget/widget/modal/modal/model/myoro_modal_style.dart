@@ -73,48 +73,4 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
 
   /// [MyoroIconConfiguration] of [_CloseButton].
   final MyoroIconConfiguration? closeButtonIconConfiguration;
-
-  /// Copy with.
-  MyoroModalStyle copyWith({
-    BoxConstraints? constraints,
-    bool constraintsProvided = true,
-    Color? primaryColor,
-    bool primaryColorProvided = true,
-    BorderRadius? borderRadius,
-    bool borderRadiusProvided = true,
-    BorderRadius? bottomSheetBorderRadius,
-    bool bottomSheetBorderRadiusProvided = true,
-    Border? border,
-    bool borderProvided = true,
-    Border? bottomSheetBorder,
-    bool bottomSheetBorderProvided = true,
-    EdgeInsets? padding,
-    bool paddingProvided = true,
-    EdgeInsets? closeButtonPadding,
-    bool closeButtonPaddingProvided = true,
-    double? spacing,
-    bool spacingProvided = true,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    MyoroIconConfiguration? closeButtonIconConfiguration,
-    bool closeButtonIconConfigurationProvided = true,
-  }) {
-    return MyoroModalStyle(
-      constraints: constraintsProvided ? (constraints ?? this.constraints) : null,
-      primaryColor: primaryColorProvided ? (primaryColor ?? this.primaryColor) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? this.borderRadius) : null,
-      bottomSheetBorderRadius: bottomSheetBorderRadiusProvided
-          ? (bottomSheetBorderRadius ?? this.bottomSheetBorderRadius)
-          : null,
-      border: borderProvided ? (border ?? this.border) : null,
-      bottomSheetBorder: bottomSheetBorderProvided ? (bottomSheetBorder ?? this.bottomSheetBorder) : null,
-      padding: paddingProvided ? (padding ?? this.padding) : null,
-      closeButtonPadding: closeButtonPaddingProvided ? (closeButtonPadding ?? this.closeButtonPadding) : null,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
-      closeButtonIconConfiguration: closeButtonIconConfigurationProvided
-          ? (closeButtonIconConfiguration ?? this.closeButtonIconConfiguration)
-          : null,
-    );
-  }
 }

@@ -16,6 +16,17 @@ part of 'myoro_table_column_width_configuration.dart';
 mixin _$MyoroTableColumnWidthConfigurationMixin {
   MyoroTableColumnWidthConfiguration get self => this as MyoroTableColumnWidthConfiguration;
 
+  MyoroTableColumnWidthConfiguration copyWith({
+    MyoroTableColumnWidthConfigurationEnum? typeEnum,
+    double? fixedWidth,
+    bool fixedWidthProvided = true,
+  }) {
+    return MyoroTableColumnWidthConfiguration(
+      typeEnum: typeEnum ?? self.typeEnum,
+      fixedWidth: fixedWidthProvided ? (fixedWidth ?? self.fixedWidth) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTableColumnWidthConfiguration &&

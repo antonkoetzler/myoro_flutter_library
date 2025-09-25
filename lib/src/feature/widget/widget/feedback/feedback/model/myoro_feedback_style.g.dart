@@ -16,6 +16,24 @@ part of 'myoro_feedback_style.dart';
 mixin _$MyoroFeedbackStyleMixin {
   MyoroFeedbackStyle get self => this as MyoroFeedbackStyle;
 
+  MyoroFeedbackStyle copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    double? iconSize,
+    bool iconSizeProvided = true,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+    TextStyle? subtitleTextStyle,
+    bool subtitleTextStyleProvided = true,
+  }) {
+    return MyoroFeedbackStyle(
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      iconSize: iconSizeProvided ? (iconSize ?? self.iconSize) : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      subtitleTextStyle: subtitleTextStyleProvided ? (subtitleTextStyle ?? self.subtitleTextStyle) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroFeedbackStyle &&

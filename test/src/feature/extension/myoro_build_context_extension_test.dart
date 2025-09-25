@@ -2,7 +2,6 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:myoro_flutter_library/src/mock/theme_extension.mocks.dart';
 
 void main() {
   testWidgets('MyoroBuildContextExtension', (WidgetTester tester) async {
@@ -47,7 +46,7 @@ void main() {
     expect(context.themeExtensions, Theme.of(context).extensions);
 
     // [MyoroBuildContextExtension.resolveThemeExtension]
-    expect(() => context.resolveThemeExtension<MyoroCardThemeExtension>(), throwsA(isA<StateError>()));
+    expect(() => context.resolveThemeExtension<MyoroCardThemeExtension>(), returnsNormally);
     expect(() => context.resolveThemeExtension<MockThemeExtension>(), throwsA(isA<StateError>()));
 
     // Note: Testing drawer and snackbar functionality requires theme extensions to be registered

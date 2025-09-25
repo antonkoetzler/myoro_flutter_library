@@ -33,23 +33,4 @@ class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
 
   /// [TextStyle] of the subtitle.
   final TextStyle? subtitleTextStyle;
-
-  /// Copy with.
-  MyoroFeedbackStyle copyWith({
-    double? spacing,
-    bool spacingProvided = true,
-    double? iconSize,
-    bool iconSizeProvided = true,
-    TextStyle? titleTextStyle,
-    bool titleTextStyleProvided = true,
-    TextStyle? subtitleTextStyle,
-    bool subtitleTextStyleProvided = true,
-  }) {
-    return MyoroFeedbackStyle(
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      iconSize: iconSizeProvided ? (iconSize ?? this.iconSize) : null,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? this.titleTextStyle) : null,
-      subtitleTextStyle: subtitleTextStyleProvided ? (subtitleTextStyle ?? this.subtitleTextStyle) : null,
-    );
-  }
 }

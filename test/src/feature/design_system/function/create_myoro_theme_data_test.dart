@@ -2,7 +2,6 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:myoro_flutter_library/src/mock/theme_extension.mocks.dart';
 
 void main() {
   final isDarkMode = faker.randomGenerator.boolean();

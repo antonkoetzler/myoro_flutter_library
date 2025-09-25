@@ -16,6 +16,19 @@ part of 'myoro_table_column.dart';
 mixin _$MyoroTableColumnMixin {
   MyoroTableColumn get self => this as MyoroTableColumn;
 
+  MyoroTableColumn copyWith({
+    String? tooltipMessage,
+    bool tooltipMessageProvided = true,
+    MyoroTableColumnWidthConfiguration? widthConfiguration,
+    Widget? child,
+  }) {
+    return MyoroTableColumn(
+      tooltipMessage: tooltipMessageProvided ? (tooltipMessage ?? self.tooltipMessage) : null,
+      widthConfiguration: widthConfiguration ?? self.widthConfiguration,
+      child: child ?? self.child,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTableColumn &&

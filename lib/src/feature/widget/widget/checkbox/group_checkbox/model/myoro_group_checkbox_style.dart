@@ -40,37 +40,4 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
   final double? runSpacing;
 
   /// Copy with.
-  @override
-  MyoroGroupCheckboxStyle copyWith({
-    Color? checkboxActiveColor,
-    bool checkboxActiveColorProvided = true,
-    Color? checkboxCheckColor,
-    bool checkboxCheckColorProvided = true,
-    Color? checkboxHoverColor,
-    bool checkboxHoverColorProvided = true,
-    Color? checkboxFocusColor,
-    bool checkboxFocusColorProvided = true,
-    double? checkboxSplashRadius,
-    bool checkboxSplashRadiusProvided = true,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    int? labelMaxLines,
-    bool labelMaxLinesProvided = true,
-    double? spacing,
-    bool spacingProvided = true,
-    double? runSpacing,
-    bool runSpacingProvided = true,
-  }) {
-    return MyoroGroupCheckboxStyle(
-      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? this.checkboxActiveColor) : null,
-      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? this.checkboxCheckColor) : null,
-      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? this.checkboxHoverColor) : null,
-      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? this.checkboxFocusColor) : null,
-      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? this.checkboxSplashRadius) : null,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
-      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? this.labelMaxLines) : null,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
-    );
-  }
 }

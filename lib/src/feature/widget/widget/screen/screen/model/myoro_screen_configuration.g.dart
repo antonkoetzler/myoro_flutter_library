@@ -16,6 +16,20 @@ part of 'myoro_screen_configuration.dart';
 mixin _$MyoroScreenConfigurationMixin {
   MyoroScreenConfiguration get self => this as MyoroScreenConfiguration;
 
+  MyoroScreenConfiguration copyWith({
+    MyoroDrawerController? drawerController,
+    bool drawerControllerProvided = true,
+    PreferredSizeWidget? appBar,
+    bool appBarProvided = true,
+    Widget? body,
+  }) {
+    return MyoroScreenConfiguration(
+      drawerController: drawerControllerProvided ? (drawerController ?? self.drawerController) : null,
+      appBar: appBarProvided ? (appBar ?? self.appBar) : null,
+      body: body ?? self.body,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroScreenConfiguration &&

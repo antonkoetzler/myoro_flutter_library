@@ -39,24 +39,4 @@ class MyoroRadioStyle with _$MyoroRadioStyleMixin {
   final double? splashRadius;
 
   /// Copy with.
-  MyoroRadioStyle copyWith({
-    Color? activeColor,
-    bool activeColorProvided = true,
-    Color? hoverColor,
-    bool hoverColorProvided = true,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    double? spacing,
-    bool spacingProvided = true,
-    double? splashRadius,
-    bool splashRadiusProvided = true,
-  }) {
-    return MyoroRadioStyle(
-      activeColor: activeColorProvided ? (activeColor ?? this.activeColor) : null,
-      hoverColor: hoverColorProvided ? (hoverColor ?? this.hoverColor) : null,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      splashRadius: splashRadiusProvided ? (splashRadius ?? this.splashRadius) : null,
-    );
-  }
 }

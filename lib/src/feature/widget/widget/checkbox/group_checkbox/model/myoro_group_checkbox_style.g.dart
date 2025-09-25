@@ -16,6 +16,39 @@ part of 'myoro_group_checkbox_style.dart';
 mixin _$MyoroGroupCheckboxStyleMixin {
   MyoroGroupCheckboxStyle get self => this as MyoroGroupCheckboxStyle;
 
+  MyoroGroupCheckboxStyle copyWith({
+    double? runSpacing,
+    bool runSpacingProvided = true,
+    Color? checkboxActiveColor,
+    bool checkboxActiveColorProvided = true,
+    Color? checkboxCheckColor,
+    bool checkboxCheckColorProvided = true,
+    Color? checkboxHoverColor,
+    bool checkboxHoverColorProvided = true,
+    Color? checkboxFocusColor,
+    bool checkboxFocusColorProvided = true,
+    double? checkboxSplashRadius,
+    bool checkboxSplashRadiusProvided = true,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    int? labelMaxLines,
+    bool labelMaxLinesProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
+  }) {
+    return MyoroGroupCheckboxStyle(
+      runSpacing: runSpacingProvided ? (runSpacing ?? self.runSpacing) : null,
+      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? self.checkboxActiveColor) : null,
+      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? self.checkboxCheckColor) : null,
+      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? self.checkboxHoverColor) : null,
+      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? self.checkboxFocusColor) : null,
+      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? self.checkboxSplashRadius) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroGroupCheckboxStyle &&

@@ -16,6 +16,20 @@ part of 'myoro_request.dart';
 mixin _$MyoroRequestMixin<T> {
   MyoroRequest<T> get self => this as MyoroRequest<T>;
 
+  MyoroRequest<T> copyWith({
+    MyoroRequestEnum? status,
+    String? errorMessage,
+    bool errorMessageProvided = true,
+    T? data,
+    bool dataProvided = true,
+  }) {
+    return MyoroRequest(
+      status: status ?? self.status,
+      errorMessage: errorMessageProvided ? (errorMessage ?? self.errorMessage) : null,
+      data: dataProvided ? (data ?? self.data) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroRequest<T> &&

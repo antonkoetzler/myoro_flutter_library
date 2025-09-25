@@ -16,6 +16,29 @@ part of 'myoro_drawer_style.dart';
 mixin _$MyoroDrawerStyleMixin {
   MyoroDrawerStyle get self => this as MyoroDrawerStyle;
 
+  MyoroDrawerStyle copyWith({
+    EdgeInsets? drawerPadding,
+    bool drawerPaddingProvided = true,
+    EdgeInsets? drawerContentPadding,
+    bool drawerContentPaddingProvided = true,
+    ShapeBorder? drawerShape,
+    bool drawerShapeProvided = true,
+    EdgeInsets? titleContentDividerPadding,
+    bool titleContentDividerPaddingProvided = true,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+  }) {
+    return MyoroDrawerStyle(
+      drawerPadding: drawerPaddingProvided ? (drawerPadding ?? self.drawerPadding) : null,
+      drawerContentPadding: drawerContentPaddingProvided ? (drawerContentPadding ?? self.drawerContentPadding) : null,
+      drawerShape: drawerShapeProvided ? (drawerShape ?? self.drawerShape) : null,
+      titleContentDividerPadding: titleContentDividerPaddingProvided
+          ? (titleContentDividerPadding ?? self.titleContentDividerPadding)
+          : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroDrawerStyle &&

@@ -16,6 +16,27 @@ part of 'myoro_radio_style.dart';
 mixin _$MyoroRadioStyleMixin {
   MyoroRadioStyle get self => this as MyoroRadioStyle;
 
+  MyoroRadioStyle copyWith({
+    Color? activeColor,
+    bool activeColorProvided = true,
+    Color? hoverColor,
+    bool hoverColorProvided = true,
+    TextStyle? labelTextStyle,
+    bool labelTextStyleProvided = true,
+    double? spacing,
+    bool spacingProvided = true,
+    double? splashRadius,
+    bool splashRadiusProvided = true,
+  }) {
+    return MyoroRadioStyle(
+      activeColor: activeColorProvided ? (activeColor ?? self.activeColor) : null,
+      hoverColor: hoverColorProvided ? (hoverColor ?? self.hoverColor) : null,
+      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      splashRadius: splashRadiusProvided ? (splashRadius ?? self.splashRadius) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroRadioStyle &&

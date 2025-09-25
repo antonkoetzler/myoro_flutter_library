@@ -16,6 +16,20 @@ part of 'myoro_carousel_style.dart';
 mixin _$MyoroCarouselStyleMixin {
   MyoroCarouselStyle get self => this as MyoroCarouselStyle;
 
+  MyoroCarouselStyle copyWith({
+    IconData? previousItemButtonIcon,
+    bool previousItemButtonIconProvided = true,
+    IconData? nextItemButtonIcon,
+    bool nextItemButtonIconProvided = true,
+  }) {
+    return MyoroCarouselStyle(
+      previousItemButtonIcon: previousItemButtonIconProvided
+          ? (previousItemButtonIcon ?? self.previousItemButtonIcon)
+          : null,
+      nextItemButtonIcon: nextItemButtonIconProvided ? (nextItemButtonIcon ?? self.nextItemButtonIcon) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroCarouselStyle &&

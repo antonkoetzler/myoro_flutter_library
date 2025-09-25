@@ -29,20 +29,4 @@ class MyoroBasicDividerStyle with _$MyoroBasicDividerStyleMixin {
 
   /// Height of the divider. [double.infinity] by default.
   final double? longValue;
-
-  /// Copy with.
-  MyoroBasicDividerStyle copyWith({
-    Color? color,
-    bool colorProvided = true,
-    double? shortValue,
-    bool shortValueProvided = true,
-    double? longValue,
-    bool longValueProvided = true,
-  }) {
-    return MyoroBasicDividerStyle(
-      color: colorProvided ? (color ?? this.color) : null,
-      shortValue: shortValueProvided ? (shortValue ?? this.shortValue) : null,
-      longValue: longValueProvided ? (longValue ?? this.longValue) : null,
-    );
-  }
 }

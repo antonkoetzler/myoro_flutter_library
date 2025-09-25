@@ -56,22 +56,4 @@ class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {
 
   /// Slides of the carousel.
   final List<Widget> items;
-
-  MyoroCarouselConfiguration copyWith({
-    Axis? direction,
-    bool? displayTraversalButtons,
-    int? initialItem,
-    bool? autoplay,
-    Duration? autoplayIntervalDuration,
-    List<Widget>? items,
-  }) {
-    return MyoroCarouselConfiguration(
-      direction: direction ?? this.direction,
-      displayTraversalButtons: displayTraversalButtons ?? this.displayTraversalButtons,
-      initialItem: initialItem ?? this.initialItem,
-      autoplay: autoplay ?? this.autoplay,
-      autoplayIntervalDuration: autoplayIntervalDuration ?? this.autoplayIntervalDuration,
-      items: items ?? this.items,
-    );
-  }
 }

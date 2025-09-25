@@ -16,6 +16,18 @@ part of 'myoro_pie_graph_style.dart';
 mixin _$MyoroPieGraphStyleMixin {
   MyoroPieGraphStyle get self => this as MyoroPieGraphStyle;
 
+  MyoroPieGraphStyle copyWith({
+    Color? itemColor,
+    bool itemColorProvided = true,
+    double? itemRadius,
+    bool itemRadiusProvided = true,
+  }) {
+    return MyoroPieGraphStyle(
+      itemColor: itemColorProvided ? (itemColor ?? self.itemColor) : null,
+      itemRadius: itemRadiusProvided ? (itemRadius ?? self.itemRadius) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroPieGraphStyle &&

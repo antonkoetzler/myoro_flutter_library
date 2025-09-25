@@ -16,6 +16,39 @@ part of 'text_widget_showcase_option_configuration.dart';
 mixin _$TextWidgetShowcaseOptionConfigurationMixin {
   TextWidgetShowcaseOptionConfiguration get self => this as TextWidgetShowcaseOptionConfiguration;
 
+  TextWidgetShowcaseOptionConfiguration copyWith({
+    String? label,
+    String? textInitialValue,
+    MyoroInputOnChanged? textOnChanged,
+    int? maxLinesInitialValue,
+    TextWidgetShowcaseOptionMaxLinesOnChanged? maxLinesOnChanged,
+    bool maxLinesOnChangedProvided = true,
+    TextOverflow? overflowInitialValue,
+    TextWidgetShowcaseOptionOverflowOnChanged? overflowOnChanged,
+    bool overflowOnChangedProvided = true,
+    TextAlign? alignmentInitialValue,
+    TextWidgetShowcaseOptionAlignmentOnChanged? alignmentOnChanged,
+    bool alignmentOnChangedProvided = true,
+    TextStyle? styleInitialValue,
+    bool styleInitialValueProvided = true,
+    TextWidgetShowcaseOptionTextStyleOnChanged? styleOnChanged,
+    bool styleOnChangedProvided = true,
+  }) {
+    return TextWidgetShowcaseOptionConfiguration(
+      label: label ?? self.label,
+      textInitialValue: textInitialValue ?? self.textInitialValue,
+      textOnChanged: textOnChanged ?? self.textOnChanged,
+      maxLinesInitialValue: maxLinesInitialValue ?? self.maxLinesInitialValue,
+      maxLinesOnChanged: maxLinesOnChangedProvided ? (maxLinesOnChanged ?? self.maxLinesOnChanged) : null,
+      overflowInitialValue: overflowInitialValue ?? self.overflowInitialValue,
+      overflowOnChanged: overflowOnChangedProvided ? (overflowOnChanged ?? self.overflowOnChanged) : null,
+      alignmentInitialValue: alignmentInitialValue ?? self.alignmentInitialValue,
+      alignmentOnChanged: alignmentOnChangedProvided ? (alignmentOnChanged ?? self.alignmentOnChanged) : null,
+      styleInitialValue: styleInitialValueProvided ? (styleInitialValue ?? self.styleInitialValue) : null,
+      styleOnChanged: styleOnChangedProvided ? (styleOnChanged ?? self.styleOnChanged) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is TextWidgetShowcaseOptionConfiguration &&

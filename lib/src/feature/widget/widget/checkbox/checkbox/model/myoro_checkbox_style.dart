@@ -55,34 +55,4 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
 
   /// Spacing between the checkbox and the label.
   final double? spacing;
-
-  MyoroCheckboxStyle copyWith({
-    Color? checkboxActiveColor,
-    bool checkboxActiveColorProvided = true,
-    Color? checkboxCheckColor,
-    bool checkboxCheckColorProvided = true,
-    Color? checkboxHoverColor,
-    bool checkboxHoverColorProvided = true,
-    Color? checkboxFocusColor,
-    bool checkboxFocusColorProvided = true,
-    double? checkboxSplashRadius,
-    bool checkboxSplashRadiusProvided = true,
-    TextStyle? labelTextStyle,
-    bool labelTextStyleProvided = true,
-    int? labelMaxLines,
-    bool labelMaxLinesProvided = true,
-    double? spacing,
-    bool spacingProvided = true,
-  }) {
-    return MyoroCheckboxStyle(
-      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? this.checkboxActiveColor) : null,
-      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? this.checkboxCheckColor) : null,
-      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? this.checkboxHoverColor) : null,
-      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? this.checkboxFocusColor) : null,
-      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? this.checkboxSplashRadius) : null,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? this.labelTextStyle) : null,
-      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? this.labelMaxLines) : null,
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-    );
-  }
 }

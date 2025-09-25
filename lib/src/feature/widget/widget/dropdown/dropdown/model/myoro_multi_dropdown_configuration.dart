@@ -5,7 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_multi_dropdown_configuration.g.dart';
 
 /// Configuration model of [MyoroMultiDropdown].
-@immutable
 @myoroModel
 class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroMultiMenuConfiguration<T>>
     with _$MyoroMultiDropdownConfigurationMixin<T> {
@@ -50,33 +49,6 @@ class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, M
 
   /// Function executed when the enabled/disabled checkbox is pressed.
   final MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged;
-
-  @override
-  MyoroMultiDropdownConfiguration<T> copyWith({
-    String? label,
-    MyoroDropdownMenuTypeEnum? menuTypeEnum,
-    bool? enabled,
-    bool? allowItemClearing,
-    TextAlign? selectedItemTextAlign,
-    MyoroMultiMenuConfiguration<T>? menuConfiguration,
-    MyoroDropdownSelectedItemBuilder<T>? selectedItemBuilder,
-    MyoroMultiDropdownOnChanged<T>? onChanged,
-    bool onChangedProvided = true,
-    MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-  }) {
-    return MyoroMultiDropdownConfiguration(
-      label: label ?? this.label,
-      menuTypeEnum: menuTypeEnum ?? this.menuTypeEnum,
-      enabled: enabled ?? this.enabled,
-      allowItemClearing: allowItemClearing ?? this.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? this.selectedItemTextAlign,
-      menuConfiguration: menuConfiguration ?? this.menuConfiguration,
-      selectedItemBuilder: selectedItemBuilder ?? this.selectedItemBuilder,
-      onChanged: onChangedProvided ? (onChanged ?? this.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? this.checkboxOnChanged) : null,
-    );
-  }
 
   @override
   bool get checkboxOnChangedNotNull => checkboxOnChanged != null;

@@ -31,8 +31,4 @@ class MyoroIconConfiguration with _$MyoroIconConfigurationMixin {
 
   /// [Icon.size]
   final double? size;
-
-  MyoroIconConfiguration copyWith({IconData? icon, double? size, bool sizeProvided = true}) {
-    return MyoroIconConfiguration(icon: icon ?? this.icon, size: sizeProvided ? (size ?? this.size) : null);
-  }
 }

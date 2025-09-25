@@ -55,34 +55,4 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
   final double? horizontalSideTitleReversedSize;
 
   /// Copy with.
-  MyoroBarGraphStyle copyWith({
-    Border? border,
-    bool borderProvided = true,
-    Color? barColor,
-    bool barColorProvided = true,
-    BorderRadius? barBorderRadius,
-    bool barBorderRadiusProvided = true,
-    TextStyle? sideTitleTextStyle,
-    bool sideTitleTextStyleProvided = true,
-    double? sideTitleInterval,
-    bool sideTitleIntervalProvided = true,
-    double? verticalSideTitleReversedSize,
-    bool verticalSideTitleReversedSizeProvided = true,
-    double? horizontalSideTitleReversedSize,
-    bool horizontalSideTitleReversedSizeProvided = true,
-  }) {
-    return MyoroBarGraphStyle(
-      border: borderProvided ? (border ?? this.border) : null,
-      barColor: barColorProvided ? (barColor ?? this.barColor) : null,
-      barBorderRadius: barBorderRadiusProvided ? (barBorderRadius ?? this.barBorderRadius) : null,
-      sideTitleTextStyle: sideTitleTextStyleProvided ? (sideTitleTextStyle ?? this.sideTitleTextStyle) : null,
-      sideTitleInterval: sideTitleIntervalProvided ? (sideTitleInterval ?? this.sideTitleInterval) : null,
-      verticalSideTitleReversedSize: verticalSideTitleReversedSizeProvided
-          ? (verticalSideTitleReversedSize ?? this.verticalSideTitleReversedSize)
-          : null,
-      horizontalSideTitleReversedSize: horizontalSideTitleReversedSizeProvided
-          ? (horizontalSideTitleReversedSize ?? this.horizontalSideTitleReversedSize)
-          : null,
-    );
-  }
 }

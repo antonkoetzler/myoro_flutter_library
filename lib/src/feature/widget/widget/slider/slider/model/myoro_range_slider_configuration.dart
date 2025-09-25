@@ -6,7 +6,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_range_slider_configuration.g.dart';
 
 /// Configuration model of [MyoroRangeSlider].
-@immutable
 @myoroModel
 final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
     with _$MyoroRangeSliderConfigurationMixin {
@@ -62,29 +61,6 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
 
   /// Callback executed when the values are changed.
   final MyoroSliderOnChanged<RangeValues> onChanged;
-
-  @override
-  MyoroRangeSliderConfiguration copyWith({
-    String? label,
-    String? currentValueText,
-    String? maxValueText,
-    String? footerText,
-    double? min,
-    double? max,
-    RangeValues? values,
-    MyoroSliderOnChanged<RangeValues>? onChanged,
-  }) {
-    return MyoroRangeSliderConfiguration(
-      label: label ?? this.label,
-      currentValueText: currentValueText ?? this.currentValueText,
-      maxValueText: maxValueText ?? this.maxValueText,
-      footerText: footerText ?? this.footerText,
-      min: min ?? this.min,
-      max: max ?? this.max,
-      values: values ?? this.values,
-      onChanged: onChanged ?? this.onChanged,
-    );
-  }
 
   @override
   Widget get widget {

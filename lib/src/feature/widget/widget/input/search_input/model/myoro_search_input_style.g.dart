@@ -16,6 +16,23 @@ part of 'myoro_search_input_style.dart';
 mixin _$MyoroSearchInputStyleMixin {
   MyoroSearchInputStyle get self => this as MyoroSearchInputStyle;
 
+  MyoroSearchInputStyle copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    IconData? searchButtonIcon,
+    bool searchButtonIconProvided = true,
+    double? searchButtonLoadingSize,
+    bool searchButtonLoadingSizeProvided = true,
+  }) {
+    return MyoroSearchInputStyle(
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      searchButtonIcon: searchButtonIconProvided ? (searchButtonIcon ?? self.searchButtonIcon) : null,
+      searchButtonLoadingSize: searchButtonLoadingSizeProvided
+          ? (searchButtonLoadingSize ?? self.searchButtonLoadingSize)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroSearchInputStyle &&

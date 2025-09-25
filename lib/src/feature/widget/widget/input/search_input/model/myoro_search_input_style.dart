@@ -31,20 +31,4 @@ class MyoroSearchInputStyle with _$MyoroSearchInputStyleMixin {
   final double? searchButtonLoadingSize;
 
   /// Copy with.
-  MyoroSearchInputStyle copyWith({
-    double? spacing,
-    bool spacingProvided = true,
-    IconData? searchButtonIcon,
-    bool searchButtonIconProvided = true,
-    double? searchButtonLoadingSize,
-    bool searchButtonLoadingSizeProvided = true,
-  }) {
-    return MyoroSearchInputStyle(
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      searchButtonIcon: searchButtonIconProvided ? (searchButtonIcon ?? this.searchButtonIcon) : null,
-      searchButtonLoadingSize: searchButtonLoadingSizeProvided
-          ? (searchButtonLoadingSize ?? this.searchButtonLoadingSize)
-          : null,
-    );
-  }
 }

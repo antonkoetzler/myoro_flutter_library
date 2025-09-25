@@ -16,6 +16,23 @@ part of 'myoro_menu_item.dart';
 mixin _$MyoroMenuItemMixin {
   MyoroMenuItem get self => this as MyoroMenuItem;
 
+  MyoroMenuItem copyWith({
+    MyoroButtonConfiguration? buttonConfiguration,
+    bool buttonConfigurationProvided = true,
+    MyoroButtonBuilder? buttonBuilder,
+    bool buttonBuilderProvided = true,
+    MyoroIconTextButtonConfiguration? iconTextButtonConfiguration,
+    bool iconTextButtonConfigurationProvided = true,
+  }) {
+    return MyoroMenuItem(
+      buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? self.buttonConfiguration) : null,
+      buttonBuilder: buttonBuilderProvided ? (buttonBuilder ?? self.buttonBuilder) : null,
+      iconTextButtonConfiguration: iconTextButtonConfigurationProvided
+          ? (iconTextButtonConfiguration ?? self.iconTextButtonConfiguration)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroMenuItem &&

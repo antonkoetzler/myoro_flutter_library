@@ -20,8 +20,4 @@ class MyoroBarGraphGroup with _$MyoroBarGraphGroupMixin {
 
   /// Bars in the group.
   final List<MyoroBarGraphBar> bars;
-
-  MyoroBarGraphGroup copyWith({int? x, List<MyoroBarGraphBar>? bars}) {
-    return MyoroBarGraphGroup(x: x ?? this.x, bars: bars ?? this.bars);
-  }
 }

@@ -5,7 +5,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_slider_configuration.g.dart';
 
 /// Configuration of [MyoroSlider].
-@immutable
 @myoroModel
 class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$MyoroSliderConfigurationMixin {
   const MyoroSliderConfiguration({
@@ -51,29 +50,6 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
 
   /// Callback executed when the value is changed.
   final MyoroSliderOnChanged<double> onChanged;
-
-  @override
-  MyoroSliderConfiguration copyWith({
-    String? label,
-    String? currentValueText,
-    String? maxValueText,
-    String? footerText,
-    double? min,
-    double? max,
-    double? value,
-    MyoroSliderOnChanged<double>? onChanged,
-  }) {
-    return MyoroSliderConfiguration(
-      label: label ?? this.label,
-      currentValueText: currentValueText ?? this.currentValueText,
-      maxValueText: maxValueText ?? this.maxValueText,
-      footerText: footerText ?? this.footerText,
-      min: min ?? this.min,
-      max: max ?? this.max,
-      value: value ?? this.value,
-      onChanged: onChanged ?? this.onChanged,
-    );
-  }
 
   @override
   Widget get widget {

@@ -27,15 +27,4 @@ class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
   final TextStyle? textStyle;
 
   /// Copy with.
-  MyoroFilePickerStyle copyWith({
-    double? spacing,
-    bool spacingProvided = true,
-    TextStyle? textStyle,
-    bool textStyleProvided = true,
-  }) {
-    return MyoroFilePickerStyle(
-      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
-      textStyle: textStyleProvided ? (textStyle ?? this.textStyle) : null,
-    );
-  }
 }

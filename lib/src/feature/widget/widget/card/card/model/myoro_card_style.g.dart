@@ -16,6 +16,33 @@ part of 'myoro_card_style.dart';
 mixin _$MyoroCardStyleMixin {
   MyoroCardStyle get self => this as MyoroCardStyle;
 
+  MyoroCardStyle copyWith({
+    Color? backgroundColor,
+    bool backgroundColorProvided = true,
+    Border? border,
+    bool borderProvided = true,
+    BorderRadius? borderRadius,
+    bool borderRadiusProvided = true,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
+    double? titleCardSpacing,
+    bool titleCardSpacingProvided = true,
+    TextStyle? titleTextStyle,
+    bool titleTextStyleProvided = true,
+    BoxConstraints? constraints,
+    bool constraintsProvided = true,
+  }) {
+    return MyoroCardStyle(
+      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
+      border: borderProvided ? (border ?? self.border) : null,
+      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
+      titleCardSpacing: titleCardSpacingProvided ? (titleCardSpacing ?? self.titleCardSpacing) : null,
+      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      constraints: constraintsProvided ? (constraints ?? self.constraints) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroCardStyle &&

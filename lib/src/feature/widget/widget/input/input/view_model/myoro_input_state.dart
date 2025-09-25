@@ -11,7 +11,7 @@ class MyoroInputState {
             )
           : null,
 
-      _enabledController = ValueNotifier(_configuration.enabled) {
+      _enabledNotifier = ValueNotifier(_configuration.enabled) {
     final textProvided = _configuration.textProvided;
     if (_formatter != null && !textProvided) controller.text = _formatter.initialText;
     if (textProvided) controller.text = _configuration.text;
@@ -23,7 +23,7 @@ class MyoroInputState {
   set configuration(MyoroInputConfiguration configuration) {
     if (_configuration == configuration) return;
     _configuration = configuration;
-    _enabledController.value = configuration.enabled;
+    enabled = configuration.enabled;
     if (configuration.textProvided) controller.text = configuration.text;
   }
 
@@ -41,21 +41,21 @@ class MyoroInputState {
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
-  final ValueNotifier<bool> _enabledController;
+  final ValueNotifier<bool> _enabledNotifier;
 
-  /// [_enabledController] getter.
-  ValueNotifier<bool> get enabledController {
-    return _enabledController;
+  /// [_enabledNotifier] getter.
+  ValueNotifier<bool> get enabledNotifier {
+    return _enabledNotifier;
   }
 
-  /// Getter of [_enabledController]'s value.
+  /// Getter of [_enabledNotifier]'s value.
   bool get enabled {
-    return _enabledController.value;
+    return _enabledNotifier.value;
   }
 
-  /// [_enabledController] setter.
+  /// [_enabledNotifier] setter.
   set enabled(bool enabled) {
-    _enabledController.value = enabled;
+    _enabledNotifier.value = enabled;
   }
 
   /// [ValueNotifier] to keep track of whether or not to show
@@ -69,11 +69,6 @@ class MyoroInputState {
       '[MyoroInputState.showClearTextButtonNotifier]: [_configuration.showClearTextButton] must be true.',
     );
     return _showClearTextButtonNotifier!;
-  }
-
-  /// Getter of [_showClearTextButtonNotifier]'s value.
-  bool get showClearTextButton {
-    return showClearTextButtonNotifier.value;
   }
 
   /// [_showClearTextButtonNotifier] setter.

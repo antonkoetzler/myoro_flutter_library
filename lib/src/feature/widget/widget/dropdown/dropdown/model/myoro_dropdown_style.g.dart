@@ -16,6 +16,21 @@ part of 'myoro_dropdown_style.dart';
 mixin _$MyoroDropdownStyleMixin {
   MyoroDropdownStyle get self => this as MyoroDropdownStyle;
 
+  MyoroDropdownStyle copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    BoxBorder? menuBorder,
+    bool menuBorderProvided = true,
+    BorderRadius? menuBorderRadius,
+    bool menuBorderRadiusProvided = true,
+  }) {
+    return MyoroDropdownStyle(
+      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      menuBorder: menuBorderProvided ? (menuBorder ?? self.menuBorder) : null,
+      menuBorderRadius: menuBorderRadiusProvided ? (menuBorderRadius ?? self.menuBorderRadius) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroDropdownStyle &&

@@ -12,6 +12,11 @@ part 'myoro_decoration_theme_extension.g.dart';
 @myoroThemeExtension
 final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecorationThemeExtension>
     with _$MyoroDecorationThemeExtensionMixin {
+  static const primaryHoverBackgroundColorFactor = 0.4;
+  static const primaryTapBackgroundColorFactor = 0.2;
+  static const secondaryHoverBackgroundColorFactor = 0.2;
+  static const secondaryTapBackgroundColorFactor = 0.4;
+
   const MyoroDecorationThemeExtension({
     this.primaryIdleBackgroundColor,
     this.primaryHoverBackgroundColor,
@@ -44,16 +49,18 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
   MyoroDecorationThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme)
     : primaryIdleBackgroundColor = colorScheme.primary,
       primaryHoverBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(0.4)
-          : colorScheme.onPrimary.brighten(0.4),
-      primaryTapBackgroundColor = isDarkMode ? colorScheme.onPrimary.darken(0.3) : colorScheme.onPrimary.brighten(0.3),
+          ? colorScheme.onPrimary.darken(primaryHoverBackgroundColorFactor)
+          : colorScheme.onPrimary.brighten(primaryHoverBackgroundColorFactor),
+      primaryTapBackgroundColor = isDarkMode
+          ? colorScheme.onPrimary.darken(primaryTapBackgroundColorFactor)
+          : colorScheme.onPrimary.brighten(primaryHoverBackgroundColorFactor),
       secondaryIdleBackgroundColor = colorScheme.onPrimary,
       secondaryHoverBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(0.2)
-          : colorScheme.onPrimary.brighten(0.2),
+          ? colorScheme.onPrimary.darken(secondaryHoverBackgroundColorFactor)
+          : colorScheme.onPrimary.brighten(secondaryHoverBackgroundColorFactor),
       secondaryTapBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(0.4)
-          : colorScheme.onPrimary.brighten(0.4),
+          ? colorScheme.onPrimary.darken(secondaryTapBackgroundColorFactor)
+          : colorScheme.onPrimary.brighten(secondaryTapBackgroundColorFactor),
       primaryContentColor = colorScheme.onPrimary,
       secondaryContentColor = colorScheme.primary,
       borderWidth = kMyoroBorderWidth,
@@ -94,10 +101,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
   final BorderRadius? borderRadius;
 
   @override
-  ThemeExtension<MyoroDecorationThemeExtension> lerp(
-    covariant ThemeExtension<MyoroDecorationThemeExtension>? other,
-    double t,
-  ) {
+  MyoroDecorationThemeExtension lerp(covariant ThemeExtension<MyoroDecorationThemeExtension>? other, double t) {
     if (other is! MyoroDecorationThemeExtension) return this;
 
     final primaryIdleBackgroundColor = Color.lerp(this.primaryIdleBackgroundColor, other.primaryIdleBackgroundColor, t);

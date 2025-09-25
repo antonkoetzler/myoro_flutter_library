@@ -21,7 +21,7 @@ const kMyoroBorderWidth = kMyoroMultiplier / 2;
 const kMyoroBorderRadius = kMyoroMultiplier * 2;
 
 /// [Alignment]s for testing.
-final kMyoroTestAlignments = [
+const kMyoroTestAlignments = [
   Alignment.center,
   Alignment.topLeft,
   Alignment.topRight,

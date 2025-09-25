@@ -34,17 +34,4 @@ class MyoroPieGraphConfiguration with _$MyoroPieGraphConfigurationMixin {
 
   /// Items of the graph.
   final List<MyoroPieGraphItem> items;
-
-  MyoroPieGraphConfiguration copyWith({
-    MyoroPieGraphEnum? typeEnum,
-    Widget? centerWidget,
-    bool centerWidgetProvided = true,
-    List<MyoroPieGraphItem>? items,
-  }) {
-    return MyoroPieGraphConfiguration(
-      typeEnum: typeEnum ?? this.typeEnum,
-      centerWidget: centerWidgetProvided ? (centerWidget ?? this.centerWidget) : null,
-      items: items ?? this.items,
-    );
-  }
 }

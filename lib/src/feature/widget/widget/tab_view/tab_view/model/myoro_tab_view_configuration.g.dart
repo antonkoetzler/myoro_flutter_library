@@ -16,6 +16,13 @@ part of 'myoro_tab_view_configuration.dart';
 mixin _$MyoroTabViewConfigurationMixin {
   MyoroTabViewConfiguration get self => this as MyoroTabViewConfiguration;
 
+  MyoroTabViewConfiguration copyWith({int? initiallySelectedTabIndex, List<MyoroTabViewTab>? tabs}) {
+    return MyoroTabViewConfiguration(
+      initiallySelectedTabIndex: initiallySelectedTabIndex ?? self.initiallySelectedTabIndex,
+      tabs: tabs ?? self.tabs,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTabViewConfiguration &&

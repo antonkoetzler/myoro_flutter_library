@@ -16,6 +16,32 @@ part of 'myoro_tab_view_style.dart';
 mixin _$MyoroTabViewStyleMixin {
   MyoroTabViewStyle get self => this as MyoroTabViewStyle;
 
+  MyoroTabViewStyle copyWith({
+    BorderRadius? tabButtonBorderRadius,
+    bool tabButtonBorderRadiusProvided = true,
+    Color? tabButtonIdleColor,
+    bool tabButtonIdleColorProvided = true,
+    Color? tabButtonHoverColor,
+    bool tabButtonHoverColorProvided = true,
+    Color? tabButtonTapColor,
+    bool tabButtonTapColorProvided = true,
+    double? tabButtonIconSize,
+    bool tabButtonIconSizeProvided = true,
+    TextStyle? tabButtonTextStyle,
+    bool tabButtonTextStyleProvided = true,
+  }) {
+    return MyoroTabViewStyle(
+      tabButtonBorderRadius: tabButtonBorderRadiusProvided
+          ? (tabButtonBorderRadius ?? self.tabButtonBorderRadius)
+          : null,
+      tabButtonIdleColor: tabButtonIdleColorProvided ? (tabButtonIdleColor ?? self.tabButtonIdleColor) : null,
+      tabButtonHoverColor: tabButtonHoverColorProvided ? (tabButtonHoverColor ?? self.tabButtonHoverColor) : null,
+      tabButtonTapColor: tabButtonTapColorProvided ? (tabButtonTapColor ?? self.tabButtonTapColor) : null,
+      tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? self.tabButtonIconSize) : null,
+      tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? self.tabButtonTextStyle) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroTabViewStyle &&

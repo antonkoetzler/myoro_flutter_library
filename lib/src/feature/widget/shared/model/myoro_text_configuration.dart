@@ -62,21 +62,4 @@ class MyoroTextConfiguration with _$MyoroTextConfigurationMixin {
 
   /// [Text.style]
   final TextStyle? style;
-
-  MyoroTextConfiguration copyWith({
-    String? text,
-    int? maxLines,
-    TextOverflow? overflow,
-    TextAlign? alignment,
-    TextStyle? style,
-    bool styleProvided = true,
-  }) {
-    return MyoroTextConfiguration(
-      text: text ?? this.text,
-      maxLines: maxLines ?? this.maxLines,
-      overflow: overflow ?? this.overflow,
-      alignment: alignment ?? this.alignment,
-      style: styleProvided ? (style ?? this.style) : null,
-    );
-  }
 }

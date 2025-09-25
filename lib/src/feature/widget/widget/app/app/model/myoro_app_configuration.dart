@@ -36,7 +36,7 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
       themeExtensionsBuilder: faker.randomGenerator.boolean() ? ((_, _, _) => []) : null,
       localizationsDelegates: faker.randomGenerator.boolean() ? const {} : null,
       supportedLocales: faker.randomGenerator.boolean() ? const {} : null,
-      router: routerProvided ? MockRouterConfig() : null,
+      router: routerProvided ? MockRouterConfig<Object>() : null,
       home: routerProvided ? null : const SizedBox.shrink(),
       builder: faker.randomGenerator.boolean() ? ((_, _) => const SizedBox.shrink()) : null,
     );
@@ -80,46 +80,4 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
 
   /// [MaterialApp.builder]. Used to insert [Widget]s at the top level of the [Widget] tree.
   final MyoroAppBuilder? builder;
-
-  MyoroAppConfiguration copyWith({
-    String? title,
-    bool titleProvided = true,
-    ThemeMode? themeMode,
-    bool themeModeProvided = true,
-    bool? debugShowCheckedModeBanner,
-    MyoroAppColorSchemeBuilder? colorSchemeBuilder,
-    bool colorSchemeBuilderProvided = true,
-    MyoroAppTextThemeBuilder? textThemeBuilder,
-    bool textThemeBuilderProvided = true,
-    MyoroAppThemeExtensionsBuilder? themeExtensionsBuilder,
-    bool themeExtensionsBuilderProvided = true,
-    Iterable<LocalizationsDelegate>? localizationsDelegates,
-    bool localizationsDelegatesProvided = true,
-    Iterable<Locale>? supportedLocales,
-    bool supportedLocalesProvided = true,
-    RouterConfig<Object>? router,
-    bool routerProvided = true,
-    Widget? home,
-    bool homeProvided = true,
-    MyoroAppBuilder? builder,
-    bool builderProvided = true,
-  }) {
-    return MyoroAppConfiguration(
-      title: titleProvided ? (title ?? this.title) : null,
-      themeMode: themeModeProvided ? (themeMode ?? this.themeMode) : null,
-      debugShowCheckedModeBanner: debugShowCheckedModeBanner ?? this.debugShowCheckedModeBanner,
-      colorSchemeBuilder: colorSchemeBuilderProvided ? (colorSchemeBuilder ?? this.colorSchemeBuilder) : null,
-      textThemeBuilder: textThemeBuilderProvided ? (textThemeBuilder ?? this.textThemeBuilder) : null,
-      themeExtensionsBuilder: themeExtensionsBuilderProvided
-          ? (themeExtensionsBuilder ?? this.themeExtensionsBuilder)
-          : null,
-      localizationsDelegates: localizationsDelegatesProvided
-          ? (localizationsDelegates ?? this.localizationsDelegates)
-          : null,
-      supportedLocales: supportedLocalesProvided ? (supportedLocales ?? this.supportedLocales) : null,
-      router: routerProvided ? (router ?? this.router) : null,
-      home: homeProvided ? (home ?? this.home) : null,
-      builder: builderProvided ? (builder ?? this.builder) : null,
-    );
-  }
 }

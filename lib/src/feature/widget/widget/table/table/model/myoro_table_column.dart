@@ -32,17 +32,4 @@ class MyoroTableColumn with _$MyoroTableColumnMixin {
 
   /// [Widget] of the column.
   final Widget child;
-
-  MyoroTableColumn copyWith({
-    String? tooltipMessage,
-    bool tooltipMessageProvided = true,
-    MyoroTableColumnWidthConfiguration? widthConfiguration,
-    Widget? child,
-  }) {
-    return MyoroTableColumn(
-      tooltipMessage: tooltipMessageProvided ? (tooltipMessage ?? this.tooltipMessage) : null,
-      widthConfiguration: widthConfiguration ?? this.widthConfiguration,
-      child: child ?? this.child,
-    );
-  }
 }

@@ -88,12 +88,12 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   @override
   Widget build(_) {
+    final state = _viewModel.state;
+    final enabledNotifier = state.enabledNotifier;
+
     return Provider.value(
       value: _style,
-      child: ValueListenableBuilder(
-        valueListenable: _viewModel.state.enabledController,
-        builder: (_, _, _) => _Wrapper(_viewModel),
-      ),
+      child: ValueListenableBuilder(valueListenable: enabledNotifier, builder: (_, _, _) => _Wrapper(_viewModel)),
     );
   }
 }

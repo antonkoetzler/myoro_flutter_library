@@ -16,6 +16,32 @@ part of 'myoro_icon_text_button_configuration.dart';
 mixin _$MyoroIconTextButtonConfigurationMixin {
   MyoroIconTextButtonConfiguration get self => this as MyoroIconTextButtonConfiguration;
 
+  MyoroIconTextButtonConfiguration copyWith({
+    bool? invert,
+    MyoroIconConfiguration? iconConfiguration,
+    bool iconConfigurationProvided = true,
+    MyoroTextConfiguration? textConfiguration,
+    bool textConfigurationProvided = true,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+  }) {
+    return MyoroIconTextButtonConfiguration(
+      invert: invert ?? self.invert,
+      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
+      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroIconTextButtonConfiguration &&

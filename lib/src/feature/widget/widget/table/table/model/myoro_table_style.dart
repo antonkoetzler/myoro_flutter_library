@@ -53,38 +53,4 @@ class MyoroTableStyle with _$MyoroTableStyleMixin {
 
   /// [TextStyle] of [_ErrorMessage].
   final TextStyle? errorMessageTextStyle;
-
-  /// Copy with.
-  MyoroTableStyle copyWith({
-    Color? backgroundColor,
-    bool backgroundColorProvided = true,
-    TextStyle? columnTextStyle,
-    bool columnTextStyleProvided = true,
-    double? columnSpacing,
-    bool columnSpacingProvided = true,
-    TextStyle? rowTextStyle,
-    bool rowTextStyleProvided = true,
-    EdgeInsets? loaderEmptyMessageErrorMessagePadding,
-    bool loaderEmptyMessageErrorMessagePaddingProvided = true,
-    TextStyle? emptyMessageTextStyle,
-    bool emptyMessageTextStyleProvided = true,
-    TextStyle? errorMessageTextStyle,
-    bool errorMessageTextStyleProvided = true,
-  }) {
-    return MyoroTableStyle(
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? this.backgroundColor) : null,
-      columnTextStyle: columnTextStyleProvided ? (columnTextStyle ?? this.columnTextStyle) : null,
-      columnSpacing: columnSpacingProvided ? (columnSpacing ?? this.columnSpacing) : null,
-      rowTextStyle: rowTextStyleProvided ? (rowTextStyle ?? this.rowTextStyle) : null,
-      loaderEmptyMessageErrorMessagePadding: loaderEmptyMessageErrorMessagePaddingProvided
-          ? (loaderEmptyMessageErrorMessagePadding ?? this.loaderEmptyMessageErrorMessagePadding)
-          : null,
-      emptyMessageTextStyle: emptyMessageTextStyleProvided
-          ? (emptyMessageTextStyle ?? this.emptyMessageTextStyle)
-          : null,
-      errorMessageTextStyle: errorMessageTextStyleProvided
-          ? (errorMessageTextStyle ?? this.errorMessageTextStyle)
-          : null,
-    );
-  }
 }

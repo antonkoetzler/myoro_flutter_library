@@ -32,18 +32,4 @@ class MyoroTabViewTab with _$MyoroTabViewTabMixin {
 
   /// Content of the [MyoroTabViewTab].
   final Widget content;
-
-  MyoroTabViewTab copyWith({
-    IconData? icon,
-    bool iconProvided = true,
-    String? text,
-    bool textProvided = true,
-    Widget? content,
-  }) {
-    return MyoroTabViewTab(
-      icon: iconProvided ? (icon ?? this.icon) : null,
-      text: textProvided ? (text ?? this.text) : null,
-      content: content ?? this.content,
-    );
-  }
 }

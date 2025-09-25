@@ -16,6 +16,26 @@ part of 'myoro_feedback_configuration.dart';
 mixin _$MyoroFeedbackConfigurationMixin {
   MyoroFeedbackConfiguration get self => this as MyoroFeedbackConfiguration;
 
+  MyoroFeedbackConfiguration copyWith({
+    MyoroIconConfiguration? iconConfiguration,
+    MyoroTextConfiguration? titleConfiguration,
+    MyoroTextConfiguration? subtitleConfiguration,
+    bool subtitleConfigurationProvided = true,
+    MyoroIconTextButtonConfiguration? actionButtonConfiguration,
+    bool actionButtonConfigurationProvided = true,
+  }) {
+    return MyoroFeedbackConfiguration(
+      iconConfiguration: iconConfiguration ?? self.iconConfiguration,
+      titleConfiguration: titleConfiguration ?? self.titleConfiguration,
+      subtitleConfiguration: subtitleConfigurationProvided
+          ? (subtitleConfiguration ?? self.subtitleConfiguration)
+          : null,
+      actionButtonConfiguration: actionButtonConfigurationProvided
+          ? (actionButtonConfiguration ?? self.actionButtonConfiguration)
+          : null,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is MyoroFeedbackConfiguration &&
