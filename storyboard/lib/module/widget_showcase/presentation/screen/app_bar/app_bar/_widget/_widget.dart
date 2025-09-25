@@ -16,7 +16,7 @@ final class _Widget extends StatelessWidget {
 
         return MyoroAppBar(
           showBottomDivider: showBottomDivider,
-          themeExtension: viewModel.buildThemeExtension(context),
+          style: viewModel.buildStyle(context),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],

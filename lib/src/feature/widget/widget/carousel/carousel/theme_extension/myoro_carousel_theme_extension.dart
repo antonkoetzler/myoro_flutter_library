@@ -9,7 +9,8 @@ part 'myoro_carousel_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension>
-    with _$MyoroCarouselThemeExtensionMixin {
+    with _$MyoroCarouselThemeExtensionMixin
+    implements MyoroCarouselStyle {
   const MyoroCarouselThemeExtension({this.previousItemButtonIcon, this.nextItemButtonIcon});
 
   // coverage:ignore-start
@@ -22,10 +23,10 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
     : previousItemButtonIcon = Icons.keyboard_arrow_left,
       nextItemButtonIcon = Icons.keyboard_arrow_right;
 
-  /// Icon of the previous item [_TraversalButton] in [_TraversalButtons].
+  @override
   final IconData? previousItemButtonIcon;
 
-  /// Icon of the next item button in [_TraversalButtons].
+  @override
   final IconData? nextItemButtonIcon;
 
   @override

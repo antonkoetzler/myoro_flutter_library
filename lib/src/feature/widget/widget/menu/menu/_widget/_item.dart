@@ -13,18 +13,8 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
     final isSelected = _selectedItems.contains(_item);
 
     final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final itemBorderRadius = menuThemeExtension.itemBorderRadius;
-
-    var buttonPrimaryVariantThemeExtension = MyoroButtonPrimaryVariantThemeExtension.builder(
-      context.isDarkMode,
-      context.colorScheme,
-    );
-    buttonPrimaryVariantThemeExtension = buttonPrimaryVariantThemeExtension.copyWith(
-      borderRadius: itemBorderRadius,
-      borderRadiusProvided: itemBorderRadius != null,
-      backgroundIdleColor: buttonPrimaryVariantThemeExtension.backgroundHoverColor,
-      backgroundIdleColorProvided: isSelected,
-    );
+    final style = context.read<MyoroMenuStyle>();
+    final itemBorderRadius = style.itemBorderRadius ?? menuThemeExtension.itemBorderRadius;
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
     final toggleItem = viewModel.toggleItem;
@@ -38,14 +28,24 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
         configuration: (buttonConfiguration ?? const MyoroButtonConfiguration()).copyWith(
           onTapUp: (details) => toggleItem(_item),
         ),
-        themeExtension: MyoroButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension),
+        style: const MyoroButtonStyle().copyWith(
+          borderRadius: itemBorderRadius,
+          backgroundIdleColor: isSelected ? context.colorScheme.primary : null,
+          backgroundHoverColor: isSelected ? context.colorScheme.primary.withOpacity(0.8) : null,
+          backgroundTapColor: isSelected ? context.colorScheme.primary.withOpacity(0.6) : null,
+        ),
         builder: buttonBuilder,
       );
     }
 
     return MyoroIconTextButton(
       configuration: iconTextButtonConfiguration!.copyWith(onTapUp: (details) => toggleItem(_item)),
-      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension),
+      style: const MyoroIconTextButtonStyle().copyWith(
+        borderRadius: itemBorderRadius,
+        backgroundIdleColor: isSelected ? context.colorScheme.primary : null,
+        backgroundHoverColor: isSelected ? context.colorScheme.primary.withOpacity(0.8) : null,
+        backgroundTapColor: isSelected ? context.colorScheme.primary.withOpacity(0.6) : null,
+      ),
     );
   }
 }

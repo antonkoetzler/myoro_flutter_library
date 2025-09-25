@@ -16,7 +16,7 @@ final class _SingleDropdown extends StatelessWidget {
           builder: (_, __) {
             return MyoroSingleDropdown(
               configuration: viewModel.buildSingleDropdownConfiguration(context),
-              themeExtension: viewModel.buildThemeExtension(context),
+              style: viewModel.buildStyle(context),
             );
           },
         );

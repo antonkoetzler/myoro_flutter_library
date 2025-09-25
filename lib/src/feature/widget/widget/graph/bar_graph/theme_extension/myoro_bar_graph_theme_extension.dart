@@ -11,7 +11,8 @@ part 'myoro_bar_graph_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension>
-    with _$MyoroBarGraphThemeExtensionMixin {
+    with _$MyoroBarGraphThemeExtensionMixin
+    implements MyoroBarGraphStyle {
   const MyoroBarGraphThemeExtension({
     this.border,
     this.barColor,
@@ -43,24 +44,31 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
       horizontalSideTitleReversedSize = 22;
 
   /// Border of the graph's content (the square holding the bars).
+  @override
   final Border? border;
 
   /// Default color of a bar.
+  @override
   final Color? barColor;
 
   /// Border radius of a bar.
+  @override
   final BorderRadius? barBorderRadius;
 
   /// Text style of [_SideTitle].
+  @override
   final TextStyle? sideTitleTextStyle;
 
   /// Interval of the [_SideTitle]s on an axis.
+  @override
   final double? sideTitleInterval;
 
   /// Width of a vertical (y axis) [_SideTitle].
+  @override
   final double? verticalSideTitleReversedSize;
 
   /// Height of a horizontal (x axis) [_SideTitle].
+  @override
   final double? horizontalSideTitleReversedSize;
 
   @override

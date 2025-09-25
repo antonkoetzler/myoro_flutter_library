@@ -60,7 +60,7 @@ class MyoroInputWidgetShowcaseScreenViewModel {
   }
 
   /// Builds the [MyoroInputThemeExtension] of [_Widget].
-  MyoroInputThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroInputThemeExtension buildStyle(BuildContext context) {
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
 
     return inputThemeExtension.copyWith(

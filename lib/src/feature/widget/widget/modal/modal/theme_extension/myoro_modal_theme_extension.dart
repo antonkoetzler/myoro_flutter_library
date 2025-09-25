@@ -10,7 +10,9 @@ part 'myoro_modal_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroModal].
 @immutable
 @myoroThemeExtension
-class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> with _$MyoroModalThemeExtensionMixin {
+class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
+    with _$MyoroModalThemeExtensionMixin
+    implements MyoroModalStyle {
   const MyoroModalThemeExtension({
     this.constraints,
     this.primaryColor,
@@ -61,36 +63,47 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: 20);
 
   /// Constraints of the modal.
+  @override
   final BoxConstraints? constraints;
 
   /// Background [Color] of the modal.
+  @override
   final Color? primaryColor;
 
   /// [BorderRadius] of the modal.
+  @override
   final BorderRadius? borderRadius;
 
   /// [BorderRadius] of the bottom sheet modal.
+  @override
   final BorderRadius? bottomSheetBorderRadius;
 
   /// [Border] of the modal.
+  @override
   final Border? border;
 
   /// [Border] of the bottom sheet modal.
+  @override
   final Border? bottomSheetBorder;
 
   /// Padding of everything in the modal.
+  @override
   final EdgeInsets? padding;
 
   /// Padding of the close button.
+  @override
   final EdgeInsets? closeButtonPadding;
 
   /// Spacing between the [_Header] and the contents of the modal.
+  @override
   final double? spacing;
 
   /// Text style of [_Title].
+  @override
   final TextStyle? titleTextStyle;
 
   /// [MyoroIconConfiguration] of [_CloseButton].
+  @override
   final MyoroIconConfiguration? closeButtonIconConfiguration;
 
   @override

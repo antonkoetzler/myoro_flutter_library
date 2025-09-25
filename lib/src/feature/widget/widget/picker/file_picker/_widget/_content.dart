@@ -9,7 +9,8 @@ final class _Content extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
-    final spacing = themeExtension.spacing ?? 0;
+    final style = context.read<MyoroFilePickerStyle>();
+    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
     return Row(
       spacing: spacing,

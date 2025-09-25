@@ -8,10 +8,7 @@ final class _ButtonContent extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final iconTextButtonThemeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
-      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
-    );
-    final contentPadding = iconTextButtonThemeExtension.contentPadding ?? EdgeInsets.zero;
+    const contentPadding = EdgeInsets.zero;
     final tapStatusEnumName = '${_tapStatusEnum.name[1].toUpperCase()}${_tapStatusEnum.name.substring(1)}';
 
     const iconSize = 50.0;

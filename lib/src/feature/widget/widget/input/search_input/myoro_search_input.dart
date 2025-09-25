@@ -9,13 +9,13 @@ part '_widget/_search_section.dart';
 
 /// Search input. Shows a dropdown after making a search request.
 class MyoroSearchInput<T> extends StatefulWidget {
-  const MyoroSearchInput({super.key, required this.configuration, this.themeExtension});
+  const MyoroSearchInput({super.key, required this.configuration, this.style = const MyoroSearchInputStyle()});
 
   /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;
 
-  /// Theme extension.
-  final MyoroSearchInputThemeExtension? themeExtension;
+  /// Style.
+  final MyoroSearchInputStyle style;
 
   @override
   State<MyoroSearchInput<T>> createState() => _MyoroSearchInputState<T>();
@@ -26,9 +26,8 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     return widget.configuration;
   }
 
-  MyoroSearchInputThemeExtension get _themeExtension {
-    final colorScheme = context.colorScheme;
-    return widget.themeExtension ?? MyoroSearchInputThemeExtension.builder(colorScheme);
+  MyoroSearchInputStyle get _style {
+    return widget.style;
   }
 
   late final MyoroSearchInputViewModel<T> _viewModel;
@@ -47,14 +46,14 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   @override
   Widget build(context) {
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
-      child: InheritedProvider.value(
-        value: _viewModel,
-        child: ValueListenableBuilder(
-          valueListenable: _viewModel.itemsRequestNotifier,
-          builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
-        ),
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: _style),
+        InheritedProvider.value(value: _viewModel),
+      ],
+      child: ValueListenableBuilder(
+        valueListenable: _viewModel.itemsRequestNotifier,
+        builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
       ),
     );
   }

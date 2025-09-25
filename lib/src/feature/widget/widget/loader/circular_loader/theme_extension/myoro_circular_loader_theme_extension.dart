@@ -11,7 +11,8 @@ part 'myoro_circular_loader_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoaderThemeExtension>
-    with _$MyoroCircularLoaderThemeExtensionMixin {
+    with _$MyoroCircularLoaderThemeExtensionMixin
+    implements MyoroCircularLoaderStyle {
   const MyoroCircularLoaderThemeExtension({this.color, this.size});
 
   // coverage:ignore-start
@@ -23,9 +24,11 @@ class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoad
   MyoroCircularLoaderThemeExtension.builder(ColorScheme colorScheme) : color = colorScheme.onPrimary, size = 25;
 
   /// Color of the [MyoroCircularLoader].
+  @override
   final Color? color;
 
   /// Default size of the [MyoroCircularLoader].
+  @override
   final double? size;
 
   @override

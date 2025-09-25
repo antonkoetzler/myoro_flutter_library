@@ -7,26 +7,24 @@ part '_widget/_pie_graph.dart';
 
 /// A pie (or donut if specified) chart.
 class MyoroPieGraph extends StatelessWidget {
-  const MyoroPieGraph({super.key, required this.configuration, this.themeExtension});
+  const MyoroPieGraph({super.key, required this.configuration, this.style = const MyoroPieGraphStyle()});
 
   /// Configuration.
   final MyoroPieGraphConfiguration configuration;
 
-  /// Theme extension.
-  final MyoroPieGraphThemeExtension? themeExtension;
+  /// Style.
+  final MyoroPieGraphStyle style;
 
   @override
   Widget build(context) {
-    final themeExtension = this.themeExtension ?? MyoroPieGraphThemeExtension.builder(context.colorScheme);
-
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: themeExtension,
-      child: InheritedProvider(
-        create: (_) => MyoroPieGraphViewModel(configuration: configuration),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [const _PieGraph(), if (configuration.centerWidget != null) configuration.centerWidget!],
-        ),
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: style),
+        InheritedProvider(create: (_) => MyoroPieGraphViewModel(configuration: configuration)),
+      ],
+      child: Stack(
+        alignment: Alignment.center,
+        children: [const _PieGraph(), if (configuration.centerWidget != null) configuration.centerWidget!],
       ),
     );
   }

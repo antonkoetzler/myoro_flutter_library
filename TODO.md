@@ -1,6 +1,5 @@
 # TODO
 
-- (**IN PROGRESS**) Style models
 - (**IN PROGRESS**) Fix all tests and get back 100% coverage
 - Storyboard
   - Fix all bugs

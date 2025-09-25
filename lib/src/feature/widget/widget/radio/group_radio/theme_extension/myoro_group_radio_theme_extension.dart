@@ -11,7 +11,8 @@ part 'myoro_group_radio_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeExtension>
-    with _$MyoroGroupRadioThemeExtensionMixin {
+    with _$MyoroGroupRadioThemeExtensionMixin
+    implements MyoroGroupRadioStyle {
   const MyoroGroupRadioThemeExtension({this.spacing, this.runSpacing});
 
   // coverage:ignore-start
@@ -22,10 +23,12 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
 
   const MyoroGroupRadioThemeExtension.builder() : spacing = kMyoroMultiplier, runSpacing = kMyoroMultiplier;
 
-  /// Main axis spacing in between each checkbox.
+  /// Main axis spacing in between each radio.
+  @override
   final double? spacing;
 
-  /// Cross axis spacing in between each checkbox.
+  /// Cross axis spacing in between each radio.
+  @override
   final double? runSpacing;
 
   @override

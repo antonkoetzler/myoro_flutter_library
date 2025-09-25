@@ -10,11 +10,12 @@ final class _IndicatorText extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
+    final style = context.read<MyoroSliderStyle>();
 
     return Text(
       _text,
-      textAlign: themeExtension.indicatorTextAlignment,
-      style: themeExtension.indicatorTextStyle?.copyWith(height: isFooter ? 0 : 0.5),
+      textAlign: style.indicatorTextAlignment ?? themeExtension.indicatorTextAlignment,
+      style: (style.indicatorTextStyle ?? themeExtension.indicatorTextStyle)?.copyWith(height: isFooter ? 0 : 0.5),
     );
   }
 }

@@ -5,11 +5,11 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 /// We create a private [Widget] just for this as we need
 /// to keep [MyoroInput._ClearTextButton] clickable.
 final class _InputTriggerAreaRegion<T, V extends _ViewModelType<T>> extends StatelessWidget {
+  const _InputTriggerAreaRegion(this._enabled, {this.width, this.height});
+
   final bool _enabled;
   final double? width;
   final double? height;
-
-  const _InputTriggerAreaRegion(this._enabled, {this.width, this.height});
 
   @override
   Widget build(context) {

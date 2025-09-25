@@ -9,7 +9,7 @@ final class _Input extends StatelessWidget {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
     return MyoroInput(
       configuration: viewModel.buildConfiguration(context, const _Suffix()),
-      themeExtension: viewModel.buildThemeExtension(context),
+      style: viewModel.buildStyle(context),
     );
   }
 }

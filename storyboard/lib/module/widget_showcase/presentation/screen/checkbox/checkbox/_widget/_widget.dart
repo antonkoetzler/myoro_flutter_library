@@ -8,12 +8,12 @@ final class _Widget extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroCheckboxWidgetShowcaseScreenViewModel>();
     final buildConfiguration = viewModel.buildConfiguration;
-    final buildThemeExtension = viewModel.buildThemeExtension;
+    final buildStyle = viewModel.buildStyle;
 
     return ListenableBuilder(
       listenable: viewModel.state,
       builder: (_, __) {
-        return MyoroCheckbox(configuration: buildConfiguration(context), themeExtension: buildThemeExtension(context));
+        return MyoroCheckbox(configuration: buildConfiguration(context), style: buildStyle(context));
       },
     );
   }

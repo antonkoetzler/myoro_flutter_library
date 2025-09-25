@@ -10,92 +10,100 @@ part 'myoro_icon_text_button_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroIconTextButton].
 @immutable
 @myoroThemeExtension
-class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension<MyoroIconTextButtonThemeExtension>
-    with _$MyoroIconTextButtonThemeExtensionMixin {
-  static const contentPaddingDefaultValue = EdgeInsets.all(kMyoroMultiplier * 2);
-  static const spacingDefaultValue = kMyoroMultiplier * 2;
-
+class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButtonThemeExtension>
+    with _$MyoroIconTextButtonThemeExtensionMixin
+    implements MyoroIconTextButtonStyle {
   const MyoroIconTextButtonThemeExtension({
-    super.backgroundColor,
-    super.backgroundIdleColor,
-    super.backgroundHoverColor,
-    super.backgroundTapColor,
-    super.contentColor,
-    super.contentIdleColor,
-    super.contentHoverColor,
-    super.contentTapColor,
-    super.borderWidth,
-    super.borderRadius,
-    super.borderColor,
-    super.borderIdleColor,
-    super.borderHoverColor,
-    super.borderTapColor,
+    this.backgroundIdleColor,
+    this.backgroundHoverColor,
+    this.backgroundTapColor,
+    this.contentIdleColor,
+    this.contentHoverColor,
+    this.contentTapColor,
+    this.borderWidth,
+    this.borderRadius,
+    this.borderIdleColor,
+    this.borderHoverColor,
+    this.borderTapColor,
     this.contentPadding,
     this.spacing,
   });
 
-  factory MyoroIconTextButtonThemeExtension.fromVariant(MyoroButtonVariantThemeExtension themeExtension) {
-    return MyoroIconTextButtonThemeExtension(
-      backgroundColor: themeExtension.backgroundColor,
-      backgroundIdleColor: themeExtension.backgroundIdleColor,
-      backgroundHoverColor: themeExtension.backgroundHoverColor,
-      backgroundTapColor: themeExtension.backgroundTapColor,
-      contentColor: themeExtension.contentColor,
-      contentIdleColor: themeExtension.contentIdleColor,
-      contentHoverColor: themeExtension.contentHoverColor,
-      contentTapColor: themeExtension.contentTapColor,
-      borderWidth: themeExtension.borderWidth,
-      borderRadius: themeExtension.borderRadius,
-      borderIdleColor: themeExtension.borderIdleColor,
-      borderHoverColor: themeExtension.borderHoverColor,
-      borderTapColor: themeExtension.borderTapColor,
-      contentPadding: contentPaddingDefaultValue,
-      spacing: spacingDefaultValue,
-    );
-  }
-
   // coverage:ignore-start
-  factory MyoroIconTextButtonThemeExtension.fake() {
-    final backgroundColorProvided = faker.randomGenerator.boolean();
-    final contentColorProvided = faker.randomGenerator.boolean();
-
-    return MyoroIconTextButtonThemeExtension(
-      backgroundColor: backgroundColorProvided ? (faker.randomGenerator.boolean() ? myoroFake<Color>() : null) : null,
-      backgroundIdleColor: backgroundColorProvided
-          ? null
-          : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      backgroundHoverColor: backgroundColorProvided
-          ? null
-          : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      backgroundTapColor: backgroundColorProvided
-          ? null
-          : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      contentColor: contentColorProvided ? (faker.randomGenerator.boolean() ? myoroFake<Color>() : null) : null,
-      contentIdleColor: contentColorProvided ? null : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      contentHoverColor: contentColorProvided ? null : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      contentTapColor: contentColorProvided ? null : (faker.randomGenerator.boolean() ? myoroFake<Color>() : null),
-      borderWidth: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-      borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      borderIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      borderTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
-    );
-  }
+  MyoroIconTextButtonThemeExtension.fake()
+    : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      backgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
+      borderIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null;
   // coverage:ignore-end
 
-  /// [EdgeInsets] of the button.
+  MyoroIconTextButtonThemeExtension.builder(MyoroDecorationThemeExtension decorationThemeExtension)
+    : backgroundIdleColor = decorationThemeExtension.primaryIdleBackgroundColor,
+      backgroundHoverColor = decorationThemeExtension.primaryHoverBackgroundColor,
+      backgroundTapColor = decorationThemeExtension.primaryTapBackgroundColor,
+      contentIdleColor = decorationThemeExtension.primaryContentColor,
+      contentHoverColor = decorationThemeExtension.primaryContentColor,
+      contentTapColor = decorationThemeExtension.primaryContentColor,
+      borderWidth = null,
+      borderRadius = decorationThemeExtension.borderRadius,
+      borderIdleColor = null,
+      borderHoverColor = null,
+      borderTapColor = null,
+      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 2),
+      spacing = kMyoroMultiplier;
+
+  @override
+  final Color? backgroundIdleColor;
+
+  @override
+  final Color? backgroundHoverColor;
+
+  @override
+  final Color? backgroundTapColor;
+
+  @override
+  final Color? contentIdleColor;
+
+  @override
+  final Color? contentHoverColor;
+
+  @override
+  final Color? contentTapColor;
+
+  @override
+  final double? borderWidth;
+
+  @override
+  final BorderRadius? borderRadius;
+
+  @override
+  final Color? borderIdleColor;
+
+  @override
+  final Color? borderHoverColor;
+
+  @override
+  final Color? borderTapColor;
+
+  @override
   final EdgeInsets? contentPadding;
 
-  /// Spacing between the icon and text.
+  @override
   final double? spacing;
 
   @override
   MyoroIconTextButtonThemeExtension lerp(covariant ThemeExtension<MyoroIconTextButtonThemeExtension>? other, double t) {
     if (other is! MyoroIconTextButtonThemeExtension) return this;
 
-    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
     final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
     final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
     final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
@@ -111,8 +119,6 @@ class MyoroIconTextButtonThemeExtension extends MyoroButtonVariantThemeExtension
     final spacing = lerpDouble(this.spacing, other.spacing, t);
 
     return copyWith(
-      backgroundColor: backgroundColor,
-      backgroundColorProvided: backgroundColor != null,
       backgroundIdleColor: backgroundIdleColor,
       backgroundIdleColorProvided: backgroundIdleColor != null,
       backgroundHoverColor: backgroundHoverColor,

@@ -9,22 +9,19 @@ final class _SearchButton<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final inputThemeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
-    final secondaryButtonThemeExtension = MyoroButtonSecondaryVariantThemeExtension.builder(
-      context.isDarkMode,
-      context.colorScheme,
-    );
+    final style = context.read<MyoroSearchInputStyle>();
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
-
-    final circularLoaderThemeExtension = MyoroCircularLoaderThemeExtension.builder(context.colorScheme);
 
     return MyoroButton(
       configuration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(viewModel)),
-      themeExtension: MyoroButtonThemeExtension.fromVariant(secondaryButtonThemeExtension),
+      style: const MyoroButtonStyle().bordered(context),
       builder: (_, _) => _itemsRequest.status.isLoading
           ? MyoroCircularLoader(
-              themeExtension: circularLoaderThemeExtension.copyWith(size: inputThemeExtension.searchButtonLoadingSize),
+              style: MyoroCircularLoaderStyle(
+                size: style.searchButtonLoadingSize ?? inputThemeExtension.searchButtonLoadingSize,
+              ),
             )
-          : Icon(inputThemeExtension.searchButtonIcon),
+          : Icon(style.searchButtonIcon ?? inputThemeExtension.searchButtonIcon),
     );
   }
 

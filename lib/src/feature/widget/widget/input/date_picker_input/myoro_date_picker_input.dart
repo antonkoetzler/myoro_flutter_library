@@ -8,13 +8,13 @@ part '_widget/_trigger_area.dart';
 
 /// Date picker input (click date, no typy typy).
 class MyoroDatePickerInput extends StatefulWidget {
-  const MyoroDatePickerInput({super.key, required this.configuration, this.themeExtension});
+  const MyoroDatePickerInput({super.key, required this.configuration, this.style = const MyoroInputStyle()});
 
   /// Configuration.
   final MyoroDatePickerInputConfiguration configuration;
 
-  /// Theme extension.
-  final MyoroInputThemeExtension? themeExtension;
+  /// Style.
+  final MyoroInputStyle style;
 
   @override
   State<MyoroDatePickerInput> createState() => _MyoroDatePickerInputState();
@@ -22,11 +22,7 @@ class MyoroDatePickerInput extends StatefulWidget {
 
 final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
   MyoroDatePickerInputConfiguration get _configuration => widget.configuration;
-  MyoroInputThemeExtension get _themeExtension {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    return widget.themeExtension ?? MyoroInputThemeExtension.builder(colorScheme, textTheme);
-  }
+  MyoroInputStyle get _style => widget.style;
 
   late final MyoroDatePickerInputViewModel _viewModel;
 
@@ -51,19 +47,19 @@ final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
     final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
     final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
-      child: InheritedProvider.value(
-        value: _viewModel,
-        child: Stack(
-          alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
-              ? Alignment.center
-              : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-          children: const [
-            _Input(),
-            Positioned(child: _TriggerArea()),
-          ],
-        ),
+    return MultiProvider(
+      providers: [
+        Provider.value(value: _viewModel),
+        InheritedProvider.value(value: _style),
+      ],
+      child: Stack(
+        alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
+            ? Alignment.center
+            : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
+        children: const [
+          _Input(),
+          Positioned(child: _TriggerArea()),
+        ],
       ),
     );
   }

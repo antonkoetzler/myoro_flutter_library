@@ -78,7 +78,7 @@ extension MyoroBuildContextExtension on BuildContext {
       ..hideCurrentSnackBar()
       ..showSnackBar(
         MyoroSnackBarContainer(
-          themeExtension: const MyoroSnackBarContainerThemeExtension.builder(),
+          themeExtension: resolveThemeExtension<MyoroSnackBarContainerThemeExtension>(),
           duration: duration,
           snackBar: snackBar,
         ),

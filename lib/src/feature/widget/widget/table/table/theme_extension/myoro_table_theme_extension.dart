@@ -10,7 +10,9 @@ part 'myoro_table_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroTable].
 @immutable
 @myoroThemeExtension
-class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with _$MyoroTableThemeExtensionMixin {
+class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
+    with _$MyoroTableThemeExtensionMixin
+    implements MyoroTableStyle {
   const MyoroTableThemeExtension({
     this.backgroundColor,
     this.columnTextStyle,
@@ -42,24 +44,31 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
       errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
 
   /// Background color of the table.
+  @override
   final Color? backgroundColor;
 
   /// Default [TextStyle] of [_Column].
+  @override
   final TextStyle? columnTextStyle;
 
   /// Spacing between columns.
+  @override
   final double? columnSpacing;
 
   /// Default [TextStyle] of [_Row].
+  @override
   final TextStyle? rowTextStyle;
 
   /// [EdgeInsets] of [_Loader], [_EmptyMessage] and [_ErrorMessage].
+  @override
   final EdgeInsets? loaderEmptyMessageErrorMessagePadding;
 
   /// [TextStyle] of [_EmptyMessage].
+  @override
   final TextStyle? emptyMessageTextStyle;
 
   /// [TextStyle] of [_ErrorMessage].
+  @override
   final TextStyle? errorMessageTextStyle;
 
   @override

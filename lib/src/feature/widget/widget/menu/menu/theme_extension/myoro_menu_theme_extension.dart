@@ -8,7 +8,9 @@ part 'myoro_menu_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroMenu].
 @immutable
 @myoroThemeExtension
-class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with _$MyoroMenuThemeExtensionMixin {
+class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
+    with _$MyoroMenuThemeExtensionMixin
+    implements MyoroMenuStyle {
   const MyoroMenuThemeExtension({
     this.constraints,
     this.backgroundColor,
@@ -46,30 +48,39 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
       dialogTextLoaderPadding = const EdgeInsets.all(15);
 
   /// Constraints of the menu.
+  @override
   final BoxConstraints? constraints;
 
   /// Background color of the menu.
+  @override
   final Color? backgroundColor;
 
   /// Border of the menu.
+  @override
   final BoxBorder? border;
 
   /// Border radius of the menu.
+  @override
   final BorderRadius? borderRadius;
 
   /// Padding of [_SearchBar].
+  @override
   final EdgeInsets? searchBarPadding;
 
   /// [MyoroInputStyleEnum] of [_SearchBar].
+  @override
   final MyoroInputStyleEnum? searchBarInputStyle;
 
   /// [BorderRadius] of [_Item].
+  @override
   final BorderRadius? itemBorderRadius;
 
   /// Text style of [_EmptyMenuDialog].
+  @override
   final TextStyle? dialogTextStyle;
 
   /// [EdgeInsets] of [_DialogText] & [_Loader].
+  @override
   final EdgeInsets? dialogTextLoaderPadding;
 
   @override

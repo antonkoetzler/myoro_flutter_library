@@ -11,7 +11,8 @@ part 'myoro_checkbox_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension>
-    with _$MyoroCheckboxThemeExtensionMixin {
+    with _$MyoroCheckboxThemeExtensionMixin
+    implements MyoroCheckboxStyle {
   const MyoroCheckboxThemeExtension({
     this.checkboxActiveColor,
     this.checkboxCheckColor,
@@ -45,28 +46,28 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       labelMaxLines = 1,
       spacing = kMyoroMultiplier;
 
-  /// Background color of the checkbox when selected.
+  @override
   final Color? checkboxActiveColor;
 
-  /// Color of the checkmark.
+  @override
   final Color? checkboxCheckColor;
 
-  /// Hover color of the [Checkbox].
+  @override
   final Color? checkboxHoverColor;
 
-  /// Focus color of the [Checkbox].
+  @override
   final Color? checkboxFocusColor;
 
-  /// Splash radius when the [Checkbox] is hovered.
+  @override
   final double? checkboxSplashRadius;
 
-  /// Text style of the label.
+  @override
   final TextStyle? labelTextStyle;
 
-  /// [Text.maxLines] of the label.
+  @override
   final int? labelMaxLines;
 
-  /// Spacing between the checkbox and the label.
+  @override
   final double? spacing;
 
   @override

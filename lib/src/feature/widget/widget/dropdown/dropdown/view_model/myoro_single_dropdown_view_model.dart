@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// [MyoroSingleDropdown] controller implementation if [MyoroDropdownViewModel].
 final class MyoroSingleDropdownViewModel<T>
@@ -47,18 +48,15 @@ final class MyoroSingleDropdownViewModel<T>
   @override
   Widget menuWidget(BuildContext context) {
     final dropdownThemeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-    final menuBorder = dropdownThemeExtension.menuBorder;
-    final menuBorderRadius = dropdownThemeExtension.menuBorderRadius;
-
-    final menuThemeExtension = MyoroMenuThemeExtension.builder(context.colorScheme, context.textTheme).copyWith(
-      border: menuBorder,
-      borderProvided: menuBorder != null,
-      borderRadius: menuBorderRadius,
-      borderRadiusProvided: menuBorderRadius != null,
-    );
+    final dropdownStyle = context.read<MyoroDropdownStyle>();
+    final menuBorder = dropdownStyle.menuBorder ?? dropdownThemeExtension.menuBorder;
+    final menuBorderRadius = dropdownStyle.menuBorderRadius ?? dropdownThemeExtension.menuBorderRadius;
 
     final menuController = state.menuController;
 
-    return MyoroSingleMenu<T>(controller: menuController, themeExtension: menuThemeExtension);
+    return MyoroSingleMenu<T>(
+      controller: menuController,
+      style: MyoroMenuStyle(border: menuBorder, borderRadius: menuBorderRadius),
+    );
   }
 }

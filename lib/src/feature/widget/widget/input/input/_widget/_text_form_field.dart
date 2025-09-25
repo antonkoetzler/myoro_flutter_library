@@ -9,10 +9,11 @@ final class _TextFormField extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final clearTextButtonIcon = themeExtension.clearTextButtonIcon;
-    final textStyle = themeExtension.inputTextStyle;
-    final contentPadding = themeExtension.contentPadding;
-    final primaryColor = themeExtension.primaryColor ?? MyoroColors.transparent;
+    final style = context.read<MyoroInputStyle>();
+    final clearTextButtonIcon = style.clearTextButtonIcon ?? themeExtension.clearTextButtonIcon;
+    final textStyle = style.inputTextStyle ?? themeExtension.inputTextStyle;
+    final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
+    final primaryColor = style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
 
     final state = _viewModel.state;
     final configuration = state.configuration;
@@ -30,7 +31,7 @@ final class _TextFormField extends StatelessWidget {
     final enabled = state.enabled;
     final inputKey = configuration.inputKey;
 
-    final border = themeExtension.border ?? configuration.inputStyle.getBorder(context);
+    final border = style.border ?? themeExtension.border ?? configuration.inputStyle.getBorder(context);
 
     Widget buildTextFormField([bool showClearTextButton = false]) {
       return TextFormField(
@@ -41,27 +42,33 @@ final class _TextFormField extends StatelessWidget {
         readOnly: readOnly,
         autofocus: autofocus,
         style: textStyle?.withColor(
-          textStyle.color!.withValues(alpha: _viewModel.state.enabled ? 1 : themeExtension.disabledOpacity),
+          textStyle.color!.withValues(
+            alpha: _viewModel.state.enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
+          ),
         ),
         decoration: InputDecoration(
-          floatingLabelBehavior: themeExtension.labelBehavior,
+          floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
           label: label.isNotEmpty ? _Label(_viewModel) : null,
           hintText: placeholder.isNotEmpty ? placeholder : null,
-          hintStyle: textStyle?.withColor(textStyle.color!.withValues(alpha: themeExtension.disabledOpacity)),
+          hintStyle: textStyle?.withColor(
+            textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
+          ),
           enabledBorder: border,
           focusedBorder: border,
-          errorBorder: border?.copyWith(borderSide: border.borderSide.copyWith(color: themeExtension.errorBorderColor)),
+          errorBorder: border?.copyWith(
+            borderSide: border.borderSide.copyWith(color: style.errorBorderColor ?? themeExtension.errorBorderColor),
+          ),
           disabledBorder: border?.copyWith(
             borderSide: border.borderSide.copyWith(
-              color: border.borderSide.color.withValues(alpha: themeExtension.disabledOpacity),
+              color: border.borderSide.color.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
             ),
           ),
           isDense: true,
-          contentPadding: contentPadding ?? themeExtension.contentPadding,
+          contentPadding: contentPadding,
           suffixIcon: showClearTextButton ? _ClearTextButton(_viewModel) : null,
         ),
         textAlign: textAlign,
-        cursorHeight: themeExtension.cursorHeight,
+        cursorHeight: style.cursorHeight ?? themeExtension.cursorHeight,
         validator: (_) => validation?.call(controller.text),
         inputFormatters: formatter != null ? [_viewModel.state.formatter!] : null,
         onFieldSubmitted: onFieldSubmitted,

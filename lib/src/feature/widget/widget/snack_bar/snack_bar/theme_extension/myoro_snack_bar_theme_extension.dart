@@ -11,7 +11,8 @@ part 'myoro_snack_bar_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension>
-    with _$MyoroSnackBarThemeExtensionMixin {
+    with _$MyoroSnackBarThemeExtensionMixin
+    implements MyoroSnackBarStyle {
   const MyoroSnackBarThemeExtension({
     this.primaryColor,
     this.standardBorderColor,
@@ -55,36 +56,47 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: 15);
 
   /// Background color of the snack bar.
+  @override
   final Color? primaryColor;
 
   /// [MyoroSnackBarTypeEnum.standard].
+  @override
   final Color? standardBorderColor;
 
   /// [MyoroSnackBarTypeEnum.attention].
+  @override
   final Color? attentionBorderColor;
 
   /// [MyoroSnackBarTypeEnum.success].
+  @override
   final Color? successBorderColor;
 
   /// [MyoroSnackBarTypeEnum.error].
+  @override
   final Color? errorBorderColor;
 
   /// Border of the snack bar.
+  @override
   final double? borderWidth;
 
   /// Border radius of the snack bar.
+  @override
   final BorderRadius? borderRadius;
 
   /// Padding of the content of the snack bar.
+  @override
   final EdgeInsets? padding;
 
   /// Spacing between [_Message]/[MyoroSnackBar.child] & [_CloseButton].
+  @override
   final double? spacing;
 
   /// Text style of [_Message].
+  @override
   final TextStyle? messageTextStyle;
 
   /// [MyoroIconConfiguration] of [_CloseButton].
+  @override
   final MyoroIconConfiguration? closeButtonIconConfiguration;
 
   @override

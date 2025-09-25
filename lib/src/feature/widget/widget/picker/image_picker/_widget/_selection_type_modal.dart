@@ -8,13 +8,10 @@ final class _SelectionTypeModal extends StatelessWidget {
     final imagePickerThemeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
     final selectionTypeModalConstraints = imagePickerThemeExtension.selectionTypeModalConstraints;
 
-    final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>()
-      ..copyWith(constraints: selectionTypeModalConstraints);
-
     MyoroModal.showBottomSheet(
       context,
       configuration: MyoroModalConfiguration(title: context.localization.myoroImagePickerSelectionTypeModalText),
-      themeExtension: modalThemeExtension,
+      style: MyoroModalStyle(constraints: selectionTypeModalConstraints),
       child: _SelectionTypeModal(viewModel),
     );
   }

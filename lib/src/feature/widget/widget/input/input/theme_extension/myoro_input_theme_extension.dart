@@ -10,7 +10,9 @@ part 'myoro_input_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroInput].
 @immutable
 @myoroThemeExtension
-class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> with _$MyoroInputThemeExtensionMixin {
+class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
+    with _$MyoroInputThemeExtensionMixin
+    implements MyoroInputStyle {
   const MyoroInputThemeExtension({
     this.border,
     this.underlinedBorder,
@@ -76,51 +78,67 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       clearTextButtonIconSize = kMyoroMultiplier * 4;
 
   /// Custom border.
+  @override
   final InputBorder? border;
 
   /// Border for [MyoroInputStyleEnum.underlined].
+  @override
   final UnderlineInputBorder? underlinedBorder;
 
   /// Border for [MyoroInputStyleEnum.outlined].
+  @override
   final OutlineInputBorder? outlinedBorder;
 
   /// Border of [MyoroInputStyleEnum.none].
+  @override
   final InputBorder? noneBorder;
 
   /// Background color of the input.
+  @override
   final Color? primaryColor;
 
   /// Color of the border when said input's [validation] function returns an error.
+  @override
   final Color? errorBorderColor;
 
   /// Height of the selection cursor.
+  @override
   final double? cursorHeight;
 
   /// [InputDecoration.contentPadding]
+  @override
   final EdgeInsets? contentPadding;
 
   /// Opacity applied when the input is disabled.
+  @override
   final double? disabledOpacity;
 
   /// Text style of the input.
+  @override
   final TextStyle? inputTextStyle;
 
   /// Spacing between the input and the prefix/suffix widgets.
+  @override
   final double? spacing;
 
   /// Text style of [_Label].
+  @override
   final TextStyle? labelTextStyle;
 
   /// [TextFormField.floatingLabelBehavior]. Used so the label will stay at the top of the
+  @override
   final FloatingLabelBehavior? labelBehavior;
 
   /// Padding of [_ClearTextButton].
+  @override
   final EdgeInsets? clearTextButtonPadding;
 
   /// [IconData] of [_ClearTextButton].
+  @override
   final IconData? clearTextButtonIcon;
 
   /// Size of [clearTextButtonIcon].
+  @override
   final double? clearTextButtonIconSize;
 
   @override

@@ -9,9 +9,11 @@ final class _ClearTextButton extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final clearTextButtonPadding = themeExtension.clearTextButtonPadding ?? EdgeInsets.zero;
-    final clearTextButtonIcon = themeExtension.clearTextButtonIcon!;
-    final clearTextButtonIconSize = themeExtension.clearTextButtonIconSize;
+    final style = context.read<MyoroInputStyle>();
+    final clearTextButtonPadding =
+        style.clearTextButtonPadding ?? themeExtension.clearTextButtonPadding ?? EdgeInsets.zero;
+    final clearTextButtonIcon = style.clearTextButtonIcon ?? themeExtension.clearTextButtonIcon!;
+    final clearTextButtonIconSize = style.clearTextButtonIconSize ?? themeExtension.clearTextButtonIconSize;
 
     return IntrinsicWidth(
       child: Padding(

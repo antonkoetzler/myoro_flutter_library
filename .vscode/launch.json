@@ -6,7 +6,37 @@
       "request": "launch",
       "type": "dart",
       "cwd": "storyboard",
-      "program": "lib/main.dart"
+      "program": "lib/main.dart",
+      "deviceId": "${input:deviceId}"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "deviceId",
+      "type": "pickString",
+      "description": "Select device",
+      "options": [
+        {
+          "label": "macOS",
+          "value": "macos"
+        },
+        {
+          "label": "Windows",
+          "value": "windows"
+        },
+        {
+          "label": "Linux",
+          "value": "linux"
+        },
+        {
+          "label": "Android",
+          "value": "android"
+        },
+        {
+          "label": "iOS",
+          "value": "ios"
+        }
+      ]
     }
   ]
 }

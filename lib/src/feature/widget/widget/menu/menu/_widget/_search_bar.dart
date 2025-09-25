@@ -7,8 +7,12 @@ final class _SearchBar<T, C extends _C<T>> extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final searchBarPadding = themeExtension.searchBarPadding ?? EdgeInsets.zero;
-    final searchBarInputStyle = themeExtension.searchBarInputStyle ?? MyoroInputConfiguration.inputStyleDefaultValue;
+    final style = context.read<MyoroMenuStyle>();
+    final searchBarPadding = style.searchBarPadding ?? themeExtension.searchBarPadding ?? EdgeInsets.zero;
+    final searchBarInputStyle =
+        style.searchBarInputStyle ??
+        themeExtension.searchBarInputStyle ??
+        MyoroInputConfiguration.inputStyleDefaultValue;
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
 

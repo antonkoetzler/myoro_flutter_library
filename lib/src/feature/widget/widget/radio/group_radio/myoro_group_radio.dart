@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// A group of [MyoroRadio]s.
 class MyoroGroupRadio extends StatefulWidget {
   /// Configuration.
   final MyoroGroupRadioConfiguration configuration;
 
-  /// Theme extension.
-  final MyoroGroupRadioThemeExtension? themeExtension;
+  /// Style.
+  final MyoroGroupRadioStyle style;
 
-  const MyoroGroupRadio({super.key, required this.configuration, this.themeExtension});
+  const MyoroGroupRadio({super.key, required this.configuration, this.style = const MyoroGroupRadioStyle()});
 
   @override
   State<MyoroGroupRadio> createState() => _MyoroGroupRadioState();
@@ -17,10 +18,7 @@ class MyoroGroupRadio extends StatefulWidget {
 
 final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
   MyoroGroupRadioConfiguration get _configuration => widget.configuration;
-
-  MyoroGroupRadioThemeExtension get _themeExtension {
-    return widget.themeExtension ?? const MyoroGroupRadioThemeExtension.builder();
-  }
+  MyoroGroupRadioStyle get _style => widget.style;
 
   MyoroGroupRadioController? _localController;
   MyoroGroupRadioController get _controller {
@@ -35,11 +33,15 @@ final class _MyoroGroupRadioState extends State<MyoroGroupRadio> {
 
   @override
   Widget build(_) {
-    final spacing = _themeExtension.spacing ?? 0;
-    final runSpacing = _themeExtension.runSpacing ?? 0;
+    final themeExtension = context.resolveThemeExtension<MyoroGroupRadioThemeExtension>();
+    final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
+    final runSpacing = _style.runSpacing ?? themeExtension.runSpacing ?? 0;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
+    return MultiProvider(
+      providers: [
+        Provider.value(value: _style),
+        InheritedProvider.value(value: _configuration),
+      ],
       child: ValueListenableBuilder(
         valueListenable: _controller,
         builder: (_, MyoroGroupRadioItems radios, _) {

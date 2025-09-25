@@ -9,7 +9,8 @@ part 'myoro_tooltip_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension>
-    with _$MyoroTooltipThemeExtensionMixin {
+    with _$MyoroTooltipThemeExtensionMixin
+    implements MyoroTooltipStyle {
   const MyoroTooltipThemeExtension({this.margin});
 
   // coverage:ignore-start
@@ -19,6 +20,7 @@ class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtensi
   const MyoroTooltipThemeExtension.builder() : margin = EdgeInsets.zero;
 
   /// [Tooltip.margin].
+  @override
   final EdgeInsets? margin;
 
   @override

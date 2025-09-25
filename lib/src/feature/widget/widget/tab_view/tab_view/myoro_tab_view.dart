@@ -10,7 +10,7 @@ part '_widget/_tabs.dart';
 ///
 /// Top bar with the list of tabs and below, the content of the selected tab.
 final class MyoroTabView extends StatefulWidget {
-  const MyoroTabView({super.key, this.controller, this.configuration, this.themeExtension})
+  const MyoroTabView({super.key, this.controller, this.configuration, this.style = const MyoroTabViewStyle()})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroTabView]: [controller] (x)or [configuration] must be provided.',
@@ -22,18 +22,16 @@ final class MyoroTabView extends StatefulWidget {
   /// Configuration.
   final MyoroTabViewConfiguration? configuration;
 
-  /// Theme extension.
-  final MyoroTabViewThemeExtension? themeExtension;
+  /// Style.
+  final MyoroTabViewStyle style;
 
   @override
   State<MyoroTabView> createState() => _MyoroTabViewState();
 }
 
 final class _MyoroTabViewState extends State<MyoroTabView> {
-  MyoroTabViewThemeExtension get _themeExtension {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    return widget.themeExtension ?? MyoroTabViewThemeExtension.builder(colorScheme, textTheme);
+  MyoroTabViewStyle get _style {
+    return widget.style;
   }
 
   MyoroTabViewViewModel? _localViewModel;
@@ -44,22 +42,22 @@ final class _MyoroTabViewState extends State<MyoroTabView> {
 
   @override
   Widget build(_) {
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
-      child: InheritedProvider.value(
-        value: _viewModel,
-        child: ValueListenableBuilder(
-          valueListenable: _viewModel.state.selectedTabNotifier,
-          builder: (_, selectedTab, _) {
-            return Column(
-              children: [
-                _Tabs(selectedTab),
-                const _Divider(Axis.horizontal),
-                Expanded(child: selectedTab.content),
-              ],
-            );
-          },
-        ),
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: _style),
+        InheritedProvider.value(value: _viewModel),
+      ],
+      child: ValueListenableBuilder(
+        valueListenable: _viewModel.state.selectedTabNotifier,
+        builder: (_, selectedTab, _) {
+          return Column(
+            children: [
+              _Tabs(selectedTab),
+              const _Divider(Axis.horizontal),
+              Expanded(child: selectedTab.content),
+            ],
+          );
+        },
       ),
     );
   }

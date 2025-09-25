@@ -7,14 +7,14 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroBasicDividerWidgetShowcaseScreenViewModel>();
-    final buildThemeExtension = viewModel.buildThemeExtension;
+    final buildStyle = viewModel.buildStyle;
     final state = viewModel.state;
 
     return ListenableBuilder(
       listenable: state,
       builder: (_, __) {
         final direction = state.direction;
-        return MyoroBasicDivider(direction, themeExtension: buildThemeExtension(context));
+        return MyoroBasicDivider(direction, style: buildStyle(context));
       },
     );
   }

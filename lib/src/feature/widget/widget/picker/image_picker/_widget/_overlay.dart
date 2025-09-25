@@ -9,16 +9,17 @@ final class _Overlay extends StatelessWidget {
   @override
   Widget build(context) {
     final imagePickerThemeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
-    final overlayCursor = imagePickerThemeExtension.overlayCursor;
+    final style = context.read<MyoroImagePickerStyle>();
+    final overlayCursor = style.overlayCursor ?? imagePickerThemeExtension.overlayCursor;
     final overlayUnselectedImageStateIconConfiguration =
+        style.overlayUnselectedImageStateIconConfiguration ??
         imagePickerThemeExtension.overlayUnselectedImageStateIconConfiguration;
-    final overlayIdleBackgroundColor = imagePickerThemeExtension.overlayIdleBackgroundColor;
-    final overlayHoverBackgroundColor = imagePickerThemeExtension.overlayHoverBackgroundColor;
-    final overlayTapBackgroundColor = imagePickerThemeExtension.overlayTapBackgroundColor;
-
-    final buttonThemeExtension = MyoroButtonThemeExtension.fromVariant(
-      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
-    );
+    final overlayIdleBackgroundColor =
+        style.overlayIdleBackgroundColor ?? imagePickerThemeExtension.overlayIdleBackgroundColor;
+    final overlayHoverBackgroundColor =
+        style.overlayHoverBackgroundColor ?? imagePickerThemeExtension.overlayHoverBackgroundColor;
+    final overlayTapBackgroundColor =
+        style.overlayTapBackgroundColor ?? imagePickerThemeExtension.overlayTapBackgroundColor;
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final openPickerAndUpdateSelectedImage = viewModel.openPickerAndUpdateSelectedImage;
@@ -32,7 +33,7 @@ final class _Overlay extends StatelessWidget {
             : openPickerAndUpdateSelectedImage,
         // coverage:ignore-end
       ),
-      themeExtension: buttonThemeExtension.copyWith(
+      style: const MyoroButtonStyle().copyWith(
         backgroundIdleColor: overlayIdleBackgroundColor,
         backgroundHoverColor: overlayHoverBackgroundColor,
         backgroundTapColor: overlayTapBackgroundColor,

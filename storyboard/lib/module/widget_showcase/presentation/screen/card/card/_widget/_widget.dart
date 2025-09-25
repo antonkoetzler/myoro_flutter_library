@@ -17,7 +17,7 @@ final class _Widget extends StatelessWidget {
 
         return MyoroCard(
           title: title,
-          themeExtension: viewModel.buildThemeExtension(context),
+          style: viewModel.buildStyle(context),
           child: Center(child: Text('This is a MyoroCard!', style: themeExtension.textStyle)),
         );
       },

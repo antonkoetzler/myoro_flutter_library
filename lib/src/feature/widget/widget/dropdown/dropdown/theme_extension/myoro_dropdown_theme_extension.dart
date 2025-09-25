@@ -11,7 +11,8 @@ part 'myoro_dropdown_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension>
-    with _$MyoroDropdownThemeExtensionMixin {
+    with _$MyoroDropdownThemeExtensionMixin
+    implements MyoroDropdownStyle {
   const MyoroDropdownThemeExtension({this.spacing, this.menuBorder, this.menuBorderRadius});
 
   // coverage:ignore-start
@@ -33,12 +34,15 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   }
 
   /// Standard spacing between items.
+  @override
   final double? spacing;
 
   /// [Border] of the [MyoroMenu].
+  @override
   final BoxBorder? menuBorder;
 
   /// [BorderRadius] of the [MyoroMenu].
+  @override
   final BorderRadius? menuBorderRadius;
 
   @override

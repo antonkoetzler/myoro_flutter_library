@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_close_button.dart';
 part '_widget/_message.dart';
@@ -14,32 +15,31 @@ class MyoroSnackBar extends StatelessWidget {
   /// Configuration.
   final MyoroSnackBarConfiguration configuration;
 
-  /// Theme extension.
-  final MyoroSnackBarThemeExtension? themeExtension;
+  /// Style.
+  final MyoroSnackBarStyle style;
 
-  const MyoroSnackBar({super.key, required this.configuration, this.themeExtension});
+  const MyoroSnackBar({super.key, required this.configuration, this.style = const MyoroSnackBarStyle()});
 
   @override
   Widget build(context) {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    final themeExtension = this.themeExtension ?? MyoroSnackBarThemeExtension.builder(colorScheme, textTheme);
-    final borderWidth = themeExtension.borderWidth;
-    final spacing = themeExtension.spacing ?? 0;
+    final style = this.style;
+    final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
+    final borderWidth = style.borderWidth ?? themeExtension.borderWidth;
+    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
     final String message = configuration.message;
     final Widget? child = configuration.child;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: themeExtension,
+    return Provider.value(
+      value: style,
       child: Container(
-        padding: themeExtension.padding,
+        padding: style.padding,
         decoration: BoxDecoration(
-          color: themeExtension.primaryColor,
+          color: style.primaryColor,
           border: borderWidth == null
               ? null
               : Border.all(width: borderWidth, color: configuration.snackBarType.getColor(context)),
-          borderRadius: themeExtension.borderRadius,
+          borderRadius: style.borderRadius,
         ),
         child: Row(
           spacing: spacing,

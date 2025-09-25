@@ -1,16 +1,22 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_carousel.dart';
 part '_widget/_traversal_button.dart';
 
 /// Slider carousel.
 class MyoroCarousel extends StatefulWidget {
-  const MyoroCarousel({super.key, this.themeExtension, this.controller, required this.configuration});
+  const MyoroCarousel({
+    super.key,
+    this.style = const MyoroCarouselStyle(),
+    this.controller,
+    required this.configuration,
+  });
 
   /// [ThemeExtension]
-  final MyoroCarouselThemeExtension? themeExtension;
+  final MyoroCarouselStyle style;
 
   /// Controller.
   final CarouselSliderController? controller;
@@ -23,6 +29,7 @@ class MyoroCarousel extends StatefulWidget {
 }
 
 final class _MyoroCarouselState extends State<MyoroCarousel> {
+  MyoroCarouselStyle get _style => widget.style;
   MyoroCarouselConfiguration get _configuration => widget.configuration;
 
   CarouselSliderController? _localController;
@@ -32,33 +39,36 @@ final class _MyoroCarouselState extends State<MyoroCarousel> {
 
   @override
   Widget build(context) {
-    final themeExtension = widget.themeExtension ?? const MyoroCarouselThemeExtension.builder();
-    final previousItemButtonIcon = themeExtension.previousItemButtonIcon;
-    final nextItemButtonIcon = themeExtension.nextItemButtonIcon;
+    final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
+    final previousItemButtonIcon = _style.previousItemButtonIcon ?? themeExtension.previousItemButtonIcon;
+    final nextItemButtonIcon = _style.nextItemButtonIcon ?? themeExtension.nextItemButtonIcon;
 
     final displayTraversalButtons = _configuration.displayTraversalButtons;
 
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        _Carousel(_configuration, _controller),
-        if (displayTraversalButtons) ...[
-          Positioned(
-            child: _TraversalButton(
-              Alignment.centerLeft,
-              previousItemButtonIcon ?? Icons.keyboard_arrow_left,
-              _controller.previousPage,
+    return InheritedProvider.value(
+      value: _style,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          _Carousel(_configuration, _controller),
+          if (displayTraversalButtons) ...[
+            Positioned(
+              child: _TraversalButton(
+                Alignment.centerLeft,
+                previousItemButtonIcon ?? Icons.keyboard_arrow_left,
+                _controller.previousPage,
+              ),
             ),
-          ),
-          Positioned(
-            child: _TraversalButton(
-              Alignment.centerRight,
-              nextItemButtonIcon ?? Icons.keyboard_arrow_right,
-              _controller.nextPage,
+            Positioned(
+              child: _TraversalButton(
+                Alignment.centerRight,
+                nextItemButtonIcon ?? Icons.keyboard_arrow_right,
+                _controller.nextPage,
+              ),
             ),
-          ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }

@@ -20,13 +20,13 @@ final class _Widget extends StatelessWidget {
             Flexible(
               child: MyoroSingleAccordion(
                 configuration: viewModel.singleConfiguration,
-                themeExtension: viewModel.buildThemeExtension(context),
+                style: viewModel.buildStyle(context),
               ),
             ),
             Flexible(
               child: MyoroMultiAccordion(
                 configuration: viewModel.multiConfiguration,
-                themeExtension: viewModel.buildThemeExtension(context),
+                style: viewModel.buildStyle(context),
               ),
             ),
           ],

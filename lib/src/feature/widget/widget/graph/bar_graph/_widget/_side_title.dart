@@ -9,12 +9,16 @@ final class _SideTitle extends StatelessWidget {
 
   @override
   Widget build(context) {
+    final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
+    final style = context.read<MyoroBarGraphStyle>();
+    final sideTitleTextStyle = style.sideTitleTextStyle ?? themeExtension.sideTitleTextStyle;
+
     return Padding(
       padding: EdgeInsets.only(right: _axis.isVertical ? 5 : 0),
       child: Text(
         _value.toStringAsFixed(_value == 0 || _value == _value.toInt() ? 0 : 2),
         textAlign: TextAlign.right,
-        style: context.resolveThemeExtension<MyoroBarGraphThemeExtension>().sideTitleTextStyle,
+        style: sideTitleTextStyle,
       ),
     );
   }

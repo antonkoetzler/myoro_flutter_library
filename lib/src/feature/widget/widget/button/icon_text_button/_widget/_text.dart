@@ -8,9 +8,10 @@ final class _Text extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
-      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
-    );
+    final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final style = context.read<MyoroIconTextButtonStyle>();
+    final contentColor =
+        style.contentColorBuilder(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
 
     final configuration = context.read<MyoroIconTextButtonConfiguration>();
     final textConfiguration = configuration.textConfiguration!;
@@ -19,7 +20,6 @@ final class _Text extends StatelessWidget {
     final overflow = textConfiguration.overflow;
     final alignment = textConfiguration.alignment;
     final textStyle = textConfiguration.style;
-    final contentColor = themeExtension.contentColorBuilder(_tapStatusEnum);
 
     return Expanded(
       child: Text(

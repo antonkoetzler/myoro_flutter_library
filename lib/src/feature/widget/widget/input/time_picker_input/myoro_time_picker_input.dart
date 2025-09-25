@@ -6,15 +6,15 @@ part '_widget/_time_picker.dart';
 part '_widget/_input.dart';
 part '_widget/_trigger_area.dart';
 
-/// Date picker input (click date, no typy typy).
+/// Time picker input (click time, no typy typy).
 class MyoroTimePickerInput extends StatefulWidget {
-  const MyoroTimePickerInput({super.key, required this.configuration, this.themeExtension});
+  const MyoroTimePickerInput({super.key, required this.configuration, this.style = const MyoroInputStyle()});
 
   /// Configuration.
   final MyoroTimePickerInputConfiguration configuration;
 
-  /// Theme extension.
-  final MyoroInputThemeExtension? themeExtension;
+  /// Style.
+  final MyoroInputStyle style;
 
   @override
   State<MyoroTimePickerInput> createState() => _MyoroTimePickerInputState();
@@ -22,12 +22,7 @@ class MyoroTimePickerInput extends StatefulWidget {
 
 final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
   late final MyoroTimePickerInputViewModel _viewModel;
-
-  MyoroInputThemeExtension get _themeExtension {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    return widget.themeExtension ?? MyoroInputThemeExtension.builder(colorScheme, textTheme);
-  }
+  MyoroInputStyle get _style => widget.style;
 
   @override
   void initState() {
@@ -50,19 +45,20 @@ final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
     final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
     final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
 
-    final child = InheritedProvider.value(
-      value: _viewModel,
+    return MultiProvider(
+      providers: [
+        Provider.value(value: _viewModel),
+        InheritedProvider.value(value: _style),
+      ],
       child: Stack(
         alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
             ? Alignment.center
             : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-        children: [
-          _Input(_themeExtension),
-          const Positioned(child: _TriggerArea()),
+        children: const [
+          _Input(),
+          Positioned(child: _TriggerArea()),
         ],
       ),
     );
-
-    return MyoroSingleThemeExtensionWrapper(themeExtension: _themeExtension, child: child);
   }
 }

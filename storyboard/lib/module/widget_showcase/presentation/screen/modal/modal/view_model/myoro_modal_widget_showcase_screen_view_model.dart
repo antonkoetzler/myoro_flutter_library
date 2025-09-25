@@ -16,13 +16,13 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
         ? MyoroModal.showModal(
           context,
           configuration: buildConfiguration(context),
-          themeExtension: buildThemeExtension(context),
+          style: buildStyle(context),
           child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         )
         : MyoroModal.showBottomSheet(
           context,
           configuration: buildConfiguration(context),
-          themeExtension: buildThemeExtension(context),
+          style: buildStyle(context),
           child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
         );
   }
@@ -39,7 +39,7 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroModalThemeExtension] of the [MyoroModal].
-  MyoroModalThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroModalThemeExtension buildStyle(BuildContext context) {
     final modalThemeExtension = MyoroModalThemeExtension.builder(context.colorScheme, context.textTheme);
 
     return modalThemeExtension.copyWith(

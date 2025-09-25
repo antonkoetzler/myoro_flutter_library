@@ -17,7 +17,7 @@ part '_widget/_rows_section.dart';
 /// Fairly simple implementation as tables are usually very business logic specific.
 /// Thus, extensibility is more important than being feature rich in this senario.
 class MyoroTable<T> extends StatefulWidget {
-  const MyoroTable({super.key, this.controller, this.configuration, this.themeExtension})
+  const MyoroTable({super.key, this.controller, this.configuration, this.style = const MyoroTableStyle()})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroTable<$T>]: [controller] (x)or [configuration] must be provided.',
@@ -29,18 +29,16 @@ class MyoroTable<T> extends StatefulWidget {
   /// Configuration.
   final MyoroTableConfiguration<T>? configuration;
 
-  /// Theme extension.
-  final MyoroTableThemeExtension? themeExtension;
+  /// Style.
+  final MyoroTableStyle style;
 
   @override
   State<MyoroTable<T>> createState() => _MyoroTableState<T>();
 }
 
 final class _MyoroTableState<T> extends State<MyoroTable<T>> {
-  MyoroTableThemeExtension get _themeExtension {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    return widget.themeExtension ?? MyoroTableThemeExtension.builder(colorScheme, textTheme);
+  MyoroTableStyle get _style {
+    return widget.style;
   }
 
   MyoroTableViewModel<T>? _localViewModel;
@@ -69,7 +67,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = _themeExtension.backgroundColor;
+    final backgroundColor = _style.backgroundColor;
 
     final child = Column(
       mainAxisSize: MainAxisSize.min,
@@ -80,12 +78,12 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
       ],
     );
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
-      child: InheritedProvider.value(
-        value: _viewModel,
-        child: backgroundColor != null ? ColoredBox(color: backgroundColor, child: child) : child,
-      ),
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: _style),
+        InheritedProvider.value(value: _viewModel),
+      ],
+      child: backgroundColor != null ? ColoredBox(color: backgroundColor, child: child) : child,
     );
   }
 }

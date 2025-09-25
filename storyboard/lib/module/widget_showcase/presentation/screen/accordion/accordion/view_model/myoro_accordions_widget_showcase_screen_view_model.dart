@@ -19,7 +19,7 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroAccordionThemeExtension] of the [MyoroAccordion].
-  MyoroAccordionThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroAccordionThemeExtension buildStyle(BuildContext context) {
     final accordionThemeExtension = MyoroAccordionThemeExtension.builder(
       context.isDarkMode,
       context.colorScheme,

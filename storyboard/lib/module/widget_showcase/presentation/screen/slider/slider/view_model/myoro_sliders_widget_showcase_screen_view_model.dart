@@ -49,7 +49,7 @@ final class MyoroSlidersWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroSliderThemeExtension] of the sliders.
-  MyoroSliderThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroSliderThemeExtension buildStyle(BuildContext context) {
     final sliderThemeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
 
     return sliderThemeExtension.copyWith(

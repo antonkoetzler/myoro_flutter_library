@@ -8,13 +8,14 @@ final class _Icon extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
-      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
-    );
+    final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
+    final style = context.read<MyoroIconTextButtonStyle>();
+    final contentColor =
+        style.contentColorBuilder(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
+
     final configuration = context.read<MyoroIconTextButtonConfiguration>();
     final iconConfiguration = configuration.iconConfiguration;
-    final contentColorBuilder = themeExtension.contentColorBuilder;
 
-    return Icon(iconConfiguration!.icon, size: iconConfiguration.size, color: contentColorBuilder(_tapStatusEnum));
+    return Icon(iconConfiguration!.icon, size: iconConfiguration.size, color: contentColor);
   }
 }

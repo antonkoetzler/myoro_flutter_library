@@ -8,11 +8,11 @@ final class _Widget extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroGroupCheckboxWidgetShowcaseScreenViewModel>();
     final buildConfiguration = viewModel.buildConfiguration;
-    final buildThemeExtension = viewModel.buildThemeExtension;
+    final buildStyle = viewModel.buildStyle;
 
     return MyoroGroupCheckbox(
       configuration: buildConfiguration(context),
-      themeExtension: buildThemeExtension(context),
+      style: buildStyle(context),
       checkboxes: {
         for (int i = 0; i < faker.randomGenerator.integer(20); i++) ...{
           'Checkbox #$i': faker.randomGenerator.boolean(),

@@ -16,7 +16,7 @@ final class MyoroAppBarWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroAppBarThemeExtension] of the [MyoroAppBar].
-  MyoroAppBarThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroAppBarThemeExtension buildStyle(BuildContext context) {
     final appBarThemeExtension = MyoroAppBarThemeExtension.builder(context.colorScheme);
 
     final backgroundColor = state.backgroundColor;

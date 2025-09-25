@@ -11,7 +11,8 @@ part 'myoro_feedback_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
-    with _$MyoroFeedbackThemeExtensionMixin {
+    with _$MyoroFeedbackThemeExtensionMixin
+    implements MyoroFeedbackStyle {
   const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
   // coverage:ignore-start
@@ -29,15 +30,19 @@ class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExten
       subtitleTextStyle = textTheme.bodyMedium;
 
   /// Spacing between the icon/title/subtitle and the action button.
+  @override
   final double? spacing;
 
   /// Size of the icon.
+  @override
   final double? iconSize;
 
   /// [TextStyle] of the title.
+  @override
   final TextStyle? titleTextStyle;
 
   /// [TextStyle] of the subtitle.
+  @override
   final TextStyle? subtitleTextStyle;
 
   @override

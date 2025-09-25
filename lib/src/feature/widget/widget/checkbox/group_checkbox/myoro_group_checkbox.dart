@@ -8,7 +8,8 @@ class MyoroGroupCheckbox extends StatefulWidget {
     this.notifier,
     this.checkboxes,
     this.configuration = const MyoroGroupCheckboxConfiguration(),
-    this.themeExtension,
+    this.style = const MyoroGroupCheckboxStyle(),
+    this.checkboxStyle = const MyoroCheckboxStyle(),
   }) : assert(
          (notifier != null) ^ (checkboxes != null),
          '[MyoroGroupCheckbox]: [notifier] (x)or [checkboxes] must be provided.',
@@ -23,8 +24,11 @@ class MyoroGroupCheckbox extends StatefulWidget {
   /// Configuration.
   final MyoroGroupCheckboxConfiguration configuration;
 
-  /// Theme exdtension.
-  final MyoroGroupCheckboxThemeExtension? themeExtension;
+  /// Style.
+  final MyoroGroupCheckboxStyle style;
+
+  /// [MyoroCheckbox] style.
+  final MyoroCheckboxStyle checkboxStyle;
 
   @override
   State<MyoroGroupCheckbox> createState() => _MyoroGroupCheckboxState();
@@ -32,9 +36,8 @@ class MyoroGroupCheckbox extends StatefulWidget {
 
 final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
   MyoroGroupCheckboxConfiguration get _configuration => widget.configuration;
-  MyoroGroupCheckboxThemeExtension get _themeExtension {
-    return widget.themeExtension ?? const MyoroGroupCheckboxThemeExtension.builder();
-  }
+  MyoroGroupCheckboxStyle get _style => widget.style;
+  MyoroCheckboxStyle get _checkboxStyle => widget.checkboxStyle;
 
   MyoroGroupCheckboxNotifier? _localNotifier;
   MyoroGroupCheckboxNotifier get _notifier {
@@ -49,36 +52,35 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
 
   @override
   Widget build(context) {
-    final spacing = _themeExtension.spacing ?? 0;
-    final runSpacing = _themeExtension.runSpacing ?? 0;
+    final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
+    final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
+    final runSpacing = _style.runSpacing ?? themeExtension.runSpacing ?? 0;
 
     final direction = _configuration.direction;
     final onChanged = _configuration.onChanged;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
-      child: ValueListenableBuilder(
-        valueListenable: _notifier,
-        builder: (_, checkboxes, _) {
-          return Wrap(
-            direction: direction,
-            spacing: spacing,
-            runSpacing: runSpacing,
-            children: checkboxes.entries.map<Widget>((entry) {
-              return MyoroCheckbox(
-                configuration: MyoroCheckboxConfiguration(
-                  label: entry.key,
-                  value: entry.value,
-                  onChanged: (bool value) {
-                    _notifier.toggle(entry.key, value);
-                    onChanged?.call(entry.key, checkboxes);
-                  },
-                ),
-              );
-            }).toList(),
-          );
-        },
-      ),
+    return ValueListenableBuilder(
+      valueListenable: _notifier,
+      builder: (_, checkboxes, _) {
+        return Wrap(
+          direction: direction,
+          spacing: spacing,
+          runSpacing: runSpacing,
+          children: checkboxes.entries.map<Widget>((entry) {
+            return MyoroCheckbox(
+              configuration: MyoroCheckboxConfiguration(
+                label: entry.key,
+                value: entry.value,
+                onChanged: (bool value) {
+                  _notifier.toggle(entry.key, value);
+                  onChanged?.call(entry.key, checkboxes);
+                },
+              ),
+              style: _checkboxStyle,
+            );
+          }).toList(),
+        );
+      },
     );
   }
 }

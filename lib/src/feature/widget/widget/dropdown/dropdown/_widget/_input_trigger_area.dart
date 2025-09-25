@@ -12,7 +12,7 @@ final class _InputTriggerArea<T, V extends _ViewModelType<T>> extends StatelessW
     final enabledNotifier = state.enabledNotifier;
     final inputSizeNotifier = state.inputSizeNotifier;
 
-    final inputThemeExtension = MyoroInputThemeExtension.builder(context.colorScheme, context.textTheme);
+    final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final clearTextButtonPadding = inputThemeExtension.clearTextButtonPadding;
 
     return ValueListenableBuilder(

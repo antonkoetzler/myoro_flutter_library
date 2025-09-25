@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
+import 'model/myoro_circular_loader_style.dart';
 
 /// A simple circular loading widget.
 class MyoroCircularLoader extends StatelessWidget {
-  /// Theme extension.
-  final MyoroCircularLoaderThemeExtension? themeExtension;
+  /// Style.
+  final MyoroCircularLoaderStyle style;
 
-  const MyoroCircularLoader({super.key, this.themeExtension});
+  const MyoroCircularLoader({super.key, this.style = const MyoroCircularLoaderStyle()});
 
   @override
   Widget build(context) {
-    final colorScheme = context.colorScheme;
-    final themeExtension = this.themeExtension ?? MyoroCircularLoaderThemeExtension.builder(colorScheme);
-    final size = themeExtension.size;
-    final color = themeExtension.color;
+    final size = style.size;
+    final color = style.color;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: themeExtension,
+    return Provider.value(
+      value: style,
       child: SizedBox(
         width: size,
         height: size,

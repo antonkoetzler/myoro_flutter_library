@@ -41,7 +41,7 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroGroupCheckboxThemeExtension] builder.
-  MyoroGroupCheckboxThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroGroupCheckboxThemeExtension buildStyle(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
     return themeExtension.copyWith(spacing: _state.spacing, runSpacing: _state.runSpacing);
   }

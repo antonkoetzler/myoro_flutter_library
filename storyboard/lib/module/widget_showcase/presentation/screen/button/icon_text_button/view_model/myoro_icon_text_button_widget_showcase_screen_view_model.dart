@@ -38,11 +38,23 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
     );
   }
 
-  /// [MyoroIconTextButtonThemeExtension] builder.
-  MyoroIconTextButtonThemeExtension buildThemeExtension(BuildContext context) {
+  /// [MyoroIconTextButtonStyle] builder.
+  MyoroIconTextButtonStyle buildStyle(BuildContext context) {
     final buttonViewModel = _state.buttonViewModel;
-    final buildButtonThemeExtension = buttonViewModel.buildThemeExtension;
-    final buttonThemeExtension = buildButtonThemeExtension(context);
-    return MyoroIconTextButtonThemeExtension.fromVariant(buttonThemeExtension);
+    final buildButtonStyle = buttonViewModel.buildStyle;
+    final buttonStyle = buildButtonStyle(context);
+    return const MyoroIconTextButtonStyle().copyWith(
+      backgroundIdleColor: buttonStyle.backgroundIdleColor,
+      backgroundHoverColor: buttonStyle.backgroundHoverColor,
+      backgroundTapColor: buttonStyle.backgroundTapColor,
+      contentIdleColor: buttonStyle.contentIdleColor,
+      contentHoverColor: buttonStyle.contentHoverColor,
+      contentTapColor: buttonStyle.contentTapColor,
+      borderWidth: buttonStyle.borderWidth,
+      borderRadius: buttonStyle.borderRadius,
+      borderIdleColor: buttonStyle.borderIdleColor,
+      borderHoverColor: buttonStyle.borderHoverColor,
+      borderTapColor: buttonStyle.borderTapColor,
+    );
   }
 }

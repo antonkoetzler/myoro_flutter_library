@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// Single radio(box) [Widget].
 class MyoroRadio extends StatefulWidget {
   /// Configuration.
   final MyoroRadioConfiguration configuration;
 
-  /// Theme extension.
-  final MyoroRadioThemeExtension? themeExtension;
+  /// Style.
+  final MyoroRadioStyle style;
 
-  const MyoroRadio({super.key, this.configuration = const MyoroRadioConfiguration(), this.themeExtension});
+  const MyoroRadio({
+    super.key,
+    this.configuration = const MyoroRadioConfiguration(),
+    this.style = const MyoroRadioStyle(),
+  });
 
   @override
   State<MyoroRadio> createState() => _MyoroRadioState();
@@ -18,10 +23,8 @@ class MyoroRadio extends StatefulWidget {
 final class _MyoroRadioState extends State<MyoroRadio> {
   MyoroRadioConfiguration get _configuration => widget.configuration;
 
-  MyoroRadioThemeExtension get _themeExtension {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    return widget.themeExtension ?? MyoroRadioThemeExtension.builder(colorScheme, textTheme);
+  MyoroRadioStyle get _style {
+    return widget.style;
   }
 
   MyoroRadioController? _localController;
@@ -44,14 +47,14 @@ final class _MyoroRadioState extends State<MyoroRadio> {
 
   @override
   Widget build(_) {
-    final spacing = _themeExtension.spacing ?? 0;
-    final labelTextStyle = _themeExtension.labelTextStyle;
-    final activeColor = _themeExtension.activeColor;
-    final hoverColor = _themeExtension.hoverColor;
-    final splashRadius = _themeExtension.splashRadius;
+    final spacing = _style.spacing ?? 0;
+    final labelTextStyle = _style.labelTextStyle;
+    final activeColor = _style.activeColor;
+    final hoverColor = _style.hoverColor;
+    final splashRadius = _style.splashRadius;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
+    return Provider.value(
+      value: _style,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         spacing: spacing,

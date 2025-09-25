@@ -16,7 +16,7 @@ final class MyoroBasicDividerWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroBasicDividerThemeExtension] builder.
-  MyoroBasicDividerThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroBasicDividerThemeExtension buildStyle(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
     final shortValue = _state.shortValue;
     return themeExtension.copyWith(shortValue: shortValue, shortValueProvided: shortValue != null);

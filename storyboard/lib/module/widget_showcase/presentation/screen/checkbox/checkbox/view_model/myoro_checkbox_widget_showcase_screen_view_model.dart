@@ -21,7 +21,7 @@ final class MyoroCheckboxWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroCheckboxThemeExtension] builder.
-  MyoroCheckboxThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroCheckboxThemeExtension buildStyle(BuildContext context) {
     final checkboxThemeExtension = MyoroCheckboxThemeExtension.builder(context.colorScheme, context.textTheme);
 
     final labelTextStyle = _state.labelTextStyle;

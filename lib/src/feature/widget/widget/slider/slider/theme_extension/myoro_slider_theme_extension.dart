@@ -9,7 +9,8 @@ part 'myoro_slider_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension>
-    with _$MyoroSliderThemeExtensionMixin {
+    with _$MyoroSliderThemeExtensionMixin
+    implements MyoroSliderStyle {
   const MyoroSliderThemeExtension({this.indicatorTextStyle, this.indicatorTextAlignment});
 
   // coverage:ignore-start
@@ -23,9 +24,11 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
       indicatorTextAlignment = TextAlign.center;
 
   /// Text style of indicators on the left, right, & bottom of the slider (i.e. [MyoroSlider.footerIndicatorTextBuilder]) .
+  @override
   final TextStyle? indicatorTextStyle;
 
   /// [TextAlign] of [_IndicatorText].
+  @override
   final TextAlign? indicatorTextAlignment;
 
   @override

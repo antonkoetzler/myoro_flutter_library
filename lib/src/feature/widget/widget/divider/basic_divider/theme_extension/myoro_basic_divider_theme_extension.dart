@@ -10,9 +10,10 @@ part 'myoro_basic_divider_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroBasicDivider].
 @immutable
 @myoroThemeExtension
-final class MyoroBasicDividerThemeExtension extends MyoroDividerThemeExtension<MyoroBasicDividerThemeExtension>
-    with _$MyoroBasicDividerThemeExtensionMixin {
-  const MyoroBasicDividerThemeExtension({super.color, super.shortValue, super.longValue});
+final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDividerThemeExtension>
+    with _$MyoroBasicDividerThemeExtensionMixin
+    implements MyoroBasicDividerStyle {
+  const MyoroBasicDividerThemeExtension({this.color, this.shortValue, this.longValue});
 
   // coverage:ignore-start
   factory MyoroBasicDividerThemeExtension.fake() {
@@ -23,6 +24,15 @@ final class MyoroBasicDividerThemeExtension extends MyoroDividerThemeExtension<M
     );
   }
   // coverage:ignore-end
+
+  @override
+  final Color? color;
+
+  @override
+  final double? shortValue;
+
+  @override
+  final double? longValue;
 
   factory MyoroBasicDividerThemeExtension.builder(ColorScheme colorScheme) {
     return MyoroBasicDividerThemeExtension(

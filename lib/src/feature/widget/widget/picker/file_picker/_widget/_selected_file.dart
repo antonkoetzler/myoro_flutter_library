@@ -7,7 +7,8 @@ final class _SelectedFile extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
-    final textStyle = themeExtension.textStyle;
+    final style = context.read<MyoroFilePickerStyle>();
+    final textStyle = style.textStyle ?? themeExtension.textStyle;
 
     final viewModel = context.read<MyoroFilePickerViewModel>();
     final state = viewModel.state;

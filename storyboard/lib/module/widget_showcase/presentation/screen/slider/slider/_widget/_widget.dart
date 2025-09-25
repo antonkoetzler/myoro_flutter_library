@@ -20,14 +20,8 @@ final class _Widget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: spacing,
           children: [
-            MyoroSlider(
-              configuration: viewModel.sliderConfiguration,
-              themeExtension: viewModel.buildThemeExtension(context),
-            ),
-            MyoroRangeSlider(
-              configuration: viewModel.rangeSliderConfiguration,
-              themeExtension: viewModel.buildThemeExtension(context),
-            ),
+            MyoroSlider(configuration: viewModel.sliderConfiguration, style: viewModel.buildStyle(context)),
+            MyoroRangeSlider(configuration: viewModel.rangeSliderConfiguration, style: viewModel.buildStyle(context)),
           ],
         );
       },

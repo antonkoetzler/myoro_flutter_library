@@ -7,13 +7,14 @@ final class _Title extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
+    final style = context.read<MyoroFeedbackStyle>();
     final configuration = context.read<MyoroFeedbackConfiguration>();
     final titleConfiguration = configuration.titleConfiguration;
     final text = titleConfiguration.text;
     final maxLines = titleConfiguration.maxLines;
     final overflow = titleConfiguration.overflow;
     final alignment = titleConfiguration.alignment;
-    final titleTextStyle = titleConfiguration.style ?? themeExtension.titleTextStyle;
+    final titleTextStyle = titleConfiguration.style ?? style.titleTextStyle ?? themeExtension.titleTextStyle;
 
     return Text(text, maxLines: maxLines, overflow: overflow, textAlign: alignment, style: titleTextStyle);
   }

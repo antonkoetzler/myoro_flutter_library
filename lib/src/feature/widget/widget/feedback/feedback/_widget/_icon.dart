@@ -7,9 +7,10 @@ final class _Icon extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
+    final style = context.read<MyoroFeedbackStyle>();
     final configuration = context.read<MyoroFeedbackConfiguration>();
     final iconConfiguration = configuration.iconConfiguration;
-    final iconSize = iconConfiguration.size ?? themeExtension.iconSize;
+    final iconSize = iconConfiguration.size ?? style.iconSize ?? themeExtension.iconSize;
     return Icon(iconConfiguration.icon, size: iconSize);
   }
 }

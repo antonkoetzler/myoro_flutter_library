@@ -12,16 +12,13 @@ final class _TabButton extends StatelessWidget {
     final isSelected = _tab == _selectedTab;
 
     final tabViewThemeExtension = context.resolveThemeExtension<MyoroTabViewThemeExtension>();
-    final tabButtonIconSize = tabViewThemeExtension.tabButtonIconSize;
-    final tabButtonTextStyle = tabViewThemeExtension.tabButtonTextStyle;
-    final tabButtonIdleColor = tabViewThemeExtension.tabButtonIdleColor;
-    final tabButtonHoverColor = tabViewThemeExtension.tabButtonHoverColor;
-    final tabButtonTapColor = tabViewThemeExtension.tabButtonTapColor;
-    final tabButtonBorderRadius = tabViewThemeExtension.tabButtonBorderRadius;
-
-    final iconTextButtonThemeExtension = MyoroIconTextButtonThemeExtension.fromVariant(
-      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
-    );
+    final style = context.read<MyoroTabViewStyle>();
+    final tabButtonIconSize = style.tabButtonIconSize ?? tabViewThemeExtension.tabButtonIconSize;
+    final tabButtonTextStyle = style.tabButtonTextStyle ?? tabViewThemeExtension.tabButtonTextStyle;
+    final tabButtonIdleColor = style.tabButtonIdleColor ?? tabViewThemeExtension.tabButtonIdleColor;
+    final tabButtonHoverColor = style.tabButtonHoverColor ?? tabViewThemeExtension.tabButtonHoverColor;
+    final tabButtonTapColor = style.tabButtonTapColor ?? tabViewThemeExtension.tabButtonTapColor;
+    final tabButtonBorderRadius = style.tabButtonBorderRadius ?? tabViewThemeExtension.tabButtonBorderRadius;
 
     final viewModel = context.read<MyoroTabViewViewModel>();
     final selectTab = viewModel.selectTab;
@@ -34,15 +31,11 @@ final class _TabButton extends StatelessWidget {
             : null,
         onTapUp: (_) => selectTab(_tab),
       ),
-      themeExtension: iconTextButtonThemeExtension.copyWith(
-        backgroundIdleColor: tabButtonIdleColor,
-        backgroundIdleColorProvided: tabButtonIdleColor != null && isSelected,
-        backgroundHoverColor: tabButtonHoverColor,
-        backgroundHoverColorProvided: tabButtonHoverColor != null && isSelected,
-        backgroundTapColor: tabButtonTapColor,
-        backgroundTapColorProvided: tabButtonTapColor != null && isSelected,
+      style: const MyoroIconTextButtonStyle().copyWith(
+        backgroundIdleColor: isSelected ? tabButtonIdleColor : null,
+        backgroundHoverColor: isSelected ? tabButtonHoverColor : null,
+        backgroundTapColor: isSelected ? tabButtonTapColor : null,
         borderRadius: tabButtonBorderRadius,
-        borderRadiusProvided: tabButtonBorderRadius != null,
       ),
     );
   }

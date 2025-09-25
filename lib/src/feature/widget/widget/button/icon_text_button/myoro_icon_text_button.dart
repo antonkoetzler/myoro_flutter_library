@@ -8,27 +8,24 @@ part '_widget/_text.dart';
 
 /// Button that holds an icon and/or text.
 class MyoroIconTextButton extends StatelessWidget {
+  const MyoroIconTextButton({super.key, required this.configuration, this.style = const MyoroIconTextButtonStyle()});
+
   /// Configuration.
   final MyoroIconTextButtonConfiguration configuration;
 
-  /// [ThemeExtension]
-  final MyoroIconTextButtonThemeExtension? themeExtension;
-
-  const MyoroIconTextButton({super.key, required this.configuration, this.themeExtension});
+  /// Style.
+  final MyoroIconTextButtonStyle style;
 
   @override
-  Widget build(context) {
-    final isDarkMode = context.isDarkMode;
-    final colorScheme = context.colorScheme;
-    final buttonPrimaryVariantThemeExtension = MyoroButtonPrimaryVariantThemeExtension.builder(isDarkMode, colorScheme);
-    final themeExtension =
-        this.themeExtension ?? MyoroIconTextButtonThemeExtension.fromVariant(buttonPrimaryVariantThemeExtension);
-
-    return InheritedProvider.value(
-      value: configuration,
+  Widget build(_) {
+    return MultiProvider(
+      providers: [
+        InheritedProvider.value(value: configuration),
+        InheritedProvider.value(value: style),
+      ],
       child: MyoroButton(
         configuration: configuration,
-        themeExtension: MyoroButtonThemeExtension.fromIconTextButtonThemeExtension(themeExtension),
+        style: style,
         builder: (_, tapStatusEnum) => _Button(tapStatusEnum),
       ),
     );

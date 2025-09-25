@@ -1,31 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_card.dart';
 part '_widget/_title.dart';
 
 /// Base card.
 class MyoroCard extends StatelessWidget {
-  const MyoroCard({super.key, this.title = kMyoroEmptyString, this.themeExtension, required this.child});
+  const MyoroCard({
+    super.key,
+    this.title = kMyoroEmptyString,
+    this.style = const MyoroCardStyle(),
+    required this.child,
+  });
 
   /// Title of the card.
   final String title;
 
   /// Style.
-  final MyoroCardThemeExtension? themeExtension;
+  final MyoroCardStyle style;
 
   /// Child.
   final Widget child;
 
   @override
   Widget build(context) {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    final themeExtension = this.themeExtension ?? MyoroCardThemeExtension.builder(colorScheme, textTheme);
-    final titleCardSpacing = themeExtension.titleCardSpacing ?? 0;
+    final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
+    final titleCardSpacing = style.titleCardSpacing ?? themeExtension.titleCardSpacing ?? 0;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: themeExtension,
+    return InheritedProvider.value(
+      value: style,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         spacing: titleCardSpacing,

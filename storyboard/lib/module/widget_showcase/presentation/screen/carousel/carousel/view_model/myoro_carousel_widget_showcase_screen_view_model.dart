@@ -26,7 +26,7 @@ final class MyoroCarouselWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroCarouselThemeExtension] of the [MyoroCarousel].
-  MyoroCarouselThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroCarouselThemeExtension buildStyle(BuildContext context) {
     const carouselThemeExtension = MyoroCarouselThemeExtension.builder();
 
     return carouselThemeExtension.copyWith(

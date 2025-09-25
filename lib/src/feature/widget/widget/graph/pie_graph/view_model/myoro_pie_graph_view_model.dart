@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// View model of [MyoroPieGraph].
 class MyoroPieGraphViewModel {
@@ -11,13 +12,14 @@ class MyoroPieGraphViewModel {
 
   /// Creates the sections of the [MyoroPieGraph].
   List<PieChartSectionData> createSections(BuildContext context) {
-    final themeExtension = MyoroPieGraphThemeExtension.builder(context.colorScheme);
+    final themeExtension = context.resolveThemeExtension<MyoroPieGraphThemeExtension>();
+    final style = context.read<MyoroPieGraphStyle>();
     return state.configuration.items.map<PieChartSectionData>((MyoroPieGraphItem item) {
       return PieChartSectionData(
         showTitle: false,
         value: item.value,
-        color: item.color ?? themeExtension.itemColor,
-        radius: item.radius ?? themeExtension.itemRadius,
+        color: item.color ?? style.itemColor ?? themeExtension.itemColor,
+        radius: item.radius ?? style.itemRadius ?? themeExtension.itemRadius,
       );
     }).toList();
   }

@@ -9,7 +9,8 @@ final class _Label extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final labelTextStyle = themeExtension.labelTextStyle;
+    final style = context.read<MyoroInputStyle>();
+    final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
 
     return Padding(
       padding: const EdgeInsets.only(

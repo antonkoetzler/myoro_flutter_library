@@ -11,7 +11,8 @@ part 'myoro_tab_view_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtension>
-    with _$MyoroTabViewThemeExtensionMixin {
+    with _$MyoroTabViewThemeExtensionMixin
+    implements MyoroTabViewStyle {
   const MyoroTabViewThemeExtension({
     this.tabButtonBorderRadius,
     this.tabButtonIdleColor,
@@ -40,21 +41,27 @@ class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtensi
       tabButtonTextStyle = textTheme.bodySmall!;
 
   /// [BorderRadius] of a tab traversal button.
+  @override
   final BorderRadius? tabButtonBorderRadius;
 
   /// [MyoroTapStatusEnum.idle]'s [Color] of the tab's traversal button when the tab is selected.
+  @override
   final Color? tabButtonIdleColor;
 
   /// [MyoroTapStatusEnum.hover]'s [Color] of the tab's traversal button when the tab is selected.
+  @override
   final Color? tabButtonHoverColor;
 
   /// [MyoroTapStatusEnum.tap]'s [Color] of the tab's traversal button when the tab is selected.
+  @override
   final Color? tabButtonTapColor;
 
   /// Icon size of a tab traversal button.
+  @override
   final double? tabButtonIconSize;
 
   /// [TextStyle] of a tab traversal button.
+  @override
   final TextStyle? tabButtonTextStyle;
 
   @override

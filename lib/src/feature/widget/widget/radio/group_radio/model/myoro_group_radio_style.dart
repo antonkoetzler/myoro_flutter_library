@@ -1,0 +1,41 @@
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+part 'myoro_group_radio_style.g.dart';
+
+/// Style model of [MyoroGroupRadio].
+@immutable
+@myoroModel
+class MyoroGroupRadioStyle with _$MyoroGroupRadioStyleMixin {
+  const MyoroGroupRadioStyle({this.spacing, this.runSpacing});
+
+  // coverage:ignore-start
+  factory MyoroGroupRadioStyle.fake() {
+    return MyoroGroupRadioStyle(
+      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+    );
+  }
+  // coverage:ignore-end
+
+  /// Main axis spacing in between each radio.
+  final double? spacing;
+
+  /// Cross axis spacing in between each radio.
+  final double? runSpacing;
+
+  /// Copy with.
+  MyoroGroupRadioStyle copyWith({
+    double? spacing,
+    bool spacingProvided = true,
+    double? runSpacing,
+    bool runSpacingProvided = true,
+  }) {
+    return MyoroGroupRadioStyle(
+      spacing: spacingProvided ? (spacing ?? this.spacing) : null,
+      runSpacing: runSpacingProvided ? (runSpacing ?? this.runSpacing) : null,
+    );
+  }
+}

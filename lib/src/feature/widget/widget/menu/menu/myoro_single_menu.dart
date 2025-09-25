@@ -2,7 +2,7 @@ part of 'bundle/myoro_menu_bundle.dart';
 
 /// Single selectable menu.
 final class MyoroSingleMenu<T> extends StatefulWidget {
-  const MyoroSingleMenu({super.key, this.controller, this.configuration, this.themeExtension})
+  const MyoroSingleMenu({super.key, this.controller, this.configuration, this.style = const MyoroMenuStyle()})
     : assert(
         (controller != null) ^ (configuration != null),
         '[MyoroSingleMenu<$T>]: [controller] (x)or [configuration] must be provided.',
@@ -14,16 +14,16 @@ final class MyoroSingleMenu<T> extends StatefulWidget {
   /// Configuration.
   final MyoroSingleMenuConfiguration<T>? configuration;
 
-  /// Theme extension.
-  final MyoroMenuThemeExtension? themeExtension;
+  /// Style.
+  final MyoroMenuStyle style;
 
   @override
   State<MyoroSingleMenu<T>> createState() => _MyoroSingleMenuState<T>();
 }
 
 final class _MyoroSingleMenuState<T> extends State<MyoroSingleMenu<T>> {
-  MyoroMenuThemeExtension? get _themeExtension {
-    return widget.themeExtension;
+  MyoroMenuStyle get _style {
+    return widget.style;
   }
 
   MyoroSingleMenuViewModel<T>? _localViewModel;
@@ -39,5 +39,5 @@ final class _MyoroSingleMenuState<T> extends State<MyoroSingleMenu<T>> {
   }
 
   @override
-  Widget build(_) => _Menu(_viewModel, _themeExtension);
+  Widget build(_) => _Menu(_viewModel, _style);
 }

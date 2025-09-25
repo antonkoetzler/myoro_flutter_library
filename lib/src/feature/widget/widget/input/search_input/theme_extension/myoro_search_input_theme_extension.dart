@@ -11,7 +11,8 @@ part 'myoro_search_input_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThemeExtension>
-    with _$MyoroSearchInputThemeExtensionMixin {
+    with _$MyoroSearchInputThemeExtensionMixin
+    implements MyoroSearchInputStyle {
   const MyoroSearchInputThemeExtension({this.spacing, this.searchButtonIcon, this.searchButtonLoadingSize});
 
   // coverage:ignore-start
@@ -27,12 +28,15 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
       searchButtonLoadingSize = kMyoroMultiplier * 4;
 
   /// Spacing in between the [MyoroInput] & [_SearchSection].
+  @override
   final double? spacing;
 
   /// Icon of [_SearchButton].
+  @override
   final IconData? searchButtonIcon;
 
   /// Size of the [MyoroCircularLoader] in [_SearchButton].
+  @override
   final double? searchButtonLoadingSize;
 
   @override

@@ -9,47 +9,46 @@ part '_widget/_title.dart';
 
 /// An a generic feedback [Widget].
 final class MyoroFeedback extends StatelessWidget {
-  const MyoroFeedback({super.key, required this.configuration, this.themeExtension});
+  const MyoroFeedback({super.key, required this.configuration, this.style = const MyoroFeedbackStyle()});
 
   /// Configuration.
   final MyoroFeedbackConfiguration configuration;
 
   /// Style.
-  final MyoroFeedbackThemeExtension? themeExtension;
+  final MyoroFeedbackStyle style;
 
   @override
   Widget build(context) {
-    final textTheme = context.textTheme;
-    final themeExtension = this.themeExtension ?? MyoroFeedbackThemeExtension.builder(textTheme);
-    final spacing = themeExtension.spacing ?? themeExtension.spacing ?? 0;
+    final style = this.style;
+    final spacing = style.spacing ?? 0;
 
     final subtitleConfiguration = configuration.subtitleConfiguration;
     final actionButtonConfiguration = configuration.actionButtonConfiguration;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: themeExtension,
-      child: InheritedProvider.value(
-        value: configuration,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Flexible(
-              child: Column(
-                spacing: spacing,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Flexible(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [const _Icon(), const _Title(), if (subtitleConfiguration != null) const _Subtitle()],
-                    ),
+    return MultiProvider(
+      providers: [
+        Provider.value(value: style),
+        InheritedProvider.value(value: configuration),
+      ],
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Column(
+              spacing: spacing,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Flexible(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [const _Icon(), const _Title(), if (subtitleConfiguration != null) const _Subtitle()],
                   ),
-                  if (actionButtonConfiguration != null) const _ActionButton(),
-                ],
-              ),
+                ),
+                if (actionButtonConfiguration != null) const _ActionButton(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

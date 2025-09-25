@@ -49,24 +49,17 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
     );
   }
 
-  /// [MyoroButtonThemeExtension] of the [MyoroButton].
-  MyoroButtonThemeExtension buildThemeExtension(BuildContext context) {
-    final buttonThemeExtension = MyoroButtonThemeExtension.fromVariant(
-      MyoroButtonPrimaryVariantThemeExtension.builder(context.isDarkMode, context.colorScheme),
-    );
-
-    return buttonThemeExtension.copyWith(
-      backgroundColor: state.backgroundColor,
+  /// [MyoroButtonStyle] of the [MyoroButton].
+  MyoroButtonStyle buildStyle(BuildContext context) {
+    return const MyoroButtonStyle().copyWith(
       backgroundIdleColor: state.backgroundIdleColor,
       backgroundHoverColor: state.backgroundHoverColor,
       backgroundTapColor: state.backgroundTapColor,
-      contentColor: state.contentColor,
       contentIdleColor: state.contentIdleColor,
       contentHoverColor: state.contentHoverColor,
       contentTapColor: state.contentTapColor,
       borderWidth: state.borderWidth,
       borderRadius: state.borderRadius,
-      borderColor: state.borderColor,
       borderIdleColor: state.borderIdleColor,
       borderHoverColor: state.borderHoverColor,
       borderTapColor: state.borderTapColor,

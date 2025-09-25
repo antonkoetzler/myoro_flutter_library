@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import '../model/myoro_image_picker_style.dart';
 
 part 'myoro_image_picker_theme_extension.g.dart';
 
@@ -12,7 +13,8 @@ part 'myoro_image_picker_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePickerThemeExtension>
-    with _$MyoroImagePickerThemeExtensionMixin {
+    with _$MyoroImagePickerThemeExtensionMixin
+    implements MyoroImagePickerStyle {
   const MyoroImagePickerThemeExtension({
     this.size,
     this.borderRadius,
@@ -64,36 +66,47 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       selectionTypeModalButtonGalleryIcon = Icons.browse_gallery;
 
   /// Size of the [MyoroImagePicker].
+  @override
   final Size? size;
 
   /// [BorderRadius] of the [MyoroImagePicker].
+  @override
   final BorderRadius? borderRadius;
 
   /// Cursor on the tappable overlay.
+  @override
   final MouseCursor? overlayCursor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.idle] state.
+  @override
   final Color? overlayIdleBackgroundColor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.hover] state.
+  @override
   final Color? overlayHoverBackgroundColor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.tap] state.
+  @override
   final Color? overlayTapBackgroundColor;
 
   /// [MyoroIconConfiguration] of the icon shown when there is no image selected.
+  @override
   final MyoroIconConfiguration? overlayUnselectedImageStateIconConfiguration;
 
   /// Constraints of the selection modal.
+  @override
   final BoxConstraints? selectionTypeModalConstraints;
 
   /// Spacing between buttons in the selection sheet.
+  @override
   final double? selectionTypeModalSpacing;
 
   /// Icon of [ImageSource.camera]'s selection sheet button.
+  @override
   final IconData? selectionTypeModalButtonCameraIcon;
 
   /// Icon of [ImageSource.gallery]'s selection sheet button.
+  @override
   final IconData? selectionTypeModalButtonGalleryIcon;
 
   @override

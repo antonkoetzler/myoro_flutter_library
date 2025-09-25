@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 part '_widget/_checkbox.dart';
 part '_widget/_clear_text_button.dart';
 part '_widget/_label.dart';
@@ -16,7 +17,7 @@ class MyoroInput extends StatefulWidget {
     super.key,
     this.configuration = const MyoroInputConfiguration(),
     this.formatter,
-    this.themeExtension,
+    this.style = const MyoroInputStyle(),
   });
 
   /// Configuration of the input.
@@ -27,8 +28,8 @@ class MyoroInput extends StatefulWidget {
   /// Stored here rather than in [configuration] to have named constructors that preload formatters.
   final MyoroInputFormatter? formatter;
 
-  /// Theme extension.
-  final MyoroInputThemeExtension? themeExtension;
+  /// Style.
+  final MyoroInputStyle style;
 
   /// An input that only accepts numbers (integers or decimal).
   factory MyoroInput.number({
@@ -38,13 +39,13 @@ class MyoroInput extends StatefulWidget {
     double? max,
     int decimalPlaces = 0,
     MyoroInputConfiguration configuration = const MyoroInputConfiguration(),
-    MyoroInputThemeExtension? themeExtension,
+    MyoroInputStyle? style,
   }) {
     return MyoroInput(
       key: key,
       configuration: configuration,
       formatter: MyoroNumberInputFormatter(min: min, max: max, decimalPlaces: decimalPlaces),
-      themeExtension: themeExtension,
+      style: style ?? const MyoroInputStyle(),
     );
   }
 
@@ -61,10 +62,8 @@ final class _MyoroInputState extends State<MyoroInput> {
     return widget.formatter;
   }
 
-  MyoroInputThemeExtension get _themeExtension {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    return widget.themeExtension ?? MyoroInputThemeExtension.builder(colorScheme, textTheme);
+  MyoroInputStyle get _style {
+    return widget.style;
   }
 
   late final MyoroInputViewModel _viewModel;
@@ -89,8 +88,8 @@ final class _MyoroInputState extends State<MyoroInput> {
 
   @override
   Widget build(_) {
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: _themeExtension,
+    return Provider.value(
+      value: _style,
       child: ValueListenableBuilder(
         valueListenable: _viewModel.state.enabledController,
         builder: (_, _, _) => _Wrapper(_viewModel),

@@ -11,7 +11,8 @@ part 'myoro_pie_graph_theme_extension.g.dart';
 @immutable
 @myoroThemeExtension
 class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension>
-    with _$MyoroPieGraphThemeExtensionMixin {
+    with _$MyoroPieGraphThemeExtensionMixin
+    implements MyoroPieGraphStyle {
   const MyoroPieGraphThemeExtension({this.itemColor, this.itemRadius});
 
   // coverage:ignore-start
@@ -23,9 +24,11 @@ class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExten
   MyoroPieGraphThemeExtension.builder(ColorScheme colorScheme) : itemColor = colorScheme.onPrimary, itemRadius = 200;
 
   /// Default color of an item.
+  @override
   final Color? itemColor;
 
   /// Default itemRadius (aka height) of an item.
+  @override
   final double? itemRadius;
 
   @override

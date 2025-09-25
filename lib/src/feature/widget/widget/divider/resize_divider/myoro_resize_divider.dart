@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part '_widget/_resize_button.dart';
 
 /// A divider with a click/tap + drag resize functionality.
 class MyoroResizeDivider extends StatelessWidget {
-  const MyoroResizeDivider(this._direction, {super.key, this.dragCallback, this.themeExtension});
+  const MyoroResizeDivider(
+    this._direction, {
+    super.key,
+    this.dragCallback,
+    this.style = const MyoroResizeDividerStyle(),
+  });
 
   /// [Axis]
   final Axis _direction;
@@ -13,25 +19,17 @@ class MyoroResizeDivider extends StatelessWidget {
   /// Resize activated callback.
   final MyoroResizeDividerDragCallback? dragCallback;
 
-  /// Theme extension.
-  final MyoroResizeDividerThemeExtension? themeExtension;
+  /// Style.
+  final MyoroResizeDividerStyle style;
 
   @override
   Widget build(context) {
-    final colorScheme = context.colorScheme;
-    final basicDividerThemeExtension = MyoroBasicDividerThemeExtension.builder(colorScheme);
-    final themeExtension =
-        this.themeExtension ?? MyoroResizeDividerThemeExtension.builder(basicDividerThemeExtension, colorScheme);
-
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: themeExtension,
+    return InheritedProvider.value(
+      value: style,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          MyoroBasicDivider(
-            _direction,
-            themeExtension: MyoroBasicDividerThemeExtension.fromResizeDividerThemeExtension(themeExtension),
-          ),
+          MyoroBasicDivider(_direction, style: style),
           _ResizeButton(_direction, dragCallback),
         ],
       ),

@@ -44,7 +44,7 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroDropdownThemeExtension] of the dropdowns.
-  MyoroDropdownThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroDropdownThemeExtension buildStyle(BuildContext context) {
     final dropdownThemeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
 
     return dropdownThemeExtension.copyWith(

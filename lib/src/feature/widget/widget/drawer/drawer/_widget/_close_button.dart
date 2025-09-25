@@ -6,18 +6,15 @@ final class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final buttonSecondaryVariantThemeExtension = MyoroButtonSecondaryVariantThemeExtension.builder(
-      context.isDarkMode,
-      context.colorScheme,
-    );
-
     final drawerController = context.read<MyoroDrawerController>();
 
     final configuration = context.read<MyoroDrawerConfiguration>();
     final closeButtonIcon = configuration.closeButtonIcon;
 
+    final iconTextButtonStyle = const MyoroIconTextButtonStyle()..bordered(context);
+
     return MyoroIconTextButton(
-      themeExtension: MyoroIconTextButtonThemeExtension.fromVariant(buttonSecondaryVariantThemeExtension),
+      style: iconTextButtonStyle,
       configuration: MyoroIconTextButtonConfiguration(
         onTapUp: (_) => context.closeDrawer(),
         iconConfiguration: MyoroIconConfiguration(

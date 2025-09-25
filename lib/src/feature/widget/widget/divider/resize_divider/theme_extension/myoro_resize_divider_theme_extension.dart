@@ -10,12 +10,13 @@ part 'myoro_resize_divider_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroResizeDivider].
 @immutable
 @myoroThemeExtension
-final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<MyoroResizeDividerThemeExtension>
-    with _$MyoroResizeDividerThemeExtensionMixin {
+final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeDividerThemeExtension>
+    with _$MyoroResizeDividerThemeExtensionMixin
+    implements MyoroResizeDividerStyle {
   const MyoroResizeDividerThemeExtension({
-    super.color,
-    super.shortValue,
-    super.longValue,
+    this.color,
+    this.shortValue,
+    this.longValue,
     this.resizeButtonBorderRadius,
     this.resizeButtonColor,
     this.resizeButtonShortValue,
@@ -51,16 +52,25 @@ final class MyoroResizeDividerThemeExtension extends MyoroDividerThemeExtension<
     );
   }
 
-  /// Border radius of the resize button.
+  @override
+  final Color? color;
+
+  @override
+  final double? shortValue;
+
+  @override
+  final double? longValue;
+
+  @override
   final BorderRadius? resizeButtonBorderRadius;
 
-  /// Background color of the resize button.
+  @override
   final Color? resizeButtonColor;
 
-  /// Width of the resize button.
+  @override
   final double? resizeButtonShortValue;
 
-  /// Height of the resize button.
+  @override
   final double? resizeButtonLongValue;
 
   @override

@@ -9,7 +9,7 @@ final class _SingleMenu extends StatelessWidget {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
     return MyoroSingleMenu<String>(
       configuration: viewModel.singleMenuConfiguration(context),
-      themeExtension: viewModel.buildThemeExtension(context),
+      style: viewModel.buildStyle(context),
     );
   }
 }

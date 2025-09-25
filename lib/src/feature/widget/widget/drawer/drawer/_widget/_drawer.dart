@@ -6,16 +6,17 @@ final class _Drawer extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
-
     final configuration = context.read<MyoroDrawerConfiguration>();
     final title = configuration.title;
     final child = configuration.child;
 
-    final drawerPadding = themeExtension.drawerPadding ?? EdgeInsets.zero;
-    final drawerShape = themeExtension.drawerShape;
-    final drawerContentPadding = themeExtension.drawerContentPadding ?? EdgeInsets.zero;
-    final titleContentDividerPadding = themeExtension.titleContentDividerPadding ?? EdgeInsets.zero;
+    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final style = context.read<MyoroDrawerStyle>();
+    final drawerPadding = style.drawerPadding ?? themeExtension.drawerPadding ?? EdgeInsets.zero;
+    final drawerShape = style.drawerShape ?? themeExtension.drawerShape;
+    final drawerContentPadding = style.drawerContentPadding ?? themeExtension.drawerContentPadding ?? EdgeInsets.zero;
+    final titleContentDividerPadding =
+        style.titleContentDividerPadding ?? themeExtension.titleContentDividerPadding ?? EdgeInsets.zero;
 
     return Padding(
       padding: drawerPadding,

@@ -39,7 +39,7 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroMenuThemeExtension] of the menus.
-  MyoroMenuThemeExtension buildThemeExtension(BuildContext context) {
+  MyoroMenuThemeExtension buildStyle(BuildContext context) {
     final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
 
     return menuThemeExtension.copyWith(

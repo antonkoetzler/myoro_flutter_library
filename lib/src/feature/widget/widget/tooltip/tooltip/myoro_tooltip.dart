@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 /// Simple tooltip.
 class MyoroTooltip extends StatelessWidget {
-  const MyoroTooltip({super.key, required this.configuration, required this.child, this.themeExtension});
+  const MyoroTooltip({
+    super.key,
+    required this.configuration,
+    required this.child,
+    this.style = const MyoroTooltipStyle(),
+  });
 
   /// Configuration.
   final MyoroTooltipConfiguration configuration;
@@ -11,16 +17,17 @@ class MyoroTooltip extends StatelessWidget {
   /// [Widget] utilizing the [MyoroTooltip].
   final Widget child;
 
-  /// Theme extension.
-  final MyoroTooltipThemeExtension? themeExtension;
+  /// Style.
+  final MyoroTooltipStyle style;
 
   @override
   Widget build(context) {
-    final themeExtension = this.themeExtension ?? const MyoroTooltipThemeExtension.builder();
-    final margin = themeExtension.margin;
+    final style = this.style;
+    final themeExtension = context.resolveThemeExtension<MyoroTooltipThemeExtension>();
+    final margin = style.margin ?? themeExtension.margin;
 
-    return MyoroSingleThemeExtensionWrapper(
-      themeExtension: themeExtension,
+    return Provider.value(
+      value: style,
       child: Tooltip(
         message: configuration.text,
         waitDuration: configuration.waitDuration,
