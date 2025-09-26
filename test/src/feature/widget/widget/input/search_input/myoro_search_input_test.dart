@@ -15,6 +15,7 @@ void main() {
             },
             itemBuilder: (item) => MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                iconConfiguration: MyoroIconConfiguration(icon: Icons.add),
                 textConfiguration: MyoroTextConfiguration(text: item),
               ),
             ),
@@ -56,6 +57,7 @@ void main() {
             },
             itemBuilder: (item) => MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                iconConfiguration: MyoroIconConfiguration(icon: Icons.add),
                 textConfiguration: MyoroTextConfiguration(text: item),
               ),
             ),
@@ -67,8 +69,11 @@ void main() {
 
     // Tap the search button to trigger loading
     await tester.tap(find.byType(MyoroButton));
-    await tester.pump(); // Don't wait for settle to catch loading state
-    await tester.pump(); // Additional pump to ensure loading state is rendered
+
+    // Wait for the loading state to appear
+    await tester.pump();
+    await tester.pump();
+    await tester.pump();
 
     // Should show loading indicator
     expect(find.byType(MyoroCircularLoader), findsOneWidget);

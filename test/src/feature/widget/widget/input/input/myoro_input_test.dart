@@ -7,9 +7,7 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroInput(
-          configuration: faker.randomGenerator.boolean()
-              ? const MyoroInputConfiguration()
-              : MyoroInputConfiguration(checkboxOnChanged: (_, _) {}),
+          configuration: faker.randomGenerator.boolean() ? const MyoroInputConfiguration() : MyoroInputConfiguration(checkboxOnChanged: (_, _) {}),
         ),
       ),
     );
@@ -28,10 +26,30 @@ void main() {
           min: min,
           max: max,
           decimalPlaces: decimalPlaces,
-          configuration: faker.randomGenerator.boolean()
-              ? const MyoroInputConfiguration()
-              : MyoroInputConfiguration.fake(),
+          configuration: faker.randomGenerator.boolean() ? const MyoroInputConfiguration() : MyoroInputConfiguration.fake(),
         ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroInput), findsOneWidget);
+  });
+
+  testWidgets('MyoroInput with label', (tester) async {
+    final label = faker.lorem.word();
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: MyoroInput(configuration: MyoroInputConfiguration(label: label)),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroInput), findsOneWidget);
+    expect(find.text(label), findsOneWidget);
+  });
+
+  testWidgets('MyoroInput with clear text button', (tester) async {
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: MyoroInput(configuration: MyoroInputConfiguration(showClearTextButton: true, placeholder: faker.lorem.word())),
       ),
     );
     await tester.pumpAndSettle();

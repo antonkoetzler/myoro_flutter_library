@@ -36,18 +36,18 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
   final T? data;
 
   MyoroRequest<T> createIdleState() {
-    return MyoroRequest(status: MyoroRequestEnum.idle, errorMessage: this.errorMessage, data: this.data);
+    return MyoroRequest(status: MyoroRequestEnum.idle, errorMessage: errorMessage, data: data);
   }
 
   MyoroRequest<T> createLoadingState() {
-    return MyoroRequest(status: MyoroRequestEnum.loading, errorMessage: this.errorMessage, data: this.data);
+    return MyoroRequest(status: MyoroRequestEnum.loading, errorMessage: errorMessage, data: data);
   }
 
   MyoroRequest<T> createSuccessState(T? data) {
-    return MyoroRequest(status: MyoroRequestEnum.success, errorMessage: this.errorMessage, data: data);
+    return MyoroRequest(status: MyoroRequestEnum.success, errorMessage: errorMessage, data: data);
   }
 
   MyoroRequest<T> createErrorState(String errorMessage) {
-    return MyoroRequest(status: MyoroRequestEnum.error, errorMessage: errorMessage, data: this.data);
+    return MyoroRequest(status: MyoroRequestEnum.error, errorMessage: errorMessage, data: data);
   }
 }

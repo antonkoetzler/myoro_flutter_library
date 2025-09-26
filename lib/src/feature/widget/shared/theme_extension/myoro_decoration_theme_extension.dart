@@ -10,8 +10,7 @@ part 'myoro_decoration_theme_extension.g.dart';
 /// Shared decoration [ThemeExtension].
 @immutable
 @myoroThemeExtension
-final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecorationThemeExtension>
-    with _$MyoroDecorationThemeExtensionMixin {
+final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecorationThemeExtension> with _$MyoroDecorationThemeExtensionMixin {
   static const primaryHoverBackgroundColorFactor = 0.4;
   static const primaryTapBackgroundColorFactor = 0.2;
   static const secondaryHoverBackgroundColorFactor = 0.2;
@@ -53,7 +52,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
           : colorScheme.onPrimary.brighten(primaryHoverBackgroundColorFactor),
       primaryTapBackgroundColor = isDarkMode
           ? colorScheme.onPrimary.darken(primaryTapBackgroundColorFactor)
-          : colorScheme.onPrimary.brighten(primaryHoverBackgroundColorFactor),
+          : colorScheme.onPrimary.brighten(primaryTapBackgroundColorFactor),
       secondaryIdleBackgroundColor = colorScheme.onPrimary,
       secondaryHoverBackgroundColor = isDarkMode
           ? colorScheme.onPrimary.darken(secondaryHoverBackgroundColorFactor)
@@ -105,27 +104,11 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
     if (other is! MyoroDecorationThemeExtension) return this;
 
     final primaryIdleBackgroundColor = Color.lerp(this.primaryIdleBackgroundColor, other.primaryIdleBackgroundColor, t);
-    final primaryHoverBackgroundColor = Color.lerp(
-      this.primaryHoverBackgroundColor,
-      other.primaryHoverBackgroundColor,
-      t,
-    );
+    final primaryHoverBackgroundColor = Color.lerp(this.primaryHoverBackgroundColor, other.primaryHoverBackgroundColor, t);
     final primaryTapBackgroundColor = Color.lerp(this.primaryTapBackgroundColor, other.primaryTapBackgroundColor, t);
-    final secondaryIdleBackgroundColor = Color.lerp(
-      this.secondaryIdleBackgroundColor,
-      other.secondaryIdleBackgroundColor,
-      t,
-    );
-    final secondaryHoverBackgroundColor = Color.lerp(
-      this.secondaryHoverBackgroundColor,
-      other.secondaryHoverBackgroundColor,
-      t,
-    );
-    final secondaryTapBackgroundColor = Color.lerp(
-      this.secondaryTapBackgroundColor,
-      other.secondaryTapBackgroundColor,
-      t,
-    );
+    final secondaryIdleBackgroundColor = Color.lerp(this.secondaryIdleBackgroundColor, other.secondaryIdleBackgroundColor, t);
+    final secondaryHoverBackgroundColor = Color.lerp(this.secondaryHoverBackgroundColor, other.secondaryHoverBackgroundColor, t);
+    final secondaryTapBackgroundColor = Color.lerp(this.secondaryTapBackgroundColor, other.secondaryTapBackgroundColor, t);
     final primaryContentColor = Color.lerp(this.primaryContentColor, other.primaryContentColor, t);
     final secondaryContentColor = Color.lerp(this.secondaryContentColor, other.secondaryContentColor, t);
     final borderWidth = lerpDouble(this.borderWidth, other.borderWidth, t);

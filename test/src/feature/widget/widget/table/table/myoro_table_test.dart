@@ -129,6 +129,47 @@ void main() {
     expect(find.text('Exception: $errorMessage'), findsOneWidget);
   });
 
+  testWidgets('MyoroTable with multiple columns', (tester) async {
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: MyoroTable<String>(
+          configuration: MyoroTableConfiguration(
+            request: () => {faker.lorem.word()},
+            columns: [MyoroTableColumn.fake(), MyoroTableColumn.fake(), MyoroTableColumn.fake()],
+            rowBuilder: (item) => MyoroTableRow(cells: [Text(item), Text(item), Text(item)]),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroTable<String>), findsOneWidget);
+  });
+
+  testWidgets('MyoroTable with fixed width columns', (tester) async {
+    await tester.pumpWidget(
+      MyoroWidgetTester(
+        child: MyoroTable<String>(
+          configuration: MyoroTableConfiguration(
+            request: () => {faker.lorem.word()},
+            columns: [
+              MyoroTableColumn(
+                widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed, fixedWidth: 100),
+                child: const SizedBox.shrink(),
+              ),
+              MyoroTableColumn(
+                widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed, fixedWidth: 150),
+                child: const SizedBox.shrink(),
+              ),
+            ],
+            rowBuilder: (item) => MyoroTableRow(cells: [Text(item), Text(item)]),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(MyoroTable<String>), findsOneWidget);
+  });
+
   // testWidgets('MyoroTable incorrect amount of columns case', (tester) async {
   //   final configuration = createConfiguration();
   //   await tester.pumpWidget(

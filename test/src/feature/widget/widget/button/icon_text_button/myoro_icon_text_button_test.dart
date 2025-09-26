@@ -4,11 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
-  Future<void> testCase(
-    WidgetTester tester,
-    MyoroIconTextButtonConfiguration configuration,
-    VoidCallback callback,
-  ) async {
+  Future<void> testCase(WidgetTester tester, MyoroIconTextButtonConfiguration configuration, VoidCallback callback) async {
     await tester.pumpWidget(MyoroWidgetTester(child: MyoroIconTextButton(configuration: configuration)));
     await tester.pumpAndSettle();
     expect(find.byType(MyoroIconTextButton), findsOneWidget);
@@ -18,20 +14,14 @@ void main() {
   testWidgets('MyoroIconTextButton with either icon or text provided', (tester) async {
     final provideIcon = faker.randomGenerator.boolean();
     final configuration = MyoroIconTextButtonConfiguration.fake().copyWith(
-      iconConfigurationProvided: provideIcon,
+      iconConfiguration: provideIcon ? MyoroIconConfiguration.fake() : null,
       textConfiguration: provideIcon ? null : MyoroTextConfiguration.fake(),
-      textConfigurationProvided: !provideIcon,
     );
 
     await testCase(
       tester,
       configuration,
-      () => expect(
-        provideIcon
-            ? find.byIcon(configuration.iconConfiguration!.icon)
-            : find.text(configuration.textConfiguration!.text),
-        findsOneWidget,
-      ),
+      () => expect(provideIcon ? find.byIcon(configuration.iconConfiguration!.icon) : find.text(configuration.textConfiguration!.text), findsOneWidget),
     );
   });
 
