@@ -55,12 +55,9 @@ void main() {
               await Future.delayed(const Duration(milliseconds: 1000));
               return {'item1', 'item2'};
             },
-            itemBuilder: (item) => MyoroMenuItem(
-              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                iconConfiguration: MyoroIconConfiguration(icon: Icons.add),
-                textConfiguration: MyoroTextConfiguration(text: item),
-              ),
-            ),
+            itemBuilder: (item) {
+              return MyoroMenuItem(iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(iconConfiguration: MyoroIconConfiguration.fake()));
+            },
           ),
         ),
       ),

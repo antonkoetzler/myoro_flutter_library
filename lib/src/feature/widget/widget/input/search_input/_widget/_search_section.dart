@@ -11,7 +11,7 @@ final class _SearchSection<T> extends StatelessWidget {
     final items = viewModel.itemsRequest.data;
 
     return MyoroSingleMenu<T>(
-      configuration: MyoroSingleMenuConfiguration(itemBuilder: itemBuilder, request: () => items!),
+      configuration: MyoroSingleMenuConfiguration(itemBuilder: itemBuilder, request: () => items ?? const {}),
     );
   }
 }

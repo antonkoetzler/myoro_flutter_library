@@ -3,7 +3,9 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Notifier of [MyoroSearchInput].
 class MyoroSearchInputViewModel<T> {
-  MyoroSearchInputViewModel(this.configuration);
+  MyoroSearchInputViewModel(this.configuration) {
+    _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>(requestCallback: () => configuration.request(inputController.text));
+  }
 
   /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;
@@ -17,7 +19,7 @@ class MyoroSearchInputViewModel<T> {
   }
 
   /// Items of the [MyoroSearchInput].
-  final _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>();
+  late final MyoroRequestNotifier<Set<T>> _itemsRequestNotifier;
 
   /// Items of the [MyoroSearchInput].
   MyoroRequestNotifier<Set<T>> get itemsRequestNotifier => _itemsRequestNotifier;

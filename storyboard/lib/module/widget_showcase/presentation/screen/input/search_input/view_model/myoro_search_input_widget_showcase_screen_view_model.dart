@@ -13,24 +13,17 @@ final class MyoroSearchInputWidgetShowcaseScreenViewModel {
   /// Configuration of the [MyoroSearchInput] given the options set.
   /// Note: Using only search-specific fields to avoid relying on base input getters.
   MyoroSearchInputConfiguration<String> buildConfiguration(BuildContext context, Widget suffix) {
-    return MyoroSearchInputConfiguration(
-      requestWhenChanged: state.requestWhenChanged,
-      request: _request,
-      itemBuilder: _itemBuilder,
-    );
+    return MyoroSearchInputConfiguration(requestWhenChanged: state.requestWhenChanged, request: _request, itemBuilder: _itemBuilder);
   }
 
   /// [MyoroSearchInputConfiguration.request]
-  Set<String> _request(String query) {
+  Future<Set<String>> _request(String query) async {
+    await Future.delayed(const Duration(milliseconds: 1500));
     return state.items.where((item) => item.toUpperCase().contains(query.toUpperCase())).toSet();
   }
 
   /// [MyoroSearchInputConfiguration.itemBuilder]
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuItem(
-      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroTextConfiguration(text: item),
-      ),
-    );
+    return MyoroMenuItem(iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: item)));
   }
 }
