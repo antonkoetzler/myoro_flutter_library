@@ -1,4 +1,4 @@
-<h1 align='center'>MyoroFlutterLibrary</h1>
+<h1 align='center'>Myoro Flutter Library</h1>
 
 <p align='center'>
   <img src='https://github.com/user-attachments/assets/ef54976c-4343-4b27-bbac-16453e4f3a01' alt='Logo' width=1000 />
