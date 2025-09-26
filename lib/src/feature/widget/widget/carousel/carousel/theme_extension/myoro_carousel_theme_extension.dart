@@ -8,9 +8,7 @@ part 'myoro_carousel_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroCarousel].
 @immutable
 @myoroThemeExtension
-class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension>
-    with _$MyoroCarouselThemeExtensionMixin
-    implements MyoroCarouselStyle {
+class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExtension> with _$MyoroCarouselThemeExtensionMixin implements MyoroCarouselStyle {
   const MyoroCarouselThemeExtension({this.previousItemButtonIcon, this.nextItemButtonIcon});
 
   // coverage:ignore-start
@@ -19,9 +17,7 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
       nextItemButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
   // coverage:ignore-end
 
-  const MyoroCarouselThemeExtension.builder()
-    : previousItemButtonIcon = Icons.keyboard_arrow_left,
-      nextItemButtonIcon = Icons.keyboard_arrow_right;
+  const MyoroCarouselThemeExtension.builder() : previousItemButtonIcon = Icons.keyboard_arrow_left, nextItemButtonIcon = Icons.keyboard_arrow_right;
 
   @override
   final IconData? previousItemButtonIcon;
@@ -30,17 +26,9 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
   final IconData? nextItemButtonIcon;
 
   @override
-  MyoroCarouselThemeExtension lerp(covariant ThemeExtension<MyoroCarouselThemeExtension>? other, double t) {
+  MyoroCarouselThemeExtension lerp(covariant MyoroCarouselThemeExtension? other, double t) {
     if (other is! MyoroCarouselThemeExtension) return this;
-
-    final previousItemButtonIcon = myoroFallbackLerp(this.previousItemButtonIcon, other.previousItemButtonIcon, t);
-    final nextItemButtonIcon = myoroFallbackLerp(this.nextItemButtonIcon, other.nextItemButtonIcon, t);
-
-    return copyWith(
-      previousItemButtonIcon: previousItemButtonIcon,
-      previousItemButtonIconProvided: previousItemButtonIcon != null,
-      nextItemButtonIcon: nextItemButtonIcon,
-      nextItemButtonIconProvided: nextItemButtonIcon != null,
-    );
+    final style = MyoroCarouselStyle.lerp(this, other, t);
+    return MyoroCarouselThemeExtension(previousItemButtonIcon: style.previousItemButtonIcon, nextItemButtonIcon: style.nextItemButtonIcon);
   }
 }

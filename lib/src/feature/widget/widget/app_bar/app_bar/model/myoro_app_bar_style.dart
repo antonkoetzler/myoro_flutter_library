@@ -9,6 +9,13 @@ part 'myoro_app_bar_style.g.dart';
 @immutable
 @myoroModel
 class MyoroAppBarStyle with _$MyoroAppBarStyleMixin {
+  static MyoroAppBarStyle lerp(MyoroAppBarStyle? a, MyoroAppBarStyle? b, double t) {
+    return MyoroAppBarStyle(
+      backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
+      contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
+    );
+  }
+
   const MyoroAppBarStyle({this.backgroundColor, this.contentPadding});
 
   // coverage:ignore-start

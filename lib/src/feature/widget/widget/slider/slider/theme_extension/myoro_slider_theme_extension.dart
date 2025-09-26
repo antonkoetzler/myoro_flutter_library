@@ -8,9 +8,7 @@ part 'myoro_slider_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroSlider].
 @immutable
 @myoroThemeExtension
-class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension>
-    with _$MyoroSliderThemeExtensionMixin
-    implements MyoroSliderStyle {
+class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension> with _$MyoroSliderThemeExtensionMixin implements MyoroSliderStyle {
   const MyoroSliderThemeExtension({this.indicatorTextStyle, this.indicatorTextAlignment});
 
   // coverage:ignore-start
@@ -19,9 +17,7 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
       indicatorTextAlignment = faker.randomGenerator.boolean() ? myoroFake<TextAlign>() : null;
   // coverage:ignore-end
 
-  MyoroSliderThemeExtension.builder(TextTheme textTheme)
-    : indicatorTextStyle = textTheme.bodySmall!,
-      indicatorTextAlignment = TextAlign.center;
+  MyoroSliderThemeExtension.builder(TextTheme textTheme) : indicatorTextStyle = textTheme.bodySmall!, indicatorTextAlignment = TextAlign.center;
 
   /// Text style of indicators on the left, right, & bottom of the slider (i.e. [MyoroSlider.footerIndicatorTextBuilder]) .
   @override
@@ -32,17 +28,9 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
   final TextAlign? indicatorTextAlignment;
 
   @override
-  MyoroSliderThemeExtension lerp(covariant ThemeExtension<MyoroSliderThemeExtension>? other, double t) {
+  MyoroSliderThemeExtension lerp(covariant MyoroSliderThemeExtension? other, double t) {
     if (other is! MyoroSliderThemeExtension) return this;
-
-    final indicatorTextStyle = TextStyle.lerp(this.indicatorTextStyle, other.indicatorTextStyle, t);
-    final indicatorTextAlignment = myoroFallbackLerp(this.indicatorTextAlignment, other.indicatorTextAlignment, t);
-
-    return copyWith(
-      indicatorTextStyle: indicatorTextStyle,
-      indicatorTextStyleProvided: indicatorTextStyle != null,
-      indicatorTextAlignment: indicatorTextAlignment,
-      indicatorTextAlignmentProvided: indicatorTextAlignment != null,
-    );
+    final style = MyoroSliderStyle.lerp(this, other, t);
+    return MyoroSliderThemeExtension(indicatorTextStyle: style.indicatorTextStyle, indicatorTextAlignment: style.indicatorTextAlignment);
   }
 }

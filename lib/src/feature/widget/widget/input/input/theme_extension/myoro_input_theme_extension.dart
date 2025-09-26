@@ -10,9 +10,7 @@ part 'myoro_input_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroInput].
 @immutable
 @myoroThemeExtension
-class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
-    with _$MyoroInputThemeExtensionMixin
-    implements MyoroInputStyle {
+class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> with _$MyoroInputThemeExtensionMixin implements MyoroInputStyle {
   const MyoroInputThemeExtension({
     this.border,
     this.underlinedBorder,
@@ -49,9 +47,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       labelBehavior = faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
       clearTextButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       clearTextButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      clearTextButtonIconSize = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 200, min: 20)
-          : null;
+      clearTextButtonIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 200, min: 20) : null;
   // coverage:ignore-end
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -142,56 +138,26 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
   final double? clearTextButtonIconSize;
 
   @override
-  MyoroInputThemeExtension lerp(covariant ThemeExtension<MyoroInputThemeExtension>? other, double t) {
+  MyoroInputThemeExtension lerp(covariant MyoroInputThemeExtension? other, double t) {
     if (other is! MyoroInputThemeExtension) return this;
-
-    final underlinedBorder = myoroFallbackLerp(this.underlinedBorder, other.underlinedBorder, t);
-    final outlinedBorder = myoroFallbackLerp(this.outlinedBorder, other.outlinedBorder, t);
-    final noneBorder = myoroFallbackLerp(this.noneBorder, other.noneBorder, t);
-    final primaryColor = Color.lerp(this.primaryColor, other.primaryColor, t);
-    final errorBorderColor = Color.lerp(this.errorBorderColor, other.errorBorderColor, t);
-    final cursorHeight = lerpDouble(this.cursorHeight, other.cursorHeight, t);
-    final contentPadding = EdgeInsets.lerp(this.contentPadding, other.contentPadding, t);
-    final disabledOpacity = lerpDouble(this.disabledOpacity, other.disabledOpacity, t);
-    final inputTextStyle = TextStyle.lerp(this.inputTextStyle, other.inputTextStyle, t);
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final labelTextStyle = TextStyle.lerp(this.labelTextStyle, other.labelTextStyle, t);
-    final labelBehavior = myoroFallbackLerp(this.labelBehavior, other.labelBehavior, t);
-    final clearTextButtonPadding = EdgeInsets.lerp(this.clearTextButtonPadding, other.clearTextButtonPadding, t);
-    final clearTextButtonIcon = myoroFallbackLerp(this.clearTextButtonIcon, other.clearTextButtonIcon, t);
-    final clearTextButtonIconSize = lerpDouble(this.clearTextButtonIconSize, other.clearTextButtonIconSize, t);
-
-    return copyWith(
-      underlinedBorder: underlinedBorder,
-      underlinedBorderProvided: underlinedBorder != null,
-      outlinedBorder: outlinedBorder,
-      outlinedBorderProvided: outlinedBorder != null,
-      noneBorder: noneBorder,
-      noneBorderProvided: noneBorder != null,
-      primaryColor: primaryColor,
-      primaryColorProvided: primaryColor != null,
-      errorBorderColor: errorBorderColor,
-      errorBorderColorProvided: errorBorderColor != null,
-      cursorHeight: cursorHeight,
-      cursorHeightProvided: cursorHeight != null,
-      contentPadding: contentPadding,
-      contentPaddingProvided: contentPadding != null,
-      disabledOpacity: disabledOpacity,
-      disabledOpacityProvided: disabledOpacity != null,
-      inputTextStyle: inputTextStyle,
-      inputTextStyleProvided: inputTextStyle != null,
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      labelTextStyle: labelTextStyle,
-      labelTextStyleProvided: labelTextStyle != null,
-      labelBehavior: labelBehavior,
-      labelBehaviorProvided: labelBehavior != null,
-      clearTextButtonPadding: clearTextButtonPadding,
-      clearTextButtonPaddingProvided: clearTextButtonPadding != null,
-      clearTextButtonIcon: clearTextButtonIcon,
-      clearTextButtonIconProvided: clearTextButtonIcon != null,
-      clearTextButtonIconSize: clearTextButtonIconSize,
-      clearTextButtonIconSizeProvided: clearTextButtonIconSize != null,
+    final style = MyoroInputStyle.lerp(this, other, t);
+    return MyoroInputThemeExtension(
+      border: style.border,
+      underlinedBorder: style.underlinedBorder,
+      outlinedBorder: style.outlinedBorder,
+      noneBorder: style.noneBorder,
+      primaryColor: style.primaryColor,
+      errorBorderColor: style.errorBorderColor,
+      cursorHeight: style.cursorHeight,
+      contentPadding: style.contentPadding,
+      disabledOpacity: style.disabledOpacity,
+      inputTextStyle: style.inputTextStyle,
+      spacing: style.spacing,
+      labelTextStyle: style.labelTextStyle,
+      labelBehavior: style.labelBehavior,
+      clearTextButtonPadding: style.clearTextButtonPadding,
+      clearTextButtonIcon: style.clearTextButtonIcon,
+      clearTextButtonIconSize: style.clearTextButtonIconSize,
     );
   }
 }

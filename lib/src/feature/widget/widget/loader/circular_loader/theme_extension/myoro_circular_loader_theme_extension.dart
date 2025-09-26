@@ -32,12 +32,9 @@ class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoad
   final double? size;
 
   @override
-  MyoroCircularLoaderThemeExtension lerp(covariant ThemeExtension<MyoroCircularLoaderThemeExtension>? other, double t) {
+  MyoroCircularLoaderThemeExtension lerp(covariant MyoroCircularLoaderThemeExtension? other, double t) {
     if (other is! MyoroCircularLoaderThemeExtension) return this;
-
-    final color = Color.lerp(this.color, other.color, t);
-    final size = lerpDouble(this.size, other.size, t);
-
-    return copyWith(color: color, colorProvided: color != null, size: size, sizeProvided: size != null);
+    final style = MyoroCircularLoaderStyle.lerp(this, other, t);
+    return MyoroCircularLoaderThemeExtension(color: style.color, size: style.size);
   }
 }

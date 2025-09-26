@@ -8,9 +8,7 @@ part 'myoro_app_bar_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroAppBar].
 @immutable
 @myoroThemeExtension
-class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension>
-    with _$MyoroAppBarThemeExtensionMixin
-    implements MyoroAppBarStyle {
+class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension> with _$MyoroAppBarThemeExtensionMixin implements MyoroAppBarStyle {
   const MyoroAppBarThemeExtension({this.backgroundColor, this.contentPadding});
 
   // coverage:ignore-start
@@ -19,9 +17,7 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
       contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
   // coverage:ignore-end
 
-  MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
-    : backgroundColor = colorScheme.primary,
-      contentPadding = const EdgeInsets.all(10);
+  MyoroAppBarThemeExtension.builder(ColorScheme colorScheme) : backgroundColor = colorScheme.primary, contentPadding = const EdgeInsets.all(10);
 
   @override
   final Color? backgroundColor;
@@ -30,17 +26,9 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
   final EdgeInsets? contentPadding;
 
   @override
-  MyoroAppBarThemeExtension lerp(covariant ThemeExtension<MyoroAppBarThemeExtension>? other, double t) {
+  MyoroAppBarThemeExtension lerp(covariant MyoroAppBarThemeExtension? other, double t) {
     if (other is! MyoroAppBarThemeExtension) return this;
-
-    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
-    final contentPadding = EdgeInsets.lerp(this.contentPadding, other.contentPadding, t);
-
-    return copyWith(
-      backgroundColor: backgroundColor,
-      backgroundColorProvided: backgroundColor != null,
-      contentPadding: contentPadding,
-      contentPaddingProvided: contentPadding != null,
-    );
+    final style = MyoroAppBarStyle.lerp(this, other, t);
+    return MyoroAppBarThemeExtension(backgroundColor: style.backgroundColor, contentPadding: style.contentPadding);
   }
 }

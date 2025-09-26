@@ -80,37 +80,19 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
   final double? runSpacing;
 
   @override
-  MyoroGroupCheckboxThemeExtension lerp(covariant ThemeExtension<MyoroGroupCheckboxThemeExtension>? other, double t) {
+  MyoroGroupCheckboxThemeExtension lerp(covariant MyoroGroupCheckboxThemeExtension? other, double t) {
     if (other is! MyoroGroupCheckboxThemeExtension) return this;
-
-    final checkboxActiveColor = Color.lerp(this.checkboxActiveColor, other.checkboxActiveColor, t);
-    final checkboxCheckColor = Color.lerp(this.checkboxCheckColor, other.checkboxCheckColor, t);
-    final checkboxHoverColor = Color.lerp(this.checkboxHoverColor, other.checkboxHoverColor, t);
-    final checkboxFocusColor = Color.lerp(this.checkboxFocusColor, other.checkboxFocusColor, t);
-    final checkboxSplashRadius = lerpDouble(this.checkboxSplashRadius, other.checkboxSplashRadius, t);
-    final labelTextStyle = TextStyle.lerp(this.labelTextStyle, other.labelTextStyle, t);
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final runSpacing = lerpDouble(this.runSpacing, other.runSpacing, t);
-
-    return copyWith(
-      checkboxActiveColor: checkboxActiveColor,
-      checkboxActiveColorProvided: checkboxActiveColor != null,
-      checkboxCheckColor: checkboxCheckColor,
-      checkboxCheckColorProvided: checkboxCheckColor != null,
-      checkboxHoverColor: checkboxHoverColor,
-      checkboxHoverColorProvided: checkboxHoverColor != null,
-      checkboxFocusColor: checkboxFocusColor,
-      checkboxFocusColorProvided: checkboxFocusColor != null,
-      checkboxSplashRadius: checkboxSplashRadius,
-      checkboxSplashRadiusProvided: checkboxSplashRadius != null,
-      labelTextStyle: labelTextStyle,
-      labelTextStyleProvided: labelTextStyle != null,
-      labelMaxLines: labelMaxLines,
-      labelMaxLinesProvided: labelMaxLines != null,
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      runSpacing: runSpacing,
-      runSpacingProvided: runSpacing != null,
+    final style = MyoroGroupCheckboxStyle.lerp(this, other, t);
+    return MyoroGroupCheckboxThemeExtension(
+      checkboxActiveColor: style.checkboxActiveColor,
+      checkboxCheckColor: style.checkboxCheckColor,
+      checkboxHoverColor: style.checkboxHoverColor,
+      checkboxFocusColor: style.checkboxFocusColor,
+      checkboxSplashRadius: style.checkboxSplashRadius,
+      labelTextStyle: style.labelTextStyle,
+      labelMaxLines: style.labelMaxLines,
+      spacing: style.spacing,
+      runSpacing: style.runSpacing,
     );
   }
 }

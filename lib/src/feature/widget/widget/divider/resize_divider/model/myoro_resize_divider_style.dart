@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,18 @@ part 'myoro_resize_divider_style.g.dart';
 @immutable
 @myoroModel
 class MyoroResizeDividerStyle extends MyoroBasicDividerStyle with _$MyoroResizeDividerStyleMixin {
+  static MyoroResizeDividerStyle lerp(MyoroResizeDividerStyle? a, MyoroResizeDividerStyle? b, double t) {
+    return MyoroResizeDividerStyle(
+      color: Color.lerp(a?.color, b?.color, t),
+      shortValue: lerpDouble(a?.shortValue, b?.shortValue, t),
+      longValue: lerpDouble(a?.longValue, b?.longValue, t),
+      resizeButtonBorderRadius: BorderRadius.lerp(a?.resizeButtonBorderRadius, b?.resizeButtonBorderRadius, t),
+      resizeButtonColor: Color.lerp(a?.resizeButtonColor, b?.resizeButtonColor, t),
+      resizeButtonShortValue: lerpDouble(a?.resizeButtonShortValue, b?.resizeButtonShortValue, t),
+      resizeButtonLongValue: lerpDouble(a?.resizeButtonLongValue, b?.resizeButtonLongValue, t),
+    );
+  }
+
   const MyoroResizeDividerStyle({
     super.color,
     super.shortValue,

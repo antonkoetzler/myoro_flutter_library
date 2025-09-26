@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,22 @@ part 'myoro_modal_style.g.dart';
 @immutable
 @myoroModel
 class MyoroModalStyle with _$MyoroModalStyleMixin {
+  static MyoroModalStyle lerp(MyoroModalStyle? a, MyoroModalStyle? b, double t) {
+    return MyoroModalStyle(
+      constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
+      primaryColor: Color.lerp(a?.primaryColor, b?.primaryColor, t),
+      borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
+      bottomSheetBorderRadius: BorderRadius.lerp(a?.bottomSheetBorderRadius, b?.bottomSheetBorderRadius, t),
+      border: Border.lerp(a?.border, b?.border, t),
+      bottomSheetBorder: Border.lerp(a?.bottomSheetBorder, b?.bottomSheetBorder, t),
+      padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
+      closeButtonPadding: EdgeInsets.lerp(a?.closeButtonPadding, b?.closeButtonPadding, t),
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
+      closeButtonIconConfiguration: myoroFallbackLerp(a?.closeButtonIconConfiguration, b?.closeButtonIconConfiguration, t),
+    );
+  }
+
   const MyoroModalStyle({
     this.constraints,
     this.primaryColor,

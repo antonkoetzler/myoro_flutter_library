@@ -10,9 +10,7 @@ part 'myoro_snack_bar_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroSnackBar].
 @immutable
 @myoroThemeExtension
-class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension>
-    with _$MyoroSnackBarThemeExtensionMixin
-    implements MyoroSnackBarStyle {
+class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension> with _$MyoroSnackBarThemeExtensionMixin implements MyoroSnackBarStyle {
   const MyoroSnackBarThemeExtension({
     this.primaryColor,
     this.standardBorderColor,
@@ -100,48 +98,21 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
   final MyoroIconConfiguration? closeButtonIconConfiguration;
 
   @override
-  MyoroSnackBarThemeExtension lerp(covariant ThemeExtension<MyoroSnackBarThemeExtension>? other, double t) {
+  MyoroSnackBarThemeExtension lerp(covariant MyoroSnackBarThemeExtension? other, double t) {
     if (other is! MyoroSnackBarThemeExtension) return this;
-
-    final primaryColor = Color.lerp(this.primaryColor, other.primaryColor, t);
-    final standardBorderColor = Color.lerp(this.standardBorderColor, other.standardBorderColor, t);
-    final attentionBorderColor = Color.lerp(this.attentionBorderColor, other.attentionBorderColor, t);
-    final successBorderColor = Color.lerp(this.successBorderColor, other.successBorderColor, t);
-    final errorBorderColor = Color.lerp(this.errorBorderColor, other.errorBorderColor, t);
-    final borderWidth = lerpDouble(this.borderWidth, other.borderWidth, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final padding = EdgeInsets.lerp(this.padding, other.padding, t);
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final messageTextStyle = TextStyle.lerp(this.messageTextStyle, other.messageTextStyle, t);
-    final closeButtonIconConfiguration = MyoroIconConfiguration.lerp(
-      this.closeButtonIconConfiguration,
-      other.closeButtonIconConfiguration,
-      t,
-    );
-
-    return copyWith(
-      primaryColor: primaryColor,
-      primaryColorProvided: primaryColor != null,
-      standardBorderColor: standardBorderColor,
-      standardBorderColorProvided: standardBorderColor != null,
-      attentionBorderColor: attentionBorderColor,
-      attentionBorderColorProvided: attentionBorderColor != null,
-      successBorderColor: successBorderColor,
-      successBorderColorProvided: successBorderColor != null,
-      errorBorderColor: errorBorderColor,
-      errorBorderColorProvided: errorBorderColor != null,
-      borderWidth: borderWidth,
-      borderWidthProvided: borderWidth != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: borderRadius != null,
-      padding: padding,
-      paddingProvided: padding != null,
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      messageTextStyle: messageTextStyle,
-      messageTextStyleProvided: messageTextStyle != null,
-      closeButtonIconConfiguration: closeButtonIconConfiguration,
-      closeButtonIconConfigurationProvided: closeButtonIconConfiguration != null,
+    final style = MyoroSnackBarStyle.lerp(this, other, t);
+    return MyoroSnackBarThemeExtension(
+      primaryColor: style.primaryColor,
+      standardBorderColor: style.standardBorderColor,
+      attentionBorderColor: style.attentionBorderColor,
+      successBorderColor: style.successBorderColor,
+      errorBorderColor: style.errorBorderColor,
+      borderWidth: style.borderWidth,
+      borderRadius: style.borderRadius,
+      padding: style.padding,
+      spacing: style.spacing,
+      messageTextStyle: style.messageTextStyle,
+      closeButtonIconConfiguration: style.closeButtonIconConfiguration,
     );
   }
 }

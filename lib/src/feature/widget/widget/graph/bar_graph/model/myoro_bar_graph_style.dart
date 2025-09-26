@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,18 @@ part 'myoro_bar_graph_style.g.dart';
 @immutable
 @myoroModel
 class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
+  static MyoroBarGraphStyle lerp(MyoroBarGraphStyle? a, MyoroBarGraphStyle? b, double t) {
+    return MyoroBarGraphStyle(
+      border: Border.lerp(a?.border, b?.border, t),
+      barColor: Color.lerp(a?.barColor, b?.barColor, t),
+      barBorderRadius: BorderRadius.lerp(a?.barBorderRadius, b?.barBorderRadius, t),
+      sideTitleTextStyle: TextStyle.lerp(a?.sideTitleTextStyle, b?.sideTitleTextStyle, t),
+      sideTitleInterval: lerpDouble(a?.sideTitleInterval, b?.sideTitleInterval, t),
+      verticalSideTitleReversedSize: lerpDouble(a?.verticalSideTitleReversedSize, b?.verticalSideTitleReversedSize, t),
+      horizontalSideTitleReversedSize: lerpDouble(a?.horizontalSideTitleReversedSize, b?.horizontalSideTitleReversedSize, t),
+    );
+  }
+
   const MyoroBarGraphStyle({
     this.border,
     this.barColor,

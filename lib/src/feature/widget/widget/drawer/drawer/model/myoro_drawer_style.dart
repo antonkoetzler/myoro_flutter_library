@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,13 +11,17 @@ part 'myoro_drawer_style.g.dart';
 @immutable
 @myoroModel
 class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
-  const MyoroDrawerStyle({
-    this.drawerPadding,
-    this.drawerContentPadding,
-    this.drawerShape,
-    this.titleContentDividerPadding,
-    this.titleTextStyle,
-  });
+  static MyoroDrawerStyle lerp(MyoroDrawerStyle? a, MyoroDrawerStyle? b, double t) {
+    return MyoroDrawerStyle(
+      drawerPadding: EdgeInsets.lerp(a?.drawerPadding, b?.drawerPadding, t),
+      drawerContentPadding: EdgeInsets.lerp(a?.drawerContentPadding, b?.drawerContentPadding, t),
+      drawerShape: myoroFallbackLerp(a?.drawerShape, b?.drawerShape, t),
+      titleContentDividerPadding: EdgeInsets.lerp(a?.titleContentDividerPadding, b?.titleContentDividerPadding, t),
+      titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
+    );
+  }
+
+  const MyoroDrawerStyle({this.drawerPadding, this.drawerContentPadding, this.drawerShape, this.titleContentDividerPadding, this.titleTextStyle});
 
   // coverage:ignore-start
   factory MyoroDrawerStyle.fake() {

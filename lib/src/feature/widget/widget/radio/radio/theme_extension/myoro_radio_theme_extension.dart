@@ -8,16 +8,8 @@ part 'myoro_radio_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroRadio].
 @immutable
 @myoroThemeExtension
-class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension>
-    with _$MyoroRadioThemeExtensionMixin
-    implements MyoroRadioStyle {
-  const MyoroRadioThemeExtension({
-    this.activeColor,
-    this.hoverColor,
-    this.labelTextStyle,
-    this.spacing,
-    this.splashRadius,
-  });
+class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> with _$MyoroRadioThemeExtensionMixin implements MyoroRadioStyle {
+  const MyoroRadioThemeExtension({this.activeColor, this.hoverColor, this.labelTextStyle, this.spacing, this.splashRadius});
 
   // coverage:ignore-start
   MyoroRadioThemeExtension.fake()
@@ -56,26 +48,15 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension>
   final double? splashRadius;
 
   @override
-  MyoroRadioThemeExtension lerp(covariant ThemeExtension<MyoroRadioThemeExtension>? other, double t) {
+  MyoroRadioThemeExtension lerp(covariant MyoroRadioThemeExtension? other, double t) {
     if (other is! MyoroRadioThemeExtension) return this;
-
-    final activeColor = Color.lerp(this.activeColor, other.activeColor, t);
-    final hoverColor = Color.lerp(this.hoverColor, other.hoverColor, t);
-    final labelTextStyle = TextStyle.lerp(this.labelTextStyle, other.labelTextStyle, t);
-    final spacing = myoroDoubleLerp(this.spacing, other.spacing, t);
-    final splashRadius = myoroDoubleLerp(this.splashRadius, other.splashRadius, t);
-
-    return copyWith(
-      activeColor: activeColor,
-      activeColorProvided: activeColor != null,
-      hoverColor: hoverColor,
-      hoverColorProvided: hoverColor != null,
-      labelTextStyle: labelTextStyle,
-      labelTextStyleProvided: labelTextStyle != null,
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      splashRadius: splashRadius,
-      splashRadiusProvided: splashRadius != null,
+    final style = MyoroRadioStyle.lerp(this, other, t);
+    return MyoroRadioThemeExtension(
+      activeColor: style.activeColor,
+      hoverColor: style.hoverColor,
+      labelTextStyle: style.labelTextStyle,
+      spacing: style.spacing,
+      splashRadius: style.splashRadius,
     );
   }
 }

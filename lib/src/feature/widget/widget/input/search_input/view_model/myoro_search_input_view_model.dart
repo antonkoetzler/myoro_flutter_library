@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
+part 'myoro_search_input_state.dart';
+
 /// Notifier of [MyoroSearchInput].
 class MyoroSearchInputViewModel<T> {
-  MyoroSearchInputViewModel(this.configuration) {
-    _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>(requestCallback: () => configuration.request(inputController.text));
+  MyoroSearchInputViewModel(MyoroSearchInputConfiguration<T> configuration) : _state = MyoroSearchInputState(configuration) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final inputRenderBox = state.inputKey.currentContext?.findRenderObject() as RenderBox?;
+      if (inputRenderBox != null) state.inputHeight = inputRenderBox.size.height;
+    });
   }
 
-  /// Configuration.
-  final MyoroSearchInputConfiguration<T> configuration;
+  /// State.
+  final MyoroSearchInputState<T> _state;
 
-  /// [TextEditingController] of the [MyoroInput].
-  TextEditingController? _localInputController;
-
-  /// [TextEditingController] of the [MyoroInput].
-  TextEditingController get inputController {
-    return configuration.controller ?? (_localInputController ??= TextEditingController());
+  /// [_state] getter.
+  MyoroSearchInputState<T> get state {
+    return _state;
   }
-
-  /// Items of the [MyoroSearchInput].
-  late final MyoroRequestNotifier<Set<T>> _itemsRequestNotifier;
-
-  /// Items of the [MyoroSearchInput].
-  MyoroRequestNotifier<Set<T>> get itemsRequestNotifier => _itemsRequestNotifier;
-
-  /// Items of the [MyoroSearchInput].
-  MyoroRequest<Set<T>> get itemsRequest => _itemsRequestNotifier.value;
 
   /// Dispose function.
   void dispose() {
-    _localInputController?.dispose();
-    _itemsRequestNotifier.dispose();
+    state.dispose();
+  }
+
+  /// [MyoroButtonConfiguration.onTapUp] of the search button.
+  void searchButtonOnTapUp() {
+    if (!state.itemsRequest.status.isLoading) state.itemsRequestNotifier.fetch();
   }
 }

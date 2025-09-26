@@ -17,11 +17,7 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
 
   // coverage:ignore-start
   factory MyoroBasicDividerThemeExtension.fake() {
-    return MyoroBasicDividerThemeExtension(
-      color: myoroFake<Color>(),
-      shortValue: faker.randomGenerator.decimal(),
-      longValue: faker.randomGenerator.decimal(),
-    );
+    return MyoroBasicDividerThemeExtension(color: myoroFake<Color>(), shortValue: faker.randomGenerator.decimal(), longValue: faker.randomGenerator.decimal());
   }
   // coverage:ignore-end
 
@@ -35,38 +31,17 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
   final double? longValue;
 
   factory MyoroBasicDividerThemeExtension.builder(ColorScheme colorScheme) {
-    return MyoroBasicDividerThemeExtension(
-      color: colorScheme.onPrimary,
-      shortValue: kMyoroBorderWidth,
-      longValue: double.infinity,
-    );
+    return MyoroBasicDividerThemeExtension(color: colorScheme.onPrimary, shortValue: kMyoroBorderWidth, longValue: double.infinity);
   }
 
-  factory MyoroBasicDividerThemeExtension.fromResizeDividerThemeExtension(
-    MyoroResizeDividerThemeExtension themeExtension,
-  ) {
-    return MyoroBasicDividerThemeExtension(
-      color: themeExtension.color,
-      shortValue: themeExtension.shortValue,
-      longValue: themeExtension.longValue,
-    );
+  factory MyoroBasicDividerThemeExtension.fromResizeDividerThemeExtension(MyoroResizeDividerThemeExtension themeExtension) {
+    return MyoroBasicDividerThemeExtension(color: themeExtension.color, shortValue: themeExtension.shortValue, longValue: themeExtension.longValue);
   }
 
   @override
-  MyoroBasicDividerThemeExtension lerp(covariant ThemeExtension<MyoroBasicDividerThemeExtension>? other, double t) {
+  MyoroBasicDividerThemeExtension lerp(covariant MyoroBasicDividerThemeExtension? other, double t) {
     if (other is! MyoroBasicDividerThemeExtension) return this;
-
-    final color = Color.lerp(this.color, other.color, t);
-    final shortValue = lerpDouble(this.shortValue, other.shortValue, t);
-    final longValue = myoroDoubleLerp(this.longValue, other.longValue, t);
-
-    return copyWith(
-      color: color,
-      colorProvided: color != null,
-      shortValue: shortValue,
-      shortValueProvided: shortValue != null,
-      longValue: longValue,
-      longValueProvided: longValue != null,
-    );
+    final style = MyoroBasicDividerStyle.lerp(this, other, t);
+    return MyoroBasicDividerThemeExtension(color: style.color, shortValue: style.shortValue, longValue: style.longValue);
   }
 }

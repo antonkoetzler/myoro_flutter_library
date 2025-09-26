@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,15 +11,19 @@ part 'myoro_card_style.g.dart';
 @immutable
 @myoroModel
 class MyoroCardStyle with _$MyoroCardStyleMixin {
-  const MyoroCardStyle({
-    this.backgroundColor,
-    this.border,
-    this.borderRadius,
-    this.padding,
-    this.titleCardSpacing,
-    this.titleTextStyle,
-    this.constraints,
-  });
+  static MyoroCardStyle lerp(MyoroCardStyle? a, MyoroCardStyle? b, double t) {
+    return MyoroCardStyle(
+      backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
+      border: Border.lerp(a?.border, b?.border, t),
+      borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
+      padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
+      titleCardSpacing: lerpDouble(a?.titleCardSpacing, b?.titleCardSpacing, t),
+      titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
+      constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
+    );
+  }
+
+  const MyoroCardStyle({this.backgroundColor, this.border, this.borderRadius, this.padding, this.titleCardSpacing, this.titleTextStyle, this.constraints});
 
   // coverage:ignore-start
   MyoroCardStyle.fake()

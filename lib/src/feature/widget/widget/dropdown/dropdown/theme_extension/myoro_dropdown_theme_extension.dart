@@ -10,9 +10,7 @@ part 'myoro_dropdown_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroDropdown].
 @immutable
 @myoroThemeExtension
-class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension>
-    with _$MyoroDropdownThemeExtensionMixin
-    implements MyoroDropdownStyle {
+class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> with _$MyoroDropdownThemeExtensionMixin implements MyoroDropdownStyle {
   const MyoroDropdownThemeExtension({this.spacing, this.menuBorder, this.menuBorderRadius});
 
   // coverage:ignore-start
@@ -46,12 +44,9 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   final BorderRadius? menuBorderRadius;
 
   @override
-  MyoroDropdownThemeExtension lerp(covariant ThemeExtension<MyoroDropdownThemeExtension>? other, double t) {
+  MyoroDropdownThemeExtension lerp(covariant MyoroDropdownThemeExtension? other, double t) {
     if (other is! MyoroDropdownThemeExtension) return this;
-    return copyWith(
-      spacing: lerpDouble(spacing, other.spacing, t),
-      menuBorder: BoxBorder.lerp(menuBorder, other.menuBorder, t),
-      menuBorderRadius: BorderRadius.lerp(menuBorderRadius, other.menuBorderRadius, t),
-    );
+    final style = MyoroDropdownStyle.lerp(this, other, t);
+    return MyoroDropdownThemeExtension(spacing: style.spacing, menuBorder: style.menuBorder, menuBorderRadius: style.menuBorderRadius);
   }
 }

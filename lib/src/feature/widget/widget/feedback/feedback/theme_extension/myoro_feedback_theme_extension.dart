@@ -10,9 +10,7 @@ part 'myoro_feedback_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroFeedback].
 @immutable
 @myoroThemeExtension
-class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
-    with _$MyoroFeedbackThemeExtensionMixin
-    implements MyoroFeedbackStyle {
+class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension> with _$MyoroFeedbackThemeExtensionMixin implements MyoroFeedbackStyle {
   const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
   // coverage:ignore-start
@@ -46,23 +44,14 @@ class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExten
   final TextStyle? subtitleTextStyle;
 
   @override
-  MyoroFeedbackThemeExtension lerp(covariant ThemeExtension<MyoroFeedbackThemeExtension>? other, double t) {
+  MyoroFeedbackThemeExtension lerp(covariant MyoroFeedbackThemeExtension? other, double t) {
     if (other is! MyoroFeedbackThemeExtension) return this;
-
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final iconSize = lerpDouble(this.iconSize, other.iconSize, t);
-    final titleTextStyle = TextStyle.lerp(this.titleTextStyle, other.titleTextStyle, t);
-    final subtitleTextStyle = TextStyle.lerp(this.subtitleTextStyle, other.subtitleTextStyle, t);
-
-    return copyWith(
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      iconSize: iconSize,
-      iconSizeProvided: iconSize != null,
-      titleTextStyle: titleTextStyle,
-      titleTextStyleProvided: titleTextStyle != null,
-      subtitleTextStyle: subtitleTextStyle,
-      subtitleTextStyleProvided: subtitleTextStyle != null,
+    final style = MyoroFeedbackStyle.lerp(this, other, t);
+    return MyoroFeedbackThemeExtension(
+      spacing: style.spacing,
+      iconSize: style.iconSize,
+      titleTextStyle: style.titleTextStyle,
+      subtitleTextStyle: style.subtitleTextStyle,
     );
   }
 }

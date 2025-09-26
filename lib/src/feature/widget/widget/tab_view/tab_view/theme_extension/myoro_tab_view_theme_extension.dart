@@ -10,9 +10,7 @@ part 'myoro_tab_view_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroTabView].
 @immutable
 @myoroThemeExtension
-class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtension>
-    with _$MyoroTabViewThemeExtensionMixin
-    implements MyoroTabViewStyle {
+class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtension> with _$MyoroTabViewThemeExtensionMixin implements MyoroTabViewStyle {
   const MyoroTabViewThemeExtension({
     this.tabButtonBorderRadius,
     this.tabButtonIdleColor,
@@ -65,29 +63,16 @@ class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtensi
   final TextStyle? tabButtonTextStyle;
 
   @override
-  MyoroTabViewThemeExtension lerp(covariant ThemeExtension<MyoroTabViewThemeExtension>? other, double t) {
+  MyoroTabViewThemeExtension lerp(covariant MyoroTabViewThemeExtension? other, double t) {
     if (other is! MyoroTabViewThemeExtension) return this;
-
-    final tabButtonBorderRadius = BorderRadius.lerp(this.tabButtonBorderRadius, other.tabButtonBorderRadius, t);
-    final tabButtonIdleColor = Color.lerp(this.tabButtonIdleColor, other.tabButtonIdleColor, t);
-    final tabButtonHoverColor = Color.lerp(this.tabButtonHoverColor, other.tabButtonHoverColor, t);
-    final tabButtonTapColor = Color.lerp(this.tabButtonTapColor, other.tabButtonTapColor, t);
-    final tabButtonIconSize = lerpDouble(this.tabButtonIconSize, other.tabButtonIconSize, t);
-    final tabButtonTextStyle = TextStyle.lerp(this.tabButtonTextStyle, other.tabButtonTextStyle, t);
-
-    return copyWith(
-      tabButtonBorderRadius: tabButtonBorderRadius,
-      tabButtonBorderRadiusProvided: tabButtonBorderRadius != null,
-      tabButtonIdleColor: tabButtonIdleColor,
-      tabButtonIdleColorProvided: tabButtonIdleColor != null,
-      tabButtonHoverColor: tabButtonHoverColor,
-      tabButtonHoverColorProvided: tabButtonHoverColor != null,
-      tabButtonTapColor: tabButtonTapColor,
-      tabButtonTapColorProvided: tabButtonTapColor != null,
-      tabButtonIconSize: tabButtonIconSize,
-      tabButtonIconSizeProvided: tabButtonIconSize != null,
-      tabButtonTextStyle: tabButtonTextStyle,
-      tabButtonTextStyleProvided: tabButtonTextStyle != null,
+    final style = MyoroTabViewStyle.lerp(this, other, t);
+    return MyoroTabViewThemeExtension(
+      tabButtonBorderRadius: style.tabButtonBorderRadius,
+      tabButtonIdleColor: style.tabButtonIdleColor,
+      tabButtonHoverColor: style.tabButtonHoverColor,
+      tabButtonTapColor: style.tabButtonTapColor,
+      tabButtonIconSize: style.tabButtonIconSize,
+      tabButtonTextStyle: style.tabButtonTextStyle,
     );
   }
 }

@@ -37,9 +37,7 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
       itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       itemTitleButtonArrowIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       itemTitleButtonArrowIconColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      itemTitleButtonArrowIconSize = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 50, min: 10)
-          : null,
+      itemTitleButtonArrowIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50, min: 10) : null,
       itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
       itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null;
   // coverage:ignore-end
@@ -91,80 +89,21 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
   final Curve? itemTitleButtonArrowAnimationCurve;
 
   @override
-  MyoroAccordionThemeExtension lerp(covariant ThemeExtension<MyoroAccordionThemeExtension>? other, double t) {
+  MyoroAccordionThemeExtension lerp(covariant MyoroAccordionThemeExtension? other, double t) {
     if (other is! MyoroAccordionThemeExtension) return this;
-
-    final itemContentBackgroundColor = Color.lerp(this.itemContentBackgroundColor, other.itemContentBackgroundColor, t);
-    final itemContentAnimationDuration = myoroFallbackLerp(
-      this.itemContentAnimationDuration,
-      other.itemContentAnimationDuration,
-      t,
-    );
-    final itemContentAnimationCurve = myoroFallbackLerp(
-      this.itemContentAnimationCurve,
-      other.itemContentAnimationCurve,
-      t,
-    );
-    final itemTitleButtonContentPadding = EdgeInsets.lerp(
-      this.itemTitleButtonContentPadding,
-      other.itemTitleButtonContentPadding,
-      t,
-    );
-    final itemTitleButtonSpacing = lerpDouble(this.itemTitleButtonSpacing, other.itemTitleButtonSpacing, t);
-    final itemTitleButtonTitleTextStyle = TextStyle.lerp(
-      this.itemTitleButtonTitleTextStyle,
-      other.itemTitleButtonTitleTextStyle,
-      t,
-    );
-    final itemTitleButtonArrowIcon = myoroFallbackLerp(
-      this.itemTitleButtonArrowIcon,
-      other.itemTitleButtonArrowIcon,
-      t,
-    );
-    final itemTitleButtonArrowIconColor = Color.lerp(
-      this.itemTitleButtonArrowIconColor,
-      other.itemTitleButtonArrowIconColor,
-      t,
-    );
-    final itemTitleButtonArrowIconSize = lerpDouble(
-      this.itemTitleButtonArrowIconSize,
-      other.itemTitleButtonArrowIconSize,
-      t,
-    );
-    final itemTitleButtonArrowAnimationDuration = myoroFallbackLerp(
-      this.itemTitleButtonArrowAnimationDuration,
-      other.itemTitleButtonArrowAnimationDuration,
-      t,
-    );
-    final itemTitleButtonArrowAnimationCurve = myoroFallbackLerp(
-      this.itemTitleButtonArrowAnimationCurve,
-      other.itemTitleButtonArrowAnimationCurve,
-      t,
-    );
-
-    return copyWith(
-      itemContentBackgroundColor: itemContentBackgroundColor,
-      itemContentBackgroundColorProvided: itemContentBackgroundColor != null,
-      itemContentAnimationDuration: itemContentAnimationDuration,
-      itemContentAnimationDurationProvided: itemContentAnimationDuration != null,
-      itemContentAnimationCurve: itemContentAnimationCurve,
-      itemContentAnimationCurveProvided: itemContentAnimationCurve != null,
-      itemTitleButtonContentPadding: itemTitleButtonContentPadding,
-      itemTitleButtonContentPaddingProvided: itemTitleButtonContentPadding != null,
-      itemTitleButtonSpacing: itemTitleButtonSpacing,
-      itemTitleButtonSpacingProvided: itemTitleButtonSpacing != null,
-      itemTitleButtonTitleTextStyle: itemTitleButtonTitleTextStyle,
-      itemTitleButtonTitleTextStyleProvided: itemTitleButtonTitleTextStyle != null,
-      itemTitleButtonArrowIcon: itemTitleButtonArrowIcon,
-      itemTitleButtonArrowIconProvided: itemTitleButtonArrowIcon != null,
-      itemTitleButtonArrowIconColor: itemTitleButtonArrowIconColor,
-      itemTitleButtonArrowIconColorProvided: itemTitleButtonArrowIconColor != null,
-      itemTitleButtonArrowIconSize: itemTitleButtonArrowIconSize,
-      itemTitleButtonArrowIconSizeProvided: itemTitleButtonArrowIconSize != null,
-      itemTitleButtonArrowAnimationDuration: itemTitleButtonArrowAnimationDuration,
-      itemTitleButtonArrowAnimationDurationProvided: itemTitleButtonArrowAnimationDuration != null,
-      itemTitleButtonArrowAnimationCurve: itemTitleButtonArrowAnimationCurve,
-      itemTitleButtonArrowAnimationCurveProvided: itemTitleButtonArrowAnimationCurve != null,
+    final style = MyoroAccordionStyle.lerp(this, other, t);
+    return MyoroAccordionThemeExtension(
+      itemContentBackgroundColor: style.itemContentBackgroundColor,
+      itemContentAnimationDuration: style.itemContentAnimationDuration,
+      itemContentAnimationCurve: style.itemContentAnimationCurve,
+      itemTitleButtonContentPadding: style.itemTitleButtonContentPadding,
+      itemTitleButtonSpacing: style.itemTitleButtonSpacing,
+      itemTitleButtonTitleTextStyle: style.itemTitleButtonTitleTextStyle,
+      itemTitleButtonArrowIcon: style.itemTitleButtonArrowIcon,
+      itemTitleButtonArrowIconColor: style.itemTitleButtonArrowIconColor,
+      itemTitleButtonArrowIconSize: style.itemTitleButtonArrowIconSize,
+      itemTitleButtonArrowAnimationDuration: style.itemTitleButtonArrowAnimationDuration,
+      itemTitleButtonArrowAnimationCurve: style.itemTitleButtonArrowAnimationCurve,
     );
   }
 }

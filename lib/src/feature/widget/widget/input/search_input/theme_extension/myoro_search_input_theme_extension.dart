@@ -40,20 +40,13 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
   final double? searchButtonLoadingSize;
 
   @override
-  MyoroSearchInputThemeExtension lerp(covariant ThemeExtension<MyoroSearchInputThemeExtension>? other, double t) {
+  MyoroSearchInputThemeExtension lerp(covariant MyoroSearchInputThemeExtension? other, double t) {
     if (other is! MyoroSearchInputThemeExtension) return this;
-
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final searchButtonIcon = myoroFallbackLerp(this.searchButtonIcon, other.searchButtonIcon, t);
-    final searchButtonLoadingSize = lerpDouble(this.searchButtonLoadingSize, other.searchButtonLoadingSize, t);
-
-    return copyWith(
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      searchButtonIcon: searchButtonIcon,
-      searchButtonIconProvided: searchButtonIcon != null,
-      searchButtonLoadingSize: searchButtonLoadingSize,
-      searchButtonLoadingSizeProvided: searchButtonLoadingSize != null,
+    final style = MyoroSearchInputStyle.lerp(this, other, t);
+    return MyoroSearchInputThemeExtension(
+      spacing: style.spacing,
+      searchButtonIcon: style.searchButtonIcon,
+      searchButtonLoadingSize: style.searchButtonLoadingSize,
     );
   }
 }

@@ -11,21 +11,26 @@ final class _SearchButton<T> extends StatelessWidget {
     final inputThemeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
     final style = context.read<MyoroSearchInputStyle>();
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
+    final state = viewModel.state;
+    final inputHeightNotifier = state.inputHeightNotifier;
 
-    return MyoroButton(
-      configuration: MyoroButtonConfiguration(onTapUp: (_) => _onTapUp(viewModel)),
-      style: const MyoroButtonStyle().bordered(context),
-      builder: (_, _) => _itemsRequest.status.isLoading
-          ? MyoroCircularLoader(
-              style: MyoroCircularLoaderStyle(
-                size: style.searchButtonLoadingSize ?? inputThemeExtension.searchButtonLoadingSize,
-              ),
-            )
-          : Icon(style.searchButtonIcon ?? inputThemeExtension.searchButtonIcon),
+    return ValueListenableBuilder(
+      valueListenable: inputHeightNotifier,
+      builder: (_, inputHeight, _) {
+        inputHeight = inputHeight != null ? inputHeight - kMyoroBorderWidth : null;
+
+        return MyoroButton(
+          configuration: MyoroButtonConfiguration(onTapUp: (_) => viewModel.searchButtonOnTapUp()),
+          style: const MyoroButtonStyle().bordered(context),
+          builder: (_, _) => SizedBox(
+            height: inputHeight,
+            width: inputHeight,
+            child: _itemsRequest.status.isLoading
+                ? const Center(child: MyoroCircularLoader())
+                : Icon(style.searchButtonIcon ?? inputThemeExtension.searchButtonIcon),
+          ),
+        );
+      },
     );
-  }
-
-  void _onTapUp(MyoroSearchInputViewModel viewModel) {
-    if (!viewModel.itemsRequest.status.isLoading) viewModel.itemsRequestNotifier.fetch();
   }
 }

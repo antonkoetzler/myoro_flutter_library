@@ -9,16 +9,19 @@ final class _Input<T> extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
-    final configuration = viewModel.configuration;
-    final searchInputController = viewModel.inputController;
-    final itemsRequestController = viewModel.itemsRequestNotifier;
+    final state = viewModel.state;
+    final configuration = state.configuration;
+    final inputKey = state.inputKey;
+    final searchInputController = state.inputController;
+    final itemsRequestNotifier = state.itemsRequestNotifier;
 
     return MyoroInput(
       configuration: configuration.copyWith(
         controller: searchInputController,
+        inputKey: inputKey,
         suffix: _SearchButton<T>(_itemsRequest),
-        onChanged: configuration.requestWhenChanged ? (_) => itemsRequestController.fetch() : null,
-        onFieldSubmitted: (_) => itemsRequestController.fetch(),
+        onChanged: configuration.requestWhenChanged ? (_) => itemsRequestNotifier.fetch() : null,
+        onFieldSubmitted: (_) => itemsRequestNotifier.fetch(),
       ),
     );
   }

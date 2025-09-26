@@ -32,17 +32,9 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
   final double? runSpacing;
 
   @override
-  MyoroGroupRadioThemeExtension lerp(covariant ThemeExtension<MyoroGroupRadioThemeExtension>? other, double t) {
+  MyoroGroupRadioThemeExtension lerp(covariant MyoroGroupRadioThemeExtension? other, double t) {
     if (other is! MyoroGroupRadioThemeExtension) return this;
-
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final runSpacing = lerpDouble(this.runSpacing, other.runSpacing, t);
-
-    return copyWith(
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      runSpacing: runSpacing,
-      runSpacingProvided: runSpacing != null,
-    );
+    final style = MyoroGroupRadioStyle.lerp(this, other, t);
+    return MyoroGroupRadioThemeExtension(spacing: style.spacing, runSpacing: style.runSpacing);
   }
 }

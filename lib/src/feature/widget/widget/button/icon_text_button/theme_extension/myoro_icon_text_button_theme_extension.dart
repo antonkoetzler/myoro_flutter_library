@@ -101,50 +101,23 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
   final double? spacing;
 
   @override
-  MyoroIconTextButtonThemeExtension lerp(covariant ThemeExtension<MyoroIconTextButtonThemeExtension>? other, double t) {
+  MyoroIconTextButtonThemeExtension lerp(covariant MyoroIconTextButtonThemeExtension? other, double t) {
     if (other is! MyoroIconTextButtonThemeExtension) return this;
-
-    final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
-    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
-    final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
-    final contentIdleColor = Color.lerp(this.contentIdleColor, other.contentIdleColor, t);
-    final contentHoverColor = Color.lerp(this.contentHoverColor, other.contentHoverColor, t);
-    final contentTapColor = Color.lerp(this.contentTapColor, other.contentTapColor, t);
-    final borderWidth = lerpDouble(this.borderWidth, other.borderWidth, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final borderIdleColor = Color.lerp(this.borderIdleColor, other.borderIdleColor, t);
-    final borderHoverColor = Color.lerp(this.borderHoverColor, other.borderHoverColor, t);
-    final borderTapColor = Color.lerp(this.borderTapColor, other.borderTapColor, t);
-    final contentPadding = EdgeInsets.lerp(this.contentPadding, other.contentPadding, t);
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-
-    return copyWith(
-      backgroundIdleColor: backgroundIdleColor,
-      backgroundIdleColorProvided: backgroundIdleColor != null,
-      backgroundHoverColor: backgroundHoverColor,
-      backgroundHoverColorProvided: backgroundHoverColor != null,
-      backgroundTapColor: backgroundTapColor,
-      backgroundTapColorProvided: backgroundTapColor != null,
-      contentIdleColor: contentIdleColor,
-      contentIdleColorProvided: contentIdleColor != null,
-      contentHoverColor: contentHoverColor,
-      contentHoverColorProvided: contentHoverColor != null,
-      contentTapColor: contentTapColor,
-      contentTapColorProvided: contentTapColor != null,
-      borderWidth: borderWidth,
-      borderWidthProvided: borderWidth != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: borderRadius != null,
-      borderIdleColor: borderIdleColor,
-      borderIdleColorProvided: borderIdleColor != null,
-      borderHoverColor: borderHoverColor,
-      borderHoverColorProvided: borderHoverColor != null,
-      borderTapColor: borderTapColor,
-      borderTapColorProvided: borderTapColor != null,
-      contentPadding: contentPadding,
-      contentPaddingProvided: contentPadding != null,
-      spacing: spacing,
-      spacingProvided: spacing != null,
+    final style = MyoroIconTextButtonStyle.lerp(this, other, t);
+    return MyoroIconTextButtonThemeExtension(
+      backgroundIdleColor: style.backgroundIdleColor,
+      backgroundHoverColor: style.backgroundHoverColor,
+      backgroundTapColor: style.backgroundTapColor,
+      contentIdleColor: style.contentIdleColor,
+      contentHoverColor: style.contentHoverColor,
+      contentTapColor: style.contentTapColor,
+      borderWidth: style.borderWidth,
+      borderRadius: style.borderRadius,
+      borderIdleColor: style.borderIdleColor,
+      borderHoverColor: style.borderHoverColor,
+      borderTapColor: style.borderTapColor,
+      contentPadding: style.contentPadding,
+      spacing: style.spacing,
     );
   }
 }

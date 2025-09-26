@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,27 @@ part 'myoro_input_style.g.dart';
 @immutable
 @myoroModel
 class MyoroInputStyle with _$MyoroInputStyleMixin {
+  static MyoroInputStyle lerp(MyoroInputStyle? a, MyoroInputStyle? b, double t) {
+    return MyoroInputStyle(
+      border: myoroFallbackLerp(a?.border, b?.border, t),
+      underlinedBorder: myoroFallbackLerp(a?.underlinedBorder, b?.underlinedBorder, t),
+      outlinedBorder: myoroFallbackLerp(a?.outlinedBorder, b?.outlinedBorder, t),
+      noneBorder: myoroFallbackLerp(a?.noneBorder, b?.noneBorder, t),
+      primaryColor: Color.lerp(a?.primaryColor, b?.primaryColor, t),
+      errorBorderColor: Color.lerp(a?.errorBorderColor, b?.errorBorderColor, t),
+      cursorHeight: lerpDouble(a?.cursorHeight, b?.cursorHeight, t),
+      contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
+      disabledOpacity: lerpDouble(a?.disabledOpacity, b?.disabledOpacity, t),
+      inputTextStyle: TextStyle.lerp(a?.inputTextStyle, b?.inputTextStyle, t),
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      labelTextStyle: TextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
+      labelBehavior: myoroFallbackLerp(a?.labelBehavior, b?.labelBehavior, t),
+      clearTextButtonPadding: EdgeInsets.lerp(a?.clearTextButtonPadding, b?.clearTextButtonPadding, t),
+      clearTextButtonIcon: myoroFallbackLerp(a?.clearTextButtonIcon, b?.clearTextButtonIcon, t),
+      clearTextButtonIconSize: lerpDouble(a?.clearTextButtonIconSize, b?.clearTextButtonIconSize, t),
+    );
+  }
+
   const MyoroInputStyle({
     this.border,
     this.underlinedBorder,
@@ -46,9 +69,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       labelBehavior: faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
       clearTextButtonPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       clearTextButtonIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      clearTextButtonIconSize: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 200, min: 20)
-          : null,
+      clearTextButtonIconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 200, min: 20) : null,
     );
   }
   // coverage:ignore-end

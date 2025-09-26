@@ -10,9 +10,7 @@ part 'myoro_table_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroTable].
 @immutable
 @myoroThemeExtension
-class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
-    with _$MyoroTableThemeExtensionMixin
-    implements MyoroTableStyle {
+class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with _$MyoroTableThemeExtensionMixin implements MyoroTableStyle {
   const MyoroTableThemeExtension({
     this.backgroundColor,
     this.columnTextStyle,
@@ -72,36 +70,17 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
   final TextStyle? errorMessageTextStyle;
 
   @override
-  MyoroTableThemeExtension lerp(covariant ThemeExtension<MyoroTableThemeExtension>? other, double t) {
+  MyoroTableThemeExtension lerp(covariant MyoroTableThemeExtension? other, double t) {
     if (other is! MyoroTableThemeExtension) return this;
-
-    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
-    final columnTextStyle = TextStyle.lerp(this.columnTextStyle, other.columnTextStyle, t);
-    final columnSpacing = lerpDouble(this.columnSpacing, other.columnSpacing, t);
-    final rowTextStyle = TextStyle.lerp(this.rowTextStyle, other.rowTextStyle, t);
-    final loaderEmptyMessageErrorMessagePadding = EdgeInsets.lerp(
-      this.loaderEmptyMessageErrorMessagePadding,
-      other.loaderEmptyMessageErrorMessagePadding,
-      t,
-    );
-    final emptyMessageTextStyle = TextStyle.lerp(this.emptyMessageTextStyle, other.emptyMessageTextStyle, t);
-    final errorMessageTextStyle = TextStyle.lerp(this.errorMessageTextStyle, other.errorMessageTextStyle, t);
-
-    return copyWith(
-      backgroundColor: backgroundColor,
-      backgroundColorProvided: backgroundColor != null,
-      columnTextStyle: columnTextStyle,
-      columnTextStyleProvided: columnTextStyle != null,
-      columnSpacing: columnSpacing,
-      columnSpacingProvided: columnSpacing != null,
-      rowTextStyle: rowTextStyle,
-      rowTextStyleProvided: rowTextStyle != null,
-      loaderEmptyMessageErrorMessagePadding: loaderEmptyMessageErrorMessagePadding,
-      loaderEmptyMessageErrorMessagePaddingProvided: loaderEmptyMessageErrorMessagePadding != null,
-      emptyMessageTextStyle: emptyMessageTextStyle,
-      emptyMessageTextStyleProvided: emptyMessageTextStyle != null,
-      errorMessageTextStyle: errorMessageTextStyle,
-      errorMessageTextStyleProvided: errorMessageTextStyle != null,
+    final style = MyoroTableStyle.lerp(this, other, t);
+    return MyoroTableThemeExtension(
+      backgroundColor: style.backgroundColor,
+      columnTextStyle: style.columnTextStyle,
+      columnSpacing: style.columnSpacing,
+      rowTextStyle: style.rowTextStyle,
+      loaderEmptyMessageErrorMessagePadding: style.loaderEmptyMessageErrorMessagePadding,
+      emptyMessageTextStyle: style.emptyMessageTextStyle,
+      errorMessageTextStyle: style.errorMessageTextStyle,
     );
   }
 }

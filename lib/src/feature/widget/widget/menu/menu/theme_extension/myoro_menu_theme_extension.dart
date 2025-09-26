@@ -8,9 +8,7 @@ part 'myoro_menu_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroMenu].
 @immutable
 @myoroThemeExtension
-class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
-    with _$MyoroMenuThemeExtensionMixin
-    implements MyoroMenuStyle {
+class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with _$MyoroMenuThemeExtensionMixin implements MyoroMenuStyle {
   const MyoroMenuThemeExtension({
     this.constraints,
     this.backgroundColor,
@@ -84,38 +82,19 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
   final EdgeInsets? dialogTextLoaderPadding;
 
   @override
-  MyoroMenuThemeExtension lerp(covariant ThemeExtension<MyoroMenuThemeExtension>? other, double t) {
+  MyoroMenuThemeExtension lerp(covariant MyoroMenuThemeExtension? other, double t) {
     if (other is! MyoroMenuThemeExtension) return this;
-
-    final constraints = BoxConstraints.lerp(this.constraints, other.constraints, t);
-    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
-    final border = BoxBorder.lerp(this.border, other.border, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final searchBarPadding = EdgeInsets.lerp(this.searchBarPadding, other.searchBarPadding, t);
-    final searchBarInputStyle = myoroFallbackLerp(this.searchBarInputStyle, other.searchBarInputStyle, t);
-    final itemBorderRadius = BorderRadius.lerp(this.itemBorderRadius, other.itemBorderRadius, t);
-    final dialogTextStyle = TextStyle.lerp(this.dialogTextStyle, other.dialogTextStyle, t);
-    final dialogTextLoaderPadding = EdgeInsets.lerp(this.dialogTextLoaderPadding, other.dialogTextLoaderPadding, t);
-
-    return copyWith(
-      constraints: constraints,
-      constraintsProvided: constraints != null,
-      backgroundColor: backgroundColor,
-      backgroundColorProvided: true,
-      border: border,
-      borderProvided: border != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: true,
-      searchBarPadding: searchBarPadding,
-      searchBarPaddingProvided: true,
-      searchBarInputStyle: searchBarInputStyle,
-      searchBarInputStyleProvided: true,
-      itemBorderRadius: itemBorderRadius,
-      itemBorderRadiusProvided: true,
-      dialogTextStyle: dialogTextStyle,
-      dialogTextStyleProvided: true,
-      dialogTextLoaderPadding: dialogTextLoaderPadding,
-      dialogTextLoaderPaddingProvided: true,
+    final style = MyoroMenuStyle.lerp(this, other, t);
+    return MyoroMenuThemeExtension(
+      constraints: style.constraints,
+      backgroundColor: style.backgroundColor,
+      border: style.border,
+      borderRadius: style.borderRadius,
+      searchBarPadding: style.searchBarPadding,
+      searchBarInputStyle: style.searchBarInputStyle,
+      itemBorderRadius: style.itemBorderRadius,
+      dialogTextStyle: style.dialogTextStyle,
+      dialogTextLoaderPadding: style.dialogTextLoaderPadding,
     );
   }
 
@@ -123,9 +102,6 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
   /// sure that the menu item's background color won't extension the
   /// border of the [MyoroMenu]'s [MyoroMenuConfiguration.border].
   Radius createMenuContentRadius(Radius radius) {
-    return Radius.elliptical(
-      (radius.x - kMyoroMultiplier).clamp(0, double.infinity),
-      (radius.y - kMyoroMultiplier).clamp(0, double.infinity),
-    );
+    return Radius.elliptical((radius.x - kMyoroMultiplier).clamp(0, double.infinity), (radius.y - kMyoroMultiplier).clamp(0, double.infinity));
   }
 }

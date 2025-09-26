@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,14 @@ part 'myoro_search_input_style.g.dart';
 @immutable
 @myoroModel
 class MyoroSearchInputStyle with _$MyoroSearchInputStyleMixin {
+  static MyoroSearchInputStyle lerp(MyoroSearchInputStyle? a, MyoroSearchInputStyle? b, double t) {
+    return MyoroSearchInputStyle(
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      searchButtonIcon: myoroFallbackLerp(a?.searchButtonIcon, b?.searchButtonIcon, t),
+      searchButtonLoadingSize: lerpDouble(a?.searchButtonLoadingSize, b?.searchButtonLoadingSize, t),
+    );
+  }
+
   const MyoroSearchInputStyle({this.spacing, this.searchButtonIcon, this.searchButtonLoadingSize});
 
   // coverage:ignore-start

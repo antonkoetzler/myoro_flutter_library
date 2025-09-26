@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,10 @@ part 'myoro_pie_graph_style.g.dart';
 @immutable
 @myoroModel
 class MyoroPieGraphStyle with _$MyoroPieGraphStyleMixin {
+  static MyoroPieGraphStyle lerp(MyoroPieGraphStyle? a, MyoroPieGraphStyle? b, double t) {
+    return MyoroPieGraphStyle(itemColor: Color.lerp(a?.itemColor, b?.itemColor, t), itemRadius: lerpDouble(a?.itemRadius, b?.itemRadius, t));
+  }
+
   const MyoroPieGraphStyle({this.itemColor, this.itemRadius});
 
   // coverage:ignore-start

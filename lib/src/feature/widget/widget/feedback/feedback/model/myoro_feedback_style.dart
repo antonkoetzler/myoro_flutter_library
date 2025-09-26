@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,15 @@ part 'myoro_feedback_style.g.dart';
 @immutable
 @myoroModel
 class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
+  static MyoroFeedbackStyle lerp(MyoroFeedbackStyle? a, MyoroFeedbackStyle? b, double t) {
+    return MyoroFeedbackStyle(
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      iconSize: lerpDouble(a?.iconSize, b?.iconSize, t),
+      titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
+      subtitleTextStyle: TextStyle.lerp(a?.subtitleTextStyle, b?.subtitleTextStyle, t),
+    );
+  }
+
   const MyoroFeedbackStyle({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
   // coverage:ignore-start

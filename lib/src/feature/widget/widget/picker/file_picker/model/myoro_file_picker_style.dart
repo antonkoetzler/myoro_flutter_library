@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,10 @@ part 'myoro_file_picker_style.g.dart';
 @immutable
 @myoroModel
 class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
+  static MyoroFilePickerStyle lerp(MyoroFilePickerStyle? a, MyoroFilePickerStyle? b, double t) {
+    return MyoroFilePickerStyle(spacing: lerpDouble(a?.spacing, b?.spacing, t), textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t));
+  }
+
   const MyoroFilePickerStyle({this.spacing, this.textStyle});
 
   // coverage:ignore-start

@@ -9,9 +9,11 @@
   - Make MFL logo the storyboard app icon
   - Localization
   - Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
+- `MyoroButtonConfiguration.isLoading`
 - `MyoroGradientScroll`
 - `MyoroLocationInput`
 - `MyoroButtonMenu`
+- Make `MyoroDropdownMenuTypeEnum` a generic enum then make `MyoroSearchInput` use this enum
 - GitHub pages
 - Rename storyboard to example
 - Add more code snippets to documentation

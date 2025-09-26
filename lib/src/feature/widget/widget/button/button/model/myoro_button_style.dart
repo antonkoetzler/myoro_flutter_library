@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,22 @@ part 'myoro_button_style.g.dart';
 @immutable
 @myoroModel
 class MyoroButtonStyle with _$MyoroButtonStyleMixin {
+  static MyoroButtonStyle lerp(MyoroButtonStyle? a, MyoroButtonStyle? b, double t) {
+    return MyoroButtonStyle(
+      backgroundIdleColor: Color.lerp(a?.backgroundIdleColor, b?.backgroundIdleColor, t),
+      backgroundHoverColor: Color.lerp(a?.backgroundHoverColor, b?.backgroundHoverColor, t),
+      backgroundTapColor: Color.lerp(a?.backgroundTapColor, b?.backgroundTapColor, t),
+      contentIdleColor: Color.lerp(a?.contentIdleColor, b?.contentIdleColor, t),
+      contentHoverColor: Color.lerp(a?.contentHoverColor, b?.contentHoverColor, t),
+      contentTapColor: Color.lerp(a?.contentTapColor, b?.contentTapColor, t),
+      borderWidth: lerpDouble(a?.borderWidth, b?.borderWidth, t),
+      borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
+      borderIdleColor: Color.lerp(a?.borderIdleColor, b?.borderIdleColor, t),
+      borderHoverColor: Color.lerp(a?.borderHoverColor, b?.borderHoverColor, t),
+      borderTapColor: Color.lerp(a?.borderTapColor, b?.borderTapColor, t),
+    );
+  }
+
   const MyoroButtonStyle({
     this.backgroundIdleColor,
     this.backgroundHoverColor,

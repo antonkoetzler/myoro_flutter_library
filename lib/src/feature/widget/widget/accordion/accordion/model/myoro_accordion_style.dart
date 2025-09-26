@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_accordion_style.g.dart';
 
@@ -7,6 +10,22 @@ part 'myoro_accordion_style.g.dart';
 @immutable
 @myoroModel
 class MyoroAccordionStyle with _$MyoroAccordionStyleMixin {
+  static MyoroAccordionStyle lerp(MyoroAccordionStyle? a, MyoroAccordionStyle? b, double t) {
+    return MyoroAccordionStyle(
+      itemContentBackgroundColor: Color.lerp(a?.itemContentBackgroundColor, b?.itemContentBackgroundColor, t),
+      itemContentAnimationDuration: myoroFallbackLerp(a?.itemContentAnimationDuration, b?.itemContentAnimationDuration, t),
+      itemContentAnimationCurve: myoroFallbackLerp(a?.itemContentAnimationCurve, b?.itemContentAnimationCurve, t),
+      itemTitleButtonContentPadding: EdgeInsets.lerp(a?.itemTitleButtonContentPadding, b?.itemTitleButtonContentPadding, t),
+      itemTitleButtonSpacing: lerpDouble(a?.itemTitleButtonSpacing, b?.itemTitleButtonSpacing, t),
+      itemTitleButtonTitleTextStyle: TextStyle.lerp(a?.itemTitleButtonTitleTextStyle, b?.itemTitleButtonTitleTextStyle, t),
+      itemTitleButtonArrowIcon: myoroFallbackLerp(a?.itemTitleButtonArrowIcon, b?.itemTitleButtonArrowIcon, t),
+      itemTitleButtonArrowIconColor: Color.lerp(a?.itemTitleButtonArrowIconColor, b?.itemTitleButtonArrowIconColor, t),
+      itemTitleButtonArrowIconSize: lerpDouble(a?.itemTitleButtonArrowIconSize, b?.itemTitleButtonArrowIconSize, t),
+      itemTitleButtonArrowAnimationDuration: myoroFallbackLerp(a?.itemTitleButtonArrowAnimationDuration, b?.itemTitleButtonArrowAnimationDuration, t),
+      itemTitleButtonArrowAnimationCurve: myoroFallbackLerp(a?.itemTitleButtonArrowAnimationCurve, b?.itemTitleButtonArrowAnimationCurve, t),
+    );
+  }
+
   const MyoroAccordionStyle({
     this.itemContentBackgroundColor,
     this.itemContentAnimationDuration,

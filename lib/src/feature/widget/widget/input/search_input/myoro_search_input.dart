@@ -46,15 +46,15 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
 
   @override
   Widget build(context) {
+    final state = _viewModel.state;
+    final itemsRequestNotifier = state.itemsRequestNotifier;
+
     return MultiProvider(
       providers: [
         InheritedProvider.value(value: _style),
         InheritedProvider.value(value: _viewModel),
       ],
-      child: ValueListenableBuilder(
-        valueListenable: _viewModel.itemsRequestNotifier,
-        builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
-      ),
+      child: ValueListenableBuilder(valueListenable: itemsRequestNotifier, builder: (_, itemsRequest, _) => _Body<T>(itemsRequest)),
     );
   }
 }

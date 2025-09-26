@@ -10,9 +10,7 @@ part 'myoro_pie_graph_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroPieGraph].
 @immutable
 @myoroThemeExtension
-class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension>
-    with _$MyoroPieGraphThemeExtensionMixin
-    implements MyoroPieGraphStyle {
+class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension> with _$MyoroPieGraphThemeExtensionMixin implements MyoroPieGraphStyle {
   const MyoroPieGraphThemeExtension({this.itemColor, this.itemRadius});
 
   // coverage:ignore-start
@@ -32,17 +30,9 @@ class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExten
   final double? itemRadius;
 
   @override
-  MyoroPieGraphThemeExtension lerp(covariant ThemeExtension<MyoroPieGraphThemeExtension>? other, double t) {
+  MyoroPieGraphThemeExtension lerp(covariant MyoroPieGraphThemeExtension? other, double t) {
     if (other is! MyoroPieGraphThemeExtension) return this;
-
-    final itemColor = Color.lerp(this.itemColor, other.itemColor, t);
-    final itemRadius = lerpDouble(this.itemRadius, other.itemRadius, t);
-
-    return copyWith(
-      itemColor: itemColor,
-      itemColorProvided: itemColor != null,
-      itemRadius: itemRadius,
-      itemRadiusProvided: itemRadius != null,
-    );
+    final style = MyoroPieGraphStyle.lerp(this, other, t);
+    return MyoroPieGraphThemeExtension(itemColor: style.itemColor, itemRadius: style.itemRadius);
   }
 }

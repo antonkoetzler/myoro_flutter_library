@@ -10,9 +10,7 @@ part 'myoro_bar_graph_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroBarGraph].
 @immutable
 @myoroThemeExtension
-class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension>
-    with _$MyoroBarGraphThemeExtensionMixin
-    implements MyoroBarGraphStyle {
+class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension> with _$MyoroBarGraphThemeExtensionMixin implements MyoroBarGraphStyle {
   const MyoroBarGraphThemeExtension({
     this.border,
     this.barColor,
@@ -72,40 +70,17 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
   final double? horizontalSideTitleReversedSize;
 
   @override
-  MyoroBarGraphThemeExtension lerp(covariant ThemeExtension<MyoroBarGraphThemeExtension>? other, double t) {
+  MyoroBarGraphThemeExtension lerp(covariant MyoroBarGraphThemeExtension? other, double t) {
     if (other is! MyoroBarGraphThemeExtension) return this;
-
-    final border = Border.lerp(this.border, other.border, t);
-    final barColor = Color.lerp(this.barColor, other.barColor, t);
-    final barBorderRadius = BorderRadius.lerp(this.barBorderRadius, other.barBorderRadius, t);
-    final sideTitleTextStyle = TextStyle.lerp(this.sideTitleTextStyle, other.sideTitleTextStyle, t);
-    final sideTitleInterval = lerpDouble(this.sideTitleInterval, other.sideTitleInterval, t);
-    final verticalSideTitleReversedSize = lerpDouble(
-      this.verticalSideTitleReversedSize,
-      other.verticalSideTitleReversedSize,
-      t,
-    );
-    final horizontalSideTitleReversedSize = lerpDouble(
-      this.horizontalSideTitleReversedSize,
-      other.horizontalSideTitleReversedSize,
-      t,
-    );
-
-    return copyWith(
-      border: border,
-      borderProvided: border != null,
-      barColor: barColor,
-      barColorProvided: barColor != null,
-      barBorderRadius: barBorderRadius,
-      barBorderRadiusProvided: barBorderRadius != null,
-      sideTitleTextStyle: sideTitleTextStyle,
-      sideTitleTextStyleProvided: sideTitleTextStyle != null,
-      sideTitleInterval: sideTitleInterval,
-      sideTitleIntervalProvided: sideTitleInterval != null,
-      verticalSideTitleReversedSize: verticalSideTitleReversedSize,
-      verticalSideTitleReversedSizeProvided: verticalSideTitleReversedSize != null,
-      horizontalSideTitleReversedSize: horizontalSideTitleReversedSize,
-      horizontalSideTitleReversedSizeProvided: horizontalSideTitleReversedSize != null,
+    final style = MyoroBarGraphStyle.lerp(this, other, t);
+    return MyoroBarGraphThemeExtension(
+      border: style.border,
+      barColor: style.barColor,
+      barBorderRadius: style.barBorderRadius,
+      sideTitleTextStyle: style.sideTitleTextStyle,
+      sideTitleInterval: style.sideTitleInterval,
+      verticalSideTitleReversedSize: style.verticalSideTitleReversedSize,
+      horizontalSideTitleReversedSize: style.horizontalSideTitleReversedSize,
     );
   }
 }

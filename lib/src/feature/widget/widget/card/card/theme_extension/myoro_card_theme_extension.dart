@@ -10,9 +10,7 @@ part 'myoro_card_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroCard].
 @immutable
 @myoroThemeExtension
-class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
-    with _$MyoroCardThemeExtensionMixin
-    implements MyoroCardStyle {
+class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> with _$MyoroCardThemeExtensionMixin implements MyoroCardStyle {
   const MyoroCardThemeExtension({
     this.backgroundColor,
     this.border,
@@ -65,32 +63,17 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
   final BoxConstraints? constraints;
 
   @override
-  MyoroCardThemeExtension lerp(covariant ThemeExtension<MyoroCardThemeExtension>? other, double t) {
+  MyoroCardThemeExtension lerp(covariant MyoroCardThemeExtension? other, double t) {
     if (other is! MyoroCardThemeExtension) return this;
-
-    final backgroundColor = Color.lerp(this.backgroundColor, other.backgroundColor, t);
-    final border = Border.lerp(this.border, other.border, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final padding = EdgeInsets.lerp(this.padding, other.padding, t);
-    final titleCardSpacing = lerpDouble(this.titleCardSpacing, other.titleCardSpacing, t);
-    final titleTextStyle = TextStyle.lerp(this.titleTextStyle, other.titleTextStyle, t);
-    final constraints = BoxConstraints.lerp(this.constraints, other.constraints, t);
-
-    return copyWith(
-      backgroundColor: backgroundColor,
-      backgroundColorProvided: backgroundColor != null,
-      border: border,
-      borderProvided: border != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: borderRadius != null,
-      padding: padding,
-      paddingProvided: padding != null,
-      titleCardSpacing: titleCardSpacing,
-      titleCardSpacingProvided: titleCardSpacing != null,
-      titleTextStyle: titleTextStyle,
-      titleTextStyleProvided: titleTextStyle != null,
-      constraints: constraints,
-      constraintsProvided: constraints != null,
+    final style = MyoroCardStyle.lerp(this, other, t);
+    return MyoroCardThemeExtension(
+      backgroundColor: style.backgroundColor,
+      border: style.border,
+      borderRadius: style.borderRadius,
+      padding: style.padding,
+      titleCardSpacing: style.titleCardSpacing,
+      titleTextStyle: style.titleTextStyle,
+      constraints: style.constraints,
     );
   }
 }

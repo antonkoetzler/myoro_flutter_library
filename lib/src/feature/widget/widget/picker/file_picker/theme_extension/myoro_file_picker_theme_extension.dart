@@ -22,9 +22,7 @@ final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePicker
       textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
 
-  MyoroFilePickerThemeExtension.builder(TextTheme textTheme)
-    : spacing = kMyoroMultiplier * 2,
-      textStyle = textTheme.bodySmall!;
+  MyoroFilePickerThemeExtension.builder(TextTheme textTheme) : spacing = kMyoroMultiplier * 2, textStyle = textTheme.bodySmall!;
 
   /// Spacing between the selected file section text and the selection button.
   @override
@@ -35,17 +33,9 @@ final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePicker
   final TextStyle? textStyle;
 
   @override
-  MyoroFilePickerThemeExtension lerp(covariant ThemeExtension<MyoroFilePickerThemeExtension>? other, double t) {
+  MyoroFilePickerThemeExtension lerp(covariant MyoroFilePickerThemeExtension? other, double t) {
     if (other is! MyoroFilePickerThemeExtension) return this;
-
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final textStyle = TextStyle.lerp(this.textStyle, other.textStyle, t);
-
-    return copyWith(
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      textStyle: textStyle,
-      textStyleProvided: textStyle != null,
-    );
+    final style = MyoroFilePickerStyle.lerp(this, other, t);
+    return MyoroFilePickerThemeExtension(spacing: style.spacing, textStyle: style.textStyle);
   }
 }

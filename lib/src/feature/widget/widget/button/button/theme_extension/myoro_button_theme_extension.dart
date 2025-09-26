@@ -10,9 +10,7 @@ part 'myoro_button_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroButton].
 @immutable
 @myoroThemeExtension
-class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension>
-    with _$MyoroButtonThemeExtensionMixin
-    implements MyoroButtonStyle {
+class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension> with _$MyoroButtonThemeExtensionMixin implements MyoroButtonStyle {
   const MyoroButtonThemeExtension({
     this.backgroundIdleColor,
     this.backgroundHoverColor,
@@ -89,44 +87,21 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
   final Color? borderTapColor;
 
   @override
-  MyoroButtonThemeExtension lerp(ThemeExtension<MyoroButtonThemeExtension>? other, double t) {
+  MyoroButtonThemeExtension lerp(covariant MyoroButtonThemeExtension? other, double t) {
     if (other is! MyoroButtonThemeExtension) return this;
-
-    final backgroundIdleColor = Color.lerp(this.backgroundIdleColor, other.backgroundIdleColor, t);
-    final backgroundHoverColor = Color.lerp(this.backgroundHoverColor, other.backgroundHoverColor, t);
-    final backgroundTapColor = Color.lerp(this.backgroundTapColor, other.backgroundTapColor, t);
-    final contentIdleColor = Color.lerp(this.contentIdleColor, other.contentIdleColor, t);
-    final contentHoverColor = Color.lerp(this.contentHoverColor, other.contentHoverColor, t);
-    final contentTapColor = Color.lerp(this.contentTapColor, other.contentTapColor, t);
-    final borderWidth = lerpDouble(this.borderWidth, other.borderWidth, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final borderIdleColor = Color.lerp(this.borderIdleColor, other.borderIdleColor, t);
-    final borderHoverColor = Color.lerp(this.borderHoverColor, other.borderHoverColor, t);
-    final borderTapColor = Color.lerp(this.borderTapColor, other.borderTapColor, t);
-
-    return copyWith(
-      backgroundIdleColor: backgroundIdleColor,
-      backgroundIdleColorProvided: backgroundIdleColor != null,
-      backgroundHoverColor: backgroundHoverColor,
-      backgroundHoverColorProvided: backgroundHoverColor != null,
-      backgroundTapColor: backgroundTapColor,
-      backgroundTapColorProvided: backgroundTapColor != null,
-      contentIdleColor: contentIdleColor,
-      contentIdleColorProvided: contentIdleColor != null,
-      contentHoverColor: contentHoverColor,
-      contentHoverColorProvided: contentHoverColor != null,
-      contentTapColor: contentTapColor,
-      contentTapColorProvided: contentTapColor != null,
-      borderWidth: borderWidth,
-      borderWidthProvided: borderWidth != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: borderRadius != null,
-      borderIdleColor: borderIdleColor,
-      borderIdleColorProvided: borderIdleColor != null,
-      borderHoverColor: borderHoverColor,
-      borderHoverColorProvided: borderHoverColor != null,
-      borderTapColor: borderTapColor,
-      borderTapColorProvided: borderTapColor != null,
+    final style = MyoroButtonStyle.lerp(this, other, t);
+    return MyoroButtonThemeExtension(
+      backgroundIdleColor: style.backgroundIdleColor,
+      backgroundHoverColor: style.backgroundHoverColor,
+      backgroundTapColor: style.backgroundTapColor,
+      contentIdleColor: style.contentIdleColor,
+      contentHoverColor: style.contentHoverColor,
+      contentTapColor: style.contentTapColor,
+      borderWidth: style.borderWidth,
+      borderRadius: style.borderRadius,
+      borderIdleColor: style.borderIdleColor,
+      borderHoverColor: style.borderHoverColor,
+      borderTapColor: style.borderTapColor,
     );
   }
 }

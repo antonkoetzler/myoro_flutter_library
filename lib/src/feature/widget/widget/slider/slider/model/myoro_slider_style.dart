@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,13 @@ part 'myoro_slider_style.g.dart';
 @immutable
 @myoroModel
 class MyoroSliderStyle with _$MyoroSliderStyleMixin {
+  static MyoroSliderStyle lerp(MyoroSliderStyle? a, MyoroSliderStyle? b, double t) {
+    return MyoroSliderStyle(
+      indicatorTextStyle: TextStyle.lerp(a?.indicatorTextStyle, b?.indicatorTextStyle, t),
+      indicatorTextAlignment: myoroFallbackLerp(a?.indicatorTextAlignment, b?.indicatorTextAlignment, t),
+    );
+  }
+
   const MyoroSliderStyle({this.indicatorTextStyle, this.indicatorTextAlignment});
 
   // coverage:ignore-start

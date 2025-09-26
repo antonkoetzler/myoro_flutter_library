@@ -10,9 +10,7 @@ part 'myoro_modal_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroModal].
 @immutable
 @myoroThemeExtension
-class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
-    with _$MyoroModalThemeExtensionMixin
-    implements MyoroModalStyle {
+class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> with _$MyoroModalThemeExtensionMixin implements MyoroModalStyle {
   const MyoroModalThemeExtension({
     this.constraints,
     this.primaryColor,
@@ -46,10 +44,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
     : constraints = null,
       primaryColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      bottomSheetBorderRadius = const BorderRadius.only(
-        topLeft: Radius.circular(kMyoroBorderRadius),
-        topRight: Radius.circular(kMyoroBorderRadius),
-      ),
+      bottomSheetBorderRadius = const BorderRadius.only(topLeft: Radius.circular(kMyoroBorderRadius), topRight: Radius.circular(kMyoroBorderRadius)),
       border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       bottomSheetBorder = Border(
         top: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
@@ -107,48 +102,21 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
   final MyoroIconConfiguration? closeButtonIconConfiguration;
 
   @override
-  MyoroModalThemeExtension lerp(covariant ThemeExtension<MyoroModalThemeExtension>? other, double t) {
+  MyoroModalThemeExtension lerp(covariant MyoroModalThemeExtension? other, double t) {
     if (other is! MyoroModalThemeExtension) return this;
-
-    final constraints = BoxConstraints.lerp(this.constraints, other.constraints, t);
-    final primaryColor = Color.lerp(this.primaryColor, other.primaryColor, t);
-    final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
-    final bottomSheetBorderRadius = BorderRadius.lerp(this.bottomSheetBorderRadius, other.bottomSheetBorderRadius, t);
-    final border = Border.lerp(this.border, other.border, t);
-    final bottomSheetBorder = Border.lerp(this.bottomSheetBorder, other.bottomSheetBorder, t);
-    final padding = EdgeInsets.lerp(this.padding, other.padding, t);
-    final closeButtonPadding = EdgeInsets.lerp(this.closeButtonPadding, other.closeButtonPadding, t);
-    final spacing = lerpDouble(this.spacing, other.spacing, t);
-    final titleTextStyle = TextStyle.lerp(this.titleTextStyle, other.titleTextStyle, t);
-    final closeButtonIconConfiguration = MyoroIconConfiguration.lerp(
-      this.closeButtonIconConfiguration,
-      other.closeButtonIconConfiguration,
-      t,
-    );
-
-    return copyWith(
-      constraints: constraints,
-      constraintsProvided: constraints != null,
-      primaryColor: primaryColor,
-      primaryColorProvided: primaryColor != null,
-      borderRadius: borderRadius,
-      borderRadiusProvided: borderRadius != null,
-      bottomSheetBorderRadius: bottomSheetBorderRadius,
-      bottomSheetBorderRadiusProvided: bottomSheetBorderRadius != null,
-      border: border,
-      borderProvided: border != null,
-      bottomSheetBorder: bottomSheetBorder,
-      bottomSheetBorderProvided: bottomSheetBorder != null,
-      padding: padding,
-      paddingProvided: padding != null,
-      closeButtonPadding: closeButtonPadding,
-      closeButtonPaddingProvided: closeButtonPadding != null,
-      spacing: spacing,
-      spacingProvided: spacing != null,
-      titleTextStyle: titleTextStyle,
-      titleTextStyleProvided: titleTextStyle != null,
-      closeButtonIconConfiguration: closeButtonIconConfiguration,
-      closeButtonIconConfigurationProvided: closeButtonIconConfiguration != null,
+    final style = MyoroModalStyle.lerp(this, other, t);
+    return MyoroModalThemeExtension(
+      constraints: style.constraints,
+      primaryColor: style.primaryColor,
+      borderRadius: style.borderRadius,
+      bottomSheetBorderRadius: style.bottomSheetBorderRadius,
+      border: style.border,
+      bottomSheetBorder: style.bottomSheetBorder,
+      padding: style.padding,
+      closeButtonPadding: style.closeButtonPadding,
+      spacing: style.spacing,
+      titleTextStyle: style.titleTextStyle,
+      closeButtonIconConfiguration: style.closeButtonIconConfiguration,
     );
   }
 

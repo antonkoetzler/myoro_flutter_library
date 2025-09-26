@@ -8,15 +8,8 @@ part 'myoro_drawer_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroDrawer].
 @immutable
 @myoroThemeExtension
-class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension>
-    with _$MyoroDrawerThemeExtensionMixin {
-  const MyoroDrawerThemeExtension({
-    this.drawerContentPadding,
-    this.drawerPadding,
-    this.drawerShape,
-    this.titleContentDividerPadding,
-    this.titleTextStyle,
-  });
+class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension> with _$MyoroDrawerThemeExtensionMixin {
+  const MyoroDrawerThemeExtension({this.drawerContentPadding, this.drawerPadding, this.drawerShape, this.titleContentDividerPadding, this.titleTextStyle});
 
   // coverage:ignore-start
   MyoroDrawerThemeExtension.fake()
@@ -53,30 +46,29 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
   final TextStyle? titleTextStyle;
 
   @override
-  MyoroDrawerThemeExtension lerp(covariant ThemeExtension<MyoroDrawerThemeExtension>? other, double t) {
+  MyoroDrawerThemeExtension lerp(covariant MyoroDrawerThemeExtension? other, double t) {
     if (other is! MyoroDrawerThemeExtension) return this;
-
-    final drawerPadding = EdgeInsets.lerp(this.drawerPadding, other.drawerPadding, t);
-    final drawerContentPadding = EdgeInsets.lerp(this.drawerContentPadding, other.drawerContentPadding, t);
-    final drawerShape = ShapeBorder.lerp(this.drawerShape, other.drawerShape, t);
-    final titleContentDividerPadding = EdgeInsets.lerp(
-      this.titleContentDividerPadding,
-      other.titleContentDividerPadding,
-      t,
-    );
-    final titleTextStyle = TextStyle.lerp(this.titleTextStyle, other.titleTextStyle, t);
-
-    return copyWith(
+    final thisStyle = MyoroDrawerStyle(
       drawerPadding: drawerPadding,
-      drawerPaddingProvided: drawerPadding != null,
       drawerContentPadding: drawerContentPadding,
-      drawerContentPaddingProvided: drawerContentPadding != null,
       drawerShape: drawerShape,
-      drawerShapeProvided: drawerShape != null,
       titleContentDividerPadding: titleContentDividerPadding,
-      titleContentDividerPaddingProvided: titleContentDividerPadding != null,
       titleTextStyle: titleTextStyle,
-      titleTextStyleProvided: titleTextStyle != null,
+    );
+    final otherStyle = MyoroDrawerStyle(
+      drawerPadding: other.drawerPadding,
+      drawerContentPadding: other.drawerContentPadding,
+      drawerShape: other.drawerShape,
+      titleContentDividerPadding: other.titleContentDividerPadding,
+      titleTextStyle: other.titleTextStyle,
+    );
+    final style = MyoroDrawerStyle.lerp(thisStyle, otherStyle, t);
+    return MyoroDrawerThemeExtension(
+      drawerPadding: style.drawerPadding,
+      drawerContentPadding: style.drawerContentPadding,
+      drawerShape: style.drawerShape,
+      titleContentDividerPadding: style.titleContentDividerPadding,
+      titleTextStyle: style.titleTextStyle,
     );
   }
 }

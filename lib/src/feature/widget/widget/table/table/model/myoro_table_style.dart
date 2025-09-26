@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,18 @@ part 'myoro_table_style.g.dart';
 @immutable
 @myoroModel
 class MyoroTableStyle with _$MyoroTableStyleMixin {
+  static MyoroTableStyle lerp(MyoroTableStyle? a, MyoroTableStyle? b, double t) {
+    return MyoroTableStyle(
+      backgroundColor: Color.lerp(a?.backgroundColor, b?.backgroundColor, t),
+      columnTextStyle: TextStyle.lerp(a?.columnTextStyle, b?.columnTextStyle, t),
+      columnSpacing: lerpDouble(a?.columnSpacing, b?.columnSpacing, t),
+      rowTextStyle: TextStyle.lerp(a?.rowTextStyle, b?.rowTextStyle, t),
+      loaderEmptyMessageErrorMessagePadding: EdgeInsets.lerp(a?.loaderEmptyMessageErrorMessagePadding, b?.loaderEmptyMessageErrorMessagePadding, t),
+      emptyMessageTextStyle: TextStyle.lerp(a?.emptyMessageTextStyle, b?.emptyMessageTextStyle, t),
+      errorMessageTextStyle: TextStyle.lerp(a?.errorMessageTextStyle, b?.errorMessageTextStyle, t),
+    );
+  }
+
   const MyoroTableStyle({
     this.backgroundColor,
     this.columnTextStyle,

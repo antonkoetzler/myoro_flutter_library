@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,14 @@ part 'myoro_dropdown_style.g.dart';
 @immutable
 @myoroModel
 class MyoroDropdownStyle with _$MyoroDropdownStyleMixin {
+  static MyoroDropdownStyle lerp(MyoroDropdownStyle? a, MyoroDropdownStyle? b, double t) {
+    return MyoroDropdownStyle(
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      menuBorder: BoxBorder.lerp(a?.menuBorder, b?.menuBorder, t),
+      menuBorderRadius: BorderRadius.lerp(a?.menuBorderRadius, b?.menuBorderRadius, t),
+    );
+  }
+
   const MyoroDropdownStyle({this.spacing, this.menuBorder, this.menuBorderRadius});
 
   // coverage:ignore-start

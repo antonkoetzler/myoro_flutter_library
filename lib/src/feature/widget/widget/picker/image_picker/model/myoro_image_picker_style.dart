@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,26 @@ part 'myoro_image_picker_style.g.dart';
 @immutable
 @myoroModel
 class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
+  static MyoroImagePickerStyle lerp(MyoroImagePickerStyle? a, MyoroImagePickerStyle? b, double t) {
+    return MyoroImagePickerStyle(
+      size: Size.lerp(a?.size, b?.size, t),
+      borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
+      overlayCursor: myoroFallbackLerp(a?.overlayCursor, b?.overlayCursor, t),
+      overlayIdleBackgroundColor: Color.lerp(a?.overlayIdleBackgroundColor, b?.overlayIdleBackgroundColor, t),
+      overlayHoverBackgroundColor: Color.lerp(a?.overlayHoverBackgroundColor, b?.overlayHoverBackgroundColor, t),
+      overlayTapBackgroundColor: Color.lerp(a?.overlayTapBackgroundColor, b?.overlayTapBackgroundColor, t),
+      overlayUnselectedImageStateIconConfiguration: myoroFallbackLerp(
+        a?.overlayUnselectedImageStateIconConfiguration,
+        b?.overlayUnselectedImageStateIconConfiguration,
+        t,
+      ),
+      selectionTypeModalConstraints: BoxConstraints.lerp(a?.selectionTypeModalConstraints, b?.selectionTypeModalConstraints, t),
+      selectionTypeModalSpacing: lerpDouble(a?.selectionTypeModalSpacing, b?.selectionTypeModalSpacing, t),
+      selectionTypeModalButtonCameraIcon: myoroFallbackLerp(a?.selectionTypeModalButtonCameraIcon, b?.selectionTypeModalButtonCameraIcon, t),
+      selectionTypeModalButtonGalleryIcon: myoroFallbackLerp(a?.selectionTypeModalButtonGalleryIcon, b?.selectionTypeModalButtonGalleryIcon, t),
+    );
+  }
+
   const MyoroImagePickerStyle({
     this.size,
     this.borderRadius,
@@ -32,9 +54,7 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       overlayIdleBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayHoverBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayTapBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayUnselectedImageStateIconConfiguration: faker.randomGenerator.boolean()
-          ? myoroFake<MyoroIconConfiguration>()
-          : null,
+      overlayUnselectedImageStateIconConfiguration: faker.randomGenerator.boolean() ? myoroFake<MyoroIconConfiguration>() : null,
       selectionTypeModalConstraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       selectionTypeModalSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       selectionTypeModalButtonCameraIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,

@@ -8,9 +8,7 @@ part 'myoro_tooltip_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroTooltip].
 @immutable
 @myoroThemeExtension
-class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension>
-    with _$MyoroTooltipThemeExtensionMixin
-    implements MyoroTooltipStyle {
+class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension> with _$MyoroTooltipThemeExtensionMixin implements MyoroTooltipStyle {
   const MyoroTooltipThemeExtension({this.margin});
 
   // coverage:ignore-start
@@ -24,11 +22,9 @@ class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtensi
   final EdgeInsets? margin;
 
   @override
-  MyoroTooltipThemeExtension lerp(covariant ThemeExtension<MyoroTooltipThemeExtension>? other, double t) {
+  MyoroTooltipThemeExtension lerp(covariant MyoroTooltipThemeExtension? other, double t) {
     if (other is! MyoroTooltipThemeExtension) return this;
-
-    final margin = EdgeInsets.lerp(this.margin, other.margin, t);
-
-    return copyWith(margin: margin, marginProvided: margin != null);
+    final style = MyoroTooltipStyle.lerp(this, other, t);
+    return MyoroTooltipThemeExtension(margin: style.margin);
   }
 }

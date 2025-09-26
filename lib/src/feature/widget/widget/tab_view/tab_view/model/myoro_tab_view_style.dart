@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -9,6 +11,17 @@ part 'myoro_tab_view_style.g.dart';
 @immutable
 @myoroModel
 class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
+  static MyoroTabViewStyle lerp(MyoroTabViewStyle? a, MyoroTabViewStyle? b, double t) {
+    return MyoroTabViewStyle(
+      tabButtonBorderRadius: BorderRadius.lerp(a?.tabButtonBorderRadius, b?.tabButtonBorderRadius, t),
+      tabButtonIdleColor: Color.lerp(a?.tabButtonIdleColor, b?.tabButtonIdleColor, t),
+      tabButtonHoverColor: Color.lerp(a?.tabButtonHoverColor, b?.tabButtonHoverColor, t),
+      tabButtonTapColor: Color.lerp(a?.tabButtonTapColor, b?.tabButtonTapColor, t),
+      tabButtonIconSize: lerpDouble(a?.tabButtonIconSize, b?.tabButtonIconSize, t),
+      tabButtonTextStyle: TextStyle.lerp(a?.tabButtonTextStyle, b?.tabButtonTextStyle, t),
+    );
+  }
+
   const MyoroTabViewStyle({
     this.tabButtonBorderRadius,
     this.tabButtonIdleColor,
