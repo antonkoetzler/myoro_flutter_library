@@ -10,7 +10,9 @@ part 'myoro_table_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroTable].
 @immutable
 @myoroThemeExtension
-class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> with _$MyoroTableThemeExtensionMixin implements MyoroTableStyle {
+class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
+    with _$MyoroTableThemeExtensionMixin
+    implements MyoroTableStyle {
   const MyoroTableThemeExtension({
     this.backgroundColor,
     this.columnTextStyle,
@@ -25,9 +27,13 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   MyoroTableThemeExtension.fake()
     : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       columnTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      columnSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      columnSpacing = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 20)
+          : null,
       rowTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      loaderEmptyMessageErrorMessagePadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      loaderEmptyMessageErrorMessagePadding = faker.randomGenerator.boolean()
+          ? myoroFake<EdgeInsets>()
+          : null,
       emptyMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       errorMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
@@ -35,9 +41,9 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension> 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.primary,
       columnTextStyle = textTheme.titleMedium!,
-      columnSpacing = 10,
+      columnSpacing = kMyoroMultiplier * 2.5,
       rowTextStyle = textTheme.bodyMedium!,
-      loaderEmptyMessageErrorMessagePadding = const EdgeInsets.all(10),
+      loaderEmptyMessageErrorMessagePadding = EdgeInsets.all(kMyoroMultiplier * 2.5),
       emptyMessageTextStyle = textTheme.headlineMedium!,
       errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
 

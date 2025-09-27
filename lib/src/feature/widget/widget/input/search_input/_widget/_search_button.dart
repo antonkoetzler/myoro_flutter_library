@@ -12,12 +12,12 @@ final class _SearchButton<T> extends StatelessWidget {
     final style = context.read<MyoroSearchInputStyle>();
     final viewModel = context.read<MyoroSearchInputViewModel<T>>();
     final state = viewModel.state;
-    final inputHeightNotifier = state.inputHeightNotifier;
+    final inputSizeNotifier = state.inputSizeNotifier;
 
     return ValueListenableBuilder(
-      valueListenable: inputHeightNotifier,
-      builder: (_, inputHeight, _) {
-        inputHeight = inputHeight != null ? inputHeight - kMyoroBorderWidth : null;
+      valueListenable: inputSizeNotifier,
+      builder: (_, inputSize, _) {
+        final inputHeight = inputSize != null ? inputSize.height - kMyoroBorderWidth : null;
 
         return MyoroButton(
           configuration: MyoroButtonConfiguration(onTapUp: (_) => viewModel.searchButtonOnTapUp()),

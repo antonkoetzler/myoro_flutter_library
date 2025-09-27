@@ -10,7 +10,9 @@ part 'myoro_modal_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroModal].
 @immutable
 @myoroThemeExtension
-class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> with _$MyoroModalThemeExtensionMixin implements MyoroModalStyle {
+class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
+    with _$MyoroModalThemeExtensionMixin
+    implements MyoroModalStyle {
   const MyoroModalThemeExtension({
     this.constraints,
     this.primaryColor,
@@ -37,14 +39,19 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
+      closeButtonIconConfiguration = faker.randomGenerator.boolean()
+          ? MyoroIconConfiguration.fake()
+          : null;
   // coverage:ignore-end
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : constraints = null,
       primaryColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      bottomSheetBorderRadius = const BorderRadius.only(topLeft: Radius.circular(kMyoroBorderRadius), topRight: Radius.circular(kMyoroBorderRadius)),
+      bottomSheetBorderRadius = const BorderRadius.only(
+        topLeft: Radius.circular(kMyoroBorderRadius),
+        topRight: Radius.circular(kMyoroBorderRadius),
+      ),
       border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       bottomSheetBorder = Border(
         top: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
@@ -55,7 +62,10 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension> 
       closeButtonPadding = null,
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
-      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: 20);
+      closeButtonIconConfiguration = MyoroIconConfiguration(
+        icon: Icons.close,
+        size: kMyoroMultiplier * 5,
+      );
 
   /// Constraints of the modal.
   @override

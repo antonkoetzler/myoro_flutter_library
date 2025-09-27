@@ -10,7 +10,9 @@ part 'myoro_card_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroCard].
 @immutable
 @myoroThemeExtension
-class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> with _$MyoroCardThemeExtensionMixin implements MyoroCardStyle {
+class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
+    with _$MyoroCardThemeExtensionMixin
+    implements MyoroCardStyle {
   const MyoroCardThemeExtension({
     this.backgroundColor,
     this.border,
@@ -36,8 +38,8 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension> wi
     : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),
       border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      padding = const EdgeInsets.all(10),
-      titleCardSpacing = 10,
+      padding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      titleCardSpacing = kMyoroMultiplier * 2.5,
       titleTextStyle = textTheme.titleMedium!,
       constraints = null;
 

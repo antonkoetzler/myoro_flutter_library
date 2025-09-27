@@ -13,8 +13,9 @@ final class _Body<T> extends StatelessWidget {
     final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
     return Column(
-      mainAxisSize: MainAxisSize.min,
       spacing: spacing,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _Input<T>(_itemsRequest),
         if (_itemsRequest.status.isSuccess) Flexible(child: _SearchSection<T>()),

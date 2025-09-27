@@ -29,6 +29,4 @@ class MyoroAppBarStyle with _$MyoroAppBarStyleMixin {
 
   /// Content padding.
   final EdgeInsets? contentPadding;
-
-  /// Copy with.
 }

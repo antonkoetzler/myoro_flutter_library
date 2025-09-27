@@ -41,7 +41,11 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
         InheritedProvider.value(value: style),
       ],
       child: Container(
-        decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          border: border,
+          borderRadius: borderRadius,
+        ),
         constraints: constraints,
         child: ValueListenableBuilder(
           valueListenable: _viewModel.state.itemsRequestNotifier,

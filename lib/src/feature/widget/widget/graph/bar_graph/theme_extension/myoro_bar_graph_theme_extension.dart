@@ -10,7 +10,9 @@ part 'myoro_bar_graph_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroBarGraph].
 @immutable
 @myoroThemeExtension
-class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension> with _$MyoroBarGraphThemeExtensionMixin implements MyoroBarGraphStyle {
+class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExtension>
+    with _$MyoroBarGraphThemeExtensionMixin
+    implements MyoroBarGraphStyle {
   const MyoroBarGraphThemeExtension({
     this.border,
     this.barColor,
@@ -28,18 +30,22 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
       barBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       sideTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       sideTitleInterval = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      verticalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      horizontalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
+      verticalSideTitleReversedSize = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal()
+          : null,
+      horizontalSideTitleReversedSize = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal()
+          : null;
   // coverage:ignore-end
 
   MyoroBarGraphThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : border = Border.all(width: 2, color: colorScheme.onPrimary),
+    : border = Border.all(width: kMyoroBorderWidth * 2, color: colorScheme.onPrimary),
       barColor = colorScheme.onPrimary,
       barBorderRadius = BorderRadius.zero,
       sideTitleTextStyle = textTheme.bodySmall!,
       sideTitleInterval = 0.2,
-      verticalSideTitleReversedSize = 48,
-      horizontalSideTitleReversedSize = 22;
+      verticalSideTitleReversedSize = kMyoroMultiplier * 12,
+      horizontalSideTitleReversedSize = kMyoroMultiplier * 5.5;
 
   /// Border of the graph's content (the square holding the bars).
   @override

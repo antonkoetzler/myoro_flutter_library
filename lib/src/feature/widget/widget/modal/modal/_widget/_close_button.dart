@@ -7,14 +7,17 @@ final class _CloseButton extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
-    final closeButtonPadding = themeExtension.closeButtonPadding ?? EdgeInsets.zero;
+    final style = context.read<MyoroModalStyle>();
+    final closeButtonPadding =
+        style.closeButtonPadding ?? themeExtension.closeButtonPadding ?? EdgeInsets.zero;
 
     return Padding(
       padding: closeButtonPadding,
       child: MyoroIconTextButton(
         configuration: MyoroIconTextButtonConfiguration(
           onTapUp: (_) => context.navigator.pop(),
-          iconConfiguration: themeExtension.closeButtonIconConfiguration,
+          iconConfiguration:
+              style.closeButtonIconConfiguration ?? themeExtension.closeButtonIconConfiguration,
         ),
       ),
     );

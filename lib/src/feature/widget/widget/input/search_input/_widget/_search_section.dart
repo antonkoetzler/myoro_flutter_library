@@ -11,9 +11,26 @@ final class _SearchSection<T> extends StatelessWidget {
     final configuration = state.configuration;
     final itemBuilder = configuration.itemBuilder;
     final items = state.itemsRequest.data;
+    final inputSizeNotifier = state.inputSizeNotifier;
 
-    return MyoroSingleMenu<T>(
-      configuration: MyoroSingleMenuConfiguration(itemBuilder: itemBuilder, request: () => items ?? const {}),
+    final themeExtension = context.resolveThemeExtension<MyoroSearchInputThemeExtension>();
+    final style = context.read<MyoroSearchInputStyle>();
+    final menuBorder = style.menuBorder ?? themeExtension.menuBorder;
+
+    return ValueListenableBuilder(
+      valueListenable: inputSizeNotifier,
+      builder: (_, inputSize, _) => Container(
+        width: inputSize?.width,
+        height: 100,
+        color: Colors.pink.withValues(alpha: 0.5),
+        // child: MyoroSingleMenu<T>(
+        //   configuration: MyoroSingleMenuConfiguration(
+        //     itemBuilder: itemBuilder,
+        //     request: () => items ?? const {},
+        //   ),
+        //   style: MyoroMenuStyle(border: menuBorder),
+        // ),
+      ),
     );
   }
 }

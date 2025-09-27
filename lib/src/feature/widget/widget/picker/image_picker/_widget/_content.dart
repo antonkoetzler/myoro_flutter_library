@@ -9,8 +9,9 @@ final class _Content extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
-    final size = themeExtension.size;
-    final borderRadius = themeExtension.borderRadius ?? BorderRadius.zero;
+    final style = context.read<MyoroImagePickerStyle>();
+    final size = style.size ?? themeExtension.size;
+    final borderRadius = style.borderRadius ?? themeExtension.borderRadius ?? BorderRadius.zero;
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final state = viewModel.state;
@@ -32,7 +33,12 @@ final class _Content extends StatelessWidget {
               children: [
                 // coverage:ignore-start
                 if (selectedImageIsNotNull) ...[
-                  Image.file(File(selectedImage), width: size?.width, height: size?.height, fit: BoxFit.cover),
+                  Image.file(
+                    File(selectedImage),
+                    width: size?.width,
+                    height: size?.height,
+                    fit: BoxFit.cover,
+                  ),
                 ],
                 // coverage:ignore-end
                 Positioned.fill(child: _Overlay(selectedImageIsNotNull)),

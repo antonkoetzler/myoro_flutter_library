@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
@@ -21,7 +19,11 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       searchBarInputStyle: myoroFallbackLerp(a?.searchBarInputStyle, b?.searchBarInputStyle, t),
       itemBorderRadius: BorderRadius.lerp(a?.itemBorderRadius, b?.itemBorderRadius, t),
       dialogTextStyle: TextStyle.lerp(a?.dialogTextStyle, b?.dialogTextStyle, t),
-      dialogTextLoaderPadding: EdgeInsets.lerp(a?.dialogTextLoaderPadding, b?.dialogTextLoaderPadding, t),
+      dialogTextLoaderPadding: EdgeInsets.lerp(
+        a?.dialogTextLoaderPadding,
+        b?.dialogTextLoaderPadding,
+        t,
+      ),
     );
   }
 

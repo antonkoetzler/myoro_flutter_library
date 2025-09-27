@@ -8,8 +8,16 @@ part 'myoro_radio_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroRadio].
 @immutable
 @myoroThemeExtension
-class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> with _$MyoroRadioThemeExtensionMixin implements MyoroRadioStyle {
-  const MyoroRadioThemeExtension({this.activeColor, this.hoverColor, this.labelTextStyle, this.spacing, this.splashRadius});
+class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension>
+    with _$MyoroRadioThemeExtensionMixin
+    implements MyoroRadioStyle {
+  const MyoroRadioThemeExtension({
+    this.activeColor,
+    this.hoverColor,
+    this.labelTextStyle,
+    this.spacing,
+    this.splashRadius,
+  });
 
   // coverage:ignore-start
   MyoroRadioThemeExtension.fake()
@@ -24,8 +32,8 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension> 
     : activeColor = colorScheme.onPrimary,
       hoverColor = colorScheme.onPrimary.withValues(alpha: 0.3),
       labelTextStyle = textTheme.headlineSmall!,
-      spacing = 5,
-      splashRadius = 15;
+      spacing = kMyoroMultiplier * 1.25,
+      splashRadius = kMyoroMultiplier * 3.75;
 
   /// Color of the radio itself.
   @override

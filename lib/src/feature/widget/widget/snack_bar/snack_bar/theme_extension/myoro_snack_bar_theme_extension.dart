@@ -10,7 +10,9 @@ part 'myoro_snack_bar_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroSnackBar].
 @immutable
 @myoroThemeExtension
-class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension> with _$MyoroSnackBarThemeExtensionMixin implements MyoroSnackBarStyle {
+class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExtension>
+    with _$MyoroSnackBarThemeExtensionMixin
+    implements MyoroSnackBarStyle {
   const MyoroSnackBarThemeExtension({
     this.primaryColor,
     this.standardBorderColor,
@@ -37,7 +39,9 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       messageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
+      closeButtonIconConfiguration = faker.randomGenerator.boolean()
+          ? MyoroIconConfiguration.fake()
+          : null;
   // coverage:ignore-end
 
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -46,12 +50,15 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       attentionBorderColor = MyoroColors.blue1,
       successBorderColor = MyoroColors.green1,
       errorBorderColor = MyoroColors.red1,
-      borderWidth = 2,
+      borderWidth = kMyoroBorderWidth * 2,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      padding = const EdgeInsets.all(10),
-      spacing = 10,
+      padding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      spacing = kMyoroMultiplier * 2.5,
       messageTextStyle = textTheme.bodySmall!,
-      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: 15);
+      closeButtonIconConfiguration = MyoroIconConfiguration(
+        icon: Icons.close,
+        size: kMyoroMultiplier * 3.75,
+      );
 
   /// Background color of the snack bar.
   @override

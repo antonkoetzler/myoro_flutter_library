@@ -10,7 +10,9 @@ part 'myoro_input_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroInput].
 @immutable
 @myoroThemeExtension
-class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> with _$MyoroInputThemeExtensionMixin implements MyoroInputStyle {
+class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
+    with _$MyoroInputThemeExtensionMixin
+    implements MyoroInputStyle {
   const MyoroInputThemeExtension({
     this.border,
     this.underlinedBorder,
@@ -47,7 +49,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       labelBehavior = faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
       clearTextButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       clearTextButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      clearTextButtonIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 200, min: 20) : null;
+      clearTextButtonIconSize = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 200, min: 20)
+          : null;
   // coverage:ignore-end
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -62,13 +66,13 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       noneBorder = InputBorder.none,
       primaryColor = colorScheme.primary,
       errorBorderColor = colorScheme.error,
-      cursorHeight = 20,
+      cursorHeight = kMyoroMultiplier * 5,
       contentPadding = const EdgeInsets.only(top: 10, bottom: 10, left: 8, right: 5),
       disabledOpacity = 0.5,
       inputTextStyle = textTheme.bodyMedium!,
       labelTextStyle = textTheme.headlineMedium!,
       labelBehavior = FloatingLabelBehavior.always,
-      spacing = 10,
+      spacing = kMyoroMultiplier * 2.5,
       clearTextButtonPadding = const EdgeInsets.fromLTRB(5, 5, 6.5, 5),
       clearTextButtonIcon = Icons.close,
       clearTextButtonIconSize = kMyoroMultiplier * 4;

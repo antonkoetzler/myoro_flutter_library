@@ -10,7 +10,9 @@ part 'myoro_dropdown_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroDropdown].
 @immutable
 @myoroThemeExtension
-class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension> with _$MyoroDropdownThemeExtensionMixin implements MyoroDropdownStyle {
+class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExtension>
+    with _$MyoroDropdownThemeExtensionMixin
+    implements MyoroDropdownStyle {
   const MyoroDropdownThemeExtension({this.spacing, this.menuBorder, this.menuBorderRadius});
 
   // coverage:ignore-start
@@ -25,7 +27,7 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
     const radius = Radius.circular(kMyoroBorderRadius);
 
     return MyoroDropdownThemeExtension(
-      spacing: 10,
+      spacing: kMyoroMultiplier * 2.5,
       menuBorder: BoxBorder.fromLTRB(bottom: borderSide, left: borderSide, right: borderSide),
       menuBorderRadius: const BorderRadius.only(bottomLeft: radius, bottomRight: radius),
     );
@@ -47,6 +49,10 @@ class MyoroDropdownThemeExtension extends ThemeExtension<MyoroDropdownThemeExten
   MyoroDropdownThemeExtension lerp(covariant MyoroDropdownThemeExtension? other, double t) {
     if (other is! MyoroDropdownThemeExtension) return this;
     final style = MyoroDropdownStyle.lerp(this, other, t);
-    return MyoroDropdownThemeExtension(spacing: style.spacing, menuBorder: style.menuBorder, menuBorderRadius: style.menuBorderRadius);
+    return MyoroDropdownThemeExtension(
+      spacing: style.spacing,
+      menuBorder: style.menuBorder,
+      menuBorderRadius: style.menuBorderRadius,
+    );
   }
 }

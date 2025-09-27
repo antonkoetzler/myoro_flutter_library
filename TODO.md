@@ -4,6 +4,7 @@
 - (**IN PROGRESS**) Remove all `copyWith` implementations from all `@myoroModel`s when I deploy the version bringing back `copyWith` generation for `@myoroModel`
   - Revert both `pubspec.lock` to not use mfa from path
 - Storyboard
+  - Searchbar in the widget listing
   - Fix all bugs
   - Remove redundant `checkboxOnChanged` fields in widget showcase option `Widget`s
   - Make MFL logo the storyboard app icon

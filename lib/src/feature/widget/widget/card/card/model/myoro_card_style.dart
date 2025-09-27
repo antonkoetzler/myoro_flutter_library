@@ -23,7 +23,15 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
     );
   }
 
-  const MyoroCardStyle({this.backgroundColor, this.border, this.borderRadius, this.padding, this.titleCardSpacing, this.titleTextStyle, this.constraints});
+  const MyoroCardStyle({
+    this.backgroundColor,
+    this.border,
+    this.borderRadius,
+    this.padding,
+    this.titleCardSpacing,
+    this.titleTextStyle,
+    this.constraints,
+  });
 
   // coverage:ignore-start
   MyoroCardStyle.fake()
@@ -31,7 +39,9 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
       border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      titleCardSpacing = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 20)
+          : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
   // coverage:ignore-end
@@ -56,6 +66,4 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
 
   /// [BoxConstraints]
   final BoxConstraints? constraints;
-
-  /// Copy with.
 }

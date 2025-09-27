@@ -8,7 +8,9 @@ part 'myoro_menu_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroMenu].
 @immutable
 @myoroThemeExtension
-class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> with _$MyoroMenuThemeExtensionMixin implements MyoroMenuStyle {
+class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
+    with _$MyoroMenuThemeExtensionMixin
+    implements MyoroMenuStyle {
   const MyoroMenuThemeExtension({
     this.constraints,
     this.backgroundColor,
@@ -39,11 +41,11 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
       border = null,
       backgroundColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      searchBarPadding = const EdgeInsets.all(10),
+      searchBarPadding = EdgeInsets.all(kMyoroMultiplier * 2.5),
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
       itemBorderRadius = BorderRadius.zero,
       dialogTextStyle = textTheme.bodyMedium!,
-      dialogTextLoaderPadding = const EdgeInsets.all(15);
+      dialogTextLoaderPadding = EdgeInsets.all(kMyoroMultiplier * 3.75);
 
   /// Constraints of the menu.
   @override
@@ -102,6 +104,9 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension> wi
   /// sure that the menu item's background color won't extension the
   /// border of the [MyoroMenu]'s [MyoroMenuConfiguration.border].
   Radius createMenuContentRadius(Radius radius) {
-    return Radius.elliptical((radius.x - kMyoroMultiplier).clamp(0, double.infinity), (radius.y - kMyoroMultiplier).clamp(0, double.infinity));
+    return Radius.elliptical(
+      (radius.x - kMyoroMultiplier).clamp(0, double.infinity),
+      (radius.y - kMyoroMultiplier).clamp(0, double.infinity),
+    );
   }
 }

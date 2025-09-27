@@ -32,26 +32,41 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     : itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemContentAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
       itemContentAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null,
-      itemTitleButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      itemTitleButtonSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      itemTitleButtonContentPadding = faker.randomGenerator.boolean()
+          ? myoroFake<EdgeInsets>()
+          : null,
+      itemTitleButtonSpacing = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 50)
+          : null,
+      itemTitleButtonTitleTextStyle = faker.randomGenerator.boolean()
+          ? myoroFake<TextStyle>()
+          : null,
       itemTitleButtonArrowIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       itemTitleButtonArrowIconColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      itemTitleButtonArrowIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50, min: 10) : null,
-      itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
-      itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null;
+      itemTitleButtonArrowIconSize = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 50, min: 10)
+          : null,
+      itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean()
+          ? myoroFake<Duration>()
+          : null,
+      itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean()
+          ? myoroFake<Curve>()
+          : null;
   // coverage:ignore-end
 
-  MyoroAccordionThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme)
-    : itemContentBackgroundColor = colorScheme.primary,
+  MyoroAccordionThemeExtension.builder(
+    bool isDarkMode,
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) : itemContentBackgroundColor = colorScheme.primary,
       itemContentAnimationDuration = const Duration(milliseconds: 200),
       itemContentAnimationCurve = Curves.easeInOut,
-      itemTitleButtonContentPadding = const EdgeInsets.all(10),
-      itemTitleButtonSpacing = 10,
+      itemTitleButtonContentPadding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      itemTitleButtonSpacing = kMyoroMultiplier * 2.5,
       itemTitleButtonTitleTextStyle = textTheme.titleLarge,
       itemTitleButtonArrowIcon = Icons.keyboard_arrow_down,
       itemTitleButtonArrowIconColor = colorScheme.onPrimary,
-      itemTitleButtonArrowIconSize = 25,
+      itemTitleButtonArrowIconSize = kMyoroMultiplier * 6.25,
       itemTitleButtonArrowAnimationDuration = const Duration(milliseconds: 250),
       itemTitleButtonArrowAnimationCurve = Curves.easeInOut;
 

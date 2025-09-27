@@ -8,8 +8,15 @@ part 'myoro_drawer_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroDrawer].
 @immutable
 @myoroThemeExtension
-class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension> with _$MyoroDrawerThemeExtensionMixin {
-  const MyoroDrawerThemeExtension({this.drawerContentPadding, this.drawerPadding, this.drawerShape, this.titleContentDividerPadding, this.titleTextStyle});
+class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension>
+    with _$MyoroDrawerThemeExtensionMixin {
+  const MyoroDrawerThemeExtension({
+    this.drawerContentPadding,
+    this.drawerPadding,
+    this.drawerShape,
+    this.titleContentDividerPadding,
+    this.titleTextStyle,
+  });
 
   // coverage:ignore-start
   MyoroDrawerThemeExtension.fake()
@@ -21,8 +28,8 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
   // coverage:ignore-end
 
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : drawerPadding = const EdgeInsets.all(20),
-      drawerContentPadding = const EdgeInsets.all(10),
+    : drawerPadding = EdgeInsets.all(kMyoroMultiplier * 5),
+      drawerContentPadding = EdgeInsets.all(kMyoroMultiplier * 2.5),
       drawerShape = RoundedRectangleBorder(
         side: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
         borderRadius: BorderRadius.circular(kMyoroBorderRadius),

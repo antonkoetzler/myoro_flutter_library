@@ -39,6 +39,4 @@ class MyoroDropdownStyle with _$MyoroDropdownStyleMixin {
 
   /// [BorderRadius] of the [MyoroMenu].
   final BorderRadius? menuBorderRadius;
-
-  /// Copy with.
 }

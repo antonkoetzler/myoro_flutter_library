@@ -3,12 +3,14 @@ part of 'myoro_search_input_view_model.dart';
 /// State of [MyoroSearchInputViewModel].
 final class MyoroSearchInputState<T> {
   MyoroSearchInputState(this.configuration) {
-    _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>(requestCallback: () => configuration.request(inputController.text));
+    _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>(
+      requestCallback: () => configuration.request(inputController.text),
+    );
   }
 
   /// Dispose function.
   void dispose() {
-    _inputHeightNotifier.dispose();
+    _inputSizeNotifier.dispose();
     _itemsRequestNotifier.dispose();
     _localInputController?.dispose();
   }
@@ -25,16 +27,16 @@ final class MyoroSearchInputState<T> {
   }
 
   /// [ValueNotifier] of the [MyoroInput]'s height.
-  final _inputHeightNotifier = ValueNotifier<double?>(null);
+  final _inputSizeNotifier = ValueNotifier<Size?>(null);
 
-  /// [_inputHeightNotifier] getter.
-  ValueNotifier<double?> get inputHeightNotifier {
-    return _inputHeightNotifier;
+  /// [_inputSizeNotifier] getter.
+  ValueNotifier<Size?> get inputSizeNotifier {
+    return _inputSizeNotifier;
   }
 
-  /// [_inputHeightNotifier] setter.
-  set inputHeight(double? inputHeight) {
-    _inputHeightNotifier.value = inputHeight;
+  /// [_inputSizeNotifier] setter.
+  set inputSize(Size? inputSize) {
+    _inputSizeNotifier.value = inputSize;
   }
 
   /// [TextEditingController] of the [MyoroInput].
