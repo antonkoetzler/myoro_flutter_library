@@ -12,7 +12,10 @@ part 'myoro_group_radio_style.g.dart';
 @myoroModel
 class MyoroGroupRadioStyle with _$MyoroGroupRadioStyleMixin {
   static MyoroGroupRadioStyle lerp(MyoroGroupRadioStyle? a, MyoroGroupRadioStyle? b, double t) {
-    return MyoroGroupRadioStyle(spacing: lerpDouble(a?.spacing, b?.spacing, t), runSpacing: lerpDouble(a?.runSpacing, b?.runSpacing, t));
+    return MyoroGroupRadioStyle(
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      runSpacing: lerpDouble(a?.runSpacing, b?.runSpacing, t),
+    );
   }
 
   const MyoroGroupRadioStyle({this.spacing, this.runSpacing});

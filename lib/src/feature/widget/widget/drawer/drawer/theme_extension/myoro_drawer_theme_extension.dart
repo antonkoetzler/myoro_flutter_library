@@ -28,8 +28,8 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
   // coverage:ignore-end
 
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : drawerPadding = EdgeInsets.all(kMyoroMultiplier * 5),
-      drawerContentPadding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+    : drawerPadding = const EdgeInsets.all(kMyoroMultiplier * 5),
+      drawerContentPadding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       drawerShape = RoundedRectangleBorder(
         side: BorderSide(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
         borderRadius: BorderRadius.circular(kMyoroBorderRadius),

@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +36,10 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
   }
   // coverage:ignore-end
 
-  factory MyoroResizeDividerThemeExtension.builder(MyoroBasicDividerThemeExtension themeExtension, ColorScheme colorScheme) {
+  factory MyoroResizeDividerThemeExtension.builder(
+    MyoroBasicDividerThemeExtension themeExtension,
+    ColorScheme colorScheme,
+  ) {
     return MyoroResizeDividerThemeExtension(
       color: themeExtension.color,
       shortValue: themeExtension.shortValue,

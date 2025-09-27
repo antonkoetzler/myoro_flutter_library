@@ -10,6 +10,6 @@ TooltipThemeData createMyoroTooltipThemeData(ColorScheme colorScheme, TextTheme 
       border: Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
     ),
     textStyle: textTheme.bodySmall,
-    padding: EdgeInsets.all(kMyoroMultiplier * 2.5),
+    padding: const EdgeInsets.all(kMyoroMultiplier * 2.5),
   );
 }

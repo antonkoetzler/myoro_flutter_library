@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,9 @@ part 'myoro_tab_view_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroTabView].
 @immutable
 @myoroThemeExtension
-class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtension> with _$MyoroTabViewThemeExtensionMixin implements MyoroTabViewStyle {
+class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtension>
+    with _$MyoroTabViewThemeExtensionMixin
+    implements MyoroTabViewStyle {
   const MyoroTabViewThemeExtension({
     this.tabButtonBorderRadius,
     this.tabButtonIdleColor,

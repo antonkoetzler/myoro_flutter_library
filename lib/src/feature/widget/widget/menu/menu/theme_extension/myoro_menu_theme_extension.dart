@@ -41,11 +41,11 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       border = null,
       backgroundColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      searchBarPadding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      searchBarPadding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
       itemBorderRadius = BorderRadius.zero,
       dialogTextStyle = textTheme.bodyMedium!,
-      dialogTextLoaderPadding = EdgeInsets.all(kMyoroMultiplier * 3.75);
+      dialogTextLoaderPadding = const EdgeInsets.all(kMyoroMultiplier * 3.75);
 
   /// Constraints of the menu.
   @override

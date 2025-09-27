@@ -23,7 +23,11 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
       padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       messageTextStyle: TextStyle.lerp(a?.messageTextStyle, b?.messageTextStyle, t),
-      closeButtonIconConfiguration: myoroFallbackLerp(a?.closeButtonIconConfiguration, b?.closeButtonIconConfiguration, t),
+      closeButtonIconConfiguration: myoroFallbackLerp(
+        a?.closeButtonIconConfiguration,
+        b?.closeButtonIconConfiguration,
+        t,
+      ),
     );
   }
 

@@ -151,14 +151,20 @@ void main() {
         child: MyoroTable<String>(
           configuration: MyoroTableConfiguration(
             request: () => {faker.lorem.word()},
-            columns: [
+            columns: const [
               MyoroTableColumn(
-                widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed, fixedWidth: 100),
-                child: const SizedBox.shrink(),
+                widthConfiguration: MyoroTableColumnWidthConfiguration(
+                  typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed,
+                  fixedWidth: 100,
+                ),
+                child: SizedBox.shrink(),
               ),
               MyoroTableColumn(
-                widthConfiguration: MyoroTableColumnWidthConfiguration(typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed, fixedWidth: 150),
-                child: const SizedBox.shrink(),
+                widthConfiguration: MyoroTableColumnWidthConfiguration(
+                  typeEnum: MyoroTableColumnWidthConfigurationEnum.fixed,
+                  fixedWidth: 150,
+                ),
+                child: SizedBox.shrink(),
               ),
             ],
             rowBuilder: (item) => MyoroTableRow(cells: [Text(item), Text(item)]),

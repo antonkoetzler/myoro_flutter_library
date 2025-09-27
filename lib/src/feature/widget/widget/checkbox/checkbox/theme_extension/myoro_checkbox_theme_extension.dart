@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,9 @@ part 'myoro_checkbox_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroCheckbox]
 @immutable
 @myoroThemeExtension
-class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension> with _$MyoroCheckboxThemeExtensionMixin implements MyoroCheckboxStyle {
+class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExtension>
+    with _$MyoroCheckboxThemeExtensionMixin
+    implements MyoroCheckboxStyle {
   const MyoroCheckboxThemeExtension({
     this.checkboxActiveColor,
     this.checkboxCheckColor,

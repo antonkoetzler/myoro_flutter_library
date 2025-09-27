@@ -19,17 +19,12 @@ final class _SearchSection<T> extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: inputSizeNotifier,
-      builder: (_, inputSize, _) => Container(
+      builder: (_, inputSize, _) => SizedBox(
         width: inputSize?.width,
-        height: 100,
-        color: Colors.pink.withValues(alpha: 0.5),
-        // child: MyoroSingleMenu<T>(
-        //   configuration: MyoroSingleMenuConfiguration(
-        //     itemBuilder: itemBuilder,
-        //     request: () => items ?? const {},
-        //   ),
-        //   style: MyoroMenuStyle(border: menuBorder),
-        // ),
+        child: MyoroSingleMenu<T>(
+          configuration: MyoroSingleMenuConfiguration(itemBuilder: itemBuilder, request: () => items ?? const {}),
+          style: MyoroMenuStyle(border: menuBorder),
+        ),
       ),
     );
   }

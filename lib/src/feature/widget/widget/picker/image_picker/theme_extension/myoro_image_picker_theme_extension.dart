@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +36,9 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       overlayIdleBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayHoverBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayTapBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayUnselectedImageStateIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      overlayUnselectedImageStateIconConfiguration = faker.randomGenerator.boolean()
+          ? MyoroIconConfiguration.fake()
+          : null,
       selectionTypeModalConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       selectionTypeModalSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       selectionTypeModalButtonCameraIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
@@ -51,8 +52,14 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       overlayIdleBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 2 / 100),
       overlayHoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 4 / 100),
       overlayTapBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 6 / 100),
-      overlayUnselectedImageStateIconConfiguration = const MyoroIconConfiguration(icon: Icons.upload, size: kMyoroMultiplier * 20),
-      selectionTypeModalConstraints = const BoxConstraints(maxWidth: kMyoroMultiplier * 58, maxHeight: kMyoroMultiplier * 50),
+      overlayUnselectedImageStateIconConfiguration = const MyoroIconConfiguration(
+        icon: Icons.upload,
+        size: kMyoroMultiplier * 20,
+      ),
+      selectionTypeModalConstraints = const BoxConstraints(
+        maxWidth: kMyoroMultiplier * 58,
+        maxHeight: kMyoroMultiplier * 50,
+      ),
       selectionTypeModalSpacing = kMyoroMultiplier * 2,
       selectionTypeModalButtonCameraIcon = Icons.camera,
       selectionTypeModalButtonGalleryIcon = Icons.browse_gallery;

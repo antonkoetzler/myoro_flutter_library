@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -39,9 +38,7 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       messageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonIconConfiguration = faker.randomGenerator.boolean()
-          ? MyoroIconConfiguration.fake()
-          : null;
+      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
   // coverage:ignore-end
 
   MyoroSnackBarThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -52,13 +49,10 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       errorBorderColor = MyoroColors.red1,
       borderWidth = kMyoroBorderWidth * 2,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      padding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      padding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       spacing = kMyoroMultiplier * 2.5,
       messageTextStyle = textTheme.bodySmall!,
-      closeButtonIconConfiguration = MyoroIconConfiguration(
-        icon: Icons.close,
-        size: kMyoroMultiplier * 3.75,
-      );
+      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: kMyoroMultiplier * 3.75);
 
   /// Background color of the snack bar.
   @override

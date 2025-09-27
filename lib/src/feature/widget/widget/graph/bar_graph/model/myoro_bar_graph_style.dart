@@ -19,7 +19,11 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
       sideTitleTextStyle: TextStyle.lerp(a?.sideTitleTextStyle, b?.sideTitleTextStyle, t),
       sideTitleInterval: lerpDouble(a?.sideTitleInterval, b?.sideTitleInterval, t),
       verticalSideTitleReversedSize: lerpDouble(a?.verticalSideTitleReversedSize, b?.verticalSideTitleReversedSize, t),
-      horizontalSideTitleReversedSize: lerpDouble(a?.horizontalSideTitleReversedSize, b?.horizontalSideTitleReversedSize, t),
+      horizontalSideTitleReversedSize: lerpDouble(
+        a?.horizontalSideTitleReversedSize,
+        b?.horizontalSideTitleReversedSize,
+        t,
+      ),
     );
   }
 

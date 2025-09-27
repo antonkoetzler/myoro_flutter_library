@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,9 @@ part 'myoro_feedback_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroFeedback].
 @immutable
 @myoroThemeExtension
-class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension> with _$MyoroFeedbackThemeExtensionMixin implements MyoroFeedbackStyle {
+class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExtension>
+    with _$MyoroFeedbackThemeExtensionMixin
+    implements MyoroFeedbackStyle {
   const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
   // coverage:ignore-start

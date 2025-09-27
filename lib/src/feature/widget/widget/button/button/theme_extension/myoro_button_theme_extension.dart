@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,9 @@ part 'myoro_button_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroButton].
 @immutable
 @myoroThemeExtension
-class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension> with _$MyoroButtonThemeExtensionMixin implements MyoroButtonStyle {
+class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension>
+    with _$MyoroButtonThemeExtensionMixin
+    implements MyoroButtonStyle {
   const MyoroButtonThemeExtension({
     this.backgroundIdleColor,
     this.backgroundHoverColor,

@@ -8,7 +8,9 @@ part 'myoro_tooltip_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroTooltip].
 @immutable
 @myoroThemeExtension
-class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension> with _$MyoroTooltipThemeExtensionMixin implements MyoroTooltipStyle {
+class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtension>
+    with _$MyoroTooltipThemeExtensionMixin
+    implements MyoroTooltipStyle {
   const MyoroTooltipThemeExtension({this.margin});
 
   // coverage:ignore-start

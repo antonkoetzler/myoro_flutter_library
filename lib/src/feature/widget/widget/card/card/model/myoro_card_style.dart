@@ -39,9 +39,7 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
       border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      titleCardSpacing = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
+      titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
   // coverage:ignore-end

@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Function to create the default [ThemeExtension]s for [createMyoroThemeData]'s [ThemeData]s.
-List<ThemeExtension> createMyoroThemeExtensions(
-  bool isDarkMode,
-  ColorScheme colorScheme,
-  TextTheme textTheme,
-) {
+List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
   final decorationThemeExtension = MyoroDecorationThemeExtension.builder(isDarkMode, colorScheme);
 
   return [
@@ -40,17 +36,11 @@ List<ThemeExtension> _createAppBarThemeExtensions(ColorScheme colorScheme) {
   return [MyoroAppBarThemeExtension.builder(colorScheme)];
 }
 
-List<ThemeExtension> _createAccordionThemeExtensions(
-  bool isDarkMode,
-  ColorScheme colorScheme,
-  TextTheme textTheme,
-) {
+List<ThemeExtension> _createAccordionThemeExtensions(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme) {
   return [MyoroAccordionThemeExtension.builder(isDarkMode, colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createButtonThemeExtensions(
-  MyoroDecorationThemeExtension decorationThemeExtension,
-) {
+List<ThemeExtension> _createButtonThemeExtensions(MyoroDecorationThemeExtension decorationThemeExtension) {
   return [
     MyoroButtonThemeExtension.builder(decorationThemeExtension),
     MyoroIconTextButtonThemeExtension.builder(decorationThemeExtension),
@@ -115,24 +105,15 @@ List<ThemeExtension> _createMenuThemeExtensions(ColorScheme colorScheme, TextThe
 }
 
 List<ThemeExtension> _createModalThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [
-    MyoroModalThemeExtension.builder(colorScheme, textTheme),
-    MyoroDialogModalThemeExtension.builder(textTheme),
-  ];
+  return [MyoroModalThemeExtension.builder(colorScheme, textTheme), MyoroDialogModalThemeExtension.builder(textTheme)];
 }
 
 List<ThemeExtension> _createPickerThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [
-    MyoroFilePickerThemeExtension.builder(textTheme),
-    MyoroImagePickerThemeExtension.builder(colorScheme),
-  ];
+  return [MyoroFilePickerThemeExtension.builder(textTheme), MyoroImagePickerThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [
-    MyoroRadioThemeExtension.builder(colorScheme, textTheme),
-    const MyoroGroupRadioThemeExtension.builder(),
-  ];
+  return [MyoroRadioThemeExtension.builder(colorScheme, textTheme), const MyoroGroupRadioThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {
@@ -140,10 +121,7 @@ List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {
 }
 
 List<ThemeExtension> _createSnackBarThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [
-    MyoroSnackBarThemeExtension.builder(colorScheme, textTheme),
-    MyoroSnackBarContainerThemeExtension.builder(),
-  ];
+  return [MyoroSnackBarThemeExtension.builder(colorScheme, textTheme), MyoroSnackBarContainerThemeExtension.builder()];
 }
 
 List<ThemeExtension> _createTableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

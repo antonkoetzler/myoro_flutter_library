@@ -54,7 +54,10 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
         InheritedProvider.value(value: _style),
         InheritedProvider.value(value: _viewModel),
       ],
-      child: ValueListenableBuilder(valueListenable: itemsRequestNotifier, builder: (_, itemsRequest, _) => _Body<T>(itemsRequest)),
+      child: ValueListenableBuilder(
+        valueListenable: itemsRequestNotifier,
+        builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
+      ),
     );
   }
 }

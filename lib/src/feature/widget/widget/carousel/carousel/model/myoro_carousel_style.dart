@@ -10,11 +10,7 @@ part 'myoro_carousel_style.g.dart';
 class MyoroCarouselStyle with _$MyoroCarouselStyleMixin {
   static MyoroCarouselStyle lerp(MyoroCarouselStyle? a, MyoroCarouselStyle? b, double t) {
     return MyoroCarouselStyle(
-      previousItemButtonIcon: myoroFallbackLerp(
-        a?.previousItemButtonIcon,
-        b?.previousItemButtonIcon,
-        t,
-      ),
+      previousItemButtonIcon: myoroFallbackLerp(a?.previousItemButtonIcon, b?.previousItemButtonIcon, t),
       nextItemButtonIcon: myoroFallbackLerp(a?.nextItemButtonIcon, b?.nextItemButtonIcon, t),
     );
   }

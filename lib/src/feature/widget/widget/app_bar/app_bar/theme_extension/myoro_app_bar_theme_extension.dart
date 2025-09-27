@@ -21,7 +21,7 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
 
   MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
     : backgroundColor = colorScheme.primary,
-      contentPadding = EdgeInsets.all(kMyoroMultiplier * 2.5);
+      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 2.5);
 
   @override
   final Color? backgroundColor;
@@ -33,9 +33,6 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
   MyoroAppBarThemeExtension lerp(covariant MyoroAppBarThemeExtension? other, double t) {
     if (other is! MyoroAppBarThemeExtension) return this;
     final style = MyoroAppBarStyle.lerp(this, other, t);
-    return MyoroAppBarThemeExtension(
-      backgroundColor: style.backgroundColor,
-      contentPadding: style.contentPadding,
-    );
+    return MyoroAppBarThemeExtension(backgroundColor: style.backgroundColor, contentPadding: style.contentPadding);
   }
 }

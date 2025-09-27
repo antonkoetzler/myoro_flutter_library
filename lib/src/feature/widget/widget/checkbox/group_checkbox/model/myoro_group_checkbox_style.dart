@@ -11,11 +11,7 @@ part 'myoro_group_checkbox_style.g.dart';
 @immutable
 @myoroModel
 class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckboxStyleMixin {
-  static MyoroGroupCheckboxStyle lerp(
-    MyoroGroupCheckboxStyle? a,
-    MyoroGroupCheckboxStyle? b,
-    double t,
-  ) {
+  static MyoroGroupCheckboxStyle lerp(MyoroGroupCheckboxStyle? a, MyoroGroupCheckboxStyle? b, double t) {
     return MyoroGroupCheckboxStyle(
       checkboxActiveColor: Color.lerp(a?.checkboxActiveColor, b?.checkboxActiveColor, t),
       checkboxCheckColor: Color.lerp(a?.checkboxCheckColor, b?.checkboxCheckColor, t),
@@ -48,9 +44,7 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
       checkboxCheckColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       checkboxHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       checkboxFocusColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      checkboxSplashRadius: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
+      checkboxSplashRadius: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       labelMaxLines: faker.randomGenerator.boolean() ? faker.randomGenerator.integer(10) : null,
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,

@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -30,12 +29,8 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
       barBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       sideTitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       sideTitleInterval = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
-      verticalSideTitleReversedSize = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal()
-          : null,
-      horizontalSideTitleReversedSize = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal()
-          : null;
+      verticalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
+      horizontalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
   // coverage:ignore-end
 
   MyoroBarGraphThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)

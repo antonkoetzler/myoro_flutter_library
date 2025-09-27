@@ -10,8 +10,7 @@ part 'myoro_snack_bar_container_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroSnackBarContainer].
 @immutable
 @myoroThemeExtension
-class MyoroSnackBarContainerThemeExtension
-    extends ThemeExtension<MyoroSnackBarContainerThemeExtension>
+class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarContainerThemeExtension>
     with _$MyoroSnackBarContainerThemeExtensionMixin {
   const MyoroSnackBarContainerThemeExtension({
     this.primaryColor,
@@ -35,7 +34,7 @@ class MyoroSnackBarContainerThemeExtension
   MyoroSnackBarContainerThemeExtension.builder()
     : primaryColor = MyoroColors.transparent,
       behavior = SnackBarBehavior.floating,
-      margin = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      margin = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       padding = EdgeInsets.zero,
       elevation = 0,
       dismissDirection = DismissDirection.none;

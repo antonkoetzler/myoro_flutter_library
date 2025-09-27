@@ -22,9 +22,7 @@ class MyoroSearchInputThemeExtension extends ThemeExtension<MyoroSearchInputThem
   MyoroSearchInputThemeExtension.fake()
     : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       searchButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      searchButtonLoadingSize = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal()
-          : null,
+      searchButtonLoadingSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       menuBorder = faker.randomGenerator.boolean() ? myoroFake<BoxBorder>() : null;
   // coverage:ignore-end
 

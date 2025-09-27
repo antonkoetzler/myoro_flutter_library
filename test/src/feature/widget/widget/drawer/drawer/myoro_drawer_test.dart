@@ -20,7 +20,11 @@ void main() {
     await tester.pumpWidget(
       MyoroWidgetTester(
         child: MyoroDrawer(
-          configuration: MyoroDrawerConfiguration(title: faker.lorem.word(), showCloseButton: true, child: Text(faker.lorem.sentence())),
+          configuration: MyoroDrawerConfiguration(
+            title: faker.lorem.word(),
+            showCloseButton: true,
+            child: Text(faker.lorem.sentence()),
+          ),
         ),
       ),
     );

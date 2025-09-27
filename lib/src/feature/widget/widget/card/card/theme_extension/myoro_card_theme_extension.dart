@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
     : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),
       border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
-      padding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      padding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       titleCardSpacing = kMyoroMultiplier * 2.5,
       titleTextStyle = textTheme.titleMedium!,
       constraints = null;

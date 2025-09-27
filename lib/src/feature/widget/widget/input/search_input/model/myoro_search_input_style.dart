@@ -15,30 +15,19 @@ class MyoroSearchInputStyle with _$MyoroSearchInputStyleMixin {
     return MyoroSearchInputStyle(
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       searchButtonIcon: myoroFallbackLerp(a?.searchButtonIcon, b?.searchButtonIcon, t),
-      searchButtonLoadingSize: lerpDouble(
-        a?.searchButtonLoadingSize,
-        b?.searchButtonLoadingSize,
-        t,
-      ),
+      searchButtonLoadingSize: lerpDouble(a?.searchButtonLoadingSize, b?.searchButtonLoadingSize, t),
       menuBorder: myoroFallbackLerp(a?.menuBorder, b?.menuBorder, t),
     );
   }
 
-  const MyoroSearchInputStyle({
-    this.spacing,
-    this.searchButtonIcon,
-    this.searchButtonLoadingSize,
-    this.menuBorder,
-  });
+  const MyoroSearchInputStyle({this.spacing, this.searchButtonIcon, this.searchButtonLoadingSize, this.menuBorder});
 
   // coverage:ignore-start
   factory MyoroSearchInputStyle.fake() {
     return MyoroSearchInputStyle(
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       searchButtonIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      searchButtonLoadingSize: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal()
-          : null,
+      searchButtonLoadingSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       menuBorder: faker.randomGenerator.boolean() ? myoroFake<BoxBorder>() : null,
     );
   }

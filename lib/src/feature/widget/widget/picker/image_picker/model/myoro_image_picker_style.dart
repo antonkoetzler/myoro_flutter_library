@@ -24,10 +24,22 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
         b?.overlayUnselectedImageStateIconConfiguration,
         t,
       ),
-      selectionTypeModalConstraints: BoxConstraints.lerp(a?.selectionTypeModalConstraints, b?.selectionTypeModalConstraints, t),
+      selectionTypeModalConstraints: BoxConstraints.lerp(
+        a?.selectionTypeModalConstraints,
+        b?.selectionTypeModalConstraints,
+        t,
+      ),
       selectionTypeModalSpacing: lerpDouble(a?.selectionTypeModalSpacing, b?.selectionTypeModalSpacing, t),
-      selectionTypeModalButtonCameraIcon: myoroFallbackLerp(a?.selectionTypeModalButtonCameraIcon, b?.selectionTypeModalButtonCameraIcon, t),
-      selectionTypeModalButtonGalleryIcon: myoroFallbackLerp(a?.selectionTypeModalButtonGalleryIcon, b?.selectionTypeModalButtonGalleryIcon, t),
+      selectionTypeModalButtonCameraIcon: myoroFallbackLerp(
+        a?.selectionTypeModalButtonCameraIcon,
+        b?.selectionTypeModalButtonCameraIcon,
+        t,
+      ),
+      selectionTypeModalButtonGalleryIcon: myoroFallbackLerp(
+        a?.selectionTypeModalButtonGalleryIcon,
+        b?.selectionTypeModalButtonGalleryIcon,
+        t,
+      ),
     );
   }
 
@@ -54,7 +66,9 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       overlayIdleBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayHoverBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayTapBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayUnselectedImageStateIconConfiguration: faker.randomGenerator.boolean() ? myoroFake<MyoroIconConfiguration>() : null,
+      overlayUnselectedImageStateIconConfiguration: faker.randomGenerator.boolean()
+          ? myoroFake<MyoroIconConfiguration>()
+          : null,
       selectionTypeModalConstraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       selectionTypeModalSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       selectionTypeModalButtonCameraIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,

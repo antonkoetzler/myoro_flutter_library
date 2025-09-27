@@ -15,6 +15,7 @@
 - `MyoroLocationInput`
 - `MyoroButtonMenu`
 - Make `MyoroDropdownMenuTypeEnum` a generic enum then make `MyoroSearchInput` use this enum
+  - I think we have to make myoro dropdown super generic and make the function of myoro dropdown called myoro selectable dropdown, then make myoro search input myoro search dropdown
 - GitHub pages
 - Rename storyboard to example
 - Add more code snippets to documentation

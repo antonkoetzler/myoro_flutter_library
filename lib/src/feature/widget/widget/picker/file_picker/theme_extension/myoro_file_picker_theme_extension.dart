@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,9 @@ final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePicker
       textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
 
-  MyoroFilePickerThemeExtension.builder(TextTheme textTheme) : spacing = kMyoroMultiplier * 2, textStyle = textTheme.bodySmall!;
+  MyoroFilePickerThemeExtension.builder(TextTheme textTheme)
+    : spacing = kMyoroMultiplier * 2,
+      textStyle = textTheme.bodySmall!;
 
   /// Spacing between the selected file section text and the selection button.
   @override

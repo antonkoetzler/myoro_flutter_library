@@ -29,31 +29,36 @@ final class _TextFormField extends StatelessWidget {
     final controller = state.controller;
     final formatter = state.formatter;
     final enabled = state.enabled;
-    final inputKey = configuration.inputKey;
 
     final border = style.border ?? themeExtension.border ?? configuration.inputStyle.getBorder(context);
 
     Widget buildTextFormField([bool showClearTextButton = false]) {
       return TextFormField(
-        key: inputKey,
-        // So the checkbox prefix may be clicked
         ignorePointers: false,
         enabled: enabled,
         readOnly: readOnly,
         autofocus: autofocus,
         style: textStyle?.withColor(
-          textStyle.color!.withValues(alpha: _viewModel.state.enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity)),
+          textStyle.color!.withValues(
+            alpha: _viewModel.state.enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
+          ),
         ),
         decoration: InputDecoration(
           floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
           label: label.isNotEmpty ? _Label(_viewModel) : null,
           hintText: placeholder.isNotEmpty ? placeholder : null,
-          hintStyle: textStyle?.withColor(textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity)),
+          hintStyle: textStyle?.withColor(
+            textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
+          ),
           enabledBorder: border,
           focusedBorder: border,
-          errorBorder: border?.copyWith(borderSide: border.borderSide.copyWith(color: style.errorBorderColor ?? themeExtension.errorBorderColor)),
+          errorBorder: border?.copyWith(
+            borderSide: border.borderSide.copyWith(color: style.errorBorderColor ?? themeExtension.errorBorderColor),
+          ),
           disabledBorder: border?.copyWith(
-            borderSide: border.borderSide.copyWith(color: border.borderSide.color.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity)),
+            borderSide: border.borderSide.copyWith(
+              color: border.borderSide.color.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
+            ),
           ),
           isDense: true,
           contentPadding: contentPadding,
@@ -73,7 +78,7 @@ final class _TextFormField extends StatelessWidget {
     // Get the border radius from the border to apply it to the background
     final borderRadius = border is OutlineInputBorder ? border.borderRadius : null;
 
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(color: primaryColor, borderRadius: borderRadius),
       child: configuration.showClearTextButton
           ? ValueListenableBuilder(

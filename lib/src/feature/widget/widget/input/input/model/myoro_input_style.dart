@@ -69,7 +69,9 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       labelBehavior: faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
       clearTextButtonPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       clearTextButtonIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      clearTextButtonIconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 200, min: 20) : null,
+      clearTextButtonIconSize: faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 200, min: 20)
+          : null,
     );
   }
   // coverage:ignore-end

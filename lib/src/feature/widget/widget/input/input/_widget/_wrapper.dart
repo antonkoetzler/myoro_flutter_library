@@ -12,11 +12,15 @@ final class _Wrapper extends StatelessWidget {
     final style = context.read<MyoroInputStyle>();
     final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
+    final state = _viewModel.state;
+    final configuration = state.configuration;
+    final inputKey = configuration.inputKey;
+
     return Row(
       spacing: spacing,
       children: [
         if (_viewModel.state.configuration.checkboxOnChanged != null) _Checkbox(_viewModel),
-        Expanded(child: _TextFormField(_viewModel)),
+        Expanded(key: inputKey, child: _TextFormField(_viewModel)),
         if (_viewModel.state.configuration.suffix != null) _viewModel.state.configuration.suffix!,
       ],
     );

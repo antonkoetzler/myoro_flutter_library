@@ -13,16 +13,36 @@ class MyoroAccordionStyle with _$MyoroAccordionStyleMixin {
   static MyoroAccordionStyle lerp(MyoroAccordionStyle? a, MyoroAccordionStyle? b, double t) {
     return MyoroAccordionStyle(
       itemContentBackgroundColor: Color.lerp(a?.itemContentBackgroundColor, b?.itemContentBackgroundColor, t),
-      itemContentAnimationDuration: myoroFallbackLerp(a?.itemContentAnimationDuration, b?.itemContentAnimationDuration, t),
+      itemContentAnimationDuration: myoroFallbackLerp(
+        a?.itemContentAnimationDuration,
+        b?.itemContentAnimationDuration,
+        t,
+      ),
       itemContentAnimationCurve: myoroFallbackLerp(a?.itemContentAnimationCurve, b?.itemContentAnimationCurve, t),
-      itemTitleButtonContentPadding: EdgeInsets.lerp(a?.itemTitleButtonContentPadding, b?.itemTitleButtonContentPadding, t),
+      itemTitleButtonContentPadding: EdgeInsets.lerp(
+        a?.itemTitleButtonContentPadding,
+        b?.itemTitleButtonContentPadding,
+        t,
+      ),
       itemTitleButtonSpacing: lerpDouble(a?.itemTitleButtonSpacing, b?.itemTitleButtonSpacing, t),
-      itemTitleButtonTitleTextStyle: TextStyle.lerp(a?.itemTitleButtonTitleTextStyle, b?.itemTitleButtonTitleTextStyle, t),
+      itemTitleButtonTitleTextStyle: TextStyle.lerp(
+        a?.itemTitleButtonTitleTextStyle,
+        b?.itemTitleButtonTitleTextStyle,
+        t,
+      ),
       itemTitleButtonArrowIcon: myoroFallbackLerp(a?.itemTitleButtonArrowIcon, b?.itemTitleButtonArrowIcon, t),
       itemTitleButtonArrowIconColor: Color.lerp(a?.itemTitleButtonArrowIconColor, b?.itemTitleButtonArrowIconColor, t),
       itemTitleButtonArrowIconSize: lerpDouble(a?.itemTitleButtonArrowIconSize, b?.itemTitleButtonArrowIconSize, t),
-      itemTitleButtonArrowAnimationDuration: myoroFallbackLerp(a?.itemTitleButtonArrowAnimationDuration, b?.itemTitleButtonArrowAnimationDuration, t),
-      itemTitleButtonArrowAnimationCurve: myoroFallbackLerp(a?.itemTitleButtonArrowAnimationCurve, b?.itemTitleButtonArrowAnimationCurve, t),
+      itemTitleButtonArrowAnimationDuration: myoroFallbackLerp(
+        a?.itemTitleButtonArrowAnimationDuration,
+        b?.itemTitleButtonArrowAnimationDuration,
+        t,
+      ),
+      itemTitleButtonArrowAnimationCurve: myoroFallbackLerp(
+        a?.itemTitleButtonArrowAnimationCurve,
+        b?.itemTitleButtonArrowAnimationCurve,
+        t,
+      ),
     );
   }
 

@@ -42,8 +42,8 @@ void main() {
   });
 
   test('MyoroMenuThemeExtension lerp with null values', () {
-    final theme1 = MyoroMenuThemeExtension();
-    final theme2 = MyoroMenuThemeExtension();
+    const theme1 = MyoroMenuThemeExtension();
+    const theme2 = MyoroMenuThemeExtension();
 
     final lerped = theme1.lerp(theme2, 0.5);
 
@@ -59,8 +59,8 @@ void main() {
   });
 
   test('MyoroMenuThemeExtension lerp with different type returns this', () {
-    final theme = MyoroMenuThemeExtension();
-    final result = theme.lerp(MyoroMenuThemeExtension(), 0.5);
+    const theme = MyoroMenuThemeExtension();
+    final result = theme.lerp(const MyoroMenuThemeExtension(), 0.5);
     expect(result, equals(theme));
   });
 }

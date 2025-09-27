@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -27,13 +26,9 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
   MyoroTableThemeExtension.fake()
     : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       columnTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      columnSpacing = faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
+      columnSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       rowTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      loaderEmptyMessageErrorMessagePadding = faker.randomGenerator.boolean()
-          ? myoroFake<EdgeInsets>()
-          : null,
+      loaderEmptyMessageErrorMessagePadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       emptyMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       errorMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
   // coverage:ignore-end
@@ -43,7 +38,7 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
       columnTextStyle = textTheme.titleMedium!,
       columnSpacing = kMyoroMultiplier * 2.5,
       rowTextStyle = textTheme.bodyMedium!,
-      loaderEmptyMessageErrorMessagePadding = EdgeInsets.all(kMyoroMultiplier * 2.5),
+      loaderEmptyMessageErrorMessagePadding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       emptyMessageTextStyle = textTheme.headlineMedium!,
       errorMessageTextStyle = textTheme.headlineMedium!.withColor(colorScheme.error);
 

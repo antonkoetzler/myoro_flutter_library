@@ -18,7 +18,7 @@ void main() {
   });
 
   test('MockThemeExtension constructor', () {
-    final mock = MockThemeExtension();
+    const mock = MockThemeExtension();
     expect(mock, isNotNull);
   });
 }

@@ -17,7 +17,11 @@ class MyoroTableStyle with _$MyoroTableStyleMixin {
       columnTextStyle: TextStyle.lerp(a?.columnTextStyle, b?.columnTextStyle, t),
       columnSpacing: lerpDouble(a?.columnSpacing, b?.columnSpacing, t),
       rowTextStyle: TextStyle.lerp(a?.rowTextStyle, b?.rowTextStyle, t),
-      loaderEmptyMessageErrorMessagePadding: EdgeInsets.lerp(a?.loaderEmptyMessageErrorMessagePadding, b?.loaderEmptyMessageErrorMessagePadding, t),
+      loaderEmptyMessageErrorMessagePadding: EdgeInsets.lerp(
+        a?.loaderEmptyMessageErrorMessagePadding,
+        b?.loaderEmptyMessageErrorMessagePadding,
+        t,
+      ),
       emptyMessageTextStyle: TextStyle.lerp(a?.emptyMessageTextStyle, b?.emptyMessageTextStyle, t),
       errorMessageTextStyle: TextStyle.lerp(a?.errorMessageTextStyle, b?.errorMessageTextStyle, t),
     );

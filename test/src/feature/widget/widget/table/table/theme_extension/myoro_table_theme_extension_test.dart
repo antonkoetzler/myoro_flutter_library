@@ -4,24 +4,24 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   test('MyoroTableThemeExtension lerp', () {
-    final theme1 = MyoroTableThemeExtension(
+    const theme1 = MyoroTableThemeExtension(
       backgroundColor: Colors.red,
-      columnTextStyle: const TextStyle(fontSize: 12),
+      columnTextStyle: TextStyle(fontSize: 12),
       columnSpacing: 8.0,
-      rowTextStyle: const TextStyle(fontSize: 14),
-      loaderEmptyMessageErrorMessagePadding: const EdgeInsets.all(16),
-      emptyMessageTextStyle: const TextStyle(fontSize: 16),
-      errorMessageTextStyle: const TextStyle(fontSize: 18),
+      rowTextStyle: TextStyle(fontSize: 14),
+      loaderEmptyMessageErrorMessagePadding: EdgeInsets.all(16),
+      emptyMessageTextStyle: TextStyle(fontSize: 16),
+      errorMessageTextStyle: TextStyle(fontSize: 18),
     );
 
-    final theme2 = MyoroTableThemeExtension(
+    const theme2 = MyoroTableThemeExtension(
       backgroundColor: Colors.blue,
-      columnTextStyle: const TextStyle(fontSize: 16),
+      columnTextStyle: TextStyle(fontSize: 16),
       columnSpacing: 12.0,
-      rowTextStyle: const TextStyle(fontSize: 18),
-      loaderEmptyMessageErrorMessagePadding: const EdgeInsets.all(20),
-      emptyMessageTextStyle: const TextStyle(fontSize: 20),
-      errorMessageTextStyle: const TextStyle(fontSize: 22),
+      rowTextStyle: TextStyle(fontSize: 18),
+      loaderEmptyMessageErrorMessagePadding: EdgeInsets.all(20),
+      emptyMessageTextStyle: TextStyle(fontSize: 20),
+      errorMessageTextStyle: TextStyle(fontSize: 22),
     );
 
     final lerped = theme1.lerp(theme2, 0.5);
@@ -36,8 +36,8 @@ void main() {
   });
 
   test('MyoroTableThemeExtension lerp with null values', () {
-    final theme1 = MyoroTableThemeExtension();
-    final theme2 = MyoroTableThemeExtension();
+    const theme1 = MyoroTableThemeExtension();
+    const theme2 = MyoroTableThemeExtension();
 
     final lerped = theme1.lerp(theme2, 0.5);
 

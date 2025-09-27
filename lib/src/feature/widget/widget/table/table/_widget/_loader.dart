@@ -12,9 +12,6 @@ final class _Loader extends StatelessWidget {
         style.loaderEmptyMessageErrorMessagePadding ??
         themeExtension.loaderEmptyMessageErrorMessagePadding ??
         EdgeInsets.zero;
-    return Padding(
-      padding: loaderEmptyMessageErrorMessagePadding,
-      child: const MyoroCircularLoader(),
-    );
+    return Padding(padding: loaderEmptyMessageErrorMessagePadding, child: const MyoroCircularLoader());
   }
 }

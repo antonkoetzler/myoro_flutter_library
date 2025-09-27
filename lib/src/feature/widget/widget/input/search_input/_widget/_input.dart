@@ -15,6 +15,11 @@ final class _Input<T> extends StatelessWidget {
     final searchInputController = state.inputController;
     final itemsRequestNotifier = state.itemsRequestNotifier;
 
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final inputRenderBox = inputKey.currentContext?.findRenderObject() as RenderBox?;
+      if (inputRenderBox != null) state.inputSize = inputRenderBox.size;
+    });
+
     return MyoroInput(
       configuration: configuration.copyWith(
         controller: searchInputController,

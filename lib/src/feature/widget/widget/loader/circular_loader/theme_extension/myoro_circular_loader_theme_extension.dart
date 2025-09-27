@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -34,10 +33,7 @@ class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoad
   final double? size;
 
   @override
-  MyoroCircularLoaderThemeExtension lerp(
-    covariant MyoroCircularLoaderThemeExtension? other,
-    double t,
-  ) {
+  MyoroCircularLoaderThemeExtension lerp(covariant MyoroCircularLoaderThemeExtension? other, double t) {
     if (other is! MyoroCircularLoaderThemeExtension) return this;
     final style = MyoroCircularLoaderStyle.lerp(this, other, t);
     return MyoroCircularLoaderThemeExtension(color: style.color, size: style.size);

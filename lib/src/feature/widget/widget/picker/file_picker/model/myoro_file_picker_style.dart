@@ -12,7 +12,10 @@ part 'myoro_file_picker_style.g.dart';
 @myoroModel
 class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
   static MyoroFilePickerStyle lerp(MyoroFilePickerStyle? a, MyoroFilePickerStyle? b, double t) {
-    return MyoroFilePickerStyle(spacing: lerpDouble(a?.spacing, b?.spacing, t), textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t));
+    return MyoroFilePickerStyle(
+      spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t),
+    );
   }
 
   const MyoroFilePickerStyle({this.spacing, this.textStyle});

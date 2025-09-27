@@ -15,11 +15,9 @@ final class _SelectionTypeModalButton extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
     final style = context.read<MyoroImagePickerStyle>();
     final selectionTypeModalButtonCameraIcon =
-        style.selectionTypeModalButtonCameraIcon ??
-        themeExtension.selectionTypeModalButtonCameraIcon;
+        style.selectionTypeModalButtonCameraIcon ?? themeExtension.selectionTypeModalButtonCameraIcon;
     final selectionTypeModalButtonGalleryIcon =
-        style.selectionTypeModalButtonGalleryIcon ??
-        themeExtension.selectionTypeModalButtonGalleryIcon;
+        style.selectionTypeModalButtonGalleryIcon ?? themeExtension.selectionTypeModalButtonGalleryIcon;
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final onTapSelectionTypeModalButton = viewModel.onTapSelectionTypeModalButton;

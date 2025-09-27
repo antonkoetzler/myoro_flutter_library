@@ -6,12 +6,7 @@ part 'myoro_search_input_state.dart';
 /// Notifier of [MyoroSearchInput].
 class MyoroSearchInputViewModel<T> {
   MyoroSearchInputViewModel(MyoroSearchInputConfiguration<T> configuration)
-    : _state = MyoroSearchInputState(configuration) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final inputRenderBox = state.inputKey.currentContext?.findRenderObject() as RenderBox?;
-      if (inputRenderBox != null) state.inputSize = inputRenderBox.size;
-    });
-  }
+    : _state = MyoroSearchInputState(configuration);
 
   /// State.
   final MyoroSearchInputState<T> _state;

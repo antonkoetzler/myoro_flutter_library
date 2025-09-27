@@ -23,7 +23,11 @@ class MyoroBasicDividerStyle with _$MyoroBasicDividerStyleMixin {
 
   // coverage:ignore-start
   factory MyoroBasicDividerStyle.fake() {
-    return MyoroBasicDividerStyle(color: myoroFake<Color>(), shortValue: faker.randomGenerator.decimal(), longValue: faker.randomGenerator.decimal());
+    return MyoroBasicDividerStyle(
+      color: myoroFake<Color>(),
+      shortValue: faker.randomGenerator.decimal(),
+      longValue: faker.randomGenerator.decimal(),
+    );
   }
   // coverage:ignore-end
 

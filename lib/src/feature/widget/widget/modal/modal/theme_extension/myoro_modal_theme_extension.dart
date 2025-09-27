@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -39,9 +38,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       closeButtonPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonIconConfiguration = faker.randomGenerator.boolean()
-          ? MyoroIconConfiguration.fake()
-          : null;
+      closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
   // coverage:ignore-end
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -62,10 +59,7 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       closeButtonPadding = null,
       spacing = 10,
       titleTextStyle = textTheme.titleSmall!,
-      closeButtonIconConfiguration = MyoroIconConfiguration(
-        icon: Icons.close,
-        size: kMyoroMultiplier * 5,
-      );
+      closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: kMyoroMultiplier * 5);
 
   /// Constraints of the modal.
   @override

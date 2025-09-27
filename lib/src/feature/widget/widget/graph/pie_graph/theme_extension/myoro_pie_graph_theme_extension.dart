@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,9 @@ part 'myoro_pie_graph_theme_extension.g.dart';
 /// [ThemeExtension] of [MyoroPieGraph].
 @immutable
 @myoroThemeExtension
-class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension> with _$MyoroPieGraphThemeExtensionMixin implements MyoroPieGraphStyle {
+class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExtension>
+    with _$MyoroPieGraphThemeExtensionMixin
+    implements MyoroPieGraphStyle {
   const MyoroPieGraphThemeExtension({this.itemColor, this.itemRadius});
 
   // coverage:ignore-start

@@ -15,7 +15,7 @@ void main() {
             },
             itemBuilder: (item) => MyoroMenuItem(
               iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                iconConfiguration: MyoroIconConfiguration(icon: Icons.add),
+                iconConfiguration: const MyoroIconConfiguration(icon: Icons.add),
                 textConfiguration: MyoroTextConfiguration(text: item),
               ),
             ),
@@ -56,7 +56,11 @@ void main() {
               return {'item1', 'item2'};
             },
             itemBuilder: (item) {
-              return MyoroMenuItem(iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(iconConfiguration: MyoroIconConfiguration.fake()));
+              return MyoroMenuItem(
+                iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                  iconConfiguration: MyoroIconConfiguration.fake(),
+                ),
+              );
             },
           ),
         ),

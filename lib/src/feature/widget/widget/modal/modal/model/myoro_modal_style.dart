@@ -23,7 +23,11 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       closeButtonPadding: EdgeInsets.lerp(a?.closeButtonPadding, b?.closeButtonPadding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
-      closeButtonIconConfiguration: myoroFallbackLerp(a?.closeButtonIconConfiguration, b?.closeButtonIconConfiguration, t),
+      closeButtonIconConfiguration: myoroFallbackLerp(
+        a?.closeButtonIconConfiguration,
+        b?.closeButtonIconConfiguration,
+        t,
+      ),
     );
   }
 

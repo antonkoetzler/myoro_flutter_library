@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,13 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
     );
   }
 
-  const MyoroDrawerStyle({this.drawerPadding, this.drawerContentPadding, this.drawerShape, this.titleContentDividerPadding, this.titleTextStyle});
+  const MyoroDrawerStyle({
+    this.drawerPadding,
+    this.drawerContentPadding,
+    this.drawerShape,
+    this.titleContentDividerPadding,
+    this.titleTextStyle,
+  });
 
   // coverage:ignore-start
   factory MyoroDrawerStyle.fake() {
