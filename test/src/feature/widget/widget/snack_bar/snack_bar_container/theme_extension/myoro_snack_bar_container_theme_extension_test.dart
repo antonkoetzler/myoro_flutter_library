@@ -6,7 +6,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 void main() {
   test('MyoroSnackBarContainerThemeExtension.builder', () {
-    const themeExtension = MyoroSnackBarContainerThemeExtension.builder();
+    final themeExtension = MyoroSnackBarContainerThemeExtension.builder();
     expect(themeExtension.primaryColor, MyoroColors.transparent);
     expect(themeExtension.behavior, SnackBarBehavior.floating);
     expect(themeExtension.margin, const EdgeInsets.all(10));

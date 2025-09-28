@@ -2,72 +2,80 @@ part of 'myoro_dropdowns_widget_showcase_screen_view_model.dart';
 
 /// State of [MyoroDropdownsWidgetShowcaseScreenViewModel].
 final class MyoroDropdownsWidgetShowcaseScreenState extends ChangeNotifier {
-  /// View model of [MyoroMenuWidgetShowcaseScreen].
-  final _menuViewModel = MyoroMenusWidgetShowcaseScreenViewModel();
-  MyoroMenusWidgetShowcaseScreenViewModel get menuViewModel => _menuViewModel;
+  /// Items of each dropdown.
+  final _items = List.generate(faker.randomGenerator.integer(100, min: 5), (i) => 'Item #$i').toSet();
 
-  /// [MyoroDropdownConfiguration.label]
-  String _label = MyoroDropdownConfiguration.labelDefaultValue;
-  String get label => _label;
-  set label(String label) {
-    _label = label;
-    notifyListeners();
-  }
+  /// [MyoroSingleDropdownController] of the [MyoroSingleDropdown].
+  late final _singleDropdownController = MyoroSingleDropdownController(
+    configuration: MyoroSingleDropdownConfiguration(
+      dropdownType: MyoroDropdownTypeEnum.expanding,
+      menuConfiguration: MyoroSingleMenuConfiguration(request: () => _items, itemBuilder: _itemBuilder),
+    ),
+  );
 
-  /// [MyoroDropdownConfiguration.menuTypeEnum]
-  MyoroDropdownMenuTypeEnum _menuTypeEnum = MyoroDropdownConfiguration.menuTypeEnumDefaultValue;
-  MyoroDropdownMenuTypeEnum get menuTypeEnum => _menuTypeEnum;
-  set menuTypeEnum(MyoroDropdownMenuTypeEnum menuTypeEnum) {
-    _menuTypeEnum = menuTypeEnum;
-    notifyListeners();
-  }
+  /// [MyoroMultiDropdownController] of the [MyoroMultiDropdown].
+  late final _multiDropdownController = MyoroMultiDropdownController(
+    configuration: MyoroMultiDropdownConfiguration(
+      dropdownType: MyoroDropdownTypeEnum.expanding,
+      menuConfiguration: MyoroMultiMenuConfiguration(request: () => _items, itemBuilder: _itemBuilder),
+    ),
+  );
 
-  /// [MyoroDropdownConfiguration.allowItemClearing]
-  bool _allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue;
-  bool get allowItemClearing => _allowItemClearing;
-  set allowItemClearing(bool allowItemClearing) {
-    _allowItemClearing = allowItemClearing;
-    notifyListeners();
-  }
+  /// [MyoroDropdownConfiguration.dropdownType]
+  MyoroDropdownTypeEnum _dropdownType = MyoroDropdownTypeEnum.expanding;
 
-  /// [MyoroDropdownConfiguration.selectedItemTextAlign]
-  TextAlign _selectedItemTextAlign = MyoroDropdownConfiguration.selectedItemTextAlignDefaultValue;
-  TextAlign get selectedItemTextAlign => _selectedItemTextAlign;
-  set selectedItemTextAlign(TextAlign selectedItemTextAlign) {
-    _selectedItemTextAlign = selectedItemTextAlign;
-    notifyListeners();
-  }
+  /// [MyoroSingleDropdownConfiguration.overlayTargetKey]
+  final _singleDropdownOverlayTargetKey = GlobalKey();
 
-  // Theme Extension Properties
-
-  /// [MyoroDropdownThemeExtension.spacing]
-  double? _spacing;
-  double? get spacing => _spacing;
-  set spacing(double? spacing) {
-    _spacing = spacing;
-    notifyListeners();
-  }
-
-  /// [MyoroDropdownThemeExtension.menuBorder]
-  BoxBorder? _menuBorder;
-  BoxBorder? get menuBorder => _menuBorder;
-  set menuBorder(BoxBorder? menuBorder) {
-    _menuBorder = menuBorder;
-    notifyListeners();
-  }
-
-  /// [MyoroDropdownThemeExtension.menuBorderRadius]
-  BorderRadius? _menuBorderRadius;
-  BorderRadius? get menuBorderRadius => _menuBorderRadius;
-  set menuBorderRadius(BorderRadius? menuBorderRadius) {
-    _menuBorderRadius = menuBorderRadius;
-    notifyListeners();
-  }
+  /// [MyoroMultiDropdownConfiguration.overlayTargetKey]
+  final _multiDropdownOverlayTargetKey = GlobalKey();
 
   /// Dispose function.
   @override
   void dispose() {
-    _menuViewModel.dispose();
+    _singleDropdownController.dispose();
+    _multiDropdownController.dispose();
     super.dispose();
+  }
+
+  /// [MyoroMenuItem] builder.
+  MyoroMenuItem _itemBuilder(String item) {
+    return MyoroMenuItem(
+      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroTextConfiguration(text: item),
+      ),
+    );
+  }
+
+  /// [_singleDropdownController] getter.
+  MyoroSingleDropdownController<String> get singleDropdownController {
+    return _singleDropdownController;
+  }
+
+  /// [_multiDropdownController] getter.
+  MyoroMultiDropdownController<String> get multiDropdownController {
+    return _multiDropdownController;
+  }
+
+  /// [_dropdownType] getter.
+  MyoroDropdownTypeEnum get dropdownType {
+    return _dropdownType;
+  }
+
+  /// [_singleDropdownOverlayTargetKey] getter.
+  GlobalKey get singleDropdownOverlayTargetKey {
+    return _singleDropdownOverlayTargetKey;
+  }
+
+  /// [_multiDropdownOverlayTargetKey] getter.
+  GlobalKey get multiDropdownOverlayTargetKey {
+    return _multiDropdownOverlayTargetKey;
+  }
+
+  /// [_dropdownType] setter.
+  set dropdownType(MyoroDropdownTypeEnum dropdownType) {
+    if (_dropdownType == dropdownType) return;
+    _dropdownType = dropdownType;
+    notifyListeners();
   }
 }

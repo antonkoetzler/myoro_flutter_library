@@ -1,25 +1,21 @@
 # TODO
 
-- (**IN PROGRESS**) Fix all tests and get back 100% coverage
-- (**IN PROGRESS**) Remove all `copyWith` implementations from all `@myoroModel`s when I deploy the version bringing back `copyWith` generation for `@myoroModel`
-  - Revert both `pubspec.lock` to not use mfa from path
+- (**IN PROGRESS**) Make a widget to implement all of the lgoic for `MyoroDropdownMenuTypeEnum`
+  - Create the generic `MyoroDropdown` widget
+  - Utilize `MyoroDropdown` in the singular dropdowns
+  - Make `MyoroLocationInput` with this new `MyoroDropdown` widget
+- `MyoroButtonConfiguration.isLoading`
+- `MyoroGradientScroll`
+- `MyoroButtonMenu`
 - Storyboard
+  - Rename storyboard to example
   - Searchbar in the widget listing
   - Fix all bugs
   - Remove redundant `checkboxOnChanged` fields in widget showcase option `Widget`s
   - Make MFL logo the storyboard app icon
   - Localization
   - Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
-- `MyoroButtonConfiguration.isLoading`
-- `MyoroGradientScroll`
-- `MyoroLocationInput`
-- `MyoroButtonMenu`
-- Make `MyoroDropdownMenuTypeEnum` a generic enum then make `MyoroSearchInput` use this enum
-  - I think we have to make myoro dropdown super generic and make the function of myoro dropdown called myoro selectable dropdown, then make myoro search input myoro search dropdown
-- GitHub pages
-- Rename storyboard to example
-- Add more code snippets to documentation
-- Modernized redesign to the UI
-- Update `ThemeExtension` documentation and talk about style models
+- Fix all tests and get back 100% coverage
 - Create docs HTML script
+- GitHub pages
 - 100% pub.dev score

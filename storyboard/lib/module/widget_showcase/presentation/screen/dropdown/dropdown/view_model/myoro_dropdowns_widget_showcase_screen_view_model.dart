@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
@@ -8,6 +9,8 @@ part 'myoro_dropdowns_widget_showcase_screen_state.dart';
 final class MyoroDropdownsWidgetShowcaseScreenViewModel {
   /// State.
   final _state = MyoroDropdownsWidgetShowcaseScreenState();
+
+  /// [_state] getter.
   MyoroDropdownsWidgetShowcaseScreenState get state => _state;
 
   /// Dispose function.
@@ -15,82 +18,45 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// Constructs a [MyoroSingleDropdownConfiguration].
-  MyoroSingleDropdownConfiguration<String> buildSingleDropdownConfiguration(BuildContext context) {
-    return MyoroSingleDropdownConfiguration(
-      label: _state.label,
-      menuTypeEnum: _state.menuTypeEnum,
-      allowItemClearing: _state.allowItemClearing,
-      selectedItemTextAlign: _state.selectedItemTextAlign,
-      menuConfiguration: _state.menuViewModel.singleMenuConfiguration(context),
-      selectedItemBuilder: _selectedItemBuilder,
-      onChanged: (item) => _singleDropdownOnChanged(context, item),
-      checkboxOnChanged: (enabled, item) => _singleDropdownCheckboxOnChanged(context, enabled, item),
-    );
-  }
-
-  /// Constructs a [MyoroMultiDropdownConfiguration].
-  MyoroMultiDropdownConfiguration<String> buildMultiDropdownConfiguration(BuildContext context) {
-    return MyoroMultiDropdownConfiguration(
-      label: _state.label,
-      menuTypeEnum: _state.menuTypeEnum,
-      allowItemClearing: _state.allowItemClearing,
-      selectedItemTextAlign: _state.selectedItemTextAlign,
-      menuConfiguration: _state.menuViewModel.multiMenuConfiguration(context),
-      selectedItemBuilder: _selectedItemBuilder,
-      onChanged: (items) => _multiDropdownOnChanged(context, items),
-      checkboxOnChanged: (enabled, items) => _multiDropdownCheckboxOnChanged(context, enabled, items),
-    );
-  }
-
-  /// [MyoroDropdownThemeExtension] of the dropdowns.
-  MyoroDropdownThemeExtension buildStyle(BuildContext context) {
-    final dropdownThemeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-
-    return dropdownThemeExtension.copyWith(
-      spacing: state.spacing,
-      menuBorder: state.menuBorder,
-      menuBorderRadius: state.menuBorderRadius,
-    );
-  }
-
-  /// [MyoroDropdownConfiguration.selectedItemBuilder]
-  String _selectedItemBuilder(String item) {
-    return item;
-  }
-
-  /// [MyoroSingleDropdownConfiguration.onChanged]
-  void _singleDropdownOnChanged(BuildContext context, String? item) {
-    _showSnackBar(context, item != null ? '$item selected' : 'Item deselected');
-  }
-
-  /// [MyoroSingleDropdownConfiguration.checkboxOnChanged]
-  void _singleDropdownCheckboxOnChanged(BuildContext context, bool enabled, String? item) {
-    _showSnackBar(
-      context,
-      'Dropdown ${enabled ? 'enabled' : 'disabled'}, ${item != null ? '$item selected' : 'No item selected'}',
-    );
-  }
-
-  /// [MyoroMultiDropdownConfiguration.onChanged]
-  void _multiDropdownOnChanged(BuildContext context, Set<String> items) {
-    _showSnackBar(context, items.isNotEmpty ? '${items.length} selected.' : 'No items selected.');
-  }
-
-  /// [MyoroMultiDropdownConfiguration.checkboxOnChanged]
-  void _multiDropdownCheckboxOnChanged(BuildContext context, bool enabled, Set<String> items) {
-    _showSnackBar(
-      context,
-      'Dropdown ${enabled ? 'enabled' : 'disabled'}. ${items.isNotEmpty ? '${items.length} selected.' : 'No items selected'}.',
-    );
-  }
-
-  /// Generic function to display a [MyoroSnackBar]
-  void _showSnackBar(BuildContext context, String message) {
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.attention, message: message),
+  /// Builds the dropdown type option item builder.
+  MyoroMenuItem dropdownTypeOptionItemBuilder(MyoroDropdownTypeEnum item) {
+    return MyoroMenuItem(
+      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+        textConfiguration: MyoroTextConfiguration(
+          text: dropdownTypeOptionSelectedItemBuilder(item),
+        ),
       ),
+    );
+  }
+
+  /// Builds the dropdown type option selected item builder.
+  String dropdownTypeOptionSelectedItemBuilder(MyoroDropdownTypeEnum item) {
+    return item.name.capitalized;
+  }
+
+  /// [MyoroSingleDropdownConfiguration] builder.
+  MyoroSingleDropdownConfiguration<String> buildSingleDropdownConfiguration() {
+    final singleDropdownController = _state.singleDropdownController;
+    final configuration = singleDropdownController.configuration;
+    final menuConfiguration = configuration.menuConfiguration;
+    final singleDropdownOverlayTargetKey = _state.singleDropdownOverlayTargetKey;
+    return MyoroSingleDropdownConfiguration(
+      menuConfiguration: menuConfiguration.copyWith(),
+      targetKey: singleDropdownOverlayTargetKey,
+      dropdownType: _state.dropdownType,
+    );
+  }
+
+  /// [MyoroMultiDropdownConfiguration] builder.
+  MyoroMultiDropdownConfiguration<String> buildMultiDropdownConfiguration() {
+    final multiDropdownController = _state.multiDropdownController;
+    final configuration = multiDropdownController.configuration;
+    final menuConfiguration = configuration.menuConfiguration;
+    final multiDropdownOverlayTargetKey = _state.multiDropdownOverlayTargetKey;
+    return MyoroMultiDropdownConfiguration(
+      menuConfiguration: menuConfiguration.copyWith(),
+      targetKey: multiDropdownOverlayTargetKey,
+      dropdownType: _state.dropdownType,
     );
   }
 }

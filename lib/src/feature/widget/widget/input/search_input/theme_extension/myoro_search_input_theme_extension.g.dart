@@ -24,6 +24,8 @@ mixin _$MyoroSearchInputThemeExtensionMixin on ThemeExtension<MyoroSearchInputTh
     bool searchButtonIconProvided = true,
     double? searchButtonLoadingSize,
     bool searchButtonLoadingSizeProvided = true,
+    BoxBorder? menuBorder,
+    bool menuBorderProvided = true,
   }) {
     return MyoroSearchInputThemeExtension(
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
@@ -31,6 +33,7 @@ mixin _$MyoroSearchInputThemeExtensionMixin on ThemeExtension<MyoroSearchInputTh
       searchButtonLoadingSize: searchButtonLoadingSizeProvided
           ? (searchButtonLoadingSize ?? self.searchButtonLoadingSize)
           : null,
+      menuBorder: menuBorderProvided ? (menuBorder ?? self.menuBorder) : null,
     );
   }
 
@@ -40,12 +43,13 @@ mixin _$MyoroSearchInputThemeExtensionMixin on ThemeExtension<MyoroSearchInputTh
         other.runtimeType == runtimeType &&
         other.spacing == self.spacing &&
         other.searchButtonIcon == self.searchButtonIcon &&
-        other.searchButtonLoadingSize == self.searchButtonLoadingSize;
+        other.searchButtonLoadingSize == self.searchButtonLoadingSize &&
+        other.menuBorder == self.menuBorder;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.spacing, self.searchButtonIcon, self.searchButtonLoadingSize);
+    return Object.hash(self.spacing, self.searchButtonIcon, self.searchButtonLoadingSize, self.menuBorder);
   }
 
   @override
@@ -54,5 +58,6 @@ mixin _$MyoroSearchInputThemeExtensionMixin on ThemeExtension<MyoroSearchInputTh
       '  spacing: ${self.spacing},\n'
       '  searchButtonIcon: ${self.searchButtonIcon},\n'
       '  searchButtonLoadingSize: ${self.searchButtonLoadingSize},\n'
+      '  menuBorder: ${self.menuBorder},\n'
       ');';
 }

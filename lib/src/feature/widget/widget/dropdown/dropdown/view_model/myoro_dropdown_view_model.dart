@@ -3,81 +3,107 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_dropdown_state.dart';
 
-/// Shared implementation that both [MyoroSingleDropdown] and [MyoroMultiDropdown] share.
+/// View model of [MyoroDropdown].
 abstract class MyoroDropdownViewModel<
   T,
-  CONFIGURATION extends MyoroDropdownConfiguration<T, MENU_CONFIGURATION>,
-  MENU_CONFIGURATION extends MyoroMenuConfiguration<T>,
-  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MENU_CONFIGURATION>>
+  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>
 > {
-  MyoroDropdownViewModel(CONFIGURATION configuration, MENU_CONTROLLER menuController)
-    : _state = MyoroDropdownState(configuration, menuController) {
-    formatSelectedItems();
-    if (configuration.menuTypeEnum.isOverlay) {
-      state.overlayMenuController.addListener(_overlayMenuControllerListener);
-    }
-    state.enabledNotifier.addListener(enabledNotifierListener);
+  MyoroDropdownViewModel(C configuration) : _state = MyoroDropdownState(configuration) {
+    final dropdownType = configuration.dropdownType;
+    final isModal = dropdownType.isModal;
+    final isBottomSheet = dropdownType.isBottomSheet;
+    if (isModal || isBottomSheet) state.showingController.addListener(_showingControllerListener);
+  }
+
+  /// Build context to show the dropdown in a modal or bottom sheet.
+  BuildContext? _context;
+
+  /// [_context] getter.
+  BuildContext get context {
+    assert(_context != null, '[MyoroDropdownViewModel.context]: [context] has not been set yet.');
+    return _context!;
+  }
+
+  /// [_context] setter.
+  set context(BuildContext context) {
+    _context = context;
   }
 
   /// State.
-  final MyoroDropdownState<T, CONFIGURATION, MENU_CONTROLLER> _state;
+  final MyoroDropdownState<T, C> _state;
 
   /// [_state] getter.
-  MyoroDropdownState<T, CONFIGURATION, MENU_CONTROLLER> get state => _state;
+  MyoroDropdownState<T, C> get state => _state;
 
   /// Dispose function.
+  @mustCallSuper
   void dispose() {
-    state.dispose();
+    _state.dispose();
   }
 
-  /// Builds the menu [Widget].
-  Widget menuWidget(BuildContext context);
-
-  /// Toggles [_enabledNotifier].
-  void toggleEnabled([bool? enabled]) {
-    state.enabledNotifier.value = enabled ?? !state.enabled;
+  /// Toggles the display of the dropdown.
+  void toggle() {
+    _state.showing ? disable() : enable();
   }
 
-  /// Toggles [_Menu].
-  void toggleMenu() {
-    void toggleOverlayMenu() {
-      final overlayMenuController = state.overlayMenuController;
-      overlayMenuController.isShowing ? overlayMenuController.hide() : overlayMenuController.show();
+  /// Enables the dropdown.
+  void enable() {
+    final configuration = _state.configuration;
+    final dropdownType = configuration.dropdownType;
+    final isOverlay = dropdownType.isOverlay;
+    final showing = _state.showing;
+    final targetKey = configuration.targetKey;
+    if (showing) return;
+    if (isOverlay) state.overlayPortalController.show();
+    final targetKeyRenderBox = targetKey?.currentContext?.findRenderObject() as RenderBox?;
+    state.targetKeySize = targetKeyRenderBox?.size;
+    _state.showing = true;
+  }
+
+  /// Disables the dropdown.
+  void disable() {
+    final configuration = _state.configuration;
+    final dropdownType = configuration.dropdownType;
+    final isOverlay = dropdownType.isOverlay;
+    final showing = _state.showing;
+    if (!showing) return;
+    if (isOverlay) _state.overlayPortalController.hide();
+    state.targetKeySize = null;
+    _state.showing = false;
+  }
+
+  /// Listener for [_state.showingController].
+  void _showingControllerListener() {
+    final configuration = _state.configuration;
+    final dropdownType = configuration.dropdownType;
+    final isModal = dropdownType.isModal;
+    final isBottomSheet = dropdownType.isBottomSheet;
+    final showing = _state.showing;
+    if (showing) {
+      if (isModal) MyoroModal.showModal(context, child: dropdownWidget);
+      if (isBottomSheet) MyoroModal.showBottomSheet(context, child: dropdownWidget);
+    } else {
+      if (isModal) context.navigator.pop();
+      if (isBottomSheet) context.navigator.pop();
     }
-
-    return switch (state.configuration.menuTypeEnum) {
-      MyoroDropdownMenuTypeEnum.overlay => toggleOverlayMenu(),
-      MyoroDropdownMenuTypeEnum.expanding => state.showingMenu = !state.showingMenu,
-      MyoroDropdownMenuTypeEnum.modal => state.showingMenu = !state.showingMenu,
-    };
   }
 
-  /// Handles the callback of when [MyoroDropdownState.selectedItemsNotifier] has changed.
-  @protected
-  @mustCallSuper
-  void selectedItemsNotifierListener() {
-    formatSelectedItems();
-  }
+  /// Builds the dropdown (menu) [Widget].
+  Widget get dropdownWidget;
 
-  /// Provides the size of [_Input].
-  @mustCallSuper
-  void supplyInputSizeController() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final renderBox = state.inputKey.currentContext!.findRenderObject() as RenderBox;
-      state.inputSize = renderBox.size;
-    });
-  }
-
-  /// Handles the callback of a dropdown's checkbox on changed argument.
-  @protected
-  void enabledNotifierListener();
-
-  /// Formats items in [_selectedItemsNotifier] to display in [_Input].
-  @protected
-  void formatSelectedItems();
-
-  /// Listener of [MyoroDropdownState.overlayMenuController].
-  void _overlayMenuControllerListener() {
-    state.showingMenu = state.overlayMenuController.isShowing;
+  /// [MyoroDropdownState.configuration] setter.
+  set configuration(C configuration) {
+    if (_state.configuration == configuration) return;
+    final isOverlay = configuration.dropdownType.isOverlay;
+    final isModal = configuration.dropdownType.isModal;
+    final isBottomSheet = configuration.dropdownType.isBottomSheet;
+    final showingController = state.showingController;
+    _state.configuration = configuration;
+    _state.overlayPortalController = isOverlay ? OverlayPortalController() : null;
+    showingController.removeListener(_showingControllerListener);
+    if (isModal || isBottomSheet) {
+      print('added');
+      showingController.addListener(_showingControllerListener);
+    }
   }
 }

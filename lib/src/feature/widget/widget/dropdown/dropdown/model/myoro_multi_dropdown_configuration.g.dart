@@ -17,28 +17,15 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
   MyoroMultiDropdownConfiguration<T> get self => this as MyoroMultiDropdownConfiguration<T>;
 
   MyoroMultiDropdownConfiguration<T> copyWith({
-    MyoroMultiDropdownOnChanged<T>? onChanged,
-    bool onChangedProvided = true,
-    MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged,
-    bool checkboxOnChangedProvided = true,
-    String? label,
-    MyoroDropdownMenuTypeEnum? menuTypeEnum,
-    bool? enabled,
-    bool? allowItemClearing,
-    TextAlign? selectedItemTextAlign,
+    MyoroDropdownTypeEnum? dropdownType,
+    GlobalKey<State<StatefulWidget>>? targetKey,
+    bool targetKeyProvided = true,
     MyoroMultiMenuConfiguration<T>? menuConfiguration,
-    MyoroDropdownSelectedItemBuilder<T>? selectedItemBuilder,
   }) {
     return MyoroMultiDropdownConfiguration(
-      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
-      label: label ?? self.label,
-      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
-      enabled: enabled ?? self.enabled,
-      allowItemClearing: allowItemClearing ?? self.allowItemClearing,
-      selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
+      dropdownType: dropdownType ?? self.dropdownType,
+      targetKey: targetKeyProvided ? (targetKey ?? self.targetKey) : null,
       menuConfiguration: menuConfiguration ?? self.menuConfiguration,
-      selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
     );
   }
 
@@ -46,43 +33,21 @@ mixin _$MyoroMultiDropdownConfigurationMixin<T> {
   bool operator ==(Object other) {
     return other is MyoroMultiDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
-        other.onChanged == self.onChanged &&
-        other.checkboxOnChanged == self.checkboxOnChanged &&
-        other.label == self.label &&
-        other.menuTypeEnum == self.menuTypeEnum &&
-        other.enabled == self.enabled &&
-        other.allowItemClearing == self.allowItemClearing &&
-        other.selectedItemTextAlign == self.selectedItemTextAlign &&
-        other.menuConfiguration == self.menuConfiguration &&
-        other.selectedItemBuilder == self.selectedItemBuilder;
+        other.dropdownType == self.dropdownType &&
+        other.targetKey == self.targetKey &&
+        other.menuConfiguration == self.menuConfiguration;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.onChanged,
-      self.checkboxOnChanged,
-      self.label,
-      self.menuTypeEnum,
-      self.enabled,
-      self.allowItemClearing,
-      self.selectedItemTextAlign,
-      self.menuConfiguration,
-      self.selectedItemBuilder,
-    );
+    return Object.hash(self.dropdownType, self.targetKey, self.menuConfiguration);
   }
 
   @override
   String toString() =>
       'MyoroMultiDropdownConfiguration<T>(\n'
-      '  onChanged: ${self.onChanged},\n'
-      '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
-      '  label: ${self.label},\n'
-      '  menuTypeEnum: ${self.menuTypeEnum},\n'
-      '  enabled: ${self.enabled},\n'
-      '  allowItemClearing: ${self.allowItemClearing},\n'
-      '  selectedItemTextAlign: ${self.selectedItemTextAlign},\n'
+      '  dropdownType: ${self.dropdownType},\n'
+      '  targetKey: ${self.targetKey},\n'
       '  menuConfiguration: ${self.menuConfiguration},\n'
-      '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
       ');';
 }

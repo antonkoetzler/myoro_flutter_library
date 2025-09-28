@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Widget showcase option to choose a [Curve] from a [MyoroSingleDropdown].
+/// Widget showcase option to choose a [Curve] from a [MyoroSingleSelectionDropdown].
 final class CurveWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Animation curve';
   static const enabledDefaultValue = true;
@@ -15,7 +15,7 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
     this.checkboxOnChanged,
   });
 
-  /// [MyoroDropdownConfiguration.label]
+  /// [MyoroSelectionDropdownConfiguration.label]
   final String label;
 
   /// [MyoroDropdownControllerState.enabled]
@@ -24,11 +24,11 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
   /// Initial [Curve].
   final Curve? selectedCurve;
 
-  /// [MyoroSingleDropdownConfiguration.onChanged]
-  final MyoroSingleDropdownOnChanged<Curve> onChanged;
+  /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
+  final MyoroSingleSelectionDropdownOnChanged<Curve> onChanged;
 
-  /// [MyoroSingleDropdownConfiguration.checkboxOnChanged].
-  final MyoroSingleDropdownCheckboxOnChanged<Curve>? checkboxOnChanged;
+  /// [MyoroSingleSelectionDropdownConfiguration.checkboxOnChanged].
+  final MyoroSingleSelectionDropdownCheckboxOnChanged<Curve>? checkboxOnChanged;
 
   static const _curves = {
     'linear': Curves.linear,
@@ -45,8 +45,8 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return MyoroSingleDropdown<Curve>(
-      configuration: MyoroSingleDropdownConfiguration(
+    return MyoroSingleSelectionDropdown<Curve>(
+      configuration: MyoroSingleSelectionDropdownConfiguration(
         label: label,
         allowItemClearing: true,
         selectedItemBuilder: (c) {

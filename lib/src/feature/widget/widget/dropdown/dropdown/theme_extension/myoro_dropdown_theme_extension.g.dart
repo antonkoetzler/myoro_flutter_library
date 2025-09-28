@@ -17,40 +17,23 @@ mixin _$MyoroDropdownThemeExtensionMixin on ThemeExtension<MyoroDropdownThemeExt
   MyoroDropdownThemeExtension get self => this as MyoroDropdownThemeExtension;
 
   @override
-  MyoroDropdownThemeExtension copyWith({
-    double? spacing,
-    bool spacingProvided = true,
-    BoxBorder? menuBorder,
-    bool menuBorderProvided = true,
-    BorderRadius? menuBorderRadius,
-    bool menuBorderRadiusProvided = true,
-  }) {
-    return MyoroDropdownThemeExtension(
-      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      menuBorder: menuBorderProvided ? (menuBorder ?? self.menuBorder) : null,
-      menuBorderRadius: menuBorderRadiusProvided ? (menuBorderRadius ?? self.menuBorderRadius) : null,
-    );
+  MyoroDropdownThemeExtension copyWith({double? spacing, bool spacingProvided = true}) {
+    return MyoroDropdownThemeExtension(spacing: spacingProvided ? (spacing ?? self.spacing) : null);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDropdownThemeExtension &&
-        other.runtimeType == runtimeType &&
-        other.spacing == self.spacing &&
-        other.menuBorder == self.menuBorder &&
-        other.menuBorderRadius == self.menuBorderRadius;
+    return other is MyoroDropdownThemeExtension && other.runtimeType == runtimeType && other.spacing == self.spacing;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.spacing, self.menuBorder, self.menuBorderRadius);
+    return Object.hashAll([self.spacing]);
   }
 
   @override
   String toString() =>
       'MyoroDropdownThemeExtension(\n'
       '  spacing: ${self.spacing},\n'
-      '  menuBorder: ${self.menuBorder},\n'
-      '  menuBorderRadius: ${self.menuBorderRadius},\n'
       ');';
 }

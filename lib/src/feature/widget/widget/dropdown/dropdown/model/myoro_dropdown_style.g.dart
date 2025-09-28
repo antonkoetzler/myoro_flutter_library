@@ -16,40 +16,23 @@ part of 'myoro_dropdown_style.dart';
 mixin _$MyoroDropdownStyleMixin {
   MyoroDropdownStyle get self => this as MyoroDropdownStyle;
 
-  MyoroDropdownStyle copyWith({
-    double? spacing,
-    bool spacingProvided = true,
-    BoxBorder? menuBorder,
-    bool menuBorderProvided = true,
-    BorderRadius? menuBorderRadius,
-    bool menuBorderRadiusProvided = true,
-  }) {
-    return MyoroDropdownStyle(
-      spacing: spacingProvided ? (spacing ?? self.spacing) : null,
-      menuBorder: menuBorderProvided ? (menuBorder ?? self.menuBorder) : null,
-      menuBorderRadius: menuBorderRadiusProvided ? (menuBorderRadius ?? self.menuBorderRadius) : null,
-    );
+  MyoroDropdownStyle copyWith({double? spacing, bool spacingProvided = true}) {
+    return MyoroDropdownStyle(spacing: spacingProvided ? (spacing ?? self.spacing) : null);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroDropdownStyle &&
-        other.runtimeType == runtimeType &&
-        other.spacing == self.spacing &&
-        other.menuBorder == self.menuBorder &&
-        other.menuBorderRadius == self.menuBorderRadius;
+    return other is MyoroDropdownStyle && other.runtimeType == runtimeType && other.spacing == self.spacing;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.spacing, self.menuBorder, self.menuBorderRadius);
+    return Object.hashAll([self.spacing]);
   }
 
   @override
   String toString() =>
       'MyoroDropdownStyle(\n'
       '  spacing: ${self.spacing},\n'
-      '  menuBorder: ${self.menuBorder},\n'
-      '  menuBorderRadius: ${self.menuBorderRadius},\n'
       ');';
 }

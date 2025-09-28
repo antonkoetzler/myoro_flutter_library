@@ -48,7 +48,7 @@ final class WidgetShowcaseModule implements Module {
       const MyoroDrawerWidgetShowcaseScreenThemeExtension.builder(),
 
       // Dropdowns
-      const MyoroDropdownsWidgetShowcaseScreenThemeExtension.builder(),
+      const MyoroSelectionDropdownsWidgetShowcaseScreenThemeExtension.builder(),
 
       // Feedbacks
       const MyoroFeedbackWidgetShowcaseScreenThemeExtension.builder(),

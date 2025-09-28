@@ -1,51 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Abstract model that encapsulates options for [MyoroDropdown].
-///
-/// [MyoroSingleDropdown] and [MyoroMultiDropdown] have their separation
-/// configuration classes extending [MyoroDropdownConfiguration] for specific args.
+/// Configuration model of [MyoroDropdown].
 @immutable
 abstract class MyoroDropdownConfiguration<T, C extends MyoroMenuConfiguration<T>> {
-  static const labelDefaultValue = '';
-  static const menuTypeEnumDefaultValue = MyoroDropdownMenuTypeEnum.expanding;
-  static const enabledDefaultValue = true;
-  static const allowItemClearingDefaultValue = true;
-  static const selectedItemTextAlignDefaultValue = MyoroInputConfiguration.textAlignDefaultValue;
+  static const dropdownTypeDefaultValue = MyoroDropdownTypeEnum.expanding;
 
-  const MyoroDropdownConfiguration(
-    this.label,
-    this.menuTypeEnum,
-    this.enabled,
-    this.allowItemClearing,
-    this.selectedItemTextAlign,
-    this.menuConfiguration,
-    this.selectedItemBuilder,
-  );
+  const MyoroDropdownConfiguration({
+    this.dropdownType = dropdownTypeDefaultValue,
+    this.targetKey,
+    required this.menuConfiguration,
+  });
 
-  /// Label of the dropdown.
-  ///
-  /// [MyoroInputConfiguration.label] of [_Input].
-  final String label;
+  /// Dropdown type.
+  final MyoroDropdownTypeEnum dropdownType;
 
-  /// [_Menu]s [Widget] composition.
-  final MyoroDropdownMenuTypeEnum menuTypeEnum;
+  /// [GlobalKey] of the [Widget] to base the dropdown from:
+  /// 1. [MyoroDropdownTypeEnum.overlay]: Used to set the offset and width of the dropdown.
+  /// 2. [MyoroDropdownTypeEnum.expanding]: Used to set the width of the dropdown.
+  /// 3. [MyoroDropdownTypeEnum.modal]: Useless.
+  /// 4. [MyoroDropdownTypeEnum.bottomSheet]: Useless.
+  final GlobalKey? targetKey;
 
-  /// If the dropdown is enabled.
-  final bool enabled;
-
-  /// If the clear button of [_Input]'s [MyoroInput] will be displayed.
-  final bool allowItemClearing;
-
-  /// [MyoroInputConfiguration.textAlign] of [_Input].
-  final TextAlign selectedItemTextAlign;
-
-  /// [MyoroMenuConfiguration] of the [_Menu]'s [MyoroMenu].
+  /// [MyoroMenuConfiguration] of the dropdown.
   final C menuConfiguration;
-
-  /// Builder of the [String] displayed when a [T] item is selected.
-  final MyoroDropdownSelectedItemBuilder<T> selectedItemBuilder;
-
-  /// Returns if the checkbox callback is provided.
-  bool get checkboxOnChangedNotNull;
 }

@@ -1,22 +1,59 @@
 part of '../myoro_dropdowns_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroDropdownsWidgetShowcaseScreen].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroDropdownWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(context) {
-    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final widgetShowcaseThemeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final spacing = widgetShowcaseThemeExtension.spacing;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      spacing: widgetShowcaseThemeExtension.spacing,
-      children: const [
-        _Title('MyoroSingleDropdown'),
-        Flexible(child: _SingleDropdown()),
-        _Title('MyoroMultiDropdown'),
-        Flexible(child: _MultiDropdown()),
-      ],
+    final viewModel = context.read<MyoroDropdownsWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final singleDropdownOverlayTargetKey = state.singleDropdownOverlayTargetKey;
+    final multiDropdownOverlayTargetKey = state.multiDropdownOverlayTargetKey;
+    final singleDropdownController = state.singleDropdownController;
+    final multiDropdownController = state.multiDropdownController;
+
+    return ListenableBuilder(
+      listenable: state,
+      builder: (_, _) {
+        singleDropdownController.configuration = viewModel.buildSingleDropdownConfiguration();
+        multiDropdownController.configuration = viewModel.buildMultiDropdownConfiguration();
+
+        return Column(
+          spacing: spacing,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(
+              child: MyoroSingleDropdown(
+                controller: singleDropdownController,
+                child: GestureDetector(
+                  onTapUp: (_) => singleDropdownController.toggle(),
+                  child: MyoroCard(
+                    key: singleDropdownOverlayTargetKey,
+                    child: const Text('Press to show dropdown!'),
+                  ),
+                ),
+              ),
+            ),
+            Flexible(
+              child: MyoroMultiDropdown(
+                controller: multiDropdownController,
+                child: GestureDetector(
+                  onTapUp: (_) => multiDropdownController.toggle(),
+                  child: MyoroCard(
+                    key: multiDropdownOverlayTargetKey,
+                    child: const Text('Press to show dropdown!'),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

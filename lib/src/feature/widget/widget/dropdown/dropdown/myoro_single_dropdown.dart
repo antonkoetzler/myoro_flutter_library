@@ -2,11 +2,19 @@ part of 'bundle/myoro_dropdown_bundle.dart';
 
 /// Single item dropdown.
 class MyoroSingleDropdown<T> extends StatefulWidget {
-  const MyoroSingleDropdown({super.key, this.controller, this.configuration, this.style = const MyoroDropdownStyle()})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroSingleDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
-      );
+  const MyoroSingleDropdown({
+    super.key,
+    this.style = const MyoroDropdownStyle(),
+    this.controller,
+    this.configuration,
+    required this.child,
+  }) : assert(
+         (controller != null) ^ (configuration != null),
+         '[MyoroSingleDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
+       );
+
+  /// Style.
+  final MyoroDropdownStyle style;
 
   /// Controller.
   final MyoroSingleDropdownController<T>? controller;
@@ -14,32 +22,25 @@ class MyoroSingleDropdown<T> extends StatefulWidget {
   /// Configuration.
   final MyoroSingleDropdownConfiguration<T>? configuration;
 
-  /// Style.
-  final MyoroDropdownStyle style;
+  /// Child.
+  final Widget child;
 
   @override
   State<MyoroSingleDropdown<T>> createState() => _MyoroSingleDropdownState<T>();
 }
 
 final class _MyoroSingleDropdownState<T> extends State<MyoroSingleDropdown<T>> {
+  Key? get _key => widget.key;
   MyoroDropdownStyle get _style => widget.style;
+  MyoroSingleDropdownController<T>? get _controller => widget.controller;
+  MyoroSingleDropdownConfiguration<T>? get _configuration => widget.configuration;
+  Widget get _child => widget.child;
 
   MyoroSingleDropdownViewModel<T>? _localViewModel;
   MyoroSingleDropdownViewModel<T> get _viewModel {
-    return widget.configuration != null
-        ? (_localViewModel ??= MyoroSingleDropdownViewModel(widget.configuration!))
-        // ignore: invalid_use_of_protected_member
-        : widget.controller!.viewModel;
-  }
-
-  @override
-  void didUpdateWidget(covariant MyoroSingleDropdown<T> oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.configuration != null) {
-      if (widget.configuration != _viewModel.state.configuration) {
-        _viewModel.state.configuration = widget.configuration!;
-      }
-    }
+    // ignore: invalid_use_of_protected_member
+    return _controller?.viewModel ??
+        (_localViewModel ??= MyoroSingleDropdownViewModel(_configuration!));
   }
 
   @override
@@ -49,5 +50,7 @@ final class _MyoroSingleDropdownState<T> extends State<MyoroSingleDropdown<T>> {
   }
 
   @override
-  Widget build(_) => _Dropdown(_viewModel, _style);
+  Widget build(_) {
+    return _Base(_key, _viewModel, _style, _child);
+  }
 }

@@ -1,44 +1,50 @@
 import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Controller of a dropdown.
+/// Abstract controller of a dropdown.
 abstract class MyoroDropdownController<
   T,
-  VIEW_MODEL extends MyoroDropdownViewModel<
-    T,
-    MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-    MyoroMenuConfiguration<T>,
-    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
-  >
+  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+  V extends MyoroDropdownViewModel<T, C>
 > {
-  MyoroDropdownController(this._viewModel);
+  MyoroDropdownController({required C configuration, required V viewModel})
+    : _viewModel = viewModel;
 
-  /// View model of the controller.
-  final VIEW_MODEL _viewModel;
+  /// View model.
+  final V _viewModel;
 
   /// [_viewModel] getter.
   @protected
-  VIEW_MODEL get viewModel => _viewModel;
-
-  /// [ValueNotifier] controlling if the dropdown is selected or not.
-  ValueNotifier<bool> get enabledNotifier => _viewModel.state.enabledNotifier;
-
-  /// Returns whether or not the dropdown is enabled or not.
-  bool get enabled => _viewModel.state.enabled;
+  V get viewModel => _viewModel;
 
   /// Dispose function.
   @mustCallSuper
-  void dispose() => _viewModel.dispose();
+  void dispose() {
+    _viewModel.dispose();
+  }
 
-  /// Toggles an item.
-  void toggleItem(T item) => _viewModel.state.menuController.toggleItem(item);
+  /// Toggle display of the dropdown.
+  void toggle() {
+    _viewModel.toggle();
+  }
 
-  /// Toggles if the dropdown is enabled.
-  void toggleEnabled([bool? enabled]) => _viewModel.toggleEnabled(enabled);
+  /// Enables the dropdown.
+  void enable() {
+    _viewModel.enable();
+  }
 
-  /// Toggles if the menu is enabled.
-  void toggleMenu() => _viewModel.toggleMenu();
+  /// Disables the dropdown.
+  void disable() {
+    _viewModel.disable();
+  }
 
-  /// Clears the selected item(s).
-  void clear() => _viewModel.state.menuController.clear();
+  /// Configuration getter.
+  C get configuration {
+    return _viewModel.state.configuration;
+  }
+
+  /// Configuration setter.
+  set configuration(C configuration) {
+    _viewModel.configuration = configuration;
+  }
 }

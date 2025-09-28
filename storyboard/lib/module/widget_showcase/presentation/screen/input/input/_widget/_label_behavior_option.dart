@@ -14,8 +14,8 @@ final class _LabelBehaviorOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
-    return MyoroSingleDropdown<FloatingLabelBehavior>(
-      configuration: MyoroSingleDropdownConfiguration(
+    return MyoroSingleSelectionDropdown<FloatingLabelBehavior>(
+      configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Label behavior',
         allowItemClearing: true,
         selectedItemBuilder:

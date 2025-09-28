@@ -14,8 +14,8 @@ final class _SearchBarInputStyleOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
 
-    return MyoroSingleDropdown<MyoroInputStyleEnum>(
-      configuration: MyoroSingleDropdownConfiguration(
+    return MyoroSingleSelectionDropdown<MyoroInputStyleEnum>(
+      configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Search bar input style',
         allowItemClearing: true,
         selectedItemBuilder:

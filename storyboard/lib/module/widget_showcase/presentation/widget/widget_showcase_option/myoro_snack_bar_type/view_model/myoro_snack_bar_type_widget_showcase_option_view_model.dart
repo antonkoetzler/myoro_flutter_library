@@ -3,7 +3,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroSnackBarTypeWidgetShowcaseOption].
 final class MyoroSnackBarTypeWidgetShowcaseOptionViewModel {
-  /// [MyoroDropdownConfiguration.selectedItemBuilder]
+  /// [MyoroSelectionDropdownConfiguration.selectedItemBuilder]
   String selectedItemBuilder(MyoroSnackBarTypeEnum item) {
     return item.name.capitalized;
   }

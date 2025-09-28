@@ -17,8 +17,8 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
 
-    return MyoroSingleDropdown<TextAlign>(
-      configuration: MyoroSingleDropdownConfiguration(
+    return MyoroSingleSelectionDropdown<TextAlign>(
+      configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Indicator text alignment',
         allowItemClearing: true,
         selectedItemBuilder:

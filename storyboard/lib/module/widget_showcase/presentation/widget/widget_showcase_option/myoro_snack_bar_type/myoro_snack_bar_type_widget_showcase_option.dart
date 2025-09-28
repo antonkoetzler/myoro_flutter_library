@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storyboard/storyboard.dart';
 
-/// Widget showcase option to select a [MyoroSnackBarType] via [MyoroSingleDropdown].
+/// Widget showcase option to select a [MyoroSnackBarType] via [MyoroSingleSelectionDropdown].
 final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
   static const selectedItemDefaultValue = MyoroSnackBarTypeEnum.attention;
 
@@ -12,18 +12,18 @@ final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
     required this.onChanged,
   });
 
-  /// Initial item of [MyoroSingleDropdownConfiguration].
+  /// Initial item of [MyoroSingleSelectionDropdownConfiguration].
   final MyoroSnackBarTypeEnum selectedItem;
 
-  /// [MyoroSingleDropdownConfiguration.onChanged]
-  final MyoroSingleDropdownOnChanged<MyoroSnackBarTypeEnum> onChanged;
+  /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
+  final MyoroSingleSelectionDropdownOnChanged<MyoroSnackBarTypeEnum> onChanged;
 
   @override
   Widget build(_) {
     final viewModel = MyoroSnackBarTypeWidgetShowcaseOptionViewModel();
 
-    return MyoroSingleDropdown<MyoroSnackBarTypeEnum>(
-      configuration: MyoroSingleDropdownConfiguration(
+    return MyoroSingleSelectionDropdown<MyoroSnackBarTypeEnum>(
+      configuration: MyoroSingleSelectionDropdownConfiguration(
         onChanged: onChanged,
         selectedItemBuilder: viewModel.selectedItemBuilder,
         menuConfiguration: MyoroSingleMenuConfiguration(

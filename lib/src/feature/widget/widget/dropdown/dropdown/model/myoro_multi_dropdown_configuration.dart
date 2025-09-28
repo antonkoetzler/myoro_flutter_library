@@ -8,48 +8,9 @@ part 'myoro_multi_dropdown_configuration.g.dart';
 @myoroModel
 class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroMultiMenuConfiguration<T>>
     with _$MyoroMultiDropdownConfigurationMixin<T> {
-  factory MyoroMultiDropdownConfiguration({
-    String label = MyoroDropdownConfiguration.labelDefaultValue,
-    MyoroDropdownMenuTypeEnum menuTypeEnum = MyoroDropdownConfiguration.menuTypeEnumDefaultValue,
-    bool enabled = MyoroDropdownConfiguration.enabledDefaultValue,
-    bool allowItemClearing = MyoroDropdownConfiguration.allowItemClearingDefaultValue,
-    TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
+  const MyoroMultiDropdownConfiguration({
+    super.dropdownType,
+    super.targetKey,
     required MyoroMultiMenuConfiguration<T> menuConfiguration,
-    required MyoroDropdownSelectedItemBuilder<T> selectedItemBuilder,
-    MyoroMultiDropdownOnChanged<T>? onChanged,
-    MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged,
-  }) {
-    return MyoroMultiDropdownConfiguration._(
-      label,
-      menuTypeEnum,
-      enabled,
-      allowItemClearing,
-      selectedItemTextAlign,
-      menuConfiguration,
-      selectedItemBuilder,
-      onChanged,
-      checkboxOnChanged,
-    );
-  }
-
-  const MyoroMultiDropdownConfiguration._(
-    super.label,
-    super.menuTypeEnum,
-    super.enabled,
-    super.allowItemClearing,
-    super.selectedItemTextAlign,
-    super.menuConfiguration,
-    super.selectedItemBuilder,
-    this.onChanged,
-    this.checkboxOnChanged,
-  );
-
-  /// Function executed when the selected item changes.
-  final MyoroMultiDropdownOnChanged<T>? onChanged;
-
-  /// Function executed when the enabled/disabled checkbox is pressed.
-  final MyoroMultiDropdownCheckboxOnChanged<T>? checkboxOnChanged;
-
-  @override
-  bool get checkboxOnChangedNotNull => checkboxOnChanged != null;
+  }) : super(menuConfiguration: menuConfiguration);
 }

@@ -1,42 +1,25 @@
 import 'dart:ui';
 
 import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_dropdown_style.g.dart';
 
-/// Style model of [MyoroDropdown].
+/// Style model of dropdowns.
 @immutable
 @myoroModel
 class MyoroDropdownStyle with _$MyoroDropdownStyleMixin {
   static MyoroDropdownStyle lerp(MyoroDropdownStyle? a, MyoroDropdownStyle? b, double t) {
-    return MyoroDropdownStyle(
-      spacing: lerpDouble(a?.spacing, b?.spacing, t),
-      menuBorder: BoxBorder.lerp(a?.menuBorder, b?.menuBorder, t),
-      menuBorderRadius: BorderRadius.lerp(a?.menuBorderRadius, b?.menuBorderRadius, t),
-    );
+    return MyoroDropdownStyle(spacing: lerpDouble(a?.spacing, b?.spacing, t));
   }
 
-  const MyoroDropdownStyle({this.spacing, this.menuBorder, this.menuBorderRadius});
+  const MyoroDropdownStyle({this.spacing});
 
   // coverage:ignore-start
-  factory MyoroDropdownStyle.fake() {
-    return MyoroDropdownStyle(
-      spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
-      menuBorder: faker.randomGenerator.boolean() ? myoroFake<BoxBorder>() : null,
-      menuBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-    );
-  }
+  MyoroDropdownStyle.fake() : spacing = faker.randomGenerator.decimal(scale: 50);
   // coverage:ignore-end
 
-  /// Standard spacing between items.
+  /// Spacing.
   final double? spacing;
-
-  /// [Border] of the [MyoroMenu].
-  final BoxBorder? menuBorder;
-
-  /// [BorderRadius] of the [MyoroMenu].
-  final BorderRadius? menuBorderRadius;
 }

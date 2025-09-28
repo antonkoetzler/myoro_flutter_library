@@ -9,7 +9,7 @@ void main() {
     );
     final viewModel = MyoroSearchInputViewModel(configuration);
 
-    expect(() => viewModel.configuration, returnsNormally);
+    expect(() => viewModel.state.configuration, returnsNormally);
     viewModel.dispose();
   });
 }

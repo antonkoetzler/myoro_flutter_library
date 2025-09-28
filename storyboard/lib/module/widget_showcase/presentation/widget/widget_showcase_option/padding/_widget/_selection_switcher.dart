@@ -1,6 +1,6 @@
 part of '../padding_widget_showcase_option.dart';
 
-/// [MyoroSingleDropdown] to change the mode of [_Selection].
+/// [MyoroSingleSelectionDropdown] to change the mode of [_Selection].
 final class _SelectionSwitcher extends StatelessWidget {
   const _SelectionSwitcher();
 
@@ -14,8 +14,8 @@ final class _SelectionSwitcher extends StatelessWidget {
       return 'EdgeInsets.${modeEnum.name}';
     }
 
-    return MyoroSingleDropdown<PaddingWidgetShowcaseOptionEnum>(
-      configuration: MyoroSingleDropdownConfiguration(
+    return MyoroSingleSelectionDropdown<PaddingWidgetShowcaseOptionEnum>(
+      configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Selection type',
         allowItemClearing: false,
         onChanged: (value) => state.modeEnum = value!,

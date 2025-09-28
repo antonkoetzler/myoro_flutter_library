@@ -3,7 +3,7 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroInputStyleEnumWidgetShowcaseOption].
 final class MyoroInputStyleEnumWidgetShowcaseOptionViewModel {
-  /// [MyoroDropdownConfiguration.selectedItemBuilder]
+  /// [MyoroSelectionDropdownConfiguration.selectedItemBuilder]
   String selectedItemBuilder(MyoroInputStyleEnum item) {
     return item.name.capitalized;
   }
