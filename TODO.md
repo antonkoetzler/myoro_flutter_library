@@ -1,8 +1,8 @@
 # TODO
 
 - (**IN PROGRESS**) Make a widget to implement all of the lgoic for `MyoroDropdownMenuTypeEnum`
-  - Create the generic `MyoroDropdown` widget
-  - Utilize `MyoroDropdown` in the singular dropdowns
+  - (**DONE**) Create the generic `MyoroDropdown` widget
+  - (**IN PROGRESS**) Fix `MyoroSelectionDropdown`s and `MyoroSearchInput` to use `MyoroDropdown`
   - Make `MyoroLocationInput` with this new `MyoroDropdown` widget
 - `MyoroButtonConfiguration.isLoading`
 - `MyoroGradientScroll`

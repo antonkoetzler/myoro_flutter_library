@@ -22,9 +22,7 @@ final class MyoroDropdownsWidgetShowcaseScreenViewModel {
   MyoroMenuItem dropdownTypeOptionItemBuilder(MyoroDropdownTypeEnum item) {
     return MyoroMenuItem(
       iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroTextConfiguration(
-          text: dropdownTypeOptionSelectedItemBuilder(item),
-        ),
+        textConfiguration: MyoroTextConfiguration(text: dropdownTypeOptionSelectedItemBuilder(item)),
       ),
     );
   }

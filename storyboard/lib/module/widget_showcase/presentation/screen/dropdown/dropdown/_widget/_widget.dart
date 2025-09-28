@@ -6,8 +6,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final widgetShowcaseThemeExtension =
-        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
 
     final viewModel = context.read<MyoroDropdownsWidgetShowcaseScreenViewModel>();
@@ -32,10 +31,7 @@ final class _Widget extends StatelessWidget {
                 controller: singleDropdownController,
                 child: GestureDetector(
                   onTapUp: (_) => singleDropdownController.toggle(),
-                  child: MyoroCard(
-                    key: singleDropdownOverlayTargetKey,
-                    child: const Text('Press to show dropdown!'),
-                  ),
+                  child: MyoroCard(key: singleDropdownOverlayTargetKey, child: const Text('Press to show dropdown!')),
                 ),
               ),
             ),
@@ -44,10 +40,7 @@ final class _Widget extends StatelessWidget {
                 controller: multiDropdownController,
                 child: GestureDetector(
                   onTapUp: (_) => multiDropdownController.toggle(),
-                  child: MyoroCard(
-                    key: multiDropdownOverlayTargetKey,
-                    child: const Text('Press to show dropdown!'),
-                  ),
+                  child: MyoroCard(key: multiDropdownOverlayTargetKey, child: const Text('Press to show dropdown!')),
                 ),
               ),
             ),

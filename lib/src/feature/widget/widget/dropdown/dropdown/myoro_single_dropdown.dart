@@ -39,8 +39,7 @@ final class _MyoroSingleDropdownState<T> extends State<MyoroSingleDropdown<T>> {
   MyoroSingleDropdownViewModel<T>? _localViewModel;
   MyoroSingleDropdownViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return _controller?.viewModel ??
-        (_localViewModel ??= MyoroSingleDropdownViewModel(_configuration!));
+    return _controller?.viewModel ?? (_localViewModel ??= MyoroSingleDropdownViewModel(_configuration!));
   }
 
   @override

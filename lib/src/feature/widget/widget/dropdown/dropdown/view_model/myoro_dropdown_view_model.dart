@@ -4,10 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_dropdown_state.dart';
 
 /// View model of [MyoroDropdown].
-abstract class MyoroDropdownViewModel<
-  T,
-  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>
-> {
+abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>> {
   MyoroDropdownViewModel(C configuration) : _state = MyoroDropdownState(configuration) {
     final dropdownType = configuration.dropdownType;
     final isModal = dropdownType.isModal;

@@ -7,26 +7,26 @@ part 'myoro_single_selection_dropdown_configuration.g.dart';
 /// Configuration model of [MyoroSingleSelectionDropdown].
 @myoroModel
 class MyoroSingleSelectionDropdownConfiguration<T>
-    extends MyoroSelectionDropdownConfiguration<T, MyoroSingleMenuConfiguration<T>>
+    extends MyoroSelectionDropdownConfiguration<T, MyoroSingleDropdownConfiguration<T>>
     with _$MyoroSingleSelectionDropdownConfigurationMixin<T> {
   factory MyoroSingleSelectionDropdownConfiguration({
     String label = MyoroSelectionDropdownConfiguration.labelDefaultValue,
-    MyoroSelectionDropdownMenuTypeEnum menuTypeEnum = MyoroSelectionDropdownConfiguration.menuTypeEnumDefaultValue,
+    MyoroDropdownTypeEnum dropdownType = MyoroSelectionDropdownConfiguration.dropdownTypeDefaultValue,
     bool enabled = MyoroSelectionDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroSelectionDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
-    required MyoroSingleMenuConfiguration<T> menuConfiguration,
+    required MyoroSingleDropdownConfiguration<T> dropdownConfiguration,
     required MyoroSelectionDropdownSelectedItemBuilder<T> selectedItemBuilder,
     MyoroSingleSelectionDropdownOnChanged<T>? onChanged,
     MyoroSingleSelectionDropdownCheckboxOnChanged<T>? checkboxOnChanged,
   }) {
     return MyoroSingleSelectionDropdownConfiguration._(
       label,
-      menuTypeEnum,
+      dropdownType,
       enabled,
       allowItemClearing,
       selectedItemTextAlign,
-      menuConfiguration,
+      dropdownConfiguration,
       selectedItemBuilder,
       onChanged,
       checkboxOnChanged,
@@ -35,11 +35,11 @@ class MyoroSingleSelectionDropdownConfiguration<T>
 
   const MyoroSingleSelectionDropdownConfiguration._(
     super.label,
-    super.menuTypeEnum,
+    super.dropdownType,
     super.enabled,
     super.allowItemClearing,
     super.selectedItemTextAlign,
-    super.menuConfiguration,
+    super.dropdownConfiguration,
     super.selectedItemBuilder,
     this.onChanged,
     this.checkboxOnChanged,

@@ -21,11 +21,9 @@ final class _InputTriggerAreaRegion<T, V extends _ViewModelType<T>> extends Stat
       child: MouseRegion(
         cursor: _enabled ? SystemMouseCursors.click : SystemMouseCursors.basic,
         child: GestureDetector(
-          onTapUp: _enabled ? (_) => viewModel.toggleMenu() : null,
-          child: TapRegion(
-            groupId: viewModel.state.tapRegionGroupId,
-            child: Container(color: Colors.transparent),
-          ),
+          // TODO
+          onTapUp: _enabled ? (_) => throw UnimplementedError() : null,
+          child: Container(color: Colors.pink.withOpacity(0.3)),
         ),
       ),
     );

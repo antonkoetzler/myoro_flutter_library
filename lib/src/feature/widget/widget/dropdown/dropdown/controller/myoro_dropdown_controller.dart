@@ -7,8 +7,7 @@ abstract class MyoroDropdownController<
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
   V extends MyoroDropdownViewModel<T, C>
 > {
-  MyoroDropdownController({required C configuration, required V viewModel})
-    : _viewModel = viewModel;
+  MyoroDropdownController({required C configuration, required V viewModel}) : _viewModel = viewModel;
 
   /// View model.
   final V _viewModel;
@@ -41,6 +40,16 @@ abstract class MyoroDropdownController<
   /// Configuration getter.
   C get configuration {
     return _viewModel.state.configuration;
+  }
+
+  /// [MyoroDropdownState.showingController] getter.
+  ValueNotifier<bool> get showingController {
+    return _viewModel.state.showingController;
+  }
+
+  /// Getter of [_viewModel.state.showingController]'s value.
+  bool get showing {
+    return _viewModel.state.showing;
   }
 
   /// Configuration setter.

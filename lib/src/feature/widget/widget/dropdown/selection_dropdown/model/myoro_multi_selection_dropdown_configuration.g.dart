@@ -22,22 +22,22 @@ mixin _$MyoroMultiSelectionDropdownConfigurationMixin<T> {
     MyoroMultiSelectionDropdownCheckboxOnChanged<T>? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     String? label,
-    MyoroSelectionDropdownMenuTypeEnum? menuTypeEnum,
+    MyoroDropdownTypeEnum? dropdownType,
     bool? enabled,
     bool? allowItemClearing,
     TextAlign? selectedItemTextAlign,
-    MyoroMultiMenuConfiguration<T>? menuConfiguration,
+    MyoroMultiDropdownConfiguration<T>? dropdownConfiguration,
     MyoroSelectionDropdownSelectedItemBuilder<T>? selectedItemBuilder,
   }) {
     return MyoroMultiSelectionDropdownConfiguration(
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
       label: label ?? self.label,
-      menuTypeEnum: menuTypeEnum ?? self.menuTypeEnum,
+      dropdownType: dropdownType ?? self.dropdownType,
       enabled: enabled ?? self.enabled,
       allowItemClearing: allowItemClearing ?? self.allowItemClearing,
       selectedItemTextAlign: selectedItemTextAlign ?? self.selectedItemTextAlign,
-      menuConfiguration: menuConfiguration ?? self.menuConfiguration,
+      dropdownConfiguration: dropdownConfiguration ?? self.dropdownConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
     );
   }
@@ -49,11 +49,11 @@ mixin _$MyoroMultiSelectionDropdownConfigurationMixin<T> {
         other.onChanged == self.onChanged &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.label == self.label &&
-        other.menuTypeEnum == self.menuTypeEnum &&
+        other.dropdownType == self.dropdownType &&
         other.enabled == self.enabled &&
         other.allowItemClearing == self.allowItemClearing &&
         other.selectedItemTextAlign == self.selectedItemTextAlign &&
-        other.menuConfiguration == self.menuConfiguration &&
+        other.dropdownConfiguration == self.dropdownConfiguration &&
         other.selectedItemBuilder == self.selectedItemBuilder;
   }
 
@@ -63,11 +63,11 @@ mixin _$MyoroMultiSelectionDropdownConfigurationMixin<T> {
       self.onChanged,
       self.checkboxOnChanged,
       self.label,
-      self.menuTypeEnum,
+      self.dropdownType,
       self.enabled,
       self.allowItemClearing,
       self.selectedItemTextAlign,
-      self.menuConfiguration,
+      self.dropdownConfiguration,
       self.selectedItemBuilder,
     );
   }
@@ -78,11 +78,11 @@ mixin _$MyoroMultiSelectionDropdownConfigurationMixin<T> {
       '  onChanged: ${self.onChanged},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  label: ${self.label},\n'
-      '  menuTypeEnum: ${self.menuTypeEnum},\n'
+      '  dropdownType: ${self.dropdownType},\n'
       '  enabled: ${self.enabled},\n'
       '  allowItemClearing: ${self.allowItemClearing},\n'
       '  selectedItemTextAlign: ${self.selectedItemTextAlign},\n'
-      '  menuConfiguration: ${self.menuConfiguration},\n'
+      '  dropdownConfiguration: ${self.dropdownConfiguration},\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
       ');';
 }
