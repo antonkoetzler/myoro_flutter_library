@@ -1,7 +1,7 @@
 part of '../bundle/myoro_selection_dropdown_bundle_v2.dart';
 
 /// Base [Widget] for selection dropdown implementations.
-class _Base extends StatelessWidget {
+class _Base<T> extends StatelessWidget {
   const _Base();
 
   @override

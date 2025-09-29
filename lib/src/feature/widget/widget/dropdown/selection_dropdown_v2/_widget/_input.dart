@@ -5,19 +5,23 @@ class _Input extends StatelessWidget {
   const _Input();
 
   @override
-  Widget build(_) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTapUp: (_) => print('here'),
-        child: Stack(
-          children: [
-            const AbsorbPointer(child: MyoroInput()),
-            Positioned.fill(child: Container(color: Colors.pink.withOpacity(0.3))),
-            here,
-          ],
+  Widget build(context) {
+    final viewModel = context.read<MyoroSelectionDropdownV2ViewModel>();
+    final toggleDropdown = viewModel.toggleDropdown;
+
+    return Stack(
+      children: [
+        const AbsorbPointer(child: MyoroInput()),
+        Positioned.fill(
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTapUp: (_) => toggleDropdown(),
+              child: Container(color: Colors.pink.withOpacity(0.3)),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

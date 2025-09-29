@@ -4,7 +4,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_dropdown_state.dart';
 
 /// View model of [MyoroDropdown].
-abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>> {
+abstract class MyoroDropdownViewModel<
+  T,
+  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>
+> {
   MyoroDropdownViewModel(C configuration) : _state = MyoroDropdownState(configuration) {
     final dropdownType = configuration.dropdownType;
     final isModal = dropdownType.isModal;
@@ -98,9 +101,6 @@ abstract class MyoroDropdownViewModel<T, C extends MyoroDropdownConfiguration<T,
     _state.configuration = configuration;
     _state.overlayPortalController = isOverlay ? OverlayPortalController() : null;
     showingController.removeListener(_showingControllerListener);
-    if (isModal || isBottomSheet) {
-      print('added');
-      showingController.addListener(_showingControllerListener);
-    }
+    if (isModal || isBottomSheet) showingController.addListener(_showingControllerListener);
   }
 }
