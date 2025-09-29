@@ -1,5 +1,6 @@
 export 'bundle/exports.dart';
 export 'controller/exports.dart';
+export 'enum/exports.dart';
 export 'model/exports.dart';
 export 'theme_extension/exports.dart';
 export 'type/exports.dart';

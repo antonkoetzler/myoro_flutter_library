@@ -7,26 +7,26 @@ part 'myoro_multi_selection_dropdown_configuration.g.dart';
 /// Configuration model of [MyoroMultiSelectionDropdown].
 @myoroModel
 class MyoroMultiSelectionDropdownConfiguration<T>
-    extends MyoroSelectionDropdownConfiguration<T, MyoroMultiDropdownConfiguration<T>>
+    extends MyoroSelectionDropdownConfiguration<T, MyoroMultiMenuConfiguration<T>>
     with _$MyoroMultiSelectionDropdownConfigurationMixin<T> {
   factory MyoroMultiSelectionDropdownConfiguration({
     String label = MyoroSelectionDropdownConfiguration.labelDefaultValue,
-    MyoroDropdownTypeEnum dropdownType = MyoroSelectionDropdownConfiguration.dropdownTypeDefaultValue,
+    MyoroSelectionDropdownMenuTypeEnum menuTypeEnum = MyoroSelectionDropdownConfiguration.menuTypeEnumDefaultValue,
     bool enabled = MyoroSelectionDropdownConfiguration.enabledDefaultValue,
     bool allowItemClearing = MyoroSelectionDropdownConfiguration.allowItemClearingDefaultValue,
     TextAlign selectedItemTextAlign = MyoroInputConfiguration.textAlignDefaultValue,
-    required MyoroMultiDropdownConfiguration<T> dropdownConfiguration,
+    required MyoroMultiMenuConfiguration<T> menuConfiguration,
     required MyoroSelectionDropdownSelectedItemBuilder<T> selectedItemBuilder,
     MyoroMultiSelectionDropdownOnChanged<T>? onChanged,
     MyoroMultiSelectionDropdownCheckboxOnChanged<T>? checkboxOnChanged,
   }) {
     return MyoroMultiSelectionDropdownConfiguration._(
       label,
-      dropdownType,
+      menuTypeEnum,
       enabled,
       allowItemClearing,
       selectedItemTextAlign,
-      dropdownConfiguration,
+      menuConfiguration,
       selectedItemBuilder,
       onChanged,
       checkboxOnChanged,
@@ -35,11 +35,11 @@ class MyoroMultiSelectionDropdownConfiguration<T>
 
   const MyoroMultiSelectionDropdownConfiguration._(
     super.label,
-    super.dropdownType,
+    super.menuTypeEnum,
     super.enabled,
     super.allowItemClearing,
     super.selectedItemTextAlign,
-    super.dropdownConfiguration,
+    super.menuConfiguration,
     super.selectedItemBuilder,
     this.onChanged,
     this.checkboxOnChanged,

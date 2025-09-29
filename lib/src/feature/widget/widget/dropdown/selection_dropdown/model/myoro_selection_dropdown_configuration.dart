@@ -6,23 +6,20 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// [MyoroSingleSelectionDropdown] and [MyoroMultiSelectionDropdown] have their separation
 /// configuration classes extending [MyoroSelectionSelectionDropdownConfiguration] for specific args.
 @immutable
-abstract class MyoroSelectionDropdownConfiguration<
-  T,
-  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>
-> {
+abstract class MyoroSelectionDropdownConfiguration<T, C extends MyoroMenuConfiguration<T>> {
   static const labelDefaultValue = '';
-  static const dropdownTypeDefaultValue = MyoroDropdownTypeEnum.expanding;
+  static const menuTypeEnumDefaultValue = MyoroSelectionDropdownMenuTypeEnum.expanding;
   static const enabledDefaultValue = true;
   static const allowItemClearingDefaultValue = true;
   static const selectedItemTextAlignDefaultValue = MyoroInputConfiguration.textAlignDefaultValue;
 
   const MyoroSelectionDropdownConfiguration(
     this.label,
-    this.dropdownType,
+    this.menuTypeEnum,
     this.enabled,
     this.allowItemClearing,
     this.selectedItemTextAlign,
-    this.dropdownConfiguration,
+    this.menuConfiguration,
     this.selectedItemBuilder,
   );
 
@@ -31,8 +28,8 @@ abstract class MyoroSelectionDropdownConfiguration<
   /// [MyoroInputConfiguration.label] of [_Input].
   final String label;
 
-  /// Dropdown's [Widget] composition.
-  final MyoroDropdownTypeEnum dropdownType;
+  /// [_Menu]s [Widget] composition.
+  final MyoroSelectionDropdownMenuTypeEnum menuTypeEnum;
 
   /// If the dropdown is enabled.
   final bool enabled;
@@ -44,7 +41,7 @@ abstract class MyoroSelectionDropdownConfiguration<
   final TextAlign selectedItemTextAlign;
 
   /// [MyoroMenuConfiguration] of the [_Menu]'s [MyoroMenu].
-  final C dropdownConfiguration;
+  final C menuConfiguration;
 
   /// Builder of the [String] displayed when a [T] item is selected.
   final MyoroSelectionDropdownSelectedItemBuilder<T> selectedItemBuilder;

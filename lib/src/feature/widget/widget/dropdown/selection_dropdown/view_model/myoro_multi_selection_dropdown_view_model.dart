@@ -8,12 +8,12 @@ final class MyoroMultiSelectionDropdownViewModel<T>
         MyoroSelectionDropdownViewModel<
           T,
           MyoroMultiSelectionDropdownConfiguration<T>,
-          MyoroMultiDropdownConfiguration<T>,
-          MyoroMultiDropdownController<T>
+          MyoroMultiMenuConfiguration<T>,
+          MyoroMultiMenuController<T>
         > {
   MyoroMultiSelectionDropdownViewModel(MyoroMultiSelectionDropdownConfiguration<T> configuration)
     : super(configuration, MyoroMultiMenuController(configuration: configuration.menuConfiguration)) {
-    state.dropdownController.selectedItemsNotifier.addListener(selectedItemsNotifierListener);
+    state.menuController.selectedItemsNotifier.addListener(selectedItemsNotifierListener);
   }
 
   @override
@@ -21,8 +21,8 @@ final class MyoroMultiSelectionDropdownViewModel<T>
     final configuration = state.configuration;
     final checkboxOnChanged = configuration.checkboxOnChanged;
     final enabled = state.enabled;
-    final dropdownController = state.dropdownController;
-    final selectedItems = dropdownController.selectedItems;
+    final menuController = state.menuController;
+    final selectedItems = menuController.selectedItems;
     checkboxOnChanged?.call(enabled, selectedItems);
   }
 
@@ -31,14 +31,14 @@ final class MyoroMultiSelectionDropdownViewModel<T>
     super.selectedItemsNotifierListener();
     final configuration = state.configuration;
     final onChanged = configuration.onChanged;
-    final dropdownController = state.dropdownController;
-    final selectedItems = dropdownController.selectedItems;
+    final menuController = state.menuController;
+    final selectedItems = menuController.selectedItems;
     onChanged?.call(selectedItems);
   }
 
   @override
   void formatSelectedItems() {
-    final Set<T> selectedItems = state.dropdownController.selectedItemsNotifier.value;
+    final Set<T> selectedItems = state.menuController.selectedItemsNotifier.value;
     final stringBuffer = StringBuffer();
     for (int i = 0; i < selectedItems.length; i++) {
       final T item = selectedItems.elementAt(i);
@@ -55,10 +55,10 @@ final class MyoroMultiSelectionDropdownViewModel<T>
     final menuBorder = dropdownStyle.menuBorder ?? dropdownThemeExtension.menuBorder;
     final menuBorderRadius = dropdownStyle.menuBorderRadius ?? dropdownThemeExtension.menuBorderRadius;
 
-    final dropdownController = state.dropdownController;
+    final menuController = state.menuController;
 
     return MyoroMultiMenu<T>(
-      controller: dropdownController,
+      controller: menuController,
       style: MyoroMenuStyle(border: menuBorder, borderRadius: menuBorderRadius),
     );
   }
