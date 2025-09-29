@@ -12,7 +12,7 @@ final class _Widget extends StatelessWidget {
     return Column(
       spacing: spacing,
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: const [
         Flexible(child: MyoroSingleSelectionDropdownV2()),
         Flexible(child: MyoroMultiSelectionDropdownV2()),
       ],
