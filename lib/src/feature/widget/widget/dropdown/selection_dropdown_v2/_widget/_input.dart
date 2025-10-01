@@ -21,12 +21,18 @@ class _Input<T, V extends _ViewModelType<T>> extends StatelessWidget {
             configuration: MyoroInputConfiguration(controller: inputController),
           ),
         ),
+        ADD CLOSE BUTTON AND CHECKBOX SPACING LOGIC
         Positioned.fill(
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
               onTapUp: (_) => toggleDropdown(),
-              child: Container(color: MyoroColors.transparent),
+              child: Row(
+                children: [
+                  Expanded(child: Container(color: Colors.pink.withOpacity(0.2))),
+                  Expanded(child: Container(color: Colors.pink.withOpacity(0.2))),
+                ],
+              ), // MyoroColors.transparent),
             ),
           ),
         ),
