@@ -25,14 +25,28 @@ class MyoroSelectionDropdownV2State<
   /// Input controller.
   final _inputController = TextEditingController();
 
+  /// [ValueNotifier] of the [_inputKey]'s size.
+  final _inputSizeController = ValueNotifier<Size?>(null);
+
   /// Dispose function.
   void dispose() {
     dropdownController.dispose();
     _inputController.dispose();
+    _inputSizeController.dispose();
   }
 
   /// [_inputController] getter.
   TextEditingController get inputController {
     return _inputController;
+  }
+
+  /// [_inputSizeController] getter.
+  ValueNotifier<Size?> get inputSizeController {
+    return _inputSizeController;
+  }
+
+  /// [_inputSizeController] setter.
+  set inputSize(Size? inputSize) {
+    _inputSizeController.value = inputSize;
   }
 }

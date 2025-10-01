@@ -91,9 +91,12 @@ final class _MyoroInputState extends State<MyoroInput> {
     final state = _viewModel.state;
     final enabledNotifier = state.enabledNotifier;
 
-    return Provider.value(
-      value: _style,
-      child: ValueListenableBuilder(valueListenable: enabledNotifier, builder: (_, _, _) => _Wrapper(_viewModel)),
+    return MultiProvider(
+      providers: [
+        Provider.value(value: _style),
+        Provider.value(value: _viewModel),
+      ],
+      child: ValueListenableBuilder(valueListenable: enabledNotifier, builder: (_, _, _) => const _Wrapper()),
     );
   }
 }

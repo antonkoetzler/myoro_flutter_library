@@ -9,34 +9,46 @@ class _Input<T, V extends _ViewModelType<T>> extends StatelessWidget {
     final viewModel = context.read<V>();
     final toggleDropdown = viewModel.toggleDropdown;
     final state = viewModel.state;
-    final dropdownController = state.dropdownController;
-    final inputKey = dropdownController.configuration.targetKey;
     final inputController = state.inputController;
+    final dropdownController = state.dropdownController;
+    final dropdownControllerConfiguration = dropdownController.configuration;
+    final inputKey = dropdownControllerConfiguration.targetKey;
+    final calculateInputSize = viewModel.calculateInputSize;
+    final inputSizeController = state.inputSizeController;
 
-    return Stack(
-      children: [
-        AbsorbPointer(
-          child: MyoroInput(
-            key: inputKey,
-            configuration: MyoroInputConfiguration(controller: inputController),
-          ),
-        ),
-        ADD CLOSE BUTTON AND CHECKBOX SPACING LOGIC
-        Positioned.fill(
-          child: MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              onTapUp: (_) => toggleDropdown(),
-              child: Row(
-                children: [
-                  Expanded(child: Container(color: Colors.pink.withOpacity(0.2))),
-                  Expanded(child: Container(color: Colors.pink.withOpacity(0.2))),
-                ],
-              ), // MyoroColors.transparent),
+    return MyoroLayoutBuilder(
+      builder: (_, _) {
+        calculateInputSize();
+
+        return Stack(
+          children: [
+            AbsorbPointer(
+              child: MyoroInput(
+                configuration: MyoroInputConfiguration(controller: inputController, inputKey: inputKey),
+              ),
             ),
-          ),
-        ),
-      ],
+            ValueListenableBuilder(
+              valueListenable: inputSizeController,
+              builder: (_, inputSize, _) => Positioned(
+                width: inputSize?.width,
+                height: inputSize?.height,
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTapUp: (_) => toggleDropdown(),
+                    child: Row(
+                      children: [
+                        Expanded(child: Container(color: Colors.pink.withOpacity(0.2))),
+                        Expanded(child: Container(color: Colors.pink.withOpacity(0.2))),
+                      ],
+                    ), // MyoroColors.transparent),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

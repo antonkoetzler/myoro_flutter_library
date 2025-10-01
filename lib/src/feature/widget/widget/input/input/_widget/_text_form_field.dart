@@ -2,9 +2,7 @@ part of '../myoro_input.dart';
 
 /// Core input of [MyoroInput].
 final class _TextFormField extends StatelessWidget {
-  const _TextFormField(this._viewModel);
-
-  final MyoroInputViewModel _viewModel;
+  const _TextFormField();
 
   @override
   Widget build(context) {
@@ -15,7 +13,8 @@ final class _TextFormField extends StatelessWidget {
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
     final primaryColor = style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
 
-    final state = _viewModel.state;
+    final viewModel = context.read<MyoroInputViewModel>();
+    final state = viewModel.state;
     final configuration = state.configuration;
     final readOnly = configuration.readOnly;
     final autofocus = configuration.autofocus;
@@ -39,13 +38,11 @@ final class _TextFormField extends StatelessWidget {
         readOnly: readOnly,
         autofocus: autofocus,
         style: textStyle?.withColor(
-          textStyle.color!.withValues(
-            alpha: _viewModel.state.enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
-          ),
+          textStyle.color!.withValues(alpha: enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity)),
         ),
         decoration: InputDecoration(
           floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
-          label: label.isNotEmpty ? _Label(_viewModel) : null,
+          label: label.isNotEmpty ? const _Label() : null,
           hintText: placeholder.isNotEmpty ? placeholder : null,
           hintStyle: textStyle?.withColor(
             textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
@@ -62,12 +59,12 @@ final class _TextFormField extends StatelessWidget {
           ),
           isDense: true,
           contentPadding: contentPadding,
-          suffixIcon: showClearTextButton ? _ClearTextButton(_viewModel) : null,
+          suffixIcon: showClearTextButton ? const _ClearTextButton() : null,
         ),
         textAlign: textAlign,
         cursorHeight: style.cursorHeight ?? themeExtension.cursorHeight,
         validator: (_) => validation?.call(controller.text),
-        inputFormatters: formatter != null ? [_viewModel.state.formatter!] : null,
+        inputFormatters: [?formatter],
         onFieldSubmitted: onFieldSubmitted,
         onChanged: onChanged,
         focusNode: focusNode,

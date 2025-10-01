@@ -2,20 +2,20 @@ part of '../myoro_input.dart';
 
 /// Checkbox option when [MyoroInputConfiguration.checkboxOnChanged] is provided.
 final class _Checkbox extends StatelessWidget {
-  const _Checkbox(this._viewModel);
-
-  final MyoroInputViewModel _viewModel;
+  const _Checkbox();
 
   @override
   Widget build(context) {
-    final state = _viewModel.state;
+    final viewModel = context.read<MyoroInputViewModel>();
+    final state = viewModel.state;
     final configuration = state.configuration;
     final enabled = state.enabled;
     final checkboxKey = configuration.checkboxKey;
+    final checkboxOnChanged = viewModel.checkboxOnChanged;
 
     return MyoroCheckbox(
       key: checkboxKey,
-      configuration: MyoroCheckboxConfiguration(value: enabled, onChanged: _viewModel.checkboxOnChanged),
+      configuration: MyoroCheckboxConfiguration(value: enabled, onChanged: checkboxOnChanged),
     );
   }
 }
