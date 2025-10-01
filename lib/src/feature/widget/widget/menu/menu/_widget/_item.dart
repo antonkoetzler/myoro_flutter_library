@@ -1,6 +1,6 @@
 part of '../bundle/myoro_menu_bundle.dart';
 
-/// Item in the [MyoroMenu].
+/// Item in the menu.
 final class _Item<T, C extends _C<T>> extends StatelessWidget {
   const _Item(this._item, this._menuItem, this._selectedItems);
 
@@ -15,6 +15,7 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
     final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final style = context.read<MyoroMenuStyle>();
     final itemBorderRadius = style.itemBorderRadius ?? menuThemeExtension.itemBorderRadius;
+    final selectedItemColor = isSelected ? (style.selectedItemColor ?? menuThemeExtension.selectedItemColor) : null;
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
     final toggleItem = viewModel.toggleItem;
@@ -28,24 +29,18 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
         configuration: (buttonConfiguration ?? const MyoroButtonConfiguration()).copyWith(
           onTapUp: (details) => toggleItem(_item),
         ),
-        style: const MyoroButtonStyle().copyWith(
-          borderRadius: itemBorderRadius,
-          backgroundIdleColor: isSelected ? context.colorScheme.primary : null,
-          backgroundHoverColor: isSelected ? context.colorScheme.primary.withOpacity(0.8) : null,
-          backgroundTapColor: isSelected ? context.colorScheme.primary.withOpacity(0.6) : null,
-        ),
+        style: const MyoroButtonStyle()
+            .copyWith(borderRadius: itemBorderRadius)
+            .singleBackgroundColor(selectedItemColor),
         builder: buttonBuilder,
       );
     }
 
     return MyoroIconTextButton(
       configuration: iconTextButtonConfiguration!.copyWith(onTapUp: (details) => toggleItem(_item)),
-      style: const MyoroIconTextButtonStyle().copyWith(
-        borderRadius: itemBorderRadius,
-        backgroundIdleColor: isSelected ? context.colorScheme.primary : null,
-        backgroundHoverColor: isSelected ? context.colorScheme.primary.withOpacity(0.8) : null,
-        backgroundTapColor: isSelected ? context.colorScheme.primary.withOpacity(0.6) : null,
-      ),
+      style: const MyoroIconTextButtonStyle()
+          .copyWith(borderRadius: itemBorderRadius)
+          .singleBackgroundColor(selectedItemColor),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 abstract class MyoroDropdownController<
   T,
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<T, C>
+  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
 > {
   MyoroDropdownController({required C configuration, required V viewModel}) : _viewModel = viewModel;
 
@@ -23,18 +23,28 @@ abstract class MyoroDropdownController<
   }
 
   /// Toggle display of the dropdown.
-  void toggle() {
+  void toggleDropdown() {
     _viewModel.toggle();
   }
 
   /// Enables the dropdown.
-  void enable() {
+  void enableDropdown() {
     _viewModel.enable();
   }
 
   /// Disables the dropdown.
-  void disable() {
+  void disableDropdown() {
     _viewModel.disable();
+  }
+
+  /// Toggles an item in the dropdown.
+  void toggleItem(T item) {
+    _viewModel.state.menuController.toggleItem(item);
+  }
+
+  /// Clears all selected items.
+  void clear() {
+    _viewModel.state.menuController.clear();
   }
 
   /// Configuration getter.

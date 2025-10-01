@@ -7,7 +7,7 @@ final class _Columns<T> extends StatelessWidget {
   @override
   Widget build(context) {
     final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final basicDividerThemeExtension = MyoroBasicDividerThemeExtension.builder(context.colorScheme);
+    final basicDividerThemeExtension = context.resolveThemeExtension<MyoroBasicDividerThemeExtension>();
 
     // Empty [MyoroLayoutBuilder] to rebuild [_Columns] everytime the screen is resized.
     return MyoroLayoutBuilder(

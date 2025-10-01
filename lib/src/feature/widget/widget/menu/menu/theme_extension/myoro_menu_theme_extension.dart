@@ -21,6 +21,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     this.itemBorderRadius,
     this.dialogTextStyle,
     this.dialogTextLoaderPadding,
+    this.selectedItemColor,
   });
 
   // coverage:ignore-start
@@ -33,11 +34,15 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       searchBarInputStyle = faker.randomGenerator.boolean() ? MyoroInputStyleEnum.fake() : null,
       itemBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       dialogTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      dialogTextLoaderPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+      dialogTextLoaderPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      selectedItemColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
   // coverage:ignore-end
 
-  MyoroMenuThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
-    : constraints = const BoxConstraints(),
+  MyoroMenuThemeExtension.builder(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+    MyoroDecorationThemeExtension decorationThemeExtension,
+  ) : constraints = const BoxConstraints(),
       border = null,
       backgroundColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
@@ -45,7 +50,8 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       searchBarInputStyle = MyoroInputStyleEnum.outlined,
       itemBorderRadius = BorderRadius.zero,
       dialogTextStyle = textTheme.bodyMedium!,
-      dialogTextLoaderPadding = const EdgeInsets.all(kMyoroMultiplier * 3.75);
+      dialogTextLoaderPadding = const EdgeInsets.all(kMyoroMultiplier * 3.75),
+      selectedItemColor = decorationThemeExtension.primaryTapBackgroundColor;
 
   /// Constraints of the menu.
   @override
@@ -83,6 +89,10 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
   @override
   final EdgeInsets? dialogTextLoaderPadding;
 
+  /// [Color] of a selected item.
+  @override
+  final Color? selectedItemColor;
+
   @override
   MyoroMenuThemeExtension lerp(covariant MyoroMenuThemeExtension? other, double t) {
     if (other is! MyoroMenuThemeExtension) return this;
@@ -97,6 +107,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       itemBorderRadius: style.itemBorderRadius,
       dialogTextStyle: style.dialogTextStyle,
       dialogTextLoaderPadding: style.dialogTextLoaderPadding,
+      selectedItemColor: style.selectedItemColor,
     );
   }
 

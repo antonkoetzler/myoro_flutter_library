@@ -8,7 +8,7 @@ final class _DialogText extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final themeExtension = MyoroMenuThemeExtension.builder(context.colorScheme, context.textTheme);
+    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final style = context.read<MyoroMenuStyle>();
     final dialogTextLoaderPadding =
         style.dialogTextLoaderPadding ?? themeExtension.dialogTextLoaderPadding ?? EdgeInsets.zero;

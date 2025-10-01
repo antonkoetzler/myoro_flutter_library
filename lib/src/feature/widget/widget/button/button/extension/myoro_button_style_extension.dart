@@ -3,6 +3,34 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Extension on [MyoroButtonStyle].
 extension MyoroButtonStyleExtension<T extends MyoroButtonStyle> on T {
+  /// Creates a style with a singular [Color].
+  T singleBackgroundColor(Color? color) {
+    final colorIsNotNull = color != null;
+    return copyWith(
+          backgroundIdleColor: color,
+          backgroundIdleColorProvided: colorIsNotNull,
+          backgroundHoverColor: color,
+          backgroundHoverColorProvided: colorIsNotNull,
+          backgroundTapColor: color,
+          backgroundTapColorProvided: colorIsNotNull,
+        )
+        as T;
+  }
+
+  /// Creates a style with a singular [Color].
+  T singleContentColor(Color? color) {
+    final colorIsNotNull = color != null;
+    return copyWith(
+          contentIdleColor: color,
+          contentIdleColorProvided: colorIsNotNull,
+          contentHoverColor: color,
+          contentHoverColorProvided: colorIsNotNull,
+          contentTapColor: color,
+          contentTapColorProvided: colorIsNotNull,
+        )
+        as T;
+  }
+
   /// Border adder.
   T bordered(BuildContext context) {
     final decorationThemeExtension = context.resolveThemeExtension<MyoroDecorationThemeExtension>();

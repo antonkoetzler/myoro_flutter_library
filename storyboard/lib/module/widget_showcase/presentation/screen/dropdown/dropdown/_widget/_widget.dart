@@ -30,7 +30,7 @@ final class _Widget extends StatelessWidget {
               child: MyoroSingleDropdown(
                 controller: singleDropdownController,
                 child: GestureDetector(
-                  onTapUp: (_) => singleDropdownController.toggle(),
+                  onTapUp: (_) => singleDropdownController.toggleDropdown(),
                   child: MyoroCard(key: singleDropdownOverlayTargetKey, child: const Text('Press to show dropdown!')),
                 ),
               ),
@@ -39,7 +39,7 @@ final class _Widget extends StatelessWidget {
               child: MyoroMultiDropdown(
                 controller: multiDropdownController,
                 child: GestureDetector(
-                  onTapUp: (_) => multiDropdownController.toggle(),
+                  onTapUp: (_) => multiDropdownController.toggleDropdown(),
                   child: MyoroCard(key: multiDropdownOverlayTargetKey, child: const Text('Press to show dropdown!')),
                 ),
               ),

@@ -166,7 +166,7 @@ void main() {
   });
 
   testWidgets('MyoroSingleDropdown assertion case - neither controller nor configuration provided', (tester) async {
-    expect(() => MyoroSingleDropdown<String>(child: const SizedBox.shrink()), throwsAssertionError);
+    expect(() => const MyoroSingleDropdown<String>(child: SizedBox.shrink()), throwsAssertionError);
   });
 
   testWidgets('MyoroSingleDropdown with custom style', (tester) async {

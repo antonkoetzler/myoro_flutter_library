@@ -20,6 +20,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       itemBorderRadius: BorderRadius.lerp(a?.itemBorderRadius, b?.itemBorderRadius, t),
       dialogTextStyle: TextStyle.lerp(a?.dialogTextStyle, b?.dialogTextStyle, t),
       dialogTextLoaderPadding: EdgeInsets.lerp(a?.dialogTextLoaderPadding, b?.dialogTextLoaderPadding, t),
+      selectedItemColor: Color.lerp(a?.selectedItemColor, b?.selectedItemColor, t),
     );
   }
 
@@ -33,6 +34,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
     this.itemBorderRadius,
     this.dialogTextStyle,
     this.dialogTextLoaderPadding,
+    this.selectedItemColor,
   });
 
   // coverage:ignore-start
@@ -47,6 +49,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       itemBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       dialogTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       dialogTextLoaderPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      selectedItemColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
     );
   }
   // coverage:ignore-end
@@ -77,4 +80,7 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
 
   /// [EdgeInsets] of [_DialogText] & [_Loader].
   final EdgeInsets? dialogTextLoaderPadding;
+
+  /// [Color] of a selected item.
+  final Color? selectedItemColor;
 }

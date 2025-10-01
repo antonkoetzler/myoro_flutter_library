@@ -20,7 +20,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createGraphThemeExtensions(colorScheme, textTheme),
     ..._createInputThemeExtensions(colorScheme, textTheme),
     ..._createLoaderThemeExtensions(colorScheme),
-    ..._createMenuThemeExtensions(colorScheme, textTheme),
+    ..._createMenuThemeExtensions(colorScheme, textTheme, decorationThemeExtension),
     ..._createModalThemeExtensions(colorScheme, textTheme),
     ..._createPickerThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
@@ -100,8 +100,12 @@ List<ThemeExtension> _createLoaderThemeExtensions(ColorScheme colorScheme) {
   return [MyoroCircularLoaderThemeExtension.builder(colorScheme)];
 }
 
-List<ThemeExtension> _createMenuThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [MyoroMenuThemeExtension.builder(colorScheme, textTheme)];
+List<ThemeExtension> _createMenuThemeExtensions(
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+  MyoroDecorationThemeExtension decorationThemeExtension,
+) {
+  return [MyoroMenuThemeExtension.builder(colorScheme, textTheme, decorationThemeExtension)];
 }
 
 List<ThemeExtension> _createModalThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

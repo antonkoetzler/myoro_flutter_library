@@ -11,7 +11,7 @@ class MyoroBarGraphViewModel {
 
   /// Builds the bar rods.
   List<BarChartGroupData> getFormattedItems(BuildContext context) {
-    final themeExtension = MyoroBarGraphThemeExtension.builder(context.colorScheme, context.textTheme);
+    final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
 
     return configuration.items
         .map<BarChartGroupData>(

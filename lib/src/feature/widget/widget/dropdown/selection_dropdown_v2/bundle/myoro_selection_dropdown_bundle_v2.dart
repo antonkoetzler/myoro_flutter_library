@@ -7,3 +7,18 @@ part '../myoro_single_selection_dropdown_v2.dart';
 
 part '../_widget/_base.dart';
 part '../_widget/_input.dart';
+
+typedef _ViewModelType<T> =
+    MyoroSelectionDropdownV2ViewModel<
+      T,
+      MyoroSelectionDropdownV2Configuration<T, MyoroMenuConfiguration<T>>,
+      MyoroDropdownController<
+        T,
+        MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+        MyoroDropdownViewModel<
+          T,
+          MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+          MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+        >
+      >
+    >;

@@ -1,16 +1,24 @@
 part of 'myoro_dropdown_view_model.dart';
 
 /// State of [MyoroDropdownViewModel].
-class MyoroDropdownState<T, C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>> {
-  MyoroDropdownState(this.configuration);
+class MyoroDropdownState<
+  T,
+  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+> {
+  MyoroDropdownState(this.configuration, this.menuController);
 
   /// Dispose function.
   void dispose() {
     _showingController.dispose();
+    menuController.dispose();
   }
 
   /// Configuration.
   C configuration;
+
+  /// Menu controller.
+  final MENU_CONTROLLER menuController;
 
   /// [OverlayPortalController] of [MyoroDropdown] when [MyoroDropdown.dropdownType] is [MyoroDropdownTypeEnum.overlay].
   OverlayPortalController? _overlayPortalController;

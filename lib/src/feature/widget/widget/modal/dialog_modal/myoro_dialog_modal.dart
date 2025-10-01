@@ -31,9 +31,8 @@ class MyoroDialogModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = context.textTheme;
     final dialogModalThemeExtension =
-        this.dialogModalThemeExtension ?? MyoroDialogModalThemeExtension.builder(textTheme);
+        this.dialogModalThemeExtension ?? context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
 
     final modalThemeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
     final spacing = modalThemeExtension.spacing ?? 0;

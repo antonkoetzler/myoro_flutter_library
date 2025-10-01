@@ -26,9 +26,7 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
 
   @override
   Widget build(context) {
-    final colorScheme = context.colorScheme;
-    final textTheme = context.textTheme;
-    final themeExtension = MyoroMenuThemeExtension.builder(colorScheme, textTheme);
+    final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final style = widget._style;
     final backgroundColor = style.backgroundColor ?? themeExtension.backgroundColor;
     final border = style.border ?? themeExtension.border;

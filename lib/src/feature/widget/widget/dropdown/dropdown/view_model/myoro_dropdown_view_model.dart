@@ -6,13 +6,17 @@ part 'myoro_dropdown_state.dart';
 /// View model of [MyoroDropdown].
 abstract class MyoroDropdownViewModel<
   T,
-  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>
+  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
 > {
-  MyoroDropdownViewModel(C configuration) : _state = MyoroDropdownState(configuration) {
+  MyoroDropdownViewModel(C configuration, MENU_CONTROLLER menuController)
+    : _state = MyoroDropdownState(configuration, menuController) {
     final dropdownType = configuration.dropdownType;
     final isModal = dropdownType.isModal;
     final isBottomSheet = dropdownType.isBottomSheet;
+    final isOverlay = dropdownType.isOverlay;
     if (isModal || isBottomSheet) state.showingController.addListener(_showingControllerListener);
+    if (isOverlay) state.overlayPortalController = OverlayPortalController();
   }
 
   /// Build context to show the dropdown in a modal or bottom sheet.
@@ -30,10 +34,10 @@ abstract class MyoroDropdownViewModel<
   }
 
   /// State.
-  final MyoroDropdownState<T, C> _state;
+  final MyoroDropdownState<T, C, MENU_CONTROLLER> _state;
 
   /// [_state] getter.
-  MyoroDropdownState<T, C> get state => _state;
+  MyoroDropdownState<T, C, MENU_CONTROLLER> get state => _state;
 
   /// Dispose function.
   @mustCallSuper
