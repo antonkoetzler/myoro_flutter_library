@@ -37,6 +37,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.onCleared,
     this.inputKey,
     this.checkboxKey,
+    this.clearTextButtonKey,
     this.focusNode,
     this.controller,
   });
@@ -62,6 +63,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       onCleared: faker.randomGenerator.boolean() ? (() {}) : null,
       inputKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
       checkboxKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
+      clearTextButtonKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
       focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
       controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
     );
@@ -124,6 +126,9 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
 
   /// [Key] of the [MyoroCheckbox] for specific cases.
   final Key? checkboxKey;
+
+  /// [Key] of the clear text button for specific cases.
+  final Key? clearTextButtonKey;
 
   /// [FocusNode] of the input to programmatically focus on it.
   final FocusNode? focusNode;

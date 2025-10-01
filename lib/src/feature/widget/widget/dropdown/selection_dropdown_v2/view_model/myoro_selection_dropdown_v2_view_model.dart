@@ -47,11 +47,13 @@ abstract class MyoroSelectionDropdownV2ViewModel<
   }
 
   /// Grabs the size of the input.
-  void calculateInputSize() {
+  void calculateInputAndInputClearTextButtonSize() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final inputKey = state.dropdownController.configuration.targetKey!;
       final inputRenderBox = inputKey.currentContext!.findRenderObject() as RenderBox;
-      state.inputSize = inputRenderBox.size;
+      final inputClearTextButtonKey = state.inputClearTextButtonKey;
+      final inputClearTextButtonKeyRenderBox = inputClearTextButtonKey.currentContext?.findRenderObject() as RenderBox?;
+      state.inputAndInputClearTextButtonSize = (inputRenderBox.size, inputClearTextButtonKeyRenderBox?.size);
     });
   }
 

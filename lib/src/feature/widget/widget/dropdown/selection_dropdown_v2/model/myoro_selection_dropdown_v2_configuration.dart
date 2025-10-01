@@ -3,10 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Configuration model of selection dropdowns.
 @immutable
-abstract class MyoroSelectionDropdownV2Configuration<
-  T,
-  MENU_CONFIGURATION extends MyoroMenuConfiguration<T>
-> {
+abstract class MyoroSelectionDropdownV2Configuration<T, MENU_CONFIGURATION extends MyoroMenuConfiguration<T>> {
   const MyoroSelectionDropdownV2Configuration({
     required this.dropdownType,
     required this.menuConfiguration,
