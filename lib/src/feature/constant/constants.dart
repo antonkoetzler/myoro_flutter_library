@@ -18,7 +18,7 @@ const kMyoroThrottleDuration = Duration(milliseconds: 500);
 const kMyoroBorderWidth = kMyoroMultiplier / 4;
 
 /// [BorderRadius] length.
-const kMyoroBorderRadius = kMyoroMultiplier;
+const kMyoroBorderRadius = kMyoroMultiplier * 2;
 
 /// [Alignment]s for testing.
 const kMyoroTestAlignments = [

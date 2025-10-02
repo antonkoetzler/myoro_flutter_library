@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
 /// Function executed when the checkbox next to the input is changed.
 typedef MyoroInputCheckboxOnChanged = void Function(bool enabled, String text);
 

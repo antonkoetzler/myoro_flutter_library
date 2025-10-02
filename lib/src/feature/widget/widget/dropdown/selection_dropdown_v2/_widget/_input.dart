@@ -14,10 +14,13 @@ class _Input<T, V extends _ViewModelType<T>> extends StatelessWidget {
     final dropdownControllerConfiguration = dropdownController.configuration;
     final inputKey = dropdownControllerConfiguration.targetKey;
 
-    // [ValueListenableBuilder] and [MyoroLayoutBuilder] to calculate the size of the input when the
-    // window is resized OR if the input controller changes, thus the clear text button is shown.
     return MyoroInput(
-      configuration: MyoroInputConfiguration(controller: inputController, inputKey: inputKey),
+      configuration: MyoroInputConfiguration(
+        controller: inputController,
+        inputKey: inputKey,
+        onTap: toggleDropdown,
+        readOnly: true,
+      ),
     );
   }
 }

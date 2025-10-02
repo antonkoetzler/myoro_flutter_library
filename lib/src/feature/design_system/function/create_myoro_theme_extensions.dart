@@ -75,7 +75,7 @@ List<ThemeExtension> _createDrawerThemeExtensions(ColorScheme colorScheme, TextT
 }
 
 List<ThemeExtension> _createDropdownThemeExtensions(ColorScheme colorScheme) {
-  return [MyoroDropdownThemeExtension.builder(colorScheme), MyoroSelectionDropdownThemeExtension.builder(colorScheme)];
+  return [MyoroSelectionDropdownThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createFeedbackThemeExtensions(TextTheme textTheme) {

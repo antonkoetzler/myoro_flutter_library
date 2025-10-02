@@ -6,7 +6,8 @@ part 'myoro_multi_dropdown_configuration.g.dart';
 
 /// Configuration model of [MyoroMultiDropdown].
 @myoroModel
-class MyoroMultiDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroMultiMenuConfiguration<T>>
+class MyoroMultiDropdownConfiguration<T>
+    extends MyoroDropdownConfiguration<T, MyoroMultiMenuConfiguration<T>>
     with _$MyoroMultiDropdownConfigurationMixin<T> {
   const MyoroMultiDropdownConfiguration({
     super.dropdownType,

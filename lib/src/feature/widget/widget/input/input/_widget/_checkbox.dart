@@ -8,13 +8,10 @@ final class _Checkbox extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroInputViewModel>();
     final state = viewModel.state;
-    final configuration = state.configuration;
     final enabled = state.enabled;
-    final checkboxKey = configuration.checkboxKey;
     final checkboxOnChanged = viewModel.checkboxOnChanged;
 
     return MyoroCheckbox(
-      key: checkboxKey,
       configuration: MyoroCheckboxConfiguration(value: enabled, onChanged: checkboxOnChanged),
     );
   }

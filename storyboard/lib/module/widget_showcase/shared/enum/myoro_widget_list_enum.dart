@@ -13,7 +13,7 @@ enum MyoroWidgetListEnum {
   checkboxes('Checkboxes', {myoroCheckboxTitle, myoroGroupCheckboxTitle}),
   dividers('Dividers', {myoroBasicDividerTitle, myoroResizeDividerTitle}),
   drawers('Drawers', {myoroDrawerTitle}),
-  dropdowns('Dropdowns', {myoroDropdownsTitle, myoroSelectionDropdownsTitle}),
+  dropdowns('Dropdowns', {myoroDropdownsTitle, myoroInputDropdownTitle, myoroSelectionDropdownsTitle}),
   feedbacks('Feedbacks', {myoroFeedbackTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
@@ -77,6 +77,7 @@ enum MyoroWidgetListEnum {
 
   // Dropdowns
   static const myoroDropdownsTitle = 'MyoroSingleDropdown & MyoroMultiDropdown';
+  static const myoroInputDropdownTitle = 'MyoroSingleInputDropdown & MyoroMultiInputDropdown';
   static const myoroSelectionDropdownsTitle = 'MyoroSelectionSingleDropdown & MyoroSelectionMultiDropdown';
 
   // Feedbacks
@@ -169,6 +170,7 @@ enum MyoroWidgetListEnum {
 
       // Dropdowns
       myoroDropdownsTitle => const MyoroDropdownsWidgetShowcaseScreen(),
+      myoroInputDropdownTitle => const MyoroInputDropdownsWidgetShowcaseScreen(),
       myoroSelectionDropdownsTitle => const MyoroSelectionDropdownsWidgetShowcaseScreen(),
 
       // Feedbacks

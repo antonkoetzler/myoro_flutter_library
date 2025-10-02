@@ -43,8 +43,8 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
     bool onClearedProvided = true,
     Key? inputKey,
     bool inputKeyProvided = true,
-    VoidCallback? onPressed,
-    bool onPressedProvided = true,
+    VoidCallback? onTap,
+    bool onTapProvided = true,
     FocusNode? focusNode,
     bool focusNodeProvided = true,
     TextEditingController? controller,
@@ -98,7 +98,7 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
         other.onChanged == self.onChanged &&
         other.onCleared == self.onCleared &&
         other.inputKey == self.inputKey &&
-        other.onPressed == self.onPressed &&
+        other.onTap == self.onTap &&
         other.focusNode == self.focusNode &&
         other.controller == self.controller;
   }
@@ -125,7 +125,7 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
       self.onChanged,
       self.onCleared,
       self.inputKey,
-      self.onPressed,
+      self.onTap,
       self.focusNode,
       self.controller,
     ]);
@@ -153,7 +153,7 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
       '  onChanged: ${self.onChanged},\n'
       '  onCleared: ${self.onCleared},\n'
       '  inputKey: ${self.inputKey},\n'
-      '  onPressed: ${self.onPressed},\n'
+      '  onTap: ${self.onTap},\n'
       '  focusNode: ${self.focusNode},\n'
       '  controller: ${self.controller},\n'
       ');';

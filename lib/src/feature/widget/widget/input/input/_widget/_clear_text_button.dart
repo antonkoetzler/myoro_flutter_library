@@ -19,13 +19,10 @@ final class _ClearTextButton extends StatelessWidget {
     return IntrinsicWidth(
       child: Padding(
         padding: clearTextButtonPadding,
-        child: ColoredBox(
-          color: Colors.cyan,
-          child: MyoroIconTextButton(
-            configuration: MyoroIconTextButtonConfiguration(
-              onTapUp: (_) => clearText(),
-              iconConfiguration: MyoroIconConfiguration(icon: clearTextButtonIcon, size: clearTextButtonIconSize),
-            ),
+        child: MyoroIconTextButton(
+          configuration: MyoroIconTextButtonConfiguration(
+            onTapUp: (_) => clearText(),
+            iconConfiguration: MyoroIconConfiguration(icon: clearTextButtonIcon, size: clearTextButtonIconSize),
           ),
         ),
       ),

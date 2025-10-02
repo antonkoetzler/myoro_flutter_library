@@ -7,7 +7,7 @@ final class _Wrapper extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final style = context.read<MyoroInputStyle>();
+    final style = context.watch<MyoroInputStyle>();
     final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
     final viewModel = context.read<MyoroInputViewModel>();

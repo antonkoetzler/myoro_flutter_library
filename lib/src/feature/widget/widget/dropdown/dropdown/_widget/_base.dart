@@ -4,16 +4,20 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 class _Base<
   T,
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
+  V extends MyoroDropdownViewModel<
+    T,
+    C,
+    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+  >
 >
     extends StatelessWidget {
-  const _Base(Key? key, this._viewModel, this._style, this._child) : super(key: key);
+  const _Base(Key? key, this._viewModel, this._menuStyle, this._child) : super(key: key);
 
   /// View model.
   final V _viewModel;
 
-  /// Style.
-  final MyoroDropdownStyle _style;
+  /// Style of the menu.
+  final MyoroMenuStyle _menuStyle;
 
   /// [Widget] that the dropdown belongs to.
   final Widget _child;
@@ -23,21 +27,15 @@ class _Base<
     // Set the context for the modal and bottom sheet variations.
     _viewModel.context = context;
 
-    final themeExtension = context.resolveThemeExtension<MyoroDropdownThemeExtension>();
-    final spacing = _style.spacing ?? themeExtension.spacing ?? 0;
-
     final state = _viewModel.state;
     final link = state.link;
     final configuration = state.configuration;
     final dropdownType = configuration.dropdownType;
     final showingController = state.showingController;
-    final dropdownWidget = _viewModel.dropdownWidget;
+    final menuWidget = _viewModel.menuWidget;
 
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: _viewModel),
-        InheritedProvider.value(value: _style),
-      ],
+    return InheritedProvider.value(
+      value: _viewModel,
       child: switch (dropdownType) {
         MyoroDropdownTypeEnum.overlay => OverlayPortal(
           controller: state.overlayPortalController,
@@ -45,11 +43,11 @@ class _Base<
             width: state.targetKeySize?.width,
             child: CompositedTransformFollower(
               link: link,
-              offset: Offset(0, (state.targetKeySize?.height ?? 0) + spacing),
+              offset: Offset(0, state.targetKeySize?.height ?? 0),
               child: TapRegion(
                 groupId: state.tapRegionGroupId,
                 onTapOutside: (_) => _viewModel.disable(),
-                child: dropdownWidget,
+                child: menuWidget(_menuStyle),
               ),
             ),
           ),
@@ -65,7 +63,6 @@ class _Base<
               groupId: state.tapRegionGroupId,
               onTapOutside: isShowing ? (_) => _viewModel.disable() : null,
               child: Column(
-                spacing: spacing,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Flexible(
@@ -75,7 +72,10 @@ class _Base<
                     Flexible(
                       child: TapRegion(
                         groupId: state.tapRegionGroupId,
-                        child: SizedBox(width: state.targetKeySize?.width, child: dropdownWidget),
+                        child: SizedBox(
+                          width: state.targetKeySize?.width,
+                          child: menuWidget(_menuStyle),
+                        ),
                       ),
                     ),
                 ],

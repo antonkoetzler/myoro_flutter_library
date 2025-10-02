@@ -22,22 +22,8 @@ abstract class MyoroDropdownViewModel<
   /// Build context to show the dropdown in a modal or bottom sheet.
   BuildContext? _context;
 
-  /// [_context] getter.
-  BuildContext get context {
-    assert(_context != null, '[MyoroDropdownViewModel.context]: [context] has not been set yet.');
-    return _context!;
-  }
-
-  /// [_context] setter.
-  set context(BuildContext context) {
-    _context = context;
-  }
-
   /// State.
   final MyoroDropdownState<T, C, MENU_CONTROLLER> _state;
-
-  /// [_state] getter.
-  MyoroDropdownState<T, C, MENU_CONTROLLER> get state => _state;
 
   /// Dispose function.
   @mustCallSuper
@@ -76,6 +62,9 @@ abstract class MyoroDropdownViewModel<
     _state.showing = false;
   }
 
+  /// Builds the dropdown (menu) [Widget].
+  Widget menuWidget(MyoroMenuStyle menuStyle);
+
   /// Listener for [_state.showingController].
   void _showingControllerListener() {
     final configuration = _state.configuration;
@@ -84,16 +73,22 @@ abstract class MyoroDropdownViewModel<
     final isBottomSheet = dropdownType.isBottomSheet;
     final showing = _state.showing;
     if (showing) {
-      if (isModal) MyoroModal.showModal(context, child: dropdownWidget);
-      if (isBottomSheet) MyoroModal.showBottomSheet(context, child: dropdownWidget);
+      if (isModal) MyoroModal.showModal(context, child: menuWidget(poop));
+      if (isBottomSheet) MyoroModal.showBottomSheet(context, child: menuWidget(poop));
     } else {
       if (isModal) context.navigator.pop();
       if (isBottomSheet) context.navigator.pop();
     }
   }
 
-  /// Builds the dropdown (menu) [Widget].
-  Widget get dropdownWidget;
+  /// [_context] getter.
+  BuildContext get context {
+    assert(_context != null, '[MyoroDropdownViewModel.context]: [context] has not been set yet.');
+    return _context!;
+  }
+
+  /// [_state] getter.
+  MyoroDropdownState<T, C, MENU_CONTROLLER> get state => _state;
 
   /// [MyoroDropdownState.configuration] setter.
   set configuration(C configuration) {
@@ -106,5 +101,10 @@ abstract class MyoroDropdownViewModel<
     _state.overlayPortalController = isOverlay ? OverlayPortalController() : null;
     showingController.removeListener(_showingControllerListener);
     if (isModal || isBottomSheet) showingController.addListener(_showingControllerListener);
+  }
+
+  /// [_context] setter.
+  set context(BuildContext context) {
+    _context = context;
   }
 }

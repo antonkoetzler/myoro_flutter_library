@@ -4,16 +4,16 @@ part of 'bundle/myoro_dropdown_bundle.dart';
 class MyoroMultiDropdown<T> extends StatelessWidget {
   const MyoroMultiDropdown({
     super.key,
-    this.style = const MyoroDropdownStyle(),
     required this.controller,
+    this.menuStyle = const MyoroMenuStyle(),
     required this.child,
   });
 
-  /// Style.
-  final MyoroDropdownStyle style;
-
   /// Controller.
   final MyoroMultiDropdownController<T> controller;
+
+  /// Style of the menu.
+  final MyoroMenuStyle menuStyle;
 
   /// Child.
   final Widget child;
@@ -21,6 +21,6 @@ class MyoroMultiDropdown<T> extends StatelessWidget {
   @override
   Widget build(_) {
     // ignore: invalid_use_of_protected_member
-    return _Base(key, controller.viewModel, style, child);
+    return _Base(key, controller.viewModel, menuStyle, child);
   }
 }

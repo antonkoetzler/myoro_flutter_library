@@ -78,6 +78,10 @@ final class _MyoroInputState extends State<MyoroInput> {
   void didUpdateWidget(covariant MyoroInput oldWidget) {
     super.didUpdateWidget(oldWidget);
     _viewModel.state.configuration = _configuration;
+    if (mounted && _style != oldWidget.style) {
+      print('here');
+      setState(() {});
+    }
   }
 
   @override
@@ -96,7 +100,10 @@ final class _MyoroInputState extends State<MyoroInput> {
         Provider.value(value: _style),
         Provider.value(value: _viewModel),
       ],
-      child: ValueListenableBuilder(valueListenable: enabledNotifier, builder: (_, _, _) => const _Wrapper()),
+      child: ValueListenableBuilder(
+        valueListenable: enabledNotifier,
+        builder: (_, _, _) => const _Wrapper(),
+      ),
     );
   }
 }

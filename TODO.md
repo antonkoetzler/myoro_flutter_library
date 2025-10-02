@@ -7,15 +7,14 @@
   - Make `MyoroLocationInput` with this new `MyoroDropdown` widget
 - `MyoroButtonConfiguration.isLoading`
 - `MyoroGradientScroll`
-- `MyoroButtonMenu`
+  - Refactor existing scrolls
+- `MyoroButtonDropdown`
+- Replace all `context.read` with styles to be `context.watch`
 - Storyboard
   - Rename storyboard to example
   - Searchbar in the widget listing
-  - Fix all bugs
-  - Remove redundant `checkboxOnChanged` fields in widget showcase option `Widget`s
   - Make MFL logo the storyboard app icon
   - Localization
-  - Delete `kiwi_container` and use `getIt` in storyboard and potentially in main code as well if testing is too hard without DI
 - Fix all tests and get back 100% coverage
 - Create docs HTML script
 - GitHub pages

@@ -7,7 +7,7 @@ part 'myoro_input_state.dart';
 class MyoroInputViewModel {
   MyoroInputViewModel(MyoroInputConfiguration configuration, MyoroInputFormatter? formatter)
     : _state = MyoroInputState(configuration, formatter) {
-    state.controller.addListener(controllerListener);
+    state.controller.addListener(_controllerListener);
   }
 
   /// State.
@@ -20,18 +20,10 @@ class MyoroInputViewModel {
 
   /// Dispose function.
   void dispose() {
-    (state.configuration.controller != null)
-        ? state.controller.removeListener(controllerListener)
-        : state.controller.dispose();
-    state.enabledNotifier.dispose();
-    if (state.configuration.showClearTextButton) state.showClearTextButtonNotifier.dispose();
-  }
-
-  /// [_controller]'s listener.
-  void controllerListener() {
-    if (state.configuration.showClearTextButton) {
-      state.showClearTextButton = state.controller.text.isNotEmpty;
+    if (state.configuration.controller != null) {
+      state.controller.removeListener(_controllerListener);
     }
+    state.dispose();
   }
 
   /// [MyoroCheckboxConfiguration.onChanged] of [_Checkbox].
@@ -48,5 +40,12 @@ class MyoroInputViewModel {
     state.formatter == null ? state.controller.clear() : state.controller.text = state.formatter!.initialText;
     state.configuration.onChanged?.call(state.controller.text);
     state.configuration.onCleared?.call();
+  }
+
+  /// [_controller]'s listener.
+  void _controllerListener() {
+    if (state.configuration.showClearTextButton) {
+      state.showClearTextButton = state.controller.text.isNotEmpty;
+    }
   }
 }
