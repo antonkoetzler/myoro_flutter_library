@@ -36,8 +36,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.onChanged,
     this.onCleared,
     this.inputKey,
-    this.checkboxKey,
-    this.clearTextButtonKey,
+    this.onPressed,
     this.focusNode,
     this.controller,
   });
@@ -62,8 +61,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       onChanged: faker.randomGenerator.boolean() ? ((_) {}) : null,
       onCleared: faker.randomGenerator.boolean() ? (() {}) : null,
       inputKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
-      checkboxKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
-      clearTextButtonKey: faker.randomGenerator.boolean() ? GlobalKey() : null,
+      onPressed: faker.randomGenerator.boolean() ? (() {}) : null,
       focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
       controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
     );
@@ -124,11 +122,10 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   /// [Key] of the [TextFormField] for specific cases.
   final Key? inputKey;
 
-  /// [Key] of the [MyoroCheckbox] for specific cases.
-  final Key? checkboxKey;
-
-  /// [Key] of the clear text button for specific cases.
-  final Key? clearTextButtonKey;
+  /// Function executed when the input is pressed.
+  ///
+  /// If this is provided, the input will be in read only mode (can't tap to focus).
+  final VoidCallback? onPressed;
 
   /// [FocusNode] of the input to programmatically focus on it.
   final FocusNode? focusNode;

@@ -40,8 +40,8 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
     bool onClearedProvided = true,
     Key? inputKey,
     bool inputKeyProvided = true,
-    Key? checkboxKey,
-    bool checkboxKeyProvided = true,
+    VoidCallback? onPressed,
+    bool onPressedProvided = true,
     FocusNode? focusNode,
     bool focusNodeProvided = true,
     TextEditingController? controller,
@@ -60,8 +60,6 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       onCleared: onClearedProvided ? (onCleared ?? self.onCleared) : null,
-      inputKey: inputKeyProvided ? (inputKey ?? self.inputKey) : null,
-      checkboxKey: checkboxKeyProvided ? (checkboxKey ?? self.checkboxKey) : null,
       controller: controllerProvided ? (controller ?? self.controller) : null,
     );
   }
@@ -86,7 +84,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
         other.onChanged == self.onChanged &&
         other.onCleared == self.onCleared &&
         other.inputKey == self.inputKey &&
-        other.checkboxKey == self.checkboxKey &&
+        other.onPressed == self.onPressed &&
         other.focusNode == self.focusNode &&
         other.controller == self.controller;
   }
@@ -110,7 +108,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       self.onChanged,
       self.onCleared,
       self.inputKey,
-      self.checkboxKey,
+      self.onPressed,
       self.focusNode,
       self.controller,
     );
@@ -135,7 +133,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       '  onChanged: ${self.onChanged},\n'
       '  onCleared: ${self.onCleared},\n'
       '  inputKey: ${self.inputKey},\n'
-      '  checkboxKey: ${self.checkboxKey},\n'
+      '  onPressed: ${self.onPressed},\n'
       '  focusNode: ${self.focusNode},\n'
       '  controller: ${self.controller},\n'
       ');';

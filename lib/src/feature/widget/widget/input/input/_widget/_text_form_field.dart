@@ -28,64 +28,72 @@ final class _TextFormField extends StatelessWidget {
     final controller = state.controller;
     final formatter = state.formatter;
     final enabled = state.enabled;
+    final onPressed = configuration.onPressed;
 
     final border = style.border ?? themeExtension.border ?? configuration.inputStyle.getBorder(context);
-
-    Widget buildTextFormField([bool showClearTextButton = false]) {
-      return TextFormField(
-        ignorePointers: false,
-        enabled: enabled,
-        readOnly: readOnly,
-        autofocus: autofocus,
-        style: textStyle?.withColor(
-          textStyle.color!.withValues(alpha: enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity)),
-        ),
-        decoration: InputDecoration(
-          floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
-          label: label.isNotEmpty ? const _Label() : null,
-          hintText: placeholder.isNotEmpty ? placeholder : null,
-          hintStyle: textStyle?.withColor(
-            textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
-          ),
-          enabledBorder: border,
-          focusedBorder: border,
-          errorBorder: border?.copyWith(
-            borderSide: border.borderSide.copyWith(color: style.errorBorderColor ?? themeExtension.errorBorderColor),
-          ),
-          disabledBorder: border?.copyWith(
-            borderSide: border.borderSide.copyWith(
-              color: border.borderSide.color.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
-            ),
-          ),
-          isDense: true,
-          contentPadding: contentPadding,
-          suffixIcon: showClearTextButton ? const _ClearTextButton() : null,
-        ),
-        textAlign: textAlign,
-        cursorHeight: style.cursorHeight ?? themeExtension.cursorHeight,
-        validator: (_) => validation?.call(controller.text),
-        inputFormatters: [?formatter],
-        onFieldSubmitted: onFieldSubmitted,
-        onChanged: onChanged,
-        focusNode: focusNode,
-        controller: controller,
-      );
-    }
 
     // Get the border radius from the border to apply it to the background
     final borderRadius = border is OutlineInputBorder ? border.borderRadius : null;
 
     return DecoratedBox(
       decoration: BoxDecoration(color: primaryColor, borderRadius: borderRadius),
-      child: configuration.showClearTextButton
-          ? ValueListenableBuilder(
-              valueListenable: state.showClearTextButtonNotifier,
-              builder: (_, showClearTextButton, _) {
-                showClearTextButton = clearTextButtonIcon != null && showClearTextButton;
-                return buildTextFormField(showClearTextButton);
-              },
-            )
-          : buildTextFormField(),
+      child: ValueListenableBuilder(
+        valueListenable: state.showClearTextButtonNotifier,
+        builder: (_, showClearTextButton, _) {
+          showClearTextButton = clearTextButtonIcon != null && showClearTextButton && configuration.showClearTextButton;
+
+          return Stack(
+            children: [
+              TextFormField(
+                ignorePointers: false,
+                enabled: enabled,
+                readOnly: readOnly,
+                autofocus: autofocus,
+                style: textStyle?.withColor(
+                  textStyle.color!.withValues(
+                    alpha: enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
+                  ),
+                ),
+                decoration: InputDecoration(
+                  floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
+                  label: label.isNotEmpty ? const _Label() : null,
+                  hintText: placeholder.isNotEmpty ? placeholder : null,
+                  hintStyle: textStyle?.withColor(
+                    textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
+                  ),
+                  enabledBorder: border,
+                  focusedBorder: border,
+                  errorBorder: border?.copyWith(
+                    borderSide: border.borderSide.copyWith(
+                      color: style.errorBorderColor ?? themeExtension.errorBorderColor,
+                    ),
+                  ),
+                  disabledBorder: border?.copyWith(
+                    borderSide: border.borderSide.copyWith(
+                      color: border.borderSide.color.withValues(
+                        alpha: style.disabledOpacity ?? themeExtension.disabledOpacity,
+                      ),
+                    ),
+                  ),
+                  isDense: true,
+                  contentPadding: contentPadding,
+                  suffixIcon: showClearTextButton ? const _ClearTextButton() : null,
+                ),
+                textAlign: textAlign,
+                cursorHeight: style.cursorHeight ?? themeExtension.cursorHeight,
+                validator: (_) => validation?.call(controller.text),
+                inputFormatters: [?formatter],
+                onFieldSubmitted: onFieldSubmitted,
+                onChanged: onChanged,
+                focusNode: focusNode,
+                controller: controller,
+              ),
+              here
+              Positioned.fill(child: Container(color: Colors.red.withOpacity(0.3))),
+            ],
+          );
+        },
+      ),
     );
   }
 }

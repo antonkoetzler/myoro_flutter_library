@@ -24,7 +24,6 @@ final class MyoroTimePickerInputConfiguration extends MyoroInputConfiguration
     super.onChanged,
     super.onCleared,
     super.inputKey,
-    super.checkboxKey,
     super.controller,
   }) : super(placeholder: MyoroInputConfiguration.placeholderDefaultValue, readOnly: true, autofocus: false);
 

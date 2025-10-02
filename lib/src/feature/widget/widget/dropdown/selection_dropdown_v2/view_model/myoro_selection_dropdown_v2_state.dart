@@ -25,40 +25,14 @@ class MyoroSelectionDropdownV2State<
   /// Input controller.
   final _inputController = TextEditingController();
 
-  /// [ValueNotifier] of the [_inputKey]'s size.
-  final _inputAndInputClearTextButtonSizeController =
-      ValueNotifier<MyoroSelectionDropdownV2InputAndInputClearTextButtonSize?>(null);
-
-  /// [GlobalKey] of the input's clear text button.
-  final _inputClearTextButtonKey = GlobalKey();
-
   /// Dispose function.
   void dispose() {
     dropdownController.dispose();
     _inputController.dispose();
-    _inputAndInputClearTextButtonSizeController.dispose();
   }
 
   /// [_inputController] getter.
   TextEditingController get inputController {
     return _inputController;
-  }
-
-  /// [_inputAndInputClearTextButtonSizeController] getter.
-  ValueNotifier<MyoroSelectionDropdownV2InputAndInputClearTextButtonSize?>
-  get inputAndInputClearTextButtonSizeController {
-    return _inputAndInputClearTextButtonSizeController;
-  }
-
-  /// [_inputClearTextButtonKey] getter.
-  GlobalKey get inputClearTextButtonKey {
-    return _inputClearTextButtonKey;
-  }
-
-  /// [_inputAndInputClearTextButtonSizeController] setter.
-  set inputAndInputClearTextButtonSize(
-    MyoroSelectionDropdownV2InputAndInputClearTextButtonSize? inputAndInputClearTextButtonSize,
-  ) {
-    _inputAndInputClearTextButtonSizeController.value = inputAndInputClearTextButtonSize;
   }
 }

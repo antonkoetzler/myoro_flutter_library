@@ -23,8 +23,6 @@ final class MyoroDatePickerInputConfiguration extends MyoroInputConfiguration
     super.onFieldSubmitted,
     super.onChanged,
     super.onCleared,
-    super.inputKey,
-    super.checkboxKey,
     super.controller,
   }) : super(placeholder: MyoroInputConfiguration.placeholderDefaultValue, readOnly: true, autofocus: false);
 

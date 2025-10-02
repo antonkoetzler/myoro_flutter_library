@@ -15,17 +15,13 @@ final class _ClearTextButton extends StatelessWidget {
 
     final viewModel = context.read<MyoroInputViewModel>();
     final clearText = viewModel.clearText;
-    final state = viewModel.state;
-    final configuration = state.configuration;
-    final clearTextButtonKey = configuration.clearTextButtonKey;
 
     return IntrinsicWidth(
       child: Padding(
         padding: clearTextButtonPadding,
         child: ColoredBox(
-          color: Colors.cyan.withOpacity(0.3),
+          color: Colors.cyan,
           child: MyoroIconTextButton(
-            key: clearTextButtonKey,
             configuration: MyoroIconTextButtonConfiguration(
               onTapUp: (_) => clearText(),
               iconConfiguration: MyoroIconConfiguration(icon: clearTextButtonIcon, size: clearTextButtonIconSize),
