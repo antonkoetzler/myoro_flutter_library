@@ -1,10 +1,7 @@
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Input dropdown configuration.
-abstract class MyoroInputDropdownConfiguration<
-  T,
-  MENU_CONFIGURATION extends MyoroMenuConfiguration<T>
->
+abstract class MyoroInputDropdownConfiguration<T, MENU_CONFIGURATION extends MyoroMenuConfiguration<T>>
     extends MyoroDropdownConfiguration<T, MENU_CONFIGURATION> {
   const MyoroInputDropdownConfiguration({
     super.dropdownType,

@@ -2,11 +2,15 @@ part of 'bundle/myoro_input_dropdown_bundle.dart';
 
 /// Multi item input dropdown.
 class MyoroMultiInputDropdown<T> extends StatefulWidget {
-  const MyoroMultiInputDropdown({super.key, this.configuration, this.controller})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroMultiInputDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
-      );
+  const MyoroMultiInputDropdown({
+    super.key,
+    this.configuration,
+    this.controller,
+    this.style = const MyoroInputDropdownStyle(),
+  }) : assert(
+         (controller != null) ^ (configuration != null),
+         '[MyoroMultiInputDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
+       );
 
   /// Controller.
   final MyoroMultiInputDropdownController<T>? controller;
@@ -14,11 +18,16 @@ class MyoroMultiInputDropdown<T> extends StatefulWidget {
   /// Configuration.
   final MyoroMultiInputDropdownConfiguration<T>? configuration;
 
+  /// Style.
+  final MyoroInputDropdownStyle style;
+
   @override
   State<MyoroMultiInputDropdown<T>> createState() => _MyoroMultiInputDropdownState<T>();
 }
 
 final class _MyoroMultiInputDropdownState<T> extends State<MyoroMultiInputDropdown<T>> {
+  MyoroInputDropdownStyle get _style => widget.style;
+
   MyoroMultiInputDropdownViewModel<T>? _localViewModel;
   MyoroMultiInputDropdownViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
@@ -34,6 +43,6 @@ final class _MyoroMultiInputDropdownState<T> extends State<MyoroMultiInputDropdo
 
   @override
   Widget build(_) {
-    return _Base(_viewModel);
+    return _Base(_viewModel, _style);
   }
 }

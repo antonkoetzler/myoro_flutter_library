@@ -6,8 +6,7 @@ part 'myoro_single_dropdown_configuration.g.dart';
 
 /// Configuration model of [MyoroSingleDropdown].
 @myoroModel
-class MyoroSingleDropdownConfiguration<T>
-    extends MyoroDropdownConfiguration<T, MyoroSingleMenuConfiguration<T>>
+class MyoroSingleDropdownConfiguration<T> extends MyoroDropdownConfiguration<T, MyoroSingleMenuConfiguration<T>>
     with _$MyoroSingleDropdownConfigurationMixin<T> {
   const MyoroSingleDropdownConfiguration({
     super.dropdownType,

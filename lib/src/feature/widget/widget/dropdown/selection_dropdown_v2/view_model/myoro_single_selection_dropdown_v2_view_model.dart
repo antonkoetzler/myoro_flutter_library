@@ -33,7 +33,11 @@ class MyoroSingleSelectionDropdownV2ViewModel<T>
 
   @override
   Widget buildDropdownWidget(Widget inputWidget) {
-    return MyoroSingleDropdown(controller: state.dropdownController, child: inputWidget);
+    return MyoroSingleDropdown(
+      controller: state.dropdownController,
+      menuStyle: MyoroMenuStyle(border: Border.all(width: 2, color: Colors.pink)),
+      child: inputWidget,
+    );
   }
 
   /// Listener of [MyoroSingleDropdownController.selectedItemNotifier].

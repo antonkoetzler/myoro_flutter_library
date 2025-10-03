@@ -100,10 +100,7 @@ final class _MyoroInputState extends State<MyoroInput> {
         Provider.value(value: _style),
         Provider.value(value: _viewModel),
       ],
-      child: ValueListenableBuilder(
-        valueListenable: enabledNotifier,
-        builder: (_, _, _) => const _Wrapper(),
-      ),
+      child: ValueListenableBuilder(valueListenable: enabledNotifier, builder: (_, _, _) => const _Wrapper()),
     );
   }
 }

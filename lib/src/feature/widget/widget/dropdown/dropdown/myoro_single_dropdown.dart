@@ -5,7 +5,7 @@ class MyoroSingleDropdown<T> extends StatelessWidget {
   const MyoroSingleDropdown({
     super.key,
     required this.controller,
-    required this.menuStyle,
+    this.menuStyle = const MyoroMenuStyle(),
     required this.child,
   });
 

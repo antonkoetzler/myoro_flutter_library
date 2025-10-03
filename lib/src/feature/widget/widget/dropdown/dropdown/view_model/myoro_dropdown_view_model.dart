@@ -22,6 +22,9 @@ abstract class MyoroDropdownViewModel<
   /// Build context to show the dropdown in a modal or bottom sheet.
   BuildContext? _context;
 
+  /// Menu style.
+  MyoroMenuStyle? _menuStyle;
+
   /// State.
   final MyoroDropdownState<T, C, MENU_CONTROLLER> _state;
 
@@ -62,9 +65,6 @@ abstract class MyoroDropdownViewModel<
     _state.showing = false;
   }
 
-  /// Builds the dropdown (menu) [Widget].
-  Widget menuWidget(MyoroMenuStyle menuStyle);
-
   /// Listener for [_state.showingController].
   void _showingControllerListener() {
     final configuration = _state.configuration;
@@ -73,18 +73,32 @@ abstract class MyoroDropdownViewModel<
     final isBottomSheet = dropdownType.isBottomSheet;
     final showing = _state.showing;
     if (showing) {
-      if (isModal) MyoroModal.showModal(context, child: menuWidget(poop));
-      if (isBottomSheet) MyoroModal.showBottomSheet(context, child: menuWidget(poop));
+      if (isModal) MyoroModal.showModal(context, child: menuWidget);
+      if (isBottomSheet) MyoroModal.showBottomSheet(context, child: menuWidget);
     } else {
       if (isModal) context.navigator.pop();
       if (isBottomSheet) context.navigator.pop();
     }
   }
 
+  /// Builds the dropdown (menu) [Widget].
+  Widget get menuWidget;
+
   /// [_context] getter.
   BuildContext get context {
     assert(_context != null, '[MyoroDropdownViewModel.context]: [context] has not been set yet.');
     return _context!;
+  }
+
+  /// [_menuStyle] getter.
+  MyoroMenuStyle get menuStyle {
+    assert(_menuStyle != null, '[MyoroDropdownViewModel.menuStyle]: [menuStyle] has not been set yet.');
+    return _menuStyle!;
+  }
+
+  /// Getter that returns if [_menuStyle] is set.
+  bool get menuStyleInitialized {
+    return _menuStyle != null;
   }
 
   /// [_state] getter.
@@ -106,5 +120,10 @@ abstract class MyoroDropdownViewModel<
   /// [_context] setter.
   set context(BuildContext context) {
     _context = context;
+  }
+
+  /// [_menuStyle] setter.
+  set menuStyle(MyoroMenuStyle menuStyle) {
+    _menuStyle = menuStyle;
   }
 }

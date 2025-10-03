@@ -18,10 +18,14 @@ final class _Base<
   >
 >
     extends StatelessWidget {
-  const _Base(this.viewModel);
+  const _Base(this.viewModel, this._style);
 
   /// Configuration.
   final VIEW_MODEL viewModel;
+
+  /// Style.
+  YOU ARE HERE, WE NEED TO FIND OUT HOW TO USE THIS.
+  final MyoroInputDropdownStyle _style;
 
   @override
   Widget build(context) {
@@ -36,13 +40,11 @@ final class _Base<
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final outlinedBorder = inputThemeExtension.outlinedBorder;
     final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(
-        bottomLeft: Radius.zero,
-        bottomRight: Radius.zero,
-      ),
+      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
     );
 
     return viewModel.buildDropdownWidget(
+      context,
       ValueListenableBuilder(
         valueListenable: showingController,
         builder: (_, showing, _) {

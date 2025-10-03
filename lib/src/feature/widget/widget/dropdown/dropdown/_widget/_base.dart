@@ -4,11 +4,7 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 class _Base<
   T,
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<
-    T,
-    C,
-    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
-  >
+  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
 >
     extends StatelessWidget {
   const _Base(Key? key, this._viewModel, this._menuStyle, this._child) : super(key: key);
@@ -26,6 +22,9 @@ class _Base<
   Widget build(context) {
     // Set the context for the modal and bottom sheet variations.
     _viewModel.context = context;
+
+    // Set the menu style for the dropdown.
+    _viewModel.menuStyle = _menuStyle;
 
     final state = _viewModel.state;
     final link = state.link;
@@ -47,7 +46,7 @@ class _Base<
               child: TapRegion(
                 groupId: state.tapRegionGroupId,
                 onTapOutside: (_) => _viewModel.disable(),
-                child: menuWidget(_menuStyle),
+                child: menuWidget,
               ),
             ),
           ),
@@ -72,10 +71,7 @@ class _Base<
                     Flexible(
                       child: TapRegion(
                         groupId: state.tapRegionGroupId,
-                        child: SizedBox(
-                          width: state.targetKeySize?.width,
-                          child: menuWidget(_menuStyle),
-                        ),
+                        child: SizedBox(width: state.targetKeySize?.width, child: menuWidget),
                       ),
                     ),
                 ],

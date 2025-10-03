@@ -51,6 +51,27 @@ abstract class MyoroInputDropdownViewModel<
     state.dropdownController.disableDropdown();
   }
 
+  /// Builds the [MyoroMenuStyle].
+  MyoroMenuStyle buildMenuStyle(BuildContext context) {
+    final menuThemeExtension = context.resolveThemeExtension<MyoroInputDropdownThemeExtension>();
+    final menuStyle = state.dropdownController.menuStyle;
+    final border = menuStyle?.border ?? menuThemeExtension.menuBorder;
+    final borderRadius = menuStyle?.borderRadius ?? menuThemeExtension.menuBorderRadius;
+
+    final configuration = state.configuration;
+    final dropdownType = configuration.dropdownType;
+    final isExpanded = dropdownType == MyoroDropdownTypeEnum.expanding;
+    final isDropdown = dropdownType == MyoroDropdownTypeEnum.overlay;
+    final isExpandedOrDropdown = isExpanded || isDropdown;
+
+    return (menuStyle ?? const MyoroMenuStyle()).copyWith(
+      border: border,
+      borderProvided: isExpandedOrDropdown,
+      borderRadius: borderRadius,
+      borderRadiusProvided: isExpandedOrDropdown,
+    );
+  }
+
   /// Builds the dropdown [Widget].
-  Widget buildDropdownWidget(Widget inputWidget);
+  Widget buildDropdownWidget(BuildContext context, Widget inputWidget);
 }

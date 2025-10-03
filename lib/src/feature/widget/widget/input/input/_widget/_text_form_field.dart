@@ -11,8 +11,7 @@ final class _TextFormField extends StatelessWidget {
     final clearTextButtonIcon = style.clearTextButtonIcon ?? themeExtension.clearTextButtonIcon;
     final textStyle = style.inputTextStyle ?? themeExtension.inputTextStyle;
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
-    final primaryColor =
-        style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
+    final primaryColor = style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
 
     final viewModel = context.read<MyoroInputViewModel>();
     final state = viewModel.state;
@@ -32,8 +31,7 @@ final class _TextFormField extends StatelessWidget {
     final onTap = configuration.onTap;
     final inputKey = configuration.inputKey;
 
-    final border =
-        style.border ?? themeExtension.border ?? configuration.inputStyle.getBorder(context);
+    final border = style.border ?? themeExtension.border ?? configuration.inputStyle.getBorder(context);
 
     // Get the border radius from the border to apply it to the background
     final borderRadius = border is OutlineInputBorder ? border.borderRadius : null;
@@ -43,10 +41,7 @@ final class _TextFormField extends StatelessWidget {
       child: ValueListenableBuilder(
         valueListenable: state.showClearTextButtonNotifier,
         builder: (_, showClearTextButton, _) {
-          showClearTextButton =
-              clearTextButtonIcon != null &&
-              showClearTextButton &&
-              configuration.showClearTextButton;
+          showClearTextButton = clearTextButtonIcon != null && showClearTextButton && configuration.showClearTextButton;
 
           return Stack(
             children: [
@@ -68,9 +63,7 @@ final class _TextFormField extends StatelessWidget {
                   label: label.isNotEmpty ? const _Label() : null,
                   hintText: placeholder.isNotEmpty ? placeholder : null,
                   hintStyle: textStyle?.withColor(
-                    textStyle.color!.withValues(
-                      alpha: style.disabledOpacity ?? themeExtension.disabledOpacity,
-                    ),
+                    textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
                   ),
                   enabledBorder: border,
                   focusedBorder: border,

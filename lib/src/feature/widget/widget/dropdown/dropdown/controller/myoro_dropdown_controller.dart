@@ -12,10 +12,6 @@ abstract class MyoroDropdownController<
   /// View model.
   final V _viewModel;
 
-  /// [_viewModel] getter.
-  @protected
-  V get viewModel => _viewModel;
-
   /// Dispose function.
   @mustCallSuper
   void dispose() {
@@ -45,6 +41,15 @@ abstract class MyoroDropdownController<
   /// Clears all selected items.
   void clear() {
     _viewModel.state.menuController.clear();
+  }
+
+  /// [_viewModel] getter.
+  @protected
+  V get viewModel => _viewModel;
+
+  /// Style of the dropdown (if it is set).
+  MyoroMenuStyle? get menuStyle {
+    return _viewModel.menuStyleInitialized ? _viewModel.menuStyle : null;
   }
 
   /// Configuration getter.

@@ -32,10 +32,10 @@ class MyoroSingleInputDropdownViewModel<T>
   }
 
   @override
-  Widget buildDropdownWidget(Widget inputWidget) {
+  Widget buildDropdownWidget(BuildContext context, Widget inputWidget) {
     return MyoroSingleDropdown(
       controller: state.dropdownController,
-      menuStyle: MyoroMenuStyle(border: Border.all(width: 2, color: Colors.pink)),
+      menuStyle: buildMenuStyle(context),
       child: inputWidget,
     );
   }
