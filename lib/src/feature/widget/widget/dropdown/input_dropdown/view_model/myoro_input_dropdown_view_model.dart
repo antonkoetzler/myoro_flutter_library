@@ -55,6 +55,7 @@ abstract class MyoroInputDropdownViewModel<
   MyoroMenuStyle buildMenuStyle(BuildContext context) {
     final menuThemeExtension = context.resolveThemeExtension<MyoroInputDropdownThemeExtension>();
     final menuStyle = state.dropdownController.menuStyle;
+    YOU GOTTA USE IT HERE!!
     final border = menuStyle?.border ?? menuThemeExtension.menuBorder;
     final borderRadius = menuStyle?.borderRadius ?? menuThemeExtension.menuBorderRadius;
 
