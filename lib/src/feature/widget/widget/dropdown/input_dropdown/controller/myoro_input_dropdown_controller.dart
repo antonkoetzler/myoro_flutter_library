@@ -4,9 +4,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Controller of an input dropdown.
 abstract class MyoroInputDropdownController<
   T,
+  CONFIGURATION extends MyoroInputDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
   VIEW_MODEL extends MyoroInputDropdownViewModel<
     T,
-    MyoroInputDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+    CONFIGURATION,
     MyoroDropdownController<
       T,
       MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
@@ -28,5 +29,10 @@ abstract class MyoroInputDropdownController<
   @mustCallSuper
   void dispose() {
     viewModel.dispose();
+  }
+
+  /// Getter of the dropdown's configuration.
+  CONFIGURATION get configuration {
+    return viewModel.state.configuration;
   }
 }

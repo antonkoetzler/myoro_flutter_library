@@ -3,12 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// View model of a single item input dropdown.
 class MyoroSingleInputDropdownViewModel<T>
-    extends
-        MyoroInputDropdownViewModel<
-          T,
-          MyoroSingleInputDropdownConfiguration<T>,
-          MyoroSingleDropdownController<T>
-        > {
+    extends MyoroInputDropdownViewModel<T, MyoroSingleInputDropdownConfiguration<T>, MyoroSingleDropdownController<T>> {
   MyoroSingleInputDropdownViewModel(MyoroSingleInputDropdownConfiguration<T> configuration)
     : super(
         configuration,
@@ -26,9 +21,7 @@ class MyoroSingleInputDropdownViewModel<T>
   @override
   void formatItems() {
     final selectedItem = state.dropdownController.selectedItem;
-    state.inputController.text = selectedItem != null
-        ? state.configuration.selectedItemBuilder(selectedItem)
-        : '';
+    state.inputController.text = selectedItem != null ? state.configuration.selectedItemBuilder(selectedItem) : '';
   }
 
   @override

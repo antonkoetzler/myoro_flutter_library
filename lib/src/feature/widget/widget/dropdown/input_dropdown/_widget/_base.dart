@@ -24,7 +24,6 @@ final class _Base<
   final VIEW_MODEL viewModel;
 
   /// Style.
-  YOU ARE HERE, WE NEED TO FIND OUT HOW TO USE THIS.
   final MyoroInputDropdownStyle _style;
 
   @override
@@ -40,34 +39,42 @@ final class _Base<
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final outlinedBorder = inputThemeExtension.outlinedBorder;
     final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
+      borderRadius: outlinedBorder.borderRadius.copyWith(
+        bottomLeft: Radius.zero,
+        bottomRight: Radius.zero,
+      ),
     );
 
-    return viewModel.buildDropdownWidget(
-      context,
-      ValueListenableBuilder(
-        valueListenable: showingController,
-        builder: (_, showing, _) {
-          final inputBorder = switch (dropdownType) {
-            MyoroDropdownTypeEnum.overlay => showing ? menuActiveInputBorderRadius : null,
-            MyoroDropdownTypeEnum.expanding => showing ? menuActiveInputBorderRadius : null,
-            MyoroDropdownTypeEnum.modal => null,
-            MyoroDropdownTypeEnum.bottomSheet => null,
-          };
+    return InheritedProvider.value(
+      value: _style,
+      child: Builder(
+        builder: (context) => viewModel.buildDropdownWidget(
+          context,
+          ValueListenableBuilder(
+            valueListenable: showingController,
+            builder: (_, showing, _) {
+              final inputBorder = switch (dropdownType) {
+                MyoroDropdownTypeEnum.overlay => showing ? menuActiveInputBorderRadius : null,
+                MyoroDropdownTypeEnum.expanding => showing ? menuActiveInputBorderRadius : null,
+                MyoroDropdownTypeEnum.modal => null,
+                MyoroDropdownTypeEnum.bottomSheet => null,
+              };
 
-          return MyoroInput(
-            key: state.dropdownController.configuration.targetKey,
-            configuration: MyoroInputConfiguration(
-              // This is to disable the [BoxBorder] lerp animation when we need to alter the bottom corners of this
-              // [MyoroInput] when the dropdown is opened when menuTypeEnum is [MyoroDropdownTypeEnum.expanding].
-              inputKey: ValueKey(inputBorder),
-              readOnly: true,
-              onTap: toggleDropdown,
-              controller: inputController,
-            ),
-            style: MyoroInputStyle(border: inputBorder),
-          );
-        },
+              return MyoroInput(
+                key: state.dropdownController.configuration.targetKey,
+                configuration: MyoroInputConfiguration(
+                  // This is to disable the [BoxBorder] lerp animation when we need to alter the bottom corners of this
+                  // [MyoroInput] when the dropdown is opened when menuTypeEnum is [MyoroDropdownTypeEnum.expanding].
+                  inputKey: ValueKey(inputBorder),
+                  readOnly: true,
+                  onTap: toggleDropdown,
+                  controller: inputController,
+                ),
+                style: MyoroInputStyle(border: inputBorder),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

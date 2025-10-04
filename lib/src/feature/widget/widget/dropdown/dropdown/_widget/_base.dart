@@ -4,7 +4,11 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 class _Base<
   T,
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
+  V extends MyoroDropdownViewModel<
+    T,
+    C,
+    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+  >
 >
     extends StatelessWidget {
   const _Base(Key? key, this._viewModel, this._menuStyle, this._child) : super(key: key);

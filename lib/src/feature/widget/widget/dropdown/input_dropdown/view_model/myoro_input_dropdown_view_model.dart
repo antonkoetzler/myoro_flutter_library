@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
 
 part 'myoro_input_dropdown_state.dart';
 
@@ -55,9 +56,10 @@ abstract class MyoroInputDropdownViewModel<
   MyoroMenuStyle buildMenuStyle(BuildContext context) {
     final menuThemeExtension = context.resolveThemeExtension<MyoroInputDropdownThemeExtension>();
     final menuStyle = state.dropdownController.menuStyle;
-    YOU GOTTA USE IT HERE!!
-    final border = menuStyle?.border ?? menuThemeExtension.menuBorder;
-    final borderRadius = menuStyle?.borderRadius ?? menuThemeExtension.menuBorderRadius;
+    final style = context.watch<MyoroInputDropdownStyle>();
+    final border = menuStyle?.border ?? style.menuBorder ?? menuThemeExtension.menuBorder;
+    final borderRadius =
+        menuStyle?.borderRadius ?? style.menuBorderRadius ?? menuThemeExtension.menuBorderRadius;
 
     final configuration = state.configuration;
     final dropdownType = configuration.dropdownType;

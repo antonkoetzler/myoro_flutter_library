@@ -6,48 +6,29 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final widgetShowcaseThemeExtension =
+        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
 
-    return Column(
-      spacing: spacing,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Flexible(
-          child: MyoroSingleInputDropdown(
-            configuration: MyoroSingleInputDropdownConfiguration(
-              dropdownType: MyoroDropdownTypeEnum.overlay,
-              menuConfiguration: MyoroSingleMenuConfiguration(
-                request: () => {'Start'},
-                itemBuilder:
-                    (item) => MyoroMenuItem(
-                      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                        textConfiguration: MyoroTextConfiguration(text: item),
-                      ),
-                    ),
-              ),
-              selectedItemBuilder: (item) => item,
+    final viewModel = context.read<MyoroInputDropdownsWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+
+    return ListenableBuilder(
+      listenable: state,
+      builder: (_, _) {
+        return Column(
+          spacing: spacing,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(
+              child: MyoroSingleInputDropdown(configuration: viewModel.buildSingleConfiguration()),
             ),
-          ),
-        ),
-        Flexible(
-          child: MyoroMultiInputDropdown(
-            configuration: MyoroMultiInputDropdownConfiguration(
-              dropdownType: MyoroDropdownTypeEnum.overlay,
-              menuConfiguration: MyoroMultiMenuConfiguration(
-                request: () => {'Start'},
-                itemBuilder:
-                    (item) => MyoroMenuItem(
-                      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                        textConfiguration: MyoroTextConfiguration(text: item),
-                      ),
-                    ),
-              ),
-              selectedItemBuilder: (item) => item,
+            Flexible(
+              child: MyoroMultiInputDropdown(configuration: viewModel.buildMultiConfiguration()),
             ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }

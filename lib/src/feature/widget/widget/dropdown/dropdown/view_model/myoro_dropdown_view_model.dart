@@ -47,9 +47,9 @@ abstract class MyoroDropdownViewModel<
     final showing = _state.showing;
     final targetKey = configuration.targetKey;
     if (showing) return;
-    if (isOverlay) state.overlayPortalController.show();
     final targetKeyRenderBox = targetKey?.currentContext?.findRenderObject() as RenderBox?;
     state.targetKeySize = targetKeyRenderBox?.size;
+    if (isOverlay) state.overlayPortalController.show();
     _state.showing = true;
   }
 
@@ -92,7 +92,10 @@ abstract class MyoroDropdownViewModel<
 
   /// [_menuStyle] getter.
   MyoroMenuStyle get menuStyle {
-    assert(_menuStyle != null, '[MyoroDropdownViewModel.menuStyle]: [menuStyle] has not been set yet.');
+    assert(
+      _menuStyle != null,
+      '[MyoroDropdownViewModel.menuStyle]: [menuStyle] has not been set yet.',
+    );
     return _menuStyle!;
   }
 
