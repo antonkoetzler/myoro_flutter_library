@@ -7,7 +7,7 @@ final class MyoroColors {
 
   /// Grays
   static const gray1 = Color(0xFF202020);
-  static const gray2 = Color(0xFFEDEADE);
+  static const gray2 = Color(0xFFD0D0D0);
   static const gray3 = Color(0xFFEFEFEF);
 
   /// Greens

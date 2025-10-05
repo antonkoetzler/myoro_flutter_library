@@ -58,8 +58,7 @@ abstract class MyoroInputDropdownViewModel<
     final menuStyle = state.dropdownController.menuStyle;
     final style = context.watch<MyoroInputDropdownStyle>();
     final border = menuStyle?.border ?? style.menuBorder ?? menuThemeExtension.menuBorder;
-    final borderRadius =
-        menuStyle?.borderRadius ?? style.menuBorderRadius ?? menuThemeExtension.menuBorderRadius;
+    final borderRadius = menuStyle?.borderRadius ?? style.menuBorderRadius ?? menuThemeExtension.menuBorderRadius;
 
     final configuration = state.configuration;
     final dropdownType = configuration.dropdownType;

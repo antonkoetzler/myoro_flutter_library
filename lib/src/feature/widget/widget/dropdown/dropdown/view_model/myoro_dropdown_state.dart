@@ -29,6 +29,16 @@ class MyoroDropdownState<
   /// [ValueNotifier] controlling if the dropdown is being displayed or not.
   final _showingController = ValueNotifier<bool>(false);
 
+  /// [bool] to control if the modal/bottom sheet can be popped or not.
+  bool modalShowing = false;
+
+  /// [GlobalKey] of the base [Widget] so that we can open the modal and bottom sheet with it's [BuildContext].
+  final _baseKey = GlobalKey();
+
+  /// [TapRegion.groupId] of trigger area and dropdown so [TapRegion.onTapOutside]
+  /// (which closes the dropdown) only activates when trigger area/dropdown is not pressed.
+  late final _tapRegionGroupId = 'MyoroDropdown#$hashCode';
+
   /// [Size] of [MyoroDropdownConfiguration.overlayTargetKey]'s [Widget] to apply the offset.
   Size? targetKeySize;
 
@@ -58,6 +68,16 @@ class MyoroDropdownState<
     return _showingController.value;
   }
 
+  /// [_baseKey] getter.
+  GlobalKey get baseKey {
+    return _baseKey;
+  }
+
+  /// [_tapRegionGroupId] getter.
+  String get tapRegionGroupId {
+    return _tapRegionGroupId;
+  }
+
   /// [_showingController] setter.
   set showing(bool showingController) {
     _showingController.value = showingController;
@@ -66,14 +86,5 @@ class MyoroDropdownState<
   /// [_overlayPortalController] setter.
   set overlayPortalController(OverlayPortalController? overlayPortalController) {
     _overlayPortalController = overlayPortalController;
-  }
-
-  /// [TapRegion.groupId] of trigger area and dropdown so [TapRegion.onTapOutside]
-  /// (which closes the dropdown) only activates when trigger area/dropdown is not pressed.
-  late final _tapRegionGroupId = 'MyoroDropdown#$hashCode';
-
-  /// [_tapRegionGroupId] getter.
-  String get tapRegionGroupId {
-    return _tapRegionGroupId;
   }
 }

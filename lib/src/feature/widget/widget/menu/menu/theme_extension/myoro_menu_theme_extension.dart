@@ -43,7 +43,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     TextTheme textTheme,
     MyoroDecorationThemeExtension decorationThemeExtension,
   ) : constraints = const BoxConstraints(),
-      border = null,
+      border = Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
       backgroundColor = colorScheme.primary,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       searchBarPadding = const EdgeInsets.all(kMyoroMultiplier * 2.5),

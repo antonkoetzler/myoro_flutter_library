@@ -8,7 +8,6 @@ class MyoroSingleInputDropdownController<T>
           MyoroSingleInputDropdownConfiguration<T>,
           MyoroSingleInputDropdownViewModel<T>
         > {
-  MyoroSingleInputDropdownController({
-    required MyoroSingleInputDropdownConfiguration<T> configuration,
-  }) : super(MyoroSingleInputDropdownViewModel(configuration));
+  MyoroSingleInputDropdownController({required MyoroSingleInputDropdownConfiguration<T> configuration})
+    : super(MyoroSingleInputDropdownViewModel(configuration));
 }

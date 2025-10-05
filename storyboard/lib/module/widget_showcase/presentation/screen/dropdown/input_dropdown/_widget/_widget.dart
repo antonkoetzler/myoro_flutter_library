@@ -6,8 +6,7 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final widgetShowcaseThemeExtension =
-        context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
 
     final viewModel = context.read<MyoroInputDropdownsWidgetShowcaseScreenViewModel>();
@@ -20,12 +19,8 @@ final class _Widget extends StatelessWidget {
           spacing: spacing,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Flexible(
-              child: MyoroSingleInputDropdown(configuration: viewModel.buildSingleConfiguration()),
-            ),
-            Flexible(
-              child: MyoroMultiInputDropdown(configuration: viewModel.buildMultiConfiguration()),
-            ),
+            Flexible(child: MyoroSingleInputDropdown(configuration: viewModel.singleConfiguration)),
+            Flexible(child: MyoroMultiInputDropdown(configuration: viewModel.multiConfiguration)),
           ],
         );
       },

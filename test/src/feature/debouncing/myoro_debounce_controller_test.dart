@@ -7,9 +7,9 @@ void main() {
     final controller = MyoroDebounceController(duration);
     bool executed = false;
     controller.debounce(() => executed = true);
-    await Future.delayed(Duration(milliseconds: (duration.inMilliseconds / 2).toInt()));
+    await Future.delayed(Duration(milliseconds: duration.inMilliseconds ~/ 2));
     expect(executed, isFalse);
-    await Future.delayed(Duration(milliseconds: (duration.inMilliseconds / 2).toInt()));
+    await Future.delayed(Duration(milliseconds: duration.inMilliseconds ~/ 2));
     expect(executed, isTrue);
     controller.dispose();
   });

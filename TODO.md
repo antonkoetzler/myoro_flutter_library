@@ -1,10 +1,8 @@
 # TODO
 
-- (**IN PROGRESS**) Make a widget to implement all of the lgoic for `MyoroDropdownMenuTypeEnum`
-  - (**DONE**) Create the generic `MyoroDropdown` widget
+- (**IN PROGRESS**) Make a widget to implement all of the logic for `MyoroDropdownMenuTypeEnum`
   - (**IN PROGRESS**) Delete selection dropdown implementation and remake it using `MyoroDropdown`
   - Refactor `MyoroSearchInput` to use `MyoroSingleDropdown`
-  - Make `MyoroLocationInput` with this new `MyoroDropdown` widget
 - `MyoroButtonConfiguration.isLoading`
 - `MyoroGradientScroll`
   - Refactor existing scrolls

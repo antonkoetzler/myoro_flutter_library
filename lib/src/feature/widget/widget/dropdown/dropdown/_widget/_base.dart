@@ -4,14 +4,10 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 class _Base<
   T,
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<
-    T,
-    C,
-    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
-  >
+  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
 >
     extends StatelessWidget {
-  const _Base(Key? key, this._viewModel, this._menuStyle, this._child) : super(key: key);
+  const _Base(this._viewModel, this._menuStyle, this._child);
 
   /// View model.
   final V _viewModel;
@@ -23,10 +19,7 @@ class _Base<
   final Widget _child;
 
   @override
-  Widget build(context) {
-    // Set the context for the modal and bottom sheet variations.
-    _viewModel.context = context;
-
+  Widget build(_) {
     // Set the menu style for the dropdown.
     _viewModel.menuStyle = _menuStyle;
 
@@ -36,8 +29,10 @@ class _Base<
     final dropdownType = configuration.dropdownType;
     final showingController = state.showingController;
     final menuWidget = _viewModel.menuWidget;
+    final baseKey = state.baseKey;
 
     return InheritedProvider.value(
+      key: baseKey,
       value: _viewModel,
       child: switch (dropdownType) {
         MyoroDropdownTypeEnum.overlay => OverlayPortal(

@@ -21,6 +21,6 @@ class MyoroSingleDropdown<T> extends StatelessWidget {
   @override
   Widget build(_) {
     // ignore: invalid_use_of_protected_member
-    return _Base(key, controller.viewModel, menuStyle, child);
+    return _Base(controller.viewModel, menuStyle, child);
   }
 }

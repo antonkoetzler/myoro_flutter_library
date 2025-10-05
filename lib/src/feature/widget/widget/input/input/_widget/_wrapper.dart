@@ -13,7 +13,6 @@ final class _Wrapper extends StatelessWidget {
     final viewModel = context.read<MyoroInputViewModel>();
     final state = viewModel.state;
     final configuration = state.configuration;
-    final inputKey = configuration.inputKey;
     final checkboxOnChanged = configuration.checkboxOnChanged;
     final suffix = configuration.suffix;
 
@@ -21,7 +20,7 @@ final class _Wrapper extends StatelessWidget {
       spacing: spacing,
       children: [
         if (checkboxOnChanged != null) const _Checkbox(),
-        Expanded(key: inputKey, child: const _TextFormField()),
+        const Expanded(child: _TextFormField()),
         if (suffix != null) suffix,
       ],
     );

@@ -19,9 +19,6 @@ abstract class MyoroDropdownViewModel<
     if (isOverlay) state.overlayPortalController = OverlayPortalController();
   }
 
-  /// Build context to show the dropdown in a modal or bottom sheet.
-  BuildContext? _context;
-
   /// Menu style.
   MyoroMenuStyle? _menuStyle;
 
@@ -72,31 +69,49 @@ abstract class MyoroDropdownViewModel<
     final isModal = dropdownType.isModal;
     final isBottomSheet = dropdownType.isBottomSheet;
     final showing = _state.showing;
+    final context = _state.baseKey.currentContext;
     if (showing) {
-      if (isModal) MyoroModal.showModal(context, child: menuWidget);
-      if (isBottomSheet) MyoroModal.showBottomSheet(context, child: menuWidget);
+      if (isModal || isBottomSheet) {
+        if (context == null || _state.modalShowing) return;
+        if (isModal) {
+          MyoroModal.showModal(context, child: menuWidget).then((_) {
+            _state.modalShowing = false;
+            _state.showing = false;
+          });
+        }
+        if (isBottomSheet) {
+          MyoroModal.showBottomSheet(context, child: menuWidget).then((_) {
+            _state.modalShowing = false;
+            _state.showing = false;
+          });
+        }
+        _state.modalShowing = true;
+      }
     } else {
-      if (isModal) context.navigator.pop();
-      if (isBottomSheet) context.navigator.pop();
+      if (isModal || isBottomSheet) {
+        if (context == null || !_state.modalShowing) return;
+        if (isModal) context.navigator.pop();
+        if (isBottomSheet) context.navigator.pop();
+        _state.modalShowing = false;
+      }
     }
   }
 
   /// Builds the dropdown (menu) [Widget].
   Widget get menuWidget;
 
-  /// [_context] getter.
-  BuildContext get context {
-    assert(_context != null, '[MyoroDropdownViewModel.context]: [context] has not been set yet.');
-    return _context!;
-  }
-
   /// [_menuStyle] getter.
   MyoroMenuStyle get menuStyle {
-    assert(
-      _menuStyle != null,
-      '[MyoroDropdownViewModel.menuStyle]: [menuStyle] has not been set yet.',
+    assert(_menuStyle != null, '[MyoroDropdownViewModel.menuStyle]: [menuStyle] has not been set yet.');
+    final configuration = state.configuration;
+    final dropdownType = configuration.dropdownType;
+    final isModal = dropdownType.isModal;
+    final isBottomSheet = dropdownType.isBottomSheet;
+    final isModalOrBottomSheet = isModal || isBottomSheet;
+    return _menuStyle!.copyWith(
+      border: isModalOrBottomSheet ? Border.all(width: 0, color: MyoroColors.transparent) : null,
+      borderRadius: isModalOrBottomSheet ? BorderRadius.zero : null,
     );
-    return _menuStyle!;
   }
 
   /// Getter that returns if [_menuStyle] is set.
@@ -118,11 +133,6 @@ abstract class MyoroDropdownViewModel<
     _state.overlayPortalController = isOverlay ? OverlayPortalController() : null;
     showingController.removeListener(_showingControllerListener);
     if (isModal || isBottomSheet) showingController.addListener(_showingControllerListener);
-  }
-
-  /// [_context] setter.
-  set context(BuildContext context) {
-    _context = context;
   }
 
   /// [_menuStyle] setter.

@@ -69,18 +69,22 @@ class MyoroModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = this.style;
-
     final titleIsNotEmpty = _configuration.title.isNotEmpty;
     final showCloseButton = _configuration.showCloseButton;
     final showHeader = titleIsNotEmpty || showCloseButton;
 
-    final primaryColor = style.primaryColor;
-    final borderRadius = !isBottomSheet ? style.borderRadius : style.bottomSheetBorderRadius;
-    final constraints = style.constraints;
-    final padding = style.padding;
-    final border = !isBottomSheet ? style.border : style.bottomSheetBorder;
-    final spacing = style.spacing ?? 0;
+    final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
+    final primaryColor = style.primaryColor ?? themeExtension.primaryColor;
+    final borderRadius = !isBottomSheet
+        ? (style.borderRadius ?? themeExtension.borderRadius)
+        : (style.bottomSheetBorderRadius ?? themeExtension.bottomSheetBorderRadius);
+    final constraints =
+        style.constraints ?? themeExtension.constraints ?? themeExtension.getDefaultConstraints(context);
+    final padding = style.padding ?? themeExtension.padding;
+    final border = !isBottomSheet
+        ? (style.border ?? themeExtension.border)
+        : (style.bottomSheetBorder ?? themeExtension.bottomSheetBorder);
+    final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
     final content = Material(
       color: primaryColor,

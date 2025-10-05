@@ -228,7 +228,6 @@ enum MyoroWidgetListEnum {
 
       // Tooltips
       myoroTooltipTitle => const MyoroTooltipWidgetShowcaseScreen(),
-
       _ => throw AssertionError('[MyoroWidgetListEnum.getWidgetShowcaseScreen]: [Widget] does not exist.'),
     };
   }

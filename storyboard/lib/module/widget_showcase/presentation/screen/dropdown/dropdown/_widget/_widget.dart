@@ -29,7 +29,6 @@ final class _Widget extends StatelessWidget {
             Flexible(
               child: MyoroSingleDropdown(
                 controller: singleDropdownController,
-                menuStyle: MyoroMenuStyle(border: Border.all(width: 2, color: Colors.pink)),
                 child: GestureDetector(
                   onTapUp: (_) => singleDropdownController.toggleDropdown(),
                   child: MyoroCard(key: singleDropdownOverlayTargetKey, child: const Text('Press to show dropdown!')),

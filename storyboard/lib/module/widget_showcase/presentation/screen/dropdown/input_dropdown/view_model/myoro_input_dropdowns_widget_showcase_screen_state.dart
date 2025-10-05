@@ -3,17 +3,13 @@ part of 'myoro_input_dropdowns_widget_showcase_screen_view_model.dart';
 /// State of [MyoroInputDropdownsWidgetShowcaseScreenViewModel].
 final class MyoroInputDropdownsWidgetShowcaseScreenState extends ChangeNotifier {
   /// Items of each input dropdown.
-  final _items =
-      List.generate(faker.randomGenerator.integer(100, min: 5), (i) => 'Item #$i').toSet();
+  final _items = List.generate(faker.randomGenerator.integer(100, min: 5), (i) => 'Item #$i').toSet();
 
   /// [MyoroSingleInputDropdownController] of the [MyoroSingleInputDropdown].
   late final _singleInputDropdownController = MyoroSingleInputDropdownController(
     configuration: MyoroSingleInputDropdownConfiguration(
       dropdownType: MyoroDropdownTypeEnum.overlay,
-      menuConfiguration: MyoroSingleMenuConfiguration(
-        request: () => _items,
-        itemBuilder: _itemBuilder,
-      ),
+      menuConfiguration: MyoroSingleMenuConfiguration(request: () => _items, itemBuilder: _itemBuilder),
       selectedItemBuilder: (item) => item,
     ),
   );
@@ -22,10 +18,7 @@ final class MyoroInputDropdownsWidgetShowcaseScreenState extends ChangeNotifier 
   late final _multiInputDropdownController = MyoroMultiInputDropdownController(
     configuration: MyoroMultiInputDropdownConfiguration(
       dropdownType: MyoroDropdownTypeEnum.overlay,
-      menuConfiguration: MyoroMultiMenuConfiguration(
-        request: () => _items,
-        itemBuilder: _itemBuilder,
-      ),
+      menuConfiguration: MyoroMultiMenuConfiguration(request: () => _items, itemBuilder: _itemBuilder),
       selectedItemBuilder: (item) => item,
     ),
   );

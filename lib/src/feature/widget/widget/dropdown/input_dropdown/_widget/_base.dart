@@ -39,10 +39,7 @@ final class _Base<
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final outlinedBorder = inputThemeExtension.outlinedBorder;
     final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(
-        bottomLeft: Radius.zero,
-        bottomRight: Radius.zero,
-      ),
+      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
     );
 
     return InheritedProvider.value(

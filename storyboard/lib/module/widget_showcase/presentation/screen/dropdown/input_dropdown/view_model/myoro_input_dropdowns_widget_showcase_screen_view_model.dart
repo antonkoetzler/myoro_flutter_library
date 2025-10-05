@@ -22,9 +22,7 @@ final class MyoroInputDropdownsWidgetShowcaseScreenViewModel {
   MyoroMenuItem dropdownTypeOptionItemBuilder(MyoroDropdownTypeEnum item) {
     return MyoroMenuItem(
       iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroTextConfiguration(
-          text: dropdownTypeOptionSelectedItemBuilder(item),
-        ),
+        textConfiguration: MyoroTextConfiguration(text: dropdownTypeOptionSelectedItemBuilder(item)),
       ),
     );
   }
@@ -35,7 +33,7 @@ final class MyoroInputDropdownsWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroSingleInputDropdownConfiguration] builder.
-  MyoroSingleInputDropdownConfiguration<String> buildSingleConfiguration() {
+  MyoroSingleInputDropdownConfiguration<String> get singleConfiguration {
     final singleInputDropdownController = _state.singleInputDropdownController;
     final configuration = singleInputDropdownController.configuration;
     final menuConfiguration = configuration.menuConfiguration;
@@ -47,7 +45,7 @@ final class MyoroInputDropdownsWidgetShowcaseScreenViewModel {
   }
 
   /// [MyoroMultiInputDropdownConfiguration] builder.
-  MyoroMultiInputDropdownConfiguration<String> buildMultiConfiguration() {
+  MyoroMultiInputDropdownConfiguration<String> get multiConfiguration {
     final multiInputDropdownController = _state.multiInputDropdownController;
     final configuration = multiInputDropdownController.configuration;
     final menuConfiguration = configuration.menuConfiguration;

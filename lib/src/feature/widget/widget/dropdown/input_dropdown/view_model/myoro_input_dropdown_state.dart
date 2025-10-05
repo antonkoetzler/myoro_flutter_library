@@ -14,7 +14,7 @@ final class MyoroInputDropdownState<
     >
   >
 > {
-  MyoroInputDropdownState(this.configuration, this.dropdownController);
+  MyoroInputDropdownState(this._configuration, this.dropdownController);
 
   /// Dispose function.
   void dispose() {
@@ -23,7 +23,7 @@ final class MyoroInputDropdownState<
   }
 
   /// Configuration.
-  final CONFIGURATION configuration;
+  CONFIGURATION _configuration;
 
   /// Dropdown controller.
   final CONTROLLER dropdownController;
@@ -31,8 +31,23 @@ final class MyoroInputDropdownState<
   /// Input controller.
   final _inputController = TextEditingController();
 
+  /// [_configuration] getter.
+  CONFIGURATION get configuration {
+    return _configuration;
+  }
+
   /// [_inputController] getter.
   TextEditingController get inputController {
     return _inputController;
+  }
+
+  /// [_configuration] setter.
+  set configuration(CONFIGURATION configuration) {
+    if (_configuration == configuration) return;
+    _configuration = configuration;
+    dropdownController.configuration = dropdownController.configuration.copyWith(
+      menuConfiguration: _configuration.menuConfiguration,
+      dropdownType: _configuration.dropdownType,
+    );
   }
 }

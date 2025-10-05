@@ -24,4 +24,11 @@ abstract class MyoroDropdownConfiguration<T, C extends MyoroMenuConfiguration<T>
 
   /// [MyoroMenuConfiguration] of the dropdown.
   final C menuConfiguration;
+
+  /// Copy with.
+  MyoroDropdownConfiguration<T, C> copyWith({
+    MyoroDropdownTypeEnum? dropdownType,
+    GlobalKey? targetKey,
+    C? menuConfiguration,
+  });
 }
