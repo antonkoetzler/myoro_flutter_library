@@ -8,11 +8,7 @@ part 'myoro_search_input_menu_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroSearchInputMenuConfiguration<T> {
-  const MyoroSearchInputMenuConfiguration({
-    required this.request,
-    this.onEndReachedRequest,
-    required this.itemBuilder,
-  });
+  const MyoroSearchInputMenuConfiguration({required this.request, this.onEndReachedRequest, required this.itemBuilder});
 
   /// Request to be executed when the search input is triggered.
   final MyoroSearchInputRequest<T> request;

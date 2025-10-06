@@ -41,17 +41,12 @@ final class _Base<
     final onFieldSubmitted = configuration.toggleDropdownOnFieldSubmitted
         ? (_) => dropdownController.toggleDropdown()
         : null;
-    final inputOnTap = configuration.toggleDropdownOnInputTap
-        ? dropdownController.toggleDropdown
-        : null;
+    final inputOnTap = configuration.toggleDropdownOnInputTap ? dropdownController.toggleDropdown : null;
 
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final outlinedBorder = inputThemeExtension.outlinedBorder;
     final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(
-        bottomLeft: Radius.zero,
-        bottomRight: Radius.zero,
-      ),
+      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
     );
 
     return InheritedProvider.value(

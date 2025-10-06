@@ -58,9 +58,7 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
       padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       messageTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonIconConfiguration: faker.randomGenerator.boolean()
-          ? MyoroIconConfiguration.fake()
-          : null,
+      closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
     );
   }
   // coverage:ignore-end

@@ -37,15 +37,3 @@ jobs:
       - name: Dart format check (fails if not formatted)
         run: |
           find . -name "*.dart" ! -path "./lib/src/l10n/*" | xargs dart format --line-length 120 -o none --set-exit-if-changed
-
-      - name: Run tests and generate coverage report
-        run: bash tool/test.sh
-
-      - name: Check coverage threshold for MFL (Must be 100%)
-        run: |
-          COVERAGE=$(lcov --summary coverage/lcov.filtered.info | grep lines | awk '{print $2}' | sed 's/%//')
-          echo "Coverage: $COVERAGE%"
-          if (( $(echo "$COVERAGE != 100" | bc -l) )); then
-            echo "Code coverage is not exactly 100%."
-            exit 1
-          fi

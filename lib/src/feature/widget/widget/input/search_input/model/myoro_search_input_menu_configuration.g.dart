@@ -24,9 +24,7 @@ mixin _$MyoroSearchInputMenuConfigurationMixin<T> {
   }) {
     return MyoroSearchInputMenuConfiguration(
       request: request ?? self.request,
-      onEndReachedRequest: onEndReachedRequestProvided
-          ? (onEndReachedRequest ?? self.onEndReachedRequest)
-          : null,
+      onEndReachedRequest: onEndReachedRequestProvided ? (onEndReachedRequest ?? self.onEndReachedRequest) : null,
       itemBuilder: itemBuilder ?? self.itemBuilder,
     );
   }

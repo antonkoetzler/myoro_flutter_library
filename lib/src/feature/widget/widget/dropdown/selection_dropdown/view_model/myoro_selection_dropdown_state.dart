@@ -1,38 +1,34 @@
 part of 'myoro_selection_dropdown_view_model.dart';
 
 /// State of [MyoroSelectionDropdownViewModel].
-class MyoroSelectionDropdownState<
+final class MyoroSelectionDropdownState<
   T,
-  CONFIGURATION extends MyoroSelectionDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  DROPDOWN_CONTROLLER extends MyoroDropdownController<
+  INPUT_DROPDOWN_CONTROLLER extends MyoroInputDropdownController<
     T,
-    MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-    MyoroDropdownViewModel<
+    MyoroInputDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+    MyoroInputDropdownViewModel<
       T,
-      MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-      MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+      MyoroInputDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+      MyoroDropdownController<
+        T,
+        MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+        MyoroDropdownViewModel<
+          T,
+          MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+          MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+        >
+      >
     >
   >
 > {
-  MyoroSelectionDropdownState(this.configuration, this.dropdownController);
+  /// Default constructor.
+  const MyoroSelectionDropdownState(this.inputDropdownController);
 
-  /// Configuration.
-  final CONFIGURATION configuration;
-
-  /// Dropdown controller.
-  final DROPDOWN_CONTROLLER dropdownController;
-
-  /// Input controller.
-  final _inputController = TextEditingController();
+  /// Input dropdown controller.
+  final INPUT_DROPDOWN_CONTROLLER inputDropdownController;
 
   /// Dispose function.
   void dispose() {
-    dropdownController.dispose();
-    _inputController.dispose();
-  }
-
-  /// [_inputController] getter.
-  TextEditingController get inputController {
-    return _inputController;
+    inputDropdownController.dispose();
   }
 }

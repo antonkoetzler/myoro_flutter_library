@@ -16,21 +16,9 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       size: Size.lerp(a?.size, b?.size, t),
       borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
       overlayCursor: myoroFallbackLerp(a?.overlayCursor, b?.overlayCursor, t),
-      overlayIdleBackgroundColor: Color.lerp(
-        a?.overlayIdleBackgroundColor,
-        b?.overlayIdleBackgroundColor,
-        t,
-      ),
-      overlayHoverBackgroundColor: Color.lerp(
-        a?.overlayHoverBackgroundColor,
-        b?.overlayHoverBackgroundColor,
-        t,
-      ),
-      overlayTapBackgroundColor: Color.lerp(
-        a?.overlayTapBackgroundColor,
-        b?.overlayTapBackgroundColor,
-        t,
-      ),
+      overlayIdleBackgroundColor: Color.lerp(a?.overlayIdleBackgroundColor, b?.overlayIdleBackgroundColor, t),
+      overlayHoverBackgroundColor: Color.lerp(a?.overlayHoverBackgroundColor, b?.overlayHoverBackgroundColor, t),
+      overlayTapBackgroundColor: Color.lerp(a?.overlayTapBackgroundColor, b?.overlayTapBackgroundColor, t),
       overlayUnselectedImageStateIconConfiguration: MyoroIconConfiguration.lerp(
         a?.overlayUnselectedImageStateIconConfiguration,
         b?.overlayUnselectedImageStateIconConfiguration,
@@ -41,11 +29,7 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
         b?.selectionTypeModalConstraints,
         t,
       ),
-      selectionTypeModalSpacing: lerpDouble(
-        a?.selectionTypeModalSpacing,
-        b?.selectionTypeModalSpacing,
-        t,
-      ),
+      selectionTypeModalSpacing: lerpDouble(a?.selectionTypeModalSpacing, b?.selectionTypeModalSpacing, t),
       selectionTypeModalButtonCameraIcon: myoroFallbackLerp(
         a?.selectionTypeModalButtonCameraIcon,
         b?.selectionTypeModalButtonCameraIcon,
@@ -85,18 +69,10 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       overlayUnselectedImageStateIconConfiguration: faker.randomGenerator.boolean()
           ? myoroFake<MyoroIconConfiguration>()
           : null,
-      selectionTypeModalConstraints: faker.randomGenerator.boolean()
-          ? myoroFake<BoxConstraints>()
-          : null,
-      selectionTypeModalSpacing: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 20)
-          : null,
-      selectionTypeModalButtonCameraIcon: faker.randomGenerator.boolean()
-          ? myoroFake<IconData>()
-          : null,
-      selectionTypeModalButtonGalleryIcon: faker.randomGenerator.boolean()
-          ? myoroFake<IconData>()
-          : null,
+      selectionTypeModalConstraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      selectionTypeModalSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      selectionTypeModalButtonCameraIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
+      selectionTypeModalButtonGalleryIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
     );
   }
   // coverage:ignore-end
