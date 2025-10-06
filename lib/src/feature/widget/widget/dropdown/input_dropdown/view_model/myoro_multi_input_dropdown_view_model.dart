@@ -4,9 +4,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of a single item input dropdown.
 class MyoroMultiInputDropdownViewModel<T>
     extends MyoroInputDropdownViewModel<T, MyoroMultiInputDropdownConfiguration<T>, MyoroMultiDropdownController<T>> {
-  MyoroMultiInputDropdownViewModel(MyoroMultiInputDropdownConfiguration<T> configuration)
-    : super(
+  MyoroMultiInputDropdownViewModel(
+    MyoroMultiInputDropdownConfiguration<T> configuration,
+    TextEditingController? inputController,
+  ) : super(
         configuration,
+        inputController,
         MyoroMultiDropdownController(
           configuration: MyoroMultiDropdownConfiguration(
             targetKey: GlobalKey(),
@@ -14,15 +17,7 @@ class MyoroMultiInputDropdownViewModel<T>
             dropdownType: configuration.dropdownType,
           ),
         ),
-      ) {
-    state.dropdownController.selectedItemsNotifier.addListener(formatItems);
-  }
-
-  @override
-  void formatItems() {
-    final selectedItems = state.dropdownController.selectedItems;
-    state.inputController.text = selectedItems.map(state.configuration.selectedItemBuilder).join(', ');
-  }
+      );
 
   @override
   Widget buildDropdownWidget(BuildContext context, Widget inputWidget) {

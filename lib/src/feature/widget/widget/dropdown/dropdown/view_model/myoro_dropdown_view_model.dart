@@ -74,13 +74,21 @@ abstract class MyoroDropdownViewModel<
       if (isModal || isBottomSheet) {
         if (context == null || _state.modalShowing) return;
         if (isModal) {
-          MyoroModal.showModal(context, child: menuWidget).then((_) {
+          MyoroModal.showModal(
+            context,
+            style: const MyoroModalStyle(padding: EdgeInsets.zero),
+            child: menuWidget,
+          ).then((_) {
             _state.modalShowing = false;
             _state.showing = false;
           });
         }
         if (isBottomSheet) {
-          MyoroModal.showBottomSheet(context, child: menuWidget).then((_) {
+          MyoroModal.showBottomSheet(
+            context,
+            style: const MyoroModalStyle(padding: EdgeInsets.zero),
+            child: menuWidget,
+          ).then((_) {
             _state.modalShowing = false;
             _state.showing = false;
           });

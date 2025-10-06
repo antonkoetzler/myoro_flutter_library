@@ -18,7 +18,7 @@ final class _Base<
   >
 >
     extends StatelessWidget {
-  const _Base(this.viewModel, this._style);
+  const _Base(this.viewModel, this._style, this._inputSuffix);
 
   /// Configuration.
   final VIEW_MODEL viewModel;
@@ -26,20 +26,32 @@ final class _Base<
   /// Style.
   final MyoroInputDropdownStyle _style;
 
+  /// Suffix [Widget].
+  final Widget? _inputSuffix;
+
   @override
   Widget build(context) {
     final state = viewModel.state;
     final dropdownController = state.dropdownController;
     final showingController = dropdownController.showingController;
-    final toggleDropdown = viewModel.toggleDropdown;
     final inputController = state.inputController;
     final dropdownConfiguration = dropdownController.configuration;
     final dropdownType = dropdownConfiguration.dropdownType;
+    final configuration = state.configuration;
+    final onFieldSubmitted = configuration.toggleDropdownOnFieldSubmitted
+        ? (_) => dropdownController.toggleDropdown()
+        : null;
+    final inputOnTap = configuration.toggleDropdownOnInputTap
+        ? dropdownController.toggleDropdown
+        : null;
 
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final outlinedBorder = inputThemeExtension.outlinedBorder;
     final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
-      borderRadius: outlinedBorder.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
+      borderRadius: outlinedBorder.borderRadius.copyWith(
+        bottomLeft: Radius.zero,
+        bottomRight: Radius.zero,
+      ),
     );
 
     return InheritedProvider.value(
@@ -58,14 +70,16 @@ final class _Base<
               };
 
               return MyoroInput(
-                key: state.dropdownController.configuration.targetKey,
                 configuration: MyoroInputConfiguration(
                   // This is to disable the [BoxBorder] lerp animation when we need to alter the bottom corners of this
                   // [MyoroInput] when the dropdown is opened when menuTypeEnum is [MyoroDropdownTypeEnum.expanding].
-                  inputKey: ValueKey(inputBorder),
-                  readOnly: true,
-                  onTap: toggleDropdown,
+                  // inputKey: ValueKey(inputBorder),
+                  inputKey: state.dropdownController.configuration.targetKey,
+                  readOnly: inputOnTap != null,
+                  onTap: inputOnTap,
                   controller: inputController,
+                  onFieldSubmitted: onFieldSubmitted,
+                  suffix: _inputSuffix,
                 ),
                 style: MyoroInputStyle(border: inputBorder),
               );

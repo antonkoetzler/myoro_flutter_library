@@ -18,6 +18,8 @@ mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
 
   MyoroMultiInputDropdownConfiguration<T> copyWith({
     MyoroInputDropdownSelectedItemBuilder<T>? selectedItemBuilder,
+    bool? toggleDropdownOnInputTap,
+    bool? toggleDropdownOnFieldSubmitted,
     MyoroDropdownTypeEnum? dropdownType,
     GlobalKey<State<StatefulWidget>>? targetKey,
     bool targetKeyProvided = true,
@@ -35,6 +37,8 @@ mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
     return other is MyoroMultiInputDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.selectedItemBuilder == self.selectedItemBuilder &&
+        other.toggleDropdownOnInputTap == self.toggleDropdownOnInputTap &&
+        other.toggleDropdownOnFieldSubmitted == self.toggleDropdownOnFieldSubmitted &&
         other.dropdownType == self.dropdownType &&
         other.targetKey == self.targetKey &&
         other.menuConfiguration == self.menuConfiguration;
@@ -42,13 +46,22 @@ mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
 
   @override
   int get hashCode {
-    return Object.hash(self.selectedItemBuilder, self.dropdownType, self.targetKey, self.menuConfiguration);
+    return Object.hash(
+      self.selectedItemBuilder,
+      self.toggleDropdownOnInputTap,
+      self.toggleDropdownOnFieldSubmitted,
+      self.dropdownType,
+      self.targetKey,
+      self.menuConfiguration,
+    );
   }
 
   @override
   String toString() =>
       'MyoroMultiInputDropdownConfiguration<T>(\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
+      '  toggleDropdownOnInputTap: ${self.toggleDropdownOnInputTap},\n'
+      '  toggleDropdownOnFieldSubmitted: ${self.toggleDropdownOnFieldSubmitted},\n'
       '  dropdownType: ${self.dropdownType},\n'
       '  targetKey: ${self.targetKey},\n'
       '  menuConfiguration: ${self.menuConfiguration},\n'

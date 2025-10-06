@@ -4,16 +4,21 @@ part of 'bundle/myoro_input_dropdown_bundle.dart';
 class MyoroSingleInputDropdown<T> extends StatefulWidget {
   const MyoroSingleInputDropdown({
     super.key,
-    this.configuration,
     this.controller,
+    this.inputController,
+    this.configuration,
     this.style = const MyoroInputDropdownStyle(),
+    this.inputSuffix,
   }) : assert(
-         (controller != null) ^ (configuration != null),
-         '[MyoroSingleInputDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
+         controller != null ? configuration == null && inputController == null : configuration != null,
+         '[MyoroSingleInputDropdown<$T>]: [controller] (x)or [configuration] and [inputController] must be provided.',
        );
 
   /// Controller.
   final MyoroSingleInputDropdownController<T>? controller;
+
+  /// Input controller.
+  final TextEditingController? inputController;
 
   /// Configuration.
   final MyoroSingleInputDropdownConfiguration<T>? configuration;
@@ -21,18 +26,22 @@ class MyoroSingleInputDropdown<T> extends StatefulWidget {
   /// Style.
   final MyoroInputDropdownStyle style;
 
+  /// Suffix [Widget].
+  final Widget? inputSuffix;
+
   @override
   State<MyoroSingleInputDropdown<T>> createState() => _MyoroSingleInputDropdownState<T>();
 }
 
 final class _MyoroSingleInputDropdownState<T> extends State<MyoroSingleInputDropdown<T>> {
   MyoroInputDropdownStyle get _style => widget.style;
+  Widget? get _inputSuffix => widget.inputSuffix;
 
   MyoroSingleInputDropdownViewModel<T>? _localViewModel;
   MyoroSingleInputDropdownViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
     return widget.controller?.viewModel ??
-        (_localViewModel ??= MyoroSingleInputDropdownViewModel(widget.configuration!));
+        (_localViewModel ??= MyoroSingleInputDropdownViewModel(widget.configuration!, widget.inputController));
   }
 
   @override
@@ -53,6 +62,6 @@ final class _MyoroSingleInputDropdownState<T> extends State<MyoroSingleInputDrop
 
   @override
   Widget build(_) {
-    return _Base(_viewModel, _style);
+    return _Base(_viewModel, _style, _inputSuffix);
   }
 }

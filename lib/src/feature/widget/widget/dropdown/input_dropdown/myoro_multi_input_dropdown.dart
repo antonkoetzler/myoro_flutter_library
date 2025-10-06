@@ -5,15 +5,20 @@ class MyoroMultiInputDropdown<T> extends StatefulWidget {
   const MyoroMultiInputDropdown({
     super.key,
     this.configuration,
+    this.inputController,
     this.controller,
     this.style = const MyoroInputDropdownStyle(),
+    this.inputSuffix,
   }) : assert(
-         (controller != null) ^ (configuration != null),
-         '[MyoroMultiInputDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
+         controller != null ? configuration == null && inputController == null : configuration != null,
+         '[MyoroMultiInputDropdown<$T>]: [controller] (x)or [configuration] and [inputController] must be provided.',
        );
 
   /// Controller.
   final MyoroMultiInputDropdownController<T>? controller;
+
+  /// Input controller.
+  final TextEditingController? inputController;
 
   /// Configuration.
   final MyoroMultiInputDropdownConfiguration<T>? configuration;
@@ -21,18 +26,22 @@ class MyoroMultiInputDropdown<T> extends StatefulWidget {
   /// Style.
   final MyoroInputDropdownStyle style;
 
+  /// Suffix [Widget].
+  final Widget? inputSuffix;
+
   @override
   State<MyoroMultiInputDropdown<T>> createState() => _MyoroMultiInputDropdownState<T>();
 }
 
 final class _MyoroMultiInputDropdownState<T> extends State<MyoroMultiInputDropdown<T>> {
   MyoroInputDropdownStyle get _style => widget.style;
+  Widget? get _inputSuffix => widget.inputSuffix;
 
   MyoroMultiInputDropdownViewModel<T>? _localViewModel;
   MyoroMultiInputDropdownViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
     return widget.controller?.viewModel ??
-        (_localViewModel ??= MyoroMultiInputDropdownViewModel(widget.configuration!));
+        (_localViewModel ??= MyoroMultiInputDropdownViewModel(widget.configuration!, widget.inputController));
   }
 
   @override
@@ -53,6 +62,6 @@ final class _MyoroMultiInputDropdownState<T> extends State<MyoroMultiInputDropdo
 
   @override
   Widget build(_) {
-    return _Base(_viewModel, _style);
+    return _Base(_viewModel, _style, _inputSuffix);
   }
 }

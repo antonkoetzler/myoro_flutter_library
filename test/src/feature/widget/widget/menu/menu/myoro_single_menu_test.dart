@@ -10,12 +10,12 @@ void main() {
         controller: MyoroSingleMenuController(
           configuration: MyoroSingleMenuConfiguration(
             request: () => {faker.lorem.word()},
-            itemBuilder: (item) => MyoroMenuItem(),
+            itemBuilder: (item) => MyoroMenuItem.fake(),
           ),
         ),
         configuration: MyoroSingleMenuConfiguration(
           request: () => {faker.lorem.word()},
-          itemBuilder: (item) => MyoroMenuItem(),
+          itemBuilder: (item) => MyoroMenuItem.fake(),
         ),
       ),
       throwsAssertionError,
@@ -26,10 +26,12 @@ void main() {
     final controller = MyoroSingleMenuController<String>(
       configuration: MyoroSingleMenuConfiguration(
         request: () => {faker.lorem.word()},
-        itemBuilder: (item) => MyoroMenuItem(),
+        itemBuilder: (item) => MyoroMenuItem.fake(),
       ),
     );
-    await tester.pumpWidget(MyoroWidgetTester(child: MyoroSingleMenu<String>(controller: controller)));
+    await tester.pumpWidget(
+      MyoroWidgetTester(child: MyoroSingleMenu<String>(controller: controller)),
+    );
     await tester.pumpAndSettle();
     expect(find.byType(MyoroSingleMenu<String>), findsOneWidget);
     controller.dispose();
@@ -41,7 +43,7 @@ void main() {
         child: MyoroSingleMenu<String>(
           configuration: MyoroSingleMenuConfiguration(
             request: () => {faker.lorem.word()},
-            itemBuilder: (item) => MyoroMenuItem(),
+            itemBuilder: (item) => MyoroMenuItem.fake(),
           ),
         ),
       ),

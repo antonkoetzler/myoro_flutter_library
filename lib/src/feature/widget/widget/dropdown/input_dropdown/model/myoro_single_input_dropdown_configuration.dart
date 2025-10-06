@@ -13,5 +13,7 @@ class MyoroSingleInputDropdownConfiguration<T>
     super.dropdownType,
     required super.menuConfiguration,
     required super.selectedItemBuilder,
+    super.toggleDropdownOnInputTap,
+    super.toggleDropdownOnFieldSubmitted,
   });
 }

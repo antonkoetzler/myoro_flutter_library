@@ -30,7 +30,7 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
     final style = widget._style;
     final backgroundColor = style.backgroundColor ?? themeExtension.backgroundColor;
     final border = style.border ?? themeExtension.border;
-    final borderRadius = style.borderRadius ?? themeExtension.borderRadius;
+    final borderRadius = style.borderRadius ?? themeExtension.borderRadius ?? BorderRadius.zero;
     final constraints = style.constraints ?? themeExtension.constraints;
 
     return MultiProvider(
@@ -41,6 +41,7 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
       child: Container(
         decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
         constraints: constraints,
+        clipBehavior: Clip.antiAlias,
         child: ValueListenableBuilder(
           valueListenable: _viewModel.state.itemsRequestNotifier,
           builder: (_, MyoroRequest<Set<T>> state, _) {

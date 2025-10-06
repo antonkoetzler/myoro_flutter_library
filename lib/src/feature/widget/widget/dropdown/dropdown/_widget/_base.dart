@@ -4,7 +4,11 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 class _Base<
   T,
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
+  V extends MyoroDropdownViewModel<
+    T,
+    C,
+    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+  >
 >
     extends StatelessWidget {
   const _Base(this._viewModel, this._menuStyle, this._child);
@@ -62,6 +66,7 @@ class _Base<
               onTapOutside: isShowing ? (_) => _viewModel.disable() : null,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Flexible(
                     child: TapRegion(groupId: state.tapRegionGroupId, child: _child),

@@ -11,9 +11,16 @@ part 'myoro_icon_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroIconConfiguration with _$MyoroIconConfigurationMixin {
-  static MyoroIconConfiguration? lerp(MyoroIconConfiguration? primary, MyoroIconConfiguration? other, double t) {
+  static MyoroIconConfiguration? lerp(
+    MyoroIconConfiguration? primary,
+    MyoroIconConfiguration? other,
+    double t,
+  ) {
     final icon = myoroFallbackLerp(primary?.icon, other?.icon, t);
-    final size = lerpDouble(primary?.size, other?.size, t);
+    // Handle null sizes by treating them as 0 for lerping
+    final primarySize = primary?.size ?? 0.0;
+    final otherSize = other?.size ?? 0.0;
+    final size = lerpDouble(primarySize, otherSize, t);
 
     return icon != null ? MyoroIconConfiguration(icon: icon, size: size) : null;
   }

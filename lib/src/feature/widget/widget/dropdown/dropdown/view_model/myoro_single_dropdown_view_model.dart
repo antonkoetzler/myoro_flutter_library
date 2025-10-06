@@ -5,9 +5,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 final class MyoroSingleDropdownViewModel<T>
     extends MyoroDropdownViewModel<T, MyoroSingleDropdownConfiguration<T>, MyoroSingleMenuController<T>> {
   MyoroSingleDropdownViewModel(MyoroSingleDropdownConfiguration<T> configuration)
-    : super(configuration, MyoroSingleMenuController(configuration: configuration.menuConfiguration)) {
-    state.menuController.selectedItemNotifier.addListener(disable);
-  }
+    : super(configuration, MyoroSingleMenuController(configuration: configuration.menuConfiguration));
 
   @override
   Widget get menuWidget {

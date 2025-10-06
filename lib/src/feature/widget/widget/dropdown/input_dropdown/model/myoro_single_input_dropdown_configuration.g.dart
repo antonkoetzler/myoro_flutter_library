@@ -18,6 +18,8 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
 
   MyoroSingleInputDropdownConfiguration<T> copyWith({
     MyoroInputDropdownSelectedItemBuilder<T>? selectedItemBuilder,
+    bool? toggleDropdownOnInputTap,
+    bool? toggleDropdownOnFieldSubmitted,
     MyoroDropdownTypeEnum? dropdownType,
     GlobalKey<State<StatefulWidget>>? targetKey,
     bool targetKeyProvided = true,
@@ -25,6 +27,8 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   }) {
     return MyoroSingleInputDropdownConfiguration(
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
+      toggleDropdownOnInputTap: toggleDropdownOnInputTap ?? self.toggleDropdownOnInputTap,
+      toggleDropdownOnFieldSubmitted: toggleDropdownOnFieldSubmitted ?? self.toggleDropdownOnFieldSubmitted,
       dropdownType: dropdownType ?? self.dropdownType,
       menuConfiguration: menuConfiguration ?? self.menuConfiguration,
     );
@@ -35,6 +39,8 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
     return other is MyoroSingleInputDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.selectedItemBuilder == self.selectedItemBuilder &&
+        other.toggleDropdownOnInputTap == self.toggleDropdownOnInputTap &&
+        other.toggleDropdownOnFieldSubmitted == self.toggleDropdownOnFieldSubmitted &&
         other.dropdownType == self.dropdownType &&
         other.targetKey == self.targetKey &&
         other.menuConfiguration == self.menuConfiguration;
@@ -42,13 +48,22 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
 
   @override
   int get hashCode {
-    return Object.hash(self.selectedItemBuilder, self.dropdownType, self.targetKey, self.menuConfiguration);
+    return Object.hash(
+      self.selectedItemBuilder,
+      self.toggleDropdownOnInputTap,
+      self.toggleDropdownOnFieldSubmitted,
+      self.dropdownType,
+      self.targetKey,
+      self.menuConfiguration,
+    );
   }
 
   @override
   String toString() =>
       'MyoroSingleInputDropdownConfiguration<T>(\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
+      '  toggleDropdownOnInputTap: ${self.toggleDropdownOnInputTap},\n'
+      '  toggleDropdownOnFieldSubmitted: ${self.toggleDropdownOnFieldSubmitted},\n'
       '  dropdownType: ${self.dropdownType},\n'
       '  targetKey: ${self.targetKey},\n'
       '  menuConfiguration: ${self.menuConfiguration},\n'

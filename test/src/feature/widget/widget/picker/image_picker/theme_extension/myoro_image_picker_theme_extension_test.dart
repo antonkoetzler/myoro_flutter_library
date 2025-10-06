@@ -37,8 +37,37 @@ void main() {
   });
 
   test('MyoroImagePickerThemeExtension.lerp', () {
-    final themeExtension1 = MyoroImagePickerThemeExtension.fake();
-    final themeExtension2 = MyoroImagePickerThemeExtension.fake();
+    // Use deterministic values instead of faker to avoid test flakiness
+    final themeExtension1 = MyoroImagePickerThemeExtension(
+      borderRadius: BorderRadius.circular(8.0),
+      overlayCursor: SystemMouseCursors.click,
+      overlayIdleBackgroundColor: Colors.black.withValues(alpha: 0.1),
+      overlayHoverBackgroundColor: Colors.black.withValues(alpha: 0.2),
+      overlayTapBackgroundColor: Colors.black.withValues(alpha: 0.3),
+      overlayUnselectedImageStateIconConfiguration: const MyoroIconConfiguration(
+        icon: Icons.upload,
+        size: 20.0,
+      ),
+      selectionTypeModalConstraints: const BoxConstraints(maxWidth: 200, maxHeight: 150),
+      selectionTypeModalSpacing: 10.0,
+      selectionTypeModalButtonCameraIcon: Icons.camera,
+      selectionTypeModalButtonGalleryIcon: Icons.browse_gallery,
+    );
+    final themeExtension2 = MyoroImagePickerThemeExtension(
+      borderRadius: BorderRadius.circular(12.0),
+      overlayCursor: SystemMouseCursors.click,
+      overlayIdleBackgroundColor: Colors.white.withValues(alpha: 0.1),
+      overlayHoverBackgroundColor: Colors.white.withValues(alpha: 0.2),
+      overlayTapBackgroundColor: Colors.white.withValues(alpha: 0.3),
+      overlayUnselectedImageStateIconConfiguration: const MyoroIconConfiguration(
+        icon: Icons.upload,
+        size: 30.0,
+      ),
+      selectionTypeModalConstraints: const BoxConstraints(maxWidth: 300, maxHeight: 200),
+      selectionTypeModalSpacing: 15.0,
+      selectionTypeModalButtonCameraIcon: Icons.camera_alt,
+      selectionTypeModalButtonGalleryIcon: Icons.photo_library,
+    );
     for (double i = 0; i < 1; i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
@@ -51,7 +80,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.overlayIdleBackgroundColor,
-        Color.lerp(themeExtension1.overlayIdleBackgroundColor, themeExtension2.overlayIdleBackgroundColor, i),
+        Color.lerp(
+          themeExtension1.overlayIdleBackgroundColor,
+          themeExtension2.overlayIdleBackgroundColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.selectionTypeModalConstraints,
@@ -63,11 +96,19 @@ void main() {
       );
       expect(
         lerpedThemeExtension.overlayHoverBackgroundColor,
-        Color.lerp(themeExtension1.overlayHoverBackgroundColor, themeExtension2.overlayHoverBackgroundColor, i),
+        Color.lerp(
+          themeExtension1.overlayHoverBackgroundColor,
+          themeExtension2.overlayHoverBackgroundColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.overlayTapBackgroundColor,
-        Color.lerp(themeExtension1.overlayTapBackgroundColor, themeExtension2.overlayTapBackgroundColor, i),
+        Color.lerp(
+          themeExtension1.overlayTapBackgroundColor,
+          themeExtension2.overlayTapBackgroundColor,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.overlayUnselectedImageStateIconConfiguration,
@@ -79,7 +120,11 @@ void main() {
       );
       expect(
         lerpedThemeExtension.selectionTypeModalSpacing,
-        lerpDouble(themeExtension1.selectionTypeModalSpacing, themeExtension2.selectionTypeModalSpacing, i),
+        lerpDouble(
+          themeExtension1.selectionTypeModalSpacing,
+          themeExtension2.selectionTypeModalSpacing,
+          i,
+        ),
       );
       expect(
         lerpedThemeExtension.selectionTypeModalButtonCameraIcon,

@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of an input dropdown.
@@ -29,6 +29,26 @@ abstract class MyoroInputDropdownController<
   @mustCallSuper
   void dispose() {
     viewModel.dispose();
+  }
+
+  /// Toggles the dropdown.
+  void toggleDropdown() {
+    viewModel.toggleDropdown();
+  }
+
+  /// Enables the dropdown.
+  void enableDropdown() {
+    viewModel.enableDropdown();
+  }
+
+  /// Disables the dropdown.
+  void disableDropdown() {
+    viewModel.disableDropdown();
+  }
+
+  /// Getter of the input controller.
+  TextEditingController get inputController {
+    return viewModel.state.inputController;
   }
 
   /// Getter of the dropdown's configuration.

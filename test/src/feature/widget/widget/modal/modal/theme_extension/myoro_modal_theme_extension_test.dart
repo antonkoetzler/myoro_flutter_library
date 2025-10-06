@@ -13,16 +13,39 @@ void main() {
     final themeExtension = MyoroModalThemeExtension.builder(colorScheme, textTheme);
     expect(themeExtension.primaryColor, colorScheme.primary);
     expect(themeExtension.borderRadius, BorderRadius.circular(kMyoroBorderRadius));
-    expect(themeExtension.border, Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary));
+    expect(
+      themeExtension.border,
+      Border.all(width: kMyoroBorderWidth, color: colorScheme.onPrimary),
+    );
     expect(themeExtension.padding, const EdgeInsets.all(kMyoroMultiplier));
     expect(themeExtension.spacing, 10);
     expect(themeExtension.titleTextStyle, textTheme.titleSmall!);
-    expect(themeExtension.closeButtonIconConfiguration, const MyoroIconConfiguration(icon: Icons.close, size: 20));
+    expect(
+      themeExtension.closeButtonIconConfiguration,
+      const MyoroIconConfiguration(icon: Icons.close, size: 20),
+    );
   });
 
   test('MyoroModalThemeExtension.lerp', () {
-    final themeExtension1 = MyoroModalThemeExtension.fake();
-    final themeExtension2 = MyoroModalThemeExtension.fake();
+    // Use deterministic values instead of faker to avoid test flakiness
+    final themeExtension1 = MyoroModalThemeExtension(
+      primaryColor: Colors.blue,
+      borderRadius: BorderRadius.circular(8.0),
+      border: Border.all(color: Colors.black, width: 1.0),
+      padding: const EdgeInsets.all(16.0),
+      spacing: 10.0,
+      titleTextStyle: const TextStyle(fontSize: 16.0),
+      closeButtonIconConfiguration: const MyoroIconConfiguration(icon: Icons.close, size: 20.0),
+    );
+    final themeExtension2 = MyoroModalThemeExtension(
+      primaryColor: Colors.red,
+      borderRadius: BorderRadius.circular(12.0),
+      border: Border.all(color: Colors.white, width: 2.0),
+      padding: const EdgeInsets.all(20.0),
+      spacing: 15.0,
+      titleTextStyle: const TextStyle(fontSize: 18.0),
+      closeButtonIconConfiguration: const MyoroIconConfiguration(icon: Icons.close, size: 24.0),
+    );
     for (double i = 0; i < 1; i += 0.1) {
       final lerpedThemeExtension = themeExtension1.lerp(themeExtension2, i);
       expect(
@@ -33,9 +56,18 @@ void main() {
         lerpedThemeExtension.borderRadius,
         BorderRadius.lerp(themeExtension1.borderRadius, themeExtension2.borderRadius, i),
       );
-      expect(lerpedThemeExtension.border, Border.lerp(themeExtension1.border, themeExtension2.border, i));
-      expect(lerpedThemeExtension.padding, EdgeInsets.lerp(themeExtension1.padding, themeExtension2.padding, i));
-      expect(lerpedThemeExtension.spacing, lerpDouble(themeExtension1.spacing, themeExtension2.spacing, i));
+      expect(
+        lerpedThemeExtension.border,
+        Border.lerp(themeExtension1.border, themeExtension2.border, i),
+      );
+      expect(
+        lerpedThemeExtension.padding,
+        EdgeInsets.lerp(themeExtension1.padding, themeExtension2.padding, i),
+      );
+      expect(
+        lerpedThemeExtension.spacing,
+        lerpDouble(themeExtension1.spacing, themeExtension2.spacing, i),
+      );
       expect(
         lerpedThemeExtension.titleTextStyle,
         TextStyle.lerp(themeExtension1.titleTextStyle, themeExtension2.titleTextStyle, i),

@@ -20,16 +20,12 @@ final class _SuccessContent<T, C extends _C<T>> extends StatelessWidget {
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
 
-    return ClipRRect(
-      clipBehavior: Clip.hardEdge,
-      borderRadius: borderRadius,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (viewModel.state.configuration.searchCallback != null) _SearchBar<T, C>(),
-          Flexible(child: _ItemsSection<T, C>()),
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (viewModel.state.configuration.searchCallback != null) _SearchBar<T, C>(),
+        Flexible(child: _ItemsSection<T, C>()),
+      ],
     );
   }
 }

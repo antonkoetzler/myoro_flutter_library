@@ -19,18 +19,17 @@ abstract class MyoroInputDropdownViewModel<
   >
 > {
   /// Default constructor.
-  MyoroInputDropdownViewModel(CONFIGURATION configuration, CONTROLLER dropdownController)
-    : _state = MyoroInputDropdownState(configuration, dropdownController);
+  MyoroInputDropdownViewModel(
+    CONFIGURATION configuration,
+    TextEditingController? inputController,
+    CONTROLLER dropdownController,
+  ) : _state = MyoroInputDropdownState(configuration, inputController, dropdownController);
 
   /// State.
   final MyoroInputDropdownState<T, CONFIGURATION, CONTROLLER> _state;
 
   /// [_state] getter.
   MyoroInputDropdownState<T, CONFIGURATION, CONTROLLER> get state => _state;
-
-  /// Formats the input's [TextEditingController] when the selected items have changed.
-  @protected
-  void formatItems();
 
   /// Dispose function.
   void dispose() {

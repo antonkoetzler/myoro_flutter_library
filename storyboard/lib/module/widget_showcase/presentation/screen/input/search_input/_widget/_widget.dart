@@ -1,12 +1,30 @@
 part of '../myoro_search_input_widget_showcase_screen.dart';
 
-/// [WidgetShowcaseScreenScreenConfiguration.widget] of [MyoroSearchInputWidgetShowcaseScreen].
+/// [WidgetShowcaseScreenConfiguration.widget] of [MyoroSearchInputWidgetShowcaseScreen].
 final class _Widget extends StatelessWidget {
   const _Widget();
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroSearchInputWidgetShowcaseScreenViewModel>();
-    return MyoroSearchInput<String>(configuration: viewModel.buildConfiguration(context, const _Suffix()));
+    return MyoroSearchInputV2(
+      configuration: MyoroSearchInputV2Configuration(
+        menuConfiguration: MyoroSearchInputV2MenuConfiguration(
+          request: (_) async {
+            await Future.delayed(const Duration(seconds: 1));
+            return {'Start', 'End'};
+          },
+          itemBuilder: (item) {
+            return MyoroMenuItem(
+              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+                textConfiguration: MyoroTextConfiguration(text: item),
+              ),
+            );
+          },
+        ),
+        selectedItemBuilder: (item) {
+          return item;
+        },
+      ),
+    );
   }
 }

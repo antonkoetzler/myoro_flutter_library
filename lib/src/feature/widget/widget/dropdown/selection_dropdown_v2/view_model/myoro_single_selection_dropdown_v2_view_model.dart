@@ -9,9 +9,8 @@ class MyoroSingleSelectionDropdownV2ViewModel<T>
           MyoroSingleSelectionDropdownV2Configuration<T>,
           MyoroSingleDropdownController<T>
         > {
-  MyoroSingleSelectionDropdownV2ViewModel(
-    MyoroSingleSelectionDropdownV2Configuration<T> configuration,
-  ) : super(
+  MyoroSingleSelectionDropdownV2ViewModel(MyoroSingleSelectionDropdownV2Configuration<T> configuration)
+    : super(
         configuration,
         MyoroSingleDropdownController(
           configuration: MyoroSingleDropdownConfiguration(

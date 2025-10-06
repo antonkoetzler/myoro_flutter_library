@@ -16,14 +16,18 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       constraints: BoxConstraints.lerp(a?.constraints, b?.constraints, t),
       primaryColor: Color.lerp(a?.primaryColor, b?.primaryColor, t),
       borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
-      bottomSheetBorderRadius: BorderRadius.lerp(a?.bottomSheetBorderRadius, b?.bottomSheetBorderRadius, t),
+      bottomSheetBorderRadius: BorderRadius.lerp(
+        a?.bottomSheetBorderRadius,
+        b?.bottomSheetBorderRadius,
+        t,
+      ),
       border: Border.lerp(a?.border, b?.border, t),
       bottomSheetBorder: Border.lerp(a?.bottomSheetBorder, b?.bottomSheetBorder, t),
       padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
       closeButtonPadding: EdgeInsets.lerp(a?.closeButtonPadding, b?.closeButtonPadding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
-      closeButtonIconConfiguration: myoroFallbackLerp(
+      closeButtonIconConfiguration: MyoroIconConfiguration.lerp(
         a?.closeButtonIconConfiguration,
         b?.closeButtonIconConfiguration,
         t,
@@ -58,7 +62,9 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       closeButtonPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       titleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      closeButtonIconConfiguration: faker.randomGenerator.boolean()
+          ? MyoroIconConfiguration.fake()
+          : null,
     );
   }
   // coverage:ignore-end

@@ -23,7 +23,7 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
       padding: EdgeInsets.lerp(a?.padding, b?.padding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       messageTextStyle: TextStyle.lerp(a?.messageTextStyle, b?.messageTextStyle, t),
-      closeButtonIconConfiguration: myoroFallbackLerp(
+      closeButtonIconConfiguration: MyoroIconConfiguration.lerp(
         a?.closeButtonIconConfiguration,
         b?.closeButtonIconConfiguration,
         t,
@@ -58,7 +58,9 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
       padding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       messageTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
+      closeButtonIconConfiguration: faker.randomGenerator.boolean()
+          ? MyoroIconConfiguration.fake()
+          : null,
     );
   }
   // coverage:ignore-end
