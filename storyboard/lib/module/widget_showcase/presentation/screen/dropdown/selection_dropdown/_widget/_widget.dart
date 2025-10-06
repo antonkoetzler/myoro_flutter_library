@@ -14,8 +14,8 @@ final class _Widget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-          child: MyoroSingleSelectionDropdownV2(
-            configuration: MyoroSingleSelectionDropdownV2Configuration(
+          child: MyoroSingleSelectionDropdown(
+            configuration: MyoroSingleSelectionDropdownConfiguration(
               dropdownType: MyoroDropdownTypeEnum.overlay, // TODO: Add option
               menuConfiguration: MyoroSingleMenuConfiguration(
                 request: () => {'Start'},
@@ -32,8 +32,8 @@ final class _Widget extends StatelessWidget {
           ),
         ),
         Flexible(
-          child: MyoroMultiSelectionDropdownV2(
-            configuration: MyoroMultiSelectionDropdownV2Configuration(
+          child: MyoroMultiSelectionDropdown(
+            configuration: MyoroMultiSelectionDropdownConfiguration(
               dropdownType: MyoroDropdownTypeEnum.overlay, // TODO: Add option
               menuConfiguration: MyoroMultiMenuConfiguration(
                 request: () => {'Start'},

@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:provider/provider.dart';
 
-part '_widget/_body.dart';
-part '_widget/_input.dart';
 part '_widget/_search_button.dart';
-part '_widget/_search_section.dart';
 
-/// Search input. Shows a dropdown after making a search request.
+/// Search input.
 class MyoroSearchInput<T> extends StatefulWidget {
-  const MyoroSearchInput({super.key, required this.configuration, this.style = const MyoroSearchInputStyle()});
+  const MyoroSearchInput({super.key, required this.configuration});
 
-  /// Configuration.
   final MyoroSearchInputConfiguration<T> configuration;
-
-  /// Style.
-  final MyoroSearchInputStyle style;
 
   @override
   State<MyoroSearchInput<T>> createState() => _MyoroSearchInputState<T>();
@@ -26,37 +18,40 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     return widget.configuration;
   }
 
-  MyoroSearchInputStyle get _style {
-    return widget.style;
-  }
-
-  late final MyoroSearchInputViewModel<T> _viewModel;
+  late final MyoroSingleInputDropdownController<T> _controller;
 
   @override
   void initState() {
     super.initState();
-    _viewModel = MyoroSearchInputViewModel(_configuration);
+    final inputController = TextEditingController();
+    _controller = MyoroSingleInputDropdownController<T>(
+      inputController: inputController,
+      configuration: MyoroSingleInputDropdownConfiguration(
+        menuConfiguration: MyoroSingleMenuConfiguration(
+          request: () => _configuration.menuConfiguration.request(inputController.text),
+          onEndReachedRequest: _configuration.menuConfiguration.onEndReachedRequest,
+          itemBuilder: _configuration.menuConfiguration.itemBuilder,
+        ),
+        selectedItemBuilder: _configuration.selectedItemBuilder,
+      ),
+    );
   }
 
   @override
   void dispose() {
-    _viewModel.dispose();
+    _controller.inputController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(context) {
-    final state = _viewModel.state;
-    final itemsRequestNotifier = state.itemsRequestNotifier;
-
-    return MultiProvider(
-      providers: [
-        InheritedProvider.value(value: _style),
-        InheritedProvider.value(value: _viewModel),
-      ],
-      child: ValueListenableBuilder(
-        valueListenable: itemsRequestNotifier,
-        builder: (_, itemsRequest, _) => _Body<T>(itemsRequest),
+    return MyoroSingleInputDropdown<T>(
+      controller: _controller,
+      inputSuffix: _SearchButton<T>(
+        () => _controller
+          ..disableDropdown()
+          ..enableDropdown(),
       ),
     );
   }

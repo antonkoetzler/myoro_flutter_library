@@ -19,7 +19,6 @@ final class _DropdownTypeOption extends StatelessWidget {
           itemBuilder: dropdownTypeOptionItemBuilder,
           selectedItem: dropdownType,
         ),
-        allowItemClearing: false,
         onChanged: (v) => state.dropdownType = v!,
         selectedItemBuilder: dropdownTypeOptionSelectedItemBuilder,
       ),

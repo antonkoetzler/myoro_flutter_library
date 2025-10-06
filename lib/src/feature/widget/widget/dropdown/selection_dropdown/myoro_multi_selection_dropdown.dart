@@ -1,16 +1,12 @@
 part of 'bundle/myoro_selection_dropdown_bundle.dart';
 
-/// Multi item dropdown.
+/// Multi selection dropdown.
 class MyoroMultiSelectionDropdown<T> extends StatefulWidget {
-  const MyoroMultiSelectionDropdown({
-    super.key,
-    this.controller,
-    this.configuration,
-    this.style = const MyoroSelectionDropdownStyle(),
-  }) : assert(
-         (controller != null) ^ (configuration != null),
-         '[MyoroMultiSelectionDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
-       );
+  const MyoroMultiSelectionDropdown({super.key, this.controller, this.configuration})
+    : assert(
+        (controller != null) ^ (configuration != null),
+        '[MyoroMultiSelectionDropdown<$T>]: [controller] (x)or [configuration] must be provided.',
+      );
 
   /// Controller.
   final MyoroMultiSelectionDropdownController<T>? controller;
@@ -18,40 +14,30 @@ class MyoroMultiSelectionDropdown<T> extends StatefulWidget {
   /// Configuration.
   final MyoroMultiSelectionDropdownConfiguration<T>? configuration;
 
-  /// Style.
-  final MyoroSelectionDropdownStyle style;
-
   @override
   State<MyoroMultiSelectionDropdown<T>> createState() => _MyoroMultiSelectionDropdownState<T>();
 }
 
 final class _MyoroMultiSelectionDropdownState<T> extends State<MyoroMultiSelectionDropdown<T>> {
-  MyoroSelectionDropdownStyle get _style => widget.style;
+  MyoroMultiSelectionDropdownController<T>? get _controller => widget.controller;
+  MyoroMultiSelectionDropdownConfiguration<T>? get _configuration => widget.configuration;
 
+  // late final MyoroMultiSelectionDropdownViewModel<T> _viewModel;
   MyoroMultiSelectionDropdownViewModel<T>? _localViewModel;
   MyoroMultiSelectionDropdownViewModel<T> get _viewModel {
-    return widget.configuration != null
-        ? (_localViewModel ??= MyoroMultiSelectionDropdownViewModel(widget.configuration!))
-        // ignore: invalid_use_of_protected_member
-        : widget.controller!.viewModel;
-  }
-
-  @override
-  void didUpdateWidget(covariant MyoroMultiSelectionDropdown<T> oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.configuration != null) {
-      if (widget.configuration != _viewModel.state.configuration) {
-        _viewModel.state.configuration = widget.configuration!;
-      }
-    }
+    // ignore: invalid_use_of_protected_member
+    return _controller?.viewModel ??
+        (_localViewModel ??= MyoroMultiSelectionDropdownViewModel(_configuration!));
   }
 
   @override
   void dispose() {
-    _localViewModel?.dispose();
+    _viewModel.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(_) => _Dropdown(_viewModel, _style);
+  Widget build(_) {
+    return _Base(_viewModel);
+  }
 }

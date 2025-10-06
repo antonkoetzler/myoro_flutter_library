@@ -3,81 +3,55 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_selection_dropdown_state.dart';
 
-/// Shared implementation that both [MyoroSingleSelectionDropdown] and [MyoroMultiSelectionDropdown] share.
+/// View model of dropdown.
 abstract class MyoroSelectionDropdownViewModel<
   T,
-  CONFIGURATION extends MyoroSelectionDropdownConfiguration<T, MENU_CONFIGURATION>,
-  MENU_CONFIGURATION extends MyoroMenuConfiguration<T>,
-  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MENU_CONFIGURATION>>
+  CONFIGURATION extends MyoroSelectionDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+  DROPDOWN_CONTROLLER extends MyoroDropdownController<
+    T,
+    MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+    MyoroDropdownViewModel<
+      T,
+      MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+      MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
+    >
+  >
 > {
-  MyoroSelectionDropdownViewModel(CONFIGURATION configuration, MENU_CONTROLLER menuController)
-    : _state = MyoroSelectionDropdownState(configuration, menuController) {
-    formatSelectedItems();
-    if (configuration.menuTypeEnum.isOverlay) {
-      state.overlayMenuController.addListener(_overlayMenuControllerListener);
-    }
-    state.enabledNotifier.addListener(enabledNotifierListener);
-  }
+  MyoroSelectionDropdownViewModel(
+    CONFIGURATION configuration,
+    DROPDOWN_CONTROLLER dropdownController,
+  ) : _state = MyoroSelectionDropdownState(configuration, dropdownController);
 
   /// State.
-  final MyoroSelectionDropdownState<T, CONFIGURATION, MENU_CONTROLLER> _state;
+  final MyoroSelectionDropdownState<T, CONFIGURATION, DROPDOWN_CONTROLLER> _state;
 
   /// [_state] getter.
-  MyoroSelectionDropdownState<T, CONFIGURATION, MENU_CONTROLLER> get state => _state;
+  MyoroSelectionDropdownState<T, CONFIGURATION, DROPDOWN_CONTROLLER> get state => _state;
 
   /// Dispose function.
   void dispose() {
     state.dispose();
   }
 
-  /// Builds the menu [Widget].
-  Widget menuWidget(BuildContext context);
-
-  /// Toggles [_enabledNotifier].
-  void toggleEnabled([bool? enabled]) {
-    state.enabledNotifier.value = enabled ?? !state.enabled;
+  /// Toggles the dropdown.
+  void toggleDropdown() {
+    state.dropdownController.toggleDropdown();
   }
 
-  /// Toggles [_Menu].
-  void toggleMenu() {
-    void toggleOverlayMenu() {
-      final overlayMenuController = state.overlayMenuController;
-      overlayMenuController.isShowing ? overlayMenuController.hide() : overlayMenuController.show();
-    }
-
-    return switch (state.configuration.menuTypeEnum) {
-      MyoroSelectionDropdownMenuTypeEnum.overlay => toggleOverlayMenu(),
-      MyoroSelectionDropdownMenuTypeEnum.expanding => state.showingMenu = !state.showingMenu,
-      MyoroSelectionDropdownMenuTypeEnum.modal => state.showingMenu = !state.showingMenu,
-    };
+  /// Enables the dropdown.
+  void enableDropdown() {
+    state.dropdownController.enableDropdown();
   }
 
-  /// Handles the callback of when [MyoroSelectionDropdownState.selectedItemsNotifier] has changed.
+  /// Disables the dropdown.
+  void disableDropdown() {
+    state.dropdownController.disableDropdown();
+  }
+
+  /// Formats the items to display on the input.
   @protected
-  @mustCallSuper
-  void selectedItemsNotifierListener() {
-    formatSelectedItems();
-  }
+  void formatItems();
 
-  /// Provides the size of [_Input].
-  @mustCallSuper
-  void supplyInputSizeController() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final renderBox = state.inputKey.currentContext!.findRenderObject() as RenderBox;
-      state.inputSize = renderBox.size;
-    });
-  }
-
-  /// Handles the callback of a dropdown's checkbox on changed argument.
-  @protected
-  void enabledNotifierListener();
-
-  /// Formats items in [_selectedItemsNotifier] to display in [_Input].
-  @protected
-  void formatSelectedItems();
-
-  /// Listener of [MyoroSelectionDropdownState.overlayMenuController].
-  void _overlayMenuControllerListener() {
-    state.showingMenu = state.overlayMenuController.isShowing;
-  }
+  /// Builds the dropdown [Widget].
+  Widget buildDropdownWidget(Widget inputWidget);
 }

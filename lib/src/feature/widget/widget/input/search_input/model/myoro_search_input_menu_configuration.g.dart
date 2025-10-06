@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'myoro_search_input_v2_menu_configuration.dart';
+part of 'myoro_search_input_menu_configuration.dart';
 
 // **************************************************************************
 // MyoroModelGenerator
@@ -8,30 +8,32 @@ part of 'myoro_search_input_v2_menu_configuration.dart';
 
 // coverage:ignore-file
 
-/// Apply this mixin to [MyoroSearchInputV2MenuConfiguration] once the code is generated.
+/// Apply this mixin to [MyoroSearchInputMenuConfiguration] once the code is generated.
 ///
 /// ```dart
-/// class MyoroSearchInputV2MenuConfiguration<T> with _$MyoroSearchInputV2MenuConfigurationMixin<T> {}
+/// class MyoroSearchInputMenuConfiguration<T> with _$MyoroSearchInputMenuConfigurationMixin<T> {}
 /// ```
-mixin _$MyoroSearchInputV2MenuConfigurationMixin<T> {
-  MyoroSearchInputV2MenuConfiguration<T> get self => this as MyoroSearchInputV2MenuConfiguration<T>;
+mixin _$MyoroSearchInputMenuConfigurationMixin<T> {
+  MyoroSearchInputMenuConfiguration<T> get self => this as MyoroSearchInputMenuConfiguration<T>;
 
-  MyoroSearchInputV2MenuConfiguration<T> copyWith({
-    MyoroSearchInputV2Request<T>? request,
-    MyoroSearchInputV2OnEndReachedRequest<T>? onEndReachedRequest,
+  MyoroSearchInputMenuConfiguration<T> copyWith({
+    MyoroSearchInputRequest<T>? request,
+    MyoroSearchInputOnEndReachedRequest<T>? onEndReachedRequest,
     bool onEndReachedRequestProvided = true,
     MyoroMenuItemBuilder<T>? itemBuilder,
   }) {
-    return MyoroSearchInputV2MenuConfiguration(
+    return MyoroSearchInputMenuConfiguration(
       request: request ?? self.request,
-      onEndReachedRequest: onEndReachedRequestProvided ? (onEndReachedRequest ?? self.onEndReachedRequest) : null,
+      onEndReachedRequest: onEndReachedRequestProvided
+          ? (onEndReachedRequest ?? self.onEndReachedRequest)
+          : null,
       itemBuilder: itemBuilder ?? self.itemBuilder,
     );
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroSearchInputV2MenuConfiguration<T> &&
+    return other is MyoroSearchInputMenuConfiguration<T> &&
         other.runtimeType == runtimeType &&
         other.request == self.request &&
         other.onEndReachedRequest == self.onEndReachedRequest &&
@@ -45,7 +47,7 @@ mixin _$MyoroSearchInputV2MenuConfigurationMixin<T> {
 
   @override
   String toString() =>
-      'MyoroSearchInputV2MenuConfiguration<T>(\n'
+      'MyoroSearchInputMenuConfiguration<T>(\n'
       '  request: ${self.request},\n'
       '  onEndReachedRequest: ${self.onEndReachedRequest},\n'
       '  itemBuilder: ${self.itemBuilder},\n'

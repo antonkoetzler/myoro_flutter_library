@@ -1,4 +1,4 @@
-part of '../bundle/myoro_selection_dropdown_bundle_v2.dart';
+part of '../bundle/myoro_selection_dropdown_bundle.dart';
 
 /// Base [Widget] for selection dropdown implementations.
 class _Base<T, V extends _ViewModelType<T>> extends StatelessWidget {

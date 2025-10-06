@@ -6,9 +6,9 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return MyoroSearchInputV2(
-      configuration: MyoroSearchInputV2Configuration(
-        menuConfiguration: MyoroSearchInputV2MenuConfiguration(
+    return MyoroSearchInput(
+      configuration: MyoroSearchInputConfiguration(
+        menuConfiguration: MyoroSearchInputMenuConfiguration(
           request: (_) async {
             await Future.delayed(const Duration(seconds: 1));
             return {'Start', 'End'};
