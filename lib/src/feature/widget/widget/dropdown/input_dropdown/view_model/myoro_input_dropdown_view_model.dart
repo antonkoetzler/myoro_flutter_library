@@ -11,6 +11,7 @@ abstract class MyoroInputDropdownViewModel<
   CONTROLLER extends MyoroDropdownController<
     T,
     MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>,
     MyoroDropdownViewModel<
       T,
       MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,

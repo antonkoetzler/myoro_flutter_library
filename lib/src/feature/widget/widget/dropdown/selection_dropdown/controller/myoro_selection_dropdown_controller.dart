@@ -1,9 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-part 'myoro_selection_dropdown_state.dart';
-
-/// View model of [MyoroSelectionDropdown].
-abstract class MyoroSelectionDropdownViewModel<
+/// Selection dropdown controller.
+abstract class MyoroSelectionDropdownController<
   T,
   INPUT_DROPDOWN_CONTROLLER extends MyoroInputDropdownController<
     T,
@@ -23,35 +22,39 @@ abstract class MyoroSelectionDropdownViewModel<
         >
       >
     >
-  >
+  >,
+  VIEW_MODEL extends MyoroSelectionDropdownViewModel<T, INPUT_DROPDOWN_CONTROLLER>
 > {
   /// Default constructor.
-  MyoroSelectionDropdownViewModel(INPUT_DROPDOWN_CONTROLLER inputDropdownController)
-    : _state = MyoroSelectionDropdownState(inputDropdownController);
+  MyoroSelectionDropdownController(VIEW_MODEL viewModel) : _viewModel = viewModel;
 
-  /// State.
-  final MyoroSelectionDropdownState<T, INPUT_DROPDOWN_CONTROLLER> _state;
+  /// View model.
+  final VIEW_MODEL _viewModel;
 
   /// Dispose function.
+  @mustCallSuper
   void dispose() {
-    _state.dispose();
+    viewModel.dispose();
   }
 
-  /// Toggles an item.
-  void toggleItem(T item) {
-    state.inputDropdownController.menuController.toggleItem(item);
+  /// Toggles if the dropdown is enabled or not.
+  void toggleEnabled([bool? enabled]) {
+    viewModel.state.inputDropdownController.toggleEnabled(enabled);
   }
 
   /// Clears the selected items.
   void clear() {
-    state.inputDropdownController.menuController.clear();
+    viewModel.clear();
   }
 
-  /// Formats the selected item(s) to the input.
-  void formatItems();
-
-  /// [_state] getter.
-  MyoroSelectionDropdownState<T, INPUT_DROPDOWN_CONTROLLER> get state {
-    return _state;
+  /// Toggles an item.
+  void toggleItem(T item) {
+    viewModel.toggleItem(item);
   }
+
+  /// [_viewModel] getter.
+  VIEW_MODEL get viewModel => _viewModel;
+
+  /// Getter of whether the dropdown is enabled or not.
+  bool get enabled => viewModel.state.inputDropdownController.enabled;
 }

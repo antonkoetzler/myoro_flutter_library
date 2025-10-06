@@ -39,13 +39,13 @@ final class MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration
 
   /// [MyoroTapStatusEnum.idle]
   final Color? selectedIdleColor;
-  final MyoroSingleSelectionDropdownOnChanged<Color> idleOnChanged;
+  final MyoroSingleMenuOnChanged<Color> idleOnChanged;
 
   /// [MyoroTapStatusEnum.hover]
   final Color? selectedHoverColor;
-  final MyoroSingleSelectionDropdownOnChanged<Color> hoverOnChanged;
+  final MyoroSingleMenuOnChanged<Color> hoverOnChanged;
 
   /// [MyoroTapStatusEnum.tap]
   final Color? selectedTapColor;
-  final MyoroSingleSelectionDropdownOnChanged<Color> tapOnChanged;
+  final MyoroSingleMenuOnChanged<Color> tapOnChanged;
 }

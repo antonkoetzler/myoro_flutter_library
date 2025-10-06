@@ -7,6 +7,7 @@ class MyoroSingleInputDropdownController<T>
         MyoroInputDropdownController<
           T,
           MyoroSingleInputDropdownConfiguration<T>,
+          MyoroSingleMenuController<T>,
           MyoroSingleInputDropdownViewModel<T>
         > {
   MyoroSingleInputDropdownController({

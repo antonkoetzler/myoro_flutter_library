@@ -6,12 +6,14 @@ final class MyoroSelectionDropdownState<
   INPUT_DROPDOWN_CONTROLLER extends MyoroInputDropdownController<
     T,
     MyoroInputDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>,
     MyoroInputDropdownViewModel<
       T,
       MyoroInputDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
       MyoroDropdownController<
         T,
         MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+        MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>,
         MyoroDropdownViewModel<
           T,
           MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
@@ -29,6 +31,12 @@ final class MyoroSelectionDropdownState<
 
   /// Dispose function.
   void dispose() {
+    inputDropdownController.inputController.dispose();
     inputDropdownController.dispose();
+  }
+
+  /// Getter of whether the dropdown is enabled or not.
+  bool get enabled {
+    return inputDropdownController.enabled;
   }
 }

@@ -25,10 +25,10 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
   final Curve? selectedCurve;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<Curve> onChanged;
+  final MyoroSingleMenuOnChanged<Curve> onChanged;
 
   /// [MyoroSingleSelectionDropdownConfiguration.checkboxOnChanged].
-  final MyoroSingleSelectionDropdownCheckboxOnChanged<Curve>? checkboxOnChanged;
+  final MyoroInputCheckboxOnChanged? checkboxOnChanged;
 
   static const _curves = {
     'linear': Curves.linear,
@@ -48,12 +48,11 @@ final class CurveWidgetShowcaseOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<Curve>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: label,
-        allowItemClearing: true,
-        selectedItemBuilder: (c) {
-          return _curves.entries
-              .firstWhere((entry) => entry.value == c, orElse: () => const MapEntry('custom', Curves.linear))
-              .key;
-        },
+        selectedItemBuilder:
+            (c) =>
+                _curves.entries
+                    .firstWhere((entry) => entry.value == c, orElse: () => const MapEntry('custom', Curves.linear))
+                    .key,
         onChanged: onChanged,
         checkboxOnChanged: checkboxOnChanged,
         enabled: enabled,

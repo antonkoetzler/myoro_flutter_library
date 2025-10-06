@@ -17,7 +17,6 @@ final class _SearchBarInputStyleOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<MyoroInputStyleEnum>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Search bar input style',
-        allowItemClearing: true,
         selectedItemBuilder:
             (style) =>
                 _styles.entries

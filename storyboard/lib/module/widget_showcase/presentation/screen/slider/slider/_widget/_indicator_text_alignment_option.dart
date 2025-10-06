@@ -20,7 +20,6 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<TextAlign>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Indicator text alignment',
-        allowItemClearing: true,
         selectedItemBuilder:
             (alignment) =>
                 _alignments.entries

@@ -4,12 +4,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget showcase option to select a [TextOverflow] from a [MyoroSingleSelectionDropdown].
 final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Text overflow behavior';
-  static const allowItemClearingDefaultValue = MyoroSelectionDropdownConfiguration.allowItemClearingDefaultValue;
 
   const TextOverflowWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
-    this.allowItemClearing = allowItemClearingDefaultValue,
     this.selectedItem,
     required this.onChanged,
   });
@@ -17,21 +15,17 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroSingleSelectionDropdownConfiguration.label]
   final String label;
 
-  /// [MyoroSingleSelectionDropdownConfiguration.allowItemClearing]
-  final bool allowItemClearing;
-
   /// Initially selected item of the [MyoroSingleSelectionDropdown].
   final TextOverflow? selectedItem;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<TextOverflow> onChanged;
+  final MyoroSingleMenuOnChanged<TextOverflow> onChanged;
 
   @override
   Widget build(_) {
     return MyoroSingleSelectionDropdown<TextOverflow>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: label,
-        allowItemClearing: allowItemClearing,
         onChanged: onChanged,
         selectedItemBuilder: (value) => value.toString(),
         menuConfiguration: MyoroSingleMenuConfiguration(

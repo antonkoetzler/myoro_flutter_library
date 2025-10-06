@@ -5,17 +5,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 abstract class MyoroInputDropdownController<
   T,
   CONFIGURATION extends MyoroInputDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>,
   VIEW_MODEL extends MyoroInputDropdownViewModel<
     T,
     CONFIGURATION,
     MyoroDropdownController<
       T,
       MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-      MyoroDropdownViewModel<
-        T,
-        MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-        MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>
-      >
+      MENU_CONTROLLER,
+      MyoroDropdownViewModel<T, MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>, MENU_CONTROLLER>
     >
   >
 > {
@@ -46,6 +44,11 @@ abstract class MyoroInputDropdownController<
     viewModel.disableDropdown();
   }
 
+  /// Toggles if the dropdown is enabled or not.
+  void toggleEnabled([bool? enabled]) {
+    viewModel.state.enabledNotifier.value = enabled ?? !viewModel.state.enabledNotifier.value;
+  }
+
   /// Getter of the input controller.
   TextEditingController get inputController {
     return viewModel.state.inputController;
@@ -54,5 +57,20 @@ abstract class MyoroInputDropdownController<
   /// Getter of the dropdown's configuration.
   CONFIGURATION get configuration {
     return viewModel.state.configuration;
+  }
+
+  /// Getter of the dropdown's menu controller.
+  MENU_CONTROLLER get menuController {
+    return viewModel.state.dropdownController.menuController;
+  }
+
+  /// Getter of the dropdown's enabled notifier.
+  ValueNotifier<bool> get enabledNotifier {
+    return viewModel.state.enabledNotifier;
+  }
+
+  /// Getter of whether the dropdown is enabled or not.
+  bool get enabled {
+    return viewModel.state.enabled;
   }
 }

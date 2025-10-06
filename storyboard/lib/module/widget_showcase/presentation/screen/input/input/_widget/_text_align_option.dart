@@ -10,7 +10,6 @@ final class _TextAlignOption extends StatelessWidget {
 
     return TextAlignWidgetShowcaseOption(
       selectedValue: viewModel.state.textAlign,
-      allowItemClearing: false,
       onChanged: (textAlign) => viewModel.state.textAlign = textAlign!,
     );
   }

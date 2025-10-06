@@ -19,7 +19,7 @@ final class MouseCursorWidgetShowcaseOption extends StatelessWidget {
   final MouseCursor? selectedCursor;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<MouseCursor> onChanged;
+  final MyoroSingleMenuOnChanged<MouseCursor> onChanged;
 
   @override
   Widget build(_) {

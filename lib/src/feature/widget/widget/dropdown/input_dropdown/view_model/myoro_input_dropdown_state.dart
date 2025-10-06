@@ -7,6 +7,7 @@ final class MyoroInputDropdownState<
   CONTROLLER extends MyoroDropdownController<
     T,
     MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
+    MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>,
     MyoroDropdownViewModel<
       T,
       MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
@@ -14,14 +15,9 @@ final class MyoroInputDropdownState<
     >
   >
 > {
-  MyoroInputDropdownState(this._configuration, TextEditingController? inputController, this.dropdownController) {
+  MyoroInputDropdownState(this._configuration, TextEditingController? inputController, this.dropdownController)
+    : _enabledNotifier = ValueNotifier(_configuration.enabled) {
     _inputController = inputController ?? (_localInputController ??= TextEditingController());
-  }
-
-  /// Dispose function.
-  void dispose() {
-    dropdownController.dispose();
-    _localInputController?.dispose();
   }
 
   /// Configuration.
@@ -36,6 +32,15 @@ final class MyoroInputDropdownState<
   /// Input controller.
   late final TextEditingController _inputController;
 
+  /// [ValueNotifier] controlling if the dropdown is enabled or not.
+  final ValueNotifier<bool> _enabledNotifier;
+
+  /// Dispose function.
+  void dispose() {
+    dropdownController.dispose();
+    _localInputController?.dispose();
+  }
+
   /// [_configuration] getter.
   CONFIGURATION get configuration {
     return _configuration;
@@ -46,6 +51,16 @@ final class MyoroInputDropdownState<
     return _inputController;
   }
 
+  /// [_enabledNotifier] getter.
+  ValueNotifier<bool> get enabledNotifier {
+    return _enabledNotifier;
+  }
+
+  /// [_enabledNotifier]'s value getter.
+  bool get enabled {
+    return _enabledNotifier.value;
+  }
+
   /// [_configuration] setter.
   set configuration(CONFIGURATION configuration) {
     if (_configuration == configuration) return;
@@ -54,5 +69,10 @@ final class MyoroInputDropdownState<
       menuConfiguration: _configuration.menuConfiguration,
       dropdownType: _configuration.dropdownType,
     );
+  }
+
+  /// [_enabledNotifier] setter.
+  set enabled(bool enabled) {
+    _enabledNotifier.value = enabled;
   }
 }

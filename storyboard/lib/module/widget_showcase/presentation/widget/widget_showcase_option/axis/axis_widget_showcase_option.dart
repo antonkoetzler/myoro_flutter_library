@@ -24,7 +24,7 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
   final Axis initialDirection;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<Axis> onChanged;
+  final MyoroSingleMenuOnChanged<Axis> onChanged;
 
   @override
   Widget build(_) {
@@ -32,7 +32,6 @@ final class AxisWidgetShowcaseOption extends StatelessWidget {
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: label,
         selectedItemBuilder: _axisName,
-        allowItemClearing: false,
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: Axis.values.toSet,
           selectedItem: initialDirection,

@@ -4,12 +4,10 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget showcase option to choose a [TextStyle] from a [MyoroSingleSelectionDropdown].
 final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Text style';
-  static const allowItemClearingDefaultValue = MyoroSelectionDropdownConfiguration.allowItemClearingDefaultValue;
 
   const TextStyleWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
-    this.allowItemClearing = allowItemClearingDefaultValue,
     this.selectedItem,
     required this.onChanged,
   });
@@ -17,14 +15,11 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
   /// [MyoroSingleSelectionDropdownConfiguration.label]
   final String label;
 
-  /// [MyoroSelectionDropdownConfiguration.allowItemClearing]
-  final bool allowItemClearing;
-
   /// Initially selected [TextStyle].
   final TextStyle? selectedItem;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<TextStyle> onChanged;
+  final MyoroSingleMenuOnChanged<TextStyle> onChanged;
 
   @override
   Widget build(context) {
@@ -33,7 +28,6 @@ final class TextStyleWidgetShowcaseOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<TextStyle>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: label,
-        allowItemClearing: allowItemClearing,
         onChanged: onChanged,
         selectedItemBuilder: typography.getTextStyleName,
         menuConfiguration: MyoroSingleMenuConfiguration(

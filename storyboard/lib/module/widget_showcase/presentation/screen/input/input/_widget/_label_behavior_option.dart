@@ -17,7 +17,6 @@ final class _LabelBehaviorOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<FloatingLabelBehavior>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Label behavior',
-        allowItemClearing: true,
         selectedItemBuilder:
             (behavior) =>
                 _behaviors.entries

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'myoro_multi_input_dropdown_configuration.dart';
+part of 'myoro_multi_selection_dropdown_configuration.dart';
 
 // **************************************************************************
 // MyoroModelGenerator
@@ -8,15 +8,17 @@ part of 'myoro_multi_input_dropdown_configuration.dart';
 
 // coverage:ignore-file
 
-/// Apply this mixin to [MyoroMultiInputDropdownConfiguration] once the code is generated.
+/// Apply this mixin to [MyoroMultiSelectionDropdownConfiguration] once the code is generated.
 ///
 /// ```dart
-/// class MyoroMultiInputDropdownConfiguration<T> with _$MyoroMultiInputDropdownConfigurationMixin<T> {}
+/// class MyoroMultiSelectionDropdownConfiguration<T> with _$MyoroMultiSelectionDropdownConfigurationMixin<T> {}
 /// ```
-mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
-  MyoroMultiInputDropdownConfiguration<T> get self => this as MyoroMultiInputDropdownConfiguration<T>;
+mixin _$MyoroMultiSelectionDropdownConfigurationMixin<T> {
+  MyoroMultiSelectionDropdownConfiguration<T> get self => this as MyoroMultiSelectionDropdownConfiguration<T>;
 
-  MyoroMultiInputDropdownConfiguration<T> copyWith({
+  MyoroMultiSelectionDropdownConfiguration<T> copyWith({
+    MyoroMultiMenuOnChanged<T>? onChanged,
+    bool onChangedProvided = true,
     String? label,
     MyoroInputDropdownSelectedItemBuilder<T>? selectedItemBuilder,
     bool? enabled,
@@ -29,13 +31,12 @@ mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
     bool targetKeyProvided = true,
     MyoroMultiMenuConfiguration<T>? menuConfiguration,
   }) {
-    return MyoroMultiInputDropdownConfiguration(
+    return MyoroMultiSelectionDropdownConfiguration(
+      onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       label: label ?? self.label,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
       enabled: enabled ?? self.enabled,
       checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
-      toggleDropdownOnInputTap: toggleDropdownOnInputTap ?? self.toggleDropdownOnInputTap,
-      toggleDropdownOnFieldSubmitted: toggleDropdownOnFieldSubmitted ?? self.toggleDropdownOnFieldSubmitted,
       dropdownType: dropdownType ?? self.dropdownType,
       menuConfiguration: menuConfiguration ?? self.menuConfiguration,
     );
@@ -43,8 +44,9 @@ mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroMultiInputDropdownConfiguration<T> &&
+    return other is MyoroMultiSelectionDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
+        other.onChanged == self.onChanged &&
         other.label == self.label &&
         other.selectedItemBuilder == self.selectedItemBuilder &&
         other.enabled == self.enabled &&
@@ -59,6 +61,7 @@ mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
   @override
   int get hashCode {
     return Object.hash(
+      self.onChanged,
       self.label,
       self.selectedItemBuilder,
       self.enabled,
@@ -73,7 +76,8 @@ mixin _$MyoroMultiInputDropdownConfigurationMixin<T> {
 
   @override
   String toString() =>
-      'MyoroMultiInputDropdownConfiguration<T>(\n'
+      'MyoroMultiSelectionDropdownConfiguration<T>(\n'
+      '  onChanged: ${self.onChanged},\n'
       '  label: ${self.label},\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
       '  enabled: ${self.enabled},\n'

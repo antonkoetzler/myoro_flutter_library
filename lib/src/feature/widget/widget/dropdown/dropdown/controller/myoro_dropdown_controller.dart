@@ -5,7 +5,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 abstract class MyoroDropdownController<
   T,
   C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
+  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>,
+  V extends MyoroDropdownViewModel<T, C, MENU_CONTROLLER>
 > {
   MyoroDropdownController({required C configuration, required V viewModel}) : _viewModel = viewModel;
 
@@ -65,6 +66,11 @@ abstract class MyoroDropdownController<
   /// Getter of [_viewModel.state.showingController]'s value.
   bool get showing {
     return _viewModel.state.showing;
+  }
+
+  /// Getter of the dropdown's menu controller.
+  MENU_CONTROLLER get menuController {
+    return _viewModel.state.menuController;
   }
 
   /// Configuration setter.

@@ -16,7 +16,7 @@ final class MyoroSnackBarTypeWidgetShowcaseOption extends StatelessWidget {
   final MyoroSnackBarTypeEnum selectedItem;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<MyoroSnackBarTypeEnum> onChanged;
+  final MyoroSingleMenuOnChanged<MyoroSnackBarTypeEnum> onChanged;
 
   @override
   Widget build(_) {

@@ -19,7 +19,6 @@ final class MyoroInputStyleEnumWidgetShowcaseOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<MyoroInputStyleEnum>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'MyoroInputStyleEnum',
-        allowItemClearing: false,
         onChanged: (item) => onChanged(item!),
         selectedItemBuilder: viewModel.selectedItemBuilder,
         menuConfiguration: MyoroSingleMenuConfiguration(

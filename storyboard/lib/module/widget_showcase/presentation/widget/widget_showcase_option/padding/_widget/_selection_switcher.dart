@@ -17,7 +17,6 @@ final class _SelectionSwitcher extends StatelessWidget {
     return MyoroSingleSelectionDropdown<PaddingWidgetShowcaseOptionEnum>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Selection type',
-        allowItemClearing: false,
         onChanged: (value) => state.modeEnum = value!,
         selectedItemBuilder: formattedName,
         menuConfiguration: MyoroSingleMenuConfiguration(

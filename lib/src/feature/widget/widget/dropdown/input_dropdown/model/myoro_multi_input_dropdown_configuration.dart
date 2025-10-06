@@ -12,5 +12,10 @@ class MyoroMultiInputDropdownConfiguration<T> extends MyoroInputDropdownConfigur
     super.dropdownType,
     required super.menuConfiguration,
     required super.selectedItemBuilder,
+    super.enabled,
+    super.checkboxOnChanged,
+    super.toggleDropdownOnInputTap,
+    super.toggleDropdownOnFieldSubmitted,
+    super.label,
   });
 }

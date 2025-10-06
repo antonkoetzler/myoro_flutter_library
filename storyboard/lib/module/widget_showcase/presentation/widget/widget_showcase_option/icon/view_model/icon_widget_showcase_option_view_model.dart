@@ -10,7 +10,6 @@ final class IconWidgetShowcaseOptionViewModel {
     _iconController = MyoroSingleSelectionDropdownController(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Icon',
-        allowItemClearing: false,
         selectedItemBuilder: (icon) => icon.name!.capitalized,
         onChanged: _configuration.iconOnChanged,
         menuConfiguration: MyoroSingleMenuConfiguration(

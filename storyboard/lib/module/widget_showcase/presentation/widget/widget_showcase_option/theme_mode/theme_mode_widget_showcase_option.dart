@@ -13,7 +13,7 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
   final String label;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<ThemeMode> onChanged;
+  final MyoroSingleMenuOnChanged<ThemeMode> onChanged;
 
   @override
   Widget build(_) {
@@ -22,7 +22,7 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<ThemeMode>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: label,
-        allowItemClearing: false,
+        onChanged: onChanged,
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: ThemeMode.values.toSet,
           selectedItem: themeModeController.themeMode,
@@ -35,7 +35,6 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
           },
         ),
         selectedItemBuilder: _formattedName,
-        onChanged: onChanged,
       ),
     );
   }

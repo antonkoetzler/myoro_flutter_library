@@ -24,7 +24,7 @@ final class ColorWidgetShowcaseOption extends StatefulWidget {
   final Color? selectedColor;
 
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<Color> onChanged;
+  final MyoroSingleMenuOnChanged<Color> onChanged;
 
   @override
   State<ColorWidgetShowcaseOption> createState() => _ColorWidgetShowcaseOptionState();
@@ -34,7 +34,7 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
   String get _label => widget.label;
   bool get _enabled => widget.enabled;
   Color? get _selectedColor => widget.selectedColor;
-  MyoroSingleSelectionDropdownOnChanged<Color> get _onChanged => widget.onChanged;
+  MyoroSingleMenuOnChanged<Color> get _onChanged => widget.onChanged;
 
   late final MyoroSingleSelectionDropdownController<Color> _controller;
 

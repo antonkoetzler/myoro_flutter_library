@@ -17,7 +17,11 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   MyoroSingleInputDropdownConfiguration<T> get self => this as MyoroSingleInputDropdownConfiguration<T>;
 
   MyoroSingleInputDropdownConfiguration<T> copyWith({
+    String? label,
     MyoroInputDropdownSelectedItemBuilder<T>? selectedItemBuilder,
+    bool? enabled,
+    MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    bool checkboxOnChangedProvided = true,
     bool? toggleDropdownOnInputTap,
     bool? toggleDropdownOnFieldSubmitted,
     MyoroDropdownTypeEnum? dropdownType,
@@ -26,7 +30,10 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
     MyoroSingleMenuConfiguration<T>? menuConfiguration,
   }) {
     return MyoroSingleInputDropdownConfiguration(
+      label: label ?? self.label,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
+      enabled: enabled ?? self.enabled,
+      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
       toggleDropdownOnInputTap: toggleDropdownOnInputTap ?? self.toggleDropdownOnInputTap,
       toggleDropdownOnFieldSubmitted: toggleDropdownOnFieldSubmitted ?? self.toggleDropdownOnFieldSubmitted,
       dropdownType: dropdownType ?? self.dropdownType,
@@ -38,7 +45,10 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   bool operator ==(Object other) {
     return other is MyoroSingleInputDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
+        other.label == self.label &&
         other.selectedItemBuilder == self.selectedItemBuilder &&
+        other.enabled == self.enabled &&
+        other.checkboxOnChanged == self.checkboxOnChanged &&
         other.toggleDropdownOnInputTap == self.toggleDropdownOnInputTap &&
         other.toggleDropdownOnFieldSubmitted == self.toggleDropdownOnFieldSubmitted &&
         other.dropdownType == self.dropdownType &&
@@ -49,7 +59,10 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   @override
   int get hashCode {
     return Object.hash(
+      self.label,
       self.selectedItemBuilder,
+      self.enabled,
+      self.checkboxOnChanged,
       self.toggleDropdownOnInputTap,
       self.toggleDropdownOnFieldSubmitted,
       self.dropdownType,
@@ -61,7 +74,10 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   @override
   String toString() =>
       'MyoroSingleInputDropdownConfiguration<T>(\n'
+      '  label: ${self.label},\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
+      '  enabled: ${self.enabled},\n'
+      '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  toggleDropdownOnInputTap: ${self.toggleDropdownOnInputTap},\n'
       '  toggleDropdownOnFieldSubmitted: ${self.toggleDropdownOnFieldSubmitted},\n'
       '  dropdownType: ${self.dropdownType},\n'

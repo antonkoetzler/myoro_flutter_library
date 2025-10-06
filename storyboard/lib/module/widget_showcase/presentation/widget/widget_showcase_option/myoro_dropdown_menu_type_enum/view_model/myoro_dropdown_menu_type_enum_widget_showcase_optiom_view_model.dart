@@ -3,11 +3,11 @@ import 'package:storyboard/storyboard.dart';
 
 /// View model of [MyoroDropdownMenuTypeEnumWidgetShowcaseOption].
 final class MyoroDropdownMenuTypeEnumWidgetShowcaseOptiomViewModel {
-  String selectedItemBuilder(MyoroSelectionDropdownMenuTypeEnum item) {
+  String selectedItemBuilder(MyoroDropdownTypeEnum item) {
     return item.name.capitalized;
   }
 
-  MyoroMenuItem itemBuilder(MyoroSelectionDropdownMenuTypeEnum item) {
+  MyoroMenuItem itemBuilder(MyoroDropdownTypeEnum item) {
     return MyoroMenuItem(
       iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
         textConfiguration: MyoroTextConfiguration(text: item.name.capitalized),

@@ -4,13 +4,11 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Widget showcase option to choose a [TextAlign] from a [MyoroSingleSelectionDropdown].
 final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   static const labelDefaultValue = 'Text alignment';
-  static const allowItemClearingDefaultValue = MyoroSelectionDropdownConfiguration.allowItemClearingDefaultValue;
 
   const TextAlignWidgetShowcaseOption({
     super.key,
     this.label = labelDefaultValue,
     this.selectedValue,
-    this.allowItemClearing = allowItemClearingDefaultValue,
     required this.onChanged,
   });
 
@@ -20,11 +18,8 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
   /// Initially selected [TextAlign].
   final TextAlign? selectedValue;
 
-  /// [MyoroSelectionDropdownConfiguration.allowItemClearing]
-  final bool allowItemClearing;
-
   /// [MyoroSingleSelectionDropdownConfiguration.onChanged]
-  final MyoroSingleSelectionDropdownOnChanged<TextAlign> onChanged;
+  final MyoroSingleMenuOnChanged<TextAlign> onChanged;
 
   @override
   Widget build(context) {
@@ -32,7 +27,6 @@ final class TextAlignWidgetShowcaseOption extends StatelessWidget {
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: label,
         onChanged: onChanged,
-        allowItemClearing: allowItemClearing,
         selectedItemBuilder: (value) => value.toString(),
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: TextAlign.values.toSet,
