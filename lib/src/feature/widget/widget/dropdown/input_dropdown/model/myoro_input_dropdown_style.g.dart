@@ -6,6 +6,8 @@ part of 'myoro_input_dropdown_style.dart';
 // MyoroModelGenerator
 // **************************************************************************
 
+// coverage:ignore-file
+
 /// Apply this mixin to [MyoroInputDropdownStyle] once the code is generated.
 ///
 /// ```dart

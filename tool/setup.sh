@@ -7,4 +7,8 @@ cd storyboard
 flutter clean
 flutter pub get
 cd ..
+cd example
+flutter clean
+flutter pub get
+cd ..
 bash tool/generate_code.sh

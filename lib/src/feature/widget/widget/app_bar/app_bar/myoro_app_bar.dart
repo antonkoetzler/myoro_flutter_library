@@ -42,7 +42,7 @@ class MyoroAppBar extends StatelessWidget implements PreferredSizeWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
-          child: Container(color: backgroundColor, padding: contentPadding, child: child),
+          child: Container(width: double.infinity, color: backgroundColor, padding: contentPadding, child: child),
         ),
         if (showBottomDivider) const MyoroBasicDivider(Axis.horizontal),
       ],

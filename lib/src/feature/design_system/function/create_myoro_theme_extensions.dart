@@ -24,6 +24,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createModalThemeExtensions(colorScheme, textTheme),
     ..._createPickerThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
+    ..._createScrollableThemeExtensions(colorScheme, textTheme),
     ..._createSliderThemeExtensions(textTheme),
     ..._createSnackBarThemeExtensions(colorScheme, textTheme),
     ..._createTableThemeExtensions(colorScheme, textTheme),
@@ -115,6 +116,10 @@ List<ThemeExtension> _createPickerThemeExtensions(ColorScheme colorScheme, TextT
 
 List<ThemeExtension> _createRadioThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
   return [MyoroRadioThemeExtension.builder(colorScheme, textTheme), const MyoroGroupRadioThemeExtension.builder()];
+}
+
+List<ThemeExtension> _createScrollableThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
+  return [MyoroScrollableThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createSliderThemeExtensions(TextTheme textTheme) {

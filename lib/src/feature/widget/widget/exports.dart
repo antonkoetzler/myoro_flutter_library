@@ -19,6 +19,7 @@ export 'modal/exports.dart';
 export 'picker/exports.dart';
 export 'radio/exports.dart';
 export 'screen/exports.dart';
+export 'scrollable/exports.dart';
 export 'slider/exports.dart';
 export 'snack_bar/exports.dart';
 export 'tab_view/exports.dart';

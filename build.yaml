@@ -1,0 +1,13 @@
+targets:
+  $default:
+    builders:
+      myoro_flutter_annotations:myoro_model_generator:
+        generate_for:
+          exclude:
+            - example/**
+            - example/**/*
+      myoro_flutter_annotations:myoro_theme_extension_generator:
+        generate_for:
+          exclude:
+            - example/**
+            - example/**/*

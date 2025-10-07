@@ -10,7 +10,9 @@
 1. A fully customizable design system with every `Widget` you could need;
 1. Implementation for various features you could need during development.
 
-## How do I get started?
+## Getting started
+
+Please read the `example` folder's [`README.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/example/README.md) to get started with MFL
 
 1. Add MFL as a dependency in your <code>pubspec.yaml</code> with one of the 3 ways listed:
 
