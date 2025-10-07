@@ -13,11 +13,9 @@ class MyoroCarouselThemeExtension extends ThemeExtension<MyoroCarouselThemeExten
     implements MyoroCarouselStyle {
   const MyoroCarouselThemeExtension({this.previousItemButtonIcon, this.nextItemButtonIcon});
 
-  // coverage:ignore-start
   MyoroCarouselThemeExtension.fake()
     : previousItemButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       nextItemButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
-  // coverage:ignore-end
 
   const MyoroCarouselThemeExtension.builder()
     : previousItemButtonIcon = Icons.keyboard_arrow_left,

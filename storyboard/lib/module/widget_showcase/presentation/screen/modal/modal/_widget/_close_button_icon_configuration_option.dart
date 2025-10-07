@@ -6,7 +6,46 @@ final class _CloseButtonIconConfigurationOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    // TODO: Implement close button icon configuration option - complex icon configuration
-    return const Text('Close button icon configuration - TODO: Implement icon configuration');
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
+
+    return IconWidgetShowcaseOption(
+      configuration: IconWidgetShowcaseOptionConfiguration(
+        label: 'Close button icon',
+        selectedIcon: viewModel.state.closeButtonIconConfiguration?.icon,
+        iconOnChanged: (icon) {
+          final currentConfig = viewModel.state.closeButtonIconConfiguration;
+          viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
+            icon: icon ?? Icons.close,
+            size: currentConfig?.size,
+          );
+        },
+        selectedIconSize: viewModel.state.closeButtonIconConfiguration?.size,
+        iconSizeOnChanged: (size) {
+          final currentConfig = viewModel.state.closeButtonIconConfiguration;
+          viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
+            icon: currentConfig?.icon ?? Icons.close,
+            size: size,
+          );
+        },
+        iconSizeCheckboxOnChanged: (enabled, size) {
+          final currentConfig = viewModel.state.closeButtonIconConfiguration;
+          viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
+            icon: currentConfig?.icon ?? Icons.close,
+            size: enabled ? size : null,
+          );
+        },
+        enabled: viewModel.state.closeButtonIconConfiguration != null,
+        enableOptionCheckboxOnChanged: (enabled, icon, size) {
+          if (enabled) {
+            viewModel.state.closeButtonIconConfiguration = MyoroIconConfiguration(
+              icon: icon ?? Icons.close,
+              size: size ?? 24.0,
+            );
+          } else {
+            viewModel.state.closeButtonIconConfiguration = null;
+          }
+        },
+      ),
+    );
   }
 }

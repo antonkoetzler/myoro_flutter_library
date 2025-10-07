@@ -9,6 +9,7 @@ part 'myoro_table_column.g.dart';
 @immutable
 @myoroModel
 class MyoroTableColumn with _$MyoroTableColumnMixin {
+  /// Creates a new instance of [MyoroTableColumn].
   const MyoroTableColumn({
     this.tooltipMessage,
     this.widthConfiguration = const MyoroTableColumnWidthConfiguration(
@@ -17,12 +18,11 @@ class MyoroTableColumn with _$MyoroTableColumnMixin {
     required this.child,
   });
 
-  // coverage:ignore-start
+  /// Creates a fake instance of [MyoroTableColumn] for testing purposes.
   MyoroTableColumn.fake()
     : tooltipMessage = faker.randomGenerator.boolean() ? faker.lorem.word() : null,
       widthConfiguration = MyoroTableColumnWidthConfiguration.fake(),
       child = const SizedBox.shrink();
-  // coverage:ignore-end
 
   /// [MyoroTooltip.text]
   final String? tooltipMessage;

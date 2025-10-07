@@ -9,7 +9,7 @@ final class _CloseButton extends StatelessWidget {
   @override
   Widget build(context) {
     final snackBarThemeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
-    final style = context.read<MyoroSnackBarStyle>();
+    final style = context.watch<MyoroSnackBarStyle>();
     final closeButtonIconConfiguration =
         style.closeButtonIconConfiguration ?? snackBarThemeExtension.closeButtonIconConfiguration;
 

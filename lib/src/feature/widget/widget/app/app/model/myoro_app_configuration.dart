@@ -25,7 +25,6 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
     this.builder,
   }) : assert((router != null) ^ (home != null), '[MyoroApp]: [router] (x)or [home] must be provided.');
 
-  // coverage:ignore-start
   factory MyoroAppConfiguration.fake() {
     final routerProvided = faker.randomGenerator.boolean();
     return MyoroAppConfiguration(
@@ -41,7 +40,6 @@ class MyoroAppConfiguration with _$MyoroAppConfigurationMixin {
       builder: faker.randomGenerator.boolean() ? ((_, _) => const SizedBox.shrink()) : null,
     );
   }
-  // coverage:ignore-end
 
   /// Title of the application.
   ///

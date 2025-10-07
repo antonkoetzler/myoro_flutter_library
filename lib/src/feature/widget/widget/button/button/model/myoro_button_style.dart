@@ -41,7 +41,6 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
     this.borderTapColor,
   });
 
-  // coverage:ignore-start
   MyoroButtonStyle.fake()
     : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -54,7 +53,6 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
       borderIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
-  // coverage:ignore-end
 
   /// [MyoroTapStatusEnum.idle]'s background [Color].
   final Color? backgroundIdleColor;

@@ -3,33 +3,34 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroSingleMenu].
 class MyoroSingleMenuController<T> extends MyoroMenuController<T, MyoroSingleMenuViewModel<T>> {
+  /// Creates a new instance of [MyoroSingleMenuController].
   MyoroSingleMenuController({required MyoroSingleMenuConfiguration<T> configuration})
-    : _selectedItemNotifier = ValueNotifier(configuration.selectedItem),
+    : _selectedItemController = ValueNotifier(configuration.selectedItem),
       super(MyoroSingleMenuViewModel(configuration)) {
-    viewModel.state.selectedItemsNotifier.addListener(_selectedItemsNotifierListener);
+    viewModel.state.selectedItemsController.addListener(_selectedItemsControllerListener);
+  }
+
+  /// [ValueNotifier] of the selected item.
+  final ValueNotifier<T?> _selectedItemController;
+
+  /// [_selectedItemController] getter.
+  ValueNotifier<T?> get selectedItemController => _selectedItemController;
+
+  /// Getter of [_selectedItemController]'s value.
+  T? get selectedItem => _selectedItemController.value;
+
+  /// Listener of [MyoroMenuState.selectedItemsController].
+  void _selectedItemsControllerListener() {
+    final state = viewModel.state;
+    final selectedItems = state.selectedItems;
+    _selectedItemController.value = selectedItems.isNotEmpty ? selectedItems.first : null;
   }
 
   /// Dispose function.
   @override
   void dispose() {
-    _selectedItemNotifier.dispose();
-    viewModel.state.selectedItemsNotifier.removeListener(_selectedItemsNotifierListener);
+    _selectedItemController.dispose();
+    viewModel.state.selectedItemsController.removeListener(_selectedItemsControllerListener);
     super.dispose();
-  }
-
-  /// [ValueNotifier] of the selected item.
-  final ValueNotifier<T?> _selectedItemNotifier;
-
-  /// [_selectedItemNotifier] getter.
-  ValueNotifier<T?> get selectedItemNotifier => _selectedItemNotifier;
-
-  /// Getter of [_selectedItemNotifier]'s value.
-  T? get selectedItem => _selectedItemNotifier.value;
-
-  /// Listener of [MyoroMenuState.selectedItemsNotifier].
-  void _selectedItemsNotifierListener() {
-    final state = viewModel.state;
-    final selectedItems = state.selectedItems;
-    _selectedItemNotifier.value = selectedItems.isNotEmpty ? selectedItems.first : null;
   }
 }

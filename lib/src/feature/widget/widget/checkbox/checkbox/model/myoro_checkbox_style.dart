@@ -35,7 +35,6 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
     this.spacing,
   });
 
-  // coverage:ignore-start
   MyoroCheckboxStyle.fake()
     : checkboxActiveColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       checkboxCheckColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -45,7 +44,6 @@ class MyoroCheckboxStyle with _$MyoroCheckboxStyleMixin {
       labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       labelMaxLines = faker.randomGenerator.boolean() ? faker.randomGenerator.integer(10) : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null;
-  // coverage:ignore-end
 
   /// Background color of the checkbox when selected.
   final Color? checkboxActiveColor;

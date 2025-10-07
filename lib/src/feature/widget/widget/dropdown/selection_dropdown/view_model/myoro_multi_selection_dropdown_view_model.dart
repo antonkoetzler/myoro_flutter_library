@@ -4,6 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of [MyoroMultiSelectionDropdown].
 final class MyoroMultiSelectionDropdownViewModel<T>
     extends MyoroSelectionDropdownViewModel<T, MyoroMultiInputDropdownController<T>> {
+  /// Creates a new instance of [MyoroMultiSelectionDropdownViewModel].
   MyoroMultiSelectionDropdownViewModel(MyoroMultiSelectionDropdownConfiguration<T> configuration)
     : super(
         MyoroMultiInputDropdownController<T>(
@@ -17,7 +18,7 @@ final class MyoroMultiSelectionDropdownViewModel<T>
           inputController: TextEditingController(),
         ),
       ) {
-    state.inputDropdownController.menuController.selectedItemsNotifier.addListener(formatItems);
+    state.inputDropdownController.menuController.selectedItemsController.addListener(formatItems);
   }
 
   @override

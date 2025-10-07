@@ -15,6 +15,7 @@ part '_widget/_content_idle_color_option.dart';
 part '_widget/_content_hover_color_option.dart';
 part '_widget/_content_tap_color_option.dart';
 part '_widget/_cursor_option.dart';
+part '_widget/_is_loading_option.dart';
 part '_widget/_on_tap_down_enabled_option.dart';
 part '_widget/_on_tap_up_enabled_option.dart';
 part '_widget/_tooltip_enabled_option.dart';
@@ -28,6 +29,7 @@ final class MyoroButtonWidgetShowcaseScreen extends StatelessWidget {
     _CursorOption(),
     _OnTapDownEnabledOption(),
     _OnTapUpEnabledOption(),
+    _IsLoadingOption(),
   ];
 
   // Styling-related options (appearance, colors, spacing, theme extension)

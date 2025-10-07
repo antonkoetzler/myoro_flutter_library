@@ -10,7 +10,7 @@ final class _Row<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tableThemeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final style = context.read<MyoroTableStyle>();
+    final style = context.watch<MyoroTableStyle>();
     final rowTextStyle = style.rowTextStyle ?? tableThemeExtension.rowTextStyle;
     final columnSpacing = style.columnSpacing ?? tableThemeExtension.columnSpacing ?? 0;
 

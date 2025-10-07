@@ -27,8 +27,8 @@ abstract class MyoroMenuViewModel<T, C extends MyoroMenuConfiguration<T>> {
 
   /// Fetches the items of the [MyoroMenu].
   void fetch() {
-    state.itemsRequestNotifier.requestCallback = state.configuration.request;
-    unawaited(state.itemsRequestNotifier.fetch());
+    state.itemsRequestController.requestCallback = state.configuration.request;
+    unawaited(state.itemsRequestController.fetch());
   }
 
   /// Fetches extra items ([MyoroMenuConfiguration.onEndReachedRequest]).
@@ -39,8 +39,8 @@ abstract class MyoroMenuViewModel<T, C extends MyoroMenuConfiguration<T>> {
       onEndReachedRequest != null,
       '[MyoroMenuViewModel<T>._fetchExtra]: [_configuration.onEndReachedRequest] cannot be null.',
     );
-    state.itemsRequestNotifier.requestCallback = () async => await onEndReachedRequest!(state.items);
-    unawaited(state.itemsRequestNotifier.fetch());
+    state.itemsRequestController.requestCallback = () async => await onEndReachedRequest!(state.items);
+    unawaited(state.itemsRequestController.fetch());
   }
 
   /// Searches in [_items] given [query].
@@ -49,7 +49,7 @@ abstract class MyoroMenuViewModel<T, C extends MyoroMenuConfiguration<T>> {
       state.configuration.searchCallback != null,
       '[MyoroMenuBloc<$T>.SearchEvent]: [_configuration.searchCallback] cannot be null.',
     );
-    state.queriedItemsNotifier.value = query.isEmpty ? null : state.configuration.searchCallback!(query, state.items);
+    state.queriedItemsController.value = query.isEmpty ? null : state.configuration.searchCallback!(query, state.items);
   }
 
   /// Selects an item.

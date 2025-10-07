@@ -23,7 +23,6 @@ class MyoroRadioStyle with _$MyoroRadioStyleMixin {
 
   const MyoroRadioStyle({this.activeColor, this.hoverColor, this.labelTextStyle, this.spacing, this.splashRadius});
 
-  // coverage:ignore-start
   factory MyoroRadioStyle.fake() {
     return MyoroRadioStyle(
       activeColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -33,7 +32,6 @@ class MyoroRadioStyle with _$MyoroRadioStyleMixin {
       splashRadius: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Color of the radio itself.
   final Color? activeColor;

@@ -15,9 +15,7 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
     with _$MainScreenThemeExtensionMixin {
   const MainScreenThemeExtension({required this.spacing});
 
-  // coverage:ignore-start
   MainScreenThemeExtension.fake() : spacing = faker.randomGenerator.decimal(scale: 20);
-  // coverage:ignore-end
 
   const MainScreenThemeExtension.builder() : spacing = kMyoroMultiplier * 2;
 

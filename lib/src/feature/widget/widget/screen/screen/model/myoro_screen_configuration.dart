@@ -9,14 +9,14 @@ part 'myoro_screen_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroScreenConfiguration with _$MyoroScreenConfigurationMixin {
+  /// Creates a new instance of [MyoroScreenConfiguration].
   const MyoroScreenConfiguration({this.drawerController, this.appBar, required this.body});
 
-  // coverage:ignore-start
+  /// Creates a fake instance of [MyoroScreenConfiguration] for testing purposes.
   MyoroScreenConfiguration.fake()
     : drawerController = faker.randomGenerator.boolean() ? MyoroDrawerController() : null,
       appBar = faker.randomGenerator.boolean() ? const MyoroAppBar(child: SizedBox.shrink()) : null,
       body = const SizedBox.shrink();
-  // coverage:ignore-end
 
   /// [MyoroDrawerController] if it needs to be controlled externally.
   final MyoroDrawerController? drawerController;

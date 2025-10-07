@@ -23,6 +23,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
       cursor: buttonConfiguration.cursor,
       onTapDown: buttonConfiguration.onTapDown,
       onTapUp: buttonConfiguration.onTapUp,
+      isLoading: buttonConfiguration.isLoading,
       invert: _state.invert,
       iconConfiguration: _state.icon != null ? MyoroIconConfiguration(icon: _state.icon!, size: _state.iconSize) : null,
       textConfiguration:

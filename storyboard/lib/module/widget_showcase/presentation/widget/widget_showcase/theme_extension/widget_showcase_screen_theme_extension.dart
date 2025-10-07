@@ -25,7 +25,6 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
     required this.sectionHeaderTextStyle,
   });
 
-  // coverage:ignore-start
   WidgetShowcaseScreenThemeExtension.fake()
     : color = myoroFake<Color>(),
       padding = myoroFake<EdgeInsets>(),
@@ -36,7 +35,6 @@ final class WidgetShowcaseScreenThemeExtension extends ThemeExtension<WidgetShow
       widgetOptionsModalItemPadding = myoroFake<EdgeInsets>(),
       widgetOptionsModalCloseButtonPadding = myoroFake<EdgeInsets>(),
       sectionHeaderTextStyle = myoroFake<TextStyle>();
-  // coverage:ignore-end
 
   WidgetShowcaseScreenThemeExtension.builder(TextTheme textTheme)
     : color = MyoroColors.blue1.withValues(alpha: kMyoroMultiplier * 5 / 100),

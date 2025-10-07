@@ -4,6 +4,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of [MyoroSingleSelectionDropdown].
 final class MyoroSingleSelectionDropdownViewModel<T>
     extends MyoroSelectionDropdownViewModel<T, MyoroSingleInputDropdownController<T>> {
+  /// Creates a new instance of [MyoroSingleSelectionDropdownViewModel].
   MyoroSingleSelectionDropdownViewModel(MyoroSingleSelectionDropdownConfiguration<T> configuration)
     : super(
         MyoroSingleInputDropdownController<T>(
@@ -17,7 +18,7 @@ final class MyoroSingleSelectionDropdownViewModel<T>
           inputController: TextEditingController(),
         ),
       ) {
-    state.inputDropdownController.menuController.selectedItemNotifier.addListener(formatItems);
+    state.inputDropdownController.menuController.selectedItemController.addListener(formatItems);
   }
 
   @override
@@ -27,5 +28,6 @@ final class MyoroSingleSelectionDropdownViewModel<T>
     state.inputDropdownController.inputController.text = selectedItem != null
         ? selectedItemBuilder(selectedItem)
         : kMyoroEmptyString;
+    state.inputDropdownController.toggleDropdown();
   }
 }

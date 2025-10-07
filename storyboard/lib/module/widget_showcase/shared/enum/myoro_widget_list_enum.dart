@@ -39,11 +39,9 @@ enum MyoroWidgetListEnum {
   /// Names of each [Widget] in the category.
   final Set<String> widgetNames;
 
-  // coverage:ignore-start
   factory MyoroWidgetListEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   // Accordions
   static const myoroAccordionsTitle = 'MyoroSingleAccordion & MyoroMultiAccordion';

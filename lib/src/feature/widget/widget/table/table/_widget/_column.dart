@@ -10,7 +10,7 @@ final class _Column extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final style = context.read<MyoroTableStyle>();
+    final style = context.watch<MyoroTableStyle>();
     final columnTextStyle = style.columnTextStyle ?? themeExtension.columnTextStyle;
 
     var child = _column.tooltipMessage != null

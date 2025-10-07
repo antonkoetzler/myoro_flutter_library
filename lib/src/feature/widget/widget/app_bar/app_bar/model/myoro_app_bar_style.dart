@@ -18,11 +18,9 @@ class MyoroAppBarStyle with _$MyoroAppBarStyleMixin {
 
   const MyoroAppBarStyle({this.backgroundColor, this.contentPadding});
 
-  // coverage:ignore-start
   MyoroAppBarStyle.fake()
     : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
-  // coverage:ignore-end
 
   /// Background [Color].
   final Color? backgroundColor;

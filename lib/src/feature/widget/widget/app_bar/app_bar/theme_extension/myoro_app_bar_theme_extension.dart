@@ -13,11 +13,9 @@ class MyoroAppBarThemeExtension extends ThemeExtension<MyoroAppBarThemeExtension
     implements MyoroAppBarStyle {
   const MyoroAppBarThemeExtension({this.backgroundColor, this.contentPadding});
 
-  // coverage:ignore-start
   MyoroAppBarThemeExtension.fake()
     : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
-  // coverage:ignore-end
 
   MyoroAppBarThemeExtension.builder(ColorScheme colorScheme)
     : backgroundColor = colorScheme.primary,

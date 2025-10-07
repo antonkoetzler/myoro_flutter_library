@@ -14,11 +14,9 @@ final class MyoroFilePickerThemeExtension extends ThemeExtension<MyoroFilePicker
     implements MyoroFilePickerStyle {
   const MyoroFilePickerThemeExtension({this.spacing, this.textStyle});
 
-  // coverage:ignore-start
   MyoroFilePickerThemeExtension.fake()
     : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
-  // coverage:ignore-end
 
   MyoroFilePickerThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,

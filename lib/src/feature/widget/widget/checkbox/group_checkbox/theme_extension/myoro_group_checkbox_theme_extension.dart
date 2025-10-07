@@ -23,7 +23,6 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
     this.runSpacing,
   });
 
-  // coverage:ignore-start
   factory MyoroGroupCheckboxThemeExtension.fake() {
     return MyoroGroupCheckboxThemeExtension(
       checkboxActiveColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -37,7 +36,6 @@ class MyoroGroupCheckboxThemeExtension extends ThemeExtension<MyoroGroupCheckbox
       runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
     );
   }
-  // coverage:ignore-end
 
   const MyoroGroupCheckboxThemeExtension.builder()
     : checkboxActiveColor = null,

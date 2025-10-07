@@ -12,7 +12,6 @@ class MyoroTabViewTab with _$MyoroTabViewTabMixin {
   const MyoroTabViewTab({this.icon, this.text, required this.content})
     : assert(icon != null || text != null, '[MyoroTabViewTab]: [icon] and/or [text] must be provided.');
 
-  // coverage:ignore-start
   factory MyoroTabViewTab.fake() {
     final iconProvided = faker.randomGenerator.boolean();
 
@@ -22,7 +21,6 @@ class MyoroTabViewTab with _$MyoroTabViewTabMixin {
       content: Text(faker.lorem.word()),
     );
   }
-  // coverage:ignore-end
 
   /// [IconData] of the [MyoroTabViewTab].
   final IconData? icon;

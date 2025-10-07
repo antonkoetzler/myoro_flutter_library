@@ -24,7 +24,6 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
     this.selectedItemColor,
   });
 
-  // coverage:ignore-start
   MyoroMenuThemeExtension.fake()
     : constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       border = faker.randomGenerator.boolean() ? myoroFake<BoxBorder>() : null,
@@ -36,7 +35,6 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       dialogTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       dialogTextLoaderPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       selectedItemColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
-  // coverage:ignore-end
 
   MyoroMenuThemeExtension.builder(
     ColorScheme colorScheme,

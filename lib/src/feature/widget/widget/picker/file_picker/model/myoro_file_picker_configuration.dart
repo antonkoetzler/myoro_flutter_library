@@ -20,7 +20,6 @@ class MyoroFilePickerConfiguration with _$MyoroFilePickerConfigurationMixin {
          'cannot be empty. If [fileType] is not [MyoroFilePickerFileTypeEnum.custom], [allowedExtensions] must be empty.',
        );
 
-  // coverage:ignore-start
   factory MyoroFilePickerConfiguration.fake() {
     final fileType = MyoroFilePickerFileTypeEnum.fake();
     return MyoroFilePickerConfiguration(
@@ -30,7 +29,6 @@ class MyoroFilePickerConfiguration with _$MyoroFilePickerConfigurationMixin {
       onChanged: ((_) {}),
     );
   }
-  // coverage:ignore-end
 
   /// Title of the picker window.
   final String? title;

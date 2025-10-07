@@ -75,10 +75,7 @@ List<ThemeExtension> _createDrawerThemeExtensions(ColorScheme colorScheme, TextT
 }
 
 List<ThemeExtension> _createDropdownThemeExtensions(ColorScheme colorScheme) {
-  return [
-    MyoroInputDropdownThemeExtension.builder(colorScheme),
-    // MyoroSelectionDropdownThemeExtension.builder(colorScheme), // TODO: Create theme extension
-  ];
+  return [MyoroInputDropdownThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createFeedbackThemeExtensions(TextTheme textTheme) {
@@ -93,10 +90,7 @@ List<ThemeExtension> _createGraphThemeExtensions(ColorScheme colorScheme, TextTh
 }
 
 List<ThemeExtension> _createInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [
-    MyoroInputThemeExtension.builder(colorScheme, textTheme),
-    // MyoroSearchInputThemeExtension.builder(colorScheme), // TODO: Create theme extension
-  ];
+  return [MyoroInputThemeExtension.builder(colorScheme, textTheme)];
 }
 
 List<ThemeExtension> _createLoaderThemeExtensions(ColorScheme colorScheme) {

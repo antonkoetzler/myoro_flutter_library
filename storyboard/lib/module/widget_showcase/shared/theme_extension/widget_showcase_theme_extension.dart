@@ -14,11 +14,9 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     with _$WidgetShowcaseThemeExtensionMixin {
   const WidgetShowcaseThemeExtension({required this.spacing, required this.labelTextStyle});
 
-  // coverage:ignore-start
   WidgetShowcaseThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
       labelTextStyle = myoroFake<TextStyle>();
-  // coverage:ignore-end
 
   WidgetShowcaseThemeExtension.builder(TextTheme textTheme) : spacing = 10, labelTextStyle = textTheme.titleLarge!;
 

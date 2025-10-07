@@ -28,7 +28,6 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
        ),
        assert(values.start <= values.end, '[MyoroSliderConfiguration]: [start] must be less than or equal to [end].');
 
-  // coverage:ignore-start
   factory MyoroRangeSliderConfiguration.fake() {
     final min = faker.randomGenerator.integer(20).toDouble();
     final max = faker.randomGenerator.integer(100, min: min.toInt()).toDouble();
@@ -54,7 +53,6 @@ final class MyoroRangeSliderConfiguration extends MyoroSliderBaseConfiguration
       onChanged: ((_) {}),
     );
   }
-  // coverage:ignore-end
 
   /// Start and end values of the [MyoroRangeSlider].
   final RangeValues values;

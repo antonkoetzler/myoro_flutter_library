@@ -9,15 +9,25 @@ part 'myoro_button_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
-  const MyoroButtonConfiguration({this.cursor, this.tooltipConfiguration, this.onTapDown, this.onTapUp});
+  /// Default value for [isLoading].
+  static const isLoadingDefaultValue = false;
 
-  // coverage:ignore-start
+  /// Creates a new instance of [MyoroButtonConfiguration].
+  const MyoroButtonConfiguration({
+    this.cursor,
+    this.tooltipConfiguration,
+    this.onTapDown,
+    this.onTapUp,
+    this.isLoading = isLoadingDefaultValue,
+  });
+
+  /// Creates a fake instance of [MyoroButtonConfiguration] for testing purposes.
   MyoroButtonConfiguration.fake()
     : cursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
       tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
       onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null;
-  // coverage:ignore-end
+      onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null,
+      isLoading = faker.randomGenerator.boolean();
 
   /// [MouseCursor] when the [MyoroButton] is hovered over.
   ///
@@ -33,6 +43,9 @@ class MyoroButtonConfiguration with _$MyoroButtonConfigurationMixin {
 
   /// Function executed when the [MyoroButton] is released being tapped.
   final MyoroButtonOnTapUp? onTapUp;
+
+  /// [bool] to determine if the button is loading.
+  final bool isLoading;
 
   /// Returns if [onTapUp] or [onTapDown] was provided.
   bool get onTapProvided => (onTapUp != null) || (onTapDown != null);

@@ -21,7 +21,6 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
     this.resizeButtonLongValue,
   });
 
-  // coverage:ignore-start
   factory MyoroResizeDividerThemeExtension.fake() {
     return MyoroResizeDividerThemeExtension(
       color: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -33,7 +32,6 @@ final class MyoroResizeDividerThemeExtension extends ThemeExtension<MyoroResizeD
       resizeButtonLongValue: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 50) : null,
     );
   }
-  // coverage:ignore-end
 
   factory MyoroResizeDividerThemeExtension.builder(
     MyoroBasicDividerThemeExtension themeExtension,

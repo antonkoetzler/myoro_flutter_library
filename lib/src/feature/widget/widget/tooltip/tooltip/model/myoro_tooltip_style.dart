@@ -15,11 +15,9 @@ class MyoroTooltipStyle with _$MyoroTooltipStyleMixin {
 
   const MyoroTooltipStyle({this.margin});
 
-  // coverage:ignore-start
   factory MyoroTooltipStyle.fake() {
     return MyoroTooltipStyle(margin: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null);
   }
-  // coverage:ignore-end
 
   /// [Tooltip.margin].
   final EdgeInsets? margin;

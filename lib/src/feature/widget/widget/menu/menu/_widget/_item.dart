@@ -13,7 +13,7 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
     final isSelected = _selectedItems.contains(_item);
 
     final menuThemeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final style = context.read<MyoroMenuStyle>();
+    final style = context.watch<MyoroMenuStyle>();
     final itemBorderRadius = style.itemBorderRadius ?? menuThemeExtension.itemBorderRadius;
     final selectedItemColor = isSelected ? (style.selectedItemColor ?? menuThemeExtension.selectedItemColor) : null;
 

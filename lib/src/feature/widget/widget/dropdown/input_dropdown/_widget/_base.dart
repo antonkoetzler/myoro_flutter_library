@@ -44,7 +44,7 @@ final class _Base<
         ? (_) => dropdownController.toggleDropdown()
         : null;
     final inputOnTap = configuration.toggleDropdownOnInputTap ? dropdownController.toggleDropdown : null;
-    final enabledNotifier = state.enabledNotifier;
+    final enabledController = state.enabledController;
     final checkboxOnChanged = configuration.checkboxOnChanged;
 
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
@@ -69,7 +69,7 @@ final class _Base<
               };
 
               return ValueListenableBuilder(
-                valueListenable: enabledNotifier,
+                valueListenable: enabledController,
                 builder: (_, enabled, _) {
                   return MyoroInput(
                     configuration: MyoroInputConfiguration(

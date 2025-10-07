@@ -19,14 +19,14 @@ class MyoroTableController<T> {
   /// [MyoroTableState.itemsRequestController] getter.
   MyoroRequest<Set<T>> get itemsRequest => _viewModel.state.itemsRequest;
 
-  /// Dispose function.
-  void dispose() {
-    _state.itemsRequestNotifier.dispose();
-    _state.titleColumnKeyWidthsNotifier.dispose();
-  }
-
   /// Fetches the items of the [MyoroTable].
   void fetch() {
-    _state.itemsRequestNotifier.fetch();
+    _state.itemsRequestController.fetch();
+  }
+
+  /// Dispose function.
+  void dispose() {
+    _state.itemsRequestController.dispose();
+    _state.titleColumnKeyWidthsController.dispose();
   }
 }

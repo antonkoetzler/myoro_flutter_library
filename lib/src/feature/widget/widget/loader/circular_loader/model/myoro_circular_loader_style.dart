@@ -17,14 +17,12 @@ class MyoroCircularLoaderStyle with _$MyoroCircularLoaderStyleMixin {
 
   const MyoroCircularLoaderStyle({this.color, this.size});
 
-  // coverage:ignore-start
   factory MyoroCircularLoaderStyle.fake() {
     return MyoroCircularLoaderStyle(
       color: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       size: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Color of the [MyoroCircularLoader].
   final Color? color;

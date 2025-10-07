@@ -22,7 +22,6 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
         '[MyoroGroupRadio]: [radios] provided are not valid, see [MyoroGroupRadioController.radiosAreValid].',
       );
 
-  // coverage:ignore-start
   factory MyoroGroupRadioConfiguration.fake({bool? controllerProvided}) {
     controllerProvided = controllerProvided ?? faker.randomGenerator.boolean();
 
@@ -37,7 +36,6 @@ class MyoroGroupRadioConfiguration with _$MyoroGroupRadioConfigurationMixin {
       radios: controllerProvided ? null : radios,
     );
   }
-  // coverage:ignore-end
 
   /// [ValueNotifier] of the [MyoroGroupRadio] for more complex scope situations.
   final MyoroGroupRadioController? controller;

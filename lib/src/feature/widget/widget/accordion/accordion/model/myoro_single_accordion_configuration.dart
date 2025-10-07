@@ -17,7 +17,6 @@ class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T
     this.selectedItem,
   });
 
-  // coverage:ignore-start
   factory MyoroSingleAccordionConfiguration.fake({required Set<T> items, T? selectedItem}) {
     return MyoroSingleAccordionConfiguration(
       thumbVisibility: faker.randomGenerator.boolean(),
@@ -27,7 +26,6 @@ class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T
       selectedItem: selectedItem,
     );
   }
-  // coverage:ignore-end
 
   /// Selected item.
   final T? selectedItem;

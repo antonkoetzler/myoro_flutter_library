@@ -11,11 +11,9 @@ enum PaddingWidgetShowcaseOptionEnum {
   /// [EdgeInsets.only]
   only;
 
-  // coverage:ignore-start
   factory PaddingWidgetShowcaseOptionEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   bool get isAll => this == all;
   bool get isSymmetric => this == symmetric;

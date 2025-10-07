@@ -7,6 +7,7 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   static const borderBuilderEnabledDefaultValue = false;
   static const onTapDownEnabledDefaultValue = true;
   static const onTapUpEnabledDefaultValue = true;
+  static const isLoadingDefaultValue = false;
 
   /// [MyoroButtonConfiguration.tooltipConfiguration]
   bool _tooltipEnabled = tooltipEnabledDefaultValue;
@@ -140,6 +141,18 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// [MyoroButtonConfiguration.isLoading]
+  bool _isLoading = isLoadingDefaultValue;
+
+  /// [_isLoading] getter.
+  bool get isLoading => _isLoading;
+
+  /// [_isLoading] setter.
+  set isLoading(bool isLoading) {
+    _isLoading = isLoading;
+    notifyListeners();
+  }
+
   /// [MyoroButtonThemeExtension.backgroundColor]
   Color? _backgroundColor;
 
@@ -221,6 +234,18 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   /// [_borderColor] setter.
   set borderColor(Color? borderColor) {
     _borderColor = borderColor;
+    notifyListeners();
+  }
+
+  /// [MyoroButtonConfiguration.borderBuilder] enabled state
+  bool _borderBuilderEnabled = borderBuilderEnabledDefaultValue;
+
+  /// [_borderBuilderEnabled] getter.
+  bool get borderBuilderEnabled => _borderBuilderEnabled;
+
+  /// [_borderBuilderEnabled] setter.
+  set borderBuilderEnabled(bool borderBuilderEnabled) {
+    _borderBuilderEnabled = borderBuilderEnabled;
     notifyListeners();
   }
 }

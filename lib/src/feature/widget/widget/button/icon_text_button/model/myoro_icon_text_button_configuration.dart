@@ -15,6 +15,7 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
     super.tooltipConfiguration,
     super.onTapDown,
     super.onTapUp,
+    super.isLoading,
     this.invert = invertDefaultValue,
     this.iconConfiguration,
     this.textConfiguration,
@@ -24,7 +25,6 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
          'and/or [textConfiguration] must be provided.',
        );
 
-  // coverage:ignore-start
   factory MyoroIconTextButtonConfiguration.fake() {
     final mandatorilyProvidedConfiguration = faker.randomGenerator.boolean() ? 'icon' : 'text';
 
@@ -41,7 +41,6 @@ class MyoroIconTextButtonConfiguration extends MyoroButtonConfiguration with _$M
           : null,
     );
   }
-  // coverage:ignore-end
 
   /// Whether or not to invert the icon and text.
   ///

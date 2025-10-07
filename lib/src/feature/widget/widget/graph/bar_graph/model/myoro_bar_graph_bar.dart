@@ -10,12 +10,10 @@ part 'myoro_bar_graph_bar.g.dart';
 class MyoroBarGraphBar with _$MyoroBarGraphBarMixin {
   const MyoroBarGraphBar({required this.y, this.color, this.barSections = const []});
 
-  // coverage:ignore-start
   MyoroBarGraphBar.fake()
     : y = faker.randomGenerator.decimal(),
       color = myoroFake<Color>(),
       barSections = List.generate(faker.randomGenerator.integer(5), (_) => MyoroBarGraphBarSection.fake());
-  // coverage:ignore-end
 
   /// Position of the bar on the y axis.
   final double y;

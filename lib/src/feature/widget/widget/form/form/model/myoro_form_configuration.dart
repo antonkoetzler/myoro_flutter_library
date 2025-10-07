@@ -11,7 +11,6 @@ part 'myoro_form_configuration.g.dart';
 class MyoroFormConfiguration<T> with _$MyoroFormConfigurationMixin<T> {
   const MyoroFormConfiguration({this.validation, this.request, this.onSuccess, this.onError});
 
-  // coverage:ignore-start
   MyoroFormConfiguration.fake({T? data})
     : validation = faker.randomGenerator.boolean()
           ? (() => faker.randomGenerator.boolean() ? faker.lorem.word() : kMyoroEmptyString)
@@ -19,7 +18,6 @@ class MyoroFormConfiguration<T> with _$MyoroFormConfigurationMixin<T> {
       request = faker.randomGenerator.boolean() ? (() => data) : null,
       onSuccess = faker.randomGenerator.boolean() ? ((_) {}) : null,
       onError = faker.randomGenerator.boolean() ? ((_) {}) : null;
-  // coverage:ignore-end
 
   /// Validation function of [MyoroForm].
   ///

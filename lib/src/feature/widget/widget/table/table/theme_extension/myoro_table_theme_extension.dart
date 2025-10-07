@@ -21,7 +21,6 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
     this.errorMessageTextStyle,
   });
 
-  // coverage:ignore-start
   MyoroTableThemeExtension.fake()
     : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       columnTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
@@ -30,7 +29,6 @@ class MyoroTableThemeExtension extends ThemeExtension<MyoroTableThemeExtension>
       loaderEmptyMessageErrorMessagePadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       emptyMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       errorMessageTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
-  // coverage:ignore-end
 
   MyoroTableThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.primary,

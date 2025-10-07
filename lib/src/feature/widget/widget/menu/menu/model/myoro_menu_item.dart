@@ -22,7 +22,6 @@ class MyoroMenuItem with _$MyoroMenuItemMixin {
         'If [iconTextButtonConfiguration] is not null, [buttonConfiguration] and [buttonBuilder] must be null.',
       );
 
-  // coverage:ignore-start
   factory MyoroMenuItem.fake({bool? buttonConfigurationProvided}) {
     buttonConfigurationProvided = buttonConfigurationProvided ?? faker.randomGenerator.boolean();
     return MyoroMenuItem(
@@ -31,7 +30,6 @@ class MyoroMenuItem with _$MyoroMenuItemMixin {
       iconTextButtonConfiguration: buttonConfigurationProvided ? null : MyoroIconTextButtonConfiguration.fake(),
     );
   }
-  // coverage:ignore-end
 
   /// [MyoroButtonConfiguration] for more specific menu items.
   final MyoroButtonConfiguration? buttonConfiguration;

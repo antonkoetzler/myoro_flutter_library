@@ -12,11 +12,9 @@ enum MyoroPieGraphEnum {
   /// Donut.
   donut;
 
-  // coverage:ignore-start
   factory MyoroPieGraphEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   bool get isPie => this == pie;
   bool get isDonut => this == donut;

@@ -25,12 +25,14 @@ mixin _$MyoroButtonConfigurationMixin {
     bool onTapDownProvided = true,
     MyoroButtonOnTapUp? onTapUp,
     bool onTapUpProvided = true,
+    bool? isLoading,
   }) {
     return MyoroButtonConfiguration(
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
       tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      isLoading: isLoading ?? self.isLoading,
     );
   }
 
@@ -41,12 +43,13 @@ mixin _$MyoroButtonConfigurationMixin {
         other.cursor == self.cursor &&
         other.tooltipConfiguration == self.tooltipConfiguration &&
         other.onTapDown == self.onTapDown &&
-        other.onTapUp == self.onTapUp;
+        other.onTapUp == self.onTapUp &&
+        other.isLoading == self.isLoading;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.cursor, self.tooltipConfiguration, self.onTapDown, self.onTapUp);
+    return Object.hash(self.cursor, self.tooltipConfiguration, self.onTapDown, self.onTapUp, self.isLoading);
   }
 
   @override
@@ -56,5 +59,6 @@ mixin _$MyoroButtonConfigurationMixin {
       '  tooltipConfiguration: ${self.tooltipConfiguration},\n'
       '  onTapDown: ${self.onTapDown},\n'
       '  onTapUp: ${self.onTapUp},\n'
+      '  isLoading: ${self.isLoading},\n'
       ');';
 }

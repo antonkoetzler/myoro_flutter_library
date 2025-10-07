@@ -27,7 +27,6 @@ final class MyoroTimePickerInputConfiguration extends MyoroInputConfiguration
     super.controller,
   }) : super(placeholder: MyoroInputConfiguration.placeholderDefaultValue, readOnly: true, autofocus: false);
 
-  // coverage:ignore-start
   factory MyoroTimePickerInputConfiguration.fake() {
     return MyoroTimePickerInputConfiguration(
       inputStyle: MyoroInputStyleEnum.fake(),
@@ -44,5 +43,4 @@ final class MyoroTimePickerInputConfiguration extends MyoroInputConfiguration
       controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
     );
   }
-  // coverage:ignore-end
 }

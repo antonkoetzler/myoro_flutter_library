@@ -14,11 +14,9 @@ enum MyoroDropdownTypeEnum {
   /// Displays a bottom sheet.
   bottomSheet;
 
-  // coverage:ignore-start
   factory MyoroDropdownTypeEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   /// Whether the dropdown is [overlay].
   bool get isOverlay {

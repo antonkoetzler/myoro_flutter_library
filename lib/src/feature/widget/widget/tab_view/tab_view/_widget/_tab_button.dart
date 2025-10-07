@@ -12,7 +12,7 @@ final class _TabButton extends StatelessWidget {
     final isSelected = _tab == _selectedTab;
 
     final tabViewThemeExtension = context.resolveThemeExtension<MyoroTabViewThemeExtension>();
-    final style = context.read<MyoroTabViewStyle>();
+    final style = context.watch<MyoroTabViewStyle>();
     final tabButtonIconSize = style.tabButtonIconSize ?? tabViewThemeExtension.tabButtonIconSize;
     final tabButtonTextStyle = style.tabButtonTextStyle ?? tabViewThemeExtension.tabButtonTextStyle;
     final tabButtonIdleColor = style.tabButtonIdleColor ?? tabViewThemeExtension.tabButtonIdleColor;

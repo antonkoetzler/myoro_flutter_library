@@ -37,7 +37,6 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
     this.horizontalSideTitleReversedSize,
   });
 
-  // coverage:ignore-start
   factory MyoroBarGraphStyle.fake() {
     return MyoroBarGraphStyle(
       border: faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
@@ -49,7 +48,6 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
       horizontalSideTitleReversedSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Border of the graph's content (the square holding the bars).
   final Border? border;

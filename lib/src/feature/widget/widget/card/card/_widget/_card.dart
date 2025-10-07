@@ -9,7 +9,7 @@ final class _Card extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCardThemeExtension>();
-    final style = context.read<MyoroCardStyle>();
+    final style = context.watch<MyoroCardStyle>();
     final constraints = style.constraints ?? themeExtension.constraints;
     final padding = style.padding ?? themeExtension.padding;
     final backgroundColor = style.backgroundColor ?? themeExtension.backgroundColor;

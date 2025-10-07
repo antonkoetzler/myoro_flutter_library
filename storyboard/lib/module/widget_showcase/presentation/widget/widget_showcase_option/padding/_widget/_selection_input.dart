@@ -16,10 +16,10 @@ final class _SelectionInput extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<PaddingWidgetShowcaseOptionViewModel>();
-    final enabledNotifier = viewModel.state.enabledNotifier;
+    final enabledController = viewModel.state.enabledController;
 
     return ValueListenableBuilder(
-      valueListenable: enabledNotifier,
+      valueListenable: enabledController,
       builder: (_, bool enabled, _) {
         return MyoroInput.number(
           min: 0,

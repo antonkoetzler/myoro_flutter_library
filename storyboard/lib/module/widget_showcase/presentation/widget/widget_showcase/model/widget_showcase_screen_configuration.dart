@@ -31,13 +31,11 @@ final class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigu
     this.stylingOptions = stylingOptionsDefaultValue,
   });
 
-  // coverage:ignore-start
   WidgetShowcaseScreenConfiguration.fake()
     : widgetName = faker.lorem.word(),
       widget = Text(faker.lorem.word()),
       configurationOptions = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word())),
       stylingOptions = List.generate(faker.randomGenerator.integer(5), (_) => Text(faker.lorem.word()));
-  // coverage:ignore-end
 
   /// Legacy support - combines both option lists for backwards compatibility
   List<Widget> get widgetOptions => [...configurationOptions, ...stylingOptions];

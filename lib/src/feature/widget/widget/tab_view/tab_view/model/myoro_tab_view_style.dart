@@ -31,7 +31,6 @@ class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
     this.tabButtonTextStyle,
   });
 
-  // coverage:ignore-start
   factory MyoroTabViewStyle.fake() {
     return MyoroTabViewStyle(
       tabButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
@@ -42,7 +41,6 @@ class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
       tabButtonTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// [BorderRadius] of a tab traversal button.
   final BorderRadius? tabButtonBorderRadius;

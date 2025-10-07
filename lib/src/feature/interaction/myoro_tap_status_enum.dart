@@ -11,11 +11,9 @@ enum MyoroTapStatusEnum {
   /// Being tapped/pressed.
   tap;
 
-  // coverage:ignore-start
   factory MyoroTapStatusEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   bool get isIdle => this == idle;
   bool get isHover => this == hover;

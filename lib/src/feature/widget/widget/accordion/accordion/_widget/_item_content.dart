@@ -10,7 +10,7 @@ final class _ItemContent<T> extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
-    final style = context.read<MyoroAccordionStyle>();
+    final style = context.watch<MyoroAccordionStyle>();
     final itemContentAnimationDuration =
         style.itemContentAnimationDuration ?? themeExtension.itemContentAnimationDuration;
     final itemContentAnimationCurve = style.itemContentAnimationCurve ?? themeExtension.itemContentAnimationCurve;

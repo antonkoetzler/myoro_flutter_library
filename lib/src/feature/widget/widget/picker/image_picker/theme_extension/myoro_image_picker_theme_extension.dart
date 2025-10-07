@@ -27,7 +27,6 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
     this.selectionTypeModalButtonGalleryIcon,
   });
 
-  // coverage:ignore-start
   MyoroImagePickerThemeExtension.fake()
     : size = faker.randomGenerator.boolean() ? myoroFake<Size>() : null,
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
@@ -42,7 +41,6 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       selectionTypeModalSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       selectionTypeModalButtonCameraIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       selectionTypeModalButtonGalleryIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
-  // coverage:ignore-end
 
   MyoroImagePickerThemeExtension.builder(ColorScheme colorScheme)
     : size = null,

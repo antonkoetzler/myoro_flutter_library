@@ -6,7 +6,12 @@ final class _NoneBorderOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    // TODO: Implement none border option - complex border customization
-    return const Text('None border option - TODO: Implement border customization');
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
+
+    return InputBorderWidgetShowcaseOption(
+      label: 'None border',
+      selectedBorder: viewModel.state.noneBorder,
+      onChanged: (border) => viewModel.state.noneBorder = border,
+    );
   }
 }

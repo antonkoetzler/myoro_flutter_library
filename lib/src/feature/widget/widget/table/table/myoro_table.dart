@@ -50,7 +50,7 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   @override
   void initState() {
     super.initState();
-    _viewModel.state.itemsRequestNotifier.fetch();
+    _viewModel.state.itemsRequestController.fetch();
   }
 
   @override

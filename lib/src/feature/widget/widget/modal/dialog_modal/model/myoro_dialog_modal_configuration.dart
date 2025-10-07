@@ -29,7 +29,6 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
     this.child,
   }) : assert((text.length > 0) ^ (child != null), '[MyoroDialogModal]: [text] (x)or [child] must be provided.');
 
-  // coverage:ignore-start
   factory MyoroDialogModalConfiguration.fake() {
     final bool textProvided = faker.randomGenerator.boolean();
 
@@ -48,7 +47,6 @@ class MyoroDialogModalConfiguration<T> extends MyoroModalConfiguration<T> with _
       child: textProvided ? null : const SizedBox.shrink(),
     );
   }
-  // coverage:ignore-end
 
   /// Whether or not to invert the buttons in [_FooterButtons].
   final bool invertButtons;

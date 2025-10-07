@@ -24,7 +24,6 @@ class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {
     required this.items,
   }) : assert(items.length > 0, '[MyoroCarouselConfiguration]: [items] cannot be empty.');
 
-  // coverage:ignore-start
   factory MyoroCarouselConfiguration.fake() {
     final List<Widget> items = List.generate(faker.randomGenerator.integer(10, min: 1), (_) => const SizedBox.shrink());
 
@@ -37,7 +36,6 @@ class MyoroCarouselConfiguration with _$MyoroCarouselConfigurationMixin {
       items: items,
     );
   }
-  // coverage:ignore-end
 
   /// Direction that the carousel is sliding in.
   final Axis direction;

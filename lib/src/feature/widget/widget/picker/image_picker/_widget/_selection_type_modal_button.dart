@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 part of '../myoro_image_picker.dart';
 
 /// Selection button of [_SelectionTypeModal] in [MyoroImagePicker].
@@ -13,7 +11,7 @@ final class _SelectionTypeModalButton extends StatelessWidget {
     final localization = context.localization;
 
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
-    final style = context.read<MyoroImagePickerStyle>();
+    final style = context.watch<MyoroImagePickerStyle>();
     final selectionTypeModalButtonCameraIcon =
         style.selectionTypeModalButtonCameraIcon ?? themeExtension.selectionTypeModalButtonCameraIcon;
     final selectionTypeModalButtonGalleryIcon =

@@ -2,8 +2,8 @@
 
 ## Accordions
 
-- `MyoroSingleAccordion`
 - `MyoroMultiAccordion`
+- `MyoroSingleAccordion`
 
 ## Apps
 
@@ -42,8 +42,12 @@
 
 ## Dropdowns
 
-- `MyoroSingleDropdown`
 - `MyoroMultiDropdown`
+- `MyoroMultiInputDropdown`
+- `MyoroMultiSelectionDropdown`
+- `MyoroSingleDropdown`
+- `MyoroSingleInputDropdown`
+- `MyoroSingleSelectionDropdown`
 
 ## Feedbacks
 
@@ -75,8 +79,8 @@
 
 ## Menus
 
-- `MyoroSingleMenu`
 - `MyoroMultiMenu`
+- `MyoroSingleMenu`
 
 ## Modals
 
@@ -99,8 +103,8 @@
 
 ## Sliders
 
-- `MyoroSlider`
 - `MyoroRangeSlider`
+- `MyoroSlider`
 
 ## Snack bars
 

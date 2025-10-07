@@ -2,34 +2,21 @@ part of 'myoro_input_view_model.dart';
 
 /// State of [MyoroInputController].
 class MyoroInputState {
+  /// Creates a new instance of [MyoroInputState].
   MyoroInputState(this._configuration, this._formatter)
-    : _showClearTextButtonNotifier = ValueNotifier(
+    : _showClearTextButtonController = ValueNotifier(
         _configuration.textProvided
             ? _configuration.text.isNotEmpty
             : _configuration.controller?.text.isNotEmpty ?? false,
       ),
-      _enabledNotifier = ValueNotifier(_configuration.enabled) {
+      _enabledController = ValueNotifier(_configuration.enabled) {
     final textProvided = _configuration.textProvided;
     if (_formatter != null && !textProvided) controller.text = _formatter.initialText;
     if (textProvided) controller.text = _configuration.text;
   }
 
-  /// Dispose function.
-  void dispose() {
-    _localController?.dispose();
-    _enabledNotifier.dispose();
-    _showClearTextButtonNotifier.dispose();
-  }
-
   /// Configuration.
   MyoroInputConfiguration _configuration;
-  MyoroInputConfiguration get configuration => _configuration;
-  set configuration(MyoroInputConfiguration configuration) {
-    if (_configuration == configuration) return;
-    _configuration = configuration;
-    enabled = configuration.enabled;
-    if (configuration.textProvided) controller.text = configuration.text;
-  }
 
   /// Formatter.
   final MyoroInputFormatter? _formatter;
@@ -39,11 +26,11 @@ class MyoroInputState {
 
   /// [bool] to keep track of whether the input is
   /// enabled or not if the checkbox is enabled.
-  final ValueNotifier<bool> _enabledNotifier;
+  final ValueNotifier<bool> _enabledController;
 
   /// [ValueNotifier] to keep track of whether or not to show
   /// the clear text button in [TextFormField]'s [InputDecoration.suffix].
-  final ValueNotifier<bool> _showClearTextButtonNotifier;
+  final ValueNotifier<bool> _showClearTextButtonController;
 
   /// [_formatter] getter.
   MyoroInputFormatter? get formatter {
@@ -55,33 +42,51 @@ class MyoroInputState {
     return configuration.controller ?? (_localController ??= TextEditingController());
   }
 
-  /// [_enabledNotifier] getter.
-  ValueNotifier<bool> get enabledNotifier {
-    return _enabledNotifier;
+  /// [_enabledController] getter.
+  ValueNotifier<bool> get enabledController {
+    return _enabledController;
   }
 
-  /// Getter of [_enabledNotifier]'s value.
+  /// [_showClearTextButtonController] getter.
+  ValueNotifier<bool> get showClearTextButtonController {
+    return _showClearTextButtonController;
+  }
+
+  /// Configuration getter.
+  MyoroInputConfiguration get configuration => _configuration;
+
+  /// Getter of [_enabledController]'s value.
   bool get enabled {
-    return _enabledNotifier.value;
+    return _enabledController.value;
   }
 
-  /// [_showClearTextButtonNotifier] getter.
-  ValueNotifier<bool> get showClearTextButtonNotifier {
-    return _showClearTextButtonNotifier;
-  }
-
-  /// Getter of [_showClearTextButtonNotifier]'s value.
+  /// Getter of [_showClearTextButtonController]'s value.
   bool get showClearTextButton {
-    return _showClearTextButtonNotifier.value;
+    return _showClearTextButtonController.value;
   }
 
-  /// [_enabledNotifier] setter.
+  /// Configuration setter.
+  set configuration(MyoroInputConfiguration configuration) {
+    if (_configuration == configuration) return;
+    _configuration = configuration;
+    enabled = configuration.enabled;
+    if (configuration.textProvided) controller.text = configuration.text;
+  }
+
+  /// [_enabledController] setter.
   set enabled(bool enabled) {
-    _enabledNotifier.value = enabled;
+    _enabledController.value = enabled;
   }
 
-  /// [_showClearTextButtonNotifier] setter.
+  /// [_showClearTextButtonController] setter.
   set showClearTextButton(bool showClearTextButton) {
-    _showClearTextButtonNotifier.value = showClearTextButton;
+    _showClearTextButtonController.value = showClearTextButton;
+  }
+
+  /// Dispose function.
+  void dispose() {
+    _localController?.dispose();
+    _enabledController.dispose();
+    _showClearTextButtonController.dispose();
   }
 }

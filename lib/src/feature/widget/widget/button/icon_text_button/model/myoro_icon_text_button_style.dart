@@ -45,7 +45,6 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
     this.spacing,
   });
 
-  // coverage:ignore-start
   factory MyoroIconTextButtonStyle.fake() {
     return MyoroIconTextButtonStyle(
       backgroundIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -63,7 +62,6 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
     );
   }
-  // coverage:ignore-end
 
   /// [EdgeInsets] of the button.
   final EdgeInsets? contentPadding;

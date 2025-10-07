@@ -9,7 +9,7 @@ final class _Button extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroIconTextButtonThemeExtension>();
-    final style = context.read<MyoroIconTextButtonStyle>();
+    final style = context.watch<MyoroIconTextButtonStyle>();
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding ?? EdgeInsets.zero;
     final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 

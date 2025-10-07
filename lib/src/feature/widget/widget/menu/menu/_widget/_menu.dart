@@ -43,7 +43,7 @@ final class _MenuState<T, C extends _C<T>> extends State<_Menu<T, C>> {
         constraints: constraints,
         clipBehavior: Clip.antiAlias,
         child: ValueListenableBuilder(
-          valueListenable: _viewModel.state.itemsRequestNotifier,
+          valueListenable: _viewModel.state.itemsRequestController,
           builder: (_, MyoroRequest<Set<T>> state, _) {
             _viewModel.jumpToBottomPreviousPosition();
             return switch (state.status) {

@@ -16,13 +16,11 @@ class MyoroFeedbackConfiguration with _$MyoroFeedbackConfigurationMixin {
     this.actionButtonConfiguration,
   });
 
-  // coverage:ignore-start
   MyoroFeedbackConfiguration.fake()
     : iconConfiguration = MyoroIconConfiguration.fake(),
       titleConfiguration = MyoroTextConfiguration.fake(),
       subtitleConfiguration = faker.randomGenerator.boolean() ? MyoroTextConfiguration.fake() : null,
       actionButtonConfiguration = faker.randomGenerator.boolean() ? MyoroIconTextButtonConfiguration.fake() : null;
-  // coverage:ignore-end
 
   /// [IconData] of the [MyoroFeedback].
   final MyoroIconConfiguration iconConfiguration;

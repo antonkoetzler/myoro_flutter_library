@@ -30,6 +30,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
     bool onTapDownProvided = true,
     MyoroButtonOnTapUp? onTapUp,
     bool onTapUpProvided = true,
+    bool? isLoading,
   }) {
     return MyoroIconTextButtonConfiguration(
       invert: invert ?? self.invert,
@@ -39,6 +40,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
       tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      isLoading: isLoading ?? self.isLoading,
     );
   }
 
@@ -52,7 +54,8 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
         other.cursor == self.cursor &&
         other.tooltipConfiguration == self.tooltipConfiguration &&
         other.onTapDown == self.onTapDown &&
-        other.onTapUp == self.onTapUp;
+        other.onTapUp == self.onTapUp &&
+        other.isLoading == self.isLoading;
   }
 
   @override
@@ -65,6 +68,7 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
       self.tooltipConfiguration,
       self.onTapDown,
       self.onTapUp,
+      self.isLoading,
     );
   }
 
@@ -78,5 +82,6 @@ mixin _$MyoroIconTextButtonConfigurationMixin {
       '  tooltipConfiguration: ${self.tooltipConfiguration},\n'
       '  onTapDown: ${self.onTapDown},\n'
       '  onTapUp: ${self.onTapUp},\n'
+      '  isLoading: ${self.isLoading},\n'
       ');';
 }

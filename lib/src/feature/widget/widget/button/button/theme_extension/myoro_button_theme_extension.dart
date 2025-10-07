@@ -25,7 +25,6 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     this.borderTapColor,
   });
 
-  // coverage:ignore-start
   MyoroButtonThemeExtension.fake()
     : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -38,7 +37,6 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       borderIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
-  // coverage:ignore-end
 
   MyoroButtonThemeExtension.builder(MyoroDecorationThemeExtension decorationThemeExtension)
     : backgroundIdleColor = decorationThemeExtension.primaryIdleBackgroundColor,

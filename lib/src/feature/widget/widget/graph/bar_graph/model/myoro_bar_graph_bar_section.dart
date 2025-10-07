@@ -12,7 +12,6 @@ part 'myoro_bar_graph_bar_section.g.dart';
 class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
   const MyoroBarGraphBarSection({required this.fromY, required this.toY, required this.color});
 
-  // coverage:ignore-start
   factory MyoroBarGraphBarSection.fake() {
     final fromY = faker.randomGenerator.decimal();
     return MyoroBarGraphBarSection(
@@ -21,7 +20,6 @@ class MyoroBarGraphBarSection with _$MyoroBarGraphBarSectionMixin {
       color: myoroFake<Color>(),
     );
   }
-  // coverage:ignore-end
 
   /// Starting position of the bar section.
   final double fromY;

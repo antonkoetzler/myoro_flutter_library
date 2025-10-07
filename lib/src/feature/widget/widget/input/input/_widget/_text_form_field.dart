@@ -39,7 +39,7 @@ final class _TextFormField extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(color: primaryColor, borderRadius: borderRadius),
       child: ValueListenableBuilder(
-        valueListenable: state.showClearTextButtonNotifier,
+        valueListenable: state.showClearTextButtonController,
         builder: (_, showClearTextButton, _) {
           showClearTextButton = clearTextButtonIcon != null && showClearTextButton && configuration.showClearTextButton;
 

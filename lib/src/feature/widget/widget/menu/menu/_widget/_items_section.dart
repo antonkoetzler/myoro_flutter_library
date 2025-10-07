@@ -8,18 +8,18 @@ final class _ItemsSection<T, C extends _C<T>> extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
     final state = viewModel.state;
-    final queriedItemsNotifier = state.queriedItemsNotifier;
-    final selectedItemsNotifier = state.selectedItemsNotifier;
+    final queriedItemsController = state.queriedItemsController;
+    final selectedItemsController = state.selectedItemsController;
     final configuration = state.configuration;
     final itemBuilder = configuration.itemBuilder;
 
     return ValueListenableBuilder(
-      valueListenable: queriedItemsNotifier,
+      valueListenable: queriedItemsController,
       builder: (_, queriedItems, _) {
         final items = queriedItems ?? viewModel.state.items;
 
         return ValueListenableBuilder(
-          valueListenable: selectedItemsNotifier,
+          valueListenable: selectedItemsController,
           builder: (_, selectedItems, _) {
             return Column(
               mainAxisSize: MainAxisSize.min,

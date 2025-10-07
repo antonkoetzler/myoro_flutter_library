@@ -20,14 +20,12 @@ class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
 
   const MyoroFilePickerStyle({this.spacing, this.textStyle});
 
-  // coverage:ignore-start
   factory MyoroFilePickerStyle.fake() {
     return MyoroFilePickerStyle(
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       textStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Spacing between the selected file section text and the selection button.
   final double? spacing;

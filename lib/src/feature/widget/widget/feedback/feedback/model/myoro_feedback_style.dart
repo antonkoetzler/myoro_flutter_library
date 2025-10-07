@@ -22,7 +22,6 @@ class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
 
   const MyoroFeedbackStyle({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
-  // coverage:ignore-start
   factory MyoroFeedbackStyle.fake() {
     return MyoroFeedbackStyle(
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
@@ -31,7 +30,6 @@ class MyoroFeedbackStyle with _$MyoroFeedbackStyleMixin {
       subtitleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Spacing between the icon/title/subtitle and the action button.
   final double? spacing;

@@ -21,7 +21,6 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
     this.dismissDirection,
   });
 
-  // coverage:ignore-start
   MyoroSnackBarContainerThemeExtension.fake()
     : primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       behavior = faker.randomGenerator.boolean() ? myoroFake<SnackBarBehavior>() : null,
@@ -29,7 +28,6 @@ class MyoroSnackBarContainerThemeExtension extends ThemeExtension<MyoroSnackBarC
       padding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       elevation = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       dismissDirection = faker.randomGenerator.boolean() ? myoroFake<DismissDirection>() : null;
-  // coverage:ignore-end
 
   MyoroSnackBarContainerThemeExtension.builder()
     : primaryColor = MyoroColors.transparent,

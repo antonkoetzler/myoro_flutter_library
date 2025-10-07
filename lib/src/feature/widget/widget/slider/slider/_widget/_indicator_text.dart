@@ -10,7 +10,7 @@ final class _IndicatorText extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroSliderThemeExtension>();
-    final style = context.read<MyoroSliderStyle>();
+    final style = context.watch<MyoroSliderStyle>();
 
     return Text(
       _text,

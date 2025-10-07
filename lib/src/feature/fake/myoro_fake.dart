@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';

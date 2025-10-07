@@ -7,7 +7,7 @@ final class _Label extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final style = context.read<MyoroInputStyle>();
+    final style = context.watch<MyoroInputStyle>();
     final labelTextStyle = style.labelTextStyle ?? themeExtension.labelTextStyle;
 
     final viewModel = context.read<MyoroInputViewModel>();

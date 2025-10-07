@@ -7,7 +7,7 @@ final class _Loader extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroTableThemeExtension>();
-    final style = context.read<MyoroTableStyle>();
+    final style = context.watch<MyoroTableStyle>();
     final loaderEmptyMessageErrorMessagePadding =
         style.loaderEmptyMessageErrorMessagePadding ??
         themeExtension.loaderEmptyMessageErrorMessagePadding ??

@@ -45,7 +45,6 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
     this.closeButtonIconConfiguration,
   });
 
-  // coverage:ignore-start
   factory MyoroModalStyle.fake() {
     return MyoroModalStyle(
       constraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
@@ -61,7 +60,6 @@ class MyoroModalStyle with _$MyoroModalStyleMixin {
       closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Constraints of the modal.
   final BoxConstraints? constraints;

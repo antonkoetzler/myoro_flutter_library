@@ -23,11 +23,9 @@ class MyoroIconConfiguration with _$MyoroIconConfigurationMixin {
 
   const MyoroIconConfiguration({required this.icon, this.size});
 
-  // coverage:ignore-start
   MyoroIconConfiguration.fake()
     : icon = myoroFake<IconData>(),
       size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 100) : null;
-  // coverage:ignore-end
 
   /// [Icon.icon]
   final IconData icon;

@@ -18,14 +18,12 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
     this.titleTextStyle,
   });
 
-  // coverage:ignore-start
   MyoroDrawerThemeExtension.fake()
     : drawerPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       drawerContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       drawerShape = faker.randomGenerator.boolean() ? myoroFake<RoundedRectangleBorder>() : null,
       titleContentDividerPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
-  // coverage:ignore-end
 
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : drawerPadding = const EdgeInsets.all(kMyoroMultiplier * 5),

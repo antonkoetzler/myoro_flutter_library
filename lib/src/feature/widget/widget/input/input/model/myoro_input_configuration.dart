@@ -9,16 +9,34 @@ part 'myoro_input_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
+  /// Default value for [inputStyle].
   static const inputStyleDefaultValue = MyoroInputStyleEnum.outlined;
+
+  /// Default value for [label].
   static const labelDefaultValue = kMyoroEmptyString;
+
+  /// Default value for [text].
   static const textDefaultValue = kMyoroEmptyString;
+
+  /// Default value for [placeholder].
   static const placeholderDefaultValue = kMyoroEmptyString;
+
+  /// Default value for [textAlign].
   static const textAlignDefaultValue = TextAlign.start;
+
+  /// Default value for [enabled].
   static const enabledDefaultValue = true;
+
+  /// Default value for [readOnly].
   static const readOnlyDefaultValue = false;
+
+  /// Default value for [autofocus].
   static const autofocusDefaultValue = false;
+
+  /// Default value for [showClearTextButton].
   static const showClearTextButtonDefaultValue = true;
 
+  /// Creates a new instance of [MyoroInputConfiguration].
   const MyoroInputConfiguration({
     this.inputStyle = inputStyleDefaultValue,
     this.textAlign = textAlignDefaultValue,
@@ -41,7 +59,7 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.controller,
   });
 
-  // coverage:ignore-start
+  /// Creates a fake instance of [MyoroInputConfiguration] for testing purposes.
   factory MyoroInputConfiguration.fake() {
     final textProvided = faker.randomGenerator.boolean();
     return MyoroInputConfiguration(
@@ -66,7 +84,6 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Type of input.
   final MyoroInputStyleEnum inputStyle;

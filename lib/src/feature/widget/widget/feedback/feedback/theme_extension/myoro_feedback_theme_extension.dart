@@ -13,13 +13,11 @@ class MyoroFeedbackThemeExtension extends ThemeExtension<MyoroFeedbackThemeExten
     implements MyoroFeedbackStyle {
   const MyoroFeedbackThemeExtension({this.spacing, this.iconSize, this.titleTextStyle, this.subtitleTextStyle});
 
-  // coverage:ignore-start
   MyoroFeedbackThemeExtension.fake()
     : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       iconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       subtitleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
-  // coverage:ignore-end
 
   MyoroFeedbackThemeExtension.builder(TextTheme textTheme)
     : spacing = kMyoroMultiplier * 2,

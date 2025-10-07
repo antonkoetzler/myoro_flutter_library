@@ -16,9 +16,7 @@ final class MyoroSlidersWidgetShowcaseScreenThemeExtension
     with _$MyoroSlidersWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroSlidersWidgetShowcaseScreenThemeExtension({required this.spacing});
 
-  // coverage:ignore-start
   MyoroSlidersWidgetShowcaseScreenThemeExtension.fake() : spacing = faker.randomGenerator.decimal(scale: 20);
-  // coverage:ignore-end
 
   const MyoroSlidersWidgetShowcaseScreenThemeExtension.builder() : spacing = kMyoroMultiplier * 4;
 

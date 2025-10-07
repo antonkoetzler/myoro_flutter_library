@@ -12,11 +12,9 @@ enum MyoroTableColumnWidthConfigurationEnum {
   /// Fixed width.
   fixed;
 
-  // coverage:ignore-start
   factory MyoroTableColumnWidthConfigurationEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   bool get isExpanded => (this == expanded);
   bool get isIntrinsic => (this == intrinsic);

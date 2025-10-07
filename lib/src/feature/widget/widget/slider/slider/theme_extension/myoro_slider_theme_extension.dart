@@ -13,11 +13,9 @@ class MyoroSliderThemeExtension extends ThemeExtension<MyoroSliderThemeExtension
     implements MyoroSliderStyle {
   const MyoroSliderThemeExtension({this.indicatorTextStyle, this.indicatorTextAlignment});
 
-  // coverage:ignore-start
   MyoroSliderThemeExtension.fake()
     : indicatorTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       indicatorTextAlignment = faker.randomGenerator.boolean() ? myoroFake<TextAlign>() : null;
-  // coverage:ignore-end
 
   MyoroSliderThemeExtension.builder(TextTheme textTheme)
     : indicatorTextStyle = textTheme.bodySmall!,

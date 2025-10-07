@@ -17,7 +17,6 @@ class MyoroMultiAccordionConfiguration<T> extends MyoroAccordionConfiguration<T>
     this.selectedItems = const {},
   });
 
-  // coverage:ignore-start
   factory MyoroMultiAccordionConfiguration.fake({Set<T> items = const {}, Set<T> selectedItems = const {}}) {
     return MyoroMultiAccordionConfiguration(
       thumbVisibility: faker.randomGenerator.boolean(),
@@ -27,7 +26,6 @@ class MyoroMultiAccordionConfiguration<T> extends MyoroAccordionConfiguration<T>
       selectedItems: selectedItems,
     );
   }
-  // coverage:ignore-end
 
   /// Selected items.
   final Set<T> selectedItems;

@@ -7,7 +7,7 @@ final class _Title extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
-    final style = context.read<MyoroFeedbackStyle>();
+    final style = context.watch<MyoroFeedbackStyle>();
     final configuration = context.read<MyoroFeedbackConfiguration>();
     final titleConfiguration = configuration.titleConfiguration;
     final text = titleConfiguration.text;

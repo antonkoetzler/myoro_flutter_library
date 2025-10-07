@@ -7,6 +7,7 @@ part 'myoro_slider_configuration.g.dart';
 /// Configuration of [MyoroSlider].
 @myoroModel
 class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$MyoroSliderConfigurationMixin {
+  /// Creates a new instance of [MyoroSliderConfiguration].
   const MyoroSliderConfiguration({
     super.label,
     super.currentValueText,
@@ -21,7 +22,7 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
          '[MyoroSliderConfiguration]: [value] must be greater than or equal to [min] and less than or equal to [max].',
        );
 
-  // coverage:ignore-start
+  /// Creates a fake instance of [MyoroSliderConfiguration] for testing purposes.
   factory MyoroSliderConfiguration.fake() {
     final min = faker.randomGenerator.integer(20).toDouble();
     final max = faker.randomGenerator.integer(100, min: min.toInt() + 1).toDouble();
@@ -43,7 +44,6 @@ class MyoroSliderConfiguration extends MyoroSliderBaseConfiguration with _$Myoro
       onChanged: ((_) {}),
     );
   }
-  // coverage:ignore-end
 
   /// Value of the [MyoroSlider].
   final double value;

@@ -21,7 +21,6 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
     this.horizontalSideTitleReversedSize,
   });
 
-  // coverage:ignore-start
   MyoroBarGraphThemeExtension.fake()
     : border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
       barColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -30,7 +29,6 @@ class MyoroBarGraphThemeExtension extends ThemeExtension<MyoroBarGraphThemeExten
       sideTitleInterval = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       verticalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       horizontalSideTitleReversedSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  // coverage:ignore-end
 
   MyoroBarGraphThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : border = Border.all(width: kMyoroBorderWidth * 2, color: colorScheme.onPrimary),

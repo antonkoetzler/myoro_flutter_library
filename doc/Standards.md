@@ -8,6 +8,16 @@ Stable.
 
 120 (Dart's default).
 
+## Ordering in classes
+
+Within a class, the following order should be used: Constructors > factories > fields > functions > getters > setters.
+
+## Nomenclature
+
+### `ValueNotifier`s
+
+Every `ValueNotifier`'s name needs to end with controller, not notifier.
+
 ## Code generation
 
 MFL uses [Myoro Flutter Annotations](https://github.com/antonkoetzler/myoro_flutter_annotations) to create boilerplate code for models and `ThemeExtension`s. When a code generation build is required, run `dart run build_runner build`.
@@ -17,9 +27,9 @@ MFL uses [Myoro Flutter Annotations](https://github.com/antonkoetzler/myoro_flut
 1. Use `STAGELOG.md` to add what you did in your pull request. This will then be added to `CHANGELOG.md`. Here is the format (always in - format and there must be a space between the title and notes:
 
 ```markdown
-# STAGLOG
+# STAGELOG
 
-- Bla bla bla
+- feature/fix/refactor/improvement/chore: Bla bla bla
 ```
 
 2. If you're creating a new `Widget`, add it to [`Widgets.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Widgets.md).

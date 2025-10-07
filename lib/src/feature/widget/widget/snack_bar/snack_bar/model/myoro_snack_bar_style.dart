@@ -45,7 +45,6 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
     this.closeButtonIconConfiguration,
   });
 
-  // coverage:ignore-start
   factory MyoroSnackBarStyle.fake() {
     return MyoroSnackBarStyle(
       primaryColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -61,7 +60,6 @@ class MyoroSnackBarStyle with _$MyoroSnackBarStyleMixin {
       closeButtonIconConfiguration: faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Background color of the snack bar.
   final Color? primaryColor;

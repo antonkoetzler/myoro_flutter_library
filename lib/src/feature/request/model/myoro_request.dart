@@ -15,7 +15,6 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
 
   const MyoroRequest({this.status = statusDefaultValue, this.errorMessage, this.data});
 
-  // coverage:ignore-start
   factory MyoroRequest.fake({T? data}) {
     final status = MyoroRequestEnum.fake();
     return MyoroRequest(
@@ -24,7 +23,6 @@ class MyoroRequest<T> with _$MyoroRequestMixin<T> {
       data: data,
     );
   }
-  // coverage:ignore-end
 
   /// Status of the request.
   final MyoroRequestEnum status;

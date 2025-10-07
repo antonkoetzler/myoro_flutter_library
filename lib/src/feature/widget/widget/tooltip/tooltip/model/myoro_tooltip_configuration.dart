@@ -14,11 +14,9 @@ class MyoroTooltipConfiguration with _$MyoroTooltipConfigurationMixin {
 
   const MyoroTooltipConfiguration({this.waitDuration = waitDurationDefaultValue, this.text = textDefaultValue});
 
-  // coverage:ignore-start
   MyoroTooltipConfiguration.fake({bool? borderBuilderProvided})
     : waitDuration = myoroFake<Duration>(),
       text = faker.lorem.word();
-  // coverage:ignore-end
 
   /// [Duration] before the tooltip message is shown.
   final Duration waitDuration;

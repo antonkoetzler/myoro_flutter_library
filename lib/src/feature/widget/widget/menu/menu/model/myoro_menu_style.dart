@@ -37,7 +37,6 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
     this.selectedItemColor,
   });
 
-  // coverage:ignore-start
   factory MyoroMenuStyle.fake() {
     return MyoroMenuStyle(
       constraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
@@ -52,7 +51,6 @@ class MyoroMenuStyle with _$MyoroMenuStyleMixin {
       selectedItemColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Constraints of the menu.
   final BoxConstraints? constraints;

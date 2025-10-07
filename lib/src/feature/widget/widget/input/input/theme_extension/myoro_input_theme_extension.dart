@@ -30,7 +30,6 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
     this.clearTextButtonIconSize,
   });
 
-  // coverage:ignore-start
   MyoroInputThemeExtension.fake()
     : border = faker.randomGenerator.boolean() ? myoroFake<InputBorder>() : null,
       underlinedBorder = faker.randomGenerator.boolean() ? myoroFake<UnderlineInputBorder>() : null,
@@ -50,7 +49,6 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       clearTextButtonIconSize = faker.randomGenerator.boolean()
           ? faker.randomGenerator.decimal(scale: 200, min: 20)
           : null;
-  // coverage:ignore-end
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : border = null,

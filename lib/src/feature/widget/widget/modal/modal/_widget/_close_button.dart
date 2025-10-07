@@ -7,7 +7,7 @@ final class _CloseButton extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroModalThemeExtension>();
-    final style = context.read<MyoroModalStyle>();
+    final style = context.watch<MyoroModalStyle>();
     final closeButtonPadding = style.closeButtonPadding ?? themeExtension.closeButtonPadding ?? EdgeInsets.zero;
 
     return Padding(

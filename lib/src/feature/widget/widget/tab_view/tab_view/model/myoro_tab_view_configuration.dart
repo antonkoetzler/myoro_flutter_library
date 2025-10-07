@@ -16,12 +16,10 @@ class MyoroTabViewConfiguration with _$MyoroTabViewConfigurationMixin {
     required this.tabs,
   }) : assert(tabs.length > 0, '[MyoroTabViewConfiguration]: [tabs] cannot be empty.');
 
-  // coverage:ignore-start
   factory MyoroTabViewConfiguration.fake() {
     final tabs = List.generate(faker.randomGenerator.integer(5, min: 1), (_) => MyoroTabViewTab.fake());
     return MyoroTabViewConfiguration(initiallySelectedTabIndex: faker.randomGenerator.integer(tabs.length), tabs: tabs);
   }
-  // coverage:ignore-end
 
   /// Initially selected [MyoroTabViewTab].
   final int initiallySelectedTabIndex;

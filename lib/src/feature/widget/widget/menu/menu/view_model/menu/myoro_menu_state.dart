@@ -2,89 +2,90 @@ part of 'myoro_menu_view_model.dart';
 
 /// State of [MyoroMenuNotifier].
 class MyoroMenuState<T, C extends MyoroMenuConfiguration<T>> {
+  /// Creates a new instance of [MyoroMenuState].
   MyoroMenuState(this.configuration, Set<T> initiallySelectedItems)
-    : _selectedItemsNotifier = ValueNotifier(initiallySelectedItems) {
-    _itemsRequestNotifier.requestCallback = configuration.request;
+    : _selectedItemsController = ValueNotifier(initiallySelectedItems) {
+    _itemsRequestController.requestCallback = configuration.request;
   }
 
   /// Configuration.
   C configuration;
 
   /// Loaded items in the [MyoroMenu].
-  final _itemsRequestNotifier = MyoroRequestNotifier<Set<T>>();
-
-  /// [_itemsRequestNotifier] getter.
-  MyoroRequestNotifier<Set<T>> get itemsRequestNotifier {
-    return _itemsRequestNotifier;
-  }
-
-  /// Getter of [_itemsRequestNotifier]'s value.
-  MyoroRequest<Set<T>> get itemsRequest {
-    return _itemsRequestNotifier.value;
-  }
-
-  /// Getter of [itemsRequest]'s [MyoroRequest.data].
-  Set<T> get items {
-    return _itemsRequestNotifier.value.data ?? <T>{};
-  }
-
-  /// [_itemsRequestNotifier] setter.
-  set itemsRequest(MyoroRequest<Set<T>> itemsRequest) {
-    _itemsRequestNotifier.value = itemsRequest;
-  }
+  final _itemsRequestController = MyoroRequestNotifier<Set<T>>();
 
   /// Queried items in the [MyoroMenu].
-  final _queriedItemsNotifier = ValueNotifier<Set<T>?>(null);
-
-  /// [_queriedItemsNotifier] getter.
-  ValueNotifier<Set<T>?> get queriedItemsNotifier {
-    return _queriedItemsNotifier;
-  }
-
-  /// Value of [_queriedItemsNotifier]'s value.
-  Set<T>? get queriedItems {
-    return _queriedItemsNotifier.value;
-  }
-
-  /// [_queriedItemsNotifier] setter.
-  set queriedItems(Set<T>? queriedItems) {
-    _queriedItemsNotifier.value = queriedItems;
-  }
+  final _queriedItemsController = ValueNotifier<Set<T>?>(null);
 
   /// Selected [MyoroMenuItem]s.
-  final ValueNotifier<Set<T>> _selectedItemsNotifier;
+  final ValueNotifier<Set<T>> _selectedItemsController;
 
-  /// [_selectedItemsNotifier] getter.
-  ValueNotifier<Set<T>> get selectedItemsNotifier {
-    return _selectedItemsNotifier;
-  }
-
-  /// Getter of [_selectedItemsNotifier]'s value.
-  Set<T> get selectedItems {
-    return _selectedItemsNotifier.value;
-  }
-
-  /// [_selectedItemsNotifier] setter.
-  set selectedItems(Set<T> selectedItems) {
-    _selectedItemsNotifier.value = selectedItems;
-  }
+  /// To call [MyoroMenuConfiguration.onEndReachedRequest].
+  final _scrollController = ScrollController();
 
   /// Position of [_scrollController] before [MyoroMenu] was refreshed.
   double? onEndReachedPosition;
 
-  /// To call [MyoroMenuConfiguration.onEndReachedRequest].
-  final _scrollController = ScrollController();
+  /// [_itemsRequestController] getter.
+  MyoroRequestNotifier<Set<T>> get itemsRequestController {
+    return _itemsRequestController;
+  }
+
+  /// [_queriedItemsController] getter.
+  ValueNotifier<Set<T>?> get queriedItemsController {
+    return _queriedItemsController;
+  }
+
+  /// [_selectedItemsController] getter.
+  ValueNotifier<Set<T>> get selectedItemsController {
+    return _selectedItemsController;
+  }
 
   /// [_scrollController] getter.
   ScrollController get scrollController {
     return _scrollController;
   }
 
+  /// Getter of [_itemsRequestController]'s value.
+  MyoroRequest<Set<T>> get itemsRequest {
+    return _itemsRequestController.value;
+  }
+
+  /// Getter of [itemsRequest]'s [MyoroRequest.data].
+  Set<T> get items {
+    return _itemsRequestController.value.data ?? <T>{};
+  }
+
+  /// Value of [_queriedItemsController]'s value.
+  Set<T>? get queriedItems {
+    return _queriedItemsController.value;
+  }
+
+  /// Getter of [_selectedItemsController]'s value.
+  Set<T> get selectedItems {
+    return _selectedItemsController.value;
+  }
+
+  /// [_itemsRequestController] setter.
+  set itemsRequest(MyoroRequest<Set<T>> itemsRequest) {
+    _itemsRequestController.value = itemsRequest;
+  }
+
+  /// [_queriedItemsController] setter.
+  set queriedItems(Set<T>? queriedItems) {
+    _queriedItemsController.value = queriedItems;
+  }
+
+  /// [_selectedItemsController] setter.
+  set selectedItems(Set<T> selectedItems) {
+    _selectedItemsController.value = selectedItems;
+  }
+
   /// Dispose function.
   void dispose() {
-    _itemsRequestNotifier.dispose();
-    _queriedItemsNotifier.dispose();
-    _selectedItemsNotifier.dispose();
+    _itemsRequestController.dispose();
+    _queriedItemsController.dispose();
+    _selectedItemsController.dispose();
     _scrollController.dispose();
   }
 }

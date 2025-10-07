@@ -7,7 +7,7 @@ final class _SuccessContent<T, C extends _C<T>> extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
-    final style = context.read<MyoroMenuStyle>();
+    final style = context.watch<MyoroMenuStyle>();
     var borderRadius = style.borderRadius ?? themeExtension.borderRadius;
     borderRadius =
         borderRadius?.copyWith(

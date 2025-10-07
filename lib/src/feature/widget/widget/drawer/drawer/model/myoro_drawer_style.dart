@@ -27,7 +27,6 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
     this.titleTextStyle,
   });
 
-  // coverage:ignore-start
   factory MyoroDrawerStyle.fake() {
     return MyoroDrawerStyle(
       drawerPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
@@ -37,7 +36,6 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
       titleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Padding of [_Drawer].
   final EdgeInsets? drawerPadding;

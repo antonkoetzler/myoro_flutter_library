@@ -18,10 +18,10 @@ final class MyoroTableViewModel<T> {
     _state.dispose();
   }
 
-  /// Populates [__titleColumnKeyWidthsNotifier].
+  /// Populates [__titleColumnKeyWidthsController].
   void getTitleColumnKeyWidths() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _state.titleColumnKeyWidthsNotifier.value = _state.titleColumnKeys.map<double>((GlobalKey titleColumnKey) {
+      _state.titleColumnKeyWidthsController.value = _state.titleColumnKeys.map<double>((GlobalKey titleColumnKey) {
         final renderBox = titleColumnKey.currentContext!.findRenderObject() as RenderBox;
         return renderBox.size.width;
       }).toList();

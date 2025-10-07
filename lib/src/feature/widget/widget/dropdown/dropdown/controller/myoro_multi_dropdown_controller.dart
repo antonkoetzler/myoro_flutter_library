@@ -10,16 +10,17 @@ class MyoroMultiDropdownController<T>
           MyoroMultiMenuController<T>,
           MyoroMultiDropdownViewModel<T>
         > {
+  /// Creates a new instance of [MyoroMultiDropdownController].
   MyoroMultiDropdownController({required MyoroMultiDropdownConfiguration<T> configuration})
     : super(configuration: configuration, viewModel: MyoroMultiDropdownViewModel(configuration));
 
   /// [ValueNotifier] of the selected items.
-  ValueNotifier<Set<T>> get selectedItemsNotifier {
-    return viewModel.state.menuController.selectedItemsNotifier;
+  ValueNotifier<Set<T>> get selectedItemsController {
+    return viewModel.state.menuController.selectedItemsController;
   }
 
-  /// Getter of [selectedItemsNotifier]'s value.
+  /// Getter of [selectedItemsController]'s value.
   Set<T> get selectedItems {
-    return selectedItemsNotifier.value;
+    return selectedItemsController.value;
   }
 }

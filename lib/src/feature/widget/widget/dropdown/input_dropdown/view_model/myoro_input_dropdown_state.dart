@@ -15,8 +15,9 @@ final class MyoroInputDropdownState<
     >
   >
 > {
+  /// Creates a new instance of [MyoroInputDropdownState].
   MyoroInputDropdownState(this._configuration, TextEditingController? inputController, this.dropdownController)
-    : _enabledNotifier = ValueNotifier(_configuration.enabled) {
+    : _enabledController = ValueNotifier(_configuration.enabled) {
     _inputController = inputController ?? (_localInputController ??= TextEditingController());
   }
 
@@ -33,13 +34,7 @@ final class MyoroInputDropdownState<
   late final TextEditingController _inputController;
 
   /// [ValueNotifier] controlling if the dropdown is enabled or not.
-  final ValueNotifier<bool> _enabledNotifier;
-
-  /// Dispose function.
-  void dispose() {
-    dropdownController.dispose();
-    _localInputController?.dispose();
-  }
+  final ValueNotifier<bool> _enabledController;
 
   /// [_configuration] getter.
   CONFIGURATION get configuration {
@@ -51,14 +46,14 @@ final class MyoroInputDropdownState<
     return _inputController;
   }
 
-  /// [_enabledNotifier] getter.
-  ValueNotifier<bool> get enabledNotifier {
-    return _enabledNotifier;
+  /// [_enabledController] getter.
+  ValueNotifier<bool> get enabledController {
+    return _enabledController;
   }
 
-  /// [_enabledNotifier]'s value getter.
+  /// [_enabledController]'s value getter.
   bool get enabled {
-    return _enabledNotifier.value;
+    return _enabledController.value;
   }
 
   /// [_configuration] setter.
@@ -71,8 +66,14 @@ final class MyoroInputDropdownState<
     );
   }
 
-  /// [_enabledNotifier] setter.
+  /// [_enabledController] setter.
   set enabled(bool enabled) {
-    _enabledNotifier.value = enabled;
+    _enabledController.value = enabled;
+  }
+
+  /// Dispose function.
+  void dispose() {
+    dropdownController.dispose();
+    _localInputController?.dispose();
   }
 }

@@ -7,7 +7,7 @@ final class _SelectedFile extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFilePickerThemeExtension>();
-    final style = context.read<MyoroFilePickerStyle>();
+    final style = context.watch<MyoroFilePickerStyle>();
     final textStyle = style.textStyle ?? themeExtension.textStyle;
 
     final viewModel = context.read<MyoroFilePickerViewModel>();
@@ -16,12 +16,8 @@ final class _SelectedFile extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: selectedFileNotifier,
-      builder: (_, selectedFile, _) => Text(
-        // coverage:ignore-start
-        selectedFile?.name ?? context.localization.myoroFilePickerSelectedFileUnselectedText,
-        // coverage:ignore-end
-        style: textStyle,
-      ),
+      builder: (_, selectedFile, _) =>
+          Text(selectedFile?.name ?? context.localization.myoroFilePickerSelectedFileUnselectedText, style: textStyle),
     );
   }
 }

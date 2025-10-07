@@ -16,11 +16,9 @@ final class MyoroInputWidgetShowcaseScreenThemeExtension
     with _$MyoroInputWidgetShowcaseScreenThemeExtensionMixin {
   const MyoroInputWidgetShowcaseScreenThemeExtension({required this.suffixBorderRadius, required this.suffixSize});
 
-  // coverage:ignore-start
   MyoroInputWidgetShowcaseScreenThemeExtension.fake()
     : suffixBorderRadius = myoroFake<BorderRadius>(),
       suffixSize = faker.randomGenerator.decimal(scale: 100);
-  // coverage:ignore-end
 
   MyoroInputWidgetShowcaseScreenThemeExtension.builder()
     : suffixBorderRadius = BorderRadius.circular(kMyoroBorderRadius),

@@ -57,7 +57,6 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
     this.selectionTypeModalButtonGalleryIcon,
   });
 
-  // coverage:ignore-start
   factory MyoroImagePickerStyle.fake() {
     return MyoroImagePickerStyle(
       size: faker.randomGenerator.boolean() ? myoroFake<Size>() : null,
@@ -75,7 +74,6 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       selectionTypeModalButtonGalleryIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Size of the [MyoroImagePicker].
   final Size? size;

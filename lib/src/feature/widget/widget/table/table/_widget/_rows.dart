@@ -11,14 +11,14 @@ final class _Rows<T> extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroTableViewModel<T>>();
     final state = viewModel.state;
-    final titleColumnKeyWidthsNotifier = state.titleColumnKeyWidthsNotifier;
+    final titleColumnKeyWidthsController = state.titleColumnKeyWidthsController;
 
     if (_items.isEmpty) {
       return const _EmptyMessage();
     }
 
     return ValueListenableBuilder(
-      valueListenable: titleColumnKeyWidthsNotifier,
+      valueListenable: titleColumnKeyWidthsController,
       builder: (_, titleColumnKeyWidths, _) {
         // Empty case as there cannot be 0 [MyoroTableColumn]s in a [MyoroTable].
         if (titleColumnKeyWidths.isEmpty) {

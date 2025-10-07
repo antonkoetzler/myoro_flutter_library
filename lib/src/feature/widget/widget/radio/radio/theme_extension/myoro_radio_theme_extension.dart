@@ -19,14 +19,12 @@ class MyoroRadioThemeExtension extends ThemeExtension<MyoroRadioThemeExtension>
     this.splashRadius,
   });
 
-  // coverage:ignore-start
   MyoroRadioThemeExtension.fake()
     : activeColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       hoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       splashRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  // coverage:ignore-end
 
   MyoroRadioThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : activeColor = colorScheme.onPrimary,

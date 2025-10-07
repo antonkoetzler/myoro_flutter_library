@@ -7,7 +7,7 @@ final class _Subtitle extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
-    final style = context.read<MyoroFeedbackStyle>();
+    final style = context.watch<MyoroFeedbackStyle>();
     final configuration = context.read<MyoroFeedbackConfiguration>();
     final subtitleConfiguration = configuration.subtitleConfiguration;
     final text = subtitleConfiguration!.text;

@@ -20,14 +20,12 @@ class MyoroGroupRadioStyle with _$MyoroGroupRadioStyleMixin {
 
   const MyoroGroupRadioStyle({this.spacing, this.runSpacing});
 
-  // coverage:ignore-start
   factory MyoroGroupRadioStyle.fake() {
     return MyoroGroupRadioStyle(
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       runSpacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Main axis spacing in between each radio.
   final double? spacing;

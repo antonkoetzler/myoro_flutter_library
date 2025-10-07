@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 const kSharedPreferencesDarkModeEnabledJsonKey = 'dark_mode_enabled';
 
 // Pictures.

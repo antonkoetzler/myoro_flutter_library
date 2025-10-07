@@ -33,7 +33,6 @@ class MyoroResizeDividerStyle extends MyoroBasicDividerStyle with _$MyoroResizeD
     this.resizeButtonLongValue,
   });
 
-  // coverage:ignore-start
   factory MyoroResizeDividerStyle.fake() {
     return MyoroResizeDividerStyle(
       color: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -45,7 +44,6 @@ class MyoroResizeDividerStyle extends MyoroBasicDividerStyle with _$MyoroResizeD
       resizeButtonLongValue: faker.randomGenerator.boolean() ? myoroFake<double>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Border radius of the resize button.
   final BorderRadius? resizeButtonBorderRadius;

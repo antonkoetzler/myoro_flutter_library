@@ -61,7 +61,7 @@ The customization system follows this priority order (highest to lowest):
 ```dart
 // Inside widget build method
 final themeExtension = context.resolveThemeExtension<MyoroWidgetThemeExtension>();
-final style = context.read<MyoroWidgetStyle>();
+final style = context.watch<MyoroWidgetStyle>();
 
 // Style model takes precedence, falls back to theme extension
 final backgroundColor = style.backgroundColor ?? themeExtension.backgroundColor;

@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 part of '../myoro_image_picker.dart';
 
 /// Bottom sheet to select if the camera or photo gallery will be used.
@@ -23,7 +21,7 @@ final class _SelectionTypeModal extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
-    final style = context.read<MyoroImagePickerStyle>();
+    final style = context.watch<MyoroImagePickerStyle>();
     final selectionTypeModalSpacing = style.selectionTypeModalSpacing ?? themeExtension.selectionTypeModalSpacing ?? 0;
 
     return InheritedProvider.value(

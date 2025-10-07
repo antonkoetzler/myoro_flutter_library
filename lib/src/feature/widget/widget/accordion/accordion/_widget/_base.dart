@@ -68,7 +68,7 @@ final class _BaseState<T> extends State<_Base<T>> {
   @override
   Widget build(BuildContext context) {
     final state = _viewModel.state;
-    final selectedItemsNotifier = state.selectedItemsNotifier;
+    final selectedItemsController = state.selectedItemsController;
     final scrollController = state.scrollController;
     final configuration = state.configuration;
     final items = configuration.items;
@@ -80,7 +80,7 @@ final class _BaseState<T> extends State<_Base<T>> {
         InheritedProvider.value(value: _style),
       ],
       child: ValueListenableBuilder(
-        valueListenable: selectedItemsNotifier,
+        valueListenable: selectedItemsController,
         builder: (_, selectedItems, _) {
           return Scrollbar(
             controller: scrollController,

@@ -22,7 +22,6 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
     this.spacing,
   });
 
-  // coverage:ignore-start
   MyoroCheckboxThemeExtension.fake()
     : checkboxActiveColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       checkboxCheckColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -32,7 +31,6 @@ class MyoroCheckboxThemeExtension extends ThemeExtension<MyoroCheckboxThemeExten
       labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       labelMaxLines = faker.randomGenerator.boolean() ? faker.randomGenerator.integer(5) : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  // coverage:ignore-end
 
   MyoroCheckboxThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : checkboxActiveColor = colorScheme.onPrimary,

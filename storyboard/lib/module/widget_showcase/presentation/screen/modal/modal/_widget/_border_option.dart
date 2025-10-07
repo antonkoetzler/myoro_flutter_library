@@ -6,7 +6,12 @@ final class _BorderOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    // TODO: Implement border option - complex border customization
-    return const Text('Border option - TODO: Implement border customization');
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
+
+    return BorderWidgetShowcaseOption(
+      label: 'Border',
+      selectedBorder: viewModel.state.border,
+      onChanged: (border) => viewModel.state.border = border,
+    );
   }
 }

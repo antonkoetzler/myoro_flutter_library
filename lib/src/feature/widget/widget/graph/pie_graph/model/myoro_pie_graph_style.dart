@@ -20,14 +20,12 @@ class MyoroPieGraphStyle with _$MyoroPieGraphStyleMixin {
 
   const MyoroPieGraphStyle({this.itemColor, this.itemRadius});
 
-  // coverage:ignore-start
   factory MyoroPieGraphStyle.fake() {
     return MyoroPieGraphStyle(
       itemColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemRadius: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Default color of an item.
   final Color? itemColor;

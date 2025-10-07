@@ -10,11 +10,19 @@ part 'myoro_modal_configuration.g.dart';
 @immutable
 @myoroModel
 class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
+  /// Default value for [barrierDismissable].
   static const barrierDismissableDefaultValue = true;
+
+  /// Default value for [useRootNavigator].
   static const useRootNavigatorDefaultValue = true;
+
+  /// Default value for [title].
   static const titleDefaultValue = '';
+
+  /// Default value for [showCloseButton].
   static const showCloseButtonDefaultValue = true;
 
+  /// Creates a new instance of [MyoroModalConfiguration].
   const MyoroModalConfiguration({
     this.barrierDismissable = barrierDismissableDefaultValue,
     this.useRootNavigator = useRootNavigatorDefaultValue,
@@ -23,14 +31,13 @@ class MyoroModalConfiguration<T> with _$MyoroModalConfigurationMixin<T> {
     this.showCloseButton = showCloseButtonDefaultValue,
   });
 
-  // coverage:ignore-start
+  /// Creates a fake instance of [MyoroModalConfiguration] for testing purposes.
   MyoroModalConfiguration.fake()
     : barrierDismissable = faker.randomGenerator.boolean(),
       useRootNavigator = faker.randomGenerator.boolean(),
       onClosed = faker.randomGenerator.boolean() ? ((_) {}) : null,
       title = faker.randomGenerator.boolean() ? faker.lorem.word() : titleDefaultValue,
       showCloseButton = faker.randomGenerator.boolean();
-  // coverage:ignore-end
 
   /// If you click everywhere but the modal, it closes
   final bool barrierDismissable;

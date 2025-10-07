@@ -7,7 +7,7 @@ final class _Checkbox extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCheckboxThemeExtension>();
-    final style = context.read<MyoroCheckboxStyle>();
+    final style = context.watch<MyoroCheckboxStyle>();
     final checkboxActiveColor = style.checkboxActiveColor ?? themeExtension.checkboxActiveColor;
     final checkboxCheckColor = style.checkboxCheckColor ?? themeExtension.checkboxCheckColor;
     final checkboxHoverColor = style.checkboxHoverColor ?? themeExtension.checkboxHoverColor;
@@ -16,11 +16,11 @@ final class _Checkbox extends StatelessWidget {
 
     final viewModel = context.read<MyoroCheckboxViewModel>();
     final state = viewModel.state;
-    final enabledNotifier = state.enabledNotifier;
+    final enabledController = state.enabledController;
     final onTapUp = viewModel.onTapUp;
 
     return ValueListenableBuilder(
-      valueListenable: enabledNotifier,
+      valueListenable: enabledController,
       builder: (_, bool enabled, _) {
         // This [SizedBox] removes the default margin in [Checkbox].
         return SizedBox(

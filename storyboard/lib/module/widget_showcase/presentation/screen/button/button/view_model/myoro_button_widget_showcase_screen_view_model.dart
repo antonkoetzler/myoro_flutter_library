@@ -46,6 +46,7 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
       cursor: state.cursor,
       onTapDown: state.onTapDownEnabled ? (_) => onTapDown(context) : null,
       onTapUp: state.onTapUpEnabled ? (_) => onTapUp(context) : null,
+      isLoading: state.isLoading,
     );
   }
 

@@ -7,7 +7,7 @@ final class _ClearTextButton extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
-    final style = context.read<MyoroInputStyle>();
+    final style = context.watch<MyoroInputStyle>();
     final clearTextButtonPadding =
         style.clearTextButtonPadding ?? themeExtension.clearTextButtonPadding ?? EdgeInsets.zero;
     final clearTextButtonIcon = style.clearTextButtonIcon ?? themeExtension.clearTextButtonIcon!;

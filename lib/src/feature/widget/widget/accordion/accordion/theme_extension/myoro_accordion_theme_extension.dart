@@ -25,7 +25,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
     this.itemTitleButtonArrowAnimationCurve,
   });
 
-  // coverage:ignore-start
   MyoroAccordionThemeExtension.fake()
     : itemContentBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemContentAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
@@ -40,7 +39,6 @@ class MyoroAccordionThemeExtension extends ThemeExtension<MyoroAccordionThemeExt
           : null,
       itemTitleButtonArrowAnimationDuration = faker.randomGenerator.boolean() ? myoroFake<Duration>() : null,
       itemTitleButtonArrowAnimationCurve = faker.randomGenerator.boolean() ? myoroFake<Curve>() : null;
-  // coverage:ignore-end
 
   MyoroAccordionThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme, TextTheme textTheme)
     : itemContentBackgroundColor = colorScheme.primary,

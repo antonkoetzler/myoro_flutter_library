@@ -13,7 +13,6 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
     implements MyoroBasicDividerStyle {
   const MyoroBasicDividerThemeExtension({this.color, this.shortValue, this.longValue});
 
-  // coverage:ignore-start
   factory MyoroBasicDividerThemeExtension.fake() {
     return MyoroBasicDividerThemeExtension(
       color: myoroFake<Color>(),
@@ -21,7 +20,6 @@ final class MyoroBasicDividerThemeExtension extends ThemeExtension<MyoroBasicDiv
       longValue: faker.randomGenerator.decimal(),
     );
   }
-  // coverage:ignore-end
 
   @override
   final Color? color;

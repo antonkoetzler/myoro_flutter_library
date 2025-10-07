@@ -6,7 +6,12 @@ final class _OutlinedBorderOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    // TODO: Implement outlined border option - complex border customization
-    return const Text('Outlined border option - TODO: Implement border customization');
+    final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
+
+    return InputBorderWidgetShowcaseOption(
+      label: 'Outlined border',
+      selectedBorder: viewModel.state.outlinedBorder,
+      onChanged: (border) => viewModel.state.outlinedBorder = border as OutlineInputBorder?,
+    );
   }
 }

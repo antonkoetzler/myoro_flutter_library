@@ -29,13 +29,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
   MyoroButtonStyle get _style => widget.style;
   MyoroButtonBuilder get _builder => widget.builder;
 
-  late final MyoroButtonViewModel _viewModel;
-
-  @override
-  void initState() {
-    super.initState();
-    _viewModel = MyoroButtonViewModel(_configuration);
-  }
+  late final _viewModel = MyoroButtonViewModel(_configuration);
 
   @override
   void didUpdateWidget(covariant MyoroButton oldWidget) {
@@ -56,7 +50,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
   @override
   Widget build(context) {
     final state = _viewModel.state;
-    final tapStatusNotifier = state.tapStatusNotifier;
+    final tapStatusController = state.tapStatusController;
     final onEnter = _viewModel.onEnter;
     final onExit = _viewModel.onExit;
     final onTapDown = _viewModel.onTapDown;
@@ -64,6 +58,7 @@ final class _MyoroButtonState extends State<MyoroButton> {
     final onTapCancel = _viewModel.onTapCancel;
     final configuration = state.configuration;
     final onTapProvided = configuration?.onTapProvided == true;
+    final isLoadingController = state.isLoadingController;
 
     final cursor = configuration?.cursor ?? (onTapProvided ? SystemMouseCursors.click : SystemMouseCursors.basic);
 
@@ -76,14 +71,19 @@ final class _MyoroButtonState extends State<MyoroButton> {
         cursor: cursor,
         onEnter: onEnter,
         onExit: onExit,
-        child: GestureDetector(
-          onTapDown: onTapDown,
-          onTapUp: onTapUp,
-          onTapCancel: onTapCancel,
-          child: ValueListenableBuilder(
-            valueListenable: tapStatusNotifier,
-            builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
-          ),
+        child: ValueListenableBuilder(
+          valueListenable: isLoadingController,
+          builder: (_, isLoading, _) => isLoading
+              ? const MyoroCircularLoader()
+              : GestureDetector(
+                  onTapDown: onTapDown,
+                  onTapUp: onTapUp,
+                  onTapCancel: onTapCancel,
+                  child: ValueListenableBuilder(
+                    valueListenable: tapStatusController,
+                    builder: (_, tapStatusEnum, _) => _Button(tapStatusEnum, _builder),
+                  ),
+                ),
         ),
       ),
     );

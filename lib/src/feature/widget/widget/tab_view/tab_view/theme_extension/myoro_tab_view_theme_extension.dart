@@ -20,7 +20,6 @@ class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtensi
     this.tabButtonTextStyle,
   });
 
-  // coverage:ignore-start
   MyoroTabViewThemeExtension.fake()
     : tabButtonBorderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       tabButtonIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -28,7 +27,6 @@ class MyoroTabViewThemeExtension extends ThemeExtension<MyoroTabViewThemeExtensi
       tabButtonTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       tabButtonIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       tabButtonTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
-  // coverage:ignore-end
 
   MyoroTabViewThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : tabButtonBorderRadius = BorderRadius.zero,

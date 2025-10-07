@@ -25,7 +25,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
     this.closeButtonIconConfiguration,
   });
 
-  // coverage:ignore-start
   MyoroModalThemeExtension.fake()
     : constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       primaryColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -38,7 +37,6 @@ class MyoroModalThemeExtension extends ThemeExtension<MyoroModalThemeExtension>
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       closeButtonIconConfiguration = faker.randomGenerator.boolean() ? MyoroIconConfiguration.fake() : null;
-  // coverage:ignore-end
 
   MyoroModalThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : constraints = null,

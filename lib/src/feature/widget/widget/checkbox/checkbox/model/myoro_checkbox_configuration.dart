@@ -14,12 +14,10 @@ class MyoroCheckboxConfiguration with _$MyoroCheckboxConfigurationMixin {
 
   const MyoroCheckboxConfiguration({this.label = labelDefaultValue, this.value = valueDefaultValue, this.onChanged});
 
-  // coverage:ignore-start
   MyoroCheckboxConfiguration.fake()
     : label = faker.randomGenerator.boolean() ? faker.lorem.word() : labelDefaultValue,
       value = faker.randomGenerator.boolean(),
       onChanged = faker.randomGenerator.boolean() ? ((_) {}) : null;
-  // coverage:ignore-end
 
   /// Label at the right of the checkbox.
   final String label;

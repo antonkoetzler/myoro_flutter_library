@@ -6,7 +6,12 @@ final class _BottomSheetBorderOption extends StatelessWidget {
 
   @override
   Widget build(context) {
-    // TODO: Implement bottom sheet border option - complex border customization
-    return const Text('Bottom sheet border option - TODO: Implement border customization');
+    final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
+
+    return BorderWidgetShowcaseOption(
+      label: 'Bottom sheet border',
+      selectedBorder: viewModel.state.bottomSheetBorder,
+      onChanged: (border) => viewModel.state.bottomSheetBorder = border,
+    );
   }
 }

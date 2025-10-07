@@ -37,7 +37,6 @@ class MyoroTableStyle with _$MyoroTableStyleMixin {
     this.errorMessageTextStyle,
   });
 
-  // coverage:ignore-start
   factory MyoroTableStyle.fake() {
     return MyoroTableStyle(
       backgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -49,7 +48,6 @@ class MyoroTableStyle with _$MyoroTableStyleMixin {
       errorMessageTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Background color of the table.
   final Color? backgroundColor;

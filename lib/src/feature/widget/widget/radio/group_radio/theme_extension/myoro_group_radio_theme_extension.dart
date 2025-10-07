@@ -13,11 +13,9 @@ class MyoroGroupRadioThemeExtension extends ThemeExtension<MyoroGroupRadioThemeE
     implements MyoroGroupRadioStyle {
   const MyoroGroupRadioThemeExtension({this.spacing, this.runSpacing});
 
-  // coverage:ignore-start
   MyoroGroupRadioThemeExtension.fake()
     : spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       runSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  // coverage:ignore-end
 
   const MyoroGroupRadioThemeExtension.builder() : spacing = kMyoroMultiplier, runSpacing = kMyoroMultiplier;
 

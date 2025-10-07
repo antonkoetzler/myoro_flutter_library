@@ -13,11 +13,9 @@ class MyoroPieGraphThemeExtension extends ThemeExtension<MyoroPieGraphThemeExten
     implements MyoroPieGraphStyle {
   const MyoroPieGraphThemeExtension({this.itemColor, this.itemRadius});
 
-  // coverage:ignore-start
   MyoroPieGraphThemeExtension.fake()
     : itemColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       itemRadius = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  // coverage:ignore-end
 
   MyoroPieGraphThemeExtension.builder(ColorScheme colorScheme) : itemColor = colorScheme.onPrimary, itemRadius = 200;
 

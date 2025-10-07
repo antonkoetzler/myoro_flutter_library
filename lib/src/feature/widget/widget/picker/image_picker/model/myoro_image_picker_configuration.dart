@@ -10,9 +10,7 @@ part 'myoro_image_picker_configuration.g.dart';
 final class MyoroImagePickerConfiguration with _$MyoroImagePickerConfigurationMixin {
   const MyoroImagePickerConfiguration({this.selectedImage, required this.onChanged});
 
-  // coverage:ignore-start
   MyoroImagePickerConfiguration.fake() : selectedImage = null, onChanged = ((_) {});
-  // coverage:ignore-end
 
   /// Selected image.
   final String? selectedImage;

@@ -21,7 +21,6 @@ class MyoroBasicDividerStyle with _$MyoroBasicDividerStyleMixin {
 
   const MyoroBasicDividerStyle({this.color, this.shortValue, this.longValue});
 
-  // coverage:ignore-start
   factory MyoroBasicDividerStyle.fake() {
     return MyoroBasicDividerStyle(
       color: myoroFake<Color>(),
@@ -29,7 +28,6 @@ class MyoroBasicDividerStyle with _$MyoroBasicDividerStyleMixin {
       longValue: faker.randomGenerator.decimal(),
     );
   }
-  // coverage:ignore-end
 
   /// [Color] of the [MyoroDivider].
   final Color? color;

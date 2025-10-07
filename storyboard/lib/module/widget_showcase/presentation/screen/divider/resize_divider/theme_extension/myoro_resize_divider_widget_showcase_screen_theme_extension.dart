@@ -29,12 +29,10 @@ final class MyoroResizeDividerWidgetShowcaseScreenThemeExtension
     required this.coverColor,
   });
 
-  // coverage:ignore-start
   MyoroResizeDividerWidgetShowcaseScreenThemeExtension.fake()
     : kittySize = faker.randomGenerator.decimal(scale: 500, min: 10),
       kittyBorderRadius = myoroFake<BorderRadius>(),
       coverColor = myoroFake<Color>();
-  // coverage:ignore-end
 
   MyoroResizeDividerWidgetShowcaseScreenThemeExtension.builder(ColorScheme colorScheme)
     : kittySize = 300,

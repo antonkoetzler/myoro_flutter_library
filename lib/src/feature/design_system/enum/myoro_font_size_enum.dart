@@ -12,11 +12,9 @@ enum MyoroFontSizeEnum {
 
   const MyoroFontSizeEnum(this.size);
 
-  // coverage:ignore-start
   factory MyoroFontSizeEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   bool get isTiny => this == tiny;
   bool get isSmall => this == small;

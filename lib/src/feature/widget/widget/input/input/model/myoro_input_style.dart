@@ -51,7 +51,6 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.clearTextButtonIconSize,
   });
 
-  // coverage:ignore-start
   factory MyoroInputStyle.fake() {
     return MyoroInputStyle(
       border: faker.randomGenerator.boolean() ? myoroFake<InputBorder>() : null,
@@ -74,7 +73,6 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
           : null,
     );
   }
-  // coverage:ignore-end
 
   /// Custom border.
   final InputBorder? border;

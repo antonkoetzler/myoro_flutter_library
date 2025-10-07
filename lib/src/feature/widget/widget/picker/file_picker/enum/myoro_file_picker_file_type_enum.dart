@@ -24,11 +24,9 @@ enum MyoroFilePickerFileTypeEnum {
 
   const MyoroFilePickerFileTypeEnum(this.filePickerValue);
 
-  // coverage:ignore-start
   factory MyoroFilePickerFileTypeEnum.fake() {
     return values[faker.randomGenerator.integer(values.length)];
   }
-  // coverage:ignore-end
 
   /// [FileType]
   final FileType filePickerValue;

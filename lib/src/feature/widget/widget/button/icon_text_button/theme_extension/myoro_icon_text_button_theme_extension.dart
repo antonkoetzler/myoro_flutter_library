@@ -27,7 +27,6 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
     this.spacing,
   });
 
-  // coverage:ignore-start
   MyoroIconTextButtonThemeExtension.fake()
     : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -42,7 +41,6 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null;
-  // coverage:ignore-end
 
   MyoroIconTextButtonThemeExtension.builder(MyoroDecorationThemeExtension decorationThemeExtension)
     : backgroundIdleColor = decorationThemeExtension.primaryIdleBackgroundColor,

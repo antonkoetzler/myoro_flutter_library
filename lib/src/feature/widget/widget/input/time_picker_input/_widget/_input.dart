@@ -7,7 +7,7 @@ final class _Input extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroTimePickerInputViewModel>();
-    final style = context.read<MyoroInputStyle>();
+    final style = context.watch<MyoroInputStyle>();
     final state = viewModel.state;
     final configuration = state.configuration;
     final inputKey = state.inputKey;

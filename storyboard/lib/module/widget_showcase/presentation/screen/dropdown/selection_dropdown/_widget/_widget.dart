@@ -8,6 +8,7 @@ final class _Widget extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = themeExtension.spacing;
+    final viewModel = context.read<MyoroSelectionDropdownsWidgetShowcaseScreenViewModel>();
 
     return Column(
       spacing: spacing,
@@ -16,7 +17,7 @@ final class _Widget extends StatelessWidget {
         Flexible(
           child: MyoroSingleSelectionDropdown(
             configuration: MyoroSingleSelectionDropdownConfiguration(
-              dropdownType: MyoroDropdownTypeEnum.overlay, // TODO: Add option
+              dropdownType: viewModel.state.singleDropdownType,
               menuConfiguration: MyoroSingleMenuConfiguration(
                 request: () => {'Start'},
                 itemBuilder: (item) {
@@ -34,7 +35,7 @@ final class _Widget extends StatelessWidget {
         Flexible(
           child: MyoroMultiSelectionDropdown(
             configuration: MyoroMultiSelectionDropdownConfiguration(
-              dropdownType: MyoroDropdownTypeEnum.overlay, // TODO: Add option
+              dropdownType: viewModel.state.multiDropdownType,
               menuConfiguration: MyoroMultiMenuConfiguration(
                 request: () => {'Start'},
                 itemBuilder: (item) {

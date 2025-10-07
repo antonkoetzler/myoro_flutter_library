@@ -10,7 +10,7 @@ final class _SideTitle extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
-    final style = context.read<MyoroBarGraphStyle>();
+    final style = context.watch<MyoroBarGraphStyle>();
     final sideTitleTextStyle = style.sideTitleTextStyle ?? themeExtension.sideTitleTextStyle;
 
     return Padding(

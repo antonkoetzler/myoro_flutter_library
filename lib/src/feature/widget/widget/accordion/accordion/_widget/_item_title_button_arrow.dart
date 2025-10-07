@@ -9,7 +9,7 @@ final class _ItemTitleButtonArrow<T> extends StatelessWidget {
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
-    final style = context.read<MyoroAccordionStyle>();
+    final style = context.watch<MyoroAccordionStyle>();
     final itemTitleButtonArrowAnimationDuration =
         style.itemTitleButtonArrowAnimationDuration ?? themeExtension.itemTitleButtonArrowAnimationDuration;
     final itemTitleButtonArrowAnimationCurve =

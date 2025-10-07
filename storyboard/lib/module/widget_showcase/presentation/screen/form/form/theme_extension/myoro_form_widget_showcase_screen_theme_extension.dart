@@ -22,11 +22,9 @@ final class MyoroFormWidgetShowcaseScreenThemeExtension
 
   const MyoroFormWidgetShowcaseScreenThemeExtension({required this.kittyBorderRadius, required this.kittySize});
 
-  // coverage:ignore-start
   MyoroFormWidgetShowcaseScreenThemeExtension.fake()
     : kittyBorderRadius = myoroFake<BorderRadius>(),
       kittySize = faker.randomGenerator.decimal(scale: 50);
-  // coverage:ignore-end
 
   MyoroFormWidgetShowcaseScreenThemeExtension.builder()
     : kittyBorderRadius = BorderRadius.circular(kMyoroBorderRadius),

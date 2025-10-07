@@ -10,7 +10,7 @@ final class _ItemTitleButton<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
-    final accordionStyle = context.read<MyoroAccordionStyle>();
+    final accordionStyle = context.watch<MyoroAccordionStyle>();
     final itemTitleButtonSpacing =
         accordionStyle.itemTitleButtonSpacing ?? accordionThemeExtension.itemTitleButtonSpacing;
     final itemTitleButtonTitleTextStyle =

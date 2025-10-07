@@ -21,7 +21,6 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
     this.constraints,
   });
 
-  // coverage:ignore-start
   MyoroCardThemeExtension.fake()
     : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
@@ -30,7 +29,6 @@ class MyoroCardThemeExtension extends ThemeExtension<MyoroCardThemeExtension>
       titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
-  // coverage:ignore-end
 
   MyoroCardThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : backgroundColor = colorScheme.onPrimary.withValues(alpha: 0.1),

@@ -13,11 +13,9 @@ class MyoroGroupCheckboxConfiguration with _$MyoroGroupCheckboxConfigurationMixi
 
   const MyoroGroupCheckboxConfiguration({this.direction = directionDefaultValue, this.onChanged});
 
-  // coverage:ignore-start
   MyoroGroupCheckboxConfiguration.fake()
     : direction = myoroFake<Axis>(),
       onChanged = faker.randomGenerator.boolean() ? ((_, _) {}) : null;
-  // coverage:ignore-end
 
   /// Direction that the checkboxes will built in.
   final Axis direction;

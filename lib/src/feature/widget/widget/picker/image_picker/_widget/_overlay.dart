@@ -9,7 +9,7 @@ final class _Overlay extends StatelessWidget {
   @override
   Widget build(context) {
     final imagePickerThemeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
-    final style = context.read<MyoroImagePickerStyle>();
+    final style = context.watch<MyoroImagePickerStyle>();
     final overlayCursor = style.overlayCursor ?? imagePickerThemeExtension.overlayCursor;
     final overlayUnselectedImageStateIconConfiguration =
         style.overlayUnselectedImageStateIconConfiguration ??
@@ -27,11 +27,10 @@ final class _Overlay extends StatelessWidget {
     return MyoroButton(
       configuration: MyoroButtonConfiguration(
         cursor: overlayCursor,
-        // coverage:ignore-start
+
         onTapUp: (_) => MyoroPlatformHelper.isMobile
             ? _SelectionTypeModal.show(context, viewModel)
             : openPickerAndUpdateSelectedImage,
-        // coverage:ignore-end
       ),
       style: const MyoroButtonStyle().copyWith(
         backgroundIdleColor: overlayIdleBackgroundColor,

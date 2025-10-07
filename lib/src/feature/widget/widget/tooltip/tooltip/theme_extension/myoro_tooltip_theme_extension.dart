@@ -13,9 +13,7 @@ class MyoroTooltipThemeExtension extends ThemeExtension<MyoroTooltipThemeExtensi
     implements MyoroTooltipStyle {
   const MyoroTooltipThemeExtension({this.margin});
 
-  // coverage:ignore-start
   MyoroTooltipThemeExtension.fake() : margin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
-  // coverage:ignore-end
 
   const MyoroTooltipThemeExtension.builder() : margin = EdgeInsets.zero;
 

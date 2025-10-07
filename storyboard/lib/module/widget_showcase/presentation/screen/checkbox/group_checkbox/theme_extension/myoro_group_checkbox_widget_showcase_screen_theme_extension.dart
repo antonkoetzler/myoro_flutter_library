@@ -19,7 +19,6 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension
     required this.spacingOptionsMaxValue,
   });
 
-  // coverage:ignore-start
   factory MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension.fake() {
     const spacingOptionsMinValue = 0.0;
 
@@ -28,7 +27,6 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension
       spacingOptionsMaxValue: faker.randomGenerator.decimal(scale: 100, min: spacingOptionsMinValue),
     );
   }
-  // coverage:ignore-end
 
   const MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension.builder()
     : spacingOptionsMinValue = 0,

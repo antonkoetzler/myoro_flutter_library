@@ -18,14 +18,12 @@ class MyoroSliderStyle with _$MyoroSliderStyleMixin {
 
   const MyoroSliderStyle({this.indicatorTextStyle, this.indicatorTextAlignment});
 
-  // coverage:ignore-start
   factory MyoroSliderStyle.fake() {
     return MyoroSliderStyle(
       indicatorTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       indicatorTextAlignment: faker.randomGenerator.boolean() ? myoroFake<TextAlign>() : null,
     );
   }
-  // coverage:ignore-end
 
   /// Text style of indicators on the left, right, & bottom of the slider (i.e. [MyoroSlider.footerIndicatorTextBuilder]) .
   final TextStyle? indicatorTextStyle;

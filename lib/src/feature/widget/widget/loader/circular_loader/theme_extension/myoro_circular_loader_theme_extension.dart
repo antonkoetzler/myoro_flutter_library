@@ -13,11 +13,9 @@ class MyoroCircularLoaderThemeExtension extends ThemeExtension<MyoroCircularLoad
     implements MyoroCircularLoaderStyle {
   const MyoroCircularLoaderThemeExtension({this.color, this.size});
 
-  // coverage:ignore-start
   MyoroCircularLoaderThemeExtension.fake()
     : color = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       size = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null;
-  // coverage:ignore-end
 
   MyoroCircularLoaderThemeExtension.builder(ColorScheme colorScheme)
     : color = colorScheme.onPrimary,

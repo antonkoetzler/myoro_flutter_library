@@ -10,16 +10,17 @@ class MyoroSingleDropdownController<T>
           MyoroSingleMenuController<T>,
           MyoroSingleDropdownViewModel<T>
         > {
+  /// Creates a new instance of [MyoroSingleDropdownController].
   MyoroSingleDropdownController({required MyoroSingleDropdownConfiguration<T> configuration})
     : super(configuration: configuration, viewModel: MyoroSingleDropdownViewModel(configuration));
 
   /// [ValueNotifier] of the selected item.
-  ValueNotifier<T?> get selectedItemNotifier {
-    return viewModel.state.menuController.selectedItemNotifier;
+  ValueNotifier<T?> get selectedItemController {
+    return viewModel.state.menuController.selectedItemController;
   }
 
-  /// Getter of [selectedItemNotifier]'s value.
+  /// Getter of [selectedItemController]'s value.
   T? get selectedItem {
-    return selectedItemNotifier.value;
+    return selectedItemController.value;
   }
 }

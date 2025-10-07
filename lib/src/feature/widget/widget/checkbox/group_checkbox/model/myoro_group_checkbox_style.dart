@@ -37,7 +37,6 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
     this.runSpacing,
   });
 
-  // coverage:ignore-start
   factory MyoroGroupCheckboxStyle.fake() {
     return MyoroGroupCheckboxStyle(
       checkboxActiveColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -50,7 +49,6 @@ class MyoroGroupCheckboxStyle extends MyoroCheckboxStyle with _$MyoroGroupCheckb
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
     );
   }
-  // coverage:ignore-end
 
   /// Cross axis spacing in between each checkbox.
   final double? runSpacing;

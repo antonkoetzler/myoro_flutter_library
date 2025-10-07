@@ -33,7 +33,6 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
     this.constraints,
   });
 
-  // coverage:ignore-start
   MyoroCardStyle.fake()
     : backgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       border = faker.randomGenerator.boolean() ? myoroFake<Border>() : null,
@@ -42,7 +41,6 @@ class MyoroCardStyle with _$MyoroCardStyleMixin {
       titleCardSpacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       constraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
-  // coverage:ignore-end
 
   /// Background color of the card.
   final Color? backgroundColor;

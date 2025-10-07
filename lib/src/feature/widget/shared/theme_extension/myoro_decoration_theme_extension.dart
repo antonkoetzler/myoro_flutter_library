@@ -31,7 +31,6 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
     this.borderRadius,
   });
 
-  // coverage:ignore-start
   MyoroDecorationThemeExtension.fake()
     : primaryIdleBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       primaryHoverBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -44,7 +43,6 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       borderColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null;
-  // coverage:ignore-end
 
   MyoroDecorationThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme)
     : primaryIdleBackgroundColor = colorScheme.primary,

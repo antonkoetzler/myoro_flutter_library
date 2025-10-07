@@ -10,7 +10,7 @@ final class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeExtension = context.resolveThemeExtension<MyoroButtonThemeExtension>();
-    final style = context.read<MyoroButtonStyle>();
+    final style = context.watch<MyoroButtonStyle>();
     final border = style.borderBuilder(_tapStatusEnum) ?? themeExtension.borderBuilder(_tapStatusEnum);
     final borderRadius = style.borderRadius ?? themeExtension.borderRadius;
     final backgroundColor =
