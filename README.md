@@ -14,33 +14,6 @@
 
 Please read the `example` folder's [`README.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/example/README.md) to get started with MFL
 
-1. Add MFL as a dependency in your <code>pubspec.yaml</code> with one of the 3 ways listed:
-
-``` yaml
-...
-
-dependencies:
-  ...
-
-  # Resolving from disk
-  myoro_flutter_library:
-    path: path/to/mfl
-
-  # Resolving from GitHub
-  myoro_flutter_library:
-    git:
-      url: git@github.com:antonkoetzler/myoro_flutter_library
-
-  # Resolving from https://pub.dev/
-  myoro_flutter_library: any
-
-...
-```
-
-2. Make sure your `MyoroApp` is your root widget:
-
-3. Enjoy!
-
 ## Resources
 
 1. [`Widgets.md`](https://github.com/antonkoetzler/myoro_flutter_library/blob/main/doc/Widgets.md): List of all `Widget`s provided;
