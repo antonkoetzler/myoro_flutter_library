@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.5.1
+
+- fix: `CHANGELOG.md`/`CHANGELOG.tmp` issue
+
 ## 2.4.1
 
 - fix: `ClipRRect` in `MyoroButton`
