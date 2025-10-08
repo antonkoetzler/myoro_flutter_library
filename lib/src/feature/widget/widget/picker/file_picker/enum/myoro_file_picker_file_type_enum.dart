@@ -1,5 +1,5 @@
 // Wrapper enum of the [FileType] enum of the file_picker package
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 import 'package:file_picker/file_picker.dart';
 
 /// to not have to download that package within the project

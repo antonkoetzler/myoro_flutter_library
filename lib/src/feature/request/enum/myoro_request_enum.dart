@@ -1,4 +1,4 @@
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 
 /// Enum used to manage the status of an asyncronous request.
 enum MyoroRequestEnum {

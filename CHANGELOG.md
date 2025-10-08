@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.5.3
+
+- chore: Improving pub.dev score
+
 ## 2.5.2
 
 - chore: Improving pub.dev score

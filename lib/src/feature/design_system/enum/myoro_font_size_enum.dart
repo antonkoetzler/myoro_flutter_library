@@ -1,4 +1,4 @@
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 
 /// Available font sizes that should be used.
 enum MyoroFontSizeEnum {

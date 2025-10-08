@@ -1,4 +1,4 @@
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum to distinguish if a [MyoroPieGraph] is a pie or donut.

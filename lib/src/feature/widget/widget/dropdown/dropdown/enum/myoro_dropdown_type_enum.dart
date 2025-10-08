@@ -1,4 +1,4 @@
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 
 /// Enum encapsulating every type of dropdown type that can be used in [MyoroDropdown].
 enum MyoroDropdownTypeEnum {

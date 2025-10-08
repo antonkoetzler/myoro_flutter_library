@@ -1,4 +1,4 @@
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Enum of [MyoroTableColumnWidthConfiguration].

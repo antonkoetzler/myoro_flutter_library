@@ -1,4 +1,4 @@
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/src/exports.dart';

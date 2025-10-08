@@ -1,4 +1,4 @@
-import 'package:faker/faker.dart';
+import 'package:faker/faker.dart' hide Color;
 
 /// Enum encapsulating the principle states of a tap.
 enum MyoroTapStatusEnum {

@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+
+// Conditional imports to avoid dbus dependency on Web
+import 'file_picker_web.dart' if (dart.library.io) 'file_picker_native.dart';
 
 part 'myoro_file_picker_state.dart';
 
