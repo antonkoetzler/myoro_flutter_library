@@ -9,7 +9,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     decorationThemeExtension,
     ..._createAppBarThemeExtensions(colorScheme),
     ..._createAccordionThemeExtensions(isDarkMode, colorScheme, textTheme),
-    ..._createButtonThemeExtensions(decorationThemeExtension),
+    ..._createButtonThemeExtensions(textTheme, decorationThemeExtension),
     ..._createCardThemeExtensions(colorScheme, textTheme),
     ..._createCarouselThemeExtensions(),
     ..._createCheckboxThemeExtensions(colorScheme, textTheme),
@@ -41,10 +41,13 @@ List<ThemeExtension> _createAccordionThemeExtensions(bool isDarkMode, ColorSchem
   return [MyoroAccordionThemeExtension.builder(isDarkMode, colorScheme, textTheme)];
 }
 
-List<ThemeExtension> _createButtonThemeExtensions(MyoroDecorationThemeExtension decorationThemeExtension) {
+List<ThemeExtension> _createButtonThemeExtensions(
+  TextTheme textTheme,
+  MyoroDecorationThemeExtension decorationThemeExtension,
+) {
   return [
     MyoroButtonThemeExtension.builder(decorationThemeExtension),
-    MyoroIconTextButtonThemeExtension.builder(decorationThemeExtension),
+    MyoroIconTextButtonThemeExtension.builder(textTheme, decorationThemeExtension),
   ];
 }
 

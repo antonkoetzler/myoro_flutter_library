@@ -26,6 +26,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       borderTapColor: Color.lerp(a?.borderTapColor, b?.borderTapColor, t),
       contentPadding: EdgeInsets.lerp(a?.contentPadding, b?.contentPadding, t),
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
+      textStyle: TextStyle.lerp(a?.textStyle, b?.textStyle, t),
     );
   }
 
@@ -43,6 +44,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
     super.borderTapColor,
     this.contentPadding,
     this.spacing,
+    this.textStyle,
   });
 
   factory MyoroIconTextButtonStyle.fake() {
@@ -60,6 +62,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
       borderTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      textStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
     );
   }
 
@@ -68,4 +71,7 @@ class MyoroIconTextButtonStyle extends MyoroButtonStyle with _$MyoroIconTextButt
 
   /// Spacing between the icon and text.
   final double? spacing;
+
+  /// [TextStyle] of the text.
+  final TextStyle? textStyle;
 }

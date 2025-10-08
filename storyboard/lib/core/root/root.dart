@@ -13,7 +13,7 @@ final class App extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: themeModeController,
-      builder: (_, ThemeMode themeMode, __) {
+      builder: (_, themeMode, __) {
         return MyoroApp(
           configuration: MyoroAppConfiguration(
             title: 'MFL Storyboard',

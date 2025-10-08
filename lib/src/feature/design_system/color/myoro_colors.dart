@@ -14,7 +14,7 @@ final class MyoroColors {
   static const green1 = Colors.green;
 
   /// Reds
-  static const red1 = Colors.red;
+  static const red1 = Color(0xFFE34234);
 
   /// Blues
   static const blue1 = Colors.lightBlue;

@@ -8,11 +8,13 @@ final class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return MyoroIconTextButton(
-      /// [MyoroInputConfiguration.validation] of [_Input].
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => _formNotifier.fetch(),
-        textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
+    return IntrinsicWidth(
+      child: MyoroIconTextButton(
+        style: const MyoroIconTextButtonStyle().bordered(context),
+        configuration: MyoroIconTextButtonConfiguration(
+          onTapUp: (_) => _formNotifier.fetch(),
+          textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
+        ),
       ),
     );
   }

@@ -22,10 +22,12 @@ class MyoroSnackBar extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final style = this.style;
     final themeExtension = context.resolveThemeExtension<MyoroSnackBarThemeExtension>();
     final borderWidth = style.borderWidth ?? themeExtension.borderWidth;
     final spacing = style.spacing ?? themeExtension.spacing ?? 0;
+    final primaryColor = style.primaryColor ?? themeExtension.primaryColor;
+    final padding = style.padding ?? themeExtension.padding ?? EdgeInsets.zero;
+    final borderRadius = style.borderRadius ?? themeExtension.borderRadius;
 
     final String message = configuration.message;
     final Widget? child = configuration.child;
@@ -33,14 +35,14 @@ class MyoroSnackBar extends StatelessWidget {
     return Provider.value(
       value: style,
       child: Container(
-        padding: style.padding,
         decoration: BoxDecoration(
-          color: style.primaryColor,
+          color: primaryColor,
           border: borderWidth == null
               ? null
               : Border.all(width: borderWidth, color: configuration.snackBarType.getColor(context)),
-          borderRadius: style.borderRadius,
+          borderRadius: borderRadius,
         ),
+        padding: padding,
         child: Row(
           spacing: spacing,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

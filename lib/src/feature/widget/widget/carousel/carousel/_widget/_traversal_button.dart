@@ -10,7 +10,7 @@ final class _TraversalButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final iconTextButtonStyle = const MyoroIconTextButtonStyle()..bordered(context);
+    final iconTextButtonStyle = const MyoroIconTextButtonStyle().bordered(context);
 
     return Align(
       alignment: _alignment,

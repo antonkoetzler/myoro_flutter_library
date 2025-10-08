@@ -137,7 +137,7 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
     return IgnorePointer(
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: begin, end: end, colors: [color, color.withOpacity(0.0)]),
+          gradient: LinearGradient(begin: begin, end: end, colors: [color, color.withValues(alpha: 0.0)]),
         ),
       ),
     );

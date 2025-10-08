@@ -13,7 +13,7 @@ class MyoroSingleAccordionConfiguration<T> extends MyoroAccordionConfiguration<T
     super.thumbVisibility,
     required super.titleBuilder,
     required super.contentBuilder,
-    required super.items,
+    super.items,
     this.selectedItem,
   });
 

@@ -21,6 +21,8 @@ mixin _$MyoroIconTextButtonStyleMixin {
     bool contentPaddingProvided = true,
     double? spacing,
     bool spacingProvided = true,
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
     Color? backgroundIdleColor,
     bool backgroundIdleColorProvided = true,
     Color? backgroundHoverColor,
@@ -47,6 +49,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
     return MyoroIconTextButtonStyle(
       contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
       backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
       backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
@@ -67,6 +70,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
         other.runtimeType == runtimeType &&
         other.contentPadding == self.contentPadding &&
         other.spacing == self.spacing &&
+        other.textStyle == self.textStyle &&
         other.backgroundIdleColor == self.backgroundIdleColor &&
         other.backgroundHoverColor == self.backgroundHoverColor &&
         other.backgroundTapColor == self.backgroundTapColor &&
@@ -85,6 +89,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
     return Object.hash(
       self.contentPadding,
       self.spacing,
+      self.textStyle,
       self.backgroundIdleColor,
       self.backgroundHoverColor,
       self.backgroundTapColor,
@@ -104,6 +109,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
       'MyoroIconTextButtonStyle(\n'
       '  contentPadding: ${self.contentPadding},\n'
       '  spacing: ${self.spacing},\n'
+      '  textStyle: ${self.textStyle},\n'
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
       '  backgroundHoverColor: ${self.backgroundHoverColor},\n'
       '  backgroundTapColor: ${self.backgroundTapColor},\n'

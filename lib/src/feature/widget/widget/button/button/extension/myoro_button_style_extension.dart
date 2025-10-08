@@ -37,6 +37,7 @@ extension MyoroButtonStyleExtension<T extends MyoroButtonStyle> on T {
     final borderWidth = decorationThemeExtension.borderWidth;
     final borderColor = decorationThemeExtension.borderColor;
     final borderColorProvided = borderColor != null;
+
     return copyWith(
           borderWidth: borderWidth,
           borderWidthProvided: borderWidth != null,

@@ -25,6 +25,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
     this.borderTapColor,
     this.contentPadding,
     this.spacing,
+    this.textStyle,
   });
 
   MyoroIconTextButtonThemeExtension.fake()
@@ -40,9 +41,10 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       borderHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null;
+      spacing = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
+      textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
 
-  MyoroIconTextButtonThemeExtension.builder(MyoroDecorationThemeExtension decorationThemeExtension)
+  MyoroIconTextButtonThemeExtension.builder(TextTheme textTheme, MyoroDecorationThemeExtension decorationThemeExtension)
     : backgroundIdleColor = decorationThemeExtension.primaryIdleBackgroundColor,
       backgroundHoverColor = decorationThemeExtension.primaryHoverBackgroundColor,
       backgroundTapColor = decorationThemeExtension.primaryTapBackgroundColor,
@@ -55,7 +57,8 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       borderHoverColor = null,
       borderTapColor = null,
       contentPadding = const EdgeInsets.all(kMyoroMultiplier * 2),
-      spacing = kMyoroMultiplier;
+      spacing = kMyoroMultiplier,
+      textStyle = textTheme.bodySmall;
 
   @override
   final Color? backgroundIdleColor;
@@ -97,6 +100,9 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
   final double? spacing;
 
   @override
+  final TextStyle? textStyle;
+
+  @override
   MyoroIconTextButtonThemeExtension lerp(covariant MyoroIconTextButtonThemeExtension? other, double t) {
     if (other is! MyoroIconTextButtonThemeExtension) return this;
     final style = MyoroIconTextButtonStyle.lerp(this, other, t);
@@ -114,6 +120,7 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       borderTapColor: style.borderTapColor,
       contentPadding: style.contentPadding,
       spacing: style.spacing,
+      textStyle: style.textStyle,
     );
   }
 }

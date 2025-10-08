@@ -19,7 +19,7 @@ final class _Text extends StatelessWidget {
     final maxLines = textConfiguration.maxLines;
     final overflow = textConfiguration.overflow;
     final alignment = textConfiguration.alignment;
-    final textStyle = textConfiguration.style;
+    final textStyle = textConfiguration.style ?? themeExtension.textStyle;
 
     return Expanded(
       child: Text(

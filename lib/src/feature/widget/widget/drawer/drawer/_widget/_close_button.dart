@@ -11,7 +11,7 @@ final class _CloseButton extends StatelessWidget {
     final configuration = context.read<MyoroDrawerConfiguration>();
     final closeButtonIcon = configuration.closeButtonIcon;
 
-    final iconTextButtonStyle = const MyoroIconTextButtonStyle()..bordered(context);
+    final iconTextButtonStyle = const MyoroIconTextButtonStyle().bordered(context);
 
     return MyoroIconTextButton(
       style: iconTextButtonStyle,

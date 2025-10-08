@@ -44,6 +44,8 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
     bool contentPaddingProvided = true,
     double? spacing,
     bool spacingProvided = true,
+    TextStyle? textStyle,
+    bool textStyleProvided = true,
   }) {
     return MyoroIconTextButtonThemeExtension(
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
@@ -59,6 +61,7 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       borderTapColor: borderTapColorProvided ? (borderTapColor ?? self.borderTapColor) : null,
       contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
+      textStyle: textStyleProvided ? (textStyle ?? self.textStyle) : null,
     );
   }
 
@@ -78,7 +81,8 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
         other.borderHoverColor == self.borderHoverColor &&
         other.borderTapColor == self.borderTapColor &&
         other.contentPadding == self.contentPadding &&
-        other.spacing == self.spacing;
+        other.spacing == self.spacing &&
+        other.textStyle == self.textStyle;
   }
 
   @override
@@ -97,6 +101,7 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       self.borderTapColor,
       self.contentPadding,
       self.spacing,
+      self.textStyle,
     );
   }
 
@@ -116,5 +121,6 @@ mixin _$MyoroIconTextButtonThemeExtensionMixin on ThemeExtension<MyoroIconTextBu
       '  borderTapColor: ${self.borderTapColor},\n'
       '  contentPadding: ${self.contentPadding},\n'
       '  spacing: ${self.spacing},\n'
+      '  textStyle: ${self.textStyle},\n'
       ');';
 }

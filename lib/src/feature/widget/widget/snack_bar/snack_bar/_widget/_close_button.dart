@@ -14,6 +14,7 @@ final class _CloseButton extends StatelessWidget {
         style.closeButtonIconConfiguration ?? snackBarThemeExtension.closeButtonIconConfiguration;
 
     final getColor = _snackBarType.getColor;
+    final color = getColor(context);
 
     return MyoroIconTextButton(
       configuration: MyoroIconTextButtonConfiguration(
@@ -22,10 +23,10 @@ final class _CloseButton extends StatelessWidget {
       ),
       style: const MyoroIconTextButtonStyle().copyWith(
         borderWidth: kMyoroBorderWidth,
-        borderIdleColor: getColor(context),
-        borderHoverColor: getColor(context),
-        borderTapColor: getColor(context),
-        contentIdleColor: style.primaryColor ?? snackBarThemeExtension.primaryColor,
+        borderIdleColor: color,
+        borderHoverColor: color,
+        borderTapColor: color,
+        contentIdleColor: color,
       ),
     );
   }

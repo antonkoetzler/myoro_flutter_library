@@ -36,8 +36,8 @@ final class _Row<T> extends StatelessWidget {
       ),
       style: const MyoroButtonStyle().copyWith(
         backgroundIdleColor: context.colorScheme.primary,
-        backgroundHoverColor: context.colorScheme.primary.withOpacity(0.8),
-        backgroundTapColor: context.colorScheme.primary.withOpacity(0.6),
+        backgroundHoverColor: context.colorScheme.primary.withValues(alpha: 0.8),
+        backgroundTapColor: context.colorScheme.primary.withValues(alpha: 0.6),
         borderRadius: BorderRadius.zero,
       ),
       builder: (_, MyoroTapStatusEnum tapStatusEnum) {

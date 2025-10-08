@@ -10,8 +10,8 @@ abstract class MyoroAccordionConfiguration<T> {
     this.thumbVisibility = thumbVisibilityDefaultValue,
     required this.titleBuilder,
     required this.contentBuilder,
-    required this.items,
-  }) : assert(items.length > 0, '[MyoroAccordionConfiguration]: [items] cannot be empty.');
+    this.items = const {},
+  });
 
   /// [Scrollbar.thumbVisibility]
   final bool thumbVisibility;

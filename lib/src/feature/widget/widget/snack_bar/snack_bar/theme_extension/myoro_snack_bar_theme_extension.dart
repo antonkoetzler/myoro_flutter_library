@@ -44,54 +44,43 @@ class MyoroSnackBarThemeExtension extends ThemeExtension<MyoroSnackBarThemeExten
       attentionBorderColor = MyoroColors.blue1,
       successBorderColor = MyoroColors.green1,
       errorBorderColor = MyoroColors.red1,
-      borderWidth = kMyoroBorderWidth * 2,
+      borderWidth = kMyoroBorderWidth,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       padding = const EdgeInsets.all(kMyoroMultiplier * 2.5),
       spacing = kMyoroMultiplier * 2.5,
       messageTextStyle = textTheme.bodySmall!,
       closeButtonIconConfiguration = const MyoroIconConfiguration(icon: Icons.close, size: kMyoroMultiplier * 3.75);
 
-  /// Background color of the snack bar.
   @override
   final Color? primaryColor;
 
-  /// [MyoroSnackBarTypeEnum.standard].
   @override
   final Color? standardBorderColor;
 
-  /// [MyoroSnackBarTypeEnum.attention].
   @override
   final Color? attentionBorderColor;
 
-  /// [MyoroSnackBarTypeEnum.success].
   @override
   final Color? successBorderColor;
 
-  /// [MyoroSnackBarTypeEnum.error].
   @override
   final Color? errorBorderColor;
 
-  /// Border of the snack bar.
   @override
   final double? borderWidth;
 
-  /// Border radius of the snack bar.
   @override
   final BorderRadius? borderRadius;
 
-  /// Padding of the content of the snack bar.
   @override
   final EdgeInsets? padding;
 
-  /// Spacing between [_Message]/[MyoroSnackBar.child] & [_CloseButton].
   @override
   final double? spacing;
 
-  /// Text style of [_Message].
   @override
   final TextStyle? messageTextStyle;
 
-  /// [MyoroIconConfiguration] of [_CloseButton].
   @override
   final MyoroIconConfiguration? closeButtonIconConfiguration;
 

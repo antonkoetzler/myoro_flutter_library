@@ -74,6 +74,8 @@ final class _BaseState<T> extends State<_Base<T>> {
     final items = configuration.items;
     final thumbVisibility = configuration.thumbVisibility;
 
+    if (items.isEmpty) return const SizedBox.shrink();
+
     return MultiProvider(
       providers: [
         InheritedProvider.value(value: _viewModel),

@@ -13,18 +13,33 @@ part 'main_screen_theme_extension.g.dart';
 @myoroThemeExtension
 final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExtension>
     with _$MainScreenThemeExtensionMixin {
-  const MainScreenThemeExtension({required this.spacing});
+  const MainScreenThemeExtension({required this.spacing, required this.widgetListingAccordionSearchBarMargin});
 
-  MainScreenThemeExtension.fake() : spacing = faker.randomGenerator.decimal(scale: 20);
+  MainScreenThemeExtension.fake()
+    : spacing = faker.randomGenerator.decimal(scale: 20),
+      widgetListingAccordionSearchBarMargin = myoroFake<EdgeInsets>();
 
-  const MainScreenThemeExtension.builder() : spacing = kMyoroMultiplier * 2;
+  const MainScreenThemeExtension.builder()
+    : spacing = kMyoroMultiplier * 2,
+      widgetListingAccordionSearchBarMargin = const EdgeInsets.all(kMyoroMultiplier * 2);
 
   /// General spacing of [Widget]s.
   final double spacing;
 
+  /// [EdgeInsets] margins of the search bar.
+  final EdgeInsets widgetListingAccordionSearchBarMargin;
+
   @override
   MainScreenThemeExtension lerp(covariant ThemeExtension<MainScreenThemeExtension>? other, double t) {
     if (other is! MainScreenThemeExtension) return this;
-    return copyWith(spacing: lerpDouble(spacing, other.spacing, t));
+
+    return copyWith(
+      spacing: lerpDouble(spacing, other.spacing, t),
+      widgetListingAccordionSearchBarMargin: EdgeInsets.lerp(
+        widgetListingAccordionSearchBarMargin,
+        other.widgetListingAccordionSearchBarMargin,
+        t,
+      ),
+    );
   }
 }
