@@ -20,11 +20,13 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
     MyoroDropdownTypeEnum? dropdownType,
     MyoroSearchInputMenuConfiguration<T>? menuConfiguration,
     MyoroInputDropdownSelectedItemBuilder<T>? selectedItemBuilder,
+    String? label,
   }) {
     return MyoroSearchInputConfiguration(
       dropdownType: dropdownType ?? self.dropdownType,
       menuConfiguration: menuConfiguration ?? self.menuConfiguration,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
+      label: label ?? self.label,
     );
   }
 
@@ -34,12 +36,13 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
         other.runtimeType == runtimeType &&
         other.dropdownType == self.dropdownType &&
         other.menuConfiguration == self.menuConfiguration &&
-        other.selectedItemBuilder == self.selectedItemBuilder;
+        other.selectedItemBuilder == self.selectedItemBuilder &&
+        other.label == self.label;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.dropdownType, self.menuConfiguration, self.selectedItemBuilder);
+    return Object.hash(self.dropdownType, self.menuConfiguration, self.selectedItemBuilder, self.label);
   }
 
   @override
@@ -48,5 +51,6 @@ mixin _$MyoroSearchInputConfigurationMixin<T> {
       '  dropdownType: ${self.dropdownType},\n'
       '  menuConfiguration: ${self.menuConfiguration},\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
+      '  label: ${self.label},\n'
       ');';
 }

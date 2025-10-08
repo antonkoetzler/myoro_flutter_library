@@ -27,6 +27,7 @@ final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
     _controller = MyoroSingleInputDropdownController<T>(
       inputController: inputController,
       configuration: MyoroSingleInputDropdownConfiguration(
+        label: _configuration.label,
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: () => _configuration.menuConfiguration.request(inputController.text),
           onEndReachedRequest: _configuration.menuConfiguration.onEndReachedRequest,

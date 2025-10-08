@@ -10,6 +10,7 @@ class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin
     this.dropdownType = MyoroDropdownConfiguration.dropdownTypeDefaultValue,
     required this.menuConfiguration,
     required this.selectedItemBuilder,
+    this.label = kMyoroEmptyString,
   });
 
   /// Dropdown type.
@@ -20,4 +21,7 @@ class MyoroSearchInputConfiguration<T> with _$MyoroSearchInputConfigurationMixin
 
   /// Builder of the [String] displayed when a [T] item is selected.
   final MyoroInputDropdownSelectedItemBuilder<T> selectedItemBuilder;
+
+  /// Label of the input.
+  final String label;
 }

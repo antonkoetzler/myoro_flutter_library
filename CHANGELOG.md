@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.5.4
+
+- feature: `MyoroSearchInputConfiguration.label`
+
 ## 2.5.3
 
 - chore: Improving pub.dev score
