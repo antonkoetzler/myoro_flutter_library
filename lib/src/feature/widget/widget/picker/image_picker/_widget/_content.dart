@@ -34,7 +34,6 @@ final class _Content extends StatelessWidget {
                 if (selectedImageIsNotNull) ...[
                   Image.file(File(selectedImage), width: size?.width, height: size?.height, fit: BoxFit.cover),
                 ],
-
                 Positioned.fill(child: _Overlay(selectedImageIsNotNull)),
               ],
             ),

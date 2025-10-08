@@ -1,6 +1,7 @@
 {
   "myoroFilePickerPickerButtonText": "Browse",
   "myoroFilePickerSelectedFileUnselectedText": "No file selected.",
+  "myoroFilePickerDefaultDialogTitle": "Select File",
 
   "myoroImagePickerSelectionTypeModalText": "Select image source",
   "myoroImagePickerSelectionTypeModalButtonCameraText": "Open camera",

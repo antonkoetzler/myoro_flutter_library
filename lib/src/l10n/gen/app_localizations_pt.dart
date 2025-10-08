@@ -15,6 +15,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get myoroFilePickerSelectedFileUnselectedText => 'Nenhum arquivo selecionado.';
 
   @override
+  String get myoroFilePickerDefaultDialogTitle => 'Selecionar Arquivo';
+
+  @override
   String get myoroImagePickerSelectionTypeModalText => 'Selecionar origem da imagem';
 
   @override

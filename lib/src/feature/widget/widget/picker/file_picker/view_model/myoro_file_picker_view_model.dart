@@ -1,5 +1,5 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_file_picker_state.dart';
@@ -28,14 +28,22 @@ final class MyoroFilePickerViewModel {
     final title = configuration.title;
     final fileType = configuration.fileType;
     final allowedExtensions = configuration.allowedExtensions;
+
     final result = await FilePicker.platform.pickFiles(
-      dialogTitle: title,
+      dialogTitle: title!,
       allowMultiple: false,
       type: fileType.filePickerValue,
       allowedExtensions: allowedExtensions,
     );
+
     if (result != null) {
-      selectedFileNotifier.value = MyoroFilePickerPlatformFile.fromPlatformFile(result.files.first);
+      final file = result.files.first;
+      selectedFileNotifier.value = MyoroFilePickerPlatformFile(
+        name: file.name,
+        size: file.size,
+        bytes: file.bytes!,
+        path: file.path,
+      );
     }
   }
 }

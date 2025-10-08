@@ -105,6 +105,12 @@ abstract class AppLocalizations {
   /// **'No file selected.'**
   String get myoroFilePickerSelectedFileUnselectedText;
 
+  /// No description provided for @myoroFilePickerDefaultDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select File'**
+  String get myoroFilePickerDefaultDialogTitle;
+
   /// No description provided for @myoroImagePickerSelectionTypeModalText.
   ///
   /// In en, this message translates to:

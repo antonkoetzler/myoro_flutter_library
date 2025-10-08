@@ -19,10 +19,18 @@ final class MyoroFilePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Create configuration with localized default title
+    final localizedConfiguration = MyoroFilePickerConfiguration(
+      title: configuration.title ?? context.localization.myoroFilePickerDefaultDialogTitle,
+      fileType: configuration.fileType,
+      allowedExtensions: configuration.allowedExtensions,
+      onChanged: configuration.onChanged,
+    );
+
     return MultiProvider(
       providers: [
         InheritedProvider.value(value: style),
-        InheritedProvider(create: (_) => MyoroFilePickerViewModel(configuration)),
+        InheritedProvider(create: (_) => MyoroFilePickerViewModel(localizedConfiguration)),
       ],
       child: const _Content(),
     );
