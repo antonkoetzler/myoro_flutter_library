@@ -45,6 +45,9 @@ final class WidgetShowcaseModule implements Module {
       // Screens
       const MyoroScreenWidgetShowcaseScreenThemeExtension.builder(),
 
+      // Scrollables
+      const MyoroScrollablesWidgetShowcaseScreenThemeExtension.builder(),
+
       // Sliders
       const MyoroSlidersWidgetShowcaseScreenThemeExtension.builder(),
       // ######################################

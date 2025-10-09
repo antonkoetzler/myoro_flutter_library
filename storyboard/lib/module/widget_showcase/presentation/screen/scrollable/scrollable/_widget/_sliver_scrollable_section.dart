@@ -2,12 +2,14 @@ part of '../myoro_scrollables_widget_showcase_screen.dart';
 
 /// Sliver scrollable section.
 final class _SliverScrollableSection extends StatelessWidget {
-  const _SliverScrollableSection({required this.viewModel});
-
-  final MyoroScrollableWidgetShowcaseViewModel viewModel;
+  const _SliverScrollableSection();
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final sliverConfiguration = viewModel.sliverConfiguration;
+    final style = viewModel.style;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,8 +23,8 @@ final class _SliverScrollableSection extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: MyoroSliverScrollable(
-              configuration: viewModel.sliverConfiguration,
-              style: viewModel.style,
+              configuration: sliverConfiguration,
+              style: style,
               slivers: [
                 SliverAppBar(title: const Text('Sliver App Bar'), floating: true, backgroundColor: Colors.purple[100]),
                 SliverList(

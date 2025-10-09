@@ -12,19 +12,30 @@ part 'widget_showcase_theme_extension.g.dart';
 @myoroThemeExtension
 final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseThemeExtension>
     with _$WidgetShowcaseThemeExtensionMixin {
-  const WidgetShowcaseThemeExtension({required this.spacing, required this.labelTextStyle});
+  const WidgetShowcaseThemeExtension({
+    required this.spacing,
+    required this.labelTextStyle,
+    required this.contentPadding,
+  });
 
   WidgetShowcaseThemeExtension.fake()
     : spacing = faker.randomGenerator.decimal(scale: 20),
-      labelTextStyle = myoroFake<TextStyle>();
+      labelTextStyle = myoroFake<TextStyle>(),
+      contentPadding = myoroFake<EdgeInsets>();
 
-  WidgetShowcaseThemeExtension.builder(TextTheme textTheme) : spacing = 10, labelTextStyle = textTheme.titleLarge!;
+  WidgetShowcaseThemeExtension.builder(TextTheme textTheme)
+    : spacing = 10,
+      labelTextStyle = textTheme.titleLarge!,
+      contentPadding = const EdgeInsets.all(10);
 
   /// Spacing of [Widget]s.
   final double spacing;
 
   /// [TextStyle] of the label (title) of a widget showcase option.
   final TextStyle labelTextStyle;
+
+  /// Content [EdgeInsets].
+  final EdgeInsets contentPadding;
 
   @override
   ThemeExtension<WidgetShowcaseThemeExtension> lerp(
@@ -35,6 +46,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
     return copyWith(
       spacing: lerpDouble(spacing, other.spacing, t),
       labelTextStyle: TextStyle.lerp(labelTextStyle, other.labelTextStyle, t),
+      contentPadding: EdgeInsets.lerp(contentPadding, other.contentPadding, t),
     );
   }
 }

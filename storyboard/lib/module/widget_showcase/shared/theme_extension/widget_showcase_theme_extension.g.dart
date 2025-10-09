@@ -17,10 +17,11 @@ mixin _$WidgetShowcaseThemeExtensionMixin on ThemeExtension<WidgetShowcaseThemeE
   WidgetShowcaseThemeExtension get self => this as WidgetShowcaseThemeExtension;
 
   @override
-  WidgetShowcaseThemeExtension copyWith({double? spacing, TextStyle? labelTextStyle}) {
+  WidgetShowcaseThemeExtension copyWith({double? spacing, TextStyle? labelTextStyle, EdgeInsets? contentPadding}) {
     return WidgetShowcaseThemeExtension(
       spacing: spacing ?? self.spacing,
       labelTextStyle: labelTextStyle ?? self.labelTextStyle,
+      contentPadding: contentPadding ?? self.contentPadding,
     );
   }
 
@@ -29,12 +30,13 @@ mixin _$WidgetShowcaseThemeExtensionMixin on ThemeExtension<WidgetShowcaseThemeE
     return other is WidgetShowcaseThemeExtension &&
         other.runtimeType == runtimeType &&
         other.spacing == self.spacing &&
-        other.labelTextStyle == self.labelTextStyle;
+        other.labelTextStyle == self.labelTextStyle &&
+        other.contentPadding == self.contentPadding;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.spacing, self.labelTextStyle);
+    return Object.hash(self.spacing, self.labelTextStyle, self.contentPadding);
   }
 
   @override
@@ -42,5 +44,6 @@ mixin _$WidgetShowcaseThemeExtensionMixin on ThemeExtension<WidgetShowcaseThemeE
       'WidgetShowcaseThemeExtension(\n'
       '  spacing: ${self.spacing},\n'
       '  labelTextStyle: ${self.labelTextStyle},\n'
+      '  contentPadding: ${self.contentPadding},\n'
       ');';
 }

@@ -6,12 +6,14 @@ final class _GradientColorOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final gradientColor = state.gradientColor;
 
     return ColorWidgetShowcaseOption(
       label: 'Gradient Color',
-      selectedColor: viewModel.gradientColor,
-      onChanged: (Color? color) => viewModel.setGradientColor(color ?? Colors.white),
+      selectedColor: gradientColor,
+      onChanged: (Color? color) => state.gradientColor = color ?? Colors.white,
     );
   }
 }

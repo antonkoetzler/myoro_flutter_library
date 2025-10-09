@@ -6,20 +6,22 @@ final class _BorderRadiusOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final borderRadius = state.borderRadius;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text('Border Radius'),
         Slider(
-          value: _getBorderRadiusValue(viewModel.borderRadius),
+          value: _getBorderRadiusValue(borderRadius),
           min: 0.0,
           max: 20.0,
           divisions: 20,
-          label: '${_getBorderRadiusValue(viewModel.borderRadius).round()}px',
+          label: '${_getBorderRadiusValue(borderRadius).round()}px',
           onChanged: (value) {
-            viewModel.setBorderRadius(value == 0 ? null : BorderRadius.all(Radius.circular(value)));
+            state.borderRadius = value == 0 ? null : BorderRadius.all(Radius.circular(value));
           },
         ),
       ],

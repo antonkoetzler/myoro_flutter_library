@@ -6,13 +6,15 @@ final class _GradientEnabledOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final gradientEnabled = state.gradientEnabled;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text('Gradient Overlay', style: TextStyle(fontWeight: FontWeight.bold)),
-        Switch(value: viewModel.gradientEnabled, onChanged: viewModel.setGradientEnabled),
+        Switch(value: gradientEnabled, onChanged: (value) => state.gradientEnabled = value),
       ],
     );
   }

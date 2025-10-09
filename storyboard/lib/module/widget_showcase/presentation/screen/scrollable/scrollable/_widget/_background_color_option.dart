@@ -6,12 +6,14 @@ final class _BackgroundColorOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final backgroundColor = state.backgroundColor;
 
     return ColorWidgetShowcaseOption(
       label: 'Background Color',
-      selectedColor: viewModel.backgroundColor,
-      onChanged: viewModel.setBackgroundColor,
+      selectedColor: backgroundColor,
+      onChanged: (color) => state.backgroundColor = color,
     );
   }
 }

@@ -16,22 +16,27 @@ final class _ScrollableShowcase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MyoroScrollableWidgetShowcaseViewModel>(
-      builder: (context, viewModel, child) {
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final spacing = widgetShowcaseThemeExtension.spacing;
+    final contentPadding = widgetShowcaseThemeExtension.contentPadding;
+
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+
+    return ListenableBuilder(
+      listenable: state,
+      builder: (_, _) {
         return SingleChildScrollView(
-          padding: const EdgeInsets.all(16.0),
+          padding: contentPadding,
           child: Column(
+            spacing: spacing,
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              _SingleChildScrollableSection(viewModel: viewModel),
-              const SizedBox(height: 40),
-              _ListScrollableSection(viewModel: viewModel),
-              const SizedBox(height: 40),
-              _GridScrollableSection(viewModel: viewModel),
-              const SizedBox(height: 40),
-              _SliverScrollableSection(viewModel: viewModel),
-              const SizedBox(height: 40),
+            children: const [
+              Flexible(child: _SingleChildScrollableSection()),
+              // _ListScrollableSection(viewModel: viewModel),
+              // _GridScrollableSection(viewModel: viewModel),
+              // _SliverScrollableSection(viewModel: viewModel),
             ],
           ),
         );

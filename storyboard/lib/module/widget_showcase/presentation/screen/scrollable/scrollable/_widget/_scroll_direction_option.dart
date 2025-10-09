@@ -6,12 +6,14 @@ final class _ScrollDirectionOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final scrollDirection = state.scrollDirection;
 
     return AxisWidgetShowcaseOption(
       label: 'Scroll Direction',
-      initialDirection: viewModel.scrollDirection,
-      onChanged: (Axis? value) => viewModel.setScrollDirection(value ?? Axis.vertical),
+      initialDirection: scrollDirection,
+      onChanged: (Axis? value) => state.scrollDirection = value ?? Axis.vertical,
     );
   }
 }

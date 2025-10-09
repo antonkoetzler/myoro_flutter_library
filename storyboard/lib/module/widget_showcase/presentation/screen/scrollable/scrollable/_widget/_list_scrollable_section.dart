@@ -2,12 +2,14 @@ part of '../myoro_scrollables_widget_showcase_screen.dart';
 
 /// List scrollable section.
 final class _ListScrollableSection extends StatelessWidget {
-  const _ListScrollableSection({required this.viewModel});
-
-  final MyoroScrollableWidgetShowcaseViewModel viewModel;
+  const _ListScrollableSection();
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final listConfiguration = viewModel.listConfiguration;
+    final style = viewModel.style;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,8 +23,8 @@ final class _ListScrollableSection extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: MyoroListScrollable(
-              configuration: viewModel.listConfiguration,
-              style: viewModel.style,
+              configuration: listConfiguration,
+              style: style,
               children: List.generate(
                 20,
                 (index) => Container(

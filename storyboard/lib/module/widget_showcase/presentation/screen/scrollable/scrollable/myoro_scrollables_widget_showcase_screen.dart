@@ -37,7 +37,7 @@ final class MyoroScrollablesWidgetShowcaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InheritedProvider(
-      create: (_) => MyoroScrollableWidgetShowcaseViewModel(),
+      create: (_) => MyoroScrollablesWidgetShowcaseScreenViewModel(),
       child: const WidgetShowcaseScreen(
         configuration: WidgetShowcaseScreenConfiguration(
           widgetName: 'MyoroScrollable Widgets',

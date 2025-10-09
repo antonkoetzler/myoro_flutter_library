@@ -6,20 +6,22 @@ final class _PaddingOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final padding = state.padding;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text('Padding'),
         Slider(
-          value: _getPaddingValue(viewModel.padding),
+          value: _getPaddingValue(padding),
           min: 0.0,
           max: 32.0,
           divisions: 16,
-          label: '${_getPaddingValue(viewModel.padding).round()}px',
+          label: '${_getPaddingValue(padding).round()}px',
           onChanged: (value) {
-            viewModel.setPadding(value == 0 ? null : EdgeInsets.all(value));
+            state.padding = value == 0 ? null : EdgeInsets.all(value);
           },
         ),
       ],

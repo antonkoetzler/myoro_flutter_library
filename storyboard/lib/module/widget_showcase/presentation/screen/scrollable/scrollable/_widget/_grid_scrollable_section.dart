@@ -2,12 +2,14 @@ part of '../myoro_scrollables_widget_showcase_screen.dart';
 
 /// Grid scrollable section.
 final class _GridScrollableSection extends StatelessWidget {
-  const _GridScrollableSection({required this.viewModel});
-
-  final MyoroScrollableWidgetShowcaseViewModel viewModel;
+  const _GridScrollableSection();
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final gridConfiguration = viewModel.gridConfiguration;
+    final style = viewModel.style;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,8 +23,8 @@ final class _GridScrollableSection extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: MyoroGridScrollable(
-              configuration: viewModel.gridConfiguration,
-              style: viewModel.style,
+              configuration: gridConfiguration,
+              style: style,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 1.5,

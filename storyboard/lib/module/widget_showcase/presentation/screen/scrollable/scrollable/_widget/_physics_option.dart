@@ -6,7 +6,9 @@ final class _PhysicsOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final physics = state.physics;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -14,7 +16,7 @@ final class _PhysicsOption extends StatelessWidget {
         const Text('Scroll Physics', style: TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         DropdownButton<ScrollPhysics?>(
-          value: viewModel.physics,
+          value: physics,
           hint: const Text('Default'),
           isExpanded: true,
           items: const [
@@ -23,9 +25,7 @@ final class _PhysicsOption extends StatelessWidget {
             DropdownMenuItem<ScrollPhysics?>(value: ClampingScrollPhysics(), child: Text('Clamping')),
             DropdownMenuItem<ScrollPhysics?>(value: NeverScrollableScrollPhysics(), child: Text('Never Scrollable')),
           ],
-          onChanged: (ScrollPhysics? value) {
-            viewModel.setPhysics(value);
-          },
+          onChanged: (ScrollPhysics? value) => state.physics = value,
         ),
       ],
     );

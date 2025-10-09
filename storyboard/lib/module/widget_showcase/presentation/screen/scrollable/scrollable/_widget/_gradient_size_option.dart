@@ -6,18 +6,20 @@ final class _GradientSizeOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final gradientSize = state.gradientSize;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Gradient Size: ${viewModel.gradientSize.round()}px', style: const TextStyle(fontWeight: FontWeight.bold)),
+        Text('Gradient Size: ${gradientSize.round()}px', style: const TextStyle(fontWeight: FontWeight.bold)),
         Slider(
-          value: viewModel.gradientSize,
+          value: gradientSize,
           min: 10.0,
           max: 100.0,
           divisions: 18,
-          onChanged: viewModel.setGradientSize,
+          onChanged: (value) => state.gradientSize = value,
         ),
       ],
     );

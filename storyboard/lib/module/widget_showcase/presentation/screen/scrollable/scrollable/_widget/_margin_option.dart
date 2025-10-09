@@ -6,20 +6,22 @@ final class _MarginOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MyoroScrollableWidgetShowcaseViewModel>();
+    final viewModel = context.read<MyoroScrollablesWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final margin = state.margin;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text('Margin'),
         Slider(
-          value: _getMarginValue(viewModel.margin),
+          value: _getMarginValue(margin),
           min: 0.0,
           max: 32.0,
           divisions: 16,
-          label: '${_getMarginValue(viewModel.margin).round()}px',
+          label: '${_getMarginValue(margin).round()}px',
           onChanged: (value) {
-            viewModel.setMargin(value == 0 ? null : EdgeInsets.all(value));
+            state.margin = value == 0 ? null : EdgeInsets.all(value);
           },
         ),
       ],
