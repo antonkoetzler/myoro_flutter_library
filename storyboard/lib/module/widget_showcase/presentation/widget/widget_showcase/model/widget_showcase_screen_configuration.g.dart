@@ -21,12 +21,15 @@ mixin _$WidgetShowcaseScreenConfigurationMixin {
     Widget? widget,
     List<Widget>? configurationOptions,
     List<Widget>? stylingOptions,
+    EdgeInsets? padding,
+    bool paddingProvided = true,
   }) {
     return WidgetShowcaseScreenConfiguration(
       widgetName: widgetName ?? self.widgetName,
       widget: widget ?? self.widget,
       configurationOptions: configurationOptions ?? self.configurationOptions,
       stylingOptions: stylingOptions ?? self.stylingOptions,
+      padding: paddingProvided ? (padding ?? self.padding) : null,
     );
   }
 
@@ -37,12 +40,13 @@ mixin _$WidgetShowcaseScreenConfigurationMixin {
         other.widgetName == self.widgetName &&
         other.widget == self.widget &&
         other.configurationOptions == self.configurationOptions &&
-        other.stylingOptions == self.stylingOptions;
+        other.stylingOptions == self.stylingOptions &&
+        other.padding == self.padding;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.widgetName, self.widget, self.configurationOptions, self.stylingOptions);
+    return Object.hash(self.widgetName, self.widget, self.configurationOptions, self.stylingOptions, self.padding);
   }
 
   @override
@@ -52,5 +56,6 @@ mixin _$WidgetShowcaseScreenConfigurationMixin {
       '  widget: ${self.widget},\n'
       '  configurationOptions: ${self.configurationOptions},\n'
       '  stylingOptions: ${self.stylingOptions},\n'
+      '  padding: ${self.padding},\n'
       ');';
 }

@@ -24,14 +24,7 @@ class MyoroSingleChildScrollable extends StatelessWidget {
     return _Base(
       configuration: configuration,
       style: style,
-      child: SingleChildScrollView(
-        scrollDirection: configuration.scrollDirection,
-        reverse: configuration.reverse,
-        physics: configuration.physics,
-        controller: configuration.controller,
-        primary: configuration.primary,
-        child: child,
-      ),
+      child: _ScrollableHelpers.singleChildScrollView(configuration: configuration, child: child),
     );
   }
 }

@@ -16,87 +16,52 @@ final class MyoroScrollablesWidgetShowcaseScreenViewModel extends ChangeNotifier
   MyoroSingleChildScrollableConfiguration get singleChildConfiguration {
     final scrollDirection = _state.scrollDirection;
     final physics = _state.physics;
-    final gradientEnabled = _state.gradientEnabled;
-    final gradientSize = _state.gradientSize;
-    final gradientColor = _state.gradientColor;
 
     return MyoroSingleChildScrollableConfiguration(
       scrollDirection: scrollDirection,
       physics: physics,
-      gradientConfiguration: MyoroScrollableGradientConfiguration(
-        enabled: gradientEnabled,
-        size: gradientSize,
-        color: gradientColor,
-      ),
+      gradientConfiguration: const MyoroScrollableGradientConfiguration(),
     );
   }
 
   MyoroListScrollableConfiguration get listConfiguration {
     final scrollDirection = _state.scrollDirection;
     final physics = _state.physics;
-    final gradientEnabled = _state.gradientEnabled;
-    final gradientSize = _state.gradientSize;
-    final gradientColor = _state.gradientColor;
 
     return MyoroListScrollableConfiguration(
       scrollDirection: scrollDirection,
       physics: physics,
-      gradientConfiguration: MyoroScrollableGradientConfiguration(
-        enabled: gradientEnabled,
-        size: gradientSize,
-        color: gradientColor,
-      ),
+      gradientConfiguration: const MyoroScrollableGradientConfiguration(),
     );
   }
 
   MyoroGridScrollableConfiguration get gridConfiguration {
     final scrollDirection = _state.scrollDirection;
     final physics = _state.physics;
-    final gradientEnabled = _state.gradientEnabled;
-    final gradientSize = _state.gradientSize;
-    final gradientColor = _state.gradientColor;
 
     return MyoroGridScrollableConfiguration(
       scrollDirection: scrollDirection,
       physics: physics,
-      gradientConfiguration: MyoroScrollableGradientConfiguration(
-        enabled: gradientEnabled,
-        size: gradientSize,
-        color: gradientColor,
-      ),
+      gradientConfiguration: const MyoroScrollableGradientConfiguration(),
     );
   }
 
   MyoroSliverScrollableConfiguration get sliverConfiguration {
     final scrollDirection = _state.scrollDirection;
     final physics = _state.physics;
-    final gradientEnabled = _state.gradientEnabled;
-    final gradientSize = _state.gradientSize;
-    final gradientColor = _state.gradientColor;
 
     return MyoroSliverScrollableConfiguration(
       scrollDirection: scrollDirection,
       physics: physics,
-      gradientConfiguration: MyoroScrollableGradientConfiguration(
-        enabled: gradientEnabled,
-        size: gradientSize,
-        color: gradientColor,
-      ),
+      gradientConfiguration: const MyoroScrollableGradientConfiguration(),
     );
   }
 
   // Style getter
   MyoroScrollableStyle get style {
-    final backgroundColor = _state.backgroundColor;
-    final borderRadius = _state.borderRadius;
-    final padding = _state.padding;
-    final margin = _state.margin;
+    final gradientSize = _state.gradientSize;
+    final gradientColor = _state.gradientColor;
 
-    return MyoroScrollableStyle(
-      backgroundColor: backgroundColor,
-      borderRadius: borderRadius,
-      padding: padding,
-      margin: margin,
-    );
+    return MyoroScrollableStyle(gradientSize: gradientSize, gradientColor: gradientColor);
   }
 }

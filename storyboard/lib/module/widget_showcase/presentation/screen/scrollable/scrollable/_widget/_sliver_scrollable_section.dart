@@ -10,36 +10,36 @@ final class _SliverScrollableSection extends StatelessWidget {
     final sliverConfiguration = viewModel.sliverConfiguration;
     final style = viewModel.style;
 
+    final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
+    final spacing = widgetShowcaseThemeExtension.spacing;
+    final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
+
+    final scrollablesWidgetShowcaseScreenThemeExtension =
+        context.resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
+    final scrollableConstraints = scrollablesWidgetShowcaseScreenThemeExtension.scrollableConstraints;
+
     return Column(
+      spacing: spacing,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('MyoroSliverScrollable'),
-        const SizedBox(height: 8),
-        const Text('A scrollable widget that uses slivers for custom scroll effects with gradient overlays.'),
-        const SizedBox(height: 16),
-        Container(
-          height: 300,
-          decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: BorderRadius.circular(8)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: MyoroSliverScrollable(
-              configuration: sliverConfiguration,
-              style: style,
-              slivers: [
-                SliverAppBar(title: const Text('Sliver App Bar'), floating: true, backgroundColor: Colors.purple[100]),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) => Container(
-                      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(color: Colors.purple[100], borderRadius: BorderRadius.circular(8)),
-                      child: Text('Sliver Item ${index + 1}'),
-                    ),
-                    childCount: 15,
+        Text('MyoroSliverScrollable', style: labelTextStyle),
+        ConstrainedBox(
+          constraints: scrollableConstraints,
+          child: MyoroSliverScrollable(
+            configuration: sliverConfiguration,
+            style: style,
+            slivers: [
+              const SliverToBoxAdapter(child: MyoroAppBar(child: Text('Sliver App Bar'))),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) => Padding(
+                    padding: EdgeInsets.only(top: index == 0 ? spacing : 0, bottom: spacing),
+                    child: _Button('Sliver Item ${index + 1}'),
                   ),
+                  childCount: 15,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ],

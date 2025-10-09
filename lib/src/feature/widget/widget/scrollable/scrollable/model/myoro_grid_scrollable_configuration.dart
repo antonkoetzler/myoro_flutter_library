@@ -8,7 +8,7 @@ part 'myoro_grid_scrollable_configuration.g.dart';
 /// Configuration for [MyoroGridScrollable].
 @immutable
 @myoroModel
-class MyoroGridScrollableConfiguration with _$MyoroGridScrollableConfigurationMixin {
+class MyoroGridScrollableConfiguration with _$MyoroGridScrollableConfigurationMixin, MyoroScrollableConfigurationMixin {
   /// Creates a new instance of [MyoroGridScrollableConfiguration].
   const MyoroGridScrollableConfiguration({
     this.scrollDirection = Axis.vertical,
@@ -30,26 +30,24 @@ class MyoroGridScrollableConfiguration with _$MyoroGridScrollableConfigurationMi
       shrinkWrap = faker.randomGenerator.boolean(),
       gradientConfiguration = faker.randomGenerator.boolean() ? MyoroScrollableGradientConfiguration.fake() : null;
 
-  /// The axis along which the scroll view scrolls.
+  @override
   final Axis scrollDirection;
 
-  /// Whether the scroll view scrolls in the reading direction.
+  @override
   final bool reverse;
 
-  /// How the scroll view should respond to user input.
+  @override
   final ScrollPhysics? physics;
 
-  /// An object that can be used to control the position to which this scroll
-  /// view is scrolled.
+  @override
   final ScrollController? controller;
 
-  /// Whether this is the primary scroll view associated with the parent.
+  @override
   final bool? primary;
 
-  /// Whether the extent of the scroll view in the [scrollDirection] should be
-  /// determined by the contents being viewed.
+  @override
   final bool shrinkWrap;
 
-  /// Configuration for gradient overlays.
+  @override
   final MyoroScrollableGradientConfiguration? gradientConfiguration;
 }

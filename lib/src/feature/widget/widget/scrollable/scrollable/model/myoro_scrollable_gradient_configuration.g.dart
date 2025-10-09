@@ -18,8 +18,6 @@ mixin _$MyoroScrollableGradientConfigurationMixin {
 
   MyoroScrollableGradientConfiguration copyWith({
     bool? enabled,
-    double? size,
-    Color? color,
     Alignment? begin,
     bool beginProvided = true,
     Alignment? end,
@@ -27,8 +25,6 @@ mixin _$MyoroScrollableGradientConfigurationMixin {
   }) {
     return MyoroScrollableGradientConfiguration(
       enabled: enabled ?? self.enabled,
-      size: size ?? self.size,
-      color: color ?? self.color,
       begin: beginProvided ? (begin ?? self.begin) : null,
       end: endProvided ? (end ?? self.end) : null,
     );
@@ -39,23 +35,19 @@ mixin _$MyoroScrollableGradientConfigurationMixin {
     return other is MyoroScrollableGradientConfiguration &&
         other.runtimeType == runtimeType &&
         other.enabled == self.enabled &&
-        other.size == self.size &&
-        other.color == self.color &&
         other.begin == self.begin &&
         other.end == self.end;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.enabled, self.size, self.color, self.begin, self.end);
+    return Object.hash(self.enabled, self.begin, self.end);
   }
 
   @override
   String toString() =>
       'MyoroScrollableGradientConfiguration(\n'
       '  enabled: ${self.enabled},\n'
-      '  size: ${self.size},\n'
-      '  color: ${self.color},\n'
       '  begin: ${self.begin},\n'
       '  end: ${self.end},\n'
       ');';

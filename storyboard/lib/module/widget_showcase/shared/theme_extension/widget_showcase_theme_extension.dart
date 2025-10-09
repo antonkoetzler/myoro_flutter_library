@@ -26,7 +26,7 @@ final class WidgetShowcaseThemeExtension extends ThemeExtension<WidgetShowcaseTh
   WidgetShowcaseThemeExtension.builder(TextTheme textTheme)
     : spacing = 10,
       labelTextStyle = textTheme.titleLarge!,
-      contentPadding = const EdgeInsets.all(10);
+      contentPadding = const EdgeInsets.all(kMyoroMultiplier * 8);
 
   /// Spacing of [Widget]s.
   final double spacing;

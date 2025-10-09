@@ -9,7 +9,7 @@ final class _GradientOverlay extends StatefulWidget {
     required this.child,
   });
 
-  final dynamic configuration;
+  final MyoroScrollableConfigurationMixin configuration;
   final MyoroScrollableStyle style;
   final MyoroScrollableGradientConfiguration gradientConfig;
   final Widget child;
@@ -56,15 +56,18 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
 
   @override
   Widget build(BuildContext context) {
+    final themeExtension = context.resolveThemeExtension<MyoroScrollableThemeExtension>();
+    final style = context.watch<MyoroScrollableStyle>();
+
     final isVertical = widget.configuration.scrollDirection == Axis.vertical;
-    final gradientSize = widget.gradientConfig.size;
-    final gradientColor = widget.gradientConfig.color;
+    final gradientSize = style.gradientSize ?? themeExtension.gradientSize ?? 20.0;
+    final gradientColor = style.gradientColor ?? themeExtension.gradientColor ?? Colors.white;
 
     // Get effective colors from style or use defaults
-    final topColor = widget.style.gradientTopColor ?? gradientColor;
-    final bottomColor = widget.style.gradientBottomColor ?? gradientColor;
-    final leftColor = widget.style.gradientLeftColor ?? gradientColor;
-    final rightColor = widget.style.gradientRightColor ?? gradientColor;
+    final topColor = style.gradientTopColor ?? themeExtension.gradientTopColor ?? gradientColor;
+    final bottomColor = style.gradientBottomColor ?? themeExtension.gradientBottomColor ?? gradientColor;
+    final leftColor = style.gradientLeftColor ?? themeExtension.gradientLeftColor ?? gradientColor;
+    final rightColor = style.gradientRightColor ?? themeExtension.gradientRightColor ?? gradientColor;
 
     final Widget content = NotificationListener<ScrollNotification>(onNotification: _onScroll, child: widget.child);
 

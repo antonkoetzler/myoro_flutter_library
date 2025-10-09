@@ -21,12 +21,7 @@ final class MainScreenThemeExtension extends ThemeExtension<MainScreenThemeExten
 
   const MainScreenThemeExtension.builder()
     : spacing = kMyoroMultiplier * 2,
-      widgetListingAccordionSearchBarMargin = const EdgeInsets.only(
-        top: kMyoroMultiplier * 3,
-        bottom: kMyoroMultiplier * 2,
-        left: kMyoroMultiplier * 2,
-        right: kMyoroMultiplier * 2,
-      );
+      widgetListingAccordionSearchBarMargin = const EdgeInsets.all(kMyoroMultiplier * 2);
 
   /// General spacing of [Widget]s.
   final double spacing;

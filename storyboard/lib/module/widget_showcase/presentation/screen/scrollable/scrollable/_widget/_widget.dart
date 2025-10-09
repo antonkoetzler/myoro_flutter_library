@@ -34,9 +34,9 @@ final class _ScrollableShowcase extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Flexible(child: _SingleChildScrollableSection()),
-              // _ListScrollableSection(viewModel: viewModel),
-              // _GridScrollableSection(viewModel: viewModel),
-              // _SliverScrollableSection(viewModel: viewModel),
+              Flexible(child: _ListScrollableSection()),
+              Flexible(child: _GridScrollableSection()),
+              Flexible(child: _SliverScrollableSection()),
             ],
           ),
         );

@@ -24,15 +24,7 @@ class MyoroSliverScrollable extends StatelessWidget {
     return _Base(
       configuration: configuration,
       style: style,
-      child: CustomScrollView(
-        scrollDirection: configuration.scrollDirection,
-        reverse: configuration.reverse,
-        controller: configuration.controller,
-        primary: configuration.primary,
-        physics: configuration.physics,
-        shrinkWrap: configuration.shrinkWrap,
-        slivers: slivers,
-      ),
+      child: _ScrollableHelpers.customScrollView(configuration: configuration, slivers: slivers),
     );
   }
 }

@@ -13,7 +13,6 @@ final class _SingleChildScrollableSection extends StatelessWidget {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
-    final padding = widgetShowcaseThemeExtension.contentPadding;
 
     final scrollablesWidgetShowcaseThemeExtension =
         context.resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
@@ -29,22 +28,9 @@ final class _SingleChildScrollableSection extends StatelessWidget {
           child: MyoroSingleChildScrollable(
             configuration: singleChildConfiguration,
             style: style,
-            child: Container(
-              padding: padding,
-              child: Column(
-                spacing: spacing,
-                children: List.generate(
-                  20,
-                  (index) => MyoroIconTextButton(
-                    configuration: MyoroIconTextButtonConfiguration(
-                      iconConfiguration: MyoroIconConfiguration(icon: myoroFake<IconData>()),
-                      textConfiguration: MyoroTextConfiguration(text: 'Single Child Item $index'),
-                      onTapUp: (_) {},
-                    ),
-                    style: const MyoroIconTextButtonStyle().bordered(context),
-                  ),
-                ),
-              ),
+            child: Column(
+              spacing: spacing,
+              children: List.generate(20, (index) => _Button('Single Child Item $index')),
             ),
           ),
         ),

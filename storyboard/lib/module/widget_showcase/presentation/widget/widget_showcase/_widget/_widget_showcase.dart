@@ -8,12 +8,14 @@ final class _WidgetShowcase extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<WidgetShowcaseScreenViewModel>();
     final themeExtension = context.resolveThemeExtension<WidgetShowcaseScreenThemeExtension>();
+    final configuration = viewModel.configuration;
+    final padding = configuration.padding ?? themeExtension.padding;
 
     return Container(
       width: double.infinity,
       height: double.infinity,
       color: themeExtension.color,
-      padding: themeExtension.padding,
+      padding: padding,
       child: Center(child: viewModel.configuration.widget),
     );
   }
