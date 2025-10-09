@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.5.5
+
+- chore: Upgrade `myoro_flutter_annotations`
+
 ## 2.5.4
 
 - feature: `MyoroSearchInputConfiguration.label`
