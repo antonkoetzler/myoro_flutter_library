@@ -16,7 +16,6 @@ final class _Tabs extends StatelessWidget {
     return IntrinsicHeight(
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        // children: tabs.map((t) => Expanded(child: _TabButton(_selectedTab, t))).toList(),
         children: [
           for (int i = 0; i < tabs.length; i++) ...[
             Expanded(child: _TabButton(tabs[i], _selectedTab)),

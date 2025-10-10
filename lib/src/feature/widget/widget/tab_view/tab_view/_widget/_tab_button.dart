@@ -15,10 +15,10 @@ final class _TabButton extends StatelessWidget {
     final style = context.watch<MyoroTabViewStyle>();
     final tabButtonIconSize = style.tabButtonIconSize ?? tabViewThemeExtension.tabButtonIconSize;
     final tabButtonTextStyle = style.tabButtonTextStyle ?? tabViewThemeExtension.tabButtonTextStyle;
-    final tabButtonIdleColor = style.tabButtonIdleColor ?? tabViewThemeExtension.tabButtonIdleColor;
-    final tabButtonHoverColor = style.tabButtonHoverColor ?? tabViewThemeExtension.tabButtonHoverColor;
-    final tabButtonTapColor = style.tabButtonTapColor ?? tabViewThemeExtension.tabButtonTapColor;
     final tabButtonBorderRadius = style.tabButtonBorderRadius ?? tabViewThemeExtension.tabButtonBorderRadius;
+
+    final decorationThemeExtension = context.resolveThemeExtension<MyoroDecorationThemeExtension>();
+    final primaryBackgroundHoverColor = decorationThemeExtension.primaryBackgroundHoverColor;
 
     final viewModel = context.read<MyoroTabViewViewModel>();
     final selectTab = viewModel.selectTab;
@@ -32,10 +32,8 @@ final class _TabButton extends StatelessWidget {
         onTapUp: (_) => selectTab(_tab),
       ),
       style: const MyoroIconTextButtonStyle().copyWith(
-        backgroundIdleColor: isSelected ? tabButtonIdleColor : null,
-        backgroundHoverColor: isSelected ? tabButtonHoverColor : null,
-        backgroundTapColor: isSelected ? tabButtonTapColor : null,
         borderRadius: tabButtonBorderRadius,
+        backgroundIdleColor: isSelected ? primaryBackgroundHoverColor : null,
       ),
     );
   }

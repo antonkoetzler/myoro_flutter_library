@@ -54,17 +54,17 @@ extension MyoroButtonStyleExtension<T extends MyoroButtonStyle> on T {
   /// Use the primary theme variant.
   T primary(BuildContext context) {
     final decorationThemeExtension = context.resolveThemeExtension<MyoroDecorationThemeExtension>();
-    final primaryIdleBackgroundColor = decorationThemeExtension.primaryIdleBackgroundColor;
-    final primaryHoverBackgroundColor = decorationThemeExtension.primaryHoverBackgroundColor;
-    final primaryTapBackgroundColor = decorationThemeExtension.primaryTapBackgroundColor;
+    final primaryBackgroundIdleColor = decorationThemeExtension.primaryBackgroundIdleColor;
+    final primaryBackgroundHoverColor = decorationThemeExtension.primaryBackgroundHoverColor;
+    final primaryBackgroundTapColor = decorationThemeExtension.primaryBackgroundTapColor;
     final primaryContentColor = decorationThemeExtension.primaryContentColor;
     return copyWith(
-          backgroundIdleColor: primaryIdleBackgroundColor,
-          backgroundIdleColorProvided: primaryIdleBackgroundColor != null,
-          backgroundHoverColor: primaryHoverBackgroundColor,
-          backgroundHoverColorProvided: primaryHoverBackgroundColor != null,
-          backgroundTapColor: primaryTapBackgroundColor,
-          backgroundTapColorProvided: primaryTapBackgroundColor != null,
+          backgroundIdleColor: primaryBackgroundIdleColor,
+          backgroundIdleColorProvided: primaryBackgroundIdleColor != null,
+          backgroundHoverColor: primaryBackgroundHoverColor,
+          backgroundHoverColorProvided: primaryBackgroundHoverColor != null,
+          backgroundTapColor: primaryBackgroundTapColor,
+          backgroundTapColorProvided: primaryBackgroundTapColor != null,
           contentIdleColor: primaryContentColor,
           contentIdleColorProvided: primaryContentColor != null,
           contentHoverColor: primaryContentColor,
@@ -78,17 +78,17 @@ extension MyoroButtonStyleExtension<T extends MyoroButtonStyle> on T {
   /// Use the secondary theme variant.
   T secondary(BuildContext context) {
     final decorationThemeExtension = context.resolveThemeExtension<MyoroDecorationThemeExtension>();
-    final secondaryIdleBackgroundColor = decorationThemeExtension.secondaryIdleBackgroundColor;
-    final secondaryHoverBackgroundColor = decorationThemeExtension.secondaryHoverBackgroundColor;
-    final secondaryTapBackgroundColor = decorationThemeExtension.secondaryTapBackgroundColor;
+    final secondaryBackgroundIdleColor = decorationThemeExtension.secondaryBackgroundIdleColor;
+    final secondaryBackgroundHoverColor = decorationThemeExtension.secondaryBackgroundHoverColor;
+    final secondaryBackgroundTapColor = decorationThemeExtension.secondaryBackgroundTapColor;
     final secondaryContentColor = decorationThemeExtension.secondaryContentColor;
     return copyWith(
-          backgroundIdleColor: secondaryIdleBackgroundColor,
-          backgroundIdleColorProvided: secondaryIdleBackgroundColor != null,
-          backgroundHoverColor: secondaryHoverBackgroundColor,
-          backgroundHoverColorProvided: secondaryHoverBackgroundColor != null,
-          backgroundTapColor: secondaryTapBackgroundColor,
-          backgroundTapColorProvided: secondaryTapBackgroundColor != null,
+          backgroundIdleColor: secondaryBackgroundIdleColor,
+          backgroundIdleColorProvided: secondaryBackgroundIdleColor != null,
+          backgroundHoverColor: secondaryBackgroundHoverColor,
+          backgroundHoverColorProvided: secondaryBackgroundHoverColor != null,
+          backgroundTapColor: secondaryBackgroundTapColor,
+          backgroundTapColorProvided: secondaryBackgroundTapColor != null,
           contentIdleColor: secondaryContentColor,
           contentIdleColorProvided: secondaryContentColor != null,
           contentHoverColor: secondaryContentColor,

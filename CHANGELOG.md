@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 2.5.6
+
+- refactor: Post-vibe-code refactor of scrollables
+- improvement: Adjusted constraints of modals/bottom sheets
+- improvement: Added the MFL logo as the icon in the storyboard
+- fix: Adjust styling of selected `_TabButton` in `MyoroTabView`
+
 ## 2.5.5
 
 - chore: Upgrade `myoro_flutter_annotations`

@@ -39,9 +39,9 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       borderTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
 
   MyoroButtonThemeExtension.builder(MyoroDecorationThemeExtension decorationThemeExtension)
-    : backgroundIdleColor = decorationThemeExtension.primaryIdleBackgroundColor,
-      backgroundHoverColor = decorationThemeExtension.primaryHoverBackgroundColor,
-      backgroundTapColor = decorationThemeExtension.primaryTapBackgroundColor,
+    : backgroundIdleColor = decorationThemeExtension.primaryBackgroundIdleColor,
+      backgroundHoverColor = decorationThemeExtension.primaryBackgroundHoverColor,
+      backgroundTapColor = decorationThemeExtension.primaryBackgroundTapColor,
       contentIdleColor = decorationThemeExtension.primaryContentColor,
       contentHoverColor = decorationThemeExtension.primaryContentColor,
       contentTapColor = decorationThemeExtension.primaryContentColor,

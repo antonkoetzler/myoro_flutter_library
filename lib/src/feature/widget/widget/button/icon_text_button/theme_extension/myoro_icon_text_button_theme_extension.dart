@@ -45,9 +45,9 @@ class MyoroIconTextButtonThemeExtension extends ThemeExtension<MyoroIconTextButt
       textStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null;
 
   MyoroIconTextButtonThemeExtension.builder(TextTheme textTheme, MyoroDecorationThemeExtension decorationThemeExtension)
-    : backgroundIdleColor = decorationThemeExtension.primaryIdleBackgroundColor,
-      backgroundHoverColor = decorationThemeExtension.primaryHoverBackgroundColor,
-      backgroundTapColor = decorationThemeExtension.primaryTapBackgroundColor,
+    : backgroundIdleColor = decorationThemeExtension.primaryBackgroundIdleColor,
+      backgroundHoverColor = decorationThemeExtension.primaryBackgroundHoverColor,
+      backgroundTapColor = decorationThemeExtension.primaryBackgroundTapColor,
       contentIdleColor = decorationThemeExtension.primaryContentColor,
       contentHoverColor = decorationThemeExtension.primaryContentColor,
       contentTapColor = decorationThemeExtension.primaryContentColor,

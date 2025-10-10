@@ -14,12 +14,12 @@ final class _Overlay extends StatelessWidget {
     final overlayUnselectedImageStateIconConfiguration =
         style.overlayUnselectedImageStateIconConfiguration ??
         imagePickerThemeExtension.overlayUnselectedImageStateIconConfiguration;
-    final overlayIdleBackgroundColor =
-        style.overlayIdleBackgroundColor ?? imagePickerThemeExtension.overlayIdleBackgroundColor;
-    final overlayHoverBackgroundColor =
-        style.overlayHoverBackgroundColor ?? imagePickerThemeExtension.overlayHoverBackgroundColor;
-    final overlayTapBackgroundColor =
-        style.overlayTapBackgroundColor ?? imagePickerThemeExtension.overlayTapBackgroundColor;
+    final overlayBackgroundIdleColor =
+        style.overlayBackgroundIdleColor ?? imagePickerThemeExtension.overlayBackgroundIdleColor;
+    final overlayBackgroundHoverColor =
+        style.overlayBackgroundHoverColor ?? imagePickerThemeExtension.overlayBackgroundHoverColor;
+    final overlayBackgroundTapColor =
+        style.overlayBackgroundTapColor ?? imagePickerThemeExtension.overlayBackgroundTapColor;
 
     final viewModel = context.read<MyoroImagePickerViewModel>();
     final openPickerAndUpdateSelectedImage = viewModel.openPickerAndUpdateSelectedImage;
@@ -28,13 +28,13 @@ final class _Overlay extends StatelessWidget {
       configuration: MyoroButtonConfiguration(
         cursor: overlayCursor,
         onTapUp: (_) => MyoroPlatformHelper.isMobile
-            ? _SelectionTypeModal.show(context, viewModel)
+            ? _SelectionTypeModal.show(context, style, viewModel)
             : openPickerAndUpdateSelectedImage(),
       ),
       style: const MyoroButtonStyle().copyWith(
-        backgroundIdleColor: overlayIdleBackgroundColor,
-        backgroundHoverColor: overlayHoverBackgroundColor,
-        backgroundTapColor: overlayTapBackgroundColor,
+        backgroundIdleColor: overlayBackgroundIdleColor,
+        backgroundHoverColor: overlayBackgroundHoverColor,
+        backgroundTapColor: overlayBackgroundTapColor,
       ),
       builder: (_, _) => _selectedImageIsNotNull
           ? const SizedBox.shrink()

@@ -24,12 +24,12 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
     bool borderRadiusProvided = true,
     MouseCursor? overlayCursor,
     bool overlayCursorProvided = true,
-    Color? overlayIdleBackgroundColor,
-    bool overlayIdleBackgroundColorProvided = true,
-    Color? overlayHoverBackgroundColor,
-    bool overlayHoverBackgroundColorProvided = true,
-    Color? overlayTapBackgroundColor,
-    bool overlayTapBackgroundColorProvided = true,
+    Color? overlayBackgroundIdleColor,
+    bool overlayBackgroundIdleColorProvided = true,
+    Color? overlayBackgroundHoverColor,
+    bool overlayBackgroundHoverColorProvided = true,
+    Color? overlayBackgroundTapColor,
+    bool overlayBackgroundTapColorProvided = true,
     MyoroIconConfiguration? overlayUnselectedImageStateIconConfiguration,
     bool overlayUnselectedImageStateIconConfigurationProvided = true,
     BoxConstraints? selectionTypeModalConstraints,
@@ -45,14 +45,14 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       size: sizeProvided ? (size ?? self.size) : null,
       borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
       overlayCursor: overlayCursorProvided ? (overlayCursor ?? self.overlayCursor) : null,
-      overlayIdleBackgroundColor: overlayIdleBackgroundColorProvided
-          ? (overlayIdleBackgroundColor ?? self.overlayIdleBackgroundColor)
+      overlayBackgroundIdleColor: overlayBackgroundIdleColorProvided
+          ? (overlayBackgroundIdleColor ?? self.overlayBackgroundIdleColor)
           : null,
-      overlayHoverBackgroundColor: overlayHoverBackgroundColorProvided
-          ? (overlayHoverBackgroundColor ?? self.overlayHoverBackgroundColor)
+      overlayBackgroundHoverColor: overlayBackgroundHoverColorProvided
+          ? (overlayBackgroundHoverColor ?? self.overlayBackgroundHoverColor)
           : null,
-      overlayTapBackgroundColor: overlayTapBackgroundColorProvided
-          ? (overlayTapBackgroundColor ?? self.overlayTapBackgroundColor)
+      overlayBackgroundTapColor: overlayBackgroundTapColorProvided
+          ? (overlayBackgroundTapColor ?? self.overlayBackgroundTapColor)
           : null,
       overlayUnselectedImageStateIconConfiguration: overlayUnselectedImageStateIconConfigurationProvided
           ? (overlayUnselectedImageStateIconConfiguration ?? self.overlayUnselectedImageStateIconConfiguration)
@@ -79,9 +79,9 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
         other.size == self.size &&
         other.borderRadius == self.borderRadius &&
         other.overlayCursor == self.overlayCursor &&
-        other.overlayIdleBackgroundColor == self.overlayIdleBackgroundColor &&
-        other.overlayHoverBackgroundColor == self.overlayHoverBackgroundColor &&
-        other.overlayTapBackgroundColor == self.overlayTapBackgroundColor &&
+        other.overlayBackgroundIdleColor == self.overlayBackgroundIdleColor &&
+        other.overlayBackgroundHoverColor == self.overlayBackgroundHoverColor &&
+        other.overlayBackgroundTapColor == self.overlayBackgroundTapColor &&
         other.overlayUnselectedImageStateIconConfiguration == self.overlayUnselectedImageStateIconConfiguration &&
         other.selectionTypeModalConstraints == self.selectionTypeModalConstraints &&
         other.selectionTypeModalSpacing == self.selectionTypeModalSpacing &&
@@ -95,9 +95,9 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       self.size,
       self.borderRadius,
       self.overlayCursor,
-      self.overlayIdleBackgroundColor,
-      self.overlayHoverBackgroundColor,
-      self.overlayTapBackgroundColor,
+      self.overlayBackgroundIdleColor,
+      self.overlayBackgroundHoverColor,
+      self.overlayBackgroundTapColor,
       self.overlayUnselectedImageStateIconConfiguration,
       self.selectionTypeModalConstraints,
       self.selectionTypeModalSpacing,
@@ -112,9 +112,9 @@ mixin _$MyoroImagePickerThemeExtensionMixin on ThemeExtension<MyoroImagePickerTh
       '  size: ${self.size},\n'
       '  borderRadius: ${self.borderRadius},\n'
       '  overlayCursor: ${self.overlayCursor},\n'
-      '  overlayIdleBackgroundColor: ${self.overlayIdleBackgroundColor},\n'
-      '  overlayHoverBackgroundColor: ${self.overlayHoverBackgroundColor},\n'
-      '  overlayTapBackgroundColor: ${self.overlayTapBackgroundColor},\n'
+      '  overlayBackgroundIdleColor: ${self.overlayBackgroundIdleColor},\n'
+      '  overlayBackgroundHoverColor: ${self.overlayBackgroundHoverColor},\n'
+      '  overlayBackgroundTapColor: ${self.overlayBackgroundTapColor},\n'
       '  overlayUnselectedImageStateIconConfiguration: ${self.overlayUnselectedImageStateIconConfiguration},\n'
       '  selectionTypeModalConstraints: ${self.selectionTypeModalConstraints},\n'
       '  selectionTypeModalSpacing: ${self.selectionTypeModalSpacing},\n'

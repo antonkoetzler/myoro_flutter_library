@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import '../model/myoro_image_picker_style.dart';
 
 part 'myoro_image_picker_theme_extension.g.dart';
 
@@ -17,9 +16,9 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
     this.size,
     this.borderRadius,
     this.overlayCursor,
-    this.overlayIdleBackgroundColor,
-    this.overlayHoverBackgroundColor,
-    this.overlayTapBackgroundColor,
+    this.overlayBackgroundIdleColor,
+    this.overlayBackgroundHoverColor,
+    this.overlayBackgroundTapColor,
     this.overlayUnselectedImageStateIconConfiguration,
     this.selectionTypeModalConstraints,
     this.selectionTypeModalSpacing,
@@ -31,9 +30,9 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
     : size = faker.randomGenerator.boolean() ? myoroFake<Size>() : null,
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       overlayCursor = faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
-      overlayIdleBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayHoverBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayTapBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayBackgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayBackgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayBackgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayUnselectedImageStateIconConfiguration = faker.randomGenerator.boolean()
           ? MyoroIconConfiguration.fake()
           : null,
@@ -46,17 +45,16 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
     : size = null,
       borderRadius = BorderRadius.circular(kMyoroBorderRadius),
       overlayCursor = SystemMouseCursors.click,
-      overlayIdleBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 2 / 100),
-      overlayHoverBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 4 / 100),
-      overlayTapBackgroundColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 6 / 100),
+      overlayBackgroundIdleColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 2 / 100),
+      overlayBackgroundHoverColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 4 / 100),
+      overlayBackgroundTapColor = colorScheme.onPrimary.withValues(alpha: kMyoroMultiplier * 6 / 100),
       overlayUnselectedImageStateIconConfiguration = const MyoroIconConfiguration(
         icon: Icons.upload,
         size: kMyoroMultiplier * 20,
       ),
-      selectionTypeModalConstraints = const BoxConstraints(
-        maxWidth: kMyoroMultiplier * 58,
-        maxHeight: kMyoroMultiplier * 50,
-      ),
+      selectionTypeModalConstraints = MyoroPlatformHelper.isDesktop
+          ? const BoxConstraints(maxWidth: kMyoroMultiplier * 58, maxHeight: kMyoroMultiplier * 50)
+          : null,
       selectionTypeModalSpacing = kMyoroMultiplier * 2,
       selectionTypeModalButtonCameraIcon = Icons.camera,
       selectionTypeModalButtonGalleryIcon = Icons.browse_gallery;
@@ -75,15 +73,15 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.idle] state.
   @override
-  final Color? overlayIdleBackgroundColor;
+  final Color? overlayBackgroundIdleColor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.hover] state.
   @override
-  final Color? overlayHoverBackgroundColor;
+  final Color? overlayBackgroundHoverColor;
 
   /// Background [Color] of the overlay button's [MyoroTapStatusEnum.tap] state.
   @override
-  final Color? overlayTapBackgroundColor;
+  final Color? overlayBackgroundTapColor;
 
   /// [MyoroIconConfiguration] of the icon shown when there is no image selected.
   @override
@@ -113,9 +111,9 @@ final class MyoroImagePickerThemeExtension extends ThemeExtension<MyoroImagePick
       size: style.size,
       borderRadius: style.borderRadius,
       overlayCursor: style.overlayCursor,
-      overlayIdleBackgroundColor: style.overlayIdleBackgroundColor,
-      overlayHoverBackgroundColor: style.overlayHoverBackgroundColor,
-      overlayTapBackgroundColor: style.overlayTapBackgroundColor,
+      overlayBackgroundIdleColor: style.overlayBackgroundIdleColor,
+      overlayBackgroundHoverColor: style.overlayBackgroundHoverColor,
+      overlayBackgroundTapColor: style.overlayBackgroundTapColor,
       overlayUnselectedImageStateIconConfiguration: style.overlayUnselectedImageStateIconConfiguration,
       selectionTypeModalConstraints: style.selectionTypeModalConstraints,
       selectionTypeModalSpacing: style.selectionTypeModalSpacing,

@@ -49,7 +49,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       itemBorderRadius = BorderRadius.zero,
       dialogTextStyle = textTheme.bodyMedium!,
       dialogTextLoaderPadding = const EdgeInsets.all(kMyoroMultiplier * 3.75),
-      selectedItemColor = decorationThemeExtension.primaryTapBackgroundColor;
+      selectedItemColor = decorationThemeExtension.primaryBackgroundTapColor;
 
   /// Constraints of the menu.
   @override

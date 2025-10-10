@@ -20,12 +20,6 @@ mixin _$MyoroTabViewThemeExtensionMixin on ThemeExtension<MyoroTabViewThemeExten
   MyoroTabViewThemeExtension copyWith({
     BorderRadius? tabButtonBorderRadius,
     bool tabButtonBorderRadiusProvided = true,
-    Color? tabButtonIdleColor,
-    bool tabButtonIdleColorProvided = true,
-    Color? tabButtonHoverColor,
-    bool tabButtonHoverColorProvided = true,
-    Color? tabButtonTapColor,
-    bool tabButtonTapColorProvided = true,
     double? tabButtonIconSize,
     bool tabButtonIconSizeProvided = true,
     TextStyle? tabButtonTextStyle,
@@ -35,9 +29,6 @@ mixin _$MyoroTabViewThemeExtensionMixin on ThemeExtension<MyoroTabViewThemeExten
       tabButtonBorderRadius: tabButtonBorderRadiusProvided
           ? (tabButtonBorderRadius ?? self.tabButtonBorderRadius)
           : null,
-      tabButtonIdleColor: tabButtonIdleColorProvided ? (tabButtonIdleColor ?? self.tabButtonIdleColor) : null,
-      tabButtonHoverColor: tabButtonHoverColorProvided ? (tabButtonHoverColor ?? self.tabButtonHoverColor) : null,
-      tabButtonTapColor: tabButtonTapColorProvided ? (tabButtonTapColor ?? self.tabButtonTapColor) : null,
       tabButtonIconSize: tabButtonIconSizeProvided ? (tabButtonIconSize ?? self.tabButtonIconSize) : null,
       tabButtonTextStyle: tabButtonTextStyleProvided ? (tabButtonTextStyle ?? self.tabButtonTextStyle) : null,
     );
@@ -48,32 +39,19 @@ mixin _$MyoroTabViewThemeExtensionMixin on ThemeExtension<MyoroTabViewThemeExten
     return other is MyoroTabViewThemeExtension &&
         other.runtimeType == runtimeType &&
         other.tabButtonBorderRadius == self.tabButtonBorderRadius &&
-        other.tabButtonIdleColor == self.tabButtonIdleColor &&
-        other.tabButtonHoverColor == self.tabButtonHoverColor &&
-        other.tabButtonTapColor == self.tabButtonTapColor &&
         other.tabButtonIconSize == self.tabButtonIconSize &&
         other.tabButtonTextStyle == self.tabButtonTextStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
-      self.tabButtonBorderRadius,
-      self.tabButtonIdleColor,
-      self.tabButtonHoverColor,
-      self.tabButtonTapColor,
-      self.tabButtonIconSize,
-      self.tabButtonTextStyle,
-    );
+    return Object.hash(self.tabButtonBorderRadius, self.tabButtonIconSize, self.tabButtonTextStyle);
   }
 
   @override
   String toString() =>
       'MyoroTabViewThemeExtension(\n'
       '  tabButtonBorderRadius: ${self.tabButtonBorderRadius},\n'
-      '  tabButtonIdleColor: ${self.tabButtonIdleColor},\n'
-      '  tabButtonHoverColor: ${self.tabButtonHoverColor},\n'
-      '  tabButtonTapColor: ${self.tabButtonTapColor},\n'
       '  tabButtonIconSize: ${self.tabButtonIconSize},\n'
       '  tabButtonTextStyle: ${self.tabButtonTextStyle},\n'
       ');';

@@ -14,29 +14,16 @@ class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
   static MyoroTabViewStyle lerp(MyoroTabViewStyle? a, MyoroTabViewStyle? b, double t) {
     return MyoroTabViewStyle(
       tabButtonBorderRadius: BorderRadius.lerp(a?.tabButtonBorderRadius, b?.tabButtonBorderRadius, t),
-      tabButtonIdleColor: Color.lerp(a?.tabButtonIdleColor, b?.tabButtonIdleColor, t),
-      tabButtonHoverColor: Color.lerp(a?.tabButtonHoverColor, b?.tabButtonHoverColor, t),
-      tabButtonTapColor: Color.lerp(a?.tabButtonTapColor, b?.tabButtonTapColor, t),
       tabButtonIconSize: lerpDouble(a?.tabButtonIconSize, b?.tabButtonIconSize, t),
       tabButtonTextStyle: TextStyle.lerp(a?.tabButtonTextStyle, b?.tabButtonTextStyle, t),
     );
   }
 
-  const MyoroTabViewStyle({
-    this.tabButtonBorderRadius,
-    this.tabButtonIdleColor,
-    this.tabButtonHoverColor,
-    this.tabButtonTapColor,
-    this.tabButtonIconSize,
-    this.tabButtonTextStyle,
-  });
+  const MyoroTabViewStyle({this.tabButtonBorderRadius, this.tabButtonIconSize, this.tabButtonTextStyle});
 
   factory MyoroTabViewStyle.fake() {
     return MyoroTabViewStyle(
       tabButtonBorderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
-      tabButtonIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      tabButtonHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      tabButtonTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       tabButtonIconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
       tabButtonTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
     );
@@ -44,15 +31,6 @@ class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
 
   /// [BorderRadius] of a tab traversal button.
   final BorderRadius? tabButtonBorderRadius;
-
-  /// [MyoroTapStatusEnum.idle]'s [Color] of the tab's traversal button when the tab is selected.
-  final Color? tabButtonIdleColor;
-
-  /// [MyoroTapStatusEnum.hover]'s [Color] of the tab's traversal button when the tab is selected.
-  final Color? tabButtonHoverColor;
-
-  /// [MyoroTapStatusEnum.tap]'s [Color] of the tab's traversal button when the tab is selected.
-  final Color? tabButtonTapColor;
 
   /// Icon size of a tab traversal button.
   final double? tabButtonIconSize;

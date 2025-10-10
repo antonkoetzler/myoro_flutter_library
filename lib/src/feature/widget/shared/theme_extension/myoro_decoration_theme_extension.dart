@@ -12,18 +12,18 @@ part 'myoro_decoration_theme_extension.g.dart';
 @myoroThemeExtension
 final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecorationThemeExtension>
     with _$MyoroDecorationThemeExtensionMixin {
-  static const primaryHoverBackgroundColorFactor = 0.4;
-  static const primaryTapBackgroundColorFactor = 0.2;
-  static const secondaryHoverBackgroundColorFactor = 0.2;
-  static const secondaryTapBackgroundColorFactor = 0.4;
+  static const primaryBackgroundHoverColorFactor = 0.4;
+  static const primaryBackgroundTapColorFactor = 0.2;
+  static const secondaryBackgroundHoverColorFactor = 0.2;
+  static const secondaryBackgroundTapColorFactor = 0.4;
 
   const MyoroDecorationThemeExtension({
-    this.primaryIdleBackgroundColor,
-    this.primaryHoverBackgroundColor,
-    this.primaryTapBackgroundColor,
-    this.secondaryIdleBackgroundColor,
-    this.secondaryHoverBackgroundColor,
-    this.secondaryTapBackgroundColor,
+    this.primaryBackgroundIdleColor,
+    this.primaryBackgroundHoverColor,
+    this.primaryBackgroundTapColor,
+    this.secondaryBackgroundIdleColor,
+    this.secondaryBackgroundHoverColor,
+    this.secondaryBackgroundTapColor,
     this.primaryContentColor,
     this.secondaryContentColor,
     this.borderWidth,
@@ -32,12 +32,12 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
   });
 
   MyoroDecorationThemeExtension.fake()
-    : primaryIdleBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      primaryHoverBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      primaryTapBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      secondaryIdleBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      secondaryHoverBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      secondaryTapBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+    : primaryBackgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      primaryBackgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      primaryBackgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      secondaryBackgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      secondaryBackgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      secondaryBackgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       primaryContentColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       secondaryContentColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
@@ -45,20 +45,20 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       borderRadius = faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null;
 
   MyoroDecorationThemeExtension.builder(bool isDarkMode, ColorScheme colorScheme)
-    : primaryIdleBackgroundColor = colorScheme.primary,
-      primaryHoverBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(primaryHoverBackgroundColorFactor)
-          : colorScheme.onPrimary.brighten(primaryHoverBackgroundColorFactor),
-      primaryTapBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(primaryTapBackgroundColorFactor)
-          : colorScheme.onPrimary.brighten(primaryTapBackgroundColorFactor),
-      secondaryIdleBackgroundColor = colorScheme.onPrimary,
-      secondaryHoverBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(secondaryHoverBackgroundColorFactor)
-          : colorScheme.onPrimary.brighten(secondaryHoverBackgroundColorFactor),
-      secondaryTapBackgroundColor = isDarkMode
-          ? colorScheme.onPrimary.darken(secondaryTapBackgroundColorFactor)
-          : colorScheme.onPrimary.brighten(secondaryTapBackgroundColorFactor),
+    : primaryBackgroundIdleColor = colorScheme.primary,
+      primaryBackgroundHoverColor = isDarkMode
+          ? colorScheme.onPrimary.darken(primaryBackgroundHoverColorFactor)
+          : colorScheme.onPrimary.brighten(primaryBackgroundHoverColorFactor),
+      primaryBackgroundTapColor = isDarkMode
+          ? colorScheme.onPrimary.darken(primaryBackgroundTapColorFactor)
+          : colorScheme.onPrimary.brighten(primaryBackgroundTapColorFactor),
+      secondaryBackgroundIdleColor = colorScheme.onPrimary,
+      secondaryBackgroundHoverColor = isDarkMode
+          ? colorScheme.onPrimary.darken(secondaryBackgroundHoverColorFactor)
+          : colorScheme.onPrimary.brighten(secondaryBackgroundHoverColorFactor),
+      secondaryBackgroundTapColor = isDarkMode
+          ? colorScheme.onPrimary.darken(secondaryBackgroundTapColorFactor)
+          : colorScheme.onPrimary.brighten(secondaryBackgroundTapColorFactor),
       primaryContentColor = colorScheme.onPrimary,
       secondaryContentColor = colorScheme.primary,
       borderWidth = kMyoroBorderWidth,
@@ -66,22 +66,22 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       borderRadius = BorderRadius.circular(kMyoroBorderRadius);
 
   /// Primary background [Color] of [MyoroTapStatusEnum.idle].
-  final Color? primaryIdleBackgroundColor;
+  final Color? primaryBackgroundIdleColor;
 
   /// Primary background [Color] of [MyoroTapStatusEnum.hover].
-  final Color? primaryHoverBackgroundColor;
+  final Color? primaryBackgroundHoverColor;
 
   /// Primary background [Color] of [MyoroTapStatusEnum.tap].
-  final Color? primaryTapBackgroundColor;
+  final Color? primaryBackgroundTapColor;
 
   /// Secondary background [Color] of [MyoroTapStatusEnum.idle].
-  final Color? secondaryIdleBackgroundColor;
+  final Color? secondaryBackgroundIdleColor;
 
   /// Secondary background [Color] of [MyoroTapStatusEnum.hover].
-  final Color? secondaryHoverBackgroundColor;
+  final Color? secondaryBackgroundHoverColor;
 
   /// Secondary background [Color] of [MyoroTapStatusEnum.tap].
-  final Color? secondaryTapBackgroundColor;
+  final Color? secondaryBackgroundTapColor;
 
   /// Primary content [Color].
   final Color? primaryContentColor;
@@ -102,26 +102,26 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
   MyoroDecorationThemeExtension lerp(covariant ThemeExtension<MyoroDecorationThemeExtension>? other, double t) {
     if (other is! MyoroDecorationThemeExtension) return this;
 
-    final primaryIdleBackgroundColor = Color.lerp(this.primaryIdleBackgroundColor, other.primaryIdleBackgroundColor, t);
-    final primaryHoverBackgroundColor = Color.lerp(
-      this.primaryHoverBackgroundColor,
-      other.primaryHoverBackgroundColor,
+    final primaryBackgroundIdleColor = Color.lerp(this.primaryBackgroundIdleColor, other.primaryBackgroundIdleColor, t);
+    final primaryBackgroundHoverColor = Color.lerp(
+      this.primaryBackgroundHoverColor,
+      other.primaryBackgroundHoverColor,
       t,
     );
-    final primaryTapBackgroundColor = Color.lerp(this.primaryTapBackgroundColor, other.primaryTapBackgroundColor, t);
-    final secondaryIdleBackgroundColor = Color.lerp(
-      this.secondaryIdleBackgroundColor,
-      other.secondaryIdleBackgroundColor,
+    final primaryBackgroundTapColor = Color.lerp(this.primaryBackgroundTapColor, other.primaryBackgroundTapColor, t);
+    final secondaryBackgroundIdleColor = Color.lerp(
+      this.secondaryBackgroundIdleColor,
+      other.secondaryBackgroundIdleColor,
       t,
     );
-    final secondaryHoverBackgroundColor = Color.lerp(
-      this.secondaryHoverBackgroundColor,
-      other.secondaryHoverBackgroundColor,
+    final secondaryBackgroundHoverColor = Color.lerp(
+      this.secondaryBackgroundHoverColor,
+      other.secondaryBackgroundHoverColor,
       t,
     );
-    final secondaryTapBackgroundColor = Color.lerp(
-      this.secondaryTapBackgroundColor,
-      other.secondaryTapBackgroundColor,
+    final secondaryBackgroundTapColor = Color.lerp(
+      this.secondaryBackgroundTapColor,
+      other.secondaryBackgroundTapColor,
       t,
     );
     final primaryContentColor = Color.lerp(this.primaryContentColor, other.primaryContentColor, t);
@@ -131,12 +131,12 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
     final borderRadius = BorderRadius.lerp(this.borderRadius, other.borderRadius, t);
 
     return copyWith(
-      primaryIdleBackgroundColor: primaryIdleBackgroundColor,
-      primaryHoverBackgroundColor: primaryHoverBackgroundColor,
-      primaryTapBackgroundColor: primaryTapBackgroundColor,
-      secondaryIdleBackgroundColor: secondaryIdleBackgroundColor,
-      secondaryHoverBackgroundColor: secondaryHoverBackgroundColor,
-      secondaryTapBackgroundColor: secondaryTapBackgroundColor,
+      primaryBackgroundIdleColor: primaryBackgroundIdleColor,
+      primaryBackgroundHoverColor: primaryBackgroundHoverColor,
+      primaryBackgroundTapColor: primaryBackgroundTapColor,
+      secondaryBackgroundIdleColor: secondaryBackgroundIdleColor,
+      secondaryBackgroundHoverColor: secondaryBackgroundHoverColor,
+      secondaryBackgroundTapColor: secondaryBackgroundTapColor,
       primaryContentColor: primaryContentColor,
       primaryContentColorProvided: primaryContentColor != null,
       secondaryContentColor: secondaryContentColor,

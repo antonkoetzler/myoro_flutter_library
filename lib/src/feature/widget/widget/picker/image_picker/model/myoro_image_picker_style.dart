@@ -16,9 +16,9 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       size: Size.lerp(a?.size, b?.size, t),
       borderRadius: BorderRadius.lerp(a?.borderRadius, b?.borderRadius, t),
       overlayCursor: myoroFallbackLerp(a?.overlayCursor, b?.overlayCursor, t),
-      overlayIdleBackgroundColor: Color.lerp(a?.overlayIdleBackgroundColor, b?.overlayIdleBackgroundColor, t),
-      overlayHoverBackgroundColor: Color.lerp(a?.overlayHoverBackgroundColor, b?.overlayHoverBackgroundColor, t),
-      overlayTapBackgroundColor: Color.lerp(a?.overlayTapBackgroundColor, b?.overlayTapBackgroundColor, t),
+      overlayBackgroundIdleColor: Color.lerp(a?.overlayBackgroundIdleColor, b?.overlayBackgroundIdleColor, t),
+      overlayBackgroundHoverColor: Color.lerp(a?.overlayBackgroundHoverColor, b?.overlayBackgroundHoverColor, t),
+      overlayBackgroundTapColor: Color.lerp(a?.overlayBackgroundTapColor, b?.overlayBackgroundTapColor, t),
       overlayUnselectedImageStateIconConfiguration: MyoroIconConfiguration.lerp(
         a?.overlayUnselectedImageStateIconConfiguration,
         b?.overlayUnselectedImageStateIconConfiguration,
@@ -47,9 +47,9 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
     this.size,
     this.borderRadius,
     this.overlayCursor,
-    this.overlayIdleBackgroundColor,
-    this.overlayHoverBackgroundColor,
-    this.overlayTapBackgroundColor,
+    this.overlayBackgroundIdleColor,
+    this.overlayBackgroundHoverColor,
+    this.overlayBackgroundTapColor,
     this.overlayUnselectedImageStateIconConfiguration,
     this.selectionTypeModalConstraints,
     this.selectionTypeModalSpacing,
@@ -62,9 +62,9 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
       size: faker.randomGenerator.boolean() ? myoroFake<Size>() : null,
       borderRadius: faker.randomGenerator.boolean() ? myoroFake<BorderRadius>() : null,
       overlayCursor: faker.randomGenerator.boolean() ? myoroFake<MouseCursor>() : null,
-      overlayIdleBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayHoverBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
-      overlayTapBackgroundColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayBackgroundIdleColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayBackgroundHoverColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      overlayBackgroundTapColor: faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       overlayUnselectedImageStateIconConfiguration: faker.randomGenerator.boolean()
           ? myoroFake<MyoroIconConfiguration>()
           : null,
@@ -85,13 +85,13 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
   final MouseCursor? overlayCursor;
 
   /// Background color of the overlay when idle.
-  final Color? overlayIdleBackgroundColor;
+  final Color? overlayBackgroundIdleColor;
 
   /// Background color of the overlay when hovered.
-  final Color? overlayHoverBackgroundColor;
+  final Color? overlayBackgroundHoverColor;
 
   /// Background color of the overlay when tapped.
-  final Color? overlayTapBackgroundColor;
+  final Color? overlayBackgroundTapColor;
 
   /// Icon configuration of the overlay when no image is selected.
   final MyoroIconConfiguration? overlayUnselectedImageStateIconConfiguration;

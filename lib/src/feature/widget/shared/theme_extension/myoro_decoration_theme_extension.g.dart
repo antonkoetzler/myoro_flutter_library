@@ -18,18 +18,18 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
 
   @override
   MyoroDecorationThemeExtension copyWith({
-    Color? primaryIdleBackgroundColor,
-    bool primaryIdleBackgroundColorProvided = true,
-    Color? primaryHoverBackgroundColor,
-    bool primaryHoverBackgroundColorProvided = true,
-    Color? primaryTapBackgroundColor,
-    bool primaryTapBackgroundColorProvided = true,
-    Color? secondaryIdleBackgroundColor,
-    bool secondaryIdleBackgroundColorProvided = true,
-    Color? secondaryHoverBackgroundColor,
-    bool secondaryHoverBackgroundColorProvided = true,
-    Color? secondaryTapBackgroundColor,
-    bool secondaryTapBackgroundColorProvided = true,
+    Color? primaryBackgroundIdleColor,
+    bool primaryBackgroundIdleColorProvided = true,
+    Color? primaryBackgroundHoverColor,
+    bool primaryBackgroundHoverColorProvided = true,
+    Color? primaryBackgroundTapColor,
+    bool primaryBackgroundTapColorProvided = true,
+    Color? secondaryBackgroundIdleColor,
+    bool secondaryBackgroundIdleColorProvided = true,
+    Color? secondaryBackgroundHoverColor,
+    bool secondaryBackgroundHoverColorProvided = true,
+    Color? secondaryBackgroundTapColor,
+    bool secondaryBackgroundTapColorProvided = true,
     Color? primaryContentColor,
     bool primaryContentColorProvided = true,
     Color? secondaryContentColor,
@@ -42,23 +42,23 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
     bool borderRadiusProvided = true,
   }) {
     return MyoroDecorationThemeExtension(
-      primaryIdleBackgroundColor: primaryIdleBackgroundColorProvided
-          ? (primaryIdleBackgroundColor ?? self.primaryIdleBackgroundColor)
+      primaryBackgroundIdleColor: primaryBackgroundIdleColorProvided
+          ? (primaryBackgroundIdleColor ?? self.primaryBackgroundIdleColor)
           : null,
-      primaryHoverBackgroundColor: primaryHoverBackgroundColorProvided
-          ? (primaryHoverBackgroundColor ?? self.primaryHoverBackgroundColor)
+      primaryBackgroundHoverColor: primaryBackgroundHoverColorProvided
+          ? (primaryBackgroundHoverColor ?? self.primaryBackgroundHoverColor)
           : null,
-      primaryTapBackgroundColor: primaryTapBackgroundColorProvided
-          ? (primaryTapBackgroundColor ?? self.primaryTapBackgroundColor)
+      primaryBackgroundTapColor: primaryBackgroundTapColorProvided
+          ? (primaryBackgroundTapColor ?? self.primaryBackgroundTapColor)
           : null,
-      secondaryIdleBackgroundColor: secondaryIdleBackgroundColorProvided
-          ? (secondaryIdleBackgroundColor ?? self.secondaryIdleBackgroundColor)
+      secondaryBackgroundIdleColor: secondaryBackgroundIdleColorProvided
+          ? (secondaryBackgroundIdleColor ?? self.secondaryBackgroundIdleColor)
           : null,
-      secondaryHoverBackgroundColor: secondaryHoverBackgroundColorProvided
-          ? (secondaryHoverBackgroundColor ?? self.secondaryHoverBackgroundColor)
+      secondaryBackgroundHoverColor: secondaryBackgroundHoverColorProvided
+          ? (secondaryBackgroundHoverColor ?? self.secondaryBackgroundHoverColor)
           : null,
-      secondaryTapBackgroundColor: secondaryTapBackgroundColorProvided
-          ? (secondaryTapBackgroundColor ?? self.secondaryTapBackgroundColor)
+      secondaryBackgroundTapColor: secondaryBackgroundTapColorProvided
+          ? (secondaryBackgroundTapColor ?? self.secondaryBackgroundTapColor)
           : null,
       primaryContentColor: primaryContentColorProvided ? (primaryContentColor ?? self.primaryContentColor) : null,
       secondaryContentColor: secondaryContentColorProvided
@@ -74,12 +74,12 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
   bool operator ==(Object other) {
     return other is MyoroDecorationThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.primaryIdleBackgroundColor == self.primaryIdleBackgroundColor &&
-        other.primaryHoverBackgroundColor == self.primaryHoverBackgroundColor &&
-        other.primaryTapBackgroundColor == self.primaryTapBackgroundColor &&
-        other.secondaryIdleBackgroundColor == self.secondaryIdleBackgroundColor &&
-        other.secondaryHoverBackgroundColor == self.secondaryHoverBackgroundColor &&
-        other.secondaryTapBackgroundColor == self.secondaryTapBackgroundColor &&
+        other.primaryBackgroundIdleColor == self.primaryBackgroundIdleColor &&
+        other.primaryBackgroundHoverColor == self.primaryBackgroundHoverColor &&
+        other.primaryBackgroundTapColor == self.primaryBackgroundTapColor &&
+        other.secondaryBackgroundIdleColor == self.secondaryBackgroundIdleColor &&
+        other.secondaryBackgroundHoverColor == self.secondaryBackgroundHoverColor &&
+        other.secondaryBackgroundTapColor == self.secondaryBackgroundTapColor &&
         other.primaryContentColor == self.primaryContentColor &&
         other.secondaryContentColor == self.secondaryContentColor &&
         other.borderWidth == self.borderWidth &&
@@ -90,12 +90,12 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
   @override
   int get hashCode {
     return Object.hash(
-      self.primaryIdleBackgroundColor,
-      self.primaryHoverBackgroundColor,
-      self.primaryTapBackgroundColor,
-      self.secondaryIdleBackgroundColor,
-      self.secondaryHoverBackgroundColor,
-      self.secondaryTapBackgroundColor,
+      self.primaryBackgroundIdleColor,
+      self.primaryBackgroundHoverColor,
+      self.primaryBackgroundTapColor,
+      self.secondaryBackgroundIdleColor,
+      self.secondaryBackgroundHoverColor,
+      self.secondaryBackgroundTapColor,
       self.primaryContentColor,
       self.secondaryContentColor,
       self.borderWidth,
@@ -107,12 +107,12 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
   @override
   String toString() =>
       'MyoroDecorationThemeExtension(\n'
-      '  primaryIdleBackgroundColor: ${self.primaryIdleBackgroundColor},\n'
-      '  primaryHoverBackgroundColor: ${self.primaryHoverBackgroundColor},\n'
-      '  primaryTapBackgroundColor: ${self.primaryTapBackgroundColor},\n'
-      '  secondaryIdleBackgroundColor: ${self.secondaryIdleBackgroundColor},\n'
-      '  secondaryHoverBackgroundColor: ${self.secondaryHoverBackgroundColor},\n'
-      '  secondaryTapBackgroundColor: ${self.secondaryTapBackgroundColor},\n'
+      '  primaryBackgroundIdleColor: ${self.primaryBackgroundIdleColor},\n'
+      '  primaryBackgroundHoverColor: ${self.primaryBackgroundHoverColor},\n'
+      '  primaryBackgroundTapColor: ${self.primaryBackgroundTapColor},\n'
+      '  secondaryBackgroundIdleColor: ${self.secondaryBackgroundIdleColor},\n'
+      '  secondaryBackgroundHoverColor: ${self.secondaryBackgroundHoverColor},\n'
+      '  secondaryBackgroundTapColor: ${self.secondaryBackgroundTapColor},\n'
       '  primaryContentColor: ${self.primaryContentColor},\n'
       '  secondaryContentColor: ${self.secondaryContentColor},\n'
       '  borderWidth: ${self.borderWidth},\n'
