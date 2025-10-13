@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.5.7
+
+- chore: Update `myoro_flutter_annotations`
+
 ## 2.5.6
 
 - refactor: Post-vibe-code refactor of scrollables
