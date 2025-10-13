@@ -3,20 +3,19 @@ part of 'myoro_input_view_model.dart';
 /// State of [MyoroInputController].
 class MyoroInputState {
   /// Creates a new instance of [MyoroInputState].
-  MyoroInputState(this._configuration, this._formatter)
-    : _showClearTextButtonController = ValueNotifier(
-        _configuration.textProvided
-            ? _configuration.text.isNotEmpty
-            : _configuration.controller?.text.isNotEmpty ?? false,
+  MyoroInputState(MyoroInputConfiguration configuration, this._formatter)
+    : _configurationController = ValueNotifier(configuration),
+      _showClearTextButtonController = ValueNotifier(
+        configuration.textProvided ? configuration.text.isNotEmpty : configuration.controller?.text.isNotEmpty ?? false,
       ),
-      _enabledController = ValueNotifier(_configuration.enabled) {
-    final textProvided = _configuration.textProvided;
+      _enabledController = ValueNotifier(configuration.enabled) {
+    final textProvided = configuration.textProvided;
     if (_formatter != null && !textProvided) controller.text = _formatter.initialText;
-    if (textProvided) controller.text = _configuration.text;
+    if (textProvided) controller.text = configuration.text;
   }
 
   /// Configuration.
-  MyoroInputConfiguration _configuration;
+  final ValueNotifier<MyoroInputConfiguration> _configurationController;
 
   /// Formatter.
   final MyoroInputFormatter? _formatter;
@@ -52,8 +51,15 @@ class MyoroInputState {
     return _showClearTextButtonController;
   }
 
+  /// [_configurationController] getter.
+  ValueNotifier<MyoroInputConfiguration> get configurationController {
+    return _configurationController;
+  }
+
   /// Configuration getter.
-  MyoroInputConfiguration get configuration => _configuration;
+  MyoroInputConfiguration get configuration {
+    return _configurationController.value;
+  }
 
   /// Getter of [_enabledController]'s value.
   bool get enabled {
@@ -67,8 +73,7 @@ class MyoroInputState {
 
   /// Configuration setter.
   set configuration(MyoroInputConfiguration configuration) {
-    if (_configuration == configuration) return;
-    _configuration = configuration;
+    _configurationController.value = configuration;
     enabled = configuration.enabled;
     if (configuration.textProvided) controller.text = configuration.text;
   }

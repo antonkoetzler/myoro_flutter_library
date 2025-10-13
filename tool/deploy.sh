@@ -62,8 +62,8 @@ BEGIN { inserted = 0 }
 # Preserve first two lines of STAGELOG.md
 head -n 1 STAGELOG.md > STAGELOG.tmp && mv STAGELOG.tmp STAGELOG.md
 
-# Generate and format code.
-bash tool/generate_code.sh
+# Setup code from scratch to assure everything is at a factory state.
+bash tool/setup.sh
 
 # Feedback that the deployment was successful
 echo "Updated version to $new_version"

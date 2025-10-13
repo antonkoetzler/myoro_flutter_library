@@ -92,6 +92,7 @@ final class _MyoroInputState extends State<MyoroInput> {
   @override
   Widget build(_) {
     final state = _viewModel.state;
+    final configurationController = state.configurationController;
     final enabledController = state.enabledController;
 
     return MultiProvider(
@@ -99,7 +100,13 @@ final class _MyoroInputState extends State<MyoroInput> {
         Provider.value(value: _style),
         Provider.value(value: _viewModel),
       ],
-      child: ValueListenableBuilder(valueListenable: enabledController, builder: (_, _, _) => const _Wrapper()),
+      child: ValueListenableBuilder(
+        valueListenable: configurationController,
+        builder: (_, configuration, _) => ValueListenableBuilder(
+          valueListenable: enabledController,
+          builder: (_, enabled, _) => _Wrapper(configuration, enabled),
+        ),
+      ),
     );
   }
 }

@@ -32,6 +32,7 @@ migrate_working_dir/
 /build/
 coverage/
 pubspec.lock
+example/pubspec.lock
 storyboard/pubspec.lock
 
 # Symbolication related

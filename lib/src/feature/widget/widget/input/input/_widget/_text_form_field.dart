@@ -2,7 +2,10 @@ part of '../myoro_input.dart';
 
 /// Core input of [MyoroInput].
 final class _TextFormField extends StatelessWidget {
-  const _TextFormField();
+  const _TextFormField(this._configuration, this._enabled);
+
+  final MyoroInputConfiguration _configuration;
+  final bool _enabled;
 
   @override
   Widget build(context) {
@@ -13,25 +16,23 @@ final class _TextFormField extends StatelessWidget {
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
     final primaryColor = style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
 
-    final viewModel = context.read<MyoroInputViewModel>();
+    final viewModel = context.watch<MyoroInputViewModel>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final readOnly = configuration.readOnly;
-    final autofocus = configuration.autofocus;
-    final placeholder = configuration.placeholder;
-    final label = configuration.label;
-    final textAlign = configuration.textAlign;
-    final validation = configuration.validation;
-    final onFieldSubmitted = configuration.onFieldSubmitted;
-    final onChanged = configuration.onChanged;
-    final focusNode = configuration.focusNode;
+    final readOnly = _configuration.readOnly;
+    final autofocus = _configuration.autofocus;
+    final placeholder = _configuration.placeholder;
+    final label = _configuration.label;
+    final textAlign = _configuration.textAlign;
+    final validation = _configuration.validation;
+    final onFieldSubmitted = _configuration.onFieldSubmitted;
+    final onChanged = _configuration.onChanged;
+    final focusNode = _configuration.focusNode;
     final controller = state.controller;
     final formatter = state.formatter;
-    final enabled = state.enabled;
-    final onTap = configuration.onTap;
-    final inputKey = configuration.inputKey;
+    final onTap = _configuration.onTap;
+    final inputKey = _configuration.inputKey;
 
-    final border = style.border ?? themeExtension.border ?? configuration.inputStyle.getBorder(context);
+    final border = style.border ?? themeExtension.border ?? _configuration.inputStyle.getBorder(context);
 
     // Get the border radius from the border to apply it to the background
     final borderRadius = border is OutlineInputBorder ? border.borderRadius : null;
@@ -41,19 +42,20 @@ final class _TextFormField extends StatelessWidget {
       child: ValueListenableBuilder(
         valueListenable: state.showClearTextButtonController,
         builder: (_, showClearTextButton, _) {
-          showClearTextButton = clearTextButtonIcon != null && showClearTextButton && configuration.showClearTextButton;
+          showClearTextButton =
+              clearTextButtonIcon != null && showClearTextButton && _configuration.showClearTextButton;
 
           return Stack(
             children: [
               TextFormField(
                 key: inputKey,
                 ignorePointers: false,
-                enabled: enabled,
+                enabled: _enabled,
                 readOnly: readOnly,
                 autofocus: autofocus,
                 style: textStyle?.withColor(
                   textStyle.color!.withValues(
-                    alpha: enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
+                    alpha: _enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
                   ),
                 ),
                 onTap: onTap,
