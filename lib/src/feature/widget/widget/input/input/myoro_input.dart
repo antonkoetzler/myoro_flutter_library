@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 part '_widget/_checkbox.dart';
 part '_widget/_clear_text_button.dart';
 part '_widget/_label.dart';
+part '_widget/_suffix_button.dart';
 part '_widget/_text_form_field.dart';
+part '_widget/_obscure_text_button.dart';
 part '_widget/_wrapper.dart';
 
 /// Generic input _

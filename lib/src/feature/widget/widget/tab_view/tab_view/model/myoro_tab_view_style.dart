@@ -37,6 +37,4 @@ class MyoroTabViewStyle with _$MyoroTabViewStyleMixin {
 
   /// [TextStyle] of a tab traversal button.
   final TextStyle? tabButtonTextStyle;
-
-  /// Copy with.
 }

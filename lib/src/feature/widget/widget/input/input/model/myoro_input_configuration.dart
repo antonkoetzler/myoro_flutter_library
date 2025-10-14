@@ -36,6 +36,12 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   /// Default value for [showClearTextButton].
   static const showClearTextButtonDefaultValue = true;
 
+  /// Default value for [obscureText].
+  static const obscureTextDefaultValue = false;
+
+  /// Default value for [showObscureTextButton].
+  static const showObscureTextButtonDefaultValue = false;
+
   /// Creates a new instance of [MyoroInputConfiguration].
   const MyoroInputConfiguration({
     this.inputStyle = inputStyleDefaultValue,
@@ -57,6 +63,8 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
     this.onTap,
     this.focusNode,
     this.controller,
+    this.obscureText = obscureTextDefaultValue,
+    this.showObscureTextButton = showObscureTextButtonDefaultValue,
   });
 
   /// Creates a fake instance of [MyoroInputConfiguration] for testing purposes.
@@ -82,6 +90,8 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
       onTap: faker.randomGenerator.boolean() ? (() {}) : null,
       focusNode: faker.randomGenerator.boolean() ? FocusNode() : null,
       controller: faker.randomGenerator.boolean() ? TextEditingController() : null,
+      obscureText: faker.randomGenerator.boolean(),
+      showObscureTextButton: faker.randomGenerator.boolean(),
     );
   }
 
@@ -115,6 +125,9 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
   /// Whether to show [_ClearTextButton] or not.
   final bool showClearTextButton;
 
+  /// Whether to show [_ToggleHiddenButton] or not.
+  final bool showObscureTextButton;
+
   /// On changed when the checkbox next to the input is changed.
   ///
   /// The checkbox is enabled when this function is provided.
@@ -147,6 +160,9 @@ class MyoroInputConfiguration with _$MyoroInputConfigurationMixin {
 
   /// Controller of the input.
   final TextEditingController? controller;
+
+  /// Whether the input should be obscured.
+  final bool obscureText;
 
   /// Returns if [text] was provided.
   bool get textProvided {

@@ -26,9 +26,20 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       spacing: lerpDouble(a?.spacing, b?.spacing, t),
       labelTextStyle: TextStyle.lerp(a?.labelTextStyle, b?.labelTextStyle, t),
       labelBehavior: myoroFallbackLerp(a?.labelBehavior, b?.labelBehavior, t),
-      clearTextButtonPadding: EdgeInsets.lerp(a?.clearTextButtonPadding, b?.clearTextButtonPadding, t),
+      suffixButtonMargin: EdgeInsets.lerp(a?.suffixButtonMargin, b?.suffixButtonMargin, t),
+      suffixButtonIconSize: lerpDouble(a?.suffixButtonIconSize, b?.suffixButtonIconSize, t),
       clearTextButtonIcon: myoroFallbackLerp(a?.clearTextButtonIcon, b?.clearTextButtonIcon, t),
-      clearTextButtonIconSize: lerpDouble(a?.clearTextButtonIconSize, b?.clearTextButtonIconSize, t),
+      obscureTextButtonEnabledIcon: myoroFallbackLerp(
+        a?.obscureTextButtonEnabledIcon,
+        b?.obscureTextButtonEnabledIcon,
+        t,
+      ),
+      obscureTextButtonDisabledIcon: myoroFallbackLerp(
+        a?.obscureTextButtonDisabledIcon,
+        b?.obscureTextButtonDisabledIcon,
+        t,
+      ),
+      suffixButtonStyle: myoroFallbackLerp(a?.suffixButtonStyle, b?.suffixButtonStyle, t),
     );
   }
 
@@ -46,9 +57,12 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.spacing,
     this.labelTextStyle,
     this.labelBehavior,
-    this.clearTextButtonPadding,
+    this.suffixButtonMargin,
+    this.suffixButtonIconSize,
     this.clearTextButtonIcon,
-    this.clearTextButtonIconSize,
+    this.obscureTextButtonEnabledIcon,
+    this.obscureTextButtonDisabledIcon,
+    this.suffixButtonStyle,
   });
 
   factory MyoroInputStyle.fake() {
@@ -66,11 +80,12 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       spacing: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal() : null,
       labelTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       labelBehavior: faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
-      clearTextButtonPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      suffixButtonMargin: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      suffixButtonIconSize: faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 200, min: 20) : null,
       clearTextButtonIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      clearTextButtonIconSize: faker.randomGenerator.boolean()
-          ? faker.randomGenerator.decimal(scale: 200, min: 20)
-          : null,
+      obscureTextButtonEnabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
+      obscureTextButtonDisabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
+      suffixButtonStyle: faker.randomGenerator.boolean() ? myoroFake<MyoroIconTextButtonStyle>() : null,
     );
   }
 
@@ -113,14 +128,21 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
   /// [TextFormField.floatingLabelBehavior]. Used so the label will stay at the top of the
   final FloatingLabelBehavior? labelBehavior;
 
-  /// Padding of [_ClearTextButton].
-  final EdgeInsets? clearTextButtonPadding;
+  /// Margin of the suffix button.
+  final EdgeInsets? suffixButtonMargin;
 
-  /// [IconData] of [_ClearTextButton].
+  /// Size of [suffixButtonIcon].
+  final double? suffixButtonIconSize;
+
+  /// [IconData] of the clear text button.
   final IconData? clearTextButtonIcon;
 
-  /// Size of [clearTextButtonIcon].
-  final double? clearTextButtonIconSize;
+  /// [IconData] of the obscure text button.
+  final IconData? obscureTextButtonEnabledIcon;
 
-  /// Copy with.
+  /// [IconData] of the obscure text button when it is disabled.
+  final IconData? obscureTextButtonDisabledIcon;
+
+  /// [MyoroIconTextButtonStyle] of the suffix button.
+  final MyoroIconTextButtonStyle? suffixButtonStyle;
 }

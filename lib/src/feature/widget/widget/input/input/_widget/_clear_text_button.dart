@@ -8,24 +8,11 @@ final class _ClearTextButton extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final style = context.watch<MyoroInputStyle>();
-    final clearTextButtonPadding =
-        style.clearTextButtonPadding ?? themeExtension.clearTextButtonPadding ?? EdgeInsets.zero;
     final clearTextButtonIcon = style.clearTextButtonIcon ?? themeExtension.clearTextButtonIcon!;
-    final clearTextButtonIconSize = style.clearTextButtonIconSize ?? themeExtension.clearTextButtonIconSize;
 
     final viewModel = context.read<MyoroInputViewModel>();
     final clearText = viewModel.clearText;
 
-    return IntrinsicWidth(
-      child: Padding(
-        padding: clearTextButtonPadding,
-        child: MyoroIconTextButton(
-          configuration: MyoroIconTextButtonConfiguration(
-            onTapUp: (_) => clearText(),
-            iconConfiguration: MyoroIconConfiguration(icon: clearTextButtonIcon, size: clearTextButtonIconSize),
-          ),
-        ),
-      ),
-    );
+    return _SuffixButton(clearTextButtonIcon, clearText);
   }
 }

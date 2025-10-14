@@ -32,6 +32,4 @@ class MyoroGroupRadioStyle with _$MyoroGroupRadioStyleMixin {
 
   /// Cross axis spacing in between each radio.
   final double? runSpacing;
-
-  /// Copy with.
 }

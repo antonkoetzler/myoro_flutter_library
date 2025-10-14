@@ -21,6 +21,4 @@ class MyoroTooltipStyle with _$MyoroTooltipStyleMixin {
 
   /// [Tooltip.margin].
   final EdgeInsets? margin;
-
-  /// Copy with.
 }

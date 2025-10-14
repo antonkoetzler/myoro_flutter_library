@@ -1,8 +1,12 @@
-<h1 align='center'>Myoro Flutter Library</h1>
+<h1 align='center'>Myoro Flutter Library (MFL)</h1>
 
 <p align='center'>
   <img src='https://github.com/user-attachments/assets/ef54976c-4343-4b27-bbac-16453e4f3a01' alt='Logo' width=1000 />
 </p>
+
+<h2 align='center'>🚧STILL BEING ACTIVELY DEVELOPED🚧</h2>
+
+Bugs and imperfections may still exist in MFL. This is an active work in progress.
 
 ## MFL provides
 

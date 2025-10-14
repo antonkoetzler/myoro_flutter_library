@@ -32,6 +32,4 @@ class MyoroFilePickerStyle with _$MyoroFilePickerStyleMixin {
 
   /// [TextStyle] of the text of the [MyoroFilePicker].
   final TextStyle? textStyle;
-
-  /// Copy with.
 }

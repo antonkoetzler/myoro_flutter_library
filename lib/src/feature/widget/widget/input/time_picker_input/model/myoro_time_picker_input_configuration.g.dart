@@ -28,6 +28,7 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
     bool? readOnly,
     bool? autofocus,
     bool? showClearTextButton,
+    bool? showObscureTextButton,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     MyoroInputValidation? validation,
@@ -46,6 +47,7 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
     bool focusNodeProvided = true,
     TextEditingController? controller,
     bool controllerProvided = true,
+    bool? obscureText,
   }) {
     return MyoroTimePickerInputConfiguration(
       inputStyle: inputStyle ?? self.inputStyle,
@@ -79,6 +81,7 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
         other.readOnly == self.readOnly &&
         other.autofocus == self.autofocus &&
         other.showClearTextButton == self.showClearTextButton &&
+        other.showObscureTextButton == self.showObscureTextButton &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.validation == self.validation &&
         other.onFieldSubmitted == self.onFieldSubmitted &&
@@ -87,12 +90,13 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
         other.inputKey == self.inputKey &&
         other.onTap == self.onTap &&
         other.focusNode == self.focusNode &&
-        other.controller == self.controller;
+        other.controller == self.controller &&
+        other.obscureText == self.obscureText;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
+    return Object.hashAll([
       self.inputStyle,
       self.textAlign,
       self.label,
@@ -103,6 +107,7 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
       self.readOnly,
       self.autofocus,
       self.showClearTextButton,
+      self.showObscureTextButton,
       self.checkboxOnChanged,
       self.validation,
       self.onFieldSubmitted,
@@ -112,7 +117,8 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
       self.onTap,
       self.focusNode,
       self.controller,
-    );
+      self.obscureText,
+    ]);
   }
 
   @override
@@ -128,6 +134,7 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
       '  readOnly: ${self.readOnly},\n'
       '  autofocus: ${self.autofocus},\n'
       '  showClearTextButton: ${self.showClearTextButton},\n'
+      '  showObscureTextButton: ${self.showObscureTextButton},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  validation: ${self.validation},\n'
       '  onFieldSubmitted: ${self.onFieldSubmitted},\n'
@@ -137,5 +144,6 @@ mixin _$MyoroTimePickerInputConfigurationMixin {
       '  onTap: ${self.onTap},\n'
       '  focusNode: ${self.focusNode},\n'
       '  controller: ${self.controller},\n'
+      '  obscureText: ${self.obscureText},\n'
       ');';
 }

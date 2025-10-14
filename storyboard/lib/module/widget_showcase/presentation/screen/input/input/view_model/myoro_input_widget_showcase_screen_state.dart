@@ -102,6 +102,22 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// [MyoroInputConfiguration.obscureText]
+  bool _obscureText = MyoroInputConfiguration.obscureTextDefaultValue;
+  bool get obscureText => _obscureText;
+  set obscureText(bool obscureText) {
+    _obscureText = obscureText;
+    notifyListeners();
+  }
+
+  /// [MyoroInputConfiguration.showToggleHiddenButton]
+  bool _showToggleHiddenButton = MyoroInputConfiguration.showToggleHiddenButtonDefaultValue;
+  bool get showToggleHiddenButton => _showToggleHiddenButton;
+  set showToggleHiddenButton(bool showToggleHiddenButton) {
+    _showToggleHiddenButton = showToggleHiddenButton;
+    notifyListeners();
+  }
+
   /// [MyoroInputConfiguration.checkboxOnChanged]
   bool _checkboxOnChangedEnabled = false;
   bool get checkboxOnChangedEnabled => _checkboxOnChangedEnabled;
@@ -224,11 +240,19 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.clearTextButtonPadding]
-  EdgeInsets? _clearTextButtonPadding;
-  EdgeInsets? get clearTextButtonPadding => _clearTextButtonPadding;
-  set clearTextButtonPadding(EdgeInsets? clearTextButtonPadding) {
-    _clearTextButtonPadding = clearTextButtonPadding;
+  /// [MyoroInputThemeExtension.suffixButtonPadding]
+  EdgeInsets? _suffixButtonPadding;
+  EdgeInsets? get suffixButtonPadding => _suffixButtonPadding;
+  set suffixButtonPadding(EdgeInsets? suffixButtonPadding) {
+    _suffixButtonPadding = suffixButtonPadding;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.suffixButtonIconSize]
+  double? _suffixButtonIconSize;
+  double? get suffixButtonIconSize => _suffixButtonIconSize;
+  set suffixButtonIconSize(double? suffixButtonIconSize) {
+    _suffixButtonIconSize = suffixButtonIconSize;
     notifyListeners();
   }
 
@@ -237,6 +261,14 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
   IconData? get clearTextButtonIcon => _clearTextButtonIcon;
   set clearTextButtonIcon(IconData? clearTextButtonIcon) {
     _clearTextButtonIcon = clearTextButtonIcon;
+    notifyListeners();
+  }
+
+  /// [MyoroInputThemeExtension.obscureTextButtonIcon]
+  IconData? _obscureTextButtonIcon;
+  IconData? get obscureTextButtonIcon => _obscureTextButtonIcon;
+  set obscureTextButtonIcon(IconData? obscureTextButtonIcon) {
+    _obscureTextButtonIcon = obscureTextButtonIcon;
     notifyListeners();
   }
 }

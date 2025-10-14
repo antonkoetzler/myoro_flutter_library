@@ -18,6 +18,7 @@ final class _TextFormField extends StatelessWidget {
 
     final viewModel = context.watch<MyoroInputViewModel>();
     final state = viewModel.state;
+    final obscureTextController = state.obscureTextController;
     final readOnly = _configuration.readOnly;
     final autofocus = _configuration.autofocus;
     final placeholder = _configuration.placeholder;
@@ -31,6 +32,7 @@ final class _TextFormField extends StatelessWidget {
     final formatter = state.formatter;
     final onTap = _configuration.onTap;
     final inputKey = _configuration.inputKey;
+    final showObscureTextButton = _configuration.showObscureTextButton;
 
     final border = style.border ?? themeExtension.border ?? _configuration.inputStyle.getBorder(context);
 
@@ -43,56 +45,66 @@ final class _TextFormField extends StatelessWidget {
         valueListenable: state.showClearTextButtonController,
         builder: (_, showClearTextButton, _) {
           showClearTextButton =
-              clearTextButtonIcon != null && showClearTextButton && _configuration.showClearTextButton;
+              showClearTextButton && clearTextButtonIcon != null && _configuration.showClearTextButton;
 
           return Stack(
             children: [
-              TextFormField(
-                key: inputKey,
-                ignorePointers: false,
-                enabled: _enabled,
-                readOnly: readOnly,
-                autofocus: autofocus,
-                style: textStyle?.withColor(
-                  textStyle.color!.withValues(
-                    alpha: _enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
-                  ),
-                ),
-                onTap: onTap,
-                mouseCursor: onTap != null ? SystemMouseCursors.click : null,
-                decoration: InputDecoration(
-                  floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
-                  label: label.isNotEmpty ? const _Label() : null,
-                  hintText: placeholder.isNotEmpty ? placeholder : null,
-                  hintStyle: textStyle?.withColor(
-                    textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
-                  ),
-                  enabledBorder: border,
-                  focusedBorder: border,
-                  errorBorder: border?.copyWith(
-                    borderSide: border.borderSide.copyWith(
-                      color: style.errorBorderColor ?? themeExtension.errorBorderColor,
-                    ),
-                  ),
-                  disabledBorder: border?.copyWith(
-                    borderSide: border.borderSide.copyWith(
-                      color: border.borderSide.color.withValues(
-                        alpha: style.disabledOpacity ?? themeExtension.disabledOpacity,
+              ValueListenableBuilder(
+                valueListenable: obscureTextController,
+                builder: (_, obscureText, _) {
+                  return TextFormField(
+                    key: inputKey,
+                    ignorePointers: false,
+                    enabled: _enabled,
+                    readOnly: readOnly,
+                    autofocus: autofocus,
+                    obscureText: obscureText,
+                    style: textStyle?.withColor(
+                      textStyle.color!.withValues(
+                        alpha: _enabled ? 1 : (style.disabledOpacity ?? themeExtension.disabledOpacity),
                       ),
                     ),
-                  ),
-                  isDense: true,
-                  contentPadding: contentPadding,
-                  suffixIcon: showClearTextButton ? const _ClearTextButton() : null,
-                ),
-                textAlign: textAlign,
-                cursorHeight: style.cursorHeight ?? themeExtension.cursorHeight,
-                validator: (_) => validation?.call(controller.text),
-                inputFormatters: [?formatter],
-                onFieldSubmitted: onFieldSubmitted,
-                onChanged: onChanged,
-                focusNode: focusNode,
-                controller: controller,
+                    onTap: onTap,
+                    mouseCursor: onTap != null ? SystemMouseCursors.click : null,
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: style.labelBehavior ?? themeExtension.labelBehavior,
+                      label: label.isNotEmpty ? const _Label() : null,
+                      hintText: placeholder.isNotEmpty ? placeholder : null,
+                      hintStyle: textStyle?.withColor(
+                        textStyle.color!.withValues(alpha: style.disabledOpacity ?? themeExtension.disabledOpacity),
+                      ),
+                      enabledBorder: border,
+                      focusedBorder: border,
+                      errorBorder: border?.copyWith(
+                        borderSide: border.borderSide.copyWith(
+                          color: style.errorBorderColor ?? themeExtension.errorBorderColor,
+                        ),
+                      ),
+                      disabledBorder: border?.copyWith(
+                        borderSide: border.borderSide.copyWith(
+                          color: border.borderSide.color.withValues(
+                            alpha: style.disabledOpacity ?? themeExtension.disabledOpacity,
+                          ),
+                        ),
+                      ),
+                      isDense: true,
+                      contentPadding: contentPadding,
+                      suffixIcon: showObscureTextButton
+                          ? _ObscureTextButton(obscureText)
+                          : showClearTextButton
+                          ? const _ClearTextButton()
+                          : null,
+                    ),
+                    textAlign: textAlign,
+                    cursorHeight: style.cursorHeight ?? themeExtension.cursorHeight,
+                    validator: (_) => validation?.call(controller.text),
+                    inputFormatters: [?formatter],
+                    onFieldSubmitted: onFieldSubmitted,
+                    onChanged: onChanged,
+                    focusNode: focusNode,
+                    controller: controller,
+                  );
+                },
               ),
             ],
           );

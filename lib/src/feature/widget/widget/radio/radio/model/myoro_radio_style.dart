@@ -47,6 +47,4 @@ class MyoroRadioStyle with _$MyoroRadioStyleMixin {
 
   /// Background (splash) color size.
   final double? splashRadius;
-
-  /// Copy with.
 }

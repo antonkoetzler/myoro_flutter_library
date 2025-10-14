@@ -28,6 +28,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
     bool? readOnly,
     bool? autofocus,
     bool? showClearTextButton,
+    bool? showObscureTextButton,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     MyoroInputValidation? validation,
@@ -46,6 +47,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
     bool focusNodeProvided = true,
     TextEditingController? controller,
     bool controllerProvided = true,
+    bool? obscureText,
   }) {
     return MyoroDatePickerInputConfiguration(
       inputStyle: inputStyle ?? self.inputStyle,
@@ -78,6 +80,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
         other.readOnly == self.readOnly &&
         other.autofocus == self.autofocus &&
         other.showClearTextButton == self.showClearTextButton &&
+        other.showObscureTextButton == self.showObscureTextButton &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.validation == self.validation &&
         other.onFieldSubmitted == self.onFieldSubmitted &&
@@ -86,12 +89,13 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
         other.inputKey == self.inputKey &&
         other.onTap == self.onTap &&
         other.focusNode == self.focusNode &&
-        other.controller == self.controller;
+        other.controller == self.controller &&
+        other.obscureText == self.obscureText;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
+    return Object.hashAll([
       self.inputStyle,
       self.textAlign,
       self.label,
@@ -102,6 +106,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       self.readOnly,
       self.autofocus,
       self.showClearTextButton,
+      self.showObscureTextButton,
       self.checkboxOnChanged,
       self.validation,
       self.onFieldSubmitted,
@@ -111,7 +116,8 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       self.onTap,
       self.focusNode,
       self.controller,
-    );
+      self.obscureText,
+    ]);
   }
 
   @override
@@ -127,6 +133,7 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       '  readOnly: ${self.readOnly},\n'
       '  autofocus: ${self.autofocus},\n'
       '  showClearTextButton: ${self.showClearTextButton},\n'
+      '  showObscureTextButton: ${self.showObscureTextButton},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  validation: ${self.validation},\n'
       '  onFieldSubmitted: ${self.onFieldSubmitted},\n'
@@ -136,5 +143,6 @@ mixin _$MyoroDatePickerInputConfigurationMixin {
       '  onTap: ${self.onTap},\n'
       '  focusNode: ${self.focusNode},\n'
       '  controller: ${self.controller},\n'
+      '  obscureText: ${self.obscureText},\n'
       ');';
 }

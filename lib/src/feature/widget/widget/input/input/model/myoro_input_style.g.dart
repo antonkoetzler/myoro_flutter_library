@@ -43,12 +43,18 @@ mixin _$MyoroInputStyleMixin {
     bool labelTextStyleProvided = true,
     FloatingLabelBehavior? labelBehavior,
     bool labelBehaviorProvided = true,
-    EdgeInsets? clearTextButtonPadding,
-    bool clearTextButtonPaddingProvided = true,
+    EdgeInsets? suffixButtonMargin,
+    bool suffixButtonMarginProvided = true,
+    double? suffixButtonIconSize,
+    bool suffixButtonIconSizeProvided = true,
     IconData? clearTextButtonIcon,
     bool clearTextButtonIconProvided = true,
-    double? clearTextButtonIconSize,
-    bool clearTextButtonIconSizeProvided = true,
+    IconData? obscureTextButtonEnabledIcon,
+    bool obscureTextButtonEnabledIconProvided = true,
+    IconData? obscureTextButtonDisabledIcon,
+    bool obscureTextButtonDisabledIconProvided = true,
+    MyoroIconTextButtonStyle? suffixButtonStyle,
+    bool suffixButtonStyleProvided = true,
   }) {
     return MyoroInputStyle(
       border: borderProvided ? (border ?? self.border) : null,
@@ -64,13 +70,16 @@ mixin _$MyoroInputStyleMixin {
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
       labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
       labelBehavior: labelBehaviorProvided ? (labelBehavior ?? self.labelBehavior) : null,
-      clearTextButtonPadding: clearTextButtonPaddingProvided
-          ? (clearTextButtonPadding ?? self.clearTextButtonPadding)
-          : null,
+      suffixButtonMargin: suffixButtonMarginProvided ? (suffixButtonMargin ?? self.suffixButtonMargin) : null,
+      suffixButtonIconSize: suffixButtonIconSizeProvided ? (suffixButtonIconSize ?? self.suffixButtonIconSize) : null,
       clearTextButtonIcon: clearTextButtonIconProvided ? (clearTextButtonIcon ?? self.clearTextButtonIcon) : null,
-      clearTextButtonIconSize: clearTextButtonIconSizeProvided
-          ? (clearTextButtonIconSize ?? self.clearTextButtonIconSize)
+      obscureTextButtonEnabledIcon: obscureTextButtonEnabledIconProvided
+          ? (obscureTextButtonEnabledIcon ?? self.obscureTextButtonEnabledIcon)
           : null,
+      obscureTextButtonDisabledIcon: obscureTextButtonDisabledIconProvided
+          ? (obscureTextButtonDisabledIcon ?? self.obscureTextButtonDisabledIcon)
+          : null,
+      suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
     );
   }
 
@@ -91,9 +100,12 @@ mixin _$MyoroInputStyleMixin {
         other.spacing == self.spacing &&
         other.labelTextStyle == self.labelTextStyle &&
         other.labelBehavior == self.labelBehavior &&
-        other.clearTextButtonPadding == self.clearTextButtonPadding &&
+        other.suffixButtonMargin == self.suffixButtonMargin &&
+        other.suffixButtonIconSize == self.suffixButtonIconSize &&
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
-        other.clearTextButtonIconSize == self.clearTextButtonIconSize;
+        other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
+        other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
+        other.suffixButtonStyle == self.suffixButtonStyle;
   }
 
   @override
@@ -112,9 +124,12 @@ mixin _$MyoroInputStyleMixin {
       self.spacing,
       self.labelTextStyle,
       self.labelBehavior,
-      self.clearTextButtonPadding,
+      self.suffixButtonMargin,
+      self.suffixButtonIconSize,
       self.clearTextButtonIcon,
-      self.clearTextButtonIconSize,
+      self.obscureTextButtonEnabledIcon,
+      self.obscureTextButtonDisabledIcon,
+      self.suffixButtonStyle,
     );
   }
 
@@ -134,8 +149,11 @@ mixin _$MyoroInputStyleMixin {
       '  spacing: ${self.spacing},\n'
       '  labelTextStyle: ${self.labelTextStyle},\n'
       '  labelBehavior: ${self.labelBehavior},\n'
-      '  clearTextButtonPadding: ${self.clearTextButtonPadding},\n'
+      '  suffixButtonMargin: ${self.suffixButtonMargin},\n'
+      '  suffixButtonIconSize: ${self.suffixButtonIconSize},\n'
       '  clearTextButtonIcon: ${self.clearTextButtonIcon},\n'
-      '  clearTextButtonIconSize: ${self.clearTextButtonIconSize},\n'
+      '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
+      '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
+      '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
       ');';
 }

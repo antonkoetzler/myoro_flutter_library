@@ -107,6 +107,4 @@ class MyoroImagePickerStyle with _$MyoroImagePickerStyleMixin {
 
   /// Gallery icon of the selection type modal button.
   final IconData? selectionTypeModalButtonGalleryIcon;
-
-  /// Copy with.
 }

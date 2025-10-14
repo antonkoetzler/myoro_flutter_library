@@ -28,6 +28,7 @@ mixin _$MyoroInputConfigurationMixin {
     bool? readOnly,
     bool? autofocus,
     bool? showClearTextButton,
+    bool? showObscureTextButton,
     MyoroInputCheckboxOnChanged? checkboxOnChanged,
     bool checkboxOnChangedProvided = true,
     MyoroInputValidation? validation,
@@ -46,6 +47,7 @@ mixin _$MyoroInputConfigurationMixin {
     bool focusNodeProvided = true,
     TextEditingController? controller,
     bool controllerProvided = true,
+    bool? obscureText,
   }) {
     return MyoroInputConfiguration(
       inputStyle: inputStyle ?? self.inputStyle,
@@ -58,6 +60,7 @@ mixin _$MyoroInputConfigurationMixin {
       readOnly: readOnly ?? self.readOnly,
       autofocus: autofocus ?? self.autofocus,
       showClearTextButton: showClearTextButton ?? self.showClearTextButton,
+      showObscureTextButton: showObscureTextButton ?? self.showObscureTextButton,
       checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
       validation: validationProvided ? (validation ?? self.validation) : null,
       onFieldSubmitted: onFieldSubmittedProvided ? (onFieldSubmitted ?? self.onFieldSubmitted) : null,
@@ -67,6 +70,7 @@ mixin _$MyoroInputConfigurationMixin {
       onTap: onTapProvided ? (onTap ?? self.onTap) : null,
       focusNode: focusNodeProvided ? (focusNode ?? self.focusNode) : null,
       controller: controllerProvided ? (controller ?? self.controller) : null,
+      obscureText: obscureText ?? self.obscureText,
     );
   }
 
@@ -84,6 +88,7 @@ mixin _$MyoroInputConfigurationMixin {
         other.readOnly == self.readOnly &&
         other.autofocus == self.autofocus &&
         other.showClearTextButton == self.showClearTextButton &&
+        other.showObscureTextButton == self.showObscureTextButton &&
         other.checkboxOnChanged == self.checkboxOnChanged &&
         other.validation == self.validation &&
         other.onFieldSubmitted == self.onFieldSubmitted &&
@@ -92,12 +97,13 @@ mixin _$MyoroInputConfigurationMixin {
         other.inputKey == self.inputKey &&
         other.onTap == self.onTap &&
         other.focusNode == self.focusNode &&
-        other.controller == self.controller;
+        other.controller == self.controller &&
+        other.obscureText == self.obscureText;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
+    return Object.hashAll([
       self.inputStyle,
       self.textAlign,
       self.label,
@@ -108,6 +114,7 @@ mixin _$MyoroInputConfigurationMixin {
       self.readOnly,
       self.autofocus,
       self.showClearTextButton,
+      self.showObscureTextButton,
       self.checkboxOnChanged,
       self.validation,
       self.onFieldSubmitted,
@@ -117,7 +124,8 @@ mixin _$MyoroInputConfigurationMixin {
       self.onTap,
       self.focusNode,
       self.controller,
-    );
+      self.obscureText,
+    ]);
   }
 
   @override
@@ -133,6 +141,7 @@ mixin _$MyoroInputConfigurationMixin {
       '  readOnly: ${self.readOnly},\n'
       '  autofocus: ${self.autofocus},\n'
       '  showClearTextButton: ${self.showClearTextButton},\n'
+      '  showObscureTextButton: ${self.showObscureTextButton},\n'
       '  checkboxOnChanged: ${self.checkboxOnChanged},\n'
       '  validation: ${self.validation},\n'
       '  onFieldSubmitted: ${self.onFieldSubmitted},\n'
@@ -142,5 +151,6 @@ mixin _$MyoroInputConfigurationMixin {
       '  onTap: ${self.onTap},\n'
       '  focusNode: ${self.focusNode},\n'
       '  controller: ${self.controller},\n'
+      '  obscureText: ${self.obscureText},\n'
       ');';
 }

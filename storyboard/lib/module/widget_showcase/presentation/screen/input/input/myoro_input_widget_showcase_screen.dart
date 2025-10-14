@@ -35,7 +35,7 @@ part '_widget/_cursor_height_option.dart';
 part '_widget/_disabled_opacity_option.dart';
 part '_widget/_spacing_option.dart';
 part '_widget/_label_behavior_option.dart';
-part '_widget/_clear_text_button_padding_option.dart';
+part '_widget/_suffix_button_padding_option.dart';
 part '_widget/_clear_text_button_icon_option.dart';
 
 /// Widget showcase of [MyoroInput].
@@ -67,7 +67,7 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
   static const disabledOpacityOptionKey = 'disabledOpacityOption';
   static const spacingOptionKey = 'spacingOption';
   static const labelBehaviorOptionKey = 'labelBehaviorOption';
-  static const clearTextButtonPaddingOptionKey = 'clearTextButtonPaddingOption';
+  static const suffixButtonPaddingOptionKey = 'suffixButtonPaddingOption';
   static const clearTextButtonIconOptionKey = 'clearTextButtonIconOption';
 
   // Configuration-related options (behavior, data, callbacks, structural properties)
@@ -103,7 +103,7 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
     _DisabledOpacityOption(),
     _SpacingOption(),
     _LabelBehaviorOption(),
-    _ClearTextButtonPaddingOption(),
+    _SuffixButtonPaddingOption(),
     _ClearTextButtonIconOption(),
   ];
 
@@ -136,7 +136,7 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
     disabledOpacityOptionKey: _DisabledOpacityOption(),
     spacingOptionKey: _SpacingOption(),
     labelBehaviorOptionKey: _LabelBehaviorOption(),
-    clearTextButtonPaddingOptionKey: _ClearTextButtonPaddingOption(),
+    suffixButtonPaddingOptionKey: _SuffixButtonPaddingOption(),
     clearTextButtonIconOptionKey: _ClearTextButtonIconOption(),
   };
 

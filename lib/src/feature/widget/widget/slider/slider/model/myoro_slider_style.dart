@@ -30,6 +30,4 @@ class MyoroSliderStyle with _$MyoroSliderStyleMixin {
 
   /// [TextAlign] of [_IndicatorText].
   final TextAlign? indicatorTextAlignment;
-
-  /// Copy with.
 }

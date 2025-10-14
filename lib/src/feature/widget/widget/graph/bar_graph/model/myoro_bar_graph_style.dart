@@ -69,6 +69,4 @@ class MyoroBarGraphStyle with _$MyoroBarGraphStyleMixin {
 
   /// Height of a horizontal (x axis) [_SideTitle].
   final double? horizontalSideTitleReversedSize;
-
-  /// Copy with.
 }

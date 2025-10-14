@@ -32,6 +32,4 @@ class MyoroPieGraphStyle with _$MyoroPieGraphStyleMixin {
 
   /// Default itemRadius (aka height) of an item.
   final double? itemRadius;
-
-  /// Copy with.
 }

@@ -20,6 +20,8 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       readOnly: _state.readOnly,
       autofocus: true,
       showClearTextButton: _state.showClearTextButton,
+      obscureText: _state.obscureText,
+      showToggleHiddenButton: _state.showToggleHiddenButton,
       checkboxOnChanged:
           _state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
       validation: _state.validationEnabled ? _validation : null,
@@ -77,8 +79,10 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       spacing: _state.spacing,
       labelTextStyle: _state.labelTextStyle,
       labelBehavior: _state.labelBehavior,
-      clearTextButtonPadding: _state.clearTextButtonPadding,
+      suffixButtonPadding: _state.suffixButtonPadding,
+      suffixButtonIconSize: _state.suffixButtonIconSize,
       clearTextButtonIcon: _state.clearTextButtonIcon,
+      obscureTextButtonIcon: _state.obscureTextButtonIcon,
     );
   }
 
