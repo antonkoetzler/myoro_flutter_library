@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.6.1
+
+- fix: Fix `pubspec.yaml`s using `myoro_flutter_annotations` as a `path`
+
 ## 2.6.0
 
 - feature: `MyoroInputConfiguration.obscureText`
