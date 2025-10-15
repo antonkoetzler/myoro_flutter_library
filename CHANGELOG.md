@@ -8,7 +8,7 @@
 
 - refactor: Post-vibe-code refactor of scrollables
 - improvement: Adjusted constraints of modals/bottom sheets
-- improvement: Added the MFL logo as the icon in the storyboard
+- improvement: Added the MFL logo as the icon in the storybook
 - fix: Adjust styling of selected `_TabButton` in `MyoroTabView`
 
 ## 2.5.5
@@ -77,7 +77,7 @@
 - feature: `MyoroSlider` (V2) and `MyoroRangeSlider`
 - feature: Localization for default text (English, Portuguese, and Spanish)
 - refactor: Correctly apply MVVM-C logic and nomenclature in dropdowns
-- fix: Various improvements and bug fixes to the storyboard
+- fix: Various improvements and bug fixes to the storybook
 - chore: New documentation added
 - improvement: Folder structure
 
@@ -135,7 +135,7 @@
 
 ## 1.3.0
 
-- fix: Selected Widget button was not hovered when selected in storyboard
+- fix: Selected Widget button was not hovered when selected in storybook
 - feature: `MyoroMaterialApp.colorSchemeBuilder` and `MyoroMaterialApp.textThemeBuilder`
 - feature: Make `MyoroMaterialApp` support `GoRouter`
 - refactor: `MyoroTypographyDesignSystem`

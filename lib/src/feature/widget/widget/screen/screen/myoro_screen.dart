@@ -55,8 +55,10 @@ final class _MyoroScreenState extends State<MyoroScreen> {
             final selectedDrawer = selectedDrawerController.value;
 
             final selectedDrawerNotNull = selectedDrawer != null;
-            final drawerEnableOpenDragGesture = !isEndDrawer && selectedDrawerNotNull && _configuration.drawerEnableOpenDragGesture;
-            final endDrawerEnableOpenDragGesture = isEndDrawer && selectedDrawerNotNull && _configuration.endDrawerEnableOpenDragGesture;
+            final drawerEnableOpenDragGesture =
+                !isEndDrawer && selectedDrawerNotNull && _configuration.drawerEnableOpenDragGesture;
+            final endDrawerEnableOpenDragGesture =
+                isEndDrawer && selectedDrawerNotNull && _configuration.endDrawerEnableOpenDragGesture;
 
             return Scaffold(
               key: _drawerController.scaffoldKey,

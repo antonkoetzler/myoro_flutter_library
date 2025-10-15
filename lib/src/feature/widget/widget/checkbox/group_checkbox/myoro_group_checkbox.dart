@@ -10,7 +10,10 @@ class MyoroGroupCheckbox extends StatefulWidget {
     this.configuration = const MyoroGroupCheckboxConfiguration(),
     this.style = const MyoroGroupCheckboxStyle(),
     this.checkboxStyle = const MyoroCheckboxStyle(),
-  }) : assert((controller != null) ^ (checkboxes != null), '[MyoroGroupCheckbox]: [controller] (x)or [checkboxes] must be provided.');
+  }) : assert(
+         (controller != null) ^ (checkboxes != null),
+         '[MyoroGroupCheckbox]: [controller] (x)or [checkboxes] must be provided.',
+       );
 
   /// Controller.
   final MyoroGroupCheckboxController? controller;

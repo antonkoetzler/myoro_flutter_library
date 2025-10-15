@@ -3,7 +3,8 @@ part of 'myoro_menu_view_model.dart';
 /// State of [MyoroMenuController].
 class MyoroMenuState<T, C extends MyoroMenuConfiguration<T>> {
   /// Creates a new instance of [MyoroMenuState].
-  MyoroMenuState(this.configuration, Set<T> initiallySelectedItems) : _selectedItemsController = ValueNotifier(initiallySelectedItems) {
+  MyoroMenuState(this.configuration, Set<T> initiallySelectedItems)
+    : _selectedItemsController = ValueNotifier(initiallySelectedItems) {
     _itemsRequestController.requestCallback = configuration.request;
   }
 

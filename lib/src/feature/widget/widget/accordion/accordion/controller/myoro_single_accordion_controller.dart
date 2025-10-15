@@ -4,7 +4,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// Controller of [MyoroSingleAccordion].
 class MyoroSingleAccordionController<T> extends MyoroAccordionController<T, MyoroSingleAccordionViewModel<T>> {
   /// Default constructor.
-  MyoroSingleAccordionController({required MyoroSingleAccordionConfiguration<T> configuration}) : super(MyoroSingleAccordionViewModel(configuration)) {
+  MyoroSingleAccordionController({required MyoroSingleAccordionConfiguration<T> configuration})
+    : super(MyoroSingleAccordionViewModel(configuration)) {
     viewModel.state.selectedItemsController.addListener(_selectedItemsControllerListener);
   }
 

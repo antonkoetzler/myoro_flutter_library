@@ -3,7 +3,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroMultiAccordion].
 class MyoroMultiAccordionController<T> extends MyoroAccordionController<T, MyoroMultiAccordionViewModel<T>> {
-  MyoroMultiAccordionController({required MyoroMultiAccordionConfiguration<T> configuration}) : super(MyoroMultiAccordionViewModel(configuration));
+  MyoroMultiAccordionController({required MyoroMultiAccordionConfiguration<T> configuration})
+    : super(MyoroMultiAccordionViewModel(configuration));
 
   /// [ValueNotifier] of the selected items of the [MyoroMultiAccordion].
   ValueNotifier<Set<T>> get selectedItemsController {

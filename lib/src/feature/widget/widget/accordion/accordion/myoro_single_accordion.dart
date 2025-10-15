@@ -2,7 +2,12 @@ part of 'bundle/myoro_accordion_bundle.dart';
 
 /// Single accordion of MFL.
 class MyoroSingleAccordion<T> extends StatefulWidget {
-  const MyoroSingleAccordion({super.key, this.style = const MyoroAccordionStyle(), this.controller, this.configuration});
+  const MyoroSingleAccordion({
+    super.key,
+    this.style = const MyoroAccordionStyle(),
+    this.controller,
+    this.configuration,
+  });
 
   /// Style.
   final MyoroAccordionStyle style;

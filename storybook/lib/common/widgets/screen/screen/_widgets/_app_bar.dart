@@ -1,0 +1,40 @@
+part of '../storybook_screen.dart';
+
+/// App bar of [StorybookScreen].
+final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
+  const _AppBar();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 15);
+
+  @override
+  Widget build(context) {
+    final viewModel = context.read<StorybookScreenViewModel>();
+    final configuration = viewModel.configuration;
+    final themeExtension = context.resolveThemeExtension<StorybookScreenThemeExtension>();
+
+    return MyoroAppBar(
+      showBottomDivider: true,
+      child: Row(
+        spacing: themeExtension.spacing,
+        children: [
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: themeExtension.spacing / 2,
+              children: [
+                if (configuration.onPrevious != null) const _PreviousPageButton(),
+                const Expanded(child: _Title()),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: themeExtension.spacing / 2,
+            children: [...configuration.extraActionWidgets, const _ToggleThemeButton()],
+          ),
+        ],
+      ),
+    );
+  }
+}

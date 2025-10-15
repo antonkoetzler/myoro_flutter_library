@@ -37,7 +37,11 @@ final class _Base<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidg
               itemCount: items.length,
               itemBuilder: (_, index) {
                 final item = items.elementAt(index);
-                return _Item<T, V>(item: item, isSelected: selectedItems.contains(item), isLastItem: index == items.length - 1);
+                return _Item<T, V>(
+                  item: item,
+                  isSelected: selectedItems.contains(item),
+                  isLastItem: index == items.length - 1,
+                );
               },
             ),
           );

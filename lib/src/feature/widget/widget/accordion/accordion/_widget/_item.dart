@@ -12,7 +12,11 @@ final class _Item<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidg
   Widget build(_) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [_ItemTitleButton<T, V>(item, isSelected), _ItemContent<T, V>(item, isSelected), if (!isLastItem) const MyoroBasicDivider(Axis.horizontal)],
+      children: [
+        _ItemTitleButton<T, V>(item, isSelected),
+        _ItemContent<T, V>(item, isSelected),
+        if (!isLastItem) const MyoroBasicDivider(Axis.horizontal),
+      ],
     );
   }
 }

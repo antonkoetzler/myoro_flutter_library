@@ -11,10 +11,14 @@ final class _ItemTitleButton<T, V extends MyoroAccordionViewModel<T>> extends St
   Widget build(BuildContext context) {
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final accordionStyle = context.watch<MyoroAccordionStyle>();
-    final itemTitleButtonSpacing = accordionStyle.itemTitleButtonSpacing ?? accordionThemeExtension.itemTitleButtonSpacing;
-    final itemTitleButtonTitleTextStyle = accordionStyle.itemTitleButtonTitleTextStyle ?? accordionThemeExtension.itemTitleButtonTitleTextStyle;
+    final itemTitleButtonSpacing =
+        accordionStyle.itemTitleButtonSpacing ?? accordionThemeExtension.itemTitleButtonSpacing;
+    final itemTitleButtonTitleTextStyle =
+        accordionStyle.itemTitleButtonTitleTextStyle ?? accordionThemeExtension.itemTitleButtonTitleTextStyle;
     final itemTitleButtonContentPadding =
-        accordionStyle.itemTitleButtonContentPadding ?? accordionThemeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
+        accordionStyle.itemTitleButtonContentPadding ??
+        accordionThemeExtension.itemTitleButtonContentPadding ??
+        EdgeInsets.zero;
 
     const buttonStyle = MyoroButtonStyle(borderRadius: BorderRadius.zero);
 
@@ -35,7 +39,9 @@ final class _ItemTitleButton<T, V extends MyoroAccordionViewModel<T>> extends St
           spacing: itemTitleButtonSpacing ?? 0,
           children: [
             Expanded(
-              child: itemTitleButtonTitleTextStyle != null ? DefaultTextStyle(style: itemTitleButtonTitleTextStyle, child: title) : title,
+              child: itemTitleButtonTitleTextStyle != null
+                  ? DefaultTextStyle(style: itemTitleButtonTitleTextStyle, child: title)
+                  : title,
             ),
             _ItemTitleButtonArrow(_isSelected),
           ],

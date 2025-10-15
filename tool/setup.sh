@@ -4,7 +4,7 @@
 rm -f pubspec.lock
 flutter clean
 flutter pub get
-cd storyboard
+cd storybook
 rm -f pubspec.lock
 flutter clean
 flutter pub get

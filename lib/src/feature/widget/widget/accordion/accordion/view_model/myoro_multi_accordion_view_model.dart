@@ -3,7 +3,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 /// View model of [MyoroMultiAccordion].
 class MyoroMultiAccordionViewModel<T> extends MyoroAccordionViewModel<T> {
   /// Default constructor.
-  MyoroMultiAccordionViewModel(MyoroMultiAccordionConfiguration<T> configuration) : super(configuration, configuration.selectedItems);
+  MyoroMultiAccordionViewModel(MyoroMultiAccordionConfiguration<T> configuration)
+    : super(configuration, configuration.selectedItems);
 
   /// Toggles an item.
   @override

@@ -77,6 +77,6 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 Every folder in `lib/src/widget` is a `Widget` category. Every folder within a widget category folder is a `Widget`. Within `Widget` folders, you will create all of the generic folders that are used within the `Widget`'s implementation.
 
-## Storyboard
+## Storybook
 
-Application used to design and view the functionality of every MFL `Widget`. Every MFL `Widget` must have a `Widget` showcase in the storyboard. The code standards of the storyboard follow the same principles as `lib`, thus the folder structure is quite self explanatory.
+Application used to design and view the functionality of every MFL `Widget`. Every MFL `Widget` must have a `Widget` showcase in the storybook. The code standards of the storybook follow the same principles as `lib`, thus the folder structure is quite self explanatory.

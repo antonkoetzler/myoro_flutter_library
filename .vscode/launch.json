@@ -2,10 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Storyboard",
+      "name": "Storybook",
       "request": "launch",
       "type": "dart",
-      "cwd": "storyboard",
+      "cwd": "storybook",
       "program": "lib/main.dart",
       "deviceId": "${input:deviceId}"
     }

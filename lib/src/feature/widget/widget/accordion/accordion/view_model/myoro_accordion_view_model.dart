@@ -5,7 +5,8 @@ part 'myoro_accordion_state.dart';
 
 /// Base accordion view model.
 abstract class MyoroAccordionViewModel<T> {
-  MyoroAccordionViewModel(MyoroAccordionConfiguration<T> configuration, Set<T> selectedItems) : _state = MyoroAccordionState(configuration, selectedItems);
+  MyoroAccordionViewModel(MyoroAccordionConfiguration<T> configuration, Set<T> selectedItems)
+    : _state = MyoroAccordionState(configuration, selectedItems);
 
   /// State
   final MyoroAccordionState<T> _state;

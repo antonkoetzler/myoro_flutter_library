@@ -33,7 +33,7 @@ migrate_working_dir/
 coverage/
 pubspec.lock
 example/pubspec.lock
-storyboard/pubspec.lock
+storybook/pubspec.lock
 
 # Symbolication related
 app.*.symbols
