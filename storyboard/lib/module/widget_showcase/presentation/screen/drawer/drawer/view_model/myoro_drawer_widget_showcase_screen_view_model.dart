@@ -19,6 +19,9 @@ final class MyoroDrawerWidgetShowcaseScreenViewModel {
   /// [bool] controlling if the drawer is going to be displayed on the left or right side.
   bool isEndDrawer = false;
 
+  /// [MyoroDrawerThemeExtension.closeButtonContentPadding]
+  EdgeInsets? closeButtonContentPadding;
+
   /// Opens the drawer.
   void showDrawer(BuildContext context) {
     context.openDrawer(
@@ -30,6 +33,7 @@ final class MyoroDrawerWidgetShowcaseScreenViewModel {
           barrierDismissable: barrierDismissable,
           child: const SizedBox.shrink(),
         ),
+        style: MyoroDrawerStyle(closeButtonContentPadding: closeButtonContentPadding),
       ),
     );
   }

@@ -15,6 +15,10 @@ final class _TextFormField extends StatelessWidget {
     final textStyle = style.inputTextStyle ?? themeExtension.inputTextStyle;
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding;
     final primaryColor = style.primaryColor ?? themeExtension.primaryColor ?? MyoroColors.transparent;
+    final suffixIconConstraints =
+        style.suffixIconConstraints ??
+        themeExtension.suffixIconConstraints ??
+        const BoxConstraints(minWidth: 0, minHeight: 0);
 
     final viewModel = context.watch<MyoroInputViewModel>();
     final state = viewModel.state;
@@ -89,6 +93,7 @@ final class _TextFormField extends StatelessWidget {
                       ),
                       isDense: true,
                       contentPadding: contentPadding,
+                      suffixIconConstraints: suffixIconConstraints,
                       suffixIcon: showObscureTextButton
                           ? _ObscureTextButton(obscureText)
                           : showClearTextButton

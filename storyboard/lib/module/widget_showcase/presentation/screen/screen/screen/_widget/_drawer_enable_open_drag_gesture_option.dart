@@ -1,0 +1,18 @@
+part of '../myoro_screen_widget_showcase_screen.dart';
+
+/// [MyoroScreenConfiguration.drawerEnableOpenDragGesture] option of [MyoroScreenWidgetShowcaseScreen].
+final class _DrawerEnableOpenDragGestureOption extends StatelessWidget {
+  const _DrawerEnableOpenDragGestureOption();
+
+  @override
+  Widget build(context) {
+    final viewModel = context.read<MyoroScreenWidgetShowcaseScreenViewModel>();
+
+    return MyoroCheckbox(
+      configuration: MyoroCheckboxConfiguration(
+        label: 'Enable drawer open drag gesture?',
+        onChanged: (value) => viewModel.state.drawerEnableOpenDragGesture = value,
+      ),
+    );
+  }
+}

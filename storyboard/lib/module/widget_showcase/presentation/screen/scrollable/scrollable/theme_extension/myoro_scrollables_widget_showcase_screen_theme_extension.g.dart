@@ -19,9 +19,12 @@ mixin _$MyoroScrollablesWidgetShowcaseScreenThemeExtensionMixin
       this as MyoroScrollablesWidgetShowcaseScreenThemeExtension;
 
   @override
-  MyoroScrollablesWidgetShowcaseScreenThemeExtension copyWith({BoxConstraints? scrollableConstraints}) {
+  MyoroScrollablesWidgetShowcaseScreenThemeExtension copyWith({
+    BoxConstraints? scrollableConstraints,
+  }) {
     return MyoroScrollablesWidgetShowcaseScreenThemeExtension(
-      scrollableConstraints: scrollableConstraints ?? self.scrollableConstraints,
+      scrollableConstraints:
+          scrollableConstraints ?? self.scrollableConstraints,
     );
   }
 

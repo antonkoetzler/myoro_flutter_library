@@ -9,6 +9,7 @@ class MyoroScreen extends StatefulWidget {
   /// Configuration.
   final MyoroScreenConfiguration configuration;
 
+  /// Creates a new instance of [MyoroScreen].
   const MyoroScreen({super.key, required this.configuration});
 
   @override
@@ -31,6 +32,9 @@ final class _MyoroScreenState extends State<MyoroScreen> {
 
   @override
   Widget build(context) {
+    final isEndDrawerController = _drawerController.isEndDrawerController;
+    final selectedDrawerController = _drawerController.selectedDrawerController;
+
     // This is the only way that the content of the drawer will update
     // when [MyoroDrawerController.openDrawer] is called. If you do
     // `drawer: _drawerController.drawer ?? const SizedBox.shrink()` the
@@ -44,12 +48,26 @@ final class _MyoroScreenState extends State<MyoroScreen> {
     return InheritedProvider.value(
       value: _drawerController,
       child: SafeArea(
-        child: Scaffold(
-          key: _drawerController.scaffoldKey,
-          appBar: _configuration.appBar,
-          body: _configuration.body,
-          drawer: drawer,
-          endDrawer: drawer,
+        child: ListenableBuilder(
+          listenable: Listenable.merge([isEndDrawerController, selectedDrawerController]),
+          builder: (_, _) {
+            final isEndDrawer = isEndDrawerController.value;
+            final selectedDrawer = selectedDrawerController.value;
+
+            final selectedDrawerNotNull = selectedDrawer != null;
+            final drawerEnableOpenDragGesture = !isEndDrawer && selectedDrawerNotNull && _configuration.drawerEnableOpenDragGesture;
+            final endDrawerEnableOpenDragGesture = isEndDrawer && selectedDrawerNotNull && _configuration.endDrawerEnableOpenDragGesture;
+
+            return Scaffold(
+              key: _drawerController.scaffoldKey,
+              appBar: _configuration.appBar,
+              body: _configuration.body,
+              drawer: drawer,
+              endDrawer: drawer,
+              drawerEnableOpenDragGesture: drawerEnableOpenDragGesture,
+              endDrawerEnableOpenDragGesture: endDrawerEnableOpenDragGesture,
+            );
+          },
         ),
       ),
     );

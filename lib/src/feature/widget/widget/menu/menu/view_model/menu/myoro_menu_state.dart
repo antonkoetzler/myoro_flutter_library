@@ -1,10 +1,9 @@
 part of 'myoro_menu_view_model.dart';
 
-/// State of [MyoroMenuNotifier].
+/// State of [MyoroMenuController].
 class MyoroMenuState<T, C extends MyoroMenuConfiguration<T>> {
   /// Creates a new instance of [MyoroMenuState].
-  MyoroMenuState(this.configuration, Set<T> initiallySelectedItems)
-    : _selectedItemsController = ValueNotifier(initiallySelectedItems) {
+  MyoroMenuState(this.configuration, Set<T> initiallySelectedItems) : _selectedItemsController = ValueNotifier(initiallySelectedItems) {
     _itemsRequestController.requestCallback = configuration.request;
   }
 
@@ -12,7 +11,7 @@ class MyoroMenuState<T, C extends MyoroMenuConfiguration<T>> {
   C configuration;
 
   /// Loaded items in the [MyoroMenu].
-  final _itemsRequestController = MyoroRequestNotifier<Set<T>>();
+  final _itemsRequestController = MyoroRequestController<Set<T>>();
 
   /// Queried items in the [MyoroMenu].
   final _queriedItemsController = ValueNotifier<Set<T>?>(null);
@@ -27,7 +26,7 @@ class MyoroMenuState<T, C extends MyoroMenuConfiguration<T>> {
   double? onEndReachedPosition;
 
   /// [_itemsRequestController] getter.
-  MyoroRequestNotifier<Set<T>> get itemsRequestController {
+  MyoroRequestController<Set<T>> get itemsRequestController {
     return _itemsRequestController;
   }
 

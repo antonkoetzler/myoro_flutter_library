@@ -2,39 +2,24 @@ part of 'slider_widget_showcase_option_view_model.dart';
 
 /// State of [SliderWidgetShowcaseOptionViewModel].
 final class SliderWidgetShowcaseOptionState {
-  SliderWidgetShowcaseOptionState(this._configuration) : _sliderValueNotifier = ValueNotifier(_configuration.value);
+  SliderWidgetShowcaseOptionState(this._configuration) : _sliderValueController = ValueNotifier(_configuration.value);
 
   /// Configuration.
   SliderWidgetShowcaseOptionConfiguration _configuration;
+
+  /// [ValueNotifier] of the [MyoroSlider].
+  final ValueNotifier<double> _sliderValueController;
 
   /// [_configuration] getter.
   SliderWidgetShowcaseOptionConfiguration get configuration {
     return _configuration;
   }
 
-  /// [_configuration] setter.
-  set configuration(SliderWidgetShowcaseOptionConfiguration configuration) {
-    if (_configuration == configuration) return;
-    _configuration = configuration;
-    sliderValue = configuration.value;
-  }
+  /// [_sliderValueController] getter.
+  ValueNotifier<double> get sliderValueController => _sliderValueController;
 
-  /// [ValueNotifier] of the [MyoroSlider].
-  final ValueNotifier<double> _sliderValueNotifier;
-
-  /// [_sliderValueNotifier] getter.
-  ValueNotifier<double> get sliderValueNotifier => _sliderValueNotifier;
-
-  /// Getter of [_sliderValueNotifier]'s value.
-  double get sliderValue => _sliderValueNotifier.value;
-
-  /// [_sliderValueNotifier] setter.
-  set sliderValue(double sliderValue) => _sliderValueNotifier.value = sliderValue;
-
-  /// Dispose function.
-  void dispose() {
-    _sliderValueNotifier.dispose();
-  }
+  /// Getter of [_sliderValueController]'s value.
+  double get sliderValue => _sliderValueController.value;
 
   /// [MyoroSliderConfiguration] getter.
   MyoroSliderConfiguration get sliderConfiguration {
@@ -47,5 +32,20 @@ final class SliderWidgetShowcaseOptionState {
         sliderValue = v;
       },
     );
+  }
+
+  /// [_configuration] setter.
+  set configuration(SliderWidgetShowcaseOptionConfiguration configuration) {
+    if (_configuration == configuration) return;
+    _configuration = configuration;
+    sliderValue = configuration.value;
+  }
+
+  /// [_sliderValueController] setter.
+  set sliderValue(double sliderValue) => _sliderValueController.value = sliderValue;
+
+  /// Dispose function.
+  void dispose() {
+    _sliderValueController.dispose();
   }
 }

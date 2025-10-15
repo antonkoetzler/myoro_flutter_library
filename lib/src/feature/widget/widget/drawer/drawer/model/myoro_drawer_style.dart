@@ -9,6 +9,7 @@ part 'myoro_drawer_style.g.dart';
 @immutable
 @myoroModel
 class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
+  /// Lerp function.
   static MyoroDrawerStyle lerp(MyoroDrawerStyle? a, MyoroDrawerStyle? b, double t) {
     return MyoroDrawerStyle(
       drawerPadding: EdgeInsets.lerp(a?.drawerPadding, b?.drawerPadding, t),
@@ -16,17 +17,21 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
       drawerShape: myoroFallbackLerp(a?.drawerShape, b?.drawerShape, t),
       titleContentDividerPadding: EdgeInsets.lerp(a?.titleContentDividerPadding, b?.titleContentDividerPadding, t),
       titleTextStyle: TextStyle.lerp(a?.titleTextStyle, b?.titleTextStyle, t),
+      closeButtonContentPadding: EdgeInsets.lerp(a?.closeButtonContentPadding, b?.closeButtonContentPadding, t),
     );
   }
 
+  /// Default constructor.
   const MyoroDrawerStyle({
     this.drawerPadding,
     this.drawerContentPadding,
     this.drawerShape,
     this.titleContentDividerPadding,
     this.titleTextStyle,
+    this.closeButtonContentPadding,
   });
 
+  /// Fake constructor.
   factory MyoroDrawerStyle.fake() {
     return MyoroDrawerStyle(
       drawerPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
@@ -34,6 +39,7 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
       drawerShape: faker.randomGenerator.boolean() ? myoroFake<ShapeBorder>() : null,
       titleContentDividerPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       titleTextStyle: faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
+      closeButtonContentPadding: faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
     );
   }
 
@@ -51,4 +57,7 @@ class MyoroDrawerStyle with _$MyoroDrawerStyleMixin {
 
   /// Text style of text in [_Title].
   final TextStyle? titleTextStyle;
+
+  /// [MyoroIconTextButtonStyle.contentPadding] of the close button.
+  final EdgeInsets? closeButtonContentPadding;
 }

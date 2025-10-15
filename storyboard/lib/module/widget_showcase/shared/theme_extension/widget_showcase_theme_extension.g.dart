@@ -13,11 +13,16 @@ part of 'widget_showcase_theme_extension.dart';
 /// ```dart
 /// class WidgetShowcaseThemeExtension with _$WidgetShowcaseThemeExtensionMixin {}
 /// ```
-mixin _$WidgetShowcaseThemeExtensionMixin on ThemeExtension<WidgetShowcaseThemeExtension> {
+mixin _$WidgetShowcaseThemeExtensionMixin
+    on ThemeExtension<WidgetShowcaseThemeExtension> {
   WidgetShowcaseThemeExtension get self => this as WidgetShowcaseThemeExtension;
 
   @override
-  WidgetShowcaseThemeExtension copyWith({double? spacing, TextStyle? labelTextStyle, EdgeInsets? contentPadding}) {
+  WidgetShowcaseThemeExtension copyWith({
+    double? spacing,
+    TextStyle? labelTextStyle,
+    EdgeInsets? contentPadding,
+  }) {
     return WidgetShowcaseThemeExtension(
       spacing: spacing ?? self.spacing,
       labelTextStyle: labelTextStyle ?? self.labelTextStyle,

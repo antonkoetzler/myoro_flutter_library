@@ -8,12 +8,6 @@ class MyoroDropdownState<
 > {
   MyoroDropdownState(this.configuration, this.menuController);
 
-  /// Dispose function.
-  void dispose() {
-    _showingController.dispose();
-    menuController.dispose();
-  }
-
   /// Configuration.
   C configuration;
 
@@ -86,5 +80,11 @@ class MyoroDropdownState<
   /// [_overlayPortalController] setter.
   set overlayPortalController(OverlayPortalController? overlayPortalController) {
     _overlayPortalController = overlayPortalController;
+  }
+
+  /// Dispose function.
+  void dispose() {
+    _showingController.dispose();
+    menuController.dispose();
   }
 }

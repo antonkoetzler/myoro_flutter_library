@@ -7,13 +7,10 @@ final class _SubmitButton extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-    final formController = viewModel.state.formNotifier;
+    final formController = viewModel.state.formController;
 
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => formController.fetch(),
-        textConfiguration: const MyoroTextConfiguration(text: 'Submit'),
-      ),
+      configuration: MyoroIconTextButtonConfiguration(onTapUp: (_) => formController.fetch(), textConfiguration: const MyoroTextConfiguration(text: 'Submit')),
     );
   }
 }

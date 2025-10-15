@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:storyboard/storyboard.dart';
 
 part '_widget/_barrier_dismissable_option.dart';
+part '_widget/_close_button_content_padding_option.dart';
 part '_widget/_is_end_drawer_option.dart';
 part '_widget/_show_close_button_option.dart';
 part '_widget/_title_options.dart';
@@ -12,15 +13,10 @@ part '_widget/_widget.dart';
 /// Widget showcase of [MyoroDrawer].
 final class MyoroDrawerWidgetShowcaseScreen extends StatelessWidget {
   // Configuration-related options (behavior, data, structural properties)
-  static const configurationOptions = [
-    _TitleOptions(),
-    _ShowCloseButtonOption(),
-    _BarrierDismissableOption(),
-    _IsEndDrawerOption(),
-  ];
+  static const configurationOptions = [_TitleOptions(), _ShowCloseButtonOption(), _BarrierDismissableOption(), _IsEndDrawerOption()];
 
   // Styling-related options (appearance, colors, spacing, theme extension)
-  static const stylingOptions = <Widget>[];
+  static const stylingOptions = [_CloseButtonContentPaddingOption()];
 
   const MyoroDrawerWidgetShowcaseScreen({super.key});
 

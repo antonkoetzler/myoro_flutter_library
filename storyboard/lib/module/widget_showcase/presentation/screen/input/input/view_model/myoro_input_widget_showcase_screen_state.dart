@@ -1,274 +1,516 @@
-import 'package:flutter/material.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+part of 'myoro_input_widget_showcase_screen_view_model.dart';
 
 /// State of [MyoroInputWidgetShowcaseScreenViewModel].
 final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
-  /// [MyoroFormNotifier] of the [MyoroForm] used for [_ValidationOption].
-  final formNotifier = MyoroFormNotifier();
+  // Fields
+  /// [MyoroFormController] of the [MyoroForm] used for [_ValidationOption].
+  final formController = MyoroFormController<String>();
 
   /// [MyoroInputConfiguration.inputStyle]
   MyoroInputStyleEnum _inputStyle = MyoroInputConfiguration.inputStyleDefaultValue;
-  MyoroInputStyleEnum get inputStyle => _inputStyle;
-  set inputStyle(MyoroInputStyleEnum inputStyle) {
-    _inputStyle = inputStyle;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.textAlign]
   TextAlign _textAlign = MyoroInputConfiguration.textAlignDefaultValue;
-  TextAlign get textAlign => _textAlign;
-  set textAlign(TextAlign textAlign) {
-    _textAlign = textAlign;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.inputTextStyle]
   TextStyle? _inputTextStyle;
-  TextStyle? get inputTextStyle => _inputTextStyle;
-  set inputTextStyle(TextStyle? inputTextStyle) {
-    _inputTextStyle = inputTextStyle;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.label]
   String _label = MyoroInputConfiguration.labelDefaultValue;
-  String get label => _label;
-  set label(String label) {
-    _label = label;
-    notifyListeners();
-  }
+
+  /// [MyoroInputConfiguration.text]
+  String _text = MyoroInputConfiguration.textDefaultValue;
 
   /// [MyoroInputConfiguration.labelTextStyle]
   TextStyle? _labelTextStyle;
-  TextStyle? get labelTextStyle => _labelTextStyle;
-  set labelTextStyle(TextStyle? labelTextStyle) {
-    _labelTextStyle = labelTextStyle;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.placeholder]
   String _placeholder = MyoroInputConfiguration.placeholderDefaultValue;
-  String get placeholder => _placeholder;
-  set placeholder(String placeholder) {
-    _placeholder = placeholder;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.contentPadding]
   EdgeInsets? _contentPadding;
-  EdgeInsets? get contentPadding => _contentPadding;
-  set contentPadding(EdgeInsets? contentPadding) {
-    _contentPadding = contentPadding;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.border]
   bool _borderEnabled = false;
-  bool get borderEnabled => _borderEnabled;
-  set borderEnabled(bool borderEnabled) {
-    _borderEnabled = borderEnabled;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.suffix]
   bool _suffixEnabled = false;
-  bool get suffixEnabled => _suffixEnabled;
-  set suffixEnabled(bool suffixEnabled) {
-    _suffixEnabled = suffixEnabled;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.enabled]
   bool _enabled = MyoroInputConfiguration.enabledDefaultValue;
-  bool get enabled => _enabled;
-  set enabled(bool enabled) {
-    _enabled = enabled;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.readOnly]
   bool _readOnly = MyoroInputConfiguration.readOnlyDefaultValue;
-  bool get readOnly => _readOnly;
-  set readOnly(bool readOnly) {
-    _readOnly = readOnly;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.showClearTextButton]
   bool _showClearTextButton = MyoroInputConfiguration.showClearTextButtonDefaultValue;
-  bool get showClearTextButton => _showClearTextButton;
-  set showClearTextButton(bool showClearTextButton) {
-    _showClearTextButton = showClearTextButton;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.obscureText]
   bool _obscureText = MyoroInputConfiguration.obscureTextDefaultValue;
-  bool get obscureText => _obscureText;
-  set obscureText(bool obscureText) {
-    _obscureText = obscureText;
-    notifyListeners();
-  }
 
-  /// [MyoroInputConfiguration.showToggleHiddenButton]
-  bool _showToggleHiddenButton = MyoroInputConfiguration.showToggleHiddenButtonDefaultValue;
-  bool get showToggleHiddenButton => _showToggleHiddenButton;
-  set showToggleHiddenButton(bool showToggleHiddenButton) {
-    _showToggleHiddenButton = showToggleHiddenButton;
-    notifyListeners();
-  }
+  /// [MyoroInputConfiguration.showObscureTextButton]
+  bool _showObscureTextButton = MyoroInputConfiguration.showObscureTextButtonDefaultValue;
 
   /// [MyoroInputConfiguration.checkboxOnChanged]
   bool _checkboxOnChangedEnabled = false;
-  bool get checkboxOnChangedEnabled => _checkboxOnChangedEnabled;
-  set checkboxOnChangedEnabled(bool checkboxOnChangedEnabled) {
-    _checkboxOnChangedEnabled = checkboxOnChangedEnabled;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.validation]
   bool _validationEnabled = false;
-  bool get validationEnabled => _validationEnabled;
-  set validationEnabled(bool validationEnabled) {
-    _validationEnabled = validationEnabled;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.onFieldSubmitted]
   bool _onFieldSubmittedEnabled = false;
-  bool get onFieldSubmittedEnabled => _onFieldSubmittedEnabled;
-  set onFieldSubmittedEnabled(bool onFieldSubmittedEnabled) {
-    _onFieldSubmittedEnabled = onFieldSubmittedEnabled;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.onChanged]
   bool _onChangedEnabled = false;
-  bool get onChangedEnabled => _onChangedEnabled;
-  set onChangedEnabled(bool onChangedEnabled) {
-    _onChangedEnabled = onChangedEnabled;
-    notifyListeners();
-  }
 
   /// [MyoroInputConfiguration.onCleared]
   bool _onClearedEnabled = false;
-  bool get onClearedEnabled => _onClearedEnabled;
-  set onClearedEnabled(bool onClearedEnabled) {
-    _onClearedEnabled = onClearedEnabled;
-    notifyListeners();
-  }
 
   // Theme Extension Properties
 
   /// [MyoroInputThemeExtension.border]
   InputBorder? _customBorder;
-  InputBorder? get customBorder => _customBorder;
+
+  /// [MyoroInputThemeExtension.underlinedBorder]
+  UnderlineInputBorder? _underlinedBorder;
+
+  /// [MyoroInputThemeExtension.outlinedBorder]
+  OutlineInputBorder? _outlinedBorder;
+
+  /// [MyoroInputThemeExtension.noneBorder]
+  InputBorder? _noneBorder;
+
+  /// [MyoroInputThemeExtension.primaryColor]
+  Color? _primaryColor;
+
+  /// [MyoroInputThemeExtension.errorBorderColor]
+  Color? _errorBorderColor;
+
+  /// [MyoroInputThemeExtension.cursorHeight]
+  double? _cursorHeight;
+
+  /// [MyoroInputThemeExtension.disabledOpacity]
+  double? _disabledOpacity;
+
+  /// [MyoroInputThemeExtension.spacing]
+  double? _spacing;
+
+  /// [MyoroInputThemeExtension.labelBehavior]
+  FloatingLabelBehavior? _labelBehavior;
+
+  /// [MyoroInputThemeExtension.suffixButtonMargin]
+  EdgeInsets? _suffixButtonMargin;
+
+  /// [MyoroInputThemeExtension.suffixButtonIconSize]
+  double? _suffixButtonIconSize;
+
+  /// [MyoroInputThemeExtension.clearTextButtonIcon]
+  IconData? _clearTextButtonIcon;
+
+  /// [MyoroInputThemeExtension.obscureTextButtonEnabledIcon]
+  IconData? _obscureTextButtonEnabledIcon;
+
+  /// [MyoroInputThemeExtension.obscureTextButtonDisabledIcon]
+  IconData? _obscureTextButtonDisabledIcon;
+
+  /// [MyoroInputThemeExtension.suffixIconConstraints]
+  BoxConstraints? _suffixIconConstraints;
+
+  // Getters
+  /// [_inputStyle] getter.
+  MyoroInputStyleEnum get inputStyle {
+    return _inputStyle;
+  }
+
+  /// [_textAlign] getter.
+  TextAlign get textAlign {
+    return _textAlign;
+  }
+
+  /// [_get] getter.
+  TextStyle? get inputTextStyle {
+    return _inputTextStyle;
+  }
+
+  /// [_label] getter.
+  String get label {
+    return _label;
+  }
+
+  /// [_text] getter.
+  String get text {
+    return _text;
+  }
+
+  /// [_labelTextStyle] getter.
+  TextStyle? get labelTextStyle {
+    return _labelTextStyle;
+  }
+
+  /// [_placeholder] getter.
+  String get placeholder {
+    return _placeholder;
+  }
+
+  /// [_contentPadding] getter.
+  EdgeInsets? get contentPadding {
+    return _contentPadding;
+  }
+
+  /// [_borderEnabled] getter.
+  bool get borderEnabled {
+    return _borderEnabled;
+  }
+
+  /// [_suffixEnabled] getter.
+  bool get suffixEnabled {
+    return _suffixEnabled;
+  }
+
+  /// [_enabled] getter.
+  bool get enabled {
+    return _enabled;
+  }
+
+  /// [_readOnly] getter.
+  bool get readOnly {
+    return _readOnly;
+  }
+
+  /// [_showClearTextButton] getter.
+  bool get showClearTextButton {
+    return _showClearTextButton;
+  }
+
+  /// [_obscureText] getter.
+  bool get obscureText {
+    return _obscureText;
+  }
+
+  /// [_showObscureTextButton] getter.
+  bool get showObscureTextButton {
+    return _showObscureTextButton;
+  }
+
+  /// [_checkboxOnChangedEnabled] getter.
+  bool get checkboxOnChangedEnabled {
+    return _checkboxOnChangedEnabled;
+  }
+
+  /// [_validationEnabled] getter.
+  bool get validationEnabled {
+    return _validationEnabled;
+  }
+
+  /// [_onFieldSubmittedEnabled] getter.
+  bool get onFieldSubmittedEnabled {
+    return _onFieldSubmittedEnabled;
+  }
+
+  /// [_onChangedEnabled] getter.
+  bool get onChangedEnabled {
+    return _onChangedEnabled;
+  }
+
+  /// [_onClearedEnabled] getter.
+  bool get onClearedEnabled {
+    return _onClearedEnabled;
+  }
+
+  /// [_customBorder] getter.
+  InputBorder? get customBorder {
+    return _customBorder;
+  }
+
+  /// [_underlinedBorder] getter.
+  UnderlineInputBorder? get underlinedBorder {
+    return _underlinedBorder;
+  }
+
+  /// [_outlinedBorder] getter.
+  OutlineInputBorder? get outlinedBorder {
+    return _outlinedBorder;
+  }
+
+  /// [_noneBorder] getter.
+  InputBorder? get noneBorder {
+    return _noneBorder;
+  }
+
+  /// [_primaryColor] getter.
+  Color? get primaryColor {
+    return _primaryColor;
+  }
+
+  /// [_errorBorderColor] getter.
+  Color? get errorBorderColor {
+    return _errorBorderColor;
+  }
+
+  /// [_cursorHeight] getter.
+  double? get cursorHeight {
+    return _cursorHeight;
+  }
+
+  /// [_disabledOpacity] getter.
+  double? get disabledOpacity {
+    return _disabledOpacity;
+  }
+
+  /// [_spacing] getter.
+  double? get spacing {
+    return _spacing;
+  }
+
+  /// [_labelBehavior] getter.
+  FloatingLabelBehavior? get labelBehavior {
+    return _labelBehavior;
+  }
+
+  /// [_suffixButtonMargin] getter.
+  EdgeInsets? get suffixButtonMargin {
+    return _suffixButtonMargin;
+  }
+
+  /// [_suffixButtonIconSize] getter.
+  double? get suffixButtonIconSize {
+    return _suffixButtonIconSize;
+  }
+
+  /// [_clearTextButtonIcon] getter.
+  IconData? get clearTextButtonIcon {
+    return _clearTextButtonIcon;
+  }
+
+  /// [_obscureTextButtonEnabledIcon] getter.
+  IconData? get obscureTextButtonEnabledIcon {
+    return _obscureTextButtonEnabledIcon;
+  }
+
+  /// [_obscureTextButtonDisabledIcon] getter.
+  IconData? get obscureTextButtonDisabledIcon {
+    return _obscureTextButtonDisabledIcon;
+  }
+
+  /// [_suffixIconConstraints] getter.
+  BoxConstraints? get suffixIconConstraints {
+    return _suffixIconConstraints;
+  }
+
+  // Setters
+  /// [_inputStyle] setter.
+  set inputStyle(MyoroInputStyleEnum inputStyle) {
+    _inputStyle = inputStyle;
+    notifyListeners();
+  }
+
+  /// [_textAlign] setter.
+  set textAlign(TextAlign textAlign) {
+    _textAlign = textAlign;
+    notifyListeners();
+  }
+
+  /// [_inputTextStyle] setter.
+  set inputTextStyle(TextStyle? inputTextStyle) {
+    _inputTextStyle = inputTextStyle;
+    notifyListeners();
+  }
+
+  /// [_label] setter.
+  set label(String label) {
+    _label = label;
+    notifyListeners();
+  }
+
+  /// [_text] setter.
+  set text(String text) {
+    _text = text;
+    notifyListeners();
+  }
+
+  /// [_labelTextStyle] setter.
+  set labelTextStyle(TextStyle? labelTextStyle) {
+    _labelTextStyle = labelTextStyle;
+    notifyListeners();
+  }
+
+  /// [_placeholder] setter.
+  set placeholder(String placeholder) {
+    _placeholder = placeholder;
+    notifyListeners();
+  }
+
+  /// [_contentPadding] setter.
+  set contentPadding(EdgeInsets? contentPadding) {
+    _contentPadding = contentPadding;
+    notifyListeners();
+  }
+
+  /// [_borderEnabled] setter.
+  set borderEnabled(bool borderEnabled) {
+    _borderEnabled = borderEnabled;
+    notifyListeners();
+  }
+
+  /// [_suffixEnabled] setter.
+  set suffixEnabled(bool suffixEnabled) {
+    _suffixEnabled = suffixEnabled;
+    notifyListeners();
+  }
+
+  /// [_enabled] setter.
+  set enabled(bool enabled) {
+    _enabled = enabled;
+    notifyListeners();
+  }
+
+  /// [_readOnly] setter.
+  set readOnly(bool readOnly) {
+    _readOnly = readOnly;
+    notifyListeners();
+  }
+
+  /// [_showClearTextButton] setter.
+  set showClearTextButton(bool showClearTextButton) {
+    _showClearTextButton = showClearTextButton;
+    notifyListeners();
+  }
+
+  /// [_obscureText] setter.
+  set obscureText(bool obscureText) {
+    _obscureText = obscureText;
+    notifyListeners();
+  }
+
+  /// [_showObscureTextButton] setter.
+  set showObscureTextButton(bool showObscureTextButton) {
+    _showObscureTextButton = showObscureTextButton;
+    notifyListeners();
+  }
+
+  /// [_checkboxOnChangedEnabled] setter.
+  set checkboxOnChangedEnabled(bool checkboxOnChangedEnabled) {
+    _checkboxOnChangedEnabled = checkboxOnChangedEnabled;
+    notifyListeners();
+  }
+
+  /// [_validationEnabled] setter.
+  set validationEnabled(bool validationEnabled) {
+    _validationEnabled = validationEnabled;
+    notifyListeners();
+  }
+
+  /// [_onFieldSubmittedEnabled] setter.
+  set onFieldSubmittedEnabled(bool onFieldSubmittedEnabled) {
+    _onFieldSubmittedEnabled = onFieldSubmittedEnabled;
+    notifyListeners();
+  }
+
+  /// [_onChangedEnabled] setter.
+  set onChangedEnabled(bool onChangedEnabled) {
+    _onChangedEnabled = onChangedEnabled;
+    notifyListeners();
+  }
+
+  /// [_onClearedEnabled] setter.
+  set onClearedEnabled(bool onClearedEnabled) {
+    _onClearedEnabled = onClearedEnabled;
+    notifyListeners();
+  }
+
+  /// [_customBorder] setter.
   set customBorder(InputBorder? customBorder) {
     _customBorder = customBorder;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.underlinedBorder]
-  UnderlineInputBorder? _underlinedBorder;
-  UnderlineInputBorder? get underlinedBorder => _underlinedBorder;
+  /// [_underlinedBorder] setter.
   set underlinedBorder(UnderlineInputBorder? underlinedBorder) {
     _underlinedBorder = underlinedBorder;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.outlinedBorder]
-  OutlineInputBorder? _outlinedBorder;
-  OutlineInputBorder? get outlinedBorder => _outlinedBorder;
+  /// [_outlinedBorder] setter.
   set outlinedBorder(OutlineInputBorder? outlinedBorder) {
     _outlinedBorder = outlinedBorder;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.noneBorder]
-  InputBorder? _noneBorder;
-  InputBorder? get noneBorder => _noneBorder;
+  /// [_noneBorder] setter.
   set noneBorder(InputBorder? noneBorder) {
     _noneBorder = noneBorder;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.primaryColor]
-  Color? _primaryColor;
-  Color? get primaryColor => _primaryColor;
+  /// [_primaryColor] setter.
   set primaryColor(Color? primaryColor) {
     _primaryColor = primaryColor;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.errorBorderColor]
-  Color? _errorBorderColor;
-  Color? get errorBorderColor => _errorBorderColor;
+  /// [_errorBorderColor] setter.
   set errorBorderColor(Color? errorBorderColor) {
     _errorBorderColor = errorBorderColor;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.cursorHeight]
-  double? _cursorHeight;
-  double? get cursorHeight => _cursorHeight;
+  /// [_cursorHeight] setter.
   set cursorHeight(double? cursorHeight) {
     _cursorHeight = cursorHeight;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.disabledOpacity]
-  double? _disabledOpacity;
-  double? get disabledOpacity => _disabledOpacity;
+  /// [_disabledOpacity] setter.
   set disabledOpacity(double? disabledOpacity) {
     _disabledOpacity = disabledOpacity;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.spacing]
-  double? _spacing;
-  double? get spacing => _spacing;
+  /// [_spacing] setter.
   set spacing(double? spacing) {
     _spacing = spacing;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.labelBehavior]
-  FloatingLabelBehavior? _labelBehavior;
-  FloatingLabelBehavior? get labelBehavior => _labelBehavior;
+  /// [_labelBehavior] setter.
   set labelBehavior(FloatingLabelBehavior? labelBehavior) {
     _labelBehavior = labelBehavior;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.suffixButtonPadding]
-  EdgeInsets? _suffixButtonPadding;
-  EdgeInsets? get suffixButtonPadding => _suffixButtonPadding;
-  set suffixButtonPadding(EdgeInsets? suffixButtonPadding) {
-    _suffixButtonPadding = suffixButtonPadding;
+  /// [_suffixButtonMargin] setter.
+  set suffixButtonMargin(EdgeInsets? suffixButtonMargin) {
+    _suffixButtonMargin = suffixButtonMargin;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.suffixButtonIconSize]
-  double? _suffixButtonIconSize;
-  double? get suffixButtonIconSize => _suffixButtonIconSize;
+  /// [_suffixButtonIconSize] setter.
   set suffixButtonIconSize(double? suffixButtonIconSize) {
     _suffixButtonIconSize = suffixButtonIconSize;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.clearTextButtonIcon]
-  IconData? _clearTextButtonIcon;
-  IconData? get clearTextButtonIcon => _clearTextButtonIcon;
+  /// [_clearTextButtonIcon] setter.
   set clearTextButtonIcon(IconData? clearTextButtonIcon) {
     _clearTextButtonIcon = clearTextButtonIcon;
     notifyListeners();
   }
 
-  /// [MyoroInputThemeExtension.obscureTextButtonIcon]
-  IconData? _obscureTextButtonIcon;
-  IconData? get obscureTextButtonIcon => _obscureTextButtonIcon;
-  set obscureTextButtonIcon(IconData? obscureTextButtonIcon) {
-    _obscureTextButtonIcon = obscureTextButtonIcon;
+  /// [_obscureTextButtonEnabledIcon] setter.
+  set obscureTextButtonEnabledIcon(IconData? obscureTextButtonEnabledIcon) {
+    _obscureTextButtonEnabledIcon = obscureTextButtonEnabledIcon;
+    notifyListeners();
+  }
+
+  /// [_obscureTextButtonDisabledIcon] setter.
+  set obscureTextButtonDisabledIcon(IconData? obscureTextButtonDisabledIcon) {
+    _obscureTextButtonDisabledIcon = obscureTextButtonDisabledIcon;
+    notifyListeners();
+  }
+
+  /// [_suffixIconConstraints] setter.
+  set suffixIconConstraints(BoxConstraints? suffixIconConstraints) {
+    _suffixIconConstraints = suffixIconConstraints;
     notifyListeners();
   }
 }

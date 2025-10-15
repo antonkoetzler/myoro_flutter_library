@@ -12,8 +12,122 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroButtonConfiguration.tooltipConfiguration]
   bool _tooltipEnabled = tooltipEnabledDefaultValue;
 
+  /// [MyoroButtonConfiguration.cursor]
+  MouseCursor? _cursor;
+
+  /// [MyoroButtonThemeExtension.borderRadius]
+  BorderRadius? _borderRadius;
+
+  /// [MyoroButtonThemeExtension.backgroundIdleColor]
+  Color? _backgroundIdleColor;
+
+  /// [MyoroButtonThemeExtension.backgroundHoverColor]
+  Color? _backgroundHoverColor;
+
+  /// [MyoroButtonThemeExtension.backgroundTapColor]
+  Color? _backgroundTapColor;
+
+  /// [MyoroButtonConfiguration.borderIdleColor]
+  Color? _borderIdleColor;
+
+  /// [MyoroButtonConfiguration.borderHoverColor]
+  Color? _borderHoverColor;
+
+  /// [MyoroButtonConfiguration.borderTapColor]
+  Color? _borderTapColor;
+
+  /// [MyoroButtonConfiguration.onTapDown]
+  bool _onTapDownEnabled = onTapDownEnabledDefaultValue;
+
+  /// [MyoroButtonConfiguration.onTapUp]
+  bool _onTapUpEnabled = onTapUpEnabledDefaultValue;
+
+  /// [MyoroButtonConfiguration.isLoading]
+  bool _isLoading = isLoadingDefaultValue;
+
+  /// [MyoroButtonThemeExtension.backgroundColor]
+  Color? _backgroundColor;
+
+  /// [MyoroButtonThemeExtension.contentColor]
+  Color? _contentColor;
+
+  /// [MyoroButtonThemeExtension.contentIdleColor]
+  Color? _contentIdleColor;
+
+  /// [MyoroButtonThemeExtension.contentHoverColor]
+  Color? _contentHoverColor;
+
+  /// [MyoroButtonThemeExtension.contentTapColor]
+  Color? _contentTapColor;
+
+  /// [MyoroButtonThemeExtension.borderWidth]
+  double? _borderWidth;
+
+  /// [MyoroButtonThemeExtension.borderColor]
+  Color? _borderColor;
+
+  /// [MyoroButtonConfiguration.borderBuilder] enabled state
+  bool _borderBuilderEnabled = borderBuilderEnabledDefaultValue;
+
   /// [_tooltipEnabled] getter.
   bool get tooltipEnabled => _tooltipEnabled;
+
+  /// [_cursor] getter.
+  MouseCursor? get cursor => _cursor;
+
+  /// [_borderRadius] getter.
+  BorderRadius? get borderRadius => _borderRadius;
+
+  /// [_backgroundIdleColor] getter.
+  Color? get backgroundIdleColor => _backgroundIdleColor;
+
+  /// [_backgroundHoverColor] getter.
+  Color? get backgroundHoverColor => _backgroundHoverColor;
+
+  /// [_backgroundTapColor] getter.
+  Color? get backgroundTapColor => _backgroundTapColor;
+
+  /// [_borderIdleColor] getter.
+  Color? get borderIdleColor => _borderIdleColor;
+
+  /// [_borderHoverColor] getter.
+  Color? get borderHoverColor => _borderHoverColor;
+
+  /// [_borderTapColor] getter.
+  Color? get borderTapColor => _borderTapColor;
+
+  /// [_onTapDownEnabled] getter.
+  bool get onTapDownEnabled => _onTapDownEnabled;
+
+  /// [_onTapUpEnabled] getter.
+  bool get onTapUpEnabled => _onTapUpEnabled;
+
+  /// [_isLoading] getter.
+  bool get isLoading => _isLoading;
+
+  /// [_backgroundColor] getter.
+  Color? get backgroundColor => _backgroundColor;
+
+  /// [_contentColor] getter.
+  Color? get contentColor => _contentColor;
+
+  /// [_contentIdleColor] getter.
+  Color? get contentIdleColor => _contentIdleColor;
+
+  /// [_contentHoverColor] getter.
+  Color? get contentHoverColor => _contentHoverColor;
+
+  /// [_contentTapColor] getter.
+  Color? get contentTapColor => _contentTapColor;
+
+  /// [_borderWidth] getter.
+  double? get borderWidth => _borderWidth;
+
+  /// [_borderColor] getter.
+  Color? get borderColor => _borderColor;
+
+  /// [_borderBuilderEnabled] getter.
+  bool get borderBuilderEnabled => _borderBuilderEnabled;
 
   /// [_tooltipEnabled] setter.
   set tooltipEnabled(bool tooltipEnabled) {
@@ -21,23 +135,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.cursor]
-  MouseCursor? _cursor;
-
-  /// [_cursor] getter.
-  MouseCursor? get cursor => _cursor;
-
   /// [_cursor] setter.
   set cursor(MouseCursor? cursor) {
     _cursor = cursor;
     notifyListeners();
   }
-
-  /// [MyoroButtonThemeExtension.borderRadius]
-  BorderRadius? _borderRadius;
-
-  /// [_borderRadius] getter.
-  BorderRadius? get borderRadius => _borderRadius;
 
   /// [_borderRadius] setter.
   set borderRadius(BorderRadius? borderRadius) {
@@ -45,23 +147,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonThemeExtension.backgroundIdleColor]
-  Color? _backgroundIdleColor;
-
-  /// [_backgroundIdleColor] getter.
-  Color? get backgroundIdleColor => _backgroundIdleColor;
-
   /// [_backgroundIdleColor] setter.
   set backgroundIdleColor(Color? backgroundIdleColor) {
     _backgroundIdleColor = backgroundIdleColor;
     notifyListeners();
   }
-
-  /// [MyoroButtonThemeExtension.backgroundHoverColor]
-  Color? _backgroundHoverColor;
-
-  /// [_backgroundHoverColor] getter.
-  Color? get backgroundHoverColor => _backgroundHoverColor;
 
   /// [_backgroundHoverColor] setter.
   set backgroundHoverColor(Color? backgroundHoverColor) {
@@ -69,23 +159,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonThemeExtension.backgroundTapColor]
-  Color? _backgroundTapColor;
-
-  /// [_backgroundTapColor] getter.
-  Color? get backgroundTapColor => _backgroundTapColor;
-
   /// [_backgroundTapColor] setter.
   set backgroundTapColor(Color? backgroundTapColor) {
     _backgroundTapColor = backgroundTapColor;
     notifyListeners();
   }
-
-  /// [MyoroButtonConfiguration.borderIdleColor]
-  Color? _borderIdleColor;
-
-  /// [_borderIdleColor] getter.
-  Color? get borderIdleColor => _borderIdleColor;
 
   /// [_borderIdleColor] setter.
   set borderIdleColor(Color? borderIdleColor) {
@@ -93,23 +171,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.borderHoverColor]
-  Color? _borderHoverColor;
-
-  /// [_borderHoverColor] getter.
-  Color? get borderHoverColor => _borderHoverColor;
-
   /// [_borderHoverColor] setter.
   set borderHoverColor(Color? borderHoverColor) {
     _borderHoverColor = borderHoverColor;
     notifyListeners();
   }
-
-  /// [MyoroButtonConfiguration.borderTapColor]
-  Color? _borderTapColor;
-
-  /// [_borderTapColor] getter.
-  Color? get borderTapColor => _borderTapColor;
 
   /// [_borderTapColor] setter.
   set borderTapColor(Color? borderTapColor) {
@@ -117,23 +183,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.onTapDown]
-  bool _onTapDownEnabled = onTapDownEnabledDefaultValue;
-
-  /// [_onTapDownEnabled] getter.
-  bool get onTapDownEnabled => _onTapDownEnabled;
-
   /// [_onTapDownEnabled] setter.
   set onTapDownEnabled(bool onTapDownEnabled) {
     _onTapDownEnabled = onTapDownEnabled;
-    notifyListeners;
+    notifyListeners();
   }
-
-  /// [MyoroButtonConfiguration.onTapUp]
-  bool _onTapUpEnabled = onTapUpEnabledDefaultValue;
-
-  /// [_onTapUpEnabled] getter.
-  bool get onTapUpEnabled => _onTapUpEnabled;
 
   /// [_onTapUpEnabled] setter.
   set onTapUpEnabled(bool onTapUpEnabled) {
@@ -141,23 +195,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonConfiguration.isLoading]
-  bool _isLoading = isLoadingDefaultValue;
-
-  /// [_isLoading] getter.
-  bool get isLoading => _isLoading;
-
   /// [_isLoading] setter.
   set isLoading(bool isLoading) {
     _isLoading = isLoading;
     notifyListeners();
   }
-
-  /// [MyoroButtonThemeExtension.backgroundColor]
-  Color? _backgroundColor;
-
-  /// [_backgroundColor] getter.
-  Color? get backgroundColor => _backgroundColor;
 
   /// [_backgroundColor] setter.
   set backgroundColor(Color? backgroundColor) {
@@ -165,23 +207,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonThemeExtension.contentColor]
-  Color? _contentColor;
-
-  /// [_contentColor] getter.
-  Color? get contentColor => _contentColor;
-
   /// [_contentColor] setter.
   set contentColor(Color? contentColor) {
     _contentColor = contentColor;
     notifyListeners();
   }
-
-  /// [MyoroButtonThemeExtension.contentIdleColor]
-  Color? _contentIdleColor;
-
-  /// [_contentIdleColor] getter.
-  Color? get contentIdleColor => _contentIdleColor;
 
   /// [_contentIdleColor] setter.
   set contentIdleColor(Color? contentIdleColor) {
@@ -189,23 +219,11 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonThemeExtension.contentHoverColor]
-  Color? _contentHoverColor;
-
-  /// [_contentHoverColor] getter.
-  Color? get contentHoverColor => _contentHoverColor;
-
   /// [_contentHoverColor] setter.
   set contentHoverColor(Color? contentHoverColor) {
     _contentHoverColor = contentHoverColor;
     notifyListeners();
   }
-
-  /// [MyoroButtonThemeExtension.contentTapColor]
-  Color? _contentTapColor;
-
-  /// [_contentTapColor] getter.
-  Color? get contentTapColor => _contentTapColor;
 
   /// [_contentTapColor] setter.
   set contentTapColor(Color? contentTapColor) {
@@ -213,35 +231,17 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroButtonThemeExtension.borderWidth]
-  double? _borderWidth;
-
-  /// [_borderWidth] getter.
-  double? get borderWidth => _borderWidth;
-
   /// [_borderWidth] setter.
   set borderWidth(double? borderWidth) {
     _borderWidth = borderWidth;
     notifyListeners();
   }
 
-  /// [MyoroButtonThemeExtension.borderColor]
-  Color? _borderColor;
-
-  /// [_borderColor] getter.
-  Color? get borderColor => _borderColor;
-
   /// [_borderColor] setter.
   set borderColor(Color? borderColor) {
     _borderColor = borderColor;
     notifyListeners();
   }
-
-  /// [MyoroButtonConfiguration.borderBuilder] enabled state
-  bool _borderBuilderEnabled = borderBuilderEnabledDefaultValue;
-
-  /// [_borderBuilderEnabled] getter.
-  bool get borderBuilderEnabled => _borderBuilderEnabled;
 
   /// [_borderBuilderEnabled] setter.
   set borderBuilderEnabled(bool borderBuilderEnabled) {

@@ -53,8 +53,8 @@ mixin _$MyoroInputStyleMixin {
     bool obscureTextButtonEnabledIconProvided = true,
     IconData? obscureTextButtonDisabledIcon,
     bool obscureTextButtonDisabledIconProvided = true,
-    MyoroIconTextButtonStyle? suffixButtonStyle,
-    bool suffixButtonStyleProvided = true,
+    BoxConstraints? suffixIconConstraints,
+    bool suffixIconConstraintsProvided = true,
   }) {
     return MyoroInputStyle(
       border: borderProvided ? (border ?? self.border) : null,
@@ -79,7 +79,9 @@ mixin _$MyoroInputStyleMixin {
       obscureTextButtonDisabledIcon: obscureTextButtonDisabledIconProvided
           ? (obscureTextButtonDisabledIcon ?? self.obscureTextButtonDisabledIcon)
           : null,
-      suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
+      suffixIconConstraints: suffixIconConstraintsProvided
+          ? (suffixIconConstraints ?? self.suffixIconConstraints)
+          : null,
     );
   }
 
@@ -105,7 +107,7 @@ mixin _$MyoroInputStyleMixin {
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
-        other.suffixButtonStyle == self.suffixButtonStyle;
+        other.suffixIconConstraints == self.suffixIconConstraints;
   }
 
   @override
@@ -129,7 +131,7 @@ mixin _$MyoroInputStyleMixin {
       self.clearTextButtonIcon,
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
-      self.suffixButtonStyle,
+      self.suffixIconConstraints,
     );
   }
 
@@ -154,6 +156,6 @@ mixin _$MyoroInputStyleMixin {
       '  clearTextButtonIcon: ${self.clearTextButtonIcon},\n'
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
-      '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
+      '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
       ');';
 }

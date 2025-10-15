@@ -29,6 +29,7 @@ final class _Button extends StatelessWidget {
       padding: contentPadding,
       child: Row(
         mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         spacing: spacing,
         children: iconConfigurationAndTextConfigurationNotNull
             ? [!invert ? iconWidget! : textWidget!, !invert ? textWidget! : iconWidget!]

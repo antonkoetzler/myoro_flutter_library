@@ -19,7 +19,7 @@ final class MyoroFilePickerState {
   /// [_selectedFileNotifier] setter.
   set selectedFile(MyoroFilePickerPlatformFile? selectedFile) => _selectedFileNotifier.value = selectedFile;
 
-  // Dispose function.
+  /// Dispose function.
   void dispose() {
     _selectedFileNotifier.dispose();
   }

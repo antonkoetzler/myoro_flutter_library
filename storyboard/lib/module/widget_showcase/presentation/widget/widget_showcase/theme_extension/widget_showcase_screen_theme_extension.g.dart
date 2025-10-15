@@ -13,8 +13,10 @@ part of 'widget_showcase_screen_theme_extension.dart';
 /// ```dart
 /// class WidgetShowcaseScreenThemeExtension with _$WidgetShowcaseScreenThemeExtensionMixin {}
 /// ```
-mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcaseScreenThemeExtension> {
-  WidgetShowcaseScreenThemeExtension get self => this as WidgetShowcaseScreenThemeExtension;
+mixin _$WidgetShowcaseScreenThemeExtensionMixin
+    on ThemeExtension<WidgetShowcaseScreenThemeExtension> {
+  WidgetShowcaseScreenThemeExtension get self =>
+      this as WidgetShowcaseScreenThemeExtension;
 
   @override
   WidgetShowcaseScreenThemeExtension copyWith({
@@ -31,14 +33,22 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
     return WidgetShowcaseScreenThemeExtension(
       color: color ?? self.color,
       padding: padding ?? self.padding,
-      widgetOptionsModalTitleTextStyle: widgetOptionsModalTitleTextStyle ?? self.widgetOptionsModalTitleTextStyle,
-      widgetOptionsButtonIcon: widgetOptionsButtonIcon ?? self.widgetOptionsButtonIcon,
-      widgetOptionsModalSpacing: widgetOptionsModalSpacing ?? self.widgetOptionsModalSpacing,
-      widgetOptionsModalPadding: widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
-      widgetOptionsModalItemPadding: widgetOptionsModalItemPadding ?? self.widgetOptionsModalItemPadding,
+      widgetOptionsModalTitleTextStyle:
+          widgetOptionsModalTitleTextStyle ??
+          self.widgetOptionsModalTitleTextStyle,
+      widgetOptionsButtonIcon:
+          widgetOptionsButtonIcon ?? self.widgetOptionsButtonIcon,
+      widgetOptionsModalSpacing:
+          widgetOptionsModalSpacing ?? self.widgetOptionsModalSpacing,
+      widgetOptionsModalPadding:
+          widgetOptionsModalPadding ?? self.widgetOptionsModalPadding,
+      widgetOptionsModalItemPadding:
+          widgetOptionsModalItemPadding ?? self.widgetOptionsModalItemPadding,
       widgetOptionsModalCloseButtonPadding:
-          widgetOptionsModalCloseButtonPadding ?? self.widgetOptionsModalCloseButtonPadding,
-      sectionHeaderTextStyle: sectionHeaderTextStyle ?? self.sectionHeaderTextStyle,
+          widgetOptionsModalCloseButtonPadding ??
+          self.widgetOptionsModalCloseButtonPadding,
+      sectionHeaderTextStyle:
+          sectionHeaderTextStyle ?? self.sectionHeaderTextStyle,
     );
   }
 
@@ -48,12 +58,15 @@ mixin _$WidgetShowcaseScreenThemeExtensionMixin on ThemeExtension<WidgetShowcase
         other.runtimeType == runtimeType &&
         other.color == self.color &&
         other.padding == self.padding &&
-        other.widgetOptionsModalTitleTextStyle == self.widgetOptionsModalTitleTextStyle &&
+        other.widgetOptionsModalTitleTextStyle ==
+            self.widgetOptionsModalTitleTextStyle &&
         other.widgetOptionsButtonIcon == self.widgetOptionsButtonIcon &&
         other.widgetOptionsModalSpacing == self.widgetOptionsModalSpacing &&
         other.widgetOptionsModalPadding == self.widgetOptionsModalPadding &&
-        other.widgetOptionsModalItemPadding == self.widgetOptionsModalItemPadding &&
-        other.widgetOptionsModalCloseButtonPadding == self.widgetOptionsModalCloseButtonPadding &&
+        other.widgetOptionsModalItemPadding ==
+            self.widgetOptionsModalItemPadding &&
+        other.widgetOptionsModalCloseButtonPadding ==
+            self.widgetOptionsModalCloseButtonPadding &&
         other.sectionHeaderTextStyle == self.sectionHeaderTextStyle;
   }
 

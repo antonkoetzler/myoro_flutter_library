@@ -11,10 +11,17 @@ final class _CloseButton extends StatelessWidget {
     final configuration = context.read<MyoroDrawerConfiguration>();
     final closeButtonIcon = configuration.closeButtonIcon;
 
-    final iconTextButtonStyle = const MyoroIconTextButtonStyle().bordered(context);
+    final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
+    final style = context.watch<MyoroDrawerStyle>();
+    final closeButtonContentPadding =
+        style.closeButtonContentPadding ?? themeExtension.closeButtonContentPadding ?? EdgeInsets.zero;
+
+    final drawerCloseButtonStyle = const MyoroIconTextButtonStyle()
+        .bordered(context)
+        .copyWith(contentPadding: closeButtonContentPadding);
 
     return MyoroIconTextButton(
-      style: iconTextButtonStyle,
+      style: drawerCloseButtonStyle,
       configuration: MyoroIconTextButtonConfiguration(
         onTapUp: (_) => context.closeDrawer(),
         iconConfiguration: MyoroIconConfiguration(

@@ -21,11 +21,15 @@ mixin _$MyoroScreenConfigurationMixin {
     bool drawerControllerProvided = true,
     PreferredSizeWidget? appBar,
     bool appBarProvided = true,
+    bool? drawerEnableOpenDragGesture,
+    bool? endDrawerEnableOpenDragGesture,
     Widget? body,
   }) {
     return MyoroScreenConfiguration(
       drawerController: drawerControllerProvided ? (drawerController ?? self.drawerController) : null,
       appBar: appBarProvided ? (appBar ?? self.appBar) : null,
+      drawerEnableOpenDragGesture: drawerEnableOpenDragGesture ?? self.drawerEnableOpenDragGesture,
+      endDrawerEnableOpenDragGesture: endDrawerEnableOpenDragGesture ?? self.endDrawerEnableOpenDragGesture,
       body: body ?? self.body,
     );
   }
@@ -36,12 +40,20 @@ mixin _$MyoroScreenConfigurationMixin {
         other.runtimeType == runtimeType &&
         other.drawerController == self.drawerController &&
         other.appBar == self.appBar &&
+        other.drawerEnableOpenDragGesture == self.drawerEnableOpenDragGesture &&
+        other.endDrawerEnableOpenDragGesture == self.endDrawerEnableOpenDragGesture &&
         other.body == self.body;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.drawerController, self.appBar, self.body);
+    return Object.hash(
+      self.drawerController,
+      self.appBar,
+      self.drawerEnableOpenDragGesture,
+      self.endDrawerEnableOpenDragGesture,
+      self.body,
+    );
   }
 
   @override
@@ -49,6 +61,8 @@ mixin _$MyoroScreenConfigurationMixin {
       'MyoroScreenConfiguration(\n'
       '  drawerController: ${self.drawerController},\n'
       '  appBar: ${self.appBar},\n'
+      '  drawerEnableOpenDragGesture: ${self.drawerEnableOpenDragGesture},\n'
+      '  endDrawerEnableOpenDragGesture: ${self.endDrawerEnableOpenDragGesture},\n'
       '  body: ${self.body},\n'
       ');';
 }

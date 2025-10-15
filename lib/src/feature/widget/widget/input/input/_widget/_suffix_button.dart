@@ -17,14 +17,12 @@ final class _SuffixButton extends StatelessWidget {
     final suffixButtonMargin = style.suffixButtonMargin ?? themeExtension.suffixButtonMargin ?? EdgeInsets.zero;
     final suffixButtonIconSize = style.suffixButtonIconSize ?? themeExtension.suffixButtonIconSize;
 
-    return IntrinsicWidth(
-      child: Padding(
-        padding: suffixButtonMargin,
-        child: MyoroIconTextButton(
-          configuration: MyoroIconTextButtonConfiguration(
-            onTapUp: (_) => _onTapUp(),
-            iconConfiguration: MyoroIconConfiguration(icon: _icon, size: suffixButtonIconSize),
-          ),
+    return Padding(
+      padding: suffixButtonMargin,
+      child: MyoroIconTextButton(
+        configuration: MyoroIconTextButtonConfiguration(
+          onTapUp: (_) => _onTapUp(),
+          iconConfiguration: MyoroIconConfiguration(icon: _icon, size: suffixButtonIconSize),
         ),
       ),
     );

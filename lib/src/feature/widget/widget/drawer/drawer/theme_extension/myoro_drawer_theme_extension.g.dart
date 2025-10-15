@@ -28,6 +28,8 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
     bool titleContentDividerPaddingProvided = true,
     TextStyle? titleTextStyle,
     bool titleTextStyleProvided = true,
+    EdgeInsets? closeButtonContentPadding,
+    bool closeButtonContentPaddingProvided = true,
   }) {
     return MyoroDrawerThemeExtension(
       drawerPadding: drawerPaddingProvided ? (drawerPadding ?? self.drawerPadding) : null,
@@ -37,6 +39,9 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
           ? (titleContentDividerPadding ?? self.titleContentDividerPadding)
           : null,
       titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      closeButtonContentPadding: closeButtonContentPaddingProvided
+          ? (closeButtonContentPadding ?? self.closeButtonContentPadding)
+          : null,
     );
   }
 
@@ -48,7 +53,8 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
         other.drawerContentPadding == self.drawerContentPadding &&
         other.drawerShape == self.drawerShape &&
         other.titleContentDividerPadding == self.titleContentDividerPadding &&
-        other.titleTextStyle == self.titleTextStyle;
+        other.titleTextStyle == self.titleTextStyle &&
+        other.closeButtonContentPadding == self.closeButtonContentPadding;
   }
 
   @override
@@ -59,6 +65,7 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
       self.drawerShape,
       self.titleContentDividerPadding,
       self.titleTextStyle,
+      self.closeButtonContentPadding,
     );
   }
 
@@ -70,5 +77,6 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
       '  drawerShape: ${self.drawerShape},\n'
       '  titleContentDividerPadding: ${self.titleContentDividerPadding},\n'
       '  titleTextStyle: ${self.titleTextStyle},\n'
+      '  closeButtonContentPadding: ${self.closeButtonContentPadding},\n'
       ');';
 }

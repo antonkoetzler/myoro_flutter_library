@@ -30,7 +30,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
     this.clearTextButtonIcon,
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
-    this.suffixButtonStyle,
+    this.suffixIconConstraints,
   });
 
   MyoroInputThemeExtension.fake()
@@ -54,7 +54,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       clearTextButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonEnabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonDisabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      suffixButtonStyle = faker.randomGenerator.boolean() ? myoroFake<MyoroIconTextButtonStyle>() : null;
+      suffixIconConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null;
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
     : border = null,
@@ -86,12 +86,11 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
         kMyoroMultiplier * 1.5,
         kMyoroMultiplier,
       ),
-      suffixButtonIconSize = kMyoroMultiplier * 4,
+      suffixButtonIconSize = kMyoroMultiplier * 3,
       clearTextButtonIcon = Icons.close,
       obscureTextButtonEnabledIcon = Icons.visibility,
       obscureTextButtonDisabledIcon = Icons.visibility_off,
-      // TODO Fix the padding on the button
-      suffixButtonStyle = const MyoroIconTextButtonStyle(contentPadding: EdgeInsets.zero);
+      suffixIconConstraints = null;
 
   /// Custom border.
   @override
@@ -165,9 +164,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
   @override
   final IconData? obscureTextButtonDisabledIcon;
 
-  /// [MyoroIconTextButtonStyle] of the suffix button.
+  /// [BoxConstraints] of the suffix icon.
   @override
-  final MyoroIconTextButtonStyle? suffixButtonStyle;
+  final BoxConstraints? suffixIconConstraints;
 
   @override
   MyoroInputThemeExtension lerp(covariant MyoroInputThemeExtension? other, double t) {
@@ -192,7 +191,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       clearTextButtonIcon: style.clearTextButtonIcon,
       obscureTextButtonEnabledIcon: style.obscureTextButtonEnabledIcon,
       obscureTextButtonDisabledIcon: style.obscureTextButtonDisabledIcon,
-      suffixButtonStyle: style.suffixButtonStyle,
+      suffixIconConstraints: style.suffixIconConstraints,
     );
   }
 }

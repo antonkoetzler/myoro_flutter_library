@@ -27,6 +27,8 @@ mixin _$MyoroDrawerStyleMixin {
     bool titleContentDividerPaddingProvided = true,
     TextStyle? titleTextStyle,
     bool titleTextStyleProvided = true,
+    EdgeInsets? closeButtonContentPadding,
+    bool closeButtonContentPaddingProvided = true,
   }) {
     return MyoroDrawerStyle(
       drawerPadding: drawerPaddingProvided ? (drawerPadding ?? self.drawerPadding) : null,
@@ -36,6 +38,9 @@ mixin _$MyoroDrawerStyleMixin {
           ? (titleContentDividerPadding ?? self.titleContentDividerPadding)
           : null,
       titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      closeButtonContentPadding: closeButtonContentPaddingProvided
+          ? (closeButtonContentPadding ?? self.closeButtonContentPadding)
+          : null,
     );
   }
 
@@ -47,7 +52,8 @@ mixin _$MyoroDrawerStyleMixin {
         other.drawerContentPadding == self.drawerContentPadding &&
         other.drawerShape == self.drawerShape &&
         other.titleContentDividerPadding == self.titleContentDividerPadding &&
-        other.titleTextStyle == self.titleTextStyle;
+        other.titleTextStyle == self.titleTextStyle &&
+        other.closeButtonContentPadding == self.closeButtonContentPadding;
   }
 
   @override
@@ -58,6 +64,7 @@ mixin _$MyoroDrawerStyleMixin {
       self.drawerShape,
       self.titleContentDividerPadding,
       self.titleTextStyle,
+      self.closeButtonContentPadding,
     );
   }
 
@@ -69,5 +76,6 @@ mixin _$MyoroDrawerStyleMixin {
       '  drawerShape: ${self.drawerShape},\n'
       '  titleContentDividerPadding: ${self.titleContentDividerPadding},\n'
       '  titleTextStyle: ${self.titleTextStyle},\n'
+      '  closeButtonContentPadding: ${self.closeButtonContentPadding},\n'
       ');';
 }

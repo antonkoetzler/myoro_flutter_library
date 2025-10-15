@@ -1,7 +1,7 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Item within an accordion.
-final class _Item<T> extends StatelessWidget {
+final class _Item<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidget {
   final T item;
   final bool isSelected;
   final bool isLastItem;
@@ -12,11 +12,7 @@ final class _Item<T> extends StatelessWidget {
   Widget build(_) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        _ItemTitleButton(item, isSelected),
-        _ItemContent(item, isSelected),
-        if (!isLastItem) const MyoroBasicDivider(Axis.horizontal),
-      ],
+      children: [_ItemTitleButton<T, V>(item, isSelected), _ItemContent<T, V>(item, isSelected), if (!isLastItem) const MyoroBasicDivider(Axis.horizontal)],
     );
   }
 }

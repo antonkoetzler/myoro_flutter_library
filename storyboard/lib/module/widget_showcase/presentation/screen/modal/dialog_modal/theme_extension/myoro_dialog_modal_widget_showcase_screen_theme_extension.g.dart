@@ -24,7 +24,8 @@ mixin _$MyoroDialogModalWidgetShowcaseScreenThemeExtensionMixin
     double? childWidgetSize,
   }) {
     return MyoroDialogModalWidgetShowcaseScreenThemeExtension(
-      childWidgetBorderRadius: childWidgetBorderRadius ?? self.childWidgetBorderRadius,
+      childWidgetBorderRadius:
+          childWidgetBorderRadius ?? self.childWidgetBorderRadius,
       childWidgetSize: childWidgetSize ?? self.childWidgetSize,
     );
   }

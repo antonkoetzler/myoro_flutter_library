@@ -1,7 +1,7 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Content of an [_Item].
-final class _ItemContent<T> extends StatelessWidget {
+final class _ItemContent<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidget {
   const _ItemContent(this._item, this._isSelected);
 
   final T _item;
@@ -11,31 +11,22 @@ final class _ItemContent<T> extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final style = context.watch<MyoroAccordionStyle>();
-    final itemContentAnimationDuration =
-        style.itemContentAnimationDuration ?? themeExtension.itemContentAnimationDuration;
+    final itemContentAnimationDuration = style.itemContentAnimationDuration ?? themeExtension.itemContentAnimationDuration;
     final itemContentAnimationCurve = style.itemContentAnimationCurve ?? themeExtension.itemContentAnimationCurve;
     final itemContentBackgroundColor = style.itemContentBackgroundColor ?? themeExtension.itemContentBackgroundColor;
 
-    final viewModel = context.read<MyoroAccordionViewModel<T>>();
+    final viewModel = context.read<V>();
     final state = viewModel.state;
     final configuration = state.configuration;
     final contentBuilder = configuration.contentBuilder;
 
-    final child = SizedBox(
-      width: double.infinity,
-      child: _isSelected ? contentBuilder(_item, _isSelected) : const SizedBox(height: 0),
-    );
+    final child = SizedBox(width: double.infinity, child: _isSelected ? contentBuilder(_item, _isSelected) : const SizedBox(height: 0));
 
     return Container(
       width: double.infinity,
       color: itemContentBackgroundColor,
       child: itemContentAnimationDuration != null && itemContentAnimationCurve != null
-          ? AnimatedSize(
-              duration: itemContentAnimationDuration,
-              curve: itemContentAnimationCurve,
-              clipBehavior: Clip.hardEdge,
-              child: child,
-            )
+          ? AnimatedSize(duration: itemContentAnimationDuration, curve: itemContentAnimationCurve, clipBehavior: Clip.hardEdge, child: child)
           : child,
     );
   }

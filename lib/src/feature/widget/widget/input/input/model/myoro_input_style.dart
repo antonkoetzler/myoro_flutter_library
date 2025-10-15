@@ -39,7 +39,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
         b?.obscureTextButtonDisabledIcon,
         t,
       ),
-      suffixButtonStyle: myoroFallbackLerp(a?.suffixButtonStyle, b?.suffixButtonStyle, t),
+      suffixIconConstraints: myoroFallbackLerp(a?.suffixIconConstraints, b?.suffixIconConstraints, t),
     );
   }
 
@@ -62,7 +62,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.clearTextButtonIcon,
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
-    this.suffixButtonStyle,
+    this.suffixIconConstraints,
   });
 
   factory MyoroInputStyle.fake() {
@@ -85,7 +85,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       clearTextButtonIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonEnabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonDisabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
-      suffixButtonStyle: faker.randomGenerator.boolean() ? myoroFake<MyoroIconTextButtonStyle>() : null,
+      suffixIconConstraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
     );
   }
 
@@ -143,6 +143,6 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
   /// [IconData] of the obscure text button when it is disabled.
   final IconData? obscureTextButtonDisabledIcon;
 
-  /// [MyoroIconTextButtonStyle] of the suffix button.
-  final MyoroIconTextButtonStyle? suffixButtonStyle;
+  /// [BoxConstraints] of the suffix icon.
+  final BoxConstraints? suffixIconConstraints;
 }

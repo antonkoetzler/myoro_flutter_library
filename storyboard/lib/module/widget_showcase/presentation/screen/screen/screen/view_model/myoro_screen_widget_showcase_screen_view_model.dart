@@ -9,6 +9,11 @@ final class MyoroScreenWidgetShowcaseScreenViewModel {
 
   /// [MyoroScreenConfiguration] of the [MyoroScreen].
   MyoroScreenConfiguration buildConfiguration(PreferredSizeWidget appBar, Widget body) {
-    return MyoroScreenConfiguration(appBar: state.appBarEnabled ? appBar : null, body: body);
+    return MyoroScreenConfiguration(
+      appBar: state.appBarEnabled ? appBar : null,
+      drawerEnableOpenDragGesture: state.drawerEnableOpenDragGesture,
+      endDrawerEnableOpenDragGesture: state.endDrawerEnableOpenDragGesture,
+      body: body,
+    );
   }
 }

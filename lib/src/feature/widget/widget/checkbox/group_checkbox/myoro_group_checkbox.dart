@@ -5,18 +5,15 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 class MyoroGroupCheckbox extends StatefulWidget {
   const MyoroGroupCheckbox({
     super.key,
-    this.notifier,
+    this.controller,
     this.checkboxes,
     this.configuration = const MyoroGroupCheckboxConfiguration(),
     this.style = const MyoroGroupCheckboxStyle(),
     this.checkboxStyle = const MyoroCheckboxStyle(),
-  }) : assert(
-         (notifier != null) ^ (checkboxes != null),
-         '[MyoroGroupCheckbox]: [notifier] (x)or [checkboxes] must be provided.',
-       );
+  }) : assert((controller != null) ^ (checkboxes != null), '[MyoroGroupCheckbox]: [controller] (x)or [checkboxes] must be provided.');
 
   /// Controller.
-  final MyoroGroupCheckboxNotifier? notifier;
+  final MyoroGroupCheckboxController? controller;
 
   /// Checkboxes of the [MyoroGroupCheckbox].
   final MyoroGroupCheckboxItems? checkboxes;
@@ -39,14 +36,14 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
   MyoroGroupCheckboxStyle get _style => widget.style;
   MyoroCheckboxStyle get _checkboxStyle => widget.checkboxStyle;
 
-  MyoroGroupCheckboxNotifier? _localNotifier;
-  MyoroGroupCheckboxNotifier get _notifier {
-    return widget.notifier ?? (_localNotifier ??= MyoroGroupCheckboxNotifier(checkboxes: widget.checkboxes!));
+  MyoroGroupCheckboxController? _localController;
+  MyoroGroupCheckboxController get _controller {
+    return widget.controller ?? (_localController ??= MyoroGroupCheckboxController(checkboxes: widget.checkboxes!));
   }
 
   @override
   void dispose() {
-    _localNotifier?.dispose();
+    _localController?.dispose();
     super.dispose();
   }
 
@@ -60,7 +57,7 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
     final onChanged = _configuration.onChanged;
 
     return ValueListenableBuilder(
-      valueListenable: _notifier,
+      valueListenable: _controller,
       builder: (_, checkboxes, _) {
         return Wrap(
           direction: direction,
@@ -72,7 +69,7 @@ final class _MyoroGroupCheckboxState extends State<MyoroGroupCheckbox> {
                 label: entry.key,
                 value: entry.value,
                 onChanged: (bool value) {
-                  _notifier.toggle(entry.key, value);
+                  _controller.toggle(entry.key, value);
                   onChanged?.call(entry.key, checkboxes);
                 },
               ),

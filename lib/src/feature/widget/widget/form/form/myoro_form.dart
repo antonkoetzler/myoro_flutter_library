@@ -5,8 +5,8 @@ part '_widget/_form.dart';
 
 /// Base form widget. Should always be used for any type of form content.
 class MyoroForm<T> extends StatefulWidget {
-  /// Notifier in the case that the controller needs to be used outside of [builder]'s scope.
-  final MyoroFormNotifier<T>? controller;
+  /// Controller in the case that the controller needs to be used outside of [builder]'s scope.
+  final MyoroFormController<T>? controller;
 
   /// Configuration.
   final MyoroFormConfiguration<T>? configuration;
@@ -15,10 +15,7 @@ class MyoroForm<T> extends StatefulWidget {
   final MyoroFormBuilder<T> builder;
 
   const MyoroForm({super.key, this.controller, this.configuration, required this.builder})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroForm<$T>]: [controller] (x)or [configuration] must be provided.',
-      );
+    : assert((controller != null) ^ (configuration != null), '[MyoroForm<$T>]: [controller] (x)or [configuration] must be provided.');
 
   @override
   State<MyoroForm<T>> createState() => _MyoroFormState<T>();
@@ -27,14 +24,14 @@ class MyoroForm<T> extends StatefulWidget {
 final class _MyoroFormState<T> extends State<MyoroForm<T>> {
   MyoroFormBuilder<T> get _builder => widget.builder;
 
-  MyoroFormNotifier<T>? _localNotifier;
-  MyoroFormNotifier<T> get _controller {
-    return widget.controller ?? (_localNotifier ??= MyoroFormNotifier(configuration: widget.configuration!));
+  MyoroFormController<T>? _localController;
+  MyoroFormController<T> get _controller {
+    return widget.controller ?? (_localController ??= MyoroFormController(configuration: widget.configuration!));
   }
 
   @override
   void dispose() {
-    _localNotifier?.dispose();
+    _localController?.dispose();
     super.dispose();
   }
 

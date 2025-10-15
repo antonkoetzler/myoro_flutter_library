@@ -3,8 +3,7 @@ part of 'myoro_button_view_model.dart';
 /// State of [MyoroButtonController].
 class MyoroButtonState {
   /// Creates a new instance of [MyoroButtonState].
-  MyoroButtonState(this.configuration)
-    : _isLoadingController = ValueNotifier(configuration?.isLoading ?? MyoroButtonConfiguration.isLoadingDefaultValue);
+  MyoroButtonState(this.configuration) : _isLoadingController = ValueNotifier(configuration?.isLoading ?? MyoroButtonConfiguration.isLoadingDefaultValue);
 
   /// Configuration.
   MyoroButtonConfiguration? configuration;

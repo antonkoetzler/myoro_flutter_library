@@ -14,7 +14,8 @@ part of 'slider_widget_showcase_option_configuration.dart';
 /// class SliderWidgetShowcaseOptionConfiguration with _$SliderWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
-  SliderWidgetShowcaseOptionConfiguration get self => this as SliderWidgetShowcaseOptionConfiguration;
+  SliderWidgetShowcaseOptionConfiguration get self =>
+      this as SliderWidgetShowcaseOptionConfiguration;
 
   SliderWidgetShowcaseOptionConfiguration copyWith({
     String? label,
@@ -28,7 +29,10 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
       label: label ?? self.label,
       enabled: enabled ?? self.enabled,
       value: value ?? self.value,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
       sliderOnChanged: sliderOnChanged ?? self.sliderOnChanged,
     );
   }
@@ -46,7 +50,13 @@ mixin _$SliderWidgetShowcaseOptionConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.label, self.enabled, self.value, self.checkboxOnChanged, self.sliderOnChanged);
+    return Object.hash(
+      self.label,
+      self.enabled,
+      self.value,
+      self.checkboxOnChanged,
+      self.sliderOnChanged,
+    );
   }
 
   @override

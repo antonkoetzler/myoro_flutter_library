@@ -10,22 +10,13 @@ final class _ItemTitleButtonArrow<T> extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final style = context.watch<MyoroAccordionStyle>();
-    final itemTitleButtonArrowAnimationDuration =
-        style.itemTitleButtonArrowAnimationDuration ?? themeExtension.itemTitleButtonArrowAnimationDuration;
-    final itemTitleButtonArrowAnimationCurve =
-        style.itemTitleButtonArrowAnimationCurve ?? themeExtension.itemTitleButtonArrowAnimationCurve;
-    final itemTitleButtonArrowIcon =
-        style.itemTitleButtonArrowIcon ?? themeExtension.itemTitleButtonArrowIcon ?? Icons.keyboard_arrow_down;
-    final itemTitleButtonArrowIconSize =
-        style.itemTitleButtonArrowIconSize ?? themeExtension.itemTitleButtonArrowIconSize ?? 25;
-    final itemTitleButtonArrowIconColor =
-        style.itemTitleButtonArrowIconColor ?? themeExtension.itemTitleButtonArrowIconColor;
+    final itemTitleButtonArrowAnimationDuration = style.itemTitleButtonArrowAnimationDuration ?? themeExtension.itemTitleButtonArrowAnimationDuration;
+    final itemTitleButtonArrowAnimationCurve = style.itemTitleButtonArrowAnimationCurve ?? themeExtension.itemTitleButtonArrowAnimationCurve;
+    final itemTitleButtonArrowIcon = style.itemTitleButtonArrowIcon ?? themeExtension.itemTitleButtonArrowIcon ?? Icons.keyboard_arrow_down;
+    final itemTitleButtonArrowIconSize = style.itemTitleButtonArrowIconSize ?? themeExtension.itemTitleButtonArrowIconSize ?? 25;
+    final itemTitleButtonArrowIconColor = style.itemTitleButtonArrowIconColor ?? themeExtension.itemTitleButtonArrowIconColor;
 
-    final child = Icon(
-      itemTitleButtonArrowIcon,
-      size: itemTitleButtonArrowIconSize,
-      color: itemTitleButtonArrowIconColor,
-    );
+    final child = Icon(itemTitleButtonArrowIcon, size: itemTitleButtonArrowIconSize, color: itemTitleButtonArrowIconColor);
 
     return itemTitleButtonArrowAnimationDuration != null && itemTitleButtonArrowAnimationCurve != null
         ? AnimatedRotation(

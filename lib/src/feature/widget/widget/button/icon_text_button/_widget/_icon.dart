@@ -14,8 +14,8 @@ final class _Icon extends StatelessWidget {
         style.contentColorBuilder(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
 
     final configuration = context.read<MyoroIconTextButtonConfiguration>();
-    final iconConfiguration = configuration.iconConfiguration;
+    final iconConfiguration = configuration.iconConfiguration!;
 
-    return Icon(iconConfiguration!.icon, size: iconConfiguration.size, color: contentColor);
+    return Icon(iconConfiguration.icon, size: iconConfiguration.size, color: contentColor);
   }
 }

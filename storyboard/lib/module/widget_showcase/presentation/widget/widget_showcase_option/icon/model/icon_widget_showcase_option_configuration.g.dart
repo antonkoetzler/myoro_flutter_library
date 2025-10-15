@@ -14,7 +14,8 @@ part of 'icon_widget_showcase_option_configuration.dart';
 /// class IconWidgetShowcaseOptionConfiguration with _$IconWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$IconWidgetShowcaseOptionConfigurationMixin {
-  IconWidgetShowcaseOptionConfiguration get self => this as IconWidgetShowcaseOptionConfiguration;
+  IconWidgetShowcaseOptionConfiguration get self =>
+      this as IconWidgetShowcaseOptionConfiguration;
 
   IconWidgetShowcaseOptionConfiguration copyWith({
     String? label,
@@ -25,7 +26,8 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
     bool selectedIconSizeProvided = true,
     IconWidgetShowcaseOptionIconSizeOnChanged? iconSizeOnChanged,
     bool iconSizeOnChangedProvided = true,
-    IconWidgetShowcaseOptionIconSizeCheckboxOnChanged? iconSizeCheckboxOnChanged,
+    IconWidgetShowcaseOptionIconSizeCheckboxOnChanged?
+    iconSizeCheckboxOnChanged,
     bool iconSizeCheckboxOnChangedProvided = true,
     bool? enabled,
     bool enabledProvided = true,
@@ -34,16 +36,26 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
   }) {
     return IconWidgetShowcaseOptionConfiguration(
       label: label ?? self.label,
-      selectedIcon: selectedIconProvided ? (selectedIcon ?? self.selectedIcon) : null,
+      selectedIcon:
+          selectedIconProvided ? (selectedIcon ?? self.selectedIcon) : null,
       iconOnChanged: iconOnChanged ?? self.iconOnChanged,
-      selectedIconSize: selectedIconSizeProvided ? (selectedIconSize ?? self.selectedIconSize) : null,
-      iconSizeOnChanged: iconSizeOnChangedProvided ? (iconSizeOnChanged ?? self.iconSizeOnChanged) : null,
+      selectedIconSize:
+          selectedIconSizeProvided
+              ? (selectedIconSize ?? self.selectedIconSize)
+              : null,
+      iconSizeOnChanged:
+          iconSizeOnChangedProvided
+              ? (iconSizeOnChanged ?? self.iconSizeOnChanged)
+              : null,
       iconSizeCheckboxOnChanged:
-          iconSizeCheckboxOnChangedProvided ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged) : null,
+          iconSizeCheckboxOnChangedProvided
+              ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged)
+              : null,
       enabled: enabledProvided ? (enabled ?? self.enabled) : null,
       enableOptionCheckboxOnChanged:
           enableOptionCheckboxOnChangedProvided
-              ? (enableOptionCheckboxOnChanged ?? self.enableOptionCheckboxOnChanged)
+              ? (enableOptionCheckboxOnChanged ??
+                  self.enableOptionCheckboxOnChanged)
               : null,
     );
   }
@@ -59,7 +71,8 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
         other.iconSizeOnChanged == self.iconSizeOnChanged &&
         other.iconSizeCheckboxOnChanged == self.iconSizeCheckboxOnChanged &&
         other.enabled == self.enabled &&
-        other.enableOptionCheckboxOnChanged == self.enableOptionCheckboxOnChanged;
+        other.enableOptionCheckboxOnChanged ==
+            self.enableOptionCheckboxOnChanged;
   }
 
   @override

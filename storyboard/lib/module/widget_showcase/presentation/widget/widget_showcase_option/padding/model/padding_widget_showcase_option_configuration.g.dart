@@ -14,7 +14,8 @@ part of 'padding_widget_showcase_option_configuration.dart';
 /// class PaddingWidgetShowcaseOptionConfiguration with _$PaddingWidgetShowcaseOptionConfigurationMixin {}
 /// ```
 mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
-  PaddingWidgetShowcaseOptionConfiguration get self => this as PaddingWidgetShowcaseOptionConfiguration;
+  PaddingWidgetShowcaseOptionConfiguration get self =>
+      this as PaddingWidgetShowcaseOptionConfiguration;
 
   PaddingWidgetShowcaseOptionConfiguration copyWith({
     String? label,
@@ -29,7 +30,10 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
       label: label ?? self.label,
       enabled: enabled ?? self.enabled,
       padding: paddingProvided ? (padding ?? self.padding) : null,
-      checkboxOnChanged: checkboxOnChangedProvided ? (checkboxOnChanged ?? self.checkboxOnChanged) : null,
+      checkboxOnChanged:
+          checkboxOnChangedProvided
+              ? (checkboxOnChanged ?? self.checkboxOnChanged)
+              : null,
       paddingOnChanged: paddingOnChanged ?? self.paddingOnChanged,
     );
   }
@@ -47,7 +51,13 @@ mixin _$PaddingWidgetShowcaseOptionConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.label, self.enabled, self.padding, self.checkboxOnChanged, self.paddingOnChanged);
+    return Object.hash(
+      self.label,
+      self.enabled,
+      self.padding,
+      self.checkboxOnChanged,
+      self.paddingOnChanged,
+    );
   }
 
   @override

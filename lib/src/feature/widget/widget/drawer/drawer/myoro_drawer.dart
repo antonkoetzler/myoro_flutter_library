@@ -19,7 +19,8 @@ class MyoroDrawer extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final isEndDrawerNotifier = context.read<MyoroDrawerController>().isEndDrawerNotifier;
+    final controller = context.read<MyoroDrawerController>();
+    final isEndDrawerController = controller.isEndDrawerController;
 
     return MultiProvider(
       providers: [
@@ -30,7 +31,7 @@ class MyoroDrawer extends StatelessWidget {
         children: [
           const _Barrier(),
           ValueListenableBuilder(
-            valueListenable: isEndDrawerNotifier,
+            valueListenable: isEndDrawerController,
             builder: (_, isEndDrawer, _) {
               return Row(
                 mainAxisAlignment: !isEndDrawer ? MainAxisAlignment.start : MainAxisAlignment.end,

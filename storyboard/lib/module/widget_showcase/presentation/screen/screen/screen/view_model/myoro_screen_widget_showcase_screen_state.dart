@@ -10,4 +10,20 @@ final class MyoroScreenWidgetShowcaseScreenState extends ChangeNotifier {
     _appBarEnabled = appBarEnabled;
     notifyListeners();
   }
+
+  /// [MyoroScreenConfiguration.drawerEnableOpenDragGesture]
+  bool _drawerEnableOpenDragGesture = MyoroScreenConfiguration.drawerEnableOpenDragGestureDefaultValue;
+  bool get drawerEnableOpenDragGesture => _drawerEnableOpenDragGesture;
+  set drawerEnableOpenDragGesture(bool drawerEnableOpenDragGesture) {
+    _drawerEnableOpenDragGesture = drawerEnableOpenDragGesture;
+    notifyListeners();
+  }
+
+  /// [MyoroScreenConfiguration.endDrawerEnableOpenDragGesture]
+  bool _endDrawerEnableOpenDragGesture = MyoroScreenConfiguration.endDrawerEnableOpenDragGestureDefaultValue;
+  bool get endDrawerEnableOpenDragGesture => _endDrawerEnableOpenDragGesture;
+  set endDrawerEnableOpenDragGesture(bool endDrawerEnableOpenDragGesture) {
+    _endDrawerEnableOpenDragGesture = endDrawerEnableOpenDragGesture;
+    notifyListeners();
+  }
 }

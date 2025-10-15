@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Base accordion controller.
-abstract class MyoroAccordionController<T> {
-  MyoroAccordionController({required MyoroAccordionConfiguration<T> configuration, Set<T> selectedItems = const {}})
-    : _viewModel = MyoroAccordionViewModel(configuration, selectedItems);
+abstract class MyoroAccordionController<T, V extends MyoroAccordionViewModel<T>> {
+  /// Default constructor.
+  MyoroAccordionController(this._viewModel);
 
   /// View model.
-  final MyoroAccordionViewModel<T> _viewModel;
+  final V _viewModel;
 
   /// Dispose function.
+  @mustCallSuper
   void dispose() => _viewModel.dispose();
 
   /// Toggles an item.
@@ -20,7 +21,7 @@ abstract class MyoroAccordionController<T> {
 
   /// [_viewModel] getter.
   @protected
-  MyoroAccordionViewModel<T> get viewModel => _viewModel;
+  V get viewModel => _viewModel;
 
   /// [MyoroAccordionConfiguration] getter.
   MyoroAccordionConfiguration<T> get configuration => _viewModel.state.configuration;

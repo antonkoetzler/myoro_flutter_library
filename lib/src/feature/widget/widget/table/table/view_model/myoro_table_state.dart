@@ -12,7 +12,7 @@ final class MyoroTableState<T> {
   late MyoroTableConfiguration<T> _configuration;
 
   /// [ValueNotifier] of the items/rows of the [MyoroTable].
-  final _itemsRequestController = MyoroRequestNotifier<Set<T>>();
+  final _itemsRequestController = MyoroRequestController<Set<T>>();
 
   /// [List] of [GlobalKey]s attributed to every [MyoroTableColumn].
   final List<GlobalKey> _titleColumnKeys = [];
@@ -24,7 +24,7 @@ final class MyoroTableState<T> {
   MyoroTableConfiguration<T> get configuration => _configuration;
 
   /// [_itemsRequestController] getter.
-  MyoroRequestNotifier<Set<T>> get itemsRequestController => _itemsRequestController;
+  MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
 
   /// [_titleColumnKeys] getter.
   List<GlobalKey> get titleColumnKeys => _titleColumnKeys;

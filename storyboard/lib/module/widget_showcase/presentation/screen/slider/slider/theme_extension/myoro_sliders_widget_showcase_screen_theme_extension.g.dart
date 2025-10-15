@@ -15,11 +15,14 @@ part of 'myoro_sliders_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroSlidersWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroSlidersWidgetShowcaseScreenThemeExtension> {
-  MyoroSlidersWidgetShowcaseScreenThemeExtension get self => this as MyoroSlidersWidgetShowcaseScreenThemeExtension;
+  MyoroSlidersWidgetShowcaseScreenThemeExtension get self =>
+      this as MyoroSlidersWidgetShowcaseScreenThemeExtension;
 
   @override
   MyoroSlidersWidgetShowcaseScreenThemeExtension copyWith({double? spacing}) {
-    return MyoroSlidersWidgetShowcaseScreenThemeExtension(spacing: spacing ?? self.spacing);
+    return MyoroSlidersWidgetShowcaseScreenThemeExtension(
+      spacing: spacing ?? self.spacing,
+    );
   }
 
   @override

@@ -20,7 +20,9 @@ mixin _$MyoroImagePickerWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   MyoroImagePickerWidgetShowcaseScreenThemeExtension copyWith({Size? size}) {
-    return MyoroImagePickerWidgetShowcaseScreenThemeExtension(size: size ?? self.size);
+    return MyoroImagePickerWidgetShowcaseScreenThemeExtension(
+      size: size ?? self.size,
+    );
   }
 
   @override

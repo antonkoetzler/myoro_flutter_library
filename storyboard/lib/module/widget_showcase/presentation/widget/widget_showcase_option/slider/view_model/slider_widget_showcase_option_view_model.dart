@@ -6,9 +6,8 @@ part 'slider_widget_showcase_option_state.dart';
 
 /// View model of [SliderWidgetShowcaseOption].
 final class SliderWidgetShowcaseOptionViewModel {
-  SliderWidgetShowcaseOptionViewModel(SliderWidgetShowcaseOptionConfiguration configuration)
-    : _state = SliderWidgetShowcaseOptionState(configuration) {
-    _state.sliderValueNotifier.addListener(_sliderValueNotifierListener);
+  SliderWidgetShowcaseOptionViewModel(SliderWidgetShowcaseOptionConfiguration configuration) : _state = SliderWidgetShowcaseOptionState(configuration) {
+    _state.sliderValueController.addListener(_sliderValueControllerListener);
   }
 
   /// State.
@@ -22,8 +21,8 @@ final class SliderWidgetShowcaseOptionViewModel {
     _state.dispose();
   }
 
-  /// Listener of [_state]'s [SliderWidgetShowcaseOptionState.sliderValueNotifier].
-  void _sliderValueNotifierListener() {
+  /// Listener of [_state]'s [SliderWidgetShowcaseOptionState.sliderValueController].
+  void _sliderValueControllerListener() {
     final configuration = _state.configuration;
     final sliderValue = _state.sliderValue;
     configuration.sliderOnChanged(sliderValue);

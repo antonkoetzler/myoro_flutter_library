@@ -15,7 +15,8 @@ part of 'myoro_pie_graph_widget_showcase_screen_theme_extension.dart';
 /// ```
 mixin _$MyoroPieGraphWidgetShowcaseScreenThemeExtensionMixin
     on ThemeExtension<MyoroPieGraphWidgetShowcaseScreenThemeExtension> {
-  MyoroPieGraphWidgetShowcaseScreenThemeExtension get self => this as MyoroPieGraphWidgetShowcaseScreenThemeExtension;
+  MyoroPieGraphWidgetShowcaseScreenThemeExtension get self =>
+      this as MyoroPieGraphWidgetShowcaseScreenThemeExtension;
 
   @override
   MyoroPieGraphWidgetShowcaseScreenThemeExtension copyWith({
@@ -23,7 +24,8 @@ mixin _$MyoroPieGraphWidgetShowcaseScreenThemeExtensionMixin
     double? centerWidgetSize,
   }) {
     return MyoroPieGraphWidgetShowcaseScreenThemeExtension(
-      centerWidgetBorderRadius: centerWidgetBorderRadius ?? self.centerWidgetBorderRadius,
+      centerWidgetBorderRadius:
+          centerWidgetBorderRadius ?? self.centerWidgetBorderRadius,
       centerWidgetSize: centerWidgetSize ?? self.centerWidgetSize,
     );
   }

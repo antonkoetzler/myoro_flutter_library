@@ -1,7 +1,7 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Button of an [_Item].
-final class _ItemTitleButton<T> extends StatelessWidget {
+final class _ItemTitleButton<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidget {
   const _ItemTitleButton(this._item, this._isSelected);
 
   final T _item;
@@ -11,18 +11,14 @@ final class _ItemTitleButton<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final accordionThemeExtension = context.resolveThemeExtension<MyoroAccordionThemeExtension>();
     final accordionStyle = context.watch<MyoroAccordionStyle>();
-    final itemTitleButtonSpacing =
-        accordionStyle.itemTitleButtonSpacing ?? accordionThemeExtension.itemTitleButtonSpacing;
-    final itemTitleButtonTitleTextStyle =
-        accordionStyle.itemTitleButtonTitleTextStyle ?? accordionThemeExtension.itemTitleButtonTitleTextStyle;
+    final itemTitleButtonSpacing = accordionStyle.itemTitleButtonSpacing ?? accordionThemeExtension.itemTitleButtonSpacing;
+    final itemTitleButtonTitleTextStyle = accordionStyle.itemTitleButtonTitleTextStyle ?? accordionThemeExtension.itemTitleButtonTitleTextStyle;
     final itemTitleButtonContentPadding =
-        accordionStyle.itemTitleButtonContentPadding ??
-        accordionThemeExtension.itemTitleButtonContentPadding ??
-        EdgeInsets.zero;
+        accordionStyle.itemTitleButtonContentPadding ?? accordionThemeExtension.itemTitleButtonContentPadding ?? EdgeInsets.zero;
 
     const buttonStyle = MyoroButtonStyle(borderRadius: BorderRadius.zero);
 
-    final viewModel = context.read<MyoroAccordionViewModel<T>>();
+    final viewModel = context.read<V>();
     final toggleItem = viewModel.toggleItem;
     final state = viewModel.state;
     final configuration = state.configuration;
@@ -39,9 +35,7 @@ final class _ItemTitleButton<T> extends StatelessWidget {
           spacing: itemTitleButtonSpacing ?? 0,
           children: [
             Expanded(
-              child: itemTitleButtonTitleTextStyle != null
-                  ? DefaultTextStyle(style: itemTitleButtonTitleTextStyle, child: title)
-                  : title,
+              child: itemTitleButtonTitleTextStyle != null ? DefaultTextStyle(style: itemTitleButtonTitleTextStyle, child: title) : title,
             ),
             _ItemTitleButtonArrow(_isSelected),
           ],

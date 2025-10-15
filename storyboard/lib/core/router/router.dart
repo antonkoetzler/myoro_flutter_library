@@ -8,11 +8,7 @@ const _widgetNameKey = 'widget_name';
 /// [GoRouter] of Storyboard.
 final router = GoRouter(
   routes: [
-    GoRoute(
-      path: '/',
-      builder: _mainScreenBuilder,
-      routes: [GoRoute(path: 'widget_showcase/:$_widgetNameKey', builder: _widgetShowcaseScreenBuilder)],
-    ),
+    GoRoute(path: '/', builder: _mainScreenBuilder, routes: [GoRoute(path: 'widget_showcase/:$_widgetNameKey', builder: _widgetShowcaseScreenBuilder)]),
   ],
 );
 

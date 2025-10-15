@@ -35,7 +35,10 @@ part '_widget/_cursor_height_option.dart';
 part '_widget/_disabled_opacity_option.dart';
 part '_widget/_spacing_option.dart';
 part '_widget/_label_behavior_option.dart';
-part '_widget/_suffix_button_padding_option.dart';
+part '_widget/_suffix_button_margin_option.dart';
+part '_widget/_obscure_text_button_enabled_icon_option.dart';
+part '_widget/_obscure_text_button_disabled_icon_option.dart';
+part '_widget/_suffix_icon_constraints_option.dart';
 part '_widget/_clear_text_button_icon_option.dart';
 
 /// Widget showcase of [MyoroInput].
@@ -67,7 +70,10 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
   static const disabledOpacityOptionKey = 'disabledOpacityOption';
   static const spacingOptionKey = 'spacingOption';
   static const labelBehaviorOptionKey = 'labelBehaviorOption';
-  static const suffixButtonPaddingOptionKey = 'suffixButtonPaddingOption';
+  static const suffixButtonMarginOptionKey = 'suffixButtonMarginOption';
+  static const obscureTextButtonEnabledIconOptionKey = 'obscureTextButtonEnabledIconOption';
+  static const obscureTextButtonDisabledIconOptionKey = 'obscureTextButtonDisabledIconOption';
+  static const suffixIconConstraintsOptionKey = 'suffixIconConstraintsOption';
   static const clearTextButtonIconOptionKey = 'clearTextButtonIconOption';
 
   // Configuration-related options (behavior, data, callbacks, structural properties)
@@ -103,42 +109,12 @@ final class MyoroInputWidgetShowcaseScreen extends StatelessWidget {
     _DisabledOpacityOption(),
     _SpacingOption(),
     _LabelBehaviorOption(),
-    _SuffixButtonPaddingOption(),
+    _SuffixButtonMarginOption(),
+    _ObscureTextButtonEnabledIconOption(),
+    _ObscureTextButtonDisabledIconOption(),
+    _SuffixIconConstraintsOption(),
     _ClearTextButtonIconOption(),
   ];
-
-  /// Legacy support - maintains the original map structure for backwards compatibility
-  static const options = {
-    inputStyleOptionKey: _InputStyleOption(),
-    textAlignOptionKey: _TextAlignOption(),
-    inputTextStyleOptionKey: _InputTextStyleOption(),
-    labelOptionKey: _LabelOption(),
-    labelTextStyleOptionKey: _LabelTextStyleOption(),
-    placeholderOptionKey: _PlaceholderOption(),
-    contentPaddingOptionKey: _ContentPaddingOption(),
-    borderOptionKey: _BorderOption(),
-    suffixOptionKey: _SuffixOption(),
-    enabledOptionKey: _EnabledOption(),
-    readOnlyOptionKey: _ReadOnlyOption(),
-    showClearTextButtonOptionKey: _ShowClearTextButtonOption(),
-    checkboxOnChangedOptionKey: _CheckboxOnChangedOption(),
-    validationOptionKey: _ValidationOption(),
-    onFieldSubmittedOptionKey: _OnFieldSubmittedOption(),
-    onChangedOptionKey: _OnChangedOption(),
-    onClearedOptionKey: _OnClearedOption(),
-    customBorderOptionKey: _CustomBorderOption(),
-    underlinedBorderOptionKey: _UnderlinedBorderOption(),
-    outlinedBorderOptionKey: _OutlinedBorderOption(),
-    noneBorderOptionKey: _NoneBorderOption(),
-    primaryColorOptionKey: _PrimaryColorOption(),
-    errorBorderColorOptionKey: _ErrorBorderColorOption(),
-    cursorHeightOptionKey: _CursorHeightOption(),
-    disabledOpacityOptionKey: _DisabledOpacityOption(),
-    spacingOptionKey: _SpacingOption(),
-    labelBehaviorOptionKey: _LabelBehaviorOption(),
-    suffixButtonPaddingOptionKey: _SuffixButtonPaddingOption(),
-    clearTextButtonIconOptionKey: _ClearTextButtonIconOption(),
-  };
 
   const MyoroInputWidgetShowcaseScreen({super.key});
 

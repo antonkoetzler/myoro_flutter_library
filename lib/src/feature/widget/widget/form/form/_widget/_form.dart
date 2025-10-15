@@ -2,7 +2,7 @@ part of '../myoro_form.dart';
 
 /// [Form] of [MyoroForm].
 class _Form<T> extends StatelessWidget {
-  final MyoroFormNotifier<T> _controller;
+  final MyoroFormController<T> _controller;
   final MyoroFormBuilder<T> _builder;
 
   const _Form(this._controller, this._builder);

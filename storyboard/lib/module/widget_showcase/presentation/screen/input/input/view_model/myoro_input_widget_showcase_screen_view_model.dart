@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import 'package:storyboard/storyboard.dart';
+
+part 'myoro_input_widget_showcase_screen_state.dart';
 
 /// View model of [MyoroInputWidgetShowcaseScreenViewModel].
 class MyoroInputWidgetShowcaseScreenViewModel {
   /// State
   final _state = MyoroInputWidgetShowcaseScreenState();
-  MyoroInputWidgetShowcaseScreenState get state => _state;
 
   /// Builds the [MyoroInputConfiguration] of [_Widget].
   MyoroInputConfiguration buildConfiguration(BuildContext context, Widget suffix) {
@@ -21,9 +21,8 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       autofocus: true,
       showClearTextButton: _state.showClearTextButton,
       obscureText: _state.obscureText,
-      showToggleHiddenButton: _state.showToggleHiddenButton,
-      checkboxOnChanged:
-          _state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
+      showObscureTextButton: _state.showObscureTextButton,
+      checkboxOnChanged: _state.checkboxOnChangedEnabled ? (enabled, text) => _checkboxOnChanged(context, enabled, text) : null,
       validation: _state.validationEnabled ? _validation : null,
       onFieldSubmitted: (text) => _onFieldSubmitted(context, text),
       onChanged: _state.onChangedEnabled ? (text) => _onChanged(context, text) : null,
@@ -44,7 +43,7 @@ class MyoroInputWidgetShowcaseScreenViewModel {
   /// [MyoroInputConfiguration.onFieldSubmitted]
   void _onFieldSubmitted(BuildContext context, String? text) {
     if (_state.validationEnabled) {
-      _state.formNotifier.fetch();
+      _state.formController.fetch();
     }
     if (_state.onFieldSubmittedEnabled) {
       _showSnackBar(context, 'Enter key pressed! Text is $text.');
@@ -79,19 +78,20 @@ class MyoroInputWidgetShowcaseScreenViewModel {
       spacing: _state.spacing,
       labelTextStyle: _state.labelTextStyle,
       labelBehavior: _state.labelBehavior,
-      suffixButtonPadding: _state.suffixButtonPadding,
+      suffixButtonMargin: _state.suffixButtonMargin,
       suffixButtonIconSize: _state.suffixButtonIconSize,
       clearTextButtonIcon: _state.clearTextButtonIcon,
-      obscureTextButtonIcon: _state.obscureTextButtonIcon,
+      obscureTextButtonEnabledIcon: _state.obscureTextButtonEnabledIcon,
+      obscureTextButtonDisabledIcon: _state.obscureTextButtonDisabledIcon,
+      suffixIconConstraints: _state.suffixIconConstraints,
     );
   }
 
   /// Generic function to display a snack bar.
   void _showSnackBar(BuildContext context, String message) {
-    context.showSnackBar(
-      snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.attention, message: message),
-      ),
-    );
+    context.showSnackBar(snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(snackBarType: MyoroSnackBarTypeEnum.attention, message: message)));
   }
+
+  /// [_state] getter.
+  MyoroInputWidgetShowcaseScreenState get state => _state;
 }

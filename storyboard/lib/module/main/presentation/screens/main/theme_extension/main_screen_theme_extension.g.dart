@@ -13,15 +13,20 @@ part of 'main_screen_theme_extension.dart';
 /// ```dart
 /// class MainScreenThemeExtension with _$MainScreenThemeExtensionMixin {}
 /// ```
-mixin _$MainScreenThemeExtensionMixin on ThemeExtension<MainScreenThemeExtension> {
+mixin _$MainScreenThemeExtensionMixin
+    on ThemeExtension<MainScreenThemeExtension> {
   MainScreenThemeExtension get self => this as MainScreenThemeExtension;
 
   @override
-  MainScreenThemeExtension copyWith({double? spacing, EdgeInsets? widgetListingAccordionSearchBarMargin}) {
+  MainScreenThemeExtension copyWith({
+    double? spacing,
+    EdgeInsets? widgetListingAccordionSearchBarMargin,
+  }) {
     return MainScreenThemeExtension(
       spacing: spacing ?? self.spacing,
       widgetListingAccordionSearchBarMargin:
-          widgetListingAccordionSearchBarMargin ?? self.widgetListingAccordionSearchBarMargin,
+          widgetListingAccordionSearchBarMargin ??
+          self.widgetListingAccordionSearchBarMargin,
     );
   }
 
@@ -30,12 +35,16 @@ mixin _$MainScreenThemeExtensionMixin on ThemeExtension<MainScreenThemeExtension
     return other is MainScreenThemeExtension &&
         other.runtimeType == runtimeType &&
         other.spacing == self.spacing &&
-        other.widgetListingAccordionSearchBarMargin == self.widgetListingAccordionSearchBarMargin;
+        other.widgetListingAccordionSearchBarMargin ==
+            self.widgetListingAccordionSearchBarMargin;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.spacing, self.widgetListingAccordionSearchBarMargin);
+    return Object.hash(
+      self.spacing,
+      self.widgetListingAccordionSearchBarMargin,
+    );
   }
 
   @override

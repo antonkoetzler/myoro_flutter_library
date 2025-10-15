@@ -24,8 +24,10 @@ mixin _$MyoroGroupCheckboxWidgetShowcaseScreenThemeExtensionMixin
     double? spacingOptionsMaxValue,
   }) {
     return MyoroGroupCheckboxWidgetShowcaseScreenThemeExtension(
-      spacingOptionsMinValue: spacingOptionsMinValue ?? self.spacingOptionsMinValue,
-      spacingOptionsMaxValue: spacingOptionsMaxValue ?? self.spacingOptionsMaxValue,
+      spacingOptionsMinValue:
+          spacingOptionsMinValue ?? self.spacingOptionsMinValue,
+      spacingOptionsMaxValue:
+          spacingOptionsMaxValue ?? self.spacingOptionsMaxValue,
     );
   }
 
@@ -39,7 +41,10 @@ mixin _$MyoroGroupCheckboxWidgetShowcaseScreenThemeExtensionMixin
 
   @override
   int get hashCode {
-    return Object.hash(self.spacingOptionsMinValue, self.spacingOptionsMaxValue);
+    return Object.hash(
+      self.spacingOptionsMinValue,
+      self.spacingOptionsMaxValue,
+    );
   }
 
   @override

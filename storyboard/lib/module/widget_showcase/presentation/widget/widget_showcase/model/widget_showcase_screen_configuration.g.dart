@@ -14,7 +14,8 @@ part of 'widget_showcase_screen_configuration.dart';
 /// class WidgetShowcaseScreenConfiguration with _$WidgetShowcaseScreenConfigurationMixin {}
 /// ```
 mixin _$WidgetShowcaseScreenConfigurationMixin {
-  WidgetShowcaseScreenConfiguration get self => this as WidgetShowcaseScreenConfiguration;
+  WidgetShowcaseScreenConfiguration get self =>
+      this as WidgetShowcaseScreenConfiguration;
 
   WidgetShowcaseScreenConfiguration copyWith({
     String? widgetName,
@@ -46,7 +47,13 @@ mixin _$WidgetShowcaseScreenConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.widgetName, self.widget, self.configurationOptions, self.stylingOptions, self.padding);
+    return Object.hash(
+      self.widgetName,
+      self.widget,
+      self.configurationOptions,
+      self.stylingOptions,
+      self.padding,
+    );
   }
 
   @override

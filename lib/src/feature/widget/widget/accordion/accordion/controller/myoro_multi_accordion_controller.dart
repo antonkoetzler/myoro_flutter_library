@@ -1,12 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroMultiAccordion].
-class MyoroMultiAccordionController<T> extends MyoroAccordionController<T> {
-  MyoroMultiAccordionController({required MyoroMultiAccordionConfiguration<T> configuration})
-    : super(configuration: configuration, selectedItems: configuration.selectedItems);
+class MyoroMultiAccordionController<T> extends MyoroAccordionController<T, MyoroMultiAccordionViewModel<T>> {
+  MyoroMultiAccordionController({required MyoroMultiAccordionConfiguration<T> configuration}) : super(MyoroMultiAccordionViewModel(configuration));
 
-  /// Getter of the selected items.
+  /// [ValueNotifier] of the selected items of the [MyoroMultiAccordion].
+  ValueNotifier<Set<T>> get selectedItemsController {
+    return viewModel.state.selectedItemsController;
+  }
+
+  /// Selected items of the [MyoroMultiAccordion].
   Set<T> get selectedItems {
-    return viewModel.state.selectedItems;
+    return selectedItemsController.value;
   }
 }
