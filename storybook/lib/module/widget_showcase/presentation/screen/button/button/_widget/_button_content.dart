@@ -26,7 +26,11 @@ final class _ButtonContent extends StatelessWidget {
       padding: contentPadding,
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [icon, Text(tapStatusEnumName, style: myoroFake<TextStyle>().withColor(myoroFake<Color>())), icon],
+        children: [
+          icon,
+          Text(tapStatusEnumName, style: myoroFake<TextStyle>().withColor(myoroFake<Color>())),
+          icon,
+        ],
       ),
     );
   }

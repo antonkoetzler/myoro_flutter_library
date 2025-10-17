@@ -17,14 +17,12 @@ final class _SearchBarInputStyleOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<MyoroInputStyleEnum>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Search bar input style',
-        selectedItemBuilder:
-            (style) =>
-                _styles.entries
-                    .firstWhere(
-                      (entry) => entry.value == style,
-                      orElse: () => const MapEntry('custom', MyoroInputStyleEnum.outlined),
-                    )
-                    .key,
+        selectedItemBuilder: (style) => _styles.entries
+            .firstWhere(
+              (entry) => entry.value == style,
+              orElse: () => const MapEntry('custom', MyoroInputStyleEnum.outlined),
+            )
+            .key,
         onChanged: (style) => viewModel.state.searchBarInputStyle = style,
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: () => _styles.values.toSet(),

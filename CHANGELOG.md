@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.6.2
+
+- feature: `MyoroInputStyle.suffixButtonStyle`
+- fix: `MyoroInput` lifecycle state management
+
 ## 2.6.1
 
 - fix: Fix `pubspec.yaml`s using `myoro_flutter_annotations` as a `path`

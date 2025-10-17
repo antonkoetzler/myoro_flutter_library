@@ -56,6 +56,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
     bool obscureTextButtonDisabledIconProvided = true,
     BoxConstraints? suffixIconConstraints,
     bool suffixIconConstraintsProvided = true,
+    MyoroIconTextButtonStyle? suffixButtonStyle,
+    bool suffixButtonStyleProvided = true,
   }) {
     return MyoroInputThemeExtension(
       border: borderProvided ? (border ?? self.border) : null,
@@ -83,6 +85,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       suffixIconConstraints: suffixIconConstraintsProvided
           ? (suffixIconConstraints ?? self.suffixIconConstraints)
           : null,
+      suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
     );
   }
 
@@ -108,7 +111,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
         other.suffixButtonIconSize == self.suffixButtonIconSize &&
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
-        other.suffixIconConstraints == self.suffixIconConstraints;
+        other.suffixIconConstraints == self.suffixIconConstraints &&
+        other.suffixButtonStyle == self.suffixButtonStyle;
   }
 
   @override
@@ -133,6 +137,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
       self.suffixIconConstraints,
+      self.suffixButtonStyle,
     );
   }
 
@@ -158,5 +163,6 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
+      '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
       ');';
 }

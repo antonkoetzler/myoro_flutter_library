@@ -8,7 +8,9 @@ part 'myoro_input_theme_extension.g.dart';
 /// [ThemeExtension] for [MyoroInput].
 @immutable
 @myoroThemeExtension
-class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> with _$MyoroInputThemeExtensionMixin implements MyoroInputStyle {
+class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
+    with _$MyoroInputThemeExtensionMixin
+    implements MyoroInputStyle {
   const MyoroInputThemeExtension({
     this.border,
     this.underlinedBorder,
@@ -47,7 +49,9 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       labelTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
       labelBehavior = faker.randomGenerator.boolean() ? myoroFake<FloatingLabelBehavior>() : null,
       suffixButtonMargin = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
-      suffixButtonIconSize = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 200, min: 20) : null,
+      suffixButtonIconSize = faker.randomGenerator.boolean()
+          ? faker.randomGenerator.decimal(scale: 200, min: 20)
+          : null,
       clearTextButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonEnabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonDisabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
@@ -67,13 +71,23 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension> 
       primaryColor = colorScheme.primary,
       errorBorderColor = colorScheme.error,
       cursorHeight = kMyoroMultiplier * 5,
-      contentPadding = const EdgeInsets.only(top: kMyoroMultiplier * 2, bottom: kMyoroMultiplier * 2, left: kMyoroMultiplier * 2, right: kMyoroMultiplier),
+      contentPadding = const EdgeInsets.only(
+        top: kMyoroMultiplier * 2,
+        bottom: kMyoroMultiplier * 2,
+        left: kMyoroMultiplier * 2,
+        right: kMyoroMultiplier,
+      ),
       disabledOpacity = 0.5,
       inputTextStyle = textTheme.bodyMedium!,
       labelTextStyle = textTheme.headlineMedium!,
       labelBehavior = FloatingLabelBehavior.always,
       spacing = kMyoroMultiplier * 2.5,
-      suffixButtonMargin = const EdgeInsets.fromLTRB(kMyoroMultiplier, kMyoroMultiplier, kMyoroMultiplier * 1.5, kMyoroMultiplier),
+      suffixButtonMargin = const EdgeInsets.fromLTRB(
+        kMyoroMultiplier,
+        kMyoroMultiplier,
+        kMyoroMultiplier * 1.5,
+        kMyoroMultiplier,
+      ),
       suffixButtonIconSize = kMyoroMultiplier * 3,
       clearTextButtonIcon = Icons.close,
       obscureTextButtonEnabledIcon = Icons.visibility,

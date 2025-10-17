@@ -14,8 +14,8 @@ final class _GridScrollableSection extends StatelessWidget {
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
 
-    final scrollablesWidgetShowcaseScreenThemeExtension =
-        context.resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
+    final scrollablesWidgetShowcaseScreenThemeExtension = context
+        .resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
     final scrollableConstraints = scrollablesWidgetShowcaseScreenThemeExtension.scrollableConstraints;
 
     return Column(

@@ -31,7 +31,10 @@ final class _Widget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: widgetShowcaseThemeExtension.spacing,
-                children: [const Flexible(child: _Input()), _SubmitButton(formController)],
+                children: [
+                  const Flexible(child: _Input()),
+                  _SubmitButton(formController),
+                ],
               ),
             ),
             if (request.status.isSuccess) const _Kitty(),

@@ -38,13 +38,13 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
       iconOnChanged: iconOnChanged ?? self.iconOnChanged,
       selectedIconSize: selectedIconSizeProvided ? (selectedIconSize ?? self.selectedIconSize) : null,
       iconSizeOnChanged: iconSizeOnChangedProvided ? (iconSizeOnChanged ?? self.iconSizeOnChanged) : null,
-      iconSizeCheckboxOnChanged:
-          iconSizeCheckboxOnChangedProvided ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged) : null,
+      iconSizeCheckboxOnChanged: iconSizeCheckboxOnChangedProvided
+          ? (iconSizeCheckboxOnChanged ?? self.iconSizeCheckboxOnChanged)
+          : null,
       enabled: enabledProvided ? (enabled ?? self.enabled) : null,
-      enableOptionCheckboxOnChanged:
-          enableOptionCheckboxOnChangedProvided
-              ? (enableOptionCheckboxOnChanged ?? self.enableOptionCheckboxOnChanged)
-              : null,
+      enableOptionCheckboxOnChanged: enableOptionCheckboxOnChangedProvided
+          ? (enableOptionCheckboxOnChanged ?? self.enableOptionCheckboxOnChanged)
+          : null,
     );
   }
 

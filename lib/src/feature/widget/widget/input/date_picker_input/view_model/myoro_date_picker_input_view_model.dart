@@ -6,7 +6,8 @@ part 'myoro_date_picker_input_state.dart';
 
 /// View model of [MyoroDatePickerInput].
 class MyoroDatePickerInputViewModel {
-  MyoroDatePickerInputViewModel(MyoroDatePickerInputConfiguration configuration) : _state = MyoroDatePickerInputState(configuration);
+  MyoroDatePickerInputViewModel(MyoroDatePickerInputConfiguration configuration)
+    : _state = MyoroDatePickerInputState(configuration);
 
   final MyoroDatePickerInputState _state;
   MyoroDatePickerInputState get state => _state;

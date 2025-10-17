@@ -20,14 +20,9 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<TextAlign>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Indicator text alignment',
-        selectedItemBuilder:
-            (alignment) =>
-                _alignments.entries
-                    .firstWhere(
-                      (entry) => entry.value == alignment,
-                      orElse: () => const MapEntry('custom', TextAlign.center),
-                    )
-                    .key,
+        selectedItemBuilder: (alignment) => _alignments.entries
+            .firstWhere((entry) => entry.value == alignment, orElse: () => const MapEntry('custom', TextAlign.center))
+            .key,
         onChanged: (alignment) => viewModel.state.indicatorTextAlignment = alignment,
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: () => _alignments.values.toSet(),

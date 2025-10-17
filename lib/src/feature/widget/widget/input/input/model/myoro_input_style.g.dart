@@ -55,6 +55,8 @@ mixin _$MyoroInputStyleMixin {
     bool obscureTextButtonDisabledIconProvided = true,
     BoxConstraints? suffixIconConstraints,
     bool suffixIconConstraintsProvided = true,
+    MyoroIconTextButtonStyle? suffixButtonStyle,
+    bool suffixButtonStyleProvided = true,
   }) {
     return MyoroInputStyle(
       border: borderProvided ? (border ?? self.border) : null,
@@ -82,6 +84,7 @@ mixin _$MyoroInputStyleMixin {
       suffixIconConstraints: suffixIconConstraintsProvided
           ? (suffixIconConstraints ?? self.suffixIconConstraints)
           : null,
+      suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
     );
   }
 
@@ -107,7 +110,8 @@ mixin _$MyoroInputStyleMixin {
         other.clearTextButtonIcon == self.clearTextButtonIcon &&
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
-        other.suffixIconConstraints == self.suffixIconConstraints;
+        other.suffixIconConstraints == self.suffixIconConstraints &&
+        other.suffixButtonStyle == self.suffixButtonStyle;
   }
 
   @override
@@ -132,6 +136,7 @@ mixin _$MyoroInputStyleMixin {
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
       self.suffixIconConstraints,
+      self.suffixButtonStyle,
     );
   }
 
@@ -157,5 +162,6 @@ mixin _$MyoroInputStyleMixin {
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
+      '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
       ');';
 }

@@ -13,18 +13,13 @@ final class _BottomSheetBorderRadiusOption extends StatelessWidget {
         label: 'Bottom sheet border radius',
         enabled: viewModel.state.bottomSheetBorderRadius != null,
         value: viewModel.state.bottomSheetBorderRadius?.topLeft.x ?? 8.0,
-        sliderOnChanged:
-            (value) =>
-                viewModel.state.bottomSheetBorderRadius = BorderRadius.only(
-                  topLeft: Radius.circular(value),
-                  topRight: Radius.circular(value),
-                ),
-        checkboxOnChanged:
-            (enabled, value) =>
-                viewModel.state.bottomSheetBorderRadius =
-                    enabled
-                        ? BorderRadius.only(topLeft: Radius.circular(value), topRight: Radius.circular(value))
-                        : null,
+        sliderOnChanged: (value) => viewModel.state.bottomSheetBorderRadius = BorderRadius.only(
+          topLeft: Radius.circular(value),
+          topRight: Radius.circular(value),
+        ),
+        checkboxOnChanged: (enabled, value) => viewModel.state.bottomSheetBorderRadius = enabled
+            ? BorderRadius.only(topLeft: Radius.circular(value), topRight: Radius.circular(value))
+            : null,
       ),
     );
   }

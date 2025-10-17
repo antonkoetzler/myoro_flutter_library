@@ -16,7 +16,8 @@ final class _SuffixButton extends StatelessWidget {
     final style = context.watch<MyoroInputStyle>();
     final suffixButtonMargin = style.suffixButtonMargin ?? themeExtension.suffixButtonMargin ?? EdgeInsets.zero;
     final suffixButtonIconSize = style.suffixButtonIconSize ?? themeExtension.suffixButtonIconSize;
-    final suffixButtonStyle = style.suffixButtonStyle ?? themeExtension.suffixButtonStyle ?? const MyoroIconTextButtonStyle();
+    final suffixButtonStyle =
+        style.suffixButtonStyle ?? themeExtension.suffixButtonStyle ?? const MyoroIconTextButtonStyle();
 
     return Padding(
       padding: suffixButtonMargin,

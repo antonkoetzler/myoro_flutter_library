@@ -20,7 +20,9 @@ final class StorybookScreen extends StatelessWidget {
   Widget build(context) {
     return InheritedProvider.value(
       value: StorybookScreenViewModel(configuration),
-      child: MyoroScreen(configuration: MyoroScreenConfiguration(appBar: const _AppBar(), body: configuration.body)),
+      child: MyoroScreen(
+        configuration: MyoroScreenConfiguration(appBar: const _AppBar(), body: configuration.body),
+      ),
     );
   }
 }
