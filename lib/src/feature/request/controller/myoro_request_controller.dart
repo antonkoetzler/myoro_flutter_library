@@ -25,9 +25,7 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
     try {
       // Check if disposed before setting loading state
       if (!_isDisposed) value = request.createLoadingState();
-
       final result = await requestCallback?.call();
-
       // Check if disposed before setting success state
       if (!_isDisposed) value = request.createSuccessState(result);
     } on HttpException catch (httpError) {

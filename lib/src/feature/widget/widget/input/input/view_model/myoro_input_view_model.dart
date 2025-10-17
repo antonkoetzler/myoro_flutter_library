@@ -71,6 +71,7 @@ class MyoroInputViewModel {
       _state.localController?.dispose();
       _state.localController = null;
       _state.controller.addListener(_controllerListener);
+      _controllerListener();
     }
   }
 

@@ -6,8 +6,7 @@ part 'myoro_date_picker_input_state.dart';
 
 /// View model of [MyoroDatePickerInput].
 class MyoroDatePickerInputViewModel {
-  MyoroDatePickerInputViewModel(MyoroDatePickerInputConfiguration configuration)
-    : _state = MyoroDatePickerInputState(configuration);
+  MyoroDatePickerInputViewModel(MyoroDatePickerInputConfiguration configuration) : _state = MyoroDatePickerInputState(configuration);
 
   final MyoroDatePickerInputState _state;
   MyoroDatePickerInputState get state => _state;
@@ -20,8 +19,8 @@ class MyoroDatePickerInputViewModel {
   /// Retrieves the size of the [MyoroInput].
   void getInputSize() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final renderBox = _state.inputKey.currentContext!.findRenderObject() as RenderBox;
-      _state.inputSizeController.value = renderBox.size;
+      final renderBox = _state.inputKey.currentContext?.findRenderObject() as RenderBox?;
+      _state.inputSizeController.value = renderBox?.size;
     });
   }
 

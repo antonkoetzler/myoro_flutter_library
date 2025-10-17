@@ -63,6 +63,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
     this.suffixIconConstraints,
+    this.suffixButtonStyle,
   });
 
   factory MyoroInputStyle.fake() {
@@ -86,6 +87,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
       obscureTextButtonEnabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonDisabledIcon: faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       suffixIconConstraints: faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      suffixButtonStyle: faker.randomGenerator.boolean() ? myoroFake<MyoroIconTextButtonStyle>() : null,
     );
   }
 
@@ -145,4 +147,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
 
   /// [BoxConstraints] of the suffix icon.
   final BoxConstraints? suffixIconConstraints;
+
+  /// [MyoroIconTextButtonStyle] of the suffix button.
+  final MyoroIconTextButtonStyle? suffixButtonStyle;
 }

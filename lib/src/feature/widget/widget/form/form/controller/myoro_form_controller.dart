@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroForm].
 class MyoroFormController<T> extends MyoroRequestController<T> {
+  /// Default constructor.
   MyoroFormController({this.configuration}) : super(requestCallback: configuration?.request) {
     addListener(_listener);
   }
