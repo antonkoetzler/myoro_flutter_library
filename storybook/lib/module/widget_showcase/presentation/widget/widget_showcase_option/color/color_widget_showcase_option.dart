@@ -48,8 +48,8 @@ final class _ColorWidgetShowcaseOptionState extends State<ColorWidgetShowcaseOpt
           request: kMyoroTestColors.toSet,
           selectedItem: _selectedColor,
           itemBuilder: (color) {
-            return MyoroMenuItem(
-              buttonBuilder: (_, _) {
+            return MyoroMenuButtonItem(
+              builder: (_, _) {
                 return Padding(
                   padding: const EdgeInsets.all(10),
                   child: Row(

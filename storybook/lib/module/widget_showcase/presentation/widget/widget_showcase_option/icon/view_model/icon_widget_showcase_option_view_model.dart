@@ -16,8 +16,8 @@ final class IconWidgetShowcaseOptionViewModel {
           request: kMyoroTestIcons.toSet,
           selectedItem: _configuration.selectedIcon,
           itemBuilder: (icon) {
-            return MyoroMenuItem(
-              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+            return MyoroMenuIconTextButtonItem(
+              configuration: MyoroIconTextButtonConfiguration(
                 textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized),
               ),
             );

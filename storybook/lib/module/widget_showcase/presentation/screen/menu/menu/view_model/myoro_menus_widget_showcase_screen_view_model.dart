@@ -74,10 +74,8 @@ final class MyoroMenusWidgetShowcaseScreenViewModel {
 
   /// [MyoroMenuConfiguration.itemBuilder]
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuItem(
-      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroTextConfiguration(text: item),
-      ),
+    return MyoroMenuIconTextButtonItem(
+      configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: item)),
     );
   }
 }

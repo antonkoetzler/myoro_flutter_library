@@ -20,19 +20,22 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<TextAlign>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Indicator text alignment',
-        selectedItemBuilder: (alignment) => _alignments.entries
-            .firstWhere((entry) => entry.value == alignment, orElse: () => const MapEntry('custom', TextAlign.center))
-            .key,
+        selectedItemBuilder:
+            (alignment) =>
+                _alignments.entries
+                    .firstWhere(
+                      (entry) => entry.value == alignment,
+                      orElse: () => const MapEntry('custom', TextAlign.center),
+                    )
+                    .key,
         onChanged: (alignment) => viewModel.state.indicatorTextAlignment = alignment,
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: () => _alignments.values.toSet(),
           selectedItem: viewModel.state.indicatorTextAlignment,
           itemBuilder: (alignment) {
             final name = _alignments.entries.firstWhere((entry) => entry.value == alignment).key;
-            return MyoroMenuItem(
-              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                textConfiguration: MyoroTextConfiguration(text: name),
-              ),
+            return MyoroMenuIconTextButtonItem(
+              configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: name)),
             );
           },
         ),

@@ -10,8 +10,8 @@ final class MyoroInputStyleEnumWidgetShowcaseOptionViewModel {
 
   /// [MyoroMenuConfiguration.itemBuilder]
   MyoroMenuItem itemBuilder(MyoroInputStyleEnum item) {
-    return MyoroMenuItem(
-      iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+    return MyoroMenuIconTextButtonItem(
+      configuration: MyoroIconTextButtonConfiguration(
         textConfiguration: MyoroTextConfiguration(text: item.name.capitalized),
       ),
     );

@@ -14,10 +14,8 @@ final class _Widget extends StatelessWidget {
             return {'Start', 'End'};
           },
           itemBuilder: (item) {
-            return MyoroMenuItem(
-              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                textConfiguration: MyoroTextConfiguration(text: item),
-              ),
+            return MyoroMenuIconTextButtonItem(
+              configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: item)),
             );
           },
         ),

@@ -14,8 +14,8 @@ final class _SingleChildScrollableSection extends StatelessWidget {
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
 
-    final scrollablesWidgetShowcaseThemeExtension = context
-        .resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
+    final scrollablesWidgetShowcaseThemeExtension =
+        context.resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
     final scrollableConstraints = scrollablesWidgetShowcaseThemeExtension.scrollableConstraints;
 
     return Column(

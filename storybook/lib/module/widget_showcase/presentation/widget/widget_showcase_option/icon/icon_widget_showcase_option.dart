@@ -28,10 +28,7 @@ final class IconWidgetShowcaseOption extends StatelessWidget {
           Row(
             spacing: widgetShowcaseThemeExtension.spacing,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Expanded(child: _IconDropdown()),
-              Expanded(child: _IconSizeInput()),
-            ],
+            children: const [Expanded(child: _IconDropdown()), Expanded(child: _IconSizeInput())],
           ),
         ],
       ),

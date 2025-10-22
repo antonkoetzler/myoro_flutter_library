@@ -37,8 +37,8 @@ final class InputBorderWidgetShowcaseOption extends StatelessWidget {
           request: _getTestInputBorders().toSet,
           selectedItem: selectedBorder,
           itemBuilder: (border) {
-            return MyoroMenuItem(
-              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+            return MyoroMenuIconTextButtonItem(
+              configuration: MyoroIconTextButtonConfiguration(
                 textConfiguration: MyoroTextConfiguration(text: _getInputBorderName(border)),
               ),
             );

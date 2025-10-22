@@ -24,6 +24,8 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
     bool backgroundHoverColorProvided = true,
     Color? backgroundTapColor,
     bool backgroundTapColorProvided = true,
+    Color? disabledBackgroundColor,
+    bool disabledBackgroundColorProvided = true,
     Color? contentIdleColor,
     bool contentIdleColorProvided = true,
     Color? contentHoverColor,
@@ -45,6 +47,9 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
       backgroundIdleColor: backgroundIdleColorProvided ? (backgroundIdleColor ?? self.backgroundIdleColor) : null,
       backgroundHoverColor: backgroundHoverColorProvided ? (backgroundHoverColor ?? self.backgroundHoverColor) : null,
       backgroundTapColor: backgroundTapColorProvided ? (backgroundTapColor ?? self.backgroundTapColor) : null,
+      disabledBackgroundColor: disabledBackgroundColorProvided
+          ? (disabledBackgroundColor ?? self.disabledBackgroundColor)
+          : null,
       contentIdleColor: contentIdleColorProvided ? (contentIdleColor ?? self.contentIdleColor) : null,
       contentHoverColor: contentHoverColorProvided ? (contentHoverColor ?? self.contentHoverColor) : null,
       contentTapColor: contentTapColorProvided ? (contentTapColor ?? self.contentTapColor) : null,
@@ -63,6 +68,7 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
         other.backgroundIdleColor == self.backgroundIdleColor &&
         other.backgroundHoverColor == self.backgroundHoverColor &&
         other.backgroundTapColor == self.backgroundTapColor &&
+        other.disabledBackgroundColor == self.disabledBackgroundColor &&
         other.contentIdleColor == self.contentIdleColor &&
         other.contentHoverColor == self.contentHoverColor &&
         other.contentTapColor == self.contentTapColor &&
@@ -79,6 +85,7 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
       self.backgroundIdleColor,
       self.backgroundHoverColor,
       self.backgroundTapColor,
+      self.disabledBackgroundColor,
       self.contentIdleColor,
       self.contentHoverColor,
       self.contentTapColor,
@@ -96,6 +103,7 @@ mixin _$MyoroButtonThemeExtensionMixin on ThemeExtension<MyoroButtonThemeExtensi
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
       '  backgroundHoverColor: ${self.backgroundHoverColor},\n'
       '  backgroundTapColor: ${self.backgroundTapColor},\n'
+      '  disabledBackgroundColor: ${self.disabledBackgroundColor},\n'
       '  contentIdleColor: ${self.contentIdleColor},\n'
       '  contentHoverColor: ${self.contentHoverColor},\n'
       '  contentTapColor: ${self.contentTapColor},\n'

@@ -16,6 +16,7 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
       backgroundIdleColor: Color.lerp(a?.backgroundIdleColor, b?.backgroundIdleColor, t),
       backgroundHoverColor: Color.lerp(a?.backgroundHoverColor, b?.backgroundHoverColor, t),
       backgroundTapColor: Color.lerp(a?.backgroundTapColor, b?.backgroundTapColor, t),
+      disabledBackgroundColor: Color.lerp(a?.disabledBackgroundColor, b?.disabledBackgroundColor, t),
       contentIdleColor: Color.lerp(a?.contentIdleColor, b?.contentIdleColor, t),
       contentHoverColor: Color.lerp(a?.contentHoverColor, b?.contentHoverColor, t),
       contentTapColor: Color.lerp(a?.contentTapColor, b?.contentTapColor, t),
@@ -31,6 +32,7 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
     this.backgroundIdleColor,
     this.backgroundHoverColor,
     this.backgroundTapColor,
+    this.disabledBackgroundColor,
     this.contentIdleColor,
     this.contentHoverColor,
     this.contentTapColor,
@@ -45,6 +47,7 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
     : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       backgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      disabledBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -62,6 +65,9 @@ class MyoroButtonStyle with _$MyoroButtonStyleMixin {
 
   /// [MyoroTapStatusEnum.tap]'s background [Color].
   final Color? backgroundTapColor;
+
+  /// Disabled background [Color].
+  final Color? disabledBackgroundColor;
 
   /// [MyoroTapStatusEnum.idle]'s content [Color].
   final Color? contentIdleColor;

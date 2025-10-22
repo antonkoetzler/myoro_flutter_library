@@ -24,6 +24,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
     this.secondaryBackgroundIdleColor,
     this.secondaryBackgroundHoverColor,
     this.secondaryBackgroundTapColor,
+    this.disabledBackgroundColor,
     this.primaryContentColor,
     this.secondaryContentColor,
     this.borderWidth,
@@ -38,6 +39,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       secondaryBackgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       secondaryBackgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       secondaryBackgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      disabledBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       primaryContentColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       secondaryContentColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       borderWidth = faker.randomGenerator.boolean() ? faker.randomGenerator.decimal(scale: 20) : null,
@@ -59,6 +61,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       secondaryBackgroundTapColor = isDarkMode
           ? colorScheme.onPrimary.darken(secondaryBackgroundTapColorFactor)
           : colorScheme.onPrimary.brighten(secondaryBackgroundTapColorFactor),
+      disabledBackgroundColor = isDarkMode ? colorScheme.onPrimary.darken(0.5) : colorScheme.onPrimary.brighten(0.5),
       primaryContentColor = colorScheme.onPrimary,
       secondaryContentColor = colorScheme.primary,
       borderWidth = kMyoroBorderWidth,
@@ -82,6 +85,9 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
 
   /// Secondary background [Color] of [MyoroTapStatusEnum.tap].
   final Color? secondaryBackgroundTapColor;
+
+  /// Disabled background color.
+  final Color? disabledBackgroundColor;
 
   /// Primary content [Color].
   final Color? primaryContentColor;
@@ -124,6 +130,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       other.secondaryBackgroundTapColor,
       t,
     );
+    final disabledBackgroundColor = Color.lerp(this.disabledBackgroundColor, other.disabledBackgroundColor, t);
     final primaryContentColor = Color.lerp(this.primaryContentColor, other.primaryContentColor, t);
     final secondaryContentColor = Color.lerp(this.secondaryContentColor, other.secondaryContentColor, t);
     final borderWidth = lerpDouble(this.borderWidth, other.borderWidth, t);
@@ -137,6 +144,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       secondaryBackgroundIdleColor: secondaryBackgroundIdleColor,
       secondaryBackgroundHoverColor: secondaryBackgroundHoverColor,
       secondaryBackgroundTapColor: secondaryBackgroundTapColor,
+      disabledBackgroundColor: disabledBackgroundColor,
       primaryContentColor: primaryContentColor,
       primaryContentColorProvided: primaryContentColor != null,
       secondaryContentColor: secondaryContentColor,

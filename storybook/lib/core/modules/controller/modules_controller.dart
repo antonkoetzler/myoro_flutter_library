@@ -10,14 +10,15 @@ final class ModulesController {
 
   /// Generates the [List] of [ThemeExtension]s of each [Module] in [modules].
   List<ThemeExtension> themeExtenionsBuilder(ColorScheme colorScheme, TextTheme textTheme) {
-    final themeExtensions = modules
-        .map((Module module) {
-          return module.themeExtensionsBuilder(colorScheme, textTheme);
-        })
-        .expand((List<ThemeExtension> moduleThemeExtensions) {
-          return moduleThemeExtensions;
-        })
-        .toList();
+    final themeExtensions =
+        modules
+            .map((Module module) {
+              return module.themeExtensionsBuilder(colorScheme, textTheme);
+            })
+            .expand((List<ThemeExtension> moduleThemeExtensions) {
+              return moduleThemeExtensions;
+            })
+            .toList();
     return themeExtensions;
   }
 }

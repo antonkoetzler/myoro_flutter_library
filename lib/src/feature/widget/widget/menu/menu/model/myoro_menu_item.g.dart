@@ -8,50 +8,75 @@ part of 'myoro_menu_item.dart';
 
 // coverage:ignore-file
 
-/// Apply this mixin to [MyoroMenuItem] once the code is generated.
+/// Apply this mixin to [MyoroMenuButtonItem] once the code is generated.
 ///
 /// ```dart
-/// class MyoroMenuItem with _$MyoroMenuItemMixin {}
+/// class MyoroMenuButtonItem with _$MyoroMenuButtonItemMixin {}
 /// ```
-mixin _$MyoroMenuItemMixin {
-  MyoroMenuItem get self => this as MyoroMenuItem;
+mixin _$MyoroMenuButtonItemMixin {
+  MyoroMenuButtonItem get self => this as MyoroMenuButtonItem;
 
-  MyoroMenuItem copyWith({
-    MyoroButtonConfiguration? buttonConfiguration,
-    bool buttonConfigurationProvided = true,
-    MyoroButtonBuilder? buttonBuilder,
-    bool buttonBuilderProvided = true,
-    MyoroIconTextButtonConfiguration? iconTextButtonConfiguration,
-    bool iconTextButtonConfigurationProvided = true,
+  MyoroMenuButtonItem copyWith({
+    MyoroButtonConfiguration? configuration,
+    bool configurationProvided = true,
+    MyoroButtonBuilder? builder,
   }) {
-    return MyoroMenuItem(
-      buttonConfiguration: buttonConfigurationProvided ? (buttonConfiguration ?? self.buttonConfiguration) : null,
-      buttonBuilder: buttonBuilderProvided ? (buttonBuilder ?? self.buttonBuilder) : null,
-      iconTextButtonConfiguration: iconTextButtonConfigurationProvided
-          ? (iconTextButtonConfiguration ?? self.iconTextButtonConfiguration)
-          : null,
+    return MyoroMenuButtonItem(
+      configuration: configurationProvided ? (configuration ?? self.configuration) : null,
+      builder: builder ?? self.builder,
     );
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroMenuItem &&
+    return other is MyoroMenuButtonItem &&
         other.runtimeType == runtimeType &&
-        other.buttonConfiguration == self.buttonConfiguration &&
-        other.buttonBuilder == self.buttonBuilder &&
-        other.iconTextButtonConfiguration == self.iconTextButtonConfiguration;
+        other.configuration == self.configuration &&
+        other.builder == self.builder;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.buttonConfiguration, self.buttonBuilder, self.iconTextButtonConfiguration);
+    return Object.hash(self.configuration, self.builder);
   }
 
   @override
   String toString() =>
-      'MyoroMenuItem(\n'
-      '  buttonConfiguration: ${self.buttonConfiguration},\n'
-      '  buttonBuilder: ${self.buttonBuilder},\n'
-      '  iconTextButtonConfiguration: ${self.iconTextButtonConfiguration},\n'
+      'MyoroMenuButtonItem(\n'
+      '  configuration: ${self.configuration},\n'
+      '  builder: ${self.builder},\n'
+      ');';
+}
+
+// coverage:ignore-file
+
+/// Apply this mixin to [MyoroMenuIconTextButtonItem] once the code is generated.
+///
+/// ```dart
+/// class MyoroMenuIconTextButtonItem with _$MyoroMenuIconTextButtonItemMixin {}
+/// ```
+mixin _$MyoroMenuIconTextButtonItemMixin {
+  MyoroMenuIconTextButtonItem get self => this as MyoroMenuIconTextButtonItem;
+
+  MyoroMenuIconTextButtonItem copyWith({MyoroIconTextButtonConfiguration? configuration}) {
+    return MyoroMenuIconTextButtonItem(configuration: configuration ?? self.configuration);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MyoroMenuIconTextButtonItem &&
+        other.runtimeType == runtimeType &&
+        other.configuration == self.configuration;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hashAll([self.configuration]);
+  }
+
+  @override
+  String toString() =>
+      'MyoroMenuIconTextButtonItem(\n'
+      '  configuration: ${self.configuration},\n'
       ');';
 }

@@ -30,6 +30,8 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
     bool secondaryBackgroundHoverColorProvided = true,
     Color? secondaryBackgroundTapColor,
     bool secondaryBackgroundTapColorProvided = true,
+    Color? disabledBackgroundColor,
+    bool disabledBackgroundColorProvided = true,
     Color? primaryContentColor,
     bool primaryContentColorProvided = true,
     Color? secondaryContentColor,
@@ -60,6 +62,9 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
       secondaryBackgroundTapColor: secondaryBackgroundTapColorProvided
           ? (secondaryBackgroundTapColor ?? self.secondaryBackgroundTapColor)
           : null,
+      disabledBackgroundColor: disabledBackgroundColorProvided
+          ? (disabledBackgroundColor ?? self.disabledBackgroundColor)
+          : null,
       primaryContentColor: primaryContentColorProvided ? (primaryContentColor ?? self.primaryContentColor) : null,
       secondaryContentColor: secondaryContentColorProvided
           ? (secondaryContentColor ?? self.secondaryContentColor)
@@ -80,6 +85,7 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
         other.secondaryBackgroundIdleColor == self.secondaryBackgroundIdleColor &&
         other.secondaryBackgroundHoverColor == self.secondaryBackgroundHoverColor &&
         other.secondaryBackgroundTapColor == self.secondaryBackgroundTapColor &&
+        other.disabledBackgroundColor == self.disabledBackgroundColor &&
         other.primaryContentColor == self.primaryContentColor &&
         other.secondaryContentColor == self.secondaryContentColor &&
         other.borderWidth == self.borderWidth &&
@@ -96,6 +102,7 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
       self.secondaryBackgroundIdleColor,
       self.secondaryBackgroundHoverColor,
       self.secondaryBackgroundTapColor,
+      self.disabledBackgroundColor,
       self.primaryContentColor,
       self.secondaryContentColor,
       self.borderWidth,
@@ -113,6 +120,7 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
       '  secondaryBackgroundIdleColor: ${self.secondaryBackgroundIdleColor},\n'
       '  secondaryBackgroundHoverColor: ${self.secondaryBackgroundHoverColor},\n'
       '  secondaryBackgroundTapColor: ${self.secondaryBackgroundTapColor},\n'
+      '  disabledBackgroundColor: ${self.disabledBackgroundColor},\n'
       '  primaryContentColor: ${self.primaryContentColor},\n'
       '  secondaryContentColor: ${self.secondaryContentColor},\n'
       '  borderWidth: ${self.borderWidth},\n'

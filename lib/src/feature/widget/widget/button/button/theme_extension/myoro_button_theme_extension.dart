@@ -15,6 +15,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     this.backgroundIdleColor,
     this.backgroundHoverColor,
     this.backgroundTapColor,
+    this.disabledBackgroundColor,
     this.contentIdleColor,
     this.contentHoverColor,
     this.contentTapColor,
@@ -29,6 +30,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     : backgroundIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       backgroundHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       backgroundTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
+      disabledBackgroundColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentIdleColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentHoverColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
       contentTapColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null,
@@ -42,6 +44,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
     : backgroundIdleColor = decorationThemeExtension.primaryBackgroundIdleColor,
       backgroundHoverColor = decorationThemeExtension.primaryBackgroundHoverColor,
       backgroundTapColor = decorationThemeExtension.primaryBackgroundTapColor,
+      disabledBackgroundColor = decorationThemeExtension.disabledBackgroundColor,
       contentIdleColor = decorationThemeExtension.primaryContentColor,
       contentHoverColor = decorationThemeExtension.primaryContentColor,
       contentTapColor = decorationThemeExtension.primaryContentColor,
@@ -59,6 +62,9 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
 
   @override
   final Color? backgroundTapColor;
+
+  @override
+  final Color? disabledBackgroundColor;
 
   @override
   final Color? contentIdleColor;
@@ -92,6 +98,7 @@ class MyoroButtonThemeExtension extends ThemeExtension<MyoroButtonThemeExtension
       backgroundIdleColor: style.backgroundIdleColor,
       backgroundHoverColor: style.backgroundHoverColor,
       backgroundTapColor: style.backgroundTapColor,
+      disabledBackgroundColor: style.disabledBackgroundColor,
       contentIdleColor: style.contentIdleColor,
       contentHoverColor: style.contentHoverColor,
       contentTapColor: style.contentTapColor,

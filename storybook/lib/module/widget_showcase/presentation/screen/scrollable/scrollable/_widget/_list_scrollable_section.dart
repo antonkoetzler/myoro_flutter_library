@@ -14,8 +14,8 @@ final class _ListScrollableSection extends StatelessWidget {
     final spacing = widgetShowcaseThemeExtension.spacing;
     final labelTextStyle = widgetShowcaseThemeExtension.labelTextStyle;
 
-    final scrollablesWidgetShowcaseScreenThemeExtension = context
-        .resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
+    final scrollablesWidgetShowcaseScreenThemeExtension =
+        context.resolveThemeExtension<MyoroScrollablesWidgetShowcaseScreenThemeExtension>();
     final scrollableConstraints = scrollablesWidgetShowcaseScreenThemeExtension.scrollableConstraints;
 
     return Column(
@@ -30,10 +30,7 @@ final class _ListScrollableSection extends StatelessWidget {
             style: style,
             children: List.generate(
               20,
-              (index) => Padding(
-                padding: EdgeInsets.only(bottom: spacing),
-                child: _Button('List Item $index'),
-              ),
+              (index) => Padding(padding: EdgeInsets.only(bottom: spacing), child: _Button('List Item $index')),
             ),
           ),
         ),

@@ -17,22 +17,22 @@ final class _LabelBehaviorOption extends StatelessWidget {
     return MyoroSingleSelectionDropdown<FloatingLabelBehavior>(
       configuration: MyoroSingleSelectionDropdownConfiguration(
         label: 'Label behavior',
-        selectedItemBuilder: (behavior) => _behaviors.entries
-            .firstWhere(
-              (entry) => entry.value == behavior,
-              orElse: () => const MapEntry('custom', FloatingLabelBehavior.auto),
-            )
-            .key,
+        selectedItemBuilder:
+            (behavior) =>
+                _behaviors.entries
+                    .firstWhere(
+                      (entry) => entry.value == behavior,
+                      orElse: () => const MapEntry('custom', FloatingLabelBehavior.auto),
+                    )
+                    .key,
         onChanged: (behavior) => viewModel.state.labelBehavior = behavior,
         menuConfiguration: MyoroSingleMenuConfiguration(
           request: () => _behaviors.values.toSet(),
           selectedItem: viewModel.state.labelBehavior,
           itemBuilder: (behavior) {
             final name = _behaviors.entries.firstWhere((entry) => entry.value == behavior).key;
-            return MyoroMenuItem(
-              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
-                textConfiguration: MyoroTextConfiguration(text: name),
-              ),
+            return MyoroMenuIconTextButtonItem(
+              configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: name)),
             );
           },
         ),

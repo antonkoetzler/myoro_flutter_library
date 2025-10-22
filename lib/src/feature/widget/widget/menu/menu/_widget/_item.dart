@@ -20,27 +20,22 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
     final toggleItem = viewModel.toggleItem;
 
-    final buttonConfiguration = _menuItem.buttonConfiguration;
-    final buttonBuilder = _menuItem.buttonBuilder;
-    final iconTextButtonConfiguration = _menuItem.iconTextButtonConfiguration;
-
-    if (buttonBuilder != null) {
-      return MyoroButton(
-        configuration: (buttonConfiguration ?? const MyoroButtonConfiguration()).copyWith(
+    return switch (_menuItem) {
+      MyoroMenuButtonItem() => MyoroButton(
+        configuration: (_menuItem.configuration ?? const MyoroButtonConfiguration()).copyWith(
           onTapUp: (details) => toggleItem(_item),
         ),
         style: const MyoroButtonStyle()
             .copyWith(borderRadius: itemBorderRadius)
             .singleBackgroundColor(selectedItemColor),
-        builder: buttonBuilder,
-      );
-    }
-
-    return MyoroIconTextButton(
-      configuration: iconTextButtonConfiguration!.copyWith(onTapUp: (details) => toggleItem(_item)),
-      style: const MyoroIconTextButtonStyle()
-          .copyWith(borderRadius: itemBorderRadius)
-          .singleBackgroundColor(selectedItemColor),
-    );
+        builder: _menuItem.builder,
+      ),
+      MyoroMenuIconTextButtonItem() => MyoroIconTextButton(
+        configuration: _menuItem.configuration.copyWith(onTapUp: (details) => toggleItem(_item)),
+        style: const MyoroIconTextButtonStyle()
+            .copyWith(borderRadius: itemBorderRadius)
+            .singleBackgroundColor(selectedItemColor),
+      ),
+    };
   }
 }

@@ -14,17 +14,17 @@ final class MyoroModalWidgetShowcaseScreenViewModel {
 
     !state.isBottomSheet
         ? MyoroModal.showModal(
-            context,
-            configuration: buildConfiguration(context),
-            style: buildStyle(context),
-            child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
-          )
+          context,
+          configuration: buildConfiguration(context),
+          style: buildStyle(context),
+          child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
+        )
         : MyoroModal.showBottomSheet(
-            context,
-            configuration: buildConfiguration(context),
-            style: buildStyle(context),
-            child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
-          );
+          context,
+          configuration: buildConfiguration(context),
+          style: buildStyle(context),
+          child: Image.asset(kHappyCat, width: themeExtension.modalContentImageSize, fit: BoxFit.contain),
+        );
   }
 
   /// [MyoroModalConfiguration] of the [MyoroModal].

@@ -27,8 +27,8 @@ final class ThemeModeWidgetShowcaseOption extends StatelessWidget {
           request: ThemeMode.values.toSet,
           selectedItem: themeModeController.themeMode,
           itemBuilder: (themeMode) {
-            return MyoroMenuItem(
-              iconTextButtonConfiguration: MyoroIconTextButtonConfiguration(
+            return MyoroMenuIconTextButtonItem(
+              configuration: MyoroIconTextButtonConfiguration(
                 textConfiguration: MyoroTextConfiguration(text: _formattedName(themeMode)),
               ),
             );

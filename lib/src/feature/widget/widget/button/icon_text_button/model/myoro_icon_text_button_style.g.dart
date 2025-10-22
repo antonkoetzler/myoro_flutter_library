@@ -29,6 +29,8 @@ mixin _$MyoroIconTextButtonStyleMixin {
     bool backgroundHoverColorProvided = true,
     Color? backgroundTapColor,
     bool backgroundTapColorProvided = true,
+    Color? disabledBackgroundColor,
+    bool disabledBackgroundColorProvided = true,
     Color? contentIdleColor,
     bool contentIdleColorProvided = true,
     Color? contentHoverColor,
@@ -74,6 +76,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
         other.backgroundIdleColor == self.backgroundIdleColor &&
         other.backgroundHoverColor == self.backgroundHoverColor &&
         other.backgroundTapColor == self.backgroundTapColor &&
+        other.disabledBackgroundColor == self.disabledBackgroundColor &&
         other.contentIdleColor == self.contentIdleColor &&
         other.contentHoverColor == self.contentHoverColor &&
         other.contentTapColor == self.contentTapColor &&
@@ -93,6 +96,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
       self.backgroundIdleColor,
       self.backgroundHoverColor,
       self.backgroundTapColor,
+      self.disabledBackgroundColor,
       self.contentIdleColor,
       self.contentHoverColor,
       self.contentTapColor,
@@ -113,6 +117,7 @@ mixin _$MyoroIconTextButtonStyleMixin {
       '  backgroundIdleColor: ${self.backgroundIdleColor},\n'
       '  backgroundHoverColor: ${self.backgroundHoverColor},\n'
       '  backgroundTapColor: ${self.backgroundTapColor},\n'
+      '  disabledBackgroundColor: ${self.disabledBackgroundColor},\n'
       '  contentIdleColor: ${self.contentIdleColor},\n'
       '  contentHoverColor: ${self.contentHoverColor},\n'
       '  contentTapColor: ${self.contentTapColor},\n'

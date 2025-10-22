@@ -36,12 +36,8 @@ final class _SelectionInputPair extends StatelessWidget {
     return Row(
       spacing: widgetShowcaseThemeExtension.spacing,
       children: [
-        Expanded(
-          child: _SelectionInput(label: leftLabel, onChanged: leftOnChanged, value: leftValue),
-        ),
-        Expanded(
-          child: _SelectionInput(label: rightLabel, onChanged: rightOnChanged, value: rightValue),
-        ),
+        Expanded(child: _SelectionInput(label: leftLabel, onChanged: leftOnChanged, value: leftValue)),
+        Expanded(child: _SelectionInput(label: rightLabel, onChanged: rightOnChanged, value: rightValue)),
       ],
     );
   }

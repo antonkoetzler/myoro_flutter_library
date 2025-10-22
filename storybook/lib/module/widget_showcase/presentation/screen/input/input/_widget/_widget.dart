@@ -24,10 +24,7 @@ final class _Widget extends StatelessWidget {
                 if (validationEnabled) const _ValidationOptionMessage(),
                 Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Flexible(child: _Input()),
-                    if (validationEnabled) const _SubmitButton(),
-                  ],
+                  children: [const Flexible(child: _Input()), if (validationEnabled) const _SubmitButton()],
                 ),
               ],
             );

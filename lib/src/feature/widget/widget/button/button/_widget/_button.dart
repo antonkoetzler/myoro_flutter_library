@@ -13,6 +13,7 @@ final class _Button extends StatelessWidget {
     final style = context.watch<MyoroButtonStyle>();
     final border = style.borderBuilder(_tapStatusEnum) ?? themeExtension.borderBuilder(_tapStatusEnum);
     final borderRadius = style.borderRadius ?? themeExtension.borderRadius;
+    final disabledBackgroundColor = style.disabledBackgroundColor ?? themeExtension.disabledBackgroundColor;
     final backgroundColor =
         style.backgroundColorBuilder(_tapStatusEnum) ?? themeExtension.backgroundColorBuilder(_tapStatusEnum);
     final borderWidth = style.borderWidth ?? themeExtension.borderWidth;
@@ -20,9 +21,14 @@ final class _Button extends StatelessWidget {
     final viewModel = context.read<MyoroButtonViewModel>();
     final state = viewModel.state;
     final configuration = state.configuration;
+    final onTapProvided = configuration?.onTapProvided == true;
 
     final child = DecoratedBox(
-      decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
+      decoration: BoxDecoration(
+        color: onTapProvided ? backgroundColor : disabledBackgroundColor,
+        border: border,
+        borderRadius: borderRadius,
+      ),
       child: Padding(
         padding: EdgeInsets.all(borderWidth ?? 0),
         child: ClipRRect(

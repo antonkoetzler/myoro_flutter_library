@@ -26,15 +26,16 @@ final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
       isLoading: buttonConfiguration.isLoading,
       invert: _state.invert,
       iconConfiguration: _state.icon != null ? MyoroIconConfiguration(icon: _state.icon!, size: _state.iconSize) : null,
-      textConfiguration: _state.text.isNotEmpty
-          ? MyoroTextConfiguration(
-              text: _state.text,
-              maxLines: _state.maxLines,
-              overflow: _state.overflow,
-              alignment: _state.alignment,
-              style: _state.style,
-            )
-          : null,
+      textConfiguration:
+          _state.text.isNotEmpty
+              ? MyoroTextConfiguration(
+                text: _state.text,
+                maxLines: _state.maxLines,
+                overflow: _state.overflow,
+                alignment: _state.alignment,
+                style: _state.style,
+              )
+              : null,
     );
   }
 

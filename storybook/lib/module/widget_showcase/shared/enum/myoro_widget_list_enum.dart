@@ -17,6 +17,7 @@ enum MyoroWidgetListEnum {
   feedbacks('Feedbacks', {myoroFeedbackTitle}),
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
+  indexedStacks('Indexed Stacks', {myoroIndexedStackTitle}),
   inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle, myoroTimePickerInputTitle}),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
@@ -88,6 +89,9 @@ enum MyoroWidgetListEnum {
   // Graphs
   static const myoroBarGraphTitle = 'MyoroBarGraph';
   static const myoroPieGraphTitle = 'MyoroPieGraph';
+
+  // Indexed stacks
+  static const myoroIndexedStackTitle = 'MyoroIndexedStack';
 
   // Inputs
   static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
@@ -184,6 +188,9 @@ enum MyoroWidgetListEnum {
       // Graphs
       myoroBarGraphTitle => const MyoroBarGraphWidgetShowcaseScreen(),
       myoroPieGraphTitle => const MyoroPieGraphWidgetShowcaseScreen(),
+
+      // Indexed stacks
+      myoroIndexedStackTitle => const MyoroIndexedStackWidgetShowcaseScreen(),
 
       // Inputs
       myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcaseScreen(),

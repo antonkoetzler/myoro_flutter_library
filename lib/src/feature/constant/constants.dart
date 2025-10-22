@@ -18,6 +18,9 @@ const kMyoroBorderWidth = kMyoroMultiplier / 4;
 /// [BorderRadius] length.
 const kMyoroBorderRadius = kMyoroMultiplier;
 
+/// Animation [Duration].
+const kMyoroAnimationDuration = Duration(milliseconds: 300);
+
 /// [Alignment]s for testing.
 const kMyoroTestAlignments = [
   Alignment.center,

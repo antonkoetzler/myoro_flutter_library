@@ -1,4 +1,5 @@
 export 'accordion/exports.dart';
+export 'indexed_stack/exports.dart';
 export 'app_bar/exports.dart';
 export 'app/exports.dart';
 export 'button/exports.dart';

@@ -18,6 +18,7 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createDropdownThemeExtensions(colorScheme),
     ..._createFeedbackThemeExtensions(textTheme),
     ..._createGraphThemeExtensions(colorScheme, textTheme),
+    ..._createIndexedStackThemeExtensions(colorScheme),
     ..._createInputThemeExtensions(colorScheme, textTheme),
     ..._createLoaderThemeExtensions(colorScheme),
     ..._createMenuThemeExtensions(colorScheme, textTheme, decorationThemeExtension),
@@ -91,6 +92,10 @@ List<ThemeExtension> _createGraphThemeExtensions(ColorScheme colorScheme, TextTh
     MyoroBarGraphThemeExtension.builder(colorScheme, textTheme),
     MyoroPieGraphThemeExtension.builder(colorScheme),
   ];
+}
+
+List<ThemeExtension> _createIndexedStackThemeExtensions(ColorScheme colorScheme) {
+  return [MyoroIndexedStackThemeExtension.builder(colorScheme)];
 }
 
 List<ThemeExtension> _createInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
