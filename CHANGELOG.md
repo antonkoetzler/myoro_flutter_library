@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.6.4
+
+- fix: Fix infinite loop in `MyoroRequestController`
+
 ## 2.6.3
 
 - feature: `MyoroIndexedStack`

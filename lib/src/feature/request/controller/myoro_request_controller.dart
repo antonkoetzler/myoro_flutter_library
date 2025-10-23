@@ -10,12 +10,11 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
   static bool _isRequestCallbackSync<T>(MyoroRequestControllerRequest<T>? requestCallback) {
     if (requestCallback == null) return false;
 
-    try {
-      final result = requestCallback();
-      return result is! Future<T?>;
-    } catch (e) {
-      return false;
-    }
+    // Check the function's runtime type to determine if it returns Future
+    final functionType = requestCallback.runtimeType.toString();
+
+    // If the function type contains 'Future', it's async
+    return !functionType.contains('Future');
   }
 
   MyoroRequestController({this.requestCallback})
