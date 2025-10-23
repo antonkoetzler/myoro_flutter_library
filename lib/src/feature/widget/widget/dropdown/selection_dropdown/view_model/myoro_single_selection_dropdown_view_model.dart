@@ -9,6 +9,7 @@ final class MyoroSingleSelectionDropdownViewModel<T>
     : super(
         MyoroSingleInputDropdownController<T>(
           configuration: MyoroSingleInputDropdownConfiguration(
+            label: configuration.label,
             dropdownType: configuration.dropdownType,
             menuConfiguration: configuration.menuConfiguration,
             selectedItemBuilder: configuration.selectedItemBuilder,

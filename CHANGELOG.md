@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2.6.3
+
+- feature: `MyoroIndexedStack`
+- feature: `kMyoroAnimationDuration`
+- feature: `MyoroSingleMenuConfiguration.allowDeselection`
+- fix: Label not appearing in input dropdowns
+- improvement: Visuals when no on tap is provided in buttons
+- improvement: Remove redundant loading state in `MyoroRequest` with sync functions
+
 ## 2.6.2
 
 - feature: `MyoroInputStyle.suffixButtonStyle`

@@ -6,7 +6,30 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// [ValueNotifier] that executes a [FutureOr] function to retrieve data.
 class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
-  MyoroRequestController({this.requestCallback}) : super(MyoroRequest<T>());
+  /// Private method to check if the requestCallback is synchronous or asynchronous.
+  static bool _isRequestCallbackSync<T>(MyoroRequestControllerRequest<T>? requestCallback) {
+    if (requestCallback == null) return false;
+
+    try {
+      final result = requestCallback();
+      return result is! Future<T?>;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  MyoroRequestController({this.requestCallback})
+    : super(() {
+        if (_isRequestCallbackSync(requestCallback)) {
+          try {
+            final result = requestCallback!();
+            return MyoroRequest<T>(status: MyoroRequestEnum.success, data: result as T?);
+          } catch (e) {
+            return MyoroRequest<T>();
+          }
+        }
+        return MyoroRequest<T>();
+      }());
 
   bool _isDisposed = false;
   MyoroRequestControllerRequest<T>? requestCallback;
@@ -23,8 +46,11 @@ class MyoroRequestController<T> extends ValueNotifier<MyoroRequest<T>> {
     String? errorMessage;
 
     try {
-      // Check if disposed before setting loading state
-      if (!_isDisposed) value = request.createLoadingState();
+      // Only set loading state for async functions
+      if (!_isRequestCallbackSync(requestCallback) && !_isDisposed) {
+        value = request.createLoadingState();
+      }
+
       final result = await requestCallback?.call();
       // Check if disposed before setting success state
       if (!_isDisposed) value = request.createSuccessState(result);

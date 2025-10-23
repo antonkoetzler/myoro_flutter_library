@@ -17,6 +17,7 @@ mixin _$MyoroSingleMenuConfigurationMixin<T> {
   MyoroSingleMenuConfiguration<T> get self => this as MyoroSingleMenuConfiguration<T>;
 
   MyoroSingleMenuConfiguration<T> copyWith({
+    bool? allowDeselection,
     T? selectedItem,
     bool selectedItemProvided = true,
     MyoroSingleMenuOnChanged<T>? onChanged,
@@ -29,6 +30,7 @@ mixin _$MyoroSingleMenuConfigurationMixin<T> {
     MyoroMenuItemBuilder<T>? itemBuilder,
   }) {
     return MyoroSingleMenuConfiguration(
+      allowDeselection: allowDeselection ?? self.allowDeselection,
       selectedItem: selectedItemProvided ? (selectedItem ?? self.selectedItem) : null,
       onChanged: onChangedProvided ? (onChanged ?? self.onChanged) : null,
       request: request ?? self.request,
@@ -42,6 +44,7 @@ mixin _$MyoroSingleMenuConfigurationMixin<T> {
   bool operator ==(Object other) {
     return other is MyoroSingleMenuConfiguration<T> &&
         other.runtimeType == runtimeType &&
+        other.allowDeselection == self.allowDeselection &&
         other.selectedItem == self.selectedItem &&
         other.onChanged == self.onChanged &&
         other.request == self.request &&
@@ -53,6 +56,7 @@ mixin _$MyoroSingleMenuConfigurationMixin<T> {
   @override
   int get hashCode {
     return Object.hash(
+      self.allowDeselection,
       self.selectedItem,
       self.onChanged,
       self.request,
@@ -65,6 +69,7 @@ mixin _$MyoroSingleMenuConfigurationMixin<T> {
   @override
   String toString() =>
       'MyoroSingleMenuConfiguration<T>(\n'
+      '  allowDeselection: ${self.allowDeselection},\n'
       '  selectedItem: ${self.selectedItem},\n'
       '  onChanged: ${self.onChanged},\n'
       '  request: ${self.request},\n'

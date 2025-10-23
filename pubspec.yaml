@@ -1,6 +1,6 @@
 name: myoro_flutter_library
 description: The all-in-one Flutter toolkit that lets you build apps faster with a complete design system, customizable widgets, and powerful utilities.
-version: 2.6.2
+version: 2.6.3
 repository: https://github.com/antonkoetzler/myoro_flutter_library
 homepage: https://github.com/antonkoetzler/myoro_flutter_library
 issue_tracker: https://github.com/antonkoetzler/myoro_flutter_library/issues
