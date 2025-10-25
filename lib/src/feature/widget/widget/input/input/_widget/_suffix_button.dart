@@ -22,10 +22,8 @@ final class _SuffixButton extends StatelessWidget {
     return Padding(
       padding: suffixButtonMargin,
       child: MyoroIconTextButton(
-        configuration: MyoroIconTextButtonConfiguration(
-          onTapUp: (_) => _onTapUp(),
-          iconConfiguration: MyoroIconConfiguration(icon: _icon, size: suffixButtonIconSize),
-        ),
+        onTapUp: (_) => _onTapUp(),
+        iconConfiguration: MyoroIconConfiguration(icon: _icon, size: suffixButtonIconSize),
         style: suffixButtonStyle,
       ),
     );

@@ -9,10 +9,8 @@ final class _SearchButton<T> extends StatelessWidget {
   @override
   Widget build(context) {
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => _onTap(),
-        iconConfiguration: const MyoroIconConfiguration(icon: Icons.search),
-      ),
+      onTapUp: (_) => _onTap(),
+      iconConfiguration: const MyoroIconConfiguration(icon: Icons.search),
       style: const MyoroIconTextButtonStyle().bordered(context),
     );
   }

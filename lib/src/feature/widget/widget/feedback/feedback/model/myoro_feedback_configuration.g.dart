@@ -21,7 +21,7 @@ mixin _$MyoroFeedbackConfigurationMixin {
     MyoroTextConfiguration? titleConfiguration,
     MyoroTextConfiguration? subtitleConfiguration,
     bool subtitleConfigurationProvided = true,
-    MyoroIconTextButtonConfiguration? actionButtonConfiguration,
+    MyoroFeedbackActionButtonConfiguration? actionButtonConfiguration,
     bool actionButtonConfigurationProvided = true,
   }) {
     return MyoroFeedbackConfiguration(

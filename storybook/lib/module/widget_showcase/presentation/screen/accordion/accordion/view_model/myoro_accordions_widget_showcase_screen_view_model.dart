@@ -10,23 +10,27 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
   /// State
   final _state = MyoroAccordionsWidgetShowcaseScreenState();
 
-  /// [_state] getter.
-  MyoroAccordionsWidgetShowcaseScreenState get state => _state;
-
   /// Dispose function.
   void dispose() {
     _state.dispose();
   }
 
-  /// [MyoroAccordionThemeExtension] of the [MyoroAccordion].
-  MyoroAccordionThemeExtension buildStyle(BuildContext context) {
-    final accordionThemeExtension = MyoroAccordionThemeExtension.builder(
-      context.isDarkMode,
-      context.colorScheme,
-      context.textTheme,
-    );
+  /// Builds a title or content [Widget].
+  Widget buildTitleOrContentWidget(String item, _) {
+    return Text(item);
+  }
 
-    return accordionThemeExtension.copyWith(
+  /// [_state] getter.
+  MyoroAccordionsWidgetShowcaseScreenState get state => _state;
+
+  /// [MyoroAccordionConfiguration.items]
+  Set<String> get items {
+    return List.generate(faker.randomGenerator.integer(50, min: 20), (int index) => 'Item #$index').toSet();
+  }
+
+  /// [MyoroAccordionThemeExtension] of the [MyoroAccordion].
+  MyoroAccordionStyle get style {
+    return MyoroAccordionThemeExtension(
       itemContentBackgroundColor: state.itemContentBackgroundColor,
       itemContentAnimationDuration: state.itemContentAnimationDuration,
       itemContentAnimationCurve: state.itemContentAnimationCurve,
@@ -39,35 +43,5 @@ final class MyoroAccordionsWidgetShowcaseScreenViewModel {
       itemTitleButtonArrowAnimationDuration: state.itemTitleButtonArrowAnimationDuration,
       itemTitleButtonArrowAnimationCurve: state.itemTitleButtonArrowAnimationCurve,
     );
-  }
-
-  /// Builds a title or content [Widget].
-  Widget _buildTitleOrContentWidget(String item, _) {
-    return Text(item);
-  }
-
-  /// [MyoroAccordionConfiguration] of the [MyoroSingleAccordion].
-  MyoroSingleAccordionConfiguration<String> get singleConfiguration {
-    return MyoroSingleAccordionConfiguration(
-      thumbVisibility: state.thumbVisibility,
-      titleBuilder: _buildTitleOrContentWidget,
-      contentBuilder: _buildTitleOrContentWidget,
-      items: _items,
-    );
-  }
-
-  /// [MyoroAccordionConfiguration] of the [MyoroMultiAccordion].
-  MyoroMultiAccordionConfiguration<String> get multiConfiguration {
-    return MyoroMultiAccordionConfiguration(
-      thumbVisibility: state.thumbVisibility,
-      titleBuilder: _buildTitleOrContentWidget,
-      contentBuilder: _buildTitleOrContentWidget,
-      items: _items,
-    );
-  }
-
-  /// [MyoroAccordionConfiguration.items]
-  Set<String> get _items {
-    return List.generate(faker.randomGenerator.integer(50, min: 20), (int index) => 'Item #$index').toSet();
   }
 }

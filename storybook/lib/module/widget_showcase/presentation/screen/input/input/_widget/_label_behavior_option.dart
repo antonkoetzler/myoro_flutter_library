@@ -31,9 +31,7 @@ final class _LabelBehaviorOption extends StatelessWidget {
           selectedItem: viewModel.state.labelBehavior,
           itemBuilder: (behavior) {
             final name = _behaviors.entries.firstWhere((entry) => entry.value == behavior).key;
-            return MyoroMenuIconTextButtonItem(
-              configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: name)),
-            );
+            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
           },
         ),
       ),

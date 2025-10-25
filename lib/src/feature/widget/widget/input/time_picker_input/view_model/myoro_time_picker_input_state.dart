@@ -2,31 +2,22 @@ part of 'myoro_time_picker_input_view_model.dart';
 
 /// State of [MyoroTimePickerInputViewModel].
 class MyoroTimePickerInputState {
-  MyoroTimePickerInputState(this._configuration);
-
-  /// Configuration.
-  final MyoroTimePickerInputConfiguration _configuration;
-  MyoroTimePickerInputConfiguration get configuration => _configuration;
+  /// Default constructor.
+  MyoroTimePickerInputState(this.onChanged);
 
   /// Controller.
-  TextEditingController? _localInputController;
-  TextEditingController get inputController {
-    return _configuration.controller ?? (_localInputController ??= TextEditingController());
-  }
+  final _inputController = TextEditingController();
 
-  /// [GlobalKey] of the [MyoroInput].
-  ///
-  /// Used to get the dimensions of the [MyoroInput] for the [MyoroTimePickerInput]'s date picker trigger area.
-  final _inputKey = GlobalKey();
-  GlobalKey get inputKey => _inputKey;
-
-  /// [ValueNotifier]s of the [MyoroInput]'s size to get it's dimensions.
-  final _inputSizeController = ValueNotifier<Size?>(null);
-  ValueNotifier<Size?> get inputSizeController => _inputSizeController;
+  /// Callback executed when the time changed.
+  final MyoroTimePickerInputOnChanged onChanged;
 
   /// Dispose function.
   void dispose() {
-    _localInputController?.dispose();
-    _inputSizeController.dispose();
+    _inputController.dispose();
+  }
+
+  /// [_inputController] getter.
+  TextEditingController get inputController {
+    return _inputController;
   }
 }

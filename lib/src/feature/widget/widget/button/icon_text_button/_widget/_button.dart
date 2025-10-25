@@ -1,10 +1,13 @@
-part of '../myoro_icon_text_button.dart';
+part of '../widget/myoro_icon_text_button.dart';
 
 /// UI of the [MyoroIconTextButton].
 final class _Button extends StatelessWidget {
-  const _Button(this._tapStatusEnum);
+  const _Button(this._tapStatusEnum, this._invert, this._iconConfiguration, this._textConfiguration);
 
   final MyoroTapStatusEnum _tapStatusEnum;
+  final bool _invert;
+  final MyoroIconConfiguration? _iconConfiguration;
+  final MyoroTextConfiguration? _textConfiguration;
 
   @override
   Widget build(context) {
@@ -13,17 +16,12 @@ final class _Button extends StatelessWidget {
     final contentPadding = style.contentPadding ?? themeExtension.contentPadding ?? EdgeInsets.zero;
     final spacing = style.spacing ?? themeExtension.spacing ?? 0;
 
-    final configuration = context.read<MyoroIconTextButtonConfiguration>();
-    final invert = configuration.invert;
-    final iconConfiguration = configuration.iconConfiguration;
-    final textConfiguration = configuration.textConfiguration;
-
-    final iconConfigurationNotNull = iconConfiguration != null;
-    final textConfigurationNotNull = textConfiguration != null;
+    final iconConfigurationNotNull = _iconConfiguration != null;
+    final textConfigurationNotNull = _textConfiguration != null;
     final iconConfigurationAndTextConfigurationNotNull = iconConfigurationNotNull && textConfigurationNotNull;
 
-    final iconWidget = iconConfigurationNotNull ? _Icon(_tapStatusEnum) : null;
-    final textWidget = textConfigurationNotNull ? _Text(_tapStatusEnum) : null;
+    final iconWidget = iconConfigurationNotNull ? _Icon(_tapStatusEnum, _iconConfiguration) : null;
+    final textWidget = textConfigurationNotNull ? _Text(_tapStatusEnum, _textConfiguration) : null;
 
     return Padding(
       padding: contentPadding,
@@ -32,7 +30,7 @@ final class _Button extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: spacing,
         children: iconConfigurationAndTextConfigurationNotNull
-            ? [!invert ? iconWidget! : textWidget!, !invert ? textWidget! : iconWidget!]
+            ? [!_invert ? iconWidget! : textWidget!, !_invert ? textWidget! : iconWidget!]
             : [if (iconConfigurationNotNull) iconWidget!, if (textConfigurationNotNull) textWidget!],
       ),
     );

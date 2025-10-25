@@ -7,17 +7,27 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
 
     return ListenableBuilder(
-      listenable: viewModel.state,
+      listenable: state,
       builder: (_, __) {
+        final style = viewModel.style;
+        final direction = state.direction;
+        final displayTraversalButtons = state.displayTraversalButtons;
+        final initialItem = state.initialItem;
+        final autoplay = state.autoplay;
+        final autoplayIntervalDuration = state.autoplayIntervalDuration;
+        const items = [_CarouselItem(kAreYouSillyCat), _CarouselItem(kHappyCat), _CarouselItem(kSnazzyCat)];
+
         return MyoroCarousel(
-          configuration: viewModel.buildConfiguration(const [
-            _CarouselItem(kAreYouSillyCat),
-            _CarouselItem(kHappyCat),
-            _CarouselItem(kSnazzyCat),
-          ]),
-          style: viewModel.buildStyle(context),
+          style: style,
+          direction: direction,
+          displayTraversalButtons: displayTraversalButtons,
+          initialItem: initialItem,
+          autoplay: autoplay,
+          autoplayIntervalDuration: autoplayIntervalDuration,
+          items: items,
         );
       },
     );

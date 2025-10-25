@@ -8,11 +8,6 @@ final class _PlaceholderOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput(
-      configuration: MyoroInputConfiguration(
-        label: 'Placeholder',
-        onChanged: (text) => viewModel.state.placeholder = text,
-      ),
-    );
+    return MyoroInput(label: 'Placeholder', onChanged: (text) => viewModel.state.placeholder = text);
   }
 }

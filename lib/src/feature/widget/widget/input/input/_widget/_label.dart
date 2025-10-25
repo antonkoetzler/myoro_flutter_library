@@ -12,8 +12,7 @@ final class _Label extends StatelessWidget {
 
     final viewModel = context.read<MyoroInputViewModel>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final label = configuration.label;
+    final label = state.label;
 
     return Text(label, style: labelTextStyle);
   }

@@ -17,6 +17,8 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   MyoroSingleInputDropdownConfiguration<T> get self => this as MyoroSingleInputDropdownConfiguration<T>;
 
   MyoroSingleInputDropdownConfiguration<T> copyWith({
+    MyoroSingleInputDropdownNumberInputConfiguration? numberInputConfiguration,
+    bool numberInputConfigurationProvided = true,
     String? label,
     MyoroInputDropdownSelectedItemBuilder<T>? selectedItemBuilder,
     bool? enabled,
@@ -30,6 +32,9 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
     MyoroSingleMenuConfiguration<T>? menuConfiguration,
   }) {
     return MyoroSingleInputDropdownConfiguration(
+      numberInputConfiguration: numberInputConfigurationProvided
+          ? (numberInputConfiguration ?? self.numberInputConfiguration)
+          : null,
       label: label ?? self.label,
       selectedItemBuilder: selectedItemBuilder ?? self.selectedItemBuilder,
       enabled: enabled ?? self.enabled,
@@ -45,6 +50,7 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   bool operator ==(Object other) {
     return other is MyoroSingleInputDropdownConfiguration<T> &&
         other.runtimeType == runtimeType &&
+        other.numberInputConfiguration == self.numberInputConfiguration &&
         other.label == self.label &&
         other.selectedItemBuilder == self.selectedItemBuilder &&
         other.enabled == self.enabled &&
@@ -59,6 +65,7 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   @override
   int get hashCode {
     return Object.hash(
+      self.numberInputConfiguration,
       self.label,
       self.selectedItemBuilder,
       self.enabled,
@@ -74,6 +81,7 @@ mixin _$MyoroSingleInputDropdownConfigurationMixin<T> {
   @override
   String toString() =>
       'MyoroSingleInputDropdownConfiguration<T>(\n'
+      '  numberInputConfiguration: ${self.numberInputConfiguration},\n'
       '  label: ${self.label},\n'
       '  selectedItemBuilder: ${self.selectedItemBuilder},\n'
       '  enabled: ${self.enabled},\n'

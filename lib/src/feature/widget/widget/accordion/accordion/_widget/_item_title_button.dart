@@ -1,7 +1,7 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Button of an [_Item].
-final class _ItemTitleButton<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidget {
+final class _ItemTitleButton<T> extends StatelessWidget {
   const _ItemTitleButton(this._item, this._isSelected);
 
   final T _item;
@@ -22,16 +22,15 @@ final class _ItemTitleButton<T, V extends MyoroAccordionViewModel<T>> extends St
 
     const buttonStyle = MyoroButtonStyle(borderRadius: BorderRadius.zero);
 
-    final viewModel = context.read<V>();
+    final viewModel = context.read<MyoroAccordionViewModel<T>>();
     final toggleItem = viewModel.toggleItem;
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final titleBuilder = configuration.titleBuilder;
+    final titleBuilder = state.titleBuilder;
 
     final title = titleBuilder(_item, _isSelected);
 
     return MyoroButton(
-      configuration: MyoroButtonConfiguration(onTapUp: (_) => toggleItem(_item)),
+      onTapUp: (_) => toggleItem(_item),
       style: buttonStyle,
       builder: (context, tapStatus) => Padding(
         padding: itemTitleButtonContentPadding,

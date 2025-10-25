@@ -61,7 +61,7 @@ final class MyoroDecorationThemeExtension extends ThemeExtension<MyoroDecoration
       secondaryBackgroundTapColor = isDarkMode
           ? colorScheme.onPrimary.darken(secondaryBackgroundTapColorFactor)
           : colorScheme.onPrimary.brighten(secondaryBackgroundTapColorFactor),
-      disabledBackgroundColor = isDarkMode ? colorScheme.onPrimary.darken(0.5) : colorScheme.onPrimary.brighten(0.5),
+      disabledBackgroundColor = isDarkMode ? colorScheme.onPrimary.darken(0.6) : colorScheme.onPrimary.brighten(0.6),
       primaryContentColor = colorScheme.onPrimary,
       secondaryContentColor = colorScheme.primary,
       borderWidth = kMyoroBorderWidth,

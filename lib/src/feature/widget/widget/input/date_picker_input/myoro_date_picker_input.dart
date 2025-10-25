@@ -4,63 +4,28 @@ import 'package:provider/provider.dart';
 
 part '_widget/_date_picker.dart';
 part '_widget/_input.dart';
-part '_widget/_trigger_area.dart';
 
 /// Date picker input (click date, no typy typy).
-class MyoroDatePickerInput extends StatefulWidget {
-  const MyoroDatePickerInput({super.key, required this.configuration, this.style = const MyoroInputStyle()});
-
-  /// Configuration.
-  final MyoroDatePickerInputConfiguration configuration;
+class MyoroDatePickerInput extends StatelessWidget {
+  const MyoroDatePickerInput({super.key, this.style = const MyoroInputStyle(), this.inputController});
 
   /// Style.
   final MyoroInputStyle style;
 
-  @override
-  State<MyoroDatePickerInput> createState() => _MyoroDatePickerInputState();
-}
-
-final class _MyoroDatePickerInputState extends State<MyoroDatePickerInput> {
-  MyoroDatePickerInputConfiguration get _configuration => widget.configuration;
-  MyoroInputStyle get _style => widget.style;
-
-  late final MyoroDatePickerInputViewModel _viewModel;
-
-  @override
-  void initState() {
-    super.initState();
-    _viewModel = MyoroDatePickerInputViewModel(_configuration);
-  }
-
-  @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
+  /// [MyoroInput.inputController]
+  final TextEditingController? inputController;
 
   @override
   Widget build(_) {
-    final state = _viewModel.state;
-    final configuration = state.configuration;
-    final checkboxOnChangedNotNull = configuration.checkboxOnChanged != null;
-    final suffixNotNull = configuration.suffix != null;
-    final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
-    final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
-
     return MultiProvider(
       providers: [
-        Provider.value(value: _viewModel),
-        InheritedProvider.value(value: _style),
+        InheritedProvider.value(value: style),
+        InheritedProvider(
+          create: (_) => MyoroDatePickerInputViewModel(inputController),
+          dispose: (_, v) => v.dispose(),
+        ),
       ],
-      child: Stack(
-        alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
-            ? Alignment.center
-            : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-        children: const [
-          _Input(),
-          Positioned(child: _TriggerArea()),
-        ],
-      ),
+      child: const _Input(),
     );
   }
 }

@@ -11,10 +11,8 @@ final class _ConfirmButton extends StatelessWidget {
     final confirmButtonText = _configuration.confirmButtonText;
 
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => _configuration.onConfirm?.call(),
-        textConfiguration: MyoroTextConfiguration(text: confirmButtonText.isNotEmpty ? confirmButtonText : 'Confirm'),
-      ),
+      onTapUp: (_) => _configuration.onConfirm?.call(),
+      textConfiguration: MyoroTextConfiguration(text: confirmButtonText.isNotEmpty ? confirmButtonText : 'Confirm'),
     );
   }
 }

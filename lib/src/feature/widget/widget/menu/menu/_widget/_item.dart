@@ -22,19 +22,34 @@ final class _Item<T, C extends _C<T>> extends StatelessWidget {
 
     return switch (_menuItem) {
       MyoroMenuButtonItem() => MyoroButton(
-        configuration: (_menuItem.configuration ?? const MyoroButtonConfiguration()).copyWith(
-          onTapUp: (details) => toggleItem(_item),
-        ),
         style: const MyoroButtonStyle()
             .copyWith(borderRadius: itemBorderRadius)
             .singleBackgroundColor(selectedItemColor),
+        cursor: _menuItem.cursor,
+        tooltipConfiguration: _menuItem.tooltipConfiguration,
+        onTapDown: _menuItem.onTapDown,
+        onTapUp: (details) {
+          _menuItem.onTapUp?.call(details);
+          toggleItem(_item);
+        },
+        isLoading: _menuItem.isLoading,
         builder: _menuItem.builder,
       ),
       MyoroMenuIconTextButtonItem() => MyoroIconTextButton(
-        configuration: _menuItem.configuration.copyWith(onTapUp: (details) => toggleItem(_item)),
         style: const MyoroIconTextButtonStyle()
             .copyWith(borderRadius: itemBorderRadius)
             .singleBackgroundColor(selectedItemColor),
+        cursor: _menuItem.cursor,
+        tooltipConfiguration: _menuItem.tooltipConfiguration,
+        onTapDown: _menuItem.onTapDown,
+        onTapUp: (details) {
+          _menuItem.onTapUp?.call(details);
+          toggleItem(_item);
+        },
+        isLoading: _menuItem.isLoading,
+        invert: _menuItem.invert,
+        iconConfiguration: _menuItem.iconConfiguration,
+        textConfiguration: _menuItem.textConfiguration,
       ),
     };
   }

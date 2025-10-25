@@ -40,6 +40,8 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
         t,
       ),
       suffixIconConstraints: myoroFallbackLerp(a?.suffixIconConstraints, b?.suffixIconConstraints, t),
+      prefixIconConstraints: myoroFallbackLerp(a?.prefixIconConstraints, b?.prefixIconConstraints, t),
+      suffixButtonStyle: MyoroIconTextButtonStyle.lerp(a?.suffixButtonStyle, b?.suffixButtonStyle, t),
     );
   }
 
@@ -63,6 +65,7 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
     this.suffixIconConstraints,
+    this.prefixIconConstraints,
     this.suffixButtonStyle,
   });
 
@@ -147,6 +150,9 @@ class MyoroInputStyle with _$MyoroInputStyleMixin {
 
   /// [BoxConstraints] of the suffix icon.
   final BoxConstraints? suffixIconConstraints;
+
+  /// [BoxConstraints] of the prefix icon.
+  final BoxConstraints? prefixIconConstraints;
 
   /// [MyoroIconTextButtonStyle] of the suffix button.
   final MyoroIconTextButtonStyle? suffixButtonStyle;

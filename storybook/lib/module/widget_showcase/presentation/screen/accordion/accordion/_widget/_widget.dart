@@ -9,6 +9,11 @@ final class _Widget extends StatelessWidget {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
     final spacing = widgetShowcaseThemeExtension.spacing;
+    final buildTitleOrContentWidget = viewModel.buildTitleOrContentWidget;
+    final state = viewModel.state;
+    final thumbVisibility = state.thumbVisibility;
+    final items = viewModel.items;
+    final style = viewModel.style;
 
     return ListenableBuilder(
       listenable: viewModel.state,
@@ -19,14 +24,20 @@ final class _Widget extends StatelessWidget {
           children: [
             Flexible(
               child: MyoroSingleAccordion(
-                configuration: viewModel.singleConfiguration,
-                style: viewModel.buildStyle(context),
+                style: style,
+                thumbVisibility: thumbVisibility,
+                titleBuilder: buildTitleOrContentWidget,
+                contentBuilder: buildTitleOrContentWidget,
+                items: items,
               ),
             ),
             Flexible(
               child: MyoroMultiAccordion(
-                configuration: viewModel.multiConfiguration,
-                style: viewModel.buildStyle(context),
+                style: style,
+                thumbVisibility: thumbVisibility,
+                titleBuilder: buildTitleOrContentWidget,
+                contentBuilder: buildTitleOrContentWidget,
+                items: items,
               ),
             ),
           ],

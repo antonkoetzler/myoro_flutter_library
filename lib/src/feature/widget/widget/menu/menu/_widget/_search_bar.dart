@@ -10,21 +10,13 @@ final class _SearchBar<T, C extends _C<T>> extends StatelessWidget {
     final style = context.watch<MyoroMenuStyle>();
     final searchBarPadding = style.searchBarPadding ?? themeExtension.searchBarPadding ?? EdgeInsets.zero;
     final searchBarInputStyle =
-        style.searchBarInputStyle ??
-        themeExtension.searchBarInputStyle ??
-        MyoroInputConfiguration.inputStyleDefaultValue;
+        style.searchBarInputStyle ?? themeExtension.searchBarInputStyle ?? MyoroInput.inputStyleDefaultValue;
 
     final viewModel = context.read<MyoroMenuViewModel<T, C>>();
 
     return Padding(
       padding: searchBarPadding,
-      child: MyoroInput(
-        configuration: MyoroInputConfiguration(
-          inputStyle: searchBarInputStyle,
-          autofocus: true,
-          onChanged: viewModel.search,
-        ),
-      ),
+      child: MyoroInput(inputStyle: searchBarInputStyle, autofocus: true, onChanged: viewModel.search),
     );
   }
 }

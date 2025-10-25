@@ -8,11 +8,11 @@ final class _DurationOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroSnackBarContainerWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput.number(
-      configuration: MyoroInputConfiguration(
-        label: 'Duration shown.',
-        onChanged: (text) => viewModel.duration = Duration(seconds: int.parse(text)),
-      ),
+    return MyoroNumberInput(
+      min: 0,
+      max: 10,
+      label: 'Duration shown.',
+      onChanged: (text) => viewModel.duration = Duration(seconds: int.parse(text)),
     );
   }
 }

@@ -1,4 +1,4 @@
-part of '../myoro_button.dart';
+part of '../widget/myoro_button.dart';
 
 /// UI of [MyoroButton].
 final class _Button extends StatelessWidget {
@@ -20,8 +20,8 @@ final class _Button extends StatelessWidget {
 
     final viewModel = context.read<MyoroButtonViewModel>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final onTapProvided = configuration?.onTapProvided == true;
+    final onTapProvided = state.onTapProvided;
+    final tooltipConfiguration = state.tooltipConfiguration;
 
     final child = DecoratedBox(
       decoration: BoxDecoration(
@@ -49,8 +49,6 @@ final class _Button extends StatelessWidget {
       ),
     );
 
-    return configuration?.tooltipConfiguration != null
-        ? MyoroTooltip(configuration: configuration!.tooltipConfiguration!, child: child)
-        : child;
+    return tooltipConfiguration != null ? MyoroTooltip(configuration: tooltipConfiguration, child: child) : child;
   }
 }

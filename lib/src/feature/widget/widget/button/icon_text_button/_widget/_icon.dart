@@ -1,10 +1,11 @@
-part of '../myoro_icon_text_button.dart';
+part of '../widget/myoro_icon_text_button.dart';
 
 /// Icon of a [MyoroIconTextButton].
 final class _Icon extends StatelessWidget {
-  final MyoroTapStatusEnum _tapStatusEnum;
+  const _Icon(this._tapStatusEnum, this._iconConfiguration);
 
-  const _Icon(this._tapStatusEnum);
+  final MyoroTapStatusEnum _tapStatusEnum;
+  final MyoroIconConfiguration _iconConfiguration;
 
   @override
   Widget build(context) {
@@ -13,9 +14,9 @@ final class _Icon extends StatelessWidget {
     final contentColor =
         style.contentColorBuilder(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
 
-    final configuration = context.read<MyoroIconTextButtonConfiguration>();
-    final iconConfiguration = configuration.iconConfiguration!;
+    final icon = _iconConfiguration.icon;
+    final size = _iconConfiguration.size;
 
-    return Icon(iconConfiguration.icon, size: iconConfiguration.size, color: contentColor);
+    return Icon(icon, size: size, color: contentColor);
   }
 }

@@ -6,8 +6,9 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
   final double min;
   final double? max;
   final int decimalPlaces;
+  final String decimalSeparator;
 
-  const MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0});
+  const MyoroNumberInputFormatter({this.min = 0, this.max, this.decimalPlaces = 0, this.decimalSeparator = '.'});
 
   @override
   TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
@@ -15,7 +16,9 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
 
     // Empty case.
     if (newValue.text.isEmpty) {
-      return TextEditingValue(text: min.toStringAsFixed(decimalPlaces), selection: oldValue.selection);
+      final formatted = min.toStringAsFixed(decimalPlaces);
+      final text = decimalSeparator != '.' ? formatted.replaceAll('.', decimalSeparator) : formatted;
+      return TextEditingValue(text: text, selection: oldValue.selection);
     }
 
     String formattedResult = '';
@@ -86,7 +89,8 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
   }
 
   String _formatResult(double formattedResult) {
-    return formattedResult.toStringAsFixed(decimalPlaces);
+    final formatted = formattedResult.toStringAsFixed(decimalPlaces);
+    return decimalSeparator != '.' ? formatted.replaceAll('.', decimalSeparator) : formatted;
   }
 
   bool _isGreaterThenMax(double number) {
@@ -98,5 +102,8 @@ final class MyoroNumberInputFormatter extends TextInputFormatter implements Myor
   }
 
   @override
-  String get initialText => min.toStringAsFixed(decimalPlaces);
+  String get initialText {
+    final formatted = min.toStringAsFixed(decimalPlaces);
+    return decimalSeparator != '.' ? formatted.replaceAll('.', decimalSeparator) : formatted;
+  }
 }

@@ -13,11 +13,9 @@ final class _Button extends StatelessWidget {
     final buttonPadding = screenThemeExtension.buttonPadding;
 
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => _onTapUp(),
-        iconConfiguration: MyoroIconConfiguration(icon: _icon),
-      ),
       style: const MyoroIconTextButtonStyle().copyWith(contentPadding: buttonPadding),
+      onTapUp: (_) => _onTapUp(),
+      iconConfiguration: MyoroIconConfiguration(icon: _icon),
     );
   }
 }

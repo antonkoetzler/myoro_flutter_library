@@ -6,7 +6,11 @@ final class _Widget extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final viewModel = context.read<MyoroTimePickerInputWidgetShowcaseViewModel>();
-    return MyoroTimePickerInput(configuration: viewModel.buildConfiguration(context, const _Suffix()));
+    return MyoroTimePickerInput(
+      onChanged:
+          (t) => context.showSnackBar(
+            snackBar: MyoroSnackBar(configuration: MyoroSnackBarConfiguration(message: 'Time changed: $t')),
+          ),
+    );
   }
 }

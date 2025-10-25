@@ -3,17 +3,26 @@ part of 'myoro_button_view_model.dart';
 /// State of [MyoroButtonController].
 class MyoroButtonState {
   /// Creates a new instance of [MyoroButtonState].
-  MyoroButtonState(this.configuration)
-    : _isLoadingController = ValueNotifier(configuration?.isLoading ?? MyoroButtonConfiguration.isLoadingDefaultValue);
+  MyoroButtonState(this.tooltipConfiguration, this.onTapDown, this.onTapUp, bool isLoading)
+    : _isLoadingController = ValueNotifier(isLoading);
 
-  /// Configuration.
-  MyoroButtonConfiguration? configuration;
+  /// [MyoroTooltipConfiguration] of the [MyoroButton].
+  final MyoroTooltipConfiguration? tooltipConfiguration;
+
+  /// [MyoroButton.onTapDown]
+  final MyoroButtonOnTapDown? onTapDown;
+
+  /// [MyoroButton.onTapUp]
+  final MyoroButtonOnTapUp? onTapUp;
 
   /// [ValueNotifier] managing the [MyoroTapStatusEnum] of the [MyoroButton].
   final _tapStatusController = ValueNotifier(MyoroTapStatusEnum.idle);
 
   /// [ValueNotifier] managing the [bool] of the [MyoroButton].
   final ValueNotifier<bool> _isLoadingController;
+
+  /// If a tap function is provided.
+  bool get onTapProvided => onTapDown != null || onTapUp != null;
 
   /// [_tapStatusController] getter.
   ValueNotifier<MyoroTapStatusEnum> get tapStatusController => _tapStatusController;

@@ -7,9 +7,32 @@ final class _Input extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
+    final validation = viewModel.validation;
+    final checkboxOnChanged = viewModel.checkboxOnChanged;
+    final onFieldSubmitted = viewModel.onFieldSubmitted;
+    final onChanged = viewModel.onChanged;
+    final onCleared = viewModel.onCleared;
+
     return MyoroInput(
-      configuration: viewModel.buildConfiguration(context, const _Suffix()),
       style: viewModel.buildStyle(context),
+      inputStyle: state.inputStyle,
+      textAlign: state.textAlign,
+      label: state.label,
+      placeholder: state.placeholder,
+      suffix: state.suffixEnabled ? const _Suffix() : null,
+      enabled: state.enabled,
+      readOnly: state.readOnly,
+      autofocus: true,
+      showClearTextButton: state.showClearTextButton,
+      obscureText: state.obscureText,
+      showObscureTextButton: state.showObscureTextButton,
+      checkboxOnChanged:
+          state.checkboxOnChangedEnabled ? (enabled, text) => checkboxOnChanged(context, enabled, text) : null,
+      validation: state.validationEnabled ? validation : null,
+      onFieldSubmitted: (text) => onFieldSubmitted(context, text),
+      onChanged: state.onChangedEnabled ? (text) => onChanged(context, text) : null,
+      onCleared: state.onClearedEnabled ? () => onCleared(context) : null,
     );
   }
 }

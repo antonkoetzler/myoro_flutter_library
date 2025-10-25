@@ -8,18 +8,16 @@ final class _ItemTitleButtonArrowAnimationDurationOption extends StatelessWidget
   Widget build(context) {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput.number(
+    return MyoroNumberInput(
       max: 5000,
-      configuration: MyoroInputConfiguration(
-        label: 'Arrow animation duration (ms)',
-        placeholder: 'Duration in milliseconds',
-        onChanged: (text) {
-          final milliseconds = int.tryParse(text);
-          if (milliseconds != null) {
-            viewModel.state.itemTitleButtonArrowAnimationDuration = Duration(milliseconds: milliseconds);
-          }
-        },
-      ),
+      label: 'Arrow animation duration (ms)',
+      placeholder: 'Duration in milliseconds',
+      onChanged: (text) {
+        final milliseconds = int.tryParse(text);
+        if (milliseconds != null) {
+          viewModel.state.itemTitleButtonArrowAnimationDuration = Duration(milliseconds: milliseconds);
+        }
+      },
     );
   }
 }

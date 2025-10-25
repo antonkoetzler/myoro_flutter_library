@@ -15,15 +15,13 @@ final class _PickerButton extends StatelessWidget {
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(
-        configuration: MyoroIconTextButtonConfiguration(
-          textConfiguration: MyoroTextConfiguration(
-            text: context.localization.myoroFilePickerPickerButtonText,
-            style: textStyle,
-          ),
-
-          onTapUp: (_) => openPicker(),
-        ),
         style: const MyoroIconTextButtonStyle().bordered(context),
+        textConfiguration: MyoroTextConfiguration(
+          text: context.localization.myoroFilePickerPickerButtonText,
+          style: textStyle,
+        ),
+
+        onTapUp: (_) => openPicker(),
       ),
     );
   }

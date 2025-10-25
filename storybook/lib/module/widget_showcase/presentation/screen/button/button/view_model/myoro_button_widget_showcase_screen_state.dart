@@ -9,10 +9,10 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   static const onTapUpEnabledDefaultValue = true;
   static const isLoadingDefaultValue = false;
 
-  /// [MyoroButtonConfiguration.tooltipConfiguration]
+  /// [MyoroButton.tooltipConfiguration]
   bool _tooltipEnabled = tooltipEnabledDefaultValue;
 
-  /// [MyoroButtonConfiguration.cursor]
+  /// [MyoroButton.cursor]
   MouseCursor? _cursor;
 
   /// [MyoroButtonThemeExtension.borderRadius]
@@ -27,22 +27,22 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroButtonThemeExtension.backgroundTapColor]
   Color? _backgroundTapColor;
 
-  /// [MyoroButtonConfiguration.borderIdleColor]
+  /// [MyoroButton.borderIdleColor]
   Color? _borderIdleColor;
 
-  /// [MyoroButtonConfiguration.borderHoverColor]
+  /// [MyoroButton.borderHoverColor]
   Color? _borderHoverColor;
 
-  /// [MyoroButtonConfiguration.borderTapColor]
+  /// [MyoroButton.borderTapColor]
   Color? _borderTapColor;
 
-  /// [MyoroButtonConfiguration.onTapDown]
+  /// [MyoroButton.onTapDown]
   bool _onTapDownEnabled = onTapDownEnabledDefaultValue;
 
-  /// [MyoroButtonConfiguration.onTapUp]
+  /// [MyoroButton.onTapUp]
   bool _onTapUpEnabled = onTapUpEnabledDefaultValue;
 
-  /// [MyoroButtonConfiguration.isLoading]
+  /// [MyoroButton.isLoading]
   bool _isLoading = isLoadingDefaultValue;
 
   /// [MyoroButtonThemeExtension.backgroundColor]
@@ -66,7 +66,7 @@ final class MyoroButtonWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroButtonThemeExtension.borderColor]
   Color? _borderColor;
 
-  /// [MyoroButtonConfiguration.borderBuilder] enabled state
+  /// [MyoroButton.borderBuilder] enabled state
   bool _borderBuilderEnabled = borderBuilderEnabledDefaultValue;
 
   /// [_tooltipEnabled] getter.

@@ -34,9 +34,7 @@ final class _IndicatorTextAlignmentOption extends StatelessWidget {
           selectedItem: viewModel.state.indicatorTextAlignment,
           itemBuilder: (alignment) {
             final name = _alignments.entries.firstWhere((entry) => entry.value == alignment).key;
-            return MyoroMenuIconTextButtonItem(
-              configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: name)),
-            );
+            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
           },
         ),
       ),

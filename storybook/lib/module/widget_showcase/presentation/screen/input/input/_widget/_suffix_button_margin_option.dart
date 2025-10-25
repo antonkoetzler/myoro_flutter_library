@@ -10,7 +10,7 @@ final class _SuffixButtonMarginOption extends StatelessWidget {
 
     return PaddingWidgetShowcaseOption(
       configuration: PaddingWidgetShowcaseOptionConfiguration(
-        label: 'Suffix button margin',
+        label: 'Prefix suffix button margin',
         paddingOnChanged: (padding) => viewModel.state.suffixButtonMargin = padding,
       ),
     );

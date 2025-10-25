@@ -22,13 +22,10 @@ final class _CloseButton extends StatelessWidget {
 
     return MyoroIconTextButton(
       style: drawerCloseButtonStyle,
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => context.closeDrawer(),
-        iconConfiguration: MyoroIconConfiguration(
-          icon:
-              closeButtonIcon ??
-              (!drawerController.isEndDrawer ? Icons.keyboard_arrow_left : Icons.keyboard_arrow_right),
-        ),
+      onTapUp: (_) => context.closeDrawer(),
+      iconConfiguration: MyoroIconConfiguration(
+        icon:
+            closeButtonIcon ?? (!drawerController.isEndDrawer ? Icons.keyboard_arrow_left : Icons.keyboard_arrow_right),
       ),
     );
   }

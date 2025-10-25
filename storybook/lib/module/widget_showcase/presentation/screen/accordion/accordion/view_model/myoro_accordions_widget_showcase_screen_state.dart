@@ -3,7 +3,7 @@ part of 'myoro_accordions_widget_showcase_screen_view_model.dart';
 /// State of [MyoroAccordionsWidgetShowcaseScreenViewModel].
 final class MyoroAccordionsWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroAccordionConfiguration.thumbVisibility]
-  bool _thumbVisibility = MyoroAccordionConfiguration.thumbVisibilityDefaultValue;
+  bool _thumbVisibility = false;
 
   /// [_thumbVisibility] getter.
   bool get thumbVisibility {

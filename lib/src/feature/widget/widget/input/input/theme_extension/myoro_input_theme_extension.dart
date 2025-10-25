@@ -31,6 +31,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
     this.obscureTextButtonEnabledIcon,
     this.obscureTextButtonDisabledIcon,
     this.suffixIconConstraints,
+    this.prefixIconConstraints,
     this.suffixButtonStyle,
   });
 
@@ -56,6 +57,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       obscureTextButtonEnabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       obscureTextButtonDisabledIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null,
       suffixIconConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
+      prefixIconConstraints = faker.randomGenerator.boolean() ? myoroFake<BoxConstraints>() : null,
       suffixButtonStyle = faker.randomGenerator.boolean() ? myoroFake<MyoroIconTextButtonStyle>() : null;
 
   MyoroInputThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -93,7 +95,15 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       obscureTextButtonEnabledIcon = Icons.visibility,
       obscureTextButtonDisabledIcon = Icons.visibility_off,
       suffixIconConstraints = null,
-      suffixButtonStyle = const MyoroIconTextButtonStyle(contentPadding: EdgeInsets.all(kMyoroMultiplier * 1.5));
+      prefixIconConstraints = null,
+      suffixButtonStyle = const MyoroIconTextButtonStyle(
+        contentPadding: EdgeInsets.only(
+          top: kMyoroMultiplier * 1.2,
+          bottom: kMyoroMultiplier * 1.2,
+          left: kMyoroMultiplier - 2,
+          right: kMyoroMultiplier * 1.2,
+        ),
+      );
 
   /// Custom border.
   @override
@@ -171,6 +181,10 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
   @override
   final BoxConstraints? suffixIconConstraints;
 
+  /// [BoxConstraints] of the prefix icon.
+  @override
+  final BoxConstraints? prefixIconConstraints;
+
   /// [MyoroIconTextButtonStyle] of the suffix button.
   @override
   final MyoroIconTextButtonStyle? suffixButtonStyle;
@@ -199,6 +213,7 @@ class MyoroInputThemeExtension extends ThemeExtension<MyoroInputThemeExtension>
       obscureTextButtonEnabledIcon: style.obscureTextButtonEnabledIcon,
       obscureTextButtonDisabledIcon: style.obscureTextButtonDisabledIcon,
       suffixIconConstraints: style.suffixIconConstraints,
+      prefixIconConstraints: style.prefixIconConstraints,
       suffixButtonStyle: style.suffixButtonStyle,
     );
   }

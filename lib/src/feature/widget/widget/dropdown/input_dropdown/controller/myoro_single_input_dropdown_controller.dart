@@ -14,4 +14,14 @@ class MyoroSingleInputDropdownController<T>
     TextEditingController? inputController,
     required MyoroSingleInputDropdownConfiguration<T> configuration,
   }) : super(MyoroSingleInputDropdownViewModel(configuration, inputController));
+
+  /// Selected items [ValueNotifier].
+  ValueNotifier<T?> get selectedItemController {
+    return viewModel.state.dropdownController.menuController.selectedItemController;
+  }
+
+  /// Getter of [selectedItemController]'s value.
+  T? get selectedItem {
+    return selectedItemController.value;
+  }
 }

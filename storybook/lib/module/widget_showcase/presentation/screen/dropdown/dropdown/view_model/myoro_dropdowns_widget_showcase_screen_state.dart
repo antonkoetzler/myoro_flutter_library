@@ -40,9 +40,7 @@ final class MyoroDropdownsWidgetShowcaseScreenState extends ChangeNotifier {
 
   /// [MyoroMenuItem] builder.
   MyoroMenuItem _itemBuilder(String item) {
-    return MyoroMenuIconTextButtonItem(
-      configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: item)),
-    );
+    return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
   }
 
   /// [_singleDropdownController] getter.

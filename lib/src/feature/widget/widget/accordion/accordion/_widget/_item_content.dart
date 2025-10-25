@@ -1,7 +1,7 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Content of an [_Item].
-final class _ItemContent<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidget {
+final class _ItemContent<T> extends StatelessWidget {
   const _ItemContent(this._item, this._isSelected);
 
   final T _item;
@@ -16,10 +16,9 @@ final class _ItemContent<T, V extends MyoroAccordionViewModel<T>> extends Statel
     final itemContentAnimationCurve = style.itemContentAnimationCurve ?? themeExtension.itemContentAnimationCurve;
     final itemContentBackgroundColor = style.itemContentBackgroundColor ?? themeExtension.itemContentBackgroundColor;
 
-    final viewModel = context.read<V>();
+    final viewModel = context.read<MyoroAccordionViewModel<T>>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final contentBuilder = configuration.contentBuilder;
+    final contentBuilder = state.contentBuilder;
 
     final child = SizedBox(
       width: double.infinity,

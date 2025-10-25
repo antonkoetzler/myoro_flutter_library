@@ -4,59 +4,99 @@ import 'package:storybook/storybook.dart';
 
 /// State of [MyoroCarouselWidgetShowcaseScreenViewModel].
 final class MyoroCarouselWidgetShowcaseScreenState extends ChangeNotifier {
-  /// [MyoroCarouselConfiguration.direction]
-  Axis _direction = MyoroCarouselConfiguration.directionDefaultValue;
-  Axis get direction => _direction;
+  /// [MyoroCarousel.direction]
+  Axis _direction = MyoroCarousel.directionDefaultValue;
+
+  /// [MyoroCarousel.displayTraversalButtons]
+  bool _displayTraversalButtons = MyoroCarousel.displayTraversalButtonsDefaultValue;
+
+  /// [MyoroCarousel.autoplay]
+  bool _autoplay = false;
+
+  /// [MyoroCarousel.autoplayIntervalDuration]
+  Duration _autoplayIntervalDuration = MyoroCarousel.autoplayIntervalDurationDefaultValue;
+
+  /// [MyoroCarousel.initialItem]
+  int _initialItem = MyoroCarousel.initialItemDefaultValue;
+
+  /// [MyoroCarouselThemeExtension.previousItemButtonIcon]
+  IconData? _previousItemButtonIcon;
+
+  /// [MyoroCarouselThemeExtension.nextItemButtonIcon]
+  IconData? _nextItemButtonIcon;
+
+  /// [_direction] getter.
+  Axis get direction {
+    return _direction;
+  }
+
+  /// [_displayTraversalButtons] getter.
+  bool get displayTraversalButtons {
+    return _displayTraversalButtons;
+  }
+
+  /// [_autoplay] getter.
+  bool get autoplay {
+    return _autoplay;
+  }
+
+  /// [_autoplayIntervalDuration] getter.
+  Duration get autoplayIntervalDuration {
+    return _autoplayIntervalDuration;
+  }
+
+  /// [_initialItem] getter.
+  int get initialItem {
+    return _initialItem;
+  }
+
+  /// [_previousItemButtonIcon] getter.
+  IconData? get previousItemButtonIcon {
+    return _previousItemButtonIcon;
+  }
+
+  /// [_nextItemButtonIcon] getter.
+  IconData? get nextItemButtonIcon {
+    return _nextItemButtonIcon;
+  }
+
+  /// [_direction] setter.
   set direction(Axis direction) {
     _direction = direction;
     notifyListeners();
   }
 
-  /// [MyoroCarouselConfiguration.displayTraversalButtons]
-  bool _displayTraversalButtons = MyoroCarouselConfiguration.displayTraversalButtonsDefaultValue;
-  bool get displayTraversalButtons => _displayTraversalButtons;
+  /// [_displayTraversalButtons] setter.
   set displayTraversalButtons(bool displayTraversalButtons) {
     _displayTraversalButtons = displayTraversalButtons;
     notifyListeners();
   }
 
-  /// [MyoroCarouselConfiguration.autoplay]
-  bool _autoplay = MyoroCarouselConfiguration.autoplayDefaultValue;
-  bool get autoplay => _autoplay;
+  /// [_autoplay] setter.
   set autoplay(bool autoplay) {
     _autoplay = autoplay;
     notifyListeners();
   }
 
-  /// [MyoroCarouselConfiguration.autoplayIntervalDuration]
-  Duration _autoplayIntervalDuration = MyoroCarouselConfiguration.autoplayIntervalDurationDefaultValue;
-  Duration get autoplayIntervalDuration => _autoplayIntervalDuration;
+  /// [_autoplayIntervalDuration] setter.
   set autoplayIntervalDuration(Duration autoplayIntervalDuration) {
     _autoplayIntervalDuration = autoplayIntervalDuration;
     notifyListeners();
   }
 
-  /// [MyoroCarouselConfiguration.initialItem]
-  int _initialItem = MyoroCarouselConfiguration.initialItemDefaultValue;
-  int get initialItem => _initialItem;
+  /// [_initialItem] setter.
   set initialItem(int initialItem) {
     _initialItem = initialItem;
     notifyListeners();
   }
 
-  // Theme Extension Properties
-
-  /// [MyoroCarouselThemeExtension.previousItemButtonIcon]
-  IconData? _previousItemButtonIcon;
-  IconData? get previousItemButtonIcon => _previousItemButtonIcon;
+  /// [_previousItemButtonIcon] setter.
   set previousItemButtonIcon(IconData? previousItemButtonIcon) {
     _previousItemButtonIcon = previousItemButtonIcon;
     notifyListeners();
   }
 
-  /// [MyoroCarouselThemeExtension.nextItemButtonIcon]
-  IconData? _nextItemButtonIcon;
-  IconData? get nextItemButtonIcon => _nextItemButtonIcon;
+  /// [_nextItemButtonIcon] setter.
   set nextItemButtonIcon(IconData? nextItemButtonIcon) {
     _nextItemButtonIcon = nextItemButtonIcon;
     notifyListeners();

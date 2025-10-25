@@ -11,13 +11,11 @@ final class _WidgetListingAccordion extends StatelessWidget {
 
     return ValueListenableBuilder(
       valueListenable: filteredItemsController,
-      builder: (_, filteredItems, __) {
+      builder: (_, filteredItems, _) {
         return MyoroSingleAccordion(
-          configuration: MyoroSingleAccordionConfiguration(
-            titleBuilder: (i, _) => _WidgetListingAccordionItemTitle(i),
-            contentBuilder: (i, _) => _WidgetListingAccordionItemContent(i),
-            items: filteredItems.toSet(),
-          ),
+          titleBuilder: (i, _) => _WidgetListingAccordionItemTitle(i),
+          contentBuilder: (i, _) => _WidgetListingAccordionItemContent(i),
+          items: filteredItems.toSet(),
         );
       },
     );

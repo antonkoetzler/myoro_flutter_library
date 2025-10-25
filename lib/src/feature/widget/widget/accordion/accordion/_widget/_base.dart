@@ -1,50 +1,37 @@
 part of '../bundle/myoro_accordion_bundle.dart';
 
 /// Base accordion [Widget].
-final class _Base<T, V extends MyoroAccordionViewModel<T>> extends StatelessWidget {
-  const _Base(this._style, this._viewModel);
+final class _Base<T> extends StatelessWidget {
+  const _Base(this._style, this._state);
 
   /// Style.
   final MyoroAccordionStyle _style;
 
-  /// View model.
-  final V _viewModel;
+  /// State.
+  final MyoroAccordionState<T> _state;
 
   @override
   Widget build(BuildContext context) {
-    final state = _viewModel.state;
-    final selectedItemsController = state.selectedItemsController;
-    final scrollController = state.scrollController;
-    final configuration = state.configuration;
-    final items = configuration.items;
-    final thumbVisibility = configuration.thumbVisibility;
-
-    if (items.isEmpty) return const SizedBox.shrink();
-
     return MultiProvider(
       providers: [
-        InheritedProvider.value(value: _viewModel),
+        InheritedProvider(create: (_) => MyoroAccordionViewModel<T>(_state), dispose: (_, v) => v.dispose()),
         InheritedProvider.value(value: _style),
       ],
-      child: ValueListenableBuilder(
-        valueListenable: selectedItemsController,
-        builder: (_, selectedItems, _) {
-          return Scrollbar(
-            controller: scrollController,
-            thumbVisibility: thumbVisibility,
-            child: ListView.builder(
-              controller: scrollController,
-              itemCount: items.length,
-              itemBuilder: (_, index) {
-                final item = items.elementAt(index);
-                return _Item<T, V>(
-                  item: item,
-                  isSelected: selectedItems.contains(item),
-                  isLastItem: index == items.length - 1,
-                );
-              },
+      child: Builder(
+        builder: (context) {
+          final viewModel = context.read<MyoroAccordionViewModel<T>>();
+          final state = viewModel.state;
+
+          return switch (state) {
+            MyoroMultiAccordionState<T>() => ValueListenableBuilder(
+              valueListenable: state.selectedItemsController,
+              builder: (_, selectedItems, _) => _Accordion<T>(selectedItems),
             ),
-          );
+            MyoroSingleAccordionState<T>() => ValueListenableBuilder(
+              valueListenable: state.selectedItemController,
+              builder: (_, selectedItem, _) => _Accordion<T>({?selectedItem}),
+            ),
+          };
         },
       ),
     );

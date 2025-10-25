@@ -17,13 +17,24 @@ mixin _$MyoroMenuButtonItemMixin {
   MyoroMenuButtonItem get self => this as MyoroMenuButtonItem;
 
   MyoroMenuButtonItem copyWith({
-    MyoroButtonConfiguration? configuration,
-    bool configurationProvided = true,
     MyoroButtonBuilder? builder,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+    bool? isLoading,
   }) {
     return MyoroMenuButtonItem(
-      configuration: configurationProvided ? (configuration ?? self.configuration) : null,
       builder: builder ?? self.builder,
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      isLoading: isLoading ?? self.isLoading,
     );
   }
 
@@ -31,20 +42,35 @@ mixin _$MyoroMenuButtonItemMixin {
   bool operator ==(Object other) {
     return other is MyoroMenuButtonItem &&
         other.runtimeType == runtimeType &&
-        other.configuration == self.configuration &&
-        other.builder == self.builder;
+        other.builder == self.builder &&
+        other.cursor == self.cursor &&
+        other.tooltipConfiguration == self.tooltipConfiguration &&
+        other.onTapDown == self.onTapDown &&
+        other.onTapUp == self.onTapUp &&
+        other.isLoading == self.isLoading;
   }
 
   @override
   int get hashCode {
-    return Object.hash(self.configuration, self.builder);
+    return Object.hash(
+      self.builder,
+      self.cursor,
+      self.tooltipConfiguration,
+      self.onTapDown,
+      self.onTapUp,
+      self.isLoading,
+    );
   }
 
   @override
   String toString() =>
       'MyoroMenuButtonItem(\n'
-      '  configuration: ${self.configuration},\n'
       '  builder: ${self.builder},\n'
+      '  cursor: ${self.cursor},\n'
+      '  tooltipConfiguration: ${self.tooltipConfiguration},\n'
+      '  onTapDown: ${self.onTapDown},\n'
+      '  onTapUp: ${self.onTapUp},\n'
+      '  isLoading: ${self.isLoading},\n'
       ');';
 }
 
@@ -58,25 +84,72 @@ mixin _$MyoroMenuButtonItemMixin {
 mixin _$MyoroMenuIconTextButtonItemMixin {
   MyoroMenuIconTextButtonItem get self => this as MyoroMenuIconTextButtonItem;
 
-  MyoroMenuIconTextButtonItem copyWith({MyoroIconTextButtonConfiguration? configuration}) {
-    return MyoroMenuIconTextButtonItem(configuration: configuration ?? self.configuration);
+  MyoroMenuIconTextButtonItem copyWith({
+    bool? invert,
+    MyoroIconConfiguration? iconConfiguration,
+    bool iconConfigurationProvided = true,
+    MyoroTextConfiguration? textConfiguration,
+    bool textConfigurationProvided = true,
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+    bool? isLoading,
+  }) {
+    return MyoroMenuIconTextButtonItem(
+      invert: invert ?? self.invert,
+      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
+      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      cursor: cursorProvided ? (cursor ?? self.cursor) : null,
+      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
+      onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
+      isLoading: isLoading ?? self.isLoading,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return other is MyoroMenuIconTextButtonItem &&
         other.runtimeType == runtimeType &&
-        other.configuration == self.configuration;
+        other.invert == self.invert &&
+        other.iconConfiguration == self.iconConfiguration &&
+        other.textConfiguration == self.textConfiguration &&
+        other.cursor == self.cursor &&
+        other.tooltipConfiguration == self.tooltipConfiguration &&
+        other.onTapDown == self.onTapDown &&
+        other.onTapUp == self.onTapUp &&
+        other.isLoading == self.isLoading;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll([self.configuration]);
+    return Object.hash(
+      self.invert,
+      self.iconConfiguration,
+      self.textConfiguration,
+      self.cursor,
+      self.tooltipConfiguration,
+      self.onTapDown,
+      self.onTapUp,
+      self.isLoading,
+    );
   }
 
   @override
   String toString() =>
       'MyoroMenuIconTextButtonItem(\n'
-      '  configuration: ${self.configuration},\n'
+      '  invert: ${self.invert},\n'
+      '  iconConfiguration: ${self.iconConfiguration},\n'
+      '  textConfiguration: ${self.textConfiguration},\n'
+      '  cursor: ${self.cursor},\n'
+      '  tooltipConfiguration: ${self.tooltipConfiguration},\n'
+      '  onTapDown: ${self.onTapDown},\n'
+      '  onTapUp: ${self.onTapUp},\n'
+      '  isLoading: ${self.isLoading},\n'
       ');';
 }

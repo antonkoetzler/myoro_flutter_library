@@ -31,9 +31,7 @@ final class _SearchBarInputStyleOption extends StatelessWidget {
           selectedItem: viewModel.state.searchBarInputStyle,
           itemBuilder: (style) {
             final name = _styles.entries.firstWhere((entry) => entry.value == style).key;
-            return MyoroMenuIconTextButtonItem(
-              configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: name)),
-            );
+            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: name));
           },
         ),
       ),

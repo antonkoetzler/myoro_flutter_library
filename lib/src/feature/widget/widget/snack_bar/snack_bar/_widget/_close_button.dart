@@ -17,10 +17,8 @@ final class _CloseButton extends StatelessWidget {
     final color = getColor(context);
 
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => context.closeSnackBar(),
-        iconConfiguration: closeButtonIconConfiguration,
-      ),
+      onTapUp: (_) => context.closeSnackBar(),
+      iconConfiguration: closeButtonIconConfiguration,
       style: const MyoroIconTextButtonStyle().copyWith(
         borderWidth: kMyoroBorderWidth,
         borderIdleColor: color,

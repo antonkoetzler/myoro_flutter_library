@@ -1,43 +1,33 @@
 part of 'myoro_accordion_view_model.dart';
 
 /// State of [MyoroAccordionViewModel].
-class MyoroAccordionState<T> {
-  /// Creates a new instance of [MyoroAccordionState].
-  MyoroAccordionState(this.configuration, Set<T> selectedItems)
-    : _selectedItemsController = ValueNotifier(selectedItems.isEmpty ? {} : selectedItems);
+sealed class MyoroAccordionState<T> {
+  /// Default constructor.
+  MyoroAccordionState(this.thumbVisibility, this.titleBuilder, this.contentBuilder, this.items);
 
-  /// Configuration.
-  MyoroAccordionConfiguration<T> configuration;
+  /// Thumb visibility.
+  final bool thumbVisibility;
 
-  /// [ValueNotifier] controlling the selected item(s).
-  final ValueNotifier<Set<T>> _selectedItemsController;
+  /// Title builder.
+  final MyoroAccordionBuilder<T> titleBuilder;
+
+  /// Content builder.
+  final MyoroAccordionBuilder<T> contentBuilder;
+
+  /// Items.
+  final Set<T> items;
 
   /// [ScrollController] of the [MyoroAccordion]'s [ListView].
   final _scrollController = ScrollController();
-
-  /// [_selectedItemsController] getter.
-  ValueNotifier<Set<T>> get selectedItemsController {
-    return _selectedItemsController;
-  }
 
   /// [_scrollController] getter.
   ScrollController get scrollController {
     return _scrollController;
   }
 
-  /// Getter of [_selectedItemsController]'s value.
-  Set<T> get selectedItems {
-    return _selectedItemsController.value;
-  }
-
-  /// [_selectedItemsController] setter.
-  set selectedItems(Set<T> selectedItems) {
-    _selectedItemsController.value = selectedItems;
-  }
-
   /// Dispose function
+  @mustCallSuper
   void dispose() {
-    _selectedItemsController.dispose();
     _scrollController.dispose();
   }
 }

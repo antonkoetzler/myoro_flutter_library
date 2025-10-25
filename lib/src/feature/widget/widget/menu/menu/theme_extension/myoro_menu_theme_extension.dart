@@ -37,6 +37,7 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       selectedItemColor = faker.randomGenerator.boolean() ? myoroFake<Color>() : null;
 
   MyoroMenuThemeExtension.builder(
+    bool isDarkMode,
     ColorScheme colorScheme,
     TextTheme textTheme,
     MyoroDecorationThemeExtension decorationThemeExtension,
@@ -49,7 +50,9 @@ class MyoroMenuThemeExtension extends ThemeExtension<MyoroMenuThemeExtension>
       itemBorderRadius = BorderRadius.zero,
       dialogTextStyle = textTheme.bodyMedium!,
       dialogTextLoaderPadding = const EdgeInsets.all(kMyoroMultiplier * 3.75),
-      selectedItemColor = decorationThemeExtension.primaryBackgroundTapColor;
+      selectedItemColor = isDarkMode
+          ? decorationThemeExtension.primaryBackgroundTapColor?.darken(0.15)
+          : decorationThemeExtension.primaryBackgroundTapColor?.brighten(0.15);
 
   /// Constraints of the menu.
   @override

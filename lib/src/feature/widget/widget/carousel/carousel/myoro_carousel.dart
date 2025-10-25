@@ -7,13 +7,33 @@ part '_widget/_carousel.dart';
 part '_widget/_traversal_button.dart';
 
 /// Slider carousel.
-class MyoroCarousel extends StatefulWidget {
+class MyoroCarousel extends StatelessWidget {
+  /// Default value for [direction].
+  static const directionDefaultValue = Axis.horizontal;
+
+  /// Default value for [displayTraversalButtons].
+  static const displayTraversalButtonsDefaultValue = false;
+
+  /// Default value for [initialItem].
+  static const initialItemDefaultValue = 0;
+
+  /// Default value for [autoplay].
+  static const autoplayDefaultValue = false;
+
+  /// Default value for [autoplayIntervalDuration].
+  static const autoplayIntervalDurationDefaultValue = Duration(seconds: 3);
+
   const MyoroCarousel({
     super.key,
     this.style = const MyoroCarouselStyle(),
     this.controller,
-    required this.configuration,
-  });
+    this.direction = directionDefaultValue,
+    this.displayTraversalButtons = displayTraversalButtonsDefaultValue,
+    this.initialItem = initialItemDefaultValue,
+    this.autoplay = autoplayDefaultValue,
+    this.autoplayIntervalDuration = autoplayIntervalDurationDefaultValue,
+    required this.items,
+  }) : assert(items.length > 0, '[MyoroCarousel]: [items] cannot be empty.');
 
   /// [ThemeExtension]
   final MyoroCarouselStyle style;
@@ -21,49 +41,51 @@ class MyoroCarousel extends StatefulWidget {
   /// Controller.
   final CarouselSliderController? controller;
 
-  /// Configuration.
-  final MyoroCarouselConfiguration configuration;
+  /// Direction that the carousel is sliding in.
+  final Axis direction;
 
-  @override
-  State<MyoroCarousel> createState() => _MyoroCarouselState();
-}
+  /// Display buttons to traverse [items].
+  final bool displayTraversalButtons;
 
-final class _MyoroCarouselState extends State<MyoroCarousel> {
-  MyoroCarouselStyle get _style => widget.style;
-  MyoroCarouselConfiguration get _configuration => widget.configuration;
+  /// Initial item from [slides] starting in the carousel.
+  final int initialItem;
 
-  CarouselSliderController? _localController;
-  CarouselSliderController get _controller {
-    return widget.controller ?? (_localController ??= CarouselSliderController());
-  }
+  /// If the carousel autoslides [items].
+  final bool autoplay;
+
+  /// [autoplay] interval duration.
+  final Duration autoplayIntervalDuration;
+
+  /// Slides of the carousel.
+  final List<Widget> items;
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroCarouselThemeExtension>();
-    final previousItemButtonIcon = _style.previousItemButtonIcon ?? themeExtension.previousItemButtonIcon;
-    final nextItemButtonIcon = _style.nextItemButtonIcon ?? themeExtension.nextItemButtonIcon;
+    final previousItemButtonIcon = style.previousItemButtonIcon ?? themeExtension.previousItemButtonIcon;
+    final nextItemButtonIcon = style.nextItemButtonIcon ?? themeExtension.nextItemButtonIcon;
 
-    final displayTraversalButtons = _configuration.displayTraversalButtons;
+    final controller = this.controller ?? CarouselSliderController();
 
     return InheritedProvider.value(
-      value: _style,
+      value: style,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          _Carousel(_configuration, _controller),
+          _Carousel(controller, direction, initialItem, autoplay, autoplayIntervalDuration, items),
           if (displayTraversalButtons) ...[
             Positioned(
               child: _TraversalButton(
                 Alignment.centerLeft,
                 previousItemButtonIcon ?? Icons.keyboard_arrow_left,
-                _controller.previousPage,
+                controller.previousPage,
               ),
             ),
             Positioned(
               child: _TraversalButton(
                 Alignment.centerRight,
                 nextItemButtonIcon ?? Icons.keyboard_arrow_right,
-                _controller.nextPage,
+                controller.nextPage,
               ),
             ),
           ],

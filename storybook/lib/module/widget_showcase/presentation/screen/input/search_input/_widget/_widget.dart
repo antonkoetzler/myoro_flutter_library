@@ -7,22 +7,16 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     return MyoroSearchInput(
-      configuration: MyoroSearchInputConfiguration(
-        menuConfiguration: MyoroSearchInputMenuConfiguration(
-          request: (_) async {
-            await Future.delayed(const Duration(seconds: 1));
-            return {'Start', 'End'};
-          },
-          itemBuilder: (item) {
-            return MyoroMenuIconTextButtonItem(
-              configuration: MyoroIconTextButtonConfiguration(textConfiguration: MyoroTextConfiguration(text: item)),
-            );
-          },
-        ),
-        selectedItemBuilder: (item) {
-          return item;
-        },
-      ),
+      request: (_) async {
+        await Future.delayed(const Duration(seconds: 1));
+        return {'Start', 'End'};
+      },
+      itemBuilder: (item) {
+        return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
+      },
+      selectedItemBuilder: (item) {
+        return item;
+      },
     );
   }
 }

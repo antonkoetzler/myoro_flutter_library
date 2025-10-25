@@ -1,10 +1,11 @@
-part of '../myoro_icon_text_button.dart';
+part of '../widget/myoro_icon_text_button.dart';
 
 /// Text of the [MyoroIconTextButton].
 final class _Text extends StatelessWidget {
-  final MyoroTapStatusEnum _tapStatusEnum;
+  const _Text(this._tapStatusEnum, this._textConfiguration);
 
-  const _Text(this._tapStatusEnum);
+  final MyoroTapStatusEnum _tapStatusEnum;
+  final MyoroTextConfiguration _textConfiguration;
 
   @override
   Widget build(context) {
@@ -13,21 +14,21 @@ final class _Text extends StatelessWidget {
     final contentColor =
         style.contentColorBuilder(_tapStatusEnum) ?? themeExtension.contentColorBuilder(_tapStatusEnum);
 
-    final configuration = context.read<MyoroIconTextButtonConfiguration>();
-    final textConfiguration = configuration.textConfiguration!;
-    final text = textConfiguration.text;
-    final maxLines = textConfiguration.maxLines;
-    final overflow = textConfiguration.overflow;
-    final alignment = textConfiguration.alignment;
-    final textStyle = textConfiguration.style ?? themeExtension.textStyle;
+    final text = _textConfiguration.text;
+    final maxLines = _textConfiguration.maxLines;
+    final overflow = _textConfiguration.overflow;
+    final alignment = _textConfiguration.alignment;
+    final textStyle = _textConfiguration.style ?? themeExtension.textStyle;
 
     return Expanded(
-      child: Text(
-        text,
-        maxLines: maxLines,
-        overflow: overflow,
-        textAlign: alignment,
-        style: contentColor != null ? textStyle?.withColor(contentColor) : textStyle,
+      child: IntrinsicHeight(
+        child: Text(
+          text,
+          maxLines: maxLines,
+          overflow: overflow,
+          textAlign: alignment,
+          style: contentColor != null ? textStyle?.withColor(contentColor) : textStyle,
+        ),
       ),
     );
   }

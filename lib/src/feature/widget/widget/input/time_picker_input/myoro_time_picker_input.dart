@@ -4,61 +4,25 @@ import 'package:provider/provider.dart';
 
 part '_widget/_time_picker.dart';
 part '_widget/_input.dart';
-part '_widget/_trigger_area.dart';
 
 /// Time picker input (click time, no typy typy).
-class MyoroTimePickerInput extends StatefulWidget {
-  const MyoroTimePickerInput({super.key, required this.configuration, this.style = const MyoroInputStyle()});
-
-  /// Configuration.
-  final MyoroTimePickerInputConfiguration configuration;
+class MyoroTimePickerInput extends StatelessWidget {
+  const MyoroTimePickerInput({super.key, this.style = const MyoroInputStyle(), required this.onChanged});
 
   /// Style.
   final MyoroInputStyle style;
 
-  @override
-  State<MyoroTimePickerInput> createState() => _MyoroTimePickerInputState();
-}
-
-final class _MyoroTimePickerInputState extends State<MyoroTimePickerInput> {
-  late final MyoroTimePickerInputViewModel _viewModel;
-  MyoroInputStyle get _style => widget.style;
-
-  @override
-  void initState() {
-    super.initState();
-    _viewModel = MyoroTimePickerInputViewModel(widget.configuration);
-  }
-
-  @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
+  /// Callback executed when the time changed.
+  final MyoroTimePickerInputOnChanged onChanged;
 
   @override
   Widget build(context) {
-    final state = _viewModel.state;
-    final configuration = state.configuration;
-    final checkboxOnChangedNotNull = configuration.checkboxOnChanged != null;
-    final suffixNotNull = configuration.suffix != null;
-    final checkboxOnChangedAndSuffixNotNull = checkboxOnChangedNotNull && suffixNotNull;
-    final checkboxOnChangedAndSuffixNull = !checkboxOnChangedNotNull && !suffixNotNull;
-
     return MultiProvider(
       providers: [
-        Provider.value(value: _viewModel),
-        InheritedProvider.value(value: _style),
+        InheritedProvider.value(value: style),
+        Provider(create: (_) => MyoroTimePickerInputViewModel(onChanged), dispose: (_, v) => v.dispose()),
       ],
-      child: Stack(
-        alignment: checkboxOnChangedAndSuffixNotNull || checkboxOnChangedAndSuffixNull
-            ? Alignment.center
-            : (checkboxOnChangedNotNull ? Alignment.centerRight : Alignment.centerLeft),
-        children: const [
-          _Input(),
-          Positioned(child: _TriggerArea()),
-        ],
-      ),
+      child: const _Input(),
     );
   }
 }

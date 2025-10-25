@@ -9,61 +9,66 @@ final class MyoroButtonWidgetShowcaseScreenViewModel {
   /// State
   final _state = MyoroButtonWidgetShowcaseScreenState();
 
-  /// [_state] getter.
-  MyoroButtonWidgetShowcaseScreenState get state => _state;
-
   /// Dispose function.
   void dispose() {
     _state.dispose();
   }
 
-  /// [MyoroButtonConfiguration] of the [MyoroButton].
-  MyoroButtonConfiguration buildConfiguration(BuildContext context) {
-    void onTapDown(BuildContext context) {
-      context.showSnackBar(
-        snackBar: const MyoroSnackBar(
-          configuration: MyoroSnackBarConfiguration(
-            snackBarType: MyoroSnackBarTypeEnum.attention,
-            message: 'Tap down activated.',
-          ),
+  /// Callback executed when the [MyoroButton] is tapped down.
+  void onTapDown(BuildContext context) {
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(
+          snackBarType: MyoroSnackBarTypeEnum.attention,
+          message: 'Tap down activated.',
         ),
-      );
-    }
-
-    void onTapUp(BuildContext context) {
-      context.showSnackBar(
-        snackBar: const MyoroSnackBar(
-          configuration: MyoroSnackBarConfiguration(
-            snackBarType: MyoroSnackBarTypeEnum.attention,
-            message: 'Tap up activated.',
-          ),
-        ),
-      );
-    }
-
-    return MyoroButtonConfiguration(
-      tooltipConfiguration: state.tooltipEnabled ? MyoroTooltipConfiguration.fake() : null,
-      cursor: state.cursor,
-      onTapDown: state.onTapDownEnabled ? (_) => onTapDown(context) : null,
-      onTapUp: state.onTapUpEnabled ? (_) => onTapUp(context) : null,
-      isLoading: state.isLoading,
+      ),
     );
   }
 
+  /// Callback executed when the [MyoroButton] is tapped up.
+  void onTapUp(BuildContext context) {
+    context.showSnackBar(
+      snackBar: const MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(
+          snackBarType: MyoroSnackBarTypeEnum.attention,
+          message: 'Tap up activated.',
+        ),
+      ),
+    );
+  }
+
+  /// [_state] getter.
+  MyoroButtonWidgetShowcaseScreenState get state {
+    return _state;
+  }
+
   /// [MyoroButtonStyle] of the [MyoroButton].
-  MyoroButtonStyle buildStyle(BuildContext context) {
-    return const MyoroButtonStyle().copyWith(
-      backgroundIdleColor: state.backgroundIdleColor,
-      backgroundHoverColor: state.backgroundHoverColor,
-      backgroundTapColor: state.backgroundTapColor,
-      contentIdleColor: state.contentIdleColor,
-      contentHoverColor: state.contentHoverColor,
-      contentTapColor: state.contentTapColor,
-      borderWidth: state.borderWidth,
-      borderRadius: state.borderRadius,
-      borderIdleColor: state.borderIdleColor,
-      borderHoverColor: state.borderHoverColor,
-      borderTapColor: state.borderTapColor,
+  MyoroButtonStyle get style {
+    final backgroundIdleColor = state.backgroundIdleColor;
+    final backgroundHoverColor = state.backgroundHoverColor;
+    final backgroundTapColor = state.backgroundTapColor;
+    final contentIdleColor = state.contentIdleColor;
+    final contentHoverColor = state.contentHoverColor;
+    final contentTapColor = state.contentTapColor;
+    final borderWidth = state.borderWidth;
+    final borderRadius = state.borderRadius;
+    final borderIdleColor = state.borderIdleColor;
+    final borderHoverColor = state.borderHoverColor;
+    final borderTapColor = state.borderTapColor;
+
+    return MyoroButtonStyle(
+      backgroundIdleColor: backgroundIdleColor,
+      backgroundHoverColor: backgroundHoverColor,
+      backgroundTapColor: backgroundTapColor,
+      contentIdleColor: contentIdleColor,
+      contentHoverColor: contentHoverColor,
+      contentTapColor: contentTapColor,
+      borderWidth: borderWidth,
+      borderRadius: borderRadius,
+      borderIdleColor: borderIdleColor,
+      borderHoverColor: borderHoverColor,
+      borderTapColor: borderTapColor,
     );
   }
 }

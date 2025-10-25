@@ -9,10 +9,8 @@ final class _Widget extends StatelessWidget {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => viewModel.showModal(context),
-        textConfiguration: const MyoroTextConfiguration(text: 'Click to display the modal!'),
-      ),
+      onTapUp: (_) => viewModel.showModal(context),
+      textConfiguration: const MyoroTextConfiguration(text: 'Click to display the modal!'),
     );
   }
 }

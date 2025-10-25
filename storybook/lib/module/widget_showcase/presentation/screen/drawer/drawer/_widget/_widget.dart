@@ -10,10 +10,8 @@ final class _Widget extends StatelessWidget {
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(
-        configuration: MyoroIconTextButtonConfiguration(
-          textConfiguration: const MyoroTextConfiguration(text: 'Click to open the drawer!'),
-          onTapUp: (_) => viewModel.showDrawer(context),
-        ),
+        textConfiguration: const MyoroTextConfiguration(text: 'Click to open the drawer!'),
+        onTapUp: (_) => viewModel.showDrawer(context),
       ),
     );
   }

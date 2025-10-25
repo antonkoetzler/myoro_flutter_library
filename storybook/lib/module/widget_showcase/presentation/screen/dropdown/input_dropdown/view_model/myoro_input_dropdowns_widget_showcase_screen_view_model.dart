@@ -21,9 +21,7 @@ final class MyoroInputDropdownsWidgetShowcaseScreenViewModel {
   /// Builds the dropdown type option item builder.
   MyoroMenuItem dropdownTypeOptionItemBuilder(MyoroDropdownTypeEnum item) {
     return MyoroMenuIconTextButtonItem(
-      configuration: MyoroIconTextButtonConfiguration(
-        textConfiguration: MyoroTextConfiguration(text: dropdownTypeOptionSelectedItemBuilder(item)),
-      ),
+      textConfiguration: MyoroTextConfiguration(text: dropdownTypeOptionSelectedItemBuilder(item)),
     );
   }
 

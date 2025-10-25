@@ -7,23 +7,25 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroAppWidgetShowcaseScreenViewModel>();
+    final state = viewModel.state;
 
     return ListenableBuilder(
-      listenable: viewModel.state,
+      listenable: state,
       builder: (_, __) {
+        final themeMode = state.themeMode;
+
         return MyoroApp(
-          configuration: viewModel.buildConfiguration(
-            MyoroScreen(
-              configuration: MyoroScreenConfiguration(
-                appBar: MyoroAppBar(
-                  showBottomDivider: true,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],
-                  ),
+          themeMode: themeMode,
+          home: MyoroScreen(
+            configuration: MyoroScreenConfiguration(
+              appBar: MyoroAppBar(
+                showBottomDivider: true,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],
                 ),
-                body: Center(child: Text(faker.lorem.word())),
               ),
+              body: Center(child: Text(faker.lorem.word())),
             ),
           ),
         );

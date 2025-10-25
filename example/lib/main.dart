@@ -25,11 +25,9 @@ final class _AppState extends State<_App> {
       valueListenable: _themeModeController,
       builder: (_, themeMode, _) {
         return MyoroApp(
-          configuration: MyoroAppConfiguration(
-            themeMode: themeMode,
-            home: MyoroScreen(
-              configuration: MyoroScreenConfiguration(appBar: _AppBar(_themeModeController), body: const _Body()),
-            ),
+          themeMode: themeMode,
+          home: MyoroScreen(
+            configuration: MyoroScreenConfiguration(appBar: _AppBar(_themeModeController), body: const _Body()),
           ),
         );
       },
@@ -54,12 +52,10 @@ final class _AppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           const Text('Example'),
           MyoroIconTextButton(
-            configuration: MyoroIconTextButtonConfiguration(
-              iconConfiguration: const MyoroIconConfiguration(icon: Icons.sunny),
-              onTapUp: (_) => _themeModeController.value = _themeModeController.value == ThemeMode.dark
-                  ? ThemeMode.light
-                  : ThemeMode.dark,
-            ),
+            iconConfiguration: const MyoroIconConfiguration(icon: Icons.sunny),
+            onTapUp: (_) => _themeModeController.value = _themeModeController.value == ThemeMode.dark
+                ? ThemeMode.light
+                : ThemeMode.dark,
           ),
         ],
       ),

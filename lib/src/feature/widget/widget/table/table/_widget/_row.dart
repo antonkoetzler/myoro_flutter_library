@@ -30,16 +30,14 @@ final class _Row<T> extends StatelessWidget {
     );
 
     final child = MyoroButton(
-      configuration: MyoroButtonConfiguration(
-        onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
-        onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
-      ),
       style: const MyoroButtonStyle().copyWith(
         backgroundIdleColor: context.colorScheme.primary,
         backgroundHoverColor: context.colorScheme.primary.withValues(alpha: 0.8),
         backgroundTapColor: context.colorScheme.primary.withValues(alpha: 0.6),
         borderRadius: BorderRadius.zero,
       ),
+      onTapDown: (onTapDown != null) ? (_) => onTapDown(_item) : null,
+      onTapUp: (onTapUp != null) ? (_) => onTapUp(_item) : null,
       builder: (_, MyoroTapStatusEnum tapStatusEnum) {
         return Row(
           spacing: columnSpacing,

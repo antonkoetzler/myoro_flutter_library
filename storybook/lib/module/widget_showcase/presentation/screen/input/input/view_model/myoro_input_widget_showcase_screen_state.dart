@@ -6,64 +6,64 @@ final class MyoroInputWidgetShowcaseScreenState extends ChangeNotifier {
   /// [MyoroFormController] of the [MyoroForm] used for [_ValidationOption].
   final formController = MyoroFormController<String>();
 
-  /// [MyoroInputConfiguration.inputStyle]
-  MyoroInputStyleEnum _inputStyle = MyoroInputConfiguration.inputStyleDefaultValue;
+  /// [MyoroInput.inputStyle]
+  MyoroInputStyleEnum _inputStyle = MyoroInput.inputStyleDefaultValue;
 
-  /// [MyoroInputConfiguration.textAlign]
-  TextAlign _textAlign = MyoroInputConfiguration.textAlignDefaultValue;
+  /// [MyoroInput.textAlign]
+  TextAlign _textAlign = MyoroInput.textAlignDefaultValue;
 
-  /// [MyoroInputConfiguration.inputTextStyle]
+  /// [MyoroInput.inputTextStyle]
   TextStyle? _inputTextStyle;
 
-  /// [MyoroInputConfiguration.label]
-  String _label = MyoroInputConfiguration.labelDefaultValue;
+  /// [MyoroInput.label]
+  String _label = MyoroInput.labelDefaultValue;
 
-  /// [MyoroInputConfiguration.text]
-  String _text = MyoroInputConfiguration.textDefaultValue;
+  /// [MyoroInput.text]
+  String _text = MyoroInput.textDefaultValue;
 
-  /// [MyoroInputConfiguration.labelTextStyle]
+  /// [MyoroInput.labelTextStyle]
   TextStyle? _labelTextStyle;
 
-  /// [MyoroInputConfiguration.placeholder]
-  String _placeholder = MyoroInputConfiguration.placeholderDefaultValue;
+  /// [MyoroInput.placeholder]
+  String _placeholder = MyoroInput.placeholderDefaultValue;
 
-  /// [MyoroInputConfiguration.contentPadding]
+  /// [MyoroInput.contentPadding]
   EdgeInsets? _contentPadding;
 
-  /// [MyoroInputConfiguration.border]
+  /// [MyoroInput.border]
   bool _borderEnabled = false;
 
-  /// [MyoroInputConfiguration.suffix]
+  /// [MyoroInput.suffix]
   bool _suffixEnabled = false;
 
-  /// [MyoroInputConfiguration.enabled]
-  bool _enabled = MyoroInputConfiguration.enabledDefaultValue;
+  /// [MyoroInput.enabled]
+  bool _enabled = MyoroInput.enabledDefaultValue;
 
-  /// [MyoroInputConfiguration.readOnly]
-  bool _readOnly = MyoroInputConfiguration.readOnlyDefaultValue;
+  /// [MyoroInput.readOnly]
+  bool _readOnly = MyoroInput.readOnlyDefaultValue;
 
-  /// [MyoroInputConfiguration.showClearTextButton]
-  bool _showClearTextButton = MyoroInputConfiguration.showClearTextButtonDefaultValue;
+  /// [MyoroInput.showClearTextButton]
+  bool _showClearTextButton = MyoroInput.showClearTextButtonDefaultValue;
 
-  /// [MyoroInputConfiguration.obscureText]
-  bool _obscureText = MyoroInputConfiguration.obscureTextDefaultValue;
+  /// [MyoroInput.obscureText]
+  bool _obscureText = MyoroInput.obscureTextDefaultValue;
 
-  /// [MyoroInputConfiguration.showObscureTextButton]
-  bool _showObscureTextButton = MyoroInputConfiguration.showObscureTextButtonDefaultValue;
+  /// [MyoroInput.showObscureTextButton]
+  bool _showObscureTextButton = MyoroInput.showObscureTextButtonDefaultValue;
 
-  /// [MyoroInputConfiguration.checkboxOnChanged]
+  /// [MyoroInput.checkboxOnChanged]
   bool _checkboxOnChangedEnabled = false;
 
-  /// [MyoroInputConfiguration.validation]
+  /// [MyoroInput.validation]
   bool _validationEnabled = false;
 
-  /// [MyoroInputConfiguration.onFieldSubmitted]
+  /// [MyoroInput.onFieldSubmitted]
   bool _onFieldSubmittedEnabled = false;
 
-  /// [MyoroInputConfiguration.onChanged]
+  /// [MyoroInput.onChanged]
   bool _onChangedEnabled = false;
 
-  /// [MyoroInputConfiguration.onCleared]
+  /// [MyoroInput.onCleared]
   bool _onClearedEnabled = false;
 
   // Theme Extension Properties

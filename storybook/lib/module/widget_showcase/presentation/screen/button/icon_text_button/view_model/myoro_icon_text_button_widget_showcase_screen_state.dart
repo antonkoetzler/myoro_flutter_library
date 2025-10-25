@@ -9,7 +9,7 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
   final _buttonViewModel = MyoroButtonWidgetShowcaseScreenViewModel();
 
   /// [MyoroIconTextButtonConfiguration.invert]
-  bool _invert = MyoroIconTextButtonConfiguration.invertDefaultValue;
+  bool _invert = false;
 
   /// [MyoroIconTextButtonConfiguration.spacing]
   double? _spacing;
@@ -49,6 +49,13 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
 
   /// [MyoroTextConfiguration.style]
   TextStyle? _style;
+
+  /// Dispose function.
+  @override
+  void dispose() {
+    _buttonViewModel.dispose();
+    super.dispose();
+  }
 
   /// [_buttonViewModel] getter.
   MyoroButtonWidgetShowcaseScreenViewModel get buttonViewModel => _buttonViewModel;
@@ -192,12 +199,5 @@ final class MyoroIconTextButtonWidgetShowcaseScreenState extends ChangeNotifier 
     if (_style == style) return;
     _style = style;
     notifyListeners();
-  }
-
-  /// Dispose function.
-  @override
-  void dispose() {
-    _buttonViewModel.dispose();
-    super.dispose();
   }
 }

@@ -8,6 +8,7 @@ class MyoroMultiInputDropdown<T> extends StatefulWidget {
     this.inputController,
     this.controller,
     this.style = const MyoroInputDropdownStyle(),
+    this.prefix,
     this.inputSuffix,
   }) : assert(
          controller != null ? configuration == null && inputController == null : configuration != null,
@@ -26,6 +27,9 @@ class MyoroMultiInputDropdown<T> extends StatefulWidget {
   /// Style.
   final MyoroInputDropdownStyle style;
 
+  /// Prefix [Widget].
+  final Widget? prefix;
+
   /// Suffix [Widget].
   final Widget? inputSuffix;
 
@@ -35,6 +39,7 @@ class MyoroMultiInputDropdown<T> extends StatefulWidget {
 
 final class _MyoroMultiInputDropdownState<T> extends State<MyoroMultiInputDropdown<T>> {
   MyoroInputDropdownStyle get _style => widget.style;
+  Widget? get _prefix => widget.prefix;
   Widget? get _inputSuffix => widget.inputSuffix;
 
   MyoroMultiInputDropdownViewModel<T>? _localViewModel;
@@ -62,6 +67,6 @@ final class _MyoroMultiInputDropdownState<T> extends State<MyoroMultiInputDropdo
 
   @override
   Widget build(_) {
-    return _Base(_viewModel, _style, _inputSuffix);
+    return _Base(_viewModel, _style, _prefix, _inputSuffix, null);
   }
 }

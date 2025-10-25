@@ -21,23 +21,21 @@ final class _SelectionTypeModalButton extends StatelessWidget {
     final onTapSelectionTypeModalButton = viewModel.onTapSelectionTypeModalButton;
 
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        iconConfiguration: MyoroIconConfiguration(
-          icon:
-              switch (_value) {
-                ImageSource.camera => selectionTypeModalButtonCameraIcon,
-                ImageSource.gallery => selectionTypeModalButtonGalleryIcon,
-              } ??
-              Icons.upload,
-        ),
-        textConfiguration: MyoroTextConfiguration(
-          text: switch (_value) {
-            ImageSource.camera => localization.myoroImagePickerSelectionTypeModalButtonCameraText,
-            ImageSource.gallery => localization.myoroImagePickerSelectionTypeModalButtonGalleryText,
-          },
-        ),
-        onTapUp: (_) => onTapSelectionTypeModalButton(context, _value),
+      iconConfiguration: MyoroIconConfiguration(
+        icon:
+            switch (_value) {
+              ImageSource.camera => selectionTypeModalButtonCameraIcon,
+              ImageSource.gallery => selectionTypeModalButtonGalleryIcon,
+            } ??
+            Icons.upload,
       ),
+      textConfiguration: MyoroTextConfiguration(
+        text: switch (_value) {
+          ImageSource.camera => localization.myoroImagePickerSelectionTypeModalButtonCameraText,
+          ImageSource.gallery => localization.myoroImagePickerSelectionTypeModalButtonGalleryText,
+        },
+      ),
+      onTapUp: (_) => onTapSelectionTypeModalButton(context, _value),
     );
   }
 }

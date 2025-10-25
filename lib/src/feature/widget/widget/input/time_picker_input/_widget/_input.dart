@@ -8,13 +8,12 @@ final class _Input extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroTimePickerInputViewModel>();
     final style = context.watch<MyoroInputStyle>();
+    final onTap = viewModel.openTimePicker;
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final inputKey = state.inputKey;
     final inputController = state.inputController;
-    viewModel.getInputSize();
     return MyoroInput(
-      configuration: configuration.copyWith(inputKey: inputKey, controller: inputController),
+      inputController: inputController,
+      onTap: () => onTap(context, (child) => _TimePicker(child!)),
       style: style,
     );
   }

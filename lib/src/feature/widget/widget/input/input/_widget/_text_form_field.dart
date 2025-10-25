@@ -2,9 +2,8 @@ part of '../myoro_input.dart';
 
 /// Core input of [MyoroInput].
 final class _TextFormField extends StatelessWidget {
-  const _TextFormField(this._configuration, this._enabled);
+  const _TextFormField(this._enabled);
 
-  final MyoroInputConfiguration _configuration;
   final bool _enabled;
 
   @override
@@ -19,26 +18,33 @@ final class _TextFormField extends StatelessWidget {
         style.suffixIconConstraints ??
         themeExtension.suffixIconConstraints ??
         const BoxConstraints(minWidth: 0, minHeight: 0);
+    final prefixIconConstraints =
+        style.prefixIconConstraints ??
+        themeExtension.prefixIconConstraints ??
+        const BoxConstraints(minWidth: 0, minHeight: 0);
 
     final viewModel = context.watch<MyoroInputViewModel>();
     final state = viewModel.state;
     final obscureTextController = state.obscureTextController;
-    final readOnly = _configuration.readOnly;
-    final autofocus = _configuration.autofocus;
-    final placeholder = _configuration.placeholder;
-    final label = _configuration.label;
-    final textAlign = _configuration.textAlign;
-    final validation = _configuration.validation;
-    final onFieldSubmitted = _configuration.onFieldSubmitted;
-    final onChanged = _configuration.onChanged;
-    final focusNode = _configuration.focusNode;
-    final controller = state.controller;
+    final readOnly = state.readOnly;
+    final autofocus = state.autofocus;
+    final placeholder = state.placeholder;
+    final label = state.label;
+    final textAlign = state.textAlign;
+    final suffix = state.suffix;
+    final validation = state.validation;
+    final prefix = state.prefix;
+    final onFieldSubmitted = state.onFieldSubmitted;
+    final onChanged = state.onChanged;
+    final focusNode = state.focusNode;
+    final inputController = state.inputController;
     final formatter = state.formatter;
-    final onTap = _configuration.onTap;
-    final inputKey = _configuration.inputKey;
-    final showObscureTextButton = _configuration.showObscureTextButton;
+    final onTap = state.onTap;
+    final inputKey = state.inputKey;
+    final showObscureTextButton = state.showObscureTextButton;
+    final inputStyle = state.inputStyle;
 
-    final border = style.border ?? themeExtension.border ?? _configuration.inputStyle.getBorder(context);
+    final border = style.border ?? themeExtension.border ?? inputStyle.getBorder(context);
 
     // Get the border radius from the border to apply it to the background
     final borderRadius = border is OutlineInputBorder ? border.borderRadius : null;
@@ -48,8 +54,7 @@ final class _TextFormField extends StatelessWidget {
       child: ValueListenableBuilder(
         valueListenable: state.showClearTextButtonController,
         builder: (_, showClearTextButton, _) {
-          showClearTextButton =
-              showClearTextButton && clearTextButtonIcon != null && _configuration.showClearTextButton;
+          showClearTextButton = showClearTextButton && clearTextButtonIcon != null && showClearTextButton;
 
           return Stack(
             children: [
@@ -93,6 +98,9 @@ final class _TextFormField extends StatelessWidget {
                       ),
                       isDense: true,
                       contentPadding: contentPadding,
+                      prefixIcon: prefix,
+                      suffix: suffix,
+                      prefixIconConstraints: prefixIconConstraints,
                       suffixIconConstraints: suffixIconConstraints,
                       suffixIcon: showObscureTextButton
                           ? _ObscureTextButton(obscureText)
@@ -102,12 +110,12 @@ final class _TextFormField extends StatelessWidget {
                     ),
                     textAlign: textAlign,
                     cursorHeight: style.cursorHeight ?? themeExtension.cursorHeight,
-                    validator: (_) => validation?.call(controller.text),
+                    validator: (_) => validation?.call(inputController.text),
                     inputFormatters: [?formatter],
                     onFieldSubmitted: onFieldSubmitted,
                     onChanged: onChanged,
                     focusNode: focusNode,
-                    controller: controller,
+                    controller: inputController,
                   );
                 },
               ),

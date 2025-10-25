@@ -14,10 +14,8 @@ final class _Widget extends StatelessWidget {
         return MaterialPageRoute(
           builder: (_) {
             return MyoroIconTextButton(
-              configuration: MyoroIconTextButtonConfiguration(
-                onTapUp: (_) => viewModel.showModal(context),
-                textConfiguration: const MyoroTextConfiguration(text: 'Click to show the modal!'),
-              ),
+              onTapUp: (_) => viewModel.showModal(context),
+              textConfiguration: const MyoroTextConfiguration(text: 'Click to show the modal!'),
             );
           },
         );

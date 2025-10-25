@@ -8,8 +8,6 @@ final class _LabelOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput(
-      configuration: MyoroInputConfiguration(label: 'Label.', onChanged: (text) => viewModel.state.label = text),
-    );
+    return MyoroInput(label: 'Label.', onChanged: (text) => viewModel.state.label = text);
   }
 }

@@ -20,7 +20,9 @@ class MyoroFeedbackConfiguration with _$MyoroFeedbackConfigurationMixin {
     : iconConfiguration = MyoroIconConfiguration.fake(),
       titleConfiguration = MyoroTextConfiguration.fake(),
       subtitleConfiguration = faker.randomGenerator.boolean() ? MyoroTextConfiguration.fake() : null,
-      actionButtonConfiguration = faker.randomGenerator.boolean() ? MyoroIconTextButtonConfiguration.fake() : null;
+      actionButtonConfiguration = faker.randomGenerator.boolean()
+          ? MyoroFeedbackActionButtonConfiguration.fake()
+          : null;
 
   /// [IconData] of the [MyoroFeedback].
   final MyoroIconConfiguration iconConfiguration;
@@ -32,5 +34,5 @@ class MyoroFeedbackConfiguration with _$MyoroFeedbackConfigurationMixin {
   final MyoroTextConfiguration? subtitleConfiguration;
 
   /// Action button configuration.
-  final MyoroIconTextButtonConfiguration? actionButtonConfiguration;
+  final MyoroFeedbackActionButtonConfiguration? actionButtonConfiguration;
 }

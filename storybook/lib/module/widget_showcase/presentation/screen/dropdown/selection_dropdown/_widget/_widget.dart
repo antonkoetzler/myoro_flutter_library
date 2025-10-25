@@ -21,11 +21,7 @@ final class _Widget extends StatelessWidget {
               menuConfiguration: MyoroSingleMenuConfiguration(
                 request: () => {'Start'},
                 itemBuilder: (item) {
-                  return MyoroMenuIconTextButtonItem(
-                    configuration: MyoroIconTextButtonConfiguration(
-                      textConfiguration: MyoroTextConfiguration(text: item),
-                    ),
-                  );
+                  return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
                 },
               ),
               selectedItemBuilder: (item) => item,
@@ -39,11 +35,7 @@ final class _Widget extends StatelessWidget {
               menuConfiguration: MyoroMultiMenuConfiguration(
                 request: () => {'Start'},
                 itemBuilder: (item) {
-                  return MyoroMenuIconTextButtonItem(
-                    configuration: MyoroIconTextButtonConfiguration(
-                      textConfiguration: MyoroTextConfiguration(text: item),
-                    ),
-                  );
+                  return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: item));
                 },
               ),
               selectedItemBuilder: (item) => item,

@@ -8,6 +8,7 @@ class MyoroSingleInputDropdown<T> extends StatefulWidget {
     this.inputController,
     this.configuration,
     this.style = const MyoroInputDropdownStyle(),
+    this.prefix,
     this.inputSuffix,
   }) : assert(
          controller != null ? configuration == null && inputController == null : configuration != null,
@@ -26,6 +27,9 @@ class MyoroSingleInputDropdown<T> extends StatefulWidget {
   /// Style.
   final MyoroInputDropdownStyle style;
 
+  /// Prefix [Widget].
+  final Widget? prefix;
+
   /// Suffix [Widget].
   final Widget? inputSuffix;
 
@@ -35,6 +39,7 @@ class MyoroSingleInputDropdown<T> extends StatefulWidget {
 
 final class _MyoroSingleInputDropdownState<T> extends State<MyoroSingleInputDropdown<T>> {
   MyoroInputDropdownStyle get _style => widget.style;
+  Widget? get _prefix => widget.prefix;
   Widget? get _inputSuffix => widget.inputSuffix;
 
   MyoroSingleInputDropdownViewModel<T>? _localViewModel;
@@ -62,6 +67,6 @@ final class _MyoroSingleInputDropdownState<T> extends State<MyoroSingleInputDrop
 
   @override
   Widget build(_) {
-    return _Base(_viewModel, _style, _inputSuffix);
+    return _Base(_viewModel, _style, _prefix, _inputSuffix, widget.configuration?.numberInputConfiguration);
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kiwi/kiwi.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storybook/storybook.dart';
 
 part 'myoro_app_widget_showcase_screen_state.dart';
@@ -14,10 +13,5 @@ final class MyoroAppWidgetShowcaseScreenViewModel {
   /// Dispose function.
   void dispose() {
     _state.dispose();
-  }
-
-  /// [MyoroAppConfiguration] of the [MyoroApp].
-  MyoroAppConfiguration buildConfiguration(Widget home) {
-    return MyoroAppConfiguration(themeMode: _state.themeMode, home: home);
   }
 }

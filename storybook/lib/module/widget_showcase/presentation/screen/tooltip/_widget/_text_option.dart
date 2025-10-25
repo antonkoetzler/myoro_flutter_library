@@ -8,11 +8,6 @@ final class _TextOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput(
-      configuration: MyoroInputConfiguration(
-        label: 'Text in the tooltip.',
-        onChanged: (text) => viewModel.state.text = text,
-      ),
-    );
+    return MyoroInput(label: 'Text in the tooltip.', onChanged: (text) => viewModel.state.text = text);
   }
 }

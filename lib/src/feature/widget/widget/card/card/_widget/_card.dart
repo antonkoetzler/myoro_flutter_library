@@ -1,4 +1,4 @@
-part of '../myoro_card.dart';
+part of '../widget/myoro_card.dart';
 
 /// UI of the [MyoroCard].
 final class _Card extends StatelessWidget {

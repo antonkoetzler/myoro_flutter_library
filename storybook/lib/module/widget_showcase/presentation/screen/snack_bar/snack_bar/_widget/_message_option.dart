@@ -8,11 +8,6 @@ final class _MessageOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput(
-      configuration: MyoroInputConfiguration(
-        label: 'Simple text message.',
-        onChanged: (text) => viewModel.state.message = text,
-      ),
-    );
+    return MyoroInput(label: 'Simple text message.', onChanged: (text) => viewModel.state.message = text);
   }
 }

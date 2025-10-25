@@ -8,11 +8,10 @@ final class _WaitDurationOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroTooltipWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput.number(
-      configuration: MyoroInputConfiguration(
-        label: 'Wait duration in seconds.',
-        onChanged: (text) => viewModel.state.waitDuration = Duration(seconds: int.parse(text)),
-      ),
+    return MyoroNumberInput(
+      max: 10,
+      label: 'Wait duration in seconds.',
+      onChanged: (text) => viewModel.state.waitDuration = Duration(seconds: int.parse(text)),
     );
   }
 }

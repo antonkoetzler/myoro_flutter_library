@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storybook/storybook.dart';
 
@@ -6,56 +5,48 @@ import 'package:storybook/storybook.dart';
 final class MyoroIconTextButtonWidgetShowcaseScreenViewModel {
   /// State
   final _state = MyoroIconTextButtonWidgetShowcaseScreenState();
-  MyoroIconTextButtonWidgetShowcaseScreenState get state => _state;
 
   /// Dispose function.
   void dispose() {
     _state.dispose();
   }
 
-  /// [MyoroIconTextButtonConfiguration] of the [MyoroIconTextButton].
-  MyoroIconTextButtonConfiguration buildConfiguration(BuildContext context) {
-    final buttonViewModel = _state.buttonViewModel;
-    final buttonConfiguration = buttonViewModel.buildConfiguration(context);
-
-    return MyoroIconTextButtonConfiguration(
-      tooltipConfiguration: buttonConfiguration.tooltipConfiguration,
-      cursor: buttonConfiguration.cursor,
-      onTapDown: buttonConfiguration.onTapDown,
-      onTapUp: buttonConfiguration.onTapUp,
-      isLoading: buttonConfiguration.isLoading,
-      invert: _state.invert,
-      iconConfiguration: _state.icon != null ? MyoroIconConfiguration(icon: _state.icon!, size: _state.iconSize) : null,
-      textConfiguration:
-          _state.text.isNotEmpty
-              ? MyoroTextConfiguration(
-                text: _state.text,
-                maxLines: _state.maxLines,
-                overflow: _state.overflow,
-                alignment: _state.alignment,
-                style: _state.style,
-              )
-              : null,
-    );
+  /// [_state] getter.
+  MyoroIconTextButtonWidgetShowcaseScreenState get state {
+    return _state;
   }
 
   /// [MyoroIconTextButtonStyle] builder.
-  MyoroIconTextButtonStyle buildStyle(BuildContext context) {
+  MyoroIconTextButtonStyle get style {
     final buttonViewModel = _state.buttonViewModel;
-    final buildButtonStyle = buttonViewModel.buildStyle;
-    final buttonStyle = buildButtonStyle(context);
-    return const MyoroIconTextButtonStyle().copyWith(
-      backgroundIdleColor: buttonStyle.backgroundIdleColor,
-      backgroundHoverColor: buttonStyle.backgroundHoverColor,
-      backgroundTapColor: buttonStyle.backgroundTapColor,
-      contentIdleColor: buttonStyle.contentIdleColor,
-      contentHoverColor: buttonStyle.contentHoverColor,
-      contentTapColor: buttonStyle.contentTapColor,
-      borderWidth: buttonStyle.borderWidth,
-      borderRadius: buttonStyle.borderRadius,
-      borderIdleColor: buttonStyle.borderIdleColor,
-      borderHoverColor: buttonStyle.borderHoverColor,
-      borderTapColor: buttonStyle.borderTapColor,
+    final buttonStyle = buttonViewModel.style;
+    final backgroundIdleColor = buttonStyle.backgroundIdleColor;
+    final backgroundHoverColor = buttonStyle.backgroundHoverColor;
+    final backgroundTapColor = buttonStyle.backgroundTapColor;
+    final contentIdleColor = buttonStyle.contentIdleColor;
+    final contentHoverColor = buttonStyle.contentHoverColor;
+    final contentTapColor = buttonStyle.contentTapColor;
+    final borderWidth = buttonStyle.borderWidth;
+    final borderRadius = buttonStyle.borderRadius;
+    final borderIdleColor = buttonStyle.borderIdleColor;
+    final borderHoverColor = buttonStyle.borderHoverColor;
+    final borderTapColor = buttonStyle.borderTapColor;
+
+    return MyoroIconTextButtonStyle(
+      backgroundIdleColor: backgroundIdleColor,
+      backgroundHoverColor: backgroundHoverColor,
+      backgroundTapColor: backgroundTapColor,
+      contentIdleColor: contentIdleColor,
+      contentHoverColor: contentHoverColor,
+      contentTapColor: contentTapColor,
+      borderWidth: borderWidth,
+      borderRadius: borderRadius,
+      borderIdleColor: borderIdleColor,
+      borderHoverColor: borderHoverColor,
+      borderTapColor: borderTapColor,
+      contentPadding: _state.padding,
+      spacing: _state.spacing,
+      textStyle: _state.style,
     );
   }
 }

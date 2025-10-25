@@ -8,11 +8,6 @@ final class _TextOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput(
-      configuration: MyoroInputConfiguration(
-        label: 'Dialog message.',
-        onChanged: (text) => viewModel.state.text = text,
-      ),
-    );
+    return MyoroInput(label: 'Dialog message.', onChanged: (text) => viewModel.state.text = text);
   }
 }

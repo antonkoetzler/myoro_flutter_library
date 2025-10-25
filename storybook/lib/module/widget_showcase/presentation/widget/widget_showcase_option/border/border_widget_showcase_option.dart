@@ -37,11 +37,7 @@ final class BorderWidgetShowcaseOption extends StatelessWidget {
           request: _getTestBorders().toSet,
           selectedItem: selectedBorder,
           itemBuilder: (border) {
-            return MyoroMenuIconTextButtonItem(
-              configuration: MyoroIconTextButtonConfiguration(
-                textConfiguration: MyoroTextConfiguration(text: _getBorderName(border)),
-              ),
-            );
+            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: _getBorderName(border)));
           },
         ),
         enabled: enabled,

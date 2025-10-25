@@ -2,6 +2,9 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:storybook/storybook.dart';
 
+// Import all widget showcase screens
+import '../../presentation/screen/exports.dart';
+
 /// Enum that stores all widgets of MFL.
 enum MyoroWidgetListEnum {
   accordions('Accordions', {myoroAccordionsTitle}),
@@ -18,7 +21,13 @@ enum MyoroWidgetListEnum {
   forms('Forms', {myoroFormTitle}),
   graphs('Graphs', {myoroBarGraphTitle, myoroPieGraphTitle}),
   indexedStacks('Indexed Stacks', {myoroIndexedStackTitle}),
-  inputs('Inputs', {myoroDatePickerInputTitle, myoroInputTitle, myoroSearchInputTitle, myoroTimePickerInputTitle}),
+  inputs('Inputs', {
+    myoroCurrencyInputTitle,
+    myoroDatePickerInputTitle,
+    myoroInputTitle,
+    myoroSearchInputTitle,
+    myoroTimePickerInputTitle,
+  }),
   layoutBuilders('Layout Builders', {myoroLayoutBuilderTitle}),
   loaders('Loaders', {myoroCircularLoaderTitle}),
   menus('Menus', {myoroMenusTitle}),
@@ -94,6 +103,7 @@ enum MyoroWidgetListEnum {
   static const myoroIndexedStackTitle = 'MyoroIndexedStack';
 
   // Inputs
+  static const myoroCurrencyInputTitle = 'MyoroCurrencyInput';
   static const myoroDatePickerInputTitle = 'MyoroDatePickerInput';
   static const myoroInputTitle = 'MyoroInput';
   static const myoroSearchInputTitle = 'MyoroSearchInput';
@@ -193,6 +203,7 @@ enum MyoroWidgetListEnum {
       myoroIndexedStackTitle => const MyoroIndexedStackWidgetShowcaseScreen(),
 
       // Inputs
+      myoroCurrencyInputTitle => const MyoroCurrencyInputWidgetShowcaseScreen(),
       myoroDatePickerInputTitle => const MyoroDatePickerInputWidgetShowcaseScreen(),
       myoroInputTitle => const MyoroInputWidgetShowcaseScreen(),
       myoroSearchInputTitle => const MyoroSearchInputWidgetShowcaseScreen(),

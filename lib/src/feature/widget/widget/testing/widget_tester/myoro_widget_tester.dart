@@ -22,30 +22,20 @@ class MyoroWidgetTester extends StatelessWidget {
   @override
   Widget build(context) {
     if (child is MyoroScreen) {
-      return MyoroApp(
-        configuration: MyoroAppConfiguration(
-          themeMode: themeMode,
-          themeExtensionsBuilder: themeExtensionsBuilder,
-          home: child as MyoroScreen,
-        ),
-      );
+      return MyoroApp(themeMode: themeMode, themeExtensionsBuilder: themeExtensionsBuilder, home: child as MyoroScreen);
     } else if (child is MyoroAppBar) {
       return MyoroApp(
-        configuration: MyoroAppConfiguration(
-          themeMode: themeMode,
-          themeExtensionsBuilder: themeExtensionsBuilder,
-          home: MyoroScreen(
-            configuration: MyoroScreenConfiguration(appBar: child as MyoroAppBar, body: const SizedBox.shrink()),
-          ),
+        themeMode: themeMode,
+        themeExtensionsBuilder: themeExtensionsBuilder,
+        home: MyoroScreen(
+          configuration: MyoroScreenConfiguration(appBar: child as MyoroAppBar, body: const SizedBox.shrink()),
         ),
       );
     } else {
       return MyoroApp(
-        configuration: MyoroAppConfiguration(
-          themeMode: themeMode,
-          themeExtensionsBuilder: themeExtensionsBuilder,
-          home: MyoroScreen(configuration: MyoroScreenConfiguration(body: child)),
-        ),
+        themeMode: themeMode,
+        themeExtensionsBuilder: themeExtensionsBuilder,
+        home: MyoroScreen(configuration: MyoroScreenConfiguration(body: child)),
       );
     }
   }

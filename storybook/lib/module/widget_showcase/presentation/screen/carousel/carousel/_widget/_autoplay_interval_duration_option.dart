@@ -8,12 +8,10 @@ final class _AutoplayIntervalDurationOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
 
-    return MyoroInput.number(
+    return MyoroNumberInput(
       max: 10,
-      configuration: MyoroInputConfiguration(
-        placeholder: 'Duration in seconds',
-        onChanged: (text) => viewModel.state.autoplayIntervalDuration = Duration(seconds: int.parse(text)),
-      ),
+      placeholder: 'Duration in seconds',
+      onChanged: (text) => viewModel.state.autoplayIntervalDuration = Duration(seconds: int.parse(text)),
     );
   }
 }

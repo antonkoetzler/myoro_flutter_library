@@ -56,6 +56,8 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
     bool obscureTextButtonDisabledIconProvided = true,
     BoxConstraints? suffixIconConstraints,
     bool suffixIconConstraintsProvided = true,
+    BoxConstraints? prefixIconConstraints,
+    bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
   }) {
@@ -85,6 +87,9 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       suffixIconConstraints: suffixIconConstraintsProvided
           ? (suffixIconConstraints ?? self.suffixIconConstraints)
           : null,
+      prefixIconConstraints: prefixIconConstraintsProvided
+          ? (prefixIconConstraints ?? self.prefixIconConstraints)
+          : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
     );
   }
@@ -112,12 +117,13 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
+        other.prefixIconConstraints == self.prefixIconConstraints &&
         other.suffixButtonStyle == self.suffixButtonStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
+    return Object.hashAll([
       self.border,
       self.underlinedBorder,
       self.outlinedBorder,
@@ -137,8 +143,9 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
       self.suffixIconConstraints,
+      self.prefixIconConstraints,
       self.suffixButtonStyle,
-    );
+    ]);
   }
 
   @override
@@ -163,6 +170,7 @@ mixin _$MyoroInputThemeExtensionMixin on ThemeExtension<MyoroInputThemeExtension
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
+      '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
       ');';
 }

@@ -14,12 +14,7 @@ final class _WidgetListingAccordionSearchBar extends StatelessWidget {
 
     return Padding(
       padding: widgetListingAccordionSearchBarMargin,
-      child: MyoroInput(
-        configuration: MyoroInputConfiguration(
-          placeholder: 'i.e. MyoroDropdown',
-          onChanged: widgetListingAccordionSearchBarOnChanged,
-        ),
-      ),
+      child: MyoroInput(placeholder: 'i.e. MyoroDropdown', onChanged: widgetListingAccordionSearchBarOnChanged),
     );
   }
 }

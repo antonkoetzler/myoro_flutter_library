@@ -6,10 +6,56 @@ part 'myoro_input_state.dart';
 /// View model of [MyoroInput].
 class MyoroInputViewModel {
   /// Default constructor.
-  MyoroInputViewModel(MyoroInputConfiguration configuration, MyoroInputFormatter? formatter)
-    : _state = MyoroInputState(configuration, formatter) {
-    state.controller.addListener(_controllerListener);
-    state.configurationController.addListener(_configurationControllerListener);
+  MyoroInputViewModel(
+    MyoroInputFormatter? formatter,
+    MyoroInputStyleEnum inputStyle,
+    TextAlign textAlign,
+    String label,
+    String text,
+    String placeholder,
+    Widget? prefix,
+    Widget? suffix,
+    bool enabled,
+    bool readOnly,
+    bool autofocus,
+    bool showClearTextButton,
+    bool showObscureTextButton,
+    MyoroInputCheckboxOnChanged? checkboxOnChanged,
+    MyoroInputValidation? validation,
+    MyoroInputOnFieldSubmitted? onFieldSubmitted,
+    MyoroInputOnChanged? onChanged,
+    VoidCallback? onCleared,
+    Key? inputKey,
+    VoidCallback? onTap,
+    FocusNode? focusNode,
+    TextEditingController? inputController,
+    bool obscureText,
+  ) : _state = MyoroInputState(
+        formatter,
+        inputStyle,
+        textAlign,
+        label,
+        text,
+        placeholder,
+        prefix,
+        suffix,
+        enabled,
+        readOnly,
+        autofocus,
+        showClearTextButton,
+        showObscureTextButton,
+        checkboxOnChanged,
+        validation,
+        onFieldSubmitted,
+        onChanged,
+        onCleared,
+        inputKey,
+        onTap,
+        focusNode,
+        inputController,
+        obscureText,
+      ) {
+    state.inputController.addListener(_controllerListener);
   }
 
   /// State.
@@ -17,15 +63,13 @@ class MyoroInputViewModel {
 
   /// Dispose function.
   void dispose() {
-    if (state.configuration.controller != null) {
-      state.controller.removeListener(_controllerListener);
-    }
+    state.inputController.removeListener(_controllerListener);
     state.dispose();
   }
 
   /// [MyoroCheckboxConfiguration.onChanged] of [_Checkbox].
   void checkboxOnChanged(bool value) {
-    state.configuration.checkboxOnChanged!.call(value, state.controller.text);
+    state.checkboxOnChanged!.call(value, state.inputController.text);
     state.enabled = value;
   }
 
@@ -34,9 +78,10 @@ class MyoroInputViewModel {
   /// If [MyoroControllerState] is not null, it clears
   /// the text to it's [MyoroInputFormatter.initialText].
   void clearText() {
-    state.formatter == null ? state.controller.clear() : state.controller.text = state.formatter!.initialText;
-    state.configuration.onChanged?.call(state.controller.text);
-    state.configuration.onCleared?.call();
+    final inputController = state.inputController;
+    state.formatter == null ? inputController.clear() : inputController.text = state.formatter!.initialText;
+    state.onChanged?.call(inputController.text);
+    state.onCleared?.call();
   }
 
   /// Toggles the obscure text state of the [MyoroInput].
@@ -46,32 +91,8 @@ class MyoroInputViewModel {
 
   /// [MyoroInputState.controller]'s listener.
   void _controllerListener() {
-    if (state.configuration.showClearTextButton) {
-      state.showClearTextButton = state.controller.text.isNotEmpty;
-    }
-  }
-
-  /// [MyoroInputState.configurationController]'s listener.
-  void _configurationControllerListener() {
-    final configuration = _state.configuration;
-    final controller = _state.controller;
-
-    // Update the enabled state.
-    _state.enabled = configuration.enabled;
-
-    // Update the text if it is provided.
-    if (configuration.textProvided) controller.text = configuration.text;
-
-    // Update the obscure text state.
-    _state.obscureText = configuration.obscureText;
-
-    // Clean controller state.
-    if (configuration.controller != null) {
-      _state.controller.removeListener(_controllerListener);
-      _state.localController?.dispose();
-      _state.localController = null;
-      _state.controller.addListener(_controllerListener);
-      _controllerListener();
+    if (state.showClearTextButton) {
+      state.showClearTextButton = state.inputController.text.isNotEmpty;
     }
   }
 

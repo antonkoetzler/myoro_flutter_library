@@ -17,6 +17,7 @@ abstract class MyoroInputDropdownController<
     >
   >
 > {
+  /// Default constructor.
   MyoroInputDropdownController(this.viewModel);
 
   /// View model.
@@ -62,6 +63,16 @@ abstract class MyoroInputDropdownController<
   /// Getter of the dropdown's menu controller.
   MENU_CONTROLLER get menuController {
     return viewModel.state.dropdownController.menuController;
+  }
+
+  /// Getter of the dropdown's showing controller.
+  ValueNotifier<bool> get showingController {
+    return viewModel.state.dropdownController.showingController;
+  }
+
+  /// Getter of the dropdown's showing value.
+  bool get showing {
+    return viewModel.state.dropdownController.showing;
   }
 
   /// Getter of the dropdown's enabled controller.

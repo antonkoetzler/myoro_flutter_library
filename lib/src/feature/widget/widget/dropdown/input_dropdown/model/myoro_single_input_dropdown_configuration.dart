@@ -18,5 +18,9 @@ class MyoroSingleInputDropdownConfiguration<T>
     super.checkboxOnChanged,
     super.toggleDropdownOnInputTap,
     super.toggleDropdownOnFieldSubmitted,
+    this.numberInputConfiguration,
   });
+
+  /// [MyoroNumberInput] configuration.
+  final MyoroSingleInputDropdownNumberInputConfiguration? numberInputConfiguration;
 }

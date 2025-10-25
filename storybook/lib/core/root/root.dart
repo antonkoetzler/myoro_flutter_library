@@ -15,12 +15,10 @@ final class App extends StatelessWidget {
       valueListenable: themeModeController,
       builder: (_, themeMode, __) {
         return MyoroApp(
-          configuration: MyoroAppConfiguration(
-            title: 'MFL Storybook',
-            themeMode: themeMode,
-            themeExtensionsBuilder: createStorybookThemeExtensions,
-            router: router,
-          ),
+          title: 'MFL Storybook',
+          themeMode: themeMode,
+          themeExtensionsBuilder: createStorybookThemeExtensions,
+          router: router,
         );
       },
     );

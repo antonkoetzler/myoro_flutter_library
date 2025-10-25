@@ -21,15 +21,13 @@ final class _SelectionInput extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: enabledController,
       builder: (_, bool enabled, _) {
-        return MyoroInput.number(
+        return MyoroNumberInput(
           min: 0,
           max: 50,
-          configuration: MyoroInputConfiguration(
-            label: label ?? MyoroInputConfiguration.labelDefaultValue,
-            enabled: enabled,
-            text: value.toStringAsFixed(0),
-            onChanged: (String text) => onChanged(double.parse(text)),
-          ),
+          label: label ?? MyoroInput.labelDefaultValue,
+          enabled: enabled,
+          text: value.toStringAsFixed(0),
+          onChanged: (String text) => onChanged(double.parse(text)),
         );
       },
     );

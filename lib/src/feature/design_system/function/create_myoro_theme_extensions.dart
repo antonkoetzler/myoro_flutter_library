@@ -19,9 +19,9 @@ List<ThemeExtension> createMyoroThemeExtensions(bool isDarkMode, ColorScheme col
     ..._createFeedbackThemeExtensions(textTheme),
     ..._createGraphThemeExtensions(colorScheme, textTheme),
     ..._createIndexedStackThemeExtensions(colorScheme),
-    ..._createInputThemeExtensions(colorScheme, textTheme),
+    ..._createInputThemeExtensions(isDarkMode, colorScheme, textTheme, decorationThemeExtension),
     ..._createLoaderThemeExtensions(colorScheme),
-    ..._createMenuThemeExtensions(colorScheme, textTheme, decorationThemeExtension),
+    ..._createMenuThemeExtensions(isDarkMode, colorScheme, textTheme, decorationThemeExtension),
     ..._createModalThemeExtensions(colorScheme, textTheme),
     ..._createPickerThemeExtensions(colorScheme, textTheme),
     ..._createRadioThemeExtensions(colorScheme, textTheme),
@@ -98,8 +98,16 @@ List<ThemeExtension> _createIndexedStackThemeExtensions(ColorScheme colorScheme)
   return [MyoroIndexedStackThemeExtension.builder(colorScheme)];
 }
 
-List<ThemeExtension> _createInputThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {
-  return [MyoroInputThemeExtension.builder(colorScheme, textTheme)];
+List<ThemeExtension> _createInputThemeExtensions(
+  bool isDarkMode,
+  ColorScheme colorScheme,
+  TextTheme textTheme,
+  MyoroDecorationThemeExtension decorationThemeExtension,
+) {
+  return [
+    MyoroCurrencyInputThemeExtension.builder(isDarkMode, colorScheme, textTheme, decorationThemeExtension),
+    MyoroInputThemeExtension.builder(colorScheme, textTheme),
+  ];
 }
 
 List<ThemeExtension> _createLoaderThemeExtensions(ColorScheme colorScheme) {
@@ -107,11 +115,12 @@ List<ThemeExtension> _createLoaderThemeExtensions(ColorScheme colorScheme) {
 }
 
 List<ThemeExtension> _createMenuThemeExtensions(
+  bool isDarkMode,
   ColorScheme colorScheme,
   TextTheme textTheme,
   MyoroDecorationThemeExtension decorationThemeExtension,
 ) {
-  return [MyoroMenuThemeExtension.builder(colorScheme, textTheme, decorationThemeExtension)];
+  return [MyoroMenuThemeExtension.builder(isDarkMode, colorScheme, textTheme, decorationThemeExtension)];
 }
 
 List<ThemeExtension> _createModalThemeExtensions(ColorScheme colorScheme, TextTheme textTheme) {

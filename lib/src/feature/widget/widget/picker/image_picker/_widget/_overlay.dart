@@ -25,17 +25,15 @@ final class _Overlay extends StatelessWidget {
     final openPickerAndUpdateSelectedImage = viewModel.openPickerAndUpdateSelectedImage;
 
     return MyoroButton(
-      configuration: MyoroButtonConfiguration(
-        cursor: overlayCursor,
-        onTapUp: (_) => MyoroPlatformHelper.isMobile
-            ? _SelectionTypeModal.show(context, style, viewModel)
-            : openPickerAndUpdateSelectedImage(),
-      ),
       style: const MyoroButtonStyle().copyWith(
         backgroundIdleColor: overlayBackgroundIdleColor,
         backgroundHoverColor: overlayBackgroundHoverColor,
         backgroundTapColor: overlayBackgroundTapColor,
       ),
+      cursor: overlayCursor,
+      onTapUp: (_) => MyoroPlatformHelper.isMobile
+          ? _SelectionTypeModal.show(context, style, viewModel)
+          : openPickerAndUpdateSelectedImage(),
       builder: (_, _) => _selectedImageIsNotNull
           ? const SizedBox.shrink()
           : Icon(

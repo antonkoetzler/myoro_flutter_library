@@ -2,58 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part '_widget/_search_button.dart';
+part '_widget/_myoro_search_input_state.dart';
 
 /// Search input.
 class MyoroSearchInput<T> extends StatefulWidget {
-  const MyoroSearchInput({super.key, required this.configuration});
+  static const dropdownTypeDefaultValue = MyoroDropdownConfiguration.dropdownTypeDefaultValue;
+  static const labelDefaultValue = kMyoroEmptyString;
 
-  final MyoroSearchInputConfiguration<T> configuration;
+  const MyoroSearchInput({
+    super.key,
+    this.dropdownType = dropdownTypeDefaultValue,
+    required this.selectedItemBuilder,
+    this.label = labelDefaultValue,
+    required this.request,
+    this.onEndReachedRequest,
+    required this.itemBuilder,
+  });
+
+  /// Dropdown type.
+  final MyoroDropdownTypeEnum dropdownType;
+
+  /// Builder of the [String] displayed when a [T] item is selected.
+  final MyoroInputDropdownSelectedItemBuilder<T> selectedItemBuilder;
+
+  /// Label of the input.
+  final String label;
+
+  /// Request to be executed when the search input is triggered.
+  final MyoroSearchInputRequest<T> request;
+
+  /// Request that executes when the bottom of the menu is reached.
+  final MyoroSearchInputOnEndReachedRequest<T>? onEndReachedRequest;
+
+  /// Menu item builder.
+  final MyoroMenuItemBuilder<T> itemBuilder;
 
   @override
   State<MyoroSearchInput<T>> createState() => _MyoroSearchInputState<T>();
-}
-
-final class _MyoroSearchInputState<T> extends State<MyoroSearchInput<T>> {
-  MyoroSearchInputConfiguration<T> get _configuration {
-    return widget.configuration;
-  }
-
-  late final MyoroSingleInputDropdownController<T> _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    final inputController = TextEditingController();
-    _controller = MyoroSingleInputDropdownController<T>(
-      inputController: inputController,
-      configuration: MyoroSingleInputDropdownConfiguration(
-        label: _configuration.label,
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: () => _configuration.menuConfiguration.request(inputController.text),
-          onEndReachedRequest: _configuration.menuConfiguration.onEndReachedRequest,
-          itemBuilder: _configuration.menuConfiguration.itemBuilder,
-        ),
-        selectedItemBuilder: _configuration.selectedItemBuilder,
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.inputController.dispose();
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(context) {
-    return MyoroSingleInputDropdown<T>(
-      controller: _controller,
-      inputSuffix: _SearchButton<T>(
-        () => _controller
-          ..disableDropdown()
-          ..enableDropdown(),
-      ),
-    );
-  }
 }

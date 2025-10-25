@@ -9,10 +9,8 @@ final class _Widget extends StatelessWidget {
     final viewModel = context.read<MyoroSnackBarContainerWidgetShowcaseScreenViewModel>();
 
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        onTapUp: (_) => viewModel.showSnackBar(context),
-        textConfiguration: const MyoroTextConfiguration(text: 'Tap to show the snack bar!'),
-      ),
+      onTapUp: (_) => viewModel.showSnackBar(context),
+      textConfiguration: const MyoroTextConfiguration(text: 'Tap to show the snack bar!'),
     );
   }
 }

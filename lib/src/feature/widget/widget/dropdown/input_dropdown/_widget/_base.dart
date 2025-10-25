@@ -19,7 +19,7 @@ final class _Base<
   >
 >
     extends StatelessWidget {
-  const _Base(this.viewModel, this._style, this._inputSuffix);
+  const _Base(this.viewModel, this._style, this._prefix, this._inputSuffix, this._numberInputConfiguration);
 
   /// Configuration.
   final VIEW_MODEL viewModel;
@@ -27,8 +27,14 @@ final class _Base<
   /// Style.
   final MyoroInputDropdownStyle _style;
 
+  /// Prefix [Widget].
+  final Widget? _prefix;
+
   /// Suffix [Widget].
   final Widget? _inputSuffix;
+
+  /// Number input configuration.
+  final MyoroSingleInputDropdownNumberInputConfiguration? _numberInputConfiguration;
 
   @override
   Widget build(context) {
@@ -43,10 +49,9 @@ final class _Base<
     final onFieldSubmitted = configuration.toggleDropdownOnFieldSubmitted
         ? (_) => dropdownController.toggleDropdown()
         : null;
-    final inputOnTap = configuration.toggleDropdownOnInputTap ? dropdownController.toggleDropdown : null;
+    final toggleDropdownOnInputTap = configuration.toggleDropdownOnInputTap ? dropdownController.toggleDropdown : null;
     final enabledController = state.enabledController;
     final checkboxOnChanged = configuration.checkboxOnChanged;
-
     final inputThemeExtension = context.resolveThemeExtension<MyoroInputThemeExtension>();
     final outlinedBorder = inputThemeExtension.outlinedBorder;
     final menuActiveInputBorderRadius = outlinedBorder?.copyWith(
@@ -70,25 +75,39 @@ final class _Base<
 
               return ValueListenableBuilder(
                 valueListenable: enabledController,
-                builder: (_, enabled, _) {
-                  return MyoroInput(
-                    configuration: MyoroInputConfiguration(
-                      // This is to disable the [BoxBorder] lerp animation when we need to alter the bottom corners of this
-                      // [MyoroInput] when the dropdown is opened when menuTypeEnum is [MyoroDropdownTypeEnum.expanding].
-                      // inputKey: ValueKey(inputBorder),
-                      inputKey: state.dropdownController.configuration.targetKey,
-                      readOnly: inputOnTap != null,
-                      onTap: inputOnTap,
-                      controller: inputController,
-                      onFieldSubmitted: onFieldSubmitted,
-                      suffix: _inputSuffix,
-                      label: label,
-                      enabled: enabled,
-                      checkboxOnChanged: checkboxOnChanged,
-                    ),
-                    style: MyoroInputStyle(border: inputBorder),
-                  );
-                },
+                builder: (_, enabled, _) => _numberInputConfiguration != null
+                    ? MyoroNumberInput(
+                        style: MyoroCurrencyInputStyle(border: inputBorder),
+                        min: _numberInputConfiguration.min,
+                        max: _numberInputConfiguration.max,
+                        decimalPlaces: _numberInputConfiguration.decimalPlaces,
+                        inputKey: state.dropdownController.configuration.targetKey,
+                        readOnly: toggleDropdownOnInputTap != null,
+                        prefix: _prefix,
+                        onTap: toggleDropdownOnInputTap,
+                        inputController: inputController,
+                        onFieldSubmitted: onFieldSubmitted,
+                        suffix: _inputSuffix,
+                        label: label,
+                        enabled: enabled,
+                        checkboxOnChanged: checkboxOnChanged,
+                      )
+                    : MyoroInput(
+                        style: MyoroInputStyle(border: inputBorder),
+                        // This is to disable the [BoxBorder] lerp animation when we need to alter the bottom corners of this
+                        // [MyoroInput] when the dropdown is opened when menuTypeEnum is [MyoroDropdownTypeEnum.expanding].
+                        // inputKey: ValueKey(inputBorder),
+                        inputKey: state.dropdownController.configuration.targetKey,
+                        readOnly: toggleDropdownOnInputTap != null,
+                        prefix: _prefix,
+                        onTap: toggleDropdownOnInputTap,
+                        inputController: inputController,
+                        onFieldSubmitted: onFieldSubmitted,
+                        suffix: _inputSuffix,
+                        label: label,
+                        enabled: enabled,
+                        checkboxOnChanged: checkboxOnChanged,
+                      ),
               );
             },
           ),

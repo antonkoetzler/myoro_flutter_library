@@ -55,6 +55,8 @@ mixin _$MyoroInputStyleMixin {
     bool obscureTextButtonDisabledIconProvided = true,
     BoxConstraints? suffixIconConstraints,
     bool suffixIconConstraintsProvided = true,
+    BoxConstraints? prefixIconConstraints,
+    bool prefixIconConstraintsProvided = true,
     MyoroIconTextButtonStyle? suffixButtonStyle,
     bool suffixButtonStyleProvided = true,
   }) {
@@ -84,6 +86,9 @@ mixin _$MyoroInputStyleMixin {
       suffixIconConstraints: suffixIconConstraintsProvided
           ? (suffixIconConstraints ?? self.suffixIconConstraints)
           : null,
+      prefixIconConstraints: prefixIconConstraintsProvided
+          ? (prefixIconConstraints ?? self.prefixIconConstraints)
+          : null,
       suffixButtonStyle: suffixButtonStyleProvided ? (suffixButtonStyle ?? self.suffixButtonStyle) : null,
     );
   }
@@ -111,12 +116,13 @@ mixin _$MyoroInputStyleMixin {
         other.obscureTextButtonEnabledIcon == self.obscureTextButtonEnabledIcon &&
         other.obscureTextButtonDisabledIcon == self.obscureTextButtonDisabledIcon &&
         other.suffixIconConstraints == self.suffixIconConstraints &&
+        other.prefixIconConstraints == self.prefixIconConstraints &&
         other.suffixButtonStyle == self.suffixButtonStyle;
   }
 
   @override
   int get hashCode {
-    return Object.hash(
+    return Object.hashAll([
       self.border,
       self.underlinedBorder,
       self.outlinedBorder,
@@ -136,8 +142,9 @@ mixin _$MyoroInputStyleMixin {
       self.obscureTextButtonEnabledIcon,
       self.obscureTextButtonDisabledIcon,
       self.suffixIconConstraints,
+      self.prefixIconConstraints,
       self.suffixButtonStyle,
-    );
+    ]);
   }
 
   @override
@@ -162,6 +169,7 @@ mixin _$MyoroInputStyleMixin {
       '  obscureTextButtonEnabledIcon: ${self.obscureTextButtonEnabledIcon},\n'
       '  obscureTextButtonDisabledIcon: ${self.obscureTextButtonDisabledIcon},\n'
       '  suffixIconConstraints: ${self.suffixIconConstraints},\n'
+      '  prefixIconConstraints: ${self.prefixIconConstraints},\n'
       '  suffixButtonStyle: ${self.suffixButtonStyle},\n'
       ');';
 }

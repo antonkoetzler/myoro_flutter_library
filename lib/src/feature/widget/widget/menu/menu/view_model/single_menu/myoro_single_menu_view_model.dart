@@ -8,7 +8,7 @@ final class MyoroSingleMenuViewModel<T> extends MyoroMenuViewModel<T, MyoroSingl
   @override
   void toggleItem(T item) {
     final configuration = state.configuration;
-    if (item == state.selectedItems.first && !configuration.allowDeselection) return;
+    if (state.selectedItems.isNotEmpty && item == state.selectedItems.first && !configuration.allowDeselection) return;
     state.selectedItems = {if (selectedItem != item) item};
     configuration.onChanged?.call(selectedItem);
   }

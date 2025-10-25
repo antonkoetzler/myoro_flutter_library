@@ -7,6 +7,6 @@ final class _TitleOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
-    return MyoroInput(configuration: MyoroInputConfiguration(onChanged: (text) => viewModel.state.title = text));
+    return MyoroInput(onChanged: (text) => viewModel.state.title = text);
   }
 }

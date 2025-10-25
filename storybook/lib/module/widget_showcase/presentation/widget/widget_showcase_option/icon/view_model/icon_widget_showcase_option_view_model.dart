@@ -16,11 +16,7 @@ final class IconWidgetShowcaseOptionViewModel {
           request: kMyoroTestIcons.toSet,
           selectedItem: _configuration.selectedIcon,
           itemBuilder: (icon) {
-            return MyoroMenuIconTextButtonItem(
-              configuration: MyoroIconTextButtonConfiguration(
-                textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized),
-              ),
-            );
+            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: icon.name!.capitalized));
           },
         ),
         enabled: _configuration.enableOptionCheckboxOnChanged != null ? enabled : true,

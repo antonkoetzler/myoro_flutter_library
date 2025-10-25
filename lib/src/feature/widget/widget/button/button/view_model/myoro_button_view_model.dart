@@ -6,13 +6,20 @@ part 'myoro_button_state.dart';
 /// View model of [MyoroButton].
 class MyoroButtonViewModel {
   /// Creates a new instance of [MyoroButtonViewModel].
-  MyoroButtonViewModel([MyoroButtonConfiguration? configuration]) : _state = MyoroButtonState(configuration);
+  MyoroButtonViewModel(
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    MyoroButtonOnTapDown? onTapDown,
+    MyoroButtonOnTapUp? onTapUp,
+    bool isLoading,
+  ) : _state = MyoroButtonState(tooltipConfiguration, onTapDown, onTapUp, isLoading);
 
   /// State.
   final MyoroButtonState _state;
 
-  /// [_state] getter.
-  MyoroButtonState get state => _state;
+  /// Dispose function.
+  void dispose() {
+    _state.dispose();
+  }
 
   /// Callback executed when the [MyoroButton] is hovered over.
   void onEnter(_) {
@@ -27,7 +34,7 @@ class MyoroButtonViewModel {
   /// Callback executed when the [MyoroButton] is tapped.
   void onTapDown(TapDownDetails details) {
     _state.tapStatusController.value = MyoroTapStatusEnum.tap;
-    _state.configuration?.onTapDown?.call(details);
+    _state.onTapDown?.call(details);
   }
 
   /// Callback executed when the [MyoroButton] is tapped then released.
@@ -35,7 +42,7 @@ class MyoroButtonViewModel {
     _state.tapStatusController.value = MyoroPlatformHelper.isDesktop
         ? MyoroTapStatusEnum.hover
         : MyoroTapStatusEnum.idle;
-    _state.configuration?.onTapUp?.call(details);
+    _state.onTapUp?.call(details);
   }
 
   /// Callback executed when a [MyoroButton] is tapped then cancelled.
@@ -43,8 +50,8 @@ class MyoroButtonViewModel {
     _state.tapStatusController.value = MyoroTapStatusEnum.idle;
   }
 
-  /// Dispose function.
-  void dispose() {
-    _state.dispose();
+  /// [_state] getter.
+  MyoroButtonState get state {
+    return _state;
   }
 }

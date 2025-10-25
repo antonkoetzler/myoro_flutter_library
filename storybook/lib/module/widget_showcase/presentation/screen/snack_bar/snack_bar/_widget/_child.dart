@@ -7,10 +7,8 @@ final class _Child extends StatelessWidget {
   @override
   Widget build(_) {
     return MyoroIconTextButton(
-      configuration: MyoroIconTextButtonConfiguration(
-        iconConfiguration: MyoroIconConfiguration(icon: myoroFake<IconData>()),
-        textConfiguration: const MyoroTextConfiguration(text: 'Custom widget!'),
-      ),
+      iconConfiguration: MyoroIconConfiguration(icon: myoroFake<IconData>()),
+      textConfiguration: const MyoroTextConfiguration(text: 'Custom widget!'),
     );
   }
 }

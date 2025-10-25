@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:storybook/storybook.dart';
 
 /// View model of [MainScreen].

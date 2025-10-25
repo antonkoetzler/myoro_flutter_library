@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Input dropdown configuration.
+@immutable
 abstract class MyoroInputDropdownConfiguration<T, MENU_CONFIGURATION extends MyoroMenuConfiguration<T>>
     extends MyoroDropdownConfiguration<T, MENU_CONFIGURATION> {
   static const labelDefaultValue = kMyoroEmptyString;

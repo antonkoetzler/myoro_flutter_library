@@ -7,15 +7,24 @@ final class _Widget extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
-    final buildConfiguration = viewModel.buildConfiguration;
-    final buildStyle = viewModel.buildStyle;
+    final state = viewModel.state;
+    final onTapDown = state.onTapDownEnabled ? (_) => viewModel.onTapDown(context) : null;
+    final onTapUp = state.onTapUpEnabled ? (_) => viewModel.onTapUp(context) : null;
+    final tooltipConfiguration = state.tooltipEnabled ? MyoroTooltipConfiguration.fake() : null;
+    final cursor = state.cursor;
+    final style = viewModel.style;
+    final isLoading = state.isLoading;
 
     return ListenableBuilder(
       listenable: viewModel.state,
       builder: (_, _) {
         return MyoroButton(
-          configuration: buildConfiguration(context),
-          style: buildStyle(context),
+          style: style,
+          tooltipConfiguration: tooltipConfiguration,
+          cursor: cursor,
+          onTapDown: onTapDown,
+          onTapUp: onTapUp,
+          isLoading: isLoading,
           builder: (_, tapStatusEnum) => _ButtonContent(tapStatusEnum),
         );
       },

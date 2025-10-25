@@ -32,11 +32,7 @@ final class TextOverflowWidgetShowcaseOption extends StatelessWidget {
           request: TextOverflow.values.toSet,
           selectedItem: selectedItem,
           itemBuilder: (value) {
-            return MyoroMenuIconTextButtonItem(
-              configuration: MyoroIconTextButtonConfiguration(
-                textConfiguration: MyoroTextConfiguration(text: value.toString()),
-              ),
-            );
+            return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: value.toString()));
           },
         ),
       ),
