@@ -25,7 +25,7 @@ final class _Item<T> extends StatelessWidget {
             .copyWith(borderRadius: itemBorderRadius)
             .singleBackgroundColor(selectedItemColor),
         cursor: _menuItem.cursor,
-        tooltipConfiguration: _menuItem.tooltipConfiguration,
+        tooltipText: _menuItem.tooltipText,
         onTapDown: _menuItem.onTapDown,
         onTapUp: (details) => _menuItem.onTapUp?.call(details),
         isLoading: _menuItem.isLoading,
@@ -36,7 +36,7 @@ final class _Item<T> extends StatelessWidget {
             .copyWith(borderRadius: itemBorderRadius)
             .singleBackgroundColor(selectedItemColor),
         cursor: _menuItem.cursor,
-        tooltipConfiguration: _menuItem.tooltipConfiguration,
+        tooltipText: _menuItem.tooltipText,
         onTapDown: _menuItem.onTapDown,
         onTapUp: (details) => _menuItem.onTapUp?.call(details),
         isLoading: _menuItem.isLoading,

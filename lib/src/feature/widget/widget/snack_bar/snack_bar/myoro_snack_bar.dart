@@ -12,13 +12,29 @@ part '_widget/_message.dart';
 ///
 /// Two main "modes": Providing a [Widget] or a simple [String] message for the content.
 class MyoroSnackBar extends StatelessWidget {
-  /// Configuration.
-  final MyoroSnackBarConfiguration configuration;
+  const MyoroSnackBar({
+    super.key,
+    this.snackBarType = MyoroSnackBarTypeEnum.standard,
+    this.showCloseButton = true,
+    this.message = '',
+    this.child,
+    this.style = const MyoroSnackBarStyle(),
+  }) : assert((message.length > 0) ^ (child != null), '[MyoroSnackBar]: [message] (x)or [child] must be provided.');
 
-  /// Style.
+  /// Type of snack bar dialog.
+  final MyoroSnackBarTypeEnum snackBarType;
+
+  /// Whether or not to display [_CloseButton].
+  final bool showCloseButton;
+
+  /// [String] content mode of the snack bar.
+  final String message;
+
+  /// [Widget] content mode of the snack bar.
+  final Widget? child;
+
+  /// Style of the snack bar.
   final MyoroSnackBarStyle style;
-
-  const MyoroSnackBar({super.key, required this.configuration, this.style = const MyoroSnackBarStyle()});
 
   @override
   Widget build(context) {
@@ -29,17 +45,12 @@ class MyoroSnackBar extends StatelessWidget {
     final padding = style.padding ?? themeExtension.padding ?? EdgeInsets.zero;
     final borderRadius = style.borderRadius ?? themeExtension.borderRadius;
 
-    final String message = configuration.message;
-    final Widget? child = configuration.child;
-
     return Provider.value(
       value: style,
       child: Container(
         decoration: BoxDecoration(
           color: primaryColor,
-          border: borderWidth == null
-              ? null
-              : Border.all(width: borderWidth, color: configuration.snackBarType.getColor(context)),
+          border: borderWidth == null ? null : Border.all(width: borderWidth, color: snackBarType.getColor(context)),
           borderRadius: borderRadius,
         ),
         padding: padding,
@@ -47,9 +58,9 @@ class MyoroSnackBar extends StatelessWidget {
           spacing: spacing,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            if (message.isNotEmpty) Flexible(child: _Message(configuration.snackBarType, message)),
-            if (child != null) Flexible(child: child),
-            if (configuration.showCloseButton) _CloseButton(configuration.snackBarType),
+            if (message.isNotEmpty) Flexible(child: _Message(snackBarType, message)),
+            if (child != null) Flexible(child: child!),
+            if (showCloseButton) _CloseButton(snackBarType),
           ],
         ),
       ),

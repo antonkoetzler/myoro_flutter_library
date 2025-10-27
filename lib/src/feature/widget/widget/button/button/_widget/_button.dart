@@ -21,7 +21,7 @@ final class _Button extends StatelessWidget {
     final viewModel = context.read<MyoroButtonViewModel>();
     final state = viewModel.state;
     final onTapProvided = state.onTapProvided;
-    final tooltipConfiguration = state.tooltipConfiguration;
+    final tooltipText = state.tooltipText;
 
     final child = DecoratedBox(
       decoration: BoxDecoration(
@@ -49,6 +49,6 @@ final class _Button extends StatelessWidget {
       ),
     );
 
-    return tooltipConfiguration != null ? MyoroTooltip(configuration: tooltipConfiguration, child: child) : child;
+    return tooltipText != kMyoroEmptyString ? MyoroTooltip(text: tooltipText, child: child) : child;
   }
 }

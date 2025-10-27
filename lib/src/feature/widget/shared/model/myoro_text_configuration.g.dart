@@ -46,7 +46,13 @@ mixin _$MyoroTextConfigurationMixin {
 
   @override
   int get hashCode {
-    return Object.hash(self.text, self.maxLines, self.overflow, self.alignment, self.style);
+    return Object.hash(
+      self.text,
+      self.maxLines,
+      self.overflow,
+      self.alignment,
+      self.style,
+    );
   }
 
   @override

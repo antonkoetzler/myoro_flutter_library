@@ -11,11 +11,9 @@ final class _RunSpacingOption extends StatelessWidget {
     final runSpacing = state.runSpacing;
 
     return MyoroSlider(
-      configuration: MyoroSliderConfiguration(
-        label: 'Run spacing',
-        value: runSpacing,
-        onChanged: (value) => viewModel.state.runSpacing = value,
-      ),
+      label: 'Run spacing',
+      value: runSpacing,
+      onChanged: (value) => viewModel.state.runSpacing = value,
     );
   }
 }

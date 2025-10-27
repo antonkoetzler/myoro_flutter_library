@@ -26,9 +26,7 @@ final class _AppState extends State<_App> {
       builder: (_, themeMode, _) {
         return MyoroApp(
           themeMode: themeMode,
-          home: MyoroScreen(
-            configuration: MyoroScreenConfiguration(appBar: _AppBar(_themeModeController), body: const _Body()),
-          ),
+          home: MyoroScreen(appBar: _AppBar(_themeModeController), body: const _Body()),
         );
       },
     );

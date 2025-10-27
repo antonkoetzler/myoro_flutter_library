@@ -10,8 +10,7 @@ final class _Tabs extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroTabViewViewModel>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final tabs = configuration.tabs;
+    final tabs = state.tabs;
 
     return IntrinsicHeight(
       child: Row(

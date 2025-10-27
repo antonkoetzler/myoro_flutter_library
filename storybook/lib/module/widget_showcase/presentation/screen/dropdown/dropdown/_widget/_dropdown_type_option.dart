@@ -13,15 +13,11 @@ final class _DropdownTypeOption extends StatelessWidget {
     final dropdownTypeOptionSelectedItemBuilder = viewModel.dropdownTypeOptionSelectedItemBuilder;
 
     return MyoroSingleSelectionDropdown<MyoroDropdownTypeEnum>(
-      configuration: MyoroSingleSelectionDropdownConfiguration(
-        menuConfiguration: MyoroSingleMenuConfiguration(
-          request: MyoroDropdownTypeEnum.values.toSet,
-          itemBuilder: dropdownTypeOptionItemBuilder,
-          selectedItem: dropdownType,
-        ),
-        onChanged: (v) => state.dropdownType = v!,
-        selectedItemBuilder: dropdownTypeOptionSelectedItemBuilder,
-      ),
+      items: MyoroDropdownTypeEnum.values.toSet(),
+      itemBuilder: dropdownTypeOptionItemBuilder,
+      initiallySelectedItem: dropdownType,
+      onChanged: (v) => state.dropdownType = v!,
+      selectedItemBuilder: dropdownTypeOptionSelectedItemBuilder,
     );
   }
 }

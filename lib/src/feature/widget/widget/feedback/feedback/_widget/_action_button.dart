@@ -10,7 +10,7 @@ final class _ActionButton extends StatelessWidget {
   Widget build(context) {
     final style = _actionButtonConfiguration.style;
     final cursor = _actionButtonConfiguration.cursor;
-    final tooltipConfiguration = _actionButtonConfiguration.tooltipConfiguration;
+    final tooltipText = _actionButtonConfiguration.tooltipText;
     final onTapDown = _actionButtonConfiguration.onTapDown;
     final onTapUp = _actionButtonConfiguration.onTapUp;
     final isLoading = _actionButtonConfiguration.isLoading;
@@ -22,7 +22,7 @@ final class _ActionButton extends StatelessWidget {
       child: MyoroIconTextButton(
         style: style,
         cursor: cursor,
-        tooltipConfiguration: tooltipConfiguration,
+        tooltipText: tooltipText,
         onTapDown: onTapDown,
         onTapUp: onTapUp,
         isLoading: isLoading,

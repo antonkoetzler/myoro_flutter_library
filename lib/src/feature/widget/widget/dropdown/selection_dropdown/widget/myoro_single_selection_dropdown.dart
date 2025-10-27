@@ -18,6 +18,7 @@ class MyoroSingleSelectionDropdown<T> extends StatelessWidget {
     this.showingController,
     this.initiallySelectedItem,
     this.selectedItemController,
+    this.onChanged,
   }) : assert(
          !(initiallySelectedItem != null && selectedItemController != null),
          '[MyoroSingleSelectionDropdown<$T>]: [initiallySelectedItem] and [selectedItemController] cannot be provided together.',
@@ -44,6 +45,9 @@ class MyoroSingleSelectionDropdown<T> extends StatelessWidget {
   /// [ValueNotifier] of the selected item.
   final ValueNotifier<T?>? selectedItemController;
 
+  /// Callback executed when the selected item is changed.
+  final ValueChanged<T?>? onChanged;
+
   @override
   Widget build(_) {
     return _Base(
@@ -55,6 +59,7 @@ class MyoroSingleSelectionDropdown<T> extends StatelessWidget {
         showingController,
         initiallySelectedItem,
         selectedItemController,
+        onChanged,
       ),
     );
   }

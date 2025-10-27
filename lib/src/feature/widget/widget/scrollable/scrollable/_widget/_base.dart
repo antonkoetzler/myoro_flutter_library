@@ -2,9 +2,29 @@ part of '../bundle/myoro_scrollable_bundle.dart';
 
 /// Base widget that applies gradient overlays to any scrollable widget.
 final class _Base extends StatelessWidget {
-  const _Base({required this.configuration, required this.style, required this.child});
+  const _Base({
+    required this.scrollDirection,
+    required this.reverse,
+    required this.physics,
+    required this.controller,
+    required this.primary,
+    required this.shrinkWrap,
+    required this.gradientEnabled,
+    required this.gradientBegin,
+    required this.gradientEnd,
+    required this.style,
+    required this.child,
+  });
 
-  final MyoroScrollableConfigurationMixin configuration;
+  final Axis scrollDirection;
+  final bool reverse;
+  final ScrollPhysics? physics;
+  final ScrollController? controller;
+  final bool? primary;
+  final bool shrinkWrap;
+  final bool gradientEnabled;
+  final Alignment? gradientBegin;
+  final Alignment? gradientEnd;
   final MyoroScrollableStyle style;
   final Widget child;
 
@@ -37,9 +57,11 @@ final class _Base extends StatelessWidget {
 
           // Always apply gradient overlays (gradient is always enabled by default)
           return _GradientOverlay(
-            configuration: configuration,
+            scrollDirection: scrollDirection,
             style: effectiveStyle,
-            gradientConfig: configuration.gradientConfiguration ?? const MyoroScrollableGradientConfiguration(),
+            gradientEnabled: gradientEnabled,
+            gradientBegin: gradientBegin,
+            gradientEnd: gradientEnd,
             child: child,
           );
         },

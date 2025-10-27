@@ -12,6 +12,9 @@ class MyoroButton extends StatelessWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroButtonStyle();
 
+  /// Default value of [tooltipText].
+  static const tooltipTextDefaultValue = kMyoroEmptyString;
+
   /// Default value of [isLoading].
   static const isLoadingDefaultValue = false;
 
@@ -20,7 +23,7 @@ class MyoroButton extends StatelessWidget {
     super.key,
     this.style = styleDefaultValue,
     this.cursor,
-    this.tooltipConfiguration,
+    this.tooltipText = tooltipTextDefaultValue,
     this.onTapDown,
     this.onTapUp,
     this.isLoading = isLoadingDefaultValue,
@@ -34,7 +37,7 @@ class MyoroButton extends StatelessWidget {
   final MouseCursor? cursor;
 
   /// [MyoroTooltip] of the [MyoroButton].
-  final MyoroTooltipConfiguration? tooltipConfiguration;
+  final String tooltipText;
 
   /// Function executed when the [MyoroButton] is tapped.
   final MyoroButtonOnTapDown? onTapDown;
@@ -54,7 +57,7 @@ class MyoroButton extends StatelessWidget {
       providers: [
         InheritedProvider.value(value: style),
         InheritedProvider(
-          create: (_) => MyoroButtonViewModel(tooltipConfiguration, onTapDown, onTapUp, isLoading),
+          create: (_) => MyoroButtonViewModel(tooltipText, onTapDown, onTapUp, isLoading),
           dispose: (_, v) => v.dispose(),
         ),
       ],

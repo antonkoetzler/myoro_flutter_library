@@ -10,7 +10,7 @@ final class _Widget extends StatelessWidget {
     final state = viewModel.state;
     final onTapDown = state.onTapDownEnabled ? (_) => viewModel.onTapDown(context) : null;
     final onTapUp = state.onTapUpEnabled ? (_) => viewModel.onTapUp(context) : null;
-    final tooltipConfiguration = state.tooltipEnabled ? MyoroTooltipConfiguration.fake() : null;
+    final tooltipText = state.tooltipEnabled ? faker.lorem.word() : kMyoroEmptyString;
     final cursor = state.cursor;
     final style = viewModel.style;
     final isLoading = state.isLoading;
@@ -20,7 +20,7 @@ final class _Widget extends StatelessWidget {
       builder: (_, _) {
         return MyoroButton(
           style: style,
-          tooltipConfiguration: tooltipConfiguration,
+          tooltipText: tooltipText,
           cursor: cursor,
           onTapDown: onTapDown,
           onTapUp: onTapUp,

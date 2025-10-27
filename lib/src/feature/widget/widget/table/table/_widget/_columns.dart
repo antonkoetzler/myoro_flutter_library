@@ -24,8 +24,7 @@ final class _Columns<T> extends StatelessWidget {
   List<Widget> _buildColumns(BuildContext context) {
     final viewModel = context.read<MyoroTableViewModel<T>>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final columns = configuration.columns;
+    final columns = state.columns;
     final titleColumnKeys = state.titleColumnKeys;
 
     final List<Widget> widgets = [];

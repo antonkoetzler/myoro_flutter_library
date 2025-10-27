@@ -12,6 +12,9 @@ const kMyoroDebounceDuration = Duration(milliseconds: 200);
 /// Throttling.
 const kMyoroThrottleDuration = Duration(milliseconds: 500);
 
+/// Tooltip wait duration.
+const kMyoroTooltipWaitDuration = Duration(milliseconds: 200);
+
 /// Border width.
 const kMyoroBorderWidth = kMyoroMultiplier / 4;
 

@@ -1,4 +1,3 @@
-import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
@@ -12,6 +11,9 @@ final class MyoroFeedbackActionButtonConfiguration with _$MyoroFeedbackActionBut
   /// Default value of [style].
   static const styleDefaultValue = MyoroIconTextButton.styleDefaultValue;
 
+  /// Default value of [tooltipText].
+  static const tooltipTextDefaultValue = kMyoroEmptyString;
+
   /// Default value of [isLoading].
   static const isLoadingDefaultValue = MyoroButton.isLoadingDefaultValue;
 
@@ -21,7 +23,7 @@ final class MyoroFeedbackActionButtonConfiguration with _$MyoroFeedbackActionBut
   const MyoroFeedbackActionButtonConfiguration({
     this.style = styleDefaultValue,
     this.cursor,
-    this.tooltipConfiguration,
+    this.tooltipText = tooltipTextDefaultValue,
     this.onTapDown,
     this.onTapUp,
     this.isLoading = isLoadingDefaultValue,
@@ -30,25 +32,14 @@ final class MyoroFeedbackActionButtonConfiguration with _$MyoroFeedbackActionBut
     this.textConfiguration,
   });
 
-  MyoroFeedbackActionButtonConfiguration.fake()
-    : style = MyoroIconTextButtonStyle.fake(),
-      cursor = myoroFake<MouseCursor>(),
-      tooltipConfiguration = faker.randomGenerator.boolean() ? MyoroTooltipConfiguration.fake() : null,
-      onTapDown = faker.randomGenerator.boolean() ? ((_) {}) : null,
-      onTapUp = faker.randomGenerator.boolean() ? ((_) {}) : null,
-      isLoading = faker.randomGenerator.boolean(),
-      invert = faker.randomGenerator.boolean(),
-      iconConfiguration = MyoroIconConfiguration.fake(),
-      textConfiguration = MyoroTextConfiguration.fake();
-
   /// Style.
   final MyoroIconTextButtonStyle style;
 
   /// [MyoroButton.cursor]
   final MouseCursor? cursor;
 
-  /// [MyoroButton.tooltipConfiguration]
-  final MyoroTooltipConfiguration? tooltipConfiguration;
+  /// [MyoroButton.tooltipText]
+  final String tooltipText;
 
   /// [MyoroButton.onTapDown]
   final MyoroButtonOnTapDown? onTapDown;

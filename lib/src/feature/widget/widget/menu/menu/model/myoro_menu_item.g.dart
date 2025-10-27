@@ -20,8 +20,7 @@ mixin _$MyoroMenuButtonItemMixin {
     MyoroButtonBuilder? builder,
     MouseCursor? cursor,
     bool cursorProvided = true,
-    MyoroTooltipConfiguration? tooltipConfiguration,
-    bool tooltipConfigurationProvided = true,
+    String? tooltipText,
     MyoroButtonOnTapDown? onTapDown,
     bool onTapDownProvided = true,
     MyoroButtonOnTapUp? onTapUp,
@@ -31,7 +30,7 @@ mixin _$MyoroMenuButtonItemMixin {
     return MyoroMenuButtonItem(
       builder: builder ?? self.builder,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
-      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      tooltipText: tooltipText ?? self.tooltipText,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
       isLoading: isLoading ?? self.isLoading,
@@ -44,7 +43,7 @@ mixin _$MyoroMenuButtonItemMixin {
         other.runtimeType == runtimeType &&
         other.builder == self.builder &&
         other.cursor == self.cursor &&
-        other.tooltipConfiguration == self.tooltipConfiguration &&
+        other.tooltipText == self.tooltipText &&
         other.onTapDown == self.onTapDown &&
         other.onTapUp == self.onTapUp &&
         other.isLoading == self.isLoading;
@@ -55,7 +54,7 @@ mixin _$MyoroMenuButtonItemMixin {
     return Object.hash(
       self.builder,
       self.cursor,
-      self.tooltipConfiguration,
+      self.tooltipText,
       self.onTapDown,
       self.onTapUp,
       self.isLoading,
@@ -67,7 +66,7 @@ mixin _$MyoroMenuButtonItemMixin {
       'MyoroMenuButtonItem(\n'
       '  builder: ${self.builder},\n'
       '  cursor: ${self.cursor},\n'
-      '  tooltipConfiguration: ${self.tooltipConfiguration},\n'
+      '  tooltipText: ${self.tooltipText},\n'
       '  onTapDown: ${self.onTapDown},\n'
       '  onTapUp: ${self.onTapUp},\n'
       '  isLoading: ${self.isLoading},\n'
@@ -92,8 +91,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
     bool textConfigurationProvided = true,
     MouseCursor? cursor,
     bool cursorProvided = true,
-    MyoroTooltipConfiguration? tooltipConfiguration,
-    bool tooltipConfigurationProvided = true,
+    String? tooltipText,
     MyoroButtonOnTapDown? onTapDown,
     bool onTapDownProvided = true,
     MyoroButtonOnTapUp? onTapUp,
@@ -102,10 +100,14 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
   }) {
     return MyoroMenuIconTextButtonItem(
       invert: invert ?? self.invert,
-      iconConfiguration: iconConfigurationProvided ? (iconConfiguration ?? self.iconConfiguration) : null,
-      textConfiguration: textConfigurationProvided ? (textConfiguration ?? self.textConfiguration) : null,
+      iconConfiguration: iconConfigurationProvided
+          ? (iconConfiguration ?? self.iconConfiguration)
+          : null,
+      textConfiguration: textConfigurationProvided
+          ? (textConfiguration ?? self.textConfiguration)
+          : null,
       cursor: cursorProvided ? (cursor ?? self.cursor) : null,
-      tooltipConfiguration: tooltipConfigurationProvided ? (tooltipConfiguration ?? self.tooltipConfiguration) : null,
+      tooltipText: tooltipText ?? self.tooltipText,
       onTapDown: onTapDownProvided ? (onTapDown ?? self.onTapDown) : null,
       onTapUp: onTapUpProvided ? (onTapUp ?? self.onTapUp) : null,
       isLoading: isLoading ?? self.isLoading,
@@ -120,7 +122,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
         other.iconConfiguration == self.iconConfiguration &&
         other.textConfiguration == self.textConfiguration &&
         other.cursor == self.cursor &&
-        other.tooltipConfiguration == self.tooltipConfiguration &&
+        other.tooltipText == self.tooltipText &&
         other.onTapDown == self.onTapDown &&
         other.onTapUp == self.onTapUp &&
         other.isLoading == self.isLoading;
@@ -133,7 +135,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
       self.iconConfiguration,
       self.textConfiguration,
       self.cursor,
-      self.tooltipConfiguration,
+      self.tooltipText,
       self.onTapDown,
       self.onTapUp,
       self.isLoading,
@@ -147,7 +149,7 @@ mixin _$MyoroMenuIconTextButtonItemMixin {
       '  iconConfiguration: ${self.iconConfiguration},\n'
       '  textConfiguration: ${self.textConfiguration},\n'
       '  cursor: ${self.cursor},\n'
-      '  tooltipConfiguration: ${self.tooltipConfiguration},\n'
+      '  tooltipText: ${self.tooltipText},\n'
       '  onTapDown: ${self.onTapDown},\n'
       '  onTapUp: ${self.onTapUp},\n'
       '  isLoading: ${self.isLoading},\n'

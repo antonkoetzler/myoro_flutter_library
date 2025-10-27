@@ -6,12 +6,8 @@ part 'myoro_button_state.dart';
 /// View model of [MyoroButton].
 class MyoroButtonViewModel {
   /// Creates a new instance of [MyoroButtonViewModel].
-  MyoroButtonViewModel(
-    MyoroTooltipConfiguration? tooltipConfiguration,
-    MyoroButtonOnTapDown? onTapDown,
-    MyoroButtonOnTapUp? onTapUp,
-    bool isLoading,
-  ) : _state = MyoroButtonState(tooltipConfiguration, onTapDown, onTapUp, isLoading);
+  MyoroButtonViewModel(String tooltipText, MyoroButtonOnTapDown? onTapDown, MyoroButtonOnTapUp? onTapUp, bool isLoading)
+    : _state = MyoroButtonState(tooltipText, onTapDown, onTapUp, isLoading);
 
   /// State.
   final MyoroButtonState _state;

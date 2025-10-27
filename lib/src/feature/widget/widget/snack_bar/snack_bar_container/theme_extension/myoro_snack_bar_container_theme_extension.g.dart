@@ -13,8 +13,10 @@ part of 'myoro_snack_bar_container_theme_extension.dart';
 /// ```dart
 /// class MyoroSnackBarContainerThemeExtension with _$MyoroSnackBarContainerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroSnackBarContainerThemeExtensionMixin on ThemeExtension<MyoroSnackBarContainerThemeExtension> {
-  MyoroSnackBarContainerThemeExtension get self => this as MyoroSnackBarContainerThemeExtension;
+mixin _$MyoroSnackBarContainerThemeExtensionMixin
+    on ThemeExtension<MyoroSnackBarContainerThemeExtension> {
+  MyoroSnackBarContainerThemeExtension get self =>
+      this as MyoroSnackBarContainerThemeExtension;
 
   @override
   MyoroSnackBarContainerThemeExtension copyWith({
@@ -32,12 +34,16 @@ mixin _$MyoroSnackBarContainerThemeExtensionMixin on ThemeExtension<MyoroSnackBa
     bool dismissDirectionProvided = true,
   }) {
     return MyoroSnackBarContainerThemeExtension(
-      primaryColor: primaryColorProvided ? (primaryColor ?? self.primaryColor) : null,
+      primaryColor: primaryColorProvided
+          ? (primaryColor ?? self.primaryColor)
+          : null,
       behavior: behaviorProvided ? (behavior ?? self.behavior) : null,
       margin: marginProvided ? (margin ?? self.margin) : null,
       padding: paddingProvided ? (padding ?? self.padding) : null,
       elevation: elevationProvided ? (elevation ?? self.elevation) : null,
-      dismissDirection: dismissDirectionProvided ? (dismissDirection ?? self.dismissDirection) : null,
+      dismissDirection: dismissDirectionProvided
+          ? (dismissDirection ?? self.dismissDirection)
+          : null,
     );
   }
 

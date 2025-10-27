@@ -42,8 +42,12 @@ mixin _$MyoroImagePickerStyleMixin {
   }) {
     return MyoroImagePickerStyle(
       size: sizeProvided ? (size ?? self.size) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
-      overlayCursor: overlayCursorProvided ? (overlayCursor ?? self.overlayCursor) : null,
+      borderRadius: borderRadiusProvided
+          ? (borderRadius ?? self.borderRadius)
+          : null,
+      overlayCursor: overlayCursorProvided
+          ? (overlayCursor ?? self.overlayCursor)
+          : null,
       overlayBackgroundIdleColor: overlayBackgroundIdleColorProvided
           ? (overlayBackgroundIdleColor ?? self.overlayBackgroundIdleColor)
           : null,
@@ -53,20 +57,27 @@ mixin _$MyoroImagePickerStyleMixin {
       overlayBackgroundTapColor: overlayBackgroundTapColorProvided
           ? (overlayBackgroundTapColor ?? self.overlayBackgroundTapColor)
           : null,
-      overlayUnselectedImageStateIconConfiguration: overlayUnselectedImageStateIconConfigurationProvided
-          ? (overlayUnselectedImageStateIconConfiguration ?? self.overlayUnselectedImageStateIconConfiguration)
+      overlayUnselectedImageStateIconConfiguration:
+          overlayUnselectedImageStateIconConfigurationProvided
+          ? (overlayUnselectedImageStateIconConfiguration ??
+                self.overlayUnselectedImageStateIconConfiguration)
           : null,
       selectionTypeModalConstraints: selectionTypeModalConstraintsProvided
-          ? (selectionTypeModalConstraints ?? self.selectionTypeModalConstraints)
+          ? (selectionTypeModalConstraints ??
+                self.selectionTypeModalConstraints)
           : null,
       selectionTypeModalSpacing: selectionTypeModalSpacingProvided
           ? (selectionTypeModalSpacing ?? self.selectionTypeModalSpacing)
           : null,
-      selectionTypeModalButtonCameraIcon: selectionTypeModalButtonCameraIconProvided
-          ? (selectionTypeModalButtonCameraIcon ?? self.selectionTypeModalButtonCameraIcon)
+      selectionTypeModalButtonCameraIcon:
+          selectionTypeModalButtonCameraIconProvided
+          ? (selectionTypeModalButtonCameraIcon ??
+                self.selectionTypeModalButtonCameraIcon)
           : null,
-      selectionTypeModalButtonGalleryIcon: selectionTypeModalButtonGalleryIconProvided
-          ? (selectionTypeModalButtonGalleryIcon ?? self.selectionTypeModalButtonGalleryIcon)
+      selectionTypeModalButtonGalleryIcon:
+          selectionTypeModalButtonGalleryIconProvided
+          ? (selectionTypeModalButtonGalleryIcon ??
+                self.selectionTypeModalButtonGalleryIcon)
           : null,
     );
   }
@@ -81,11 +92,15 @@ mixin _$MyoroImagePickerStyleMixin {
         other.overlayBackgroundIdleColor == self.overlayBackgroundIdleColor &&
         other.overlayBackgroundHoverColor == self.overlayBackgroundHoverColor &&
         other.overlayBackgroundTapColor == self.overlayBackgroundTapColor &&
-        other.overlayUnselectedImageStateIconConfiguration == self.overlayUnselectedImageStateIconConfiguration &&
-        other.selectionTypeModalConstraints == self.selectionTypeModalConstraints &&
+        other.overlayUnselectedImageStateIconConfiguration ==
+            self.overlayUnselectedImageStateIconConfiguration &&
+        other.selectionTypeModalConstraints ==
+            self.selectionTypeModalConstraints &&
         other.selectionTypeModalSpacing == self.selectionTypeModalSpacing &&
-        other.selectionTypeModalButtonCameraIcon == self.selectionTypeModalButtonCameraIcon &&
-        other.selectionTypeModalButtonGalleryIcon == self.selectionTypeModalButtonGalleryIcon;
+        other.selectionTypeModalButtonCameraIcon ==
+            self.selectionTypeModalButtonCameraIcon &&
+        other.selectionTypeModalButtonGalleryIcon ==
+            self.selectionTypeModalButtonGalleryIcon;
   }
 
   @override

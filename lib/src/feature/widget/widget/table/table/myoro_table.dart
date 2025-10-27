@@ -17,17 +17,29 @@ part '_widget/_rows_section.dart';
 /// Fairly simple implementation as tables are usually very business logic specific.
 /// Thus, extensibility is more important than being feature rich in this senario.
 class MyoroTable<T> extends StatefulWidget {
-  const MyoroTable({super.key, this.controller, this.configuration, this.style = const MyoroTableStyle()})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroTable<$T>]: [controller] (x)or [configuration] must be provided.',
-      );
+  MyoroTable({
+    super.key,
+    this.controller,
+    required this.request,
+    required this.columns,
+    required this.rowBuilder,
+    this.style = const MyoroTableStyle(),
+  }) : assert(
+         controller != null || columns.isNotEmpty,
+         '[MyoroTable<$T>]: [controller] or [columns] must be provided.',
+       );
 
   /// Controller of the [MyoroTable].
   final MyoroTableController<T>? controller;
 
-  /// Configuration.
-  final MyoroTableConfiguration<T>? configuration;
+  /// Request of the items of the [MyoroTable].
+  final MyoroTableConfigurationRequest<T> request;
+
+  /// Columns of the [MyoroTable].
+  final List<MyoroTableColumn> columns;
+
+  /// Builder of the cells of the row.
+  final MyoroTableConfigurationRowBuilder<T> rowBuilder;
 
   /// Style.
   final MyoroTableStyle style;
@@ -44,7 +56,12 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   MyoroTableViewModel<T>? _localViewModel;
   MyoroTableViewModel<T> get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return widget.controller?.viewModel ?? (_localViewModel ??= MyoroTableViewModel(widget.configuration!));
+    return widget.controller?.viewModel ??
+        (_localViewModel ??= MyoroTableViewModel(
+          request: widget.request,
+          columns: widget.columns,
+          rowBuilder: widget.rowBuilder,
+        ));
   }
 
   @override
@@ -56,7 +73,9 @@ final class _MyoroTableState<T> extends State<MyoroTable<T>> {
   @override
   void didUpdateWidget(covariant MyoroTable<T> oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _viewModel.state.configuration = widget.configuration!;
+    _viewModel.state.request = widget.request;
+    _viewModel.state.columns = widget.columns;
+    _viewModel.state.rowBuilder = widget.rowBuilder;
   }
 
   @override

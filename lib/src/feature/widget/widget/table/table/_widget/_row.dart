@@ -16,8 +16,7 @@ final class _Row<T> extends StatelessWidget {
 
     final viewModel = context.read<MyoroTableViewModel<T>>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final rowBuilder = configuration.rowBuilder;
+    final rowBuilder = state.rowBuilder;
 
     final row = rowBuilder(_item);
     final onTapDown = row.onTapDown;

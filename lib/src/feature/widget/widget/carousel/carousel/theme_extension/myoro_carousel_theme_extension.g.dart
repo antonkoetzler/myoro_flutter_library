@@ -13,7 +13,8 @@ part of 'myoro_carousel_theme_extension.dart';
 /// ```dart
 /// class MyoroCarouselThemeExtension with _$MyoroCarouselThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCarouselThemeExtensionMixin on ThemeExtension<MyoroCarouselThemeExtension> {
+mixin _$MyoroCarouselThemeExtensionMixin
+    on ThemeExtension<MyoroCarouselThemeExtension> {
   MyoroCarouselThemeExtension get self => this as MyoroCarouselThemeExtension;
 
   @override
@@ -27,7 +28,9 @@ mixin _$MyoroCarouselThemeExtensionMixin on ThemeExtension<MyoroCarouselThemeExt
       previousItemButtonIcon: previousItemButtonIconProvided
           ? (previousItemButtonIcon ?? self.previousItemButtonIcon)
           : null,
-      nextItemButtonIcon: nextItemButtonIconProvided ? (nextItemButtonIcon ?? self.nextItemButtonIcon) : null,
+      nextItemButtonIcon: nextItemButtonIconProvided
+          ? (nextItemButtonIcon ?? self.nextItemButtonIcon)
+          : null,
     );
   }
 

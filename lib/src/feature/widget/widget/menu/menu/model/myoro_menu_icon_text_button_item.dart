@@ -12,7 +12,7 @@ class MyoroMenuIconTextButtonItem extends MyoroMenuItem with _$MyoroMenuIconText
   /// Default constructor.
   const MyoroMenuIconTextButtonItem({
     super.cursor,
-    super.tooltipConfiguration,
+    super.tooltipText,
     super.onTapDown,
     super.onTapUp,
     super.isLoading = isLoadingDefaultValue,

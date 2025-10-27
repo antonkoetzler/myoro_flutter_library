@@ -13,17 +13,25 @@ part of 'myoro_tooltip_theme_extension.dart';
 /// ```dart
 /// class MyoroTooltipThemeExtension with _$MyoroTooltipThemeExtensionMixin {}
 /// ```
-mixin _$MyoroTooltipThemeExtensionMixin on ThemeExtension<MyoroTooltipThemeExtension> {
+mixin _$MyoroTooltipThemeExtensionMixin
+    on ThemeExtension<MyoroTooltipThemeExtension> {
   MyoroTooltipThemeExtension get self => this as MyoroTooltipThemeExtension;
 
   @override
-  MyoroTooltipThemeExtension copyWith({EdgeInsets? margin, bool marginProvided = true}) {
-    return MyoroTooltipThemeExtension(margin: marginProvided ? (margin ?? self.margin) : null);
+  MyoroTooltipThemeExtension copyWith({
+    EdgeInsets? margin,
+    bool marginProvided = true,
+  }) {
+    return MyoroTooltipThemeExtension(
+      margin: marginProvided ? (margin ?? self.margin) : null,
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return other is MyoroTooltipThemeExtension && other.runtimeType == runtimeType && other.margin == self.margin;
+    return other is MyoroTooltipThemeExtension &&
+        other.runtimeType == runtimeType &&
+        other.margin == self.margin;
   }
 
   @override

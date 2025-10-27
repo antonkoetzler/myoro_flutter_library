@@ -10,17 +10,22 @@ part '_widget/_tabs.dart';
 ///
 /// Top bar with the list of tabs and below, the content of the selected tab.
 final class MyoroTabView extends StatefulWidget {
-  const MyoroTabView({super.key, this.controller, this.configuration, this.style = const MyoroTabViewStyle()})
-    : assert(
-        (controller != null) ^ (configuration != null),
-        '[MyoroTabView]: [controller] (x)or [configuration] must be provided.',
-      );
+  MyoroTabView({
+    super.key,
+    this.controller,
+    this.initiallySelectedTabIndex = 0,
+    this.tabs = const [],
+    this.style = const MyoroTabViewStyle(),
+  }) : assert(controller != null || tabs.isNotEmpty, '[MyoroTabView]: [controller] or [tabs] must be provided.');
 
   /// Controller.
   final MyoroTabViewController? controller;
 
-  /// Configuration.
-  final MyoroTabViewConfiguration? configuration;
+  /// Initially selected tab index.
+  final int initiallySelectedTabIndex;
+
+  /// Tabs of the [MyoroTabView].
+  final List<MyoroTabViewTab> tabs;
 
   /// Style.
   final MyoroTabViewStyle style;
@@ -37,7 +42,11 @@ final class _MyoroTabViewState extends State<MyoroTabView> {
   MyoroTabViewViewModel? _localViewModel;
   MyoroTabViewViewModel get _viewModel {
     // ignore: invalid_use_of_protected_member
-    return widget.controller?.viewModel ?? (_localViewModel ??= MyoroTabViewViewModel(widget.configuration!));
+    return widget.controller?.viewModel ??
+        (_localViewModel ??= MyoroTabViewViewModel(
+          initiallySelectedTabIndex: widget.initiallySelectedTabIndex,
+          tabs: widget.tabs,
+        ));
   }
 
   @override

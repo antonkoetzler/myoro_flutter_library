@@ -5,7 +5,11 @@ part 'myoro_table_state.dart';
 
 /// View model of [MyoroTable].
 final class MyoroTableViewModel<T> {
-  MyoroTableViewModel(MyoroTableConfiguration<T> configuration) : _state = MyoroTableState(configuration);
+  MyoroTableViewModel({
+    required MyoroTableConfigurationRequest<T> request,
+    required List<MyoroTableColumn> columns,
+    required MyoroTableConfigurationRowBuilder<T> rowBuilder,
+  }) : _state = MyoroTableState(request: request, columns: columns, rowBuilder: rowBuilder);
 
   /// State.
   final MyoroTableState<T> _state;

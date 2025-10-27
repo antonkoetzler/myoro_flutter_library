@@ -13,7 +13,8 @@ part of 'myoro_bar_graph_theme_extension.dart';
 /// ```dart
 /// class MyoroBarGraphThemeExtension with _$MyoroBarGraphThemeExtensionMixin {}
 /// ```
-mixin _$MyoroBarGraphThemeExtensionMixin on ThemeExtension<MyoroBarGraphThemeExtension> {
+mixin _$MyoroBarGraphThemeExtensionMixin
+    on ThemeExtension<MyoroBarGraphThemeExtension> {
   MyoroBarGraphThemeExtension get self => this as MyoroBarGraphThemeExtension;
 
   @override
@@ -36,14 +37,22 @@ mixin _$MyoroBarGraphThemeExtensionMixin on ThemeExtension<MyoroBarGraphThemeExt
     return MyoroBarGraphThemeExtension(
       border: borderProvided ? (border ?? self.border) : null,
       barColor: barColorProvided ? (barColor ?? self.barColor) : null,
-      barBorderRadius: barBorderRadiusProvided ? (barBorderRadius ?? self.barBorderRadius) : null,
-      sideTitleTextStyle: sideTitleTextStyleProvided ? (sideTitleTextStyle ?? self.sideTitleTextStyle) : null,
-      sideTitleInterval: sideTitleIntervalProvided ? (sideTitleInterval ?? self.sideTitleInterval) : null,
+      barBorderRadius: barBorderRadiusProvided
+          ? (barBorderRadius ?? self.barBorderRadius)
+          : null,
+      sideTitleTextStyle: sideTitleTextStyleProvided
+          ? (sideTitleTextStyle ?? self.sideTitleTextStyle)
+          : null,
+      sideTitleInterval: sideTitleIntervalProvided
+          ? (sideTitleInterval ?? self.sideTitleInterval)
+          : null,
       verticalSideTitleReversedSize: verticalSideTitleReversedSizeProvided
-          ? (verticalSideTitleReversedSize ?? self.verticalSideTitleReversedSize)
+          ? (verticalSideTitleReversedSize ??
+                self.verticalSideTitleReversedSize)
           : null,
       horizontalSideTitleReversedSize: horizontalSideTitleReversedSizeProvided
-          ? (horizontalSideTitleReversedSize ?? self.horizontalSideTitleReversedSize)
+          ? (horizontalSideTitleReversedSize ??
+                self.horizontalSideTitleReversedSize)
           : null,
     );
   }
@@ -57,8 +66,10 @@ mixin _$MyoroBarGraphThemeExtensionMixin on ThemeExtension<MyoroBarGraphThemeExt
         other.barBorderRadius == self.barBorderRadius &&
         other.sideTitleTextStyle == self.sideTitleTextStyle &&
         other.sideTitleInterval == self.sideTitleInterval &&
-        other.verticalSideTitleReversedSize == self.verticalSideTitleReversedSize &&
-        other.horizontalSideTitleReversedSize == self.horizontalSideTitleReversedSize;
+        other.verticalSideTitleReversedSize ==
+            self.verticalSideTitleReversedSize &&
+        other.horizontalSideTitleReversedSize ==
+            self.horizontalSideTitleReversedSize;
   }
 
   @override

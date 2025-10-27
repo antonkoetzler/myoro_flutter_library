@@ -36,7 +36,9 @@ mixin _$MyoroResizeDividerStyleMixin {
       resizeButtonBorderRadius: resizeButtonBorderRadiusProvided
           ? (resizeButtonBorderRadius ?? self.resizeButtonBorderRadius)
           : null,
-      resizeButtonColor: resizeButtonColorProvided ? (resizeButtonColor ?? self.resizeButtonColor) : null,
+      resizeButtonColor: resizeButtonColorProvided
+          ? (resizeButtonColor ?? self.resizeButtonColor)
+          : null,
       resizeButtonShortValue: resizeButtonShortValueProvided
           ? (resizeButtonShortValue ?? self.resizeButtonShortValue)
           : null,

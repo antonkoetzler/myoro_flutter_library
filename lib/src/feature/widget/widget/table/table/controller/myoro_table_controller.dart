@@ -3,8 +3,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroTable].
 class MyoroTableController<T> {
-  MyoroTableController({required MyoroTableConfiguration<T> configuration, MyoroTableViewModel<T>? viewModel})
-    : _viewModel = viewModel ?? MyoroTableViewModel(configuration);
+  MyoroTableController({
+    required MyoroTableConfigurationRequest<T> request,
+    required List<MyoroTableColumn> columns,
+    required MyoroTableConfigurationRowBuilder<T> rowBuilder,
+    MyoroTableViewModel<T>? viewModel,
+  }) : _viewModel = viewModel ?? MyoroTableViewModel(request: request, columns: columns, rowBuilder: rowBuilder);
 
   /// View model.
   final MyoroTableViewModel<T> _viewModel;

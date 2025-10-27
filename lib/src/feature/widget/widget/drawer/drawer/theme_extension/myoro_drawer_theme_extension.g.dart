@@ -13,7 +13,8 @@ part of 'myoro_drawer_theme_extension.dart';
 /// ```dart
 /// class MyoroDrawerThemeExtension with _$MyoroDrawerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtension> {
+mixin _$MyoroDrawerThemeExtensionMixin
+    on ThemeExtension<MyoroDrawerThemeExtension> {
   MyoroDrawerThemeExtension get self => this as MyoroDrawerThemeExtension;
 
   @override
@@ -34,17 +35,27 @@ mixin _$MyoroDrawerThemeExtensionMixin on ThemeExtension<MyoroDrawerThemeExtensi
     bool closeButtonIconProvided = true,
   }) {
     return MyoroDrawerThemeExtension(
-      drawerPadding: drawerPaddingProvided ? (drawerPadding ?? self.drawerPadding) : null,
-      drawerContentPadding: drawerContentPaddingProvided ? (drawerContentPadding ?? self.drawerContentPadding) : null,
-      drawerShape: drawerShapeProvided ? (drawerShape ?? self.drawerShape) : null,
+      drawerPadding: drawerPaddingProvided
+          ? (drawerPadding ?? self.drawerPadding)
+          : null,
+      drawerContentPadding: drawerContentPaddingProvided
+          ? (drawerContentPadding ?? self.drawerContentPadding)
+          : null,
+      drawerShape: drawerShapeProvided
+          ? (drawerShape ?? self.drawerShape)
+          : null,
       titleContentDividerPadding: titleContentDividerPaddingProvided
           ? (titleContentDividerPadding ?? self.titleContentDividerPadding)
           : null,
-      titleTextStyle: titleTextStyleProvided ? (titleTextStyle ?? self.titleTextStyle) : null,
+      titleTextStyle: titleTextStyleProvided
+          ? (titleTextStyle ?? self.titleTextStyle)
+          : null,
       closeButtonContentPadding: closeButtonContentPaddingProvided
           ? (closeButtonContentPadding ?? self.closeButtonContentPadding)
           : null,
-      closeButtonIcon: closeButtonIconProvided ? (closeButtonIcon ?? self.closeButtonIcon) : null,
+      closeButtonIcon: closeButtonIconProvided
+          ? (closeButtonIcon ?? self.closeButtonIcon)
+          : null,
     );
   }
 

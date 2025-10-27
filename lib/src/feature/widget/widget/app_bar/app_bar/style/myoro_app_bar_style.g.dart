@@ -23,8 +23,12 @@ mixin _$MyoroAppBarStyleMixin {
     bool contentPaddingProvided = true,
   }) {
     return MyoroAppBarStyle(
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
-      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      backgroundColor: backgroundColorProvided
+          ? (backgroundColor ?? self.backgroundColor)
+          : null,
+      contentPadding: contentPaddingProvided
+          ? (contentPadding ?? self.contentPadding)
+          : null,
     );
   }
 

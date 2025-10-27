@@ -6,17 +6,22 @@ final class _ScrollableHelpers {
 
   /// Creates a GridView with common scrollable properties applied.
   static GridView gridView({
-    required MyoroScrollableConfigurationMixin configuration,
+    required Axis scrollDirection,
+    required bool reverse,
+    required ScrollPhysics? physics,
+    required ScrollController? controller,
+    required bool? primary,
+    required bool shrinkWrap,
     required SliverGridDelegate gridDelegate,
     required List<Widget> children,
   }) {
     return GridView(
-      scrollDirection: configuration.scrollDirection,
-      reverse: configuration.reverse,
-      controller: configuration.controller,
-      primary: configuration.primary,
-      physics: configuration.physics,
-      shrinkWrap: configuration.shrinkWrap,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      controller: controller,
+      primary: primary,
+      physics: physics,
+      shrinkWrap: shrinkWrap,
       gridDelegate: gridDelegate,
       children: children,
     );
@@ -24,18 +29,23 @@ final class _ScrollableHelpers {
 
   /// Creates a GridView.builder with common scrollable properties applied.
   static GridView gridViewBuilder({
-    required MyoroScrollableConfigurationMixin configuration,
+    required Axis scrollDirection,
+    required bool reverse,
+    required ScrollPhysics? physics,
+    required ScrollController? controller,
+    required bool? primary,
+    required bool shrinkWrap,
     required SliverGridDelegate gridDelegate,
     required IndexedWidgetBuilder itemBuilder,
     int? itemCount,
   }) {
     return GridView.builder(
-      scrollDirection: configuration.scrollDirection,
-      reverse: configuration.reverse,
-      controller: configuration.controller,
-      primary: configuration.primary,
-      physics: configuration.physics,
-      shrinkWrap: configuration.shrinkWrap,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      controller: controller,
+      primary: primary,
+      physics: physics,
+      shrinkWrap: shrinkWrap,
       gridDelegate: gridDelegate,
       itemBuilder: itemBuilder,
       itemCount: itemCount,
@@ -43,33 +53,46 @@ final class _ScrollableHelpers {
   }
 
   /// Creates a ListView with common scrollable properties applied.
-  static ListView listView({required MyoroScrollableConfigurationMixin configuration, required List<Widget> children}) {
+  static ListView listView({
+    required Axis scrollDirection,
+    required bool reverse,
+    required ScrollPhysics? physics,
+    required ScrollController? controller,
+    required bool? primary,
+    required bool shrinkWrap,
+    required List<Widget> children,
+  }) {
     return ListView(
-      scrollDirection: configuration.scrollDirection,
-      reverse: configuration.reverse,
-      controller: configuration.controller,
-      primary: configuration.primary,
-      physics: configuration.physics,
-      shrinkWrap: configuration.shrinkWrap,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      controller: controller,
+      primary: primary,
+      physics: physics,
+      shrinkWrap: shrinkWrap,
       children: children,
     );
   }
 
   /// Creates a ListView.builder with common scrollable properties applied.
   static ListView listViewBuilder({
-    required MyoroScrollableConfigurationMixin configuration,
+    required Axis scrollDirection,
+    required bool reverse,
+    required ScrollPhysics? physics,
+    required ScrollController? controller,
+    required bool? primary,
+    required bool shrinkWrap,
     required IndexedWidgetBuilder itemBuilder,
     int? itemCount,
     double? itemExtent,
     Widget? prototypeItem,
   }) {
     return ListView.builder(
-      scrollDirection: configuration.scrollDirection,
-      reverse: configuration.reverse,
-      controller: configuration.controller,
-      primary: configuration.primary,
-      physics: configuration.physics,
-      shrinkWrap: configuration.shrinkWrap,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      controller: controller,
+      primary: primary,
+      physics: physics,
+      shrinkWrap: shrinkWrap,
       itemBuilder: itemBuilder,
       itemCount: itemCount,
       itemExtent: itemExtent,
@@ -79,31 +102,40 @@ final class _ScrollableHelpers {
 
   /// Creates a SingleChildScrollView with common scrollable properties applied.
   static SingleChildScrollView singleChildScrollView({
-    required MyoroScrollableConfigurationMixin configuration,
+    required Axis scrollDirection,
+    required bool reverse,
+    required ScrollPhysics? physics,
+    required ScrollController? controller,
+    required bool? primary,
     required Widget child,
   }) {
     return SingleChildScrollView(
-      scrollDirection: configuration.scrollDirection,
-      reverse: configuration.reverse,
-      physics: configuration.physics,
-      controller: configuration.controller,
-      primary: configuration.primary,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      physics: physics,
+      controller: controller,
+      primary: primary,
       child: child,
     );
   }
 
   /// Creates a CustomScrollView with common scrollable properties applied.
   static CustomScrollView customScrollView({
-    required MyoroScrollableConfigurationMixin configuration,
+    required Axis scrollDirection,
+    required bool reverse,
+    required ScrollPhysics? physics,
+    required ScrollController? controller,
+    required bool? primary,
+    required bool shrinkWrap,
     required List<Widget> slivers,
   }) {
     return CustomScrollView(
-      scrollDirection: configuration.scrollDirection,
-      reverse: configuration.reverse,
-      controller: configuration.controller,
-      primary: configuration.primary,
-      physics: configuration.physics,
-      shrinkWrap: configuration.shrinkWrap,
+      scrollDirection: scrollDirection,
+      reverse: reverse,
+      controller: controller,
+      primary: primary,
+      physics: physics,
+      shrinkWrap: shrinkWrap,
       slivers: slivers,
     );
   }

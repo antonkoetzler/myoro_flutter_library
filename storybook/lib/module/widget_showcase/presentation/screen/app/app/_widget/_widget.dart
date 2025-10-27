@@ -17,16 +17,14 @@ final class _Widget extends StatelessWidget {
         return MyoroApp(
           themeMode: themeMode,
           home: MyoroScreen(
-            configuration: MyoroScreenConfiguration(
-              appBar: MyoroAppBar(
-                showBottomDivider: true,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],
-                ),
+            appBar: MyoroAppBar(
+              showBottomDivider: true,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [Text(faker.lorem.word()), Icon(myoroFake<IconData>())],
               ),
-              body: Center(child: Text(faker.lorem.word())),
             ),
+            body: Center(child: Text(faker.lorem.word())),
           ),
         );
       },

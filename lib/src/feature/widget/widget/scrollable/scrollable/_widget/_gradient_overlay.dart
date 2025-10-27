@@ -3,15 +3,19 @@ part of '../bundle/myoro_scrollable_bundle.dart';
 /// Internal widget that handles gradient overlays for scroll indicators.
 final class _GradientOverlay extends StatefulWidget {
   const _GradientOverlay({
-    required this.configuration,
+    required this.scrollDirection,
     required this.style,
-    required this.gradientConfig,
+    required this.gradientEnabled,
+    required this.gradientBegin,
+    required this.gradientEnd,
     required this.child,
   });
 
-  final MyoroScrollableConfigurationMixin configuration;
+  final Axis scrollDirection;
   final MyoroScrollableStyle style;
-  final MyoroScrollableGradientConfiguration gradientConfig;
+  final bool gradientEnabled;
+  final Alignment? gradientBegin;
+  final Alignment? gradientEnd;
   final Widget child;
 
   @override
@@ -27,7 +31,7 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
   bool _onScroll(ScrollNotification notification) {
     if (notification is ScrollUpdateNotification) {
       final position = notification.metrics;
-      final isVertical = widget.configuration.scrollDirection == Axis.vertical;
+      final isVertical = widget.scrollDirection == Axis.vertical;
 
       if (isVertical) {
         final showTop = position.pixels > position.minScrollExtent;
@@ -59,7 +63,7 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
     final themeExtension = context.resolveThemeExtension<MyoroScrollableThemeExtension>();
     final style = context.watch<MyoroScrollableStyle>();
 
-    final isVertical = widget.configuration.scrollDirection == Axis.vertical;
+    final isVertical = widget.scrollDirection == Axis.vertical;
     final gradientSize = style.gradientSize ?? themeExtension.gradientSize ?? 20.0;
     final gradientColor = style.gradientColor ?? themeExtension.gradientColor ?? Colors.white;
 
@@ -83,8 +87,8 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
               right: 0,
               height: gradientSize,
               child: _buildGradient(
-                begin: widget.gradientConfig.begin ?? Alignment.topCenter,
-                end: widget.gradientConfig.end ?? Alignment.bottomCenter,
+                begin: widget.gradientBegin ?? Alignment.topCenter,
+                end: widget.gradientEnd ?? Alignment.bottomCenter,
                 color: topColor,
               ),
             ),
@@ -95,8 +99,8 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
               right: 0,
               height: gradientSize,
               child: _buildGradient(
-                begin: widget.gradientConfig.begin ?? Alignment.bottomCenter,
-                end: widget.gradientConfig.end ?? Alignment.topCenter,
+                begin: widget.gradientBegin ?? Alignment.bottomCenter,
+                end: widget.gradientEnd ?? Alignment.topCenter,
                 color: bottomColor,
               ),
             ),
@@ -114,8 +118,8 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
               left: 0,
               width: gradientSize,
               child: _buildGradient(
-                begin: widget.gradientConfig.begin ?? Alignment.centerLeft,
-                end: widget.gradientConfig.end ?? Alignment.centerRight,
+                begin: widget.gradientBegin ?? Alignment.centerLeft,
+                end: widget.gradientEnd ?? Alignment.centerRight,
                 color: leftColor,
               ),
             ),
@@ -126,8 +130,8 @@ final class _GradientOverlayState extends State<_GradientOverlay> {
               right: 0,
               width: gradientSize,
               child: _buildGradient(
-                begin: widget.gradientConfig.begin ?? Alignment.centerRight,
-                end: widget.gradientConfig.end ?? Alignment.centerLeft,
+                begin: widget.gradientBegin ?? Alignment.centerRight,
+                end: widget.gradientEnd ?? Alignment.centerLeft,
                 color: rightColor,
               ),
             ),

@@ -10,12 +10,6 @@ final class _SpacingOption extends StatelessWidget {
     final state = viewModel.state;
     final spacing = state.spacing;
 
-    return MyoroSlider(
-      configuration: MyoroSliderConfiguration(
-        label: 'Spacing',
-        value: spacing,
-        onChanged: (value) => viewModel.state.spacing = value,
-      ),
-    );
+    return MyoroSlider(label: 'Spacing', value: spacing, onChanged: (value) => viewModel.state.spacing = value);
   }
 }

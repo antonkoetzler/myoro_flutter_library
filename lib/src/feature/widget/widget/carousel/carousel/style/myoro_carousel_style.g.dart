@@ -26,7 +26,9 @@ mixin _$MyoroCarouselStyleMixin {
       previousItemButtonIcon: previousItemButtonIconProvided
           ? (previousItemButtonIcon ?? self.previousItemButtonIcon)
           : null,
-      nextItemButtonIcon: nextItemButtonIconProvided ? (nextItemButtonIcon ?? self.nextItemButtonIcon) : null,
+      nextItemButtonIcon: nextItemButtonIconProvided
+          ? (nextItemButtonIcon ?? self.nextItemButtonIcon)
+          : null,
     );
   }
 

@@ -3,8 +3,8 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of a [MyoroTabView].
 final class MyoroTabViewController {
-  MyoroTabViewController({required MyoroTabViewConfiguration configuration})
-    : _viewModel = MyoroTabViewViewModel(configuration);
+  MyoroTabViewController({required int initiallySelectedTabIndex, required List<MyoroTabViewTab> tabs})
+    : _viewModel = MyoroTabViewViewModel(initiallySelectedTabIndex: initiallySelectedTabIndex, tabs: tabs);
 
   /// View model.
   final MyoroTabViewViewModel _viewModel;
@@ -12,9 +12,6 @@ final class MyoroTabViewController {
   /// Getter of [_viewModel].
   @protected
   MyoroTabViewViewModel get viewModel => _viewModel;
-
-  /// Getter of the [MyoroTabViewConfiguration] of the [MyoroTabViewController].
-  MyoroTabViewConfiguration get configuration => _viewModel.state.configuration;
 
   /// [ValueNotifier] of the selected [MyoroTabViewTab].
   ValueNotifier<MyoroTabViewTab> get selectedTabNotifier => _viewModel.state.selectedTabNotifier;

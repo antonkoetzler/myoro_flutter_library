@@ -13,8 +13,10 @@ part of 'myoro_scrollable_theme_extension.dart';
 /// ```dart
 /// class MyoroScrollableThemeExtension with _$MyoroScrollableThemeExtensionMixin {}
 /// ```
-mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThemeExtension> {
-  MyoroScrollableThemeExtension get self => this as MyoroScrollableThemeExtension;
+mixin _$MyoroScrollableThemeExtensionMixin
+    on ThemeExtension<MyoroScrollableThemeExtension> {
+  MyoroScrollableThemeExtension get self =>
+      this as MyoroScrollableThemeExtension;
 
   @override
   MyoroScrollableThemeExtension copyWith({
@@ -32,12 +34,24 @@ mixin _$MyoroScrollableThemeExtensionMixin on ThemeExtension<MyoroScrollableThem
     bool gradientColorProvided = true,
   }) {
     return MyoroScrollableThemeExtension(
-      gradientTopColor: gradientTopColorProvided ? (gradientTopColor ?? self.gradientTopColor) : null,
-      gradientBottomColor: gradientBottomColorProvided ? (gradientBottomColor ?? self.gradientBottomColor) : null,
-      gradientLeftColor: gradientLeftColorProvided ? (gradientLeftColor ?? self.gradientLeftColor) : null,
-      gradientRightColor: gradientRightColorProvided ? (gradientRightColor ?? self.gradientRightColor) : null,
-      gradientSize: gradientSizeProvided ? (gradientSize ?? self.gradientSize) : null,
-      gradientColor: gradientColorProvided ? (gradientColor ?? self.gradientColor) : null,
+      gradientTopColor: gradientTopColorProvided
+          ? (gradientTopColor ?? self.gradientTopColor)
+          : null,
+      gradientBottomColor: gradientBottomColorProvided
+          ? (gradientBottomColor ?? self.gradientBottomColor)
+          : null,
+      gradientLeftColor: gradientLeftColorProvided
+          ? (gradientLeftColor ?? self.gradientLeftColor)
+          : null,
+      gradientRightColor: gradientRightColorProvided
+          ? (gradientRightColor ?? self.gradientRightColor)
+          : null,
+      gradientSize: gradientSizeProvided
+          ? (gradientSize ?? self.gradientSize)
+          : null,
+      gradientColor: gradientColorProvided
+          ? (gradientColor ?? self.gradientColor)
+          : null,
     );
   }
 

@@ -13,8 +13,10 @@ part of 'myoro_basic_divider_theme_extension.dart';
 /// ```dart
 /// class MyoroBasicDividerThemeExtension with _$MyoroBasicDividerThemeExtensionMixin {}
 /// ```
-mixin _$MyoroBasicDividerThemeExtensionMixin on ThemeExtension<MyoroBasicDividerThemeExtension> {
-  MyoroBasicDividerThemeExtension get self => this as MyoroBasicDividerThemeExtension;
+mixin _$MyoroBasicDividerThemeExtensionMixin
+    on ThemeExtension<MyoroBasicDividerThemeExtension> {
+  MyoroBasicDividerThemeExtension get self =>
+      this as MyoroBasicDividerThemeExtension;
 
   @override
   MyoroBasicDividerThemeExtension copyWith({

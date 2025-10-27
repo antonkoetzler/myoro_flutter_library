@@ -2,11 +2,13 @@ part of 'myoro_tab_view_view_model.dart';
 
 /// State of [MyoroTabViewViewModel].
 final class MyoroTabViewState {
-  MyoroTabViewState(this.configuration)
-    : _selectedTabNotifier = ValueNotifier(configuration.tabs[configuration.initiallySelectedTabIndex]);
+  MyoroTabViewState({required int initiallySelectedTabIndex, required List<MyoroTabViewTab> tabs})
+    : _selectedTabNotifier = ValueNotifier(tabs[initiallySelectedTabIndex]),
+      _tabs = tabs;
 
-  /// Configuration.
-  final MyoroTabViewConfiguration configuration;
+  /// Tabs of the [MyoroTabView].
+  final List<MyoroTabViewTab> _tabs;
+  List<MyoroTabViewTab> get tabs => _tabs;
 
   /// [ValueNotifier] controlling which tab index is currently selected.
   final ValueNotifier<MyoroTabViewTab> _selectedTabNotifier;

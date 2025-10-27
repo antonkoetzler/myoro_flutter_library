@@ -2,20 +2,31 @@ part of '../bundle/myoro_slider_bundle.dart';
 
 /// Base [Widget] for slider implementations.
 class _Base extends StatelessWidget {
-  const _Base(Key? key, this._configuration, this._style) : super(key: key);
+  const _Base({
+    Key? key,
+    required this.label,
+    required this.currentValueText,
+    required this.maxValueText,
+    required this.footerText,
+    required this.min,
+    required this.max,
+    required this.sliderWidget,
+    required this.style,
+  }) : super(key: key);
 
-  final MyoroSliderBaseConfiguration _configuration;
-  final MyoroSliderStyle _style;
+  final String label;
+  final String currentValueText;
+  final String maxValueText;
+  final String footerText;
+  final double min;
+  final double max;
+  final Widget sliderWidget;
+  final MyoroSliderStyle style;
 
   @override
   Widget build(context) {
-    final label = _configuration.label;
-    final currentValueText = _configuration.currentValueText;
-    final maxValueText = _configuration.maxValueText;
-    final footerText = _configuration.footerText;
-
     return Provider.value(
-      value: _style,
+      value: style,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -23,7 +34,7 @@ class _Base extends StatelessWidget {
           Row(
             children: [
               if (currentValueText.isNotEmpty) _IndicatorText(currentValueText),
-              Expanded(child: _configuration.widget),
+              Expanded(child: sliderWidget),
               if (maxValueText.isNotEmpty) _IndicatorText(maxValueText),
             ],
           ),

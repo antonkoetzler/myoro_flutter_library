@@ -34,8 +34,12 @@ mixin _$MyoroIndexedStackStyleMixin {
       indexedStackIndicatorSpacing: indexedStackIndicatorSpacingProvided
           ? (indexedStackIndicatorSpacing ?? self.indexedStackIndicatorSpacing)
           : null,
-      indicatorSpacing: indicatorSpacingProvided ? (indicatorSpacing ?? self.indicatorSpacing) : null,
-      indicatorItemHeight: indicatorItemHeightProvided ? (indicatorItemHeight ?? self.indicatorItemHeight) : null,
+      indicatorSpacing: indicatorSpacingProvided
+          ? (indicatorSpacing ?? self.indicatorSpacing)
+          : null,
+      indicatorItemHeight: indicatorItemHeightProvided
+          ? (indicatorItemHeight ?? self.indicatorItemHeight)
+          : null,
       indicatorItemBorderRadius: indicatorItemBorderRadiusProvided
           ? (indicatorItemBorderRadius ?? self.indicatorItemBorderRadius)
           : null,
@@ -52,7 +56,8 @@ mixin _$MyoroIndexedStackStyleMixin {
   bool operator ==(Object other) {
     return other is MyoroIndexedStackStyle &&
         other.runtimeType == runtimeType &&
-        other.indexedStackIndicatorSpacing == self.indexedStackIndicatorSpacing &&
+        other.indexedStackIndicatorSpacing ==
+            self.indexedStackIndicatorSpacing &&
         other.indicatorSpacing == self.indicatorSpacing &&
         other.indicatorItemHeight == self.indicatorItemHeight &&
         other.indicatorItemBorderRadius == self.indicatorItemBorderRadius &&

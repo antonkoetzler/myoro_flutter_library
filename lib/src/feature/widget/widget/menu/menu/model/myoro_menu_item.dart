@@ -9,13 +9,16 @@ part 'myoro_menu_icon_text_button_item.dart';
 /// Model to build a menu item.
 @immutable
 sealed class MyoroMenuItem {
+  /// Default value of [tooltipText].
+  static const tooltipTextDefaultValue = kMyoroEmptyString;
+
   /// Default value of [isLoading].
   static const isLoadingDefaultValue = MyoroButton.isLoadingDefaultValue;
 
   /// Default constructor.
   const MyoroMenuItem({
     this.cursor,
-    this.tooltipConfiguration,
+    this.tooltipText = tooltipTextDefaultValue,
     this.onTapDown,
     this.onTapUp,
     this.isLoading = isLoadingDefaultValue,
@@ -25,7 +28,7 @@ sealed class MyoroMenuItem {
   final MouseCursor? cursor;
 
   /// [MyoroTooltip] of the [MyoroButton].
-  final MyoroTooltipConfiguration? tooltipConfiguration;
+  final String tooltipText;
 
   /// Function executed when the [MyoroButton] is tapped.
   final MyoroButtonOnTapDown? onTapDown;
@@ -40,8 +43,7 @@ sealed class MyoroMenuItem {
   MyoroMenuItem copyWith({
     MouseCursor? cursor,
     bool cursorProvided = true,
-    MyoroTooltipConfiguration? tooltipConfiguration,
-    bool tooltipConfigurationProvided = true,
+    String? tooltipText,
     MyoroButtonOnTapDown? onTapDown,
     bool onTapDownProvided = true,
     MyoroButtonOnTapUp? onTapUp,

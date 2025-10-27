@@ -15,7 +15,7 @@ final class _Widget extends StatelessWidget {
         final buttonState = buttonViewModel.state;
         final onTapDown = buttonState.onTapDownEnabled ? (_) => buttonViewModel.onTapDown(context) : null;
         final onTapUp = buttonState.onTapUpEnabled ? (_) => buttonViewModel.onTapUp(context) : null;
-        final tooltipConfiguration = buttonState.tooltipEnabled ? MyoroTooltipConfiguration.fake() : null;
+        final tooltipText = buttonState.tooltipEnabled ? faker.lorem.word() : kMyoroEmptyString;
         final cursor = buttonState.cursor;
         final isLoading = buttonState.isLoading;
 
@@ -34,7 +34,7 @@ final class _Widget extends StatelessWidget {
 
             return IntrinsicWidth(
               child: MyoroIconTextButton(
-                tooltipConfiguration: tooltipConfiguration,
+                tooltipText: tooltipText,
                 cursor: cursor,
                 onTapDown: onTapDown,
                 onTapUp: onTapUp,

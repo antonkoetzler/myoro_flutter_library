@@ -3,13 +3,25 @@ part of 'myoro_table_view_model.dart';
 /// State of [MyoroTableViewModel].
 final class MyoroTableState<T> {
   /// Creates a new instance of [MyoroTableState].
-  MyoroTableState(MyoroTableConfiguration<T> configuration) : _configuration = configuration {
-    _itemsRequestController.requestCallback = _configuration.request;
+  MyoroTableState({
+    required MyoroTableConfigurationRequest<T> request,
+    required List<MyoroTableColumn> columns,
+    required MyoroTableConfigurationRowBuilder<T> rowBuilder,
+  }) : _request = request,
+       _columns = columns,
+       _rowBuilder = rowBuilder {
+    _itemsRequestController.requestCallback = _request;
     _createTitleColumnKeys();
   }
 
-  /// Configuration.
-  late MyoroTableConfiguration<T> _configuration;
+  /// Request of the items of the [MyoroTable].
+  MyoroTableConfigurationRequest<T> _request;
+
+  /// Columns of the [MyoroTable].
+  List<MyoroTableColumn> _columns;
+
+  /// Builder of the cells of the row.
+  MyoroTableConfigurationRowBuilder<T> _rowBuilder;
 
   /// [ValueNotifier] of the items/rows of the [MyoroTable].
   final _itemsRequestController = MyoroRequestController<Set<T>>();
@@ -20,8 +32,14 @@ final class MyoroTableState<T> {
   /// [ValueNotifier] responsible for gathering the widths of each [GlobalKey] of [__titleColumnKeys].
   final _titleColumnKeyWidthsController = ValueNotifier<List<double>>(const []);
 
-  /// [_configuration] getter.
-  MyoroTableConfiguration<T> get configuration => _configuration;
+  /// [_request] getter.
+  MyoroTableConfigurationRequest<T> get request => _request;
+
+  /// [_columns] getter.
+  List<MyoroTableColumn> get columns => _columns;
+
+  /// [_rowBuilder] getter.
+  MyoroTableConfigurationRowBuilder<T> get rowBuilder => _rowBuilder;
 
   /// [_itemsRequestController] getter.
   MyoroRequestController<Set<T>> get itemsRequestController => _itemsRequestController;
@@ -35,18 +53,31 @@ final class MyoroTableState<T> {
   /// [_itemsRequestController] getter.
   MyoroRequest<Set<T>> get itemsRequest => _itemsRequestController.value;
 
-  /// [_configuration] setter.
-  set configuration(MyoroTableConfiguration<T> configuration) {
-    if (_configuration == configuration) return;
-    _configuration = configuration;
+  /// [_request] setter.
+  set request(MyoroTableConfigurationRequest<T> request) {
+    if (_request == request) return;
+    _request = request;
+    _itemsRequestController.requestCallback = _request;
+  }
+
+  /// [_columns] setter.
+  set columns(List<MyoroTableColumn> columns) {
+    if (_columns == columns) return;
+    _columns = columns;
     _createTitleColumnKeys();
+  }
+
+  /// [_rowBuilder] setter.
+  set rowBuilder(MyoroTableConfigurationRowBuilder<T> rowBuilder) {
+    if (_rowBuilder == rowBuilder) return;
+    _rowBuilder = rowBuilder;
   }
 
   /// Helper function to populate [_titleColumnKeys].
   void _createTitleColumnKeys() {
     _titleColumnKeys
       ..clear()
-      ..addAll(configuration.columns.map<GlobalKey>((_) => GlobalKey()));
+      ..addAll(_columns.map<GlobalKey>((_) => GlobalKey()));
   }
 
   /// Dispose function.

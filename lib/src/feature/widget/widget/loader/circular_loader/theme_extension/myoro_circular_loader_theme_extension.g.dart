@@ -13,8 +13,10 @@ part of 'myoro_circular_loader_theme_extension.dart';
 /// ```dart
 /// class MyoroCircularLoaderThemeExtension with _$MyoroCircularLoaderThemeExtensionMixin {}
 /// ```
-mixin _$MyoroCircularLoaderThemeExtensionMixin on ThemeExtension<MyoroCircularLoaderThemeExtension> {
-  MyoroCircularLoaderThemeExtension get self => this as MyoroCircularLoaderThemeExtension;
+mixin _$MyoroCircularLoaderThemeExtensionMixin
+    on ThemeExtension<MyoroCircularLoaderThemeExtension> {
+  MyoroCircularLoaderThemeExtension get self =>
+      this as MyoroCircularLoaderThemeExtension;
 
   @override
   MyoroCircularLoaderThemeExtension copyWith({

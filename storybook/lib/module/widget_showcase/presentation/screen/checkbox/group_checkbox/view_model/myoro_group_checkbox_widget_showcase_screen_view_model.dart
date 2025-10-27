@@ -25,10 +25,8 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenViewModel {
   void onChanged(BuildContext context, String key, MyoroGroupCheckboxItems checkboxes) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          snackBarType: MyoroSnackBarTypeEnum.attention,
-          message: '$key changed. It\'s value is now ${checkboxes[key]}.',
-        ),
+        snackBarType: MyoroSnackBarTypeEnum.attention,
+        message: '$key changed. It\'s value is now ${checkboxes[key]}.',
       ),
     );
   }

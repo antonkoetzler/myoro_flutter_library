@@ -35,13 +35,27 @@ mixin _$MyoroCheckboxStyleMixin {
     bool spacingProvided = true,
   }) {
     return MyoroCheckboxStyle(
-      checkboxActiveColor: checkboxActiveColorProvided ? (checkboxActiveColor ?? self.checkboxActiveColor) : null,
-      checkboxCheckColor: checkboxCheckColorProvided ? (checkboxCheckColor ?? self.checkboxCheckColor) : null,
-      checkboxHoverColor: checkboxHoverColorProvided ? (checkboxHoverColor ?? self.checkboxHoverColor) : null,
-      checkboxFocusColor: checkboxFocusColorProvided ? (checkboxFocusColor ?? self.checkboxFocusColor) : null,
-      checkboxSplashRadius: checkboxSplashRadiusProvided ? (checkboxSplashRadius ?? self.checkboxSplashRadius) : null,
-      labelTextStyle: labelTextStyleProvided ? (labelTextStyle ?? self.labelTextStyle) : null,
-      labelMaxLines: labelMaxLinesProvided ? (labelMaxLines ?? self.labelMaxLines) : null,
+      checkboxActiveColor: checkboxActiveColorProvided
+          ? (checkboxActiveColor ?? self.checkboxActiveColor)
+          : null,
+      checkboxCheckColor: checkboxCheckColorProvided
+          ? (checkboxCheckColor ?? self.checkboxCheckColor)
+          : null,
+      checkboxHoverColor: checkboxHoverColorProvided
+          ? (checkboxHoverColor ?? self.checkboxHoverColor)
+          : null,
+      checkboxFocusColor: checkboxFocusColorProvided
+          ? (checkboxFocusColor ?? self.checkboxFocusColor)
+          : null,
+      checkboxSplashRadius: checkboxSplashRadiusProvided
+          ? (checkboxSplashRadius ?? self.checkboxSplashRadius)
+          : null,
+      labelTextStyle: labelTextStyleProvided
+          ? (labelTextStyle ?? self.labelTextStyle)
+          : null,
+      labelMaxLines: labelMaxLinesProvided
+          ? (labelMaxLines ?? self.labelMaxLines)
+          : null,
       spacing: spacingProvided ? (spacing ?? self.spacing) : null,
     );
   }

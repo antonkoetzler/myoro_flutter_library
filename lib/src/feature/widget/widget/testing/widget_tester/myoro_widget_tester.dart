@@ -27,15 +27,13 @@ class MyoroWidgetTester extends StatelessWidget {
       return MyoroApp(
         themeMode: themeMode,
         themeExtensionsBuilder: themeExtensionsBuilder,
-        home: MyoroScreen(
-          configuration: MyoroScreenConfiguration(appBar: child as MyoroAppBar, body: const SizedBox.shrink()),
-        ),
+        home: MyoroScreen(appBar: child as MyoroAppBar, body: const SizedBox.shrink()),
       );
     } else {
       return MyoroApp(
         themeMode: themeMode,
         themeExtensionsBuilder: themeExtensionsBuilder,
-        home: MyoroScreen(configuration: MyoroScreenConfiguration(body: child)),
+        home: MyoroScreen(body: child),
       );
     }
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
-import '../style/myoro_file_picker_style.dart';
 
 part '../_widget/_picker_button.dart';
 part '../_widget/_selected_file.dart';

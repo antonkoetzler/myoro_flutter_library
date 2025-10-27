@@ -13,7 +13,8 @@ part of 'myoro_app_bar_theme_extension.dart';
 /// ```dart
 /// class MyoroAppBarThemeExtension with _$MyoroAppBarThemeExtensionMixin {}
 /// ```
-mixin _$MyoroAppBarThemeExtensionMixin on ThemeExtension<MyoroAppBarThemeExtension> {
+mixin _$MyoroAppBarThemeExtensionMixin
+    on ThemeExtension<MyoroAppBarThemeExtension> {
   MyoroAppBarThemeExtension get self => this as MyoroAppBarThemeExtension;
 
   @override
@@ -24,8 +25,12 @@ mixin _$MyoroAppBarThemeExtensionMixin on ThemeExtension<MyoroAppBarThemeExtensi
     bool contentPaddingProvided = true,
   }) {
     return MyoroAppBarThemeExtension(
-      backgroundColor: backgroundColorProvided ? (backgroundColor ?? self.backgroundColor) : null,
-      contentPadding: contentPaddingProvided ? (contentPadding ?? self.contentPadding) : null,
+      backgroundColor: backgroundColorProvided
+          ? (backgroundColor ?? self.backgroundColor)
+          : null,
+      contentPadding: contentPaddingProvided
+          ? (contentPadding ?? self.contentPadding)
+          : null,
     );
   }
 

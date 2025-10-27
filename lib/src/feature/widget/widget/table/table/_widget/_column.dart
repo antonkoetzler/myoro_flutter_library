@@ -14,10 +14,7 @@ final class _Column extends StatelessWidget {
     final columnTextStyle = style.columnTextStyle ?? themeExtension.columnTextStyle;
 
     var child = _column.tooltipMessage != null
-        ? MyoroTooltip(
-            configuration: MyoroTooltipConfiguration(text: _column.tooltipMessage!),
-            child: _column.child,
-          )
+        ? MyoroTooltip(text: _column.tooltipMessage!, child: _column.child)
         : _column.child;
     child = columnTextStyle != null ? DefaultTextStyle(style: columnTextStyle, child: child) : child;
 

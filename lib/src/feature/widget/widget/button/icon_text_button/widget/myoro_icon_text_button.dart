@@ -11,6 +11,9 @@ class MyoroIconTextButton extends StatelessWidget {
   /// Default value of [style].
   static const styleDefaultValue = MyoroIconTextButtonStyle();
 
+  /// Default value of [tooltipText].
+  static const tooltipTextDefaultValue = kMyoroEmptyString;
+
   /// Default value of [isLoading].
   static const isLoadingDefaultValue = MyoroButton.isLoadingDefaultValue;
 
@@ -22,7 +25,7 @@ class MyoroIconTextButton extends StatelessWidget {
     super.key,
     this.style = styleDefaultValue,
     this.cursor,
-    this.tooltipConfiguration,
+    this.tooltipText = tooltipTextDefaultValue,
     this.onTapDown,
     this.onTapUp,
     this.isLoading = isLoadingDefaultValue,
@@ -42,7 +45,7 @@ class MyoroIconTextButton extends StatelessWidget {
   final MouseCursor? cursor;
 
   /// [MyoroButton.tooltipConfiguration]
-  final MyoroTooltipConfiguration? tooltipConfiguration;
+  final String tooltipText;
 
   /// [MyoroButton.onTapDown]
   final MyoroButtonOnTapDown? onTapDown;
@@ -71,7 +74,7 @@ class MyoroIconTextButton extends StatelessWidget {
       child: MyoroButton(
         style: style,
         cursor: cursor,
-        tooltipConfiguration: tooltipConfiguration,
+        tooltipText: tooltipText,
         onTapDown: onTapDown,
         onTapUp: onTapUp,
         isLoading: isLoading,

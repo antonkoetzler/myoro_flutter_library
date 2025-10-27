@@ -13,8 +13,10 @@ part of 'myoro_decoration_theme_extension.dart';
 /// ```dart
 /// class MyoroDecorationThemeExtension with _$MyoroDecorationThemeExtensionMixin {}
 /// ```
-mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThemeExtension> {
-  MyoroDecorationThemeExtension get self => this as MyoroDecorationThemeExtension;
+mixin _$MyoroDecorationThemeExtensionMixin
+    on ThemeExtension<MyoroDecorationThemeExtension> {
+  MyoroDecorationThemeExtension get self =>
+      this as MyoroDecorationThemeExtension;
 
   @override
   MyoroDecorationThemeExtension copyWith({
@@ -57,7 +59,8 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
           ? (secondaryBackgroundIdleColor ?? self.secondaryBackgroundIdleColor)
           : null,
       secondaryBackgroundHoverColor: secondaryBackgroundHoverColorProvided
-          ? (secondaryBackgroundHoverColor ?? self.secondaryBackgroundHoverColor)
+          ? (secondaryBackgroundHoverColor ??
+                self.secondaryBackgroundHoverColor)
           : null,
       secondaryBackgroundTapColor: secondaryBackgroundTapColorProvided
           ? (secondaryBackgroundTapColor ?? self.secondaryBackgroundTapColor)
@@ -65,13 +68,21 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
       disabledBackgroundColor: disabledBackgroundColorProvided
           ? (disabledBackgroundColor ?? self.disabledBackgroundColor)
           : null,
-      primaryContentColor: primaryContentColorProvided ? (primaryContentColor ?? self.primaryContentColor) : null,
+      primaryContentColor: primaryContentColorProvided
+          ? (primaryContentColor ?? self.primaryContentColor)
+          : null,
       secondaryContentColor: secondaryContentColorProvided
           ? (secondaryContentColor ?? self.secondaryContentColor)
           : null,
-      borderWidth: borderWidthProvided ? (borderWidth ?? self.borderWidth) : null,
-      borderColor: borderColorProvided ? (borderColor ?? self.borderColor) : null,
-      borderRadius: borderRadiusProvided ? (borderRadius ?? self.borderRadius) : null,
+      borderWidth: borderWidthProvided
+          ? (borderWidth ?? self.borderWidth)
+          : null,
+      borderColor: borderColorProvided
+          ? (borderColor ?? self.borderColor)
+          : null,
+      borderRadius: borderRadiusProvided
+          ? (borderRadius ?? self.borderRadius)
+          : null,
     );
   }
 
@@ -82,8 +93,10 @@ mixin _$MyoroDecorationThemeExtensionMixin on ThemeExtension<MyoroDecorationThem
         other.primaryBackgroundIdleColor == self.primaryBackgroundIdleColor &&
         other.primaryBackgroundHoverColor == self.primaryBackgroundHoverColor &&
         other.primaryBackgroundTapColor == self.primaryBackgroundTapColor &&
-        other.secondaryBackgroundIdleColor == self.secondaryBackgroundIdleColor &&
-        other.secondaryBackgroundHoverColor == self.secondaryBackgroundHoverColor &&
+        other.secondaryBackgroundIdleColor ==
+            self.secondaryBackgroundIdleColor &&
+        other.secondaryBackgroundHoverColor ==
+            self.secondaryBackgroundHoverColor &&
         other.secondaryBackgroundTapColor == self.secondaryBackgroundTapColor &&
         other.disabledBackgroundColor == self.disabledBackgroundColor &&
         other.primaryContentColor == self.primaryContentColor &&

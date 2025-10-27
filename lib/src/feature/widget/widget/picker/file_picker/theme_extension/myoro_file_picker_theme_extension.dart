@@ -2,7 +2,6 @@ import 'package:faker/faker.dart' hide Color;
 import 'package:flutter/material.dart';
 import 'package:myoro_flutter_annotations/myoro_flutter_annotations.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
-import '../style/myoro_file_picker_style.dart';
 
 part 'myoro_file_picker_theme_extension.g.dart';
 

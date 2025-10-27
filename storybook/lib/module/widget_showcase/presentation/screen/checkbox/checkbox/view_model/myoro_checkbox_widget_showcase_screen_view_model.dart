@@ -16,10 +16,8 @@ final class MyoroCheckboxWidgetShowcaseScreenViewModel {
   void onChanged(BuildContext context, bool value) {
     context.showSnackBar(
       snackBar: MyoroSnackBar(
-        configuration: MyoroSnackBarConfiguration(
-          snackBarType: MyoroSnackBarTypeEnum.attention,
-          message: 'Checkbox changed, value is now $value.',
-        ),
+        snackBarType: MyoroSnackBarTypeEnum.attention,
+        message: 'Checkbox changed, value is now $value.',
       ),
     );
   }

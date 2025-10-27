@@ -9,7 +9,7 @@ class MyoroMenuButtonItem extends MyoroMenuItem with _$MyoroMenuButtonItemMixin 
   /// Default constructor.
   const MyoroMenuButtonItem({
     super.cursor,
-    super.tooltipConfiguration,
+    super.tooltipText,
     super.onTapDown,
     super.onTapUp,
     super.isLoading = isLoadingDefaultValue,

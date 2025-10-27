@@ -13,8 +13,10 @@ part of 'myoro_indexed_stack_theme_extension.dart';
 /// ```dart
 /// class MyoroIndexedStackThemeExtension with _$MyoroIndexedStackThemeExtensionMixin {}
 /// ```
-mixin _$MyoroIndexedStackThemeExtensionMixin on ThemeExtension<MyoroIndexedStackThemeExtension> {
-  MyoroIndexedStackThemeExtension get self => this as MyoroIndexedStackThemeExtension;
+mixin _$MyoroIndexedStackThemeExtensionMixin
+    on ThemeExtension<MyoroIndexedStackThemeExtension> {
+  MyoroIndexedStackThemeExtension get self =>
+      this as MyoroIndexedStackThemeExtension;
 
   @override
   MyoroIndexedStackThemeExtension copyWith({
@@ -35,8 +37,12 @@ mixin _$MyoroIndexedStackThemeExtensionMixin on ThemeExtension<MyoroIndexedStack
       indexedStackIndicatorSpacing: indexedStackIndicatorSpacingProvided
           ? (indexedStackIndicatorSpacing ?? self.indexedStackIndicatorSpacing)
           : null,
-      indicatorSpacing: indicatorSpacingProvided ? (indicatorSpacing ?? self.indicatorSpacing) : null,
-      indicatorItemHeight: indicatorItemHeightProvided ? (indicatorItemHeight ?? self.indicatorItemHeight) : null,
+      indicatorSpacing: indicatorSpacingProvided
+          ? (indicatorSpacing ?? self.indicatorSpacing)
+          : null,
+      indicatorItemHeight: indicatorItemHeightProvided
+          ? (indicatorItemHeight ?? self.indicatorItemHeight)
+          : null,
       indicatorItemBorderRadius: indicatorItemBorderRadiusProvided
           ? (indicatorItemBorderRadius ?? self.indicatorItemBorderRadius)
           : null,
@@ -53,7 +59,8 @@ mixin _$MyoroIndexedStackThemeExtensionMixin on ThemeExtension<MyoroIndexedStack
   bool operator ==(Object other) {
     return other is MyoroIndexedStackThemeExtension &&
         other.runtimeType == runtimeType &&
-        other.indexedStackIndicatorSpacing == self.indexedStackIndicatorSpacing &&
+        other.indexedStackIndicatorSpacing ==
+            self.indexedStackIndicatorSpacing &&
         other.indicatorSpacing == self.indicatorSpacing &&
         other.indicatorItemHeight == self.indicatorItemHeight &&
         other.indicatorItemBorderRadius == self.indicatorItemBorderRadius &&

@@ -5,7 +5,8 @@ part 'myoro_tab_view_state.dart';
 
 /// View model of [MyoroTabView].
 final class MyoroTabViewViewModel {
-  MyoroTabViewViewModel(MyoroTabViewConfiguration configuration) : _state = MyoroTabViewState(configuration);
+  MyoroTabViewViewModel({required int initiallySelectedTabIndex, required List<MyoroTabViewTab> tabs})
+    : _state = MyoroTabViewState(initiallySelectedTabIndex: initiallySelectedTabIndex, tabs: tabs);
 
   /// State.
   final MyoroTabViewState _state;

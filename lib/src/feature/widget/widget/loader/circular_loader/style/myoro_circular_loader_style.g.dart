@@ -16,7 +16,12 @@ part of 'myoro_circular_loader_style.dart';
 mixin _$MyoroCircularLoaderStyleMixin {
   MyoroCircularLoaderStyle get self => this as MyoroCircularLoaderStyle;
 
-  MyoroCircularLoaderStyle copyWith({Color? color, bool colorProvided = true, double? size, bool sizeProvided = true}) {
+  MyoroCircularLoaderStyle copyWith({
+    Color? color,
+    bool colorProvided = true,
+    double? size,
+    bool sizeProvided = true,
+  }) {
     return MyoroCircularLoaderStyle(
       color: colorProvided ? (color ?? self.color) : null,
       size: sizeProvided ? (size ?? self.size) : null,

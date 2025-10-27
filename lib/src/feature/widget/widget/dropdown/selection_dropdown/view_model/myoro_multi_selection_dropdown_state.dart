@@ -10,10 +10,12 @@ class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T>
     super.showingController,
     Set<T>? initiallySelectedItems,
     ValueNotifier<Set<T>>? selectedItemsController,
+    this.onChanged,
   ) {
     _selectedItemsController =
-        selectedItemsController ??
-        (_localSelectedItemsController ??= ValueNotifier(initiallySelectedItems ?? const {}));
+        (selectedItemsController ??
+              (_localSelectedItemsController ??= ValueNotifier(initiallySelectedItems ?? const {})))
+          ..addListener(_selectedItemsControllerListener);
   }
 
   /// Local selected items [ValueNotifier].
@@ -22,11 +24,21 @@ class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T>
   /// [ValueNotifier] controlling the selected item(s).
   late final ValueNotifier<Set<T>> _selectedItemsController;
 
+  /// Callback executed when the selected items are changed.
+  final ValueChanged<Set<T>>? onChanged;
+
   /// Dispose function.
   @override
   void dispose() {
-    _localSelectedItemsController?.dispose();
+    _localSelectedItemsController != null
+        ? _localSelectedItemsController!.dispose()
+        : _selectedItemsController.removeListener(_selectedItemsControllerListener);
     super.dispose();
+  }
+
+  /// Listener for [_selectedItemsController].
+  void _selectedItemsControllerListener() {
+    onChanged?.call(selectedItems);
   }
 
   /// [_selectedItemsController] getter.
