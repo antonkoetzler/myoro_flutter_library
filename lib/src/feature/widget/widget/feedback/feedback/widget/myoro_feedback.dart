@@ -54,7 +54,11 @@ final class MyoroFeedback extends StatelessWidget {
                 Flexible(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [_Icon(iconConfiguration), _Title(titleConfiguration), if (subtitleConfiguration != null) _Subtitle(subtitleConfiguration!)],
+                    children: [
+                      _Icon(iconConfiguration),
+                      _Title(titleConfiguration),
+                      if (subtitleConfiguration != null) _Subtitle(subtitleConfiguration!),
+                    ],
                   ),
                 ),
                 if (actionButtonConfiguration != null) _ActionButton(actionButtonConfiguration!),

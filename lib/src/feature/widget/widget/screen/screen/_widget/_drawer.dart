@@ -1,4 +1,4 @@
-part of '../myoro_screen.dart';
+part of '../widget/myoro_screen.dart';
 
 final class _Drawer extends StatelessWidget {
   final MyoroDrawerController _drawerController;

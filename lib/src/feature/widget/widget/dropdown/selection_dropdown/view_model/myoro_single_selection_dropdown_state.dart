@@ -3,9 +3,16 @@ part of 'myoro_selection_dropdown_view_model.dart';
 /// Single selection implementation of [MyoroSelectionDropdownViewModel].
 class MyoroSingleSelectionDropdownState<T> extends MyoroSelectionDropdownState<T> {
   /// Default constructor.
-  MyoroSingleSelectionDropdownState(T? initiallySelectedItem, ValueNotifier<T?>? selectedItemController) {
+  MyoroSingleSelectionDropdownState(
+    super.dropdownType,
+    super.items,
+    super.itemBuilder,
+    super.showingController,
+    T? initiallySelectedItem,
+    ValueNotifier<T?>? selectedItemController,
+  ) {
     _selectedItemController =
-        selectedItemController ?? (_localSelectedItemController = ValueNotifier(initiallySelectedItem));
+        selectedItemController ?? (_localSelectedItemController ??= ValueNotifier(initiallySelectedItem));
   }
 
   /// Local selected items [ValueNotifier].

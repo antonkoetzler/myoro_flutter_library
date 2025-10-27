@@ -1,4 +1,4 @@
-part of '../myoro_image_picker.dart';
+part of '../widget/myoro_image_picker.dart';
 
 /// Wrapper of the content of the [MyoroImagePicker].
 ///

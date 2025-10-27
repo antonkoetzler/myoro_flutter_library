@@ -1,4 +1,4 @@
-part of '../myoro_image_picker.dart';
+part of '../widget/myoro_image_picker.dart';
 
 /// Selection button of [_SelectionTypeModal] in [MyoroImagePicker].
 final class _SelectionTypeModalButton extends StatelessWidget {
@@ -8,7 +8,7 @@ final class _SelectionTypeModalButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    final localization = context.localization;
+    final localization = context.localizations;
 
     final themeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
     final style = context.watch<MyoroImagePickerStyle>();

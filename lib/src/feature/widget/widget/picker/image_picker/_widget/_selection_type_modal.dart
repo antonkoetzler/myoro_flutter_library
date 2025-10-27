@@ -1,4 +1,4 @@
-part of '../myoro_image_picker.dart';
+part of '../widget/myoro_image_picker.dart';
 
 /// Bottom sheet to select if the camera or photo gallery will be used.
 final class _SelectionTypeModal extends StatelessWidget {
@@ -6,9 +6,10 @@ final class _SelectionTypeModal extends StatelessWidget {
     final imagePickerThemeExtension = context.resolveThemeExtension<MyoroImagePickerThemeExtension>();
     final selectionTypeModalConstraints = imagePickerThemeExtension.selectionTypeModalConstraints;
 
-    MyoroModal.showBottomSheet(
+    MyoroModal.show(
       context,
-      configuration: MyoroModalConfiguration(title: context.localization.myoroImagePickerSelectionTypeModalText),
+      isBottomSheet: true,
+      title: context.localizations.myoroImagePickerSelectionTypeModalText,
       style: MyoroModalStyle(constraints: selectionTypeModalConstraints),
       child: _SelectionTypeModal(style, viewModel),
     );

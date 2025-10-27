@@ -9,9 +9,16 @@ final class _Menu<T> extends StatelessWidget {
     final menuStyle = context.watch<MyoroMenuStyle>();
     final viewModel = context.read<MyoroDropdownViewModel<T>>();
     final state = viewModel.state;
-    final request = state.request;
+    final items = state.items;
     final itemBuilder = state.itemBuilder;
     final selectedItems = state.selectedItems;
-    return MyoroMenu(style: menuStyle, request: request, itemBuilder: itemBuilder, selectedItems: selectedItems);
+    final searchCallback = state.searchCallback;
+    return MyoroMenu(
+      style: menuStyle,
+      items: items,
+      selectedItems: selectedItems,
+      itemBuilder: itemBuilder,
+      searchCallback: searchCallback,
+    );
   }
 }

@@ -22,8 +22,8 @@ final class _Prefix extends StatelessWidget {
         );
 
     final viewModel = context.read<MyoroCurrencyInputViewModel>();
+    final disableDropdown = viewModel.disableDropdown;
     final state = viewModel.state;
-    final inputDropdownController = state.inputDropdownController;
     final selectedCurrencyController = state.selectedCurrencyController;
 
     return ValueListenableBuilder(
@@ -38,7 +38,7 @@ final class _Prefix extends StatelessWidget {
                 text: selectedCurrency.longSymbol,
                 style: currencySymbolTextStyle,
               ),
-              onTapUp: (_) => inputDropdownController.toggleDropdown(),
+              onTapUp: (_) => disableDropdown(),
             ),
           ),
         );

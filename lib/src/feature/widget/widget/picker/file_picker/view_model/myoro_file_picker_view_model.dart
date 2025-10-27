@@ -8,8 +8,13 @@ part 'myoro_file_picker_state.dart';
 
 /// View model of [MyoroFilePicker].
 final class MyoroFilePickerViewModel {
-  MyoroFilePickerViewModel(MyoroFilePickerConfiguration configuration) : _state = MyoroFilePickerState(configuration) {
-    _state.selectedFileNotifier.addListener(() => configuration.onChanged(_state.selectedFile));
+  MyoroFilePickerViewModel(
+    String? title,
+    MyoroFilePickerFileTypeEnum fileType,
+    List<String> allowedExtensions,
+    MyoroFilePickerOnChanged onChanged,
+  ) : _state = MyoroFilePickerState(title, fileType, allowedExtensions, onChanged) {
+    _state.selectedFileNotifier.addListener(() => onChanged(_state.selectedFile));
   }
 
   /// State.
@@ -26,10 +31,9 @@ final class MyoroFilePickerViewModel {
   /// Opens the file picker.
   Future<void> openPicker() async {
     final selectedFileNotifier = state.selectedFileNotifier;
-    final configuration = _state.configuration;
-    final title = configuration.title;
-    final fileType = configuration.fileType;
-    final allowedExtensions = configuration.allowedExtensions;
+    final title = state.title;
+    final fileType = state.fileType;
+    final allowedExtensions = state.allowedExtensions;
 
     final result = await FilePicker.platform.pickFiles(
       dialogTitle: title!,

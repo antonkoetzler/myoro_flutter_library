@@ -3,12 +3,12 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 part '../model/myoro_scrollable_configuration.dart';
-part '../myoro_single_child_scrollable.dart';
-part '../myoro_list_scrollable.dart';
-part '../myoro_list_scrollable_builder.dart';
-part '../myoro_grid_scrollable.dart';
-part '../myoro_grid_scrollable_builder.dart';
-part '../myoro_sliver_scrollable.dart';
+part '../widget/myoro_single_child_scrollable.dart';
+part '../widget/myoro_list_scrollable.dart';
+part '../widget/myoro_list_scrollable_builder.dart';
+part '../widget/myoro_grid_scrollable.dart';
+part '../widget/myoro_grid_scrollable_builder.dart';
+part '../widget/myoro_sliver_scrollable.dart';
 part '../_widget/_base.dart';
 part '../_widget/_gradient_overlay.dart';
 part '../_widget/_scrollable_helpers.dart';

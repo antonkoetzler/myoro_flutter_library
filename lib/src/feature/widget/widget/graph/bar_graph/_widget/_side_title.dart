@@ -15,7 +15,11 @@ final class _SideTitle extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(right: _axis.isVertical ? 5 : 0),
-      child: Text(_value.toStringAsFixed(_value == 0 || _value == _value.toInt() ? 0 : 2), textAlign: TextAlign.right, style: sideTitleTextStyle),
+      child: Text(
+        _value.toStringAsFixed(_value == 0 || _value == _value.toInt() ? 0 : 2),
+        textAlign: TextAlign.right,
+        style: sideTitleTextStyle,
+      ),
     );
   }
 }

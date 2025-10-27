@@ -1,23 +1,22 @@
-part of '../myoro_dialog_modal.dart';
+part of '../widget/myoro_dialog_modal.dart';
 
 /// Cancel button of [MyoroDialogModal].
 final class _CancelButton extends StatelessWidget {
-  final MyoroDialogModalConfiguration _configuration;
+  const _CancelButton(this._cancelButtonText, this._onCancel);
 
-  const _CancelButton(this._configuration);
+  final String _cancelButtonText;
+  final VoidCallback? _onCancel;
 
   @override
   Widget build(context) {
-    final cancelButtonText = _configuration.cancelButtonText;
-
     return MyoroIconTextButton(
       onTapUp: (_) => _onTapUp(context),
-      textConfiguration: MyoroTextConfiguration(text: cancelButtonText.isNotEmpty ? cancelButtonText : 'Cancel'),
+      textConfiguration: MyoroTextConfiguration(text: _cancelButtonText.isNotEmpty ? _cancelButtonText : 'Cancel'),
     );
   }
 
   void _onTapUp(BuildContext context) {
-    _configuration.onCancel?.call();
+    _onCancel?.call();
     context.navigator.pop();
   }
 }

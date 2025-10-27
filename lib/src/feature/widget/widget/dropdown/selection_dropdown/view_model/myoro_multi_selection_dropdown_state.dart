@@ -3,9 +3,17 @@ part of 'myoro_selection_dropdown_view_model.dart';
 /// Multi selection implementation of [MyoroSelectionDropdownViewModel].
 class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T> {
   /// Default constructor.
-  MyoroMultiSelectionDropdownState(Set<T>? initiallySelectedItems, ValueNotifier<Set<T>>? selectedItemsController) {
+  MyoroMultiSelectionDropdownState(
+    super.dropdownType,
+    super.items,
+    super.itemBuilder,
+    super.showingController,
+    Set<T>? initiallySelectedItems,
+    ValueNotifier<Set<T>>? selectedItemsController,
+  ) {
     _selectedItemsController =
-        selectedItemsController ?? (_localSelectedItemsController = ValueNotifier(initiallySelectedItems ?? {}));
+        selectedItemsController ??
+        (_localSelectedItemsController ??= ValueNotifier(initiallySelectedItems ?? const {}));
   }
 
   /// Local selected items [ValueNotifier].

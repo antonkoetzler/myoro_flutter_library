@@ -1,4 +1,4 @@
-part of '../myoro_file_picker.dart';
+part of '../widget/myoro_file_picker.dart';
 
 /// Button to open the file picker in [MyoroFilePicker].
 final class _PickerButton extends StatelessWidget {
@@ -17,7 +17,7 @@ final class _PickerButton extends StatelessWidget {
       child: MyoroIconTextButton(
         style: const MyoroIconTextButtonStyle().bordered(context),
         textConfiguration: MyoroTextConfiguration(
-          text: context.localization.myoroFilePickerPickerButtonText,
+          text: context.localizations.myoroFilePickerPickerButtonText,
           style: textStyle,
         ),
 

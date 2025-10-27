@@ -1,4 +1,4 @@
-part of '../myoro_image_picker.dart';
+part of '../widget/myoro_image_picker.dart';
 
 /// Tappable overlay on top of the selected image region in [MyoroImagePicker].
 final class _Overlay extends StatelessWidget {

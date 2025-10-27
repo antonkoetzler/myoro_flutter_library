@@ -16,7 +16,12 @@ class MyoroBarGraph extends StatelessWidget {
   /// Default value of [items].
   static const itemsDefaultValue = <MyoroBarGraphGroup>[];
 
-  const MyoroBarGraph({super.key, this.style = styleDefaultValue, this.sorted = sortedDefaultValue, this.items = itemsDefaultValue});
+  const MyoroBarGraph({
+    super.key,
+    this.style = styleDefaultValue,
+    this.sorted = sortedDefaultValue,
+    this.items = itemsDefaultValue,
+  });
 
   /// Style.
   final MyoroBarGraphStyle style;
@@ -32,8 +37,10 @@ class MyoroBarGraph extends StatelessWidget {
     final themeExtension = context.resolveThemeExtension<MyoroBarGraphThemeExtension>();
     final border = style.border ?? themeExtension.border;
     final sideTitleInterval = style.sideTitleInterval ?? themeExtension.sideTitleInterval;
-    final horizontalSideTitleReversedSize = style.horizontalSideTitleReversedSize ?? themeExtension.horizontalSideTitleReversedSize;
-    final verticalSideTitleReversedSize = style.verticalSideTitleReversedSize ?? themeExtension.verticalSideTitleReversedSize;
+    final horizontalSideTitleReversedSize =
+        style.horizontalSideTitleReversedSize ?? themeExtension.horizontalSideTitleReversedSize;
+    final verticalSideTitleReversedSize =
+        style.verticalSideTitleReversedSize ?? themeExtension.verticalSideTitleReversedSize;
 
     final borderData = FlBorderData(border: border);
     const gridData = FlGridData(show: false);

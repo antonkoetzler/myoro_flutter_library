@@ -8,33 +8,26 @@ final class _ItemsSection<T> extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroMenuViewModel<T>>();
     final state = viewModel.state;
-    final queriedItemsController = state.queriedItemsController;
-    final scrollController = state.scrollController;
+    final items = state.items;
     final itemBuilder = state.itemBuilder;
+    final scrollController = state.scrollController;
 
-    return ValueListenableBuilder(
-      valueListenable: queriedItemsController,
-      builder: (_, queriedItems, _) {
-        final items = queriedItems ?? state.items;
-
-        return items.isNotEmpty
-            ? Flexible(
-                child: Scrollbar(
-                  controller: scrollController,
-                  thumbVisibility: true,
-                  child: ListView.builder(
-                    controller: scrollController,
-                    shrinkWrap: true,
-                    itemCount: items.length,
-                    itemBuilder: (_, index) {
-                      final item = items.elementAt(index);
-                      return _Item<T>(item, itemBuilder(item));
-                    },
-                  ),
-                ),
-              )
-            : const Flexible(child: _DialogText('No items to display.'));
-      },
-    );
+    return items!.isNotEmpty
+        ? Flexible(
+            child: Scrollbar(
+              controller: scrollController,
+              thumbVisibility: true,
+              child: ListView.builder(
+                controller: scrollController,
+                shrinkWrap: true,
+                itemCount: items.length,
+                itemBuilder: (_, index) {
+                  final item = items.elementAt(index);
+                  return _Item<T>(item, itemBuilder(item));
+                },
+              ),
+            ),
+          )
+        : const Flexible(child: _DialogText('No items to display.'));
   }
 }

@@ -2,25 +2,39 @@ part of 'myoro_image_picker_view_model.dart';
 
 /// State of [MyoroImagePickerViewModel].
 final class MyoroImagePickerState {
-  MyoroImagePickerState(this.configuration) : _selectedImageNotifier = ValueNotifier(configuration.selectedImage);
+  MyoroImagePickerState(String? selectedImage, this.onChanged) : _selectedImageNotifier = ValueNotifier(selectedImage);
 
-  /// Configuration.
-  final MyoroImagePickerConfiguration configuration;
+  /// [MyoroImagePicker.onChanged]
+  final MyoroImagePickerOnChanged onChanged;
+
+  /// Picker.
+  final _picker = ImagePicker();
 
   /// [ValueNotifier] of the selected image.
   final ValueNotifier<String?> _selectedImageNotifier;
 
-  /// [_selectedImageNotifier] getter.
-  ValueNotifier<String?> get selectedImageNotifier => _selectedImageNotifier;
-
-  /// Getter of [_selectedImageNotifier]'s value.
-  String? get selectedImage => _selectedImageNotifier.value;
-
-  /// [_selectedImageNotifier] setter.
-  set selectedImage(String? selectedImage) => _selectedImageNotifier.value = selectedImage;
-
   /// Dispose function.
   void dispose() {
     _selectedImageNotifier.dispose();
+  }
+
+  /// [_picker] getter.
+  ImagePicker get picker {
+    return _picker;
+  }
+
+  /// [_selectedImageNotifier] getter.
+  ValueNotifier<String?> get selectedImageNotifier {
+    return _selectedImageNotifier;
+  }
+
+  /// Getter of [_selectedImageNotifier]'s value.
+  String? get selectedImage {
+    return _selectedImageNotifier.value;
+  }
+
+  /// [_selectedImageNotifier] setter.
+  set selectedImage(String? selectedImage) {
+    _selectedImageNotifier.value = selectedImage;
   }
 }

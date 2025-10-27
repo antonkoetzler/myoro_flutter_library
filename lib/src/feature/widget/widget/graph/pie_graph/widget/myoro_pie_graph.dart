@@ -16,7 +16,13 @@ class MyoroPieGraph extends StatelessWidget {
   /// Default value of [items].
   static const itemsDefaultValue = <MyoroPieGraphItem>[];
 
-  const MyoroPieGraph({super.key, this.style = styleDefaultValue, this.typeEnum = typeEnumDefaultValue, this.centerWidget, this.items = itemsDefaultValue});
+  const MyoroPieGraph({
+    super.key,
+    this.style = styleDefaultValue,
+    this.typeEnum = typeEnumDefaultValue,
+    this.centerWidget,
+    this.items = itemsDefaultValue,
+  });
 
   /// Style.
   final MyoroPieGraphStyle style;
@@ -35,7 +41,10 @@ class MyoroPieGraph extends StatelessWidget {
   Widget build(context) {
     return InheritedProvider.value(
       value: style,
-      child: Stack(alignment: Alignment.center, children: [_PieGraph(typeEnum, items), if (centerWidget != null) centerWidget!]),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [_PieGraph(typeEnum, items), if (centerWidget != null) centerWidget!],
+      ),
     );
   }
 }

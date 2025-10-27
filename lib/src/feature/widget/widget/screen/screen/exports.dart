@@ -1,2 +1,1 @@
-export 'model/exports.dart';
-export 'myoro_screen.dart';
+export 'widget/exports.dart';

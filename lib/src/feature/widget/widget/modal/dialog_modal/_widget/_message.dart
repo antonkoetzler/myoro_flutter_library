@@ -1,15 +1,17 @@
-part of '../myoro_dialog_modal.dart';
+part of '../widget/myoro_dialog_modal.dart';
 
 /// Dialog text of [MyoroDialogModal].
 final class _Message extends StatelessWidget {
-  final MyoroDialogModalConfiguration _configuration;
+  const _Message(this._text, this._child);
 
-  const _Message(this._configuration);
+  final String _text;
+  final Widget? _child;
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDialogModalThemeExtension>();
-    final textStyle = themeExtension.textStyle;
-    return _configuration.text.isNotEmpty ? Text(_configuration.text, style: textStyle) : _configuration.child!;
+    final style = context.watch<MyoroDialogModalStyle>();
+    final textStyle = style.textStyle ?? themeExtension.textStyle;
+    return _text.isNotEmpty ? Text(_text, style: textStyle) : _child!;
   }
 }

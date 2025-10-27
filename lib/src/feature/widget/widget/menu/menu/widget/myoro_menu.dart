@@ -16,36 +16,28 @@ final class MyoroMenu<T> extends StatelessWidget {
   const MyoroMenu({
     super.key,
     this.style = const MyoroMenuStyle(),
-    required this.request,
-    this.selectedItems = const {},
-    this.onEndReachedRequest,
     this.searchCallback,
+    this.items,
+    this.selectedItems = const {},
     required this.itemBuilder,
-    this.onChanged,
   });
 
   /// Style.
   final MyoroMenuStyle style;
 
-  /// Request that returns the [MyoroPagination] of the [MyoroMenu].
-  final MyoroMenuRequest<T> request;
+  /// Whether or not to show the search bar.
+  final MyoroMenuSearchCallback<T>? searchCallback;
+
+  /// Items being displayed.
+  ///
+  /// If [items] is null, this is a loading state.
+  final Set<T>? items;
 
   /// Selected items.
   final Set<T> selectedItems;
 
-  /// Request that executes when the bottom of the menu is reached.
-  final MyoroMenuOnEndReachedRequest<T>? onEndReachedRequest;
-
-  /// Search callback that:
-  /// 1. Places a searchbar at the top of the items;
-  /// 2. Returns a [List<T>] of the filtered items given the query.
-  final MyoroMenuSearchCallback<T>? searchCallback;
-
   /// Menu item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;
-
-  /// Callback executed when the selected items are changed.
-  final MyoroMenuOnChanged<T>? onChanged;
 
   /// Build function.
   @override
@@ -54,7 +46,7 @@ final class MyoroMenu<T> extends StatelessWidget {
       providers: [
         InheritedProvider.value(value: style),
         InheritedProvider(
-          create: (_) => MyoroMenuViewModel(request, selectedItems, onEndReachedRequest, searchCallback, itemBuilder),
+          create: (_) => MyoroMenuViewModel<T>(searchCallback, items, selectedItems, itemBuilder),
           dispose: (_, v) => v.dispose(),
         ),
       ],

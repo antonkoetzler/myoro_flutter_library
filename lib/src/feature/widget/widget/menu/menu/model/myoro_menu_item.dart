@@ -35,4 +35,17 @@ sealed class MyoroMenuItem {
 
   /// [bool] to determine if the button is loading.
   final bool isLoading;
+
+  /// Copy with function.
+  MyoroMenuItem copyWith({
+    MouseCursor? cursor,
+    bool cursorProvided = true,
+    MyoroTooltipConfiguration? tooltipConfiguration,
+    bool tooltipConfigurationProvided = true,
+    MyoroButtonOnTapDown? onTapDown,
+    bool onTapDownProvided = true,
+    MyoroButtonOnTapUp? onTapUp,
+    bool onTapUpProvided = true,
+    bool? isLoading,
+  });
 }

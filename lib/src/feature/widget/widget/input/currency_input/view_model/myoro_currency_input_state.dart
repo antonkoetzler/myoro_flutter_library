@@ -3,26 +3,22 @@ part of 'myoro_currency_input_view_model.dart';
 /// State of [MyoroCurrencyInputViewModel].
 class MyoroCurrencyInputState {
   /// Default constructor.
-  MyoroCurrencyInputState(MyoroCurrencyEnum currency)
-    : _selectedCurrencyController = ValueNotifier(currency),
-      _inputDropdownController = MyoroSingleInputDropdownController(
-        allowDeselection: false,
-        selectedItem: currency,
-        request: MyoroCurrencyEnum.values.toSet,
-        itemBuilder: (i) => MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: i.formalName)),
-        selectedItemBuilder: (i) => i.formalName,
-      );
+  MyoroCurrencyInputState(MyoroCurrencyEnum currency) : _selectedCurrencyController = ValueNotifier(currency);
 
   /// [ValueNotifier] of the selected [MyoroCurrencyEnum].
   final ValueNotifier<MyoroCurrencyEnum> _selectedCurrencyController;
 
-  /// Dropdown inputDropdownController.
-  final MyoroSingleInputDropdownController<MyoroCurrencyEnum> _inputDropdownController;
+  /// [MyoroDropdown.showingController]
+  final _showingController = ValueNotifier(false);
+
+  /// [TextEditingController] of the input.
+  final _inputController = TextEditingController();
 
   /// Dispose function.
   void dispose() {
     _selectedCurrencyController.dispose();
-    _inputDropdownController.dispose();
+    _showingController.dispose();
+    _inputController.dispose();
   }
 
   /// [_selectedCurrencyController] getter.
@@ -30,13 +26,33 @@ class MyoroCurrencyInputState {
     return _selectedCurrencyController;
   }
 
-  /// [_inputDropdownController] getter.
-  MyoroSingleInputDropdownController<MyoroCurrencyEnum> get inputDropdownController {
-    return _inputDropdownController;
+  /// Getter of [_selectedCurrencyController]'s value.
+  MyoroCurrencyEnum get selectedCurrency {
+    return _selectedCurrencyController.value;
+  }
+
+  /// [_showingController] getter.
+  ValueNotifier<bool> get showingController {
+    return _showingController;
+  }
+
+  /// Getter of [_showingController]'s value.
+  bool get showing {
+    return _showingController.value;
+  }
+
+  /// [_inputController] getter.
+  TextEditingController get inputController {
+    return _inputController;
   }
 
   /// [_selectedCurrencyController] setter.
   set selectedCurrency(MyoroCurrencyEnum value) {
     _selectedCurrencyController.value = value;
+  }
+
+  /// [_showingController] setter.
+  set showing(bool value) {
+    _showingController.value = value;
   }
 }

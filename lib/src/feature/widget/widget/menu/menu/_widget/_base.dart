@@ -17,30 +17,17 @@ class _Base<T> extends StatelessWidget {
     final borderRadius = style.borderRadius ?? themeExtension.borderRadius ?? BorderRadius.zero;
     final constraints = style.constraints ?? themeExtension.constraints;
 
+    final viewModel = context.read<MyoroMenuViewModel<T>>();
+    final state = viewModel.state;
+    final items = state.items;
+
     return Container(
       decoration: BoxDecoration(color: backgroundColor, border: border, borderRadius: borderRadius),
       constraints: constraints,
       clipBehavior: Clip.antiAlias,
-      child: Consumer<MyoroMenuViewModel<T>>(
-        builder: (_, viewModel, _) {
-          final state = viewModel.state;
-          final itemsRequestController = state.itemsRequestController;
-          final jumpToBottomPreviousPosition = viewModel.jumpToBottomPreviousPosition;
-
-          return ValueListenableBuilder(
-            valueListenable: itemsRequestController,
-            builder: (_, MyoroRequest<Set<T>> state, _) {
-              jumpToBottomPreviousPosition();
-              return switch (state.status) {
-                MyoroRequestEnum.idle => const _Loader(),
-                MyoroRequestEnum.loading => const _Loader(),
-                MyoroRequestEnum.success => _SuccessContent<T>(),
-                MyoroRequestEnum.error => _DialogText(myoroMenuErrorGettingItemsText),
-              };
-            },
-          );
-        },
-      ),
+      child: items == null
+          ? const _Loader()
+          : (items.isEmpty ? _DialogText(myoroMenuErrorGettingItemsText) : _SuccessContent<T>()),
     );
   }
 }

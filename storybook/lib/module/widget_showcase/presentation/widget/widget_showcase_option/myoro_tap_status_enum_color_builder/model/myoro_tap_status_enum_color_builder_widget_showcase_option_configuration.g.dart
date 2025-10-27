@@ -25,13 +25,13 @@ mixin _$MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfigurationMixin {
     MyoroCheckboxOnChanged? checkboxOnChanged,
     Color? selectedIdleColor,
     bool selectedIdleColorProvided = true,
-    MyoroSingleMenuOnChanged<Color>? idleOnChanged,
+    InvalidType? idleOnChanged,
     Color? selectedHoverColor,
     bool selectedHoverColorProvided = true,
-    MyoroSingleMenuOnChanged<Color>? hoverOnChanged,
+    InvalidType? hoverOnChanged,
     Color? selectedTapColor,
     bool selectedTapColorProvided = true,
-    MyoroSingleMenuOnChanged<Color>? tapOnChanged,
+    InvalidType? tapOnChanged,
   }) {
     return MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionConfiguration(
       title: titleProvided ? (title ?? self.title) : null,

@@ -5,27 +5,31 @@ class MyoroDropdownState<T> {
   /// Default constructor.
   MyoroDropdownState(
     this.showingController,
+    this.items,
     this.selectedItems,
+    this.searchCallback,
     this.dropdownType,
     this.targetKey,
-    this.request,
     this.itemBuilder,
   );
 
   /// Effective showing controller.
   final ValueNotifier<bool> showingController;
 
+  /// Items.
+  final Set<T>? items;
+
   /// Selected items controller.
   final Set<T> selectedItems;
+
+  /// Search callback.
+  final MyoroMenuSearchCallback<T>? searchCallback;
 
   /// Dropdown type.
   final MyoroDropdownTypeEnum dropdownType;
 
   /// Target key.
   final GlobalKey? targetKey;
-
-  /// Request of the dropdown's menu.
-  final MyoroMenuRequest<T> request;
 
   /// Menu's item builder.
   final MyoroMenuItemBuilder<T> itemBuilder;

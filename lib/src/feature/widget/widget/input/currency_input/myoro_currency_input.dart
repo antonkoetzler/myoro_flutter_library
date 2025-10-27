@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 part '_widget/_prefix.dart';
+part '_widget/_input.dart';
 
 /// Currency [MyoroInput].
 class MyoroCurrencyInput extends StatelessWidget {
@@ -53,11 +54,24 @@ class MyoroCurrencyInput extends StatelessWidget {
       child: Builder(
         builder: (context) {
           final viewModel = context.read<MyoroCurrencyInputViewModel>();
+          final itemBuilder = viewModel.itemBuilder;
           final state = viewModel.state;
-          final inputDropdownController = state.inputDropdownController;
-          return MyoroSingleInputDropdown<MyoroCurrencyEnum>(
-            controller: inputDropdownController,
-            prefix: const _Prefix(),
+          final showingController = state.showingController;
+          // final inputDropdownController = state.inputDropdownController;
+          // return MyoroSingleInputDropdown<MyoroCurrencyEnum>(
+          //   allowDeselection: false,
+          //   selectedItem: currency,
+          //   request: MyoroCurrencyEnum.values.toSet,
+          //   itemBuilder: (i) =>
+          //       MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: i.formalName)),
+          //   selectedItemBuilder: (i) => i.formalName,
+          //   prefix: const _Prefix(),
+          // );
+          return MyoroDropdown(
+            showingController: showingController,
+            items: MyoroCurrencyEnum.values.toSet(),
+            itemBuilder: itemBuilder,
+            child: const _Input(),
           );
         },
       ),

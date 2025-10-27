@@ -12,7 +12,10 @@ part 'myoro_pie_graph_style.g.dart';
 @myoroModel
 class MyoroPieGraphStyle with _$MyoroPieGraphStyleMixin {
   static MyoroPieGraphStyle lerp(MyoroPieGraphStyle? a, MyoroPieGraphStyle? b, double t) {
-    return MyoroPieGraphStyle(itemColor: Color.lerp(a?.itemColor, b?.itemColor, t), itemRadius: lerpDouble(a?.itemRadius, b?.itemRadius, t));
+    return MyoroPieGraphStyle(
+      itemColor: Color.lerp(a?.itemColor, b?.itemColor, t),
+      itemRadius: lerpDouble(a?.itemRadius, b?.itemRadius, t),
+    );
   }
 
   const MyoroPieGraphStyle({this.itemColor, this.itemRadius});

@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_currency_input_state.dart';
@@ -6,9 +6,7 @@ part 'myoro_currency_input_state.dart';
 /// View model of [MyoroCurrencyInput].
 class MyoroCurrencyInputViewModel {
   /// Default constructor.
-  MyoroCurrencyInputViewModel(MyoroCurrencyEnum currency) : _state = MyoroCurrencyInputState(currency) {
-    _state.inputDropdownController.selectedItemController.addListener(_selectedItemControllerListener);
-  }
+  MyoroCurrencyInputViewModel(MyoroCurrencyEnum currency) : _state = MyoroCurrencyInputState(currency);
 
   /// State.
   final MyoroCurrencyInputState _state;
@@ -18,10 +16,14 @@ class MyoroCurrencyInputViewModel {
     _state.dispose();
   }
 
-  /// Listener of [MyoroSingleInputDropdownController.selectedItemController].
-  void _selectedItemControllerListener() {
-    _state.selectedCurrency = _state.inputDropdownController.selectedItem!;
-    if (_state.inputDropdownController.showing) _state.inputDropdownController.disableDropdown();
+  /// Disables the dropdown.
+  void disableDropdown() {
+    state.showing = false;
+  }
+
+  /// [MyoroDropdown.itemBuilder]
+  MyoroMenuItem itemBuilder(MyoroCurrencyEnum currency) {
+    return MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: currency.longSymbol));
   }
 
   /// [_state] getter.

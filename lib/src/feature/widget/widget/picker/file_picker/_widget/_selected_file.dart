@@ -1,4 +1,4 @@
-part of '../myoro_file_picker.dart';
+part of '../widget/myoro_file_picker.dart';
 
 /// Text displaying the selected file in [MyoroFilePicker].
 final class _SelectedFile extends StatelessWidget {
@@ -17,7 +17,7 @@ final class _SelectedFile extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: selectedFileNotifier,
       builder: (_, selectedFile, _) =>
-          Text(selectedFile?.name ?? context.localization.myoroFilePickerSelectedFileUnselectedText, style: textStyle),
+          Text(selectedFile?.name ?? context.localizations.myoroFilePickerSelectedFileUnselectedText, style: textStyle),
     );
   }
 }

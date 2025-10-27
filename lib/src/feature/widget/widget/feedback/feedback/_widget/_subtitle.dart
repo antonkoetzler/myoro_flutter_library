@@ -14,7 +14,8 @@ final class _Subtitle extends StatelessWidget {
     final maxLines = _subtitleConfiguration.maxLines;
     final overflow = _subtitleConfiguration.overflow;
     final alignment = _subtitleConfiguration.alignment;
-    final subtitleTextStyle = _subtitleConfiguration.style ?? style.subtitleTextStyle ?? themeExtension.subtitleTextStyle;
+    final subtitleTextStyle =
+        _subtitleConfiguration.style ?? style.subtitleTextStyle ?? themeExtension.subtitleTextStyle;
 
     return Text(text, maxLines: maxLines, overflow: overflow, textAlign: alignment, style: subtitleTextStyle);
   }

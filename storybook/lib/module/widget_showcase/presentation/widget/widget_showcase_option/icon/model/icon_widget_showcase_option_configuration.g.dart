@@ -20,7 +20,7 @@ mixin _$IconWidgetShowcaseOptionConfigurationMixin {
     String? label,
     IconData? selectedIcon,
     bool selectedIconProvided = true,
-    MyoroSingleMenuOnChanged<IconData>? iconOnChanged,
+    InvalidType? iconOnChanged,
     double? selectedIconSize,
     bool selectedIconSizeProvided = true,
     IconWidgetShowcaseOptionIconSizeOnChanged? iconSizeOnChanged,

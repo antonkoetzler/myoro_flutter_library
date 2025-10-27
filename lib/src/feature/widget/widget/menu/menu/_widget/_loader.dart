@@ -8,7 +8,8 @@ final class _Loader extends StatelessWidget {
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final style = context.watch<MyoroMenuStyle>();
-    final dialogTextLoaderPadding = style.dialogTextLoaderPadding ?? themeExtension.dialogTextLoaderPadding ?? EdgeInsets.zero;
+    final dialogTextLoaderPadding =
+        style.dialogTextLoaderPadding ?? themeExtension.dialogTextLoaderPadding ?? EdgeInsets.zero;
     return Center(
       child: Padding(padding: dialogTextLoaderPadding, child: const MyoroCircularLoader()),
     );

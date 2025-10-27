@@ -38,7 +38,9 @@ mixin _$MyoroBarGraphStyleMixin {
       barBorderRadius: barBorderRadiusProvided ? (barBorderRadius ?? self.barBorderRadius) : null,
       sideTitleTextStyle: sideTitleTextStyleProvided ? (sideTitleTextStyle ?? self.sideTitleTextStyle) : null,
       sideTitleInterval: sideTitleIntervalProvided ? (sideTitleInterval ?? self.sideTitleInterval) : null,
-      verticalSideTitleReversedSize: verticalSideTitleReversedSizeProvided ? (verticalSideTitleReversedSize ?? self.verticalSideTitleReversedSize) : null,
+      verticalSideTitleReversedSize: verticalSideTitleReversedSizeProvided
+          ? (verticalSideTitleReversedSize ?? self.verticalSideTitleReversedSize)
+          : null,
       horizontalSideTitleReversedSize: horizontalSideTitleReversedSizeProvided
           ? (horizontalSideTitleReversedSize ?? self.horizontalSideTitleReversedSize)
           : null,
