@@ -4,9 +4,8 @@ part of '../bundle/myoro_dropdown_bundle.dart';
 ///
 /// Stores the child [Widget] (call to action) and the dropdown [MyoroMenu].
 class _Base<T> extends StatelessWidget {
-  const _Base(this._controller, this._menuStyle, this._dropdownType, this._targetKey, this._request, this._itemBuilder, this._child);
+  const _Base(this._menuStyle, this._dropdownType, this._targetKey, this._request, this._itemBuilder, this._child);
 
-  final MyoroDropdownController<T> _controller;
   final MyoroMenuStyle _menuStyle;
   final MyoroDropdownTypeEnum _dropdownType;
   final GlobalKey? _targetKey;
@@ -16,7 +15,7 @@ class _Base<T> extends StatelessWidget {
 
   @override
   Widget build(_) {
-    final viewModel = MyoroDropdownViewModel<T>(_controller, _dropdownType, _targetKey, _request, _itemBuilder);
+    final viewModel = MyoroDropdownViewModel<T>(_dropdownType, _targetKey, _request, _itemBuilder);
     final state = viewModel.state;
     final baseKey = state.baseKey;
     final disableDropdown = viewModel.disableDropdown;
@@ -37,7 +36,11 @@ class _Base<T> extends StatelessWidget {
             child: CompositedTransformFollower(
               link: link,
               offset: Offset(0, state.targetKeySize?.height ?? 0),
-              child: TapRegion(groupId: state.tapRegionGroupId, onTapOutside: (_) => disableDropdown(), child: _Menu<T>()),
+              child: TapRegion(
+                groupId: state.tapRegionGroupId,
+                onTapOutside: (_) => disableDropdown(),
+                child: _Menu<T>(),
+              ),
             ),
           ),
           child: TapRegion(

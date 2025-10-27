@@ -4,53 +4,49 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 part 'myoro_dropdown_state.dart';
 
 /// View model of [MyoroDropdown].
-class MyoroDropdownViewModel<T, DROPDOWN_CONTROLLER extends MyoroDropdownController<T>> {
+class MyoroDropdownViewModel<T> {
   /// Default constructor.
-  MyoroDropdownViewModel(this.state) {
+  MyoroDropdownViewModel(
+    ValueNotifier<bool>? showingController,
+    MyoroDropdownTypeEnum dropdownType,
+    GlobalKey? targetKey,
+    MyoroMenuRequest<T> request,
+    MyoroMenuItemBuilder<T> itemBuilder,
+  ) : _state = MyoroDropdownState(showingController, dropdownType, targetKey, request, itemBuilder) {
     final dropdownType = state.dropdownType;
     final isOverlay = dropdownType.isOverlay;
     if (isOverlay) state.overlayPortalController = OverlayPortalController();
   }
 
   /// State.
-  final MyoroDropdownState<T, DROPDOWN_CONTROLLER> state;
-
-  /// Dispose function.
-  void dispose() {
-    state.dispose();
-  }
-
-  /// Toggles an item in the dropdown.
-  void toggleItem(T item) {
-    state.dropdownController.toggleItem(item);
-  }
-
-  /// Clears all selected items.
-  void clear() {
-    state.dropdownController.clear();
-  }
+  final MyoroDropdownState<T> _state;
 
   /// Enables the dropdown.
   void enableDropdown() {
     final dropdownType = state.dropdownType;
     final isOverlay = dropdownType.isOverlay;
-    final showing = state.dropdownController.showing;
+    final showing = state.showing;
     final targetKey = state.targetKey;
     if (showing) return;
     final targetKeyRenderBox = targetKey?.currentContext?.findRenderObject() as RenderBox?;
     state.targetKeySize = targetKeyRenderBox?.size;
     if (isOverlay) state.overlayPortalController.show();
-    state.dropdownController.enableDropdown();
+    state.showing = true;
   }
 
   /// Disables the dropdown.
   void disableDropdown() {
     final dropdownType = state.dropdownType;
     final isOverlay = dropdownType.isOverlay;
-    final showing = state.dropdownController.showing;
+    final showing = state.showing;
     if (!showing) return;
     if (isOverlay) state.overlayPortalController.hide();
     state.targetKeySize = null;
-    state.dropdownController.disableDropdown();
+    state.showing = false;
+  }
+
+  /// [_state] getter.
+  MyoroDropdownState<T> get state {
+    return _state;
   }
 }

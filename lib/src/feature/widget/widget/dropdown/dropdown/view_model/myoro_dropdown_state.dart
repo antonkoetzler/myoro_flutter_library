@@ -1,12 +1,23 @@
 part of 'myoro_dropdown_view_model.dart';
 
 /// State of [MyoroDropdownViewModel].
-class MyoroDropdownState<T, DROPDOWN_CONTROLLER extends MyoroDropdownController<T>> {
+class MyoroDropdownState<T> {
   /// Default constructor.
-  MyoroDropdownState(this.dropdownController, this.dropdownType, this.targetKey, this.request, this.itemBuilder);
+  MyoroDropdownState(
+    ValueNotifier<bool>? showingController,
+    this.dropdownType,
+    this.targetKey,
+    this.request,
+    this.itemBuilder,
+  ) {
+    _showingController = showingController ?? (_localShowingController ??= ValueNotifier(false));
+  }
 
-  /// Dropdown controller.
-  final DROPDOWN_CONTROLLER dropdownController;
+  /// Local showing controller.
+  ValueNotifier<bool>? _localShowingController;
+
+  /// Effective showing controller.
+  late final ValueNotifier<bool> _showingController;
 
   /// Dropdown type.
   final MyoroDropdownTypeEnum dropdownType;
@@ -38,7 +49,17 @@ class MyoroDropdownState<T, DROPDOWN_CONTROLLER extends MyoroDropdownController<
 
   /// Dispose function.
   void dispose() {
-    dropdownController.dispose();
+    _localShowingController?.dispose();
+  }
+
+  /// [_showingController] getter.
+  ValueNotifier<bool> get showingController {
+    return _showingController;
+  }
+
+  /// Getter of [_showingController]'s value.
+  bool get showing {
+    return _showingController.value;
   }
 
   /// [_overlayPortalController] getter.
@@ -64,6 +85,11 @@ class MyoroDropdownState<T, DROPDOWN_CONTROLLER extends MyoroDropdownController<
   /// [_tapRegionGroupId] getter.
   String get tapRegionGroupId {
     return _tapRegionGroupId;
+  }
+
+  /// [_showingController] setter.
+  set showing(bool showing) {
+    _showingController.value = showing;
   }
 
   /// [_overlayPortalController] setter.
