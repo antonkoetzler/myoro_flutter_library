@@ -17,7 +17,7 @@ class MyoroDropdown<T> extends StatelessWidget {
     super.key,
     this.menuStyle = menuStyleDefaultValue,
     required this.showingController,
-    required this.selectedItemsController,
+    this.selectedItems = const {},
     this.dropdownType = dropdownTypeDefaultValue,
     this.targetKey,
     required this.request,
@@ -34,7 +34,7 @@ class MyoroDropdown<T> extends StatelessWidget {
   final ValueNotifier<bool> showingController;
 
   /// Selected items controller.
-  final ValueNotifier<Set<T>> selectedItemsController;
+  final Set<T> selectedItems;
 
   /// Dropdown type.
   final MyoroDropdownTypeEnum dropdownType;
@@ -55,7 +55,7 @@ class MyoroDropdown<T> extends StatelessWidget {
   Widget build(_) {
     final viewModel = MyoroDropdownViewModel<T>(
       this.showingController,
-      selectedItemsController,
+      selectedItems,
       dropdownType,
       targetKey,
       request,

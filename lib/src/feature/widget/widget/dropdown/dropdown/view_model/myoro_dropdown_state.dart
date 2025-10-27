@@ -5,7 +5,7 @@ class MyoroDropdownState<T> {
   /// Default constructor.
   MyoroDropdownState(
     this.showingController,
-    this.selectedItemsController,
+    this.selectedItems,
     this.dropdownType,
     this.targetKey,
     this.request,
@@ -16,7 +16,7 @@ class MyoroDropdownState<T> {
   final ValueNotifier<bool> showingController;
 
   /// Selected items controller.
-  final ValueNotifier<Set<T>> selectedItemsController;
+  final Set<T> selectedItems;
 
   /// Dropdown type.
   final MyoroDropdownTypeEnum dropdownType;
@@ -49,11 +49,6 @@ class MyoroDropdownState<T> {
   /// Getter of [showingController]'s value.
   bool get showing {
     return showingController.value;
-  }
-
-  /// Getter of [selectedItemsController]'s value.
-  Set<T> get selectedItems {
-    return selectedItemsController.value;
   }
 
   /// [_overlayPortalController] getter.

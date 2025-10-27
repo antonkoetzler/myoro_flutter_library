@@ -8,19 +8,12 @@ class MyoroDropdownViewModel<T> {
   /// Default constructor.
   MyoroDropdownViewModel(
     ValueNotifier<bool> showingController,
-    ValueNotifier<Set<T>> selectedItemsController,
+    Set<T> selectedItems,
     MyoroDropdownTypeEnum dropdownType,
     GlobalKey? targetKey,
     MyoroMenuRequest<T> request,
     MyoroMenuItemBuilder<T> itemBuilder,
-  ) : _state = MyoroDropdownState(
-        showingController,
-        selectedItemsController,
-        dropdownType,
-        targetKey,
-        request,
-        itemBuilder,
-      ) {
+  ) : _state = MyoroDropdownState(showingController, selectedItems, dropdownType, targetKey, request, itemBuilder) {
     final dropdownType = state.dropdownType;
     final isOverlay = dropdownType.isOverlay;
     if (isOverlay) state.overlayPortalController = OverlayPortalController();

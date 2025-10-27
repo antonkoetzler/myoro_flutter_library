@@ -1,13 +1,28 @@
 part of 'myoro_selection_dropdown_view_model.dart';
 
 /// State of [MyoroSelectionDropdownViewModel].
-final class MyoroSelectionDropdownState<T> {
-  /// Default constructor.
-  MyoroSelectionDropdownState(Set<T> selectedItems);
+sealed class MyoroSelectionDropdownState<T> {
+  /// [ValueNotifier] of showing controller.
+  final _showingController = ValueNotifier(false);
 
-  /// [MyoroDropdown.showingController]
-  final ValueNotifier<bool> showingController;
+  /// Dispose function.
+  @mustCallSuper
+  void dispose() {
+    _showingController.dispose();
+  }
 
-  /// [MyoroDropdown.selectedItemsController]
-  final ValueNotifier<Set<T>> selectedItemsController;
+  /// [_showingController] getter.
+  ValueNotifier<bool> get showingController {
+    return _showingController;
+  }
+
+  /// Getter of [showingController]'s value.
+  bool get showing {
+    return showingController.value;
+  }
+
+  /// Setter of [showingController]'s value.
+  set showing(bool value) {
+    showingController.value = value;
+  }
 }

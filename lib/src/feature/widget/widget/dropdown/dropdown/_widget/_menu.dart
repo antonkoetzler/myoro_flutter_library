@@ -11,12 +11,7 @@ final class _Menu<T> extends StatelessWidget {
     final state = viewModel.state;
     final request = state.request;
     final itemBuilder = state.itemBuilder;
-    final selectedItemsController = state.selectedItemsController;
-    return MyoroMenu(
-      style: menuStyle,
-      request: request,
-      itemBuilder: itemBuilder,
-      selectedItems: selectedItemsController.value,
-    );
+    final selectedItems = state.selectedItems;
+    return MyoroMenu(style: menuStyle, request: request, itemBuilder: itemBuilder, selectedItems: selectedItems);
   }
 }

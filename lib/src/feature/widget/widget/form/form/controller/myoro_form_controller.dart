@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 /// Controller of [MyoroForm].
+///
+/// TODO: Need to remove this and make it simpler to conform with single responsibility principle.
 class MyoroFormController<T> extends MyoroRequestController<T> {
   /// Default constructor.
-  MyoroFormController({this.validation, MyoroFormRequest<T>? request, this.onSuccess, this.onError}) : super(requestCallback: request) {
+  MyoroFormController({this.validation, MyoroFormRequest<T>? request, this.onSuccess, this.onError})
+    : super(requestCallback: request) {
     addListener(_listener);
   }
 

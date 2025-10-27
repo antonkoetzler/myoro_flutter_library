@@ -6,19 +6,10 @@ class MyoroSingleSelectionDropdown<T> extends StatelessWidget {
   static const dropdownTypeDefaultValue = MyoroDropdownTypeEnum.expanding;
 
   /// Default constructor.
-  const MyoroSingleSelectionDropdown({super.key, this.dropdownType = dropdownTypeDefaultValue, required this.request, required this.itemBuilder});
-
-  /// Dropdown type.
-  final MyoroDropdownTypeEnum dropdownType;
-
-  /// Request.
-  final MyoroMenuRequest<T> request;
-
-  /// Item builder.
-  final MyoroMenuItemBuilder<T> itemBuilder;
+  const MyoroSingleSelectionDropdown({super.key});
 
   @override
   Widget build(_) {
-    return _Base(dropdownType, request, itemBuilder);
+    return const _Base();
   }
 }

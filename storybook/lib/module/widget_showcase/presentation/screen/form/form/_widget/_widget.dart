@@ -10,12 +10,10 @@ final class _Widget extends StatelessWidget {
     final widgetShowcaseThemeExtension = context.resolveThemeExtension<WidgetShowcaseThemeExtension>();
 
     return MyoroForm<String>(
-      configuration: MyoroFormConfiguration(
-        request: viewModel.request,
-        validation: viewModel.validation,
-        onSuccess: (result) => viewModel.onSuccess(context, result),
-        onError: (errorMessage) => viewModel.onError(context, errorMessage),
-      ),
+      request: viewModel.request,
+      validation: viewModel.validation,
+      onSuccess: (result) => viewModel.onSuccess(context, result),
+      onError: (errorMessage) => viewModel.onError(context, errorMessage),
       builder: (request, formController) {
         return Column(
           mainAxisSize: MainAxisSize.min,

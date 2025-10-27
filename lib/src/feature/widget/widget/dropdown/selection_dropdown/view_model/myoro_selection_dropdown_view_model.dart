@@ -1,20 +1,14 @@
 import 'package:flutter/foundation.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
 part 'myoro_selection_dropdown_state.dart';
+part 'myoro_multi_selection_dropdown_state.dart';
+part 'myoro_single_selection_dropdown_state.dart';
 
 /// View model of a selection dropdown.
-abtract class MyoroSelectionDropdownViewModel<T> {
+class MyoroSelectionDropdownViewModel<T> {
+  /// Default constructor.
+  MyoroSelectionDropdownViewModel(this.state);
+
   /// State.
-  final _state = MyoroSelectionDropdownState<T>();
-
-  /// Dispose function.
-  void dispose() {
-    _state.dispose();
-  }
-
-  /// [_state] getter.
-  MyoroSelectionDropdownState<T> get state {
-    return _state;
-  }
+  final MyoroSelectionDropdownState<T> state;
 }
