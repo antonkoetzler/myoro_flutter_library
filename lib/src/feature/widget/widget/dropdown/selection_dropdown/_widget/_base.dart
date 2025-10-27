@@ -16,7 +16,8 @@ final class _Base<T> extends StatelessWidget {
   @override
   Widget build(_) {
     return MyoroDropdown(
-      controller: controller,
+      showingController: showingController,
+      selectedItemsController: selectedItemsController,
       dropdownType: _dropdownType,
       targetKey: targetKey,
       request: _request,

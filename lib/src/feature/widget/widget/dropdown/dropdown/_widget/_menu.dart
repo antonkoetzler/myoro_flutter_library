@@ -1,4 +1,4 @@
-part of '../bundle/myoro_dropdown_bundle.dart';
+part of '../widget/myoro_dropdown.dart';
 
 /// Menu widget.
 final class _Menu<T> extends StatelessWidget {
@@ -11,6 +11,12 @@ final class _Menu<T> extends StatelessWidget {
     final state = viewModel.state;
     final request = state.request;
     final itemBuilder = state.itemBuilder;
-    return MyoroMenu(style: menuStyle, request: request, itemBuilder: itemBuilder, selectedItems: state.controller.selectedItems);
+    final selectedItemsController = state.selectedItemsController;
+    return MyoroMenu(
+      style: menuStyle,
+      request: request,
+      itemBuilder: itemBuilder,
+      selectedItems: selectedItemsController.value,
+    );
   }
 }

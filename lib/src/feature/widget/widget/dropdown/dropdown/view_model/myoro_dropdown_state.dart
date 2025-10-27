@@ -4,20 +4,19 @@ part of 'myoro_dropdown_view_model.dart';
 class MyoroDropdownState<T> {
   /// Default constructor.
   MyoroDropdownState(
-    ValueNotifier<bool>? showingController,
+    this.showingController,
+    this.selectedItemsController,
     this.dropdownType,
     this.targetKey,
     this.request,
     this.itemBuilder,
-  ) {
-    _showingController = showingController ?? (_localShowingController ??= ValueNotifier(false));
-  }
-
-  /// Local showing controller.
-  ValueNotifier<bool>? _localShowingController;
+  );
 
   /// Effective showing controller.
-  late final ValueNotifier<bool> _showingController;
+  final ValueNotifier<bool> showingController;
+
+  /// Selected items controller.
+  final ValueNotifier<Set<T>> selectedItemsController;
 
   /// Dropdown type.
   final MyoroDropdownTypeEnum dropdownType;
@@ -47,19 +46,14 @@ class MyoroDropdownState<T> {
   /// [Size] of [MyoroDropdownConfiguration.overlayTargetKey]'s [Widget] to apply the offset.
   Size? targetKeySize;
 
-  /// Dispose function.
-  void dispose() {
-    _localShowingController?.dispose();
-  }
-
-  /// [_showingController] getter.
-  ValueNotifier<bool> get showingController {
-    return _showingController;
-  }
-
-  /// Getter of [_showingController]'s value.
+  /// Getter of [showingController]'s value.
   bool get showing {
-    return _showingController.value;
+    return showingController.value;
+  }
+
+  /// Getter of [selectedItemsController]'s value.
+  Set<T> get selectedItems {
+    return selectedItemsController.value;
   }
 
   /// [_overlayPortalController] getter.
@@ -89,7 +83,7 @@ class MyoroDropdownState<T> {
 
   /// [_showingController] setter.
   set showing(bool showing) {
-    _showingController.value = showing;
+    showingController.value = showing;
   }
 
   /// [_overlayPortalController] setter.
