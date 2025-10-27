@@ -7,12 +7,7 @@ final class _ReadOnlyOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Read only?',
-        onChanged: (value) => viewModel.state.readOnly = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Read only?', onChanged: (value) => state.readOnly = value);
   }
 }

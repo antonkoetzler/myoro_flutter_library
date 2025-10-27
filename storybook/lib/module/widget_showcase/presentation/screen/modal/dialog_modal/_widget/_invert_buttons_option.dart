@@ -7,12 +7,7 @@ final class _InvertButtonsOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Invert buttons?',
-        onChanged: (value) => viewModel.state.invertButtons = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Invert buttons?', onChanged: (value) => state.invertButtons = value);
   }
 }

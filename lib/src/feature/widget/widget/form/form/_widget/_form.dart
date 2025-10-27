@@ -1,14 +1,15 @@
-part of '../myoro_form.dart';
+part of '../widget/myoro_form.dart';
 
 /// [Form] of [MyoroForm].
 class _Form<T> extends StatelessWidget {
-  final MyoroFormController<T> _controller;
+  const _Form(this._builder);
+
   final MyoroFormBuilder<T> _builder;
 
-  const _Form(this._controller, this._builder);
-
   @override
-  Widget build(_) {
-    return Form(key: _controller.formKey, child: _builder(_controller.request, _controller));
+  Widget build(context) {
+    final controller = context.read<MyoroFormController<T>>();
+    final formKey = controller.formKey;
+    return Form(key: formKey, child: _builder(controller));
   }
 }

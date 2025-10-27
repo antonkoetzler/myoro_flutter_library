@@ -7,12 +7,6 @@ final class _IsEndDrawerOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'End drawer?',
-        onChanged: (value) => viewModel.isEndDrawer = value,
-      ),
-    );
+    return MyoroCheckbox(label: 'End drawer?', onChanged: (value) => viewModel.isEndDrawer = value);
   }
 }

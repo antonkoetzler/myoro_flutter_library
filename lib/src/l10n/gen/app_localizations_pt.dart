@@ -25,4 +25,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get myoroImagePickerSelectionTypeModalButtonGalleryText => 'Procurar na galeria';
+
+  @override
+  String get myoroMenuErrorGettingItemsText => 'Erro ao obter itens.';
 }

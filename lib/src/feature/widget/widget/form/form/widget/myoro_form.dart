@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:myoro_flutter_library/myoro_flutter_library.dart';
+import 'package:provider/provider.dart';
+
+part '../_widget/_form.dart';
+
+/// Base form widget. Should always be used for any type of form content.
+class MyoroForm<T> extends StatelessWidget {
+  /// Controller factory.
+  const MyoroForm.withController({super.key, required this.controller, required this.builder})
+    : validation = null,
+      request = null,
+      onSuccess = null,
+      onError = null;
+
+  /// Controllerless factory.
+  const MyoroForm.withoutController({super.key, this.validation, this.request, this.onSuccess, this.onError, required this.builder}) : controller = null;
+
+  /// Internal constructor.
+  const MyoroForm._(this.controller, this.validation, this.request, this.onSuccess, this.onError, this.builder)
+    : assert(
+        !(controller != null && (validation != null || request != null || onSuccess != null || onError != null)),
+        '[MyoroForm<$T>]: If [controller] is provided, [validation], [request], [onSuccess], '
+        'and [onError] must be null, as they are already provided in the controller.',
+      );
+
+  /// Controller in the case that the controller needs to be used outside of [builder]'s scope.
+  final MyoroFormController<T>? controller;
+
+  /// Validation function of [MyoroForm].
+  ///
+  /// If unsuccessful, a [String] of the error message is returned. If successful, returns [kMyoroEmptyString].
+  final MyoroFormValidation? validation;
+
+  /// Request that is executed after during the form process.
+  final MyoroFormRequest<T>? request;
+
+  /// Executed when the form is completed successfully.
+  final MyoroFormOnSuccess<T>? onSuccess;
+
+  /// Executed when the form is completed unsuccessfully.
+  final MyoroFormOnError? onError;
+
+  /// Builder of the content within the form.
+  final MyoroFormBuilder<T> builder;
+
+  @override
+  Widget build(context) {
+    return InheritedProvider(
+      create: (_) => controller ?? MyoroFormController(validation: validation, request: request, onSuccess: onSuccess, onError: onError),
+      dispose: (_, c) => controller != null ? c.dispose() : null,
+      child: Consumer<MyoroFormController<T>>(builder: (_, c, _) => _Form(builder)),
+    );
+  }
+}

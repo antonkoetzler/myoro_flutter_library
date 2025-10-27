@@ -9,11 +9,6 @@ final class _ShowBottomDividerOption extends StatelessWidget {
     final viewModel = context.read<MyoroAppBarWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
 
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Bordered?',
-        onChanged: (bool value) => state.showBottomDivider = value,
-      ),
-    );
+    return MyoroCheckbox(label: 'Bordered?', onChanged: (bool value) => state.showBottomDivider = value);
   }
 }

@@ -4,17 +4,21 @@ import 'package:storybook/storybook.dart';
 
 /// State of [MyoroCheckboxWidgetShowcaseScreenViewModel].
 final class MyoroCheckboxWidgetShowcaseScreenState extends ChangeNotifier {
-  /// [MyoroCheckboxConfiguration.label]
-  String _label = MyoroCheckboxConfiguration.labelDefaultValue;
+  /// [MyoroCheckbox.label]
+  String _label = MyoroCheckbox.labelDefaultValue;
 
   /// [MyoroCheckboxThemeExtension.labelTextStyle]
   TextStyle? _labelTextStyle;
 
   /// [_label] getter.
-  String get label => _label;
+  String get label {
+    return _label;
+  }
 
   /// [_labelTextStyle] getter.
-  TextStyle? get labelTextStyle => _labelTextStyle;
+  TextStyle? get labelTextStyle {
+    return _labelTextStyle;
+  }
 
   /// [_label] setter.
   set label(String label) {

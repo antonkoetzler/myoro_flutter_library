@@ -7,12 +7,10 @@ final class _OnConfirmOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show snackbar when confirm button is pressed?',
-        onChanged: (value) => viewModel.state.onConfirmEnabled = value,
-      ),
+      label: 'Show snackbar when confirm button is pressed?',
+      onChanged: (value) => state.onConfirmEnabled = value,
     );
   }
 }

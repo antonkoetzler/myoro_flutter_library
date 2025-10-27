@@ -1,4 +1,4 @@
-part of '../myoro_resize_divider.dart';
+part of '../widget/myoro_resize_divider.dart';
 
 /// Resize button of [MyoroResizeDivider].
 final class _ResizeButton extends StatelessWidget {

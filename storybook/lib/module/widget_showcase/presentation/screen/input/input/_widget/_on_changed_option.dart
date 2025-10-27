@@ -7,12 +7,7 @@ final class _OnChangedOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Callback when text is changed?',
-        onChanged: (value) => viewModel.state.onChangedEnabled = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Callback when text is changed?', onChanged: (value) => state.onChangedEnabled = value);
   }
 }

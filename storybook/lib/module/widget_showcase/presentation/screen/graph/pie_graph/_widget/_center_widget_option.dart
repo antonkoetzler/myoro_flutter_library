@@ -7,12 +7,7 @@ final class _CenterWidgetOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroPieGraphWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Display center widget?',
-        onChanged: (value) => viewModel.state.centerWidgetEnabled = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Display center widget?', onChanged: (value) => state.centerWidgetEnabled = value);
   }
 }

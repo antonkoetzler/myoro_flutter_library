@@ -7,12 +7,12 @@ final class _AutoplayEnabledOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
+    final autoplayEnabled = state.autoplay;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Autoplay enabled?',
-        onChanged: (value) => viewModel.state.autoplay = value,
-      ),
+      label: 'Autoplay enabled?',
+      value: autoplayEnabled,
+      onChanged: (value) => state.autoplay = value,
     );
   }
 }

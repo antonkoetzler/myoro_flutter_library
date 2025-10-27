@@ -1,40 +1,35 @@
 part of '../bundle/myoro_dropdown_bundle.dart';
 
-/// Merge point of [MyoroSingleDropdown] and [MyoroMultiDropdown].
-class _Base<
-  T,
-  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  V extends MyoroDropdownViewModel<T, C, MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>>
->
-    extends StatelessWidget {
-  const _Base(this._viewModel, this._menuStyle, this._child);
+/// Generic dropdown [Widget].
+///
+/// Stores the child [Widget] (call to action) and the dropdown [MyoroMenu].
+class _Base<T> extends StatelessWidget {
+  const _Base(this._controller, this._menuStyle, this._dropdownType, this._targetKey, this._request, this._itemBuilder, this._child);
 
-  /// View model.
-  final V _viewModel;
-
-  /// Style of the menu.
+  final MyoroDropdownController<T> _controller;
   final MyoroMenuStyle _menuStyle;
-
-  /// [Widget] that the dropdown belongs to.
+  final MyoroDropdownTypeEnum _dropdownType;
+  final GlobalKey? _targetKey;
+  final MyoroMenuRequest<T> _request;
+  final MyoroMenuItemBuilder<T> _itemBuilder;
   final Widget _child;
 
   @override
   Widget build(_) {
-    // Set the menu style for the dropdown.
-    _viewModel.menuStyle = _menuStyle;
-
-    final state = _viewModel.state;
-    final link = state.link;
-    final configuration = state.configuration;
-    final dropdownType = configuration.dropdownType;
-    final showingController = state.showingController;
-    final menuWidget = _viewModel.menuWidget;
+    final viewModel = MyoroDropdownViewModel<T>(_controller, _dropdownType, _targetKey, _request, _itemBuilder);
+    final state = viewModel.state;
     final baseKey = state.baseKey;
+    final disableDropdown = viewModel.disableDropdown;
+    final showingController = _controller.showingController;
+    final link = state.link;
 
-    return InheritedProvider.value(
+    return MultiProvider(
       key: baseKey,
-      value: _viewModel,
-      child: switch (dropdownType) {
+      providers: [
+        InheritedProvider.value(value: _menuStyle),
+        InheritedProvider.value(value: viewModel),
+      ],
+      child: switch (_dropdownType) {
         MyoroDropdownTypeEnum.overlay => OverlayPortal(
           controller: state.overlayPortalController,
           overlayChildBuilder: (_) => Positioned(
@@ -42,11 +37,7 @@ class _Base<
             child: CompositedTransformFollower(
               link: link,
               offset: Offset(0, state.targetKeySize?.height ?? 0),
-              child: TapRegion(
-                groupId: state.tapRegionGroupId,
-                onTapOutside: (_) => _viewModel.disable(),
-                child: menuWidget,
-              ),
+              child: TapRegion(groupId: state.tapRegionGroupId, onTapOutside: (_) => disableDropdown(), child: _Menu<T>()),
             ),
           ),
           child: TapRegion(
@@ -59,7 +50,7 @@ class _Base<
           builder: (_, bool isShowing, _) {
             return TapRegion(
               groupId: state.tapRegionGroupId,
-              onTapOutside: isShowing ? (_) => _viewModel.disable() : null,
+              onTapOutside: isShowing ? (_) => disableDropdown() : null,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +62,7 @@ class _Base<
                     Flexible(
                       child: TapRegion(
                         groupId: state.tapRegionGroupId,
-                        child: SizedBox(width: state.targetKeySize?.width, child: menuWidget),
+                        child: SizedBox(width: state.targetKeySize?.width, child: _Menu<T>()),
                       ),
                     ),
                 ],

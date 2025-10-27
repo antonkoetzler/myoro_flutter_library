@@ -5,5 +5,7 @@
 
   "myoroImagePickerSelectionTypeModalText": "Select image source",
   "myoroImagePickerSelectionTypeModalButtonCameraText": "Open camera",
-  "myoroImagePickerSelectionTypeModalButtonGalleryText": "Browse gallery"
+  "myoroImagePickerSelectionTypeModalButtonGalleryText": "Browse gallery",
+
+  "myoroMenuErrorGettingItemsText": "Error getting items."
 }

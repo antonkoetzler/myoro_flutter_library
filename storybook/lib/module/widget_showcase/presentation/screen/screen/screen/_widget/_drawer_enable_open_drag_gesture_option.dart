@@ -7,12 +7,10 @@ final class _DrawerEnableOpenDragGestureOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroScreenWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Enable drawer open drag gesture?',
-        onChanged: (value) => viewModel.state.drawerEnableOpenDragGesture = value,
-      ),
+      label: 'Enable drawer open drag gesture?',
+      onChanged: (value) => state.drawerEnableOpenDragGesture = value,
     );
   }
 }

@@ -14,8 +14,5 @@ typedef MyoroMenuOnEndReachedRequest<T> = FutureOr<Set<T>> Function(Set<T> items
 /// [MyoroMenuItem] builder from a generic object.
 typedef MyoroMenuItemBuilder<T> = MyoroMenuItem Function(T item);
 
-/// Callback executed when a [MyoroSingleMenu]'s selected item is changed.
-typedef MyoroSingleMenuOnChanged<T> = void Function(T? item);
-
-/// Callback executed when a [MyoroMultiMenu]'s selected items are changed.
-typedef MyoroMultiMenuOnChanged<T> = void Function(Set<T> items);
+/// Callback executed when a [MyoroMenu]'s selected items are changed.
+typedef MyoroMenuOnChanged<T> = void Function(Set<T> items);

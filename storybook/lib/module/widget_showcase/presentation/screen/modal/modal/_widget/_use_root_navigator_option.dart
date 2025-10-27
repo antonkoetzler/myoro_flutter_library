@@ -7,12 +7,10 @@ final class _UseRootNavigatorOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Attach modal to specific point of widget tree?',
-        onChanged: (value) => viewModel.state.useRootNavigator = value,
-      ),
+      label: 'Attach modal to specific point of widget tree?',
+      onChanged: (value) => state.useRootNavigator = value,
     );
   }
 }

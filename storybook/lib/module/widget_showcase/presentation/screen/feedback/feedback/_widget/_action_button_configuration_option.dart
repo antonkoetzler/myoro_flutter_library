@@ -7,12 +7,9 @@ final class _ActionButtonConfigurationOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroFeedbackWidgetShowcaseScreenViewModel>();
-
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show action button?',
-        onChanged: (enabled) => viewModel.state.actionButtonConfigurationEnabled = enabled,
-      ),
+      label: 'Show action button?',
+      onChanged: (enabled) => viewModel.state.actionButtonConfigurationEnabled = enabled,
     );
   }
 }

@@ -7,12 +7,7 @@ final class _ValidationOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Enable validation?',
-        onChanged: (value) => viewModel.state.validationEnabled = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Enable validation?', onChanged: (value) => state.validationEnabled = value);
   }
 }

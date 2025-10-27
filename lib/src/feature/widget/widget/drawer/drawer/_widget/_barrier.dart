@@ -1,14 +1,15 @@
-part of '../myoro_drawer.dart';
+part of '../widget/myoro_drawer.dart';
 
 /// Clickable area behind the [MyoroDrawer] that closes the [MyoroDrawer].
 final class _Barrier extends StatelessWidget {
-  const _Barrier();
+  const _Barrier(this._barrierDismissable);
+
+  final bool _barrierDismissable;
 
   @override
   Widget build(context) {
-    final configuration = context.read<MyoroDrawerConfiguration>();
     return GestureDetector(
-      onTap: configuration.barrierDismissable ? () => context.closeDrawer() : null,
+      onTap: _barrierDismissable ? () => context.closeDrawer() : null,
       child: Container(color: MyoroColors.transparent),
     );
   }

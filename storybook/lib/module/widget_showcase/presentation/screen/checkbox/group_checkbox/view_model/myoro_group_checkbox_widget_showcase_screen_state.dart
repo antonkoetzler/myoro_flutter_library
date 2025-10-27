@@ -6,15 +6,15 @@ import 'package:storybook/storybook.dart';
 final class MyoroGroupCheckboxWidgetShowcaseScreenState extends ChangeNotifier {
   MyoroGroupCheckboxWidgetShowcaseScreenState(this._spacing, this._runSpacing);
 
-  /// [MyoroGroupCheckboxConfiguration.direction]
-  Axis _direction = MyoroGroupCheckboxConfiguration.directionDefaultValue;
+  /// [MyoroGroupCheckbox.direction]
+  Axis _direction = MyoroGroupCheckbox.directionDefaultValue;
   Axis get direction => _direction;
   set direction(Axis direction) {
     _direction = direction;
     notifyListeners();
   }
 
-  /// [MyoroGroupCheckboxConfiguration.spacing]
+  /// [MyoroGroupCheckbox.spacing]
   double _spacing;
   double get spacing => _spacing;
   set spacing(double spacing) {
@@ -22,7 +22,7 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// [MyoroGroupCheckboxConfiguration.runSpacing]
+  /// [MyoroGroupCheckbox.runSpacing]
   double _runSpacing;
   double get runSpacing => _runSpacing;
   set runSpacing(double runSpacing) {

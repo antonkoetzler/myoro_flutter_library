@@ -1,22 +1,22 @@
-part of '../myoro_feedback.dart';
+part of '../widget/myoro_feedback.dart';
 
 /// Action button of [MyoroFeedback].
 final class _ActionButton extends StatelessWidget {
-  const _ActionButton();
+  const _ActionButton(this._actionButtonConfiguration);
+
+  final MyoroFeedbackActionButtonConfiguration _actionButtonConfiguration;
 
   @override
   Widget build(context) {
-    final configuration = context.read<MyoroFeedbackConfiguration>();
-    final actionButtonConfiguration = configuration.actionButtonConfiguration!;
-    final style = actionButtonConfiguration.style;
-    final cursor = actionButtonConfiguration.cursor;
-    final tooltipConfiguration = actionButtonConfiguration.tooltipConfiguration;
-    final onTapDown = actionButtonConfiguration.onTapDown;
-    final onTapUp = actionButtonConfiguration.onTapUp;
-    final isLoading = actionButtonConfiguration.isLoading;
-    final invert = actionButtonConfiguration.invert;
-    final iconConfiguration = actionButtonConfiguration.iconConfiguration;
-    final textConfiguration = actionButtonConfiguration.textConfiguration;
+    final style = _actionButtonConfiguration.style;
+    final cursor = _actionButtonConfiguration.cursor;
+    final tooltipConfiguration = _actionButtonConfiguration.tooltipConfiguration;
+    final onTapDown = _actionButtonConfiguration.onTapDown;
+    final onTapUp = _actionButtonConfiguration.onTapUp;
+    final isLoading = _actionButtonConfiguration.isLoading;
+    final invert = _actionButtonConfiguration.invert;
+    final iconConfiguration = _actionButtonConfiguration.iconConfiguration;
+    final textConfiguration = _actionButtonConfiguration.textConfiguration;
 
     return IntrinsicWidth(
       child: MyoroIconTextButton(

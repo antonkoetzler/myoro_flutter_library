@@ -7,12 +7,10 @@ final class _OnFieldSubmittedOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Callback when enter is pressed?',
-        onChanged: (value) => viewModel.state.onFieldSubmittedEnabled = value,
-      ),
+      label: 'Callback when enter is pressed?',
+      onChanged: (value) => state.onFieldSubmittedEnabled = value,
     );
   }
 }

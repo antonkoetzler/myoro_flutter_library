@@ -19,6 +19,7 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
     this.titleContentDividerPadding,
     this.titleTextStyle,
     this.closeButtonContentPadding,
+    this.closeButtonIcon,
   });
 
   /// Fake constructor.
@@ -28,7 +29,8 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
       drawerShape = faker.randomGenerator.boolean() ? myoroFake<RoundedRectangleBorder>() : null,
       titleContentDividerPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
       titleTextStyle = faker.randomGenerator.boolean() ? myoroFake<TextStyle>() : null,
-      closeButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null;
+      closeButtonContentPadding = faker.randomGenerator.boolean() ? myoroFake<EdgeInsets>() : null,
+      closeButtonIcon = faker.randomGenerator.boolean() ? myoroFake<IconData>() : null;
 
   /// Builder constructor.
   MyoroDrawerThemeExtension.builder(ColorScheme colorScheme, TextTheme textTheme)
@@ -40,7 +42,8 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
       ),
       titleContentDividerPadding = const EdgeInsets.only(top: 4, bottom: 10),
       titleTextStyle = textTheme.titleLarge!,
-      closeButtonContentPadding = const EdgeInsets.all(kMyoroMultiplier);
+      closeButtonContentPadding = const EdgeInsets.all(kMyoroMultiplier),
+      closeButtonIcon = Icons.close;
 
   /// Padding of [_Drawer].
   @override
@@ -66,6 +69,10 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
   @override
   final EdgeInsets? closeButtonContentPadding;
 
+  /// [IconData] of the close button.
+  @override
+  final IconData? closeButtonIcon;
+
   @override
   MyoroDrawerThemeExtension lerp(covariant MyoroDrawerThemeExtension? other, double t) {
     if (other is! MyoroDrawerThemeExtension) return this;
@@ -76,6 +83,8 @@ class MyoroDrawerThemeExtension extends ThemeExtension<MyoroDrawerThemeExtension
       drawerShape: style.drawerShape,
       titleContentDividerPadding: style.titleContentDividerPadding,
       titleTextStyle: style.titleTextStyle,
+      closeButtonContentPadding: style.closeButtonContentPadding,
+      closeButtonIcon: style.closeButtonIcon,
     );
   }
 }

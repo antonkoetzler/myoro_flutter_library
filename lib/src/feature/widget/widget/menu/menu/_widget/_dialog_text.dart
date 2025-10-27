@@ -1,17 +1,16 @@
-part of '../bundle/myoro_menu_bundle.dart';
+part of '../widget/myoro_menu.dart';
 
 /// Dialog text for when there is an error or no items to display in the [MyoroMenu].
 final class _DialogText extends StatelessWidget {
-  final String _text;
-
   const _DialogText(this._text);
+
+  final String _text;
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroMenuThemeExtension>();
     final style = context.watch<MyoroMenuStyle>();
-    final dialogTextLoaderPadding =
-        style.dialogTextLoaderPadding ?? themeExtension.dialogTextLoaderPadding ?? EdgeInsets.zero;
+    final dialogTextLoaderPadding = style.dialogTextLoaderPadding ?? themeExtension.dialogTextLoaderPadding ?? EdgeInsets.zero;
 
     return Center(
       child: Padding(

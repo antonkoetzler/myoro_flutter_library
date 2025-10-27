@@ -7,12 +7,7 @@ final class _AppBarOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroScreenWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show app bar?',
-        onChanged: (value) => viewModel.state.appBarEnabled = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Show app bar?', onChanged: (value) => state.appBarEnabled = value);
   }
 }

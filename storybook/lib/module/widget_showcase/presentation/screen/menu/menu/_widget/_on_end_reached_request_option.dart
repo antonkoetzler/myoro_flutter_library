@@ -9,10 +9,8 @@ final class _OnEndReachedRequestOption extends StatelessWidget {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Fetch more content when end is reached?',
-        onChanged: (onEndReachedRequestEnabled) => state.onEndReachedRequestEnabled = onEndReachedRequestEnabled,
-      ),
+      label: 'Fetch more content when end is reached?',
+      onChanged: (onEndReachedRequestEnabled) => state.onEndReachedRequestEnabled = onEndReachedRequestEnabled,
     );
   }
 }

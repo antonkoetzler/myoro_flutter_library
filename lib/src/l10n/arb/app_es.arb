@@ -5,5 +5,7 @@
 
   "myoroImagePickerSelectionTypeModalText": "Seleccionar fuente de la imagen",
   "myoroImagePickerSelectionTypeModalButtonCameraText": "Abrir cámara",
-  "myoroImagePickerSelectionTypeModalButtonGalleryText": "Explorar galería"
+  "myoroImagePickerSelectionTypeModalButtonGalleryText": "Explorar galería",
+
+  "myoroMenuErrorGettingItemsText": "Error al obtener elementos."
 }

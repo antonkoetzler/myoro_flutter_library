@@ -8,11 +8,6 @@ final class _BorderOption extends StatelessWidget {
   Widget build(context) {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Bordered?',
-        onChanged: (borderEnabled) => state.borderEnabled = borderEnabled,
-      ),
-    );
+    return MyoroCheckbox(label: 'Bordered?', onChanged: (borderEnabled) => state.borderEnabled = borderEnabled);
   }
 }

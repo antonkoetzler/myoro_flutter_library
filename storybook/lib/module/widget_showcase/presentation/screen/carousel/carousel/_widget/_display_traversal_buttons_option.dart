@@ -7,12 +7,12 @@ final class _DisplayTraversalButtonsOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroCarouselWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
+    final displayTraversalButtons = state.displayTraversalButtons;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Display traversal buttons?',
-        onChanged: (value) => viewModel.state.displayTraversalButtons = value,
-      ),
+      label: 'Display traversal buttons?',
+      value: displayTraversalButtons,
+      onChanged: (value) => state.displayTraversalButtons = value,
     );
   }
 }

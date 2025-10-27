@@ -1,4 +1,4 @@
-part of '../myoro_checkbox.dart';
+part of '../widget/myoro_checkbox.dart';
 
 /// [Checkbox] of [MyoroCheckbox].
 final class _Checkbox extends StatelessWidget {
@@ -16,18 +16,18 @@ final class _Checkbox extends StatelessWidget {
 
     final viewModel = context.read<MyoroCheckboxViewModel>();
     final state = viewModel.state;
-    final enabledController = state.enabledController;
+    final valueController = state.valueController;
     final onTapUp = viewModel.onTapUp;
 
     return ValueListenableBuilder(
-      valueListenable: enabledController,
-      builder: (_, bool enabled, _) {
+      valueListenable: valueController,
+      builder: (_, bool value, _) {
         // This [SizedBox] removes the default margin in [Checkbox].
         return SizedBox(
           width: 20,
           height: 20,
           child: Checkbox(
-            value: enabled,
+            value: value,
             activeColor: checkboxActiveColor,
             checkColor: checkboxCheckColor,
             hoverColor: checkboxHoverColor,

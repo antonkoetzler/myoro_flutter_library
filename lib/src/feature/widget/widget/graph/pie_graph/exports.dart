@@ -1,5 +1,5 @@
 export 'enum/exports.dart';
 export 'model/exports.dart';
-export 'myoro_pie_graph.dart';
+export 'widget/exports.dart';
 export 'theme_extension/myoro_pie_graph_theme_extension.dart';
-export 'view_model/exports.dart';
+export 'style/exports.dart';

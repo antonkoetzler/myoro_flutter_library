@@ -7,12 +7,6 @@ final class _ShowCloseButtonOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show close button?',
-        onChanged: (value) => viewModel.showCloseButton = value,
-      ),
-    );
+    return MyoroCheckbox(label: 'Show close button?', onChanged: (value) => viewModel.showCloseButton = value);
   }
 }

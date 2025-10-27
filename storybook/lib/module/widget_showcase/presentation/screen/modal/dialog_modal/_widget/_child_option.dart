@@ -7,12 +7,10 @@ final class _ChildOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show custom child widget instead of a dialog message?',
-        onChanged: (value) => viewModel.state.child = const _ChildWidget(),
-      ),
+      label: 'Show custom child widget instead of a dialog message?',
+      onChanged: (value) => state.child = const _ChildWidget(),
     );
   }
 }

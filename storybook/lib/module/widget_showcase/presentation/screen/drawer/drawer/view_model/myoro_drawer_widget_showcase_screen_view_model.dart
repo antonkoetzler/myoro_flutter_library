@@ -4,17 +4,17 @@ import 'package:storybook/storybook.dart';
 
 /// View model of [MyoroDrawerWidgetShowcaseScreen].
 final class MyoroDrawerWidgetShowcaseScreenViewModel {
-  /// [MyoroDrawerConfiguration.title]
-  String title = MyoroDrawerConfiguration.titleDefaultValue;
+  /// [MyoroDrawer.title]
+  String title = MyoroDrawer.titleDefaultValue;
 
-  /// [MyoroDrawerConfiguration.titleTextStyle]
+  /// [MyoroDrawer.titleTextStyle]
   TextStyle? titleTextStyle;
 
-  /// [MyoroDrawerConfiguration.showCloseButton]
-  bool showCloseButton = MyoroDrawerConfiguration.showCloseButtonDefaultValue;
+  /// [MyoroDrawer.showCloseButton]
+  bool showCloseButton = MyoroDrawer.showCloseButtonDefaultValue;
 
-  /// [MyoroDrawerConfiguration.barrierDismissable]
-  bool barrierDismissable = MyoroDrawerConfiguration.barrierDismissableDefaultValue;
+  /// [MyoroDrawer.barrierDismissable]
+  bool barrierDismissable = MyoroDrawer.barrierDismissableDefaultValue;
 
   /// [bool] controlling if the drawer is going to be displayed on the left or right side.
   bool isEndDrawer = false;
@@ -27,13 +27,11 @@ final class MyoroDrawerWidgetShowcaseScreenViewModel {
     context.openDrawer(
       isEndDrawer: isEndDrawer,
       drawer: MyoroDrawer(
-        configuration: MyoroDrawerConfiguration(
-          title: title,
-          showCloseButton: showCloseButton,
-          barrierDismissable: barrierDismissable,
-          child: const SizedBox.shrink(),
-        ),
         style: MyoroDrawerStyle(closeButtonContentPadding: closeButtonContentPadding),
+        title: title,
+        showCloseButton: showCloseButton,
+        barrierDismissable: barrierDismissable,
+        child: const SizedBox.shrink(),
       ),
     );
   }

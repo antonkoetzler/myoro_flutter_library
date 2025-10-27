@@ -21,28 +21,22 @@ final class MyoroGroupCheckboxWidgetShowcaseScreenViewModel {
     _state.dispose();
   }
 
-  /// [MyoroGroupCheckboxConfiguration] builder.
-  MyoroGroupCheckboxConfiguration buildConfiguration(BuildContext context) {
-    void onChanged(BuildContext context, String key, MyoroGroupCheckboxItems checkboxes) {
-      context.showSnackBar(
-        snackBar: MyoroSnackBar(
-          configuration: MyoroSnackBarConfiguration(
-            snackBarType: MyoroSnackBarTypeEnum.attention,
-            message: '$key changed. It\'s value is now ${checkboxes[key]}.',
-          ),
+  /// [MyoroGroupCheckbox.onChanged]
+  void onChanged(BuildContext context, String key, MyoroGroupCheckboxItems checkboxes) {
+    context.showSnackBar(
+      snackBar: MyoroSnackBar(
+        configuration: MyoroSnackBarConfiguration(
+          snackBarType: MyoroSnackBarTypeEnum.attention,
+          message: '$key changed. It\'s value is now ${checkboxes[key]}.',
         ),
-      );
-    }
-
-    return MyoroGroupCheckboxConfiguration(
-      direction: _state.direction,
-      onChanged: (key, checkboxes) => onChanged(context, key, checkboxes),
+      ),
     );
   }
 
   /// [MyoroGroupCheckboxThemeExtension] builder.
-  MyoroGroupCheckboxThemeExtension buildStyle(BuildContext context) {
-    final themeExtension = context.resolveThemeExtension<MyoroGroupCheckboxThemeExtension>();
-    return themeExtension.copyWith(spacing: _state.spacing, runSpacing: _state.runSpacing);
+  MyoroGroupCheckboxStyle get style {
+    final spacing = _state.spacing;
+    final runSpacing = _state.runSpacing;
+    return MyoroGroupCheckboxStyle(spacing: spacing, runSpacing: runSpacing);
   }
 }

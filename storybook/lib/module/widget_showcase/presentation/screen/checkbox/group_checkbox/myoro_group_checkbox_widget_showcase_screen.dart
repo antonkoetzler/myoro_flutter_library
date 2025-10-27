@@ -36,18 +36,13 @@ class _MyoroGroupCheckboxWidgetShowcaseScreenState extends State<MyoroGroupCheck
   Widget build(_) {
     return InheritedProvider.value(
       value: _viewModel,
-      child: ListenableBuilder(
-        listenable: _viewModel.state,
-        builder: (_, _) {
-          return const WidgetShowcaseScreen(
-            configuration: WidgetShowcaseScreenConfiguration(
-              widgetName: MyoroWidgetListEnum.myoroGroupCheckboxTitle,
-              widget: _Widget(),
-              configurationOptions: MyoroGroupCheckboxWidgetShowcaseScreen.configurationOptions,
-              stylingOptions: MyoroGroupCheckboxWidgetShowcaseScreen.stylingOptions,
-            ),
-          );
-        },
+      child: const WidgetShowcaseScreen(
+        configuration: WidgetShowcaseScreenConfiguration(
+          widgetName: MyoroWidgetListEnum.myoroGroupCheckboxTitle,
+          widget: _Widget(),
+          configurationOptions: MyoroGroupCheckboxWidgetShowcaseScreen.configurationOptions,
+          stylingOptions: MyoroGroupCheckboxWidgetShowcaseScreen.stylingOptions,
+        ),
       ),
     );
   }

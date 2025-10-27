@@ -1,7 +1,7 @@
-part of '../bundle/myoro_menu_bundle.dart';
+part of '../widget/myoro_menu.dart';
 
 /// [Widget] displayed when [MyoroMenuConfiguration.request] is successful.
-final class _SuccessContent<T, C extends _C<T>> extends StatelessWidget {
+final class _SuccessContent<T> extends StatelessWidget {
   const _SuccessContent();
 
   @override
@@ -18,13 +18,15 @@ final class _SuccessContent<T, C extends _C<T>> extends StatelessWidget {
         ) ??
         BorderRadius.zero;
 
-    final viewModel = context.read<MyoroMenuViewModel<T, C>>();
+    final viewModel = context.read<MyoroMenuViewModel<T>>();
+    final state = viewModel.state;
+    final searchCallback = state.searchCallback;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (viewModel.state.configuration.searchCallback != null) _SearchBar<T, C>(),
-        Flexible(child: _ItemsSection<T, C>()),
+        if (searchCallback != null) _SearchBar<T>(),
+        Flexible(child: _ItemsSection<T>()),
       ],
     );
   }

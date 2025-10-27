@@ -3,6 +3,7 @@ import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 import 'package:provider/provider.dart';
 
 part '../_widget/_base.dart';
+part '../_widget/_menu.dart';
 
-part '../myoro_multi_dropdown.dart';
-part '../myoro_single_dropdown.dart';
+part '../widget/myoro_single_dropdown.dart';
+part '../widget/myoro_multi_dropdown.dart';

@@ -5,7 +5,8 @@ part 'myoro_checkbox_state.dart';
 
 /// Controller of [MyoroCheckbox].
 class MyoroCheckboxViewModel {
-  MyoroCheckboxViewModel(MyoroCheckboxConfiguration configuration) : _state = MyoroCheckboxState(configuration);
+  MyoroCheckboxViewModel(String label, bool value, MyoroCheckboxOnChanged? onChanged)
+    : _state = MyoroCheckboxState(label, value, onChanged);
 
   /// State.
   final MyoroCheckboxState _state;
@@ -19,15 +20,15 @@ class MyoroCheckboxViewModel {
   }
 
   /// Toggles the checkbox value.
-  void toggle([bool? enabled]) {
-    state.enabled = enabled ?? !state.enabled;
+  void toggle([bool? value]) {
+    state.value = value ?? !state.value;
   }
 
   /// On tap up to toggle the [Checkbox],.
   void onTapUp(_) {
-    final configuration = state.configuration;
-    final enabled = state.enabled;
-    configuration.onChanged?.call(!enabled);
-    state.enabled = !state.enabled;
+    final newValue = !_state.value;
+    final onChanged = _state.onChanged;
+    onChanged?.call(newValue);
+    _state.value = newValue;
   }
 }

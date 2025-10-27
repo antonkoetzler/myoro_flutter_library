@@ -7,12 +7,7 @@ final class _ShowCloseButtonOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show close button?',
-        onChanged: (value) => viewModel.state.showCloseButton = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Show close button?', onChanged: (value) => state.showCloseButton = value);
   }
 }

@@ -7,12 +7,7 @@ final class _FooterTextOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show text below the slider?',
-        onChanged: (value) => viewModel.state.footerTextEnabled = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Show text below the slider?', onChanged: (value) => state.footerTextEnabled = value);
   }
 }

@@ -128,6 +128,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Browse gallery'**
   String get myoroImagePickerSelectionTypeModalButtonGalleryText;
+
+  /// No description provided for @myoroMenuErrorGettingItemsText.
+  ///
+  /// In en, this message translates to:
+  /// **'Error getting items.'**
+  String get myoroMenuErrorGettingItemsText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

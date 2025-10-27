@@ -7,13 +7,12 @@ final class _TooltipEnabledOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
+    final tooltipEnabled = state.tooltipEnabled;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Tooltip enabled?',
-        value: viewModel.state.tooltipEnabled,
-        onChanged: (value) => viewModel.state.tooltipEnabled = value,
-      ),
+      label: 'Tooltip enabled?',
+      value: tooltipEnabled,
+      onChanged: (value) => state.tooltipEnabled = value,
     );
   }
 }

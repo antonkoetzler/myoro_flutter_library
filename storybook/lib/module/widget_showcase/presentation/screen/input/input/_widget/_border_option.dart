@@ -7,12 +7,7 @@ final class _BorderOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Custom border enabled?',
-        onChanged: (value) => viewModel.state.borderEnabled = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Custom border enabled?', onChanged: (value) => state.borderEnabled = value);
   }
 }

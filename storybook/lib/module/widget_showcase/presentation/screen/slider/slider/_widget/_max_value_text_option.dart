@@ -7,12 +7,10 @@ final class _MaxValueTextOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show max value of slider on the right?',
-        onChanged: (value) => viewModel.state.maxValueTextEnabled = value,
-      ),
+      label: 'Show max value of slider on the right?',
+      onChanged: (value) => state.maxValueTextEnabled = value,
     );
   }
 }

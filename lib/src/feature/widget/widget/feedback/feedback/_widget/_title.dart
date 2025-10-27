@@ -1,21 +1,20 @@
-part of '../myoro_feedback.dart';
+part of '../widget/myoro_feedback.dart';
 
 /// Title of [MyoroFeedback].
 final class _Title extends StatelessWidget {
-  const _Title();
+  const _Title(this._titleConfiguration);
+
+  final MyoroTextConfiguration _titleConfiguration;
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroFeedbackThemeExtension>();
     final style = context.watch<MyoroFeedbackStyle>();
-    final configuration = context.read<MyoroFeedbackConfiguration>();
-    final titleConfiguration = configuration.titleConfiguration;
-    final text = titleConfiguration.text;
-    final maxLines = titleConfiguration.maxLines;
-    final overflow = titleConfiguration.overflow;
-    final alignment = titleConfiguration.alignment;
-    final titleTextStyle = titleConfiguration.style ?? style.titleTextStyle ?? themeExtension.titleTextStyle;
-
+    final text = _titleConfiguration.text;
+    final maxLines = _titleConfiguration.maxLines;
+    final overflow = _titleConfiguration.overflow;
+    final alignment = _titleConfiguration.alignment;
+    final titleTextStyle = _titleConfiguration.style ?? style.titleTextStyle ?? themeExtension.titleTextStyle;
     return Text(text, maxLines: maxLines, overflow: overflow, textAlign: alignment, style: titleTextStyle);
   }
 }

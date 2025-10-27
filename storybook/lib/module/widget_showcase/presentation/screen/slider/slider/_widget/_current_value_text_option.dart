@@ -7,12 +7,10 @@ final class _CurrentValueTextOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSlidersWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show current value of slider on the left?',
-        onChanged: (value) => viewModel.state.currentValueTextEnabled = value,
-      ),
+      label: 'Show current value of slider on the left?',
+      onChanged: (value) => state.currentValueTextEnabled = value,
     );
   }
 }

@@ -7,12 +7,10 @@ final class _OnChangedOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroRadioWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show snackbar when value is changed?',
-        onChanged: (value) => viewModel.state.onChangedEnabled = value,
-      ),
+      label: 'Show snackbar when value is changed?',
+      onChanged: (value) => state.onChangedEnabled = value,
     );
   }
 }

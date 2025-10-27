@@ -44,17 +44,16 @@ final class _SliderWidgetShowcaseOptionState extends State<SliderWidgetShowcaseO
     final state = _viewModel.state;
     final configuration = state.configuration;
     final sliderValueController = state.sliderValueController;
+    final checkboxOnChanged = configuration.checkboxOnChanged;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (configuration.checkboxOnChanged != null)
+        if (checkboxOnChanged != null)
           MyoroCheckbox(
-            configuration: MyoroCheckboxConfiguration(
-              label: configuration.label,
-              value: configuration.enabled,
-              onChanged: _viewModel.checkboxOnChanged,
-            ),
+            label: configuration.label,
+            value: configuration.enabled,
+            onChanged: _viewModel.checkboxOnChanged,
           )
         else
           Text(configuration.label, style: checkboxThemeExtension.labelTextStyle),

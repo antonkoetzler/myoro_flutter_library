@@ -9,11 +9,9 @@ final class _ThumbVisibilityOption extends StatelessWidget {
     final viewModel = context.read<MyoroAccordionsWidgetShowcaseScreenViewModel>();
 
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show scrollbar thumb',
-        value: viewModel.state.thumbVisibility,
-        onChanged: (value) => viewModel.state.thumbVisibility = value,
-      ),
+      label: 'Show scrollbar thumb',
+      value: viewModel.state.thumbVisibility,
+      onChanged: (value) => viewModel.state.thumbVisibility = value,
     );
   }
 }

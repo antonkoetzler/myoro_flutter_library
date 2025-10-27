@@ -1,4 +1,4 @@
-part of '../myoro_drawer.dart';
+part of '../widget/myoro_drawer.dart';
 
 /// Close button of [MyoroDrawer].
 final class _CloseButton extends StatelessWidget {
@@ -8,13 +8,11 @@ final class _CloseButton extends StatelessWidget {
   Widget build(context) {
     final drawerController = context.read<MyoroDrawerController>();
 
-    final configuration = context.read<MyoroDrawerConfiguration>();
-    final closeButtonIcon = configuration.closeButtonIcon;
-
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
     final style = context.watch<MyoroDrawerStyle>();
     final closeButtonContentPadding =
         style.closeButtonContentPadding ?? themeExtension.closeButtonContentPadding ?? EdgeInsets.zero;
+    final closeButtonIcon = style.closeButtonIcon ?? themeExtension.closeButtonIcon;
 
     final drawerCloseButtonStyle = const MyoroIconTextButtonStyle()
         .bordered(context)

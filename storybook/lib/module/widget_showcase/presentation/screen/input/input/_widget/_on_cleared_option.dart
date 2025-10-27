@@ -7,12 +7,10 @@ final class _OnClearedOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Callback when clear text button is pressed?',
-        onChanged: (value) => viewModel.state.onClearedEnabled = value,
-      ),
+      label: 'Callback when clear text button is pressed?',
+      onChanged: (value) => state.onClearedEnabled = value,
     );
   }
 }

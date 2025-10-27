@@ -6,16 +6,11 @@ class MyoroCurrencyInputState {
   MyoroCurrencyInputState(MyoroCurrencyEnum currency)
     : _selectedCurrencyController = ValueNotifier(currency),
       _inputDropdownController = MyoroSingleInputDropdownController(
-        configuration: MyoroSingleInputDropdownConfiguration(
-          menuConfiguration: MyoroSingleMenuConfiguration(
-            allowDeselection: false,
-            selectedItem: currency,
-            request: MyoroCurrencyEnum.values.toSet,
-            itemBuilder: (i) =>
-                MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: i.formalName)),
-          ),
-          selectedItemBuilder: (i) => i.formalName,
-        ),
+        allowDeselection: false,
+        selectedItem: currency,
+        request: MyoroCurrencyEnum.values.toSet,
+        itemBuilder: (i) => MyoroMenuIconTextButtonItem(textConfiguration: MyoroTextConfiguration(text: i.formalName)),
+        selectedItemBuilder: (i) => i.formalName,
       );
 
   /// [ValueNotifier] of the selected [MyoroCurrencyEnum].

@@ -11,8 +11,6 @@ final class _Checkbox extends StatelessWidget {
     final viewModel = context.read<MyoroInputViewModel>();
     final checkboxOnChanged = viewModel.checkboxOnChanged;
 
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(value: _enabled, onChanged: checkboxOnChanged),
-    );
+    return MyoroCheckbox(value: _enabled, onChanged: checkboxOnChanged);
   }
 }

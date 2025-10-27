@@ -1,80 +1,47 @@
 import 'package:flutter/foundation.dart';
-import 'package:myoro_flutter_library/myoro_flutter_library.dart';
 
-/// Abstract controller of a dropdown.
-abstract class MyoroDropdownController<
-  T,
-  C extends MyoroDropdownConfiguration<T, MyoroMenuConfiguration<T>>,
-  MENU_CONTROLLER extends MyoroMenuController<T, MyoroMenuViewModel<T, MyoroMenuConfiguration<T>>>,
-  V extends MyoroDropdownViewModel<T, C, MENU_CONTROLLER>
-> {
-  MyoroDropdownController({required C configuration, required V viewModel}) : _viewModel = viewModel;
+/// Abstract dropdown controller.
+abstract class MyoroDropdownController<T> {
+  /// Default constructor.
+  MyoroDropdownController({bool showing = false}) : _showingController = ValueNotifier(showing);
 
-  /// View model.
-  final V _viewModel;
+  /// [ValueNotifier] controlling if the dropdown is being displayed or not.
+  final ValueNotifier<bool> _showingController;
 
   /// Dispose function.
   @mustCallSuper
   void dispose() {
-    _viewModel.dispose();
-  }
-
-  /// Toggle display of the dropdown.
-  void toggleDropdown() {
-    _viewModel.toggle();
+    _showingController.dispose();
   }
 
   /// Enables the dropdown.
   void enableDropdown() {
-    _viewModel.enable();
+    _showingController.value = true;
   }
 
   /// Disables the dropdown.
   void disableDropdown() {
-    _viewModel.disable();
+    _showingController.value = false;
+  }
+
+  /// Toggles the dropdown.
+  void toggleDropdown() {
+    _showingController.value = !_showingController.value;
   }
 
   /// Toggles an item in the dropdown.
-  void toggleItem(T item) {
-    _viewModel.state.menuController.toggleItem(item);
-  }
+  void toggleItem(T item);
 
   /// Clears all selected items.
-  void clear() {
-    _viewModel.state.menuController.clear();
-  }
+  void clear();
 
-  /// [_viewModel] getter.
-  @protected
-  V get viewModel => _viewModel;
-
-  /// Style of the dropdown (if it is set).
-  MyoroMenuStyle? get menuStyle {
-    return _viewModel.menuStyleInitialized ? _viewModel.menuStyle : null;
-  }
-
-  /// Configuration getter.
-  C get configuration {
-    return _viewModel.state.configuration;
-  }
-
-  /// [MyoroDropdownState.showingController] getter.
+  /// [_showingController] getter.
   ValueNotifier<bool> get showingController {
-    return _viewModel.state.showingController;
+    return _showingController;
   }
 
-  /// Getter of [_viewModel.state.showingController]'s value.
+  /// Getter of [_showingController]'s value.
   bool get showing {
-    return _viewModel.state.showing;
-  }
-
-  /// Getter of the dropdown's menu controller.
-  MENU_CONTROLLER get menuController {
-    return _viewModel.state.menuController;
-  }
-
-  /// Configuration setter.
-  set configuration(C configuration) {
-    _viewModel.configuration = configuration;
+    return _showingController.value;
   }
 }

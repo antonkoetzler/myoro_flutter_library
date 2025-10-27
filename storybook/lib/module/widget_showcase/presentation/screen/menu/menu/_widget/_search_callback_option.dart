@@ -9,10 +9,8 @@ final class _SearchCallbackOption extends StatelessWidget {
     final viewModel = context.read<MyoroMenusWidgetShowcaseScreenViewModel>();
     final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Enable search?',
-        onChanged: (searchCallbackEnabled) => state.searchCallbackEnabled = searchCallbackEnabled,
-      ),
+      label: 'Enable search?',
+      onChanged: (searchCallbackEnabled) => state.searchCallbackEnabled = searchCallbackEnabled,
     );
   }
 }

@@ -47,14 +47,12 @@ final class _MyoroTapStatusEnumColorBuilderWidgetShowcaseOptionState
       spacing: widgetShowcaseThemeExtension.spacing,
       children: [
         MyoroCheckbox(
-          configuration: MyoroCheckboxConfiguration(
-            label: label,
-            value: enabled,
-            onChanged: (enabled) {
-              checkboxOnChanged(enabled);
-              enabledController.value = enabled;
-            },
-          ),
+          label: label,
+          value: enabled,
+          onChanged: (enabled) {
+            checkboxOnChanged(enabled);
+            enabledController.value = enabled;
+          },
         ),
         ValueListenableBuilder(
           valueListenable: enabledController,

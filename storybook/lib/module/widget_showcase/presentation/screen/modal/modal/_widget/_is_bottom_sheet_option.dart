@@ -7,12 +7,7 @@ final class _IsBottomSheetOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Is bottom sheet?',
-        onChanged: (isBottomSheet) => viewModel.state.isBottomSheet = isBottomSheet,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Is bottom sheet?', onChanged: (isBottomSheet) => state.isBottomSheet = isBottomSheet);
   }
 }

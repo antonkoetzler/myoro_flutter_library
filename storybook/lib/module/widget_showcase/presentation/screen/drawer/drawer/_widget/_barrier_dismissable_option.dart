@@ -7,12 +7,6 @@ final class _BarrierDismissableOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDrawerWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Barrier dismissable?',
-        onChanged: (value) => viewModel.barrierDismissable = value,
-      ),
-    );
+    return MyoroCheckbox(label: 'Barrier dismissable?', onChanged: (value) => viewModel.barrierDismissable = value);
   }
 }

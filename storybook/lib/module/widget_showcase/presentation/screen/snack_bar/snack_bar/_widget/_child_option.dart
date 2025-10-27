@@ -7,12 +7,10 @@ final class _ChildOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroSnackBarWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show custom widget instead of simple text?',
-        onChanged: (value) => viewModel.state.childEnabled = value,
-      ),
+      label: 'Show custom widget instead of simple text?',
+      onChanged: (value) => state.childEnabled = value,
     );
   }
 }

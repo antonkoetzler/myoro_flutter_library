@@ -7,12 +7,10 @@ final class _OnClosedOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroModalWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Run callback when modal is closed?',
-        onChanged: (value) => viewModel.state.onClosedEnabled = value,
-      ),
+      label: 'Run callback when modal is closed?',
+      onChanged: (value) => state.onClosedEnabled = value,
     );
   }
 }

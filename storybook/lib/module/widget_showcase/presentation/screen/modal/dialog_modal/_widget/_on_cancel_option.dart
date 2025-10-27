@@ -7,12 +7,10 @@ final class _OnCancelOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroDialogModalWidgetShowcaseScreenViewModel>();
-
+    final state = viewModel.state;
     return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Show snackbar when cancel button is pressed?',
-        onChanged: (value) => viewModel.state.onCancelEnabled = value,
-      ),
+      label: 'Show snackbar when cancel button is pressed?',
+      onChanged: (value) => state.onCancelEnabled = value,
     );
   }
 }

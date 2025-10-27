@@ -1,4 +1,4 @@
-part of '../myoro_checkbox.dart';
+part of '../widget/myoro_checkbox.dart';
 
 /// Label of [MyoroCheckbox].
 final class _Label extends StatelessWidget {
@@ -12,8 +12,7 @@ final class _Label extends StatelessWidget {
 
     final viewModel = context.read<MyoroCheckboxViewModel>();
     final state = viewModel.state;
-    final configuration = state.configuration;
-    final label = configuration.label;
+    final label = state.label;
 
     return Text(label, maxLines: 1, overflow: TextOverflow.ellipsis, style: labelTextStyle);
   }

@@ -7,13 +7,8 @@ final class _IsLoadingOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroButtonWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Is loading?',
-        value: viewModel.state.isLoading,
-        onChanged: (value) => viewModel.state.isLoading = value,
-      ),
-    );
+    final state = viewModel.state;
+    final isLoading = state.isLoading;
+    return MyoroCheckbox(label: 'Is loading?', value: isLoading, onChanged: (value) => state.isLoading = value);
   }
 }

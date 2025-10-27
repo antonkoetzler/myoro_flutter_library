@@ -1,15 +1,14 @@
-part of '../myoro_drawer.dart';
+part of '../widget/myoro_drawer.dart';
 
 /// The actual drawer of the [MyoroDrawer].
 final class _Drawer extends StatelessWidget {
-  const _Drawer();
+  const _Drawer(this._title, this._child);
+
+  final String _title;
+  final Widget _child;
 
   @override
   Widget build(context) {
-    final configuration = context.read<MyoroDrawerConfiguration>();
-    final title = configuration.title;
-    final child = configuration.child;
-
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
     final style = context.watch<MyoroDrawerStyle>();
     final drawerPadding = style.drawerPadding ?? themeExtension.drawerPadding ?? EdgeInsets.zero;
@@ -26,11 +25,11 @@ final class _Drawer extends StatelessWidget {
           padding: drawerContentPadding,
           child: Column(
             children: [
-              if (title.isNotEmpty) ...[
-                _Title(configuration),
+              if (_title.isNotEmpty) ...[
+                _Title(_title),
                 Padding(padding: titleContentDividerPadding, child: const MyoroBasicDivider(Axis.horizontal)),
               ],
-              Expanded(child: child),
+              Expanded(child: _child),
             ],
           ),
         ),

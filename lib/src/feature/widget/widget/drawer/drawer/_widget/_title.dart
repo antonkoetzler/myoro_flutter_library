@@ -1,16 +1,16 @@
-part of '../myoro_drawer.dart';
+part of '../widget/myoro_drawer.dart';
 
 /// Title of the [MyoroDrawer].
 final class _Title extends StatelessWidget {
-  final MyoroDrawerConfiguration _configuration;
+  const _Title(this._title);
 
-  const _Title(this._configuration);
+  final String _title;
 
   @override
   Widget build(context) {
     final themeExtension = context.resolveThemeExtension<MyoroDrawerThemeExtension>();
     final style = context.watch<MyoroDrawerStyle>();
     final titleTextStyle = style.titleTextStyle ?? themeExtension.titleTextStyle;
-    return Text(_configuration.title, style: titleTextStyle);
+    return Text(_title, style: titleTextStyle);
   }
 }

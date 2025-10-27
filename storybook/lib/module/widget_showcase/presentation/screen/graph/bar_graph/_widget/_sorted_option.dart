@@ -7,9 +7,7 @@ final class _SortedOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroBarGraphWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(label: 'Sorted?', onChanged: (value) => viewModel.state.sorted = value),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Sorted?', onChanged: (value) => state.sorted = value);
   }
 }

@@ -7,12 +7,7 @@ final class _SuffixOption extends StatelessWidget {
   @override
   Widget build(context) {
     final viewModel = context.read<MyoroInputWidgetShowcaseScreenViewModel>();
-
-    return MyoroCheckbox(
-      configuration: MyoroCheckboxConfiguration(
-        label: 'Enable suffix?',
-        onChanged: (value) => viewModel.state.suffixEnabled = value,
-      ),
-    );
+    final state = viewModel.state;
+    return MyoroCheckbox(label: 'Enable suffix?', onChanged: (value) => state.suffixEnabled = value);
   }
 }
