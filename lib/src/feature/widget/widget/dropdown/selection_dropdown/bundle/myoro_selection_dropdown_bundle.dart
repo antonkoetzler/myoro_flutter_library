@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 part '../_widget/_base.dart';
 part '../_widget/_input.dart';
+part '../_widget/_selection_dropdown.dart';
 
 part '../widget/myoro_single_selection_dropdown.dart';
 part '../widget/myoro_multi_selection_dropdown.dart';

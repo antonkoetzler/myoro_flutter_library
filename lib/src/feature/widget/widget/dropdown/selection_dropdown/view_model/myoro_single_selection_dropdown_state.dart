@@ -6,10 +6,11 @@ class MyoroSingleSelectionDropdownState<T> extends MyoroSelectionDropdownState<T
   MyoroSingleSelectionDropdownState(
     super.dropdownType,
     super.items,
-    super.itemBuilder,
     super.showingController,
     T? initiallySelectedItem,
     ValueNotifier<T?>? selectedItemController,
+    super.itemBuilder,
+    super.selectedItemBuilder,
     this.onChanged,
   ) {
     _selectedItemController =

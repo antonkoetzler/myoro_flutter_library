@@ -6,8 +6,9 @@ sealed class MyoroSelectionDropdownState<T> {
   MyoroSelectionDropdownState(
     this.dropdownType,
     this.items,
-    this._itemBuilder,
     ValueNotifier<bool>? showingController,
+    this._itemBuilder,
+    this.selectedItemBuilder,
   ) {
     _showingController = showingController ?? (_localShowingController ??= ValueNotifier(false));
   }
@@ -26,6 +27,9 @@ sealed class MyoroSelectionDropdownState<T> {
 
   /// Item builder.
   final MyoroMenuItemBuilder<T> _itemBuilder;
+
+  /// Selected item builder.
+  final MyoroSelectionDropdownSelectedItemBuilder<T> selectedItemBuilder;
 
   /// Local showing controller.
   ValueNotifier<bool>? _localShowingController;

@@ -7,6 +7,7 @@ class MyoroMultiSelectionDropdownState<T> extends MyoroSelectionDropdownState<T>
     super.dropdownType,
     super.items,
     super.itemBuilder,
+    super.selectedItemBuilder,
     super.showingController,
     Set<T>? initiallySelectedItems,
     ValueNotifier<Set<T>>? selectedItemsController,
